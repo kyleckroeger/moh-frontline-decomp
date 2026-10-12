@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 611692,
+    "matching_code_bytes": 611924,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.24219622613766,
+    "percent": 43.25859694663828,
     "categories": {
-      "reconstructed_game": 391500,
+      "reconstructed_game": 391732,
       "restored_library": 220192
     },
-    "matching_functions": 3697
+    "matching_functions": 3698
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -809,7 +809,7 @@
     "config/GMFE69/snddrv_voice.json": "4d15ca21e2f371c0931f4ee838372bb63c3b1966319b33487018bcada9e13389",
     "config/GMFE69/sound.json": "ef83848bc7beba65c1dea5d3c023f168574e73b3c37dcfecda56e1ebe28dc4d5",
     "config/GMFE69/sound_endian.json": "aece3dd995cbdf57f8084e640a2d0a6a6eaa75d165d5ce47cf388cb5f4a6dffd",
-    "config/GMFE69/sound_music.json": "e0b4d62fd2b4e0d7999b4d1859248faca44cf85c3d841a91ebb7b45c1f637bdc",
+    "config/GMFE69/sound_music.json": "9755ebbae69bac07fd6eceaedd0a41faef4fcb486d7623e0eeca6ab6ebb04f82",
     "config/GMFE69/sound_stream.json": "68f3459d3075f31fca5a9cb76660429678187ed69280d788998c6b9b6f820e3a",
     "config/GMFE69/soundschedule.json": "5eb1216a53d3f6fbde2e44714120ab9c4008541f82ae681eaf5caf7d6e92f231",
     "config/GMFE69/soundschedule_shutdown.json": "34d6c2c173ede4a826b8f50c0597ac986d2e06e9937e6c78eb9715f340e2826e",
@@ -2419,7 +2419,7 @@
     "src/game/skybox_textures.cpp": "9b9bbb335d2f705c7ba9f303a665ae1cb969f8527467458837f5047d0102152d",
     "src/game/sound.cpp": "8f90e7e61ce6d5acec046028af50302e4ef3205d9144ec0a843a2fe2dd870a5b",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
-    "src/game/sound_music.cpp": "5314d6a6e57ef854980b4ee4c583dafa42d3ca4b6fe3e8fd40d927c81f919d10",
+    "src/game/sound_music.cpp": "a287dd9ee9d47279de80741399d68a626d6ae5ba9f46fa004bd805054f3caf6d",
     "src/game/sound_stream.cpp": "963b82cfcd71c67d59b6b1d5ee966ca909877e2d99adfc7c6e06ce03867a30cd",
     "src/game/soundschedule.cpp": "a0ffc8f5360c103f5a0b59bbc24c02520d9afb80db079a86cdafa19514fcf0a4",
     "src/game/soundschedule_shutdown.cpp": "5478124530a502cb5e396e3dd2428df04748dcf5426f5edd5a83e38884c2db53",
@@ -24174,8 +24174,8 @@
     {
       "id": "sound_music",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 416,
+      "functions": 7,
+      "code_bytes": 648,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24207,8 +24207,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b44587d2cbb6c7259e380c986c92eb50a1091bea2c6c7fe3763570adc91b7a86",
-      "linked_sha256": "2a3965d8b7e37d01abc7d2b685e5735ae783cda09f34386cd2e9e9e4f1595ea5"
+      "object_sha256": "10519e84098caa166af02bb8013c3ba54d6fa321b9213cb0cd162eb5015e7d7e",
+      "linked_sha256": "4b2753c326311d48ced0721a5f7b82c864ddd9356594ba587a633780bd000fac"
     },
     {
       "id": "player_weapon",
@@ -49345,13 +49345,6 @@
             "kind": "function",
             "name": "_userdata_client__FP17SNDUSERDATACBINFO",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800ea684",
-            "size": 232,
-            "kind": "function",
-            "name": "MUSIC_Start__Fiii",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800ea76c",

@@ -4,8 +4,11 @@
 // project's event (project id in the high byte) to the music handle,
 // MUSIC_SetLatency and MUSIC_SetLevel clamp the latency (50 to 5000) and
 // control level (0 to 127) before passing them on, MUSIC_Pause pauses or
-// resumes every path when a music handle exists, and MUSIC_Stop stops the
-// music handle. The file name is this project's; the original record is
+// resumes every path when a music handle exists, MUSIC_Stop stops the
+// music handle, and MUSIC_Start (with a music handle) sets the clamped
+// level and latency, the volume from the squared music volume (percent, as a
+// signed byte), and jumps every path to the given position, reporting a
+// failure through err (its message is a .rodata pool entry). The file name is this project's; the original record is
 // sound.cpp (sound.cpp holds the sound-stream wrappers). The functions and
 // globals are named by their symbols; the result types and the path player
 // prototypes as seen from this file are inferred.
@@ -16,7 +19,11 @@ int PATH_latency(unsigned int, int);
 int PATH_control(unsigned int, int);
 void PATH_pause(unsigned int, signed char);
 void PATH_stop(unsigned int);
+int PATH_volume(unsigned int, int);
+int PATH_jump(unsigned int, int, int);
 }
+
+void err(char*, ...);
 
 extern int gMusicHandle;
 extern int gMusicProjectID;
@@ -52,4 +59,15 @@ bool MUSIC_Pause(bool pause) {
 void MUSIC_Stop() {
     if (gMusicHandle >= 0)
         PATH_stop(gMusicHandle);
+}
+
+void MUSIC_Start(int level, int latency, int position) {
+    if (gMusicHandle >= 0) {
+        PATH_control(gMusicHandle, level < 0 ? 0 : (level > 127 ? 127 : level));
+        PATH_latency(gMusicHandle, latency < 50 ? 50 : (latency > 5000 ? 5000 : latency));
+        PATH_volume(gMusicHandle, (signed char)(100.0f * (g_musicVolume * g_musicVolume)));
+        int result = PATH_jump(0xFFFFFFFF, position, 1);
+        if (result < 0)
+            err("PATH_jump Failed (%d)", result);
+    }
 }

@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ea4e4",
-      "size": 416,
+      "size": 648,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f368",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015e30",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -92,15 +92,24 @@
       "address": "0x800ea658",
       "size": 44,
       "binding": 1
+    },
+    {
+      "name": "MUSIC_Start__Fiii",
+      "address": "0x800ea684",
+      "size": 232,
+      "binding": 1
     }
   ],
   "externals": {
     "PATH_control": "0x8010c098",
     "PATH_event": "0x8010b93c",
     "PATH_fade": "0x8010acd4",
+    "PATH_jump": "0x8010b6cc",
     "PATH_latency": "0x8010c280",
     "PATH_pause": "0x8010b1b8",
     "PATH_stop": "0x8010b078",
+    "PATH_volume": "0x8010aec4",
+    "err__FPce": "0x800ea130",
     "gMusicHandle": "0x8034e2fc",
     "gMusicProjectID": "0x8034e300",
     "g_musicVolume": "0x8034e2e8"
@@ -109,6 +118,7 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "err__FPce",
     "g_musicVolume"
   ],
   "discarded_local_functions": [],
@@ -120,9 +130,16 @@
   "original_file": "sound.cpp",
   "original_file_index": 8971,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 22,
+      "address": "0x80179194"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
