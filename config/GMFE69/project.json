@@ -942,7 +942,8 @@
     "swvideodisplaylist_dtor.json",
     "path_createtrack.json",
     "MathFun_rotate.json",
-    "line.json"
+    "line.json",
+    "box_pointdist.json"
   ],
   "progress": {
     "code_bytes": 1414572,
