@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80049dd4",
-      "size": 180,
+      "address": "0x80049d4c",
+      "size": 316,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a73c",
-      "size": 16,
+      "address": "0x8000a734",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011888",
-      "size": 24,
+      "address": "0x8001187c",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetupFieldOfViewModeObject__9CAIObjectFP9CAIObjectff",
+      "address": "0x80049d4c",
+      "size": 136,
+      "binding": 1
+    },
     {
       "name": "ProcessObstacleAvoidance__9CAIObjectFv",
       "address": "0x80049dd4",
@@ -73,7 +79,8 @@
   "externals": {
     "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80053738",
     "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80054304",
-    "RunEnvironmentCollisionChecks__18CObstacleAvoidanceFv": "0x80053c34"
+    "RunEnvironmentCollisionChecks__18CObstacleAvoidanceFv": "0x80053c34",
+    "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -82,5 +89,41 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIObject.cpp",
-  "original_file_index": 1752
+  "original_file_index": 1752,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 64,
+      "address": "0x8016f82c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f8a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f8ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f8c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f8c8"
+    }
+  ]
 }
