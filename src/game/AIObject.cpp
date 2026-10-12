@@ -1,7 +1,10 @@
 // CAIObject::SetNonAITarget (drops the AI target as SetTarget does, then takes
 // a script object's scene position as the target position, the point 1 below
-// it as the aim point), SetTarget, the distance helpers and
-// GetCoordinateAxisDirection.
+// it as the aim point), SetTarget, the distance helpers,
+// GetCoordinateAxisDirection and SetCoordinateAxisDirection (stores the three
+// axes, the angle of the first in the XY plane at +104, 0 at +100 (a .sdata2
+// pool entry), and the angle of the second axis, rotated back by the first
+// angle, at +96; the angle members are named by offset).
 // The distance helpers (squared XY, squared XYZ to another object or to the
 // target position, XYZ between AI objects' real positions) forward to
 // CAIFilterRealPosition. The class names come from the mangled symbols; the
@@ -43,8 +46,12 @@ public:
 
 class CAIFilterRealVector3 {
 public:
+    void RotateAboutZ(float);
+
     CVector3 v;
 };
+
+float MathFunAtan2F(float, float);
 
 // Inferred: the scene object a script object refers to, with its position.
 struct BSPositionView {
@@ -67,6 +74,7 @@ class CAIObject {
 public:
     void SetNonAITarget(BSObject*);
     void GetCoordinateAxisDirection(CAIFilterRealVector3*, CAIFilterRealVector3*, CAIFilterRealVector3*);
+    void SetCoordinateAxisDirection(CAIFilterRealVector3&, CAIFilterRealVector3&, CAIFilterRealVector3&);
     CAIObject* SetTarget(CAIObject*);
     void CalculateTargetPosition();
     float GetDistanceSquaredXYReal(CAIObject*);
@@ -76,7 +84,11 @@ public:
 
     unsigned char unknown000[24];
     CAIFilterRealPosition m_position;
-    unsigned char unknown024[76];
+    unsigned char unknown024[60];
+    float m_angle060;
+    float m_value064;
+    float m_angle068;
+    unsigned char unknown06c[4];
     CAIFilterRealVector3 m_axis[3];
     unsigned char unknown0a0[32];
     bool m_unknown0c0;
@@ -182,4 +194,16 @@ void CAIObject::GetCoordinateAxisDirection(CAIFilterRealVector3* forward, CAIFil
     *forward = m_axis[0];
     *left = m_axis[1];
     *up = m_axis[2];
+}
+
+void CAIObject::SetCoordinateAxisDirection(CAIFilterRealVector3& forward, CAIFilterRealVector3& left,
+                                           CAIFilterRealVector3& up) {
+    m_axis[0] = forward;
+    m_axis[1] = left;
+    m_axis[2] = up;
+    m_angle068 = MathFunAtan2F(-m_axis[0].v.y, m_axis[0].v.x);
+    CAIFilterRealVector3 rotated = m_axis[1];
+    rotated.RotateAboutZ(-m_angle068);
+    m_value064 = 0.0f;
+    m_angle060 = MathFunAtan2F(-rotated.v.z, rotated.v.y);
 }
