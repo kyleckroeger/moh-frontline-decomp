@@ -1,4 +1,5 @@
-// A fragment of pathxSND.c (0x800e88a8): PATHX_pause (pauses a track by
+// A fragment of pathxSND.c (0x800e883c): PATHX_stop (stops the sound, or
+// purges the stream, then marks a refresh pending), PATHX_pause (pauses a track by
 // setting its pitch to 0, restoring the saved pitch first, or resumes it at
 // its pitch; through the sound or the stream, then marks a refresh pending),
 // PATHX_volume (applies a track's
@@ -56,6 +57,20 @@ int SNDSTRM_queuemem(int, void*, void*, int);
 int SNDSTRM_queuefile(int, void*, int, int);
 void SNDSTRM_pitchmult(int, int);
 void SNDpitchmult(int, int);
+void SNDstop(int);
+}
+
+extern "C" int PATHX_stop(int track) {
+    PathxTrackView* info = pathxinfo[track];
+
+    SNDSYS_entercritical();
+    if (info->isSound)
+        SNDstop(info->queue->handle);
+    else
+        SNDSTRM_purge(info->stream);
+    SNDSYS_leavecritical();
+    info->pending = 1;
+    return 0;
 }
 
 extern "C" int PATHX_pause(int track, char pause) {

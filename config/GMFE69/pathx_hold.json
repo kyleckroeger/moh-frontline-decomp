@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e88a8",
-      "size": 1468,
+      "address": "0x800e883c",
+      "size": 1576,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PATHX_stop",
+      "address": "0x800e883c",
+      "size": 108,
+      "binding": 1
+    },
     {
       "name": "PATHX_pause",
       "address": "0x800e88a8",
@@ -80,6 +86,7 @@
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
     "SNDpitchmult": "0x8015ce8c",
+    "SNDstop": "0x8015d148",
     "SNDvol": "0x8015ccf0",
     "pathxinfo": "0x801f7410"
   },

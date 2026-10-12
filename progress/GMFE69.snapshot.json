@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 612428,
+    "matching_code_bytes": 612664,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.29422609807065,
+    "percent": 43.31090958961438,
     "categories": {
-      "reconstructed_game": 392236,
+      "reconstructed_game": 392472,
       "restored_library": 220192
     },
-    "matching_functions": 3701
+    "matching_functions": 3703
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -101,7 +101,7 @@
     "config/GMFE69/GXTexture.json": "984d5a48aeb260459a8f09c39e303b5e2f48a9bab79353bb86eb06e8a2d1fc69",
     "config/GMFE69/GXTransform.json": "38225301a6fd0d656301839a81128f2235b7fbe70c809990d1beeb45d8a5182b",
     "config/GMFE69/Gecko_ExceptionPPC.json": "40e29a739fe917c560f5eb9768fcab768f7b2d6fafcf2e45c14439d96526b39e",
-    "config/GMFE69/IStudio.json": "2c7685c7651790e4e8069629df78de3135a14717212cc801e06467f43c148ed2",
+    "config/GMFE69/IStudio.json": "a61511407d1eee51ece5adc4a8ab93eb6678719d07af1599d4793c14a29b3b06",
     "config/GMFE69/IStudioFuncs.json": "a76dc75d5f0f0d9af8e5cde0ab73c9d5fe0e7bce64f599ea63e2ae40aab335b5",
     "config/GMFE69/LinkedList.json": "602f883f2de084765f8942b8e59f71e78eba4a2f6decd323bf7ba7b64498ec81",
     "config/GMFE69/MallocInit.json": "8084909a7be143dbe22e68d1ec13bf2de5447a3ce15fc2023dff212530d007d1",
@@ -614,7 +614,7 @@
     "config/GMFE69/path_stop.json": "bc02afb9ccaed23708f662127ac20759e21a75d3a9ec807c831db8fb0d92f425",
     "config/GMFE69/pathxSND.json": "711dcdf3a5a5a7b4124ae70e377c5e863dc39c8de8a0de785b3dc3921c685fa0",
     "config/GMFE69/pathx_end.json": "c2a3fcbc64df0e00246b7a260335739145e49eaef7be7713ed87f6ac37e5156c",
-    "config/GMFE69/pathx_hold.json": "32ab67f20f8da6105c49fc1bb615ed2d24604a1dd1ec6c8eb5faca4f5deca337",
+    "config/GMFE69/pathx_hold.json": "e530d7588d5295e1e8bb72739cf271c31fbe0f44c09b3e727d729ca0f2e2bfdd",
     "config/GMFE69/pathx_overhead.json": "6648b30c83936865ee7b84aa098e523ff049f607999e698979038f6e77a89abe",
     "config/GMFE69/pathx_query.json": "1e40f0daf9f13fe1bcea32dc6ef089aca8ee2e28411e3079de1cd1f107ba5ec2",
     "config/GMFE69/plane_ctor.json": "6a4408f2a0668bc0c7a542a9080df5f08480715400b00206be156bcaa71d0631",
@@ -1777,7 +1777,7 @@
     "src/ea/path_stop.c": "537f4c59b1580047eae281b514ae40c3c6b08250fde74da9fbc51788e936a129",
     "src/ea/pathxSND.c": "f41cae88d965e8b7d18f31e14a637dacad3642c3cf929fc249ae80d3e1588980",
     "src/ea/pathx_end.c": "b179b62d8dc4f44921b999fb51d996b200f8b65dd6d6465126473408daa7adb2",
-    "src/ea/pathx_hold.c": "3ecf27fbf260eb76e347d65b6fafc50a8ba64e865c3f3128d57041777f42f3f5",
+    "src/ea/pathx_hold.c": "dee9589545a3c51272e70641b4ebefa6382b36109d71ba43ac97e75f34e7e4c0",
     "src/ea/pathx_overhead.c": "4cc62b67f16257e6bd135206595379201f6c390ce294c8916685d1543c39ed50",
     "src/ea/pathx_query.c": "c6bdb5404e5bed6ee095805d1f7266449c1242449ca994893d9da3f57a945f6b",
     "src/ea/printstr.cpp": "2c1c6b33e96dbf7dc958d521d28061da022a21ef0c80e3bfe2fd1ae6d4c07186",
@@ -1983,7 +1983,7 @@
     "src/game/AITankObject_ctor.cpp": "1f030f4858f98d025d0a1e30b0085e5e02d5393045f481cb86a72d8f752ad35c",
     "src/game/AnimObjFactory.cpp": "2e2b57fc04c9964fdce19f6a41496489c097cd607462f4cb7bd82763e1df4ab8",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
-    "src/game/IStudio.cpp": "475da8a6cac14dba071556791d28fa6fb39f7fb4ec8a0f04509aa437a3bd75ef",
+    "src/game/IStudio.cpp": "8b84b0f073788f7ea59bee3645f2a65f63f45d976c439283ba5809708ffcbbfe",
     "src/game/IStudioFuncs.cpp": "b165a33f98e96f81832733bc9c7f57c198951e7c5297b42486c1184a62b9a756",
     "src/game/LinkedList.cpp": "3007b79180a5844b8b799dc4fc11618f6b5da77679e6c73c6f388fec501beb2a",
     "src/game/MallocInit.cpp": "ba35f4c9ac530c717f81930ab9aa3a203ea81844e4776914ae6b51acf4188a74",
@@ -20346,8 +20346,8 @@
     {
       "id": "IStudio",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 220,
+      "functions": 5,
+      "code_bytes": 348,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -20379,8 +20379,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8ccc380187397cf795d7f1746a957170afebd1c00f4c21397fa2d5f99d1f9f3e",
-      "linked_sha256": "b5fa10a7288c8056a7466823f845da42409cec5f64e5ef7066fab7325d3c5de2"
+      "object_sha256": "018bf414ab85751fbae2314bba37ab721f8c6b6246ef9fd2ff223b526a007fe4",
+      "linked_sha256": "5d565895146ffaaca0e7101fbd74a32325a65a477fe60b605fbe394df758bc1b"
     },
     {
       "id": "avplayer",
@@ -30543,8 +30543,8 @@
     {
       "id": "pathx_hold",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 1468,
+      "functions": 5,
+      "code_bytes": 1576,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -30576,8 +30576,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4320a9a1b71eaff6cfb4652ba6745f6130f1e77eaae0598699e594fb84e0d9c4",
-      "linked_sha256": "743bdfb0273605423fa41d2e9f028cefb72299e74e10390da23d0f41dd41102d"
+      "object_sha256": "b85786b9a39f3f543d33d9770e50e168464dd2a8cc534b4dd6871c86bbb7314d",
+      "linked_sha256": "a01e4e9b0f14a9695876613a98bdac4a660e2803aec7d48d0b2187e1210f8fe6"
     },
     {
       "id": "pathx_end",
@@ -45949,13 +45949,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x8008b5e0",
-            "size": 128,
-            "kind": "function",
-            "name": "iSirenShutDown__7IStudioFv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x8008b73c",
             "size": 380,
             "kind": "function",
@@ -49276,13 +49269,6 @@
         "file_record": 149,
         "file_name": "pathxSND.c",
         "ranges": [
-          {
-            "address": "0x800e883c",
-            "size": 108,
-            "kind": "function",
-            "name": "PATHX_stop",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800e9574",
             "size": 1148,

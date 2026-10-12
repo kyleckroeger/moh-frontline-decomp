@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008b660",
-      "size": 220,
+      "address": "0x8008b5e0",
+      "size": 348,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c498",
-      "size": 32,
+      "address": "0x8000c490",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013550",
-      "size": 48,
+      "address": "0x80013544",
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "iSirenShutDown__7IStudioFv",
+      "address": "0x8008b5e0",
+      "size": 128,
+      "binding": 1
+    },
     {
       "name": "iSirenUpdate__7IStudioFUl",
       "address": "0x8008b660",
@@ -84,12 +90,16 @@
   ],
   "externals": {
     "Ident__12CMatrixStackFv": "0x80090d90",
+    "MEM_free": "0x8014f83c",
     "UISDrawObjects": "0x80087fac",
+    "UISGetMemSize": "0x80088d48",
     "UISIdleProcess": "0x80087f08",
     "UISLoadScreen": "0x80088770",
     "UISSetScreenActive": "0x8008825c",
+    "UISShutdown": "0x80088b84",
     "g_matStack": "0x8034eab8",
-    "iSirenEventProcessFnc__7IStudioFv": "0x8008b01c"
+    "iSirenEventProcessFnc__7IStudioFv": "0x8008b01c",
+    "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
