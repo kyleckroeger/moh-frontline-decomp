@@ -40,27 +40,33 @@
     {
       "name": ".text",
       "address": "0x800c5458",
-      "size": 92,
+      "size": 260,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ddc4",
-      "size": 8,
+      "size": 16,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 16
+      "linked_size": 24
     },
     {
       "name": "extabindex",
       "address": "0x80014c78",
-      "size": 12,
+      "size": 24,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 36
     }
   ],
   "functions": [
+    {
+      "name": "BoxBoxTest__Fff5EAxisRfRfR5EAxis",
+      "address": "0x800c54b4",
+      "size": 168,
+      "binding": 0
+    },
     {
       "name": "__dt__7CVolBoxFv",
       "address": "0x800c5458",
@@ -69,6 +75,7 @@
     }
   ],
   "externals": {
+    "CONTACT_EPSILON": "0x80350ba8",
     "__dl__FPv": "0x8001ca2c",
     "__dt__7IVolumeFv": "0x8001c078",
     "__vt__7CVolBox": "0x801894f4",
@@ -79,7 +86,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "box.cpp",
   "original_file_index": 7464,
   "stripped_sections": [

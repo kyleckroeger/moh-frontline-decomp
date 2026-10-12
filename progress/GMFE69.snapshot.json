@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 601176,
+    "matching_code_bytes": 601344,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.498791153790684,
+    "percent": 42.51066753760148,
     "categories": {
-      "reconstructed_game": 380984,
+      "reconstructed_game": 381152,
       "restored_library": 220192
     },
-    "matching_functions": 3664
+    "matching_functions": 3665
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -259,7 +259,7 @@
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
     "config/GMFE69/box_dispatch.json": "bab2a62639f51aace1ec7550302fd789046f2334df2989182b61fc964067623a",
     "config/GMFE69/box_dispatch2.json": "ccdbfb5f464a22e9006d619014325ccf07bd6693ed9755050546f4aadb307d0b",
-    "config/GMFE69/box_dtor.json": "36a3801bba6e6f589217d18ae52cf03a9dfb97c6b22bef397445bfda0edb5a8c",
+    "config/GMFE69/box_dtor.json": "20aeae0622270ef06f83c485f6342e7f2718b28b2ceb6d8fbe72dc6054f88bb6",
     "config/GMFE69/box_ivolume.json": "9884b1eac9b25b2026c730ae7d024f9e2b316d421026fcc5efd0fa2619b94d19",
     "config/GMFE69/box_setters.json": "193dcf17a7e86d335b23786d1242ba384b45f0a3b2e14853c139f538252c08d2",
     "config/GMFE69/bsbifunc.json": "20fc606c8c3849041106a992a379e99aa28247f377a6db5747211c6e37ac1b8e",
@@ -2089,7 +2089,7 @@
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "c5895cd63cc16d5b3a6c93bb7eeb2889c675fd287c3b48c978ab76c597d490ed",
-    "src/game/box_dtor.cpp": "a2b0232c314e3d49cd6b7c1ff92dc55de37f571527774db9e495f82ae70d07a6",
+    "src/game/box_dtor.cpp": "0592ef20f8049936589f7f89becbb8648ead4a55413559089337bc9d7b2aed7e",
     "src/game/box_ivolume.cpp": "1d5ac225f09833d8ef33a2d21a2f3062392e1ba6af0d55b25464a140c38c9ad7",
     "src/game/box_setters.cpp": "8dc7b9d0e9310692670003153178577012ec4f73d4c998f2ce8f15c14919495a",
     "src/game/bsbifunc.cpp": "7b7932011bc49cfe64e954bae9f5068855094b818897ecbbd7aa822c3be427c2",
@@ -35697,8 +35697,8 @@
     {
       "id": "box_dtor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 92,
+      "functions": 2,
+      "code_bytes": 260,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -35730,8 +35730,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "252727a4944db277a50b3a65777061a21a3a70fce6f126084f861199f734bfcd",
-      "linked_sha256": "f46a353711086a6a7e13cf66814337789e26c9429779e2eb5ddc23a4ce6a5637"
+      "object_sha256": "5a6e744958525f2452949dd3904cb8184a7ebcd41b96dd7f3209a373d45a48d2",
+      "linked_sha256": "454e25744a33c81a38796d27ae259445c3b42338ac3ef980fa7cfd12260ed587"
     },
     {
       "id": "capsule_dtor",
@@ -48051,13 +48051,6 @@
             "size": 68,
             "kind": "function",
             "name": "Sign__Ff",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800c54b4",
-            "size": 168,
-            "kind": "function",
-            "name": "BoxBoxTest__Fff5EAxisRfRfR5EAxis",
             "evidence": "local-file-symbol"
           }
         ]
