@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 612664,
+    "matching_code_bytes": 612792,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.31090958961438,
+    "percent": 43.319958262994035,
     "categories": {
-      "reconstructed_game": 392472,
+      "reconstructed_game": 392600,
       "restored_library": 220192
     },
-    "matching_functions": 3703
+    "matching_functions": 3704
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -627,6 +627,7 @@
     "config/GMFE69/player_move.json": "5c83bcfc40e38e1ff478221cd5f5ddfb0c80cfa1fc7931a9d9ab9b0652a706e0",
     "config/GMFE69/player_rows.json": "13811fcc23bcd3bcf749bb8f86a42425e20d055394a915db5ec95e9fe2f27251",
     "config/GMFE69/player_sqrtf.json": "3ea25709db5c39b42d7f13c7a3caa1fce1598a04dd02b77b76524ad8d9865bb9",
+    "config/GMFE69/player_switchweapon.json": "93b64c53de382e732c1833d1d1449f06c6d1ca3afbdb9a859c8bd07d4b2b6247",
     "config/GMFE69/player_tm.json": "b27b34395ac3cef5941d78eeafe2f13eeff1a412b05b5a7f06ea6a3142301792",
     "config/GMFE69/player_transform.json": "072c8e978e757f9baebcede6e006e1a116b4c646cb621686e5439401f90cf7ad",
     "config/GMFE69/player_vec_add.json": "edf9bb0b85c2da782b3b3380df4474d7c5b49cf886378abd7ab4a2a21689dd8c",
@@ -640,7 +641,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "39c68b321724f73e6a0b8440ae69aee5ee326c8781c9f92238c21aeba07b490b",
+    "config/GMFE69/project.json": "f686395efe77c391d7ef07695c4570bbf9a1bad429ec135ddbdcfc75031584be",
     "config/GMFE69/projectilebullet.json": "cdb5672aceab48b4c354e7df26f4d02a36355002f12a5c0901f81866b26f9213",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2356,6 +2357,7 @@
     "src/game/player_move.cpp": "90b421139d3fb8c664ad73c2526c49242a0d86e7b92c3aa74f8b12cdc0dcb015",
     "src/game/player_rows.cpp": "f7a30837aa5a3d7bd52cbf4ef9bcdec6e25f957e40b4198713e526bb450fbcf3",
     "src/game/player_sqrtf.cpp": "5244f4cca0d1bb5192bf073eefed7032fa74e4bfea45bcc7fe546afa0e6a368d",
+    "src/game/player_switchweapon.cpp": "34fbfd10a314712db72f76716a9ca565ff808a10457767dde350374f2e0a3515",
     "src/game/player_tm.cpp": "eb1002a3f05b9982e2cfb3302dd6dcd20081bdb2f87d8e26ea2f35865b7b9cd1",
     "src/game/player_transform.cpp": "80c1eced80af8cee2b6d8d30b363618e944a798303ed942d49d9fa6b1bbe1c54",
     "src/game/player_vec_add.cpp": "ce56941a1cb5ff6262f839238d95d29f1854cf7513c379df83318227c1fa9003",
@@ -41588,6 +41590,45 @@
       "discarded_functions": [],
       "object_sha256": "c80b86ed1c749d4438b49b18d4e93f400c022e32420cdaaa6a7cf670e0bbf12d",
       "linked_sha256": "9a574caa878a71f4f126ac107b6f3f8edeeb610de3c1f0dbb4525fa103bb9ec6"
+    },
+    {
+      "id": "player_switchweapon",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 128,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "12f9a3b62ffc96310a6e508e0c692999d046637a6d693985fc7f768235761152",
+      "linked_sha256": "ed807154a78dac5e633ece9abc5671bccbbfc6cc9e95e28929dcf39d8823699c"
     }
   ],
   "code_map": {
@@ -47007,13 +47048,6 @@
             "kind": "function",
             "name": "SetWeaponEnable__13CPlayerObjectF12EWeaponTypesb",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800a74a8",
-            "size": 128,
-            "kind": "function",
-            "name": "CanPlayerSwitchWeapon__13CPlayerObjectFv",
-            "evidence": "exception-index"
           }
         ]
       },
