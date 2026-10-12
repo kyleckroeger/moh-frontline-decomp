@@ -1,4 +1,7 @@
-// A fragment of AIObject.cpp (0x80049d4c): CAIObject::SetupFieldOfViewModeObject
+// A fragment of AIObject.cpp (0x80049c90): CAIObject::SetupFieldOfViewModeList
+// (copies the match entries, 12 bytes each, to +1780 and their count to
+// +1828, clears the watched object at +1688, then the same distance and angle
+// defaults as below into +1756 and +1772), CAIObject::SetupFieldOfViewModeObject
 // (the watched object, the vision distance - 50 with a warning when it is not
 // above 0.001 - and the angle, 90 by default, in radians; the constants and
 // the message are pool entries), then CAIObject::ProcessObstacleAvoidance
@@ -22,9 +25,17 @@ public:
 };
 
 extern "C" int printf(const char*, ...);
+extern "C" void* memcpy(void*, const void*, unsigned long);
+
+/* Named by the mangled symbol; the 12-byte size comes from the copy, the
+   member layout and the array bound below are inferred. */
+struct aistatus_match {
+    int value[3];
+};
 
 class CAIObject {
 public:
+    void SetupFieldOfViewModeList(aistatus_match*, int, float, float);
     void SetupFieldOfViewModeObject(CAIObject*, float, float);
     void ProcessObstacleAvoidance();
     void EngageObstacleAvoidance(bool, float, float, float);
@@ -41,13 +52,33 @@ public:
     float m_unknown67c;
     unsigned char unknown680[8];
     CAIFilterRealPosition m_unknown688;
-    unsigned char unknown694[8];
+    unsigned char unknown694[4];
+    CAIObject* m_listObject;
     CAIObject* m_fovObject;
-    unsigned char unknown6a0[64];
+    unsigned char unknown6a0[60];
+    float m_listDistance;
     float m_visionDistance;
     unsigned char unknown6e4[4];
     float m_fovAngle;
+    float m_listAngle;
+    unsigned char unknown6f0[4];
+    aistatus_match m_list[4];
+    int m_listCount;
 };
+
+void CAIObject::SetupFieldOfViewModeList(aistatus_match* list, int count, float distance, float angle) {
+    memcpy(m_list, list, count * sizeof(aistatus_match));
+    m_listCount = count;
+    m_listObject = 0;
+    if (distance <= 0.001f) {
+        printf("Warning: SFOVML - Vision distance is zero, changing to default\n");
+        distance = 50.0f;
+    }
+    m_listDistance = distance;
+    if (angle <= 0.001f)
+        angle = 90.0f;
+    m_listAngle = 0.017453292f * angle;
+}
 
 void CAIObject::SetupFieldOfViewModeObject(CAIObject* object, float distance, float angle) {
     m_fovObject = object;
