@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 601344,
+    "matching_code_bytes": 601500,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.51066753760148,
+    "percent": 42.52169560828293,
     "categories": {
-      "reconstructed_game": 381152,
+      "reconstructed_game": 381308,
       "restored_library": 220192
     },
-    "matching_functions": 3665
+    "matching_functions": 3667
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -260,7 +260,7 @@
     "config/GMFE69/box_dispatch.json": "bab2a62639f51aace1ec7550302fd789046f2334df2989182b61fc964067623a",
     "config/GMFE69/box_dispatch2.json": "ccdbfb5f464a22e9006d619014325ccf07bd6693ed9755050546f4aadb307d0b",
     "config/GMFE69/box_dtor.json": "20aeae0622270ef06f83c485f6342e7f2718b28b2ceb6d8fbe72dc6054f88bb6",
-    "config/GMFE69/box_ivolume.json": "9884b1eac9b25b2026c730ae7d024f9e2b316d421026fcc5efd0fa2619b94d19",
+    "config/GMFE69/box_ivolume.json": "5c003ca35c47fec1465c36d814a8dfcda75f641dae7b77cc85c76a02050af3ee",
     "config/GMFE69/box_setters.json": "193dcf17a7e86d335b23786d1242ba384b45f0a3b2e14853c139f538252c08d2",
     "config/GMFE69/bsbifunc.json": "20fc606c8c3849041106a992a379e99aa28247f377a6db5747211c6e37ac1b8e",
     "config/GMFE69/bsbifunc_aemsvalues.json": "cfb2c81b75868952f4f6d26c0c9f9be92bd5f89688d84e132632f06900955cd9",
@@ -2090,7 +2090,7 @@
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "c5895cd63cc16d5b3a6c93bb7eeb2889c675fd287c3b48c978ab76c597d490ed",
     "src/game/box_dtor.cpp": "0592ef20f8049936589f7f89becbb8648ead4a55413559089337bc9d7b2aed7e",
-    "src/game/box_ivolume.cpp": "1d5ac225f09833d8ef33a2d21a2f3062392e1ba6af0d55b25464a140c38c9ad7",
+    "src/game/box_ivolume.cpp": "c280c6bb1e46483b3ee54868a8b480b5507c10254d5214db3718fc350a083afd",
     "src/game/box_setters.cpp": "8dc7b9d0e9310692670003153178577012ec4f73d4c998f2ce8f15c14919495a",
     "src/game/bsbifunc.cpp": "7b7932011bc49cfe64e954bae9f5068855094b818897ecbbd7aa822c3be427c2",
     "src/game/bsbifunc_aemsvalues.cpp": "383bf42ba27fc516db1f68e9af0272e233b8e413fa99ff431f860495a406355f",
@@ -24872,8 +24872,8 @@
     {
       "id": "box_ivolume",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 168,
+      "functions": 4,
+      "code_bytes": 324,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24905,8 +24905,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6cb8969ac4caf486f36c86266614d058b8e2ac8fc1c34772489a24c60f471800",
-      "linked_sha256": "fee1e4e0e946f397e67a773e8579163bad20654e1b71bc1064a22113774d4dd9"
+      "object_sha256": "2eb52ed5c404be7332e7dc6df4720c7e269a5f347eb0766da8ac493c131df257",
+      "linked_sha256": "bd9d303bac3445c2c0ac9b108c4a29115a8741e9fd7e64494bd548b37ff08102"
     },
     {
       "id": "cdbobject_csg",
@@ -48038,20 +48038,6 @@
             "kind": "function",
             "name": "TestCollision__7CVolBoxCFRC7CVolBoxR10CCollisionb",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800c5008",
-            "size": 88,
-            "kind": "function",
-            "name": "Cross__8CVector3FRC8CVector3RC8CVector3",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c5060",
-            "size": 68,
-            "kind": "function",
-            "name": "Sign__Ff",
-            "evidence": "local-file-symbol"
           }
         ]
       },

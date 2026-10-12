@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800c50a4",
-      "size": 168,
+      "address": "0x800c5008",
+      "size": 324,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ddac",
-      "size": 8,
+      "address": "0x8000dda4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014c54",
-      "size": 12,
+      "address": "0x80014c48",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Sign__Ff",
+      "address": "0x800c5060",
+      "size": 68,
+      "binding": 0
+    },
     {
       "name": "TestCollision__7CVolBoxCFRC7IVolumeR10CCollisionb",
       "address": "0x800c50d8",
@@ -67,6 +73,12 @@
       "name": "Abs__8CVector3FRC8CVector3",
       "address": "0x800c50a4",
       "size": 52,
+      "binding": 2
+    },
+    {
+      "name": "Cross__8CVector3FRC8CVector3RC8CVector3",
+      "address": "0x800c5008",
+      "size": 88,
       "binding": 2
     }
   ],
