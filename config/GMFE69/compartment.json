@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x80074c08",
-      "size": 32,
+      "size": 192,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000bbec",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012ad0",
+      "size": 12,
       "type": 1
     }
   ],
@@ -62,19 +74,34 @@
       "address": "0x80074c18",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "DrawShadows__12CCompartmentFR12CDrawContext",
+      "address": "0x80074c28",
+      "size": 160,
+      "binding": 1
     }
   ],
   "externals": {
-    "g_CptShadowBin": "0x801d50c4"
+    "DrawNodeShadows__12CCompartmentFR7CPTNodeR16CCharacterShadow": "0x80074438",
+    "g_CptShadowBin": "0x801d50c4",
+    "g_bShadowSet": "0x8034e999",
+    "g_config": "0x80196a80",
+    "g_pCurrentShadow": "0x8034e99c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "g_CptShadowBin"
+    "g_CptShadowBin",
+    "g_bShadowSet",
+    "g_pCurrentShadow"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bShadowSet",
+    "g_pCurrentShadow"
+  ],
   "original_file": "compartment.cpp",
   "original_file_index": 3422
 }
