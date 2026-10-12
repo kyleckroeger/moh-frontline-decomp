@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 603728,
+    "matching_code_bytes": 604272,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.67919907929748,
+    "percent": 42.717655941161,
     "categories": {
-      "reconstructed_game": 383536,
+      "reconstructed_game": 384080,
       "restored_library": 220192
     },
-    "matching_functions": 3670
+    "matching_functions": 3673
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -889,7 +889,7 @@
     "config/GMFE69/stream_cb.json": "0095c8754134b82f45a03cdf7e3b7be8c9b04a0af95788ffe07345f9a47d6169",
     "config/GMFE69/stream_greedy.json": "bd706c0b87692c1c48a77e8c2218b034d44ef346e141dba6add56e68722a2e4d",
     "config/GMFE69/stream_prio.json": "2438a8b53ff21b845f1923f79496b9ea6ab4de20721780c3e9efea36e5b4df28",
-    "config/GMFE69/stretch.json": "9dae3ee6e6b7d04d31d1d77e5a80a5534992da7485a0f84d22d7bbc63e5dc566",
+    "config/GMFE69/stretch.json": "a3a1d44e437062353c086a63133d381e2d699516427d1f0eaeba7a8e7fc04d5d",
     "config/GMFE69/string.json": "dfcf9ebcd504cab3afb3e06b74c7e218ecadac89ebde48c40659fcaeb0a01628",
     "config/GMFE69/strtoul.json": "96027a37123019cd24fdaf9c4ec6caa8228464cf8362a2b3ba7e36acdb35dad5",
     "config/GMFE69/supf.json": "01af0bb9502db26aa7168c7276e2d96e72d874dfdc8f8d9367ae66df0f929e63",
@@ -1925,7 +1925,7 @@
     "src/ea/stream_cb.cpp": "dcdaf090c28f0bed61a7b362caf0b8d37bb481b8fb72bb47591521ff497aac7b",
     "src/ea/stream_greedy.cpp": "3357523a97088d2259a33a67b7a43549a03167dd7038677aa0f03d15fa5f40e7",
     "src/ea/stream_prio.cpp": "78e45fbfeaf50cbbd39f4f2543003d4b23b0bf084724f61f1a8124ec88df293b",
-    "src/ea/stretch.c": "ee57f26e69055ee4d65ebc19c03a895da6badd9bc262a26c99808ab396ea8eb1",
+    "src/ea/stretch.c": "799a3e12f81f1231af5d13453805dc5184a167d4b616e32f4b275abbc71df743",
     "src/ea/supf.c": "6887947b6223d085d1b4ae151937fb4107e5f1338b36fe73fd37bb15718a7cf9",
     "src/ea/suplf.c": "dfe878bc5bc53b45e72bb0ed6608b43d00ace2d55bb924f9cd199a5c04123aad",
     "src/ea/supmutf.c": "9dd420f031cc5c776078ad4d7385adfbd4be1c6fe16b6832cf0130623106f98e",
@@ -28544,8 +28544,8 @@
     {
       "id": "stretch",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 440,
+      "functions": 4,
+      "code_bytes": 984,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28577,8 +28577,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0432aaa3aac7e41eeffbb367fb4d5a9d8b82ec2ff88b780a151b423a3dfcd971",
-      "linked_sha256": "ddecd54a6e36d1309ad6a9198f6e66e3d164a70e90991262c65ceaf74496f8a5"
+      "object_sha256": "76fa95a4fcd4c9bf0d559b96fd31b2dd9b1d4dd1fa22f705d4a32bd4f532637e",
+      "linked_sha256": "69f18a1c77f39d50243380f3d558b68cbd6769448992709a55fdaee8aea47e08"
     },
     {
       "id": "hierobject_draw",
@@ -52013,27 +52013,6 @@
             "kind": "function",
             "name": "stretchframesneeded__FPvi",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80166f90",
-            "size": 100,
-            "kind": "function",
-            "name": "SFILTER_timestretchsetratio__FP16TIMESTRETCHSTATEi",
-            "evidence": "private-reference"
-          },
-          {
-            "address": "0x80166ff4",
-            "size": 264,
-            "kind": "function",
-            "name": "SFILTER_timestretch__FPviPvPvi",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x801670fc",
-            "size": 180,
-            "kind": "function",
-            "name": "SFILTER_timestretchinit__FP16TIMESTRETCHSTATEPUci",
-            "evidence": "private-reference"
           }
         ]
       },
