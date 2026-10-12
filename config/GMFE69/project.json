@@ -943,7 +943,8 @@
     "line.json",
     "box_pointdist.json",
     "box_linedist.json",
-    "saemsamb.json"
+    "saemsamb.json",
+    "bigyuvswizzler.json"
   ],
   "progress": {
     "code_bytes": 1414572,
