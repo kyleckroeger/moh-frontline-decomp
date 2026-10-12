@@ -1,0 +1,119 @@
+{
+  "id": "box_linedist",
+  "source": "src/game/box_linedist.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800c0320",
+      "size": 1752,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000dd1c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014b94",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Case00__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf",
+      "address": "0x800c0894",
+      "size": 356,
+      "binding": 0
+    },
+    {
+      "name": "BoxLineSqrDistance__FRC6CLine3RC7CVolBoxPfPfPfPf",
+      "address": "0x800c0320",
+      "size": 1396,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Case0__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf": "0x800c09f8",
+    "Face__FiiiR8CVector3RC8CVector3RC7CVolBoxRC8CVector3PfRf": "0x800c0c54",
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "s_TempMat__7CMatrix": "0x801eeed0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "Case0__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf",
+    "Face__FiiiR8CVector3RC8CVector3RC7CVolBoxRC8CVector3PfRf"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "box.cpp",
+  "original_file_index": 7464,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350b40"
+    }
+  ]
+}

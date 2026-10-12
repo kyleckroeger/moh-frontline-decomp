@@ -943,7 +943,8 @@
     "path_createtrack.json",
     "MathFun_rotate.json",
     "line.json",
-    "box_pointdist.json"
+    "box_pointdist.json",
+    "box_linedist.json"
   ],
   "progress": {
     "code_bytes": 1414572,
