@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80061384",
-      "size": 572,
+      "address": "0x80061314",
+      "size": 684,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b348",
-      "size": 40,
+      "address": "0x8000b340",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800123ec",
-      "size": 60,
+      "address": "0x800123e0",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170498",
+      "size": 101,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateAnimation__9CAnimatedFf",
+      "address": "0x80061314",
+      "size": 112,
+      "binding": 1
+    },
     {
       "name": "FinishAnimationState__9CAnimatedFUs",
       "address": "0x80061384",
@@ -90,8 +102,11 @@
   ],
   "externals": {
     "AnimChanInitChannels": "0x80061bf8",
+    "AnimChanProcess": "0x80061acc",
+    "AnimMotCreateWeightList": "0x80065db0",
     "AnimStGetStateUserMemory": "0x80067100",
     "AnimStInitStructure": "0x80067c48",
+    "AnimStProcess": "0x800672c4",
     "AnimStStartState": "0x800676d8",
     "AnimStTransPreCheck": "0x80067b5c",
     "DebugMsg__FPCce": "0x80018c88",
@@ -107,16 +122,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animated.cpp",
-  "original_file_index": 2818,
-  "pooled_sections": [
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 101,
-      "address": "0x80170498"
-    }
-  ]
+  "original_file_index": 2818
 }

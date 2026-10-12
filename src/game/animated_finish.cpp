@@ -1,4 +1,6 @@
-// A fragment of animated.cpp (0x80061384): CAnimated::FinishAnimationState
+// A fragment of animated.cpp (0x80061314): CAnimated::UpdateAnimation (steps
+// the state machine and the channels by the time, then rebuilds the motion
+// weight list kept at +2612), CAnimated::FinishAnimationState
 // finishes the animation recorded for a state (read from the state machine's
 // user memory, unless it is -1) on the animation object, passing the state's
 // top bit as the flag, and returns 0. SetAnimationState refuses a lip-synch
@@ -19,6 +21,9 @@ int AnimStTransPreCheck(void*, void*, unsigned short);
 long AnimStStartState(void*, void*, void*, unsigned short, void*, void*, float);
 void AnimChanInitChannels(void*, void*);
 void AnimStInitStructure(void*);
+void AnimStProcess(void*, void*, void*, void*);
+void AnimChanProcess(float, void*, void*, void*);
+void* AnimMotCreateWeightList(void*, void*, void*);
 }
 
 void DebugMsg(const char*, ...);
@@ -47,6 +52,7 @@ public:
 
 class CAnimated {
 public:
+    void UpdateAnimation(float);
     int FinishAnimationState(unsigned short);
     long SetAnimationState(unsigned short, float, unsigned short&, long, void*);
     bool ValidState(unsigned short);
@@ -59,7 +65,8 @@ public:
     unsigned char unknown0008[4];
     long unknown000c;
     unsigned char m_channels[2176];  /* +16 */
-    unsigned char m_stateMachine[424];
+    unsigned char m_stateMachine[420];
+    void* m_weightList;
     long unknown0a38;
     unsigned char unknown0a3c;
     unsigned char unknown0a3d[339];
@@ -72,6 +79,12 @@ public:
     bool unknown0cc0;
     bool unknown0cc1;
 };
+
+void CAnimated::UpdateAnimation(float time) {
+    AnimStProcess(m_stateMachine, &unknown0004, m_channels, this);
+    AnimChanProcess(time, &unknown0004, m_channels, this);
+    m_weightList = AnimMotCreateWeightList(&unknown0004, m_channels, m_stateMachine);
+}
 
 int CAnimated::FinishAnimationState(unsigned short state) {
     long* animation = (long*)AnimStGetStateUserMemory(m_stateMachine, state);
