@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 613184,
+    "matching_code_bytes": 613300,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.34766982521922,
+    "percent": 43.35587018546953,
     "categories": {
-      "reconstructed_game": 392992,
+      "reconstructed_game": 393108,
       "restored_library": 220192
     },
-    "matching_functions": 3707
+    "matching_functions": 3708
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -587,7 +587,7 @@
     "config/GMFE69/nubevent.json": "d6afc4bc3a93eb5ab6fc791d166d4243a4fee57863e76656a656235d2e20e0f2",
     "config/GMFE69/nubinit.json": "31d1c39b2e8b521619a8057a399755f5ef941d3d9949999f6b99a43d81fe87a2",
     "config/GMFE69/objcreate.json": "7780c06cc834bfacffa713b60bf48a6753f26ca45c800d8d787f3032fe32afa0",
-    "config/GMFE69/objcreate_thrown.json": "12ea771133efdc53c651084ede9c6a1f5f050b658c4b1ae5677a475a592ea318",
+    "config/GMFE69/objcreate_thrown.json": "334c68cae2e5123b5cb53448f30dc8275828167dde1ff1c5ff2296569c2cacaa",
     "config/GMFE69/objcreate_volumes.json": "484e532e65dbb65653fd98fbe261e1450501bb417e192bdb856eaa32e8f7b802",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
     "config/GMFE69/orient.json": "72f98d12bf7b19da6ff9a44a8ce663105d3d9487243682393bb08cac62bb16bd",
@@ -2328,7 +2328,7 @@
     "src/game/memory.cpp": "75e50f5f66acd16755a070f59afef29e6869b97dede92fada6399d2931c1b27c",
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
     "src/game/objcreate.cpp": "0d48087a61a1db87a72c4aae93711e3bdaba21d7e9f05667d9a8b48bc8ef92ee",
-    "src/game/objcreate_thrown.cpp": "d9b0ec7a926027460ef4625878ba959f7b619211e867bed686b2ae87556583eb",
+    "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "37e33f3014a33220b45325c87ae6ad10bde2e1d5305f03e334377332d9dd3b12",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
     "src/game/particlesystem.cpp": "9b239ec971f131cf3e2de9f80d63720bdcba949aade9aa54f41fdde6be34cf10",
@@ -40149,8 +40149,8 @@
     {
       "id": "objcreate_thrown",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 348,
+      "functions": 2,
+      "code_bytes": 464,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -40182,8 +40182,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8dba6469d5b3ed63f1118e4fa5f1123d00bbf496714a44a82a656344e6a4a68c",
-      "linked_sha256": "56e3218cc80b130180e4b9fc14296bf87f87ea016d112b0895a46732cf64cbda"
+      "object_sha256": "f05b41e355f258dc55eed1820ede9d2111cf3d25535ed4d77449a525767b7a5e",
+      "linked_sha256": "2687ebd5950599c1a3e8532d492e7cdabd14f6c5a903290cf21ab42c6426b069"
     },
     {
       "id": "font",
@@ -42585,13 +42585,6 @@
             "size": 3416,
             "kind": "function",
             "name": "CreateRootHierObject__FP20TriggerObject_structi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003eb40",
-            "size": 116,
-            "kind": "function",
-            "name": "DeleteSpecialThrownObject__FP13CThrownObject",
             "evidence": "exception-index"
           },
           {

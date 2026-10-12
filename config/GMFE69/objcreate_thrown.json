@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003ebb4",
-      "size": 348,
+      "address": "0x8003eb40",
+      "size": 464,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a4c4",
-      "size": 8,
+      "address": "0x8000a4bc",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800114d4",
-      "size": 12,
+      "address": "0x800114c8",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "DeleteSpecialThrownObject__FP13CThrownObject",
+      "address": "0x8003eb40",
+      "size": 116,
+      "binding": 1
+    },
     {
       "name": "CreateSpecialThrownObject__FP20TriggerObject_structii",
       "address": "0x8003ebb4",
@@ -69,6 +75,9 @@
     "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject": "0x800b36a4",
+    "DestroyBSObject__FP8BSObject": "0x8003a59c",
+    "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
     "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
     "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__17BSGO_Destructable": "0x80183374",

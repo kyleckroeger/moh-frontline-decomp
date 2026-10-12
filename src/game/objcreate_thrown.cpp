@@ -1,4 +1,7 @@
-// A fragment of objcreate.cpp (0x8003ebb4): CreateSpecialThrownObject. A
+// A fragment of objcreate.cpp (0x8003eb40): DeleteSpecialThrownObject (the
+// thrown object cleans up, returns to the static-object factory, and its
+// script object's game object goes back to the first object allocator before
+// the script object is destroyed), then CreateSpecialThrownObject. A
 // static object of the requested type is allocated from the factory (none:
 // null); its thrown-object interface is initialised, given collision id 18
 // and added to the scene. When the trigger names a script, a destructable
@@ -12,8 +15,8 @@
 // record is objcreate.cpp. The classes, functions and globals are named by
 // the symbols; the members, the trigger-record view, the event and collision
 // values and the result type are inferred. CStaticObject's virtuals are
-// declared in table order (placeholders for those not used here); its table
-// stays elsewhere.
+// declared in table order (placeholders for those not used here; CThrownObject's
+// CleanUp at +356 after eight more), and the tables stay elsewhere.
 class BSObject;
 class ISceneNode;
 class CThrownObject;
@@ -55,7 +58,7 @@ public:
     virtual void unknown054();
     virtual void unknown058();
     virtual void SetCollisionId(int); /* EClsnId */
-    virtual void unknown060();
+    virtual BSObject* GetScriptObject();
     virtual void unknown064();
     virtual void unknown068();
     virtual void unknown06c();
@@ -114,11 +117,23 @@ public:
     virtual CThrownObject* AsThrownObject();
 };
 
-class CThrownObject : public CStaticObject {};
+class CThrownObject : public CStaticObject {
+public:
+    virtual void unknown144();
+    virtual void unknown148();
+    virtual void unknown14c();
+    virtual void unknown150();
+    virtual void unknown154();
+    virtual void unknown158();
+    virtual void unknown15c();
+    virtual void unknown160();
+    virtual void CleanUp();
+};
 
 class CStaticObjectFactory {
 public:
     static CStaticObject* AllocateStaticObject(int, int);
+    static void DeallocateStaticObject(CStaticObject*);
 };
 
 class CScene {
@@ -133,6 +148,7 @@ extern CScene g_scene;
 class BSUtilObjectInstanceMemoryAllocator {
 public:
     void* GetFreeElement(bool);
+    void FreeElement(void*);
 };
 
 extern BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[];
@@ -162,6 +178,24 @@ public:
 
 void CreateBSObject(const char*, BSObject**, BSGO_Basic*, TriggerObject_struct*, void**);
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
+
+/* Inferred: the script object's game object at +12. */
+struct BSObjectView {
+    unsigned char unknown00[12];
+    void* gameObject;
+};
+
+void DestroyBSObject(BSObject*);
+
+void DeleteSpecialThrownObject(CThrownObject* object) {
+    object->CleanUp();
+    CStaticObjectFactory::DeallocateStaticObject(object);
+    BSObject* script = object->GetScriptObject();
+    if (script) {
+        g_pObjectAllocators[0].FreeElement(((BSObjectView*)script)->gameObject);
+        DestroyBSObject(script);
+    }
+}
 
 CThrownObject* CreateSpecialThrownObject(TriggerObject_struct* trigger, int type, int value) {
     CStaticObject* object;
