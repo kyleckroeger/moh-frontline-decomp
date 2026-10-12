@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x8002a034",
-      "size": 224,
+      "size": 416,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009d0c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010958",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIFunc_PlaySoundFromInputTrigger__FPPiPv",
+      "address": "0x8002a114",
+      "size": 192,
+      "binding": 1
+    },
     {
       "name": "BIFunc_PlaySoundAtOffset__FPPiPv",
       "address": "0x8002a034",
@@ -81,5 +87,16 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f620"
+    }
+  ]
 }

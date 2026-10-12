@@ -6,6 +6,9 @@
 // are not reconstructed. The functions and globals are named by the mangled
 // symbols; the vector view (four floats, 8-byte aligned, with an inline
 // setter), the script-object and built-in record views are inferred.
+// BIFunc_PlaySoundFromInputTrigger follows it: the same call with the
+// trigger taken from the first argument, the sound and mode after it, and a
+// zero offset (0.0f is a .sdata2 pool entry).
 class CVector3 {
 public:
     float x;
@@ -53,6 +56,18 @@ void BIFunc_PlaySoundAtOffset(int** stack, void* object) {
     float z = *(float*)(*stack - (count - 5));
     offset.Set(x, y, z);
     int value = PlaySoundFromTriggerOrObject(g_pBSObject->trigger, (BSObject*)g_pBSObject, object, sound, mode, offset);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    **stack = *(int*)&value;
+}
+
+void BIFunc_PlaySoundFromInputTrigger(int** stack, void* object) {
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    TriggerObject_struct* trigger = (TriggerObject_struct*)*(*stack - (count - 1));
+    int sound = *(*stack - (count - 2));
+    int mode = *(*stack - (count - 3));
+    CVector3 offset;
+    offset.Set(0.0f, 0.0f, 0.0f);
+    int value = PlaySoundFromTriggerOrObject(trigger, (BSObject*)g_pBSObject, object, sound, mode, offset);
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = *(int*)&value;
 }
