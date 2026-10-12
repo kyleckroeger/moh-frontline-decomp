@@ -1,4 +1,4 @@
-// The start of line.cpp (0x800922f4..0x80092b28). CLine3::IsDegenerate:
+// The start of line.cpp (0x800922f4..0x80092c54). CLine3::IsDegenerate:
 // whether the squared length of the direction (computed once and cached with
 // its flag) is below 1e-12 (an entry of the file's .sdata2 pool). CLine3 is
 // named by the mangled symbols; the layout (start, end and direction vectors,
@@ -8,7 +8,9 @@
 // segment-to-segment squared distance (Eberly's SqrDistance); local names
 // follow that formulation and are not original. The bool result is inferred:
 // the original leaves the parallel test in r3 until the return, and callers
-// ignore it. The projection function after it is not part of this unit.
+// ignore it. CLine3::GetProjection projects a point onto the line (t along
+// the direction) and falls back to the start point with t = 0.5 for a
+// degenerate line; the by-value point follows the mangled signature.
 union CVector3Data {
     double pair[2];
     float v[4];
@@ -23,6 +25,7 @@ class CLine3 {
 public:
     bool IsDegenerate() const;
     bool GetSquaredDistanceBetweenSegments(const CLine3&, float&, float&, float*) const;
+    void GetProjection(CVector3, CVector3&, float&) const;
     float GetLengthSquared() const {
         if (!m_flag39) {
             m_value34 = m_dir.d.v[0] * m_dir.d.v[0] + m_dir.d.v[1] * m_dir.d.v[1] + m_dir.d.v[2] * m_dir.d.v[2];
@@ -284,4 +287,25 @@ bool CLine3::GetSquaredDistanceBetweenSegments(const CLine3& other, float& fS, f
     if (pfSqrDist)
         *pfSqrDist = fabs(fSqrDist);
     return parallel;
+}
+
+
+void CLine3::GetProjection(CVector3 point, CVector3& projection, float& t) const {
+    if (!IsDegenerate()) {
+        CVector3 diff;
+        diff.d.v[0] = point.d.v[0] - m_start.d.v[0];
+        diff.d.v[1] = point.d.v[1] - m_start.d.v[1];
+        diff.d.v[2] = point.d.v[2] - m_start.d.v[2];
+        t = Dot(m_dir, diff) / GetLengthSquared();
+        float s = t;
+        projection.d.v[0] = s * m_dir.d.v[0];
+        projection.d.v[1] = s * m_dir.d.v[1];
+        projection.d.v[2] = s * m_dir.d.v[2];
+        projection.d.v[0] += m_start.d.v[0];
+        projection.d.v[1] += m_start.d.v[1];
+        projection.d.v[2] += m_start.d.v[2];
+    } else {
+        projection = m_start;
+        t = 0.5f;
+    }
 }

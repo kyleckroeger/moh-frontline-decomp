@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800922f4",
-      "size": 2100,
+      "size": 2400,
       "type": 1
     }
   ],
@@ -55,6 +55,12 @@
       "name": "GetSquaredDistanceBetweenSegments__6CLine3CFRC6CLine3RfRfPf",
       "address": "0x80092344",
       "size": 2020,
+      "binding": 1
+    },
+    {
+      "name": "GetProjection__6CLine3CF8CVector3R8CVector3Rf",
+      "address": "0x80092b28",
+      "size": 300,
       "binding": 1
     }
   ],
@@ -106,6 +112,12 @@
       "offset": 24,
       "size": 8,
       "address": "0x80350388"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350390"
     }
   ]
 }
