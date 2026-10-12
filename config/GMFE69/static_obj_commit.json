@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800b031c",
-      "size": 156,
+      "size": 412,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d440",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014570",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,6 +68,12 @@
       "address": "0x800b035c",
       "size": 92,
       "binding": 1
+    },
+    {
+      "name": "CommitScriptMotionUpdate__13CStaticObjectFv",
+      "address": "0x800b03b8",
+      "size": 256,
+      "binding": 1
     }
   ],
   "externals": {
@@ -81,5 +87,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "static_obj.cpp",
-  "original_file_index": 6731
+  "original_file_index": 6731,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350880"
+    }
+  ]
 }
