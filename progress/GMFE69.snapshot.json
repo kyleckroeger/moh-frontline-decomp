@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 605800,
+    "matching_code_bytes": 606476,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.825674479630585,
+    "percent": 42.87346278591687,
     "categories": {
-      "reconstructed_game": 385608,
+      "reconstructed_game": 386284,
       "restored_library": 220192
     },
-    "matching_functions": 3679
+    "matching_functions": 3682
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -253,7 +253,7 @@
     "config/GMFE69/audioplayer.json": "b6e4257cba8554cee346f4ad5d959fc3e42b9db956ce091211d58d446fe021bd",
     "config/GMFE69/avplayer.json": "3b00f3f317904054205a0f27fc057699fc5b062d045d626f1934dc97e9b387fb",
     "config/GMFE69/avplayer_audio_delete.json": "05e78557befa1b60f2cfcb577aa5a1631a1a879732624d764fc56b9cefef66ed",
-    "config/GMFE69/avplayer_chunk_delete.json": "d47506cb13c4382ebeedd458992fd6e480e4b333ad7c7aea9f3649753b019ea8",
+    "config/GMFE69/avplayer_chunk_delete.json": "5edae4a80d07b9b3bdf553eb0fb40b3be457a3d5e90b67e8f5b72b5b8261a461",
     "config/GMFE69/baseline.json": "36a2b85cf4193e53afac79bdd2a8fdbf8dfb1880cae89e119463f2c81461b42f",
     "config/GMFE69/bmem.json": "6f2cc24cb578401f28e36031abc716a23a3beb45bf6c43c10ede6c273e9070b2",
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
@@ -2089,7 +2089,7 @@
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
     "src/game/avplayer.cpp": "600d90053fcb86631089663af6c5417733f44228cd980c6cb0499327a838cfb4",
     "src/game/avplayer_audio_delete.cpp": "80f8624d274c1a9b54ee8d761db95112d7f39cd1552cfb1f1c9657ef14516d75",
-    "src/game/avplayer_chunk_delete.cpp": "91886f97927cde3c2941bd98d96aa5c1e06de57792dfc03dc1e913d10edc23ff",
+    "src/game/avplayer_chunk_delete.cpp": "5bec713d13566eaa47f7559dc667795b92ee4ca47a0e20cc1502b3e3a9daefbb",
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "c5895cd63cc16d5b3a6c93bb7eeb2889c675fd287c3b48c978ab76c597d490ed",
@@ -33318,8 +33318,8 @@
     {
       "id": "avplayer_chunk_delete",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 992,
+      "functions": 9,
+      "code_bytes": 1668,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -33351,8 +33351,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "9e8668de5fbdb10a23d70ea9b4d4276ef09618944595b98f4ded43cb901aea83",
-      "linked_sha256": "a7c0e564912c565e64d24b23124cc044ea118f8cb6341c3a0ed56e3cc0da00f3"
+      "object_sha256": "16de852a724d3ca274bdaa35d4f7b327c2c82b9e9e3dbeb082ddfd82be1c6dad",
+      "linked_sha256": "5bc64aadd9ac52aa7c104415b8ff50adfd0b82ec2445fe43a3e920b6e326bc95"
     },
     {
       "id": "avplayer_audio_delete",
@@ -50323,27 +50323,6 @@
         "file_record": 163,
         "file_name": "avplayer.cpp",
         "ranges": [
-          {
-            "address": "0x800fb4cc",
-            "size": 52,
-            "kind": "function",
-            "name": "IsAudioFinished__Q24RCMP9AV_PLAYERFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fb500",
-            "size": 528,
-            "kind": "function",
-            "name": "IsTimeForDecode__Q24RCMP9AV_PLAYERFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fb710",
-            "size": 96,
-            "kind": "function",
-            "name": "GetFrame__Q24RCMP9AV_PLAYERFf",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800fb770",
             "size": 976,

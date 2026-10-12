@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800fb0ec",
-      "size": 992,
+      "size": 1668,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f9e4",
-      "size": 64,
+      "size": 88,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016700",
-      "size": 72,
+      "size": 108,
       "type": 1
     }
   ],
@@ -92,20 +92,49 @@
       "address": "0x800fb3f8",
       "size": 212,
       "binding": 1
+    },
+    {
+      "name": "IsAudioFinished__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb4cc",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "IsTimeForDecode__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb500",
+      "size": 528,
+      "binding": 1
+    },
+    {
+      "name": "GetFrame__Q24RCMP9AV_PLAYERFf",
+      "address": "0x800fb710",
+      "size": 96,
+      "binding": 1
     }
   ],
   "externals": {
     "ChooseCodec__Q24RCMP7DECODERFPQ24RCMP5CODECPQ24RCMP5CHUNK": "0x80105490",
     "FreeChosenCodec__Q24RCMP7DECODERFv": "0x8010543c",
+    "GetCurrentFrameNumber__Q24RCMP7DECODERFv": "0x801053fc",
+    "GetFrameRate__Q24RCMP7DECODERFv": "0x801053bc",
+    "GetFrame__Q24RCMP7DECODERFUi": "0x80105334",
+    "IsAudioFinished__Q24RCMP12AUDIO_PLAYERFv": "0x8010879c",
     "MPC_CODEC_create__4RCMPFv": "0x801042f0",
     "MPC_CODEC_is_chunk_for_codec__4RCMPFUi": "0x80105218",
     "OSGetTime": "0x80116a40",
+    "SNDPROFILE_outputlatency": "0x80159300",
+    "SNDSTRM_requeststatus": "0x8015c37c",
+    "SNDSTRM_status": "0x8015c288",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
     "STREAM_get": "0x8014d974",
     "STREAM_isendofstream": "0x8014dd0c",
     "STREAM_release": "0x8014dae0",
     "SYNCTASK_run": "0x80152394",
     "SetSpeed__Q24RCMP12AUDIO_PLAYERFUi": "0x80108848",
     "__ct__Q24RCMP5CHUNKFv": "0x8010526c",
+    "__cvt_fp2unsigned": "0x801388e8",
+    "__div2u": "0x80138a74",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -125,6 +154,24 @@
       "offset": 0,
       "size": 1,
       "address": "0x80351238"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035123c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351240"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351248"
     }
   ]
 }
