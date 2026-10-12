@@ -1,4 +1,7 @@
-// A fragment of camera.cpp (0x80079ee8): CCamera's transform wrappers, from
+// A fragment of camera.cpp (0x80079e7c): CCamera::SetPerspective (the
+// projection's half extents from the tangents of the half angles, through the
+// double tan; marks the projection stale, clears +0x143 and selects the
+// perspective projection), then CCamera's transform wrappers, from
 // Orthonormalize to CommitUpdate, each forwarding to the object's transform
 // (a CMatrix at +64) and then clearing two flags (+0x141 and +0x143; their
 // meaning is unknown), with IsVisible and IsDrawEnabled (both false) and an
@@ -23,6 +26,8 @@
 // from the code, not the original declaration: vectors are copied as two
 // lfd/stfd pairs, which an implicit copy through the double pair reproduces.
 #include <math.h>
+
+extern "C" double tan(double);
 
 class CVector3 {
 public:
@@ -105,6 +110,7 @@ extern bool g_bInMultiplayerMode;
 
 class CCamera {
 public:
+    void SetPerspective(float, float);
     bool IsVisible(CDrawContext&) const;
     bool IsDrawEnabled() const;
     void Draw(CDrawContext&);
@@ -157,6 +163,14 @@ public:
     unsigned char unknown144[12];
     CPlane m_planes[10];
 };
+
+void CCamera::SetPerspective(float horizontal, float vertical) {
+    m_width = tan(horizontal);
+    m_height = tan(vertical);
+    m_projectionValid = false;
+    m_flag143 = false;
+    m_perspective = true;
+}
 
 void CCamera::Orthonormalize() {
     m_tm.Orthonormalize();

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 610496,
+    "matching_code_bytes": 610672,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.15764768424654,
+    "percent": 43.17008961014356,
     "categories": {
-      "reconstructed_game": 390304,
+      "reconstructed_game": 390480,
       "restored_library": 220192
     },
-    "matching_functions": 3688
+    "matching_functions": 3691
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -367,7 +367,7 @@
     "config/GMFE69/bulletfactory_thrown_ctor.json": "5bc56bbfbbb13c0d38cda13a6362b98a81761e593324bf6c0c2bfe41500dd90b",
     "config/GMFE69/bulletfactory_thrown_pool.json": "c72b05045b24264f3fce4169a7c503b0cebd24f69da74e897db104aaaf516ba1",
     "config/GMFE69/camera_dtor.json": "8fda5d013b822dddd4ca34337ca7d0e498694d558397e2429fb3bd14cd03a8c7",
-    "config/GMFE69/camera_rows.json": "0eea972bec52052dfbbec6825da9b89e654431077cf14b9caf4e1b8698abb6d3",
+    "config/GMFE69/camera_rows.json": "f15d9034a5684910227ed74e97cc1603ea64bb48f5c7908822755dd5d66247f2",
     "config/GMFE69/capsule_create.json": "7ea379e9f4627abeeeaad959530bebd332ea158e9e77b0b66fe4115669d57173",
     "config/GMFE69/capsule_dispatch.json": "8d4ce50085d048b2ca15db431aa32afcb32d3faf6e2d9555a17e8dd9ed937f06",
     "config/GMFE69/capsule_dispatch2.json": "246a1105784823a9a0860573243e4715e1dfc1fdee38a7525a4e67c0bd954175",
@@ -601,7 +601,7 @@
     "config/GMFE69/particlesystem_emit.json": "d3a1bf34b73ca8e5f52a490300318bd476d6e11bc387e870b76185634fb252ec",
     "config/GMFE69/particlesystem_link.json": "59dc27ed472101beb8241c398f4eb47fbc3c7236e8aaf764fceb2e014c559fc8",
     "config/GMFE69/particlesystem_manager_dtor.json": "5c75ee97b9a5e48bc70f98dae709b0a63ee737b77c3bc264df051a23029a696f",
-    "config/GMFE69/particlesystem_moving.json": "841db193b003a93c1c09128bdc4e751d03cbb3e0ff38b56164396517a35bf920",
+    "config/GMFE69/particlesystem_moving.json": "a56e9d3365e82b24f34f37ec9a147d7f162a162a5510b953c1a87b6a356d4d8a",
     "config/GMFE69/particlesystem_property.json": "f480c26d2e5535433e7a1e8af521073341101133f75504526b37741786c737f0",
     "config/GMFE69/particlesystem_register.json": "221ab54e8c5b1d84d320a51cc3cfd8ff77c189e3f2e95b19d9160eb5d00b6521",
     "config/GMFE69/particlesystem_reset.json": "bdc34a6e93abb439f4be84a3ce284c746d992e54f20e653a31c2cd4655dc3808",
@@ -2198,7 +2198,7 @@
     "src/game/bulletfactory_thrown_ctor.cpp": "e4395dc0515217717387866d4c9dbb72929d0eea865ba32b5f0b406065bd0985",
     "src/game/bulletfactory_thrown_pool.cpp": "9833f26e5bd172ba5aaaa3b25a86c6b63760bd1ec4aca397b989ffb3ac67509b",
     "src/game/camera_dtor.cpp": "0ff34e7089128735738983773a98dc0b02813b2b745d1de37624412931e1f637",
-    "src/game/camera_rows.cpp": "042782254f333a8f857f19b8f9d87d98e656fc3a9b30b3388d3ac4b498fbdf76",
+    "src/game/camera_rows.cpp": "29cba8099be87f470846b0dfa22462ae73d5641a617d83cdb9e8e5d6dbe6559d",
     "src/game/capsule_create.cpp": "e5bdd4e3000036dbae68266376af90a76a315822e580f2da15283faec1d3127b",
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
     "src/game/capsule_dispatch2.cpp": "6059fab262cc1517dd2b31f1b59ddf0df000b3728d91a7993daaffd5bd960393",
@@ -2339,7 +2339,7 @@
     "src/game/particlesystem_emit.cpp": "91cf5b0cd81ee71719af471478285963a69e2d573104eee597ba6473a163ffb1",
     "src/game/particlesystem_link.cpp": "13dd477fda799fd17af5b91eec434df7c09343967b2ccc599b08c980111dc264",
     "src/game/particlesystem_manager_dtor.cpp": "4579673e4531997696db4d3e61a262b0e8269a440480666ed644a0779d7508c2",
-    "src/game/particlesystem_moving.cpp": "070eb1c3124eeceddd502e2dd0a1e119b6b835ec5c2f5769a5c39c33575f1fb2",
+    "src/game/particlesystem_moving.cpp": "c32f991551005a4227c0d7409f4d3fc695b66f639ddac35405bef204ff1ced3c",
     "src/game/particlesystem_property.cpp": "2709d21829562f73d5954863a85ba57c2a0a7e0ec3c763061a1b802008f495bf",
     "src/game/particlesystem_register.cpp": "7a9bdb9294f119307b470a3f450a519d6660435ca9cb6bd95c806ea7086df563",
     "src/game/particlesystem_reset.cpp": "9275ffe5646a3ad0f42787dc17555bbf578f8fe16e645f2967521c54ba995e1f",
@@ -23784,8 +23784,8 @@
     {
       "id": "camera_rows",
       "category": "reconstructed_game",
-      "functions": 22,
-      "code_bytes": 1612,
+      "functions": 23,
+      "code_bytes": 1720,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23817,8 +23817,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "77fe93854f052676f98f230172c9c8c37ad79d4db2886386b7fe76f448be266b",
-      "linked_sha256": "86c60122317213d4e8fb2af383b4ccee18475fbaaf86612d331547c0a338af2b"
+      "object_sha256": "9ff3a3de9956a950b7df6452c26adc681dd62f2e107ff1b13bc9ce16f429e9fd",
+      "linked_sha256": "84fa2ee07b34aec07f77ae3310b5c256c97fc87af4d959545a4b4d3fc2b60923"
     },
     {
       "id": "hearingvolume_rows",
@@ -32614,8 +32614,8 @@
     {
       "id": "particlesystem_moving",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 48,
+      "functions": 4,
+      "code_bytes": 116,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -32647,8 +32647,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "31aefe70424cf3cd70fb0b81737aa3ae14f0838f5c28c78408d01d68ca1afad2",
-      "linked_sha256": "f1c1202734cd007dfcb6243b2d316adb1b832a99435cc331a9068e7e83bdaf3f"
+      "object_sha256": "2e82726f6a7e7ceb64466b44d7f777de3704381890566c2c606799d5168145bb",
+      "linked_sha256": "a0ae3d683bf78a40691240eb87b52b4efe47874d597ab1c74e32bd40cff296c6"
     },
     {
       "id": "compartment_bins",
@@ -45114,13 +45114,6 @@
             "kind": "function",
             "name": "IsPointVisible__7CCameraCF8CVector3R12CDrawContext",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80079e7c",
-            "size": 108,
-            "kind": "function",
-            "name": "SetPerspective__7CCameraFff",
-            "evidence": "exception-index"
           }
         ]
       },
@@ -45366,20 +45359,6 @@
             "kind": "function",
             "name": "UpdateBoundingBox__15CParticleSystemFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008079c",
-            "size": 32,
-            "kind": "function",
-            "name": "Terminate__15CParticleSystemFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800807bc",
-            "size": 36,
-            "kind": "function",
-            "name": "DeActivate__15CParticleSystemFv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800807e0",

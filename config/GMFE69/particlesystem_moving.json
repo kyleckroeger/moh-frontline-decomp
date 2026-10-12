@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8008076c",
-      "size": 48,
+      "size": 116,
       "type": 1
     }
   ],
@@ -56,15 +56,39 @@
       "address": "0x80080784",
       "size": 24,
       "binding": 2
+    },
+    {
+      "name": "Terminate__15CParticleSystemFv",
+      "address": "0x8008079c",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "DeActivate__15CParticleSystemFv",
+      "address": "0x800807bc",
+      "size": 36,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "g_ParticleSystemManager": "0x801df69c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_ParticleSystemManager"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "particlesystem.cpp",
-  "original_file_index": 4057
+  "original_file_index": 4057,
+  "adapted_from": {
+    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
+    "paths": [
+      "src/particles/ParticleDeactivate.cpp",
+      "src/particles/ParticleTerminate.cpp"
+    ],
+    "note": "DeActivate's manager time getter (CPSManager::GetCurrentTicks) follows Rising Sun's reconstruction; Frontline's Terminate differs (it only clears two flag bits)"
+  }
 }

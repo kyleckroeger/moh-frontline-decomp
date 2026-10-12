@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80079ee8",
-      "size": 1612,
+      "address": "0x80079e7c",
+      "size": 1720,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000bea8",
-      "size": 144,
+      "address": "0x8000bea0",
+      "size": 152,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012dd0",
-      "size": 216,
+      "address": "0x80012dc4",
+      "size": 228,
       "type": 1
     }
   ],
@@ -188,6 +188,12 @@
       "address": "0x8007a338",
       "size": 508,
       "binding": 1
+    },
+    {
+      "name": "SetPerspective__7CCameraFff",
+      "address": "0x80079e7c",
+      "size": 108,
+      "binding": 1
     }
   ],
   "externals": {
@@ -208,7 +214,8 @@
     "Translate__7CMatrixF8CVector3": "0x80090660",
     "UpdateWorldToCamera__7CCameraFv": "0x80079c68",
     "__as__7CMatrixFRC7CMatrix": "0x80090b34",
-    "g_bInMultiplayerMode": "0x8034eca5"
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "tan": "0x80143868"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -257,6 +264,9 @@
   ],
   "adapted_from": {
     "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "camera_rows.json"
+    "paths": [
+      "src/camera/projection.cpp"
+    ],
+    "note": "SetPerspective's structure (tangents of the half angles, then the projection flags) follows Rising Sun's reconstruction of EA's later revision"
   }
 }
