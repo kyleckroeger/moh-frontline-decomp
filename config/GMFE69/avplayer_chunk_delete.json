@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800fb0ec",
-      "size": 568,
+      "size": 992,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f9e4",
-      "size": 48,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016700",
-      "size": 48,
+      "size": 72,
       "type": 1
     }
   ],
@@ -80,6 +80,18 @@
       "address": "0x800fb2f4",
       "size": 48,
       "binding": 2
+    },
+    {
+      "name": "UnPause__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb324",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "Pause__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb3f8",
+      "size": 212,
+      "binding": 1
     }
   ],
   "externals": {
@@ -87,10 +99,12 @@
     "FreeChosenCodec__Q24RCMP7DECODERFv": "0x8010543c",
     "MPC_CODEC_create__4RCMPFv": "0x801042f0",
     "MPC_CODEC_is_chunk_for_codec__4RCMPFUi": "0x80105218",
+    "OSGetTime": "0x80116a40",
     "STREAM_get": "0x8014d974",
     "STREAM_isendofstream": "0x8014dd0c",
     "STREAM_release": "0x8014dae0",
     "SYNCTASK_run": "0x80152394",
+    "SetSpeed__Q24RCMP12AUDIO_PLAYERFUi": "0x80108848",
     "__ct__Q24RCMP5CHUNKFv": "0x8010526c",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
