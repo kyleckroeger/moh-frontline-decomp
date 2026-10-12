@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e8940",
-      "size": 1316,
+      "address": "0x800e88a8",
+      "size": 1468,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PATHX_pause",
+      "address": "0x800e88a8",
+      "size": 152,
+      "binding": 1
+    },
     {
       "name": "PATHX_volume",
       "address": "0x800e8940",
@@ -66,12 +72,14 @@
     "PATHX_statusall": "0x800e9000",
     "SNDBANK_play": "0x8015a628",
     "SNDSTRM_modifyhold": "0x8015c4b0",
+    "SNDSTRM_pitchmult": "0x8015c728",
     "SNDSTRM_purge": "0x8015c028",
     "SNDSTRM_queuefile": "0x8015c004",
     "SNDSTRM_queuemem": "0x8015c544",
     "SNDSTRM_vol": "0x8015c5b0",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
+    "SNDpitchmult": "0x8015ce8c",
     "SNDvol": "0x8015ccf0",
     "pathxinfo": "0x801f7410"
   },

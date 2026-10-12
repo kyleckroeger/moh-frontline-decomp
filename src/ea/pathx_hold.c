@@ -1,11 +1,15 @@
-// A fragment of pathxSND.c (0x800e8940): PATHX_volume (applies a track's
+// A fragment of pathxSND.c (0x800e88a8): PATHX_pause (pauses a track by
+// setting its pitch to 0, restoring the saved pitch first, or resumes it at
+// its pitch; through the sound or the stream, then marks a refresh pending),
+// PATHX_volume (applies a track's
 // volume to its sound or stream unless a different volume change is still
 // pending, -8), PATHX_modifyhold (passes a hold change to a streamed track's
 // stream; sound-bank tracks are left alone) and PATHX_queuefile (sets the
 // track volume, then either plays the sound-bank entry or queues the file
 // data on the stream - from memory when it fits the track's buffer - after an
 // optional purge, recording the request at the head of the track's queue).
-// The track record and queue views and the parameter meanings are inferred
+// The track record and queue views (the pitch fields included) and the
+// parameter meanings are inferred
 // (see pathxSND.c). This fragment is built with -use_lmw_stmw on, as
 // PATHX_queuefile's stmw shows.
 /* inferred: a queued request (tag, then the stream or sound handle) */
@@ -19,13 +23,15 @@ struct PathxTrackView {
     int stream;
     int value04;
     int requestedVolume;
-    unsigned char unknown0c[2];
+    unsigned short pitch;
     signed char isSound;
     unsigned char unknown0f[13];
     void* memory;
     int memorySize;
     signed char volume;
-    unsigned char unknown25[39];
+    unsigned char unknown25[11];
+    unsigned short savedPitch;
+    unsigned char unknown32[26];
     int ready;
     unsigned char unknown50[4];
     int currentVolume;
@@ -48,6 +54,28 @@ int SNDBANK_play(int, int, signed char*);
 void SNDSTRM_purge(int);
 int SNDSTRM_queuemem(int, void*, void*, int);
 int SNDSTRM_queuefile(int, void*, int, int);
+void SNDSTRM_pitchmult(int, int);
+void SNDpitchmult(int, int);
+}
+
+extern "C" int PATHX_pause(int track, char pause) {
+    unsigned short pitch;
+    PathxTrackView* info = pathxinfo[track];
+
+    if (pause) {
+        pitch = 0;
+        info->pitch = info->savedPitch;
+    } else {
+        pitch = info->pitch;
+    }
+    SNDSYS_entercritical();
+    if (info->isSound)
+        SNDpitchmult(info->queue->handle, pitch);
+    else
+        SNDSTRM_pitchmult(info->stream, pitch);
+    SNDSYS_leavecritical();
+    info->pending = 1;
+    return 0;
 }
 
 extern "C" int PATHX_volume(int track, int volume) {

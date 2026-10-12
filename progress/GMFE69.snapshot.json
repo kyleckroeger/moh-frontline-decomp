@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 611276,
+    "matching_code_bytes": 611692,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.212788037653795,
+    "percent": 43.24219622613766,
     "categories": {
-      "reconstructed_game": 391084,
+      "reconstructed_game": 391500,
       "restored_library": 220192
     },
-    "matching_functions": 3695
+    "matching_functions": 3697
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -614,9 +614,9 @@
     "config/GMFE69/path_stop.json": "bc02afb9ccaed23708f662127ac20759e21a75d3a9ec807c831db8fb0d92f425",
     "config/GMFE69/pathxSND.json": "711dcdf3a5a5a7b4124ae70e377c5e863dc39c8de8a0de785b3dc3921c685fa0",
     "config/GMFE69/pathx_end.json": "c2a3fcbc64df0e00246b7a260335739145e49eaef7be7713ed87f6ac37e5156c",
-    "config/GMFE69/pathx_hold.json": "2a7ca4efffd9195ba078ab52a6ed343078475831916c0b617b8fff5c137cc7bc",
+    "config/GMFE69/pathx_hold.json": "32ab67f20f8da6105c49fc1bb615ed2d24604a1dd1ec6c8eb5faca4f5deca337",
     "config/GMFE69/pathx_overhead.json": "6648b30c83936865ee7b84aa098e523ff049f607999e698979038f6e77a89abe",
-    "config/GMFE69/pathx_query.json": "c19da9ac0c894f2fba121fb450c720b6c24998629f5a7d2dfbf15f8637259b74",
+    "config/GMFE69/pathx_query.json": "1e40f0daf9f13fe1bcea32dc6ef089aca8ee2e28411e3079de1cd1f107ba5ec2",
     "config/GMFE69/plane_ctor.json": "6a4408f2a0668bc0c7a542a9080df5f08480715400b00206be156bcaa71d0631",
     "config/GMFE69/player.json": "938fd0fa1bad252012c31ddb8fd4bef68d8c19bad56d8eff162a063010ab464e",
     "config/GMFE69/player_bounds.json": "99c3b1db8bf667edc415d50e6505302a385f81c01c32c8d2cd10417503695cc7",
@@ -1777,9 +1777,9 @@
     "src/ea/path_stop.c": "537f4c59b1580047eae281b514ae40c3c6b08250fde74da9fbc51788e936a129",
     "src/ea/pathxSND.c": "f41cae88d965e8b7d18f31e14a637dacad3642c3cf929fc249ae80d3e1588980",
     "src/ea/pathx_end.c": "b179b62d8dc4f44921b999fb51d996b200f8b65dd6d6465126473408daa7adb2",
-    "src/ea/pathx_hold.c": "725079cb26f9c4f3473b2b18f304cb6c3a6365f072fa13e470411e5e85d0822a",
+    "src/ea/pathx_hold.c": "3ecf27fbf260eb76e347d65b6fafc50a8ba64e865c3f3128d57041777f42f3f5",
     "src/ea/pathx_overhead.c": "4cc62b67f16257e6bd135206595379201f6c390ce294c8916685d1543c39ed50",
-    "src/ea/pathx_query.c": "94122ccac9973756706673ec88d21060e6c75c4534308bc842b7d0b106778376",
+    "src/ea/pathx_query.c": "c6bdb5404e5bed6ee095805d1f7266449c1242449ca994893d9da3f57a945f6b",
     "src/ea/printstr.cpp": "2c1c6b33e96dbf7dc958d521d28061da022a21ef0c80e3bfe2fd1ae6d4c07186",
     "src/ea/rcmp2real.cpp": "1d046950eca9f279ad901b132d22290eb4f44d42d4605181f63b1b097122ac25",
     "src/ea/rcmp_mpc_codec_chunk_types.cpp": "b996231c1c402b6ecdd813bb69df3ae8a3580e537b71dd9fa91e238690bb3635",
@@ -30543,8 +30543,8 @@
     {
       "id": "pathx_hold",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 1316,
+      "functions": 4,
+      "code_bytes": 1468,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -30576,8 +30576,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4def0bfd5cfc3d5baca102903ba3fd9750ce8850db16e260237ae602b8173bf1",
-      "linked_sha256": "938ba2edd6137b5665bbe3e03260cc27d2c3866255cc177d2fcbe262d2da8469"
+      "object_sha256": "4320a9a1b71eaff6cfb4652ba6745f6130f1e77eaae0598699e594fb84e0d9c4",
+      "linked_sha256": "743bdfb0273605423fa41d2e9f028cefb72299e74e10390da23d0f41dd41102d"
     },
     {
       "id": "pathx_end",
@@ -30621,8 +30621,8 @@
     {
       "id": "pathx_query",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 192,
+      "functions": 3,
+      "code_bytes": 456,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -30654,8 +30654,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2d993361e4426543a49359cc7e9a50e0b7c23e160d3bd580f4755707f6b378e3",
-      "linked_sha256": "8c565fec5d7eda4d76bf7a0e0acb85511d58a48f28809d7f358595172ce1483f"
+      "object_sha256": "a61cccd0eddcc3d1e0623963a0980e3e4a4e4244837038f7701c23a4c9b7dd2a",
+      "linked_sha256": "d61f6c864784955f9abc2c1fdafca6671ae9b07bc97e7a696e274df5993d306e"
     },
     {
       "id": "pathx_overhead",
@@ -49302,20 +49302,6 @@
             "size": 108,
             "kind": "function",
             "name": "PATHX_stop",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e88a8",
-            "size": 152,
-            "kind": "function",
-            "name": "PATHX_pause",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e946c",
-            "size": 264,
-            "kind": "function",
-            "name": "PATHX_destroytrack",
             "evidence": "exception-index"
           },
           {

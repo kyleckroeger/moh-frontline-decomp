@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x800e93ac",
-      "size": 192,
+      "size": 456,
       "type": 1
     }
   ],
@@ -54,10 +54,19 @@
       "address": "0x800e940c",
       "size": 96,
       "binding": 1
+    },
+    {
+      "name": "PATHX_destroytrack",
+      "address": "0x800e946c",
+      "size": 264,
+      "binding": 1
     }
   ],
   "externals": {
+    "MEM_free": "0x8014f83c",
     "PATHX_statusall": "0x800e9000",
+    "SNDSTRM_destroy": "0x8015bef4",
+    "SNDbankremove": "0x80159600",
     "pathxinfo": "0x801f7410"
   },
   "undefined_in_discarded_code": [],
