@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80021a74",
-      "size": 928,
+      "size": 1116,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009a9c",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800105e0",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -67,6 +67,12 @@
       "name": "BIFunc_ChangePlayersTeam__FPPiPv",
       "address": "0x80021d58",
       "size": 180,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_ModifyTotalKillableEnemyCount__FPPiPv",
+      "address": "0x80021e14",
+      "size": 188,
       "binding": 1
     },
     {
@@ -95,10 +101,13 @@
     }
   ],
   "externals": {
+    "DebugMsg__FPCce": "0x80018c88",
     "DestroyBuddyDataStructures__Fv": "0x80058ccc",
     "g_HintTextArray": "0x80197ef8",
     "g_Shell": "0x80195090",
     "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_iNumberOfEnemiesSpawned": "0x8034e8a8",
+    "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778",
     "g_uiGameState": "0x8034e6a0",
     "umTable": "0x801ef3ec"
@@ -110,9 +119,22 @@
   "discarded_local_functions": [],
   "sda_externals": [
     "g_iCurrentBIFIndex",
+    "g_iNumberOfEnemiesSpawned",
+    "g_pBSObject",
     "g_pBuiltInFunctions",
     "g_uiGameState"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 68,
+      "address": "0x8016e8b4"
+    }
+  ]
 }

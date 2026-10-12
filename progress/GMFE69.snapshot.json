@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 611924,
+    "matching_code_bytes": 612236,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.25859694663828,
+    "percent": 43.28065308800117,
     "categories": {
-      "reconstructed_game": 391732,
+      "reconstructed_game": 392044,
       "restored_library": 220192
     },
-    "matching_functions": 3698
+    "matching_functions": 3700
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -302,7 +302,7 @@
     "config/GMFE69/bsbifunc_hiermap.json": "398839d5e30a01fa9dcd17f21a1cc3d61161a1fd31585ff3ee7200718e77d59a",
     "config/GMFE69/bsbifunc_holdtime.json": "f6b54ccdce1386687473fb3047ff8b2c2fb0f77ec224f8ea9773311d4f2c63c2",
     "config/GMFE69/bsbifunc_jaw.json": "725d6ec8748dc0a35b26efadb00a7a05c3daab608410247ea9c94b26699e302d",
-    "config/GMFE69/bsbifunc_level.json": "b8d340b3107f783dc35bb00b7e655d3a8fb6be8018eaa24ff457d6aae8ba966c",
+    "config/GMFE69/bsbifunc_level.json": "7734335393eca704516d640efbcfce4b99ad38c25f7fb8f0825949ddcb8280f5",
     "config/GMFE69/bsbifunc_melee.json": "f73e8034fc5eccbcab61071451edf5a5686f87525c1f4daa191561d705f99211",
     "config/GMFE69/bsbifunc_mgflag.json": "db34cf86d2ce6c7d36e8a4ddeada770aae855bebd02bd7513c402a6233b8c5f9",
     "config/GMFE69/bsbifunc_misc.json": "73b18dc15e92b4ca0cec527da4308df9915fa2303c0d3afed34df245269339ff",
@@ -588,7 +588,7 @@
     "config/GMFE69/nubinit.json": "31d1c39b2e8b521619a8057a399755f5ef941d3d9949999f6b99a43d81fe87a2",
     "config/GMFE69/objcreate.json": "7780c06cc834bfacffa713b60bf48a6753f26ca45c800d8d787f3032fe32afa0",
     "config/GMFE69/objcreate_thrown.json": "12ea771133efdc53c651084ede9c6a1f5f050b658c4b1ae5677a475a592ea318",
-    "config/GMFE69/objcreate_volumes.json": "9ea49b4ea422dcafd7ef99eeb655960f126c1add85c3f19fb7512d661eb9bacb",
+    "config/GMFE69/objcreate_volumes.json": "484e532e65dbb65653fd98fbe261e1450501bb417e192bdb856eaa32e8f7b802",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
     "config/GMFE69/orient.json": "72f98d12bf7b19da6ff9a44a8ce663105d3d9487243682393bb08cac62bb16bd",
     "config/GMFE69/pad.json": "7224d4f0d776e7eb7e4a31710a8da2314d18ca859f84d972016cd4aae36ba462",
@@ -2135,7 +2135,7 @@
     "src/game/bsbifunc_hiermap.cpp": "7d38f855e2189ec7ed8b087a0ffb34706d6725a74e5b23fda2a7ca249da1d8d7",
     "src/game/bsbifunc_holdtime.cpp": "6e9fc66483be188cf10247ea9c15de21174873c14d5668e2dfc46e4e8362ed11",
     "src/game/bsbifunc_jaw.cpp": "3473828e12aa08ab2130f5c2fd076ac0d36a34a8a8db95e9862e8a6a542517ac",
-    "src/game/bsbifunc_level.cpp": "75b9d17e1e1c28ccf0a7b3c9d03c07158d7634782ff38199d338a979a0bfce18",
+    "src/game/bsbifunc_level.cpp": "e4d6b8295dd1577455376300c94275d45d070e42a881a73d1b3553b8d82b9cd9",
     "src/game/bsbifunc_melee.cpp": "93088fb52d8094a0f403ca30591b06f24627eac9ac946e672c83fa18404c3774",
     "src/game/bsbifunc_mgflag.cpp": "c8dd5faf9fdce35cc308b1a5502bc564dade563067205c35fa9316933d2c4ce0",
     "src/game/bsbifunc_misc.cpp": "90cfba09a28ef4b22ee48a561213172fad37d4d4d28c39c7b962163f81086c2a",
@@ -2328,7 +2328,7 @@
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
     "src/game/objcreate.cpp": "0d48087a61a1db87a72c4aae93711e3bdaba21d7e9f05667d9a8b48bc8ef92ee",
     "src/game/objcreate_thrown.cpp": "d9b0ec7a926027460ef4625878ba959f7b619211e867bed686b2ae87556583eb",
-    "src/game/objcreate_volumes.cpp": "3e46b56b5e76f2426a12d0bebc6a022380252dfcc1ad4e0f898ffee9b73993bb",
+    "src/game/objcreate_volumes.cpp": "37e33f3014a33220b45325c87ae6ad10bde2e1d5305f03e334377332d9dd3b12",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
     "src/game/particlesystem.cpp": "9b239ec971f131cf3e2de9f80d63720bdcba949aade9aa54f41fdde6be34cf10",
     "src/game/particlesystem_active.cpp": "b91cdcfc6c5ebcc5b1c4f442ddac8d0bf9d297fb5977ae97a0db63a4add5fb6d",
@@ -24291,8 +24291,8 @@
     {
       "id": "objcreate_volumes",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 352,
+      "functions": 8,
+      "code_bytes": 476,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24322,10 +24322,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "86c37928b67e9d175e373db84eddeb41860074a30bcb51c7a781d70c9a28aa7f",
-      "linked_sha256": "05ad4f04d294675a05844f0fc129a8fd9b25b9f9e8ef4e1d83062f9be5054563"
+      "object_sha256": "f0511ab41010705e93771bd79040618bda9ab0e452d88a9793ea39b2148a6fcd",
+      "linked_sha256": "83d0404c0df1ad6fd1ac2514ffa5073dd4b07adc65b8aaf3bd180107381641f5"
     },
     {
       "id": "weapon_head",
@@ -25578,8 +25578,8 @@
     {
       "id": "bsbifunc_level",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 928,
+      "functions": 7,
+      "code_bytes": 1116,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -25611,8 +25611,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8bfc5971c6b22c7f08bdb449bd8d991548891b9deddcd2ca5d315f3b564383e5",
-      "linked_sha256": "30ce073c9b30057fd9ce30f5338221bcb2bb0da2cd75cc1acc6b26783ef1dfe2"
+      "object_sha256": "27a14d6da2ef7293849579352997e45bce17de6020c65f837f319b1afcaed5b2",
+      "linked_sha256": "26b6a15e97d12ec2e5f94783158f9687c2d6e5605971eb95fc9ca97ebe961a3b"
     },
     {
       "id": "bsbifunc_aim",
@@ -41933,13 +41933,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x80021e14",
-            "size": 188,
-            "kind": "function",
-            "name": "BIFunc_ModifyTotalKillableEnemyCount__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x80021ed0",
             "size": 536,
             "kind": "function",
@@ -42488,13 +42481,6 @@
             "size": 552,
             "kind": "function",
             "name": "NonVisDestructFarthestSoldiers__Fi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003c310",
-            "size": 124,
-            "kind": "function",
-            "name": "DelayDestroyObject__FP10BSGO_Basic",
             "evidence": "exception-index"
           },
           {

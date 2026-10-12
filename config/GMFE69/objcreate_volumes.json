@@ -34,25 +34,25 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x8003c1b0",
-      "size": 352,
+      "size": 476,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a434",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800113fc",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -98,19 +98,31 @@
       "address": "0x8003c30c",
       "size": 4,
       "binding": 2
+    },
+    {
+      "name": "DelayDestroyObject__FP10BSGO_Basic",
+      "address": "0x8003c310",
+      "size": 124,
+      "binding": 1
     }
   ],
   "externals": {
     "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
     "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8",
+    "GetScriptData__10BSGO_BasicFv": "0x800206bc",
     "__ct__15CAnimatedVolumeFv": "0x800c0298",
+    "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__10CVolSphere": "0x801896b4",
     "__vt__7CVolBox": "0x801894f4",
     "__vt__7IVolume": "0x80181e28",
     "g_pAnimatedVolumeAllocator": "0x801a1198",
     "g_pVolumeAllocator": "0x801a1170"
   },
-  "undefined_in_discarded_code": [],
+  "undefined_in_discarded_code": [
+    "unknownVirtual3__10BSGO_BasicFv",
+    "unknownVirtual4__10BSGO_BasicFv"
+  ],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
@@ -120,5 +132,11 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "objcreate.cpp",
-  "original_file_index": 1440
+  "original_file_index": 1440,
+  "stripped_sections": [
+    ".data"
+  ],
+  "weak_duplicates": [
+    "__vt__10BSGO_Basic"
+  ]
 }

@@ -5,7 +5,10 @@
 // 0x7fffffff stands for 20; the text comes from the string table, or null past
 // its end; levels and slots are 1-based), toggle the player's trigger checks
 // and change the player's team (the AI object's team and its byte copy),
-// followed by the weak CPlayerObject::GetAIDoodad (the doodad at +0x24). The
+// followed by the weak CPlayerObject::GetAIDoodad (the doodad at +0x24) and
+// ModifyTotalKillableEnemyCount (for an enemy trigger created as a duplicate,
+// creation mode 2, it reports that and adds the count to the spawned total;
+// its message is a .rodata pool entry). The
 // file name is this project's; the original record is bsbifunc.cpp and the
 // built-ins around these are not reconstructed. The functions, classes and
 // globals are named by the mangled symbols; ISceneNode is declared with its
@@ -246,4 +249,39 @@ void BIFunc_ChangePlayersTeam(int** stack, void* object) {
 
 __declspec(weak) AIDoodadView* CPlayerObject::GetAIDoodad() {
     return &m_doodad;
+}
+
+// Inferred views for BIFunc_ModifyTotalKillableEnemyCount: the current script
+// object's trigger and core record (type at +12, the creation mode at +53).
+// g_pBSObject is declared through this view; the original symbol is the
+// script machine's current BSObject.
+struct LevelTriggerCoreView {
+    unsigned char unknown00[12];
+    int type;
+    unsigned char unknown10[37];
+    unsigned char creation;
+};
+
+struct LevelTriggerView {
+    unsigned char unknown00[4];
+    LevelTriggerCoreView* core;
+};
+
+struct LevelScriptObjectView {
+    unsigned char unknown00[8];
+    LevelTriggerView* trigger;
+};
+
+extern LevelScriptObjectView* g_pBSObject;
+extern int g_iNumberOfEnemiesSpawned;
+void DebugMsg(const char*, ...);
+
+void BIFunc_ModifyTotalKillableEnemyCount(int** stack, void*) {
+    int count = *(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 1));
+    LevelTriggerCoreView* core = g_pBSObject->trigger->core;
+    if (core->type == 3 && core->creation == 2) {
+        DebugMsg("-------------- Duplicate Creation:  Ignoring for total enemy count\n");
+        g_iNumberOfEnemiesSpawned += count;
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
