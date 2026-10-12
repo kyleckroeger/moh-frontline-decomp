@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800922f4",
-      "size": 80,
+      "size": 2100,
       "type": 1
     }
   ],
@@ -49,6 +49,12 @@
       "name": "IsDegenerate__6CLine3CFv",
       "address": "0x800922f4",
       "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "GetSquaredDistanceBetweenSegments__6CLine3CFRC6CLine3RfRfPf",
+      "address": "0x80092344",
+      "size": 2020,
       "binding": 1
     }
   ],
@@ -70,6 +76,36 @@
       "offset": 0,
       "size": 4,
       "address": "0x80350370"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350374"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350378"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8035037c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350380"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350388"
     }
   ]
 }
