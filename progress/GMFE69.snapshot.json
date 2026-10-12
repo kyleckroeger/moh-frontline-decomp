@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 607452,
+    "matching_code_bytes": 608856,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.942458920436714,
+    "percent": 43.04171155656976,
     "categories": {
-      "reconstructed_game": 387260,
+      "reconstructed_game": 388664,
       "restored_library": 220192
     },
-    "matching_functions": 3683
+    "matching_functions": 3687
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -251,7 +251,7 @@
     "config/GMFE69/attachobject.json": "f1dba5b780266dae3fa6be9077f76b2792d4882b9c747d6fd6e411030cad3a34",
     "config/GMFE69/attachobject_type.json": "11187b1e221b9b32c73568645d7b17d3af427f3a29290a58cf254ccdc467e55b",
     "config/GMFE69/audioplayer.json": "b6e4257cba8554cee346f4ad5d959fc3e42b9db956ce091211d58d446fe021bd",
-    "config/GMFE69/avplayer.json": "d468fc8dbe55709ce14026ba29bcd2efb2d7fb727a92fbdcc04dcf84f0f375ae",
+    "config/GMFE69/avplayer.json": "fa02b7a095317e210a53ba4a56c0ff640f888e2809385e22eddb9c8e2777c050",
     "config/GMFE69/baseline.json": "36a2b85cf4193e53afac79bdd2a8fdbf8dfb1880cae89e119463f2c81461b42f",
     "config/GMFE69/bmem.json": "6f2cc24cb578401f28e36031abc716a23a3beb45bf6c43c10ede6c273e9070b2",
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
@@ -2085,7 +2085,7 @@
     "src/game/attachobject.cpp": "7beae62a0ded89a3876b3019473c6e6dfdc1d1d2b44c8822272f346352f02833",
     "src/game/attachobject_type.cpp": "2cc5b7fc297396790cfb5f76b6c7b53fa38d4ee347a5aae5f09ffc2dd5fe2789",
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
-    "src/game/avplayer.cpp": "fd162b72208fc3c5017c9050257f1fb520ded2484ce96f62657d1c80d16cb86d",
+    "src/game/avplayer.cpp": "f6a87e2eda181317ce0f35df24b8a6722ed3988080edf2be0f240a663ab4d6fb",
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "c5895cd63cc16d5b3a6c93bb7eeb2889c675fd287c3b48c978ab76c597d490ed",
@@ -20383,8 +20383,8 @@
     {
       "id": "avplayer",
       "category": "reconstructed_game",
-      "functions": 14,
-      "code_bytes": 2864,
+      "functions": 18,
+      "code_bytes": 4268,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -20416,8 +20416,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "914129f841250b11d6d4bd0d04e4014d167dfaa5cd0ae502b753a9c0c1d41acf",
-      "linked_sha256": "5911fb36d6c7bced3d9c1198b0848a94632b97708bb2b14a0a0a25bd49180e25"
+      "object_sha256": "6acf27ab4a6dd3e545cfdcfa8ec549fb834dfe1157d23d526e44103f9f4e01c6",
+      "linked_sha256": "c2e586413762efc4c73cebc68bb66550fa8ab014c263be39859a4421b5a8aa60"
     },
     {
       "id": "animemot",
@@ -50232,41 +50232,6 @@
             "size": 704,
             "kind": "function",
             "name": "Init__11CDualConfigFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/avplayer.cpp [symbol evidence]",
-        "file_record": 163,
-        "file_name": "avplayer.cpp",
-        "ranges": [
-          {
-            "address": "0x800fbc1c",
-            "size": 348,
-            "kind": "function",
-            "name": "__dt__Q24RCMP9AV_PLAYERFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fbd78",
-            "size": 924,
-            "kind": "function",
-            "name": "Init__Q24RCMP9AV_PLAYERFPCciPCciQ34RCMP9AV_PLAYER9LOAD_ENUMQ34RCMP9AV_PLAYER10SOUND_ENUM",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fc114",
-            "size": 56,
-            "kind": "function",
-            "name": "__ct__Q24RCMP9AV_PLAYERFPCciPCciQ34RCMP9AV_PLAYER9LOAD_ENUMQ34RCMP9AV_PLAYER10SOUND_ENUM",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fc14c",
-            "size": 76,
-            "kind": "function",
-            "name": "__dt__Q24RCMP8STREAMERFv",
             "evidence": "exception-index"
           }
         ]

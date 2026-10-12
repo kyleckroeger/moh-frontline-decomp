@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800fb0ec",
-      "size": 2864,
+      "size": 4268,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f9e4",
-      "size": 192,
+      "size": 244,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016700",
-      "size": 168,
+      "size": 216,
       "type": 1
     }
   ],
@@ -140,16 +140,44 @@
       "address": "0x800fbb40",
       "size": 48,
       "binding": 2
+    },
+    {
+      "name": "__dt__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fbc1c",
+      "size": 348,
+      "binding": 1
+    },
+    {
+      "name": "Init__Q24RCMP9AV_PLAYERFPCciPCciQ34RCMP9AV_PLAYER9LOAD_ENUMQ34RCMP9AV_PLAYER10SOUND_ENUM",
+      "address": "0x800fbd78",
+      "size": 924,
+      "binding": 1
+    },
+    {
+      "name": "__ct__Q24RCMP9AV_PLAYERFPCciPCciQ34RCMP9AV_PLAYER9LOAD_ENUMQ34RCMP9AV_PLAYER10SOUND_ENUM",
+      "address": "0x800fc114",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q24RCMP8STREAMERFv",
+      "address": "0x800fc14c",
+      "size": 76,
+      "binding": 2
     }
   ],
   "externals": {
+    "ASYNCFILE_load": "0x8014b4b0",
     "ASYNCFILE_release": "0x8014b790",
     "ChooseCodec__Q24RCMP7DECODERFPQ24RCMP5CODECPQ24RCMP5CHUNK": "0x80105490",
+    "DEBUG_break": "0x80151208",
     "FreeChosenCodec__Q24RCMP7DECODERFv": "0x8010543c",
     "GetCurrentFrameNumber__Q24RCMP7DECODERFv": "0x801053fc",
     "GetFrameRate__Q24RCMP7DECODERFv": "0x801053bc",
     "GetFrame__Q24RCMP7DECODERFUi": "0x80105334",
     "IsAudioFinished__Q24RCMP12AUDIO_PLAYERFv": "0x8010879c",
+    "MEM_fill": "0x80150db4",
+    "MEM_free": "0x8014f83c",
     "MPC_CODEC_create__4RCMPFv": "0x801042f0",
     "MPC_CODEC_is_chunk_for_codec__4RCMPFUi": "0x80105218",
     "OSGetTime": "0x80116a40",
@@ -158,11 +186,16 @@
     "SNDSTRM_status": "0x8015c288",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
+    "STREAM_create": "0x8014c5d8",
+    "STREAM_destroy": "0x8014cce0",
     "STREAM_get": "0x8014d974",
     "STREAM_isendofstream": "0x8014dd0c",
+    "STREAM_queuefile": "0x8014cf68",
     "STREAM_queuemem": "0x8014d118",
     "STREAM_release": "0x8014dae0",
+    "STREAM_setfilter": "0x8014cc2c",
     "STREAM_setpriority": "0x8014cd98",
+    "STREAM_taphandle": "0x8014cef4",
     "SYNCTASK_run": "0x80152394",
     "SetSpeed__Q24RCMP12AUDIO_PLAYERFUi": "0x80108848",
     "StartSound__Q24RCMP12AUDIO_PLAYERFv": "0x801087f0",
@@ -172,6 +205,7 @@
     "__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA": "0x80105560",
     "__cvt_fp2unsigned": "0x801388e8",
     "__div2u": "0x80138a74",
+    "__dt__Q24RCMP12AUDIO_PLAYERFv": "0x801088ac",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -183,9 +217,22 @@
   "original_file": "avplayer.cpp",
   "original_file_index": 9905,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 22,
+      "address": "0x8017a990"
+    },
+    {
+      "section": ".rodata",
+      "offset": 24,
+      "size": 22,
+      "address": "0x8017a9a8"
+    },
     {
       "section": ".sdata2",
       "offset": 0,

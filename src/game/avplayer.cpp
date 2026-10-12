@@ -1,4 +1,4 @@
-// The start of avplayer.cpp (0x800fb0ec..0x800fbc1c): the AV player's chunk
+// avplayer.cpp's code (0x800fb0ec..0x800fbc1c..0x800fc198): the AV player's chunk
 // callbacks for its decoder. StaticReleaseRCMPChunk returns a chunk's stream
 // data and deletes it; StaticGetRCMPChunk forwards to the streamer's player;
 // GetRCMPChunk pulls stream buffers (running the sync tasks after each) until
@@ -27,24 +27,42 @@
 // hooks are set, decodes frame 0, starts the timer, the sound, and unpauses.
 // The weak class deletes of AV_MS_TIMER, DECODER and AUDIO_PLAYER and the
 // weak empty CODEC_IDATA destructor (its class delete inlined) follow it, as
-// in the original.
+// in the original. The destructor deletes the decoder (virtual), the audio
+// player and the timer, destroys the streams (the audio one when separate)
+// and frees the preloaded data and stream buffers; Init clears the player,
+// allocates the stream buffers through the RCMP hook (named), creates the
+// streams (a tapped audio stream when there is no separate audio file),
+// sets their priorities and chunk filters ('M' video chunks, 'CS' sound
+// chunks, dropped without sound) and starts loading (whole files through
+// ASYNCFILE_load, or queued on the streams), and breaks into the debugger
+// when the RCMP hooks are not set; the constructor clears the streamer and
+// calls Init, and the weak STREAMER destructor follows.
 // RCMP, RCMP_SYSTEM, rcmp_sys, AV_PLAYER, DECODER, STREAMER, CHUNK, CODEC and
 // the functions are named by the symbols. Inferred: the allocation hook's
 // arguments (name, size, two zeros, the system's flags word at +12), the
 // member layouts (the player's stream handle at +40, the decoder's codec at
 // +24, the streamer's player first, the audio player first and the timer at
 // +84 in AV_PLAYER; the file, stream and queue members), the 20-byte audio
-// player, the 24-byte timer's inline constructor, the system's IsReady
-// helper, the chunk type that is only ever 0 or
+// player, the 24-byte timer's inline constructor and trivial destructor,
+// the system's IsReady helper, the LOAD_ENUM/SOUND_ENUM enumerators (only
+// the values are known), the STREAMER constructor and destructor, the chunk type that is only ever 0 or
 // 1 (the original keeps a test for 2), ChooseCodec's int result, the
 // trivial inline CHUNK destructor (delete tests for null), the timer layout
 // and its inline Update/SetSpeed/GetTime, the player's time and drift
 // members and the stream status views (the fields used at +4), the int
 // results of Pause/UnPause, and the unused
-// 5-byte chunk name built for an empty debug hook. The rest of the file is
-// not part of this unit.
+// 5-byte chunk name built for an empty debug hook.
 extern "C" {
 long long OSGetTime();
+void MEM_fill(void*, int, int);
+void MEM_free(void*);
+int STREAM_create(int, int, int, void*, int);
+int STREAM_taphandle(int, int);
+void STREAM_setfilter(int, int, int, int, int);
+int STREAM_queuefile(int, const char*, int, int);
+void STREAM_destroy(int);
+int ASYNCFILE_load(const char*, int);
+void DEBUG_break();
 void STREAM_setpriority(int, int, int);
 int STREAM_queuemem(int, void*, int, int);
 void ASYNCFILE_release(int, void**, int*);
@@ -115,6 +133,7 @@ public:
 class DECODER {
 public:
     DECODER(const CODEC_IDATA*);
+    virtual ~DECODER();
     void* operator new(unsigned long size) { return rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_allocFlags); }
     void operator delete(void* p) { rcmp_sys.m_free(p); }
     int ChooseCodec(CODEC*, CHUNK*);
@@ -123,7 +142,7 @@ public:
     unsigned int GetCurrentFrameNumber();
     void FreeChosenCodec();
 
-    unsigned char unknown00[24];
+    unsigned char unknown04[20];
     CODEC* m_codec;
 };
 
@@ -135,12 +154,17 @@ inline void DebugChunk(const char*) {}
 
 class STREAMER {
 public:
+    STREAMER() : m_player(0) {}
+    ~STREAMER() {}
+    void operator delete(void* p) { rcmp_sys.m_free(p); }
+
     AV_PLAYER* m_player;
 };
 
 class AUDIO_PLAYER {
 public:
     AUDIO_PLAYER(int, int);
+    ~AUDIO_PLAYER();
     void* operator new(unsigned long size) { return rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_allocFlags); }
     void operator delete(void* p) { rcmp_sys.m_free(p); }
     void SetSpeed(unsigned int);
@@ -172,6 +196,7 @@ public:
         m_last = OSGetTime();
         m_speed = 0x1000;
     }
+    ~AV_MS_TIMER() {}
     void* operator new(unsigned long size) { return rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_allocFlags); }
     void operator delete(void* p) { rcmp_sys.m_free(p); }
     void Update() {
@@ -198,6 +223,13 @@ public:
 
 class AV_PLAYER {
 public:
+    enum LOAD_ENUM { LOAD_STREAM, LOAD_MEMORY };
+    enum SOUND_ENUM { SOUND_ON, SOUND_OFF };
+
+    AV_PLAYER(const char*, int, const char*, int, LOAD_ENUM, SOUND_ENUM);
+    ~AV_PLAYER();
+    void operator delete(void* p) { rcmp_sys.m_free(p); }
+    void Init(const char*, int, const char*, int, LOAD_ENUM, SOUND_ENUM);
     static void StaticReleaseRCMPChunk(DECODER*, STREAMER*, CHUNK*);
     static void StaticGetRCMPChunk(DECODER*, STREAMER*, CHUNK**);
     void GetRCMPChunk(DECODER*, CHUNK**);
@@ -209,10 +241,12 @@ public:
     FRAME* GetFirstFrame(unsigned int, int);
 
     AUDIO_PLAYER* m_audio;
-    unsigned char unknown04[8];
+    void* m_videoBuffer;
+    void* m_audioBuffer;
     unsigned char m_separateAudio;
-    unsigned char unknown0d[7];
-    int m_noAudio;
+    unsigned char unknown0d[3];
+    LOAD_ENUM m_load;
+    SOUND_ENUM m_noAudio;
     void* m_videoData;
     int m_videoFile;
     void* m_audioData;
@@ -377,4 +411,104 @@ FRAME* AV_PLAYER::GetFirstFrame(unsigned int value, int startTime) {
         m_audio->StartSound();
     UnPause();
     return frame;
+}
+
+AV_PLAYER::~AV_PLAYER() {
+    if (m_decoder) {
+        delete m_decoder;
+        m_decoder = 0;
+    }
+    if (m_audio) {
+        delete m_audio;
+        m_audio = 0;
+    }
+    if (m_timer) {
+        delete m_timer;
+        m_timer = 0;
+    }
+    STREAM_destroy(m_stream);
+    m_stream = 0;
+    if (m_separateAudio) {
+        STREAM_destroy(m_audioStream);
+        m_audioStream = 0;
+    }
+    if (m_videoData) {
+        MEM_free(m_videoData);
+        m_videoData = 0;
+    }
+    if (m_audioData) {
+        MEM_free(m_audioData);
+        m_audioData = 0;
+    }
+    if (m_videoBuffer) {
+        MEM_free(m_videoBuffer);
+        m_videoBuffer = 0;
+    }
+    if (m_audioBuffer) {
+        MEM_free(m_audioBuffer);
+        m_audioBuffer = 0;
+    }
+}
+
+void AV_PLAYER::Init(const char* video, int videoSize, const char* audio, int audioSize, LOAD_ENUM load, SOUND_ENUM sound) {
+    MEM_fill(this, 0, sizeof(AV_PLAYER));
+    m_load = load;
+    m_noAudio = sound;
+    m_videoData = 0;
+    m_audioData = 0;
+    m_videoFile = 0;
+    m_audioFile = 0;
+    m_frame = 0;
+    m_timer = 0;
+    m_decoder = 0;
+    m_audio = 0;
+    if (!rcmp_sys.IsReady()) {
+        DEBUG_break();
+    } else {
+        if (audio != 0) {
+            m_separateAudio = 1;
+            m_videoBuffer = rcmp_sys.m_alloc("AV::VideoStreamBuffer", videoSize, 0, 0, rcmp_sys.m_allocFlags);
+            m_audioBuffer = rcmp_sys.m_alloc("AV::AudioStreamBuffer", audioSize, 0, 0, rcmp_sys.m_allocFlags);
+            m_stream = STREAM_create(2, 2, 1, m_videoBuffer, videoSize);
+            m_audioStream = STREAM_create(2, 2, 1, m_audioBuffer, audioSize);
+            STREAM_setpriority(m_audioStream, 151, 51);
+            STREAM_setpriority(m_stream, 151, 51);
+            STREAM_setfilter(m_stream, 1, 0xff, 'M', 1);
+            STREAM_setfilter(m_stream, 2, 0, 0, -2);
+            if (m_noAudio == 0)
+                STREAM_setfilter(m_audioStream, 1, 0xffff, 'CS', 1);
+            else
+                STREAM_setfilter(m_audioStream, 1, 0xffff, 'CS', -1);
+            STREAM_setfilter(m_audioStream, 2, 0, 0, -2);
+            if (m_load == LOAD_MEMORY) {
+                m_audioFile = ASYNCFILE_load(audio, rcmp_sys.m_allocFlags);
+                m_videoFile = ASYNCFILE_load(video, rcmp_sys.m_allocFlags);
+            } else {
+                m_audioQueue = STREAM_queuefile(m_audioStream, audio, 0, 0);
+                m_videoQueue = STREAM_queuefile(m_stream, video, 0, 0);
+            }
+        } else {
+            m_separateAudio = 0;
+            m_videoBuffer = rcmp_sys.m_alloc("AV::VideoStreamBuffer", videoSize, 0, 0, rcmp_sys.m_allocFlags);
+            m_audioBuffer = 0;
+            m_stream = STREAM_create(2, 3, 2, m_videoBuffer, videoSize);
+            m_audioStream = STREAM_taphandle(m_stream, 2);
+            STREAM_setpriority(m_audioStream, 151, 51);
+            STREAM_setpriority(m_stream, 151, 51);
+            STREAM_setfilter(m_stream, 1, 0xff, 'M', 1);
+            STREAM_setfilter(m_stream, 3, 0, 0, -2);
+            if (m_noAudio == 0)
+                STREAM_setfilter(m_stream, 2, 0xffff, 'CS', 2);
+            else
+                STREAM_setfilter(m_stream, 2, 0xffff, 'CS', -1);
+            if (m_load == LOAD_MEMORY)
+                m_videoFile = ASYNCFILE_load(video, rcmp_sys.m_allocFlags);
+            else
+                m_videoQueue = STREAM_queuefile(m_stream, video, 0, 0);
+        }
+    }
+}
+
+AV_PLAYER::AV_PLAYER(const char* video, int videoSize, const char* audio, int audioSize, LOAD_ENUM load, SOUND_ENUM sound) {
+    Init(video, videoSize, audio, audioSize, load, sound);
 }
