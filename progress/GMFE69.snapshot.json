@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 604856,
+    "matching_code_bytes": 605376,
     "total_executable_code_bytes": 1414572,
-    "percent": 42.75894051345566,
+    "percent": 42.795700749060494,
     "categories": {
-      "reconstructed_game": 384664,
+      "reconstructed_game": 385184,
       "restored_library": 220192
     },
-    "matching_functions": 3674
+    "matching_functions": 3677
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -253,7 +253,7 @@
     "config/GMFE69/audioplayer.json": "b6e4257cba8554cee346f4ad5d959fc3e42b9db956ce091211d58d446fe021bd",
     "config/GMFE69/avplayer.json": "3b00f3f317904054205a0f27fc057699fc5b062d045d626f1934dc97e9b387fb",
     "config/GMFE69/avplayer_audio_delete.json": "05e78557befa1b60f2cfcb577aa5a1631a1a879732624d764fc56b9cefef66ed",
-    "config/GMFE69/avplayer_chunk_delete.json": "46ab968f327f9b7e63f45ca9369d642e77b233d0deb3e8dbaa7a537bcda8ac23",
+    "config/GMFE69/avplayer_chunk_delete.json": "cb52de88da359777eaf4324a56a48d3536357842bb4efba804659050086eb847",
     "config/GMFE69/baseline.json": "36a2b85cf4193e53afac79bdd2a8fdbf8dfb1880cae89e119463f2c81461b42f",
     "config/GMFE69/bmem.json": "6f2cc24cb578401f28e36031abc716a23a3beb45bf6c43c10ede6c273e9070b2",
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
@@ -2089,7 +2089,7 @@
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
     "src/game/avplayer.cpp": "600d90053fcb86631089663af6c5417733f44228cd980c6cb0499327a838cfb4",
     "src/game/avplayer_audio_delete.cpp": "80f8624d274c1a9b54ee8d761db95112d7f39cd1552cfb1f1c9657ef14516d75",
-    "src/game/avplayer_chunk_delete.cpp": "3e1c418434c11be659ef1ccac9df760a9cfe4a25e8e5f3a1cbd3330969ef6f0d",
+    "src/game/avplayer_chunk_delete.cpp": "eb28906f8fb7a6f2deec036ac2cf293e46f46a6c3677d72f95a992b7a6ffc0de",
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "c5895cd63cc16d5b3a6c93bb7eeb2889c675fd287c3b48c978ab76c597d490ed",
@@ -33318,8 +33318,8 @@
     {
       "id": "avplayer_chunk_delete",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 48,
+      "functions": 4,
+      "code_bytes": 568,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -33351,8 +33351,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cbd80386f417bb68d1cea9a4bda75b287717b1028970337f1e665004dddaf327",
-      "linked_sha256": "919633ab12df2d3e0fd0e904cbe7f3456cc4e21cf46c958a6022a8df17a6efe3"
+      "object_sha256": "57d5abafdd64627897ad69f0802b6d75b948c649ce3285a1988b3603d9fea877",
+      "linked_sha256": "c27f817758e643d242d17637050d92216e5f9ba819c02da0f43d3d12854fa251"
     },
     {
       "id": "avplayer_audio_delete",
@@ -50323,27 +50323,6 @@
         "file_record": 163,
         "file_name": "avplayer.cpp",
         "ranges": [
-          {
-            "address": "0x800fb0ec",
-            "size": 88,
-            "kind": "function",
-            "name": "StaticReleaseRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPQ24RCMP5CHUNK",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fb144",
-            "size": 44,
-            "kind": "function",
-            "name": "StaticGetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPPQ24RCMP5CHUNK",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fb170",
-            "size": 388,
-            "kind": "function",
-            "name": "GetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPPQ24RCMP5CHUNK",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800fb324",
             "size": 212,

@@ -39,24 +39,42 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800fb2f4",
-      "size": 48,
+      "address": "0x800fb0ec",
+      "size": 568,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fa0c",
-      "size": 8,
+      "address": "0x8000f9e4",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016724",
-      "size": 12,
+      "address": "0x80016700",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "StaticReleaseRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPQ24RCMP5CHUNK",
+      "address": "0x800fb0ec",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "GetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPPQ24RCMP5CHUNK",
+      "address": "0x800fb170",
+      "size": 388,
+      "binding": 1
+    },
+    {
+      "name": "StaticGetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPPQ24RCMP5CHUNK",
+      "address": "0x800fb144",
+      "size": 44,
+      "binding": 1
+    },
     {
       "name": "__dl__Q24RCMP5CHUNKFPv",
       "address": "0x800fb2f4",
@@ -65,6 +83,15 @@
     }
   ],
   "externals": {
+    "ChooseCodec__Q24RCMP7DECODERFPQ24RCMP5CODECPQ24RCMP5CHUNK": "0x80105490",
+    "FreeChosenCodec__Q24RCMP7DECODERFv": "0x8010543c",
+    "MPC_CODEC_create__4RCMPFv": "0x801042f0",
+    "MPC_CODEC_is_chunk_for_codec__4RCMPFUi": "0x80105218",
+    "STREAM_get": "0x8014d974",
+    "STREAM_isendofstream": "0x8014dd0c",
+    "STREAM_release": "0x8014dae0",
+    "SYNCTASK_run": "0x80152394",
+    "__ct__Q24RCMP5CHUNKFv": "0x8010526c",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -74,5 +101,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "avplayer.cpp",
-  "original_file_index": 9905
+  "original_file_index": 9905,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 1,
+      "address": "0x80351238"
+    }
+  ]
 }
