@@ -734,8 +734,6 @@
     "projectilebullet_init.json",
     "thrownbullet_init.json",
     "hwvideodisplaylist_draw.json",
-    "avplayer_chunk_delete.json",
-    "avplayer_audio_delete.json",
     "hwvideodisplaylist_delete.json",
     "rcmp_main_delete.json",
     "scene_cmppairs.json",

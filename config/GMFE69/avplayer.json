@@ -39,24 +39,90 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800fbb40",
-      "size": 172,
+      "address": "0x800fb0ec",
+      "size": 2864,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fa84",
-      "size": 24,
+      "address": "0x8000f9e4",
+      "size": 192,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016778",
-      "size": 36,
+      "address": "0x80016700",
+      "size": 168,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "StaticReleaseRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPQ24RCMP5CHUNK",
+      "address": "0x800fb0ec",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "GetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPPQ24RCMP5CHUNK",
+      "address": "0x800fb170",
+      "size": 388,
+      "binding": 1
+    },
+    {
+      "name": "StaticGetRCMPChunk__Q24RCMP9AV_PLAYERFPQ24RCMP7DECODERPQ24RCMP8STREAMERPPQ24RCMP5CHUNK",
+      "address": "0x800fb144",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "__dl__Q24RCMP5CHUNKFPv",
+      "address": "0x800fb2f4",
+      "size": 48,
+      "binding": 2
+    },
+    {
+      "name": "UnPause__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb324",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "Pause__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb3f8",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "IsAudioFinished__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb4cc",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "IsTimeForDecode__Q24RCMP9AV_PLAYERFv",
+      "address": "0x800fb500",
+      "size": 528,
+      "binding": 1
+    },
+    {
+      "name": "GetFrame__Q24RCMP9AV_PLAYERFf",
+      "address": "0x800fb710",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "GetFirstFrame__Q24RCMP9AV_PLAYERFUii",
+      "address": "0x800fb770",
+      "size": 976,
+      "binding": 1
+    },
+    {
+      "name": "__dl__Q24RCMP12AUDIO_PLAYERFPv",
+      "address": "0x800fbbec",
+      "size": 48,
+      "binding": 2
+    },
     {
       "name": "__dl__Q24RCMP7DECODERFPv",
       "address": "0x800fbb70",
@@ -77,6 +143,35 @@
     }
   ],
   "externals": {
+    "ASYNCFILE_release": "0x8014b790",
+    "ChooseCodec__Q24RCMP7DECODERFPQ24RCMP5CODECPQ24RCMP5CHUNK": "0x80105490",
+    "FreeChosenCodec__Q24RCMP7DECODERFv": "0x8010543c",
+    "GetCurrentFrameNumber__Q24RCMP7DECODERFv": "0x801053fc",
+    "GetFrameRate__Q24RCMP7DECODERFv": "0x801053bc",
+    "GetFrame__Q24RCMP7DECODERFUi": "0x80105334",
+    "IsAudioFinished__Q24RCMP12AUDIO_PLAYERFv": "0x8010879c",
+    "MPC_CODEC_create__4RCMPFv": "0x801042f0",
+    "MPC_CODEC_is_chunk_for_codec__4RCMPFUi": "0x80105218",
+    "OSGetTime": "0x80116a40",
+    "SNDPROFILE_outputlatency": "0x80159300",
+    "SNDSTRM_requeststatus": "0x8015c37c",
+    "SNDSTRM_status": "0x8015c288",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "STREAM_get": "0x8014d974",
+    "STREAM_isendofstream": "0x8014dd0c",
+    "STREAM_queuemem": "0x8014d118",
+    "STREAM_release": "0x8014dae0",
+    "STREAM_setpriority": "0x8014cd98",
+    "SYNCTASK_run": "0x80152394",
+    "SetSpeed__Q24RCMP12AUDIO_PLAYERFUi": "0x80108848",
+    "StartSound__Q24RCMP12AUDIO_PLAYERFv": "0x801087f0",
+    "__ct__Q24RCMP11CODEC_IDATAFPQ24RCMP8STREAMERPFPQ24RCMP7DECODERPQ24RCMP8STREAMERPPQ24RCMP5CHUNK_vPFPQ24RCMP7DECODERPQ24RCMP8STREAMERPQ24RCMP5CHUNK_vUi": "0x80105258",
+    "__ct__Q24RCMP12AUDIO_PLAYERFii": "0x8010892c",
+    "__ct__Q24RCMP5CHUNKFv": "0x8010526c",
+    "__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA": "0x80105560",
+    "__cvt_fp2unsigned": "0x801388e8",
+    "__div2u": "0x80138a74",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -87,8 +182,33 @@
   "sda_externals": [],
   "original_file": "avplayer.cpp",
   "original_file_index": 9905,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "avplayer.json"
-  }
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 1,
+      "address": "0x80351238"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035123c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351240"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351248"
+    }
+  ]
 }
