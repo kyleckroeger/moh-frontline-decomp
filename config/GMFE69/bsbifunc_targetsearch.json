@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8001e7b8",
-      "size": 252,
+      "size": 812,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000990c",
-      "size": 8,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010388",
-      "size": 12,
+      "size": 36,
       "type": 1
     }
   ],
@@ -62,19 +62,68 @@
       "address": "0x8001e7b8",
       "size": 252,
       "binding": 1
+    },
+    {
+      "name": "DoDistanceToTarget__FP8BSObjectiiiPiPi",
+      "address": "0x8001e8b4",
+      "size": 440,
+      "binding": 1
+    },
+    {
+      "name": "DoMMGPointCheck__FP8BSObjectiiiPiPi",
+      "address": "0x8001ea6c",
+      "size": 120,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "CheckFieldOfViewModeList__9CAIObjectFv": "0x80049974",
     "CheckLineOfSightModeList__9CAIObjectFv": "0x80048564",
-    "MathFunRandomI64__Fxx": "0x80092dd4"
+    "GetDistanceSquaredXYZReal__9CAIObjectFP9CAIObject": "0x8004d590",
+    "GetDistanceSquaredXYZReal__9CAIObjectFv": "0x8004d564",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "ShouldILeaveMMG__15CAIFilterObjectFP8BSObject": "0x8005a4d0",
+    "Unregister__10BSScheduleFP8BSObject": "0x8003aa58",
+    "g_DistanceToTargetSchedule": "0x8019747c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_DistanceToTargetSchedule"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f628"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f630"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }

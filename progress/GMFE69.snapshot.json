@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 610672,
+    "matching_code_bytes": 611232,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.17008961014356,
+    "percent": 43.209677556179535,
     "categories": {
-      "reconstructed_game": 390480,
+      "reconstructed_game": 391040,
       "restored_library": 220192
     },
-    "matching_functions": 3691
+    "matching_functions": 3693
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -330,7 +330,7 @@
     "config/GMFE69/bsbifunc_soundinfo.json": "62fa4527e93c6f3081312024c92e4f733e208fab3e972055e04151b32ac5728f",
     "config/GMFE69/bsbifunc_soundoffset.json": "02b9652dc383926fca7f35df6821a1218d0441a369990c7aa76a2037fb828147",
     "config/GMFE69/bsbifunc_stop.json": "465f84e151cc6c8400be71af102b4ef15b614ac165f251e04fbd6ef77bc11b4c",
-    "config/GMFE69/bsbifunc_targetsearch.json": "a020420d9b0fb266838ebe49e4ccb2598831907f1470337bc201e7548dd30211",
+    "config/GMFE69/bsbifunc_targetsearch.json": "c43a5547e3af98d8d93bbcda8a0744bf129debffd171acb3d3ad166f7cd48367",
     "config/GMFE69/bsbifunc_translate.json": "1a144fd68ee4fc87e3944f3711817a1f846a56b4d3a5ea8e198315a32d03a974",
     "config/GMFE69/bsbifunc_vibration.json": "c525b69dc2e36d0ad6e40409da3a1f1dea2a32238e14c2877acfd493878d7ee2",
     "config/GMFE69/bsearch.json": "dd287b9523a5f289e22dc32f273d0f9756b610c9280ec41b84aac1d7ea50912b",
@@ -2163,7 +2163,7 @@
     "src/game/bsbifunc_soundinfo.cpp": "32bf5f0c63e2031be1809b849ea5d8d992a012a08dc80a5172ef302aa6ff7ee1",
     "src/game/bsbifunc_soundoffset.cpp": "61a054ee0cbb2341a1b1f2c0bf65d0a3fe56981c35615ed2b4ac0e1023134af2",
     "src/game/bsbifunc_stop.cpp": "87aed18c9707f23dfd25b31db66d17a05d8f554625042c0e8bd6e10875f4c05f",
-    "src/game/bsbifunc_targetsearch.cpp": "2284c553e4ea9300571a2398758d5689a9ee64f7cb7050ec33af28c6c783daee",
+    "src/game/bsbifunc_targetsearch.cpp": "2f37472d39598f35847a4097b1394e449d40c0ec37f9d0aafcff0758bd3913a5",
     "src/game/bsbifunc_translate.cpp": "d1915d1a5106223f684829156d43feab4702a6fdc447b2532addd9941ddc195e",
     "src/game/bsbifunc_vibration.cpp": "43ba02afe369628880a3cfa0c998d04397a1cc2ca9bec847caf3b60f5b910065",
     "src/game/bsevents.cpp": "ec38373536c7b31b7c54ee3d5990b7b284d298c49740a07fd021663c569a22c9",
@@ -27489,8 +27489,8 @@
     {
       "id": "bsbifunc_targetsearch",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 252,
+      "functions": 3,
+      "code_bytes": 812,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -27522,8 +27522,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "fc455ba5531ff8c67f2d4ada8b4961b120fec334d2d817d082d060ce7bc6e378",
-      "linked_sha256": "aac6ea3eae294d1547f49c65b98bc2cf6bcc9682e89b802b01fb6584171e33ea"
+      "object_sha256": "5dcdc413d93b2575e6a680a62173d98673850c41d0825595c8e2c83b889c8f2f",
+      "linked_sha256": "f8e6a0dd066f75e1fbfd67dec5d05505ea7a52d7469470e69a0d8484d75f8bf1"
     },
     {
       "id": "bsbifunc_rotate",
@@ -41902,20 +41902,6 @@
             "size": 540,
             "kind": "function",
             "name": "DoTargetCheck__FP8BSObjectiiiPiPi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8001e8b4",
-            "size": 440,
-            "kind": "function",
-            "name": "DoDistanceToTarget__FP8BSObjectiiiPiPi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8001ea6c",
-            "size": 120,
-            "kind": "function",
-            "name": "DoMMGPointCheck__FP8BSObjectiiiPiPi",
             "evidence": "exception-index"
           },
           {
