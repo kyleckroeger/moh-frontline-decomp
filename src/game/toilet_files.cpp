@@ -1,11 +1,13 @@
 // A fragment of toilet.cpp; the file name is this project's. The level-file layer of toilet.cpp, the functions from TLT_CloseFile to
-// TLT_UnLoadShellBriefingLogBigFile: closing a file frees it unless it lies
+// TLT_LoadShellBriefingLogBigFile: closing a file frees it unless it lies
 // inside the level or shell-briefing big file (files loaded from a big file
 // point into it), the level-contents table is searched for the next resource
 // of a type (optionally with a value in its data;
 // TLT_FindNextResourceByTypeAndVal ignores its start argument, searches from
-// the beginning and inlines TLT_FindNextResourceByType), and the
-// shell-briefing big file is unloaded. The file is compiled with -inline
+// the beginning and inlines TLT_FindNextResourceByType), the shell-briefing
+// big file is unloaded, and loaded (its name built for the mission and stage,
+// anything up to a device colon dropped, through an inferred inline load
+// helper that fetches the size first; the formats are pool entries). The file is compiled with -inline
 // deferred,auto: functions are emitted in reverse source order, which is why
 // the search that is inlined comes first in the source and last but one in
 // the image. The function, type and global names come from the symbols; the
@@ -39,6 +41,33 @@ extern void* g_CompartmentBigFile;
 extern LevelFileContentsStruct_* g_pLevelFileContentsArray;
 extern int* g_pNumLevelFileContents;
 extern LevelFileContentsStruct_* g_pLevelFileContentsEndMarker;
+
+extern "C" {
+int sprintf(char*, const char*, ...);
+char* strchr(const char*, int);
+int FILE_sizez(const char*);
+char* FILE_loadz(const char*, int);
+}
+
+/* inferred: the load helper (the optional size is fetched first). */
+inline char* TLT_LoadWholeFile(const char* name, int* size) {
+    if (size)
+        *size = FILE_sizez(name);
+    return FILE_loadz(name, 1024);
+}
+
+void TLT_LoadShellBriefingLogBigFile(int mission, int stage) {
+    char name[128];
+    char path[264];
+    sprintf(name, "data/shell/%d_%d_blog.viv", mission, stage);
+    char* file = strchr(name, ':');
+    if (file == 0)
+        file = name;
+    else
+        file = file + 1;
+    sprintf(path, "%s", file);
+    g_pShellBriefingLogBigFile = TLT_LoadWholeFile(path, &g_ShellBriefingLogBigFileSize);
+}
 
 void TLT_UnLoadShellBriefingLogBigFile() {
     if (g_pShellBriefingLogBigFile) {

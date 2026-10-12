@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8001d820",
-      "size": 400,
+      "size": 544,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009894",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800102d4",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -80,16 +80,26 @@
       "address": "0x8001d978",
       "size": 56,
       "binding": 1
+    },
+    {
+      "name": "TLT_LoadShellBriefingLogBigFile__Fii",
+      "address": "0x8001d9b0",
+      "size": 144,
+      "binding": 1
     }
   ],
   "externals": {
+    "FILE_loadz": "0x8014dfc0",
+    "FILE_sizez": "0x8014dea8",
     "MEM_free": "0x8014f83c",
     "g_LevelBigFileSize": "0x8034e758",
     "g_ShellBriefingLogBigFileSize": "0x8034e75c",
     "g_pLevelBigFile": "0x8034e750",
     "g_pLevelFileContentsArray": "0x8034e768",
     "g_pLevelFileContentsEndMarker": "0x8034e770",
-    "g_pShellBriefingLogBigFile": "0x8034e754"
+    "g_pShellBriefingLogBigFile": "0x8034e754",
+    "sprintf": "0x8013dab4",
+    "strchr": "0x8013fe64"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -108,5 +118,23 @@
     "g_pShellBriefingLogBigFile"
   ],
   "original_file": "toilet.cpp",
-  "original_file_index": 367
+  "original_file_index": 367,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 26,
+      "address": "0x8016e7f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 3,
+      "address": "0x8034f614"
+    }
+  ]
 }
