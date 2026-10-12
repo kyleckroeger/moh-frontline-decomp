@@ -1,5 +1,8 @@
-// First in this unit (0x800950d0): the weak CBullet::GetDamage (0.0f, an entry
-// of the file's .sdata2 pool; the result type is inferred).
+// First in this unit (0x800950a4): the weak CBullet::GetForward (the velocity
+// at +96, copied through an inline by-value getter, which leaves the
+// original's stack temporary), GetFiredBy (no shooter) and GetDamage (0.0f,
+// an entry of the file's .sdata2 pool); the getter, the CVector3 view (a
+// named float/double union) and the result types are inferred.
 // A fragment of anim_obj.cpp (0x800950d8): CBullet's weak defaults emitted in
 // this file (no script bullet type, not thrown, not a projectile), then
 // CAnimObject::TriggerScriptEvent (forwarded to the script object when there
@@ -23,12 +26,26 @@ public:
     enum EVolumeType {};
 };
 
+class CVector3 {
+public:
+    union {
+        float v[4];
+        double pair[2];
+    } d;
+} __attribute__((aligned(8)));
+
 class CBullet {
 public:
+    CVector3 GetVelocity() const { return m_velocity; }
+    void GetForward(CVector3&) const;
+    ISceneNode* GetFiredBy() const;
     float GetDamage() const;
     int GetScriptBulletType() const;
     CThrownBullet* AsThrown();
     CProjectileBullet* AsProjectile();
+
+    unsigned char unknown00[96];
+    CVector3 m_velocity;
 };
 
 class CAnimObject {
@@ -46,6 +63,14 @@ public:
     IVolume* m_worldVolume;
     BSObject* m_script;
 };
+
+__declspec(weak) void CBullet::GetForward(CVector3& forward) const {
+    forward = GetVelocity();
+}
+
+__declspec(weak) ISceneNode* CBullet::GetFiredBy() const {
+    return 0;
+}
 
 __declspec(weak) float CBullet::GetDamage() const {
     return 0.0f;

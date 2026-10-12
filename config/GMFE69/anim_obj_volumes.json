@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800950d0",
-      "size": 312,
+      "address": "0x800950a4",
+      "size": 356,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c958",
-      "size": 8,
+      "address": "0x8000c950",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013a60",
-      "size": 12,
+      "address": "0x80013a54",
+      "size": 24,
       "type": 1
     }
   ],
@@ -74,6 +74,18 @@
       "address": "0x800950f0",
       "size": 56,
       "binding": 1
+    },
+    {
+      "name": "GetForward__7CBulletCFR8CVector3",
+      "address": "0x800950a4",
+      "size": 36,
+      "binding": 2
+    },
+    {
+      "name": "GetFiredBy__7CBulletCFv",
+      "address": "0x800950c8",
+      "size": 8,
+      "binding": 2
     },
     {
       "name": "GetDamage__7CBulletCFv",
