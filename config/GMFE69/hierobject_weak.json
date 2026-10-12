@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80098de4",
-      "size": 48,
+      "size": 260,
       "type": 1
     },
     {
@@ -80,6 +80,12 @@
       "address": "0x80098de4",
       "size": 32,
       "binding": 2
+    },
+    {
+      "name": "GetBulletDamageMultiplierByClass__11CHierObjectFii",
+      "address": "0x80098e14",
+      "size": 212,
+      "binding": 1
     }
   ],
   "externals": {
@@ -92,5 +98,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "hierobject.cpp",
-  "original_file_index": 5972
+  "original_file_index": 5972,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803504a0"
+    }
+  ]
 }
