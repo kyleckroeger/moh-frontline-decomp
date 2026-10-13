@@ -130,7 +130,7 @@ public:
     static int aim_cb(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
     static int face_cb(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
     static int floco_cb(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
-    static void animfinish_cb(unsigned short, void*); /* result type not known */
+    static int animfinish_cb(unsigned short, void*);
 };
 
 typedef int (*AnimStateSelFunc)(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
@@ -150,7 +150,7 @@ extern AnimStateSelView _AnimObj_StateSelFuncArray[9];
 extern AnimStateDefView _AnimObj_StateDef;
 
 extern "C" void AnimStSetCallbackTable(AnimStateDefView*);
-extern "C" void AnimStRegisterFinishCallback(void (*)(unsigned short, void*));
+extern "C" void AnimStRegisterFinishCallback(int (*)(unsigned short, void*));
 
 extern "C" int rand();
 extern "C" int AnimChanStartAnim(AnimObjHdr_t*, AnimChannel_t*, int, unsigned short, unsigned short, void*, float);
