@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001d820",
-      "size": 544,
+      "address": "0x8001d74c",
+      "size": 756,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009894",
-      "size": 24,
+      "address": "0x8000988c",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800102d4",
-      "size": 36,
+      "address": "0x800102c8",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetCompartmentCDBNameFromIndex__FiPci",
+      "address": "0x8001d74c",
+      "size": 212,
+      "binding": 1
+    },
     {
       "name": "TLT_CloseFile__FPv",
       "address": "0x8001d820",
@@ -120,8 +126,8 @@
   "original_file": "toilet.cpp",
   "original_file_index": 367,
   "pooled_sections": [
-    ".rodata",
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
     {
@@ -136,5 +142,9 @@
       "size": 3,
       "address": "0x8034f614"
     }
-  ]
+  ],
+  "adapted_from": {
+    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
+    "manifest": "toilet_files.json"
+  }
 }

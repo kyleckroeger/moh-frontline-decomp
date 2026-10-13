@@ -14,6 +14,10 @@
 // 12-byte contents entry and the resource data view (a count, then 8-byte
 // entries) are inferred. The file's globals are defined elsewhere (the
 // file-local ones are referenced as local externals).
+// GetCompartmentCDBNameFromIndex comes last in the source (first in the image):
+// it inlines the value search for type 0 with the doubled index in the
+// second data word and prints the first data word, a name, into the buffer
+// (empty when there is none; its third argument is unused).
 extern "C" void MEM_free(void*);
 
 enum TLTResourceID {};
@@ -109,3 +113,11 @@ void TLT_CloseFile(void* file) {
 }
 
 
+
+void GetCompartmentCDBNameFromIndex(int index, char* name, int) {
+    LevelFileContentsStruct_* entry = TLT_FindNextResourceByTypeAndVal((TLTResourceID)0, 1, index * 2, 0);
+    if (!entry)
+        name[0] = 0;
+    else
+        sprintf(name, "%s", (char*)entry->data->entries[0].value);
+}
