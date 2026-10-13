@@ -1,0 +1,114 @@
+{
+  "id": "AIFilter_soldier_update",
+  "source": "src/game/AIFilter_soldier_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8005b894",
+      "size": 392,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000afd4",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012140",
+      "size": 72,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Update__22CAIFilterSoldierObjectFf",
+      "address": "0x8005b894",
+      "size": 120,
+      "binding": 1
+    },
+    {
+      "name": "PreUpdate__22CAIFilterSoldierObjectFv",
+      "address": "0x8005b90c",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "SetupTargetMatchList__22CAIFilterSoldierObjectF20aifilter_target_modeP14aistatus_matchi",
+      "address": "0x8005b94c",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "ResetTargetMatchList__22CAIFilterSoldierObjectF20aifilter_target_mode",
+      "address": "0x8005b970",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "SetTargetMode__22CAIFilterSoldierObjectF20aifilter_target_mode",
+      "address": "0x8005b994",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "ChooseTarget__22CAIFilterSoldierObjectFf",
+      "address": "0x8005b9bc",
+      "size": 96,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ChooseTarget__16CAISoldierObjectFP9CAIObjectf": "0x8004f338",
+    "GetGlobalListStart__9CAIObjectFv": "0x8004ec70",
+    "ResetTargetMatchList__16CAISoldierObjectF20aifilter_target_mode": "0x8004f6a0",
+    "SetupTargetMatchList__16CAISoldierObjectF20aifilter_target_modeP14aistatus_matchi": "0x8004f5e4",
+    "UpdateFromGameObject__22CAIFilterSoldierObjectFv": "0x8005b62c",
+    "UpdateToGameObject__22CAIFilterSoldierObjectFf": "0x8005b494",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "AIFilter.cpp",
+  "original_file_index": 2575
+}
