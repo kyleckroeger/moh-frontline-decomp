@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80060788",
-      "size": 536,
+      "address": "0x80060554",
+      "size": 1100,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b2e8",
-      "size": 24,
+      "address": "0x8000b2e0",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001235c",
-      "size": 36,
+      "address": "0x80012350",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "pathing_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
+      "address": "0x80060554",
+      "size": 556,
+      "binding": 1
+    },
     {
       "name": "random_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
       "address": "0x80060788",
@@ -70,6 +76,12 @@
       "binding": 1
     },
     {
+      "name": "AsAnimSkinned__9CAnimatedFv",
+      "address": "0x80060780",
+      "size": 8,
+      "binding": 2
+    },
+    {
       "name": "AnimCallback_Init__Fv",
       "address": "0x800608b4",
       "size": 236,
@@ -78,15 +90,18 @@
   ],
   "externals": {
     "AnimChanStartAnim": "0x800618fc",
+    "AnimStGetCurrentState": "0x800670ac",
+    "AnimStGetStateUserMemory": "0x80067100",
     "AnimStRegisterFinishCallback": "0x80067c70",
     "AnimStSetCallbackTable": "0x80067c78",
+    "AnimStSetStateFlags": "0x80067014",
+    "MathArcTan2__Fff": "0x80091e64",
     "_AnimObj_StateDef": "0x8034db30",
     "_AnimObj_StateSelFuncArray": "0x801c6dd0",
     "aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005e9ec",
     "animfinish_cb__14CAnimCallbacksFUsPv": "0x8005e9bc",
     "death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fb58",
     "floco_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005f2c4",
-    "pathing_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x80060554",
     "rand": "0x8013fc54",
     "turn_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005ff80",
     "weapon_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fab4"
@@ -113,6 +128,54 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034fbc4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fbc0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fbe4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034fbe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034fbf8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034fbfc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034fc00"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034fc04"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034fbf0"
     }
   ]
 }
