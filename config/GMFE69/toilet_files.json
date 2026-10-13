@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001d674",
-      "size": 972,
+      "address": "0x8001d4a4",
+      "size": 1436,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009884",
-      "size": 40,
+      "address": "0x8000987c",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800102bc",
-      "size": 60,
+      "address": "0x800102b0",
+      "size": 72,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetCompartmentSizeFromIndex__Fi",
+      "address": "0x8001d4a4",
+      "size": 464,
+      "binding": 1
+    },
     {
       "name": "GetCompartmentCPTNameFromIndex__FiPci",
       "address": "0x8001d674",
@@ -101,11 +107,13 @@
     }
   ],
   "externals": {
+    "BIG_locateentryz": "0x8014a510",
     "FILE_loadz": "0x8014dfc0",
     "FILE_sizez": "0x8014dea8",
     "MEM_free": "0x8014f83c",
     "g_LevelBigFileSize": "0x8034e758",
     "g_ShellBriefingLogBigFileSize": "0x8034e75c",
+    "g_pCompartmentBigFileHeader": "0x8034e760",
     "g_pLevelBigFile": "0x8034e750",
     "g_pLevelFileContentsArray": "0x8034e768",
     "g_pLevelFileContentsEndMarker": "0x8034e770",
@@ -117,6 +125,7 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "g_pCompartmentBigFileHeader",
     "g_pLevelFileContentsArray",
     "g_pLevelFileContentsEndMarker"
   ],
@@ -124,6 +133,7 @@
   "sda_externals": [
     "g_LevelBigFileSize",
     "g_ShellBriefingLogBigFileSize",
+    "g_pCompartmentBigFileHeader",
     "g_pLevelBigFile",
     "g_pLevelFileContentsArray",
     "g_pLevelFileContentsEndMarker",

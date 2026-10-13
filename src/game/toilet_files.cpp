@@ -14,8 +14,10 @@
 // 12-byte contents entry and the resource data view (a count, then 8-byte
 // entries) are inferred. The file's globals are defined elsewhere (the
 // file-local ones are referenced as local externals).
-// GetCompartmentCDBNameFromIndex and GetCompartmentCPTNameFromIndex come last
-// in the source (first in the image): they inline the value search for type 0
+// GetCompartmentCDBNameFromIndex, GetCompartmentCPTNameFromIndex and
+// GetCompartmentSizeFromIndex (the two entries' sizes in the compartment big
+// file added, -1 when anything is missing) come last in the source (first in
+// the image): they inline the value search for type 0
 // with the doubled index (plus one for the CPT name) in the second data word and prints the first data word, a name, into the buffer
 // (empty when there is none; its third argument is unused).
 extern "C" void MEM_free(void*);
@@ -51,6 +53,7 @@ int sprintf(char*, const char*, ...);
 char* strchr(const char*, int);
 int FILE_sizez(const char*);
 char* FILE_loadz(const char*, int);
+void* BIG_locateentryz(void*, const char*, int, int*, int*);
 }
 
 /* inferred: the load helper (the optional size is fetched first). */
@@ -128,4 +131,25 @@ void GetCompartmentCPTNameFromIndex(int index, char* name, int) {
         name[0] = 0;
     else
         sprintf(name, "%s", (char*)entry->data->entries[0].value);
+}
+
+int GetCompartmentSizeFromIndex(int index) {
+    if (!g_pCompartmentBigFileHeader)
+        return -1;
+    LevelFileContentsStruct_* cdb = TLT_FindNextResourceByTypeAndVal((TLTResourceID)0, 1, index * 2, 0);
+    if (!cdb)
+        return -1;
+    char* cdbName = (char*)cdb->data->entries[0].value;
+    LevelFileContentsStruct_* cpt = TLT_FindNextResourceByTypeAndVal((TLTResourceID)0, 1, index * 2 + 1, 0);
+    if (!cpt)
+        return -1;
+    char* cptName = (char*)cpt->data->entries[0].value;
+    int offset;
+    int cdbSize;
+    int cptSize;
+    if (!BIG_locateentryz(g_pCompartmentBigFileHeader, cdbName, 0, &offset, &cdbSize))
+        return -1;
+    if (!BIG_locateentryz(g_pCompartmentBigFileHeader, cptName, 0, &offset, &cptSize))
+        return -1;
+    return cdbSize + cptSize;
 }
