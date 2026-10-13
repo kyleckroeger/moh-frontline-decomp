@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 617772,
+    "matching_code_bytes": 618996,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.67200821167109,
+    "percent": 43.758536150864,
     "categories": {
-      "reconstructed_game": 397580,
+      "reconstructed_game": 398804,
       "restored_library": 220192
     },
-    "matching_functions": 3731
+    "matching_functions": 3733
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -252,9 +252,9 @@
     "config/GMFE69/aramalloc.json": "235854529e9a9b820a58088862e13a6bc1a4bbaaa4e00117f8f253b948790932",
     "config/GMFE69/arq.json": "53c9d956d7cd2b69c858816128443494613f46b3ad680d5056ae00227df49900",
     "config/GMFE69/attachobject.json": "f1dba5b780266dae3fa6be9077f76b2792d4882b9c747d6fd6e411030cad3a34",
-    "config/GMFE69/attachobject_anim.json": "36415bcb47ea5879db3fe508c84b260fa968d856238d9566d28bbb1b474ecf20",
-    "config/GMFE69/attachobject_ctor.json": "6fb52eefbad1919ede25d79df314764dace32d03f3b79b801a9672f25a2778db",
+    "config/GMFE69/attachobject_ctor.json": "3c7dbf2c203960c376b069a021c75606b47a04de1b1394c17bf803cec1a525d8",
     "config/GMFE69/attachobject_type.json": "11187b1e221b9b32c73568645d7b17d3af427f3a29290a58cf254ccdc467e55b",
+    "config/GMFE69/attachobject_update.json": "646efdd1221017e33085bc7287fb02d35541fdde1555ecbebe721eeac859fd11",
     "config/GMFE69/audioplayer.json": "b6e4257cba8554cee346f4ad5d959fc3e42b9db956ce091211d58d446fe021bd",
     "config/GMFE69/avplayer.json": "fa02b7a095317e210a53ba4a56c0ff640f888e2809385e22eddb9c8e2777c050",
     "config/GMFE69/baseline.json": "36a2b85cf4193e53afac79bdd2a8fdbf8dfb1880cae89e119463f2c81461b42f",
@@ -645,7 +645,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "d798a20784520427b1237de33a210f5b9973efd28c4495d804b2a72ce7a16df7",
+    "config/GMFE69/project.json": "93366dafc622c8aa4af73a9ded9f46ed8899d2c2b1f256cd8eae26af9d8940e3",
     "config/GMFE69/projectilebullet.json": "cdb5672aceab48b4c354e7df26f4d02a36355002f12a5c0901f81866b26f9213",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2092,9 +2092,9 @@
     "src/game/animst.cpp": "c21b2120a38a43ccf28537b31f9f22c5b5d21d59cf2d48951276464a65bf4bf9",
     "src/game/animwgt.cpp": "001c05d29d185c0a4f21712270ddb62c29fc3808bede837c4acdb3ad1c63af1c",
     "src/game/attachobject.cpp": "7beae62a0ded89a3876b3019473c6e6dfdc1d1d2b44c8822272f346352f02833",
-    "src/game/attachobject_anim.cpp": "401aacab85f111282fba87c009ae08e15e788de748297d81d2790d09cc94d154",
-    "src/game/attachobject_ctor.cpp": "710e9d7225e04fabf1bdfee0e88ec9950a4fbaf31bfdd98b653d9b194feac887",
+    "src/game/attachobject_ctor.cpp": "e0eb46b3633af1cb357dfee7e8ae4a66cd799a555003be8e7ec6d84b5224fbc7",
     "src/game/attachobject_type.cpp": "2cc5b7fc297396790cfb5f76b6c7b53fa38d4ee347a5aae5f09ffc2dd5fe2789",
+    "src/game/attachobject_update.cpp": "76b3871f9f157bea9d926a60110b9318a8f2b5e88f4603551ece8abf2b0bb539",
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
     "src/game/avplayer.cpp": "f6a87e2eda181317ce0f35df24b8a6722ed3988080edf2be0f240a663ab4d6fb",
     "src/game/bigyuvswizzler.cpp": "1d10220828e8a416c2e4553f44d9b64ae5a093c99b05ed11d650cbbb8c5374af",
@@ -41719,8 +41719,8 @@
     {
       "id": "attachobject_ctor",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 500,
+      "functions": 5,
+      "code_bytes": 1468,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41752,14 +41752,14 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "1f1aff268f2368c44f97f6d56239a7c3030bf0ab0af56b0e115b3de3fdc8a074",
-      "linked_sha256": "d8a56b1909bffbd69efddeb7904b0e19e0d3aa57f7bbad382be240404aab3566"
+      "object_sha256": "8705f45af01ca352fd8390cf1f2159c1ff4795f577016a26d892a04de1e30072",
+      "linked_sha256": "0c7abec12eaa41f430f26b908283b8a6bbf40b88aa7d9a19fa8dc6d9e991cc42"
     },
     {
-      "id": "attachobject_anim",
+      "id": "attachobject_update",
       "category": "reconstructed_game",
       "functions": 1,
-      "code_bytes": 256,
+      "code_bytes": 512,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41791,8 +41791,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f14d7c9b5c1e31bbd950a5b023f0cfd08d674ceeadaca720a9570362ed313293",
-      "linked_sha256": "aebd495fd63bfd7ffa04c36880c1e7d6febdafb5e79beeb1a8f931f510d766a5"
+      "object_sha256": "b4e485010c53fd2746d748a852c4b8ad652100e5c74864467c25006c919bd1b3",
+      "linked_sha256": "8592d52bfcf0c71c1caa45d80270d364bb8d54a105cbd628801bf94264ed9898"
     }
   ],
   "code_map": {
@@ -46577,13 +46577,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x800974f8",
-            "size": 512,
-            "kind": "function",
-            "name": "UpdateAttachedObjects__17CAttachableObjectFv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x800976f8",
             "size": 32,
             "kind": "function",
@@ -46602,13 +46595,6 @@
             "size": 268,
             "kind": "function",
             "name": "DetachObject__17CAttachableObjectFP10ISceneNode",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80097944",
-            "size": 712,
-            "kind": "function",
-            "name": "AttachObject__17CAttachableObjectFP13CPlayerObjectib",
             "evidence": "exception-index"
           }
         ]
