@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80040aa0",
-      "size": 460,
+      "address": "0x800409bc",
+      "size": 688,
       "type": 1
     },
     {
@@ -51,14 +51,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a52c",
-      "size": 24,
+      "address": "0x8000a524",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011570",
-      "size": 36,
+      "address": "0x80011564",
+      "size": 48,
       "type": 1
     },
     {
@@ -80,6 +80,12 @@
       "address": "0x80040c34",
       "size": 56,
       "binding": 0
+    },
+    {
+      "name": "CreateObjectGetMemoryRequirements__Fv",
+      "address": "0x800409bc",
+      "size": 228,
+      "binding": 1
     },
     {
       "name": "__dt__20CDumpObjectContainerFv",
@@ -161,6 +167,7 @@
     }
   ],
   "externals": {
+    "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii": "0x8003bea8",
     "__construct_array": "0x8013834c",
     "__ct__35BSUtilObjectInstanceMemoryAllocatorFv": "0x8003bf6c",
     "__destroy_arr": "0x801382d4",

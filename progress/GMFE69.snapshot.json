@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 614940,
+    "matching_code_bytes": 615168,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.47180631314631,
+    "percent": 43.48792426260381,
     "categories": {
-      "reconstructed_game": 394748,
+      "reconstructed_game": 394976,
       "restored_library": 220192
     },
-    "matching_functions": 3716
+    "matching_functions": 3717
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -586,7 +586,7 @@
     "config/GMFE69/notify.json": "c38d6c9a4082d80e5a32878f9cd688b3a1f471536d75f5c5735906a7d0084251",
     "config/GMFE69/nubevent.json": "d6afc4bc3a93eb5ab6fc791d166d4243a4fee57863e76656a656235d2e20e0f2",
     "config/GMFE69/nubinit.json": "31d1c39b2e8b521619a8057a399755f5ef941d3d9949999f6b99a43d81fe87a2",
-    "config/GMFE69/objcreate.json": "7780c06cc834bfacffa713b60bf48a6753f26ca45c800d8d787f3032fe32afa0",
+    "config/GMFE69/objcreate.json": "8aa53cc229060189bfbced99d61b9e3f2facf96554cf1a17313aceecc5f71718",
     "config/GMFE69/objcreate_thrown.json": "334c68cae2e5123b5cb53448f30dc8275828167dde1ff1c5ff2296569c2cacaa",
     "config/GMFE69/objcreate_volumes.json": "484e532e65dbb65653fd98fbe261e1450501bb417e192bdb856eaa32e8f7b802",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
@@ -2326,7 +2326,7 @@
     "src/game/matstack.cpp": "638dd12848a38cfa8685f9555ed05c03824115e83eb4ebe1caf090175a1351ff",
     "src/game/memory.cpp": "75e50f5f66acd16755a070f59afef29e6869b97dede92fada6399d2931c1b27c",
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
-    "src/game/objcreate.cpp": "0d48087a61a1db87a72c4aae93711e3bdaba21d7e9f05667d9a8b48bc8ef92ee",
+    "src/game/objcreate.cpp": "c03f9a9c68ea389d05469df2c6a01f806724b46c7bd1734ddc8ef4b44f73c44a",
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "37e33f3014a33220b45325c87ae6ad10bde2e1d5305f03e334377332d9dd3b12",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
@@ -19330,8 +19330,8 @@
     {
       "id": "objcreate",
       "category": "reconstructed_game",
-      "functions": 15,
-      "code_bytes": 460,
+      "functions": 16,
+      "code_bytes": 688,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -19363,8 +19363,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "37c607b53cee25aa9ace40e989044cb9c980aa721af308e0ff16deee086aeaa5",
-      "linked_sha256": "4c11629e089c965006e665109b5f7ad86b70f8ee0639cf9a35988cf3b2ca2f16"
+      "object_sha256": "cca481c663db17c7a57270dafe8b0cd76973db91a965f697c53208409c6e6f82",
+      "linked_sha256": "0249aa4d297c189627bdff365d8ed7ab294ea2b15f87ece309a143aabd25a868"
     },
     {
       "id": "Moh2",
@@ -42649,13 +42649,6 @@
             "size": 848,
             "kind": "function",
             "name": "InitObjectCreators__Fv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800409bc",
-            "size": 228,
-            "kind": "function",
-            "name": "CreateObjectGetMemoryRequirements__Fv",
             "evidence": "exception-index"
           }
         ]

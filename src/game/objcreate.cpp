@@ -1,4 +1,5 @@
-// Script game-object creation, the dump container's destructor and the
+// Script game-object creation: CreateObjectGetMemoryRequirements (the
+// memory the file's allocators need), the dump container's destructor and the
 // accessors of the script game-object classes that follow it. The class names
 // come from the mangled symbols; the members are inferred from offsets and the
 // accessors' result types are left incomplete. The accessors are inline in
@@ -32,6 +33,36 @@ public:
     int data08;
     int data0c;
 };
+
+class BSUtilObjectInstanceMemoryAllocator {
+public:
+    BSUtilObjectInstanceMemoryAllocator() {}
+    ~BSUtilObjectInstanceMemoryAllocator();
+    int ComputeNeededSize(int, int, int);
+
+    unsigned char unknown00[28];
+};
+
+static BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[2];
+static BSUtilObjectInstanceMemoryAllocator g_pVolumeAllocator;
+static BSUtilObjectInstanceMemoryAllocator g_pAnimatedVolumeAllocator;
+static BSUtilObjectInstanceMemoryAllocator g_pEnvModMechAllocator;
+static CDumpObjectContainer g_DumpObjectContainer;
+
+// The memory needed by the file's allocators, each block after the first
+// two padded to 16 bytes.
+int CreateObjectGetMemoryRequirements() {
+    int size = 0;
+    size += g_pObjectAllocators[0].ComputeNeededSize(48, 200, 0);
+    size += g_pObjectAllocators[1].ComputeNeededSize(248, 25, 0);
+    size += (16 - (size & 15)) & 15;
+    size += g_pVolumeAllocator.ComputeNeededSize(80, 450, 16);
+    size += (16 - (size & 15)) & 15;
+    size += g_pEnvModMechAllocator.ComputeNeededSize(128, 50, 16);
+    size += (16 - (size & 15)) & 15;
+    size += g_pAnimatedVolumeAllocator.ComputeNeededSize(1984, 50, 16);
+    return size;
+}
 
 CDumpObjectContainer::~CDumpObjectContainer() {
     delete[] m_objects;
@@ -134,16 +165,3 @@ __declspec(weak) HitReactionInfoView* BSGO_Soldier::GetEmbeddedHitReactionInfo()
     return (HitReactionInfoView*)m_hitReaction;
 }
 
-class BSUtilObjectInstanceMemoryAllocator {
-public:
-    BSUtilObjectInstanceMemoryAllocator() {}
-    ~BSUtilObjectInstanceMemoryAllocator();
-
-    unsigned char unknown00[28];
-};
-
-static BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[2];
-static BSUtilObjectInstanceMemoryAllocator g_pVolumeAllocator;
-static BSUtilObjectInstanceMemoryAllocator g_pAnimatedVolumeAllocator;
-static BSUtilObjectInstanceMemoryAllocator g_pEnvModMechAllocator;
-static CDumpObjectContainer g_DumpObjectContainer;
