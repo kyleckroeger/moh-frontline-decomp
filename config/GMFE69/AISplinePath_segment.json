@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80051b90",
-      "size": 320,
+      "address": "0x80051ad4",
+      "size": 508,
       "type": 1
     },
     {
@@ -70,6 +70,12 @@
       "binding": 1
     },
     {
+      "name": "ExpandDerivative__20CAISplinePathSegmentFfR8CVector3",
+      "address": "0x80051ad4",
+      "size": 188,
+      "binding": 1
+    },
+    {
       "name": "Expand__20CAISplinePathSegmentFfR8CVector3",
       "address": "0x80051b90",
       "size": 256,
@@ -86,5 +92,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AISplinePath.cpp",
-  "original_file_index": 2053
+  "original_file_index": 2053,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f9a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f9ac"
+    }
+  ]
 }

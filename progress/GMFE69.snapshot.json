@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 615168,
+    "matching_code_bytes": 615356,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.48792426260381,
+    "percent": 43.50121450163017,
     "categories": {
-      "reconstructed_game": 394976,
+      "reconstructed_game": 395164,
       "restored_library": 220192
     },
-    "matching_functions": 3717
+    "matching_functions": 3718
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -47,7 +47,7 @@
     "config/GMFE69/AISoldierObject.json": "c3d1756c0755251a68f135a86019766caa0aa2b222b71095c50f2d42aa27f69f",
     "config/GMFE69/AISoldierObject_ctor.json": "a7b979564261bc2ef0a5ed1f07a920b982831b83f04763b077e6fc53f5989748",
     "config/GMFE69/AISplinePath.json": "1c74a6525471caf1cb13b2fe967be1a1bf475b3ff54eb31f3481afd4c20d4b49",
-    "config/GMFE69/AISplinePath_segment.json": "8b706d83284089137939fa8605cc1d103831a6e46f8fa661f208153cb2f48036",
+    "config/GMFE69/AISplinePath_segment.json": "d7c8cddea3e6d1004c0bd38188db68217eabb5d9584b26434afbd21d9517862a",
     "config/GMFE69/AIStatus.json": "660a5d8ecd6c07021df76f56c05e8c09028a125b685db2bdc15ffc00155e6916",
     "config/GMFE69/AITankDoodad.json": "733dd452ed553547b1c19276c94ec192493fdac622dc9fe66b677e200a12a55a",
     "config/GMFE69/AITankDoodad_ctor.json": "b7339de28c2f82bb5a2232ffe6f5a7490858774ac38a3f336ca933e0efa117a9",
@@ -1975,7 +1975,7 @@
     "src/game/AISoldierObject.cpp": "82ab8c934b605ad46fc5f84e47ad097ad75cbe488964e674f7b99f931cd36a00",
     "src/game/AISoldierObject_ctor.cpp": "86458ba29907f92ba9c9d81cfb59616d227e0c6402d4448fe1478d22516f9e6d",
     "src/game/AISplinePath.cpp": "add4c235edc4c831ad4a130df34d27367a7806edc416fa12cfdf29421fb3ecf5",
-    "src/game/AISplinePath_segment.cpp": "7e91c21740cea7493fb92544cf91582d518c968a0e12795a5a687e1d325ecb54",
+    "src/game/AISplinePath_segment.cpp": "1fe2fd163252000e51eebebe305b7b512b764df07fbb755713d07c86e061d126",
     "src/game/AIStatus.cpp": "b0cb64aa93cf6090a9a87ef0cecc6265f1501230bb50b10428d58cfb2173001c",
     "src/game/AITankDoodad.cpp": "35252fb5c75740ecddc982a39bfecfc3c4a046a4e75046679eff1050fd598da9",
     "src/game/AITankDoodad_ctor.cpp": "8255a774b4a9461f08ade2f235e630d06713d1fbf28edbf1bdbaec5cc5e1b4e7",
@@ -28310,8 +28310,8 @@
     {
       "id": "AISplinePath_segment",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 320,
+      "functions": 4,
+      "code_bytes": 508,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28343,8 +28343,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "3864398ac8064c2b8bb6dbffaa3dbc112e706d16317b345bae71e8600a6f9425",
-      "linked_sha256": "ad2dabb6f8bed17b7e843986a866725e8de8243c24d76adea03dabedaebc6286"
+      "object_sha256": "5700a318761cfd18610323438806dc59fd75d33a67219cd83c157d50f4dd187f",
+      "linked_sha256": "ce4265f49ae90d8d122370587dea44a6267ac8a7cd3af9f776b8066b8b5cc493"
     },
     {
       "id": "bsmessage_group",
@@ -43266,13 +43266,6 @@
             "kind": "function",
             "name": "GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80051ad4",
-            "size": 188,
-            "kind": "function",
-            "name": "ExpandDerivative__20CAISplinePathSegmentFfR8CVector3",
-            "evidence": "between-same-file"
           }
         ]
       },
