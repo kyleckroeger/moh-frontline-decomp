@@ -1,4 +1,10 @@
-// A fragment of AIObject.cpp (0x80049bfc): CAIObject::SetupFieldOfViewCorpse
+// A fragment of AIObject.cpp (0x80049af4): CAIObject::CheckFieldOfViewModeObject
+// (the watched object, when in the field of view at the vision distance -
+// halved for a flag at +1840 of the object, times 0.75 when it is crouching -
+// and the field-of-view angle; when it is the object at +196 its position is
+// copied to +336 and two flags set; the result type is inferred; the vtable
+// is declared up to IsCrouching, as in __vt__9CAIObject, so the object can be
+// asked), CAIObject::SetupFieldOfViewCorpse
 // (the corpse vision distance at +1764 and angle at +1776, same defaults and
 // warnings as below), CAIObject::SetupFieldOfViewModeList
 // (copies the match entries, 12 bytes each, to +1780 and their count to
@@ -37,15 +43,28 @@ struct aistatus_match {
 
 class CAIObject {
 public:
+    virtual ~CAIObject();
+    virtual void PreUpdate();
+    virtual void Update(float);
+    virtual bool IsCrouching() const;
+
+    CAIObject* CheckFieldOfViewModeObject(); /* result type inferred */
+    bool IsObjectInFieldOfView(CAIFilterRealPosition&, float, float, bool);
     void SetupFieldOfViewCorpse(float, float);
     void SetupFieldOfViewModeList(aistatus_match*, int, float, float);
     void SetupFieldOfViewModeObject(CAIObject*, float, float);
     void ProcessObstacleAvoidance();
     void EngageObstacleAvoidance(bool, float, float, float);
 
-    unsigned char unknown000[80];
+    unsigned char unknown004[20];
+    CAIFilterRealPosition m_position;
+    unsigned char unknown024[44];
     CAIFilterRealPosition m_unknown050;
-    unsigned char unknown05c[648];
+    unsigned char unknown05c[104];
+    CAIObject* m_unknownC4;
+    unsigned char unknown0c8[136];
+    CAIFilterRealPosition m_unknown150;
+    unsigned char unknown15c[392];
     bool m_unknown2e4;
     unsigned char unknown2e5[3];
     CObstacleAvoidance m_obstacleAvoidance;
@@ -58,7 +77,9 @@ public:
     unsigned char unknown694[4];
     CAIObject* m_listObject;
     CAIObject* m_fovObject;
-    unsigned char unknown6a0[60];
+    unsigned char unknown6a0[56];
+    bool m_unknown6d8;
+    unsigned char unknown6d9[3];
     float m_listDistance;
     float m_visionDistance;
     float m_corpseDistance;
@@ -67,7 +88,36 @@ public:
     float m_corpseAngle;
     aistatus_match m_list[4];
     int m_listCount;
+    unsigned char unknown728[8];
+    bool m_unknown730;
+    bool m_unknown731;
 };
+
+CAIObject* CAIObject::CheckFieldOfViewModeObject() {
+    float distance;
+    float angle;
+    CAIObject* object = m_fovObject;
+    angle = m_fovAngle;
+    distance = m_visionDistance;
+    if (object->m_unknown730)
+        distance *= 0.5f;
+    if (object->IsCrouching())
+        distance *= 0.75f;
+    if (IsObjectInFieldOfView(object->m_position, distance, angle, object->IsCrouching())) {
+        if (m_fovObject == m_unknownC4) {
+            float z = m_fovObject->m_position.z;
+            float y = m_fovObject->m_position.y;
+            float x = m_fovObject->m_position.x;
+            m_unknown150.x = x;
+            m_unknown150.y = y;
+            m_unknown150.z = z;
+            m_unknown6d8 = 1;
+            m_unknown731 = 1;
+        }
+        return m_fovObject;
+    }
+    return 0;
+}
 
 void CAIObject::SetupFieldOfViewCorpse(float distance, float angle) {
     if (distance <= 0.001f) {

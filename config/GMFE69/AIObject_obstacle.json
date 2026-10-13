@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80049bfc",
-      "size": 652,
+      "address": "0x80049af4",
+      "size": 916,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a724",
-      "size": 40,
+      "address": "0x8000a71c",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011864",
-      "size": 60,
+      "address": "0x80011858",
+      "size": 72,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CheckFieldOfViewModeObject__9CAIObjectFv",
+      "address": "0x80049af4",
+      "size": 264,
+      "binding": 1
+    },
     {
       "name": "SetupFieldOfViewCorpse__9CAIObjectFff",
       "address": "0x80049bfc",
@@ -90,6 +96,7 @@
   ],
   "externals": {
     "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80053738",
+    "IsObjectInFieldOfView__9CAIObjectFR21CAIFilterRealPositionffb": "0x80048eec",
     "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80054304",
     "RunEnvironmentCollisionChecks__18CObstacleAvoidanceFv": "0x80053c34",
     "memcpy": "0x800094f8",
@@ -136,23 +143,35 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034f8a8"
+      "address": "0x8034f8b0"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x8034f8ac"
+      "address": "0x8034f8a0"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x8034f8c4"
+      "address": "0x8034f8a8"
     },
     {
       "section": ".sdata2",
       "offset": 12,
+      "size": 4,
+      "address": "0x8034f8ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f8c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
       "size": 4,
       "address": "0x8034f8c8"
     }
