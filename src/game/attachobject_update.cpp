@@ -1,7 +1,10 @@
 // A fragment of attachobject.cpp (0x800974f8): CAttachableObject::
 // UpdateAttachedObjects, which updates each of the ten occupied attachment
 // slots through the per-slot inline described in attachobject_ctor.cpp (the
-// views are the same, inferred).
+// views are the same, inferred), then IsVisible and Draw (CStaticObject's)
+// and DetachObject (every slot holding the object is cleared, an animated
+// object told it is detached, a player's two flag bits reset and its weapon
+// shown; true when one was found).
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -107,8 +110,13 @@ public:
     virtual void SetTMLocalToWorld(const CMatrix&);
 };
 
+class CDrawContext;
+
 class CStaticObject : public ISceneNode {
 public:
+    bool IsVisible(CDrawContext&) const; /* result type inferred */
+    void Draw(CDrawContext&);
+
     unsigned char data004[60];
     CMatrix m_tm;
     unsigned char data080[512];
@@ -116,6 +124,8 @@ public:
 
 class CAnimObject : public ISceneNode {
 public:
+    void SetAttached(bool);
+
     unsigned char data004[3900];
     CMatrix m_unknownF40;
     unsigned char data0f80[5428];
@@ -124,6 +134,11 @@ public:
 
 class CPlayerObject : public ISceneNode {
 public:
+    void SetHideWeapon(bool);
+    /* Inferred inline setters (names not original). */
+    void SetFlag02(bool on) { m_flag02 = on; }
+    void SetFlag01(bool on) { m_flag01 = on; }
+
     unsigned char data004[914];
     bool m_flag80 : 1;
     bool m_flag40 : 1;
@@ -141,6 +156,9 @@ class CAttachableObject : public CStaticObject {
 public:
     virtual void MarkForDestruction(int); /* defined elsewhere; keeps the table out */
     void UpdateAttachedObjects();
+    bool IsVisible(CDrawContext&) const; /* result type inferred */
+    void Draw(CDrawContext&);
+    bool DetachObject(ISceneNode*); /* result type inferred */
     void UpdateAttachedObject(int);
 
     ISceneNode* m_attached[10];
@@ -186,4 +204,31 @@ void CAttachableObject::UpdateAttachedObjects() {
         if (m_attached[i])
             UpdateAttachedObject(i);
     }
+}
+
+bool CAttachableObject::IsVisible(CDrawContext& context) const {
+    return CStaticObject::IsVisible(context);
+}
+
+void CAttachableObject::Draw(CDrawContext& context) {
+    CStaticObject::Draw(context);
+}
+
+bool CAttachableObject::DetachObject(ISceneNode* object) {
+    bool found = false;
+    for (int i = 0; i < 10; i++) {
+        if (m_attached[i] == object) {
+            found = true;
+            if (m_attachFlag[i] == 2) {
+                m_attached[i]->AsAnimObject()->SetAttached(false);
+            } else if (m_attachFlag[i] == 3) {
+                m_attached[i]->AsPlayerObject()->SetFlag02(false);
+                m_attached[i]->AsPlayerObject()->SetFlag01(true);
+                m_attached[i]->AsPlayerObject()->SetHideWeapon(false);
+            }
+            m_attached[i] = 0;
+            m_attachFlag[i] = 0;
+        }
+    }
+    return found;
 }
