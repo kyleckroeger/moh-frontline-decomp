@@ -1,0 +1,81 @@
+{
+  "id": "attachobject_anim",
+  "source": "src/game/attachobject_anim.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80097844",
+      "size": 256,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cadc",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013bc8",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "AttachObject__17CAttachableObjectFP11CAnimObjecti",
+      "address": "0x80097844",
+      "size": 256,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
+    "SetAttached__11CAnimObjectFb": "0x800936a0",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "attachobject.cpp",
+  "original_file_index": 5806
+}

@@ -25,6 +25,7 @@ public:
 
 class ISceneNode {
 public:
+    virtual void MarkForDestruction(int);
     virtual ~ISceneNode();
 };
 
@@ -69,7 +70,6 @@ public:
     CStaticObject();
     CStaticObject(CStaticMesh*, int, int, int, int, int, MotionFrame*);
     virtual ~CStaticObject();
-    virtual void unknown00c();
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
