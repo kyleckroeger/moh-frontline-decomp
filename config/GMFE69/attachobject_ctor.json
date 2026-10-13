@@ -39,34 +39,40 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80097cf8",
-      "size": 264,
+      "address": "0x80097c0c",
+      "size": 500,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000caf4",
-      "size": 56,
+      "address": "0x8000caec",
+      "size": 64,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 64,
+      "linked_size": 72,
       "stripped_objects": [
-        "@20"
+        "@37"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x80013bec",
-      "size": 24,
+      "address": "0x80013be0",
+      "size": 36,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36,
+      "linked_size": 48,
       "stripped_objects": [
-        "@21"
+        "@38"
       ]
     }
   ],
   "functions": [
+    {
+      "name": "AttachObject__17CAttachableObjectFP13CStaticObjecti",
+      "address": "0x80097c0c",
+      "size": 236,
+      "binding": 1
+    },
     {
       "name": "__ct__17CAttachableObjectFP11CStaticMeshiiiiiPQ213CStaticObject11MotionFrame",
       "address": "0x80097cf8",
@@ -81,12 +87,15 @@
     }
   ],
   "externals": {
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "__construct_array": "0x8013834c",
     "__ct__13CStaticObjectFP11CStaticMeshiiiiiPQ213CStaticObject11MotionFrame": "0x800b1e10",
     "__ct__13CStaticObjectFv": "0x800b2024",
     "__defctor__7CMatrixFv": "0x80095b40",
     "__dt__13CStaticObjectFv": "0x800b1d64",
-    "__vt__17CAttachableObject": "0x80187500"
+    "__vt__17CAttachableObject": "0x80187500",
+    "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [
     "__ct__7CMatrixFi"
