@@ -1,4 +1,6 @@
-// A fragment of AIObject.cpp (0x80049c90): CAIObject::SetupFieldOfViewModeList
+// A fragment of AIObject.cpp (0x80049bfc): CAIObject::SetupFieldOfViewCorpse
+// (the corpse vision distance at +1764 and angle at +1776, same defaults and
+// warnings as below), CAIObject::SetupFieldOfViewModeList
 // (copies the match entries, 12 bytes each, to +1780 and their count to
 // +1828, clears the watched object at +1688, then the same distance and angle
 // defaults as below into +1756 and +1772), CAIObject::SetupFieldOfViewModeObject
@@ -35,6 +37,7 @@ struct aistatus_match {
 
 class CAIObject {
 public:
+    void SetupFieldOfViewCorpse(float, float);
     void SetupFieldOfViewModeList(aistatus_match*, int, float, float);
     void SetupFieldOfViewModeObject(CAIObject*, float, float);
     void ProcessObstacleAvoidance();
@@ -58,13 +61,26 @@ public:
     unsigned char unknown6a0[60];
     float m_listDistance;
     float m_visionDistance;
-    unsigned char unknown6e4[4];
+    float m_corpseDistance;
     float m_fovAngle;
     float m_listAngle;
-    unsigned char unknown6f0[4];
+    float m_corpseAngle;
     aistatus_match m_list[4];
     int m_listCount;
 };
+
+void CAIObject::SetupFieldOfViewCorpse(float distance, float angle) {
+    if (distance <= 0.001f) {
+        printf("Warning: SFOVC - Vision distance is zero, changing to default\n");
+        distance = 50.0f;
+    }
+    m_corpseDistance = distance;
+    if (angle <= 0.001f) {
+        printf("Warning: FOV is zero, changing to default\n");
+        angle = 90.0f;
+    }
+    m_corpseAngle = 0.017453292f * angle;
+}
 
 void CAIObject::SetupFieldOfViewModeList(aistatus_match* list, int count, float distance, float angle) {
     memcpy(m_list, list, count * sizeof(aistatus_match));

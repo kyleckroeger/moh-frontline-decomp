@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80049c90",
-      "size": 504,
+      "address": "0x80049bfc",
+      "size": 652,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a72c",
-      "size": 32,
+      "address": "0x8000a724",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011870",
-      "size": 48,
+      "address": "0x80011864",
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetupFieldOfViewCorpse__9CAIObjectFff",
+      "address": "0x80049bfc",
+      "size": 148,
+      "binding": 1
+    },
     {
       "name": "SetupFieldOfViewModeList__9CAIObjectFP14aistatus_matchiff",
       "address": "0x80049c90",
@@ -105,12 +111,24 @@
     {
       "section": ".rodata",
       "offset": 0,
+      "size": 63,
+      "address": "0x8016f780"
+    },
+    {
+      "section": ".rodata",
+      "offset": 64,
+      "size": 43,
+      "address": "0x8016f7c0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 108,
       "size": 64,
       "address": "0x8016f7ec"
     },
     {
       "section": ".rodata",
-      "offset": 64,
+      "offset": 172,
       "size": 64,
       "address": "0x8016f82c"
     },
