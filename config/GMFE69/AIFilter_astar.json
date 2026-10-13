@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005d5d4",
-      "size": 396,
+      "address": "0x8005d4ac",
+      "size": 692,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b208",
-      "size": 64,
+      "address": "0x8000b200",
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001223c",
-      "size": 72,
+      "address": "0x80012230",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "InvalidateCoverPointByID__15CAIFilterGlobalFi",
+      "address": "0x8005d4ac",
+      "size": 296,
+      "binding": 1
+    },
     {
       "name": "DisableCollidingAStarPathNodes__15CAIFilterGlobalFPC7IVolume",
       "address": "0x8005d5d4",
@@ -105,11 +111,14 @@
     "EnableAll__13CPathNodeListFv": "0x80055028",
     "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionRC20CAIFilterRealVector3": "0x8005552c",
     "GetPathNodeByID__13CPathNodeListCFi": "0x80055790",
+    "Invalidate__11CCoverPointFv": "0x800526b0",
     "ResetGlobalList__9CAIObjectFv": "0x8004ec60",
     "Reset__11CSearchNodeFv": "0x80055fc8",
     "__ct__13CPathNodeListFPvP18BPDPathFindingNodei": "0x800557a0",
     "__dl__FPv": "0x8001ca2c",
     "__nw__FUl": "0x8001cb60",
+    "g_pNumTriggers": "0x8034e8bc",
+    "g_pTriggerObjects": "0x801a1300",
     "recent_sounds": "0x801c6db8"
   },
   "undefined_in_discarded_code": [],
@@ -119,7 +128,9 @@
     "recent_sounds"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_pNumTriggers"
+  ],
   "original_file": "AIFilter.cpp",
   "original_file_index": 2575
 }

@@ -6,19 +6,19 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 614644,
+    "matching_code_bytes": 614940,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.45088125595586,
+    "percent": 43.47180631314631,
     "categories": {
-      "reconstructed_game": 394452,
+      "reconstructed_game": 394748,
       "restored_library": 220192
     },
-    "matching_functions": 3715
+    "matching_functions": 3716
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
     "config/GMFE69/AIFilter.json": "ee4faf72f34a4377b5298bc29b8bd9a744ab3639cd9e552a9b3ab92fdf3ccc8e",
-    "config/GMFE69/AIFilter_astar.json": "7c8fb29da01f2e53fefe0ee982c705af281cc68cf294bc49f326e30cc4629920",
+    "config/GMFE69/AIFilter_astar.json": "cf04c49ffb58395275ecc73b3b39d97910d1bceedab4055e2fef49a7d2e779fc",
     "config/GMFE69/AIFilter_caifilterobject_dtor.json": "ab035fef8e3042512f0744c46aca04bd808bacafc34e982b02a297bf111f6717",
     "config/GMFE69/AIFilter_collisiondist.json": "92bf52dc496f87dc4a92a3cf508be6f9243fe712460a130fb1f5c3bd2fd0d990",
     "config/GMFE69/AIFilter_linechecks.json": "2b952f4eb91c42bd2da84282d07969d91463036eca1aca3f8664a216f5df6231",
@@ -1946,7 +1946,7 @@
     "src/ea/timerthread.cpp": "e2ee2dfbb74893029f0693bb5b76212bdd70223c892d9fd963984794c6193628",
     "src/game/AIDoodad.cpp": "7e5e7020b4ceb4513ae83e72ea089f575c39464a571ed6057278305423157742",
     "src/game/AIFilter.cpp": "70562eda267cbadd18a9b58d1672cf32e3e0db0e944b5816cc57dbe84f8cf611",
-    "src/game/AIFilter_astar.cpp": "dfb5331542cc3964e587f11594ee7e8cce3f74bbe9751b82fcc3e87c00cd79da",
+    "src/game/AIFilter_astar.cpp": "0a12563b436337b6d55f32d36308324c671dc526313b650a12dead727ff25aed",
     "src/game/AIFilter_caifilterobject_dtor.cpp": "74a1bad2f4372942648724f0ee107aa50b21424f3b9372e4a8c193961c3efaf6",
     "src/game/AIFilter_collisiondist.cpp": "71b686b852204e001142e6c5999850ad9bd2e8558e269003dbd4abeb08640286",
     "src/game/AIFilter_linechecks.cpp": "251a98e238821ebe03cf95b6e2fcb5147ad84472be8a727d8887fb0a53a9c652",
@@ -24564,8 +24564,8 @@
     {
       "id": "AIFilter_astar",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 396,
+      "functions": 8,
+      "code_bytes": 692,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24597,8 +24597,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "50b6ce27e7e0784de8c18d1dd3dca2182a1483bda2784877d4e9ef36dce6aae2",
-      "linked_sha256": "f848267f56f6fb53ac651cae9bcb0909076ef5af3dfb4adec21692717b119994"
+      "object_sha256": "a8b106913353791fbd7deef144088f51f063ec3dd671ba7ff15fb3f777279668",
+      "linked_sha256": "b053cfa9a3a8e05e83a1c955d3471c17b8a4a524f421b8a315eee14216925d9c"
     },
     {
       "id": "ShellMenu_levels",
@@ -43980,13 +43980,6 @@
             "kind": "function",
             "name": "GetCoverPointByIndex__15CAIFilterGlobalCFi",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8005d4ac",
-            "size": 296,
-            "kind": "function",
-            "name": "InvalidateCoverPointByID__15CAIFilterGlobalFi",
-            "evidence": "exception-index"
           },
           {
             "address": "0x8005d760",

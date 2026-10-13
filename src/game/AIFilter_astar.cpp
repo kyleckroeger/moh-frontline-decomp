@@ -1,6 +1,8 @@
-// A fragment of AIFilter.cpp (0x8005d5d4): CAIFilterGlobal's A* and spline
-// helpers. The path-node functions forward to the path-node list (created on
-// demand when there are nodes); GetSplinePath finds the spline with an id
+// A fragment of AIFilter.cpp (0x8005d4ac): CAIFilterGlobal's
+// InvalidateCoverPointByID (invalidates every cover-point waypoint in the
+// trigger table whose core id matches), then its A* and spline helpers. The
+// path-node functions forward to the path-node list (created on demand when
+// there are nodes); GetSplinePath finds the spline with an id
 // (offset by 0x1000000 for the alternate set) in the spline manager's
 // 12-byte entries; ResetSplinePathManager resets the search-node pool, clears
 // the count in the file's recent_sounds record and resets the AI object
@@ -67,8 +69,34 @@ struct RecentSoundsView {
 
 extern RecentSoundsView recent_sounds;
 
+// Inferred views (named in propdat_bsp.cpp): a trigger table entry and the
+// core record it points to (type +0x0c, id +0x38, class CRC +0x48).
+struct MOH_core_Struct {
+    unsigned char unknown00[12];
+    int field0c;
+    unsigned char unknown10[40];
+    short field38;
+    unsigned char unknown3a[14];
+    unsigned long field48;
+};
+
+struct TriggerObject_struct {
+    unsigned int flags;
+    MOH_core_Struct* core;
+    void* bsObject;
+};
+
+extern unsigned int g_pNumTriggers;
+extern TriggerObject_struct g_pTriggerObjects[2000];
+
+class CCoverPoint {
+public:
+    void Invalidate();
+};
+
 class CAIFilterGlobal {
 public:
+    void InvalidateCoverPointByID(int);
     void DisableCollidingAStarPathNodes(const IVolume*);
     void EnableAllAStarPathNodes();
     CPathNode* GetClosestAStarPathNode(const CAIFilterRealPosition&, const CAIFilterRealVector3&) const;
@@ -81,6 +109,25 @@ public:
     SplinePathManagerView* m_splines;
     CPathNodeList* m_pathNodes;
 };
+
+// Inferred inline: the next cover-point waypoint (type 5, CRC 0x9101c906)
+// from a trigger entry on; the cover point is the trigger entry itself.
+static inline CCoverPoint* FindCoverPoint(TriggerObject_struct* trigger) {
+    TriggerObject_struct* end = g_pTriggerObjects + g_pNumTriggers;
+    for (; trigger < end; trigger++) {
+        if (trigger->core->field0c == 5 && trigger->core->field48 == 0x9101c906)
+            return (CCoverPoint*)trigger;
+    }
+    return 0;
+}
+
+void CAIFilterGlobal::InvalidateCoverPointByID(int id) {
+    for (CCoverPoint* point = FindCoverPoint(g_pTriggerObjects); point;
+         point = FindCoverPoint((TriggerObject_struct*)point + 1)) {
+        if (((TriggerObject_struct*)point)->core->field38 == id)
+            point->Invalidate();
+    }
+}
 
 void CAIFilterGlobal::DisableCollidingAStarPathNodes(const IVolume* volume) {
     m_pathNodes->DisableCollidingNodes(volume);
