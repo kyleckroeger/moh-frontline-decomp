@@ -1,4 +1,8 @@
-// A fragment of anim_callback.cpp (0x800608b4): AnimCallback_Init, which
+// A fragment of anim_callback.cpp (0x80060788): CAnimCallbacks::random_cb
+// (on event 0, starts the list entry picked at random by the entries' weights
+// against the first entry's total) and face_cb (on event 0, starts the first
+// entry), both at rate 1.0 and returning 0; the empty cases 1 and 2 are
+// inferred from the switch's comparison tree. Then AnimCallback_Init, which
 // fills the file's state-selection table (nine state ids with their
 // CAnimCallbacks selection callbacks, pathing_cb serving two states), passes
 // the file's state definition to the animation system and registers the
@@ -6,7 +10,25 @@
 // original. The callbacks are named by the mangled symbols; the table entry
 // layout (id, callback) and the definition view are inferred, and the
 // callback result types are not known.
-struct AnimFileStateAnimList_t;
+// Inferred views: a state's animation list (a count, then 12-byte entries of
+// animation, flags and weight record).
+struct AnimRandomInfoView {
+    unsigned char unknown00[4];
+    unsigned int weight;
+    unsigned int totalWeight;
+};
+
+struct AnimListEntryView {
+    int anim;
+    unsigned short flags;
+    AnimRandomInfoView* info;
+};
+
+struct AnimFileStateAnimList_t {
+    unsigned short count;
+    AnimListEntryView entries[1];
+};
+
 struct AnimObjHdr_t;
 struct AnimChannel_t;
 
@@ -41,6 +63,44 @@ extern AnimStateDefView _AnimObj_StateDef;
 
 extern "C" void AnimStSetCallbackTable(AnimStateDefView*);
 extern "C" void AnimStRegisterFinishCallback(void (*)(unsigned short, void*));
+
+extern "C" int rand();
+extern "C" int AnimChanStartAnim(AnimObjHdr_t*, AnimChannel_t*, int, unsigned short, unsigned short, void*, float);
+
+int CAnimCallbacks::random_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
+                              AnimChannel_t* channel, void* user, unsigned long event, void*, float) {
+    switch (event) {
+    case 0: {
+        AnimRandomInfoView* info = list->entries[0].info;
+        unsigned int pick = rand() % info->totalWeight;
+        int i = 0;
+        unsigned int sum = 0;
+        while (i < list->count - 1 && info->weight + sum <= pick) {
+            sum += info->weight;
+            info = list->entries[++i].info;
+        }
+        AnimChanStartAnim(header, channel, list->entries[i].anim, list->entries[i].flags, state, user, 1.0f);
+        break;
+    }
+    case 1:
+    case 2:
+        break;
+    }
+    return 0;
+}
+
+int CAnimCallbacks::face_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
+                            AnimChannel_t* channel, void* user, unsigned long event, void*, float) {
+    switch (event) {
+    case 0:
+        AnimChanStartAnim(header, channel, list->entries[0].anim, list->entries[0].flags, state, user, 1.0f);
+        break;
+    case 1:
+    case 2:
+        break;
+    }
+    return 0;
+}
 
 void AnimCallback_Init() {
     _AnimObj_StateSelFuncArray[0].state = 1000;
