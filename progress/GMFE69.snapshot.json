@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 616880,
+    "matching_code_bytes": 617016,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.60895026905665,
+    "percent": 43.61856448452253,
     "categories": {
-      "reconstructed_game": 396688,
+      "reconstructed_game": 396824,
       "restored_library": 220192
     },
-    "matching_functions": 3726
+    "matching_functions": 3727
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -637,7 +637,7 @@
     "config/GMFE69/player_weapon.json": "890b879127c4beb8674138d59e4fc0242a2002214c622fe946134862b63e2d80",
     "config/GMFE69/player_weapon_donereload.json": "a3facf6c268178dc2341e884a58d67c96b155db973719ff87037ba9cc50856aa",
     "config/GMFE69/player_weapon_drawenabled.json": "af72358eb27d827370c188a11c8476c390a14426de1aab2adce0e2c0533ccff1",
-    "config/GMFE69/player_weapon_object.json": "ff5603a5f427e155f96396c9b9d282746cff24cea1a203a47adb83b14f72a4e7",
+    "config/GMFE69/player_weapon_object.json": "9e75fd0aa6781dfa10883183770c1d5366c21a5dc59c602fc9df5805a1dd0fe5",
     "config/GMFE69/player_weapon_object_head.json": "74926262f7d2daffb39d68fba24e3791cd0bfb088a527f6bbf659732e8dfc309",
     "config/GMFE69/player_weapon_selectable.json": "3c9aab472205a638765db1eed076195405ab13e048cfd2a3066bf9ab3b6bacb8",
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
@@ -2369,7 +2369,7 @@
     "src/game/player_weapon.cpp": "d656e89113c05d302dc2c3b3ea1c362ceab5c209c5af2346a9f23265f51b45f0",
     "src/game/player_weapon_donereload.cpp": "276b86e2f1ccf65f0dbd5efb3effdc6f6c18c35406378a8900eda198910a6ad8",
     "src/game/player_weapon_drawenabled.cpp": "38a90c25715e1cb193ea2adfb7cbb12b6914fbb8ec8a7c770c70457725d465e4",
-    "src/game/player_weapon_object.cpp": "bc0365ad6012bf84010d9db043241bd725940ab816a8875bb62b4c89ad239729",
+    "src/game/player_weapon_object.cpp": "876bdcbb2a73c465c16cb57308a480379c79cf0a89b75a1565c8352e98c0e155",
     "src/game/player_weapon_object_head.cpp": "b1da239c3499e658bb7405b7208bb714410705fbe10db2f83befc7d56dd8d2e5",
     "src/game/player_weapon_selectable.cpp": "948a057eff27a7b565104c23d7cfddef4a5202207c2c4342f63865c782cd2741",
     "src/game/popup.cpp": "f7338a66e75f7f7549049f217d4e923f74433a9a8e5a97385b60b74aca1831a7",
@@ -40660,8 +40660,8 @@
     {
       "id": "player_weapon_object",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 44,
+      "functions": 2,
+      "code_bytes": 180,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -40693,8 +40693,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "89e292990aa0dc36333d1e0bc95225a4f6bbbbbd643cc1ab06f581597effded5",
-      "linked_sha256": "0abfb8daeee16146a4bdec3870d1925a775eabc6405c50368c4e50a48f9bce10"
+      "object_sha256": "9a73b9de114cefa707ace86afd97e6ee669d0449b4c756f88da58b230f5e1f52",
+      "linked_sha256": "ac5cd31a7cc45d0182ea1956a1b8fc8450bf3796ca79402ffaaec14ede5333bb"
     },
     {
       "id": "toilet",
@@ -47059,13 +47059,6 @@
             "size": 96,
             "kind": "function",
             "name": "__dt__19CPlayerWeaponObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800a8d30",
-            "size": 136,
-            "kind": "function",
-            "name": "__ct__19CPlayerWeaponObjectFv",
             "evidence": "exception-index"
           }
         ]
