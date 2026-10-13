@@ -1,0 +1,95 @@
+{
+  "id": "anim_callback_init",
+  "source": "src/game/anim_callback_init.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800608b4",
+      "size": 236,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b2f8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012374",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "AnimCallback_Init__Fv",
+      "address": "0x800608b4",
+      "size": 236,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AnimStRegisterFinishCallback": "0x80067c70",
+    "AnimStSetCallbackTable": "0x80067c78",
+    "_AnimObj_StateDef": "0x8034db30",
+    "_AnimObj_StateSelFuncArray": "0x801c6dd0",
+    "aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005e9ec",
+    "animfinish_cb__14CAnimCallbacksFUsPv": "0x8005e9bc",
+    "death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fb58",
+    "face_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x80060858",
+    "floco_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005f2c4",
+    "pathing_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x80060554",
+    "random_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x80060788",
+    "turn_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005ff80",
+    "weapon_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fab4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "_AnimObj_StateDef",
+    "_AnimObj_StateSelFuncArray"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "_AnimObj_StateDef"
+  ],
+  "original_file": "anim_callback.cpp",
+  "original_file_index": 2757
+}

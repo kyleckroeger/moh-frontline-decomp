@@ -944,7 +944,8 @@
     "box_linedist.json",
     "saemsamb.json",
     "bigyuvswizzler.json",
-    "player_switchweapon.json"
+    "player_switchweapon.json",
+    "anim_callback_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
