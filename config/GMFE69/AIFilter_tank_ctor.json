@@ -1,0 +1,82 @@
+{
+  "id": "AIFilter_tank_ctor",
+  "source": "src/game/AIFilter_tank_ctor.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8005b408",
+      "size": 120,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000afa8",
+      "size": 28,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001211c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "__ct__19CAIFilterTankObjectFv",
+      "address": "0x8005b408",
+      "size": 120,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "__ct__13CAITankObjectFPv": "0x80052358",
+    "__dt__15CAIFilterObjectFv": "0x8005be5c",
+    "__nw__13CAITankObjectFUlPv": "0x8005230c",
+    "__vt__15CAIFilterObject": "0x80183800",
+    "__vt__19CAIFilterTankObject": "0x801837ac"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "AIFilter.cpp",
+  "original_file_index": 2575
+}
