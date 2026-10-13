@@ -1,10 +1,14 @@
-// A fragment of attachobject.cpp (0x800974f8): CAttachableObject::
-// UpdateAttachedObjects, which updates each of the ten occupied attachment
-// slots through the per-slot inline described in attachobject_ctor.cpp (the
-// views are the same, inferred), then IsVisible and Draw (CStaticObject's)
-// and DetachObject (every slot holding the object is cleared, an animated
-// object told it is detached, a player's two flag bits reset and its weapon
-// shown; true when one was found).
+// A fragment of attachobject.cpp (0x800972ac): CAttachableObject's
+// CommitUpdate (CStaticObject's, then UpdateAttachedObjects inlined),
+// AttemptUpdate and BeginUpdate (CStaticObject's), the empty CommitAI and
+// UpdateAI, UpdateAttachedObjects (each occupied slot through the per-slot
+// inline described in attachobject_ctor.cpp; the views are the same,
+// inferred), IsVisible and Draw (CStaticObject's) and DetachObject (every
+// slot holding the object is cleared, an animated object told it is detached,
+// a player's two flag bits reset through inferred inline setters and its
+// weapon shown; true when one was found). This fragment is compiled with
+// -inline deferred,auto, which is why CommitUpdate can inline the later
+// UpdateAttachedObjects: the functions are written in reverse image order.
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -116,6 +120,9 @@ class CStaticObject : public ISceneNode {
 public:
     bool IsVisible(CDrawContext&) const; /* result type inferred */
     void Draw(CDrawContext&);
+    void CommitUpdate();
+    void AttemptUpdate(float); /* result type not known */
+    void BeginUpdate(float);
 
     unsigned char data004[60];
     CMatrix m_tm;
@@ -155,6 +162,11 @@ public:
 class CAttachableObject : public CStaticObject {
 public:
     virtual void MarkForDestruction(int); /* defined elsewhere; keeps the table out */
+    void CommitUpdate();
+    void AttemptUpdate(float); /* result type not known */
+    void CommitAI();
+    void UpdateAI(float);
+    void BeginUpdate(float);
     void UpdateAttachedObjects();
     bool IsVisible(CDrawContext&) const; /* result type inferred */
     void Draw(CDrawContext&);
@@ -199,21 +211,6 @@ inline void CAttachableObject::UpdateAttachedObject(int i) {
     }
 }
 
-void CAttachableObject::UpdateAttachedObjects() {
-    for (int i = 0; i < 10; i++) {
-        if (m_attached[i])
-            UpdateAttachedObject(i);
-    }
-}
-
-bool CAttachableObject::IsVisible(CDrawContext& context) const {
-    return CStaticObject::IsVisible(context);
-}
-
-void CAttachableObject::Draw(CDrawContext& context) {
-    CStaticObject::Draw(context);
-}
-
 bool CAttachableObject::DetachObject(ISceneNode* object) {
     bool found = false;
     for (int i = 0; i < 10; i++) {
@@ -231,4 +228,38 @@ bool CAttachableObject::DetachObject(ISceneNode* object) {
         }
     }
     return found;
+}
+
+void CAttachableObject::Draw(CDrawContext& context) {
+    CStaticObject::Draw(context);
+}
+
+bool CAttachableObject::IsVisible(CDrawContext& context) const {
+    return CStaticObject::IsVisible(context);
+}
+
+void CAttachableObject::UpdateAttachedObjects() {
+    for (int i = 0; i < 10; i++) {
+        if (m_attached[i])
+            UpdateAttachedObject(i);
+    }
+}
+
+void CAttachableObject::BeginUpdate(float time) {
+    CStaticObject::BeginUpdate(time);
+}
+
+void CAttachableObject::UpdateAI(float) {
+}
+
+void CAttachableObject::CommitAI() {
+}
+
+void CAttachableObject::AttemptUpdate(float time) {
+    CStaticObject::AttemptUpdate(time);
+}
+
+void CAttachableObject::CommitUpdate() {
+    CStaticObject::CommitUpdate();
+    UpdateAttachedObjects();
 }

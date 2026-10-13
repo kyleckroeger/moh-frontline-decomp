@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,24 +39,54 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800974f8",
-      "size": 844,
+      "address": "0x800972ac",
+      "size": 1432,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cabc",
-      "size": 32,
+      "address": "0x8000caa4",
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013b98",
-      "size": 48,
+      "address": "0x80013b74",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CommitUpdate__17CAttachableObjectFv",
+      "address": "0x800972ac",
+      "size": 516,
+      "binding": 1
+    },
+    {
+      "name": "AttemptUpdate__17CAttachableObjectFf",
+      "address": "0x800974b0",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "CommitAI__17CAttachableObjectFv",
+      "address": "0x800974d0",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAI__17CAttachableObjectFf",
+      "address": "0x800974d4",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "BeginUpdate__17CAttachableObjectFf",
+      "address": "0x800974d8",
+      "size": 32,
+      "binding": 1
+    },
     {
       "name": "Draw__17CAttachableObjectFR12CDrawContext",
       "address": "0x80097718",
@@ -83,6 +113,9 @@
     }
   ],
   "externals": {
+    "AttemptUpdate__13CStaticObjectFf": "0x800b04b8",
+    "BeginUpdate__13CStaticObjectFf": "0x800b1248",
+    "CommitUpdate__13CStaticObjectFv": "0x800b01c8",
     "Draw__13CStaticObjectFR12CDrawContext": "0x800b013c",
     "InitClass__7CMatrixFv": "0x80090b78",
     "Inverse__7CMatrixFRC7CMatrix": "0x8008f5c0",
