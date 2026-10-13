@@ -1,5 +1,8 @@
-// A fragment of particlesystem.cpp (0x8007efd8): CPropertyParticleSystem's
-// SetSystemInitialVelocity (stores the velocity at +208, invalidates the
+// A fragment of particlesystem.cpp (0x8007eef4): CPropertyParticleSystem's
+// SetSystemAcceleration (stores +224, then the same flag update as below), the
+// weak CParticleSystem::ValidateBoundingBox (a header inline emitted after its
+// first caller; the base class holds the vtable and the flag bits, the split
+// at the bits is inferred), SetSystemInitialVelocity (stores the velocity at +208, invalidates the
 // bounding box through the virtual ValidateBoundingBox, and keeps the moving
 // flag unless both the velocity and the acceleration at +224 are below 1e-6
 // in squared length; the constant is an entry of the file's .sdata2 pool),
@@ -83,7 +86,7 @@ union CVector3Pair {
     float v[4];
 };
 
-class CPropertyParticleSystem {
+class CParticleSystem {
     unsigned char unknown000[28];
 
 public:
@@ -139,8 +142,19 @@ public:
     virtual void unknown0cc();
     virtual void ValidateBoundingBox(bool);
 
+    unsigned char data020[104];
+    unsigned char m_active : 1;
+    unsigned char m_emitting : 1;
+    unsigned char m_boundingBoxValid : 1;
+    unsigned char m_moving : 1;
+    unsigned char m_flags : 4;
+};
+
+class CPropertyParticleSystem : public CParticleSystem {
+public:
     void SetLocalToWorld(const CMatrix&);
     void SetSeed(int);
+    void SetSystemAcceleration(CVector3);
     void SetSystemInitialVelocity(CVector3);
     void GetParticleAcceleration(CVector3&) const;
     void GetParticleVelocity(CVector3&, CVector3&) const;
@@ -149,17 +163,24 @@ public:
     void GetParticleColor(CColor&, CColor&, CColor&, CColor&) const;
     bool GetFogEnable() const;
 
-    unsigned char data020[104];
-    unsigned char m_active : 1;
-    unsigned char m_emitting : 1;
-    unsigned char m_boundingBoxValid : 1;
-    unsigned char m_moving : 1;
-    unsigned char m_flags : 4;
-    unsigned char data089[71];
+    unsigned char data08c[68];
     CVector3 m_velocity;
     CVector3 m_acceleration;
     ParticlePropertiesView* m_properties;
 };
+
+void CPropertyParticleSystem::SetSystemAcceleration(CVector3 acceleration) {
+    m_acceleration = acceleration;
+    ValidateBoundingBox(false);
+    bool moving = true;
+    if (m_velocity.IsZero() && m_acceleration.IsZero())
+        moving = false;
+    m_moving = moving;
+}
+
+__declspec(weak) void CParticleSystem::ValidateBoundingBox(bool valid) {
+    m_boundingBoxValid = valid;
+}
 
 void CPropertyParticleSystem::SetSystemInitialVelocity(CVector3 velocity) {
     m_velocity = velocity;

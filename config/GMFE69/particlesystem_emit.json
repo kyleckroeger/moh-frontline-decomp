@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007efd8",
-      "size": 448,
+      "address": "0x8007eef4",
+      "size": 676,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c0dc",
-      "size": 8,
+      "address": "0x8000c0d4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800130a0",
-      "size": 12,
+      "address": "0x80013094",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetSystemAcceleration__23CPropertyParticleSystemF8CVector3",
+      "address": "0x8007eef4",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "ValidateBoundingBox__15CParticleSystemFb",
+      "address": "0x8007efc8",
+      "size": 16,
+      "binding": 2
+    },
     {
       "name": "SetSystemInitialVelocity__23CPropertyParticleSystemF8CVector3",
       "address": "0x8007efd8",
