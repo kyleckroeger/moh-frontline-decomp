@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001d4a4",
-      "size": 1436,
+      "address": "0x8001d308",
+      "size": 1848,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000987c",
-      "size": 48,
+      "address": "0x8000986c",
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800102b0",
-      "size": 72,
+      "address": "0x80010298",
+      "size": 96,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "TLT_LoadFileNormal__FPCcPii",
+      "address": "0x8001d308",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "TLT_InitResourceType__FPFP24LevelFileContentsStruct__v13TLTResourceID",
+      "address": "0x8001d394",
+      "size": 272,
+      "binding": 1
+    },
     {
       "name": "GetCompartmentSizeFromIndex__Fi",
       "address": "0x8001d4a4",

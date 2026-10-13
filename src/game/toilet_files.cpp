@@ -1,25 +1,28 @@
-// A fragment of toilet.cpp; the file name is this project's. The level-file layer of toilet.cpp, the functions from TLT_CloseFile to
-// TLT_LoadShellBriefingLogBigFile: closing a file frees it unless it lies
-// inside the level or shell-briefing big file (files loaded from a big file
-// point into it), the level-contents table is searched for the next resource
-// of a type (optionally with a value in its data;
-// TLT_FindNextResourceByTypeAndVal ignores its start argument, searches from
-// the beginning and inlines TLT_FindNextResourceByType), the shell-briefing
-// big file is unloaded, and loaded (its name built for the mission and stage,
-// anything up to a device colon dropped, through an inferred inline load
-// helper that fetches the size first; the formats are pool entries). The file is compiled with -inline
+// A fragment of toilet.cpp; the file name is this project's. The level-file
+// layer of toilet.cpp, the functions from TLT_LoadFileNormal to
+// TLT_LoadShellBriefingLogBigFile. TLT_LoadFileNormal drops anything up to a
+// device colon, fetches the size when asked and loads the file with the
+// given flags; TLT_InitResourceType calls a function for every level-contents
+// entry of a type. GetCompartmentSizeFromIndex, GetCompartmentCPTNameFromIndex
+// and GetCompartmentCDBNameFromIndex inline the value search for type 0 with
+// the doubled index (plus one for the CPT entry) in the second data word; the
+// first data word is the entry's name: the name functions print it into the
+// buffer (empty when there is none; their third argument is unused), the size
+// function adds the two entries' sizes in the compartment big file (-1 when
+// anything is missing). Closing a file frees it unless it lies inside the
+// level or shell-briefing big file (files loaded from a big file point into
+// it); the level-contents table is searched for the next resource of a type
+// (optionally with a value in its data; TLT_FindNextResourceByTypeAndVal
+// ignores its start argument, searches from the beginning and inlines
+// TLT_FindNextResourceByType); the shell-briefing big file is unloaded, and
+// loaded (its name built for the mission and stage; TLT_LoadFileNormal is
+// inlined). The formats are pool entries. The file is compiled with -inline
 // deferred,auto: functions are emitted in reverse source order, which is why
-// the search that is inlined comes first in the source and last but one in
-// the image. The function, type and global names come from the symbols; the
-// 12-byte contents entry and the resource data view (a count, then 8-byte
-// entries) are inferred. The file's globals are defined elsewhere (the
-// file-local ones are referenced as local externals).
-// GetCompartmentCDBNameFromIndex, GetCompartmentCPTNameFromIndex and
-// GetCompartmentSizeFromIndex (the two entries' sizes in the compartment big
-// file added, -1 when anything is missing) come last in the source (first in
-// the image): they inline the value search for type 0
-// with the doubled index (plus one for the CPT name) in the second data word and prints the first data word, a name, into the buffer
-// (empty when there is none; its third argument is unused).
+// functions inlined into earlier-emitted ones come later in the source. The
+// function, type and global names come from the symbols; the 12-byte contents
+// entry and the resource data view (a count, then 8-byte entries) are
+// inferred. The file's globals are defined elsewhere (the file-local ones are
+// referenced as local externals).
 extern "C" void MEM_free(void*);
 
 enum TLTResourceID {};
@@ -56,24 +59,12 @@ char* FILE_loadz(const char*, int);
 void* BIG_locateentryz(void*, const char*, int, int*, int*);
 }
 
-/* inferred: the load helper (the optional size is fetched first). */
-inline char* TLT_LoadWholeFile(const char* name, int* size) {
-    if (size)
-        *size = FILE_sizez(name);
-    return FILE_loadz(name, 1024);
-}
+char* TLT_LoadFileNormal(const char*, int*, int);
 
 void TLT_LoadShellBriefingLogBigFile(int mission, int stage) {
     char name[128];
-    char path[264];
     sprintf(name, "data/shell/%d_%d_blog.viv", mission, stage);
-    char* file = strchr(name, ':');
-    if (file == 0)
-        file = name;
-    else
-        file = file + 1;
-    sprintf(path, "%s", file);
-    g_pShellBriefingLogBigFile = TLT_LoadWholeFile(path, &g_ShellBriefingLogBigFileSize);
+    g_pShellBriefingLogBigFile = TLT_LoadFileNormal(name, &g_ShellBriefingLogBigFileSize, 0);
 }
 
 void TLT_UnLoadShellBriefingLogBigFile() {
@@ -152,4 +143,23 @@ int GetCompartmentSizeFromIndex(int index) {
     if (!BIG_locateentryz(g_pCompartmentBigFileHeader, cptName, 0, &offset, &cptSize))
         return -1;
     return cdbSize + cptSize;
+}
+
+void TLT_InitResourceType(void (*init)(LevelFileContentsStruct_*), TLTResourceID type) {
+    for (LevelFileContentsStruct_* entry = TLT_FindNextResourceByType(type, 0); entry;
+         entry = TLT_FindNextResourceByType(type, entry))
+        init(entry);
+}
+
+char* TLT_LoadFileNormal(const char* name, int* size, int flags) {
+    char path[264];
+    const char* file = strchr(name, ':');
+    if (file == 0)
+        file = name;
+    else
+        file = file + 1;
+    sprintf(path, "%s", file);
+    if (size)
+        *size = FILE_sizez(path);
+    return FILE_loadz(path, flags | 1024);
 }
