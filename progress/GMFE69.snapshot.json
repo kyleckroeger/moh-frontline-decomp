@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 641472,
+    "matching_code_bytes": 641928,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.34742664212214,
+    "percent": 45.37966254103715,
     "categories": {
-      "reconstructed_game": 420024,
+      "reconstructed_game": 420480,
       "restored_library": 221448
     },
-    "matching_functions": 3839
+    "matching_functions": 3840
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -907,7 +907,7 @@
     "config/GMFE69/staticmesh_simplebin.json": "5fb23a801437c0a09b0f12aec1762ea737197d71a1aa7a2c8e748b89b51f8abe",
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
-    "config/GMFE69/staticobjfactory_lookup.json": "05da9b919b5c5cc725d9b572eb48fa3edaa1993694239bee8372b2f69a3d2b2a",
+    "config/GMFE69/staticobjfactory_lookup.json": "81148247f572b23dbc035fd60d24515ace28056eda9477a28b5d2dfffe75ba41",
     "config/GMFE69/staticobjfactory_weak.json": "afc8b502c5c0e974004831714710ab08f4e1334c4a6a29daf2a8a38286377c92",
     "config/GMFE69/stimemul.json": "8daf6f44288a9589aaf8719ff8e636e2f4d7d00296603d9d8ce6bcbc2ff41088",
     "config/GMFE69/stream.json": "3848320ba09a7b6e14c52669852220ef39a2ecfd2cfa7b6cb07219805514b508",
@@ -2502,7 +2502,7 @@
     "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
-    "src/game/staticobjfactory_lookup.cpp": "12e3336a3169efc66ddbfa52373f4c7e35fca8d619fca81e4c27a7a6b002f7c2",
+    "src/game/staticobjfactory_lookup.cpp": "7d0d6f4826015547d913fd00268f9e82e2286b35b333dca8e48de3667c721e8c",
     "src/game/staticobjfactory_weak.cpp": "56a75fc11a7d8e1ad182c3759e1e7cc376527a84a4da644d13b31eb10b6fa912",
     "src/game/surfacetype.cpp": "3499ce5dc7d066f093e39c158e9b096e37683df4d6b6d234eb9b08395d411390",
     "src/game/swvideodisplaylist.cpp": "c34c6c419863bfc9939f4820a28e9db1e34f525cbc5628eca0ae422b5238880e",
@@ -29415,8 +29415,8 @@
     {
       "id": "staticobjfactory_lookup",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 1036,
+      "functions": 4,
+      "code_bytes": 1492,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -29450,8 +29450,8 @@
       "discarded_functions": [
         "__dt__12MESHSLOTVIEWFv"
       ],
-      "object_sha256": "3c1d6e543ec40a800e18e907eded5685a9cc089c285fc7bd2223d102d488cd7b",
-      "linked_sha256": "d12ad081ac84eb2fc0cbbba5363ba797c21129525e332544f18e0a01f07fb01e"
+      "object_sha256": "87bb1423db0e7eed6b14c6c68444c0d037eb9abfcbbe229a19efdb0a8c07c406",
+      "linked_sha256": "14b3705e39e62140aaf96c8ea055547ccfb0a289e15924d79975a82b501d7519"
     },
     {
       "id": "filesys_ea_del",
@@ -47940,13 +47940,6 @@
             "size": 3376,
             "kind": "function",
             "name": "Init__20CStaticObjectFactoryFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b36a4",
-            "size": 456,
-            "kind": "function",
-            "name": "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject",
             "evidence": "exception-index"
           },
           {

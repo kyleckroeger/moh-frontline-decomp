@@ -40,16 +40,16 @@
     {
       "name": ".text",
       "address": "0x800b3298",
-      "size": 1036,
+      "size": 1492,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d614",
-      "size": 56,
+      "size": 64,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 72,
+      "linked_size": 80,
       "stripped_objects": [
         "@106",
         "@119"
@@ -58,10 +58,10 @@
     {
       "name": "extabindex",
       "address": "0x80014654",
-      "size": 36,
+      "size": 48,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 60,
+      "linked_size": 72,
       "stripped_objects": [
         "@107",
         "@120"
@@ -86,11 +86,19 @@
       "address": "0x800b35b8",
       "size": 236,
       "binding": 1
+    },
+    {
+      "name": "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject",
+      "address": "0x800b36a4",
+      "size": 456,
+      "binding": 1
     }
   ],
   "externals": {
     "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
     "CompareStaticObjectDefinitions__FPCvPCv": "0x800b4314",
+    "DebugMsg__FPCce": "0x80018c88",
+    "SetDeleted__13CThrownObjectFb": "0x800b4d2c",
     "__dl__FPv": "0x8001ca2c",
     "__dt__20StaticObjectTemplateFv": "0x800b24ac",
     "bsearch": "0x8013c274",
@@ -178,5 +186,16 @@
   "original_file_index": 6860,
   "weak_duplicates": [
     "__dt__20StaticObjectTemplateFv"
+  ],
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 42,
+      "address": "0x801772c4"
+    }
   ]
 }
