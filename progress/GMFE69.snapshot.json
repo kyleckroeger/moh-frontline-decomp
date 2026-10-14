@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 637624,
+    "matching_code_bytes": 637760,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.07540089864637,
+    "percent": 45.08501511411225,
     "categories": {
-      "reconstructed_game": 416176,
+      "reconstructed_game": 416312,
       "restored_library": 221448
     },
-    "matching_functions": 3819
+    "matching_functions": 3820
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -536,6 +536,7 @@
     "config/GMFE69/input.json": "0b7e2665d7dc6c61f985b427022ec1fd0c7c65c8dc5f49cb7c3ede7f9039afd8",
     "config/GMFE69/input_manager.json": "509be3d25173b961f588aa17cefa28584de0ca46a3cc7cbd2a57da308653053f",
     "config/GMFE69/ipad.json": "fe62ef6fabba51edecb03f6464270668d31d21e6f39e87cfc575288ec7a94707",
+    "config/GMFE69/ipad_vbl.json": "7b80a5ea80e49088654b8a775fea875fddb9a8c3094e90736d696f6aeb5af291",
     "config/GMFE69/isShellGroup.json": "fb2aea8e1fb5357a5c99b30450f95fb25d60066fb795346e9238568ba1eab8ac",
     "config/GMFE69/isShellLibrary.json": "4b838340878f1a37c48a9cb7f4530ff56b7d4e6144ae8049588d0d6545da6de6",
     "config/GMFE69/isexportdefs.json": "c69bbee01c63b955558f005792858feb77dfb7dfe20284280ec564085fd8294d",
@@ -657,7 +658,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "93abd7c1eda692fee3f67038a70823c75ec007c00e72ce4a7b9da2c4bf923d84",
+    "config/GMFE69/project.json": "51871efc749b6ae73bae6e997a2a0dcf064f6fd409ba7c9db649fbe03672edd1",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -1773,6 +1774,7 @@
     "src/ea/inittmr.cpp": "2b8bc47a5536adecefaedb4c74d54e5a0509db63fdfef428e0975b1dcabababa",
     "src/ea/initvblt.cpp": "a3a42c3bc4407ed5a92562dcfa09205e537dab818b4a2eb4be90b5277c056da6",
     "src/ea/ipad.cpp": "a14bbc51e2978782915128143189e4eb8d4af5c1907756e67001303383c6b168",
+    "src/ea/ipad_vbl.cpp": "db6f2d5f514a7af53a0578d7084c28888c0a01c490fe710bfaa4a5d47094ab41",
     "src/ea/locatbig.cpp": "ca45ed414f16861187ae9feb34372cec3e208f72a2f3123058e6f7b1dc395275",
     "src/ea/locatbig_locate.cpp": "53e30436b85bd74a41bc403fe17f7a231060142d60827565b7852eef5b9a8f35",
     "src/ea/memalloc.cpp": "1fb8d6c6965d9916235e6ee35c94a13b67f5d332f5f5adbf44ff3c8285f12e21",
@@ -42408,6 +42410,45 @@
       "discarded_functions": [],
       "object_sha256": "e8c5ff196fa7f7e022d824b6f823d08171bcf90a7d3b8d453644d82f71e5a51d",
       "linked_sha256": "e471865dfdae28671323d3d1b760fadc8b2bdc1e4863dffc1bd0d8c2ff9e6bce"
+    },
+    {
+      "id": "ipad_vbl",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 136,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "a31f4435112993698f7abf987adec0568ed9310876aa23179a0542816a842770",
+      "linked_sha256": "dfef77f59feb416a489756f4cd017442055194abeb08e6f00134c43f78c007e4"
     }
   ],
   "code_map": {
@@ -51085,21 +51126,16 @@
         ]
       },
       {
-        "name": "Unknown file/.text @ 8014eef8",
+        "name": "Unmatched files/ipad.cpp [symbol evidence]",
+        "file_record": 379,
+        "file_name": "ipad.cpp",
         "ranges": [
-          {
-            "address": "0x8014eef8",
-            "size": 136,
-            "kind": "function",
-            "name": "iPADVBLUpdate__Fv",
-            "evidence": "unknown-file"
-          },
           {
             "address": "0x8014ef80",
             "size": 168,
             "kind": "function",
             "name": "iPAD_init__Fv",
-            "evidence": "unknown-file"
+            "evidence": "between-same-file"
           }
         ]
       },

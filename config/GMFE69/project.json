@@ -964,7 +964,8 @@
     "sound_msg.json",
     "sound_fail.json",
     "Moh2_debugmsg.json",
-    "locatbig_locate.json"
+    "locatbig_locate.json",
+    "ipad_vbl.json"
   ],
   "progress": {
     "code_bytes": 1414572,
