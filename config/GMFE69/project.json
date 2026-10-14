@@ -994,7 +994,8 @@
     "compartment_sprstack_dtor.json",
     "rcmp_tdlnode_dtor.json",
     "debug_prof_profilebin_ctor.json",
-    "AIFilter_animobj_velocity.json"
+    "AIFilter_animobj_velocity.json",
+    "staticmesh_mshnode_copy.json"
   ],
   "progress": {
     "code_bytes": 1414572,
