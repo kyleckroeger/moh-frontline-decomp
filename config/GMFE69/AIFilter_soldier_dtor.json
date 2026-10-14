@@ -39,24 +39,48 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005bd34",
-      "size": 112,
+      "address": "0x8005ba1c",
+      "size": 904,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b014",
-      "size": 8,
+      "address": "0x8000b004",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800121a0",
-      "size": 12,
+      "address": "0x80012188",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801836e0",
+      "size": 164,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateManualUpdateVars__22CAIFilterSoldierObjectFv",
+      "address": "0x8005ba1c",
+      "size": 228,
+      "binding": 1
+    },
+    {
+      "name": "SetOneTimeVars__22CAIFilterSoldierObjectFv",
+      "address": "0x8005bb00",
+      "size": 556,
+      "binding": 1
+    },
+    {
+      "name": "__nw__22CAIFilterSoldierObjectFUlPv",
+      "address": "0x8005bd2c",
+      "size": 8,
+      "binding": 1
+    },
     {
       "name": "__dt__22CAIFilterSoldierObjectFv",
       "address": "0x8005bd34",
@@ -65,6 +89,8 @@
     }
   ],
   "externals": {
+    "GetBulletSpeed__7CWeaponCFv": "0x800d5004",
+    "UpdateFromGameObject__22CAIFilterSoldierObjectFv": "0x8005b62c",
     "__vt__15CAIFilterObject": "0x80183800",
     "__vt__22CAIFilterSoldierObject": "0x801837dc"
   },
@@ -75,5 +101,88 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIFilter.cpp",
-  "original_file_index": 2575
+  "original_file_index": 2575,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fb84"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fb80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fb6c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034fb88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034fb8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034fb90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034fb94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034fb70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034fb98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034fb9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034fba0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x8034fb78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x8034fb60"
+    }
+  ]
 }

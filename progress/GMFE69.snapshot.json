@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 621784,
+    "matching_code_bytes": 622576,
     "total_executable_code_bytes": 1414572,
-    "percent": 43.95562756791453,
+    "percent": 44.011616234451125,
     "categories": {
-      "reconstructed_game": 401592,
+      "reconstructed_game": 402384,
       "restored_library": 220192
     },
-    "matching_functions": 3753
+    "matching_functions": 3756
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -25,7 +25,7 @@
     "config/GMFE69/AIFilter_mechchecker_dtor.json": "678d5e87e222356181986273a9dcc23057b6594655905f2e38a87929b98354bc",
     "config/GMFE69/AIFilter_queries.json": "d33190325d3a4fa2a677b79ce85ab877640802032a79f6340e9d48f97aa96312",
     "config/GMFE69/AIFilter_soldier_ctor.json": "644466e1af9e7ba52183a5d32e623f5cb68f23e37a71908b10e05fce2f92091e",
-    "config/GMFE69/AIFilter_soldier_dtor.json": "ed35f302ec0c96bf409c3d2815cce552cf29d65b165c37b631b0f8d218ba5690",
+    "config/GMFE69/AIFilter_soldier_dtor.json": "03333f75283dc7b52902483605118cba9f5150551dba5294d2357be487d1c352",
     "config/GMFE69/AIFilter_soldier_update.json": "050ca6236ddc9a2c60ec9e9bd7f06d6515f43c568779e324ae7dbf0e836b83d8",
     "config/GMFE69/AIFilter_tank_ctor.json": "14539e480251341e95a312263e500970f4afd83a1c9a3756d818c54b2a4a3a0a",
     "config/GMFE69/AIFilter_tank_dtor.json": "7b26c2829bebdc968339fe1e783bf8dddff52d66132791b9e921892dfb5c670f",
@@ -1960,7 +1960,7 @@
     "src/game/AIFilter_mechchecker_dtor.cpp": "af8fcfe8356b90aaf2cfc22a7e597228e54591feccdd2ae17d650974988820a2",
     "src/game/AIFilter_queries.cpp": "fa29827ae2c5e4b5f9572b8de545ae4588f63526953839f1239760df2cb98559",
     "src/game/AIFilter_soldier_ctor.cpp": "f436457b079a2ca07870874e59ca34068104021a07205e29256d2e7fdbf02e9d",
-    "src/game/AIFilter_soldier_dtor.cpp": "055b43c3c6e7e49bf782f0f63d45a51f438561db3de258810b4d52c0b4586e79",
+    "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
     "src/game/AIFilter_soldier_update.cpp": "0849877c7a6502d082258d859786531e327975e7f89a7ec6ad4adfbf5c853bb3",
     "src/game/AIFilter_tank_ctor.cpp": "8cefe168ad49b13bce86c3fd174366ca405d36a84ef4948ca6d618058f7f6b81",
     "src/game/AIFilter_tank_dtor.cpp": "0bc0d291505e886614de67cd86d7d2f78fa7707e2342edbfcc52fed517e7627c",
@@ -36495,8 +36495,8 @@
     {
       "id": "AIFilter_soldier_dtor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 112,
+      "functions": 4,
+      "code_bytes": 904,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -36528,8 +36528,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "3028ee0ebfa146ae66ec1e4c441b98cf097e15f9fff93865bc4dc47426f7f507",
-      "linked_sha256": "ca7e62d104a307156173c6bf400893f453c3c51d1a1372184be29913fdc2d5c9"
+      "object_sha256": "938653722c71c711b0b913dc9886497d8a95443c7db2ba603f2f00c556a09328",
+      "linked_sha256": "0324b67d443f9673f14feb08d0d1ac3daf5d473b1a5fcc2d902dc82ec56cb8ea"
     },
     {
       "id": "animmorph_dtor",
@@ -44099,27 +44099,6 @@
             "kind": "function",
             "name": "UpdateFromGameObject__22CAIFilterSoldierObjectFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005ba1c",
-            "size": 228,
-            "kind": "function",
-            "name": "UpdateManualUpdateVars__22CAIFilterSoldierObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005bb00",
-            "size": 556,
-            "kind": "function",
-            "name": "SetOneTimeVars__22CAIFilterSoldierObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005bd2c",
-            "size": 8,
-            "kind": "function",
-            "name": "__nw__22CAIFilterSoldierObjectFUlPv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x8005c6b8",
