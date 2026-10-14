@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 651784,
+    "matching_code_bytes": 651900,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.076410391270294,
+    "percent": 46.0846107515206,
     "categories": {
-      "reconstructed_game": 430336,
+      "reconstructed_game": 430452,
       "restored_library": 221448
     },
-    "matching_functions": 3871
+    "matching_functions": 3872
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -413,6 +413,7 @@
     "config/GMFE69/cdbobject_offsetptr.json": "0d67bbd2cab2036cd652831eb2cba088e30e569df1f5f590bd8e026e668b60ee",
     "config/GMFE69/cdbobject_trigroups.json": "ec60037e9618ecdf748229cab7146cd3e9602771a162601c8783a706cf69dd37",
     "config/GMFE69/coda.json": "ed79629f16e36603a2a74fe3bfd2db4c7043efb597de702316a222bcbb355440",
+    "config/GMFE69/collision_factory_dtor.json": "9f70e8c2c41be54390dc78252d7665e0bec56a04de62263ca730981217c1191c",
     "config/GMFE69/collisionvolume.json": "4b42015c953c1335d95d5edae0ec810f53e76935e2b6b0e446fd20b039dbc795",
     "config/GMFE69/collisionvolume_ctor.json": "74a3ffe0b9e4cb4a528ab49d378a9927cb04979868253a451f08228a030492b3",
     "config/GMFE69/collisionvolume_rows.json": "0f8077a02165836278ca1deb17b647eb0462e2710072860d7fad4b6d814b354d",
@@ -665,7 +666,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "ffa324b5c47c9539a074e3b90797c129d56d2bfb6b4eb428fc2724faacedb27a",
+    "config/GMFE69/project.json": "a169060ca3f459ac69a2a834f760b69455e4519f19bd5bd63b76e17a3ade4fc1",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2291,6 +2292,7 @@
     "src/game/cdbobject_line.cpp": "9a1aca01d57b33016c9bee73e665ee19bac161dca1e16b28ce4a1f094c76c3f1",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
     "src/game/cdbobject_trigroups.cpp": "2e29ea03b9abd26f9516a3b7a0f3d2d8787ccea9d1791c946c0e7228c6cc7ac2",
+    "src/game/collision_factory_dtor.cpp": "5fec50373bc2d14d29bc6b047fc0b5810afac67afbe129e7a18a276360498897",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
     "src/game/collisionvolume_ctor.cpp": "0c3d7d24cf70b216ef8f6f78f03cf55e040c5c6e26208dd4bbfbb4790dcde5d6",
     "src/game/collisionvolume_rows.cpp": "99bf2752de600fe57337217065052826b62f776cd7fb728d5dcddead6ed52cb0",
@@ -43310,6 +43312,45 @@
       "discarded_functions": [],
       "object_sha256": "363584130f93b345ee1c8b4d1b36214b76c1e976432178fa197e50018e9a7f3b",
       "linked_sha256": "e2dd1dba03a327d76f6f4c4e376faa4aea2dba103deb12a0764252fcd71582b7"
+    },
+    {
+      "id": "collision_factory_dtor",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 116,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e358f0b4a96dd9f5855652631ef0489079748b3cda028ba9edb8473bd3c41e17",
+      "linked_sha256": "0ddaa075853c0d2d03efc61fdbaa98315e96cf2e8a7cb1ebe4668ad2aecfba98"
     }
   ],
   "code_map": {
@@ -49149,13 +49190,6 @@
             "kind": "function",
             "name": "__sinit_collision_cpp",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800c7edc",
-            "size": 116,
-            "kind": "function",
-            "name": "__dt__Q23dwi40CFactory<12SClsnContact,P12SClsnContact>Fv",
-            "evidence": "exception-index"
           }
         ]
       },

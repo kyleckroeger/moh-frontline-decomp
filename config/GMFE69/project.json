@@ -986,7 +986,8 @@
     "alarm_list_reserve.json",
     "pumhandler_list_reserve.json",
     "world_object_list_reserve.json",
-    "world_object_node_dtor.json"
+    "world_object_node_dtor.json",
+    "collision_factory_dtor.json"
   ],
   "progress": {
     "code_bytes": 1414572,
