@@ -984,7 +984,8 @@
     "scene_vec_reserve.json",
     "buddy_list_reserve.json",
     "alarm_list_reserve.json",
-    "pumhandler_list_reserve.json"
+    "pumhandler_list_reserve.json",
+    "world_object_list_reserve.json"
   ],
   "progress": {
     "code_bytes": 1414572,
