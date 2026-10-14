@@ -1,0 +1,92 @@
+{
+  "id": "scene_vec_erase",
+  "source": "src/game/scene_vec_erase.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d89bc",
+      "size": 224,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e9c4",
+      "size": 48,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 56
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800156bc",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "erase__Q23dwi20vector<10CCollision>FQ23dwi22vec_iter<10CCollision>",
+      "address": "0x800d89bc",
+      "size": 224,
+      "binding": 2
+    }
+  ],
+  "externals": {
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv": "0x800d85a0",
+    "__pl__Q23dwi22vec_iter<10CCollision>CFi": "0x800d8b24",
+    "copy<Q23dwi22vec_iter<10CCollision>,Q23dwi22vec_iter<10CCollision>>__3dwiFQ23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>": "0x800d8a9c",
+    "end__Q23dwi20vector<10CCollision>Fv": "0x800d8588"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "copy<Q23dwi22vec_iter<10CCollision>,Q23dwi22vec_iter<10CCollision>>__3dwiFQ23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404,
+  "weak_duplicates": [
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv"
+  ]
+}
