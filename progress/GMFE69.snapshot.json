@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 629888,
+    "matching_code_bytes": 630036,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.528521701263706,
+    "percent": 44.538984229858926,
     "categories": {
-      "reconstructed_game": 409696,
+      "reconstructed_game": 409844,
       "restored_library": 220192
     },
-    "matching_functions": 3784
+    "matching_functions": 3787
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -21,6 +21,7 @@
     "config/GMFE69/AIFilter_astar.json": "cf04c49ffb58395275ecc73b3b39d97910d1bceedab4055e2fef49a7d2e779fc",
     "config/GMFE69/AIFilter_caifilterobject_dtor.json": "ab035fef8e3042512f0744c46aca04bd808bacafc34e982b02a297bf111f6717",
     "config/GMFE69/AIFilter_collisiondist.json": "92bf52dc496f87dc4a92a3cf508be6f9243fe712460a130fb1f5c3bd2fd0d990",
+    "config/GMFE69/AIFilter_global.json": "bba3c2071faf989376e1f4f6ec381ce79a8cb6b3e00b4dd8dbac4078976945bd",
     "config/GMFE69/AIFilter_linechecks.json": "2b952f4eb91c42bd2da84282d07969d91463036eca1aca3f8664a216f5df6231",
     "config/GMFE69/AIFilter_mechchecker_dtor.json": "678d5e87e222356181986273a9dcc23057b6594655905f2e38a87929b98354bc",
     "config/GMFE69/AIFilter_player.json": "0a29353fc5b906993765520470a2bc3c3a5eabad0601b7a364f48e568d19fe45",
@@ -653,7 +654,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "bbbc5cd969746683ef6923ece68c6628592c4edd9a272d6de5393376f07080e7",
+    "config/GMFE69/project.json": "916afc088b6d784551ce7ace47e5d7b54ec62e9c01d5f9f428f1f181e47ebbd0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -1962,6 +1963,7 @@
     "src/game/AIFilter_astar.cpp": "0a12563b436337b6d55f32d36308324c671dc526313b650a12dead727ff25aed",
     "src/game/AIFilter_caifilterobject_dtor.cpp": "74a1bad2f4372942648724f0ee107aa50b21424f3b9372e4a8c193961c3efaf6",
     "src/game/AIFilter_collisiondist.cpp": "71b686b852204e001142e6c5999850ad9bd2e8558e269003dbd4abeb08640286",
+    "src/game/AIFilter_global.cpp": "780c5befa940703ec17a76e84113671aefc3976136365a3ad68bde4dfffefabc",
     "src/game/AIFilter_linechecks.cpp": "251a98e238821ebe03cf95b6e2fcb5147ad84472be8a727d8887fb0a53a9c652",
     "src/game/AIFilter_mechchecker_dtor.cpp": "af8fcfe8356b90aaf2cfc22a7e597228e54591feccdd2ae17d650974988820a2",
     "src/game/AIFilter_player.cpp": "83b0253fe90a48707e8a5ae635a9534d7fc9d0d8f420e9b3d65421b09f842f70",
@@ -42121,6 +42123,45 @@
       "discarded_functions": [],
       "object_sha256": "91bffa7047e6419c6eaa87c27a020151590b22db2d0d541b12790cae07c1b21a",
       "linked_sha256": "2f4d06ee34fee1dc3e727334a9007f2fe797bcadda14a83a72a18272aaed204c"
+    },
+    {
+      "id": "AIFilter_global",
+      "category": "reconstructed_game",
+      "functions": 3,
+      "code_bytes": 148,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "bffc67f7de823d0d1e7e690a363e92d26a2ac80771f095a9a52bb2a88fb6e8a6",
+      "linked_sha256": "4802bca9ad22f10a93575e1c928bea84007cd389be802fc1ee6ce9770f5f8a4f"
     }
   ],
   "code_map": {
@@ -44267,27 +44308,6 @@
             "size": 608,
             "kind": "function",
             "name": "PropagateSoundToAllObjects__15CAIFilterGlobalFRC18CAIFilterSoundInfo",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005db14",
-            "size": 4,
-            "kind": "function",
-            "name": "UpdateToGlobals__15CAIFilterGlobalFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8005db18",
-            "size": 84,
-            "kind": "function",
-            "name": "UpdateFromGlobals__15CAIFilterGlobalFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005db6c",
-            "size": 60,
-            "kind": "function",
-            "name": "__dt__15CAIFilterGlobalFv",
             "evidence": "exception-index"
           },
           {
