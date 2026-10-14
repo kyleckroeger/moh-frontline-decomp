@@ -100,9 +100,5 @@
       "size": 4,
       "address": "0x8034f988"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "AISoldierObject.json"
-  }
+  ]
 }

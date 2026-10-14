@@ -162,9 +162,5 @@
       "size": 11,
       "address": "0x8017a7b4"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "dmesh.json"
-  }
+  ]
 }

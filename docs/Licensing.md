@@ -31,9 +31,13 @@ project grants no rights in that reference's material.
 | MPEG-2 decoder files in `src/ea/` (`idct.cpp`, `recon.cpp`, `motion.cpp`, `getvlc.cpp`, `getbits.cpp`, `getblk.cpp`, `getpic.cpp`, and later `gethdr`) | Adapted from the MPEG Software Simulation Group's `mpeg2decode` reference decoder (Copyright (C) 1996, MPEG Software Simulation Group). Each file keeps MSSG's copyright notice and disclaimer of warranty verbatim; the notice grants use without fee on an "as is" basis and warns that MPEG-2 implementations may be subject to patent royalties. The project's CC0 dedication does not apply to this material. Reference copy: [phantomuserland `phantom/apps/mpeg/`](https://github.com/dzavalishin/phantomuserland/tree/0fa666cb50e6ca13dd048d67d397485266c0e814/phantom/apps/mpeg) |
 
 Each accepted unit manifest under `config/GMFE69/` records its upstream source in
-`upstream` and, when ported, the Rising Sun manifest it was adapted from in
-`adapted_from`. Preserve all notices when reusing these components. When adding
-other third-party material, add a row here.
+`upstream` and, when it follows Rising Sun, its provenance in `adapted_from`:
+game units list the Rising Sun source files they follow in `paths`, and library
+units copied from Rising Sun name the Rising Sun manifest they were copied from.
+A unit drafted from one of this project's own manifests (`port_unit --like`
+used only for compiler settings) has no `adapted_from`;
+`tests/test_provenance.py` checks these rules. Preserve all notices when reusing
+these components. When adding other third-party material, add a row here.
 
 ## Original game and tools
 

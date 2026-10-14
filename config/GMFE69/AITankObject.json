@@ -146,9 +146,5 @@
       "size": 4,
       "address": "0x8034f9f4"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "AITankObject.json"
-  }
+  ]
 }

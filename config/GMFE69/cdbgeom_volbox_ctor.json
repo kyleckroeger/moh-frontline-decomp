@@ -82,9 +82,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "cdbgeom.cpp",
-  "original_file_index": 3230,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "cdbgeom_volbox.json"
-  }
+  "original_file_index": 3230
 }

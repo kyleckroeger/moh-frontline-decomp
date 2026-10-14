@@ -103,9 +103,5 @@
   "weak_duplicates": [
     "__vt__10ISceneNode",
     "__vt__16IMovingSceneNode"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "Moh2_scenenode_dtors.json"
-  }
+  ]
 }

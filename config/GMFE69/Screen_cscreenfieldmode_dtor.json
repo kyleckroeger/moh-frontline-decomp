@@ -102,9 +102,5 @@
     "g_prevScreen"
   ],
   "original_file": "Screen.cpp",
-  "original_file_index": 183,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "Screen_cscreenfieldmode_dtor.json"
-  }
+  "original_file_index": 183
 }

@@ -132,9 +132,5 @@
   "original_file_index": 8014,
   "weak_duplicates": [
     "__dt__10CRenderBinFv"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "projectilebullet.json"
-  }
+  ]
 }

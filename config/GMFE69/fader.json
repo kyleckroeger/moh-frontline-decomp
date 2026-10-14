@@ -144,9 +144,5 @@
       "size": 4,
       "address": "0x8034ffb0"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "fader_def.json"
-  }
+  ]
 }

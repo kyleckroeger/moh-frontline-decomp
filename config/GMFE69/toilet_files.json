@@ -170,9 +170,5 @@
       "size": 3,
       "address": "0x8034f614"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "toilet_files.json"
-  }
+  ]
 }

@@ -99,9 +99,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "input.cpp",
-  "original_file_index": 4468,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "input.json"
-  }
+  "original_file_index": 4468
 }

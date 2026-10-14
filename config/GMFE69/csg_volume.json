@@ -179,9 +179,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "csg_volume.cpp",
-  "original_file_index": 7628,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "csg_volume.json"
-  }
+  "original_file_index": 7628
 }

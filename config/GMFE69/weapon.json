@@ -173,9 +173,5 @@
       "size": 4,
       "address": "0x80350e0c"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "weapon.json"
-  }
+  ]
 }

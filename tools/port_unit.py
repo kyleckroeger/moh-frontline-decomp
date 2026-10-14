@@ -21,6 +21,7 @@ from setup_compiler import setup_compiler
 from tool_runner import run
 
 SDA21 = 109
+RISING_SUN = "https://github.com/lifewillbeokay/moh-rising-sun"
 
 
 def relocations(elf):
@@ -321,6 +322,20 @@ def compare_functions(obj, original, file_index):
         print(f"  +{symbol['address']:#06x} size {symbol['size']:5}  {symbol['name']:40} original: {where}{flag}")
 
 
+def adapted_from(like, reference, unit_id, config=CONFIG):
+    """The provenance a --like template gives a drafted unit. Only a template
+    from outside this project (a Rising Sun manifest) is a source the unit was
+    adapted from; a template from config/ only lends compiler settings, and
+    re-porting a unit keeps its own recorded provenance."""
+    if "id" not in reference:
+        return None
+    if not like.resolve().is_relative_to(config.resolve()):
+        return {"repository": RISING_SUN, "manifest": like.name}
+    if reference["id"] == unit_id:
+        return reference.get("adapted_from")
+    return None
+
+
 def draft(args):
     reference = json.loads(Path(args.like).read_text()) if args.like else {}
     unit = {"id": args.id, "source": args.source, "category": args.category,
@@ -416,9 +431,10 @@ def draft(args):
         unit["pooled_sections"] = args.pool
         unit["pool_references"] = [{"section": name, "offset": start, "size": size, "address": hex(address)}
                                    for (name, start, size), address in sorted(pool.items())]
-    if args.like and "id" in reference:
-        unit["adapted_from"] = {"repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-                                "manifest": Path(args.like).name}
+    if args.like:
+        adapted = adapted_from(Path(args.like), reference, args.id)
+        if adapted:
+            unit["adapted_from"] = adapted
     output = CONFIG / f"{args.id}.json"
     output.write_text(json.dumps(unit, indent=2) + "\n")
     print(f"Drafted {output.relative_to(ROOT)}: {len(functions)} functions, "

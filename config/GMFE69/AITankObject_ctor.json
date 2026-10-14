@@ -95,9 +95,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AITankObject.cpp",
-  "original_file_index": 2121,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "AITankObject.json"
-  }
+  "original_file_index": 2121
 }

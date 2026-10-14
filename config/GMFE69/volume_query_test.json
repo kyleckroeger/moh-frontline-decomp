@@ -185,9 +185,5 @@
   "weak_duplicates": [
     "__vt__7IVolume",
     "__vt__Q23dwi22IVisitor<10ISceneNode>"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "volume_query_test.json"
-  }
+  ]
 }

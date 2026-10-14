@@ -92,9 +92,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "box.cpp",
-  "original_file_index": 7464,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "box_ivolume.json"
-  }
+  "original_file_index": 7464
 }

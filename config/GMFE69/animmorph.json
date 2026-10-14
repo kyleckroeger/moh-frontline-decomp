@@ -124,9 +124,5 @@
   "original_file_index": 2977,
   "weak_duplicates": [
     "__dt__9CAnimatedFv"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "animmorph.json"
-  }
+  ]
 }

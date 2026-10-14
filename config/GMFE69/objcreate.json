@@ -188,9 +188,5 @@
   "original_file_index": 1440,
   "weak_duplicates": [
     "__ct__35BSUtilObjectInstanceMemoryAllocatorFv"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "objcreate.json"
-  }
+  ]
 }

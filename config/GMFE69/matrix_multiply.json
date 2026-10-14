@@ -116,9 +116,5 @@
       "size": 4,
       "address": "0x80350268"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "matrix_multiply.json"
-  }
+  ]
 }

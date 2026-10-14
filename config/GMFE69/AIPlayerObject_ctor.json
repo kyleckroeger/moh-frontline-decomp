@@ -83,9 +83,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIPlayerObject.cpp",
-  "original_file_index": 1995,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "AIPlayerObject.json"
-  }
+  "original_file_index": 1995
 }

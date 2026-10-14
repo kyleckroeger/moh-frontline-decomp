@@ -101,9 +101,5 @@
       "size": 56,
       "address": "0x80170dfc"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "particlesystem_manager_dtor.json"
-  }
+  ]
 }

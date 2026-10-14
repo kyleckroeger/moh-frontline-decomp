@@ -113,9 +113,5 @@
       "size": 64,
       "address": "0x80170f00"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "sprite_csprite_dtor.json"
-  }
+  ]
 }

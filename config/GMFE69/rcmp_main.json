@@ -115,9 +115,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "rcmp_main.cpp",
-  "original_file_index": 10180,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "rcmp_main.json"
-  }
+  "original_file_index": 10180
 }

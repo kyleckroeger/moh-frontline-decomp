@@ -95,9 +95,5 @@
     "MPDframe_rate"
   ],
   "original_file": "rcmp_mpc_codec.cpp",
-  "original_file_index": 10240,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "rcmp_mpc_codec.json"
-  }
+  "original_file_index": 10240
 }

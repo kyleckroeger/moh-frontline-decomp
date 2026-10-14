@@ -144,9 +144,5 @@
       "size": 14,
       "address": "0x80178240"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "dq_rtti.json"
-  }
+  ]
 }

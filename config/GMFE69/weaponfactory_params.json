@@ -110,9 +110,5 @@
     "g_bInMultiplayerMode"
   ],
   "original_file": "weaponfactory.cpp",
-  "original_file_index": 8328,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "weaponfactory_params.json"
-  }
+  "original_file_index": 8328
 }

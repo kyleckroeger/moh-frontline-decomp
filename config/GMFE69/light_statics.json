@@ -130,9 +130,5 @@
     "g_bReady"
   ],
   "original_file": "light.cpp",
-  "original_file_index": 3594,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "light_statics.json"
-  }
+  "original_file_index": 3594
 }

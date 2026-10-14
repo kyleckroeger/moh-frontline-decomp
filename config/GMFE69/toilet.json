@@ -87,9 +87,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "toilet.cpp",
-  "original_file_index": 367,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "toilet_files.json"
-  }
+  "original_file_index": 367
 }

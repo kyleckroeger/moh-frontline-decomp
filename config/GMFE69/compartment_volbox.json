@@ -86,9 +86,5 @@
   "weak_duplicates": [
     "__dt__7IVolumeFv",
     "__vt__7IVolume"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "compartment_volbox.json"
-  }
+  ]
 }

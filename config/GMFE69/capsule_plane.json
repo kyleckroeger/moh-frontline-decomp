@@ -89,9 +89,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "capsule.cpp",
-  "original_file_index": 7537,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "capsule_dispatch.json"
-  }
+  "original_file_index": 7537
 }

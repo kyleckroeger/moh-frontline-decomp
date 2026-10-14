@@ -90,9 +90,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "ObstacleAvoidance.cpp",
-  "original_file_index": 2213,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "ObstacleAvoidance.json"
-  }
+  "original_file_index": 2213
 }

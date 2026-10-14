@@ -107,9 +107,5 @@
   "weak_duplicates": [
     "__dt__10ISceneNodeFv",
     "__vt__10ISceneNode"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "light_animmanager_dtor.json"
-  }
+  ]
 }

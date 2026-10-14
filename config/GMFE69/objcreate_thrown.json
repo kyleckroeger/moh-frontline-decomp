@@ -93,9 +93,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "objcreate.cpp",
-  "original_file_index": 1440,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "objcreate.json"
-  }
+  "original_file_index": 1440
 }

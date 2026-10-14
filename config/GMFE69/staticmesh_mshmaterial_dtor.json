@@ -86,9 +86,5 @@
   ],
   "weak_duplicates": [
     "__vt__11MSHMaterial"
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "compartment_cptmaterial_dtor.json"
-  }
+  ]
 }

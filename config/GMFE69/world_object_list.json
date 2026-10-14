@@ -82,9 +82,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "world_object.cpp",
-  "original_file_index": 7059,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "wol_old.json"
-  }
+  "original_file_index": 7059
 }

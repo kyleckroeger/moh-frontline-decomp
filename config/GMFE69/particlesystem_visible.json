@@ -104,9 +104,5 @@
       "size": 4,
       "address": "0x8034fffc"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "manifest": "particlesystem_register.json"
-  }
+  ]
 }
