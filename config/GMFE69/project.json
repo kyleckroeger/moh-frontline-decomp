@@ -963,7 +963,8 @@
     "sound_init.json",
     "sound_msg.json",
     "sound_fail.json",
-    "Moh2_debugmsg.json"
+    "Moh2_debugmsg.json",
+    "locatbig_locate.json"
   ],
   "progress": {
     "code_bytes": 1414572,

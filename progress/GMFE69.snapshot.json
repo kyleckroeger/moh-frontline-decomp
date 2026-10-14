@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 635664,
+    "matching_code_bytes": 635884,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.936843087520465,
+    "percent": 44.95239549489174,
     "categories": {
-      "reconstructed_game": 414216,
+      "reconstructed_game": 414436,
       "restored_library": 221448
     },
-    "matching_functions": 3812
+    "matching_functions": 3814
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -558,6 +558,7 @@
     "config/GMFE69/line.json": "4c909b09d3890aa1b14d3e08b8685227c16a8bb5dea5bdf96541e31260483913",
     "config/GMFE69/loadelf.json": "3e6c069028434cecfead5071921a89f51ef2e6d1d0370f69f5ec01db854a6f82",
     "config/GMFE69/locatbig.json": "951de0b6c115be49b7755a129307e91c30deb6c630ba9c49821cf71f0db076f0",
+    "config/GMFE69/locatbig_locate.json": "cd4a02c36b783ef772c8e4b35aba23d1c214f28ebc12cd85212abb0eb86b080c",
     "config/GMFE69/main_TRK.json": "53a7c3f8fdc516d26210c5002897d55d0bb651015e4e46852c26248d117ade9b",
     "config/GMFE69/mainloop.json": "2994436609fef577d03fa3220d0c44d5933025297dcfae7a7880dded142e765a",
     "config/GMFE69/mainloop_game.json": "a6b94a41d3040d709bae4325a7985c520182530cf40ccd6f4f7a07b741606910",
@@ -656,7 +657,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "a784237be707e65c2e8c5508cae6140f2bff16a74d3458cbe05a9e522af32213",
+    "config/GMFE69/project.json": "93abd7c1eda692fee3f67038a70823c75ec007c00e72ce4a7b9da2c4bf923d84",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -1773,6 +1774,7 @@
     "src/ea/initvblt.cpp": "a3a42c3bc4407ed5a92562dcfa09205e537dab818b4a2eb4be90b5277c056da6",
     "src/ea/ipad.cpp": "a14bbc51e2978782915128143189e4eb8d4af5c1907756e67001303383c6b168",
     "src/ea/locatbig.cpp": "ca45ed414f16861187ae9feb34372cec3e208f72a2f3123058e6f7b1dc395275",
+    "src/ea/locatbig_locate.cpp": "53e30436b85bd74a41bc403fe17f7a231060142d60827565b7852eef5b9a8f35",
     "src/ea/memalloc.cpp": "1fb8d6c6965d9916235e6ee35c94a13b67f5d332f5f5adbf44ff3c8285f12e21",
     "src/ea/memalloc_tail.cpp": "6d6e05a90c089921c531f5149bdad60f5eb4d87c0daa98197f23fca1948bd6e9",
     "src/ea/memblock.cpp": "9c22c07fb0234fb28e395fc44ebaa5d07b2ae93122bdbfb90b8e1b0da347e3ef",
@@ -42367,6 +42369,45 @@
       "discarded_functions": [],
       "object_sha256": "c5b0aa67178abbb9f964cdf9c0d03101cd21eae197e775c302c0e6e102b2017e",
       "linked_sha256": "983c06525e9ca158fc12134e6319ce2ae3e5660e881c0fb071191d1ec563b0a5"
+    },
+    {
+      "id": "locatbig_locate",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 220,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e8c5ff196fa7f7e022d824b6f823d08171bcf90a7d3b8d453644d82f71e5a51d",
+      "linked_sha256": "e471865dfdae28671323d3d1b760fadc8b2bdc1e4863dffc1bd0d8c2ff9e6bce"
     }
   ],
   "code_map": {
@@ -50992,26 +51033,7 @@
             "size": 1176,
             "kind": "function",
             "name": "BIG_locateentryz",
-            "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 8014a9a8",
-        "ranges": [
-          {
-            "address": "0x8014a9a8",
-            "size": 104,
-            "kind": "function",
-            "name": "BIG_locate",
-            "evidence": "unknown-file"
-          },
-          {
-            "address": "0x8014aa10",
-            "size": 116,
-            "kind": "function",
-            "name": "BIG_count",
-            "evidence": "unknown-file"
+            "evidence": "between-same-file"
           }
         ]
       },
