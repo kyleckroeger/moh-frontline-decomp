@@ -1,0 +1,93 @@
+{
+  "id": "buddy_vec_path_reserve",
+  "source": "src/game/buddy_vec_path_reserve.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80058570",
+      "size": 376,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000acdc",
+      "size": 64,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 72
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011e40",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "reserve__Q23dwi23vector<13BuddyPathInfo>FiPc",
+      "address": "0x80058570",
+      "size": 376,
+      "binding": 2
+    }
+  ],
+  "externals": {
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "MEM_free": "0x8014f83c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv": "0x80058520",
+    "begin__Q23dwi23vector<13BuddyPathInfo>Fv": "0x80058564",
+    "copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>": "0x800586e8",
+    "end__Q23dwi23vector<13BuddyPathInfo>Fv": "0x80058508"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "buddy.cpp",
+  "original_file_index": 2366,
+  "weak_duplicates": [
+    "__dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv"
+  ]
+}

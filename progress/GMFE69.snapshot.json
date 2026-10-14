@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 648908,
+    "matching_code_bytes": 649668,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.87309801127125,
+    "percent": 45.92682450946293,
     "categories": {
-      "reconstructed_game": 427460,
+      "reconstructed_game": 428220,
       "restored_library": 221448
     },
-    "matching_functions": 3864
+    "matching_functions": 3866
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -369,6 +369,7 @@
     "config/GMFE69/buddy_vec_path_begin.json": "7fef54c9fda8714c21f1c16269dacb6cd2b7d4ea3b0c646c6bb8aea2ca779511",
     "config/GMFE69/buddy_vec_path_dtor.json": "6c936fbb03652d23a76824b72441deb4d88670e560917d22ed4accce33ee6b04",
     "config/GMFE69/buddy_vec_path_end.json": "c3084e161518929efe7f4752d95cfe06722e014eb338e6ea55636b37c725f52d",
+    "config/GMFE69/buddy_vec_path_reserve.json": "9a6ae0bbaa610e63f9ebfce0858687a6e1967d420b9afe4f9fa9d5a4f3b35f6a",
     "config/GMFE69/buddy_veciter_info_dtor.json": "f8c7a2fbf3440e4d1d6844c1ce5779433ba0e777d78d5e69e47300329a805ab7",
     "config/GMFE69/buddy_veciter_path_dtor.json": "c370ecacaddd40e7e143c2b4fa6c758b3778c631d0a3dc0a362fafddb789c925",
     "config/GMFE69/buffer_io.json": "9a997068c0c387e86e9609ec66493e7caa8d98ea675676441eb2ff729f5d4186",
@@ -662,7 +663,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "d811f89fecfa4c4b103af6eb876b4a6bedf3584b42a2253ce4bd7c2e0bb6efd2",
+    "config/GMFE69/project.json": "c367f0645e645dc5b3ce114cf98ea72323c2b8d3d604a16751cb798af0ca9d44",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -751,6 +752,7 @@
     "config/GMFE69/scene_vec_begin.json": "5cae122f12d4fa7eccf262febf64031a65bda60a88ffc7445159836a5a44e31e",
     "config/GMFE69/scene_vec_dtor.json": "9109918cc789e30e172ce9f1cfdfbdc98a968d71cbc9572354a28faf8f16faf3",
     "config/GMFE69/scene_vec_end.json": "ccab8d01b0ae8ddb03daf9246479b1a38c2b95f1645cc22c1e45d99de6daea5f",
+    "config/GMFE69/scene_vec_reserve.json": "81ec9341103605992988e56ddc1bd96e86a276ffac60c9d98a1a0a01199fc041",
     "config/GMFE69/scene_vecconst_dtor.json": "cd43d4a7fedd6febd5370ac4cba310a3a479f5a3ac5987de2da636d87deaf636",
     "config/GMFE69/scene_veciter_dtor.json": "3b03017d159367ea223329f8cf5ddef0f021df7e4e6f38a6c4a872ceb2f89bdc",
     "config/GMFE69/scene_veciter_plus.json": "205eb56bd0657ab36ad7d71ef486f776bb5b5454c979a9a9a430d7434196b039",
@@ -2242,6 +2244,7 @@
     "src/game/buddy_vec_path_begin.cpp": "f0a70a80e1f7a87c8b804ba93205a620dc9c2bd023b8c7b9d54d7148be8ee834",
     "src/game/buddy_vec_path_dtor.cpp": "4d96faabb09065ac9c4f20818b410e9129b43b987b9a1403efbf2e11a0c932ee",
     "src/game/buddy_vec_path_end.cpp": "8c49878bf11e6687721798128dc270a0fe1bbd5570995de2b61e824e7b8a2fdd",
+    "src/game/buddy_vec_path_reserve.cpp": "8edffc8b5c64eeccd67970a0ea039974e1ac83e04c366bc1354b66952fb6dd1f",
     "src/game/buddy_veciter_info_dtor.cpp": "33b35199d802def65633c148e421a5eee99020a2f980def95114003d29112a24",
     "src/game/buddy_veciter_path_dtor.cpp": "da28bd810e9d80517ac0bdd7eefe9f5c58bb71a8c1391bd137ad6eccc7475c43",
     "src/game/bullet_asbullet.cpp": "2975a506b876058410ff94b47dac21c0128e08b6504df39afc4aeb9cc85b7c87",
@@ -2472,6 +2475,7 @@
     "src/game/scene_vec_begin.cpp": "4ad3b952d19afd6fe539fa2ee69c89f2b77f80c8b6fe885b0ee5a8b6213e4452",
     "src/game/scene_vec_dtor.cpp": "4161253ae669c0c99f30d56180fed662529405e598ebb5cc856f0b13a976ad1e",
     "src/game/scene_vec_end.cpp": "c0fd240036e2794c18f6c95080cf49ec52f94f2ab4cdd82a14e9c49675528933",
+    "src/game/scene_vec_reserve.cpp": "4dfa2dc6436314d4cd5a1d811da676e78a0bb14557e8003d550f063310ff8877",
     "src/game/scene_vecconst_dtor.cpp": "db81a6149d9886799dc256709d20860a68265945edab9cf3f6811fa2a34f25d2",
     "src/game/scene_veciter_dtor.cpp": "04568810dd866b90d8937110bbde943d849da887cf409f5638e78d0006826e4e",
     "src/game/scene_veciter_plus.cpp": "ad93d66d1c8007e54b4d61711cdf4de56b871064dc900a76265dd6bdd638136e",
@@ -43023,6 +43027,84 @@
       "discarded_functions": [],
       "object_sha256": "cf7b3d56f6893f22f3291904e37754339304e8bd2ee911b9db618cea859231b6",
       "linked_sha256": "2c146131ad1ea7539e144198b24457fca55c7ab90e91078c05eb497acd21c353"
+    },
+    {
+      "id": "buddy_vec_path_reserve",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 376,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "7cab898f55f0f957074d2fc76fed8632da275493af10199079ea4f0e2152d504",
+      "linked_sha256": "a96f81177dcf272cf1753c91a4d708405513e3b39dcfcaa6bea998e165cd166a"
+    },
+    {
+      "id": "scene_vec_reserve",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 384,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "1a8f98d6452b73b05262e22df4a27f685dde82cb18d28f1e6f073b065475757e",
+      "linked_sha256": "29d410395fef34f9b17857c8e4930250ab8a0c18b630fa5c47b201d526d5680a"
     }
   ],
   "code_map": {
@@ -44903,13 +44985,6 @@
             "size": 716,
             "kind": "function",
             "name": "BIFunc_CreateBuddyDataStructures__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80058570",
-            "size": 376,
-            "kind": "function",
-            "name": "reserve__Q23dwi23vector<13BuddyPathInfo>FiPc",
             "evidence": "exception-index"
           },
           {
@@ -49659,13 +49734,6 @@
             "size": 900,
             "kind": "function",
             "name": "__ct__6CSceneFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800dcc48",
-            "size": 384,
-            "kind": "function",
-            "name": "reserve__Q23dwi20vector<10CCollision>FiPc",
             "evidence": "exception-index"
           },
           {
