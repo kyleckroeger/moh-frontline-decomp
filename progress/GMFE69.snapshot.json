@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 652912,
+    "matching_code_bytes": 653980,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.156151825428466,
+    "percent": 46.23165169393993,
     "categories": {
-      "reconstructed_game": 431464,
+      "reconstructed_game": 432532,
       "restored_library": 221448
     },
-    "matching_functions": 3881
+    "matching_functions": 3882
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -672,7 +672,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "4615b6f81f5ea2ad224bade5307c33de192231d7e53be74f6412b77e47c7c59b",
+    "config/GMFE69/project.json": "fe202516dbc628c56922f015112268f0dfddbe797f931c8f948911167440a56d",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -682,6 +682,7 @@
     "config/GMFE69/propdat.json": "94c13be6b252275e231dd50cdadd1f04d86ac3c0a7b8d32e3b090ffd947a87c0",
     "config/GMFE69/propdat_bsp.json": "bd4b85e3a27ac50301d2ad04642bca1abf864b5f74397505530539b31bf4c0d1",
     "config/GMFE69/propdat_core.json": "f39ac88bbf9ece15072d202c6e8c58a47906feb1a12bf62fcc97388a73c1fdff",
+    "config/GMFE69/propdat_endian_header.json": "fc5d8ac73779ac176f7f3b30624c834267f7809b3ffe197edba85577f73d9aef",
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
     "config/GMFE69/propdat_restart.json": "e5671a4af8c8020ce582f367cf4698b47126faa7d190804633b8ec42cccfab7f",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
@@ -2463,6 +2464,7 @@
     "src/game/propdat.cpp": "b1e26b00f10be619cc409432f6748e200a0064248119fafa81774718c305885d",
     "src/game/propdat_bsp.cpp": "1433421b4435385d1bde79defe5895260b12b84328ae62750cf9b5db44d0b0ef",
     "src/game/propdat_core.cpp": "7523e56194069cbb910b3aa8f1fe42a31a57936bcfd3358e1fe1f92a1122037f",
+    "src/game/propdat_endian_header.cpp": "a495580d0031b6979d10c5906c2235de9e8efa227c56cb5fe6d68e57a88aa50c",
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
     "src/game/propdat_restart.cpp": "fbbc2820cf6df3937fdf86cece40194167025b89b0761ae6f23c7cae5464c7e5",
     "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
@@ -43720,6 +43722,45 @@
       "discarded_functions": [],
       "object_sha256": "b75af54bf61faa9c56fd579544c386b42f125754a0811f59053859adb4ea4b6f",
       "linked_sha256": "e9bd60d073f0d47b189b7905159b8f6891f71b043c66b7771bbfec3d3c6837a8"
+    },
+    {
+      "id": "propdat_endian_header",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1068,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "d7f9a058811b4bde557d2c9ed79b2f07efdfa98025dec1d1a5ece9d7981b90e2",
+      "linked_sha256": "adb7cdb453ed386c6e52d00e4758d7830e3c855071616d1ec7594526fdbd3355"
     }
   ],
   "code_map": {
@@ -44774,13 +44815,6 @@
             "size": 496,
             "kind": "function",
             "name": "LoadPropertyData__FPcb",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800447f0",
-            "size": 1068,
-            "kind": "function",
-            "name": "EndianSwap__FR9BPDHeader",
             "evidence": "exception-index"
           }
         ]

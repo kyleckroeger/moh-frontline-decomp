@@ -996,7 +996,8 @@
     "debug_prof_profilebin_ctor.json",
     "AIFilter_animobj_velocity.json",
     "staticmesh_mshnode_copy.json",
-    "animemot_endian.json"
+    "animemot_endian.json",
+    "propdat_endian_header.json"
   ],
   "progress": {
     "code_bytes": 1414572,
