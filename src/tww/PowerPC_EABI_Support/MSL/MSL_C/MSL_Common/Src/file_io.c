@@ -71,7 +71,7 @@ int fflush(FILE* file) {
 // Frontline also links fopen and freopen (not in the upstream file),
 // reconstructed from the disassembly. They follow fflush because -inline
 // deferred emits functions in reverse source order. __get_file_modes, which
-// precedes freopen in the target, is not reconstructed yet.
+// precedes freopen in the target, is defined after it (end of the file).
 int fseek(FILE* file, unsigned long offset, int mode);
 void clearerr(FILE* stream);
 void __stdio_atexit(void);
@@ -122,4 +122,76 @@ FILE* freopen(const char* name, const char* mode, FILE* file) {
         fseek(file, 0, 2);
 
     return file;
+}
+
+// Frontline's __get_file_modes, reconstructed from the disassembly (not in
+// the upstream file): the mode string's first letter picks the open mode
+// (r: must exist, w: create or truncate, a: create if necessary), then 'b'
+// and '+' in either order set binary I/O and read-write access. It precedes
+// freopen in the target, so it follows it here.
+int __get_file_modes(const char* mode, file_modes* modes) {
+    const char* mode_ptr = mode;
+    unsigned long mode_str;
+    unsigned char open_mode;
+    unsigned char io_mode;
+
+    modes->file_kind = __disk_file;
+    modes->file_orientation = UNORIENTED;
+    modes->binary_io = 0;
+
+    mode_str = *mode_ptr++;
+
+    switch (mode_str) {
+    case 'r':
+        open_mode = 0;
+        break;
+    case 'w':
+        open_mode = 2;
+        break;
+    case 'a':
+        open_mode = 1;
+        break;
+    default:
+        return 0;
+    }
+
+    modes->open_mode = open_mode;
+
+    switch (*mode_ptr++) {
+    case 'b':
+        modes->binary_io = 1;
+        if (*mode_ptr == '+')
+            mode_str = (mode_str << 8) | '+';
+        break;
+    case '+':
+        mode_str = (mode_str << 8) | '+';
+        if (*mode_ptr == 'b')
+            modes->binary_io = 1;
+        break;
+    }
+
+    switch (mode_str) {
+    case 'r':
+        io_mode = __read;
+        break;
+    case 'w':
+        io_mode = __write;
+        break;
+    case 'a':
+        io_mode = __write | __append;
+        break;
+    case 'r+':
+        io_mode = __read_write;
+        break;
+    case 'w+':
+        io_mode = __read_write;
+        break;
+    case 'a+':
+        io_mode = __read_write | __append;
+        break;
+    }
+
+    modes->io_mode = io_mode;
+
+    return 1;
 }

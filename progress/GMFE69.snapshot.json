@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 634408,
+    "matching_code_bytes": 634784,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.84805297998264,
+    "percent": 44.87463345803536,
     "categories": {
       "reconstructed_game": 414216,
-      "restored_library": 220192
+      "restored_library": 220568
     },
-    "matching_functions": 3809
+    "matching_functions": 3810
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -488,7 +488,7 @@
     "config/GMFE69/fiber_dtor.json": "2de9b087334c266100e74b4246854d5f7094442ab8e5b7f29ca04c8983bb1e40",
     "config/GMFE69/fiber_ivolume.json": "f15f67e947e1ec765c55257ea9c665dd79e39e96446d48beeebbd527281e2ac1",
     "config/GMFE69/fiber_visibility.json": "4d41af3dadb241683152c693aaa25e4d329dbcf3363a8b83f5f5c744b28b7086",
-    "config/GMFE69/file_io.json": "1f7376a3e1cbacd1b77840e0eae4b3069ae28a805f71eb751ebf19dcd296e710",
+    "config/GMFE69/file_io.json": "18806d70257141c6be85e210ecc9cf7d248e740af95caccff17e02f127f6becd",
     "config/GMFE69/filedev.json": "345d10da83f1a2011e5fc4b9278fee1b53e1cdef4497f8fe2b0ee38ca1bafa48",
     "config/GMFE69/filedev_head.json": "83c3fd590f7610e4f5bf6b78d767bbc088d1352bd0172bbdfef524a375c24540",
     "config/GMFE69/filesys.json": "44b6dc891dbe5026fb75d626e4ab6648c303868b80655aa336dfdd5b4bb5f062",
@@ -2644,7 +2644,7 @@
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ctype.c": "c0f5f0e20882bd730a9dec8e2abed358c81bfbc7bc372a6b86ad0c1156012ad1",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c": "5e333852856019b3dbf1b153f5754327d5292e5a00593eb1d36fc966c4a07a3a",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/errno.c": "25171e7d29e367c4ac4fd98217b28a0e22d5554d414b6fe1ac81f5859c3f64fa",
-    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c": "b299fbcc6df50b4cff139c8df4bb33e7c662b59b2028f9f936e8852ce7fd0459",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c": "1343e225ee88bcbd3f19aa3949b68ba58fa41bd255ccb03b5c82213b7d3bfbcc",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/float.c": "e6d46461afc6afe616915cc8a2d34889e46cbd11fdd32e58cdb99e957d17f7c6",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mbstring.c": "e360518a103f9c928201b5c68c61d57a1cc83b2197416c282412eef091ae94d4",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/mem.c": "9b2d20fd10da8b94096c455ab5e200e697570b26510263aeacf2ee4ddafd9ca3",
@@ -8280,8 +8280,8 @@
     {
       "id": "file_io",
       "category": "restored_library",
-      "functions": 4,
-      "code_bytes": 912,
+      "functions": 5,
+      "code_bytes": 1288,
       "compiler_family": "GC",
       "compiler_version": "1.3",
       "compiler_flags": [
@@ -8330,8 +8330,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "69648ca59fe055a5acb4e7b507ff23e47adf065cd174bbb287fa124ad066d271",
-      "linked_sha256": "d5755555b6a808815c04de641cd234fdbcf41dbf91d77699a6be51ba51a6f30d"
+      "object_sha256": "2a4d93b20cbbfe349b0a7262b5d53d1aa49e61b9a38913c029f63627ec61465a",
+      "linked_sha256": "57d524bab08c7551d82ef73bdbae526e2c7c1c1fe14459dfc618d0cf78efee87"
     },
     {
       "id": "FILE_POS",
@@ -50948,13 +50948,6 @@
             "size": 32,
             "kind": "function",
             "name": "fread",
-            "evidence": "unknown-file"
-          },
-          {
-            "address": "0x8013cd2c",
-            "size": 376,
-            "kind": "function",
-            "name": "__get_file_modes",
             "evidence": "unknown-file"
           }
         ]

@@ -63,12 +63,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8013cea4",
-      "size": 912,
+      "address": "0x8013cd2c",
+      "size": 1288,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__get_file_modes",
+      "address": "0x8013cd2c",
+      "size": 376,
+      "binding": 1
+    },
     {
       "name": "fflush",
       "address": "0x8013d03c",
@@ -98,7 +104,6 @@
     "__find_unopened_file": "0x8013b5cc",
     "__flush_all": "0x8013b3e8",
     "__flush_buffer": "0x8013c4a4",
-    "__get_file_modes": "0x8013cd2c",
     "__init_file": "0x8013b4f0",
     "__open_file": "0x80137c98",
     "__stdio_atexit": "0x8013da94",
