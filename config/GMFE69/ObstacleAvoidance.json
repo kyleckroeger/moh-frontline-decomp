@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800547d0",
-      "size": 64,
+      "address": "0x800544b0",
+      "size": 864,
       "type": 1
     },
     {
@@ -49,20 +49,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000ab4c",
-      "size": 8,
+      "address": "0x8000ab20",
+      "size": 52,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011cf0",
-      "size": 12,
+      "address": "0x80011cd8",
+      "size": 36,
       "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801aaad0",
-      "size": 208,
+      "size": 296,
       "type": 8
     }
   ],
@@ -74,6 +74,24 @@
       "binding": 0
     },
     {
+      "name": "__dt__18CObstacleGridEntryFv",
+      "address": "0x80054790",
+      "size": 60,
+      "binding": 1
+    },
+    {
+      "name": "__ct__18CObstacleGridEntryFv",
+      "address": "0x800547cc",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "__ct__18CObstacleAvoidanceFv",
+      "address": "0x800544b0",
+      "size": 736,
+      "binding": 1
+    },
+    {
       "name": "__ct__8CVector3Fv",
       "address": "0x8005480c",
       "size": 4,
@@ -81,14 +99,191 @@
     }
   ],
   "externals": {
-    "__construct_array": "0x8013834c"
+    "__construct_array": "0x8013834c",
+    "__dl__FPv": "0x8001ca2c",
+    "f_bObstacleAvoidanceLinesInitialized": "0x8034e900"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "f_bObstacleAvoidanceLinesInitialized"
+  ],
   "original_file": "ObstacleAvoidance.cpp",
-  "original_file_index": 2213
+  "original_file_index": 2213,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fa8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fa90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fa44"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034fa94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034fa98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034fa9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034faa0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034faa4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034faa8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034faac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034fab0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8034fab4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x8034fab8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8034fa54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x8034fabc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x8034fa88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x8034fac0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8034fac4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x8034fac8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x8034facc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x8034fad0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x8034fad4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
+      "size": 4,
+      "address": "0x8034fad8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 92,
+      "size": 4,
+      "address": "0x8034fadc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 96,
+      "size": 4,
+      "address": "0x8034fae0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 100,
+      "size": 4,
+      "address": "0x8034fae4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 104,
+      "size": 4,
+      "address": "0x8034fae8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 108,
+      "size": 4,
+      "address": "0x8034faec"
+    }
+  ]
 }
