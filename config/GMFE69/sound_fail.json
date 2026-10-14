@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ec3e0",
-      "size": 240,
+      "address": "0x800ebdf4",
+      "size": 1756,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f418",
-      "size": 16,
+      "address": "0x8000f3d8",
+      "size": 80,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015f38",
-      "size": 24,
+      "address": "0x80015ed8",
+      "size": 120,
       "type": 1
     },
     {
@@ -71,6 +71,66 @@
       "binding": 0
     },
     {
+      "name": "AmbientTrack_SetLocation__FPC8CVector3",
+      "address": "0x800ebdf4",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Volume__Ff",
+      "address": "0x800ebe2c",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Select__Fi",
+      "address": "0x800ebedc",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Start__Fv",
+      "address": "0x800ebf6c",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SetObject__FP14CSoldierObject",
+      "address": "0x800ebff4",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_EndEvent__FPvi",
+      "address": "0x800ec004",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_UpdateEvent__FPvi",
+      "address": "0x800ec0b4",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_BeginEvent__FPv",
+      "address": "0x800ec170",
+      "size": 252,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SendEvent__FPv",
+      "address": "0x800ec26c",
+      "size": 252,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SetVolume__Ff",
+      "address": "0x800ec368",
+      "size": 120,
+      "binding": 1
+    },
+    {
       "name": "AEMS_Pause__Fb",
       "address": "0x800ec3e0",
       "size": 160,
@@ -80,18 +140,121 @@
   "externals": {
     "SNDAEMS_beginevent": "0x8034e66c",
     "SNDAEMS_endevent": "0x8034e674",
+    "SNDAEMS_setglobal": "0x8034e678",
+    "SNDAEMS_updateevent": "0x8034e670",
     "SNDSYS_entercritical": "0x80153554",
-    "SNDSYS_leavecritical": "0x80153588"
+    "SNDSYS_leavecritical": "0x80153588",
+    "err__FPce": "0x800ea130",
+    "gAEMSAmbientTrackEvent": "0x8018a750",
+    "g_ambientSourceOnPlayer": "0x8034e2ec",
+    "g_ambientSourcePos": "0x802294a0",
+    "g_hAEMSAmbientTrack": "0x8034e2f0",
+    "g_objSound": "0x8034ecbc",
+    "g_sfxVolume": "0x8034e2e4",
+    "msg__FPce": "0x800ea0e0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "err__FPce",
+    "gAEMSAmbientTrackEvent",
+    "g_ambientSourceOnPlayer",
+    "g_ambientSourcePos",
+    "g_hAEMSAmbientTrack",
+    "g_objSound",
+    "g_sfxVolume",
+    "msg__FPce"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
     "SNDAEMS_beginevent",
-    "SNDAEMS_endevent"
+    "SNDAEMS_endevent",
+    "SNDAEMS_setglobal",
+    "SNDAEMS_updateevent",
+    "g_ambientSourceOnPlayer",
+    "g_hAEMSAmbientTrack",
+    "g_objSound",
+    "g_sfxVolume"
   ],
   "original_file": "sound.cpp",
-  "original_file_index": 8971
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 70,
+      "address": "0x80179244"
+    },
+    {
+      "section": ".rodata",
+      "offset": 72,
+      "size": 70,
+      "address": "0x8017928c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 144,
+      "size": 69,
+      "address": "0x80179318"
+    },
+    {
+      "section": ".rodata",
+      "offset": 216,
+      "size": 38,
+      "address": "0x80179360"
+    },
+    {
+      "section": ".rodata",
+      "offset": 256,
+      "size": 39,
+      "address": "0x80179388"
+    },
+    {
+      "section": ".rodata",
+      "offset": 296,
+      "size": 40,
+      "address": "0x801793b0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 336,
+      "size": 41,
+      "address": "0x801793d8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 380,
+      "size": 39,
+      "address": "0x80179144"
+    },
+    {
+      "section": ".rodata",
+      "offset": 420,
+      "size": 40,
+      "address": "0x8017916c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 460,
+      "size": 28,
+      "address": "0x80179404"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8035101c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350ff0"
+    }
+  ]
 }
