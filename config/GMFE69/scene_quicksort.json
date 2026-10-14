@@ -1,0 +1,80 @@
+{
+  "id": "scene_quicksort",
+  "source": "src/game/scene_quicksort.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d8ecc",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ea0c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800156ec",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "quick_sort<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b",
+      "address": "0x800d8ecc",
+      "size": 36,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair": "0x800d8ef0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404
+}

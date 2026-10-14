@@ -975,7 +975,8 @@
     "smixfx_modlap.json",
     "scene_copy.json",
     "scene_findif.json",
-    "scene_sort.json"
+    "scene_sort.json",
+    "scene_quicksort.json"
   ],
   "progress": {
     "code_bytes": 1414572,

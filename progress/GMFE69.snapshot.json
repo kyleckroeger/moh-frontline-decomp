@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 648328,
+    "matching_code_bytes": 648364,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.83209621001971,
+    "percent": 45.83464114940774,
     "categories": {
-      "reconstructed_game": 426880,
+      "reconstructed_game": 426916,
       "restored_library": 221448
     },
-    "matching_functions": 3860
+    "matching_functions": 3861
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -659,7 +659,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "7cb162c412e69c5ec7148813986624f31e4ea33fcb2431ce8be3b1602c15910b",
+    "config/GMFE69/project.json": "47490c27894aaa98b888952dc349b6f54fcb474041d4c4aa307ff3d6ea59d114",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -740,6 +740,7 @@
     "config/GMFE69/scene_findif.json": "e1e066fc53f8620237683b676bc4380736b5ff1a8e4ccedbb2a1e9319b32e209",
     "config/GMFE69/scene_list_extent.json": "e647bbe1c43e5b76df432484b3cf01b794093cc6d38c845cb595b318d934b3e9",
     "config/GMFE69/scene_query.json": "1a5ee17112f7e50e4743d87445aba236bcd04b8fb9cce2f98540e33c686cd3a0",
+    "config/GMFE69/scene_quicksort.json": "a01d7ab5d5b2529bbf584a1de7e81d1e21549eccf4bc966326f56cca88504f9a",
     "config/GMFE69/scene_reset.json": "70df0efb45b7ba74acc493a8a688ecfc5d24150c92765c646b4c58139515196e",
     "config/GMFE69/scene_rmextents.json": "a9e3cb60f76a129229df01435c6d3bfa8a90003274c3a18411b6deaaefbe81ea",
     "config/GMFE69/scene_shutdown.json": "1069702be70b5c86a4020160874f99bce0e03adb8ec674f1f03f497293acf23e",
@@ -2457,6 +2458,7 @@
     "src/game/scene_findif.cpp": "2288205ebe2a27fac6aa2d5c194d2ec53fa84462d98c508d294ec362249f5f93",
     "src/game/scene_list_extent.cpp": "5592b75c5ec220e1094c28c9626e169f7c156f9e18489189f624135840b6b614",
     "src/game/scene_query.cpp": "da84876183b70456a758151acb2aa8630b7c1aef0c496101e32f2d38c122b957",
+    "src/game/scene_quicksort.cpp": "0001cbaf77cc08b725943f264f144b7f93ff61e565a458f4212c3d7f2b65fb4e",
     "src/game/scene_reset.cpp": "c2b641e24e891aeff9b71ace81ab49d9c287b989d50b05a82dc0e75d3ca60c3a",
     "src/game/scene_rmextents.cpp": "39e81c18b585d7bcaad0c99e0b96fff083c0c5a3cdafce164db474f64ade6d13",
     "src/game/scene_shutdown.cpp": "8438028260d157d6d654302ee715081177115ec815e8b85bf3aa68e8b9777f7d",
@@ -42859,6 +42861,45 @@
       "discarded_functions": [],
       "object_sha256": "b5a1307f852f0559d7afb87c4aba0fe60aa141be3132f74f8cc54f1d3d2121cc",
       "linked_sha256": "a051adc59b9e262331642b3fec30e8841aa8832fbb01c6cc924f2f8ce26cd470"
+    },
+    {
+      "id": "scene_quicksort",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 36,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "146a4c8e967a16c6af41d46d84d401167920a9ecbede71d4accd4f2765e6d2e5",
+      "linked_sha256": "3ab212c8d8ea42ee5831e77c4adfd1370c1598474049815daa21030b2d13babd"
     }
   ],
   "code_map": {
@@ -49412,13 +49453,6 @@
             "kind": "function",
             "name": "SweepAllExtents__6CSceneFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d8ecc",
-            "size": 36,
-            "kind": "function",
-            "name": "quick_sort<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x800d8ef0",
