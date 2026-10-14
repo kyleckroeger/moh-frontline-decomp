@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 623620,
+    "matching_code_bytes": 625112,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.085419476703905,
+    "percent": 44.19089307578547,
     "categories": {
-      "reconstructed_game": 403428,
+      "reconstructed_game": 404920,
       "restored_library": 220192
     },
-    "matching_functions": 3758
+    "matching_functions": 3759
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -220,7 +220,7 @@
     "config/GMFE69/anim.json": "6c0f7deb10acc52b25def57dae0a0ea6329965cecfc7a591ba086eda441dd7a8",
     "config/GMFE69/anim_callback.json": "937a9409585d7e6813853da0dbdb6b7057a2f32bc4255a1bf44c4d988be46098",
     "config/GMFE69/anim_callback_finish.json": "d89898906c3a80061526049cb4a1515bc0fee382303a2313dc7571cce223c620",
-    "config/GMFE69/anim_callback_init.json": "ff5e8a9edfb134b741d6816d941b074e1932cf70cb818569ab99975803e389db",
+    "config/GMFE69/anim_callback_init.json": "0c36816422870947bdb91767302b417a9d703b59dc8f059d331dcdd47943b382",
     "config/GMFE69/anim_callback_weapon.json": "4c37f800d5ded4d80a84d27643120592a7ad0004cbc519a0ebf2e6b25e4f5a68",
     "config/GMFE69/anim_obj.json": "a247bcba3a25c2b2a8c68697e25453fbe49fadf6c7925bee298427fc0856679b",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
@@ -2068,7 +2068,7 @@
     "src/game/anim.cpp": "9e086af4631ac941623f4e90cc4d858d9a4a1ddde96c1433e494b2f9411978d3",
     "src/game/anim_callback.cpp": "6364e30e1a95c04cf9b0da29fc29dddb3a3b2d334fdedb52b88d73ac2c3b574b",
     "src/game/anim_callback_finish.cpp": "6d70d72410c077a03873e38d85131ea82eb010bc54b848d3187459b4e00cb57f",
-    "src/game/anim_callback_init.cpp": "c3eb78cddb0925f7105d75902940c8f4c6ec06b277182713de78ac15d6b96e8d",
+    "src/game/anim_callback_init.cpp": "73a69fd079e812615abbcff91179c9318cecafcadfec6c9fb808b67ce610aaf8",
     "src/game/anim_callback_weapon.cpp": "ffad882baa043702ec84a4fe2edc1b903a7645dab7cc3d35614f51904a5ed312",
     "src/game/anim_obj.cpp": "6312344d8f151cabc650590c2b2682ca2b7f0fd0074bed26008ecc032ba2dc40",
     "src/game/anim_obj_ctor.cpp": "384df3a5aa5e148e0840e58548ab842711a7f7d8dd4abbd71e506d5740baa845",
@@ -41608,8 +41608,8 @@
     {
       "id": "anim_callback_init",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 1100,
+      "functions": 6,
+      "code_bytes": 2592,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41641,8 +41641,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f579969a89dfefea3fa464b0a94f53c1e8f3f17579aaecb9e35c22bb47a9af7d",
-      "linked_sha256": "120efac3a499f507c012c18e84e49492c663ad4ac9760207e02b3bf7dc44e8d6"
+      "object_sha256": "a9357fd878b01ac8c6b40f38f3cc0f694b0c7967017f9fc6c115967e0fe934c6",
+      "linked_sha256": "a8a2df7a6c860244911e93d96d0bcd59c6fd1375a88350e5e8d4d9647694bd81"
     },
     {
       "id": "anim_callback_weapon",
@@ -44279,13 +44279,6 @@
             "size": 1064,
             "kind": "function",
             "name": "death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005ff80",
-            "size": 1492,
-            "kind": "function",
-            "name": "turn_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
             "evidence": "exception-index"
           }
         ]

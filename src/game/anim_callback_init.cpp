@@ -1,4 +1,13 @@
-// A fragment of anim_callback.cpp (0x80060554): CAnimCallbacks::pathing_cb
+// A fragment of anim_callback.cpp (0x8005ff80): CAnimCallbacks::turn_cb
+// (on event 0 picks the turn animation through _TurnFindTurnAnimInfo - its
+// 7th argument is read as a float - starts it, scales its sequence by the
+// returned speed, keeps the per-frame yaw step, clears flag 0x10 of the
+// object, remembers whether to face the target (the float is 0) and, when
+// the owner has a move pending, starts moving it toward its target over the
+// turn's duration; on event 2, while the state is current, either turns the
+// owner toward its AI target (stored position raised by 1, or the target's
+// position) like pathing_cb, or applies the yaw step and continues the move;
+// on event 1 clears the step), then CAnimCallbacks::pathing_cb
 // (on event 0 starts the first entry, flagging the state when the animated
 // object's skinned animation has an owner, and keeps the channel in the
 // state's memory; on event 2, while the state is current and a turn is
@@ -47,17 +56,117 @@ public:
 } __attribute__((aligned(8)));
 
 // Inferred: the object the skinned animation drives (members by offset).
-struct PathingOwnerView {
-    unsigned char unknown0000[9072];
+class CSoldierObject;
+
+/* Inferred: scene-node view with the table slots used here (ISceneNode). */
+class ISceneNode {
+public:
+    virtual void MarkForDestruction(int);
+    virtual ~ISceneNode();
+    virtual void unknown010();
+    virtual void unknown014();
+    virtual void unknown018();
+    virtual void unknown01c();
+    virtual void unknown020();
+    virtual void unknown024();
+    virtual void unknown028();
+    virtual void unknown02c();
+    virtual void unknown030();
+    virtual void unknown034();
+    virtual void unknown038();
+    virtual void unknown03c();
+    virtual void unknown040();
+    virtual void unknown044();
+    virtual void unknown048();
+    virtual void unknown04c();
+    virtual void unknown050();
+    virtual void unknown054();
+    virtual void unknown058();
+    virtual void unknown05c();
+    virtual void unknown060();
+    virtual void unknown064();
+    virtual void unknown068();
+    virtual void unknown06c();
+    virtual void unknown070();
+    virtual void unknown074();
+    virtual void unknown078();
+    virtual void unknown07c();
+    virtual void unknown080();
+    virtual void unknown084();
+    virtual void unknown088();
+    virtual void unknown08c();
+    virtual void unknown090();
+    virtual CSoldierObject* AsSoldierObject();
+    virtual void unknown098();
+    virtual void unknown09c();
+    virtual void unknown0a0();
+    virtual void unknown0a4();
+    virtual void unknown0a8();
+    virtual void unknown0ac();
+    virtual void unknown0b0();
+    virtual void unknown0b4();
+    virtual void unknown0b8();
+    virtual void unknown0bc();
+    virtual void unknown0c0();
+    virtual void unknown0c4();
+    virtual void unknown0c8();
+    virtual struct AIDoodadView* GetAIDoodad();
+};
+
+class CSoldierObject : public ISceneNode {
+};
+
+struct CAIFilterRealPosition {
+    float x;
+    float y;
+    float z;
+};
+
+class CAIObject {
+public:
+    unsigned char unknown000[192];
+    bool m_targetStored;
+    unsigned char unknown0c1[3];
+    CAIObject* m_target;
+    unsigned char unknown0c8[40];
+    CAIFilterRealPosition m_unknown0f0;
+    unsigned char unknown0fc[84];
+    CAIFilterRealPosition m_unknown150;
+};
+
+struct CAIFilterObject {
+    void* unknown00;
+    unsigned char unknown04[4];
+    CAIObject* m_object;
+};
+
+struct AIDoodadView {
+    void* unknown00;
+    CAIFilterObject* filter;
+};
+
+inline bool HasTarget(CAIObject* ai) {
+    return ai && (ai->m_targetStored || ai->m_target);
+}
+
+// Inferred: the object the skinned animation drives (members by offset).
+struct PathingOwnerView : ISceneNode {
+    unsigned char unknown0004[9068];
     CVector3 m_position;
     unsigned char unknown2380[32];
     CVector3 m_target;
     int m_yaw;
-    unsigned char unknown23d4[60];
+    unsigned char unknown23b4[4];
+    CVector3 m_unknown23b8;
+    unsigned char unknown23c8[16];
+    CVector3 m_unknown23d8;
+    float m_unknown23e8;
+    unsigned char unknown23ec[4];
     float m_turn;
     unsigned char unknown2414[99];
     bool m_unknown2457;
-    unsigned char unknown2458[89];
+    bool m_unknown2458;
+    unsigned char unknown2459[88];
     bool m_turnPending;
 };
 
@@ -65,7 +174,8 @@ struct PathingOwnerView {
 struct SkinnedChannelView {
     unsigned char unknown00[32];
     int m_yaw;
-    unsigned char unknown24[100];
+    unsigned char unknown24[68];
+    unsigned char m_sequence[32];
 };
 
 class CAnimSkinned {
@@ -97,6 +207,8 @@ public:
 
     unsigned char unknown004[2188];
     AnimStateMachineView m_machine;
+    unsigned char unknown894[420];
+    unsigned int m_flags;
 };
 
 
@@ -119,6 +231,7 @@ struct AnimFileStateAnimList_t {
 
 struct AnimObjHdr_t;
 struct AnimChannel_t;
+class CAnimObject;
 
 class CAnimCallbacks {
 public:
@@ -131,6 +244,7 @@ public:
     static int face_cb(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
     static int floco_cb(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
     static int animfinish_cb(unsigned short, void*);
+    static unsigned short _TurnFindTurnAnimInfo(AnimFileStateAnimList_t*, CAnimObject*, unsigned short, long*, float*, float*, float*, float*, float);
 };
 
 typedef int (*AnimStateSelFunc)(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
@@ -158,6 +272,7 @@ extern "C" void* AnimStGetStateUserMemory(AnimStateMachineView*, unsigned short)
 extern "C" void AnimStSetStateFlags(AnimStateMachineView*, unsigned short, int);
 extern "C" unsigned short AnimStGetCurrentState(AnimStateMachineView*);
 int MathArcTan2(float, float);
+extern "C" void AnimSeqScaleDuration(void*, float);
 
 // Inferred: the per-state memory keeps the started channel.
 struct PathingStateView {
@@ -166,6 +281,161 @@ struct PathingStateView {
 };
 
 // Inferred: the animated object's state machine at +2192.
+
+// Inferred: the turn state's memory (the started channel, the frame step,
+// the remaining and total move time, whether to face the target, whether a
+// move is under way and the move's destination).
+struct TurnStateView {
+    unsigned char unknown00[4];
+    int channel;
+    int step;
+    float remaining;
+    float total;
+    bool face;
+    bool moving;
+    unsigned char unknown16[2];
+    CAIFilterRealPosition destination;
+};
+
+int CAnimCallbacks::turn_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
+                            AnimChannel_t* channel, void* user, unsigned long event, void* extra, float time) {
+    CAnimSkinned* skinned = (CAnimSkinned*)user;
+    CAnimated* animated = (CAnimated*)user;
+    PathingOwnerView* owner = skinned->m_owner;
+    float duration;
+    float speed;
+    long frames;
+    float unknownA = 0.0f;
+    float unknownB = 0.0f;
+    TurnStateView* memory = (TurnStateView*)AnimStGetStateUserMemory(&animated->m_machine, state);
+    switch (event) {
+    case 0: {
+        AnimStSetStateFlags(&animated->m_machine, state, 1);
+        unsigned short index = _TurnFindTurnAnimInfo(list, (CAnimObject*)owner, state, &frames, &duration, &speed, &unknownA, &unknownB, *(float*)&extra);
+        memory->channel = AnimChanStartAnim(header, channel, list->entries[index].anim, list->entries[index].flags, state, user, 1.0f);
+        AnimSeqScaleDuration(skinned->m_channels[memory->channel].m_sequence, 1.0f / speed);
+        memory->step = frames / duration;
+        animated->m_flags &= ~0x10;
+        if (*(float*)&extra == 0.0f)
+            memory->face = 1;
+        else
+            memory->face = 0;
+        if (owner->m_unknown2458) {
+            memory->moving = 1;
+            owner->m_unknown2458 = 0;
+            memory->destination.x = owner->m_target.x;
+            memory->destination.y = owner->m_target.y;
+            memory->destination.z = owner->m_target.z;
+            float dx = memory->destination.x;
+            float dy = memory->destination.y;
+            float dz = memory->destination.z;
+            dx -= owner->m_unknown23b8.x;
+            dy -= owner->m_unknown23b8.y;
+            dz -= owner->m_unknown23b8.z;
+            memory->total = duration;
+            memory->remaining = duration;
+            float step = time;
+            if (time > memory->remaining)
+                step = memory->remaining;
+            float ratio = step / memory->remaining;
+            memory->remaining -= step;
+            float progress = memory->remaining / memory->total;
+            owner->m_unknown23e8 = progress;
+            float scale = (1.0f - progress) * ratio;
+            owner->m_unknown23d8.x = scale * dx;
+            owner->m_unknown23d8.y = scale * dy;
+            owner->m_unknown23d8.z = scale * dz;
+        } else {
+            memory->moving = 0;
+        }
+        break;
+    }
+    case 2:
+        if (state == AnimStGetCurrentState(&animated->m_machine)) {
+            CVector3 target;
+            CVector3 move;
+            CVector3 position;
+            CVector3 delta;
+            if (memory->face) {
+                CSoldierObject* soldier = owner->AsSoldierObject();
+                if (!soldier)
+                    return 0;
+                CAIObject* ai = soldier->GetAIDoodad()->filter->m_object;
+                if (HasTarget(ai)) {
+                    if (!ai->m_target) {
+                        float x = ai->m_unknown150.x;
+                        float z = ai->m_unknown150.z;
+                        float y = ai->m_unknown150.y;
+                        target.x = x;
+                        target.y = y;
+                        target.z = z;
+                        target.z += 1.0f;
+                    } else {
+                        float x = ai->m_unknown0f0.x;
+                        float z = ai->m_unknown0f0.z;
+                        float y = ai->m_unknown0f0.y;
+                        target.x = x;
+                        target.y = y;
+                        target.z = z;
+                    }
+                    owner->m_target = target;
+                    delta = owner->m_target;
+                    position = owner->m_position;
+                    delta -= position;
+                    int yaw = MathArcTan2(-delta.x, delta.y);
+                    float angle = 360.0f * (int)(((yaw & 0xffffff) - owner->m_yaw) & 0xffffff) / 16777216.0f;
+                    if (angle > 180.0f)
+                        angle -= 360.0f;
+                    if (angle > 6.0f * time)
+                        angle = 6.0f * time;
+                    else if (angle < -6.0f * time)
+                        angle = -6.0f * time;
+                    owner->m_turn += 0.017453292f * angle;
+                    skinned->m_channels[memory->channel].m_yaw = owner->m_yaw;
+                    owner->m_unknown2457 = 1;
+                }
+            } else {
+                owner->m_turn += 6.2831855f * memory->step / 16777216.0f * time;
+                SkinnedChannelView* record = &skinned->m_channels[memory->channel];
+                record->m_yaw = (record->m_yaw + (int)(memory->step * time)) & 0xffffff;
+                if (memory->moving) {
+                    move.x = memory->destination.x;
+                    move.y = memory->destination.y;
+                    move.z = memory->destination.z;
+                    move.x = move.x - owner->m_unknown23b8.x;
+                    move.y = move.y - owner->m_unknown23b8.y;
+                    move.z = move.z - owner->m_unknown23b8.z;
+                    if (memory->remaining > 0.0f) {
+                        float step = time;
+                        if (time > memory->remaining)
+                            step = memory->remaining;
+                        float ratio = step / memory->remaining;
+                        memory->remaining -= step;
+                        float progress = memory->remaining / memory->total;
+                        owner->m_unknown23e8 = progress;
+                        float scale = (1.0f - progress) * ratio;
+                        owner->m_unknown23d8.x = scale * move.x;
+                        owner->m_unknown23d8.y = scale * move.y;
+                        owner->m_unknown23d8.z = scale * move.z;
+                    } else {
+                        owner->m_unknown23e8 = 0.0f;
+                        owner->m_unknown23d8 = move;
+                    }
+                }
+            }
+            if (animated->m_flags & 0x10) {
+                memory->step = 0;
+                memory->remaining = 0.0f;
+            }
+        }
+        break;
+    case 1:
+        if (state == AnimStGetCurrentState(&animated->m_machine))
+            memory->step = 0;
+        break;
+    }
+    return 0;
+}
 
 int CAnimCallbacks::pathing_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
                                AnimChannel_t* channel, void* user, unsigned long event, void*, float time) {

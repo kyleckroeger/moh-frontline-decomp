@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80060554",
-      "size": 1100,
+      "address": "0x8005ff80",
+      "size": 2592,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b2e0",
-      "size": 32,
+      "address": "0x8000b2d8",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012350",
-      "size": 48,
+      "address": "0x80012344",
+      "size": 60,
       "type": 1
     }
   ],
@@ -67,6 +67,12 @@
       "name": "random_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
       "address": "0x80060788",
       "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "turn_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
+      "address": "0x8005ff80",
+      "size": 1492,
       "binding": 1
     },
     {
@@ -90,6 +96,7 @@
   ],
   "externals": {
     "AnimChanStartAnim": "0x800618fc",
+    "AnimSeqScaleDuration": "0x800660f8",
     "AnimStGetCurrentState": "0x800670ac",
     "AnimStGetStateUserMemory": "0x80067100",
     "AnimStRegisterFinishCallback": "0x80067c70",
@@ -98,12 +105,12 @@
     "MathArcTan2__Fff": "0x80091e64",
     "_AnimObj_StateDef": "0x8034db30",
     "_AnimObj_StateSelFuncArray": "0x801c6dd0",
+    "_TurnFindTurnAnimInfo__14CAnimCallbacksFP23AnimFileStateAnimList_tP11CAnimObjectUsPlPfPfPfPff": "0x8005e6d4",
     "aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005e9ec",
     "animfinish_cb__14CAnimCallbacksFUsPv": "0x8005e9bc",
     "death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fb58",
     "floco_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005f2c4",
     "rand": "0x8013fc54",
-    "turn_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005ff80",
     "weapon_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf": "0x8005fab4"
   },
   "undefined_in_discarded_code": [],
@@ -127,13 +134,13 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034fbc4"
+      "address": "0x8034fbc0"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x8034fbc0"
+      "address": "0x8034fbc4"
     },
     {
       "section": ".sdata2",
@@ -174,6 +181,12 @@
     {
       "section": ".sdata2",
       "offset": 32,
+      "size": 4,
+      "address": "0x8034fc24"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
       "size": 8,
       "address": "0x8034fbf0"
     }
