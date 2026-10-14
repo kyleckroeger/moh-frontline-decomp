@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 626136,
+    "matching_code_bytes": 626988,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.26328246282268,
+    "percent": 44.32351269500598,
     "categories": {
-      "reconstructed_game": 405944,
+      "reconstructed_game": 406796,
       "restored_library": 220192
     },
-    "matching_functions": 3761
+    "matching_functions": 3767
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -548,6 +548,7 @@
     "config/GMFE69/light_rows.json": "b1e2d208b2efeb78c81fb9a601b42cdb105ad6470af43234fd1d07b362395e31",
     "config/GMFE69/light_statics.json": "1b14f80f66c67075d273465925b3b2426476bc4986e1cede458be968faead1b6",
     "config/GMFE69/light_visible.json": "8c836e812fe34c340bb43e1008bd7983aa6c949f63d6d4772676498915b7a608",
+    "config/GMFE69/lightvolman_volumes.json": "489a0c1d9926aea9e3610fd3ba81fe1286ba5167f883de60f30440b79682491c",
     "config/GMFE69/line.json": "4c909b09d3890aa1b14d3e08b8685227c16a8bb5dea5bdf96541e31260483913",
     "config/GMFE69/locatbig.json": "951de0b6c115be49b7755a129307e91c30deb6c630ba9c49821cf71f0db076f0",
     "config/GMFE69/main_TRK.json": "53a7c3f8fdc516d26210c5002897d55d0bb651015e4e46852c26248d117ade9b",
@@ -648,7 +649,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "ec9c88bef7a55453ebf471bc893107dd571513779100e2bd038fdb0171d274a2",
+    "config/GMFE69/project.json": "dce86aee978e1823ca7960aad2aef9301ff0fc12fb0b9b5a0cf8361f380db7a7",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2332,6 +2333,7 @@
     "src/game/light_rows.cpp": "ee305d6a4bbdcda116b02c0c3b0c0665b2487928f78c5472c8e50ee310d03f88",
     "src/game/light_statics.cpp": "3b668c751c5611c7fcb137dca194e5abf94fac42d94cf7ec498be79b9b11f1eb",
     "src/game/light_visible.cpp": "1aff95e093197ccb9edc92eb0c3b9a76e3b409725a66d9992627ca3f1bfaaca5",
+    "src/game/lightvolman_volumes.cpp": "ca1de68080816c505892075c8531e52e45e8754d51d7ee36fed81f6915c88496",
     "src/game/line.cpp": "f05fc7e4c6eb1fd503d92bae6f4efc5139d79ca0ce1b9a8f4dda4f472de8b940",
     "src/game/mainloop.cpp": "737d1965982728d6b7eaa43a46e3a6b9ce55122ca931a402690524e1af5cf172",
     "src/game/matrix.cpp": "f70a0142eeb28c529bf11a33e99b3c5fd0ea55e1cf068f038b9228c29f9659d5",
@@ -41916,6 +41918,45 @@
       "discarded_functions": [],
       "object_sha256": "23d7240af1f4e320e26ab00f9eba70349ec5fb43c9d7c989e65ef1ee9a6a786e",
       "linked_sha256": "aefa356695fa559ecda3d1cf6a453a9fa773f1d12b0e2153e462858db5803923"
+    },
+    {
+      "id": "lightvolman_volumes",
+      "category": "reconstructed_game",
+      "functions": 6,
+      "code_bytes": 852,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "783db5678ee8abba0ed8df76b2a3d95db4ad6d5882bdc8c40df7469d73374cff",
+      "linked_sha256": "7ab28f84738e8c0e0c01aca175da0326b48c3a96bf84db5212bfc6fc62e61f10"
     }
   ],
   "code_map": {
@@ -45071,48 +45112,6 @@
             "kind": "function",
             "name": "GetVolume__19CLightVolumeManagerFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80078df8",
-            "size": 236,
-            "kind": "function",
-            "name": "RemoveVolume__19CLightVolumeManagerFP14BPDLightVolume",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80078ee4",
-            "size": 396,
-            "kind": "function",
-            "name": "AddVolume__19CLightVolumeManagerFP14BPDLightVolume",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80079070",
-            "size": 56,
-            "kind": "function",
-            "name": "Update__19CLightVolumeManagerFf",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800790a8",
-            "size": 36,
-            "kind": "function",
-            "name": "Reset__19CLightVolumeManagerFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800790cc",
-            "size": 92,
-            "kind": "function",
-            "name": "__dt__19CLightVolumeManagerFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80079128",
-            "size": 36,
-            "kind": "function",
-            "name": "__ct__19CLightVolumeManagerFv",
-            "evidence": "private-reference"
           }
         ]
       },
