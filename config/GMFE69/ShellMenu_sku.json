@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800de420",
-      "size": 476,
+      "size": 656,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ed10",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015968",
-      "size": 24,
+      "size": 36,
       "type": 1
     },
     {
@@ -79,6 +79,12 @@
       "name": "PassMP_PrefHitLocationToIStudio__10CShellMenuFiPc",
       "address": "0x800de4ac",
       "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "PassMP_PrefTargetToIStudio__10CShellMenuFiPc",
+      "address": "0x800de5fc",
+      "size": 180,
       "binding": 1
     }
   ],

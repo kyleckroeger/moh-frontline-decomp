@@ -3,7 +3,9 @@
 // open window's player in the controller configuration, and
 // PassMP_PrefHitLocationToIStudio, which names the body part a player hit
 // most (the first of the seven per-player hit counts with the highest
-// positive count: head, arm, arm, torso, leg, leg, groin, else "None").
+// positive count: head, arm, arm, torso, leg, leg, groin, else "None"), and
+// PassMP_PrefTargetToIStudio, which names the player this player hit most
+// (else "None") and returns that player's index or -1.
 // CShellMenu,
 // CDualConfig and the functions are named by the mangled symbols; the
 // members, the 28-byte player records, the 256-byte statistics records and
@@ -24,7 +26,9 @@ public:
 extern CDualConfig g_ControllerConfig;
 
 struct MPPlayerButtonsView {
-    unsigned char unknown00[24];
+    unsigned char unknown00[8];
+    char name[11];
+    unsigned char unknown13[5];
     unsigned char controller;
     unsigned char unknown19[3];
 };
@@ -35,13 +39,16 @@ extern "C" char* strcpy(char*, const char*);
 struct MPStatsView {
     unsigned char unknown00[4];
     int hitLocations[7];
-    unsigned char unknown20[224];
+    unsigned char unknown20[180];
+    int targets[4];
+    unsigned char unknowne4[28];
 };
 
 class CShellMenu {
 public:
     int GetSKUMode();
     void PassMP_PrefHitLocationToIStudio(int, char*);
+    int PassMP_PrefTargetToIStudio(int, char*);
     void SetupAllPlayersButtonsForMultiplayerGame();
 
     unsigned char unknown0000[5196];
@@ -102,4 +109,21 @@ void CShellMenu::PassMP_PrefHitLocationToIStudio(int player, char* location) {
         strcpy(location, "None");
         break;
     }
+}
+
+int CShellMenu::PassMP_PrefTargetToIStudio(int player, char* name) {
+    int most = 0;
+    int target = -1;
+    for (int i = 0; i < 4; i++) {
+        int count = m_mpStats[player].targets[i];
+        if (count > most) {
+            most = count;
+            target = i;
+        }
+    }
+    if (target >= 0)
+        strcpy(name, m_players[target].name);
+    else
+        strcpy(name, "None");
+    return target;
 }
