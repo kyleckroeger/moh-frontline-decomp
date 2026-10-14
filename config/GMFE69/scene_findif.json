@@ -1,0 +1,86 @@
+{
+  "id": "scene_findif",
+  "source": "src/game/scene_findif.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d8b38",
+      "size": 116,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e9fc",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 16
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800156d4",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "find_if<Q23dwi22vec_iter<10CCollision>,22ClsnInvolvesThisBullet>__3dwiFQ23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>22ClsnInvolvesThisBullet",
+      "address": "0x800d8b38",
+      "size": 116,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv": "0x800d85a0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404,
+  "weak_duplicates": [
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv"
+  ]
+}
