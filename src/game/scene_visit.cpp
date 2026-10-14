@@ -3,7 +3,9 @@
 // world bounding volume of the given type against the query volume (or, for a
 // node without one, its position), and hands every node that is not reported
 // as no collision (a result other than 1, as in AIFilter.cpp) to the visitor;
-// it stops and returns true as soon as the visitor does. The file name is this
+// it stops and returns true as soon as the visitor does.
+// VisitAllStaticObjects hands every static object (the scene's static list)
+// to the visitor the same way. The file name is this
 // project's. CScene, ISceneNode, IVolume, CCollision and dwi::IVisitor are
 // named by the mangled symbols; the views (node list head and link, the
 // visitor's bool result, the int collision result) and the parameter names
@@ -129,12 +131,30 @@ public:
 };
 }
 
+/* inferred view: static objects are chained through +44 */
+class CStaticObject : public ISceneNode {
+public:
+    unsigned char unknown00c[32];
+    CStaticObject* m_nextStatic;
+};
+
 class CScene {
 public:
     bool VisitAllNodesInVolume(dwi::IVisitor<ISceneNode>&, const IVolume&, ISceneNode::EVolumeType, bool);
+    bool VisitAllStaticObjects(dwi::IVisitor<ISceneNode>&);
 
     ISceneNode* m_firstNode;
+    unsigned char unknown004[28];
+    CStaticObject* m_firstStatic;
 };
+
+bool CScene::VisitAllStaticObjects(dwi::IVisitor<ISceneNode>& visitor) {
+    for (CStaticObject* object = m_firstStatic; object; object = object->m_nextStatic) {
+        if (visitor.Visit(*object))
+            return true;
+    }
+    return false;
+}
 
 bool CScene::VisitAllNodesInVolume(dwi::IVisitor<ISceneNode>& visitor, const IVolume& volume,
                                    ISceneNode::EVolumeType type, bool skipWorld) {

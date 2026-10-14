@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800db458",
-      "size": 360,
+      "size": 472,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000eaa4",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015788",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "VisitAllNodesInVolume__6CSceneFRQ23dwi22IVisitor<10ISceneNode>RC7IVolumeQ210ISceneNode11EVolumeTypeb",
       "address": "0x800db458",
       "size": 360,
+      "binding": 1
+    },
+    {
+      "name": "VisitAllStaticObjects__6CSceneFRQ23dwi22IVisitor<10ISceneNode>",
+      "address": "0x800db5c0",
+      "size": 112,
       "binding": 1
     }
   ],
