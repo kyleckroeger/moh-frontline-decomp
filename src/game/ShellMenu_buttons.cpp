@@ -4,7 +4,9 @@
 // advances the current mission and level to the next level (missions 1 and 5
 // have four levels, 2 to 4 three, mission 6 two and then wraps to mission 1),
 // marks the old level's star rating, runs the movie/medal and special medal
-// unlock checks, then makes the new level current and unlocked. CShellMenu
+// unlock checks, then makes the new level current and unlocked; GetNextLevel
+// only computes the next level and marks it unlocked (the level step is an
+// inferred inline shared by both). CShellMenu
 // and the functions are named by the mangled symbols; the members (current
 // mission and level at +4/+8, next at +12/+13, the star and unlock bit sets
 // at +28/+36) and the result types are inferred. The rest of the file is not part of this unit.
@@ -17,6 +19,52 @@ void SetUnlockedLevelStatus(UnlockedLevelsInBits*, unsigned int, unsigned int);
 class CShellMenu {
 public:
     void GetNextLevelCheat();
+    void GetNextLevel();
+    /* inferred inline: the next level after the current one */
+    void AdvanceLevel() {
+        m_nextMission = m_mission;
+        m_nextLevel = m_level;
+        m_nextLevel++;
+        switch (m_nextMission) {
+        case 1:
+            if (m_nextLevel > 4) {
+                m_nextMission++;
+                m_nextLevel = 1;
+            }
+            break;
+        case 2:
+            if (m_nextLevel > 3) {
+                m_nextMission++;
+                m_nextLevel = 1;
+            }
+            break;
+        case 3:
+            if (m_nextLevel > 3) {
+                m_nextMission++;
+                m_nextLevel = 1;
+            }
+            break;
+        case 4:
+            if (m_nextLevel > 3) {
+                m_nextMission++;
+                m_nextLevel = 1;
+            }
+            break;
+        case 5:
+            if (m_nextLevel > 4) {
+                m_nextMission++;
+                m_nextLevel = 1;
+            }
+            break;
+        case 6:
+            if (m_nextLevel > 2) {
+                m_nextMission = 1;
+                m_nextLevel = 1;
+            }
+            break;
+        }
+    }
+
     void CheckIfMovieAndMedalNeedsToBeUnlocked();
     void CheckIfSpecialMedalsNeedToBeUnlocked();
     int Get_LanguageSubtitleIndex();
@@ -62,51 +110,16 @@ void CShellMenu::CopyControllerButtons(char* buttons, int player) {
 }
 
 void CShellMenu::GetNextLevelCheat() {
-    m_nextMission = m_mission;
-    m_nextLevel = m_level;
-    m_nextLevel++;
-    switch (m_nextMission) {
-    case 1:
-        if (m_nextLevel > 4) {
-            m_nextMission++;
-            m_nextLevel = 1;
-        }
-        break;
-    case 2:
-        if (m_nextLevel > 3) {
-            m_nextMission++;
-            m_nextLevel = 1;
-        }
-        break;
-    case 3:
-        if (m_nextLevel > 3) {
-            m_nextMission++;
-            m_nextLevel = 1;
-        }
-        break;
-    case 4:
-        if (m_nextLevel > 3) {
-            m_nextMission++;
-            m_nextLevel = 1;
-        }
-        break;
-    case 5:
-        if (m_nextLevel > 4) {
-            m_nextMission++;
-            m_nextLevel = 1;
-        }
-        break;
-    case 6:
-        if (m_nextLevel > 2) {
-            m_nextMission = 1;
-            m_nextLevel = 1;
-        }
-        break;
-    }
+    AdvanceLevel();
     SetStarRatingStatus((StarLevelsInBits*)m_starLevels, m_level + m_mission * 10, 3);
     CheckIfMovieAndMedalNeedsToBeUnlocked();
     CheckIfSpecialMedalsNeedToBeUnlocked();
     m_mission = m_nextMission;
     m_level = m_nextLevel;
+    SetUnlockedLevelStatus((UnlockedLevelsInBits*)m_unlockedLevels, m_nextLevel + m_nextMission * 10, 1);
+}
+
+void CShellMenu::GetNextLevel() {
+    AdvanceLevel();
     SetUnlockedLevelStatus((UnlockedLevelsInBits*)m_unlockedLevels, m_nextLevel + m_nextMission * 10, 1);
 }

@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800e14f8",
-      "size": 724,
+      "size": 1052,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000efc8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015ac4",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -85,6 +85,12 @@
       "name": "CopyControllerButtons__10CShellMenuFPci",
       "address": "0x800e15a4",
       "size": 156,
+      "binding": 1
+    },
+    {
+      "name": "GetNextLevel__10CShellMenuFv",
+      "address": "0x800e17cc",
+      "size": 328,
       "binding": 1
     }
   ],
