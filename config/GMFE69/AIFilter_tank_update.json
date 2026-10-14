@@ -1,0 +1,115 @@
+{
+  "id": "AIFilter_tank_update",
+  "source": "src/game/AIFilter_tank_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8005add4",
+      "size": 660,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000af68",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800120bc",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UpdateFromGameObject__19CAIFilterTankObjectFv",
+      "address": "0x8005add4",
+      "size": 452,
+      "binding": 1
+    },
+    {
+      "name": "Update__19CAIFilterTankObjectFf",
+      "address": "0x8005af98",
+      "size": 208,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "SetCoordinateAxisDirection__9CAIObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3R20CAIFilterRealVector3": "0x8004d614",
+    "SetLocation__9CAIObjectFR21CAIFilterRealPosition": "0x8004d75c",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "AIFilter.cpp",
+  "original_file_index": 2575,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fb48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034fb50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fb58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034fb60"
+    }
+  ]
+}

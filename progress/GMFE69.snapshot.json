@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 626988,
+    "matching_code_bytes": 628464,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.32351269500598,
+    "percent": 44.42785520991509,
     "categories": {
-      "reconstructed_game": 406796,
+      "reconstructed_game": 408272,
       "restored_library": 220192
     },
-    "matching_functions": 3767
+    "matching_functions": 3777
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -28,7 +28,8 @@
     "config/GMFE69/AIFilter_soldier_dtor.json": "03333f75283dc7b52902483605118cba9f5150551dba5294d2357be487d1c352",
     "config/GMFE69/AIFilter_soldier_update.json": "495bffbef012d9742cef8726d8cef435148b330dd06dd8c2dd47fd76cf8706d0",
     "config/GMFE69/AIFilter_tank_ctor.json": "14539e480251341e95a312263e500970f4afd83a1c9a3756d818c54b2a4a3a0a",
-    "config/GMFE69/AIFilter_tank_dtor.json": "7b26c2829bebdc968339fe1e783bf8dddff52d66132791b9e921892dfb5c670f",
+    "config/GMFE69/AIFilter_tank_dtor.json": "5dba4e072ecb6da6d838d460ae14ab367ec75d568acbf1ca457d3c6125c9bd52",
+    "config/GMFE69/AIFilter_tank_update.json": "05cd3af30f919a8e73d6b1d3367aae944a8b7feb250af978a1d451f9db99ec3b",
     "config/GMFE69/AIFilter_visit.json": "d796125fd78b1b7b47cfed013f2f4dfae0df978e85e39e8e4fc28c5ca94a6adf",
     "config/GMFE69/AIObject.json": "70caf5a45b028defd9abbae8f9ae47d3c803eb64f9519f371ce13bfebad52875",
     "config/GMFE69/AIObject_arbitrary.json": "ec69b61edf7e8ca5d7df8be0377e9a6f097c7234d891642f9ae58c4d77733807",
@@ -649,7 +650,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "dce86aee978e1823ca7960aad2aef9301ff0fc12fb0b9b5a0cf8361f380db7a7",
+    "config/GMFE69/project.json": "9fa50c6679af760525e98372145192c13cdecfb09de83c756b94910c49de8229",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -1965,7 +1966,8 @@
     "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
     "src/game/AIFilter_soldier_update.cpp": "461b34089b4ff5ffe318d32c692ed94d2d056776ace8bd9e8a9514db31a3ba96",
     "src/game/AIFilter_tank_ctor.cpp": "8cefe168ad49b13bce86c3fd174366ca405d36a84ef4948ca6d618058f7f6b81",
-    "src/game/AIFilter_tank_dtor.cpp": "0bc0d291505e886614de67cd86d7d2f78fa7707e2342edbfcc52fed517e7627c",
+    "src/game/AIFilter_tank_dtor.cpp": "786befa9a501d7547321cc8ad9174bfa12e727290364b05dd765a7cc67c9d4f2",
+    "src/game/AIFilter_tank_update.cpp": "1a7dffad190493bb7740d2cf65ab1a84f01a026083ef7d3fbc585956e04d24b4",
     "src/game/AIFilter_visit.cpp": "c51216f358db283d3a19cc78f7c5bbbd1c35819d50071a98ba361cd6e4083ea2",
     "src/game/AIObject.cpp": "4df66e0ac4d8cc3730806fc9395c3d8ce612d8826835ac12bba33d5de5b4df25",
     "src/game/AIObject_arbitrary.cpp": "005b0c6e6ed97f87b1cdf736b83eef96667bf81834ca547ea2a1694b9aacca8f",
@@ -36460,8 +36462,8 @@
     {
       "id": "AIFilter_tank_dtor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 112,
+      "functions": 9,
+      "code_bytes": 928,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -36493,8 +36495,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2a9a22c6ed6738c4fe0f90a84da2279964b0c4eeb644b293a2e1912325ae0444",
-      "linked_sha256": "c57a403a28a7dd9e8f97c2e7e647c670795f1f6cace57a03fce6b3ae606f45ec"
+      "object_sha256": "904e8408a613cb9c0fb61cb9f066bf9c6ae64d4b75c6e37a3b820f964e59da3f",
+      "linked_sha256": "4ec78d61f970bf10034281f96e54efb62b93d7318d6b606a9be07a8d4a98570b"
     },
     {
       "id": "AIFilter_soldier_dtor",
@@ -41957,6 +41959,45 @@
       "discarded_functions": [],
       "object_sha256": "783db5678ee8abba0ed8df76b2a3d95db4ad6d5882bdc8c40df7469d73374cff",
       "linked_sha256": "7ab28f84738e8c0e0c01aca175da0326b48c3a96bf84db5212bfc6fc62e61f10"
+    },
+    {
+      "id": "AIFilter_tank_update",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 660,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "d54a6037c8a72316e6253ec75f2b8efaf588fb71b4740e9319724d5e3c35c304",
+      "linked_sha256": "596eebbf60a6e4d20e9898d7b1e59249b87621232ae446e76580bce6ad9e8dee"
     }
   ],
   "code_map": {
@@ -44090,76 +44131,6 @@
             "kind": "function",
             "name": "__ct__21CAIFilterPlayerObjectFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005add4",
-            "size": 452,
-            "kind": "function",
-            "name": "UpdateFromGameObject__19CAIFilterTankObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005af98",
-            "size": 208,
-            "kind": "function",
-            "name": "Update__19CAIFilterTankObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b068",
-            "size": 64,
-            "kind": "function",
-            "name": "PreUpdate__19CAIFilterTankObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b0a8",
-            "size": 36,
-            "kind": "function",
-            "name": "SetupTargetMatchList__19CAIFilterTankObjectF20aifilter_target_modeP14aistatus_matchi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b0cc",
-            "size": 36,
-            "kind": "function",
-            "name": "ResetTargetMatchList__19CAIFilterTankObjectF20aifilter_target_mode",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b0f0",
-            "size": 12,
-            "kind": "function",
-            "name": "SetTargetMode__19CAIFilterTankObjectF20aifilter_target_mode",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8005b0fc",
-            "size": 96,
-            "kind": "function",
-            "name": "ChooseTarget__19CAIFilterTankObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b15c",
-            "size": 4,
-            "kind": "function",
-            "name": "UpdateManualUpdateVars__19CAIFilterTankObjectFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8005b160",
-            "size": 560,
-            "kind": "function",
-            "name": "SetOneTimeVars__19CAIFilterTankObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005b390",
-            "size": 8,
-            "kind": "function",
-            "name": "__nw__19CAIFilterTankObjectFUlPv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x8005b480",

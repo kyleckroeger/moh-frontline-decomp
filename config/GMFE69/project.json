@@ -953,7 +953,8 @@
     "AIFilter_tank_ctor.json",
     "AIFilter_soldier_update.json",
     "bigswizzler.json",
-    "lightvolman_volumes.json"
+    "lightvolman_volumes.json",
+    "AIFilter_tank_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,
