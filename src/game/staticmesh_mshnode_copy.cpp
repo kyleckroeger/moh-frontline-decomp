@@ -4,7 +4,10 @@
 // members are inferred from the copy (the vectors are the double-pair
 // CVector3 view, copied as doubleword pairs). The constructor is a weak copy
 // of a header inline emitted in this file, so it is defined __declspec(weak).
-// The rest of the file is not part of this unit.
+// It is followed by CStaticMesh::SetLightVolume, which stores the light volume,
+// clears the light-cache flag and, for a volume, clears the 96-byte light
+// parameters (the file's data are declared here; g_pLightVolume is file-local
+// in the original). The rest of the file is not part of this unit.
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -39,4 +42,28 @@ __declspec(weak) MSHNode::MSHNode(const MSHNode& other)
     word54 = other.word54;
     word58 = other.word58;
     word5c = other.word5c;
+}
+
+struct BPDLightVolume;
+
+struct LightParamView {
+    unsigned char unknown00[96];
+};
+
+extern "C" void* memset(void*, int, unsigned long);
+
+extern BPDLightVolume* g_pLightVolume;
+extern bool g_bCacheLightParam;
+extern LightParamView g_LightParam;
+
+class CStaticMesh {
+public:
+    static void SetLightVolume(BPDLightVolume* volume);
+};
+
+void CStaticMesh::SetLightVolume(BPDLightVolume* volume) {
+    g_pLightVolume = volume;
+    g_bCacheLightParam = false;
+    if (volume)
+        memset(&g_LightParam, 0, sizeof(g_LightParam));
 }

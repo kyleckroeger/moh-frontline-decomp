@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800f23b0",
-      "size": 132,
+      "size": 200,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f6c8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016328",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,15 +62,31 @@
       "address": "0x800f23b0",
       "size": 132,
       "binding": 2
+    },
+    {
+      "name": "SetLightVolume__11CStaticMeshFP14BPDLightVolume",
+      "address": "0x800f2434",
+      "size": 68,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "g_LightParam": "0x802da670",
+    "g_bCacheLightParam": "0x8034ed20",
+    "g_pLightVolume": "0x8034ed08",
+    "memset": "0x80009410"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_pLightVolume"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bCacheLightParam",
+    "g_pLightVolume"
+  ],
   "original_file": "staticmesh.cpp",
   "original_file_index": 9367
 }

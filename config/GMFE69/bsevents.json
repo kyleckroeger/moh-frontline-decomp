@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80035a34",
-      "size": 116,
+      "address": "0x800359fc",
+      "size": 172,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a234",
-      "size": 16,
+      "address": "0x8000a22c",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800110fc",
-      "size": 24,
+      "address": "0x800110f0",
+      "size": 36,
       "type": 1
     },
     {
@@ -74,6 +74,12 @@
       "binding": 0
     },
     {
+      "name": "BSEventGetMemoryRequirements__Fv",
+      "address": "0x800359fc",
+      "size": 56,
+      "binding": 1
+    },
+    {
       "name": "__dt__35BSUtilObjectInstanceMemoryAllocatorFv",
       "address": "0x80035a6c",
       "size": 60,
@@ -81,6 +87,7 @@
     }
   ],
   "externals": {
+    "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii": "0x8003bea8",
     "__dl__FPv": "0x8001ca2c",
     "__register_global_object": "0x801381bc"
   },
