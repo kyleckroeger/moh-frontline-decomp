@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f00c0",
-      "size": 236,
+      "address": "0x800efef4",
+      "size": 696,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f5c8",
-      "size": 16,
+      "address": "0x8000f5c0",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800161a8",
-      "size": 24,
+      "address": "0x8001619c",
+      "size": 36,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "GetNumSaveGames__11CMemoryCardFv",
+      "address": "0x800efef4",
+      "size": 460,
+      "binding": 1
+    },
     {
       "name": "GetCheckCardStatus__11CMemoryCardFv",
       "address": "0x800f00c0",
@@ -78,19 +84,50 @@
   ],
   "externals": {
     "CARDCheckAsync": "0x801267dc",
+    "CARDClose": "0x80127fa8",
+    "CARDFastOpen": "0x80127cd0",
     "CARDFreeBlocks": "0x80123b10",
     "CARDGetResultCode": "0x80123ae0",
+    "CARDGetStatus": "0x80128ef4",
     "CARDUnmount": "0x801271c0",
+    "COMPANY_CODENAME": "0x8034e30c",
+    "COMPANY_DEBUGNAME": "0x8034e310",
     "DebugMsg__FPCce": "0x80018c88",
+    "GAME_CODENAME": "0x8034e308",
+    "GAME_DEBUGNAME": "0x8034e314",
     "MohDVDErrorTask__Fii": "0x80016e80",
-    "MountPortIfRequired__11CMemoryCardFi": "0x800f03dc"
+    "MountPortIfRequired__11CMemoryCardFi": "0x800f03dc",
+    "strncmp": "0x8013fe94",
+    "strstr": "0x8013fdb4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "COMPANY_CODENAME",
+    "COMPANY_DEBUGNAME",
+    "GAME_CODENAME",
+    "GAME_DEBUGNAME"
+  ],
   "original_file": "MemoryCardGC.cpp",
-  "original_file_index": 9213
+  "original_file_index": 9213,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 6,
+      "address": "0x80351050"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 6,
+      "address": "0x80351068"
+    }
+  ]
 }

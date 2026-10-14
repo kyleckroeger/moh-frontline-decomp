@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 641928,
+    "matching_code_bytes": 642388,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.37966254103715,
+    "percent": 45.41218121099527,
     "categories": {
-      "reconstructed_game": 420480,
+      "reconstructed_game": 420940,
       "restored_library": 221448
     },
-    "matching_functions": 3840
+    "matching_functions": 3841
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -119,7 +119,7 @@
     "config/GMFE69/MemoryCardGC_close.json": "24947d4305e42b3fc5d06c842080d4f02462ba07ace217958e200ee3bdc6e68d",
     "config/GMFE69/MemoryCardGC_format.json": "f46359be8f66e34b7c9db6475cb6882c7080143e9c04da94bbf5c170fbb43c8c",
     "config/GMFE69/MemoryCardGC_probe.json": "d166a1c3b3e167d590a0382180d9bb5c44ed14ccf9d640f30eba7a1706494d68",
-    "config/GMFE69/MemoryCardGC_status.json": "ab7d017e14aa9150f02b61c6f34de1053b45008da4f31d5695aca901f0d63dc3",
+    "config/GMFE69/MemoryCardGC_status.json": "191cb0829a44f918ee67fcc71d8d306e1310f599a5b543b3d435aa8d1724d2c4",
     "config/GMFE69/Moh2.json": "5f1f093ff156a9f0b0641ede8edc5664e6e11dfc10ed0e6ad1e75fa8d857054d",
     "config/GMFE69/Moh2_debugmsg.json": "8503ecca0a897b3148fdffba1bb00710fe698d67432224cc7390b76d1d00e48d",
     "config/GMFE69/Moh2_idestructible_dtor.json": "2feda0698753f85b3dfdb4433e54385c2adc87f937f47085bab3b469abf20abb",
@@ -2029,7 +2029,7 @@
     "src/game/MemoryCardGC_close.cpp": "18d4c5cdeb6a1182427d48bbd4174695e634daf5988d9bb64f0fc388ad1241a9",
     "src/game/MemoryCardGC_format.cpp": "3f0ff79048d57c862ed68416675c54807e2f44e431645a4a9d0382e2c5f3ada4",
     "src/game/MemoryCardGC_probe.cpp": "b112a0a62455dadd65658648534aeb4d088c93068fae94683c5648c54f2d5b97",
-    "src/game/MemoryCardGC_status.cpp": "bb609eb01a4392fb17f4b857c88593b5cc89b764f01b5bcc9c93d26513478a8e",
+    "src/game/MemoryCardGC_status.cpp": "36b2f84b11cc4d17d50d8446e9ce53bf1d461bccde271fb2059ddfbf329dc215",
     "src/game/Moh2.cpp": "de6c92093366f02578f9e8b8d2f69e0de0bece31142f95b7a51ed02dd533c3fb",
     "src/game/Moh2_debugmsg.cpp": "e46e64e520758e1db955f1ef8de2066cbe9fc9e92fba1e8ff44cdb8e13ed4540",
     "src/game/Moh2_idestructible_dtor.cpp": "ec5af81886696d1ebb3382c162fbfa84d1555b628452a389604b9f64e9d83665",
@@ -28789,8 +28789,8 @@
     {
       "id": "MemoryCardGC_status",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 236,
+      "functions": 3,
+      "code_bytes": 696,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28822,8 +28822,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "af4034335f3e54d76089752c9d45b6bdef376cf2a264c3cf680f651c1b8c86c4",
-      "linked_sha256": "25b0a9c9860bf9518b4c94b3d4c61dff712bb1fce7f391382bec2d4e873c5ebf"
+      "object_sha256": "f1155246a690bb37f4cc8394ed2df37ddafad0bfb5b0cb769655b3491941cc8d",
+      "linked_sha256": "f4322dc10a79fc453e5ba705e070a1b9b351b9231742991c198d4fa602cb55f7"
     },
     {
       "id": "MemoryCardGC_blocks",
@@ -49858,13 +49858,6 @@
             "size": 988,
             "kind": "function",
             "name": "CreateNewSaveGame__11CMemoryCardFPUiPc",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800efef4",
-            "size": 460,
-            "kind": "function",
-            "name": "GetNumSaveGames__11CMemoryCardFv",
             "evidence": "exception-index"
           },
           {
