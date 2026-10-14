@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 652532,
+    "matching_code_bytes": 652912,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.12928857633263,
+    "percent": 46.156151825428466,
     "categories": {
-      "reconstructed_game": 431084,
+      "reconstructed_game": 431464,
       "restored_library": 221448
     },
-    "matching_functions": 3880
+    "matching_functions": 3881
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -247,6 +247,7 @@
     "config/GMFE69/animchan.json": "787fde4a70f1c5872c95704ff811c9c913b99438952a1ba97e3316bfd2d0b5b7",
     "config/GMFE69/animdb.json": "bb5f95b38785b1dbd10de555e7a48050f9187bed1d9ce716634786e1f809c851",
     "config/GMFE69/animemot.json": "dda9f478a5e308bf6a5b89f4e4b4d1e0fabdd9f1a41a1984adbbda2cf689184b",
+    "config/GMFE69/animemot_endian.json": "4024b1849707ae3ec2bf1adca9a8d68f931e508ea3d2985166b7073b60839255",
     "config/GMFE69/animintf.json": "e91af6bf29eeff53f9eebe801ede9cf93426f363777b7aeba4ab4fbbfc53a675",
     "config/GMFE69/animmorph.json": "fde4d4e52d237e161f26b1ce600e179cae840da627629f27036833be76bacc3b",
     "config/GMFE69/animmorph_dtor.json": "4c07a2b66746cfdb466d7c0a56247186ac3080cb983d3621e828a21662ecac59",
@@ -671,7 +672,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "a086c3b6e3b33b1b77abb3ddc0c2afb7791ff8b3ec3480b3496cf85eaa7d7860",
+    "config/GMFE69/project.json": "4615b6f81f5ea2ad224bade5307c33de192231d7e53be74f6412b77e47c7c59b",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2144,6 +2145,7 @@
     "src/game/animchan.cpp": "9e7fe060f7289db8ce0ec1899f4293eaf4694f8a9ce890c34c45bb60129626cb",
     "src/game/animdb.cpp": "2ad9555c6c6df924ebfa81b4d627ee1284c7634ec8c91330edafca9d2753c2ac",
     "src/game/animemot.cpp": "d262253f736c6e9824e5ffe86a57d78758e052c56e78a1a9f201096659f1705b",
+    "src/game/animemot_endian.cpp": "234dd3cd52640295f2d0e682bb206859dedf8e8d203e16c1673944221d062c6a",
     "src/game/animintf.cpp": "30da38919557e3702eab8683fdc04613b8d4720da1b24216908f957e8ce63ca5",
     "src/game/animmorph.cpp": "def84f4bdd60ed576a7b99ba68c7b82c234b29c015a6a1cc0b783f78db0343fe",
     "src/game/animmorph_dtor.cpp": "6521fc2f47cbe35266b08dfeeae7573a720f8a6f74438c8d3b20dc0d5f5cda04",
@@ -43679,6 +43681,45 @@
       "discarded_functions": [],
       "object_sha256": "52bb17eb9a9a9b408b7919d27e31edf822a3cdea57886ac9f21453956943ac4f",
       "linked_sha256": "b75a8ae6849bd5e4bc611648fe4c73a7a51427c5b58d459c4352af83d5697e1f"
+    },
+    {
+      "id": "animemot_endian",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 380,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "b75af54bf61faa9c56fd579544c386b42f125754a0811f59053859adb4ea4b6f",
+      "linked_sha256": "e9bd60d073f0d47b189b7905159b8f6891f71b043c66b7771bbfec3d3c6837a8"
     }
   ],
   "code_map": {
@@ -45909,13 +45950,6 @@
             "size": 3128,
             "kind": "function",
             "name": "AnimFileRelocate",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8006438c",
-            "size": 380,
-            "kind": "function",
-            "name": "EndianSwap__FR16AnimFileFormat_t",
             "evidence": "exception-index"
           }
         ]
