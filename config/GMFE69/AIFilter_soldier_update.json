@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005b894",
-      "size": 392,
+      "address": "0x8005b494",
+      "size": 1416,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000afd4",
-      "size": 48,
+      "address": "0x8000afc4",
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012140",
-      "size": 72,
+      "address": "0x80012128",
+      "size": 96,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateToGameObject__22CAIFilterSoldierObjectFf",
+      "address": "0x8005b494",
+      "size": 408,
+      "binding": 1
+    },
+    {
+      "name": "UpdateFromGameObject__22CAIFilterSoldierObjectFv",
+      "address": "0x8005b62c",
+      "size": 616,
+      "binding": 1
+    },
     {
       "name": "Update__22CAIFilterSoldierObjectFf",
       "address": "0x8005b894",
@@ -97,10 +109,14 @@
   "externals": {
     "ChooseTarget__16CAISoldierObjectFP9CAIObjectf": "0x8004f338",
     "GetGlobalListStart__9CAIObjectFv": "0x8004ec70",
+    "GetYaw__11CAnimObjectCFv": "0x80093858",
     "ResetTargetMatchList__16CAISoldierObjectF20aifilter_target_mode": "0x8004f6a0",
+    "SetCoordinateAxisDirection__9CAIObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3R20CAIFilterRealVector3": "0x8004d614",
+    "SetLocation__9CAIObjectFR21CAIFilterRealPosition": "0x8004d75c",
+    "SetMoveTarget__11CAnimObjectFRC8CVector3": "0x800952c8",
+    "SetUpperLocation__16CAISoldierObjectFR21CAIFilterRealPosition": "0x8004f31c",
+    "SetYaw__11CAnimObjectFf": "0x80093828",
     "SetupTargetMatchList__16CAISoldierObjectF20aifilter_target_modeP14aistatus_matchi": "0x8004f5e4",
-    "UpdateFromGameObject__22CAIFilterSoldierObjectFv": "0x8005b62c",
-    "UpdateToGameObject__22CAIFilterSoldierObjectFf": "0x8005b494",
     "g_aigAIFilterGlobalObject": "0x801c6cd4"
   },
   "undefined_in_discarded_code": [],
@@ -110,5 +126,40 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIFilter.cpp",
-  "original_file_index": 2575
+  "original_file_index": 2575,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fb84"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fb48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034fb50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fb58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034fb60"
+    }
+  ]
 }
