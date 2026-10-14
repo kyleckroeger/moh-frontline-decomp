@@ -1,0 +1,102 @@
+{
+  "id": "smixfx_modlap",
+  "source": "src/ea/smixfx_modlap.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80160d54",
+      "size": 552,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SNDMIXI_modlapifxadd",
+      "address": "0x80160d54",
+      "size": 552,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "FXfilterindex": "0x8034f4d4",
+    "SFILTER_initSOURCE__FP8SRCSTATEPv": "0x80166244",
+    "SNDI_getb__FPvi": "0x8015e1a4",
+    "_restgpr_21": "0x80138a44",
+    "_savegpr_21": "0x801389f8",
+    "memset": "0x80009410",
+    "pfilterlist": "0x8034f4bc",
+    "phead": "0x8034f4c0",
+    "pheaderinfo": "0x8034f4b8",
+    "sndfx": "0x803410b0",
+    "sndmix": "0x80340eb0",
+    "tablecopyto": "0x80193918",
+    "validstructoutputs": "0x8034f4d0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "FXfilterindex"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "FXfilterindex",
+    "pfilterlist",
+    "phead",
+    "pheaderinfo",
+    "validstructoutputs"
+  ],
+  "original_file": "smixfx.c",
+  "original_file_index": 13011,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 24,
+      "address": "0x8017b7b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351ac8"
+    }
+  ]
+}
