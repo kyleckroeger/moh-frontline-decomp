@@ -1,0 +1,265 @@
+{
+  "id": "smixer_interp",
+  "source": "src/ea/smixer_interp.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8015fd30",
+      "size": 996,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "MIXI_interpolateto0__FPfPf",
+      "address": "0x8015fd30",
+      "size": 436,
+      "binding": 1
+    },
+    {
+      "name": "MIXI_interpolatemix__FffPfPf",
+      "address": "0x8015fee4",
+      "size": 560,
+      "binding": 1
+    }
+  ],
+  "externals": {},
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "smixer.c",
+  "original_file_index": 12973,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351a40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351a44"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351a48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80351a4c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80351a50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80351a54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80351a58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80351a5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351a60"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80351a64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80351a68"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80351a6c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80351a70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80351a74"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80351a78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80351a7c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80351a80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x80351a84"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x80351a88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x80351a8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x80351a90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x80351a94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
+      "size": 4,
+      "address": "0x80351a98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 92,
+      "size": 4,
+      "address": "0x80351a9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 96,
+      "size": 4,
+      "address": "0x80351aa0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 100,
+      "size": 4,
+      "address": "0x80351aa4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 104,
+      "size": 4,
+      "address": "0x80351aa8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 108,
+      "size": 4,
+      "address": "0x80351aac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 112,
+      "size": 4,
+      "address": "0x80351ab0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 116,
+      "size": 4,
+      "address": "0x80351ab4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 120,
+      "size": 4,
+      "address": "0x80351ab8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 124,
+      "size": 4,
+      "address": "0x80351abc"
+    }
+  ]
+}
