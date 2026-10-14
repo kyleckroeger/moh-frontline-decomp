@@ -1,0 +1,146 @@
+{
+  "id": "sound_init",
+  "source": "src/game/sound_init.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800ed984",
+      "size": 696,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f508",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016088",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SoundClose__Fv",
+      "address": "0x800ed984",
+      "size": 400,
+      "binding": 1
+    },
+    {
+      "name": "SoundInit__F10ESoundMode",
+      "address": "0x800edb14",
+      "size": 296,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "MEM_free": "0x8014f83c",
+    "PATH_destroy": "0x8010b330",
+    "PATH_stop": "0x8010b078",
+    "SNDAEMS_removemodulebank": "0x8034e668",
+    "SNDAEMS_removesystem": "0x8034e664",
+    "SNDAEMS_streamrestore": "0x801578e0",
+    "SNDSYSI_init": "0x80152d98",
+    "SNDSYS_adduserdataclient": "0x801536b4",
+    "SNDSYS_getopts": "0x8015250c",
+    "SNDSYS_removeuserdataclient": "0x801536ec",
+    "SNDSYS_restore": "0x80152f68",
+    "SNDSYS_setopts": "0x801528c8",
+    "SNDSYS_vectortoreal": "0x80153230",
+    "SoundBankHeapSize": "0x8034e2e0",
+    "SoundBankHeapStart": "0x801f7470",
+    "SoundHasBeenInitialized": "0x8034ecb8",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "_userdata_client__FP17SNDUSERDATACBINFO": "0x800ea180",
+    "fail__FPce": "0x800ec480",
+    "gAEMSBank": "0x802294b0",
+    "gAEMSBankCount": "0x8034ecc0",
+    "gAEMSStreamUsed": "0x8034ecc8",
+    "gAEMSbHandle": "0x80229470",
+    "gAEMSsystem": "0x8034ecc4",
+    "gMusicBuf": "0x8034ecdc",
+    "gMusicHandle": "0x8034e2fc",
+    "gMusicMap": "0x8034ece4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "_userdata_client__FP17SNDUSERDATACBINFO",
+    "fail__FPce",
+    "gAEMSBank",
+    "gAEMSBankCount",
+    "gAEMSStreamUsed",
+    "gAEMSbHandle",
+    "gAEMSsystem"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "SNDAEMS_removemodulebank",
+    "SNDAEMS_removesystem",
+    "SoundBankHeapSize",
+    "SoundHasBeenInitialized",
+    "gAEMSBankCount",
+    "gAEMSStreamUsed",
+    "gAEMSsystem",
+    "gMusicBuf",
+    "gMusicHandle",
+    "gMusicMap"
+  ],
+  "original_file": "sound.cpp",
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 44,
+      "address": "0x80179420"
+    },
+    {
+      "section": ".rodata",
+      "offset": 44,
+      "size": 40,
+      "address": "0x8017944c"
+    }
+  ]
+}

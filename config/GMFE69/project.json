@@ -959,7 +959,8 @@
     "AIFilter_player.json",
     "AIFilter_player_ctor.json",
     "AIFilter_global.json",
-    "loadelf.json"
+    "loadelf.json",
+    "sound_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
