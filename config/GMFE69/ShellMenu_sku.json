@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x800de420",
-      "size": 140,
+      "size": 476,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ed10",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015968",
-      "size": 12,
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018a2a0",
+      "size": 28,
       "type": 1
     }
   ],
@@ -68,11 +74,18 @@
       "address": "0x800de428",
       "size": 132,
       "binding": 1
+    },
+    {
+      "name": "PassMP_PrefHitLocationToIStudio__10CShellMenuFiPc",
+      "address": "0x800de4ac",
+      "size": 336,
+      "binding": 1
     }
   ],
   "externals": {
     "SetupButtonsForMultiplayerGame__11CDualConfigFv": "0x800f77ac",
-    "g_ControllerConfig": "0x803142bc"
+    "g_ControllerConfig": "0x803142bc",
+    "strcpy": "0x80140040"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -81,5 +94,46 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "ShellMenu.cpp",
-  "original_file_index": 8612
+  "original_file_index": 8612,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350eec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350ef0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 6,
+      "address": "0x80350ef4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 5,
+      "address": "0x80350efc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 6,
+      "address": "0x80350f04"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 5,
+      "address": "0x80350f0c"
+    }
+  ]
 }
