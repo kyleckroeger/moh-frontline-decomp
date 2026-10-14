@@ -976,7 +976,9 @@
     "scene_copy.json",
     "scene_findif.json",
     "scene_sort.json",
-    "scene_quicksort.json"
+    "scene_quicksort.json",
+    "buddy_copy_info.json",
+    "buddy_copy_path.json"
   ],
   "progress": {
     "code_bytes": 1414572,

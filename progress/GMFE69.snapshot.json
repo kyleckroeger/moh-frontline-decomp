@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 648364,
+    "matching_code_bytes": 648532,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.83464114940774,
+    "percent": 45.84651753321853,
     "categories": {
-      "reconstructed_game": 426916,
+      "reconstructed_game": 427084,
       "restored_library": 221448
     },
-    "matching_functions": 3861
+    "matching_functions": 3863
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -360,6 +360,8 @@
     "config/GMFE69/bsutil.json": "ae31d506405f513947e3cbfedbcbf27c09f609fa7741d899feaa985624628823",
     "config/GMFE69/bsutil_pools.json": "85b05757ad6c89e23e6f7a253ece6174baf6789da8922baf2ad01d45b355e381",
     "config/GMFE69/bsutil_size.json": "22d7f6eb60fe6fbf22a734095d077d76f7275871be7080cc43dca0b554c0e12b",
+    "config/GMFE69/buddy_copy_info.json": "70d5fa85b8dfa7c854ed3ba22c6bc2630aa35d57e22502931d1740303daadc8c",
+    "config/GMFE69/buddy_copy_path.json": "566a6454a4c08ac8d6c2c4b2fe68095bc16744e689349df188284bd0d88bf281",
     "config/GMFE69/buddy_list.json": "ecc6fb1220836e07ff46f4a434a7c81fece596470939c5d5bd55845b5828a649",
     "config/GMFE69/buddy_vec_info.json": "837b7fbe1b7daae27e111a3abd4d24031797747f1c22a6077efe774d5a814c2b",
     "config/GMFE69/buddy_vec_info_dtor.json": "c9456974ffd664579afab73919189dbb4dc6ae91c605e0b5ab77426da1b3fb8d",
@@ -659,7 +661,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "47490c27894aaa98b888952dc349b6f54fcb474041d4c4aa307ff3d6ea59d114",
+    "config/GMFE69/project.json": "9a17b3ccc4c12eed7789f1f2280d249732d6401ef89d9361262c2e944250edcf",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2230,6 +2232,8 @@
     "src/game/bsutil.cpp": "82315dda04e8f1552ec32f5feb9979c02513c7e9b39f0a7c434cff53805bb3da",
     "src/game/bsutil_pools.cpp": "e77b9c7bcadc1da2702f4af2d1d819c62357cf5de5c26fc401b05885b9989714",
     "src/game/bsutil_size.cpp": "79519dc3d1158664204a44a09651f4eb839da7ec06fa1d830eeece172595c74c",
+    "src/game/buddy_copy_info.cpp": "c28c4afeffa69fd1e732aa2085de884a4e61abaa3a6cc40d2a51cf8b6225550b",
+    "src/game/buddy_copy_path.cpp": "9fd8379683f3ac91728a12f6991c3041a5a55578ee12fa138ba4b2d6682e6ede",
     "src/game/buddy_list.cpp": "fa3ea552b450b337884c57c7ebfde922ed3516660b34f90b1d394dc342c74bad",
     "src/game/buddy_vec_info.cpp": "9aacf73d114af64a58d072677ad851f662fcc58cfa637e03622cefff43287d53",
     "src/game/buddy_vec_info_dtor.cpp": "ed7b481e423627dba844cb54a9109588317df4dfd9bd9ec9f8a45670981f7180",
@@ -42900,6 +42904,84 @@
       "discarded_functions": [],
       "object_sha256": "146a4c8e967a16c6af41d46d84d401167920a9ecbede71d4accd4f2765e6d2e5",
       "linked_sha256": "3ab212c8d8ea42ee5831e77c4adfd1370c1598474049815daa21030b2d13babd"
+    },
+    {
+      "id": "buddy_copy_info",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 100,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "7b9dc6634de9ec569f6d33d8f4be55b01f3b145bb4031da8728a01f2140b49d8",
+      "linked_sha256": "501bee87487c216d97d825d71e56ebb8ebacdc3bba8d9d163c7f73fa59acf4d0"
+    },
+    {
+      "id": "buddy_copy_path",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 68,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "ffe9e43d900fb30a38a2799e0c6fdbd601a71a21685f3711f883aa933026bae8",
+      "linked_sha256": "161e7ff02d89a2489e9b93c473e9dcd2fbf6086249cff3f0644d57252e20915f"
     }
   ],
   "code_map": {
@@ -44790,13 +44872,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x800586e8",
-            "size": 68,
-            "kind": "function",
-            "name": "copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>",
-            "evidence": "local-file-symbol"
-          },
-          {
             "address": "0x8005872c",
             "size": 436,
             "kind": "function",
@@ -44816,13 +44891,6 @@
             "kind": "function",
             "name": "reserve__Q23dwi18vector<9BuddyInfo>FiPc",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80058c68",
-            "size": 100,
-            "kind": "function",
-            "name": "copy<Q23dwi20vec_iter<9BuddyInfo>,Q23dwi20vec_iter<9BuddyInfo>>__3dwiFQ23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x80058ccc",
