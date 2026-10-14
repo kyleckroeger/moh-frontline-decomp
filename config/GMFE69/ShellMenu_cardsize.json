@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e421c",
-      "size": 204,
+      "address": "0x800e3ff0",
+      "size": 760,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f090",
-      "size": 24,
+      "address": "0x8000f088",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015b6c",
-      "size": 36,
+      "address": "0x80015b60",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "MemoryCardSlotOkForStartup__FP11CMemoryCardiiiPiPbPiPbPbPbPbPiPbPb",
+      "address": "0x800e3ff0",
+      "size": 556,
+      "binding": 1
+    },
     {
       "name": "MemoryCardFreeSpace__10CShellMenuFi",
       "address": "0x800e421c",
@@ -77,10 +83,18 @@
     }
   ],
   "externals": {
+    "ArePrefsPresent__11CMemoryCardFv": "0x800ee7b4",
     "GetAvailableMemory__11CMemoryCardFv": "0x800f01ac",
+    "GetCheckCardStatus__11CMemoryCardFv": "0x800f00c0",
+    "GetFilesFree__11CMemoryCardFi": "0x800f0118",
+    "GetNumSaveGames__11CMemoryCardFv": "0x800efef4",
     "GetPort__11CMemoryCardFv": "0x800ee7a4",
     "GetSaveGameOverheadSize__11CMemoryCardFb": "0x800ee7ac",
-    "OpenSlot__11CMemoryCardFi": "0x800f083c"
+    "Is8KCard__11CMemoryCardFi": "0x800f0644",
+    "IsEncodingCorrect__11CMemoryCardFi": "0x800f0760",
+    "IsFormated__11CMemoryCardFv": "0x800f02c8",
+    "OpenSlot__11CMemoryCardFi": "0x800f083c",
+    "QuerySlot__11CMemoryCardFi": "0x800f0928"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
