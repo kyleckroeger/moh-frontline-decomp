@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800dea7c",
-      "size": 1196,
+      "address": "0x800de904",
+      "size": 1572,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ed38",
-      "size": 56,
+      "address": "0x8000ed30",
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800159a4",
-      "size": 84,
+      "address": "0x80015998",
+      "size": 96,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PassMP_StatsToIStudio__10CShellMenuFiPi",
+      "address": "0x800de904",
+      "size": 376,
+      "binding": 1
+    },
     {
       "name": "Get_NumPlayers__10CShellMenuFv",
       "address": "0x800dea7c",
@@ -162,5 +168,34 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "ShellMenu.cpp",
-  "original_file_index": 8612
+  "original_file_index": 8612,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350f38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350ee8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350f3c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350ee0"
+    }
+  ]
 }

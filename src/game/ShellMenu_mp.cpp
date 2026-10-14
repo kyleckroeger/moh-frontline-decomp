@@ -1,5 +1,7 @@
-// A fragment of ShellMenu.cpp (0x800dea7c): CShellMenu's multiplayer settings
-// as exchanged with the interface studio. The player count is the number of
+// A fragment of ShellMenu.cpp (0x800de904): CShellMenu's multiplayer settings
+// as exchanged with the interface studio. PassMP_StatsToIStudio copies out a
+// player's five statistics and the hit accuracy in percent (the hit counts
+// over the shot count, at most 100%). The player count is the number of
 // open windows (also stored); the open windows are passed out (others as 0)
 // and saved and counted; the active players are those whose controller is ready and whose
 // window is open (else -1); the level settings, per-player controller value,
@@ -10,7 +12,7 @@
 // project's; the original record is ShellMenu.cpp and SetGlobalCheatStructure
 // after these is not reconstructed. The classes, functions and globals are
 // named by the mangled symbols; CShellMenu, the 28-byte player records and the
-// sound options are inferred views (members at their offsets, names not
+// sound options and the 256-byte statistics records are inferred views (members at their offsets, names not
 // original), the options accessor is an inferred inline helper, and the result
 // types are inferred.
 extern "C" {
@@ -37,6 +39,14 @@ struct MPPlayerSettingsView {
     unsigned char unknown19[3];
 };
 
+struct MPStatsView {
+    int shots;
+    int hits[7];
+    unsigned char unknown20[196];
+    int stats[5];
+    unsigned char unknownf8[8];
+};
+
 struct SoundOptionsView {
     unsigned char unknown0[2];
     signed char mode;
@@ -44,6 +54,7 @@ struct SoundOptionsView {
 
 class CShellMenu {
 public:
+    void PassMP_StatsToIStudio(int, int*);
     int Get_NumPlayers();
     void Pass_ActiveWindowsToIStudio(int*);
     void Save_ActiveWindowsFromIStudio(int*);
@@ -78,9 +89,29 @@ public:
     int m_advanced[4];
     MPPlayerSettingsView m_players[4];
     int m_activePlayers[4];
-    unsigned char unknown14cc[1024];
+    MPStatsView m_mpStats[4];
     int m_activeWindows[4];
 };
+
+void CShellMenu::PassMP_StatsToIStudio(int player, int* values) {
+    int stats[6];
+    stats[0] = m_mpStats[player].stats[0];
+    stats[1] = m_mpStats[player].stats[1];
+    stats[2] = m_mpStats[player].stats[2];
+    stats[3] = m_mpStats[player].stats[3];
+    stats[4] = m_mpStats[player].stats[4];
+    float accuracy = 0.0f;
+    if (m_mpStats[player].shots > 0) {
+        float hits = 0.0f;
+        for (int i = 0; i < 7; i++)
+            hits += m_mpStats[player].hits[i];
+        accuracy = hits / m_mpStats[player].shots;
+        if (accuracy > 1.0f)
+            accuracy = 1.0f;
+    }
+    stats[5] = 100.0f * accuracy;
+    memcpy(values, stats, 24);
+}
 
 int CShellMenu::Get_NumPlayers() {
     int count = 0;
