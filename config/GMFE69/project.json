@@ -968,7 +968,8 @@
     "ipad_vbl.json",
     "fontkern.json",
     "soundschedule_sound.json",
-    "scene_visit.json"
+    "scene_visit.json",
+    "scene_rmextents.json"
   ],
   "progress": {
     "code_bytes": 1414572,
