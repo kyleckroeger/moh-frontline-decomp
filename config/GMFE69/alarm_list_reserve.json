@@ -1,0 +1,90 @@
+{
+  "id": "alarm_list_reserve",
+  "source": "src/game/alarm_list_reserve.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8005a014",
+      "size": 436,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000aeb4",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 16
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011fe4",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "reserve__Q23dwi16list<9AlarmInfo>FiPc",
+      "address": "0x8005a014",
+      "size": 436,
+      "binding": 2
+    }
+  ],
+  "externals": {
+    "MEM_free": "0x8014f83c",
+    "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc": "0x8005a270",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi16list<9AlarmInfo>Fv": "0x8005a1c8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "alarm.cpp",
+  "original_file_index": 2538,
+  "weak_duplicates": [
+    "__dt__Q23dwi16list<9AlarmInfo>Fv"
+  ]
+}

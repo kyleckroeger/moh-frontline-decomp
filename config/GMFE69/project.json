@@ -981,7 +981,10 @@
     "buddy_copy_path.json",
     "buddy_vec_info_reserve.json",
     "buddy_vec_path_reserve.json",
-    "scene_vec_reserve.json"
+    "scene_vec_reserve.json",
+    "buddy_list_reserve.json",
+    "alarm_list_reserve.json",
+    "pumhandler_list_reserve.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -1,0 +1,90 @@
+{
+  "id": "pumhandler_list_reserve",
+  "source": "src/game/pumhandler_list_reserve.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800b8ca4",
+      "size": 436,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d978",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 16
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014918",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "reserve__Q23dwi22list<14QueuedSubtitle>FiPc",
+      "address": "0x800b8ca4",
+      "size": 436,
+      "binding": 2
+    }
+  ],
+  "externals": {
+    "MEM_free": "0x8014f83c",
+    "__ct<Q23dwi27list_iter<14QueuedSubtitle>>__Q23dwi22list<14QueuedSubtitle>FiQ23dwi27list_iter<14QueuedSubtitle>Q23dwi27list_iter<14QueuedSubtitle>Pc": "0x800b8f00",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi22list<14QueuedSubtitle>Fv": "0x800b8e58"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "__ct<Q23dwi27list_iter<14QueuedSubtitle>>__Q23dwi22list<14QueuedSubtitle>FiQ23dwi27list_iter<14QueuedSubtitle>Q23dwi27list_iter<14QueuedSubtitle>Pc"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "pumhandler.cpp",
+  "original_file_index": 7152,
+  "weak_duplicates": [
+    "__dt__Q23dwi22list<14QueuedSubtitle>Fv"
+  ]
+}
