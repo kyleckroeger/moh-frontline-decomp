@@ -967,7 +967,8 @@
     "locatbig_locate.json",
     "ipad_vbl.json",
     "fontkern.json",
-    "soundschedule_sound.json"
+    "soundschedule_sound.json",
+    "scene_visit.json"
   ],
   "progress": {
     "code_bytes": 1414572,
