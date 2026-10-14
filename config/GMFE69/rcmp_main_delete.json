@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010405c",
-      "size": 48,
+      "address": "0x80103e94",
+      "size": 504,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fc34",
-      "size": 8,
+      "address": "0x8000fc2c",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800169a0",
-      "size": 12,
+      "address": "0x80016994",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ReadInput__21OPTION_PARSING_PLAYERFv",
+      "address": "0x80103e94",
+      "size": 456,
+      "binding": 1
+    },
     {
       "name": "__dl__Q24RCMP9AV_PLAYERFPv",
       "address": "0x8010405c",
@@ -65,6 +71,9 @@
     }
   ],
   "externals": {
+    "GetValueAnyPlayer__13CInputManagerFUl": "0x80084b58",
+    "Update__13CInputManagerFf": "0x80084c80",
+    "g_inputMgr": "0x801ec80c",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -74,5 +83,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "rcmp_main.cpp",
-  "original_file_index": 10180
+  "original_file_index": 10180,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803512f0"
+    }
+  ]
 }

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 645808,
+    "matching_code_bytes": 646264,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.65395045285783,
+    "percent": 45.68618635177283,
     "categories": {
-      "reconstructed_game": 424360,
+      "reconstructed_game": 424816,
       "restored_library": 221448
     },
-    "matching_functions": 3850
+    "matching_functions": 3851
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -681,7 +681,7 @@
     "config/GMFE69/rand.json": "958d1564ced02e430faca2258c920c5b7f36bd3ba70f168d2cbb54dace181f59",
     "config/GMFE69/rcmp2real.json": "7a6660763df07bcc921df0044bbfbe2c11bf23eb576075092436214c3c81b4d5",
     "config/GMFE69/rcmp_main.json": "34aafc1bb2f388a47a856dd39445c571936efb16efebcbf4d5db613085304bf4",
-    "config/GMFE69/rcmp_main_delete.json": "c14c80d4d49097fef4795093fd37762dcb29409d1869ee68cbdd46e1f579e8c9",
+    "config/GMFE69/rcmp_main_delete.json": "3294fd8277a0d72b9408cc1c8431c88c193c0f8f8b296ca4570fdf7e78ef2566",
     "config/GMFE69/rcmp_mpc_codec.json": "4ef7fb068c55d9fdcba8d7d5c290d7c262c896b1c3442095b9b6c9c8a4c5073f",
     "config/GMFE69/rcmp_mpc_codec_chunk_types.json": "42f8600fb47568b4635edb3182a0d6d788bb94c0419a514e14604d564197d33d",
     "config/GMFE69/rcmp_playmovie.json": "16d21e9643ca0e074371940a58a78e5a2f65fadde86cfa30ff2956e1c500995b",
@@ -2432,7 +2432,7 @@
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/quaternion.cpp": "fa8f9823686ae44292e048b786be96ff1c8631e9190d543b00864daaea7c2d53",
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
-    "src/game/rcmp_main_delete.cpp": "7df825c312bf0d1775e5342066aa668cb7607232622f65064188744865adddd4",
+    "src/game/rcmp_main_delete.cpp": "b144b09b671df396969ece2af430a04b31b1e3c9234ede8c466a064258858ced",
     "src/game/rcmp_mpc_codec.cpp": "1422ce69fe30701e184529fb65349e3819f04d4e3c91c8460c8e21a64e07eb32",
     "src/game/rcmp_playmovie.cpp": "67dbc5e912ed42ac3414d5699bbd50612c241a17008d9f4ea65fa7bb917bc79f",
     "src/game/rcmpbase.cpp": "ff8d5797157a414f7fcd5f34456614259a93f8fe1feb92ea2fdaeb740ee14eb3",
@@ -33370,8 +33370,8 @@
     {
       "id": "rcmp_main_delete",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 48,
+      "functions": 2,
+      "code_bytes": 504,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -33403,8 +33403,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "bd9ed18fdcb0771bdabd8ca3d4c90dca07e5eacb917dfe9177475db6003cfb69",
-      "linked_sha256": "b74d97e3a0dac56c3fe0a75b61c122f9d595a47b2090f8db5b95989e7caa2d38"
+      "object_sha256": "0542f2d7de7594f4ee5344ef39d5d441dfcedef7179749320f027f67826c14ef",
+      "linked_sha256": "dc23a465cbd22095a3563b718d408e05a37e51fb0cc03caf2e3f113fb673c861"
     },
     {
       "id": "scene_cmppairs",
@@ -50533,13 +50533,6 @@
             "size": 60,
             "kind": "function",
             "name": "__dt__15DISP_OLD_FRAMESFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80103e94",
-            "size": 456,
-            "kind": "function",
-            "name": "ReadInput__21OPTION_PARSING_PLAYERFv",
             "evidence": "exception-index"
           }
         ]
