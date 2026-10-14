@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 622576,
+    "matching_code_bytes": 623620,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.011616234451125,
+    "percent": 44.085419476703905,
     "categories": {
-      "reconstructed_game": 402384,
+      "reconstructed_game": 403428,
       "restored_library": 220192
     },
-    "matching_functions": 3756
+    "matching_functions": 3758
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -260,6 +260,7 @@
     "config/GMFE69/audioplayer.json": "b6e4257cba8554cee346f4ad5d959fc3e42b9db956ce091211d58d446fe021bd",
     "config/GMFE69/avplayer.json": "fa02b7a095317e210a53ba4a56c0ff640f888e2809385e22eddb9c8e2777c050",
     "config/GMFE69/baseline.json": "36a2b85cf4193e53afac79bdd2a8fdbf8dfb1880cae89e119463f2c81461b42f",
+    "config/GMFE69/bigswizzler.json": "d226b6d35adaf4bdcda587d4ef9e35be68c3a53ef38187eb37e57ff8066aefdc",
     "config/GMFE69/bigyuvswizzler.json": "86e9019584db99a4f8ca34785c3199a3da1b9b4d2ba8fc280303a8097eaa7ace",
     "config/GMFE69/bmem.json": "6f2cc24cb578401f28e36031abc716a23a3beb45bf6c43c10ede6c273e9070b2",
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
@@ -647,7 +648,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "607063baf5ecdca014922daf09bad4badade1030e52bec3b0a9c592ece512cc5",
+    "config/GMFE69/project.json": "ec9c88bef7a55453ebf471bc893107dd571513779100e2bd038fdb0171d274a2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2101,6 +2102,7 @@
     "src/game/attachobject_update.cpp": "544ac89fb63c86b145557c01a364f8e7c4302bbece787c9340adc14fbc0ffafd",
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
     "src/game/avplayer.cpp": "f6a87e2eda181317ce0f35df24b8a6722ed3988080edf2be0f240a663ab4d6fb",
+    "src/game/bigswizzler.cpp": "dc2c49e6154009380c2fe35d15ab352bcb62c1136b88c0647b9cbc9248179e79",
     "src/game/bigyuvswizzler.cpp": "1d10220828e8a416c2e4553f44d9b64ae5a093c99b05ed11d650cbbb8c5374af",
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
@@ -41875,6 +41877,45 @@
       "discarded_functions": [],
       "object_sha256": "43b766d18386d0c37b3f57a6950b283a849fa57ad17fe4bd2dc4b6a9c3dad644",
       "linked_sha256": "1274bec90b2dd662c77ec3223f22f64ea9bd6c35f5ed46e4445a2d467ca3f39c"
+    },
+    {
+      "id": "bigswizzler",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 1044,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "23d7240af1f4e320e26ab00f9eba70349ec5fb43c9d7c989e65ef1ee9a6a786e",
+      "linked_sha256": "aefa356695fa559ecda3d1cf6a453a9fa773f1d12b0e2153e462858db5803923"
     }
   ],
   "code_map": {
@@ -50077,27 +50118,6 @@
             "size": 704,
             "kind": "function",
             "name": "Init__11CDualConfigFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/bigswizzler.cpp [symbol evidence]",
-        "file_record": 164,
-        "file_name": "bigswizzler.cpp",
-        "ranges": [
-          {
-            "address": "0x800fc198",
-            "size": 980,
-            "kind": "function",
-            "name": "NEW_tBigSwizzlerTexture__FP9_GXTexObj",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800fc56c",
-            "size": 64,
-            "kind": "function",
-            "name": "DELETE_tBigSwizzler__FP12tBigSwizzler",
             "evidence": "exception-index"
           }
         ]
