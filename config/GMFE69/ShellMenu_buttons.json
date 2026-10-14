@@ -40,11 +40,29 @@
     {
       "name": ".text",
       "address": "0x800e14f8",
-      "size": 328,
+      "size": 724,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000efc8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015ac4",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetNextLevelCheat__10CShellMenuFv",
+      "address": "0x800e1640",
+      "size": 396,
+      "binding": 1
+    },
     {
       "name": "Get_LanguageSubtitleIndex__10CShellMenuFv",
       "address": "0x800e14f8",
@@ -70,7 +88,12 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "CheckIfMovieAndMedalNeedsToBeUnlocked__10CShellMenuFv": "0x800e1914",
+    "CheckIfSpecialMedalsNeedToBeUnlocked__10CShellMenuFv": "0x800e1c1c",
+    "SetStarRatingStatus__FP16StarLevelsInBitsUiUi": "0x800e85a0",
+    "SetUnlockedLevelStatus__FP20UnlockedLevelsInBitsUiUi": "0x800e058c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
