@@ -1,0 +1,88 @@
+{
+  "id": "scene_sort",
+  "source": "src/game/scene_sort.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d9c10",
+      "size": 532,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ea24",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015710",
+      "size": 36,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "iter_swap<PQ26CScene9UNodePair,PQ26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePair",
+      "address": "0x800d9df0",
+      "size": 52,
+      "binding": 0
+    },
+    {
+      "name": "median<Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFQ26CScene9UNodePairQ26CScene9UNodePairQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b",
+      "address": "0x800d9ce0",
+      "size": 272,
+      "binding": 0
+    },
+    {
+      "name": "unguarded_partition_<PQ26CScene9UNodePair,Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b",
+      "address": "0x800d9c10",
+      "size": 208,
+      "binding": 0
+    }
+  ],
+  "externals": {},
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404
+}

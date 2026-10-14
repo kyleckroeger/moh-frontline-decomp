@@ -974,7 +974,8 @@
     "smixer_interp.json",
     "smixfx_modlap.json",
     "scene_copy.json",
-    "scene_findif.json"
+    "scene_findif.json",
+    "scene_sort.json"
   ],
   "progress": {
     "code_bytes": 1414572,
