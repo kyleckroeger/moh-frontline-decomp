@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 631968,
+    "matching_code_bytes": 632764,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.67556264368304,
+    "percent": 44.73183408126274,
     "categories": {
-      "reconstructed_game": 411776,
+      "reconstructed_game": 412572,
       "restored_library": 220192
     },
-    "matching_functions": 3793
+    "matching_functions": 3801
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -825,7 +825,7 @@
     "config/GMFE69/sound.json": "ef83848bc7beba65c1dea5d3c023f168574e73b3c37dcfecda56e1ebe28dc4d5",
     "config/GMFE69/sound_endian.json": "aece3dd995cbdf57f8084e640a2d0a6a6eaa75d165d5ce47cf388cb5f4a6dffd",
     "config/GMFE69/sound_music.json": "9755ebbae69bac07fd6eceaedd0a41faef4fcb486d7623e0eeca6ab6ebb04f82",
-    "config/GMFE69/sound_stream.json": "68f3459d3075f31fca5a9cb76660429678187ed69280d788998c6b9b6f820e3a",
+    "config/GMFE69/sound_stream.json": "4af7cb5b926cff6ed5b4284510216a0170280814cbf9385365be99c21db3c7df",
     "config/GMFE69/soundschedule.json": "5eb1216a53d3f6fbde2e44714120ab9c4008541f82ae681eaf5caf7d6e92f231",
     "config/GMFE69/soundschedule_shutdown.json": "34d6c2c173ede4a826b8f50c0597ac986d2e06e9937e6c78eb9715f340e2826e",
     "config/GMFE69/soundtable.json": "f4697fcad0ee8bd466b2f8c9a8d08ae80a80bac0c08853d62f4b4f17f49173e8",
@@ -2450,7 +2450,7 @@
     "src/game/sound.cpp": "8f90e7e61ce6d5acec046028af50302e4ef3205d9144ec0a843a2fe2dd870a5b",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
     "src/game/sound_music.cpp": "a287dd9ee9d47279de80741399d68a626d6ae5ba9f46fa004bd805054f3caf6d",
-    "src/game/sound_stream.cpp": "963b82cfcd71c67d59b6b1d5ee966ca909877e2d99adfc7c6e06ce03867a30cd",
+    "src/game/sound_stream.cpp": "8fe2ff353fbc9362fb1ba23126bf5220fc36f4fcd8d2e2775cfd79526ba8dc41",
     "src/game/soundschedule.cpp": "a0ffc8f5360c103f5a0b59bbc24c02520d9afb80db079a86cdafa19514fcf0a4",
     "src/game/soundschedule_shutdown.cpp": "5478124530a502cb5e396e3dd2428df04748dcf5426f5edd5a83e38884c2db53",
     "src/game/soundtable.cpp": "999b27bcde4106fdba28d8fd6a8b9b6b2b609e615746b1d1ae2216d3fa33a481",
@@ -20142,8 +20142,8 @@
     {
       "id": "sound_stream",
       "category": "reconstructed_game",
-      "functions": 10,
-      "code_bytes": 396,
+      "functions": 18,
+      "code_bytes": 1192,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -20175,8 +20175,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d2a28019294a6d57791149bf2349c37f2ddd9ddf4fd95396476fc845ac8ef7ec",
-      "linked_sha256": "8599c6c7c82a53c8238b2ec2504a4c099e9317a21fece35b2b499e175d08c686"
+      "object_sha256": "a90ec0baf83f06b889e53ccaf06c428ec98ce0aaa455e1a2feb5e4f54a1e6159",
+      "linked_sha256": "e98c508a7e1ed3e641f42f2a1e9bad4dfc0743deb1cb453c224e8fafb278ea6e"
     },
     {
       "id": "memalloc",
@@ -49490,62 +49490,6 @@
             "size": 664,
             "kind": "function",
             "name": "AEMS_Update__Fv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecba8",
-            "size": 80,
-            "kind": "function",
-            "name": "__dt__13CSoundSysLockFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecd84",
-            "size": 108,
-            "kind": "function",
-            "name": "__dt__12CSoundStreamFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecdf0",
-            "size": 184,
-            "kind": "function",
-            "name": "__ct__12CSoundStreamFii",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecea8",
-            "size": 132,
-            "kind": "function",
-            "name": "SoundSetMode__F10ESoundMode",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecf2c",
-            "size": 32,
-            "kind": "function",
-            "name": "SoundSync__Fv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ecf4c",
-            "size": 20,
-            "kind": "function",
-            "name": "SoundGetVolumes__FRfRf",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800ecf60",
-            "size": 184,
-            "kind": "function",
-            "name": "SoundSetVolumes__Fff",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ed018",
-            "size": 56,
-            "kind": "function",
-            "name": "SoundSetMasterVolume__Fi",
             "evidence": "exception-index"
           },
           {

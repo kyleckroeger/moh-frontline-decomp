@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ecbf8",
-      "size": 396,
+      "address": "0x800ecba8",
+      "size": 1192,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f458",
-      "size": 80,
+      "address": "0x8000f450",
+      "size": 152,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015f98",
-      "size": 120,
+      "address": "0x80015f8c",
+      "size": 204,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__dt__13CSoundSysLockFv",
+      "address": "0x800ecba8",
+      "size": 80,
+      "binding": 1
+    },
     {
       "name": "__ct__13CSoundSysLockFv",
       "address": "0x800ecbf8",
@@ -116,25 +122,124 @@
       "address": "0x800ecd54",
       "size": 48,
       "binding": 1
+    },
+    {
+      "name": "__dt__12CSoundStreamFv",
+      "address": "0x800ecd84",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "__ct__12CSoundStreamFii",
+      "address": "0x800ecdf0",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetMode__F10ESoundMode",
+      "address": "0x800ecea8",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "SoundSync__Fv",
+      "address": "0x800ecf2c",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "SoundGetVolumes__FRfRf",
+      "address": "0x800ecf4c",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetVolumes__Fff",
+      "address": "0x800ecf60",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetMasterVolume__Fi",
+      "address": "0x800ed018",
+      "size": 56,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_Update__Fv": "0x800ec910",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "MEM_free": "0x8014f83c",
+    "PATH_volume": "0x8010aec4",
+    "SNDAEMS_setglobal": "0x8034e678",
     "SNDSTRM_autovol": "0x8015c600",
+    "SNDSTRM_create": "0x8015becc",
+    "SNDSTRM_destroy": "0x8015bef4",
     "SNDSTRM_getprogvol": "0x8015c674",
+    "SNDSTRM_overhead": "0x8015c230",
     "SNDSTRM_pitchmult": "0x8015c728",
     "SNDSTRM_purge": "0x8015c028",
     "SNDSTRM_queuefile": "0x8015c004",
     "SNDSTRM_requeststatus": "0x8015c37c",
     "SNDSTRM_status": "0x8015c288",
     "SNDSTRM_vol": "0x8015c5b0",
-    "SNDSYS_entercritical": "0x80153554"
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_getopts": "0x8015250c",
+    "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_setopts": "0x801528c8",
+    "SNDmastervol": "0x8015c964",
+    "SNDplaysetdef": "0x8015d458",
+    "__dl__FPv": "0x8001ca2c",
+    "err__FPce": "0x800ea130",
+    "gMusicHandle": "0x8034e2fc",
+    "g_musicVolume": "0x8034e2e8",
+    "g_sfxVolume": "0x8034e2e4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "err__FPce",
+    "g_musicVolume",
+    "g_sfxVolume"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "SNDAEMS_setglobal",
+    "gMusicHandle",
+    "g_musicVolume",
+    "g_sfxVolume"
+  ],
   "original_file": "sound.cpp",
-  "original_file_index": 8971
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 21,
+      "address": "0x80179608"
+    },
+    {
+      "section": ".rodata",
+      "offset": 24,
+      "size": 28,
+      "address": "0x80179404"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8035101c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350ffc"
+    }
+  ]
 }
