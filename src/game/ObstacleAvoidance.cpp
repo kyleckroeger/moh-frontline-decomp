@@ -1,5 +1,6 @@
-// The end of ObstacleAvoidance.cpp (0x800544b0): the CObstacleAvoidance
-// constructor (its two 13-entry grids of CObstacleGridEntry, then, once for
+// The end of ObstacleAvoidance.cpp (0x80054434): the CObstacleAvoidance
+// destructor (both grids destroyed), the constructor (its two 13-entry
+// grids of CObstacleGridEntry, then, once for
 // all instances, the file's 13 obstacle-avoidance line end points (x, y, 0)
 // and the angle range of each line sector: the minimum angles fall from 9pi/16
 // to -pi in steps of pi/8 and each maximum is the previous minimum, starting
@@ -11,7 +12,7 @@
 // statics are named by the symbols; the array sizes come from the symbols,
 // the grid entry size and grid offsets from the construction calls, and the
 // vector layout is inferred. The constants are .sdata2 pool entries. The
-// rest of the file is in other units.
+// rest of the file is in other units; PrepareForAvoidance before it is parked.
 class CVector3 {
 public:
     CVector3() {}
@@ -22,27 +23,59 @@ public:
     float w;
 };
 
+class CAIFilterRealPosition {
+public:
+    float x;
+    float y;
+    float z;
+};
+
 class CObstacleGridEntry {
 public:
     CObstacleGridEntry();
     ~CObstacleGridEntry();
-
-    unsigned char unknown00[32];
+    float m_distance[3];
+    bool m_blocked[3];
+    unsigned char unknown0f[1];
+    CAIFilterRealPosition m_position;
+    unsigned char unknown1c[4];
 };
 
 class CObstacleAvoidance {
 public:
+    void PrepareForAvoidance(CAIFilterRealPosition&);
+    ~CObstacleAvoidance();
     CObstacleAvoidance();
 
-    unsigned char unknown000[24];
+    short m_unknown000;
+    short m_unknown002;
+    short m_unknown004;
+    short m_unknown006;
+    short m_unknown008;
+    unsigned char unknown00a[2];
+    float m_range;
+    float m_unknown010;
+    unsigned char unknown014[4];
     CObstacleGridEntry m_grid[13];
     CObstacleGridEntry m_previousGrid[13];
+    float m_unknown358;
+    float m_unknown35c;
+    float m_unknown360;
+    int m_unknown364;
+    CAIFilterRealPosition m_position;
+    unsigned char unknown374[24];
+    float m_unknown38c[3];
+    int m_unknown398;
+    int m_unknown39c;
 };
 
 CVector3 f_rv3ObstacleAvoidanceLines[13];
 float f_rrObstacleAvoidanceLineAngleMin[11];
 float f_rrObstacleAvoidanceLineAngleMax[11];
 extern bool f_bObstacleAvoidanceLinesInitialized;
+
+CObstacleAvoidance::~CObstacleAvoidance() {
+}
 
 CObstacleAvoidance::CObstacleAvoidance() {
     if (!f_bObstacleAvoidanceLinesInitialized) {
