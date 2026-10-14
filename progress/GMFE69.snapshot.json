@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 635884,
+    "matching_code_bytes": 637624,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.95239549489174,
+    "percent": 45.07540089864637,
     "categories": {
-      "reconstructed_game": 414436,
+      "reconstructed_game": 416176,
       "restored_library": 221448
     },
-    "matching_functions": 3814
+    "matching_functions": 3819
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -523,7 +523,7 @@
     "config/GMFE69/hierobject_draw.json": "8418a044e890a3e7311069a90c1d8984d95369e34dd9b191972e91082d32405b",
     "config/GMFE69/hierobject_tree.json": "e720a1207dc3278096b549eb9bcf86600ba5654bd92d67b0749dd954acffebfe",
     "config/GMFE69/hierobject_weak.json": "7167142b12442d566bb3ff741a8a4a556c71090c521e84f4044a241623d24e2d",
-    "config/GMFE69/hlafile.json": "a691ab09f600309a2d62bd5d45d9c881658a3083a2264eb5145be5e732b5eac5",
+    "config/GMFE69/hlafile.json": "4dd5569956bba06214857666bc2db7b13119b144b002f9b018da1f3e15b851b2",
     "config/GMFE69/hlsfile.json": "949cb6bbf006231f6e840512648466c8cc1f095827bbb723bf5ff1c4a55603e5",
     "config/GMFE69/hwvideodisplaylist.json": "5907dc675d98a1eed2edde81b06fc226079b645dfa29c47581b571f4644683b4",
     "config/GMFE69/hwvideodisplaylist_delete.json": "13889cf5252998c3a2fb0885bb620b63dfd15fe73ffe752b4cee1c0261fd3161",
@@ -1766,7 +1766,7 @@
     "src/ea/getblk.cpp": "a9369a21cf466a7a1bdf1d27b1354c2d698ef6ea456c858918cf3eed0656d53a",
     "src/ea/getpic.cpp": "a845a0d5c23c2ee58f4ab73d74167c5be44a9e99ec943e244795df0ab9850e27",
     "src/ea/getvlc.cpp": "29e34e61054a5753c4f7d278fc4f41bff003d9c0dcaf2adf0a831c6528ad9914",
-    "src/ea/hlafile.cpp": "2998d39b6b4984d3605b3c7e4098c16220dc8c8bfaa2bce0d956804cb895e366",
+    "src/ea/hlafile.cpp": "c5587efab5f4438e65f43708c38271b62dedc7a6cd770eef6be95ca023aa9d63",
     "src/ea/hlsfile.cpp": "c8095cd394607595fc29daf20812c5430140171a6214048367943aa62f453105",
     "src/ea/idct.cpp": "3b7bdbfcdd18cec05464d9548ab67cc8f59366ff8eb00a9fc24d3bff2e4705c3",
     "src/ea/initosalloc.cpp": "4947ccd21ff1ff25a35565783cff19911daddc3bebc8bd4b31e22056e208885a",
@@ -22324,8 +22324,8 @@
     {
       "id": "hlafile",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 2584,
+      "functions": 12,
+      "code_bytes": 4324,
       "compiler_family": "GC",
       "compiler_version": "1.3",
       "compiler_flags": [
@@ -22357,8 +22357,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5ed4afa7d8d48bc26b824ffb4487ead10e95c4e7db4542b4ae024ecd72433547",
-      "linked_sha256": "be06b10301838f8aeb6aced71d2782167a1485f25fc44d21f8d5453b76412bc2"
+      "object_sha256": "bb86d8a284fa44ebecc0b8e303449e631448fe5c04ab9381804b85fb47ae266e",
+      "linked_sha256": "724c63cbd11c7664023f96929a6e716e0e2c4b6da806f926c259350a615e5652"
     },
     {
       "id": "soundschedule",
@@ -51034,48 +51034,6 @@
             "kind": "function",
             "name": "BIG_locateentryz",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/hlafile.cpp [local symbols only]",
-        "file_record": 367,
-        "file_name": "hlafile.cpp",
-        "ranges": [
-          {
-            "address": "0x8014aa84",
-            "size": 296,
-            "kind": "function",
-            "name": "loadfileclosecallback__FiiPv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8014abac",
-            "size": 248,
-            "kind": "function",
-            "name": "loadfilereadcallback__FiiPv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8014aca4",
-            "size": 236,
-            "kind": "function",
-            "name": "loadfilesizecallback__FiiPv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8014ad90",
-            "size": 512,
-            "kind": "function",
-            "name": "loadfileopencallback__FiiPv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8014af90",
-            "size": 448,
-            "kind": "function",
-            "name": "readfilereadcallback__FiiPv",
-            "evidence": "local-file-symbol"
           }
         ]
       },

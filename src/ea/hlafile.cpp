@@ -1,4 +1,8 @@
-// EA's asynchronous file layer, the whole file: initialising (allocating the
+// EA's asynchronous file layer, the whole file: the completion callbacks of
+// the file-system operations (a whole-file load opens, sizes and allocates a
+// buffer when asked, reads in 32 KB steps and closes; a read reads in 32 KB
+// steps; a finished request reports to its callback or is freed when it was
+// cancelled before being released), initialising (allocating the
 // request table, chaining its requests into the free list and creating the
 // mutex), shutting down (cancel every request, wait until none has a file
 // operation running, free the table and destroy the mutex), queueing a
@@ -28,11 +32,11 @@ int FILESYS_open(const char*, int, int, void*);
 int FILESYS_read(int, void*, int, int, int, void*);
 void FILESYS_callbackop(int, void (*)(int, int, void*));
 int ASYNCFILE_cancel(int);
+int FILESYS_completeop(int);
+int FILESYS_close(int, int, void*);
+int FILESYS_size(int, int, void*);
 }
 
-// File-local in the original (defined earlier in the file).
-void loadfileopencallback(int, int, void*);
-void readfilereadcallback(int, int, void*);
 
 struct FILESYSOPTSVIEW {
     int unknown00;
@@ -81,6 +85,128 @@ static inline void newrequestid(ASYNCREQUESTVIEW* r) {
     if (requestidcounter == 0)
         requestidcounter = 256;
     r->id = (r->id & 0xFF) | requestidcounter;
+}
+
+static inline void freerequest(ASYNCREQUESTVIEW* r) {
+    if (r->cancelled && (unsigned int)r->allocated > 1)
+        gFileSysOpts.mfree(r->allocated);
+    r->id &= 0xFF;
+    r->op = 0;
+    MUTEX_lock(mutex);
+    if (freequeue[0] == 0)
+        freequeue[0] = r;
+    else
+        freequeue[1]->next = r;
+    freequeue[1] = r;
+    r->next = 0;
+    MUTEX_unlock(mutex);
+}
+
+/* Inferred: a finished request either reports to its callback or, when it
+   was cancelled before being released, goes back to the free list. */
+static inline void completerequest(ASYNCREQUESTVIEW* r) {
+    void (*callback)(int);
+    int cancelled;
+    int released;
+    MUTEX_lock(mutex);
+    callback = (void (*)(int))r->unknown18;
+    cancelled = r->cancelled;
+    released = r->released;
+    r->op = 0;
+    MUTEX_unlock(mutex);
+    if (cancelled) {
+        if (!released)
+            freerequest(r);
+    } else if (callback) {
+        callback(r->id);
+    }
+}
+
+static void loadfileclosecallback(int, int, void* data) {
+    ASYNCREQUESTVIEW* r = (ASYNCREQUESTVIEW*)data;
+    FILESYS_completeop(r->op);
+    completerequest(r);
+}
+
+static void loadfilereadcallback(int, int, void* data) {
+    ASYNCREQUESTVIEW* r = (ASYNCREQUESTVIEW*)data;
+    int n = FILESYS_completeop(r->op);
+    r->done += n;
+    r->position += n;
+    if (n < 0x8000 || r->cancelled) {
+        r->op = FILESYS_close(r->file, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfileclosecallback);
+    } else {
+        r->buffer = (char*)r->buffer + n;
+        r->size -= n;
+        n = r->size;
+        if (n > 0x8000)
+            n = 0x8000;
+        r->op = FILESYS_read(r->file, r->buffer, r->position, n, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfilereadcallback);
+    }
+}
+
+static void loadfilesizecallback(int, int, void* data) {
+    ASYNCREQUESTVIEW* r = (ASYNCREQUESTVIEW*)data;
+    int size = FILESYS_completeop(r->op);
+    if (r->cancelled) {
+        r->op = FILESYS_close(r->file, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfileclosecallback);
+    } else {
+        int flags = r->size;
+        r->size = 0x7fffffff;
+        r->allocated = gFileSysOpts.malloc("ASYNCFILEBUF", size, flags);
+        r->position = (int)r->allocated;
+        r->op = FILESYS_read(r->file, r->buffer, r->position, 0x8000, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfilereadcallback);
+    }
+}
+
+static void loadfileopencallback(int, int, void* data) {
+    ASYNCREQUESTVIEW* r = (ASYNCREQUESTVIEW*)data;
+    r->file = FILESYS_completeop(r->op);
+    if (!r->file) {
+        completerequest(r);
+    } else if (r->cancelled) {
+        r->op = FILESYS_close(r->file, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfileclosecallback);
+    } else if (!r->allocated) {
+        int n = r->size;
+        if (n > 0x8000)
+            n = 0x8000;
+        r->op = FILESYS_read(r->file, r->buffer, r->position, n, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfilereadcallback);
+    } else {
+        r->op = FILESYS_size(r->file, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, loadfilesizecallback);
+    }
+}
+
+static void readfilereadcallback(int, int, void* data) {
+    ASYNCREQUESTVIEW* r = (ASYNCREQUESTVIEW*)data;
+    int n = FILESYS_completeop(r->op);
+    r->done += n;
+    r->position += n;
+    if (n < 0x8000 || r->cancelled) {
+        completerequest(r);
+    } else {
+        r->buffer = (char*)r->buffer + n;
+        r->size -= n;
+        n = r->size;
+        if (n > 0x8000)
+            n = 0x8000;
+        r->op = FILESYS_read(r->file, r->buffer, r->position, n, 99, r);
+        if (r->op)
+            FILESYS_callbackop(r->op, readfilereadcallback);
+    }
 }
 
 extern "C" void ASYNCFILE_init(int count, int flags) {
@@ -190,21 +316,6 @@ extern "C" int ASYNCFILE_getstatus(int id) {
         status = r->op == 0;
     MUTEX_unlock(mutex);
     return status;
-}
-
-static inline void freerequest(ASYNCREQUESTVIEW* r) {
-    if (r->cancelled && (unsigned int)r->allocated > 1)
-        gFileSysOpts.mfree(r->allocated);
-    r->id &= 0xFF;
-    r->op = 0;
-    MUTEX_lock(mutex);
-    if (freequeue[0] == 0)
-        freequeue[0] = r;
-    else
-        freequeue[1]->next = r;
-    freequeue[1] = r;
-    r->next = 0;
-    MUTEX_unlock(mutex);
 }
 
 extern "C" int ASYNCFILE_release(int id, int* remaining, int* done) {

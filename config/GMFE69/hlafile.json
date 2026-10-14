@@ -37,14 +37,14 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8014b150",
-      "size": 2584,
+      "address": "0x8014aa84",
+      "size": 4324,
       "type": 1
     },
     {
       "name": ".data",
-      "address": "0x80191098",
-      "size": 10,
+      "address": "0x80191088",
+      "size": 26,
       "type": 1
     },
     {
@@ -61,6 +61,36 @@
     }
   ],
   "functions": [
+    {
+      "name": "loadfileclosecallback__FiiPv",
+      "address": "0x8014aa84",
+      "size": 296,
+      "binding": 0
+    },
+    {
+      "name": "loadfilereadcallback__FiiPv",
+      "address": "0x8014abac",
+      "size": 248,
+      "binding": 0
+    },
+    {
+      "name": "loadfilesizecallback__FiiPv",
+      "address": "0x8014aca4",
+      "size": 236,
+      "binding": 0
+    },
+    {
+      "name": "loadfileopencallback__FiiPv",
+      "address": "0x8014ad90",
+      "size": 512,
+      "binding": 0
+    },
+    {
+      "name": "readfilereadcallback__FiiPv",
+      "address": "0x8014af90",
+      "size": 448,
+      "binding": 0
+    },
     {
       "name": "ASYNCFILE_init",
       "address": "0x8014b150",
@@ -107,8 +137,11 @@
   "externals": {
     "FILESYS_callbackop": "0x80148624",
     "FILESYS_cancelop": "0x801487e4",
+    "FILESYS_close": "0x80148cd0",
+    "FILESYS_completeop": "0x80148a84",
     "FILESYS_open": "0x80148c38",
     "FILESYS_read": "0x80148d7c",
+    "FILESYS_size": "0x80148e20",
     "FILESYS_waitop": "0x80148980",
     "MUTEX_create": "0x801520d8",
     "MUTEX_destroy": "0x80152100",
@@ -121,17 +154,12 @@
     "_restgpr_27": "0x80138a5c",
     "_savegpr_20": "0x801389f4",
     "_savegpr_27": "0x80138a10",
-    "gFileSysOpts": "0x80190f38",
-    "loadfileopencallback__FiiPv": "0x8014ad90",
-    "readfilereadcallback__FiiPv": "0x8014af90"
+    "gFileSysOpts": "0x80190f38"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "loadfileopencallback__FiiPv",
-    "readfilereadcallback__FiiPv"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "hlafile.cpp",
