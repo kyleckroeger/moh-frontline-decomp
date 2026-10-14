@@ -998,7 +998,8 @@
     "staticmesh_mshnode_copy.json",
     "animemot_endian.json",
     "propdat_endian_header.json",
-    "AnimObjFactory_ctor.json"
+    "AnimObjFactory_ctor.json",
+    "AnimObjFactory_head.json"
   ],
   "progress": {
     "code_bytes": 1414572,
