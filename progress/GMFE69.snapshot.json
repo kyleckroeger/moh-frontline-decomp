@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 644004,
+    "matching_code_bytes": 644428,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.52642071241337,
+    "percent": 45.55639444298346,
     "categories": {
-      "reconstructed_game": 422556,
+      "reconstructed_game": 422980,
       "restored_library": 221448
     },
-    "matching_functions": 3846
+    "matching_functions": 3847
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -240,7 +240,7 @@
     "config/GMFE69/animated_volume.json": "7d1c85b24d6774d0fda4ac1fcae8f10f8f1689c5af247d311403d1602def7bb4",
     "config/GMFE69/animated_volume_ctor.json": "889aebd72c4cafbc5d3589edaeb92757968e7c1dc4443cd882e3decad21d4024",
     "config/GMFE69/animated_volume_dispatch.json": "bc30e6609a72ccd2e3c15bbe69547c67e52255f55118fd751d068fbae93a3403",
-    "config/GMFE69/animchan.json": "6342a434b5e2b62c447c6545e0b905bc97dfb3e202fb456a6608dfe74f9cd25b",
+    "config/GMFE69/animchan.json": "787fde4a70f1c5872c95704ff811c9c913b99438952a1ba97e3316bfd2d0b5b7",
     "config/GMFE69/animdb.json": "bb5f95b38785b1dbd10de555e7a48050f9187bed1d9ce716634786e1f809c851",
     "config/GMFE69/animemot.json": "dda9f478a5e308bf6a5b89f4e4b4d1e0fabdd9f1a41a1984adbbda2cf689184b",
     "config/GMFE69/animintf.json": "e91af6bf29eeff53f9eebe801ede9cf93426f363777b7aeba4ab4fbbfc53a675",
@@ -2108,7 +2108,7 @@
     "src/game/animated_volume.cpp": "f62030622d9d9f6dfe61d463a94a3ecc33d2b6dedb85bb42aa8040c5ff0d85db",
     "src/game/animated_volume_ctor.cpp": "14948f462ec03adc8d02790a1f80dbc29e743d285fd2e1eb7ef708efcfe50bff",
     "src/game/animated_volume_dispatch.cpp": "cabbf0cbcc7944a27a271136cd0dee7ace24dd8e1836be059ea5eb017d64ed6d",
-    "src/game/animchan.cpp": "221d21b6310330f8d36e7a5735a51dcfdb4f162c8d5651ef577e1ee2c9ca6030",
+    "src/game/animchan.cpp": "9e7fe060f7289db8ce0ec1899f4293eaf4694f8a9ce890c34c45bb60129626cb",
     "src/game/animdb.cpp": "2ad9555c6c6df924ebfa81b4d627ee1284c7634ec8c91330edafca9d2753c2ac",
     "src/game/animemot.cpp": "d262253f736c6e9824e5ffe86a57d78758e052c56e78a1a9f201096659f1705b",
     "src/game/animintf.cpp": "30da38919557e3702eab8683fdc04613b8d4720da1b24216908f957e8ce63ca5",
@@ -17435,8 +17435,8 @@
     {
       "id": "animchan",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 320,
+      "functions": 6,
+      "code_bytes": 744,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17468,8 +17468,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "67342641ef06855492cfddbdfd60ed867cc72cfe6c9a69d394c68faa343cd928",
-      "linked_sha256": "782d799586373a2789c860a7f9b126ea2517fad0be386e779c8e71c68d2ac607"
+      "object_sha256": "a220d547379463fd276ab9a7e556c0f3806587cf4256fd021bafdf963782b0db",
+      "linked_sha256": "d2e8e24bb21771a10c860b2dab54f79cbad989227ca011a9864ca41a793f1919"
     },
     {
       "id": "animseq",
@@ -44796,13 +44796,6 @@
         "file_record": 46,
         "file_name": "animchan.cpp",
         "ranges": [
-          {
-            "address": "0x80061700",
-            "size": 424,
-            "kind": "function",
-            "name": "AnimChanSwitchAnimByDuration",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800618a8",
             "size": 84,

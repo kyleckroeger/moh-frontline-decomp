@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800615c0",
-      "size": 320,
+      "size": 744,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b370",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012428",
+      "size": 12,
       "type": 1
     }
   ],
@@ -74,9 +86,27 @@
       "address": "0x800616c0",
       "size": 64,
       "binding": 1
+    },
+    {
+      "name": "AnimChanSwitchAnimByDuration",
+      "address": "0x80061700",
+      "size": 424,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AnimFileGetAnimation": "0x80063730",
+    "AnimFileGetFileNum": "0x80063744",
+    "AnimSeqGetFrameCount": "0x80066210",
+    "AnimSeqGrow": "0x80066278",
+    "AnimSeqSetRate": "0x800661e0",
+    "AnimSeqStart": "0x80066388",
+    "_AnimUserCallbackPopInfo__Fv": "0x800692ac",
+    "_AnimUserCallbackPopState__Fv": "0x800692bc",
+    "_AnimUserCallbackPushInfo__FPv": "0x800692cc",
+    "_AnimUserCallbackPushState__FUl": "0x800692f4",
+    "fmod": "0x80143940"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -84,5 +114,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animchan.cpp",
-  "original_file_index": 2867
+  "original_file_index": 2867,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x8034fc58"
+    }
+  ]
 }
