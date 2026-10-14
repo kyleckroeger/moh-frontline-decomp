@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80103e94",
-      "size": 504,
+      "address": "0x80103e58",
+      "size": 564,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fc2c",
-      "size": 16,
+      "address": "0x8000fc24",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016994",
-      "size": 24,
+      "address": "0x80016988",
+      "size": 36,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "__dt__15DISP_OLD_FRAMESFv",
+      "address": "0x80103e58",
+      "size": 60,
+      "binding": 2
+    },
+    {
       "name": "__dl__Q24RCMP9AV_PLAYERFPv",
       "address": "0x8010405c",
       "size": 48,
@@ -73,6 +79,7 @@
   "externals": {
     "GetValueAnyPlayer__13CInputManagerFUl": "0x80084b58",
     "Update__13CInputManagerFf": "0x80084c80",
+    "__dl__FPv": "0x8001ca2c",
     "g_inputMgr": "0x801ec80c",
     "rcmp_sys__4RCMP": "0x803158ac"
   },

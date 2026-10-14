@@ -1,4 +1,6 @@
-// A fragment of rcmp_main.cpp (0x80103e94): OPTION_PARSING_PLAYER::ReadInput
+// A fragment of rcmp_main.cpp (0x80103e58): the weak (empty) destructor of
+// DISP_OLD_FRAMES (a header inline, so defined __declspec(weak)), then
+// OPTION_PARSING_PLAYER::ReadInput
 // updates the input manager and, while input is being read, marks a skip
 // request when any of the listed controls (ids 128, 121, 127, 130, 129, 133,
 // 132, 134, 123, 124, 125, 126) is active for any player; then the weak class
@@ -8,6 +10,14 @@
 // the input-manager view are inferred. The
 // delete is inline in the original (a weak symbol), so it is defined
 // __declspec(weak). The rest of the file is not part of this unit.
+class DISP_OLD_FRAMES {
+public:
+    ~DISP_OLD_FRAMES();
+};
+
+__declspec(weak) DISP_OLD_FRAMES::~DISP_OLD_FRAMES() {
+}
+
 class CInputManager {
 public:
     void Update(float);
