@@ -1,0 +1,123 @@
+{
+  "id": "loadelf",
+  "source": "src/game/loadelf.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk",
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80108a28",
+      "size": 1008,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fdc4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016ba4",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017aca8",
+      "size": 409,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x803158c0",
+      "size": 4128,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ef38",
+      "size": 4,
+      "type": 8
+    }
+  ],
+  "functions": [
+    {
+      "name": "Get__7LoadElfFv",
+      "address": "0x80108a28",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "RunModule__7LoadElfFPCc",
+      "address": "0x80108a34",
+      "size": 996,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CheckDVDError": "0x80109258",
+    "DCFlushRange": "0x80111880",
+    "DVDCancel": "0x8011a524",
+    "DVDClose": "0x80118110",
+    "DVDConvertPathToEntrynum": "0x80117ce0",
+    "DVDFastOpen": "0x80117fd4",
+    "DVDGetCommandBlockStatus": "0x8011a1ac",
+    "DVDReadAsyncPrio": "0x80118358",
+    "GXDrawDone": "0x8012bff0",
+    "ICInvalidateRange": "0x80111948",
+    "OSGetResetCode": "0x80114b38",
+    "OSResetSystem": "0x801148d0",
+    "PPCSync": "0x80110190",
+    "VIFlush": "0x8011c39c",
+    "VISetBlack": "0x8011c524",
+    "VIWaitForRetrace": "0x8011b738",
+    "gGxIsInit": "0x8034ef5c",
+    "memset": "0x80009410",
+    "printf": "0x8013dc88"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "gGxIsInit"
+  ],
+  "original_file": "loadelf.cpp",
+  "original_file_index": 10395
+}
