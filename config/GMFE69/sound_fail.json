@@ -39,21 +39,28 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ec480",
-      "size": 80,
+      "address": "0x800ec3e0",
+      "size": 240,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f420",
-      "size": 8,
+      "address": "0x8000f418",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015f44",
-      "size": 12,
+      "address": "0x80015f38",
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ecd4",
+      "size": 5,
+      "type": 8,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -62,15 +69,29 @@
       "address": "0x800ec480",
       "size": 80,
       "binding": 0
+    },
+    {
+      "name": "AEMS_Pause__Fb",
+      "address": "0x800ec3e0",
+      "size": 160,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "SNDAEMS_beginevent": "0x8034e66c",
+    "SNDAEMS_endevent": "0x8034e674",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "SNDAEMS_beginevent",
+    "SNDAEMS_endevent"
+  ],
   "original_file": "sound.cpp",
   "original_file_index": 8971
 }
