@@ -34,7 +34,10 @@ def setup_compiler(version, family="ProDG"):
             if not output.resolve().is_relative_to(directory.resolve()):
                 raise ValueError("Unsafe compiler archive path")
             output.parent.mkdir(parents=True, exist_ok=True)
-            output.write_bytes(package.read(name))
+            data = package.read(name)
+            # Rewriting an unchanged file fails while another process runs it.
+            if not output.exists() or output.read_bytes() != data:
+                output.write_bytes(data)
     return directory, wrapper
 
 

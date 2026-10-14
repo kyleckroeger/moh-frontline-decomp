@@ -51,7 +51,10 @@ def setup():
     with zipfile.ZipFile(archive) as package:
         for name in ("powerpc-eabi-as", "powerpc-eabi-ld", "powerpc-eabi-objdump", "powerpc-eabi-readelf", "powerpc-eabi-objcopy", "powerpc-eabi-nm"):
             path = DEST / name
-            path.write_bytes(package.read(name))
+            data = package.read(name)
+            # Rewriting an unchanged tool fails while another process runs it.
+            if not path.exists() or path.read_bytes() != data:
+                path.write_bytes(data)
             path.chmod(0o755)
     return DEST
 
