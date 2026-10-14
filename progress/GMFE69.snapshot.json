@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 640004,
+    "matching_code_bytes": 640604,
     "total_executable_code_bytes": 1414572,
-    "percent": 45.243649669299266,
+    "percent": 45.28606532576638,
     "categories": {
-      "reconstructed_game": 418556,
+      "reconstructed_game": 419156,
       "restored_library": 221448
     },
-    "matching_functions": 3834
+    "matching_functions": 3837
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -673,7 +673,7 @@
     "config/GMFE69/propdat_restart.json": "e5671a4af8c8020ce582f367cf4698b47126faa7d190804633b8ec42cccfab7f",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "89c7f107dc348d73abd19bedbaf5b7c4ad534145f63e8a71a9ab5646117cd718",
-    "config/GMFE69/publisher_reset.json": "21ec9e53b2b9949a75766b24c4b765985aebfbd34c4a9a84fcd0b222d2545f4d",
+    "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
     "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/qsort.json": "277ba29abda5c2279b4e2863c6a9b8fbe0b1f4f180473d48b6a194e2e91b7498",
@@ -2421,7 +2421,7 @@
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
     "src/game/propdat_restart.cpp": "fbbc2820cf6df3937fdf86cece40194167025b89b0761ae6f23c7cae5464c7e5",
     "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
-    "src/game/publisher_reset.cpp": "0232bfbc91b2156cfcb62b53766858d634b7ddc8d2945059f25bb04b42c409ed",
+    "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/quaternion.cpp": "fa8f9823686ae44292e048b786be96ff1c8631e9190d543b00864daaea7c2d53",
@@ -30745,8 +30745,8 @@
     {
       "id": "publisher_reset",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 420,
+      "functions": 6,
+      "code_bytes": 1020,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -30780,8 +30780,8 @@
       "discarded_functions": [
         "__dt__Q23dwi41hash_map<P8ISubject,Q210CPublisher5SItem>Fv"
       ],
-      "object_sha256": "9eb04712033a627466163def66f187fd1fe31212b18be94ea06e1dd89ee35863",
-      "linked_sha256": "d36665d260631d9b122a110317b714e33b9fbc633db9949e11935751a2e2a0b6"
+      "object_sha256": "7d3b99cfed58ad029bdddecf3b462039d7b303dd3017da2754f30404308ee022",
+      "linked_sha256": "290083263e3786c2f9a945278fcd3c380f0fb789be2b5aeaf9b240235117b6ee"
     },
     {
       "id": "UIStudio_active",
@@ -49041,27 +49041,6 @@
             "size": 608,
             "kind": "function",
             "name": "erase__Q23dwi41hash_map<P8ISubject,Q210CPublisher5SItem>FQ33dwi41hash_map<P8ISubject,Q210CPublisher5SItem>8iterator",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d7bb0",
-            "size": 264,
-            "kind": "function",
-            "name": "CancelSubscription__10CPublisherFR9IObserverPP8ISubject",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d7cb8",
-            "size": 160,
-            "kind": "function",
-            "name": "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d7d58",
-            "size": 176,
-            "kind": "function",
-            "name": "RemoveObserver__10CPublisherFR9IObserver",
             "evidence": "exception-index"
           },
           {

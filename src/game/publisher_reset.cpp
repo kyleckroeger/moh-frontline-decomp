@@ -1,4 +1,9 @@
-// A fragment of publisher.cpp (0x800d7e08): CPublisher::Shutdown deletes the
+// A fragment of publisher.cpp (0x800d7bb0): CPublisher::CancelSubscription
+// finds the observer's subscription to the subject in the slot (same key,
+// observer and slot) and erases it; AddSubscription inserts a subscription
+// keyed by the slot's subject at the first free bucket from the key's hash
+// (wrapping at the end); RemoveObserver erases every subscription of the
+// observer. CPublisher::Shutdown deletes the
 // publisher (the hash map's destructor frees the table, whose allocation
 // starts one entry before the first bucket, and clears the members) and
 // CPublisher::Reset empties the map (every bucket key set to -1, the sentinel
@@ -6,10 +11,13 @@
 // cleared). CPublisher::Init creates the publisher (its map sized to the first
 // prime above the count from the header's prime list, allocated with a spare
 // entry on each side, then cleared). CPublisher, its SItem, ISubject,
-// IObserver and the dwi::hash_map template are named by the mangled symbols
-// (hash_map<ISubject*, CPublisher::SItem>); the members are inferred views,
-// and the map's constructor, destructor, clear and NextPrime are inline (the
-// name of NextPrime is inferred). The compiler also emits an unreferenced
+// IObserver and the dwi::hash_map template and its iterator are named by the
+// mangled symbols (hash_map<ISubject*, CPublisher::SItem>); the members are
+// inferred views, and the map's constructor, destructor, clear, find, insert,
+// begin and end, the iterator's members, SItem's constructor and comparison
+// (observer and slot) and NextPrime are inline (the names of NextPrime, find,
+// insert and IsValid are inferred). The map's erase is the weak instance
+// before this fragment, called here. The compiler also emits an unreferenced
 // weak copy of the map's destructor, which the original does not contain; it
 // is discarded. The rest of the file is not part of this unit.
 class ISubject;
@@ -72,6 +80,54 @@ public:
         m_count = 0;
     }
 
+    class iterator {
+    public:
+        iterator(value_type* p) : m_p(p) {}
+        iterator(const iterator& o) : m_p(o.m_p) {}
+        bool IsValid() const { return !((int)m_p->first == -1 || (int)m_p->first == -2); }
+        iterator& operator++() {
+            while ((int)(++m_p)->first == -1)
+                ;
+            return *this;
+        }
+        bool operator!=(const iterator& other) const { return m_p != other.m_p; }
+        value_type* operator->() const { return m_p; }
+        value_type* m_p;
+    };
+
+    iterator find(K key, V value) {
+        if (m_count == 0)
+            return end();
+        value_type* p = m_data + (unsigned long)key % m_size;
+        while ((int)p->first != -1) {
+            if (p->first == key && p->second == value)
+                return iterator(p);
+            if (++p == m_data + m_size)
+                p = m_data;
+        }
+        return end();
+    }
+
+    void insert(K key, V value) {
+        value_type* p = m_data + (unsigned long)key % m_size;
+        while ((int)p->first != -1) {
+            if (++p == m_data + m_size)
+                p = m_data;
+        }
+        p->first = key;
+        p->second = value;
+        m_count++;
+    }
+
+    iterator begin() {
+        iterator it(m_data);
+        if (!it.IsValid())
+            ++it;
+        return it;
+    }
+    iterator end() { return iterator(m_data + m_size); }
+    void erase(iterator);
+
     value_type* m_data;
     int m_size;
     int m_count;
@@ -83,6 +139,11 @@ typedef void (*SubjectCallback)(IObserver&, ISubject**, ESubjectEvent);
 class CPublisher {
 public:
     struct SItem {
+        SItem(IObserver& observer, ISubject** slot, SubjectCallback callback)
+            : m_observer(&observer), m_slot(slot), m_callback(callback) {}
+        bool operator==(const SItem& other) const {
+            return m_observer == other.m_observer && m_slot == other.m_slot;
+        }
         IObserver* m_observer;
         ISubject** m_slot;
         SubjectCallback m_callback;
@@ -90,6 +151,9 @@ public:
 
     CPublisher(int count) : m_map(count) {}
 
+    static void CancelSubscription(IObserver&, ISubject**);
+    static void AddSubscription(IObserver&, ISubject**, SubjectCallback);
+    static void RemoveObserver(IObserver&);
     static void Init(int);
     static void Shutdown();
     static void Reset();
@@ -98,6 +162,33 @@ public:
 
     static CPublisher* sm_pThePublisher;
 };
+
+void CPublisher::CancelSubscription(IObserver& observer, ISubject** slot) {
+    dwi::hash_map<ISubject*, SItem>::iterator it = sm_pThePublisher->m_map.find(*slot, SItem(observer, slot, 0));
+    if (it != sm_pThePublisher->m_map.end())
+        sm_pThePublisher->m_map.erase(it);
+}
+
+void CPublisher::AddSubscription(IObserver& observer, ISubject** slot, SubjectCallback callback) {
+    sm_pThePublisher->m_map.insert(*slot, SItem(observer, slot, callback));
+}
+
+void CPublisher::RemoveObserver(IObserver& observer) {
+    dwi::hash_map<ISubject*, SItem>::value_type* p = sm_pThePublisher->m_map.m_data;
+    bool valid = (int)p->first != -1 && (int)p->first != -2;
+    if (!valid) {
+        while ((int)(++p)->first == -1)
+            ;
+    }
+    while (p != sm_pThePublisher->m_map.m_data + sm_pThePublisher->m_map.m_size) {
+        if (p->second.m_observer == &observer) {
+            sm_pThePublisher->m_map.erase(p);
+        } else {
+            while ((int)(++p)->first == -1)
+                ;
+        }
+    }
+}
 
 void CPublisher::Shutdown() {
     delete sm_pThePublisher;

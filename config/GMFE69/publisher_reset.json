@@ -39,28 +39,46 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d7e08",
-      "size": 420,
+      "address": "0x800d7bb0",
+      "size": 1020,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e8a4",
-      "size": 32,
+      "address": "0x8000e88c",
+      "size": 56,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 40
+      "linked_size": 64
     },
     {
       "name": "extabindex",
-      "address": "0x80015638",
-      "size": 24,
+      "address": "0x80015614",
+      "size": 60,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36
+      "linked_size": 72
     }
   ],
   "functions": [
+    {
+      "name": "CancelSubscription__10CPublisherFR9IObserverPP8ISubject",
+      "address": "0x800d7bb0",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v",
+      "address": "0x800d7cb8",
+      "size": 160,
+      "binding": 1
+    },
+    {
+      "name": "RemoveObserver__10CPublisherFR9IObserver",
+      "address": "0x800d7d58",
+      "size": 176,
+      "binding": 1
+    },
     {
       "name": "Shutdown__10CPublisherFv",
       "address": "0x800d7e08",
@@ -85,6 +103,7 @@
     "MEM_free": "0x8014f83c",
     "__dl__FPv": "0x8001ca2c",
     "__nw__FUl": "0x8001cb60",
+    "erase__Q23dwi41hash_map<P8ISubject,Q210CPublisher5SItem>FQ33dwi41hash_map<P8ISubject,Q210CPublisher5SItem>8iterator": "0x800d7950",
     "sm_pThePublisher__10CPublisher": "0x8034ec80"
   },
   "undefined_in_discarded_code": [],
