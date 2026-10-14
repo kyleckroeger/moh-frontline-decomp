@@ -95,7 +95,8 @@ linked comparison then treats weak and global alike.
 Functions added to Wind Waker copies (absent upstream, reconstructed from the
 disassembly): `clearerr` in `misc_io.c` (placed before `__stdio_atexit`),
 `__find_unopened_file`, `__init_file` and `__flush_line_buffered_output_files` in
-`ansi_files.c`, `fopen`, `freopen` and `__get_file_modes` in `file_io.c`, `strstr` in `string.c`, `atoi` in `strtoul.c` (`strtol(str, NULL, 10)`,
+`ansi_files.c`, `fopen`, `freopen` and `__get_file_modes` in `file_io.c`, `fread` and `__fread` in
+`direct_io.c` (with a local `set_eof` macro), `strstr` in `string.c`, `atoi` in `strtoul.c` (`strtol(str, NULL, 10)`,
 with `strtol` inlined), and `__load_buffer` and `setvbuf` in `buffer_io.c`
 (source order reversed relative to the target).
 

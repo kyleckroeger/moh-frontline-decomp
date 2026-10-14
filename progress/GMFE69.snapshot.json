@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 634784,
+    "matching_code_bytes": 635664,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.87463345803536,
+    "percent": 44.936843087520465,
     "categories": {
       "reconstructed_game": 414216,
-      "restored_library": 220568
+      "restored_library": 221448
     },
-    "matching_functions": 3810
+    "matching_functions": 3812
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -447,7 +447,7 @@
     "config/GMFE69/decal_reset.json": "4547a8eb423bd81d2a64715034a3a2f954412e0a9f28961b5830b92c7fe9e41f",
     "config/GMFE69/destructor_queue.json": "02f090659148b783df7f56cf7d5136ed13c216785eaded9f2b6f0e563e6f1be7",
     "config/GMFE69/devicemgr.json": "10f2721824edfcdffcf31106d2c358bfa4faef3f1b172aa3fb212dcf84859bd1",
-    "config/GMFE69/direct_io.json": "6bc91b9814ea8394c4fb8292d3c0f477dd5841c089e81e92061adaca275f77ab",
+    "config/GMFE69/direct_io.json": "c999df3784fa70e3b51fbbc274ec3a709a290dc5fb35828c1f0b61a696cec590",
     "config/GMFE69/dispatch.json": "9785b3256f8baf02b4d894ff082a1103522e7730d2bea7f05c504b418b5a462f",
     "config/GMFE69/dmcluster.json": "a755dd872c12d4f9b8c8a07f7d57b1748ad25961fbf9dd950ab398647b885f48",
     "config/GMFE69/dmesh.json": "f02fb137c79b32c205b0e6ae9e0d4f4eb0b91ff5037180eb56d8fbb73df0d25d",
@@ -2642,7 +2642,7 @@
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/arith.c": "6ac759260b798e3086e0e6859f0b04fd81311296143a76ae6e3459aa4a720216",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/buffer_io.c": "c2c605e9ef8b67f542e88e03b31bea34211bf26d29f3120ac2d370f44f2d8992",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/ctype.c": "c0f5f0e20882bd730a9dec8e2abed358c81bfbc7bc372a6b86ad0c1156012ad1",
-    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c": "5e333852856019b3dbf1b153f5754327d5292e5a00593eb1d36fc966c4a07a3a",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/direct_io.c": "79483692dfaab98c36aefe38c2e250015302bdbe2d79b1a86fbe390f46916913",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/errno.c": "25171e7d29e367c4ac4fd98217b28a0e22d5554d414b6fe1ac81f5859c3f64fa",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/file_io.c": "1343e225ee88bcbd3f19aa3949b68ba58fa41bd255ccb03b5c82213b7d3bfbcc",
     "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Src/float.c": "e6d46461afc6afe616915cc8a2d34889e46cbd11fdd32e58cdb99e957d17f7c6",
@@ -8226,8 +8226,8 @@
     {
       "id": "direct_io",
       "category": "restored_library",
-      "functions": 2,
-      "code_bytes": 812,
+      "functions": 4,
+      "code_bytes": 1692,
       "compiler_family": "GC",
       "compiler_version": "1.3",
       "compiler_flags": [
@@ -8274,8 +8274,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1deed00824b05a076e1fe9f28c4173e5a018feecb46ffb224689c35d06cafa8e",
-      "linked_sha256": "fed3f7ad5a1a9d085216678523bbb62a7b555995e37a264569235aa1e75f8a13"
+      "object_sha256": "a3f3cee5b301cecb447c9c6e2a19ceef8befb26a1f8c9d96a178a6f4c330e05a",
+      "linked_sha256": "f80408ae0439945a18427b59ddae1e6ff636a899d76123be93ebccfbcac74da3"
     },
     {
       "id": "file_io",
@@ -50930,25 +50930,6 @@
             "kind": "function",
             "name": "what__Q23std13bad_exceptionCFv",
             "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 8013c9bc",
-        "ranges": [
-          {
-            "address": "0x8013c9bc",
-            "size": 848,
-            "kind": "function",
-            "name": "__fread",
-            "evidence": "unknown-file"
-          },
-          {
-            "address": "0x8013cd0c",
-            "size": 32,
-            "kind": "function",
-            "name": "fread",
-            "evidence": "unknown-file"
           }
         ]
       },

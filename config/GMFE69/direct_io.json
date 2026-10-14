@@ -62,7 +62,7 @@
     {
       "name": ".text",
       "address": "0x8013c690",
-      "size": 812,
+      "size": 1692,
       "type": 1
     }
   ],
@@ -78,10 +78,24 @@
       "address": "0x8013c99c",
       "size": 32,
       "binding": 1
+    },
+    {
+      "name": "__fread",
+      "address": "0x8013c9bc",
+      "size": 848,
+      "binding": 1
+    },
+    {
+      "name": "fread",
+      "address": "0x8013cd0c",
+      "size": 32,
+      "binding": 1
     }
   ],
   "externals": {
     "__flush_buffer": "0x8013c4a4",
+    "__flush_line_buffered_output_files": "0x8013b35c",
+    "__load_buffer": "0x8013c568",
     "__memrchr": "0x8013d690",
     "__prep_buffer": "0x8013c638",
     "__stdio_atexit": "0x8013da94",
@@ -98,5 +112,7 @@
   },
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": []
+  "sda_externals": [],
+  "original_file": "direct_io.c",
+  "original_file_index": 11706
 }
