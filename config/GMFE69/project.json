@@ -961,7 +961,9 @@
     "AIFilter_global.json",
     "loadelf.json",
     "sound_init.json",
-    "sound_msg.json"
+    "sound_msg.json",
+    "sound_fail.json",
+    "Moh2_debugmsg.json"
   ],
   "progress": {
     "code_bytes": 1414572,

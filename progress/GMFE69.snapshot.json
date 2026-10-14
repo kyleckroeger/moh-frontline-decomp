@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 634248,
+    "matching_code_bytes": 634408,
     "total_executable_code_bytes": 1414572,
-    "percent": 44.836742138258074,
+    "percent": 44.84805297998264,
     "categories": {
-      "reconstructed_game": 414056,
+      "reconstructed_game": 414216,
       "restored_library": 220192
     },
-    "matching_functions": 3807
+    "matching_functions": 3809
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -121,6 +121,7 @@
     "config/GMFE69/MemoryCardGC_probe.json": "d166a1c3b3e167d590a0382180d9bb5c44ed14ccf9d640f30eba7a1706494d68",
     "config/GMFE69/MemoryCardGC_status.json": "ab7d017e14aa9150f02b61c6f34de1053b45008da4f31d5695aca901f0d63dc3",
     "config/GMFE69/Moh2.json": "5f1f093ff156a9f0b0641ede8edc5664e6e11dfc10ed0e6ad1e75fa8d857054d",
+    "config/GMFE69/Moh2_debugmsg.json": "8503ecca0a897b3148fdffba1bb00710fe698d67432224cc7390b76d1d00e48d",
     "config/GMFE69/Moh2_idestructible_dtor.json": "2feda0698753f85b3dfdb4433e54385c2adc87f937f47085bab3b469abf20abb",
     "config/GMFE69/Moh2_movingnode.json": "962deb2e9faaf25ed287b741aac7a4269d61089104e86d4d9f89da92ce3ba287",
     "config/GMFE69/Moh2_scenenode.json": "b47f2986d660c39bea9475b1514866c58be901c1f9b43c79a49fc90a604bab9c",
@@ -655,7 +656,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f3160729fd92d8fb56a77c9625b99b8df23101db8b5f007d43669f2ff1dba170",
+    "config/GMFE69/project.json": "a784237be707e65c2e8c5508cae6140f2bff16a74d3458cbe05a9e522af32213",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -824,6 +825,7 @@
     "config/GMFE69/snddrv_voice.json": "4d15ca21e2f371c0931f4ee838372bb63c3b1966319b33487018bcada9e13389",
     "config/GMFE69/sound.json": "ef83848bc7beba65c1dea5d3c023f168574e73b3c37dcfecda56e1ebe28dc4d5",
     "config/GMFE69/sound_endian.json": "aece3dd995cbdf57f8084e640a2d0a6a6eaa75d165d5ce47cf388cb5f4a6dffd",
+    "config/GMFE69/sound_fail.json": "e6103607f49e461fd44e3fb0f790df8569392c61791dd22f16c5826bd80fa8b6",
     "config/GMFE69/sound_init.json": "f505e6891fb66915b5e554ade58f72bc266aca792a2c99b5a1a862cbb32377cb",
     "config/GMFE69/sound_msg.json": "a742657fca3f72fc697a35b125169a83ee892a7ffd99d9e4b4a1296e48aabc0d",
     "config/GMFE69/sound_music.json": "9755ebbae69bac07fd6eceaedd0a41faef4fcb486d7623e0eeca6ab6ebb04f82",
@@ -2020,6 +2022,7 @@
     "src/game/MemoryCardGC_probe.cpp": "b112a0a62455dadd65658648534aeb4d088c93068fae94683c5648c54f2d5b97",
     "src/game/MemoryCardGC_status.cpp": "bb609eb01a4392fb17f4b857c88593b5cc89b764f01b5bcc9c93d26513478a8e",
     "src/game/Moh2.cpp": "de6c92093366f02578f9e8b8d2f69e0de0bece31142f95b7a51ed02dd533c3fb",
+    "src/game/Moh2_debugmsg.cpp": "e46e64e520758e1db955f1ef8de2066cbe9fc9e92fba1e8ff44cdb8e13ed4540",
     "src/game/Moh2_idestructible_dtor.cpp": "ec5af81886696d1ebb3382c162fbfa84d1555b628452a389604b9f64e9d83665",
     "src/game/Moh2_movingnode.cpp": "1ddb6655d9d1c4666a2d6d2065f5da6d0896e7cbf563c7539b5750fd399afff6",
     "src/game/Moh2_scenenode.cpp": "f26229e634619bdb5091b4605f43d55167a264eee0b7c6fc3d3502c0bbfd1c52",
@@ -2451,6 +2454,7 @@
     "src/game/skybox_textures.cpp": "9b9bbb335d2f705c7ba9f303a665ae1cb969f8527467458837f5047d0102152d",
     "src/game/sound.cpp": "8f90e7e61ce6d5acec046028af50302e4ef3205d9144ec0a843a2fe2dd870a5b",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
+    "src/game/sound_fail.cpp": "4cd1e0dcb4bc1508fcaf39fe04c5ef3e622adb58b1163f6996d7e9c28e433202",
     "src/game/sound_init.cpp": "404feb8a00e4a6f206540f028d20179b9e0b749f27ffc1d44ee0f6141d659233",
     "src/game/sound_msg.cpp": "88085ce4eacbce0ec7a8420c3560606016a29e81bf5c187b474379887fc971c8",
     "src/game/sound_music.cpp": "a287dd9ee9d47279de80741399d68a626d6ae5ba9f46fa004bd805054f3caf6d",
@@ -42285,6 +42289,84 @@
       "discarded_functions": [],
       "object_sha256": "0b79f0436471d8cf3ed87b23088c67985ca2f109c293386848185c33929ea817",
       "linked_sha256": "fd85804e1e51ed59e1bc46677a37c334ca2eb327dbb876fd89711994c205ab97"
+    },
+    {
+      "id": "sound_fail",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 80,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "270c41e878b81253fda3c75e1121ad3a1994ec3b85ae32bb27f05267e2254e33",
+      "linked_sha256": "59669df2eb9d5259d2a3d59f85ec8208d1bd49433c461c87869cace225e63d17"
+    },
+    {
+      "id": "Moh2_debugmsg",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 80,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "c5b0aa67178abbb9f964cdf9c0d03101cd21eae197e775c302c0e6e102b2017e",
+      "linked_sha256": "983c06525e9ca158fc12134e6319ce2ae3e5660e881c0fb071191d1ec563b0a5"
     }
   ],
   "code_map": {
@@ -42347,13 +42429,6 @@
             "size": 3616,
             "kind": "function",
             "name": "main",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80018c88",
-            "size": 80,
-            "kind": "function",
-            "name": "DebugMsg__FPCce",
             "evidence": "exception-index"
           },
           {
@@ -49510,13 +49585,6 @@
             "kind": "function",
             "name": "AEMS_Pause__Fb",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ec480",
-            "size": 80,
-            "kind": "function",
-            "name": "fail__FPce",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x800ec4d0",
