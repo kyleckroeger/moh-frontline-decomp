@@ -7,7 +7,9 @@
 // 3/2/1 for modes 2/1/other, with option flags 0x24), SoundSync,
 // SoundGetVolumes/SoundSetVolumes (in the critical section, the effect volume
 // scaled to 32767 into the AEMS global through its hook, the music path volume as 100 * music volume
-// squared) and SoundSetMasterVolume (clamped to 0..127).
+// squared), SoundSetMasterVolume (clamped to 0..127) and the shell and level
+// sound-module unloading (every AEMS module bank and the AEMS system removed;
+// for a level also the music paths; two inferred inlines).
 // CSoundSysLock, CSoundStream, SSndStrmRequestStatus and SSndStreamStatus are
 // named by the mangled symbols; the stream handle at the start of the object
 // and the result types are inferred, and the status records are left
@@ -50,6 +52,11 @@ void SNDSTRM_destroy(int);
 int SNDmastervol(int);
 void MEM_free(void*);
 extern int (*SNDAEMS_setglobal)(int, int);
+extern int (*SNDAEMS_removemodulebank)(int);
+extern int (*SNDAEMS_removesystem)(void);
+void SNDAEMS_streamrestore(void);
+void PATH_stop(int);
+void* PATH_destroy(int);
 int PATH_volume(unsigned int, int);
 }
 
@@ -58,7 +65,16 @@ void AEMS_Update();
 void err(char*, ...);
 extern float g_sfxVolume;
 extern float g_musicVolume;
-extern unsigned int gMusicHandle;
+extern int gMusicHandle;
+extern int gAEMSbHandle[8];
+extern void* gAEMSBank[8];
+extern int gAEMSBankCount;
+extern void* gAEMSsystem;
+extern bool gAEMSStreamUsed;
+extern void* gMusicMap;
+extern void* gMusicBuf;
+void fail(char*, ...);
+void TLT_CloseFile(void*);
 
 class CSoundSysLock {
 public:
@@ -196,4 +212,54 @@ void SoundSetMasterVolume(int volume) {
     if (volume > 127)
         volume = 127;
     SNDmastervol(volume);
+}
+
+/* Inferred inline: every loaded AEMS module bank removed and freed, then the
+   AEMS system removed, its file closed and any stream restored. */
+inline void UnloadAEMSModules() {
+    for (int i = 0; i < 8; i++) {
+        if (gAEMSbHandle[i] != -1) {
+            int result = SNDAEMS_removemodulebank(gAEMSbHandle[i]);
+            if (result < 0)
+                fail("SNDAEMS_removemodulebank failure, ret = %d\n", result);
+            if (gAEMSBank[i])
+                MEM_free(gAEMSBank[i]);
+            gAEMSBank[i] = 0;
+            gAEMSbHandle[i] = -1;
+            gAEMSBankCount--;
+        }
+    }
+    int result = SNDAEMS_removesystem();
+    if (result < 0)
+        fail("SNDAEMS_removesystem failure, ret = %d\n", result);
+    if (gAEMSsystem)
+        TLT_CloseFile(gAEMSsystem);
+    gAEMSsystem = 0;
+    if (gAEMSStreamUsed)
+        SNDAEMS_streamrestore();
+    gAEMSStreamUsed = false;
+}
+
+/* Inferred inline: the music path stopped and every path destroyed (each
+   freed), the music map file closed and the music state cleared. */
+inline void UnloadMusic() {
+    if (gMusicHandle >= 0)
+        PATH_stop(gMusicHandle);
+    void* path;
+    while ((path = PATH_destroy(-1)) != 0)
+        MEM_free(path);
+    if (gMusicMap)
+        TLT_CloseFile(gMusicMap);
+    gMusicMap = 0;
+    gMusicBuf = 0;
+    gMusicHandle = -1;
+}
+
+void UnloadShellSoundModules() {
+    UnloadAEMSModules();
+}
+
+void UnloadLevelSoundModules() {
+    UnloadAEMSModules();
+    UnloadMusic();
 }

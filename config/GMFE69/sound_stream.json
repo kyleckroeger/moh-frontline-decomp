@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ecba8",
-      "size": 1192,
+      "size": 1820,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f450",
-      "size": 152,
+      "size": 168,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015f8c",
-      "size": 204,
+      "size": 228,
       "type": 1
     }
   ],
@@ -164,14 +164,31 @@
       "address": "0x800ed018",
       "size": 56,
       "binding": 1
+    },
+    {
+      "name": "UnloadShellSoundModules__Fv",
+      "address": "0x800ed050",
+      "size": 276,
+      "binding": 1
+    },
+    {
+      "name": "UnloadLevelSoundModules__Fv",
+      "address": "0x800ed164",
+      "size": 352,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_Update__Fv": "0x800ec910",
     "DWI_alloc__FPCcii": "0x8001c974",
     "MEM_free": "0x8014f83c",
+    "PATH_destroy": "0x8010b330",
+    "PATH_stop": "0x8010b078",
     "PATH_volume": "0x8010aec4",
+    "SNDAEMS_removemodulebank": "0x8034e668",
+    "SNDAEMS_removesystem": "0x8034e664",
     "SNDAEMS_setglobal": "0x8034e678",
+    "SNDAEMS_streamrestore": "0x801578e0",
     "SNDSTRM_autovol": "0x8015c600",
     "SNDSTRM_create": "0x8015becc",
     "SNDSTRM_destroy": "0x8015bef4",
@@ -189,9 +206,18 @@
     "SNDSYS_setopts": "0x801528c8",
     "SNDmastervol": "0x8015c964",
     "SNDplaysetdef": "0x8015d458",
+    "TLT_CloseFile__FPv": "0x8001d820",
     "__dl__FPv": "0x8001ca2c",
     "err__FPce": "0x800ea130",
+    "fail__FPce": "0x800ec480",
+    "gAEMSBank": "0x802294b0",
+    "gAEMSBankCount": "0x8034ecc0",
+    "gAEMSStreamUsed": "0x8034ecc8",
+    "gAEMSbHandle": "0x80229470",
+    "gAEMSsystem": "0x8034ecc4",
+    "gMusicBuf": "0x8034ecdc",
     "gMusicHandle": "0x8034e2fc",
+    "gMusicMap": "0x8034ece4",
     "g_musicVolume": "0x8034e2e8",
     "g_sfxVolume": "0x8034e2e4"
   },
@@ -200,13 +226,26 @@
   "upstream": {},
   "local_externals": [
     "err__FPce",
+    "fail__FPce",
+    "gAEMSBank",
+    "gAEMSBankCount",
+    "gAEMSStreamUsed",
+    "gAEMSbHandle",
+    "gAEMSsystem",
     "g_musicVolume",
     "g_sfxVolume"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "SNDAEMS_removemodulebank",
+    "SNDAEMS_removesystem",
     "SNDAEMS_setglobal",
+    "gAEMSBankCount",
+    "gAEMSStreamUsed",
+    "gAEMSsystem",
+    "gMusicBuf",
     "gMusicHandle",
+    "gMusicMap",
     "g_musicVolume",
     "g_sfxVolume"
   ],
@@ -228,6 +267,18 @@
       "offset": 24,
       "size": 28,
       "address": "0x80179404"
+    },
+    {
+      "section": ".rodata",
+      "offset": 52,
+      "size": 44,
+      "address": "0x80179420"
+    },
+    {
+      "section": ".rodata",
+      "offset": 96,
+      "size": 40,
+      "address": "0x8017944c"
     },
     {
       "section": ".sdata2",
