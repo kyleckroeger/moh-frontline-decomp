@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 653980,
+    "matching_code_bytes": 654268,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.23165169393993,
+    "percent": 46.25201120904415,
     "categories": {
-      "reconstructed_game": 432532,
+      "reconstructed_game": 432820,
       "restored_library": 221448
     },
-    "matching_functions": 3882
+    "matching_functions": 3886
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -71,7 +71,8 @@
     "config/GMFE69/AXSPB.json": "b545c13a80837ee4ec6447cd14220ca12742a60c4525e91f744603629870f101",
     "config/GMFE69/AXVPB.json": "9c5494460b355855751e5493d2f3f4ac0f292a38e7c6e99192c28ac9268faf6a",
     "config/GMFE69/AmcExi2Stubs.json": "06e09d04a4badb35d73036086b321ab231a21afa20b86979b63e9546006ca0ce",
-    "config/GMFE69/AnimObjFactory.json": "1ba5c275cfebfa74212191b3b4d52ad62de4635dcfa1349549793d0e60ffe6ae",
+    "config/GMFE69/AnimObjFactory.json": "1c2ebc7e91ddd558ee07a97d712f29fdae0ba20c30a93f092a4f3d368edca82a",
+    "config/GMFE69/AnimObjFactory_ctor.json": "cdb9b365c933f592e729d49138191c6bfcdb02ebd27db88ffc9fd587bd6f206d",
     "config/GMFE69/CARDBios.json": "e1e00c4ed5f83508ca43c5ccc4c3b569cf232d5bd60179441a3c564ea583b41b",
     "config/GMFE69/CARDBlock.json": "9b20825c0b22ffb86797c911f53b3f7b61bc82ca79662bb7770eff62bfd5f25a",
     "config/GMFE69/CARDCheck.json": "520a86f316a267f2b8745ffdc72ef9a7d9545335b18b7e85247563e79c50e69f",
@@ -672,7 +673,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "fe202516dbc628c56922f015112268f0dfddbe797f931c8f948911167440a56d",
+    "config/GMFE69/project.json": "f44cab9abc259cac5b96215b81802873c22aec93522dd122a40e1308b44bc38e",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2049,7 +2050,8 @@
     "src/game/AITankDoodad_ctor.cpp": "8255a774b4a9461f08ade2f235e630d06713d1fbf28edbf1bdbaec5cc5e1b4e7",
     "src/game/AITankObject.cpp": "16884551de80d9d21264f0f4b728c886d3f3e389b50300ef239697f31c4ade49",
     "src/game/AITankObject_ctor.cpp": "1f030f4858f98d025d0a1e30b0085e5e02d5393045f481cb86a72d8f752ad35c",
-    "src/game/AnimObjFactory.cpp": "2e2b57fc04c9964fdce19f6a41496489c097cd607462f4cb7bd82763e1df4ab8",
+    "src/game/AnimObjFactory.cpp": "4a03ed41316082416956ee8dae84b7a29ef8329bb6fcc81f8faf4f246e39a0b8",
+    "src/game/AnimObjFactory_ctor.cpp": "73cb2bfab949162da8698648bbd848ec8b66d844d508f42f9351aeec0e367e36",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
     "src/game/IStudio.cpp": "8b84b0f073788f7ea59bee3645f2a65f63f45d976c439283ba5809708ffcbbfe",
     "src/game/IStudioFuncs.cpp": "b165a33f98e96f81832733bc9c7f57c198951e7c5297b42486c1184a62b9a756",
@@ -21310,8 +21312,8 @@
     {
       "id": "AnimObjFactory",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 1016,
+      "functions": 5,
+      "code_bytes": 1244,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21343,8 +21345,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2523a288766b47167985e6906d93d2c7290503430ec79cf4c79e5530314d369c",
-      "linked_sha256": "2794636cfb72420d133c64167f996ddb429b70db5f6daf757cdb90cc978e05a4"
+      "object_sha256": "ec16a628e507de3a2a419a0eb0cbb1a68d4da752f5b6a1d63cba274bcf2ecad8",
+      "linked_sha256": "7ff0723fc46e5f2b6e84a4a646e37c1c7214c686249f15e6a5b2aca67958cf9d"
     },
     {
       "id": "anim_callback",
@@ -43761,6 +43763,45 @@
       "discarded_functions": [],
       "object_sha256": "d7f9a058811b4bde557d2c9ed79b2f07efdfa98025dec1d1a5ece9d7981b90e2",
       "linked_sha256": "adb7cdb453ed386c6e52d00e4758d7830e3c855071616d1ec7594526fdbd3355"
+    },
+    {
+      "id": "AnimObjFactory_ctor",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 60,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "8503e96259f93c94af426bf4a40e7b271c0a7ac0dbc8f68b8b871e02dbb54898",
+      "linked_sha256": "d50d76f197b6fe4386544137e8f2868c5d06ba329147da59be24c257e0d3f3ff"
     }
   ],
   "code_map": {
@@ -48008,20 +48049,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x80096e6c",
-            "size": 152,
-            "kind": "function",
-            "name": "Shutdown__18CAnimObjectFactoryFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80096f04",
-            "size": 76,
-            "kind": "function",
-            "name": "Reset__18CAnimObjectFactoryFv",
-            "evidence": "between-same-file"
-          },
-          {
             "address": "0x80096f50",
             "size": 616,
             "kind": "function",
@@ -48033,26 +48060,7 @@
             "size": 4,
             "kind": "function",
             "name": "__ct__11CAnimObjDefFv",
-            "evidence": "between-same-file (inferred)"
-          },
-          {
-            "address": "0x800971bc",
-            "size": 12,
-            "kind": "function",
-            "name": "__ct__18CAnimObjectFactoryFv",
-            "evidence": "same-class (inferred)"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 800971c8",
-        "ranges": [
-          {
-            "address": "0x800971c8",
-            "size": 48,
-            "kind": "function",
-            "name": "CompareObjectDefinitions__FPCvPCv",
-            "evidence": "unknown-file"
+            "evidence": "between-same-file"
           }
         ]
       },

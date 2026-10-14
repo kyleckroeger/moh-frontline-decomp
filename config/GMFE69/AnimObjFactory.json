@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80096a74",
-      "size": 1016,
+      "size": 1244,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ca58",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013b20",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -74,9 +74,25 @@
       "address": "0x80096b90",
       "size": 732,
       "binding": 2
+    },
+    {
+      "name": "Shutdown__18CAnimObjectFactoryFv",
+      "address": "0x80096e6c",
+      "size": 152,
+      "binding": 1
+    },
+    {
+      "name": "Reset__18CAnimObjectFactoryFv",
+      "address": "0x80096f04",
+      "size": 76,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "MEM_free": "0x8014f83c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dla__FPv": "0x8001c9e8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
