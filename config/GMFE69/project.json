@@ -989,7 +989,12 @@
     "world_object_node_dtor.json",
     "collision_factory_dtor.json",
     "scene_vec_erase.json",
-    "AIFilter_soldier_movetarget.json"
+    "AIFilter_soldier_movetarget.json",
+    "Moh2_fog_dtor.json",
+    "compartment_sprstack_dtor.json",
+    "rcmp_tdlnode_dtor.json",
+    "debug_prof_profilebin_ctor.json",
+    "AIFilter_animobj_velocity.json"
   ],
   "progress": {
     "code_bytes": 1414572,
