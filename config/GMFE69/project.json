@@ -1055,7 +1055,9 @@
     "sound_bankalloc.json",
     "IStudioFuncs_resload.json",
     "ConfigGC_defaults.json",
-    "AIObject_lineofsight.json"
+    "AIObject_lineofsight.json",
+    "AISplinePath_traversal_dtor.json",
+    "AISplinePath_dtor.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 694600,
+    "matching_code_bytes": 694856,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.103191636763626,
+    "percent": 49.12128898352293,
     "categories": {
-      "reconstructed_game": 473152,
+      "reconstructed_game": 473408,
       "restored_library": 221448
     },
-    "matching_functions": 4079
+    "matching_functions": 4082
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -42,7 +42,7 @@
     "config/GMFE69/AIObject_ctor.json": "c8219887cefa41e0b90a67eb5a3e65b9267025c7fea4237614bd422032f220fd",
     "config/GMFE69/AIObject_enemy.json": "59502e12ffe7782c05a67a681f29e81b902cb6aaed21af44b8ec0fbdb4e5dcd5",
     "config/GMFE69/AIObject_globallist.json": "608c00e350ccb8b63b1b8d45c31f8cd7f4f5aa50e7d0c023d1d75e9727091b7a",
-    "config/GMFE69/AIObject_lineofsight.json": "807c7ab79df417154fb1bf685aed34b6d2326dd825a3b23d50a110742a3c0bc1",
+    "config/GMFE69/AIObject_lineofsight.json": "25f0f864bac7487526cb2be3b2a07874641d05e07140d24af15a57b66c0efc5f",
     "config/GMFE69/AIObject_obstacle.json": "cd0eefc6c667100e1ae64807408111aa9b9b486a591f87909777e931d24d540f",
     "config/GMFE69/AIObject_searchnodes.json": "d61451c344d3a164f3d8f0bd11659102b4605b0c446a9e45c5bac48f2e6b9706",
     "config/GMFE69/AIObject_spline.json": "1607b3deacc4120d1f5bb330c17b5c127697003815192f38f7b18af31a0137e0",
@@ -57,7 +57,9 @@
     "config/GMFE69/AISoldierObject.json": "c3d1756c0755251a68f135a86019766caa0aa2b222b71095c50f2d42aa27f69f",
     "config/GMFE69/AISoldierObject_ctor.json": "6fa1a6bd7abc272aec251e8de9e81dc882cb7543bb4e51f29856a5efb2091263",
     "config/GMFE69/AISplinePath.json": "1c74a6525471caf1cb13b2fe967be1a1bf475b3ff54eb31f3481afd4c20d4b49",
+    "config/GMFE69/AISplinePath_dtor.json": "ca8a7602d790168f6db0ec8bda87e7df865a8188eaa32138939dd26f9afe87ee",
     "config/GMFE69/AISplinePath_segment.json": "d7c8cddea3e6d1004c0bd38188db68217eabb5d9584b26434afbd21d9517862a",
+    "config/GMFE69/AISplinePath_traversal_dtor.json": "839688d2fa9d7f42a0f0d3b9f02a6d17ea0a83411e2d91fa56f15b306d6e7b91",
     "config/GMFE69/AIStatus.json": "660a5d8ecd6c07021df76f56c05e8c09028a125b685db2bdc15ffc00155e6916",
     "config/GMFE69/AITankDoodad.json": "733dd452ed553547b1c19276c94ec192493fdac622dc9fe66b677e200a12a55a",
     "config/GMFE69/AITankDoodad_ctor.json": "e03cffd30a3b1b2197b651effafa419af99b828cec534b2c66dca18be9188558",
@@ -711,7 +713,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "380d0660975bc8f65d3d1174be7c7044402cbfee2f899b305d4f064a32611a58",
+    "config/GMFE69/project.json": "5623d1cc9f5fa5fd14528928061b331e8e3c2060e5b6801c5abe5fc60fbfc1e6",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2087,7 +2089,7 @@
     "src/game/AIObject_ctor.cpp": "e23a81d466c3d56d591da66a8218eb89e295f1aa254bb4afaea072d378607cf3",
     "src/game/AIObject_enemy.cpp": "a2b3f80aaf450d23b0e8a8e5dd19374c4c038c8e57d8b1a5a5b7994ef500ae5b",
     "src/game/AIObject_globallist.cpp": "26eebb83b81dfc134f7aaadb905ec3b4b8fa4ec0e2105c556158040677c7408c",
-    "src/game/AIObject_lineofsight.cpp": "a189024dafc38eaa6070acf13fad0e25d28c15199c43d9e1f7b59594641fc9ff",
+    "src/game/AIObject_lineofsight.cpp": "fb8a58bc40f7faf0a5b79e149aee1cd254a4c35d07332b27fd85d6372d6c456f",
     "src/game/AIObject_obstacle.cpp": "d6efae3b4577f7c6ab7feaa633274cb78422a899ce4862def01892d111aa7508",
     "src/game/AIObject_searchnodes.cpp": "d96f2db257d8085e3d59bb00590ebc1378edd3d45dedf51a83dbdcfcd81fcfd8",
     "src/game/AIObject_spline.cpp": "8c461ea113ef55bdc73101b92e076c88a9430ea7efd97adc7283d8f8855347ed",
@@ -2102,7 +2104,9 @@
     "src/game/AISoldierObject.cpp": "82ab8c934b605ad46fc5f84e47ad097ad75cbe488964e674f7b99f931cd36a00",
     "src/game/AISoldierObject_ctor.cpp": "86458ba29907f92ba9c9d81cfb59616d227e0c6402d4448fe1478d22516f9e6d",
     "src/game/AISplinePath.cpp": "add4c235edc4c831ad4a130df34d27367a7806edc416fa12cfdf29421fb3ecf5",
+    "src/game/AISplinePath_dtor.cpp": "0c6b3021d20049aa523f238f211f279cc1afd3918507fc6a0a5b76ba2986a0c6",
     "src/game/AISplinePath_segment.cpp": "1fe2fd163252000e51eebebe305b7b512b764df07fbb755713d07c86e061d126",
+    "src/game/AISplinePath_traversal_dtor.cpp": "f250b39475b31abb1040f1b050a9246d890a3d50204b8b9cc724122cf573b897",
     "src/game/AIStatus.cpp": "b0cb64aa93cf6090a9a87ef0cecc6265f1501230bb50b10428d58cfb2173001c",
     "src/game/AITankDoodad.cpp": "35252fb5c75740ecddc982a39bfecfc3c4a046a4e75046679eff1050fd598da9",
     "src/game/AITankDoodad_ctor.cpp": "8255a774b4a9461f08ade2f235e630d06713d1fbf28edbf1bdbaec5cc5e1b4e7",
@@ -2624,7 +2628,7 @@
     "src/game/skybox_renderbin.cpp": "dea0fbd3b945212d9d000c9937acde89cedcf62e794f21ea27b0f92c8c64640d",
     "src/game/skybox_textures.cpp": "9b9bbb335d2f705c7ba9f303a665ae1cb969f8527467458837f5047d0102152d",
     "src/game/sound.cpp": "8f90e7e61ce6d5acec046028af50302e4ef3205d9144ec0a843a2fe2dd870a5b",
-    "src/game/sound_bankalloc.cpp": "2fd4a8a4c6b861cb161c29d526b2396ff8f3b497516e5a460e7aa8261607ae6d",
+    "src/game/sound_bankalloc.cpp": "b9249ed03f034924849912a288af0a6ed3c9ba107f6d88cd585248a14081b8f8",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
     "src/game/sound_fail.cpp": "234919e4eac294a3cc29720aa569f91a1fc67d7f21b0b0111c0d601c7f2541d0",
     "src/game/sound_init.cpp": "404feb8a00e4a6f206540f028d20179b9e0b749f27ffc1d44ee0f6141d659233",
@@ -46104,8 +46108,8 @@
     {
       "id": "AIObject_lineofsight",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 84,
+      "functions": 2,
+      "code_bytes": 220,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46137,8 +46141,86 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7dd730fda62181aa3c9de5e23a3cccb87e0fabe2b91f58a57ede34e684405fd4",
-      "linked_sha256": "f9b7cd7164d26397b3774413bfd6a46da0007b67b7329289ff31a90a0c813972"
+      "object_sha256": "79a24e7a9aa82a6fb33edefac5cc22f34a765cbadcdf427efb8a5fbdfbbb93f8",
+      "linked_sha256": "1c4d273c310a25866c8ecf5dd468cda10f7df8ac11bda572d4a723560001d0a0"
+    },
+    {
+      "id": "AISplinePath_traversal_dtor",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 60,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "1acf972b0aecac90d5057ad4e4aaf3fbcf0fcf4256bf300fea6a17cc35b044fb",
+      "linked_sha256": "c207c3eef3d83f04c9237dc067983d7d61a1f57ae59e5eb684e00ffea14f11cc"
+    },
+    {
+      "id": "AISplinePath_dtor",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 60,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "0bb92673ec3fe520aa3f12d8942a7b85caf692c4305fd89b5496a40ecce9e635",
+      "linked_sha256": "83bad0dd36d1125ac40066a3e83f5ebb3020ada0d1a9034d3cf312c951b62254"
     }
   ],
   "code_map": {
@@ -47182,13 +47264,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x80048e10",
-            "size": 136,
-            "kind": "function",
-            "name": "SetupLineOfSightModeList__9CAIObjectFP14aistatus_matchif",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x80048eec",
             "size": 924,
             "kind": "function",
@@ -47511,13 +47586,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x80050aa8",
-            "size": 60,
-            "kind": "function",
-            "name": "__dt__22CAISplinePathTraversalFv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x80050ae4",
             "size": 16,
             "kind": "function",
@@ -47529,13 +47597,6 @@
             "size": 2944,
             "kind": "function",
             "name": "GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80051674",
-            "size": 60,
-            "kind": "function",
-            "name": "__dt__13CAISplinePathFv",
             "evidence": "exception-index"
           },
           {

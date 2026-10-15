@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80048e98",
-      "size": 84,
+      "address": "0x80048e10",
+      "size": 220,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a6ec",
-      "size": 8,
+      "address": "0x8000a6e4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011810",
-      "size": 12,
+      "address": "0x80011804",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetupLineOfSightModeList__9CAIObjectFP14aistatus_matchif",
+      "address": "0x80048e10",
+      "size": 136,
+      "binding": 1
+    },
     {
       "name": "SetupLineOfSightModeObject__9CAIObjectFP9CAIObjectf",
       "address": "0x80048e98",
@@ -65,6 +71,7 @@
     }
   ],
   "externals": {
+    "memcpy": "0x800094f8",
     "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
@@ -83,6 +90,12 @@
     {
       "section": ".rodata",
       "offset": 0,
+      "size": 64,
+      "address": "0x8016f6c0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 64,
       "size": 64,
       "address": "0x8016f700"
     },
