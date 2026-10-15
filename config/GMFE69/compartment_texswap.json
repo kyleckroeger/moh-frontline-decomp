@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80075a14",
-      "size": 92,
+      "size": 372,
       "type": 1
     }
   ],
@@ -49,6 +49,12 @@
       "name": "TextureSwapCollisionDisabled__12CCompartmentFi",
       "address": "0x80075a14",
       "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "TextureSwap__12CCompartmentFi",
+      "address": "0x80075a70",
+      "size": 280,
       "binding": 1
     }
   ],
