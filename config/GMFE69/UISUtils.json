@@ -41,12 +41,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008aed0",
-      "size": 260,
+      "address": "0x8008ae80",
+      "size": 340,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_UISFindHintPC__FP12UISControl_tUl",
+      "address": "0x8008ae80",
+      "size": 80,
+      "binding": 0
+    },
     {
       "name": "UISFindSubControlEventPC__FP12UISControl_tUsUl",
       "address": "0x8008aed0",
