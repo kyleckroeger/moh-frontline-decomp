@@ -1,0 +1,108 @@
+{
+  "id": "objcreate_dump",
+  "source": "src/game/objcreate_dump.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8003f8b8",
+      "size": 884,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a4dc",
+      "size": 32,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800114f8",
+      "size": 48,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "EnableDumpCollisionsByType__F9EDumpTypeib",
+      "address": "0x8003f8b8",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "DestroyOldestDumpObject__Fv",
+      "address": "0x8003f964",
+      "size": 236,
+      "binding": 1
+    },
+    {
+      "name": "DestroyDumpObject__FP13CStaticObject",
+      "address": "0x8003fa50",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "MarkDumpObjectForDestruction__FPv",
+      "address": "0x8003fb0c",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "HitDumpObject__FP13CStaticObjectPiPiP9EDumpTypePi",
+      "address": "0x8003fbdc",
+      "size": 80,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject": "0x800b36a4",
+    "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
+    "g_DumpObjectContainer": "0x801a11e8",
+    "g_pVolumeAllocator": "0x801a1170"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_DumpObjectContainer",
+    "g_pVolumeAllocator"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "objcreate.cpp",
+  "original_file_index": 1440
+}
