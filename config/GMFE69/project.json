@@ -1169,7 +1169,8 @@
     "bsbifunc_sedevent.json",
     "Moh2_setfog.json",
     "player_setweaponenable.json",
-    "bigyuvswizzler_delete.json"
+    "bigyuvswizzler_delete.json",
+    "scene_closestplayer.json"
   ],
   "progress": {
     "code_bytes": 1414572,
