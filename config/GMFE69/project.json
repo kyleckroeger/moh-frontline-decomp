@@ -1091,7 +1091,8 @@
     "AIObject_coverwalkto.json",
     "AISplinePath_prepare.json",
     "UIStudio_unloadmodal.json",
-    "UISUtils_movescreen.json"
+    "UISUtils_movescreen.json",
+    "UIStudio_activatescreen.json"
   ],
   "progress": {
     "code_bytes": 1414572,
