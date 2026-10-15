@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 701212,
+    "matching_code_bytes": 701788,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.570612171031236,
+    "percent": 49.611331201239665,
     "categories": {
-      "reconstructed_game": 479764,
+      "reconstructed_game": 480340,
       "restored_library": 221448
     },
-    "matching_functions": 4111
+    "matching_functions": 4113
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -240,6 +240,7 @@
     "config/GMFE69/UIStudio_active.json": "b5c210d842926626541371eeb552e733773c06012c591e4fb420c590215f980b",
     "config/GMFE69/UIStudio_drawobjects.json": "6ae0ecc93df15909566218c90c2a798fc530c08e92f612b9a0d0d62aae99e5d7",
     "config/GMFE69/UIStudio_idle.json": "98402530ebaf2c9125703f199ab3eb1808c9bfe6b8ae1ed6b304810bf392a219",
+    "config/GMFE69/UIStudio_init.json": "16b84626abd4a1447f09699cd21132ac5861867eb09318e8f701662288cd8433",
     "config/GMFE69/UIStudio_internal.json": "6bc4d75437ab849da297dc7c70ebeddcdfdd9b435940970f8d9ec9a98b26fafa",
     "config/GMFE69/UIStudio_load.json": "a7fbb74d90cfdb2589c8a407c07906d0e6b3573dd28685f648e040e3581d607b",
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
@@ -282,6 +283,7 @@
     "config/GMFE69/animated_volume_dispatch.json": "bc30e6609a72ccd2e3c15bbe69547c67e52255f55118fd751d068fbae93a3403",
     "config/GMFE69/animchan.json": "787fde4a70f1c5872c95704ff811c9c913b99438952a1ba97e3316bfd2d0b5b7",
     "config/GMFE69/animchan_init.json": "295dcf6fc45d5a8d9b1f3cfc9f1b9bf1874b2e58be96c0ea7d625f95f90e4bc4",
+    "config/GMFE69/animchan_process.json": "d315c70b969db3a2908134cbe96c9fadc67c0328dd8173455ddb68b7a1dcd3e1",
     "config/GMFE69/animdb.json": "bb5f95b38785b1dbd10de555e7a48050f9187bed1d9ce716634786e1f809c851",
     "config/GMFE69/animemot.json": "dda9f478a5e308bf6a5b89f4e4b4d1e0fabdd9f1a41a1984adbbda2cf689184b",
     "config/GMFE69/animemot_endian.json": "4024b1849707ae3ec2bf1adca9a8d68f931e508ea3d2985166b7073b60839255",
@@ -739,7 +741,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "c7185d596ca24c6916300cfedab4622d7b487735668b51d753320c6649849bee",
+    "config/GMFE69/project.json": "a11eb6bfbb6ba4c7f0f18366517ab08907fd8c2e86d1bc052f376d83b2817c92",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2236,6 +2238,7 @@
     "src/game/UIStudio_active.c": "65f9fb1ea6af8be25aba72e9387ba85f94281ae6d24788b0b04ea987e9be3772",
     "src/game/UIStudio_drawobjects.c": "5a8b5ab4baa0cb3a509419983b0a06f2e6ea332ffa93e909b6910500023c2d6d",
     "src/game/UIStudio_idle.c": "9035c7536c65e05bc5c9cadabee2207b9670f452e842e9bc23bb315fe4fef89f",
+    "src/game/UIStudio_init.c": "96f1af09b3717a03172fd6d585469869ddf28adfeb601a827b97c8da503e8622",
     "src/game/UIStudio_internal.c": "6d4a854bda5edbaa29d49af1c71d50e8f9cce5a428a0bee736782e464aae5f64",
     "src/game/UIStudio_load.c": "aef81b1e495dc7a14610192728f89ae27125e7c80d89986341d2839ef56f671c",
     "src/game/UIStudio_visibility.c": "3454b7fe7ff6847bada0bf5f355070e360b4bda0af974311c5e150c022437e59",
@@ -2269,6 +2272,7 @@
     "src/game/animated_volume_dispatch.cpp": "cabbf0cbcc7944a27a271136cd0dee7ace24dd8e1836be059ea5eb017d64ed6d",
     "src/game/animchan.cpp": "9e7fe060f7289db8ce0ec1899f4293eaf4694f8a9ce890c34c45bb60129626cb",
     "src/game/animchan_init.cpp": "239ff938e637995b76d2ec0d654ebf51c1d1bba8fe727eb4b7e1957d3eac7952",
+    "src/game/animchan_process.cpp": "b6fb61478a6cf5d9a4d17e3dae76252e906d639319a3554e438aa3d17b3b064f",
     "src/game/animdb.cpp": "2ad9555c6c6df924ebfa81b4d627ee1284c7634ec8c91330edafca9d2753c2ac",
     "src/game/animemot.cpp": "d262253f736c6e9824e5ffe86a57d78758e052c56e78a1a9f201096659f1705b",
     "src/game/animemot_endian.cpp": "234dd3cd52640295f2d0e682bb206859dedf8e8d203e16c1673944221d062c6a",
@@ -47385,6 +47389,86 @@
       "discarded_functions": [],
       "object_sha256": "5bdef934b810362cec192792f281d15818ac28cb97abc1f2cc12ed57241aaed4",
       "linked_sha256": "acea10d2199378774661ad676d921faa0aaa353624d539b4c5dd730bde2f1788"
+    },
+    {
+      "id": "animchan_process",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 300,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "5441de2ac9b96e13250acfbc6c37c9fa6be3b7e3ec79d8a251b4c8bb5f981882",
+      "linked_sha256": "435daf0eff8a5417a38383a0b91b3729d90770b6be26b9dc07b7877b74e6f2ec"
+    },
+    {
+      "id": "UIStudio_init",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 276,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "03021e208fa5d6838d6182668fac05c8ab839a206797571d1487a47e227384a0",
+      "linked_sha256": "dc23ed652e4563c65eb9840b3cd1ed08e50b8360c20ce13ad0d5fbfc769b75a2"
     }
   ],
   "code_map": {
@@ -49154,13 +49238,6 @@
             "kind": "function",
             "name": "AnimChanStartAnim",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80061acc",
-            "size": 300,
-            "kind": "function",
-            "name": "AnimChanProcess",
-            "evidence": "exception-index"
           }
         ]
       },
@@ -50441,13 +50518,6 @@
             "size": 176,
             "kind": "function",
             "name": "UISShutdown",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80088c34",
-            "size": 276,
-            "kind": "function",
-            "name": "UISInit",
             "evidence": "exception-index"
           },
           {
