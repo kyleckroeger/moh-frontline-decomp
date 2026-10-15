@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 708248,
+    "matching_code_bytes": 708628,
     "total_executable_code_bytes": 1414572,
-    "percent": 50.06800643586894,
+    "percent": 50.09486968496478,
     "categories": {
-      "reconstructed_game": 486800,
+      "reconstructed_game": 487180,
       "restored_library": 221448
     },
-    "matching_functions": 4128
+    "matching_functions": 4129
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -219,6 +219,7 @@
     "config/GMFE69/ShellMenu_stars.json": "defb4a20ec7186cd2632267462859fdcd94aa99247f6e2de699540813baf66a4",
     "config/GMFE69/ShellMenu_stats.json": "7b5a42b2eac606cdd7e392272bdd1a58b79a96dee59c6e275f9c65e0e0412994",
     "config/GMFE69/ShellMenu_unlock.json": "60477ff8fa84aa1200ca93f989c5dec026c3c7d26ad4315e7b8783c7949d8112",
+    "config/GMFE69/ShellMenu_unlockedstatus.json": "5653ecf1d2ef5ecc0b705f83e4b5987b06501dffc7a372a5c96766f55185090c",
     "config/GMFE69/Soldier_object.json": "d625d33bbfdcbd4ae922099756d0a2525feb495afdd309517e996dc20e2f2aff",
     "config/GMFE69/Soldier_object_attach.json": "0ab17d8053eedbb1465c76dffcb28967c7a4a85535dabe4d10af2da978bca303",
     "config/GMFE69/Soldier_object_bone.json": "e4f2a7a48d19d9417887d9971eea8d7ce0b1019be0f80d2989dedf337a41825b",
@@ -751,7 +752,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "d94db0952827eb888fa9e47817ca1f017b7176119a18537abe79dfdb9265a3b8",
+    "config/GMFE69/project.json": "b5d95d372d463821c900c2f45d3b35a590f58bbca4873de4d23617c526753cc8",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2229,6 +2230,7 @@
     "src/game/ShellMenu_stars.cpp": "95f56e9b48ade92f9d008250caa7584eb673d039c7aecd580c91fe43a5ce7136",
     "src/game/ShellMenu_stats.cpp": "92b47c2788687b9e9b16dd1309429c8298205506a9ed83a6af655dd89918d648",
     "src/game/ShellMenu_unlock.cpp": "233ac6a191e2b4397da0fd9cec912273425c0f59ece1df60aff07eb94fef4c08",
+    "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
     "src/game/Soldier_object.cpp": "92bf858d3c8b06c691309b702079f4c10d3da7935ed4b50d4e27764fa7eeca41",
     "src/game/Soldier_object_attach.cpp": "e5d9716b0f73390648152ea5df45d45162575a9afd2a0a63e1eebc076b23e6df",
     "src/game/Soldier_object_bone.cpp": "8fa474389a05090df7d8e919f4fbfbe8dc37381836397d77ffaa327127206032",
@@ -47973,6 +47975,45 @@
       "discarded_functions": [],
       "object_sha256": "10d279d403d3595ae61e6db8ff3310cd5f0d158a7e7a6e6df5500035df04402c",
       "linked_sha256": "2f796b47d0c4e8871d5da676ce76cd02d9d1ccb4ca3efee974d23869b159d68e"
+    },
+    {
+      "id": "ShellMenu_unlockedstatus",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 380,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "39026d9e05e8102d8a213410e2bfea1c880eb7c46f501c5ccafe47b6061cbf76",
+      "linked_sha256": "3e4640027172744d11e5eef68b8b53e7180c2ad136a7f2864e560e7f5443bd3c"
     }
   ],
   "code_map": {
@@ -53114,13 +53155,6 @@
             "kind": "function",
             "name": "__ct__10CShellMenuFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e82a8",
-            "size": 380,
-            "kind": "function",
-            "name": "GetLevelUnlockedStatus__10CShellMenuFPi",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800e8424",
