@@ -4,7 +4,10 @@
 // marks it free and returns it to the event-memory allocator. The function,
 // the allocator class and g_pMemBlockAllocator are named by the symbols; the
 // block view and the free marker's meaning are inferred. The rest of the
-// file is in other units.
+// file is in other units. BSEventIncrimentReferenceCount adds one to the
+// count, and BSEndEvent clears the event hash table, record array and free
+// list pointers (file-local in the original, declared extern here; the record
+// and bucket types are opaque here) and returns 0.
 class BSUtilObjectInstanceMemoryAllocator {
 public:
     void FreeElement(void*);
@@ -27,4 +30,22 @@ void BSEventDecrimentReferenceCount(void* memory) {
         block->m_references = 0xffff0000;
         g_pMemBlockAllocator.FreeElement(block);
     }
+}
+
+void BSEventIncrimentReferenceCount(void* memory) {
+    ((EventMemoryBlockView*)memory)->m_references++;
+}
+
+struct EventBucketView;
+struct EventRecordView;
+
+extern EventBucketView* g_pEventHashTable;
+extern EventRecordView* g_pEventRecordArray;
+extern EventRecordView* g_pFreeEventRecordHead;
+
+int BSEndEvent() {
+    g_pEventHashTable = 0;
+    g_pEventRecordArray = 0;
+    g_pFreeEventRecordHead = 0;
+    return 0;
 }

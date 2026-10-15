@@ -7,8 +7,12 @@
 // unit inlines it without emitting it; it is an ordinary function earlier in
 // the original file), and the object's id at +2, the list's value read at
 // +8 and the result type are inferred. _AnimSt_pStatAnimList is file-local
-// in the original and declared extern here. The rest of the file is in other
-// units.
+// in the original and declared extern here. Then AnimStInitStructure (the
+// state and status of the owner's four slots cleared), the setters of the
+// finish callback and the callback table (file-local in the original,
+// declared extern here; their types are opaque here), AnimStShutdown (the
+// callback table cleared when set, 0 returned) and AnimStInit (returns 0).
+// The rest of the file is in other units.
 struct AnimStateSlotView {
     unsigned char field00[4];
     unsigned short state;
@@ -62,4 +66,39 @@ extern "C" int AnimStTransPreCheck(AnimStateOwnerView* owner, AnimObjHdr_t* obje
     unsigned short currentCount = _AnimSt_pStatAnimList.value08;
     g_AnimDB.GetStateAnimList(object->id, target, &_AnimSt_pStatAnimList);
     return _AnimTranQuickScan(object, target, _AnimSt_pStatAnimList.value08, current, currentCount);
+}
+
+extern "C" void AnimStInitStructure(AnimStateOwnerView* owner) {
+    owner->slots[0].state = 0;
+    owner->slots[0].status = 0;
+    owner->slots[1].state = 0;
+    owner->slots[1].status = 0;
+    owner->slots[2].state = 0;
+    owner->slots[2].status = 0;
+    owner->slots[3].state = 0;
+    owner->slots[3].status = 0;
+}
+
+typedef void* AnimStFinishCallback;
+typedef void* AnimStCallbackTable;
+
+extern AnimStFinishCallback _AnimSt_FinishCb;     // file-local in the original
+extern AnimStCallbackTable _AnimSt_CallbackTable; // file-local in the original
+
+extern "C" void AnimStRegisterFinishCallback(AnimStFinishCallback callback) {
+    _AnimSt_FinishCb = callback;
+}
+
+extern "C" void AnimStSetCallbackTable(AnimStCallbackTable table) {
+    _AnimSt_CallbackTable = table;
+}
+
+extern "C" int AnimStShutdown() {
+    if (_AnimSt_CallbackTable)
+        _AnimSt_CallbackTable = 0;
+    return 0;
+}
+
+extern "C" int AnimStInit() {
+    return 0;
 }

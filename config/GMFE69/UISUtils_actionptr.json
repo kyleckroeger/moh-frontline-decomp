@@ -41,8 +41,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008aa4c",
-      "size": 204,
+      "address": "0x8008a9fc",
+      "size": 284,
       "type": 1
     },
     {
@@ -54,17 +54,47 @@
   ],
   "functions": [
     {
+      "name": "UISSetColorAdditive__Fffff",
+      "address": "0x8008a9fc",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "UISSetColorMultipler__Fffff",
+      "address": "0x8008aa18",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "UISGetColorAdditive",
+      "address": "0x8008aa34",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "UISGetColorMultipler",
+      "address": "0x8008aa40",
+      "size": 12,
+      "binding": 1
+    },
+    {
       "name": "UISGetActionPtrValue__FUlP16UISControlInfo_t",
       "address": "0x8008aa4c",
       "size": 204,
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "_AdditiveColorFactor": "0x801eecc0",
+    "_MultiplerColorFactor": "0x801eecb0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_AdditiveColorFactor",
+    "_MultiplerColorFactor"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "UISUtils.c",

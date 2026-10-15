@@ -1,4 +1,9 @@
-// A fragment of UISUtils.c (0x8008aa4c): UISGetActionPtrValue returns the
+// A fragment of UISUtils.c (0x8008a9fc): the setters and getters of the
+// additive and multiplier colour factors (four floats each, file-local in the
+// original and declared extern here; the result type of the getters is
+// inferred; the file's inlining is deferred, so they are defined in reverse
+// order after the function they precede), then UISGetActionPtrValue, which
+// returns the
 // address of the control value an action (16 to 39) changes, the value at
 // +72 for the others. UISControlInfo_t is named by the mangled symbol; the
 // result type follows UISEvent.c and the values (named by offset) are
@@ -27,6 +32,9 @@ struct UISControlInfo_t {
     float value54;
     float value58;
 };
+
+extern float _AdditiveColorFactor[4];  // file-local in the original
+extern float _MultiplerColorFactor[4]; // file-local in the original
 
 float* UISGetActionPtrValue(unsigned long action, UISControlInfo_t* control) {
     switch (action) {
@@ -72,4 +80,26 @@ float* UISGetActionPtrValue(unsigned long action, UISControlInfo_t* control) {
         return &control->value44;
     }
     return &control->value48;
+}
+
+extern "C" float* UISGetColorMultipler() {
+    return _MultiplerColorFactor;
+}
+
+extern "C" float* UISGetColorAdditive() {
+    return _AdditiveColorFactor;
+}
+
+void UISSetColorMultipler(float r, float g, float b, float a) {
+    _MultiplerColorFactor[3] = a;
+    _MultiplerColorFactor[0] = r;
+    _MultiplerColorFactor[1] = g;
+    _MultiplerColorFactor[2] = b;
+}
+
+void UISSetColorAdditive(float r, float g, float b, float a) {
+    _AdditiveColorFactor[3] = a;
+    _AdditiveColorFactor[0] = r;
+    _AdditiveColorFactor[1] = g;
+    _AdditiveColorFactor[2] = b;
 }

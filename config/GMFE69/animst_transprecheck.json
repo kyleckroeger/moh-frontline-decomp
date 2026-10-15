@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80067b5c",
-      "size": 236,
+      "size": 328,
       "type": 1
     },
     {
@@ -62,10 +62,42 @@
       "address": "0x80067b5c",
       "size": 236,
       "binding": 1
+    },
+    {
+      "name": "AnimStInitStructure",
+      "address": "0x80067c48",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "AnimStRegisterFinishCallback",
+      "address": "0x80067c70",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "AnimStSetCallbackTable",
+      "address": "0x80067c78",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "AnimStShutdown",
+      "address": "0x80067c80",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "AnimStInit",
+      "address": "0x80067c9c",
+      "size": 8,
+      "binding": 1
     }
   ],
   "externals": {
     "GetStateAnimList__13CAnimDatabaseFUlUlP23AnimFileStateAnimList_t": "0x80061d98",
+    "_AnimSt_CallbackTable": "0x8034e96c",
+    "_AnimSt_FinishCb": "0x8034e968",
     "_AnimSt_pStatAnimList": "0x801d3e38",
     "_AnimTranQuickScan__FP12AnimObjHdr_tUsUsUsUs": "0x800681b0",
     "g_AnimDB": "0x801d4a84"
@@ -74,10 +106,15 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "_AnimSt_CallbackTable",
+    "_AnimSt_FinishCb",
     "_AnimSt_pStatAnimList"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "_AnimSt_CallbackTable",
+    "_AnimSt_FinishCb"
+  ],
   "original_file": "animst.cpp",
   "original_file_index": 3104
 }

@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x800356b4",
-      "size": 88,
+      "size": 128,
       "type": 1
     },
     {
@@ -60,18 +60,41 @@
       "address": "0x800356b4",
       "size": 88,
       "binding": 1
+    },
+    {
+      "name": "BSEventIncrimentReferenceCount__FPv",
+      "address": "0x8003570c",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "BSEndEvent__Fv",
+      "address": "0x8003571c",
+      "size": 24,
+      "binding": 1
     }
   ],
   "externals": {
     "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
+    "g_pEventHashTable": "0x8034e7a0",
+    "g_pEventRecordArray": "0x8034e7a4",
+    "g_pFreeEventRecordHead": "0x8034e7a8",
     "g_pMemBlockAllocator": "0x80197ff4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_pEventHashTable",
+    "g_pEventRecordArray",
+    "g_pFreeEventRecordHead"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_pEventHashTable",
+    "g_pEventRecordArray",
+    "g_pFreeEventRecordHead"
+  ],
   "original_file": "bsevents.cpp",
   "original_file_index": 1139
 }

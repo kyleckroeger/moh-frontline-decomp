@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 737288,
+    "matching_code_bytes": 737500,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.12092420887731,
+    "percent": 52.13591107416236,
     "categories": {
-      "reconstructed_game": 515840,
+      "reconstructed_game": 516052,
       "restored_library": 221448
     },
-    "matching_functions": 4209
+    "matching_functions": 4220
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -252,7 +252,7 @@
     "config/GMFE69/UISActionProcess.json": "2a99d24d9da29f023bab9396c2424e8dafe6ce9bdaa87904306b5ea85783af91",
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
-    "config/GMFE69/UISUtils_actionptr.json": "d63364b2590334f0178818cbedb25e7eb230c0016de50db056fca6e05e189c81",
+    "config/GMFE69/UISUtils_actionptr.json": "85b92076125f12f009807d17b2c64a9081741d2e84c232ce0be7a2fc74e2ae48",
     "config/GMFE69/UISUtils_dohint.json": "faa6b748b1aaf73e5e7b786ee3176348335df131563e6d3382de44c96cd4f84e",
     "config/GMFE69/UISUtils_movescreen.json": "36019e2d512c7729797991db2c48fb935a113c84a5aa90e2d9aa2d1590f5138f",
     "config/GMFE69/UISUtils_siblingenable.json": "ba0e809977f53f5c2ab8a96adb24e9b5895796b496249ebeebf6d98cb3b5fd2a",
@@ -327,7 +327,7 @@
     "config/GMFE69/animskinned_dtor.json": "cfbd4b49c98a64c05b9eaffa85a1b08d8fa326d3a85e0035c594ed661ef8d987",
     "config/GMFE69/animskinned_skeleton.json": "50fa4ecdb6985401ef86f806476c1d28ad0e9843577183c0064528629642a61c",
     "config/GMFE69/animst.json": "ed01cfba2082686177f18f2e8f306e58d6b6b797cd3f572474fabc933f234556",
-    "config/GMFE69/animst_transprecheck.json": "35aa2ad4cd0233996de54dcdea82785af2538d95311c17a6eede484647e832b9",
+    "config/GMFE69/animst_transprecheck.json": "5fe984dae4364abe2ba95d18c2dff8424ebb5b7a5abe0cada24157a1b1729cf6",
     "config/GMFE69/animwgt.json": "6752f49abd311539d80c2042212297e15578259526dd08924450d1f72306cb0f",
     "config/GMFE69/ansi_files.json": "fd2d4cda0d125e73920f67f3d75171b2abd9967c8c4e9fcc3f024baba54e119e",
     "config/GMFE69/ansi_fp.json": "a0ef64e95f9c4bdc4bb31bbfa57bd7af88bd31f24fec8fad5c9aef7cfcfc2427",
@@ -426,7 +426,7 @@
     "config/GMFE69/bsevents.json": "bf2b1285d474889e2f47f4d33dff1c673341bcf69c172d94ec39472eef01f369",
     "config/GMFE69/bsevents_head.json": "214dd97eb3b394d4a514cc4f7584f6bac263f5a8692e7ab38f1a59add09c3199",
     "config/GMFE69/bsevents_queue.json": "d1caaf7587adb886bdf3b352e87daebb2d795bde71d510b13bfb0339fd6bc21f",
-    "config/GMFE69/bsevents_ref.json": "59154a968d3c1c1afd1d966ba687e21e81df8df51823f8862eed8ad4ef81e829",
+    "config/GMFE69/bsevents_ref.json": "fd3b48736de36d6c071ab3caf3296f35f4e94ed4e0c3d92b2a0abee738b722ce",
     "config/GMFE69/bsfile.json": "f961138f149b308ce0811724b7e70892a6161a21bf25023f415870d3dd03c2f7",
     "config/GMFE69/bsmachin.json": "6490713119dfa93490298ca3eca6702df48d406badf26d999cb139f053a5855d",
     "config/GMFE69/bsmachin_props.json": "1944c1e183afb013783327c438e3010395c83aa6dd9a7fc96e154ae3b78ec9c3",
@@ -2287,7 +2287,7 @@
     "src/game/UISActionProcess.c": "0c8322629537a363a11f51d7aa0ddaf2fa57f6d24c22fb15f45f76e6566d5f7e",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
-    "src/game/UISUtils_actionptr.c": "099fdade24c4ba5cec60b980e604b91efe09a7319080535a1f0c889967544add",
+    "src/game/UISUtils_actionptr.c": "137fc6515e8a573306876f5fe9684956ad392a129c11a2c15556f4e46a4e34ad",
     "src/game/UISUtils_dohint.c": "b09914bf3eb297eefa127c5154a523eb6532db1bd5b11ac0422f8d2d30a9b34e",
     "src/game/UISUtils_movescreen.c": "ff9dcdd0f19822997dcb6794f1cbc74d35fa68bc17c42ca204fc7eff5b99a890",
     "src/game/UISUtils_siblingenable.c": "5ba15b61d2a7e0d4dfd1d8a4b318ad0dd992e5f548fc7cac55489724a565aff0",
@@ -2353,7 +2353,7 @@
     "src/game/animskinned_dtor.cpp": "f8051dbb14c2ada9078b6b9638b6e2dbd2e79720c568cfd083f6d7214d2413aa",
     "src/game/animskinned_skeleton.cpp": "a7897db451a17f6db5cf5b95b97aac21c44a2f06d827a1f0b23f5d0b3d9c5f27",
     "src/game/animst.cpp": "c21b2120a38a43ccf28537b31f9f22c5b5d21d59cf2d48951276464a65bf4bf9",
-    "src/game/animst_transprecheck.cpp": "0519db6297cbd49d792c37c66e4f3284aa4cd2d690f75962404ee4096d5e583a",
+    "src/game/animst_transprecheck.cpp": "533866a885634fa3c3a7388980e82685fbbd87b5cff5bf14c3ad167f1c92eec7",
     "src/game/animwgt.cpp": "001c05d29d185c0a4f21712270ddb62c29fc3808bede837c4acdb3ad1c63af1c",
     "src/game/attachobject.cpp": "7beae62a0ded89a3876b3019473c6e6dfdc1d1d2b44c8822272f346352f02833",
     "src/game/attachobject_ctor.cpp": "e0eb46b3633af1cb357dfee7e8ae4a66cd799a555003be8e7ec6d84b5224fbc7",
@@ -2444,7 +2444,7 @@
     "src/game/bsevents.cpp": "b452c77e9fd44429b0a8d8c9105a2ca9ee4bf43903bd7c71f1d82ed932f382c3",
     "src/game/bsevents_head.cpp": "b485fb5293b1ed2cb8052f460e86469f0eeabec70a4810718761d759b6d339eb",
     "src/game/bsevents_queue.cpp": "678dc2a5de24106c16e3f63e5d22d765f7279af4e4c4b77d5a51eedf13cc943f",
-    "src/game/bsevents_ref.cpp": "2f6ec11d08a7615f4d7056c2050ba35477306ed168f01c6181e0b771c0c82baf",
+    "src/game/bsevents_ref.cpp": "57b8ac43fec071f340b105c41c7cbbf47844282741c64589ca8fc60b271ee9c6",
     "src/game/bsfile.cpp": "af375447dad6c73a39950974ef6a4ac7c892bbbb7541fba3b32587c6d1c69cab",
     "src/game/bsmachin.cpp": "5649b29e7238e5a067281db6bd414275f0b7495c4ad3b9b6c35b58aff18aedab",
     "src/game/bsmachin_props.cpp": "3907e2f6896cc15ab0613cb4136fd0aec3b790b58527e3d7866790404c79c198",
@@ -45928,8 +45928,8 @@
     {
       "id": "bsevents_ref",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 88,
+      "functions": 3,
+      "code_bytes": 128,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45961,8 +45961,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "51ab1bff2574780654928c4bd6bf519d746a2c2fa02a1b59438f3a5349979f30",
-      "linked_sha256": "818df7bd73e3c0d44629e3e4731dfad8069b9f8fcd95098b3b7b70dbbcaf4096"
+      "object_sha256": "34f848a4cc7d6eb0f30122a34c8302e73142170469d4c86bf5b2392529786a01",
+      "linked_sha256": "56d56d23b81a6f5162d90032a57a79fded78c33d5e75f128080220bf7189e3df"
     },
     {
       "id": "bsmessage_remove",
@@ -46876,8 +46876,8 @@
     {
       "id": "UISUtils_actionptr",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 204,
+      "functions": 5,
+      "code_bytes": 284,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46911,8 +46911,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "582eb286abbda015b775284762694f926c406831de0e0200dfaccf733522303f",
-      "linked_sha256": "0636be645169eab63713d6889bfee3e26a584e83f7c75a011f4c9a54e8d27f72"
+      "object_sha256": "e311993368977352898a1cc7a30e790d4a327d93b8b74a509a5f6a5722f9afaa",
+      "linked_sha256": "01f473a6a1addef6a4591fe17660979627e089a21076af08c833772a1604b7aa"
     },
     {
       "id": "AIObject_fovcorpse",
@@ -47268,8 +47268,8 @@
     {
       "id": "animst_transprecheck",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 236,
+      "functions": 6,
+      "code_bytes": 328,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47301,8 +47301,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "140140d6279182ab942d06253955853116e096cd27a46181e1d38bbc219db83e",
-      "linked_sha256": "c29c62cc8eec1fc2a7fe7ca1560546e99e5491ba09509da4731a84b9e1ef07b5"
+      "object_sha256": "79f496868d262b1ef4c396a652930fc66d77eb6db90635b9c052a563a3918fee",
+      "linked_sha256": "0b4da620e00a1a142c2547e8b5398a53c019fe19aa73153ea63eb1d41adcc33c"
     },
     {
       "id": "bsevents_queue",
@@ -49484,20 +49484,6 @@
             "kind": "function",
             "name": "BSEventProcessImmediateEvents__Fv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003570c",
-            "size": 16,
-            "kind": "function",
-            "name": "BSEventIncrimentReferenceCount__FPv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003571c",
-            "size": 24,
-            "kind": "function",
-            "name": "BSEndEvent__Fv",
-            "evidence": "between-same-file"
           }
         ]
       },
@@ -50697,41 +50683,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x80067c48",
-            "size": 40,
-            "kind": "function",
-            "name": "AnimStInitStructure",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80067c70",
-            "size": 8,
-            "kind": "function",
-            "name": "AnimStRegisterFinishCallback",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80067c78",
-            "size": 8,
-            "kind": "function",
-            "name": "AnimStSetCallbackTable",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80067c80",
-            "size": 28,
-            "kind": "function",
-            "name": "AnimStShutdown",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80067c9c",
-            "size": 8,
-            "kind": "function",
-            "name": "AnimStInit",
-            "evidence": "between-same-file"
-          },
-          {
             "address": "0x80067ca4",
             "size": 1292,
             "kind": "function",
@@ -51668,34 +51619,6 @@
             "kind": "function",
             "name": "UISStringFormat__FP12UISScrData_tP11UISString_tP11UISString_tUlP10UISParam_t",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008a9fc",
-            "size": 28,
-            "kind": "function",
-            "name": "UISSetColorAdditive__Fffff",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8008aa18",
-            "size": 28,
-            "kind": "function",
-            "name": "UISSetColorMultipler__Fffff",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8008aa34",
-            "size": 12,
-            "kind": "function",
-            "name": "UISGetColorAdditive",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8008aa40",
-            "size": 12,
-            "kind": "function",
-            "name": "UISGetColorMultipler",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x8008ab18",
