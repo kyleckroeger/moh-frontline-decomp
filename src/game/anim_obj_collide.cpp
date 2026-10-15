@@ -1,4 +1,6 @@
-// A fragment of anim_obj.cpp (0x80093ba0): CAnimObject's Halt (clears the
+// A fragment of anim_obj.cpp (0x80093a98): CAnimObject's ApplyForceTo (the
+// velocity becomes the force's direction scaled by the strength / 512 and
+// the object is marked as forced, off the ground), Halt (clears the
 // velocity and turn) and OnCollision (for each contact, takes the normal -
 // turned around when this object is the collision's first object - flat in
 // z, and when it is not too short records it with the other object's moving
@@ -31,10 +33,9 @@ public:
     void Normalize() {
         float length = sqrtf(x * x + y * y + z * z);
         if (length != 0.0f) {
-            float inv = 1.0f / length;
-            x *= inv;
-            y *= inv;
-            z *= inv;
+            x *= 1.0f / length;
+            y *= 1.0f / length;
+            z *= 1.0f / length;
         }
     }
 
@@ -136,6 +137,7 @@ public:
 
     void OnCollision(const CCollision&);
     void Halt();
+    void ApplyForceTo(CVector3, float);
 
     unsigned char unknown0004[9156];
     CVector3 m_velocity;
@@ -145,6 +147,10 @@ public:
     dwi::fast_vec<CClsnInfo> m_collisions;
     bool m_flag2450;
     bool m_flag2451;
+    unsigned char unknown2452[2];
+    bool m_onGround;
+    unsigned char unknown2455;
+    bool m_forced;
 };
 
 void CAnimObject::OnCollision(const CCollision& collision) {
@@ -179,4 +185,15 @@ void CAnimObject::OnCollision(const CCollision& collision) {
 void CAnimObject::Halt() {
     m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
     m_turn = 0.0f;
+}
+
+void CAnimObject::ApplyForceTo(CVector3 force, float strength) {
+    strength *= 0.001953125f;
+    m_velocity = force;
+    m_velocity.Normalize();
+    m_velocity.x *= strength;
+    m_velocity.y *= strength;
+    m_velocity.z *= strength;
+    m_forced = true;
+    m_onGround = false;
 }

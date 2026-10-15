@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 688760,
+    "matching_code_bytes": 689024,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.69034591381704,
+    "percent": 48.709008802662574,
     "categories": {
-      "reconstructed_game": 467312,
+      "reconstructed_game": 467576,
       "restored_library": 221448
     },
-    "matching_functions": 4046
+    "matching_functions": 4047
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -241,7 +241,7 @@
     "config/GMFE69/anim_callback_weapon.json": "4c37f800d5ded4d80a84d27643120592a7ad0004cbc519a0ebf2e6b25e4f5a68",
     "config/GMFE69/anim_obj.json": "a247bcba3a25c2b2a8c68697e25453fbe49fadf6c7925bee298427fc0856679b",
     "config/GMFE69/anim_obj_bullet.json": "0d8da6c4ce8068d64441eb1d073150d3d385c40e91a158d992ad2ebd0c57b666",
-    "config/GMFE69/anim_obj_collide.json": "554e0f1e2710749da39f6aa429770961f552f03337272cdc524962f8e3c8c2ab",
+    "config/GMFE69/anim_obj_collide.json": "0371a13545fefd524fd743f64704b746dd6618d3e5a3ff966481859b5a999b82",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
     "config/GMFE69/anim_obj_draw.json": "8dcee46deff75776476d8b84ebbcdb3f3b486c18fa40e70e0e179606823b5017",
     "config/GMFE69/anim_obj_dtor.json": "d21016be0ade8a6d1e9c9bf0f365cd522c2a6babc2e399fdbe8ab10f60858f71",
@@ -2183,7 +2183,7 @@
     "src/game/anim_callback_weapon.cpp": "ffad882baa043702ec84a4fe2edc1b903a7645dab7cc3d35614f51904a5ed312",
     "src/game/anim_obj.cpp": "6312344d8f151cabc650590c2b2682ca2b7f0fd0074bed26008ecc032ba2dc40",
     "src/game/anim_obj_bullet.cpp": "e9120613130f971a773b1e1948f79031bf6636e9564a7e7a1ff1b0bd03b19759",
-    "src/game/anim_obj_collide.cpp": "b7795e6acbd653e7f0d7e8ca0c09adfa13f5d2b379799b34bc2ca8d5e2b334b7",
+    "src/game/anim_obj_collide.cpp": "10bee210985d5fba2b08053c8185e94ed7025d1e41f2331a6ea8c34921163bba",
     "src/game/anim_obj_ctor.cpp": "384df3a5aa5e148e0840e58548ab842711a7f7d8dd4abbd71e506d5740baa845",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
     "src/game/anim_obj_dtor.cpp": "ded2328fd03696ffe2ec71e42ac7f20628401f86810cb7e62fcd3f83e7d9eb7b",
@@ -45411,8 +45411,8 @@
     {
       "id": "anim_obj_collide",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 708,
+      "functions": 3,
+      "code_bytes": 972,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45444,8 +45444,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1425596a8f2562cc4631abad7a6a987a7479f5121b8fe60c35fb848ba9553240",
-      "linked_sha256": "20b3a22682a6485f7cf7ccba94a80a35290cd71a47e35f0c2c362202a65891cb"
+      "object_sha256": "e4a4f73627a42cf41c1bf706083d073a738bafa9479232288822006fd1e417a7",
+      "linked_sha256": "6fa2dd675904620b501f7acba7a81fd1a397cf8e423e15d46b0ecf993f333edc"
     },
     {
       "id": "hierobject_playback",
@@ -49280,13 +49280,6 @@
         "file_record": 107,
         "file_name": "anim_obj.cpp",
         "ranges": [
-          {
-            "address": "0x80093a98",
-            "size": 264,
-            "kind": "function",
-            "name": "ApplyForceTo__11CAnimObjectF8CVector3f",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80093e64",
             "size": 1268,
