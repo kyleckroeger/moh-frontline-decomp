@@ -1,0 +1,98 @@
+{
+  "id": "bsevents_queue",
+  "source": "src/game/bsevents_queue.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80035440",
+      "size": 628,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a20c",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800110c0",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BSEventQueueImmediateEvent__FP8BSObjectP22BSMachineThread_structP31BSCode_EventHandlerEntry_structUsPvP8BSObject",
+      "address": "0x80035440",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "BSEventTriggerEvent__FP8BSObjectP22BSMachineThread_structP31BSCode_EventHandlerEntry_structUsPvP8BSObject",
+      "address": "0x8003556c",
+      "size": 328,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DoWeOwnThisMemory__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd20",
+    "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
+    "g_pEventHashTable": "0x8034e7a0",
+    "g_pFreeEventRecordHead": "0x8034e7a8",
+    "g_pImmediateEventQueue": "0x8034e7b8",
+    "g_pImmediateEventQueueTail": "0x8034e7bc",
+    "g_pMemBlockAllocator": "0x80197ff4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_pEventHashTable",
+    "g_pFreeEventRecordHead",
+    "g_pImmediateEventQueue",
+    "g_pImmediateEventQueueTail"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pEventHashTable",
+    "g_pFreeEventRecordHead",
+    "g_pImmediateEventQueue",
+    "g_pImmediateEventQueueTail"
+  ],
+  "original_file": "bsevents.cpp",
+  "original_file_index": 1139
+}

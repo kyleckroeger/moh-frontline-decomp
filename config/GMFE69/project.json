@@ -1081,7 +1081,8 @@
     "AIObject_lineofsight_obj.json",
     "AISplinePath_finalpoint.json",
     "animseq_start.json",
-    "animst_transprecheck.json"
+    "animst_transprecheck.json",
+    "bsevents_queue.json"
   ],
   "progress": {
     "code_bytes": 1414572,
