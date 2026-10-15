@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80036d2c",
-      "size": 5192,
+      "size": 5828,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a264",
-      "size": 144,
+      "size": 152,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011144",
-      "size": 216,
+      "size": 228,
       "type": 1
     },
     {
@@ -296,13 +296,22 @@
       "address": "0x80038128",
       "size": 76,
       "binding": 1
+    },
+    {
+      "name": "BSInitMachine__Fv",
+      "address": "0x80038174",
+      "size": 636,
+      "binding": 1
     }
   ],
   "externals": {
     "BSFileDeleteClass__FP14BSClass_struct": "0x80036a30",
     "BSMessageRemoveHandler__FP28BSMessageRegistration_struct": "0x80039eb0",
+    "BSOpCodeFunc_NEXTSTATE__Fv": "0x80036a78",
     "BSRegisterMessage__FP33BSCode_MessageHandlerEntry_structP8BSObjectUsP22BSMachineThread_structPP28BSMessageRegistration_struct": "0x8003a1bc",
+    "BSUtilGetMemory__Fii": "0x8003b83c",
     "LoadPropertyData__FP18xyzProperty_Structi": "0x80038408",
+    "g_iBSMessageRegistrationListSize": "0x8034e82c",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778",
     "g_pcClassList": "0x8034e7d0"
@@ -317,6 +326,7 @@
     "BSMachineGetFreeMessageList__Fv"
   ],
   "sda_externals": [
+    "g_iBSMessageRegistrationListSize",
     "g_iCurrentBIFIndex",
     "g_pBuiltInFunctions",
     "g_pcClassList"

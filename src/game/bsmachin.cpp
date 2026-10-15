@@ -1086,3 +1086,63 @@ int BSEndMachine() {
     g_pcClassList = 0;
     return 0;
 }
+
+// BSInitMachine takes the machine memory (the message lists and the stack) in
+// one block, fills the opcode table, links the message lists into the free
+// list (an inferred inline helper) and sets up the stack.
+inline void LinkMessageList() {
+    for (int i = 0; i < g_iBSMessageRegistrationListSize - 1; i++) {
+        g_MessageList[i].next = &g_MessageList[i + 1];
+    }
+}
+
+int BSInitMachine() {
+    g_pBSMachineMemory = (unsigned char*)BSUtilGetMemory(
+        g_iDefaultStackSize * sizeof(int) + g_iBSMessageRegistrationListSize * sizeof(BSMessageListView), 0);
+    g_pBSMachineMemoryOffset = 0;
+    g_iStopThread = 0;
+    g_pcClassList = 0;
+    g_bocfOpCodeFuncs[0] = BSOpCodeFunc_BNE;
+    g_bocfOpCodeFuncs[1] = BSOpCodeFunc_JMP;
+    g_bocfOpCodeFuncs[2] = BSOpCodeFunc_ADD;
+    g_bocfOpCodeFuncs[3] = BSOpCodeFunc_SUB;
+    g_bocfOpCodeFuncs[4] = BSOpCodeFunc_DIV;
+    g_bocfOpCodeFuncs[5] = BSOpCodeFunc_MULT;
+    g_bocfOpCodeFuncs[6] = BSOpCodeFunc_NEG;
+    g_bocfOpCodeFuncs[7] = BSOpCodeFunc_EQ;
+    g_bocfOpCodeFuncs[30] = BSOpCodeFunc_NE;
+    g_bocfOpCodeFuncs[8] = BSOpCodeFunc_LT;
+    g_bocfOpCodeFuncs[9] = BSOpCodeFunc_GT;
+    g_bocfOpCodeFuncs[10] = BSOpCodeFunc_LTE;
+    g_bocfOpCodeFuncs[11] = BSOpCodeFunc_GTE;
+    g_bocfOpCodeFuncs[12] = BSOpCodeFunc_AND;
+    g_bocfOpCodeFuncs[13] = BSOpCodeFunc_OR;
+    g_bocfOpCodeFuncs[14] = BSOpCodeFunc_NOT;
+    g_bocfOpCodeFuncs[15] = BSOpCodeFunc_LW;
+    g_bocfOpCodeFuncs[16] = BSOpCodeFunc_SW;
+    g_bocfOpCodeFuncs[17] = BSOpCodeFunc_PUSH;
+    g_bocfOpCodeFuncs[18] = BSOpCodeFunc_POP;
+    g_bocfOpCodeFuncs[19] = BSOpCodeFunc_CAST;
+    g_bocfOpCodeFuncs[20] = BSOpCodeFunc_FNCALL;
+    g_bocfOpCodeFuncs[21] = BSOpCodeFunc_RETURN;
+    g_bocfOpCodeFuncs[22] = BSOpCodeFunc_BREAK;
+    g_bocfOpCodeFuncs[23] = BSOpCodeFunc_NEXTSTATE;
+    g_bocfOpCodeFuncs[24] = BSOpCodeFunc_LG;
+    g_bocfOpCodeFuncs[25] = BSOpCodeFunc_SG;
+    g_bocfOpCodeFuncs[26] = BSOpCodeFunc_BIFNCALL;
+    g_bocfOpCodeFuncs[27] = BSOpCodeFunc_LM;
+    g_bocfOpCodeFuncs[28] = BSOpCodeFunc_SM;
+    g_bocfOpCodeFuncs[29] = BSOpCodeFunc_GP;
+    g_bocfOpCodeFuncs[31] = BSOpCodeFunc_TRACE;
+    g_bocfOpCodeFuncs[32] = BSOpCodeFunc_LS;
+    g_MessageList = (BSMessageListView*)(g_pBSMachineMemory + g_pBSMachineMemoryOffset);
+    g_pBSMachineMemoryOffset += g_iBSMessageRegistrationListSize * sizeof(BSMessageListView);
+    LinkMessageList();
+    g_MessageList[g_iBSMessageRegistrationListSize - 1].next = 0;
+    g_MessageListHead = g_MessageList;
+    g_piStackBase = (int*)(g_pBSMachineMemory + g_pBSMachineMemoryOffset);
+    g_pBSMachineMemoryOffset += g_iDefaultStackSize * sizeof(int);
+    g_piStackTop = g_piStackBase;
+    g_piFrame = g_piStackTop + 1;
+    return 0;
+}
