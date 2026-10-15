@@ -1070,7 +1070,8 @@
     "UIStudio_drawobjects.json",
     "UIStudio_internal.json",
     "AIObject_coveruseful.json",
-    "sound_oneshotreset.json"
+    "sound_oneshotreset.json",
+    "UISUtils_actionptr.json"
   ],
   "progress": {
     "code_bytes": 1414572,
