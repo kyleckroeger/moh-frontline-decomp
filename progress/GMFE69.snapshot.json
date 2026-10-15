@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 745036,
+    "matching_code_bytes": 745908,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.66865171938933,
+    "percent": 52.7302958067882,
     "categories": {
-      "reconstructed_game": 523588,
+      "reconstructed_game": 524460,
       "restored_library": 221448
     },
-    "matching_functions": 4306
+    "matching_functions": 4307
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -677,6 +677,7 @@
     "config/GMFE69/ispausegroup.json": "af8a45f0443eda515681a9d6173ff9ef5e6b3ed24242272954724be9461aba18",
     "config/GMFE69/ispauselibrary.json": "efe8397deb8e46b72b0a53da4a895279cc988ca4c06a50b51cf09e11d37ae486",
     "config/GMFE69/jaw_controller.json": "d6a2c1aa65665925c647e12919ea045cb5c0f7dabe78c78139675ed718bbd02d",
+    "config/GMFE69/jaw_motiontype.json": "67698be082c2efbd13794798ca0c988c436816586ce619cd31944dab76d529df",
     "config/GMFE69/k_cos.json": "db8492c041a6d2c074f54a05f37f23f647f9007d1ddfb016ac1b68ef92f560eb",
     "config/GMFE69/k_rem_pio2.json": "98e7c06d536b5d074d8001e65314d859cc90af96052300f3d60796c07912caec",
     "config/GMFE69/k_sin.json": "83303a92dec0945bbc9e8d29698030d3fed1d722b341f4dfd5c163705e01f806",
@@ -817,7 +818,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "a6ed0d6075bba2b0b618407b3ad0bc8763da3f57fbac32da53b23f00a639b47f",
+    "config/GMFE69/project.json": "15b28314ea2f9fa71cc117fe483e50563ac2e81db564cbb9baadb5f89037243f",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2693,6 +2694,7 @@
     "src/game/ispausegroup.cpp": "0c753a0282f658f20f6b2ac5993ba1dbf816d060854fe6d7b1214ce27300b93a",
     "src/game/ispauselibrary.cpp": "401366234b5be8c2c4373684294ab2f4cb1e03911118fb1f984429b39d9b5c3c",
     "src/game/jaw_controller.cpp": "8c1ffb26c6fecbf77d6e014ceb5aa8cea83116d659188b6de96ef98698ea7c8d",
+    "src/game/jaw_motiontype.cpp": "76a73ca68381e64f08dd0d8fcc86f242d9b828f3bb6c1832d116ef8325873c86",
     "src/game/light.cpp": "22f1d023455434ab323fc674ae4ac2ad4a370703fdbadb2411677c4c4a427eab",
     "src/game/light_animmanager.cpp": "2b7a2b9080067e2c9aae6442b240292e62829640df505e38b25c262770de22e4",
     "src/game/light_animmanager_dtor.cpp": "2efd3ac7f402f9405cf423f15b9342ac2676b64494b475a4e415588ba83b5655",
@@ -51091,6 +51093,45 @@
       "discarded_functions": [],
       "object_sha256": "8d22f1ed8e3e8064b10b824c66fa027ccb7e67177e29f3adaf8d57e1de7c3582",
       "linked_sha256": "17941f2de3dc14116733dca7da2f124d04b9802e8d3822f7714b5c77625e80ac"
+    },
+    {
+      "id": "jaw_motiontype",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 872,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "10c4dd712eba7e436f56feaf4b871086d6e9216f6ea31f64daf662b8e7c7f8e0",
+      "linked_sha256": "5ee22dbe46d954537b63f658d1b3bd9d974b99805493f1e8c84797b4cd96867d"
     }
   ],
   "code_map": {
@@ -53731,13 +53772,6 @@
         "file_record": 113,
         "file_name": "jaw_controller.cpp",
         "ranges": [
-          {
-            "address": "0x8009c13c",
-            "size": 872,
-            "kind": "function",
-            "name": "SetMotionType__14CJawControllerF8EJawType",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8009c4a4",
             "size": 516,

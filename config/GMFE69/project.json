@@ -1175,7 +1175,8 @@
     "camera_frustum.json",
     "animplayer_ctor.json",
     "texture_load.json",
-    "fiber_testfiber.json"
+    "fiber_testfiber.json",
+    "jaw_motiontype.json"
   ],
   "progress": {
     "code_bytes": 1414572,
