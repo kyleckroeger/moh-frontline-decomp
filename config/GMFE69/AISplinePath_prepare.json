@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8005041c",
-      "size": 836,
+      "size": 1676,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000aa08",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011b70",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "MakeModifiedNextPoint__22CAISplinePathTraversalFv",
+      "address": "0x80050760",
+      "size": 840,
+      "binding": 1
+    },
+    {
       "name": "PrepareForTraversalForward__22CAISplinePathTraversalFP13CAISplinePathbP15CAIFilterObject",
       "address": "0x8005041c",
       "size": 404,
@@ -72,7 +78,6 @@
   ],
   "externals": {
     "GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3": "0x800516b4",
-    "MakeModifiedNextPoint__22CAISplinePathTraversalFv": "0x80050760",
     "SetupAStarPathWalkForPatrol__9CAIObjectFRC20CAIFilterRealVector3": "0x8004c490"
   },
   "undefined_in_discarded_code": [],
@@ -98,6 +103,42 @@
       "offset": 4,
       "size": 4,
       "address": "0x8034f9b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f9b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f9a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f9ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034f9c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034f9c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f9d0"
     }
   ]
 }

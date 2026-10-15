@@ -8,11 +8,26 @@
 // later in the original file and marked inline here so that it is inlined
 // without being emitted). SetupNextSegmentForward moves on to the first
 // segment whose closest parameter to the position is within 0..1 and expands
-// it there, then makes the modified next point. The traversal and path views follow
+// it there, then makes the modified next point. MakeModifiedNextPoint moves
+// the parameter on by four steps of the segment: within the segment the point
+// is the segment there; past its end the parameter is clamped to 1 and the
+// end point is pushed a quarter unit along the normalised end tangent
+// (ExpandDerivative, marked inline here for the same reason as Expand; the
+// segment's step at +4 is inferred). The traversal and path views follow
 // AISplinePath_finalpoint.cpp and the states' meanings are inferred. The
 // rest of the file is in other units.
+#include <math.h>
+
 class CVector3 {
 public:
+    void Normalize() {
+        float length = sqrtf(x * x + y * y + z * z);
+        if (length != 0.0f) {
+            x *= 1.0f / length;
+            y *= 1.0f / length;
+            z *= 1.0f / length;
+        }
+    }
     void operator+=(const CVector3& o) {
         x += o.x;
         y += o.y;
@@ -35,9 +50,11 @@ class CAIFilterRealVector3;
 class CAISplinePathSegment {
 public:
     void Expand(float, CVector3&);
+    void ExpandDerivative(float, CVector3&);
     float GetClosestParameter(float, const CAIFilterRealVector3&);
 
-    unsigned char unknown00[8];
+    unsigned char unknown00[4];
+    float m_step;
     CVector3 m_coefficients[4];
 };
 
@@ -50,6 +67,15 @@ inline void CAISplinePathSegment::Expand(float t, CVector3& out) {
     out += m_coefficients[2];
     out *= t;
     out += m_coefficients[3];
+}
+
+inline void CAISplinePathSegment::ExpandDerivative(float t, CVector3& out) {
+    out.x = 1.5f * t * m_coefficients[0].x;
+    out.y = 1.5f * t * m_coefficients[0].y;
+    out.z = 1.5f * t * m_coefficients[0].z;
+    out += m_coefficients[1];
+    out *= 2.0f * t;
+    out += m_coefficients[2];
 }
 
 class CAIFilterRealPosition {
@@ -127,4 +153,19 @@ void CAISplinePathTraversal::SetupNextSegmentForward(const CAIFilterRealPosition
     m_t = t;
     m_segment->Expand(t, m_point);
     MakeModifiedNextPoint();
+}
+
+void CAISplinePathTraversal::MakeModifiedNextPoint() {
+    float t = 4.0f * m_segment->m_step + m_t;
+    if (t > 1.0f) {
+        m_t = 1.0f;
+        m_segment->Expand(1.0f, m_point);
+        CVector3 tangent;
+        m_segment->ExpandDerivative(1.0f, tangent);
+        tangent.Normalize();
+        tangent *= 0.25f;
+        m_point += tangent;
+    } else {
+        m_segment->Expand(t, m_point);
+    }
 }
