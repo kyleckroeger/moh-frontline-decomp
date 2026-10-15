@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 662484,
+    "matching_code_bytes": 662940,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.83282293160051,
+    "percent": 46.86505883051552,
     "categories": {
-      "reconstructed_game": 441036,
+      "reconstructed_game": 441492,
       "restored_library": 221448
     },
-    "matching_functions": 3943
+    "matching_functions": 3946
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -687,7 +687,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "97a08ffc126b6f3f674d07133bbf154efbc335a4a0dc2c5c67e596f1cebc41ce",
+    "config/GMFE69/project.json": "aeab5d1c27c76c3312838719e9435dd8922253b567d149b88b0f34bc70420373",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -710,6 +710,7 @@
     "config/GMFE69/pumhandler_umt_unload.json": "f712cd544ac0eba6bdde749d1fdeb2a8da967ce5cdbc12aaf7311f21e2c8c6bb",
     "config/GMFE69/qsort.json": "277ba29abda5c2279b4e2863c6a9b8fbe0b1f4f180473d48b6a194e2e91b7498",
     "config/GMFE69/quaternion.json": "9d29a2414ec644c8f52e7cc67264858a6c0f583413d9ce5847d9629f0861785d",
+    "config/GMFE69/quaternion_matrix.json": "c2c70621bba929a1db6f128dfdebf0c164f22ed36406063ee42c2d082b19f408",
     "config/GMFE69/rand.json": "958d1564ced02e430faca2258c920c5b7f36bd3ba70f168d2cbb54dace181f59",
     "config/GMFE69/rcmp2real.json": "7a6660763df07bcc921df0044bbfbe2c11bf23eb576075092436214c3c81b4d5",
     "config/GMFE69/rcmp_main.json": "34aafc1bb2f388a47a856dd39445c571936efb16efebcbf4d5db613085304bf4",
@@ -2509,6 +2510,7 @@
     "src/game/pumhandler_umt_dtor.cpp": "ea901cf262e05337ba57d9a8f48a588444ca51bfcc40d25c15e88d9c476c657b",
     "src/game/pumhandler_umt_unload.cpp": "30c48060dfe29c8f32db40f611958ee39fc6a7b2b07ed7a170358f209824fdcc",
     "src/game/quaternion.cpp": "fa8f9823686ae44292e048b786be96ff1c8631e9190d543b00864daaea7c2d53",
+    "src/game/quaternion_matrix.cpp": "d91930ccaa441b913747f7a40ee6e4dab1a259e9020ab084defcd0170e26f5ad",
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
     "src/game/rcmp_main_delete.cpp": "73241fde4c1b1f4a0e1c05c312f789ef77dbc1f63a46d98cd54c989924ac15d6",
     "src/game/rcmp_mpc_codec.cpp": "1422ce69fe30701e184529fb65349e3819f04d4e3c91c8460c8e21a64e07eb32",
@@ -44540,6 +44542,45 @@
       "discarded_functions": [],
       "object_sha256": "d92e0c074ae42493660a68881a3e87d9d674c6b701b4d32047813c28c8414ed5",
       "linked_sha256": "7a4524146804382f1e0cead728f30671ade4ba23f0482a26a1e4f7b599c8ad2b"
+    },
+    {
+      "id": "quaternion_matrix",
+      "category": "reconstructed_game",
+      "functions": 3,
+      "code_bytes": 456,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "49023ae08a3a665ebe4a5c1e9eb755c26e8a88a309b532838dfca842ec8e235b",
+      "linked_sha256": "a6c0e766e193ecab6f4f93b8f4edc1e15f4acd93c41768eb52019abd0c10e3ed"
     }
   ],
   "code_map": {
@@ -48334,7 +48375,7 @@
         ]
       },
       {
-        "name": "Unmatched files/quaternion.cpp [inferred file group]",
+        "name": "Unmatched files/quaternion.cpp [symbol evidence]",
         "file_record": 102,
         "file_name": "quaternion.cpp",
         "ranges": [
@@ -48372,27 +48413,6 @@
             "kind": "function",
             "name": "SetFromMatrix__11CQuaternionFRC7CMatrix",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80091c9c",
-            "size": 236,
-            "kind": "function",
-            "name": "GetMatrix__11CQuaternionCFR7CMatrix",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80091d88",
-            "size": 200,
-            "kind": "function",
-            "name": "Normalize__11CQuaternionFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80091e50",
-            "size": 20,
-            "kind": "function",
-            "name": "Set__11CQuaternionFffff",
-            "evidence": "same-class (inferred)"
           }
         ]
       },
