@@ -40,11 +40,23 @@
     {
       "name": ".text",
       "address": "0x8007ea84",
-      "size": 24,
+      "size": 56,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "IsDrawEnabled__22CParticleSystemManagerCFv",
+      "address": "0x8007ea9c",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "IsVisible__22CParticleSystemManagerCFR12CDrawContext",
+      "address": "0x8007eab4",
+      "size": 8,
+      "binding": 1
+    },
     {
       "name": "IsActive__15CParticleSystemCFv",
       "address": "0x8007ea84",
@@ -52,7 +64,9 @@
       "binding": 2
     }
   ],
-  "externals": {},
+  "externals": {
+    "g_config": "0x80196a80"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
