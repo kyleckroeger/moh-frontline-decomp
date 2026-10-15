@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8007c200",
-      "size": 228,
+      "size": 288,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000bff8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012f68",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -74,9 +74,16 @@
       "address": "0x8007c210",
       "size": 212,
       "binding": 1
+    },
+    {
+      "name": "__dt__11CFontDriverFv",
+      "address": "0x8007c2e4",
+      "size": 60,
+      "binding": 1
     }
   ],
   "externals": {
+    "__dl__FPv": "0x8001ca2c",
     "stringPacket": "0x801de580"
   },
   "undefined_in_discarded_code": [],

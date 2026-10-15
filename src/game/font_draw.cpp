@@ -1,7 +1,7 @@
 // A fragment of font.cpp (0x8007c200): CFontDriver::StartDraw, which empties
 // the string packet, and CFontDriver::Draw, which appends one character (its
 // texture rectangle, and its position offset by the character's offsets) to
-// the packet. The file name is this project's; the original record is
+// the packet, then the empty CFontDriver destructor. The file name is this project's; the original record is
 // font.cpp and the functions around these are not reconstructed. The packet
 // and character layouts are inferred views; the file's globals are extern.
 // CFontDriver, the functions at the start of the file: the font driver hooks
@@ -98,6 +98,7 @@ public:
     static void EndDraw(FONT*);
     static void StartDraw(FONT*);
     static void Draw(FONT*, const FONTCHAR*, float, float);
+    ~CFontDriver();
 };
 
 void CFontDriver::DestroyFont(FONT*);
@@ -120,4 +121,5 @@ void CFontDriver::Draw(FONT*, const FONTCHAR* c, float x, float y) {
     stringPacket.count++;
 }
 
-
+CFontDriver::~CFontDriver() {
+}

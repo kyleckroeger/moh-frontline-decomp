@@ -1,9 +1,10 @@
-// A fragment of SearchNode.cpp (0x80056210): the CSearchNode destructor. It
-// unlinks the node from its path node, clears its open flag, link and path
-// node, and returns the node to the free list when deleting. The file name is
+// A fragment of SearchNode.cpp (0x80056210): the CSearchNode destructor and
+// constructor. The destructor unlinks the node from its path node, clears its
+// open flag, link and path node, and returns the node to the free list when
+// deleting; the constructor clears the link and path node. The file name is
 // this project's; the original record is SearchNode.cpp. SearchNode.cpp holds
-// operator new/delete and GetCostValue; Setup between the two parts, the
-// constructor and the pool's static initialiser are not part of this unit.
+// operator new/delete and GetCostValue; Setup between the two parts and the
+// pool's static initialiser are not part of this unit.
 // CSearchNode and CPathNode are named by the mangled symbols; members are
 // inferred from offsets.
 // CSearchNode: A* search nodes from a fixed pool of 4096 with a free list
@@ -42,10 +43,7 @@ public:
 
 class CSearchNode : public CLinkedListElement {
 public:
-    CSearchNode() {
-        next = 0;
-        m_pPathNode = 0;
-    }
+    CSearchNode();
     ~CSearchNode();
     static void* operator new(unsigned long);
     static void operator delete(void*, unsigned long);
@@ -88,7 +86,7 @@ CSearchNode::~CSearchNode() {
     m_pPathNode = 0;
 }
 
-
-
-
-
+CSearchNode::CSearchNode() {
+    next = 0;
+    m_pPathNode = 0;
+}

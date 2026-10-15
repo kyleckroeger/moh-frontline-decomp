@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80056210",
-      "size": 152,
+      "size": 212,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000abf4",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011d74",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,9 +62,16 @@
       "address": "0x80056210",
       "size": 152,
       "binding": 1
+    },
+    {
+      "name": "__ct__11CSearchNodeFv",
+      "address": "0x800562a8",
+      "size": 60,
+      "binding": 1
     }
   ],
   "externals": {
+    "__ct__18CLinkedListElementFv": "0x8005372c",
     "__dt__18CLinkedListElementFv": "0x800536f0",
     "s_rsnAStarSearchNodeFreeList": "0x8034e910"
   },

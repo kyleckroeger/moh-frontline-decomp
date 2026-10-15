@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 655436,
+    "matching_code_bytes": 655556,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.33458035363347,
+    "percent": 46.34306348492689,
     "categories": {
-      "reconstructed_game": 433988,
+      "reconstructed_game": 434108,
       "restored_library": 221448
     },
-    "matching_functions": 3898
+    "matching_functions": 3900
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -177,7 +177,7 @@
     "config/GMFE69/Screen_vblank.json": "6fe843f6af4c9bf529ac95a181974b901b1e783441059fdc954e0620a3a6cd0e",
     "config/GMFE69/SearchNode.json": "2c7114d770c452c5de63f622ad4584807bd0b1ca57c24e32d8c7f24281651762",
     "config/GMFE69/SearchNodeList.json": "94a6f88f4b8062b0b71ee5f431cf4a7f102d07ca517660d3fe098a7fd2a44a2c",
-    "config/GMFE69/SearchNode_tail.json": "82bf47d102a265a3559cd1ad02896cff8eff8e0fddd7370f762c1247835d7a4b",
+    "config/GMFE69/SearchNode_tail.json": "ec4d0f782c02f283a9ffeedb7d67443f58eac8b6a3576cdca378f420d76031ea",
     "config/GMFE69/ShellMenu.json": "8dd6d4ec65f514a1f54b37bc84805970f0bea890598fe1b03be548df82af6f74",
     "config/GMFE69/ShellMenu_audio.json": "1a043c64b33ba21651b30a0ec86b3b0ce178ba7dd7382efa78f2c9bdfbfab85c",
     "config/GMFE69/ShellMenu_audioset.json": "27607fed353c1360321b5725b5513d31bcfca481fc718dfb4841a217b873360c",
@@ -514,7 +514,7 @@
     "config/GMFE69/filesys_ea_del.json": "42ec0436e074b8549cd6d4042c9475e5de4119516b2b2b3e8b06d0f517ce663b",
     "config/GMFE69/flush_cache.json": "aa1c08f24f7fa7ce6bf2cfa32e6ae398b7b93fea2374de2a6120d5e28e6b9578",
     "config/GMFE69/font.json": "56ec5e4085fe4be430a0e0bc9f2870a0bae1430b36449d0f699317f3ab478655",
-    "config/GMFE69/font_draw.json": "5b076cf5e79a45b55f122dfb0500689760f73b90a131276a81a1303bcfe7b4af",
+    "config/GMFE69/font_draw.json": "e1d6e44b196fe1d4eeaf0a5b2a1c061d4372684fe40ea58c8d46c45b783467b2",
     "config/GMFE69/font_driver.json": "6b6cf9d6937c5cd191b23edd80f9b11e5300b4d0dd4fd7ab2b2dde997d2cb36a",
     "config/GMFE69/font_dtor.json": "1e715f04f802f58f34e73eb7642ec5e005026d329b98fdded4a42d0394d02e00",
     "config/GMFE69/font_render.json": "5fc6f85516a9de629cbc62fd74b09edb52a26ddae28fa7cfeacc6814ec2b2304",
@@ -2090,7 +2090,7 @@
     "src/game/Screen_vblank.cpp": "ab1180a24be3a78047287b670035a6960b002c7ca506b78082d206411441ef1e",
     "src/game/SearchNode.cpp": "6b76164fd42a19131dcf90f9fe0ec86b20e0ef3d9c948defd80b5441bde9d333",
     "src/game/SearchNodeList.cpp": "738d75054ffdc5c611f06f3c0f8d330d60226794efc3684079e2280494a4d65c",
-    "src/game/SearchNode_tail.cpp": "ac957dcb51976bf56af734d6ff8433a4bc34a95f066fdc0708034b825032e2e2",
+    "src/game/SearchNode_tail.cpp": "586a117621141a456ec90c49ac7f15b4104b0599d9020fc2182c16bb9131bde9",
     "src/game/ShellMenu.cpp": "e03b478aa25e400ae26b61840f1147b0b0293e518a216ca8e670c39aab756f38",
     "src/game/ShellMenu_audio.cpp": "e6c28700ad3c8dfa57727eeba4291575c2dd67050e85f0d3814bed9881463edb",
     "src/game/ShellMenu_audioset.cpp": "eaed4c52183e4d52249d7f60476c64a6c2bf21a5882d2c66793c2e3957bae9ae",
@@ -2377,7 +2377,7 @@
     "src/game/fiber_visibility.cpp": "fe3137b7bfbdc6c744b78db6ebb7cbabd48b4888ade40afde4bcffd621dd3238",
     "src/game/filesys.cpp": "edc914b77e55cfec7501ffc2150c34cefc432d28c3e9aa1eceea55a4cbe755ad",
     "src/game/font.cpp": "65255c01226641dd00889793fe46dd4a6a31eee9be31b7b6aeaf2ce6c561398a",
-    "src/game/font_draw.cpp": "6824755c9510e8f1d0475d587a33721ecc5a2e74c3ac05b02bc7f50b9dc5e7af",
+    "src/game/font_draw.cpp": "5382fff844b701321c4540955f1a674985d2c3c9b5ec25e2b34c6bc8e1945eb7",
     "src/game/font_driver.cpp": "bf6a37772fdeda1200bca043c621d97e1062969444c5ac825ebc2eeaaf217bb5",
     "src/game/font_dtor.cpp": "8c425fb32946c7c293bddfcd88c7f74918c3f654b7d56ee72173e76edbf215b0",
     "src/game/font_render.cpp": "8b8a8b59a300e5d70d688b53b329040aa3401ee1d6291798754a5237c6fce537",
@@ -23432,8 +23432,8 @@
     {
       "id": "font_draw",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 228,
+      "functions": 3,
+      "code_bytes": 288,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23465,14 +23465,14 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8724b7ef1f5abef6b20531986c36bd0a47a01843f6b8779f82b862313c7b647b",
-      "linked_sha256": "f83badab12401d50637a0f5d8cddcc335f5ceedb56970d29c8126a4370d34021"
+      "object_sha256": "78b64b57db36b4d6c3569331bb800080a3b4daf9b8671a914fe4433ff28c328c",
+      "linked_sha256": "6a2245f872b626f690673ff350476737026c6c0f2576d4ea84f70ee5bfd122ca"
     },
     {
       "id": "SearchNode_tail",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 152,
+      "functions": 2,
+      "code_bytes": 212,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23504,8 +23504,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "37db2d5823a2d71d796e53297a2be61b39c701cee4e7e584f826e174ad333335",
-      "linked_sha256": "c5d9eddca13a421a7ca561e41528c9f99d89bfba8d473df4b455a796200ebb63"
+      "object_sha256": "0f1db8679101f9d5f128ee64ebad854ea38b312c5a720ec158b01e43e1278439",
+      "linked_sha256": "d38cfff02e761ff0a4cec5419910a997a5b2a0f52688ce46c60365645423b7a1"
     },
     {
       "id": "stream_prio",
@@ -45744,13 +45744,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x800562a8",
-            "size": 60,
-            "kind": "function",
-            "name": "__ct__11CSearchNodeFv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x800562e4",
             "size": 248,
             "kind": "function",
@@ -46938,13 +46931,6 @@
             "size": 108,
             "kind": "function",
             "name": "EndDraw__11CFontDriverFP4FONT",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007c2e4",
-            "size": 60,
-            "kind": "function",
-            "name": "__dt__11CFontDriverFv",
             "evidence": "exception-index"
           },
           {
