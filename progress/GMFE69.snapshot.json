@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 692504,
+    "matching_code_bytes": 693040,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.95501961017184,
+    "percent": 48.99291092994913,
     "categories": {
-      "reconstructed_game": 471056,
+      "reconstructed_game": 471592,
       "restored_library": 221448
     },
-    "matching_functions": 4062
+    "matching_functions": 4066
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -703,7 +703,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "51ec566caa5362b4f8f6f7c07ce87652425e02353cd83fba8267b00e1b0d33d8",
+    "config/GMFE69/project.json": "70cfc2eb5272e4fe8ddb2074b1081183ed8ff380dcf5f2b56ad2f3339780f5dd",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -919,6 +919,7 @@
     "config/GMFE69/sprite.json": "7184735a6b0d9437c7e39cf96c2ff645e3cbd318f63b664528f541bb84acf60d",
     "config/GMFE69/sprite_csprite_dtor.json": "0c10b7852a36d907551893f59afe7ccc73e6e1edc1f6274abb92fbfa9ad72784",
     "config/GMFE69/sprite_ctor.json": "903185ec24c01e47f1fef34552cf21132682b855a6813f6c907de4bfc6f6e4ff",
+    "config/GMFE69/sprite_draw.json": "6ea608d3af59909126a94ee79210e72c1ee9670ece262624bad84c52cf579f30",
     "config/GMFE69/sprite_dtor.json": "e1123801c0bacde907695e0daa1816685359b34a975bdce90cdc5631c381cf94",
     "config/GMFE69/sprite_init.json": "0b4f07cffbc6c8d3b6420f2606be8c8ad364a85f63b4cfafcecce122dce00f28",
     "config/GMFE69/srandom.json": "5b76703fc74b3d2999874866b5dc8000d6409377e1795965b9428ee22594ebda",
@@ -2618,6 +2619,7 @@
     "src/game/sprite.cpp": "104b7bb47ff08649eb2e0412884332605376541f78b6b7262f8bf4bf7d9be164",
     "src/game/sprite_csprite_dtor.cpp": "ad89a18f0c521f888cb692de60853565dfdcd733f9f7ea5dae4ee750a74da16a",
     "src/game/sprite_ctor.cpp": "e601286f82a0f86bf7fde513b768589e55e94ded50e9404fb73241edbf1448da",
+    "src/game/sprite_draw.cpp": "5316b7bcdeb4f8460e59a22782b8689632543e1650b0e5f12821547b5c017daf",
     "src/game/sprite_dtor.cpp": "8b2228e3fc8f7af009f687d4211669a300b7279d5d8e2f8bfb58ccfa56771b36",
     "src/game/sprite_init.cpp": "ca86c0e36bcafeb13e8d6dd7329025015df2aee3e685ec1f1e5dd7e3391e7596",
     "src/game/static_obj_anim.cpp": "d24794b382d6aa280fe6207765b3ba430294b394b468b6924915bd3f64d4a4db",
@@ -45606,6 +45608,45 @@
       "discarded_functions": [],
       "object_sha256": "ecfcab16bc1b126fb17b00836a086e67246d5ae885cc65bd1c71aba97951360b",
       "linked_sha256": "215e2294d121c0cc02e243483ee327fbf563bc3574e136a823b13c0143730a00"
+    },
+    {
+      "id": "sprite_draw",
+      "category": "reconstructed_game",
+      "functions": 4,
+      "code_bytes": 536,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "0a3d85f020d168c20278ea615c1b3e87da9e5d73a955a716438a3e0faf63611f",
+      "linked_sha256": "9e80f44cce1d7f206ecc368a20a858e426fab8664ffaef5e7c8574c6e494b15c"
     }
   ],
   "code_map": {
@@ -48593,34 +48634,6 @@
             "kind": "function",
             "name": "Render__7CSpriteFR10CDmaPacketPv",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800823a0",
-            "size": 108,
-            "kind": "function",
-            "name": "DrawPolyNoTex__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008240c",
-            "size": 100,
-            "kind": "function",
-            "name": "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80082470",
-            "size": 116,
-            "kind": "function",
-            "name": "Draw__7CSpriteFff6CColor",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800824e4",
-            "size": 212,
-            "kind": "function",
-            "name": "InitClass__7CSpriteFP11CRenderListP7CScreen",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800827b0",

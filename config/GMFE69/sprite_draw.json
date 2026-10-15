@@ -1,0 +1,148 @@
+{
+  "id": "sprite_draw",
+  "source": "src/game/sprite_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800823a0",
+      "size": 536,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c1fc",
+      "size": 32,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800131b4",
+      "size": 48,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DrawPolyNoTex__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
+      "address": "0x800823a0",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
+      "address": "0x8008240c",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "Draw__7CSpriteFff6CColor",
+      "address": "0x80082470",
+      "size": 116,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__7CSpriteFP11CRenderListP7CScreen",
+      "address": "0x800824e4",
+      "size": 212,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "g_DrawContext": "0x801df794",
+    "g_HeightScale": "0x8034dd60",
+    "g_ScreenXOffset": "0x8034ea68",
+    "g_ScreenYOffset": "0x8034ea6c",
+    "g_SpriteNoTexture": "0x801df774",
+    "g_config": "0x80196a80",
+    "g_pRenderList": "0x8034ea60",
+    "g_pScreen": "0x8034ea64"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_DrawContext",
+    "g_HeightScale",
+    "g_ScreenXOffset",
+    "g_ScreenYOffset",
+    "g_SpriteNoTexture",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_HeightScale",
+    "g_ScreenXOffset",
+    "g_ScreenYOffset",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "original_file": "sprite.cpp",
+  "original_file_index": 4237,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803500a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803500ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803500b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350098"
+    }
+  ]
+}

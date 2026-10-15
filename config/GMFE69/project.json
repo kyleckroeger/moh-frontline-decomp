@@ -1042,7 +1042,8 @@
     "hierobject_playback.json",
     "anim_obj_bullet.json",
     "hierobject_constrain.json",
-    "particlesystem_manager_init.json"
+    "particlesystem_manager_init.json",
+    "sprite_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
