@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 703900,
+    "matching_code_bytes": 704388,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.760634312003916,
+    "percent": 49.79513237926383,
     "categories": {
-      "reconstructed_game": 482452,
+      "reconstructed_game": 482940,
       "restored_library": 221448
     },
-    "matching_functions": 4118
+    "matching_functions": 4119
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -237,6 +237,7 @@
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
     "config/GMFE69/UISUtils_actionptr.json": "d63364b2590334f0178818cbedb25e7eb230c0016de50db056fca6e05e189c81",
     "config/GMFE69/UISUtils_dohint.json": "faa6b748b1aaf73e5e7b786ee3176348335df131563e6d3382de44c96cd4f84e",
+    "config/GMFE69/UISUtils_movescreen.json": "36019e2d512c7729797991db2c48fb935a113c84a5aa90e2d9aa2d1590f5138f",
     "config/GMFE69/UISUtils_siblingenable.json": "ba0e809977f53f5c2ab8a96adb24e9b5895796b496249ebeebf6d98cb3b5fd2a",
     "config/GMFE69/UIStudio.json": "631865cf540d9f5e973cd1116ce4776e70fdc8eb163e94f08d204ec8c0e14abc",
     "config/GMFE69/UIStudio_active.json": "b5c210d842926626541371eeb552e733773c06012c591e4fb420c590215f980b",
@@ -744,7 +745,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "db1607be7754232efb39120a8f88dda9643a665f50457c6dcce4d7c153880027",
+    "config/GMFE69/project.json": "0d38e1a341da290c77bd4c0b08e7e5ad168e8ac061fc3d2e1af989f5fc97c434",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2238,6 +2239,7 @@
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
     "src/game/UISUtils_actionptr.c": "099fdade24c4ba5cec60b980e604b91efe09a7319080535a1f0c889967544add",
     "src/game/UISUtils_dohint.c": "b09914bf3eb297eefa127c5154a523eb6532db1bd5b11ac0422f8d2d30a9b34e",
+    "src/game/UISUtils_movescreen.c": "ff9dcdd0f19822997dcb6794f1cbc74d35fa68bc17c42ca204fc7eff5b99a890",
     "src/game/UISUtils_siblingenable.c": "5ba15b61d2a7e0d4dfd1d8a4b318ad0dd992e5f548fc7cac55489724a565aff0",
     "src/game/UIStudio.c": "0c976854e73e490693e1a4a9a96506de7032024bc92eb6971d7485c49b822474",
     "src/game/UIStudio_active.c": "65f9fb1ea6af8be25aba72e9387ba85f94281ae6d24788b0b04ea987e9be3772",
@@ -47594,6 +47596,47 @@
       "discarded_functions": [],
       "object_sha256": "9d82bd9184e6e3a9db1f65a2b655d6854191c83fa9446e865a7f03f9bc99b345",
       "linked_sha256": "8fe62404c0ea0c6555749aa001d41ebebc62bf027be7dc8bafd7fa231a942c93"
+    },
+    {
+      "id": "UISUtils_movescreen",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 488,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "7d87c0a3ac89b090fa461ff61396e51845bf552eac2d41be2b8ea1c6015c0607",
+      "linked_sha256": "7864f29716aca8f832d9eadfaef6dd79a29fd11525e966e475bc92cfa61a282d"
     }
   ],
   "code_map": {
@@ -50686,13 +50729,6 @@
             "kind": "function",
             "name": "_ParseHints__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlP10UISParam_t",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8008a420",
-            "size": 488,
-            "kind": "function",
-            "name": "UISMoveScreenDrawPosition__FP9UISInfo_tUsUsl",
-            "evidence": "exception-index"
           },
           {
             "address": "0x8008a774",
