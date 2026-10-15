@@ -6,6 +6,17 @@
 // the record layout (three extents, a 3x3 basis, the centre) and the vector
 // view (built from three floats, passed by value as two doubles) are inferred. CCDBVolBox declares its
 // destructor (defined elsewhere) first so its table stays elsewhere.
+//
+// Then the two file-local separate overloads of the box-triangle separating
+// axis test: the distance of the projected interval beyond the box's radius
+// on an axis (from one projection and one more, or the nearer of two more),
+// true when it is beyond CONTACT_EPSILON (a separating axis), otherwise
+// recorded with its axis when it is the smallest penetration so far. The
+// names and parameter types come from the symbols; CONTACT_EPSILON is
+// defined in another file; the parameter meanings, the side classification
+// and min/max helpers and the axis enumeration's members are inferred.
+#include <math.h>
+
 struct VECTOR3VIEW {
     float x;
     float y;
@@ -74,4 +85,66 @@ CCDBVolBox::CCDBVolBox(const CDBBox& box) {
     SetWidth(box.width);
     SetDepth(box.depth);
     SetHeight(box.height);
+}
+
+extern const float CONTACT_EPSILON;
+
+/* Inferred: only the name is known. */
+enum EBoxTriSeperatingAxis { kAxisNone };
+
+/* Inferred: which side of the contact band a distance lies on. */
+static inline int Classify(float d, float eps) {
+    if (d > eps)
+        return 1;
+    if (d < -eps)
+        return 3;
+    return 2;
+}
+
+/* Inferred: the smaller and larger of two values, by reference. */
+template <class T> inline const T& Min(const T& a, const T& b) { return a < b ? a : b; }
+template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
+
+static bool separate(float r, float p0, float p1, EBoxTriSeperatingAxis axis, float& best, EBoxTriSeperatingAxis& bestAxis) {
+    float d;
+    if (p0 >= 0.0f) {
+        if (p1 > 0.0f)
+            p1 = 0.0f;
+        d = p0 + p1 - r;
+    } else {
+        if (p1 < 0.0f)
+            p1 = 0.0f;
+        d = -(p0 + p1) - r;
+    }
+    if (Classify(d, CONTACT_EPSILON) == 1)
+        return true;
+    if ((float)fabs(d) < (float)fabs(best)) {
+        best = d;
+        bestAxis = axis;
+    }
+    return false;
+}
+
+static bool separate(float r, float p0, float p1, float p2, EBoxTriSeperatingAxis axis, float& best, EBoxTriSeperatingAxis& bestAxis) {
+    float d;
+    if (p0 >= 0.0f) {
+        float m = Min(p1, p2);
+        if (m > 0.0f)
+            d = p0 - r;
+        else
+            d = p0 + m - r;
+    } else {
+        float m = Max(p1, p2);
+        if (m < 0.0f)
+            d = -p0 - r;
+        else
+            d = -(p0 + m) - r;
+    }
+    if (Classify(d, CONTACT_EPSILON) == 1)
+        return true;
+    if ((float)fabs(d) < (float)fabs(best)) {
+        best = d;
+        bestAxis = axis;
+    }
+    return false;
 }

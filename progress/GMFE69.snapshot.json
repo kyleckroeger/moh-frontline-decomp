@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 743100,
+    "matching_code_bytes": 743536,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.5317905345221,
+    "percent": 52.56261257822154,
     "categories": {
-      "reconstructed_game": 521652,
+      "reconstructed_game": 522088,
       "restored_library": 221448
     },
-    "matching_functions": 4295
+    "matching_functions": 4297
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -500,7 +500,7 @@
     "config/GMFE69/cdbgeom_triangle_ctor.json": "3e0bc085bb313200e034eadfa0736bc4c08b6dfb90676400b1887f08fe437ffe",
     "config/GMFE69/cdbgeom_vector.json": "3683639f0963802e8426cafbec7ae354be6f6ca56cc86ac51d69dd4614fb97c1",
     "config/GMFE69/cdbgeom_volbox.json": "c7f125bacd8ac480e5550e4bfade61f562ff85f608292e2f3059692d83eedd91",
-    "config/GMFE69/cdbgeom_volbox_ctor.json": "89462ee5bbd375529dc5c191903585268febd668d64119d70449acf4cde37215",
+    "config/GMFE69/cdbgeom_volbox_ctor.json": "fee7f1a06c5b35b2623c6357986c62c633c0506fa316f9ca94d5aaf2d9cd0eb7",
     "config/GMFE69/cdbobject.json": "05d0a5d951c8fd3d451e360560441b26335e47a75eac59645e9848879f9b01b8",
     "config/GMFE69/cdbobject_csg.json": "61e61d8462435b658a6c4d384f13c8e9b07feb190f0624670a746ad9dd8f9d8d",
     "config/GMFE69/cdbobject_ctor.json": "17c5de33bddcfe6b76fe4b222f9f7e606514c39ed21666bf7556f888b84b5f95",
@@ -2567,7 +2567,7 @@
     "src/game/cdbgeom_triangle_ctor.cpp": "18e8165e2a434a6e6d7f2f4a16fbbaa8425bbd0164ca944aad5e8252ecb75483",
     "src/game/cdbgeom_vector.cpp": "e99a4a3d5e422a4abda51e36a94370d6eeb08199dad0b8d43dffa47bf7f1912b",
     "src/game/cdbgeom_volbox.cpp": "0ec9357d4cf5361b82e2d159a7712cb214f710a9284710d2d103c8b9d977ac18",
-    "src/game/cdbgeom_volbox_ctor.cpp": "0a28b3ef3aff644e65da3d8cb988e898a365356ad37f7be649f25ba46d623c8d",
+    "src/game/cdbgeom_volbox_ctor.cpp": "a2c1110e81d58e0e34d4865174154d78805f31484a1e30bd3e57dad3323b8f81",
     "src/game/cdbobject.cpp": "8d9ba3051b730eaceb1df207075b6d193ad9ee06b403ef50da260ff8821c0e51",
     "src/game/cdbobject_csg.cpp": "fd41a1fa38e7b0497972a6d63d4a19b01277cc530e94f59040c7b011b6f2353e",
     "src/game/cdbobject_ctor.cpp": "4ef3d8ae7c6a59de2b8a6a2e8ecaf0bfa5d2495899a28cb4a7381db951fa91f0",
@@ -40369,8 +40369,8 @@
     {
       "id": "cdbgeom_volbox_ctor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 320,
+      "functions": 3,
+      "code_bytes": 756,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -40402,8 +40402,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "98d50b95efdb067510a263d1f911f1166e8973b3c7265c452726e47ea2895b23",
-      "linked_sha256": "68eec936ea0706dc82bb5fd2fb9eaa7ec2397f5dbf70f5f4151b73586890b24b"
+      "object_sha256": "fb46b1c2900b188ff0819cf33ad20aad6a202ce3ba1ef8bbdf0226997a774477",
+      "linked_sha256": "cf6b2b9141a39b73e6df2d715efd7d1c6109d580c9ab4393455af6559ea2d139"
     },
     {
       "id": "particlesystem_register",
@@ -52620,20 +52620,6 @@
             "kind": "function",
             "name": "TestCollision__10CCDBVolBoxCFRC10CVolSphereR10CCollisionb",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8006f878",
-            "size": 168,
-            "kind": "function",
-            "name": "separate__Ffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperatingAxis",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8006f920",
-            "size": 268,
-            "kind": "function",
-            "name": "separate__Fffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperatingAxis",
-            "evidence": "local-file-symbol"
           }
         ]
       },

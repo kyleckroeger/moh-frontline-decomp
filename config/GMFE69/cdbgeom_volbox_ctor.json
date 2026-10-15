@@ -40,23 +40,35 @@
     {
       "name": ".text",
       "address": "0x8006f738",
-      "size": 320,
+      "size": 756,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b690",
-      "size": 28,
+      "size": 36,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800128c0",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "separate__Fffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperatingAxis",
+      "address": "0x8006f920",
+      "size": 268,
+      "binding": 0
+    },
+    {
+      "name": "separate__Ffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperatingAxis",
+      "address": "0x8006f878",
+      "size": 168,
+      "binding": 0
+    },
     {
       "name": "__ct__10CCDBVolBoxFRC6CDBBox",
       "address": "0x8006f738",
@@ -65,6 +77,7 @@
     }
   ],
   "externals": {
+    "CONTACT_EPSILON": "0x80350ba8",
     "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
     "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
     "SetDepth__7CVolBoxFf": "0x800c5258",
@@ -80,7 +93,20 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "cdbgeom.cpp",
-  "original_file_index": 3230
+  "original_file_index": 3230,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fd68"
+    }
+  ]
 }
