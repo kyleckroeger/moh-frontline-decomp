@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004c490",
-      "size": 656,
+      "address": "0x8004c218",
+      "size": 1288,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a850",
-      "size": 8,
+      "address": "0x8000a848",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011984",
-      "size": 12,
+      "address": "0x80011978",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "StartAStarPathWalk__9CAIObjectFv",
+      "address": "0x8004c218",
+      "size": 632,
+      "binding": 1
+    },
     {
       "name": "SetupAStarPathWalkForPatrol__9CAIObjectFRC20CAIFilterRealVector3",
       "address": "0x8004c490",
