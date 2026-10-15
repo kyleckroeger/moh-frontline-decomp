@@ -1036,7 +1036,8 @@
     "hierobject_update.json",
     "static_obj_attempt.json",
     "static_obj_anim.json",
-    "anim_obj_draw.json"
+    "anim_obj_draw.json",
+    "anim_obj_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,
