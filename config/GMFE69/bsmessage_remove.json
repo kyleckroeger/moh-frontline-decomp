@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x80039eb0",
-      "size": 96,
+      "size": 780,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a384",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800112f4",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,9 +62,19 @@
       "address": "0x80039eb0",
       "size": 96,
       "binding": 1
+    },
+    {
+      "name": "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv",
+      "address": "0x80039f10",
+      "size": 684,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSMessageIsGroupCategoryMember__FP20TriggerObject_structP20TriggerObject_structUi": "0x80039b84",
+    "g_MessageQueue": "0x80198098",
+    "g_MessageQueueHead": "0x8034e824",
+    "g_MessageQueueTail": "0x8034e828",
     "g_MessageRegistrationArray": "0x8034e818",
     "g_MessageRegistrationFreeListHead": "0x8034e820"
   },
@@ -60,11 +82,16 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "g_MessageQueue",
+    "g_MessageQueueHead",
+    "g_MessageQueueTail",
     "g_MessageRegistrationArray",
     "g_MessageRegistrationFreeListHead"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_MessageQueueHead",
+    "g_MessageQueueTail",
     "g_MessageRegistrationArray",
     "g_MessageRegistrationFreeListHead"
   ],
