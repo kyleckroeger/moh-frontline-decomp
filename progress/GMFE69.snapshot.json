@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 656752,
+    "matching_code_bytes": 656976,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.427612026818004,
+    "percent": 46.443447205232395,
     "categories": {
-      "reconstructed_game": 435304,
+      "reconstructed_game": 435528,
       "restored_library": 221448
     },
-    "matching_functions": 3910
+    "matching_functions": 3912
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -582,6 +582,7 @@
     "config/GMFE69/loadelf.json": "3e6c069028434cecfead5071921a89f51ef2e6d1d0370f69f5ec01db854a6f82",
     "config/GMFE69/locatbig.json": "951de0b6c115be49b7755a129307e91c30deb6c630ba9c49821cf71f0db076f0",
     "config/GMFE69/locatbig_locate.json": "cd4a02c36b783ef772c8e4b35aba23d1c214f28ebc12cd85212abb0eb86b080c",
+    "config/GMFE69/location_collision_map.json": "56f63dc5668ddf9b0658bfaf3e5366a80375878676c961af58d12c3d6fa4896c",
     "config/GMFE69/main_TRK.json": "53a7c3f8fdc516d26210c5002897d55d0bb651015e4e46852c26248d117ade9b",
     "config/GMFE69/mainloop.json": "2994436609fef577d03fa3220d0c44d5933025297dcfae7a7880dded142e765a",
     "config/GMFE69/mainloop_game.json": "a6b94a41d3040d709bae4325a7985c520182530cf40ccd6f4f7a07b741606910",
@@ -680,7 +681,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f4acf5df9ff802603737a3e716120a7b3cbac106805e471c9ebabbe28a20093c",
+    "config/GMFE69/project.json": "8dfa178f4a1c25965b51f825e106a6a531d4bbc48733d715129707824fb66c24",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2421,6 +2422,7 @@
     "src/game/lightvolman_volumes.cpp": "ca1de68080816c505892075c8531e52e45e8754d51d7ee36fed81f6915c88496",
     "src/game/line.cpp": "f05fc7e4c6eb1fd503d92bae6f4efc5139d79ca0ce1b9a8f4dda4f472de8b940",
     "src/game/loadelf.cpp": "9decbe9395499ba51bd97defcfb741e00b906e9de4229451b9876c4eef8f1c2f",
+    "src/game/location_collision_map.cpp": "e79a7166703d849c340e4fd3d8effaea74d27c7a6876fa33fc05266a0104f049",
     "src/game/mainloop.cpp": "737d1965982728d6b7eaa43a46e3a6b9ce55122ca931a402690524e1af5cf172",
     "src/game/matrix.cpp": "f70a0142eeb28c529bf11a33e99b3c5fd0ea55e1cf068f038b9228c29f9659d5",
     "src/game/matrix_endian.cpp": "e342534dedf41a3cc8e97898b3e66ada0e476de40351f51bef798d27a64a5e46",
@@ -44089,6 +44091,45 @@
       "discarded_functions": [],
       "object_sha256": "bd6c0bc1fc9913457d682243f0eda95bc66421357aa6975732d456891e83dcbc",
       "linked_sha256": "64ebcbdc2b42b22464f7b45ac4dd2e98261b41964117e2fc1f944c6b569b3c0b"
+    },
+    {
+      "id": "location_collision_map",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 224,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "f1df95af0ba792797f475823ddd3aa63ec87027c1e2a01cd0dda0fc89c1b7b87",
+      "linked_sha256": "e288c770c8fc0f8575b74f3f27ed8a05216c82930db7dc2f95e32b9fb0f91983"
     }
   ],
   "code_map": {
@@ -46737,24 +46778,10 @@
         ]
       },
       {
-        "name": "Unmatched files/location_collision.cpp [symbol evidence]",
+        "name": "Unmatched files/location_collision.cpp [local symbols only]",
         "file_record": 63,
         "file_name": "location_collision.cpp",
         "ranges": [
-          {
-            "address": "0x80072ea0",
-            "size": 220,
-            "kind": "function",
-            "name": "__ct__24CObjLocationCollisionMapFRC25CObjLocationCollisionData",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80072f7c",
-            "size": 4,
-            "kind": "function",
-            "name": "__ct__Q224CObjLocationCollisionMap12LocationInfoFv",
-            "evidence": "between-same-file"
-          },
           {
             "address": "0x80072f80",
             "size": 2880,
