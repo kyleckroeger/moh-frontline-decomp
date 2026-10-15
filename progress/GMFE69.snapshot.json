@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 654468,
+    "matching_code_bytes": 655436,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.266149761199856,
+    "percent": 46.33458035363347,
     "categories": {
-      "reconstructed_game": 433020,
+      "reconstructed_game": 433988,
       "restored_library": 221448
     },
-    "matching_functions": 3891
+    "matching_functions": 3898
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -420,7 +420,9 @@
     "config/GMFE69/cdbobject_offsetptr.json": "0d67bbd2cab2036cd652831eb2cba088e30e569df1f5f590bd8e026e668b60ee",
     "config/GMFE69/cdbobject_trigroups.json": "ec60037e9618ecdf748229cab7146cd3e9602771a162601c8783a706cf69dd37",
     "config/GMFE69/coda.json": "ed79629f16e36603a2a74fe3bfd2db4c7043efb597de702316a222bcbb355440",
+    "config/GMFE69/collision_contacts.json": "123f0677f403073e06a75a03442b0eeafa7bb5be803bd67c9c99463d037bad0d",
     "config/GMFE69/collision_factory_dtor.json": "9f70e8c2c41be54390dc78252d7665e0bec56a04de62263ca730981217c1191c",
+    "config/GMFE69/collision_head.json": "043ce75e51d8be5b1a656db62cc8172f9165e93bd10b66e2b5c06a9861892916",
     "config/GMFE69/collisionvolume.json": "4b42015c953c1335d95d5edae0ec810f53e76935e2b6b0e446fd20b039dbc795",
     "config/GMFE69/collisionvolume_ctor.json": "74a3ffe0b9e4cb4a528ab49d378a9927cb04979868253a451f08228a030492b3",
     "config/GMFE69/collisionvolume_rows.json": "0f8077a02165836278ca1deb17b647eb0462e2710072860d7fad4b6d814b354d",
@@ -675,7 +677,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "833d10365916e699e2408a5cc3776777ce7a6e1c82b1d607bbed6a9d3b2cf2af",
+    "config/GMFE69/project.json": "97dfb20031166f6857e6118980872eaeb3350d5e8e4d280d2f139932ba0178b0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2312,7 +2314,9 @@
     "src/game/cdbobject_line.cpp": "9a1aca01d57b33016c9bee73e665ee19bac161dca1e16b28ce4a1f094c76c3f1",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
     "src/game/cdbobject_trigroups.cpp": "2e29ea03b9abd26f9516a3b7a0f3d2d8787ccea9d1791c946c0e7228c6cc7ac2",
+    "src/game/collision_contacts.cpp": "0b7f43b8e7fe78f4956a2ad2c03d8b1c8396aaf73322bf89244a9b286b1278fb",
     "src/game/collision_factory_dtor.cpp": "5fec50373bc2d14d29bc6b047fc0b5810afac67afbe129e7a18a276360498897",
+    "src/game/collision_head.cpp": "bae785796e0663872c508e54a8352bb756ee55b8c6af317fff2ceb8898ffb29d",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
     "src/game/collisionvolume_ctor.cpp": "0c3d7d24cf70b216ef8f6f78f03cf55e040c5c6e26208dd4bbfbb4790dcde5d6",
     "src/game/collisionvolume_rows.cpp": "99bf2752de600fe57337217065052826b62f776cd7fb728d5dcddead6ed52cb0",
@@ -43884,6 +43888,84 @@
       "discarded_functions": [],
       "object_sha256": "fe2fbb39b3d1f35aa3fe948ec054c2132db84aa0c74da57275e087fc94d127e8",
       "linked_sha256": "49fa3900f17f658384a96bd13ba08768035b190ede23c63dcdc61ad96443dc36"
+    },
+    {
+      "id": "collision_head",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 72,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e6e892741b8dccd20334a30f72376eec613dea7ccd93b4b33d4ff5d807bcdc8d",
+      "linked_sha256": "b9c8ec4c636010de917ee1234dcde3476f536f3727c8e19ff0d54271df221aa2"
+    },
+    {
+      "id": "collision_contacts",
+      "category": "reconstructed_game",
+      "functions": 6,
+      "code_bytes": 896,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "25209bbdfef6e5dd6c7afe7d57cc1d13e270284b8bd8a3533495a90886d076fe",
+      "linked_sha256": "c39c3664cac090336a9a4b3c54665119d6fcadcc7f013bcb4de17f231178d815"
     }
   ],
   "code_map": {
@@ -49559,60 +49641,11 @@
         "file_name": "collision.cpp",
         "ranges": [
           {
-            "address": "0x800c74c8",
-            "size": 72,
-            "kind": "function",
-            "name": "ClearContacts__10CCollisionFv",
-            "evidence": "private-reference"
-          },
-          {
             "address": "0x800c7510",
             "size": 1204,
             "kind": "function",
             "name": "Test__10CCollisionFRf",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800c79c4",
-            "size": 20,
-            "kind": "function",
-            "name": "SwapOrder__10CCollisionFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c79d8",
-            "size": 128,
-            "kind": "function",
-            "name": "AddContact__10CCollisionFRC12SClsnContact",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c7a58",
-            "size": 296,
-            "kind": "function",
-            "name": "__as__10CCollisionFRC10CCollision",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c7b80",
-            "size": 132,
-            "kind": "function",
-            "name": "__dt__10CCollisionFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800c7c04",
-            "size": 240,
-            "kind": "function",
-            "name": "__ct__10CCollisionFRC10CCollision",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c7cf4",
-            "size": 80,
-            "kind": "function",
-            "name": "__ct__10CCollisionFv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800c7d44",

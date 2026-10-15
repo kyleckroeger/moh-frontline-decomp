@@ -1000,7 +1000,9 @@
     "propdat_endian_header.json",
     "AnimObjFactory_ctor.json",
     "AnimObjFactory_head.json",
-    "anim_obj_initclass.json"
+    "anim_obj_initclass.json",
+    "collision_head.json",
+    "collision_contacts.json"
   ],
   "progress": {
     "code_bytes": 1414572,
