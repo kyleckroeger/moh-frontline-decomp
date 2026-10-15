@@ -1057,7 +1057,12 @@
     "ConfigGC_defaults.json",
     "AIObject_lineofsight.json",
     "AISplinePath_traversal_dtor.json",
-    "AISplinePath_dtor.json"
+    "AISplinePath_dtor.json",
+    "UIStudio_load.json",
+    "debug_prof_register.json",
+    "AISplinePath_astar.json",
+    "AIObject_walkastar.json",
+    "sound_animtriggered.json"
   ],
   "progress": {
     "code_bytes": 1414572,

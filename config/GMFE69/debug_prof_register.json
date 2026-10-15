@@ -1,0 +1,80 @@
+{
+  "id": "debug_prof_register",
+  "source": "src/game/debug_prof_register.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f3b74",
+      "size": 120,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f760",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800163d0",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DebugProfTimerRegister__FiPci",
+      "address": "0x800f3b74",
+      "size": 120,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DebugProfTimerVerifyNew__FiPci": "0x800f394c",
+    "g_pDebugProfTimers": "0x803118dc",
+    "strcpy": "0x80140040"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "debug_prof.cpp",
+  "original_file_index": 9478
+}
