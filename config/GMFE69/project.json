@@ -1045,7 +1045,12 @@
     "particlesystem_manager_init.json",
     "sprite_draw.json",
     "pumhandler_prompt.json",
-    "pumhandler_subtitles.json"
+    "pumhandler_subtitles.json",
+    "animchan_init.json",
+    "bsevents_ref.json",
+    "bsmessage_remove.json",
+    "world_object_explosion.json",
+    "animmorph_weight.json"
   ],
   "progress": {
     "code_bytes": 1414572,
