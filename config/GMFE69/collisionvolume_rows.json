@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8009806c",
-      "size": 404,
+      "address": "0x80097ea0",
+      "size": 864,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cb44",
-      "size": 48,
+      "address": "0x8000cb3c",
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013c28",
-      "size": 72,
+      "address": "0x80013c1c",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "HandleBulletCollision__16CCollisionVolumeFP7CBulletRC10CCollision",
+      "address": "0x80097ea0",
+      "size": 460,
+      "binding": 1
+    },
     {
       "name": "GetUpward__16CCollisionVolumeCFR8CVector3",
       "address": "0x80098144",
@@ -107,6 +113,8 @@
     }
   ],
   "externals": {
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "__as__7CMatrixFRC7CMatrix": "0x80090b34"
   },
   "undefined_in_discarded_code": [],
@@ -116,5 +124,28 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "collisionvolume.cpp",
-  "original_file_index": 5862
+  "original_file_index": 5862,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350468"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035046c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350470"
+    }
+  ]
 }
