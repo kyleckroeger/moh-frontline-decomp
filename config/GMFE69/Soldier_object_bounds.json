@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ac310",
-      "size": 1056,
+      "size": 1748,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d288",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800143a8",
-      "size": 60,
+      "size": 72,
       "type": 1
     }
   ],
@@ -98,24 +98,39 @@
       "address": "0x800ac3c0",
       "size": 104,
       "binding": 1
+    },
+    {
+      "name": "DrawMuzzleFlash__14CSoldierObjectFR12CDrawContextP7CWeaponb",
+      "address": "0x800ac730",
+      "size": 692,
+      "binding": 1
     }
   ],
   "externals": {
     "AttemptUpdate__11CAnimObjectFf": "0x80094424",
     "BeginUpdate__11CAnimObjectFf": "0x800947b0",
     "CommitUpdate__11CAnimObjectFv": "0x80094358",
+    "GetMuzzleFlashStatus__7CWeaponFv": "0x800d4f60",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "PreUpdate__16CAISoldierDoodadFv": "0x800595dc",
+    "RotateY__7CMatrixFf": "0x800902b0",
     "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
     "Update__16CAISoldierDoodadFf": "0x80059570",
-    "Update__7CWeaponFfb": "0x800d5914"
+    "Update__7CWeaponFfb": "0x800d5914",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "Soldier_object.cpp",
   "original_file_index": 6587,
   "pooled_sections": [
@@ -133,6 +148,12 @@
       "offset": 4,
       "size": 4,
       "address": "0x803507b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350830"
     }
   ]
 }
