@@ -1074,7 +1074,9 @@
     "UISUtils_actionptr.json",
     "AIObject_fovcorpse.json",
     "objcreate_swap.json",
-    "AIObject_storecover.json"
+    "AIObject_storecover.json",
+    "AIFilter_runaway.json",
+    "AIObject_visionseek.json"
   ],
   "progress": {
     "code_bytes": 1414572,

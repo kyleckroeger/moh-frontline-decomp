@@ -19,15 +19,6 @@ long long MathFunRandomI64(long long, long long);
 
 class CAIFilterRealPosition {
 public:
-    CAIFilterRealPosition() {}
-    CAIFilterRealPosition(const CAIFilterRealPosition& o) : x(o.x), y(o.y), z(o.z) {}
-    CAIFilterRealPosition& operator=(const CAIFilterRealPosition& o) {
-        x = o.x;
-        y = o.y;
-        z = o.z;
-        return *this;
-    }
-
     float x;
     float y;
     float z;
