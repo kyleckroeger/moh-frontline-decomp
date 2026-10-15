@@ -1,0 +1,130 @@
+// A fragment of AISplinePath.cpp (0x8005041c):
+// CAISplinePathTraversal::PrepareForTraversalForward starts a traversal at
+// the path's first segment: the current point is the segment expanded at
+// t = 0 and, for a patrol, the AI object (+8 of the filter object) is asked
+// to walk an A* path to it first (state 2) unless it cannot (state 1, as
+// without a patrol). The classes and functions are named by the symbols; the
+// segment view and Expand's body follow AISplinePath_segment.cpp (Expand is
+// later in the original file and marked inline here so that it is inlined
+// without being emitted). SetupNextSegmentForward moves on to the first
+// segment whose closest parameter to the position is within 0..1 and expands
+// it there, then makes the modified next point. The traversal and path views follow
+// AISplinePath_finalpoint.cpp and the states' meanings are inferred. The
+// rest of the file is in other units.
+class CVector3 {
+public:
+    void operator+=(const CVector3& o) {
+        x += o.x;
+        y += o.y;
+        z += o.z;
+    }
+    void operator*=(float s) {
+        x *= s;
+        y *= s;
+        z *= s;
+    }
+
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
+class CAIFilterRealVector3;
+
+class CAISplinePathSegment {
+public:
+    void Expand(float, CVector3&);
+    float GetClosestParameter(float, const CAIFilterRealVector3&);
+
+    unsigned char unknown00[8];
+    CVector3 m_coefficients[4];
+};
+
+inline void CAISplinePathSegment::Expand(float t, CVector3& out) {
+    out.x = t * m_coefficients[0].x;
+    out.y = t * m_coefficients[0].y;
+    out.z = t * m_coefficients[0].z;
+    out += m_coefficients[1];
+    out *= t;
+    out += m_coefficients[2];
+    out *= t;
+    out += m_coefficients[3];
+}
+
+class CAIFilterRealPosition {
+public:
+    float x;
+    float y;
+    float z;
+};
+
+class CAIFilterRealVector3 {
+public:
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
+class CAIObject {
+public:
+    bool SetupAStarPathWalkForPatrol(const CAIFilterRealVector3&);
+};
+
+/* inferred: the filter object's AI object at +8 */
+class CAIFilterObject {
+public:
+    unsigned char unknown00[8];
+    CAIObject* m_object;
+};
+
+/* inferred: the path's segments */
+class CAISplinePath {
+public:
+    CAISplinePathSegment* m_segments;
+};
+
+class CAISplinePathTraversal {
+public:
+    void PrepareForTraversalForward(CAISplinePath*, bool, CAIFilterObject*);
+    void SetupNextSegmentForward(const CAIFilterRealPosition&);
+    void MakeModifiedNextPoint();
+
+    int m_state;
+    float m_t;
+    float m_value08;
+    int m_index;
+    CAISplinePath* m_path;
+    CAISplinePathSegment* m_segment;
+    CVector3 m_point;
+};
+
+void CAISplinePathTraversal::PrepareForTraversalForward(CAISplinePath* path, bool patrol, CAIFilterObject* filter) {
+    m_path = path;
+    m_index = 0;
+    m_segment = &path->m_segments[m_index];
+    m_t = 0.0f;
+    m_segment->Expand(0.0f, m_point);
+    if (patrol) {
+        if (filter->m_object->SetupAStarPathWalkForPatrol((CAIFilterRealVector3&)m_point))
+            m_state = 2;
+        else
+            m_state = 1;
+    } else {
+        m_state = 1;
+    }
+    m_value08 = 0.0f;
+}
+
+void CAISplinePathTraversal::SetupNextSegmentForward(const CAIFilterRealPosition& position) {
+    float t = m_segment->GetClosestParameter(0.0f, (const CAIFilterRealVector3&)position);
+    while (t < 0.0f || t > 1.0f) {
+        m_index++;
+        m_segment++;
+        t = m_segment->GetClosestParameter(0.0f, (const CAIFilterRealVector3&)position);
+    }
+    m_t = t;
+    m_segment->Expand(t, m_point);
+    MakeModifiedNextPoint();
+}
