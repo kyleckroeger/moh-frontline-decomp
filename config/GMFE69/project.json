@@ -1104,7 +1104,9 @@
     "ShellMenu_starstatus.json",
     "AIObject_visionsetup.json",
     "AIObject_patrolwalk.json",
-    "AIObject_setcover.json"
+    "AIObject_setcover.json",
+    "Pause_reset.json",
+    "input_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
