@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8008bc5c",
-      "size": 116,
+      "size": 120,
       "type": 1
     },
     {
@@ -67,6 +67,12 @@
       "name": "LoadShellBigFile__Fv",
       "address": "0x8008bc90",
       "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "DummyPluginProcessFnc__FPvUlUlP10UISParam_tP10UISParam_t",
+      "address": "0x8008bcd0",
+      "size": 4,
       "binding": 1
     }
   ],

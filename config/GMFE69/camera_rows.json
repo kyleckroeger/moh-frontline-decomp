@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80079e7c",
-      "size": 1720,
+      "address": "0x80079e6c",
+      "size": 1736,
       "type": 1
     },
     {
@@ -190,6 +190,12 @@
       "binding": 1
     },
     {
+      "name": "IsPointVisible__7CCameraCF8CVector3R12CDrawContext",
+      "address": "0x80079e6c",
+      "size": 16,
+      "binding": 1
+    },
+    {
       "name": "SetPerspective__7CCameraFff",
       "address": "0x80079e7c",
       "size": 108,
@@ -261,12 +267,5 @@
       "size": 4,
       "address": "0x8034fee8"
     }
-  ],
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "paths": [
-      "src/camera/projection.cpp"
-    ],
-    "note": "SetPerspective's structure (tangents of the half angles, then the projection flags) follows Rising Sun's reconstruction of EA's later revision"
-  }
+  ]
 }

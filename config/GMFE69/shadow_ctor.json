@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800816d8",
-      "size": 436,
+      "size": 440,
       "type": 1
     },
     {
@@ -79,6 +79,12 @@
       "name": "__ct__16CCharacterShadowFv",
       "address": "0x8008173c",
       "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__16CCharacterShadowFv",
+      "address": "0x8008188c",
+      "size": 4,
       "binding": 1
     }
   ],

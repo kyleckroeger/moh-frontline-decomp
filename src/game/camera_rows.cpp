@@ -1,4 +1,6 @@
-// A fragment of camera.cpp (0x80079e7c): CCamera::SetPerspective (the
+// A fragment of camera.cpp (0x80079e6c): CCamera::IsPointVisible (true while
+// the draw context's word at +256 is zero; the view is inferred), then
+// CCamera::SetPerspective (the
 // projection's half extents from the tangents of the half angles, through the
 // double tan; marks the projection stale, clears +0x143 and selects the
 // perspective projection), then CCamera's transform wrappers, from
@@ -61,7 +63,12 @@ public:
     CVector3 position;
 };
 
-class CDrawContext;
+/* Inferred: the draw context's word at +256. */
+class CDrawContext {
+public:
+    unsigned char unknown000[256];
+    int m_value100;
+};
 
 /* Inferred: a plane, its normal first (32 bytes). */
 class CPlane {
@@ -110,6 +117,7 @@ extern bool g_bInMultiplayerMode;
 
 class CCamera {
 public:
+    bool IsPointVisible(CVector3, CDrawContext&) const;
     void SetPerspective(float, float);
     bool IsVisible(CDrawContext&) const;
     bool IsDrawEnabled() const;
@@ -163,6 +171,10 @@ public:
     unsigned char unknown144[12];
     CPlane m_planes[10];
 };
+
+bool CCamera::IsPointVisible(CVector3, CDrawContext& context) const {
+    return context.m_value100 == 0;
+}
 
 void CCamera::SetPerspective(float horizontal, float vertical) {
     m_width = tan(horizontal);

@@ -1128,7 +1128,11 @@
     "static_obj_scale.json",
     "dmmorph_initobject.json",
     "sfrsf_init.json",
-    "Moh2_gametime.json"
+    "Moh2_gametime.json",
+    "Screen_scale.json",
+    "animmorph_as.json",
+    "particlesystem_texture.json",
+    "dmcluster_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,

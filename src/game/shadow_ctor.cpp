@@ -9,8 +9,8 @@
 // file-local in the original and declared extern here; g_texture's size is
 // its symbol's); the members, the resource views and the meaning of the
 // first values are inferred. CCharacterShadow has no base class (its RTTI
-// record lists none); the vtable follows __vt__16CCharacterShadow. The rest
-// of the file is in other units.
+// record lists none); the vtable follows __vt__16CCharacterShadow. InitClass,
+// after them, is empty. The rest of the file is in other units.
 class CDrawContext;
 struct ShapeFile;
 struct LevelFileContentsStruct_;
@@ -88,6 +88,7 @@ class CCharacterShadow {
 public:
     CCharacterShadow();
     virtual ~CCharacterShadow();
+    static void InitClass();
     virtual void Draw(CDrawContext&);
     virtual bool IsDrawEnabled() const { return m_drawEnabled; }
 
@@ -126,4 +127,7 @@ CCharacterShadow::CCharacterShadow() {
             CCompartment::SetShadowTexture(g_texture);
         }
     }
+}
+
+void CCharacterShadow::InitClass() {
 }

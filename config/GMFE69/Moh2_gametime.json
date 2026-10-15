@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80017e2c",
-      "size": 52,
+      "size": 60,
       "type": 1
     },
     {
@@ -61,6 +61,12 @@
       "name": "GetGameTime__Fv",
       "address": "0x80017e2c",
       "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "GetFrameCount__Fv",
+      "address": "0x80017e60",
+      "size": 8,
       "binding": 1
     }
   ],
