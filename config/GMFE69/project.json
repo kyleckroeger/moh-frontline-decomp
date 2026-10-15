@@ -1117,7 +1117,8 @@
     "CoverPoint.json",
     "ConfigGC_onenter.json",
     "ConfigGC_init.json",
-    "dvdStatus_gxinit.json"
+    "dvdStatus_gxinit.json",
+    "UserInterface_compass.json"
   ],
   "progress": {
     "code_bytes": 1414572,

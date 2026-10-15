@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 727348,
+    "matching_code_bytes": 728000,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.418238166738774,
+    "percent": 51.46432984676637,
     "categories": {
-      "reconstructed_game": 505900,
+      "reconstructed_game": 506552,
       "restored_library": 221448
     },
-    "matching_functions": 4187
+    "matching_functions": 4188
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -268,6 +268,7 @@
     "config/GMFE69/UIStudio_unloadmodal.json": "587c273395591730f49c9f9097cb739e3993e6fd6e87d4293fe87019e94c4360",
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
     "config/GMFE69/UserInterface.json": "43a8bb46c3399b0bebba952c98941e60091427e1f2ccaf6a7a962ad8be682caa",
+    "config/GMFE69/UserInterface_compass.json": "a60b1a8860c0832f85a3bc7ea519b0892ea649da12731a5a03f7d6f08b316e35",
     "config/GMFE69/__init_cpp_exceptions.json": "473fc79adada2d4f4716f9dfb8db2454052cf439f5333b1078f4ff68cc1e87da",
     "config/GMFE69/__mem.json": "7b371c8954f9a6801abb4e67faa0ee57a68e5dc8ed0859a4f409105a4f523615",
     "config/GMFE69/__ppc_eabi_init.json": "973012ebb5fce40c866227e3e304f684705c3c16ffb3935048ed846a020e3f0b",
@@ -769,7 +770,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "193f3b490309fbb8aff58fe12794e66222cfe0586eed78ab1340f5b8a36cdc23",
+    "config/GMFE69/project.json": "48cf7ea7086b515da5f284a72e98d8f59fe415ac3a2cbd087433af68a164859a",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2297,6 +2298,7 @@
     "src/game/UIStudio_unloadmodal.c": "b5c5d0044ccca5b20004381944f07cd28f500b09820c1bb55d2a51cc067823d1",
     "src/game/UIStudio_visibility.c": "3454b7fe7ff6847bada0bf5f355070e360b4bda0af974311c5e150c022437e59",
     "src/game/UserInterface.cpp": "5e2d62e5410ad16508efa4e2243c541de362afbf7c74aa7ee3b63f4be695fe8e",
+    "src/game/UserInterface_compass.cpp": "f6bdd2929d7b4f5fc98b7b58db2096c7247645ed657f120e0255dabfb1fca16d",
     "src/game/alarm.cpp": "f9abe7f8bffec4b060a9d15ca8352c618fc54613728b1e9b0065707e5f574c33",
     "src/game/alarm_builtins.cpp": "f4520eab278d57c3c4432c7e9ee461a1107607238b5e95466a00d54f73a7b697",
     "src/game/alarm_list.cpp": "b5313d7b9c04afdb831347013d8105b6269879eec1840643341937665400bd01",
@@ -48713,6 +48715,45 @@
       "discarded_functions": [],
       "object_sha256": "4e3b4fc401c48dc08323de6c26bc5adb3a886539cc482c08a3d368ed1774da08",
       "linked_sha256": "f8fb065922dae10e3ada5e31629965a818bc716802b3d63de895d197d44dac1e"
+    },
+    {
+      "id": "UserInterface_compass",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 652,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "9dcac89b19cecf754fe5d9b09eab89d3124a133aad439d9763ec84fb5e188522",
+      "linked_sha256": "c417b8b5a3c4ce8ed525c5dcd216969706393ffa086140b965a71bd87872afe4"
     }
   ],
   "code_map": {
@@ -52677,13 +52718,6 @@
             "size": 3372,
             "kind": "function",
             "name": "DrawCompass__13UserInterfaceFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800bcbcc",
-            "size": 652,
-            "kind": "function",
-            "name": "UpdateCompassRotation__13UserInterfaceFP13CPlayerObjectf",
             "evidence": "exception-index"
           },
           {
