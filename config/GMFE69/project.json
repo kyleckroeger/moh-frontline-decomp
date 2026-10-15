@@ -1062,7 +1062,8 @@
     "debug_prof_register.json",
     "AISplinePath_astar.json",
     "AIObject_walkastar.json",
-    "sound_animtriggered.json"
+    "sound_animtriggered.json",
+    "UISUtils_dohint.json"
   ],
   "progress": {
     "code_bytes": 1414572,
