@@ -1176,7 +1176,8 @@
     "animplayer_ctor.json",
     "texture_load.json",
     "fiber_testfiber.json",
-    "jaw_motiontype.json"
+    "jaw_motiontype.json",
+    "AnimObjFactory_weapon.json"
   ],
   "progress": {
     "code_bytes": 1414572,

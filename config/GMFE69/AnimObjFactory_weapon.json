@@ -1,0 +1,94 @@
+{
+  "id": "AnimObjFactory_weapon",
+  "source": "src/game/AnimObjFactory_weapon.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80096120",
+      "size": 520,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ca18",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013b08",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "InitPlayerWeaponFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i",
+      "address": "0x80096120",
+      "size": 520,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BindSkeleton__6CDMeshFP10CharSkel_t": "0x800f647c",
+    "BindTextures__6CDMeshFP12CTexturePackPc": "0x800f6328",
+    "CharRelocateSkeleton__FP10CharSkel_t": "0x80069468",
+    "Init__6CDMeshFb": "0x800f6634",
+    "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
+    "printf": "0x8013dc88"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "AnimObjFactory.cpp",
+  "original_file_index": 5769,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 77,
+      "address": "0x801767b4"
+    }
+  ]
+}
