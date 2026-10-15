@@ -1122,7 +1122,8 @@
     "debug_prof_dump.json",
     "proxtrig_leafs.json",
     "animmot_rot.json",
-    "AIObject_reachable.json"
+    "AIObject_reachable.json",
+    "Moh2_enderrortext.json"
   ],
   "progress": {
     "code_bytes": 1414572,

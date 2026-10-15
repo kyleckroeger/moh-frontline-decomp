@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 736656,
+    "matching_code_bytes": 737288,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.076246384065286,
+    "percent": 52.12092420887731,
     "categories": {
-      "reconstructed_game": 515208,
+      "reconstructed_game": 515840,
       "restored_library": 221448
     },
-    "matching_functions": 4208
+    "matching_functions": 4209
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -153,6 +153,7 @@
     "config/GMFE69/MemoryCardGC_status.json": "191cb0829a44f918ee67fcc71d8d306e1310f599a5b543b3d435aa8d1724d2c4",
     "config/GMFE69/Moh2.json": "5f1f093ff156a9f0b0641ede8edc5664e6e11dfc10ed0e6ad1e75fa8d857054d",
     "config/GMFE69/Moh2_debugmsg.json": "8503ecca0a897b3148fdffba1bb00710fe698d67432224cc7390b76d1d00e48d",
+    "config/GMFE69/Moh2_enderrortext.json": "b66b39fe6cd3713c929b93840362927d68228fe04f7386a3f3afa1a57b5a22e7",
     "config/GMFE69/Moh2_fog_dtor.json": "ab2dda724d4ea88d28c0b0ff8410c18b31596f3df638a2fc21008c7def98e9ba",
     "config/GMFE69/Moh2_idestructible_dtor.json": "2feda0698753f85b3dfdb4433e54385c2adc87f937f47085bab3b469abf20abb",
     "config/GMFE69/Moh2_movingnode.json": "962deb2e9faaf25ed287b741aac7a4269d61089104e86d4d9f89da92ce3ba287",
@@ -773,7 +774,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "4f8ef110e36bb21f4b01f61311a15dae721f512a9fa3e0f2d6c9c49cc2f5a222",
+    "config/GMFE69/project.json": "a354febc42d7fcccf38cc13963dcd6a20ee6abd2fd0ef20e6d44cea6939dccbe",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2220,6 +2221,7 @@
     "src/game/MemoryCardGC_status.cpp": "36b2f84b11cc4d17d50d8446e9ce53bf1d461bccde271fb2059ddfbf329dc215",
     "src/game/Moh2.cpp": "de6c92093366f02578f9e8b8d2f69e0de0bece31142f95b7a51ed02dd533c3fb",
     "src/game/Moh2_debugmsg.cpp": "e46e64e520758e1db955f1ef8de2066cbe9fc9e92fba1e8ff44cdb8e13ed4540",
+    "src/game/Moh2_enderrortext.cpp": "dd748036ca9d66b93b12c7680b2097e368c5c1ebcad027dbe10f8ddebd983526",
     "src/game/Moh2_fog_dtor.cpp": "6077fd096ae37d2de9eae48711e177b01b99d0ec03d8e2407c48001f7dd01e96",
     "src/game/Moh2_idestructible_dtor.cpp": "ec5af81886696d1ebb3382c162fbfa84d1555b628452a389604b9f64e9d83665",
     "src/game/Moh2_movingnode.cpp": "1ddb6655d9d1c4666a2d6d2065f5da6d0896e7cbf563c7539b5750fd399afff6",
@@ -48918,6 +48920,45 @@
       "discarded_functions": [],
       "object_sha256": "d8258640bc6ea73f6a45859d4352f132b2692cfb1c7268591bb8db2cb836faaf",
       "linked_sha256": "4193523ae3a9dac4857f875ce66545f01e0d1afce3ab9cd570e9a4c9af7ba3c1"
+    },
+    {
+      "id": "Moh2_enderrortext",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 632,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "1895773281d4f03db99a267351e14febde2ef27b7222fd8cbbc95ce95ffd068f",
+      "linked_sha256": "5f6ec7959bc76034152beb12d4e3324eae2b9cc87c4bbb279a79d7b83b189001"
     }
   ],
   "code_map": {
@@ -48946,13 +48987,6 @@
             "kind": "function",
             "name": "MohDVDErrorTask__Fii",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80017b80",
-            "size": 632,
-            "kind": "function",
-            "name": "EndErrorText__Fv",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x80017df8",
