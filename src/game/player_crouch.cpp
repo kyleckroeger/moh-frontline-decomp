@@ -15,8 +15,44 @@
 // placeholder virtual slots: AsPlayerObject +156 and TriggerScriptEvent +100
 // are named by the player's vtable) are not original, nor are the location
 // group numbers, the event numbers or the quaternion layout (scalar first, as
-// in quaternion.cpp). The rest of the file is not part of this unit.
+// in quaternion.cpp). IsPlayerJumping returns the jump flag. PlaySounds
+// sends the player's AEMS sound events: the start event, landing events
+// (heavy above 4.0, light above 0.25, with a land timer that stops them),
+// and footsteps paced by a timer that shortens with the speed (the speed
+// scaled to 0..1); it also makes AI noise. The event views, flag and field
+// names are inferred, and the MSL-style inline sqrtf is as in
+// bsbifunc_targetsearch.cpp. The rest of the file is not part of this unit.
 extern bool g_bInMultiplayerMode;
+
+void AEMS_SendEvent(void*);
+void MakeNoise(class ISceneNode*, int, float, int);
+
+struct PlayerSoundEvent {
+    int type;
+    int event;
+    int handle;
+    int unknown0c;
+    int unknown10;
+    int unknown14;
+    int unknown18;
+};
+
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y ;
+    }
+    return x;
+}
 
 class CShellMenu;
 enum EShotLocations {};
@@ -176,24 +212,44 @@ public:
     char* GetPlayerName();
     void SetHideWeapon(bool);
     bool IsPlayerCrouching() const;
+    bool IsPlayerJumping() const;
+    void PlaySounds(bool, bool, float, float);
 
     unsigned char unknown004[172];
     CVector3 m_position;
     unsigned char unknown0c0[400];
     ShotStatsView* m_stats;
-    unsigned char unknown254[68];
+    unsigned char unknown254[4];
+    float m_velocityX;
+    float m_velocityY;
+    float m_velocityZ;
+    unsigned char unknown264[52];
     float m_height;
-    unsigned char unknown29c[250];
+    unsigned char unknown29c[248];
+    unsigned char m_flags394 : 7;
+    bool m_flag394 : 1;
+    unsigned char m_flags395a : 4;
+    bool m_flag395 : 1;
+    unsigned char m_flags395b : 3;
     unsigned char m_flag396 : 1;
     unsigned char m_flags396 : 7;
     bool m_weaponHidden : 1;
-    unsigned char m_flags397 : 7;
-    unsigned char unknown398[196];
+    unsigned char m_flags397a : 2;
+    bool m_flag397 : 1;
+    unsigned char m_flags397b : 4;
+    unsigned char unknown398[4];
+    float m_footstepTimer;
+    unsigned char unknown3a0[188];
     int m_currentWeapon;
-    CWeapon* m_weapons[195];
+    CWeapon* m_weapons[188];
+    short m_soundHandle;
+    short m_landTimer;
+    unsigned char unknown754[24];
     int m_playerIndex;
     unsigned char unknown770[2858];
     char m_name[16];
+    unsigned char unknown12aa[10];
+    bool m_jumping;
 };
 
 void CPlayerObject::DropMPDumpObject() {
@@ -279,4 +335,107 @@ bool CPlayerObject::IsPlayerCrouching() const {
     if (m_flag396 || m_height < 0.66f)
         crouching = true;
     return crouching;
+}
+
+bool CPlayerObject::IsPlayerJumping() const {
+    return m_jumping;
+}
+
+void CPlayerObject::PlaySounds(bool moving, bool start, float landSpeed, float dt) {
+    if (m_soundHandle == 0)
+        m_soundHandle = 1;
+    if (start) {
+        PlayerSoundEvent event;
+        event.type = 4;
+        event.event = 0;
+        event.handle = m_soundHandle;
+        event.unknown0c = 1;
+        event.unknown10 = 0;
+        event.unknown14 = 0;
+        event.unknown18 = 0;
+        AEMS_SendEvent(&event);
+    }
+    if (landSpeed > 0.25f) {
+        if (landSpeed > 4.0f) {
+            m_landTimer = 10;
+            PlayerSoundEvent event;
+            event.type = 4;
+            event.handle = m_soundHandle;
+            event.unknown0c = 1;
+            event.unknown10 = 0;
+            event.unknown14 = 0;
+            event.unknown18 = 0;
+            event.event = 18;
+            AEMS_SendEvent(&event);
+            AEMS_SendEvent(&event);
+            event.event = 9;
+            AEMS_SendEvent(&event);
+            event.event = 20;
+            AEMS_SendEvent(&event);
+        } else {
+            m_landTimer = 1;
+        }
+        MakeNoise((ISceneNode*)this, 51, 0.5f, 1);
+    }
+    if (m_landTimer) {
+        m_landTimer -= (int)(0.5f + dt);
+        if (m_landTimer <= 0) {
+            PlayerSoundEvent event;
+            event.type = 4;
+            event.handle = m_soundHandle;
+            event.unknown0c = 1;
+            event.unknown10 = 0;
+            event.unknown14 = 0;
+            event.unknown18 = 0;
+            event.event = 9;
+            AEMS_SendEvent(&event);
+            event.event = 20;
+            AEMS_SendEvent(&event);
+            m_landTimer = 0;
+        }
+    }
+    float speed = m_velocityX * m_velocityX + m_velocityY * m_velocityY + m_velocityZ * m_velocityZ;
+    if (m_flag395 || speed < 1e-05f) {
+        if (m_footstepTimer > 0.0f && (moving || m_flag394)) {
+            PlayerSoundEvent event;
+            event.type = 4;
+            event.event = 4;
+            event.handle = m_flag394 ? 6 : m_soundHandle;
+            event.unknown0c = 1;
+            event.unknown10 = 0;
+            event.unknown14 = 0;
+            event.unknown18 = 0;
+            AEMS_SendEvent(&event);
+            MakeNoise((ISceneNode*)this, 51, 0.0f, 1);
+        }
+        m_flag397 = true;
+        m_footstepTimer = 0.0f;
+    } else {
+        float scale = sqrtf(speed) / 0.08074742f;
+        if (scale > 1.0f)
+            scale = 1.0f;
+        else if (scale < 0.0f)
+            scale = 0.0f;
+        if (m_footstepTimer > 0.0f)
+            m_footstepTimer -= 0.016683351f * dt;
+        if (m_footstepTimer <= 0.0f) {
+            if (m_flag397 || m_flag394)
+                m_footstepTimer = 0.37f;
+            else
+                m_footstepTimer = 1.32f - scale;
+            if (moving || m_flag394) {
+                PlayerSoundEvent event;
+                event.type = 4;
+                event.event = (int)(4.0f * scale + 4.5f);
+                event.handle = m_flag394 ? 6 : m_soundHandle;
+                event.unknown0c = 1;
+                event.unknown10 = 0;
+                event.unknown14 = 0;
+                event.unknown18 = 0;
+                AEMS_SendEvent(&event);
+                m_flag397 = false;
+                MakeNoise((ISceneNode*)this, 51, 2.0f * speed / 0.00841961f, 1);
+            }
+        }
+    }
 }

@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8009c6fc",
-      "size": 680,
+      "size": 1764,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cd4c",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013e80",
-      "size": 36,
+      "size": 48,
       "type": 1
     },
     {
@@ -92,11 +92,25 @@
       "address": "0x8009c938",
       "size": 108,
       "binding": 1
+    },
+    {
+      "name": "IsPlayerJumping__13CPlayerObjectCFv",
+      "address": "0x8009c9a4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "PlaySounds__13CPlayerObjectFbbff",
+      "address": "0x8009c9ac",
+      "size": 1076,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_SendEvent__FPv": "0x800ec26c",
     "Add_MPShotLocation__10CShellMenuFiii14EShotLocations": "0x800e6950",
     "CreateDumpObject__FRC8CVector3RC11CQuaternionii": "0x8003fc2c",
+    "MakeNoise__FP10ISceneNodeifi": "0x8002bb64",
     "g_Shell": "0x80195090",
     "g_bInMultiplayerMode": "0x8034eca5"
   },
@@ -143,6 +157,84 @@
       "offset": 16,
       "size": 4,
       "address": "0x80350574"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350578"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8035057c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350558"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350580"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350548"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x80350550"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350584"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350564"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350588"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8035058c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x80350590"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x80350568"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x80350594"
     }
   ]
 }
