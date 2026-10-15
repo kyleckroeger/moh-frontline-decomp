@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f7da4",
-      "size": 92,
+      "address": "0x800f7b58",
+      "size": 680,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f94c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016664",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CopyDefaultConfig__11CDualConfigFiPc",
+      "address": "0x800f7b58",
+      "size": 588,
+      "binding": 1
+    },
     {
       "name": "GetDefaultCustomControllerValues__11CDualConfigFPc",
       "address": "0x800f7da4",
@@ -52,7 +70,10 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "currConfigText": "0x8018b77c",
+    "memcpy": "0x800094f8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
