@@ -1025,7 +1025,8 @@
     "projectilebullet_commit.json",
     "thrownbullet_misc.json",
     "thrownbullet_tail.json",
-    "Soldier_object_cleanup.json"
+    "Soldier_object_cleanup.json",
+    "Soldier_object_look.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -1,0 +1,91 @@
+{
+  "id": "Soldier_object_look",
+  "source": "src/game/Soldier_object_look.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800abb1c",
+      "size": 336,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d270",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014384",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SetAttachedLight__14CSoldierObjectFP6CLight8CVector3",
+      "address": "0x800abbbc",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "AddWeapon__14CSoldierObjectFii",
+      "address": "0x800abb1c",
+      "size": 160,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei": "0x800d6cf4",
+    "DestroyWeapon__14CWeaponFactoryFP7CWeapon": "0x800d6c88",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "PreTranslate__7CMatrixF8CVector3": "0x80090694",
+    "g_WeaponFactory": "0x801dde58",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "Soldier_object.cpp",
+  "original_file_index": 6587
+}
