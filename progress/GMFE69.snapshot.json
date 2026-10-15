@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 701788,
+    "matching_code_bytes": 702660,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.611331201239665,
+    "percent": 49.67297528863854,
     "categories": {
-      "reconstructed_game": 480340,
+      "reconstructed_game": 481212,
       "restored_library": 221448
     },
-    "matching_functions": 4113
+    "matching_functions": 4115
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -42,6 +42,7 @@
     "config/GMFE69/AIObject_arbitrary.json": "ec69b61edf7e8ca5d7df8be0377e9a6f097c7234d891642f9ae58c4d77733807",
     "config/GMFE69/AIObject_coveruseful.json": "223560434105febb6cee9b620dcb0c3f1b6af5bbe7d0d8db7080a463b9eafaf7",
     "config/GMFE69/AIObject_coverwalk.json": "62b5215771e37677c66337418e7234928ead7a219844fc9b54490cfe8cc0eb7c",
+    "config/GMFE69/AIObject_coverwalkto.json": "2b7c7dfdf79c554dacc6b4fef6f16c1d6a72dd957304862b35ea7786f32eb5ad",
     "config/GMFE69/AIObject_ctor.json": "c8219887cefa41e0b90a67eb5a3e65b9267025c7fea4237614bd422032f220fd",
     "config/GMFE69/AIObject_enemy.json": "59502e12ffe7782c05a67a681f29e81b902cb6aaed21af44b8ec0fbdb4e5dcd5",
     "config/GMFE69/AIObject_fovcorpse.json": "b4c5592020e0b58cb269fc32c0c70163e6ad8cf970d9328ce3fdd079874c042c",
@@ -741,7 +742,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "a11eb6bfbb6ba4c7f0f18366517ab08907fd8c2e86d1bc052f376d83b2817c92",
+    "config/GMFE69/project.json": "7a5f5419b99319aa9b650ad43211acad6f1ba53054fe70ea3e9fe4e4048ccc48",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2119,6 +2120,7 @@
     "src/game/AIObject_arbitrary.cpp": "005b0c6e6ed97f87b1cdf736b83eef96667bf81834ca547ea2a1694b9aacca8f",
     "src/game/AIObject_coveruseful.cpp": "9cca79c400de3cd0666f55301b8ca333fd52a647d18773f7af133d40f1f59930",
     "src/game/AIObject_coverwalk.cpp": "c65d06342a1caa46d945237cc40b6dc83854784b1745ecb919f77a870ba77196",
+    "src/game/AIObject_coverwalkto.cpp": "dfbb309d60ed6e39e252fbc66d12be85476b83d4297f3ede4472f9469486a74c",
     "src/game/AIObject_ctor.cpp": "e23a81d466c3d56d591da66a8218eb89e295f1aa254bb4afaea072d378607cf3",
     "src/game/AIObject_enemy.cpp": "a2b3f80aaf450d23b0e8a8e5dd19374c4c038c8e57d8b1a5a5b7994ef500ae5b",
     "src/game/AIObject_fovcorpse.cpp": "8ab78c05bc33bbf42aa9ab2b653e53852c91c957f4f8555c4bad9e0d8f2cd5e5",
@@ -47469,6 +47471,45 @@
       "discarded_functions": [],
       "object_sha256": "03021e208fa5d6838d6182668fac05c8ab839a206797571d1487a47e227384a0",
       "linked_sha256": "dc23ed652e4563c65eb9840b3cd1ed08e50b8360c20ce13ad0d5fbfc769b75a2"
+    },
+    {
+      "id": "AIObject_coverwalkto",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 872,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "70f4eade19d1a451c9d61bfe0bc544365e3867dc4caa8d4a1dcaf5fd64f8b445",
+      "linked_sha256": "43599eb46469be74cdf6b4b138a368864b7762021bcb8850ae8c41c47726c4a6"
     }
   ],
   "code_map": {
@@ -48495,20 +48536,6 @@
             "size": 384,
             "kind": "function",
             "name": "CheckFieldOfViewModeList__9CAIObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004a0ec",
-            "size": 408,
-            "kind": "function",
-            "name": "WalkToCoverPointIndirect__9CAIObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004a284",
-            "size": 464,
-            "kind": "function",
-            "name": "WalkToCoverPointDirect__9CAIObjectFv",
             "evidence": "exception-index"
           },
           {

@@ -1087,7 +1087,8 @@
     "UISUtils_siblingenable.json",
     "animskinned_skeleton.json",
     "animchan_process.json",
-    "UIStudio_init.json"
+    "UIStudio_init.json",
+    "AIObject_coverwalkto.json"
   ],
   "progress": {
     "code_bytes": 1414572,
