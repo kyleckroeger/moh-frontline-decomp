@@ -1020,7 +1020,9 @@
     "quaternion_matrix.json",
     "player_begincrouch.json",
     "scene_now.json",
-    "projectilebullet_methods.json"
+    "projectilebullet_methods.json",
+    "projectilebullet_update.json",
+    "projectilebullet_commit.json"
   ],
   "progress": {
     "code_bytes": 1414572,

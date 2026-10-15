@@ -1,0 +1,126 @@
+{
+  "id": "projectilebullet_update",
+  "source": "src/game/projectilebullet_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d1340",
+      "size": 392,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e5fc",
+      "size": 40,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001532c",
+      "size": 60,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BeginUpdate__17CProjectileBulletFf",
+      "address": "0x800d1340",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "OnCollision__17CProjectileBulletFRC10CCollision",
+      "address": "0x800d13a4",
+      "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__17CProjectileBulletFv",
+      "address": "0x800d13f8",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "Destroy__17CProjectileBulletFv",
+      "address": "0x800d1428",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "MarkForDestruction__17CProjectileBulletFi",
+      "address": "0x800d1450",
+      "size": 120,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "Shutdown__7CBulletFv": "0x800ccc04",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pBulletFactory"
+  ],
+  "original_file": "projectilebullet.cpp",
+  "original_file_index": 8014,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350d4c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350d0c"
+    }
+  ]
+}
