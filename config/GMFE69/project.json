@@ -1178,7 +1178,8 @@
     "fiber_testfiber.json",
     "jaw_motiontype.json",
     "AnimObjFactory_weapon.json",
-    "aramalloc_alloc.json"
+    "aramalloc_alloc.json",
+    "rcmp_mpc_create.json"
   ],
   "progress": {
     "code_bytes": 1414572,

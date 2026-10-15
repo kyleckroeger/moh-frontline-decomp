@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 750900,
+    "matching_code_bytes": 751120,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.0831940685946,
+    "percent": 53.098746475965875,
     "categories": {
-      "reconstructed_game": 529452,
+      "reconstructed_game": 529672,
       "restored_library": 221448
     },
-    "matching_functions": 4314
+    "matching_functions": 4316
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -820,7 +820,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "02046c8a532078f8101d0dda18ac5c2fe0abc6832bde4d72446cb6c9f79074a3",
+    "config/GMFE69/project.json": "e751ad70109184e4e7c47a32263ba82b599570e491a2dc7467db9e6fb58110b8",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -857,6 +857,7 @@
     "config/GMFE69/rcmp_main_delete.json": "a68aaffa7e0489d73d560375fe65fb9880bbac8db9bdcc6ec3610f357b7014f1",
     "config/GMFE69/rcmp_mpc_codec.json": "e19ac24595d1215fd65778779d27b29c6f88163987cb2f51df85ff162004d7cf",
     "config/GMFE69/rcmp_mpc_codec_chunk_types.json": "42f8600fb47568b4635edb3182a0d6d788bb94c0419a514e14604d564197d33d",
+    "config/GMFE69/rcmp_mpc_create.json": "f9c38c2e92825d8832cb0e8a73191f4db10fe1f15be632a98e8bfe4dcdacc7e6",
     "config/GMFE69/rcmp_mpc_frames.json": "9754761c4d59f39cbd834661c0a6b3f90b3521daa6873cd83148a30bd93cab1c",
     "config/GMFE69/rcmp_playmovie.json": "16d21e9643ca0e074371940a58a78e5a2f65fadde86cfa30ff2956e1c500995b",
     "config/GMFE69/rcmp_tdlnode_dtor.json": "59cc9935673df8c3cf82935d226452e0f51bfa4c30d074a20fdb41cf2a0dc18d",
@@ -2816,6 +2817,7 @@
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
     "src/game/rcmp_main_delete.cpp": "73241fde4c1b1f4a0e1c05c312f789ef77dbc1f63a46d98cd54c989924ac15d6",
     "src/game/rcmp_mpc_codec.cpp": "20275a867f71e391cec165a9ab505853717f67ac77ac067734045ded730abd17",
+    "src/game/rcmp_mpc_create.cpp": "1a0b662385d3e651b635d455dd3cbf89706f33280d01636e75ef5a447e63be71",
     "src/game/rcmp_mpc_frames.cpp": "2ace9b9fa2907baa526864e63ae411d94309a2285173df6e24a76fbf7a5e78ec",
     "src/game/rcmp_playmovie.cpp": "67dbc5e912ed42ac3414d5699bbd50612c241a17008d9f4ea65fa7bb917bc79f",
     "src/game/rcmp_tdlnode_dtor.cpp": "a4de409e80bdab60456ad82d62c55dde8b91731e4229e996d7a2e7c7de3e2d7a",
@@ -51214,6 +51216,47 @@
       "discarded_functions": [],
       "object_sha256": "a7c48ce929fc0ebe5b2e4b1be6327d1ac40f25e943d6d130e1890aa9480f2313",
       "linked_sha256": "6eb2c63800b174e6e9b8355682a85309c140b951c441ac21a0f03c9e5fe09887"
+    },
+    {
+      "id": "rcmp_mpc_create",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 220,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [
+        "__dl__Q24RCMP5CODECFPv"
+      ],
+      "object_sha256": "140e1373c94c7b7bd0fbcf9f6ab8a8c543e5b8ebaecfab063157570ba40a220d",
+      "linked_sha256": "57e840df233819046c10447e993763f6ca269dc9fabb39acc366274d59f2823a"
     }
   ],
   "code_map": {
@@ -55889,20 +55932,6 @@
         "file_record": 177,
         "file_name": "rcmp_mpc_codec.cpp",
         "ranges": [
-          {
-            "address": "0x801042f0",
-            "size": 132,
-            "kind": "function",
-            "name": "MPC_CODEC_create__4RCMPFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80104374",
-            "size": 88,
-            "kind": "function",
-            "name": "__dt__Q24RCMP5CODECFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80104a20",
             "size": 600,
