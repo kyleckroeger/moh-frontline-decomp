@@ -13,8 +13,8 @@
 // the members and flag names are inferred, the record's copy constructor is
 // inferred from the copy order, dwi::fast_vec follows anim_obj_ctor.cpp, and
 // the CVector3 view copies through a double pair as in player_weapon.cpp with
-// an inline Normalize matching the weak CVector3::Normalize. The rest of the
-// file is not part of this unit.
+// an inferred inline Normalize that divides per component (as in
+// thrown_obj.cpp). The rest of the file is not part of this unit.
 extern "C" {
 #include <math.h>
 }
