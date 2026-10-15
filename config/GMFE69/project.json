@@ -1096,7 +1096,8 @@
     "UIStudio_loadscreen.json",
     "UIStudio_determinevis.json",
     "UIStudio_parsevis.json",
-    "shadow_ctor.json"
+    "shadow_ctor.json",
+    "weaponfactory_props.json"
   ],
   "progress": {
     "code_bytes": 1414572,
