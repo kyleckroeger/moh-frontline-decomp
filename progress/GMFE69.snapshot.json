@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 737960,
+    "matching_code_bytes": 738264,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.16842974412048,
+    "percent": 52.189920343397155,
     "categories": {
-      "reconstructed_game": 516512,
+      "reconstructed_game": 516816,
       "restored_library": 221448
     },
-    "matching_functions": 4230
+    "matching_functions": 4232
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -207,9 +207,9 @@
     "config/GMFE69/Screen_cscreenfieldmode_dtor.json": "ae558351dd880d1089450515bd83e2e0660a30b7bbd744e1a0978e40f66c9a9a",
     "config/GMFE69/Screen_fieldmode.json": "a533897eb466189fdaea3e9e66d1f708950b87d07289e5425afdc17f35fd0d03",
     "config/GMFE69/Screen_vblank.json": "6fe843f6af4c9bf529ac95a181974b901b1e783441059fdc954e0620a3a6cd0e",
-    "config/GMFE69/SearchNode.json": "7f3faddf4fd85b34332591cd5659c946767288ac8adf2810448c8a7367263d4b",
+    "config/GMFE69/SearchNode.json": "0cff68c0ddcd4e75d9ab5c2c982ebb46f1e7bad061a6f6565166a032705b8044",
     "config/GMFE69/SearchNodeList.json": "94a6f88f4b8062b0b71ee5f431cf4a7f102d07ca517660d3fe098a7fd2a44a2c",
-    "config/GMFE69/SearchNode_tail.json": "ec4d0f782c02f283a9ffeedb7d67443f58eac8b6a3576cdca378f420d76031ea",
+    "config/GMFE69/SearchNode_tail.json": "c812179ac93ef68353128d9d1ad096cc9578c26632a26802602d984955690c66",
     "config/GMFE69/ShellMenu.json": "8dd6d4ec65f514a1f54b37bc84805970f0bea890598fe1b03be548df82af6f74",
     "config/GMFE69/ShellMenu_audio.json": "1a043c64b33ba21651b30a0ec86b3b0ce178ba7dd7382efa78f2c9bdfbfab85c",
     "config/GMFE69/ShellMenu_audioset.json": "27607fed353c1360321b5725b5513d31bcfca481fc718dfb4841a217b873360c",
@@ -2248,9 +2248,9 @@
     "src/game/Screen_cscreenfieldmode_dtor.cpp": "e6bea55f3444224efcdd80c48f290037f2f92ed4290d47d0016f46c98eaa34f7",
     "src/game/Screen_fieldmode.cpp": "c85584352168628795f1d57208d6b1746231ab10d8471bdd08857199f9d536f3",
     "src/game/Screen_vblank.cpp": "ab1180a24be3a78047287b670035a6960b002c7ca506b78082d206411441ef1e",
-    "src/game/SearchNode.cpp": "5e5c143eb25ffbdd821211bf88d012e847e5a9513238757a5de68c0f09769c55",
+    "src/game/SearchNode.cpp": "e8db06597a8f2032822e557cd948934a13b14f14d2c1757084d8b134dfc1a4ef",
     "src/game/SearchNodeList.cpp": "738d75054ffdc5c611f06f3c0f8d330d60226794efc3684079e2280494a4d65c",
-    "src/game/SearchNode_tail.cpp": "586a117621141a456ec90c49ac7f15b4104b0599d9020fc2182c16bb9131bde9",
+    "src/game/SearchNode_head.cpp": "cf9fbe0c1f82330117ce099d7702660b1688c8c629b69215b3cff84f733bcda5",
     "src/game/ShellMenu.cpp": "e03b478aa25e400ae26b61840f1147b0b0293e518a216ca8e670c39aab756f38",
     "src/game/ShellMenu_audio.cpp": "e6c28700ad3c8dfa57727eeba4291575c2dd67050e85f0d3814bed9881463edb",
     "src/game/ShellMenu_audioset.cpp": "eaed4c52183e4d52249d7f60476c64a6c2bf21a5882d2c66793c2e3957bae9ae",
@@ -22841,8 +22841,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "395479a673685e7c985a375de65abc30abca9b3a70532b097f7a367541d92eb7",
-      "linked_sha256": "de01479fd3e7583f28b3e8124868e96e0655acb3acdfb85bad5effee40fdd132"
+      "object_sha256": "043d8685f7e40b207cf5cfb6f2db611a42beb5edfe31852e34da2c5cc1afd5d7",
+      "linked_sha256": "a7e1cdce9930859250124306d991dfee7e573bac4a462321b98e5859eaed2d8a"
     },
     {
       "id": "sprite_init",
@@ -23723,8 +23723,8 @@
     {
       "id": "SearchNode_tail",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 212,
+      "functions": 4,
+      "code_bytes": 516,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23756,8 +23756,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0f1db8679101f9d5f128ee64ebad854ea38b312c5a720ec158b01e43e1278439",
-      "linked_sha256": "d38cfff02e761ff0a4cec5419910a997a5b2a0f52688ce46c60365645423b7a1"
+      "object_sha256": "3aa69d92c26c6feb9d3b6358a982b45e65d2834c904ce0623e0ef73f4e28d3e9",
+      "linked_sha256": "181453c4d0084aa5568ba50bdf14c47ae91b56ea1a67bb3b00fde4bdee324ce9"
     },
     {
       "id": "stream_prio",
@@ -50389,20 +50389,6 @@
             "kind": "function",
             "name": "Setup__11CSearchNodeFP11CSearchNodeP9CPathNodePC9CPathNode",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800562e4",
-            "size": 248,
-            "kind": "function",
-            "name": "__sinit_SearchNode_cpp",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800563dc",
-            "size": 56,
-            "kind": "function",
-            "name": "__arraydtor$741",
-            "evidence": "local-file-symbol"
           }
         ]
       },
