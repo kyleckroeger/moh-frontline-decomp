@@ -1118,7 +1118,8 @@
     "ConfigGC_onenter.json",
     "ConfigGC_init.json",
     "dvdStatus_gxinit.json",
-    "UserInterface_compass.json"
+    "UserInterface_compass.json",
+    "debug_prof_dump.json"
   ],
   "progress": {
     "code_bytes": 1414572,

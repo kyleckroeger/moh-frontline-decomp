@@ -1,0 +1,110 @@
+{
+  "id": "debug_prof_dump",
+  "source": "src/game/debug_prof_dump.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f3cd0",
+      "size": 208,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f768",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800163dc",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DebugProfTimerDump__Fii",
+      "address": "0x800f3cd0",
+      "size": 208,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "g_pDebugProfTimers": "0x803118dc",
+    "printf": "0x8013dc88",
+    "strlen": "0x801400f8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "debug_prof.cpp",
+  "original_file_index": 9478,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 13,
+      "address": "0x8017a3e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 2,
+      "address": "0x803510b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 8,
+      "address": "0x803510b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 2,
+      "address": "0x803510bc"
+    }
+  ]
+}
