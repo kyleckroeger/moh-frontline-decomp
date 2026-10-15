@@ -1018,7 +1018,8 @@
     "matrix_scale.json",
     "matrix_rotate.json",
     "quaternion_matrix.json",
-    "player_begincrouch.json"
+    "player_begincrouch.json",
+    "scene_now.json"
   ],
   "progress": {
     "code_bytes": 1414572,
