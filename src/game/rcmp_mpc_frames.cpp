@@ -7,12 +7,17 @@
 // skips to the wanted frame, decodes it and releases the chunk) and
 // SkipChunks (more than two frames ahead: reads to the next sequence start,
 // decodes and releases that frame and skips B chunks; otherwise skips the B
-// chunks among the frames in between). The
+// chunks among the frames in between) and DecodeChunk (at the end of the
+// stream, releases the old reference frame and hands out the last one;
+// otherwise decodes the chunk - first any held one - and hands out the
+// current frame, or the previous one when the stream ran out). The
 // classes and templates are named by the mangled symbols (RCON::TDLNODE by
 // rcmp_tdlnode_dtor.cpp); MPC_FRAME derives from RCMP::FRAME and its list
 // node, and the list and node members (Unlink, RemoveHead, AddTail, First,
 // End), the lists' offsets, the counters, the chunk view, the NextChunk and
-// ChunkType inline helpers and the result types are inferred; the codec
+// ChunkType inline helpers, the four frame pointers and the UseFrame inline
+// (unlink, add to the used list, take a reference) and the result types
+// are inferred; the codec
 // declares its virtual functions in the order of __vt__18MPC_CODEC_INTERNAL,
 // its destructor (defined elsewhere) first. The rest of the file is not
 // part of this unit.
@@ -116,6 +121,12 @@ public:
                 m_endState = 2;
         }
     }
+    void UseFrame(MPC_FRAME* frame) {
+        frame->Unlink();
+        m_used.AddTail(frame);
+        frame->m_refs++;
+    }
+    void LowLevelDecodeChunk(RCMP::CHUNK*);
     static int ChunkType(RCMP::CHUNK* chunk) {
         if (chunk) {
             ChunkDataView* data = chunk->m_data;
@@ -128,7 +139,10 @@ public:
     void SkipChunks(RCMP::CHUNK**, unsigned int);
     RCMP::FRAME* DecodeChunk(RCMP::CHUNK**);
 
-    unsigned char unknown04[16];
+    MPC_FRAME* m_frame04;
+    MPC_FRAME* m_frame08;
+    MPC_FRAME* m_frame0c;
+    MPC_FRAME* m_frame10;
     int m_endState;
     unsigned char unknown18[4];
     int m_stopped;
@@ -206,4 +220,29 @@ void MPC_CODEC_INTERNAL::SkipChunks(RCMP::CHUNK** chunk, unsigned int frame) {
             }
         }
     }
+}
+
+RCMP::FRAME* MPC_CODEC_INTERNAL::DecodeChunk(RCMP::CHUNK** chunk) {
+    if (m_endState == 1 || m_endState == 2) {
+        if (m_frame04 && m_frame04->m_refs > 0)
+            ReleaseFrame(m_frame04);
+        m_frame10 = m_frame04 = m_frame08;
+        m_frame08 = 0;
+        m_frame0c = 0;
+        if (m_frame10)
+            UseFrame(m_frame10);
+        return m_frame10;
+    }
+    if (m_stopped) {
+        LowLevelDecodeChunk(*chunk);
+        NextChunk(chunk);
+        m_stopped = 0;
+    }
+    if (!*chunk) {
+        UseFrame(m_frame0c);
+        return m_frame0c;
+    }
+    LowLevelDecodeChunk(*chunk);
+    UseFrame(m_frame10);
+    return m_frame10;
 }

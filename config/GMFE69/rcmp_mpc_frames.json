@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x801043cc",
-      "size": 1104,
+      "size": 1620,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fc84",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016a00",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -92,11 +92,17 @@
       "address": "0x801045b0",
       "size": 620,
       "binding": 1
+    },
+    {
+      "name": "DecodeChunk__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNK",
+      "address": "0x8010481c",
+      "size": 516,
+      "binding": 1
     }
   ],
   "externals": {
-    "DecodeChunk__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNK": "0x8010481c",
     "GetChunk__Q24RCMP7DECODERFv": "0x801052b0",
+    "LowLevelDecodeChunk__18MPC_CODEC_INTERNALFPQ24RCMP5CHUNK": "0x80104a20",
     "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK": "0x80105280"
   },
   "undefined_in_discarded_code": [],
