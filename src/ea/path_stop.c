@@ -1,5 +1,8 @@
 /* A second fragment of the music path player's path.c (src/ea/path.c holds
-   PATH_control onward): PATH_stop stops every track of the matching player
+   PATH_control onward): PATH_volume clamps the volume to 0..100, keeps it as
+   the global volume scale for the all-tracks handle (-1), and for each masked
+   track stores it and, while the track plays, sets the track's base volume
+   scaled by it; PATH_stop stops every track of the matching player
    states and marks them stopped (node -1); PATH_pause records a global pause
    for the all-tracks handle (-1) and pauses the masked tracks; PATH_destroy
    destroys the first masked track, deactivates its state when that song has
@@ -48,11 +51,15 @@ struct PATHTRACKVIEW {
     unsigned char unknown00;
     unsigned char control;
     signed char paused;
-    unsigned char unknown03[13];
+    signed char volume;
+    unsigned char unknown04[6];
+    signed char playing;
+    unsigned char unknown0b[5];
     unsigned int latency;
     unsigned char unknown14[8];
     PATHNODEVIEW* current;
-    unsigned char unknown20[2];
+    signed char basevolume;
+    unsigned char unknown21;
     short node;
     unsigned char unknown24[24];
     int handle;
@@ -75,11 +82,13 @@ struct PATHSTATEVIEW {
 };
 
 extern signed char inited;
+extern signed char volscale;
 extern signed char paused;
 extern unsigned int pfactive;
 extern PATHSTATEVIEW* pfstate;
 extern PATHSTATEVIEW pfstates[4];
 
+extern "C" void PATHX_volume(int, int);
 extern "C" void PATHX_stop(int);
 extern "C" void PATHX_pause(int, int);
 extern "C" void PATHX_destroytrack(int);
@@ -111,6 +120,41 @@ static inline int counttracks(unsigned int songs) {
         }
     }
     return count;
+}
+
+extern "C" void PATH_volume(unsigned int handle, signed char volume) {
+    unsigned int project;
+    unsigned int song;
+    int scale;
+    int i;
+    int j;
+    if (!inited || pfactive || !selectstate(-1))
+        return;
+    if (volume > 100)
+        volume = 100;
+    if (volume < 0)
+        volume = 0;
+    if (handle == 0xFFFFFFFF)
+        volscale = volume;
+    project = handle & 0xF0000000;
+    song = handle & 0x0F000000;
+    scale = volume;
+    for (i = 0; i < 4; i++) {
+        if (pfstates[i].active && (project & pfstates[i].id) && (song & pfstates[i].id)) {
+            if (selectstate(i)) {
+                for (j = 0; j < 24; j++) {
+                    PATHTRACKVIEW* track = pfstate->tracks[j];
+                    if (track && (handle & (1 << j))) {
+                        track->volume = volume;
+                        if (track->playing < 0)
+                            PATHX_volume(track->handle, track->basevolume * scale / 100);
+                    }
+                }
+            }
+        }
+    }
+    pfactive = 0;
+    pfstate = 0;
 }
 
 extern "C" void PATH_stop(unsigned int handle) {

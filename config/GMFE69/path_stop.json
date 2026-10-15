@@ -39,12 +39,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010b078",
-      "size": 2244,
+      "address": "0x8010aec4",
+      "size": 2680,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PATH_volume",
+      "address": "0x8010aec4",
+      "size": 436,
+      "binding": 1
+    },
     {
       "name": "PATH_stop",
       "address": "0x8010b078",
@@ -76,11 +82,13 @@
     "PATHX_endservice": "0x800e8e64",
     "PATHX_pause": "0x800e88a8",
     "PATHX_stop": "0x800e883c",
+    "PATHX_volume": "0x800e8940",
     "inited": "0x8034ef70",
     "paused": "0x8034ef71",
     "pfactive": "0x8034ef74",
     "pfstate": "0x8034ef68",
-    "pfstates": "0x80316920"
+    "pfstates": "0x80316920",
+    "volscale": "0x8034e470"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -91,7 +99,8 @@
     "inited",
     "paused",
     "pfactive",
-    "pfstate"
+    "pfstate",
+    "volscale"
   ],
   "original_file": "path.c",
   "original_file_index": 10551
