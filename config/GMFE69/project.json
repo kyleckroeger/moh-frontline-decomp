@@ -1093,7 +1093,8 @@
     "UIStudio_unloadmodal.json",
     "UISUtils_movescreen.json",
     "UIStudio_activatescreen.json",
-    "UIStudio_loadscreen.json"
+    "UIStudio_loadscreen.json",
+    "UIStudio_determinevis.json"
   ],
   "progress": {
     "code_bytes": 1414572,
