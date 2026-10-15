@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 700344,
+    "matching_code_bytes": 700636,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.50925085467548,
+    "percent": 49.52989314082281,
     "categories": {
-      "reconstructed_game": 478896,
+      "reconstructed_game": 479188,
       "restored_library": 221448
     },
-    "matching_functions": 4108
+    "matching_functions": 4109
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -400,6 +400,7 @@
     "config/GMFE69/bsmachin.json": "99e6f626f2cdb4c5eddca656c56ef9cc28369e547992ff630f5c3bbc93fa72ef",
     "config/GMFE69/bsmachin_props.json": "1944c1e183afb013783327c438e3010395c83aa6dd9a7fc96e154ae3b78ec9c3",
     "config/GMFE69/bsmessage_group.json": "be3633a7d9e8f96fdc5f33c69976264536ed53f031b3be33c9f0ce5ca02ee25f",
+    "config/GMFE69/bsmessage_register.json": "36025946c8e6ed4979c10c48bc61e9734ac9446608b5d64a4aa2676a7b509f2d",
     "config/GMFE69/bsmessage_remove.json": "ee5b15e9cea3e72d405091e370c0e69ff97bfd041866218c0876463c01001a9f",
     "config/GMFE69/bsobject.json": "41480f6a7bea111add9b38059f1c44261dd07a1e993a72d69f0db4556248260f",
     "config/GMFE69/bsschedule.json": "9ca90e8e437e4fb063781358dea8cc08f762b7a480aca88f8aefbb97d6b1fa74",
@@ -736,7 +737,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f0863922ac1323b7a87cf92f26a8dba447e80ad5e4948e281a9bbba5fbc707a7",
+    "config/GMFE69/project.json": "cda9084c85eee88f2fdf1720f5496ea14dcd56ad2150010b46ebfb35090f288a",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2376,6 +2377,7 @@
     "src/game/bsmachin.cpp": "29ef7c9c19942e3dc51d97c49266ac9b237c8658ffef55d4536c8968e7d44b1e",
     "src/game/bsmachin_props.cpp": "3907e2f6896cc15ab0613cb4136fd0aec3b790b58527e3d7866790404c79c198",
     "src/game/bsmessage_group.cpp": "5214f38619c6804d07d5fc59be77cdee96b3158ed1da037f5a2a371e9bbfc28a",
+    "src/game/bsmessage_register.cpp": "da931bcf05acd0f6809831dfcb163fef97e496d685baec8ff517e78be39e04f2",
     "src/game/bsmessage_remove.cpp": "cc37c99cd0896a01b960958e8fe8623ff1aead2bff0e9cccdafd9aceadcd181f",
     "src/game/bsobject.cpp": "c6feb51c0a025f79f8cfc2b874e88d97395dfd9ed0dc26ca8318087fd80e7bb4",
     "src/game/bsschedule.cpp": "abd4446f3f7acae81285dc7cd98e756227f35e4540b31cd17a68ae48319b9c56",
@@ -47260,6 +47262,45 @@
       "discarded_functions": [],
       "object_sha256": "5f87bdea6ae46fcbe0d0e3c5613e49e266db97daca33d57cd169008a2c4b8cbb",
       "linked_sha256": "70b3d6d7464e0e95e9893649f61448a6232c760b84a60c41a8c95a51eaf23eb8"
+    },
+    {
+      "id": "bsmessage_register",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 292,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "ac3c01b8b17c562872c6d9fbefbea7c3d5611ca12b9f04a007c371feea866e6f",
+      "linked_sha256": "0133312e746c4cab43179c13d1b812432a6f77751b1dfe65f8c5fb9e86d2bfda"
     }
   ],
   "code_map": {
@@ -47876,13 +47917,6 @@
             "kind": "function",
             "name": "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003a1bc",
-            "size": 292,
-            "kind": "function",
-            "name": "BSRegisterMessage__FP33BSCode_MessageHandlerEntry_structP8BSObjectUsP22BSMachineThread_structPP28BSMessageRegistration_struct",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x8003a2e0",
