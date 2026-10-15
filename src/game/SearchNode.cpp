@@ -4,9 +4,10 @@
 // positions. CSearchNode, CPathNode and CAIFilterRealPosition are named by
 // the mangled symbols and the free list by its symbol; the node and
 // path-node layouts are inferred, and the position class is built from three
-// floats here (its constructors are inline; this one is inferred). Reset
-// before these functions is drafted in scratch/lib/searchnode_wip.cpp (the
-// target does not store the empty list first).
+// floats here (its constructors are inline; this one is inferred). Reset,
+// first, links the whole pool into the free list, built in a register by an
+// inferred inline helper (the pool is file-local in the original and declared
+// extern here, as in SearchNode_tail.cpp).
 struct CPathNodePositionView {
     float x;
     float y;
@@ -30,6 +31,7 @@ public:
 
 class CSearchNode {
 public:
+    static void Reset();
     static void operator delete(void*, unsigned long);
     static void* operator new(unsigned long);
     float GetCostValue(const CSearchNode*);
@@ -43,6 +45,22 @@ public:
 };
 
 static CSearchNode* s_rsnAStarSearchNodeFreeList;
+extern CSearchNode s_rsnAStarSearchNodePool[4096];
+
+inline CSearchNode* BuildFreeList() {
+    CSearchNode* list = 0;
+    for (int i = 0; i < 4096; i++) {
+        s_rsnAStarSearchNodePool[i].m_next = list;
+        s_rsnAStarSearchNodePool[i].m_node = 0;
+        s_rsnAStarSearchNodePool[i].m_open = false;
+        list = &s_rsnAStarSearchNodePool[i];
+    }
+    return list;
+}
+
+void CSearchNode::Reset() {
+    s_rsnAStarSearchNodeFreeList = BuildFreeList();
+}
 
 void CSearchNode::operator delete(void* p, unsigned long) {
     ((CSearchNode*)p)->m_next = s_rsnAStarSearchNodeFreeList;

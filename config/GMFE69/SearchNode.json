@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005606c",
-      "size": 128,
+      "address": "0x80055fc8",
+      "size": 292,
       "type": 1
     },
     {
@@ -64,6 +64,12 @@
   ],
   "functions": [
     {
+      "name": "Reset__11CSearchNodeFv",
+      "address": "0x80055fc8",
+      "size": 164,
+      "binding": 1
+    },
+    {
       "name": "__dl__11CSearchNodeFPvUl",
       "address": "0x8005606c",
       "size": 16,
@@ -83,12 +89,15 @@
     }
   ],
   "externals": {
-    "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0"
+    "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
+    "s_rsnAStarSearchNodePool": "0x801aac1c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "s_rsnAStarSearchNodePool"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "SearchNode.cpp",
