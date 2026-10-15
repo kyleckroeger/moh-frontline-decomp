@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d2498",
-      "size": 360,
+      "address": "0x800d2384",
+      "size": 636,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e6a4",
-      "size": 24,
+      "address": "0x8000e69c",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015410",
-      "size": 36,
+      "address": "0x80015404",
+      "size": 48,
       "type": 1
     },
     {
@@ -68,6 +68,12 @@
       "name": "GetScriptBulletType__13CThrownBulletCFv",
       "address": "0x800d2540",
       "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "ApplyForceTo__13CThrownBulletF8CVector3f",
+      "address": "0x800d2384",
+      "size": 276,
       "binding": 1
     },
     {
@@ -127,7 +133,31 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
+      "address": "0x80350dac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
       "address": "0x80350d70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350d78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350d80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350d74"
     }
   ]
 }
