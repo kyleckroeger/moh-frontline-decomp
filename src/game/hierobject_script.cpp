@@ -85,11 +85,6 @@ struct MotionKey {
     CQuaternion m_rotation;
 };
 
-/* inferred */
-inline float Max(float a, float b) {
-    return a < b ? b : a;
-}
-
 class CHierObject {
 public:
     virtual void unknown008();

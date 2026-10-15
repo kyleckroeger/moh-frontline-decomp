@@ -1,0 +1,97 @@
+{
+  "id": "hierobject_update",
+  "source": "src/game/hierobject_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8009b154",
+      "size": 952,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cc84",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013dcc",
+      "size": 36,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "GetWorldLinearVelocity__11CHierObjectCFv",
+      "address": "0x8009b480",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "CommitUpdate__11CHierObjectFv",
+      "address": "0x8009b154",
+      "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "AttemptUpdate__11CHierObjectFf",
+      "address": "0x8009b2a4",
+      "size": 476,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
+    "SetPlayersMountedMGPositions__13CPlayerObjectFP7CMatrix": "0x800a4ff8",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "hierobject.cpp",
+  "original_file_index": 5972
+}

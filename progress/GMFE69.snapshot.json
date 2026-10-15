@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 678992,
+    "matching_code_bytes": 679944,
     "total_executable_code_bytes": 1414572,
-    "percent": 47.99981902653241,
+    "percent": 48.067118534793565,
     "categories": {
-      "reconstructed_game": 457544,
+      "reconstructed_game": 458496,
       "restored_library": 221448
     },
-    "matching_functions": 4018
+    "matching_functions": 4021
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -551,6 +551,7 @@
     "config/GMFE69/hierobject_motion.json": "ed2d9c5047a3e8c4205248563f76adfb23f7a1c50524cd1520bfde764f9908f4",
     "config/GMFE69/hierobject_script.json": "4bcd2452542b1a785c200767db551dabee5af0c17df4e0a41c7ad40570c6ff10",
     "config/GMFE69/hierobject_tree.json": "e720a1207dc3278096b549eb9bcf86600ba5654bd92d67b0749dd954acffebfe",
+    "config/GMFE69/hierobject_update.json": "e9b53e1646962c75b2bb734a01c977c1c5b5a715081f8b1a098692d14a055608",
     "config/GMFE69/hierobject_weak.json": "7167142b12442d566bb3ff741a8a4a556c71090c521e84f4044a241623d24e2d",
     "config/GMFE69/hlafile.json": "4dd5569956bba06214857666bc2db7b13119b144b002f9b018da1f3e15b851b2",
     "config/GMFE69/hlsfile.json": "949cb6bbf006231f6e840512648466c8cc1f095827bbb723bf5ff1c4a55603e5",
@@ -695,7 +696,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "26be435130ad36731c46d30559add77a774fb49c36d16127798aa52f593c8db1",
+    "config/GMFE69/project.json": "6558279724bb3574600c3bdc5cb7da60e4cfb519064732e43abe1da51b8eb3f2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2429,8 +2430,9 @@
     "src/game/hierobject.cpp": "f049e08a0f7859f2cd2dedabea5e772c87da8ef794ac4c19cd0c2b354feb7d1a",
     "src/game/hierobject_draw.cpp": "c5e1811b7ea46f78644c7dce50feab94b0ab5492fdf94d86584eafd87e8138af",
     "src/game/hierobject_motion.cpp": "0d8289de58c07d340d2ad58a6829cf44b6475e3e63d6af1b41e798aeb5507eba",
-    "src/game/hierobject_script.cpp": "9e209eb254bb4155f9b0c8639caa9ef3d97c2c5a70582612904b6f8e80d4f9c8",
+    "src/game/hierobject_script.cpp": "8095c6c67853c2a66485d7a45382f6536c4c1bc67b6f2bf39ac6894b3c0a9307",
     "src/game/hierobject_tree.cpp": "f1b3e125cf44df87e6b6929563add9a762dfb19fc942a79fa0fabd82fa67bbe8",
+    "src/game/hierobject_update.cpp": "43068b95eeca48dcab366339cda5f09ed875bde7b98da93110facc91c51ac43a",
     "src/game/hierobject_weak.cpp": "f09f0a39f7caf75ec171432ff05a2c7f8139a91cdd675b3fb7b2ac0fa87a105b",
     "src/game/hwvideodisplaylist.cpp": "3a64557deabec80e0df4ca6f54e87735a5069f0c774c6f916ff6a2f1b33c822d",
     "src/game/hwvideodisplaylist_delete.cpp": "2d8c0018edf0e33470978aa401e3d3c36404a4f37d74343a1baf5eb2af354c2e",
@@ -45196,6 +45198,45 @@
       "discarded_functions": [],
       "object_sha256": "28afb87669345a93ea7d37dc60431022ad446e882fe7297a960a9628e56a0bc2",
       "linked_sha256": "779395124f90f3ffc5e96b125517c44f9f98d43107091152c50b7c5df5eb408c"
+    },
+    {
+      "id": "hierobject_update",
+      "category": "reconstructed_game",
+      "functions": 3,
+      "code_bytes": 952,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "49490693812e6cddf744238c5abf457d3f9de3a886215f35fc3f80dd84cb5deb",
+      "linked_sha256": "be344be835c91062259fcf975b8f79ce1335c0006d2ddd2619e32d962da67c13"
     }
   ],
   "code_map": {
@@ -49202,27 +49243,6 @@
             "size": 1028,
             "kind": "function",
             "name": "BeginAnimMotionUpdate__11CHierObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009b154",
-            "size": 336,
-            "kind": "function",
-            "name": "CommitUpdate__11CHierObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009b2a4",
-            "size": 476,
-            "kind": "function",
-            "name": "AttemptUpdate__11CHierObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009b480",
-            "size": 140,
-            "kind": "function",
-            "name": "GetWorldLinearVelocity__11CHierObjectCFv",
             "evidence": "exception-index"
           },
           {

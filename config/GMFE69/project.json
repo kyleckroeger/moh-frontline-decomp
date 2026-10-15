@@ -1032,7 +1032,8 @@
     "objcreate_create.json",
     "static_obj_pathbegin.json",
     "hierobject_motion.json",
-    "hierobject_script.json"
+    "hierobject_script.json",
+    "hierobject_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,
