@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800793e0",
-      "size": 280,
+      "size": 2184,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000be88",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012da0",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "Transform__8CFrustumFRC7CMatrix",
       "address": "0x800793e0",
       "size": 280,
+      "binding": 1
+    },
+    {
+      "name": "Set__8CFrustumFRC7CCameraR7CScreenR9CViewport",
+      "address": "0x800794f8",
+      "size": 1904,
       "binding": 1
     }
   ],
@@ -102,6 +108,30 @@
       "offset": 24,
       "size": 4,
       "address": "0x8034fee8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034feec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034fef0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034fef4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x8034fef8"
     }
   ]
 }
