@@ -1,4 +1,10 @@
-// A fragment of renderlist.cpp (0x800f10fc): CRenderList::Draw (the list
+// A fragment of renderlist.cpp (0x800f0ed4): CRenderList::Wait (empty),
+// Kick (unless the list is empty, the buffer is filled with the clear value
+// when g_bClearRenderList is set, four words per counted entry, and the write
+// cursor rewound to the buffer start) and Restart (Draw, Kick inlined, then
+// GXDrawDone; the fill is an inferred inline helper,
+// which the loop's register use and signed count need; g_ClearValue is
+// file-local in the original and declared extern here), CRenderList::Draw (the list
 // is finished and g_bEmptyList set when nothing was drawn; otherwise every
 // registered bin is reset through its virtual Init) and Render (a tag is
 // opened at the write cursor and appended to the bin's tag chain, the bin
@@ -12,7 +18,11 @@
 // declared first so no table is emitted here.
 class CDmaPacket;
 
+extern "C" void GXDrawDone();
+
 extern bool g_bEmptyList;
+extern bool g_bClearRenderList;
+extern unsigned int g_ClearValue;
 
 /* Inferred: a render tag's link and data. */
 struct CDmaTag {
@@ -42,6 +52,9 @@ public:
 class CRenderList {
 public:
     bool Finish();
+    void Wait();
+    void Kick();
+    void Restart();
     void Draw();
     void Render(CRenderBin&, void*);
 
@@ -53,6 +66,33 @@ public:
     int unknown14;
     CRenderBin* m_bins;
 };
+
+void CRenderList::Wait() {
+}
+
+static inline void ClearList(int count, unsigned int* p) {
+    while (count--) {
+        p[0] = g_ClearValue;
+        p[1] = g_ClearValue;
+        p[2] = g_ClearValue;
+        p[3] = g_ClearValue;
+        p += 4;
+    }
+}
+
+void CRenderList::Kick() {
+    if (g_bEmptyList)
+        return;
+    if (g_bClearRenderList)
+        ClearList(m_count, m_buffer);
+    m_current = (unsigned char*)m_buffer;
+}
+
+void CRenderList::Restart() {
+    Draw();
+    Kick();
+    GXDrawDone();
+}
 
 void CRenderList::Draw() {
     g_bEmptyList = !Finish();

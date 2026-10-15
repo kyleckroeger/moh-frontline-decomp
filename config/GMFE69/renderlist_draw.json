@@ -39,28 +39,46 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f10fc",
-      "size": 308,
+      "address": "0x800f0ed4",
+      "size": 860,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f660",
-      "size": 16,
+      "address": "0x8000f658",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001628c",
-      "size": 24,
+      "address": "0x80016280",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "Wait__11CRenderListFv",
+      "address": "0x800f0ed4",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "Kick__11CRenderListFv",
+      "address": "0x800f0ed8",
+      "size": 252,
+      "binding": 1
+    },
+    {
       "name": "Draw__11CRenderListFv",
       "address": "0x800f10fc",
       "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "Restart__11CRenderListFv",
+      "address": "0x800f0fd4",
+      "size": 296,
       "binding": 1
     },
     {
@@ -72,14 +90,21 @@
   ],
   "externals": {
     "Finish__11CRenderListFv": "0x800f0b80",
+    "GXDrawDone": "0x8012bff0",
+    "g_ClearValue": "0x8034e31c",
+    "g_bClearRenderList": "0x8034e319",
     "g_bEmptyList": "0x8034e318"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_ClearValue"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_ClearValue",
+    "g_bClearRenderList",
     "g_bEmptyList"
   ],
   "original_file": "renderlist.cpp",
