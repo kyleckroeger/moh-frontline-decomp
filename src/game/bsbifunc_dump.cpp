@@ -1,4 +1,8 @@
-// A fragment of bsbifunc.cpp (0x800269f0): script built-ins that create a
+// A fragment of bsbifunc.cpp (0x800266b0): AdjustAim (file-local), which
+// scatters an aim direction: a side vector (the direction crossed with +Z) and an up vector
+// (the side crossed with the direction) are normalised, scaled by two random
+// values within half the given spread either way, added to the direction,
+// and the result is normalised again. Then script built-ins that create a
 // dump object at the calling node's position and its script trigger's
 // rotation (the dump type and flag read from the trigger for trigger types
 // 2, 3 and 8; nothing for type 0 or -1) and set whether the current weapon
@@ -11,16 +15,68 @@
 // globals are named by the mangled symbols; ISceneNode is declared with its
 // virtual functions in the order of __vt__10ISceneNode (GetPosition at +64,
 // GetScriptObject at +96, AsSoldierObject at +148); the vector view (four
-// floats, 8-byte aligned), the quaternion view (built by an inline
+// floats, 8-byte aligned, with inferred cross-product, normalisation and
+// arithmetic helpers; the up vector is reused for the second cross product),
+// the quaternion view (built by an inline
 // constructor), the trigger, script-object, soldier, weapon and built-in
 // record views are inferred (members at their offsets, names not original).
+#include <math.h>
+
 class CVector3 {
 public:
+    CVector3() {}
+    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+    void SetCross(const CVector3& a, const CVector3& b) {
+        x = a.y * b.z - a.z * b.y;
+        y = a.z * b.x - a.x * b.z;
+        z = a.x * b.y - a.y * b.x;
+    }
+    float LengthSq() const { return x * x + y * y + z * z; }
+    void Normalize() {
+        float length = sqrtf(LengthSq());
+        if (length != 0.0f) {
+            x *= 1.0f / length;
+            y *= 1.0f / length;
+            z *= 1.0f / length;
+        }
+    }
+    CVector3& operator*=(float f) {
+        x *= f;
+        y *= f;
+        z *= f;
+        return *this;
+    }
+    CVector3& operator+=(const CVector3& o) {
+        x += o.x;
+        y += o.y;
+        z += o.z;
+        return *this;
+    }
+
     float x;
     float y;
     float z;
     float w;
 } __attribute__((aligned(8)));
+
+float MathFunRandomReal(float, float);
+
+static void AdjustAim(CVector3& dir, float accuracy) {
+    CVector3 up(0.0f, 0.0f, 1.0f);
+    CVector3 side;
+    side.SetCross(dir, up);
+    side.Normalize();
+    up.SetCross(side, dir);
+    up.Normalize();
+    float spread = 0.5f * accuracy;
+    float a = MathFunRandomReal(-spread, spread);
+    float b = MathFunRandomReal(-spread, spread);
+    side *= a;
+    up *= b;
+    dir += side;
+    dir += up;
+    dir.Normalize();
+}
 
 class CQuaternion {
 public:

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 746424,
+    "matching_code_bytes": 747256,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.76677327134992,
+    "percent": 52.82558964831765,
     "categories": {
-      "reconstructed_game": 524976,
+      "reconstructed_game": 525808,
       "restored_library": 221448
     },
-    "matching_functions": 4308
+    "matching_functions": 4309
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -398,7 +398,7 @@
     "config/GMFE69/bsbifunc_death.json": "c6c1d98a8958c183c7404a5ea8f813d76e8c4b1a24ed3f73207a779555ad306d",
     "config/GMFE69/bsbifunc_debug.json": "969a5b9c7c99802fe5f2f8c3f5d554063ab8cf8ced3cf4cff04c153ccd58e35d",
     "config/GMFE69/bsbifunc_distance.json": "74a22d214de648595c2ac265a27f66c74b484f6f79ee12c70dd1be21ec44c75c",
-    "config/GMFE69/bsbifunc_dump.json": "905e1d3b02d0f1b1857ac88a4503fe2dd65572d2e5bf318723822a075ddeb4da",
+    "config/GMFE69/bsbifunc_dump.json": "0859bab338f84360e0c7a53b9ea8491aaac522b92b941cbb9f252465c6b93695",
     "config/GMFE69/bsbifunc_endsound.json": "61f0c1b35221de99a32dbd75249acebe540b1f19361967498a101e665c3d0201",
     "config/GMFE69/bsbifunc_events.json": "8366a926aeee79b9f396c50697816dd8f15de20e4d880d4e40e5c94a5726d166",
     "config/GMFE69/bsbifunc_explosion.json": "fc49d0be0845512b6fb9ef9e3e595010bd9edfcd7c7ce7157eb3dfe5618874f3",
@@ -2471,7 +2471,7 @@
     "src/game/bsbifunc_death.cpp": "7cd8e6e79eef6c5d6e539bcd57729e9f8af755ba56019272b14baffa501447a4",
     "src/game/bsbifunc_debug.cpp": "ec5f2d2cb47c9aae5e58b17d40f28f84fa514dd401e5951098d298b05526c480",
     "src/game/bsbifunc_distance.cpp": "d4e5f37d866b7ba0efb8d60486f3348833c91ebec1c7d8b3b93be4011a6f6c0e",
-    "src/game/bsbifunc_dump.cpp": "eb17dd6c92a4e86038912434ba204f3183b88d57c3e373487b8d187d9b032515",
+    "src/game/bsbifunc_dump.cpp": "8fb277173cfdea8add0d1f057c62e4f247bdc3ed355d7b4e5d730c33c092a6ec",
     "src/game/bsbifunc_endsound.cpp": "4eaa8ad1833778a58083d0d43d0fd1e90d0cb7366d9e3db06342b8adc80476d7",
     "src/game/bsbifunc_events.cpp": "248e55cb6f27566b5621e9965f9ef6f1cd70685c687c071d17e4ee1ddf46832a",
     "src/game/bsbifunc_explosion.cpp": "1f35afcb1b0e551f5fec40a59f4928c4d70ce7cbd0d89f5fa91586c02d2669d1",
@@ -2694,7 +2694,7 @@
     "src/game/ispausegroup.cpp": "0c753a0282f658f20f6b2ac5993ba1dbf816d060854fe6d7b1214ce27300b93a",
     "src/game/ispauselibrary.cpp": "401366234b5be8c2c4373684294ab2f4cb1e03911118fb1f984429b39d9b5c3c",
     "src/game/jaw_controller.cpp": "8c1ffb26c6fecbf77d6e014ceb5aa8cea83116d659188b6de96ef98698ea7c8d",
-    "src/game/jaw_motiontype.cpp": "d5abf23ceec311eae51ad96ba04afc3988c538ccbe6430f7348fd2988ee7a0c0",
+    "src/game/jaw_motiontype.cpp": "b5d4ff68517a7e487c9609f6d0953d17061f5e7fb0e1c901005931673926444e",
     "src/game/light.cpp": "22f1d023455434ab323fc674ae4ac2ad4a370703fdbadb2411677c4c4a427eab",
     "src/game/light_animmanager.cpp": "2b7a2b9080067e2c9aae6442b240292e62829640df505e38b25c262770de22e4",
     "src/game/light_animmanager_dtor.cpp": "2efd3ac7f402f9405cf423f15b9342ac2676b64494b475a4e415588ba83b5655",
@@ -27212,8 +27212,8 @@
     {
       "id": "bsbifunc_dump",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 648,
+      "functions": 4,
+      "code_bytes": 1480,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -27245,8 +27245,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8d700b9b82fb0bd6847c9af439edddf4a680310215d7347672d6b54f97095387",
-      "linked_sha256": "8bdcfc5cf9f056d127685e03e2c89bcb018226d9eeaa785741d59aa83e320345"
+      "object_sha256": "a3403af1870f493061c4ac75d191bc7b141af2a902f8b821f989df9c05f45a2f",
+      "linked_sha256": "080270583e69612c6ccd33142670d83bada71a15db12826400f8e57c79e9d930"
     },
     {
       "id": "bsbifunc_ambselect",
@@ -51398,13 +51398,6 @@
             "kind": "function",
             "name": "BIFunc_FireProjectile__FPPiPv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800266b0",
-            "size": 832,
-            "kind": "function",
-            "name": "AdjustAim__FR8CVector3f",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x80026e7c",

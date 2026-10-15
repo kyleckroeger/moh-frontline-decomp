@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800269f0",
-      "size": 648,
+      "address": "0x800266b0",
+      "size": 1480,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009bc4",
-      "size": 24,
+      "address": "0x80009bbc",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001076c",
-      "size": 36,
+      "address": "0x80010760",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AdjustAim__FR8CVector3f",
+      "address": "0x800266b0",
+      "size": 832,
+      "binding": 0
+    },
     {
       "name": "BIFunc_SetWeaponDraw__FPPiPv",
       "address": "0x80026b28",
@@ -79,6 +85,7 @@
   "externals": {
     "CreateDumpObject__FRC8CVector3RC11CQuaternionii": "0x8003fc2c",
     "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
+    "MathFunRandomReal__Fff": "0x80092d60",
     "Shoot__7CWeaponF16EWeaponShootTypeff": "0x800d6238",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778"
@@ -102,11 +109,35 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034f620"
+      "address": "0x8034f640"
     },
     {
       "section": ".sdata2",
       "offset": 4,
+      "size": 4,
+      "address": "0x8034f620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f628"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f630"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f678"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
       "size": 4,
       "address": "0x8034f6d4"
     }

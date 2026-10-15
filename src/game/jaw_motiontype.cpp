@@ -7,10 +7,9 @@
 // phase position into the jaw value (a quarter sine wave scaled between the
 // values at +0x1c and +0x20). The class, functions and EJawType are named by
 // the mangled symbols; the members and their meaning are inferred from
-// offsets (as in
-// jaw_controller.cpp), and the case order follows the code layout. The
-// constants are entries of the file's .sdata2 pool and the switch table is
-// in .data. The rest of the file is in other units.
+// offsets (as in jaw_controller.cpp), and the case order follows the code
+// layout. The constants are entries of the file's .sdata2 pool and the switch
+// table is in .data. The rest of the file is in other units.
 unsigned int MathFunRandomUI32Raw();
 extern "C" double sin(double);
 
