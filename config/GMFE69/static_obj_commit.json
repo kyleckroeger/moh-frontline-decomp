@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800b031c",
-      "size": 412,
+      "address": "0x800b013c",
+      "size": 1060,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d440",
-      "size": 24,
+      "address": "0x8000d430",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014570",
-      "size": 36,
+      "address": "0x80014558",
+      "size": 72,
       "type": 1
     }
   ],
@@ -74,18 +74,43 @@
       "address": "0x800b03b8",
       "size": 256,
       "binding": 1
+    },
+    {
+      "name": "Draw__13CStaticObjectFR12CDrawContext",
+      "address": "0x800b013c",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "CommitUpdate__13CStaticObjectFv",
+      "address": "0x800b01c8",
+      "size": 340,
+      "binding": 1
+    },
+    {
+      "name": "AttemptUpdate__13CStaticObjectFf",
+      "address": "0x800b04b8",
+      "size": 168,
+      "binding": 1
     }
   ],
   "externals": {
+    "GetVolume__19CLightVolumeManagerFv": "0x80078a3c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "PreTranslate__7CMatrixF8CVector3": "0x80090694",
     "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
-    "UpdatePathMotionDestAndSpeed__13CStaticObjectFv": "0x800aea0c"
+    "SetLightVolume__11CStaticMeshFP14BPDLightVolume": "0x800f2434",
+    "UpdatePathMotionDestAndSpeed__13CStaticObjectFv": "0x800aea0c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "static_obj.cpp",
   "original_file_index": 6731,
   "pooled_sections": [

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 679944,
+    "matching_code_bytes": 680592,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.067118534793565,
+    "percent": 48.11292744377805,
     "categories": {
-      "reconstructed_game": 458496,
+      "reconstructed_game": 459144,
       "restored_library": 221448
     },
-    "matching_functions": 4021
+    "matching_functions": 4024
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -946,7 +946,7 @@
     "config/GMFE69/ssysreal.json": "9e50d3a1743c3946bd968f12808ce4adb4c03c3ce4437b9a4eff20f09ab4d815",
     "config/GMFE69/ssysserv.json": "49f2852bbf809fe6219540041d9217ec9f6389f59e15723314a1482fc110739b",
     "config/GMFE69/static_obj_bounds.json": "017358940e40c16193afee9a8d7a7c2d081178ca69416a081c9866c003b1801a",
-    "config/GMFE69/static_obj_commit.json": "671bf6796c0cb5084247cdacb8ba392f25dfe5dc1686521be19738700c18bedc",
+    "config/GMFE69/static_obj_commit.json": "13782cf0c53505bcbb3e0e058d868ae77368b1603d13103c62e28fa38db00e47",
     "config/GMFE69/static_obj_dtor.json": "f02abdc7c3052b254ff245d33ac389877396f88c3a9c7743d7bff835ce0ea28d",
     "config/GMFE69/static_obj_firedby.json": "e42aa5c7378930075d2b010814c1ef8d3c5f472c8ed042f0f1fb294225794351",
     "config/GMFE69/static_obj_pathbegin.json": "5fbf02a0704920544d2cc28c74c348d08296dbd8b7cc08464547ef55188c0ffe",
@@ -2605,7 +2605,7 @@
     "src/game/sprite_dtor.cpp": "8b2228e3fc8f7af009f687d4211669a300b7279d5d8e2f8bfb58ccfa56771b36",
     "src/game/sprite_init.cpp": "ca86c0e36bcafeb13e8d6dd7329025015df2aee3e685ec1f1e5dd7e3391e7596",
     "src/game/static_obj_bounds.cpp": "42758ce058b28a87feece41d46488b520f1033fcb93e1a8d01f7fc6fbc13e617",
-    "src/game/static_obj_commit.cpp": "89da631c12063a867afac8564b02a5922bc20f7a82286b607558f94c6103a40e",
+    "src/game/static_obj_commit.cpp": "6be8c2db3c2c2e2c79ff1263a4b52b9855b05e241fe74144da9df2b7c50c49a9",
     "src/game/static_obj_dtor.cpp": "d2900e0d83d6c40dd8fd027146a758f25846f8251c15dfb928b9d909a1f9c275",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "0a6b0eb51e6d2d21f73a4ac60151ef4c37183b7dd8bc034c68320546395845d6",
@@ -31856,8 +31856,8 @@
     {
       "id": "static_obj_commit",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 412,
+      "functions": 6,
+      "code_bytes": 1060,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -31889,8 +31889,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f40deb55fdf7e477c4569d216e26e68f5587790f6debab8e1fe5579596710336",
-      "linked_sha256": "831b4b22dc0ee4e05a6f6a071e56d3b48c6fdfd39f330fa0afc445602e0cbf72"
+      "object_sha256": "4c7121ba00ed0e86288a7397b126ad61400407b38bfbfdde4d02444c0c5237e4",
+      "linked_sha256": "30dc9b89c1a3a1d312aa7188637c97759ed9e3a1da6e0a53996beb1e16961efa"
     },
     {
       "id": "static_obj_bounds",
@@ -49733,27 +49733,6 @@
             "size": 1332,
             "kind": "function",
             "name": "OnCollision__13CStaticObjectFRC10CCollision",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b013c",
-            "size": 140,
-            "kind": "function",
-            "name": "Draw__13CStaticObjectFR12CDrawContext",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b01c8",
-            "size": 340,
-            "kind": "function",
-            "name": "CommitUpdate__13CStaticObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b04b8",
-            "size": 168,
-            "kind": "function",
-            "name": "AttemptUpdate__13CStaticObjectFf",
             "evidence": "exception-index"
           },
           {
