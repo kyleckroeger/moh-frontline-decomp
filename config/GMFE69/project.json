@@ -1103,7 +1103,8 @@
     "ShellMenu_unlockedstatus.json",
     "ShellMenu_starstatus.json",
     "AIObject_visionsetup.json",
-    "AIObject_patrolwalk.json"
+    "AIObject_patrolwalk.json",
+    "AIObject_setcover.json"
   ],
   "progress": {
     "code_bytes": 1414572,
