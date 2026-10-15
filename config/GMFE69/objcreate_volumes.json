@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,23 +40,43 @@
     {
       "name": ".text",
       "address": "0x8003c1b0",
-      "size": 476,
+      "size": 544,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a434",
-      "size": 56,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800113fc",
-      "size": 84,
+      "size": 96,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801832c0",
+      "size": 40,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 68
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034da28",
+      "size": 16,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Destroy__11BSGO_PlayerFv",
+      "address": "0x8003c38c",
+      "size": 68,
+      "binding": 1
+    },
     {
       "name": "FreeSphereVolume__FPv",
       "address": "0x8003c1b0",
@@ -107,10 +127,17 @@
     }
   ],
   "externals": {
+    "CleanUp__13CPlayerObjectFv": "0x800a6314",
+    "DestroyBSObject__FP8BSObject": "0x8003a59c",
     "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
+    "GetEmbeddedHitReactionInfo__10BSGO_BasicFv": "0x800290a8",
     "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
+    "GetProximityData__10BSGO_BasicFv": "0x8002b36c",
+    "GetProximityData__11BSGO_PlayerFv": "0x8003bf80",
     "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8",
+    "GetSceneNode__11BSGO_PlayerFv": "0x8003bf78",
     "GetScriptData__10BSGO_BasicFv": "0x800206bc",
+    "GetScriptData__11BSGO_PlayerFv": "0x8003bf70",
     "__ct__15CAnimatedVolumeFv": "0x800c0298",
     "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__10CVolSphere": "0x801896b4",
@@ -119,10 +146,7 @@
     "g_pAnimatedVolumeAllocator": "0x801a1198",
     "g_pVolumeAllocator": "0x801a1170"
   },
-  "undefined_in_discarded_code": [
-    "unknownVirtual3__10BSGO_BasicFv",
-    "unknownVirtual4__10BSGO_BasicFv"
-  ],
+  "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
@@ -133,10 +157,24 @@
   "sda_externals": [],
   "original_file": "objcreate.cpp",
   "original_file_index": 1440,
-  "stripped_sections": [
-    ".data"
-  ],
   "weak_duplicates": [
     "__vt__10BSGO_Basic"
+  ],
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 12,
+      "address": "0x8016ee1c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
+      "size": 11,
+      "address": "0x8016ee28"
+    }
   ]
 }

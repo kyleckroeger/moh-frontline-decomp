@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 692052,
+    "matching_code_bytes": 692120,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.923066482299944,
+    "percent": 48.92787359003289,
     "categories": {
-      "reconstructed_game": 470604,
+      "reconstructed_game": 470672,
       "restored_library": 221448
     },
-    "matching_functions": 4053
+    "matching_functions": 4054
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -647,7 +647,7 @@
     "config/GMFE69/objcreate_create.json": "78e2e45e1384d07383fe5d951cf87350f1fda306b6410c29996374f4627185db",
     "config/GMFE69/objcreate_dump.json": "7d5b8f37126976784d28facfab6738be8b14e79d2b2aad0f8ab51bf4a24377df",
     "config/GMFE69/objcreate_thrown.json": "5c10a092e4b410af3d31a4776b0541da7f992a8c2164ee30764e188f76009d63",
-    "config/GMFE69/objcreate_volumes.json": "484e532e65dbb65653fd98fbe261e1450501bb417e192bdb856eaa32e8f7b802",
+    "config/GMFE69/objcreate_volumes.json": "483c3c7941435bc0fcda1d9be9f82f445b21a4c6b0a57527e21dbe7fa7dc2121",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
     "config/GMFE69/orient.json": "72f98d12bf7b19da6ff9a44a8ce663105d3d9487243682393bb08cac62bb16bd",
     "config/GMFE69/pad.json": "7224d4f0d776e7eb7e4a31710a8da2314d18ca859f84d972016cd4aae36ba462",
@@ -2487,7 +2487,7 @@
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
-    "src/game/objcreate_volumes.cpp": "37e33f3014a33220b45325c87ae6ad10bde2e1d5305f03e334377332d9dd3b12",
+    "src/game/objcreate_volumes.cpp": "ade90b093521074685e489563b85cdf5e1bb8cc864a5ad2b32a748128d92471a",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
     "src/game/particlesystem.cpp": "9b239ec971f131cf3e2de9f80d63720bdcba949aade9aa54f41fdde6be34cf10",
     "src/game/particlesystem_active.cpp": "b91cdcfc6c5ebcc5b1c4f442ddac8d0bf9d297fb5977ae97a0db63a4add5fb6d",
@@ -2915,7 +2915,7 @@
     "tools/formats.py": "3124d742d0518c913dfc575602bba63befbd9e0e78220e5a85059cda277f8f81",
     "tools/import_disc.py": "a76b0fc8a963fa5e26e432e8261c26f199989c7e2fc2c90cf0116878db15597b",
     "tools/objdiff_config.py": "4133276adf513df6f4aad3d70df298f0bb0f8ced4ae1abc72703e8e0dc9bb13a",
-    "tools/port_unit.py": "01b0cb27a6fb2e9a8b7111be02d399a55a5309992c73cc3ddfedc6cfeea2c519",
+    "tools/port_unit.py": "768ce140696c14f7bf9439fe71eb841459e1e6abde7dea47056ad770ce80fc07",
     "tools/progress_report.py": "6f77d4f04165a2875275be1fe3d5a84fe128690c3b850c7ea3aaf1e1e307be1f",
     "tools/project_build.py": "31d9424038146382f004e3454c38c45874ecc8ac21c74c32ffcd388bdbbb88fe",
     "tools/reconstruct.py": "ae713fceeb3eef9f113af483ad5e3d5d6f1123fc424d0595099247e3e07a4cf2",
@@ -24485,8 +24485,8 @@
     {
       "id": "objcreate_volumes",
       "category": "reconstructed_game",
-      "functions": 8,
-      "code_bytes": 476,
+      "functions": 9,
+      "code_bytes": 544,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24508,7 +24508,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -24518,8 +24518,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "f0511ab41010705e93771bd79040618bda9ab0e452d88a9793ea39b2148a6fcd",
-      "linked_sha256": "83d0404c0df1ad6fd1ac2514ffa5073dd4b07adc65b8aaf3bd180107381641f5"
+      "object_sha256": "97b02d373c2580c00654d615d46512af8b7cf3629542f7cc7a8c1daaf70156d6",
+      "linked_sha256": "47b2993d179a7cd361475604f06a23273082e68bd5d0e907bf14c7efdc9f45ca"
     },
     {
       "id": "weapon_head",
@@ -46297,13 +46297,6 @@
             "size": 552,
             "kind": "function",
             "name": "NonVisDestructFarthestSoldiers__Fi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003c38c",
-            "size": 68,
-            "kind": "function",
-            "name": "Destroy__11BSGO_PlayerFv",
             "evidence": "exception-index"
           },
           {

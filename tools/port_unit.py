@@ -168,11 +168,21 @@ def match(obj, original, file_index, duplicates=(), pooled=()):
     if not any(names[i] in addresses for i in layout):
         raise ValueError("No compiled function was found in the original file record"
                          if file_index is not None else "No compiled global function was found in the original")
+    # Relocations inside a weak duplicate (a dropped virtual table's entries)
+    # must not pin anything: the duplicate is not placed.
+    dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
+                     if s["name"] in duplicates and s["section"] and s["section"] < 0xFF00]
+
+    def in_dropped(section, where):
+        return any(section == d and a <= where < b for d, a, b in dropped_spans)
+
     # Relocations pin the rest; repeat until no new section is placed.
     changed = True
     while changed:
         changed = False
         for section, where, kind, symbol, addend in relocations(obj):
+            if in_dropped(section, where):
+                continue
             base = addresses.get(names[section])
             where = position(section, where)
             if base is None or where is None or base + where not in original.relocs:
@@ -201,15 +211,11 @@ def match(obj, original, file_index, duplicates=(), pooled=()):
     # A section nothing placed refers to (extabindex) is pinned by its own
     # references to placed code: the original relocation from the section of
     # the same name to the same target fixes its base.
-    # Relocations inside a weak duplicate (a dropped virtual table's entries)
-    # must not pin the section: the duplicate is not placed.
-    dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
-                     if s["name"] in duplicates and s["section"] and s["section"] < 0xFF00]
     for section, where, kind, symbol, addend in relocations(obj):
         name = names[section]
         if name in addresses or symbol["section"] not in layout or names[symbol["section"]] not in addresses:
             continue
-        if any(section == d and a <= where < b for d, a, b in dropped_spans):
+        if in_dropped(section, where):
             continue
         offset = position(symbol["section"], symbol["address"] + addend)
         if offset is None:
@@ -222,6 +228,8 @@ def match(obj, original, file_index, duplicates=(), pooled=()):
     while changed:
         changed = False
         for section, where, kind, symbol, addend in relocations(obj):
+            if in_dropped(section, where):
+                continue
             base = addresses.get(names[section])
             where = position(section, where)
             if base is None or where is None or base + where not in original.relocs:
@@ -253,12 +261,17 @@ def referenced(obj, index, kept, addresses, duplicates=()):
     return False
 
 
-def kept_span(obj, index, kept, original, locals_, base=None):
-    """Compiled [start, end) of objects the original kept, if MW trimmed the ends."""
+def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
+    """Compiled [start, end) of objects the original kept, if MW trimmed the ends.
+
+    Weak duplicates (a compiled copy of a weak table the original links from
+    elsewhere) are never kept: references to them link to the original copy.
+    """
     symbols = list(obj.symbols())
     objects = [s for s in symbols if s["section"] == index and s["type"] == 1 and s["size"]]
     keep = {(s["address"], s["size"]) for s in objects
-            if not s["name"].startswith("@") and find(s, original, locals_) is not None}
+            if not s["name"].startswith("@") and s["name"] not in duplicates
+            and find(s, original, locals_) is not None}
     if base is not None and obj.sections[index]["type"] == 8:
         # Compiler-numbered zero-fill objects (a static initialiser's registration
         # records) are reached through a block base register, not their own
@@ -286,7 +299,7 @@ def kept_span(obj, index, kept, original, locals_, base=None):
         target = symbol["address"] + addend
         if any(symbol["section"] == c and a <= target < b for c, a, b in kept_ranges):
             for s in by_section.get(where_section, []):
-                if s["address"] <= where < s["address"] + s["size"]:
+                if s["address"] <= where < s["address"] + s["size"] and s["name"] not in duplicates:
                     if where_section == index:
                         keep.add((s["address"], s["size"]))
                     roots.append((where_section, s["address"], s["address"] + s["size"]))
@@ -307,7 +320,8 @@ def kept_span(obj, index, kept, original, locals_, base=None):
                         roots.append((symbol["section"], s["address"], s["address"] + s["size"]))
                 continue
             for s in objects:
-                if s["address"] <= target < s["address"] + s["size"] and (s["address"], s["size"]) not in keep:
+                if (s["address"] <= target < s["address"] + s["size"] and (s["address"], s["size"]) not in keep
+                        and s["name"] not in duplicates):
                     keep.add((s["address"], s["size"]))
                     roots.append((index, s["address"], s["address"] + s["size"]))
     if not keep:
@@ -390,7 +404,7 @@ def draft(args):
                              "size": layout[section["index"]][1], "type": 1})
             continue
         span = kept_span(obj, section["index"], kept, original, original.locals_of(file_index),
-                         addresses[section["name"]])
+                         addresses[section["name"]], set(args.weak_duplicate))
         if span is None and dropped:
             stripped.append(section["name"])
             continue

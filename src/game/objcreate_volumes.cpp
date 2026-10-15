@@ -4,7 +4,9 @@
 // the next free element (when there is one) and each Free function returns
 // the element. BSGO_Basic::Destroy (weak, empty) follows them, then
 // DelayDestroyObject (marks the object's scene node for destruction, mode 2,
-// and clears the script object's queue identity to -1). The file name is
+// and clears the script object's queue identity to -1), then
+// BSGO_Player::Destroy (cleans up the player, destroys the script object and
+// clears both pointers; the key function of __vt__11BSGO_Player). The file name is
 // this project's; the original record is objcreate.cpp. BSGO_Basic's three
 // words before its table pointer, its table (five slots, the first three
 // named after the bsbifunc views, the last two unknown), the script object's
@@ -67,9 +69,29 @@ public:
     virtual void Destroy();
     virtual int GetScriptData();
     virtual ISceneNode* GetSceneNode();
-    virtual void unknownVirtual3();
-    virtual void unknownVirtual4();
+    virtual void* GetProximityData(); /* result type not known */
+    virtual void* GetEmbeddedHitReactionInfo(); /* result type not known */
 
+};
+
+class CPlayerObject {
+public:
+    void CleanUp();
+};
+
+class BSObject;
+void DestroyBSObject(BSObject*);
+
+/* inferred: the player script object (see player_ctor.cpp), its player at +44 */
+class BSGO_Player : public BSGO_Basic {
+public:
+    virtual void Destroy();
+    virtual int GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+    virtual void* GetProximityData();
+
+    unsigned char unknown10[28];
+    CPlayerObject* m_player;
 };
 
 extern BSUtilObjectInstanceMemoryAllocator g_pVolumeAllocator;
@@ -107,4 +129,11 @@ void DelayDestroyObject(BSGO_Basic* object) {
         object->GetSceneNode()->MarkForDestruction(2);
     if (object->m_object)
         object->m_object->queueIdentity = -1;
+}
+
+void BSGO_Player::Destroy() {
+    m_player->CleanUp();
+    DestroyBSObject((BSObject*)m_object);
+    m_object = 0;
+    m_player = 0;
 }
