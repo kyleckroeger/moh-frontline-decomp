@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 722724,
+    "matching_code_bytes": 723352,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.09135484089887,
+    "percent": 51.13574989466779,
     "categories": {
-      "reconstructed_game": 501276,
+      "reconstructed_game": 501904,
       "restored_library": 221448
     },
-    "matching_functions": 4173
+    "matching_functions": 4175
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -181,7 +181,7 @@
     "config/GMFE69/Pad.json": "0b2c4b221832a5e352c0236d90c02e9938bb4a00392741832f1510da07a7770d",
     "config/GMFE69/Padclamp.json": "570f443e7a228e96a9e869248c68a59a1d9e68052c20523d1c9a482772bfe76b",
     "config/GMFE69/PathNodeList.json": "34b38f257aac355b91d2f9445d576d0223a8048609af71e85c29c7505ae7ebaf",
-    "config/GMFE69/PathNodeList_closest.json": "e62e196f49e0b9f54864cf86f75d2170d7de9891633d873049235212660de75b",
+    "config/GMFE69/PathNodeList_closest.json": "66a702f4e0052490c726d5fee798dafe7580707981e5acdd7b46070fdc85639c",
     "config/GMFE69/PathNodeList_hashmap.json": "f17589d19801d73c4a867563bb3fb3d236004a3f211c4c0edfc86fdc5c131207",
     "config/GMFE69/Pause.json": "c951796a85f2b4e4117496b88679ef9d2c01f318ca6693f8ab76810e4210a4f8",
     "config/GMFE69/Pause_reset.json": "0541833ccc8dbd3e167ec5ffd165607e5f4b8c74ede37929bca1e032c9885957",
@@ -2211,7 +2211,7 @@
     "src/game/Moh2_sendrenderlist.cpp": "124d7cad394be6d0112f4aa8ed9d33ef39d8378dd6e4672a9c51442e4d76b136",
     "src/game/ObstacleAvoidance.cpp": "a8f1dcb408e0e7cc1208a87cb425296ca4bfd789a487ba814952fcc8c4ad6906",
     "src/game/PathNodeList.cpp": "4d07813471d9d4fc31984159dbc04bd6875ace05f4ceb3267d05c7be06169ad9",
-    "src/game/PathNodeList_closest.cpp": "fadda6262b4fa724bad3c7bccc4ff6de73f610a6d056051cea860384b4c5357b",
+    "src/game/PathNodeList_closest.cpp": "d813eb3b434d43e6ede7514b7472c7aedf4126c6d7d7d60d07656df355678259",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
     "src/game/Pause.cpp": "2d6d321b8fcd54038857a76293913fd0c891dd06d69d5bda64af7fe8b1519da8",
     "src/game/Pause_reset.cpp": "a03283bbf6a4af122c4d5c85f1ff871e769bcaff341cbc15af5ab9d3d8f06fda",
@@ -48432,8 +48432,8 @@
     {
       "id": "PathNodeList_closest",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 580,
+      "functions": 3,
+      "code_bytes": 1208,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -48465,8 +48465,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "870bfe7603fb9dab1b65158581e3d80b65fa0152caefaea1b8a85676d50e0a6d",
-      "linked_sha256": "8d002be34000d765362de506d5dbd7bd003d0a7d092231aab643f021d41f5d50"
+      "object_sha256": "4086f6e534d45bdb89f4afbf40ad020ecb1d4fdd8435058f5410d467e74e94ce",
+      "linked_sha256": "d68697cd352ecc8fc9475fe796253f94943187533cb9ac2146fec3608f9cd575"
     }
   ],
   "code_map": {
@@ -49823,20 +49823,6 @@
             "kind": "function",
             "name": "GreedySearchAwayFromPoint__13CPathNodeListCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionf",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005552c",
-            "size": 612,
-            "kind": "function",
-            "name": "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionRC20CAIFilterRealVector3",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80055790",
-            "size": 16,
-            "kind": "function",
-            "name": "GetPathNodeByID__13CPathNodeListCFi",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800557a0",

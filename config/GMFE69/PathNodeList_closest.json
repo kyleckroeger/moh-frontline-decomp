@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800552e8",
-      "size": 580,
+      "size": 1208,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000abbc",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011d20",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,18 @@
       "name": "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionb",
       "address": "0x800552e8",
       "size": 580,
+      "binding": 1
+    },
+    {
+      "name": "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionRC20CAIFilterRealVector3",
+      "address": "0x8005552c",
+      "size": 612,
+      "binding": 1
+    },
+    {
+      "name": "GetPathNodeByID__13CPathNodeListCFi",
+      "address": "0x80055790",
+      "size": 16,
       "binding": 1
     }
   ],
@@ -109,6 +121,18 @@
       "offset": 24,
       "size": 8,
       "address": "0x8034fb08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034fb10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x8034fb18"
     }
   ]
 }

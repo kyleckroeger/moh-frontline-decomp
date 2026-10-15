@@ -8,7 +8,11 @@
 // the node view (enabled flag bit 7 of +17), the map's find and iterator
 // (as in publisher_reset.cpp), the inline cell-key helper and distance, and
 // the copy of each node's position it works on are inferred. The rest of the
-// file is in other units.
+// file is in other units. The second GetClosestNode(position, direction)
+// prefers, among the cell's enabled nodes ahead (direction dot product above
+// 0.01), the one with the least squared distance over that product, else the
+// nearest of the rest (squared distance, both below 25 and with a clear line);
+// GetPathNodeByID indexes the node array (+0).
 extern "C" {
 #include <math.h>
 }
@@ -46,6 +50,11 @@ public:
 };
 
 class CAIFilterObject;
+
+class CAIFilterRealVector3 : public CAIFilterRealPosition {
+public:
+    float w;
+} __attribute__((aligned(8)));
 
 class CAIFilterGlobal {
 public:
@@ -110,6 +119,7 @@ public:
     };
 
     CPathNode* GetClosestNode(const CAIFilterRealPosition&, bool) const;
+    CPathNode* GetClosestNode(const CAIFilterRealPosition&, const CAIFilterRealVector3&) const;
     static unsigned int MakeKey(const CAIFilterRealPosition& p) {
         int cy = (int)((p.y + 2.5f) / 5.0f) + 16384;
         int cx = (int)((p.x + 2.5f) / 5.0f) + 16384;
@@ -121,7 +131,11 @@ public:
         return ((cy & 0x7fff) << 16) + ((cx & 0x7fff) << 1);
     }
 
+    CPathNode* GetPathNodeByID(int) const;
+
     static dwi::hash_map<unsigned int, PathNodes> s_pathNodeMap;
+
+    CPathNode* m_nodes;
 };
 
 CPathNode* CPathNodeList::GetClosestNode(const CAIFilterRealPosition& position, bool ignoreCollision) const {
@@ -151,4 +165,47 @@ CPathNode* CPathNodeList::GetClosestNode(const CAIFilterRealPosition& position, 
         }
     }
     return closest;
+}
+
+CPathNode* CPathNodeList::GetClosestNode(const CAIFilterRealPosition& position,
+                                         const CAIFilterRealVector3& direction) const {
+    dwi::hash_map<unsigned int, PathNodes>::iterator it = s_pathNodeMap.find(MakeKey(position));
+    if (it == s_pathNodeMap.end())
+        return 0;
+    float bestAhead = 25.0f;
+    int count = it->second.count;
+    CPathNode** nodes = it->second.nodes;
+    CPathNode* ahead = 0;
+    CPathNode* closest = 0;
+    float best = bestAhead;
+    for (int i = 0; i < count; nodes++, i++) {
+        CPathNode* node = *nodes;
+        if (node->m_enabled) {
+            CAIFilterRealPosition copy __attribute__((aligned(8))) = node->m_position;
+            float dx = copy.x - position.x;
+            float dy = copy.y - position.y;
+            float dz = copy.z - position.z;
+            float dot = dx * direction.x + dy * direction.y + dz * direction.z;
+            if (dot > 0.01) {
+                float score = (dx * dx + dy * dy + dz * dz) / dot;
+                if (score < bestAhead && !CAIFilterGlobal::CheckCollisionLineToEnvironment(copy, position, 0)) {
+                    bestAhead = score;
+                    ahead = node;
+                }
+            } else {
+                float d = dx * dx + dy * dy + dz * dz;
+                if (d < best && !CAIFilterGlobal::CheckCollisionLineToEnvironment(copy, position, 0)) {
+                    best = d;
+                    closest = node;
+                }
+            }
+        }
+    }
+    if (ahead)
+        return ahead;
+    return closest;
+}
+
+CPathNode* CPathNodeList::GetPathNodeByID(int id) const {
+    return &m_nodes[id];
 }
