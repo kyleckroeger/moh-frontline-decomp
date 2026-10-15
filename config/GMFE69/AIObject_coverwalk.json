@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x8004ab24",
-      "size": 188,
+      "size": 928,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a784",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800118f4",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "StartCoverPointWalk__9CAIObjectFb",
+      "address": "0x8004abe0",
+      "size": 740,
+      "binding": 1
+    },
     {
       "name": "CommitCoverPointWalkToStored__9CAIObjectFv",
       "address": "0x8004ab24",
@@ -65,16 +71,28 @@
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE": "0x80052f6c",
     "GetDistanceSquaredXYReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6d0",
+    "GetDistanceSquaredXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6f4",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE": "0x8005314c",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80054304",
-    "g_aigAIFilterGlobalObject": "0x801c6cd4"
+    "RemoveElement__11CLinkedListFP18CLinkedListElement": "0x800535a0",
+    "SetupAStarPathWalk__9CAIObjectFRC20CAIFilterRealVector3RC20CAIFilterRealVector3b": "0x8004c720",
+    "__dt__11CSearchNodeFv": "0x80056210",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "AIObject.cpp",
   "original_file_index": 1752,
   "pooled_sections": [
@@ -98,6 +116,12 @@
       "offset": 8,
       "size": 4,
       "address": "0x8034f860"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f8f4"
     }
   ]
 }
