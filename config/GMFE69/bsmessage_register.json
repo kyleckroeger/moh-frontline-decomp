@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8003a1bc",
-      "size": 292,
+      "size": 312,
       "type": 1
     }
   ],
@@ -50,10 +50,17 @@
       "address": "0x8003a1bc",
       "size": 292,
       "binding": 1
+    },
+    {
+      "name": "BSEndMessage__Fv",
+      "address": "0x8003a2e0",
+      "size": 20,
+      "binding": 1
     }
   ],
   "externals": {
     "g_MessageRegistrationArray": "0x8034e818",
+    "g_MessageRegistrationFreeList": "0x8034e81c",
     "g_MessageRegistrationFreeListHead": "0x8034e820"
   },
   "undefined_in_discarded_code": [],
@@ -61,11 +68,13 @@
   "upstream": {},
   "local_externals": [
     "g_MessageRegistrationArray",
+    "g_MessageRegistrationFreeList",
     "g_MessageRegistrationFreeListHead"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "g_MessageRegistrationArray",
+    "g_MessageRegistrationFreeList",
     "g_MessageRegistrationFreeListHead"
   ],
   "original_file": "bsmessage.cpp",

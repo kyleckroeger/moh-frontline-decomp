@@ -8,6 +8,7 @@
 // entry, pushed onto the front of its message's list. The function, the
 // structure names and the globals are named by the symbols; the members
 // follow bsmessage_remove.cpp and are otherwise inferred from offsets.
+// BSEndMessage clears the registration array and free-list pointers.
 struct BSObject;
 struct BSMachineThread_struct;
 
@@ -31,6 +32,7 @@ struct BSMessageRegistration_struct {
 
 extern BSMessageRegistration_struct** g_MessageRegistrationArray;
 extern BSMessageRegistration_struct* g_MessageRegistrationFreeListHead;
+extern BSMessageRegistration_struct* g_MessageRegistrationFreeList;
 
 BSMessageRegistration_struct* BSRegisterMessage(BSCode_MessageHandlerEntry_struct* entry, BSObject* object,
                                                 unsigned short value, BSMachineThread_struct* thread,
@@ -70,4 +72,10 @@ BSMessageRegistration_struct* BSRegisterMessage(BSCode_MessageHandlerEntry_struc
         registration->prev = 0;
     }
     return registration;
+}
+
+int BSEndMessage() {
+    g_MessageRegistrationArray = 0;
+    g_MessageRegistrationFreeList = 0;
+    return 0;
 }
