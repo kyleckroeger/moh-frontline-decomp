@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80059974",
-      "size": 556,
+      "size": 1000,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ae8c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011fa8",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -73,6 +73,12 @@
       "name": "BIFunc_AlarmIsAvailable__FPPiPv",
       "address": "0x800599f8",
       "size": 424,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_GetClosestAlarm__FPPiPv",
+      "address": "0x80059ba0",
+      "size": 444,
       "binding": 1
     }
   ],

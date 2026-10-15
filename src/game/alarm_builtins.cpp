@@ -1,7 +1,8 @@
-// A fragment of alarm.cpp; the file name is this project's. Alarm built-in script functions, the first three of the file: setting the
-// alarm-activated flag from the first argument, pushing it back, and
+// A fragment of alarm.cpp; the file name is this project's. Alarm built-in script functions, the first four of the file: setting the
+// alarm-activated flag from the first argument, pushing it back,
 // AlarmIsAvailable (whether an unoccupied alarm lies within 50 units of the
-// calling node, through an inline node-to-node distance helper whose name,
+// calling node) and GetClosestAlarm (the script object of the closest such
+// alarm, or 0; both through an inline node-to-node distance helper whose name,
 // NodeDistance, is inferred, and the MSL inline sqrtf). The
 // globals are named by the symbols; the built-in record view (16 bytes,
 // argument count at +10, the first argument's depth at +12) is inferred, as
@@ -66,7 +67,7 @@ public:
     virtual int IsDrawEnabled() const;
     virtual EClsnId GetCollisionId() const;
     virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
+    virtual BSObject* GetScriptObject() const;
     virtual void TriggerScriptEvent(int, void*, bool);
     virtual void HandleBulletCollision(CBullet*, const CCollision&);
     virtual void* AsMovingNode();
@@ -115,6 +116,11 @@ extern inline float sqrtf(float x)
     }
     return x;
 }
+
+union BSValueView {
+    int i;
+    BSObject* object;
+};
 
 struct AlarmInfo {
     ISceneNode* m_object;
@@ -194,4 +200,34 @@ void BIFunc_AlarmIsAvailable(int** stack, void* object) {
     }
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = available;
+}
+
+void BIFunc_GetClosestAlarm(int** stack, void* object) {
+    ISceneNode* alarm;
+    dwi::list_node<AlarmInfo>* node;
+    dwi::list_node<AlarmInfo>* best;
+    dwi::list_node<AlarmInfo>* end;
+    float bestDistance;
+    float distance;
+    end = &g_alarms.m_head;
+    best = end;
+    bestDistance = 50.0f;
+    for (node = g_alarms.m_head.m_next; node != end; node = node->m_next) {
+        alarm = node->m_data.m_object;
+        distance = NodeDistance((ISceneNode*)object, alarm);
+        if (distance < bestDistance && node->m_data.m_script == 0) {
+            best = node;
+            bestDistance = distance;
+        }
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    if (best != end) {
+        BSValueView value;
+        value.object = best->m_data.m_object->GetScriptObject();
+        *(BSValueView*)*stack = value;
+    } else {
+        BSValueView value;
+        value.i = 0;
+        *(BSValueView*)*stack = value;
+    }
 }
