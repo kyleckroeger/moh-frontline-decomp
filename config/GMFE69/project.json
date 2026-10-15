@@ -1183,7 +1183,8 @@
     "Gecko_ExceptionPPC_endcatch.json",
     "animplayer_draw.json",
     "skybox.json",
-    "sbasync_download.json"
+    "sbasync_download.json",
+    "sbasync_done.json"
   ],
   "progress": {
     "code_bytes": 1414572,
