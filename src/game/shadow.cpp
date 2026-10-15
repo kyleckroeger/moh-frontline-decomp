@@ -6,11 +6,15 @@
 // alpha, projection distance, scale, projection height and z delta range at
 // +540.. in steps of 8) and makes it the compartments' shadow texture. The
 // classes, functions and globals are named by the symbols (the globals are
-// file-local in the original and declared extern here; g_texture's size is
-// its symbol's); the members, the resource views and the meaning of the
-// first values are inferred. CCharacterShadow has no base class (its RTTI
+// file-local in the original and declared extern here, except g_texture);
+// the members, the resource views and the meaning of the first values are
+// inferred. CCharacterShadow has no base class (its RTTI
 // record lists none); the vtable follows __vt__16CCharacterShadow. InitClass,
-// after them, is empty. The rest of the file is in other units.
+// after them, is empty, and the file's static initialiser is empty too (it
+// constructs g_texture, whose inline constructor does nothing; the source is
+// named shadow.cpp because the initialiser's name comes from it, and the unit
+// defines g_texture, file-local as in the image). The rest of the file is in
+// other units.
 class CDrawContext;
 struct ShapeFile;
 struct LevelFileContentsStruct_;
@@ -32,6 +36,7 @@ public:
 
 class CTexture {
 public:
+    CTexture() {}
     void Set(ShapeFile*, bool);
 
     unsigned char unknown00[64];
@@ -82,7 +87,7 @@ extern float g_ShadowScale;
 extern float g_ProjectionHeight;
 extern float g_zDeltaMin;
 extern float g_zDeltaMax;
-extern CTexture g_texture;
+static CTexture g_texture;
 
 class CCharacterShadow {
 public:
