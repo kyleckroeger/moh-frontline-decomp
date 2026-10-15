@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 687064,
+    "matching_code_bytes": 687264,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.57045099153666,
+    "percent": 48.58458954369237,
     "categories": {
-      "reconstructed_game": 465616,
+      "reconstructed_game": 465816,
       "restored_library": 221448
     },
-    "matching_functions": 4043
+    "matching_functions": 4044
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -435,7 +435,7 @@
     "config/GMFE69/collision_head.json": "043ce75e51d8be5b1a656db62cc8172f9165e93bd10b66e2b5c06a9861892916",
     "config/GMFE69/collisionvolume.json": "4b42015c953c1335d95d5edae0ec810f53e76935e2b6b0e446fd20b039dbc795",
     "config/GMFE69/collisionvolume_ctor.json": "74a3ffe0b9e4cb4a528ab49d378a9927cb04979868253a451f08228a030492b3",
-    "config/GMFE69/collisionvolume_rows.json": "0f8077a02165836278ca1deb17b647eb0462e2710072860d7fad4b6d814b354d",
+    "config/GMFE69/collisionvolume_rows.json": "52dc99e553d3dddea340d4773d14492573eab42a6e79c0ddbf02b95c72cd614f",
     "config/GMFE69/compartment.json": "4a503c9a78fd337a9a3815669a5feb3649585619f92cf4b0ec811408e6c10696",
     "config/GMFE69/compartment_bindtors.json": "951ce58858c5898cf6aad90776d271d5a2063b2eee5a31deded1d5c5804d456e",
     "config/GMFE69/compartment_bins.json": "4c750e628935453e0ab25cfb5e9f9f7241afe8249fc112ec59fe931c0d6cf7a8",
@@ -2366,7 +2366,7 @@
     "src/game/collision_head.cpp": "bae785796e0663872c508e54a8352bb756ee55b8c6af317fff2ceb8898ffb29d",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
     "src/game/collisionvolume_ctor.cpp": "0c3d7d24cf70b216ef8f6f78f03cf55e040c5c6e26208dd4bbfbb4790dcde5d6",
-    "src/game/collisionvolume_rows.cpp": "99bf2752de600fe57337217065052826b62f776cd7fb728d5dcddead6ed52cb0",
+    "src/game/collisionvolume_rows.cpp": "9aea5d2fa6efdf7a487978f6279d6287548603bcf16f07d3b92aa4408ea471e0",
     "src/game/compartment.cpp": "961e8dcd34f7a1f1ba19e0007164b1c9a19163487825e83430b3023ed47ef0d0",
     "src/game/compartment_bindtors.cpp": "bdbb1db55d3fbcdefa25457f0c027c104e49b3b05c53edc52ffb85bd208717ca",
     "src/game/compartment_bins.cpp": "409ec7f06c13ee2414a3b803f316f0d77fa3c119c82e96acce7bec67d2f649d4",
@@ -23896,8 +23896,8 @@
     {
       "id": "collisionvolume_rows",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 204,
+      "functions": 8,
+      "code_bytes": 404,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23929,8 +23929,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "77960665b37a70f728abd6a5e158690fb86d96cf5e72e88d18111a77c42231e0",
-      "linked_sha256": "9af958edfb3353de6e9054683f51ffb6dacaec464f85ed54fa38fd35df9e8dbf"
+      "object_sha256": "02ecf4b90b6c04fe7ea7f568ed9b908f30f80ed543be130f3b8df12244d18077",
+      "linked_sha256": "e90f3e561a47062f23a4bd626c7693431c35a0ec3dfa019b09bf7f739107cd3f"
     },
     {
       "id": "light_rows",
@@ -49321,13 +49321,6 @@
             "size": 460,
             "kind": "function",
             "name": "HandleBulletCollision__16CCollisionVolumeFP7CBulletRC10CCollision",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009806c",
-            "size": 200,
-            "kind": "function",
-            "name": "BeginUpdate__16CCollisionVolumeFf",
             "evidence": "exception-index"
           }
         ]

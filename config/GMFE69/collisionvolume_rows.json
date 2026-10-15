@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80098134",
-      "size": 204,
+      "address": "0x8009806c",
+      "size": 404,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cb4c",
-      "size": 40,
+      "address": "0x8000cb44",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013c34",
-      "size": 60,
+      "address": "0x80013c28",
+      "size": 72,
       "type": 1
     }
   ],
@@ -97,6 +97,12 @@
       "name": "GetLocalBoundingVolume__16CCollisionVolumeCFQ210ISceneNode11EVolumeType",
       "address": "0x80098134",
       "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "BeginUpdate__16CCollisionVolumeFf",
+      "address": "0x8009806c",
+      "size": 200,
       "binding": 1
     }
   ],
