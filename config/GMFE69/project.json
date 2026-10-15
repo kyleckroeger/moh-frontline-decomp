@@ -1039,7 +1039,8 @@
     "anim_obj_draw.json",
     "anim_obj_update.json",
     "anim_obj_collide.json",
-    "hierobject_playback.json"
+    "hierobject_playback.json",
+    "anim_obj_bullet.json"
   ],
   "progress": {
     "code_bytes": 1414572,

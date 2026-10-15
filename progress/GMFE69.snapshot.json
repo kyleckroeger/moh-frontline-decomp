@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 687724,
+    "matching_code_bytes": 688760,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.61710821365049,
+    "percent": 48.69034591381704,
     "categories": {
-      "reconstructed_game": 466276,
+      "reconstructed_game": 467312,
       "restored_library": 221448
     },
-    "matching_functions": 4045
+    "matching_functions": 4046
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -240,6 +240,7 @@
     "config/GMFE69/anim_callback_init.json": "0c36816422870947bdb91767302b417a9d703b59dc8f059d331dcdd47943b382",
     "config/GMFE69/anim_callback_weapon.json": "4c37f800d5ded4d80a84d27643120592a7ad0004cbc519a0ebf2e6b25e4f5a68",
     "config/GMFE69/anim_obj.json": "a247bcba3a25c2b2a8c68697e25453fbe49fadf6c7925bee298427fc0856679b",
+    "config/GMFE69/anim_obj_bullet.json": "0d8da6c4ce8068d64441eb1d073150d3d385c40e91a158d992ad2ebd0c57b666",
     "config/GMFE69/anim_obj_collide.json": "554e0f1e2710749da39f6aa429770961f552f03337272cdc524962f8e3c8c2ab",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
     "config/GMFE69/anim_obj_draw.json": "8dcee46deff75776476d8b84ebbcdb3f3b486c18fa40e70e0e179606823b5017",
@@ -700,7 +701,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f7806b5f847f4e20bcdf4223ffa4974c08b57762e3d49b39443f68153567d7c4",
+    "config/GMFE69/project.json": "0195908dc50b7c485e90fd8ea9695fcac2f759884b59c19becebcb9c0f901180",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2181,6 +2182,7 @@
     "src/game/anim_callback_init.cpp": "73a69fd079e812615abbcff91179c9318cecafcadfec6c9fb808b67ce610aaf8",
     "src/game/anim_callback_weapon.cpp": "ffad882baa043702ec84a4fe2edc1b903a7645dab7cc3d35614f51904a5ed312",
     "src/game/anim_obj.cpp": "6312344d8f151cabc650590c2b2682ca2b7f0fd0074bed26008ecc032ba2dc40",
+    "src/game/anim_obj_bullet.cpp": "e9120613130f971a773b1e1948f79031bf6636e9564a7e7a1ff1b0bd03b19759",
     "src/game/anim_obj_collide.cpp": "b7795e6acbd653e7f0d7e8ca0c09adfa13f5d2b379799b34bc2ca8d5e2b334b7",
     "src/game/anim_obj_ctor.cpp": "384df3a5aa5e148e0840e58548ab842711a7f7d8dd4abbd71e506d5740baa845",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
@@ -45483,6 +45485,45 @@
       "discarded_functions": [],
       "object_sha256": "51531912d2839507f9c0975f32a47f9d2cab67f9fcc8fc8093f66078f57ecc68",
       "linked_sha256": "daab58463651f2e290a9d6ef4435b51bd9864cada4d31ac27667f5e751aa8ce6"
+    },
+    {
+      "id": "anim_obj_bullet",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1036,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "64f561bfa5c4b5823c4ed58c97cad329c5d3ab8dc1a688b81eae2fc1ce016183",
+      "linked_sha256": "9fd43be1c807ed9793b2c851607c58f7ba3c1041faccc5da72e62ec188e7c463"
     }
   ],
   "code_map": {
@@ -49258,13 +49299,6 @@
             "size": 892,
             "kind": "function",
             "name": "DetectGround__11CAnimObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80094c98",
-            "size": 1036,
-            "kind": "function",
-            "name": "HandleBulletCollision__11CAnimObjectFP7CBulletRC10CCollision",
             "evidence": "exception-index"
           }
         ]
