@@ -1,0 +1,92 @@
+{
+  "id": "animskinned_skeleton",
+  "source": "src/game/animskinned_skeleton.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80066a08",
+      "size": 212,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b4e0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012650",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UpdateSkeletonMatrices__12CAnimSkinnedFP7CMatrixP8CVector3P8CVector3",
+      "address": "0x80066a08",
+      "size": 212,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DMClusterSkelTraverse__FP11CharFrame_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3": "0x800f52a8",
+    "Pop__12CMatrixStackFv": "0x80090dc0",
+    "PushUnit__12CMatrixStackFv": "0x80090dd0",
+    "g_matStack": "0x8034eab8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_matStack"
+  ],
+  "original_file": "animskinned.cpp",
+  "original_file_index": 3069,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fcec"
+    }
+  ]
+}
