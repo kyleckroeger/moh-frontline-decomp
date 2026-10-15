@@ -1,0 +1,139 @@
+{
+  "id": "dvdStatus_gxinit",
+  "source": "src/game/dvdStatus_gxinit.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "on",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk",
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80109784",
+      "size": 576,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fdec",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016be0",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "GxAndVIInit",
+      "address": "0x80109784",
+      "size": 576,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GXAdjustForOverscan": "0x8012c6f4",
+    "GXCopyDisp": "0x8012cf78",
+    "GXInit": "0x80129610",
+    "GXMpal480IntDf": "0x8019015c",
+    "GXNtsc480IntDf": "0x80190120",
+    "GXPal528IntDf": "0x80190198",
+    "GXSetCopyFilter": "0x8012cd34",
+    "GXSetDispCopyDst": "0x8012c8d4",
+    "GXSetDispCopyGamma": "0x8012cf5c",
+    "GXSetDispCopySrc": "0x8012c814",
+    "GXSetDispCopyYScale": "0x8012cbf8",
+    "GXSetPixelFmt": "0x8012fcb4",
+    "GXSetScissor": "0x801304e4",
+    "GXSetViewport": "0x801304c0",
+    "VIConfigure": "0x8011bc00",
+    "VIFlush": "0x8011c39c",
+    "VIGetTvFormat": "0x8011c748",
+    "VIInit": "0x8011b2c0",
+    "VISetNextFrameBuffer": "0x8011c4b8",
+    "VIWaitForRetrace": "0x8011b738",
+    "gDefaultFifoObj": "0x8034ef4c",
+    "gFifoBuf": "0x8034ef58",
+    "gFrameBuffer": "0x8034ef50",
+    "gGxIsInit": "0x8034ef5c",
+    "gHeapPtr": "0x8034ef54",
+    "gRMode": "0x803168e0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "gDefaultFifoObj",
+    "gFifoBuf",
+    "gFrameBuffer",
+    "gHeapPtr",
+    "gRMode"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "gDefaultFifoObj",
+    "gFifoBuf",
+    "gFrameBuffer",
+    "gGxIsInit",
+    "gHeapPtr"
+  ],
+  "original_file": "dvdStatus_base.c",
+  "original_file_index": 10417,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351364"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351368"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80351378"
+    }
+  ]
+}

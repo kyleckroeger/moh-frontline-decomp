@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 726752,
+    "matching_code_bytes": 727328,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.37610528131477,
+    "percent": 51.4168243115232,
     "categories": {
-      "reconstructed_game": 505304,
+      "reconstructed_game": 505880,
       "restored_library": 221448
     },
-    "matching_functions": 4185
+    "matching_functions": 4186
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -556,6 +556,7 @@
     "config/GMFE69/dsp_debug.json": "abb1bf69b26be3567a5e3a22a729922f11d7a3b8c74ed938895798d0072114a0",
     "config/GMFE69/dsp_task.json": "23fad1688cbbe0178fb9b445cc0d319c557ace917f657fe4d2e1b34efa7c90b7",
     "config/GMFE69/dvd.json": "121312ac4bb040c75b0e7189d8e139340898c69323bf7bc7f171b1e302751427",
+    "config/GMFE69/dvdStatus_gxinit.json": "fce3a897547e7d56cf6985c779dfeadb69e8077a52b7372c8fbcef48646f6bc7",
     "config/GMFE69/dvderror.json": "e707cc3372abd7ab11663cb1d927b494694905f6aff6c33152a9b6fcf015590b",
     "config/GMFE69/dvdfs.json": "3a7e5c902b07320492019461ccbfe54e1c9166f4a2f84d8d3a4b7446a7f425f9",
     "config/GMFE69/dvdlow.json": "42a078d56dcdf064392e009265a8acb918851c6a9ad5459e2b9adf8dd8c891e9",
@@ -768,7 +769,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "b6e04ba5db1f673d5b2a1e52abc202dc38a0ef1a69b2cd07dca7f0c1895a61d6",
+    "config/GMFE69/project.json": "193f3b490309fbb8aff58fe12794e66222cfe0586eed78ab1340f5b8a36cdc23",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2553,6 +2554,7 @@
     "src/game/dmmorph.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
     "src/game/dmrender.cpp": "0c5d7e63d3e8745e0e94191ab8773469f4dde49126919b9ab13b926685d84b19",
     "src/game/draw_context.cpp": "261589cc092b9c8c7b80605255eefc78641468141f4d33264252696f62c9782b",
+    "src/game/dvdStatus_gxinit.cpp": "3b8c2acd3cb4c9a00d2164c67b668017797e6ebdc1897c4ea906845ce70460e2",
     "src/game/explosion_dtor.cpp": "e817a0dbeefc80acc2a66d71b33f5452f43316084e641a96af448c533cd5bbd2",
     "src/game/fader.cpp": "3c54d9cfa5a61f86cdddc3f320e2032ffa38b41eae3b36de6a82f1f22d64fbfd",
     "src/game/fader_control.cpp": "d94c0445347627df8d59cf7a2a080c3f5f59c50616957d9c7c5f9db7253b1a7f",
@@ -48672,6 +48674,45 @@
       "discarded_functions": [],
       "object_sha256": "5ebc2d861738b363ca6fb4230cac7f4a71371f0d0772e58e769b9d730ec6d35b",
       "linked_sha256": "04e02f0febf82d5cda089d2d0ab314cddfb05c2e9cd1cdf87006323d85c9a461"
+    },
+    {
+      "id": "dvdStatus_gxinit",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 576,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "on",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "4e3b4fc401c48dc08323de6c26bc5adb3a886539cc482c08a3d368ed1774da08",
+      "linked_sha256": "f8fb065922dae10e3ada5e31629965a818bc716802b3d63de895d197d44dac1e"
     }
   ],
   "code_map": {
@@ -54371,13 +54412,6 @@
             "kind": "function",
             "name": "ShowDVDError__Fi",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x80109784",
-            "size": 576,
-            "kind": "function",
-            "name": "GxAndVIInit",
-            "evidence": "exception-index"
           }
         ]
       },
