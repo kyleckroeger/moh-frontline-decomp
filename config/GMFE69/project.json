@@ -1114,7 +1114,8 @@
     "PathNodeList_closest.json",
     "CoverPoint_invalidate.json",
     "CoverPoint_unoccupied.json",
-    "CoverPoint.json"
+    "CoverPoint.json",
+    "ConfigGC_onenter.json"
   ],
   "progress": {
     "code_bytes": 1414572,
