@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80025874",
+      "address": "0x800256c4",
+      "size": 440,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x80009b6c",
       "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800106e8",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIFunc_DetachFromSoldier__FPPiPv",
+      "address": "0x800256c4",
+      "size": 432,
+      "binding": 1
+    },
     {
       "name": "AsWeaponObject__13CStaticObjectFv",
       "address": "0x80025874",
@@ -52,13 +70,39 @@
       "binding": 2
     }
   ],
-  "externals": {},
+  "externals": {
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "DelayDestroyObject__FP10BSGO_Basic": "0x8003c310",
+    "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_scene": "0x8019484c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_iCurrentBIFIndex",
+    "g_pBuiltInFunctions"
+  ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x8034f65c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f664"
+    }
+  ]
 }
