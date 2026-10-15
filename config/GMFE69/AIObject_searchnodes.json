@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004b728",
-      "size": 92,
+      "address": "0x8004b5b4",
+      "size": 464,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a804",
-      "size": 8,
+      "address": "0x8000a7fc",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011948",
-      "size": 12,
+      "address": "0x8001193c",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetNextPathNode__9CAIObjectFP9CPathNodeP9CPathNode",
+      "address": "0x8004b5b4",
+      "size": 372,
+      "binding": 1
+    },
     {
       "name": "CleanupAStarPathWalk__9CAIObjectFv",
       "address": "0x8004b728",
@@ -65,7 +71,10 @@
     }
   ],
   "externals": {
+    "CheckCollisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c17c",
+    "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList": "0x8004b2c0",
     "RemoveElement__11CLinkedListFP18CLinkedListElement": "0x800535a0",
+    "SPR_BEGIN": "0x8034e2c0",
     "__dt__11CSearchNodeFv": "0x80056210"
   },
   "undefined_in_discarded_code": [],
@@ -73,7 +82,26 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "SPR_BEGIN"
+  ],
   "original_file": "AIObject.cpp",
-  "original_file_index": 1752
+  "original_file_index": 1752,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f8f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f890"
+    }
+  ]
 }
