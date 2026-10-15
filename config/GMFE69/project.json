@@ -1078,7 +1078,9 @@
     "AIFilter_runaway.json",
     "AIObject_visionseek.json",
     "Soldier_object_emitter.json",
-    "AIObject_lineofsight_obj.json"
+    "AIObject_lineofsight_obj.json",
+    "AISplinePath_finalpoint.json",
+    "animseq_start.json"
   ],
   "progress": {
     "code_bytes": 1414572,
