@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 661012,
+    "matching_code_bytes": 661288,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.72876318773452,
+    "percent": 46.748274389709394,
     "categories": {
-      "reconstructed_game": 439564,
+      "reconstructed_game": 439840,
       "restored_library": 221448
     },
-    "matching_functions": 3935
+    "matching_functions": 3938
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -685,7 +685,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "09259f010311606edf2768679e57f11d88ea2e80ce524cff12bb65d81839bb8d",
+    "config/GMFE69/project.json": "7ea05e4417f48e4575eeaadff62ce49822d12fb089164d37136f6339c9faaa24",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -704,6 +704,8 @@
     "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
+    "config/GMFE69/pumhandler_umt_dtor.json": "b7ab1e983c6965fcfd266994717439d860469c1e66578d2215b888a59c944d7f",
+    "config/GMFE69/pumhandler_umt_unload.json": "f712cd544ac0eba6bdde749d1fdeb2a8da967ce5cdbc12aaf7311f21e2c8c6bb",
     "config/GMFE69/qsort.json": "277ba29abda5c2279b4e2863c6a9b8fbe0b1f4f180473d48b6a194e2e91b7498",
     "config/GMFE69/quaternion.json": "9d29a2414ec644c8f52e7cc67264858a6c0f583413d9ce5847d9629f0861785d",
     "config/GMFE69/rand.json": "958d1564ced02e430faca2258c920c5b7f36bd3ba70f168d2cbb54dace181f59",
@@ -2500,6 +2502,8 @@
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
+    "src/game/pumhandler_umt_dtor.cpp": "ea901cf262e05337ba57d9a8f48a588444ca51bfcc40d25c15e88d9c476c657b",
+    "src/game/pumhandler_umt_unload.cpp": "30c48060dfe29c8f32db40f611958ee39fc6a7b2b07ed7a170358f209824fdcc",
     "src/game/quaternion.cpp": "fa8f9823686ae44292e048b786be96ff1c8631e9190d543b00864daaea7c2d53",
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
     "src/game/rcmp_main_delete.cpp": "73241fde4c1b1f4a0e1c05c312f789ef77dbc1f63a46d98cd54c989924ac15d6",
@@ -44376,6 +44380,84 @@
       "discarded_functions": [],
       "object_sha256": "ce520e37591cad02d19c797fefb32307ea5bb6c6f643980158d4b36c54a8fcad",
       "linked_sha256": "b7e6f48384cdfe3f24d651911e880acf5ad4854eb234da4826f639f7d4cdb7dd"
+    },
+    {
+      "id": "pumhandler_umt_unload",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 120,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "696b7d37b0e911f7b7b2b2f10457dbc2b21ea51174daf2605af1da2cf2614b86",
+      "linked_sha256": "ead6f6169914dceb234c3b6f13e5ec3c9343db957e94214b26fce7df9f7c465e"
+    },
+    {
+      "id": "pumhandler_umt_dtor",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 156,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "b23cfd7489c938613dca3cc24d878f525d8815cd76c3cfd146512496a0284d34",
+      "linked_sha256": "fbb3b59e90c98a0c187745fa5ed247ee376c7e66e4eb3d96f35e457b7327e65b"
     }
   ],
   "code_map": {
@@ -49442,32 +49524,11 @@
         "file_name": "pumhandler.cpp",
         "ranges": [
           {
-            "address": "0x800b8544",
-            "size": 120,
-            "kind": "function",
-            "name": "Unload__17CUserMessageTableFv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x800b85bc",
             "size": 436,
             "kind": "function",
             "name": "Load__17CUserMessageTableFPcPc",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b8770",
-            "size": 132,
-            "kind": "function",
-            "name": "__dt__17CUserMessageTableFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b87f4",
-            "size": 24,
-            "kind": "function",
-            "name": "__ct__17CUserMessageTableFv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800b880c",
