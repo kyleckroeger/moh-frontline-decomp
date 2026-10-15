@@ -1121,7 +1121,8 @@
     "UserInterface_compass.json",
     "debug_prof_dump.json",
     "proxtrig_leafs.json",
-    "animmot_rot.json"
+    "animmot_rot.json",
+    "AIObject_reachable.json"
   ],
   "progress": {
     "code_bytes": 1414572,
