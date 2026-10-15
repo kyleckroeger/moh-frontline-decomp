@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8009c13c",
-      "size": 872,
+      "size": 1388,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cd3c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013e68",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -68,10 +68,17 @@
       "address": "0x8009c13c",
       "size": 872,
       "binding": 1
+    },
+    {
+      "name": "Update__14CJawControllerFi",
+      "address": "0x8009c4a4",
+      "size": 516,
+      "binding": 1
     }
   ],
   "externals": {
-    "MathFunRandomUI32Raw__Fv": "0x80092e6c"
+    "MathFunRandomUI32Raw__Fv": "0x80092e6c",
+    "sin": "0x80143790"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -186,6 +193,30 @@
       "offset": 64,
       "size": 4,
       "address": "0x80350520"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x80350524"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x80350528"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x8035052c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 8,
+      "address": "0x80350530"
     }
   ]
 }
