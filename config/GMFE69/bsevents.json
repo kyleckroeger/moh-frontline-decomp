@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800359fc",
-      "size": 172,
+      "address": "0x80035734",
+      "size": 884,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a22c",
-      "size": 24,
+      "address": "0x8000a224",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800110f0",
-      "size": 36,
+      "address": "0x800110e4",
+      "size": 48,
       "type": 1
     },
     {
@@ -74,6 +74,12 @@
       "binding": 0
     },
     {
+      "name": "BSInitEvent__Fv",
+      "address": "0x80035734",
+      "size": 712,
+      "binding": 1
+    },
+    {
       "name": "BSEventGetMemoryRequirements__Fv",
       "address": "0x800359fc",
       "size": 56,
@@ -87,16 +93,47 @@
     }
   ],
   "externals": {
+    "BSUtilGetMemory__Fii": "0x8003b83c",
     "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii": "0x8003bea8",
+    "Init__35BSUtilObjectInstanceMemoryAllocatorFPviii": "0x8003bdd0",
     "__dl__FPv": "0x8001ca2c",
-    "__register_global_object": "0x801381bc"
+    "__register_global_object": "0x801381bc",
+    "g_eProcessState": "0x8034e7c0",
+    "g_pBSEventMemory": "0x8034e7c4",
+    "g_pBSEventMemoryOffset": "0x8034e7c8",
+    "g_pEventHashTable": "0x8034e7a0",
+    "g_pEventRecordArray": "0x8034e7a4",
+    "g_pEventRecordExecutionListHead": "0x8034e7ac",
+    "g_pEventRecordExecutionListTail": "0x8034e7b0",
+    "g_pFreeEventRecordHead": "0x8034e7a8",
+    "g_pImmediateEventQueue": "0x8034e7b8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_eProcessState",
+    "g_pBSEventMemory",
+    "g_pBSEventMemoryOffset",
+    "g_pEventHashTable",
+    "g_pEventRecordArray",
+    "g_pEventRecordExecutionListHead",
+    "g_pEventRecordExecutionListTail",
+    "g_pFreeEventRecordHead",
+    "g_pImmediateEventQueue"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_eProcessState",
+    "g_pBSEventMemory",
+    "g_pBSEventMemoryOffset",
+    "g_pEventHashTable",
+    "g_pEventRecordArray",
+    "g_pEventRecordExecutionListHead",
+    "g_pEventRecordExecutionListTail",
+    "g_pFreeEventRecordHead",
+    "g_pImmediateEventQueue"
+  ],
   "original_file": "bsevents.cpp",
   "original_file_index": 1139
 }
