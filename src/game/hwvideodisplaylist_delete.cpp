@@ -3,7 +3,8 @@
 // weak empty RCMP::VIDEO_DRIVER::CompleteDraw. RCMP, RCMP_SYSTEM, rcmp_sys,
 // GCHW_VD and VIDEO_DRIVER are named by the symbols; the hook slot is as in
 // rcmp_mpc_codec.cpp. The delete and CompleteDraw are inline in the original
-// (weak symbols), so they are defined __declspec(weak). The rest of the file is not part of this unit.
+// (weak symbols), so they are defined __declspec(weak). The rest of the file
+// is not part of this unit.
 namespace RCMP {
 class RCMP_SYSTEM {
 public:

@@ -39,38 +39,89 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a8de4",
-      "size": 20,
+      "address": "0x800a94a8",
+      "size": 692,
       "type": 1
+    },
+    {
+      "name": ".ctors",
+      "address": "0x8016dfd0",
+      "size": 4,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d1c4",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800142a0",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801ef130",
+      "size": 564,
+      "type": 8
     }
   ],
   "functions": [
     {
-      "name": "IsDrawEnabled__7CSkyBoxCFv",
-      "address": "0x800a8dec",
-      "size": 8,
-      "binding": 2
+      "name": "__sinit_skybox_cpp",
+      "address": "0x800a94a8",
+      "size": 636,
+      "binding": 0
     },
     {
-      "name": "IsVisible__7CSkyBoxCFR12CDrawContext",
-      "address": "0x800a8de4",
-      "size": 8,
-      "binding": 2
-    },
-    {
-      "name": "__ct__Q27CSkyBox7SVertexFv",
-      "address": "0x800a8df4",
-      "size": 4,
-      "binding": 2
+      "name": "__arraydtor$473",
+      "address": "0x800a9724",
+      "size": 56,
+      "binding": 0
     }
   ],
-  "externals": {},
+  "externals": {
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "__construct_array": "0x8013834c",
+    "__ct__16CSkyBoxRenderBinFv": "0x800a97b8",
+    "__destroy_arr": "0x801382d4",
+    "__dt__16CSkyBoxRenderBinFv": "0x800a975c",
+    "__register_global_object": "0x801381bc",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "skybox.cpp",
-  "original_file_index": 6516
+  "original_file_index": 6516,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803507b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803507ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803507a8"
+    }
+  ]
 }

@@ -395,7 +395,7 @@
     "staticmesh_head.json",
     "attachobject.json",
     "animated.json",
-    "skybox.json",
+    "skybox_weak.json",
     "compartment.json",
     "Tank_object.json",
     "player.json",
@@ -1181,7 +1181,8 @@
     "aramalloc_alloc.json",
     "rcmp_mpc_create.json",
     "Gecko_ExceptionPPC_endcatch.json",
-    "animplayer_draw.json"
+    "animplayer_draw.json",
+    "skybox.json"
   ],
   "progress": {
     "code_bytes": 1414572,
