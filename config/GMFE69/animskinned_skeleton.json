@@ -38,34 +38,100 @@
     {
       "name": ".text",
       "address": "0x80066a08",
-      "size": 212,
+      "size": 1076,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b4e0",
-      "size": 8,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012650",
-      "size": 12,
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "BindSkeleton__12CAnimSkinnedFP10CharSkel_t",
+      "address": "0x80066adc",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SetRotation__12CAnimSkinnedFl",
+      "address": "0x80066b94",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "ExtractTranslation__12CAnimSkinnedFP8CVector3",
+      "address": "0x80066b9c",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "ExtractRotation__12CAnimSkinnedFPl",
+      "address": "0x80066bc8",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "Draw__12CAnimSkinnedFR12CDrawContext",
+      "address": "0x80066dac",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAnimation__12CAnimSkinnedFf",
+      "address": "0x80066bec",
+      "size": 260,
+      "binding": 1
+    },
+    {
       "name": "UpdateSkeletonMatrices__12CAnimSkinnedFP7CMatrixP8CVector3P8CVector3",
       "address": "0x80066a08",
       "size": 212,
       "binding": 1
+    },
+    {
+      "name": "Init__12CAnimSkinnedFP11CAnimObjectUsP11CharFrame_t",
+      "address": "0x80066cf0",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__12CAnimSkinnedFv",
+      "address": "0x80066e38",
+      "size": 4,
+      "binding": 1
     }
   ],
   "externals": {
+    "AnimInitHeader": "0x800691d4",
+    "AnimMotCalcAnimPos": "0x800658c4",
+    "AnimMotCalcAnimRot": "0x80065bd4",
+    "AnimMotCalcFloatingBone": "0x800656b8",
+    "AnimStGetCurrentState": "0x800670ac",
+    "BlendSkelFrames": "0x8006a39c",
+    "DMClusterBindSkeleton__FP17DMClusterObject_TP10CharSkel_t": "0x800f5290",
+    "DMClusterInitObject__FP17DMClusterObject_TPA3_A4_fPA3_A4_fUl": "0x800f5298",
     "DMClusterSkelTraverse__FP11CharFrame_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3": "0x800f52a8",
+    "DMGeomSetNodeState__FP17DMGeometryState_Tll": "0x800f6db8",
+    "DMRenderBindClusterObj__FP16DMRenderObject_TP17DMClusterObject_T": "0x800f4c84",
+    "DMRenderInitObject__FP16DMRenderObject_TP8TUInt128P8TUInt128Ul": "0x800f4dcc",
+    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c",
+    "Draw__9CAnimatedFR12CDrawContext": "0x80060e0c",
+    "GetEntry__16CAnimMatrixCacheFPvRb": "0x80060a04",
+    "Init__9CAnimatedFP11CAnimObjectUs": "0x80061530",
     "Pop__12CMatrixStackFv": "0x80090dc0",
     "PushUnit__12CMatrixStackFv": "0x80090dd0",
+    "UpdateAnimation__9CAnimatedFf": "0x80061314",
+    "Update__16CAnimMatrixCacheFv": "0x80060b38",
+    "g_animSkinnedCache": "0x801d3e10",
     "g_matStack": "0x8034eab8"
   },
   "undefined_in_discarded_code": [],
@@ -87,6 +153,12 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034fcec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fce8"
     }
   ]
 }

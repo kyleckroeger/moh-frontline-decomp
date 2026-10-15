@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 712132,
+    "matching_code_bytes": 712996,
     "total_executable_code_bytes": 1414572,
-    "percent": 50.342577118732734,
+    "percent": 50.40365566404538,
     "categories": {
-      "reconstructed_game": 490684,
+      "reconstructed_game": 491548,
       "restored_library": 221448
     },
-    "matching_functions": 4136
+    "matching_functions": 4144
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -313,7 +313,7 @@
     "config/GMFE69/animseq_start.json": "ab5045bf9152fb87cb8c1441997ec08bb86c17e21660a74256792bbd70f27c28",
     "config/GMFE69/animskinned.json": "5d83f4f4dc599102760733b67df7133fe658a8e44e0a30db4229a1f9a4bfef9f",
     "config/GMFE69/animskinned_dtor.json": "cfbd4b49c98a64c05b9eaffa85a1b08d8fa326d3a85e0035c594ed661ef8d987",
-    "config/GMFE69/animskinned_skeleton.json": "c4a08c57ebe9feff39e1d834d3965c70b8a43805169c0f5fad4676b1e321727b",
+    "config/GMFE69/animskinned_skeleton.json": "50fa4ecdb6985401ef86f806476c1d28ad0e9843577183c0064528629642a61c",
     "config/GMFE69/animst.json": "ed01cfba2082686177f18f2e8f306e58d6b6b797cd3f572474fabc933f234556",
     "config/GMFE69/animst_transprecheck.json": "35aa2ad4cd0233996de54dcdea82785af2538d95311c17a6eede484647e832b9",
     "config/GMFE69/animwgt.json": "6752f49abd311539d80c2042212297e15578259526dd08924450d1f72306cb0f",
@@ -2319,7 +2319,7 @@
     "src/game/animseq_start.cpp": "e9732259f0448317c8f2e0e54c59de7ebef533916f8c7efbf6a301147f064ad7",
     "src/game/animskinned.cpp": "e75e1b1739d923674072b8aa07d54237f44b43d7cbc7f3e136d5a7a54a083ad8",
     "src/game/animskinned_dtor.cpp": "f8051dbb14c2ada9078b6b9638b6e2dbd2e79720c568cfd083f6d7214d2413aa",
-    "src/game/animskinned_skeleton.cpp": "6cc1913526343f43b3025d191dc24a507c8577efb619d6f76fbb32359372cb49",
+    "src/game/animskinned_skeleton.cpp": "a7897db451a17f6db5cf5b95b97aac21c44a2f06d827a1f0b23f5d0b3d9c5f27",
     "src/game/animst.cpp": "c21b2120a38a43ccf28537b31f9f22c5b5d21d59cf2d48951276464a65bf4bf9",
     "src/game/animst_transprecheck.cpp": "0519db6297cbd49d792c37c66e4f3284aa4cd2d690f75962404ee4096d5e583a",
     "src/game/animwgt.cpp": "001c05d29d185c0a4f21712270ddb62c29fc3808bede837c4acdb3ad1c63af1c",
@@ -47388,8 +47388,8 @@
     {
       "id": "animskinned_skeleton",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 212,
+      "functions": 9,
+      "code_bytes": 1076,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47421,8 +47421,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5bdef934b810362cec192792f281d15818ac28cb97abc1f2cc12ed57241aaed4",
-      "linked_sha256": "acea10d2199378774661ad676d921faa0aaa353624d539b4c5dd730bde2f1788"
+      "object_sha256": "aed4417462539ab9dc25ed10101954c6e45017c12dacd080c1f5a9f5012c5e86",
+      "linked_sha256": "b67bf6c5d26331d2ec5f59471464f9f2dcf8937cb5d8d3127ff7d0b395248d19"
     },
     {
       "id": "animchan_process",
@@ -50103,62 +50103,6 @@
             "kind": "function",
             "name": "AsAnimSkinned__12CAnimSkinnedFv",
             "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80066adc",
-            "size": 184,
-            "kind": "function",
-            "name": "BindSkeleton__12CAnimSkinnedFP10CharSkel_t",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80066b94",
-            "size": 8,
-            "kind": "function",
-            "name": "SetRotation__12CAnimSkinnedFl",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80066b9c",
-            "size": 44,
-            "kind": "function",
-            "name": "ExtractTranslation__12CAnimSkinnedFP8CVector3",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80066bc8",
-            "size": 36,
-            "kind": "function",
-            "name": "ExtractRotation__12CAnimSkinnedFPl",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x80066bec",
-            "size": 260,
-            "kind": "function",
-            "name": "UpdateAnimation__12CAnimSkinnedFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80066cf0",
-            "size": 188,
-            "kind": "function",
-            "name": "Init__12CAnimSkinnedFP11CAnimObjectUsP11CharFrame_t",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80066dac",
-            "size": 140,
-            "kind": "function",
-            "name": "Draw__12CAnimSkinnedFR12CDrawContext",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80066e38",
-            "size": 4,
-            "kind": "function",
-            "name": "InitClass__12CAnimSkinnedFv",
-            "evidence": "between-same-file"
           }
         ]
       },
