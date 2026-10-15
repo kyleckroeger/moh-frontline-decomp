@@ -1,0 +1,140 @@
+{
+  "id": "bsutil_update",
+  "source": "src/game/bsutil_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8003b6ac",
+      "size": 632,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a404",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800113b4",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BSUtilFreeObjectInstanceMemory__FPv",
+      "address": "0x8003b6ac",
+      "size": 164,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilGetObjectInstanceMemory__FP14BSClass_struct",
+      "address": "0x8003b750",
+      "size": 236,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilGetMemory__Fii",
+      "address": "0x8003b83c",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilUpdate__Ff",
+      "address": "0x8003b86c",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilShutdownScriptingSystem__Fv",
+      "address": "0x8003b8d0",
+      "size": 84,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BSCleanUpBIFuncs__Fv": "0x80034420",
+    "BSEndEvent__Fv": "0x8003571c",
+    "BSEndMachine__Fv": "0x80038128",
+    "BSEndMessage__Fv": "0x8003a2e0",
+    "BSEndSchedule__Fv": "0x8003acf4",
+    "BSEndTimer__Fv": "0x8003b2d4",
+    "BSEventProcessEvents__Fi": "0x80034ea0",
+    "BSProcessMessages__Fi": "0x80039ca0",
+    "BSUpdateBIFuncs__Fv": "0x800343b4",
+    "BSUpdateTimer__Ff": "0x8003b18c",
+    "FreePropertyMemory__Fv": "0x800423c4",
+    "MEM_free": "0x8014f83c",
+    "ShutdownObjectCreators__Fv": "0x800405b4",
+    "UpdateObjectCreation__Fv": "0x800403cc",
+    "UpdateProximityTriggerStatus__Fv": "0x80046378",
+    "g_memOffset": "0x8034e86c",
+    "g_memSize": "0x8034e870",
+    "g_pMemAllocators": "0x801a10cc",
+    "g_pScriptMemory": "0x8034e868"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_memOffset",
+    "g_memSize",
+    "g_pMemAllocators",
+    "g_pScriptMemory"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_memOffset",
+    "g_memSize",
+    "g_pScriptMemory"
+  ],
+  "original_file": "bsutil.cpp",
+  "original_file_index": 1398,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f750"
+    }
+  ]
+}

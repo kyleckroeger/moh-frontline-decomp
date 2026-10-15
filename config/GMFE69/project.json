@@ -1006,7 +1006,8 @@
     "compartment_texswap.json",
     "buddy_head.json",
     "alarm_register.json",
-    "location_collision_map.json"
+    "location_collision_map.json",
+    "bsutil_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,

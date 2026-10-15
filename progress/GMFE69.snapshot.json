@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 659084,
+    "matching_code_bytes": 659716,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.59246754495353,
+    "percent": 46.637145369765555,
     "categories": {
-      "reconstructed_game": 437636,
+      "reconstructed_game": 438268,
       "restored_library": 221448
     },
-    "matching_functions": 3918
+    "matching_functions": 3923
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -369,6 +369,7 @@
     "config/GMFE69/bsutil.json": "ae31d506405f513947e3cbfedbcbf27c09f609fa7741d899feaa985624628823",
     "config/GMFE69/bsutil_pools.json": "85b05757ad6c89e23e6f7a253ece6174baf6789da8922baf2ad01d45b355e381",
     "config/GMFE69/bsutil_size.json": "22d7f6eb60fe6fbf22a734095d077d76f7275871be7080cc43dca0b554c0e12b",
+    "config/GMFE69/bsutil_update.json": "a0e3e08f7d6e09aed121e73e4adab220621013804edfe8b03c6c08bdc866f3fe",
     "config/GMFE69/buddy_copy_info.json": "70d5fa85b8dfa7c854ed3ba22c6bc2630aa35d57e22502931d1740303daadc8c",
     "config/GMFE69/buddy_copy_path.json": "566a6454a4c08ac8d6c2c4b2fe68095bc16744e689349df188284bd0d88bf281",
     "config/GMFE69/buddy_head.json": "d694207c011a6fa36961f8d6fc3a0cf432e4d7968fe0d410b631ce6a4f114849",
@@ -681,7 +682,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "8dfa178f4a1c25965b51f825e106a6a531d4bbc48733d715129707824fb66c24",
+    "config/GMFE69/project.json": "aa8ecb5c9d9fe915721b436ad60fbff794d0526ed95731608ca0b7a567155c1c",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2269,6 +2270,7 @@
     "src/game/bsutil.cpp": "82315dda04e8f1552ec32f5feb9979c02513c7e9b39f0a7c434cff53805bb3da",
     "src/game/bsutil_pools.cpp": "e77b9c7bcadc1da2702f4af2d1d819c62357cf5de5c26fc401b05885b9989714",
     "src/game/bsutil_size.cpp": "79519dc3d1158664204a44a09651f4eb839da7ec06fa1d830eeece172595c74c",
+    "src/game/bsutil_update.cpp": "d3c0bff3f639db9461e0284076e832ec677c5c3a9b4897783062a4942dff0980",
     "src/game/buddy_copy_info.cpp": "c28c4afeffa69fd1e732aa2085de884a4e61abaa3a6cc40d2a51cf8b6225550b",
     "src/game/buddy_copy_path.cpp": "9fd8379683f3ac91728a12f6991c3041a5a55578ee12fa138ba4b2d6682e6ede",
     "src/game/buddy_head.cpp": "8be98948c8298ce5bc7281b2331742e84414da26a3b6e4c00e26496f5a0a3d94",
@@ -44130,6 +44132,45 @@
       "discarded_functions": [],
       "object_sha256": "f1df95af0ba792797f475823ddd3aa63ec87027c1e2a01cd0dda0fc89c1b7b87",
       "linked_sha256": "e288c770c8fc0f8575b74f3f27ed8a05216c82930db7dc2f95e32b9fb0f91983"
+    },
+    {
+      "id": "bsutil_update",
+      "category": "reconstructed_game",
+      "functions": 5,
+      "code_bytes": 632,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "9fff36bf31f46d388fedd33b46c28f14dce7a1d86c3520366e859c9b294fcc4d",
+      "linked_sha256": "34cd952d6829df9d94a4c108d421ea42fae062972b670f45c65affcd742d3941"
     }
   ],
   "code_map": {
@@ -44856,41 +44897,6 @@
             "kind": "function",
             "name": "BSUtilComputeClassMemoryRequirements__FP14BSClass_struct",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003b6ac",
-            "size": 164,
-            "kind": "function",
-            "name": "BSUtilFreeObjectInstanceMemory__FPv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003b750",
-            "size": 236,
-            "kind": "function",
-            "name": "BSUtilGetObjectInstanceMemory__FP14BSClass_struct",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003b83c",
-            "size": 48,
-            "kind": "function",
-            "name": "BSUtilGetMemory__Fii",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003b86c",
-            "size": 100,
-            "kind": "function",
-            "name": "BSUtilUpdate__Ff",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003b8d0",
-            "size": 84,
-            "kind": "function",
-            "name": "BSUtilShutdownScriptingSystem__Fv",
-            "evidence": "exception-index"
           },
           {
             "address": "0x8003b924",
