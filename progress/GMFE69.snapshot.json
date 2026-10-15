@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 689024,
+    "matching_code_bytes": 689496,
     "total_executable_code_bytes": 1414572,
-    "percent": 48.709008802662574,
+    "percent": 48.742375785750035,
     "categories": {
-      "reconstructed_game": 467576,
+      "reconstructed_game": 468048,
       "restored_library": 221448
     },
-    "matching_functions": 4047
+    "matching_functions": 4048
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -551,6 +551,7 @@
     "config/GMFE69/hearingvolume_init.json": "5cfe4c3ac3686d90692dbcac1cb2adbc0a2c874ed61ea1b4a96d250a04015cfe",
     "config/GMFE69/hearingvolume_rows.json": "b5d842a31bc5a9a612c9dff0557bd27d482e7f26d1daa66bc7d9d4b935f319c8",
     "config/GMFE69/hierobject.json": "6d98201b0146edf155a89454096dcbe4c5c25e31ef1880e6b901bde3fb4f8eb2",
+    "config/GMFE69/hierobject_constrain.json": "8a9e71754782c393e75825a5d8f2fc3c8ca9d892687e0d183d9edb911839294b",
     "config/GMFE69/hierobject_draw.json": "8418a044e890a3e7311069a90c1d8984d95369e34dd9b191972e91082d32405b",
     "config/GMFE69/hierobject_motion.json": "ed2d9c5047a3e8c4205248563f76adfb23f7a1c50524cd1520bfde764f9908f4",
     "config/GMFE69/hierobject_playback.json": "be6debac3d498d48efa5548482c16512816a393e1c7a010e513620211e39eeb7",
@@ -701,7 +702,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "0195908dc50b7c485e90fd8ea9695fcac2f759884b59c19becebcb9c0f901180",
+    "config/GMFE69/project.json": "8932353b4cf7689de7f13f08d2edbe59ba8bac48d11363b9bd9e0b588fab83fa",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2439,6 +2440,7 @@
     "src/game/hearingvolume_init.cpp": "426489d92b8d59e244ea4fb51abc66ea78a94f47252c45a053605291aee269e4",
     "src/game/hearingvolume_rows.cpp": "eb889ebdafa103d1056ac79d8d0d2a63be8c8366b4d470bfd50d5ba078a3651e",
     "src/game/hierobject.cpp": "f049e08a0f7859f2cd2dedabea5e772c87da8ef794ac4c19cd0c2b354feb7d1a",
+    "src/game/hierobject_constrain.cpp": "087f84acfbe1bd2bc52d37f698a3962de8797804659771f9766decf8ef8947e1",
     "src/game/hierobject_draw.cpp": "c5e1811b7ea46f78644c7dce50feab94b0ab5492fdf94d86584eafd87e8138af",
     "src/game/hierobject_motion.cpp": "0d8289de58c07d340d2ad58a6829cf44b6475e3e63d6af1b41e798aeb5507eba",
     "src/game/hierobject_playback.cpp": "ac1488f99aa7ace5e6f0d9e81528c672612d5fa7ba3117f95e122d1ad44e9ef6",
@@ -45524,6 +45526,45 @@
       "discarded_functions": [],
       "object_sha256": "64f561bfa5c4b5823c4ed58c97cad329c5d3ab8dc1a688b81eae2fc1ce016183",
       "linked_sha256": "9fd43be1c807ed9793b2c851607c58f7ba3c1041faccc5da72e62ec188e7c463"
+    },
+    {
+      "id": "hierobject_constrain",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 472,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "9ad927631731d39f12723d98fa19f12964d3c5efac8620ae3b5e609aefdc02a2",
+      "linked_sha256": "da797a62d200bb3cd64dd84d87da469239f6978c3293eae0e6599f60a2df7ae1"
     }
   ],
   "code_map": {
@@ -49369,13 +49410,6 @@
             "size": 2092,
             "kind": "function",
             "name": "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80099b78",
-            "size": 472,
-            "kind": "function",
-            "name": "ConstrainVelocity__11CHierObjectFv",
             "evidence": "exception-index"
           },
           {
