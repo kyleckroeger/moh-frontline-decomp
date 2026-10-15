@@ -1,0 +1,100 @@
+{
+  "id": "toilet_shutdown",
+  "source": "src/game/toilet_shutdown.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8001dde8",
+      "size": 124,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x800098cc",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80010328",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "TLT_Shutdown__Fv",
+      "address": "0x8001dde8",
+      "size": 124,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "FILESYS_delbigsync": "0x8014a260",
+    "MEM_free": "0x8014f83c",
+    "g_CompartmentBigFile": "0x8034e764",
+    "g_LevelBigFileSize": "0x8034e758",
+    "g_pCompartmentBigFileHeader": "0x8034e760",
+    "g_pLevelBigFile": "0x8034e750",
+    "g_pLevelFileContentsArray": "0x8034e768",
+    "g_pLevelFileContentsEndMarker": "0x8034e770",
+    "g_pNumLevelFileContents": "0x8034e76c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_CompartmentBigFile",
+    "g_pCompartmentBigFileHeader",
+    "g_pLevelFileContentsArray",
+    "g_pLevelFileContentsEndMarker",
+    "g_pNumLevelFileContents"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_CompartmentBigFile",
+    "g_LevelBigFileSize",
+    "g_pCompartmentBigFileHeader",
+    "g_pLevelBigFile",
+    "g_pLevelFileContentsArray",
+    "g_pLevelFileContentsEndMarker",
+    "g_pNumLevelFileContents"
+  ],
+  "original_file": "toilet.cpp",
+  "original_file_index": 367
+}

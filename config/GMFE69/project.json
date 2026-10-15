@@ -1007,7 +1007,11 @@
     "buddy_head.json",
     "alarm_register.json",
     "location_collision_map.json",
-    "bsutil_update.json"
+    "bsutil_update.json",
+    "toilet_shutdown.json",
+    "Moh2_sendrenderlist.json",
+    "player_lightvolume.json",
+    "player_crouch.json"
   ],
   "progress": {
     "code_bytes": 1414572,
