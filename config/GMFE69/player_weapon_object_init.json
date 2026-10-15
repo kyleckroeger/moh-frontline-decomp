@@ -1,0 +1,99 @@
+{
+  "id": "player_weapon_object_init",
+  "source": "src/game/player_weapon_object_init.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800a8b7c",
+      "size": 340,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d13c",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001421c",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Shutdown__19CPlayerWeaponObjectFv",
+      "address": "0x800a8b7c",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "Init__19CPlayerWeaponObjectF12EWeaponTypesiP13CPlayerObject",
+      "address": "0x800a8bcc",
+      "size": 260,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei": "0x800d7090",
+    "DestroyWeapon__14CWeaponFactoryFP7CWeapon": "0x800d6c88",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "g_WeaponFactory": "0x801dde58",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "player_weapon_object.cpp",
+  "original_file_index": 6418,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350740"
+    }
+  ]
+}

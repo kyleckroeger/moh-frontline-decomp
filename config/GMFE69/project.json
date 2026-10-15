@@ -1108,7 +1108,8 @@
     "Pause_reset.json",
     "input_init.json",
     "MemoryCardGC_prefs.json",
-    "compartment_reset.json"
+    "compartment_reset.json",
+    "player_weapon_object_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
