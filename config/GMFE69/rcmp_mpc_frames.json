@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x801043cc",
-      "size": 300,
+      "size": 484,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fc84",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016a00",
+      "size": 12,
       "type": 1
     }
   ],
@@ -49,6 +61,12 @@
       "name": "ReleaseFrame__18MPC_CODEC_INTERNALFPQ24RCMP5FRAME",
       "address": "0x801043d0",
       "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "GetFrame__18MPC_CODEC_INTERNALFUi",
+      "address": "0x801044f8",
+      "size": 184,
       "binding": 1
     },
     {
@@ -70,7 +88,12 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "DecodeChunk__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNK": "0x8010481c",
+    "GetChunk__Q24RCMP7DECODERFv": "0x801052b0",
+    "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK": "0x80105280",
+    "SkipChunks__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNKUi": "0x801045b0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
