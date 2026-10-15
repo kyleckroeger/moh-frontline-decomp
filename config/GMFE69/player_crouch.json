@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8009c938",
-      "size": 108,
+      "address": "0x8009c894",
+      "size": 272,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cd5c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013e98",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetHideWeapon__13CPlayerObjectFb",
+      "address": "0x8009c894",
+      "size": 164,
+      "binding": 1
+    },
     {
       "name": "IsPlayerCrouching__13CPlayerObjectCFv",
       "address": "0x8009c938",
