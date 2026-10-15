@@ -1022,7 +1022,8 @@
     "scene_now.json",
     "projectilebullet_methods.json",
     "projectilebullet_update.json",
-    "projectilebullet_commit.json"
+    "projectilebullet_commit.json",
+    "thrownbullet_misc.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 670756,
+    "matching_code_bytes": 671116,
     "total_executable_code_bytes": 1414572,
-    "percent": 47.41759344876047,
+    "percent": 47.44304284264074,
     "categories": {
-      "reconstructed_game": 449308,
+      "reconstructed_game": 449668,
       "restored_library": 221448
     },
-    "matching_functions": 3977
+    "matching_functions": 3983
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -688,7 +688,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "83cec80abedf1d08b118a2b054d5c431ccf2c00f2f402c2e8a9ad6aa4482293f",
+    "config/GMFE69/project.json": "9ca8d1c5176eb4290f17fca1c2dc0af40c5c86afc37e73601d29aa6c36f0b6ab",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -1004,6 +1004,7 @@
     "config/GMFE69/thrownbullet.json": "ac03fa31e6b670640a7db982817433d530ded4a76c833ad74d14eead9d73acb9",
     "config/GMFE69/thrownbullet_ctor.json": "267b52fc1c5958b0fc3f998720005e2914b6f62c01077c8d56d364ade6214519",
     "config/GMFE69/thrownbullet_init.json": "10a5f19e7b35fedc692565268aabba11d4e6e83bde6bfa0e0ec6483d812c9189",
+    "config/GMFE69/thrownbullet_misc.json": "953bc14c7af8c713e0a905cc0d23003c0f9a2175b5bab2e2ea79160d092cfadd",
     "config/GMFE69/thrownbullet_nwa.json": "02fb713a11b4eec908c94771a82cf48c00946e03e69db6c9d8ed9c605701c454",
     "config/GMFE69/timer.json": "ae3403f8235fadb3bdcbcd4f4648ddf27c185cdab7db3542519793fce7267534",
     "config/GMFE69/timerthread.json": "993154fd5f472860102c81015ebb43aaf30afcf22cd46655a20003306ccdd50c",
@@ -2619,6 +2620,7 @@
     "src/game/thrownbullet.cpp": "c0a90f85931b946b6a969684b288b9a9222dd33e6b594aa295599ed74f15e6e1",
     "src/game/thrownbullet_ctor.cpp": "2fb0ec1e214f159e202ad66111e8518077953c21a11762895f046f600a002dd2",
     "src/game/thrownbullet_init.cpp": "daa1111b2b9542c866d16975a93f5034fcfbdaf55649f408e262f3d081c02ff3",
+    "src/game/thrownbullet_misc.cpp": "1201c0fca0ef574da987edf2bae5cd13685a41df6cf92a4b270592172be000a7",
     "src/game/thrownbullet_nwa.cpp": "b22afa4e74c278b152143e4d7787186333002e520a3f3eac3637aac9786b7784",
     "src/game/toilet.cpp": "dd82ee09c931dca35c7faf5906dc6868c54e30fd48c627e133156d2094361258",
     "src/game/toilet_files.cpp": "1cd29af5ab1f64c455b6cf2d889a381d2f15590572019a380dea213be307761e",
@@ -44786,6 +44788,45 @@
       "discarded_functions": [],
       "object_sha256": "e110bfa54705fc32a1e4f144706fdb7b63806d99c09281bd6e10699813f612f1",
       "linked_sha256": "77f8252cf30172e3edb98579b3c01fdb1f0cfb5188fd59c485e4aa350957586f"
+    },
+    {
+      "id": "thrownbullet_misc",
+      "category": "reconstructed_game",
+      "functions": 6,
+      "code_bytes": 360,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "f73ea7e328c9660094ea741ab8dbe234b77b5f01110d96acd7f8006f07115827",
+      "linked_sha256": "bd8e08d186033f9c54ea0c6dd1bf1359a1e804bbed14d7dfb44b9939202dee46"
     }
   ],
   "code_map": {
@@ -50353,48 +50394,6 @@
             "size": 276,
             "kind": "function",
             "name": "ApplyForceTo__13CThrownBulletF8CVector3f",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d2498",
-            "size": 32,
-            "kind": "function",
-            "name": "Halt__13CThrownBulletFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800d24b8",
-            "size": 88,
-            "kind": "function",
-            "name": "HandleBulletCollision__13CThrownBulletFP7CBulletRC10CCollision",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d2510",
-            "size": 24,
-            "kind": "function",
-            "name": "SetDetonationTime__13CThrownBulletFf",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800d2528",
-            "size": 24,
-            "kind": "function",
-            "name": "Explode__13CThrownBulletFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800d2540",
-            "size": 148,
-            "kind": "function",
-            "name": "GetScriptBulletType__13CThrownBulletCFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d25d4",
-            "size": 44,
-            "kind": "function",
-            "name": "IsVisible__13CThrownBulletCFR12CDrawContext",
             "evidence": "exception-index"
           },
           {

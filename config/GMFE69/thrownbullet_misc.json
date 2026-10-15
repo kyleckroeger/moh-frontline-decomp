@@ -1,0 +1,133 @@
+{
+  "id": "thrownbullet_misc",
+  "source": "src/game/thrownbullet_misc.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d2498",
+      "size": 360,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e6a4",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015410",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189e64",
+      "size": 44,
+      "type": 1,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "GetScriptBulletType__13CThrownBulletCFv",
+      "address": "0x800d2540",
+      "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "Halt__13CThrownBulletFv",
+      "address": "0x800d2498",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "HandleBulletCollision__13CThrownBulletFP7CBulletRC10CCollision",
+      "address": "0x800d24b8",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "IsVisible__13CThrownBulletCFR12CDrawContext",
+      "address": "0x800d25d4",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "SetDetonationTime__13CThrownBulletFf",
+      "address": "0x800d2510",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "Explode__13CThrownBulletFv",
+      "address": "0x800d2528",
+      "size": 24,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DebugMsg__FPCce": "0x80018c88"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "thrownbullet.cpp",
+  "original_file_index": 8132,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 70,
+      "address": "0x80177e88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350d70"
+    }
+  ]
+}
