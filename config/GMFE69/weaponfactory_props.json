@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d6efc",
-      "size": 404,
+      "size": 1272,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e844",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800155c0",
+      "size": 36,
       "type": 1
     }
   ],
@@ -50,15 +62,60 @@
       "address": "0x800d6efc",
       "size": 404,
       "binding": 1
+    },
+    {
+      "name": "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei",
+      "address": "0x800d7090",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__14CWeaponFactoryFv",
+      "address": "0x800d70f0",
+      "size": 296,
+      "binding": 1
+    },
+    {
+      "name": "Reset__14CWeaponFactoryFv",
+      "address": "0x800d7218",
+      "size": 476,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
+    "Init__7CWeaponF12EWeaponTypesP23WeaponProperties_structP10ISceneNodes": "0x800d6288",
+    "__construct_new_array": "0x801384fc",
+    "__ct__7CWeaponFv": "0x800d6548",
+    "__destroy_new_array": "0x80138258",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__11CStaticMeshFv": "0x800f2510",
+    "__dt__7CWeaponFv": "0x800d64e8",
+    "__nwa__7CWeaponFUlPc": "0x800d65c8",
+    "g_pStaticObjectMuzzleFlashNPC": "0x8034ec78",
+    "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
+    "strcmp": "0x8013fed4"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_pStaticObjectMuzzleFlashNPC",
+    "g_pStaticObjectMuzzleFlashPlayer"
+  ],
   "original_file": "weaponfactory.cpp",
-  "original_file_index": 8328
+  "original_file_index": 8328,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 15,
+      "address": "0x80178088"
+    }
+  ]
 }
