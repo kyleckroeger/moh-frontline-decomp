@@ -1019,7 +1019,8 @@
     "matrix_rotate.json",
     "quaternion_matrix.json",
     "player_begincrouch.json",
-    "scene_now.json"
+    "scene_now.json",
+    "projectilebullet_methods.json"
   ],
   "progress": {
     "code_bytes": 1414572,
