@@ -1011,7 +1011,8 @@
     "toilet_shutdown.json",
     "Moh2_sendrenderlist.json",
     "player_lightvolume.json",
-    "player_crouch.json"
+    "player_crouch.json",
+    "rcmp_mpc_frames.json"
   ],
   "progress": {
     "code_bytes": 1414572,
