@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8001a108",
-      "size": 376,
+      "size": 720,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009690",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001004c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,16 +68,27 @@
       "address": "0x8001a178",
       "size": 264,
       "binding": 1
+    },
+    {
+      "name": "WaitRenderList__Fv",
+      "address": "0x8001a280",
+      "size": 344,
+      "binding": 1
     }
   ],
   "externals": {
+    "Draw__11CRenderListFv": "0x800f10fc",
     "Flip__7CScreenFv": "0x8001ba5c",
     "Kick__11CRenderListFv": "0x800f0ed8",
     "OSGetTick": "0x80116a58",
+    "Wait__11CRenderListFv": "0x800f0ed4",
     "Wait__7CScreenFv": "0x8001b910",
     "g_ProfileBins": "0x802daca0",
     "g_flipWait": "0x8034e6a8",
     "g_frameDel": "0x8034d968",
+    "g_listDraw": "0x8034e6ac",
+    "g_listWait": "0x8034e6b0",
+    "g_prevListDraw": "0x8034e6c4",
     "g_screen": "0x80196ac0",
     "theRenderList": "0x80194fbc"
   },
@@ -86,12 +97,18 @@
   "upstream": {},
   "local_externals": [
     "g_flipWait",
-    "g_frameDel"
+    "g_frameDel",
+    "g_listDraw",
+    "g_listWait",
+    "g_prevListDraw"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "g_flipWait",
-    "g_frameDel"
+    "g_frameDel",
+    "g_listDraw",
+    "g_listWait",
+    "g_prevListDraw"
   ],
   "original_file": "Moh2.cpp",
   "original_file_index": 1,

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 665008,
+    "matching_code_bytes": 665352,
     "total_executable_code_bytes": 1414572,
-    "percent": 47.01125145980551,
+    "percent": 47.03556976951332,
     "categories": {
-      "reconstructed_game": 443560,
+      "reconstructed_game": 443904,
       "restored_library": 221448
     },
-    "matching_functions": 3951
+    "matching_functions": 3952
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -131,7 +131,7 @@
     "config/GMFE69/Moh2_movingnode.json": "962deb2e9faaf25ed287b741aac7a4269d61089104e86d4d9f89da92ce3ba287",
     "config/GMFE69/Moh2_scenenode.json": "b47f2986d660c39bea9475b1514866c58be901c1f9b43c79a49fc90a604bab9c",
     "config/GMFE69/Moh2_scenenode_dtors.json": "4cb43b30f49b9fc7f9dcf6ed27e6c9656228cb4720c544a7f413e9065c1734bd",
-    "config/GMFE69/Moh2_sendrenderlist.json": "5ad92569ddfe93c3705d8d93c1916b780bdcde9327b398a46d8fcf75b352327b",
+    "config/GMFE69/Moh2_sendrenderlist.json": "1bf0711d1026a71eac15c648ba1de9d73c690ed3c9647c8f829d191470dc643b",
     "config/GMFE69/NMWException.json": "993919adc03819f768ac97f37687a067894f1324f0097fa28477b34baf8f9157",
     "config/GMFE69/NewMore.json": "a73fc17ffb36c223ebeace7005486781fe8461b7cdeead36cec2f2532fdd9aea",
     "config/GMFE69/OS.json": "1545bcf993357bb6d3a55d38f18f89d1633c3ce0a893f0c196874fe2f0113f54",
@@ -2092,7 +2092,7 @@
     "src/game/Moh2_movingnode.cpp": "1ddb6655d9d1c4666a2d6d2065f5da6d0896e7cbf563c7539b5750fd399afff6",
     "src/game/Moh2_scenenode.cpp": "f26229e634619bdb5091b4605f43d55167a264eee0b7c6fc3d3502c0bbfd1c52",
     "src/game/Moh2_scenenode_dtors.cpp": "bdb85bb65559046a814e4ff04575cba65c554459b0d08ff9ddc6ae77b0d731c7",
-    "src/game/Moh2_sendrenderlist.cpp": "c10737777105dca9166ffde4413e678a435f7f390845270b85f3f9555f15baa0",
+    "src/game/Moh2_sendrenderlist.cpp": "124d7cad394be6d0112f4aa8ed9d33ef39d8378dd6e4672a9c51442e4d76b136",
     "src/game/ObstacleAvoidance.cpp": "a8f1dcb408e0e7cc1208a87cb425296ca4bfd789a487ba814952fcc8c4ad6906",
     "src/game/PathNodeList.cpp": "4d07813471d9d4fc31984159dbc04bd6875ace05f4ceb3267d05c7be06169ad9",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
@@ -44234,8 +44234,8 @@
     {
       "id": "Moh2_sendrenderlist",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 376,
+      "functions": 3,
+      "code_bytes": 720,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44267,8 +44267,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "053bb9ce25fcf982ce6b06144f381cccc5bc4e06e69f6004148d68dec2b367e8",
-      "linked_sha256": "976ceb7c9a1e17f83b9b06c8789dd9158c124dbda3d69f39c7d37e22db0ff850"
+      "object_sha256": "d27a68e3219604854dc325c90bdd0cc1162969f4ff0e26c977afba1938a2743c",
+      "linked_sha256": "d2543b47dae7a4477c93c5185804ef2c7ac53eaa841dc5ce0cd0f8bfad3b7a0c"
     },
     {
       "id": "player_lightvolume",
@@ -44672,13 +44672,6 @@
             "kind": "function",
             "name": "RestartGame__Fv",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8001a280",
-            "size": 344,
-            "kind": "function",
-            "name": "WaitRenderList__Fv",
-            "evidence": "exception-index"
           },
           {
             "address": "0x8001a3d8",
