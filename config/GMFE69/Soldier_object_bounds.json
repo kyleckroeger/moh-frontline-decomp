@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ac310",
-      "size": 176,
+      "size": 412,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d288",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800143a8",
+      "size": 36,
       "type": 1
     }
   ],
@@ -56,9 +68,31 @@
       "address": "0x800ac368",
       "size": 88,
       "binding": 1
+    },
+    {
+      "name": "CommitUpdate__14CSoldierObjectFv",
+      "address": "0x800ac428",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "AttemptUpdate__14CSoldierObjectFf",
+      "address": "0x800ac448",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "UpdateLocalBoundingVolume__14CSoldierObjectFQ210ISceneNode11EVolumeTypeRC8CVector3RC8CVector3",
+      "address": "0x800ac3c0",
+      "size": 104,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AttemptUpdate__11CAnimObjectFf": "0x80094424",
+    "CommitUpdate__11CAnimObjectFv": "0x80094358",
+    "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
