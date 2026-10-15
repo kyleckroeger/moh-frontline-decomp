@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80091420",
-      "size": 204,
+      "size": 812,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c720",
-      "size": 8,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800137cc",
-      "size": 12,
+      "size": 36,
       "type": 1
     }
   ],
@@ -61,6 +61,18 @@
       "name": "EndianSwap__11CQuaternionFv",
       "address": "0x80091420",
       "size": 204,
+      "binding": 1
+    },
+    {
+      "name": "Rotate__11CQuaternionFR8CVector3",
+      "address": "0x800914ec",
+      "size": 308,
+      "binding": 1
+    },
+    {
+      "name": "Rotate__11CQuaternionFR8CVector38CVector3",
+      "address": "0x80091620",
+      "size": 300,
       "binding": 1
     }
   ],
@@ -72,5 +84,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "quaternion.cpp",
-  "original_file_index": 5492
+  "original_file_index": 5492,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803502a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803502a4"
+    }
+  ]
 }
