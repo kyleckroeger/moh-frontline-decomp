@@ -1050,7 +1050,12 @@
     "bsevents_ref.json",
     "bsmessage_remove.json",
     "world_object_explosion.json",
-    "animmorph_weight.json"
+    "animmorph_weight.json",
+    "jaw_controller.json",
+    "sound_bankalloc.json",
+    "IStudioFuncs_resload.json",
+    "ConfigGC_defaults.json",
+    "AIObject_lineofsight.json"
   ],
   "progress": {
     "code_bytes": 1414572,
