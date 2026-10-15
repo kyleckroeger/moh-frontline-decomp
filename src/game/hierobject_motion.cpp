@@ -1,5 +1,8 @@
-// A fragment of hierobject.cpp (0x8009a6f0): CHierObject's
-// CommitAnimMotionUpdate (when an animated motion is running, the next
+// A fragment of hierobject.cpp (0x8009a3bc): CHierObject's
+// SetHierCollisionState (the object, or the first descendant in its child
+// list, whose collision state (+1420) is the given one marks itself and every
+// ancestor on the way (bit 0x10 of +1416); the compiler inlines the
+// recursion several levels deep), CommitAnimMotionUpdate (when an animated motion is running, the next
 // rotation becomes current, the position advances by the step and both are
 // copied to the object's position and rotation) and AttemptAnimMotionUpdate
 // (the step is the velocity times the time, the rotation is interpolated
@@ -69,6 +72,7 @@ public:
 
 class CHierObject {
 public:
+    bool SetHierCollisionState(int);
     void CommitAnimMotionUpdate();
     void AttemptAnimMotionUpdate(float);
 
@@ -98,12 +102,34 @@ public:
     unsigned char unknown230[4];
     float m_rotationRate;
     CQuaternion m_targetRotation;
-    unsigned char unknown248[936];
+    unsigned char unknown248[824];
+    CHierObject* m_child;
+    CHierObject* m_sibling;
+    unsigned char m_flags588a : 3;
+    unsigned char m_inCollisionState : 1;
+    unsigned char m_flags588b : 4;
+    unsigned char unknown589[3];
+    int m_collisionState;
+    unsigned char unknown590[96];
     CMatrix m_matrix5f0;
     CMatrix m_matrix630;
     CVector3 m_animPosition;
     CVector3 m_animDelta;
 };
+
+bool CHierObject::SetHierCollisionState(int state) {
+    if (state == m_collisionState) {
+        m_inCollisionState = 1;
+        return true;
+    }
+    for (CHierObject* child = m_child; child; child = child->m_sibling) {
+        if (child->SetHierCollisionState(state)) {
+            m_inCollisionState = 1;
+            return true;
+        }
+    }
+    return false;
+}
 
 void CHierObject::CommitAnimMotionUpdate() {
     if (!m_animating)

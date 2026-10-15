@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8009a6f0",
-      "size": 564,
+      "address": "0x8009a3bc",
+      "size": 1384,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cc64",
-      "size": 8,
+      "address": "0x8000cc5c",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013d9c",
-      "size": 12,
+      "address": "0x80013d90",
+      "size": 24,
       "type": 1
     }
   ],
@@ -67,6 +67,12 @@
       "name": "AttemptAnimMotionUpdate__11CHierObjectFf",
       "address": "0x8009a78c",
       "size": 408,
+      "binding": 1
+    },
+    {
+      "name": "SetHierCollisionState__11CHierObjectFi",
+      "address": "0x8009a3bc",
+      "size": 820,
       "binding": 1
     }
   ],
