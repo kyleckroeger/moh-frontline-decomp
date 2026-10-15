@@ -9,23 +9,44 @@
 // properties record's object at +64 unless an earlier record with the same
 // name (+44) shares it, then the mesh array, the properties and the weapons;
 // Reset re-creates the 150 weapons (768 bytes each) as one free list and
-// allocates the two muzzle-flash static objects. The weapon, mesh-object and
+// allocates the two muzzle-flash static objects; Init loads the parameters,
+// creates each record's sprite unless an earlier record with the same name
+// shares it (a "data\\" path is built but unused, as the code does), loads
+// the weapon objects, then creates the weapons and muzzle flashes as Reset
+// does and marks the factory loaded. The weapon, mesh-object and
 // factory members are inferred (as in weaponfactory_params.cpp). The rest of
 // the file is in other units.
-extern "C" int strcmp(const char*, const char*);
+extern "C" {
+int strcmp(const char*, const char*);
+char* strcpy(char*, const char*);
+unsigned long strlen(const char*);
+}
+
+void* DWI_alloc(const char*, int, int);
 
 enum EWeaponTypes {};
 class ISceneNode;
 class CStaticMesh;
 class CStaticObject;
 
-/* inferred: the object a weapon's properties keep at +64 (its table pointer
-   after 28 bytes, its destructor in the first slot) */
-class WeaponMeshView {
-    unsigned char unknown00[28];
+enum ERenderPriority {};
 
+/* CSprite as in bulletfactory_sprites.cpp: its table pointer after 28 bytes */
+class CSpriteBase {
 public:
-    virtual ~WeaponMeshView();
+    unsigned char unknown00[28];
+};
+
+class CSprite : public CSpriteBase {
+public:
+    enum ESpriteLoadType {};
+
+    static void* operator new(unsigned long size) { return DWI_alloc(0, size, 1024); }
+    CSprite(const char*, ESpriteLoadType, ERenderPriority);
+    virtual ~CSprite();
+
+    void* m_texture;
+    unsigned char unknown24[64];
 };
 
 /* inferred: a weapon's properties (80 bytes), its CRC first */
@@ -33,7 +54,7 @@ struct WeaponProperties_struct {
     unsigned long crc;
     unsigned char unknown04[40];
     char name[20];
-    WeaponMeshView* mesh;
+    CSprite* mesh;
     unsigned char unknown44[12];
 };
 
@@ -63,6 +84,31 @@ public:
     CWeapon* CreateWeapon(EWeaponTypes, ISceneNode*, int);
     void Shutdown();
     void Reset();
+    void Init();
+    void LoadWeaponParameters();
+    void LoadWeaponObjects();
+    /* inferred inline helper */
+    void LoadMeshes() {
+        for (int i = 0; i < m_count; i++) {
+            int j;
+            m_properties[i].mesh = 0;
+            char* name = m_properties[i].name;
+            if (*name) {
+                for (j = 0; j < i; j++) {
+                    if (strcmp(name, m_properties[j].name) == 0) {
+                        m_properties[i].mesh = m_properties[j].mesh;
+                        break;
+                    }
+                }
+                if (!m_properties[i].mesh) {
+                    char path[64];
+                    strcpy(path, "data\\");
+                    strcpy(path + strlen("data\\"), name);
+                    m_properties[i].mesh = new CSprite(name, (CSprite::ESpriteLoadType)1, (ERenderPriority)111);
+                }
+            }
+        }
+    }
     /* inferred inline helper: the register numbering needs the loop as one */
     void ReleaseMeshes() {
         for (int i = 0; i < m_count; i++) {
@@ -169,6 +215,21 @@ void CWeaponFactory::Reset() {
     for (int i = 0; i < 149; i++)
         m_weapons[i].m_next = &m_weapons[i + 1];
     m_weapons[149].m_next = 0;
+    g_pStaticObjectMuzzleFlashNPC = CStaticObjectFactory::AllocateStaticObject(-1332363775, -1);
+    g_pStaticObjectMuzzleFlashPlayer = CStaticObjectFactory::AllocateStaticObject(-1372071268, -1);
+}
+
+void CWeaponFactory::Init() {
+    LoadWeaponParameters();
+    LoadMeshes();
+    LoadWeaponObjects();
+    m_weapons = new ("Weapon factory") CWeapon[150];
+    m_free = m_weapons;
+    m_active = 0;
+    for (int k = 0; k < 149; k++)
+        m_weapons[k].m_next = &m_weapons[k + 1];
+    m_weapons[149].m_next = 0;
+    m_loaded = true;
     g_pStaticObjectMuzzleFlashNPC = CStaticObjectFactory::AllocateStaticObject(-1332363775, -1);
     g_pStaticObjectMuzzleFlashPlayer = CStaticObjectFactory::AllocateStaticObject(-1372071268, -1);
 }

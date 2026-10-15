@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d6efc",
-      "size": 1272,
+      "size": 1988,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e844",
-      "size": 24,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800155c0",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -80,21 +80,34 @@
       "address": "0x800d7218",
       "size": 476,
       "binding": 1
+    },
+    {
+      "name": "Init__14CWeaponFactoryFv",
+      "address": "0x800d73f4",
+      "size": 716,
+      "binding": 1
     }
   ],
   "externals": {
     "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
+    "DWI_alloc__FPCcii": "0x8001c974",
     "Init__7CWeaponF12EWeaponTypesP23WeaponProperties_structP10ISceneNodes": "0x800d6288",
+    "LoadWeaponObjects__14CWeaponFactoryFv": "0x800d65f8",
+    "LoadWeaponParameters__14CWeaponFactoryFv": "0x800d67fc",
     "__construct_new_array": "0x801384fc",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
     "__ct__7CWeaponFv": "0x800d6548",
     "__destroy_new_array": "0x80138258",
+    "__dl__FPv": "0x8001ca2c",
     "__dla__FPv": "0x8001c9e8",
     "__dt__11CStaticMeshFv": "0x800f2510",
     "__dt__7CWeaponFv": "0x800d64e8",
     "__nwa__7CWeaponFUlPc": "0x800d65c8",
     "g_pStaticObjectMuzzleFlashNPC": "0x8034ec78",
     "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
-    "strcmp": "0x8013fed4"
+    "strcmp": "0x8013fed4",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -108,7 +121,8 @@
   "original_file": "weaponfactory.cpp",
   "original_file_index": 8328,
   "pooled_sections": [
-    ".rodata"
+    ".rodata",
+    ".sdata2"
   ],
   "pool_references": [
     {
@@ -116,6 +130,12 @@
       "offset": 0,
       "size": 15,
       "address": "0x80178088"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 6,
+      "address": "0x80350e50"
     }
   ]
 }
