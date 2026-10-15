@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004f5e4",
-      "size": 1012,
+      "address": "0x8004f31c",
+      "size": 1724,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a990",
-      "size": 16,
+      "address": "0x8000a988",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011af8",
-      "size": 24,
+      "address": "0x80011aec",
+      "size": 36,
       "type": 1
     },
     {
@@ -76,6 +76,18 @@
       "binding": 1
     },
     {
+      "name": "SetUpperLocation__16CAISoldierObjectFR21CAIFilterRealPosition",
+      "address": "0x8004f31c",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "ChooseTarget__16CAISoldierObjectFP9CAIObjectf",
+      "address": "0x8004f338",
+      "size": 684,
+      "binding": 1
+    },
+    {
       "name": "SetupTargetMatchList__16CAISoldierObjectF20aifilter_target_modeP14aistatus_matchi",
       "address": "0x8004f5e4",
       "size": 188,
@@ -96,8 +108,11 @@
   ],
   "externals": {
     "CheckCoverpointUsefulness__9CAIObjectFv": "0x8004aa28",
+    "GetDistanceXYZReal__9CAIObjectFP9CAIObject": "0x8004d5b8",
     "Init__9CAIObjectFv": "0x8004ebe0",
+    "IsObjectInLineOfSight__9CAIObjectFR21CAIFilterRealPositionfb": "0x80048408",
     "ProcessObstacleAvoidance__9CAIObjectFv": "0x80049dd4",
+    "SetTarget__9CAIObjectFP9CAIObject": "0x8004d41c",
     "UpdateReactionTime__9CAIObjectFv": "0x8004ec04",
     "UpdateTargetPosition__9CAIObjectFv": "0x8004e024",
     "WalkAStarPath__9CAIObjectFv": "0x8004b8fc",
@@ -123,11 +138,41 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034f99c"
+      "address": "0x8034f988"
     },
     {
       "section": ".sdata2",
       "offset": 4,
+      "size": 4,
+      "address": "0x8034f98c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f990"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f994"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f998"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f99c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
       "size": 4,
       "address": "0x8034f9a0"
     }
