@@ -1017,7 +1017,8 @@
     "pumhandler_umt_dtor.json",
     "matrix_scale.json",
     "matrix_rotate.json",
-    "quaternion_matrix.json"
+    "quaternion_matrix.json",
+    "player_begincrouch.json"
   ],
   "progress": {
     "code_bytes": 1414572,
