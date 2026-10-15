@@ -1119,7 +1119,8 @@
     "ConfigGC_init.json",
     "dvdStatus_gxinit.json",
     "UserInterface_compass.json",
-    "debug_prof_dump.json"
+    "debug_prof_dump.json",
+    "proxtrig_leafs.json"
   ],
   "progress": {
     "code_bytes": 1414572,

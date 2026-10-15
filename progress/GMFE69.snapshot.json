@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 731888,
+    "matching_code_bytes": 732408,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.739183300673275,
+    "percent": 51.77594353627811,
     "categories": {
-      "reconstructed_game": 510440,
+      "reconstructed_game": 510960,
       "restored_library": 221448
     },
-    "matching_functions": 4194
+    "matching_functions": 4195
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -771,7 +771,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "5d42327594fd72239693e915df571b10cfc6fdc60ceaac27bb8fda3cb9f4f001",
+    "config/GMFE69/project.json": "39569b8018a7014a6fefa16a69b535b4b2f8c0f1de0f19c1d9d473d65b6002ab",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -787,6 +787,7 @@
     "config/GMFE69/propdat_endian_header.json": "fc5d8ac73779ac176f7f3b30624c834267f7809b3ffe197edba85577f73d9aef",
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
     "config/GMFE69/propdat_restart.json": "e5671a4af8c8020ce582f367cf4698b47126faa7d190804633b8ec42cccfab7f",
+    "config/GMFE69/proxtrig_leafs.json": "7a644807c8d622d9c69294c57528155d3fb0303f289551bad7f4105a82d2fc97",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "89c7f107dc348d73abd19bedbaf5b7c4ad534145f63e8a71a9ab5646117cd718",
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
@@ -2691,6 +2692,7 @@
     "src/game/propdat_endian_header.cpp": "a495580d0031b6979d10c5906c2235de9e8efa227c56cb5fe6d68e57a88aa50c",
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
     "src/game/propdat_restart.cpp": "fbbc2820cf6df3937fdf86cece40194167025b89b0761ae6f23c7cae5464c7e5",
+    "src/game/proxtrig_leafs.cpp": "003291ae77fd00592e2a43962cfb61b59c22b4c897bee1b2d47594b889b8e8c3",
     "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
@@ -48795,6 +48797,45 @@
       "discarded_functions": [],
       "object_sha256": "adc38e8cf0a61c9c2871ef1165f9e20bb24b02cd922cff2bd96b0247944156cf",
       "linked_sha256": "556034398c63c82b63d78be2d50961f4b48942134b033ca734b056efe96941e9"
+    },
+    {
+      "id": "proxtrig_leafs",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 520,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "cd715aafede13c6a2b3d285e6d706cfe720882c08b36dc4e6cbe4f4c3efdee61",
+      "linked_sha256": "5c488cc157d932a6fb132277643ec3decddaad82ae2146f7ae2a2a6f80081a02"
     }
   ],
   "code_map": {
@@ -49653,13 +49694,6 @@
             "size": 3480,
             "kind": "function",
             "name": "TriggerEnterAndLeaveMessages__FP10BSGO_Basicb",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80045f84",
-            "size": 520,
-            "kind": "function",
-            "name": "CheckLeafsTriggers__FPC12_PropBSPLeafRC8CVector3P14_ProximityDatabb",
             "evidence": "exception-index"
           },
           {
