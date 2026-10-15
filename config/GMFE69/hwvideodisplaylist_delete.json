@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80102cf4",
-      "size": 48,
+      "size": 52,
       "type": 1
     },
     {
@@ -61,6 +61,12 @@
       "name": "__dl__7GCHW_VDFPv",
       "address": "0x80102cf4",
       "size": 48,
+      "binding": 2
+    },
+    {
+      "name": "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv",
+      "address": "0x80102d24",
+      "size": 4,
       "binding": 2
     }
   ],
