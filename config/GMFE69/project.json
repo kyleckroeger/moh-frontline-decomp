@@ -1034,7 +1034,8 @@
     "hierobject_motion.json",
     "hierobject_script.json",
     "hierobject_update.json",
-    "static_obj_attempt.json"
+    "static_obj_attempt.json",
+    "static_obj_anim.json"
   ],
   "progress": {
     "code_bytes": 1414572,
