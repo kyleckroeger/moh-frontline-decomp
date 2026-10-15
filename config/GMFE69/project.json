@@ -1106,7 +1106,8 @@
     "AIObject_patrolwalk.json",
     "AIObject_setcover.json",
     "Pause_reset.json",
-    "input_init.json"
+    "input_init.json",
+    "MemoryCardGC_prefs.json"
   ],
   "progress": {
     "code_bytes": 1414572,

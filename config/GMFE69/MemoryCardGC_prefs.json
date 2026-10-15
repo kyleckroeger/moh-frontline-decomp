@@ -1,0 +1,123 @@
+{
+  "id": "MemoryCardGC_prefs",
+  "source": "src/game/MemoryCardGC_prefs.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800ee7a4",
+      "size": 368,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f548",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800160e8",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "GetPort__11CMemoryCardFv",
+      "address": "0x800ee7a4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "GetSaveGameOverheadSize__11CMemoryCardFb",
+      "address": "0x800ee7ac",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "ArePrefsPresent__11CMemoryCardFv",
+      "address": "0x800ee7b4",
+      "size": 352,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CARDClose": "0x80127fa8",
+    "CARDFastOpen": "0x80127cd0",
+    "CARDGetStatus": "0x80128ef4",
+    "CARDUnmount": "0x801271c0",
+    "COMPANY_CODENAME": "0x8034e30c",
+    "COMPANY_DEBUGNAME": "0x8034e310",
+    "GAME_CODENAME": "0x8034e308",
+    "GAME_DEBUGNAME": "0x8034e314",
+    "MountPortIfRequired__11CMemoryCardFi": "0x800f03dc",
+    "sprintf": "0x8013dab4",
+    "strncmp": "0x8013fe94",
+    "strstr": "0x8013fdb4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "COMPANY_CODENAME",
+    "COMPANY_DEBUGNAME",
+    "GAME_CODENAME",
+    "GAME_DEBUGNAME"
+  ],
+  "original_file": "MemoryCardGC.cpp",
+  "original_file_index": 9213,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x80351048"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 6,
+      "address": "0x80351050"
+    }
+  ]
+}
