@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 703496,
+    "matching_code_bytes": 703900,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.73207443664939,
+    "percent": 49.760634312003916,
     "categories": {
-      "reconstructed_game": 482048,
+      "reconstructed_game": 482452,
       "restored_library": 221448
     },
-    "matching_functions": 4117
+    "matching_functions": 4118
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -245,6 +245,7 @@
     "config/GMFE69/UIStudio_init.json": "16b84626abd4a1447f09699cd21132ac5861867eb09318e8f701662288cd8433",
     "config/GMFE69/UIStudio_internal.json": "6bc4d75437ab849da297dc7c70ebeddcdfdd9b435940970f8d9ec9a98b26fafa",
     "config/GMFE69/UIStudio_load.json": "a7fbb74d90cfdb2589c8a407c07906d0e6b3573dd28685f648e040e3581d607b",
+    "config/GMFE69/UIStudio_unloadmodal.json": "587c273395591730f49c9f9097cb739e3993e6fd6e87d4293fe87019e94c4360",
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
     "config/GMFE69/UserInterface.json": "43a8bb46c3399b0bebba952c98941e60091427e1f2ccaf6a7a962ad8be682caa",
     "config/GMFE69/__init_cpp_exceptions.json": "473fc79adada2d4f4716f9dfb8db2454052cf439f5333b1078f4ff68cc1e87da",
@@ -743,7 +744,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "d7ff99fd1f897ca408d63179b4bfdfae00de992182987849cdc6b614faff6f42",
+    "config/GMFE69/project.json": "db1607be7754232efb39120a8f88dda9643a665f50457c6dcce4d7c153880027",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -2245,6 +2246,7 @@
     "src/game/UIStudio_init.c": "96f1af09b3717a03172fd6d585469869ddf28adfeb601a827b97c8da503e8622",
     "src/game/UIStudio_internal.c": "6d4a854bda5edbaa29d49af1c71d50e8f9cce5a428a0bee736782e464aae5f64",
     "src/game/UIStudio_load.c": "aef81b1e495dc7a14610192728f89ae27125e7c80d89986341d2839ef56f671c",
+    "src/game/UIStudio_unloadmodal.c": "b5c5d0044ccca5b20004381944f07cd28f500b09820c1bb55d2a51cc067823d1",
     "src/game/UIStudio_visibility.c": "3454b7fe7ff6847bada0bf5f355070e360b4bda0af974311c5e150c022437e59",
     "src/game/UserInterface.cpp": "5e2d62e5410ad16508efa4e2243c541de362afbf7c74aa7ee3b63f4be695fe8e",
     "src/game/alarm.cpp": "f9abe7f8bffec4b060a9d15ca8352c618fc54613728b1e9b0065707e5f574c33",
@@ -47551,6 +47553,47 @@
       "discarded_functions": [],
       "object_sha256": "4fbe49ccb61189c9bd9d64bcc53132325aaa25c55851e899929f940309f7c5d6",
       "linked_sha256": "d8474f6fc3a2cc5ba3adc4f130885adcef136dc8dfd5cbb6465feec3d1d2834d"
+    },
+    {
+      "id": "UIStudio_unloadmodal",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 404,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "9d82bd9184e6e3a9db1f65a2b655d6854191c83fa9446e865a7f03f9bc99b345",
+      "linked_sha256": "8fe62404c0ea0c6555749aa001d41ebebc62bf027be7dc8bafd7fa231a942c93"
     }
   ],
   "code_map": {
@@ -50538,13 +50581,6 @@
             "kind": "function",
             "name": "UISInternalUnloadScreen__FP9UISInfo_tUsUsl",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800885dc",
-            "size": 404,
-            "kind": "function",
-            "name": "UISInternalUnloadModal__FP9UISInfo_tUsUsl",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x800887dc",

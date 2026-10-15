@@ -1,0 +1,81 @@
+{
+  "id": "UIStudio_unloadmodal",
+  "source": "src/game/UIStudio_unloadmodal.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800885dc",
+      "size": 404,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c3e8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013448",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UISInternalUnloadModal__FP9UISInfo_tUsUsl",
+      "address": "0x800885dc",
+      "size": 404,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "UISFindScreen__FP9UISInfo_tUsUs": "0x8008af80",
+    "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t": "0x80085a8c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "UIStudio.c",
+  "original_file_index": 4545
+}
