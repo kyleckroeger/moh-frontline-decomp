@@ -1029,7 +1029,8 @@
     "Soldier_object_look.json",
     "Soldier_object_attach.json",
     "objcreate_dump.json",
-    "objcreate_create.json"
+    "objcreate_create.json",
+    "static_obj_pathbegin.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -40,11 +40,35 @@
     {
       "name": ".text",
       "address": "0x800ae804",
-      "size": 8,
+      "size": 188,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d380",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014450",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Destroy__13CStaticObjectFv",
+      "address": "0x800ae80c",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "MarkForDestruction__13CStaticObjectFi",
+      "address": "0x800ae870",
+      "size": 80,
+      "binding": 1
+    },
     {
       "name": "GetObjectType__13CStaticObjectCFv",
       "address": "0x800ae804",
@@ -52,7 +76,13 @@
       "binding": 2
     }
   ],
-  "externals": {},
+  "externals": {
+    "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject": "0x800b36a4",
+    "DestroyDumpObject__FP13CStaticObject": "0x8003fa50",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "g_scene": "0x8019484c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
