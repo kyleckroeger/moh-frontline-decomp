@@ -9,6 +9,11 @@
 // the same way (parsing with the flag set), then reads opcodes until the
 // target or an end opcode, counting frames (their life) and skipping the
 // extra word of the 0xe000 family; user opcodes go to the skip callback.
+// _ParseForFrame (file-local) reads opcodes up to the next frame (returned;
+// 0xffff at the end): loop push/count/jump-back opcodes keep a two-level loop
+// stack (+32), a step opcode adds to the time, two opcodes set flag bits,
+// user opcodes go to the user or skip callback; the life advances by the
+// time given. The loop stack view is inferred.
 struct AnimSeqFrameList_t {
     unsigned char framerate;
     unsigned char field01[7];
@@ -28,13 +33,16 @@ struct AnimSeqAnimInfo_t {
     unsigned short value1C;
     unsigned char flag1E;
     unsigned char flag1F;
-    unsigned char field20[16];
+    struct {
+        unsigned short position;
+        unsigned short count;
+        float life;
+    } loops[2];
 };
 
-// File-local in the original; declared without static here because this
-// fragment does not define it.
-unsigned short _ParseForFrame(AnimSeqAnimInfo_t*, float, unsigned char);
-void _AnimDoUserOpcodeSkipCallback(unsigned short);
+static unsigned short _ParseForFrame(AnimSeqAnimInfo_t*, float, unsigned char);
+bool _AnimDoUserOpcodeSkipCallback(unsigned short);
+bool _AnimDoUserOpcodeCallback(unsigned short);
 
 extern AnimSeqAnimInfo_t* _AnimSeq_CurrentInfo;
 
@@ -117,4 +125,97 @@ static void _AnimSeqParseToEnd(AnimSeqAnimInfo_t* info, AnimSeqFrameList_t* list
             info->value1C++;
         }
     }
+}
+
+static unsigned short _ParseForFrame(AnimSeqAnimInfo_t* info, float time, unsigned char skip) {
+    unsigned short frame = 0xffff;
+    bool done = false;
+    while (!done) {
+        unsigned short op = info->list->opcodes[info->position];
+        info->position++;
+        if ((op & 0xc000) == 0xc000) {
+            if (!(op & 0x800)) {
+                switch (op) {
+                case 0xc000:
+                case 0xc001:
+                    if (info->frames == 0xffff)
+                        info->frames = info->value1C;
+                    done = true;
+                    break;
+                case 0xc002:
+                    info->flag1F++;
+                    info->loops[info->flag1F - 1].position = info->position;
+                    info->loops[info->flag1F - 1].count = 0;
+                    info->loops[info->flag1F - 1].life = info->life + time;
+                    break;
+                case 0xc003: {
+                    unsigned int word = info->list->opcodes[info->position];
+                    info->position++;
+                    int value = word & 0xfff;
+                    if (word & 0x800)
+                        value |= 0xf000;
+                    if ((word & 0x1000) == 0x1000) {
+                        value <<= 16;
+                        value += info->list->opcodes[info->position];
+                        info->position++;
+                    }
+                    unsigned short count = value;
+                    if (info->loops[info->flag1F - 1].count == 0)
+                        info->loops[info->flag1F - 1].count = count;
+                    else
+                        info->loops[info->flag1F - 1].count--;
+                    if (info->loops[info->flag1F - 1].count != 0) {
+                        info->position = info->loops[info->flag1F - 1].position;
+                        time = 0.0f;
+                        info->life = info->loops[info->flag1F - 1].life;
+                    } else {
+                        info->flag1F--;
+                    }
+                    break;
+                }
+                case 0xc004: {
+                    unsigned int word = info->list->opcodes[info->position];
+                    info->position++;
+                    int value = word & 0xfff;
+                    if (word & 0x800)
+                        value |= 0xf000;
+                    if ((word & 0x1000) == 0x1000) {
+                        value <<= 16;
+                        value += info->list->opcodes[info->position];
+                        info->position++;
+                    }
+                    info->time += 0.0625f * value;
+                    break;
+                }
+                case 0xc005:
+                    info->flag1E |= 1;
+                    info->flag1E |= 8;
+                    break;
+                case 0xc006:
+                    info->flag1E |= 4;
+                    info->flag1E |= 32;
+                    break;
+                default:
+                    if ((op & 0xe000) == 0xe000 && (op & 0x1000) == 0x1000)
+                        info->position++;
+                    break;
+                }
+            } else {
+                bool handled;
+                _AnimSeq_CurrentInfo = info;
+                if (skip == 0)
+                    handled = _AnimDoUserOpcodeCallback(op);
+                else
+                    handled = _AnimDoUserOpcodeSkipCallback(op);
+                if (!handled && (op & 0x1000) == 0x1000)
+                    info->position++;
+            }
+        } else {
+            info->value1C++;
+            frame = op;
+            done = true;
+        }
+    }
+    info->life += time;
+    return frame;
 }
