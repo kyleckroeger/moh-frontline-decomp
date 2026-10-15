@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8016c5f8",
-      "size": 160,
+      "size": 624,
       "type": 1
     }
   ],
@@ -60,11 +60,25 @@
       "address": "0x8016c5f8",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_download__FiPvPvi",
+      "address": "0x8016c698",
+      "size": 464,
+      "binding": 1
     }
   ],
   "externals": {
+    "ARQPostRequest": "0x8011f45c",
+    "DCFlushRange": "0x80111880",
+    "OSDisableInterrupts": "0x801135cc",
+    "OSRestoreInterrupts": "0x801135f4",
     "SNDARAM_alloc__Fi": "0x8016ccc0",
     "SNDARAM_free__FUi": "0x8016cf74",
+    "SNDDRV_dmcallback__FUl": "0x80169384",
+    "_restgpr_25": "0x80138a54",
+    "_savegpr_25": "0x80138a08",
+    "snddrv": "0x80341a20",
     "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
