@@ -42,7 +42,19 @@
     {
       "name": ".text",
       "address": "0x80088b68",
-      "size": 28,
+      "size": 204,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c408",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013478",
+      "size": 12,
       "type": 1
     }
   ],
@@ -64,15 +76,27 @@
       "address": "0x80088b7c",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "UISShutdown",
+      "address": "0x80088b84",
+      "size": 176,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "UISAddThreadAction__FP9UISInfo_t16UISThreadActionTP19UISThreadGroupInfoTlP10UISParam_t": "0x80085678",
+    "UISProcessThreadAction__FP9UISInfo_tUc": "0x800852c8",
+    "uisEventNotProcess": "0x8034ea90"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "uisEventNotProcess"
+  ],
   "original_file": "UIStudio.c",
   "original_file_index": 4545
 }
