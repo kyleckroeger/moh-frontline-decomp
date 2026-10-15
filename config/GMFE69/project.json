@@ -1166,7 +1166,10 @@
     "projectilebullet_collisionid.json",
     "thrownbullet_collisionid.json",
     "animplayer_initai.json",
-    "bsbifunc_sedevent.json"
+    "bsbifunc_sedevent.json",
+    "Moh2_setfog.json",
+    "player_setweaponenable.json",
+    "bigyuvswizzler_delete.json"
   ],
   "progress": {
     "code_bytes": 1414572,

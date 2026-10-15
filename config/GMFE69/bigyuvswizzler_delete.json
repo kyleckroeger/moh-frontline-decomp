@@ -1,0 +1,80 @@
+{
+  "id": "bigyuvswizzler_delete",
+  "source": "src/game/bigyuvswizzler_delete.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk",
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "scratch/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800fce14",
+      "size": 64,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000faf8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016808",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DELETE_tBigYUVSwizzler__FP15tBigYUVSwizzler",
+      "address": "0x800fce14",
+      "size": 64,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DELETE_tBigSwizzler__FP12tBigSwizzler": "0x800fc56c",
+    "MEM_free": "0x8014f83c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "bigyuvswizzler.cpp",
+  "original_file_index": 9971
+}
