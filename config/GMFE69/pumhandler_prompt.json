@@ -1,0 +1,93 @@
+{
+  "id": "pumhandler_prompt",
+  "source": "src/game/pumhandler_prompt.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800b92c0",
+      "size": 352,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d998",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014948",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PromptUserMessage__FPcP19PopUpMessageHandlerP12PopUpMessage",
+      "address": "0x800b92c0",
+      "size": 204,
+      "binding": 1
+    },
+    {
+      "name": "PromptUserMessage__FUiP19PopUpMessageHandler",
+      "address": "0x800b938c",
+      "size": 148,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddPopUpMessage__19PopUpMessageHandlerFPcUcUsUsUcUcUcUcUcUcUc": "0x800b9420",
+    "Get_b__12PopUpMessageFv": "0x800bf780",
+    "Get_g__12PopUpMessageFv": "0x800bf788",
+    "Get_onScreenTime__12PopUpMessageFv": "0x800bf798",
+    "Get_placement__12PopUpMessageFv": "0x800bf7b8",
+    "Get_property__12PopUpMessageFv": "0x800bf7a0",
+    "Get_r__12PopUpMessageFv": "0x800bf790",
+    "Get_screenLocX__12PopUpMessageFv": "0x800bf7b0",
+    "Get_screenLocY__12PopUpMessageFv": "0x800bf7a8",
+    "umTable": "0x801ef3ec"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "pumhandler.cpp",
+  "original_file_index": 7152
+}
