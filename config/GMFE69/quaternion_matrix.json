@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,24 +39,42 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80091c9c",
-      "size": 456,
+      "address": "0x800917f0",
+      "size": 1652,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c750",
-      "size": 16,
+      "address": "0x8000c740",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013814",
+      "address": "0x800137fc",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801766d8",
       "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Slerp__11CQuaternionF11CQuaternion11CQuaternionf",
+      "address": "0x800917f0",
+      "size": 416,
+      "binding": 1
+    },
+    {
+      "name": "SetFromMatrix__11CQuaternionFRC7CMatrix",
+      "address": "0x80091990",
+      "size": 780,
+      "binding": 1
+    },
     {
       "name": "GetMatrix__11CQuaternionCFR7CMatrix",
       "address": "0x80091c9c",
@@ -76,7 +94,10 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "acos": "0x801438e0",
+    "sin": "0x80143790"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -93,7 +114,7 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x803502a0"
+      "address": "0x803502a8"
     },
     {
       "section": ".sdata2",
@@ -105,7 +126,7 @@
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x803502a8"
+      "address": "0x803502ac"
     },
     {
       "section": ".sdata2",
@@ -118,6 +139,18 @@
       "offset": 24,
       "size": 8,
       "address": "0x803502b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x803502c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x803502a0"
     }
   ]
 }

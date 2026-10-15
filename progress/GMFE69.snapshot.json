@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 663548,
+    "matching_code_bytes": 664744,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.908040029068864,
+    "percent": 46.99258857095998,
     "categories": {
-      "reconstructed_game": 442100,
+      "reconstructed_game": 443296,
       "restored_library": 221448
     },
-    "matching_functions": 3948
+    "matching_functions": 3950
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -710,7 +710,7 @@
     "config/GMFE69/pumhandler_umt_unload.json": "f712cd544ac0eba6bdde749d1fdeb2a8da967ce5cdbc12aaf7311f21e2c8c6bb",
     "config/GMFE69/qsort.json": "277ba29abda5c2279b4e2863c6a9b8fbe0b1f4f180473d48b6a194e2e91b7498",
     "config/GMFE69/quaternion.json": "a14af7275b7ad93734dab95552caa1d7dca8ab42688537ba104e371a581e3000",
-    "config/GMFE69/quaternion_matrix.json": "c2c70621bba929a1db6f128dfdebf0c164f22ed36406063ee42c2d082b19f408",
+    "config/GMFE69/quaternion_matrix.json": "a2a0664d173493ab1abbf8264f008348b4512afa6b7805c40bb0cebf2f22a743",
     "config/GMFE69/rand.json": "958d1564ced02e430faca2258c920c5b7f36bd3ba70f168d2cbb54dace181f59",
     "config/GMFE69/rcmp2real.json": "7a6660763df07bcc921df0044bbfbe2c11bf23eb576075092436214c3c81b4d5",
     "config/GMFE69/rcmp_main.json": "34aafc1bb2f388a47a856dd39445c571936efb16efebcbf4d5db613085304bf4",
@@ -2510,7 +2510,7 @@
     "src/game/pumhandler_umt_dtor.cpp": "ea901cf262e05337ba57d9a8f48a588444ca51bfcc40d25c15e88d9c476c657b",
     "src/game/pumhandler_umt_unload.cpp": "30c48060dfe29c8f32db40f611958ee39fc6a7b2b07ed7a170358f209824fdcc",
     "src/game/quaternion.cpp": "6aca623969812a56dbe619e430a936f2b7120a8b32d1f6811c73046c74e6972a",
-    "src/game/quaternion_matrix.cpp": "d91930ccaa441b913747f7a40ee6e4dab1a259e9020ab084defcd0170e26f5ad",
+    "src/game/quaternion_matrix.cpp": "383496979fbe847699f6b98bbf186da56e8ae9960812590e8c2095bba9a41aa9",
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
     "src/game/rcmp_main_delete.cpp": "73241fde4c1b1f4a0e1c05c312f789ef77dbc1f63a46d98cd54c989924ac15d6",
     "src/game/rcmp_mpc_codec.cpp": "1422ce69fe30701e184529fb65349e3819f04d4e3c91c8460c8e21a64e07eb32",
@@ -44546,8 +44546,8 @@
     {
       "id": "quaternion_matrix",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 456,
+      "functions": 5,
+      "code_bytes": 1652,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44564,7 +44564,7 @@
         "on",
         "-O4,p",
         "-inline",
-        "auto",
+        "deferred,auto",
         "-pragma",
         "cats off",
         "-nosyspath",
@@ -44579,8 +44579,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "49023ae08a3a665ebe4a5c1e9eb755c26e8a88a309b532838dfca842ec8e235b",
-      "linked_sha256": "a6c0e766e193ecab6f4f93b8f4edc1e15f4acd93c41768eb52019abd0c10e3ed"
+      "object_sha256": "de8b10708cf7557fe499eb232c672f55b8691f5ba5c043315b7386fd82a1cc11",
+      "linked_sha256": "2581c9bfb5abfb14effbd32cc827423ca6140d38b2cdcfe5a75155d1b1ad2bd9"
     }
   ],
   "code_map": {
@@ -48384,20 +48384,6 @@
             "size": 164,
             "kind": "function",
             "name": "Multiply__11CQuaternionF11CQuaternion",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800917f0",
-            "size": 416,
-            "kind": "function",
-            "name": "Slerp__11CQuaternionF11CQuaternion11CQuaternionf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80091990",
-            "size": 780,
-            "kind": "function",
-            "name": "SetFromMatrix__11CQuaternionFRC7CMatrix",
             "evidence": "exception-index"
           }
         ]
