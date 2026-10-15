@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 730480,
+    "matching_code_bytes": 731016,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.63964789349711,
+    "percent": 51.67753921327441,
     "categories": {
-      "reconstructed_game": 509032,
+      "reconstructed_game": 509568,
       "restored_library": 221448
     },
-    "matching_functions": 4192
+    "matching_functions": 4193
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -319,7 +319,7 @@
     "config/GMFE69/animplayer.json": "123a8b6fa4ff0d201d93990013084ba2542118c0a6c8b02c04d3a5b5515c1ba1",
     "config/GMFE69/animplayer_weak.json": "51f6719bb37fdb213a30e4327c6e68dd3035b75162b455968ff59f21626988a9",
     "config/GMFE69/animseq.json": "a95b2f2e7ccd61f0b10abfb3da323a97765e9028204bfa193457dad4a01ba62f",
-    "config/GMFE69/animseq_start.json": "ab5045bf9152fb87cb8c1441997ec08bb86c17e21660a74256792bbd70f27c28",
+    "config/GMFE69/animseq_start.json": "93a6ed326ea089421b0679c86f11e513766d68947d3a4bc3882bd189eda27994",
     "config/GMFE69/animskinned.json": "5d83f4f4dc599102760733b67df7133fe658a8e44e0a30db4229a1f9a4bfef9f",
     "config/GMFE69/animskinned_dtor.json": "cfbd4b49c98a64c05b9eaffa85a1b08d8fa326d3a85e0035c594ed661ef8d987",
     "config/GMFE69/animskinned_skeleton.json": "50fa4ecdb6985401ef86f806476c1d28ad0e9843577183c0064528629642a61c",
@@ -2341,7 +2341,7 @@
     "src/game/animplayer.cpp": "99b4ef928b5180420a1d053c44deb1a4abd0d58f4e02dbbbe517d147af5c696a",
     "src/game/animplayer_weak.cpp": "4477f9d5a90d9ec10a41c0bbeddbf126956059c3c77c45c7893b164445d6d098",
     "src/game/animseq.cpp": "41ae1e334e9a48b7d9b8fa506401aa98bb74422f5ff869e6865e116682792658",
-    "src/game/animseq_start.cpp": "e9732259f0448317c8f2e0e54c59de7ebef533916f8c7efbf6a301147f064ad7",
+    "src/game/animseq_start.cpp": "64b378babd8eadcc38af7c455107277ab4f3d20c63f64a2ff0ad92bf0b89ce92",
     "src/game/animskinned.cpp": "e75e1b1739d923674072b8aa07d54237f44b43d7cbc7f3e136d5a7a54a083ad8",
     "src/game/animskinned_dtor.cpp": "f8051dbb14c2ada9078b6b9638b6e2dbd2e79720c568cfd083f6d7214d2413aa",
     "src/game/animskinned_skeleton.cpp": "a7897db451a17f6db5cf5b95b97aac21c44a2f06d827a1f0b23f5d0b3d9c5f27",
@@ -47221,8 +47221,8 @@
     {
       "id": "animseq_start",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 252,
+      "functions": 2,
+      "code_bytes": 788,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47254,8 +47254,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f3e9f3ff01a72d522bc74986f5675441fc24972c0350d22838da786df8142fb2",
-      "linked_sha256": "366edce004ad989d93eedd228c39982654c6daa89ef6f8b9b12d67b1ec41eb44"
+      "object_sha256": "63cc2b6e41da974bf4fabb22b2be631c6115ac445ec4c6b04393799966ba96a0",
+      "linked_sha256": "90113c5483ff310651752bf8de978e77ec8acd8f568125a25039123c2ece20a9"
     },
     {
       "id": "animst_transprecheck",
@@ -50613,13 +50613,6 @@
             "kind": "function",
             "name": "AnimSeqGrow",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80066484",
-            "size": 536,
-            "kind": "function",
-            "name": "_AnimSeqParseToEnd__FP17AnimSeqAnimInfo_tP18AnimSeqFrameList_tUs",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x8006669c",

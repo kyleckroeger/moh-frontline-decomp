@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x80066388",
-      "size": 252,
+      "size": 788,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b4c8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001262c",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_AnimSeqParseToEnd__FP17AnimSeqAnimInfo_tP18AnimSeqFrameList_tUs",
+      "address": "0x80066484",
+      "size": 536,
+      "binding": 0
+    },
     {
       "name": "AnimSeqStart",
       "address": "0x80066388",
@@ -65,6 +71,8 @@
     }
   ],
   "externals": {
+    "_AnimDoUserOpcodeSkipCallback__FUs": "0x8006931c",
+    "_AnimSeq_CurrentInfo": "0x8034e960",
     "_ParseForFrame__FP17AnimSeqAnimInfo_tfUc": "0x8006669c"
   },
   "undefined_in_discarded_code": [],
@@ -74,7 +82,9 @@
     "_ParseForFrame__FP17AnimSeqAnimInfo_tfUc"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "_AnimSeq_CurrentInfo"
+  ],
   "original_file": "animseq.cpp",
   "original_file_index": 3040,
   "pooled_sections": [
@@ -104,6 +114,12 @@
       "offset": 16,
       "size": 8,
       "address": "0x8034fcc8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034fcd8"
     }
   ]
 }
