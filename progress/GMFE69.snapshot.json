@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 693392,
+    "matching_code_bytes": 693780,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.01779478174317,
+    "percent": 49.04522357292524,
     "categories": {
-      "reconstructed_game": 471944,
+      "reconstructed_game": 472332,
       "restored_library": 221448
     },
-    "matching_functions": 4068
+    "matching_functions": 4069
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -703,7 +703,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "e15d609bdfeb914b4a50038d0b88adf8c495919fcaf8097a816ab9681540f3de",
+    "config/GMFE69/project.json": "90c95fb7580328abf7f0d6dcec18a26b499e00edfeae5337436470b4a56b6301",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -726,6 +726,7 @@
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
     "config/GMFE69/pumhandler_prompt.json": "a2b27b1646eb28ce41b3f90f69bd46c89fc65430467b1ecafaf5da4643f5a4d2",
+    "config/GMFE69/pumhandler_subtitles.json": "d7c42ca41fbb2b990bd77b9269b556cfb44625f182320e9982899e4d8079e322",
     "config/GMFE69/pumhandler_umt_dtor.json": "b7ab1e983c6965fcfd266994717439d860469c1e66578d2215b888a59c944d7f",
     "config/GMFE69/pumhandler_umt_unload.json": "f712cd544ac0eba6bdde749d1fdeb2a8da967ce5cdbc12aaf7311f21e2c8c6bb",
     "config/GMFE69/qsort.json": "277ba29abda5c2279b4e2863c6a9b8fbe0b1f4f180473d48b6a194e2e91b7498",
@@ -2554,6 +2555,7 @@
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
     "src/game/pumhandler_prompt.cpp": "ac71c30d19abbe271524f96c45279d59de2fc3e7595554e81ed15bbef9be1047",
+    "src/game/pumhandler_subtitles.cpp": "1f1dfee08ca0bc404e4cc771363f3e510d494032679a72db04d9fa6ebbf545d0",
     "src/game/pumhandler_umt_dtor.cpp": "ea901cf262e05337ba57d9a8f48a588444ca51bfcc40d25c15e88d9c476c657b",
     "src/game/pumhandler_umt_unload.cpp": "30c48060dfe29c8f32db40f611958ee39fc6a7b2b07ed7a170358f209824fdcc",
     "src/game/quaternion.cpp": "6aca623969812a56dbe619e430a936f2b7120a8b32d1f6811c73046c74e6972a",
@@ -45688,6 +45690,45 @@
       "discarded_functions": [],
       "object_sha256": "2b82773eb1cedd3e8e452614666c85f5cc33cf79e1e51829007aa899334942e0",
       "linked_sha256": "57f8354cfb9ec37857ef5d83d6c9a449c07f5b105b623ed86ceb608dbd47f223"
+    },
+    {
+      "id": "pumhandler_subtitles",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 388,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "ad8a890c880f2c2be57ecff084803f6d3d7e7aa9d3aee23e0f82c9e242324a6b",
+      "linked_sha256": "d9c16bddb8f186de13cf48c684cccefdb360d92bcb97842fceefb9643cfab844"
     }
   ],
   "code_map": {
@@ -50094,13 +50135,6 @@
             "kind": "function",
             "name": "__ct<Q23dwi27list_iter<14QueuedSubtitle>>__Q23dwi22list<14QueuedSubtitle>FiQ23dwi27list_iter<14QueuedSubtitle>Q23dwi27list_iter<14QueuedSubtitle>Pc",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800b913c",
-            "size": 388,
-            "kind": "function",
-            "name": "UpdateSubtitles__Ff",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800b9420",

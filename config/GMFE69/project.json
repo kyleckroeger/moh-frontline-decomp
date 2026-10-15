@@ -1044,7 +1044,8 @@
     "hierobject_constrain.json",
     "particlesystem_manager_init.json",
     "sprite_draw.json",
-    "pumhandler_prompt.json"
+    "pumhandler_prompt.json",
+    "pumhandler_subtitles.json"
   ],
   "progress": {
     "code_bytes": 1414572,

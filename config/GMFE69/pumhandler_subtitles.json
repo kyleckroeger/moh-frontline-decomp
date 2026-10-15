@@ -1,0 +1,109 @@
+{
+  "id": "pumhandler_subtitles",
+  "source": "src/game/pumhandler_subtitles.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800b913c",
+      "size": 388,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d990",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001493c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UpdateSubtitles__Ff",
+      "address": "0x800b913c",
+      "size": 388,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddPopUpMessage__19PopUpMessageHandlerFPcUcUsUsUcUcUcUcUcUcUc": "0x800b9420",
+    "g_pPopUpMessageHandler": "0x8019756c",
+    "g_screen": "0x80196ac0",
+    "g_subtitle_queue": "0x801ef43c",
+    "g_subtitle_queue_initialized": "0x8034ebbd",
+    "reserve__Q23dwi22list<14QueuedSubtitle>FiPc": "0x800b8ca4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_subtitle_queue_initialized"
+  ],
+  "original_file": "pumhandler.cpp",
+  "original_file_index": 7152,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 15,
+      "address": "0x801778a4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803509c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803509c4"
+    }
+  ]
+}
