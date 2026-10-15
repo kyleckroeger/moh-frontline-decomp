@@ -39,12 +39,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003bd6c",
-      "size": 100,
+      "address": "0x8003bd20",
+      "size": 176,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "DoWeOwnThisMemory__35BSUtilObjectInstanceMemoryAllocatorFPv",
+      "address": "0x8003bd20",
+      "size": 76,
+      "binding": 1
+    },
     {
       "name": "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv",
       "address": "0x8003bd6c",
