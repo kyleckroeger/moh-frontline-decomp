@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800b72ec",
-      "size": 92,
+      "size": 144,
       "type": 1
     },
     {
@@ -61,6 +61,12 @@
       "name": "HandleExplosion__12CWorldObjectFRC10CExplosion",
       "address": "0x800b72ec",
       "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "GetCompartment__12CWorldObjectFi",
+      "address": "0x800b7348",
+      "size": 52,
       "binding": 1
     }
   ],

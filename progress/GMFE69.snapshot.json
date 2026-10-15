@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 751240,
+    "matching_code_bytes": 751292,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.1072296072593,
+    "percent": 53.11090563081978,
     "categories": {
-      "reconstructed_game": 529724,
+      "reconstructed_game": 529776,
       "restored_library": 221516
     },
-    "matching_functions": 4318
+    "matching_functions": 4319
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1191,7 +1191,7 @@
     "config/GMFE69/world_object.json": "39e2976cde987ce2b62cf81df6e3fc429a97613aeaa2f5f291b2560ff7ea13e4",
     "config/GMFE69/world_object_draw.json": "15115a01fa0b7e788d1465730d30fc0a38139c4ac2bd072165cb9ab2d7a0a38b",
     "config/GMFE69/world_object_dtor.json": "be19570f814397f4583dfa363b2da4843312b071caa6c09ced524f0b6f77a092",
-    "config/GMFE69/world_object_explosion.json": "b3f1c084ed3a9bb6419fafce04f60e35fad0baf273b477464217360844415f4e",
+    "config/GMFE69/world_object_explosion.json": "13a0ebc30dfc07269b1c5d2917c652f53f674b6449837790817bcff8290cb8b8",
     "config/GMFE69/world_object_list.json": "0085295bc95dbd1788b3e08bfdfcf08220f4f3d029342f036c9fb0a4c5261373",
     "config/GMFE69/world_object_list_reserve.json": "3ffc98e873e46575a9271c050b31570d27771b9d24887580d5dbf06ca326d087",
     "config/GMFE69/world_object_node_dtor.json": "76434adc707f081f309bf409afe30341feb37ab7f62830f9e9116d9ce870ae6c",
@@ -2953,7 +2953,7 @@
     "src/game/world_object.cpp": "873a97a1b663e39ab1b96ed82d1b43eba7dc38b78a1cc9942c5491c49f2a3740",
     "src/game/world_object_draw.cpp": "f2b34f4519d28c52ea318baa0ddbd5d2a916b6fcb034fbc7ef21b1c8bd48731e",
     "src/game/world_object_dtor.cpp": "064c9ece58bd87cd4b359a01ed3117b37e6204628fc896257bb56142f3b740b3",
-    "src/game/world_object_explosion.cpp": "c3a20ea885e6db24e7870bad46325f11daf6fdecaefd56b6f9b74eedcaacae9b",
+    "src/game/world_object_explosion.cpp": "125d5fe256b169173d46f1456f99dcd7be2d9f11e9b25610f3dd262517bb8a1d",
     "src/game/world_object_list.cpp": "76cd3a5dd19a8ae9c9282f714df9d9623bd5b73a1601e3b95a26f05b83ee8fe7",
     "src/game/world_object_list_reserve.cpp": "6ed8dad99c906db035f824754517dc268212caf9f7f3726cb5bdcd25b432f238",
     "src/game/world_object_node_dtor.cpp": "b80cedb5ac04293bbd3bb1cf3faa150fba15803ae1772be8447d21a09e85f896",
@@ -46122,8 +46122,8 @@
     {
       "id": "world_object_explosion",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 92,
+      "functions": 2,
+      "code_bytes": 144,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46155,8 +46155,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d6ec67dfe9681a1dc13aada01dcbf2af6bac6406d3fd651b332b53ad7ac1c414",
-      "linked_sha256": "5beee2c8d5c33eac0099ce904bda1c8c945df921f886d4fa49ad35fdf37c92b0"
+      "object_sha256": "3f8db0ef39a43318706741635aeacb5f647d833053451b4d7125347b30ec2ae2",
+      "linked_sha256": "b4a69399218082ec96ec69cde156bf4e67068d88f03041a74bd08c93b6b5f7ac"
     },
     {
       "id": "animmorph_weight",
@@ -54413,13 +54413,6 @@
             "kind": "function",
             "name": "ServiceDataStreamer__12CWorldObjectFf",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b7348",
-            "size": 52,
-            "kind": "function",
-            "name": "GetCompartment__12CWorldObjectFi",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800b737c",
