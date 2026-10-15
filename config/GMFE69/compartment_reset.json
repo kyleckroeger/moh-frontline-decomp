@@ -1,0 +1,94 @@
+{
+  "id": "compartment_reset",
+  "source": "src/game/compartment_reset.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80076c0c",
+      "size": 520,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000bcb4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012b54",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Reset__12CCompartmentFv",
+      "address": "0x80076c0c",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "GlobalReset__12CCompartmentFv",
+      "address": "0x80076c5c",
+      "size": 364,
+      "binding": 1
+    },
+    {
+      "name": "Init__12CCompartmentFiPcP9CPTHeaderP3CDB",
+      "address": "0x80076dc8",
+      "size": 76,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Init__10CCDBObjectFP3CDB": "0x8007133c",
+    "Init__12CCompartmentFv": "0x800761c8",
+    "g_TextureSwapCache": "0x801d5120"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_TextureSwapCache"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "compartment.cpp",
+  "original_file_index": 3422
+}
