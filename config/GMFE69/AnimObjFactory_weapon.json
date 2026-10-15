@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80096120",
-      "size": 520,
+      "size": 2388,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ca18",
-      "size": 8,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013b08",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,33 +62,71 @@
       "address": "0x80096120",
       "size": 520,
       "binding": 1
+    },
+    {
+      "name": "InitAnimObjectFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i",
+      "address": "0x80096328",
+      "size": 1868,
+      "binding": 1
     }
   ],
   "externals": {
     "BindSkeleton__6CDMeshFP10CharSkel_t": "0x800f647c",
     "BindTextures__6CDMeshFP12CTexturePackPc": "0x800f6328",
     "CharRelocateSkeleton__FP10CharSkel_t": "0x80069468",
+    "DebugMsg__FPCce": "0x80018c88",
+    "EndianSwap__FR25CObjLocationCollisionData": "0x80096a74",
+    "FindTexture__12CTexturePackFPc": "0x800828b4",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
     "Init__6CDMeshFb": "0x800f6634",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
-    "printf": "0x8013dc88"
+    "__ct__11CStaticMeshFP10StaticMeshb": "0x800f2558",
+    "__ct__24CObjLocationCollisionMapFRC25CObjLocationCollisionData": "0x80072ea0",
+    "__dl__FPv": "0x8001ca2c",
+    "__nw__FUl": "0x8001cb60",
+    "g_Shell": "0x80195090",
+    "g_cheats": "0x80196a94",
+    "g_staticObjCount": "0x8034eac8",
+    "printf": "0x8013dc88",
+    "stricmp": "0x80151ab8",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_staticObjCount"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_staticObjCount"
+  ],
   "original_file": "AnimObjFactory.cpp",
   "original_file_index": 5769,
   "pooled_sections": [
-    ".rodata"
+    ".rodata",
+    ".sdata2"
   ],
   "pool_references": [
     {
       "section": ".rodata",
       "offset": 0,
+      "size": 108,
+      "address": "0x80176748"
+    },
+    {
+      "section": ".rodata",
+      "offset": 108,
       "size": 77,
       "address": "0x801767b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350460"
     }
   ]
 }
