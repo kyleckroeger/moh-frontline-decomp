@@ -1063,7 +1063,10 @@
     "AISplinePath_astar.json",
     "AIObject_walkastar.json",
     "sound_animtriggered.json",
-    "UISUtils_dohint.json"
+    "UISUtils_dohint.json",
+    "UIStudio_visibility.json",
+    "UIStudio_idle.json",
+    "AIObject_coverwalk.json"
   ],
   "progress": {
     "code_bytes": 1414572,
