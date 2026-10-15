@@ -1111,7 +1111,10 @@
     "compartment_reset.json",
     "player_weapon_object_init.json",
     "gethdr.json",
-    "PathNodeList_closest.json"
+    "PathNodeList_closest.json",
+    "CoverPoint_invalidate.json",
+    "CoverPoint_unoccupied.json",
+    "CoverPoint.json"
   ],
   "progress": {
     "code_bytes": 1414572,
