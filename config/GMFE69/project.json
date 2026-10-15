@@ -1177,7 +1177,8 @@
     "texture_load.json",
     "fiber_testfiber.json",
     "jaw_motiontype.json",
-    "AnimObjFactory_weapon.json"
+    "AnimObjFactory_weapon.json",
+    "aramalloc_alloc.json"
   ],
   "progress": {
     "code_bytes": 1414572,

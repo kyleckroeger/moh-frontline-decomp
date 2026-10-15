@@ -1,0 +1,78 @@
+{
+  "id": "aramalloc_alloc",
+  "source": "src/ea/aramalloc_alloc.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8015067c",
+      "size": 136,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "ARAM_alloc",
+      "address": "0x8015067c",
+      "size": 136,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION": "0x801503b4",
+    "PRINT_string": "0x801516e0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "aramalloc.cpp",
+  "original_file_index": 12417,
+  "pooled_sections": [
+    ".data"
+  ],
+  "pool_references": [
+    {
+      "section": ".data",
+      "offset": 0,
+      "size": 65,
+      "address": "0x80192eb8"
+    }
+  ]
+}

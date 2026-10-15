@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 750764,
+    "matching_code_bytes": 750900,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.07357985312872,
+    "percent": 53.0831940685946,
     "categories": {
-      "reconstructed_game": 529316,
+      "reconstructed_game": 529452,
       "restored_library": 221448
     },
-    "matching_functions": 4313
+    "matching_functions": 4314
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -352,6 +352,7 @@
     "config/GMFE69/ansi_fp.json": "a0ef64e95f9c4bdc4bb31bbfa57bd7af88bd31f24fec8fad5c9aef7cfcfc2427",
     "config/GMFE69/ar.json": "f7bf6b4079ed418edeb4c95ff15f08f4450ac1e184d58dd1af945665137df3c2",
     "config/GMFE69/aramalloc.json": "235854529e9a9b820a58088862e13a6bc1a4bbaaa4e00117f8f253b948790932",
+    "config/GMFE69/aramalloc_alloc.json": "ce8fb7bffa9d906bafb1f3f02e8e2c7e03033ed9c353f75ba5af9cb0aad75b42",
     "config/GMFE69/arq.json": "53c9d956d7cd2b69c858816128443494613f46b3ad680d5056ae00227df49900",
     "config/GMFE69/attachobject.json": "f1dba5b780266dae3fa6be9077f76b2792d4882b9c747d6fd6e411030cad3a34",
     "config/GMFE69/attachobject_ctor.json": "3c7dbf2c203960c376b069a021c75606b47a04de1b1394c17bf803cec1a525d8",
@@ -819,7 +820,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "688c9a9968baa7bd66879f3b9b540c54a3b5fd0095eecdb50484a9abad1c36c4",
+    "config/GMFE69/project.json": "02046c8a532078f8101d0dda18ac5c2fe0abc6832bde4d72446cb6c9f79074a3",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1958,6 +1959,7 @@
     "src/ea/SNDI_sin.c": "b60cf7dd7e0f9c570a0b4a2a6dd05db4729472fec2d2beb6e8fe4063c5010cd2",
     "src/ea/abortmsg.cpp": "3dab94dd43cec779c87131efbfc0ee283cfd1b5768c02976f4370f4eb1787055",
     "src/ea/aramalloc.cpp": "ae6e2a344884e975802456d92a5c6c5cb6f67e750a33b71fd3897921d03471db",
+    "src/ea/aramalloc_alloc.cpp": "d612e99068713841c6133bc938729f1ff118940d943a7f35e985af487ee885cc",
     "src/ea/bmem.cpp": "52aa41325f9f9200d4e9ddc252ca99a55b4040b928b87283b7b226ddb2ad0e87",
     "src/ea/coda.cpp": "74b5cc425b4854acc7492acc32278c5de4dd9d9f0508a4905040ab1d94425884",
     "src/ea/cpudetect.cpp": "82ad74ceba8d5dcd8eda8284a31e54ca3a660ce35f0909967bfb80204e8081e7",
@@ -51173,6 +51175,45 @@
       "discarded_functions": [],
       "object_sha256": "8a76103954b42633136e3fc4866155cb8486b212937eda4e7b536d740a3f2a8f",
       "linked_sha256": "e2842eff9f5fd13b0a1b2847184bbd911c98fcd9a3d101aa0eeee8e158f1d9b2"
+    },
+    {
+      "id": "aramalloc_alloc",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 136,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "a7c48ce929fc0ebe5b2e4b1be6327d1ac40f25e943d6d130e1890aa9480f2313",
+      "linked_sha256": "6eb2c63800b174e6e9b8355682a85309c140b951c441ac21a0f03c9e5fe09887"
     }
   ],
   "code_map": {
@@ -56434,13 +56475,6 @@
             "kind": "function",
             "name": "ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8015067c",
-            "size": 136,
-            "kind": "function",
-            "name": "ARAM_alloc",
-            "evidence": "private-reference"
           }
         ]
       },
