@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 669216,
+    "matching_code_bytes": 669832,
     "total_executable_code_bytes": 1414572,
-    "percent": 47.308726597161545,
+    "percent": 47.352273337801115,
     "categories": {
-      "reconstructed_game": 447768,
+      "reconstructed_game": 448384,
       "restored_library": 221448
     },
-    "matching_functions": 3966
+    "matching_functions": 3967
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -790,7 +790,7 @@
     "config/GMFE69/scene_vecconst_dtor.json": "cd43d4a7fedd6febd5370ac4cba310a3a479f5a3ac5987de2da636d87deaf636",
     "config/GMFE69/scene_veciter_dtor.json": "3b03017d159367ea223329f8cf5ddef0f021df7e4e6f38a6c4a872ceb2f89bdc",
     "config/GMFE69/scene_veciter_plus.json": "205eb56bd0657ab36ad7d71ef486f776bb5b5454c979a9a9a430d7434196b039",
-    "config/GMFE69/scene_visit.json": "76dcfb4a7367c9671d4c7ea78acde02852ec52292c252d1edccdff22f15deb56",
+    "config/GMFE69/scene_visit.json": "d43eb4dcf141cc885016b62fdd63eb2e17a079c487a7f3753ad0b1f826e8aa7d",
     "config/GMFE69/sclnt100.json": "1240eb5a92ecbe7c25755312ec960a23192c75240675f6cecbbd3c91b2f54fc5",
     "config/GMFE69/sctlfilt.json": "b1b4403df5f172a96a7c8189f27b7f46a0c740002e8f50e74e0a783e2488cd73",
     "config/GMFE69/sctrldry.json": "561b4b93070d6a4cbfb714e3f6de5824f583795298bba426606a1ad4803dc401",
@@ -2536,7 +2536,7 @@
     "src/game/scene_fastvec_shadow.cpp": "58bb891914e16e9135266ea318038edbcbb830a1c64f5aebcf37a92f9df2c8b0",
     "src/game/scene_findif.cpp": "2288205ebe2a27fac6aa2d5c194d2ec53fa84462d98c508d294ec362249f5f93",
     "src/game/scene_list_extent.cpp": "5592b75c5ec220e1094c28c9626e169f7c156f9e18489189f624135840b6b614",
-    "src/game/scene_now.cpp": "66255d83df5707ed35c4e53c12b80e2f27809c81dc43d6d06fed5948b38ea02c",
+    "src/game/scene_now.cpp": "a6d5264c844909df324901b0ddf28487ca31cfad716907463b3203e11fdffb70",
     "src/game/scene_query.cpp": "da84876183b70456a758151acb2aa8630b7c1aef0c496101e32f2d38c122b957",
     "src/game/scene_quicksort.cpp": "0001cbaf77cc08b725943f264f144b7f93ff61e565a458f4212c3d7f2b65fb4e",
     "src/game/scene_reset.cpp": "c2b641e24e891aeff9b71ace81ab49d9c287b989d50b05a82dc0e75d3ca60c3a",
@@ -2551,7 +2551,7 @@
     "src/game/scene_vecconst_dtor.cpp": "db81a6149d9886799dc256709d20860a68265945edab9cf3f6811fa2a34f25d2",
     "src/game/scene_veciter_dtor.cpp": "04568810dd866b90d8937110bbde943d849da887cf409f5638e78d0006826e4e",
     "src/game/scene_veciter_plus.cpp": "ad93d66d1c8007e54b4d61711cdf4de56b871064dc900a76265dd6bdd638136e",
-    "src/game/scene_visit.cpp": "67446d27b030bff08f431bfce7286f4b0f86c9849fceee4c693aa3be0f6bf85f",
+    "src/game/scene_visit.cpp": "8fd272c3dbdda1e7a93131bb4502b6821a15b553425633371432a3a1aac3557c",
     "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
     "src/game/skybox.cpp": "51c0fbd12e9ef49c313bcc7055d61c7ad7fcd8c243abaea7ef80bb1dc8b33da8",
     "src/game/skybox_bin.cpp": "4679c1f8a61129831726771e304777b452d8d04d52bc3392b54a88f10ebd0766",
@@ -42639,8 +42639,8 @@
     {
       "id": "scene_visit",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 800,
+      "functions": 4,
+      "code_bytes": 1416,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42672,8 +42672,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c71ce34e5f5975d5da4868ed5e6e5ceee787a4f1382a1ce63cd323836942c5cc",
-      "linked_sha256": "5a6130d6b471b61c53d200301a0a825d1d97fbefd39ed00202a7f8d2b4b91d7b"
+      "object_sha256": "f01d7d34ce877c901fb3207774e30dabc2cdf20d4e53ed139f756225cdd2e3d0",
+      "linked_sha256": "a6f501db9ff1f5b882b201929f3c598a3bb473659ae8ecf331f2217eccb968e9"
     },
     {
       "id": "scene_rmextents",
@@ -50636,13 +50636,6 @@
             "size": 2848,
             "kind": "function",
             "name": "Update__6CSceneFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800db778",
-            "size": 616,
-            "kind": "function",
-            "name": "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei",
             "evidence": "exception-index"
           },
           {

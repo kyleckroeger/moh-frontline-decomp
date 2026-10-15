@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800db458",
-      "size": 800,
+      "size": 1416,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000eaa4",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015788",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -74,11 +74,20 @@
       "address": "0x800db630",
       "size": 328,
       "binding": 1
+    },
+    {
+      "name": "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei",
+      "address": "0x800db778",
+      "size": 616,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "__ct__10CCollisionFv": "0x800c7cf4",
-    "__dt__10CCollisionFv": "0x800c7b80"
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "g_cheats": "0x80196a94"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -87,5 +96,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "scene.cpp",
-  "original_file_index": 8404
+  "original_file_index": 8404,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x80350e88"
+    }
+  ]
 }

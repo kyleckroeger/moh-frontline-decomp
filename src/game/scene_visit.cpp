@@ -9,6 +9,13 @@
 // address, finds their entry in the scene's collision-exclusion vector (+280)
 // and, when there is one, sets bit 0x10 of the flag byte at +916 of each node
 // that is a player, then erases the entry (the later entries copied down).
+// ExcludeCollision, when one node is a player and the other a hierarchy
+// object with collision id 23 that is flagged (bits 0x40, 0x20 or 0x04 of
+// +480) or in a state other than 0 or 1 (+260), sends the player's script
+// event 43 with a 24-byte event block (value 0x7fffffff, 0 with the
+// invincibility cheat, the first byte of g_cheats); it then adds the ordered
+// pair with the priority as a float unless the pair is already excluded. The
+// flag and state helpers and the event-block and cheats views are inferred.
 // The exclusion search and match test are inline helpers whose names
 // (FindExclusion, Matches) are inferred, as are the fast_vec begin, end and
 // erase members. The file name is this
@@ -31,7 +38,29 @@ class CVolSphere;
 class CVolBox;
 class CBullet;
 class CPlayerObject;
+class CHierObject;
+class BSObject;
 enum EClsnId {};
+
+void* BSEventGetEventMemoryBlock(unsigned int);
+void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
+
+/* inferred view: the first byte of g_cheats (20 bytes) */
+struct CheatsView {
+    bool m_invincible;
+    unsigned char unknown01[19];
+};
+
+extern CheatsView g_cheats;
+
+/* inferred view: the event block sent with event 43 */
+struct ExclusionEventView {
+    int m_value0;
+    int m_value4;
+    int m_value8;
+    int m_valuec;
+    unsigned char unknown10[8];
+};
 
 class CVector3 {
 public:
@@ -95,7 +124,7 @@ public:
     virtual int IsDrawEnabled() const;
     virtual EClsnId GetCollisionId() const;
     virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
+    virtual BSObject* GetScriptObject() const;
     virtual void TriggerScriptEvent(int, void*, bool);
     virtual void HandleBulletCollision(CBullet*, const CCollision&);
     virtual void* AsMovingNode();
@@ -103,7 +132,7 @@ public:
     virtual void* AsStaticObject();
     virtual const void* AsStaticObject() const;
     virtual void* AsHierObject();
-    virtual const void* AsHierObject() const;
+    virtual const CHierObject* AsHierObject() const;
     virtual void* AsWorldObject();
     virtual const void* AsWorldObject() const;
     virtual void* AsAnimObject();
@@ -142,6 +171,24 @@ class CStaticObject : public ISceneNode {
 public:
     unsigned char unknown00c[32];
     CStaticObject* m_nextStatic;
+};
+
+/* inferred view: a state at +260 and flag bits at +480 */
+class CHierObject : public ISceneNode {
+public:
+    unsigned char unknown00c[248];
+    int m_state;
+    unsigned char unknown108[216];
+    unsigned char m_flags1e0a : 1;
+    bool m_flag1e0a : 1;
+    bool m_flag1e0b : 1;
+    unsigned char m_flags1e0b : 2;
+    bool m_flag1e0c : 1;
+    unsigned char m_flags1e0c : 2;
+
+    /* inferred helpers */
+    bool IsFlagged() const { return m_flag1e0a || m_flag1e0b || m_flag1e0c; }
+    bool IsMoving() const { return m_state != 0 && m_state != 1; }
 };
 
 /* inferred view: the player flag word at +916 */
@@ -191,6 +238,7 @@ public:
     };
 
     void IncludeCollision(const ISceneNode&, const ISceneNode&);
+    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
     SExclusionEntry* FindExclusion(const ISceneNode* first, const ISceneNode* second) {
         SExclusionEntry* entry = m_exclusions.begin();
         SExclusionEntry* last = m_exclusions.end();
@@ -209,6 +257,44 @@ public:
     unsigned char unknown024[244];
     dwi::fast_vec<SExclusionEntry> m_exclusions;
 };
+
+void CScene::ExcludeCollision(const ISceneNode& a, const ISceneNode& b, int priority) {
+    const ISceneNode* player;
+    const ISceneNode* first;
+    const ISceneNode* second;
+    float value;
+    if (&a < &b) {
+        first = &a;
+        second = &b;
+    } else {
+        first = &b;
+        second = &a;
+    }
+    value = priority;
+    player = (const ISceneNode*)(a.AsPlayerObject() ? a.AsPlayerObject() : b.AsPlayerObject());
+    if (player) {
+        const CHierObject* other = b.AsHierObject() ? b.AsHierObject() : a.AsHierObject();
+        if (other && other->GetCollisionId() == 23) {
+            if (other->IsFlagged() || other->IsMoving()) {
+                ExclusionEventView* event = (ExclusionEventView*)BSEventGetEventMemoryBlock(24);
+                event->m_valuec = 0;
+                event->m_value4 = 0x7fffffff;
+                event->m_value0 = 0;
+                event->m_value8 = 0;
+                if (g_cheats.m_invincible)
+                    event->m_value4 = 0;
+                BSObjectTriggerEvent(player->GetScriptObject(), 43, event, 0, false);
+            }
+        }
+    }
+    SExclusionEntry* entry = FindExclusion(first, second);
+    if (entry == m_exclusions.end()) {
+        SExclusionEntry* added = &m_exclusions.m_data[m_exclusions.m_size++];
+        added->m_first = first;
+        added->m_second = second;
+        added->m_value = value;
+    }
+}
 
 void CScene::IncludeCollision(const ISceneNode& a, const ISceneNode& b) {
     const ISceneNode* first;

@@ -2,8 +2,8 @@
 // directly or later from the queued commands (scene.cpp). RemoveNode_now
 // unlinks a node that is in the scene from the node list and from the
 // animated-object, static-object or light list it belongs to, removes its
-// extents unless it is a light, and drops the vector entries (+280) that
-// refer to it, flagging the players involved; AddNode_now links a node into
+// extents unless it is a light, and drops the collision exclusions (+280)
+// that refer to it, flagging the players involved; AddNode_now links a node into
 // the node list and the matching typed list and adds its extents unless it
 // is a light; SetCamera_now and SetWorld_now replace the camera (+28; kept
 // out of the lists in multiplayer) or world (+24) node; AddPlayer_now adds a
@@ -82,12 +82,12 @@ public:
     unsigned char m_flags394b : 4;
 };
 
-// A 12-byte element of the scene's vector at +280: two nodes and a value
-// (a view; the element type is not named by the symbols).
-struct SceneNodeLinkView {
-    ISceneNode* a;
-    ISceneNode* b;
-    float value;
+// An entry of the scene's collision-exclusion vector at +280 (the view of
+// scene_visit.cpp): the address-ordered node pair and a value.
+struct SExclusionEntry {
+    ISceneNode* m_first;
+    ISceneNode* m_second;
+    float m_value;
 };
 
 namespace dwi {
@@ -200,7 +200,7 @@ public:
     unsigned char unknown049[3];
     int m_playerCount;
     unsigned char unknown050[200];
-    dwi::fast_vec<SceneNodeLinkView> m_links;
+    dwi::fast_vec<SExclusionEntry> m_exclusions;
 };
 
 void CScene::AddPlayer_now(ISceneNode* node) {
@@ -333,16 +333,16 @@ void CScene::RemoveNode_now(ISceneNode* node) {
     }
     if (!light)
         RemoveNodeExtents(*node);
-    SceneNodeLinkView* it = m_links.begin();
-    while (it != m_links.end()) {
-        if (it->a == node || it->b == node) {
-            CPlayerObject* a = it->a->AsPlayerObject();
-            CPlayerObject* b = it->b->AsPlayerObject();
+    SExclusionEntry* it = m_exclusions.begin();
+    while (it != m_exclusions.end()) {
+        if (it->m_first == node || it->m_second == node) {
+            CPlayerObject* a = it->m_first->AsPlayerObject();
+            CPlayerObject* b = it->m_second->AsPlayerObject();
             if (a)
                 a->m_flag394 = true;
             if (b)
                 b->m_flag394 = true;
-            m_links.erase(it);
+            m_exclusions.erase(it);
         } else {
             it++;
         }
