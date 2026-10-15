@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 734956,
+    "matching_code_bytes": 735324,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.956068690741795,
+    "percent": 51.98208362670829,
     "categories": {
-      "reconstructed_game": 513508,
+      "reconstructed_game": 513876,
       "restored_library": 221448
     },
-    "matching_functions": 4202
+    "matching_functions": 4204
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -591,7 +591,7 @@
     "config/GMFE69/font.json": "56ec5e4085fe4be430a0e0bc9f2870a0bae1430b36449d0f699317f3ab478655",
     "config/GMFE69/font_draw.json": "e1d6e44b196fe1d4eeaf0a5b2a1c061d4372684fe40ea58c8d46c45b783467b2",
     "config/GMFE69/font_driver.json": "6b6cf9d6937c5cd191b23edd80f9b11e5300b4d0dd4fd7ab2b2dde997d2cb36a",
-    "config/GMFE69/font_dtor.json": "1e715f04f802f58f34e73eb7642ec5e005026d329b98fdded4a42d0394d02e00",
+    "config/GMFE69/font_dtor.json": "f1e6fc09ed6f7382f41553679d5b7fdc87bb855b2ff4be00ecbaae021af006f9",
     "config/GMFE69/font_render.json": "5fc6f85516a9de629cbc62fd74b09edb52a26ddae28fa7cfeacc6814ec2b2304",
     "config/GMFE69/fontchar.json": "52d15cdb73d5c697247c5e96fc9c264304ab2e315365308ab6d0f47d0d6364d8",
     "config/GMFE69/fontcreate.json": "8eae282aa690a9f53df0acd27ccc63183d4e34168a62224a70720500e604ea54",
@@ -2573,7 +2573,7 @@
     "src/game/font.cpp": "65255c01226641dd00889793fe46dd4a6a31eee9be31b7b6aeaf2ce6c561398a",
     "src/game/font_draw.cpp": "5382fff844b701321c4540955f1a674985d2c3c9b5ec25e2b34c6bc8e1945eb7",
     "src/game/font_driver.cpp": "bf6a37772fdeda1200bca043c621d97e1062969444c5ac825ebc2eeaaf217bb5",
-    "src/game/font_dtor.cpp": "8c425fb32946c7c293bddfcd88c7f74918c3f654b7d56ee72173e76edbf215b0",
+    "src/game/font_dtor.cpp": "281b2f2308b17efc94ab050458e3fc94f3565f6726af6c92f31ad0ea4234ab69",
     "src/game/font_render.cpp": "8b8a8b59a300e5d70d688b53b329040aa3401ee1d6291798754a5237c6fce537",
     "src/game/framework.cpp": "8cebad26aba8fe4a9a9ece0492c0bf7bb34882a1eec7dd48a1b3b93d0830914f",
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
@@ -37769,8 +37769,8 @@
     {
       "id": "font_dtor",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 276,
+      "functions": 4,
+      "code_bytes": 644,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -37802,8 +37802,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e9c66e06d37f3210efe2c4b08b81091281280ab0e3143871a751d04620289edd",
-      "linked_sha256": "688c9040ff422b0a0c9d45a4abd526d40370291837c74cf8ed173b89644dd0bc"
+      "object_sha256": "f985ec5bcb4e894c3d51dac8e91cd86d12f4a3d0a8c429f23b420f1fba8fa5c9",
+      "linked_sha256": "0575e4252a66118ac95f3b3998e027738c42993dad2a9074d4393b8c9c9de080"
     },
     {
       "id": "sprite_csprite_dtor",
@@ -51117,20 +51117,6 @@
             "size": 416,
             "kind": "function",
             "name": "DrawTextCentered__5CFontFfPCc",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007cf50",
-            "size": 180,
-            "kind": "function",
-            "name": "DrawText__5CFontFffPCc",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007d004",
-            "size": 188,
-            "kind": "function",
-            "name": "InitClass__5CFontFP11CRenderListP7CScreen",
             "evidence": "exception-index"
           }
         ]

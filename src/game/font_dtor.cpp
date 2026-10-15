@@ -1,4 +1,12 @@
-// A fragment of font.cpp (0x8007d0c0): the CFont destructor and constructor
+// A fragment of font.cpp (0x8007cf50): CFont::DrawText (the position divided
+// by the font record's scale, drawn through FONT_drawtexta with the record's
+// owner set, when the text is not empty) and CFont::InitClass (the render
+// list and screen kept, the screen offsets 2048 less half the screen's width
+// and height, the font driver installed and the font library initialised,
+// then the ready flag set; the font record view, the screen's size queries
+// and the screen, offset, ready and driver globals - file-local in the
+// original and declared extern here - are inferred or named by their
+// symbols), then the CFont destructor and constructor
 // (CRenderBinData's inline constructor and the table pointers; the priority
 // stored; the font created from the name while the file-local current font
 // points at this one; the bin registered with the render list). The
@@ -17,7 +25,8 @@
 class CDmaTag;
 class CDmaPacket;
 extern "C" void FONT_destroy(void*);
-extern "C" void* FONT_create(const char*);
+struct FONT;
+extern "C" FONT* FONT_create(const char*);
 enum ERenderPriority {};
 
 class CRenderBin;
@@ -63,14 +72,70 @@ class CFont;
 extern CRenderList* g_pRenderList;
 extern CFont* g_pCurrentFont;
 
+struct FONTDRIVER;
+extern "C" unsigned long strlen(const char*);
+extern "C" int FONT_drawtexta(FONT*, float, float, const unsigned char*);
+extern "C" void FONT_installdriver(FONTDRIVER*);
+extern "C" void FONT_init();
+
+/* Inferred: the font record's scale at +56 and its owner at +112. */
+struct FONT {
+    unsigned char unknown00[56];
+    float m_scaleX;
+    float m_scaleY;
+    unsigned char unknown40[48];
+    CFont* m_owner;
+};
+
+/* Inferred: the screen's size queries (virtual slots +36 and +40). */
+class CScreen {
+public:
+    virtual void vf08();
+    virtual void vf0c();
+    virtual void vf10();
+    virtual void vf14();
+    virtual void vf18();
+    virtual void vf1c();
+    virtual void vf20();
+    virtual int GetHeight();
+    virtual int GetWidth();
+};
+
+extern CScreen* g_pScreen;
+extern float g_ScreenXOffset;
+extern float g_ScreenYOffset;
+extern bool g_bReady;
+extern FONTDRIVER g_FontDriver;
+
 class CFont : public CRenderBin {
 public:
     virtual void Render(CDmaPacket&, void*); /* result type not known */
     virtual ~CFont();
     CFont(const char*, ERenderPriority);
+    void DrawText(float, float, const char*);
+    static void InitClass(CRenderList*, CScreen*);
 
-    void* m_font;
+    FONT* m_font;
 };
+
+void CFont::DrawText(float x, float y, const char* text) {
+    float scaleX = m_font->m_scaleX;
+    float scaleY = m_font->m_scaleY;
+    if (strlen(text)) {
+        m_font->m_owner = this;
+        FONT_drawtexta(m_font, x / scaleX, y / scaleY, (const unsigned char*)text);
+    }
+}
+
+void CFont::InitClass(CRenderList* list, CScreen* screen) {
+    g_pRenderList = list;
+    g_pScreen = screen;
+    g_ScreenXOffset = 2048.0f - (float)(g_pScreen->GetWidth() >> 1);
+    g_ScreenYOffset = 2048.0f - (float)(g_pScreen->GetHeight() >> 1);
+    FONT_installdriver(&g_FontDriver);
+    FONT_init();
+    g_bReady = true;
+}
 
 CFont::~CFont() {
     g_pRenderList->UnRegister(*this);
