@@ -1,0 +1,81 @@
+{
+  "id": "objcreate_swap",
+  "source": "src/game/objcreate_swap.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8003d160",
+      "size": 164,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a4a4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800114a4",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SwapHierObject__FP11CHierObjectii",
+      "address": "0x8003d160",
+      "size": 164,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetMotionData__20CStaticObjectFactoryFii": "0x800b34e0",
+    "GetStaticMesh__20CStaticObjectFactoryFii": "0x800b35b8",
+    "GetSubObject__11CHierObjectFi": "0x8009bd38",
+    "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData": "0x80099060"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "objcreate.cpp",
+  "original_file_index": 1440
+}

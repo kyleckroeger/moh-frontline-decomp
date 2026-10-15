@@ -1071,7 +1071,10 @@
     "UIStudio_internal.json",
     "AIObject_coveruseful.json",
     "sound_oneshotreset.json",
-    "UISUtils_actionptr.json"
+    "UISUtils_actionptr.json",
+    "AIObject_fovcorpse.json",
+    "objcreate_swap.json",
+    "AIObject_storecover.json"
   ],
   "progress": {
     "code_bytes": 1414572,
