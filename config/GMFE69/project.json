@@ -1097,7 +1097,9 @@
     "UIStudio_determinevis.json",
     "UIStudio_parsevis.json",
     "shadow_ctor.json",
-    "weaponfactory_props.json"
+    "weaponfactory_props.json",
+    "ShellMenu_unlock.json",
+    "ShellMenu_stars.json"
   ],
   "progress": {
     "code_bytes": 1414572,
