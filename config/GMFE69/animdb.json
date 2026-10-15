@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80061ce4",
-      "size": 1264,
+      "address": "0x80061c44",
+      "size": 1424,
       "type": 1
     },
     {
@@ -69,6 +69,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "GetFileFromFileNum__13CAnimDatabaseFUlUs",
+      "address": "0x80061c44",
+      "size": 160,
+      "binding": 1
+    },
     {
       "name": "GetTransList__13CAnimDatabaseFUlUlP24AnimTranTransListArray_t",
       "address": "0x80061ce4",

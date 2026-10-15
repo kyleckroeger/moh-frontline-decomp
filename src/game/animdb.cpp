@@ -66,9 +66,10 @@ public:
 
 private:
     AnimDatabaseGroup* FindGroup(unsigned long objecttype) {
+        int i;
         AnimDatabaseGroup* group = 0;
 
-        for (int i = 0; i < 2; i++) {
+        for (i = 0; i < 2; i++) {
             if (objecttype == m_groups[i].objecttype) {
                 group = &m_groups[i];
                 break;
@@ -80,9 +81,16 @@ private:
     AnimDatabaseGroup m_groups[2];
 };
 
-// GetFileFromFileNum comes first in the original file; it is drafted in
-// scratch but not matched (the inlined group search gets other registers), so
-// this unit starts at GetTransList.
+AnimFileFormat_t* CAnimDatabase::GetFileFromFileNum(unsigned long objecttype, unsigned short filenum) {
+    AnimDatabaseGroup* group = FindGroup(objecttype);
+    if (!group)
+        return 0;
+    for (unsigned long i = 0; i < group->count; i++) {
+        if (group->files[i] && group->files[i]->filenum == filenum)
+            return group->files[i];
+    }
+    return 0;
+}
 
 void CAnimDatabase::GetTransList(unsigned long objecttype, unsigned long state, AnimTranTransListArray_t* list) {
     list->count = 0;
