@@ -40,6 +40,18 @@
     {
       "name": ".text",
       "address": "0x801099c4",
+      "size": 148,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fdf4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016bec",
       "size": 12,
       "type": 1
     }
@@ -56,6 +68,12 @@
       "address": "0x801099c8",
       "size": 4,
       "binding": 2
+    },
+    {
+      "name": "CommitUpdate__15CAnimatedPlayerFv",
+      "address": "0x801099d0",
+      "size": 136,
+      "binding": 1
     },
     {
       "name": "UpdateAI__15CAnimatedPlayerFf",

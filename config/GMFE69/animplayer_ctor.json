@@ -1,0 +1,87 @@
+{
+  "id": "animplayer_ctor",
+  "source": "src/game/animplayer_ctor.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8010ac30",
+      "size": 164,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fe34",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016c4c",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "__dt__15CAnimatedPlayerFv",
+      "address": "0x8010ac30",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "__ct__15CAnimatedPlayerFv",
+      "address": "0x8010ac90",
+      "size": 68,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "__ct__14CSoldierObjectFv": "0x800ae72c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__14CSoldierObjectFv": "0x800ae160",
+    "__vt__15CAnimatedPlayer": "0x8018c614"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "animplayer.cpp",
+  "original_file_index": 10481
+}
