@@ -1100,7 +1100,8 @@
     "weaponfactory_props.json",
     "ShellMenu_unlock.json",
     "ShellMenu_stars.json",
-    "ShellMenu_unlockedstatus.json"
+    "ShellMenu_unlockedstatus.json",
+    "ShellMenu_starstatus.json"
   ],
   "progress": {
     "code_bytes": 1414572,
