@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 658216,
+    "matching_code_bytes": 658640,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.531106228597764,
+    "percent": 46.56107995916786,
     "categories": {
-      "reconstructed_game": 436768,
+      "reconstructed_game": 437192,
       "restored_library": 221448
     },
-    "matching_functions": 3916
+    "matching_functions": 3917
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -225,7 +225,7 @@
     "config/GMFE69/abortmsg.json": "c0c949e594119457eb59e9099947f2addabeeba17a17580f509c0584d09cd4a5",
     "config/GMFE69/ai.json": "57c30f25d932fdeb3f89033a5520f9d2de67dc88142e1f33a09be06723837827",
     "config/GMFE69/alarm.json": "52d26bbdd3f1c1af737585bb1a5d36e40f6853cfebb3d04319fe1ec6e2a71283",
-    "config/GMFE69/alarm_builtins.json": "be8676929c2524fa154d309d226193b9335a36d7f10317dd89050b68ddc0afc1",
+    "config/GMFE69/alarm_builtins.json": "35d5754db48356c9040f6c0dd5755baa2507546d629c2a69d438190c5ae01aad",
     "config/GMFE69/alarm_list.json": "3f8474bf95aa9c6fa36dee21ebe1f013685f99c927d4da8a4b618535148f0668",
     "config/GMFE69/alarm_list_reserve.json": "f91028f2ee40ad2fc70ffcf5c4272d341b9689a79e62e2c819fc819f4c9af5f0",
     "config/GMFE69/alarm_register.json": "c9c400375e8dd1b8aa3c6494b931dfdd0ce0de466c99beec90474cfbe3d43d9a",
@@ -2134,7 +2134,7 @@
     "src/game/UIStudio_active.c": "65f9fb1ea6af8be25aba72e9387ba85f94281ae6d24788b0b04ea987e9be3772",
     "src/game/UserInterface.cpp": "5e2d62e5410ad16508efa4e2243c541de362afbf7c74aa7ee3b63f4be695fe8e",
     "src/game/alarm.cpp": "f9abe7f8bffec4b060a9d15ca8352c618fc54613728b1e9b0065707e5f574c33",
-    "src/game/alarm_builtins.cpp": "41bdd95eb6acd4520235301af721659ae2c76635d563cb405a5ca8e0b7f781b2",
+    "src/game/alarm_builtins.cpp": "68caa940f5a9009f44eb820362be2dc1acab2cdc70e9043f1ade6139b035f5d0",
     "src/game/alarm_list.cpp": "b5313d7b9c04afdb831347013d8105b6269879eec1840643341937665400bd01",
     "src/game/alarm_list_reserve.cpp": "2a3d64d96a4001e13158d685a9e9c5856eddcc0e52e1d15038e6bdb6c934756a",
     "src/game/alarm_register.cpp": "b3b96c54f0c667976a1daedc797143599a8a7dade1091e33b7f867ba49b5f776",
@@ -22174,8 +22174,8 @@
     {
       "id": "alarm_builtins",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 132,
+      "functions": 3,
+      "code_bytes": 556,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -22207,8 +22207,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "673fd942e503b1d4d9676acb2f90abd75704852a79445fc1a359178f27f47f90",
-      "linked_sha256": "d1c8b4aa089fb6422c99f86014530eca17619cdb2514323d8212e34e7e4593e8"
+      "object_sha256": "16a72e2e0cb857e05148d47e90b4d898ea4f35cedc9c0c12708ce09f5991001b",
+      "linked_sha256": "0af61d0ebaab324c24059607b22a58543e48ec9c3d7918df8a3dc1c629a2828e"
     },
     {
       "id": "toilet_files",
@@ -46019,13 +46019,6 @@
         "file_record": 42,
         "file_name": "alarm.cpp",
         "ranges": [
-          {
-            "address": "0x800599f8",
-            "size": 424,
-            "kind": "function",
-            "name": "BIFunc_AlarmIsAvailable__FPPiPv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80059ba0",
             "size": 444,
