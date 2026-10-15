@@ -5,7 +5,9 @@
 // up, the value given is stored, the current screens are none (-1), the
 // counters are cleared and so is RuntimeErrorFnc. UISInfo_t is named by the
 // mangled symbol, the magic is 'UIS_'; the members (named by offset) and
-// the parameter meanings are inferred. The rest of the file is in other
+// the parameter meanings are inferred. UISGetMemSize returns the size of
+// that block for the same counts (the file's inlining is deferred, so it is
+// defined before the function it follows). The rest of the file is in other
 // units.
 typedef void (*UISErrorFnc_t)(void);
 
@@ -48,6 +50,11 @@ struct UISInfo_t {
     unsigned long* stackA4;
     unsigned long** stackA8;
 };
+
+extern "C" unsigned long UISGetMemSize(unsigned long screens, unsigned long count34, unsigned long count40,
+                                      unsigned long count4c, unsigned long stack1, unsigned long stack2) {
+    return 172 + screens * 12 + count34 * 4 + count40 * 52 + count4c * 40 + (stack2 + stack1) * 4;
+}
 
 extern "C" void UISInit(UISInfo_t* info, unsigned long screens, unsigned long count34, unsigned long count40,
                         unsigned long count4C, unsigned long stack1, unsigned long stack2, unsigned long value) {

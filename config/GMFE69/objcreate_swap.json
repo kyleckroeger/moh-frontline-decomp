@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003d160",
-      "size": 164,
+      "address": "0x8003d130",
+      "size": 212,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a4a4",
-      "size": 8,
+      "address": "0x8000a49c",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800114a4",
-      "size": 12,
+      "address": "0x80011498",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "DestroySubHierObject__FP11CHierObjecti",
+      "address": "0x8003d130",
+      "size": 48,
+      "binding": 1
+    },
     {
       "name": "SwapHierObject__FP11CHierObjectii",
       "address": "0x8003d160",

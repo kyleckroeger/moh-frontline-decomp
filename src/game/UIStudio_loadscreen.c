@@ -9,7 +9,10 @@
 // functions are named by the symbols; the views follow UIStudio_idle.c and
 // UISUtils_siblingenable.c, _ParseInitialize is file-local in the original
 // and declared without static here, and the meanings of the values, events
-// and results are inferred. The rest of the file is in other units.
+// and results are inferred. UISRegisterPluginFnc stores a plugin function in
+// the studio's plugin table (+60) at the given index and counts it (+56; the
+// table's element type is inferred; the file's inlining is deferred, so it is
+// defined before the function it follows). The rest of the file is in other units.
 struct UISStackInfo_t;
 enum UISTransformAction {};
 
@@ -51,7 +54,10 @@ struct UISInfo_t {
     char field14[24];
     unsigned long screenCount;
     UISScreen_t* screens;
-    char field34[36];
+    char field34[4];
+    unsigned long pluginCount;
+    void** plugins;
+    char field40[24];
     char stack[4];
 };
 
@@ -61,6 +67,11 @@ void _ParseInitialize(UISInfo_t*, UISScreen_t*, unsigned long, unsigned long);
 void _ParseTransforms(UISInfo_t*, UISTransformAction, UISScreen_t*, unsigned long);
 void _ParseMaps(UISInfo_t*, UISScreen_t*, UISStackInfo_t*, unsigned long, unsigned long, unsigned long,
                 unsigned long, UISParam_t*, signed char*);
+
+extern "C" void UISRegisterPluginFnc(UISInfo_t* info, unsigned long index, void* function) {
+    info->plugins[index] = function;
+    info->pluginCount++;
+}
 
 unsigned char UISInternalLoadScreen(UISInfo_t* info, unsigned short group, unsigned short id, unsigned short value04,
                                     unsigned short value06, unsigned char flag, UISParam_t* param) {

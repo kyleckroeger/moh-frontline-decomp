@@ -42,7 +42,7 @@
     {
       "name": ".text",
       "address": "0x800889a0",
-      "size": 428,
+      "size": 456,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
       "name": "UISInternalLoadScreen__FP9UISInfo_tUsUsUsUsUcP10UISParam_t",
       "address": "0x800889a0",
       "size": 428,
+      "binding": 1
+    },
+    {
+      "name": "UISRegisterPluginFnc",
+      "address": "0x80088b4c",
+      "size": 28,
       "binding": 1
     }
   ],

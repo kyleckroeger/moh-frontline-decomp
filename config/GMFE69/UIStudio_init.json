@@ -42,7 +42,7 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 276,
+      "size": 324,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
       "name": "UISInit",
       "address": "0x80088c34",
       "size": 276,
+      "binding": 1
+    },
+    {
+      "name": "UISGetMemSize",
+      "address": "0x80088d48",
+      "size": 48,
       "binding": 1
     }
   ],

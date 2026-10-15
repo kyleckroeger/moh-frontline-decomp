@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 737500,
+    "matching_code_bytes": 737696,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.13591107416236,
+    "percent": 52.149766855274954,
     "categories": {
-      "reconstructed_game": 516052,
+      "reconstructed_game": 516248,
       "restored_library": 221448
     },
-    "matching_functions": 4220
+    "matching_functions": 4225
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -139,7 +139,7 @@
     "config/GMFE69/Gecko_ExceptionPPC.json": "40e29a739fe917c560f5eb9768fcab768f7b2d6fafcf2e45c14439d96526b39e",
     "config/GMFE69/IStudio.json": "a61511407d1eee51ece5adc4a8ab93eb6678719d07af1599d4793c14a29b3b06",
     "config/GMFE69/IStudioFuncs.json": "a76dc75d5f0f0d9af8e5cde0ab73c9d5fe0e7bce64f599ea63e2ae40aab335b5",
-    "config/GMFE69/IStudioFuncs_resload.json": "4a1a91317745fa06479837d87e593163e6939e9f39eb6755e806a4e459d4f279",
+    "config/GMFE69/IStudioFuncs_resload.json": "403d0639d4851c8ebb4e2928ede00bf49f2e96d1f6bb55c582e6d97a4f570197",
     "config/GMFE69/LinkedList.json": "602f883f2de084765f8942b8e59f71e78eba4a2f6decd323bf7ba7b64498ec81",
     "config/GMFE69/MallocInit.json": "8084909a7be143dbe22e68d1ec13bf2de5447a3ce15fc2023dff212530d007d1",
     "config/GMFE69/MathFun.json": "d1ab7afb2af9cadf02e249106d121c5a9d825d11e0c21945f3b10467862b5682",
@@ -262,10 +262,10 @@
     "config/GMFE69/UIStudio_determinevis.json": "010a40f49aa7270e24db16fd952913511db3b14cbb2650ef190b0375b46d0a3c",
     "config/GMFE69/UIStudio_drawobjects.json": "6ae0ecc93df15909566218c90c2a798fc530c08e92f612b9a0d0d62aae99e5d7",
     "config/GMFE69/UIStudio_idle.json": "98402530ebaf2c9125703f199ab3eb1808c9bfe6b8ae1ed6b304810bf392a219",
-    "config/GMFE69/UIStudio_init.json": "16b84626abd4a1447f09699cd21132ac5861867eb09318e8f701662288cd8433",
+    "config/GMFE69/UIStudio_init.json": "a4c6c063bab9850182a766f380fd6963cbd023592a51343490d643438ba67eb9",
     "config/GMFE69/UIStudio_internal.json": "6bc4d75437ab849da297dc7c70ebeddcdfdd9b435940970f8d9ec9a98b26fafa",
     "config/GMFE69/UIStudio_load.json": "a7fbb74d90cfdb2589c8a407c07906d0e6b3573dd28685f648e040e3581d607b",
-    "config/GMFE69/UIStudio_loadscreen.json": "cfdfa58cd05441f839e37ce38b4445b6f8044ae42308f93115cfc81c9c9aeb9a",
+    "config/GMFE69/UIStudio_loadscreen.json": "740eb7c875a6bec4894a4e9af8c22e93fb01ad5591d197c44e4645392d1ab5aa",
     "config/GMFE69/UIStudio_parsevis.json": "a17718c65cd6b2718908ddd40396a325cfeeb94359556aafe66033dc9aa0cdf4",
     "config/GMFE69/UIStudio_unloadmodal.json": "587c273395591730f49c9f9097cb739e3993e6fd6e87d4293fe87019e94c4360",
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
@@ -715,7 +715,7 @@
     "config/GMFE69/objcreate.json": "ee6496a1a2b17f639a3b1c3cc2bad081fca35a1ab523c63e5f7f2b1bd072c969",
     "config/GMFE69/objcreate_create.json": "78e2e45e1384d07383fe5d951cf87350f1fda306b6410c29996374f4627185db",
     "config/GMFE69/objcreate_dump.json": "7d5b8f37126976784d28facfab6738be8b14e79d2b2aad0f8ab51bf4a24377df",
-    "config/GMFE69/objcreate_swap.json": "ea38c3024d5a36840b488966e9765863ce9355a58fa1499cbff5ad9cda610906",
+    "config/GMFE69/objcreate_swap.json": "697772f42c1d2bb29c4e258ebd08f01a3d76565d3776b28aa5f7a5b95be53be7",
     "config/GMFE69/objcreate_thrown.json": "5c10a092e4b410af3d31a4776b0541da7f992a8c2164ee30764e188f76009d63",
     "config/GMFE69/objcreate_volumes.json": "483c3c7941435bc0fcda1d9be9f82f445b21a4c6b0a57527e21dbe7fa7dc2121",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
@@ -969,7 +969,7 @@
     "config/GMFE69/snddrv_voice.json": "4d15ca21e2f371c0931f4ee838372bb63c3b1966319b33487018bcada9e13389",
     "config/GMFE69/sound.json": "ef83848bc7beba65c1dea5d3c023f168574e73b3c37dcfecda56e1ebe28dc4d5",
     "config/GMFE69/sound_animtriggered.json": "c93f5036b022318c7d4a2eb14fcf7c86ce557103abfba00704876e26c59855ac",
-    "config/GMFE69/sound_bankalloc.json": "e7cdb64d11f178c191cfe0b1fcda42f10fc6a7709cc8c8d239d22482c21b6840",
+    "config/GMFE69/sound_bankalloc.json": "8af8280b602f7e62870af96472f9071097c94a71ec263d5bf5cb5d9096722359",
     "config/GMFE69/sound_endian.json": "aece3dd995cbdf57f8084e640a2d0a6a6eaa75d165d5ce47cf388cb5f4a6dffd",
     "config/GMFE69/sound_fail.json": "6ac5e96d6d4d8770964d9c5f4e7fe3c69e6e152281c5ff011883db84cc8d82b6",
     "config/GMFE69/sound_init.json": "f505e6891fb66915b5e554ade58f72bc266aca792a2c99b5a1a862cbb32377cb",
@@ -2207,7 +2207,7 @@
     "src/game/CoverPoint_unoccupied.cpp": "2213c4580725c4972add13a5fc247f7af9c6960a035abec9e83ba6a5c3dab0d7",
     "src/game/IStudio.cpp": "8b84b0f073788f7ea59bee3645f2a65f63f45d976c439283ba5809708ffcbbfe",
     "src/game/IStudioFuncs.cpp": "b165a33f98e96f81832733bc9c7f57c198951e7c5297b42486c1184a62b9a756",
-    "src/game/IStudioFuncs_resload.cpp": "c910c70f82e7f85970ec128bfe2d5c3119323e8c8e5b5045cfae7608d1fd567c",
+    "src/game/IStudioFuncs_resload.cpp": "9bc4e499c9187e24c3f1ad5131877c2689de4c5a3647a2190f7bbaaa718ad6fc",
     "src/game/LinkedList.cpp": "3007b79180a5844b8b799dc4fc11618f6b5da77679e6c73c6f388fec501beb2a",
     "src/game/MallocInit.cpp": "ba35f4c9ac530c717f81930ab9aa3a203ea81844e4776914ae6b51acf4188a74",
     "src/game/MathFun.cpp": "5a60cf13aeb557c033e5adb906365756165d8401c8d9f239c72e95a9c96b96df",
@@ -2297,10 +2297,10 @@
     "src/game/UIStudio_determinevis.c": "a071363f8d44f208c2a08a50ca9aea451e8c3716c96c07c36f44df5f10d74ca6",
     "src/game/UIStudio_drawobjects.c": "5a8b5ab4baa0cb3a509419983b0a06f2e6ea332ffa93e909b6910500023c2d6d",
     "src/game/UIStudio_idle.c": "9035c7536c65e05bc5c9cadabee2207b9670f452e842e9bc23bb315fe4fef89f",
-    "src/game/UIStudio_init.c": "96f1af09b3717a03172fd6d585469869ddf28adfeb601a827b97c8da503e8622",
+    "src/game/UIStudio_init.c": "a88a5a18748b2a47373de07c9e547e6330ce0dde44278cff49f762ac6fe3294a",
     "src/game/UIStudio_internal.c": "6d4a854bda5edbaa29d49af1c71d50e8f9cce5a428a0bee736782e464aae5f64",
     "src/game/UIStudio_load.c": "aef81b1e495dc7a14610192728f89ae27125e7c80d89986341d2839ef56f671c",
-    "src/game/UIStudio_loadscreen.c": "47f2ddccf5dd12768b6878962bd8785f2dfe2a34d6b6f29fcf0ae642e86d1d5d",
+    "src/game/UIStudio_loadscreen.c": "37ea10a4f8a40a53105af926ee46fd7131e62e5f2e73f78adf132cf93b625537",
     "src/game/UIStudio_parsevis.c": "44352acf6a22c572a4737f037cdba759e4efbf5c986313de7f429c2bc190e3ac",
     "src/game/UIStudio_unloadmodal.c": "b5c5d0044ccca5b20004381944f07cd28f500b09820c1bb55d2a51cc067823d1",
     "src/game/UIStudio_visibility.c": "3454b7fe7ff6847bada0bf5f355070e360b4bda0af974311c5e150c022437e59",
@@ -2637,7 +2637,7 @@
     "src/game/objcreate.cpp": "c03f9a9c68ea389d05469df2c6a01f806724b46c7bd1734ddc8ef4b44f73c44a",
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
-    "src/game/objcreate_swap.cpp": "2a1f28508f2020d0cefafa5d9e299d6b4cb8eff5319ce552b13d6398e3722492",
+    "src/game/objcreate_swap.cpp": "58f49092557efd6fa4b96da17b57d03b5865e4ff5207b84314c1da3d7dbc07d2",
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "ade90b093521074685e489563b85cdf5e1bb8cc864a5ad2b32a748128d92471a",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
@@ -2758,7 +2758,7 @@
     "src/game/skybox_textures.cpp": "9b9bbb335d2f705c7ba9f303a665ae1cb969f8527467458837f5047d0102152d",
     "src/game/sound.cpp": "8f90e7e61ce6d5acec046028af50302e4ef3205d9144ec0a843a2fe2dd870a5b",
     "src/game/sound_animtriggered.cpp": "b821d260cb81631ffef10b2ed4550e6bb5d0d357d312c8a5be5a17020c2ca8c9",
-    "src/game/sound_bankalloc.cpp": "b9249ed03f034924849912a288af0a6ed3c9ba107f6d88cd585248a14081b8f8",
+    "src/game/sound_bankalloc.cpp": "60d22c2f46af3a92f3a2eb48201db5828afbe7799e358b360e2c33f4506d425d",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
     "src/game/sound_fail.cpp": "234919e4eac294a3cc29720aa569f91a1fc67d7f21b0b0111c0d601c7f2541d0",
     "src/game/sound_init.cpp": "404feb8a00e4a6f206540f028d20179b9e0b749f27ffc1d44ee0f6141d659233",
@@ -46123,8 +46123,8 @@
     {
       "id": "sound_bankalloc",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 68,
+      "functions": 2,
+      "code_bytes": 96,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46156,14 +46156,14 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d75bf5007366639a6c6adacbf679b4b695ec2449e313029a37bc5bd18fd0e745",
-      "linked_sha256": "8ab48fd5312de2f9cc0c389a1074db2ae6b4d6c3fcbccc717dcbfda368974d95"
+      "object_sha256": "a08cb872a2d52fcfee37dcf3e0f64dd34aceead6199a1fac8982c8f34931c897",
+      "linked_sha256": "ea3a042dd9599a355e5ecbbbf41be5ec657f0f5acf7e0c2e14555ed90a14e439"
     },
     {
       "id": "IStudioFuncs_resload",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 76,
+      "functions": 2,
+      "code_bytes": 120,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46195,8 +46195,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f1fa97e3c982fc9cff1c706967c065878ded6298e8671a9508be1acdd4b9bb51",
-      "linked_sha256": "d8cb675aee78abd7aaa8e640fb73ab503607e9ede3b6178f9d4c7ba156d928c4"
+      "object_sha256": "baee4e22dca623489ddeb183818330e74489e08a1bc00ef419fea3b559d83e52",
+      "linked_sha256": "b2e85dd1b6df8e8669327e31ac356cf909c3423b72ee38f2974aa0f058d11d29"
     },
     {
       "id": "ConfigGC_defaults",
@@ -46956,8 +46956,8 @@
     {
       "id": "objcreate_swap",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 164,
+      "functions": 2,
+      "code_bytes": 212,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46989,8 +46989,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "98d4b95753d987c5979982c25712ff278a4a503dc942a73514b42a7452bf68d6",
-      "linked_sha256": "bfbad9f7c599f4e608792b0e09e110570b60304a97cad4734dd4bc2164590b31"
+      "object_sha256": "5d51c4230e28758a95342270df4ed53ac252e0a92ba146e335add06ba51fcf5e",
+      "linked_sha256": "a70898832c628d1c54a9bfd6db64c9de5d4d6ce1a2c2b591d877ae80e9015a79"
     },
     {
       "id": "AIObject_storecover",
@@ -47504,8 +47504,8 @@
     {
       "id": "UIStudio_init",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 276,
+      "functions": 2,
+      "code_bytes": 324,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47539,8 +47539,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "03021e208fa5d6838d6182668fac05c8ab839a206797571d1487a47e227384a0",
-      "linked_sha256": "dc23ed652e4563c65eb9840b3cd1ed08e50b8360c20ce13ad0d5fbfc769b75a2"
+      "object_sha256": "fce18c51c2d980f21d9222bee2cbff7453805a036ee3be41dbea14632dad5d6f",
+      "linked_sha256": "93a7d5dbb76a39a83cd0469d722588fd103cef95602680ba1a1ba012c3813ca6"
     },
     {
       "id": "AIObject_coverwalkto",
@@ -47746,8 +47746,8 @@
     {
       "id": "UIStudio_loadscreen",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 428,
+      "functions": 2,
+      "code_bytes": 456,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47781,8 +47781,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ad691b6b41557ca14be33a65ecd2f64b9cd490a375628db257c4e1421b73b754",
-      "linked_sha256": "dc861d19372495b6847f3921a0159f81ed8ee28742e88721c208c7cdf3a217ad"
+      "object_sha256": "56f38f00766d022cd732ed31c4814766985a0ae066173f910d616510388393af",
+      "linked_sha256": "34d07fc43d1f15784e65c46138d992921166661cf008c88e2bdffbb0c3b4f1d1"
     },
     {
       "id": "UIStudio_determinevis",
@@ -49610,13 +49610,6 @@
             "kind": "function",
             "name": "SetScript__13CStaticObjectFP8BSObject",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8003d130",
-            "size": 48,
-            "kind": "function",
-            "name": "DestroySubHierObject__FP11CHierObjecti",
-            "evidence": "exception-index"
           },
           {
             "address": "0x8003d204",
@@ -51537,25 +51530,11 @@
             "evidence": "local-file-symbol"
           },
           {
-            "address": "0x80088b4c",
-            "size": 28,
-            "kind": "function",
-            "name": "UISRegisterPluginFnc",
-            "evidence": "between-same-file"
-          },
-          {
             "address": "0x80088b84",
             "size": 176,
             "kind": "function",
             "name": "UISShutdown",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80088d48",
-            "size": 48,
-            "kind": "function",
-            "name": "UISGetMemSize",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x80088d78",
@@ -51674,13 +51653,6 @@
             "size": 720,
             "kind": "function",
             "name": "iSirenTransformfnc__F18UISTransformActionP14UISTransform_t",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008bbe4",
-            "size": 44,
-            "kind": "function",
-            "name": "ResUnloadScreen__FUsUsPv",
             "evidence": "exception-index"
           }
         ]
@@ -53696,13 +53668,6 @@
             "kind": "function",
             "name": "aems_Init__FPcPcPcPcb",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800ec738",
-            "size": 28,
-            "kind": "function",
-            "name": "AEMSOneShotMalloc__Fi",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800ec754",

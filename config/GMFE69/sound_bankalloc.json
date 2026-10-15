@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800ec6f4",
-      "size": 68,
+      "size": 96,
       "type": 1
     },
     {
@@ -62,23 +62,33 @@
       "address": "0x800ec6f4",
       "size": 68,
       "binding": 0
+    },
+    {
+      "name": "AEMSOneShotMalloc__Fi",
+      "address": "0x800ec738",
+      "size": 28,
+      "binding": 1
     }
   ],
   "externals": {
     "DWI_allocalign__FPCciii": "0x8001c8ec",
     "gAEMSBank": "0x802294b0",
-    "gAEMSBankCount": "0x8034ecc0"
+    "gAEMSBankCount": "0x8034ecc0",
+    "g_AEMSOneShotMem": "0x80267cd0",
+    "g_AEMSOneShotMemOffset": "0x8034eccc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
     "gAEMSBank",
-    "gAEMSBankCount"
+    "gAEMSBankCount",
+    "g_AEMSOneShotMem"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "gAEMSBankCount"
+    "gAEMSBankCount",
+    "g_AEMSOneShotMemOffset"
   ],
   "original_file": "sound.cpp",
   "original_file_index": 8971,
