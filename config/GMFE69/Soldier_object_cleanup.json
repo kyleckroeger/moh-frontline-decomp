@@ -40,23 +40,35 @@
     {
       "name": ".text",
       "address": "0x800adeac",
-      "size": 692,
+      "size": 916,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d2c8",
-      "size": 16,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014408",
-      "size": 24,
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "InitAI__14CSoldierObjectFv",
+      "address": "0x800ae218",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "__dt__14CSoldierObjectFv",
+      "address": "0x800ae160",
+      "size": 184,
+      "binding": 1
+    },
     {
       "name": "SetFaceAnimationState__14CSoldierObjectFUsl",
       "address": "0x800adeac",
@@ -82,8 +94,16 @@
     "DestroyWeapon__14CWeaponFactoryFP7CWeapon": "0x800d6c88",
     "FreeAnimatedVolume__FPv": "0x8003c2a0",
     "FreeBoxVolume__FPv": "0x8003c228",
+    "Init__16CAISoldierDoodadFP14CSoldierObject": "0x8005963c",
     "IsNodeInScene__6CSceneCFPC10ISceneNode": "0x800d8214",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CAnimMorphFv": "0x80065568",
+    "__dt__10CVolSphereFv": "0x800cbb24",
+    "__dt__11CAnimObjectFv": "0x80095734",
+    "__dt__16CAISoldierDoodadFv": "0x800596c4",
+    "__dt__16CCharacterShadowFv": "0x800816d8",
+    "__vt__14CSoldierObject": "0x801882f0",
     "g_WeaponFactory": "0x801dde58",
     "g_scene": "0x8019484c",
     "stricmp": "0x80151ab8"

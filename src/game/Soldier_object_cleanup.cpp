@@ -6,10 +6,14 @@
 // and CleanUp (frees the animated volumes at +9092/+9100 and the box volumes
 // at +9088/+9096, removes the weapons, frees the static object attached at
 // the "head" node when it is of attachment type 1, and cleans up the AI
-// doodad at +12512). The classes, functions and globals are named by the
-// mangled symbols; the members, the attachment, skeleton and node-search
-// views are inferred, and CSoldierObject declares placeholder virtuals up to
-// DetachObject (+312, named by __vt__14CSoldierObject). The search loop is an
+// doodad at +12512), the destructor (the character shadow, the four
+// bounding spheres, the head morph and the AI doodad destroyed in reverse,
+// then CAnimObject's) and InitAI (initialises the AI doodad for this
+// soldier). The classes, functions and globals are named by the mangled
+// symbols; the members, the attachment, skeleton and node-search views are
+// inferred, the base view declares placeholder virtuals up to DetachObject
+// (+312, named by __vt__14CSoldierObject), and CSoldierObject declares
+// DetachObject (defined elsewhere) first so its table is not emitted here. The search loop is an
 // inferred inline helper. The rest of the file is not part of this unit.
 class ISceneNode;
 class CWeapon;
@@ -43,11 +47,15 @@ public:
     static void DeallocateStaticObject(CStaticObject*);
 };
 
+class CSoldierObject;
+
 class CAISoldierDoodad {
 public:
+    ~CAISoldierDoodad();
     void CleanUp();
+    void Init(CSoldierObject*);
 
-    unsigned char unknown00[84];
+    unsigned char unknown00[144];
 };
 
 /* inferred: a skeleton node (24 bytes), its name first */
@@ -72,10 +80,10 @@ struct SkeletonView {
     }
 };
 
-class CSoldierObject {
+class CAnimObject {
 public:
     virtual void unknown008();
-    virtual void unknown00c();
+    virtual ~CAnimObject();
     virtual void unknown010();
     virtual void unknown014();
     virtual void unknown018();
@@ -151,9 +159,6 @@ public:
     virtual void unknown130();
     virtual void unknown134();
     virtual void DetachObject(char*);
-    int SetFaceAnimationState(unsigned short, long);
-    void RemoveWeapons();
-    void CleanUp();
 
     unsigned char unknown0004[3296];
     SkeletonView* m_skeleton;
@@ -163,8 +168,40 @@ public:
     void* m_worldBox;
     void* m_worldAnimated;
     unsigned char unknown2390[3408];
+};
+
+class CAnimMorph {
+public:
+    ~CAnimMorph();
+
+    unsigned char unknown0000[3744];
+};
+
+class CVolSphere {
+public:
+    ~CVolSphere();
+
+    unsigned char unknown00[32];
+};
+
+class CCharacterShadow {
+public:
+    ~CCharacterShadow();
+
+    unsigned char unknown00[16];
+};
+
+class CSoldierObject : public CAnimObject {
+public:
+    virtual void DetachObject(char*); /* defined elsewhere; keeps the table out */
+    virtual ~CSoldierObject();
+    int SetFaceAnimationState(unsigned short, long);
+    void RemoveWeapons();
+    void CleanUp();
+    void InitAI();
+
     CAISoldierDoodad m_doodad;
-    unsigned char unknown3134[3804];
+    CAnimMorph m_head;
     CWeapon* m_weapons[9];
     CStaticObject* m_attachments[8];
     unsigned int m_attachTypes[8];
@@ -172,7 +209,13 @@ public:
     bool m_faceStateSet;
     unsigned char unknown431d;
     unsigned short m_faceState;
-    unsigned char unknown4320[364];
+    CVolSphere m_localVolume1;
+    CVolSphere m_worldVolume1;
+    CVolSphere m_localVolume2;
+    CVolSphere m_worldVolume2;
+    unsigned char unknown4380[48];
+    CCharacterShadow m_shadow;
+    unsigned char unknown43e0[172];
     CWeapon* m_otherWeapon;
 };
 
@@ -220,4 +263,11 @@ void CSoldierObject::CleanUp() {
         }
     }
     m_doodad.CleanUp();
+}
+
+CSoldierObject::~CSoldierObject() {
+}
+
+void CSoldierObject::InitAI() {
+    m_doodad.Init(this);
 }

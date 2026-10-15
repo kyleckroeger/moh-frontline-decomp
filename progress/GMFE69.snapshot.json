@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 674424,
+    "matching_code_bytes": 674648,
     "total_executable_code_bytes": 1414572,
-    "percent": 47.676894495296104,
+    "percent": 47.692729673710495,
     "categories": {
-      "reconstructed_game": 452976,
+      "reconstructed_game": 453200,
       "restored_library": 221448
     },
-    "matching_functions": 3997
+    "matching_functions": 3999
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -203,7 +203,7 @@
     "config/GMFE69/Soldier_object.json": "d625d33bbfdcbd4ae922099756d0a2525feb495afdd309517e996dc20e2f2aff",
     "config/GMFE69/Soldier_object_bone.json": "e4f2a7a48d19d9417887d9971eea8d7ce0b1019be0f80d2989dedf337a41825b",
     "config/GMFE69/Soldier_object_bounds.json": "6ead974ffb35a32a1b224efa8fed5bbb4d57a839ce7cae7b85c809a2b3cf68e7",
-    "config/GMFE69/Soldier_object_cleanup.json": "4b45fc60e6edae547f2c9434a9f388c0947ff9eb4b653d2e56daaeb09633a9b9",
+    "config/GMFE69/Soldier_object_cleanup.json": "ff075aebc9e661ea153e092a3d2b77e29719bb5a731dba01db8f88df61de0050",
     "config/GMFE69/Soldier_object_ctor.json": "736da02215626339b48d06cc3315a4381c4639a80b699c79c9d48ffef8c544c2",
     "config/GMFE69/Soldier_object_lighting.json": "6ff4d1e60f7cd3a599a8bcfcb865571e46d28dd179f1bfb4ae46475afd8446fc",
     "config/GMFE69/Soldier_object_lit.json": "717fb1ac9f3fc850cf5f8092fd6229e49652ec6b82f8a150cfae6786055df9bb",
@@ -2139,7 +2139,7 @@
     "src/game/Soldier_object.cpp": "92bf858d3c8b06c691309b702079f4c10d3da7935ed4b50d4e27764fa7eeca41",
     "src/game/Soldier_object_bone.cpp": "8fa474389a05090df7d8e919f4fbfbe8dc37381836397d77ffaa327127206032",
     "src/game/Soldier_object_bounds.cpp": "e8b762bd7087f0bc0f2089d6b91b85ff2e1f1e068b1e51f0c9b0dcfb213f55d7",
-    "src/game/Soldier_object_cleanup.cpp": "8e8108079db09985a33b1acda1b1ee2cfcb00ba0a5458798988136f81bd5c1e4",
+    "src/game/Soldier_object_cleanup.cpp": "6021ad6e80fe017c4633b403478ba333a4e8a20d4a00a64c6d97b1c203087d56",
     "src/game/Soldier_object_ctor.cpp": "a1f925e281114cf054e1cec0a51b2a643d0ecd654460b5e54e62f1a1560d3f60",
     "src/game/Soldier_object_lighting.cpp": "576b5adb10afd71bcff99ffdf5d7269121a456398da543bea1c0815e15788eb3",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
@@ -44874,8 +44874,8 @@
     {
       "id": "Soldier_object_cleanup",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 692,
+      "functions": 5,
+      "code_bytes": 916,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44907,8 +44907,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "9fa8a7f933ec14a22adbeca1ecf1e1f948a0ac9bf8bf92efba6ce4fc4ff287df",
-      "linked_sha256": "ec1ae32f7be3bddddc9fb7ac3756ce860f35c9706cfa4ce4b934901ac4714c49"
+      "object_sha256": "5c729ab03e0cf604d5e251365fe1281a8de9a938f9de6d8b118bd0acd70b76c0",
+      "linked_sha256": "62fe1898a5b0fd84cb69351a77a3690d86fa0092cb7ff234351c31f20c4a0d4a"
     }
   ],
   "code_map": {
@@ -49447,20 +49447,6 @@
             "size": 3828,
             "kind": "function",
             "name": "UpdateAnimation__14CSoldierObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ae160",
-            "size": 184,
-            "kind": "function",
-            "name": "__dt__14CSoldierObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ae218",
-            "size": 40,
-            "kind": "function",
-            "name": "InitAI__14CSoldierObjectFv",
             "evidence": "exception-index"
           },
           {
