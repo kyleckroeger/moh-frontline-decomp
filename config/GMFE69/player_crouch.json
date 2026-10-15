@@ -39,24 +39,48 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8009c894",
-      "size": 272,
+      "address": "0x8009c6fc",
+      "size": 680,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cd5c",
-      "size": 8,
+      "address": "0x8000cd4c",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013e98",
-      "size": 12,
+      "address": "0x80013e80",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80187b78",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "DropMPDumpObject__13CPlayerObjectFv",
+      "address": "0x8009c6fc",
+      "size": 128,
+      "binding": 1
+    },
+    {
+      "name": "SetMPShotLocation__13CPlayerObjectFP32BS_STRUCT_HitByBulletInfo_struct",
+      "address": "0x8009c77c",
+      "size": 272,
+      "binding": 1
+    },
+    {
+      "name": "GetPlayerName__13CPlayerObjectFv",
+      "address": "0x8009c88c",
+      "size": 8,
+      "binding": 1
+    },
     {
       "name": "SetHideWeapon__13CPlayerObjectFb",
       "address": "0x8009c894",
@@ -71,6 +95,9 @@
     }
   ],
   "externals": {
+    "Add_MPShotLocation__10CShellMenuFiii14EShotLocations": "0x800e6950",
+    "CreateDumpObject__FRC8CVector3RC11CQuaternionii": "0x8003fc2c",
+    "g_Shell": "0x80195090",
     "g_bInMultiplayerMode": "0x8034eca5"
   },
   "undefined_in_discarded_code": [],
@@ -91,17 +118,29 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8035056c"
+      "address": "0x8035053c"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80350570"
+      "address": "0x80350540"
     },
     {
       "section": ".sdata2",
       "offset": 8,
+      "size": 4,
+      "address": "0x8035056c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350570"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
       "size": 4,
       "address": "0x80350574"
     }
