@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80104cb4",
-      "size": 144,
+      "size": 772,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fcd4",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016a3c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -70,6 +70,12 @@
       "binding": 1
     },
     {
+      "name": "Init__18MPC_CODEC_INTERNALFPQ24RCMP7DECODERPQ24RCMP5CHUNK",
+      "address": "0x80104d44",
+      "size": 628,
+      "binding": 1
+    },
+    {
       "name": "__dt__Q24RCMP5FRAMEFv",
       "address": "0x80104cb4",
       "size": 76,
@@ -83,7 +89,15 @@
     }
   ],
   "externals": {
+    "Initialize_Fast_IDCT__Fv": "0x80102d28",
+    "MPDbase": "0x80314e58",
+    "MPDclip": "0x8034ede8",
     "MPDframe_rate": "0x8034ee20",
+    "MPDld": "0x8034ef30",
+    "MPDquiet_flag": "0x8034edd8",
+    "MPDtrace_flag": "0x8034eddc",
+    "MPDtranspose_table": "0x80314dc8",
+    "MPDverbose_flag": "0x8034ede4",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -92,8 +106,30 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "MPDframe_rate"
+    "MPDclip",
+    "MPDframe_rate",
+    "MPDld",
+    "MPDquiet_flag",
+    "MPDtrace_flag",
+    "MPDverbose_flag"
   ],
   "original_file": "rcmp_mpc_codec.cpp",
-  "original_file_index": 10240
+  "original_file_index": 10240,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351310"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 8,
+      "address": "0x80351330"
+    }
+  ]
 }
