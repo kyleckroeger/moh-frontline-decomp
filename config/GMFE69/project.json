@@ -1066,7 +1066,11 @@
     "UISUtils_dohint.json",
     "UIStudio_visibility.json",
     "UIStudio_idle.json",
-    "AIObject_coverwalk.json"
+    "AIObject_coverwalk.json",
+    "UIStudio_drawobjects.json",
+    "UIStudio_internal.json",
+    "AIObject_coveruseful.json",
+    "sound_oneshotreset.json"
   ],
   "progress": {
     "code_bytes": 1414572,

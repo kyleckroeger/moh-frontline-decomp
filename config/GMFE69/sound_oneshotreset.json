@@ -1,0 +1,107 @@
+{
+  "id": "sound_oneshotreset",
+  "source": "src/game/sound_oneshotreset.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800ec834",
+      "size": 220,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f440",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015f74",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e2f4",
+      "size": 8,
+      "type": 1,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "ResetOneShotBank__Fv",
+      "address": "0x800ec834",
+      "size": 220,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DebugMsg__FPCce": "0x80018c88",
+    "GetVSyncs__7CScreenFv": "0x8001b908",
+    "SNDAEMS_asyncloadmodulebankdone": "0x80158ca0",
+    "SNDAEMS_removemodulebank": "0x8034e668",
+    "UpdateREAL__Fv": "0x8001b098",
+    "g_AEMSOneShotLoadState": "0x8034ecd0",
+    "g_AEMSOneShotMemOffset": "0x8034eccc",
+    "g_screen": "0x80196ac0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "SNDAEMS_removemodulebank",
+    "g_AEMSOneShotLoadState",
+    "g_AEMSOneShotMemOffset"
+  ],
+  "original_file": "sound.cpp",
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 54,
+      "address": "0x80179584"
+    }
+  ]
+}
