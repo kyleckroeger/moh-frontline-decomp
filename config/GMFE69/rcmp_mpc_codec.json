@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -34,25 +34,41 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x80104cb4",
-      "size": 772,
+      "size": 1380,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fcd4",
-      "size": 24,
-      "type": 1
+      "size": 32,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 40
     },
     {
       "name": "extabindex",
       "address": "0x80016a3c",
-      "size": 36,
+      "size": 48,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 60
+    },
+    {
+      "name": ".data",
+      "address": "0x8018c408",
+      "size": 76,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e3f8",
+      "size": 16,
       "type": 1
     }
   ],
@@ -76,6 +92,12 @@
       "binding": 1
     },
     {
+      "name": "__dt__18MPC_CODEC_INTERNALFv",
+      "address": "0x80104fb8",
+      "size": 608,
+      "binding": 1
+    },
+    {
       "name": "__dt__Q24RCMP5FRAMEFv",
       "address": "0x80104cb4",
       "size": 76,
@@ -89,7 +111,9 @@
     }
   ],
   "externals": {
+    "GetFrame__18MPC_CODEC_INTERNALFUi": "0x801044f8",
     "Initialize_Fast_IDCT__Fv": "0x80102d28",
+    "MPDbackward_reference_frame": "0x80314e08",
     "MPDbase": "0x80314e58",
     "MPDclip": "0x8034ede8",
     "MPDframe_rate": "0x8034ee20",
@@ -98,6 +122,8 @@
     "MPDtrace_flag": "0x8034eddc",
     "MPDtranspose_table": "0x80314dc8",
     "MPDverbose_flag": "0x8034ede4",
+    "ReleaseFrame__18MPC_CODEC_INTERNALFPQ24RCMP5FRAME": "0x801043d0",
+    "__dt__Q24RCMP5CODECFv": "0x80104374",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
@@ -115,10 +141,26 @@
   ],
   "original_file": "rcmp_mpc_codec.cpp",
   "original_file_index": 10240,
+  "weak_duplicates": [
+    "__dt__Q24RCMP5CODECFv"
+  ],
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 19,
+      "address": "0x8017ac20"
+    },
+    {
+      "section": ".rodata",
+      "offset": 20,
+      "size": 12,
+      "address": "0x8017ac34"
+    },
     {
       "section": ".sdata2",
       "offset": 0,

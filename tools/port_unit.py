@@ -290,12 +290,22 @@ def kept_span(obj, index, kept, original, locals_, base=None):
                     if where_section == index:
                         keep.add((s["address"], s["size"]))
                     roots.append((where_section, s["address"], s["address"] + s["size"]))
+    visited = set()
     while roots:
         section, start, end = roots.pop()
         for where_section, where, _, symbol, addend in relocations(obj):
-            if where_section != section or not start <= where < end or symbol["section"] != index:
+            if where_section != section or not start <= where < end:
                 continue
             target = symbol["address"] + addend
+            if symbol["section"] != index:
+                # Follow kept data through other sections too (a class's
+                # virtual table -> its .sdata type record -> its hierarchy).
+                for s in by_section.get(symbol["section"], []):
+                    key = (symbol["section"], s["address"])
+                    if s["address"] <= target < s["address"] + s["size"] and key not in visited:
+                        visited.add(key)
+                        roots.append((symbol["section"], s["address"], s["address"] + s["size"]))
+                continue
             for s in objects:
                 if s["address"] <= target < s["address"] + s["size"] and (s["address"], s["size"]) not in keep:
                     keep.add((s["address"], s["size"]))

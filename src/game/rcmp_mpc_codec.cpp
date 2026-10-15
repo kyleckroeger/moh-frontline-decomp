@@ -8,7 +8,14 @@
 // pointer, IDCT and frame pointers; 0 on a bad header, else 2). MPC_FRAME,
 // MPC_CODEC_INTERNAL, RCMP_SYSTEM, the decoder globals and MPDframe_rate are
 // named by the symbols; the members, the hook slots and their signatures,
-// the chunk and bit-stream views and the result type are inferred. The
+// the chunk and bit-stream views and the result type are inferred, then the
+// destructor (deletes the used and free frames, frees the clip table and
+// clears two decoder globals; the lists' and CODEC's destructors are inline,
+// so the file holds __vt__18MPC_CODEC_INTERNAL and the weak
+// __vt__Q24RCMP5CODEC). RCON::TDLIST's deleting destructor and the frame's
+// buffer-freeing destructor are inferred inlines. The file is compiled with
+// deferred inlining (its virtual tables come out in that order), so the
+// functions are written in reverse image order. The
 // delete is inline in the original (a weak symbol), so it is defined
 // __declspec(weak). The rest of the file is not part of this unit.
 namespace RCMP {
@@ -27,18 +34,74 @@ class FRAME {
 public:
     ~FRAME();
     void operator delete(void* p) { rcmp_sys.m_free(p); }
+
+    int m_value;
+    void* m_buffer;
+};
+}
+
+namespace RCON {
+template <class T>
+class TDLNODE {
+public:
+    ~TDLNODE() {}
+    void Unlink() {
+        TDLNODE* next = m_next;
+        TDLNODE* prev = m_prev;
+        prev->m_next = next;
+        next->m_prev = prev;
+    }
+
+    TDLNODE* m_next;
+    TDLNODE* m_prev;
+};
+
+/* inferred: the list's destructor deletes every node */
+template <class T>
+class TDLIST {
+public:
+    ~TDLIST() { DeleteAll(); }
+    void DeleteAll() {
+        TDLNODE<T>* node;
+        while ((node = m_head.m_next) != &m_head) {
+            node->Unlink();
+            delete static_cast<T*>(node);
+        }
+    }
+
+    TDLNODE<T> m_head;
 };
 }
 
 extern double MPDframe_rate;
 
-class MPC_FRAME {
+class MPC_FRAME : public RCMP::FRAME, public RCON::TDLNODE<MPC_FRAME> {
 public:
+    ~MPC_FRAME() {
+        if (m_buffer) {
+            RCMP::rcmp_sys.m_free(m_buffer);
+            m_buffer = 0;
+        }
+    }
     void operator delete(void*);
+
+    int m_refs;
 };
 
 namespace RCMP {
 class DECODER;
+class CHUNK;
+
+class CODEC {
+public:
+    virtual ~CODEC() {}
+    virtual int Init(DECODER*, CHUNK*) = 0;
+    virtual FRAME* GetFrame(unsigned int) = 0;
+    virtual unsigned int GetCurrentFrameNumber() = 0;
+    virtual float GetFrameRate() = 0;
+    virtual void ReleaseFrame(FRAME*) = 0;
+    void operator delete(void* p) { rcmp_sys.m_free(p); }
+};
 
 class CHUNK {
 public:
@@ -49,7 +112,9 @@ public:
 
 /* inferred: the decoder's bit-stream state (MPDbase, 0xa48 bytes) */
 struct MPDLayerData {
-    unsigned char unknown000[0xa48];
+    unsigned char unknown000[1056];
+    int m_value420;
+    unsigned char unknown424[0xa48 - 1060];
 };
 
 extern unsigned char* MPDclip;
@@ -59,18 +124,19 @@ extern int MPDtrace_flag;
 extern int MPDquiet_flag;
 extern MPDLayerData MPDbase;
 extern MPDLayerData* MPDld;
+extern unsigned char* MPDbackward_reference_frame[3];
 
 void Initialize_Fast_IDCT();
 
-class MPC_FRAME;
-
-class MPC_CODEC_INTERNAL {
+class MPC_CODEC_INTERNAL : public RCMP::CODEC {
 public:
-    float GetFrameRate();
-    unsigned int GetCurrentFrameNumber();
-    int Init(RCMP::DECODER*, RCMP::CHUNK*);
+    virtual ~MPC_CODEC_INTERNAL();
+    virtual int Init(RCMP::DECODER*, RCMP::CHUNK*);
+    virtual RCMP::FRAME* GetFrame(unsigned int);
+    virtual unsigned int GetCurrentFrameNumber();
+    virtual float GetFrameRate();
+    virtual void ReleaseFrame(RCMP::FRAME*);
 
-    unsigned char unknown00[4];
     MPC_FRAME* m_frame04;
     MPC_FRAME* m_frame08;
     MPC_FRAME* m_frame0c;
@@ -78,23 +144,21 @@ public:
     int m_endState;
     unsigned char unknown18[8];
     unsigned int m_frameNumber;
-    unsigned char unknown24[16];
+    RCON::TDLIST<MPC_FRAME> m_used;
+    RCON::TDLIST<MPC_FRAME> m_free;
     RCMP::DECODER* m_decoder;
 };
 
-__declspec(weak) RCMP::FRAME::~FRAME() {
-}
-
-__declspec(weak) void MPC_FRAME::operator delete(void* p) {
-    RCMP::rcmp_sys.m_free(p);
-}
-
-float MPC_CODEC_INTERNAL::GetFrameRate() {
-    return MPDframe_rate;
-}
-
-unsigned int MPC_CODEC_INTERNAL::GetCurrentFrameNumber() {
-    return m_frameNumber;
+MPC_CODEC_INTERNAL::~MPC_CODEC_INTERNAL() {
+    m_used.DeleteAll();
+    m_free.DeleteAll();
+    MPDclip -= 384;
+    if (MPDclip) {
+        RCMP::rcmp_sys.m_free(MPDclip);
+        MPDclip = 0;
+    }
+    MPDbase.m_value420 = 0;
+    MPDbackward_reference_frame[0] = 0;
 }
 
 int MPC_CODEC_INTERNAL::Init(RCMP::DECODER* decoder, RCMP::CHUNK* chunk) {
@@ -126,4 +190,19 @@ int MPC_CODEC_INTERNAL::Init(RCMP::DECODER* decoder, RCMP::CHUNK* chunk) {
     m_frame10 = 0;
     m_frameNumber = 0;
     return 2;
+}
+
+unsigned int MPC_CODEC_INTERNAL::GetCurrentFrameNumber() {
+    return m_frameNumber;
+}
+
+float MPC_CODEC_INTERNAL::GetFrameRate() {
+    return MPDframe_rate;
+}
+
+__declspec(weak) void MPC_FRAME::operator delete(void* p) {
+    RCMP::rcmp_sys.m_free(p);
+}
+
+__declspec(weak) RCMP::FRAME::~FRAME() {
 }
