@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 740400,
+    "matching_code_bytes": 740680,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.340920080420084,
+    "percent": 52.36071405343807,
     "categories": {
-      "reconstructed_game": 518952,
+      "reconstructed_game": 519232,
       "restored_library": 221448
     },
-    "matching_functions": 4292
+    "matching_functions": 4293
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -487,6 +487,7 @@
     "config/GMFE69/bulletfactory_thrown_ctor.json": "5bc56bbfbbb13c0d38cda13a6362b98a81761e593324bf6c0c2bfe41500dd90b",
     "config/GMFE69/bulletfactory_thrown_pool.json": "c72b05045b24264f3fce4169a7c503b0cebd24f69da74e897db104aaaf516ba1",
     "config/GMFE69/camera_dtor.json": "8fda5d013b822dddd4ca34337ca7d0e498694d558397e2429fb3bd14cd03a8c7",
+    "config/GMFE69/camera_frustum.json": "aa604243dcb6241100edc1867f880be12115c3861dff6ce852ab95899d5af1fd",
     "config/GMFE69/camera_rows.json": "bbe0bc8ff855b92142797d1a0234c6260f5d35658054c1466942ed0b3696ca65",
     "config/GMFE69/capsule_create.json": "7ea379e9f4627abeeeaad959530bebd332ea158e9e77b0b66fe4115669d57173",
     "config/GMFE69/capsule_dispatch.json": "8d4ce50085d048b2ca15db431aa32afcb32d3faf6e2d9555a17e8dd9ed937f06",
@@ -814,7 +815,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "0612bd407128ccc2fa70b1788930cb4a9bba0d9c4ec8bfe3ba9de029a6781220",
+    "config/GMFE69/project.json": "a4feb14997c39c7f682096d4f02e76012bfa97608ca5ecadecb7e80d0c73b002",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2553,6 +2554,7 @@
     "src/game/bulletfactory_thrown_ctor.cpp": "e4395dc0515217717387866d4c9dbb72929d0eea865ba32b5f0b406065bd0985",
     "src/game/bulletfactory_thrown_pool.cpp": "9833f26e5bd172ba5aaaa3b25a86c6b63760bd1ec4aca397b989ffb3ac67509b",
     "src/game/camera_dtor.cpp": "0ff34e7089128735738983773a98dc0b02813b2b745d1de37624412931e1f637",
+    "src/game/camera_frustum.cpp": "9871bd922fa5febebb8e364dbb04245ec6cd2854ef0fbab2f310dd7b72dbdd72",
     "src/game/camera_rows.cpp": "bf8833d841550fe27d4238b02483df0be65824149850ad1d54614eca167330d0",
     "src/game/capsule_create.cpp": "e5bdd4e3000036dbae68266376af90a76a315822e580f2da15283faec1d3127b",
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
@@ -50927,6 +50929,45 @@
       "discarded_functions": [],
       "object_sha256": "7143e3089e53adcbfa29b8b368faa2dfbe88c35ae9860f0355ff9d7440cb14ed",
       "linked_sha256": "44733d94683c8dcdc03083495d160331c6b746989186f449b548ef2c600ba835"
+    },
+    {
+      "id": "camera_frustum",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 280,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "f927c2a2a3c90bd5279084acfd140dbe3b03cfdc30db1e40dc7256b34fd1678e",
+      "linked_sha256": "b3ba0a47594606ecf33dc12f7f5cd03420282f057f8a45d507ea29c2a1a3e8fe"
     }
   ],
   "code_map": {
@@ -52776,13 +52817,6 @@
         "file_record": 69,
         "file_name": "camera.cpp",
         "ranges": [
-          {
-            "address": "0x800793e0",
-            "size": 280,
-            "kind": "function",
-            "name": "Transform__8CFrustumFRC7CMatrix",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800794f8",
             "size": 1904,

@@ -1171,7 +1171,8 @@
     "player_setweaponenable.json",
     "bigyuvswizzler_delete.json",
     "scene_closestplayer.json",
-    "dvdStatus_drawmessage.json"
+    "dvdStatus_drawmessage.json",
+    "camera_frustum.json"
   ],
   "progress": {
     "code_bytes": 1414572,

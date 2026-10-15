@@ -1,0 +1,107 @@
+{
+  "id": "camera_frustum",
+  "source": "src/game/camera_frustum.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800793e0",
+      "size": 280,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000be88",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012da0",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Transform__8CFrustumFRC7CMatrix",
+      "address": "0x800793e0",
+      "size": 280,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Transform__6CPlaneFRC7CMatrix": "0x80091344"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "camera.cpp",
+  "original_file_index": 3766,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fed4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034fed8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fee0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034fee8"
+    }
+  ]
+}
