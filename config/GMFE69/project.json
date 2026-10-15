@@ -1094,7 +1094,8 @@
     "UISUtils_movescreen.json",
     "UIStudio_activatescreen.json",
     "UIStudio_loadscreen.json",
-    "UIStudio_determinevis.json"
+    "UIStudio_determinevis.json",
+    "UIStudio_parsevis.json"
   ],
   "progress": {
     "code_bytes": 1414572,
