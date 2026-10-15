@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 656344,
+    "matching_code_bytes": 656752,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.39876938042037,
+    "percent": 46.427612026818004,
     "categories": {
-      "reconstructed_game": 434896,
+      "reconstructed_game": 435304,
       "restored_library": 221448
     },
-    "matching_functions": 3908
+    "matching_functions": 3910
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -228,6 +228,7 @@
     "config/GMFE69/alarm_builtins.json": "be8676929c2524fa154d309d226193b9335a36d7f10317dd89050b68ddc0afc1",
     "config/GMFE69/alarm_list.json": "3f8474bf95aa9c6fa36dee21ebe1f013685f99c927d4da8a4b618535148f0668",
     "config/GMFE69/alarm_list_reserve.json": "f91028f2ee40ad2fc70ffcf5c4272d341b9689a79e62e2c819fc819f4c9af5f0",
+    "config/GMFE69/alarm_register.json": "53c4430f62f2c8431e736bd694c8595b54a375a72df915648ab02270fd735766",
     "config/GMFE69/alloc.json": "fb00980764751afb051dcf8d20531d16fad345cbb4ab5446ac3f13dae1d82c1e",
     "config/GMFE69/anim.json": "6c0f7deb10acc52b25def57dae0a0ea6329965cecfc7a591ba086eda441dd7a8",
     "config/GMFE69/anim_callback.json": "937a9409585d7e6813853da0dbdb6b7057a2f32bc4255a1bf44c4d988be46098",
@@ -370,6 +371,7 @@
     "config/GMFE69/bsutil_size.json": "22d7f6eb60fe6fbf22a734095d077d76f7275871be7080cc43dca0b554c0e12b",
     "config/GMFE69/buddy_copy_info.json": "70d5fa85b8dfa7c854ed3ba22c6bc2630aa35d57e22502931d1740303daadc8c",
     "config/GMFE69/buddy_copy_path.json": "566a6454a4c08ac8d6c2c4b2fe68095bc16744e689349df188284bd0d88bf281",
+    "config/GMFE69/buddy_head.json": "d694207c011a6fa36961f8d6fc3a0cf432e4d7968fe0d410b631ce6a4f114849",
     "config/GMFE69/buddy_list.json": "ecc6fb1220836e07ff46f4a434a7c81fece596470939c5d5bd55845b5828a649",
     "config/GMFE69/buddy_list_reserve.json": "b69182e782f8e77b126d927b263ceaa9edb8c6fe276f887403b6267163625de3",
     "config/GMFE69/buddy_vec_info.json": "837b7fbe1b7daae27e111a3abd4d24031797747f1c22a6077efe774d5a814c2b",
@@ -678,7 +680,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "9785c91310de0a5c18cd7fe068a4605f4edf7dc8c9dd2d3cc26ba53588c15d51",
+    "config/GMFE69/project.json": "f4acf5df9ff802603737a3e716120a7b3cbac106805e471c9ebabbe28a20093c",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2134,6 +2136,7 @@
     "src/game/alarm_builtins.cpp": "41bdd95eb6acd4520235301af721659ae2c76635d563cb405a5ca8e0b7f781b2",
     "src/game/alarm_list.cpp": "b5313d7b9c04afdb831347013d8105b6269879eec1840643341937665400bd01",
     "src/game/alarm_list_reserve.cpp": "2a3d64d96a4001e13158d685a9e9c5856eddcc0e52e1d15038e6bdb6c934756a",
+    "src/game/alarm_register.cpp": "ee7f1c578a9a1e37d7ab785d7f7c0c3e86ccaa61f3fcec7fdb9bc0f368d5c62d",
     "src/game/anim.cpp": "9e086af4631ac941623f4e90cc4d858d9a4a1ddde96c1433e494b2f9411978d3",
     "src/game/anim_callback.cpp": "6364e30e1a95c04cf9b0da29fc29dddb3a3b2d334fdedb52b88d73ac2c3b574b",
     "src/game/anim_callback_finish.cpp": "6d70d72410c077a03873e38d85131ea82eb010bc54b848d3187459b4e00cb57f",
@@ -2267,6 +2270,7 @@
     "src/game/bsutil_size.cpp": "79519dc3d1158664204a44a09651f4eb839da7ec06fa1d830eeece172595c74c",
     "src/game/buddy_copy_info.cpp": "c28c4afeffa69fd1e732aa2085de884a4e61abaa3a6cc40d2a51cf8b6225550b",
     "src/game/buddy_copy_path.cpp": "9fd8379683f3ac91728a12f6991c3041a5a55578ee12fa138ba4b2d6682e6ede",
+    "src/game/buddy_head.cpp": "8be98948c8298ce5bc7281b2331742e84414da26a3b6e4c00e26496f5a0a3d94",
     "src/game/buddy_list.cpp": "fa3ea552b450b337884c57c7ebfde922ed3516660b34f90b1d394dc342c74bad",
     "src/game/buddy_list_reserve.cpp": "17ba4c505282b76818f86d8a399107bbd9ce5e4bc6d153441740ffd3d1bf8eb0",
     "src/game/buddy_vec_info.cpp": "9aacf73d114af64a58d072677ad851f662fcc58cfa637e03622cefff43287d53",
@@ -44007,6 +44011,84 @@
       "discarded_functions": [],
       "object_sha256": "f1dd1343d01ce4accb8889034aa3c7c431f58ac0f3879b97cba474a54c7977b5",
       "linked_sha256": "4a8f11db004686df2fa284ac94790c4a3f4edbbbe7653cf935fbddc62cb50830"
+    },
+    {
+      "id": "buddy_head",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 192,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "8b7141bc13500f9bdf2f576b87667775454d92c51c6256567b5646755ff2c1bd",
+      "linked_sha256": "218021693d6fdd1e08b82d1c531c5f5139481337b302a88f800d325b3ac30ddd"
+    },
+    {
+      "id": "alarm_register",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 216,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "bd6c0bc1fc9913457d682243f0eda95bc66421357aa6975732d456891e83dcbc",
+      "linked_sha256": "64ebcbdc2b42b22464f7b45ac4dd2e98261b41964117e2fc1f944c6b569b3c0b"
     }
   ],
   "code_map": {
@@ -45799,13 +45881,6 @@
         "file_name": "buddy.cpp",
         "ranges": [
           {
-            "address": "0x80056728",
-            "size": 192,
-            "kind": "function",
-            "name": "BIFunc_SetBuddyPathGroup__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x800567e8",
             "size": 900,
             "kind": "function",
@@ -45936,13 +46011,6 @@
             "size": 208,
             "kind": "function",
             "name": "BIFunc_UnregisterAlarm__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80059f3c",
-            "size": 216,
-            "kind": "function",
-            "name": "BIFunc_RegisterAlarm__FPPiPv",
             "evidence": "exception-index"
           },
           {
