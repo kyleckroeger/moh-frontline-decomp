@@ -1,0 +1,83 @@
+{
+  "id": "animst_transprecheck",
+  "source": "src/game/animst_transprecheck.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80067b5c",
+      "size": 236,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b530",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800126c8",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "AnimStTransPreCheck",
+      "address": "0x80067b5c",
+      "size": 236,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetStateAnimList__13CAnimDatabaseFUlUlP23AnimFileStateAnimList_t": "0x80061d98",
+    "_AnimSt_pStatAnimList": "0x801d3e38",
+    "_AnimTranQuickScan__FP12AnimObjHdr_tUsUsUsUs": "0x800681b0",
+    "g_AnimDB": "0x801d4a84"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "_AnimSt_pStatAnimList"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "animst.cpp",
+  "original_file_index": 3104
+}
