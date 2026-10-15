@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8015a5f8",
-      "size": 48,
+      "address": "0x8015a370",
+      "size": 696,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDBANK_asyncload",
+      "address": "0x8015a370",
+      "size": 648,
+      "binding": 1
+    },
     {
       "name": "SNDBANK_asyncdone",
       "address": "0x8015a5f8",
@@ -51,7 +57,11 @@
     }
   ],
   "externals": {
-    "sndbas": "0x801934e8"
+    "FILESYS_open": "0x80148c38",
+    "SNDBANKI_asyncservice__Fv": "0x8015a08c",
+    "iSNDserveraddclient__FPFv_v": "0x801530e4",
+    "sndbas": "0x801934e8",
+    "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
