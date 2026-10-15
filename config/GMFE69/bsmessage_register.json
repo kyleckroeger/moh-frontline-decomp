@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x8003a1bc",
-      "size": 312,
+      "size": 688,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a38c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011300",
+      "size": 12,
       "type": 1
     }
   ],
@@ -56,26 +68,53 @@
       "address": "0x8003a2e0",
       "size": 20,
       "binding": 1
+    },
+    {
+      "name": "BSInitMessage__Fv",
+      "address": "0x8003a2f4",
+      "size": 360,
+      "binding": 1
+    },
+    {
+      "name": "BSMessageGetMemoryRequirements__Fv",
+      "address": "0x8003a45c",
+      "size": 16,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSUtilGetMemory__Fii": "0x8003b83c",
+    "g_MessageQueueHead": "0x8034e824",
+    "g_MessageQueueTail": "0x8034e828",
     "g_MessageRegistrationArray": "0x8034e818",
     "g_MessageRegistrationFreeList": "0x8034e81c",
-    "g_MessageRegistrationFreeListHead": "0x8034e820"
+    "g_MessageRegistrationFreeListHead": "0x8034e820",
+    "g_iBSMessageRegistrationListSize": "0x8034e82c",
+    "g_pBSMessageMemory": "0x8034e830",
+    "g_pBSMessageMemoryOffset": "0x8034e834"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "g_MessageQueueHead",
+    "g_MessageQueueTail",
     "g_MessageRegistrationArray",
     "g_MessageRegistrationFreeList",
-    "g_MessageRegistrationFreeListHead"
+    "g_MessageRegistrationFreeListHead",
+    "g_pBSMessageMemory",
+    "g_pBSMessageMemoryOffset"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_MessageQueueHead",
+    "g_MessageQueueTail",
     "g_MessageRegistrationArray",
     "g_MessageRegistrationFreeList",
-    "g_MessageRegistrationFreeListHead"
+    "g_MessageRegistrationFreeListHead",
+    "g_iBSMessageRegistrationListSize",
+    "g_pBSMessageMemory",
+    "g_pBSMessageMemoryOffset"
   ],
   "original_file": "bsmessage.cpp",
   "original_file_index": 1315

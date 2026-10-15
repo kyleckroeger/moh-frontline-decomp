@@ -9,6 +9,11 @@
 // structure names and the globals are named by the symbols; the members
 // follow bsmessage_remove.cpp and are otherwise inferred from offsets.
 // BSEndMessage clears the registration array and free-list pointers.
+// BSInitMessage takes the message memory (the 729-entry registration array
+// and the registration records) in one block, empties the queue and the
+// array and links the records into the free list; the two loops are
+// inferred inline helpers. BSMessageGetMemoryRequirements returns the
+// block's size.
 struct BSObject;
 struct BSMachineThread_struct;
 
@@ -33,6 +38,13 @@ struct BSMessageRegistration_struct {
 extern BSMessageRegistration_struct** g_MessageRegistrationArray;
 extern BSMessageRegistration_struct* g_MessageRegistrationFreeListHead;
 extern BSMessageRegistration_struct* g_MessageRegistrationFreeList;
+extern int g_iBSMessageRegistrationListSize;
+extern int g_MessageQueueHead;
+extern int g_MessageQueueTail;
+extern unsigned char* g_pBSMessageMemory;
+extern int g_pBSMessageMemoryOffset;
+
+void* BSUtilGetMemory(int, int);
 
 BSMessageRegistration_struct* BSRegisterMessage(BSCode_MessageHandlerEntry_struct* entry, BSObject* object,
                                                 unsigned short value, BSMachineThread_struct* thread,
@@ -78,4 +90,34 @@ int BSEndMessage() {
     g_MessageRegistrationArray = 0;
     g_MessageRegistrationFreeList = 0;
     return 0;
+}
+
+inline void LinkFreeList() {
+    for (int i = 0; i < g_iBSMessageRegistrationListSize - 1; i++)
+        g_MessageRegistrationFreeList[i].next = &g_MessageRegistrationFreeList[i + 1];
+}
+
+inline void ClearRegistrations() {
+    for (int i = 0; i < 729; i++)
+        g_MessageRegistrationArray[i] = 0;
+}
+
+int BSInitMessage() {
+    g_pBSMessageMemory = (unsigned char*)BSUtilGetMemory(g_iBSMessageRegistrationListSize * 24 + 2916, 0);
+    g_pBSMessageMemoryOffset = 0;
+    g_MessageQueueHead = 0;
+    g_MessageQueueTail = 0;
+    g_MessageRegistrationArray = (BSMessageRegistration_struct**)(g_pBSMessageMemory + g_pBSMessageMemoryOffset);
+    g_pBSMessageMemoryOffset += 2916;
+    ClearRegistrations();
+    g_MessageRegistrationFreeList = (BSMessageRegistration_struct*)(g_pBSMessageMemory + g_pBSMessageMemoryOffset);
+    g_pBSMessageMemoryOffset += g_iBSMessageRegistrationListSize * 24;
+    LinkFreeList();
+    g_MessageRegistrationFreeList[g_iBSMessageRegistrationListSize - 1].next = 0;
+    g_MessageRegistrationFreeListHead = g_MessageRegistrationFreeList;
+    return 0;
+}
+
+int BSMessageGetMemoryRequirements() {
+    return g_iBSMessageRegistrationListSize * 24 + 2916;
 }
