@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 732408,
+    "matching_code_bytes": 732936,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.77594353627811,
+    "percent": 51.81326931396917,
     "categories": {
-      "reconstructed_game": 510960,
+      "reconstructed_game": 511488,
       "restored_library": 221448
     },
-    "matching_functions": 4195
+    "matching_functions": 4196
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -427,7 +427,7 @@
     "config/GMFE69/bsfile.json": "f961138f149b308ce0811724b7e70892a6161a21bf25023f415870d3dd03c2f7",
     "config/GMFE69/bsmachin.json": "99e6f626f2cdb4c5eddca656c56ef9cc28369e547992ff630f5c3bbc93fa72ef",
     "config/GMFE69/bsmachin_props.json": "1944c1e183afb013783327c438e3010395c83aa6dd9a7fc96e154ae3b78ec9c3",
-    "config/GMFE69/bsmessage_group.json": "be3633a7d9e8f96fdc5f33c69976264536ed53f031b3be33c9f0ce5ca02ee25f",
+    "config/GMFE69/bsmessage_group.json": "7cbc914c88ea2111f87ad660caefb447c7323b160e22f4a915b9248c597a36a2",
     "config/GMFE69/bsmessage_register.json": "a70bfb609181cae9076c583fcf1da4d154b4d4a8a4a648eb45b2966ea24c927b",
     "config/GMFE69/bsmessage_remove.json": "ee5b15e9cea3e72d405091e370c0e69ff97bfd041866218c0876463c01001a9f",
     "config/GMFE69/bsobject.json": "41480f6a7bea111add9b38059f1c44261dd07a1e993a72d69f0db4556248260f",
@@ -2442,7 +2442,7 @@
     "src/game/bsfile.cpp": "af375447dad6c73a39950974ef6a4ac7c892bbbb7541fba3b32587c6d1c69cab",
     "src/game/bsmachin.cpp": "29ef7c9c19942e3dc51d97c49266ac9b237c8658ffef55d4536c8968e7d44b1e",
     "src/game/bsmachin_props.cpp": "3907e2f6896cc15ab0613cb4136fd0aec3b790b58527e3d7866790404c79c198",
-    "src/game/bsmessage_group.cpp": "5214f38619c6804d07d5fc59be77cdee96b3158ed1da037f5a2a371e9bbfc28a",
+    "src/game/bsmessage_group.cpp": "03845b380c53cfebc4f9ba2fd10dbf29d12e12472cb44a6247eb2a8eca37b496",
     "src/game/bsmessage_register.cpp": "2d5b24fd476ec2a6f34710750b447f3ca9b26dd2ba8eb40d0a8acae0c9f5fb0c",
     "src/game/bsmessage_remove.cpp": "cc37c99cd0896a01b960958e8fe8623ff1aead2bff0e9cccdafd9aceadcd181f",
     "src/game/bsobject.cpp": "c6feb51c0a025f79f8cfc2b874e88d97395dfd9ed0dc26ca8318087fd80e7bb4",
@@ -28701,8 +28701,8 @@
     {
       "id": "bsmessage_group",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 284,
+      "functions": 2,
+      "code_bytes": 812,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28734,8 +28734,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5f8e40d828b1c2e4fafd619178d4f82cbb31e1d8a37fc93cdd22657974f608f2",
-      "linked_sha256": "601fad2140690c980d4bb4750c48f9cc5dc5c6343eb3442e800e1ff1b22b9e0e"
+      "object_sha256": "54443cf1419f9fc755ada5c6cc9fa19905357639185cb66f4c2f286c9da6f578",
+      "linked_sha256": "9f7bddabf533e8afe23e43ed7515c48a86ae4550055090bca3a4d144d785568d"
     },
     {
       "id": "bulletfactory_sprites",
@@ -49425,13 +49425,6 @@
         "file_record": 16,
         "file_name": "bsmessage.cpp",
         "ranges": [
-          {
-            "address": "0x80039ca0",
-            "size": 528,
-            "kind": "function",
-            "name": "BSProcessMessages__Fi",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80039f10",
             "size": 684,

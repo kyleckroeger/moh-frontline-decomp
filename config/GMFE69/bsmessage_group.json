@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x80039b84",
-      "size": 284,
+      "size": 812,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a37c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800112e8",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,15 +62,37 @@
       "address": "0x80039b84",
       "size": 284,
       "binding": 1
+    },
+    {
+      "name": "BSProcessMessages__Fi",
+      "address": "0x80039ca0",
+      "size": 528,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "BSEventCurrentlyProcessingMessages__Fb": "0x80034d2c",
+    "BSEventProcessImmediateEvents__Fv": "0x8003521c",
+    "BSExecuteThread__FP8BSObjectP22BSMachineThread_struct": "0x80037e70",
+    "g_MessageQueue": "0x80198098",
+    "g_MessageQueueHead": "0x8034e824",
+    "g_MessageQueueTail": "0x8034e828",
+    "g_piStackTop": "0x8034e7d8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_MessageQueue",
+    "g_MessageQueueHead",
+    "g_MessageQueueTail"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_MessageQueueHead",
+    "g_MessageQueueTail",
+    "g_piStackTop"
+  ],
   "original_file": "bsmessage.cpp",
   "original_file_index": 1315
 }
