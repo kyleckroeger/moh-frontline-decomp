@@ -1083,7 +1083,8 @@
     "animseq_start.json",
     "animst_transprecheck.json",
     "bsevents_queue.json",
-    "bsmessage_register.json"
+    "bsmessage_register.json",
+    "UISUtils_siblingenable.json"
   ],
   "progress": {
     "code_bytes": 1414572,
