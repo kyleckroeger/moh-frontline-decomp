@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 706256,
+    "matching_code_bytes": 706692,
     "total_executable_code_bytes": 1414572,
-    "percent": 49.92718645639812,
+    "percent": 49.958008500097556,
     "categories": {
-      "reconstructed_game": 484808,
+      "reconstructed_game": 485244,
       "restored_library": 221448
     },
-    "matching_functions": 4123
+    "matching_functions": 4125
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -749,7 +749,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "7b399fb9898a717b3a54555990ada05ca4215202ac5913873d0a608e2d0fe3a1",
+    "config/GMFE69/project.json": "68d6a40c12369ff3eec184d5e793c9c17f3ab9c9b94f8024697b19271ffe4166",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -898,6 +898,7 @@
     "config/GMFE69/sgetdata.json": "a28a08c3d3d8be7272dabffc0a2720543b091881baff0e1c7988c82978e4918a",
     "config/GMFE69/sgetpvol.json": "ee69cb8b807ef51113d974130ba2eeed9be612d7b0e7f42078fdaf455158f022",
     "config/GMFE69/sgettag.json": "73b507f500d3409b0fbef821e9d07368ad18c50f36d76bd48f453f8c4c994f77",
+    "config/GMFE69/shadow_ctor.json": "87ac59d7c9c907c44ed883982df951abe836fa8537f2858f2a7aa0ae6644be63",
     "config/GMFE69/shipass.json": "d500ffaf2e8649ec757e2be06b06d19cdf2a62a3cd479f1d5bc7362b8a5c0ea8",
     "config/GMFE69/signal.json": "11e4665069a531c20eb3bf1455bab453a4193e7fcc258de91c6db16275813b7f",
     "config/GMFE69/signals.json": "1cb5c0350da656f9742c45ef5b90b13140a20386acae7e3b8932ad4e9fc2c20d",
@@ -2694,6 +2695,7 @@
     "src/game/scene_veciter_dtor.cpp": "04568810dd866b90d8937110bbde943d849da887cf409f5638e78d0006826e4e",
     "src/game/scene_veciter_plus.cpp": "ad93d66d1c8007e54b4d61711cdf4de56b871064dc900a76265dd6bdd638136e",
     "src/game/scene_visit.cpp": "8fd272c3dbdda1e7a93131bb4502b6821a15b553425633371432a3a1aac3557c",
+    "src/game/shadow_ctor.cpp": "9e5295cf7bd5b3a9f181be06f2ac816ada325271f2f1afb15b12bdd3d98320a1",
     "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
     "src/game/skybox.cpp": "51c0fbd12e9ef49c313bcc7055d61c7ad7fcd8c243abaea7ef80bb1dc8b33da8",
     "src/game/skybox_bin.cpp": "4679c1f8a61129831726771e304777b452d8d04d52bc3392b54a88f10ebd0766",
@@ -47809,6 +47811,45 @@
       "discarded_functions": [],
       "object_sha256": "2bc4b12708b95aed5598b6b74893c38274d3e43cd9290d850aff660c4f03fb6c",
       "linked_sha256": "a4262d5dea365cfd5aaed4572aeae1aaf1bdd03fe5111d60c8cadadcfe1d427b"
+    },
+    {
+      "id": "shadow_ctor",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 436,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "1c22b2de0e3053f4e68a0f290ae37ee24102af98e145dd4f3812557b81cdf66c",
+      "linked_sha256": "a502978b7d29fdc0edf5cb297e4140d33bfa99168e4c596c36e0b284e5297d04"
     }
   ],
   "code_map": {
@@ -50536,20 +50577,6 @@
             "size": 644,
             "kind": "function",
             "name": "Draw__16CCharacterShadowFR12CDrawContext",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800816d8",
-            "size": 100,
-            "kind": "function",
-            "name": "__dt__16CCharacterShadowFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008173c",
-            "size": 336,
-            "kind": "function",
-            "name": "__ct__16CCharacterShadowFv",
             "evidence": "exception-index"
           },
           {
