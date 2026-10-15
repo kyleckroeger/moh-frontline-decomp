@@ -39,40 +39,76 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800652a0",
-      "size": 64,
+      "address": "0x80065198",
+      "size": 552,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b450",
-      "size": 8,
+      "address": "0x8000b448",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012578",
-      "size": 12,
+      "address": "0x8001256c",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "UpdateAnimation__10CAnimMorphFf",
+      "address": "0x80065198",
+      "size": 264,
+      "binding": 1
+    },
+    {
       "name": "SetBlendTargetWeight__10CAnimMorphFUlf",
       "address": "0x800652a0",
       "size": 64,
       "binding": 1
+    },
+    {
+      "name": "Init__10CAnimMorphFP11CAnimObjectUsP11CharFrame_t",
+      "address": "0x800652e0",
+      "size": 224,
+      "binding": 1
     }
   ],
   "externals": {
-    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c"
+    "AnimInitHeader": "0x800691d4",
+    "DMClusterInitObject__FP17DMClusterObject_TPA3_A4_fPA3_A4_fUl": "0x800f5298",
+    "DMGeomSetNodeState__FP17DMGeometryState_Tll": "0x800f6db8",
+    "DMMorphInitObject__FP15DMMorphObject_TUl": "0x800f7620",
+    "DMMorphSetMaxActiveTargets__FP15DMMorphObject_TUl": "0x800f7618",
+    "DMRenderBindClusterObj__FP16DMRenderObject_TP17DMClusterObject_T": "0x800f4c84",
+    "DMRenderBindMorphObj__FP16DMRenderObject_TP15DMMorphObject_T": "0x800f4c7c",
+    "DMRenderInitObject__FP16DMRenderObject_TP8TUInt128P8TUInt128Ul": "0x800f4dcc",
+    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c",
+    "Init__9CAnimatedFP11CAnimObjectUs": "0x80061530",
+    "LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t": "0x80064ca0",
+    "UpdateAnimation__9CAnimatedFf": "0x80061314"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animmorph.cpp",
-  "original_file_index": 2977
+  "original_file_index": 2977,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fc98"
+    }
+  ]
 }

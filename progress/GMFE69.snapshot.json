@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 712996,
+    "matching_code_bytes": 713484,
     "total_executable_code_bytes": 1414572,
-    "percent": 50.40365566404538,
+    "percent": 50.4381537313053,
     "categories": {
-      "reconstructed_game": 491548,
+      "reconstructed_game": 492036,
       "restored_library": 221448
     },
-    "matching_functions": 4144
+    "matching_functions": 4146
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -305,7 +305,7 @@
     "config/GMFE69/animintf.json": "e91af6bf29eeff53f9eebe801ede9cf93426f363777b7aeba4ab4fbbfc53a675",
     "config/GMFE69/animmorph.json": "fde4d4e52d237e161f26b1ce600e179cae840da627629f27036833be76bacc3b",
     "config/GMFE69/animmorph_dtor.json": "4c07a2b66746cfdb466d7c0a56247186ac3080cb983d3621e828a21662ecac59",
-    "config/GMFE69/animmorph_weight.json": "615c9ec9b0beae29ff7f5eab987f5b3c739aa35b4bfc6a3d277ac4fe443972e3",
+    "config/GMFE69/animmorph_weight.json": "266313fd3693dcf7f29939f806d755252562157701e925dfc1f7326a2261a105",
     "config/GMFE69/animmot.json": "4db280bf4ae0d64c8a3625af885fcea8cd216882da3025b38c8d4bd4627b7f76",
     "config/GMFE69/animplayer.json": "123a8b6fa4ff0d201d93990013084ba2542118c0a6c8b02c04d3a5b5515c1ba1",
     "config/GMFE69/animplayer_weak.json": "51f6719bb37fdb213a30e4327c6e68dd3035b75162b455968ff59f21626988a9",
@@ -2311,7 +2311,7 @@
     "src/game/animintf.cpp": "30da38919557e3702eab8683fdc04613b8d4720da1b24216908f957e8ce63ca5",
     "src/game/animmorph.cpp": "def84f4bdd60ed576a7b99ba68c7b82c234b29c015a6a1cc0b783f78db0343fe",
     "src/game/animmorph_dtor.cpp": "6521fc2f47cbe35266b08dfeeae7573a720f8a6f74438c8d3b20dc0d5f5cda04",
-    "src/game/animmorph_weight.cpp": "14797694427222902fcb820a0d2aedae38b1781990ad437749d91db836b725e8",
+    "src/game/animmorph_weight.cpp": "00404a1d8e58eb98d991ce4ac15e944319d67294248c54d07fcdc80e77474265",
     "src/game/animmot.cpp": "a45a8abe1f4cf7ff29d111e21ddc34a94f2de557f14ba7b00b699d7cec9acad9",
     "src/game/animplayer.cpp": "99b4ef928b5180420a1d053c44deb1a4abd0d58f4e02dbbbe517d147af5c696a",
     "src/game/animplayer_weak.cpp": "4477f9d5a90d9ec10a41c0bbeddbf126956059c3c77c45c7893b164445d6d098",
@@ -46007,8 +46007,8 @@
     {
       "id": "animmorph_weight",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 64,
+      "functions": 3,
+      "code_bytes": 552,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46040,8 +46040,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "df646c2700c03e108b7790677f14205c0e6d17fc72f4ca7c8d74ed93e45b499a",
-      "linked_sha256": "af62518cf5986dd1cbf7c33fd314d9b73ee1e441f9bf2c0046ccf62002b8a742"
+      "object_sha256": "8c4a49db5710d1629abfe5031860b494f45a4de1fbea8560314cb7caa3e4ece0",
+      "linked_sha256": "dc52be436a6ab84ec46de43c068cfdf6db27e111e3ccccec31671013c34f8b65"
     },
     {
       "id": "jaw_controller",
@@ -50005,20 +50005,6 @@
             "kind": "function",
             "name": "LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x80065198",
-            "size": 264,
-            "kind": "function",
-            "name": "UpdateAnimation__10CAnimMorphFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800652e0",
-            "size": 224,
-            "kind": "function",
-            "name": "Init__10CAnimMorphFP11CAnimObjectUsP11CharFrame_t",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800653c0",
