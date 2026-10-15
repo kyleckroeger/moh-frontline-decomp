@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80102290",
-      "size": 36,
+      "size": 120,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fba8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016910",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -68,9 +68,16 @@
       "address": "0x80102294",
       "size": 32,
       "binding": 1
+    },
+    {
+      "name": "Draw__7GCHW_VDFPQ24RCMP5FRAME",
+      "address": "0x801022b4",
+      "size": 84,
+      "binding": 1
     }
   ],
   "externals": {
+    "ReleaseFrame__Q24RCMP7DECODERFPQ24RCMP5FRAME": "0x80105304",
     "iDraw__7GCHW_VDFv": "0x80102308"
   },
   "undefined_in_discarded_code": [],

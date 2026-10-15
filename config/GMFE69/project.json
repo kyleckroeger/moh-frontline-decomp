@@ -1173,7 +1173,9 @@
     "scene_closestplayer.json",
     "dvdStatus_drawmessage.json",
     "camera_frustum.json",
-    "animplayer_ctor.json"
+    "animplayer_ctor.json",
+    "texture_load.json",
+    "fiber_testfiber.json"
   ],
   "progress": {
     "code_bytes": 1414572,

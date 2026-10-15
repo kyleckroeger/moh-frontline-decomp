@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 743836,
+    "matching_code_bytes": 744064,
     "total_executable_code_bytes": 1414572,
-    "percent": 52.5838204064551,
+    "percent": 52.5999383559126,
     "categories": {
-      "reconstructed_game": 522388,
+      "reconstructed_game": 522616,
       "restored_library": 221448
     },
-    "matching_functions": 4300
+    "matching_functions": 4303
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -610,6 +610,7 @@
     "config/GMFE69/fiber_create.json": "938ba809ac54783c41830ae4f6eb7fb405616573546d706251078240fc8596c9",
     "config/GMFE69/fiber_dtor.json": "2de9b087334c266100e74b4246854d5f7094442ab8e5b7f29ca04c8983bb1e40",
     "config/GMFE69/fiber_ivolume.json": "f15f67e947e1ec765c55257ea9c665dd79e39e96446d48beeebbd527281e2ac1",
+    "config/GMFE69/fiber_testfiber.json": "82cc1980ef7bb0aac65fe436b5b411f06f50e758e274f0a9780bfd598fd5f641",
     "config/GMFE69/fiber_testtriangle.json": "9a85f58d7ccae2053f3d7d972b6aa8925f89107a052fed2daba626037a141259",
     "config/GMFE69/fiber_visibility.json": "4d41af3dadb241683152c693aaa25e4d329dbcf3363a8b83f5f5c744b28b7086",
     "config/GMFE69/file_io.json": "18806d70257141c6be85e210ecc9cf7d248e740af95caccff17e02f127f6becd",
@@ -659,7 +660,7 @@
     "config/GMFE69/hlsfile.json": "949cb6bbf006231f6e840512648466c8cc1f095827bbb723bf5ff1c4a55603e5",
     "config/GMFE69/hwvideodisplaylist.json": "5907dc675d98a1eed2edde81b06fc226079b645dfa29c47581b571f4644683b4",
     "config/GMFE69/hwvideodisplaylist_delete.json": "13889cf5252998c3a2fb0885bb620b63dfd15fe73ffe752b4cee1c0261fd3161",
-    "config/GMFE69/hwvideodisplaylist_draw.json": "bc8a7e40ccd5cafd049f1280f4778be4fd989930a55266e09b362b49d7a7ccf0",
+    "config/GMFE69/hwvideodisplaylist_draw.json": "a8bf71737920896112fcf30030019e442332918fd8c79446dfb691c303fdfd80",
     "config/GMFE69/idct.json": "aea739593ce84e955cc0ef3ee0b2dcfb57dfa9056dae44eb62e76631ae113984",
     "config/GMFE69/impact_dtor.json": "1990fa1b5e4be66e182ca21651710bf585168cd921a7900a45d7004e0e9ed250",
     "config/GMFE69/initosalloc.json": "5324f4e73a3982e763bab556d4b226d91ef242cc4b14e07a057a1fe18a367ae0",
@@ -816,7 +817,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "449a99db41a02d679f8612302a90fa6edb57ffdc2f6e0ef816eec409840de427",
+    "config/GMFE69/project.json": "a6ed0d6075bba2b0b618407b3ad0bc8763da3f57fbac32da53b23f00a639b47f",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1141,6 +1142,7 @@
     "config/GMFE69/targimpl_step.json": "4fde52c66246c87b644241ba980658b973f2679d42792de87237bb9be7f9372d",
     "config/GMFE69/targimpl_stop.json": "44420ea2f5a10a88f1937520601413bebbee631af8fb0062ca1e98dd7204b3ce",
     "config/GMFE69/texpack.json": "e72b98cff12a06a8815f3de46a2dddeaaff0a28ea13a88b19df4444349d53607",
+    "config/GMFE69/texture_load.json": "20d82e5d913230986bf68d597082e3c4c2e07171b7378f5c7d25adefd299c56a",
     "config/GMFE69/threads.json": "7ff759b6a25e060f4b0e42e0a441b2c1fa6dbd23dbaf68600e832b617feeb943",
     "config/GMFE69/threads_current.json": "d67345101e55cef32123d176a89cc9c1735c957bf68e3f47494940f744ea29f3",
     "config/GMFE69/thrown_obj.json": "bd01ec174db980900c8347de44aceb41594e3b38e73ae7135acbd48d4e6c877f",
@@ -2652,6 +2654,7 @@
     "src/game/fiber_create.cpp": "e5a72cb63b144e4a46e8ef3d80ac92f0c81c086bc10c1d134c9e1f2854dd01fe",
     "src/game/fiber_dtor.cpp": "d50da700dbc3466b57f6db8814aa242436409e50ea176842cb073f01153e49c0",
     "src/game/fiber_ivolume.cpp": "6ef502741988da285d30efd673faad6726732f10c1f264b4773aa29b7dcd5e0c",
+    "src/game/fiber_testfiber.cpp": "604f0f115639641fec1b2887d1ab4b4017c87dab67a8113f2747ed950e97a0f2",
     "src/game/fiber_testtriangle.cpp": "aa86d41f89678d9fa76af11ed889aaee6b460e824fa35fcc20a47329ff749c4f",
     "src/game/fiber_visibility.cpp": "fe3137b7bfbdc6c744b78db6ebb7cbabd48b4888ade40afde4bcffd621dd3238",
     "src/game/filesys.cpp": "edc914b77e55cfec7501ffc2150c34cefc432d28c3e9aa1eceea55a4cbe755ad",
@@ -2679,7 +2682,7 @@
     "src/game/hierobject_weak.cpp": "f09f0a39f7caf75ec171432ff05a2c7f8139a91cdd675b3fb7b2ac0fa87a105b",
     "src/game/hwvideodisplaylist.cpp": "3a64557deabec80e0df4ca6f54e87735a5069f0c774c6f916ff6a2f1b33c822d",
     "src/game/hwvideodisplaylist_delete.cpp": "2d8c0018edf0e33470978aa401e3d3c36404a4f37d74343a1baf5eb2af354c2e",
-    "src/game/hwvideodisplaylist_draw.cpp": "c3d08b73a2f98f51ae9e06f499968cb154031d5033a2e2e38df9345c12a00813",
+    "src/game/hwvideodisplaylist_draw.cpp": "141af6fe3b691f9a7d4d2e6344bda65f0f7d6225943a3638d97b63e137a237c8",
     "src/game/impact_dtor.cpp": "976c508e4a446788a0972daa617b736d08e81d6fe6838a3ec7074bc92d0bb3d7",
     "src/game/input.cpp": "14b5e3b8273181a80656cc0d159f1b297f93f952efc9b79448175f7af97ca789",
     "src/game/input_init.cpp": "9809b5630120e60a2373f904e281c779f7ebdfba628f70cea90efc6ce1dc240e",
@@ -2909,6 +2912,7 @@
     "src/game/swvideodisplaylist_dtor.cpp": "c8bebb49b923d50c1c1079024d34925617559fa12b806e6380a36dab63378725",
     "src/game/system.cpp": "a6b1bce950e974ebaf7e6c7afc31ecab8f41566550163428c632534bc8f78b83",
     "src/game/texpack.cpp": "170a3a9592cbea2d199a09aba976cc93963f0104100915e1f5d9d23eaf30f61a",
+    "src/game/texture_load.cpp": "e9841cfbee518d609bc9512a90b20581f7adffab867ec5bbe642c65f4fcb573b",
     "src/game/thrown_obj.cpp": "96b3022a0fc57bf98f807cc8d280e8d11c00e38febddbb8fa1dcb71971a9d451",
     "src/game/thrown_obj_cleanup.cpp": "dedcca82f41ed5e70a64482147d7b04e466f469595380cc9633af03c08ee5eb6",
     "src/game/thrown_obj_ctor.cpp": "647f68be7799d6f797bddad332d8755facbe936767d16742c7146bb7696886cb",
@@ -33696,8 +33700,8 @@
     {
       "id": "hwvideodisplaylist_draw",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 36,
+      "functions": 3,
+      "code_bytes": 120,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -33729,8 +33733,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f19a12788c61a4720faeaf920acfcc6ed37e7891238bbacdb8de71a65118bd74",
-      "linked_sha256": "8826dfa051b4ba1196e50e63903e91b5ed40ba8cb64b5c36bb6bdd4306e5bf88"
+      "object_sha256": "49b66b5821a690337bb0ae4e6392da32488b0e1fec8b6539efb9b64d1c08e845",
+      "linked_sha256": "731d0fd596a650630fc6f0018ea72bcea5ec81641bbb1f8b75d3a77844cf66de"
     },
     {
       "id": "hwvideodisplaylist_delete",
@@ -51009,6 +51013,84 @@
       "discarded_functions": [],
       "object_sha256": "3ea3fccfb302165a898e0f563ab885d8004a1c024d4289cb0662ec95033667c2",
       "linked_sha256": "bff29ed6856bd7f24c08ace73c7597061871f5819a289992c137fcb2e16f197a"
+    },
+    {
+      "id": "texture_load",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 80,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "on",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "6edcd93c80efbc1e5ac0c72b708a9c93f45db48cc27da090e9cdf175f848e2e0",
+      "linked_sha256": "31db055d29b51458efc270f0b3df20b3c135e4baff195a4ae592922f5fce2244"
+    },
+    {
+      "id": "fiber_testfiber",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 64,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "8d22f1ed8e3e8064b10b824c66fa027ccb7e67177e29f3adaf8d57e1de7c3582",
+      "linked_sha256": "17941f2de3dc14116733dca7da2f124d04b9802e8d3822f7714b5c77625e80ac"
     }
   ],
   "code_map": {
@@ -53104,13 +53186,6 @@
         "file_name": "texture.cpp",
         "ranges": [
           {
-            "address": "0x80082a60",
-            "size": 80,
-            "kind": "function",
-            "name": "Load__8CTextureFR10CDmaPacketP11CRenderList",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x80082ab0",
             "size": 700,
             "kind": "function",
@@ -54567,13 +54642,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x800c9b64",
-            "size": 64,
-            "kind": "function",
-            "name": "TestCollision__9CVolFiberCFRC9CVolFiberR10CCollisionb",
-            "evidence": "exception-index"
-          },
-          {
             "address": "0x800c9ba4",
             "size": 832,
             "kind": "function",
@@ -55726,13 +55794,6 @@
         "file_record": 173,
         "file_name": "hwvideodisplaylist.cpp",
         "ranges": [
-          {
-            "address": "0x801022b4",
-            "size": 84,
-            "kind": "function",
-            "name": "Draw__7GCHW_VDFPQ24RCMP5FRAME",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80102308",
             "size": 1484,
