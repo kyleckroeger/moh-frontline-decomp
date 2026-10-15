@@ -1182,7 +1182,8 @@
     "rcmp_mpc_create.json",
     "Gecko_ExceptionPPC_endcatch.json",
     "animplayer_draw.json",
-    "skybox.json"
+    "skybox.json",
+    "sbasync_download.json"
   ],
   "progress": {
     "code_bytes": 1414572,
