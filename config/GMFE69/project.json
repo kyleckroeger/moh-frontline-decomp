@@ -1023,7 +1023,8 @@
     "projectilebullet_methods.json",
     "projectilebullet_update.json",
     "projectilebullet_commit.json",
-    "thrownbullet_misc.json"
+    "thrownbullet_misc.json",
+    "thrownbullet_tail.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -1,0 +1,99 @@
+{
+  "id": "thrownbullet_tail",
+  "source": "src/game/thrownbullet_tail.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d4134",
+      "size": 296,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e71c",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015494",
+      "size": 36,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Destroy__13CThrownBulletFv",
+      "address": "0x800d4134",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "MarkForDestruction__13CThrownBulletFi",
+      "address": "0x800d415c",
+      "size": 204,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__13CThrownBulletFv",
+      "address": "0x800d4228",
+      "size": 52,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "Reset__19CLightVolumeManagerFv": "0x800790a8",
+    "Shutdown__7CBulletFv": "0x800ccc04",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pBulletFactory"
+  ],
+  "original_file": "thrownbullet.cpp",
+  "original_file_index": 8132
+}
