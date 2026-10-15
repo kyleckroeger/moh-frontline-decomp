@@ -1,4 +1,9 @@
-// A fragment of particlesystem.cpp (0x8007eef4): CPropertyParticleSystem's
+// A fragment of particlesystem.cpp (0x8007ee14): CInstancedParticleSystem's
+// SetLocalToWorld (keeps the transform and takes the particle acceleration,
+// system acceleration and initial velocity into its inverse's frame),
+// SetSeed, GetParticleAcceleration and GetSeed (members inferred, the
+// transform at +144 within the base data), then
+// CPropertyParticleSystem's
 // SetSystemAcceleration (stores +224, then the same flag update as below), the
 // weak CParticleSystem::ValidateBoundingBox (a header inline emitted after its
 // first caller; the base class holds the vtable and the flag bits, the split
@@ -18,8 +23,6 @@
 // __vt__23CPropertyParticleSystem, after 28 bytes of data as for CRenderBin;
 // earlier slots are placeholders named by offset); the vector's
 // doubleword-pair copy and its zero test are inferred inlines.
-class CMatrix;
-
 union CVector3Pair;
 
 class CVector3 {
@@ -44,6 +47,24 @@ public:
     float z;
     float w;
 } __attribute__((aligned(8)));
+
+class CMatrix {
+public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    CMatrix& operator=(const CMatrix&);
+    void FastInverse(const CMatrix&);
+    void TransformVector(CVector3&, CVector3) const;
+    static void InitClass();
+    static bool s_ClassInit;
+
+    CVector3 right;
+    CVector3 front;
+    CVector3 up;
+    CVector3 pos;
+} __attribute__((aligned(16)));
 
 class CColor {
 public:
@@ -168,6 +189,44 @@ public:
     CVector3 m_acceleration;
     ParticlePropertiesView* m_properties;
 };
+
+class CInstancedParticleSystem : public CParticleSystem {
+public:
+    void SetLocalToWorld(const CMatrix&);
+    void SetSeed(int);
+    void GetParticleAcceleration(CVector3&) const;
+    int GetSeed() const;
+
+    unsigned char data08c[4];
+    CMatrix m_localToWorld;
+    CVector3 m_velocity;
+    CVector3 m_acceleration;
+    unsigned char data0f0[16];
+    int m_seed;
+    unsigned char data104[4];
+    CVector3 m_particleAcceleration;
+};
+
+void CInstancedParticleSystem::SetLocalToWorld(const CMatrix& matrix) {
+    m_localToWorld = matrix;
+    CMatrix inverse;
+    inverse.FastInverse(m_localToWorld);
+    inverse.TransformVector(m_particleAcceleration, m_particleAcceleration);
+    inverse.TransformVector(m_acceleration, m_acceleration);
+    inverse.TransformVector(m_velocity, m_velocity);
+}
+
+void CInstancedParticleSystem::SetSeed(int seed) {
+    m_seed = seed;
+}
+
+void CInstancedParticleSystem::GetParticleAcceleration(CVector3& acceleration) const {
+    acceleration = m_particleAcceleration;
+}
+
+int CInstancedParticleSystem::GetSeed() const {
+    return m_seed;
+}
 
 void CPropertyParticleSystem::SetSystemAcceleration(CVector3 acceleration) {
     m_acceleration = acceleration;

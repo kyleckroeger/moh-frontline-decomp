@@ -39,24 +39,48 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007eef4",
-      "size": 676,
+      "address": "0x8007ee14",
+      "size": 900,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c0d4",
-      "size": 16,
+      "address": "0x8000c0cc",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013094",
-      "size": 24,
+      "address": "0x80013088",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetLocalToWorld__24CInstancedParticleSystemFRC7CMatrix",
+      "address": "0x8007ee14",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "SetSeed__24CInstancedParticleSystemFi",
+      "address": "0x8007eed0",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "GetParticleAcceleration__24CInstancedParticleSystemCFR8CVector3",
+      "address": "0x8007eed8",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "GetSeed__24CInstancedParticleSystemCFv",
+      "address": "0x8007eeec",
+      "size": 8,
+      "binding": 1
+    },
     {
       "name": "SetSystemAcceleration__23CPropertyParticleSystemF8CVector3",
       "address": "0x8007eef4",
@@ -112,13 +136,21 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "particlesystem.cpp",
   "original_file_index": 4057,
   "pooled_sections": [
