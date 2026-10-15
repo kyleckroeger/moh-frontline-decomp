@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80059f3c",
-      "size": 216,
+      "address": "0x80059e6c",
+      "size": 424,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000aeac",
-      "size": 8,
+      "address": "0x8000aea4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011fd8",
-      "size": 12,
+      "address": "0x80011fcc",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIFunc_UnregisterAlarm__FPPiPv",
+      "address": "0x80059e6c",
+      "size": 208,
+      "binding": 1
+    },
     {
       "name": "BIFunc_RegisterAlarm__FPPiPv",
       "address": "0x80059f3c",
@@ -65,6 +71,7 @@
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "g_alarms": "0x801c6ca4",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778",
