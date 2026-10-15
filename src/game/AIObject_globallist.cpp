@@ -1,4 +1,7 @@
-// A fragment of AIObject.cpp (0x8004ec60): CAIObject's global object list
+// A fragment of AIObject.cpp (0x8004ec04): CAIObject::UpdateReactionTime
+// (without a target the reacting flag is cleared while the reaction time plus
+// 3 is still ahead of the AI clock; with one, a reacting object's reaction
+// time is reset to the clock), CAIObject's global object list
 // (ResetGlobalList, GetGlobalListStart, RemoveFromGlobalList) and
 // RemovePointersTo, which clears another object's target, path-walk target
 // (+624) and the pointers at +1688 and +1692 when they refer to a removed
@@ -48,6 +51,7 @@ public:
     CAIObject* GetGlobalListStart();
     void RemovePointersTo(CAIObject*);
     void RemoveFromGlobalList();
+    bool UpdateReactionTime();
 
     unsigned char unknown000[4];
     CAIObject* m_next;
@@ -60,7 +64,9 @@ public:
     bool m_unknown0c0;
     unsigned char unknown0c1[3];
     CAIObject* m_target;
-    unsigned char unknown0c8[268];
+    unsigned char unknown0c8[152];
+    float m_reactionTime;
+    unsigned char unknown164[112];
     int m_unknown1d4;
     unsigned char unknown1d8[20];
     int m_unknown1ec;
@@ -86,10 +92,31 @@ public:
     CAIObject* m_unknown69c;
     unsigned char unknown6a0[56];
     bool m_unknown6d8;
+    unsigned char unknown6d9[88];
+    bool m_reacting;
 };
+
+class CAIFilterGlobal {
+public:
+    unsigned char unknown00[4];
+    float m_time;
+    unsigned char unknown08[16];
+};
+
+extern CAIFilterGlobal g_aigAIFilterGlobalObject;
 
 extern CAIObject* g_paioAIObjectListStart; // file-local in the original
 extern int g_iAIObjectCount;
+
+bool CAIObject::UpdateReactionTime() {
+    if (m_target == 0) {
+        if (3.0f + m_reactionTime > g_aigAIFilterGlobalObject.m_time)
+            m_reacting = false;
+    } else if (m_reacting) {
+        m_reactionTime = g_aigAIFilterGlobalObject.m_time;
+    }
+    return true;
+}
 
 void CAIObject::ResetGlobalList() {
     g_paioAIObjectListStart = 0;

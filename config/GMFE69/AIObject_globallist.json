@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004ec60",
-      "size": 640,
+      "address": "0x8004ec04",
+      "size": 732,
       "type": 1
     },
     {
@@ -57,6 +57,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "UpdateReactionTime__9CAIObjectFv",
+      "address": "0x8004ec04",
+      "size": 92,
+      "binding": 1
+    },
     {
       "name": "ResetGlobalList__9CAIObjectFv",
       "address": "0x8004ec60",
@@ -87,6 +93,7 @@
     "GetDistanceSquaredXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6f4",
     "RemoveElement__11CLinkedListFP18CLinkedListElement": "0x800535a0",
     "__dt__11CSearchNodeFv": "0x80056210",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
     "g_iAIObjectCount": "0x8034e8e8",
     "g_paioAIObjectListStart": "0x8034e8ec"
   },
@@ -102,5 +109,16 @@
     "g_paioAIObjectListStart"
   ],
   "original_file": "AIObject.cpp",
-  "original_file_index": 1752
+  "original_file_index": 1752,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f944"
+    }
+  ]
 }

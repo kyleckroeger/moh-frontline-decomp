@@ -1002,7 +1002,8 @@
     "AnimObjFactory_head.json",
     "anim_obj_initclass.json",
     "collision_head.json",
-    "collision_contacts.json"
+    "collision_contacts.json",
+    "compartment_texswap.json"
   ],
   "progress": {
     "code_bytes": 1414572,
