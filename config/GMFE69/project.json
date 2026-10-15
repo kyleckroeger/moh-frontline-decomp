@@ -1180,7 +1180,8 @@
     "AnimObjFactory_weapon.json",
     "aramalloc_alloc.json",
     "rcmp_mpc_create.json",
-    "Gecko_ExceptionPPC_endcatch.json"
+    "Gecko_ExceptionPPC_endcatch.json",
+    "animplayer_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
