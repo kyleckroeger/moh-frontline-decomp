@@ -1,4 +1,6 @@
-// A fragment of weapon.cpp (0x800d6548): the CWeapon default constructor
+// A fragment of weapon.cpp (0x800d64e8): the CWeapon destructor (the table
+// pointer, then CStaticObject's destructor, and the object freed when asked),
+// the CWeapon default constructor
 // (CStaticObject's constructor; the table pointer; the dummy script object at
 // +728 (its three words cleared before its table pointer, as in
 // thrown_obj_ctor.cpp); then two halfwords cleared, 0.0f at +648, 1 at +652 and
@@ -49,6 +51,9 @@ public:
     unsigned char unknown290[72];
     BSGO_Dummy m_scriptObject;
 };
+
+CWeapon::~CWeapon() {
+}
 
 CWeapon::CWeapon() {
     data284 = 0;

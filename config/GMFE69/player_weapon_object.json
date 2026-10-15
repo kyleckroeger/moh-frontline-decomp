@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a8d30",
-      "size": 180,
+      "address": "0x800a8cd0",
+      "size": 276,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000d154",
-      "size": 36,
+      "address": "0x8000d14c",
+      "size": 44,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014240",
-      "size": 24,
+      "address": "0x80014234",
+      "size": 36,
       "type": 1
     },
     {
@@ -74,6 +74,12 @@
       "binding": 0
     },
     {
+      "name": "__dt__19CPlayerWeaponObjectFv",
+      "address": "0x800a8cd0",
+      "size": 96,
+      "binding": 1
+    },
+    {
       "name": "__ct__19CPlayerWeaponObjectFv",
       "address": "0x800a8d30",
       "size": 136,
@@ -83,6 +89,7 @@
   "externals": {
     "InitClass__7CMatrixFv": "0x80090b78",
     "__ct__11CAnimObjectFv": "0x800959a4",
+    "__dl__FPv": "0x8001ca2c",
     "__dt__11CAnimObjectFv": "0x80095734",
     "__vt__19CPlayerWeaponObject": "0x80187ee8",
     "s_ClassInit__7CMatrix": "0x8034eab0"

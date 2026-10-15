@@ -1,4 +1,7 @@
-// CPlayerWeaponObject's constructor (0x800a8d30: the base constructor, the
+// CPlayerWeaponObject's destructor (0x800a8cd0: the table pointer, then
+// CAnimObject's destructor, and the object freed when asked; the class
+// declares IsVisible, defined elsewhere, first so its global table is not
+// emitted here), its constructor (0x800a8d30: the base constructor, the
 // matrix member, zeroed words and -1 at +9108), then the static
 // initialisation of player_weapon_object.cpp (0x800a8db8): the
 // camera-to-clip matrix's inline constructor initialises the matrix class
@@ -34,9 +37,12 @@ public:
     int m_unknown2c;
 };
 
+class CDrawContext;
+
 class CPlayerWeaponObject : public CAnimObject {
 public:
     CPlayerWeaponObject();
+    virtual bool IsVisible(CDrawContext&) const; /* defined elsewhere; keeps the table out */
     virtual ~CPlayerWeaponObject();
 
     unsigned char unknown0030[9040];
@@ -55,6 +61,9 @@ public:
     int m_unknown30f0;
     int m_unknown30f4;
 };
+
+CPlayerWeaponObject::~CPlayerWeaponObject() {
+}
 
 CPlayerWeaponObject::CPlayerWeaponObject() {
     m_unknown24 = 0;
