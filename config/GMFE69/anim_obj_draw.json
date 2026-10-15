@@ -1,0 +1,165 @@
+{
+  "id": "anim_obj_draw",
+  "source": "src/game/anim_obj_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80095208",
+      "size": 1324,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c960",
+      "size": 40,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013a6c",
+      "size": 60,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Draw__11CAnimObjectFR12CDrawContext",
+      "address": "0x80095208",
+      "size": 156,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAnimation__11CAnimObjectFf",
+      "address": "0x800952e4",
+      "size": 548,
+      "binding": 1
+    },
+    {
+      "name": "SetNodeState__11CAnimObjectFll",
+      "address": "0x800952a4",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "SetMoveTarget__11CAnimObjectFRC8CVector3",
+      "address": "0x800952c8",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "FinishAnimationState__11CAnimObjectFlb",
+      "address": "0x80095508",
+      "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "QueueAnimationState__11CAnimObjectFUsflPv",
+      "address": "0x80095658",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "SetAnimationState__11CAnimObjectFUsflPv",
+      "address": "0x80095674",
+      "size": 192,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "SetAnimationState__9CAnimatedFUsfRUslPv": "0x800613dc",
+    "SetGeomNodeState__9CAnimatedFll": "0x80060cfc",
+    "UpdateSkeletonMatrices__12CAnimSkinnedFP7CMatrixP8CVector3P8CVector3": "0x80066a08",
+    "g_config": "0x80196a80"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "anim_obj.cpp",
+  "original_file_index": 5634,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803503e4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803503f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803503cc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803503d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350438"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8035043c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x803503d8"
+    }
+  ]
+}
