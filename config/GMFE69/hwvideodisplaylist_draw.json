@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,20 +39,40 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80102d24",
-      "size": 4,
+      "address": "0x80102290",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fba8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016910",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
     {
-      "name": "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv",
-      "address": "0x80102d24",
+      "name": "CompleteDraw__7GCHW_VDFv",
+      "address": "0x80102290",
       "size": 4,
-      "binding": 2
+      "binding": 1
+    },
+    {
+      "name": "ReDraw__7GCHW_VDFv",
+      "address": "0x80102294",
+      "size": 32,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "iDraw__7GCHW_VDFv": "0x80102308"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},

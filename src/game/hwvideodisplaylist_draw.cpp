@@ -1,14 +1,16 @@
-// A fragment of hwvideodisplaylist.cpp (0x80102d24): the empty RCMP::VIDEO_DRIVER::CompleteDraw. The classes are named by the mangled symbols
-// and are non-virtual views; members and result types are inferred. The
-// functions are weak copies of header inlines emitted in this file, so they
-// are defined __declspec(weak). The rest of the file is not part of this
-// unit.
-namespace RCMP {
-class VIDEO_DRIVER {
+// A fragment of hwvideodisplaylist.cpp (0x80102290): GCHW_VD's CompleteDraw (empty) and ReDraw (draws again through iDraw). The classes
+// and functions are named by the symbols. The rest of the file is in other
+// units.
+class GCHW_VD {
 public:
     void CompleteDraw();
+    void ReDraw();
+    void iDraw();
 };
+
+void GCHW_VD::CompleteDraw() {
 }
 
-__declspec(weak) void RCMP::VIDEO_DRIVER::CompleteDraw() {
+void GCHW_VD::ReDraw() {
+    iDraw();
 }
