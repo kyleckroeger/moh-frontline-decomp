@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 661436,
+    "matching_code_bytes": 662484,
     "total_executable_code_bytes": 1414572,
-    "percent": 46.75873691830462,
+    "percent": 46.83282293160051,
     "categories": {
-      "reconstructed_game": 439988,
+      "reconstructed_game": 441036,
       "restored_library": 221448
     },
-    "matching_functions": 3939
+    "matching_functions": 3943
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -593,7 +593,8 @@
     "config/GMFE69/matrix_endian.json": "a73459bb11c116b29d29294ff37486a7bf1c7a94ed76da3c4f75b26be69c2884",
     "config/GMFE69/matrix_multiply.json": "9db81bd189cfbcd3e33e9759809a01a5b1cd32a0ab0b7f3b4a5dfae378bbf0a5",
     "config/GMFE69/matrix_ps.json": "c4b6d56bc2559da083fc64c3749010d25d78d759d907fc0973f6d80ed82495c6",
-    "config/GMFE69/matrix_scale.json": "583249828846a45fd88c4396f9b6c8c66dadeff00ffcc05f5820ff1e51912d9f",
+    "config/GMFE69/matrix_rotate.json": "a161d0d868a3177dee5095af0e11e8dd98f7473f639b46183fd94a27e08f0dd7",
+    "config/GMFE69/matrix_scale.json": "10a8bd77c9e5f4c68a3f9c86c80ba09222500578ebac35ccca1edd94c3338fb4",
     "config/GMFE69/matrix_translate.json": "900602450318b946b85d28017e4485d12c6def5d30ddce8292b8b2216b3fa58d",
     "config/GMFE69/matstack.json": "06ed41bcf932ae41e73ebbb9e73ee0eb339eeef02982bd7b29c3bff94cfd3242",
     "config/GMFE69/mbstring.json": "9de9f46cc9601517195f1c54fab48fb7e78bb2f47d69f7aa83c76823aea418d9",
@@ -686,7 +687,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "16aba19b2244d754d0eb7718fb70c4ded871ee720936016020bede442d66fed5",
+    "config/GMFE69/project.json": "97a08ffc126b6f3f674d07133bbf154efbc335a4a0dc2c5c67e596f1cebc41ce",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
@@ -2439,7 +2440,8 @@
     "src/game/matrix_endian.cpp": "e342534dedf41a3cc8e97898b3e66ada0e476de40351f51bef798d27a64a5e46",
     "src/game/matrix_multiply.cpp": "042a95889b8f9cc8ca1e37ee3097ccc485cf5f94943c7f753507c5dc1cdcfa0c",
     "src/game/matrix_ps.cpp": "7e8d5b559fc6aada067af7c5aa5099ec0bbc22005548f2c48d21783cd3a81738",
-    "src/game/matrix_scale.cpp": "99eab9b1e3466626266febab4c8029ce861427cedc2082611af264f3da8da91b",
+    "src/game/matrix_rotate.cpp": "038d2fe4fde124741036113b2ee062ccc0e51073a68525cc344a6e19ee7d29c8",
+    "src/game/matrix_scale.cpp": "3446ee84a649da5a0b658e7764ad7d4f89ee2b047d60959982fc40f782c7cc62",
     "src/game/matrix_translate.cpp": "365451a1bd73d6cb6103620f96a3f7d55b734ecfa0627f9a386a17172ac989a4",
     "src/game/matstack.cpp": "638dd12848a38cfa8685f9555ed05c03824115e83eb4ebe1caf090175a1351ff",
     "src/game/memory.cpp": "75e50f5f66acd16755a070f59afef29e6869b97dede92fada6399d2931c1b27c",
@@ -44464,8 +44466,8 @@
     {
       "id": "matrix_scale",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 148,
+      "functions": 2,
+      "code_bytes": 344,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44497,8 +44499,47 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6a25dab563b854fcc62726575e872fe1497d134e92e728b8a1437f6483758242",
-      "linked_sha256": "41f71ad4451ee04b5b4358fbee85394c1c4896e721959aa3cca9549e153440c0"
+      "object_sha256": "74692747054e480aebbd962ce69277bf688b1c64a86e2c2c1f6980461dc35ee9",
+      "linked_sha256": "7d5a482415ce4ea4a885737d07127eb9ae01cd96a664ab664b50d9f05548cc7b"
+    },
+    {
+      "id": "matrix_rotate",
+      "category": "reconstructed_game",
+      "functions": 3,
+      "code_bytes": 852,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "d92e0c074ae42493660a68881a3e87d9d674c6b701b4d32047813c28c8414ed5",
+      "linked_sha256": "7a4524146804382f1e0cead728f30671ade4ba23f0482a26a1e4f7b599c8ad2b"
     }
   ],
   "code_map": {
@@ -48235,13 +48276,6 @@
             "evidence": "exception-index"
           },
           {
-            "address": "0x8008fd04",
-            "size": 196,
-            "kind": "function",
-            "name": "Scale__7CMatrixF8CVector3",
-            "evidence": "between-same-file"
-          },
-          {
             "address": "0x8008fdc8",
             "size": 324,
             "kind": "function",
@@ -48260,27 +48294,6 @@
             "size": 324,
             "kind": "function",
             "name": "RotateX__7CMatrixFl",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80090194",
-            "size": 284,
-            "kind": "function",
-            "name": "RotateZ__7CMatrixFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800902b0",
-            "size": 284,
-            "kind": "function",
-            "name": "RotateY__7CMatrixFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800903cc",
-            "size": 284,
-            "kind": "function",
-            "name": "RotateX__7CMatrixFf",
             "evidence": "exception-index"
           },
           {

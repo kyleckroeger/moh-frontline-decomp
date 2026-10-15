@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8008fc70",
-      "size": 148,
+      "size": 344,
       "type": 1
     }
   ],
@@ -49,6 +49,12 @@
       "name": "Scale__7CMatrixFf",
       "address": "0x8008fc70",
       "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "Scale__7CMatrixF8CVector3",
+      "address": "0x8008fd04",
+      "size": 196,
       "binding": 1
     }
   ],
