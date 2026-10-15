@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x800f0b80",
-      "size": 112,
+      "size": 852,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f648",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016268",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "FinishBin__11CRenderListFP10CRenderBin",
+      "address": "0x800f0bf0",
+      "size": 740,
+      "binding": 1
+    },
     {
       "name": "Finish__11CRenderListFv",
       "address": "0x800f0b80",
@@ -64,9 +70,7 @@
       "binding": 1
     }
   ],
-  "externals": {
-    "FinishBin__11CRenderListFP10CRenderBin": "0x800f0bf0"
-  },
+  "externals": {},
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},

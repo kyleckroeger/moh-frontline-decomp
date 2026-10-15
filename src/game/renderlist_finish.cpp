@@ -1,6 +1,8 @@
 // A fragment of renderlist.cpp (0x800f0b80): CRenderList::Finish (each
 // registered bin is finished, the largest amount of the list used so far is
-// kept, and true returned). The file name is this project's; the original
+// kept, and true returned) and FinishBin (a used bin links its tag chain into
+// the list; its children are finished either way; the compiler inlines the
+// recursion several levels deep). The file name is this project's; the original
 // record is renderlist.cpp. The classes and functions are named by the
 // mangled symbols; the layouts are inferred (as in renderlist_draw.cpp). The
 // bin's destructor (defined elsewhere) is declared first so no table is
@@ -30,6 +32,8 @@ public:
     virtual ~CRenderBin();
     virtual int Render(CDmaPacket&, void*);
     virtual void Init();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual bool IsUsed();
 };
 
 class CRenderList {
@@ -53,4 +57,11 @@ bool CRenderList::Finish() {
     if (m_maxUsed < used)
         m_maxUsed = used;
     return true;
+}
+
+void CRenderList::FinishBin(CRenderBin* bin) {
+    if (bin->IsUsed())
+        bin->Link(bin->m_firstTag, *(CDmaPacket*)this);
+    for (CRenderBin* child = bin->m_children; child; child = child->m_next)
+        FinishBin(child);
 }

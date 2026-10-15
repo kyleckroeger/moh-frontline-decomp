@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 728000,
+    "matching_code_bytes": 728740,
     "total_executable_code_bytes": 1414572,
-    "percent": 51.46432984676637,
+    "percent": 51.51664248974248,
     "categories": {
-      "reconstructed_game": 506552,
+      "reconstructed_game": 507292,
       "restored_library": 221448
     },
-    "matching_functions": 4188
+    "matching_functions": 4189
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -814,7 +814,7 @@
     "config/GMFE69/recon.json": "ee4b39c3b8dc4b27b464b1aa560194e9d855a693eff202d41e169eec78679960",
     "config/GMFE69/renderlist.json": "b09aaa3029fe49eccdf19467e22c65786099387cec3a2baffa06a559486c219e",
     "config/GMFE69/renderlist_draw.json": "ff4f18ae80440fc9291a4178dc66ade6d0295c115eee8345a66d6b4fbb59b96b",
-    "config/GMFE69/renderlist_finish.json": "58c47fb26abce1e736f1a04d61845f5c4545ccb9c64fdf8ada89a8e3dbc19afa",
+    "config/GMFE69/renderlist_finish.json": "ea1ade1d16d8fa9cabdcf43774a566c706a2d3c675d6a58687b480f2b450405c",
     "config/GMFE69/runtime.json": "a141c730e48954adb12802ec9b1ab64c4b3ac71f37caeb7ea3af62616adf28e6",
     "config/GMFE69/s3dlow.json": "eb57ec90bd553beb68af336eba88c2b929dbdcc31cc85e9d85ad57c1946cf996",
     "config/GMFE69/s_atan.json": "b6130d2ccba797fa29836d3fa3f07fbc4da188446df024ff3de704580ddde5e0",
@@ -2711,7 +2711,7 @@
     "src/game/real_bridge.cpp": "3528e557dcb6116823246402f1003e63fd82246a624dcbc2f18e5ee8b9bf8e41",
     "src/game/renderlist.cpp": "46fc5a68a0d24b75cfdfb2c8adf0e968ba515623ac3d82d87edbab4f64a2f02b",
     "src/game/renderlist_draw.cpp": "d7d67242f7c3a9e2e9123ec033a23679f5df988e95d6d27abe54590716f1ef37",
-    "src/game/renderlist_finish.cpp": "012eed117bb00d4428b1c3c8e64c6fc9fc3b88e210534636d5472e5b565ddc30",
+    "src/game/renderlist_finish.cpp": "13e3ea09d3ec4ef33fd768fdc5ea345b0cb099068948968afd6b8613c4802054",
     "src/game/scene.cpp": "5a6e68bfdae9428ac19481084c64018aec36832400df2981d05ebb3dfb9dac35",
     "src/game/scene_cmppairs.cpp": "58545abde6fad151db5e6ec20e536d5bfda57707bafa2ad43279c206a25021f8",
     "src/game/scene_copy.cpp": "47afbe0f76fb20a7c8a07dfc7c3d34860dff5effbf6035418fe5252755301dec",
@@ -39442,8 +39442,8 @@
     {
       "id": "renderlist_finish",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 112,
+      "functions": 2,
+      "code_bytes": 852,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -39475,8 +39475,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7f811e77defa4dc17afba33922eb7c3abb228428b8b892c2bff6b533dfd0e0aa",
-      "linked_sha256": "c86168b278250151908075e749c2cc2ae02c8e90f6265c96d83fce5c092583fa"
+      "object_sha256": "dcd16dcfef8112afe6457c69cc495dcaa4590ed276159ca65b6bfe2d1156bc60",
+      "linked_sha256": "d3865d63fad846dc13864973c7ae16d2aa47479ff87a467762ed8a54e97c5642"
     },
     {
       "id": "compartment_render",
@@ -53845,20 +53845,6 @@
             "size": 616,
             "kind": "function",
             "name": "MountPortIfRequired__11CMemoryCardFi",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/renderlist.cpp [symbol evidence]",
-        "file_record": 154,
-        "file_name": "renderlist.cpp",
-        "ranges": [
-          {
-            "address": "0x800f0bf0",
-            "size": 740,
-            "kind": "function",
-            "name": "FinishBin__11CRenderListFP10CRenderBin",
             "evidence": "exception-index"
           }
         ]
