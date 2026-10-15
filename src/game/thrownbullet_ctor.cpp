@@ -1,5 +1,7 @@
-// A fragment of thrownbullet.cpp (0x800d4e68): the CThrownBullet default
-// constructor (CBullet's constructor; the table pointer; the dummy script
+// A fragment of thrownbullet.cpp (0x800d4de0): the CThrownBullet destructor
+// (the table pointer, the two fiber volumes and the light-volume manager
+// destroyed, then CBullet's destructor, and the object freed when asked) and
+// the default constructor (CBullet's constructor; the table pointer; the dummy script
 // object at +176 (its three words cleared before its table pointer, as in
 // thrown_obj_ctor.cpp); the light-volume manager at +212; two fiber volumes at
 // +336 and +416 through their inline constructors; then 2 stored at +40). The
@@ -72,6 +74,9 @@ public:
     CVolFiber m_fiberA;
     CVolFiber m_fiberB;
 };
+
+CThrownBullet::~CThrownBullet() {
+}
 
 CThrownBullet::CThrownBullet() {
     data28 = 2;

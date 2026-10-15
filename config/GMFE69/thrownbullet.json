@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d1c78",
-      "size": 176,
+      "size": 272,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e674",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800153c8",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -116,6 +116,12 @@
       "address": "0x800d1c78",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "SomebodyCaughtYou__13CThrownBulletFv",
+      "address": "0x800d1d28",
+      "size": 96,
+      "binding": 1
     }
   ],
   "externals": {

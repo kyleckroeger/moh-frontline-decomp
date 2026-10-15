@@ -1,11 +1,14 @@
 // CThrownBullet: the weak bounding-volume, collision, light, damage and cast
 // accessors. The class names come from the mangled symbols; the members and
 // the weapon-record view are inferred from offsets, the result types are
-// inferred, and the class is a non-virtual view. The accessors are inline in
-// the original (weak symbols), so they are defined __declspec(weak). The
-// weak velocity getter and the light-volume forwards (to the manager at +212)
-// follow; SomebodyCaughtYou (a virtual call) and the rest of the file are not
-// part of this unit.
+// inferred, and the class view declares only the first virtual
+// (MarkForDestruction, defined elsewhere, so the table is not emitted). The
+// accessors are inline in the original (weak symbols), so they are defined
+// __declspec(weak). The weak velocity getter, the light-volume forwards (to
+// the manager at +212) and SomebodyCaughtYou follow; the latter, unless bit
+// 0x10 or bit 0x01 of the flag byte at +504 is set, clears bit 0x10, sets bit
+// 0x08 and marks the object for destruction (the bit-fields are views named
+// by mask). The rest of the file is not part of this unit.
 class CLight;
 struct BPDLightVolume;
 
@@ -47,6 +50,7 @@ struct ThrownWeaponView {
 
 class CThrownBullet {
 public:
+    virtual void MarkForDestruction(int); /* defined elsewhere; keeps the table out */
     const void* GetLocalBoundingVolume(ISceneNode::EVolumeType) const;
     const void* GetWorldBoundingVolume(ISceneNode::EVolumeType) const;
     bool IsCollisionEnabled() const;
@@ -57,8 +61,9 @@ public:
     void* GetLightVolume();
     void ExitLightVolume(BPDLightVolume*);
     void EnterLightVolume(BPDLightVolume*);
+    void SomebodyCaughtYou();
 
-    unsigned char unknown000[168];
+    unsigned char unknown004[164];
     ThrownWeaponView* m_weapon;
     unsigned char unknown0ac[40];
     CLightVolumeManager m_lightVolumes;
@@ -67,6 +72,12 @@ public:
     unsigned char m_localVolume[80];
     unsigned char m_worldVolume[80];
     CLight* m_attachedLight;
+    unsigned char unknown1f4[4];
+    unsigned char m_flags1f8 : 3;
+    unsigned char m_flag10 : 1;
+    unsigned char m_flag08 : 1;
+    unsigned char m_flags1f8b : 2;
+    unsigned char m_flag01 : 1;
 };
 
 __declspec(weak) const void* CThrownBullet::GetLocalBoundingVolume(ISceneNode::EVolumeType) const {
@@ -107,4 +118,12 @@ void CThrownBullet::ExitLightVolume(BPDLightVolume* volume) {
 
 void CThrownBullet::EnterLightVolume(BPDLightVolume* volume) {
     m_lightVolumes.AddVolume(volume);
+}
+
+void CThrownBullet::SomebodyCaughtYou() {
+    if (!m_flag10 && !m_flag01) {
+        m_flag10 = 0;
+        m_flag08 = 1;
+        MarkForDestruction(0);
+    }
 }
