@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8009c6fc",
-      "size": 1764,
+      "size": 1928,
       "type": 1
     },
     {
@@ -103,6 +103,18 @@
       "name": "PlaySounds__13CPlayerObjectFbbff",
       "address": "0x8009c9ac",
       "size": 1076,
+      "binding": 1
+    },
+    {
+      "name": "DuckDown__13CPlayerObjectFf",
+      "address": "0x8009cde0",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "PeekUp__13CPlayerObjectFf",
+      "address": "0x8009ce38",
+      "size": 76,
       "binding": 1
     }
   ],
@@ -235,6 +247,24 @@
       "offset": 80,
       "size": 4,
       "address": "0x80350594"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x80350598"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
+      "size": 4,
+      "address": "0x8035059c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 92,
+      "size": 4,
+      "address": "0x803505a0"
     }
   ]
 }

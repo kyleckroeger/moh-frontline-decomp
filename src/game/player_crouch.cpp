@@ -19,8 +19,11 @@
 // sends the player's AEMS sound events: the start event, landing events
 // (heavy above 4.0, light above 0.25, with a land timer that stops them),
 // and footsteps paced by a timer that shortens with the speed (the speed
-// scaled to 0..1); it also makes AI noise. The event views, flag and field
-// names are inferred, and the MSL-style inline sqrtf is as in
+// scaled to 0..1); it also makes AI noise. DuckDown (only while the flag at
+// bit 0x08 of +919 is set) and PeekUp set the height speed (+676) toward a
+// target height blended by the fraction between the standing height 1.1 and
+// the crouched height (0.7 in multiplayer, else 0). The event views, flag
+// and field names are inferred, and the MSL-style inline sqrtf is as in
 // bsbifunc_targetsearch.cpp. The rest of the file is not part of this unit.
 extern bool g_bInMultiplayerMode;
 
@@ -214,6 +217,8 @@ public:
     bool IsPlayerCrouching() const;
     bool IsPlayerJumping() const;
     void PlaySounds(bool, bool, float, float);
+    void DuckDown(float);
+    void PeekUp(float);
 
     unsigned char unknown004[172];
     CVector3 m_position;
@@ -225,7 +230,9 @@ public:
     float m_velocityZ;
     unsigned char unknown264[52];
     float m_height;
-    unsigned char unknown29c[248];
+    unsigned char unknown29c[8];
+    float m_heightSpeed;
+    unsigned char unknown2a8[236];
     unsigned char m_flags394 : 7;
     bool m_flag394 : 1;
     unsigned char m_flags395a : 4;
@@ -236,7 +243,8 @@ public:
     bool m_weaponHidden : 1;
     unsigned char m_flags397a : 2;
     bool m_flag397 : 1;
-    unsigned char m_flags397b : 4;
+    bool m_flag397b : 1;
+    unsigned char m_flags397b : 3;
     unsigned char unknown398[4];
     float m_footstepTimer;
     unsigned char unknown3a0[188];
@@ -438,4 +446,20 @@ void CPlayerObject::PlaySounds(bool moving, bool start, float landSpeed, float d
             }
         }
     }
+}
+
+void CPlayerObject::DuckDown(float t) {
+    if (!m_flag397b)
+        return;
+    float low = g_bInMultiplayerMode ? 0.7f : 0.0f;
+    float high = 1.1f;
+    float target = low * t + high * (1.0f - t);
+    m_heightSpeed = 0.04170838f * (target - m_height) / 0.1f;
+}
+
+void CPlayerObject::PeekUp(float t) {
+    float low = g_bInMultiplayerMode ? 0.7f : 0.0f;
+    float high = 1.1f;
+    float target = high * t + low * (1.0f - t);
+    m_heightSpeed = 0.04170838f * (target - m_height) / 0.1f;
 }
