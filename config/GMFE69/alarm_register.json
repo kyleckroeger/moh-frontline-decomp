@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80059e6c",
-      "size": 424,
+      "address": "0x80059d5c",
+      "size": 696,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000aea4",
-      "size": 16,
+      "address": "0x8000ae9c",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011fcc",
-      "size": 24,
+      "address": "0x80011fc0",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIFunc_SetAlarmOccupy__FPPiPv",
+      "address": "0x80059d5c",
+      "size": 272,
+      "binding": 1
+    },
     {
       "name": "BIFunc_UnregisterAlarm__FPPiPv",
       "address": "0x80059e6c",
