@@ -3,12 +3,23 @@
 // priority, or appends it; UnRegister unlinks it), and the destructor frees
 // the display-list buffer. CRenderList and CRenderBin are named by the
 // symbols; the list and bin layouts are inferred from offsets. The
-// constructor after these functions is not part of the unit (it keeps the
-// entry count in an extra register; draft in scratch/lib/renderlist_wip.cpp). Register walks the list to its end
+// constructor allocates the buffer (16 bytes per entry, aligned to 128), fills
+// it with the clear value when g_bClearRenderList is set (the fill is the
+// inferred inline helper of renderlist_draw.cpp; g_ClearValue is file-local in
+// the original and declared extern here) and sets the write cursor to its
+// start. Register walks the list to its end
 // before and after inserting without using the result; both walks are kept.
 // CRenderBin is an inferred view: its links and priority, then its virtual
 // table pointer after 28 bytes, with the virtual destructor in the first slot.
 extern "C" void MEM_free(void*);
+void* DWI_allocalign(const char*, int, int, int);
+
+struct RenderEntryView {
+    unsigned long words[4];
+};
+
+extern bool g_bClearRenderList;
+extern unsigned int g_ClearValue;
 
 class CRenderBin {
 public:
@@ -23,13 +34,14 @@ public:
 
 class CRenderList {
 public:
+    CRenderList(unsigned long, unsigned long);
     ~CRenderList();
     void UnRegister(CRenderBin&);
     void Register(CRenderBin&);
 
-    void* m_buffer;
-    void* m_end;
-    void* m_current;
+    RenderEntryView* m_buffer;
+    RenderEntryView* m_end;
+    RenderEntryView* m_current;
     void* m_last;
     unsigned long m_count;
     int unknown14;
@@ -83,4 +95,29 @@ void CRenderList::Register(CRenderBin& bin) {
 
 CRenderList::~CRenderList() {
     MEM_free(m_buffer);
+}
+
+static inline void ClearList(int count, unsigned int* p) {
+    while (count--) {
+        p[0] = g_ClearValue;
+        p[1] = g_ClearValue;
+        p[2] = g_ClearValue;
+        p[3] = g_ClearValue;
+        p += 4;
+    }
+}
+
+CRenderList::CRenderList(unsigned long count, unsigned long) {
+    m_buffer = 0;
+    m_end = 0;
+    m_current = 0;
+    m_count = count;
+    unknown14 = 0;
+    m_bins = 0;
+    m_last = 0;
+    m_buffer = (RenderEntryView*)DWI_allocalign("Renderlist", m_count * 16, 128, 1024);
+    m_end = m_buffer + m_count;
+    if (g_bClearRenderList)
+        ClearList(m_count, (unsigned int*)m_buffer);
+    m_current = m_buffer;
 }

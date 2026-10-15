@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800f1230",
-      "size": 348,
+      "size": 712,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f670",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800162a4",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -74,18 +74,43 @@
       "address": "0x800f1338",
       "size": 84,
       "binding": 1
+    },
+    {
+      "name": "__ct__11CRenderListFUlUl",
+      "address": "0x800f138c",
+      "size": 364,
+      "binding": 1
     }
   ],
   "externals": {
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
     "MEM_free": "0x8014f83c",
-    "__dl__FPv": "0x8001ca2c"
+    "__dl__FPv": "0x8001ca2c",
+    "g_ClearValue": "0x8034e31c",
+    "g_bClearRenderList": "0x8034e319"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_ClearValue"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_ClearValue",
+    "g_bClearRenderList"
+  ],
   "original_file": "renderlist.cpp",
-  "original_file_index": 9344
+  "original_file_index": 9344,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 11,
+      "address": "0x8017a118"
+    }
+  ]
 }
