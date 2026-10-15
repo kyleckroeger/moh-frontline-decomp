@@ -1109,7 +1109,8 @@
     "input_init.json",
     "MemoryCardGC_prefs.json",
     "compartment_reset.json",
-    "player_weapon_object_init.json"
+    "player_weapon_object_init.json",
+    "gethdr.json"
   ],
   "progress": {
     "code_bytes": 1414572,

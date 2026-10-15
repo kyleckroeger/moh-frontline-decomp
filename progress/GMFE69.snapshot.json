@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 718660,
+    "matching_code_bytes": 722144,
     "total_executable_code_bytes": 1414572,
-    "percent": 50.804059461094944,
+    "percent": 51.05035303964733,
     "categories": {
-      "reconstructed_game": 497212,
+      "reconstructed_game": 500696,
       "restored_library": 221448
     },
-    "matching_functions": 4167
+    "matching_functions": 4172
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -596,6 +596,7 @@
     "config/GMFE69/gcSystem.json": "3bf2743737fe9c041930fdcb9879f7d17600a25c1ffc836927c0901688b92aea",
     "config/GMFE69/getbits.json": "b9fe0dd162306306e1f39356422acba5e25693c9575875cf14003c97b852d30d",
     "config/GMFE69/getblk.json": "2098f50b2d5c8abaa4d8c0a2a770f0e894fe24ddfe9251b7f676ac258b85fca6",
+    "config/GMFE69/gethdr.json": "6a55803728de8b3a748b2c6618ef9aa3d0b191ba7b6c3fddb19b8496910c7dce",
     "config/GMFE69/getpic.json": "c92c299a39d9394c5ba16c007e89eddce5dcf73e54c8930e5ba21078898cba82",
     "config/GMFE69/getvlc.json": "77db77821435a705cc4cac966fc3a2f4ebbd4327e55395878628760177a47341",
     "config/GMFE69/global_destructor_chain.json": "0fe0a3698440cd1f1bff61944bd62409272132d09eb6b5c82b9745b82413e6fa",
@@ -761,7 +762,7 @@
     "config/GMFE69/popup.json": "47739561832811c8bbf6693ac803a5196b89812ef4fb952acbef56f7756808a3",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "ad1fa0b2190b29188e3951cc67949b3f0dbcfc6ec40c6ef3737f07e15458e8e8",
+    "config/GMFE69/project.json": "1a5a1ffe75784dab6b368e19061fbccc03c54d4087342431396d9b0360dd6286",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
     "config/GMFE69/projectilebullet_ctor.json": "da3a005482c44d0b7d7475002150267ca5974367d07e3a9cb67da533b75ab244",
@@ -1910,6 +1911,7 @@
     "src/ea/fontnull.cpp": "f5c2dfb2e21956fc5d3a1b11c46ae763d9b5cd956badc5e3db912b1e59a9d641",
     "src/ea/getbits.cpp": "323da114300bf7f7dfca115b3fefd296934e41c454a5a30a283350e4118e2812",
     "src/ea/getblk.cpp": "a9369a21cf466a7a1bdf1d27b1354c2d698ef6ea456c858918cf3eed0656d53a",
+    "src/ea/gethdr.cpp": "52bb30246707e2660f30a53cd80427c8961669bb98796d6d8aaceaee5367d1d0",
     "src/ea/getpic.cpp": "a845a0d5c23c2ee58f4ab73d74167c5be44a9e99ec943e244795df0ab9850e27",
     "src/ea/getvlc.cpp": "29e34e61054a5753c4f7d278fc4f41bff003d9c0dcaf2adf0a831c6528ad9914",
     "src/ea/hlafile.cpp": "c5587efab5f4438e65f43708c38271b62dedc7a6cd770eef6be95ca023aa9d63",
@@ -48385,6 +48387,45 @@
       "discarded_functions": [],
       "object_sha256": "55f92748c21516668167291279fc72a3377e835bbe1be6eac685a4205245acbc",
       "linked_sha256": "1611f661123fffa35547cab86da9d37bad41690a4ecc1aa78b670b650bc65274"
+    },
+    {
+      "id": "gethdr",
+      "category": "reconstructed_game",
+      "functions": 5,
+      "code_bytes": 3484,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto,deferred",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "93336a8a013b6076b715a0f890434df30611b1976d90f2b0960f9f9bb3e06593",
+      "linked_sha256": "ef2d41680b68de2febc7856604824cd2deab5af838baaf5fcf23f8614d5176aa"
     }
   ],
   "code_map": {
@@ -53952,41 +53993,6 @@
         "file_record": 170,
         "file_name": "gethdr.cpp",
         "ranges": [
-          {
-            "address": "0x800ff8fc",
-            "size": 36,
-            "kind": "function",
-            "name": "marker_bit__FPc",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800ff920",
-            "size": 2004,
-            "kind": "function",
-            "name": "extension_and_user_data__Fv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x801000f4",
-            "size": 284,
-            "kind": "function",
-            "name": "slice_header__Fv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80100210",
-            "size": 1088,
-            "kind": "function",
-            "name": "sequence_header__Fv",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x80100650",
-            "size": 72,
-            "kind": "function",
-            "name": "next_start_code__Fv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80100698",
             "size": 696,
