@@ -39,21 +39,28 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d4134",
-      "size": 296,
+      "address": "0x800d3f5c",
+      "size": 768,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e71c",
-      "size": 24,
+      "address": "0x8000e714",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015494",
-      "size": 36,
+      "address": "0x80015488",
+      "size": 48,
       "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189ebc",
+      "size": 44,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -61,6 +68,12 @@
       "name": "Destroy__13CThrownBulletFv",
       "address": "0x800d4134",
       "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "OnCollision__13CThrownBulletFRC10CCollision",
+      "address": "0x800d3f5c",
+      "size": 472,
       "binding": 1
     },
     {
@@ -78,6 +91,7 @@
   ],
   "externals": {
     "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "DebugMsg__FPCce": "0x80018c88",
     "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
@@ -95,5 +109,29 @@
     "g_pBulletFactory"
   ],
   "original_file": "thrownbullet.cpp",
-  "original_file_index": 8132
+  "original_file_index": 8132,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 62,
+      "address": "0x80177f88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350d70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350ddc"
+    }
+  ]
 }
