@@ -1115,7 +1115,8 @@
     "CoverPoint_invalidate.json",
     "CoverPoint_unoccupied.json",
     "CoverPoint.json",
-    "ConfigGC_onenter.json"
+    "ConfigGC_onenter.json",
+    "ConfigGC_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
