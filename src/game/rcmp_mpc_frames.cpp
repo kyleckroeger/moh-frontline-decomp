@@ -4,12 +4,18 @@
 // and CreateIorP (the first free frame, if any, moved to the used list with
 // a reference count of 0 for a B frame or 1 for an I or P frame) and
 // GetFrame (takes the decoder's next chunk, noting the end of the stream,
-// skips to the wanted frame, decodes it and releases the chunk). The
+// skips to the wanted frame, decodes it and releases the chunk) and
+// SkipChunks (more than two frames ahead: reads to the next sequence start,
+// decodes and releases that frame and skips B chunks; otherwise skips the B
+// chunks among the frames in between). The
 // classes and templates are named by the mangled symbols (RCON::TDLNODE by
 // rcmp_tdlnode_dtor.cpp); MPC_FRAME derives from RCMP::FRAME and its list
 // node, and the list and node members (Unlink, RemoveHead, AddTail, First,
-// End), the lists' offsets, the counters and the result types are inferred. The rest of the
-// file is not part of this unit.
+// End), the lists' offsets, the counters, the chunk view, the NextChunk and
+// ChunkType inline helpers and the result types are inferred; the codec
+// declares its virtual functions in the order of __vt__18MPC_CODEC_INTERNAL,
+// its destructor (defined elsewhere) first. The rest of the file is not
+// part of this unit.
 namespace RCMP {
 class FRAME {
 public:
@@ -69,18 +75,63 @@ public:
     int m_refs;
 };
 
+/* inferred: a chunk's data, its start code at +3 and picture type in +5 */
+struct ChunkDataView {
+    unsigned char unknown0[3];
+    unsigned char m_code;
+    unsigned char unknown4;
+    unsigned char m_flags;
+};
+
+namespace RCMP {
+class CHUNK {
+public:
+    unsigned char unknown0[4];
+    ChunkDataView* m_data;
+};
+}
+
 class MPC_CODEC_INTERNAL {
 public:
-    void ReleaseFrame(RCMP::FRAME*);
+    virtual ~MPC_CODEC_INTERNAL();
+    virtual void Init(RCMP::DECODER*, RCMP::CHUNK*);
+    virtual RCMP::FRAME* GetFrame(unsigned int);
+    virtual int GetCurrentFrameNumber();
+    virtual float GetFrameRate();
+    virtual void ReleaseFrame(RCMP::FRAME*);
+
     MPC_FRAME* CreateB();
     MPC_FRAME* CreateIorP();
-    RCMP::FRAME* GetFrame(unsigned int);
+
+    /* inferred inline helpers */
+    void NextChunk(RCMP::CHUNK** chunk) {
+        if (*chunk)
+            m_decoder->ReleaseChunk(*chunk);
+        *chunk = m_decoder->GetChunk();
+        m_chunksRead++;
+        if (!*chunk) {
+            if (m_endState == 0)
+                m_endState = 1;
+            else
+                m_endState = 2;
+        }
+    }
+    static int ChunkType(RCMP::CHUNK* chunk) {
+        if (chunk) {
+            ChunkDataView* data = chunk->m_data;
+            if (data->m_code == 0xb8)
+                return 1;
+            return (data->m_flags >> 3) & 3;
+        }
+        return 1;
+    }
     void SkipChunks(RCMP::CHUNK**, unsigned int);
     RCMP::FRAME* DecodeChunk(RCMP::CHUNK**);
 
-    unsigned char unknown00[20];
+    unsigned char unknown04[16];
     int m_endState;
-    unsigned char unknown18[8];
+    unsigned char unknown18[4];
+    int m_stopped;
     int m_chunksRead;
     RCON::TDLIST<MPC_FRAME> m_used;
     RCON::TDLIST<MPC_FRAME> m_free;
@@ -134,4 +185,25 @@ RCMP::FRAME* MPC_CODEC_INTERNAL::GetFrame(unsigned int frame) {
     if (chunk)
         m_decoder->ReleaseChunk(chunk);
     return result;
+}
+
+void MPC_CODEC_INTERNAL::SkipChunks(RCMP::CHUNK** chunk, unsigned int frame) {
+    if (m_stopped == 0 && m_endState == 0) {
+        int count = frame - m_chunksRead;
+        if (count > 2) {
+            do {
+                NextChunk(chunk);
+            } while (ChunkType(*chunk) != 1);
+            RCMP::FRAME* decoded = DecodeChunk(chunk);
+            if (decoded)
+                ReleaseFrame(decoded);
+            while (ChunkType(*chunk) == 3)
+                NextChunk(chunk);
+        } else if (count > 0) {
+            for (int i = 0; i < count; i++) {
+                if (ChunkType(*chunk) == 3)
+                    NextChunk(chunk);
+            }
+        }
+    }
 }
