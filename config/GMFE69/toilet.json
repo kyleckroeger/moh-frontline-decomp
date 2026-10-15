@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001e04c",
-      "size": 68,
+      "address": "0x8001de64",
+      "size": 556,
       "type": 1
     },
     {
@@ -51,14 +51,14 @@
     },
     {
       "name": "extab",
-      "address": "0x800098dc",
-      "size": 8,
+      "address": "0x800098d4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010340",
-      "size": 12,
+      "address": "0x80010334",
+      "size": 24,
       "type": 1
     },
     {
@@ -74,18 +74,77 @@
       "address": "0x8001e04c",
       "size": 68,
       "binding": 0
+    },
+    {
+      "name": "TLT_Init__Fii",
+      "address": "0x8001de64",
+      "size": 488,
+      "binding": 1
     }
   ],
   "externals": {
+    "BIG_count": "0x8014aa10",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "FILESYS_addbigsync": "0x8014a1e0",
+    "FILESYS_delbigsync": "0x8014a260",
+    "FILE_loadbigheader": "0x8014e2ec",
+    "FILE_loadz": "0x8014dfc0",
+    "FILE_sizez": "0x8014dea8",
+    "MEM_free": "0x8014f83c",
+    "TLT_LoadLevelContentsFile__Fii": "0x8001cee4",
     "__dt__Q23dwi15hash_map<Pc,Pc>Fv": "0x8001e090",
-    "__register_global_object": "0x801381bc"
+    "__register_global_object": "0x801381bc",
+    "g_CompartmentBigFile": "0x8034e764",
+    "g_LevelBigFileSize": "0x8034e758",
+    "g_pCompartmentBigFileHeader": "0x8034e760",
+    "g_pLevelBigFile": "0x8034e750",
+    "sprintf": "0x8013dab4",
+    "strchr": "0x8013fe64",
+    "szTLT_CompartmentBigFileName": "0x8034d9e8",
+    "szTLT_LevelBigFileName": "0x8034d9e4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_CompartmentBigFile",
+    "g_pCompartmentBigFileHeader",
+    "szTLT_CompartmentBigFileName",
+    "szTLT_LevelBigFileName"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_CompartmentBigFile",
+    "g_LevelBigFileSize",
+    "g_pCompartmentBigFileHeader",
+    "g_pLevelBigFile",
+    "szTLT_CompartmentBigFileName",
+    "szTLT_LevelBigFileName"
+  ],
   "original_file": "toilet.cpp",
-  "original_file_index": 367
+  "original_file_index": 367,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x8016e598"
+    },
+    {
+      "section": ".rodata",
+      "offset": 108,
+      "size": 17,
+      "address": "0x8016e6a4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 3,
+      "address": "0x8034f614"
+    }
+  ]
 }
