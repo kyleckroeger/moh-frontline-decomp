@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003b6ac",
-      "size": 632,
+      "address": "0x8003b54c",
+      "size": 984,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a404",
-      "size": 16,
+      "address": "0x8000a3fc",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800113b4",
-      "size": 24,
+      "address": "0x800113a8",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BSUtilPreLoadScriptCallback__FP24LevelFileContentsStruct_",
+      "address": "0x8003b54c",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilComputeClassMemoryRequirements__FP14BSClass_struct",
+      "address": "0x8003b5a4",
+      "size": 264,
+      "binding": 1
+    },
     {
       "name": "BSUtilFreeObjectInstanceMemory__FPv",
       "address": "0x8003b6ac",
@@ -96,6 +108,7 @@
     "BSEndSchedule__Fv": "0x8003acf4",
     "BSEndTimer__Fv": "0x8003b2d4",
     "BSEventProcessEvents__Fi": "0x80034ea0",
+    "BSFileGetClass__FPCcPP14BSClass_struct": "0x80036960",
     "BSProcessMessages__Fi": "0x80039ca0",
     "BSUpdateBIFuncs__Fv": "0x800343b4",
     "BSUpdateTimer__Ff": "0x8003b18c",
@@ -107,7 +120,9 @@
     "g_memOffset": "0x8034e86c",
     "g_memSize": "0x8034e870",
     "g_pMemAllocators": "0x801a10cc",
-    "g_pScriptMemory": "0x8034e868"
+    "g_pScriptMemory": "0x8034e868",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

@@ -1,4 +1,8 @@
-// A fragment of bsutil.cpp (0x8003b6ac): BSUtilFreeObjectInstanceMemory and
+// A fragment of bsutil.cpp (0x8003b54c): BSUtilPreLoadScriptCallback (the
+// resource's name without its four-character extension, copied into a
+// 64-byte buffer whose size is inferred from the frame, loads the script
+// class), BSUtilComputeClassMemoryRequirements (32 bytes per state plus a
+// word per state entry), BSUtilFreeObjectInstanceMemory and
 // BSUtilGetObjectInstanceMemory (an instance block returned to, or taken
 // from, the first of the three object allocators that owns it or whose
 // elements are large enough; the allocator members are inlined here, as
@@ -32,10 +36,32 @@ void BSEndEvent();
 void BSEndMachine();
 void FreePropertyMemory();
 
-struct BSClass_struct {
-    unsigned char unknown00[84];
-    int m_instanceSize;
+struct BSStateView {
+    unsigned char unknown00[20];
+    unsigned short m_count;
+    unsigned char unknown16[6];
 };
+
+struct BSClass_struct {
+    BSStateView* m_states;
+    unsigned char unknown04[80];
+    int m_instanceSize;
+    unsigned short m_stateCount;
+};
+
+struct LevelFileResourceView {
+    unsigned char unknown00[4];
+    const char* m_name;
+};
+
+struct LevelFileContentsStruct_ {
+    unsigned char unknown00[8];
+    LevelFileResourceView* m_resource;
+};
+
+extern "C" char* strcpy(char*, const char*);
+extern "C" unsigned long strlen(const char*);
+void BSFileGetClass(const char*, BSClass_struct**);
 
 class BSUtilObjectInstanceMemoryAllocator {
 public:
@@ -131,4 +157,21 @@ void BSUtilFreeObjectInstanceMemory(void* element) {
             return;
         }
     }
+}
+
+int BSUtilComputeClassMemoryRequirements(BSClass_struct* cls) {
+    int size = 0;
+    for (int i = 0; i < cls->m_stateCount; i++) {
+        size += 32;
+        size += cls->m_states[i].m_count * 4;
+    }
+    return size;
+}
+
+void BSUtilPreLoadScriptCallback(LevelFileContentsStruct_* contents) {
+    char name[64];
+    BSClass_struct* cls;
+    strcpy(name, contents->m_resource->m_name);
+    name[strlen(name) - 4] = 0;
+    BSFileGetClass(name, &cls);
 }
