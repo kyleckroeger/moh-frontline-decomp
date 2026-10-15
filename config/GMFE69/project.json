@@ -1123,7 +1123,12 @@
     "proxtrig_leafs.json",
     "animmot_rot.json",
     "AIObject_reachable.json",
-    "Moh2_enderrortext.json"
+    "Moh2_enderrortext.json",
+    "player_fov.json",
+    "static_obj_scale.json",
+    "dmmorph_initobject.json",
+    "sfrsf_init.json",
+    "Moh2_gametime.json"
   ],
   "progress": {
     "code_bytes": 1414572,
