@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 774952,
+    "matching_code_bytes": 774992,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.78349635083969,
+    "percent": 54.78632406127083,
     "categories": {
-      "reconstructed_game": 553436,
+      "reconstructed_game": 553476,
       "restored_library": 221516
     },
-    "matching_functions": 4361
+    "matching_functions": 4362
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -22,6 +22,7 @@
     "config/GMFE69/AIFilter_astar.json": "cf04c49ffb58395275ecc73b3b39d97910d1bceedab4055e2fef49a7d2e779fc",
     "config/GMFE69/AIFilter_caifilterobject_dtor.json": "ab035fef8e3042512f0744c46aca04bd808bacafc34e982b02a297bf111f6717",
     "config/GMFE69/AIFilter_collisiondist.json": "92bf52dc496f87dc4a92a3cf508be6f9243fe712460a130fb1f5c3bd2fd0d990",
+    "config/GMFE69/AIFilter_coverindex.json": "56c8c11982d2c64c2f15567b8d030225ae785f9dfba81f7bcf05d6dd58d2107b",
     "config/GMFE69/AIFilter_global.json": "bba3c2071faf989376e1f4f6ec381ce79a8cb6b3e00b4dd8dbac4078976945bd",
     "config/GMFE69/AIFilter_linechecks.json": "2b952f4eb91c42bd2da84282d07969d91463036eca1aca3f8664a216f5df6231",
     "config/GMFE69/AIFilter_mechchecker_dtor.json": "678d5e87e222356181986273a9dcc23057b6594655905f2e38a87929b98354bc",
@@ -828,7 +829,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "7a2869e7b4640f15280a03bd2e471f2ecaa095f1684106d773257025107abf18",
+    "config/GMFE69/project.json": "f38d3fc1b7eb1ddbdcf8f5a25a1fa7d07f824645897c5d9dfa92e14c2377ff9a",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2208,6 +2209,7 @@
     "src/game/AIFilter_astar.cpp": "0a12563b436337b6d55f32d36308324c671dc526313b650a12dead727ff25aed",
     "src/game/AIFilter_caifilterobject_dtor.cpp": "74a1bad2f4372942648724f0ee107aa50b21424f3b9372e4a8c193961c3efaf6",
     "src/game/AIFilter_collisiondist.cpp": "71b686b852204e001142e6c5999850ad9bd2e8558e269003dbd4abeb08640286",
+    "src/game/AIFilter_coverindex.cpp": "052bd5741b3d313a3e00efbcdd6be33d0ef540e01ddda230686d6ef07b4e6512",
     "src/game/AIFilter_global.cpp": "780c5befa940703ec17a76e84113671aefc3976136365a3ad68bde4dfffefabc",
     "src/game/AIFilter_linechecks.cpp": "251a98e238821ebe03cf95b6e2fcb5147ad84472be8a727d8887fb0a53a9c652",
     "src/game/AIFilter_mechchecker_dtor.cpp": "af8fcfe8356b90aaf2cfc22a7e597228e54591feccdd2ae17d650974988820a2",
@@ -51770,6 +51772,45 @@
       "discarded_functions": [],
       "object_sha256": "c1ffa7834de0dee487bf4985354b3f415cf2092d6c5edee72405c3f3734aeaf8",
       "linked_sha256": "d409626bbe0df40fe394cafc9061109ef4d691658b3e153b9d60d13974bb6a43"
+    },
+    {
+      "id": "AIFilter_coverindex",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 40,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "cc2bd4a2596dd24d5d7ca20da33a688236647f8fa5a8eefcfc5ecbd6e1ab9e96",
+      "linked_sha256": "2c1378f5f394118fe326d1fa60fa3e1e8273b2a46bf06345c7b7543cba48bb14"
     }
   ],
   "code_map": {
@@ -52960,13 +53001,6 @@
             "kind": "function",
             "name": "GetClosestUsableCoverPoint__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPositionP20COVERPOINT_WALK_MODEP15COVERPOINT_TYPEP21CAIFilterRealPositionfP9CAIObject",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005d470",
-            "size": 40,
-            "kind": "function",
-            "name": "GetCoverPointIndex__15CAIFilterGlobalCFP11CCoverPoint",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x8005d498",
