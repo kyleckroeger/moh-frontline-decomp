@@ -23,6 +23,16 @@
 // with an action, steps the action's value towards its target by the rate,
 // stopping there (state 1) and running the completion code. The rate
 // function view, the hoisted declarations and the state values are inferred.
+// The file-local, recursive _ParseMaps, after that, runs a screen control's
+// event: for a disabled control (or one without the flag at +96) only the
+// events -11, -10..-8 and -5..-2 are processed; each sub-control link (id
+// 0xffff) is parsed recursively and, when that leaves the sub-control
+// enabled, its matching sub-control event code is run (2 ends the parse);
+// then the queued thread actions are run and the control's own event code
+// (for -6/-7 only when the parameters name this control); the control's
+// enabled state is returned through the last argument. UISControl_t is named
+// by the mangled symbols; its typed view (a second view of the patched
+// control entry), the control state view and the event meanings are inferred.
 // The rest of the file is in other units.
 typedef void (*UISErrorFnc_t)(void);
 
@@ -66,9 +76,80 @@ struct UISInfo_t {
     unsigned long** stackA8;
 };
 
-struct UISScreen_t;
-struct UISControlInfo_t;
 struct UISStackInfo_t;
+
+struct UISEventRefView {
+    unsigned short id;
+    unsigned short state;
+    unsigned long pc;
+};
+
+struct UISSubControlView {
+    unsigned long control;
+    unsigned long eventCount;
+    UISEventRefView* events;
+};
+
+struct UISEventLinkView {
+    unsigned short value00;
+    unsigned short id;
+    unsigned long pc;
+};
+
+struct UISControlEntryView {
+    unsigned long control;
+    unsigned long subCount;
+    UISSubControlView** subs;
+    unsigned long eventCount;
+    UISEventLinkView* events;
+};
+
+struct UISMapView {
+    unsigned long value00;
+    unsigned long value04;
+    unsigned long data;
+};
+
+struct UISObjectView {
+    unsigned long value00;
+    unsigned long data;
+};
+
+struct UISScrData_t {
+    unsigned long controlCount;
+    UISControlEntryView* controls;
+    unsigned long mapCount;
+    UISMapView* maps;
+    unsigned long fixupCount;
+    unsigned long* fixups;
+    unsigned long objectCount;
+    UISObjectView* objects;
+};
+
+/* inferred: the control state, enabled at +4 */
+struct UISControlInfo_t {
+    unsigned long active;
+    unsigned long enable;
+    char field08[88];
+    unsigned long field60;
+};
+
+/* inferred: the typed view of a screen control (UISControlEntryView above) */
+struct UISControl_t {
+    UISControlInfo_t* control;
+    unsigned long subCount;
+    UISSubControlView** subs;
+    unsigned long eventCount;
+    UISEventLinkView* events;
+};
+
+struct UISScreen_t {
+    unsigned short group;
+    unsigned short id;
+    unsigned short parentGroup;
+    unsigned short parentId;
+    UISScrData_t* data;
+};
 
 struct UISParam_t {
     unsigned long value;
@@ -93,8 +174,55 @@ struct UISRateFnc_t {
 
 void UISRemoveUnNessaryRateFncs(UISInfo_t*);
 float* UISGetActionPtrValue(unsigned long, UISControlInfo_t*);
-void UISExecuteFnc(UISInfo_t*, UISScreen_t*, UISControlInfo_t*, UISStackInfo_t*, void*, unsigned long, UISParam_t*,
+int UISExecuteFnc(UISInfo_t*, UISScreen_t*, UISControlInfo_t*, UISStackInfo_t*, void*, unsigned long, UISParam_t*,
                    unsigned long, UISParam_t*, unsigned char, long, UISParam_t*);
+
+void UISProcessThreadAction(UISInfo_t*, unsigned char);
+void* UISFindEventPC(UISControl_t*, unsigned long);
+void* UISFindSubControlEventPC(UISControl_t*, unsigned short, unsigned long);
+
+static int _ParseMaps(UISInfo_t* info, UISScreen_t* screen, UISStackInfo_t* stack, unsigned long index,
+                      unsigned long value, unsigned long event, unsigned long count, UISParam_t* params,
+                      signed char* enabled) {
+    UISControl_t* control;
+    int result = 0;
+    UISScrData_t* data = screen->data;
+    if (!data || index >= data->controlCount)
+        return 0;
+    control = &((UISControl_t*)data->controls)[index];
+    if (!control->control->enable || !control->control->field60) {
+        if (!(event + 10 <= 2 || event + 5 <= 3 || event == (unsigned long)-11))
+            goto done;
+    }
+    for (unsigned long i = 0; i < control->eventCount; i++) {
+        UISEventLinkView* link = &control->events[i];
+        if (link->id == 0xffff) {
+            signed char sub = 0;
+            result = _ParseMaps(info, screen, stack, link->pc, value, event, count, params, &sub);
+            if (sub == 1) {
+                void* pc = UISFindSubControlEventPC(control, link->pc, event);
+                if (pc) {
+                    int status = UISExecuteFnc(info, screen, control->control, stack, pc, count, params, 0, 0, 1, index, 0);
+                    if (status == 2)
+                        return status;
+                }
+            }
+        }
+    }
+    UISProcessThreadAction(info, 1);
+    {
+        void* pc = UISFindEventPC(control, event);
+        if (event == (unsigned long)-6 || event == (unsigned long)-7) {
+            if ((unsigned long)control->control != params[2].value)
+                pc = 0;
+        }
+        if (pc)
+            result = UISExecuteFnc(info, screen, control->control, stack, pc, count, params, 0, 0, 1, value, 0);
+    }
+done:
+    *enabled = control->control->enable;
+    return result;
+}
 
 static void _ParseRateFncs(UISInfo_t* info, unsigned long elapsed) {
     UISRateFnc_t* rate;
@@ -164,54 +292,6 @@ static void _ParseRateFncs(UISInfo_t* info, unsigned long elapsed) {
     info->flags &= ~4;
     UISRemoveUnNessaryRateFncs(info);
 }
-
-struct UISEventRefView {
-    unsigned short id;
-    unsigned short state;
-    unsigned long pc;
-};
-
-struct UISSubControlView {
-    unsigned long control;
-    unsigned long eventCount;
-    UISEventRefView* events;
-};
-
-struct UISEventLinkView {
-    unsigned short value00;
-    unsigned short id;
-    unsigned long pc;
-};
-
-struct UISControlEntryView {
-    unsigned long control;
-    unsigned long subCount;
-    UISSubControlView** subs;
-    unsigned long eventCount;
-    UISEventLinkView* events;
-};
-
-struct UISMapView {
-    unsigned long value00;
-    unsigned long value04;
-    unsigned long data;
-};
-
-struct UISObjectView {
-    unsigned long value00;
-    unsigned long data;
-};
-
-struct UISScrData_t {
-    unsigned long controlCount;
-    UISControlEntryView* controls;
-    unsigned long mapCount;
-    UISMapView* maps;
-    unsigned long fixupCount;
-    unsigned long* fixups;
-    unsigned long objectCount;
-    UISObjectView* objects;
-};
 
 int PatchScrData(UISScrData_t* data) {
     if ((unsigned long)data->controls < (unsigned long)data) {

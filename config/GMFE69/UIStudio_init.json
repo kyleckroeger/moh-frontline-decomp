@@ -42,23 +42,29 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 1484,
+      "size": 2036,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c410",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013484",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_ParseMaps__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlUlP10UISParam_tPSc",
+      "address": "0x80089200",
+      "size": 552,
+      "binding": 0
+    },
     {
       "name": "_ParseRateFncs__FP9UISInfo_tUl",
       "address": "0x80088fc0",
@@ -87,7 +93,10 @@
   "externals": {
     "RuntimeErrorFnc": "0x8034ea88",
     "UISExecuteFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP14UISStackInfo_tPvUlP10UISParam_tUlP10UISParam_tUclP10UISParam_t": "0x8008ab18",
+    "UISFindEventPC__FP12UISControl_tUl": "0x8008af30",
+    "UISFindSubControlEventPC__FP12UISControl_tUsUl": "0x8008aed0",
     "UISGetActionPtrValue__FUlP16UISControlInfo_t": "0x8008aa4c",
+    "UISProcessThreadAction__FP9UISInfo_tUc": "0x800852c8",
     "UISRemoveUnNessaryRateFncs__FP9UISInfo_t": "0x80085744"
   },
   "undefined_in_discarded_code": [],
