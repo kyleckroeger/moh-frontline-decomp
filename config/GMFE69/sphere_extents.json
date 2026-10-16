@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ca6c8",
-      "size": 80,
+      "size": 1080,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e13c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014f3c",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,9 +62,18 @@
       "address": "0x800ca6c8",
       "size": 80,
       "binding": 1
+    },
+    {
+      "name": "TestVisibility__10CVolSphereCFR12CDrawContext",
+      "address": "0x800ca718",
+      "size": 1000,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "Transform__7CMatrixCFR8CVector48CVector3": "0x8008fadc"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -60,5 +81,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "sphere.cpp",
-  "original_file_index": 7738
+  "original_file_index": 7738,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350c10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350c14"
+    }
+  ]
 }
