@@ -37,12 +37,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80091408",
-      "size": 24,
+      "address": "0x80091344",
+      "size": 220,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c718",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800137c0",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Transform__6CPlaneFRC7CMatrix",
+      "address": "0x80091344",
+      "size": 196,
+      "binding": 1
+    },
     {
       "name": "__ct__6CPlaneF8CVector3f",
       "address": "0x80091408",
@@ -50,7 +68,10 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},

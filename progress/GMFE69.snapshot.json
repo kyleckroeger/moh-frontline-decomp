@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 783304,
+    "matching_code_bytes": 783500,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.373922288861934,
+    "percent": 55.38777806997452,
     "categories": {
-      "reconstructed_game": 561788,
+      "reconstructed_game": 561984,
       "restored_library": 221516
     },
-    "matching_functions": 4372
+    "matching_functions": 4373
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -798,7 +798,7 @@
     "config/GMFE69/pathx_hold.json": "e530d7588d5295e1e8bb72739cf271c31fbe0f44c09b3e727d729ca0f2e2bfdd",
     "config/GMFE69/pathx_overhead.json": "6648b30c83936865ee7b84aa098e523ff049f607999e698979038f6e77a89abe",
     "config/GMFE69/pathx_query.json": "1e40f0daf9f13fe1bcea32dc6ef089aca8ee2e28411e3079de1cd1f107ba5ec2",
-    "config/GMFE69/plane_ctor.json": "6a4408f2a0668bc0c7a542a9080df5f08480715400b00206be156bcaa71d0631",
+    "config/GMFE69/plane_ctor.json": "9a475934e12d5e30ecf14fd6df8ad5864bd4a5e1a1f6ec871f637c469b893e10",
     "config/GMFE69/player.json": "8de3138318ca0dcd0c9ba2142042974921f8001072a474fce9de9d4adb4c9798",
     "config/GMFE69/player_begincrouch.json": "ea8ffd49cebbcff071cd6eafb841d34561a0736a217c33b0fd86be6dd20f3431",
     "config/GMFE69/player_bounds.json": "99c3b1db8bf667edc415d50e6505302a385f81c01c32c8d2cd10417503695cc7",
@@ -2788,7 +2788,7 @@
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
     "src/game/particlesystem_texture.cpp": "b38cec7d98edc76bcac93be906aaf40081b870002054d1d4239cf5b42785d4cb",
     "src/game/particlesystem_visible.cpp": "3ae71d853719340435287205399c3b226c6d6e6d337f4bf903425023e312b80c",
-    "src/game/plane_ctor.cpp": "c668c88543a5084ab167f980033b59032d585d7a409cacee1be56af14cbbc013",
+    "src/game/plane_ctor.cpp": "c975793e51bd7176e3fd93267a306a916c27da2242b6f28de6b3927421d5cdef",
     "src/game/player.cpp": "fe8cfb79e166c555007fa620c4fa5e9c43da8bc820423bc0b45d73e46686dbf4",
     "src/game/player_begincrouch.cpp": "0d6df34f51479b5165c12e74b40e51de33835b01f88e8cc3952757fb5dcb4074",
     "src/game/player_bounds.cpp": "a43082b50053789054a368258cd5874dae55cfd38403e80d87c402d1f5d54ac7",
@@ -41511,8 +41511,8 @@
     {
       "id": "plane_ctor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 24,
+      "functions": 2,
+      "code_bytes": 220,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41544,8 +41544,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5ffff833e11e56d0cf64fa3a6cbd266c67d8424e674434e68115c29deca98f9d",
-      "linked_sha256": "020d92fdc623f6c28f70de03e1d55db8c10e0af67f77b5079e1eafa9aee89dcb"
+      "object_sha256": "bc96101032aa867e236c37dd69445664e197a1cbbb9f962a254690343a73f6d9",
+      "linked_sha256": "693a26d59b9d2d827569dc03293c573bc8a4b0d11167bcbbe46d2985fedb8a28"
     },
     {
       "id": "AIFilter_soldier_ctor",
@@ -54297,13 +54297,6 @@
             "size": 664,
             "kind": "function",
             "name": "GetIntersection__6CPlaneCFRC6CLine3RfP8CVector3",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80091344",
-            "size": 196,
-            "kind": "function",
-            "name": "Transform__6CPlaneFRC7CMatrix",
             "evidence": "exception-index"
           }
         ]
