@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80109ed0",
-      "size": 484,
+      "address": "0x80109a58",
+      "size": 1628,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fe04",
-      "size": 16,
+      "address": "0x8000fdfc",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016c04",
-      "size": 24,
+      "address": "0x80016bf8",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AttemptUpdate__15CAnimatedPlayerFf",
+      "address": "0x80109a58",
+      "size": 1144,
+      "binding": 1
+    },
     {
       "name": "UpdateLocalBoundingVolume__15CAnimatedPlayerFQ210ISceneNode11EVolumeTypeRC8CVector3RC8CVector3",
       "address": "0x80109fa4",
@@ -95,8 +101,19 @@
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "BuildRotZ__7CMatrixFf": "0x80090800",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetMuzzleFlashStatus__7CWeaponFv": "0x800d4f60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "SetCenter__10CVolSphereF8CVector3": "0x800cba4c",
     "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
     "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "Slerp__11CQuaternionF11CQuaternion11CQuaternionf": "0x800917f0",
+    "Translate__7CMatrixF8CVector3": "0x80090660",
     "Update__19CLightVolumeManagerFf": "0x80079070",
     "__as__7CMatrixFRC7CMatrix": "0x80090b34"
   },
@@ -105,7 +122,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "animplayer.cpp",
   "original_file_index": 10481,
   "pooled_sections": [
@@ -116,7 +135,43 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
+      "address": "0x80351380"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351384"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351388"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8035138c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
       "address": "0x80351390"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80351394"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80351398"
     }
   ]
 }
