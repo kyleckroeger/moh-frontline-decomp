@@ -1,0 +1,115 @@
+{
+  "id": "stretch_head",
+  "source": "src/ea/stretch_head.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "on",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x801665d4",
+      "size": 1740,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "crossfade__FPfPfPfii",
+      "address": "0x801665d4",
+      "size": 904,
+      "binding": 0
+    },
+    {
+      "name": "determineaction__FifPPUcPf",
+      "address": "0x8016695c",
+      "size": 468,
+      "binding": 0
+    },
+    {
+      "name": "applyaction__FP16TIMESTRETCHSTATEPPfi",
+      "address": "0x80166b30",
+      "size": 368,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "SNDI_memcpy": "0x8016d730",
+    "_restgpr_26": "0x80138a58",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_26": "0x80138a0c",
+    "_savegpr_27": "0x80138a10"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "stretch.c",
+  "original_file_index": 13202,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351c04"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351c00"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351c08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351c10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80351c18"
+    }
+  ]
+}
