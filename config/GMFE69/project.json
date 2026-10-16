@@ -1196,7 +1196,8 @@
     "stricmp.json",
     "bsbifunc_getpropbyid.json",
     "UserInterface_weaponname.json",
-    "spat2hdr.json"
+    "spat2hdr.json",
+    "sdecmut_initmut.json"
   ],
   "progress": {
     "code_bytes": 1414572,
