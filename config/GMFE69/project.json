@@ -1003,7 +1003,7 @@
     "compartment_texswap.json",
     "buddy_head.json",
     "alarm_register.json",
-    "location_collision_map.json",
+    "location_collision.json",
     "bsutil_update.json",
     "toilet_shutdown.json",
     "Moh2_sendrenderlist.json",
