@@ -18,7 +18,7 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -37,25 +37,62 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80168624",
-      "size": 156,
+      "address": "0x80167ffc",
+      "size": 1732,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "SNDMIXI_initfx2__FiP15MIXFXFILTHEADER",
+      "address": "0x80167ffc",
+      "size": 772,
+      "binding": 1
+    },
+    {
+      "name": "findprime__Fii",
+      "address": "0x80168300",
+      "size": 152,
+      "binding": 1
+    },
+    {
       "name": "MIX_restorereverb",
       "address": "0x80168624",
       "size": 156,
       "binding": 1
+    },
+    {
+      "name": "MIX_initreverb",
+      "address": "0x80168398",
+      "size": 652,
+      "binding": 1
     }
   ],
   "externals": {
+    "SNDI_getb__FPvi": "0x8015e1a4",
+    "SNDI_memcpy": "0x8016d730",
+    "SNDMEMI_allocz__Fi": "0x80158d64",
     "SNDMEMI_free__FPv": "0x80158ff0",
+    "SNDMIXI_fxadd": "0x80160f7c",
+    "SNDMIXI_fxinit": "0x80160cc0",
+    "SNDMIXI_initfx__Fi": "0x80167c18",
+    "SNDMIXI_modlapifxadd": "0x80160d54",
     "SNDMIXI_restorefx2__Fv": "0x80167a98",
     "SNDMIXfxv2inited": "0x8034f4e0",
+    "_restgpr_20": "0x80138a40",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_20": "0x801389f4",
+    "_savegpr_27": "0x80138a10",
+    "conlist": "0x8034f4dc",
+    "filehead": "0x803419d0",
+    "filtermodsizetable": "0x80193e28",
+    "lastoutputchannels": "0x8034f4cc",
+    "memset": "0x80009410",
+    "modlist": "0x8034f4d8",
     "sndfb": "0x80341838",
-    "sndmix": "0x80340eb0"
+    "sndfxnummodules": "0x803419c4",
+    "sndmix": "0x80340eb0",
+    "validstructoutputs": "0x8034f4d0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -63,8 +100,47 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "SNDMIXfxv2inited"
+    "SNDMIXfxv2inited",
+    "conlist",
+    "lastoutputchannels",
+    "modlist",
+    "validstructoutputs"
   ],
   "original_file": "sfxrevc.c",
-  "original_file_index": 13232
+  "original_file_index": 13232,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351c50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351c54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351c58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80351c5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351c60"
+    }
+  ]
 }
