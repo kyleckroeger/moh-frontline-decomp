@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 780212,
+    "matching_code_bytes": 780932,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.15534027253473,
+    "percent": 55.20623906029527,
     "categories": {
-      "reconstructed_game": 558696,
+      "reconstructed_game": 559416,
       "restored_library": 221516
     },
-    "matching_functions": 4368
+    "matching_functions": 4369
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -149,7 +149,7 @@
     "config/GMFE69/Gecko_ExceptionPPC_endcatch.json": "7b4ed280ab0ca217bbf1d259691d74ae9be6b67f7aa3f92bca33835c8f18df0d",
     "config/GMFE69/IStudio.json": "a61511407d1eee51ece5adc4a8ab93eb6678719d07af1599d4793c14a29b3b06",
     "config/GMFE69/IStudioFuncs.json": "9bcb68b80673feaca960b8532184a3983320ee23fa83e607ec55b14e4fddce6a",
-    "config/GMFE69/IStudioFuncs_resload.json": "403d0639d4851c8ebb4e2928ede00bf49f2e96d1f6bb55c582e6d97a4f570197",
+    "config/GMFE69/IStudioFuncs_resload.json": "36723bff34e0ce61715d983da4cac6e6e3b58e94cae7c3908e409534002b9dd2",
     "config/GMFE69/IStudio_ctor.json": "b566e3bfcf86793058ba04768e523229aa6291c69e48393bb2767f12cb6e2711",
     "config/GMFE69/LinkedList.json": "602f883f2de084765f8942b8e59f71e78eba4a2f6decd323bf7ba7b64498ec81",
     "config/GMFE69/MallocInit.json": "8084909a7be143dbe22e68d1ec13bf2de5447a3ce15fc2023dff212530d007d1",
@@ -2293,7 +2293,7 @@
     "src/game/CoverPoint_unoccupied.cpp": "2213c4580725c4972add13a5fc247f7af9c6960a035abec9e83ba6a5c3dab0d7",
     "src/game/IStudio.cpp": "8b84b0f073788f7ea59bee3645f2a65f63f45d976c439283ba5809708ffcbbfe",
     "src/game/IStudioFuncs.cpp": "433d6999510ba488d6c2d5cb9529a5c839670b394416bdaeec09c6f3eca0a9cf",
-    "src/game/IStudioFuncs_resload.cpp": "9bc4e499c9187e24c3f1ad5131877c2689de4c5a3647a2190f7bbaaa718ad6fc",
+    "src/game/IStudioFuncs_resload.cpp": "44249ec94af1e0273b6527b52b6baf82836e02259e255bc509b58684391fcd23",
     "src/game/IStudio_ctor.cpp": "7d3b2f8752707e546fdf01e894c8fc5a5d756ab0841ab5dbbaee0f037583e86d",
     "src/game/LinkedList.cpp": "3007b79180a5844b8b799dc4fc11618f6b5da77679e6c73c6f388fec501beb2a",
     "src/game/MallocInit.cpp": "ba35f4c9ac530c717f81930ab9aa3a203ea81844e4776914ae6b51acf4188a74",
@@ -46228,8 +46228,8 @@
     {
       "id": "IStudioFuncs_resload",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 120,
+      "functions": 3,
+      "code_bytes": 840,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46261,8 +46261,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "baee4e22dca623489ddeb183818330e74489e08a1bc00ef419fea3b559d83e52",
-      "linked_sha256": "b2e85dd1b6df8e8669327e31ac356cf909c3423b72ee38f2974aa0f058d11d29"
+      "object_sha256": "a6439ebe1df4a5b23e33ae6795222cefb28e0618cfdd5c8210809165ff2c2ca3",
+      "linked_sha256": "c85b51f2bb1f5667ba04c4140ceb6b7ae828cfd2fe95777e0c681c5053e8d1f0"
     },
     {
       "id": "ConfigGC_defaults",
@@ -54117,20 +54117,6 @@
             "size": 380,
             "kind": "function",
             "name": "ISirenStartup__7IStudioFUlUlUlUlUl",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/IStudioFuncs.cpp [symbol evidence]",
-        "file_record": 95,
-        "file_name": "IStudioFuncs.cpp",
-        "ranges": [
-          {
-            "address": "0x8008b914",
-            "size": 720,
-            "kind": "function",
-            "name": "iSirenTransformfnc__F18UISTransformActionP14UISTransform_t",
             "evidence": "exception-index"
           }
         ]
