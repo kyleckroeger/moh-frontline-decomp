@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800266b0",
-      "size": 1480,
+      "address": "0x80026200",
+      "size": 2680,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009bbc",
-      "size": 32,
+      "address": "0x80009bb4",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010760",
-      "size": 48,
+      "address": "0x80010754",
+      "size": 60,
       "type": 1
     }
   ],
@@ -80,15 +80,28 @@
       "address": "0x800269f0",
       "size": 312,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_FireProjectile__FPPiPv",
+      "address": "0x80026200",
+      "size": 1200,
+      "binding": 1
     }
   ],
   "externals": {
+    "CreateBullet__14CBulletFactoryFib8CVector38CVector3f7EClsnIdfP10ISceneNode": "0x800cd84c",
     "CreateDumpObject__FRC8CVector3RC11CQuaternionii": "0x8003fc2c",
     "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
+    "GetWeaponPropertiesByCRC__14CWeaponFactoryFiPi": "0x800d6efc",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "Shoot__7CWeaponF16EWeaponShootTypeff": "0x800d6238",
     "g_iCurrentBIFIndex": "0x8034e77c",
-    "g_pBuiltInFunctions": "0x8034e778"
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_pWeaponFactory": "0x8034e9e4",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -97,7 +110,10 @@
   "discarded_local_functions": [],
   "sda_externals": [
     "g_iCurrentBIFIndex",
-    "g_pBuiltInFunctions"
+    "g_pBuiltInFunctions",
+    "g_pBulletFactory",
+    "g_pWeaponFactory",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
@@ -109,7 +125,7 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034f640"
+      "address": "0x8034f63c"
     },
     {
       "section": ".sdata2",
@@ -133,11 +149,23 @@
       "section": ".sdata2",
       "offset": 24,
       "size": 4,
-      "address": "0x8034f678"
+      "address": "0x8034f6d0"
     },
     {
       "section": ".sdata2",
       "offset": 28,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f678"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
       "size": 4,
       "address": "0x8034f6d4"
     }
