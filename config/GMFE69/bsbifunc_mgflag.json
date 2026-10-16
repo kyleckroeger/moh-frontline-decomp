@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800216ec",
-      "size": 488,
+      "address": "0x800213e8",
+      "size": 1260,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009a84",
-      "size": 16,
+      "address": "0x80009a7c",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800105bc",
-      "size": 24,
+      "address": "0x800105b0",
+      "size": 36,
       "type": 1
     }
   ],
@@ -70,6 +70,12 @@
       "binding": 1
     },
     {
+      "name": "BIFunc_ApplyForceToObject__FPPiPv",
+      "address": "0x800213e8",
+      "size": 772,
+      "binding": 1
+    },
+    {
       "name": "BIFunc_GetBSObject__FPPiPv",
       "address": "0x8002181c",
       "size": 184,
@@ -78,9 +84,13 @@
   ],
   "externals": {
     "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "MathFunRandomReal__Fff": "0x80092d60",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
-    "g_pBuiltInFunctions": "0x8034e778"
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_scene": "0x8019484c",
+    "rand": "0x8013fc54"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -93,5 +103,58 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f628"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f630"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f678"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f67c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034f680"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }
