@@ -21,8 +21,12 @@
    same for one of a trigger's parameters, writing every instance of the
    module when the module belongs to another trigger and only the given
    instance otherwise (the bank-search counter is reused for both instance
-   loops, also found with decomp-permuter). The system layout, the trigger
-   and parameter records and the sndaems and sndgs views are inferred. */
+   loops, also found with decomp-permuter). SNDAEMSI_stufftrigger sets the
+   value of a trigger's start, update or end references to 1 in their
+   modules' instances, creating the instance first for a start reference to
+   a module's first component, and returns the created instance or the
+   failure. The system layout, the trigger and parameter records and the
+   sndaems and sndgs views are inferred. */
 struct AEMSCOMPDEFVIEW;
 
 /* inferred: a parameter or trigger reference, by ids as loaded, then
@@ -197,6 +201,7 @@ void* SNDMEMI_allocz(int);
 void SNDMEMI_free(void*);
 int SNDAEMSI_destroyinstance(struct MODULE*, int);
 extern "C" void SNDbankremove(int);
+int SNDAEMSI_createinstance(MODULEBANK*, struct MODULE*, int);
 int SNDAEMSI_stufftrigger(int, int, int);
 int SNDAEMSI_stuffparam(int, int, int, int);
 int SNDAEMSI_setglobal(int, int);
@@ -592,5 +597,84 @@ int SNDAEMSI_stuffparam(int value, int trigger, int index, int instanceId) {
             }
         }
     }
+    return result;
+}
+
+int SNDAEMSI_stufftrigger(int trigger, int kind, int instanceId) {
+    int b;
+    MODULEBANK* bank;
+    MODULEINSTANCE* instance;
+    AEMSMODULEVIEW* module;
+    AEMSTRIGGERVIEW* entry;
+    AEMSTRIGREFVIEW* ref;
+    AEMSREFLISTVIEW* list;
+    int i;
+    int result;
+    int created;
+
+    entry = &sndaems.system->triggers[trigger];
+    result = -8;
+    created = 0;
+    if (kind == 0)
+        list = &entry->lists[0];
+    else if (kind == 1)
+        list = &entry->lists[1];
+    else
+        list = &entry->lists[2];
+    if (!list)
+        return -8;
+    for (i = 0; i < list->count; i++) {
+        ref = &sndaems.system->refs[list->refs[i]];
+
+        for (b = 0; b < 16; b++) {
+            if (sndaems.banks[b] && ref->resolvedBank == sndaems.banks[b]->id)
+                break;
+        }
+        if (b < 16) {
+            bank = sndaems.banks[b];
+            module = bank->version >= 8 ? (AEMSMODULEVIEW*)(bank->modules + ref->resolvedModule * 28)
+                                        : (AEMSMODULEVIEW*)(bank->modules + ref->resolvedModule * 20);
+            if (module->trigger == trigger) {
+                if (ref->resolvedComponent == 0) {
+                    if (kind == 0) {
+                        created = SNDAEMSI_createinstance(bank, (struct MODULE*)module, instanceId);
+                        if (created >= 0) {
+                            result = created;
+                            for (b = 0; b < module->slots; b++) {
+                                instance = module->list->instances[b];
+
+                                if (instance && instance->id == instanceId) {
+                                    *(int*)(instance->data + module->list->offsets[ref->resolvedComponent] + 16) = 1;
+                                    instance->active = 1;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    for (b = 0; b < module->slots; b++) {
+                        instance = module->list->instances[b];
+
+                        if (instance && instance->id == instanceId) {
+                            result = 0;
+                            *(int*)(instance->data + module->list->offsets[ref->resolvedComponent] + 16) = 1;
+                            instance->active = 1;
+                        }
+                    }
+                }
+            } else {
+                for (b = 0; b < module->slots; b++) {
+                    instance = module->list->instances[b];
+
+                    if (instance) {
+                        result = 0;
+                        *(int*)(instance->data + module->list->offsets[ref->resolvedComponent] + 16) = 1;
+                        instance->active = 1;
+                    }
+                }
+            }
+        }
+    }
+    if (result < 0 && created < 0)
+        result = created;
     return result;
 }

@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8015385c",
-      "size": 4292,
+      "size": 5096,
       "type": 1
     }
   ],
@@ -80,6 +80,12 @@
       "binding": 1
     },
     {
+      "name": "SNDAEMSI_stufftrigger__Fiii",
+      "address": "0x80154920",
+      "size": 804,
+      "binding": 1
+    },
+    {
       "name": "SNDAEMSI_stuffparam__Fiiii",
       "address": "0x801546bc",
       "size": 612,
@@ -106,8 +112,8 @@
   ],
   "externals": {
     "AEMSI_timerupdate__Fv": "0x80154c44",
+    "SNDAEMSI_createinstance__FP10MODULEBANKP6MODULEi": "0x8015612c",
     "SNDAEMSI_destroyinstance__FP6MODULEi": "0x80156508",
-    "SNDAEMSI_stufftrigger__Fiii": "0x80154920",
     "SNDAEMSI_updatemodules__Fi": "0x80154c68",
     "SNDAEMS_linkbank__Fv": "0x80157778",
     "SNDAEMS_removemodulebank": "0x8034e668",
@@ -119,10 +125,12 @@
     "SNDSYS_leavecritical": "0x80153588",
     "SNDSYS_remove100hzclient": "0x801535f4",
     "SNDbankremove": "0x80159600",
+    "_restgpr_21": "0x80138a44",
     "_restgpr_23": "0x80138a4c",
     "_restgpr_24": "0x80138a50",
     "_restgpr_25": "0x80138a54",
     "_restgpr_26": "0x80138a58",
+    "_savegpr_21": "0x801389f8",
     "_savegpr_23": "0x80138a00",
     "_savegpr_24": "0x80138a04",
     "_savegpr_25": "0x80138a08",
