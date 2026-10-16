@@ -1189,7 +1189,8 @@
     "UIStudio_parseinit.json",
     "TibPolygon_process.json",
     "stretch_head.json",
-    "sdecmut_reftolpc.json"
+    "sdecmut_reftolpc.json",
+    "bsbifunc_givegrenade.json"
   ],
   "progress": {
     "code_bytes": 1414572,
