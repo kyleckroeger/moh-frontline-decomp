@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 758160,
+    "matching_code_bytes": 758612,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.596423511846695,
+    "percent": 53.62837663971859,
     "categories": {
-      "reconstructed_game": 536644,
+      "reconstructed_game": 537096,
       "restored_library": 221516
     },
-    "matching_functions": 4336
+    "matching_functions": 4337
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -277,6 +277,7 @@
     "config/GMFE69/UIStudio_idle.json": "98402530ebaf2c9125703f199ab3eb1808c9bfe6b8ae1ed6b304810bf392a219",
     "config/GMFE69/UIStudio_init.json": "a4c6c063bab9850182a766f380fd6963cbd023592a51343490d643438ba67eb9",
     "config/GMFE69/UIStudio_internal.json": "6bc4d75437ab849da297dc7c70ebeddcdfdd9b435940970f8d9ec9a98b26fafa",
+    "config/GMFE69/UIStudio_internalload.json": "df2f3926d2cd947d7c08e97c1872f91f1db7a3fa2953a3f98e7bb7dc6d14be6c",
     "config/GMFE69/UIStudio_load.json": "a7fbb74d90cfdb2589c8a407c07906d0e6b3573dd28685f648e040e3581d607b",
     "config/GMFE69/UIStudio_loadscreen.json": "740eb7c875a6bec4894a4e9af8c22e93fb01ad5591d197c44e4645392d1ab5aa",
     "config/GMFE69/UIStudio_parsevis.json": "a17718c65cd6b2718908ddd40396a325cfeeb94359556aafe66033dc9aa0cdf4",
@@ -822,7 +823,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "5a77750169d910171048d7e5da8485345638fc3a1de49dcbdad708efbc820443",
+    "config/GMFE69/project.json": "325709bf55c82c159f28487c119b06cc6a33d3aeb13ca379fc3737480396cd55",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2377,6 +2378,7 @@
     "src/game/UIStudio_idle.c": "9035c7536c65e05bc5c9cadabee2207b9670f452e842e9bc23bb315fe4fef89f",
     "src/game/UIStudio_init.c": "a88a5a18748b2a47373de07c9e547e6330ce0dde44278cff49f762ac6fe3294a",
     "src/game/UIStudio_internal.c": "6d4a854bda5edbaa29d49af1c71d50e8f9cce5a428a0bee736782e464aae5f64",
+    "src/game/UIStudio_internalload.c": "b3bffe82283397bd65aaa118803ceec966029df9fd07e45d7e00edae830cc645",
     "src/game/UIStudio_load.c": "aef81b1e495dc7a14610192728f89ae27125e7c80d89986341d2839ef56f671c",
     "src/game/UIStudio_loadscreen.c": "37ea10a4f8a40a53105af926ee46fd7131e62e5f2e73f78adf132cf93b625537",
     "src/game/UIStudio_parsevis.c": "44352acf6a22c572a4737f037cdba759e4efbf5c986313de7f429c2bc190e3ac",
@@ -51518,6 +51520,47 @@
       "discarded_functions": [],
       "object_sha256": "e22273b6515f16adfd9ef2d9c13b130c99042aa9e0f38e4af6502151e746e7db",
       "linked_sha256": "dfe79ee69f9fee2134379caf42ee39e46e2f2aa1b05b5d6bb83ec8af78c063a3"
+    },
+    {
+      "id": "UIStudio_internalload",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 452,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "11f54fd18cc5c39c59650d61c99c03fd27bc17db41a10b84d161040c80e1db53",
+      "linked_sha256": "8e11d32f205ef7bdd7be760a9eaac480ef77da4a8909d3f2285a98ca6886e3f7"
     }
   ],
   "code_map": {
@@ -53702,13 +53745,6 @@
             "kind": "function",
             "name": "UISProcessEvent",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800887dc",
-            "size": 452,
-            "kind": "function",
-            "name": "_UISInternalLoad__FP9UISInfo_tUsUsUcUcP10UISParam_t",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x80088d78",

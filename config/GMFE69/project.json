@@ -1185,7 +1185,8 @@
     "skybox.json",
     "sbasync_download.json",
     "sbasync_done.json",
-    "sphere_extents.json"
+    "sphere_extents.json",
+    "UIStudio_internalload.json"
   ],
   "progress": {
     "code_bytes": 1414572,
