@@ -1188,7 +1188,8 @@
     "sphere_extents.json",
     "UIStudio_internalload.json",
     "UIStudio_activatecontrol.json",
-    "UIStudio_parseinit.json"
+    "UIStudio_parseinit.json",
+    "TibPolygon_process.json"
   ],
   "progress": {
     "code_bytes": 1414572,
