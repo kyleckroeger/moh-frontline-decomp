@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 763440,
+    "matching_code_bytes": 763500,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.96968128875731,
+    "percent": 53.973922854404016,
     "categories": {
-      "reconstructed_game": 541924,
+      "reconstructed_game": 541984,
       "restored_library": 221516
     },
-    "matching_functions": 4345
+    "matching_functions": 4346
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -149,7 +149,7 @@
     "config/GMFE69/IStudio.json": "a61511407d1eee51ece5adc4a8ab93eb6678719d07af1599d4793c14a29b3b06",
     "config/GMFE69/IStudioFuncs.json": "9bcb68b80673feaca960b8532184a3983320ee23fa83e607ec55b14e4fddce6a",
     "config/GMFE69/IStudioFuncs_resload.json": "403d0639d4851c8ebb4e2928ede00bf49f2e96d1f6bb55c582e6d97a4f570197",
-    "config/GMFE69/IStudio_ctor.json": "43618e4c7883f87febff0d2d085ed3e90b97b0cdf8b062d0e85e12f939f522e8",
+    "config/GMFE69/IStudio_ctor.json": "b566e3bfcf86793058ba04768e523229aa6291c69e48393bb2767f12cb6e2711",
     "config/GMFE69/LinkedList.json": "602f883f2de084765f8942b8e59f71e78eba4a2f6decd323bf7ba7b64498ec81",
     "config/GMFE69/MallocInit.json": "8084909a7be143dbe22e68d1ec13bf2de5447a3ce15fc2023dff212530d007d1",
     "config/GMFE69/MathFun.json": "d1ab7afb2af9cadf02e249106d121c5a9d825d11e0c21945f3b10467862b5682",
@@ -2286,7 +2286,7 @@
     "src/game/IStudio.cpp": "8b84b0f073788f7ea59bee3645f2a65f63f45d976c439283ba5809708ffcbbfe",
     "src/game/IStudioFuncs.cpp": "433d6999510ba488d6c2d5cb9529a5c839670b394416bdaeec09c6f3eca0a9cf",
     "src/game/IStudioFuncs_resload.cpp": "9bc4e499c9187e24c3f1ad5131877c2689de4c5a3647a2190f7bbaaa718ad6fc",
-    "src/game/IStudio_ctor.cpp": "834c8964b576ee11e927a4fdc2144b5177297a59cde9871d58f944f1b7e4ef04",
+    "src/game/IStudio_ctor.cpp": "7d3b2f8752707e546fdf01e894c8fc5a5d756ab0841ab5dbbaee0f037583e86d",
     "src/game/LinkedList.cpp": "3007b79180a5844b8b799dc4fc11618f6b5da77679e6c73c6f388fec501beb2a",
     "src/game/MallocInit.cpp": "ba35f4c9ac530c717f81930ab9aa3a203ea81844e4776914ae6b51acf4188a74",
     "src/game/MathFun.cpp": "5a60cf13aeb557c033e5adb906365756165d8401c8d9f239c72e95a9c96b96df",
@@ -50148,8 +50148,8 @@
     {
       "id": "IStudio_ctor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 32,
+      "functions": 2,
+      "code_bytes": 92,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -50181,8 +50181,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e612c43ddf4c260d48c773e855ee52f340f10f8b0d9041272d05b6f2c1ff2cff",
-      "linked_sha256": "037aca83b8639042b2a346a397dc21aa6c67cb70a2bd1885f43e6cc620925687"
+      "object_sha256": "1730ba8d084ed7aa1fdc6885cd3413f29f6b9fc66a6fdeb866c55cfd7d351f93",
+      "linked_sha256": "d68abda151f8cbe40e26b568a9c4d69e2d300fd054b475f995ab94f8ab3dd66d"
     },
     {
       "id": "AnimObjFactory_animobjdef",
@@ -53913,13 +53913,6 @@
             "size": 380,
             "kind": "function",
             "name": "ISirenStartup__7IStudioFUlUlUlUlUl",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008b8b8",
-            "size": 60,
-            "kind": "function",
-            "name": "__dt__7IStudioFv",
             "evidence": "exception-index"
           }
         ]

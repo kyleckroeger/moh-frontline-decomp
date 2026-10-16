@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008b8f4",
-      "size": 32,
+      "address": "0x8008b8b8",
+      "size": 92,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c4c0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001358c",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__dt__7IStudioFv",
+      "address": "0x8008b8b8",
+      "size": 60,
+      "binding": 1
+    },
     {
       "name": "__ct__7IStudioFv",
       "address": "0x8008b8f4",
@@ -52,7 +70,9 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "__dl__FPv": "0x8001ca2c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
