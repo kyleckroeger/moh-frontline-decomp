@@ -1192,7 +1192,8 @@
     "sdecmut_reftolpc.json",
     "bsbifunc_givegrenade.json",
     "bsbifunc_setobjinfo.json",
-    "AIFilter_coverindex.json"
+    "AIFilter_coverindex.json",
+    "stricmp.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 774992,
+    "matching_code_bytes": 775124,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.78632406127083,
+    "percent": 54.795655505693595,
     "categories": {
-      "reconstructed_game": 553476,
+      "reconstructed_game": 553608,
       "restored_library": 221516
     },
-    "matching_functions": 4362
+    "matching_functions": 4363
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -829,7 +829,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f38d3fc1b7eb1ddbdcf8f5a25a1fa7d07f824645897c5d9dfa92e14c2377ff9a",
+    "config/GMFE69/project.json": "62a4a4a72a76a523cc91765cb5b7484833000c9fcb83986d8e09d10e4e9c1355",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1129,6 +1129,7 @@
     "config/GMFE69/stream_prio.json": "2438a8b53ff21b845f1923f79496b9ea6ab4de20721780c3e9efea36e5b4df28",
     "config/GMFE69/stretch.json": "a3a1d44e437062353c086a63133d381e2d699516427d1f0eaeba7a8e7fc04d5d",
     "config/GMFE69/stretch_head.json": "27f80a34ba499b801278f18600a6e16e4776f86d7b123b129000fdfbee113c91",
+    "config/GMFE69/stricmp.json": "e8b2120ac2d74611d1d27e06d1e2faae2918e3cd69dcf867a91e0e24c4d3948e",
     "config/GMFE69/string.json": "dfcf9ebcd504cab3afb3e06b74c7e218ecadac89ebde48c40659fcaeb0a01628",
     "config/GMFE69/strtoul.json": "96027a37123019cd24fdaf9c4ec6caa8228464cf8362a2b3ba7e36acdb35dad5",
     "config/GMFE69/supf.json": "01af0bb9502db26aa7168c7276e2d96e72d874dfdc8f8d9367ae66df0f929e63",
@@ -2186,6 +2187,7 @@
     "src/ea/stream_prio.cpp": "78e45fbfeaf50cbbd39f4f2543003d4b23b0bf084724f61f1a8124ec88df293b",
     "src/ea/stretch.c": "799a3e12f81f1231af5d13453805dc5184a167d4b616e32f4b275abbc71df743",
     "src/ea/stretch_head.c": "9b3627a40a4c36728b0526696bfc65932fe2e4aae8f46929dddda9a6b80decd2",
+    "src/ea/stricmp.cpp": "e832fd431186e5b001a7f5bb917c73b66c1af7b488ab570203cabf1c91f38112",
     "src/ea/supf.c": "6887947b6223d085d1b4ae151937fb4107e5f1338b36fe73fd37bb15718a7cf9",
     "src/ea/suplf.c": "dfe878bc5bc53b45e72bb0ed6608b43d00ace2d55bb924f9cd199a5c04123aad",
     "src/ea/supmutf.c": "9dd420f031cc5c776078ad4d7385adfbd4be1c6fe16b6832cf0130623106f98e",
@@ -51811,6 +51813,45 @@
       "discarded_functions": [],
       "object_sha256": "cc2bd4a2596dd24d5d7ca20da33a688236647f8fa5a8eefcfc5ecbd6e1ab9e96",
       "linked_sha256": "2c1378f5f394118fe326d1fa60fa3e1e8273b2a46bf06345c7b7543cba48bb14"
+    },
+    {
+      "id": "stricmp",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 132,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e4d3abc2a0289324d6f2174ad93de135211b09fa9038f31ef1132babe2320076",
+      "linked_sha256": "ede0fd899f992bbc32582f0d4375399c3aa502d37d52d1addbe3b82910e805b8"
     }
   ],
   "code_map": {
@@ -56876,18 +56917,6 @@
             "kind": "function",
             "name": "PRINT_init",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 80151ab8",
-        "ranges": [
-          {
-            "address": "0x80151ab8",
-            "size": 132,
-            "kind": "function",
-            "name": "stricmp",
-            "evidence": "unknown-file"
           }
         ]
       },
