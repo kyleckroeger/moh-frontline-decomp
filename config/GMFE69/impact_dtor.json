@@ -39,25 +39,25 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d0568",
-      "size": 120,
+      "address": "0x800d0164",
+      "size": 1148,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e594",
-      "size": 8,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 16
-    },
-    {
-      "name": "extabindex",
-      "address": "0x80015290",
-      "size": 12,
+      "address": "0x8000e58c",
+      "size": 16,
       "type": 1,
       "linked_offset": 0,
       "linked_size": 24
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015284",
+      "size": 24,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 36
     }
   ],
   "functions": [
@@ -66,14 +66,31 @@
       "address": "0x800d0568",
       "size": 120,
       "binding": 1
+    },
+    {
+      "name": "DamageClosestObject__7CImpactFv",
+      "address": "0x800d0164",
+      "size": 1028,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_BeginEvent__FPv": "0x800ec170",
+    "AddHitDirection__13UserInterfaceFUi": "0x800ba8c0",
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "GetAzimuth__F8CVector3PC13CPlayerObject": "0x800ebc90",
+    "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CVolSphereFv": "0x800cbb24",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv": "0x8001c030",
     "__vt__7CImpact": "0x80189974",
-    "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74"
+    "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74",
+    "g_cheats": "0x80196a94",
+    "g_inputMgr": "0x801ec80c",
+    "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -89,5 +106,46 @@
   "weak_duplicates": [
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv",
     "__vt__Q23dwi22IVisitor<10ISceneNode>"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350cc8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350cf4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350cf8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350cfc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350ce8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350d00"
+    }
   ]
 }
