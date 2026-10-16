@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 765568,
+    "matching_code_bytes": 766340,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.12011548369401,
+    "percent": 54.174690295015026,
     "categories": {
-      "reconstructed_game": 544052,
+      "reconstructed_game": 544824,
       "restored_library": 221516
     },
-    "matching_functions": 4349
+    "matching_functions": 4350
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -978,7 +978,7 @@
     "config/GMFE69/sfxlevel.json": "d9983bfc694a5b63484e800e9bcc4eaf39b354abc5d3605cc89b1b6959048ea3",
     "config/GMFE69/sfxrev.json": "8ad871503b98219e95bf063090f5a0ac46894bfe8f07ec0759411d3e654a68c4",
     "config/GMFE69/sfxrevc.json": "875bb2a2447637612393f32550a2e6cb36c2f6a8bc484f3f187e4a1e45e4f963",
-    "config/GMFE69/sfxrevc_prime.json": "c4b23eea24f4e9df4df43957ee1fd4c00c32385b382cc226b99ac0db28eb990a",
+    "config/GMFE69/sfxrevc_prime.json": "7a5057c5388364d999fca674f8e5e59bc7c3413b1c74303eab05d7f2d940090d",
     "config/GMFE69/sgetdata.json": "a28a08c3d3d8be7272dabffc0a2720543b091881baff0e1c7988c82978e4918a",
     "config/GMFE69/sgetpvol.json": "ee69cb8b807ef51113d974130ba2eeed9be612d7b0e7f42078fdaf455158f022",
     "config/GMFE69/sgettag.json": "73b507f500d3409b0fbef821e9d07368ad18c50f36d76bd48f453f8c4c994f77",
@@ -2098,7 +2098,7 @@
     "src/ea/sfxlevel.c": "d5cc428d31c9b52511b7f1d89cc4f71b91b5d211dd371c967a25db2c13e3d5cf",
     "src/ea/sfxrev.c": "caaf966f65acfa80284e06a6250db58dc8d251791d6199b80bd1aa25cdd563bb",
     "src/ea/sfxrevc.c": "c6a9d231f7b6ccad82cf23f58720c21f9006fbaa7412cc4fc6e7fa3120b5a0d3",
-    "src/ea/sfxrevc_prime.c": "4fdab1c36bf4066145e0f4c33e379def9f5d7e94ea1115a1a4eda4134cb5f7ba",
+    "src/ea/sfxrevc_prime.c": "9b42b495fca0e8e52156b52e3dcf0571e108608624c7d871907b6838036b4a0a",
     "src/ea/sgetdata.c": "096ddd2dc98110c34425bdb3de01ab682d37bd2e9742004166afaa1627ae5f89",
     "src/ea/sgetpvol.c": "01014858d4c5a5b4d701b63b2de5fe2371ec80bc3743918050253bb49a21382e",
     "src/ea/sgettag.c": "87aac6e484c3dad29d22f0042085ddcd0cdc61b350f4cc33646fb8e706143860",
@@ -30875,8 +30875,8 @@
     {
       "id": "sfxrevc_prime",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 152,
+      "functions": 2,
+      "code_bytes": 924,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -30908,8 +30908,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6b18470cfefa6eac25e40e47bb97273f5511282d0512ae4a1d63a4a728ff9ee1",
-      "linked_sha256": "186120926f6c9d21b834fded62deb7f834acd62a8a2075d1adae5caec9f425c9"
+      "object_sha256": "4ab2ca2a03bb090dbc814bbf978b4fb76d79548c110f2312fdf2d020c16a053e",
+      "linked_sha256": "00ddade7b928a4e11655310fa4193510100062a51901972beaf4b02f605ab7eb"
     },
     {
       "id": "scalcpitch",
@@ -57265,13 +57265,6 @@
             "kind": "function",
             "name": "SNDMIXI_initfx__Fi",
             "evidence": "private-reference"
-          },
-          {
-            "address": "0x80167ffc",
-            "size": 772,
-            "kind": "function",
-            "name": "SNDMIXI_initfx2__FiP15MIXFXFILTHEADER",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x80168398",
