@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 784960,
+    "matching_code_bytes": 785704,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.490989500711166,
+    "percent": 55.543584914730395,
     "categories": {
-      "reconstructed_game": 563444,
+      "reconstructed_game": 564188,
       "restored_library": 221516
     },
-    "matching_functions": 4376
+    "matching_functions": 4377
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -342,7 +342,7 @@
     "config/GMFE69/animmorph_weight.json": "266313fd3693dcf7f29939f806d755252562157701e925dfc1f7326a2261a105",
     "config/GMFE69/animmot.json": "4db280bf4ae0d64c8a3625af885fcea8cd216882da3025b38c8d4bd4627b7f76",
     "config/GMFE69/animmot_rot.json": "c5bed71eed4fcc9204850556c4d66e511a10df8ee49c21a6947d3deb46f334b1",
-    "config/GMFE69/animplayer.json": "50da95e8126f18b2c227988d273aa7e95f1848274b104cde74c462e11a9ee713",
+    "config/GMFE69/animplayer.json": "e43815327187ee2a3d1c99458abc0d87769f524e4c41c9d4689fd4140fce4dc9",
     "config/GMFE69/animplayer_ctor.json": "586370150da7130658d76d9e6a9132947b5556b47c2ad7b41859254a05244cf1",
     "config/GMFE69/animplayer_draw.json": "c0e51a74baab07bc22500acd57a6f431bebc0f73fd238654f58c2a1bc6ebbcf5",
     "config/GMFE69/animplayer_initai.json": "2e2c6c0ad574a67a635ae6bfb571d996eb217a75c7da1a280d9f9a46ce9b291b",
@@ -2448,7 +2448,7 @@
     "src/game/animmorph_weight.cpp": "00404a1d8e58eb98d991ce4ac15e944319d67294248c54d07fcdc80e77474265",
     "src/game/animmot.cpp": "a45a8abe1f4cf7ff29d111e21ddc34a94f2de557f14ba7b00b699d7cec9acad9",
     "src/game/animmot_rot.cpp": "0e6e066a270c91b5c5ef4b881472c9a5ebddf629eee5874fe717131f8d688352",
-    "src/game/animplayer.cpp": "995aef49ad9caf5aafc031fc6fdda5e1fbbb3e8b109e1d19b9831d5870ed1168",
+    "src/game/animplayer.cpp": "edbc03751689740ebd99f570afff09281c78d13812b592c3aedc3277d7bbc685",
     "src/game/animplayer_ctor.cpp": "8732028eb72a949d36cf29fd9ef46b3dc2ec9a1de84d3db6530484958cf508d3",
     "src/game/animplayer_draw.cpp": "4c2fe748589f2c2e324b21b77d15ac6d243759e4998deb8a6a6d6e22ec8af5dd",
     "src/game/animplayer_initai.cpp": "b71c96c29dd66c3f6575dc410353aa83a98c77374401e8b641ed8eb9eb0c4cc7",
@@ -22258,8 +22258,8 @@
     {
       "id": "animplayer",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 1628,
+      "functions": 8,
+      "code_bytes": 2372,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -22291,8 +22291,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "658662a4c75fc68487e349988c73456d01c9c5b865ef4457405d1695acc47afa",
-      "linked_sha256": "2033d760bd8485520b0759dc352809c9294e4228a1d67e3774c5af768a820c34"
+      "object_sha256": "0b1f8faee46a12932050ad2ad923d560d00d4ea79ffacacb893f03941d7fe374",
+      "linked_sha256": "2b1e69367c0c0a4235b1dea72d2c4313c3e64414a96bd87da5d8f7b669960e5c"
     },
     {
       "id": "msghndlr",
@@ -56544,13 +56544,6 @@
         "file_record": 186,
         "file_name": "animplayer.cpp",
         "ranges": [
-          {
-            "address": "0x8010a0b4",
-            "size": 744,
-            "kind": "function",
-            "name": "UpdateAnimation__15CAnimatedPlayerFf",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8010a3d0",
             "size": 1276,

@@ -1,4 +1,5 @@
-// CAnimatedPlayer's update, bounding volumes and flocking parameters:
+// CAnimatedPlayer's update, bounding volumes, flocking parameters and
+// animation:
 // AttemptUpdate is CAnimObject::AttemptUpdate (bone interpolation, yaw and
 // position, world volume and scene extents widened by CONTACT_EPSILON) plus
 // the current weapon's muzzle flash and a flag cleared for weapon types 33
@@ -10,7 +11,14 @@
 // local box's corners (as CSoldierObject's does); the world and local volumes
 // are chosen by volume type (types 0 to 2 share one volume, type 3 has its
 // own, others have none), and the flocking parameters are a float and a long
-// stored together. The classes, CONTACT_EPSILON and the called functions are
+// stored together. UpdateAnimation runs CAnimObject's, copies a player value,
+// applies a pending morph state, updates the morph, drives two face blend
+// targets (the second replaces the first once it reaches zero; both weights
+// move by their speeds within 0 and their maxima), a timed blend on target 13
+// (ramp, hold and fade lengths restarted with a random delay) and the jaw and
+// mouth targets. Its leading CMatrix class-initialisation check is written as
+// an unused CMatrix local (inferred; the original may come from an inline).
+// The classes, CONTACT_EPSILON and the called functions are
 // named by the symbols; the members are inferred from offsets (shared with
 // the CAnimObject view in anim_obj_update.cpp and the CWeapon view in
 // weapon_head.cpp), the vector, matrix, volume and weapon views are
@@ -43,7 +51,13 @@ public:
 
 class CMatrix {
 public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
     CMatrix(const CMatrix& other) { *this = other; }
+    static void InitClass();
+    static bool s_ClassInit;
     CMatrix& operator=(const CMatrix&);
     void SetPos(CVector3);
     void Translate(CVector3);
@@ -103,6 +117,8 @@ public:
     virtual void vf14();
     virtual void vf18();
     virtual void SetRotation(long);
+    bool ValidState(unsigned short);
+    void SetAnimationState(unsigned short, float, unsigned short&, long, void*);
 };
 
 class CAnimSkinned : public CAnimated {
@@ -143,11 +159,30 @@ class CPlayerObject {
 public:
     CWeapon* GetCurrentWeapon() const;
 
-    unsigned char unknown000[919];
+    unsigned char unknown000[672];
+    float m_value2a0;
+    unsigned char unknown2a4[243];
     unsigned char m_flag397a : 1;
     bool m_flag397b : 1;
     unsigned char m_flags397 : 6;
 };
+
+class CAnimMorph : public CAnimated {
+public:
+    void SetBlendTargetWeight(unsigned long, float);
+};
+
+class CAnimObject {
+public:
+    void UpdateAnimation(float);
+};
+
+class CJawController {
+public:
+    void Update(int);
+};
+
+float MathFunRandomReal(float, float);
 
 class CLightVolumeManager {
 public:
@@ -292,10 +327,40 @@ public:
     CMatrix m_fixedTM;
     unsigned char unknown24a0[24];
     CLightVolumeManager m_lightVolumes;
-    unsigned char unknown24bc[6996];
+    unsigned char unknown24bc[3100];
+    float m_value30d8;
+    unsigned char unknown30dc[148];
+    CAnimMorph m_morph;
+    unsigned char unknown3174[3740];
     CWeapon* m_weapons[25];
     int m_currentWeapon;
-    unsigned char unknown4078[1080];
+    unsigned char unknown4078[600];
+    long m_morphTarget;
+    long m_blendTargets[2];
+    float m_blendWeights[2];
+    float m_blendMax[2];
+    float m_blendSpeeds[2];
+    float m_cycleTimer;
+    float m_cycleMin;
+    float m_cycleMax;
+    float m_holdLength;
+    float m_fadeLength;
+    float m_rampLength;
+    unsigned char unknown42cc[4];
+    float m_rampEnd;
+    float m_holdEnd;
+    float m_fadeEnd;
+    bool m_statePending;
+    unsigned char unknown431d;
+    unsigned short m_state;
+    unsigned char unknown4320[288];
+    CJawController m_jaw;
+    unsigned char unknown4441[35];
+    long m_extraTarget;
+    long m_mouthTarget;
+    unsigned char unknown446c[4];
+    float m_mouthWeight;
+    unsigned char unknown4474[60];
     CPlayerObject* m_player;
     float m_flocoParam;
     long m_flocoCount;
@@ -432,4 +497,62 @@ void CAnimatedPlayer::GetFlocoParams(float& param, long& count) {
 void CAnimatedPlayer::SetFlocoParams(float param, long count) {
     m_flocoParam = param;
     m_flocoCount = count;
+}
+
+void CAnimatedPlayer::UpdateAnimation(float dt) {
+    CMatrix unused;
+    ((CAnimObject*)this)->UpdateAnimation(dt);
+    m_value30d8 = m_player->m_value2a0;
+    if (m_statePending) {
+        m_statePending = false;
+        if (m_morph.ValidState(m_state)) {
+            unsigned short result;
+            m_morph.SetAnimationState(m_state, 1.0f, result, -1, 0);
+        }
+    }
+    m_morph.UpdateAnimation(dt);
+    if (m_morphTarget != -1)
+        m_morph.SetBlendTargetWeight(m_morphTarget + 28, 1.0f);
+    if (m_blendTargets[0] >= 0) {
+        int i;
+        m_morph.SetBlendTargetWeight(m_blendTargets[0] + 11, m_blendWeights[0]);
+        if (m_blendTargets[1] >= 0)
+            m_morph.SetBlendTargetWeight(m_blendTargets[1] + 11, m_blendWeights[1]);
+        if (0.0f == m_blendWeights[0] && m_blendTargets[1] >= 0) {
+            m_blendTargets[0] = m_blendTargets[1];
+            m_blendWeights[0] = m_blendWeights[1];
+            m_blendSpeeds[0] = 0.0f;
+            m_blendMax[0] = m_blendMax[1];
+            m_blendTargets[1] = -1;
+        }
+        for (i = 0; i < 2; i++) {
+            m_blendWeights[i] += m_blendSpeeds[i];
+            if (m_blendWeights[i] < 0.0f) {
+                m_blendWeights[i] = 0.0f;
+                m_blendSpeeds[i] = 0.0f;
+            } else if (m_blendWeights[i] > m_blendMax[i]) {
+                m_blendWeights[i] = m_blendMax[i];
+                m_blendSpeeds[i] = 0.0f;
+            }
+        }
+    }
+    m_cycleTimer -= dt / 59.94f;
+    if (m_cycleTimer <= 0.0f) {
+        m_rampEnd = m_rampLength;
+        m_holdEnd = m_rampEnd + m_holdLength;
+        m_fadeEnd = m_holdEnd + m_fadeLength;
+        m_cycleTimer = m_fadeEnd + MathFunRandomReal(m_cycleMin, m_cycleMax);
+    }
+    float weight = 0.0f;
+    if (m_cycleTimer >= m_rampEnd && m_cycleTimer <= m_holdEnd)
+        weight = 1.0f;
+    else if (m_cycleTimer > m_holdEnd && m_cycleTimer < m_fadeEnd)
+        weight = 1.0f - (m_cycleTimer - m_holdEnd) / (m_fadeEnd - m_holdEnd);
+    else if (m_cycleTimer < m_rampEnd)
+        weight = m_cycleTimer / m_rampEnd;
+    m_morph.SetBlendTargetWeight(13, weight);
+    if (m_extraTarget >= 0)
+        m_morph.SetBlendTargetWeight(m_extraTarget, 0.0f);
+    m_jaw.Update((int)dt);
+    m_morph.SetBlendTargetWeight(m_mouthTarget, m_mouthWeight);
 }
