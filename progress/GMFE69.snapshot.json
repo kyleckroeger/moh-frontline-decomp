@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 754984,
+    "matching_code_bytes": 755956,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.3719033036141,
+    "percent": 53.44061666709082,
     "categories": {
-      "reconstructed_game": 533468,
+      "reconstructed_game": 534440,
       "restored_library": 221516
     },
-    "matching_functions": 4331
+    "matching_functions": 4332
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -422,7 +422,7 @@
     "config/GMFE69/bsbifunc_mmg.json": "a6b43aa7d9536043860e082b2778ec31d9c0e4e764c84e13535bb07025d504d0",
     "config/GMFE69/bsbifunc_mood.json": "349a8e01c5f2a0067ad42c593741f0a75cecd85b7f26477817ddd8a9b53b2a6f",
     "config/GMFE69/bsbifunc_mountedmg.json": "1e7378152809d72e45cbd87c15a2c8de1b3c7b32775662fd5122c03818eb6a67",
-    "config/GMFE69/bsbifunc_movewalk.json": "7253a8a2823330b1a406ecbe2ee80f16e4919bd07af66f79e1a13234534650b7",
+    "config/GMFE69/bsbifunc_movewalk.json": "d37a82e43e3ea37515b0571b985cc528c9c69e468a75bcb91963398de6e5f7f5",
     "config/GMFE69/bsbifunc_mpplayer.json": "e94740b19f3d84f215be44b20cef01c7a57e9099c400ba55b544dfa440e77766",
     "config/GMFE69/bsbifunc_mpprompt.json": "f13fa211be96625f09d9487bda6c5fdbc5d046fe4a9afbc8598c6242daa9e948",
     "config/GMFE69/bsbifunc_mpweapons.json": "fb583dfaa8b15edeaa3398bff13452120474f1d1cc4cb2120ee1e1dca23c3a12",
@@ -2504,7 +2504,7 @@
     "src/game/bsbifunc_mmg.cpp": "a1d4efa0ea72ef2b3bad132cf4f53c8696d7b72e06a1e88a825a976f0f8f311b",
     "src/game/bsbifunc_mood.cpp": "abdec340b0247ae49668ddd94b8b2d166cabd51a60f96242a36969cd4f7f687b",
     "src/game/bsbifunc_mountedmg.cpp": "b1cb58cc907e651f34d4919e2f95ccdc07a39b3b1ccdf5fa2dbc5bc4d92b8942",
-    "src/game/bsbifunc_movewalk.cpp": "f012b1b58b4e1cd6daada0f4fe2c91ebc0fa6d0bf96166ccd7fa07e0e9235418",
+    "src/game/bsbifunc_movewalk.cpp": "e5bc90be0d86b73a703d2d266f586f887153c24bccf793532045bf97900b95e2",
     "src/game/bsbifunc_mpplayer.cpp": "163a34d3170b06d3fc48c48495bdc0939633b0e053a311dfdcd3520331b5c699",
     "src/game/bsbifunc_mpprompt.cpp": "bd54c25c24fd31460b15cc3782c3d8d8c3eb5c5a80626c59a083873ae8110066",
     "src/game/bsbifunc_mpweapons.cpp": "e8aeafe84db8543e0c2e3f99dc3a39873dfdab17817359fd0247530c4e4f4fb4",
@@ -26136,8 +26136,8 @@
     {
       "id": "bsbifunc_movewalk",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 420,
+      "functions": 4,
+      "code_bytes": 1392,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -26169,8 +26169,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6877bdae485987ad007d649d235ab90e70e51cae1f0977825614f773e62b7764",
-      "linked_sha256": "e3497f2f8b2c01a2c585e2155ab94cbbd601b0d65f5e1d0d2ab4d055a6244ec7"
+      "object_sha256": "6276698da8f21d6b4a300afa8fe659c2cb5e2e483b0093f6b2738d096d9d9f0e",
+      "linked_sha256": "3d3686b028d286c2ed0fd019e4a26f94033308a2731b229a420f6b8f043853a0"
     },
     {
       "id": "bsbifunc_mpweapons",
@@ -51882,13 +51882,6 @@
             "size": 388,
             "kind": "function",
             "name": "BIFunc_PlayerScreenFlash__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800323ac",
-            "size": 972,
-            "kind": "function",
-            "name": "BIFunc_AISetMovePoint__FPPiPv",
             "evidence": "exception-index"
           },
           {
