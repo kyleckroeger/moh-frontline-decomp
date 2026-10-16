@@ -38,11 +38,17 @@
     {
       "name": ".text",
       "address": "0x8016bdfc",
-      "size": 676,
+      "size": 1004,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDPLATFORM_setpitch__Fi",
+      "address": "0x8016c0a0",
+      "size": 328,
+      "binding": 1
+    },
     {
       "name": "SNDPLATFORM_set3dpos__Fi",
       "address": "0x8016bdfc",
@@ -51,11 +57,15 @@
     }
   ],
   "externals": {
+    "AXSetVoiceSrcRatio": "0x80121d80",
+    "MIXsetpitchfn": "0x8034f4b0",
     "SNDDRV_DSPMixerSetPan__FP6_AXVPBPUs": "0x8016d00c",
     "SNDI_aztospkrvol__FiPs": "0x8015f7fc",
     "SNDPLATFORM_setvol__Fi": "0x8016bbbc",
     "_restgpr_26": "0x80138a58",
+    "_restgpr_27": "0x80138a5c",
     "_savegpr_26": "0x80138a0c",
+    "_savegpr_27": "0x80138a10",
     "snddrv": "0x80341a20",
     "sndgs": "0x80340860"
   },
@@ -64,7 +74,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "MIXsetpitchfn"
+  ],
   "original_file": "snddrv.c",
   "original_file_index": 13274,
   "pooled_sections": [
@@ -100,6 +112,18 @@
       "offset": 24,
       "size": 8,
       "address": "0x80351c78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351c9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80351ca0"
     }
   ]
 }

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 782976,
+    "matching_code_bytes": 783304,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.350735063326574,
+    "percent": 55.373922288861934,
     "categories": {
-      "reconstructed_game": 561460,
+      "reconstructed_game": 561788,
       "restored_library": 221516
     },
-    "matching_functions": 4371
+    "matching_functions": 4372
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -951,7 +951,7 @@
     "config/GMFE69/sdecmut_initmut.json": "9ff4f369a8bb9f988018e383d561206a1049542d3e3b8566173706725d9b6c96",
     "config/GMFE69/sdecmut_reftolpc.json": "2c3099d7451b8819f9b38992770dc189e58e0077ef7066000ed617fd8aaf72f9",
     "config/GMFE69/sdfx.json": "6985d96463b5ccc311927984ccfb649a26f4ecd6d154e532138a036ae75a2d70",
-    "config/GMFE69/sdrv_3dpos.json": "766ef22873eacebfa42c4daff4da690eb9987c97b8234826f9dd2ae719781dff",
+    "config/GMFE69/sdrv_3dpos.json": "03b62b42f9d449ce45221015d8c51028597fb257bf3d8d5b0beb94cffebd6d99",
     "config/GMFE69/sdrv_destroy.json": "f21896f67ae2b5fbda451435cbbae8e196e3fddbff872d5d027860d640e88883",
     "config/GMFE69/sdrv_drop.json": "ade7c591ad819991e592af3460f0b8749b57b9fceec8692c23c001d8cb5885b6",
     "config/GMFE69/sdrv_dry.json": "ddb331302c2ddf0123a7f2bb136b1c082f50f3d4090e9ceb709c134862fed5ed",
@@ -2076,7 +2076,7 @@
     "src/ea/sdecmut_initmut.c": "48a281543f5353493ec3f54e7afbf83592c21b4508554efd8e39634446ccc226",
     "src/ea/sdecmut_reftolpc.c": "dcec54161a5507ab9954781a316001a65812e1a238da0108c6e2070cd08c3029",
     "src/ea/sdfx.c": "9d83385a1a795ded1328d0f6f4b30339b8a2c7b14b2b7243908abdcbf11ef50a",
-    "src/ea/sdrv_3dpos.cpp": "993211daf6f64479c052d70fc8c337391e86d3a0a337422515177ff9e9bf1f1e",
+    "src/ea/sdrv_3dpos.cpp": "5c51e9aee0cfec152583089a5cdb59dc79ccf98069344bf6dfe4a3eea7ee3288",
     "src/ea/sdrv_destroy.cpp": "e7dc7da3a9f0eb70a88d23623fdd3f20fc37dee84133b5ed12764ff86aed9b40",
     "src/ea/sdrv_drop.c": "203a1db7bd77ff377c124e0ef2816fde0ed1602965342325b96d4b36ff240a4e",
     "src/ea/sdrv_dry.cpp": "a9fed6b626e1a66c849ca4852b168c3cda74caf6313ad85f226e5530ba470e81",
@@ -35817,8 +35817,8 @@
     {
       "id": "sdrv_3dpos",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 676,
+      "functions": 2,
+      "code_bytes": 1004,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -35850,8 +35850,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f5c8d6dfc13008018c60e70e4991445eee7b350ad31b1589d519974b81199749",
-      "linked_sha256": "f5a331fb53036a04c7e8c7dc6f8ac4ffea6020aa260bac841d691e9cb0bc2c85"
+      "object_sha256": "20a3651f7ce9915035bdff96b98a760495f703ac8133d3f5aba0b55b7204d6c3",
+      "linked_sha256": "55ff856b2844181125e426789cb3fa2c3ba84b4d48f3487c122048b5b7e31c5e"
     },
     {
       "id": "collisionvolume_ctor",
@@ -57530,13 +57530,6 @@
             "size": 968,
             "kind": "function",
             "name": "SNDPLATFORM_packetplay__FiiiiiiP15SNDSAMPLEFORMATPPv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x8016c0a0",
-            "size": 328,
-            "kind": "function",
-            "name": "SNDPLATFORM_setpitch__Fi",
             "evidence": "between-same-file"
           },
           {

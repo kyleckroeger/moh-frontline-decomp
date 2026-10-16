@@ -3,7 +3,10 @@
    0x6000 for mono output) and applies them: through the DSP mixer's pan for
    hardware voices (in three-speaker mode, first easing the front levels of
    channels whose second level exceeds 15000), else through the volume.
-   SNDPLATFORM_setpitch after it is not part of this unit. snddrv and sndgs
+   SNDPLATFORM_setpitch then sets a voice's pitch from its rate over the
+   output rate: as a source ratio on each hardware channel's AX voice (-8
+   for a channel without one), else through the mixer's pitch hook (the
+   mixer channel is relative to the channel base). snddrv and sndgs
    are named by their symbols; their views and the voice and
    channel records are inferred (as in sdrv_destroy.cpp), and the constants
    are entries of the file's .sdata2 pool. */
@@ -96,4 +99,31 @@ void SNDPLATFORM_set3dpos(int index) {
     } else {
         SNDPLATFORM_setvol(index);
     }
+}
+
+extern "C" void AXSetVoiceSrcRatio(_AXVPB*, float);
+extern void (*MIXsetpitchfn)(int, int);
+
+int SNDPLATFORM_setpitch(int index) {
+    SNDVOICEVIEW* voice = &sndgs.voices[index];
+    unsigned int pitch;
+    float ratio;
+    int i;
+
+    if (voice->flags & 0x200) {
+        pitch = (voice->rate << 12) / sndgs.sampleRate;
+        pitch = (pitch * voice->pitch) >> 12;
+        ratio = 1.0f / 4096.0f * (float)pitch;
+        for (i = 0; i < voice->channelCount; i++) {
+            if (!snddrv.channels[voice->channels[i]].voice)
+                return -8;
+            AXSetVoiceSrcRatio(snddrv.channels[voice->channels[i]].voice, ratio);
+        }
+    } else {
+        pitch = (voice->rate << 15) / sndgs.sampleRate;
+        pitch = (pitch * voice->pitch) >> 11;
+        for (i = 0; i < voice->channelCount; i++)
+            MIXsetpitchfn(voice->channels[i] - sndgs.channelBase, pitch);
+    }
+    return 0;
 }
