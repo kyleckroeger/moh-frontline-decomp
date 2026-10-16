@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 753696,
+    "matching_code_bytes": 754640,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.28085102773136,
+    "percent": 53.34758499390628,
     "categories": {
-      "reconstructed_game": 532180,
+      "reconstructed_game": 533124,
       "restored_library": 221516
     },
-    "matching_functions": 4328
+    "matching_functions": 4330
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -262,7 +262,7 @@
     "config/GMFE69/Tank_object_draw.json": "21eebfc9238fce4a72092ff7788283307f023a437f75c98618ac5851454e9650",
     "config/GMFE69/Tank_object_update.json": "8d093336e39ec0bb0cf89f63f9beb86a3d9716b721d85ed9ccb227725cb98618",
     "config/GMFE69/Tank_object_weapons.json": "aeebeb0aec0ae0f521c2a72238c5a7f44510600ff6362da4c88926738e585c65",
-    "config/GMFE69/UISActionProcess.json": "2a99d24d9da29f023bab9396c2424e8dafe6ce9bdaa87904306b5ea85783af91",
+    "config/GMFE69/UISActionProcess.json": "b8982d8977fc3cc190673d20cb03584db2332ecab498e97bc57a276fcc9cd7dd",
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
     "config/GMFE69/UISUtils_actionptr.json": "85b92076125f12f009807d17b2c64a9081741d2e84c232ce0be7a2fc74e2ae48",
@@ -2361,7 +2361,7 @@
     "src/game/Tank_object_draw.cpp": "afdff9d134f2cb71c11bb49945abe5032baba9f687dc6e4f9cc226385deb8383",
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
-    "src/game/UISActionProcess.c": "0c8322629537a363a11f51d7aa0ddaf2fa57f6d24c22fb15f45f76e6566d5f7e",
+    "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
     "src/game/UISUtils_actionptr.c": "137fc6515e8a573306876f5fe9684956ad392a129c11a2c15556f4e46a4e34ad",
@@ -18671,8 +18671,8 @@
     {
       "id": "UISActionProcess",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 204,
+      "functions": 3,
+      "code_bytes": 1148,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -18706,8 +18706,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "52f6aa7a87893b84f079456a4ec2daceb39a2afaf318090fc0e390a0a95534bc",
-      "linked_sha256": "637eb83c91e4537e649449061ddf89fe51bd207386dac7516ad3b4fc2619b419"
+      "object_sha256": "e30f70d2cb9e42d732d62f351e5c47fe70382d0cba10ea18cb940868e7085df5",
+      "linked_sha256": "35016d358b8369a24dc50b2b5065713b713e4981eb7d047b3ea5e0294b628db9"
     },
     {
       "id": "UISUtils",
@@ -53640,27 +53640,6 @@
             "kind": "function",
             "name": "Update__13CInputManagerFf",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/UISActionProcess.c [symbol evidence]",
-        "file_record": 83,
-        "file_name": "UISActionProcess.c",
-        "ranges": [
-          {
-            "address": "0x800852c8",
-            "size": 288,
-            "kind": "function",
-            "name": "UISProcessThreadAction__FP9UISInfo_tUc",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800853e8",
-            "size": 656,
-            "kind": "function",
-            "name": "_UISDoThreadAction__FP9UISInfo_tP10UISParam_t",
-            "evidence": "local-file-symbol"
           }
         ]
       },

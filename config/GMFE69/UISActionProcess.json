@@ -41,12 +41,42 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80085678",
-      "size": 204,
+      "address": "0x800852c8",
+      "size": 1148,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c378",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800133a0",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80185cd0",
+      "size": 40,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_UISDoThreadAction__FP9UISInfo_tP10UISParam_t",
+      "address": "0x800853e8",
+      "size": 656,
+      "binding": 0
+    },
+    {
+      "name": "UISProcessThreadAction__FP9UISInfo_tUc",
+      "address": "0x800852c8",
+      "size": 288,
+      "binding": 1
+    },
     {
       "name": "UISAddThreadAction__FP9UISInfo_t16UISThreadActionTP19UISThreadGroupInfoTlP10UISParam_t",
       "address": "0x80085678",
@@ -54,7 +84,15 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "UISDoHint__FP9UISInfo_tUlUlP10UISParam_t": "0x8008a044",
+    "UISInternalActivateControl__FP9UISInfo_tUcUlP16UISControlInfo_tP16UISControlList_tUsUs": "0x80087cf4",
+    "UISInternalActivateScreen__FP9UISInfo_tUcUsUs": "0x80087b50",
+    "UISInternalLoadScreen__FP9UISInfo_tUsUsUsUsUcP10UISParam_t": "0x800889a0",
+    "UISInternalUnloadScreen__FP9UISInfo_tUsUsl": "0x800882b8",
+    "UISMoveScreenDrawPosition__FP9UISInfo_tUsUsl": "0x8008a420",
+    "UISProcessInternalEvents__FP9UISInfo_tP14UISStackInfo_tlUlUlP10UISParam_tUc": "0x80088060"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
