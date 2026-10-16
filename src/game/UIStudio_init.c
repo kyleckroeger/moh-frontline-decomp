@@ -7,8 +7,15 @@
 // mangled symbol, the magic is 'UIS_'; the members (named by offset) and
 // the parameter meanings are inferred. UISGetMemSize returns the size of
 // that block for the same counts (the file's inlining is deferred, so it is
-// defined before the function it follows). The rest of the file is in other
-// units.
+// defined before the function it follows). PatchScrData, after them, turns
+// a loaded screen data block's offsets into pointers (once: it returns -1
+// when the control table already lies past the block): the controls, their
+// sub-control tables, sub-controls and event code addresses (events with id
+// 0xffff are skipped; patched sub-control events get their state cleared),
+// the map table and the map data, the fixup fields (an index into the maps,
+// or 0 when out of range) and the object data. UISScrData_t is named by the
+// mangled symbol; its views and the separate loop counters are inferred. The
+// rest of the file is in other units.
 typedef void (*UISErrorFnc_t)(void);
 
 extern UISErrorFnc_t RuntimeErrorFnc;
@@ -50,6 +57,108 @@ struct UISInfo_t {
     unsigned long* stackA4;
     unsigned long** stackA8;
 };
+
+struct UISEventRefView {
+    unsigned short id;
+    unsigned short state;
+    unsigned long pc;
+};
+
+struct UISSubControlView {
+    unsigned long control;
+    unsigned long eventCount;
+    UISEventRefView* events;
+};
+
+struct UISEventLinkView {
+    unsigned short value00;
+    unsigned short id;
+    unsigned long pc;
+};
+
+struct UISControlEntryView {
+    unsigned long control;
+    unsigned long subCount;
+    UISSubControlView** subs;
+    unsigned long eventCount;
+    UISEventLinkView* events;
+};
+
+struct UISMapView {
+    unsigned long value00;
+    unsigned long value04;
+    unsigned long data;
+};
+
+struct UISObjectView {
+    unsigned long value00;
+    unsigned long data;
+};
+
+struct UISScrData_t {
+    unsigned long controlCount;
+    UISControlEntryView* controls;
+    unsigned long mapCount;
+    UISMapView* maps;
+    unsigned long fixupCount;
+    unsigned long* fixups;
+    unsigned long objectCount;
+    UISObjectView* objects;
+};
+
+int PatchScrData(UISScrData_t* data) {
+    if ((unsigned long)data->controls < (unsigned long)data) {
+        data->controls = (UISControlEntryView*)((unsigned long)data + (unsigned long)data->controls);
+        for (unsigned long i = 0; i < data->controlCount; i++) {
+            UISControlEntryView* entry = &data->controls[i];
+            entry->control = (unsigned long)data + entry->control;
+            entry->subs = (UISSubControlView**)((unsigned long)data + (unsigned long)entry->subs);
+            unsigned long n = entry->subCount;
+            while (n-- != 0) {
+                entry->subs[n] = (UISSubControlView*)((unsigned long)data + (unsigned long)entry->subs[n]);
+                UISSubControlView* sub = entry->subs[n];
+                sub->control = (unsigned long)data + sub->control;
+                sub->events = (UISEventRefView*)((unsigned long)data + (unsigned long)sub->events);
+                unsigned long m = sub->eventCount;
+                while (m-- != 0) {
+                    UISEventRefView* event = &sub->events[m];
+                    if (event->id != 0xffff) {
+                        event->state = 0;
+                        event->pc = (unsigned long)data + event->pc;
+                    }
+                }
+            }
+            entry->events = (UISEventLinkView*)((unsigned long)data + (unsigned long)entry->events);
+            unsigned long k = entry->eventCount;
+            while (k-- != 0) {
+                UISEventLinkView* link = &entry->events[k];
+                if (link->id != 0xffff)
+                    link->pc = (unsigned long)data + link->pc;
+            }
+        }
+        data->maps = (UISMapView*)((unsigned long)data + (unsigned long)data->maps);
+        unsigned long n = data->mapCount;
+        while (n-- != 0)
+            data->maps[n].data = (unsigned long)data + data->maps[n].data;
+        data->fixups = (unsigned long*)((char*)data + (unsigned long)data->fixups);
+        unsigned long f = data->fixupCount;
+        while (f-- != 0) {
+            unsigned long* field = (unsigned long*)((char*)data + data->fixups[f]);
+            if (*field < data->mapCount)
+                *field = (unsigned long)&data->maps[*field];
+            else
+                *field = 0;
+        }
+        data->objects = (UISObjectView*)((unsigned long)data + (unsigned long)data->objects);
+        n = data->objectCount;
+        while (n-- != 0) {
+            if (data->objects[n].data)
+                data->objects[n].data = (unsigned long)data + data->objects[n].data;
+        }
+        return 1;
+    }
+    return -1;
+}
 
 extern "C" unsigned long UISGetMemSize(unsigned long screens, unsigned long count34, unsigned long count40,
                                       unsigned long count4c, unsigned long stack1, unsigned long stack2) {

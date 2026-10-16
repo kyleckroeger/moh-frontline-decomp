@@ -42,23 +42,29 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 324,
+      "size": 908,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c410",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013484",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PatchScrData__FP12UISScrData_t",
+      "address": "0x80088d78",
+      "size": 584,
+      "binding": 1
+    },
     {
       "name": "UISInit",
       "address": "0x80088c34",
