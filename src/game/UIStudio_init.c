@@ -42,10 +42,17 @@
 // and calls the draw callback with mode 2. The plugin, object, colour views,
 // the reuse of one counter for the object and event loops and the mixed
 // direct/local reads of the control's colour scales (which the register use
-// requires) are inferred. The rest of the file is in other units.
+// requires) are inferred. The file-local, recursive _ParseTransforms, after
+// _ParseObjects in the image, passes a transform action to the draw callback
+// for a control and, through its active sub-controls' sub-control links (id
+// 0xffff), for each control below it (the compiler inlines the recursion
+// three levels deep). The callback's parameter type is inferred from the
+// calls. The rest of the file is in other units.
 typedef void (*UISErrorFnc_t)(void);
 
 extern UISErrorFnc_t RuntimeErrorFnc;
+
+enum UISTransformAction {};
 
 struct UISInfo_t {
     unsigned long magic;
@@ -54,7 +61,7 @@ struct UISInfo_t {
     unsigned long count0C;
     unsigned long count10;
     unsigned long count14;
-    void (*draw)(int, void*);
+    void (*draw)(UISTransformAction, void*);
     unsigned long count1C;
     long screen20;
     long screen24;
@@ -209,6 +216,23 @@ struct UISControlColorView {
     float add[4];
 };
 
+static void _ParseTransforms(UISInfo_t* info, UISTransformAction action, UISScreen_t* screen, unsigned long index) {
+    if (screen->data) {
+        UISControl_t* control = &((UISControl_t*)screen->data->controls)[index];
+        info->draw(action, ((UISControlColorView*)control->control)->rect);
+        for (unsigned long j = 0; j < control->subCount; j++) {
+            UISSubControlView* sub = control->subs[j];
+            if (*(unsigned long*)sub->control) {
+                for (unsigned long k = 0; k < sub->eventCount; k++) {
+                    UISEventRefView* event = &sub->events[k];
+                    if (event->id == 0xffff)
+                        _ParseTransforms(info, action, screen, event->pc);
+                }
+            }
+        }
+    }
+}
+
 static void _ParseObjects(UISInfo_t* info, UISScreen_t* screen, unsigned long index, unsigned long value) {
     UISControlColorView* color;
     UISControl_t* control;
@@ -243,7 +267,7 @@ static void _ParseObjects(UISInfo_t* info, UISScreen_t* screen, unsigned long in
                                  multiply[1] * ((UISControlColorView*)control->control)->multiply[1],
                                  multiply[2] * color->multiply[2], multiply[3] * color->multiply[3]);
             UISSetColorAdditive(add[0] + color->add[0], add[1] + color->add[1], add[2] + color->add[2], add[3] + color->add[3]);
-            info->draw(1, ((UISControlColorView*)control->control)->rect);
+            info->draw((UISTransformAction)1, ((UISControlColorView*)control->control)->rect);
             for (j = 0; j < control->subCount; j++) {
                 sub = control->subs[j];
                 if (*(unsigned long*)sub->control) {
@@ -261,7 +285,7 @@ static void _ParseObjects(UISInfo_t* info, UISScreen_t* screen, unsigned long in
             }
             UISSetColorMultipler(multiply[0], multiply[1], multiply[2], multiply[3]);
             UISSetColorAdditive(add[0], add[1], add[2], add[3]);
-            info->draw(2, ((UISControlColorView*)control->control)->rect);
+            info->draw((UISTransformAction)2, ((UISControlColorView*)control->control)->rect);
         }
     }
 }

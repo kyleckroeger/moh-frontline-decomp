@@ -42,19 +42,19 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 2880,
+      "size": 3724,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c410",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013484",
-      "size": 60,
+      "size": 72,
       "type": 1
     }
   ],
@@ -74,6 +74,12 @@
     {
       "name": "_ParseObjects__FP9UISInfo_tP11UISScreen_tUlUl",
       "address": "0x80089428",
+      "size": 844,
+      "binding": 0
+    },
+    {
+      "name": "_ParseTransforms__FP9UISInfo_t18UISTransformActionP11UISScreen_tUl",
+      "address": "0x80089774",
       "size": 844,
       "binding": 0
     },
