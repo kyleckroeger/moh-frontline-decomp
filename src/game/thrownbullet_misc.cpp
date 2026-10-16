@@ -9,7 +9,14 @@
 // +144 when the weapon record's byte at +74 allows it), Explode (the same
 // flag update), GetScriptBulletType (maps the thrown type at +164 to the
 // script's bullet type, warning on an unknown type) and IsVisible (the world
-// volume's visibility test, IVolume's slot +68). The classes and functions
+// volume's visibility test, IVolume's slot +68), then Draw: in multiplayer a
+// player's throw is hidden until its detonation time (+144) is within the
+// weapon record's delay (+72) minus MP_THROWNBULLET_DRAW_DELAY; the thrown
+// type picks the static object (grenade, stick grenade, knife, wrench or
+// bazooka round, warning on an unknown type), whose mesh (+48) is drawn with
+// the rotation (+288..+296) applied before the object's matrix (+80), set as
+// the context's matrix (+192), using the light volume when the mesh asks for
+// it (mesh slot +20, the object's slot +288). The classes and functions
 // are named by the mangled symbols; the members, the weapon-record and
 // volume views and the flag names are inferred, as in thrownbullet.cpp, and
 // CBullet declares placeholder virtuals up to AsProjectile (+320, named by
@@ -17,7 +24,6 @@
 // elsewhere) first so its table is not emitted here. The type numbers are
 // not named. The rest of the file is not part of this unit.
 class CCollision;
-class CDrawContext;
 class CProjectileBullet;
 
 void DebugMsg(const char*, ...);
@@ -75,6 +81,97 @@ public:
     float z;
     float w;
 } __attribute__((aligned(8)));
+
+
+class CMatrix {
+public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    static void InitClass();
+    void BuildRotX(float);
+    void RotateY(float);
+    void RotateZ(float);
+    void Multiply(const CMatrix&, const CMatrix&);
+    static bool s_ClassInit;
+
+    float m[4][4];
+} __attribute__((aligned(16)));
+
+struct BPDLightVolume;
+
+/* inferred: the draw context's matrix pointer at +192 */
+class CDrawContext {
+public:
+    unsigned char unknown000[192];
+    const CMatrix* m_matrix;
+};
+
+class CStaticMesh {
+public:
+    virtual void vf008();
+    virtual void Draw(CDrawContext&, int);
+    virtual void vf010();
+    virtual bool UsesLightVolume();
+    static void SetLightVolume(BPDLightVolume*);
+};
+
+/* inferred: a static object's mesh at +48 */
+struct StaticObjectView {
+    unsigned char unknown00[48];
+    CStaticMesh* m_mesh;
+};
+
+extern StaticObjectView* g_pStaticObjectGrenade;
+extern StaticObjectView* g_pStaticObjectStickGrenade;
+extern StaticObjectView* g_pStaticObjectKnife;
+extern StaticObjectView* g_pStaticObjectWrench;
+extern StaticObjectView* g_pStaticObjectBazooka;
+extern bool g_bInMultiplayerMode;
+extern float MP_THROWNBULLET_DRAW_DELAY;
+
+class ISceneNode {
+public:
+    virtual void vf008();
+    virtual void vf00c();
+    virtual void vf010();
+    virtual void vf014();
+    virtual void vf018();
+    virtual void vf01c();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf02c();
+    virtual void vf030();
+    virtual void vf034();
+    virtual void vf038();
+    virtual void vf03c();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf04c();
+    virtual void vf050();
+    virtual void vf054();
+    virtual void vf058();
+    virtual void vf05c();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
+    virtual void vf06c();
+    virtual void vf070();
+    virtual void vf074();
+    virtual void vf078();
+    virtual void vf07c();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf08c();
+    virtual void vf090();
+    virtual void vf094();
+    virtual void vf098();
+    virtual void* AsPlayerObject();
+};
 
 class CBullet {
 public:
@@ -188,13 +285,85 @@ public:
 /* inferred: the weapon record's detonation-time switch at +74 */
 struct ThrownWeaponView {
     float forceScale;
-    unsigned char unknown04[70];
+    unsigned char unknown04[68];
+    short m_drawDelay;
     signed char timedDetonation;
 };
 
 class CThrownBullet {
 public:
     virtual void MarkForDestruction(int); /* defined elsewhere; keeps the table out */
+    virtual void vf00c();
+    virtual void vf010();
+    virtual void vf014();
+    virtual void vf018();
+    virtual void vf01c();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf02c();
+    virtual void vf030();
+    virtual void vf034();
+    virtual void vf038();
+    virtual void vf03c();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf04c();
+    virtual void vf050();
+    virtual void vf054();
+    virtual void vf058();
+    virtual void vf05c();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
+    virtual void vf06c();
+    virtual void vf070();
+    virtual void vf074();
+    virtual void vf078();
+    virtual void vf07c();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf08c();
+    virtual void vf090();
+    virtual void vf094();
+    virtual void vf098();
+    virtual void vf09c();
+    virtual void vf0a0();
+    virtual void vf0a4();
+    virtual void vf0a8();
+    virtual void vf0ac();
+    virtual void vf0b0();
+    virtual void vf0b4();
+    virtual void vf0b8();
+    virtual void vf0bc();
+    virtual void vf0c0();
+    virtual void vf0c4();
+    virtual void vf0c8();
+    virtual void vf0cc();
+    virtual void vf0d0();
+    virtual void vf0d4();
+    virtual void vf0d8();
+    virtual void vf0dc();
+    virtual void vf0e0();
+    virtual void vf0e4();
+    virtual void vf0e8();
+    virtual void vf0ec();
+    virtual void vf0f0();
+    virtual void vf0f4();
+    virtual void vf0f8();
+    virtual void vf0fc();
+    virtual void vf100();
+    virtual void vf104();
+    virtual void vf108();
+    virtual void vf10c();
+    virtual void vf110();
+    virtual void vf114();
+    virtual void vf118();
+    virtual void vf11c();
+    virtual BPDLightVolume* GetLightVolume();
+    void Draw(CDrawContext&);
     void ApplyForceTo(CVector3, float);
     void Halt();
     void HandleBulletCollision(CBullet*, const CCollision&);
@@ -203,15 +372,21 @@ public:
     int GetScriptBulletType() const;
     bool IsVisible(CDrawContext&) const;
 
-    unsigned char unknown004[140];
+    unsigned char unknown004[76];
+    CMatrix m_tm;
     float m_detonationTime;
     unsigned char unknown094[16];
     unsigned int m_type;
     ThrownWeaponView* m_weapon;
-    unsigned char unknown0ac[68];
+    ISceneNode* m_owner;
+    unsigned char unknown0b0[64];
     CVector3 m_velocity;
     CVector3 m_vector100;
-    unsigned char unknown110[64];
+    unsigned char unknown110[16];
+    float m_rotationX;
+    float m_rotationY;
+    float m_rotationZ;
+    unsigned char unknown12c[36];
     ThrownVolumeView m_localVolume;
     ThrownVolumeView m_worldVolume;
     unsigned char unknown1f0[8];
@@ -276,4 +451,51 @@ int CThrownBullet::GetScriptBulletType() const {
 
 bool CThrownBullet::IsVisible(CDrawContext& context) const {
     return m_worldVolume.TestVisibility(context);
+}
+
+void CThrownBullet::Draw(CDrawContext& context) {
+    if (g_bInMultiplayerMode && m_owner && m_owner->AsPlayerObject()) {
+        if (m_detonationTime > (float)m_weapon->m_drawDelay - MP_THROWNBULLET_DRAW_DELAY)
+            return;
+    }
+    StaticObjectView* object = 0;
+    switch (m_type) {
+    case 3:
+        object = g_pStaticObjectGrenade;
+        break;
+    case 4:
+        object = g_pStaticObjectStickGrenade;
+        break;
+    case 5:
+        object = g_pStaticObjectKnife;
+        break;
+    case 9:
+        object = g_pStaticObjectWrench;
+        break;
+    case 0:
+    case 1:
+    case 2:
+    case 8:
+    case 10:
+        object = g_pStaticObjectBazooka;
+        break;
+    default:
+        DebugMsg("WARNING: Unknown thrown bullet type in Draw.  Type %d\n", m_type);
+        break;
+    }
+    if (object) {
+        CMatrix world;
+        CMatrix rotation;
+        rotation.BuildRotX(m_rotationX);
+        rotation.RotateY(m_rotationY);
+        rotation.RotateZ(m_rotationZ);
+        world.Multiply(rotation, m_tm);
+        CStaticMesh* mesh = object->m_mesh;
+        if (mesh) {
+            context.m_matrix = &world;
+            if (mesh->UsesLightVolume())
+                CStaticMesh::SetLightVolume(GetLightVolume());
+            mesh->Draw(context, 0);
+        }
+    }
 }
