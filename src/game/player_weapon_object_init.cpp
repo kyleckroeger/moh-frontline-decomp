@@ -1,4 +1,16 @@
-// A fragment of player_weapon_object.cpp (0x800a8874):
+// A fragment of player_weapon_object.cpp (0x800a8638):
+// CPlayerWeaponObject::BeginUpdate reports a change of the weapon's reserve
+// (+644) outside multiplayer (dump collisions of type 1 for the weapon type,
+// with whether the reserve is below the properties' value at +18, compared as
+// unsigned words), and while the flag bit 0x40 of +12754 is set updates the
+// animation and, unless the player's bit 0x80 of +919 is set, the weapon
+// transforms and the weapon; with a muzzle flash (and the player's bit 0x40
+// of +918 clear) it picks a random flash angle up to 6.28 * dt and, when the
+// muzzle-flash object is set, spawns the flash effect (+12704, else
+// 0x67d7fa88; not in multiplayer) at the fire attach matrix scaled by +12696,
+// rotated by the angle, through the bone, the scale at +12568 and the matrix
+// at +9024. The mesh pointer kept in a local between the two matrix
+// constructions is inferred from the load order.
 // CPlayerWeaponObject::UpdateWeaponTransforms takes the player's world
 // transform into the matrix at +9024, applies the player's matrix at +192,
 // then a local transform (the offset at +12536 raised by 1 in y, the
@@ -61,6 +73,7 @@ public:
         if (!s_ClassInit)
             InitClass();
     }
+    CMatrix(const CMatrix& other) { *this = other; }
     static void InitClass();
     CMatrix& operator=(const CMatrix&);
     void Ident();
@@ -70,6 +83,7 @@ public:
     void RotateX(float);
     void RotateY(float);
     void RotateZ(float);
+    void BuildScale(float);
     CVector3 GetPos() const { return *(const CVector3*)m[3]; }
 
     float m[4][4];
@@ -159,16 +173,34 @@ public:
     unsigned char m_flag04 : 1;
     unsigned char m_flag02 : 1;
     unsigned char m_flag01 : 1;
-    unsigned char unknown395[183];
+    unsigned char unknown395;
+    unsigned char m_flags396a : 1;
+    unsigned char m_flag396 : 1;
+    unsigned char m_flags396b : 6;
+    unsigned char m_flag397 : 1;
+    unsigned char m_flags397 : 7;
+    unsigned char unknown398[180];
     float m_pitch;
     float m_roll;
     unsigned char unknown458[888];
     CCamera m_camera;
 };
 
+/* inferred: the weapon properties' value at +18 */
+struct WeaponPropertiesView {
+    unsigned char unknown00[18];
+    short m_value12;
+};
+
 class CWeapon {
 public:
-    unsigned char unknown000[664];
+    void Update(float, bool);
+    unsigned char GetMuzzleFlashStatus();
+
+    unsigned char unknown000[640];
+    WeaponPropertiesView* m_properties;
+    short m_reserve;
+    unsigned char unknown286[18];
     int m_type;
     unsigned char unknown29c[4];
     CVector3 m_forward;
@@ -218,11 +250,83 @@ public:
     unsigned char unknown000[328];
 };
 
+class CRenderBin {
+    unsigned char unknown00[28];
+
+public:
+    virtual ~CRenderBin();
+    virtual void Render();
+    virtual void Init();
+    virtual void Link();
+    virtual int IsUsed();
+};
+
+class CParticleSystem : public CRenderBin {
+public:
+    virtual ~CParticleSystem();
+    virtual void unknown01c();
+    virtual void unknown020();
+    virtual void unknown024();
+    virtual void unknown028();
+    virtual void unknown02c();
+    virtual void unknown030();
+    virtual void unknown034();
+    virtual void unknown038();
+    virtual void unknown03c();
+    virtual void unknown040();
+    virtual void unknown044();
+    virtual void unknown048();
+    virtual void unknown04c();
+    virtual void unknown050();
+    virtual void unknown054();
+    virtual void unknown058();
+    virtual void unknown05c();
+    virtual void unknown060();
+    virtual void unknown064();
+    virtual void unknown068();
+    virtual void unknown06c();
+    virtual void unknown070();
+    virtual void unknown074();
+    virtual void unknown078();
+    virtual void unknown07c();
+    virtual void unknown080();
+    virtual void unknown084();
+    virtual void unknown088();
+    virtual void SetLocalToWorld(const CMatrix&);
+    static CParticleSystem* Create(unsigned long);
+};
+
+enum EDumpType {};
+void EnableDumpCollisionsByType(EDumpType, int, bool);
+float MathFunRandomReal(float, float);
+
+extern bool g_bInMultiplayerMode;
 extern CWeaponFactory g_WeaponFactory;
 extern CScene g_scene;
 
 class CPlayerWeaponObject : public ISceneNode {
 public:
+    virtual void vf0dc();
+    virtual void vf0e0();
+    virtual void vf0e4();
+    virtual void vf0e8();
+    virtual void vf0ec();
+    virtual void vf0f0();
+    virtual void vf0f4();
+    virtual void vf0f8();
+    virtual void vf0fc();
+    virtual void vf100();
+    virtual void vf104();
+    virtual void vf108();
+    virtual void vf10c();
+    virtual void vf110();
+    virtual void vf114();
+    virtual void vf118();
+    virtual void vf11c();
+    virtual void vf120();
+    virtual void vf124();
+    virtual void UpdateAnimation(float);
+    virtual void BeginUpdate(float);
     void UpdateWeaponTransforms();
     void Shutdown();
     void Init(EWeaponTypes, int, CPlayerObject*);
@@ -238,7 +342,7 @@ public:
     CPlayerObject* m_player;
     CWeapon* m_weapon;
     unsigned char unknown30e8[12];
-    int m_unknown30f4;
+    unsigned int m_unknown30f4;
     CVector3 m_offset;
     float m_rotation[3];
     unsigned char unknown3114[4];
@@ -247,7 +351,11 @@ public:
     CVector3 m_vector3128;
     unsigned char unknown3138[8];
     CMatrix m_fireMatrix;
-    unsigned char unknown3180[40];
+    unsigned char unknown3180[24];
+    float m_flashScale;
+    float m_flashAngle;
+    long m_flashEffect;
+    unsigned char unknown31a4[4];
     unsigned long m_firePoint;
     unsigned char unknown31ac[4];
     int m_unknown31b0;
@@ -261,6 +369,49 @@ public:
     int m_unknown31d4;
     int m_unknown31d8;
 };
+
+void CPlayerWeaponObject::BeginUpdate(float dt) {
+    if (m_weapon && !g_bInMultiplayerMode) {
+        short reserve = m_weapon->m_reserve;
+        if (reserve != m_unknown31d4) {
+            EnableDumpCollisionsByType((EDumpType)1, m_weapon->m_type, (unsigned int)reserve < (unsigned int)m_weapon->m_properties->m_value12);
+            m_unknown31d4 = reserve;
+        }
+    }
+    if (m_flag1) {
+        UpdateAnimation(dt);
+        if (!m_player->m_flag397) {
+            UpdateWeaponTransforms();
+            m_weapon->Update(dt, false);
+            if (m_weapon->GetMuzzleFlashStatus() && !m_player->m_flag396) {
+                m_flashAngle = 0.0f;
+                m_flashAngle = MathFunRandomReal(0.0f, 6.28f * dt);
+                float scale = m_flashScale;
+                if (m_unknown30f4) {
+                    CMatrix world;
+                    AttachMeshView* mesh = m_mesh;
+                    CMatrix scaling;
+                    scaling.BuildScale(scale);
+                    CMatrix rotation(m_fireMatrix);
+                    rotation.RotateY(m_flashAngle);
+                    rotation.Multiply(scaling, rotation);
+                    world.Multiply(rotation, m_matrices[mesh->points[m_firePoint].bone]);
+                    scaling.BuildScale(*(const CVector3*)m_scale);
+                    world.Multiply(world, scaling);
+                    world.Multiply(world, m_matrix2340);
+                    unsigned long effect = 0x67d7fa88;
+                    if (m_flashEffect)
+                        effect = m_flashEffect;
+                    if (!g_bInMultiplayerMode) {
+                        CParticleSystem* system = CParticleSystem::Create(effect);
+                        if (system)
+                            system->SetLocalToWorld(world);
+                    }
+                }
+            }
+        }
+    }
+}
 
 void CPlayerWeaponObject::UpdateWeaponTransforms() {
     m_player->GetTMLocalToWorld(m_matrix2340);
