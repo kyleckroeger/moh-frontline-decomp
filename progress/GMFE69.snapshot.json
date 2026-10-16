@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 780932,
+    "matching_code_bytes": 781980,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.20623906029527,
+    "percent": 55.280325073591165,
     "categories": {
-      "reconstructed_game": 559416,
+      "reconstructed_game": 560464,
       "restored_library": 221516
     },
-    "matching_functions": 4369
+    "matching_functions": 4370
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -831,7 +831,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "f052252f7e08b347fe5a4b128257904aae6438742ea176a371f79aaad70adb0b",
+    "config/GMFE69/project.json": "c881b097a81719cd3b00527a9965bf1775dcc31d51102aa53b6218a1958840e0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1046,6 +1046,7 @@
     "config/GMFE69/soundtable.json": "f4697fcad0ee8bd466b2f8c9a8d08ae80a80bac0c08853d62f4b4f17f49173e8",
     "config/GMFE69/sover.json": "e93f0bef0e81124940f9ca940effc94a8b0c69c04f988f2ffaa1b34c25494e48",
     "config/GMFE69/spantoaz.json": "0e3c799ee99a0820131c59ca50dbae62300eb93899d8495888384884db8c42db",
+    "config/GMFE69/spat2hdr.json": "cd2c8561fdfa279086a1bdf52422c5c31e1068fa43e5e96ec692a0866101b944",
     "config/GMFE69/spatkey.json": "bff5557b5581c610bdbc37b7db14e72fd656663c3acd429102ca9df7415d39f4",
     "config/GMFE69/sphere.json": "bf041b0323612fd4816234bb61471a66d8b61a146e4fe73f95bd0a9b603e8dbc",
     "config/GMFE69/sphere_create.json": "395ed45342967108320d0960ba95d8b1ad516a3da23b4c8ff7be84edf3a2bacc",
@@ -2144,6 +2145,7 @@
     "src/ea/snddrv_voice.c": "19c231e913635debafde6b32f0c9cb462f8397737c6b54d341f6f8d539c7925d",
     "src/ea/sover.c": "195a5eb257fd99eb0337c24b3f263591fc147eb5c4d343a039faaf66c2cbd950",
     "src/ea/spantoaz.c": "e31c00ca71938e75d62f7465384c809d31a6bd0daa4b46f9d2576df1cbe2775c",
+    "src/ea/spat2hdr.c": "32813357e001ceae2b7f2504b70b9a6eed165aa97b7840d8d08aaa171072c909",
     "src/ea/spatkey.c": "b4dbcbbf95c33db80e3442f28f6846a8e054ab762c3c73d2b45fca7e51d055f9",
     "src/ea/spitch.c": "9880d05515ac794b22e9801c80b806d0eaac31f46401279ea9dc837c22a9cac0",
     "src/ea/spkt_tail.cpp": "87c0889a97c01eb03ea6c5f1ef5293f544f8dfeb7bff8cd1791cb5607f10031d",
@@ -51934,6 +51936,45 @@
       "discarded_functions": [],
       "object_sha256": "a946c2915323e93078c437f2d5eb127e8bff9852d70ce1a8e04809757b7cbe3f",
       "linked_sha256": "b95221b96ab49bc4a5a92ed81e8482bfc6abbd36f8fc22fd6a93ebd5a74e92e2"
+    },
+    {
+      "id": "spat2hdr",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1048,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "141797350b1fe46d6c760a20d91decbc475b350b9451972d420a35c16753fea7",
+      "linked_sha256": "3b9b3cbf718665c1b347b8394add7dd040443279e244e0b502332ec7c636635c"
     }
   ],
   "code_map": {
@@ -57178,20 +57219,6 @@
             "size": 704,
             "kind": "function",
             "name": "SNDBANKI_playpatch__FPvP11TAGGEDPATCHiiP11SNDPLAYOPTS",
-            "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/spat2hdr.c [symbol evidence]",
-        "file_record": 497,
-        "file_name": "spat2hdr.c",
-        "ranges": [
-          {
-            "address": "0x8015f120",
-            "size": 1048,
-            "kind": "function",
-            "name": "SNDI_patchtohdr__FPvP11TAGGEDPATCHP15SNDSAMPLEFORMATP13SNDSAMPLEATTRP13SNDSAMPLEDESC",
             "evidence": "private-reference"
           }
         ]

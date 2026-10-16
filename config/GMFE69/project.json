@@ -1195,7 +1195,8 @@
     "AIFilter_coverindex.json",
     "stricmp.json",
     "bsbifunc_getpropbyid.json",
-    "UserInterface_weaponname.json"
+    "UserInterface_weaponname.json",
+    "spat2hdr.json"
   ],
   "progress": {
     "code_bytes": 1414572,
