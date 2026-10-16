@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 758612,
+    "matching_code_bytes": 759144,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.62837663971859,
+    "percent": 53.66598518845276,
     "categories": {
-      "reconstructed_game": 537096,
+      "reconstructed_game": 537628,
       "restored_library": 221516
     },
-    "matching_functions": 4337
+    "matching_functions": 4338
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -270,6 +270,7 @@
     "config/GMFE69/UISUtils_movescreen.json": "36019e2d512c7729797991db2c48fb935a113c84a5aa90e2d9aa2d1590f5138f",
     "config/GMFE69/UISUtils_siblingenable.json": "ba0e809977f53f5c2ab8a96adb24e9b5895796b496249ebeebf6d98cb3b5fd2a",
     "config/GMFE69/UIStudio.json": "093cc8b4fc2cfcef85106cd9d5273d168356c248e536757fb40148ff45a470c0",
+    "config/GMFE69/UIStudio_activatecontrol.json": "3059c75750ea03ee69f659df1050f5a45d0fc734893a66def30e1f639edebd77",
     "config/GMFE69/UIStudio_activatescreen.json": "7d76727ea0e2727be01a5286adcd85073d853715a6495cf95700f15143819b1b",
     "config/GMFE69/UIStudio_active.json": "b5c210d842926626541371eeb552e733773c06012c591e4fb420c590215f980b",
     "config/GMFE69/UIStudio_determinevis.json": "010a40f49aa7270e24db16fd952913511db3b14cbb2650ef190b0375b46d0a3c",
@@ -823,7 +824,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "325709bf55c82c159f28487c119b06cc6a33d3aeb13ca379fc3737480396cd55",
+    "config/GMFE69/project.json": "d119838c9345e841d6a9d3e6f34765fc7142c5b81f4ed816aeed09ff7b4c1da2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2371,6 +2372,7 @@
     "src/game/UISUtils_movescreen.c": "ff9dcdd0f19822997dcb6794f1cbc74d35fa68bc17c42ca204fc7eff5b99a890",
     "src/game/UISUtils_siblingenable.c": "5ba15b61d2a7e0d4dfd1d8a4b318ad0dd992e5f548fc7cac55489724a565aff0",
     "src/game/UIStudio.c": "95fcd7161263f47123a0b349fd2b3fbbc0cf6941a884b2d8815ef5fc5809623a",
+    "src/game/UIStudio_activatecontrol.c": "b7dfa59b5df48d5cd0f7d6e28a6fc93c61927b4ada7273dfa90cfa321a49e455",
     "src/game/UIStudio_activatescreen.c": "2ca0413fc8250d8c44b853ad7ab54ba91c964672403ea832da6845d5c2a08637",
     "src/game/UIStudio_active.c": "65f9fb1ea6af8be25aba72e9387ba85f94281ae6d24788b0b04ea987e9be3772",
     "src/game/UIStudio_determinevis.c": "a071363f8d44f208c2a08a50ca9aea451e8c3716c96c07c36f44df5f10d74ca6",
@@ -51561,6 +51563,47 @@
       "discarded_functions": [],
       "object_sha256": "11f54fd18cc5c39c59650d61c99c03fd27bc17db41a10b84d161040c80e1db53",
       "linked_sha256": "8e11d32f205ef7bdd7be760a9eaac480ef77da4a8909d3f2285a98ca6886e3f7"
+    },
+    {
+      "id": "UIStudio_activatecontrol",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 532,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "736a5f25a641c35a1116827d1cc4cdb052b017a1c72a38800091d90a7a251c5b",
+      "linked_sha256": "bbd68f615f434b02444e5dde369a6546e43bc6f64dd28fb768ef457d9c7d6066"
     }
   ],
   "code_map": {
@@ -53732,13 +53775,6 @@
         "file_record": 87,
         "file_name": "UIStudio.c",
         "ranges": [
-          {
-            "address": "0x80087cf4",
-            "size": 532,
-            "kind": "function",
-            "name": "UISInternalActivateControl__FP9UISInfo_tUcUlP16UISControlInfo_tP16UISControlList_tUsUs",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80088120",
             "size": 316,

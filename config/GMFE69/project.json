@@ -1186,7 +1186,8 @@
     "sbasync_download.json",
     "sbasync_done.json",
     "sphere_extents.json",
-    "UIStudio_internalload.json"
+    "UIStudio_internalload.json",
+    "UIStudio_activatecontrol.json"
   ],
   "progress": {
     "code_bytes": 1414572,
