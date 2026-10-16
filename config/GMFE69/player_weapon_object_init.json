@@ -37,24 +37,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a8b7c",
-      "size": 340,
+      "address": "0x800a8874",
+      "size": 1116,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d13c",
-      "size": 16,
+      "address": "0x8000d134",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001421c",
-      "size": 24,
+      "address": "0x80014210",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80188030",
+      "size": 132,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateWeaponTransforms__19CPlayerWeaponObjectFv",
+      "address": "0x800a8874",
+      "size": 776,
+      "binding": 1
+    },
     {
       "name": "Shutdown__19CPlayerWeaponObjectFv",
       "address": "0x800a8b7c",
@@ -70,19 +82,33 @@
   ],
   "externals": {
     "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "BuildScale__7CMatrixF8CVector3": "0x80090aa0",
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
     "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei": "0x800d7090",
     "DestroyWeapon__14CWeaponFactoryFP7CWeapon": "0x800d6c88",
     "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "RotateX__7CMatrixFf": "0x800903cc",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "g_WeaponFactory": "0x801dde58",
-    "g_scene": "0x8019484c"
+    "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "stricmp": "0x80151ab8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_pStaticObjectMuzzleFlashPlayer",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "player_weapon_object.cpp",
   "original_file_index": 6418,
   "pooled_sections": [
@@ -92,6 +118,18 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350758"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 5,
+      "address": "0x80350730"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
       "size": 4,
       "address": "0x80350740"
     }
