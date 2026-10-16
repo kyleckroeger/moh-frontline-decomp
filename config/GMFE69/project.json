@@ -1188,7 +1188,8 @@
     "UIStudio_activatecontrol.json",
     "UIStudio_parseinit.json",
     "TibPolygon_process.json",
-    "stretch_head.json"
+    "stretch_head.json",
+    "sdecmut_reftolpc.json"
   ],
   "progress": {
     "code_bytes": 1414572,
