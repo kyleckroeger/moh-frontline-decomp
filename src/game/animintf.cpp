@@ -1,6 +1,6 @@
 // The animation system's start-up and shutdown, which register the user-opcode
 // handlers with the animation module. CAnimCallbacks is named by the mangled
-// symbols.
+// symbols. _AnimIntfOpcodeSkip follows them.
 extern "C" {
 void AnimStShutdown(void);
 int AnimWgtShutdown(void);
@@ -8,6 +8,8 @@ void AnimShutdown(void);
 void AnimInit(void);
 int AnimWgtInit(void);
 void AnimStInit(void);
+int AnimSeqGetOpcodeParameter(void);
+int sprintf(char*, const char*, ...);
 }
 void AnimCallback_Init();
 
@@ -34,6 +36,58 @@ extern "C" void AnimSystem_Init(void) {
     AnimCallback_Init();
 }
 
-// CAnimCallbacks::_AnimIntfOpcodeSkip and _AnimIntfOpcodeProcess follow in
-// the original file; the skip handler is drafted in scratch but not matched,
-// so this unit covers the start-up and shutdown only.
+// The skip handler consumes the parameters of the user opcodes it knows
+// (the opcode values and their parameter counts are read from the code; their
+// meanings are unknown) and formats a message for any other opcode; the
+// message buffer is not used further.
+int CAnimCallbacks::_AnimIntfOpcodeSkip(void*, unsigned short opcode, unsigned long) {
+    int result = 0;
+
+    switch (opcode) {
+    case 0xC900:
+        result = 1;
+        break;
+    case 0xC80D:
+    case 0xC80E:
+    case 0xC80F:
+    case 0xC811:
+    case 0xC812:
+    case 0xCA00:
+    case 0xCA0A:
+    case 0xCA13:
+        AnimSeqGetOpcodeParameter();
+        result = 1;
+        break;
+    case 0xC80B:
+        AnimSeqGetOpcodeParameter();
+        AnimSeqGetOpcodeParameter();
+        result = 1;
+        break;
+    case 0xC803:
+    case 0xC804:
+    case 0xC805:
+    case 0xC808:
+    case 0xC809:
+    case 0xC80C:
+        result = 1;
+        break;
+    case 0xC806:
+        result = 0;
+        break;
+    default:
+        if ((opcode & 0xE000) == 0xE000) {
+            char message[80];
+
+            sprintf(message, "Opcode Parameter Not Processed: %x\n", opcode);
+        } else {
+            char message[80];
+
+            sprintf(message, "Invalid User Animation Opcode: %x\n", opcode);
+        }
+        break;
+    }
+    return result;
+}
+
+// CAnimCallbacks::_AnimIntfOpcodeProcess follows in the original file and is
+// not part of this unit.

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 754640,
+    "matching_code_bytes": 754984,
     "total_executable_code_bytes": 1414572,
-    "percent": 53.34758499390628,
+    "percent": 53.3719033036141,
     "categories": {
-      "reconstructed_game": 533124,
+      "reconstructed_game": 533468,
       "restored_library": 221516
     },
-    "matching_functions": 4330
+    "matching_functions": 4331
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -329,7 +329,7 @@
     "config/GMFE69/animdb.json": "144058a2faa5ca6e23c0083279d94f085d536c0982b14d820d0e8984aca5f620",
     "config/GMFE69/animemot.json": "dda9f478a5e308bf6a5b89f4e4b4d1e0fabdd9f1a41a1984adbbda2cf689184b",
     "config/GMFE69/animemot_endian.json": "4024b1849707ae3ec2bf1adca9a8d68f931e508ea3d2985166b7073b60839255",
-    "config/GMFE69/animintf.json": "e91af6bf29eeff53f9eebe801ede9cf93426f363777b7aeba4ab4fbbfc53a675",
+    "config/GMFE69/animintf.json": "e36a2b4f70139bc847eb1ec7a8807388408bae92750237b0bc4c1241e8d21915",
     "config/GMFE69/animmorph.json": "fde4d4e52d237e161f26b1ce600e179cae840da627629f27036833be76bacc3b",
     "config/GMFE69/animmorph_as.json": "24a859903323347f1a0174446ef22652fe986515f521e5e912db773e582d174a",
     "config/GMFE69/animmorph_dtor.json": "4c07a2b66746cfdb466d7c0a56247186ac3080cb983d3621e828a21662ecac59",
@@ -2419,7 +2419,7 @@
     "src/game/animdb.cpp": "4efceebf62fc3c040ccb7b0fb88c250a727ee135d842cc2972f146147153983f",
     "src/game/animemot.cpp": "d262253f736c6e9824e5ffe86a57d78758e052c56e78a1a9f201096659f1705b",
     "src/game/animemot_endian.cpp": "234dd3cd52640295f2d0e682bb206859dedf8e8d203e16c1673944221d062c6a",
-    "src/game/animintf.cpp": "30da38919557e3702eab8683fdc04613b8d4720da1b24216908f957e8ce63ca5",
+    "src/game/animintf.cpp": "36b84647291e76d3ee3b363eca0626889dd854599783e18e854e72eb7a6e2013",
     "src/game/animmorph.cpp": "def84f4bdd60ed576a7b99ba68c7b82c234b29c015a6a1cc0b783f78db0343fe",
     "src/game/animmorph_as.cpp": "34d671d6f3e3c918326fa77ebb86c044ea15692bc23caddaa2401883f5952138",
     "src/game/animmorph_dtor.cpp": "6521fc2f47cbe35266b08dfeeae7573a720f8a6f74438c8d3b20dc0d5f5cda04",
@@ -18021,8 +18021,8 @@
     {
       "id": "animintf",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 104,
+      "functions": 3,
+      "code_bytes": 448,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -18054,8 +18054,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e8672c70cea5a6289623d4e6d2f542eb434a81fdd2857e38790625d4903ac6c0",
-      "linked_sha256": "6fb46bb6651c48da1021e622d0fe471e3d3817d12c0b7a2a7d3787addb40d2d6"
+      "object_sha256": "b737cf1553be00635db301e2a3912f9a43a1422001e3110b83f7f59235b06412",
+      "linked_sha256": "28e00e52e94645cf538e8e9d35fe58d1cba5dfa5035b03f2e2ed3387d7593dce"
     },
     {
       "id": "bsschedule",
@@ -52892,13 +52892,6 @@
         "file_record": 49,
         "file_name": "animintf.cpp",
         "ranges": [
-          {
-            "address": "0x80064570",
-            "size": 344,
-            "kind": "function",
-            "name": "_AnimIntfOpcodeSkip__14CAnimCallbacksFPvUsUl",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800646c8",
             "size": 1492,
