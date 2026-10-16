@@ -474,7 +474,6 @@
     "propdat_bsp.json",
     "propdat_core.json",
     "saems_counter.json",
-    "soundschedule_shutdown.json",
     "targimpl_stop.json",
     "targimpl_step.json",
     "targimpl_post.json",

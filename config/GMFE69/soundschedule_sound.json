@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x80047310",
-      "size": 328,
+      "size": 1160,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a664",
-      "size": 16,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011744",
-      "size": 24,
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016f458",
+      "size": 362,
       "type": 1
     }
   ],
@@ -68,11 +74,24 @@
       "address": "0x8004736c",
       "size": 236,
       "binding": 1
+    },
+    {
+      "name": "AddSound__13SoundScheduleFQ213SoundSchedule24ESoundScheduleObjectTypeP10ISceneNodeP8CVector3PviiiiiP8BSObject12EBSEventEnumfbi",
+      "address": "0x80047458",
+      "size": 656,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__13SoundScheduleFv",
+      "address": "0x800476e8",
+      "size": 176,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_EndEvent__FPvi": "0x800ec004",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "DebugMsg__FPCce": "0x80018c88",
     "g_FreeRecordList": "0x8034e8e0",
     "memcpy": "0x800094f8"
   },
@@ -87,5 +106,16 @@
     "g_FreeRecordList"
   ],
   "original_file": "soundschedule.cpp",
-  "original_file_index": 1712
+  "original_file_index": 1712,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f810"
+    }
+  ]
 }
