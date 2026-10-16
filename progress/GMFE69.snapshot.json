@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 776324,
+    "matching_code_bytes": 777684,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.88048681862782,
+    "percent": 54.97662897328662,
     "categories": {
-      "reconstructed_game": 554808,
+      "reconstructed_game": 556168,
       "restored_library": 221516
     },
-    "matching_functions": 4364
+    "matching_functions": 4365
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -413,6 +413,7 @@
     "config/GMFE69/bsbifunc_explosion.json": "fc49d0be0845512b6fb9ef9e3e595010bd9edfcd7c7ce7157eb3dfe5618874f3",
     "config/GMFE69/bsbifunc_floatingbone.json": "4f816f5021817a4755409f663f829bef4132e3f47ee112771d5a855732c912bd",
     "config/GMFE69/bsbifunc_fog.json": "c8ae4a1fa92e445dbfc3a032e967e23e33893f9c25f8a1282cef08c881d5ee8d",
+    "config/GMFE69/bsbifunc_getpropbyid.json": "b14f02bb4ac846ade09cad4f1a780851c2c1df8f39697db7c019e94bb426e942",
     "config/GMFE69/bsbifunc_givegrenade.json": "cb8671af1ad9780e1c867134e78c90263bba01e1c715c9318d49a01d1530372b",
     "config/GMFE69/bsbifunc_grenade.json": "8f2a7dbce53f952122b15d9646982aa11fa2cc22ae7a096b050609df4d0ed694",
     "config/GMFE69/bsbifunc_ground.json": "69e8185c13a7c676e7c10fdb8a5c04bdf98c4b45c6c4a3e1b02442d8cd6754ba",
@@ -829,7 +830,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "62a4a4a72a76a523cc91765cb5b7484833000c9fcb83986d8e09d10e4e9c1355",
+    "config/GMFE69/project.json": "8054d35fa0133d9f780e5d1f1e4488e28469dea08cae4328b343431a5db3419e",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2505,6 +2506,7 @@
     "src/game/bsbifunc_explosion.cpp": "1f35afcb1b0e551f5fec40a59f4928c4d70ce7cbd0d89f5fa91586c02d2669d1",
     "src/game/bsbifunc_floatingbone.cpp": "6ebfc4da3b458e17bf8dbdaa06e9bcaf75feb33b7aaa72f14b4da7844719dfec",
     "src/game/bsbifunc_fog.cpp": "fd522e0e8ab814781afcd161c73dce95a859d9b0a627aef98005b7c0d06585e4",
+    "src/game/bsbifunc_getpropbyid.cpp": "57dcf007dce4181644197a6c235dade7eeeb6de36bc8d27bf8195fecc4e64084",
     "src/game/bsbifunc_givegrenade.cpp": "761516467a3d60b8231c64b5d1a74489b45f34a12dc4c057a70557f5c1afea00",
     "src/game/bsbifunc_grenade.cpp": "f7d8842fcd240b6d249925b6eb46508aee856128197ac23b2e07cf335b1716a7",
     "src/game/bsbifunc_ground.cpp": "66788db093b932478b7f56325762cb374c7d12d4bb6c88c98dbc85ba1fb88358",
@@ -51852,6 +51854,45 @@
       "discarded_functions": [],
       "object_sha256": "e4d3abc2a0289324d6f2174ad93de135211b09fa9038f31ef1132babe2320076",
       "linked_sha256": "ede0fd899f992bbc32582f0d4375399c3aa502d37d52d1addbe3b82910e805b8"
+    },
+    {
+      "id": "bsbifunc_getpropbyid",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1360,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "70fbb21ef5b09dc7a42c58d05ff008a00d279aef371fa5d8a62fbd609d44b23d",
+      "linked_sha256": "cc7c183aef7f4b426c7b1d1bdee8df34668f3d809094439e21d8ab7362f463ee"
     }
   ],
   "code_map": {
@@ -52089,13 +52130,6 @@
             "size": 3220,
             "kind": "function",
             "name": "SetMood__14CSoldierObjectF9EMoodType",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80025174",
-            "size": 1360,
-            "kind": "function",
-            "name": "BIFunc_GetPropById__FPPiPv",
             "evidence": "exception-index"
           },
           {
