@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x8009d5f8",
-      "size": 52,
+      "size": 536,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cdac",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013ed4",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,15 +62,103 @@
       "address": "0x8009d5f8",
       "size": 52,
       "binding": 1
+    },
+    {
+      "name": "UpdateDeathSequence__13CPlayerObjectFf",
+      "address": "0x8009d62c",
+      "size": 484,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "GetLookMatrix__14CSoldierObjectFR7CMatrix": "0x800aba4c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "SoundSetMasterVolume__Fi": "0x800ed018",
+    "atan2": "0x80143920",
+    "cos": "0x80143228",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "player.cpp",
-  "original_file_index": 6101
+  "original_file_index": 6101,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803505c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035053c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803505c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803505c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8035055c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x803505cc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350558"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350568"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x803505d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350540"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x803505d4"
+    }
+  ]
 }
