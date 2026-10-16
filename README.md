@@ -4,7 +4,7 @@ An early matching decompilation of **Medal of Honor: Frontline** for GameCube, t
 
 [![Verified progress snapshot](https://github.com/kyleckroeger/moh-frontline-decomp/actions/workflows/progress.yml/badge.svg)](https://github.com/kyleckroeger/moh-frontline-decomp/actions/workflows/progress.yml)
 
-**See [current matching progress and unfinished functions on decomp.dev](https://decomp.dev/kyleckroeger/moh-frontline-decomp).** The project follows the structure and verification rules of the sibling [Medal of Honor: Rising Sun decompilation](https://github.com/lifewillbeokay/moh-rising-sun), whose CC0 tooling it adapts. Accepted source is checked against the original executable as part of a complete rebuilt-image comparison; the remainder stays original binary context. AI-assisted contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
+The project follows the structure and verification rules of the sibling [Medal of Honor: Rising Sun decompilation](https://github.com/lifewillbeokay/moh-rising-sun), whose CC0 tooling it adapts. Accepted source is checked against the original executable as part of a complete rebuilt-image comparison; the remainder stays original binary context. AI-assisted contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Progress counts verified, nonoverlapping source-built function bytes against all bytes in the original executable sections (`.init` and `.text`). Data and BSS earn no code-progress credit; neither do linker-generated tables or original context. See [how progress is verified and published](docs/Progress.md).
 

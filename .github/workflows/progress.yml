@@ -21,10 +21,3 @@ jobs:
         run: python3 -m unittest discover -s tests -v
       - name: Validate snapshot inputs and export objdiff v2 report
         run: python3 tools/progress_report.py
-      - name: Upload decomp.dev report
-        uses: actions/upload-artifact@v4
-        with:
-          name: GMFE69_report
-          path: build/progress/report.json
-          if-no-files-found: error
-          retention-days: 90

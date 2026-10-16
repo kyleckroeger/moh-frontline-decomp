@@ -36,7 +36,7 @@ published reference, without inventing types or boundaries.
 | gc-wii-binutils 2.42-2 | `as`/`ld`/`objdump`/`readelf` for PowerPC |
 | wibo 1.0.3 | runs the Windows compilers on Linux/macOS |
 | CodeWarrior `GC/1.2.5n` | working SDK compiler profile (`tools/compilers.json`) |
-| objdiff v2 report → decomp.dev | published progress artifact (`tools/progress_report.py`) |
+| objdiff v2 report | progress export from the verified snapshot (`tools/progress_report.py`) |
 | Project Python tools | complete-image verification, file map, dependency scan, unit porting |
 
 ### Worth adding — free and local (candidates to evaluate)
@@ -123,7 +123,6 @@ Exit: faster iteration on functions that are close but not yet byte-exact.
 
 1. Broaden mutation tests.
 2. Test in Dolphin via its GDB stub; report runtime separately from matching.
-3. ~~Register the project on decomp.dev~~ — done; see `docs/Progress.md`.
 
 Exit: runtime status is measured, not assumed.
 

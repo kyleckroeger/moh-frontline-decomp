@@ -1,11 +1,9 @@
-# Progress reports and decomp.dev
+# Progress reports
 
 The project exports the [objdiff report v2 schema](https://github.com/encounter/objdiff/blob/0c48d711c7bd51f791b353d7d85ba948b277e2f2/objdiff-core/protos/report.proto)
 using its own byte-verification tooling, adapted from
-[moh-rising-sun](https://github.com/lifewillbeokay/moh-rising-sun). GitHub Actions
-uploads `report.json` in an artifact named `GMFE69_report`, as required by the
-[decomp.dev integration guide](https://decomp.wiki/tools/decomp-dev).
-There is no decomp.dev-specific repository metadata file.
+[moh-rising-sun](https://github.com/lifewillbeokay/moh-rising-sun). CI generates
+`build/progress/report.json` from the committed snapshot.
 
 ## Verification boundary
 
@@ -57,13 +55,3 @@ Groups are labeled `[local symbols only]`, `[symbol evidence]` or
 `[inferred file group]`; functions without a recovered file stay under
 "Unknown file". Data, BSS, linker tables and original
 context earn no code credit. No fuzzy partial-match credit is used. Runtime is untested.
-
-## decomp.dev
-
-The project is registered on decomp.dev as **Medal of Honor: Frontline**
-(GameCube): <https://decomp.dev/kyleckroeger/moh-frontline-decomp>. The site reads
-the `GMFE69_report` artifact from successful default-branch workflow runs and
-polls for new reports, so its figures can trail the latest push until the next
-poll. The page shows the published snapshot, not a rebuild: its numbers are
-only as current as the last locally verified snapshot that was pushed. The
-decomp.dev GitHub app (faster updates and PR comments) is optional.

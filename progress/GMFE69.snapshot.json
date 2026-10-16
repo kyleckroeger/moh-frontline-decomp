@@ -3218,7 +3218,7 @@
     "tools/import_disc.py": "a76b0fc8a963fa5e26e432e8261c26f199989c7e2fc2c90cf0116878db15597b",
     "tools/objdiff_config.py": "4133276adf513df6f4aad3d70df298f0bb0f8ced4ae1abc72703e8e0dc9bb13a",
     "tools/port_unit.py": "768ce140696c14f7bf9439fe71eb841459e1e6abde7dea47056ad770ce80fc07",
-    "tools/progress_report.py": "6f77d4f04165a2875275be1fe3d5a84fe128690c3b850c7ea3aaf1e1e307be1f",
+    "tools/progress_report.py": "d406954b49cb8ed5318859687b215544f55237944c45ce655354f935538dae36",
     "tools/project_build.py": "31d9424038146382f004e3454c38c45874ecc8ac21c74c32ffcd388bdbbb88fe",
     "tools/reconstruct.py": "ae713fceeb3eef9f113af483ad5e3d5d6f1123fc424d0595099247e3e07a4cf2",
     "tools/sdk_build.py": "7e3412b31c53a289d28b6824fe8c348cd153eb4718c0f5fd15fb0489880e093b",

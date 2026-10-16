@@ -2,7 +2,7 @@
 """Export objdiff v2 progress from a locally verified, source-pinned snapshot.
 
 CI validates the snapshot's inputs; it does not possess or rebuild the game.
-See docs/Progress.md for the verification boundary and decomp.dev contract.
+See docs/Progress.md for the verification boundary and counting rules.
 """
 import argparse
 import hashlib
