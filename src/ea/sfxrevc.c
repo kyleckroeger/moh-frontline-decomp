@@ -1,4 +1,10 @@
-/* EA's reverb set-up file (sfxrevc.c) from 0x80167ffc to its end.
+/* EA's reverb set-up file (sfxrevc.c) from 0x80167c18 to its end.
+   SNDMIXI_initfx sets up a version-2 effect's filters for the chosen
+   output channel count: it allocates each filter (sized by type through
+   filtersizetable), creates it and passes its parameters (16-bit values
+   from the module, some scaled by 256, and the rate scaled by 256), records
+   filters with an output channel in the head table through mapchannel, and
+   connects the filters as the connection list says.
    SNDMIXI_initfx2 copies a version-2 effect file's header, finds the
    highest output channel count it has filters for (from the mixer's output
    count down), walks past the filter modules (each sized by its type
@@ -13,10 +19,10 @@
    prime length allocated and cleared). MIX_restorereverb clears the
    mixer's reverb state, restores the second-generation effects when they
    were initialised, frees the eleven filter-bank buffers and clears the
-   reverb flag. SNDMIXI_initfx before them is not part of the unit. The
-   file is compiled with -inline on (no automatic inlining), as MIX_initreverb
-   calls findprime out of line. The header, mixer and filter-bank views are
-   inferred; the effect globals and callbacks belong to sdfx.c. */
+   reverb flag. The file is compiled with -inline on (no automatic
+   inlining), as MIX_initreverb calls findprime out of line. The header,
+   module, mixer and filter-bank views are inferred; the effect globals and
+   callbacks belong to sdfx.c. */
 struct MIXFXFILTHEADER;
 
 /* inferred view of a version-2 fx header: a filter count and an entry count
@@ -90,6 +96,147 @@ extern unsigned char* conlist;
 extern int SNDMIXfxv2inited;
 extern SNDFBENTRYVIEW sndfb[11];
 extern int sndfxnummodules[3];
+
+struct SRCSTATE;
+struct LPFRCSTATE;
+struct LPFSTATE;
+struct HPFSTATE;
+struct BPFSTATE;
+struct RESONSTATE;
+struct AMPLFSTATE;
+struct ECHOSTATE;
+struct MIXERSTATE;
+struct SPLITSTATE;
+
+void SFILTER_createSOURCE(SRCSTATE*);
+void SFILTER_createLPFRC(LPFRCSTATE*);
+void SFILTER_modifyLPFRC(LPFRCSTATE*, int*);
+void SFILTER_createLPFFIR8(LPFSTATE*);
+void SFILTER_modifyLPFFIR8(LPFSTATE*, int*);
+void SFILTER_createHPFFIR8(HPFSTATE*);
+void SFILTER_modifyHPFFIR8(HPFSTATE*, int*);
+void SFILTER_createBPFFIR8(BPFSTATE*);
+void SFILTER_modifyBPFFIR8(BPFSTATE*, int*);
+void SFILTER_createRESON(RESONSTATE*);
+void SFILTER_modifyRESON(RESONSTATE*, int*);
+void SFILTER_createAMPLF(AMPLFSTATE*);
+void SFILTER_modifyAMPLF(AMPLFSTATE*, int*);
+void SFILTER_createECHO(ECHOSTATE*);
+void SFILTER_modifyECHO(ECHOSTATE*, int*);
+void SFILTER_createMIX(MIXERSTATE*);
+void SFILTER_createSPLIT(SPLITSTATE*);
+extern "C" void SFILTER_connect(void*, void*, unsigned char, unsigned char);
+
+extern MIXFXHEADERVIEW* pheaderinfo;
+extern void** pfilterlist;
+extern void** phead;
+extern unsigned char* plisthead;
+extern unsigned char* pconhead;
+extern int filtersizetable[];
+extern unsigned char mapchannel[6][6][6];
+
+void SNDMIXI_initfx(int rate) {
+    unsigned char* module;
+    unsigned char* connection;
+    int params[4];
+    int last;
+    int count;
+    int i;
+
+    pheaderinfo = &filehead;
+    phead = (void**)SNDMEMI_allocz(28);
+    memset(phead, 0, 28);
+    last = validstructoutputs - 1;
+    plisthead = modlist;
+    pconhead = conlist;
+    count = SNDI_getb(&pheaderinfo->filtercount[last], 4);
+    pfilterlist = (void**)SNDMEMI_allocz(count * 4);
+    module = plisthead;
+    for (i = 0; i < count; i++) {
+        pfilterlist[i] = SNDMEMI_allocz(filtersizetable[*module]);
+        memset(params, 0, 16);
+        switch (*module) {
+        case 0:
+            SFILTER_createSOURCE((SRCSTATE*)pfilterlist[i]);
+            break;
+        case 1: {
+            LPFRCSTATE* filter = (LPFRCSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 4, 2) << 8;
+            params[1] = rate << 8;
+            params[2] = SNDI_getb(module + 6, 2);
+            SFILTER_createLPFRC(filter);
+            SFILTER_modifyLPFRC(filter, params);
+            break;
+        }
+        case 2: {
+            LPFSTATE* filter = (LPFSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 2, 2) << 8;
+            params[1] = rate << 8;
+            SFILTER_createLPFFIR8(filter);
+            SFILTER_modifyLPFFIR8(filter, params);
+            break;
+        }
+        case 3: {
+            HPFSTATE* filter = (HPFSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 2, 2) << 8;
+            params[1] = rate << 8;
+            SFILTER_createHPFFIR8(filter);
+            SFILTER_modifyHPFFIR8(filter, params);
+            break;
+        }
+        case 4: {
+            BPFSTATE* filter = (BPFSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 4, 2) << 8;
+            params[1] = SNDI_getb(module + 6, 2) << 8;
+            params[2] = rate << 8;
+            SFILTER_createBPFFIR8(filter);
+            SFILTER_modifyBPFFIR8(filter, params);
+            break;
+        }
+        case 5: {
+            RESONSTATE* filter = (RESONSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 2, 2) << 8;
+            params[1] = rate << 8;
+            params[2] = SNDI_getb(module + 4, 2) << 8;
+            params[3] = SNDI_getb(module + 6, 2);
+            SFILTER_createRESON(filter);
+            SFILTER_modifyRESON(filter, params);
+            break;
+        }
+        case 6: {
+            AMPLFSTATE* filter = (AMPLFSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 2, 2);
+            SFILTER_createAMPLF(filter);
+            SFILTER_modifyAMPLF(filter, params);
+            break;
+        }
+        case 7: {
+            ECHOSTATE* filter = (ECHOSTATE*)pfilterlist[i];
+            params[0] = SNDI_getb(module + 2, 2);
+            params[1] = rate << 8;
+            params[2] = SNDI_getb(module + 4, 2) << 8;
+            SFILTER_createECHO(filter);
+            SFILTER_modifyECHO(filter, params);
+            break;
+        }
+        case 8:
+            SFILTER_createMIX((MIXERSTATE*)pfilterlist[i]);
+            break;
+        case 9:
+            SFILTER_createSPLIT((SPLITSTATE*)pfilterlist[i]);
+            break;
+        }
+        if (module[1])
+            phead[mapchannel[validstructoutputs - 1][sndmix.outputs - 1][module[1] - 1]] = pfilterlist[i];
+        module += filtermodsizetable[*module];
+    }
+    connection = pconhead;
+    for (i = 0; i < SNDI_getb(&pheaderinfo->entrycount[last], 4); i++) {
+        SFILTER_connect(pfilterlist[SNDI_getb(connection, 4)], pfilterlist[SNDI_getb(connection + 4, 4)], connection[8],
+                        connection[9]);
+        connection += 12;
+    }
+}
 
 void SNDMIXI_initfx2(int which, MIXFXFILTHEADER* header) {
     int count;

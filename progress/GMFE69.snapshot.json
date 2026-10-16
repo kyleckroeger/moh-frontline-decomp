@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 766992,
+    "matching_code_bytes": 767988,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.22078197504263,
+    "percent": 54.29119196477804,
     "categories": {
-      "reconstructed_game": 545476,
+      "reconstructed_game": 546472,
       "restored_library": 221516
     },
-    "matching_functions": 4351
+    "matching_functions": 4352
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -977,7 +977,7 @@
     "config/GMFE69/sfsrc.json": "ec214b854de58ec9d4a94738f7e2d01b63142489e2a6767301f1d19df63708bf",
     "config/GMFE69/sfxlevel.json": "d9983bfc694a5b63484e800e9bcc4eaf39b354abc5d3605cc89b1b6959048ea3",
     "config/GMFE69/sfxrev.json": "8ad871503b98219e95bf063090f5a0ac46894bfe8f07ec0759411d3e654a68c4",
-    "config/GMFE69/sfxrevc.json": "3d2504d8af2068d4fb7fb8fb0d2107a50b88954316c7f68fcbdb3d181805b69d",
+    "config/GMFE69/sfxrevc.json": "60e8a068607e2697329ae1d91f217c36b4a840a361b14d911c3b27e68e51acd4",
     "config/GMFE69/sgetdata.json": "a28a08c3d3d8be7272dabffc0a2720543b091881baff0e1c7988c82978e4918a",
     "config/GMFE69/sgetpvol.json": "ee69cb8b807ef51113d974130ba2eeed9be612d7b0e7f42078fdaf455158f022",
     "config/GMFE69/sgettag.json": "73b507f500d3409b0fbef821e9d07368ad18c50f36d76bd48f453f8c4c994f77",
@@ -2096,7 +2096,7 @@
     "src/ea/sfsrc.c": "45a8e856a1ed709b59d651d51f19953d9ea89dfcf997a63da0a14576e32ae00f",
     "src/ea/sfxlevel.c": "d5cc428d31c9b52511b7f1d89cc4f71b91b5d211dd371c967a25db2c13e3d5cf",
     "src/ea/sfxrev.c": "caaf966f65acfa80284e06a6250db58dc8d251791d6199b80bd1aa25cdd563bb",
-    "src/ea/sfxrevc.c": "53b7b09e8759e91714906475de5328102ff533199422c53ebb438d8d1241b831",
+    "src/ea/sfxrevc.c": "39b9573d5927cf1dd7917d51629f9506aaaab62db910b10f02ee3c15f2626c17",
     "src/ea/sgetdata.c": "096ddd2dc98110c34425bdb3de01ab682d37bd2e9742004166afaa1627ae5f89",
     "src/ea/sgetpvol.c": "01014858d4c5a5b4d701b63b2de5fe2371ec80bc3743918050253bb49a21382e",
     "src/ea/sgettag.c": "87aac6e484c3dad29d22f0042085ddcd0cdc61b350f4cc33646fb8e706143860",
@@ -22653,8 +22653,8 @@
     {
       "id": "sfxrevc",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 1732,
+      "functions": 5,
+      "code_bytes": 2728,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -22686,8 +22686,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7f32935c505840da08b8848cce7aaf8d7804e6796abc68717ec4ef70fe455329",
-      "linked_sha256": "f99b5b193a6f01ffe4fb5100c410c392e42ef6770b571d6f2842eb0a34f69065"
+      "object_sha256": "6f046cc635cf6cc54ab07623ceb4366c851ad841a29feb21bd40f3c03dedbb05",
+      "linked_sha256": "2f2d52de99366c16e242a4750e752bf1e91691de891955291e2d48a18d589f1c"
     },
     {
       "id": "saemsstr",
@@ -57209,20 +57209,6 @@
             "size": 1124,
             "kind": "function",
             "name": "rsflc",
-            "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/sfxrevc.c [symbol evidence]",
-        "file_record": 548,
-        "file_name": "sfxrevc.c",
-        "ranges": [
-          {
-            "address": "0x80167c18",
-            "size": 996,
-            "kind": "function",
-            "name": "SNDMIXI_initfx__Fi",
             "evidence": "private-reference"
           }
         ]
