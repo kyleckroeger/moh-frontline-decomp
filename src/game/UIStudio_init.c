@@ -14,8 +14,16 @@
 // 0xffff are skipped; patched sub-control events get their state cleared),
 // the map table and the map data, the fixup fields (an index into the maps,
 // or 0 when out of range) and the object data. UISScrData_t is named by the
-// mangled symbol; its views and the separate loop counters are inferred. The
-// rest of the file is in other units.
+// mangled symbol; its views and the separate loop counters are inferred.
+// The file-local _ParseRateFncs, after it, advances the running rate
+// functions (52-byte records in the table at +72; with flag bit 2 set and the
+// unneeded ones removed before and after) by the elapsed time: for each
+// whole period passed it runs the function's code (with its id, the period
+// start and, without an action, the period; the result scales the step) and,
+// with an action, steps the action's value towards its target by the rate,
+// stopping there (state 1) and running the completion code. The rate
+// function view, the hoisted declarations and the state values are inferred.
+// The rest of the file is in other units.
 typedef void (*UISErrorFnc_t)(void);
 
 extern UISErrorFnc_t RuntimeErrorFnc;
@@ -57,6 +65,105 @@ struct UISInfo_t {
     unsigned long* stackA4;
     unsigned long** stackA8;
 };
+
+struct UISScreen_t;
+struct UISControlInfo_t;
+struct UISStackInfo_t;
+
+struct UISParam_t {
+    unsigned long value;
+};
+
+/* inferred: a rate function record (52 bytes) */
+struct UISRateFnc_t {
+    unsigned long id;
+    void* pc;
+    long time;
+    long last;
+    unsigned long period;
+    unsigned long state;
+    UISControlInfo_t* control;
+    UISScreen_t* screen;
+    unsigned long action;
+    float target;
+    float rate;
+    void* donePc;
+    UISControlInfo_t* actionControl;
+};
+
+void UISRemoveUnNessaryRateFncs(UISInfo_t*);
+float* UISGetActionPtrValue(unsigned long, UISControlInfo_t*);
+void UISExecuteFnc(UISInfo_t*, UISScreen_t*, UISControlInfo_t*, UISStackInfo_t*, void*, unsigned long, UISParam_t*,
+                   unsigned long, UISParam_t*, unsigned char, long, UISParam_t*);
+
+static void _ParseRateFncs(UISInfo_t* info, unsigned long elapsed) {
+    UISRateFnc_t* rate;
+    unsigned long i;
+    unsigned long count;
+    UISScreen_t* screen;
+    UISStackInfo_t* stack;
+    long remaining;
+    UISParam_t params[3];
+    float result;
+    UISRemoveUnNessaryRateFncs(info);
+    stack = (UISStackInfo_t*)&info->stack6C;
+    info->flags |= 4;
+    count = info->count44;
+    for (i = 0; i < count; i++) {
+        rate = &((UISRateFnc_t*)info->table48)[i];
+        if (rate->state == 2) {
+            screen = rate->screen;
+            if (rate->period != 0) {
+                rate->time += elapsed;
+                remaining = rate->time - rate->last;
+                while (remaining >= (long)rate->period) {
+                    float value;
+                    remaining -= rate->period;
+                    rate->last += rate->period;
+                    if (rate->pc) {
+                        if (rate->state != 2)
+                            break;
+                        result = 1.0f;
+                        unsigned long n;
+                        params[0].value = rate->id;
+                        params[1].value = rate->last;
+                        if (!rate->action) {
+                            params[2].value = rate->period;
+                            n = 3;
+                        } else {
+                            n = 2;
+                        }
+                        UISExecuteFnc(info, screen, rate->control, stack, rate->pc, n, params,
+                                      0, 0, 0, -1, (UISParam_t*)&result);
+                        value = result;
+                    } else {
+                        value = 1.0f;
+                    }
+                    if (rate->action) {
+                        float* target = UISGetActionPtrValue(rate->action, rate->actionControl);
+                        float step = rate->rate;
+                        if (value < 0.0f)
+                            value = 1.0f;
+                        float next = step * value + *target;
+                        if ((step > 0.0f && next < rate->target) || (step < 0.0f && next > rate->target)) {
+                            *target = next;
+                        } else {
+                            *target = rate->target;
+                            rate->state = 1;
+                            if (rate->donePc) {
+                                params[0].value = rate->id;
+                                UISExecuteFnc(info, screen, rate->control, stack, rate->donePc,
+                                              1, params, 0, 0, 0, -1, 0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    info->flags &= ~4;
+    UISRemoveUnNessaryRateFncs(info);
+}
 
 struct UISEventRefView {
     unsigned short id;

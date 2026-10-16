@@ -42,23 +42,29 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 908,
+      "size": 1484,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c410",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013484",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_ParseRateFncs__FP9UISInfo_tUl",
+      "address": "0x80088fc0",
+      "size": 576,
+      "binding": 0
+    },
     {
       "name": "PatchScrData__FP12UISScrData_t",
       "address": "0x80088d78",
@@ -79,7 +85,10 @@
     }
   ],
   "externals": {
-    "RuntimeErrorFnc": "0x8034ea88"
+    "RuntimeErrorFnc": "0x8034ea88",
+    "UISExecuteFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP14UISStackInfo_tPvUlP10UISParam_tUlP10UISParam_tUclP10UISParam_t": "0x8008ab18",
+    "UISGetActionPtrValue__FUlP16UISControlInfo_t": "0x8008aa4c",
+    "UISRemoveUnNessaryRateFncs__FP9UISInfo_t": "0x80085744"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -90,5 +99,22 @@
     "RuntimeErrorFnc"
   ],
   "original_file": "UIStudio.c",
-  "original_file_index": 4545
+  "original_file_index": 4545,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350188"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035018c"
+    }
+  ]
 }
