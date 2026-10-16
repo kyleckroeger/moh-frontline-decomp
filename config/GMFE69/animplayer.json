@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80109fa4",
-      "size": 272,
+      "address": "0x80109ed0",
+      "size": 484,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fe0c",
-      "size": 8,
+      "address": "0x8000fe04",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016c10",
-      "size": 12,
+      "address": "0x80016c04",
+      "size": 24,
       "type": 1
     }
   ],
@@ -76,6 +76,12 @@
       "binding": 1
     },
     {
+      "name": "BeginUpdate__15CAnimatedPlayerFf",
+      "address": "0x80109ed0",
+      "size": 212,
+      "binding": 1
+    },
+    {
       "name": "GetFlocoParams__15CAnimatedPlayerFRfRl",
       "address": "0x8010a094",
       "size": 20,
@@ -89,7 +95,10 @@
     }
   ],
   "externals": {
-    "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c"
+    "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
+    "Update__19CLightVolumeManagerFf": "0x80079070",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -98,5 +107,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animplayer.cpp",
-  "original_file_index": 10481
+  "original_file_index": 10481,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351390"
+    }
+  ]
 }
