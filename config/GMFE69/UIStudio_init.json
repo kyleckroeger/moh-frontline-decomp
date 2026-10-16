@@ -42,19 +42,19 @@
     {
       "name": ".text",
       "address": "0x80088c34",
-      "size": 2036,
+      "size": 2880,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c410",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013484",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -69,6 +69,12 @@
       "name": "_ParseRateFncs__FP9UISInfo_tUl",
       "address": "0x80088fc0",
       "size": 576,
+      "binding": 0
+    },
+    {
+      "name": "_ParseObjects__FP9UISInfo_tP11UISScreen_tUlUl",
+      "address": "0x80089428",
+      "size": 844,
       "binding": 0
     },
     {
@@ -96,8 +102,12 @@
     "UISFindEventPC__FP12UISControl_tUl": "0x8008af30",
     "UISFindSubControlEventPC__FP12UISControl_tUsUl": "0x8008aed0",
     "UISGetActionPtrValue__FUlP16UISControlInfo_t": "0x8008aa4c",
+    "UISGetColorAdditive": "0x8008aa34",
+    "UISGetColorMultipler": "0x8008aa40",
     "UISProcessThreadAction__FP9UISInfo_tUc": "0x800852c8",
-    "UISRemoveUnNessaryRateFncs__FP9UISInfo_t": "0x80085744"
+    "UISRemoveUnNessaryRateFncs__FP9UISInfo_t": "0x80085744",
+    "UISSetColorAdditive__Fffff": "0x8008a9fc",
+    "UISSetColorMultipler__Fffff": "0x8008aa18"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -110,9 +120,22 @@
   "original_file": "UIStudio.c",
   "original_file_index": 4545,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 16,
+      "address": "0x80171208"
+    },
+    {
+      "section": ".rodata",
+      "offset": 16,
+      "size": 16,
+      "address": "0x80171218"
+    },
     {
       "section": ".sdata2",
       "offset": 0,

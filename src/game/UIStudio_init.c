@@ -33,7 +33,16 @@
 // enabled state is returned through the last argument. UISControl_t is named
 // by the mangled symbols; its typed view (a second view of the patched
 // control entry), the control state view and the event meanings are inferred.
-// The rest of the file is in other units.
+// The file-local, recursive _ParseObjects, before _ParseMaps in the image,
+// draws a screen control: it runs each screen object's plugin, and for an
+// active control saves the current colour scale and offset (in arrays
+// initialised to 1 and 0), combines them with the control's, calls the draw
+// callback (+24, mode 1, with the control's rectangle), runs the plugins of
+// its sub-controls' events (id 0xffff recurses), then restores the colours
+// and calls the draw callback with mode 2. The plugin, object, colour views,
+// the reuse of one counter for the object and event loops and the mixed
+// direct/local reads of the control's colour scales (which the register use
+// requires) are inferred. The rest of the file is in other units.
 typedef void (*UISErrorFnc_t)(void);
 
 extern UISErrorFnc_t RuntimeErrorFnc;
@@ -45,7 +54,7 @@ struct UISInfo_t {
     unsigned long count0C;
     unsigned long count10;
     unsigned long count14;
-    unsigned long count18;
+    void (*draw)(int, void*);
     unsigned long count1C;
     long screen20;
     long screen24;
@@ -80,7 +89,7 @@ struct UISStackInfo_t;
 
 struct UISEventRefView {
     unsigned short id;
-    unsigned short state;
+    short state;
     unsigned long pc;
 };
 
@@ -176,6 +185,86 @@ void UISRemoveUnNessaryRateFncs(UISInfo_t*);
 float* UISGetActionPtrValue(unsigned long, UISControlInfo_t*);
 int UISExecuteFnc(UISInfo_t*, UISScreen_t*, UISControlInfo_t*, UISStackInfo_t*, void*, unsigned long, UISParam_t*,
                    unsigned long, UISParam_t*, unsigned char, long, UISParam_t*);
+
+typedef void (*UISPluginFnc_t)(unsigned long, unsigned long, int, int, int);
+
+extern "C" float* UISGetColorMultipler(void);
+extern "C" float* UISGetColorAdditive(void);
+void UISSetColorMultipler(float, float, float, float);
+void UISSetColorAdditive(float, float, float, float);
+
+/* inferred: an object record's plugin index */
+struct UISObjectIndexView {
+    unsigned short plugin;
+    unsigned short value02;
+    unsigned long data;
+};
+
+/* inferred: the control state's colour scales and offsets */
+struct UISControlColorView {
+    unsigned long active;
+    char field04[4];
+    char rect[52];
+    float multiply[4];
+    float add[4];
+};
+
+static void _ParseObjects(UISInfo_t* info, UISScreen_t* screen, unsigned long index, unsigned long value) {
+    UISControlColorView* color;
+    UISControl_t* control;
+    unsigned long j;
+    unsigned long k;
+    UISSubControlView* sub;
+    float multiply[4] = {1.0f, 1.0f, 1.0f, 1.0f};
+    float add[4] = {0.0f, 0.0f, 0.0f, 0.0f};
+    if (screen->data) {
+        control = &((UISControl_t*)screen->data->controls)[index];
+        for (k = 0; k < screen->data->objectCount; k++) {
+            UISObjectIndexView* object = &((UISObjectIndexView*)screen->data->objects)[k];
+            if (object->plugin < info->count38) {
+                UISPluginFnc_t fnc = ((UISPluginFnc_t*)info->table3C)[object->plugin];
+                if (fnc)
+                    fnc(object->data, value, 0, 0, 0);
+            }
+        }
+        if (control->control->active) {
+            float* current = UISGetColorMultipler();
+            multiply[0] = current[0];
+            multiply[1] = current[1];
+            multiply[2] = current[2];
+            multiply[3] = current[3];
+            current = UISGetColorAdditive();
+            add[0] = current[0];
+            add[1] = current[1];
+            add[2] = current[2];
+            add[3] = current[3];
+            color = (UISControlColorView*)control->control;
+            UISSetColorMultipler(multiply[0] * ((UISControlColorView*)control->control)->multiply[0],
+                                 multiply[1] * ((UISControlColorView*)control->control)->multiply[1],
+                                 multiply[2] * color->multiply[2], multiply[3] * color->multiply[3]);
+            UISSetColorAdditive(add[0] + color->add[0], add[1] + color->add[1], add[2] + color->add[2], add[3] + color->add[3]);
+            info->draw(1, ((UISControlColorView*)control->control)->rect);
+            for (j = 0; j < control->subCount; j++) {
+                sub = control->subs[j];
+                if (*(unsigned long*)sub->control) {
+                    for (k = 0; k < sub->eventCount; k++) {
+                        UISEventRefView* event = &sub->events[k];
+                        if (event->id == 0xffff) {
+                            _ParseObjects(info, screen, event->pc, value);
+                        } else if (event->state && event->id < info->count38) {
+                            UISPluginFnc_t fnc = ((UISPluginFnc_t*)info->table3C)[event->id];
+                            if (fnc)
+                                fnc(event->pc, value, 0, 0, 0);
+                        }
+                    }
+                }
+            }
+            UISSetColorMultipler(multiply[0], multiply[1], multiply[2], multiply[3]);
+            UISSetColorAdditive(add[0], add[1], add[2], add[3]);
+            info->draw(2, ((UISControlColorView*)control->control)->rect);
+        }
+    }
+}
 
 void UISProcessThreadAction(UISInfo_t*, unsigned char);
 void* UISFindEventPC(UISControl_t*, unsigned long);
@@ -386,7 +475,7 @@ extern "C" void UISInit(UISInfo_t* info, unsigned long screens, unsigned long co
     info->value08 = value;
     info->screen24 = -1;
     info->count0C = 0;
-    info->count18 = 0;
+    info->draw = 0;
     info->count1C = 0;
     info->count10 = 0;
     info->count14 = 0;
