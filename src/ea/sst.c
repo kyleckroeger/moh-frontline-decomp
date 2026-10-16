@@ -15,11 +15,36 @@
 // chunks, parsing data and header chunks. SNDSTREAMCHANNEL, SNDSAMPLEFORMAT,
 // SNDSAMPLEATTR, SNDSAMPLEDESC, SNDLINKNODE, SNDLINKLIST, STREAMCHUNKHDR and
 // TAGGEDPATCH are named by the mangled symbols; their members, the stream
-// records and sndgs/sndss are inferred views.
+// records and sndgs/sndss are inferred views. SNDSTRMI_create takes a free
+// stream slot, lays the stream record, its request nodes, the packet
+// player's memory and the stream buffer out in the caller's memory, creates
+// the packet player and (unless an external stream handle is given) the
+// stream, and registers the service client with the first stream; the
+// packet pointer passing through the 'created' local is an inferred form
+// that reproduces the original's register use.
 extern "C" char sndgs[];
 extern "C" void* sndss[];
 
 struct TAGGEDPATCH;
+
+/* inferred members */
+struct SNDPLAYOPTS {
+    unsigned char unknown00;
+    unsigned char unknown01;
+    unsigned char unknown02;
+    unsigned char unknown03;
+    unsigned char unknown04;
+    unsigned char unknown05;
+    unsigned short unknown06;
+    unsigned short unknown08;
+    short unknown0a;
+    unsigned short unknown0c;
+    unsigned short unknown0e;
+    unsigned short unknown10;
+    unsigned short unknown12;
+    unsigned short unknown14;
+    unsigned short unknown16;
+};
 struct STREAMCHUNKHDR;
 
 /* inferred members */
@@ -60,7 +85,7 @@ extern "C" {
 int SNDSTRM_destroy(int);
 void STREAM_release(int, unsigned char*);
 int memcmp(const void*, const void*, unsigned long);
-int SNDPKTPLAY_start(int, SNDSAMPLEFORMAT*, SNDSAMPLEATTR*, void*);
+int SNDPKTPLAY_start(int, SNDSAMPLEFORMAT*, SNDSAMPLEATTR*, SNDPLAYOPTS*);
 void SNDCTRL_filteradd(int, void*);
 void* STREAM_gettable(int);
 int STREAM_state(int);
@@ -71,6 +96,14 @@ void SNDPKTPLAY_stop(int);
 void SNDSYS_entercritical(void);
 void SNDSYS_leavecritical(void);
 unsigned char* STREAM_get(int);
+void* memset(void*, int, unsigned long);
+int SNDPKTPLAY_overhead(int);
+int SNDPKTPLAY_create(void (*)(void*, void*), void (*)(int, int, void*), void*, void*, int);
+void SNDPKTPLAY_destroy(int);
+void* STREAM_create(int, int, int, void*, int);
+int STREAM_buffersize(int);
+void SNDSTRM_setgreedylevel(int, int);
+int SNDSTRM_purge(int);
 }
 
 // SNDSTRMI_calcdatarate comes first in the original file; it is drafted in
@@ -120,15 +153,16 @@ struct SNDLINKLIST {
 struct SNDSTREAMCHANNEL {
     int handle;
     int voice;
-    int player;
-    unsigned char unknown00c[4];
+    volatile int player;
+    int unknown0c;
     signed char state;
-    unsigned char unknown011[3];
+    unsigned char external;
+    unsigned char unknown012[2];
     SNDSAMPLEFORMAT format;
     SNDSAMPLEFORMAT newFormat;
     SNDSAMPLEATTR attr;
     SNDSAMPLEATTR newAttr;
-    unsigned char packet[24];
+    SNDPLAYOPTS opts;
     unsigned char filter[16];
     void* filterSet;
     unsigned char unknown0f0[4];
@@ -140,6 +174,8 @@ struct SNDSTREAMCHANNEL {
 SNDLINKNODE* SNDSTRMI_getrequestptr(int);
 void SNDLINKI_remove(SNDLINKLIST*, SNDLINKNODE*);
 void SNDLINKI_push(SNDLINKLIST*, SNDLINKNODE*);
+void SNDLINKI_init(SNDLINKLIST*);
+void iSNDserveraddclient(void (*)(void));
 
 /* inferred: moves a request to the stream's finished list */
 static inline void finishrequest(SNDLINKNODE* request) {
@@ -231,7 +267,7 @@ int SNDSTRMI_parseheader(int index, STREAMCHUNKHDR* chunk) {
         stream->newAttr.buffer[0] = 0;
     }
     if (stream->state != 1) {
-        stream->voice = SNDPKTPLAY_start(stream->player, &stream->format, &stream->attr, stream->packet);
+        stream->voice = SNDPKTPLAY_start(stream->player, &stream->format, &stream->attr, &stream->opts);
         if (stream->filterSet)
             SNDCTRL_filteradd(stream->voice, stream->filter);
         stream->state = 1;
@@ -340,7 +376,7 @@ void SNDSTRMI_service(void) {
             stream->attr = stream->newAttr;
             stream->newAttr.buffer[0] = 0;
             SNDPKTPLAY_stop(stream->player);
-            stream->voice = SNDPKTPLAY_start(stream->player, &stream->format, &stream->attr, stream->packet);
+            stream->voice = SNDPKTPLAY_start(stream->player, &stream->format, &stream->attr, &stream->opts);
             if (stream->filterSet)
                 SNDCTRL_filteradd(stream->voice, stream->filter);
             stream->state = 1;
@@ -365,4 +401,73 @@ void SNDSTRMI_service(void) {
     SNDSYS_leavecritical();
 }
 
-// SNDSTRMI_create and the stream functions after it are not reconstructed.
+int SNDSTRMI_create(SNDPLAYOPTS* opts, int requests, int players, void* memory, int size, int handle,
+                    int external) {
+    int count;
+    int i;
+    unsigned char* buffer;
+    SNDSTREAMCHANNEL* stream;
+    unsigned char* packets;
+    int index;
+    int overhead;
+    void* created;
+
+    for (i = 0; i < *(unsigned char*)(sndgs + 71); i++) {
+        if (!sndss[i]) {
+            index = i;
+            goto found;
+        }
+    }
+    return -9;
+found:
+    stream = (SNDSTREAMCHANNEL*)memory;
+    size -= sizeof(SNDSTREAMCHANNEL);
+    memory = (unsigned char*)memory + sizeof(SNDSTREAMCHANNEL);
+    memset(stream, 0, sizeof(SNDSTREAMCHANNEL));
+    created = (unsigned char*)memory + requests * sizeof(SNDLINKNODE);
+    size -= requests * sizeof(SNDLINKNODE);
+    overhead = SNDPKTPLAY_overhead(players);
+    packets = (unsigned char*)created;
+    buffer = (unsigned char*)created + overhead;
+    size -= overhead;
+    SNDLINKI_init(&stream->active);
+    SNDLINKI_init(&stream->finished);
+    for (i = 0; i < requests; i++) {
+        SNDLINKI_push(&stream->finished, (SNDLINKNODE*)memory);
+        memory = (unsigned char*)memory + sizeof(SNDLINKNODE);
+    }
+    stream->player = SNDPKTPLAY_create(SNDSTRMI_releasecallback, SNDSTRMI_framescallback, stream, packets,
+                                       SNDPKTPLAY_overhead(players));
+    if (stream->player < 0)
+        return stream->player;
+    if (external) {
+        stream->handle = handle;
+        stream->external = 1;
+    } else {
+        created = STREAM_create(requests + 2, 1, 1, buffer, size);
+        if (!created) {
+            SNDPKTPLAY_destroy(stream->player);
+            return -9;
+        }
+        stream->handle = (int)created;
+        stream->external = 0;
+        SNDSTRM_setgreedylevel(stream->handle, STREAM_buffersize(stream->handle) / 3);
+    }
+    stream->unknown0c = count = 0;
+    stream->voice = -1;
+    stream->opts = *opts;
+    for (i = 0; i < *(unsigned char*)(sndgs + 71); i++) {
+        if (sndss[i])
+            count++;
+    }
+    if (!count) {
+        iSNDserveraddclient(SNDSTRMI_service);
+        *(void (**)(void))(sndgs + 464) = (void (*)(void))SNDSTRMI_destroyall;
+    }
+    sndss[index] = stream;
+    stream->newAttr.buffer[0] = 0;
+    SNDSTRM_purge(index);
+    return index;
+}
+
+// SNDSTRMI_queue and the stream functions after it are not reconstructed.
