@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010a00c",
-      "size": 168,
+      "address": "0x80109fa4",
+      "size": 272,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000fe0c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016c10",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateLocalBoundingVolume__15CAnimatedPlayerFQ210ISceneNode11EVolumeTypeRC8CVector3RC8CVector3",
+      "address": "0x80109fa4",
+      "size": 104,
+      "binding": 1
+    },
     {
       "name": "GetWorldBoundingVolume__15CAnimatedPlayerCFQ210ISceneNode11EVolumeType",
       "address": "0x8010a00c",
@@ -70,7 +88,9 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
