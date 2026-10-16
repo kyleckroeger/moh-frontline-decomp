@@ -41,20 +41,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800885dc",
-      "size": 404,
+      "address": "0x800882b8",
+      "size": 1208,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c3e8",
-      "size": 8,
+      "address": "0x8000c3e0",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013448",
-      "size": 12,
+      "address": "0x8001343c",
+      "size": 24,
       "type": 1
     }
   ],
@@ -64,16 +64,32 @@
       "address": "0x800885dc",
       "size": 404,
       "binding": 0
+    },
+    {
+      "name": "UISInternalUnloadScreen__FP9UISInfo_tUsUsl",
+      "address": "0x800882b8",
+      "size": 804,
+      "binding": 1
     }
   ],
   "externals": {
+    "UISAddThreadAction__FP9UISInfo_t16UISThreadActionTP19UISThreadGroupInfoTlP10UISParam_t": "0x80085678",
     "UISFindScreen__FP9UISInfo_tUsUs": "0x8008af80",
-    "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t": "0x80085a8c"
+    "UISRemoveUnNessaryRateFncs__FP9UISInfo_t": "0x80085744",
+    "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t": "0x80085a8c",
+    "_ParseInitialize__FP9UISInfo_tP11UISScreen_tUlUl": "0x80089ebc",
+    "_ParseMaps__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlUlP10UISParam_tPSc": "0x80089200",
+    "_ParseTransforms__FP9UISInfo_t18UISTransformActionP11UISScreen_tUl": "0x80089774",
+    "memmove": "0x8013d6e8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_ParseInitialize__FP9UISInfo_tP11UISScreen_tUlUl",
+    "_ParseMaps__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlUlP10UISParam_tPSc",
+    "_ParseTransforms__FP9UISInfo_t18UISTransformActionP11UISScreen_tUl"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "UIStudio.c",
