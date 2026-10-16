@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800816d8",
-      "size": 444,
+      "address": "0x80081454",
+      "size": 1088,
       "type": 1
     },
     {
@@ -51,14 +51,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000c1c0",
-      "size": 36,
+      "address": "0x8000c1b8",
+      "size": 44,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013178",
-      "size": 24,
+      "address": "0x8001316c",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170e98",
+      "size": 17,
       "type": 1
     },
     {
@@ -88,6 +94,12 @@
       "binding": 0
     },
     {
+      "name": "Draw__16CCharacterShadowFR12CDrawContext",
+      "address": "0x80081454",
+      "size": 644,
+      "binding": 1
+    },
+    {
       "name": "__dt__16CCharacterShadowFv",
       "address": "0x800816d8",
       "size": 100,
@@ -107,12 +119,18 @@
     }
   ],
   "externals": {
-    "Draw__16CCharacterShadowFR12CDrawContext": "0x80081454",
+    "GetDepth__7CVolBoxCFv": "0x800c514c",
+    "GetWidth__7CVolBoxCFv": "0x800c515c",
     "IsDrawEnabled__16CCharacterShadowCFv": "0x8008144c",
+    "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
+    "SetDepth__7CVolBoxFf": "0x800c5258",
+    "SetHeight__7CVolBoxFf": "0x800c5268",
     "SetShadowTexture__12CCompartmentFR8CTexture": "0x80074c18",
+    "SetWidth__7CVolBoxFf": "0x800c5278",
     "Set__8CTextureFP9ShapeFileb": "0x80082d6c",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__as__7CVolBoxFRC7CVolBox": "0x800c53f4",
     "__dl__FPv": "0x8001ca2c",
     "__dt__7CVolBoxFv": "0x800c5458",
     "__vt__7CVolBox": "0x801894f4",
@@ -122,6 +140,7 @@
     "g_ProjectionHeight": "0x8034dd4c",
     "g_ShadowAlpha": "0x8034dd44",
     "g_ShadowScale": "0x8034dd50",
+    "g_config": "0x80196a80",
     "g_pImageData": "0x8034ea5c",
     "g_zDeltaMax": "0x8034dd54",
     "g_zDeltaMin": "0x8034ea58"
@@ -156,27 +175,38 @@
     "IsDrawEnabled__16CCharacterShadowCFv"
   ],
   "pooled_sections": [
-    ".rodata",
     ".sdata2"
   ],
   "pool_references": [
     {
-      "section": ".rodata",
+      "section": ".sdata2",
       "offset": 0,
-      "size": 17,
-      "address": "0x80170e98"
+      "size": 4,
+      "address": "0x80350050"
     },
     {
       "section": ".sdata2",
-      "offset": 0,
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350058"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350060"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
       "size": 4,
       "address": "0x80350068"
     },
     {
       "section": ".sdata2",
-      "offset": 4,
+      "offset": 28,
       "size": 4,
-      "address": "0x80350050"
+      "address": "0x8035006c"
     }
   ]
 }

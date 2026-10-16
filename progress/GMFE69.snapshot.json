@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 788092,
+    "matching_code_bytes": 788736,
     "total_executable_code_bytes": 1414572,
-    "percent": 55.71239922746951,
+    "percent": 55.757925365410884,
     "categories": {
-      "reconstructed_game": 566576,
+      "reconstructed_game": 567220,
       "restored_library": 221516
     },
-    "matching_functions": 4381
+    "matching_functions": 4382
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -988,7 +988,7 @@
     "config/GMFE69/sgetdata.json": "a28a08c3d3d8be7272dabffc0a2720543b091881baff0e1c7988c82978e4918a",
     "config/GMFE69/sgetpvol.json": "ee69cb8b807ef51113d974130ba2eeed9be612d7b0e7f42078fdaf455158f022",
     "config/GMFE69/sgettag.json": "73b507f500d3409b0fbef821e9d07368ad18c50f36d76bd48f453f8c4c994f77",
-    "config/GMFE69/shadow.json": "47553d25dc147b7c6d37a2a0b1b7454a51c61ea67e378fcf69ef8d16559e2772",
+    "config/GMFE69/shadow.json": "317ee6fcf5fe0f4b59d577ceb258e8a66fcc7f03cd06a55861aceded6225648b",
     "config/GMFE69/shipass.json": "d500ffaf2e8649ec757e2be06b06d19cdf2a62a3cd479f1d5bc7362b8a5c0ea8",
     "config/GMFE69/signal.json": "11e4665069a531c20eb3bf1455bab453a4193e7fcc258de91c6db16275813b7f",
     "config/GMFE69/signals.json": "1cb5c0350da656f9742c45ef5b90b13140a20386acae7e3b8932ad4e9fc2c20d",
@@ -2887,7 +2887,7 @@
     "src/game/scene_veciter_dtor.cpp": "04568810dd866b90d8937110bbde943d849da887cf409f5638e78d0006826e4e",
     "src/game/scene_veciter_plus.cpp": "ad93d66d1c8007e54b4d61711cdf4de56b871064dc900a76265dd6bdd638136e",
     "src/game/scene_visit.cpp": "8fd272c3dbdda1e7a93131bb4502b6821a15b553425633371432a3a1aac3557c",
-    "src/game/shadow.cpp": "081a998ff5f0217897b09b773b729bba8fd0fc4b3fcd42165ddce490257862f7",
+    "src/game/shadow.cpp": "34e0c5ba9f45935a3151b004eb661b634f49de975228d378e3dfdd16c211dcbf",
     "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
     "src/game/skybox.cpp": "8adb822afc24145a14994d7207fa60cb48fb77c77163893ee1ac810fab783d36",
     "src/game/skybox_bin.cpp": "4679c1f8a61129831726771e304777b452d8d04d52bc3392b54a88f10ebd0766",
@@ -47939,8 +47939,8 @@
     {
       "id": "shadow",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 444,
+      "functions": 5,
+      "code_bytes": 1088,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47972,8 +47972,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "270aa46b161249bb205f8b29d6b883f6aa1e395cce1c80ac98906ee1fd417268",
-      "linked_sha256": "62b2835ac2693b7d87ed08b1c437058213a9f720f34aaacb9d362d2fd7f8b6b3"
+      "object_sha256": "c5964a0a218df240dc3e8f9cdf4b88e56ce193e7dee9027c6f93d4659bc25858",
+      "linked_sha256": "a7303165026603aedf5d03948b644ecd81e2aad1720d09b97baf6ebd5dac9815"
     },
     {
       "id": "weaponfactory_props",
@@ -53990,13 +53990,6 @@
             "kind": "function",
             "name": "IsDrawEnabled__16CCharacterShadowCFv",
             "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80081454",
-            "size": 644,
-            "kind": "function",
-            "name": "Draw__16CCharacterShadowFR12CDrawContext",
-            "evidence": "exception-index"
           }
         ]
       },
