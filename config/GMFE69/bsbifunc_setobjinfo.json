@@ -1,0 +1,119 @@
+{
+  "id": "bsbifunc_setobjinfo",
+  "source": "src/game/bsbifunc_setobjinfo.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8002be34",
+      "size": 1060,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x80009da4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80010a3c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BIFunc_SetObjInfo__FPPiPv",
+      "address": "0x8002be34",
+      "size": 1060,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "EnableDumpCollisionsByType__F9EDumpTypeib": "0x8003f8b8",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "SetBulletEmitter__14CSoldierObjectFP13CStaticObjectPc": "0x800a9c04",
+    "UpdateManualUpdateVars__22CAIFilterSoldierObjectFv": "0x8005ba1c",
+    "Update__7CWeaponFfb": "0x800d5914",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "g_iCurrentBIFIndex",
+    "g_pBuiltInFunctions"
+  ],
+  "original_file": "bsbifunc.cpp",
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 8,
+      "address": "0x8034f65c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 8,
+      "address": "0x8034f664"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f678"
+    }
+  ]
+}

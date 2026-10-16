@@ -1190,7 +1190,8 @@
     "TibPolygon_process.json",
     "stretch_head.json",
     "sdecmut_reftolpc.json",
-    "bsbifunc_givegrenade.json"
+    "bsbifunc_givegrenade.json",
+    "bsbifunc_setobjinfo.json"
   ],
   "progress": {
     "code_bytes": 1414572,
