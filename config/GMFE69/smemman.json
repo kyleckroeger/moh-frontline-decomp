@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80158cdc",
-      "size": 136,
+      "size": 968,
       "type": 1
     }
   ],
@@ -53,6 +53,18 @@
       "name": "SNDMEMI_restore__Fv",
       "address": "0x80158d44",
       "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "SNDMEMI_allocz__Fi",
+      "address": "0x80158d64",
+      "size": 652,
+      "binding": 1
+    },
+    {
+      "name": "SNDMEMI_free__FPv",
+      "address": "0x80158ff0",
+      "size": 180,
       "binding": 1
     }
   ],
