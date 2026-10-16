@@ -1194,7 +1194,8 @@
     "bsbifunc_setobjinfo.json",
     "AIFilter_coverindex.json",
     "stricmp.json",
-    "bsbifunc_getpropbyid.json"
+    "bsbifunc_getpropbyid.json",
+    "UserInterface_weaponname.json"
   ],
   "progress": {
     "code_bytes": 1414572,
