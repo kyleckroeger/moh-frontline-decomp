@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 770312,
+    "matching_code_bytes": 771456,
     "total_executable_code_bytes": 1414572,
-    "percent": 54.45548194082733,
+    "percent": 54.53635445915796,
     "categories": {
-      "reconstructed_game": 548796,
+      "reconstructed_game": 549940,
       "restored_library": 221516
     },
-    "matching_functions": 4356
+    "matching_functions": 4357
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -971,7 +971,7 @@
     "config/GMFE69/sflpf.json": "d11e70f713cbf69dd2bf7689ca49dae8586cf28b1c967e21c92770791c5919d8",
     "config/GMFE69/sflpffir8.json": "28488407555fa3ef73b53efae8384ffe65ba16751b5217cfdfc1266e4f918ca4",
     "config/GMFE69/sfmixer.json": "4d0d491f26ed08d9b8ae2279f2e06d5da6cec1d677f4475c494bd811fbf7db49",
-    "config/GMFE69/sfreson.json": "bd11b6950da6ed36b7129b396f43272783682d45aab9547b6bac0f47383733ea",
+    "config/GMFE69/sfreson.json": "d880d6996ac8e3e9df07db93e15c6aa59aad94200a1d8ec7b0c60868aeac2e5c",
     "config/GMFE69/sfrsf.json": "4ae3ea1e4e159657b18d9542a485c096eabd4cfc4080df4fd472d54f09fa6638",
     "config/GMFE69/sfrsf_init.json": "891e21819f5e1b3b46496b7bfe62ac98d9198278f4d6c4937db981c249499a7a",
     "config/GMFE69/sfsplit.json": "38efa1f83aa3e5f039e7829ec2e0453d864e51267b2a7aa615b5f99bb815a122",
@@ -2063,6 +2063,7 @@
     "src/ea/scalcfx.c": "85fda0fc3ffdc7563b22f679957d60cf1299536991c8cb699928150067286be5",
     "src/ea/scalcpitch.c": "926dcf6048d0f4d5a2cccd84255306ca1c55bdba5f8f47e59bdc6a86d14951bc",
     "src/ea/sclnt100.c": "b66db7c5dd3ac2f356f6d1a28160a54beae4ba3a0b9c96c20bce6ef6d59fddca",
+    "src/ea/scrsfl.c": "b69685c61ece824ebd9bac80f75e006874fc122d12048a6f4c38e92aef5dd7fa",
     "src/ea/sctlfilt.c": "f0ee0f9939f8a8bf3d378bd02f819abd234a5da38120e7e84861b2ec0a3b180b",
     "src/ea/sctrldry.cpp": "98429e0252980217b230bcd6d5250668bdac5623e921d3124d66481497622d43",
     "src/ea/sdecmut_reftolpc.c": "dcec54161a5507ab9954781a316001a65812e1a238da0108c6e2070cd08c3029",
@@ -2092,7 +2093,7 @@
     "src/ea/sflpf.c": "4115c133d52903fcedbcd8394b88d9af196c20cd95f8e5dd0b131dfd4fe7a06d",
     "src/ea/sflpffir8.c": "66da37d2d522d216ce36f088a120823f4758713896b7f1a29b96d0c106767080",
     "src/ea/sfmixer.c": "14b17cb1759d7c475ceaaa51442e10f1d44c3c0eb6de4f88e507757f95d9ae67",
-    "src/ea/sfreson.c": "74ac9b1763651513548b9d2add4b7ac16088c49fc8567646969ea94857c188fd",
+    "src/ea/sfreson.c": "c81477a857caebdb7b5c1e83e589e009e937e60bab95d0e037b70544cc9fa86a",
     "src/ea/sfrsf.c": "a06aa4b543be5ded606dc7599c0c9004059b7a0610dc0f40c141ea752e800f89",
     "src/ea/sfrsf_init.c": "a2a5888174f531cd84e2a544b622eb29377b92134ae5c6f55d20b04771b2c00c",
     "src/ea/sfsplit.c": "c646089a4b40c6be760e9f276a65a43aa37c75b467b1fcc77fcdea8095e653df",
@@ -23125,8 +23126,8 @@
     {
       "id": "sfreson",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 584,
+      "functions": 4,
+      "code_bytes": 1728,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23143,7 +23144,7 @@
         "off",
         "-O4,p",
         "-inline",
-        "auto",
+        "on",
         "-pragma",
         "cats off",
         "-nosyspath",
@@ -23158,8 +23159,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7b0f841c5b7002b7c87bebc78563fb70b9f15b43ea6caa219830b71853516ac5",
-      "linked_sha256": "5c70f612686db24c8587def500e091e63a86b507595eb15874ccaca56e955cf9"
+      "object_sha256": "64f197e281d119150330a46cf83ee16f2494eed44b4e9a466a5762d8dfa56bb9",
+      "linked_sha256": "ebb99773576dee402098664f0d0bed67132f91a2547e1a8da5d3db08bebc1fed"
     },
     {
       "id": "saemsbnk",
@@ -57193,20 +57194,6 @@
             "size": 952,
             "kind": "function",
             "name": "calcFIRCoeffs__FP11SNDFIRSTATEi",
-            "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/sfreson.c [symbol evidence]",
-        "file_record": 540,
-        "file_name": "sfreson.c",
-        "ranges": [
-          {
-            "address": "0x801659ac",
-            "size": 1144,
-            "kind": "function",
-            "name": "resonx87__FP10RESONSTATEiPvPv",
             "evidence": "private-reference"
           }
         ]

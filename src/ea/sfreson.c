@@ -1,13 +1,17 @@
-/* The resonance filter's process and create functions: processing runs an
-   optional source plug-in first (stopping if it produces nothing) and then
-   the x87-style resonator over the samples, and creating installs the
-   process function and clears the state and filter history. RESONSTATE and
-   the functions are named by the mangled symbols; the state layout and the
-   plug-in view are inferred. SFILTER_modifyRESON sets the resonator from
-   the frequency, rate, bandwidth and gain parameters (radius 1 - pi *
+/* EA's resonance filter (sfreson.c, the whole file): resonx87 runs the
+   two-pole resonator over the samples (output = coefficient2 * input plus
+   the feedback of the last two outputs, a 1e-20 bias keeping the input out
+   of denormals) when the bandwidth, frequency and rate are usable, and
+   copies the input otherwise. Processing runs an optional source plug-in
+   first (stopping if it produces nothing) and then the resonator over the
+   samples, and creating installs the process function and clears the state
+   and filter history. SFILTER_modifyRESON sets the resonator from the
+   frequency, rate, bandwidth and gain parameters (radius 1 - pi *
    bandwidth / rate, the two coefficients through SNDI_cos and
-   SNDI_rootof1plusx; its constants are entries of the file's .sdata2 pool).
-   resonx87 before these functions is not part of the unit. */
+   SNDI_rootof1plusx). The file is compiled with -inline on (no automatic
+   inlining), as SFILTER_reson calls resonx87 out of line. RESONSTATE and
+   the functions are named by the mangled symbols; the state layout and the
+   plug-in view are inferred. */
 struct SFILTERPLUGINVIEW {
     int (*process)(SFILTERPLUGINVIEW*, int, void*, void*, int);
 };
@@ -31,9 +35,28 @@ struct RESONSTATE {
     float history[3];
 };
 
-void resonx87(RESONSTATE*, int, void*, void*);
 float SNDI_cos(float);
 float SNDI_rootof1plusx(float);
+
+void resonx87(RESONSTATE* state, int count, void* source, void* destination) {
+    float* in = (float*)source;
+    float* out = (float*)destination;
+    int i;
+
+    if (state->bandwidth < 2.0f * state->rate / 3.1415927f && state->frequency > 0.0f &&
+        state->frequency < (float)(state->rate >> 1)) {
+        for (i = 0; i < count; i++) {
+            out[i] = state->coefficient2 * (1e-20f + in[i]) +
+                     state->history[1] * (2.0f * state->radius * state->coefficient1) -
+                     state->history[2] * (state->radius * state->radius);
+            state->history[2] = state->history[1];
+            state->history[1] = out[i];
+        }
+    } else {
+        for (i = 0; i < count; i++)
+            out[i] = in[i];
+    }
+}
 
 int SFILTER_reson(void* p, int count, void* in, void* out, int) {
     RESONSTATE* state = (RESONSTATE*)p;

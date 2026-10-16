@@ -18,7 +18,7 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80165e24",
-      "size": 584,
+      "address": "0x801659ac",
+      "size": 1728,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "resonx87__FP10RESONSTATEiPvPv",
+      "address": "0x801659ac",
+      "size": 1144,
+      "binding": 1
+    },
     {
       "name": "SFILTER_reson__FPviPvPvi",
       "address": "0x80165e24",
@@ -64,8 +70,7 @@
   ],
   "externals": {
     "SNDI_cos__Ff": "0x8015fb04",
-    "SNDI_rootof1plusx__Ff": "0x8015fb80",
-    "resonx87__FP10RESONSTATEiPvPv": "0x801659ac"
+    "SNDI_rootof1plusx__Ff": "0x8015fb80"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -83,43 +88,49 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x80351bd0"
+      "address": "0x80351bc8"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80351be0"
+      "address": "0x80351bcc"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80351be4"
+      "address": "0x80351bd0"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x80351bcc"
+      "address": "0x80351bd4"
     },
     {
       "section": ".sdata2",
       "offset": 16,
-      "size": 4,
-      "address": "0x80351bc8"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 20,
-      "size": 4,
-      "address": "0x80351be8"
+      "size": 8,
+      "address": "0x80351bd8"
     },
     {
       "section": ".sdata2",
       "offset": 24,
-      "size": 8,
-      "address": "0x80351bd8"
+      "size": 4,
+      "address": "0x80351be0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80351be4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351be8"
     }
   ]
 }
