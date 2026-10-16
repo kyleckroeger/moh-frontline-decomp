@@ -1184,7 +1184,8 @@
     "animplayer_draw.json",
     "skybox.json",
     "sbasync_download.json",
-    "sbasync_done.json"
+    "sbasync_done.json",
+    "sphere_extents.json"
   ],
   "progress": {
     "code_bytes": 1414572,
