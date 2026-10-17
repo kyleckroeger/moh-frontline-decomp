@@ -1,19 +1,24 @@
-// A fragment of sound.cpp (0x800ead38); the file name is this project's.
-// PlayBackgroundImpactSound begins event 3 for a bullet's impact (the given
-// sound) unless the bullet is nearly still (squared speed under 0.01) or is
-// a thrown bullet past its third impact (its count at +508 raised first):
-// kind 1 for a projectile, 5 for a thrown bullet of type 5 (+164), else 2,
-// with the azimuth from GetAzimuth's inline helper (sound_fail.cpp; the
-// closest player's in multiplayer) and the distance, 256 per unit, from the
-// player's position (the bullet's position reduced in place). Then
-// PlayImpactSound starts an impact sound (event 3 with the two sound values)
-// at a position: unless it is flagged as on the player, the azimuth comes
-// from the same helper and the distance, 256 per unit rounded, from the
-// player's position. Both events are begun through the same inferred inline
-// as AEMS_BeginEvent. The functions, globals and CBullet's virtuals are named
-// by the symbols; the thrown-bullet view, the event view, the parameter
-// meanings and the helpers are inferred. The rest of the file is in other
-// units.
+// A fragment of sound.cpp (0x800ea76c); the file name is this project's.
+// PlayBulletWhiz begins event 5 for a bullet passing the player: the azimuth
+// of the shot's start, the azimuth of the point where it passes (the start
+// moved along the normalized direction by twice the distance times the
+// cosine between the direction and the line to the player) and the distance
+// to the player; it returns the event's result. PlayBackgroundImpactSound
+// begins event 3 for a bullet's impact (the given sound) unless the bullet is
+// nearly still (squared speed under 0.01) or is a thrown bullet past its
+// third impact (its count at +508 raised first): kind 1 for a projectile, 5
+// for a thrown bullet of type 5 (+164), else 2, with the azimuth (the closest
+// player's in multiplayer) and the distance, 256 per unit, from the player's
+// position (the bullet's position reduced in place). Then PlayImpactSound
+// starts an impact sound (event 3 with the two sound values) at a position:
+// unless it is flagged as on the player, the azimuth and the distance, 256
+// per unit rounded, from the player's position. Every azimuth comes from
+// GetAzimuth's inline helper (sound_fail.cpp) and every event is begun
+// through the same inferred inline as AEMS_BeginEvent. The functions,
+// globals and CBullet's virtuals are named by the symbols; the thrown-bullet
+// view, the event views (16 bytes for the whiz), the parameter meanings, the
+// vector helpers and the helpers are inferred. The rest of the file is in
+// other units.
 extern "C" {
 double atan2(double, double);
 extern int (*SNDAEMS_beginevent)(int*);
@@ -49,6 +54,16 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    float LengthSquared() const { return d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]; }
+    float Length() const { return sqrtf(LengthSquared()); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            d.v[0] *= 1.0f / length;
+            d.v[1] *= 1.0f / length;
+            d.v[2] *= 1.0f / length;
+        }
+    }
     CVector3Data d;
 } __attribute__((aligned(8)));
 
@@ -222,6 +237,40 @@ inline int BeginEvent(int* event) {
         msg("SNDAEMS_beginevent number %d handle=%d\n", event[0], result);
     }
     return result;
+}
+
+int PlayBulletWhiz(CVector3 position, CVector3 direction, CPlayerObject* player) {
+    CVector3 playerPosition;
+    CVector3 closest;
+    int event[4];
+    CVector3 start = position;
+    unsigned short startAzimuth = 0;
+    CalcDistanceAndAzimuth(0, &startAzimuth, start, player);
+    int first = startAzimuth;
+    player->GetPosition(playerPosition);
+    CVector3 delta;
+    delta.d.v[0] = playerPosition.d.v[0] - position.d.v[0];
+    delta.d.v[1] = playerPosition.d.v[1] - position.d.v[1];
+    delta.d.v[2] = playerPosition.d.v[2] - position.d.v[2];
+    float distance = delta.Length();
+    delta.Normalize();
+    direction.Normalize();
+    float along = (float)__fabs(distance * (delta.d.v[0] * direction.d.v[0] + delta.d.v[1] * direction.d.v[1] + delta.d.v[2] * direction.d.v[2]));
+    along *= 2.0f;
+    CVector3 step;
+    step.d.v[0] = along * direction.d.v[0];
+    step.d.v[1] = along * direction.d.v[1];
+    step.d.v[2] = along * direction.d.v[2];
+    closest.d.v[0] = position.d.v[0] + step.d.v[0];
+    closest.d.v[1] = position.d.v[1] + step.d.v[1];
+    closest.d.v[2] = position.d.v[2] + step.d.v[2];
+    unsigned short endAzimuth = 0;
+    CalcDistanceAndAzimuth(0, &endAzimuth, closest, player);
+    event[0] = 5;
+    event[1] = first;
+    event[2] = endAzimuth;
+    event[3] = distance;
+    return BeginEvent(event);
 }
 
 void PlayBackgroundImpactSound(CBullet* bullet, int sound) {

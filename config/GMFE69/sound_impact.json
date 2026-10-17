@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ead38",
-      "size": 1920,
+      "address": "0x800ea76c",
+      "size": 3404,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f3a8",
-      "size": 16,
+      "address": "0x8000f3a0",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015e90",
-      "size": 24,
+      "address": "0x80015e84",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PlayBulletWhiz__F8CVector38CVector3P13CPlayerObject",
+      "address": "0x800ea76c",
+      "size": 1484,
+      "binding": 1
+    },
     {
       "name": "PlayBackgroundImpactSound__FP7CBulleti",
       "address": "0x800ead38",
@@ -125,55 +131,67 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x80351010"
+      "address": "0x80350fcc"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80350fcc"
+      "address": "0x80350fe4"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80350fe4"
+      "address": "0x80350fe8"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x80350fe8"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 16,
-      "size": 4,
       "address": "0x80350fec"
     },
     {
       "section": ".sdata2",
-      "offset": 24,
+      "offset": 16,
       "size": 8,
       "address": "0x80350fd0"
     },
     {
       "section": ".sdata2",
-      "offset": 32,
+      "offset": 24,
       "size": 8,
       "address": "0x80350fd8"
     },
     {
       "section": ".sdata2",
-      "offset": 40,
+      "offset": 32,
       "size": 4,
-      "address": "0x80350fe0"
+      "address": "0x80351008"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8035100c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350ff0"
     },
     {
       "section": ".sdata2",
       "offset": 48,
-      "size": 8,
-      "address": "0x80350ff0"
+      "size": 4,
+      "address": "0x80351010"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350fe0"
     },
     {
       "section": ".sdata2",
