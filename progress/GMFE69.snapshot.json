@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 807524,
+    "matching_code_bytes": 808516,
     "total_executable_code_bytes": 1414572,
-    "percent": 57.08610095491781,
+    "percent": 57.15622817361011,
     "categories": {
-      "reconstructed_game": 586008,
+      "reconstructed_game": 587000,
       "restored_library": 221516
     },
-    "matching_functions": 4399
+    "matching_functions": 4400
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -795,6 +795,7 @@
     "config/GMFE69/path_createtrack.json": "fabc441c0b9f05f8a9123b48e6c8da641eda4e4b7383aee0e7a43b804339aa12",
     "config/GMFE69/path_restore.json": "6c384a9302ea3cbc0ed80be802a63d69cd7e0e0e0cc22e743ecdfa09ecad8042",
     "config/GMFE69/path_service.json": "75d69e5bf39599bb5a861a5da322128b5d876907cdaa791ed2d0c3d2961957bf",
+    "config/GMFE69/path_sort.json": "6eecac91d887c0111611cbd2ac214eb115076fb20fb06438c9f44a5014fa461e",
     "config/GMFE69/path_stop.json": "fb7fc7a7eab18396cd72ae0b9a00606279436f1f730e13f840501d1280aada8f",
     "config/GMFE69/pathxSND.json": "711dcdf3a5a5a7b4124ae70e377c5e863dc39c8de8a0de785b3dc3921c685fa0",
     "config/GMFE69/pathx_end.json": "c2a3fcbc64df0e00246b7a260335739145e49eaef7be7713ed87f6ac37e5156c",
@@ -834,7 +835,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "4ad0508385790920c924c23df4f95a4956a82c16cbf95e9b32300e5e471d4662",
+    "config/GMFE69/project.json": "6bf71e9e544bed7c6130d1dd4ca4a24e0af076b4a9339ff7071d3e28f77a9cab",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2035,6 +2036,7 @@
     "src/ea/path_createtrack.c": "ff0e3a96c83b067c2d669c6b6735b7d38666e55d30ea128c01ff6191c641cf41",
     "src/ea/path_restore.cpp": "4226a0288cc025036bb9459cb6421596467265de62689a4b7eac8c3bfd7ed388",
     "src/ea/path_service.c": "0f3e8911bd73ec0ce77d78edd630d9cc0d009d0f734f3f25eee113e107016d10",
+    "src/ea/path_sort.c": "e5ec093f25c3b6910b358a60f6292dc600a94d5f9de9892a627eea7afbfd469b",
     "src/ea/path_stop.c": "074db338c8c0faf770c29642ddcdaa2b3eb5625735b2c4caf1dca27ea125eda5",
     "src/ea/pathxSND.c": "f41cae88d965e8b7d18f31e14a637dacad3642c3cf929fc249ae80d3e1588980",
     "src/ea/pathx_end.c": "b179b62d8dc4f44921b999fb51d996b200f8b65dd6d6465126473408daa7adb2",
@@ -52100,6 +52102,47 @@
       "discarded_functions": [],
       "object_sha256": "c7495172f520d4b625e8bb2c105b760dc7ac1b8a6ba9e956fc1d1e1291172d69",
       "linked_sha256": "80a5a9f82f322000ba2b20c978000cdce049d750d2639849d4aeb8bee103fd98"
+    },
+    {
+      "id": "path_sort",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 992,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "7d7af8e52ba72a32299a4672ce508a4013610ddcbd904911fd54de324ed8211b",
+      "linked_sha256": "f58f82332e4a2bb265c9543f7fd28c1bf035070a95093282a348f9ef4c35884c"
     }
   ],
   "code_map": {
@@ -56577,13 +56620,6 @@
             "size": 628,
             "kind": "function",
             "name": "PATHI_setfadevolume__FP9PATHTRACK",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8010fd80",
-            "size": 992,
-            "kind": "function",
-            "name": "PATHI_sortprojects__Fv",
             "evidence": "exception-index"
           }
         ]
