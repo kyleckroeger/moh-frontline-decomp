@@ -39,20 +39,26 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e058c",
-      "size": 484,
+      "address": "0x800dffd8",
+      "size": 1944,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ee00",
-      "size": 8,
+      "address": "0x8000edf8",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015aa0",
-      "size": 12,
+      "address": "0x80015a94",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178b90",
+      "size": 14,
       "type": 1
     },
     {
@@ -68,10 +74,19 @@
       "address": "0x800e058c",
       "size": 484,
       "binding": 1
+    },
+    {
+      "name": "CheckIfValidPassword__10CShellMenuFPc",
+      "address": "0x800dffd8",
+      "size": 1460,
+      "binding": 1
     }
   ],
   "externals": {
-    "DebugMsg__FPCce": "0x80018c88"
+    "ActivateCheatNamed_All__10CShellMenuFv": "0x800dfca8",
+    "DebugMsg__FPCce": "0x80018c88",
+    "GetNextLevelCheat__10CShellMenuFv": "0x800e1640",
+    "__nw__FUl": "0x8001cb60"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -80,16 +95,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "ShellMenu.cpp",
-  "original_file_index": 8612,
-  "pooled_sections": [
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 14,
-      "address": "0x80178b90"
-    }
-  ]
+  "original_file_index": 8612
 }

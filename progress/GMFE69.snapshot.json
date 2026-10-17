@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 801948,
+    "matching_code_bytes": 803408,
     "total_executable_code_bytes": 1414572,
-    "percent": 56.69191812081676,
+    "percent": 56.7951295515534,
     "categories": {
-      "reconstructed_game": 580432,
+      "reconstructed_game": 581892,
       "restored_library": 221516
     },
-    "matching_functions": 4393
+    "matching_functions": 4394
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -246,7 +246,7 @@
     "config/GMFE69/ShellMenu_stars.json": "defb4a20ec7186cd2632267462859fdcd94aa99247f6e2de699540813baf66a4",
     "config/GMFE69/ShellMenu_starstatus.json": "3b6b1d3c9119fd5a33ace5009cddc62fb0309dbffad6fd83e27ed4a541fbfa3e",
     "config/GMFE69/ShellMenu_stats.json": "7b5a42b2eac606cdd7e392272bdd1a58b79a96dee59c6e275f9c65e0e0412994",
-    "config/GMFE69/ShellMenu_unlock.json": "60477ff8fa84aa1200ca93f989c5dec026c3c7d26ad4315e7b8783c7949d8112",
+    "config/GMFE69/ShellMenu_unlock.json": "ef523fd8e25c9220cce3e44ead128bb4800165526d04f2af5153493acb097261",
     "config/GMFE69/ShellMenu_unlockedstatus.json": "5653ecf1d2ef5ecc0b705f83e4b5987b06501dffc7a372a5c96766f55185090c",
     "config/GMFE69/Soldier_object.json": "d625d33bbfdcbd4ae922099756d0a2525feb495afdd309517e996dc20e2f2aff",
     "config/GMFE69/Soldier_object_attach.json": "0ab17d8053eedbb1465c76dffcb28967c7a4a85535dabe4d10af2da978bca303",
@@ -2360,7 +2360,7 @@
     "src/game/ShellMenu_stars.cpp": "95f56e9b48ade92f9d008250caa7584eb673d039c7aecd580c91fe43a5ce7136",
     "src/game/ShellMenu_starstatus.cpp": "06fd4b286d6e2b33389e4dbf859972f48e7c161193f9f4bcb40427faa936fe2b",
     "src/game/ShellMenu_stats.cpp": "92b47c2788687b9e9b16dd1309429c8298205506a9ed83a6af655dd89918d648",
-    "src/game/ShellMenu_unlock.cpp": "233ac6a191e2b4397da0fd9cec912273425c0f59ece1df60aff07eb94fef4c08",
+    "src/game/ShellMenu_unlock.cpp": "a9aa4de786f6d7e8370b23fbdf457f1c80e61f1846fc34624ef47b527505b21f",
     "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
     "src/game/Soldier_object.cpp": "92bf858d3c8b06c691309b702079f4c10d3da7935ed4b50d4e27764fa7eeca41",
     "src/game/Soldier_object_attach.cpp": "e5d9716b0f73390648152ea5df45d45162575a9afd2a0a63e1eebc076b23e6df",
@@ -47937,8 +47937,8 @@
     {
       "id": "ShellMenu_unlock",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 484,
+      "functions": 2,
+      "code_bytes": 1944,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47970,8 +47970,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c8f449355c041d609bdb08cdb7ae4af9b8b30516be4207702daf208c3fa68218",
-      "linked_sha256": "30ce6f9ecef32e9d59e8429103cb4bc6e8542d82d37fbd3a7e2a166cf0224228"
+      "object_sha256": "79e518766a9c9bae0fe04b145051e2fa87ea2d71a2f679984b26f65391b79ba7",
+      "linked_sha256": "a83f44c445474fa93e8f0328d7302ace644bb163649fb38713e95c39e69bb194"
     },
     {
       "id": "ShellMenu_stars",
@@ -55600,13 +55600,6 @@
             "size": 816,
             "kind": "function",
             "name": "ActivateCheatNamed_All__10CShellMenuFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800dffd8",
-            "size": 1460,
-            "kind": "function",
-            "name": "CheckIfValidPassword__10CShellMenuFPc",
             "evidence": "exception-index"
           },
           {
