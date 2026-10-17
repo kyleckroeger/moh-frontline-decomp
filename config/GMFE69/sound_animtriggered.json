@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800eb824",
-      "size": 140,
+      "address": "0x800eb4b8",
+      "size": 1016,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f3c0",
-      "size": 8,
+      "address": "0x8000f3b8",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015eb4",
-      "size": 12,
+      "address": "0x80015ea8",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PlayReloadSound__FlP11CAnimObject",
+      "address": "0x800eb4b8",
+      "size": 876,
+      "binding": 1
+    },
     {
       "name": "PlayAnimTriggeredSound__FlP11CAnimObject",
       "address": "0x800eb824",
@@ -65,18 +71,110 @@
     }
   ],
   "externals": {
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetSoundEvent__11CSoundTableCFiPQ211CSoundTable11SSoundParms": "0x800ede84",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
-    "g_soundMapSingleton": "0x8034ece8"
+    "SNDAEMS_beginevent": "0x8034e66c",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "atan2": "0x80143920",
+    "err__FPce": "0x800ea130",
+    "g_scene": "0x8019484c",
+    "g_sfxVolume": "0x8034e2e4",
+    "g_soundMapSingleton": "0x8034ece8",
+    "msg__FPce": "0x800ea0e0",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "err__FPce",
+    "g_sfxVolume",
+    "msg__FPce"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_soundMapSingleton"
+    "SNDAEMS_beginevent",
+    "g_sfxVolume",
+    "g_soundMapSingleton",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "sound.cpp",
-  "original_file_index": 8971
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 39,
+      "address": "0x80179144"
+    },
+    {
+      "section": ".rodata",
+      "offset": 40,
+      "size": 40,
+      "address": "0x8017916c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350fcc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350fe4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350fe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350fec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350fd0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350fd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351018"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350fe0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350ff0"
+    }
+  ]
 }
