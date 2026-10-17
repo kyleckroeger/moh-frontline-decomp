@@ -1,15 +1,22 @@
-// A fragment of Soldier_object.cpp (0x800abb1c): CSoldierObject's AddWeapon
-// (replaces the weapon in a slot: the old one is returned to g_WeaponFactory,
-// an empty CRC (0xfb9630c9) leaves the slot empty, else the weapon is created
-// by CRC; returns whether the slot holds a weapon) and SetAttachedLight
-// (places the light at the soldier's matrix pre-translated by the offset).
-// The classes, functions and globals are named by the mangled symbols; the
-// members and the light view are inferred, CSoldierObject declares
-// placeholder virtuals up to GetTMLocalToWorld (+60, named by
-// __vt__14CSoldierObject), and the CVector3 view copies through a double pair
-// as in player_weapon.cpp. The rest of the file is not part of this unit.
+// A fragment of Soldier_object.cpp (0x800aba4c): CSoldierObject's
+// GetLookMatrix (the soldier's matrix, then, when the skeleton has a
+// "VisionCone" node, that node's bone matrix and its own matrix applied),
+// AddWeapon (replaces the weapon in a slot: the old one is returned to
+// g_WeaponFactory, an empty CRC (0xfb9630c9) leaves the slot empty, else the
+// weapon is created by CRC; returns whether the slot holds a weapon) and
+// SetAttachedLight (places the light at the soldier's matrix pre-translated
+// by the offset). The classes, functions and globals are named by the
+// mangled symbols; the members and the skeleton and light views are inferred
+// (the node search is an inferred inline helper, as in
+// Soldier_object_cleanup.cpp, and the skeleton is read through an inferred
+// inline accessor, which keeps it in a register across the search),
+// CSoldierObject declares placeholder virtuals up to GetTMLocalToWorld (+60,
+// named by __vt__14CSoldierObject), and the CVector3 view copies through a double pair as in player_weapon.cpp. The
+// rest of the file is not part of this unit.
 class ISceneNode;
 class CWeapon;
+
+extern "C" int stricmp(const char*, const char*);
 
 union CVector3Pair {
     double pair[2];
@@ -113,6 +120,28 @@ public:
     virtual void SetTMLocalToWorld(const CMatrix&);
 };
 
+/* inferred: a skeleton node (24 bytes): name, bone, own matrix */
+struct SkeletonNodeView {
+    char m_name[16];
+    int m_bone;
+    CMatrix* m_matrix;
+};
+
+struct SkeletonView {
+    unsigned char unknown00[16];
+    unsigned int m_count;
+    SkeletonNodeView* m_nodes;
+
+    /* inferred: the index of the node with the given name, or -1 */
+    unsigned int Find(const char* name) const {
+        for (unsigned int i = 0; i < m_count; i++) {
+            if (stricmp(m_nodes[i].m_name, name) == 0)
+                return i;
+        }
+        return (unsigned int)-1;
+    }
+};
+
 class CSoldierObject {
 public:
     virtual void unknown008();
@@ -129,12 +158,29 @@ public:
     virtual void unknown034();
     virtual void unknown038();
     virtual void GetTMLocalToWorld(CMatrix&) const;
+    void GetLookMatrix(CMatrix&);
     bool AddWeapon(int, int);
     void SetAttachedLight(CLight*, CVector3);
 
-    unsigned char unknown0004[16396];
+    unsigned char unknown0004[3296];
+    SkeletonView* m_skeleton;
+    SkeletonView* GetSkeleton() const { return m_skeleton; }
+    unsigned char unknown0ce8[600];
+    CMatrix m_bones[80];
+    CMatrix m_matrix;
+    unsigned char unknown2380[7312];
     CWeapon* m_weapons[9];
 };
+
+void CSoldierObject::GetLookMatrix(CMatrix& matrix) {
+    SkeletonView* skeleton = GetSkeleton();
+    unsigned int node = skeleton->Find("VisionCone");
+    matrix = m_matrix;
+    if (node != (unsigned int)-1) {
+        matrix.Multiply(m_bones[skeleton->m_nodes[node].m_bone], matrix);
+        matrix.Multiply(*skeleton->m_nodes[node].m_matrix, matrix);
+    }
+}
 
 bool CSoldierObject::AddWeapon(int slot, int crc) {
     if (m_weapons[slot])

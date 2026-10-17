@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 825276,
+    "matching_code_bytes": 825484,
     "total_executable_code_bytes": 1414572,
-    "percent": 58.34103884425819,
+    "percent": 58.35574293850013,
     "categories": {
-      "reconstructed_game": 603760,
+      "reconstructed_game": 603968,
       "restored_library": 221516
     },
-    "matching_functions": 4419
+    "matching_functions": 4420
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -264,7 +264,7 @@
     "config/GMFE69/Soldier_object_emitter.json": "65559b7be7a5db8e92c60025fa182b22212a01a8a931def436ba02e2c8ba4250",
     "config/GMFE69/Soldier_object_lighting.json": "6ff4d1e60f7cd3a599a8bcfcb865571e46d28dd179f1bfb4ae46475afd8446fc",
     "config/GMFE69/Soldier_object_lit.json": "717fb1ac9f3fc850cf5f8092fd6229e49652ec6b82f8a150cfae6786055df9bb",
-    "config/GMFE69/Soldier_object_look.json": "f0d15a051c6d9eac8017b0fab5939ad27fba92abecc2fe926204e14a238eeb54",
+    "config/GMFE69/Soldier_object_look.json": "41232ffe24355c9983b820af99c1572ed88a226ec1107f9fccf105f22fd3b50e",
     "config/GMFE69/Soldier_object_velocity.json": "000e71d15a39f7e206bcf51443ee7c0995a657c0140be6f00b991cb56b1fa533",
     "config/GMFE69/Tank_object.json": "fa415f3ca15d6b7facea57a6c0f6cfa35329f2386377df8d73bd4f8f6a8ad599",
     "config/GMFE69/Tank_object_draw.json": "21eebfc9238fce4a72092ff7788283307f023a437f75c98618ac5851454e9650",
@@ -2392,7 +2392,7 @@
     "src/game/Soldier_object_emitter.cpp": "d935f9c01b2922a8728fd0440e2bef3cf94458e30123b5181948bbeede9ebb35",
     "src/game/Soldier_object_lighting.cpp": "576b5adb10afd71bcff99ffdf5d7269121a456398da543bea1c0815e15788eb3",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
-    "src/game/Soldier_object_look.cpp": "0a9e832ca2a4e0267004e8ddbba8009f6a3c5bf3ff6cb2e23e541475ea123bc7",
+    "src/game/Soldier_object_look.cpp": "2a95bd93875cb41cc57ef9f02edcb5aa07effc8f9ec041a48c0de8117aa20231",
     "src/game/Soldier_object_velocity.cpp": "b794665c83501a1ef5108dd8a416d5aeb0f5abb2e493b99b04c7105baec4a83a",
     "src/game/Tank_object.cpp": "898b0122c0c2efaf7919e2f4c17241cd68d0733d4f8fda2f2473ec61eb2df9d5",
     "src/game/Tank_object_draw.cpp": "afdff9d134f2cb71c11bb49945abe5032baba9f687dc6e4f9cc226385deb8383",
@@ -45123,8 +45123,8 @@
     {
       "id": "Soldier_object_look",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 336,
+      "functions": 3,
+      "code_bytes": 544,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45156,8 +45156,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "15a2625093f6b157a4176d5f6dfd412ac23fe6c4be7afdbb9dd4afbba7b36b53",
-      "linked_sha256": "dd287da401cca318b9df74c68a50db5fab354e247b75bc3524a741eb93e68b2c"
+      "object_sha256": "a10f0e01ed551bbe118e650f35c6de19ef4d74fd4dccf8614fdb4f099c8a784e",
+      "linked_sha256": "f6ea30add30d34dd0fdd56c06a0b8cbb438397ae7f247daa06ef935de3e1bf91"
     },
     {
       "id": "Soldier_object_attach",
@@ -55025,13 +55025,6 @@
             "size": 2988,
             "kind": "function",
             "name": "HandleBulletCollision__14CSoldierObjectFP7CBulletRC10CCollision",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800aba4c",
-            "size": 208,
-            "kind": "function",
-            "name": "GetLookMatrix__14CSoldierObjectFR7CMatrix",
             "evidence": "exception-index"
           },
           {
