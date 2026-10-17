@@ -1208,7 +1208,8 @@
     "ShellMenu_corrupt.json",
     "ShellMenu_levelstats.json",
     "AIObject_grenadeshot.json",
-    "AIObject_lineofsight_mode.json"
+    "AIObject_lineofsight_mode.json",
+    "bsbifunc_makenoise.json"
   ],
   "progress": {
     "code_bytes": 1414572,
