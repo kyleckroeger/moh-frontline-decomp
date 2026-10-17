@@ -1207,7 +1207,8 @@
     "ShellMenu_cheatall.json",
     "ShellMenu_corrupt.json",
     "ShellMenu_levelstats.json",
-    "AIObject_grenadeshot.json"
+    "AIObject_grenadeshot.json",
+    "AIObject_lineofsight_mode.json"
   ],
   "progress": {
     "code_bytes": 1414572,

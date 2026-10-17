@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 817172,
+    "matching_code_bytes": 817704,
     "total_executable_code_bytes": 1414572,
-    "percent": 57.76814471090903,
+    "percent": 57.8057532596432,
     "categories": {
-      "reconstructed_game": 595656,
+      "reconstructed_game": 596188,
       "restored_library": 221516
     },
-    "matching_functions": 4407
+    "matching_functions": 4408
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -51,6 +51,7 @@
     "config/GMFE69/AIObject_grenadeshot.json": "1bfbfa99132cedcccc7a2417c120b464d4adccb6d89513cf11cc3e6c55f344b9",
     "config/GMFE69/AIObject_init.json": "0c2f565f2c2891ec0b68785d32cb7041a8ade14a5bc1c6d9e48a6587647c2429",
     "config/GMFE69/AIObject_lineofsight.json": "25f0f864bac7487526cb2be3b2a07874641d05e07140d24af15a57b66c0efc5f",
+    "config/GMFE69/AIObject_lineofsight_mode.json": "56dd70034b220e62fb2baca9e98492a5ea3f50a9c64621dfe55cbdb961386095",
     "config/GMFE69/AIObject_lineofsight_obj.json": "1faa5e1bbdaec77b500d1d13db5629da6a4f8e25e6a5671ae48a59490d857ad3",
     "config/GMFE69/AIObject_lookdirection.json": "85aef398dac9bd0fe5d2a982fa9d386d9a3be9d321ba9051cf4beb14d5ce4765",
     "config/GMFE69/AIObject_obstacle.json": "cd0eefc6c667100e1ae64807408111aa9b9b486a591f87909777e931d24d540f",
@@ -842,7 +843,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "844b3514b243e1dbff92060b71c248107a2279a6a2d96dff341e6103506439a8",
+    "config/GMFE69/project.json": "c736461d88863efd0e02d733e7443a3ab2d471a17dd4015e3352e94f8bd766e4",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2258,6 +2259,7 @@
     "src/game/AIObject_grenadeshot.cpp": "8722ce3e1a4e542316ad9483a116b61e12647255f9f38dfb0459124ca1f3d367",
     "src/game/AIObject_init.cpp": "73c8ba0d3090d6cc3b71ea28b2b69d75b6131577c53ba56d9a982ced7805b640",
     "src/game/AIObject_lineofsight.cpp": "fb8a58bc40f7faf0a5b79e149aee1cd254a4c35d07332b27fd85d6372d6c456f",
+    "src/game/AIObject_lineofsight_mode.cpp": "fd688dcca5f55ce38a300c4eb28b8de61130e27b88111a5cb1a35b9908099518",
     "src/game/AIObject_lineofsight_obj.cpp": "f3ac414a2d405826f28573359707ffc751b9752d2b6a01af3579d600d4b5167d",
     "src/game/AIObject_lookdirection.cpp": "fd2ba34136e22e33db932978756d2aa56057d57fd017cd8023455c231048e406",
     "src/game/AIObject_obstacle.cpp": "d6efae3b4577f7c6ab7feaa633274cb78422a899ce4862def01892d111aa7508",
@@ -52430,6 +52432,45 @@
       "discarded_functions": [],
       "object_sha256": "4415c737eee4f9795862ae3ecd5ae8affaf16743f39cc1ce130250230bdd9f02",
       "linked_sha256": "6072f15801937f519c280fec3ab1a73c418b226ca2239d226c970e940b11472c"
+    },
+    {
+      "id": "AIObject_lineofsight_mode",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 532,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "c647618043ef6161efc023935f35943ce04eeaa7f7c4c1c0f76743dc8bf7478b",
+      "linked_sha256": "f8b9a28318e98608aaa092ec71b5eea2530c8aa8f17e6216ab681800c8ff109c"
     }
   ],
   "code_map": {
@@ -53136,13 +53177,6 @@
             "size": 588,
             "kind": "function",
             "name": "CheckLineOfSightModeList__9CAIObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800487b0",
-            "size": 532,
-            "kind": "function",
-            "name": "CheckLineOfSightModeObject__9CAIObjectFv",
             "evidence": "exception-index"
           },
           {
