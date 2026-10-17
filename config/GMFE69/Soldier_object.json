@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800a9b2c",
-      "size": 216,
+      "size": 472,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d200",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800142dc",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -104,9 +104,18 @@
       "address": "0x800a9bd8",
       "size": 44,
       "binding": 1
+    },
+    {
+      "name": "SetBulletEmitter__14CSoldierObjectFP13CStaticObjectPc",
+      "address": "0x800a9c04",
+      "size": 256,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "stricmp": "0x80151ab8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
