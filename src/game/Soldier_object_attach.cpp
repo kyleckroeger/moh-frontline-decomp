@@ -10,13 +10,37 @@
 // node; returns the old attachment) and AttachObject (as AttachMesh for a
 // static object's mesh: the attachment marked 1, the mesh lit when there is
 // one, and the matching attachment point's inverse applied after the node's
-// matrix). The classes and functions are named by the mangled symbols; the
+// matrix) and FireMMG (fires the mounted gun's weapon from the gun's muzzle,
+// its matrix times the muzzle attachment point 0xE6E804D5, toward the
+// target, the aim turned from the gun's front direction by a slerp limited
+// to a cosine of 0.9848 (about 10 degrees); records the gun and the firing flag). The classes and functions are named by the mangled symbols; the
 // members and the skeleton, attachment and mesh views are inferred (the node
 // search is the inline helper of Soldier_object_cleanup.cpp; the skeleton is
-// read through an inferred inline accessor, as GetLookMatrix does), and the
-// CVector3 view copies through a double pair as in player_weapon.cpp. The
-// rest of the file is not part of this unit.
+// read through an inferred inline accessor, as GetLookMatrix does; FireMMG's
+// vector helpers and the weapon view are inferred, and its locals are
+// declared in the order that gives the original's slots), and the CVector3
+// view copies through a double pair as in player_weapon.cpp. The rest of the
+// file is not part of this unit.
 extern "C" int stricmp(const char*, const char*);
+extern "C" double acos(double);
+extern "C" double sin(double);
+
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y;
+    }
+    return x;
+}
 
 union CVector3Pair {
     double pair[2];
@@ -27,12 +51,38 @@ class CVector3 {
 public:
     CVector3() {}
     CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
+    CVector3& operator=(const CVector3& other) {
+        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+        return *this;
+    }
     CVector3& operator+=(const CVector3& v) {
         x += v.x;
         y += v.y;
         z += v.z;
         return *this;
     }
+    CVector3& operator-=(const CVector3& v) {
+        x -= v.x;
+        y -= v.y;
+        z -= v.z;
+        return *this;
+    }
+    CVector3& operator*=(float s) {
+        x *= s;
+        y *= s;
+        z *= s;
+        return *this;
+    }
+    float Length() const { return sqrtf(x * x + y * y + z * z); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            x *= 1.0f / length;
+            y *= 1.0f / length;
+            z *= 1.0f / length;
+        }
+    }
+    float Dot(const CVector3& v) const { return x * v.x + y * v.y + z * v.z; }
 
     float x;
     float y;
@@ -52,6 +102,7 @@ public:
     void TransformVector(CVector3&, CVector3) const;
     void SetPos(CVector3);
     CVector3 GetPos() const { return pos; }
+    CVector3 GetFront() const { return front; }
     static void InitClass();
     static bool s_ClassInit;
 
@@ -89,6 +140,20 @@ class CStaticObject {
 public:
     unsigned char unknown00[48];
     CStaticMesh* m_mesh;
+    unsigned char unknown34[12];
+    CMatrix m_matrix;
+};
+
+enum EWeaponShootType {};
+
+/* inferred: the weapon's shot direction (+672) and origin (+688) */
+class CWeapon {
+public:
+    void Shoot(EWeaponShootType, float, float);
+
+    unsigned char unknown000[672];
+    CVector3 m_direction;
+    CVector3 m_origin;
 };
 
 /* inferred: a skeleton node (24 bytes): name, bone, own matrix */
@@ -119,6 +184,7 @@ public:
     bool AttachMesh(CStaticMesh*, char*, int);
     CStaticMesh* DetachObject(char*);
     bool AttachObject(CStaticObject*, char*, int);
+    bool FireMMG(CVector3&, CStaticObject*);
 
     unsigned char unknown0000[3300];
     SkeletonView* m_skeleton;
@@ -130,6 +196,10 @@ public:
     CMatrix m_handMatrices[8];
     bool m_emitterValid;
     unsigned int m_emitterIndex;
+    unsigned char unknown4288[508];
+    bool m_firingMMG;
+    CStaticObject* m_mmg;
+    CWeapon* m_mmgWeapon;
 };
 
 void CSoldierObject::SetHelmetOffset(CVector3& offset) {
@@ -222,5 +292,43 @@ bool CSoldierObject::AttachObject(CStaticObject* object, char* name, int crc) {
     } else {
         m_handMatrices[node] = *skeleton->m_nodes[node].m_matrix;
     }
+    return true;
+}
+
+bool CSoldierObject::FireMMG(CVector3& target, CStaticObject* gun) {
+    AttachListView* list = gun->m_mesh->m_attachList;
+    int count = list->m_count;
+    AttachPointView* point = list->m_points;
+    CMatrix matrix;
+    matrix = gun->m_matrix;
+    for (int i = 0; i < count; i++, point++) {
+        if (point->m_crc == 0xE6E804D5) {
+            matrix.Multiply(point->m_matrix, matrix);
+            break;
+        }
+    }
+    CVector3 origin = matrix.pos;
+    CVector3 forward = matrix.front;
+    CVector3 direction = target;
+    direction -= origin;
+    CVector3 aim = direction;
+    aim.Normalize();
+    float cosine = forward.Dot(aim);
+    const float limit = 0.9848f;
+    if (cosine < limit) {
+        float maxAngle = acos(limit);
+        float angle = acos(cosine);
+        float sinAngle = sin(angle);
+        float a = (float)sin(angle - maxAngle) / sinAngle;
+        float b = (float)sin(maxAngle) / sinAngle;
+        aim *= b;
+        forward *= a;
+        aim += forward;
+    }
+    m_mmgWeapon->m_direction = aim;
+    m_mmgWeapon->m_origin = origin;
+    m_mmgWeapon->Shoot((EWeaponShootType)2, 0.0f, -1.0f);
+    m_firingMMG = true;
+    m_mmg = gun;
     return true;
 }

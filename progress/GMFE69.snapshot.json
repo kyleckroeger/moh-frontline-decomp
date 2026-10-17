@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 827752,
+    "matching_code_bytes": 828540,
     "total_executable_code_bytes": 1414572,
-    "percent": 58.51607411994582,
+    "percent": 58.5717800154393,
     "categories": {
-      "reconstructed_game": 606236,
+      "reconstructed_game": 607024,
       "restored_library": 221516
     },
-    "matching_functions": 4427
+    "matching_functions": 4428
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -256,7 +256,7 @@
     "config/GMFE69/ShellMenu_unlock.json": "ef523fd8e25c9220cce3e44ead128bb4800165526d04f2af5153493acb097261",
     "config/GMFE69/ShellMenu_unlockedstatus.json": "5653ecf1d2ef5ecc0b705f83e4b5987b06501dffc7a372a5c96766f55185090c",
     "config/GMFE69/Soldier_object.json": "bcdf6fb3cd097fb5e61fa082c09729fa3837546446a7611897f7f4d85abbc2e6",
-    "config/GMFE69/Soldier_object_attach.json": "f47e01124ebd419a2e688c53060df7750fe62b330e3eaaff2d6c698576490d2e",
+    "config/GMFE69/Soldier_object_attach.json": "fd8aabe2f66048dcd2eac5bced5f67d2991ab180189e237d4864f7645d573f07",
     "config/GMFE69/Soldier_object_bone.json": "2ed638304eaaeb7f118d834d0a019a174870a814bb085d21db48a0ce88290468",
     "config/GMFE69/Soldier_object_bounds.json": "6ead974ffb35a32a1b224efa8fed5bbb4d57a839ce7cae7b85c809a2b3cf68e7",
     "config/GMFE69/Soldier_object_cleanup.json": "ff075aebc9e661ea153e092a3d2b77e29719bb5a731dba01db8f88df61de0050",
@@ -2384,7 +2384,7 @@
     "src/game/ShellMenu_unlock.cpp": "a9aa4de786f6d7e8370b23fbdf457f1c80e61f1846fc34624ef47b527505b21f",
     "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
     "src/game/Soldier_object.cpp": "3affe6d09daae1b7404aa5e9f2b0bd0cf24ea1adf1f183fc368bcfcb0ac0582f",
-    "src/game/Soldier_object_attach.cpp": "cbcc6fcc4b7789423ed54c1420dc76a3e9b599981f5c3407f4d2be006d4d2a79",
+    "src/game/Soldier_object_attach.cpp": "24368d9cfe6746c6632177a593a75f4952e742f12e037b766d6e6f8ebe6d950a",
     "src/game/Soldier_object_bone.cpp": "d44f59f15d5dc82bdf0e1ff93311b43bdd6ca9b009420f4632a33029e2b3cf7a",
     "src/game/Soldier_object_bounds.cpp": "e8b762bd7087f0bc0f2089d6b91b85ff2e1f1e068b1e51f0c9b0dcfb213f55d7",
     "src/game/Soldier_object_cleanup.cpp": "6021ad6e80fe017c4633b403478ba333a4e8a20d4a00a64c6d97b1c203087d56",
@@ -45123,8 +45123,8 @@
     {
       "id": "Soldier_object_attach",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 1264,
+      "functions": 6,
+      "code_bytes": 2052,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45156,8 +45156,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8ba2ef782ee8866221499b49a63e4ae372a2ae188cceac4980b702ac8de6b8b3",
-      "linked_sha256": "9a114b6e6ec9f925127b640a12dd2c1f2822aed5524a0011f6f12c589524fb23"
+      "object_sha256": "7cbfde02bdce68efc753cb17a7e2ce7a5a1abce295849b21cec1b8cbb9e52099",
+      "linked_sha256": "4b484e4527853a37f62d4b118cdb1fde207dbf876396adc56e4e1e970d53c63a"
     },
     {
       "id": "objcreate_dump",
@@ -54957,13 +54957,6 @@
         "file_record": 117,
         "file_name": "Soldier_object.cpp",
         "ranges": [
-          {
-            "address": "0x800aa40c",
-            "size": 788,
-            "kind": "function",
-            "name": "FireMMG__14CSoldierObjectFR8CVector3P13CStaticObject",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800aa720",
             "size": 1176,
