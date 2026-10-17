@@ -1200,7 +1200,8 @@
     "ShellMenu_ctor.json",
     "path_service.json",
     "PathNodeList_disable.json",
-    "path_sort.json"
+    "path_sort.json",
+    "UserInterface_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,
