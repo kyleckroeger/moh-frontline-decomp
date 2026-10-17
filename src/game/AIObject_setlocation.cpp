@@ -3,7 +3,7 @@
 // y, x as the class's inline assignment does, inferred), then
 // PerformCollisionTest, which casts a line from the object's position (raised
 // 1.2) towards a point in the tested direction (along the facing axes, a
-// diagonal scaled by 0.70709) and returns the first collision distance found:
+// diagonal scaled by 0.707) and returns the first collision distance found:
 // at chest height, then 0.8 lower, then straight down from the far point
 // (the copy of that point loads y first, an inferred helper); -1 when every
 // line is clear, 0 when nothing is below the far point. The classes and
