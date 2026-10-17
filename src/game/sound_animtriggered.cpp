@@ -6,10 +6,17 @@
 // object. The event is begun through the same inferred inline as
 // AEMS_BeginEvent (sound_fail.cpp). Then PlayAnimTriggeredSound looks up an
 // animation's sound event in the sound table and, when there is one, plays
-// it as a scripted sound at the object's position. The classes, functions
-// and g_soundMapSingleton are named by the symbols; the sound parameters
-// (16 bytes), the object's position and script-object slots (+64, +96), the
-// event view and the helpers are inferred. The rest of the file is in other
+// it as a scripted sound at the object's position, and PlayEnemyMovement
+// (outside multiplayer) begins event 4 for an enemy's movement sound: sound
+// id + movement - 51713, with 100 and 101 mapped to 23 and 27 and other
+// values from 100 up dropped, the object's value at +9424, the azimuth (the
+// closest player's in multiplayer, a branch the early return makes dead) and
+// the distance as in PlayReloadSound; the azimuth is read into a local before
+// the distance, which places its load as in the original. The classes,
+// functions, g_soundMapSingleton and g_bInMultiplayerMode are named by the
+// symbols; the sound parameters (16 bytes), the object's position and
+// script-object slots (+64, +96), its value at +9424, the event views (32
+// bytes here) and the helpers are inferred. The rest of the file is in other
 // units.
 #include <math.h>
 
@@ -110,6 +117,7 @@ class CPlayerObject : public ISceneNode {
 class CScene {
 public:
     CPlayerObject* GetPlayer(int) const;
+    CPlayerObject* FindClosestPlayer(CVector3);
 
     unsigned char unknown000[328];
 };
@@ -117,7 +125,12 @@ public:
 extern CScene g_scene;
 
 class CAnimObject : public ISceneNode {
+public:
+    unsigned char unknown004[9420];
+    short m_unknown24d0;
 };
+
+extern bool g_bInMultiplayerMode;
 
 extern float g_sfxVolume;
 void msg(char*, ...);
@@ -200,4 +213,45 @@ void PlayAnimTriggeredSound(long id, CAnimObject* object) {
     CSoundTable::SSoundParms parms;
     if (g_soundMapSingleton.GetSoundEvent(id, &parms))
         PlayScriptedSound(object, position, parms, -1, 0);
+}
+
+void PlayEnemyMovement(unsigned short movement, long id, CAnimObject* object) {
+    int event[8];
+    if (g_bInMultiplayerMode)
+        return;
+    CVector3 position;
+    object->GetPosition(position);
+    CPlayerObject* player;
+    if (g_bInMultiplayerMode)
+        player = g_scene.FindClosestPlayer(position);
+    else
+        player = g_scene.GetPlayer(0);
+    CVector3 playerPosition;
+    player->GetPosition(playerPosition);
+    unsigned short azimuth = 0;
+    CalcDistanceAndAzimuth(0, &azimuth, position, player);
+    int az = azimuth;
+    position -= playerPosition;
+    int distance = 3.0f * (256.0f * position.Length());
+    int sound = movement + (id - 51713);
+    if (sound >= 100) {
+        switch (sound) {
+        case 100:
+            sound = 23;
+            break;
+        case 101:
+            sound = 27;
+            break;
+        default:
+            return;
+        }
+    }
+    event[0] = 4;
+    event[1] = sound;
+    event[2] = object->m_unknown24d0;
+    event[3] = 2;
+    event[4] = az;
+    event[5] = distance;
+    event[6] = 1;
+    BeginEvent(event);
 }
