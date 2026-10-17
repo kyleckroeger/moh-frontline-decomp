@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 820004,
+    "matching_code_bytes": 820832,
     "total_executable_code_bytes": 1414572,
-    "percent": 57.96834660943381,
+    "percent": 58.026880215358425,
     "categories": {
-      "reconstructed_game": 598488,
+      "reconstructed_game": 599316,
       "restored_library": 221516
     },
-    "matching_functions": 4414
+    "matching_functions": 4415
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -842,7 +842,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "2d58d3600e4ea93a31da7a0f073b2be7c2eea8e297838b13729376437ce3e86a",
+    "config/GMFE69/project.json": "a2f5d883b53ca5fa9770f0a426556a27c8cb6969534906cc06dc331ee4064ac6",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1047,6 +1047,7 @@
     "config/GMFE69/sound_bankalloc.json": "390ac0bd7207d6747bc86fbb1e6978d2d5f80a5896fb63557f37ac0257ba845b",
     "config/GMFE69/sound_endian.json": "aece3dd995cbdf57f8084e640a2d0a6a6eaa75d165d5ce47cf388cb5f4a6dffd",
     "config/GMFE69/sound_fail.json": "feecff8105a80befa374e716f881b48ac3b183431392c1b6ea465c5ba718dd7d",
+    "config/GMFE69/sound_impact.json": "18eed999ac91a3dbc1787dff831ce5fdeeb29f89775b1c178915889ca3722fa1",
     "config/GMFE69/sound_init.json": "f505e6891fb66915b5e554ade58f72bc266aca792a2c99b5a1a862cbb32377cb",
     "config/GMFE69/sound_msg.json": "a742657fca3f72fc697a35b125169a83ee892a7ffd99d9e4b4a1296e48aabc0d",
     "config/GMFE69/sound_music.json": "9755ebbae69bac07fd6eceaedd0a41faef4fcb486d7623e0eeca6ab6ebb04f82",
@@ -2922,6 +2923,7 @@
     "src/game/sound_bankalloc.cpp": "38362aaac703244396fff1919838af17af8fe6f4124f790b1e53be32f09c2a56",
     "src/game/sound_endian.cpp": "9b1551246dece633f361354cb5fa2ed2a147651a6bd96913a638fbd6f322478b",
     "src/game/sound_fail.cpp": "474166c529e1bedcbdb1cd4be47b43dd2146a45e03236d08e45cb1afa7031ec4",
+    "src/game/sound_impact.cpp": "49267580b0eedf94765e8b0edb4270a14f5d0d68757ca1cbd9ddbda4f48f2808",
     "src/game/sound_init.cpp": "404feb8a00e4a6f206540f028d20179b9e0b749f27ffc1d44ee0f6141d659233",
     "src/game/sound_msg.cpp": "88085ce4eacbce0ec7a8420c3560606016a29e81bf5c187b474379887fc971c8",
     "src/game/sound_music.cpp": "a287dd9ee9d47279de80741399d68a626d6ae5ba9f46fa004bd805054f3caf6d",
@@ -52430,6 +52432,45 @@
       "discarded_functions": [],
       "object_sha256": "0a36c8ac0b6a1c4b9605656163e378f8900962c6be883cfaa1c805e022f4a30e",
       "linked_sha256": "6e2b5a828f398acedf19da23ade1c858e3dc6503353d8811a105b46ccd5f05a8"
+    },
+    {
+      "id": "sound_impact",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 828,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "287357f51482626aa420a5a92aa2ef2fb129638ba5eaa4279151f61d38f055ae",
+      "linked_sha256": "c54b3dcab3a3ed274833879735aa5450b26b3b6e2a496785d48b8dfa4d8648aa"
     }
   ],
   "code_map": {
@@ -56132,13 +56173,6 @@
             "size": 1092,
             "kind": "function",
             "name": "PlayBackgroundImpactSound__FP7CBulleti",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800eb17c",
-            "size": 828,
-            "kind": "function",
-            "name": "PlayImpactSound__FUsUs8CVector3b",
             "evidence": "exception-index"
           },
           {

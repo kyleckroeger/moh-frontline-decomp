@@ -1207,7 +1207,8 @@
     "ShellMenu_levelstats.json",
     "AIObject_grenadeshot.json",
     "AIObject_lineofsight_mode.json",
-    "bsbifunc_makenoise.json"
+    "bsbifunc_makenoise.json",
+    "sound_impact.json"
   ],
   "progress": {
     "code_bytes": 1414572,
