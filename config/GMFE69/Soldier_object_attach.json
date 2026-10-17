@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x800a9f1c",
-      "size": 256,
+      "size": 652,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d220",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001430c",
-      "size": 12,
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x803507bc",
+      "size": 5,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -62,11 +69,22 @@
       "address": "0x800a9f1c",
       "size": 256,
       "binding": 1
+    },
+    {
+      "name": "AttachMesh__14CSoldierObjectFP11CStaticMeshPci",
+      "address": "0x800aa01c",
+      "size": 396,
+      "binding": 1
     }
   ],
   "externals": {
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Inverse__7CMatrixFRC7CMatrix": "0x8008f5c0",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
     "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
     "stricmp": "0x80151ab8"
   },
   "undefined_in_discarded_code": [],
@@ -74,18 +92,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
-  "original_file": "Soldier_object.cpp",
-  "original_file_index": 6587,
-  "pooled_sections": [
-    ".sdata2"
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
   ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 5,
-      "address": "0x803507bc"
-    }
-  ]
+  "original_file": "Soldier_object.cpp",
+  "original_file_index": 6587
 }
