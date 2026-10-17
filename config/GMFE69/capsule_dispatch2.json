@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800c71ec",
-      "size": 232,
+      "address": "0x800c6ed8",
+      "size": 1020,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000de74",
-      "size": 16,
+      "address": "0x8000de6c",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014d20",
-      "size": 24,
+      "address": "0x80014d14",
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,9 +68,20 @@
       "address": "0x800c71ec",
       "size": 116,
       "binding": 1
+    },
+    {
+      "name": "TestCollision__11CVolCapsuleCFRC10CVolSphereR10CCollisionb",
+      "address": "0x800c6ed8",
+      "size": 788,
+      "binding": 1
     }
   ],
   "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetProjection__6CLine3CF8CVector3R8CVector3Rf": "0x80092b28",
+    "GetRadius__10CVolSphereCFv": "0x800cba28",
     "SwapOrder__10CCollisionFv": "0x800c79c4"
   },
   "undefined_in_discarded_code": [],
@@ -78,7 +89,38 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "capsule.cpp",
-  "original_file_index": 7537
+  "original_file_index": 7537,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b7c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350b80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350b88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350b90"
+    }
+  ]
 }
