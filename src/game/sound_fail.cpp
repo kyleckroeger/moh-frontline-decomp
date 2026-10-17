@@ -1,4 +1,13 @@
-// A fragment of sound.cpp (0x800ebdf4); the file name is this project's. The
+// A fragment of sound.cpp (0x800ebc90); the file name is this project's.
+// GetAzimuth gives the direction of a position as seen by the player: the
+// offset from the player's position turned into the player's frame (the
+// inverse of its local-to-world matrix), flattened, and its angle as a 16-bit
+// fraction of a turn (0 when the offset is under 0.01 long). The body is an
+// inferred inline helper writing through a result pointer: its locals take the
+// original's stack slots (an inline's locals are placed in declaration order
+// from the bottom) and the result stays in a stack short; the same code is
+// inlined into PlayImpactSound and AEMS_Update. The player's virtual slots
+// follow the ISceneNode views of the other units. Then the
 // ambient track: AmbientTrack_SetLocation places its source (or attaches it to
 // the player when given no position), AmbientTrack_Volume and _Select update
 // the track's AEMS event (event 12: volume scaled to 32767, track number) and
@@ -17,6 +26,7 @@
 // names are inferred. The messages are .rodata pool entries and the constants
 // .sdata2 pool entries. The functions around these are not part of this unit.
 extern "C" {
+double atan2(double, double);
 extern int (*SNDAEMS_beginevent)(int*);
 extern int (*SNDAEMS_endevent)(int, int*);
 extern int (*SNDAEMS_setglobal)(int, int);
@@ -36,6 +46,41 @@ class CVector3 {
 public:
     CVector3Data d;
 } __attribute__((aligned(8)));
+
+class CMatrix {
+public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    static void InitClass();
+    static bool s_ClassInit;
+    void FastInverse(const CMatrix&);
+    void TransformVector(CVector3&, CVector3) const;
+    float m[4][4];
+} __attribute__((aligned(16)));
+
+class ISceneNode {
+public:
+    virtual void MarkForDestruction(int);
+    virtual ~ISceneNode();
+    virtual void Destroy();
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float);
+    virtual void CommitAI();
+    virtual void ConstrainVelocity();
+    virtual void AttemptUpdate(float);
+    virtual void OnCollision(const void*);
+    virtual void CommitUpdate();
+    virtual void Draw(void*);
+    virtual int GetLocalBoundingVolume(int) const;
+    virtual int GetWorldBoundingVolume(int) const;
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
+};
+
+class CPlayerObject : public ISceneNode {
+};
 
 // File-local in the original; declared extern so this fragment can refer to them.
 extern float g_sfxVolume;
@@ -63,6 +108,35 @@ inline int BeginEvent(int* event) {
         msg("SNDAEMS_beginevent number %d handle=%d\n", event[0], result);
     }
     return result;
+}
+
+/* Inferred inline helper (see the header). */
+inline void CalcAzimuth(unsigned short* result, CVector3 source, const CPlayerObject* player) {
+    CVector3 listener;
+    player->GetPosition(listener);
+    CVector3 delta;
+    delta.d.v[0] = source.d.v[0] - listener.d.v[0];
+    delta.d.v[1] = source.d.v[1] - listener.d.v[1];
+    delta.d.v[2] = source.d.v[2] - listener.d.v[2];
+    CMatrix toWorld;
+    player->GetTMLocalToWorld(toWorld);
+    CMatrix toLocal;
+    toLocal.FastInverse(toWorld);
+    toLocal.TransformVector(delta, delta);
+    delta.d.v[2] = 0.0f;
+    if (delta.d.v[0] * delta.d.v[0] + delta.d.v[1] * delta.d.v[1] + delta.d.v[2] * delta.d.v[2] > 0.0001f) {
+        float angle = (float)atan2(delta.d.v[0], delta.d.v[1]);
+        *result = 65536.0f * (0.15915494f * angle);
+    } else {
+        *result = 0;
+    }
+}
+
+unsigned short GetAzimuth(CVector3 position, const CPlayerObject* player) {
+    unsigned short azimuth = 0;
+    unsigned short* result = &azimuth;
+    CalcAzimuth(result, position, player);
+    return *result;
 }
 
 void AmbientTrack_SetLocation(const CVector3* position) {

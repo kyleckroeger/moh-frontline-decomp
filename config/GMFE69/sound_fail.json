@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ebdf4",
-      "size": 1756,
+      "address": "0x800ebc90",
+      "size": 2112,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f3d8",
-      "size": 80,
+      "address": "0x8000f3d0",
+      "size": 88,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015ed8",
-      "size": 120,
+      "address": "0x80015ecc",
+      "size": 132,
       "type": 1
     },
     {
@@ -69,6 +69,12 @@
       "address": "0x800ec480",
       "size": 80,
       "binding": 0
+    },
+    {
+      "name": "GetAzimuth__F8CVector3PC13CPlayerObject",
+      "address": "0x800ebc90",
+      "size": 356,
+      "binding": 1
     },
     {
       "name": "AmbientTrack_SetLocation__FPC8CVector3",
@@ -138,12 +144,16 @@
     }
   ],
   "externals": {
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "SNDAEMS_beginevent": "0x8034e66c",
     "SNDAEMS_endevent": "0x8034e674",
     "SNDAEMS_setglobal": "0x8034e678",
     "SNDAEMS_updateevent": "0x8034e670",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "atan2": "0x80143920",
     "err__FPce": "0x800ea130",
     "gAEMSAmbientTrackEvent": "0x8018a750",
     "g_ambientSourceOnPlayer": "0x8034e2ec",
@@ -151,7 +161,8 @@
     "g_hAEMSAmbientTrack": "0x8034e2f0",
     "g_objSound": "0x8034ecbc",
     "g_sfxVolume": "0x8034e2e4",
-    "msg__FPce": "0x800ea0e0"
+    "msg__FPce": "0x800ea0e0",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -175,7 +186,8 @@
     "g_ambientSourceOnPlayer",
     "g_hAEMSAmbientTrack",
     "g_objSound",
-    "g_sfxVolume"
+    "g_sfxVolume",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "sound.cpp",
   "original_file_index": 8971,
@@ -248,11 +260,35 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8035101c"
+      "address": "0x80350fcc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350fe4"
     },
     {
       "section": ".sdata2",
       "offset": 8,
+      "size": 4,
+      "address": "0x80350fe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350fec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8035101c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
       "size": 8,
       "address": "0x80350ff0"
     }
