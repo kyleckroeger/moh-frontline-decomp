@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 815228,
+    "matching_code_bytes": 816684,
     "total_executable_code_bytes": 1414572,
-    "percent": 57.63071798395557,
+    "percent": 57.7336466436491,
     "categories": {
-      "reconstructed_game": 593712,
+      "reconstructed_game": 595168,
       "restored_library": 221516
     },
-    "matching_functions": 4405
+    "matching_functions": 4406
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -239,6 +239,7 @@
     "config/GMFE69/ShellMenu_gallery.json": "24637baf8fca81c6f8cde925c7c7fe398f7d4f9bd8226a844f7d23b87180d72c",
     "config/GMFE69/ShellMenu_lastlevel.json": "6603db54eec39831d89af1ac3f9e37b85da56136856f77b93997615b3eaad248",
     "config/GMFE69/ShellMenu_levels.json": "f2ef8f3404387c4a7efd85a6c8445fbd6cc1eec9e119bc83a32a605a48b3d5fb",
+    "config/GMFE69/ShellMenu_levelstats.json": "0334d3571b58c6878a06382b5743fe88d6f469f2bf9c0f298d824cc0c9cd4dbf",
     "config/GMFE69/ShellMenu_load.json": "871179b1cb01622f61e64d48de8addcfba3682ca2df14e757614fa6d674b54c8",
     "config/GMFE69/ShellMenu_messages.json": "7a51b162dbdbca042eebe511c3eca1f52f491eaa004ea29019a0a55fd7aa0b6a",
     "config/GMFE69/ShellMenu_mp.json": "803a4c6a2a33df18cdd759a3f61a3cc50ecd2629fdbaa7d9d3af14ad433adaea",
@@ -840,7 +841,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "edc4298c49597ba4d78090a1ce1cc032030cf5fb960f80298382203d1cc6db55",
+    "config/GMFE69/project.json": "1b17c0262844176ec8c9dee15d73a24ea578a328091d84ea5122437bc3fef4fc",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2364,6 +2365,7 @@
     "src/game/ShellMenu_gallery.cpp": "8e18cbfa4dd6168d52c1b1a7a2cd6322a5499065fbfba56b45bae0131607a917",
     "src/game/ShellMenu_lastlevel.cpp": "145b45eaec5354964b4676873a718cd8510dfa0a81f1bb4b1263e2442eb155a8",
     "src/game/ShellMenu_levels.cpp": "7725919006107aa8c2dee7d6142fb64ed999096ac96d51e9d55c418630259a7b",
+    "src/game/ShellMenu_levelstats.cpp": "1396b12e82666f2f9e2e99cbdbd58a5d7ceb9ae634470f44de64e63730f77603",
     "src/game/ShellMenu_load.cpp": "c45fd2491d1763a5a6cc7c15973e530c1bcd9c55a4b68fc5fda8a5b11716c615",
     "src/game/ShellMenu_messages.cpp": "c6c46ac78f03f26fbb583211a9bfebd75ccf16c69c226b6f5d4eaa2140a075ed",
     "src/game/ShellMenu_mp.cpp": "2dab3b7c57b70c917bcc975d557173441282c7df6aef8fcf2836c510c208d99a",
@@ -52348,6 +52350,45 @@
       "discarded_functions": [],
       "object_sha256": "6827c096671eb23b5b4079e4c403d83ca7ac09452593b0c030bea323bd0eead9",
       "linked_sha256": "d953c148941f07e228a7018245a997ff436ea0853a3ac5900d5e9326ae19beb7"
+    },
+    {
+      "id": "ShellMenu_levelstats",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1456,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "c668e05f06dce07cf908b5691f0d360c04a4ffadff1f40ba944d19c4bf17f5d9",
+      "linked_sha256": "e37e964ef7a2480373ce36b1594e7f7c3c8ea2a4fec8bcb866081c9ae36f2632"
     }
   ],
   "code_map": {
@@ -56008,13 +56049,6 @@
             "size": 944,
             "kind": "function",
             "name": "GetCumulativeStats__10CShellMenuFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e5dc4",
-            "size": 1456,
-            "kind": "function",
-            "name": "GetLevelStats__10CShellMenuFv",
             "evidence": "exception-index"
           },
           {
