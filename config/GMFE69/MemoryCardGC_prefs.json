@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -40,19 +40,43 @@
     {
       "name": ".text",
       "address": "0x800ee7a4",
-      "size": 368,
+      "size": 4640,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f548",
-      "size": 8,
+      "size": 96,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800160e8",
-      "size": 12,
+      "size": 144,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80179720",
+      "size": 2055,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018adc0",
+      "size": 1600,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e308",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351030",
+      "size": 56,
       "type": 1
     }
   ],
@@ -74,20 +98,97 @@
       "address": "0x800ee7b4",
       "size": 352,
       "binding": 1
+    },
+    {
+      "name": "LoadPrefs__11CMemoryCardFPUcUi",
+      "address": "0x800ee914",
+      "size": 632,
+      "binding": 1
+    },
+    {
+      "name": "SavePrefs__11CMemoryCardFPUcUi",
+      "address": "0x800eeb8c",
+      "size": 640,
+      "binding": 1
+    },
+    {
+      "name": "CreatePrefs__11CMemoryCardFv",
+      "address": "0x800eee0c",
+      "size": 564,
+      "binding": 1
+    },
+    {
+      "name": "Write__11CMemoryCardFPUcUi",
+      "address": "0x800ef040",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "Read__11CMemoryCardFPUcUi",
+      "address": "0x800ef15c",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "Close__11CMemoryCardFv",
+      "address": "0x800ef278",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "Open__11CMemoryCardFUib",
+      "address": "0x800ef324",
+      "size": 324,
+      "binding": 1
+    },
+    {
+      "name": "DeletePrefFile__11CMemoryCardFi",
+      "address": "0x800ef468",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "DeleteSaveGame__11CMemoryCardFUi",
+      "address": "0x800ef514",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "IsSaveGamePresent__11CMemoryCardFi",
+      "address": "0x800ef5c4",
+      "size": 244,
+      "binding": 1
+    },
+    {
+      "name": "GetNextSaveGame__11CMemoryCardFPUiPUiPc",
+      "address": "0x800ef6b8",
+      "size": 780,
+      "binding": 1
     }
   ],
   "externals": {
     "CARDClose": "0x80127fa8",
+    "CARDCreateAsync": "0x80128134",
+    "CARDDelete": "0x80128cb4",
     "CARDFastOpen": "0x80127cd0",
+    "CARDGetResultCode": "0x80123ae0",
+    "CARDGetSectorSize": "0x80123c60",
     "CARDGetStatus": "0x80128ef4",
+    "CARDOpen": "0x80127e30",
+    "CARDReadAsync": "0x8012863c",
+    "CARDSetAttributes": "0x801294ec",
+    "CARDSetStatus": "0x80129194",
     "CARDUnmount": "0x801271c0",
-    "COMPANY_CODENAME": "0x8034e30c",
-    "COMPANY_DEBUGNAME": "0x8034e310",
-    "GAME_CODENAME": "0x8034e308",
-    "GAME_DEBUGNAME": "0x8034e314",
+    "CARDWrite": "0x80128ab8",
+    "CARDWriteAsync": "0x801289a4",
+    "DebugMsg__FPCce": "0x80018c88",
     "MountPortIfRequired__11CMemoryCardFi": "0x800f03dc",
+    "atoi": "0x80140114",
+    "memcpy": "0x800094f8",
     "sprintf": "0x8013dab4",
+    "strlen": "0x801400f8",
     "strncmp": "0x8013fe94",
+    "strncpy": "0x8013fffc",
     "strstr": "0x8013fdb4"
   },
   "undefined_in_discarded_code": [],
@@ -95,29 +196,7 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [
-    "COMPANY_CODENAME",
-    "COMPANY_DEBUGNAME",
-    "GAME_CODENAME",
-    "GAME_DEBUGNAME"
-  ],
+  "sda_externals": [],
   "original_file": "MemoryCardGC.cpp",
-  "original_file_index": 9213,
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 8,
-      "address": "0x80351048"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 6,
-      "address": "0x80351050"
-    }
-  ]
+  "original_file_index": 9213
 }

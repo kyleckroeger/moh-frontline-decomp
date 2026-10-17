@@ -620,7 +620,6 @@
     "MemoryCardGC_blocks.json",
     "MemoryCardGC_probe.json",
     "MemoryCardGC_format.json",
-    "MemoryCardGC_close.json",
     "staticobjfactory_helmet.json",
     "staticobjfactory_compare.json",
     "Tank_object_weapons.json",
