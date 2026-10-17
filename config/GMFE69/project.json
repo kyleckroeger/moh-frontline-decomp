@@ -1204,7 +1204,8 @@
     "UserInterface_update.json",
     "UserInterface_drawcompass.json",
     "ShellMenu_specialmedals.json",
-    "ShellMenu_cheatall.json"
+    "ShellMenu_cheatall.json",
+    "ShellMenu_corrupt.json"
   ],
   "progress": {
     "code_bytes": 1414572,
