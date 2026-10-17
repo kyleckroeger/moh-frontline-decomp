@@ -1197,7 +1197,8 @@
     "spat2hdr.json",
     "sdecmut_initmut.json",
     "GameMessage.json",
-    "ShellMenu_ctor.json"
+    "ShellMenu_ctor.json",
+    "path_service.json"
   ],
   "progress": {
     "code_bytes": 1414572,
