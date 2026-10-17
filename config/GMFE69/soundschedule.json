@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004781c",
-      "size": 140,
+      "address": "0x80047798",
+      "size": 272,
       "type": 1
     },
     {
@@ -76,6 +76,12 @@
       "binding": 0
     },
     {
+      "name": "Init__13SoundScheduleFv",
+      "address": "0x80047798",
+      "size": 132,
+      "binding": 1
+    },
+    {
       "name": "__dt__13SoundScheduleFv",
       "address": "0x8004781c",
       "size": 60,
@@ -96,14 +102,19 @@
   ],
   "externals": {
     "__construct_array": "0x8013834c",
-    "__dl__FPv": "0x8001ca2c"
+    "__dl__FPv": "0x8001ca2c",
+    "g_FreeRecordList": "0x8034e8e0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_FreeRecordList"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_FreeRecordList"
+  ],
   "original_file": "soundschedule.cpp",
   "original_file_index": 1712
 }
