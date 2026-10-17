@@ -1,0 +1,196 @@
+{
+  "id": "UserInterface_drawcompass",
+  "source": "src/game/UserInterface_drawcompass.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800bbea0",
+      "size": 3372,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000dae0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014a14",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DrawCompass__13UserInterfaceFv",
+      "address": "0x800bbea0",
+      "size": 3372,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CompassVerts": "0x80188dd0",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "MathFunRotateAboutY__FPfPff": "0x80093500",
+    "TempVerts": "0x801ef4a8",
+    "circleSprite__13UserInterface": "0x8034ebe4",
+    "compassEdgeSprite__13UserInterface": "0x8034ebcc",
+    "compassSprite__13UserInterface": "0x8034ebc4",
+    "floor": "0x801432fc",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_scene": "0x8019484c",
+    "g_screen": "0x80196ac0",
+    "g_viewport": "0x80194ca0",
+    "healthSprite__13UserInterface": "0x8034ebc0",
+    "memcpy": "0x800094f8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "circleSprite__13UserInterface",
+    "compassEdgeSprite__13UserInterface",
+    "compassSprite__13UserInterface",
+    "g_NumPlayers",
+    "g_bInMultiplayerMode",
+    "healthSprite__13UserInterface"
+  ],
+  "original_file": "UserInterface.cpp",
+  "original_file_index": 7237,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350a14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350a50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350a9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350a54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350a58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350aa4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350aa8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350a5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350a8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350a88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350aac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350ab0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350a94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x80350a40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 8,
+      "address": "0x80350a80"
+    }
+  ]
+}

@@ -1201,7 +1201,8 @@
     "path_service.json",
     "PathNodeList_disable.json",
     "path_sort.json",
-    "UserInterface_update.json"
+    "UserInterface_update.json",
+    "UserInterface_drawcompass.json"
   ],
   "progress": {
     "code_bytes": 1414572,
