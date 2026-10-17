@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 806060,
+    "matching_code_bytes": 807524,
     "total_executable_code_bytes": 1414572,
-    "percent": 56.98260675313805,
+    "percent": 57.08610095491781,
     "categories": {
-      "reconstructed_game": 584544,
+      "reconstructed_game": 586008,
       "restored_library": 221516
     },
-    "matching_functions": 4398
+    "matching_functions": 4399
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -202,6 +202,7 @@
     "config/GMFE69/Padclamp.json": "570f443e7a228e96a9e869248c68a59a1d9e68052c20523d1c9a482772bfe76b",
     "config/GMFE69/PathNodeList.json": "34b38f257aac355b91d2f9445d576d0223a8048609af71e85c29c7505ae7ebaf",
     "config/GMFE69/PathNodeList_closest.json": "66a702f4e0052490c726d5fee798dafe7580707981e5acdd7b46070fdc85639c",
+    "config/GMFE69/PathNodeList_disable.json": "94123ad5e3a94f0e92a49df3cbc16bd2069279c7d67a39bb145a3a0cfa4a1ee5",
     "config/GMFE69/PathNodeList_hashmap.json": "f17589d19801d73c4a867563bb3fb3d236004a3f211c4c0edfc86fdc5c131207",
     "config/GMFE69/Pause.json": "c951796a85f2b4e4117496b88679ef9d2c01f318ca6693f8ab76810e4210a4f8",
     "config/GMFE69/Pause_reset.json": "0541833ccc8dbd3e167ec5ffd165607e5f4b8c74ede37929bca1e032c9885957",
@@ -833,7 +834,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "be362c5af5f193c2bd206a2fea66a281d74e11463c794da7eb04e3a0746876e4",
+    "config/GMFE69/project.json": "4ad0508385790920c924c23df4f95a4956a82c16cbf95e9b32300e5e471d4662",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2326,6 +2327,7 @@
     "src/game/ObstacleAvoidance.cpp": "a8f1dcb408e0e7cc1208a87cb425296ca4bfd789a487ba814952fcc8c4ad6906",
     "src/game/PathNodeList.cpp": "4d07813471d9d4fc31984159dbc04bd6875ace05f4ceb3267d05c7be06169ad9",
     "src/game/PathNodeList_closest.cpp": "d813eb3b434d43e6ede7514b7472c7aedf4126c6d7d7d60d07656df355678259",
+    "src/game/PathNodeList_disable.cpp": "116454c44398b6be3999f7e9257047109c9f6eed4ba4ef93486716ae5a06c2af",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
     "src/game/Pause.cpp": "2d6d321b8fcd54038857a76293913fd0c891dd06d69d5bda64af7fe8b1519da8",
     "src/game/Pause_reset.cpp": "a03283bbf6a4af122c4d5c85f1ff871e769bcaff341cbc15af5ab9d3d8f06fda",
@@ -52059,6 +52061,45 @@
       "discarded_functions": [],
       "object_sha256": "0b61f2db55cdd74b87a67b8da4dedb237ccf0b93293caa2b0e2d8caa6e40369c",
       "linked_sha256": "e7745a3ed9845516ead3a83fa474686beac2720918458d673eb8d198b021c5b0"
+    },
+    {
+      "id": "PathNodeList_disable",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1464,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "c7495172f520d4b625e8bb2c105b760dc7ac1b8a6ba9e956fc1d1e1291172d69",
+      "linked_sha256": "80a5a9f82f322000ba2b20c978000cdce049d750d2639849d4aeb8bee103fd98"
     }
   ],
   "code_map": {
@@ -53026,13 +53067,6 @@
         "file_record": 34,
         "file_name": "PathNodeList.cpp",
         "ranges": [
-          {
-            "address": "0x80054810",
-            "size": 1464,
-            "kind": "function",
-            "name": "DisableCollidingNodes__13CPathNodeListFPC7IVolume",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80054dc8",
             "size": 608,
