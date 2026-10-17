@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800a9d04",
-      "size": 64,
+      "size": 536,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d210",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800142f4",
+      "size": 24,
       "type": 1
     }
   ],
@@ -58,19 +70,39 @@
       "binding": 1
     },
     {
+      "name": "GetAttachPointMatrix__14CSoldierObjectFPcP7CMatrix",
+      "address": "0x800a9e84",
+      "size": 152,
+      "binding": 1
+    },
+    {
       "name": "DetachObjectFromFloatingBone__14CSoldierObjectFv",
       "address": "0x800a9d34",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "AttachObjectToFloatingBone__14CSoldierObjectFP13CStaticObjectPci",
+      "address": "0x800a9d44",
+      "size": 320,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Inverse__7CMatrixFRC7CMatrix": "0x8008f5c0",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "stricmp": "0x80151ab8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "Soldier_object.cpp",
   "original_file_index": 6587
 }
