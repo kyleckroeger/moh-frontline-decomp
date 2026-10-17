@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005d4ac",
-      "size": 692,
+      "address": "0x8005d470",
+      "size": 752,
       "type": 1
     },
     {
@@ -57,6 +57,18 @@
     }
   ],
   "functions": [
+    {
+      "name": "GetCoverPointIndex__15CAIFilterGlobalCFP11CCoverPoint",
+      "address": "0x8005d470",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "GetCoverPointByIndex__15CAIFilterGlobalCFi",
+      "address": "0x8005d498",
+      "size": 20,
+      "binding": 1
+    },
     {
       "name": "InvalidateCoverPointByID__15CAIFilterGlobalFi",
       "address": "0x8005d4ac",

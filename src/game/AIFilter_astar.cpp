@@ -1,5 +1,7 @@
-// A fragment of AIFilter.cpp (0x8005d4ac): CAIFilterGlobal's
-// InvalidateCoverPointByID (invalidates every cover-point waypoint in the
+// A fragment of AIFilter.cpp (0x8005d470): CAIFilterGlobal's
+// GetCoverPointIndex and GetCoverPointByIndex (a cover point is its trigger
+// table entry, so these convert between the entry and its index; the result
+// types are inferred), InvalidateCoverPointByID (invalidates every cover-point waypoint in the
 // trigger table whose core id matches), then its A* and spline helpers. The
 // path-node functions forward to the path-node list (created on demand when
 // there are nodes); GetSplinePath finds the spline with an id
@@ -96,6 +98,8 @@ public:
 
 class CAIFilterGlobal {
 public:
+    int GetCoverPointIndex(CCoverPoint*) const;
+    CCoverPoint* GetCoverPointByIndex(int) const;
     void InvalidateCoverPointByID(int);
     void DisableCollidingAStarPathNodes(const IVolume*);
     void EnableAllAStarPathNodes();
@@ -119,6 +123,16 @@ static inline CCoverPoint* FindCoverPoint(TriggerObject_struct* trigger) {
             return (CCoverPoint*)trigger;
     }
     return 0;
+}
+
+int CAIFilterGlobal::GetCoverPointIndex(CCoverPoint* point) const {
+    return (TriggerObject_struct*)point - g_pTriggerObjects;
+}
+
+CCoverPoint* CAIFilterGlobal::GetCoverPointByIndex(int index) const {
+    TriggerObject_struct* point = g_pTriggerObjects;
+    point += index;
+    return (CCoverPoint*)point;
 }
 
 void CAIFilterGlobal::InvalidateCoverPointByID(int id) {
