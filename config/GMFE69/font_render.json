@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8007ca34",
-      "size": 308,
+      "size": 380,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c010",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012f8c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -91,6 +91,18 @@
       "name": "SetDepth__5CFontFUl",
       "address": "0x8007cb4c",
       "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "GetColor__5CFontFv",
+      "address": "0x8007cb68",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "SetColor__5CFontF6CColor",
+      "address": "0x8007cba0",
+      "size": 16,
       "binding": 1
     }
   ],

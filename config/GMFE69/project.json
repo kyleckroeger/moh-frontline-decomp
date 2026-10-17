@@ -1143,7 +1143,6 @@
     "animskinned_as.json",
     "compartment_sharedsize.json",
     "light_destroy.json",
-    "font_setcolor.json",
     "particlesystem_registerfn.json",
     "sprite_notexturebin.json",
     "decal_initclass.json",

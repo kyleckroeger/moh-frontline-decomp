@@ -1,18 +1,27 @@
 // A fragment of font.cpp (0x8007ca34): CFont::Render (the text run's count,
 // position and colour are added to the packet, then its characters copied in
 // one block; returns 0) and the font data accessors GetHeight, SetHeight,
-// SetScale, GetScale and SetDepth (the depth's bits stored as a float, as
-// the image does through the stack). The file name is this project's; the
+// SetScale, GetScale, SetDepth (the depth's bits stored as a float, as
+// the image does through the stack), GetColor and SetColor (the colour word
+// copied, the result byte by byte through the copy constructor). The file name is this project's; the
 // original record is font.cpp. CFont and its functions are named by the
 // mangled symbols; the records and members are inferred. CFont declares its
 // destructor (defined elsewhere) first so its table is not emitted here.
-// GetColor and SetColor after these are not part of this unit.
 extern "C" void* memcpy(void*, const void*, unsigned long);
 
 /* Inferred: a colour with a member-wise copy constructor (as in fader.cpp). */
 struct CColor {
     CColor() {}
-    CColor(const CColor& c) : r(c.r), g(c.g), b(c.b), a(c.a) {}
+    CColor(const CColor& c) {
+        unsigned char cr = c.r;
+        unsigned char cg = c.g;
+        unsigned char ca = c.a;
+        unsigned char cb = c.b;
+        r = cr;
+        g = cg;
+        b = cb;
+        a = ca;
+    }
 
     unsigned char r;
     unsigned char g;
@@ -70,6 +79,8 @@ public:
     void SetScale(float, float);
     void GetScale(float&, float&);
     void SetDepth(unsigned long);
+    CColor GetColor();
+    void SetColor(CColor);
 
     FontDataView* m_data;
 };
@@ -106,4 +117,14 @@ void CFont::GetScale(float& x, float& y) {
 
 void CFont::SetDepth(unsigned long depth) {
     m_data->m_depth = *(float*)&depth;
+}
+
+CColor CFont::GetColor() {
+    CColor color;
+    *(unsigned int*)&color = *(unsigned int*)&m_data->m_color;
+    return color;
+}
+
+void CFont::SetColor(CColor color) {
+    *(unsigned int*)&m_data->m_color = *(unsigned int*)&color;
 }
