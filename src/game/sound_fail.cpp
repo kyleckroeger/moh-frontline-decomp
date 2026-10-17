@@ -3,11 +3,12 @@
 // offset from the player's position turned into the player's frame (the
 // inverse of its local-to-world matrix), flattened, and its angle as a 16-bit
 // fraction of a turn (0 when the offset is under 0.01 long). The body is an
-// inferred inline helper writing through a result pointer: its locals take the
-// original's stack slots (an inline's locals are placed in declaration order
-// from the bottom) and the result stays in a stack short; the same code is
-// inlined into PlayImpactSound and AEMS_Update. The player's virtual slots
-// follow the ISceneNode views of the other units. Then the
+// inferred inline helper that also gives the distance (AEMS_Update in
+// sound_oneshotreset.cpp asks for both; here no distance is asked for, and
+// the azimuth is written through its address, which keeps it in a stack
+// short). An inline's locals are placed from the bottom of the frame in
+// declaration order, which gives the original's slots. The player's virtual
+// slots follow the ISceneNode views of the other units. Then the
 // ambient track: AmbientTrack_SetLocation places its source (or attaches it to
 // the player when given no position), AmbientTrack_Volume and _Select update
 // the track's AEMS event (event 12: volume scaled to 32767, track number) and
@@ -36,6 +37,23 @@ void SNDSYS_leavecritical();
 }
 
 class CSoldierObject;
+
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y;
+    }
+    return x;
+}
 
 union CVector3Data {
     double pair[2];
@@ -110,33 +128,38 @@ inline int BeginEvent(int* event) {
     return result;
 }
 
-/* Inferred inline helper (see the header). */
-inline void CalcAzimuth(unsigned short* result, CVector3 source, const CPlayerObject* player) {
+/* Inferred inline helper (see the header), shared with AEMS_Update
+   (sound_oneshotreset.cpp). */
+inline void CalcDistanceAndAzimuth(unsigned short* distance, unsigned short* azimuth, CVector3 source,
+                                   const CPlayerObject* player) {
     CVector3 listener;
     player->GetPosition(listener);
     CVector3 delta;
     delta.d.v[0] = source.d.v[0] - listener.d.v[0];
     delta.d.v[1] = source.d.v[1] - listener.d.v[1];
     delta.d.v[2] = source.d.v[2] - listener.d.v[2];
-    CMatrix toWorld;
-    player->GetTMLocalToWorld(toWorld);
-    CMatrix toLocal;
-    toLocal.FastInverse(toWorld);
-    toLocal.TransformVector(delta, delta);
-    delta.d.v[2] = 0.0f;
-    if (delta.d.v[0] * delta.d.v[0] + delta.d.v[1] * delta.d.v[1] + delta.d.v[2] * delta.d.v[2] > 0.0001f) {
-        float angle = (float)atan2(delta.d.v[0], delta.d.v[1]);
-        *result = 65536.0f * (0.15915494f * angle);
-    } else {
-        *result = 0;
+    if (distance)
+        *distance = 256.0f * sqrtf(delta.d.v[0] * delta.d.v[0] + delta.d.v[1] * delta.d.v[1] + delta.d.v[2] * delta.d.v[2]);
+    if (azimuth) {
+        CMatrix toWorld;
+        player->GetTMLocalToWorld(toWorld);
+        CMatrix toLocal;
+        toLocal.FastInverse(toWorld);
+        toLocal.TransformVector(delta, delta);
+        delta.d.v[2] = 0.0f;
+        if (delta.d.v[0] * delta.d.v[0] + delta.d.v[1] * delta.d.v[1] + delta.d.v[2] * delta.d.v[2] > 0.0001f) {
+            float angle = (float)atan2(delta.d.v[0], delta.d.v[1]);
+            *azimuth = 65536.0f * (0.15915494f * angle);
+        } else {
+            *azimuth = 0;
+        }
     }
 }
 
 unsigned short GetAzimuth(CVector3 position, const CPlayerObject* player) {
     unsigned short azimuth = 0;
-    unsigned short* result = &azimuth;
-    CalcAzimuth(result, position, player);
-    return *result;
+    CalcDistanceAndAzimuth(0, &azimuth, position, player);
+    return azimuth;
 }
 
 void AmbientTrack_SetLocation(const CVector3* position) {

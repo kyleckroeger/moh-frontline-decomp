@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ec834",
-      "size": 220,
+      "size": 884,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f440",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015f74",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -69,32 +69,64 @@
       "address": "0x800ec834",
       "size": 220,
       "binding": 1
+    },
+    {
+      "name": "AEMS_Update__Fv",
+      "address": "0x800ec910",
+      "size": 664,
+      "binding": 1
     }
   ],
   "externals": {
     "DebugMsg__FPCce": "0x80018c88",
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetVSyncs__7CScreenFv": "0x8001b908",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "SNDAEMS_asyncloadmodulebankdone": "0x80158ca0",
     "SNDAEMS_removemodulebank": "0x8034e668",
+    "SNDAEMS_updateevent": "0x8034e670",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
     "UpdateREAL__Fv": "0x8001b098",
+    "atan2": "0x80143920",
+    "err__FPce": "0x800ea130",
+    "gAEMSAmbientTrackEvent": "0x8018a750",
     "g_AEMSOneShotLoadState": "0x8034ecd0",
     "g_AEMSOneShotMemOffset": "0x8034eccc",
-    "g_screen": "0x80196ac0"
+    "g_ambientSourceOnPlayer": "0x8034e2ec",
+    "g_ambientSourcePos": "0x802294a0",
+    "g_hAEMSAmbientTrack": "0x8034e2f0",
+    "g_scene": "0x8019484c",
+    "g_screen": "0x80196ac0",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "err__FPce",
+    "gAEMSAmbientTrackEvent",
+    "g_ambientSourceOnPlayer",
+    "g_ambientSourcePos",
+    "g_hAEMSAmbientTrack"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
     "SNDAEMS_removemodulebank",
+    "SNDAEMS_updateevent",
     "g_AEMSOneShotLoadState",
-    "g_AEMSOneShotMemOffset"
+    "g_AEMSOneShotMemOffset",
+    "g_ambientSourceOnPlayer",
+    "g_hAEMSAmbientTrack",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "sound.cpp",
   "original_file_index": 8971,
   "pooled_sections": [
-    ".rodata"
+    ".rodata",
+    ".sdata2"
   ],
   "pool_references": [
     {
@@ -102,6 +134,54 @@
       "offset": 0,
       "size": 54,
       "address": "0x80179584"
+    },
+    {
+      "section": ".rodata",
+      "offset": 56,
+      "size": 74,
+      "address": "0x801795bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350fcc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350fd0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350fd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350fe0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350fe4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350fe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350fec"
     }
   ]
 }
