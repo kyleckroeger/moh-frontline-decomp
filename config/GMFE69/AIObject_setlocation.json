@@ -40,8 +40,27 @@
     {
       "name": ".text",
       "address": "0x8004d75c",
-      "size": 44,
+      "size": 940,
       "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a8d0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011a44",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801834ac",
+      "size": 32,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -56,9 +75,17 @@
       "address": "0x8004d778",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "PerformCollisionTest__9CAIObjectF23ECollisionTestDirectionf",
+      "address": "0x8004d788",
+      "size": 896,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "GetCollisionDistLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObjectf": "0x8005bea4"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -66,5 +93,46 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIObject.cpp",
-  "original_file_index": 1752
+  "original_file_index": 1752,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f92c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f930"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f8f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f934"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f938"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f860"
+    }
+  ]
 }
