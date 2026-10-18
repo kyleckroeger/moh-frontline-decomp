@@ -105,7 +105,7 @@ with `strtol` inlined), and `__load_buffer` and `setvbuf` in `buffer_io.c`
 - No reference links these, so they need reconstruction from the
   disassembly: the C++ throw/unwind code of `Gecko_ExceptionPPC.cp`
   (`__throw`, `ExPPC_*`, about 5 KB; `__end__catch`,
-  `ExPPC_UnwindStack`, `ExPPC_PopStackFrame`, `ExPPC_NextAction` and `ExPPC_FindExceptionRecord` are done, in `src/msl/Gecko_ExceptionPPC_endcatch.cp`
+  `ExPPC_ThrowHandler` (`src/msl/Gecko_ExceptionPPC_throw.cp`), `ExPPC_UnwindStack`, `ExPPC_PopStackFrame`, `ExPPC_NextAction` and `ExPPC_FindExceptionRecord` are done, in `src/msl/Gecko_ExceptionPPC_endcatch.cp`
   and `src/msl/Gecko_ExceptionPPC_find.cp`), `__get_file_modes` (a draft differs in
   one register choice) and `__fread`/`fread`.
 - MetroTRK: Frontline links the Wind Waker's revision (117 of 118 function
