@@ -1209,7 +1209,8 @@
     "bsbifunc_makenoise.json",
     "sound_impact.json",
     "Soldier_object_helmet.json",
-    "player_health.json"
+    "player_health.json",
+    "Moh2_statusscreen.json"
   ],
   "progress": {
     "code_bytes": 1414572,
