@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801599ec",
-      "size": 496,
+      "size": 796,
       "type": 1
     }
   ],
@@ -54,12 +54,19 @@
       "address": "0x80159ac8",
       "size": 276,
       "binding": 1
+    },
+    {
+      "name": "SNDBANKI_asyncxferhdr__Fv",
+      "address": "0x80159bdc",
+      "size": 300,
+      "binding": 1
     }
   ],
   "externals": {
     "FILESYS_completeop": "0x80148a84",
     "FILESYS_opstatus": "0x801485b0",
     "FILESYS_read": "0x80148d7c",
+    "SNDI_memcpy": "0x8016d730",
     "sndbas": "0x801934e8"
   },
   "undefined_in_discarded_code": [],

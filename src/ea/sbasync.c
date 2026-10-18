@@ -1,9 +1,13 @@
 // Asynchronous sound-bank loading, the functions at the start of the file:
-// completing and issuing the ring of four file reads. sndbas holds the load
-// in progress and the read priority; the load and read-record views are
-// inferred from offsets and are not original. The header transfer, downloads,
-// server and the public load functions that follow are not reconstructed.
+// completing and issuing the ring of four file reads, then
+// SNDBANKI_asyncxferhdr, which copies the completed reads into the bank
+// header (one chunk each, the last one possibly short) until the header is
+// complete. sndbas holds the load in progress and the read priority; the
+// load and read-record views are inferred from offsets and are not original.
+// The downloads, server and the public load functions that follow are not
+// reconstructed.
 extern "C" {
+void SNDI_memcpy(void*, void*, int);
 int FILESYS_completeop(int);
 int FILESYS_opstatus(int);
 int FILESYS_read(int, int, void*, int, int, void*);
@@ -19,18 +23,20 @@ struct SndBankReadView {
 
 struct SndBankLoadView {
     unsigned char unknown00[12];
-    unsigned int streamed;
+    char* header;
     unsigned char unknown10[4];
     int fileOffset;
     int file;
-    unsigned char unknown1c[4];
+    int headerLast;
     int size;
-    unsigned char unknown24[16];
+    int headerRemaining;
+    unsigned char unknown28[12];
     unsigned short chunkSize;
     unsigned char unknown36[2];
     unsigned short issued;
     unsigned short completed;
-    unsigned char unknown3c[4];
+    unsigned short headerRead;
+    unsigned short headerCopied;
     SndBankReadView reads[4];
 };
 
@@ -75,7 +81,7 @@ void SNDBANKI_asyncissuereads(void) {
     while (sndbas.load->completed > sndbas.load->issued - 4) {
         load = sndbas.load;
         offset = load->issued * load->chunkSize;
-        if (load->streamed) {
+        if (load->header) {
             size = load->size - offset;
             if (size <= 0)
                 break;
@@ -89,6 +95,37 @@ void SNDBANKI_asyncissuereads(void) {
         read->state = 1;
         i++;
         sndbas.load->issued++;
+        if (i >= 4)
+            i = 0;
+    }
+}
+
+void SNDBANKI_asyncxferhdr(void) {
+    SndBankLoadView* load;
+    int size;
+    SndBankReadView* read;
+    int i;
+    unsigned short copied;
+
+    if (sndbas.load->headerRemaining <= 0)
+        return;
+    i = sndbas.load->headerRead % 4;
+    while ((copied = sndbas.load->headerCopied) < sndbas.load->completed) {
+        load = sndbas.load;
+        read = &load->reads[i];
+        size = load->chunkSize;
+        if (load->headerRemaining < size)
+            size = load->headerRemaining;
+        SNDI_memcpy(load->header + load->chunkSize * copied, read->buffer, size);
+        sndbas.load->headerRemaining -= size;
+        if (sndbas.load->headerRemaining <= 0 && size < sndbas.load->chunkSize) {
+            sndbas.load->headerLast = size;
+            return;
+        }
+        read->state = 0;
+        i++;
+        sndbas.load->headerRead++;
+        sndbas.load->headerCopied++;
         if (i >= 4)
             i = 0;
     }
