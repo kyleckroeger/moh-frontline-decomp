@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80054434",
-      "size": 988,
+      "address": "0x80054304",
+      "size": 1292,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000ab18",
-      "size": 60,
+      "address": "0x8000ab10",
+      "size": 68,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011ccc",
-      "size": 48,
+      "address": "0x80011cc0",
+      "size": 60,
       "type": 1
     },
     {
@@ -72,6 +72,12 @@
       "address": "0x800547d0",
       "size": 60,
       "binding": 0
+    },
+    {
+      "name": "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition",
+      "address": "0x80054304",
+      "size": 304,
+      "binding": 1
     },
     {
       "name": "__dt__18CObstacleGridEntryFv",
@@ -108,7 +114,8 @@
     "__construct_array": "0x8013834c",
     "__destroy_arr": "0x801382d4",
     "__dl__FPv": "0x8001ca2c",
-    "f_bObstacleAvoidanceLinesInitialized": "0x8034e900"
+    "f_bObstacleAvoidanceLinesInitialized": "0x8034e900",
+    "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -128,167 +135,185 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034fa8c"
+      "address": "0x8034fa84"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x8034fa90"
+      "address": "0x8034fa74"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x8034fa44"
+      "address": "0x8034fa88"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x8034fa94"
+      "address": "0x8034fa64"
     },
     {
       "section": ".sdata2",
       "offset": 16,
       "size": 4,
-      "address": "0x8034fa98"
+      "address": "0x8034fa44"
     },
     {
       "section": ".sdata2",
       "offset": 20,
       "size": 4,
-      "address": "0x8034fa9c"
+      "address": "0x8034fa8c"
     },
     {
       "section": ".sdata2",
       "offset": 24,
       "size": 4,
-      "address": "0x8034faa0"
+      "address": "0x8034fa90"
     },
     {
       "section": ".sdata2",
       "offset": 28,
       "size": 4,
-      "address": "0x8034faa4"
+      "address": "0x8034fa94"
     },
     {
       "section": ".sdata2",
       "offset": 32,
       "size": 4,
-      "address": "0x8034faa8"
+      "address": "0x8034fa98"
     },
     {
       "section": ".sdata2",
       "offset": 36,
       "size": 4,
-      "address": "0x8034faac"
+      "address": "0x8034fa9c"
     },
     {
       "section": ".sdata2",
       "offset": 40,
       "size": 4,
-      "address": "0x8034fab0"
+      "address": "0x8034faa0"
     },
     {
       "section": ".sdata2",
       "offset": 44,
       "size": 4,
-      "address": "0x8034fab4"
+      "address": "0x8034faa4"
     },
     {
       "section": ".sdata2",
       "offset": 48,
       "size": 4,
-      "address": "0x8034fab8"
+      "address": "0x8034faa8"
     },
     {
       "section": ".sdata2",
       "offset": 52,
       "size": 4,
-      "address": "0x8034fa54"
+      "address": "0x8034faac"
     },
     {
       "section": ".sdata2",
       "offset": 56,
       "size": 4,
-      "address": "0x8034fabc"
+      "address": "0x8034fab0"
     },
     {
       "section": ".sdata2",
       "offset": 60,
       "size": 4,
-      "address": "0x8034fa88"
+      "address": "0x8034fab4"
     },
     {
       "section": ".sdata2",
       "offset": 64,
       "size": 4,
-      "address": "0x8034fac0"
+      "address": "0x8034fab8"
     },
     {
       "section": ".sdata2",
       "offset": 68,
       "size": 4,
-      "address": "0x8034fac4"
+      "address": "0x8034fa54"
     },
     {
       "section": ".sdata2",
       "offset": 72,
       "size": 4,
-      "address": "0x8034fac8"
+      "address": "0x8034fabc"
     },
     {
       "section": ".sdata2",
       "offset": 76,
       "size": 4,
-      "address": "0x8034facc"
+      "address": "0x8034fac0"
     },
     {
       "section": ".sdata2",
       "offset": 80,
       "size": 4,
-      "address": "0x8034fad0"
+      "address": "0x8034fac4"
     },
     {
       "section": ".sdata2",
       "offset": 84,
       "size": 4,
-      "address": "0x8034fad4"
+      "address": "0x8034fac8"
     },
     {
       "section": ".sdata2",
       "offset": 88,
       "size": 4,
-      "address": "0x8034fad8"
+      "address": "0x8034facc"
     },
     {
       "section": ".sdata2",
       "offset": 92,
       "size": 4,
-      "address": "0x8034fadc"
+      "address": "0x8034fad0"
     },
     {
       "section": ".sdata2",
       "offset": 96,
       "size": 4,
-      "address": "0x8034fae0"
+      "address": "0x8034fad4"
     },
     {
       "section": ".sdata2",
       "offset": 100,
       "size": 4,
-      "address": "0x8034fae4"
+      "address": "0x8034fad8"
     },
     {
       "section": ".sdata2",
       "offset": 104,
       "size": 4,
-      "address": "0x8034fae8"
+      "address": "0x8034fadc"
     },
     {
       "section": ".sdata2",
       "offset": 108,
+      "size": 4,
+      "address": "0x8034fae0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 112,
+      "size": 4,
+      "address": "0x8034fae4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 116,
+      "size": 4,
+      "address": "0x8034fae8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 120,
       "size": 4,
       "address": "0x8034faec"
     }

@@ -1,18 +1,26 @@
-// The end of ObstacleAvoidance.cpp (0x80054434): the CObstacleAvoidance
-// destructor (both grids destroyed), the constructor (its two 13-entry
-// grids of CObstacleGridEntry, then, once for
-// all instances, the file's 13 obstacle-avoidance line end points (x, y, 0)
-// and the angle range of each line sector: the minimum angles fall from 9pi/16
-// to -pi in steps of pi/8 and each maximum is the previous minimum, starting
-// at pi), the empty CObstacleGridEntry destructor and constructor, then the
-// static initialisation: the 13 line vectors are built through CVector3's
-// constructor (__construct_array). The vector's inline constructor, emitted
-// for the array construction, follows the static initialisation (a weak copy
-// of this file). CObstacleAvoidance, CObstacleGridEntry, CVector3 and the
-// statics are named by the symbols; the array sizes come from the symbols,
-// the grid entry size and grid offsets from the construction calls, and the
-// vector layout is inferred. The constants are .sdata2 pool entries. The
-// rest of the file is in other units; PrepareForAvoidance before it is parked.
+// The end of ObstacleAvoidance.cpp (0x80054304): CObstacleAvoidance::
+// PrepareForAvoidance (resets the counters and the state, keeps the
+// objective position, sets the range to 112.5, rebuilds the previous grid's
+// 13 entries - each direction at the range distance, unblocked, at the
+// objective - and copies it to the current grid, then two 4.0 values and a
+// cleared vector), the CObstacleAvoidance destructor (both grids destroyed),
+// the constructor (its two 13-entry grids of CObstacleGridEntry, then, once
+// for all instances, the file's 13 obstacle-avoidance line end points
+// (x, y, 0) and the angle range of each line sector: the minimum angles fall
+// from 9pi/16 to -pi in steps of pi/8 and each maximum is the previous
+// minimum, starting at pi), the empty CObstacleGridEntry destructor and
+// constructor, then the static initialisation: the 13 line vectors are built
+// through CVector3's constructor (__construct_array). The vector's inline
+// constructor, emitted for the array construction, follows the static
+// initialisation (a weak copy of this file). CObstacleAvoidance,
+// CObstacleGridEntry, CVector3 and the statics are named by the symbols; the
+// array sizes come from the symbols, the grid entry size and grid offsets
+// from the construction calls, and the vector layout and the grid entry's
+// Reset inline are inferred (the position copies declare their temporaries
+// in the order that gives the original registers). The constants are .sdata2
+// pool entries. The rest of the file is in other units.
+extern "C" void* memcpy(void*, const void*, unsigned long);
+
 class CVector3 {
 public:
     CVector3() {}
@@ -34,6 +42,24 @@ class CObstacleGridEntry {
 public:
     CObstacleGridEntry();
     ~CObstacleGridEntry();
+    /* Inferred: each direction's distance, blocked when below the range. */
+    void Reset(float distance, float range, const CAIFilterRealPosition& position) {
+        for (int i = 0; i < 3; i++) {
+            m_distance[i] = distance;
+            if (distance < range)
+                m_blocked[i] = true;
+            else
+                m_blocked[i] = false;
+        }
+        float y;
+        float z = position.z;
+        y = position.y;
+        float x = position.x;
+        m_position.x = x;
+        m_position.y = y;
+        m_position.z = z;
+    }
+
     float m_distance[3];
     bool m_blocked[3];
     unsigned char unknown0f[1];
@@ -73,6 +99,37 @@ CVector3 f_rv3ObstacleAvoidanceLines[13];
 float f_rrObstacleAvoidanceLineAngleMin[11];
 float f_rrObstacleAvoidanceLineAngleMax[11];
 extern bool f_bObstacleAvoidanceLinesInitialized;
+
+void CObstacleAvoidance::PrepareForAvoidance(CAIFilterRealPosition& position) {
+    m_unknown000 = 0;
+    m_unknown360 = 0.4f;
+    m_unknown364 = 0;
+    float x;
+    float z = position.z;
+    float y = position.y;
+    x = position.x;
+    m_position.x = x;
+    m_position.y = y;
+    m_position.z = z;
+    m_unknown398 = 0;
+    m_unknown39c = 0;
+    m_unknown008 = 0;
+    m_range = 112.5f;
+    m_unknown010 = 1.0f;
+    m_unknown002 = 0;
+    m_unknown004 = 0;
+    m_unknown006 = 0;
+    CObstacleGridEntry* entry = m_previousGrid;
+    CObstacleGridEntry* end = entry + 13;
+    for (; entry < end; entry++)
+        entry->Reset(m_range, m_range, m_position);
+    memcpy(m_grid, m_previousGrid, sizeof(m_grid));
+    m_unknown358 = 4.0f;
+    m_unknown35c = 4.0f;
+    m_unknown38c[0] = 0.0f;
+    m_unknown38c[1] = 0.0f;
+    m_unknown38c[2] = 0.0f;
+}
 
 CObstacleAvoidance::~CObstacleAvoidance() {
 }
