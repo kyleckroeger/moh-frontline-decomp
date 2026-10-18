@@ -1,0 +1,126 @@
+{
+  "id": "objcreate_createplayer",
+  "source": "src/game/objcreate_createplayer.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8003c688",
+      "size": 692,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a48c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011480",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "CreatePlayer__FP20TriggerObject_structi",
+      "address": "0x8003c688",
+      "size": 692,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "DebugMsg__FPCce": "0x80018c88",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetPlayersFinishedLevelHealth__10CShellMenuFii": "0x800e65fc",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "InitAI__13CPlayerObjectFv": "0x800a6338",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "ShouldIUsePlayersFinishedLevelData__10CShellMenuFii": "0x800e659c",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pPlayers": "0x801dddfc",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "objcreate.cpp",
+  "original_file_index": 1440,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 46,
+      "address": "0x8016efdc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f760"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f768"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f770"
+    }
+  ]
+}

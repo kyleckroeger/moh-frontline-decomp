@@ -1214,7 +1214,8 @@
     "player_bullet.json",
     "Soldier_object_bullet.json",
     "player_respawn.json",
-    "scene_fast.json"
+    "scene_fast.json",
+    "objcreate_createplayer.json"
   ],
   "progress": {
     "code_bytes": 1414572,
