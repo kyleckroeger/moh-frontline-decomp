@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800b6d90",
-      "size": 1516,
+      "address": "0x800b66b4",
+      "size": 3272,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d81c",
-      "size": 32,
+      "address": "0x8000d814",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001481c",
-      "size": 24,
+      "address": "0x80014810",
+      "size": 36,
       "type": 1
     },
     {
@@ -64,6 +64,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "HandleBulletCollision__12CWorldObjectFP7CBulletRC10CCollision",
+      "address": "0x800b66b4",
+      "size": 1756,
+      "binding": 1
+    },
     {
       "name": "ServiceDataStreamer__12CWorldObjectFf",
       "address": "0x800b6d90",
@@ -87,17 +93,35 @@
     "ASYNCFILE_getstatus": "0x8014b6f4",
     "ASYNCFILE_read": "0x8014b5c4",
     "ASYNCFILE_release": "0x8014b790",
+    "AddBulletDecal__19CBulletDecalManagerFRC10CCollisionb": "0x8008385c",
     "AddSubVolume__12CWorldVolumeFRC10CCDBObject": "0x800cbf6c",
+    "Create__15CParticleSystemFUl": "0x80080c78",
     "FILESYS_closesync": "0x8014a130",
     "FILESYS_opensync": "0x8014a088",
     "GetCdbFilename__12CWorldObject": "0x8034e0bc",
     "GetCptFilename__12CWorldObject": "0x8034e0b8",
+    "GetDecalIndex__12CSurfaceTypeFi": "0x8001c010",
+    "GetParticleCRC__12CSurfaceTypeFi": "0x8001bff8",
+    "GetSoundIndex__12CSurfaceTypeFi": "0x8001bfe0",
     "HandleExplosion__12CCompartmentFRC10CExplosion": "0x800756cc",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "Init__12CCompartmentFiPcP9CPTHeaderP3CDB": "0x80076dc8",
+    "IsShootThru__12CSurfaceTypeFi": "0x8001bfbc",
+    "MakeNoise__FPvP15CAIFilterObjectRC8CVector3ifbi": "0x8002bd00",
+    "PlayBackgroundImpactSound__FP7CBulleti": "0x800ead38",
     "RemoveSubVolume__12CWorldVolumeFRC10CCDBObject": "0x800cbf1c",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "TextureSwapCollisionDisabled__12CCompartmentFi": "0x80075a14",
+    "TextureSwap__12CCompartmentFi": "0x80075a70",
     "__ct__12CCompartmentFRC12CCompartment": "0x80076030",
     "__ct__12CCompartmentFv": "0x80076108",
-    "__dt__12CCompartmentFv": "0x80075ea8"
+    "__dt__12CCompartmentFv": "0x80075ea8",
+    "g_BulletDecalManager": "0x801dde80",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -106,7 +130,8 @@
   "discarded_local_functions": [],
   "sda_externals": [
     "GetCdbFilename__12CWorldObject",
-    "GetCptFilename__12CWorldObject"
+    "GetCptFilename__12CWorldObject",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "world_object.cpp",
   "original_file_index": 7059,
@@ -118,17 +143,59 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8035096c"
+      "address": "0x80350970"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80350994"
+      "address": "0x80350968"
     },
     {
       "section": ".sdata2",
       "offset": 8,
+      "size": 8,
+      "address": "0x80350978"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350980"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8035096c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350988"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8035098c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350990"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350994"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
       "size": 8,
       "address": "0x80350998"
     }
