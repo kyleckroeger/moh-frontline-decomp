@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ea0e0",
-      "size": 160,
+      "size": 1028,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f350",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015e0c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,15 +68,46 @@
       "address": "0x800ea0e0",
       "size": 80,
       "binding": 0
+    },
+    {
+      "name": "_userdata_client__FP17SNDUSERDATACBINFO",
+      "address": "0x800ea180",
+      "size": 868,
+      "binding": 0
     }
   ],
-  "externals": {},
+  "externals": {
+    "DisplaySubtitle__FPCcf6CColor": "0x800b880c",
+    "EndianSwap__FR23SOUND_MULTISUBTITLEDATA": "0x800edc3c",
+    "Get_LanguageSubtitleIndex__10CShellMenuFv": "0x800e14f8",
+    "SetFaceAnimationState__14CSoldierObjectFUsl": "0x800adeac",
+    "_subtitle_rgb": "0x80229490",
+    "g_Shell": "0x80195090",
+    "g_objSound": "0x8034ecbc",
+    "strlen": "0x801400f8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_subtitle_rgb",
+    "g_objSound"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_objSound"
+  ],
   "original_file": "sound.cpp",
-  "original_file_index": 8971
+  "original_file_index": 8971,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350ff8"
+    }
+  ]
 }
