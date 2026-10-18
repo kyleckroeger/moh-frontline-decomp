@@ -1210,7 +1210,8 @@
     "sound_impact.json",
     "Soldier_object_helmet.json",
     "player_health.json",
-    "Moh2_statusscreen.json"
+    "Moh2_statusscreen.json",
+    "player_bullet.json"
   ],
   "progress": {
     "code_bytes": 1414572,
