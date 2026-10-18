@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x800a68cc",
-      "size": 1144,
+      "size": 2988,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cfd4",
-      "size": 8,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014138",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Init__13CPlayerObjectFv",
+      "address": "0x800a6d44",
+      "size": 1844,
+      "binding": 1
+    },
     {
       "name": "Respawn__13CPlayerObjectFv",
       "address": "0x800a68cc",
@@ -65,37 +71,84 @@
     }
   ],
   "externals": {
+    "AddAmo__19CPlayerWeaponObjectFi": "0x800a7fac",
+    "AllocateObject__18CAnimObjectFactoryFUl12EObjectClass": "0x80095bc8",
+    "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei": "0x800d7090",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "GetPlayersFinishedLevelAmmo__10CShellMenuFii12EWeaponTypes": "0x800e65d4",
+    "GetWeaponInfoByCRC__13CPlayerObjectFiPiPi": "0x8009f58c",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
     "InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab": "0x800a6408",
+    "Init__13UserInterfaceFv": "0x800bee4c",
+    "Init__14CHearingVolumeFP16IMovingSceneNode7EClsnIdffPFP16IMovingSceneNodeP7CBullet_v": "0x80098bc0",
+    "Init__19CPlayerWeaponObjectF12EWeaponTypesiP13CPlayerObject": "0x800a8bcc",
+    "PlayBulletWhizBys__FP16IMovingSceneNodeP7CBullet": "0x80098370",
     "RESPAWN_FIRE_DELAY": "0x8034df08",
     "RestartPlayer__Fi": "0x80042f68",
     "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
     "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
     "SetDepth__7CVolBoxFf": "0x800c5258",
     "SetHeight__7CVolBoxFf": "0x800c5268",
+    "SetInfiniteAmo__7CWeaponFb": "0x800d4fac",
+    "SetLocalBoundingVolume__11CAnimObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800951dc",
     "SetWidth__7CVolBoxFf": "0x800c5278",
+    "SetWorldBoundingVolume__11CAnimObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800951b0",
+    "ShouldIUsePlayersFinishedLevelData__10CShellMenuFii": "0x800e659c",
+    "StartPlayerCrouched__13CPlayerObjectFv": "0x800a4e8c",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__dl__FPv": "0x8001ca2c",
+    "g_AnimObjFactory": "0x801ddde0",
     "g_Shell": "0x80195090",
+    "g_WeaponFactory": "0x801dde58",
     "g_bInMultiplayerMode": "0x8034eca5",
     "g_bMPEndLevel": "0x8034e9ec",
-    "g_inputMgr": "0x801ec80c"
+    "g_cScreenHeight": "0x8034eaf0",
+    "g_cScreenWidth": "0x8034eaec",
+    "g_fScriptExplosionHeightScaleOnPlayer": "0x8034eadc",
+    "g_fScriptExplosionVelocityScaleOnPlayer": "0x8034ead8",
+    "g_inputMgr": "0x801ec80c",
+    "g_pMGCrossHair": "0x8034eae0",
+    "g_pMGCrossHairMem": "0x801ef020",
+    "g_pScreen": "0x8034eae8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "RESPAWN_FIRE_DELAY"
+    "RESPAWN_FIRE_DELAY",
+    "g_cScreenHeight",
+    "g_cScreenWidth",
+    "g_pMGCrossHair",
+    "g_pMGCrossHairMem",
+    "g_pScreen"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "RESPAWN_FIRE_DELAY",
     "g_bInMultiplayerMode",
-    "g_bMPEndLevel"
+    "g_bMPEndLevel",
+    "g_cScreenHeight",
+    "g_cScreenWidth",
+    "g_fScriptExplosionHeightScaleOnPlayer",
+    "g_fScriptExplosionVelocityScaleOnPlayer",
+    "g_pMGCrossHair",
+    "g_pScreen"
   ],
   "original_file": "player.cpp",
   "original_file_index": 6101,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 29,
+      "address": "0x80176cd4"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
@@ -167,6 +220,18 @@
       "offset": 44,
       "size": 4,
       "address": "0x80350664"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x803505ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350558"
     }
   ]
 }
