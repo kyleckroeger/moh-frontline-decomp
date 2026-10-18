@@ -6,7 +6,13 @@
 // the pickup's CRC, a random 3800..4400 pitch) and reports the pickup as
 // taken; reaching the maximum turns off dump collisions of type 0. A taken
 // pickup's dump object (and any in multiplayer) is marked for destruction.
-// The class and functions are named by the mangled symbols; the members,
+// AddAmmoOrWeapon does the same for a weapon or ammunition pickup: a weapon
+// not yet selectable is picked up (unless its CRC is one of sixteen ammo-only
+// pickups) with a sound by the weapon's sound type, its pickup message from
+// the user message table (an inferred inline lookup) and a switch to it when
+// the player has no weapon; ammunition up to the maximum is added with a
+// "%d" count message, finishing a fresh pickup's reload, and script event
+// 162 is triggered with the sound. The class and functions are named by the mangled symbols; the members,
 // the script object and data views, the event layout and the parameter
 // meanings are inferred. The rest of the file is in other units.
 long long MathFunRandomI64(long long, long long);
@@ -15,7 +21,57 @@ enum EDumpType {};
 void EnableDumpCollisionsByType(EDumpType, int, bool);
 void MarkDumpObjectForDestruction(void*);
 
+extern "C" int sprintf(char*, const char*, ...);
+void appendMessageToPrompt(const char*, int);
+void displayPromptBuffer(int);
+
 extern bool g_bInMultiplayerMode;
+
+/* inferred: the user message table (entries of text and type, count +12) */
+struct MessageView {
+    const char* text;
+    unsigned char type;
+    unsigned char unknown05[3];
+};
+
+struct MessageTableView {
+    MessageView* entries;
+    unsigned char unknown04[8];
+    int count;
+
+    const char* GetText(int i) const { return i < count ? entries[i].text : 0; }
+};
+
+extern MessageTableView umTable;
+
+/* inferred: the weapon's properties (maximum ammo +18) */
+struct WeaponPropertiesView {
+    unsigned char unknown00[18];
+    short m_maxAmmo;
+};
+
+class CWeapon {
+public:
+    short GetWeaponSoundType() const;
+
+    unsigned char unknown000[640];
+    WeaponPropertiesView* m_properties;
+    short m_ammo;
+};
+
+class CPlayerWeaponObject {
+public:
+    bool IsSelectable() const;
+    void AddAmo(int);
+    void DoneReloading();
+
+    unsigned char unknown0000[12516];
+    CWeapon* m_weapon;
+    unsigned char unknown30e8[234];
+    unsigned char m_flags31d2a : 2;
+    bool m_picked : 1;
+    unsigned char m_flags31d2b : 5;
+};
 
 class CShellMenu {
 public:
@@ -79,11 +135,19 @@ public:
     virtual void vf058();
     virtual void vf05c();
     virtual BSObject* GetScriptObject() const;
+    virtual void TriggerScriptEvent(int, int, bool);
 
     bool AddHealth(int, int, void*);
+    bool AddAmmoOrWeapon(int, int, void*);
+    static int GetWeaponInfoByCRC(int, int*, int*);
+    void CycleWeapon(int, int);
 
-    unsigned char unknown004[1888];
+    unsigned char unknown004[1112];
+    int m_currentWeapon;
+    CPlayerWeaponObject* m_weapons[45];
+    unsigned char unknown514[592];
     int m_controller;
+    int m_promptPlayer;
 };
 
 bool CPlayerObject::AddHealth(int crc, int amount, void* dump) {
@@ -146,4 +210,93 @@ bool CPlayerObject::AddHealth(int crc, int amount, void* dump) {
         return true;
     }
     return added;
+}
+
+bool CPlayerObject::AddAmmoOrWeapon(int crc, int amount, void* dump) {
+    CPlayerWeaponObject* weapon = m_weapons[GetWeaponInfoByCRC(crc, 0, 0)];
+    CWeapon* info = weapon->m_weapon;
+    int pickupMessage = -1;
+    int ammoMessage = -1;
+    int sound = 9;
+    GetWeaponInfoByCRC(crc, &pickupMessage, &ammoMessage);
+    bool noPickup;
+    switch (crc) {
+    case 0xa8b9679d:
+    case 0x985b620e:
+    case 0x900b140b:
+    case 0x87a43cca:
+    case 0x9884da57:
+    case 0x0c839118:
+    case 0xcc7202da:
+    case 0xaf3a77e7:
+    case 0x112a938a:
+    case 0x4405e37b:
+    case 0x2fa05716:
+    case 0x2446755f:
+    case 0x36ead81a:
+    case 0x5c95b07a:
+    case 0x47285958:
+    case 0x72787373:
+        noPickup = true;
+        break;
+    case 0x1a496fab:
+    case 0x1e042f0c:
+        sound = 29;
+        noPickup = false;
+        break;
+    default:
+        noPickup = false;
+        break;
+    }
+    bool taken = false;
+    bool picked = false;
+    if (!weapon->IsSelectable() && !noPickup) {
+        short type = info->GetWeaponSoundType();
+        if (type < 7)
+            sound = 30;
+        else if (type < 14)
+            sound = 31;
+        else if (type < 20)
+            sound = 32;
+        else if (type < 22)
+            sound = 29;
+        else if (type < 24)
+            sound = 33;
+        weapon->m_picked = true;
+        picked = true;
+        if (pickupMessage >= 0) {
+            appendMessageToPrompt(umTable.GetText(pickupMessage), m_promptPlayer);
+            displayPromptBuffer(m_promptPlayer);
+        }
+        if (m_currentWeapon < 0) {
+            TriggerScriptEvent(162, sound, false);
+            CycleWeapon(1, -1);
+        }
+        taken = true;
+    }
+    short maxAmmo = info->m_properties->m_maxAmmo;
+    short ammo = info->m_ammo;
+    if (amount > 0 && ammo < maxAmmo) {
+        if (ammoMessage >= 0) {
+            char text[32];
+            int room = maxAmmo - ammo;
+            if (room < amount)
+                sprintf(text, "%d", room);
+            else
+                sprintf(text, "%d", amount);
+            appendMessageToPrompt(text, m_promptPlayer);
+            appendMessageToPrompt(umTable.GetText(ammoMessage), m_promptPlayer);
+            displayPromptBuffer(m_promptPlayer);
+        }
+        taken = true;
+        weapon->AddAmo(amount);
+        if (picked)
+            weapon->DoneReloading();
+        TriggerScriptEvent(162, sound, false);
+    }
+    if ((taken || g_bInMultiplayerMode) && dump) {
+        MarkDumpObjectForDestruction(dump);
+        return true;
+    }
+    return taken;
 }

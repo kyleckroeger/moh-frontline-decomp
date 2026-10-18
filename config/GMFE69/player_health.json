@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x800a1580",
-      "size": 496,
+      "size": 1544,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cec4",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014078",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AddAmmoOrWeapon__13CPlayerObjectFiiPv",
+      "address": "0x800a1770",
+      "size": 1048,
+      "binding": 1
+    },
     {
       "name": "AddHealth__13CPlayerObjectFiiPv",
       "address": "0x800a1580",
@@ -66,11 +72,21 @@
   ],
   "externals": {
     "AEMS_SendEvent__FPv": "0x800ec26c",
+    "AddAmo__19CPlayerWeaponObjectFi": "0x800a7fac",
+    "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
+    "DoneReloading__19CPlayerWeaponObjectFv": "0x800a800c",
     "EnableDumpCollisionsByType__F9EDumpTypeib": "0x8003f8b8",
+    "GetWeaponInfoByCRC__13CPlayerObjectFiPiPi": "0x8009f58c",
+    "GetWeaponSoundType__7CWeaponCFv": "0x800d4ff8",
+    "IsSelectable__19CPlayerWeaponObjectCFv": "0x800a8074",
     "MarkDumpObjectForDestruction__FPv": "0x8003fb0c",
     "MathFunRandomI64__Fxx": "0x80092dd4",
+    "appendMessageToPrompt__FPCci": "0x8002ad98",
+    "displayPromptBuffer__Fi": "0x8002aecc",
     "g_Shell": "0x80195090",
-    "g_bInMultiplayerMode": "0x8034eca5"
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "sprintf": "0x8013dab4",
+    "umTable": "0x801ef3ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -81,5 +97,16 @@
     "g_bInMultiplayerMode"
   ],
   "original_file": "player.cpp",
-  "original_file_index": 6101
+  "original_file_index": 6101,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 3,
+      "address": "0x80350640"
+    }
+  ]
 }
