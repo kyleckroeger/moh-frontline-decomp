@@ -1218,7 +1218,8 @@
     "objcreate_createplayer.json",
     "TibText.json",
     "Gecko_ExceptionPPC_find.json",
-    "Gecko_ExceptionPPC_throw.json"
+    "Gecko_ExceptionPPC_throw.json",
+    "ssysinit_setopts.json"
   ],
   "progress": {
     "code_bytes": 1414572,
