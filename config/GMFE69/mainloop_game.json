@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007b898",
-      "size": 124,
+      "address": "0x8007b350",
+      "size": 1476,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000bf98",
-      "size": 8,
+      "address": "0x8000bf90",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012ef0",
-      "size": 12,
+      "address": "0x80012ee4",
+      "size": 24,
       "type": 1
     },
     {
@@ -72,9 +72,23 @@
       "address": "0x8007b898",
       "size": 124,
       "binding": 0
+    },
+    {
+      "name": "LoadLevelSettings__Fv",
+      "address": "0x8007b350",
+      "size": 1352,
+      "binding": 1
     }
   ],
   "externals": {
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "SetClearColor__7CScreenFRC6CColor": "0x8001b8dc",
+    "SetDefaultLight__6CLightFQ26CLight14EDefaultLights8CVector36CColorf": "0x80078384",
+    "SetFog__FR6CColorff": "0x80017df8",
+    "SetLandmarkStampString__FPc": "0x800baf58",
+    "SetTimeStampString__FPc": "0x800baecc",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "__ct__14CBulletFactoryFv": "0x800cda34",
     "__ct__14CWeaponFactoryFv": "0x800d76fc",
     "__ct__18CAnimObjectFactoryFv": "0x800971bc",
@@ -82,14 +96,51 @@
     "__dt__14CBulletFactoryFv": "0x800cd9d0",
     "__dt__14CWeaponFactoryFv": "0x800d76c0",
     "__dt__19CBulletDecalManagerFv": "0x80083c50",
-    "__register_global_object": "0x801381bc"
+    "__register_global_object": "0x801381bc",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_screen": "0x80196ac0",
+    "umTable": "0x801ef3ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "mainloop.cpp",
-  "original_file_index": 3848
+  "original_file_index": 3848,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034ff18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034ff78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034ff80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034ff08"
+    }
+  ]
 }

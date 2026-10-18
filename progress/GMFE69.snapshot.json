@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 852460,
+    "matching_code_bytes": 853812,
     "total_executable_code_bytes": 1414572,
-    "percent": 60.26275085326162,
+    "percent": 60.358327465834186,
     "categories": {
-      "reconstructed_game": 630944,
+      "reconstructed_game": 632296,
       "restored_library": 221516
     },
-    "matching_functions": 4449
+    "matching_functions": 4450
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -724,7 +724,7 @@
     "config/GMFE69/location_collision.json": "bfd9cb0edbdb5f60f1965ef8bf9eea9e339bad440f6f71319546cce315055b1d",
     "config/GMFE69/main_TRK.json": "53a7c3f8fdc516d26210c5002897d55d0bb651015e4e46852c26248d117ade9b",
     "config/GMFE69/mainloop.json": "2994436609fef577d03fa3220d0c44d5933025297dcfae7a7880dded142e765a",
-    "config/GMFE69/mainloop_game.json": "a6b94a41d3040d709bae4325a7985c520182530cf40ccd6f4f7a07b741606910",
+    "config/GMFE69/mainloop_game.json": "532c0f6e6cd22991817351f363dad11a60358876d44f8a650b0124d488211197",
     "config/GMFE69/math_ppc.json": "b9333b4067895dff685beb9b33137457e747e7894562c6b8de8258785645b3f6",
     "config/GMFE69/matrix.json": "1422c2e36da0b071f2cc8ced2abb122210da2dc07017e5e546682f20af53f044",
     "config/GMFE69/matrix_endian.json": "a73459bb11c116b29d29294ff37486a7bf1c7a94ed76da3c4f75b26be69c2884",
@@ -2778,7 +2778,7 @@
     "src/game/line.cpp": "f05fc7e4c6eb1fd503d92bae6f4efc5139d79ca0ce1b9a8f4dda4f472de8b940",
     "src/game/loadelf.cpp": "9decbe9395499ba51bd97defcfb741e00b906e9de4229451b9876c4eef8f1c2f",
     "src/game/location_collision.cpp": "f1a62ea2763f552fee804adca73ebbde64080dfca79eb763f963947d9dc48d7e",
-    "src/game/mainloop.cpp": "737d1965982728d6b7eaa43a46e3a6b9ce55122ca931a402690524e1af5cf172",
+    "src/game/mainloop.cpp": "d63ecc896fc713b8914b599ccdb555ebb5e6f826274702834bfeaf917871157e",
     "src/game/matrix.cpp": "f70a0142eeb28c529bf11a33e99b3c5fd0ea55e1cf068f038b9228c29f9659d5",
     "src/game/matrix_endian.cpp": "e342534dedf41a3cc8e97898b3e66ada0e476de40351f51bef798d27a64a5e46",
     "src/game/matrix_multiply.cpp": "042a95889b8f9cc8ca1e37ee3097ccc485cf5f94943c7f753507c5dc1cdcfa0c",
@@ -41079,8 +41079,8 @@
     {
       "id": "mainloop_game",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 124,
+      "functions": 2,
+      "code_bytes": 1476,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41112,8 +41112,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "21f31ddd97c8d1415fb5564eb36bdc2ecac0cea3e4a60f202f2925612e0e033e",
-      "linked_sha256": "f38ae8a5fe079d7c907e518ca25df1beb8a88b58788c20bd3adfe6ee077590c3"
+      "object_sha256": "d75144d7a0d995dcb0c2dd968cd476c192719df305ec77079326886b2987758d",
+      "linked_sha256": "7fdb122f11bed69dbf054c1f2e1f9d3ed2f3b59af95695f2c5bdd2b672e4dbb2"
     },
     {
       "id": "AITankDoodad_ctor",
@@ -54437,13 +54437,6 @@
             "size": 2152,
             "kind": "function",
             "name": "Gameloop_Init__FPFP7CSpriteP7CSpritef_vP7CSpriteP7CSprite",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007b350",
-            "size": 1352,
-            "kind": "function",
-            "name": "LoadLevelSettings__Fv",
             "evidence": "exception-index"
           }
         ]
