@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 854684,
+    "matching_code_bytes": 856312,
     "total_executable_code_bytes": 1414572,
-    "percent": 60.41997155323306,
+    "percent": 60.535059367780505,
     "categories": {
-      "reconstructed_game": 633168,
+      "reconstructed_game": 634796,
       "restored_library": 221516
     },
-    "matching_functions": 4451
+    "matching_functions": 4452
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -273,7 +273,7 @@
     "config/GMFE69/Tank_object_update.json": "8d093336e39ec0bb0cf89f63f9beb86a3d9716b721d85ed9ccb227725cb98618",
     "config/GMFE69/Tank_object_weapons.json": "aeebeb0aec0ae0f521c2a72238c5a7f44510600ff6362da4c88926738e585c65",
     "config/GMFE69/TibPolygon_process.json": "f66d16fef717435d3a9eeee17b1a3815d563dbbe8f8c9a5528cf25eaad488b5c",
-    "config/GMFE69/TibText.json": "d55afe23b9d4b203c7da579b2985b84d7b3679445908e0aa10ca13979fac957a",
+    "config/GMFE69/TibText.json": "b8e641009fcfc20a9602b6f70d38f98def7eecaffca3618f01d16c79cfdbd1d6",
     "config/GMFE69/UISActionProcess.json": "b8982d8977fc3cc190673d20cb03584db2332ecab498e97bc57a276fcc9cd7dd",
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
@@ -2409,7 +2409,7 @@
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
     "src/game/TibPolygon_process.cpp": "d441add598e9ecbb27a14a21835320c9e036ca65cd907dc895f917a69756b183",
-    "src/game/TibText.cpp": "c94921f0df9786fcba2f83fecd1ccdeebd0a95bd94f6ca2a1e784a1cb787b6d6",
+    "src/game/TibText.cpp": "add98adc4d7d0cb0bd0d15f50a5a5589b10e1e2843e2a9c5200cc69c0a73a0fc",
     "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
@@ -52764,8 +52764,8 @@
     {
       "id": "TibText",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 872,
+      "functions": 2,
+      "code_bytes": 2500,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -52797,8 +52797,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d13d845c77c359c2dba29293f8ad62b0df8b71e95721f65c03d636b5955bef20",
-      "linked_sha256": "6c59ee2fac2cbc7eb4f0a3b1b6d6a0eb9b1b06255bb06ffaf34566706ed839e7"
+      "object_sha256": "c8a3544c2765bf403e7e1fd2f92e5c7a18deccc19274a647bcfaaadecb450b40",
+      "linked_sha256": "09e7f53050714f1f8f8c4d5d3eb984d64693c916ddd37a278606f501dfe7a07b"
     }
   ],
   "code_map": {
@@ -54877,20 +54877,6 @@
             "size": 1604,
             "kind": "function",
             "name": "TibPolyInit__FP13TibPolyData_t",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/TibText.cpp [symbol evidence]",
-        "file_record": 97,
-        "file_name": "TibText.cpp",
-        "ranges": [
-          {
-            "address": "0x8008c828",
-            "size": 1628,
-            "kind": "function",
-            "name": "TibTextDraw__FP19TibTextGraphicDataT",
             "evidence": "exception-index"
           }
         ]
