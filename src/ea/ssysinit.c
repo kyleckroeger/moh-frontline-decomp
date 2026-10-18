@@ -1,6 +1,13 @@
-// Sound system shutdown and state query. sndgs's layout is not known; its
-// fields (the module shutdown hooks, the voice and bank tables and the
-// initialised flag) are accessed through inferred offsets.
+// Sound system start-up, shutdown and state query. SNDSYSI_init marks the
+// library author string, does nothing when the system is already initialised,
+// clears and hands the memory block to the sound allocator, fetches and
+// applies the default options when no voice count is set, seeds the random
+// generator, allocates the voice (128 bytes each) and bank (12 bytes each)
+// tables under the critical section, resets the state, starts the platform
+// (undoing it on failure), marks the system initialised and sets the default
+// output volume pairs. sndgs's layout is not known; its fields (the options,
+// the module shutdown hooks, the voice and bank tables, the initialised flag
+// and the volume tables) are accessed through inferred offsets.
 extern "C" char sndgs[];
 
 typedef void (*SNDHOOK)(void);
@@ -16,9 +23,71 @@ void SNDPLATFORM_restore(void);
 void SNDMEMI_free(void*);
 int SNDMEMI_restore(void);
 void SNDI_mutexfree(void);
+int SNDPLATFORM_init(void);
+void SNDMEMI_init(void*, int);
+void* SNDMEMI_allocz(int);
+void SNDI_randomseed(unsigned int);
+void SNDI_mutexalloc(void);
+void SNDI_precalcaztospkrvol(void);
+extern "C" {
+void* memset(void*, int, unsigned long);
+int SNDSYS_getopts(void*);
+int SNDSYS_setopts(void*);
+}
+extern "C" char sndlibauthor[];
 
-// SNDSYS_getopts and SNDSYS_setopts (in ssysinit_opts.c) and SNDSYSI_init
-// come first in the original file, so this unit starts at SNDSYS_restore.
+// SNDSYS_getopts and SNDSYS_setopts come first in the original file (they are
+// in ssysinit_opts.c), so this unit starts at SNDSYSI_init.
+
+extern "C" int SNDSYSI_init(void* memory, int size) {
+    int result;
+
+    sndlibauthor[0] = 'S';
+    if (*(signed char*)(sndgs + 360))
+        return 0;
+    memset(memory, 0, size);
+    SNDMEMI_init(memory, size);
+    if (*(short*)(sndgs + 368) == 0) {
+        result = SNDSYS_getopts(sndgs);
+        if (result < 0)
+            return result;
+        SNDSYS_setopts(sndgs);
+    }
+    SNDI_randomseed(*(unsigned int*)(sndgs + 36));
+    SNDI_mutexalloc();
+    SNDSYS_entercritical();
+    *(void**)(sndgs + 468) = SNDMEMI_allocz(*(short*)(sndgs + 368) << 7);
+    *(void**)(sndgs + 472) = SNDMEMI_allocz(*(unsigned short*)(sndgs + 40) * 12);
+    SNDSYS_leavecritical();
+    *(int*)(sndgs + 372) = 0;
+    sndgs[361] = 127;
+    sndgs[366] = 0;
+    sndgs[364] = 0;
+    sndgs[365] = 0;
+    result = SNDPLATFORM_init();
+    if (result < 0) {
+        SNDPLATFORM_restore();
+        SNDI_mutexfree();
+        return result;
+    }
+    sndgs[360] = 1;
+    if ((unsigned char)sndgs[72] == 2) {
+        *(unsigned short*)(sndgs + 528) = 0x10000 - 0x4000;
+        *(short*)(sndgs + 530) = 0x4000;
+    } else {
+        *(unsigned short*)(sndgs + 528) = 0x10000 - 0x2000;
+        *(short*)(sndgs + 530) = 0x2000;
+    }
+    *(unsigned short*)(sndgs + 536) = *(unsigned short*)(sndgs + 140);
+    *(unsigned short*)(sndgs + 538) = *(unsigned short*)(sndgs + 136);
+    *(unsigned short*)(sndgs + 540) = *(unsigned short*)(sndgs + 138);
+    *(unsigned short*)(sndgs + 544) = 0x10000 - 0x2000;
+    *(short*)(sndgs + 546) = 0x2000;
+    *(unsigned short*)(sndgs + 548) = 0x10000 - 0x6000;
+    *(short*)(sndgs + 550) = 0x6000;
+    SNDI_precalcaztospkrvol();
+    return 0;
+}
 
 extern "C" int SNDSYS_inited(void);
 

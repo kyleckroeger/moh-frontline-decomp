@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 873216,
+    "matching_code_bytes": 873680,
     "total_executable_code_bytes": 1414572,
-    "percent": 61.73004979598069,
+    "percent": 61.76285123698193,
     "categories": {
-      "reconstructed_game": 647820,
+      "reconstructed_game": 648284,
       "restored_library": 225396
     },
-    "matching_functions": 4466
+    "matching_functions": 4467
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1117,7 +1117,7 @@
     "config/GMFE69/sststat.json": "21f38aa0216661eddc5481564741da83217294e4f4d9c7e2e6090efe9101b362",
     "config/GMFE69/ssttmul.json": "78e88e3e43a4bbe702ff7ba3e27b23b38f9b04fe9ca359380c30a0eb841a4b3c",
     "config/GMFE69/sstvol.json": "37522fdb7eac982dea029b6fcdddc4a9b232ed1ff5b0919c519cf77f6f70b758",
-    "config/GMFE69/ssysinit.json": "bc5cc6f00077822fc429b11faedcdcc3313e5befafecc1981d8ef797cb9cbfc6",
+    "config/GMFE69/ssysinit.json": "6b84ba22731896e28015873583c521981589dd120cf7b90537596930a63d2696",
     "config/GMFE69/ssysinit_opts.json": "955c26f631d8c9c92e4051e7d10de83452c5f35d886d1b9d6f7b0ab03d88793f",
     "config/GMFE69/ssysreal.json": "9e50d3a1743c3946bd968f12808ce4adb4c03c3ce4437b9a4eff20f09ab4d815",
     "config/GMFE69/ssysserv.json": "49f2852bbf809fe6219540041d9217ec9f6389f59e15723314a1482fc110739b",
@@ -2207,7 +2207,7 @@
     "src/ea/sststat.c": "47c02090cc05a79cc457c90879c2aae2893bacf16e54156c5d1b975271c4d361",
     "src/ea/ssttmul.c": "e38c7d8ea9f8511ce44b80b4ea0e0884fa1ed85241d6fcd6c83cd56efcba0643",
     "src/ea/sstvol.c": "a2619b5183147baa7733cfc2f9c582057754591f7f13f984c3725bd89629aa8c",
-    "src/ea/ssysinit.c": "7287aa8a15deaae7785e0366288ff2d9e47f4e11209ab6f6d01d00407a8608af",
+    "src/ea/ssysinit.c": "3cc4a7e4a004317c5669cab60b47192611c0a214dbabee7d918209ed1cdf2436",
     "src/ea/ssysinit_opts.c": "a471892889808b197e4d24d44c3153f295c10b77277f25ebaa7064fa7a51b3be",
     "src/ea/ssysreal.c": "2a5f454268823038839a4ea3219f804e213c28358abedaf60e10cb978d3c2a41",
     "src/ea/ssysserv.c": "c652ea041a804d456cc780e25f0ecfa648623be37c1c1bd170e18555761ec31d",
@@ -18271,8 +18271,8 @@
     {
       "id": "ssysinit",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 380,
+      "functions": 3,
+      "code_bytes": 844,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -18304,8 +18304,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a64d73b1e3ae1cf4ac5b1b2c223d98ca1c0dc6af1ecc85626361211ef1b5cf11",
-      "linked_sha256": "60343479a64524d7a54452a089047897b8d6f75cea72d918a3cacea40a47076a"
+      "object_sha256": "7ab3ad2b4b1a4498e3d3262119118c7e4eb7a222574d0ae2d57be8e014daef82",
+      "linked_sha256": "6aa4815708f0e373fbbe75b85287c6fe4cda07c0aad356f2347f7f48def07ad4"
     },
     {
       "id": "bsutil_pools",
@@ -57295,20 +57295,6 @@
             "size": 672,
             "kind": "function",
             "name": "PRINT_init",
-            "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/ssysinit.c [symbol evidence]",
-        "file_record": 418,
-        "file_name": "ssysinit.c",
-        "ranges": [
-          {
-            "address": "0x80152d98",
-            "size": 464,
-            "kind": "function",
-            "name": "SNDSYSI_init",
             "evidence": "between-same-file"
           }
         ]

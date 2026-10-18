@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80152f68",
-      "size": 380,
+      "address": "0x80152d98",
+      "size": 844,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDSYSI_init",
+      "address": "0x80152d98",
+      "size": 464,
+      "binding": 1
+    },
     {
       "name": "SNDSYS_inited",
       "address": "0x801530d0",
@@ -57,15 +63,25 @@
     }
   ],
   "externals": {
+    "SNDI_mutexalloc__Fv": "0x8016cb2c",
     "SNDI_mutexfree__Fv": "0x8016cb5c",
+    "SNDI_precalcaztospkrvol__Fv": "0x8015f538",
+    "SNDI_randomseed__FUi": "0x8015f8d8",
+    "SNDMEMI_allocz__Fi": "0x80158d64",
     "SNDMEMI_free__FPv": "0x80158ff0",
+    "SNDMEMI_init__FPvi": "0x80158cdc",
     "SNDMEMI_restore__Fv": "0x80158d44",
+    "SNDPLATFORM_init__Fv": "0x8016a578",
     "SNDPLATFORM_restore__Fv": "0x8016ac84",
     "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_getopts": "0x8015250c",
     "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_setopts": "0x801528c8",
     "SNDfxinitbus": "0x8015ca58",
     "SNDstopall": "0x8015d1a4",
-    "sndgs": "0x80340860"
+    "memset": "0x80009410",
+    "sndgs": "0x80340860",
+    "sndlibauthor": "0x801933a0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
