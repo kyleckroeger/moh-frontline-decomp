@@ -17,7 +17,7 @@ void SNDMEMI_free(void*);
 int SNDMEMI_restore(void);
 void SNDI_mutexfree(void);
 
-// SNDSYS_getopts, SNDSYS_setopts (in ssysinit_setopts.c) and SNDSYSI_init
+// SNDSYS_getopts and SNDSYS_setopts (in ssysinit_opts.c) and SNDSYSI_init
 // come first in the original file, so this unit starts at SNDSYS_restore.
 
 extern "C" int SNDSYS_inited(void);

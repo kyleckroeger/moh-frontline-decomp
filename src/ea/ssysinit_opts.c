@@ -1,15 +1,22 @@
-// A fragment of ssysinit.c (0x801528c8): SNDSYS_setopts copies the caller's
-// sound system options (the 176-byte block at +32 of its argument) into the
-// global state member by member, applies the output settings and then copies
-// the first 152 bytes of them on to the applied-options block (+208). sndgs's
-// layout is not known: the options block and its members (ints, shorts,
-// bytes, a 7-byte name copied as a structure and 8-byte members of two
-// words) are inferred from the copies, and the second copy reaches the name
-// through a byte offset from the options block, which is how the original
-// addresses it. SNDSYS_getopts before it and SNDSYSI_init after it are not
-// reconstructed; the rest of the file is in ssysinit.c.
+// A fragment of ssysinit.c (0x8015250c): SNDSYS_getopts and SNDSYS_setopts.
+// SNDSYS_getopts asks the platform for its output capabilities once
+// (function statics), then sets three options (16, 90, 1), copies the first
+// 152 bytes of the options on to the applied-options block (+208) and gives
+// the caller the global state's first 208 bytes, returning the capabilities
+// result. SNDSYS_setopts copies the caller's options (the 176-byte block at
+// +32 of its argument) into the global state member by member, applies the
+// output settings and copies the first 152 bytes on to the applied block
+// again. sndgs's layout is not known: the options block and its members
+// (ints, shorts, bytes, a 7-byte name copied as a structure and 8-byte
+// members of two words) are inferred from the copies, as is the 208-byte
+// view the caller receives (a header, the 152 bytes and six words); the
+// applied copy reaches the name through a byte offset from the options block,
+// which is how the original addresses it. The file emits its functions in
+// reverse source order, so SNDSYS_setopts is defined first. SNDSYSI_init after
+// these is not reconstructed; the rest of the file is in ssysinit.c.
 extern "C" char sndgs[];
 
+int SNDPLATFORM_outputcaps(void);
 void SNDPLATFORM_outputset(void);
 
 /* inferred: an 8-byte member (two words) */
@@ -92,6 +99,19 @@ struct SNDGSVIEW {
     unsigned char unknown00[32];
     SNDSYSOPTS opts;
     SNDSYSOPTS applied;
+};
+
+/* inferred: the options' first 152 bytes (the part kept as applied) */
+struct SNDSYSOPTSCORE {
+    unsigned char data[152];
+};
+
+/* inferred: the global state's first 208 bytes as the caller receives them:
+   a header, the options' first 152 bytes and the remaining six words */
+struct SNDSYSOPTSALL {
+    int header[8];
+    SNDSYSOPTSCORE core;
+    int tail[6];
 };
 
 extern "C" int SNDSYS_setopts(SNDSYSOPTSHOLDER* holder) {
@@ -201,4 +221,67 @@ extern "C" int SNDSYS_setopts(SNDSYSOPTSHOLDER* holder) {
     ((SNDGSVIEW*)sndgs)->applied.field88 = ((SNDGSVIEW*)sndgs)->opts.field88;
     ((SNDGSVIEW*)sndgs)->applied.field90 = ((SNDGSVIEW*)sndgs)->opts.field90;
     return 0;
+}
+
+extern "C" int SNDSYS_getopts(SNDSYSOPTSALL* opts) {
+    static int gotcaps = 0;
+    static int ret = 0;
+    if (!gotcaps) {
+        ret = SNDPLATFORM_outputcaps();
+        gotcaps = 1;
+        ((SNDGSVIEW*)sndgs)->opts.field08 = 16;
+        ((SNDGSVIEW*)sndgs)->opts.field2c = 90;
+        ((SNDGSVIEW*)sndgs)->opts.field1c = 1;
+        ((SNDGSVIEW*)sndgs)->applied.field00 = ((SNDGSVIEW*)sndgs)->opts.field00;
+        ((SNDGSVIEW*)sndgs)->applied.field04 = ((SNDGSVIEW*)sndgs)->opts.field04;
+        ((SNDGSVIEW*)sndgs)->applied.field08 = ((SNDGSVIEW*)sndgs)->opts.field08;
+        ((SNDGSVIEW*)sndgs)->applied.field0a = ((SNDGSVIEW*)sndgs)->opts.field0a;
+        ((SNDGSVIEW*)sndgs)->applied.field0c = ((SNDGSVIEW*)sndgs)->opts.field0c;
+        ((SNDGSVIEW*)sndgs)->applied.field0e = ((SNDGSVIEW*)sndgs)->opts.field0e;
+        ((SNDGSVIEW*)sndgs)->applied.field0f = ((SNDGSVIEW*)sndgs)->opts.field0f;
+        ((SNDGSVIEW*)sndgs)->applied.field10 = ((SNDGSVIEW*)sndgs)->opts.field10;
+        ((SNDGSVIEW*)sndgs)->applied.field11 = ((SNDGSVIEW*)sndgs)->opts.field11;
+        ((SNDGSVIEW*)sndgs)->applied.field12 = ((SNDGSVIEW*)sndgs)->opts.field12;
+        ((SNDGSVIEW*)sndgs)->applied.field13 = ((SNDGSVIEW*)sndgs)->opts.field13;
+        ((SNDGSVIEW*)sndgs)->applied.field14 = ((SNDGSVIEW*)sndgs)->opts.field14;
+        ((SNDGSVIEW*)sndgs)->applied.name = *(SNDNAME7*)((char*)&((SNDGSVIEW*)sndgs)->opts + 21);
+        ((SNDGSVIEW*)sndgs)->applied.field1c = ((SNDGSVIEW*)sndgs)->opts.field1c;
+        ((SNDGSVIEW*)sndgs)->applied.field1d = ((SNDGSVIEW*)sndgs)->opts.field1d;
+        ((SNDGSVIEW*)sndgs)->applied.field1e = ((SNDGSVIEW*)sndgs)->opts.field1e;
+        ((SNDGSVIEW*)sndgs)->applied.field1f = ((SNDGSVIEW*)sndgs)->opts.field1f;
+        ((SNDGSVIEW*)sndgs)->applied.field20 = ((SNDGSVIEW*)sndgs)->opts.field20;
+        ((SNDGSVIEW*)sndgs)->applied.field21 = ((SNDGSVIEW*)sndgs)->opts.field21;
+        ((SNDGSVIEW*)sndgs)->applied.field22 = ((SNDGSVIEW*)sndgs)->opts.field22;
+        ((SNDGSVIEW*)sndgs)->applied.field23 = ((SNDGSVIEW*)sndgs)->opts.field23;
+        ((SNDGSVIEW*)sndgs)->applied.field24 = ((SNDGSVIEW*)sndgs)->opts.field24;
+        ((SNDGSVIEW*)sndgs)->applied.field25 = ((SNDGSVIEW*)sndgs)->opts.field25;
+        ((SNDGSVIEW*)sndgs)->applied.field26 = ((SNDGSVIEW*)sndgs)->opts.field26;
+        ((SNDGSVIEW*)sndgs)->applied.field27 = ((SNDGSVIEW*)sndgs)->opts.field27;
+        ((SNDGSVIEW*)sndgs)->applied.field28 = ((SNDGSVIEW*)sndgs)->opts.field28;
+        ((SNDGSVIEW*)sndgs)->applied.field29 = ((SNDGSVIEW*)sndgs)->opts.field29;
+        ((SNDGSVIEW*)sndgs)->applied.field2a = ((SNDGSVIEW*)sndgs)->opts.field2a;
+        ((SNDGSVIEW*)sndgs)->applied.field2b = ((SNDGSVIEW*)sndgs)->opts.field2b;
+        ((SNDGSVIEW*)sndgs)->applied.field2c = ((SNDGSVIEW*)sndgs)->opts.field2c;
+        ((SNDGSVIEW*)sndgs)->applied.field2d = ((SNDGSVIEW*)sndgs)->opts.field2d;
+        ((SNDGSVIEW*)sndgs)->applied.field2e = ((SNDGSVIEW*)sndgs)->opts.field2e;
+        ((SNDGSVIEW*)sndgs)->applied.field30 = ((SNDGSVIEW*)sndgs)->opts.field30;
+        ((SNDGSVIEW*)sndgs)->applied.field38 = ((SNDGSVIEW*)sndgs)->opts.field38;
+        ((SNDGSVIEW*)sndgs)->applied.field3c = ((SNDGSVIEW*)sndgs)->opts.field3c;
+        ((SNDGSVIEW*)sndgs)->applied.field40 = ((SNDGSVIEW*)sndgs)->opts.field40;
+        ((SNDGSVIEW*)sndgs)->applied.field44 = ((SNDGSVIEW*)sndgs)->opts.field44;
+        ((SNDGSVIEW*)sndgs)->applied.field48 = ((SNDGSVIEW*)sndgs)->opts.field48;
+        ((SNDGSVIEW*)sndgs)->applied.field4c = ((SNDGSVIEW*)sndgs)->opts.field4c;
+        ((SNDGSVIEW*)sndgs)->applied.field50 = ((SNDGSVIEW*)sndgs)->opts.field50;
+        ((SNDGSVIEW*)sndgs)->applied.field54 = ((SNDGSVIEW*)sndgs)->opts.field54;
+        ((SNDGSVIEW*)sndgs)->applied.field58 = ((SNDGSVIEW*)sndgs)->opts.field58;
+        ((SNDGSVIEW*)sndgs)->applied.field60 = ((SNDGSVIEW*)sndgs)->opts.field60;
+        ((SNDGSVIEW*)sndgs)->applied.field68 = ((SNDGSVIEW*)sndgs)->opts.field68;
+        ((SNDGSVIEW*)sndgs)->applied.field70 = ((SNDGSVIEW*)sndgs)->opts.field70;
+        ((SNDGSVIEW*)sndgs)->applied.field78 = ((SNDGSVIEW*)sndgs)->opts.field78;
+        ((SNDGSVIEW*)sndgs)->applied.field80 = ((SNDGSVIEW*)sndgs)->opts.field80;
+        ((SNDGSVIEW*)sndgs)->applied.field88 = ((SNDGSVIEW*)sndgs)->opts.field88;
+        ((SNDGSVIEW*)sndgs)->applied.field90 = ((SNDGSVIEW*)sndgs)->opts.field90;
+    }
+    *opts = *(SNDSYSOPTSALL*)sndgs;
+    return ret;
 }
