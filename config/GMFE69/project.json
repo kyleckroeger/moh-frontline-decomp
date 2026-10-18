@@ -1208,7 +1208,8 @@
     "AIObject_lineofsight_mode.json",
     "bsbifunc_makenoise.json",
     "sound_impact.json",
-    "Soldier_object_helmet.json"
+    "Soldier_object_helmet.json",
+    "player_health.json"
   ],
   "progress": {
     "code_bytes": 1414572,
