@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80098f84",
-      "size": 220,
+      "size": 2312,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cc24",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013d3c",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -68,10 +68,23 @@
       "address": "0x80099018",
       "size": 72,
       "binding": 1
+    },
+    {
+      "name": "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData",
+      "address": "0x80099060",
+      "size": 2092,
+      "binding": 1
     }
   ],
   "externals": {
-    "GetVolume__19CLightVolumeManagerFv": "0x80078a3c"
+    "GetVolume__19CLightVolumeManagerFv": "0x80078a3c",
+    "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
+    "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
+    "SetDepth__7CVolBoxFf": "0x800c5258",
+    "SetHeight__7CVolBoxFf": "0x800c5268",
+    "SetWidth__7CVolBoxFf": "0x800c5278",
+    "numFrames__15CStaticAnimMeshCFv": "0x800f1510",
+    "ticksPerFrame__15CStaticAnimMeshCFv": "0x800f1504"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -80,5 +93,70 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "hierobject.cpp",
-  "original_file_index": 5972
+  "original_file_index": 5972,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803504a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803504a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x803504b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x803504b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x803504bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x803504c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x803504c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x803504c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x803504cc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x803504d0"
+    }
+  ]
 }

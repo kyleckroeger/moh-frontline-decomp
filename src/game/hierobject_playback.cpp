@@ -10,9 +10,14 @@
 // functions named by offset up to GetLightVolume's slot in
 // __vt__11CHierObject, the members and flag names are inferred, the part
 // table only fills the gap as in hierobject_weak.cpp, and the CVector3 view
-// copies through a double pair as in player_weapon.cpp. RegisterBulletDamage
-// before these is not matched; the rest of the file is not part of this
-// unit.
+// copies through a double pair (an init-list union copy). SwapOut follows:
+// it installs the mesh, takes the motion's frame and key data (or clears
+// them), then rebuilds the local box from the mesh's box: lengths of the
+// three axes give width, height and depth (scaled 1.6, 1.7 and 1.4 with the
+// centre nudged by 0.1 and -0.1 for a part of a tank, else 2.0), and the
+// normalised axes and the centre become its basis and centre. The mesh,
+// motion and box views and the tank scale names are inferred. The rest of
+// the file is not part of this unit.
 class BPDLightVolume;
 
 class CLightVolumeManager {
@@ -29,18 +34,88 @@ union CVector3Pair {
     float v[4];
 };
 
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y;
+    }
+    return x;
+}
+
 class CVector3 {
 public:
+    CVector3(const CVector3& other) : d(other.d) {}
+    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            float scale = 1.0f / length;
+            d.v[0] *= scale;
+            d.v[1] *= scale;
+            d.v[2] *= scale;
+        }
+    }
     CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+        d = other.d;
         return *this;
     }
 
-    float x;
-    float y;
-    float z;
-    float w;
+    union {
+        double pair[2];
+        float v[4];
+    } d;
 } __attribute__((aligned(8)));
+
+class CVolBox {
+public:
+    void SetWidth(float);
+    void SetHeight(float);
+    void SetDepth(float);
+    void SetBasis(CVector3, CVector3, CVector3);
+    void SetCenter(CVector3);
+
+    unsigned char unknown00[16];
+    CVector3 m_axes[3];
+    CVector3 m_center;
+};
+
+/* inferred: the mesh's data record and its box (+32) */
+struct MeshDataView {
+    unsigned char unknown00[32];
+    CVolBox* m_box;
+};
+
+class CStaticMesh {
+public:
+    unsigned char unknown00[4];
+    MeshDataView* m_data;
+};
+
+class CStaticAnimMesh {
+public:
+    int numFrames() const;
+    int ticksPerFrame() const;
+};
+
+/* inferred: the motion record (key ticks, key count, transform flag, keys) */
+struct MotionData {
+    unsigned char unknown00[4];
+    int ticks;
+    int count;
+    int transform;
+    unsigned char keys[4];
+};
+
+class CHierObject;
 
 class CQuaternion {
 public:
@@ -123,6 +198,16 @@ public:
     virtual void vf118();
     virtual void vf11c();
     virtual BPDLightVolume* GetLightVolume();
+    virtual void vf124();
+    virtual void vf128();
+    virtual void vf12c();
+    virtual void vf130();
+    virtual void vf134();
+    virtual void vf138();
+    virtual void vf13c();
+    virtual void vf140();
+    virtual void vf144();
+    virtual CHierObject* AsHierTankObject();
 };
 
 class CHierObject : public CStaticObject {
@@ -130,6 +215,7 @@ public:
     virtual ~CHierObject();
     void StartMotionPlayback(int, int, EBSEventEnum);
     BPDLightVolume* GetLightVolume();
+    void SwapOut(CStaticMesh*, MotionData*);
 
     struct DamageRange {
         int minimum;
@@ -137,21 +223,31 @@ public:
         float multiplier;
     };
 
-    unsigned char unknown004[300];
+    unsigned char unknown004[44];
+    CStaticMesh* m_mesh;
+    unsigned char unknown034[216];
+    CVolBox* m_localBox;
+    unsigned char unknown110[32];
     CVector3 m_keyOffset;
     CQuaternion m_keyRotation;
     unsigned char unknown150[48];
     CQuaternion m_scriptRotation;
     unsigned char unknown190[80];
-    unsigned char m_flags1e0a : 5;
+    unsigned char m_flags1e0a : 4;
+    unsigned char m_transformDelta : 1;
     unsigned char m_animMove : 1;
     unsigned char m_flags1e0b : 2;
-    unsigned char unknown1e1[55];
+    unsigned char unknown1e1[39];
+    int m_frameCount;
+    unsigned char unknown20c[4];
+    int m_ticksPerFrame;
+    unsigned char unknown214[4];
     int m_keyEvent;
     int m_startKey;
     int m_lastKey;
     int m_keyCount;
-    unsigned char unknown228[8];
+    unsigned char unknown228[4];
+    int m_keyTicks;
     int m_key;
     unsigned char unknown234[20];
     void* m_keys;
@@ -195,4 +291,47 @@ BPDLightVolume* CHierObject::GetLightVolume() {
     if (m_ownLight)
         return m_lightVolumes.GetVolume();
     return m_parent->GetLightVolume();
+}
+
+void CHierObject::SwapOut(CStaticMesh* mesh, MotionData* motion) {
+    m_mesh = mesh;
+    if (motion) {
+        CStaticAnimMesh* anim = (CStaticAnimMesh*)mesh;
+        m_frameCount = anim->numFrames();
+        m_ticksPerFrame = anim->ticksPerFrame();
+        m_keyCount = motion->count;
+        m_keyTicks = motion->ticks;
+        m_transformDelta = motion->transform != 0;
+        m_keys = motion->keys;
+    } else {
+        m_frameCount = 0;
+        m_ticksPerFrame = 0;
+        m_keyCount = 0;
+        m_keyTicks = 0;
+        m_transformDelta = 0;
+        m_keys = 0;
+    }
+    CVolBox* source = m_mesh->m_data->m_box;
+    CVector3 a(source->m_axes[0]);
+    CVector3 b(source->m_axes[1]);
+    CVector3 c(source->m_axes[2]);
+    CVector3 center(source->m_center);
+    CVolBox* box = m_localBox;
+    if (m_parent->AsHierTankObject()) {
+        center.d.v[0] += 0.0f * a.Length();
+        center.d.v[1] += 0.1f * c.Length();
+        center.d.v[2] += -0.1f * b.Length();
+        box->SetWidth(1.6f * a.Length());
+        box->SetHeight(1.7f * c.Length());
+        box->SetDepth(1.4f * b.Length());
+    } else {
+        box->SetWidth(2.0f * a.Length());
+        box->SetHeight(2.0f * c.Length());
+        box->SetDepth(2.0f * b.Length());
+    }
+    a.Normalize();
+    b.Normalize();
+    c.Normalize();
+    box->SetBasis(a, b, c);
+    box->SetCenter(center);
 }

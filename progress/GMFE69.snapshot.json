@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 856468,
+    "matching_code_bytes": 858560,
     "total_executable_code_bytes": 1414572,
-    "percent": 60.54608743846195,
+    "percent": 60.69397669401063,
     "categories": {
-      "reconstructed_game": 634952,
+      "reconstructed_game": 637044,
       "restored_library": 221516
     },
-    "matching_functions": 4453
+    "matching_functions": 4454
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -676,7 +676,7 @@
     "config/GMFE69/hierobject_constrain.json": "e012314e541ae6b058d9dc04031c74291037b5d34a84b470bb18d893b6da63e9",
     "config/GMFE69/hierobject_draw.json": "8418a044e890a3e7311069a90c1d8984d95369e34dd9b191972e91082d32405b",
     "config/GMFE69/hierobject_motion.json": "58176a33c49453918af8be65fb473a6ed274f075efa92bd990201622010fcd8a",
-    "config/GMFE69/hierobject_playback.json": "be6debac3d498d48efa5548482c16512816a393e1c7a010e513620211e39eeb7",
+    "config/GMFE69/hierobject_playback.json": "8a74b5774fd2f8b8aa6ffb4c2d51ca9804fa1c349753d4536fc4bb76cc72f925",
     "config/GMFE69/hierobject_script.json": "4bcd2452542b1a785c200767db551dabee5af0c17df4e0a41c7ad40570c6ff10",
     "config/GMFE69/hierobject_tree.json": "e720a1207dc3278096b549eb9bcf86600ba5654bd92d67b0749dd954acffebfe",
     "config/GMFE69/hierobject_update.json": "e9b53e1646962c75b2bb734a01c977c1c5b5a715081f8b1a098692d14a055608",
@@ -2747,7 +2747,7 @@
     "src/game/hierobject_constrain.cpp": "8bec29c3f2d6e91a80b4bca88f068c213a24285de987ca9fa1daea556834a966",
     "src/game/hierobject_draw.cpp": "c5e1811b7ea46f78644c7dce50feab94b0ab5492fdf94d86584eafd87e8138af",
     "src/game/hierobject_motion.cpp": "4fd02dff65bd2edbd24a21eebaa5f2a8921fd4af2b60d3f85bffbe16f2e19426",
-    "src/game/hierobject_playback.cpp": "ac1488f99aa7ace5e6f0d9e81528c672612d5fa7ba3117f95e122d1ad44e9ef6",
+    "src/game/hierobject_playback.cpp": "4f5b5b4b45e5fee046ef836082862248430fc79c2b7102e4dc92fb3c8fef0628",
     "src/game/hierobject_script.cpp": "8095c6c67853c2a66485d7a45382f6536c4c1bc67b6f2bf39ac6894b3c0a9307",
     "src/game/hierobject_tree.cpp": "f1b3e125cf44df87e6b6929563add9a762dfb19fc942a79fa0fabd82fa67bbe8",
     "src/game/hierobject_update.cpp": "43068b95eeca48dcab366339cda5f09ed875bde7b98da93110facc91c51ac43a",
@@ -45607,8 +45607,8 @@
     {
       "id": "hierobject_playback",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 220,
+      "functions": 3,
+      "code_bytes": 2312,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45640,8 +45640,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "51531912d2839507f9c0975f32a47f9d2cab67f9fcc8fc8093f66078f57ecc68",
-      "linked_sha256": "daab58463651f2e290a9d6ef4435b51bd9864cada4d31ac27667f5e751aa8ce6"
+      "object_sha256": "58d54007a8529d68378aec31c0044988a96caa2a82d7757b2f2b896cff409ecc",
+      "linked_sha256": "8673f15918d47ad3e4380b474c4ec1a0a62789e1a1431fffef8a40e68e681789"
     },
     {
       "id": "anim_obj_bullet",
@@ -55012,13 +55012,6 @@
         "file_record": 112,
         "file_name": "hierobject.cpp",
         "ranges": [
-          {
-            "address": "0x80099060",
-            "size": 2092,
-            "kind": "function",
-            "name": "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8009a924",
             "size": 1028,
