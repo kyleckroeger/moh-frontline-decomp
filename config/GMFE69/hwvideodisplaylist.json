@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x801028d4",
-      "size": 332,
+      "address": "0x80102308",
+      "size": 1816,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fbc0",
-      "size": 16,
+      "address": "0x8000fbb8",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016934",
-      "size": 24,
+      "address": "0x80016928",
+      "size": 36,
       "type": 1
     },
     {
@@ -90,6 +90,12 @@
       "binding": 1
     },
     {
+      "name": "iDraw__7GCHW_VDFv",
+      "address": "0x80102308",
+      "size": 1484,
+      "binding": 1
+    },
+    {
       "name": "__dt__Q24RCMP12VIDEO_DRIVERFv",
       "address": "0x801029d8",
       "size": 72,
@@ -97,15 +103,43 @@
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
     "CompleteDraw__7GCHW_VDFv": "0x80102290",
     "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv": "0x80102d24",
+    "DCFlushRangeNoSync": "0x801118e8",
     "DELETE_tBigYUVSwizzler__FP15tBigYUVSwizzler": "0x800fce14",
     "Draw__7GCHW_VDFPQ24RCMP5FRAME": "0x801022b4",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXGetVtxAttrFmt": "0x8012b998",
+    "GXInitTexObjCI": "0x8012dc80",
+    "GXInitTexObjLOD": "0x8012dcc8",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetChanCtrl": "0x8012d828",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumIndStages": "0x8012eccc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetTevDirect": "0x8012ecf8",
+    "GXSetTevOp": "0x8012ee78",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTevSwapMode": "0x8012f3ec",
+    "GXSetTevSwapModeTable": "0x8012f444",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "PPCSync": "0x80110190",
+    "PSMTXIdentity": "0x80116bb0",
     "ReDraw__7GCHW_VDFv": "0x80102294",
     "ReleaseFrame__Q24RCMP7DECODERFPQ24RCMP5FRAME": "0x80105304",
     "__dl__FPv": "0x8001ca2c",
     "__vt__Q24RCMP12VIDEO_DRIVER": "0x8018c304",
-    "rcmp_sys__4RCMP": "0x803158ac"
+    "rcmp_sys__4RCMP": "0x803158ac",
+    "tBigYUVSwizzler_DrawSetup__FP15tBigYUVSwizzlerP9_GXTexObjP9_GXTexObjP9_GXTexObj": "0x800fc5ac"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -127,12 +161,54 @@
     {
       "section": ".rodata",
       "offset": 0,
+      "size": 12,
+      "address": "0x8017aaa0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
       "size": 19,
       "address": "0x8017aaac"
     },
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x803512b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803512b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803512b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803512bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x803512c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x803512c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
       "size": 8,
       "address": "0x803512a8"
     }
