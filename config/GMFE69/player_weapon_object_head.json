@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800a7970",
-      "size": 364,
+      "size": 1552,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d0d4",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014180",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -116,26 +116,150 @@
       "address": "0x800a7aa4",
       "size": 56,
       "binding": 1
+    },
+    {
+      "name": "CreateEjectedShell__19CPlayerWeaponObjectFi",
+      "address": "0x800a7adc",
+      "size": 1188,
+      "binding": 1
     }
   ],
   "externals": {
+    "BuildScale__7CMatrixF8CVector3": "0x80090aa0",
+    "CreateSpecialThrownObject__FP20TriggerObject_structii": "0x8003ebb4",
     "FindTexture__12CTexturePackFPc": "0x800828b4",
     "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "Init__11CAnimObjectFv": "0x80095850",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "ReleaseObject__18CAnimObjectFactoryFP11CAnimObject": "0x80095bb8",
+    "RotateX__7CMatrixFf": "0x800903cc",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
+    "SetVelocity__13CThrownObjectFR8CVector3": "0x800b4db4",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "g_AnimObjFactory": "0x801ddde0",
     "g_scene": "0x8019484c",
-    "strcpy": "0x80140040"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "strcpy": "0x80140040",
+    "stricmp": "0x80151ab8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "player_weapon_object.cpp",
-  "original_file_index": 6418
+  "original_file_index": 6418,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 7,
+      "address": "0x80350728"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 5,
+      "address": "0x80350730"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350738"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8035073c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350740"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350744"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350748"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8035074c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350750"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350754"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350758"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8035075c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350760"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350764"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350768"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8035076c"
+    }
+  ]
 }
