@@ -1,4 +1,9 @@
-// Runtime Gecko_ExceptionPPC.cp: ExPPC_PopStackFrame, which restores the
+// Runtime Gecko_ExceptionPPC.cp: ExPPC_UnwindStack, which runs the unwind
+// actions up to the catcher (destroying locals, members and arrays - each
+// operand in a saved register or a frame slot by the record flags - deleting
+// pointers, handing an active catch block's object to the throw context or
+// destroying it, and popping frames whose action lists end, terminating on
+// an unknown action); ExPPC_PopStackFrame, which restores the
 // caller's saved FPRs (16-byte paired-single slots when record flag bit 1 is
 // set, else doubles; the count is in bits 6-10) and GPRs (count in the top 5
 // bits, saved below the FPRs) into the throw context through three inline
@@ -87,7 +92,119 @@ typedef struct ThrowContext {
     long GPR[32];
     long CR;
     char* SP;
+    char* FP;
+    char* throwSP;
+    char* returnaddr;
+    char* throwtype;
+    void* location;
+    void* dtor;
 } ThrowContext;
+
+typedef struct CatchInfo {
+    void* location;
+    void* typeinfo;
+    void* dtor;
+} CatchInfo;
+
+typedef void (*DtorFunc)(void*, short);
+typedef void (*DeleteFunc)(void*);
+
+/* the action records (the first byte is the action, bit 7 ends the list) */
+typedef struct ex_branch {
+    unsigned char action;
+    unsigned char unused;
+    unsigned short target;
+} ex_branch;
+
+typedef struct ex_destroylocal {
+    unsigned char action;
+    unsigned char unused;
+    short local;
+    void* dtor;
+} ex_destroylocal;
+
+typedef struct ex_destroylocalcond {
+    unsigned char action;
+    unsigned char flags;
+    short cond;
+    short local;
+    short unused;
+    void* dtor;
+} ex_destroylocalcond;
+
+typedef struct ex_destroylocalpointer {
+    unsigned char action;
+    unsigned char flags;
+    short pointer;
+    void* dtor;
+} ex_destroylocalpointer;
+
+typedef struct ex_destroylocalarray {
+    unsigned char action;
+    unsigned char unused;
+    short localarray;
+    unsigned short elements;
+    unsigned short element_size;
+    void* dtor;
+} ex_destroylocalarray;
+
+typedef struct ex_destroymember {
+    unsigned char action;
+    unsigned char flags;
+    short objectptr;
+    long offset;
+    void* dtor;
+} ex_destroymember;
+
+typedef struct ex_destroymembercond {
+    unsigned char action;
+    unsigned char flags;
+    short cond;
+    short objectptr;
+    short unused;
+    long offset;
+    void* dtor;
+} ex_destroymembercond;
+
+typedef struct ex_destroymemberarray {
+    unsigned char action;
+    unsigned char flags;
+    short objectptr;
+    long offset;
+    long elements;
+    long element_size;
+    void* dtor;
+} ex_destroymemberarray;
+
+typedef struct ex_deletepointer {
+    unsigned char action;
+    unsigned char flags;
+    short objectptr;
+    void* deletefunc;
+} ex_deletepointer;
+
+typedef struct ex_deletepointercond {
+    unsigned char action;
+    unsigned char flags;
+    short cond;
+    short objectptr;
+    short unused;
+    void* deletefunc;
+} ex_deletepointercond;
+
+typedef struct ex_activecatchblock {
+    unsigned char action;
+    unsigned char unused;
+    short cinfo_ref;
+} ex_activecatchblock;
+
+typedef struct ex_specification {
+    unsigned char action;
+    unsigned char unused;
+    unsigned short specs;
+    long pcoffset;
+    long cinfo_ref;
+} ex_specification;
 
 namespace std {
 void terminate();
@@ -316,4 +433,191 @@ static char* ExPPC_PopStackFrame(ThrowContext* context, MWExceptionInfo* info) {
 
     context->SP = callers_SP;
     return *(char**)(callers_SP + 4);
+}
+
+static void ExPPC_UnwindStack(ThrowContext* context, MWExceptionInfo* info, void* catcher) {
+    char* ap;
+    int action;
+
+    for (;;) {
+        if ((ap = info->action_pointer) == 0) {
+            ExPPC_FindExceptionRecord(ExPPC_PopStackFrame(context, info), info);
+            if (info->exception_record == 0)
+                std::terminate();
+            context->FP = ((*(unsigned short*)info->exception_record >> 4) & 1) ? (char*)context->GPR[31]
+                                                                               : context->SP;
+            continue;
+        }
+
+        action = *(exaction_type*)ap;
+        switch (action & 0x7F) {
+        case 1:
+            info->action_pointer = info->exception_record + ((ex_branch*)ap)->target;
+            break;
+        case 2: {
+            ex_destroylocal* p = (ex_destroylocal*)ap;
+            ((DtorFunc)p->dtor)(context->FP + p->local, -1);
+            info->action_pointer += sizeof(ex_destroylocal);
+            break;
+        }
+        case 3: {
+            ex_destroylocalcond* p = (ex_destroylocalcond*)ap;
+            char cond;
+            if (p->flags >> 7)
+                cond = (char)context->GPR[p->cond];
+            else
+                cond = *(char*)(context->FP + p->cond);
+            if (cond)
+                ((DtorFunc)p->dtor)(context->FP + p->local, -1);
+            info->action_pointer += sizeof(ex_destroylocalcond);
+            break;
+        }
+        case 4: {
+            ex_destroylocalpointer* p = (ex_destroylocalpointer*)ap;
+            void* pointer;
+            if (p->flags >> 7)
+                pointer = (void*)context->GPR[p->pointer];
+            else
+                pointer = *(void**)(context->FP + p->pointer);
+            ((DtorFunc)p->dtor)(pointer, -1);
+            info->action_pointer += sizeof(ex_destroylocalpointer);
+            break;
+        }
+        case 5: {
+            ex_destroylocalarray* p = (ex_destroylocalarray*)ap;
+            int size;
+            int elements;
+            elements = p->elements;
+            size = p->element_size;
+            char* ptr = context->FP + p->localarray;
+            ptr += size * elements;
+            while (elements > 0) {
+                ptr -= size;
+                ((DtorFunc)p->dtor)(ptr, -1);
+                elements--;
+            }
+            info->action_pointer += sizeof(ex_destroylocalarray);
+            break;
+        }
+        case 6: {
+            ex_destroymember* p = (ex_destroymember*)ap;
+            char* object;
+            if (p->flags >> 7)
+                object = (char*)context->GPR[p->objectptr];
+            else
+                object = *(char**)(context->FP + p->objectptr);
+            ((DtorFunc)p->dtor)(object + p->offset, 0);
+            info->action_pointer += sizeof(ex_destroymember);
+            break;
+        }
+        case 7: {
+            ex_destroymember* p = (ex_destroymember*)ap;
+            char* object;
+            if (p->flags >> 7)
+                object = (char*)context->GPR[p->objectptr];
+            else
+                object = *(char**)(context->FP + p->objectptr);
+            ((DtorFunc)p->dtor)(object + p->offset, -1);
+            info->action_pointer += sizeof(ex_destroymember);
+            break;
+        }
+        case 8: {
+            ex_destroymembercond* p = (ex_destroymembercond*)ap;
+            char* object;
+            short cond;
+            if ((p->flags >> 6) & 1)
+                object = (char*)context->GPR[p->objectptr];
+            else
+                object = *(char**)(context->FP + p->objectptr);
+            if (p->flags >> 7)
+                cond = (short)context->GPR[p->cond];
+            else
+                cond = *(short*)(context->FP + p->cond);
+            if (cond)
+                ((DtorFunc)p->dtor)(object + p->offset, 0);
+            info->action_pointer += sizeof(ex_destroymembercond);
+            break;
+        }
+        case 9: {
+            ex_destroymemberarray* p = (ex_destroymemberarray*)ap;
+            long size;
+            long elements;
+            char* ptr;
+            if (p->flags >> 7)
+                ptr = (char*)context->GPR[p->objectptr];
+            else
+                ptr = *(char**)(context->FP + p->objectptr);
+            elements = p->elements;
+            size = p->element_size;
+            ptr += p->offset;
+            ptr += size * elements;
+            while (elements > 0) {
+                ptr -= size;
+                ((DtorFunc)p->dtor)(ptr, -1);
+                elements--;
+            }
+            info->action_pointer += sizeof(ex_destroymemberarray);
+            break;
+        }
+        case 10: {
+            ex_deletepointer* p = (ex_deletepointer*)ap;
+            void* pointer;
+            if (p->flags >> 7)
+                pointer = (void*)context->GPR[p->objectptr];
+            else
+                pointer = *(void**)(context->FP + p->objectptr);
+            ((DeleteFunc)p->deletefunc)(pointer);
+            info->action_pointer += sizeof(ex_deletepointer);
+            break;
+        }
+        case 11: {
+            ex_deletepointercond* p = (ex_deletepointercond*)ap;
+            void* pointer;
+            char cond;
+            if ((p->flags >> 6) & 1)
+                pointer = (void*)context->GPR[p->objectptr];
+            else
+                pointer = *(void**)(context->FP + p->objectptr);
+            if (p->flags >> 7)
+                cond = (char)context->GPR[p->cond];
+            else
+                cond = *(char*)(context->FP + p->cond);
+            if (cond)
+                ((DeleteFunc)p->deletefunc)(pointer);
+            info->action_pointer += sizeof(ex_deletepointercond);
+            break;
+        }
+        case 12:
+            if (catcher == ap)
+                return;
+            info->action_pointer = ap + 12;
+            break;
+        case 16:
+            if (catcher == ap)
+                return;
+            info->action_pointer = ap + 16;
+            break;
+        case 13: {
+            CatchInfo* catchinfo = (CatchInfo*)(context->FP + ((ex_activecatchblock*)ap)->cinfo_ref);
+            if (catchinfo->dtor) {
+                if (context->location == catchinfo->location)
+                    context->dtor = catchinfo->dtor;
+                else
+                    ((DtorFunc)catchinfo->dtor)(catchinfo->location, -1);
+            }
+            info->action_pointer += sizeof(ex_activecatchblock);
+            break;
+        }
+        case 15:
+            if (catcher == ap)
+                return;
+            info->action_pointer = ap + (sizeof(ex_specification) + ((ex_specification*)ap)->specs * 4);
+            break;
+        default:
+            std::terminate();
+        }
+
+        if (action & 0x80)
+            info->action_pointer = 0;
+    }
 }

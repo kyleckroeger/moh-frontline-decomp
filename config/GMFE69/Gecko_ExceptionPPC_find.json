@@ -61,15 +61,16 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80139da0",
-      "size": 1548,
+      "address": "0x80139894",
+      "size": 2840,
       "type": 1
     },
     {
       "name": ".data",
-      "address": "0x80190590",
-      "size": 68,
-      "type": 1
+      "address": "0x8019054c",
+      "size": 136,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -83,6 +84,12 @@
       "name": "ExPPC_NextAction__FP14ActionIterator",
       "address": "0x80139fe8",
       "size": 448,
+      "binding": 0
+    },
+    {
+      "name": "ExPPC_UnwindStack__FP12ThrowContextP15MWExceptionInfoPv",
+      "address": "0x80139894",
+      "size": 1292,
       "binding": 0
     },
     {
