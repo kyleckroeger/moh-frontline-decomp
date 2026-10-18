@@ -1,17 +1,46 @@
-// A fragment of hierobject.cpp (0x80099b78): CHierObject::ConstrainVelocity.
-// When the object is active it constrains each attached scene node, clears
-// the script steps, the next rotation and the animation delta, then resets
-// the running motion: a path motion goes back to its start position with no
-// speed, a script motion rebuilds the matrix from the animated rotation and
-// position and the two local matrices, an animation motion stops and keeps
-// its rotation; each child then takes the matrix and is constrained in turn.
-// The classes and functions are named by the mangled symbols; CHierObject
-// declares its virtual functions in the order of __vt__11CHierObject
-// (placeholders named by offset), the members, flag names, the attached-node
-// list (a fast_vec-like pointer, capacity and count) and the listener,
-// extent and volume views are inferred as in hierobject_update.cpp, and the
-// CVector3 view copies through a double pair as in player_weapon.cpp. The
-// rest of the file is not part of this unit.
+// A fragment of hierobject.cpp (0x80099b78): CHierObject::ConstrainVelocity
+// and OnCollision. ConstrainVelocity: when the object is active it
+// constrains each attached scene node, clears the script steps, the next
+// rotation and the animation delta, then resets the running motion: a path
+// motion goes back to its start position with no speed, a script motion
+// rebuilds the matrix from the animated rotation and position and the two
+// local matrices, an animation motion stops and keeps its rotation; each
+// child then takes the matrix and is constrained in turn.
+// OnCollision ignores bullets (and everything while the first flag of +1416
+// is set); with a volume it records each contact's collision state and
+// tries collision damage. An active object hit by the player pushes back:
+// when the direction from the player to the contact opposes the object's
+// own motion (along its path, or out of the contact point moved through the
+// script motion's inverse), the motion is undone as in ConstrainVelocity
+// and each child takes the matrix and the collision; the active flag is then
+// cleared. Other active collisions add the other node to the attached list
+// once per contact while there is room. Every child then takes the
+// collision. The classes and functions are named by the mangled symbols;
+// CHierObject declares its virtual functions in the order of
+// __vt__11CHierObject (placeholders named by offset), the members, flag
+// names, the attached-node list (pointer, count and capacity), the entry
+// type (a by-value assignment) and the listener, extent, volume, contact
+// and collision views are inferred as in hierobject_update.cpp. CVector3
+// holds its components in a union with a double pair (implicit copies as
+// doubleword pairs, components kept in registers). The rest of the file is
+// not part of this unit.
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y;
+    }
+    return x;
+}
+
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -20,24 +49,31 @@ union CVector3Pair {
 class CVector3 {
 public:
     CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
+    CVector3(float ax, float ay, float az) {
+        d.v[0] = ax;
+        d.v[1] = ay;
+        d.v[2] = az;
     }
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3 operator*(float f) const { return CVector3(x * f, y * f, z * f); }
+    CVector3 operator*(float f) const { return CVector3(d.v[0] * f, d.v[1] * f, d.v[2] * f); }
+    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            float scale = 1.0f / length;
+            d.v[0] *= scale;
+            d.v[1] *= scale;
+            d.v[2] *= scale;
+        }
+    }
+    float Dot(const CVector3& v) const { return d.v[0] * v.d.v[0] + d.v[1] * v.d.v[1] + d.v[2] * v.d.v[2]; }
     CVector3& operator+=(const CVector3& v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
+        d.v[0] += v.d.v[0];
+        d.v[1] += v.d.v[1];
+        d.v[2] += v.d.v[2];
         return *this;
     }
 
-    float x;
-    float y;
-    float z;
-    float w;
+    CVector3Pair d;
 } __attribute__((aligned(8)));
 
 class CMatrix;
@@ -60,10 +96,17 @@ public:
     float z;
 };
 
-inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
+inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.d.v[0], f * v.d.v[1], f * v.d.v[2]); }
 
 class CMatrix {
 public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    static void InitClass();
+    static bool s_ClassInit;
+    void FastInverse(const CMatrix&);
     void TransformPoint(CVector3&, CVector3) const;
     void SetPos(CVector3);
     void Translate(CVector3);
@@ -76,7 +119,7 @@ public:
     CVector3 front;
     CVector3 up;
     CVector3 pos;
-};
+} __attribute__((aligned(16)));
 
 /* inferred: the object told of the new matrix through its slot +16 */
 class MatrixListenerView {
@@ -148,6 +191,95 @@ public:
     virtual void ConstrainVelocity();
 };
 
+class CCollision;
+class CBullet;
+class CPlayerObject;
+class CAnimObject;
+
+class ISceneNode {
+public:
+    virtual void vf08();
+    virtual void vf0c();
+    virtual void vf10();
+    virtual void vf14();
+    virtual void vf18();
+    virtual void vf1c();
+    virtual void vf20();
+    virtual void vf24();
+    virtual void vf28();
+    virtual void vf2c();
+    virtual void vf30();
+    virtual void vf34();
+    virtual void vf38();
+    virtual void vf3c();
+    virtual void GetPosition(CVector3&) const;
+    virtual void vf44();
+    virtual void vf48();
+    virtual void vf4c();
+    virtual void vf50();
+    virtual void vf54();
+    virtual void vf58();
+    virtual void vf5c();
+    virtual void vf60();
+    virtual void vf64();
+    virtual void vf68();
+    virtual void vf6c();
+    virtual void vf70();
+    virtual void vf74();
+    virtual void vf78();
+    virtual void vf7c();
+    virtual void vf80();
+    virtual void vf84();
+    virtual void vf88();
+    virtual CAnimObject* AsAnimObject();
+    virtual void vf90();
+    virtual void vf94();
+    virtual void vf98();
+    virtual CPlayerObject* AsPlayerObject();
+    virtual void vfa0();
+    virtual void vfa4();
+    virtual void vfa8();
+    virtual void vfac();
+    virtual void vfb0();
+    virtual void vfb4();
+    virtual void vfb8();
+    virtual CBullet* AsBullet();
+};
+
+/* inferred: a collision contact: position, collision state, next contact */
+struct ContactView {
+    unsigned char unknown00[16];
+    CVector3 m_position;
+    unsigned char unknown20[4];
+    int m_state;
+    unsigned char unknown28[4];
+    ContactView* m_next;
+};
+
+class CCollision {
+public:
+    ISceneNode* m_node0;
+    ISceneNode* m_node1;
+    unsigned char unknown08[16];
+    ContactView* m_contacts;
+};
+
+class CStaticObject {
+public:
+    void AttemptCollisionDamage(const CCollision&);
+};
+
+/* inferred: an entry of the attached list */
+struct AttachedEntry {
+    AttachedEntry(ISceneNodeView* node) : m_node(node) {}
+    AttachedEntry& operator=(AttachedEntry other) {
+        m_node = other.m_node;
+        return *this;
+    }
+
+    ISceneNodeView* m_node;
+};
+
 class CHierObject {
 public:
     virtual void unknown008();
@@ -158,7 +290,7 @@ public:
     virtual void unknown01c();
     virtual void ConstrainVelocity();
     virtual void AttemptUpdate(float);
-    virtual void unknown028();
+    virtual void OnCollision(const CCollision&);
     virtual void CommitUpdate();
     virtual void unknown030();
     virtual void unknown034();
@@ -239,6 +371,14 @@ public:
     virtual void CommitPathMotionUpdate();
 
     void BeginAnimMotionUpdate(float);
+    void SetHierCollisionState(int);
+    /* inferred: adds a node to the attached list while there is room */
+    bool AttachedFull() const { return m_attachedCount >= m_attachedCapacity; }
+    void StoreAttached(AttachedEntry entry) { ((AttachedEntry*)m_attached)[m_attachedCount++] = entry; }
+    void AddAttached(AttachedEntry entry) {
+        if (!AttachedFull())
+            StoreAttached(entry);
+    }
     /* inferred inline helper: its temporary's stack slot needs it */
     void ResetPathMotion() {
         m_matrix.SetPos(m_pathPosition);
@@ -247,7 +387,6 @@ public:
     void BeginScriptMotionUpdate(float);
     CVector3 GetWorldLinearVelocity() const;
     bool IsMoving() const { return m_pathState != 0 && m_pathState != 1; }
-    bool IsScripted() const { return m_scriptMove || m_scriptTurn || m_flag10; }
 
     unsigned char pad004[8];
     ExtentNodeView* m_extentMinX;
@@ -322,8 +461,9 @@ public:
     CVector3 m_animPosition;
     CVector3 m_animDelta;
     ISceneNodeView** m_attached;
-    int m_attachedCapacity;
+    int m_attachedUnknown;
     int m_attachedCount;
+    int m_attachedCapacity;
 };
 
 void CHierObject::ConstrainVelocity() {
@@ -336,7 +476,7 @@ void CHierObject::ConstrainVelocity() {
         m_moveStep = 0.0f;
         m_turnStep = 0.0f;
         m_nextRotation = m_animRotation;
-        m_animDelta.x = m_animDelta.y = m_animDelta.z = 0.0f;
+        m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
         if (IsMoving()) {
             ResetPathMotion();
         } else if (m_scriptMove || m_scriptTurn) {
@@ -345,7 +485,7 @@ void CHierObject::ConstrainVelocity() {
             m_matrix.Multiply(m_matrix, m_matrix630);
             m_matrix.Multiply(m_matrix, m_matrix5f0);
         } else if (m_flag04) {
-            m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
+            m_velocity.d.v[0] = m_velocity.d.v[1] = m_velocity.d.v[2] = 0.0f;
             m_targetRotation = m_rotation;
         }
     }
@@ -353,4 +493,73 @@ void CHierObject::ConstrainVelocity() {
         child->m_matrix5f0 = m_matrix;
         child->ConstrainVelocity();
     }
+}
+
+void CHierObject::OnCollision(const CCollision& collision) {
+    if (m_flags588a)
+        return;
+    ISceneNode* other = collision.m_node0 == (ISceneNode*)this ? collision.m_node1 : collision.m_node0;
+    if (other->AsBullet())
+        return;
+    if (m_hasVolume) {
+        for (ContactView* contact = collision.m_contacts; contact; contact = contact->m_next)
+            SetHierCollisionState(contact->m_state);
+        ((CStaticObject*)this)->AttemptCollisionDamage(collision);
+    }
+    if (m_flag588) {
+        if (m_hasVolume && other->AsPlayerObject()) {
+            CVector3 contactPos = collision.m_contacts->m_position;
+            CVector3 otherPos;
+            other->GetPosition(otherPos);
+            CVector3 push(contactPos.d.v[0] - otherPos.d.v[0], contactPos.d.v[1] - otherPos.d.v[1], contactPos.d.v[2] - otherPos.d.v[2]);
+            push.Normalize();
+            CVector3 normal;
+            if (IsMoving()) {
+                const CVector3& pos = m_matrix.GetPos();
+                normal.d.v[0] = pos.d.v[0] - m_pathPosition.d.v[0];
+                normal.d.v[1] = pos.d.v[1] - m_pathPosition.d.v[1];
+                normal.d.v[2] = pos.d.v[2] - m_pathPosition.d.v[2];
+                normal.Normalize();
+            } else if (m_scriptMove || m_scriptTurn || m_flag10) {
+                CMatrix inverse;
+                inverse.FastInverse(m_matrix);
+                CVector3 local;
+                inverse.TransformPoint(local, contactPos);
+                m_animRotation.GetMatrix(inverse);
+                inverse.SetPos(m_pathPosition);
+                inverse.TransformPoint(local, local);
+                normal.d.v[0] = contactPos.d.v[0] - local.d.v[0];
+                normal.d.v[1] = contactPos.d.v[1] - local.d.v[1];
+                normal.d.v[2] = contactPos.d.v[2] - local.d.v[2];
+                normal.Normalize();
+            }
+            if (push.Dot(normal) < 0.0f) {
+                m_moveStep = 0.0f;
+                m_turnStep = 0.0f;
+                m_nextRotation = m_animRotation;
+                m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
+                if (IsMoving()) {
+                    ResetPathMotion();
+                } else if (m_scriptMove || m_scriptTurn) {
+                    m_animRotation.GetMatrix(m_matrix);
+                    m_matrix.Translate(m_animPosition);
+                    m_matrix.Multiply(m_matrix, m_matrix630);
+                    m_matrix.Multiply(m_matrix, m_matrix5f0);
+                } else if (m_flag04) {
+                    m_velocity.d.v[0] = m_velocity.d.v[1] = m_velocity.d.v[2] = 0.0f;
+                    m_targetRotation = m_rotation;
+                }
+                for (CHierObject* child = m_firstChild; child; child = child->m_nextSibling) {
+                    child->m_matrix5f0 = m_matrix;
+                    child->OnCollision(collision);
+                }
+            }
+            m_flag588 = 0;
+            return;
+        }
+        for (ContactView* contact = collision.m_contacts; contact; contact = contact->m_next)
+            AddAttached(AttachedEntry((ISceneNodeView*)other->AsAnimObject()));
+    }
+    for (CHierObject* child = m_firstChild; child; child = child->m_nextSibling)
+        child->OnCollision(collision);
 }

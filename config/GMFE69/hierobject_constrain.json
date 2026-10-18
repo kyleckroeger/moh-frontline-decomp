@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80099b78",
-      "size": 472,
+      "size": 2116,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cc4c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013d78",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,21 +62,35 @@
       "address": "0x80099b78",
       "size": 472,
       "binding": 1
+    },
+    {
+      "name": "OnCollision__11CHierObjectFRC10CCollision",
+      "address": "0x80099d50",
+      "size": 1644,
+      "binding": 1
     }
   ],
   "externals": {
+    "AttemptCollisionDamage__13CStaticObjectFRC10CCollision": "0x800ae8c0",
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "SetHierCollisionState__11CHierObjectFi": "0x8009a3bc",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
     "Translate__7CMatrixF8CVector3": "0x80090660",
-    "__as__7CMatrixFRC7CMatrix": "0x80090b34"
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "hierobject.cpp",
   "original_file_index": 5972,
   "pooled_sections": [
@@ -88,6 +102,24 @@
       "offset": 0,
       "size": 4,
       "address": "0x803504a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803504a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x803504b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x803504d0"
     }
   ]
 }
