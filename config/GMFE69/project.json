@@ -1213,7 +1213,8 @@
     "Moh2_statusscreen.json",
     "player_bullet.json",
     "Soldier_object_bullet.json",
-    "player_respawn.json"
+    "player_respawn.json",
+    "scene_fast.json"
   ],
   "progress": {
     "code_bytes": 1414572,

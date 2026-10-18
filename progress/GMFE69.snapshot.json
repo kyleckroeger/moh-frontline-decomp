@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 841064,
+    "matching_code_bytes": 842036,
     "total_executable_code_bytes": 1414572,
-    "percent": 59.45713615142955,
+    "percent": 59.52584951490628,
     "categories": {
-      "reconstructed_game": 619548,
+      "reconstructed_game": 620520,
       "restored_library": 221516
     },
-    "matching_functions": 4438
+    "matching_functions": 4439
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -847,7 +847,7 @@
     "config/GMFE69/popup_displaytime.json": "c04f63a7489ed10a714b1aaca658934f1a07cea9728f1880cfb2dc2764f8a954",
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "96480dd0b3364999682291ed549a2fc3bf3b510eb8b3177764ec524f7a656e41",
+    "config/GMFE69/project.json": "156258b64f5cbb400ed7a9676f60fef7f8461a7b3d8791f684724881bb6aa526",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -939,6 +939,7 @@
     "config/GMFE69/scene_cmppairs.json": "6b9e284642ade4004aa96888acd6466e3a30484908f6b83036f102837837bef0",
     "config/GMFE69/scene_copy.json": "8a8a34a800716122c9ac865100e3f20b51e3e6eb2bd215759e5bdf30a889b984",
     "config/GMFE69/scene_dtor.json": "78ab818b17fe17d3e1b093df035a5b131f292a278944dde33c9a8359ab66386c",
+    "config/GMFE69/scene_fast.json": "38c477a2ed63892863451b0cdbb16553f40ccf026ce1a6f7e5605a48e18607cc",
     "config/GMFE69/scene_fastvec_commands.json": "fb1dc632c48d0db6014304f1ae3dfc8d5eff40e4b74a868a6e766ecb8e384a8d",
     "config/GMFE69/scene_fastvec_node.json": "607d260638f87d0e03f12d14e38ad81150c296114725f7f2bcaad4d79c08c50f",
     "config/GMFE69/scene_fastvec_pairs.json": "e569c1fa2274c1a33014f7f97cc7cd3990b961f31e4d13ece8052c720ea968af",
@@ -2897,6 +2898,7 @@
     "src/game/scene_cmppairs.cpp": "58545abde6fad151db5e6ec20e536d5bfda57707bafa2ad43279c206a25021f8",
     "src/game/scene_copy.cpp": "47afbe0f76fb20a7c8a07dfc7c3d34860dff5effbf6035418fe5252755301dec",
     "src/game/scene_dtor.cpp": "e920f7cdd6b2509c7a0ae60fbe4abbd2a3b8af3eb8697f6edb699d7d593ee361",
+    "src/game/scene_fast.cpp": "b037a9670bc19ae80e1a15c3ff81dd6c7128403d318f3465017f862fb3ebf605",
     "src/game/scene_fastvec_commands.cpp": "130932a619e72af3893f67e4a04eef775dd43b170c5239019317f2f1a61956ae",
     "src/game/scene_fastvec_node.cpp": "fe9f51c5d82e80699d3b888ee95de513905e8e89353212610b8927963ed6d00c",
     "src/game/scene_fastvec_pairs.cpp": "2f08397719cf26d9dca0c24e43369832e5dbcd36ec44831fd95041a694265f6d",
@@ -52676,6 +52678,45 @@
       "discarded_functions": [],
       "object_sha256": "699e296f46fe26ef1fcae0e5e707e377ec222300b6740d90ed63dd2ff8df56e9",
       "linked_sha256": "b742a487a40abc151b154ca3d6aac82f1c7ec4da82cac9436d8447ad841d49f4"
+    },
+    {
+      "id": "scene_fast",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 972,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "490c45580274a6353520c993af7eb06f73a5f50d2f7a5b414cd353d8b3a9d015",
+      "linked_sha256": "7274eb3895478631f80e89cc6b7ab67cb668fdf0e71c88c8fc8db3774a022dad"
     }
   ],
   "code_map": {
@@ -55981,13 +56022,6 @@
         "file_record": 144,
         "file_name": "scene.cpp",
         "ranges": [
-          {
-            "address": "0x800d85f0",
-            "size": 972,
-            "kind": "function",
-            "name": "DetectFastCollisions__6CSceneFf",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800d8bac",
             "size": 800,

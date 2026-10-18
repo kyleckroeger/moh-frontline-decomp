@@ -1,0 +1,109 @@
+{
+  "id": "scene_fast",
+  "source": "src/game/scene_fast.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d85f0",
+      "size": 972,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e934",
+      "size": 144,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 152
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800156b0",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "DetectFastCollisions__6CSceneFf",
+      "address": "0x800d85f0",
+      "size": 972,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "OSGetTick": "0x80116a58",
+    "SweepAllExtents__6CSceneFv": "0x800d8bac",
+    "Test__10CCollisionFRf": "0x800c7510",
+    "__ct__10CCollisionFRC10CCollision": "0x800c7c04",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv": "0x800d85a0",
+    "begin__Q23dwi20vector<10CCollision>Fv": "0x800d85e4",
+    "end__Q23dwi20vector<10CCollision>Fv": "0x800d8588",
+    "erase__Q23dwi20vector<10CCollision>FQ23dwi22vec_iter<10CCollision>": "0x800d89bc",
+    "find_if<Q23dwi22vec_iter<10CCollision>,22ClsnInvolvesThisBullet>__3dwiFQ23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>22ClsnInvolvesThisBullet": "0x800d8b38"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "find_if<Q23dwi22vec_iter<10CCollision>,22ClsnInvolvesThisBullet>__3dwiFQ23dwi22vec_iter<10CCollision>Q23dwi22vec_iter<10CCollision>22ClsnInvolvesThisBullet"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404,
+  "weak_duplicates": [
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350e5c"
+    }
+  ]
+}
