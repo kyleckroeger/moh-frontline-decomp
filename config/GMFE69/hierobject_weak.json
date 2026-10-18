@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x80098de4",
-      "size": 260,
+      "size": 416,
       "type": 1
     },
     {
@@ -85,6 +85,12 @@
       "name": "GetBulletDamageMultiplierByClass__11CHierObjectFii",
       "address": "0x80098e14",
       "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "RegisterBulletDamage__11CHierObjectFiiif",
+      "address": "0x80098ee8",
+      "size": 156,
       "binding": 1
     }
   ],
