@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x8004fcbc",
-      "size": 280,
+      "size": 1760,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a9f8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011b58",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,9 +62,22 @@
       "address": "0x8004fcbc",
       "size": 280,
       "binding": 1
+    },
+    {
+      "name": "GetNextPointForward__22CAISplinePathTraversalFRC21CAIFilterRealPositionP21CAIFilterRealPositionP15CAIFilterObject",
+      "address": "0x8004fdd4",
+      "size": 1480,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3": "0x800516b4",
+    "GetDistanceSquaredXYReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6d0",
+    "MakeModifiedNextPoint__22CAISplinePathTraversalFv": "0x80050760",
+    "SetupNextSegmentForward__22CAISplinePathTraversalFRC21CAIFilterRealPosition": "0x800505b0",
+    "UpdateAStarPathWalk__9CAIObjectFv": "0x8004b988"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -70,6 +95,18 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034f9b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f9ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f9b4"
     }
   ]
 }
