@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005e9bc",
-      "size": 48,
+      "address": "0x8005e6d4",
+      "size": 792,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b2b0",
-      "size": 8,
+      "address": "0x8000b2a8",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012308",
-      "size": 12,
+      "address": "0x800122fc",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_TurnFindTurnAnimInfo__14CAnimCallbacksFP23AnimFileStateAnimList_tP11CAnimObjectUsPlPfPfPfPff",
+      "address": "0x8005e6d4",
+      "size": 744,
+      "binding": 1
+    },
     {
       "name": "animfinish_cb__14CAnimCallbacksFUsPv",
       "address": "0x8005e9bc",
@@ -65,7 +71,9 @@
     }
   ],
   "externals": {
-    "FinishAnimationState__9CAnimatedFUs": "0x80061384"
+    "DebugMsg__FPCce": "0x80018c88",
+    "FinishAnimationState__9CAnimatedFUs": "0x80061384",
+    "MathArcTan2__Fff": "0x80091e64"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -75,5 +83,58 @@
   "sda_externals": [],
   "original_file": "anim_callback.cpp",
   "original_file_index": 2757,
-  "pool_references": []
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 36,
+      "address": "0x801703bc"
+    },
+    {
+      "section": ".rodata",
+      "offset": 36,
+      "size": 28,
+      "address": "0x801703e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fbc4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034fbd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034fbe0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034fbe4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034fbe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034fbf0"
+    }
+  ]
 }
