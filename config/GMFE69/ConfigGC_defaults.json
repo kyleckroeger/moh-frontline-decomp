@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f7b58",
-      "size": 1520,
+      "address": "0x800f77ac",
+      "size": 2460,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f94c",
-      "size": 16,
+      "address": "0x8000f944",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016664",
-      "size": 24,
+      "address": "0x80016658",
+      "size": 36,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "CopyDefaultConfig__11CDualConfigFiPc",
       "address": "0x800f7b58",
       "size": 588,
+      "binding": 1
+    },
+    {
+      "name": "SetupButtonsForMultiplayerGame__11CDualConfigFv",
+      "address": "0x800f77ac",
+      "size": 940,
       "binding": 1
     },
     {
@@ -78,11 +84,16 @@
   ],
   "externals": {
     "MovementText": "0x80314450",
+    "RetrieveShellControllerButtons__10CShellMenuFPci": "0x800e1508",
+    "configArray": "0x8018b7ac",
     "currConfigText": "0x8018b77c",
+    "g_Shell": "0x80195090",
+    "g_config_keymap": "0x801858bc",
     "memcpy": "0x800094f8",
     "memset": "0x80009410",
     "movementText": "0x80314300",
-    "strcpy": "0x80140040"
+    "strcpy": "0x80140040",
+    "visualConfigText": "0x8018b78c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

@@ -1,4 +1,10 @@
-// A fragment of ConfigGC.cpp (0x800f7b58): CDualConfig::CopyDefaultConfig
+// A fragment of ConfigGC.cpp (0x800f77ac): CDualConfig::
+// SetupButtonsForMultiplayerGame takes the shell's custom buttons (configs
+// above 5) or the default layout, translates each of the 13 buttons through
+// its configArray row (recording the visible config text) and appends the
+// mapped ones to the player's key map from entry 19 with their key codes,
+// then four fixed entries (22 and 23, and 17 and 18 with the second and third
+// mapped buttons) and an end marker. CDualConfig::CopyDefaultConfig
 // writes one of the five default button layouts into the current config text
 // (as SetUpDefaultConfig does; other values leave it) and copies the text,
 // terminator included, into the buffer. InitializeButtonMovementArray
@@ -39,16 +45,97 @@ extern char movementText[14][24];
 extern char MovementText[15][24];
 
 extern char currConfigText[14];
+extern char visualConfigText[14];
+extern char configArray[14][15];
+
+/* inferred: a player's key map (button and action pairs after a word) */
+struct KeyMapEntry {
+    unsigned short button;
+    unsigned short action;
+};
+
+struct KeyMapView {
+    int unknown00;
+    KeyMapEntry entries[64];
+};
+
+extern KeyMapView g_config_keymap[4];
+
+class CShellMenu {
+public:
+    void RetrieveShellControllerButtons(char*, int);
+
+    unsigned char unknown0000[0x19dc];
+};
+
+extern CShellMenu g_Shell;
 
 class CDualConfig {
 public:
+    void SetupButtonsForMultiplayerGame();
     void CopyDefaultConfig(int, char*);
     void GetDefaultCustomControllerValues(char*);
     void InitializeButtonMovementArray();
 
-    unsigned char unknown00[60];
+    unsigned char unknown00[56];
+    int m_player;
     TextTableView* m_texts;
+    int m_config;
 };
+
+void CDualConfig::SetupButtonsForMultiplayerGame() {
+    unsigned short keys[13];
+    char buttons[16];
+    unsigned char mapped[13];
+    int i;
+    int count;
+
+    if (m_config > 5)
+        g_Shell.RetrieveShellControllerButtons(buttons, m_config - 6);
+    else
+        CopyDefaultConfig(m_config, buttons);
+    for (i = 0; i < 13; i++)
+        mapped[i] = 123;
+    keys[0] = 7;
+    keys[1] = 10;
+    keys[2] = 9;
+    keys[3] = 8;
+    keys[4] = 11;
+    keys[5] = 12;
+    keys[6] = 16;
+    keys[7] = 14;
+    keys[8] = 15;
+    keys[9] = 19;
+    keys[10] = 20;
+    keys[11] = 21;
+    keys[12] = 13;
+    for (i = 0; i < 13; i++) {
+        mapped[i] = configArray[i][buttons[i]];
+        visualConfigText[i] = buttons[i];
+    }
+    count = 19;
+    for (i = 0; i < 13; i++) {
+        if (mapped[i] != 123) {
+            g_config_keymap[m_player].entries[count].button = keys[i];
+            g_config_keymap[m_player].entries[count].action = mapped[i];
+            count++;
+        }
+    }
+    g_config_keymap[m_player].entries[count].button = 22;
+    g_config_keymap[m_player].entries[count].action = 0;
+    count++;
+    g_config_keymap[m_player].entries[count].button = 23;
+    g_config_keymap[m_player].entries[count].action = 1;
+    count++;
+    g_config_keymap[m_player].entries[count].button = 17;
+    g_config_keymap[m_player].entries[count].action = mapped[1];
+    count++;
+    g_config_keymap[m_player].entries[count].button = 18;
+    g_config_keymap[m_player].entries[count].action = mapped[2];
+    count++;
+    g_config_keymap[m_player].entries[count].button = 0xFFFF;
+    g_config_keymap[m_player].entries[count].action = 0xFFFF;
+}
 
 void CDualConfig::CopyDefaultConfig(int config, char* buttons) {
     switch (config) {
