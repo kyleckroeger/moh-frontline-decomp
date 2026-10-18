@@ -39,24 +39,37 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800b72ec",
-      "size": 144,
+      "address": "0x800b6d90",
+      "size": 1516,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d834",
-      "size": 8,
+      "address": "0x8000d81c",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014828",
-      "size": 12,
+      "address": "0x8001481c",
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80188c9c",
+      "size": 36,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "ServiceDataStreamer__12CWorldObjectFf",
+      "address": "0x800b6d90",
+      "size": 1372,
+      "binding": 1
+    },
     {
       "name": "HandleExplosion__12CWorldObjectFRC10CExplosion",
       "address": "0x800b72ec",
@@ -71,14 +84,53 @@
     }
   ],
   "externals": {
-    "HandleExplosion__12CCompartmentFRC10CExplosion": "0x800756cc"
+    "ASYNCFILE_getstatus": "0x8014b6f4",
+    "ASYNCFILE_read": "0x8014b5c4",
+    "ASYNCFILE_release": "0x8014b790",
+    "AddSubVolume__12CWorldVolumeFRC10CCDBObject": "0x800cbf6c",
+    "FILESYS_closesync": "0x8014a130",
+    "FILESYS_opensync": "0x8014a088",
+    "GetCdbFilename__12CWorldObject": "0x8034e0bc",
+    "GetCptFilename__12CWorldObject": "0x8034e0b8",
+    "HandleExplosion__12CCompartmentFRC10CExplosion": "0x800756cc",
+    "Init__12CCompartmentFiPcP9CPTHeaderP3CDB": "0x80076dc8",
+    "RemoveSubVolume__12CWorldVolumeFRC10CCDBObject": "0x800cbf1c",
+    "__ct__12CCompartmentFRC12CCompartment": "0x80076030",
+    "__ct__12CCompartmentFv": "0x80076108",
+    "__dt__12CCompartmentFv": "0x80075ea8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "GetCdbFilename__12CWorldObject",
+    "GetCptFilename__12CWorldObject"
+  ],
   "original_file": "world_object.cpp",
-  "original_file_index": 7059
+  "original_file_index": 7059,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8035096c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350994"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350998"
+    }
+  ]
 }
