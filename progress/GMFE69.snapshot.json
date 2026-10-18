@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 846216,
+    "matching_code_bytes": 847492,
     "total_executable_code_bytes": 1414572,
-    "percent": 59.82134525496051,
+    "percent": 59.91154921771391,
     "categories": {
-      "reconstructed_game": 624700,
+      "reconstructed_game": 625976,
       "restored_library": 221516
     },
-    "matching_functions": 4442
+    "matching_functions": 4443
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -355,7 +355,7 @@
     "config/GMFE69/animmot_rot.json": "c5bed71eed4fcc9204850556c4d66e511a10df8ee49c21a6947d3deb46f334b1",
     "config/GMFE69/animplayer.json": "e43815327187ee2a3d1c99458abc0d87769f524e4c41c9d4689fd4140fce4dc9",
     "config/GMFE69/animplayer_ctor.json": "586370150da7130658d76d9e6a9132947b5556b47c2ad7b41859254a05244cf1",
-    "config/GMFE69/animplayer_draw.json": "c0e51a74baab07bc22500acd57a6f431bebc0f73fd238654f58c2a1bc6ebbcf5",
+    "config/GMFE69/animplayer_draw.json": "e1d39b6b04df15be57f9025496a81e7a727e794e472876311524cc23ed61a80d",
     "config/GMFE69/animplayer_initai.json": "e83bcdaa2758d6eeddb680003210d6826625bf92477b3fae789b72ab1f856454",
     "config/GMFE69/animplayer_weak.json": "4b25174786764debb7f74f70d6eee859c60d7bd8663635c65b5516cfbb9675bc",
     "config/GMFE69/animseq.json": "a95b2f2e7ccd61f0b10abfb3da323a97765e9028204bfa193457dad4a01ba62f",
@@ -2481,7 +2481,7 @@
     "src/game/animmot_rot.cpp": "0e6e066a270c91b5c5ef4b881472c9a5ebddf629eee5874fe717131f8d688352",
     "src/game/animplayer.cpp": "edbc03751689740ebd99f570afff09281c78d13812b592c3aedc3277d7bbc685",
     "src/game/animplayer_ctor.cpp": "8732028eb72a949d36cf29fd9ef46b3dc2ec9a1de84d3db6530484958cf508d3",
-    "src/game/animplayer_draw.cpp": "4c2fe748589f2c2e324b21b77d15ac6d243759e4998deb8a6a6d6e22ec8af5dd",
+    "src/game/animplayer_draw.cpp": "43994b7449021ac67fa9fe15d5ed42777aec9b40e7d0d626e90dc8feeb73b0d1",
     "src/game/animplayer_initai.cpp": "5a3861ba2a197629b5e4738dce8c687377021463dc64694ae9ee90d415bf7d98",
     "src/game/animplayer_weak.cpp": "aaf6f62fa5138013edb00bd7b8b905b1fe4a56d45a4015f45875c543cec5c04b",
     "src/game/animseq.cpp": "41ae1e334e9a48b7d9b8fa506401aa98bb74422f5ff869e6865e116682792658",
@@ -51153,8 +51153,8 @@
     {
       "id": "animplayer_draw",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 52,
+      "functions": 2,
+      "code_bytes": 1328,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -51186,8 +51186,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "769632f52bd9e68df0151aa5311d2ba0179f438e2d70f84dde8f6bace7253bd5",
-      "linked_sha256": "5617c4f66a18cc97420a4a47fb60c018116dd03e96c802d3af8344a0efd4e13a"
+      "object_sha256": "9771c909fd4917bbaeb3abfaae54fa13bd7c698c10a4746db542b3a0936405c9",
+      "linked_sha256": "7a2badc64c791df16bca89618785eeda9f8a7beeb07d1e729c688a31278b6cd2"
     },
     {
       "id": "skybox",
@@ -56837,20 +56837,6 @@
             "kind": "function",
             "name": "ShowDVDError__Fi",
             "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/animplayer.cpp [symbol evidence]",
-        "file_record": 186,
-        "file_name": "animplayer.cpp",
-        "ranges": [
-          {
-            "address": "0x8010a3d0",
-            "size": 1276,
-            "kind": "function",
-            "name": "HandleBulletCollision__15CAnimatedPlayerFP7CBulletRC10CCollision",
-            "evidence": "exception-index"
           }
         ]
       },
