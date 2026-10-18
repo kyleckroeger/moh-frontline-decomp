@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008b5e0",
-      "size": 348,
+      "address": "0x8008b01c",
+      "size": 1824,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c490",
-      "size": 40,
+      "address": "0x8000c488",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013544",
-      "size": 60,
+      "address": "0x80013538",
+      "size": 72,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "iSirenEventProcessFnc__7IStudioFv",
+      "address": "0x8008b01c",
+      "size": 1476,
+      "binding": 1
+    },
     {
       "name": "iSirenShutDown__7IStudioFv",
       "address": "0x8008b5e0",
@@ -89,16 +95,19 @@
     }
   ],
   "externals": {
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
     "Ident__12CMatrixStackFv": "0x80090d90",
     "MEM_free": "0x8014f83c",
     "UISDrawObjects": "0x80087fac",
     "UISGetMemSize": "0x80088d48",
     "UISIdleProcess": "0x80087f08",
     "UISLoadScreen": "0x80088770",
+    "UISProcessEvent": "0x80088120",
     "UISSetScreenActive": "0x8008825c",
     "UISShutdown": "0x80088b84",
+    "g_PauseScreenLockedController": "0x8034e2c8",
+    "g_inputMgr": "0x801ec80c",
     "g_matStack": "0x8034eab8",
-    "iSirenEventProcessFnc__7IStudioFv": "0x8008b01c",
     "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
@@ -107,8 +116,32 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_PauseScreenLockedController",
     "g_matStack"
   ],
   "original_file": "IStudio.cpp",
-  "original_file_index": 5235
+  "original_file_index": 5235,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350198"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035019c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803501a0"
+    }
+  ]
 }
