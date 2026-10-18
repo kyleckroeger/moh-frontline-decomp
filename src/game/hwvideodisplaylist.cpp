@@ -6,8 +6,13 @@
 // setter also stores the depth). The destructor is GCHW_VD's key function,
 // so this unit is compiled with RTTI on and holds the class's hierarchy
 // record, virtual table and type information (the class names are entries
-// of the file's .rodata and .sdata2 pools); VIDEO_DRIVER's inline destructor
-// is only inlined here and its weak table is not emitted. GCHW_VD, VIDEO_DRIVER, DECODER, FRAME, rcmp_sys and the
+// of the file's .rodata and .sdata2 pools). VIDEO_DRIVER has no key function
+// (its CompleteDraw is inline), so its weak table and destructor are emitted
+// here too: the destructor's weak copy follows SetPosition (its class delete
+// is the global one; the RCMP system's free belongs to GCHW_VD), while the
+// weak table and CompleteDraw are discarded as duplicates (CompleteDraw's
+// copy is in hwvideodisplaylist_delete.cpp; the table follows this unit's
+// data, compiled first here). GCHW_VD, VIDEO_DRIVER, DECODER, FRAME, rcmp_sys and the
 // swizzler function are named by the mangled symbols; the members, the
 // system's free slot (as in avplayer.cpp) and the result types are
 // inferred, and the virtual functions are declared in table order. The rest
@@ -41,8 +46,7 @@ public:
     virtual void SetScale(float, float) = 0;
     virtual void Draw(FRAME*) = 0;
     virtual void ReDraw() = 0;
-    virtual void CompleteDraw();
-    void operator delete(void* p) { rcmp_sys.m_free(p); }
+    virtual void CompleteDraw() {}
 };
 
 }
@@ -50,6 +54,7 @@ public:
 class GCHW_VD : public RCMP::VIDEO_DRIVER {
 public:
     virtual ~GCHW_VD();
+    void operator delete(void* p) { RCMP::rcmp_sys.m_free(p); }
     virtual void SetPosition(float, float, float);
     virtual void SetScale(float, float);
     virtual void Draw(RCMP::FRAME*);

@@ -34,32 +34,34 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x801028d4",
-      "size": 260,
+      "size": 332,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fbc0",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016934",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
       "name": ".data",
       "address": "0x8018c2d8",
       "size": 44,
-      "type": 1
+      "type": 1,
+      "linked_offset": 32,
+      "linked_size": 76
     },
     {
       "name": ".sdata",
@@ -86,14 +88,22 @@
       "address": "0x801028d4",
       "size": 152,
       "binding": 1
+    },
+    {
+      "name": "__dt__Q24RCMP12VIDEO_DRIVERFv",
+      "address": "0x801029d8",
+      "size": 72,
+      "binding": 2
     }
   ],
   "externals": {
     "CompleteDraw__7GCHW_VDFv": "0x80102290",
+    "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv": "0x80102d24",
     "DELETE_tBigYUVSwizzler__FP15tBigYUVSwizzler": "0x800fce14",
     "Draw__7GCHW_VDFPQ24RCMP5FRAME": "0x801022b4",
     "ReDraw__7GCHW_VDFv": "0x80102294",
     "ReleaseFrame__Q24RCMP7DECODERFPQ24RCMP5FRAME": "0x80105304",
+    "__dl__FPv": "0x8001ca2c",
     "__vt__Q24RCMP12VIDEO_DRIVER": "0x8018c304",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
@@ -105,6 +115,10 @@
   "sda_externals": [],
   "original_file": "hwvideodisplaylist.cpp",
   "original_file_index": 10127,
+  "weak_duplicates": [
+    "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv",
+    "__vt__Q24RCMP12VIDEO_DRIVER"
+  ],
   "pooled_sections": [
     ".rodata",
     ".sdata2"

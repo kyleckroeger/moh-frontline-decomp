@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 850904,
+    "matching_code_bytes": 850976,
     "total_executable_code_bytes": 1414572,
-    "percent": 60.15275291749024,
+    "percent": 60.157842796266294,
     "categories": {
-      "reconstructed_game": 629388,
+      "reconstructed_game": 629460,
       "restored_library": 221516
     },
-    "matching_functions": 4447
+    "matching_functions": 4448
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -682,7 +682,7 @@
     "config/GMFE69/hierobject_weak.json": "7167142b12442d566bb3ff741a8a4a556c71090c521e84f4044a241623d24e2d",
     "config/GMFE69/hlafile.json": "4dd5569956bba06214857666bc2db7b13119b144b002f9b018da1f3e15b851b2",
     "config/GMFE69/hlsfile.json": "949cb6bbf006231f6e840512648466c8cc1f095827bbb723bf5ff1c4a55603e5",
-    "config/GMFE69/hwvideodisplaylist.json": "5907dc675d98a1eed2edde81b06fc226079b645dfa29c47581b571f4644683b4",
+    "config/GMFE69/hwvideodisplaylist.json": "4cdef8630826da7323a987d7df5a6e8bbe267fe611569afcfaf87b9a3065b246",
     "config/GMFE69/hwvideodisplaylist_delete.json": "5cc9cc3b6ca2cbac3753a89e935787cf00265b42657ad8d6951472c5ed4c8ac1",
     "config/GMFE69/hwvideodisplaylist_draw.json": "a8bf71737920896112fcf30030019e442332918fd8c79446dfb691c303fdfd80",
     "config/GMFE69/idct.json": "aea739593ce84e955cc0ef3ee0b2dcfb57dfa9056dae44eb62e76631ae113984",
@@ -2750,7 +2750,7 @@
     "src/game/hierobject_tree.cpp": "f1b3e125cf44df87e6b6929563add9a762dfb19fc942a79fa0fabd82fa67bbe8",
     "src/game/hierobject_update.cpp": "43068b95eeca48dcab366339cda5f09ed875bde7b98da93110facc91c51ac43a",
     "src/game/hierobject_weak.cpp": "f09f0a39f7caf75ec171432ff05a2c7f8139a91cdd675b3fb7b2ac0fa87a105b",
-    "src/game/hwvideodisplaylist.cpp": "3a64557deabec80e0df4ca6f54e87735a5069f0c774c6f916ff6a2f1b33c822d",
+    "src/game/hwvideodisplaylist.cpp": "3c6356f5c3b7d7398e258aad049b8cc40253422989437052247c609985e37979",
     "src/game/hwvideodisplaylist_delete.cpp": "11e0674544c95de8b475112b7bcc1035d44799374d67b43b623749b2784d9e25",
     "src/game/hwvideodisplaylist_draw.cpp": "141af6fe3b691f9a7d4d2e6344bda65f0f7d6225943a3638d97b63e137a237c8",
     "src/game/impact_dtor.cpp": "3596aa0c11fdc55fb57ef398117847f047d8c0d168a0d3d444f8a4d0809b3397",
@@ -21278,8 +21278,8 @@
     {
       "id": "hwvideodisplaylist",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 260,
+      "functions": 4,
+      "code_bytes": 332,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21309,10 +21309,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "345d970ab849ea389bfc8f079c79f1ec49a8bbf719f11efe2e60c49430674c13",
-      "linked_sha256": "a25aee78faf02554d1c32e7bcf373c2e832a90dadbc1fbda3630ba721df64f39"
+      "object_sha256": "f974639ee18c274605f550f2d4235825e004328387573035cb8d571bfc24fa6d",
+      "linked_sha256": "e77ac96bf588f6f1d6118046102f5e028fcbd7973b15ef786aa0588022e67bd5"
     },
     {
       "id": "weaponfactory",
@@ -56668,13 +56668,6 @@
             "size": 1484,
             "kind": "function",
             "name": "iDraw__7GCHW_VDFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x801029d8",
-            "size": 72,
-            "kind": "function",
-            "name": "__dt__Q24RCMP12VIDEO_DRIVERFv",
             "evidence": "exception-index"
           },
           {
