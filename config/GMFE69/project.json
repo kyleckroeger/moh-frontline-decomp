@@ -1216,7 +1216,8 @@
     "player_respawn.json",
     "scene_fast.json",
     "objcreate_createplayer.json",
-    "TibText.json"
+    "TibText.json",
+    "Gecko_ExceptionPPC_find.json"
   ],
   "progress": {
     "code_bytes": 1414572,

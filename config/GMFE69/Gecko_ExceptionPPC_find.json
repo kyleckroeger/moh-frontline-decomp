@@ -1,0 +1,90 @@
+{
+  "id": "Gecko_ExceptionPPC_find",
+  "source": "src/msl/Gecko_ExceptionPPC_find.cp",
+  "category": "restored_library",
+  "compiler_family": "GC",
+  "compiler_version": "1.3",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-pragma",
+    "warn_notinlined off",
+    "-maxerrors",
+    "1",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-fp_contract",
+    "on",
+    "-str",
+    "reuse",
+    "-multibyte",
+    "-DVERSION=0",
+    "-DNDEBUG=1",
+    "-O4,p",
+    "-use_lmw_stmw",
+    "on",
+    "-str",
+    "reuse,pool,readonly",
+    "-common",
+    "off",
+    "-inline",
+    "deferred,auto",
+    "-char",
+    "signed"
+  ],
+  "include_dirs": [
+    "include/tww",
+    "src/tww",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common/Include",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/MSL_Common_Embedded/Math/Include",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C/PPC_EABI/Include",
+    "src/tww/PowerPC_EABI_Support/MSL/MSL_C++/MSL_Common/Include",
+    "src/tww/PowerPC_EABI_Support/Runtime/Inc",
+    "src/tww/PowerPC_EABI_Support/MetroTRK"
+  ],
+  "strip_unused": false,
+  "source_root": "src/tww",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8013a1a8",
+      "size": 516,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "ExPPC_FindExceptionRecord__FPcP15MWExceptionInfo",
+      "address": "0x8013a1a8",
+      "size": 516,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "fragmentinfo": "0x80334220"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "fragmentinfo"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "Gecko_ExceptionPPC.cp",
+  "original_file_index": 11614
+}
