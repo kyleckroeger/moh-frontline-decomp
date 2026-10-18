@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8003d130",
-      "size": 212,
+      "size": 3256,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a49c",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011498",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,20 +68,119 @@
       "address": "0x8003d160",
       "size": 164,
       "binding": 1
+    },
+    {
+      "name": "CreateSubHierObject__FP11CHierObjectii23DWI_ATTACHMENT_CRC_ENUM",
+      "address": "0x8003d204",
+      "size": 3044,
+      "binding": 1
     }
   ],
   "externals": {
+    "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
+    "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
     "GetMotionData__20CStaticObjectFactoryFii": "0x800b34e0",
     "GetStaticMesh__20CStaticObjectFactoryFii": "0x800b35b8",
     "GetSubObject__11CHierObjectFi": "0x8009bd38",
-    "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData": "0x80099060"
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "Init__11CHierObjectFP11CHierObjectiiiR8CVector3": "0x8009bd6c",
+    "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
+    "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
+    "SetDepth__7CVolBoxFf": "0x800c5258",
+    "SetHeight__7CVolBoxFf": "0x800c5268",
+    "SetLocalBoundingVolume__13CStaticObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800b1d38",
+    "SetWidth__7CVolBoxFf": "0x800c5278",
+    "SetWorldBoundingVolume__13CStaticObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800b1c58",
+    "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData": "0x80099060",
+    "__as__7CVolBoxFRC7CVolBox": "0x800c53f4",
+    "__vt__7CVolBox": "0x801894f4",
+    "__vt__7IVolume": "0x80181e28",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pVolumeAllocator": "0x801a1170"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_pVolumeAllocator"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "objcreate.cpp",
-  "original_file_index": 1440
+  "original_file_index": 1440,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f75c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f778"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f780"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f790"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f794"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f798"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034f79c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f7a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8034f7a4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x8034f788"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8034f78c"
+    }
+  ]
 }

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 858560,
+    "matching_code_bytes": 861604,
     "total_executable_code_bytes": 1414572,
-    "percent": 60.69397669401063,
+    "percent": 60.90916545782046,
     "categories": {
-      "reconstructed_game": 637044,
+      "reconstructed_game": 640088,
       "restored_library": 221516
     },
-    "matching_functions": 4454
+    "matching_functions": 4455
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -778,7 +778,7 @@
     "config/GMFE69/objcreate_setscript_anim.json": "f63df65d6d1e6d00dda55458818e6dcd053a479d2aba7f6c53aa4835938280d5",
     "config/GMFE69/objcreate_setscript_static.json": "7aafc0bef6302ff62ece6f0b06f28b1abba89ce0bb1f8176a1ac066a9e1d0e7b",
     "config/GMFE69/objcreate_setscript_volume.json": "571b30b8077c9731ccee7bc9e0b29f726b868a3cca8b3db50655c4a37f1fd10a",
-    "config/GMFE69/objcreate_swap.json": "697772f42c1d2bb29c4e258ebd08f01a3d76565d3776b28aa5f7a5b95be53be7",
+    "config/GMFE69/objcreate_swap.json": "e6dcec4121f496910c223edec421f88109806a10b2028cf0f1f8c537e86e07ff",
     "config/GMFE69/objcreate_thrown.json": "5c10a092e4b410af3d31a4776b0541da7f992a8c2164ee30764e188f76009d63",
     "config/GMFE69/objcreate_volumes.json": "483c3c7941435bc0fcda1d9be9f82f445b21a4c6b0a57527e21dbe7fa7dc2121",
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
@@ -2800,7 +2800,7 @@
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
     "src/game/objcreate_setscript_static.cpp": "71730808faa7ee0f1af80c554b0dad8b983185857460ac66966694459a463df8",
     "src/game/objcreate_setscript_volume.cpp": "12a3843e480d1d2090ce101d2718f0dc5195ec1cb8fe1af313a94a05700784d6",
-    "src/game/objcreate_swap.cpp": "58f49092557efd6fa4b96da17b57d03b5865e4ff5207b84314c1da3d7dbc07d2",
+    "src/game/objcreate_swap.cpp": "3959de346eec9f29c378eff8817fd143a7578e21291784b5455033ba1cb9512b",
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "ade90b093521074685e489563b85cdf5e1bb8cc864a5ad2b32a748128d92471a",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
@@ -46947,8 +46947,8 @@
     {
       "id": "objcreate_swap",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 212,
+      "functions": 3,
+      "code_bytes": 3256,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46980,8 +46980,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5d51c4230e28758a95342270df4ed53ac252e0a92ba146e335add06ba51fcf5e",
-      "linked_sha256": "a70898832c628d1c54a9bfd6db64c9de5d4d6ce1a2c2b591d877ae80e9015a79"
+      "object_sha256": "5406cb92ddbaa25a19986e51efb42f76ae4d482989b5c45abdd73f8a9e4c701c",
+      "linked_sha256": "4286eb5e2473087f7d5be1ac1a00e3dac0575021fc9189d3883a5db10d4d99f5"
     },
     {
       "id": "AIObject_storecover",
@@ -53309,13 +53309,6 @@
             "size": 2028,
             "kind": "function",
             "name": "CreateDestructable__FP20TriggerObject_structi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003d204",
-            "size": 3044,
-            "kind": "function",
-            "name": "CreateSubHierObject__FP11CHierObjectii23DWI_ATTACHMENT_CRC_ENUM",
             "evidence": "exception-index"
           },
           {
