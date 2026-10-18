@@ -61,8 +61,14 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8013a1a8",
-      "size": 516,
+      "address": "0x80139fe8",
+      "size": 964,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80190590",
+      "size": 68,
       "type": 1
     }
   ],
@@ -72,10 +78,17 @@
       "address": "0x8013a1a8",
       "size": 516,
       "binding": 0
+    },
+    {
+      "name": "ExPPC_NextAction__FP14ActionIterator",
+      "address": "0x80139fe8",
+      "size": 448,
+      "binding": 0
     }
   ],
   "externals": {
-    "fragmentinfo": "0x80334220"
+    "fragmentinfo": "0x80334220",
+    "terminate__3stdFv": "0x80138850"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

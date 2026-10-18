@@ -1,4 +1,11 @@
-// Runtime Gecko_ExceptionPPC.cp: ExPPC_FindExceptionRecord, which finds the
+// Runtime Gecko_ExceptionPPC.cp: ExPPC_NextAction, which returns the next
+// unwind action (an action list ends with bit 7; at its end the caller's
+// frame is popped: its saved r31 is read below the saved FPRs when the record
+// saves GPRs, the caller's record is looked up from the return address (no
+// record terminates), and the frame pointer is r31 or the stack pointer by
+// record flag bit 4; the known actions are stepped over by their sizes,
+// others terminate, and a branch action (1) jumps within the record), and
+// ExPPC_FindExceptionRecord, which finds the
 // exception record for a return address: the registered fragment whose code
 // range holds the address (an inline search of the fragment's exception table
 // index ranges, only the index bounds, TOC and active flag are kept), then a
@@ -55,6 +62,19 @@ typedef struct MWExceptionInfo {
 } MWExceptionInfo;
 
 extern ProcessInfo fragmentinfo[1];
+
+typedef struct ActionIterator {
+    MWExceptionInfo info;
+    char* current_SP;
+    char* current_FP;
+    long current_R31;
+} ActionIterator;
+
+typedef unsigned char exaction_type;
+
+namespace std {
+void terminate();
+}
 
 static inline int ExPPC_FindExceptionFragment(char* returnaddr, FragmentInfo* frag) {
     ProcessInfo* f;
@@ -142,5 +162,85 @@ static void ExPPC_FindExceptionRecord(char* returnaddr, MWExceptionInfo* info) {
                 break;
             }
         }
+    }
+}
+
+static exaction_type ExPPC_NextAction(ActionIterator* iter) {
+    char* SP;
+    char* callers_SP;
+    char* return_addr;
+    exaction_type action;
+    unsigned short flags;
+
+    for (;;) {
+        if (iter->info.action_pointer == 0
+            || ((action = *(exaction_type*)iter->info.action_pointer) & 0x80) != 0) {
+            flags = *(unsigned short*)iter->info.exception_record;
+            SP = iter->current_SP;
+            callers_SP = *(char**)SP;
+            if ((flags >> 11) != 0)
+                iter->current_R31 = *(long*)(callers_SP - ((flags >> 3) & 0xF8) - 4);
+            return_addr = *(char**)(callers_SP + 4);
+            ExPPC_FindExceptionRecord(return_addr, &iter->info);
+            if (iter->info.exception_record == 0)
+                std::terminate();
+            iter->current_SP = callers_SP;
+            iter->current_FP = ((*(unsigned short*)iter->info.exception_record >> 4) & 1) ? (char*)iter->current_R31
+                                                                                         : iter->current_SP;
+            if (iter->info.action_pointer == 0)
+                continue;
+        } else {
+            switch (action) {
+            case 2:
+                iter->info.action_pointer += 8;
+                break;
+            case 3:
+                iter->info.action_pointer += 12;
+                break;
+            case 4:
+                iter->info.action_pointer += 8;
+                break;
+            case 5:
+                iter->info.action_pointer += 12;
+                break;
+            case 6:
+            case 7:
+                iter->info.action_pointer += 12;
+                break;
+            case 8:
+                iter->info.action_pointer += 16;
+                break;
+            case 9:
+                iter->info.action_pointer += 20;
+                break;
+            case 10:
+                iter->info.action_pointer += 8;
+                break;
+            case 11:
+                iter->info.action_pointer += 12;
+                break;
+            case 12:
+                iter->info.action_pointer += 12;
+                break;
+            case 16:
+                iter->info.action_pointer += 16;
+                break;
+            case 13:
+                iter->info.action_pointer += 4;
+                break;
+            case 15:
+                iter->info.action_pointer += 12 + ((unsigned short*)iter->info.action_pointer)[1] * 4;
+                break;
+            default:
+                std::terminate();
+            }
+        }
+
+        action = *(exaction_type*)iter->info.action_pointer & 0x7F;
+        if (action == 1) {
+            iter->info.action_pointer = iter->info.exception_record + ((unsigned short*)iter->info.action_pointer)[1];
+            action = *(exaction_type*)iter->info.action_pointer & 0x7F;
+        }
+        return action;
     }
 }
