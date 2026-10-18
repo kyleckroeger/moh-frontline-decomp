@@ -1212,7 +1212,8 @@
     "player_health.json",
     "Moh2_statusscreen.json",
     "player_bullet.json",
-    "Soldier_object_bullet.json"
+    "Soldier_object_bullet.json",
+    "player_respawn.json"
   ],
   "progress": {
     "code_bytes": 1414572,
