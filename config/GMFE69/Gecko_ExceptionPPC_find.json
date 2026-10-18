@@ -61,8 +61,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80139fe8",
-      "size": 964,
+      "address": "0x80139da0",
+      "size": 1548,
       "type": 1
     },
     {
@@ -83,6 +83,12 @@
       "name": "ExPPC_NextAction__FP14ActionIterator",
       "address": "0x80139fe8",
       "size": 448,
+      "binding": 0
+    },
+    {
+      "name": "ExPPC_PopStackFrame__FP12ThrowContextP15MWExceptionInfo",
+      "address": "0x80139da0",
+      "size": 584,
       "binding": 0
     }
   ],

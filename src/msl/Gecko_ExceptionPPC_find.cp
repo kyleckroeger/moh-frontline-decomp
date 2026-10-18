@@ -1,4 +1,9 @@
-// Runtime Gecko_ExceptionPPC.cp: ExPPC_NextAction, which returns the next
+// Runtime Gecko_ExceptionPPC.cp: ExPPC_PopStackFrame, which restores the
+// caller's saved FPRs (16-byte paired-single slots when record flag bit 1 is
+// set, else doubles; the count is in bits 6-10) and GPRs (count in the top 5
+// bits, saved below the FPRs) into the throw context through three inline
+// copy loops, pops the stack pointer and returns the caller's return address;
+// ExPPC_NextAction, which returns the next
 // unwind action (an action list ends with bit 7; at its end the caller's
 // frame is popped: its saved r31 is read below the saved FPRs when the record
 // saves GPRs, the caller's record is looked up from the return address (no
@@ -71,6 +76,18 @@ typedef struct ActionIterator {
 } ActionIterator;
 
 typedef unsigned char exaction_type;
+
+typedef struct FPRSave {
+    double d;
+    float ps[2];
+} FPRSave;
+
+typedef struct ThrowContext {
+    FPRSave FPR[32];
+    long GPR[32];
+    long CR;
+    char* SP;
+} ThrowContext;
 
 namespace std {
 void terminate();
@@ -243,4 +260,60 @@ static exaction_type ExPPC_NextAction(ActionIterator* iter) {
         }
         return action;
     }
+}
+
+static inline void RestorePSFPRs(ThrowContext* context, FPRSave* save, int count) {
+    int i;
+    for (i = 32 - count; i < 32; i++, save++) {
+        context->FPR[i].ps[0] = save->ps[0];
+        context->FPR[i].ps[1] = save->ps[1];
+        context->FPR[i].d = save->d;
+    }
+}
+
+static inline void RestoreFPRs(ThrowContext* context, double* save, int count) {
+    int i;
+    for (i = 32 - count; i < 32; i++)
+        context->FPR[i].d = *save++;
+}
+
+static inline void RestoreGPRs(ThrowContext* context, long* save, int count) {
+    int i;
+    for (i = 32 - count; i < 32; i++)
+        context->GPR[i] = *save++;
+}
+
+static char* ExPPC_PopStackFrame(ThrowContext* context, MWExceptionInfo* info) {
+    char* SP;
+    char* callers_SP;
+    char* FPR_save_area;
+    long* GPR_save_area;
+    int has_ps;
+    FPRSave* ps_area;
+    int saved_FPRs;
+    int saved_GPRs;
+
+    SP = context->SP;
+    callers_SP = *(char**)SP;
+    has_ps = (*(unsigned short*)info->exception_record >> 1) & 1;
+    saved_FPRs = (*(unsigned short*)info->exception_record >> 6) & 0x1F;
+    if (has_ps) {
+        ps_area = (FPRSave*)(callers_SP - saved_FPRs * 16);
+        FPR_save_area = (char*)ps_area;
+    } else {
+        FPR_save_area = callers_SP - saved_FPRs * 8;
+    }
+
+    if (has_ps)
+        RestorePSFPRs(context, ps_area, saved_FPRs);
+    else
+        RestoreFPRs(context, (double*)FPR_save_area, saved_FPRs);
+
+    GPR_save_area = (long*)FPR_save_area;
+    saved_GPRs = *(unsigned short*)info->exception_record >> 11;
+    GPR_save_area -= saved_GPRs;
+    RestoreGPRs(context, GPR_save_area, saved_GPRs);
+
+    context->SP = callers_SP;
+    return *(char**)(callers_SP + 4);
 }
