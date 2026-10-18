@@ -1,0 +1,210 @@
+{
+  "id": "Soldier_object_bullet",
+  "source": "src/game/Soldier_object_bullet.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800aaea0",
+      "size": 2988,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d260",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001436c",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018843c",
+      "size": 84,
+      "type": 1,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "HandleBulletCollision__14CSoldierObjectFP7CBulletRC10CCollision",
+      "address": "0x800aaea0",
+      "size": 2988,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CreateSpecialThrownObject__FP20TriggerObject_structii": "0x8003ebb4",
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "DoesHelmetTypeStopBullets__20CStaticObjectFactoryFi": "0x800b240c",
+    "Explode__13CThrownBulletFv": "0x800d2528",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "PlayImpactSound__FUsUs8CVector3b": "0x800eb17c",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "SetVelocity__13CThrownObjectFR8CVector3": "0x800b4db4",
+    "Set_hits__10CShellMenuFUib": "0x800e6b18",
+    "Set_shotLocation__10CShellMenuFUi14EShotLocationsb": "0x800e6a28",
+    "g_Shell": "0x80195090",
+    "g_cheats": "0x80196a94",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "stricmp": "0x80151ab8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "Soldier_object.cpp",
+  "original_file_index": 6587,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803507b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350800"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350804"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350808"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8035080c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x803507d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 5,
+      "address": "0x803507bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x803507f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x803507f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x803507f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x803507fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350810"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350814"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x803507c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 8,
+      "address": "0x803507d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 8,
+      "address": "0x80350818"
+    }
+  ]
+}
