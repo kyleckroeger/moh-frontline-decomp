@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 874140,
+    "matching_code_bytes": 874432,
     "total_executable_code_bytes": 1414572,
-    "percent": 61.79536990694005,
+    "percent": 61.81601219308738,
     "categories": {
-      "reconstructed_game": 648744,
+      "reconstructed_game": 649036,
       "restored_library": 225396
     },
-    "matching_functions": 4469
+    "matching_functions": 4471
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1025,7 +1025,7 @@
     "config/GMFE69/skybox_textures.json": "be2ab082a4392c445beff5174434070dfe16368bb1f382f427a52ab9351fc864",
     "config/GMFE69/skybox_weak.json": "442379a13e1bbb93e01963811f26f0e5a0f9251fb50fe0d0aea44658548cc457",
     "config/GMFE69/slib.json": "175b59682d7176e6914e303e81ec26cb60fcb86ab08f884e84a2df96c09626de",
-    "config/GMFE69/slinklst.json": "b628536bfbcd9772b6a89f60c30663cca9adb8dbca84452a261ea3f0b3c42c60",
+    "config/GMFE69/slinklst.json": "78f5a23f4c875365e7cc005444f78777fe3ee3972c723fd05c9472f7f00830a2",
     "config/GMFE69/slinkmix.json": "0d66b0e0297a0e7e7bf0c13cc7f212971c66ee4114cf017c282deb2b452f6755",
     "config/GMFE69/slowpass.json": "86bcb6af76bf115d442202e3711fedc6c8d03888bdb3ad22656c8a33a11456d8",
     "config/GMFE69/smasterv.json": "1245cb91ada7f2ff389f9047ab175039c6eda03400cce7c5a9dfbdf2c43c88a6",
@@ -2142,7 +2142,7 @@
     "src/ea/sinitut.c": "f0c0dfcb5f4485ce2cade109eea1f912602bb6fc6cc8c8872feb1ee87a080895",
     "src/ea/sinitxa.c": "fcffafa5258c6cef1b0fc935b34c896adcd4ad7f56a4f338f399a3e20dcf5726",
     "src/ea/slib.c": "df89cfa054d43334b82e427721e86eb1f8db7d85c5d1181f7510172d7a231e2f",
-    "src/ea/slinklst.c": "7d0eed82063720c8424d4e5e54c681608a3c9dec7dc9427f3f99393408aff307",
+    "src/ea/slinklst.c": "8ece5da7e4f7a83722ea5e08a41d80fa8e30eaae5637932f2aba42623de20e99",
     "src/ea/slinkmix.c": "3cf4c749e4f9caf67c6276ed5df5b66b07e13be40dc7192b1d952b35fd5225f5",
     "src/ea/slowpass.c": "50974ba23d1b0adf20b719306eb2457171fdbc979b397a59ed0865bbf60fcb38",
     "src/ea/smasterv.c": "8dd6bc618f934b245a33bf94dd6adda38c24ac8858394d3ce088a96f525f0232",
@@ -15904,8 +15904,8 @@
     {
       "id": "slinklst",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 312,
+      "functions": 7,
+      "code_bytes": 604,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -15937,8 +15937,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "53923551feb208a6bd91bdd9028b8a9c753f8c61810d84f393b3f96a749f2d09",
-      "linked_sha256": "5261bf8ab9ebe1e36fcb8ebad215f07b2ba4fe171f1018569bcbda4fb068a723"
+      "object_sha256": "3deec5f80d872ce3f1a7ecec4617be157a3b26e4fca0da2f295f1db354455dd3",
+      "linked_sha256": "2e000789478f25cfad60cf0599ea482d2a8eb951968488f57a121b4b35b8ebdc"
     },
     {
       "id": "ssysserv",
@@ -57338,25 +57338,6 @@
             "size": 336,
             "kind": "function",
             "name": "SNDAEMS_streaminit",
-            "evidence": "unknown-file"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 801591dc",
-        "ranges": [
-          {
-            "address": "0x801591dc",
-            "size": 112,
-            "kind": "function",
-            "name": "iSNDmulu64__FUiUi",
-            "evidence": "unknown-file"
-          },
-          {
-            "address": "0x8015924c",
-            "size": 180,
-            "kind": "function",
-            "name": "iSNDdivu64__F6SINT64i",
             "evidence": "unknown-file"
           }
         ]

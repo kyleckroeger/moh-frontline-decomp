@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801590a4",
-      "size": 312,
+      "size": 604,
       "type": 1
     }
   ],
@@ -71,6 +71,18 @@
       "name": "SNDLINKI_remove__FP11SNDLINKLISTP11SNDLINKNODE",
       "address": "0x8015917c",
       "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "iSNDmulu64__FUiUi",
+      "address": "0x801591dc",
+      "size": 112,
+      "binding": 1
+    },
+    {
+      "name": "iSNDdivu64__F6SINT64i",
+      "address": "0x8015924c",
+      "size": 180,
       "binding": 1
     }
   ],
