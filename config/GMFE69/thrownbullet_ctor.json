@@ -39,28 +39,34 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d4de0",
-      "size": 284,
+      "address": "0x800d4d98",
+      "size": 356,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e744",
-      "size": 36,
+      "address": "0x8000e73c",
+      "size": 44,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 44
+      "linked_size": 52
     },
     {
       "name": "extabindex",
-      "address": "0x800154d0",
-      "size": 24,
+      "address": "0x800154c4",
+      "size": 36,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36
+      "linked_size": 48
     }
   ],
   "functions": [
+    {
+      "name": "SECB_NullifyPointer__FR9IObserverPP8ISubject13ESubjectEvent",
+      "address": "0x800d4d98",
+      "size": 72,
+      "binding": 0
+    },
     {
       "name": "__dt__13CThrownBulletFv",
       "address": "0x800d4de0",
@@ -75,6 +81,7 @@
     }
   ],
   "externals": {
+    "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
     "__ct__19CLightVolumeManagerFv": "0x80079128",
     "__ct__7CBulletFv": "0x800cccf4",
     "__dl__FPv": "0x8001ca2c",

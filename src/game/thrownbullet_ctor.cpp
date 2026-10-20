@@ -1,4 +1,5 @@
-// A fragment of thrownbullet.cpp (0x800d4de0): the CThrownBullet destructor
+// A fragment of thrownbullet.cpp (0x800d4d98): the static subject callback
+// SECB_NullifyPointer, then the CThrownBullet destructor
 // (the table pointer, the two fiber volumes and the light-volume manager
 // destroyed, then CBullet's destructor, and the object freed when asked) and
 // the default constructor (CBullet's constructor; the table pointer; the dummy script
@@ -12,6 +13,25 @@
 // defined elsewhere) first so its global virtual table is not emitted here.
 // IVolume's destructor is inline and its table weak in the original, so the
 // compiler's copies are weak duplicates, linked to the original copies.
+class ISubject;
+class IObserver;
+enum ESubjectEvent {};
+
+class CPublisher {
+public:
+    static void CancelSubscription(IObserver&, ISubject**);
+};
+
+// The subject callback that drops a subscription and clears the pointer
+// (the same inline cancel CThrownBullet::MarkForDestruction uses).
+static void SECB_NullifyPointer(IObserver& observer, ISubject** subject, ESubjectEvent) {
+    if (*subject) {
+        if (subject)
+            CPublisher::CancelSubscription(observer, subject);
+        *subject = 0;
+    }
+}
+
 class BSGO_Basic {
     int m_field0;
     int m_field4;
