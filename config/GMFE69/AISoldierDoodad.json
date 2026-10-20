@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80059570",
-      "size": 340,
+      "address": "0x80059344",
+      "size": 896,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ae2c",
-      "size": 32,
+      "address": "0x8000ae1c",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011f18",
-      "size": 48,
+      "address": "0x80011f00",
+      "size": 72,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "FireMMGAtCurrentTarget__16CAISoldierDoodadFP13CStaticObject",
+      "address": "0x80059344",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "FireAtCurrentTarget__16CAISoldierDoodadFf",
+      "address": "0x80059418",
+      "size": 344,
+      "binding": 1
+    },
     {
       "name": "Update__16CAISoldierDoodadFf",
       "address": "0x80059570",
@@ -83,7 +95,14 @@
     }
   ],
   "externals": {
+    "AddAmo__7CWeaponFs": "0x800d61ec",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "DoneReloading__7CWeaponFv": "0x800d611c",
+    "FireMMG__14CSoldierObjectFR8CVector3P13CStaticObject": "0x800aa40c",
+    "FireWeapon__14CSoldierObjectFiR8CVector3R8CVector3f": "0x800aa720",
+    "GetBulletEmitterMatrix__14CSoldierObjectFR7CMatrix": "0x800aabb8",
+    "GetTargetGuessPosition__15CAIFilterObjectFR21CAIFilterRealPosition": "0x8005a530",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "Init__16CAISoldierObjectFv": "0x8004f830",
     "Init__9CAIDoodadFv": "0x800590f4",
     "LinkGameObject__15CAIFilterObjectFPv": "0x8005be40",
@@ -92,14 +111,17 @@
     "UpdateManualUpdateVars__22CAIFilterSoldierObjectFv": "0x8005ba1c",
     "Update__22CAIFilterSoldierObjectFf": "0x8005b894",
     "__ct__22CAIFilterSoldierObjectFv": "0x8005bda4",
-    "__nw__22CAIFilterSoldierObjectFUlPv": "0x8005bd2c"
+    "__nw__22CAIFilterSoldierObjectFUlPv": "0x8005bd2c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "AISoldierDoodad.cpp",
   "original_file_index": 2484
 }

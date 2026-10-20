@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 874636,
+    "matching_code_bytes": 875192,
     "total_executable_code_bytes": 1414572,
-    "percent": 61.8304335162862,
+    "percent": 61.86973869127906,
     "categories": {
-      "reconstructed_game": 649240,
+      "reconstructed_game": 649796,
       "restored_library": 225396
     },
-    "matching_functions": 4475
+    "matching_functions": 4477
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -70,7 +70,7 @@
     "config/GMFE69/AIPlayerDoodad_ctor.json": "7a80326e3b36c9a0d7c2dc59ae8cd4451df4f9b073bfe461406159762aa56652",
     "config/GMFE69/AIPlayerObject.json": "89824370512e8f14345d260f39b95516cf337b026e7e61b8d6013d4d3664516a",
     "config/GMFE69/AIPlayerObject_ctor.json": "7d370f2ea40c047b29157d5d94ac4805bd457af9e402b303ede0e8fc893c0388",
-    "config/GMFE69/AISoldierDoodad.json": "2ff63fd49039400e569490a49c8f89bc08ec427340dabd46764dc1812cdf00c9",
+    "config/GMFE69/AISoldierDoodad.json": "76c66be594399de852c780b5d9b8921867e3b26016a133bb13eb674548bc3756",
     "config/GMFE69/AISoldierDoodad_ctor.json": "fc85eb6269f2e5d8d4be61b0f16ef02c74754168efa26291ac8b2ef5611bda5c",
     "config/GMFE69/AISoldierDoodad_scenenode.json": "48521a0f0c4e8680692b87893b3c72c59d43736496d98a18196a53c277187360",
     "config/GMFE69/AISoldierObject.json": "2fe56901d843c55a92b5262907968fbdddac62d1f54de2f92ab38c7bb6aeb303",
@@ -2294,7 +2294,7 @@
     "src/game/AIPlayerDoodad_ctor.cpp": "affe5c0403f8734a6b3c76b21fc0ab50abd04c970203215da1450d867457c621",
     "src/game/AIPlayerObject.cpp": "b1e57451819617f12a53f7185419f09b4ece3035859b25fcedb2752ec9d226bf",
     "src/game/AIPlayerObject_ctor.cpp": "4f285ebef430e1e16a0a440db064984c974d09df782b8e30526e50b82a209f4e",
-    "src/game/AISoldierDoodad.cpp": "a70f1395b35f9773c7b6bbcd36e3da76824a4604449b9d8b5472447931a9754a",
+    "src/game/AISoldierDoodad.cpp": "b79eb0469d3fb7b2b335b10ba7fa7abb59ca384e4e9ce213061fe0317db4d418",
     "src/game/AISoldierDoodad_ctor.cpp": "0a5911f8b1c6b7647ab7662922691130ca86efa59d043c34880b405ee46b1b44",
     "src/game/AISoldierDoodad_scenenode.cpp": "b49cc5a1d366518213a3a68e50116a85d5af46159e68e3d06fe277bf0f9d5cd3",
     "src/game/AISoldierObject.cpp": "a593952b1af4a61f6b42eff1b8aad2b710a467741e61c0348b9e1df05578873d",
@@ -19180,8 +19180,8 @@
     {
       "id": "AISoldierDoodad",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 340,
+      "functions": 6,
+      "code_bytes": 896,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -19213,8 +19213,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "32ce9f3f2856a6ca4b7d691eb6606336beafe594f2347aabba983767296af0e8",
-      "linked_sha256": "298cc97cbd1f2b91679123972aaab0ca8c115913d89f22c1d147b8ee2e00a680"
+      "object_sha256": "69ea737bfbe114241f19aa3b1226144238fdac509b17ca1dc94499e758d56d38",
+      "linked_sha256": "81f00900c924fde8df5404925491ca6ea39b49f2e021f4fe46b46f47e98720dd"
     },
     {
       "id": "AISoldierObject",
@@ -54090,27 +54090,6 @@
             "kind": "function",
             "name": "__sinit_buddy_cpp",
             "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/AISoldierDoodad.cpp [symbol evidence]",
-        "file_record": 40,
-        "file_name": "AISoldierDoodad.cpp",
-        "ranges": [
-          {
-            "address": "0x80059344",
-            "size": 212,
-            "kind": "function",
-            "name": "FireMMGAtCurrentTarget__16CAISoldierDoodadFP13CStaticObject",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80059418",
-            "size": 344,
-            "kind": "function",
-            "name": "FireAtCurrentTarget__16CAISoldierDoodadFf",
-            "evidence": "exception-index"
           }
         ]
       },
