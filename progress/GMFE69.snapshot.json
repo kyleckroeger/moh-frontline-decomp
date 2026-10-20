@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 874588,
+    "matching_code_bytes": 874636,
     "total_executable_code_bytes": 1414572,
-    "percent": 61.82704026376883,
+    "percent": 61.8304335162862,
     "categories": {
-      "reconstructed_game": 649192,
+      "reconstructed_game": 649240,
       "restored_library": 225396
     },
-    "matching_functions": 4474
+    "matching_functions": 4475
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -852,7 +852,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
-    "config/GMFE69/project.json": "1266621c32c235f8b3991954f6161e268e88019c925a771f17be09f25fe8d577",
+    "config/GMFE69/project.json": "bdca06143bcdeaafc377847fa1f035cdaf74f095ae25033a97d218cba01d6082",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -873,6 +873,7 @@
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "89c7f107dc348d73abd19bedbaf5b7c4ad534145f63e8a71a9ab5646117cd718",
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
+    "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
     "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
@@ -2882,6 +2883,7 @@
     "src/game/proxtrig_leafs.cpp": "003291ae77fd00592e2a43962cfb61b59c22b4c897bee1b2d47594b889b8e8c3",
     "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
+    "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
@@ -53034,6 +53036,45 @@
       "discarded_functions": [],
       "object_sha256": "04d94ade3843181aae53d99d4df9c76e46ee6727b0a322acf5d6575046ce1e81",
       "linked_sha256": "df31840c4941246de9bf8fff617a8c6873bc153e6d6be11412ad57a29eba4f18"
+    },
+    {
+      "id": "publisher_secb",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 48,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "1077d2d67a665912815b105adb7659359a36d864d7c55f2690837d0f5640684b",
+      "linked_sha256": "1573ad42721df48dbc1a47790d5b0be0c379f7820d3b6c6a64367396f998e79b"
     }
   ],
   "code_map": {
@@ -56177,13 +56218,6 @@
             "kind": "function",
             "name": "SetSubject<8ISubject>__9IObserverFPP8ISubjectP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800d80b0",
-            "size": 48,
-            "kind": "function",
-            "name": "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800d80e0",

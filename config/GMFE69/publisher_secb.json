@@ -1,0 +1,80 @@
+{
+  "id": "publisher_secb",
+  "source": "src/game/publisher_secb.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d80b0",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e8cc",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001565c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent",
+      "address": "0x800d80b0",
+      "size": 48,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "SetSubject<8ISubject>__9IObserverFPP8ISubjectP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v": "0x800d7fac"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "SetSubject<8ISubject>__9IObserverFPP8ISubjectP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "publisher.cpp",
+  "original_file_index": 8359
+}
