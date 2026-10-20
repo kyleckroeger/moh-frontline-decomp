@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8002bd00",
-      "size": 308,
+      "address": "0x8002bb64",
+      "size": 720,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009d9c",
-      "size": 8,
+      "address": "0x80009d94",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010a30",
-      "size": 12,
+      "address": "0x80010a24",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "MakeNoise__FP10ISceneNodeifi",
+      "address": "0x8002bb64",
+      "size": 412,
+      "binding": 1
+    },
     {
       "name": "MakeNoise__FPvP15CAIFilterObjectRC8CVector3ifbi",
       "address": "0x8002bd00",
