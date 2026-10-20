@@ -1,8 +1,8 @@
 // CAIObject::SetNonAITarget (drops the AI target as SetTarget does, then takes
 // a script object's scene position as the target position, the point 1 below
 // it as the aim point), SetTarget, the distance helpers,
-// GetCoordinateAxisDirection and SetCoordinateAxisDirection (stores the three
-// axes, the angle of the first in the XY plane at +104, 0 at +100 (a .sdata2
+// GetCoordinateAxisDirection and both SetCoordinateAxisDirection overloads (store the three
+// axes, from vectors or nine floats, the angle of the first in the XY plane at +104, 0 at +100 (a .sdata2
 // pool entry), and the angle of the second axis, rotated back by the first
 // angle, at +96; the angle members are named by offset).
 // The distance helpers (squared XY, squared XYZ to another object or to the
@@ -75,6 +75,7 @@ public:
     void SetNonAITarget(BSObject*);
     void GetCoordinateAxisDirection(CAIFilterRealVector3*, CAIFilterRealVector3*, CAIFilterRealVector3*);
     void SetCoordinateAxisDirection(CAIFilterRealVector3&, CAIFilterRealVector3&, CAIFilterRealVector3&);
+    void SetCoordinateAxisDirection(float, float, float, float, float, float, float, float, float);
     CAIObject* SetTarget(CAIObject*);
     void CalculateTargetPosition();
     float GetDistanceSquaredXYReal(CAIObject*);
@@ -201,6 +202,24 @@ void CAIObject::SetCoordinateAxisDirection(CAIFilterRealVector3& forward, CAIFil
     m_axis[0] = forward;
     m_axis[1] = left;
     m_axis[2] = up;
+    m_angle068 = MathFunAtan2F(-m_axis[0].v.y, m_axis[0].v.x);
+    CAIFilterRealVector3 rotated = m_axis[1];
+    rotated.RotateAboutZ(-m_angle068);
+    m_value064 = 0.0f;
+    m_angle060 = MathFunAtan2F(-rotated.v.z, rotated.v.y);
+}
+
+void CAIObject::SetCoordinateAxisDirection(float forwardX, float forwardY, float forwardZ, float leftX, float leftY,
+                                           float leftZ, float upX, float upY, float upZ) {
+    m_axis[0].v.x = forwardX;
+    m_axis[0].v.y = forwardY;
+    m_axis[0].v.z = forwardZ;
+    m_axis[1].v.x = leftX;
+    m_axis[1].v.y = leftY;
+    m_axis[1].v.z = leftZ;
+    m_axis[2].v.x = upX;
+    m_axis[2].v.y = upY;
+    m_axis[2].v.z = upZ;
     m_angle068 = MathFunAtan2F(-m_axis[0].v.y, m_axis[0].v.x);
     CAIFilterRealVector3 rotated = m_axis[1];
     rotated.RotateAboutZ(-m_angle068);

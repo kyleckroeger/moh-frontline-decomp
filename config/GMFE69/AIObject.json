@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8004d318",
-      "size": 932,
+      "size": 1092,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a898",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800119f0",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -103,6 +103,12 @@
       "name": "SetCoordinateAxisDirection__9CAIObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3R20CAIFilterRealVector3",
       "address": "0x8004d614",
       "size": 168,
+      "binding": 1
+    },
+    {
+      "name": "SetCoordinateAxisDirection__9CAIObjectFfffffffff",
+      "address": "0x8004d6bc",
+      "size": 160,
       "binding": 1
     }
   ],
