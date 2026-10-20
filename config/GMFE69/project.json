@@ -1223,7 +1223,8 @@
     "printn3.json",
     "staticmesh_initdata.json",
     "publisher_secb.json",
-    "printstr_movechannel.json"
+    "printstr_movechannel.json",
+    "path_fadevolume.json"
   ],
   "progress": {
     "code_bytes": 1414572,
