@@ -1,0 +1,76 @@
+{
+  "id": "printn3",
+  "source": "src/ea/printn3.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8015120c",
+      "size": 40,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80192fb8",
+      "size": 124,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e5e8",
+      "size": 5,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PRINT_debuggerfunc__F12PRINTCHANNELPCc",
+      "address": "0x8015120c",
+      "size": 40,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "OSReport": "0x80112520"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "printn3.cpp",
+  "original_file_index": 12471
+}

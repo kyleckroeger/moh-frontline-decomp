@@ -1219,7 +1219,8 @@
     "TibText.json",
     "Gecko_ExceptionPPC_find.json",
     "Gecko_ExceptionPPC_throw.json",
-    "ssysinit_opts.json"
+    "ssysinit_opts.json",
+    "printn3.json"
   ],
   "progress": {
     "code_bytes": 1414572,
