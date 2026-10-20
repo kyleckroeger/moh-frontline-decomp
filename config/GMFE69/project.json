@@ -1222,7 +1222,8 @@
     "ssysinit_opts.json",
     "printn3.json",
     "staticmesh_initdata.json",
-    "publisher_secb.json"
+    "publisher_secb.json",
+    "printstr_movechannel.json"
   ],
   "progress": {
     "code_bytes": 1414572,
