@@ -1,14 +1,20 @@
-// A fragment of ConfigGC.cpp (0x800f9f30): the file's initialised data (the
+// A fragment of ConfigGC.cpp (0x800f9bbc): the file's initialised data (the
 // axis, digital and analog button name tables, the default, current and
 // visual configuration texts, the button types, the per-button
 // configuration choices, the hotspot positions and the hotbox tables, in
-// the original's order and with its values), then
-// CDualConfig::WillBeUnassigned, which finds the button whose assignment
-// the selected button's new value would take over (-1 when none), and
+// the original's order and with its values), then CDualConfig::ApplyChanges
+// (the shell's custom buttons into the current text above configuration 5,
+// the visual text and each button's mapped action from the current text,
+// the mapped buttons appended to the key map from entry 19 - the original
+// writes these to the first player's map - then four fixed entries and the
+// end marker in the configured player's map), CDualConfig::WillBeUnassigned,
+// which finds the button whose assignment the selected button's new value
+// would take over (-1 when none), and
 // CDualConfig::UnassignPreviousAssignedButton, which marks that button
 // unassigned (7, or 5 for the analog triggers) in both texts and then
 // clears the trigger buttons that conflict with the selected one. The data
-// and the functions are named by the symbols; the data's element types,
+// and the functions are named by the symbols; the data's element types, the
+// key map and shell views (as in ConfigGC_defaults.cpp), the members,
 // the selected-button member (+20) and the comparison forms (a loop index
 // compared as a char, a type compared with the selected button's type) are
 // inferred. The code addresses the file's data from one base, so this unit
@@ -104,14 +110,89 @@ char AxisMinusHotBoxLoc[15] = { 3, 2, 9, 8, 15, 17, 123, 123, 123, 123, 123, 123
 char ButtonHotBoxLoc[15] = { 10, 11, 12, 13, 14, 15, 16, 17, 4, 5, 123, 123, 123, 123, 123 };
 
 
+/* inferred: a player's key map (button and action pairs after a word) */
+struct KeyMapEntry {
+    unsigned short button;
+    unsigned short action;
+};
+struct KeyMapView {
+    int unknown00;
+    KeyMapEntry entries[64];
+};
+extern KeyMapView g_config_keymap[4];
+
+class CShellMenu {
+public:
+    void CopyControllerButtons(char*, int);
+
+    unsigned char unknown0000[0x19dc];
+};
+extern CShellMenu g_Shell;
+
 class CDualConfig {
 public:
+    void ApplyChanges();
     int WillBeUnassigned();
     void UnassignPreviousAssignedButton();
 
     unsigned char unknown00[20];
     int m_selected;
+    unsigned char unknown18[32];
+    int m_player;
+    unsigned char unknown3c[4];
+    int m_config;
 };
+
+void CDualConfig::ApplyChanges() {
+    unsigned char mapped[13];
+    unsigned short keys[13];
+    int i;
+    int count;
+
+    for (i = 0; i < 13; i++)
+        mapped[i] = 123;
+    keys[0] = 7;
+    keys[1] = 10;
+    keys[2] = 9;
+    keys[3] = 8;
+    keys[4] = 11;
+    keys[5] = 12;
+    keys[6] = 16;
+    keys[7] = 14;
+    keys[8] = 15;
+    keys[9] = 19;
+    keys[10] = 20;
+    keys[11] = 21;
+    keys[12] = 13;
+    if (m_config > 5)
+        g_Shell.CopyControllerButtons(currConfigText, m_config - 6);
+    for (i = 0; i < 13; i++) {
+        mapped[i] = configArray[i][currConfigText[i]];
+        visualConfigText[i] = currConfigText[i];
+    }
+    count = 19;
+    for (i = 0; i < 13; i++) {
+        if (mapped[i] != 123) {
+            g_config_keymap->entries[count].button = keys[i];
+            g_config_keymap->entries[count].action = mapped[i];
+            count++;
+        }
+    }
+    g_config_keymap[m_player].entries[count].button = 22;
+    g_config_keymap[m_player].entries[count].action = 0;
+    count++;
+    g_config_keymap[m_player].entries[count].button = 23;
+    g_config_keymap[m_player].entries[count].action = 1;
+    count++;
+    g_config_keymap[m_player].entries[count].button = 17;
+    g_config_keymap[m_player].entries[count].action = mapped[1];
+    count++;
+    g_config_keymap[m_player].entries[count].button = 18;
+    g_config_keymap[m_player].entries[count].action = mapped[2];
+    count++;
+    g_config_keymap[m_player].entries[count].button = 0xFFFF;
+    g_config_keymap[m_player].entries[count].action = 0xFFFF;
+}
 
 int CDualConfig::WillBeUnassigned() {
     int result = -1;
