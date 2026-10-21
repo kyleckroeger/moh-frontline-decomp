@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800baec4",
-      "size": 8,
+      "size": 280,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000da98",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800149c0",
+      "size": 24,
       "type": 1
     }
   ],
@@ -50,10 +62,31 @@
       "address": "0x800baec4",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "SetTimeStampString__FPc",
+      "address": "0x800baecc",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "SetLandmarkStampString__FPc",
+      "address": "0x800baf58",
+      "size": 132,
+      "binding": 1
     }
   ],
   "externals": {
-    "onscreenTime": "0x8034ebf4"
+    "bDisplayLandmarkStamp": "0x8034ec04",
+    "bDoneFading": "0x8034ec08",
+    "bDoneParsingLandmark": "0x8034ec06",
+    "bDoneParsingTimeStamp": "0x8034ec07",
+    "bDoneShowingXFilesText": "0x8034ec09",
+    "landmark": "0x801ef6e8",
+    "onscreenTime": "0x8034ebf4",
+    "strcmp": "0x8013fed4",
+    "strcpy": "0x80140040",
+    "timestamp": "0x801ef718"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -61,8 +94,24 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "bDisplayLandmarkStamp",
+    "bDoneFading",
+    "bDoneParsingLandmark",
+    "bDoneParsingTimeStamp",
+    "bDoneShowingXFilesText",
     "onscreenTime"
   ],
   "original_file": "UserInterface.cpp",
-  "original_file_index": 7237
+  "original_file_index": 7237,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 2,
+      "address": "0x80350a4c"
+    }
+  ]
 }
