@@ -1,0 +1,113 @@
+{
+  "id": "UserInterface_draw",
+  "source": "src/game/UserInterface_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800beb24",
+      "size": 808,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000db18",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014a68",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ebf0",
+      "size": 2,
+      "type": 8
+    }
+  ],
+  "functions": [
+    {
+      "name": "Draw__13UserInterfaceFf",
+      "address": "0x800beb24",
+      "size": 808,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DrawBulletStats__13UserInterfaceFv": "0x800bce58",
+    "DrawCompass__13UserInterfaceFv": "0x800bbea0",
+    "DrawFragCount__13UserInterfaceFb": "0x800bd864",
+    "DrawHitStatus__13UserInterfaceFv": "0x800bbbc0",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawRadar__13UserInterfaceFv": "0x800bb1ac",
+    "DrawScore__13UserInterfaceFv": "0x800be590",
+    "DrawViewportEdge__13UserInterfaceFv": "0x800be108",
+    "DrawWeaponName__13UserInterfaceFPCc": "0x800bd590",
+    "GetCurrentPlayerWeapon__13CPlayerObjectCFv": "0x8009fbb4",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
+    "LetterBoxVerts": "0x80188d10",
+    "TempVerts": "0x801ef4a8",
+    "Update__13UserInterfaceFf": "0x800bb6f4",
+    "bIsGamePaused__5PauseFv": "0x800dd7d0",
+    "blackSprite__13UserInterface": "0x8034ebd4",
+    "g_Pause": "0x80194fec",
+    "g_PauseScreenLockedController": "0x8034e2c8",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bMPEndLevel": "0x8034e9ec",
+    "g_inputMgr": "0x801ec80c",
+    "g_scene": "0x8019484c",
+    "g_screen": "0x80196ac0",
+    "memcpy": "0x800094f8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "blackSprite__13UserInterface",
+    "g_PauseScreenLockedController",
+    "g_bInMultiplayerMode",
+    "g_bMPEndLevel"
+  ],
+  "original_file": "UserInterface.cpp",
+  "original_file_index": 7237
+}

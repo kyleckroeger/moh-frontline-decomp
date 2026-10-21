@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 910452,
+    "matching_code_bytes": 911260,
     "total_executable_code_bytes": 1414572,
-    "percent": 64.36236543632985,
+    "percent": 64.4194851870389,
     "categories": {
-      "reconstructed_game": 685044,
+      "reconstructed_game": 685852,
       "restored_library": 225408
     },
-    "matching_functions": 4523
+    "matching_functions": 4524
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -302,6 +302,7 @@
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
     "config/GMFE69/UserInterface.json": "43a8bb46c3399b0bebba952c98941e60091427e1f2ccaf6a7a962ad8be682caa",
     "config/GMFE69/UserInterface_compass.json": "a60b1a8860c0832f85a3bc7ea519b0892ea649da12731a5a03f7d6f08b316e35",
+    "config/GMFE69/UserInterface_draw.json": "0b4995effab6def04886f7efba241f377a1778a0caf64a885deccdc35274c0b0",
     "config/GMFE69/UserInterface_drawcompass.json": "789f7ef5fca48304ac2b45e1110e0044f8da2d1ad25e9ca88d4a8c42368f9c8b",
     "config/GMFE69/UserInterface_hitdirection.json": "13d32667063590cf0321f1f6259a2990e667cf05f1719702e9bd4b4629e34d1d",
     "config/GMFE69/UserInterface_update.json": "37d7d6827fcc091d75cf88d1345427241ccae4ac2d363d59a933b0269c5f308d",
@@ -859,7 +860,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "ab3211d3cdf694622f960865f8f55d43a04af1c026caf5c7966aeecf133d5849",
+    "config/GMFE69/project.json": "a6c699a473c3e64f529ab006722452a7e868738f01868fcacf55bc8ccabcbece",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2447,6 +2448,7 @@
     "src/game/UIStudio_visibility.c": "3454b7fe7ff6847bada0bf5f355070e360b4bda0af974311c5e150c022437e59",
     "src/game/UserInterface.cpp": "5e2d62e5410ad16508efa4e2243c541de362afbf7c74aa7ee3b63f4be695fe8e",
     "src/game/UserInterface_compass.cpp": "f6bdd2929d7b4f5fc98b7b58db2096c7247645ed657f120e0255dabfb1fca16d",
+    "src/game/UserInterface_draw.cpp": "3643aef1933616f8be417f0ef65c3d8ab83510ccc77c1a6415520c820e035fda",
     "src/game/UserInterface_drawcompass.cpp": "e4b5f6f4712c44a741c3fb58d9ab79744b892d009b68431ad2ee9c234c5bc97b",
     "src/game/UserInterface_hitdirection.cpp": "be5cf2f90c91bb77926b82e4ceffc7cd5cce2f4841a51b363d23ea662797f334",
     "src/game/UserInterface_update.cpp": "b95457f5d1a096090bcdc2a35bfe1565df598eec494373de15ea2d5492f8def4",
@@ -53103,6 +53105,45 @@
       "discarded_functions": [],
       "object_sha256": "882e33fadb31001e44b69f8faea9a23e223684d42af4a91e1b03e9de6c895fed",
       "linked_sha256": "50b953161a62ef8e1aece5822353a9419de6d0976c8cc50ebd66e196a74868e6"
+    },
+    {
+      "id": "UserInterface_draw",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 808,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "985ec51a9689d78f7964e23432ad82995dd93545fe1934206a287ffdcfe40dbc",
+      "linked_sha256": "8daa40c80504fe9aea0af770a0f466b4de338a974617b40160316b16bba3828c"
     }
   ],
   "code_map": {
@@ -55615,13 +55656,6 @@
             "size": 1428,
             "kind": "function",
             "name": "DrawScore__13UserInterfaceFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800beb24",
-            "size": 808,
-            "kind": "function",
-            "name": "Draw__13UserInterfaceFf",
             "evidence": "exception-index"
           },
           {

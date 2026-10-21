@@ -1222,7 +1222,8 @@
     "thrownbullet_explosion.json",
     "UISUtils_parsehints.json",
     "objcreate_destroy.json",
-    "player_death.json"
+    "player_death.json",
+    "UserInterface_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
