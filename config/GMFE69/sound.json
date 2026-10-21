@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -31,14 +31,16 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
-  "strip_unused": false,
-  "source_root": "scratch/game",
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ede28",
-      "size": 92,
+      "address": "0x800ea0e0",
+      "size": 15780,
       "type": 1
     },
     {
@@ -48,27 +50,604 @@
       "type": 1
     },
     {
+      "name": "extab",
+      "address": "0x8000f350",
+      "size": 464,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 512,
+      "stripped_objects": [
+        "@562",
+        "@573",
+        "@738",
+        "@1200",
+        "@1278",
+        "@1287"
+      ]
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015e0c",
+      "size": 672,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 744,
+      "stripped_objects": [
+        "@563",
+        "@574",
+        "@739",
+        "@1201",
+        "@1279",
+        "@1288"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178ed8",
+      "size": 2116,
+      "type": 1
+    },
+    {
       "name": ".bss",
       "address": "0x80229490",
       "size": 32,
       "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e2f4",
+      "size": 8,
+      "type": 1,
+      "input_alignment": 4
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ecd4",
+      "size": 5,
+      "type": 8,
+      "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "err__FPce",
+      "address": "0x800ea130",
+      "size": 80,
+      "binding": 0
+    },
+    {
+      "name": "msg__FPce",
+      "address": "0x800ea0e0",
+      "size": 80,
+      "binding": 0
+    },
+    {
+      "name": "_userdata_client__FP17SNDUSERDATACBINFO",
+      "address": "0x800ea180",
+      "size": 868,
+      "binding": 0
+    },
+    {
+      "name": "fail__FPce",
+      "address": "0x800ec480",
+      "size": 80,
+      "binding": 0
+    },
+    {
+      "name": "aems_BankAlloc__FPvii",
+      "address": "0x800ec6f4",
+      "size": 68,
+      "binding": 0
+    },
+    {
+      "name": "aems_Init__FPcPcPcPcb",
+      "address": "0x800ec4d0",
+      "size": 548,
+      "binding": 0
+    },
     {
       "name": "__sinit_sound_cpp",
       "address": "0x800ede28",
       "size": 92,
       "binding": 0
+    },
+    {
+      "name": "EndianSwap__FR23SOUND_MULTISUBTITLEDATA",
+      "address": "0x800edc3c",
+      "size": 492,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_Fade__Ffi",
+      "address": "0x800ea4e4",
+      "size": 68,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_SendEvent__Fi",
+      "address": "0x800ea528",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_SetLatency__Fi",
+      "address": "0x800ea568",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_SetLevel__Fi",
+      "address": "0x800ea5b4",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_Pause__Fb",
+      "address": "0x800ea5fc",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_Stop__Fv",
+      "address": "0x800ea658",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "MUSIC_Start__Fiii",
+      "address": "0x800ea684",
+      "size": 232,
+      "binding": 1
+    },
+    {
+      "name": "PlayBulletWhiz__F8CVector38CVector3P13CPlayerObject",
+      "address": "0x800ea76c",
+      "size": 1484,
+      "binding": 1
+    },
+    {
+      "name": "PlayBackgroundImpactSound__FP7CBulleti",
+      "address": "0x800ead38",
+      "size": 1092,
+      "binding": 1
+    },
+    {
+      "name": "PlayImpactSound__FUsUs8CVector3b",
+      "address": "0x800eb17c",
+      "size": 828,
+      "binding": 1
+    },
+    {
+      "name": "PlayReloadSound__FlP11CAnimObject",
+      "address": "0x800eb4b8",
+      "size": 876,
+      "binding": 1
+    },
+    {
+      "name": "PlayAnimTriggeredSound__FlP11CAnimObject",
+      "address": "0x800eb824",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "PlayEnemyMovement__FUslP11CAnimObject",
+      "address": "0x800eb8b0",
+      "size": 992,
+      "binding": 1
+    },
+    {
+      "name": "GetAzimuth__F8CVector3PC13CPlayerObject",
+      "address": "0x800ebc90",
+      "size": 356,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_SetLocation__FPC8CVector3",
+      "address": "0x800ebdf4",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Volume__Ff",
+      "address": "0x800ebe2c",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Select__Fi",
+      "address": "0x800ebedc",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "AmbientTrack_Start__Fv",
+      "address": "0x800ebf6c",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SetObject__FP14CSoldierObject",
+      "address": "0x800ebff4",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_EndEvent__FPvi",
+      "address": "0x800ec004",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_UpdateEvent__FPvi",
+      "address": "0x800ec0b4",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_BeginEvent__FPv",
+      "address": "0x800ec170",
+      "size": 252,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SendEvent__FPv",
+      "address": "0x800ec26c",
+      "size": 252,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_SetVolume__Ff",
+      "address": "0x800ec368",
+      "size": 120,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_Pause__Fb",
+      "address": "0x800ec3e0",
+      "size": 160,
+      "binding": 1
+    },
+    {
+      "name": "AEMSOneShotMalloc__Fi",
+      "address": "0x800ec738",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "LoadOneShotSound__Fiii",
+      "address": "0x800ec754",
+      "size": 224,
+      "binding": 1
+    },
+    {
+      "name": "ResetOneShotBank__Fv",
+      "address": "0x800ec834",
+      "size": 220,
+      "binding": 1
+    },
+    {
+      "name": "AEMS_Update__Fv",
+      "address": "0x800ec910",
+      "size": 664,
+      "binding": 1
+    },
+    {
+      "name": "__dt__13CSoundSysLockFv",
+      "address": "0x800ecba8",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "__ct__13CSoundSysLockFv",
+      "address": "0x800ecbf8",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "Unpause__12CSoundStreamFv",
+      "address": "0x800ecc28",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "Pause__12CSoundStreamFv",
+      "address": "0x800ecc50",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "FadeVolume__12CSoundStreamFii",
+      "address": "0x800ecc78",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "GetVolume__12CSoundStreamCFv",
+      "address": "0x800ecc9c",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "GetRequestStatus__12CSoundStreamCFiR21SSndStrmRequestStatus",
+      "address": "0x800eccc0",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "GetStatus__12CSoundStreamCFR16SSndStreamStatus",
+      "address": "0x800ecce8",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "SetVolume__12CSoundStreamFi",
+      "address": "0x800ecd0c",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "PurgeQueue__12CSoundStreamFv",
+      "address": "0x800ecd30",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "QueueFile__12CSoundStreamFPCcii",
+      "address": "0x800ecd54",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "__dt__12CSoundStreamFv",
+      "address": "0x800ecd84",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "__ct__12CSoundStreamFii",
+      "address": "0x800ecdf0",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetMode__F10ESoundMode",
+      "address": "0x800ecea8",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "SoundSync__Fv",
+      "address": "0x800ecf2c",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "SoundGetVolumes__FRfRf",
+      "address": "0x800ecf4c",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetVolumes__Fff",
+      "address": "0x800ecf60",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SoundSetMasterVolume__Fi",
+      "address": "0x800ed018",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "UnloadShellSoundModules__Fv",
+      "address": "0x800ed050",
+      "size": 276,
+      "binding": 1
+    },
+    {
+      "name": "UnloadLevelSoundModules__Fv",
+      "address": "0x800ed164",
+      "size": 352,
+      "binding": 1
+    },
+    {
+      "name": "LoadShellSoundModules__Fv",
+      "address": "0x800ed2c4",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "LoadLevelSoundModules__Fii",
+      "address": "0x800ed374",
+      "size": 1552,
+      "binding": 1
+    },
+    {
+      "name": "SoundClose__Fv",
+      "address": "0x800ed984",
+      "size": 400,
+      "binding": 1
+    },
+    {
+      "name": "SoundInit__F10ESoundMode",
+      "address": "0x800edb14",
+      "size": 296,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DisplaySubtitle__FPCcf6CColor": "0x800b880c",
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "FindClosestPlayer__6CSceneF8CVector3": "0x800da540",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSoundEvent__11CSoundTableCFiPQ211CSoundTable11SSoundParms": "0x800ede84",
+    "GetVSyncs__7CScreenFv": "0x8001b908",
+    "Get_LanguageSubtitleIndex__10CShellMenuFv": "0x800e14f8",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__11CSoundTableFii": "0x800ee164",
+    "MEM_free": "0x8014f83c",
+    "PATH_addmapfile": "0x8010cbbc",
+    "PATH_control": "0x8010c098",
+    "PATH_createtrack": "0x8010cb8c",
+    "PATH_destroy": "0x8010b330",
+    "PATH_event": "0x8010b93c",
+    "PATH_fade": "0x8010acd4",
+    "PATH_jump": "0x8010b6cc",
+    "PATH_latency": "0x8010c280",
+    "PATH_overheadtrack": "0x8010c330",
+    "PATH_pause": "0x8010b1b8",
+    "PATH_stop": "0x8010b078",
+    "PATH_volume": "0x8010aec4",
+    "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
+    "SNDAEMS_addmodulebank": "0x8034e680",
+    "SNDAEMS_addsystem": "0x8034e660",
+    "SNDAEMS_asyncloadmodulebank": "0x8034e68c",
+    "SNDAEMS_asyncloadmodulebankdone": "0x80158ca0",
+    "SNDAEMS_beginevent": "0x8034e66c",
+    "SNDAEMS_endevent": "0x8034e674",
+    "SNDAEMS_removemodulebank": "0x8034e668",
+    "SNDAEMS_removesystem": "0x8034e664",
+    "SNDAEMS_setglobal": "0x8034e678",
+    "SNDAEMS_streaminit": "0x80157790",
+    "SNDAEMS_streamrestore": "0x801578e0",
+    "SNDAEMS_updateevent": "0x8034e670",
+    "SNDSTRM_autovol": "0x8015c600",
+    "SNDSTRM_create": "0x8015becc",
+    "SNDSTRM_destroy": "0x8015bef4",
+    "SNDSTRM_getprogvol": "0x8015c674",
+    "SNDSTRM_overhead": "0x8015c230",
+    "SNDSTRM_pitchmult": "0x8015c728",
+    "SNDSTRM_purge": "0x8015c028",
+    "SNDSTRM_queuefile": "0x8015c004",
+    "SNDSTRM_requeststatus": "0x8015c37c",
+    "SNDSTRM_status": "0x8015c288",
+    "SNDSTRM_vol": "0x8015c5b0",
+    "SNDSYSI_init": "0x80152d98",
+    "SNDSYS_adduserdataclient": "0x801536b4",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_getopts": "0x8015250c",
+    "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_removeuserdataclient": "0x801536ec",
+    "SNDSYS_restore": "0x80152f68",
+    "SNDSYS_setopts": "0x801528c8",
+    "SNDSYS_vectortoreal": "0x80153230",
+    "SNDmastervol": "0x8015c964",
+    "SNDplaysetdef": "0x8015d458",
+    "SetFaceAnimationState__14CSoldierObjectFUsl": "0x800adeac",
+    "SoundBankHeapSize": "0x8034e2e0",
+    "SoundBankHeapStart": "0x801f7470",
+    "SoundHasBeenInitialized": "0x8034ecb8",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "TLT_LoadFileFromShellBigFile__FPCcPi": "0x8001dbe4",
+    "TLT_LoadFileNormal__FPCcPii": "0x8001d308",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "UpdateREAL__Fv": "0x8001b098",
+    "__dl__FPv": "0x8001ca2c",
+    "atan2": "0x80143920",
+    "gAEMSAmbientTrackEvent": "0x8018a750",
+    "gAEMSBank": "0x802294b0",
+    "gAEMSBankCount": "0x8034ecc0",
+    "gAEMSStreamBuf": "0x802294d0",
+    "gAEMSStreamUsed": "0x8034ecc8",
+    "gAEMSbHandle": "0x80229470",
+    "gAEMSsystem": "0x8034ecc4",
+    "gMusicBuf": "0x8034ecdc",
+    "gMusicBufSize": "0x8034ece0",
+    "gMusicHandle": "0x8034e2fc",
+    "gMusicMap": "0x8034ece4",
+    "gMusicOpts": "0x802d84d0",
+    "gMusicProjectID": "0x8034e300",
+    "g_AEMSOneShotLoadState": "0x8034ecd0",
+    "g_AEMSOneShotMem": "0x80267cd0",
+    "g_AEMSOneShotMemOffset": "0x8034eccc",
+    "g_AEMSOneShotStreamBuf": "0x8025b4d0",
+    "g_Shell": "0x80195090",
+    "g_ambientSourceOnPlayer": "0x8034e2ec",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_hAEMSAmbientTrack": "0x8034e2f0",
+    "g_musicVolume": "0x8034e2e8",
+    "g_objSound": "0x8034ecbc",
+    "g_scene": "0x8019484c",
+    "g_screen": "0x80196ac0",
+    "g_sfxVolume": "0x8034e2e4",
+    "g_soundMapSingleton": "0x8034ece8",
+    "printf": "0x8013dc88",
+    "rand": "0x8013fc54",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "sprintf": "0x8013dab4",
+    "strlen": "0x801400f8"
+  },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "CalcDistanceAndAzimuth__FPUsPUs8CVector3PC13CPlayerObject",
+    "BeginEvent__FPi",
+    "LoadMusicTrack__FPcPc",
+    "AmbientTrack_Stop__Fv",
+    "UnloadAEMSModules__Fv",
+    "UnloadMusic__Fv"
+  ],
   "upstream": {},
-  "local_externals": [],
-  "discarded_local_functions": [],
-  "sda_externals": [],
+  "local_externals": [
+    "gAEMSAmbientTrackEvent",
+    "gAEMSBank",
+    "gAEMSBankCount",
+    "gAEMSStreamBuf",
+    "gAEMSStreamUsed",
+    "gAEMSbHandle",
+    "gAEMSsystem",
+    "g_AEMSOneShotMem",
+    "g_AEMSOneShotStreamBuf",
+    "g_ambientSourceOnPlayer",
+    "g_hAEMSAmbientTrack",
+    "g_musicVolume",
+    "g_objSound",
+    "g_sfxVolume"
+  ],
+  "discarded_local_functions": [
+    "CalcDistanceAndAzimuth__FPUsPUs8CVector3PC13CPlayerObject",
+    "BeginEvent__FPi",
+    "LoadMusicTrack__FPcPc",
+    "AmbientTrack_Stop__Fv",
+    "UnloadAEMSModules__Fv",
+    "UnloadMusic__Fv"
+  ],
+  "sda_externals": [
+    "SNDAEMS_addmodulebank",
+    "SNDAEMS_addsystem",
+    "SNDAEMS_asyncloadmodulebank",
+    "SNDAEMS_beginevent",
+    "SNDAEMS_endevent",
+    "SNDAEMS_removemodulebank",
+    "SNDAEMS_removesystem",
+    "SNDAEMS_setglobal",
+    "SNDAEMS_updateevent",
+    "SoundBankHeapSize",
+    "SoundHasBeenInitialized",
+    "gAEMSBankCount",
+    "gAEMSStreamUsed",
+    "gAEMSsystem",
+    "gMusicBuf",
+    "gMusicBufSize",
+    "gMusicHandle",
+    "gMusicMap",
+    "gMusicProjectID",
+    "g_AEMSOneShotLoadState",
+    "g_AEMSOneShotMemOffset",
+    "g_ambientSourceOnPlayer",
+    "g_bInMultiplayerMode",
+    "g_hAEMSAmbientTrack",
+    "g_musicVolume",
+    "g_objSound",
+    "g_sfxVolume",
+    "g_soundMapSingleton",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "sound.cpp",
   "original_file_index": 8971,
   "pooled_sections": [
@@ -80,6 +659,120 @@
       "offset": 0,
       "size": 4,
       "address": "0x80350fcc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350fd0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350fd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350fe0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350fe4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350fe8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350fec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350ff0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350ff8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350ffc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 3,
+      "address": "0x80351000"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80351004"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80351008"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8035100c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x80351010"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x80351014"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x80351018"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x8035101c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
+      "size": 5,
+      "address": "0x80351020"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 96,
+      "size": 6,
+      "address": "0x80351028"
     }
   ]
 }
