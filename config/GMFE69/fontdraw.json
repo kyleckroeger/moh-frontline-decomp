@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8014e480",
-      "size": 1328,
+      "size": 2352,
       "type": 1
     }
   ],
@@ -56,6 +56,12 @@
       "binding": 1
     },
     {
+      "name": "FONT_drawtextx<Uc>__FP4FONTffPCUcPv",
+      "address": "0x8014e9b0",
+      "size": 1024,
+      "binding": 2
+    },
+    {
       "name": "FONT_getrecta",
       "address": "0x8014e53c",
       "size": 32,
@@ -70,8 +76,9 @@
   ],
   "externals": {
     "FONT_bsearch": "0x8014e438",
-    "FONT_drawtextx<Uc>__FP4FONTffPCUcPv": "0x8014e9b0",
     "FONT_getkern": "0x8014edb0",
+    "FONTcurrentdriver": "0x8034e5b8",
+    "FONTcurrentdriverext": "0x801910a8",
     "_restgpr_24": "0x80138a50",
     "_savegpr_24": "0x80138a04"
   },
@@ -80,7 +87,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "FONTcurrentdriver"
+  ],
   "original_file": "fontdraw.cpp",
   "original_file_index": 12203,
   "pooled_sections": [

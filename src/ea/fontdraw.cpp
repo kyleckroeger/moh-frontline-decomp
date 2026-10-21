@@ -7,12 +7,16 @@
 // table slot, else by binary search; a missing glyph tries the other case,
 // then the 127 glyph, and a newline moves down one line), each placed after
 // its kerning against the previous character and its offsets, advancing by
-// its (wide) advance; outputs left/top/width/height (0 when empty). The file
+// its (wide) advance; outputs left/top/width/height (0 when empty); and the
+// weak FONT_drawtextx<unsigned char>, which walks the glyphs the same way
+// between the current driver's begin/end hooks, drawing each glyph through
+// the driver or queuing it for the extended driver's batched draw (128 at a
+// time, with the user data and a first-batch flag when given). The file
 // is compiled with -inline on, -fp_contract off and -use_lmw_stmw off. FONT,
 // the functions and the template names come from the mangled symbols; the
 // font and glyph record views and the local helper are inferred, as are the
-// result types. FONT_drawtextx and the rest of the file are not part of this
-// unit.
+// result types; the driver views are inferred from the calls. The rest of the
+// file is in other units.
 /* inferred: a glyph record (12 bytes, or 16 with the wide-advance flag):
    code, size, advance and offsets */
 struct FONTCHAR {
@@ -42,6 +46,32 @@ struct FONT {
     float scaleX;
     float scaleY;
 };
+
+/* inferred: one queued glyph of a batched draw */
+struct FONTBATCH {
+    FONTCHAR* glyph;
+    float x;
+    float y;
+};
+
+/* inferred: the current driver's glyph draw and begin/end hooks, and the
+   extended driver's batched draws (with and without user data) */
+struct FONTDRIVER {
+    void (*draw)(FONT*, FONTCHAR*, float, float);
+    void (*begin)(FONT*);
+    void (*end)(FONT*);
+};
+
+struct FONTDRIVEREXT {
+    void* unknown00;
+    void (*drawbatch)(FONT*, FONTBATCH*, int);
+    void* unknown08;
+    void (*drawbatchuser)(FONT*, FONTBATCH*, int, void*, int);
+    unsigned char unknown10[12];
+};
+
+extern FONTDRIVER* FONTcurrentdriver;
+extern FONTDRIVEREXT FONTcurrentdriverext;
 
 extern "C" {
 void* FONT_bsearch(int, char*, int, int);
@@ -80,7 +110,74 @@ static inline FONTCHAR* FONT_findchar(FONT* font, int ch) {
     return (FONTCHAR*)FONT_bsearch(ch, table, count, stride);
 }
 
-template <class T> int FONT_drawtextx(FONT*, float, float, const T*, void*);
+template <class T> void FONT_drawtextx(FONT* font, float x, float y, const T* text, void* user) {
+    FONTBATCH batch[128];
+    float scaleX;
+    float scaleY;
+    float startX;
+    int count = 0;
+    int first = 1;
+    int prev = 0;
+    startX = x;
+    if (FONTcurrentdriver->begin)
+        FONTcurrentdriver->begin(font);
+    scaleX = font->scaleX;
+    scaleY = font->scaleY;
+    while (*text) {
+        FONTCHAR* glyph = FONT_findchar(font, *text);
+        if (!glyph) {
+            if (*text == '\n') {
+                prev = 0;
+                text++;
+                x = startX;
+                y += (int)(scaleY * (font->ascent + font->descent));
+                continue;
+            }
+            int other = FONT_switchcase(*text);
+            if (other)
+                glyph = FONT_findchar(font, other);
+            if (!glyph)
+                glyph = FONT_findchar(font, 127);
+            if (!glyph) {
+                text++;
+                continue;
+            }
+        }
+        int kern = FONT_getkern(font, glyph, prev);
+        x += kern * scaleX;
+        if (FONTcurrentdriverext.drawbatch) {
+            FONTBATCH* entry = &batch[count++];
+            entry->glyph = glyph;
+            entry->x = x;
+            entry->y = y;
+            if (count == 128) {
+                if (user) {
+                    FONTcurrentdriverext.drawbatchuser(font, batch, count, user, first);
+                    first = 0;
+                } else {
+                    FONTcurrentdriverext.drawbatch(font, batch, count);
+                }
+                count = 0;
+            }
+        } else {
+            FONTcurrentdriver->draw(font, glyph, x, y);
+        }
+        if (font->flags & 0x40000)
+            x += glyph->wideAdvance * scaleX;
+        else
+            x += glyph->advance * scaleX;
+        prev = *text;
+        text++;
+    }
+    if (count) {
+        if (user)
+            FONTcurrentdriverext.drawbatchuser(font, batch, count, user, first);
+        else
+            FONTcurrentdriverext.drawbatch(font, batch, count);
+    }
+    if (FONTcurrentdriver->end)
+        FONTcurrentdriver->end(font);
+}
 
 template <class T> void FONT_getrectx(FONT* font, const T* text, float* x, float* y, float* w, float* h) {
     float scaleX = font->scaleX;
@@ -145,7 +242,7 @@ template <class T> void FONT_getrectx(FONT* font, const T* text, float* x, float
 
 extern "C" {
 int FONT_drawtexta(FONT* font, float x, float y, const unsigned char* text) {
-    return FONT_drawtextx<unsigned char>(font, x, y, text, 0);
+    FONT_drawtextx<unsigned char>(font, x, y, text, 0);
 }
 
 int FONT_getrecta(FONT* font, const unsigned char* text, float* x, float* y, float* w, float* h) {
