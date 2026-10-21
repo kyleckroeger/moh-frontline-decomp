@@ -24,16 +24,14 @@ references in two:
 A name match is a lead; only generated code and data checked byte-for-byte
 against GMFE69 accepts source.
 
-## Status (from the verified snapshot)
+## Status (from the verified snapshot, 2026-10-21)
 
-| Category | Unfinished bytes |
+| Category | Bytes |
 | --- | ---: |
-| Accepted (`restored_library`) | 51,416 |
-| Symbol evidence, incomplete | 934,812 |
-| Inferred file groups | 305,428 |
-| Unknown file | 113,748 |
-| Unidentified / padding | 9,016 |
-| Local symbols only | 152 |
+| Accepted `reconstructed_game` | 684,820 |
+| Accepted `restored_library` | 225,408 |
+| Unfinished (functions with symbols) | 495,328 |
+| Unfinished padding and unsymbolized bytes | 9,016 |
 | **Total executable** | **1,414,572** |
 
 ## Reference catalog
@@ -52,84 +50,64 @@ against GMFE69 accepts source.
 Preserve attribution and license terms for anything adapted; record provenance
 in the unit manifest.
 
-## Backlog 1 — remaining Dolphin SDK (Phase A, reference-backed)
+## Backlog 1 — remaining libraries
 
-Unfinished SDK files total **69,408 bytes**. The four highest are `dvd.c`
-(9,140), `vi.c` (6,648), `Pad.c` (4,960) and `CARDBios.c` (4,672); the rest
-range from `GXInit.c` (4,332) down to `dsp.c` (264). Reference: dolsdk2001 /
-dolsdk2004, with per-unit revision notes in `docs/Dolphin.md`. This is the
-cheapest work and it settles file boundaries.
+The Dolphin SDK, MSL, MW runtime and EA audio libraries are almost all
+accepted. What is left is blocked (see the open problems in `docs/Dolphin.md`:
+`PPCArch` / `odenotstub` linked-symbol differences) or depends on game units.
 
-Known blockers (`docs/Dolphin.md` open problems): `PPCArch` / `odenotstub`
-linked-symbol differences.
+## Backlog 2 — high fan-in helpers
 
-## Backlog 2 — high fan-in helpers (do these first)
+Ranked by unique unfinished callers (`tools/dependencies.py`, 2026-10-21). The
+common helpers of the first ranking (`__dl__FPv`, `CMatrix`, `MEM_free`,
+`memset`, `sprintf`, …) are all accepted; the remaining fan-in is low.
 
-Ranked by unique unfinished callers (`tools/dependencies.py`). Small helpers
-with many callers unlock the most downstream code.
+| Callers | Bytes | Symbol |
+| ---: | ---: | --- |
+| 11 | 308 | `TLT_LoadFileFromLevelBigFile` |
+| 8 | 1,220 | `CInputManager::Update` |
+| 7 | 416 | `CFont::DrawTextCentered` |
+| 6 | 3,328 | `MohDVDErrorTask` |
+| 6 | 360 | `MEM_resize` |
+| 5 | 1,176 | `BIG_locateentryz` |
+| 4 | 188 | `CVector3::Normalize` |
+| 4 | 2,728 | `CStaticObjectFactory::AllocateStaticObject` |
+| 4 | 492 | `ForceUpdateProximityTriggerStatus` |
+| 4 | 292 | `CParticleSystem::Create` |
+| 4 | 464 | `AnimChanStartAnim` |
+| 4 | 604 | `CCoverPoint::GetModifiedPosition` |
 
-| Callers | Bytes | Symbol | Candidate reference |
-| ---: | ---: | --- | --- |
-| 190 | 68 | `__dl__FPv` | MW runtime (other MWCC decomps) |
-| 129 | 60 | `CMatrix::InitClass` | EA engine / cross-binary |
-| 106 | 20 | `OSDisableInterrupts` | dolsdk2001/2004 |
-| 102 | 80 | `DebugMsg(char const*, ...)` | EA engine / cross-binary |
-| 102 | 36 | `OSRestoreInterrupts` | dolsdk2001/2004 |
-| 95 | 336 | `MEM_free` | EA memory / cross-binary |
-| 83 | 48 | `memset` | MSL |
-| 79 | 68 | `CMatrix::operator=` | EA engine / cross-binary |
-| 69 | 80 | `memcpy` | MSL |
-| 67 | 304 | `BSObject::TriggerEvent` | EA engine / cross-binary |
-| 65 | 16 | `CScene::GetPlayer` | EA engine / cross-binary |
-| 65 | 28 | `CMatrix::SetPos` | EA engine / cross-binary |
-| 64 | 52 | `SNDSYS_leavecritical` | EA audio |
-| 64 | 52 | `SNDSYS_entercritical` | EA audio |
-| 55 | 32 | `CMatrix::Multiply` | EA engine / cross-binary |
-| 49 | 224 | `sprintf` | MSL |
-| 45 | 248 | `__construct_array` | MW runtime |
-| 41 | 236 | `CQuaternion::GetMatrix` | EA engine / cross-binary |
-| 41 | 8 | `OSGetTick` | dolsdk2001/2004 (accepted) |
-| 36 | 24 | `__register_global_object` | MW runtime |
-| 35 | 184 | `strcpy` | MSL |
-| 34 | 120 | `__nw__FUl` | MW runtime |
-| 33 | 28 | `strlen` | MSL |
-| 33 | 56 | `CMatrix::Ident` | EA engine / cross-binary |
-| 33 | 116 | `DWI_alloc` | EA working memory / cross-binary |
+## Backlog 3 — game code by file
 
-The MSL and MW-runtime rows are Phase A/B with a likely byte-match reference.
-The `CMatrix`, `BSObject`, `CScene`, `MEM_*` and audio rows are game/engine
-code: Phase B if a reference exists, Phase C otherwise.
+Largest unfinished files (function bytes not yet in a unit, by
+`build/audit/file_map.json` ranges). No public source exists for most of
+them; the work is Ghidra-led reconstruction, and several need a whole-file
+unit because their functions share one `...rodata.0` or `...bss.0` block.
 
-## Backlog 3 — game code: reuse or Ghidra
-
-Largest unfinished file groups (Phase B if reference-backed, else Phase C):
-
-| Bytes | File | Likely family |
+| Bytes | File | Family |
 | ---: | --- | --- |
-| 93,236 | `bsbifunc.cpp` | Behaviour script built-ins |
-| 45,684 | `player.cpp` | Player |
-| 42,248 | `ShellMenu.cpp` | UI |
-| 30,916 | `AIObject.cpp` | AI |
-| 21,644 | `path.c` | Pathfinding |
-| 21,516 | `cdbgeom.cpp` | Collision/geometry |
-| 21,052 | `box.cpp` | Math/bounds |
-| 20,880 | `scene.cpp` | Scene graph |
-| 19,708 | `objcreate.cpp` | Object creation |
-| 19,672 | `Soldier_object.cpp` | Actor |
-| 19,496 | `UserInterface.cpp` | UI |
-| 17,116 | `sound.cpp` | Audio |
-| 16,872 | `Moh2.cpp` | Core |
-| 16,568 | `particlesystem.cpp` | Particles |
-| 16,304 | `propdat.cpp` | Properties |
-| 14,920 | `AIFilter.cpp` | AI |
-| 12,156 | `snddrv.c` | Audio driver |
+| 33,440 | `bsbifunc.cpp` | Behaviour script built-ins |
+| 25,952 | `player.cpp` | Player |
+| 19,396 | `cdbgeom.cpp` | Collision/geometry |
+| 19,396 | `ShellMenu.cpp` | UI |
+| 17,112 | `AIObject.cpp` | AI |
+| 16,720 | `box.cpp` | Math/bounds |
+| 14,944 | `path.c` | EA audio (music paths) |
+| 13,348 | `Moh2.cpp` | Core |
+| 11,772 | `particlesystem.cpp` | Particles |
+| 11,168 | `UserInterface.cpp` | UI |
+| 10,948 | `objcreate.cpp` | Object creation |
+| 10,404 | `compartment.cpp` | Rendering |
+| 10,392 | `scene.cpp` | Scene graph |
+| 8,312 | `buddy.cpp` | AI squad |
+| 8,236 | `UISStack.c` | UI script |
+| 8,184 | `Soldier_object.cpp` | Actor |
+| 8,048 | `static_obj.cpp` | World objects |
 
-Anything that shares an EA engine family with Rising Sun or NFS MW (matrix,
-scene graph, EAGL, particles, properties, observers, containers) should be
-tried against those references first. Mission/game-specific logic (AI,
-`ShellMenu`, `bsbifunc`, player) has no public source and is the Ghidra/phased
-work. `Unknown file` (113,748 bytes) and `unidentified` (9,016 bytes) must be
-resolved with `tools/file_map.py` before assigning a source boundary.
+`sound.cpp` from the first ranking is complete; `propdat.cpp`,
+`AIFilter.cpp` and `snddrv.c` are each below 8 KB unfinished. About 6 KB of unfinished functions fall
+outside the file map's ranges and need `tools/file_map.py` evidence before a
+source boundary is assigned.
 
 ## Cross-binary matching (Phase C)
 
