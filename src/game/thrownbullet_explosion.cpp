@@ -12,7 +12,12 @@
 // matrix along its velocity (front = velocity, up and right from the current
 // rightward vector), warns about unknown types, keeps the velocity and spin
 // for the next step, refreshes its proximity trigger, counts the detonation
-// time down to zero and resets the closest distance. The functions, CParticleSystem::Create, CLight::Create and
+// time down to zero and resets the closest distance. ConstrainVelocity (after a
+// contact) reflects the velocity off the contact normal (flipped to face the
+// velocity), keeps the normal part scaled by the bounce (zeroed when tiny and
+// resting) plus the tangential part reduced by the friction times the cube of
+// how much the normal faces up, optionally restores the old speed (a cheat),
+// and pushes the matrix out along the normal by one or two CONTACT_EPSILON. The functions, CParticleSystem::Create, CLight::Create and
 // the virtuals are named by the symbols (the virtuals by their table slots);
 // the meaning of the two flags, the members and the class layouts are
 // inferred (CParticleSystem's table pointer follows 28 bytes of members).
@@ -45,6 +50,12 @@ public:
             d.v[2] *= 1.0f / length;
         }
     }
+    void operator*=(float s) {
+        d.v[0] *= s;
+        d.v[1] *= s;
+        d.v[2] *= s;
+    }
+    float LengthSquared() const { return d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]; }
     void Cross(const CVector3& a, const CVector3& b) {
         d.v[0] = a.d.v[1] * b.d.v[2] - a.d.v[2] * b.d.v[1];
         d.v[1] = a.d.v[2] * b.d.v[0] - a.d.v[0] * b.d.v[2];
@@ -266,6 +277,26 @@ class BSGO_Basic;
 void ForceUpdateProximityTriggerStatus(BSGO_Basic*, bool);
 void DebugMsg(const char*, ...);
 
+/* inferred: the thrown bullet's properties (friction at +56, bounce at +60) */
+struct ThrownBulletPropertiesView {
+    unsigned char unknown00[56];
+    float m_friction;
+    float m_bounce;
+};
+
+/* inferred: the cheat flag read here */
+struct CheatsView {
+    unsigned char unknown00[10];
+    unsigned char m_keepGrenadeSpeed;
+    unsigned char unknown0b[9];
+};
+
+extern CheatsView g_cheats;
+
+inline float DotXYZ(float x, float y, float z, const CVector3& v) { return x * v.d.v[0] + y * v.d.v[1] + z * v.d.v[2]; }
+
+inline float Dot(const CVector3& a, const CVector3& b) { return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2]; }
+
 class CThrownBullet {
 public:
     virtual void vf008();
@@ -287,6 +318,7 @@ public:
     void AttemptUpdate(float);
     void BeginUpdate(float);
     void CheckEnemies();
+    void ConstrainVelocity();
 
     unsigned char unknown004[8];
     SExtentView* m_minX;
@@ -301,12 +333,13 @@ public:
     float m_closest;
     unsigned char unknown098[12];
     int m_type;
-    unsigned char unknown0a8[8];
+    ThrownBulletPropertiesView* m_properties;
+    unsigned char unknown0ac[4];
     unsigned char m_trigger[36];
     CLightVolumeManager m_lights;
     CVector3 m_velocity;
     CVector3 m_launchVelocity;
-    unsigned char unknown110[16];
+    CVector3 m_normal;
     CVector3 m_rotation;
     CVector3 m_rotationBase;
     CVector3 m_rotationRate;
@@ -395,4 +428,94 @@ void CThrownBullet::BeginUpdate(float elapsed) {
             m_detonationTime = 0.0f;
     }
     m_closest = 3.4028235e+38f;
+}
+
+void CThrownBullet::ConstrainVelocity() {
+    if (m_flag40) {
+        float speed;
+        float along;
+        float into;
+        CVector3 normal;
+        CVector3 normalPart;
+        float tangentX;
+        float tangentY;
+        float tangentZ;
+        float up;
+        float steep;
+        float keep;
+        float newSpeed;
+        float ratio;
+        float push;
+        CVector3 position;
+        speed = 1.0f;
+        if (g_cheats.m_keepGrenadeSpeed)
+            speed = m_velocity.Length();
+        m_normal.Normalize();
+        normal = m_normal;
+        along = Dot(m_velocity, normal);
+        if (along > 0.0f) {
+            m_normal.d.v[0] = -m_normal.d.v[0];
+            m_normal.d.v[1] = -m_normal.d.v[1];
+            m_normal.d.v[2] = -m_normal.d.v[2];
+            normal = m_normal;
+            along = Dot(m_velocity, normal);
+        }
+        normal *= 2.0f * along;
+        m_velocity.d.v[0] -= normal.d.v[0];
+        m_velocity.d.v[1] -= normal.d.v[1];
+        m_velocity.d.v[2] -= normal.d.v[2];
+        into = m_normal.d.v[0] * m_velocity.d.v[0] + m_normal.d.v[1] * m_velocity.d.v[1] + m_normal.d.v[2] * m_velocity.d.v[2];
+        normalPart.d.v[0] = into * m_normal.d.v[0];
+        normalPart.d.v[1] = into * m_normal.d.v[1];
+        normalPart.d.v[2] = into * m_normal.d.v[2];
+        tangentX = m_velocity.d.v[0] - normalPart.d.v[0];
+        tangentY = m_velocity.d.v[1] - normalPart.d.v[1];
+        tangentZ = m_velocity.d.v[2] - normalPart.d.v[2];
+        normalPart.d.v[0] *= m_properties->m_bounce;
+        normalPart.d.v[1] *= m_properties->m_bounce;
+        normalPart.d.v[2] *= m_properties->m_bounce;
+        if (normalPart.LengthSquared() < 0.0001f && m_resting) {
+            normalPart.d.v[2] = 0.0f;
+            normalPart.d.v[1] = 0.0f;
+            normalPart.d.v[0] = 0.0f;
+        }
+        up = DotXYZ(0.0f, 0.0f, 1.0f, m_normal);
+        if (up <= 0.0f)
+            steep = 0.0f;
+        else
+            steep = up * (up * up);
+        keep = 1.0f - steep * m_properties->m_friction;
+        tangentX *= keep;
+        tangentY *= keep;
+        tangentZ *= keep;
+        normalPart.d.v[0] += tangentX;
+        normalPart.d.v[1] += tangentY;
+        normalPart.d.v[2] += tangentZ;
+        m_velocity = normalPart;
+        if (g_cheats.m_keepGrenadeSpeed) {
+            newSpeed = m_velocity.Length();
+            if (newSpeed > 0.01 && speed > 0.01) {
+                ratio = speed / newSpeed;
+                m_velocity.d.v[0] *= ratio;
+                m_velocity.d.v[1] *= ratio;
+                m_velocity.d.v[2] *= ratio;
+            }
+        }
+        CVector3 offset;
+        if (m_resting) {
+            offset.d.v[0] = CONTACT_EPSILON * m_normal.d.v[0];
+            offset.d.v[1] = CONTACT_EPSILON * m_normal.d.v[1];
+            offset.d.v[2] = CONTACT_EPSILON * m_normal.d.v[2];
+        } else {
+            push = 2.0f * CONTACT_EPSILON;
+            offset.d.v[0] = push * m_normal.d.v[0];
+            offset.d.v[1] = push * m_normal.d.v[1];
+            offset.d.v[2] = push * m_normal.d.v[2];
+        }
+        const CVector3& current = m_tm.GetPos();
+        position.d.v[0] = current.d.v[0] + offset.d.v[0];
+        position.d.v[1] = current.d.v[1] + offset.d.v[1];
+        position.d.v[2] = current.d.v[2] + offset.d.v[2];
+        m_tm.SetPos(position);
+    }
 }
