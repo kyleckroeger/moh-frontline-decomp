@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -34,36 +34,48 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800bade0",
-      "size": 508,
+      "address": "0x800ba8e4",
+      "size": 1784,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000da90",
-      "size": 24,
+      "address": "0x8000da80",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800149b4",
-      "size": 36,
+      "address": "0x8001499c",
+      "size": 60,
       "type": 1
     },
     {
       "name": ".sbss",
-      "address": "0x8034ec3c",
-      "size": 5,
+      "address": "0x8034ec0c",
+      "size": 53,
       "type": 8,
       "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "DisplayTimeStamp__Ff",
+      "address": "0x800ba8e4",
+      "size": 632,
+      "binding": 1
+    },
+    {
+      "name": "DisplayLandmarkStamp__Ff",
+      "address": "0x800bab5c",
+      "size": 644,
+      "binding": 1
+    },
     {
       "name": "UpdateXFilesText__Ff",
       "address": "0x800bade0",
@@ -90,8 +102,11 @@
     }
   ],
   "externals": {
-    "DisplayLandmarkStamp__Ff": "0x800bab5c",
-    "DisplayTimeStamp__Ff": "0x800ba8e4",
+    "AEMS_SendEvent__FPv": "0x800ec26c",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SoundGetVolumes__FRfRf": "0x800ecf4c",
     "alpha": "0x8034e100",
     "bDisplayLandmarkStamp": "0x8034ec04",
     "bDisplayTimeStamp": "0x8034ec05",
@@ -99,17 +114,30 @@
     "bDoneParsingLandmark": "0x8034ec06",
     "bDoneParsingTimeStamp": "0x8034ec07",
     "bDoneShowingXFilesText": "0x8034ec09",
+    "charMarkerForLandmarkString": "0x8034ebfc",
+    "charMarkerForTimeStampString": "0x8034ec00",
+    "g_Shell": "0x80195090",
+    "g_screen": "0x80196ac0",
     "landmark": "0x801ef6e8",
+    "landmarkDisplayText": "0x801ef748",
+    "memcpy": "0x800094f8",
     "onscreenTime": "0x8034ebf4",
     "strcmp": "0x8013fed4",
     "strcpy": "0x80140040",
-    "timestamp": "0x801ef718"
+    "strlen": "0x801400f8",
+    "timestamp": "0x801ef718",
+    "timestampDisplayText": "0x801ef778",
+    "timestampFont": "0x8034ebf8"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "FadeValue__Fv"
+  ],
   "upstream": {},
   "local_externals": [],
-  "discarded_local_functions": [],
+  "discarded_local_functions": [
+    "FadeValue__Fv"
+  ],
   "sda_externals": [
     "alpha",
     "bDisplayLandmarkStamp",
@@ -118,14 +146,30 @@
     "bDoneParsingLandmark",
     "bDoneParsingTimeStamp",
     "bDoneShowingXFilesText",
-    "onscreenTime"
+    "charMarkerForLandmarkString",
+    "charMarkerForTimeStampString",
+    "onscreenTime",
+    "timestampFont"
   ],
   "original_file": "UserInterface.cpp",
   "original_file_index": 7237,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 40,
+      "address": "0x801779d8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 40,
+      "size": 40,
+      "address": "0x80177a00"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
@@ -136,23 +180,77 @@
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80350a10"
+      "address": "0x80350a14"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80350a14"
+      "address": "0x80350a1c"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x80350a18"
+      "address": "0x80350a20"
     },
     {
       "section": ".sdata2",
       "offset": 16,
+      "size": 8,
+      "address": "0x80350a28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350a30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350a34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350a38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350a3c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350a10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x80350a40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350a48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350a18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
       "size": 2,
       "address": "0x80350a4c"
     }
