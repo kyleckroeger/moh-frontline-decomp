@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x801611dc",
-      "size": 80,
+      "address": "0x801611d0",
+      "size": 92,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "MIX_getwetbuffer",
+      "address": "0x801611d0",
+      "size": 12,
+      "binding": 1
+    },
     {
       "name": "MIX_getframe",
       "address": "0x801611dc",
@@ -51,6 +57,7 @@
     }
   ],
   "externals": {
+    "sndfx": "0x803410b0",
     "sndmix": "0x80340eb0"
   },
   "undefined_in_discarded_code": [],
