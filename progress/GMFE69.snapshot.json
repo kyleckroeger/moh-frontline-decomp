@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 876564,
+    "matching_code_bytes": 876576,
     "total_executable_code_bytes": 1414572,
-    "percent": 61.96672915906719,
+    "percent": 61.96757747219654,
     "categories": {
       "reconstructed_game": 651168,
-      "restored_library": 225396
+      "restored_library": 225408
     },
-    "matching_functions": 4480
+    "matching_functions": 4481
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -151,6 +151,7 @@
     "config/GMFE69/Gecko_ExceptionPPC_endcatch.json": "7b4ed280ab0ca217bbf1d259691d74ae9be6b67f7aa3f92bca33835c8f18df0d",
     "config/GMFE69/Gecko_ExceptionPPC_find.json": "4f3e346d1e764cc06bbbf8e268e3bdfb547ecad6f0b97211eedf6f6f34292622",
     "config/GMFE69/Gecko_ExceptionPPC_throw.json": "92ab95c4ac855104cfd4251b19683407e324552df881b13775c3f8dd8e2cdd2d",
+    "config/GMFE69/Gecko_ExceptionPPC_what.json": "af228e218fa88f001e891f6608cebc27f5e68c02e955542a5495dec4a372aad2",
     "config/GMFE69/IStudio.json": "f646d91dd12881b9967450d50c57178e1cd350d889e364033c46eef6cb8747d5",
     "config/GMFE69/IStudioFuncs.json": "9bcb68b80673feaca960b8532184a3983320ee23fa83e607ec55b14e4fddce6a",
     "config/GMFE69/IStudioFuncs_resload.json": "36723bff34e0ce61715d983da4cac6e6e3b58e94cae7c3908e409534002b9dd2",
@@ -854,7 +855,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "98f624019d1439023695cc751703974af729848f2761607452cb00aa8a200ffb",
+    "config/GMFE69/project.json": "863af80b5a8d76df8694b206cd4b9129c3a629c8c9098c108a2b5bc5b7b51b80",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -3049,6 +3050,7 @@
     "src/msl/Gecko_ExceptionPPC_endcatch.cp": "69aa4c4994f22b385dbdc5a8fa6f74af9118de8e80c1a17a35de5ac721e02789",
     "src/msl/Gecko_ExceptionPPC_find.cp": "2b6933b536967b6e772ba87f14759adeeea17a5af8531f9a0d5c70338c0f0017",
     "src/msl/Gecko_ExceptionPPC_throw.cp": "d25ab9b6cb8a958cb87a1b992f7ded6ff2b0b29b86e4018466dbe223a11233d9",
+    "src/msl/Gecko_ExceptionPPC_what.cp": "bdc1da6b56e0d8805435b9a5f67cf060943f2939b02f1e9cac7e7463ad697fd0",
     "src/msl/NewMore.cp": "cb60e70e586609256a8ff5c7a4b0efbdf7586b7fa7e3cb43b7f84e309e87c1be",
     "src/msl/bsearch.c": "e18222caa9298644a58b0d497c283f472396491e6297b39abb4865632978533a",
     "src/msl/mslsupp.c": "dd035227b8e683320b6147ec006a50b26ba14f315be2755a3d573476e16eb2e8",
@@ -53159,6 +53161,60 @@
       "discarded_functions": [],
       "object_sha256": "fb59cca4d504e83502d6bc454c613593ec07e119499248294c05d009dc912993",
       "linked_sha256": "707ffbf6874e0f010c10f525c3d88ddb7cf478c3fadfa063a188953e194a5229"
+    },
+    {
+      "id": "Gecko_ExceptionPPC_what",
+      "category": "restored_library",
+      "functions": 1,
+      "code_bytes": 12,
+      "compiler_family": "GC",
+      "compiler_version": "1.3",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-pragma",
+        "warn_notinlined off",
+        "-maxerrors",
+        "1",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-fp_contract",
+        "on",
+        "-str",
+        "reuse",
+        "-multibyte",
+        "-DVERSION=0",
+        "-DNDEBUG=1",
+        "-O4,p",
+        "-use_lmw_stmw",
+        "on",
+        "-str",
+        "reuse,pool,readonly",
+        "-common",
+        "off",
+        "-inline",
+        "deferred,auto",
+        "-char",
+        "signed"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "7cd675df8c8f09366f13f429d68ec70d6dcd56ae078eb3e54c8e3739df9895e3",
+      "linked_sha256": "1686e2611302852eedf894841967152647dffc964920a945d8ea5ea2e77779be"
     }
   ],
   "code_map": {
@@ -57220,13 +57276,6 @@
             "kind": "function",
             "name": "__dt__Q23std13bad_exceptionFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8013a414",
-            "size": 12,
-            "kind": "function",
-            "name": "what__Q23std13bad_exceptionCFv",
-            "evidence": "private-reference"
           }
         ]
       },
