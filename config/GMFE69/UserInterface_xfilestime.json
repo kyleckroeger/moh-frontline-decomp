@@ -39,24 +39,37 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800baec4",
-      "size": 280,
+      "address": "0x800bade0",
+      "size": 508,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000da98",
-      "size": 16,
+      "address": "0x8000da90",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800149c0",
-      "size": 24,
+      "address": "0x800149b4",
+      "size": 36,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ec3c",
+      "size": 5,
+      "type": 8,
+      "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "UpdateXFilesText__Ff",
+      "address": "0x800bade0",
+      "size": 228,
+      "binding": 1
+    },
     {
       "name": "SetXFilesTextOnscreenTime__Ff",
       "address": "0x800baec4",
@@ -77,7 +90,11 @@
     }
   ],
   "externals": {
+    "DisplayLandmarkStamp__Ff": "0x800bab5c",
+    "DisplayTimeStamp__Ff": "0x800ba8e4",
+    "alpha": "0x8034e100",
     "bDisplayLandmarkStamp": "0x8034ec04",
+    "bDisplayTimeStamp": "0x8034ec05",
     "bDoneFading": "0x8034ec08",
     "bDoneParsingLandmark": "0x8034ec06",
     "bDoneParsingTimeStamp": "0x8034ec07",
@@ -94,7 +111,9 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "alpha",
     "bDisplayLandmarkStamp",
+    "bDisplayTimeStamp",
     "bDoneFading",
     "bDoneParsingLandmark",
     "bDoneParsingTimeStamp",
@@ -110,6 +129,30 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350a0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350a10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350a14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350a18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
       "size": 2,
       "address": "0x80350a4c"
     }
