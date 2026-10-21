@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x8001b7e8",
-      "size": 628,
+      "size": 852,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009744",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001013c",
-      "size": 24,
+      "size": 36,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034e723",
+      "size": 2,
+      "type": 8,
+      "input_alignment": 1
     }
   ],
   "functions": [
@@ -130,6 +137,12 @@
       "binding": 1
     },
     {
+      "name": "Flip__7CScreenFv",
+      "address": "0x8001ba5c",
+      "size": 224,
+      "binding": 1
+    },
+    {
       "name": "PutDisp__7CScreenFv",
       "address": "0x8001b7e8",
       "size": 4,
@@ -150,12 +163,18 @@
   ],
   "externals": {
     "GXCopyDisp": "0x8012cf78",
+    "GXDrawDone": "0x8012bff0",
     "GXInvalidateVtxCache": "0x8012bc6c",
     "GXSetColorUpdate": "0x8012fb7c",
+    "GXSetCopyClear": "0x8012cccc",
     "GXSetViewport": "0x801304c0",
     "GXSetViewportJitter": "0x801303a4",
+    "GXSetZMode": "0x8012fbfc",
     "Update__6CFaderFf": "0x8007bfcc",
+    "VIFlush": "0x8011c39c",
     "VIGetNextField": "0x8011c608",
+    "VISetBlack": "0x8011c524",
+    "VISetNextFrameBuffer": "0x8011c4b8",
     "g_FrameNum": "0x8034e718",
     "g_WaitFrameNum": "0x8034e71c",
     "g_bCapture": "0x8034e722",
@@ -180,9 +199,16 @@
   "original_file": "Screen.cpp",
   "original_file_index": 183,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".sbss2"
   ],
   "pool_references": [
+    {
+      "section": ".sbss2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351cc0"
+    },
     {
       "section": ".sdata2",
       "offset": 0,

@@ -6,7 +6,10 @@
 // count and Wait (waiting while a swap is pending, updating the fader by the
 // frames since the last wait, which it returns, switching the copy buffer
 // between the two frame buffers, setting the viewport - with jitter for a
-// field render mode - and re-enabling colour updates when not clearing).
+// field render mode - and re-enabling colour updates when not clearing), and
+// Flip (depth and colour state, the clear colour, copying the display to the
+// copy buffer and showing it, blanking until the first frame, then marking a
+// swap pending).
 // CScreen, CRect, CColor, CFader and the functions are named by the mangled
 // symbols; the members, the format records (their first word the format
 // type), the render mode view, the rectangle and colour layouts and the result
@@ -33,6 +36,12 @@ void GXSetViewportJitter(float, float, float, float, float, float, unsigned long
 void GXSetViewport(float, float, float, float, float, float);
 void GXInvalidateVtxCache();
 void GXSetColorUpdate(int);
+void GXSetZMode(int, int, int);
+void GXSetCopyClear(CColor, unsigned long);
+void GXDrawDone();
+void VISetNextFrameBuffer(void*);
+void VISetBlack(int);
+void VIFlush();
 }
 
 class CFader {
@@ -72,6 +81,7 @@ public:
     void SetClear(bool);
     unsigned long GetVSyncs();
     unsigned long Wait();
+    bool Flip();
     ScreenFormatView* GetDepthFormat();
     ScreenFormatView* GetFrameFormat();
     int GetWidth();
@@ -180,4 +190,22 @@ unsigned long CScreen::Wait() {
     if (!m_clear)
         GXSetColorUpdate(1);
     return frames;
+}
+
+bool CScreen::Flip() {
+    GXSetZMode(1, 3, 1);
+    GXSetColorUpdate(m_clear != 0);
+    CColor color = {m_clearColor.r, m_clearColor.g, m_clearColor.b, 0};
+    GXSetCopyClear(color, 0xffffff);
+    GXCopyDisp(m_copyBuffer, 1);
+    GXDrawDone();
+    VISetNextFrameBuffer(m_copyBuffer);
+    static bool DemoFirstFrame = true;
+    if (DemoFirstFrame) {
+        VISetBlack(0);
+        DemoFirstFrame = false;
+    }
+    VIFlush();
+    g_bSwap = 1;
+    return false;
 }
