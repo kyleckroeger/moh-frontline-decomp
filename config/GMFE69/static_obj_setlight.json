@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800aee38",
-      "size": 260,
+      "size": 1056,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d3a8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001448c",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,11 +62,20 @@
       "address": "0x800aee38",
       "size": 260,
       "binding": 1
+    },
+    {
+      "name": "HandleBulletCollision__13CStaticObjectFP7CBulletRC10CCollision",
+      "address": "0x800aef3c",
+      "size": 796,
+      "binding": 1
     }
   ],
   "externals": {
     "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v": "0x800d7cb8",
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "Explode__13CThrownBulletFv": "0x800d2528",
     "InitClass__7CMatrixFv": "0x80090b78",
     "PreTranslate__7CMatrixF8CVector3": "0x80090694",
     "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent": "0x800d80b0",
@@ -81,5 +90,28 @@
     "s_ClassInit__7CMatrix"
   ],
   "original_file": "static_obj.cpp",
-  "original_file_index": 6731
+  "original_file_index": 6731,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803508cc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803508d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350880"
+    }
+  ]
 }
