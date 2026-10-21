@@ -1049,7 +1049,6 @@
     "jaw_controller.json",
     "sound_bankalloc.json",
     "IStudioFuncs_resload.json",
-    "ConfigGC_defaults.json",
     "AIObject_lineofsight.json",
     "AISplinePath_traversal_dtor.json",
     "AISplinePath_dtor.json",
@@ -1110,7 +1109,6 @@
     "CoverPoint_invalidate.json",
     "CoverPoint_unoccupied.json",
     "CoverPoint.json",
-    "ConfigGC_onenter.json",
     "ConfigGC_init.json",
     "dvdStatus_gxinit.json",
     "UserInterface_compass.json",
@@ -1229,7 +1227,7 @@
     "stpparse.json",
     "animtran_quickscan.json",
     "memfree.json",
-    "ConfigGC_unassign.json"
+    "ConfigGC_dualconfig.json"
   ],
   "progress": {
     "code_bytes": 1414572,

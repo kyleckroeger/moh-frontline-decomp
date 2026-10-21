@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 885528,
+    "matching_code_bytes": 891308,
     "total_executable_code_bytes": 1414572,
-    "percent": 62.600419066685895,
+    "percent": 63.00902322398577,
     "categories": {
-      "reconstructed_game": 660120,
+      "reconstructed_game": 665900,
       "restored_library": 225408
     },
-    "matching_functions": 4492
+    "matching_functions": 4495
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -121,10 +121,8 @@
     "config/GMFE69/CARDWrite.json": "281660a172ac3b60419b0fb73f382239d55a0c22e81768890c98b0e0ca2bb817",
     "config/GMFE69/CPlusLibPPC.json": "7130e3e0ed13640ac092a923a5e6e634569f91e7222d5e00b557489223254e1d",
     "config/GMFE69/ConfigGC.json": "a2147d4f7c89ff0acf26b39d535dad3c534413416b09ea33f857c5d50d3d2d4e",
-    "config/GMFE69/ConfigGC_defaults.json": "1c2728a760cacbbf75917329c6716235df8e8b7e87a51148d3958f9ed0a24929",
+    "config/GMFE69/ConfigGC_dualconfig.json": "e3dbdd244bbb1684dd561ff6cc9f2718e556ccc39186c01a41347f2be88408a4",
     "config/GMFE69/ConfigGC_init.json": "1fadf6b4ef092e458e5243e306fdba0430c39f8b8346cd8ac2ddf9bb83d9b658",
-    "config/GMFE69/ConfigGC_onenter.json": "58610050d00e77e2b4a77d5b539df08200d7841bbe307574a2cf6226ff767793",
-    "config/GMFE69/ConfigGC_unassign.json": "d879936f90ffdfc957f3a74607230d073c5f8b0348eae1a08a0f51de68470ccc",
     "config/GMFE69/CoverPoint.json": "75a0001bdd6794082a1d93f6687efa6ca1d6711c4197cd9cc34cd972c214f1ed",
     "config/GMFE69/CoverPoint_invalidate.json": "8399819dc9162ea86a4c60e213f2ddafd4cb2924594f796b8c20e1ce94fc1e3c",
     "config/GMFE69/CoverPoint_unoccupied.json": "b18cdb5645480bb015333ea44cf01f1bc71e01ada0248fba6e9456c166736890",
@@ -858,7 +856,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "f57003cd21e2de1e56a47730ff1ebfb66d85fd7383bb70fb6dd9a89fecf9f9d2",
+    "config/GMFE69/project.json": "d0bcf728fe88e3ea0383e82fcf66d3ed2cc73d90856319f2bbd5dc958630f026",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2330,10 +2328,8 @@
     "src/game/AnimObjFactory_head.cpp": "bb3db37e5abcada93a27a403575691e2971f780b0cd898b0b3cf6b670fad1c32",
     "src/game/AnimObjFactory_weapon.cpp": "9ec9a6161aaf4b4bcfb71a2148ed75509800652635de14f5e3c3d62790988db7",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
-    "src/game/ConfigGC_defaults.cpp": "eb0ccd39d04a883dadba06fbbcb42d99238a019375d22268aba90f270de555f0",
+    "src/game/ConfigGC_dualconfig.cpp": "36a921035c534ee19304b0d6dffb31d657fd5568288607b823da76e41aee7a20",
     "src/game/ConfigGC_init.cpp": "24eb95602d6b2ed814e752b8a8e103891c709c44f6b82d94d358f86095ad9853",
-    "src/game/ConfigGC_onenter.cpp": "3f628fe100e43914a9997d2d2c04dff61fc761a011f25c925d6fbfbdb826373b",
-    "src/game/ConfigGC_unassign.cpp": "d5cbab8b347808ef7be7c555d716e08ae24bc74958252dc82d0229e24577ddd3",
     "src/game/CoverPoint.cpp": "6543df862a43d1cff97aa960f9575641c6df1378c548eb06b7ffd5f33a201706",
     "src/game/CoverPoint_invalidate.cpp": "8b67e4bc5a727a2f9355f9fc3b74181e536f8a22cfec787ced70e235d3c01f98",
     "src/game/CoverPoint_unoccupied.cpp": "2213c4580725c4972add13a5fc247f7af9c6960a035abec9e83ba6a5c3dab0d7",
@@ -46216,45 +46212,6 @@
       "linked_sha256": "c85b51f2bb1f5667ba04c4140ceb6b7ae828cfd2fe95777e0c681c5053e8d1f0"
     },
     {
-      "id": "ConfigGC_defaults",
-      "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 2460,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "off",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "1e28f283b93d9d2b2208ae9f9bed0c80c4f6d0192c03a2544deab048de9c6aab",
-      "linked_sha256": "7491908ae98c36a4c1c08ef5a28022ca08c2ad0dbd01e439871c43e737427f8b"
-    },
-    {
       "id": "AIObject_lineofsight",
       "category": "reconstructed_game",
       "functions": 2,
@@ -48625,45 +48582,6 @@
       "discarded_functions": [],
       "object_sha256": "a1ec47a8644bb4a6ef240a5de72acc4e44a9f2735eb6deee33f032ca608093cc",
       "linked_sha256": "dd7696c87a8609c0488258cfbd9b64cba136b4b16dd9142ec624e52a0aaf03ae"
-    },
-    {
-      "id": "ConfigGC_onenter",
-      "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 992,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "off",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "72394bd0f844fd10fb46717b9e196ec40ee4b2259c05d76eaa0552423aa48d30",
-      "linked_sha256": "643a229ea4876e129a270ff4eb5d54dceafa40f1e6263671ede7e08269f37c2a"
     },
     {
       "id": "ConfigGC_init",
@@ -53342,10 +53260,10 @@
       "linked_sha256": "867d6aaa2b6c6d3cc494a1f57beab6913d63cb6051bd209bc6419098f8069011"
     },
     {
-      "id": "ConfigGC_unassign",
+      "id": "ConfigGC_dualconfig",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 1872,
+      "functions": 14,
+      "code_bytes": 11104,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -53377,8 +53295,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "10b5b11895ff91d7afdb86c38710467e88b42a01de922373ebc6827f72b80d78",
-      "linked_sha256": "1968c115578f87f185b5c82bf18d5688bf5021c04b99ea9ca3b820a5ff9a9196"
+      "object_sha256": "5a794a26597fe7b4795994176db316536d9b5330248b670c671c5fd25c2fdd40",
+      "linked_sha256": "cb1a6ffe978a63400e908a2e6351d86422c8fbfd5a13bd11f60c7a17efa66d1f"
     }
   ],
   "code_map": {
@@ -57011,27 +56929,6 @@
         "file_record": 162,
         "file_name": "ConfigGC.cpp",
         "ranges": [
-          {
-            "address": "0x800f8148",
-            "size": 616,
-            "kind": "function",
-            "name": "RunNewConfigRendererer__11CDualConfigFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f83b0",
-            "size": 4092,
-            "kind": "function",
-            "name": "DisplayControlsForNewConfigRendererer__11CDualConfigFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f978c",
-            "size": 1072,
-            "kind": "function",
-            "name": "SetupButtonsForGame__11CDualConfigFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800fa30c",
             "size": 1664,
