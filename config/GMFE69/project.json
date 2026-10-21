@@ -1220,7 +1220,8 @@
     "ConfigGC_dualconfig.json",
     "world_volume_remove.json",
     "thrownbullet_explosion.json",
-    "UISUtils_parsehints.json"
+    "UISUtils_parsehints.json",
+    "objcreate_destroy.json"
   ],
   "progress": {
     "code_bytes": 1414572,

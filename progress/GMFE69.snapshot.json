@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 909424,
+    "matching_code_bytes": 909776,
     "total_executable_code_bytes": 1414572,
-    "percent": 64.28969327824953,
+    "percent": 64.31457713004357,
     "categories": {
-      "reconstructed_game": 684016,
+      "reconstructed_game": 684368,
       "restored_library": 225408
     },
-    "matching_functions": 4519
+    "matching_functions": 4521
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -778,6 +778,7 @@
     "config/GMFE69/objcreate_bsgoplayer.json": "8e87fc6148e0cebde99bcec67b7acd975130aa1447d751361eb850d3c7ad9875",
     "config/GMFE69/objcreate_create.json": "78e2e45e1384d07383fe5d951cf87350f1fda306b6410c29996374f4627185db",
     "config/GMFE69/objcreate_createplayer.json": "1921e7de09b5cc146cc52d4fff1f7800c84e36462b3b915b05b037bf91bb4901",
+    "config/GMFE69/objcreate_destroy.json": "f8dc77d31e242c29ab1c7e91f4f9584ccce844506893f1b3898e2769d7d953b7",
     "config/GMFE69/objcreate_dump.json": "7d5b8f37126976784d28facfab6738be8b14e79d2b2aad0f8ab51bf4a24377df",
     "config/GMFE69/objcreate_playerscript.json": "7f7c40f0d50a1ea691f3c15e5d6009c2a8c4179b9833d111f26fdcc64a606710",
     "config/GMFE69/objcreate_setscript_anim.json": "f63df65d6d1e6d00dda55458818e6dcd053a479d2aba7f6c53aa4835938280d5",
@@ -857,7 +858,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "89b59f76fa62e6399a081e61226a263ca63253be6287514937ed6f9a1386d0e8",
+    "config/GMFE69/project.json": "29874bba7689b9702540e11ad99f920e36d94747a2e71ddb82680c8390e18ac0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2806,6 +2807,7 @@
     "src/game/objcreate_bsgoplayer.cpp": "95319c17bf06f9212158b3730fd9a240e8c8bde962c8368d97b3bed50c115cdc",
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_createplayer.cpp": "a5f552e36a0182c3cafcd7865310e32a99a32605a61c6bdb5b6c61e52e2dc84d",
+    "src/game/objcreate_destroy.cpp": "fdfb393dd0eaaef05494587f3a8707420269310079e787d5d49e2839a6e23e12",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
     "src/game/objcreate_playerscript.cpp": "d3681c9f3eeba80156a23c349866d5c41172f659a275c80c02ca7cff786e77fa",
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
@@ -3267,7 +3269,7 @@
     "tools/baseline.py": "b1bcca74f43dbe7d4bb323a4a76db013527907f4ec739f1fb0d3b1fb246d0dd2",
     "tools/code_map.py": "2d148710de147a8d4b8b834b982de64ea0a0da56a743173df8772f06dace7204",
     "tools/compilers.json": "a7d66ea0a76c35649ab1313e5c6d8257cbee1f2790e230fafbbfb47fd6fa0367",
-    "tools/data_strip.py": "af89732adb72962ed110bdd6ac60c0230dd447808835c4db8c8e18c5229cbe13",
+    "tools/data_strip.py": "b5546dd00c9f148c4419f8f1d4ff1e7f5fba98b68306e2dd0fab3a42a9effefe",
     "tools/dependencies.py": "904789a0085a12fbc9405b95f47e5b827a33850738bf7e2aa2b3c3ed548da118",
     "tools/file_map.py": "01c2996472bee139aad5b50c663c3df6bf2513aa9724989c0bb648ef36425d00",
     "tools/formats.py": "3124d742d0518c913dfc575602bba63befbd9e0e78220e5a85059cda277f8f81",
@@ -3275,7 +3277,7 @@
     "tools/objdiff_config.py": "4133276adf513df6f4aad3d70df298f0bb0f8ced4ae1abc72703e8e0dc9bb13a",
     "tools/port_unit.py": "498e2072f0542d90a356eb6c9b2c958e520dfc5937704c3d9908377ee2931ad4",
     "tools/progress_report.py": "d406954b49cb8ed5318859687b215544f55237944c45ce655354f935538dae36",
-    "tools/project_build.py": "d95d801db6755179b456f89c97d456ed47d11c5329c2a79cafc1709c869588bd",
+    "tools/project_build.py": "5098844c943a4d76a3f986eaa68b8de3aeea0e1d0dcd715f7863faa1b0925d6d",
     "tools/reconstruct.py": "ae713fceeb3eef9f113af483ad5e3d5d6f1123fc424d0595099247e3e07a4cf2",
     "tools/sdk_build.py": "7e3412b31c53a289d28b6824fe8c348cd153eb4718c0f5fd15fb0489880e093b",
     "tools/setup.py": "eb4acee34b23a267076a95ad80a33f0b0180573777b7dc47b3b241f891c6ebd3",
@@ -53021,6 +53023,45 @@
       "discarded_functions": [],
       "object_sha256": "b4095e5bb73ced6b3bdc5986684b9040b93b0d4c0224b053d86591b0ca816762",
       "linked_sha256": "635e62507879c6fa15d98f9c0490a1c01969bd50474413c60851bdf3f4f5d1c1"
+    },
+    {
+      "id": "objcreate_destroy",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 352,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "5d8d150c1814691c6c4620f516b15426c5287a70ca0705f09859597757760f48",
+      "linked_sha256": "f1307ca09b6a93a3ef68fa6ab8024a2adc42b162f267cdff57af38992500d480"
     }
   ],
   "code_map": {
@@ -53503,20 +53544,6 @@
             "size": 344,
             "kind": "function",
             "name": "Destroy__17BSGO_DestructableFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003c528",
-            "size": 176,
-            "kind": "function",
-            "name": "Destroy__9BSGO_TankFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003c5d8",
-            "size": 176,
-            "kind": "function",
-            "name": "Destroy__12BSGO_SoldierFv",
             "evidence": "exception-index"
           },
           {

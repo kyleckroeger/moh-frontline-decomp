@@ -161,9 +161,10 @@ def validate_units(original, units):
                     or kept[0]["type"] not in (1, 2) or kept[0]["binding"] != 2
                     or name in unit["discarded_functions"] or name in unit.get("sda_externals", [])):
                 raise ValueError(f"Weak duplicate lacks one retained original copy: {name}")
-        # A function of the same original source file that this unit compiles
-        # (a static helper it inlines, or a global function a recursive
-        # inline reaches) but another unit of that file places.
+        # A function or data object of the same original source file that
+        # this unit compiles (a static helper it inlines, a global function a
+        # recursive inline reaches, a file-local RTTI record) but another unit
+        # of that file places.
         for name in unit.get("file_duplicates", []):
             record = []
             if file_index is not None:
@@ -171,8 +172,8 @@ def validate_units(original, units):
                     if symbol["type"] == 4:
                         break
                     record.append(symbol)
-            copies = ([s for s in record if s["name"] == name and s["type"] == 2 and s["section"]]
-                      or [s for s in symbols if s["name"] == name and s["type"] == 2 and s["section"] and s["binding"]])
+            copies = ([s for s in record if s["name"] == name and s["type"] in (1, 2) and s["section"]]
+                      or [s for s in symbols if s["name"] == name and s["type"] in (1, 2) and s["section"] and s["binding"]])
             if (not unit["strip_unused"] or file_index is None or name not in unit["externals"]
                     or len(copies) != 1 or copies[0]["address"] != int(unit["externals"][name], 16)
                     or any(a <= copies[0]["address"] < b for a, b in code)

@@ -15,7 +15,7 @@ came from another file, as MW's linker kept the first weak definition and
 dropped later ones. A listed virtual table may be compiled global (the unit
 defines a weak destructor out of line, which makes it the key function) as
 long as the original copy is weak. A unit may also list `file_duplicates`:
-functions of any binding it compiles (a static helper it inlines, or a global
+functions or data objects of any binding it compiles (a static helper it inlines, or a global
 function of the same file that a recursive inline reaches) whose original copy
 another unit of the same original source file places. The compiled copy is
 renamed `<name>$duplicate` and every relocation to it is pointed at a new
@@ -118,11 +118,12 @@ def redirect_weak_duplicates(data, unit):
         # still be weak (project_build checks that), and the compiled table is
         # dropped like any other duplicate.
         vtable = symbol is not None and name.startswith("__vt__") and (symbol["type"], code) == (STT_OBJECT, False)
-        # A file duplicate is a function of any binding whose original copy
-        # another unit of the same original source file places.
+        # A file duplicate is a function or data object (such as a class's
+        # file-local RTTI record) of any binding whose original copy another
+        # unit of the same original source file places.
         if name in unit.get("file_duplicates", []):
-            if symbol is None or (symbol["type"], code) != (STT_FUNC, True):
-                raise ValueError(f"File duplicate is not one compiled function: {name}")
+            if symbol is None or (symbol["type"], code) not in ((STT_FUNC, True), (STT_OBJECT, False)):
+                raise ValueError(f"File duplicate is not one compiled function or data object: {name}")
             found.append(matches[0])
             continue
         if (symbol is None or symbol["binding"] not in ((STB_WEAK, STB_GLOBAL) if vtable else (STB_WEAK,))
