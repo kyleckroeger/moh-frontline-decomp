@@ -1227,7 +1227,8 @@
     "path_fadevolume.json",
     "Gecko_ExceptionPPC_what.json",
     "stpparse.json",
-    "animtran_quickscan.json"
+    "animtran_quickscan.json",
+    "memfree.json"
   ],
   "progress": {
     "code_bytes": 1414572,

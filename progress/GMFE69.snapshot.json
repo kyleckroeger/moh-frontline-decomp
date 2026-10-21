@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 879400,
+    "matching_code_bytes": 879736,
     "total_executable_code_bytes": 1414572,
-    "percent": 62.16721382863509,
+    "percent": 62.19096659625668,
     "categories": {
-      "reconstructed_game": 653992,
+      "reconstructed_game": 654328,
       "restored_library": 225408
     },
-    "matching_functions": 4483
+    "matching_functions": 4484
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -750,6 +750,7 @@
     "config/GMFE69/memclear.json": "14ed66bb9f1df277a76613048da6cdd05021817f4d48a33cde217c54a6035c7b",
     "config/GMFE69/memcopy.json": "0330568031415c48128091886690c21c9191493b167613550e074170964278f4",
     "config/GMFE69/memfill.json": "ca0086e29fc0fb3ec93cb9616e066a38e603eaa801272c047e590396f968760d",
+    "config/GMFE69/memfree.json": "798188507c7b1b6784d4b52aed33cac82af5cd52ff2af4962f9180c49b7d0385",
     "config/GMFE69/meminit.json": "7f97bc09beb240774c638e6eea15407c70e896c05531a91a080e597eb5beb25b",
     "config/GMFE69/meminitadr.json": "381fcfbcbb6c274bbc1966d84f43a5ba64175efe3e51b4f0b3824230aa348172",
     "config/GMFE69/memlist.json": "dac5afe641d4b67e220bb97c46df327fdf2c3077c88d2ba7e663dc0dd5dbbc4f",
@@ -856,7 +857,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "a4a5dc18b93e76e28225da080db3d46fd5d959389f802d995f26dbaf2e0a0eeb",
+    "config/GMFE69/project.json": "dff8fca74ed628f86f21754aa3117ec501bb04126d3c51bff57bab301572f50f",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2049,6 +2050,7 @@
     "src/ea/memclear.cpp": "8533b60f48b86f07d120cb308bc5018b0275144d78c0cdeaa4bbf265d98c4d9e",
     "src/ea/memcopy.cpp": "3f0f478c68f8768a78a25a26b586a914c33dd3b94761909ff543e74e3fe2bd24",
     "src/ea/memfill.cpp": "b6b4cd5f43024135698bef1950d49238281dc813b15c00aca9e69a6a30169ef3",
+    "src/ea/memfree.cpp": "f22df86253bb3c5a4d9efffe691424b68dc2788e7131c62f04720e5d144a52df",
     "src/ea/meminit.cpp": "6f4b58a238cdb1b45a57d44204b6f524eb6a0e3468a4c5007b6b87891252a75f",
     "src/ea/meminitadr.cpp": "95eed033a03deab2f0918e8b1a92183e8cf0a9bb94d793f3558d6aa13d112d8d",
     "src/ea/memlist.cpp": "af06183e742ee289773e18004a7f251be79665847c496d5baad08faba2fff294",
@@ -53297,6 +53299,45 @@
       "discarded_functions": [],
       "object_sha256": "4560d7b15ff356016111e439bf1b5a0903e2a6e8899f1a7a09a0f7de4fc03763",
       "linked_sha256": "fce0b65e005859e9fade84dce0880d54dd21ed1932e6d3c387f13b09f334f146"
+    },
+    {
+      "id": "memfree",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 336,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "0096ce1259ec96b563c80c49b2db1af270cb63aca3c48a42519a7c3706a2a567",
+      "linked_sha256": "867d6aaa2b6c6d3cc494a1f57beab6913d63cb6051bd209bc6419098f8069011"
     }
   ],
   "code_map": {
@@ -57493,15 +57534,8 @@
         ]
       },
       {
-        "name": "Unknown file/.text @ 8014f83c",
+        "name": "Unknown file/.text @ 8014f98c",
         "ranges": [
-          {
-            "address": "0x8014f83c",
-            "size": 336,
-            "kind": "function",
-            "name": "MEM_free",
-            "evidence": "unknown-file"
-          },
           {
             "address": "0x8014f98c",
             "size": 360,
