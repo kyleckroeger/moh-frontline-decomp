@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d1340",
-      "size": 392,
+      "address": "0x800d11d4",
+      "size": 756,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e5fc",
-      "size": 40,
+      "address": "0x8000e5f4",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001532c",
-      "size": 60,
+      "address": "0x80015320",
+      "size": 72,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AttemptUpdate__17CProjectileBulletFf",
+      "address": "0x800d11d4",
+      "size": 364,
+      "binding": 1
+    },
     {
       "name": "BeginUpdate__17CProjectileBulletFf",
       "address": "0x800d1340",
@@ -89,9 +95,12 @@
     }
   ],
   "externals": {
+    "CONTACT_EPSILON": "0x80350ba8",
     "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc",
     "Shutdown__7CBulletFv": "0x800ccc04",
     "g_pBulletFactory": "0x8034e9e0",
     "g_scene": "0x8019484c"
@@ -102,6 +111,7 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "CONTACT_EPSILON",
     "g_pBulletFactory"
   ],
   "original_file": "projectilebullet.cpp",

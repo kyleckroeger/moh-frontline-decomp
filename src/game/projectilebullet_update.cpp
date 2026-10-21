@@ -1,5 +1,8 @@
-// A fragment of projectilebullet.cpp (0x800d1340): CProjectileBullet's
-// BeginUpdate (the matrix position copied to the current and previous
+// A fragment of projectilebullet.cpp (0x800d11d4): CProjectileBullet's
+// AttemptUpdate (the value at +148 reset to FLT_MAX, the matrix moved from
+// the position along its forward row by speed * time, the local fiber rebuilt
+// from (0, -step, 0) to the origin and transformed into the world fiber, whose
+// extents, widened by CONTACT_EPSILON, go to the four extent nodes), BeginUpdate (the matrix position copied to the current and previous
 // positions, the value at +148 reset to FLT_MAX, and the life at +144 counted
 // down to zero), OnCollision (marks the bullet dead and lets the other node
 // handle the hit), Shutdown (sets the shut-down flag, then CBullet's),
@@ -24,6 +27,10 @@ class CRenderList;
 class CVector3 {
 public:
     CVector3() {}
+    CVector3(const CVector3& o) {
+        pair[0] = o.pair[0];
+        pair[1] = o.pair[1];
+    }
     CVector3(float ax, float ay, float az) {
         v[0] = ax;
         v[1] = ay;
@@ -51,6 +58,7 @@ class CMatrix {
 public:
     void SetPos(CVector3);
     CVector3 GetPos() const { return pos; }
+    CVector3 GetFront() const { return front; }
 
     CVector3 right;
     CVector3 front;
@@ -209,6 +217,29 @@ public:
     CVolFiber m_fiberB;
     AttachedEffectView* m_effect;
 };
+
+extern const float CONTACT_EPSILON;
+
+void CProjectileBullet::AttemptUpdate(float dt) {
+    m_value94 = 3.4028235e+38f;
+    float step = m_speed * dt;
+    const CVector3& dir = m_matrix.GetFront();
+    float dx = step * dir.v[0];
+    float dy = step * dir.v[1];
+    float dz = step * dir.v[2];
+    CVector3 newPos(m_position.v[0] + dx, m_position.v[1] + dy, m_position.v[2] + dz);
+    m_matrix.SetPos(newPos);
+    CVector3 start(0.0f, -step, 0.0f);
+    m_fiberA.Set(start, CVector3(0.0f, 0.0f, 0.0f));
+    m_fiberB.TransformedCopy(m_fiberA, m_matrix);
+    CVector3 low;
+    CVector3 high;
+    m_fiberB.GetExtents(low, high);
+    m_extentMinX->m_value = low.v[0] - CONTACT_EPSILON;
+    m_extentMinY->m_value = low.v[1] - CONTACT_EPSILON;
+    m_extentMaxX->m_value = CONTACT_EPSILON + high.v[0];
+    m_extentMaxY->m_value = CONTACT_EPSILON + high.v[1];
+}
 
 void CProjectileBullet::BeginUpdate(float dt) {
     CVector3 pos = m_matrix.pos;
