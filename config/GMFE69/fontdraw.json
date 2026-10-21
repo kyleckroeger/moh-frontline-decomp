@@ -18,7 +18,7 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -27,9 +27,9 @@
     "-str",
     "reuse",
     "-use_lmw_stmw",
-    "on",
+    "off",
     "-fp_contract",
-    "on"
+    "off"
   ],
   "include_dirs": [],
   "strip_unused": false,
@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8014e480",
-      "size": 220,
+      "size": 1328,
       "type": 1
     }
   ],
@@ -60,11 +60,20 @@
       "address": "0x8014e53c",
       "size": 32,
       "binding": 1
+    },
+    {
+      "name": "FONT_getrectx<Uc>__FP4FONTPCUcPfPfPfPf",
+      "address": "0x8014e55c",
+      "size": 1108,
+      "binding": 2
     }
   ],
   "externals": {
+    "FONT_bsearch": "0x8014e438",
     "FONT_drawtextx<Uc>__FP4FONTffPCUcPv": "0x8014e9b0",
-    "FONT_getrectx<Uc>__FP4FONTPCUcPfPfPfPf": "0x8014e55c"
+    "FONT_getkern": "0x8014edb0",
+    "_restgpr_24": "0x80138a50",
+    "_savegpr_24": "0x80138a04"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -73,5 +82,40 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "fontdraw.cpp",
-  "original_file_index": 12203
+  "original_file_index": 12203,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351998"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035199c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803519a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x803519a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x803519b0"
+    }
+  ]
 }

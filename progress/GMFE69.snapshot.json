@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 879736,
+    "matching_code_bytes": 880844,
     "total_executable_code_bytes": 1414572,
-    "percent": 62.19096659625668,
+    "percent": 62.269294175199285,
     "categories": {
-      "reconstructed_game": 654328,
+      "reconstructed_game": 655436,
       "restored_library": 225408
     },
-    "matching_functions": 4484
+    "matching_functions": 4485
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -657,7 +657,7 @@
     "config/GMFE69/font_render.json": "007fa9826bbc6177252c34cc6303bed1fcf8f30d430a051dd401264deeade07a",
     "config/GMFE69/fontchar.json": "52d15cdb73d5c697247c5e96fc9c264304ab2e315365308ab6d0f47d0d6364d8",
     "config/GMFE69/fontcreate.json": "8eae282aa690a9f53df0acd27ccc63183d4e34168a62224a70720500e604ea54",
-    "config/GMFE69/fontdraw.json": "9af54f542407845e138b2d9d997b5a7e226737733e99dd91582fa8ecbe9f86d8",
+    "config/GMFE69/fontdraw.json": "743850bf803606f15b1bbcd2eea6002055414f2ed3b56fcee82a8fa7786420e6",
     "config/GMFE69/fontdriver.json": "27b42de3991900159428c94f1a033360c2531114649cb99d10abcc4c476dc96d",
     "config/GMFE69/fontinit.json": "1c97d809ef3460cf827064c1aba6a87b3ef5b863e64900b31fc5ddc59ce2ee7c",
     "config/GMFE69/fontkern.json": "65d53456633b757877c5354e496b1175e6b16a7c9b8661b24ae6032d9a098111",
@@ -2023,7 +2023,7 @@
     "src/ea/filesys_del.cpp": "32672a53a87aced03a365e68ba9062ce673704846614d2ec8371c47bd4bead28",
     "src/ea/fontchar.cpp": "2980d56dfbdbbeb46cba293f7c2397b7518079ba32d510118510c9301ee15a47",
     "src/ea/fontcreate.cpp": "fb846d119db1a373f03387cc09f0db8bf0c80ede2c1efb305914580be2630def",
-    "src/ea/fontdraw.cpp": "3792f61452d68d7d29197e4eab00a56688b9bb8e22285faf5c8f78641b4cf1eb",
+    "src/ea/fontdraw.cpp": "c4588045a67bc531887fc9f9bdb78ec69ab1fcad685f8a0f515bf58fe1da3544",
     "src/ea/fontdriver.cpp": "799464786df81aa82291f1d18699c4c4d2283338c1e6c75e4e508bc368470f9c",
     "src/ea/fontinit.cpp": "23ee3e1e4457de8dba71c1b08e1355e02844f0753acb1b2cdf4d8bc9ab7e7fa3",
     "src/ea/fontkern.cpp": "f2ac287d98f8444b5d1f89ddae2142a73a478d775b60d73a9ccae800010248b1",
@@ -21031,8 +21031,8 @@
     {
       "id": "fontdraw",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 220,
+      "functions": 4,
+      "code_bytes": 1328,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21049,7 +21049,7 @@
         "off",
         "-O4,p",
         "-inline",
-        "auto",
+        "on",
         "-pragma",
         "cats off",
         "-nosyspath",
@@ -21058,14 +21058,14 @@
         "-str",
         "reuse",
         "-use_lmw_stmw",
-        "on",
+        "off",
         "-fp_contract",
-        "on"
+        "off"
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0e5d6b66ecf45274c9b8bcbfdec3f74f5de819405437f7586308270577cee0b4",
-      "linked_sha256": "ce08396fad4cc0ac8586471d77bea4945829550c5bf211b8e86e55516f340675"
+      "object_sha256": "7e1f54f1002b8a6c49a065250a7e1390e0208885926899c4ff25853681af8e69",
+      "linked_sha256": "9e87a49edafba32494c2bb5eedb365dd41c14c4bd676c365c448dec67535b4d1"
     },
     {
       "id": "rcmp_mpc_codec",
@@ -57477,13 +57477,6 @@
         "file_record": 375,
         "file_name": "fontdraw.cpp",
         "ranges": [
-          {
-            "address": "0x8014e55c",
-            "size": 1108,
-            "kind": "function",
-            "name": "FONT_getrectx<Uc>__FP4FONTPCUcPfPfPfPf",
-            "evidence": "between-same-file"
-          },
           {
             "address": "0x8014e9b0",
             "size": 1024,
