@@ -38,8 +38,26 @@
     {
       "name": ".text",
       "address": "0x800c74c8",
-      "size": 72,
+      "size": 1276,
       "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000de9c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014d5c",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ec48",
+      "size": 9,
+      "type": 8
     }
   ],
   "functions": [
@@ -48,10 +66,20 @@
       "address": "0x800c74c8",
       "size": 72,
       "binding": 1
+    },
+    {
+      "name": "Test__10CCollisionFRf",
+      "address": "0x800c7510",
+      "size": 1204,
+      "binding": 1
     }
   ],
   "externals": {
-    "g_contactPool": "0x801f2ffc"
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
+    "TIME_STEP_EPSILON": "0x80350e58",
+    "g_contactPool": "0x801f2ffc",
+    "g_scene": "0x8019484c",
+    "sprintf": "0x8013dab4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -60,7 +88,45 @@
     "g_contactPool"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "TIME_STEP_EPSILON"
+  ],
   "original_file": "collision.cpp",
-  "original_file_index": 7594
+  "original_file_index": 7594,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 12,
+      "address": "0x80177bd8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
+      "size": 58,
+      "address": "0x80177be4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350bb4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350bb0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350bb8"
+    }
+  ]
 }
