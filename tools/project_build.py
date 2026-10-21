@@ -161,6 +161,30 @@ def validate_units(original, units):
                     or kept[0]["type"] not in (1, 2) or kept[0]["binding"] != 2
                     or name in unit["discarded_functions"] or name in unit.get("sda_externals", [])):
                 raise ValueError(f"Weak duplicate lacks one retained original copy: {name}")
+        # A function of the same original source file that this unit compiles
+        # (a static helper it inlines, or a global function a recursive
+        # inline reaches) but another unit of that file places.
+        for name in unit.get("file_duplicates", []):
+            record = []
+            if file_index is not None:
+                for symbol in symbols[file_index + 1:]:
+                    if symbol["type"] == 4:
+                        break
+                    record.append(symbol)
+            copies = ([s for s in record if s["name"] == name and s["type"] == 2 and s["section"]]
+                      or [s for s in symbols if s["name"] == name and s["type"] == 2 and s["section"] and s["binding"]])
+            if (not unit["strip_unused"] or file_index is None or name not in unit["externals"]
+                    or len(copies) != 1 or copies[0]["address"] != int(unit["externals"][name], 16)
+                    or any(a <= copies[0]["address"] < b for a, b in code)
+                    or name in unit["discarded_functions"] or name in unit.get("weak_duplicates", [])):
+                raise ValueError(f"File duplicate lacks one original copy outside the unit: {name}")
+        # CW emits member-template instances weak; the original linker kept a
+        # file-local copy. Such a function keeps its local original binding.
+        for name in unit.get("weak_locals", []):
+            if (not any(f["name"] == name and f["binding"] == 0 for f in unit["functions"])
+                    or any(s["name"] == name and s["binding"] and s["section"] for s in symbols)
+                    or not unit.get("original_file")):
+                raise ValueError(f"Weak local is not a file-local original function: {name}")
         validate_pool(original, unit)
         local_discards = set(unit.get("discarded_local_functions", []))
         if not local_discards <= set(unit["discarded_functions"]) or (local_discards and not unit.get("original_file")):
@@ -269,7 +293,7 @@ def validate_object(obj, unit):
         raise ValueError("Expected a relocatable compiler object")
     symbols = list(obj.symbols())
     functions = [s for s in symbols if s["type"] == 2 and s["section"]]
-    renamed = {name + DUPLICATE_SUFFIX for name in unit.get("weak_duplicates", [])}
+    renamed = {name + DUPLICATE_SUFFIX for name in unit.get("weak_duplicates", []) + unit.get("file_duplicates", [])}
     duplicates = {s["name"] for s in functions if s["name"] in renamed}
     expected = ({function_name(f["name"], f["binding"]) for f in unit["functions"]}
                 | set(unit["discarded_functions"]) | duplicates)
@@ -292,6 +316,8 @@ def validate_object(obj, unit):
     # SN's linker emits weak definitions as global, so the original binding
     # (weak, global or local) is checked here, before linking.
     compiled_binding = {function_name(s["name"], s["binding"]): s["binding"] for s in functions}
+    weak_locals = set(unit.get("weak_locals", []))
+    compiled_binding.update({name: 0 for name in weak_locals if compiled_binding.get(name) == 2})
     if any(compiled_binding.get(function_name(f["name"], f["binding"])) != f["binding"] for f in unit["functions"]):
         raise ValueError("Compiled function binding differs from original")
     if any(f["section"] not in code for f in functions):
@@ -402,7 +428,9 @@ def verify_unit(original, linked, unit):
                             offset=s["offset"] + kept_slice(manifest_sections[s["name"]])[0],
                             size=manifest_sections[s["name"]]["size"]) for s in actual_sections]
     def linked_binding(records):
-        return sorted((function_name(name, binding), address, size, min(binding, 1))
+        # A weak local (checked before linking) links as a global.
+        return sorted((function_name(name, binding), address, size,
+                       1 if name in unit.get("weak_locals", []) else min(binding, 1))
                       for name, address, size, binding in records)
 
     if linked_binding(function_records(linked)) != linked_binding(manifest_functions(unit)):

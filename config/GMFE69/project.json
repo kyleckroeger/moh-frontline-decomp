@@ -1219,7 +1219,8 @@
     "memfree.json",
     "ConfigGC_dualconfig.json",
     "world_volume_remove.json",
-    "thrownbullet_explosion.json"
+    "thrownbullet_explosion.json",
+    "UISUtils_parsehints.json"
   ],
   "progress": {
     "code_bytes": 1414572,

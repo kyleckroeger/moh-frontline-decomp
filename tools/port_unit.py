@@ -83,6 +83,9 @@ def anchor(addresses, name, value):
 
 def find(symbol, original, locals_):
     candidates = locals_.get(symbol["name"], []) if symbol["binding"] == 0 else original.globals(symbol["name"])
+    if symbol["binding"] == 2 and symbol["type"] == 2 and not candidates:
+        # CW emits member-template instances weak; the original kept a file-local copy.
+        candidates = locals_.get(symbol["name"], [])
     if symbol["binding"] == 0 and not candidates:
         # MW numbers function statics per compilation: name$123.
         stem = symbol["name"].split("$", 1)[0]
@@ -93,7 +96,7 @@ def find(symbol, original, locals_):
 CODE_SECTIONS = (".text", ".init")
 
 
-def text_layout(obj, original, locals_, duplicates=()):
+def text_layout(obj, original, locals_, duplicates=(), file_duplicates=()):
     """Keep functions the original has; discard absent ones; reject size changes.
 
     Named weak duplicates are dropped like discarded functions; the original's
@@ -108,12 +111,15 @@ def text_layout(obj, original, locals_, duplicates=()):
                            key=lambda s: s["address"])
         kept, packed = [], 0
         for function in functions:
+            if function["name"] in file_duplicates:
+                continue
             if function["name"] in duplicates:
                 if function["binding"] != 2:
                     raise ValueError(f"Weak duplicate is not weak in the compiled object: {function['name']}")
                 continue
             target = find(function, original, locals_)
-            absent = not (locals_.get(function["name"]) if function["binding"] == 0 else original.globals(function["name"]))
+            absent = target is None and not (locals_.get(function["name"]) if function["binding"] == 0
+                                             else original.globals(function["name"]))
             if target is not None and target["size"] == function["size"]:
                 kept.append((function, packed))
                 packed += function["size"]
@@ -135,7 +141,7 @@ def pool_reference(obj, section, offset, target, pool):
     anchor(pool, (section["name"], start, pool_item(obj, section, start)), target - (offset - start))
 
 
-def match(obj, original, file_index, duplicates=(), pooled=()):
+def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=()):
     """Return section addresses, external addresses and the stripped text layout.
 
     References into a pooled section are recorded per item in `pool` instead
@@ -145,7 +151,8 @@ def match(obj, original, file_index, duplicates=(), pooled=()):
     locals_ = original.locals_of(file_index)
     names = {s["index"]: s["name"] for s in obj.sections}
     addresses, externals, pool = {}, {}, {}
-    layout, discarded = text_layout(obj, original, locals_, duplicates)
+    layout, discarded = text_layout(obj, original, locals_, duplicates, file_duplicates)
+    duplicates = set(duplicates) | set(file_duplicates)
 
     def position(section, offset):
         """Offset after stripping: discarded code has no position."""
@@ -382,18 +389,19 @@ def draft(args):
     obj = Elf32((work / "compiled.o").read_bytes())
     try:
         addresses, externals, layout, discarded, pool = match(obj, original, file_index, set(args.weak_duplicate),
-                                                             set(args.pool))
+                                                             set(args.pool), set(args.file_duplicate))
         kept = [k for kept_, _ in layout.values() for k in kept_]
     except ValueError:
         compare_functions(obj, original, file_index)
         raise
     sections, stripped = [], []
-    dropped = discarded or args.weak_duplicate
+    dropped = discarded or args.weak_duplicate or args.file_duplicate
+    duplicates = set(args.weak_duplicate) | set(args.file_duplicate)
     for section in obj.sections:
         if not section["flags"] & 2 or not section["size"] or section["name"] in args.pool:
             continue
         if section["name"] not in addresses:
-            if dropped and not referenced(obj, section["index"], kept, addresses, set(args.weak_duplicate)):
+            if dropped and not referenced(obj, section["index"], kept, addresses, duplicates):
                 stripped.append(section["name"])
                 continue
             raise ValueError(f"Could not place compiled section {section['name']}")
@@ -404,7 +412,7 @@ def draft(args):
                              "size": layout[section["index"]][1], "type": 1})
             continue
         span = kept_span(obj, section["index"], kept, original, original.locals_of(file_index),
-                         addresses[section["name"]], set(args.weak_duplicate))
+                         addresses[section["name"]], duplicates)
         if span is None and dropped:
             stripped.append(section["name"])
             continue
@@ -428,11 +436,11 @@ def draft(args):
                  and any(a <= s["address"] < b for a, b in code)]
     obj_symbols = list(obj.symbols())
     undefined = sorted({s["name"] for s in obj_symbols if s["binding"] and not s["section"] and s["name"]}
-                       | set(args.weak_duplicate))
+                       | duplicates)
     for name in undefined:
         if name not in externals and len(original.globals(name)) == 1:
             externals[name] = original.globals(name)[0]["address"]
-    unit["strip_unused"] = bool(discarded or args.weak_duplicate)
+    unit["strip_unused"] = bool(dropped)
     locals_ = original.locals_of(file_index)
     sda = sorted({symbol["name"] for _, _, kind, symbol, _ in relocations(obj) if kind == SDA21 and not symbol["section"]})
     unit.update(
@@ -451,6 +459,12 @@ def draft(args):
         unit["stripped_sections"] = stripped
     if args.weak_duplicate:
         unit["weak_duplicates"] = sorted(args.weak_duplicate)
+    if args.file_duplicate:
+        unit["file_duplicates"] = sorted(args.file_duplicate)
+    weak_locals = sorted(f["name"] for f, _ in kept if f["binding"] == 2 and f["type"] == 2
+                         and not original.globals(f["name"]))
+    if weak_locals:
+        unit["weak_locals"] = weak_locals
     if args.pool:
         unit["pooled_sections"] = args.pool
         unit["pool_references"] = [{"section": name, "offset": start, "size": size, "address": hex(address)}
@@ -479,6 +493,8 @@ if __name__ == "__main__":
     parser.add_argument("--category", default="restored_library")
     parser.add_argument("--weak-duplicate", action="append", default=[],
                         help="A weak function or data object (a vtable) this unit compiles whose original copy came from another file")
+    parser.add_argument("--file-duplicate", action="append", default=[],
+                        help="A function this unit compiles whose original copy another unit of the same file places")
     parser.add_argument("--pool", action="append", default=[],
                         help="A compiler data section whose items link at their original pool addresses")
     parser.add_argument("--upstream-path", help="Path of the source in the upstream repository")

@@ -200,6 +200,21 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   section that holds only such copies is a stripped section. Its bytes are
   never placed, compared or counted.
   `port_unit.py --weak-duplicate NAME` drafts all of this.
+- **File duplicates.** A fragment may compile a function of its own source
+  file that another fragment places: a static helper it inlines (and calls out
+  of line at the deepest inline level of a recursion), or a global function of
+  the file that a recursive inline reaches. The unit lists it in
+  `file_duplicates` and in `externals` at the original copy's address; it is
+  renamed and redirected exactly like a weak duplicate, whatever its binding.
+  `validate_units` requires stripping and exactly one original function of
+  that name in the unit's file record (or one global), outside the unit's own
+  code. `port_unit.py --file-duplicate NAME` drafts it.
+- **Weak locals.** CW emits a member-template instance (such as a `list<T>`
+  range constructor) weak, while the original linker kept a file-local copy.
+  `port_unit.py` matches a compiled weak function with no global original to
+  the file record's local copy of that name and lists it in `weak_locals`;
+  the build accepts the weak compiled binding for those names only, where the
+  original has no global of that name. Bytes are compared as usual.
 - **Pooled constants and strings.** MW collects a file's `@N` floats, doubles
   and string literals into shared `.sdata2`, `.rodata` or `.data` pools. A
   fragment compiles only its own entries, so its pool section cannot sit at one

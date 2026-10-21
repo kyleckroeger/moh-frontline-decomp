@@ -14,8 +14,12 @@ as a class's virtual table, that it compiles but whose copy in the original
 came from another file, as MW's linker kept the first weak definition and
 dropped later ones. A listed virtual table may be compiled global (the unit
 defines a weak destructor out of line, which makes it the key function) as
-long as the original copy is weak. The compiled copy is renamed `<name>$duplicate` and every
-relocation to it is pointed at a new undefined symbol of the original name,
+long as the original copy is weak. A unit may also list `file_duplicates`:
+functions of any binding it compiles (a static helper it inlines, or a global
+function of the same file that a recursive inline reaches) whose original copy
+another unit of the same original source file places. The compiled copy is
+renamed `<name>$duplicate` and every relocation to it is pointed at a new
+undefined symbol of the original name,
 which the unit resolves to the retained copy; SN's unused-code stripping then
 drops a renamed function, and a data section holding only renamed objects is
 a stripped section.
@@ -98,7 +102,7 @@ def redirect_relocations(data, obj, out, target):
 
 def redirect_weak_duplicates(data, unit):
     """Rename each listed weak copy and refer to the original name instead."""
-    names = unit.get("weak_duplicates", [])
+    names = unit.get("weak_duplicates", []) + unit.get("file_duplicates", [])
     if not names:
         return data
     obj = Elf32(data)
@@ -114,6 +118,13 @@ def redirect_weak_duplicates(data, unit):
         # still be weak (project_build checks that), and the compiled table is
         # dropped like any other duplicate.
         vtable = symbol is not None and name.startswith("__vt__") and (symbol["type"], code) == (STT_OBJECT, False)
+        # A file duplicate is a function of any binding whose original copy
+        # another unit of the same original source file places.
+        if name in unit.get("file_duplicates", []):
+            if symbol is None or (symbol["type"], code) != (STT_FUNC, True):
+                raise ValueError(f"File duplicate is not one compiled function: {name}")
+            found.append(matches[0])
+            continue
         if (symbol is None or symbol["binding"] not in ((STB_WEAK, STB_GLOBAL) if vtable else (STB_WEAK,))
                 or (symbol["type"], code) not in ((STT_FUNC, True), (STT_OBJECT, False))):
             raise ValueError(f"Weak duplicate is not one compiled weak function or data object: {name}")
