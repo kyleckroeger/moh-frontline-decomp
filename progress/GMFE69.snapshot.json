@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 882808,
+    "matching_code_bytes": 883796,
     "total_executable_code_bytes": 1414572,
-    "percent": 62.40813475736831,
+    "percent": 62.47797920501749,
     "categories": {
-      "reconstructed_game": 657400,
+      "reconstructed_game": 658388,
       "restored_library": 225408
     },
-    "matching_functions": 4488
+    "matching_functions": 4490
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -124,6 +124,7 @@
     "config/GMFE69/ConfigGC_defaults.json": "1c2728a760cacbbf75917329c6716235df8e8b7e87a51148d3958f9ed0a24929",
     "config/GMFE69/ConfigGC_init.json": "1fadf6b4ef092e458e5243e306fdba0430c39f8b8346cd8ac2ddf9bb83d9b658",
     "config/GMFE69/ConfigGC_onenter.json": "58610050d00e77e2b4a77d5b539df08200d7841bbe307574a2cf6226ff767793",
+    "config/GMFE69/ConfigGC_unassign.json": "062a50123786f242a6ca8134b4c4e4fac8ab6647bfaef1fd18c92428a639e489",
     "config/GMFE69/CoverPoint.json": "75a0001bdd6794082a1d93f6687efa6ca1d6711c4197cd9cc34cd972c214f1ed",
     "config/GMFE69/CoverPoint_invalidate.json": "8399819dc9162ea86a4c60e213f2ddafd4cb2924594f796b8c20e1ce94fc1e3c",
     "config/GMFE69/CoverPoint_unoccupied.json": "b18cdb5645480bb015333ea44cf01f1bc71e01ada0248fba6e9456c166736890",
@@ -857,7 +858,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "dff8fca74ed628f86f21754aa3117ec501bb04126d3c51bff57bab301572f50f",
+    "config/GMFE69/project.json": "f57003cd21e2de1e56a47730ff1ebfb66d85fd7383bb70fb6dd9a89fecf9f9d2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2332,6 +2333,7 @@
     "src/game/ConfigGC_defaults.cpp": "eb0ccd39d04a883dadba06fbbcb42d99238a019375d22268aba90f270de555f0",
     "src/game/ConfigGC_init.cpp": "24eb95602d6b2ed814e752b8a8e103891c709c44f6b82d94d358f86095ad9853",
     "src/game/ConfigGC_onenter.cpp": "3f628fe100e43914a9997d2d2c04dff61fc761a011f25c925d6fbfbdb826373b",
+    "src/game/ConfigGC_unassign.cpp": "cbcb5b351a165f7b0a816de1a963b35e6da58b9fff36ab0d8828b9681031ac8f",
     "src/game/CoverPoint.cpp": "6543df862a43d1cff97aa960f9575641c6df1378c548eb06b7ffd5f33a201706",
     "src/game/CoverPoint_invalidate.cpp": "8b67e4bc5a727a2f9355f9fc3b74181e536f8a22cfec787ced70e235d3c01f98",
     "src/game/CoverPoint_unoccupied.cpp": "2213c4580725c4972add13a5fc247f7af9c6960a035abec9e83ba6a5c3dab0d7",
@@ -53338,6 +53340,45 @@
       "discarded_functions": [],
       "object_sha256": "0096ce1259ec96b563c80c49b2db1af270cb63aca3c48a42519a7c3706a2a567",
       "linked_sha256": "867d6aaa2b6c6d3cc494a1f57beab6913d63cb6051bd209bc6419098f8069011"
+    },
+    {
+      "id": "ConfigGC_unassign",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 988,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "995ebfd4a8d2b02cf5c5ec49cd491ab1e8963cdc40834fbb52c6da593540a847",
+      "linked_sha256": "f4f69e959ec152218febecf6bb67abde2fa22a10b8eec14193ef33f73d16813f"
     }
   ],
   "code_map": {
@@ -57004,20 +57045,6 @@
             "kind": "function",
             "name": "ApplyChanges__11CDualConfigFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f9f30",
-            "size": 388,
-            "kind": "function",
-            "name": "WillBeUnassigned__11CDualConfigFv",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800fa0b4",
-            "size": 600,
-            "kind": "function",
-            "name": "UnassignPreviousAssignedButton__11CDualConfigFv",
-            "evidence": "between-same-file"
           },
           {
             "address": "0x800fa30c",

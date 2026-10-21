@@ -1228,7 +1228,8 @@
     "Gecko_ExceptionPPC_what.json",
     "stpparse.json",
     "animtran_quickscan.json",
-    "memfree.json"
+    "memfree.json",
+    "ConfigGC_unassign.json"
   ],
   "progress": {
     "code_bytes": 1414572,

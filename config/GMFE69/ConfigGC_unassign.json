@@ -1,0 +1,178 @@
+{
+  "id": "ConfigGC_unassign",
+  "source": "src/game/ConfigGC_unassign.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f9f30",
+      "size": 988,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018b6b8",
+      "size": 575,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UnassignPreviousAssignedButton__11CDualConfigFv",
+      "address": "0x800fa0b4",
+      "size": 600,
+      "binding": 1
+    },
+    {
+      "name": "WillBeUnassigned__11CDualConfigFv",
+      "address": "0x800f9f30",
+      "size": 388,
+      "binding": 1
+    }
+  ],
+  "externals": {},
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "ConfigGC.cpp",
+  "original_file_index": 9826,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 12,
+      "address": "0x8017a800"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
+      "size": 12,
+      "address": "0x8017a80c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 24,
+      "size": 13,
+      "address": "0x8017a818"
+    },
+    {
+      "section": ".rodata",
+      "offset": 40,
+      "size": 13,
+      "address": "0x8017a828"
+    },
+    {
+      "section": ".rodata",
+      "offset": 56,
+      "size": 11,
+      "address": "0x8017a838"
+    },
+    {
+      "section": ".rodata",
+      "offset": 68,
+      "size": 11,
+      "address": "0x8017a844"
+    },
+    {
+      "section": ".rodata",
+      "offset": 80,
+      "size": 10,
+      "address": "0x8017a850"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x803511d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 2,
+      "address": "0x803511d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 2,
+      "address": "0x803511dc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 2,
+      "address": "0x803511e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 2,
+      "address": "0x803511e4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 2,
+      "address": "0x803511e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 2,
+      "address": "0x803511ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 2,
+      "address": "0x803511f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 8,
+      "address": "0x803511f4"
+    }
+  ]
+}
