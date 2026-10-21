@@ -34,26 +34,30 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x800d4fac",
-      "size": 2408,
+      "size": 4272,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e778",
-      "size": 24,
-      "type": 1
+      "size": 88,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 96
     },
     {
       "name": "extabindex",
       "address": "0x80015500",
-      "size": 36,
-      "type": 1
+      "size": 48,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 60
     }
   ],
   "functions": [
@@ -86,6 +90,12 @@
       "address": "0x800d5058",
       "size": 2236,
       "binding": 1
+    },
+    {
+      "name": "Update__7CWeaponFfb",
+      "address": "0x800d5914",
+      "size": 1864,
+      "binding": 1
     }
   ],
   "externals": {
@@ -103,7 +113,17 @@
     "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
     "Rotate__7CMatrixF8CVector3f": "0x800904e8",
     "SetDetonationTime__13CThrownBulletFf": "0x800d2510",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
     "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "Translate__7CMatrixF8CVector3": "0x80090660",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__ct__9CVolFiberFRC6CLine3": "0x800ca560",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__6CLine3Fv": "0x8001c5d0",
+    "__dt__9CVolFiberFv": "0x800ca504",
     "g_cheats": "0x80196a94",
     "g_pBulletFactory": "0x8034e9e0",
     "g_scene": "0x8019484c",
@@ -122,6 +142,9 @@
   ],
   "original_file": "weapon.cpp",
   "original_file_index": 8261,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ],
   "pooled_sections": [
     ".sdata2"
   ],
@@ -179,6 +202,24 @@
       "offset": 48,
       "size": 8,
       "address": "0x80350e38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350e40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350e44"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350e48"
     }
   ]
 }

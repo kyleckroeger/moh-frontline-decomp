@@ -11,7 +11,12 @@
 // the shot (a scripted sound for some weapon types fired from a tank, else
 // the weapon's sound event with the azimuths and distances of the owner and
 // the last bullet as heard by the player), makes noise for the AI and
-// restarts the fire timer. The file name is this project's; the original
+// restarts the fire timer. Update runs the firing state (0: fire when the
+// timer runs out, else start reloading; 1: count the timer down and start
+// reloading when empty; 2: fire once and refill at once through AddAmo and
+// DoneReloading), lets a dropped weapon fall until a line below it hits the
+// world (then it is lined up with the ground's normal) and times the muzzle
+// flash. The file name is this project's; the original
 // record is weapon.cpp; GetMuzzleFlashStatus before these uses a pooled
 // .sdata2 constant. The classes, functions and globals are named by the
 // mangled symbols and the virtuals by the vtables; CWeapon (as in weapon.cpp),
@@ -49,6 +54,14 @@ public:
         d.v[2] = a.d.v[0] * b.d.v[1] - a.d.v[1] * b.d.v[0];
     }
     float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            d.v[0] *= 1.0f / length;
+            d.v[1] *= 1.0f / length;
+            d.v[2] *= 1.0f / length;
+        }
+    }
     union {
         double pair[2];
         float v[4];
@@ -65,10 +78,83 @@ public:
     void BuildRot(CVector3, float);
     void Rotate(CVector3, float);
     void TransformVector(CVector3&, CVector3) const;
+    void Translate(CVector3);
+    void SetFront(CVector3);
+    void SetRight(CVector3);
+    void SetUp(CVector3);
+
+    const CVector3& GetRow(int i) const { return *(const CVector3*)m[i]; }
+    const CVector3& GetPos() const { return GetRow(3); }
 
     float m[4][4];
     static bool s_ClassInit;
 } __attribute__((aligned(16)));
+
+class CLine3 {
+public:
+    CLine3(CVector3 start, CVector3 end) { SetSE(start, end); }
+    ~CLine3() {}
+    void SetSE(CVector3 start, CVector3 end) {
+        m_start = start;
+        m_end = end;
+        m_dir.d.v[0] = m_end.d.v[0] - m_start.d.v[0];
+        m_dir.d.v[1] = m_end.d.v[1] - m_start.d.v[1];
+        m_dir.d.v[2] = m_end.d.v[2] - m_start.d.v[2];
+        m_flag38 = 0;
+        m_flag39 = 0;
+    }
+
+    CVector3 m_start;
+    CVector3 m_end;
+    CVector3 m_dir;
+    float m_value30;
+    float m_value34;
+    unsigned char m_flag38;
+    unsigned char m_flag39;
+} __attribute__((aligned(16)));
+
+class CCollision;
+class CVolFiber;
+class CVolBox;
+class CVolSphere;
+class CVolCapsule;
+class CCDBObject;
+
+/* IVolume's virtuals in table order up to the fiber test. */
+class IVolume {
+public:
+    virtual ~IVolume();
+    virtual IVolume* Create() const;
+    virtual void TransformedCopy(const IVolume&, const CMatrix&);
+    virtual int TestCollision(const IVolume&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolBox&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolSphere&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolCapsule&, CCollision&, bool) const;
+    virtual int TestCollision(const CCDBObject&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolFiber&, CCollision&, bool) const;
+};
+
+class CVolFiber : public IVolume {
+public:
+    CVolFiber(const CLine3&);
+    CVolFiber(const CVolFiber&);
+    virtual ~CVolFiber();
+
+    unsigned char unknown04[12];
+    CLine3 m_line;
+};
+
+class CCollision {
+public:
+    CCollision();
+    ~CCollision();
+
+    unsigned char unknown00[12];
+    float m_t;
+    unsigned char unknown10[8];
+    CVector3* m_normal;
+    unsigned char unknown1c[4];
+};
 
 class CHierObject;
 class CPlayerObject;
@@ -88,7 +174,7 @@ public:
     virtual void unknown044();
     virtual void unknown048();
     virtual void unknown052();
-    virtual void unknown056();
+    virtual IVolume* GetWorldBoundingVolume(int) const;
     virtual void unknown060();
     virtual void GetPosition(CVector3&) const;
     virtual void unknown068();
@@ -216,7 +302,8 @@ class CScene {
 public:
     CPlayerObject* GetPlayer(int) const;
 
-    unsigned char unknown00[16];
+    unsigned char unknown000[24];
+    ISceneNode* m_worldObject;
 };
 
 extern CScene g_scene;
@@ -253,13 +340,15 @@ void MakeNoise(ISceneNode*, int, float, int);
 void AEMS_SendEvent(void*);
 
 struct WeaponPropertiesView {
-    unsigned char unknown00[6];
+    unsigned char unknown00[4];
+    short clipSize;
     short fireDelay;
     float speed;
     short bulletType;
     short bulletFlag;
     short bulletsPerShot;
-    unsigned char unknown12[50];
+    short maxReserve;
+    unsigned char unknown14[48];
     float spread;
     short soundType;
     unsigned char unknown4a[2];
@@ -290,8 +379,35 @@ public:
     int GetWeaponSoundType() const;
     float GetBulletSpeed() const;
     void FireBullet();
+    void Update(float, bool);
+    /* AddAmo and DoneReloading are defined after Update in weapon.cpp (see
+       weapon.cpp); the original file is compiled with deferred inlining, so
+       Update inlines them. This fragment is compiled in source order, so their
+       bodies are repeated here as inline members. */
+    void AddAmo(short count) {
+        if (m_reserve + m_loaded == 0)
+            reloading = 1;
+        m_reserve += count;
+        m_reserve = m_reserve > m_properties->maxReserve ? m_properties->maxReserve : m_reserve;
+    }
+    void DoneReloading() {
+        reloading = 0;
+        if (infiniteAmmo) {
+            m_loaded = m_properties->clipSize;
+        } else if (m_loaded + m_reserve < m_properties->clipSize) {
+            m_loaded += m_reserve;
+            m_reserve = 0;
+        } else {
+            m_reserve = m_reserve - (m_properties->clipSize - m_loaded);
+            m_loaded = m_properties->clipSize;
+        }
+    }
 
-    unsigned char unknown000[640];
+    unsigned char unknown000[64];
+    CMatrix m_tm;
+    unsigned char unknown080[224];
+    CVector3 m_velocity;
+    unsigned char unknown170[272];
     WeaponPropertiesView* m_properties;
     short m_reserve;
     short m_loaded;
@@ -305,12 +421,14 @@ public:
     CVector3 m_position;
     unsigned char reloading : 1;
     unsigned char fired : 1;
-    unsigned char unknown2c0b : 1;
+    unsigned char falling : 1;
     unsigned char infiniteAmmo : 1;
-    unsigned char unknown2c0c : 1;
+    unsigned char flashShown : 1;
     unsigned char muzzleFlash : 1;
     unsigned char unknown2c0d : 2;
-    unsigned char unknown2c1[15];
+    unsigned char unknown2c1[3];
+    float m_flashTime;
+    unsigned char unknown2c8[8];
     float m_speedScale;
     ISceneNode* m_owner;
 };
@@ -472,4 +590,83 @@ done:
     }
     MakeNoise(m_owner, 52, m_properties->noise, 10);
     m_fireTimer += m_properties->fireDelay;
+}
+
+void CWeapon::Update(float elapsed, bool paused) {
+    fired = false;
+    if (g_cheats.m_infiniteAmmo && m_reserve == 0)
+        m_reserve = 1;
+    switch (m_reloadState) {
+    case 0:
+        if (m_fireTimer <= 0.0f) {
+            if (m_loaded > 0 && !reloading) {
+                if (!paused)
+                    FireBullet();
+            } else if (!reloading && !paused) {
+                if (m_owner)
+                    m_owner->TriggerScriptEvent(25, (void*)m_reserve, false);
+                reloading = true;
+            }
+        } else {
+            m_fireTimer -= elapsed;
+        }
+        if (m_fireTimer <= 0.0f && m_owner && !paused)
+            m_owner->TriggerScriptEvent(21, 0, true);
+        break;
+    case 1:
+        if (m_fireTimer > 0.0f) {
+            m_fireTimer -= elapsed;
+            if (m_fireTimer <= 0.0f && m_owner && !paused)
+                m_owner->TriggerScriptEvent(21, 0, true);
+        }
+        if (m_loaded <= 0 && !reloading && !paused) {
+            if (m_owner)
+                m_owner->TriggerScriptEvent(25, (void*)m_reserve, false);
+            reloading = true;
+        }
+        break;
+    case 2:
+        m_reloadState = 1;
+        if (!paused)
+            FireBullet();
+        if (m_loaded <= 0 && !paused) {
+            if (m_owner)
+                m_owner->TriggerScriptEvent(25, (void*)m_reserve, false);
+            AddAmo(m_properties->clipSize);
+            DoneReloading();
+        }
+        break;
+    }
+    if (falling) {
+        CCollision collision;
+        IVolume* world = g_scene.m_worldObject->GetWorldBoundingVolume(0);
+        CVector3 bottom = m_tm.GetPos();
+        bottom.d.v[2] -= 0.05f;
+        CLine3 line(CVector3(bottom.d.v[0], bottom.d.v[1], 1.0f + bottom.d.v[2]), bottom);
+        CVolFiber fiber(line);
+        if (world->TestCollision(fiber, collision, true) == 1) {
+            m_tm.Translate(m_velocity);
+            m_velocity.d.v[2] += -0.005455351f * elapsed;
+        } else {
+            m_velocity.d.v[2] = 0.99f - collision.m_t;
+            m_tm.Translate(m_velocity);
+            m_velocity.d.v[2] = 0.0f;
+            CVector3 right = *collision.m_normal;
+            CVector3 front = m_tm.GetRow(1);
+            CVector3 up;
+            up.Cross(right, front);
+            front.Cross(up, right);
+            up.Normalize();
+            front.Normalize();
+            m_tm.SetFront(front);
+            m_tm.SetRight(right);
+            m_tm.SetUp(up);
+            falling = false;
+        }
+    }
+    if (muzzleFlash) {
+        flashShown = true;
+        if (!fired)
+            m_flashTime += elapsed;
+    }
 }
