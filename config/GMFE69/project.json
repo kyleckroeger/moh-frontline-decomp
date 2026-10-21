@@ -1221,7 +1221,8 @@
     "world_volume_remove.json",
     "thrownbullet_explosion.json",
     "UISUtils_parsehints.json",
-    "objcreate_destroy.json"
+    "objcreate_destroy.json",
+    "player_death.json"
   ],
   "progress": {
     "code_bytes": 1414572,

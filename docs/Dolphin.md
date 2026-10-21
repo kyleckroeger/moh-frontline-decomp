@@ -182,6 +182,14 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   a data section whose linked base is 4 mod 8, so it cannot hide a misplaced
   section, and the bytes are compared with the original as usual.
   `port_unit.py` adds the field when a placement needs it.
+- **Odd-address static guards.** A function-static object's one-byte guard
+  (`init$2454`) is its own `.sbss` object, and MW's linker packed these at odd
+  addresses (`player.cpp`'s at `0x8034eb17`). A zero-initialized `.sbss` or
+  `.bss` section may therefore set `input_alignment` to 2 or 1, when its base
+  needs exactly that and every object in it has a size that allows it (the
+  largest power of two dividing each object's size, up to 8, is the object's
+  natural alignment). Code that refers to the guards is compared byte for byte
+  as usual.
 - **Weak duplicates.** MW's linker keeps the first definition of a weak
   function and drops later copies. When a unit compiles a weak function whose
   original copy came from an earlier file (such as a template's inline

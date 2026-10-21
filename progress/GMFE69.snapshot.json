@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 909776,
+    "matching_code_bytes": 910228,
     "total_executable_code_bytes": 1414572,
-    "percent": 64.31457713004357,
+    "percent": 64.34653025791548,
     "categories": {
-      "reconstructed_game": 684368,
+      "reconstructed_game": 684820,
       "restored_library": 225408
     },
-    "matching_functions": 4521
+    "matching_functions": 4522
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -827,6 +827,7 @@
     "config/GMFE69/player_bullet.json": "a67aa2d0032c745e279f533d568e67782401f195ed12f7df4d41bd4519d88950",
     "config/GMFE69/player_crouch.json": "5241e72dcaad0ca63526d95f16acc2790e4a728fcb0729ee6f68302f80ef67db",
     "config/GMFE69/player_ctor.json": "5bceac2b5529aa93e70749117b0e33b9b0bed1a5054863120adc74abcba83f72",
+    "config/GMFE69/player_death.json": "345a6f76314776f3fb60493e93691b775e5919394fe5ada799cef0def9610cd7",
     "config/GMFE69/player_dtor.json": "fc10b203c591c37df2f0876678b14805af3022bfc8e45226cfcf4cf0638edb6e",
     "config/GMFE69/player_fastvec.json": "153f1254b111c01809192da6859030d347549296ae4eeccb87c58108764a04fa",
     "config/GMFE69/player_fov.json": "b5f55c11393e4c60d33d11283b764e1cb0c2d136f91b22404321d949a779c984",
@@ -858,7 +859,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "29874bba7689b9702540e11ad99f920e36d94747a2e71ddb82680c8390e18ac0",
+    "config/GMFE69/project.json": "ab3211d3cdf694622f960865f8f55d43a04af1c026caf5c7966aeecf133d5849",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2842,6 +2843,7 @@
     "src/game/player_bullet.cpp": "163bfce0e418adc7a399771fd020c883ac8d9f73270407c22ea48ec71c35672a",
     "src/game/player_crouch.cpp": "9d4839b777011ed4ed22f46d1e01123df0cbe1a495d635d2e046839e4f0da8f0",
     "src/game/player_ctor.cpp": "c3c04b2fabbfb00a00d81d7e50a2ca86ec9ed4dd1b293b4c7b7ebbb48c99790a",
+    "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
     "src/game/player_dtor.cpp": "9be753a44e98bf59c85712ce3ca679aa7f49559d7ef0f3215184ccd58a9eada3",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
     "src/game/player_fov.cpp": "62fb8b8d73c1640e51f0af7fe3aaf58839afa177f50dd06d3753d6c37a8921de",
@@ -3269,15 +3271,15 @@
     "tools/baseline.py": "b1bcca74f43dbe7d4bb323a4a76db013527907f4ec739f1fb0d3b1fb246d0dd2",
     "tools/code_map.py": "2d148710de147a8d4b8b834b982de64ea0a0da56a743173df8772f06dace7204",
     "tools/compilers.json": "a7d66ea0a76c35649ab1313e5c6d8257cbee1f2790e230fafbbfb47fd6fa0367",
-    "tools/data_strip.py": "b5546dd00c9f148c4419f8f1d4ff1e7f5fba98b68306e2dd0fab3a42a9effefe",
+    "tools/data_strip.py": "a85682d94ba0b56f615cc19409e964912f04ea6b49af6a7666c0a256d45039af",
     "tools/dependencies.py": "904789a0085a12fbc9405b95f47e5b827a33850738bf7e2aa2b3c3ed548da118",
     "tools/file_map.py": "01c2996472bee139aad5b50c663c3df6bf2513aa9724989c0bb648ef36425d00",
     "tools/formats.py": "3124d742d0518c913dfc575602bba63befbd9e0e78220e5a85059cda277f8f81",
     "tools/import_disc.py": "a76b0fc8a963fa5e26e432e8261c26f199989c7e2fc2c90cf0116878db15597b",
     "tools/objdiff_config.py": "4133276adf513df6f4aad3d70df298f0bb0f8ced4ae1abc72703e8e0dc9bb13a",
-    "tools/port_unit.py": "498e2072f0542d90a356eb6c9b2c958e520dfc5937704c3d9908377ee2931ad4",
+    "tools/port_unit.py": "b31104f543b6efb1174c9861a1c37d8f8825560ffdefac42a133c5c7e77a2c6d",
     "tools/progress_report.py": "d406954b49cb8ed5318859687b215544f55237944c45ce655354f935538dae36",
-    "tools/project_build.py": "5098844c943a4d76a3f986eaa68b8de3aeea0e1d0dcd715f7863faa1b0925d6d",
+    "tools/project_build.py": "b7f144667662e348023bdca8e87229f37697b9a90b01fda4025eab6aa7aeb7ea",
     "tools/reconstruct.py": "ae713fceeb3eef9f113af483ad5e3d5d6f1123fc424d0595099247e3e07a4cf2",
     "tools/sdk_build.py": "7e3412b31c53a289d28b6824fe8c348cd153eb4718c0f5fd15fb0489880e093b",
     "tools/setup.py": "eb4acee34b23a267076a95ad80a33f0b0180573777b7dc47b3b241f891c6ebd3",
@@ -53062,6 +53064,45 @@
       "discarded_functions": [],
       "object_sha256": "5d8d150c1814691c6c4620f516b15426c5287a70ca0705f09859597757760f48",
       "linked_sha256": "f1307ca09b6a93a3ef68fa6ab8024a2adc42b162f267cdff57af38992500d480"
+    },
+    {
+      "id": "player_death",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 452,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "882e33fadb31001e44b69f8faea9a23e223684d42af4a91e1b03e9de6c895fed",
+      "linked_sha256": "50b953161a62ef8e1aece5822353a9419de6d0976c8cc50ebd66e196a74868e6"
     }
   ],
   "code_map": {
@@ -55196,13 +55237,6 @@
             "size": 392,
             "kind": "function",
             "name": "SetFinishedLevelData__13CPlayerObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009d810",
-            "size": 452,
-            "kind": "function",
-            "name": "StartDeathSequence__13CPlayerObjectFv",
             "evidence": "exception-index"
           },
           {

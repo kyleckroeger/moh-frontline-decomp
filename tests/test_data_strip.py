@@ -100,12 +100,30 @@ class DataStripping(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Input alignment is not needed'):
             validate_units(self.original, [pad])
 
-    def test_input_alignment_only_lowers_8_to_4(self):
+    def test_input_alignment_only_relaxes_data(self):
         compiled = (self.build / 'units/smixfx/compiled.o').read_bytes()
         unit = json.loads((CONFIG / 'smixfx.json').read_text())
         next(s for s in unit['sections'] if s['name'] == '.text')['input_alignment'] = 4
-        with self.assertRaisesRegex(ValueError, 'only relax 8-aligned compiler data'):
+        with self.assertRaisesRegex(ValueError, 'only relax compiler data alignment'):
             strip_objects(compiled, unit)
+
+    def test_odd_input_alignment_needs_byte_objects(self):
+        compiled = (self.build / 'units/player_death/compiled.o').read_bytes()
+        unit = json.loads((CONFIG / 'player_death.json').read_text())
+        section = Elf32(strip_objects(compiled, unit)).sections
+        self.assertEqual([s['alignment'] for s in section if s['name'] == '.sbss'], [1])
+        # The fade object itself (20 bytes) may not sit at an odd address.
+        next(s for s in unit['sections'] if s['name'] == '.bss')['input_alignment'] = 1
+        with self.assertRaisesRegex(ValueError, 'natural alignment'):
+            strip_objects(compiled, unit)
+
+    def test_file_duplicate_references_go_to_the_original_copy(self):
+        compiled = (self.build / 'units/UISUtils_parsehints/compiled.o').read_bytes()
+        unit = json.loads((CONFIG / 'UISUtils_parsehints.json').read_text())
+        name = unit['file_duplicates'][0]
+        after = Elf32(strip_objects(compiled, unit))
+        self.assertEqual([s['binding'] for s in after.symbols() if s['name'] == name + '$duplicate'], [0])
+        self.assertEqual([s['section'] for s in after.symbols() if s['name'] == name], [0])
 
     def weak_duplicate_unit(self):
         compiled = (self.build / 'units/staticobjfactory_lookup/compiled.o').read_bytes()

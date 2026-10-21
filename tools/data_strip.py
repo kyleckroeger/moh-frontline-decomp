@@ -35,8 +35,10 @@ listed object with the original bytes; pool bytes earn no credit.
 
 A manifest section may set `input_alignment` to 4 when the original linker
 placed an 8-aligned compiler data section at an address that is 4 mod 8 (MW's
-linker did; SN's would pad the start or the size). Only the section header's
-alignment changes; the bytes are still compared with the original.
+linker did; SN's would pad the start or the size). Zero-initialized data may go
+lower, to 2 or 1, when every object in it allows that alignment: MW packs
+one-byte function-static guards at odd `.sbss` addresses. Only the section
+header's alignment changes; the bytes are still compared with the original.
 
 The rewrite permutes bytes and keeps the file size (apart from the symbol
 tables that weak duplicates and pool references move); the original compiler
@@ -185,6 +187,14 @@ def redirect_pool_references(data, unit):
     return bytes(out)
 
 
+def natural_alignment(size):
+    """Largest power of two up to 8 dividing an object's size."""
+    alignment = 1
+    while alignment < 8 and size % (alignment * 2) == 0 and size:
+        alignment *= 2
+    return alignment
+
+
 def c_identifier(name):
     """MW numbers function statics (`name$123`); manifests use the C name."""
     match = re.fullmatch(r"([A-Za-z_]\w*)[$.]\d+", name)
@@ -260,9 +270,19 @@ def strip_objects(data, unit):
     for manifest in unit["sections"]:
         if "input_alignment" in manifest:
             section = by_name[manifest["name"]]
-            if manifest["name"] in (".text", ".init") or manifest["input_alignment"] != 4 or section["alignment"] != 8:
+            relaxed = manifest["input_alignment"]
+            if manifest["name"] in (".text", ".init") or relaxed not in (1, 2, 4) or relaxed >= section["alignment"]:
+                raise ValueError("Input alignment may only relax compiler data alignment")
+            if relaxed < 4:
+                # Below 4 only for zero-initialized data whose objects allow it
+                # (one-byte function-static guards, which MW packs at odd addresses).
+                natural = max((natural_alignment(o["size"]) for o in obj.symbols()
+                               if o["section"] == section["index"] and o["type"] == STT_OBJECT), default=1)
+                if section["type"] != 8 or natural > relaxed:
+                    raise ValueError("Input alignment is below the section objects' natural alignment")
+            elif section["alignment"] != 8:
                 raise ValueError("Input alignment may only relax 8-aligned compiler data to 4")
-            struct.pack_into(">I", out, section_headers + section["index"] * SECTION_HEADER_SIZE + ALIGNMENT_FIELD, 4)
+            struct.pack_into(">I", out, section_headers + section["index"] * SECTION_HEADER_SIZE + ALIGNMENT_FIELD, relaxed)
 
     symbol_table = next(s for s in obj.sections if s["type"] == 2)
     for i, symbol in enumerate(obj.symbols()):

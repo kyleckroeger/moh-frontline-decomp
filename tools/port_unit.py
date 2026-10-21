@@ -429,6 +429,9 @@ def draft(args):
             entry["stripped_objects"] = inner
         if section["alignment"] == 8 and addresses[section["name"]] % 8 == 4:
             entry["input_alignment"] = 4  # MW's linker placed it at 4 mod 8.
+        elif section["type"] == 8 and addresses[section["name"]] % min(section["alignment"], 4):
+            # MW packs one-byte function-static guards at odd .sbss addresses.
+            entry["input_alignment"] = 1 if addresses[section["name"]] % 2 else 2
         sections.append(entry)
     code = [(int(c["address"], 16), int(c["address"], 16) + c["size"]) for c in sections if c["name"] in CODE_SECTIONS]
     functions = [{"name": s["name"], "address": hex(s["address"]), "size": s["size"], "binding": s["binding"]}
