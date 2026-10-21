@@ -1227,7 +1227,8 @@
     "stpparse.json",
     "animtran_quickscan.json",
     "memfree.json",
-    "ConfigGC_dualconfig.json"
+    "ConfigGC_dualconfig.json",
+    "world_volume_remove.json"
   ],
   "progress": {
     "code_bytes": 1414572,
