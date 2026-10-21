@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800409bc",
-      "size": 688,
+      "address": "0x8004066c",
+      "size": 1536,
       "type": 1
     },
     {
@@ -51,20 +51,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a524",
-      "size": 32,
+      "address": "0x8000a51c",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011564",
-      "size": 48,
+      "address": "0x80011558",
+      "size": 60,
       "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801a1120",
-      "size": 216,
+      "size": 476,
       "type": 8
     }
   ],
@@ -80,6 +80,12 @@
       "address": "0x80040c34",
       "size": 56,
       "binding": 0
+    },
+    {
+      "name": "InitObjectCreators__Fv",
+      "address": "0x8004066c",
+      "size": 848,
+      "binding": 1
     },
     {
       "name": "CreateObjectGetMemoryRequirements__Fv",
@@ -167,7 +173,10 @@
     }
   ],
   "externals": {
+    "BSUtilGetMemory__Fii": "0x8003b83c",
     "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii": "0x8003bea8",
+    "Init__35BSUtilObjectInstanceMemoryAllocatorFPviii": "0x8003bdd0",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "__construct_array": "0x8013834c",
     "__ct__35BSUtilObjectInstanceMemoryAllocatorFv": "0x8003bf6c",
     "__destroy_arr": "0x801382d4",
@@ -176,14 +185,47 @@
     "__dt__35BSUtilObjectInstanceMemoryAllocatorFv": "0x80035a6c",
     "__nwa__FUl": "0x8001cae8",
     "__register_global_object": "0x801381bc",
+    "g_delayDestroyHead": "0x8034e884",
+    "g_delayDestroyTail": "0x8034e888",
+    "g_fDumpObjectCollisionRadius": "0x8034e8a4",
+    "g_frameCounter": "0x8034e88c",
+    "g_iGermanCreationQueueHeadIndex": "0x8034e878",
+    "g_iGermanCreationQueueTailIndex": "0x8034e87c",
+    "g_iNumGermansQueuedThisFrame": "0x8034e880",
+    "g_iNumberOfEnemiesSpawned": "0x8034e8a8",
+    "g_maxActiveSoldiers": "0x8034e8a0",
+    "g_numActiveSoldiers": "0x8034e89c",
+    "g_pBoxList": "0x8034e890",
+    "g_pGermanList": "0x8034e894",
+    "g_pTankList": "0x8034e898",
     "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_delayDestroyHead",
+    "g_delayDestroyTail",
+    "g_fDumpObjectCollisionRadius",
+    "g_frameCounter",
+    "g_iNumGermansQueuedThisFrame"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_delayDestroyHead",
+    "g_delayDestroyTail",
+    "g_fDumpObjectCollisionRadius",
+    "g_frameCounter",
+    "g_iGermanCreationQueueHeadIndex",
+    "g_iGermanCreationQueueTailIndex",
+    "g_iNumGermansQueuedThisFrame",
+    "g_iNumberOfEnemiesSpawned",
+    "g_maxActiveSoldiers",
+    "g_numActiveSoldiers",
+    "g_pBoxList",
+    "g_pGermanList",
+    "g_pTankList"
+  ],
   "original_file": "objcreate.cpp",
   "original_file_index": 1440,
   "weak_duplicates": [
