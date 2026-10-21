@@ -1,4 +1,7 @@
-// A fragment of projectilebullet.cpp (0x800d1a78): the CProjectileBullet
+// A fragment of projectilebullet.cpp (0x800d1a44): CProjectileBullet::InitClass
+// (keeps the render list and screen in the file's statics and registers the
+// bullet render bin, a file-local object owned by the projectilebullet unit,
+// with the list), the CProjectileBullet
 // destructor (its virtual table pointer, the two fiber volumes destroyed in
 // reverse order, then CBullet's destructor, and the object freed when asked)
 // and the default constructor (CBullet's constructor, the table pointer, the
@@ -58,8 +61,17 @@ public:
     int data28;
 };
 
+class CRenderBin;
+class CScreen;
+
+class CRenderList {
+public:
+    void Register(CRenderBin&);
+};
+
 class CProjectileBullet : public CBullet {
 public:
+    static void InitClass(CRenderList*, CScreen*);
     virtual void MarkForDestruction(int);
     virtual ~CProjectileBullet();
     CProjectileBullet();
@@ -68,6 +80,16 @@ public:
     CVolFiber m_fiberA;
     CVolFiber m_fiberB;
 };
+
+static CRenderList* g_pRenderList;
+static CScreen* g_pScreen;
+extern CRenderBin g_BulletBin; // file-local in the original
+
+void CProjectileBullet::InitClass(CRenderList* list, CScreen* screen) {
+    g_pRenderList = list;
+    g_pScreen = screen;
+    list->Register(g_BulletBin);
+}
 
 CProjectileBullet::~CProjectileBullet() {
 }

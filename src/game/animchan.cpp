@@ -4,7 +4,8 @@
 // animation, keeping its position within the old duration: the new
 // animation's rate is set so it lasts as long as the old one, and it is
 // advanced by the time already played (the channel is marked done when the
-// new animation ends at once). The record views (channel, owner, sequence
+// new animation ends at once), and AnimChanStopByStateIndex, which stops
+// every active channel of a state. The record views (channel, owner, sequence
 // info and frame-list header) are inferred from offsets; their names are not
 // original.
 struct AnimSeqFrameList_t;
@@ -147,5 +148,16 @@ extern "C" void AnimChanSwitchAnimByDuration(AnimChannelOwnerView* owner, AnimCh
     }
 }
 
-// AnimChanStopByStateIndex, AnimChanStartAnim, AnimChanProcess and
-// AnimChanInitChannels follow in the original file and are not reconstructed.
+extern "C" void AnimChanStopByStateIndex(AnimChannelOwnerView* owner, AnimChannelView* channels, unsigned short state) {
+    AnimChannelView* channel = channels;
+
+    for (int i = 0; i < owner->count; channel++, i++) {
+        if (channel->status && state == channel->state)
+            /* the status byte cleared through a byte offset into the array
+               (the original addresses it as base + i * 136 + 1) */
+            ((unsigned char*)channels)[i * sizeof(AnimChannelView) + 1] = 0;
+    }
+}
+
+// AnimChanStartAnim, AnimChanProcess and AnimChanInitChannels follow in the
+// original file and are not reconstructed.

@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800615c0",
-      "size": 744,
+      "size": 828,
       "type": 1
     },
     {
@@ -91,6 +91,12 @@
       "name": "AnimChanSwitchAnimByDuration",
       "address": "0x80061700",
       "size": 424,
+      "binding": 1
+    },
+    {
+      "name": "AnimChanStopByStateIndex",
+      "address": "0x800618a8",
+      "size": 84,
       "binding": 1
     }
   ],

@@ -1,4 +1,5 @@
-// A fragment of AIObject.cpp (0x8004aa28): CAIObject::CheckCoverpointUsefulness.
+// A fragment of AIObject.cpp (0x8004aa28): CAIObject::CheckCoverpointUsefulness
+// and StartCoverPointWalkToStored (starts the cover point walk; defined elsewhere).
 // While the cover check is on (+684), fires script event 62 on the object's
 // script when there is no cover point (+656), or, every 0.2 seconds (the
 // next check at +708), when the threat (+196) is set and the cover point,
@@ -50,6 +51,8 @@ extern CAIFilterGlobal g_aigAIFilterGlobalObject;
 class CAIObject {
 public:
     void CheckCoverpointUsefulness();
+    void StartCoverPointWalkToStored(bool);
+    void StartCoverPointWalk(bool);
 
     unsigned char unknown000[8];
     AIFilterScriptView* m_filter;
@@ -80,4 +83,8 @@ void CAIObject::CheckCoverpointUsefulness() {
             }
         }
     }
+}
+
+void CAIObject::StartCoverPointWalkToStored(bool walk) {
+    StartCoverPointWalk(walk);
 }

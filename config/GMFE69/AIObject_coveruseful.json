@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8004aa28",
-      "size": 220,
+      "size": 252,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a774",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800118dc",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,12 +62,19 @@
       "address": "0x8004aa28",
       "size": 220,
       "binding": 1
+    },
+    {
+      "name": "StartCoverPointWalkToStored__9CAIObjectFb",
+      "address": "0x8004ab04",
+      "size": 32,
+      "binding": 1
     }
   ],
   "externals": {
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE": "0x8005314c",
     "ProvidesCover__11CCoverPointCFRC21CAIFilterRealPositionPC21CAIFilterRealPositionPC9CAIObject": "0x80052788",
+    "StartCoverPointWalk__9CAIObjectFb": "0x8004abe0",
     "g_aigAIFilterGlobalObject": "0x801c6cd4"
   },
   "undefined_in_discarded_code": [],
