@@ -17,7 +17,10 @@
 // velocity), keeps the normal part scaled by the bounce (zeroed when tiny and
 // resting) plus the tangential part reduced by the friction times the cube of
 // how much the normal faces up, optionally restores the old speed (a cheat),
-// and pushes the matrix out along the normal by one or two CONTACT_EPSILON. The functions, CParticleSystem::Create, CLight::Create and
+// and pushes the matrix out along the normal by one or two CONTACT_EPSILON. Penetrate
+// moves the matrix CONTACT_EPSILON along the bullet's forward vector scaled by
+// how much it faces the contact normal (along the normal itself when nearly
+// parallel to the surface) and clears two contact flags. The functions, CParticleSystem::Create, CLight::Create and
 // the virtuals are named by the symbols (the virtuals by their table slots);
 // the meaning of the two flags, the members and the class layouts are
 // inferred (CParticleSystem's table pointer follows 28 bytes of members).
@@ -266,6 +269,13 @@ struct SExtentView {
 
 extern const float CONTACT_EPSILON;
 
+/* only the contact normal (+24) is read here */
+class CCollision {
+public:
+    unsigned char unknown00[24];
+    CVector3* m_normal;
+};
+
 class CLightVolumeManager {
 public:
     void Update(float);
@@ -315,10 +325,12 @@ public:
     virtual void vf060();
     virtual void GetPosition(CVector3&) const;
     virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
     void AttemptUpdate(float);
     void BeginUpdate(float);
     void CheckEnemies();
     void ConstrainVelocity();
+    void Penetrate(const CCollision&);
 
     unsigned char unknown004[8];
     SExtentView* m_minX;
@@ -349,7 +361,8 @@ public:
     unsigned char m_resting : 1;
     unsigned char m_flag40 : 1;
     unsigned char m_gravity : 1;
-    unsigned char m_flags1f8b : 4;
+    unsigned char m_flag10 : 1;
+    unsigned char m_flags1f8b : 3;
     unsigned char m_halted : 1;
 };
 
@@ -518,4 +531,30 @@ void CThrownBullet::ConstrainVelocity() {
         position.d.v[2] = current.d.v[2] + offset.d.v[2];
         m_tm.SetPos(position);
     }
+}
+
+void CThrownBullet::Penetrate(const CCollision& collision) {
+    const CVector3* normal = collision.m_normal;
+    CVector3 offset;
+    GetForward(offset);
+    float along = Dot(offset, *normal);
+    if ((float)__fabs(along) > 1e-05f) {
+        offset *= CONTACT_EPSILON / (float)__fabs(along);
+    } else if (along > 0.0f) {
+        offset.d.v[0] = CONTACT_EPSILON * normal->d.v[0];
+        offset.d.v[1] = CONTACT_EPSILON * normal->d.v[1];
+        offset.d.v[2] = CONTACT_EPSILON * normal->d.v[2];
+    } else {
+        offset.d.v[0] = -CONTACT_EPSILON * normal->d.v[0];
+        offset.d.v[1] = -CONTACT_EPSILON * normal->d.v[1];
+        offset.d.v[2] = -CONTACT_EPSILON * normal->d.v[2];
+    }
+    const CVector3& current = m_tm.GetPos();
+    CVector3 position;
+    position.d.v[0] = current.d.v[0] + offset.d.v[0];
+    position.d.v[1] = current.d.v[1] + offset.d.v[1];
+    position.d.v[2] = current.d.v[2] + offset.d.v[2];
+    m_tm.SetPos(position);
+    m_flag40 = 0;
+    m_flag10 = 0;
 }
