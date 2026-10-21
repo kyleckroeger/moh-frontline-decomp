@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d4fac",
-      "size": 172,
+      "size": 2408,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e778",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015500",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -80,12 +80,35 @@
       "address": "0x800d5004",
       "size": 84,
       "binding": 1
+    },
+    {
+      "name": "FireBullet__7CWeaponFv",
+      "address": "0x800d5058",
+      "size": 2236,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_SendEvent__FPv": "0x800ec26c",
+    "BuildRot__7CMatrixF8CVector3f": "0x80090980",
     "CanBulletTypeCook__14CBulletFactoryFbi": "0x800cd7ac",
+    "CreateBullet__14CBulletFactoryFib8CVector38CVector3f7EClsnIdfP10ISceneNode": "0x800cd84c",
+    "GetAzimuth__F8CVector3PC13CPlayerObject": "0x800ebc90",
     "GetBulletWeight__14CBulletFactoryFbi": "0x800ccda8",
-    "g_pBulletFactory": "0x8034e9e0"
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSoundEvent__11CSoundTableCFiiiPQ211CSoundTable11SSoundParms": "0x800edf78",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MakeNoise__FP10ISceneNodeifi": "0x8002bb64",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
+    "Rotate__7CMatrixF8CVector3f": "0x800904e8",
+    "SetDetonationTime__13CThrownBulletFf": "0x800d2510",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "g_cheats": "0x80196a94",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_scene": "0x8019484c",
+    "g_soundMapSingleton": "0x8034ece8",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -93,8 +116,69 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_pBulletFactory"
+    "g_pBulletFactory",
+    "g_soundMapSingleton",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "weapon.cpp",
-  "original_file_index": 8261
+  "original_file_index": 8261,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350e0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350e08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350e10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350e14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350e18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350e20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350e28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350e30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x80350e38"
+    }
+  ]
 }
