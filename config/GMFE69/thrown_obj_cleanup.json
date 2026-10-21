@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800b5f64",
-      "size": 136,
+      "address": "0x800b5bdc",
+      "size": 1040,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d7d4",
-      "size": 8,
+      "address": "0x8000d7cc",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800147b0",
-      "size": 12,
+      "address": "0x800147a4",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "OnCollision__13CThrownObjectFRC10CCollision",
+      "address": "0x800b5bdc",
+      "size": 904,
+      "binding": 1
+    },
     {
       "name": "CleanUp__13CThrownObjectFv",
       "address": "0x800b5f64",
@@ -65,7 +71,11 @@
     }
   ],
   "externals": {
-    "FreeSphereVolume__FPv": "0x8003c1b0"
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
+    "FreeSphereVolume__FPv": "0x8003c1b0",
+    "GetSoundIndex__12CSurfaceTypeFi": "0x8001bfe0",
+    "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -74,5 +84,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "thrown_obj.cpp",
-  "original_file_index": 6991
+  "original_file_index": 6991,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350930"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350960"
+    }
+  ]
 }
