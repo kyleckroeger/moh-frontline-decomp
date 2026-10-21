@@ -37,12 +37,24 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8016ac84",
-      "size": 284,
+      "address": "0x8016a578",
+      "size": 2088,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034f4f8",
+      "size": 5,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "SNDPLATFORM_init__Fv",
+      "address": "0x8016a578",
+      "size": 1804,
+      "binding": 1
+    },
     {
       "name": "SNDPLATFORM_restore__Fv",
       "address": "0x8016ac84",
@@ -51,17 +63,40 @@
     }
   ],
   "externals": {
+    "AIInit": "0x8011e1ec",
+    "ARGetBaseAddress": "0x8011e890",
+    "ARInit": "0x8011e7d4",
+    "ARQInit": "0x8011f3f4",
+    "ARQPostRequest": "0x8011f45c",
+    "AXInit": "0x8011f6c8",
     "AXQuit": "0x8011f6fc",
     "AXRegisterAuxACallback": "0x8011ff20",
+    "AXSetMode": "0x801203a0",
     "MIXrestorefn": "0x8034f49c",
     "OSCancelThread": "0x8011629c",
+    "OSCreateThread": "0x80116098",
+    "OSDisableInterrupts": "0x801135cc",
+    "OSInitThreadQueue": "0x80115adc",
+    "OSRestoreInterrupts": "0x801135f4",
+    "OSResumeThread": "0x80116458",
+    "SNDARAM_init__Fi": "0x8016cbc0",
     "SNDARAM_restore__Fv": "0x8016cc70",
+    "SNDARAM_setpool__FUii": "0x8016cc14",
+    "SNDDRV_DSPMixerInit__Fi": "0x8016d0d0",
     "SNDDRV_DSPMixerUpdate__Fv": "0x8016d330",
+    "SNDDRV_audiocallback__FPvPv": "0x801693e8",
+    "SNDDRV_dmcallback__FUl": "0x80169384",
     "SNDDRV_freenextframe__Fv": "0x80168ed8",
+    "SNDDRV_initmixer__Fv": "0x801695ec",
+    "SNDDRV_thread__FPv": "0x80169b70",
     "SNDMEMI_free__FPv": "0x80158ff0",
+    "SNDPLATFORM_memalloc__Fii": "0x8016c600",
+    "SNDSYS_add100hzclient": "0x801535bc",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
     "SNDSYS_remove100hzclient": "0x801535f4",
+    "_restgpr_17": "0x80138a34",
+    "_savegpr_17": "0x801389e8",
     "snddrv": "0x80341a20",
     "sndgs": "0x80340860"
   },
