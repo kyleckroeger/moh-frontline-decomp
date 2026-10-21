@@ -1,4 +1,11 @@
-// A fragment of thrownbullet.cpp (0x800d301c): CreateExplosionEffect starts
+// A fragment of thrownbullet.cpp (0x800d27dc): CThrownBullet::CommitUpdate (for
+// grenade types 3, 4, 5 and 9: keeps bouncing until the timer runs out or the
+// bullet is set off, then explodes unless defused; for the impact types 0, 1,
+// 2, 8 and 10: explodes on impact or timeout, backed off 0.05 along the
+// velocity) builds the CExplosion, the explosion effect at a translation
+// matrix, the explosion sound event (azimuth and distance from the player, the
+// closest one in multiplayer), tells the script and destroys the bullet, then
+// moves the attached light. CreateExplosionEffect starts
 // a grenade explosion's particle systems at the given matrix (three for a
 // normal explosion, a fourth when asked, or four others for the alternative
 // effect), each by its CRC id, and a light half a unit above the explosion's
@@ -73,6 +80,14 @@ public:
 
 class CMatrix {
 public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    static void InitClass();
+    static bool s_ClassInit;
+    void BuildTrans(CVector3);
+    const CVector3& GetRow(int i) const { return *(const CVector3*)m[i]; }
     CVector3 GetPos() const { return *(const CVector3*)m[3]; }
     void SetPos(CVector3);
     void SetFront(CVector3);
@@ -193,49 +208,6 @@ public:
     virtual void SetPosition(CVector3);
 };
 
-void CreateExplosionEffect(const CMatrix& matrix, bool extra, bool alternative) {
-    if (!alternative) {
-        CParticleSystem* system = CParticleSystem::Create(0xFB394D09);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        system = CParticleSystem::Create(0x4F2B8179);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        system = CParticleSystem::Create(0x1CD6E4B5);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        if (extra) {
-            system = CParticleSystem::Create(0x4822CD8F);
-            if (system)
-                system->SetLocalToWorld(matrix);
-        }
-        CLight* light = CLight::Create(0x9BCE1511);
-        if (light) {
-            CVector3 position = matrix.GetPos();
-            position.d.v[2] += 0.5f;
-            light->SetPosition(position);
-        }
-    } else {
-        CParticleSystem* system = CParticleSystem::Create(0xABD02935);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        system = CParticleSystem::Create(0x6BD7A8DB);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        system = CParticleSystem::Create(0x28E4D6EF);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        system = CParticleSystem::Create(0xFF8E1F13);
-        if (system)
-            system->SetLocalToWorld(matrix);
-        CLight* light = CLight::Create(0x9BCE1511);
-        if (light) {
-            CVector3 position = matrix.GetPos();
-            position.d.v[2] += 0.5f;
-            light->SetPosition(position);
-        }
-    }
-}
 
 class CVolFiber {
 public:
@@ -292,13 +264,16 @@ struct ThrownBulletPropertiesView {
     unsigned char unknown00[56];
     float m_friction;
     float m_bounce;
+    unsigned char unknown40[4];
+    float m_explosionRadius;
 };
 
 /* inferred: the cheat flag read here */
 struct CheatsView {
     unsigned char unknown00[10];
     unsigned char m_keepGrenadeSpeed;
-    unsigned char unknown0b[9];
+    bool m_bigExplosions;
+    unsigned char unknown0c[8];
 };
 
 extern CheatsView g_cheats;
@@ -307,7 +282,24 @@ inline float DotXYZ(float x, float y, float z, const CVector3& v) { return x * v
 
 inline float Dot(const CVector3& a, const CVector3& b) { return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2]; }
 
-class CThrownBullet {
+struct BSObject;
+struct TriggerObject_struct;
+class ISceneNode;
+class CPlayerObject;
+enum EScriptBulletType {};
+
+class CScene {
+public:
+    CPlayerObject* GetPlayer(int) const;
+    CPlayerObject* FindClosestPlayer(CVector3);
+
+    unsigned char unknown000[328];
+};
+
+extern CScene g_scene;
+extern bool g_bInMultiplayerMode;
+
+class CPlayerObject {
 public:
     virtual void vf008();
     virtual void vf012();
@@ -324,12 +316,169 @@ public:
     virtual void vf056();
     virtual void vf060();
     virtual void GetPosition(CVector3&) const;
+};
+
+/* inferred: the explosion's storage (its constructor and destructor are
+   explosion.cpp's) */
+class CExplosion {
+public:
+    CExplosion(CScene&, CVector3, float, float, float, EScriptBulletType, ISceneNode*, bool);
+    ~CExplosion();
+
+    unsigned char unknown00[68];
+} __attribute__((aligned(16)));
+
+class CLightView {
+public:
+    virtual void vf008();
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf032();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
+    virtual void vf072();
+    virtual void vf076();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf092();
+    virtual void vf096();
+    virtual void vf100();
+    virtual void vf104();
+    virtual void vf108();
+    virtual void vf112();
+    virtual void vf116();
+    virtual void vf120();
+    virtual void vf124();
+    virtual void vf128();
+    virtual void vf132();
+    virtual void vf136();
+    virtual void vf140();
+    virtual void vf144();
+    virtual void vf148();
+    virtual void vf152();
+    virtual void vf156();
+    virtual void vf160();
+    virtual void vf164();
+    virtual void vf168();
+    virtual void vf172();
+    virtual void vf176();
+    virtual void vf180();
+    virtual void vf184();
+    virtual void vf188();
+    virtual void vf192();
+    virtual void vf196();
+    virtual void vf200();
+    virtual void vf204();
+    virtual void vf208();
+    virtual void vf212();
+    virtual void vf216();
+    virtual void vf220();
+    virtual void vf224();
+    virtual void vf228();
+    virtual void SetTMLocalToWorld(const CMatrix&);
+};
+
+unsigned short GetAzimuth(CVector3, const CPlayerObject*);
+long long MathFunRandomI64(long long, long long);
+void AEMS_SendEvent(void*);
+void BSSendMessage(unsigned short, BSObject*, TriggerObject_struct*, BSObject*, void*);
+
+class CThrownBullet {
+public:
+    /* the virtuals in table order; MarkForDestruction (defined elsewhere) is
+       declared first so the table is not emitted here */
+    virtual void MarkForDestruction(int);
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void ConstrainVelocity();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
     virtual void GetRightward(CVector3&) const;
     virtual void GetForward(CVector3&) const;
+    virtual void vf076();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf092();
+    virtual BSObject* GetScriptObject() const;
+    virtual void vf100();
+    virtual void vf104();
+    virtual void vf108();
+    virtual void vf112();
+    virtual void vf116();
+    virtual void vf120();
+    virtual void vf124();
+    virtual void vf128();
+    virtual void vf132();
+    virtual void vf136();
+    virtual void vf140();
+    virtual void vf144();
+    virtual void vf148();
+    virtual void vf152();
+    virtual void vf156();
+    virtual void vf160();
+    virtual void vf164();
+    virtual void vf168();
+    virtual void vf172();
+    virtual void vf176();
+    virtual void vf180();
+    virtual void vf184();
+    virtual void vf188();
+    virtual void vf192();
+    virtual void vf196();
+    virtual void vf200();
+    virtual void vf204();
+    virtual void vf208();
+    virtual void vf212();
+    virtual void vf216();
+    virtual void vf220();
+    virtual void vf224();
+    virtual void vf228();
+    virtual void vf232();
+    virtual void vf236();
+    virtual void vf240();
+    virtual void vf244();
+    virtual void vf248();
+    virtual void vf252();
+    virtual void vf256();
+    virtual void vf260();
+    virtual void vf264();
+    virtual void vf268();
+    virtual void vf272();
+    virtual void vf276();
+    virtual void vf280();
+    virtual void vf284();
+    virtual void vf288();
+    virtual void vf292();
+    virtual void vf296();
+    virtual void vf300();
+    virtual float GetDamage() const;
+    virtual EScriptBulletType GetScriptBulletType() const;
+    virtual ISceneNode* GetFiredBy() const;
     void AttemptUpdate(float);
     void BeginUpdate(float);
     void CheckEnemies();
-    void ConstrainVelocity();
+    void CommitUpdate();
     void Penetrate(const CCollision&);
 
     unsigned char unknown004[8];
@@ -357,14 +506,172 @@ public:
     CVector3 m_rotationRate;
     unsigned char unknown150[80];
     CVolFiber m_sweep;
-    unsigned char unknown1f0[8];
-    unsigned char m_resting : 1;
+    CLightView* m_light;
+    unsigned char unknown1f4[4];
+    bool m_resting : 1;
     unsigned char m_flag40 : 1;
     unsigned char m_gravity : 1;
     unsigned char m_flag10 : 1;
-    unsigned char m_flags1f8b : 3;
+    unsigned char m_flag08 : 1;
+    unsigned char m_flags1f8b : 2;
     unsigned char m_halted : 1;
 };
+
+void CreateExplosionEffect(const CMatrix&, bool, bool);
+
+void CThrownBullet::CommitUpdate() {
+    if (m_halted)
+        return;
+    switch (m_type) {
+    case 3:
+    case 4:
+    case 5:
+    case 9:
+        if (m_detonationTime > 0.0f && (!m_flag10 || m_flag08)) {
+            ConstrainVelocity();
+            m_position = m_tm.GetPos();
+            m_launchVelocity = m_velocity;
+            if (m_type != 5)
+                m_gravity = !m_resting;
+            m_resting = 0;
+            m_flag40 = 0;
+        } else {
+            if (!m_flag08) {
+                CVector3 position = m_tm.GetRow(3);
+                CExplosion explosion(g_scene, position, m_properties->m_explosionRadius, 1.0f, GetDamage(),
+                                     GetScriptBulletType(), GetFiredBy(), false);
+                CMatrix tm;
+                tm.BuildTrans(position);
+                CreateExplosionEffect(tm, m_resting, g_cheats.m_bigExplosions);
+                CPlayerObject* player;
+                if (g_bInMultiplayerMode)
+                    player = g_scene.FindClosestPlayer(position);
+                else
+                    player = g_scene.GetPlayer(0);
+                CVector3 delta;
+                player->GetPosition(delta);
+                delta.d.v[0] = delta.d.v[0] - position.d.v[0];
+                delta.d.v[1] = delta.d.v[1] - position.d.v[1];
+                delta.d.v[2] = delta.d.v[2] - position.d.v[2];
+                int event[10];
+                event[0] = 7;
+                event[1] = 3;
+                event[2] = MathFunRandomI64(16, 17);
+                event[3] = MathFunRandomI64(3600, 4600);
+                event[4] = GetAzimuth(position, player);
+                event[5] = 256.0f * delta.Length();
+                event[6] = 0;
+                event[7] = 24999;
+                event[8] = 0;
+                event[9] = 32000;
+                AEMS_SendEvent(event);
+                BSSendMessage(180, GetScriptObject(), 0, 0, this);
+            }
+            MarkForDestruction(0);
+        }
+        break;
+    case 0:
+    case 1:
+    case 2:
+    case 8:
+    case 10:
+        if (m_detonationTime > 0.0f && (!m_flag10 || m_flag08)) {
+            ConstrainVelocity();
+            m_position = m_tm.GetPos();
+            m_launchVelocity = m_velocity;
+        } else {
+            CVector3 position = m_tm.GetRow(3);
+            float speed = m_velocity.Length();
+            if (speed > CONTACT_EPSILON) {
+                float back = -0.05f / speed;
+                float backX = back * m_velocity.d.v[0];
+                float backY = back * m_velocity.d.v[1];
+                float backZ = back * m_velocity.d.v[2];
+                position.d.v[0] = position.d.v[0] + backX;
+                position.d.v[1] = position.d.v[1] + backY;
+                position.d.v[2] = position.d.v[2] + backZ;
+            }
+            CExplosion explosion(g_scene, position, m_properties->m_explosionRadius, 1.0f, GetDamage(),
+                                 GetScriptBulletType(), GetFiredBy(), false);
+            CMatrix tm;
+            tm.BuildTrans(position);
+            CreateExplosionEffect(tm, m_detonationTime > 0.0f, g_cheats.m_bigExplosions);
+            CPlayerObject* player = g_scene.GetPlayer(0);
+            CVector3 delta;
+            player->GetPosition(delta);
+            delta.d.v[0] = delta.d.v[0] - position.d.v[0];
+            delta.d.v[1] = delta.d.v[1] - position.d.v[1];
+            delta.d.v[2] = delta.d.v[2] - position.d.v[2];
+            int event[10];
+            event[0] = 7;
+            event[1] = 3;
+            event[2] = MathFunRandomI64(34, 35);
+            event[3] = MathFunRandomI64(3600, 4600);
+            event[4] = GetAzimuth(position, player);
+            event[5] = 256.0f * delta.Length();
+            event[6] = 0;
+            event[7] = 24999;
+            event[8] = 0;
+            event[9] = 32000;
+            AEMS_SendEvent(event);
+            BSSendMessage(180, GetScriptObject(), 0, 0, this);
+            MarkForDestruction(0);
+        }
+        break;
+    default:
+        DebugMsg("WARNING: Unknown thrown bullet type in CommitUpdate.  Type %d\n", m_type);
+        break;
+    }
+    if (m_light) {
+        CMatrix tm;
+        GetTMLocalToWorld(tm);
+        m_light->SetTMLocalToWorld(tm);
+    }
+}
+
+void CreateExplosionEffect(const CMatrix& matrix, bool extra, bool alternative) {
+    if (!alternative) {
+        CParticleSystem* system = CParticleSystem::Create(0xFB394D09);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        system = CParticleSystem::Create(0x4F2B8179);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        system = CParticleSystem::Create(0x1CD6E4B5);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        if (extra) {
+            system = CParticleSystem::Create(0x4822CD8F);
+            if (system)
+                system->SetLocalToWorld(matrix);
+        }
+        CLight* light = CLight::Create(0x9BCE1511);
+        if (light) {
+            CVector3 position = matrix.GetPos();
+            position.d.v[2] += 0.5f;
+            light->SetPosition(position);
+        }
+    } else {
+        CParticleSystem* system = CParticleSystem::Create(0xABD02935);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        system = CParticleSystem::Create(0x6BD7A8DB);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        system = CParticleSystem::Create(0x28E4D6EF);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        system = CParticleSystem::Create(0xFF8E1F13);
+        if (system)
+            system->SetLocalToWorld(matrix);
+        CLight* light = CLight::Create(0x9BCE1511);
+        if (light) {
+            CVector3 position = matrix.GetPos();
+            position.d.v[2] += 0.5f;
+            light->SetPosition(position);
+        }
+    }
+}
 
 void CThrownBullet::AttemptUpdate(float elapsed) {
     if (!m_halted) {
