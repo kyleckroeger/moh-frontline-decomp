@@ -9,18 +9,59 @@
 // virtual functions up to CleanUp (+356 in __vt__11CHierObject; the earlier
 // slots are placeholders named by offset) and the other classes are
 // non-virtual views. The rest of the file is not part of this unit.
+/* inferred: copies move it as a doubleword pair */
+class CVector3 {
+public:
+    CVector3(const CVector3& other) : d(other.d) {}
+
+    union {
+        double pair[2];
+        float v[4];
+    } d;
+} __attribute__((aligned(8)));
+
 class CMatrix {
 public:
+    CMatrix& operator=(const CMatrix&);
     void Multiply(const CMatrix&, const CMatrix&);
-    void PostMultiply(const CMatrix&);
+    void PostMultiply(const CMatrix& m) { Multiply(*this, m); }
+    void SetPos(CVector3);
+
+    float m[4][4];
+};
+
+class CQuaternion {
+public:
+    void GetMatrix(CMatrix&) const;
+
+    float v[4];
+};
+
+class IVolume {
+public:
+    virtual ~IVolume();
+    virtual IVolume* Create() const;
+    virtual void TransformedCopy(const IVolume&, const CMatrix&);
 };
 
 class CStaticObject {
 public:
-    bool IsFollowingPath() const;
+    bool IsFollowingPath() const {
+        bool following = false;
+        if (m_pathState != 0 && m_pathState != 1)
+            following = true;
+        return following;
+    }
+    void AnimUpdate(float);
+    void BeginPathMotionUpdate(float);
 
     unsigned char unknown000[260];
     int m_pathState;
+};
+
+class CAttachableObject {
+public:
+    void UpdateAttachedObjects();
 };
 
 class CStaticObjectFactory {
@@ -120,20 +161,35 @@ public:
     virtual void unknown15c();
     virtual void unknown160();
     virtual void CleanUp();
+    virtual void BeginScriptMotionUpdate(float);
+    virtual void BeginAnimMotionUpdate(float);
 
+    void SetInheritedMatrix(CMatrix& matrix) { m_inherited = matrix; }
     void BeginUpdate(float);
     void DoBeginUpdate(float, bool);
     void RemoveObjectFromTree(CHierObject*, int);
 
-    unsigned char data004[264];
-    void* m_volume10c;
+    unsigned char data004[60];
+    CMatrix m_matrix;
+    unsigned char data080[140];
+    IVolume* m_localVolume;
     unsigned char data110[4];
-    void* m_volume114;
-    unsigned char data118[1128];
+    IVolume* m_worldVolume;
+    unsigned char data118[104];
+    CQuaternion m_rotation;
+    unsigned char data190[80];
+    unsigned char m_motion80 : 1;
+    unsigned char m_scripted40 : 1;
+    unsigned char m_scripted20 : 1;
+    unsigned char m_scripted10 : 1;
+    unsigned char m_motion08 : 1;
+    unsigned char m_animated04 : 1;
+    unsigned char m_motion03 : 2;
+    unsigned char data1e1[927];
     CHierObject* m_firstChild;
     CHierObject* m_nextSibling;
     bool paused : 1;
-    unsigned char flags : 1;
+    unsigned char m_independent : 1;
     unsigned char m_isRoot : 1;
     unsigned char flags3 : 5;
     unsigned char data589[3];
@@ -141,17 +197,35 @@ public:
     CHierObject* m_parent;
     unsigned char data590[12];
     int m_value5a0;
+    unsigned char data5a4[76];
+    CMatrix m_inherited;
+    CMatrix m_offset;
+    CVector3 m_position;
 };
 
-__declspec(weak) void CMatrix::PostMultiply(const CMatrix& m) {
-    Multiply(*this, m);
-}
-
-__declspec(weak) bool CStaticObject::IsFollowingPath() const {
-    bool following = false;
-    if (m_pathState != 0 && m_pathState != 1)
-        following = true;
-    return following;
+void CHierObject::DoBeginUpdate(float time, bool child) {
+    if (child && m_independent)
+        return;
+    ((CStaticObject*)this)->AnimUpdate(time);
+    if (((CStaticObject*)this)->IsFollowingPath()) {
+        ((CStaticObject*)this)->BeginPathMotionUpdate(time);
+    } else if (m_scripted40 || m_scripted20 || m_scripted10) {
+        BeginScriptMotionUpdate(time);
+    } else if (m_animated04) {
+        BeginAnimMotionUpdate(time);
+    } else {
+        m_rotation.GetMatrix(m_matrix);
+        m_matrix.SetPos(m_position);
+        m_matrix.PostMultiply(m_offset);
+        m_matrix.PostMultiply(m_inherited);
+        if (m_worldVolume && m_localVolume)
+            m_worldVolume->TransformedCopy(*m_localVolume, m_matrix);
+    }
+    ((CAttachableObject*)this)->UpdateAttachedObjects();
+    for (CHierObject* child = m_firstChild; child; child = child->m_nextSibling) {
+        child->SetInheritedMatrix(m_matrix);
+        child->DoBeginUpdate(time, true);
+    }
 }
 
 void CHierObject::BeginUpdate(float time) {
@@ -170,7 +244,7 @@ void CHierObject::CleanUp() {
         m_value5a0 = 0;
     else
         m_parent->RemoveObjectFromTree(this, m_slot);
-    FreeBoxVolume(m_volume114);
-    FreeBoxVolume(m_volume10c);
+    FreeBoxVolume(m_worldVolume);
+    FreeBoxVolume(m_localVolume);
     CStaticObjectFactory::DeallocateStaticObject((CStaticObject*)this);
 }

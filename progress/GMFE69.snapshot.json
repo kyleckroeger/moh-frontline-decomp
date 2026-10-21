@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 908384,
+    "matching_code_bytes": 909424,
     "total_executable_code_bytes": 1414572,
-    "percent": 64.21617280703987,
+    "percent": 64.28969327824953,
     "categories": {
-      "reconstructed_game": 682976,
+      "reconstructed_game": 684016,
       "restored_library": 225408
     },
-    "matching_functions": 4518
+    "matching_functions": 4519
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -676,7 +676,7 @@
     "config/GMFE69/hearingvolume_ctor.json": "5732d09920cc07a935b5d77282b677d3891bc32644633fecebf585fba3ca35e1",
     "config/GMFE69/hearingvolume_init.json": "5cfe4c3ac3686d90692dbcac1cb2adbc0a2c874ed61ea1b4a96d250a04015cfe",
     "config/GMFE69/hearingvolume_rows.json": "b5d842a31bc5a9a612c9dff0557bd27d482e7f26d1daa66bc7d9d4b935f319c8",
-    "config/GMFE69/hierobject.json": "6d98201b0146edf155a89454096dcbe4c5c25e31ef1880e6b901bde3fb4f8eb2",
+    "config/GMFE69/hierobject.json": "97c84bb7a2ef58333c47171b0d1f398ff7f354e472820d36102c939f48982ddc",
     "config/GMFE69/hierobject_constrain.json": "e012314e541ae6b058d9dc04031c74291037b5d34a84b470bb18d893b6da63e9",
     "config/GMFE69/hierobject_draw.json": "8418a044e890a3e7311069a90c1d8984d95369e34dd9b191972e91082d32405b",
     "config/GMFE69/hierobject_motion.json": "58176a33c49453918af8be65fb473a6ed274f075efa92bd990201622010fcd8a",
@@ -2754,7 +2754,7 @@
     "src/game/hearingvolume_ctor.cpp": "2eb1e8ebc87557ea9d3f15e839315eeb922a206238f8dc46e859681ae7a3f49a",
     "src/game/hearingvolume_init.cpp": "426489d92b8d59e244ea4fb51abc66ea78a94f47252c45a053605291aee269e4",
     "src/game/hearingvolume_rows.cpp": "eb889ebdafa103d1056ac79d8d0d2a63be8c8366b4d470bfd50d5ba078a3651e",
-    "src/game/hierobject.cpp": "f049e08a0f7859f2cd2dedabea5e772c87da8ef794ac4c19cd0c2b354feb7d1a",
+    "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
     "src/game/hierobject_constrain.cpp": "8bec29c3f2d6e91a80b4bca88f068c213a24285de987ca9fa1daea556834a966",
     "src/game/hierobject_draw.cpp": "c5e1811b7ea46f78644c7dce50feab94b0ab5492fdf94d86584eafd87e8138af",
     "src/game/hierobject_motion.cpp": "4fd02dff65bd2edbd24a21eebaa5f2a8921fd4af2b60d3f85bffbe16f2e19426",
@@ -21444,8 +21444,8 @@
     {
       "id": "hierobject",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 272,
+      "functions": 5,
+      "code_bytes": 1312,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21475,10 +21475,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "90e7927a3010db4073fd54b79c03417b36fde5076a6273604e8a6e81be2972e4",
-      "linked_sha256": "685aee0aa8fbb8a631734b70be874da7f4639ff0f7986a6b5955b09f592256c6"
+      "object_sha256": "82a496612c824a79ec7b4bb8c1f05a5c5efdf6c260d142b6cca61a41cbe8c709",
+      "linked_sha256": "23db78e15527ce1d357a60c95bc65cb9255c83b2c27ca0952250429803426be4"
     },
     {
       "id": "motionblur",
@@ -55141,13 +55141,6 @@
             "size": 1028,
             "kind": "function",
             "name": "BeginAnimMotionUpdate__11CHierObjectFf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8009b50c",
-            "size": 1040,
-            "kind": "function",
-            "name": "DoBeginUpdate__11CHierObjectFfb",
             "evidence": "exception-index"
           }
         ]
