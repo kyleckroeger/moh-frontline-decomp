@@ -2,13 +2,37 @@
 // a grenade explosion's particle systems at the given matrix (three for a
 // normal explosion, a fourth when asked, or four others for the alternative
 // effect), each by its CRC id, and a light half a unit above the explosion's
-// position. The function, CParticleSystem::Create, CLight::Create and the
-// virtuals are named by the symbols (the virtuals by their table slots); the
-// meaning of the two flags and the class layouts are inferred (CParticleSystem's
-// table pointer follows 28 bytes of members). The rest of the file is in other
-// units.
+// position. CThrownBullet::AttemptUpdate (unless the bullet is halted) resets
+// the closest distance, restarts from the launch velocity (with gravity when
+// enabled), advances the spin by the distance travelled, moves the matrix to
+// the new position, sweeps the fiber volume from the old position to it and
+// stores the fiber's extents (widened by CONTACT_EPSILON) in the scene's
+// sweep entries. The functions, CParticleSystem::Create, CLight::Create and
+// the virtuals are named by the symbols (the virtuals by their table slots);
+// the meaning of the two flags, the members and the class layouts are
+// inferred (CParticleSystem's table pointer follows 28 bytes of members).
+// The rest of the file is in other units.
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y;
+    }
+    return x;
+}
+
 class CVector3 {
 public:
+    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
+
     union {
         double pair[2];
         float v[4];
@@ -18,6 +42,7 @@ public:
 class CMatrix {
 public:
     CVector3 GetPos() const { return *(const CVector3*)m[3]; }
+    void SetPos(CVector3);
 
     float m[4][4];
 } __attribute__((aligned(16)));
@@ -174,5 +199,100 @@ void CreateExplosionEffect(const CMatrix& matrix, bool extra, bool alternative) 
             position.d.v[2] += 0.5f;
             light->SetPosition(position);
         }
+    }
+}
+
+class CVolFiber {
+public:
+    void Set(CVector3, CVector3);
+    virtual void unknown008();
+    virtual void unknown012();
+    virtual void unknown016();
+    virtual void unknown020();
+    virtual void unknown024();
+    virtual void unknown028();
+    virtual void unknown032();
+    virtual void unknown036();
+    virtual void unknown040();
+    virtual void unknown044();
+    virtual void unknown048();
+    virtual void unknown052();
+    virtual void unknown056();
+    virtual void unknown060();
+    virtual void unknown064();
+    virtual void unknown068();
+    virtual void GetExtents(CVector3&, CVector3&) const;
+
+    unsigned char unknown04[76];
+};
+
+/* inferred: a scene sweep extent (its coordinate at +8) */
+struct SExtentView {
+    unsigned char unknown00[8];
+    float m_value;
+};
+
+extern const float CONTACT_EPSILON;
+
+class CThrownBullet {
+public:
+    void AttemptUpdate(float);
+
+    unsigned char unknown000[12];
+    SExtentView* m_minX;
+    SExtentView* m_maxX;
+    SExtentView* m_minY;
+    SExtentView* m_maxY;
+    unsigned char unknown01c[20];
+    CVector3 m_position;
+    unsigned char unknown040[16];
+    CMatrix m_tm;
+    float m_detonationTime;
+    float m_closest;
+    unsigned char unknown098[88];
+    CVector3 m_velocity;
+    CVector3 m_launchVelocity;
+    unsigned char unknown110[16];
+    CVector3 m_rotation;
+    CVector3 m_rotationBase;
+    CVector3 m_rotationRate;
+    unsigned char unknown150[80];
+    CVolFiber m_sweep;
+    unsigned char unknown1f0[8];
+    unsigned char m_flags1f8 : 2;
+    unsigned char m_gravity : 1;
+    unsigned char m_flags1f8b : 4;
+    unsigned char m_halted : 1;
+};
+
+void CThrownBullet::AttemptUpdate(float elapsed) {
+    if (!m_halted) {
+        m_closest = 3.4028235e+38f;
+        m_velocity = m_launchVelocity;
+        if (m_gravity)
+            m_velocity.d.v[2] += -0.005455351f * elapsed;
+        CVector3 step;
+        step.d.v[0] = elapsed * m_velocity.d.v[0];
+        step.d.v[1] = elapsed * m_velocity.d.v[1];
+        step.d.v[2] = elapsed * m_velocity.d.v[2];
+        float distance = step.Length();
+        m_rotation.d.v[0] = distance * m_rotationRate.d.v[0];
+        m_rotation.d.v[1] = distance * m_rotationRate.d.v[1];
+        m_rotation.d.v[2] = distance * m_rotationRate.d.v[2];
+        m_rotation.d.v[0] = m_rotation.d.v[0] + m_rotationBase.d.v[0];
+        m_rotation.d.v[1] = m_rotation.d.v[1] + m_rotationBase.d.v[1];
+        m_rotation.d.v[2] = m_rotation.d.v[2] + m_rotationBase.d.v[2];
+        step.d.v[0] = step.d.v[0] + m_position.d.v[0];
+        step.d.v[1] = step.d.v[1] + m_position.d.v[1];
+        step.d.v[2] = step.d.v[2] + m_position.d.v[2];
+        m_tm.SetPos(step);
+        m_sweep.Set(m_position, step);
+        CVector3 min;
+        CVector3 max;
+        m_sweep.GetExtents(min, max);
+        m_minX->m_value = min.d.v[0] - CONTACT_EPSILON;
+        m_minY->m_value = min.d.v[1] - CONTACT_EPSILON;
+        m_maxX->m_value = CONTACT_EPSILON + max.d.v[0];
+        m_maxY->m_value = CONTACT_EPSILON + max.d.v[1];
     }
 }
