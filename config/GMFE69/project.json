@@ -1228,7 +1228,8 @@
     "animtran_quickscan.json",
     "memfree.json",
     "ConfigGC_dualconfig.json",
-    "world_volume_remove.json"
+    "world_volume_remove.json",
+    "thrownbullet_explosion.json"
   ],
   "progress": {
     "code_bytes": 1414572,
