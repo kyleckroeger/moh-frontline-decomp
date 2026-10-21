@@ -1223,7 +1223,8 @@
     "UISUtils_parsehints.json",
     "objcreate_destroy.json",
     "player_death.json",
-    "UserInterface_draw.json"
+    "UserInterface_draw.json",
+    "static_obj_setlight.json"
   ],
   "progress": {
     "code_bytes": 1414572,

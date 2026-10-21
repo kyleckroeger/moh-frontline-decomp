@@ -1,0 +1,85 @@
+{
+  "id": "static_obj_setlight",
+  "source": "src/game/static_obj_setlight.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800aee38",
+      "size": 260,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d3a8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001448c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SetAttachedLight__13CStaticObjectFP6CLight8CVector3",
+      "address": "0x800aee38",
+      "size": 260,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v": "0x800d7cb8",
+    "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "PreTranslate__7CMatrixF8CVector3": "0x80090694",
+    "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent": "0x800d80b0",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "static_obj.cpp",
+  "original_file_index": 6731
+}
