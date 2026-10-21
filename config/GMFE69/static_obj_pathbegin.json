@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ae9bc",
-      "size": 80,
+      "address": "0x800ae8c0",
+      "size": 332,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d398",
-      "size": 8,
+      "address": "0x8000d390",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014474",
-      "size": 12,
+      "address": "0x80014468",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AttemptCollisionDamage__13CStaticObjectFRC10CCollision",
+      "address": "0x800ae8c0",
+      "size": 252,
+      "binding": 1
+    },
     {
       "name": "BeginPathMotionUpdate__13CStaticObjectFf",
       "address": "0x800ae9bc",
@@ -65,7 +71,9 @@
     }
   ],
   "externals": {
-    "UpdatePathMotionDestAndSpeed__13CStaticObjectFv": "0x800aea0c"
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "UpdatePathMotionDestAndSpeed__13CStaticObjectFv": "0x800aea0c",
+    "g_cheats": "0x80196a94"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -74,5 +82,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "static_obj.cpp",
-  "original_file_index": 6731
+  "original_file_index": 6731,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350880"
+    }
+  ]
 }

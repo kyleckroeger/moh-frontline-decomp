@@ -1,5 +1,8 @@
-// A fragment of static_obj.cpp (0x800ae9bc):
-// CStaticObject::BeginPathMotionUpdate records the starting position (+368)
+// A fragment of static_obj.cpp (0x800ae8c0):
+// CStaticObject::AttemptCollisionDamage, for a damageable object with damage
+// to deal, fires script event 192 on the other node with a 20-byte block
+// (owner reference, 1 or 0 under the invincibility cheat for a player, 1, 5,
+// 9); CStaticObject::BeginPathMotionUpdate records the starting position (+368)
 // and value (+504) of a path motion, flags the motion (bit 0x40 of +480) and
 // updates its destination and speed. The class and functions are named by
 // the mangled symbols; the members and flag names are inferred, the CVector3
@@ -134,6 +137,7 @@ public:
     virtual void Draw(); /* defined elsewhere; keeps the table out */
     virtual void Destroy();
     virtual void MarkForDestruction(int);
+    void AttemptCollisionDamage(const CCollision&);
     void BeginPathMotionUpdate(float);
     void UpdatePathMotionDestAndSpeed();
     CVector3 GetPathPosition() const { return m_position; }
@@ -173,6 +177,27 @@ public:
     ISceneNodeView* m_nodeA;
     ISceneNodeView* m_nodeB;
 };
+
+void CStaticObject::AttemptCollisionDamage(const CCollision& collision) {
+    if (!m_damageable)
+        return;
+    ISceneNodeView* other;
+    ISceneNodeView* node;
+    float zero = 0.0f;
+    if (m_value0e0 == zero && m_damage == zero)
+        return;
+    other = node = collision.GetOther(this);
+    CollisionDamageEvent event;
+    event.m_owner = m_ownerRef;
+    event.m_value04 = 1;
+    event.m_value10 = 9;
+    event.m_value08 = 1;
+    event.m_value0c = 5;
+    if (g_cheats.m_invincible && node->AsPlayerObject())
+        event.m_value04 = 0;
+    if (other->GetScriptObject())
+        BSObjectTriggerEvent(other->GetScriptObject(), 192, &event, 0, true);
+}
 
 void CStaticObject::BeginPathMotionUpdate(float) {
     m_pathStart = GetPathPosition();
