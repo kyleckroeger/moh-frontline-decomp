@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d301c",
-      "size": 1112,
+      "size": 2248,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e6ec",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001544c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "BeginUpdate__13CThrownBulletFf",
+      "address": "0x800d3474",
+      "size": 1136,
+      "binding": 1
+    },
+    {
       "name": "CreateExplosionEffect__FRC7CMatrixbb",
       "address": "0x800d301c",
       "size": 560,
@@ -72,10 +78,17 @@
   ],
   "externals": {
     "CONTACT_EPSILON": "0x80350ba8",
+    "CheckEnemies__13CThrownBulletFv": "0x800d1d88",
     "Create__15CParticleSystemFUl": "0x80080c78",
     "Create__6CLightFUl": "0x80078648",
+    "DebugMsg__FPCce": "0x80018c88",
+    "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb": "0x8004618c",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
-    "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc"
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc",
+    "Update__19CLightVolumeManagerFf": "0x80079070"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -88,9 +101,16 @@
   "original_file": "thrownbullet.cpp",
   "original_file_index": 8132,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 62,
+      "address": "0x80177f48"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
@@ -126,6 +146,12 @@
       "offset": 24,
       "size": 8,
       "address": "0x80350d80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350d74"
     }
   ]
 }

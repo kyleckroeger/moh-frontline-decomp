@@ -7,7 +7,12 @@
 // enabled), advances the spin by the distance travelled, moves the matrix to
 // the new position, sweeps the fiber volume from the old position to it and
 // stores the fiber's extents (widened by CONTACT_EPSILON) in the scene's
-// sweep entries. The functions, CParticleSystem::Create, CLight::Create and
+// sweep entries. BeginUpdate updates the light volumes, checks for
+// enemies, takes the position from the matrix, turns a rolling grenade's
+// matrix along its velocity (front = velocity, up and right from the current
+// rightward vector), warns about unknown types, keeps the velocity and spin
+// for the next step, refreshes its proximity trigger, counts the detonation
+// time down to zero and resets the closest distance. The functions, CParticleSystem::Create, CLight::Create and
 // the virtuals are named by the symbols (the virtuals by their table slots);
 // the meaning of the two flags, the members and the class layouts are
 // inferred (CParticleSystem's table pointer follows 28 bytes of members).
@@ -32,6 +37,19 @@ extern inline float sqrtf(float x)
 class CVector3 {
 public:
     float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            d.v[0] *= 1.0f / length;
+            d.v[1] *= 1.0f / length;
+            d.v[2] *= 1.0f / length;
+        }
+    }
+    void Cross(const CVector3& a, const CVector3& b) {
+        d.v[0] = a.d.v[1] * b.d.v[2] - a.d.v[2] * b.d.v[1];
+        d.v[1] = a.d.v[2] * b.d.v[0] - a.d.v[0] * b.d.v[2];
+        d.v[2] = a.d.v[0] * b.d.v[1] - a.d.v[1] * b.d.v[0];
+    }
 
     union {
         double pair[2];
@@ -43,6 +61,9 @@ class CMatrix {
 public:
     CVector3 GetPos() const { return *(const CVector3*)m[3]; }
     void SetPos(CVector3);
+    void SetFront(CVector3);
+    void SetRight(CVector3);
+    void SetUp(CVector3);
 
     float m[4][4];
 } __attribute__((aligned(16)));
@@ -52,29 +73,29 @@ class CParticleSystem {
 
 public:
     static CParticleSystem* Create(unsigned long);
-    virtual void unknown008();
-    virtual void unknown012();
-    virtual void unknown016();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown032();
-    virtual void unknown036();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void unknown048();
-    virtual void unknown052();
-    virtual void unknown056();
-    virtual void unknown060();
-    virtual void unknown064();
-    virtual void unknown068();
-    virtual void unknown072();
-    virtual void unknown076();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown092();
-    virtual void unknown096();
+    virtual void vf008();
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf032();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
+    virtual void vf072();
+    virtual void vf076();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf092();
+    virtual void vf096();
     virtual void unknown100();
     virtual void unknown104();
     virtual void unknown108();
@@ -91,29 +112,29 @@ public:
 class CLight {
 public:
     static CLight* Create(unsigned long);
-    virtual void unknown008();
-    virtual void unknown012();
-    virtual void unknown016();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown032();
-    virtual void unknown036();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void unknown048();
-    virtual void unknown052();
-    virtual void unknown056();
-    virtual void unknown060();
-    virtual void unknown064();
-    virtual void unknown068();
-    virtual void unknown072();
-    virtual void unknown076();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown092();
-    virtual void unknown096();
+    virtual void vf008();
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf032();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
+    virtual void vf072();
+    virtual void vf076();
+    virtual void vf080();
+    virtual void vf084();
+    virtual void vf088();
+    virtual void vf092();
+    virtual void vf096();
     virtual void unknown100();
     virtual void unknown104();
     virtual void unknown108();
@@ -205,22 +226,22 @@ void CreateExplosionEffect(const CMatrix& matrix, bool extra, bool alternative) 
 class CVolFiber {
 public:
     void Set(CVector3, CVector3);
-    virtual void unknown008();
-    virtual void unknown012();
-    virtual void unknown016();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown032();
-    virtual void unknown036();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void unknown048();
-    virtual void unknown052();
-    virtual void unknown056();
-    virtual void unknown060();
-    virtual void unknown064();
-    virtual void unknown068();
+    virtual void vf008();
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf032();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void vf060();
+    virtual void vf064();
+    virtual void vf068();
     virtual void GetExtents(CVector3&, CVector3&) const;
 
     unsigned char unknown04[76];
@@ -234,11 +255,40 @@ struct SExtentView {
 
 extern const float CONTACT_EPSILON;
 
+class CLightVolumeManager {
+public:
+    void Update(float);
+
+    unsigned char unknown00[28];
+};
+
+class BSGO_Basic;
+void ForceUpdateProximityTriggerStatus(BSGO_Basic*, bool);
+void DebugMsg(const char*, ...);
+
 class CThrownBullet {
 public:
+    virtual void vf008();
+    virtual void vf012();
+    virtual void vf016();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf032();
+    virtual void vf036();
+    virtual void vf040();
+    virtual void vf044();
+    virtual void vf048();
+    virtual void vf052();
+    virtual void vf056();
+    virtual void vf060();
+    virtual void GetPosition(CVector3&) const;
+    virtual void GetRightward(CVector3&) const;
     void AttemptUpdate(float);
+    void BeginUpdate(float);
+    void CheckEnemies();
 
-    unsigned char unknown000[12];
+    unsigned char unknown004[8];
     SExtentView* m_minX;
     SExtentView* m_maxX;
     SExtentView* m_minY;
@@ -249,7 +299,11 @@ public:
     CMatrix m_tm;
     float m_detonationTime;
     float m_closest;
-    unsigned char unknown098[88];
+    unsigned char unknown098[12];
+    int m_type;
+    unsigned char unknown0a8[8];
+    unsigned char m_trigger[36];
+    CLightVolumeManager m_lights;
     CVector3 m_velocity;
     CVector3 m_launchVelocity;
     unsigned char unknown110[16];
@@ -259,7 +313,8 @@ public:
     unsigned char unknown150[80];
     CVolFiber m_sweep;
     unsigned char unknown1f0[8];
-    unsigned char m_flags1f8 : 2;
+    unsigned char m_resting : 1;
+    unsigned char m_flag40 : 1;
     unsigned char m_gravity : 1;
     unsigned char m_flags1f8b : 4;
     unsigned char m_halted : 1;
@@ -295,4 +350,49 @@ void CThrownBullet::AttemptUpdate(float elapsed) {
         m_maxX->m_value = CONTACT_EPSILON + max.d.v[0];
         m_maxY->m_value = CONTACT_EPSILON + max.d.v[1];
     }
+}
+
+void CThrownBullet::BeginUpdate(float elapsed) {
+    m_lights.Update(elapsed);
+    CheckEnemies();
+    m_position = m_tm.GetPos();
+    switch (m_type) {
+    case 0:
+    case 1:
+    case 2:
+    case 8:
+    case 10:
+        break;
+    case 3:
+    case 4:
+    case 5:
+    case 9:
+        if (!m_resting && m_velocity.Length() > CONTACT_EPSILON) {
+            CVector3 front = m_velocity;
+            front.Normalize();
+            CVector3 right;
+            GetRightward(right);
+            CVector3 up;
+            up.Cross(right, front);
+            right.Cross(front, up);
+            right.Normalize();
+            up.Normalize();
+            m_tm.SetFront(front);
+            m_tm.SetRight(right);
+            m_tm.SetUp(up);
+        }
+        break;
+    default:
+        DebugMsg("WARNING: Unknown thrown bullet type in BeginUpdate.  Type %d\n", m_type);
+        break;
+    }
+    m_launchVelocity = m_velocity;
+    m_rotationBase = m_rotation;
+    ForceUpdateProximityTriggerStatus((BSGO_Basic*)m_trigger, true);
+    if (m_detonationTime > 0.0f) {
+        m_detonationTime -= elapsed;
+        if (m_detonationTime < 0.0f)
+            m_detonationTime = 0.0f;
+    }
+    m_closest = 3.4028235e+38f;
 }
