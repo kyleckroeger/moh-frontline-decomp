@@ -12,7 +12,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from audit import load_target
-from project_build import function_name, progress, validate_units
+from formats import Elf32
+from project_build import function_name, progress, validate_object, validate_units
 from setup import CONFIG
 
 
@@ -65,6 +66,41 @@ class CodeSectionCoverage(unittest.TestCase):
         unit['functions'] = unit['functions'][1:]
         with self.assertRaisesRegex(ValueError, 'Original function coverage differs'):
             validate_units(self.original, [unit])
+
+
+class LeadingFiller(unittest.TestCase):
+    """player_begincrouch's .bss follows 24 bytes of earlier player.cpp data."""
+    @classmethod
+    def setUpClass(cls):
+        cls.input = ROOT / 'build/reconstruction/units/player_begincrouch/input.o'
+        if not cls.input.exists():
+            raise unittest.SkipTest('Run reconstruct.py first')
+        cls.original_path, cls.original = load_target()
+        cls.unit = json.loads((CONFIG / 'player_begincrouch.json').read_text())
+
+    def mutated(self, filler, offset=None):
+        unit = json.loads(json.dumps(self.unit))
+        unit['leading_filler'] = filler
+        bss = next(s for s in unit['sections'] if s['name'] == '.bss')
+        bss['linked_offset'] = filler if offset is None else offset
+        bss['linked_size'] += filler - self.unit['leading_filler']
+        return unit
+
+    def test_unit_is_valid(self):
+        validate_units(self.original, [self.unit])
+        validate_object(Elf32(self.input.read_bytes()), self.unit)
+
+    def test_filler_must_be_the_trimmed_lead(self):
+        with self.assertRaisesRegex(ValueError, 'Leading filler does not stand in'):
+            validate_units(self.original, [self.mutated(24, 16)])
+
+    def test_filler_must_exceed_small_data(self):
+        with self.assertRaisesRegex(ValueError, 'Leading filler does not stand in'):
+            validate_units(self.original, [self.mutated(8)])
+
+    def test_filler_must_be_canonical(self):
+        with self.assertRaisesRegex(ValueError, 'Leading filler is not the canonical'):
+            validate_object(Elf32(self.input.read_bytes()), self.mutated(40))
 
 
 if __name__ == '__main__':

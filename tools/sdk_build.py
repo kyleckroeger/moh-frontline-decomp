@@ -37,9 +37,19 @@ def stripped_address(index):
     return 0x10000000 + index * 0x100000
 
 
+LEADING_FILLER = "__leading_filler"
+
+
 def compile_sdk(unit, compiler, wrapper, work, execute):
+    # A fragment of a larger file whose earlier zero-initialized data sets the
+    # alignment phase of its own: a generated prefix declares a filler object
+    # of that size first, so the compiler lays out the rest as in the file.
+    prefix = []
+    if "leading_filler" in unit:
+        (work / "leading_filler.h").write_text(f"static char {LEADING_FILLER}[{unit['leading_filler']}];\n")
+        prefix = [f"-I{work}", "-prefix", "leading_filler.h"]
     execute("compile", wrapper, compiler / "mwcceppc.exe", "-c",
-            *unit["compiler_flags"], "-I-",
+            *unit["compiler_flags"], *prefix, "-I-",
             *[f"-I{ROOT / path}" for path in unit["include_dirs"]],
             "-ir", ROOT / unit.get("source_root", "src/dolphin"), ROOT / unit["source"], "-o", "compiled.o")
 

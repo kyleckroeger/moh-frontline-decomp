@@ -375,6 +375,8 @@ def draft(args):
             "strip_unused": False}
     if "source_root" in reference:
         unit["source_root"] = reference["source_root"]
+    if args.leading_filler:
+        unit["leading_filler"] = args.leading_filler
     if args.define:
         names = tuple(f"-D{d.split('=')[0]}=" for d in args.define)
         unit["compiler_flags"] = [f for f in unit["compiler_flags"] if not f.startswith(names)]
@@ -500,5 +502,7 @@ if __name__ == "__main__":
                         help="A function this unit compiles whose original copy another unit of the same file places")
     parser.add_argument("--pool", action="append", default=[],
                         help="A compiler data section whose items link at their original pool addresses")
+    parser.add_argument("--leading-filler", type=int,
+                        help="Bytes of the file's earlier .bss that set this fragment's .bss alignment phase")
     parser.add_argument("--upstream-path", help="Path of the source in the upstream repository")
     draft(parser.parse_args())

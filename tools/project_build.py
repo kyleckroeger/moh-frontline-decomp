@@ -13,7 +13,7 @@ from tool_runner import run, sha256
 from setup import CONFIG, ROOT, setup
 from setup_compiler import setup_compiler
 from data_strip import DUPLICATE_SUFFIX, c_identifier, pool_item, pool_symbol, strip_objects
-from sdk_build import compile_sdk, resolve_external, sdk_link_script, stripped_address
+from sdk_build import LEADING_FILLER, compile_sdk, resolve_external, sdk_link_script, stripped_address
 
 
 # Executable sections a unit may cover. Each must be tiled by its functions.
@@ -149,6 +149,20 @@ def validate_units(original, units):
                     or base % relaxed or base % (relaxed * 2) == 0
                     or (relaxed < 4 and section["name"] not in (".sbss", ".bss"))):
                 raise ValueError("Input alignment is not needed for this placement")
+            # A leading filler stands in for the original file's earlier .bss:
+            # the whole filler is the trimmed lead, inside the original section,
+            # and the file must have .bss data before this fragment's.
+            if section["name"] == ".bss" and "leading_filler" in unit:
+                filler = unit["leading_filler"]
+                earlier = []
+                for symbol in symbols[file_index + 1:] if file_index is not None else []:
+                    if symbol["type"] == 4:
+                        break
+                    if symbol["section"] == matches[0]["index"] and symbol["size"] and symbol["address"] < address:
+                        earlier.append(symbol)
+                if (not isinstance(filler, int) or filler <= 8 or section.get("linked_offset") != filler
+                        or address - filler < matches[0]["address"] or not earlier):
+                    raise ValueError("Leading filler does not stand in for earlier file data")
             if section["name"].startswith(".gnu.linkonce.d."):
                 obj = check_vtable_storage(original, section, address, (1, 2))
                 if obj["section"] != matches[0]["index"]:
@@ -316,6 +330,19 @@ def validate_object(obj, unit):
             or kept & stripped or (kept | stripped) & pooled
             or (stripped and not unit["strip_unused"])):
         raise ValueError("Unexpected allocated compiler output")
+    if "leading_filler" in unit:
+        # The filler is the compiled .bss's first object, and the smallest
+        # .bss-sized one (over 8 bytes, the small-data limit) that gives the
+        # fragment's base the original's alignment phase.
+        filler, section = unit["leading_filler"], next((s for s in unit["sections"] if s["name"] == ".bss"), None)
+        actual = output.get(".bss")
+        first = sorted((s for s in symbols if actual and s["section"] == actual["index"] and s["type"] == 1),
+                       key=lambda s: s["address"])
+        address = int(section["address"], 16) if section else 0
+        if (not first or first[0]["name"] != LEADING_FILLER or first[0]["address"] != 0 or first[0]["size"] != filler
+                or address % actual["alignment"] == 0 or (address - filler) % actual["alignment"]
+                or filler > 8 + actual["alignment"]):
+            raise ValueError("Leading filler is not the canonical first .bss object")
     code = {output[n]["index"]: output[n] for n in CODE_SECTIONS if n in kept}
     if not code or any(c["flags"] != 6 or c["type"] != 1 or c["address"] != 0 for c in code.values()):
         raise ValueError("Unexpected compiler text")

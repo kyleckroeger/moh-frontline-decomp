@@ -34,14 +34,45 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
+  "leading_filler": 24,
   "sections": [
     {
       "name": ".text",
       "address": "0x8009d0f8",
-      "size": 76,
+      "size": 888,
       "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cd74",
+      "size": 48,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 56
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013ebc",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    },
+    {
+      "name": ".bss",
+      "address": "0x801ef098",
+      "size": 88,
+      "type": 8,
+      "linked_offset": 24,
+      "linked_size": 112
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034eb18",
+      "size": 1,
+      "type": 8
     }
   ],
   "functions": [
@@ -50,10 +81,23 @@
       "address": "0x8009d0f8",
       "size": 76,
       "binding": 1
+    },
+    {
+      "name": "BeginStand__13CPlayerObjectFv",
+      "address": "0x8009d144",
+      "size": 812,
+      "binding": 1
     }
   ],
   "externals": {
-    "g_bInMultiplayerMode": "0x8034eca5"
+    "DisablePassThru__10CCDBObjectFb": "0x8007164c",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__6CLine3Fv": "0x8001c5d0",
+    "__register_global_object": "0x801381bc",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -65,6 +109,9 @@
   ],
   "original_file": "player.cpp",
   "original_file_index": 6101,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ],
   "pooled_sections": [
     ".sdata2"
   ],
@@ -80,6 +127,18 @@
       "offset": 4,
       "size": 4,
       "address": "0x803505bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350540"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8035059c"
     }
   ]
 }

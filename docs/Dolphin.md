@@ -190,6 +190,22 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   largest power of two dividing each object's size, up to 8, is the object's
   natural alignment). Code that refers to the guards is compared byte for byte
   as usual.
+- **Leading filler.** The compiler lays out a file's `.bss` objects one after
+  another, so where an object lands depends on the file's earlier data. A
+  fragment without that data can place its objects at different relative
+  offsets. For example, `player.cpp`'s `standingAxis` sits 0x18 after its
+  destructor record, but only 0x10 after it in a fragment, because the record
+  follows `fadeOut` at 8 mod 16. A unit may then set `leading_filler: N`.
+  `compile_sdk` passes the compiler a generated `-prefix` file that declares
+  `static char __leading_filler[N];`, the compiled section's first object.
+  The source stays untouched. The `.bss` section trims exactly that object
+  (`linked_offset: N`), so the filler is never compared or credited.
+  Validation accepts only the smallest filler over 8 bytes (smaller objects
+  go to `.sbss`) that gives the base the original's phase modulo the compiled
+  section alignment. The address must not already be aligned, the trimmed
+  bytes must lie in the original section, and the original file must have
+  `.bss` objects before the fragment. Pass `--leading-filler N` to
+  `port_unit.py`.
 - **Weak duplicates.** MW's linker keeps the first definition of a weak
   function and drops later copies. When a unit compiles a weak function whose
   original copy came from an earlier file (such as a template's inline
