@@ -1,7 +1,7 @@
 {
   "id": "capsule_plane",
   "source": "src/game/capsule_plane.cpp",
-  "category": "reconstructed_game",
+  "category": "restored_library",
   "compiler_family": "GC",
   "compiler_version": "1.3.2",
   "compiler_flags": [
@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800c568c",
-      "size": 388,
+      "size": 1576,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000dddc",
-      "size": 40,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014c9c",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "TestVisibility__11CVolCapsuleCFR12CDrawContext",
       "address": "0x800c568c",
       "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__11CVolCapsuleCFRC6CLine3R10CCollisionb",
+      "address": "0x800c5810",
+      "size": 1188,
       "binding": 1
     },
     {
@@ -77,6 +83,12 @@
     }
   ],
   "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON_SQRD": "0x80350bac",
+    "FindIntersection__FRC6CLine3RC11CVolCapsulePf": "0x800c5cb4",
+    "GetProjection__6CLine3CF8CVector3R8CVector3Rf": "0x80092b28",
+    "IsDegenerate__6CLine3CFv": "0x800922f4",
+    "TestCollision__10CVolSphereCFRC6CLine3R10CCollisionb": "0x800cac48",
     "TestCollision__10CVolSphereCFRC6CPlaneR10CCollisionb": "0x800cab08",
     "__dt__10CVolSphereFv": "0x800cbb24",
     "__vt__10CVolSphere": "0x801896b4",
@@ -85,9 +97,48 @@
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "FindIntersection__FRC6CLine3RC11CVolCapsulePf"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON_SQRD"
+  ],
   "original_file": "capsule.cpp",
-  "original_file_index": 7537
+  "original_file_index": 7537,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350b7c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350b80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350b88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350b90"
+    }
+  ]
 }
