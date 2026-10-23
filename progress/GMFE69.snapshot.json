@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 918788,
+    "matching_code_bytes": 919720,
     "total_executable_code_bytes": 1414572,
-    "percent": 64.95166029017965,
+    "percent": 65.01754594322523,
     "categories": {
       "reconstructed_game": 689728,
-      "restored_library": 229060
+      "restored_library": 229992
     },
-    "matching_functions": 4533
+    "matching_functions": 4534
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -344,6 +344,7 @@
     "config/GMFE69/animated_volume.json": "7d1c85b24d6774d0fda4ac1fcae8f10f8f1689c5af247d311403d1602def7bb4",
     "config/GMFE69/animated_volume_ctor.json": "889aebd72c4cafbc5d3589edaeb92757968e7c1dc4443cd882e3decad21d4024",
     "config/GMFE69/animated_volume_dispatch.json": "bc30e6609a72ccd2e3c15bbe69547c67e52255f55118fd751d068fbae93a3403",
+    "config/GMFE69/animated_volume_line.json": "e3115e98730f33d78b5f3d4715bad6e0c5bea3b67838f70f63808dc1554c7a3b",
     "config/GMFE69/animated_volume_set.json": "f635ff048979d21091afaea204bc8686825e58363623fd666ce6979a66664bca",
     "config/GMFE69/animchan.json": "7c0ff556c9d425e0cb4686a18918f2769ee17f5fb777c4b80487fa5f5942ffa0",
     "config/GMFE69/animchan_init.json": "295dcf6fc45d5a8d9b1f3cfc9f1b9bf1874b2e58be96c0ea7d625f95f90e4bc4",
@@ -860,7 +861,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "4c76e09d8109b20ce178884db50e9c843b3cae0b75b57367ddbd7b586058a49f",
+    "config/GMFE69/project.json": "41c6b9909aacc0f3b7b5d7cccfe2b2468c89f6fe31243951a20dc7ae109e0fd8",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2482,6 +2483,7 @@
     "src/game/animated_volume.cpp": "f62030622d9d9f6dfe61d463a94a3ecc33d2b6dedb85bb42aa8040c5ff0d85db",
     "src/game/animated_volume_ctor.cpp": "14948f462ec03adc8d02790a1f80dbc29e743d285fd2e1eb7ef708efcfe50bff",
     "src/game/animated_volume_dispatch.cpp": "cabbf0cbcc7944a27a271136cd0dee7ace24dd8e1836be059ea5eb017d64ed6d",
+    "src/game/animated_volume_line.cpp": "f4ba9bf01b72eef9f76982d6465f0cd225ce94539ac7aaaa8614f3f3920afd9e",
     "src/game/animated_volume_set.cpp": "35fb00063e372062b8b4b14ff82f44b318c4de3af57e89c4e1a9616a84ffc0bc",
     "src/game/animchan.cpp": "50d9a2917035cf6d1204605aa64f2cabbca38a46121c065faae380e82c112be7",
     "src/game/animchan_init.cpp": "239ff938e637995b76d2ec0d654ebf51c1d1bba8fe727eb4b7e1957d3eac7952",
@@ -53185,6 +53187,45 @@
       "discarded_functions": [],
       "object_sha256": "22d58f19478300fb16ba112944f463a0424618559b5c11b52f82ce5ca8d026e4",
       "linked_sha256": "212829411c5b473f4fdf965192abd091da06e51b5796ddcc224c612b53d199eb"
+    },
+    {
+      "id": "animated_volume_line",
+      "category": "restored_library",
+      "functions": 1,
+      "code_bytes": 932,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "5e43db442df3dd5fa29c3d2ff533c2bebbfa3cbb8ca9d909a86d12e81a198358",
+      "linked_sha256": "151fc31f6c188f5b3d18ad9d15ed3cb44ebb3d4fd53d8d6cace383206ffade29"
     }
   ],
   "code_map": {
@@ -55683,20 +55724,6 @@
             "size": 500,
             "kind": "function",
             "name": "Scroll__12PopUpMessageFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/animated_volume.cpp [symbol evidence]",
-        "file_record": 127,
-        "file_name": "animated_volume.cpp",
-        "ranges": [
-          {
-            "address": "0x800bfe64",
-            "size": 932,
-            "kind": "function",
-            "name": "TestCollision__15CAnimatedVolumeCFRC6CLine3R10CCollisionb",
             "evidence": "exception-index"
           }
         ]

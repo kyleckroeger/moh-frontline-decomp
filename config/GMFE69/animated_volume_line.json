@@ -1,0 +1,106 @@
+{
+  "id": "animated_volume_line",
+  "source": "src/game/animated_volume_line.cpp",
+  "category": "restored_library",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800bfe64",
+      "size": 932,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000dca4",
+      "size": 84,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014b70",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "TestCollision__15CAnimatedVolumeCFRC6CLine3R10CCollisionb",
+      "address": "0x800bfe64",
+      "size": 932,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "TestCollision__10CVolSphereCFRC6CLine3R10CCollisionb": "0x800cac48",
+    "TibToMOHFL__7CMatrixFv": "0x8008ef60",
+    "TransformedCopy__7CVolBoxFRC7IVolumeRC7CMatrix": "0x800c52d0",
+    "__as__10CCollisionFRC10CCollision": "0x800c7a58",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "__construct_array": "0x8013834c",
+    "__ct__10CCollisionFRC10CCollision": "0x800c7c04",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__destroy_arr": "0x801382d4",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__7CVolBoxFv": "0x800c5458",
+    "__vt__7CVolBox": "0x801894f4",
+    "__vt__7IVolume": "0x80181e28",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "animated_volume.cpp",
+  "original_file_index": 7412,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b20"
+    }
+  ]
+}
