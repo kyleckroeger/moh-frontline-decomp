@@ -1,7 +1,7 @@
 {
   "id": "sphere_testtriangle",
   "source": "src/game/sphere_testtriangle.cpp",
-  "category": "reconstructed_game",
+  "category": "restored_library",
   "compiler_family": "GC",
   "compiler_version": "1.3.2",
   "compiler_flags": [
@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x800cab00",
-      "size": 328,
+      "size": 2076,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e144",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014f48",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "TestCollision__10CVolSphereCFRC6CLine3R10CCollisionb",
+      "address": "0x800cac48",
+      "size": 1748,
+      "binding": 1
+    },
     {
       "name": "TestCollision__10CVolSphereCFRC6CPlaneR10CCollisionb",
       "address": "0x800cab08",
@@ -72,7 +78,8 @@
   ],
   "externals": {
     "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
-    "CONTACT_EPSILON": "0x80350ba8"
+    "CONTACT_EPSILON": "0x80350ba8",
+    "CONTACT_EPSILON_SQRD": "0x80350bac"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -80,8 +87,62 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "CONTACT_EPSILON"
+    "CONTACT_EPSILON",
+    "CONTACT_EPSILON_SQRD"
   ],
   "original_file": "sphere.cpp",
-  "original_file_index": 7738
+  "original_file_index": 7738,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350c18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350c1c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350c20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350c14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350c28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350c30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350c38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350c10"
+    }
+  ]
 }
