@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,28 +39,54 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800cf634",
-      "size": 352,
+      "address": "0x800cedd4",
+      "size": 2496,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e4d4",
-      "size": 48,
+      "address": "0x8000e4cc",
+      "size": 56,
       "type": 1,
       "linked_offset": 0,
       "linked_size": 64
     },
     {
       "name": "extabindex",
-      "address": "0x80015260",
-      "size": 24,
+      "address": "0x80015254",
+      "size": 36,
       "type": 1,
       "linked_offset": 0,
       "linked_size": 48
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177d10",
+      "size": 38,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189948",
+      "size": 28,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 44
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e1b0",
+      "size": 16,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Visit__10CExplosionFR10ISceneNode",
+      "address": "0x800cedd4",
+      "size": 2144,
+      "binding": 1
+    },
     {
       "name": "__dt__10CExplosionFv",
       "address": "0x800cf634",
@@ -75,33 +101,45 @@
     }
   ],
   "externals": {
+    "AddHitDirection__13UserInterfaceFUi": "0x800ba8c0",
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CheckForObstructions__10CExplosionFR10ISceneNode": "0x800ce450",
+    "Explode__13CThrownBulletFv": "0x800d2528",
+    "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetRadius__10CVolSphereCFv": "0x800cba28",
     "HandleExplosion__12CWorldObjectFRC10CExplosion": "0x800b72ec",
     "MakeNoise__FPvP15CAIFilterObjectRC8CVector3ifbi": "0x8002bd00",
+    "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
+    "SetMPShotLocation__13CPlayerObjectFP32BS_STRUCT_HitByBulletInfo_struct": "0x8009c77c",
     "VisitAllNodesInVolume__6CSceneFRQ23dwi22IVisitor<10ISceneNode>RC7IVolumeQ210ISceneNode11EVolumeTypeb": "0x800db458",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CVolSphereFv": "0x800cbb24",
-    "__dt__7IVolumeFv": "0x8001c078",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv": "0x8001c030",
-    "__vt__10CExplosion": "0x80189954",
     "__vt__10CVolSphere": "0x801896b4",
     "__vt__7IVolume": "0x80181e28",
-    "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74"
+    "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_cheats": "0x80196a94",
+    "g_fScriptExplosionHeightScaleOnPlayer": "0x8034eadc",
+    "g_fScriptExplosionVelocityScaleOnPlayer": "0x8034ead8",
+    "g_inputMgr": "0x801ec80c",
+    "rand": "0x8013fc54"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "g_fScriptExplosionHeightScaleOnPlayer",
+    "g_fScriptExplosionVelocityScaleOnPlayer"
+  ],
   "original_file": "explosion.cpp",
   "original_file_index": 7942,
-  "stripped_sections": [
-    ".data"
-  ],
   "weak_duplicates": [
-    "__dt__7IVolumeFv",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv",
-    "__vt__7IVolume",
     "__vt__Q23dwi22IVisitor<10ISceneNode>"
   ],
   "pooled_sections": [
@@ -111,6 +149,66 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350ca0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350c64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350c68"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350c70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350c78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350c8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350ca4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350ca8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350cac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350cb0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
       "size": 8,
       "address": "0x80350cb8"
     }

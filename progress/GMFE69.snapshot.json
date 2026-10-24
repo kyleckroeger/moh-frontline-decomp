@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 952868,
+    "matching_code_bytes": 955012,
     "total_executable_code_bytes": 1414572,
-    "percent": 67.36086957751178,
+    "percent": 67.51243485662094,
     "categories": {
-      "reconstructed_game": 722876,
+      "reconstructed_game": 725020,
       "restored_library": 229992
     },
-    "matching_functions": 4559
+    "matching_functions": 4560
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -640,7 +640,7 @@
     "config/GMFE69/eaxadecf.json": "e095322fde507f7d6d85b9294940f8c4af5079fd98e5f52618a059d444cb4aff",
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
-    "config/GMFE69/explosion_dtor.json": "4df00c59c3d33c02b66ec9bce263a218b426be5a5bcf0380bf36869e1681c0fa",
+    "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "ce262f9e7ac27df3097267878937ef3993517e2e39998aef5c29a77e82f56fcc",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -2754,7 +2754,7 @@
     "src/game/draw_context.cpp": "261589cc092b9c8c7b80605255eefc78641468141f4d33264252696f62c9782b",
     "src/game/dvdStatus_drawmessage.cpp": "8c02c61a55d984602f7f23b54e40f5a06a460db7490559faaba29c53880f789c",
     "src/game/dvdStatus_gxinit.cpp": "3b8c2acd3cb4c9a00d2164c67b668017797e6ebdc1897c4ea906845ce70460e2",
-    "src/game/explosion_dtor.cpp": "e817a0dbeefc80acc2a66d71b33f5452f43316084e641a96af448c533cd5bbd2",
+    "src/game/explosion_dtor.cpp": "c7b75a75a314713574f2cce66dbc20cab30e31bccc670ed78c6082766e5b33df",
     "src/game/fader.cpp": "3c54d9cfa5a61f86cdddc3f320e2032ffa38b41eae3b36de6a82f1f22d64fbfd",
     "src/game/fader_control.cpp": "d94c0445347627df8d59cf7a2a080c3f5f59c50616957d9c7c5f9db7253b1a7f",
     "src/game/fader_dtor.cpp": "861a3b0d0136e98e1e30306616fad940637a6bf899313eedf28bbd12fdb2aca8",
@@ -37494,8 +37494,8 @@
     {
       "id": "explosion_dtor",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 352,
+      "functions": 3,
+      "code_bytes": 2496,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -37512,12 +37512,12 @@
         "on",
         "-O4,p",
         "-inline",
-        "auto",
+        "deferred,auto",
         "-pragma",
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -37527,8 +37527,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "53d6b84817a09720077fb295cb3feed7c7d7f4c230e941d86b56b8ac4898d225",
-      "linked_sha256": "95e2eb5bc69c78bd49898eed2e98d08d977c77484926ef36acca23eb0e53a472"
+      "object_sha256": "066015737453096135e2355163dd96ce488c5f7893ac61e8512835a53d77eb34",
+      "linked_sha256": "726fd0a7a40a3f043774e75a273293210e0df026e386ea803059ce5b99a11dc6"
     },
     {
       "id": "AIFilter_mechchecker_dtor",
@@ -56231,13 +56231,6 @@
             "size": 2436,
             "kind": "function",
             "name": "CheckForObstructions__10CExplosionFR10ISceneNode",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800cedd4",
-            "size": 2144,
-            "kind": "function",
-            "name": "Visit__10CExplosionFR10ISceneNode",
             "evidence": "exception-index"
           }
         ]
