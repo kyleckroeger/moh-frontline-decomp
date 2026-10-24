@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x80023048",
-      "size": 248,
+      "size": 1236,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x80009ad4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80010634",
+      "size": 12,
       "type": 1
     },
     {
@@ -52,19 +64,75 @@
   ],
   "functions": [
     {
+      "name": "BIFunc_FireProjectileAtPath__FPPiPv",
+      "address": "0x80023140",
+      "size": 988,
+      "binding": 1
+    },
+    {
       "name": "GetMPWeaponPrompt__F17EScriptBulletType",
       "address": "0x80023048",
       "size": 248,
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AdjustAim__FR8CVector3f": "0x800266b0",
+    "CreateBullet__14CBulletFactoryFib8CVector38CVector3f7EClsnIdfP10ISceneNode": "0x800cd84c",
+    "Expand__20CAISplinePathSegmentFfR8CVector3": "0x80051b90",
+    "GetWeaponPropertiesByCRC__14CWeaponFactoryFiPi": "0x800d6efc",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_pWeaponFactory": "0x8034e9e4",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "AdjustAim__FR8CVector3f"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_iCurrentBIFIndex",
+    "g_pBuiltInFunctions",
+    "g_pBulletFactory",
+    "g_pWeaponFactory",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f63c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f690"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }
