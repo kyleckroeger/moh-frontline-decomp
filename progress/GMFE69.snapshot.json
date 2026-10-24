@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 978188,
+    "matching_code_bytes": 978688,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.15081028042404,
+    "percent": 69.18615666081331,
     "categories": {
-      "reconstructed_game": 748196,
+      "reconstructed_game": 748696,
       "restored_library": 229992
     },
-    "matching_functions": 4583
+    "matching_functions": 4584
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -732,6 +732,7 @@
     "config/GMFE69/light_dtor.json": "0c78711ec0f90949b7014c91aada7c828ba6131a161b8ad50da5571a8ef1b84d",
     "config/GMFE69/light_instanced_dtor.json": "960ee911950d8c846b9b641d00302051d9d3eaf0adeeca0446a5d663d3471c4b",
     "config/GMFE69/light_propertyanim_dtor.json": "7e08107024acc0aaeadd0de68e5d83bde227a84e9c6aba6c9a54788ee9f95941",
+    "config/GMFE69/light_propertyanim_update.json": "30a20b5281d3201eeff834c74d292d36c7791db815124f21e1ed31a6b0e13193",
     "config/GMFE69/light_rows.json": "b1e2d208b2efeb78c81fb9a601b42cdb105ad6470af43234fd1d07b362395e31",
     "config/GMFE69/light_statics.json": "1b14f80f66c67075d273465925b3b2426476bc4986e1cede458be968faead1b6",
     "config/GMFE69/light_visible.json": "8c836e812fe34c340bb43e1008bd7983aa6c949f63d6d4772676498915b7a608",
@@ -877,7 +878,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "d4b72eea0c3dc9af05954589aa2caf80099e7735cfd6ca72e235e3a923cd02d2",
+    "config/GMFE69/project.json": "d4a2684f2abb0350b2d08aa5e002f07430922b0a5da8bfc758e701db650a6477",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2826,6 +2827,7 @@
     "src/game/light_dtor.cpp": "17bcb6248b274d92b93f74644d29bbc3940ae94b5d946121dcdab18914254825",
     "src/game/light_instanced_dtor.cpp": "dfe26b5ce2aedaefdb8fbbb89a9713b184518048a510d02cfa2d9a07b139892b",
     "src/game/light_propertyanim_dtor.cpp": "2a371d4c270a60c8fe1cce701ab0fddbb6942734c6229ac8c0f700dc1b564b9b",
+    "src/game/light_propertyanim_update.cpp": "f224bc174dcc6cceb1190fa890ff2a83eeb77ad94a6d643e25f829db180ca365",
     "src/game/light_rows.cpp": "ee305d6a4bbdcda116b02c0c3b0c0665b2487928f78c5472c8e50ee310d03f88",
     "src/game/light_statics.cpp": "3b668c751c5611c7fcb137dca194e5abf94fac42d94cf7ec498be79b9b11f1eb",
     "src/game/light_visible.cpp": "1aff95e093197ccb9edc92eb0c3b9a76e3b409725a66d9992627ca3f1bfaaca5",
@@ -54005,6 +54007,45 @@
       "discarded_functions": [],
       "object_sha256": "004ccf68d010ef74313b96f7a5ac4b4127ab2ff7f94fc91a9ba06af68b992cab",
       "linked_sha256": "bbf76edf815a072233044bcb88c163b770f12c2b3a40c4f0c8a72e46dde63c16"
+    },
+    {
+      "id": "light_propertyanim_update",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 500,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "8ec0f4be47419671e587c4d86d8ad5c2b056fef792293302a0313878e85330d7",
+      "linked_sha256": "085d20f9c10bdf5d468e6da6c33455e106546cee00dc92fe3e8e3f2de23ea10a"
     }
   ],
   "code_map": {
@@ -55392,13 +55433,6 @@
         "file_record": 66,
         "file_name": "light.cpp",
         "ranges": [
-          {
-            "address": "0x800779e0",
-            "size": 500,
-            "kind": "function",
-            "name": "BeginUpdate__18CPropertyAnimLightFf",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80077cd0",
             "size": 604,
