@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 978688,
+    "matching_code_bytes": 978912,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.18615666081331,
+    "percent": 69.2019918392277,
     "categories": {
-      "reconstructed_game": 748696,
+      "reconstructed_game": 748920,
       "restored_library": 229992
     },
-    "matching_functions": 4584
+    "matching_functions": 4585
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -480,7 +480,7 @@
     "config/GMFE69/bsbifunc_stop.json": "465f84e151cc6c8400be71af102b4ef15b614ac165f251e04fbd6ef77bc11b4c",
     "config/GMFE69/bsbifunc_targetsearch.json": "c43a5547e3af98d8d93bbcda8a0744bf129debffd171acb3d3ad166f7cd48367",
     "config/GMFE69/bsbifunc_translate.json": "1a144fd68ee4fc87e3944f3711817a1f846a56b4d3a5ea8e198315a32d03a974",
-    "config/GMFE69/bsbifunc_vibration.json": "c525b69dc2e36d0ad6e40409da3a1f1dea2a32238e14c2877acfd493878d7ee2",
+    "config/GMFE69/bsbifunc_vibration.json": "e51d7548d0337eea6a4f49cff6977eff9349c8d7e2d573a7e1f4d0349e1f0b3e",
     "config/GMFE69/bsearch.json": "dd287b9523a5f289e22dc32f273d0f9756b610c9280ec41b84aac1d7ea50912b",
     "config/GMFE69/bsevents.json": "bf2b1285d474889e2f47f4d33dff1c673341bcf69c172d94ec39472eef01f369",
     "config/GMFE69/bsevents_head.json": "214dd97eb3b394d4a514cc4f7584f6bac263f5a8692e7ab38f1a59add09c3199",
@@ -2635,7 +2635,7 @@
     "src/game/bsbifunc_stop.cpp": "87aed18c9707f23dfd25b31db66d17a05d8f554625042c0e8bd6e10875f4c05f",
     "src/game/bsbifunc_targetsearch.cpp": "2f37472d39598f35847a4097b1394e449d40c0ec37f9d0aafcff0758bd3913a5",
     "src/game/bsbifunc_translate.cpp": "d1915d1a5106223f684829156d43feab4702a6fdc447b2532addd9941ddc195e",
-    "src/game/bsbifunc_vibration.cpp": "43ba02afe369628880a3cfa0c998d04397a1cc2ca9bec847caf3b60f5b910065",
+    "src/game/bsbifunc_vibration.cpp": "b228bd856ecceba96d13ef3c83073889da732ca612603933e15e902ba8dbd9b9",
     "src/game/bsevents.cpp": "b452c77e9fd44429b0a8d8c9105a2ca9ee4bf43903bd7c71f1d82ed932f382c3",
     "src/game/bsevents_head.cpp": "b485fb5293b1ed2cb8052f460e86469f0eeabec70a4810718761d759b6d339eb",
     "src/game/bsevents_queue.cpp": "678dc2a5de24106c16e3f63e5d22d765f7279af4e4c4b77d5a51eedf13cc943f",
@@ -26882,8 +26882,8 @@
     {
       "id": "bsbifunc_vibration",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 952,
+      "functions": 6,
+      "code_bytes": 1176,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -26915,8 +26915,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7f39851ffdfa0a00ce8320599e9e448010eb52942284cf2d704b83aaf69eb9a6",
-      "linked_sha256": "6da44d0cf3357bb37bf2f40f805dab546390401a272a864f64fc2de4b35d9494"
+      "object_sha256": "ceb2887679a806afb56be73545da737ab951ca9f80c8ee0f03f70376d36e0373",
+      "linked_sha256": "cc8675899d4b2658b01b332de894c88f629635895b0d2218c30f7a15c21e2761"
     },
     {
       "id": "bsbifunc_ammo",
@@ -54220,13 +54220,6 @@
             "size": 1032,
             "kind": "function",
             "name": "BIFunc_MPAddPlayerHealth__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80021140",
-            "size": 224,
-            "kind": "function",
-            "name": "BIFunc_MechSetPathFlag__FPPiPv",
             "evidence": "exception-index"
           },
           {

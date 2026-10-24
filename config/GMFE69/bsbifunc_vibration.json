@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80020d88",
-      "size": 952,
+      "size": 1176,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009a44",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001055c",
-      "size": 60,
+      "size": 72,
       "type": 1
     }
   ],
@@ -86,6 +86,12 @@
       "address": "0x800210e4",
       "size": 92,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_MechSetPathFlag__FPPiPv",
+      "address": "0x80021140",
+      "size": 224,
+      "binding": 1
     }
   ],
   "externals": {
@@ -112,5 +118,22 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f66c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }

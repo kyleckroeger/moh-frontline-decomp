@@ -2,8 +2,9 @@
 // out, block new controller vibrations (for the script object's player's port
 // in multiplayer, otherwise port 0), play a vibration event on the script
 // object's player's controller in multiplayer (otherwise the first player's),
-// set or clear a bit of a mechanism's flags, and force an update of the script
-// object's proximity trigger status. Each reads its arguments below the script
+// set or clear a bit of a mechanism's flags, force an update of the script
+// object's proximity trigger status, and set a mechanism's path flag (mode 1)
+// or its path speed (otherwise, 0.01 per unit). Each reads its arguments below the script
 // stack top and pops the built-in's arguments. The file name is this project's;
 // the original record is bsbifunc.cpp and the built-ins around these are not
 // reconstructed. The functions, classes and globals are named by the mangled
@@ -84,7 +85,12 @@ public:
 
 class CStaticObject {
 public:
-    unsigned char unknown000[484];
+    unsigned char unknown000[232];
+    float m_pathSpeed;
+    unsigned char unknown0ec[245];
+    unsigned char m_pathFlag : 1;
+    unsigned char unknown1e1 : 7;
+    unsigned char unknown1e2[2];
     unsigned int m_mechFlags;
 };
 
@@ -191,5 +197,20 @@ void BIFunc_MechSetFlag(int** stack, void* object) {
 
 void BIFunc_MovingMechForceUpdateTrigger(int** stack, void*) {
     ForceUpdateProximityTriggerStatus(g_pBSObject->user, false);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
+
+void BIFunc_MechSetPathFlag(int** stack, void* object) {
+    CStaticObject* mech = ((ISceneNode*)object)->AsStaticObject();
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    int mode = *(*stack - (count - 1));
+    int value = *(*stack - (count - 2));
+    /* The mode is tested through a copy (the original's register choice). */
+    int selector;
+    selector = mode;
+    if (selector != 1)
+        mech->m_pathSpeed = 0.01f * value;
+    else
+        mech->m_pathFlag = value != 0;
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
