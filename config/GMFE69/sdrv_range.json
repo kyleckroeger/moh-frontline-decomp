@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8016b0f0",
-      "size": 124,
+      "size": 1296,
       "type": 1
     }
   ],
@@ -54,9 +54,35 @@
       "address": "0x8016b138",
       "size": 52,
       "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_playtimbre__FP15SNDIPATCHHEADERPviiiii",
+      "address": "0x8016b16c",
+      "size": 1172,
+      "binding": 1
     }
   ],
   "externals": {
+    "AXSetVoiceAddr": "0x80121bcc",
+    "AXSetVoiceAdpcm": "0x80121cdc",
+    "AXSetVoiceAdpcmLoop": "0x80121e18",
+    "AXSetVoiceSrcType": "0x80121aac",
+    "AXSetVoiceState": "0x80121b70",
+    "MIX_play": "0x80160800",
+    "MIX_playinit": "0x801605bc",
+    "SNDDRV_allocateaxvoice__Fi": "0x80169084",
+    "SNDI_memcpy": "0x8016d730",
+    "SNDPLATFORM_highpass__Fii": "0x8016c364",
+    "SNDPLATFORM_lowpass__Fii": "0x8016c270",
+    "SNDPLATFORM_set3dpos__Fi": "0x8016bdfc",
+    "SNDPLATFORM_setfxlevel__Fii": "0x8016dda0",
+    "SNDPLATFORM_setpitch__Fi": "0x8016c0a0",
+    "SNDPLATFORM_setvol__Fi": "0x8016bbbc",
+    "SNDPLATFORM_timemult__Fii": "0x8016c1e8",
+    "_restgpr_19": "0x80138a3c",
+    "_savegpr_19": "0x801389f0",
+    "memset": "0x80009410",
+    "snddrv": "0x80341a20",
     "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
