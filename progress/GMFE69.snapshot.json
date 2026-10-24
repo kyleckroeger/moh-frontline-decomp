@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 963912,
+    "matching_code_bytes": 965244,
     "total_executable_code_bytes": 1414572,
-    "percent": 68.14160042754982,
+    "percent": 68.23576318490682,
     "categories": {
-      "reconstructed_game": 733920,
+      "reconstructed_game": 735252,
       "restored_library": 229992
     },
-    "matching_functions": 4569
+    "matching_functions": 4570
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -872,7 +872,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "f4277814d1ba95d5ef7cf9f066810de9f97463f09524f669b63f1aafbea09dfb",
+    "config/GMFE69/project.json": "f0ed726bf93ede2f9b4155264206a9e2cea3b48079fbefe473d05b9955020306",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1052,6 +1052,7 @@
     "config/GMFE69/slinkmix.json": "0d66b0e0297a0e7e7bf0c13cc7f212971c66ee4114cf017c282deb2b452f6755",
     "config/GMFE69/slowpass.json": "86bcb6af76bf115d442202e3711fedc6c8d03888bdb3ad22656c8a33a11456d8",
     "config/GMFE69/smasterv.json": "1245cb91ada7f2ff389f9047ab175039c6eda03400cce7c5a9dfbdf2c43c88a6",
+    "config/GMFE69/smemcpy.json": "510086b8b47a9508e81c72ced7b8ebb91a78706214bb626f635b2ad61ce3e851",
     "config/GMFE69/smemhigh.json": "ea6b341d40e7ab890ab17969892078adf62f1c2986c1d12a97bd0035e3c25156",
     "config/GMFE69/smemman.json": "3046eeee979626e7f25c50e37aa72945428b8b2b6ec8b8872c5dc70ea6c7d04a",
     "config/GMFE69/smix_restorefx2.json": "596ff3091ef29ef96c11bc7cd65b48c8d538ab46d2520b71bf9b0839784cb9da",
@@ -2169,6 +2170,7 @@
     "src/ea/slinkmix.c": "3cf4c749e4f9caf67c6276ed5df5b66b07e13be40dc7192b1d952b35fd5225f5",
     "src/ea/slowpass.c": "50974ba23d1b0adf20b719306eb2457171fdbc979b397a59ed0865bbf60fcb38",
     "src/ea/smasterv.c": "8dd6bc618f934b245a33bf94dd6adda38c24ac8858394d3ce088a96f525f0232",
+    "src/ea/smemcpy.c": "e85cfd25a36ad5e48a99103e2bceec5751bf785a037e5f58fd8ff98f40724752",
     "src/ea/smemhigh.cpp": "19480b666796ebdee8028af12b3caa2477681e1d6cc63303029e78a56649d1c4",
     "src/ea/smemman.c": "761aa9f6f526f20faf116a96ecccf9d0436e31802f40a266af28f39899f5275c",
     "src/ea/smix_restorefx2.c": "ab52a882e68bb529411a2a5dc2fc5732ef69f481f28e769c4e68fed04a0fb2ba",
@@ -53718,6 +53720,45 @@
       "discarded_functions": [],
       "object_sha256": "a3d5a977b7a779b6294b1486f278274cef192c50c1da0c89a0b3eaaaf31d3e6f",
       "linked_sha256": "a7952f928e7f51b8576047f9eaac96bd92f655633cc82d1abaa5a633d34ebe01"
+    },
+    {
+      "id": "smemcpy",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1332,
+      "compiler_family": "GC",
+      "compiler_version": "1.3",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "70b962b048f548fbebe8fe2f13016b2ae652f486ee13839e3b6d97f94bc066e0",
+      "linked_sha256": "82b48f5b612571c995501be787e502f52c156c19ed7bbaf676e86c7f9d27ebc7"
     }
   ],
   "code_map": {
@@ -57736,18 +57777,6 @@
             "kind": "function",
             "name": "SNDPLATFORM_downloadcomplete__Fi",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 8016d730",
-        "ranges": [
-          {
-            "address": "0x8016d730",
-            "size": 1332,
-            "kind": "function",
-            "name": "SNDI_memcpy",
-            "evidence": "unknown-file"
           }
         ]
       },
