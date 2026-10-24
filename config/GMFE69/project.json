@@ -1238,7 +1238,8 @@
     "cdbgeom_volbox_line.json",
     "box_line.json",
     "sdrv_play.json",
-    "smemcpy.json"
+    "smemcpy.json",
+    "fiber_extents.json"
   ],
   "progress": {
     "code_bytes": 1414572,
