@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800274a0",
-      "size": 784,
+      "size": 1188,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009c04",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800107cc",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -80,9 +80,17 @@
       "address": "0x80027694",
       "size": 284,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_GetWeaponType__FPPiPv",
+      "address": "0x800277b0",
+      "size": 404,
+      "binding": 1
     }
   ],
   "externals": {
+    "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
+    "GetWeapon__13CPlayerObjectCFi": "0x8009fb68",
     "SomebodyCaughtYou__13CThrownBulletFv": "0x800d1d28",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",

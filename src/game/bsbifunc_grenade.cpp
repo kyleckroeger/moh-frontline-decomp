@@ -7,9 +7,11 @@
 // current weapon slot, or the current weapon's first or second information
 // value; otherwise -1). Each reads its arguments below the script stack top and
 // pops the built-in's arguments. The file name is this project's; the original
-// record is bsbifunc.cpp and the built-ins around these are not reconstructed
-// (GetWeaponType after them keeps its first argument in a different register
-// here). The functions, classes and globals are named by the mangled symbols;
+// record is bsbifunc.cpp and the built-ins around these are not reconstructed.
+// GetWeaponType returns the type of the script object's player's current
+// weapon (kind 0, negative slot) or of a slot's weapon (kind 0) or of a weapon
+// slot by number (kind 2), -1 when the slot is empty, and 2 for other kinds.
+// The functions, classes and globals are named by the mangled symbols;
 // ISceneNode is declared with its virtual functions in the order of
 // __vt__10ISceneNode (GetScriptObject at +96) and BSGO_Basic in the order of
 // __vt__10BSGO_Basic; the player (weapon slots at +16400, current slot at
@@ -101,8 +103,16 @@ public:
     int m_type;
 };
 
+struct PlayerWeaponView {
+    unsigned char unknown0000[12516];
+    CWeapon* weapon;
+};
+
 class CPlayerObject {
 public:
+    CWeapon* GetCurrentWeapon() const;
+    PlayerWeaponView* GetWeapon(int) const;
+
     CWeapon* GetSlotWeapon(int index) {
         if (index < 0)
             return m_weapons[m_currentWeapon];
@@ -205,6 +215,49 @@ void BIFunc_GetWeaponInfo(int** stack, void*) {
             value = GetWeaponInfo(player->GetSlotWeapon(-1), info);
         break;
     }
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    **stack = *(int*)&value;
+}
+
+void BIFunc_GetWeaponType(int** stack, void*) {
+    int value;
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    int kind = *(*stack - (count - 1));
+    int index = *(*stack - (count - 2));
+    /* The kind is switched on through a copy (the original's register choice). */
+    int selector;
+    selector = kind;
+    switch (selector) {
+    case 0: {
+        CPlayerObject* player = g_pBSObject->user->GetSceneNode();
+        if (index < 0) {
+            CWeapon* weapon = player->GetCurrentWeapon();
+            if (weapon)
+                value = weapon->m_type;
+            else
+                value = -1;
+        } else {
+            CWeapon* weapon = player->GetWeapon(index)->weapon;
+            if (weapon)
+                value = weapon->m_type;
+            else
+                value = -1;
+        }
+        break;
+    }
+    case 2: {
+        CWeapon* weapon = g_pBSObject->user->GetSceneNode()->GetSlotWeapon(index);
+        if (weapon)
+            value = weapon->m_type;
+        else
+            value = -1;
+        break;
+    }
+    case 1:
+    default:
+        value = 2;
+        break;
     }
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = *(int*)&value;
