@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 933572,
+    "matching_code_bytes": 935764,
     "total_executable_code_bytes": 1414572,
-    "percent": 65.99678206552936,
+    "percent": 66.1517405971559,
     "categories": {
-      "reconstructed_game": 703580,
+      "reconstructed_game": 705772,
       "restored_library": 229992
     },
-    "matching_functions": 4545
+    "matching_functions": 4546
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -64,7 +64,7 @@
     "config/GMFE69/AIObject_threat.json": "6d3e3022737debc074fe50ada989c0ff7692d42cc48b516dae1f45bd7d44533a",
     "config/GMFE69/AIObject_visionseek.json": "a30d49e25c88a24daca9409bd0413884cbde11f7ed44d34e9e5440c4d6d3a867",
     "config/GMFE69/AIObject_visionsetup.json": "f9c0562cf6e27653acef6e58904f86dd328c3dd55fce06c52b93396852b6ff12",
-    "config/GMFE69/AIObject_walkastar.json": "4c5d66962817698b81cbd3fffe89f2f9ec12fb7ff991f583bd99c0a10118adbf",
+    "config/GMFE69/AIObject_walkastar.json": "45d4b43b1878be197476a4ef678cdcc7eea5892b347f681563a386918b42f394",
     "config/GMFE69/AIObject_weak.json": "8898ccabdbe0517afbc0030fe1540c4beff8980b6ed3f0206ee73b35052b3d61",
     "config/GMFE69/AIPlayerDoodad.json": "5ab45909efeb94b828331a8b68a46467e9cb19518255f572f32340c24b98dff2",
     "config/GMFE69/AIPlayerDoodad_ctor.json": "7a80326e3b36c9a0d7c2dc59ae8cd4451df4f9b073bfe461406159762aa56652",
@@ -2301,7 +2301,7 @@
     "src/game/AIObject_threat.cpp": "b73f90c4fb60e8a575792316f9297fe3c8b7f27985428ef554f445498b6d2574",
     "src/game/AIObject_visionseek.cpp": "10e92330cc0145d76891301d4a9c2023bcceeca29921a648de5a4edbf9e2f8a4",
     "src/game/AIObject_visionsetup.cpp": "789e15dfce77b8220bbca4011f55c8b4981d5db2346beb3869946b6ac6309304",
-    "src/game/AIObject_walkastar.cpp": "7b3cf3663f4b80c699624b42762c4a637e1a075abf5d00b1952fe10a0df6c226",
+    "src/game/AIObject_walkastar.cpp": "82d910e70d91fb7837b06b24cbac6d4c4bf6efc6068ecbd26add9d782a13432b",
     "src/game/AIObject_weak.cpp": "6049718da7e2df852a423c6b60b084046ea74ba02de9549a9dc48b505f7521f4",
     "src/game/AIPlayerDoodad.cpp": "218144f1416be0e264e2255e27e05126728778a56d650e5705a961e69003196e",
     "src/game/AIPlayerDoodad_ctor.cpp": "affe5c0403f8734a6b3c76b21fc0ab50abd04c970203215da1450d867457c621",
@@ -46192,8 +46192,8 @@
     {
       "id": "AIObject_walkastar",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 140,
+      "functions": 2,
+      "code_bytes": 2332,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46225,8 +46225,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "62cd5ba7e92a17cc213bb68ec63fa94aa2458a6f3493576d51457cfaec23d103",
-      "linked_sha256": "b6013a495384fcb664bcdb0408a7567b2f809cfae336f72831f1927355e7cacb"
+      "object_sha256": "5c747d3154e9842966dd72a08cee723d07ad315638a47afd6b1e159d64562928",
+      "linked_sha256": "4362f48e07ad3b1cbe60015ccdf84c8c585242bb5dc99cea166f2e23c1482220"
     },
     {
       "id": "UISUtils_dohint",
@@ -54164,13 +54164,6 @@
             "size": 376,
             "kind": "function",
             "name": "AddChildrenToSearchNodeQueue__9CAIObjectFP11CSearchNodePC9CPathNodeR16CSearchNodeQueueR15CSearchNodeList",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004b988",
-            "size": 2192,
-            "kind": "function",
-            "name": "UpdateAStarPathWalk__9CAIObjectFv",
             "evidence": "exception-index"
           },
           {
