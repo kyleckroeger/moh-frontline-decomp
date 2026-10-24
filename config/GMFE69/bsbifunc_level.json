@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x80021a74",
-      "size": 1116,
+      "size": 1652,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009a9c",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800105e0",
-      "size": 60,
+      "size": 72,
       "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018283c",
+      "size": 44,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -82,6 +89,12 @@
       "binding": 1
     },
     {
+      "name": "BIFunc_UpdatePlayerStats__FPPiPv",
+      "address": "0x80021ed0",
+      "size": 536,
+      "binding": 1
+    },
+    {
       "name": "BIFunc_AddHint__FPPiPv",
       "address": "0x80021bfc",
       "size": 184,
@@ -101,10 +114,17 @@
     }
   ],
   "externals": {
+    "Add_MPShotFired__10CShellMenuFii": "0x800e69a0",
     "DebugMsg__FPCce": "0x80018c88",
     "DestroyBuddyDataStructures__Fv": "0x80058ccc",
+    "Set_enemiesKilled__10CShellMenuFUib": "0x800e6a50",
+    "Set_hitsTaken__10CShellMenuFUib": "0x800e6af8",
+    "Set_hits__10CShellMenuFUib": "0x800e6b18",
+    "Set_shotLocation__10CShellMenuFUi14EShotLocationsb": "0x800e6a28",
+    "Set_shotsFired__10CShellMenuFUib": "0x800e6b38",
     "g_HintTextArray": "0x80197ef8",
     "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_iNumberOfEnemiesSpawned": "0x8034e8a8",
     "g_pBSObject": "0x8034e7e0",
@@ -118,6 +138,7 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_bInMultiplayerMode",
     "g_iCurrentBIFIndex",
     "g_iNumberOfEnemiesSpawned",
     "g_pBSObject",

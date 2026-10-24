@@ -8,7 +8,9 @@
 // followed by the weak CPlayerObject::GetAIDoodad (the doodad at +0x24) and
 // ModifyTotalKillableEnemyCount (for an enemy trigger created as a duplicate,
 // creation mode 2, it reports that and adds the count to the spawned total;
-// its message is a .rodata pool entry). The
+// its message is a .rodata pool entry), then UpdatePlayerStats (sets one of the
+// shell's player statistics: shots fired, also counted per port in
+// multiplayer, hits, hits taken, enemies killed or a shot location). The
 // file name is this project's; the original record is bsbifunc.cpp and the
 // built-ins around these are not reconstructed. The functions, classes and
 // globals are named by the mangled symbols; ISceneNode is declared with its
@@ -156,11 +158,24 @@ public:
     unsigned char unknown02c[876];
     unsigned char m_triggerChecks : 1;
     unsigned char unknown398 : 7;
+    unsigned char unknown399[979];
+    int m_port;
 };
 
-struct ShellEndView {
-    unsigned char unknown00[15];
+enum EShotLocations {};
+
+class CShellMenu {
+public:
+    void Set_shotsFired(unsigned int, bool);
+    void Set_hits(unsigned int, bool);
+    void Set_hitsTaken(unsigned int, bool);
+    void Set_enemiesKilled(unsigned int, bool);
+    void Set_shotLocation(unsigned int, EShotLocations, bool);
+    void Add_MPShotFired(int, int);
+
+    unsigned char unknown0000[15];
     bool levelWon;
+    unsigned char unknown0010[6608];
 };
 
 struct StringTableEntryView {
@@ -174,7 +189,7 @@ struct StringTableView {
     int count;
 };
 
-extern ShellEndView g_Shell;
+extern CShellMenu g_Shell;
 extern unsigned int g_uiGameState;
 extern StringTableView umTable;
 extern const char* g_HintTextArray[][3];
@@ -267,13 +282,24 @@ struct LevelTriggerView {
     LevelTriggerCoreView* core;
 };
 
+class BSGO_Basic {
+    unsigned char unknown00[12];
+
+public:
+    virtual void Destroy();
+    virtual int GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+};
+
 struct LevelScriptObjectView {
     unsigned char unknown00[8];
     LevelTriggerView* trigger;
+    BSGO_Basic* user;
 };
 
 extern LevelScriptObjectView* g_pBSObject;
 extern int g_iNumberOfEnemiesSpawned;
+extern bool g_bInMultiplayerMode;
 void DebugMsg(const char*, ...);
 
 void BIFunc_ModifyTotalKillableEnemyCount(int** stack, void*) {
@@ -282,6 +308,53 @@ void BIFunc_ModifyTotalKillableEnemyCount(int** stack, void*) {
     if (core->type == 3 && core->creation == 2) {
         DebugMsg("-------------- Duplicate Creation:  Ignoring for total enemy count\n");
         g_iNumberOfEnemiesSpawned += count;
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
+
+void BIFunc_UpdatePlayerStats(int** stack, void*) {
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    int stat = *(*stack - (count - 1));
+    unsigned int value = *(*stack - (count - 2));
+    /* The statistic is switched on through a copy (the original's register choice). */
+    int selector;
+    selector = stat;
+    switch (selector) {
+    case 0:
+        g_Shell.Set_shotsFired(value, false);
+        if (g_bInMultiplayerMode)
+            g_Shell.Add_MPShotFired(g_pBSObject->user->GetSceneNode()->AsPlayerObject()->m_port, value);
+        break;
+    case 1:
+        g_Shell.Set_hits(value, false);
+        break;
+    case 2:
+        g_Shell.Set_hitsTaken(value, false);
+        break;
+    case 3:
+        g_Shell.Set_enemiesKilled(value, false);
+        break;
+    case 4:
+        g_Shell.Set_shotLocation(value, (EShotLocations)0, false);
+        break;
+    case 5:
+        g_Shell.Set_shotLocation(value, (EShotLocations)1, false);
+        break;
+    case 6:
+        g_Shell.Set_shotLocation(value, (EShotLocations)2, false);
+        break;
+    case 7:
+        g_Shell.Set_shotLocation(value, (EShotLocations)3, false);
+        break;
+    case 8:
+        g_Shell.Set_shotLocation(value, (EShotLocations)4, false);
+        break;
+    case 9:
+        g_Shell.Set_shotLocation(value, (EShotLocations)5, false);
+        break;
+    case 10:
+        g_Shell.Set_shotLocation(value, (EShotLocations)6, false);
+        break;
     }
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
