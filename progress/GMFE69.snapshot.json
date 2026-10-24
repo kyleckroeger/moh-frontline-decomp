@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 993796,
+    "matching_code_bytes": 993988,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.25418289065527,
+    "percent": 70.26775590072474,
     "categories": {
-      "reconstructed_game": 763804,
+      "reconstructed_game": 763996,
       "restored_library": 229992
     },
-    "matching_functions": 4609
+    "matching_functions": 4610
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -28,7 +28,7 @@
     "config/GMFE69/AIFilter_player.json": "0a29353fc5b906993765520470a2bc3c3a5eabad0601b7a364f48e568d19fe45",
     "config/GMFE69/AIFilter_player_ctor.json": "54406b416466c6aa28eb1b6e0cf0a1fd353f119fd3a1b836b1f41eabf5160de0",
     "config/GMFE69/AIFilter_player_update.json": "6415669b75469ed7ce4d09d8ba313a94947313490cd580d4f9de359ad2382ba9",
-    "config/GMFE69/AIFilter_queries.json": "d33190325d3a4fa2a677b79ce85ab877640802032a79f6340e9d48f97aa96312",
+    "config/GMFE69/AIFilter_queries.json": "5970a6073b1739ad30e069512ea93e2034fadd8b1dbde8b9893aab3d255b3436",
     "config/GMFE69/AIFilter_runaway.json": "4796c1bf9f0e4197aca8c24582fbf4df32022ffb920151c4e5248fc8068b628c",
     "config/GMFE69/AIFilter_soldier_ctor.json": "300124c62146e37ae64ad575daa684c33daad31a78212aa70b9f7e52f738b64b",
     "config/GMFE69/AIFilter_soldier_dtor.json": "03333f75283dc7b52902483605118cba9f5150551dba5294d2357be487d1c352",
@@ -2288,7 +2288,7 @@
     "src/game/AIFilter_player.cpp": "83b0253fe90a48707e8a5ae635a9534d7fc9d0d8f420e9b3d65421b09f842f70",
     "src/game/AIFilter_player_ctor.cpp": "3e7f0704bbca20ece2367aae515cd3bb67f9dccec30a7dfbb4dd2f84a21dcac4",
     "src/game/AIFilter_player_update.cpp": "a16407effa58d2635294212d9f64e7ded3f9a1d4c7476cba12b670e96a0a5e6b",
-    "src/game/AIFilter_queries.cpp": "fa29827ae2c5e4b5f9572b8de545ae4588f63526953839f1239760df2cb98559",
+    "src/game/AIFilter_queries.cpp": "549b73afc3d54035fb218ac657320017dad781693173018da227031d53adb3d1",
     "src/game/AIFilter_runaway.cpp": "5a8d2068ed3c5fad0eb9c047ebf28f4775b82e6213615e50ffead96c7822f46c",
     "src/game/AIFilter_soldier_ctor.cpp": "f436457b079a2ca07870874e59ca34068104021a07205e29256d2e7fdbf02e9d",
     "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
@@ -19589,8 +19589,8 @@
     {
       "id": "AIFilter_queries",
       "category": "reconstructed_game",
-      "functions": 9,
-      "code_bytes": 884,
+      "functions": 10,
+      "code_bytes": 1076,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -19622,8 +19622,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ff38a188782affa91bd17e8a63459b82890f57e0060afd6eeff6a037e95d100d",
-      "linked_sha256": "90e74830aee5537694046b343c8f50e1139c31c14c748f2854591119acff1fca"
+      "object_sha256": "8caad31c5d56c53a5977b3d30c2f959ef7752ebe631e6fb5c1cc376fb899e2a8",
+      "linked_sha256": "6779976027d7bbfdddc0fc4791c80b22e93a2329f131a18302066b9b1f5c134d"
     },
     {
       "id": "collisionvolume",
@@ -55095,13 +55095,6 @@
         "file_record": 43,
         "file_name": "AIFilter.cpp",
         "ranges": [
-          {
-            "address": "0x8005a410",
-            "size": 192,
-            "kind": "function",
-            "name": "GetLookDirection__21CAIFilterPlayerObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8005c6b8",
             "size": 784,

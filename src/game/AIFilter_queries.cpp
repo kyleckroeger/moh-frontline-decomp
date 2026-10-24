@@ -1,14 +1,15 @@
-// A fragment of AIFilter.cpp; the file name is this project's. AI filter objects, the functions after the first one in the file: the MMG
+// A fragment of AIFilter.cpp; the file name is this project's. AI filter objects, the functions at the start of the file: the MMG
 // queries forwarded to the AI object, the target guess position, the
 // Euler-direction angle difference, Z rotation and the real-position
 // distances (sqrtf is the SDK's inline; the XY distance squares a zero z). The
 // class names come from the mangled symbols; the members are inferred from
 // offsets, and the conversion from the game's CVector3 (a by-value copy, then
 // the three coordinates) is written as an inferred inline constructor.
-// CAIFilterPlayerObject::GetLookDirection comes first in the file and is not
-// matched (stack slot order of its CVector3 copies; draft in
-// scratch/lib/AIFilter_wip.cpp). UpdateFromGameObject on are not part of this
-// unit.
+// CAIFilterPlayerObject::GetLookDirection comes first in the file: a weak copy
+// of a header inline (defined __declspec(weak)) returning the owner's scene
+// node forward vector and position through the inferred inline GetLookVectors
+// (its locals and temporaries give the stack slots). UpdateFromGameObject on
+// are not part of this unit.
 extern "C" {
 #include <math.h>
 }
@@ -25,6 +26,7 @@ public:
 class CAIFilterRealVector3 {
 public:
     CAIFilterRealVector3() {}
+    CAIFilterRealVector3(CVector3 v) : x(v.x), y(v.y), z(v.z) {}
     void RotateAboutZ(float);
 
     float x;
@@ -59,6 +61,40 @@ float MathFunAtan2F(float, float);
 void MathFunRotateAboutZ(float*, float*, float);
 float MathFunNormalizeAngleNegativePiToPi(float);
 
+class CMatrix;
+class CDrawContext;
+class CCollision;
+
+// The scene-node interface, flattened in the order of __vt__10ISceneNode;
+// only GetPosition and GetForward are called here.
+class ISceneNode {
+public:
+    enum EVolumeType {};
+
+    virtual void MarkForDestruction(int);
+    virtual ~ISceneNode();
+    virtual void Destroy();
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float);
+    virtual void CommitAI();
+    virtual void ConstrainVelocity();
+    virtual void AttemptUpdate(float);
+    virtual void OnCollision(const CCollision&);
+    virtual void CommitUpdate();
+    virtual void Draw(CDrawContext&);
+    virtual const void* GetLocalBoundingVolume(EVolumeType) const;
+    virtual const void* GetWorldBoundingVolume(EVolumeType) const;
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
+    virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
+};
+
+struct AIFilterGameObjectView {
+    unsigned char unknown00[80];
+    ISceneNode* sceneNode;
+};
+
 class CAIObject {
 public:
     int ShouldILeaveMMG(TriggerObject_struct*);
@@ -82,9 +118,30 @@ public:
     void GetTargetGuessPosition(CAIFilterRealPosition&);
 
     unsigned char unknown00[4];
-    void* m_gameObject;
+    AIFilterGameObjectView* m_gameObject;
     CAIObject* m_aiObject;
 };
+
+class CAIFilterPlayerObject : public CAIFilterObject {
+public:
+    void GetLookDirection(CAIFilterRealVector3&, CAIFilterRealVector3&);
+};
+
+/* Inferred: the scene node's forward vector and position as real vectors
+   (each through a by-value temporary). */
+inline void GetLookVectors(AIFilterGameObjectView* object, CAIFilterRealVector3& direction, CAIFilterRealVector3& position) {
+    CVector3 forward;
+    CVector3 location;
+
+    object->sceneNode->GetForward(forward);
+    object->sceneNode->GetPosition(location);
+    direction = CAIFilterRealVector3(forward);
+    position = CAIFilterRealVector3(location);
+}
+
+__declspec(weak) void CAIFilterPlayerObject::GetLookDirection(CAIFilterRealVector3& direction, CAIFilterRealVector3& position) {
+    GetLookVectors(m_gameObject, direction, position);
+}
 
 int CAIFilterObject::ShouldILeaveMMG(BSObject* script) {
     return m_aiObject->ShouldILeaveMMG(script->triggerObject);

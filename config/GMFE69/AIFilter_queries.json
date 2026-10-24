@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005a4d0",
-      "size": 884,
+      "address": "0x8005a410",
+      "size": 1076,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000aedc",
-      "size": 56,
+      "address": "0x8000aed4",
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012020",
-      "size": 84,
+      "address": "0x80012014",
+      "size": 96,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "GetLookDirection__21CAIFilterPlayerObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
+      "address": "0x8005a410",
+      "size": 192,
+      "binding": 2
+    },
     {
       "name": "ShouldILeaveMMG__15CAIFilterObjectFP8BSObject",
       "address": "0x8005a4d0",
