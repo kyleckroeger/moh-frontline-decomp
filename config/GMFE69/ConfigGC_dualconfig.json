@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800f77ac",
-      "size": 11104,
+      "size": 12768,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f944",
-      "size": 72,
+      "size": 80,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016658",
-      "size": 108,
+      "size": 120,
       "type": 1
     },
     {
@@ -91,6 +91,12 @@
       "name": "DisplayControlsForNewConfigRendererer__11CDualConfigFv",
       "address": "0x800f83b0",
       "size": 4092,
+      "binding": 1
+    },
+    {
+      "name": "HandleButtonPress__11CDualConfigFv",
+      "address": "0x800fa30c",
+      "size": 1664,
       "binding": 1
     },
     {
@@ -154,14 +160,16 @@
     "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
     "DrawText__5CFontFffPCc": "0x8007cf50",
     "FONT_getrecta": "0x8014e53c",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
     "Get_currentControllerSetting__10CShellMenuFv": "0x800e6ecc",
     "HandleAnalogButtonPress__11CDualConfigFv": "0x800fa98c",
-    "HandleButtonPress__11CDualConfigFv": "0x800fa30c",
     "MovementText": "0x80314450",
     "RetrieveShellControllerButtons__10CShellMenuFPci": "0x800e1508",
     "SetColor__5CFontF6CColor": "0x8007cba0",
+    "Set_currentControllerSetting__10CShellMenuFUc": "0x800e6f44",
     "g_Shell": "0x80195090",
     "g_config_keymap": "0x801858bc",
+    "g_inputMgr": "0x801ec80c",
     "g_screen": "0x80196ac0",
     "memcpy": "0x800094f8",
     "memset": "0x80009410",

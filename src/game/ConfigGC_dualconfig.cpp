@@ -27,7 +27,10 @@
 // ApplyChanges does the same from the current text (the original appends the
 // mapped buttons to the FIRST player's map); WillBeUnassigned finds the button
 // whose assignment the selected one would take over; UnassignPreviousAssigned
-// Button marks it unassigned and clears trigger conflicts. The data and the
+// Button marks it unassigned and clears trigger conflicts; HandleButtonPress
+// polls the four controllers per menu button (previous/next row, previous/
+// next choice skipping unavailable ones, accept, apply, restore the shell's
+// setting or its custom buttons, defaults). The data and the
 // functions are named by the symbols; the members, the views, the text table
 // helper, the drawing and conflict inlines and the comparison forms are
 // inferred. The code addresses the file's data from one base, so this unit
@@ -166,6 +169,7 @@ extern KeyMapView g_config_keymap[4];
 
 class CShellMenu {
 public:
+    void Set_currentControllerSetting(unsigned char);
     void RetrieveShellControllerButtons(char*, int);
     unsigned char Get_currentControllerSetting();
     void CopyControllerButtons(char*, int);
@@ -173,6 +177,14 @@ public:
     unsigned char unknown0000[0x19dc];
 };
 extern CShellMenu g_Shell;
+
+class CInputManager {
+public:
+    long GetValue(unsigned long, unsigned long);
+
+    unsigned char unknown00[64];
+};
+extern CInputManager g_inputMgr;
 
 /* inferred: the sprite's size bitfields at +0x60 */
 struct _spritepolyvert {
@@ -948,5 +960,136 @@ void CDualConfig::UnassignPreviousAssignedButton() {
             }
         }
         break;
+    }
+}
+
+void CDualConfig::HandleButtonPress() {
+    float value;
+    float value2;
+    int i;
+
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 123);
+        if (value)
+            break;
+    }
+    if (value) {
+        visualConfigText[m_selected] = currConfigText[m_selected];
+        m_selected--;
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 124);
+        if (value)
+            break;
+    }
+    if (value) {
+        visualConfigText[m_selected] = currConfigText[m_selected];
+        m_selected++;
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 125);
+        if (value)
+            break;
+    }
+    if (value) {
+        char v = visualConfigText[m_selected];
+        v--;
+        if (v < 0)
+            v = 14;
+        visualConfigText[m_selected] = v;
+        if (m_selected != 13 && configArray[m_selected][v] == -1) {
+            int sel;
+            while (configArray[sel = m_selected][v] == -1) {
+                v--;
+                visualConfigText[sel]--;
+            }
+        }
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 126);
+        if (value)
+            break;
+    }
+    if (value) {
+        char v = visualConfigText[m_selected];
+        v++;
+        if (v > 14)
+            v = 0;
+        visualConfigText[m_selected] = v;
+        if (m_selected != 13 && configArray[m_selected][v] == -1) {
+            int sel;
+            while (configArray[sel = m_selected][v] == -1) {
+                v++;
+                visualConfigText[sel]++;
+            }
+        }
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 128);
+        if (value)
+            break;
+    }
+    value2 = 0.0f;
+    for (i = 0; i < 4; i++) {
+        value2 = g_inputMgr.GetValue(i, 135);
+        if (value2)
+            break;
+    }
+    if (value || value2) {
+        char c = visualConfigText[m_selected];
+        // A no-op self-assignment (user-approved, like '(void)0;'): the
+        // compiler drops the store, but the selection is then reloaded for
+        // the next store as in the original.
+        visualConfigText[m_selected] = c;
+        currConfigText[m_selected] = c;
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 129);
+        if (value)
+            break;
+    }
+    if (value) {
+        m_applied = true;
+        g_Shell.Set_currentControllerSetting(m_config);
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 127);
+        if (value)
+            break;
+    }
+    if (value) {
+        m_flag0e = true;
+        m_applied = true;
+        g_Shell.Set_currentControllerSetting(m_controllerSetting);
+        m_config = m_controllerSetting;
+        if (m_controllerSetting >= 6) {
+            char buttons[13];
+            g_Shell.RetrieveShellControllerButtons(buttons, m_controllerSetting - 6);
+            for (i = 0; i < 13; i++) {
+                currConfigText[i] = buttons[i];
+                visualConfigText[i] = buttons[i];
+            }
+            currConfigText[13] = 0;
+            visualConfigText[13] = 0;
+        } else {
+            SetUpDefaultConfig(m_controllerSetting);
+        }
+        return;
+    }
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 130);
+        if (value)
+            break;
+    }
+    if (value) {
+        SetUpDefaultConfig(1);
+        currConfigText[13] = 0;
+        visualConfigText[13] = 0;
     }
 }
