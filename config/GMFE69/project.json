@@ -1248,7 +1248,8 @@
     "light_propertyanim_update.json",
     "particlesystem_create.json",
     "particlesystem_texturebin_dtor.json",
-    "world_volume_list_reserve.json"
+    "world_volume_list_reserve.json",
+    "path_queuenode.json"
   ],
   "progress": {
     "code_bytes": 1414572,
