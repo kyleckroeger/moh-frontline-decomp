@@ -1,8 +1,19 @@
-// A fragment of AIObject.cpp (0x800487b0): CAIObject::CheckLineOfSightModeObject
-// returns the watched object (+1692) when it is in line of sight: the
-// threat (+196) through IsTargetInLineOfSight at the vision distance (+1760;
-// its position is then copied to +336 and two flags set, and the flag at
-// +1752 cleared when it is not seen), any other object through
+// A fragment of AIObject.cpp (0x80048564): CAIObject::CheckLineOfSightModeList,
+// then CAIObject::CheckLineOfSightModeObject.
+// CheckLineOfSightModeList takes the next object of the global AI object list
+// (from the last match at +1688, wrapping at the list start) whose status
+// matches the watch list (+1780, count +1828) and is not this object
+// (FindListObject, inlined; it remembers the match and gives up after a full
+// turn) and returns it when it is in line of sight at the vision distance
+// (+1756), halved for the flag at +1840 of the object and times 0.75 when it
+// is crouching; otherwise 0 (the two zero results, after a test against the
+// previous match, are kept as written). The list start is read through the
+// inferred inline GetListStart (the global is file-local in the original;
+// the accessor gives its register).
+// CheckLineOfSightModeObject returns the watched object (+1692) when it is in
+// line of sight: the threat (+196) through IsTargetInLineOfSight at the vision
+// distance (+1760; its position is then copied to +336 and two flags set, and
+// the flag at +1752 cleared when it is not seen), any other object through
 // IsObjectInLineOfSight (inlined; the body follows
 // AIObject_lineofsight_obj.cpp and is marked inline here so that it is not
 // emitted again) at the vision distance, halved for the flag at +1840 of the
@@ -43,6 +54,21 @@ public:
                                              CAIFilterObject*);
 };
 
+struct aistatus_match {
+    int value[3];
+};
+
+class CAIStatus {
+public:
+    bool MatchStatusList(aistatus_match*, int);
+};
+
+class CAIObject;
+extern CAIObject* g_paioAIObjectListStart;
+static inline CAIObject* GetListStart() { return g_paioAIObjectListStart; }
+class CAIObject;
+extern CAIObject* g_paioAIObjectListStart; // file-local in the original
+
 class CAIObject {
 public:
     virtual ~CAIObject();
@@ -50,11 +76,36 @@ public:
     virtual void Update(float);
     virtual bool IsCrouching() const;
 
+    CAIObject* CheckLineOfSightModeList();
     CAIObject* CheckLineOfSightModeObject(); /* result type inferred */
+    /* inferred: the next object of the global list matching the watch list */
+    CAIObject* FindListObject() {
+        CAIObject* first = GetListStart();
+        CAIObject* object;
+        if (m_listObject)
+            object = m_listObject;
+        else
+            object = first;
+        for (;;) {
+            object = object->m_next;
+            if (!object)
+                object = first;
+            if (object != this && object->m_status.MatchStatusList(m_list, m_listCount)) {
+                m_listObject = object;
+                return m_listObject;
+            }
+            if (m_listObject) {
+                if (object == m_listObject)
+                    return 0;
+            } else if (object == first) {
+                return 0;
+            }
+        }
+    }
     bool IsTargetInLineOfSight(float);
     bool IsObjectInLineOfSight(CAIFilterRealPosition&, float, bool);
 
-    unsigned char unknown004[4];
+    CAIObject* m_next;
     CAIFilterObject* m_filter;
     unsigned char unknown00c[12];
     CAIFilterRealPosition m_position;
@@ -64,13 +115,19 @@ public:
     CAIFilterRealPosition m_unknown150;
     unsigned char unknown15c[84];
     unsigned long m_flags;
-    unsigned char unknown1b4[1256];
+    CAIStatus m_status;
+    unsigned char unknown1b5[1251];
+    CAIObject* m_listObject;
     CAIObject* m_seekObject;
     unsigned char unknown6a0[56];
     bool m_unknown6d8;
-    unsigned char unknown6d9[7];
+    unsigned char unknown6d9[3];
+    float m_listDistance;
     float m_visionDistance;
-    unsigned char unknown6e4[76];
+    unsigned char unknown6e4[16];
+    aistatus_match m_list[4];
+    int m_listCount;
+    unsigned char unknown728[8];
     bool m_unknown730;
     bool m_unknown731;
 };
@@ -110,6 +167,26 @@ inline bool CAIObject::IsObjectInLineOfSight(CAIFilterRealPosition& position, fl
             return true;
     }
     return false;
+}
+
+CAIObject* CAIObject::CheckLineOfSightModeList() {
+    CAIObject* start = m_listObject;
+    CAIObject* object = FindListObject();
+    if (!object)
+        return 0;
+    float distance = m_listDistance;
+    if (object->m_unknown730)
+        distance *= 0.5f;
+    if (object->IsCrouching())
+        distance *= 0.75f;
+    CAIObject* result;
+    if (IsObjectInLineOfSight(object->m_position, distance, object->IsCrouching()))
+        result = object;
+    else if (object == start)
+        result = 0;
+    else
+        result = 0;
+    return result;
 }
 
 CAIObject* CAIObject::CheckLineOfSightModeObject() {

@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800487b0",
-      "size": 532,
+      "address": "0x80048564",
+      "size": 1120,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a6d4",
-      "size": 8,
+      "address": "0x8000a6cc",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800117ec",
-      "size": 12,
+      "address": "0x800117e0",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CheckLineOfSightModeList__9CAIObjectFv",
+      "address": "0x80048564",
+      "size": 588,
+      "binding": 1
+    },
     {
       "name": "CheckLineOfSightModeObject__9CAIObjectFv",
       "address": "0x800487b0",
@@ -68,14 +74,20 @@
     "CheckVisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c370",
     "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
     "IsTargetInLineOfSight__9CAIObjectFf": "0x800489c4",
+    "MatchStatusList__9CAIStatusFP14aistatus_matchi": "0x80051cd0",
+    "g_paioAIObjectListStart": "0x8034e8ec",
     "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_paioAIObjectListStart"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_paioAIObjectListStart"
+  ],
   "original_file": "AIObject.cpp",
   "original_file_index": 1752,
   "pooled_sections": [

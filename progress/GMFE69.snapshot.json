@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 975936,
+    "matching_code_bytes": 976524,
     "total_executable_code_bytes": 1414572,
-    "percent": 68.99161018315081,
+    "percent": 69.03317752648857,
     "categories": {
-      "reconstructed_game": 745944,
+      "reconstructed_game": 746532,
       "restored_library": 229992
     },
-    "matching_functions": 4581
+    "matching_functions": 4582
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -50,7 +50,7 @@
     "config/GMFE69/AIObject_grenadeshot.json": "1bfbfa99132cedcccc7a2417c120b464d4adccb6d89513cf11cc3e6c55f344b9",
     "config/GMFE69/AIObject_init.json": "0c2f565f2c2891ec0b68785d32cb7041a8ade14a5bc1c6d9e48a6587647c2429",
     "config/GMFE69/AIObject_lineofsight.json": "003ce5338457cc0ff8949249a6b90e13f6cf14577dbd163359aa497832a8160d",
-    "config/GMFE69/AIObject_lineofsight_mode.json": "56dd70034b220e62fb2baca9e98492a5ea3f50a9c64621dfe55cbdb961386095",
+    "config/GMFE69/AIObject_lineofsight_mode.json": "27c83dca6b7a89fb8a2c4e17330f821db06980d53ba735a9300b2dbfb0413706",
     "config/GMFE69/AIObject_lineofsight_obj.json": "1faa5e1bbdaec77b500d1d13db5629da6a4f8e25e6a5671ae48a59490d857ad3",
     "config/GMFE69/AIObject_lookdirection.json": "85aef398dac9bd0fe5d2a982fa9d386d9a3be9d321ba9051cf4beb14d5ce4765",
     "config/GMFE69/AIObject_mmgpoint.json": "ec3f4e7e69d7b2705d92f73a80c5815137a1ead7f9cdcd40d0aff9983d46fe13",
@@ -2304,7 +2304,7 @@
     "src/game/AIObject_grenadeshot.cpp": "8722ce3e1a4e542316ad9483a116b61e12647255f9f38dfb0459124ca1f3d367",
     "src/game/AIObject_init.cpp": "73c8ba0d3090d6cc3b71ea28b2b69d75b6131577c53ba56d9a982ced7805b640",
     "src/game/AIObject_lineofsight.cpp": "edbcf145a0404f7f22fa92c49c858c1f487777681f896a9325d71edee8096a63",
-    "src/game/AIObject_lineofsight_mode.cpp": "fd688dcca5f55ce38a300c4eb28b8de61130e27b88111a5cb1a35b9908099518",
+    "src/game/AIObject_lineofsight_mode.cpp": "5f3b021c2f805234360d3262a51c09f949b6f0ad14e1d89231271d1f11be3dc1",
     "src/game/AIObject_lineofsight_obj.cpp": "f3ac414a2d405826f28573359707ffc751b9752d2b6a01af3579d600d4b5167d",
     "src/game/AIObject_lookdirection.cpp": "fd2ba34136e22e33db932978756d2aa56057d57fd017cd8023455c231048e406",
     "src/game/AIObject_mmgpoint.cpp": "15d26b4e24f6c409dd386dc631953515cde163eaaaffd86538f5ddc1fe88c007",
@@ -51971,8 +51971,8 @@
     {
       "id": "AIObject_lineofsight_mode",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 532,
+      "functions": 2,
+      "code_bytes": 1120,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -52004,8 +52004,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c647618043ef6161efc023935f35943ce04eeaa7f7c4c1c0f76743dc8bf7478b",
-      "linked_sha256": "f8b9a28318e98608aaa092ec71b5eea2530c8aa8f17e6216ab681800c8ff109c"
+      "object_sha256": "b55071cdcc76e8d62521c70e14d0862323cae88275da87282713fa5e5b0d56be",
+      "linked_sha256": "d296e95d26ab028119eef78abb5ff2fefd94857a7b3addde2c0a5c184a08fbf8"
     },
     {
       "id": "bsbifunc_makenoise",
@@ -54620,13 +54620,6 @@
             "size": 664,
             "kind": "function",
             "name": "PropagateSoundToAllObjects__9CAIObjectFRC18CAIFilterSoundInfoP9CAIObject",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80048564",
-            "size": 588,
-            "kind": "function",
-            "name": "CheckLineOfSightModeList__9CAIObjectFv",
             "evidence": "exception-index"
           },
           {
