@@ -1239,7 +1239,8 @@
     "box_line.json",
     "sdrv_play.json",
     "smemcpy.json",
-    "fiber_extents.json"
+    "fiber_extents.json",
+    "stagpat.json"
   ],
   "progress": {
     "code_bytes": 1414572,

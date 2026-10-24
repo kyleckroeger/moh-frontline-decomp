@@ -1,0 +1,77 @@
+{
+  "id": "stagpat",
+  "source": "src/ea/stagpat.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8015ea30",
+      "size": 1072,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SNDBANKI_playtimbre__FiiPvP11SNDPLAYOPTSP15SNDIPATCHHEADERiii",
+      "address": "0x8015ea30",
+      "size": 1072,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "SNDI_calcfxlevel__Fii": "0x8015ddc0",
+    "SNDI_pantoazimuth__Fi": "0x8015f848",
+    "SNDI_validrendermode__FPiP15SNDIPATCHHEADER": "0x80153798",
+    "SNDPLATFORM_getvoicerange__FiPiPi": "0x8016b0f0",
+    "SNDPLATFORM_playtimbre__FP15SNDIPATCHHEADERPviiiii": "0x8016b16c",
+    "SNDVOICEI_alloc__FiiPiii": "0x8015d530",
+    "SNDVOICEI_free__Fi": "0x8015dbd4",
+    "_restgpr_15": "0x80138a2c",
+    "_savegpr_15": "0x801389e0",
+    "iSNDcalcpitch__Fi": "0x8015e03c",
+    "iSNDcalcvol__Fi": "0x8015de40",
+    "iSNDrandom__Fv": "0x8015f934",
+    "randrange__Fi": "0x8015df00",
+    "sndgs": "0x80340860"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "stagpat.c",
+  "original_file_index": 12891
+}
