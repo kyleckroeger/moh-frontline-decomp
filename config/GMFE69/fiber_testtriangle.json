@@ -40,11 +40,29 @@
     {
       "name": ".text",
       "address": "0x800c9504",
-      "size": 24,
+      "size": 356,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e0b4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014e70",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "TestCollision__9CVolFiberCFRC6CPlaneR10CCollisionb",
+      "address": "0x800c951c",
+      "size": 332,
+      "binding": 1
+    },
     {
       "name": "TestCollision__9CVolFiberCFRC9CTriangleR10CCollisionb",
       "address": "0x800c9504",
@@ -52,7 +70,10 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "GetIntersection__6CPlaneCFRC6CLine3RfP8CVector3": "0x800910ac"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -60,5 +81,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "fiber.cpp",
-  "original_file_index": 7678
+  "original_file_index": 7678,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350bd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350bdc"
+    }
+  ]
 }
