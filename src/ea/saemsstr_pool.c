@@ -1,4 +1,4 @@
-/* A fragment of EA's AEMS streaming file saemsstr.c (0x801578e0):
+/* A fragment of EA's AEMS streaming file saemsstr.c (0x80157790):
    SNDAEMS_streamrestore removes the stream task and destroys every stream
    and its status record; SNDAEMSI_streamgethandle gives a player a free
    stream, or takes the lowest priority one when the request outranks it;
@@ -12,9 +12,10 @@
    (and its loop section) on its stream outside the critical section, checking
    that the player still owns the stream afterwards; and
    SNDAEMSI_streamupdateattributes applies the inputs that changed.
-   SNDAEMS_streaminit before
-   them, which divides caller memory between the streams, is not part of the
-   unit. AEMSSTREAMSTATUS and AEMSCOMPDYNAMICPLAYER are named by the mangled
+   SNDAEMS_streaminit, first, links the stream player, replaces any earlier
+   pool and divides the caller's memory between the streams (4-byte aligned
+   chunks, each stream created on its chunk), returning a chunk's size less
+   the stream overhead. AEMSSTREAMSTATUS and AEMSCOMPDYNAMICPLAYER are named by the mangled
    symbols; their members and the stream pool view are inferred. */
 struct AEMSSTREAMREQUESTVIEW;
 
@@ -119,7 +120,12 @@ struct SNDAEMSVIEW {
     AEMSSTREAMPOOLVIEW* streams;
 };
 
-/* inferred: the default play settings SNDplaysetdef fills */
+/* inferred: the default play settings SNDplaysetdef fills (its size is
+   bounded by SNDAEMS_streaminit's frame) */
+struct PLAYOPTSVIEW {
+    unsigned char unknown00[24];
+};
+
 extern SNDAEMSVIEW sndaems;
 
 extern "C" {
@@ -145,6 +151,52 @@ void SNDAEMSI_streamdying(AEMSSTREAMSTATUS*);
 int SNDAEMSI_streamgethandle(AEMSCOMPDYNAMICPLAYER*, int);
 void SNDAEMSI_streamupdatestatus(AEMSCOMPDYNAMICPLAYER*);
 void SNDAEMSI_streamupdateattributes(AEMSCOMPDYNAMICPLAYER*);
+void SNDAEMSI_linkstream();
+extern "C" int SNDAEMS_streamrestore();
+void* SNDMEMI_allocz(int);
+void iSNDserveraddclient(void (*)());
+extern "C" {
+void SNDplaysetdef(PLAYOPTSVIEW*);
+int SNDSTRM_create(PLAYOPTSVIEW*, int, int, char*, int);
+int SNDSTRM_overhead(int, int);
+}
+
+extern "C" int SNDAEMS_streaminit(char* memory, int size, int count) {
+    PLAYOPTSVIEW opts;
+    int i;
+    AEMSSTREAMSTATUS* status;
+    int chunk;
+
+    SNDAEMSI_linkstream();
+    if (sndaems.streams)
+        SNDAEMS_streamrestore();
+    SNDSYS_entercritical();
+    sndaems.streams = (AEMSSTREAMPOOLVIEW*)SNDMEMI_allocz(sizeof(AEMSSTREAMPOOLVIEW));
+    sndaems.streams->memory = memory;
+    sndaems.streams->size = size;
+    sndaems.streams->count = count;
+    sndaems.streams->rate = 60;
+    sndaems.streams->statuses = (AEMSSTREAMSTATUS**)SNDMEMI_allocz(count * sizeof(AEMSSTREAMSTATUS*));
+    SNDplaysetdef(&opts);
+    chunk = size / count;
+    chunk &= 0x7ffffffc;
+    for (i = 0; i < count; i++) {
+        sndaems.streams->statuses[i] = (AEMSSTREAMSTATUS*)SNDMEMI_allocz(sizeof(AEMSSTREAMSTATUS));
+        status = sndaems.streams->statuses[i];
+        status->buffer = memory + i * chunk;
+        status->handle = SNDSTRM_create(&opts, 2, 60, status->buffer, chunk);
+        status->player = 0;
+        status->request.state = 0;
+        status->request.id = -1;
+        status->request.start = -1;
+        status->request.loop = -1;
+        status->request.file = 0;
+    }
+    iSNDserveraddclient(SNDAEMSI_streamsystemtask);
+    SNDSYS_leavecritical();
+    chunk -= SNDSTRM_overhead(2, 60);
+    return chunk;
+}
 
 extern "C" int SNDAEMS_streamrestore() {
     int i;

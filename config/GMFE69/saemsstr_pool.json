@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x801578e0",
-      "size": 3364,
+      "address": "0x80157790",
+      "size": 3700,
       "type": 1
     },
     {
@@ -58,6 +58,12 @@
     {
       "name": "SNDAEMSI_streamsystemtask__Fv",
       "address": "0x801581fc",
+      "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMS_streaminit",
+      "address": "0x80157790",
       "size": 336,
       "binding": 1
     },
@@ -93,13 +99,17 @@
     }
   ],
   "externals": {
+    "SNDAEMSI_linkstream__Fv": "0x80158604",
+    "SNDMEMI_allocz__Fi": "0x80158d64",
     "SNDMEMI_free__FPv": "0x80158ff0",
     "SNDSTRM_3dpos": "0x8015c6c4",
+    "SNDSTRM_create": "0x8015becc",
     "SNDSTRM_destroy": "0x8015bef4",
     "SNDSTRM_drylevel": "0x8015c778",
     "SNDSTRM_fxlevel": "0x8015c7c8",
     "SNDSTRM_highpass": "0x8015c878",
     "SNDSTRM_lowpass": "0x8015c828",
+    "SNDSTRM_overhead": "0x8015c230",
     "SNDSTRM_pitchmult": "0x8015c728",
     "SNDSTRM_purge": "0x8015c028",
     "SNDSTRM_queuefile": "0x8015c004",
@@ -108,8 +118,12 @@
     "SNDSTRM_vol": "0x8015c5b0",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
+    "SNDplaysetdef": "0x8015d458",
+    "_restgpr_24": "0x80138a50",
     "_restgpr_25": "0x80138a54",
+    "_savegpr_24": "0x80138a04",
     "_savegpr_25": "0x80138a08",
+    "iSNDserveraddclient__FPFv_v": "0x801530e4",
     "iSNDserverremoveclient__FPFv_v": "0x80153110",
     "sndaems": "0x80340410"
   },
