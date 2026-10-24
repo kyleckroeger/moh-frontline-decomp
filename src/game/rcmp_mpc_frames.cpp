@@ -10,21 +10,78 @@
 // chunks among the frames in between) and DecodeChunk (at the end of the
 // stream, releases the old reference frame and hands out the last one;
 // otherwise decodes the chunk - first any held one - and hands out the
-// current frame, or the previous one when the stream ran out). The
+// current frame, or the previous one when the stream ran out) and
+// LowLevelDecodeChunk (points the MPEG decoder at the chunk and reads its
+// headers; for a sequence start it sets up the MPEG-1 defaults and picture
+// sizes as the reference decoder's Initialize_Sequence does and adds the
+// decoder's frame count plus two new frames, each with a cleared 16-byte
+// picture header of the coded size, to the free list; then decodes the
+// picture and, for a sequence start, defaults the frame rate to 30 and
+// scales it by 0.8 for progressive frames of an interlaced sequence). The
 // classes and templates are named by the mangled symbols (RCON::TDLNODE by
 // rcmp_tdlnode_dtor.cpp); MPC_FRAME derives from RCMP::FRAME and its list
 // node, and the list and node members (Unlink, RemoveHead, AddTail, First,
 // End), the lists' offsets, the counters, the chunk view, the NextChunk and
 // ChunkType inline helpers, the four frame pointers and the UseFrame inline
-// (unlink, add to the used list, take a reference) and the result types
+// (unlink, add to the used list, take a reference), the frame's picture
+// header view, constructor and Create helper, AddHead, the decoder's frame
+// count and the MPEG-2 flag view of the decoder globals and the result types
 // are inferred; the codec
 // declares its virtual functions in the order of __vt__18MPC_CODEC_INTERNAL,
 // its destructor (defined elsewhere) first. The rest of the file is not
 // part of this unit.
+/* inferred: a frame's picture header (type byte, then the size) */
+struct FrameHeaderView {
+    unsigned char m_type;
+    unsigned char unknown1[3];
+    short m_width;
+    short m_height;
+};
+
+extern "C" void MEM_fill(void*, int, int);
+void Initialize_Buffer(unsigned char*);
+void Get_Hdr();
+
+extern struct layer_data MPDbase;
+extern struct layer_data* MPDld;
+/* inferred view: the base layer's MPEG-2 flag */
+struct layer_data {
+    unsigned char unknown000[1056];
+    int MPEG2_Flag;
+};
+extern double MPDframe_rate;
+extern int MPDframe_pred_frame_dct;
+extern int MPDhorizontal_size;
+extern int MPDmatrix_coefficients;
+extern int MPDpicture_structure;
+extern int MPDprogressive_frame;
+extern int MPDprogressive_sequence;
+extern int MPDvertical_size;
+extern int MPDmb_width;
+extern int MPDmb_height;
+extern int MPDcoded_picture_width;
+extern int MPDcoded_picture_height;
+extern int MPDchroma_width;
+extern int MPDchroma_height;
+
 namespace RCMP {
+class RCMP_SYSTEM {
+public:
+    virtual ~RCMP_SYSTEM();
+
+    void* (*m_alloc)(const char*, int, int, int, int);
+    void (*m_free)(void*);
+    int m_userValue;
+};
+
+extern RCMP_SYSTEM rcmp_sys;
+
 class FRAME {
 public:
-    unsigned char unknown00[8];
+    ~FRAME();
+
+    int m_value;
+    void* m_buffer;
 };
 
 class CHUNK;
@@ -33,6 +90,9 @@ class DECODER {
 public:
     CHUNK* GetChunk();
     void ReleaseChunk(CHUNK*);
+
+    unsigned char unknown00[20];
+    int m_frameCount;
 };
 }
 
@@ -47,6 +107,8 @@ public:
         next->m_prev = prev;
     }
 
+    ~TDLNODE();
+
     TDLNODE* m_next;
     TDLNODE* m_prev;
 };
@@ -60,6 +122,15 @@ public:
         TDLNODE<T>* node = m_head.m_next;
         node->Unlink();
         return static_cast<T*>(node);
+    }
+    void AddHead(T* item) {
+        TDLNODE<T>* node = item;
+        TDLNODE<T>* head = &m_head;
+        TDLNODE<T>* first = m_head.m_next;
+        head->m_next = node;
+        first->m_prev = node;
+        node->m_prev = head;
+        node->m_next = first;
     }
     void AddTail(T* item) {
         TDLNODE<T>* node = item;
@@ -77,6 +148,24 @@ public:
 
 class MPC_FRAME : public RCMP::FRAME, public RCON::TDLNODE<MPC_FRAME> {
 public:
+    MPC_FRAME(unsigned int width, unsigned int height) {
+        m_refs = 0;
+        m_value = 0;
+        m_buffer = RCMP::rcmp_sys.m_alloc("MPC_FRAME::m_Shape",
+            height * width + (height >> 1) * (width >> 1) * 2 + 16, 0, 16, RCMP::rcmp_sys.m_userValue);
+        MEM_fill(m_buffer, 0, 16);
+        ((FrameHeaderView*)m_buffer)->m_type = 'l';
+        ((FrameHeaderView*)m_buffer)->m_width = width;
+        ((FrameHeaderView*)m_buffer)->m_height = height;
+    }
+    static MPC_FRAME* Create(unsigned int width, unsigned int height) {
+        return new MPC_FRAME(width, height);
+    }
+    static void* operator new(unsigned long size) {
+        return RCMP::rcmp_sys.m_alloc("", size, 0, 0, RCMP::rcmp_sys.m_userValue);
+    }
+    void operator delete(void*);
+
     int m_refs;
 };
 
@@ -245,4 +334,45 @@ RCMP::FRAME* MPC_CODEC_INTERNAL::DecodeChunk(RCMP::CHUNK** chunk) {
     LowLevelDecodeChunk(*chunk);
     UseFrame(m_frame10);
     return m_frame10;
+}
+
+void Decode_Picture(MPC_CODEC_INTERNAL*, int);
+
+void MPC_CODEC_INTERNAL::LowLevelDecodeChunk(RCMP::CHUNK* chunk) {
+    unsigned char* data;
+    unsigned int count;
+    unsigned int i;
+
+    data = (unsigned char*)chunk->m_data;
+    MPDld = &MPDbase;
+    Initialize_Buffer(data);
+    Get_Hdr();
+    if (m_stopped) {
+        if (!MPDbase.MPEG2_Flag) {
+            MPDprogressive_sequence = 1;
+            MPDprogressive_frame = 1;
+            MPDpicture_structure = 3;
+            MPDframe_pred_frame_dct = 1;
+            MPDmatrix_coefficients = 5;
+        }
+        MPDmb_width = (MPDhorizontal_size + 15) / 16;
+        MPDmb_height = (MPDbase.MPEG2_Flag && !MPDprogressive_sequence) ? 2 * ((MPDvertical_size + 31) / 32)
+                                                                        : (MPDvertical_size + 15) / 16;
+        MPDcoded_picture_width = 16 * MPDmb_width;
+        MPDcoded_picture_height = 16 * MPDmb_height;
+        MPDchroma_width = MPDcoded_picture_width >> 1;
+        MPDchroma_height = MPDcoded_picture_height >> 1;
+        count = m_decoder->m_frameCount + 2;
+        for (i = 0; i < count; i++) {
+            MPC_FRAME* frame = MPC_FRAME::Create(MPDcoded_picture_width, MPDcoded_picture_height);
+            m_free.AddHead(frame);
+        }
+    }
+    Decode_Picture(this, m_chunksRead);
+    if (m_stopped) {
+        if (0.0 == MPDframe_rate)
+            MPDframe_rate = 30.0;
+        if (!MPDprogressive_sequence && MPDprogressive_frame == 1)
+            MPDframe_rate *= 0.8f;
+    }
 }

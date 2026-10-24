@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x801043cc",
-      "size": 1620,
+      "size": 2220,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fc84",
-      "size": 24,
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016a00",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -98,19 +98,100 @@
       "address": "0x8010481c",
       "size": 516,
       "binding": 1
+    },
+    {
+      "name": "LowLevelDecodeChunk__18MPC_CODEC_INTERNALFPQ24RCMP5CHUNK",
+      "address": "0x80104a20",
+      "size": 600,
+      "binding": 1
     }
   ],
   "externals": {
+    "Decode_Picture__FP18MPC_CODEC_INTERNALi": "0x80100950",
     "GetChunk__Q24RCMP7DECODERFv": "0x801052b0",
-    "LowLevelDecodeChunk__18MPC_CODEC_INTERNALFPQ24RCMP5CHUNK": "0x80104a20",
-    "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK": "0x80105280"
+    "Get_Hdr__Fv": "0x80100698",
+    "Initialize_Buffer__FPUc": "0x800fd7bc",
+    "MEM_fill": "0x80150db4",
+    "MPDbase": "0x80314e58",
+    "MPDchroma_height": "0x8034edf8",
+    "MPDchroma_width": "0x8034edf4",
+    "MPDcoded_picture_height": "0x8034edf0",
+    "MPDcoded_picture_width": "0x8034edec",
+    "MPDframe_pred_frame_dct": "0x8034ee98",
+    "MPDframe_rate": "0x8034ee20",
+    "MPDhorizontal_size": "0x8034ee08",
+    "MPDld": "0x8034ef30",
+    "MPDmatrix_coefficients": "0x8034ee64",
+    "MPDmb_height": "0x8034ee14",
+    "MPDmb_width": "0x8034ee10",
+    "MPDpicture_structure": "0x8034ee90",
+    "MPDprogressive_frame": "0x8034eeac",
+    "MPDprogressive_sequence": "0x8034ee40",
+    "MPDvertical_size": "0x8034ee0c",
+    "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK": "0x80105280",
+    "__dl__9MPC_FRAMEFPv": "0x80104d00",
+    "__dt__Q24RCMP5FRAMEFv": "0x80104cb4",
+    "__dt__Q24RCON19TDLNODE<9MPC_FRAME>Fv": "0x80104c78",
+    "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "MPDchroma_height",
+    "MPDchroma_width",
+    "MPDcoded_picture_height",
+    "MPDcoded_picture_width",
+    "MPDframe_pred_frame_dct",
+    "MPDframe_rate",
+    "MPDhorizontal_size",
+    "MPDld",
+    "MPDmatrix_coefficients",
+    "MPDmb_height",
+    "MPDmb_width",
+    "MPDpicture_structure",
+    "MPDprogressive_frame",
+    "MPDprogressive_sequence",
+    "MPDvertical_size"
+  ],
   "original_file": "rcmp_mpc_codec.cpp",
-  "original_file_index": 10240
+  "original_file_index": 10240,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 19,
+      "address": "0x8017ac40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 1,
+      "address": "0x80351314"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80351318"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351320"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80351328"
+    }
+  ]
 }
