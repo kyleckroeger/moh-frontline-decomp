@@ -1,4 +1,6 @@
-// A fragment of stretch.c (0x80166dd8..0x801671b0): stretch, which produces
+// A fragment of stretch.c (0x80166ca0..0x801671b0): stretchframesneeded,
+// which counts the input frames the time-stretch filter needs for a number of
+// output frames (simulating determineaction over the available frames); stretch, which produces
 // the time-stretch filter's output from its pending frames and then from the
 // input through determineaction/applyaction, carrying a frame over when the
 // last action stretched; SFILTER_timestretchsetratio (the ratio in 1/4096
@@ -9,8 +11,9 @@
 // rest of the output is cleared); and SFILTER_timestretchinit (the header's
 // frame size and available count, the voice's packet handle or -1). The
 // filter-chain fields (process, input, the byte passed on) follow the other
-// SFILTER states. stretchframesneeded before it is drafted in
-// scratch/lib/stretch_wip.c (its final clamp compiles to a different idiom). Compiled as C++ like the rest of the
+// SFILTER states (stretchframesneeded's final clamp is written
+// 'carried >= needed ? 0 : needed - carried', the form that gives the
+// original's compare idiom). Compiled as C++ like the rest of the
 // sound library. The names come from the symbols; the state layout is inferred
 // and its fields are named by offset.
 struct TIMESTRETCHSTATE {
@@ -38,10 +41,61 @@ void applyaction(TIMESTRETCHSTATE*, float**, int);
 extern "C" void SNDI_memcpy(void*, const void*, int);
 extern "C" void* memset(void*, int, unsigned long);
 extern "C" int SNDPKTPLAY_framesoutstanding(int);
-int stretchframesneeded(void*, int);
 int SNDDRV_getmastervoice(int);
 int SNDPKTPLAYI_voicetopackethandle(int);
 int SNDI_getb(void*, int);
+
+int stretchframesneeded(void* handle, int frames) {
+    TIMESTRETCHSTATE* state = (TIMESTRETCHSTATE*)handle;
+    int consumed;
+    int action;
+    int produced;
+    int needed;
+    int available;
+    int remaining;
+    unsigned char* pointer;
+    float value;
+
+    if (frames <= state->m_pending)
+        return 0;
+    available = state->m_available;
+    remaining = frames - state->m_pending;
+    needed = 0;
+    action = 0;
+    pointer = state->m_1c;
+    value = state->m_28;
+    while (remaining > 0) {
+        if (available < state->m_framesize)
+            break;
+        if (available < state->m_framesize * 2)
+            produced = 0;
+        else
+            produced = determineaction(state->m_framesize, state->m_24, &pointer, &value);
+        action = produced;
+        if (produced >= 0) {
+            consumed = state->m_framesize;
+            produced = consumed + produced;
+        } else {
+            consumed = state->m_framesize * 2;
+            produced += consumed;
+        }
+        needed += consumed;
+        available -= consumed;
+        if (remaining <= produced)
+            remaining = 0;
+        else
+            remaining -= produced;
+    }
+    if (action > 0)
+        needed += state->m_framesize;
+    if (remaining > 0) {
+        if (remaining > available)
+            needed += available;
+        else
+            needed += remaining;
+    }
+    return state->m_carried >= needed ? 0 : needed - state->m_carried;
+}
 
 int stretch(void* handle, int frames, float* in, float* out) {
     TIMESTRETCHSTATE* state = (TIMESTRETCHSTATE*)handle;

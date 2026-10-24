@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80166dd8",
-      "size": 984,
+      "address": "0x80166ca0",
+      "size": 1296,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "stretchframesneeded__FPvi",
+      "address": "0x80166ca0",
+      "size": 312,
+      "binding": 1
+    },
     {
       "name": "stretch__FPviPfPf",
       "address": "0x80166dd8",
@@ -80,8 +86,7 @@
     "_savegpr_27": "0x80138a10",
     "applyaction__FP16TIMESTRETCHSTATEPPfi": "0x80166b30",
     "determineaction__FifPPUcPf": "0x8016695c",
-    "memset": "0x80009410",
-    "stretchframesneeded__FPvi": "0x80166ca0"
+    "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
