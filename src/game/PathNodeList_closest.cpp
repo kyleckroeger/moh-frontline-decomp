@@ -1,4 +1,10 @@
-// A fragment of PathNodeList.cpp (0x800552e8): CPathNodeList::GetClosestNode
+// A fragment of PathNodeList.cpp (0x800550d8): CPathNodeList's
+// GreedySearchAwayFromPoint starts at the node closest to the position and
+// keeps moving to the neighbour farthest from the point to avoid while that
+// is farther and the distance is still below the wanted one, returning the
+// node reached when it is far enough (else none); the node's neighbour count
+// (+16) and neighbour indices (+20) are inferred, as is the pointer through
+// which it copies and measures each position. CPathNodeList::GetClosestNode
 // (position, ignore collision) looks up the path-node map entry for the
 // position's 5-unit grid cell (the cell's key packs the y and x cell indices,
 // offset by 16384, as 15-bit fields) and returns the closest enabled node of
@@ -37,10 +43,14 @@ public:
         z = z_;
     }
 
+
     float GetDistance(const CAIFilterRealPosition& other) const {
-        float dz = z - other.z;
-        float dy = y - other.y;
-        float dx = x - other.x;
+        float dy;
+        float dz;
+        float dx;
+        dx = x - other.x;
+        dy = y - other.y;
+        dz = z - other.z;
         return sqrtf(dx * dx + dy * dy + dz * dz);
     }
 
@@ -66,10 +76,12 @@ public:
 class CPathNode {
 public:
     CAIFilterRealPosition m_position;
-    unsigned char unknown0c[5];
+    unsigned char unknown0c[4];
+    unsigned char m_neighbourCount;
     unsigned char m_enabled : 1;
     unsigned char m_flags : 7;
-    unsigned char unknown12[6];
+    unsigned char unknown12[2];
+    unsigned short* m_neighbours;
 };
 
 namespace dwi {
@@ -132,11 +144,41 @@ public:
     }
 
     CPathNode* GetPathNodeByID(int) const;
+    CPathNode* GreedySearchAwayFromPoint(const CAIFilterRealPosition&, const CAIFilterRealPosition&, float) const;
 
     static dwi::hash_map<unsigned int, PathNodes> s_pathNodeMap;
 
     CPathNode* m_nodes;
 };
+
+CPathNode* CPathNodeList::GreedySearchAwayFromPoint(const CAIFilterRealPosition& from,
+                                                    const CAIFilterRealPosition& away, float distance) const {
+    CPathNode* node = GetClosestNode(from, false);
+    if (!node)
+        return 0;
+    CAIFilterRealPosition position = node->m_position;
+    CAIFilterRealPosition* p = &position;
+    float best = p->GetDistance(away);
+    bool moved = true;
+    while (best < distance && moved) {
+        moved = false;
+        unsigned short* neighbour = node->m_neighbours;
+        unsigned short* end = neighbour + node->m_neighbourCount;
+        for (; neighbour < end; neighbour++) {
+            CPathNode* other = &m_nodes[*neighbour];
+            *p = other->m_position;
+            float d = p->GetDistance(away);
+            if (d > best) {
+                best = d;
+                node = other;
+                moved = true;
+            }
+        }
+    }
+    if (best >= distance)
+        return node;
+    return 0;
+}
 
 CPathNode* CPathNodeList::GetClosestNode(const CAIFilterRealPosition& position, bool ignoreCollision) const {
     dwi::hash_map<unsigned int, PathNodes>::iterator it = s_pathNodeMap.find(MakeKey(position));

@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800552e8",
-      "size": 1208,
+      "address": "0x800550d8",
+      "size": 1736,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000abbc",
-      "size": 16,
+      "address": "0x8000abb4",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011d20",
-      "size": 24,
+      "address": "0x80011d14",
+      "size": 36,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionb",
       "address": "0x800552e8",
       "size": 580,
+      "binding": 1
+    },
+    {
+      "name": "GreedySearchAwayFromPoint__13CPathNodeListCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionf",
+      "address": "0x800550d8",
+      "size": 528,
       "binding": 1
     },
     {
@@ -96,31 +102,31 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034faf0"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
-      "address": "0x8034faf4"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 4,
       "address": "0x8034fafc"
     },
     {
       "section": ".sdata2",
-      "offset": 16,
+      "offset": 8,
       "size": 8,
       "address": "0x8034fb00"
     },
     {
       "section": ".sdata2",
-      "offset": 24,
+      "offset": 16,
       "size": 8,
       "address": "0x8034fb08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034faf0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034faf4"
     },
     {
       "section": ".sdata2",
