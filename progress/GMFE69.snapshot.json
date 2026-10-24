@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 981756,
+    "matching_code_bytes": 983116,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.40304205088182,
+    "percent": 69.49918420554062,
     "categories": {
-      "reconstructed_game": 751764,
+      "reconstructed_game": 753124,
       "restored_library": 229992
     },
-    "matching_functions": 4589
+    "matching_functions": 4590
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -440,7 +440,7 @@
     "config/GMFE69/bsbifunc_fog.json": "c8ae4a1fa92e445dbfc3a032e967e23e33893f9c25f8a1282cef08c881d5ee8d",
     "config/GMFE69/bsbifunc_getpropbyid.json": "b14f02bb4ac846ade09cad4f1a780851c2c1df8f39697db7c019e94bb426e942",
     "config/GMFE69/bsbifunc_givegrenade.json": "cb8671af1ad9780e1c867134e78c90263bba01e1c715c9318d49a01d1530372b",
-    "config/GMFE69/bsbifunc_grenade.json": "ca84cda832430ffc7421058e13825a397c4d09c1c1810410097305011fe0a47b",
+    "config/GMFE69/bsbifunc_grenade.json": "10210293a15d850d39c74fc16ffe78ebaae8ef6e3ceae545923ae47248cc9d2b",
     "config/GMFE69/bsbifunc_ground.json": "69e8185c13a7c676e7c10fdb8a5c04bdf98c4b45c6c4a3e1b02442d8cd6754ba",
     "config/GMFE69/bsbifunc_hier.json": "5ad8f3f13ab2ad46f21eaf8ae512b96c7c651be2bad28cd6f2ffd6f9c0b7e1ae",
     "config/GMFE69/bsbifunc_hierfire.json": "5acffe712f3dac159f46360d210f6ef078ecf0b63b42ce1208ed8c66d6b24556",
@@ -2595,7 +2595,7 @@
     "src/game/bsbifunc_fog.cpp": "fd522e0e8ab814781afcd161c73dce95a859d9b0a627aef98005b7c0d06585e4",
     "src/game/bsbifunc_getpropbyid.cpp": "57dcf007dce4181644197a6c235dade7eeeb6de36bc8d27bf8195fecc4e64084",
     "src/game/bsbifunc_givegrenade.cpp": "761516467a3d60b8231c64b5d1a74489b45f34a12dc4c057a70557f5c1afea00",
-    "src/game/bsbifunc_grenade.cpp": "9f251ff20340c4a4cbf44b06bbb6022221f3b8dbb8fc861fa6b3792233d60b51",
+    "src/game/bsbifunc_grenade.cpp": "afe29703fae268c5b17d9223ba552d9b1bf2504476ea5cd4dbf6c25c7837801f",
     "src/game/bsbifunc_ground.cpp": "66788db093b932478b7f56325762cb374c7d12d4bb6c88c98dbc85ba1fb88358",
     "src/game/bsbifunc_hier.cpp": "6382d0dd5086aede6ba386898d21e3739f60a1cb346345e24dba445cf382e678",
     "src/game/bsbifunc_hierfire.cpp": "c06e29b34c36d2783a0447174e19e53d3bd474d9276036b652e1a8fc3fc6d10a",
@@ -26843,8 +26843,8 @@
     {
       "id": "bsbifunc_grenade",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 1188,
+      "functions": 6,
+      "code_bytes": 2548,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -26876,8 +26876,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "fbec2dfa24bfccda5c31b52c81c409228068782dc1dc824b76cd9c66a94f7385",
-      "linked_sha256": "64e2d5d438c23f2bda3a65895ad3d209f8f8646c58d12c9741f516457f713e15"
+      "object_sha256": "a000625a6dbcc5add943fc46a28de89db47ba7fe53d76d2b7706c451df86daef",
+      "linked_sha256": "fdf5e440e08683e8197ecf8a4c0ff62107993f8ddf7781c9bc4793181435f399"
     },
     {
       "id": "bsbifunc_vibration",
@@ -54262,13 +54262,6 @@
             "size": 1028,
             "kind": "function",
             "name": "BIFunc_AddPlayerAmmo__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80027944",
-            "size": 1360,
-            "kind": "function",
-            "name": "BIFunc_GetSoundInfo__FPPiPv",
             "evidence": "exception-index"
           },
           {

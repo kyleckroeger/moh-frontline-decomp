@@ -11,6 +11,12 @@
 // GetWeaponType returns the type of the script object's player's current
 // weapon (kind 0, negative slot) or of a slot's weapon (kind 0) or of a weapon
 // slot by number (kind 2), -1 when the slot is empty, and 2 for other kinds.
+// GetSoundInfo takes a sound source (the script object's player, a soldier, the
+// script object's node, or the trigger's position) and returns information
+// about it: the azimuth from the first player, the distance from the first
+// player times 256, the current weapon's sound type, or the speed of the
+// script object's mechanism scaled to 220 (with a 0.16 offset in mission 4,
+// stage 2 of single player).
 // The functions, classes and globals are named by the mangled symbols;
 // ISceneNode is declared with its virtual functions in the order of
 // __vt__10ISceneNode (GetScriptObject at +96) and BSGO_Basic in the order of
@@ -18,15 +24,48 @@
 // +16500), weapon, thrown-grenade, script-data, script-object and built-in
 // record views, the slot and information helpers are inferred (members at their
 // offsets, names not original).
+/* The MSL inline sqrtf (three Newton steps from frsqrte). */
+extern inline float sqrtf(float x)
+{
+    const double _half = .5;
+    const double _three = 3.0;
+    volatile float y;
+    if (x > 0.0f)
+    {
+        double guess = __frsqrte((double)x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        guess = _half*guess*(_three - guess*guess*x);
+        y = (float)(x*guess);
+        return y ;
+    }
+    return x;
+}
+
 enum EClsnId {};
 class CCollision;
 class CDrawContext;
 class CMatrix;
-class CVector3;
+class CVector3 {
+public:
+    float LengthSq() const { return x * x + y * y + z * z; }
+    CVector3& operator-=(const CVector3& o) {
+        x -= o.x;
+        y -= o.y;
+        z -= o.z;
+        return *this;
+    }
+
+    float x;
+    float y;
+    float z;
+    float w;
+} __attribute__((aligned(8)));
 class CBullet;
 class CLight;
 class CPlayerObject;
 struct AIDoodadView;
+class CStaticObject;
 struct BSObjectView;
 
 class ISceneNode {
@@ -59,7 +98,7 @@ public:
     virtual void HandleBulletCollision(CBullet*, const CCollision&);
     virtual void* AsMovingNode();
     virtual const void* AsMovingNode() const;
-    virtual void* AsStaticObject();
+    virtual CStaticObject* AsStaticObject();
     virtual const void* AsStaticObject() const;
     virtual void* AsHierObject();
     virtual const void* AsHierObject() const;
@@ -95,6 +134,8 @@ struct WeaponPropertiesView {
 
 class CWeapon {
 public:
+    short GetWeaponSoundType() const;
+
     unsigned char unknown000[640];
     WeaponPropertiesView* m_properties;
     unsigned char unknown284[2];
@@ -124,6 +165,42 @@ public:
     int m_currentWeapon;
 };
 
+/* inferred: the moving state, speed values and velocity of a static object */
+class CStaticObject {
+public:
+    unsigned char unknown000[128];
+    float m_speedScale;
+    unsigned char unknown084[84];
+    float m_pathSpeed;
+    float m_pathSpeedMax;
+    unsigned char unknown0e0[36];
+    int m_moveState;
+    unsigned char unknown108[88];
+    CVector3 m_velocity;
+};
+
+class CScene {
+public:
+    ISceneNode* GetPlayer(int) const;
+
+    unsigned char unknown000[328];
+};
+
+extern CScene g_scene;
+
+class CShellMenu {
+public:
+    unsigned int Get_currentMission();
+    unsigned int Get_currentStage();
+
+    unsigned char unknown0000[6624];
+};
+
+extern CShellMenu g_Shell;
+extern bool g_bInMultiplayerMode;
+
+unsigned short GetAzimuth(CVector3, const CPlayerObject*);
+
 class CThrownBullet {
 public:
     void SomebodyCaughtYou();
@@ -146,8 +223,19 @@ public:
     virtual CPlayerObject* GetSceneNode();
 };
 
+struct TriggerCoreView {
+    unsigned char unknown00[16];
+    float position[3];
+};
+
+struct TriggerObject_struct {
+    unsigned int flags;
+    TriggerCoreView* core;
+};
+
 struct BSObjectView {
-    unsigned char unknown00[12];
+    unsigned char unknown00[8];
+    TriggerObject_struct* trigger;
     BSGO_Basic* user;
 };
 
@@ -261,4 +349,101 @@ void BIFunc_GetWeaponType(int** stack, void*) {
     }
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = *(int*)&value;
+}
+
+void BIFunc_GetSoundInfo(int** stack, void*) {
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    int info = *(*stack - (count - 1));
+    int source = *(*stack - (count - 2));
+    int result = 0;
+    CWeapon* weapon = 0;
+    CVector3 position;
+
+    switch (source) {
+    case 0: {
+        CPlayerObject* player = g_pBSObject->user->GetSceneNode();
+        ((ISceneNode*)player)->GetPosition(position);
+        weapon = player->GetCurrentWeapon();
+        break;
+    }
+    case 2: {
+        CPlayerObject* player = g_pBSObject->user->GetSceneNode();
+        ((ISceneNode*)player)->GetPosition(position);
+        weapon = player->m_weapons[player->m_currentWeapon];
+        break;
+    }
+    case 5:
+        ((ISceneNode*)g_pBSObject->user->GetSceneNode())->GetPosition(position);
+        break;
+    case 1: {
+        TriggerCoreView* core = g_pBSObject->trigger->core;
+        float x;
+        float y;
+        float z;
+        z = core->position[2];
+        y = core->position[1];
+        x = core->position[0];
+
+        position.x = x;
+        position.y = y;
+        position.z = z;
+        break;
+    }
+    }
+    switch (info) {
+    case 0: {
+        CPlayerObject* player = (CPlayerObject*)g_scene.GetPlayer(0);
+
+        result = GetAzimuth(position, player);
+        break;
+    }
+    case 1: {
+        ISceneNode* player = g_scene.GetPlayer(0);
+        CVector3 listener;
+
+        if (player) {
+            player->GetPosition(listener);
+        } else {
+            listener.x = listener.y = listener.z = 0.0f;
+        }
+        position -= listener;
+        result = 256.0f * sqrtf(position.LengthSq());
+        break;
+    }
+    case 2:
+        result = weapon->GetWeaponSoundType();
+        break;
+    case 3: {
+        CStaticObject* object = ((ISceneNode*)g_pBSObject->user->GetSceneNode())->AsStaticObject();
+
+        if (g_Shell.Get_currentMission() == 4 && g_Shell.Get_currentStage() == 2 && !g_bInMultiplayerMode) {
+            bool moving = false;
+
+            if (object->m_moveState != 0 && object->m_moveState != 1)
+                moving = true;
+            if (moving)
+                result = (0.16f + object->m_pathSpeed) * (220.0f / (0.16f + object->m_pathSpeedMax));
+            else {
+                float length = sqrtf(object->m_velocity.LengthSq());
+
+                result = length * (220.0f * object->m_speedScale);
+            }
+        } else {
+            bool moving = false;
+
+            if (object->m_moveState != 0 && object->m_moveState != 1)
+                moving = true;
+            if (moving)
+                result = object->m_pathSpeed * (220.0f / object->m_pathSpeedMax);
+            else {
+                float length = sqrtf(object->m_velocity.LengthSq());
+
+                result = length * (220.0f * object->m_speedScale);
+            }
+        }
+        break;
+    }
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    **stack = *(int*)&result;
 }
