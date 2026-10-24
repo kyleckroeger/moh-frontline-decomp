@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 991184,
+    "matching_code_bytes": 991748,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.06953339950175,
+    "percent": 70.10940411658085,
     "categories": {
-      "reconstructed_game": 761192,
+      "reconstructed_game": 761756,
       "restored_library": 229992
     },
-    "matching_functions": 4604
+    "matching_functions": 4605
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -551,7 +551,7 @@
     "config/GMFE69/cdbobject_fastvec_frame.json": "c7c0aef6f1061beabc6befe68adc31b254e9e9ca48aba67596469b6ff26f8d55",
     "config/GMFE69/cdbobject_fastvec_push.json": "12c5e895a7e0faa4caca9a275cdf882801a443f0641923de87797c12dfcbaac8",
     "config/GMFE69/cdbobject_intersect.json": "5de593a87a82359e6d9970843478881c4cfa92d8a4fd89f0d691b97618a5a57a",
-    "config/GMFE69/cdbobject_leaf.json": "bcdd152fdf0120812550ad10d1d8bc9adc997c4c69f618bf5efb7bab4702eda2",
+    "config/GMFE69/cdbobject_leaf.json": "7957dc8cf020a408acefdb9935b09237b6d1fe2c141214ae2f108c55018dbad3",
     "config/GMFE69/cdbobject_line.json": "91bd47e7a562d0b8378533ea53f11df8c56f5a4050726c04a7d0025b3409432d",
     "config/GMFE69/cdbobject_offsetptr.json": "0d67bbd2cab2036cd652831eb2cba088e30e569df1f5f590bd8e026e668b60ee",
     "config/GMFE69/cdbobject_trigroups.json": "ec60037e9618ecdf748229cab7146cd3e9602771a162601c8783a706cf69dd37",
@@ -2707,7 +2707,7 @@
     "src/game/cdbobject_fastvec_frame.cpp": "9f947ad7df978b4824e4737faa6dbaf33099696156626f7a76987bd700c26c33",
     "src/game/cdbobject_fastvec_push.cpp": "6abcdba878a5a14d4779d4ebc0465753ea88c4fae7ff78a928c57c895e66ffc0",
     "src/game/cdbobject_intersect.cpp": "acb603d61819a02fa98ca169f117f9158843ca773003b5276d6773fc3c470768",
-    "src/game/cdbobject_leaf.cpp": "a175af7e99c711fae80ce84c91460f3929cfe989a1d37b7c7cc18190ca2cd311",
+    "src/game/cdbobject_leaf.cpp": "c782e229306e88a14918ff585632511c18809a438356b62645ff34a9cd19b38e",
     "src/game/cdbobject_line.cpp": "9a1aca01d57b33016c9bee73e665ee19bac161dca1e16b28ce4a1f094c76c3f1",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
     "src/game/cdbobject_trigroups.cpp": "2e29ea03b9abd26f9516a3b7a0f3d2d8787ccea9d1791c946c0e7228c6cc7ac2",
@@ -38649,8 +38649,8 @@
     {
       "id": "cdbobject_leaf",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 1008,
+      "functions": 5,
+      "code_bytes": 1572,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38682,8 +38682,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "fd58d1f0096f6757d39c389de793b4d326d7753021dd16a9848d0f6922bfbfb7",
-      "linked_sha256": "7cb230ee931235b03bb9bad463d9fc5e79dcbaf14673f8271654ebe5588d35ac"
+      "object_sha256": "1238395d094bb5bad7b0acab54ecb936ee3614ab382db2f93768cf6294287763",
+      "linked_sha256": "6adb258257ceccfd2eaeade316c806e6a857df7b259d3786d5b291c5884a179c"
     },
     {
       "id": "cdbobject_intersect",
@@ -55422,13 +55422,6 @@
             "kind": "function",
             "name": "TestCDBBranchNodeCollision<7CVolBox>__10CCDBObjectCFRC13CDBBranchNodeRC7CVolBoxR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007287c",
-            "size": 564,
-            "kind": "function",
-            "name": "GetDistanceFromPlane__FRC6CPlaneRC11CVolCapsule",
-            "evidence": "local-file-symbol"
           }
         ]
       },

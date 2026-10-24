@@ -39,34 +39,42 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80072ab0",
-      "size": 1008,
+      "address": "0x8007287c",
+      "size": 1572,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ba6c",
-      "size": 96,
+      "address": "0x8000ba44",
+      "size": 136,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 104,
+      "linked_size": 152,
       "stripped_objects": [
-        "@73"
+        "@75",
+        "@146"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x80012a10",
-      "size": 48,
+      "address": "0x80012a04",
+      "size": 60,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 60,
+      "linked_size": 84,
       "stripped_objects": [
-        "@74"
+        "@76",
+        "@147"
       ]
     }
   ],
   "functions": [
+    {
+      "name": "GetDistanceFromPlane__FRC6CPlaneRC11CVolCapsule",
+      "address": "0x8007287c",
+      "size": 564,
+      "binding": 0
+    },
     {
       "name": "TestCDBLeafNodeCollision<15CAnimatedVolume>__10CCDBObjectCFRC11CDBLeafNodeRC15CAnimatedVolumeR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>",
       "address": "0x80072da4",
@@ -93,6 +101,8 @@
     }
   ],
   "externals": {
+    "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetRadius__10CVolSphereCFv": "0x800cba28",
     "OSGetTick": "0x80116a58",
     "TestCollision__10CCDBVolBoxCFRC10CVolSphereR10CCollisionb": "0x8006f590",
     "TestCollision__10CCDBVolBoxCFRC11CVolCapsuleR10CCollisionb": "0x8006f53c",
@@ -101,8 +111,12 @@
     "__ct__10CCDBVolBoxFRC6CDBBox": "0x8006f738",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CCDBVolBoxFv": "0x8006a620",
+    "__dt__10CVolSphereFv": "0x800cbb24",
     "__dt__7CVolBoxFv": "0x800c5458",
-    "__vt__10CCDBVolBox": "0x80183978"
+    "__dt__7IVolumeFv": "0x8001c078",
+    "__vt__10CCDBVolBox": "0x80183978",
+    "__vt__10CVolSphere": "0x801896b4",
+    "__vt__7IVolume": "0x80181e28"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -113,6 +127,18 @@
   "original_file": "cdbobject.cpp",
   "original_file_index": 3304,
   "weak_duplicates": [
-    "__dt__10CCDBVolBoxFv"
+    "__dt__10CCDBVolBoxFv",
+    "__dt__7IVolumeFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fd98"
+    }
   ]
 }
