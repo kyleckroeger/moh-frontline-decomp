@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80078df8",
-      "size": 852,
+      "address": "0x80078a3c",
+      "size": 1808,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000be60",
-      "size": 24,
+      "address": "0x8000be58",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012d64",
-      "size": 36,
+      "address": "0x80012d58",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetVolume__19CLightVolumeManagerFv",
+      "address": "0x80078a3c",
+      "size": 956,
+      "binding": 1
+    },
     {
       "name": "RemoveVolume__19CLightVolumeManagerFP14BPDLightVolume",
       "address": "0x80078df8",
@@ -96,12 +102,17 @@
   ],
   "externals": {
     "GetDefaultLightVolume__6CLightFv": "0x800785a4",
-    "__dl__FPv": "0x8001ca2c"
+    "__dl__FPv": "0x8001ca2c",
+    "g_BlendLightVolume": "0x80184550",
+    "g_BlendLights": "0x80184490"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_BlendLightVolume",
+    "g_BlendLights"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "lightvolman.cpp",
@@ -114,13 +125,31 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034fe98"
+      "address": "0x8034fe9c"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x8034fe9c"
+      "address": "0x8034fe98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fea0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fea8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034feb0"
     }
   ]
 }

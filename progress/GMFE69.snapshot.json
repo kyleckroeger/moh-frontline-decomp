@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 967552,
+    "matching_code_bytes": 968508,
     "total_executable_code_bytes": 1414572,
-    "percent": 68.39892207678365,
+    "percent": 68.46650435608792,
     "categories": {
-      "reconstructed_game": 737560,
+      "reconstructed_game": 738516,
       "restored_library": 229992
     },
-    "matching_functions": 4574
+    "matching_functions": 4575
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -732,7 +732,7 @@
     "config/GMFE69/light_rows.json": "b1e2d208b2efeb78c81fb9a601b42cdb105ad6470af43234fd1d07b362395e31",
     "config/GMFE69/light_statics.json": "1b14f80f66c67075d273465925b3b2426476bc4986e1cede458be968faead1b6",
     "config/GMFE69/light_visible.json": "8c836e812fe34c340bb43e1008bd7983aa6c949f63d6d4772676498915b7a608",
-    "config/GMFE69/lightvolman_volumes.json": "489a0c1d9926aea9e3610fd3ba81fe1286ba5167f883de60f30440b79682491c",
+    "config/GMFE69/lightvolman_volumes.json": "273113aa2d40195f293de05fda7421cb37c353353da06848acf6642956ad216c",
     "config/GMFE69/line.json": "4c909b09d3890aa1b14d3e08b8685227c16a8bb5dea5bdf96541e31260483913",
     "config/GMFE69/loadelf.json": "3e6c069028434cecfead5071921a89f51ef2e6d1d0370f69f5ec01db854a6f82",
     "config/GMFE69/locatbig.json": "951de0b6c115be49b7755a129307e91c30deb6c630ba9c49821cf71f0db076f0",
@@ -2821,7 +2821,7 @@
     "src/game/light_rows.cpp": "ee305d6a4bbdcda116b02c0c3b0c0665b2487928f78c5472c8e50ee310d03f88",
     "src/game/light_statics.cpp": "3b668c751c5611c7fcb137dca194e5abf94fac42d94cf7ec498be79b9b11f1eb",
     "src/game/light_visible.cpp": "1aff95e093197ccb9edc92eb0c3b9a76e3b409725a66d9992627ca3f1bfaaca5",
-    "src/game/lightvolman_volumes.cpp": "ca1de68080816c505892075c8531e52e45e8754d51d7ee36fed81f6915c88496",
+    "src/game/lightvolman_volumes.cpp": "5261152d5cc4b0e16210cb7ce143ad63ffcdff2aa02f7df097bfaee578575ea5",
     "src/game/line.cpp": "f05fc7e4c6eb1fd503d92bae6f4efc5139d79ca0ce1b9a8f4dda4f472de8b940",
     "src/game/loadelf.cpp": "9decbe9395499ba51bd97defcfb741e00b906e9de4229451b9876c4eef8f1c2f",
     "src/game/location_collision.cpp": "f1a62ea2763f552fee804adca73ebbde64080dfca79eb763f963947d9dc48d7e",
@@ -42191,8 +42191,8 @@
     {
       "id": "lightvolman_volumes",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 852,
+      "functions": 7,
+      "code_bytes": 1808,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42224,8 +42224,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "783db5678ee8abba0ed8df76b2a3d95db4ad6d5882bdc8c40df7469d73374cff",
-      "linked_sha256": "7ab28f84738e8c0e0c01aca175da0326b48c3a96bf84db5212bfc6fc62e61f10"
+      "object_sha256": "0e6934fec7d05fc5fc868156a1e1b502bbaf6063f237e0a4a155b1dc5ca677f4",
+      "linked_sha256": "271d821b48b426046d2c25fd285027fdec9c3b4f1e45558d5556bf054d3fc309"
     },
     {
       "id": "AIFilter_tank_update",
@@ -55268,20 +55268,6 @@
             "size": 544,
             "kind": "function",
             "name": "SetDefaultLight__6CLightFQ26CLight14EDefaultLights8CVector36CColorf",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/lightvolman.cpp [symbol evidence]",
-        "file_record": 67,
-        "file_name": "lightvolman.cpp",
-        "ranges": [
-          {
-            "address": "0x80078a3c",
-            "size": 956,
-            "kind": "function",
-            "name": "GetVolume__19CLightVolumeManagerFv",
             "evidence": "exception-index"
           }
         ]
