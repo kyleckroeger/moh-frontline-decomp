@@ -1229,7 +1229,8 @@
     "UserInterface_hitstatus.json",
     "animemot_getframe.json",
     "UserInterface_radar.json",
-    "player_constrain.json"
+    "player_constrain.json",
+    "fiber_point.json"
   ],
   "progress": {
     "code_bytes": 1414572,
