@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 989212,
+    "matching_code_bytes": 989552,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.9301272752465,
+    "percent": 69.95416281391121,
     "categories": {
-      "reconstructed_game": 759220,
+      "reconstructed_game": 759560,
       "restored_library": 229992
     },
-    "matching_functions": 4601
+    "matching_functions": 4602
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -381,7 +381,7 @@
     "config/GMFE69/ansi_files.json": "fd2d4cda0d125e73920f67f3d75171b2abd9967c8c4e9fcc3f024baba54e119e",
     "config/GMFE69/ansi_fp.json": "a0ef64e95f9c4bdc4bb31bbfa57bd7af88bd31f24fec8fad5c9aef7cfcfc2427",
     "config/GMFE69/ar.json": "f7bf6b4079ed418edeb4c95ff15f08f4450ac1e184d58dd1af945665137df3c2",
-    "config/GMFE69/aramalloc.json": "235854529e9a9b820a58088862e13a6bc1a4bbaaa4e00117f8f253b948790932",
+    "config/GMFE69/aramalloc.json": "c126b56b9672d1b194c707e6114512e01109bed9af438c84babc77fd64f52057",
     "config/GMFE69/aramalloc_alloc.json": "ce8fb7bffa9d906bafb1f3f02e8e2c7e03033ed9c353f75ba5af9cb0aad75b42",
     "config/GMFE69/arq.json": "53c9d956d7cd2b69c858816128443494613f46b3ad680d5056ae00227df49900",
     "config/GMFE69/attachobject.json": "f1dba5b780266dae3fa6be9077f76b2792d4882b9c747d6fd6e411030cad3a34",
@@ -2028,7 +2028,7 @@
     "src/ea/SNDI_root1x.c": "7f9b7d5d12060bfbf3592c216c854befc5946190765109b0ca053b8aaea27759",
     "src/ea/SNDI_sin.c": "b60cf7dd7e0f9c570a0b4a2a6dd05db4729472fec2d2beb6e8fe4063c5010cd2",
     "src/ea/abortmsg.cpp": "3dab94dd43cec779c87131efbfc0ee283cfd1b5768c02976f4370f4eb1787055",
-    "src/ea/aramalloc.cpp": "ae6e2a344884e975802456d92a5c6c5cb6f67e750a33b71fd3897921d03471db",
+    "src/ea/aramalloc.cpp": "40ac4a3562a9b69ff88d2a76d2e2bbd4fa2f4042ff8def64cb56f261816d205b",
     "src/ea/aramalloc_alloc.cpp": "d612e99068713841c6133bc938729f1ff118940d943a7f35e985af487ee885cc",
     "src/ea/bmem.cpp": "52aa41325f9f9200d4e9ddc252ca99a55b4040b928b87283b7b226ddb2ad0e87",
     "src/ea/coda.cpp": "74b5cc425b4854acc7492acc32278c5de4dd9d9f0508a4905040ab1d94425884",
@@ -16976,8 +16976,8 @@
     {
       "id": "aramalloc",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 116,
+      "functions": 2,
+      "code_bytes": 456,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17009,8 +17009,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "097ab4374600d30231c965763b6ad321bbbffa670071f72884c44272ae9d3ed9",
-      "linked_sha256": "a8061df76d921f228d0b134c1ca69c504bd2b3580ac676e2214327d98278bfa9"
+      "object_sha256": "5801318eaa3980d6731ccd3f0a7834fa0d3c6023467833ce71a445c4830a4ac6",
+      "linked_sha256": "2266716902b13316614ede12587faf403569a78c82c1a64d9f3d7ff99cc101a2"
     },
     {
       "id": "bsmachin",
@@ -57558,17 +57558,10 @@
         ]
       },
       {
-        "name": "Unmatched files/aramalloc.cpp [symbol evidence]",
+        "name": "Unmatched files/aramalloc.cpp [local symbols only]",
         "file_record": 395,
         "file_name": "aramalloc.cpp",
         "ranges": [
-          {
-            "address": "0x80150260",
-            "size": 340,
-            "kind": "function",
-            "name": "ARAM_NEW_pool",
-            "evidence": "between-same-file"
-          },
           {
             "address": "0x801503b4",
             "size": 712,

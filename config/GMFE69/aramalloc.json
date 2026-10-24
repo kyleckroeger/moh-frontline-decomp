@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801501ec",
-      "size": 116,
+      "size": 456,
       "type": 1
     }
   ],
@@ -48,12 +48,22 @@
       "address": "0x801501ec",
       "size": 116,
       "binding": 1
+    },
+    {
+      "name": "ARAM_NEW_pool",
+      "address": "0x80150260",
+      "size": 340,
+      "binding": 1
     }
   ],
   "externals": {
     "MEM_alloc": "0x8014f7dc",
     "NEW_BPoolMan": "0x8014ff44",
-    "mb_default": "0x8034f3c0"
+    "PRINT_string": "0x801516e0",
+    "_restgpr_26": "0x80138a58",
+    "_savegpr_26": "0x80138a0c",
+    "mb_default": "0x8034f3c0",
+    "strcpy": "0x80140040"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -64,5 +74,16 @@
     "mb_default"
   ],
   "original_file": "aramalloc.cpp",
-  "original_file_index": 12417
+  "original_file_index": 12417,
+  "pooled_sections": [
+    ".data"
+  ],
+  "pool_references": [
+    {
+      "section": ".data",
+      "offset": 0,
+      "size": 15,
+      "address": "0x80192e10"
+    }
+  ]
 }
