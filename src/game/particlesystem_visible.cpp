@@ -11,6 +11,10 @@
 // the file's .sdata2 pool. The virtuals are declared in table order up to
 // GetLocalToWorld (as in particlesystem_link.cpp); the destructor is declared
 // first, so the table stays elsewhere.
+#include <math.h>
+#undef fabs
+inline double fabs(double x) { return __fabs(x); }
+
 class CDmaTag;
 class CDmaPacket;
 
@@ -98,7 +102,7 @@ public:
     ISceneNode* m_camera;
 };
 
-bool IsBoxVisible(const CVolBox&, CDrawContext&);
+static bool IsBoxVisible(const CVolBox&, CDrawContext&);
 
 class CRenderBin {
     unsigned char unknown00[28]; /* members before the table pointer */
@@ -158,4 +162,53 @@ bool CParticleSystem::IsVisible(CDrawContext& context) {
     float dz = center.z - camera.z;
     m_cameraDistSq = dx * dx + dy * dy + dz * dz;
     return visible;
+}
+
+inline float Dot(const CVector3& a, const CVector3& b) {
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+
+/* Inferred: a vector scaled by a factor. */
+inline CVector3 Scale(float s, const CVector3& v) {
+    CVector3 r;
+    r.x = s * v.x;
+    r.y = s * v.y;
+    r.z = s * v.z;
+    return r;
+}
+
+/* Inferred: a frustum plane (normal first, distance at +16, 32 bytes). */
+struct FrustumPlaneView {
+    CVector3 normal;
+    float d;
+    unsigned char unknown14[12];
+
+    float Distance(CVector3 p) const { return Dot(normal, p) - d; }
+};
+
+static bool IsBoxVisible(const CVolBox& box, CDrawContext& context) {
+    CVector3 c = *(const CVector3*)&box.m_center;
+    CVector3 b0 = *(const CVector3*)&box.m_basis[0];
+    CVector3 b1 = *(const CVector3*)&box.m_basis[1];
+    CVector3 b2 = *(const CVector3*)&box.m_basis[2];
+    const FrustumPlaneView* plane = (const FrustumPlaneView*)((char*)context.m_camera + 0x150);
+    CVector3 a0;
+    a0.x = box.m_halfWidth * b0.x;
+    a0.y = box.m_halfWidth * b0.y;
+    a0.z = box.m_halfWidth * b0.z;
+    CVector3 a1;
+    a1.x = box.m_halfDepth * b1.x;
+    a1.y = box.m_halfDepth * b1.y;
+    a1.z = box.m_halfDepth * b1.z;
+    CVector3 a2;
+    a2.x = box.m_halfHeight * b2.x;
+    a2.y = box.m_halfHeight * b2.y;
+    a2.z = box.m_halfHeight * b2.z;
+    for (int i = 0; i < 6; i++) {
+        float r = (float)fabs(Dot(a0, plane->normal)) + (float)fabs(Dot(a1, plane->normal)) + (float)fabs(Dot(a2, plane->normal));
+        if (plane->Distance(c) > r)
+            return false;
+        plane++;
+    }
+    return true;
 }

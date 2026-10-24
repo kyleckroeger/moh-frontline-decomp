@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x8007f7ec",
-      "size": 440,
+      "size": 1020,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c118",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800130dc",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "IsBoxVisible__FRC7CVolBoxR12CDrawContext",
+      "address": "0x8007f9a4",
+      "size": 580,
+      "binding": 0
+    },
     {
       "name": "IsVisible__15CParticleSystemFR12CDrawContext",
       "address": "0x8007f7ec",
@@ -66,7 +72,6 @@
   ],
   "externals": {
     "InitClass__7CMatrixFv": "0x80090b78",
-    "IsBoxVisible__FRC7CVolBoxR12CDrawContext": "0x8007f9a4",
     "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
     "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
     "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
@@ -79,9 +84,7 @@
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "IsBoxVisible__FRC7CVolBoxR12CDrawContext"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
     "s_ClassInit__7CMatrix"
