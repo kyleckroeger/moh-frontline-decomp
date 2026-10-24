@@ -1228,7 +1228,8 @@
     "animated_volume_line.json",
     "UserInterface_hitstatus.json",
     "animemot_getframe.json",
-    "UserInterface_radar.json"
+    "UserInterface_radar.json",
+    "player_constrain.json"
   ],
   "progress": {
     "code_bytes": 1414572,
