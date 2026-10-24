@@ -30,7 +30,10 @@
 // Button marks it unassigned and clears trigger conflicts; HandleButtonPress
 // polls the four controllers per menu button (previous/next row, previous/
 // next choice skipping unavailable ones, accept, apply, restore the shell's
-// setting or its custom buttons, defaults). The data and the
+// setting or its custom buttons, defaults); HandleAnalogButtonPress polls
+// the two analog axes, accumulating each value and moving the selection or
+// its choice once the total passes 775 (resetting it inside the dead zone).
+// The data and the
 // functions are named by the symbols; the members, the views, the text table
 // helper, the drawing and conflict inlines and the comparison forms are
 // inferred. The code addresses the file's data from one base, so this unit
@@ -173,6 +176,7 @@ public:
     void RetrieveShellControllerButtons(char*, int);
     unsigned char Get_currentControllerSetting();
     void CopyControllerButtons(char*, int);
+    void PlayShellSound(int);
 
     unsigned char unknown0000[0x19dc];
 };
@@ -269,7 +273,9 @@ public:
     int m_selected;
     unsigned char unknown18[4];
     char m_rows[13];
-    unsigned char unknown29[11];
+    unsigned char unknown29[3];
+    float m_horzAccum; /* inferred: analog value-change accumulator */
+    float m_vertAccum; /* inferred: analog selection accumulator */
     int m_controllerSetting;
     int m_player;
     TextTableView* m_texts;
@@ -1091,5 +1097,81 @@ void CDualConfig::HandleButtonPress() {
         SetUpDefaultConfig(1);
         currConfigText[13] = 0;
         visualConfigText[13] = 0;
+    }
+}
+
+void CDualConfig::HandleAnalogButtonPress() {
+    float value;
+    int i;
+
+    // The dead 'value = 0.0f;' initialisations before the polls give the
+    // original's constant load order.
+    value = 0.0f;
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 138);
+        if (value)
+            break;
+    }
+    m_vertAccum += value;
+    if (value < -48.0f && value < -10.0f) {
+        if (m_vertAccum < -775.0f) {
+            visualConfigText[m_selected] = currConfigText[m_selected];
+            m_selected--;
+            m_vertAccum = 0.0f;
+            g_Shell.PlayShellSound(0);
+        }
+    } else if (value > 48.0f && value > 10.0f) {
+        if (m_vertAccum > 775.0f) {
+            visualConfigText[m_selected] = currConfigText[m_selected];
+            m_selected++;
+            m_vertAccum = 0.0f;
+            g_Shell.PlayShellSound(0);
+        }
+    } else {
+        m_vertAccum = 0.0f;
+    }
+    value = 0.0f;
+    for (i = 0; i < 4; i++) {
+        value = g_inputMgr.GetValue(i, 137);
+        if (value)
+            break;
+    }
+    m_horzAccum += value;
+    if (value < -48.0f && value < -10.0f) {
+        if (m_horzAccum < -775.0f) {
+            char v = visualConfigText[m_selected];
+            v--;
+            if (v < 0)
+                v = 14;
+            visualConfigText[m_selected] = v;
+            if (m_selected != 13 && configArray[m_selected][v] == -1) {
+                int sel;
+                while (configArray[sel = m_selected][v] == -1) {
+                    v--;
+                    visualConfigText[sel]--;
+                }
+            }
+            m_horzAccum = 0.0f;
+            g_Shell.PlayShellSound(0);
+        }
+    } else if (value > 48.0f && value > 10.0f) {
+        if (m_horzAccum > 775.0f) {
+            char v = visualConfigText[m_selected];
+            v++;
+            if (v > 14)
+                v = 0;
+            visualConfigText[m_selected] = v;
+            if (m_selected != 13 && configArray[m_selected][v] == -1) {
+                int sel;
+                while (configArray[sel = m_selected][v] == -1) {
+                    v++;
+                    visualConfigText[sel]++;
+                }
+            }
+            m_horzAccum = 0.0f;
+            g_Shell.PlayShellSound(0);
+        }
+    } else {
+        m_horzAccum = 0.0f;
     }
 }

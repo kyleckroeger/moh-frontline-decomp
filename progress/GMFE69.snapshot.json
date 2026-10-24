@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 980872,
+    "matching_code_bytes": 981756,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.34054965035361,
+    "percent": 69.40304205088182,
     "categories": {
-      "reconstructed_game": 750880,
+      "reconstructed_game": 751764,
       "restored_library": 229992
     },
-    "matching_functions": 4588
+    "matching_functions": 4589
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -122,7 +122,7 @@
     "config/GMFE69/CARDWrite.json": "281660a172ac3b60419b0fb73f382239d55a0c22e81768890c98b0e0ca2bb817",
     "config/GMFE69/CPlusLibPPC.json": "7130e3e0ed13640ac092a923a5e6e634569f91e7222d5e00b557489223254e1d",
     "config/GMFE69/ConfigGC.json": "a2147d4f7c89ff0acf26b39d535dad3c534413416b09ea33f857c5d50d3d2d4e",
-    "config/GMFE69/ConfigGC_dualconfig.json": "144904ad5e168653d46fe731677002eadb4196e544c649e53bbc3ec433ee82d7",
+    "config/GMFE69/ConfigGC_dualconfig.json": "1ec1960ecb24f749b0732b4342b42f9c3682faa43b284cd4a184309935974956",
     "config/GMFE69/ConfigGC_init.json": "1fadf6b4ef092e458e5243e306fdba0430c39f8b8346cd8ac2ddf9bb83d9b658",
     "config/GMFE69/CoverPoint.json": "75a0001bdd6794082a1d93f6687efa6ca1d6711c4197cd9cc34cd972c214f1ed",
     "config/GMFE69/CoverPoint_invalidate.json": "8399819dc9162ea86a4c60e213f2ddafd4cb2924594f796b8c20e1ce94fc1e3c",
@@ -2351,7 +2351,7 @@
     "src/game/AnimObjFactory_head.cpp": "03bf356b727e62aff753fd4305b43c9aab1ebd04ceb7a11f46124aa5a2a6c26c",
     "src/game/AnimObjFactory_weapon.cpp": "9ec9a6161aaf4b4bcfb71a2148ed75509800652635de14f5e3c3d62790988db7",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
-    "src/game/ConfigGC_dualconfig.cpp": "a8026e0e3554139a8e724da7870b846d82fcc0e56df0062147b7408ec10d1ab5",
+    "src/game/ConfigGC_dualconfig.cpp": "523a4fd2e3bb0cde80e856cd958341bb35a80a3bad49e0e70e7fd1c1726667bc",
     "src/game/ConfigGC_init.cpp": "24eb95602d6b2ed814e752b8a8e103891c709c44f6b82d94d358f86095ad9853",
     "src/game/CoverPoint.cpp": "6543df862a43d1cff97aa960f9575641c6df1378c548eb06b7ffd5f33a201706",
     "src/game/CoverPoint_invalidate.cpp": "8b67e4bc5a727a2f9355f9fc3b74181e536f8a22cfec787ced70e235d3c01f98",
@@ -52917,8 +52917,8 @@
     {
       "id": "ConfigGC_dualconfig",
       "category": "reconstructed_game",
-      "functions": 15,
-      "code_bytes": 12768,
+      "functions": 16,
+      "code_bytes": 13652,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -52950,8 +52950,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5490cf817c4a1bdd498ad3e9cecb88eccd20db5b8cb446a58f463a36b617f2dd",
-      "linked_sha256": "42498f35d1f79013eba72af903b1f8150092efacec38bb90e7ff0d3067968cd5"
+      "object_sha256": "cb007198b799681582bc1c72c2a3ace0073834e111f20b376b23a62f3b572f56",
+      "linked_sha256": "a30c4a3e78e5a005318e7a4eea21eb454e57aec288dd02b16259df593958c165"
     },
     {
       "id": "world_volume_remove",
@@ -57054,20 +57054,6 @@
             "kind": "function",
             "name": "__sinit_dmmorph_cpp",
             "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/ConfigGC.cpp [symbol evidence]",
-        "file_record": 162,
-        "file_name": "ConfigGC.cpp",
-        "ranges": [
-          {
-            "address": "0x800fa98c",
-            "size": 884,
-            "kind": "function",
-            "name": "HandleAnalogButtonPress__11CDualConfigFv",
-            "evidence": "exception-index"
           }
         ]
       },
