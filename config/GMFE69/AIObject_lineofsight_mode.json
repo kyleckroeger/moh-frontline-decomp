@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80048564",
-      "size": 1120,
+      "size": 2220,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a6cc",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800117e0",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "IsTargetInLineOfSight__9CAIObjectFf",
+      "address": "0x800489c4",
+      "size": 1100,
+      "binding": 2
+    },
+    {
       "name": "CheckLineOfSightModeObject__9CAIObjectFv",
       "address": "0x800487b0",
       "size": 532,
@@ -73,7 +79,6 @@
   "externals": {
     "CheckVisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c370",
     "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
-    "IsTargetInLineOfSight__9CAIObjectFf": "0x800489c4",
     "MatchStatusList__9CAIStatusFP14aistatus_matchi": "0x80051cd0",
     "g_paioAIObjectListStart": "0x8034e8ec",
     "printf": "0x8013dc88"
@@ -116,24 +121,36 @@
     {
       "section": ".sdata2",
       "offset": 16,
+      "size": 8,
+      "address": "0x8034f850"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034f858"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
       "size": 4,
       "address": "0x8034f8b0"
     },
     {
       "section": ".sdata2",
-      "offset": 20,
+      "offset": 36,
       "size": 4,
       "address": "0x8034f8a0"
     },
     {
       "section": ".sdata2",
-      "offset": 24,
+      "offset": 40,
       "size": 4,
       "address": "0x8034f8a8"
     },
     {
       "section": ".sdata2",
-      "offset": 28,
+      "offset": 44,
       "size": 4,
       "address": "0x8034f8ac"
     }

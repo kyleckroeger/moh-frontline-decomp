@@ -1,5 +1,5 @@
 // A fragment of AIObject.cpp (0x80048564): CAIObject::CheckLineOfSightModeList,
-// then CAIObject::CheckLineOfSightModeObject.
+// CAIObject::CheckLineOfSightModeObject and CAIObject::IsTargetInLineOfSight.
 // CheckLineOfSightModeList takes the next object of the global AI object list
 // (from the last match at +1688, wrapping at the list start) whose status
 // matches the watch list (+1780, count +1828) and is not this object
@@ -17,7 +17,13 @@
 // IsObjectInLineOfSight (inlined; the body follows
 // AIObject_lineofsight_obj.cpp and is marked inline here so that it is not
 // emitted again) at the vision distance, halved for the flag at +1840 of the
-// object and times 0.75 when it is crouching. The classes and functions are
+// object and times 0.75 when it is crouching (here it takes the object, whose
+// position it reads, rather than the position: the address is not kept in a
+// register). IsTargetInLineOfSight (an inline member, weak in the original,
+// emitted after its caller) first tries the threat from the eye
+// position (+688, when there is an eye source at +656 and the flag at +704),
+// otherwise or failing that the inferred inline IsThreatInLineOfSight (the
+// same distance scaling for the threat). The classes and functions are
 // named by the symbols; the vtable is declared up to IsCrouching as in
 // AIObject_obstacle.cpp, and the members follow that unit and
 // AIObject_visionseek.cpp. The rest of the file is in other units.
@@ -103,7 +109,17 @@ public:
         }
     }
     bool IsTargetInLineOfSight(float);
-    bool IsObjectInLineOfSight(CAIFilterRealPosition&, float, bool);
+    bool IsObjectInLineOfSight(CAIObject*, float, bool);
+    bool IsObjectInLineOfSightFromEye(CAIFilterRealPosition&, float, bool);
+    bool IsThreatInLineOfSight(float distance) {
+        CAIObject* threat = m_threat;
+        float range = distance;
+        if (threat->m_unknown730)
+            range *= 0.5f;
+        if (threat->IsCrouching())
+            range *= 0.75f;
+        return IsObjectInLineOfSight(threat, range, threat->IsCrouching());
+    }
 
     CAIObject* m_next;
     CAIFilterObject* m_filter;
@@ -116,7 +132,13 @@ public:
     unsigned char unknown15c[84];
     unsigned long m_flags;
     CAIStatus m_status;
-    unsigned char unknown1b5[1251];
+    unsigned char unknown1b5[219];
+    void* m_eyeSource;
+    unsigned char unknown294[28];
+    CAIFilterRealPosition m_eyePosition;
+    unsigned char unknown2bc[4];
+    bool m_hasEye;
+    unsigned char unknown2c1[983];
     CAIObject* m_listObject;
     CAIObject* m_seekObject;
     unsigned char unknown6a0[56];
@@ -132,7 +154,7 @@ public:
     bool m_unknown731;
 };
 
-inline bool CAIObject::IsObjectInLineOfSight(CAIFilterRealPosition& position, float distance, bool low) {
+inline bool CAIObject::IsObjectInLineOfSight(CAIObject* other, float distance, bool low) {
     if ((m_flags & 8) == 8)
         return false;
     float range = distance;
@@ -140,7 +162,7 @@ inline bool CAIObject::IsObjectInLineOfSight(CAIFilterRealPosition& position, fl
         printf("Warning: IOIVD - Vision distance is zero, changing to default\n");
         range = 50.0f;
     }
-    if (!(m_position.GetDistanceXYZReal(position) <= range))
+    if (!(m_position.GetDistanceXYZReal(other->m_position) <= range))
         return false;
     CAIFilterRealVector3 unused;
     CAIFilterRealVector3 eye;
@@ -156,6 +178,40 @@ inline bool CAIObject::IsObjectInLineOfSight(CAIFilterRealPosition& position, fl
     for (int i = 0; i < count; i++) {
         CAIFilterRealPosition target;
         float y;
+        float z = other->m_position.z;
+        y = other->m_position.y;
+        float x = other->m_position.x;
+        target.x = x;
+        target.y = y;
+        target.z = z;
+        target.z += heights[i];
+        if (!CAIFilterGlobal::CheckVisionLineToEnvironment(eye, target, m_filter))
+            return true;
+    }
+    return false;
+}
+
+inline bool CAIObject::IsObjectInLineOfSightFromEye(CAIFilterRealPosition& position, float distance, bool low) {
+    if ((m_flags & 8) == 8)
+        return false;
+    float range = distance;
+    if (range <= 0.001f) {
+        printf("Warning: IOIVD - Vision distance is zero, changing to default\n");
+        range = 50.0f;
+    }
+    if (!(m_position.GetDistanceXYZReal(position) <= range))
+        return false;
+    float standing[2] = {0.8f, 1.2f};
+    float crouching[2] = {0.8f, 0.1f};
+    int count = 2;
+    float* heights = standing;
+    if (low) {
+        count = 2;
+        heights = crouching;
+    }
+    for (int i = 0; i < count; i++) {
+        CAIFilterRealVector3 target;
+        float y;
         float z = position.z;
         y = position.y;
         float x = position.x;
@@ -163,7 +219,7 @@ inline bool CAIObject::IsObjectInLineOfSight(CAIFilterRealPosition& position, fl
         target.y = y;
         target.z = z;
         target.z += heights[i];
-        if (!CAIFilterGlobal::CheckVisionLineToEnvironment(eye, target, m_filter))
+        if (!CAIFilterGlobal::CheckVisionLineToEnvironment(m_eyePosition, target, m_filter))
             return true;
     }
     return false;
@@ -180,7 +236,7 @@ CAIObject* CAIObject::CheckLineOfSightModeList() {
     if (object->IsCrouching())
         distance *= 0.75f;
     CAIObject* result;
-    if (IsObjectInLineOfSight(object->m_position, distance, object->IsCrouching()))
+    if (IsObjectInLineOfSight(object, distance, object->IsCrouching()))
         result = object;
     else if (object == start)
         result = 0;
@@ -214,9 +270,17 @@ CAIObject* CAIObject::CheckLineOfSightModeObject() {
             distance *= 0.5f;
         if (object->IsCrouching())
             distance *= 0.75f;
-        visible = IsObjectInLineOfSight(object->m_position, distance, object->IsCrouching());
+        visible = IsObjectInLineOfSight(object, distance, object->IsCrouching());
     }
     if (visible)
         return m_seekObject;
     return 0;
+}
+
+inline bool CAIObject::IsTargetInLineOfSight(float distance) {
+    if (m_eyeSource && m_hasEye) {
+        bool visible = IsObjectInLineOfSightFromEye(m_threat->m_position, distance, m_threat->IsCrouching());
+        return visible || IsThreatInLineOfSight(distance);
+    }
+    return IsThreatInLineOfSight(distance);
 }
