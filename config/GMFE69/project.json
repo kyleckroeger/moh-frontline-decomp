@@ -1247,7 +1247,8 @@
     "capsule_capsule.json",
     "light_propertyanim_update.json",
     "particlesystem_create.json",
-    "particlesystem_texturebin_dtor.json"
+    "particlesystem_texturebin_dtor.json",
+    "world_volume_list_reserve.json"
   ],
   "progress": {
     "code_bytes": 1414572,
