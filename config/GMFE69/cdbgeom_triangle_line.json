@@ -1,0 +1,117 @@
+{
+  "id": "cdbgeom_triangle_line",
+  "source": "src/game/cdbgeom_triangle_line.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8006dac8",
+      "size": 1424,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b650",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012860",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "TestCollision__12CCDBTriangleCFRC6CLine3R10CCollisionPC6CDBTrib",
+      "address": "0x8006dac8",
+      "size": 1424,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "ClearContacts__10CCollisionFv": "0x800c74c8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
+  "original_file": "cdbgeom.cpp",
+  "original_file_index": 3230,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fd88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fd64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fd68"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fd70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034fd78"
+    }
+  ]
+}

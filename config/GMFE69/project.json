@@ -1242,7 +1242,8 @@
     "fiber_extents.json",
     "stagpat.json",
     "box_visibility.json",
-    "pathx_create.json"
+    "pathx_create.json",
+    "cdbgeom_triangle_line.json"
   ],
   "progress": {
     "code_bytes": 1414572,
