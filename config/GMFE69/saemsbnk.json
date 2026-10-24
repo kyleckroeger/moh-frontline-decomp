@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80157778",
-      "size": 24,
+      "address": "0x80157088",
+      "size": 1800,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDAEMSI_updateplayerbank__FP21AEMSCOMPDYNAMICPLAYER",
+      "address": "0x80157088",
+      "size": 1776,
+      "binding": 1
+    },
     {
       "name": "SNDAEMS_linkbank__Fv",
       "address": "0x80157778",
@@ -51,8 +57,25 @@
     }
   ],
   "externals": {
-    "SNDAEMSI_updateplayerbank__FP21AEMSCOMPDYNAMICPLAYER": "0x80157088",
-    "sndaems": "0x80340410"
+    "SNDBANK_play": "0x8015a628",
+    "SNDCTRL_drylevel": "0x8015ce00",
+    "SNDI_calcfxlevel__Fii": "0x8015ddc0",
+    "SNDPLATFORM_getcurframe__Fi": "0x8016c3e8",
+    "SNDPLATFORM_highpass__Fii": "0x8016c364",
+    "SNDPLATFORM_lowpass__Fii": "0x8016c270",
+    "SNDPLATFORM_set3dpos__Fi": "0x8016bdfc",
+    "SNDPLATFORM_setfxlevel__Fii": "0x8016dda0",
+    "SNDPLATFORM_setpitch__Fi": "0x8016c0a0",
+    "SNDPLATFORM_setvol__Fi": "0x8016bbbc",
+    "SNDPLATFORM_timemult__Fii": "0x8016c1e8",
+    "SNDVOICEI_get__Fi": "0x8015dd60",
+    "SNDplaysetdef": "0x8015d458",
+    "SNDstop": "0x8015d148",
+    "SNDtimeremaining": "0x8015d238",
+    "iSNDdivu64__F6SINT64i": "0x8015924c",
+    "iSNDmulu64__FUiUi": "0x801591dc",
+    "sndaems": "0x80340410",
+    "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
