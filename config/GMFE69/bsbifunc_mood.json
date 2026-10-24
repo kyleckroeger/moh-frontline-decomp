@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x80024448",
-      "size": 152,
+      "size": 3372,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009b54",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800106c4",
-      "size": 12,
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801828f4",
+      "size": 28,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -62,12 +69,19 @@
       "address": "0x80024448",
       "size": 152,
       "binding": 1
+    },
+    {
+      "name": "SetMood__14CSoldierObjectF9EMoodType",
+      "address": "0x800244e0",
+      "size": 3220,
+      "binding": 2
     }
   ],
   "externals": {
-    "SetMood__14CSoldierObjectF9EMoodType": "0x800244e0",
+    "SetMotionType__14CJawControllerF8EJawType": "0x8009c13c",
     "g_iCurrentBIFIndex": "0x8034e77c",
-    "g_pBuiltInFunctions": "0x8034e778"
+    "g_pBuiltInFunctions": "0x8034e778",
+    "rand": "0x8013fc54"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -79,5 +93,76 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f6c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f6ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f6bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f6b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f6b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f678"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f6c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034f6a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f6cc"
+    }
+  ]
 }
