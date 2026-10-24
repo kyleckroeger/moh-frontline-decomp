@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x80095ba0",
-      "size": 40,
+      "size": 1408,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ca10",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013afc",
+      "size": 12,
       "type": 1
     }
   ],
@@ -56,9 +68,29 @@
       "address": "0x80095bb8",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "AllocateObject__18CAnimObjectFactoryFUl12EObjectClass",
+      "address": "0x80095bc8",
+      "size": 1368,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AttachMesh__14CSoldierObjectFP11CStaticMeshPci": "0x800aa01c",
+    "BindLocationCollision__11CAnimObjectFP25CObjLocationCollisionDataP24CObjLocationCollisionMap": "0x80095824",
+    "BindMesh__9CAnimatedFP6CDMesh": "0x80060dcc",
+    "CompareObjectDefinitions__FPCvPCv": "0x800971c8",
+    "SetHelmetOffset__14CSoldierObjectFR8CVector3": "0x800a9f1c",
+    "SetNodeState__11CAnimObjectFll": "0x800952a4",
+    "SetWeaponName__19CPlayerWeaponObjectFPCc": "0x800a7aa4",
+    "__ct__11CAnimObjectFv": "0x800959a4",
+    "__ct__14CSoldierObjectFv": "0x800ae72c",
+    "__ct__15CAnimatedPlayerFv": "0x8010ac90",
+    "__ct__19CPlayerWeaponObjectFv": "0x800a8d30",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "bsearch": "0x8013c274"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -66,5 +98,40 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AnimObjFactory.cpp",
-  "original_file_index": 5769
+  "original_file_index": 5769,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350440"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350444"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 5,
+      "address": "0x80350448"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350450"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350458"
+    }
+  ]
 }

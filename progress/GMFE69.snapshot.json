@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 979504,
+    "matching_code_bytes": 980872,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.24384195360858,
+    "percent": 69.34054965035361,
     "categories": {
-      "reconstructed_game": 749512,
+      "reconstructed_game": 750880,
       "restored_library": 229992
     },
-    "matching_functions": 4587
+    "matching_functions": 4588
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -102,7 +102,7 @@
     "config/GMFE69/AnimObjFactory.json": "1c2ebc7e91ddd558ee07a97d712f29fdae0ba20c30a93f092a4f3d368edca82a",
     "config/GMFE69/AnimObjFactory_animobjdef.json": "a4af8dd382e226f50822556050f828ca12338aa06ac8e487f187801615b2b2c9",
     "config/GMFE69/AnimObjFactory_ctor.json": "cdb9b365c933f592e729d49138191c6bfcdb02ebd27db88ffc9fd587bd6f206d",
-    "config/GMFE69/AnimObjFactory_head.json": "0a9c01add6694f85a58bd4e06ce0cd18786b414e84ce026ad20a42187328b617",
+    "config/GMFE69/AnimObjFactory_head.json": "c09406f19cb7cf7e536b410ea106b6e81e48f6ba10a26d7c1a86aa8f16f135df",
     "config/GMFE69/AnimObjFactory_weapon.json": "2012068536d9f49811dc4b7a4861aa099be180a37bc2ddf07d5573fa66353aeb",
     "config/GMFE69/CARDBios.json": "e1e00c4ed5f83508ca43c5ccc4c3b569cf232d5bd60179441a3c564ea583b41b",
     "config/GMFE69/CARDBlock.json": "9b20825c0b22ffb86797c911f53b3f7b61bc82ca79662bb7770eff62bfd5f25a",
@@ -2348,7 +2348,7 @@
     "src/game/AnimObjFactory.cpp": "4a03ed41316082416956ee8dae84b7a29ef8329bb6fcc81f8faf4f246e39a0b8",
     "src/game/AnimObjFactory_animobjdef.cpp": "7ee848e7df0fc2eecdc7f64dcc5144415b21dad30dbaed3ade97422ecdcedcd6",
     "src/game/AnimObjFactory_ctor.cpp": "73cb2bfab949162da8698648bbd848ec8b66d844d508f42f9351aeec0e367e36",
-    "src/game/AnimObjFactory_head.cpp": "bb3db37e5abcada93a27a403575691e2971f780b0cd898b0b3cf6b670fad1c32",
+    "src/game/AnimObjFactory_head.cpp": "03bf356b727e62aff753fd4305b43c9aab1ebd04ceb7a11f46124aa5a2a6c26c",
     "src/game/AnimObjFactory_weapon.cpp": "9ec9a6161aaf4b4bcfb71a2148ed75509800652635de14f5e3c3d62790988db7",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
     "src/game/ConfigGC_dualconfig.cpp": "a8026e0e3554139a8e724da7870b846d82fcc0e56df0062147b7408ec10d1ab5",
@@ -43878,8 +43878,8 @@
     {
       "id": "AnimObjFactory_head",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 40,
+      "functions": 3,
+      "code_bytes": 1408,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -43911,8 +43911,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "adebe8eb456cb36bee9b7c23030268770076e672cf1be03f7a08dcd9a79daf97",
-      "linked_sha256": "fc2fbd19c14eebdc8d43aafa4ca5afd958eb21df5a6fbce3baeec4ffa2973bad"
+      "object_sha256": "7f65a314b52a3e1ac7742c73b3fb3e844b5b1a5995ccc338acf0467f87d28b42",
+      "linked_sha256": "14f4e96365cf9d6704eea7c0bedaed9de95ceeea7ff75164d608d2e5fb5b7ddf"
     },
     {
       "id": "anim_obj_initclass",
@@ -55888,13 +55888,6 @@
         "file_record": 108,
         "file_name": "AnimObjFactory.cpp",
         "ranges": [
-          {
-            "address": "0x80095bc8",
-            "size": 1368,
-            "kind": "function",
-            "name": "AllocateObject__18CAnimObjectFactoryFUl12EObjectClass",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80096f50",
             "size": 616,
