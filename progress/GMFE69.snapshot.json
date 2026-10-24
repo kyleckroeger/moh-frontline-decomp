@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 942840,
+    "matching_code_bytes": 943616,
     "total_executable_code_bytes": 1414572,
-    "percent": 66.65196257242474,
+    "percent": 66.70682015478887,
     "categories": {
-      "reconstructed_game": 712848,
+      "reconstructed_game": 713624,
       "restored_library": 229992
     },
-    "matching_functions": 4551
+    "matching_functions": 4552
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -53,6 +53,7 @@
     "config/GMFE69/AIObject_lineofsight_mode.json": "56dd70034b220e62fb2baca9e98492a5ea3f50a9c64621dfe55cbdb961386095",
     "config/GMFE69/AIObject_lineofsight_obj.json": "1faa5e1bbdaec77b500d1d13db5629da6a4f8e25e6a5671ae48a59490d857ad3",
     "config/GMFE69/AIObject_lookdirection.json": "85aef398dac9bd0fe5d2a982fa9d386d9a3be9d321ba9051cf4beb14d5ce4765",
+    "config/GMFE69/AIObject_mmgpoint.json": "ec3f4e7e69d7b2705d92f73a80c5815137a1ead7f9cdcd40d0aff9983d46fe13",
     "config/GMFE69/AIObject_obstacle.json": "cd0eefc6c667100e1ae64807408111aa9b9b486a591f87909777e931d24d540f",
     "config/GMFE69/AIObject_patrolwalk.json": "7df6a570786406709acb4ce8b4809208762cf00b55f298b607386870a9ce8ff7",
     "config/GMFE69/AIObject_reachable.json": "35f6b3b0c1ec2e6381955711f95e8a21247e28bc2213ac16287840a55d2503ae",
@@ -868,7 +869,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "737fdc80aadee0c8547a4278e3b975e5dcde0ef368836acd329643e6f6056f4e",
+    "config/GMFE69/project.json": "aa580336796d2c77c191b664256cef90435bf42f3641f029c1c77c014b6ce4a6",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2291,6 +2292,7 @@
     "src/game/AIObject_lineofsight_mode.cpp": "fd688dcca5f55ce38a300c4eb28b8de61130e27b88111a5cb1a35b9908099518",
     "src/game/AIObject_lineofsight_obj.cpp": "f3ac414a2d405826f28573359707ffc751b9752d2b6a01af3579d600d4b5167d",
     "src/game/AIObject_lookdirection.cpp": "fd2ba34136e22e33db932978756d2aa56057d57fd017cd8023455c231048e406",
+    "src/game/AIObject_mmgpoint.cpp": "15d26b4e24f6c409dd386dc631953515cde163eaaaffd86538f5ddc1fe88c007",
     "src/game/AIObject_obstacle.cpp": "d6efae3b4577f7c6ab7feaa633274cb78422a899ce4862def01892d111aa7508",
     "src/game/AIObject_patrolwalk.cpp": "51134d27e4942b7cd269f618a5bfbbdb5e7b58fae9e336644325eecfc7d35b30",
     "src/game/AIObject_reachable.cpp": "fea3cd43a0cc49672013b1166b66893b12f9b846dab120e506d1dc6f74e515a9",
@@ -53513,6 +53515,45 @@
       "discarded_functions": [],
       "object_sha256": "b0da9a23d6a2c97a5ad37094a42be470a5fd1f9704326e34145d08bc7f957e01",
       "linked_sha256": "be2e5e6fcdc63a0bf96837fb4251b53e3120fb077c09971c190329a724be464e"
+    },
+    {
+      "id": "AIObject_mmgpoint",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 776,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "0f1c9551e9649bfcbb394fde33e9b854ffa3323df134f6998a24077a50f9e199",
+      "linked_sha256": "d8176799110c384e4bededd2f6b1e70e2bdf9786f522e4b817634058a3c26cd7"
     }
   ],
   "code_map": {
@@ -54128,13 +54169,6 @@
             "size": 588,
             "kind": "function",
             "name": "ShouldILeaveMMG__9CAIObjectFP20TriggerObject_struct",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80047b04",
-            "size": 776,
-            "kind": "function",
-            "name": "ChooseMMGPoint__9CAIObjectFv",
             "evidence": "exception-index"
           },
           {

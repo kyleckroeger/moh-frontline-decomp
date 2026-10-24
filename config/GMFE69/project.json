@@ -1232,7 +1232,8 @@
     "player_constrain.json",
     "fiber_point.json",
     "player_mmg.json",
-    "particlesystem_beginupdate.json"
+    "particlesystem_beginupdate.json",
+    "AIObject_mmgpoint.json"
   ],
   "progress": {
     "code_bytes": 1414572,
