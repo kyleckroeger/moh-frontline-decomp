@@ -1225,7 +1225,8 @@
     "player_death.json",
     "UserInterface_draw.json",
     "static_obj_setlight.json",
-    "animated_volume_line.json"
+    "animated_volume_line.json",
+    "UserInterface_hitstatus.json"
   ],
   "progress": {
     "code_bytes": 1414572,
