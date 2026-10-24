@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 989552,
+    "matching_code_bytes": 990084,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.95416281391121,
+    "percent": 69.99177136264538,
     "categories": {
-      "reconstructed_game": 759560,
+      "reconstructed_game": 760092,
       "restored_library": 229992
     },
-    "matching_functions": 4602
+    "matching_functions": 4603
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -958,7 +958,7 @@
     "config/GMFE69/sballoc.json": "c710d08ff3a534d065a2257587529ab3e3996c6a7e5597b4e160c4d16ca758a6",
     "config/GMFE69/sbasync.json": "303f37a701d281fffb50b2ec20b821f63c662b46cf96c4782e972da7fb17a1ed",
     "config/GMFE69/sbasync_done.json": "8a5606152a30910a43cd0ef19d3250980a3737688857cb7edc93679e1dc9c2bc",
-    "config/GMFE69/sbasync_download.json": "1137f2b9c1299902de72e692c0ba9c112b536f35f449363128ada770f0b9c2d3",
+    "config/GMFE69/sbasync_download.json": "7103eea55f5ddc1e06da6109e494ecef3dabeeafa1af835da80b0afc59dbf858",
     "config/GMFE69/sbhdrcpy.json": "a124c56d3d1e9b76c5f648c662f3929182d90631c0d7a1ffcdd3bd3a52cc1bdf",
     "config/GMFE69/sbhdrsze.json": "875048bfff47c9b8f5d6f70895e104cb76711f6cba65e11dd917abf7ae80960c",
     "config/GMFE69/sbpatinf.json": "988788cff2bb8f3aca567193f90839d29b5863a6eb538325776753027c75e9a2",
@@ -2119,7 +2119,7 @@
     "src/ea/sballoc.c": "fa7832fbe895db18346753891610d230d2511a774d549f4a667e12200f8162da",
     "src/ea/sbasync.c": "4055b1da02edf212647ee154d083639e65c0ef7bfee305485de18227902b06ae",
     "src/ea/sbasync_done.c": "90ca09ed73b38caee806962f1a6fdb4d1f60cea67a09265eed3a539ca6af60b8",
-    "src/ea/sbasync_download.c": "11deb59957b8b948b3de086733331be6522a5ada4b3647883413a83265241d7a",
+    "src/ea/sbasync_download.c": "44a735537b07b2e25ac0783a44c278de968349b8bfd0af716e7f9175a31c690b",
     "src/ea/sbhdrcpy.c": "b917b8156ab6900a1602c4c07ebb9ff4020b6b3cd8e7761ae6ce7c2a2f033ccb",
     "src/ea/sbhdrsze.c": "5770084b7e371a108e779fe2a9ce477bc0b926fdf847ffd289d38597d768151a",
     "src/ea/sbpatinf.c": "4c3fd80b271a046a9f298d8e4b7bf03db72427f6065e7f061d5de13a5e107d89",
@@ -50877,8 +50877,8 @@
     {
       "id": "sbasync_download",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 368,
+      "functions": 2,
+      "code_bytes": 900,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -50895,7 +50895,7 @@
         "off",
         "-O4,p",
         "-inline",
-        "auto",
+        "noauto",
         "-pragma",
         "cats off",
         "-nosyspath",
@@ -50910,8 +50910,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "29facf1aaa0b1661012dc7261028cf6dbedeca61a23861910610bd1d20ff7924",
-      "linked_sha256": "33d6b2ad89dafe629aab711c30c536889d096ef50730d88fceaf10bd19670c98"
+      "object_sha256": "9bd90b5d5c3cddacc303b46d455391919c6c7a174ea7d3067f9f68b318bd5815",
+      "linked_sha256": "7276cdfb686960f2b68eaa7718847ba0d70e8cf5fc33bac7f8529dd01e84af5c"
     },
     {
       "id": "sbasync_done",
@@ -57598,15 +57598,8 @@
         ]
       },
       {
-        "name": "Unknown file/.text @ 80159e78",
+        "name": "Unknown file/.text @ 8015a08c",
         "ranges": [
-          {
-            "address": "0x80159e78",
-            "size": 532,
-            "kind": "function",
-            "name": "SNDBANKI_asyncserver__Fv",
-            "evidence": "unknown-file"
-          },
           {
             "address": "0x8015a08c",
             "size": 740,

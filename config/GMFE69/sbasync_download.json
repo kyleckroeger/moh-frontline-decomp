@@ -18,7 +18,7 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "noauto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80159d08",
-      "size": 368,
+      "size": 900,
       "type": 1
     }
   ],
@@ -48,11 +48,27 @@
       "address": "0x80159d08",
       "size": 368,
       "binding": 1
+    },
+    {
+      "name": "SNDBANKI_asyncserver__Fv",
+      "address": "0x80159e78",
+      "size": 532,
+      "binding": 1
     }
   ],
   "externals": {
+    "FILESYS_close": "0x80148cd0",
+    "FILESYS_completeop": "0x80148a84",
+    "FILESYS_opstatus": "0x801485b0",
+    "SNDBANKI_asynccompletereads__Fv": "0x801599ec",
+    "SNDBANKI_asyncissuereads__Fv": "0x80159ac8",
+    "SNDBANKI_asyncresolvepatch__FiP11TAGGEDPATCHPcPi": "0x80159954",
+    "SNDBANKI_asyncxferhdr__Fv": "0x80159bdc",
     "SNDPLATFORM_download__FiPvPvi": "0x8016c698",
-    "sndbas": "0x801934e8"
+    "SNDPLATFORM_downloadcomplete__Fi": "0x8016c868",
+    "SNDSYS_remove100hzclient": "0x801535f4",
+    "sndbas": "0x801934e8",
+    "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
