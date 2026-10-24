@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80047b04",
-      "size": 776,
+      "address": "0x800478b8",
+      "size": 1364,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a69c",
-      "size": 8,
+      "address": "0x8000a694",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011798",
-      "size": 12,
+      "address": "0x8001178c",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ShouldILeaveMMG__9CAIObjectFP20TriggerObject_struct",
+      "address": "0x800478b8",
+      "size": 588,
+      "binding": 1
+    },
     {
       "name": "ChooseMMGPoint__9CAIObjectFv",
       "address": "0x80047b04",
@@ -95,12 +101,6 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034f880"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
       "address": "0x8034f860"
     },
     {
@@ -130,6 +130,12 @@
     {
       "section": ".sdata2",
       "offset": 32,
+      "size": 4,
+      "address": "0x8034f880"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
       "size": 4,
       "address": "0x8034f884"
     }

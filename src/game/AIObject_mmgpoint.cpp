@@ -1,4 +1,7 @@
-// A fragment of AIObject.cpp (0x80047b04): CAIObject::ChooseMMGPoint picks the
+// A fragment of AIObject.cpp (0x800478b8): CAIObject::ShouldILeaveMMG says to
+// leave a mounted machine gun when there is a threat (+196), the flag at +1752
+// is set and the cosine between the gun point's forward row and the unit
+// direction to the threat is below 0.866. CAIObject::ChooseMMGPoint picks the
 // nearest free mounted-machine-gun point: of the trigger objects whose core
 // is of type 5 with the class CRC 0x5b607813 and whose low flag bit is clear,
 // it skips those facing away from the threat (+196; the cosine between the
@@ -6,7 +9,7 @@
 // those within 5 of another AI object not on the same side (+20, 0 = none),
 // and returns the closest within 25. The classes, functions and globals are
 // named by the symbols; the trigger core, CAIObject members and the vector and
-// matrix views follow ShouldILeaveMMG's draft (the forward row's dead 16-byte
+// matrix views are shared with ShouldILeaveMMG (the forward row's dead 16-byte
 // copy is the temporary bound to a const reference); the threat direction is
 // assigned component by component (its FPR numbers). The rest of the file is
 // in other units.
@@ -109,6 +112,7 @@ extern CAIObject* g_paioAIObjectListStart; // file-local in the original
 
 class CAIObject {
 public:
+    bool ShouldILeaveMMG(TriggerObject_struct*);
     TriggerObject_struct* ChooseMMGPoint();
 
     unsigned char unknown000[4];
@@ -119,7 +123,38 @@ public:
     CAIFilterRealPosition m_position;
     unsigned char unknown024[160];
     CAIObject* m_target;
+    unsigned char unknown0c8[1552];
+    bool m_unknown6d8;
 };
+
+bool CAIObject::ShouldILeaveMMG(TriggerObject_struct* trigger) {
+    if (m_target && m_unknown6d8) {
+        TriggerCoreView* core = trigger->core;
+        CAIFilterRealPosition position;
+        float x;
+        float y;
+        float z;
+        z = core->z;
+        y = core->y;
+        x = core->x;
+        position.x = x;
+        position.y = y;
+        position.z = z;
+        CMatrix matrix;
+        core->rotation.GetMatrix(matrix);
+        const CVector3& row = matrix.GetRow(1);
+        CVector3 forward(*&row);
+        forward.Normalize();
+        CVector3 delta;
+        delta.d.v[0] = m_target->m_position.x - position.x;
+        delta.d.v[1] = m_target->m_position.y - position.y;
+        delta.d.v[2] = m_target->m_position.z - position.z;
+        delta.Normalize();
+        if (delta.Dot(forward) < 0.866f)
+            return true;
+    }
+    return false;
+}
 
 TriggerObject_struct* CAIObject::ChooseMMGPoint() {
     TriggerObject_struct* trigger;
