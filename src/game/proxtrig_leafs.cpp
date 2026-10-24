@@ -8,7 +8,15 @@
 // The function, structs and globals are named by the symbols; the members
 // follow propdat_bsp.cpp where known and are otherwise inferred from offsets,
 // as are the flag names and the light-volume test (an inferred inline
-// helper). The rest of the file is in other units.
+// helper). ForceUpdateProximityTriggerStatus (0x8004618c) updates an object's
+// proximity data unless the object has none or its script object's value at
+// +16 is -1: when the object's position is still inside the cached leaf's
+// bounds the leaf is checked again, otherwise the property BSP tree is walked
+// from g_pPBSPHead, alternating between the y and x splits, to the leaf to
+// check; then the enter and leave messages are sent. The node and object
+// views, the leaf bounds and the inline tests are inferred; the order of the
+// coordinate locals gives the original's loads. The rest of the file is in
+// other units.
 struct CVector3 {
     float x;
     float y;
@@ -55,7 +63,12 @@ struct TriggerObject_struct {
 
 struct _PropBSPLeaf {
     unsigned int triggerCount;
-    unsigned char unknown04[28];
+    unsigned char unknown04[8];
+    float minX;
+    float maxX;
+    float minY;
+    float maxY;
+    unsigned char unknown1c[4];
     unsigned short* triggers;
 };
 
@@ -112,4 +125,113 @@ void CheckLeafsTriggers(const _PropBSPLeaf* leaf, const CVector3& point, _Proxim
     data->triggers = inside;
     data->previousLeaf = data->leaf;
     data->leaf = (_PropBSPLeaf*)leaf;
+}
+
+struct _PropBSPNode;
+
+union PBSPNodeOrLeaf {
+    _PropBSPNode* node;
+    _PropBSPLeaf* leaf;
+};
+
+struct _PropBSPNode {
+    float split;
+    PBSPNodeOrLeaf front;
+    PBSPNodeOrLeaf back;
+    bool frontIsLeaf;
+    bool backIsLeaf;
+};
+
+extern _PropBSPNode* g_pPBSPHead;
+
+class ISceneNode {
+public:
+    virtual void vf08();
+    virtual void vf0c();
+    virtual void vf10();
+    virtual void vf14();
+    virtual void vf18();
+    virtual void vf1c();
+    virtual void vf20();
+    virtual void vf24();
+    virtual void vf28();
+    virtual void vf2c();
+    virtual void vf30();
+    virtual void vf34();
+    virtual void vf38();
+    virtual void vf3c();
+    virtual void GetPosition(CVector3&) const;
+};
+
+struct BSObjectView {
+    unsigned char unknown00[16];
+    int m_value10;
+};
+
+class BSGO_Basic {
+public:
+    BSObjectView* m_object;
+    unsigned char unknown04[8];
+
+    virtual void Destroy();
+    virtual int GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+    virtual _ProximityData* GetProximityData();
+};
+
+void TriggerEnterAndLeaveMessages(BSGO_Basic*, bool);
+
+inline bool IsInLeaf(const _PropBSPLeaf* leaf, const CVector3& pos) {
+    if (leaf && pos.x <= leaf->maxX && pos.x >= leaf->minX && pos.y <= leaf->maxY && pos.y >= leaf->minY)
+        return true;
+    return false;
+}
+
+inline bool IsInFront(const _PropBSPNode* node, float y, float x, bool axis) {
+    if (axis) {
+        if (y > node->split)
+            return true;
+        return false;
+    }
+    if (x > node->split)
+        return true;
+    return false;
+}
+
+void ForceUpdateProximityTriggerStatus(BSGO_Basic* object, bool flag) {
+    _ProximityData* data = object->GetProximityData();
+    if (!data)
+        return;
+    if (object->m_object && object->m_object->m_value10 == -1)
+        return;
+    CVector3 pos;
+    object->GetSceneNode()->GetPosition(pos);
+    if (IsInLeaf(data->leaf, pos)) {
+        CheckLeafsTriggers(data->leaf, pos, data, true, flag);
+        TriggerEnterAndLeaveMessages(object, true);
+        return;
+    }
+    float x;
+    float y = pos.y;
+    _PropBSPNode* node;
+    bool axis = true;
+    x = pos.x;
+    node = g_pPBSPHead;
+    for (;;) {
+        if (IsInFront(node, y, x, axis)) {
+            if (node->backIsLeaf) {
+                CheckLeafsTriggers(node->back.leaf, pos, data, true, flag);
+                break;
+            }
+            node = node->back.node;
+        } else {
+            if (node->frontIsLeaf) {
+                CheckLeafsTriggers(node->front.leaf, pos, data, true, flag);
+                break;
+            }
+            node = node->front.node;
+        }
+        axis = axis == false;
+    }
+    TriggerEnterAndLeaveMessages(object, true);
 }

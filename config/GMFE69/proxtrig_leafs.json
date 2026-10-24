@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80045f84",
-      "size": 520,
+      "size": 1012,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a644",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011714",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,11 +62,19 @@
       "address": "0x80045f84",
       "size": 520,
       "binding": 1
+    },
+    {
+      "name": "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb",
+      "address": "0x8004618c",
+      "size": 492,
+      "binding": 1
     }
   ],
   "externals": {
     "IsPointInTrigger__FRC8CVector3PC20TriggerObject_struct": "0x80044d3c",
+    "TriggerEnterAndLeaveMessages__FP10BSGO_Basicb": "0x800451ec",
     "g_pLightVolumes": "0x8034e8cc",
+    "g_pPBSPHead": "0x8034e8c8",
     "g_pTriggerObjects": "0x801a1300"
   },
   "undefined_in_discarded_code": [],
@@ -75,7 +83,8 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_pLightVolumes"
+    "g_pLightVolumes",
+    "g_pPBSPHead"
   ],
   "original_file": "proxtrig.cpp",
   "original_file_index": 1686,
