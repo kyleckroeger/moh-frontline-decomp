@@ -1,13 +1,17 @@
-// A fragment of scene.cpp (0x800d9c10): three file-local instances of the dwi
-// sort helpers used to order the scene's node pairs: unguarded_partition_
-// (Hoare partition around a pivot, swapping out-of-place pairs), median (the
-// median of three pairs under the comparison) and iter_swap (swaps two
-// pairs). CScene, UNodePair and the dwi templates are named by the mangled
-// symbols; the pair view is that of scene_query.cpp. The templates are
-// file-local (static) in the original, as their local symbols show, so they
-// are static here and instantiated explicitly (in reverse emission order).
-// quick_sort, quick_sort_ and sort_ before them and the rest of the file are
-// not part of this unit.
+// A fragment of scene.cpp (0x800d9214): four file-local instances of the dwi
+// sort helpers used to order the scene's node pairs: sort_ (the
+// quicksort recursion: while more than 16 pairs remain, partition around the
+// median of the first, middle and last pair, recurse into the smaller part
+// (the compiler inlines two levels of the recursion) and continue with the
+// larger one), unguarded_partition_ (Hoare partition around a pivot,
+// swapping out-of-place pairs), median (the median of three pairs under the
+// comparison) and iter_swap (swaps two pairs). CScene, UNodePair and the dwi
+// templates are named by the mangled symbols; the pair view is that of
+// scene_query.cpp, and the named pivot local is inferred from the stack
+// layout. The templates are file-local (static) in the original, as their
+// local symbols show, so they are static here and instantiated explicitly.
+// quick_sort and quick_sort_ before them and the rest of the file are not
+// part of this unit.
 class ISceneNode;
 
 class CScene {
@@ -40,6 +44,24 @@ static T median(T a, T b, T c, C comp) {
 }
 
 template <class I, class T, class C>
+static I unguarded_partition_(I first, I last, T pivot, C comp);
+
+template <class I, class T, class C>
+static void sort_(I first, I last, C comp, T*) {
+    while (last - first > 16) {
+        T pivot = median(*first, *(first + (last - first) / 2), *(last - 1), comp);
+        I cut = unguarded_partition_(first, last, pivot, comp);
+        if (last - cut <= cut - first) {
+            sort_(cut, last, comp, (T*)0);
+            last = cut;
+        } else {
+            sort_(first, cut, comp, (T*)0);
+            first = cut;
+        }
+    }
+}
+
+template <class I, class T, class C>
 static I unguarded_partition_(I first, I last, T pivot, C comp) {
     for (;;) {
         while (comp(*first, pivot))
@@ -61,3 +83,4 @@ template void dwi::iter_swap(CScene::UNodePair*, CScene::UNodePair*);
 template CScene::UNodePair dwi::median(CScene::UNodePair, CScene::UNodePair, CScene::UNodePair, NodePairCompare);
 template CScene::UNodePair* dwi::unguarded_partition_(CScene::UNodePair*, CScene::UNodePair*, CScene::UNodePair,
                                                       NodePairCompare);
+template void dwi::sort_(CScene::UNodePair*, CScene::UNodePair*, NodePairCompare, CScene::UNodePair*);
