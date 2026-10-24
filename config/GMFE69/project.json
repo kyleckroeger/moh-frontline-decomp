@@ -1245,7 +1245,8 @@
     "pathx_create.json",
     "cdbgeom_triangle_line.json",
     "capsule_capsule.json",
-    "light_propertyanim_update.json"
+    "light_propertyanim_update.json",
+    "particlesystem_create.json"
   ],
   "progress": {
     "code_bytes": 1414572,
