@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8006f53c",
-      "size": 84,
+      "address": "0x8006f44c",
+      "size": 748,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b678",
-      "size": 16,
+      "address": "0x8000b670",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001289c",
-      "size": 24,
+      "address": "0x80012890",
+      "size": 48,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "TestCollision__10CCDBVolBoxCFRC11CVolCapsuleR10CCollisionb",
       "address": "0x8006f53c",
       "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__10CCDBVolBoxCFRC10CVolSphereR10CCollisionb",
+      "address": "0x8006f590",
+      "size": 424,
       "binding": 1
     },
     {
@@ -74,9 +80,18 @@
       "address": "0x8006f55c",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "TestCollision__10CCDBVolBoxCFRC6CPlaneR10CCollisionb",
+      "address": "0x8006f44c",
+      "size": 240,
+      "binding": 1
     }
   ],
   "externals": {
+    "CONTACT_EPSILON": "0x80350ba8",
+    "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetRadius__10CVolSphereCFv": "0x800cba28",
     "TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb": "0x800c290c"
   },
   "undefined_in_discarded_code": [],
@@ -84,7 +99,32 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "cdbgeom.cpp",
-  "original_file_index": 3230
+  "original_file_index": 3230,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fd68"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034fd70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fd78"
+    }
+  ]
 }
