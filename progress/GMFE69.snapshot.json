@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 960212,
+    "matching_code_bytes": 962888,
     "total_executable_code_bytes": 1414572,
-    "percent": 67.88003721266928,
+    "percent": 68.06921104051261,
     "categories": {
-      "reconstructed_game": 730220,
+      "reconstructed_game": 732896,
       "restored_library": 229992
     },
-    "matching_functions": 4566
+    "matching_functions": 4568
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1098,7 +1098,7 @@
     "config/GMFE69/sprite.json": "7184735a6b0d9437c7e39cf96c2ff645e3cbd318f63b664528f541bb84acf60d",
     "config/GMFE69/sprite_csprite_dtor.json": "0c10b7852a36d907551893f59afe7ccc73e6e1edc1f6274abb92fbfa9ad72784",
     "config/GMFE69/sprite_ctor.json": "903185ec24c01e47f1fef34552cf21132682b855a6813f6c907de4bfc6f6e4ff",
-    "config/GMFE69/sprite_draw.json": "6ea608d3af59909126a94ee79210e72c1ee9670ece262624bad84c52cf579f30",
+    "config/GMFE69/sprite_draw.json": "950a5a939951279e56b4e089806d04f10a66d8552700a232f32243652781cd4d",
     "config/GMFE69/sprite_dtor.json": "e1123801c0bacde907695e0daa1816685359b34a975bdce90cdc5631c381cf94",
     "config/GMFE69/sprite_init.json": "0b4f07cffbc6c8d3b6420f2606be8c8ad364a85f63b4cfafcecce122dce00f28",
     "config/GMFE69/sprite_notexturebin.json": "ad1bbe15f4033ab28acf2d15d121798021d174c43ee504bdd75cebcd30b0e3b1",
@@ -2992,7 +2992,7 @@
     "src/game/sprite.cpp": "104b7bb47ff08649eb2e0412884332605376541f78b6b7262f8bf4bf7d9be164",
     "src/game/sprite_csprite_dtor.cpp": "ad89a18f0c521f888cb692de60853565dfdcd733f9f7ea5dae4ee750a74da16a",
     "src/game/sprite_ctor.cpp": "e601286f82a0f86bf7fde513b768589e55e94ded50e9404fb73241edbf1448da",
-    "src/game/sprite_draw.cpp": "5316b7bcdeb4f8460e59a22782b8689632543e1650b0e5f12821547b5c017daf",
+    "src/game/sprite_draw.cpp": "13a1ebab55353bab5868880c22b9b1feb9d76615c2b6ad471598aa78d919423e",
     "src/game/sprite_dtor.cpp": "8b2228e3fc8f7af009f687d4211669a300b7279d5d8e2f8bfb58ccfa56771b36",
     "src/game/sprite_init.cpp": "ca86c0e36bcafeb13e8d6dd7329025015df2aee3e685ec1f1e5dd7e3391e7596",
     "src/game/sprite_notexturebin.cpp": "0d076b157d366c895de1fb05c96b8f1b4a4c3e79aa89040b4cabfa6d3428a54f",
@@ -45578,8 +45578,8 @@
     {
       "id": "sprite_draw",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 536,
+      "functions": 6,
+      "code_bytes": 3212,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45611,8 +45611,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0a3d85f020d168c20278ea615c1b3e87da9e5d73a955a716438a3e0faf63611f",
-      "linked_sha256": "9e80f44cce1d7f206ecc368a20a858e426fab8664ffaef5e7c8574c6e494b15c"
+      "object_sha256": "fe704d0a9e17c85f359bac179d3115227fbc874cbddd36dbb183323ab9a3aa8e",
+      "linked_sha256": "3303d2d9e3d80b50fec51deba705a9fd8a1e519b495f0d41ff942ad0344955ab"
     },
     {
       "id": "pumhandler_prompt",
@@ -55363,27 +55363,6 @@
             "kind": "function",
             "name": "IsDrawEnabled__16CCharacterShadowCFv",
             "evidence": "same-class (inferred)"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/sprite.cpp [symbol evidence]",
-        "file_record": 76,
-        "file_name": "sprite.cpp",
-        "ranges": [
-          {
-            "address": "0x8008192c",
-            "size": 1800,
-            "kind": "function",
-            "name": "Link__7CSpriteFP7CDmaTagR10CDmaPacket",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80082034",
-            "size": 876,
-            "kind": "function",
-            "name": "Render__7CSpriteFR10CDmaPacketPv",
-            "evidence": "between-same-file"
           }
         ]
       },

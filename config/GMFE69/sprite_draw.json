@@ -32,6 +32,7 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk",
     "include/dolphin-sdk/libc"
   ],
   "strip_unused": false,
@@ -39,24 +40,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800823a0",
-      "size": 536,
+      "address": "0x8008192c",
+      "size": 3212,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c1fc",
-      "size": 32,
+      "address": "0x8000c1f4",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800131b4",
-      "size": 48,
+      "address": "0x800131a8",
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Link__7CSpriteFP7CDmaTagR10CDmaPacket",
+      "address": "0x8008192c",
+      "size": 1800,
+      "binding": 1
+    },
+    {
+      "name": "Render__7CSpriteFR10CDmaPacketPv",
+      "address": "0x80082034",
+      "size": 876,
+      "binding": 1
+    },
     {
       "name": "DrawPolyNoTex__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
       "address": "0x800823a0",
@@ -83,6 +96,32 @@
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXGetProjectionv": "0x80130134",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetAlphaCompare": "0x8012f4e4",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetProjectionv": "0x80130058",
+    "GXSetTevAlphaIn": "0x8012f09c",
+    "GXSetTevAlphaOp": "0x8012f1e0",
+    "GXSetTevColorIn": "0x8012f01c",
+    "GXSetTevColorOp": "0x8012f120",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
+    "MathFunClamp<i>__Fiii": "0x8007c050",
+    "PSMTXIdentity": "0x80116bb0",
     "Register__11CRenderListFR10CRenderBin": "0x800f127c",
     "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
     "g_DrawContext": "0x801df794",
@@ -92,7 +131,9 @@
     "g_SpriteNoTexture": "0x801df774",
     "g_config": "0x80196a80",
     "g_pRenderList": "0x8034ea60",
-    "g_pScreen": "0x8034ea64"
+    "g_pScreen": "0x8034ea64",
+    "g_screen": "0x80196ac0",
+    "g_viewport": "0x80194ca0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -124,25 +165,73 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x803500a8"
+      "address": "0x80350078"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x803500ac"
+      "address": "0x8035007c"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x803500b0"
+      "address": "0x80350080"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350084"
     },
     {
       "section": ".sdata2",
       "offset": 16,
+      "size": 4,
+      "address": "0x80350088"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8035008c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350090"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
       "size": 8,
       "address": "0x80350098"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x803500a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x803500a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x803500ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x803500b0"
     }
   ]
 }
