@@ -1,5 +1,7 @@
-// A fragment of cdbgeom.cpp (0x8006c2e0): weak copies of header inlines
-// emitted in this file: CLine3::SetSD (start and direction stored, the end
+// A fragment of cdbgeom.cpp (0x8006c224): weak copies of header inlines
+// emitted in this file: CVector3::Normalize (the libc inline sqrtf of the
+// squared length; when it is non-zero each component is multiplied by its
+// reciprocal; the length is returned), CLine3::SetSD (start and direction stored, the end
 // as their sum, the cached length flags cleared), CVector3::DotDotDot (the
 // dot products of three vectors with a fourth) and CVector3::Length (the
 // square root, through the libc inline sqrtf, of the squared components
@@ -7,9 +9,9 @@
 // cdbgeom.cpp. The classes and functions are named by the mangled symbols;
 // CVector3 is the double-pair view (its copies move doubleword pairs) and the
 // squares are separate statements (the image does not fuse them), both
-// inferred; CLine3's layout follows capsule_create.cpp. CVector3::Normalize
-// before these (0x8006c224) is not part of this unit. The constants link to
-// their pool entries.
+// inferred; CLine3's layout follows capsule_create.cpp. Normalize returning
+// the length is inferred from the image (the length stays in f1 to the end).
+// The constants link to their pool entries.
 #include <math.h>
 
 /* Inferred: CVector3 as four floats overlaid with two doubles. */
@@ -33,6 +35,7 @@ public:
         return xx + yy + zz;
     }
     float Length() const;
+    float Normalize();
     static CVector3 DotDotDot(const CVector3&, const CVector3&, const CVector3&, const CVector3&);
 
     CVector3Data d;
@@ -52,6 +55,16 @@ public:
     unsigned char m_lengthValid;
     unsigned char m_lengthSqValid;
 } __attribute__((aligned(16)));
+
+__declspec(weak) float CVector3::Normalize() {
+    float length = sqrtf(LengthSquared());
+    if (length != 0.0f) {
+        d.v[0] *= 1.0f / length;
+        d.v[1] *= 1.0f / length;
+        d.v[2] *= 1.0f / length;
+    }
+    return length;
+}
 
 __declspec(weak) void CLine3::SetSD(CVector3 start, CVector3 dir) {
     m_start = start;
