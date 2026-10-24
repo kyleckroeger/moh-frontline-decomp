@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005fab4",
-      "size": 164,
+      "address": "0x8005f2c4",
+      "size": 2196,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b2c8",
-      "size": 8,
+      "address": "0x8000b2c0",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001232c",
-      "size": 12,
+      "address": "0x80012320",
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,15 +62,35 @@
       "address": "0x8005fab4",
       "size": 164,
       "binding": 1
+    },
+    {
+      "name": "floco_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf",
+      "address": "0x8005f2c4",
+      "size": 2032,
+      "binding": 1
     }
   ],
   "externals": {
-    "AnimChanStartAnim": "0x800618fc"
+    "AnimChanStartAnim": "0x800618fc",
+    "AnimChanSwitchAnimByDuration": "0x80061700",
+    "AnimStGetStateUserMemory": "0x80067100",
+    "AnimStSetStateFlags": "0x80067014",
+    "AnimWgtSet": "0x80068f9c",
+    "GetFlocoParams__15CAnimatedPlayerFRfRl": "0x8010a094",
+    "GetStateInfo__13CAnimDatabaseFUlUs": "0x80061e48",
+    "IsPlayerCrouching__13CPlayerObjectCFv": "0x8009c938",
+    "IsPlayerJumping__13CPlayerObjectCFv": "0x8009c9a4",
+    "SetAnimSpeed__9CAnimatedFUcf": "0x80060c90",
+    "SetFlocoParams__15CAnimatedPlayerFfl": "0x8010a0a8",
+    "_floco_anim_ranges": "0x801703b0",
+    "g_AnimDB": "0x801d4a84"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_floco_anim_ranges"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "anim_callback.cpp",
@@ -83,7 +103,25 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
+      "address": "0x8034fbc0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fc20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
       "address": "0x8034fbc4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034fbc8"
     }
   ]
 }
