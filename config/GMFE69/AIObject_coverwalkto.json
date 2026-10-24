@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8004a0ec",
-      "size": 872,
+      "size": 2364,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a75c",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800118b8",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,22 +68,37 @@
       "address": "0x8004a284",
       "size": 464,
       "binding": 1
+    },
+    {
+      "name": "WalkToCoverPoint__9CAIObjectFv",
+      "address": "0x8004a454",
+      "size": 1492,
+      "binding": 1
     }
   ],
   "externals": {
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CheckCollisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c17c",
+    "GetCostValue__11CSearchNodeFPC11CSearchNode": "0x8005608c",
     "GetDistanceSquaredXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6f4",
+    "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
     "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE": "0x8005314c",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "MathFunCloseToZero__Fff": "0x80092eb8",
     "ProvidesCover__11CCoverPointCFRC21CAIFilterRealPositionPC21CAIFilterRealPositionPC9CAIObject": "0x80052788",
-    "g_aigAIFilterGlobalObject": "0x801c6cd4"
+    "UpdateAStarPathWalk__9CAIObjectFv": "0x8004b988",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "AIObject.cpp",
   "original_file_index": 1752,
   "pooled_sections": [
@@ -119,6 +134,84 @@
       "offset": 16,
       "size": 4,
       "address": "0x8034f8d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f860"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034f868"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034f870"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f878"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8034f8dc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x8034f8e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8034f8e4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x8034f8e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x8034f8ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x8034f8f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8034f8b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x8034f8b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x8034f890"
     }
   ]
 }
