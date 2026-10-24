@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8010cb8c",
-      "size": 48,
+      "size": 1272,
       "type": 1
     }
   ],
@@ -50,17 +50,33 @@
       "address": "0x8010cb8c",
       "size": 48,
       "binding": 1
+    },
+    {
+      "name": "PATH_addmapfile",
+      "address": "0x8010cbbc",
+      "size": 1224,
+      "binding": 1
     }
   ],
   "externals": {
-    "PATH_createtrackfrombuf": "0x8010c384"
+    "PATH_createtrackfrombuf": "0x8010c384",
+    "inited": "0x8034ef70",
+    "paused": "0x8034ef71",
+    "pfactive": "0x8034ef74",
+    "pfstate": "0x8034ef68",
+    "pfstates": "0x80316920"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "inited",
+    "paused",
+    "pfactive",
+    "pfstate"
+  ],
   "original_file": "path.c",
   "original_file_index": 10551
 }

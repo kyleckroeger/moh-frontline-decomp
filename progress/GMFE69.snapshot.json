@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 973392,
+    "matching_code_bytes": 974616,
     "total_executable_code_bytes": 1414572,
-    "percent": 68.81176779973023,
+    "percent": 68.89829573892315,
     "categories": {
-      "reconstructed_game": 743400,
+      "reconstructed_game": 744624,
       "restored_library": 229992
     },
-    "matching_functions": 4579
+    "matching_functions": 4580
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -823,7 +823,7 @@
     "config/GMFE69/particlesystem_texture.json": "a9aed967c7bb39cbe37bf3aee7de649ff58391bda4b6bf6cac1c92e70f38af7e",
     "config/GMFE69/particlesystem_visible.json": "9a891a772068b75fe65ac22759507e36849eb4ad47f160b639e6065a00a92950",
     "config/GMFE69/path.json": "a130e3f795d3112c351a4623a4f8499a6f136708db1fbba95b835f98112bf65c",
-    "config/GMFE69/path_createtrack.json": "fabc441c0b9f05f8a9123b48e6c8da641eda4e4b7383aee0e7a43b804339aa12",
+    "config/GMFE69/path_createtrack.json": "9120ec9bb43575225ac5e929a290d55318ad476a0f5ec8800a20bf1a5a5a9c7b",
     "config/GMFE69/path_fadevolume.json": "80b33cf2f0a5f0bb2e1e87bf740d72eaf94c0b0483de510bc1b2e771d5e86ab9",
     "config/GMFE69/path_restore.json": "6c384a9302ea3cbc0ed80be802a63d69cd7e0e0e0cc22e743ecdfa09ecad8042",
     "config/GMFE69/path_service.json": "75d69e5bf39599bb5a861a5da322128b5d876907cdaa791ed2d0c3d2961957bf",
@@ -2077,7 +2077,7 @@
     "src/ea/mutex2.cpp": "84bb5fd9e59595a55eadbe25b9bac7a9262faf5c40f7bb0cc9d23e6b0e8fbf9b",
     "src/ea/pad.cpp": "5f1c88e95616a21d9851f07b5f33cca5179f38b95ccc83e0b3335de21e816dc3",
     "src/ea/path.c": "384941ad44700eb82d908c51db0ad8b90c05a4bcd8916a06cbc498128f595306",
-    "src/ea/path_createtrack.c": "ff0e3a96c83b067c2d669c6b6735b7d38666e55d30ea128c01ff6191c641cf41",
+    "src/ea/path_createtrack.c": "d780b5fe3cf400064a3f5a828d73051003cfcabcee903cfe8727ca0e93068f4f",
     "src/ea/path_fadevolume.c": "c87ed5d18b2400faf1e34316310dd2b74e2240d269d9cdfd0c4e75b1028d893d",
     "src/ea/path_restore.cpp": "4226a0288cc025036bb9459cb6421596467265de62689a4b7eac8c3bfd7ed388",
     "src/ea/path_service.c": "0f3e8911bd73ec0ce77d78edd630d9cc0d009d0f734f3f25eee113e107016d10",
@@ -41571,8 +41571,8 @@
     {
       "id": "path_createtrack",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 48,
+      "functions": 2,
+      "code_bytes": 1272,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -41606,8 +41606,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1c9d2b10b16719b3b912855193ee00f8c4236be1935df620d9a40d71990d3ad1",
-      "linked_sha256": "097b7f001fac3d435ba29fdbb782d898c5a367ca95916e54417ffe0c54ed64cf"
+      "object_sha256": "a94d888beaeb481f9c876b8c1802e25dc8a74f14213af3e0cbf1ca058ce4b651",
+      "linked_sha256": "3cdd74185ea27870eb74223cb2f3054c9b94d0637c415bf633fbc22ca1ab8407"
     },
     {
       "id": "MathFun_rotate",
@@ -57258,13 +57258,6 @@
             "size": 2056,
             "kind": "function",
             "name": "PATH_createtrackfrombuf",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8010cbbc",
-            "size": 1224,
-            "kind": "function",
-            "name": "PATH_addmapfile",
             "evidence": "exception-index"
           },
           {
