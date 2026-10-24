@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8015577c",
-      "size": 5412,
+      "size": 6412,
       "type": 1
     }
   ],
@@ -176,6 +176,12 @@
       "binding": 1
     },
     {
+      "name": "SNDAEMSI_reordermodule2__FP6MODULEP14MODULEINSTANCE",
+      "address": "0x80156ca0",
+      "size": 1000,
+      "binding": 1
+    },
+    {
       "name": "SNDAEMSI_reordermodule__FP6MODULEP14MODULEINSTANCE",
       "address": "0x801566b8",
       "size": 1512,
@@ -183,7 +189,6 @@
     }
   ],
   "externals": {
-    "SNDAEMSI_reordermodule2__FP6MODULEP14MODULEINSTANCE": "0x80156ca0",
     "SNDAEMSI_streamupdatestatus__FP21AEMSCOMPDYNAMICPLAYER": "0x80157b78",
     "SNDAEMS_beginevent": "0x8034e66c",
     "SNDMEMI_allocz__Fi": "0x80158d64",

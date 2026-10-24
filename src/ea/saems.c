@@ -19,6 +19,11 @@
    repeatedly places the components whose inputs are all connected. The
    link, link-definition and order-definition views and the output lookup
    (an inline helper by the component kind's output mode) are inferred.
+   SNDAEMSI_reordermodule2 (bank version 8 on) uses the module's
+   precomputed order and link counts: one pass orders every component (but
+   constants), links each output to its targets (constants copy their
+   outputs straight into the inputs), and marks the component placed with all
+   its inputs connected; the special component is the module's last.
    AEMSCOMPDYNAMIC and MODULE are named by
    the mangled symbols; the component layout, the per-component static
    definitions it points to, the sndaems view and the event buffer's size
@@ -58,6 +63,8 @@ struct MODULE {
     unsigned char unknown06[6];
     char* definitions;
     MODULEINSTANCELISTVIEW* list;
+    int linkTotal;
+    int orderCount;
 };
 
 struct MODULEINSTANCE {
@@ -700,5 +707,67 @@ void SNDAEMSI_reordermodule(MODULE* module, MODULEINSTANCE* instance) {
             }
             comp = (AEMSCOMPDYNAMIC*)((char*)comp + aemscompinfo[def->kind].componentSize);
         }
+    }
+}
+
+void SNDAEMSI_reordermodule2(MODULE* module, MODULEINSTANCE* instance) {
+    AEMSCOMPDYNAMIC** order;
+    int total;
+    AEMSCOMPDYNAMIC* target;
+    AEMSCOMPORDERDEFVIEW* def;
+    AEMSCOMPDYNAMIC* comp;
+    int c;
+    AEMSLINKDEFVIEW* links;
+    int o;
+    int l;
+
+    instance->count = module->orderCount;
+    order = (AEMSCOMPDYNAMIC**)SNDMEMI_allocz(module->orderCount * 4 + module->linkTotal * 8);
+    instance->order = order;
+    if (module->linkTotal != 0)
+        instance->links = (AEMSLINKVIEW*)((char*)instance->order + module->orderCount * 4);
+    else
+        instance->links = 0;
+    total = 0;
+    instance->special = instance->data + module->list->offsets[module->components - 1];
+    comp = (AEMSCOMPDYNAMIC*)instance->data;
+    for (c = 0; c < module->components; c++) {
+        def = (AEMSCOMPORDERDEFVIEW*)comp->def;
+        comp->linkCount = 0;
+        if (def->inputs == 0) {
+            if (def->kind != 20)
+                *order++ = comp;
+            comp->links = instance->links + total;
+            for (o = 0; o < def->outputs; o++) {
+                links = &def->links[o];
+                for (l = 0; l < links->count; l++) {
+                    target = (AEMSCOMPDYNAMIC*)(instance->data + module->list->offsets[links->targets[l * 2]]);
+                    if (def->kind == 20) {
+                        target->in[links->targets[l * 2 + 1]] = *GetOutput(comp, o);
+                    } else {
+                        total++;
+                        comp->links[comp->linkCount].destination = &target->in[links->targets[l * 2 + 1]];
+                        comp->links[comp->linkCount].source = GetOutput(comp, o);
+                        comp->linkCount++;
+                    }
+                }
+            }
+        } else {
+            *order++ = comp;
+            comp->links = instance->links + total;
+            for (o = 0; o < def->outputs; o++) {
+                links = &def->links[o];
+                for (l = 0; l < links->count; l++) {
+                    total++;
+                    target = (AEMSCOMPDYNAMIC*)(instance->data + module->list->offsets[links->targets[l * 2]]);
+                    comp->links[comp->linkCount].destination = &target->in[links->targets[l * 2 + 1]];
+                    comp->links[comp->linkCount].source = GetOutput(comp, o);
+                    comp->linkCount++;
+                }
+            }
+        }
+        comp->placed = 1;
+        comp->connected = def->inputs;
+        comp = (AEMSCOMPDYNAMIC*)((char*)comp + aemscompinfo[def->kind].componentSize);
     }
 }
