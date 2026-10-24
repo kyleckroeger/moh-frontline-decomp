@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 993420,
+    "matching_code_bytes": 993796,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.22760241260254,
+    "percent": 70.25418289065527,
     "categories": {
-      "reconstructed_game": 763428,
+      "reconstructed_game": 763804,
       "restored_library": 229992
     },
-    "matching_functions": 4607
+    "matching_functions": 4609
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -32,7 +32,7 @@
     "config/GMFE69/AIFilter_runaway.json": "4796c1bf9f0e4197aca8c24582fbf4df32022ffb920151c4e5248fc8068b628c",
     "config/GMFE69/AIFilter_soldier_ctor.json": "300124c62146e37ae64ad575daa684c33daad31a78212aa70b9f7e52f738b64b",
     "config/GMFE69/AIFilter_soldier_dtor.json": "03333f75283dc7b52902483605118cba9f5150551dba5294d2357be487d1c352",
-    "config/GMFE69/AIFilter_soldier_movetarget.json": "fc3dc17b166aa52a31495cfed19a0b87c3504137235a214bcb2c86adb1773bd1",
+    "config/GMFE69/AIFilter_soldier_movetarget.json": "1b0290d637a1311f6dd6fa5c86357bd4540f49130626f37ea823caea308c13a6",
     "config/GMFE69/AIFilter_soldier_update.json": "495bffbef012d9742cef8726d8cef435148b330dd06dd8c2dd47fd76cf8706d0",
     "config/GMFE69/AIFilter_tank_ctor.json": "14539e480251341e95a312263e500970f4afd83a1c9a3756d818c54b2a4a3a0a",
     "config/GMFE69/AIFilter_tank_dtor.json": "5dba4e072ecb6da6d838d460ae14ab367ec75d568acbf1ca457d3c6125c9bd52",
@@ -2292,7 +2292,7 @@
     "src/game/AIFilter_runaway.cpp": "5a8d2068ed3c5fad0eb9c047ebf28f4775b82e6213615e50ffead96c7822f46c",
     "src/game/AIFilter_soldier_ctor.cpp": "f436457b079a2ca07870874e59ca34068104021a07205e29256d2e7fdbf02e9d",
     "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
-    "src/game/AIFilter_soldier_movetarget.cpp": "e0553f4ca6ef045ccbef9bf400c2bffcd0d558721f5a4a8c256b63970a86fc9b",
+    "src/game/AIFilter_soldier_movetarget.cpp": "dba44a7bb8ea17a263d0340e6d60f299ca3b0710d900897cbaeefbd4623d7f6c",
     "src/game/AIFilter_soldier_update.cpp": "461b34089b4ff5ffe318d32c692ed94d2d056776ace8bd9e8a9514db31a3ba96",
     "src/game/AIFilter_tank_ctor.cpp": "8cefe168ad49b13bce86c3fd174366ca405d36a84ef4948ca6d618058f7f6b81",
     "src/game/AIFilter_tank_dtor.cpp": "786befa9a501d7547321cc8ad9174bfa12e727290364b05dd765a7cc67c9d4f2",
@@ -43496,8 +43496,8 @@
     {
       "id": "AIFilter_soldier_movetarget",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 40,
+      "functions": 3,
+      "code_bytes": 416,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -43529,8 +43529,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e4cd53ad58463d1ef4f2f3570656436afe56259b767a1f3a2e33b46ffb2fca91",
-      "linked_sha256": "4ca92d7083a262e1a8ebbe931b4f1735c1372185007c22a233048c22f820700d"
+      "object_sha256": "1c9a16521943c9696a0b2cb7df532112e01f60d659e4a3cb4b57a788991bf868",
+      "linked_sha256": "4d4d5e0456b5cad602813f048fcd813ba5b723afc95ec83b19729d3d510f3937"
     },
     {
       "id": "Moh2_fog_dtor",
@@ -55135,20 +55135,6 @@
             "size": 608,
             "kind": "function",
             "name": "PropagateSoundToAllObjects__15CAIFilterGlobalFRC18CAIFilterSoundInfo",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005dba8",
-            "size": 188,
-            "kind": "function",
-            "name": "GetLookDirection__19CAIFilterTankObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005dc8c",
-            "size": 188,
-            "kind": "function",
-            "name": "GetLookDirection__22CAIFilterSoldierObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
             "evidence": "exception-index"
           }
         ]

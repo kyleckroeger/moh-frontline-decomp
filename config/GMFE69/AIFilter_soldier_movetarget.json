@@ -39,24 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005dc64",
-      "size": 40,
+      "address": "0x8005dba8",
+      "size": 416,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b280",
-      "size": 8,
+      "address": "0x8000b278",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800122c0",
-      "size": 12,
+      "address": "0x800122b4",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetLookDirection__19CAIFilterTankObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
+      "address": "0x8005dba8",
+      "size": 188,
+      "binding": 2
+    },
+    {
+      "name": "GetLookDirection__22CAIFilterSoldierObjectFR20CAIFilterRealVector3R20CAIFilterRealVector3",
+      "address": "0x8005dc8c",
+      "size": 188,
+      "binding": 2
+    },
     {
       "name": "SetMoveTarget__22CAIFilterSoldierObjectFRC21CAIFilterRealPosition",
       "address": "0x8005dc64",
@@ -65,14 +77,20 @@
     }
   ],
   "externals": {
-    "SetMoveTarget__11CAnimObjectFRC8CVector3": "0x800952c8"
+    "GetLookMatrix__11CTankObjectFR7CMatrix": "0x800b4574",
+    "GetLookMatrix__14CSoldierObjectFR7CMatrix": "0x800aba4c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "SetMoveTarget__11CAnimObjectFRC8CVector3": "0x800952c8",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "AIFilter.cpp",
   "original_file_index": 2575
 }
