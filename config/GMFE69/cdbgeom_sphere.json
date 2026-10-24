@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8006c614",
-      "size": 492,
+      "address": "0x8006c428",
+      "size": 984,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b638",
-      "size": 8,
+      "address": "0x8000b630",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001283c",
-      "size": 12,
+      "address": "0x80012830",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "TestCollision__12CCDBTriangleCFRC15CAnimatedVolumeR10CCollisionPC6CDBTrib",
+      "address": "0x8006c428",
+      "size": 492,
+      "binding": 1
+    },
     {
       "name": "TestCollision__12CCDBTriangleCFRC10CVolSphereR10CCollisionPC6CDBTrib",
       "address": "0x8006c614",
