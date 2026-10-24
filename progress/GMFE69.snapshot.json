@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 955012,
+    "matching_code_bytes": 957408,
     "total_executable_code_bytes": 1414572,
-    "percent": 67.51243485662094,
+    "percent": 67.6818147114463,
     "categories": {
-      "reconstructed_game": 725020,
+      "reconstructed_game": 727416,
       "restored_library": 229992
     },
-    "matching_functions": 4560
+    "matching_functions": 4562
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -275,7 +275,7 @@
     "config/GMFE69/Tank_object_draw.json": "21eebfc9238fce4a72092ff7788283307f023a437f75c98618ac5851454e9650",
     "config/GMFE69/Tank_object_update.json": "8d093336e39ec0bb0cf89f63f9beb86a3d9716b721d85ed9ccb227725cb98618",
     "config/GMFE69/Tank_object_weapons.json": "aeebeb0aec0ae0f521c2a72238c5a7f44510600ff6362da4c88926738e585c65",
-    "config/GMFE69/TibPolygon_process.json": "f66d16fef717435d3a9eeee17b1a3815d563dbbe8f8c9a5528cf25eaad488b5c",
+    "config/GMFE69/TibPolygon_process.json": "1a9935fcac198f2ebb9c5d661ad50b5b8f775f3e4c176cb3426b74fbe5f7e626",
     "config/GMFE69/TibText.json": "b8e641009fcfc20a9602b6f70d38f98def7eecaffca3618f01d16c79cfdbd1d6",
     "config/GMFE69/UISActionProcess.json": "b8982d8977fc3cc190673d20cb03584db2332ecab498e97bc57a276fcc9cd7dd",
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
@@ -2434,7 +2434,7 @@
     "src/game/Tank_object_draw.cpp": "afdff9d134f2cb71c11bb49945abe5032baba9f687dc6e4f9cc226385deb8383",
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
-    "src/game/TibPolygon_process.cpp": "d441add598e9ecbb27a14a21835320c9e036ca65cd907dc895f917a69756b183",
+    "src/game/TibPolygon_process.cpp": "b8f21f40e97272290055136573844506be0ca4b6a9214a1e8c5181acf0105ec7",
     "src/game/TibText.cpp": "add98adc4d7d0cb0bd0d15f50a5a5589b10e1e2843e2a9c5200cc69c0a73a0fc",
     "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
@@ -51093,8 +51093,8 @@
     {
       "id": "TibPolygon_process",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 504,
+      "functions": 3,
+      "code_bytes": 2900,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -51126,8 +51126,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "10586d1d2a6cac9bbcdcfc032aec25f207bd27b22e2a862c5e2628b6f1f8537f",
-      "linked_sha256": "bba8d6ec8f4f3cbc52851877b1ab6201a4c51f6771d1443d625b0edcf969a3be"
+      "object_sha256": "203b85b419ffff8388e74973b79cfcf7bb649e65b89c94e4b9ab18ee95665ad9",
+      "linked_sha256": "b9297586e8e87cb3adbe19acd12d0a6b9b39a1656e22e8a83f47d30ac1034f1a"
     },
     {
       "id": "stretch_head",
@@ -55524,27 +55524,6 @@
             "size": 380,
             "kind": "function",
             "name": "ISirenStartup__7IStudioFUlUlUlUlUl",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/TibPolygon.cpp [symbol evidence]",
-        "file_record": 96,
-        "file_name": "TibPolygon.cpp",
-        "ranges": [
-          {
-            "address": "0x8008bcd4",
-            "size": 792,
-            "kind": "function",
-            "name": "TibPolyDraw__FP13TibPolyData_t",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8008bfec",
-            "size": 1604,
-            "kind": "function",
-            "name": "TibPolyInit__FP13TibPolyData_t",
             "evidence": "exception-index"
           }
         ]

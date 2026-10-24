@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008c630",
-      "size": 504,
+      "address": "0x8008bcd4",
+      "size": 2900,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c5d0",
-      "size": 8,
+      "address": "0x8000c4f0",
+      "size": 232,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800135ec",
-      "size": 12,
+      "address": "0x800135d4",
+      "size": 36,
       "type": 1
     },
     {
@@ -64,6 +64,18 @@
   ],
   "functions": [
     {
+      "name": "TibPolyDraw__FP13TibPolyData_t",
+      "address": "0x8008bcd4",
+      "size": 792,
+      "binding": 1
+    },
+    {
+      "name": "TibPolyInit__FP13TibPolyData_t",
+      "address": "0x8008bfec",
+      "size": 1604,
+      "binding": 1
+    },
+    {
       "name": "TibPolyProcessFnc__FPvUlUlP10UISParam_tP10UISParam_t",
       "address": "0x8008c630",
       "size": 504,
@@ -71,9 +83,19 @@
     }
   ],
   "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DrawPolyNoTex__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x800823a0",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
     "LibraryInfo": "0x8034ea9c",
-    "TibPolyDraw__FP13TibPolyData_t": "0x8008bcd4",
-    "TibPolyInit__FP13TibPolyData_t": "0x8008bfec"
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "UISGetColorAdditive": "0x8008aa34",
+    "UISGetColorMultipler": "0x8008aa40",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__dl__FPv": "0x8001ca2c",
+    "g_Shell": "0x80195090",
+    "g_matStack": "0x8034eab8",
+    "g_screen": "0x80196ac0",
+    "strstr": "0x8013fdb4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -81,8 +103,92 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "LibraryInfo"
+    "LibraryInfo",
+    "g_matStack"
   ],
   "original_file": "TibPolygon.cpp",
-  "original_file_index": 5288
+  "original_file_index": 5288,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803501c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803501c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803501c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x803501d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 7,
+      "address": "0x803501d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 5,
+      "address": "0x803501e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 3,
+      "address": "0x803501e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 7,
+      "address": "0x803501ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x803501f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x803501f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 5,
+      "address": "0x803501fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 7,
+      "address": "0x80350204"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 7,
+      "address": "0x8035020c"
+    }
+  ]
 }
