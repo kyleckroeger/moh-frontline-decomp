@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 986464,
+    "matching_code_bytes": 986904,
     "total_executable_code_bytes": 1414572,
-    "percent": 69.73586356862712,
+    "percent": 69.76696838336967,
     "categories": {
-      "reconstructed_game": 756472,
+      "reconstructed_game": 756912,
       "restored_library": 229992
     },
-    "matching_functions": 4596
+    "matching_functions": 4597
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1263,7 +1263,7 @@
     "config/GMFE69/world_volume_dtor.json": "9620bdd73a7debc54232c618fc9a16c093d8eed24eeb73aee499db1d2c472735",
     "config/GMFE69/world_volume_edit.json": "938e7a176d62bb7c82fe0867f6510f20476e45e338f38db5af4eeff77b8a9d6a",
     "config/GMFE69/world_volume_list.json": "26915355228a63f644959d7487b1714a059e5564b0db40635ef25bcf541a587c",
-    "config/GMFE69/world_volume_remove.json": "35cb1e34e7e85ad2566e44fa12748e36df471e81e265f4a9da603733f38e6b69",
+    "config/GMFE69/world_volume_remove.json": "0251abdec4109a2f02fc975d8ea84ce3d82acc322248d1a318a72294bad0940b",
     "config/GMFE69/world_volume_subvol.json": "967349cf57417a3d3b366ee3eb21fdf4ca3fde7046da55e825c82dd2dc3d8a5a",
     "include/dolphin-sdk/charPipeline/fileCache.h": "9fc5bbfba874376ec1d239271cda99d84c256b2bd07f884d1177bee6b705b985",
     "include/dolphin-sdk/charPipeline/structures/HTable.h": "e1e36439d044200512635bc37470f318258d75767fad9ec2d9c407f9c0ee1af8",
@@ -3087,7 +3087,7 @@
     "src/game/world_volume_dtor.cpp": "df34c0515a72275269005d77f24602248d41423c0988bf9c22670a4b2b33886d",
     "src/game/world_volume_edit.cpp": "5f597d95dc56764a4cc65be86d9ceae9860da9ee6f37780708b4b4549851458b",
     "src/game/world_volume_list.cpp": "1e7bf4e425352d630a3d6cdf70d16bc6cc19ed06675f44c597f0aeebadd945bc",
-    "src/game/world_volume_remove.cpp": "e19fc7db2e76f258929ddeeffa067582a6f20799d04b61bccc3e97d21528cdbb",
+    "src/game/world_volume_remove.cpp": "11183a1a21f04bb07fedaf8f225649c41113c3a5d03061103778ca2803e7462e",
     "src/game/world_volume_subvol.cpp": "798b2639c619e5396c6c2cdb0bba2f16e3b2608c749f54855b8fe25531fd9dc2",
     "src/msl/Gecko_ExceptionPPC_endcatch.cp": "69aa4c4994f22b385dbdc5a8fa6f74af9118de8e80c1a17a35de5ac721e02789",
     "src/msl/Gecko_ExceptionPPC_find.cp": "2b6933b536967b6e772ba87f14759adeeea17a5af8531f9a0d5c70338c0f0017",
@@ -52958,8 +52958,8 @@
     {
       "id": "world_volume_remove",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 80,
+      "functions": 2,
+      "code_bytes": 520,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -52991,8 +52991,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "dd7dc04f96f4434a9d41d7e06ee0cf6cd030803bd44f446ce011dd4371957a84",
-      "linked_sha256": "32a9abfb51cdf0ed6d3807da144e15a9947225bd113e80ddf057f39c2e7decd3"
+      "object_sha256": "274871f38a612af49bc5627452baf1f00505cf0eb176944d25ff49b23b1af3a2",
+      "linked_sha256": "634c8b5aa65421a357d2de5f9b3fe7b586fbd5fb79aab9e8d4f165febb54ca2d"
     },
     {
       "id": "thrownbullet_explosion",
@@ -56405,13 +56405,6 @@
         "file_record": 134,
         "file_name": "world_volume.cpp",
         "ranges": [
-          {
-            "address": "0x800cbf6c",
-            "size": 440,
-            "kind": "function",
-            "name": "AddSubVolume__12CWorldVolumeFRC10CCDBObject",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800cc29c",
             "size": 132,

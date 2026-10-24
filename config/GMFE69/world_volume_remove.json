@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800cbf1c",
-      "size": 80,
+      "size": 520,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e204",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015068",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "RemoveSubVolume__12CWorldVolumeFRC10CCDBObject",
       "address": "0x800cbf1c",
       "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "AddSubVolume__12CWorldVolumeFRC10CCDBObject",
+      "address": "0x800cbf6c",
+      "size": 440,
       "binding": 1
     }
   ],
@@ -74,5 +80,22 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "world_volume.cpp",
-  "original_file_index": 7792
+  "original_file_index": 7792,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350c48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350c4c"
+    }
+  ]
 }
