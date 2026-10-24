@@ -1,0 +1,87 @@
+{
+  "id": "sdrv_play",
+  "source": "src/ea/sdrv_play.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8016b788",
+      "size": 968,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "SNDPLATFORM_packetplay__FiiiiiiP15SNDSAMPLEFORMATPPv",
+      "address": "0x8016b788",
+      "size": 968,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ARQPostRequest": "0x8011f45c",
+    "AXSetVoiceSrcType": "0x80121aac",
+    "DCFlushRange": "0x80111880",
+    "MIXplayfn": "0x8034f4a8",
+    "MIXplayinitfn": "0x8034f4a4",
+    "OSDisableInterrupts": "0x801135cc",
+    "OSRestoreInterrupts": "0x801135f4",
+    "SNDDRV_allocateaxvoice__Fi": "0x80169084",
+    "SNDDRV_dmcallback__FUl": "0x80169384",
+    "SNDPLATFORM_highpass__Fii": "0x8016c364",
+    "SNDPLATFORM_lowpass__Fii": "0x8016c270",
+    "SNDPLATFORM_set3dpos__Fi": "0x8016bdfc",
+    "SNDPLATFORM_setfxlevel__Fii": "0x8016dda0",
+    "SNDPLATFORM_setpitch__Fi": "0x8016c0a0",
+    "SNDPLATFORM_setvol__Fi": "0x8016bbbc",
+    "SNDPLATFORM_timemult__Fii": "0x8016c1e8",
+    "_restgpr_18": "0x80138a38",
+    "_savegpr_18": "0x801389ec",
+    "memset": "0x80009410",
+    "snddrv": "0x80341a20",
+    "sndgs": "0x80340860"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "MIXplayfn",
+    "MIXplayinitfn"
+  ],
+  "original_file": "snddrv.c",
+  "original_file_index": 13274
+}
