@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80048e10",
-      "size": 220,
+      "size": 1144,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a6e4",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011804",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,9 +68,18 @@
       "address": "0x80048e98",
       "size": 84,
       "binding": 1
+    },
+    {
+      "name": "IsObjectInFieldOfView__9CAIObjectFR21CAIFilterRealPositionffb",
+      "address": "0x80048eec",
+      "size": 924,
+      "binding": 1
     }
   ],
   "externals": {
+    "CheckVisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c370",
+    "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
+    "cos": "0x80143228",
     "memcpy": "0x800094f8",
     "printf": "0x8013dc88"
   },
@@ -100,6 +109,18 @@
       "address": "0x8016f700"
     },
     {
+      "section": ".rodata",
+      "offset": 128,
+      "size": 64,
+      "address": "0x8016f740"
+    },
+    {
+      "section": ".rodata",
+      "offset": 192,
+      "size": 63,
+      "address": "0x8016f640"
+    },
+    {
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
@@ -110,6 +131,54 @@
       "offset": 4,
       "size": 4,
       "address": "0x8034f8ac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f830"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f838"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f8b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f8b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f860"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x8034f868"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x8034f870"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x8034f878"
     }
   ]
 }
