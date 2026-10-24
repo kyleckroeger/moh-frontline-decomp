@@ -1243,7 +1243,8 @@
     "stagpat.json",
     "box_visibility.json",
     "pathx_create.json",
-    "cdbgeom_triangle_line.json"
+    "cdbgeom_triangle_line.json",
+    "capsule_capsule.json"
   ],
   "progress": {
     "code_bytes": 1414572,

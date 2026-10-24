@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 974616,
+    "matching_code_bytes": 975936,
     "total_executable_code_bytes": 1414572,
-    "percent": 68.89829573892315,
+    "percent": 68.99161018315081,
     "categories": {
-      "reconstructed_game": 744624,
+      "reconstructed_game": 745944,
       "restored_library": 229992
     },
-    "matching_functions": 4580
+    "matching_functions": 4581
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -528,6 +528,7 @@
     "config/GMFE69/camera_dtor.json": "8fda5d013b822dddd4ca34337ca7d0e498694d558397e2429fb3bd14cd03a8c7",
     "config/GMFE69/camera_frustum.json": "dd868911c0bb5f7130e480dea97aea615832a43bd844faae55322f42dd291934",
     "config/GMFE69/camera_rows.json": "bbe0bc8ff855b92142797d1a0234c6260f5d35658054c1466942ed0b3696ca65",
+    "config/GMFE69/capsule_capsule.json": "4d48460d8f4028c04dafa8cda8d8567ec3158eeaedd087faa9370cfe43dbffb9",
     "config/GMFE69/capsule_create.json": "7ea379e9f4627abeeeaad959530bebd332ea158e9e77b0b66fe4115669d57173",
     "config/GMFE69/capsule_dispatch.json": "8d4ce50085d048b2ca15db431aa32afcb32d3faf6e2d9555a17e8dd9ed937f06",
     "config/GMFE69/capsule_dispatch2.json": "72621c946bdd4e654f8af699c5ac013a53cf88b06aa3493775bddc68a81c9721",
@@ -876,7 +877,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "37658ffaa95383d9c735e26314da6be0079cb6a500f9a70e70cea99c76802a80",
+    "config/GMFE69/project.json": "d4b72eea0c3dc9af05954589aa2caf80099e7735cfd6ca72e235e3a923cd02d2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2679,6 +2680,7 @@
     "src/game/camera_dtor.cpp": "0ff34e7089128735738983773a98dc0b02813b2b745d1de37624412931e1f637",
     "src/game/camera_frustum.cpp": "6c984410c5cae5c6c47f780616a3c4fab96f8dcd81bbbfe72fc8d7af30ea3d78",
     "src/game/camera_rows.cpp": "bf8833d841550fe27d4238b02483df0be65824149850ad1d54614eca167330d0",
+    "src/game/capsule_capsule.cpp": "617116a30a584fe24af2a8e30a2f9a5468c2bc957abc3d3e4e557d24ab443c1e",
     "src/game/capsule_create.cpp": "e5bdd4e3000036dbae68266376af90a76a315822e580f2da15283faec1d3127b",
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
     "src/game/capsule_dispatch2.cpp": "11e72f277d2f9f76a1177319d991eff35084442fd4fd00356fba38ecc6ff3fe6",
@@ -53964,6 +53966,45 @@
       "discarded_functions": [],
       "object_sha256": "dfaa214090d4d203cdfaa735abe9faea0820e7e4cbec91edf4b9834ca799bf51",
       "linked_sha256": "9199f2d503c08294b2716706664564dec52c3147f3775ed58189968a1a548097"
+    },
+    {
+      "id": "capsule_capsule",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1320,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "004ccf68d010ef74313b96f7a5ac4b4127ab2ff7f94fc91a9ba06af68b992cab",
+      "linked_sha256": "bbf76edf815a072233044bcb88c163b770f12c2b3a40c4f0c8a72e46dde63c16"
     }
   ],
   "code_map": {
@@ -56330,13 +56371,6 @@
             "kind": "function",
             "name": "FindIntersection__FRC6CLine3RC11CVolCapsulePf",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800c69b0",
-            "size": 1320,
-            "kind": "function",
-            "name": "TestCollision__11CVolCapsuleCFRC11CVolCapsuleR10CCollisionb",
-            "evidence": "exception-index"
           }
         ]
       },

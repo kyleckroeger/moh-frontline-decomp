@@ -1,0 +1,127 @@
+{
+  "id": "capsule_capsule",
+  "source": "src/game/capsule_capsule.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800c69b0",
+      "size": 1320,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000de54",
+      "size": 24,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 32
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014d08",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "TestCollision__11CVolCapsuleCFRC11CVolCapsuleR10CCollisionb",
+      "address": "0x800c69b0",
+      "size": 1320,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "GetProjection__6CLine3CF8CVector3R8CVector3Rf": "0x80092b28",
+    "GetSquaredDistanceBetweenSegments__6CLine3CFRC6CLine3RfRfPf": "0x80092344",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__6CLine3Fv": "0x8001c5d0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
+  "original_file": "capsule.cpp",
+  "original_file_index": 7537,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b7c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350b88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350b90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350b80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350b78"
+    }
+  ]
+}
