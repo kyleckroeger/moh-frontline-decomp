@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x80064508",
-      "size": 448,
+      "size": 1940,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b420",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012530",
-      "size": 36,
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fc88",
+      "size": 16,
       "type": 1
     }
   ],
@@ -61,6 +67,12 @@
       "name": "AnimSystem_Shutdown",
       "address": "0x80064508",
       "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "_AnimIntfOpcodeProcess__14CAnimCallbacksFPvUsUl",
+      "address": "0x800646c8",
+      "size": 1492,
       "binding": 1
     },
     {
@@ -82,11 +94,19 @@
     "AnimSeqGetOpcodeParameter": "0x80066094",
     "AnimSetUserOpcodeCallbacks": "0x800691c8",
     "AnimShutdown": "0x800691e4",
+    "AnimStGetCurrentState": "0x800670ac",
     "AnimStInit": "0x80067c9c",
     "AnimStShutdown": "0x80067c80",
     "AnimWgtInit": "0x80069010",
     "AnimWgtShutdown": "0x80069008",
-    "_AnimIntfOpcodeProcess__14CAnimCallbacksFPvUsUl": "0x800646c8",
+    "FinishAnimationState__9CAnimatedFUs": "0x80061384",
+    "PlayAnimTriggeredSound__FlP11CAnimObject": "0x800eb824",
+    "PlayEnemyMovement__FUslP11CAnimObject": "0x800eb8b0",
+    "PlayReloadSound__FlP11CAnimObject": "0x800eb4b8",
+    "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
+    "SetHeadTrackPlayer__14CSoldierObjectFbi": "0x800a9bb4",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_inputMgr": "0x801ec80c",
     "sprintf": "0x8013dab4"
   },
   "undefined_in_discarded_code": [],
@@ -94,7 +114,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "animintf.cpp",
   "original_file_index": 2957,
   "pooled_sections": [
