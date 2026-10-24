@@ -1241,7 +1241,8 @@
     "smemcpy.json",
     "fiber_extents.json",
     "stagpat.json",
-    "box_visibility.json"
+    "box_visibility.json",
+    "pathx_create.json"
   ],
   "progress": {
     "code_bytes": 1414572,

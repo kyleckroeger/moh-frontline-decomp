@@ -1,0 +1,100 @@
+{
+  "id": "pathx_create",
+  "source": "src/ea/pathx_create.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800e9574",
+      "size": 1148,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PATHX_createtrack",
+      "address": "0x800e9574",
+      "size": 1148,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "FILESYS_closesync": "0x8014a130",
+    "FILESYS_opensync": "0x8014a088",
+    "FILESYS_readsync": "0x8014a108",
+    "FILE_size": "0x8014de68",
+    "MEM_allocz": "0x8014f80c",
+    "MEM_free": "0x8014f83c",
+    "SNDSTRM_create": "0x8015becc",
+    "SNDbankadd": "0x80159474",
+    "SNDbankheadercopy": "0x801597e8",
+    "SNDbankheadersize": "0x801597cc",
+    "SNDplaysetdef": "0x8015d458",
+    "pathxinfo": "0x801f7410",
+    "sprintf": "0x8013dab4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "pathxSND.c",
+  "original_file_index": 8920,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 9,
+      "address": "0x80178ec0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
+      "size": 9,
+      "address": "0x80178ecc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 3,
+      "address": "0x80350fb8"
+    }
+  ]
+}
