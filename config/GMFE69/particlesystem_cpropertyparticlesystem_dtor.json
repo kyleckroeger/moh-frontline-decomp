@@ -40,27 +40,33 @@
     {
       "name": ".text",
       "address": "0x8007f364",
-      "size": 108,
+      "size": 1160,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c0f4",
-      "size": 8,
+      "size": 36,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 16
+      "linked_size": 52
     },
     {
       "name": "extabindex",
       "address": "0x800130c4",
-      "size": 12,
+      "size": 24,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 48
     }
   ],
   "functions": [
+    {
+      "name": "__ct__23CPropertyParticleSystemFP19MOH_particle_Struct",
+      "address": "0x8007f3d0",
+      "size": 1052,
+      "binding": 1
+    },
     {
       "name": "__dt__23CPropertyParticleSystemFv",
       "address": "0x8007f364",
@@ -69,18 +75,30 @@
     }
   ],
   "externals": {
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CRenderBinFv": "0x80074290",
+    "__dt__15CParticleSystemFv": "0x800811b4",
     "__vt__10CRenderBin": "0x80183c5c",
     "__vt__15CParticleSystem": "0x80184c08",
-    "__vt__23CPropertyParticleSystem": "0x80184b34"
+    "__vt__23CPropertyParticleSystem": "0x80184b34",
+    "g_ParticleSystemManager": "0x801df69c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_ParticleSystemManager"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "particlesystem.cpp",
   "original_file_index": 4057,
   "stripped_sections": [
@@ -89,5 +107,19 @@
   "weak_duplicates": [
     "__dt__10CRenderBinFv",
     "__vt__10CRenderBin"
+  ],
+  "file_duplicates": [
+    "__dt__15CParticleSystemFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fff8"
+    }
   ]
 }
