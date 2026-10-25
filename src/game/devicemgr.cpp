@@ -12,7 +12,15 @@
 // fades out, 75 + 180 * level scaled by the remaining time; others use the
 // level), clamped (above 230 -> 255, below 25 -> 0) and split into on and off
 // times of a 0.1 s period; it switches the motor when the state changed and
-// returns whether it ran. CDeviceManager and CGCDevice are named by the
+// returns whether it ran. CGCDevice::Update reads the device's pad: an
+// error-free or transfer-error pad marks the device ready (and connected), a
+// missing one is reset and, if it had been connected, marks it not ready;
+// then the buttons, both sticks (scaled and stretched from the circular gate
+// towards the square, 1 + 0.8 * the minor/major axis ratio), the triggers
+// (scaled 1.7, also setting button bits 0x40/0x20 above 32), the analog A/B
+// buttons and two axes derived from the button-mapped slots of the sticks
+// (the mapping tables are file statics) are stored. CDeviceManager and
+// CGCDevice are named by the
 // mangled symbols; the device and actuator layouts, the pad data view and the
 // table's type are inferred from offsets. Init clears 12 bytes from offset 10,
 // which runs into the first two bytes of the actuator at offset 20. In
@@ -25,7 +33,15 @@ void* memcpy(void*, const void*, unsigned long);
 }
 
 struct PADDATAVIEW {
-    unsigned char unknown00[10];
+    unsigned short button;
+    signed char stickX;
+    signed char stickY;
+    signed char substickX;
+    signed char substickY;
+    unsigned char triggerL;
+    unsigned char triggerR;
+    unsigned char analogA;
+    unsigned char analogB;
     signed char err;
 };
 
@@ -33,7 +49,14 @@ extern "C" {
 PADDATAVIEW* PAD_getdataptr(int);
 void PAD_update();
 int PADControlMotor(int, unsigned long);
+int PADReset(unsigned long);
 }
+
+inline double fabs(double x) { return __fabs(x); }
+
+extern unsigned long g_connectedBits;
+extern unsigned char s_minus_buttons[2];
+extern unsigned char s_plus_buttons[2];
 
 class Pause {
 public:
@@ -241,4 +264,64 @@ bool CGCDevice::UpdateActuators(float time) {
             PADControlMotor(m_port, 0);
     }
     return true;
+}
+
+void CGCDevice::Update() {
+    PADDATAVIEW* pad = PAD_getdataptr(m_port);
+    unsigned long mask = 0x80000000 >> m_port;
+    switch (pad->err) {
+    case 0:
+    case -3:
+        g_connectedBits |= mask;
+        m_ready = true;
+        break;
+    case -1:
+        PADReset(mask);
+        if (mask & g_connectedBits)
+            m_ready = false;
+        break;
+    default:
+        m_ready = false;
+        break;
+    }
+    if (m_ready) {
+        *(unsigned short*)m_state = pad->button;
+        float x = 1.76 * pad->stickX;
+        float y = 1.76 * -pad->stickY;
+        float sx = 2.15 * pad->substickX;
+        float sy = 2.15 * -pad->substickY;
+        float ratio;
+        if (fabs(x) > fabs(y))
+            ratio = fabs(y) / fabs(x);
+        else if (y != 0.0f)
+            ratio = fabs(x) / fabs(y);
+        else
+            ratio = 1.0f;
+        double scale = 0.8 * ratio + 1.0;
+        x *= scale;
+        y *= scale;
+        if (fabs(sx) > fabs(sy))
+            ratio = fabs(sy) / fabs(sx);
+        else if (sy != 0.0f)
+            ratio = fabs(sx) / fabs(sy);
+        else
+            ratio = 1.0f;
+        scale = 0.8 * ratio + 1.0;
+        sx *= scale;
+        sy *= scale;
+        m_cleared[0] = 128.0f + x;
+        m_cleared[1] = 128.0f + y;
+        m_cleared[2] = 128.0f + sx;
+        m_cleared[3] = 128.0f + sy;
+        m_cleared[4] = 1.7 * pad->triggerL;
+        m_cleared[5] = 1.7 * pad->triggerR;
+        if (m_cleared[4] > 32)
+            *(unsigned short*)m_state |= 0x40;
+        if (m_cleared[5] > 32)
+            *(unsigned short*)m_state |= 0x20;
+        m_cleared[6] = pad->analogA * 17;
+        m_cleared[7] = pad->analogB * 17;
+        m_cleared[8] = ((m_cleared[s_plus_buttons[0]] - m_cleared[s_minus_buttons[0]]) >> 1) + 128;
+        m_cleared[9] = ((m_cleared[s_plus_buttons[1]] - m_cleared[s_minus_buttons[1]]) >> 1) + 128;
+    }
 }
