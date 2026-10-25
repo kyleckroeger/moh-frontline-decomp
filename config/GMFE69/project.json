@@ -1257,7 +1257,8 @@
     "Pause_update.json",
     "path_crossfade.json",
     "stagpat_playpatch.json",
-    "anim_obj_ground.json"
+    "anim_obj_ground.json",
+    "proxtrig_point.json"
   ],
   "progress": {
     "code_bytes": 1414572,

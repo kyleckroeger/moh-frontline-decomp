@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1009156,
+    "matching_code_bytes": 1010064,
     "total_executable_code_bytes": 1414572,
-    "percent": 71.34002369621341,
+    "percent": 71.40421272300031,
     "categories": {
-      "reconstructed_game": 779164,
+      "reconstructed_game": 780072,
       "restored_library": 229992
     },
-    "matching_functions": 4631
+    "matching_functions": 4632
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -887,7 +887,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "8ab18c8aee61ade8c0d28bcd3fcd5eb6e30954c306ec00e8c698d3300a5d140b",
+    "config/GMFE69/project.json": "b5b457edfdb78a4f8ba5f2a025e7f76bc0f323e6ef130e1bcf5777d44fcf80f2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -905,6 +905,7 @@
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
     "config/GMFE69/propdat_restart.json": "e5671a4af8c8020ce582f367cf4698b47126faa7d190804633b8ec42cccfab7f",
     "config/GMFE69/proxtrig_leafs.json": "86f686d585276cfe2c961d694a16196f5c7dccf5e486654378c5903c60318a49",
+    "config/GMFE69/proxtrig_point.json": "986a1d99c93a91804c53884a34c41cebe04bf10ed6e260e8dffe277eb842b7bb",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "89c7f107dc348d73abd19bedbaf5b7c4ad534145f63e8a71a9ab5646117cd718",
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
@@ -2955,6 +2956,7 @@
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
     "src/game/propdat_restart.cpp": "fbbc2820cf6df3937fdf86cece40194167025b89b0761ae6f23c7cae5464c7e5",
     "src/game/proxtrig_leafs.cpp": "e8c0a8365515453c9b939a9e0115f55ce91d80c7413ae0ced407e97c0a26ecf8",
+    "src/game/proxtrig_point.cpp": "2236db4ff136362c0b57b3899759e2a39f2d9ee1178dfba335ba1393d0addacc",
     "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
@@ -54544,6 +54546,45 @@
       "discarded_functions": [],
       "object_sha256": "2327ae416904183bd2ee1d3786925923c5407ca8d8b80e5820246528c56eef19",
       "linked_sha256": "f82a7d1da41f6759fe76ee2a16257b9cf91c029e701c522030b17c3232a0b5e5"
+    },
+    {
+      "id": "proxtrig_point",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 908,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "b652bfec656cfb1ea11f34236751b6b7ca083b9057be83c2d6eb272b8d314b83",
+      "linked_sha256": "400ed38a4898ecd9793d9e617c3fb07038bbc97f06a4db0a2f1ce84354608603"
     }
   ],
   "code_map": {
@@ -55056,13 +55097,6 @@
         "file_record": 23,
         "file_name": "proxtrig.cpp",
         "ranges": [
-          {
-            "address": "0x80044d3c",
-            "size": 908,
-            "kind": "function",
-            "name": "IsPointInTrigger__FRC8CVector3PC20TriggerObject_struct",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800450c8",
             "size": 292,
