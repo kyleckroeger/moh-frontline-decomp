@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8002a034",
-      "size": 416,
+      "size": 944,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009d0c",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010958",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,13 +68,23 @@
       "address": "0x8002a034",
       "size": 224,
       "binding": 1
+    },
+    {
+      "name": "PlaySoundFromTriggerOrObject__FP20TriggerObject_structP8BSObjectPviiR8CVector3",
+      "address": "0x8002a1d4",
+      "size": 528,
+      "binding": 1
     }
   ],
   "externals": {
-    "PlaySoundFromTriggerOrObject__FP20TriggerObject_structP8BSObjectPviiR8CVector3": "0x8002a1d4",
+    "GetSoundEvent__11CSoundTableCFiiiPQ211CSoundTable11SSoundParms": "0x800edf78",
+    "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
-    "g_pBuiltInFunctions": "0x8034e778"
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_soundMapSingleton": "0x8034ece8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -82,9 +92,11 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_bInMultiplayerMode",
     "g_iCurrentBIFIndex",
     "g_pBSObject",
-    "g_pBuiltInFunctions"
+    "g_pBuiltInFunctions",
+    "g_soundMapSingleton"
   ],
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
