@@ -1254,7 +1254,8 @@
     "filedev_async.json",
     "UserInterface_score.json",
     "pumhandler_add.json",
-    "Pause_update.json"
+    "Pause_update.json",
+    "path_crossfade.json"
   ],
   "progress": {
     "code_bytes": 1414572,
