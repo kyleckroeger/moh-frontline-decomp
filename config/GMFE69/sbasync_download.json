@@ -38,11 +38,17 @@
     {
       "name": ".text",
       "address": "0x80159d08",
-      "size": 900,
+      "size": 1640,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDBANKI_asyncservice__Fv",
+      "address": "0x8015a08c",
+      "size": 740,
+      "binding": 1
+    },
     {
       "name": "SNDBANKI_asyncissuedownloads__Fv",
       "address": "0x80159d08",
@@ -66,7 +72,10 @@
     "SNDBANKI_asyncxferhdr__Fv": "0x80159bdc",
     "SNDPLATFORM_download__FiPvPvi": "0x8016c698",
     "SNDPLATFORM_downloadcomplete__Fi": "0x8016c868",
+    "SNDPLATFORM_memalloc__Fii": "0x8016c600",
+    "SNDSYS_add100hzclient": "0x801535bc",
     "SNDSYS_remove100hzclient": "0x801535f4",
+    "iSNDserverremoveclient__FPFv_v": "0x80153110",
     "sndbas": "0x801934e8",
     "sndgs": "0x80340860"
   },

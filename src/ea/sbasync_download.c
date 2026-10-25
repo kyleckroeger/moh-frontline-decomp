@@ -7,7 +7,12 @@
    completes reads, copies the header, retires finished downloads, issues
    more downloads and reads, and when everything is read and downloaded
    closes the file, removes itself, stores the bank in its slot and resolves
-   the bank's patches against its destination. The load and read-record views follow sbasync.c and are
+   the bank's patches against its destination. SNDBANKI_asyncservice, the
+   loader's server client while the file opens and the header is read,
+   finishes the open (or fails the load), then, once the header read is
+   complete, sizes the load from the file header, allocates the header copy
+   and the download buffer, retires finished downloads and hands over to
+   SNDBANKI_asyncserver. The load and read-record views follow sbasync.c and are
    inferred from offsets (the two counters at +0x3c/+0x3e are shared with
    the header copy); SNDPLATFORM_download and sndbas are named by the
    symbols. The rest of the file is in other units. */
@@ -17,6 +22,10 @@ void SNDBANKI_asynccompletereads(void);
 void SNDBANKI_asyncxferhdr(void);
 void SNDBANKI_asyncissuereads(void);
 void SNDBANKI_asyncserver(void);
+void SNDBANKI_asyncservice(void);
+void SNDBANKI_asyncissuedownloads(void);
+void* SNDPLATFORM_memalloc(int, int);
+void iSNDserverremoveclient(void (*)(void));
 struct TAGGEDPATCH;
 void SNDBANKI_asyncresolvepatch(int, TAGGEDPATCH*, char*, int*);
 extern "C" {
@@ -24,6 +33,7 @@ int FILESYS_close(int, int, void*);
 int FILESYS_opstatus(int);
 int FILESYS_completeop(int);
 void SNDSYS_remove100hzclient(void (*)(void));
+void SNDSYS_add100hzclient(void (*)(void));
 }
 
 struct SndBankReadView {
@@ -35,10 +45,12 @@ struct SndBankReadView {
 };
 
 struct SndBankLoadView {
-    unsigned char unknown00[8];
+    unsigned char active;
+    unsigned char unknown01[3];
+    int openOp;
     int closeOp;
     char* header;
-    unsigned char unknown10[4];
+    void* (*alloc)(int);
     int fileOffset;
     int file;
     int partial;
@@ -59,7 +71,7 @@ struct SndBankLoadView {
 struct SndBankAsyncView {
     SndBankLoadView* load;
     int priority;
-    int unknown08;
+    int error;
 };
 
 extern SndBankAsyncView sndbas;
@@ -192,5 +204,61 @@ void SNDBANKI_asyncserver(void) {
             finishload();
             sndbas.load = 0;
         }
+    }
+}
+
+/* Inferred: the bank file's header (header and data sizes at +8 and +12). */
+struct SndBankFileHeaderView {
+    unsigned char unknown00[8];
+    int headerSize;
+    int dataSize;
+};
+
+void SNDBANKI_asyncservice(void) {
+    SndBankReadView* read;
+    int status;
+
+    if (sndbas.load->openOp) {
+        status = FILESYS_opstatus(sndbas.load->openOp);
+        if (status == 1) {
+            sndbas.load->file = FILESYS_completeop(sndbas.load->openOp);
+            sndbas.load->openOp = 0;
+            SNDBANKI_asyncissuereads();
+        } else {
+            if (status == 0)
+                return;
+            FILESYS_completeop(sndbas.load->openOp);
+            sndbas.error = -19;
+            if (sndbas.load->active)
+                iSNDserverremoveclient(SNDBANKI_asyncservice);
+            sndgs.banks[sndbas.load->bank].header = 0;
+            sndgs.banks[sndbas.load->bank].loading = 0;
+            sndbas.load = 0;
+            return;
+        }
+    }
+    read = &sndbas.load->reads[0];
+    if (FILESYS_opstatus(read->op) == 1) {
+        FILESYS_completeop(read->op);
+        read->state = 2;
+        sndbas.load->completed++;
+        iSNDserverremoveclient(SNDBANKI_asyncservice);
+        sndbas.load->active = 0;
+        sndbas.load->header = read->buffer;
+        sndbas.load->headerRemaining = ((SndBankFileHeaderView*)sndbas.load->header)->headerSize;
+        sndbas.load->size = ((SndBankFileHeaderView*)sndbas.load->header)->headerSize;
+        sndbas.load->remaining = ((SndBankFileHeaderView*)sndbas.load->header)->dataSize;
+        sndbas.load->size += ((SndBankFileHeaderView*)sndbas.load->header)->dataSize;
+        sndbas.load->header = (char*)sndbas.load->alloc(((SndBankFileHeaderView*)sndbas.load->header)->headerSize);
+        if (sndbas.load->remaining)
+            sndbas.load->dest = (char*)SNDPLATFORM_memalloc(0x200, sndbas.load->remaining + 0x40);
+        else
+            sndbas.load->dest = 0;
+        SNDBANKI_asynccompletereads();
+        SNDBANKI_asyncxferhdr();
+        retiredownloads();
+        SNDBANKI_asyncissuedownloads();
+        SNDBANKI_asyncissuereads();
+        SNDSYS_add100hzclient(SNDBANKI_asyncserver);
     }
 }
