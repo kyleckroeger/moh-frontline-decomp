@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x801080c8",
-      "size": 372,
+      "size": 788,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fd5c",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016b08",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "YUV_convert__FPPUciiiiiPviii",
+      "address": "0x8010823c",
+      "size": 416,
+      "binding": 0
+    },
     {
       "name": "CompleteDraw__7GCSW_VDFv",
       "address": "0x801080c8",
@@ -91,13 +97,13 @@
   "externals": {
     "ReleaseFrame__Q24RCMP7DECODERFPQ24RCMP5FRAME": "0x80105304",
     "VIWaitForRetrace": "0x8011b738",
-    "YUV_convert__FPPUciiiiiPviii": "0x8010823c"
+    "YUV_WriteRow__FPUcPUcPUcPci": "0x801083dc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "YUV_convert__FPPUciiiiiPviii"
+    "YUV_WriteRow__FPUcPUcPUcPci"
   ],
   "discarded_local_functions": [],
   "sda_externals": [],

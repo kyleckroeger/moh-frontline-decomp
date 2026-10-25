@@ -6,7 +6,11 @@
 // GCSW_VD, RCMP::FRAME and RCMP::DECODER are named by the mangled symbols;
 // the virtual functions are declared in the order of __vt__7GCSW_VD; the
 // members and the frame-header and display-target views are inferred from
-// offsets. The rest of the file is not part of this unit.
+// offsets. YUV_convert (file-local) clips the destination rectangle to the
+// display, skipping clipped source rows and columns in the three planes, and
+// writes each source row twice through YUV_WriteRow into the uncached
+// (0x40000000) mirror of the buffer. The rest of the file is not part of this
+// unit.
 
 /* inferred view of the decoded frame's header */
 struct FrameHeaderView {
@@ -42,7 +46,8 @@ struct DisplayTargetView {
 };
 
 extern "C" void VIWaitForRetrace(void);
-void YUV_convert(unsigned char**, int, int, int, int, int, void*, int, int, int);
+static int YUV_convert(unsigned char**, int, int, int, int, int, void*, int, int, int);
+void YUV_WriteRow(unsigned char*, unsigned char*, unsigned char*, char*, int);
 
 class GCSW_VD {
 public:
@@ -99,4 +104,43 @@ void GCSW_VD::SetScale(float, float) {
 void GCSW_VD::SetPosition(float x, float y, float) {
     m_x = x;
     m_y = y;
+}
+
+static int YUV_convert(unsigned char** planes, int x, int y, int stride, int width, int height, void* dst, int maxw, int maxh,
+                       int pitch) {
+    char* uncached = (char*)dst + 0x40000000;
+    int halfwidth = width >> 1;
+    int i;
+
+    if (x < 0) {
+        int d = -x;
+        width -= d;
+        planes[0] += d;
+        planes[1] += d / 2;
+        planes[2] += d / 2;
+        x = 0;
+    }
+    if (y < 0) {
+        int d = -y;
+        int offset = d;
+        offset *= stride;
+        height -= d;
+        planes[0] += offset;
+        planes[1] += (d / 2) * (stride / 2);
+        planes[2] += (d / 2) * (stride / 2);
+        y = 0;
+    }
+    if (x + width > maxw)
+        width -= x + width - maxw;
+    if (y + height > maxh)
+        height -= y + height - maxh;
+    for (i = 0; i < height; i++) {
+        unsigned char* yrow = planes[0] + i * width;
+        unsigned char* urow = planes[1] + halfwidth * (i >> 1);
+        unsigned char* vrow = planes[2] + halfwidth * (i >> 1);
+
+        YUV_WriteRow(yrow, urow, vrow, uncached + x * 2 + pitch * 2 * (y + i * 2), width);
+        YUV_WriteRow(yrow, urow, vrow, uncached + x * 2 + pitch * 2 * (y + (i * 2 + 1)), width);
+    }
+    return 0;
 }
