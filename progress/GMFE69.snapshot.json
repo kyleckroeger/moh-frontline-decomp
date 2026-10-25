@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1001128,
+    "matching_code_bytes": 1002456,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.7725022126834,
+    "percent": 70.8663821989973,
     "categories": {
-      "reconstructed_game": 771136,
+      "reconstructed_game": 772464,
       "restored_library": 229992
     },
-    "matching_functions": 4621
+    "matching_functions": 4622
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -214,6 +214,7 @@
     "config/GMFE69/Pause_reset.json": "0541833ccc8dbd3e167ec5ffd165607e5f4b8c74ede37929bca1e032c9885957",
     "config/GMFE69/Pause_tail.json": "8d8de43bb61aad5ba637b493cd7d0f2e90ead550a022066e1fa2fbb797836376",
     "config/GMFE69/Pause_unpause.json": "333bcda2887093a76c485bc62afbb428fd24e96da4fa0d3fbe56257f9b8e86c4",
+    "config/GMFE69/Pause_update.json": "6bcded5a8e83587e841e7cb6a2793770bb89bb65cb878b1870dd9ce5f4ba7955",
     "config/GMFE69/SIBios.json": "ef42fc4b95402bef0544ec5fe1a10c75781171f56afba7954318d42020fd6c1a",
     "config/GMFE69/SISamplingRate.json": "e4def7467ec8d82fdb9730412721675a9ea0e7ce572d5b8b63e89c3bdfe1eb84",
     "config/GMFE69/SNDI_cos.json": "d5c3aefe8e26c1df224218b53070a0f6cfec997ed7abca69e4c32fdf3cdcbe3a",
@@ -884,7 +885,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "fbaafda492b5f8c6c7feccaf090d688ddc915e2e8e65da3c9274d07bb8e16e00",
+    "config/GMFE69/project.json": "5848f0f6f36c456876efad4ade49d4df6cd47d555119266a8509fb1d2ae968dd",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2403,6 +2404,7 @@
     "src/game/Pause_reset.cpp": "a03283bbf6a4af122c4d5c85f1ff871e769bcaff341cbc15af5ab9d3d8f06fda",
     "src/game/Pause_tail.cpp": "310007d04a15e06e5d13ad63bc14571c9fafd2fb56d66851af547fb37e6c1e27",
     "src/game/Pause_unpause.cpp": "ce619ade12ef215f4aa85cb7d5f8e9a7b23aa483a4180d456210c0df3c22cfa1",
+    "src/game/Pause_update.cpp": "84240e06c5c00cfd56b07929f12aee321ad16228cf7ea313890c88f377b5fc85",
     "src/game/Screen.cpp": "0b47fba2c4a802813d22b67c3ec1cba6ef4fc2076bd15fea9fc14e359302e29e",
     "src/game/Screen_cscreen_dtor.cpp": "16b88fd6b39e647df57290d73d174d4b58e9cfd9cec034eb535c25518d1f832d",
     "src/game/Screen_cscreenfieldmode_dtor.cpp": "e6bea55f3444224efcdd80c48f290037f2f92ed4290d47d0016f46c98eaa34f7",
@@ -54378,6 +54380,45 @@
       "discarded_functions": [],
       "object_sha256": "2f1034e7e94fc0661f04c72ecd64c9d44df6fb257eb7b24dab5be98884147d8a",
       "linked_sha256": "daa6bb300e2bd3bc5851776532fa29b7e76c9134571e0f6b9fa68468c148d686"
+    },
+    {
+      "id": "Pause_update",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1328,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "9f2f1cf8f02c2ba116557c418e540002518f4f5a28dbb6a5df5da32125f0aa40",
+      "linked_sha256": "34855012d6240515e25060b1003cf676aa17b9335162037ac6ffe420e4ddd73c"
     }
   ],
   "code_map": {
@@ -56827,13 +56868,6 @@
             "size": 436,
             "kind": "function",
             "name": "PauseDraw__5PauseFUl",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800dd98c",
-            "size": 1328,
-            "kind": "function",
-            "name": "PauseUpdate__5PauseFUl",
             "evidence": "exception-index"
           },
           {

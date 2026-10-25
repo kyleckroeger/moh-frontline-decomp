@@ -1,0 +1,160 @@
+{
+  "id": "Pause_update",
+  "source": "src/game/Pause_update.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800dd98c",
+      "size": 1328,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ecb8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001592c",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PauseUpdate__5PauseFUl",
+      "address": "0x800dd98c",
+      "size": 1328,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AEMS_Pause__Fb": "0x800ec3e0",
+    "AEMS_SendEvent__FPv": "0x800ec26c",
+    "GameMessage__FUlUsUsUlP10UISParam_tP10UISParam_t": "0x8008d1ec",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
+    "IsReady__14CDeviceManagerFi": "0x800841b4",
+    "MUSIC_Pause__Fb": "0x800ea5fc",
+    "MathFunClamp<f>__Ffff": "0x800a78f4",
+    "SoundGetVolumes__FRfRf": "0x800ecf4c",
+    "SoundSetMasterVolume__Fi": "0x800ed018",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_PauseScreenLockedController": "0x8034e2c8",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_cheatSequence": "0x801f70e0",
+    "g_cheatSequenceIndex": "0x8034ec98",
+    "g_cheats": "0x80196a94",
+    "g_inputMgr": "0x801ec80c",
+    "g_scene": "0x8019484c",
+    "iSirenActivateScreen__7IStudioFUsUs": "0x8008b6ec",
+    "iSirenUpdate__7IStudioFUl": "0x8008b660",
+    "strncmp": "0x8013fe94"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_cheatSequence",
+    "g_cheatSequenceIndex"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_PauseScreenLockedController",
+    "g_bInMultiplayerMode",
+    "g_cheatSequenceIndex"
+  ],
+  "original_file": "Pause.cpp",
+  "original_file_index": 8565,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 40,
+      "address": "0x80178364"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 6,
+      "address": "0x80350e90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350e98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350ec0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350ea4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350ec4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350ec8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80350eb8"
+    }
+  ]
+}
