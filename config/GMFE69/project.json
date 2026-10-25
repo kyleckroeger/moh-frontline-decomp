@@ -1258,7 +1258,8 @@
     "path_crossfade.json",
     "stagpat_playpatch.json",
     "anim_obj_ground.json",
-    "proxtrig_point.json"
+    "proxtrig_point.json",
+    "Soldier_object_collision.json"
   ],
   "progress": {
     "code_bytes": 1414572,
