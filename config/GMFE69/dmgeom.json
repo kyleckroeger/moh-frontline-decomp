@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800f6db8",
-      "size": 292,
+      "size": 484,
       "type": 1
     },
     {
@@ -67,6 +67,12 @@
       "name": "DMGeomResetState__FP17DMGeometryState_T",
       "address": "0x800f6de4",
       "size": 248,
+      "binding": 1
+    },
+    {
+      "name": "DMGeomBuildPartList__FP16DMGeomPartData_TP6CDMeshP17DMGeometryState_T",
+      "address": "0x800f6edc",
+      "size": 192,
       "binding": 1
     }
   ],
