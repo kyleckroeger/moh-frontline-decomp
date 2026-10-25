@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800f5290",
-      "size": 24,
+      "size": 304,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f820",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800164f0",
+      "size": 12,
       "type": 1
     }
   ],
@@ -56,15 +68,65 @@
       "address": "0x800f5298",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "DMClusterSkelTraverse__FP11CharFrame_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3",
+      "address": "0x800f52a8",
+      "size": 280,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3": "0x800f53c0",
+    "PreTranslate__7CMatrixF8CVector3": "0x80090694",
+    "Reset__12CMatrixStackFv": "0x80090e8c",
+    "RotateX__7CMatrixFf": "0x800903cc",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "SetCurrent__12CMatrixStackFv": "0x80090ec4",
+    "_dmeshStack": "0x8034ed80",
+    "g_matStack": "0x8034eab8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_dmeshStack"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "_dmeshStack",
+    "g_matStack"
+  ],
   "original_file": "dmcluster.cpp",
-  "original_file_index": 9656
+  "original_file_index": 9656,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351190"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351180"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351184"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351188"
+    }
+  ]
 }
