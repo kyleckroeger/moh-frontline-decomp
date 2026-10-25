@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005d470",
-      "size": 752,
+      "address": "0x8005d0e8",
+      "size": 1656,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b200",
-      "size": 72,
+      "address": "0x8000b1f8",
+      "size": 80,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012230",
-      "size": 84,
+      "address": "0x80012224",
+      "size": 96,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetClosestUsableCoverPoint__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPositionP20COVERPOINT_WALK_MODEP15COVERPOINT_TYPEP21CAIFilterRealPositionfP9CAIObject",
+      "address": "0x8005d0e8",
+      "size": 904,
+      "binding": 1
+    },
     {
       "name": "GetCoverPointIndex__15CAIFilterGlobalCFP11CCoverPoint",
       "address": "0x8005d470",
@@ -119,11 +125,15 @@
     }
   ],
   "externals": {
+    "CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition": "0x80052abc",
     "DisableCollidingNodes__13CPathNodeListFPC7IVolume": "0x80054810",
     "EnableAll__13CPathNodeListFv": "0x80055028",
+    "GetAvailablePeekPosition__11CCoverPointCFv": "0x800533a8",
     "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionRC20CAIFilterRealVector3": "0x8005552c",
+    "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE": "0x8005314c",
     "GetPathNodeByID__13CPathNodeListCFi": "0x80055790",
     "Invalidate__11CCoverPointFv": "0x800526b0",
+    "ProvidesCover__11CCoverPointCFRC21CAIFilterRealPositionPC21CAIFilterRealPositionPC9CAIObject": "0x80052788",
     "ResetGlobalList__9CAIObjectFv": "0x8004ec60",
     "Reset__11CSearchNodeFv": "0x80055fc8",
     "__ct__13CPathNodeListFPvP18BPDPathFindingNodei": "0x800557a0",
