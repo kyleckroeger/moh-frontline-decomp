@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 995824,
+    "matching_code_bytes": 996356,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.39754780951411,
+    "percent": 70.43515635824829,
     "categories": {
-      "reconstructed_game": 765832,
+      "reconstructed_game": 766364,
       "restored_library": 229992
     },
-    "matching_functions": 4613
+    "matching_functions": 4615
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -660,6 +660,7 @@
     "config/GMFE69/fiber_visibility.json": "4d41af3dadb241683152c693aaa25e4d329dbcf3363a8b83f5f5c744b28b7086",
     "config/GMFE69/file_io.json": "18806d70257141c6be85e210ecc9cf7d248e740af95caccff17e02f127f6becd",
     "config/GMFE69/filedev.json": "345d10da83f1a2011e5fc4b9278fee1b53e1cdef4497f8fe2b0ee38ca1bafa48",
+    "config/GMFE69/filedev_async.json": "69c608a37d6f5c0439fa8909ba9201174ae8c61be710451bfa18061ee7bb077a",
     "config/GMFE69/filedev_head.json": "83c3fd590f7610e4f5bf6b78d767bbc088d1352bd0172bbdfef524a375c24540",
     "config/GMFE69/filesys.json": "44b6dc891dbe5026fb75d626e4ab6648c303868b80655aa336dfdd5b4bb5f062",
     "config/GMFE69/filesys_ea.json": "dacffd3bb5e27253683c9a096855d1a570e1e50864f054f816c183c91cc4d609",
@@ -882,7 +883,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "c42cceff737fc3260e242ee1ed038907babda1152836357aa61d20d0b40cceec",
+    "config/GMFE69/project.json": "43b14fcc0a7428377d59e17c8cb3ab025df8ebbf04c2a813fc67f5a7ad0c435e",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -2040,6 +2041,7 @@
     "src/ea/eaxadecf_state.cpp": "73c049a051a480e5d30db9b87346e7034eb13e3fdcea47e77a64e5a0cb51728e",
     "src/ea/exit.cpp": "74497f5488a200cd082a1769249e659f5cd17b94ee5c7e6b2b4f3b240c9f1923",
     "src/ea/filedev.cpp": "cb36b6354374cee49383e978a2f329ab48bddca0107bf61a0453c99ecec7735d",
+    "src/ea/filedev_async.cpp": "f09e149fb04a4d67e41766bf6b4a7cbdfdcc8583983b6d01b311e050508e1ee3",
     "src/ea/filedev_head.cpp": "3851c87514f333f4254a3affa8b86f1dbe4b845c98598af3373027bd962ffa3f",
     "src/ea/filesys.cpp": "92b201e9b132f46b37bb6c233a877f9064b95255a54a1e7913c95048667fdf8d",
     "src/ea/filesys_del.cpp": "32672a53a87aced03a365e68ba9062ce673704846614d2ec8371c47bd4bead28",
@@ -54253,6 +54255,47 @@
       "discarded_functions": [],
       "object_sha256": "89ae4001a341dbca4d9ec0112a250e40749b999d02e4e1a19d405b5e1cf3fabe",
       "linked_sha256": "f3ef105612ca6995811e63b90871c170a494a476f482725fd54af4dd8a0df5c1"
+    },
+    {
+      "id": "filedev_async",
+      "category": "reconstructed_game",
+      "functions": 2,
+      "code_bytes": 532,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "on",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-fp_contract",
+        "on",
+        "-char",
+        "signed"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "ae0d450cd238222f62acb98b84c84356f4dac235472dcb0006084da4171d4d6e",
+      "linked_sha256": "79f9bb141341a72e5b74b508c6d849ee3e50134fd055095c315b57d7422d7128"
     }
   ],
   "code_map": {
@@ -57452,20 +57495,6 @@
             "size": 596,
             "kind": "function",
             "name": "AyncDVDRead__FP11DVDFileInfo",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x80147e68",
-            "size": 484,
-            "kind": "function",
-            "name": "StartNonAlignedAyncRead__FP11DVDFileInfoPvll",
-            "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8014804c",
-            "size": 48,
-            "kind": "function",
-            "name": "AyncDVDCallback__FlP11DVDFileInfo",
             "evidence": "local-file-symbol"
           },
           {

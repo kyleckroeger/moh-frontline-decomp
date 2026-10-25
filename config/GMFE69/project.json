@@ -1250,7 +1250,8 @@
     "particlesystem_texturebin_dtor.json",
     "world_volume_list_reserve.json",
     "path_queuenode.json",
-    "CoverPoint_modified.json"
+    "CoverPoint_modified.json",
+    "filedev_async.json"
   ],
   "progress": {
     "code_bytes": 1414572,

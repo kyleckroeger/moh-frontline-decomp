@@ -1,0 +1,79 @@
+{
+  "id": "filedev_async",
+  "source": "src/ea/filedev_async.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "on",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-fp_contract",
+    "on",
+    "-char",
+    "signed"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80147e68",
+      "size": 532,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "AyncDVDCallback__FlP11DVDFileInfo",
+      "address": "0x8014804c",
+      "size": 48,
+      "binding": 0
+    },
+    {
+      "name": "StartNonAlignedAyncRead__FP11DVDFileInfoPvll",
+      "address": "0x80147e68",
+      "size": 484,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "DVDReadAsyncPrio": "0x80118358",
+    "OSSendMessage": "0x80113eac",
+    "ReadFileThreadMsgQ": "0x80336c50",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_27": "0x80138a10",
+    "gCurRead": "0x80336d00"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "gCurRead"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "filedev.cpp",
+  "original_file_index": 12087
+}
