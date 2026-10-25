@@ -1,10 +1,12 @@
-// A fragment of bsbifunc.cpp (0x8002e5d8): the script built-in that sets up the
-// calling node's AI object's corpse field of view and registers the script
-// object with the corpse-search schedule (repeating, at the given interval),
-// returning the registration. It reads its arguments below the script stack top
-// and pops the built-in's arguments. The file name is this project's; the
-// original record is bsbifunc.cpp; RegisterTargetSearch after it differs in its
-// argument-load scheduling. The functions, classes and globals are named by the
+// A fragment of bsbifunc.cpp (0x8002e5d8): the script built-ins that set up the
+// calling node's AI object's corpse field of view (RegisterCorpseSearch) or a
+// target search over a match list (RegisterTargetSearch: field of view for mode
+// 2, line of sight for mode 3) and register the script object with the
+// corpse-/target-search schedule, returning the registration. They read their
+// arguments below the script stack top and pop the built-in's arguments. The
+// file name is this project's; the original record is bsbifunc.cpp.
+// RegisterTargetSearch declares its locals first and assigns them afterwards
+// (the declaration order sets the register use). The functions, classes and globals are named by the
 // mangled symbols; ISceneNode is declared with its virtual functions in the
 // order of __vt__10ISceneNode (GetAIDoodad at +204), IMovingSceneNode's and
 // CStaticObject's after them in the order of __vt__13CStaticObject,
@@ -212,6 +214,39 @@ void BIFunc_RegisterCorpseSearch(int** stack, void* object) {
     unsigned short time = *(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 3));
     doodad->filter->m_object->SetupFieldOfViewCorpse(*(float*)(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 1)), *(float*)(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 2)));
     int result = g_CorpseSearchSchedule.Register(g_pBSObject, time, true, 0, 0, 0);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    **stack = result;
+}
+
+void BIFunc_RegisterTargetSearch(int** stack, void* object) {
+    CAIFilterObject* filter;
+    MatchListView* list;
+    int params;
+    float range;
+    float angle;
+    int mode;
+    int count;
+    unsigned short time;
+    int repeat;
+    filter = ((ISceneNode*)object)->GetAIDoodad()->filter;
+    params = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    mode = *(*stack - (params - 1));
+    range = *(float*)(*stack - (params - 2));
+    angle = *(float*)(*stack - (params - 3));
+    list = (MatchListView*)*(*stack - (params - 4));
+    count = *(*stack - (params - 5));
+    time = *(*stack - (params - 6));
+    repeat = *(*stack - (params - 7)) != 0;
+    filter->SetTargetMode(0);
+    switch (mode) {
+    case 2:
+        filter->m_object->SetupFieldOfViewModeList(list->list, count, range, angle);
+        break;
+    case 3:
+        filter->m_object->SetupLineOfSightModeList(list->list, count, range);
+        break;
+    }
+    int result = g_TargetSearchSchedule.Register(g_pBSObject, time, repeat, mode, 0, 0);
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = result;
 }

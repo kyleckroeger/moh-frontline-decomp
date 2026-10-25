@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8002e5d8",
-      "size": 236,
+      "size": 668,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009e1c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010af0",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,12 +62,21 @@
       "address": "0x8002e5d8",
       "size": 236,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_RegisterTargetSearch__FPPiPv",
+      "address": "0x8002e6c4",
+      "size": 432,
+      "binding": 1
     }
   ],
   "externals": {
     "Register__10BSScheduleFP8BSObjectUsbiii": "0x8003ab5c",
     "SetupFieldOfViewCorpse__9CAIObjectFff": "0x80049bfc",
+    "SetupFieldOfViewModeList__9CAIObjectFP14aistatus_matchiff": "0x80049c90",
+    "SetupLineOfSightModeList__9CAIObjectFP14aistatus_matchif": "0x80048e10",
     "g_CorpseSearchSchedule": "0x801974f4",
+    "g_TargetSearchSchedule": "0x801974a4",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778"
@@ -76,7 +85,8 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "g_CorpseSearchSchedule"
+    "g_CorpseSearchSchedule",
+    "g_TargetSearchSchedule"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
