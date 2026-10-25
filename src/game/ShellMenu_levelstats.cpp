@@ -1,5 +1,12 @@
-// A fragment of ShellMenu.cpp (0x800e5dc4): CShellMenu::GetLevelStats
-// finishes a level's statistics for the results screen. It walks the
+// A fragment of ShellMenu.cpp (0x800e5a14): CShellMenu::GetCumulativeStats
+// and CShellMenu::GetLevelStats.
+// GetCumulativeStats finishes the running totals for the studio: the total
+// accuracy, the favourite weapon (most kills over the 45 weapons), a new
+// evaluation (the most-hit body location times five plus a random 0-4) when
+// shots were fired since the last call, then fills 16 values (shots, hits,
+// accuracy, favourite weapon, hits taken, kills, hits per body location,
+// evaluation) clamped to 9999999 into the same table GetLevelStats fills.
+// GetLevelStats finishes a level's statistics for the results screen. It walks the
 // objective list (counting finished objectives into a value it never uses),
 // rates the level outside mission 7 (three stars for 95% of the enemies
 // killed within the level's record time of at least 75, two for 95%, else
@@ -9,7 +16,10 @@
 // medal or movie was unlocked) clamped to 9999999, and adds the level's
 // counts into the running totals. The classes, functions and globals are
 // named by the mangled symbols; the members, the objective list and level
-// record views and the unused objective count are inferred.
+// record views, the unused objective count and the most-hit-location helper
+// (MostHit) are inferred.
+extern "C" int rand();
+
 struct StarLevelsInBits;
 
 void SetStarRatingStatus(StarLevelsInBits*, unsigned int, unsigned int);
@@ -33,6 +43,7 @@ struct LevelRecordView {
 
 class CShellMenu {
 public:
+    unsigned int* GetCumulativeStats();
     unsigned int* GetLevelStats();
     LevelRecordView& Record(int mission, int stage) { return m_records[mission][stage]; }
     bool CheckIfMovieAndMedalNeedsToBeUnlocked();
@@ -53,9 +64,13 @@ public:
     unsigned int m_total38;
     unsigned int m_totalEnemiesKilled;
     unsigned int m_totalShotLocations[7];
-    unsigned char unknown005c[12];
+    unsigned char unknown005c[8];
+    float m_totalAccuracy;
     unsigned int m_totalWeaponKills[45];
-    unsigned char unknown011c[4];
+    unsigned char m_totalWeapon;
+    unsigned char m_totalEvaluation;
+    unsigned char m_total11e;
+    unsigned char unknown011f;
     unsigned int m_shotsFired;
     unsigned int m_hits;
     unsigned int m_hitsTaken;
@@ -71,9 +86,66 @@ public:
     unsigned char m_rating;
     unsigned char unknown0213[69];
     LevelRecordView m_records[6][4];
-    unsigned char unknown13f8[1308];
-    unsigned int m_levelStats[21];
+    unsigned int m_lastShotsFired;
+    unsigned char unknown13fc[1304];
+    unsigned int m_stats[21];
 };
+
+static inline int MostHit(const unsigned int* values) {
+    unsigned int hits = 0;
+    int location = 0;
+    for (int j = 0; j < 7; j++) {
+        unsigned int v = values[j];
+        if (v > hits) {
+            hits = v;
+            location = j;
+        }
+    }
+    return location;
+}
+
+unsigned int* CShellMenu::GetCumulativeStats() {
+    if (m_totalShotsFired != 0)
+        m_totalAccuracy = 100.0f * ((float)m_totalHits / (float)m_totalShotsFired);
+    else
+        m_totalAccuracy = 0.0f;
+    m_total11e = m_total11e / 17.0f;
+    unsigned int i = 0;
+    unsigned int most = 0;
+    int weapon = 0;
+    for (; i < 45; i++) {
+        if (m_totalWeaponKills[i] > most) {
+            most = m_totalWeaponKills[i];
+            weapon = i;
+        }
+    }
+    m_totalWeapon = weapon;
+    if (m_lastShotsFired < m_totalShotsFired) {
+        int location = MostHit(m_totalShotLocations);
+        m_totalEvaluation = location * 5 + rand() % 5;
+    }
+    m_lastShotsFired = m_totalShotsFired;
+    m_stats[0] = m_totalShotsFired;
+    m_stats[1] = m_totalHits;
+    m_stats[2] = m_totalAccuracy;
+    m_stats[3] = m_totalWeapon;
+    m_stats[4] = m_totalHitsTaken;
+    m_stats[5] = m_total38;
+    m_stats[6] = m_totalEnemiesKilled;
+    m_stats[8] = m_totalShotLocations[0];
+    m_stats[9] = m_totalShotLocations[3];
+    m_stats[10] = m_totalShotLocations[6];
+    m_stats[11] = m_totalShotLocations[4];
+    m_stats[12] = m_totalShotLocations[1];
+    m_stats[13] = m_totalShotLocations[5];
+    m_stats[14] = m_totalShotLocations[2];
+    m_stats[15] = m_totalEvaluation;
+    for (int k = 0; k < 16; k++) {
+        if (m_stats[k] > 9999999)
+            m_stats[k] = 9999999;
+    }
+    return m_stats;
+}
 
 unsigned int* CShellMenu::GetLevelStats() {
     int completed = 0;
@@ -100,36 +172,36 @@ unsigned int* CShellMenu::GetLevelStats() {
             m_rating = 1;
         SetStarRatingStatus((StarLevelsInBits*)((char*)this + 28), m_stage + m_mission * 10, m_rating);
     }
-    m_levelStats[0] = m_stage + m_mission * 10;
-    m_levelStats[1] = m_rating;
-    m_levelStats[2] = m_value00e;
-    m_levelStats[3] = m_shotsFired;
-    m_levelStats[4] = m_hits;
-    m_levelStats[5] = m_accuracy;
-    m_levelStats[6] = m_weapon;
-    m_levelStats[7] = m_hitsTaken;
-    m_levelStats[8] = m_stat300;
-    m_levelStats[9] = m_enemiesKilled;
-    m_levelStats[10] = 0;
-    m_levelStats[11] = m_shotLocations[0];
-    m_levelStats[12] = m_shotLocations[3];
-    m_levelStats[13] = m_shotLocations[6];
-    m_levelStats[14] = m_shotLocations[4];
-    m_levelStats[15] = m_shotLocations[1];
-    m_levelStats[16] = m_shotLocations[5];
-    m_levelStats[17] = m_shotLocations[2];
-    m_levelStats[18] = m_evaluation;
+    m_stats[0] = m_stage + m_mission * 10;
+    m_stats[1] = m_rating;
+    m_stats[2] = m_value00e;
+    m_stats[3] = m_shotsFired;
+    m_stats[4] = m_hits;
+    m_stats[5] = m_accuracy;
+    m_stats[6] = m_weapon;
+    m_stats[7] = m_hitsTaken;
+    m_stats[8] = m_stat300;
+    m_stats[9] = m_enemiesKilled;
+    m_stats[10] = 0;
+    m_stats[11] = m_shotLocations[0];
+    m_stats[12] = m_shotLocations[3];
+    m_stats[13] = m_shotLocations[6];
+    m_stats[14] = m_shotLocations[4];
+    m_stats[15] = m_shotLocations[1];
+    m_stats[16] = m_shotLocations[5];
+    m_stats[17] = m_shotLocations[2];
+    m_stats[18] = m_evaluation;
     unsigned int halfMinutes = m_levelTimer / 30;
-    m_levelStats[19] = halfMinutes / 2 + halfMinutes % 2;
+    m_stats[19] = halfMinutes / 2 + halfMinutes % 2;
     bool unlocked = false;
     bool movie = CheckIfMovieAndMedalNeedsToBeUnlocked();
     bool special = CheckIfSpecialMedalsNeedToBeUnlocked();
     if (movie || special)
         unlocked = true;
-    m_levelStats[20] = unlocked;
+    m_stats[20] = unlocked;
     for (unsigned int i = 0; i < 21; i++) {
-        if (i != 2 && i != 10 && i != 20 && m_levelStats[i] > 9999999)
-            m_levelStats[i] = 9999999;
+        if (i != 2 && i != 10 && i != 20 && m_stats[i] > 9999999)
+            m_stats[i] = 9999999;
     }
     if (m_totalShotsFired < 9999999)
         m_totalShotsFired += m_shotsFired;
@@ -157,5 +229,5 @@ unsigned int* CShellMenu::GetLevelStats() {
         m_totalShotLocations[2] += m_shotLocations[2];
     for (unsigned int i = 0; i < 45; i++)
         m_totalWeaponKills[i] += m_weaponKills[i];
-    return m_levelStats;
+    return m_stats;
 }

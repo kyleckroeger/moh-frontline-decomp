@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e5dc4",
-      "size": 1456,
+      "address": "0x800e5a14",
+      "size": 2400,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f158",
-      "size": 8,
+      "address": "0x8000f150",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015c68",
-      "size": 12,
+      "address": "0x80015c5c",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetCumulativeStats__10CShellMenuFv",
+      "address": "0x800e5a14",
+      "size": 944,
+      "binding": 1
+    },
     {
       "name": "GetLevelStats__10CShellMenuFv",
       "address": "0x800e5dc4",
@@ -69,6 +75,7 @@
     "CheckIfSpecialMedalsNeedToBeUnlocked__10CShellMenuFv": "0x800e1c1c",
     "SetStarRatingStatus__FP16StarLevelsInBitsUiUi": "0x800e85a0",
     "__cvt_fp2unsigned": "0x801388e8",
+    "rand": "0x8013fc54",
     "theObjectiveList": "0x801f70ec"
   },
   "undefined_in_discarded_code": [],
@@ -99,13 +106,7 @@
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80350f40"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 12,
-      "size": 4,
-      "address": "0x80350f44"
+      "address": "0x80350fa0"
     },
     {
       "section": ".sdata2",
@@ -116,6 +117,18 @@
     {
       "section": ".sdata2",
       "offset": 24,
+      "size": 4,
+      "address": "0x80350f40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350f44"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
       "size": 8,
       "address": "0x80350ee0"
     }
