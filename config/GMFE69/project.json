@@ -1259,7 +1259,8 @@
     "stagpat_playpatch.json",
     "anim_obj_ground.json",
     "proxtrig_point.json",
-    "Soldier_object_collision.json"
+    "Soldier_object_collision.json",
+    "mainloop_loop.json"
   ],
   "progress": {
     "code_bytes": 1414572,
