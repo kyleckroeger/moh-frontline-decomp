@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80029a3c",
-      "size": 240,
+      "size": 1188,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009ce4",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001091c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,12 +68,29 @@
       "address": "0x80029ab4",
       "size": 120,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_AEMSEvent__FPPiPv",
+      "address": "0x80029b2c",
+      "size": 948,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_BeginEvent__FPv": "0x800ec170",
+    "AEMS_EndEvent__FPvi": "0x800ec004",
+    "AEMS_SendEvent__FPv": "0x800ec26c",
+    "AEMS_SetObject__FP14CSoldierObject": "0x800ebff4",
+    "AEMS_UpdateEvent__FPvi": "0x800ec0b4",
+    "AddSound__13SoundScheduleFQ213SoundSchedule24ESoundScheduleObjectTypeP10ISceneNodeP8CVector3PviiiiiP8BSObject12EBSEventEnumfbi": "0x80047458",
+    "GetAEMSStructureValues__FiPiPiPiPi": "0x8001e288",
     "MUSIC_SendEvent__Fi": "0x800ea528",
     "MUSIC_SetLevel__Fi": "0x800ea5b4",
+    "RemoveSound__13SoundScheduleFib": "0x8004736c",
+    "UpdateSound__13SoundScheduleFiPvi": "0x80047310",
+    "g_SoundSchedule": "0x8034e784",
     "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778"
   },
   "undefined_in_discarded_code": [],
@@ -82,9 +99,22 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_SoundSchedule",
     "g_iCurrentBIFIndex",
+    "g_pBSObject",
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }
