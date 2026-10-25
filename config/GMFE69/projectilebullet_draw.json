@@ -1,0 +1,129 @@
+{
+  "id": "projectilebullet_draw",
+  "source": "src/game/projectilebullet_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800d0de8",
+      "size": 528,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e5dc",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800152fc",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Draw__17CProjectileBulletFR12CDrawContext",
+      "address": "0x800d0de8",
+      "size": 528,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetLine__9CVolFiberCFv": "0x800ca2f4",
+    "MP_PROJBULLET_DRAW_DELAY": "0x8034e1d0",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "g_BulletBin": "0x801f305c",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_cheats": "0x80196a94",
+    "g_pContext": "0x8034ec60",
+    "g_pRenderList": "0x8034ec58"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_BulletBin",
+    "g_pContext",
+    "g_pRenderList"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "MP_PROJBULLET_DRAW_DELAY",
+    "g_bInMultiplayerMode",
+    "g_pContext",
+    "g_pRenderList"
+  ],
+  "original_file": "projectilebullet.cpp",
+  "original_file_index": 8014,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350d0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350d30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350d34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350d38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350d40"
+    }
+  ]
+}

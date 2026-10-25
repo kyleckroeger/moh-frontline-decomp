@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1015916,
+    "matching_code_bytes": 1016444,
     "total_executable_code_bytes": 1414572,
-    "percent": 71.81790675907624,
+    "percent": 71.8552325367673,
     "categories": {
-      "reconstructed_game": 785924,
+      "reconstructed_game": 786452,
       "restored_library": 229992
     },
-    "matching_functions": 4640
+    "matching_functions": 4641
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -889,11 +889,12 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "df986e53ae405cc5d731d79d574af8f0a91c3933158bfd7174ff1be6b5d9e874",
+    "config/GMFE69/project.json": "d2995d1fe78c336f044ce71cc37460b664d4bd1c31fe3c09023dfab1944903f1",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
     "config/GMFE69/projectilebullet_ctor.json": "906e07fbb89a1bec6fd4e41450aee82adc497a181e56eec394938ca88ae28635",
+    "config/GMFE69/projectilebullet_draw.json": "8a7f55fee7589c94ab10ebb8b20b76c401c879b25a8da8d129c36e762d7f0723",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_init.json": "59efa2f81e573b18eb9d4793a24578d542a47e4cded42890b4e9f88779a0b4a4",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2947,6 +2948,7 @@
     "src/game/projectilebullet_collisionid.cpp": "b89824d84d208d1755470f2cd7f80af6357f69cdc0ddfa04db5f894cf681c270",
     "src/game/projectilebullet_commit.cpp": "3097b8f0df6e854dba7a4ef276a6948e3597254aef6ab0db833add268d025a10",
     "src/game/projectilebullet_ctor.cpp": "c5cee8e83507984fd4a486f413aeb5a2bb362c90cf0b75e2b9a49616de00be77",
+    "src/game/projectilebullet_draw.cpp": "2af58a2574a4940e59544b009a4a13326844cd34262d2c641c78746d1a28c87e",
     "src/game/projectilebullet_dtor.cpp": "346cf1d92e80b034a1e28b918f39a6f0d3a6f3e8990f24082535d93c1d37c007",
     "src/game/projectilebullet_init.cpp": "1bf690f6a8f05572d21b3ea732d5ccfa9e224321ae9333907cfd7edb49256cef",
     "src/game/projectilebullet_link.cpp": "7350d5aa1101d2511a4f71fed6841ca42ee85cfa2c28d9bf065165a9bf0b227d",
@@ -54667,6 +54669,45 @@
       "discarded_functions": [],
       "object_sha256": "10ab759ad8a04233a916447d90adf0fd7db586f800884115316b404366040fa5",
       "linked_sha256": "99c8ebcbf6f57581b88f7aa4e1be88b04524955c16d7a492ccb1caf9e4154108"
+    },
+    {
+      "id": "projectilebullet_draw",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 528,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "1c9f208ba7d309d8f01ba02d58342a4500ac89d6ff5a6eada8714097d8e2f53a",
+      "linked_sha256": "282f97a40376b432422d0e95c13f92cda3d332deb501d06972c8b89274a93a69"
     }
   ],
   "code_map": {
@@ -56850,13 +56891,6 @@
             "size": 260,
             "kind": "function",
             "name": "Render__26CProjectileBulletRenderBinFR10CDmaPacketPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d0de8",
-            "size": 528,
-            "kind": "function",
-            "name": "Draw__17CProjectileBulletFR12CDrawContext",
             "evidence": "exception-index"
           },
           {

@@ -1260,7 +1260,8 @@
     "anim_obj_ground.json",
     "proxtrig_point.json",
     "Soldier_object_collision.json",
-    "mainloop_loop.json"
+    "mainloop_loop.json",
+    "projectilebullet_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
