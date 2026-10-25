@@ -1251,7 +1251,8 @@
     "world_volume_list_reserve.json",
     "path_queuenode.json",
     "CoverPoint_modified.json",
-    "filedev_async.json"
+    "filedev_async.json",
+    "UserInterface_score.json"
   ],
   "progress": {
     "code_bytes": 1414572,

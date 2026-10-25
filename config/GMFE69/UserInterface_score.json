@@ -1,0 +1,191 @@
+{
+  "id": "UserInterface_score",
+  "source": "src/game/UserInterface_score.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800be590",
+      "size": 1428,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000db10",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014a5c",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801892b0",
+      "size": 80,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "DrawScore__13UserInterfaceFv",
+      "address": "0x800be590",
+      "size": 1428,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawTextCentered__5CFontFfPCc": "0x8007cdb0",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
+    "FONT_getrecta": "0x8014e53c",
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetMPPlayerStats__10CShellMenuFi": "0x800e6688",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetScale__5CFontFRfRf": "0x8007cb30",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "StarSpriteVerts": "0x80189010",
+    "TempVerts": "0x801ef4a8",
+    "floor": "0x801432fc",
+    "g_Shell": "0x80195090",
+    "g_scene": "0x8019484c",
+    "g_viewport": "0x80194ca0",
+    "memcpy": "0x800094f8",
+    "smallMPFont__13UserInterface": "0x8034ebec",
+    "sprintf": "0x8013dab4",
+    "starSprite__13UserInterface": "0x8034ebe0",
+    "teamColors": "0x801ef498"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "smallMPFont__13UserInterface",
+    "starSprite__13UserInterface"
+  ],
+  "original_file": "UserInterface.cpp",
+  "original_file_index": 7237,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 18,
+      "address": "0x80177a8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x80350af4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 3,
+      "address": "0x80350ac4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350a50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350afc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350a9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350b00"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350a14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350aec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350a94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350aa4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350b04"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x80350a40"
+    }
+  ]
+}
