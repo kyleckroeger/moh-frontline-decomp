@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1000960,
+    "matching_code_bytes": 1001128,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.76062582887262,
+    "percent": 70.7725022126834,
     "categories": {
-      "reconstructed_game": 770968,
+      "reconstructed_game": 771136,
       "restored_library": 229992
     },
-    "matching_functions": 4620
+    "matching_functions": 4621
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -716,7 +716,7 @@
     "config/GMFE69/input_init.json": "0ca05c602b95a0dcdf5fee762d358483c2f9afab8abcb0facbd6b1d933f49934",
     "config/GMFE69/input_manager.json": "509be3d25173b961f588aa17cefa28584de0ca46a3cc7cbd2a57da308653053f",
     "config/GMFE69/ipad.json": "fe62ef6fabba51edecb03f6464270668d31d21e6f39e87cfc575288ec7a94707",
-    "config/GMFE69/ipad_vbl.json": "7b80a5ea80e49088654b8a775fea875fddb9a8c3094e90736d696f6aeb5af291",
+    "config/GMFE69/ipad_vbl.json": "706327147363fbfd072bd9e594c3ecbaf68c39752da2fe0bd59cb13cdd214ca3",
     "config/GMFE69/isShellGroup.json": "fb2aea8e1fb5357a5c99b30450f95fb25d60066fb795346e9238568ba1eab8ac",
     "config/GMFE69/isShellLibrary.json": "4b838340878f1a37c48a9cb7f4530ff56b7d4e6144ae8049588d0d6545da6de6",
     "config/GMFE69/isexportdefs.json": "c69bbee01c63b955558f005792858feb77dfb7dfe20284280ec564085fd8294d",
@@ -2066,7 +2066,7 @@
     "src/ea/inittmr.cpp": "2b8bc47a5536adecefaedb4c74d54e5a0509db63fdfef428e0975b1dcabababa",
     "src/ea/initvblt.cpp": "a3a42c3bc4407ed5a92562dcfa09205e537dab818b4a2eb4be90b5277c056da6",
     "src/ea/ipad.cpp": "a14bbc51e2978782915128143189e4eb8d4af5c1907756e67001303383c6b168",
-    "src/ea/ipad_vbl.cpp": "db6f2d5f514a7af53a0578d7084c28888c0a01c490fe710bfaa4a5d47094ab41",
+    "src/ea/ipad_vbl.cpp": "56fbf60ad4c9724f4b71ac88420af75b74bb2dcbbb730d63cd88cfa102dc4fe5",
     "src/ea/locatbig.cpp": "ca45ed414f16861187ae9feb34372cec3e208f72a2f3123058e6f7b1dc395275",
     "src/ea/locatbig_locate.cpp": "53e30436b85bd74a41bc403fe17f7a231060142d60827565b7852eef5b9a8f35",
     "src/ea/memalloc.cpp": "1fb8d6c6965d9916235e6ee35c94a13b67f5d332f5f5adbf44ff3c8285f12e21",
@@ -42568,8 +42568,8 @@
     {
       "id": "ipad_vbl",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 136,
+      "functions": 2,
+      "code_bytes": 304,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42601,8 +42601,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a31f4435112993698f7abf987adec0568ed9310876aa23179a0542816a842770",
-      "linked_sha256": "dfef77f59feb416a489756f4cd017442055194abeb08e6f00134c43f78c007e4"
+      "object_sha256": "f7948db5e942523c7842d3b72e95242513505a476dc889ad30112f3d08746ca2",
+      "linked_sha256": "f7a94d311eb90ff447e1e69e22434a90b4763bdb02dc4c2a01a493dbd99bb1d1"
     },
     {
       "id": "fontkern",
@@ -57584,20 +57584,6 @@
             "size": 664,
             "kind": "function",
             "name": "STREAM_kill",
-            "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/ipad.cpp [symbol evidence]",
-        "file_record": 379,
-        "file_name": "ipad.cpp",
-        "ranges": [
-          {
-            "address": "0x8014ef80",
-            "size": 168,
-            "kind": "function",
-            "name": "iPAD_init__Fv",
             "evidence": "between-same-file"
           }
         ]
