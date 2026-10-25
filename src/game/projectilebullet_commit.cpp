@@ -1,6 +1,12 @@
-// A fragment of projectilebullet.cpp (0x800d1168): CProjectileBullet::
+#include <math.h>
+// A fragment of projectilebullet.cpp (0x800d1000): CProjectileBullet::
+// Penetrate pushes the bullet through a surface: its forward direction scaled
+// so its component along the collision normal is CONTACT_EPSILON (or, when
+// nearly parallel, the normal times plus or minus CONTACT_EPSILON by the
+// sign) is added to the matrix position, and the dead flag is cleared.
 // CommitUpdate marks the bullet for destruction when its life (+144) is used
 // up or it is dead, else copies the matrix position to the current position.
+// The position setter (an inline taking the sum by reference) is inferred.
 // The views are those of projectilebullet_update.cpp (inferred; CVector3 is
 // the double-pair view of projectilebullet_ctor.cpp). The rest of the file is
 // not part of this unit.
@@ -187,6 +193,7 @@ public:
     virtual void OnCollision(const CCollision&);
     virtual void CommitUpdate();
     void Penetrate(const CCollision&);
+    void SetPosition(const CVector3& p) { m_matrix.SetPos(p); }
     void Shutdown();
 
     unsigned char unknown098[28];
@@ -200,6 +207,28 @@ public:
     CVolFiber m_fiberB;
     AttachedEffectView* m_effect;
 };
+
+extern const float CONTACT_EPSILON;
+
+void CProjectileBullet::Penetrate(const CCollision& collision) {
+    const CVector3& normal = *collision.m_normal;
+    CVector3 dir;
+    GetForward(dir);
+    float d = Dot(dir, normal);
+    if ((float)fabs(d) > 1e-5f) {
+        dir *= CONTACT_EPSILON / (float)fabs(d);
+    } else if (d > 0.0f) {
+        dir.v[0] = CONTACT_EPSILON * normal.v[0];
+        dir.v[1] = CONTACT_EPSILON * normal.v[1];
+        dir.v[2] = CONTACT_EPSILON * normal.v[2];
+    } else {
+        dir.v[0] = -CONTACT_EPSILON * normal.v[0];
+        dir.v[1] = -CONTACT_EPSILON * normal.v[1];
+        dir.v[2] = -CONTACT_EPSILON * normal.v[2];
+    }
+    SetPosition(m_matrix.GetPos() + dir);
+    m_dead = false;
+}
 
 void CProjectileBullet::CommitUpdate() {
     if (m_life <= 0.0f || m_dead) {

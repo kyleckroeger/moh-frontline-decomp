@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d1168",
-      "size": 108,
+      "address": "0x800d1000",
+      "size": 468,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e5ec",
-      "size": 8,
+      "address": "0x8000e5e4",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015314",
-      "size": 12,
+      "address": "0x80015308",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Penetrate__17CProjectileBulletFRC10CCollision",
+      "address": "0x800d1000",
+      "size": 360,
+      "binding": 1
+    },
     {
       "name": "CommitUpdate__17CProjectileBulletFv",
       "address": "0x800d1168",
@@ -64,13 +70,18 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "CONTACT_EPSILON": "0x80350ba8",
+    "SetPos__7CMatrixF8CVector3": "0x80090728"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "projectilebullet.cpp",
   "original_file_index": 8014,
   "pooled_sections": [
@@ -80,6 +91,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350d48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 4,
       "address": "0x80350d0c"
     }
