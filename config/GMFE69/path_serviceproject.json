@@ -1,0 +1,84 @@
+{
+  "id": "path_serviceproject",
+  "source": "src/ea/path_serviceproject.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8010d58c",
+      "size": 2436,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PATHI_serviceproject__Fii",
+      "address": "0x8010d58c",
+      "size": 2436,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "PATHI_crossfadetracks__FiUiP13PATHFINDEVENT": "0x8010df10",
+    "PATHI_eventstart__Fi": "0x8010ee50",
+    "PATHI_seeknextnode__Fi": "0x8010e988",
+    "PATHI_setfadevolume__FP9PATHTRACK": "0x8010fb0c",
+    "PATHX_getvolume": "0x800e940c",
+    "PATHX_modifyhold": "0x800e8a1c",
+    "PATHX_readyfornewrequest": "0x800e93ac",
+    "PATHX_status": "0x800e8f6c",
+    "PATHX_stop": "0x800e883c",
+    "PATHX_timeremaining": "0x800e9310",
+    "PATHX_volume": "0x800e8940",
+    "bankservice": "0x8034e471",
+    "milliseconds": "0x8034ef78",
+    "pfstate": "0x8034ef68",
+    "pfstates": "0x80316920"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "bankservice",
+    "milliseconds",
+    "pfstate"
+  ],
+  "original_file": "path.c",
+  "original_file_index": 10551
+}
