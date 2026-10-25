@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800dd758",
-      "size": 128,
+      "size": 564,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000eca0",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015908",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -74,14 +74,25 @@
       "address": "0x800dd7d0",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "PauseDraw__5PauseFUl",
+      "address": "0x800dd7d8",
+      "size": 436,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_Pause__Fb": "0x800ec3e0",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
     "MUSIC_Pause__Fb": "0x800ea5fc",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
     "g_PauseScreenLockedController": "0x8034e2c8",
     "g_cheatSequenceIndex": "0x8034ec98",
-    "iSirenShutDown__7IStudioFv": "0x8008b5e0"
+    "iSirenDrawProcessFnc__7IStudioFUl": "0x8008b6a4",
+    "iSirenShutDown__7IStudioFv": "0x8008b5e0",
+    "theObjectiveList": "0x801f70ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -95,5 +106,22 @@
     "g_cheatSequenceIndex"
   ],
   "original_file": "Pause.cpp",
-  "original_file_index": 8565
+  "original_file_index": 8565,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350ea8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350eb0"
+    }
+  ]
 }
