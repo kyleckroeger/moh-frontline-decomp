@@ -40,23 +40,35 @@
     {
       "name": ".text",
       "address": "0x8001b544",
-      "size": 332,
+      "size": 676,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009724",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001010c",
-      "size": 36,
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034f5b0",
+      "size": 40,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetTMViewToScreen__7CScreenFv",
+      "address": "0x8001b690",
+      "size": 344,
+      "binding": 1
+    },
     {
       "name": "SetCurrent__16CScreenFieldModeFv",
       "address": "0x8001b544",
@@ -83,8 +95,10 @@
     }
   ],
   "externals": {
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
     "DebugMsg__FPCce": "0x80018c88",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Scale__7CMatrixF8CVector3": "0x8008fd04",
     "SetCurrent__7CScreenFv": "0x8001bb3c",
     "__vt__16CScreenFieldMode": "0x80181d64",
     "__vt__7CScreen": "0x80181dc4",

@@ -5,13 +5,17 @@
 // 448: flags, words and the clear colour byte reset, the size and the frame
 // and depth formats kept, the transform's class initialisation, the cached
 // view-to-screen transform marked invalid); CScreen::_Capture (a debug
-// message) and CScreen::Capture (sets the file-local capture flag). The file
+// message), CScreen::Capture (sets the file-local capture flag) and
+// CScreen::GetTMViewToScreen (builds the cached view-to-screen transform once:
+// a translation by -1 in z, then a scale by half the width, minus half the
+// height and minus half the depth-buffer maximum over 16). The file
 // name is this project's; the original record is Screen.cpp, after
 // Screen_cscreenfieldmode_dtor.cpp. The classes, enums and functions are named
 // by the mangled symbols; CScreen's virtuals are declared in table order
 // (Rebuild and SetDraw are pure; result types are not known); the members,
 // their names and the constructor's arguments (the 448 field-mode height
-// passed to it) are inferred. CScreen's destructor is declared out of line
+// passed to it) are inferred, as is the inline depth-buffer maximum (the
+// depth format's switch, also compiled out of line as GetDepthBufferMax). CScreen's destructor is declared out of line
 // (it is global in the original), so its table stays elsewhere; so does
 // CScreenFieldMode's, which declares Rebuild (defined elsewhere) first. The
 // capture flag is file-local in the original; this fragment declares it
@@ -27,11 +31,15 @@ void DebugMsg(const char*, ...);
 
 class CVector3 {
 public:
+    CVector3() {}
+    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     float x, y, z, w;
 } __attribute__((aligned(8)));
 
 class CMatrix {
 public:
+    void BuildTrans(CVector3);
+    void Scale(CVector3);
     CMatrix() {
         if (!s_ClassInit)
             InitClass();
@@ -82,6 +90,19 @@ public:
         data0c = y;
         data10 = width;
         data14 = height;
+    }
+
+    unsigned long DepthMax() const {
+        switch (m_depthFormat) {
+        case 0:
+            return 0xffff;
+        case 1:
+            return 0xffffff;
+        case 2:
+            return 0xfffffff;
+        default:
+            return 0xfffffff;
+        }
     }
 
     unsigned char data04;
@@ -138,4 +159,15 @@ void CScreen::_Capture() {
 
 void CScreen::Capture() {
     g_bCapture = true;
+}
+
+CMatrix* CScreen::GetTMViewToScreen() {
+    if (!m_tmValid) {
+        CVector3 scale((float)m_width / 2.0f, (float)-m_height / 2.0f, -0.5f * (float)DepthMax() / 16.0f);
+        CVector3 trans(0.0f, 0.0f, -1.0f);
+        m_tmViewToScreen.BuildTrans(trans);
+        m_tmViewToScreen.Scale(scale);
+        m_tmValid = true;
+    }
+    return &m_tmViewToScreen;
 }

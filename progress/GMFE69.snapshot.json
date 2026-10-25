@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1014748,
+    "matching_code_bytes": 1015092,
     "total_executable_code_bytes": 1414572,
-    "percent": 71.73533761448692,
+    "percent": 71.75965592419473,
     "categories": {
-      "reconstructed_game": 784756,
+      "reconstructed_game": 785100,
       "restored_library": 229992
     },
-    "matching_functions": 4637
+    "matching_functions": 4638
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -225,7 +225,7 @@
     "config/GMFE69/Screen.json": "4c080fd92820f4bb1bc86fc661a35dfd887cf5728aa40d597ec8416dbd1a1961",
     "config/GMFE69/Screen_cscreen_dtor.json": "3df33be0facc634fa97d7f1f91c339cf01c54fd5ac4d49e3a4ce647ebc97143b",
     "config/GMFE69/Screen_cscreenfieldmode_dtor.json": "ae558351dd880d1089450515bd83e2e0660a30b7bbd744e1a0978e40f66c9a9a",
-    "config/GMFE69/Screen_fieldmode.json": "a533897eb466189fdaea3e9e66d1f708950b87d07289e5425afdc17f35fd0d03",
+    "config/GMFE69/Screen_fieldmode.json": "90b17d643d2571750706aa3eebc56dedebd733c38f531f9d6b796e0c7d2b5d52",
     "config/GMFE69/Screen_scale.json": "c9f0715fda4d24bb01bd0f1c9e0aedb91b420832e5fd2c4a4916d0837e06edf7",
     "config/GMFE69/Screen_vblank.json": "6fe843f6af4c9bf529ac95a181974b901b1e783441059fdc954e0620a3a6cd0e",
     "config/GMFE69/SearchNode.json": "0cff68c0ddcd4e75d9ab5c2c982ebb46f1e7bad061a6f6565166a032705b8044",
@@ -2415,7 +2415,7 @@
     "src/game/Screen.cpp": "0b47fba2c4a802813d22b67c3ec1cba6ef4fc2076bd15fea9fc14e359302e29e",
     "src/game/Screen_cscreen_dtor.cpp": "16b88fd6b39e647df57290d73d174d4b58e9cfd9cec034eb535c25518d1f832d",
     "src/game/Screen_cscreenfieldmode_dtor.cpp": "e6bea55f3444224efcdd80c48f290037f2f92ed4290d47d0016f46c98eaa34f7",
-    "src/game/Screen_fieldmode.cpp": "c85584352168628795f1d57208d6b1746231ab10d8471bdd08857199f9d536f3",
+    "src/game/Screen_fieldmode.cpp": "6722b165072a734300f54db079f39c2171ad3fd8b6e9f6803efa16b711a216f0",
     "src/game/Screen_scale.cpp": "f97a678e3660641da3161f9c646acf2d5e04b0b9f9a0a4902eb0436f567b8601",
     "src/game/Screen_vblank.cpp": "ab1180a24be3a78047287b670035a6960b002c7ca506b78082d206411441ef1e",
     "src/game/SearchNode.cpp": "e8db06597a8f2032822e557cd948934a13b14f14d2c1757084d8b134dfc1a4ef",
@@ -38203,8 +38203,8 @@
     {
       "id": "Screen_fieldmode",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 332,
+      "functions": 5,
+      "code_bytes": 676,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38236,8 +38236,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7b6c9bf35a697a17d65e2fcb48b2582ed4f3a2acb32d8237fbec323687b32d26",
-      "linked_sha256": "2f4c45d938ae5abca8ec9fa90da0c0b9c73210910a408779bc3fd38b789aa663"
+      "object_sha256": "1054182535933dbc735d7821d49f28e0452b4066ad4dd08ee2bf7164ef2d95a1",
+      "linked_sha256": "4e14a90db8468caa2dad3884235c04b8f085e25b964f2f75d0f7d81b4e7da0eb"
     },
     {
       "id": "debug_prof_stats",
@@ -54709,13 +54709,6 @@
             "size": 884,
             "kind": "function",
             "name": "_Capture__16CScreenFieldModeFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8001b690",
-            "size": 344,
-            "kind": "function",
-            "name": "GetTMViewToScreen__7CScreenFv",
             "evidence": "exception-index"
           },
           {
