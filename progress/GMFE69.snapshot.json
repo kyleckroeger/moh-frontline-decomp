@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1020364,
+    "matching_code_bytes": 1021444,
     "total_executable_code_bytes": 1414572,
-    "percent": 72.13234815901913,
+    "percent": 72.20869634065993,
     "categories": {
-      "reconstructed_game": 790372,
+      "reconstructed_game": 791452,
       "restored_library": 229992
     },
-    "matching_functions": 4645
+    "matching_functions": 4646
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -610,7 +610,7 @@
     "config/GMFE69/decal_dtor.json": "a454c6b4f69ad8d7b90dd660a437dd63dba158c6bb2328ad6cf5dbd6d6b165cc",
     "config/GMFE69/decal_initclass.json": "23494926356c2f036a09c4dcbb5113091a7d86daedd49d772f11b546616aae79",
     "config/GMFE69/decal_link.json": "a9cd419b7f28f863b525d23f4d8f33aaf81204d1a1c12a6f8e9fa4f2c48ffd11",
-    "config/GMFE69/decal_reset.json": "989aa5e667f9dba016f796ad484002dca02ac6669027e01cb591c7d67e67b604",
+    "config/GMFE69/decal_reset.json": "7889fa6e25afaccb773571d87d6dd482367455d9fb7c5a06e2fb0944314f59f8",
     "config/GMFE69/destructor_queue.json": "02f090659148b783df7f56cf7d5136ed13c216785eaded9f2b6f0e563e6f1be7",
     "config/GMFE69/devicemgr.json": "a69581850f15789ebd24ed6c2257f88cb25e88d38fa2fb5f1322fe094a996227",
     "config/GMFE69/direct_io.json": "c999df3784fa70e3b51fbbc274ec3a709a290dc5fb35828c1f0b61a696cec590",
@@ -2781,7 +2781,7 @@
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "bacae8a4e726d84634f4a9723e7c05de4257ccf33c187ce51740130f12d99ab3",
-    "src/game/decal_reset.cpp": "5e1a9da59931f3a9f81663b42137348269420b0a417e38192db58963910acc87",
+    "src/game/decal_reset.cpp": "f3b086ea1e301dbb5a4ba327bee13f765fe7df339d651498e4d71ee783f67246",
     "src/game/destructor_queue.cpp": "e03cf0b6880befec4f40a6abaa44cef7bdbfff9ef781396eec3ab266e7f89d14",
     "src/game/devicemgr.cpp": "7b3153cdd86bbdb41db94ee960dc7e388af5996235f5a3982151b7abd341e82d",
     "src/game/dmcluster.cpp": "4d5c64614596f9e6b4f07e58c306e10efccb4877c60c1a797f610bac16cdcbe1",
@@ -38952,8 +38952,8 @@
     {
       "id": "decal_reset",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 392,
+      "functions": 3,
+      "code_bytes": 1472,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38985,8 +38985,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b0b8a77d9d46736c3e195a2f30ee3d985ebcf374a5e12879a2a09469a396e52c",
-      "linked_sha256": "f1004d39b2adbf58449c79b80180fe690f790efae67eef0cd222fa15b251f078"
+      "object_sha256": "073bf74af4339e978a4f40155a7046218c48013110f56a1e31ed02a47945fe80",
+      "linked_sha256": "64b0221f81c4ce99a4749058c66e649649cedd6f3756ac5c7b0dbbec48412ba0"
     },
     {
       "id": "dmesh_bins",
@@ -56207,13 +56207,6 @@
         "file_record": 79,
         "file_name": "decal.cpp",
         "ranges": [
-          {
-            "address": "0x80083424",
-            "size": 1080,
-            "kind": "function",
-            "name": "InitBulletDecalFromCollision__19CBulletDecalManagerFP11BulletDecalPC12SClsnContactb",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800839e4",
             "size": 608,

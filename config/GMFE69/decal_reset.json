@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008385c",
-      "size": 392,
+      "address": "0x80083424",
+      "size": 1472,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c2a0",
-      "size": 16,
+      "address": "0x8000c298",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001328c",
-      "size": 24,
+      "address": "0x80013280",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "InitBulletDecalFromCollision__19CBulletDecalManagerFP11BulletDecalPC12SClsnContactb",
+      "address": "0x80083424",
+      "size": 1080,
+      "binding": 1
+    },
     {
       "name": "AddBulletDecal__19CBulletDecalManagerFRC10CCollisionb",
       "address": "0x8008385c",
@@ -72,16 +78,51 @@
   ],
   "externals": {
     "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "BuildRotZ__7CMatrixFf": "0x80090800",
     "GetDecalIndex__12CSurfaceTypeFi": "0x8001c010",
-    "InitBulletDecalFromCollision__19CBulletDecalManagerFP11BulletDecalPC12SClsnContactb": "0x80083424",
-    "g_scene": "0x8019484c"
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MathFunRandomRealSigned__Fff": "0x80092cbc",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "decal.cpp",
-  "original_file_index": 4342
+  "original_file_index": 4342,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803500d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803500d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803500dc"
+    }
+  ]
 }

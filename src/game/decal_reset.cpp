@@ -1,11 +1,17 @@
-// A fragment of decal.cpp (0x8008397c): CBulletDecalManager::Reset (two
+// A fragment of decal.cpp (0x80083424): CBulletDecalManager::
+// InitBulletDecalFromCollision (a decal's type from the contact surface, a
+// frame built on the contact normal (flipped when asked) with a random spin
+// about it, and four corners of a randomly scaled quad 0.005 above the
+// surface transformed into the world), AddBulletDecal (recycles the oldest
+// decal past 512 and links the new one into its texture bin) and Reset (two
 // scene-node words cleared, the manager added to the scene again, no decal
 // active and every texture bin emptied). The file name is this project's;
 // the original record is decal.cpp. The classes, functions and g_scene are
 // named by the mangled symbols (CRenderBinData by CRenderBin's RTTI record);
 // the members are inferred views (as in decal_dtor.cpp and decal_link.cpp).
 // Each class declares its destructor (defined in decal_dtor.cpp) first so
-// its table is not emitted here.
+// its table is not emitted here. The inline fabs is MSL's; SetXYZ and the
+// CVector3 Cross helper are inferred inlines.
 class CDmaTag;
 class CDmaPacket;
 class CRenderList;
@@ -15,10 +21,83 @@ class CDrawContext;
 class CLight;
 class CPlayerObject;
 class CStaticObject;
-class CMatrix;
-class CVector3;
 struct AIDoodadView;
 enum EClsnId {};
+
+#undef fabs
+inline double fabs(double x) { return __fabs(x); }
+
+union CVector3Data {
+    double pair[2];
+    struct {
+        float x, y, z, w;
+    } c;
+};
+
+class CVector3 {
+public:
+    CVector3() {}
+    CVector3(float x, float y, float z) {
+        d.c.x = x;
+        d.c.y = y;
+        d.c.z = z;
+    }
+    void Cross(const CVector3& a, const CVector3& b) {
+        d.c.x = a.d.c.y * b.d.c.z - a.d.c.z * b.d.c.y;
+        d.c.y = a.d.c.z * b.d.c.x - a.d.c.x * b.d.c.z;
+        d.c.z = a.d.c.x * b.d.c.y - a.d.c.y * b.d.c.x;
+    }
+    CVector3& operator*=(float f) {
+        d.c.x *= f;
+        d.c.y *= f;
+        d.c.z *= f;
+        return *this;
+    }
+
+    CVector3Data d;
+} __attribute__((aligned(8)));
+
+class CMatrix {
+public:
+    CMatrix(int unknown = 0) {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    void SetRight(CVector3);
+    void SetFront(CVector3);
+    void SetUp(CVector3);
+    void SetPos(CVector3);
+    void BuildRotZ(float);
+    void Multiply(const CMatrix&, const CMatrix&);
+    void TransformPoint(CVector3&, CVector3) const;
+    static void InitClass();
+    static bool s_ClassInit;
+
+    float m[4][4];
+} __attribute__((aligned(16)));
+
+float MathFunRandomReal(float, float);
+float MathFunRandomRealSigned(float, float);
+
+/* inferred: decal.crp holds six (key, value) pairs per decal type: the
+   name (pair 0, see Init), then width, height, the scale range and
+   the rotation range (degrees, converted to radians by Init). */
+struct DecalParam {
+    int key;
+    float value;
+};
+
+struct DecalResourceData {
+    int data00;
+    int m_count;
+    DecalParam m_params[6]; /* six pairs per decal type */
+};
+
+struct TLTResourceView {
+    int data00;
+    int data04;
+    DecalResourceData* data;
+};
 
 class IDestructible {
 public:
@@ -155,7 +234,9 @@ struct SurfaceInfo {
 };
 
 struct SClsnContact {
-    unsigned char unknown00[36];
+    CVector3 m_normal;
+    CVector3 m_position;
+    unsigned char unknown20[4];
     SurfaceInfo* m_surface;
 };
 
@@ -185,6 +266,12 @@ struct SDecalVertex {
     unsigned char r, g, b, a;
     float u, v;
 };
+
+inline void SetXYZ(SDecalVertex& v, float x, float y, float z) {
+    v.x = x;
+    v.y = y;
+    v.z = z;
+}
 
 struct BulletDecal {
     SDecalVertex m_vertices[4];
@@ -221,6 +308,7 @@ public:
     CBulletDecalTextureBin m_bins[13];
     BulletDecal* m_decals;
     int m_active;
+    TLTResourceView* m_resource;
 };
 
 
@@ -233,6 +321,74 @@ public:
 };
 
 extern CScene g_scene;
+
+void CBulletDecalManager::InitBulletDecalFromCollision(BulletDecal* decal, const SClsnContact* contact, bool flag) {
+    decal->m_bin = CSurfaceType::GetDecalIndex(contact->m_surface->m_type);
+    CVector3 normal = contact->m_normal;
+    int first = decal->m_bin * 6;
+    float width = m_resource->data->m_params[first + 1].value;
+    float height = m_resource->data->m_params[first + 2].value;
+    float minScale = m_resource->data->m_params[first + 3].value;
+    float maxScale = m_resource->data->m_params[first + 4].value;
+    float angle = m_resource->data->m_params[first + 5].value;
+    if (flag)
+        normal *= -1.0f;
+    CVector3 right;
+    CVector3 front;
+    CVector3 p;
+    CVector3 out;
+    if (fabs(normal.d.c.z) < fabs(normal.d.c.x)) {
+        front.Cross(normal, CVector3(0.0f, 0.0f, -1.0f));
+        right.Cross(front, normal);
+    } else {
+        front.Cross(normal, CVector3(-1.0f, 0.0f, 0.0f));
+        right.Cross(front, normal);
+    }
+    CMatrix matrix;
+    CMatrix rotation;
+    matrix.SetRight(right);
+    matrix.SetFront(front);
+    matrix.SetUp(normal);
+    matrix.SetPos(contact->m_position);
+    rotation.BuildRotZ(MathFunRandomRealSigned(-angle, angle));
+    matrix.Multiply(rotation, matrix);
+    float scale = MathFunRandomReal(minScale, maxScale);
+    float x = width * scale;
+    float y = height * scale;
+    SDecalVertex* v = decal->m_vertices;
+    v[0].x = -x;
+    v[0].y = y;
+    v[0].z = 0.005f;
+    v[1].x = x;
+    v[1].y = y;
+    v[1].z = 0.005f;
+    v[2].x = x;
+    v[2].y = -y;
+    v[2].z = 0.005f;
+    v[3].x = -x;
+    v[3].y = -y;
+    v[3].z = 0.005f;
+    p.d.c.x = v[0].x;
+    p.d.c.y = v[0].y;
+    p.d.c.z = v[0].z;
+    matrix.TransformPoint(out, p);
+    SetXYZ(v[0], out.d.c.x, out.d.c.y, out.d.c.z);
+    p.d.c.x = v[1].x;
+    p.d.c.y = v[1].y;
+    p.d.c.z = v[1].z;
+    matrix.TransformPoint(out, p);
+    SetXYZ(v[1], out.d.c.x, out.d.c.y, out.d.c.z);
+    p.d.c.x = v[2].x;
+    p.d.c.y = v[2].y;
+    p.d.c.z = v[2].z;
+    matrix.TransformPoint(out, p);
+    SetXYZ(v[2], out.d.c.x, out.d.c.y, out.d.c.z);
+    p.d.c.x = v[3].x;
+    p.d.c.y = v[3].y;
+    p.d.c.z = v[3].z;
+    matrix.TransformPoint(out, p);
+    SetXYZ(v[3], out.d.c.x, out.d.c.y, out.d.c.z);
+}
 
 void CBulletDecalManager::AddBulletDecal(const CCollision& collision, bool flag) {
     SClsnContact* contact = collision.m_contact;
@@ -278,3 +434,4 @@ void CBulletDecalManager::Reset() {
         bin->m_count = 0;
     }
 }
+
