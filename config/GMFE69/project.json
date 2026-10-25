@@ -1261,7 +1261,8 @@
     "proxtrig_point.json",
     "Soldier_object_collision.json",
     "mainloop_loop.json",
-    "projectilebullet_draw.json"
+    "projectilebullet_draw.json",
+    "bsbifunc_makenoise_bi.json"
   ],
   "progress": {
     "code_bytes": 1414572,
