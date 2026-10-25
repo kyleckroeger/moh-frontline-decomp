@@ -148,6 +148,28 @@ public:
 };
 
 
+struct SurfaceInfo {
+    unsigned char unknown00[12];
+    short m_type : 11;
+    short unknown0c : 5;
+};
+
+struct SClsnContact {
+    unsigned char unknown00[36];
+    SurfaceInfo* m_surface;
+};
+
+class CCollision {
+public:
+    unsigned char unknown00[24];
+    SClsnContact* m_contact;
+};
+
+class CSurfaceType {
+public:
+    static int GetDecalIndex(int);
+};
+
 /* Only Load and the 64-byte size are part of this view. */
 class CTexture {
 public:
@@ -192,6 +214,8 @@ public:
     virtual void Link(CDmaTag*, CDmaPacket&);
     virtual bool IsUsed();
 
+    void InitBulletDecalFromCollision(BulletDecal*, const SClsnContact*, bool);
+    void AddBulletDecal(const CCollision&, bool);
     void Reset();
 
     CBulletDecalTextureBin m_bins[13];
@@ -209,6 +233,40 @@ public:
 };
 
 extern CScene g_scene;
+
+void CBulletDecalManager::AddBulletDecal(const CCollision& collision, bool flag) {
+    SClsnContact* contact = collision.m_contact;
+    if (contact) {
+        BulletDecal* decal;
+        if (m_active >= 512) {
+            decal = &m_decals[m_active & 511];
+            CBulletDecalTextureBin& bin = m_bins[decal->m_bin];
+            decal = &m_decals[m_active & 511];
+            bin.m_count--;
+            BulletDecal* d = bin.m_decals;
+            if (decal == d) {
+                bin.m_decals = 0;
+            } else {
+                for (; d;) {
+                    BulletDecal* next = d->m_next;
+                    if (next == decal) {
+                        d->m_next = next->m_next;
+                        break;
+                    }
+                    d = next;
+                }
+            }
+        } else {
+            decal = &m_decals[m_active];
+        }
+        m_active++;
+        InitBulletDecalFromCollision(decal, contact, flag);
+        int index = CSurfaceType::GetDecalIndex(contact->m_surface->m_type);
+        decal->m_next = m_bins[index].m_decals;
+        m_bins[index].m_decals = decal;
+        m_bins[index].m_count++;
+    }
+}
 
 void CBulletDecalManager::Reset() {
     data08 = 0;
