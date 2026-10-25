@@ -106,8 +106,30 @@ void SNDSTRM_setgreedylevel(int, int);
 int SNDSTRM_purge(int);
 }
 
-// SNDSTRMI_calcdatarate comes first in the original file; it is drafted in
-// scratch but differs in register numbering, so this unit starts after it.
+// SNDSTRMI_calcdatarate: a format's data rate in bytes per second, the
+// sample rate times the channels times the codec's bits per 256 samples
+// (16-bit PCM, type 16, is simply 8 bytes per channel). The locals are
+// declared in the order channels, rate, bits but assigned rate, bits,
+// channels (register order).
+int SNDSTRMI_calcdatarate(SNDSAMPLEFORMAT* format) {
+    int channels;
+    int rate;
+    int bits;
+
+    rate = format->rate;
+    bits = 0;
+    channels = format->channels;
+    rate *= channels;
+    if (format->type == 10)
+        bits = 136;
+    else if (format->type == 4)
+        bits = 51;
+    else if (format->type == 7)
+        bits = 512;
+    else if (format->type == 16)
+        return channels * 8;
+    return rate * bits >> 8;
+}
 
 int SNDSTRMI_destroyall(void) {
     for (int i = 0; i < *(unsigned char*)(sndgs + 71); i++)
@@ -224,7 +246,6 @@ struct SNDSTREAMEVENT {
     int handle;
 };
 
-int SNDSTRMI_calcdatarate(SNDSAMPLEFORMAT*);
 
 int SNDSTRMI_parseheader(int index, STREAMCHUNKHDR* chunk) {
     SNDSTREAMCHANNEL* stream = (SNDSTREAMCHANNEL*)sndss[index];
