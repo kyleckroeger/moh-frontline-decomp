@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80147e68",
-      "size": 532,
+      "address": "0x80147c14",
+      "size": 1128,
       "type": 1
     }
   ],
@@ -52,6 +52,12 @@
       "binding": 0
     },
     {
+      "name": "AyncDVDRead__FP11DVDFileInfo",
+      "address": "0x80147c14",
+      "size": 596,
+      "binding": 0
+    },
+    {
       "name": "StartNonAlignedAyncRead__FP11DVDFileInfoPvll",
       "address": "0x80147e68",
       "size": 484,
@@ -59,7 +65,9 @@
     }
   ],
   "externals": {
+    "DCInvalidateRange": "0x80111850",
     "DVDReadAsyncPrio": "0x80118358",
+    "MEM_copy": "0x80150880",
     "OSSendMessage": "0x80113eac",
     "ReadFileThreadMsgQ": "0x80336c50",
     "_restgpr_27": "0x80138a5c",

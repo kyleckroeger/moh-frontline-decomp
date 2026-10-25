@@ -1,15 +1,18 @@
-// The start of the asynchronous disc read path of EA's file device
-// (filedev.cpp): StartNonAlignedAyncRead sets up a read of any alignment by
-// recording the destination and file positions with their 32-byte aligned
-// bounds, then queues the first DVD transfer: a short read (under 32 bytes)
-// or a misaligned head goes through the aligned bounce buffer, an aligned
+// The asynchronous disc read path of EA's file device (filedev.cpp):
+// StartNonAlignedAyncRead sets up a read of any alignment by recording the
+// destination and file positions with their 32-byte aligned bounds, then
+// queues the first DVD transfer: a short read (under 32 bytes) or a
+// misaligned head goes through the aligned bounce buffer, an aligned
 // destination is read in place up to its aligned end, and anything else is
-// read in chunks of at most 16 KB through the bounce buffer. Each completed
-// transfer signals the read thread through AyncDVDCallback. AyncDVDRead
-// (before this unit) and the read thread (after it) are not part of this
-// unit. DVDFileInfo is named by the mangled symbols; the read request record
-// and its members are inferred (the destination fields are integers: the
-// original compares them signed).
+// read in chunks of at most 16 KB through the bounce buffer. AyncDVDRead runs
+// on the read thread after each completed transfer: it copies what the last
+// transfer brought (the head, the in-place run, a chunk, or a whole short
+// read, which ends the request), advances the positions and queues the next
+// transfer the same way, or ends the request. Each transfer signals the read
+// thread through AyncDVDCallback. The read thread itself (after this unit) is
+// not part of it. DVDFileInfo is named by the mangled symbols; the read
+// request record and its members are inferred (the destination fields are
+// integers: the original compares them signed).
 
 struct OSMessageQueue {
     unsigned char unknown00[32];
@@ -26,6 +29,8 @@ struct DVDFileInfo {
 extern "C" {
 int OSSendMessage(OSMessageQueue*, OSMessage, int);
 int DVDReadAsyncPrio(DVDFileInfo*, void*, long, long, void (*)(long, DVDFileInfo*), long);
+void DCInvalidateRange(void*, unsigned long);
+void MEM_copy(void*, const void*, int);
 }
 
 struct HANDLE_def;
@@ -63,6 +68,52 @@ extern OSMessageQueue ReadFileThreadMsgQ;
 extern READREQUEST gCurRead;
 
 static void AyncDVDCallback(long, DVDFileInfo*);
+
+static void AyncDVDRead(DVDFileInfo* info) {
+    long length;
+    READREQUEST* read;
+
+    if (gCurRead.state == 2) {
+        MEM_copy((void*)gCurRead.dest, gCurRead.temp + gCurRead.misalign, gCurRead.headLength);
+        gCurRead.offset += gCurRead.headLength;
+        gCurRead.dest += gCurRead.headLength;
+    } else if (gCurRead.state == 3) {
+        DCInvalidateRange((void*)gCurRead.dest, gCurRead.destEndAligned - gCurRead.dest);
+        length = gCurRead.destEndAligned - gCurRead.dest;
+        gCurRead.offset += length;
+        gCurRead.dest += length;
+    } else if (gCurRead.state == 4) {
+        length = 16384;
+        if (gCurRead.destEnd - gCurRead.dest < 16384)
+            length = gCurRead.destEnd - gCurRead.dest;
+        MEM_copy((void*)gCurRead.dest, gCurRead.temp, length);
+        gCurRead.offset += length;
+        gCurRead.dest += length;
+    } else if (gCurRead.state == 1) {
+        MEM_copy((void*)gCurRead.dest, gCurRead.temp + gCurRead.misalign, gCurRead.size);
+        gCurRead.state = 1;
+        gCurRead.state = 5;
+        AyncDVDCallback(0, 0);
+        return;
+    }
+    // The in-place test reads the request through a local pointer (the chunk
+    // test then reloads the destination, as in the original).
+    read = &gCurRead;
+    if (read->dest == read->destAlignedUp && read->dest < read->destEndAligned) {
+        read->state = 3;
+        gCurRead.queued = DVDReadAsyncPrio(info, (void*)read->dest, read->destEndAligned - read->dest,
+                                           read->offset, AyncDVDCallback, 2);
+    } else if (gCurRead.destEnd > read->dest) {
+        length = 16384;
+        if (((-read->dest + gCurRead.destEnd + 31) & ~31) < 16384)
+            length = (-read->dest + gCurRead.destEnd + 31) & ~31;
+        gCurRead.state = 4;
+        gCurRead.queued += DVDReadAsyncPrio(info, gCurRead.temp, length, gCurRead.offset, AyncDVDCallback, 2);
+    } else {
+        gCurRead.state = 5;
+        AyncDVDCallback(0, 0);
+    }
+}
 
 static int StartNonAlignedAyncRead(DVDFileInfo* info, void* buffer, long offset, long size) {
     if (size == 0) {
