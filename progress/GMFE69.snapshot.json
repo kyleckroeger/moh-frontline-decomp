@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1004632,
+    "matching_code_bytes": 1005336,
     "total_executable_code_bytes": 1414572,
-    "percent": 71.02020964645136,
+    "percent": 71.06997735003945,
     "categories": {
-      "reconstructed_game": 774640,
+      "reconstructed_game": 775344,
       "restored_library": 229992
     },
-    "matching_functions": 4625
+    "matching_functions": 4626
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -886,7 +886,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "42611ec2cceb1c38459cb73f6d7f484e10b6c4930e0e508a82c69eaadec50bce",
+    "config/GMFE69/project.json": "f2d370f82496f494ae64b53a5d4d5f10a6be2ba1f10465a7cec0ba0e21603d17",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -1151,6 +1151,7 @@
     "config/GMFE69/ssysreal.json": "9e50d3a1743c3946bd968f12808ce4adb4c03c3ce4437b9a4eff20f09ab4d815",
     "config/GMFE69/ssysserv.json": "49f2852bbf809fe6219540041d9217ec9f6389f59e15723314a1482fc110739b",
     "config/GMFE69/stagpat.json": "8b47f5b83a53f485afd08fe4f67c74a462337b715dad30438c31560ad913eede",
+    "config/GMFE69/stagpat_playpatch.json": "41a355b9623bd9cfb92071ac8ae92758187d262d2557969cac6b66a01275565d",
     "config/GMFE69/static_obj_anim.json": "71b33f41a60964e07fcaef5b146d967413544a38b1b992fa300c45218cce3fae",
     "config/GMFE69/static_obj_attempt.json": "808ac1e28c2911953e71d8813ae769bb7faee32a52b0f7ef63fb0fa0c688c89a",
     "config/GMFE69/static_obj_bounds.json": "017358940e40c16193afee9a8d7a7c2d081178ca69416a081c9866c003b1801a",
@@ -2258,6 +2259,7 @@
     "src/ea/ssysreal.c": "2a5f454268823038839a4ea3219f804e213c28358abedaf60e10cb978d3c2a41",
     "src/ea/ssysserv.c": "c652ea041a804d456cc780e25f0ecfa648623be37c1c1bd170e18555761ec31d",
     "src/ea/stagpat.c": "d1225132699b70d61dfb8b95b79f4892bdbf75c57f17b83d2467eb3fbe79168c",
+    "src/ea/stagpat_playpatch.c": "5aee32d69d47c22157738d14ada4816abf987c8bcdb15f1bc31c75f250fb6a6a",
     "src/ea/stimemul.c": "fe4a33747721800f1d82a72032bc415a12b399b6a6ebdc8bed634faeb2ed7494",
     "src/ea/stpparse.c": "f8bf5ef91a0d9021a21df9b6133d68916b53999020635150f948d478c7bfcc40",
     "src/ea/stream.cpp": "7998a165a467c9b0d0d6ddbd139d8e7c881c05fe7d8ec3a74d8ee53aac581451",
@@ -54462,6 +54464,45 @@
       "discarded_functions": [],
       "object_sha256": "f77b3452257182123287af5c837c12d52d60e0b59083cdae022de7baf85fe022",
       "linked_sha256": "067b4cea14750102ee30ee75d3d974c7b47ef0489de80b71e5f6c9f22cb28359"
+    },
+    {
+      "id": "stagpat_playpatch",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 704,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "66123313ee904fa7786173c81974d489f4d680277b70061be41012f4fa209ca0",
+      "linked_sha256": "32d87b7edc1db8e20a019d71381305d12fc77a72a52c5553cdb8d036a68d123e"
     }
   ],
   "code_map": {
@@ -57790,20 +57831,6 @@
             "kind": "function",
             "name": "SNDVOICEI_free__Fi",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/stagpat.c [symbol evidence]",
-        "file_record": 496,
-        "file_name": "stagpat.c",
-        "ranges": [
-          {
-            "address": "0x8015ee60",
-            "size": 704,
-            "kind": "function",
-            "name": "SNDBANKI_playpatch__FPvP11TAGGEDPATCHiiP11SNDPLAYOPTS",
-            "evidence": "private-reference"
           }
         ]
       },

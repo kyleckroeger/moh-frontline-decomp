@@ -1255,7 +1255,8 @@
     "UserInterface_score.json",
     "pumhandler_add.json",
     "Pause_update.json",
-    "path_crossfade.json"
+    "path_crossfade.json",
+    "stagpat_playpatch.json"
   ],
   "progress": {
     "code_bytes": 1414572,
