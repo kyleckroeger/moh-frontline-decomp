@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80083f7c",
-      "size": 864,
+      "size": 1648,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c2f8",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800132e0",
-      "size": 72,
+      "size": 84,
       "type": 1
     },
     {
@@ -64,11 +64,17 @@
     {
       "name": ".sdata2",
       "address": "0x803500e8",
-      "size": 24,
+      "size": 64,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateActuators__9CGCDeviceFf",
+      "address": "0x800842dc",
+      "size": 784,
+      "binding": 1
+    },
     {
       "name": "UpdateActuators__14CDeviceManagerFf",
       "address": "0x80083f7c",
@@ -125,12 +131,16 @@
     }
   ],
   "externals": {
+    "PADControlMotor": "0x8011d80c",
     "PAD_getdataptr": "0x8014eec4",
     "PAD_update": "0x8014eed8",
-    "UpdateActuators__9CGCDeviceFf": "0x800842dc",
     "Update__9CGCDeviceFv": "0x800845ec",
     "__cvt_fp2unsigned": "0x801388e8",
     "__dl__FPv": "0x8001ca2c",
+    "bIsGamePaused__5PauseFv": "0x800dd7d0",
+    "g_Pause": "0x80194fec",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bMPEndLevel": "0x8034e9ec",
     "masterEventTable": "0x80184fe0",
     "memcpy": "0x800094f8",
     "memset": "0x80009410"
@@ -140,7 +150,10 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "g_bMPEndLevel"
+  ],
   "original_file": "devicemgr.cpp",
   "original_file_index": 4420
 }
