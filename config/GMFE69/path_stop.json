@@ -39,12 +39,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010aec4",
-      "size": 2680,
+      "address": "0x8010acd4",
+      "size": 3176,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PATH_fade",
+      "address": "0x8010acd4",
+      "size": 496,
+      "binding": 1
+    },
     {
       "name": "PATH_volume",
       "address": "0x8010aec4",
@@ -80,6 +86,7 @@
     "PATHI_sortprojects__Fv": "0x8010fd80",
     "PATHX_destroytrack": "0x800e946c",
     "PATHX_endservice": "0x800e8e64",
+    "PATHX_ifade__Fiiic": "0x800e9aec",
     "PATHX_pause": "0x800e88a8",
     "PATHX_stop": "0x800e883c",
     "PATHX_volume": "0x800e8940",
@@ -103,5 +110,22 @@
     "volscale"
   ],
   "original_file": "path.c",
-  "original_file_index": 10551
+  "original_file_index": 10551,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803513d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803513e0"
+    }
+  ]
 }

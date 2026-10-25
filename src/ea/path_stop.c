@@ -1,5 +1,8 @@
 /* A second fragment of the music path player's path.c (src/ea/path.c holds
-   PATH_control onward): PATH_volume clamps the volume to 0..100, keeps it as
+   PATH_control onward): PATH_fade (0x8010acd4) fades the masked tracks of
+   the matching player states to a volume (scaled to 0..127) over a time,
+   with the state's fade shape when it has one (an unset shape plays the fade
+   immediately only when the state's shape is above 1); PATH_volume clamps the volume to 0..100, keeps it as
    the global volume scale for the all-tracks handle (-1), and for each masked
    track stores it and, while the track plays, sets the track's base volume
    scaled by it; PATH_stop stops every track of the matching player
@@ -12,7 +15,7 @@
    name is this project's, not the original's: the original file record is
    path.c and PATH_event (between PATH_jump and PATH_control) is not
    reconstructed, so the two parts are separate units. All views, field names
-   and the inline helpers (state selection, track count) are inferred from the
+   and the inline helpers (state selection, track count, track fade) are inferred from the
    code; pfstates and the functions are named by their symbols. */
 struct PATHNODEVIEW {
     unsigned char unknown0[2];
@@ -52,7 +55,8 @@ struct PATHTRACKVIEW {
     unsigned char control;
     signed char paused;
     signed char volume;
-    unsigned char unknown04[6];
+    unsigned char unknown04[5];
+    signed char fademode;
     signed char playing;
     unsigned char unknown0b[5];
     unsigned int latency;
@@ -69,7 +73,9 @@ struct PATHSTATEVIEW {
     int leader;
     unsigned int latency;
     int beat;
-    unsigned char unknown00c[20];
+    unsigned char unknown00c[12];
+    int fade;
+    unsigned char unknown01c[4];
     unsigned int id;
     PATHMAPVIEW* active;
     short* nodemap;
@@ -89,6 +95,7 @@ extern PATHSTATEVIEW* pfstate;
 extern PATHSTATEVIEW pfstates[4];
 
 extern "C" void PATHX_volume(int, int);
+int PATHX_ifade(int, int, int, char);
 extern "C" void PATHX_stop(int);
 extern "C" void PATHX_pause(int, int);
 extern "C" void PATHX_destroytrack(int);
@@ -120,6 +127,48 @@ static inline int counttracks(unsigned int songs) {
         }
     }
     return count;
+}
+
+static inline void fadetrack(PATHTRACKVIEW* track, int volume, int target, int time) {
+    int fade = pfstate->fade;
+    char immediate = 0;
+    track->playing = volume;
+    track->basevolume = target;
+    int scaled = track->basevolume * track->volume / 100;
+    if (fade >= 0) {
+        track->fademode = fade;
+        immediate = 1;
+    } else if ((unsigned int)pfstate->fade > 1) {
+        track->fademode = 0;
+        immediate = 1;
+    }
+    PATHX_ifade(track->handle, scaled, time, immediate);
+}
+
+extern "C" void PATH_fade(unsigned int handle, int volume, int time) {
+    unsigned int project;
+    unsigned int song;
+    int target;
+    int i;
+    int j;
+    if (!inited || pfactive || !selectstate(-1))
+        return;
+    project = handle & 0xF0000000;
+    song = handle & 0x0F000000;
+    target = (int)(1.27f * volume);
+    for (i = 0; i < 4; i++) {
+        if (pfstates[i].active && (project & pfstates[i].id) && (song & pfstates[i].id)) {
+            if (selectstate(i)) {
+                for (j = 0; j < 24; j++) {
+                    PATHTRACKVIEW* track = pfstate->tracks[j];
+                    if (track && (handle & (1 << j)))
+                        fadetrack(track, volume, target, time);
+                }
+            }
+        }
+    }
+    pfactive = 0;
+    pfstate = 0;
 }
 
 extern "C" void PATH_volume(unsigned int handle, signed char volume) {

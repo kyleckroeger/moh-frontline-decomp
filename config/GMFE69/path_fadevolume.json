@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010fb0c",
-      "size": 628,
+      "address": "0x8010f748",
+      "size": 1592,
       "type": 1
     }
   ],
@@ -50,13 +50,21 @@
       "address": "0x8010fb0c",
       "size": 628,
       "binding": 1
+    },
+    {
+      "name": "PATHI_enternode__Fiii",
+      "address": "0x8010f748",
+      "size": 964,
+      "binding": 1
     }
   ],
   "externals": {
     "PATHX_stop": "0x800e883c",
     "PATHX_volume": "0x800e8940",
     "milliseconds": "0x8034ef78",
-    "pfstate": "0x8034ef68"
+    "pfactive": "0x8034ef74",
+    "pfstate": "0x8034ef68",
+    "songprogress": "0x8034ef6c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -65,7 +73,9 @@
   "discarded_local_functions": [],
   "sda_externals": [
     "milliseconds",
-    "pfstate"
+    "pfactive",
+    "pfstate",
+    "songprogress"
   ],
   "original_file": "path.c",
   "original_file_index": 10551,
