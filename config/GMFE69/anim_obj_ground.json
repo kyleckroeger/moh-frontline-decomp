@@ -1,0 +1,127 @@
+{
+  "id": "anim_obj_ground",
+  "source": "src/game/anim_obj_ground.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8009491c",
+      "size": 892,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c8c0",
+      "size": 136,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 144
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013a3c",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "DetectGround__11CAnimObjectFv",
+      "address": "0x8009491c",
+      "size": 892,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetSoundIndex__12CSurfaceTypeFi": "0x8001bfe0",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__ct__9CVolFiberFRC6CLine3": "0x800ca560",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__6CLine3Fv": "0x8001c5d0",
+    "__dt__9CVolFiberFv": "0x800ca504",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "anim_obj.cpp",
+  "original_file_index": 5634,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803503e4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350420"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803503f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350424"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350428"
+    }
+  ]
+}
