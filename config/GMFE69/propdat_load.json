@@ -1,0 +1,107 @@
+{
+  "id": "propdat_load",
+  "source": "src/game/propdat_load.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80044600",
+      "size": 496,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a61c",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 16
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800116d8",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "LoadPropertyData__FPcb",
+      "address": "0x80044600",
+      "size": 496,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CreateAStarPathNodeList__15CAIFilterGlobalFPvP18BPDPathFindingNodei": "0x8005d678",
+    "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "CreateSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi": "0x8005d760",
+    "Create__15CParticleSystemFPv": "0x80080b30",
+    "Create__6CLightFPv": "0x8007861c",
+    "EndianSwap__FR9BPDHeader": "0x800447f0",
+    "FindAllMGPointsInBPDFile__Fv": "0x800421e0",
+    "PatchUpAllPropertyData__FP9BPDHeader": "0x8004372c",
+    "ResetSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi": "0x8005d72c",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "g_pBPDHeader": "0x8034e8c0",
+    "g_pLightVolumes": "0x8034e8cc",
+    "g_pMGTriggerObject": "0x801a70c0",
+    "g_pNumTriggers": "0x8034e8bc",
+    "g_pRawPropertyData": "0x8034e8b8",
+    "g_pTriggerObjects": "0x801a1300"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pBPDHeader",
+    "g_pLightVolumes",
+    "g_pNumTriggers",
+    "g_pRawPropertyData"
+  ],
+  "original_file": "propdat.cpp",
+  "original_file_index": 1602,
+  "file_duplicates": [
+    "EndianSwap__FR9BPDHeader"
+  ]
+}
