@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 999456,
+    "matching_code_bytes": 1000960,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.65430391666172,
+    "percent": 70.76062582887262,
     "categories": {
-      "reconstructed_game": 769464,
+      "reconstructed_game": 770968,
       "restored_library": 229992
     },
-    "matching_functions": 4619
+    "matching_functions": 4620
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -884,7 +884,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "a9071eb60b44ccfe6ec5f2abe6864f737ae128d027b348361ffd15fba52d8b80",
+    "config/GMFE69/project.json": "fbaafda492b5f8c6c7feccaf090d688ddc915e2e8e65da3c9274d07bb8e16e00",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "740176f230b8581c31f2231d007f45042c41a0c833b9e5601b1ed83d668f37af",
@@ -907,6 +907,7 @@
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
     "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
     "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
+    "config/GMFE69/pumhandler_add.json": "fe8854e79c304d80cacf9ad63f19fc53c3a178c035fd2d995e3fedb8d74f921c",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
     "config/GMFE69/pumhandler_prompt.json": "a2b27b1646eb28ce41b3f90f69bd46c89fc65430467b1ecafaf5da4643f5a4d2",
@@ -2950,6 +2951,7 @@
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
+    "src/game/pumhandler_add.cpp": "dd2febc0f9ff98f3f2d0f6f17f4f8fe5c8018543018452072a7cd750eb2e9d4e",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
     "src/game/pumhandler_prompt.cpp": "ac71c30d19abbe271524f96c45279d59de2fc3e7595554e81ed15bbef9be1047",
@@ -54337,6 +54339,45 @@
       "discarded_functions": [],
       "object_sha256": "98a64ac9c5b969bcd90982275f046182b0d3d17a5683ea94cdabcdd863f36a39",
       "linked_sha256": "3052703222905c598c91ae76b25504b67070a3b8e78310fef93dd40712b559d8"
+    },
+    {
+      "id": "pumhandler_add",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1504,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "2f1034e7e94fc0661f04c72ecd64c9d44df6fb257eb7b24dab5be98884147d8a",
+      "linked_sha256": "daa6bb300e2bd3bc5851776532fa29b7e76c9134571e0f6b9fa68468c148d686"
     }
   ],
   "code_map": {
@@ -56360,13 +56401,6 @@
             "kind": "function",
             "name": "__ct<Q23dwi27list_iter<14QueuedSubtitle>>__Q23dwi22list<14QueuedSubtitle>FiQ23dwi27list_iter<14QueuedSubtitle>Q23dwi27list_iter<14QueuedSubtitle>Pc",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x800b9420",
-            "size": 1504,
-            "kind": "function",
-            "name": "AddPopUpMessage__19PopUpMessageHandlerFPcUcUsUsUcUcUcUcUcUcUc",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800b9a00",

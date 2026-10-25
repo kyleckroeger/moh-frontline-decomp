@@ -1252,7 +1252,8 @@
     "path_queuenode.json",
     "CoverPoint_modified.json",
     "filedev_async.json",
-    "UserInterface_score.json"
+    "UserInterface_score.json",
+    "pumhandler_add.json"
   ],
   "progress": {
     "code_bytes": 1414572,

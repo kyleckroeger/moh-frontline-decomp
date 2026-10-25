@@ -1,0 +1,178 @@
+{
+  "id": "pumhandler_add",
+  "source": "src/game/pumhandler_add.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800b9420",
+      "size": 1504,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d9a8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014960",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801ef3fc",
+      "size": 50,
+      "type": 8,
+      "input_alignment": 4
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ebb8",
+      "size": 5,
+      "type": 8
+    }
+  ],
+  "functions": [
+    {
+      "name": "AddPopUpMessage__19PopUpMessageHandlerFPcUcUsUsUcUcUcUcUcUcUc",
+      "address": "0x800b9420",
+      "size": 1504,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Available__12PopUpMessageFv": "0x800bf7c0",
+    "ChangeAvailability__12PopUpMessageFUc": "0x800bf7f0",
+    "Get_property__12PopUpMessageFv": "0x800bf7a0",
+    "Get_top__12PopUpMessageFv": "0x800bf770",
+    "MoveTop__12PopUpMessageFv": "0x800bf6ec",
+    "POPUPS_IN_SECTION": "0x8034e0e8",
+    "Reset__12PopUpMessageFv": "0x800bf84c",
+    "SetString__12PopUpMessageFPCc": "0x800bf7c8",
+    "Set_bottom__12PopUpMessageFUs": "0x800bf7f8",
+    "Set_onScreenTime__12PopUpMessageFf": "0x800bf828",
+    "Set_placement__12PopUpMessageFUc": "0x800bf844",
+    "Set_property__12PopUpMessageFUc": "0x800bf830",
+    "Set_rgba__12PopUpMessageFUcUcUcUc": "0x800bf808",
+    "Set_screenLocs__12PopUpMessageFUsUs": "0x800bf838",
+    "Set_textSize__12PopUpMessageFUc": "0x800bf81c",
+    "Set_top__12PopUpMessageFUs": "0x800bf800",
+    "g_screen": "0x80196ac0",
+    "strlen": "0x801400f8",
+    "strncpy": "0x8013fffc"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "POPUPS_IN_SECTION"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "POPUPS_IN_SECTION"
+  ],
+  "original_file": "pumhandler.cpp",
+  "original_file_index": 7152,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803509cc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803509d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803509c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803509c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x803509d4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x803509d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x803509dc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x803509c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x803509e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x803509e8"
+    }
+  ]
+}
