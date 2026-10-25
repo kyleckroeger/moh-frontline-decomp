@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,18 +39,43 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007bec0",
-      "size": 120,
+      "address": "0x8007bd00",
+      "size": 568,
       "type": 1
     },
     {
-      "name": ".sdata2",
-      "address": "0x8034ffb0",
-      "size": 4,
+      "name": "extab",
+      "address": "0x8000bfb0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012f14",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018477c",
+      "size": 12,
+      "type": 1,
+      "input_alignment": 4
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dca0",
+      "size": 8,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Update__13CFaderControlFf",
+      "address": "0x8007bd00",
+      "size": 448,
+      "binding": 1
+    },
     {
       "name": "IsFading__13CFaderControlCFv",
       "address": "0x8007bec0",
@@ -65,14 +90,42 @@
     }
   ],
   "externals": {
-    "__vt__13CFaderControl": "0x8018477c"
+    "g_color": "0x8034e9f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_color"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_color"
+  ],
   "original_file": "fader.cpp",
-  "original_file_index": 3903
+  "original_file_index": 3903,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 14,
+      "address": "0x80170d10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x8034ffa8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034ffb0"
+    }
+  ]
 }
