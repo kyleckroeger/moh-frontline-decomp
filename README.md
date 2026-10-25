@@ -1,6 +1,6 @@
 # Medal of Honor: Frontline
 
-An early matching decompilation of **Medal of Honor: Frontline** for GameCube, targeting the USA release **GMFE69, revision 0**. The game-code target is the disc's `Moh2RelGC.elf`.
+A matching decompilation of **Medal of Honor: Frontline** for GameCube, targeting the USA release **GMFE69, revision 0**. The game-code target is the disc's `Moh2RelGC.elf`.
 
 [![Verified progress snapshot](https://github.com/kyleckroeger/moh-frontline-decomp/actions/workflows/progress.yml/badge.svg)](https://github.com/kyleckroeger/moh-frontline-decomp/actions/workflows/progress.yml)
 
@@ -8,7 +8,22 @@ The project follows the structure and verification rules of the sibling [Medal o
 
 Progress counts verified, nonoverlapping source-built function bytes against all bytes in the original executable sections (`.init` and `.text`). Data and BSS earn no code-progress credit; neither do linker-generated tables or original context. See [how progress is verified and published](docs/Progress.md).
 
-## Verified starting point
+## Status
+
+As of 2026-10-25, **1,017,928 of 1,414,572 code bytes (71.96%)** are built from source and verified, covering **4,644 functions in 1,262 units**:
+
+| Category | Code bytes | Functions | Units | Compilers |
+| --- | ---: | ---: | ---: | --- |
+| `reconstructed_game` (game code and EA engine) | 787,936 | 3,655 | 1,082 | CodeWarrior `GC/1.3.2` (and `GC/1.3`) |
+| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 229,992 | 989 | 180 | `GC/1.2.5n`, `GC/1.2.5`, `GC/1.3`, `GC/1.3.2` |
+
+- Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
+- The remaining ~28% is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain.
+- The rebuilt image has **not** been runtime-tested.
+
+Most recent work is AI-assisted (Claude Code agents working against the same verification gate as any contributor); see [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every accepted unit follows.
+
+## Target facts
 
 - `Moh2RelGC.elf`: 2,866,920 bytes; SHA-1 `eb75ebc0073db35e75eba06742b151591d36c004`.
 - 18,811 symbol entries, including 5,005 function entries and 557 source-file entries.
@@ -57,11 +72,13 @@ Run the scripts from any directory; all outputs remain inside this checkout. `ba
 
 ## Next work
 
-1. **Resolve the remaining file boundaries.** `tools/file_map.py` places most symbols in their source files from symbols, relocations and link order, and the per-file split relinks identically. About 950 symbols near file boundaries remain unresolved, mostly in EA's sound and system libraries (see the [audit](docs/initial-audit.md#per-file-splits)); verified units settle them.
-2. **More Dolphin SDK units.** 81 SDK units are verified (79 with CodeWarrior `GC/1.2.5n`, 2 with `GC/1.2.5`); the [open problems](docs/Dolphin.md#open-problems) list what blocks the rest.
-3. **Metrowerks runtime libraries.** 64 MSL, runtime, math, MetroTRK and debugger-stub units are verified from the Wind Waker and Prime reconstructions; [Runtime.md](docs/Runtime.md) lists the rest, including MetroTRK.
-4. **Game code.** The compiler profile is established; `bstimer.cpp`, a fragment of `propdat.cpp` and five small EA library files are verified; [Game.md](docs/Game.md) has the method.
-5. **Mutation tests** for accepted units (see `tests/test_reconstruction.py`).
+1. **Game code near misses.** Many parked functions are within a few instructions of matching; [Game.md](docs/Game.md) has the method and the CodeWarrior behaviours that matter.
+2. **Large and untried functions**, especially in player, scene, UI and AI code.
+3. **Remaining library code.** EA audio (SND/saems), MPEG/UTALK decoding and the rest of MSL and MetroTRK ([Runtime.md](docs/Runtime.md), [Dolphin.md](docs/Dolphin.md#open-problems)).
+4. **Whole files.** Merge fragments into complete source files as the gaps between them close, and resolve the file boundaries still marked uncertain in the [audit](docs/initial-audit.md#per-file-splits).
+5. **Runtime testing** of the rebuilt image in Dolphin.
+
+Longer term, the matching source is meant to serve as the base for a native PC port, kept separate from the matching build.
 
 ## License
 
