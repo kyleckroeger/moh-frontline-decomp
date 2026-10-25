@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f69e4",
-      "size": 828,
+      "address": "0x800f6180",
+      "size": 2976,
       "type": 1
     },
     {
@@ -51,25 +51,37 @@
     },
     {
       "name": "extab",
-      "address": "0x8000f8c8",
-      "size": 40,
+      "address": "0x8000f8a0",
+      "size": 80,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 56
+      "linked_size": 96,
+      "stripped_objects": [
+        "@281"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x800165bc",
-      "size": 60,
+      "address": "0x80016580",
+      "size": 120,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 84
+      "linked_size": 144,
+      "stripped_objects": [
+        "@282"
+      ]
     },
     {
       "name": ".bss",
       "address": "0x80313c80",
       "size": 1552,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x803511a8",
+      "size": 7,
+      "type": 1
     }
   ],
   "functions": [
@@ -84,6 +96,36 @@
       "address": "0x800f6ce8",
       "size": 56,
       "binding": 0
+    },
+    {
+      "name": "Draw__6CDMeshFR12CDrawContextP16DMRenderObject_T",
+      "address": "0x800f6180",
+      "size": 424,
+      "binding": 1
+    },
+    {
+      "name": "BindTextures__6CDMeshFP12CTexturePackPc",
+      "address": "0x800f6328",
+      "size": 340,
+      "binding": 1
+    },
+    {
+      "name": "BindSkeleton__6CDMeshFP10CharSkel_t",
+      "address": "0x800f647c",
+      "size": 440,
+      "binding": 1
+    },
+    {
+      "name": "Init__6CDMeshFb",
+      "address": "0x800f6634",
+      "size": 852,
+      "binding": 1
+    },
+    {
+      "name": "__dt__5CPartFv",
+      "address": "0x800f6988",
+      "size": 92,
+      "binding": 2
     },
     {
       "name": "InitClass__6CDMeshFP11CRenderList",
@@ -111,8 +153,14 @@
     }
   ],
   "externals": {
+    "CharSkelGetJointByName__FP10CharSkel_tPc": "0x800693dc",
+    "DCStoreRange": "0x801118b4",
+    "DebugMsg__FPCce": "0x80018c88",
+    "FindTexture__12CTexturePackFPc": "0x800828b4",
     "InitClass__7CMatrixFv": "0x80090b78",
     "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "__construct_array": "0x8013834c",
     "__ct__9CRemapBinFv": "0x800f6d20",
     "__destroy_arr": "0x801382d4",
@@ -129,21 +177,40 @@
     "__vt__5CPart": "0x8018b5fc",
     "__vt__8CPartBin": "0x8018b668",
     "__vt__9CRemapBin": "0x8018b630",
+    "_finish_draw": "0x8034e390",
+    "_finish_draw_weapon": "0x8034e391",
     "_remap_next": "0x8034ed8c",
     "_renderList": "0x8034ed88",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "g_FarPlane": "0x8034ed98",
+    "g_NearPlane": "0x8034ed94",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pFog": "0x8034ed90",
+    "memcpy": "0x800094f8",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "stricmp": "0x80151ab8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "_finish_draw",
+    "_finish_draw_weapon",
     "_remap_next",
-    "_renderList"
+    "_renderList",
+    "g_FarPlane",
+    "g_NearPlane",
+    "g_pFog"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "_finish_draw",
+    "_finish_draw_weapon",
     "_remap_next",
     "_renderList",
+    "g_FarPlane",
+    "g_NearPlane",
+    "g_bInMultiplayerMode",
+    "g_pFog",
     "s_ClassInit__7CMatrix"
   ],
   "original_file": "dmesh.cpp",
@@ -159,6 +226,24 @@
     {
       "section": ".rodata",
       "offset": 0,
+      "size": 10,
+      "address": "0x8017a75c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 12,
+      "size": 10,
+      "address": "0x8017a768"
+    },
+    {
+      "section": ".rodata",
+      "offset": 24,
+      "size": 64,
+      "address": "0x8017a774"
+    },
+    {
+      "section": ".rodata",
+      "offset": 88,
       "size": 11,
       "address": "0x8017a7b4"
     }
