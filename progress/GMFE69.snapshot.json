@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 999200,
+    "matching_code_bytes": 999456,
     "total_executable_code_bytes": 1414572,
-    "percent": 70.63620656990241,
+    "percent": 70.65430391666172,
     "categories": {
-      "reconstructed_game": 769208,
+      "reconstructed_game": 769464,
       "restored_library": 229992
     },
-    "matching_functions": 4618
+    "matching_functions": 4619
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -661,7 +661,7 @@
     "config/GMFE69/fiber_visibility.json": "4d41af3dadb241683152c693aaa25e4d329dbcf3363a8b83f5f5c744b28b7086",
     "config/GMFE69/file_io.json": "18806d70257141c6be85e210ecc9cf7d248e740af95caccff17e02f127f6becd",
     "config/GMFE69/filedev.json": "345d10da83f1a2011e5fc4b9278fee1b53e1cdef4497f8fe2b0ee38ca1bafa48",
-    "config/GMFE69/filedev_async.json": "e0eea16df9e55de912d8fd8eb92abd4552de41fbce6c51820cc480955a5eea24",
+    "config/GMFE69/filedev_async.json": "21d9cdc41f06ba5067efbd73180b6e644594aae0ed65eccf29d9f803b06de38f",
     "config/GMFE69/filedev_head.json": "83c3fd590f7610e4f5bf6b78d767bbc088d1352bd0172bbdfef524a375c24540",
     "config/GMFE69/filesys.json": "44b6dc891dbe5026fb75d626e4ab6648c303868b80655aa336dfdd5b4bb5f062",
     "config/GMFE69/filesys_ea.json": "dacffd3bb5e27253683c9a096855d1a570e1e50864f054f816c183c91cc4d609",
@@ -2042,7 +2042,7 @@
     "src/ea/eaxadecf_state.cpp": "73c049a051a480e5d30db9b87346e7034eb13e3fdcea47e77a64e5a0cb51728e",
     "src/ea/exit.cpp": "74497f5488a200cd082a1769249e659f5cd17b94ee5c7e6b2b4f3b240c9f1923",
     "src/ea/filedev.cpp": "cb36b6354374cee49383e978a2f329ab48bddca0107bf61a0453c99ecec7735d",
-    "src/ea/filedev_async.cpp": "e52394f4f4617a65ff4370c3e7a8050e2d71fb9bd39745cd7aa718aa0495ce8a",
+    "src/ea/filedev_async.cpp": "e06ec3c13865f05395d7ef1ef229d9a9a2a5b3915d1e142b3dcc0ebbbb250ca0",
     "src/ea/filedev_head.cpp": "3851c87514f333f4254a3affa8b86f1dbe4b845c98598af3373027bd962ffa3f",
     "src/ea/filesys.cpp": "92b201e9b132f46b37bb6c233a877f9064b95255a54a1e7913c95048667fdf8d",
     "src/ea/filesys_del.cpp": "32672a53a87aced03a365e68ba9062ce673704846614d2ec8371c47bd4bead28",
@@ -54261,8 +54261,8 @@
     {
       "id": "filedev_async",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 1128,
+      "functions": 4,
+      "code_bytes": 1384,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -54296,8 +54296,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "12c6df0ed9e7671629885b4c3781b9b3fe6e7de40e9597b4e2010b2592164e76",
-      "linked_sha256": "d9348cb70da779a4bbf485399906a64104e41e84147f1875ed4d6bd3bca9c20a"
+      "object_sha256": "9e64322008b75a009ae4a2a6c399eac29516fb6860ab5ee9673ba7ae71cdcf61",
+      "linked_sha256": "ca0d3ae520072b42c9920cd60c982cb241aaf13d2133b16afd5d50c239f19548"
     },
     {
       "id": "UserInterface_score",
@@ -57509,20 +57509,6 @@
             "kind": "function",
             "name": "__dt__Q23std13bad_exceptionFv",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/filedev.cpp [local symbols only]",
-        "file_record": 363,
-        "file_name": "filedev.cpp",
-        "ranges": [
-          {
-            "address": "0x8014807c",
-            "size": 256,
-            "kind": "function",
-            "name": "ReadFileThreadFunc__FPv",
-            "evidence": "local-file-symbol"
           }
         ]
       },

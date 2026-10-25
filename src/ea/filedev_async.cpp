@@ -9,10 +9,19 @@
 // transfer brought (the head, the in-place run, a chunk, or a whole short
 // read, which ends the request), advances the positions and queues the next
 // transfer the same way, or ends the request. Each transfer signals the read
-// thread through AyncDVDCallback. The read thread itself (after this unit) is
-// not part of it. DVDFileInfo is named by the mangled symbols; the read
+// thread through AyncDVDCallback. ReadFileThreadFunc is the read thread: it
+// waits for a request, reads a host file through MSL or runs the disc read
+// to completion, waits until the drive is idle and reports completion. The
+// request words written by the requesting thread are volatile. DVDFileInfo
+// and HANDLE_def are named by the mangled symbols; their members, the read
 // request record and its members are inferred (the destination fields are
 // integers: the original compares them signed).
+
+namespace std {
+struct _FILE;
+typedef _FILE FILE;
+}
+using std::FILE;
 
 struct OSMessageQueue {
     unsigned char unknown00[32];
@@ -27,13 +36,28 @@ struct DVDFileInfo {
 };
 
 extern "C" {
+int OSReceiveMessage(OSMessageQueue*, OSMessage*, int);
+int fseek(FILE*, long, int);
+unsigned long fread(void*, unsigned long, unsigned long, FILE*);
+long DVDGetDriveStatus();
+void THREAD_yield(int);
 int OSSendMessage(OSMessageQueue*, OSMessage, int);
 int DVDReadAsyncPrio(DVDFileInfo*, void*, long, long, void (*)(long, DVDFileInfo*), long);
 void DCInvalidateRange(void*, unsigned long);
 void MEM_copy(void*, const void*, int);
 }
 
-struct HANDLE_def;
+/* inferred: an open file (type 3 host file through MSL, else a disc file);
+   the type is volatile like the request words below (the read thread's
+   loads of them keep their order in the original) */
+struct HANDLE_def {
+    volatile int type;
+    char field04[260];
+    union {
+        FILE* file;
+        DVDFileInfo dvd;
+    };
+};
 
 /* inferred: the read in progress (state, destination and file positions,
    their 32-byte aligned bounds, the bytes queued, the request) and the
@@ -56,8 +80,9 @@ struct READREQUEST {
     int queued;
     HANDLE_def* handle;
     void* buffer;
-    int requestOffset;
-    int requestSize;
+    // written by the requesting thread
+    volatile int requestOffset;
+    volatile int requestSize;
     char field4c[20];
     char temp[32768];
 };
@@ -68,6 +93,7 @@ extern OSMessageQueue ReadFileThreadMsgQ;
 extern READREQUEST gCurRead;
 
 static void AyncDVDCallback(long, DVDFileInfo*);
+void iFILE_CommandCompleteCallback(int);
 
 static void AyncDVDRead(DVDFileInfo* info) {
     long length;
@@ -162,3 +188,38 @@ static void AyncDVDCallback(long, DVDFileInfo*) {
     OSSendMessage(&ReadFileThreadMsgQ, (OSMessage)1, 1);
 }
 
+static void* ReadFileThreadFunc(void*) {
+    OSMessage message;
+
+    for (;;) {
+        HANDLE_def* handle;
+        void* buffer;
+        int offset;
+        int size;
+        long status;
+
+        OSReceiveMessage(&ReadFileThreadMsgQ, &message, 1);
+        handle = gCurRead.handle;
+        buffer = gCurRead.buffer;
+        offset = gCurRead.requestOffset;
+        size = gCurRead.requestSize;
+        if (handle->type == 3) {
+            fseek(handle->file, offset, 0);
+            fread(buffer, size, 1, handle->file);
+        } else {
+            StartNonAlignedAyncRead(&handle->dvd, buffer, offset, size);
+            OSReceiveMessage(&ReadFileThreadMsgQ, &message, 1);
+            while (gCurRead.state != 5) {
+                AyncDVDRead(&handle->dvd);
+                OSReceiveMessage(&ReadFileThreadMsgQ, &message, 1);
+            }
+        }
+        for (;;) {
+            status = DVDGetDriveStatus();
+            if (status == 8 || (unsigned long)status <= 1)
+                break;
+            THREAD_yield(100);
+        }
+        iFILE_CommandCompleteCallback(1);
+    }
+}

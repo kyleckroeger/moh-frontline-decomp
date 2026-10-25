@@ -40,11 +40,17 @@
     {
       "name": ".text",
       "address": "0x80147c14",
-      "size": 1128,
+      "size": 1384,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ReadFileThreadFunc__FPv",
+      "address": "0x8014807c",
+      "size": 256,
+      "binding": 0
+    },
     {
       "name": "AyncDVDCallback__FlP11DVDFileInfo",
       "address": "0x8014804c",
@@ -66,13 +72,19 @@
   ],
   "externals": {
     "DCInvalidateRange": "0x80111850",
+    "DVDGetDriveStatus": "0x8011a1f8",
     "DVDReadAsyncPrio": "0x80118358",
     "MEM_copy": "0x80150880",
+    "OSReceiveMessage": "0x80113f74",
     "OSSendMessage": "0x80113eac",
     "ReadFileThreadMsgQ": "0x80336c50",
+    "THREAD_yield": "0x80151fbc",
     "_restgpr_27": "0x80138a5c",
     "_savegpr_27": "0x80138a10",
-    "gCurRead": "0x80336d00"
+    "fread": "0x8013cd0c",
+    "fseek": "0x8013d234",
+    "gCurRead": "0x80336d00",
+    "iFILE_CommandCompleteCallback__Fi": "0x80149b9c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
