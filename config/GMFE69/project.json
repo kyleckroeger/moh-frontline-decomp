@@ -1263,7 +1263,8 @@
     "projectilebullet_draw.json",
     "bsbifunc_makenoise_bi.json",
     "path_serviceproject.json",
-    "propdat_load.json"
+    "propdat_load.json",
+    "animated_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,

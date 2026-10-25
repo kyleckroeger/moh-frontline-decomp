@@ -1,0 +1,148 @@
+{
+  "id": "animated_draw",
+  "source": "src/game/animated_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80060e0c",
+      "size": 1288,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b338",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800123d4",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Draw__9CAnimatedFR12CDrawContext",
+      "address": "0x80060e0c",
+      "size": 1288,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DMClusterSynthesizeMatrices__FUlP17DMClusterObject_TP6CDMeshP13CharOrient3_t": "0x800f561c",
+    "DMLightingScaleAlpha__FP16DMRenderObject_Tf": "0x800f4a98",
+    "DMLightingUpdate__FP16DMRenderObject_TP12DMLighting_T": "0x800f4aa8",
+    "DMRenderResetState__FP16DMRenderObject_T": "0x800f4d50",
+    "DMRenderSet2dReject__FP16DMRenderObject_TUl": "0x800f4d3c",
+    "DMRenderSetClusterMatrices__FP16DMRenderObject_TPA3_A4_f": "0x800f4c74",
+    "DMRenderSetLocalToCamera__FP16DMRenderObject_TP7CMatrixP7CMatrix": "0x800f4cf4",
+    "DMRenderSetScale__FP16DMRenderObject_Tfff": "0x800f4ce4",
+    "DMRenderSetViewProj__FP16DMRenderObject_TP7CMatrix": "0x800f4d18",
+    "DMRenderUpdateParts__FP16DMRenderObject_T": "0x800f4c8c",
+    "Draw__6CDMeshFR12CDrawContextP16DMRenderObject_T": "0x800f6180",
+    "GetDefaultLightVolume__6CLightFv": "0x800785a4",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Load__12CMatrixStackFPC7CMatrix": "0x80090d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "Pop__12CMatrixStackFv": "0x80090dc0",
+    "Push__12CMatrixStackFv": "0x80090e38",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "g_matStack": "0x8034eab8",
+    "memset": "0x80009410",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_matStack",
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "animated.cpp",
+  "original_file_index": 2818,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fc28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fc2c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fc30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034fc38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034fc40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034fc48"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x8034fc50"
+    }
+  ]
+}
