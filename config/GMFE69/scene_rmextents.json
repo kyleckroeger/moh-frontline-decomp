@@ -40,7 +40,19 @@
     {
       "name": ".text",
       "address": "0x800da178",
-      "size": 508,
+      "size": 968,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ea5c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001574c",
+      "size": 12,
       "type": 1
     }
   ],
@@ -49,6 +61,12 @@
       "name": "RemoveNodeExtents__6CSceneFR10ISceneNode",
       "address": "0x800da178",
       "size": 508,
+      "binding": 1
+    },
+    {
+      "name": "AddNodeExtents__6CSceneFR10ISceneNode",
+      "address": "0x800da374",
+      "size": 460,
       "binding": 1
     }
   ],
