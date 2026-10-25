@@ -10,13 +10,14 @@ in `AGENTS.md` win.
 
 ## Where the project is
 
-- Verified snapshot (2026-10-21): **910,228 / 1,414,572** executable bytes
-  (**64.35%**), 4,522 functions in 1,222 units: **684,820** bytes of
-  `reconstructed_game` (1,045 units, `docs/Game.md`) and **225,408** bytes of
-  `restored_library` (177 units: Dolphin SDK, MSL, MW runtime, EA audio
+- Verified snapshot (2026-10-25): **1,017,928 / 1,414,572** executable bytes
+  (**71.96%**), 4,644 functions in 1,262 units: **787,936** bytes of
+  `reconstructed_game` (1,082 units, `docs/Game.md`) and **229,992** bytes of
+  `restored_library` (180 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested.
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
-  CodeWarrior `GC/1.2.5n` (SDK) and `GC/1.3.2` (game and EA code), linked with
+  CodeWarrior `GC/1.2.5n` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
+  (game and EA code), linked with
   SN ProDG 3.8.1 `ngcld` (`tools/toolchain.json`, `tools/compilers.json`).
 - Analysis already present: `tools/file_map.py`, `tools/code_map.py`,
   `tools/dependencies.py`, `tools/port_unit.py`, `tools/unit_diff.py`,
@@ -101,7 +102,7 @@ reference-backed versus opaque.
    not invent types, names or source boundaries.
 3. Gate every unit with `tools/reconstruct.py` and refresh the snapshot.
 
-Exit: first `reconstructed_game` bytes accepted (reached; 684,820 bytes now).
+Exit: first `reconstructed_game` bytes accepted (reached; 787,936 bytes now).
 
 ### Phase C — Ghidra for unreferenced game code (in use)
 
@@ -135,6 +136,19 @@ Exit: faster iteration on functions that are close but not yet byte-exact.
 
 Exit: runtime status is measured, not assumed.
 
+### Phase F — Native PC port (later; separate from the matching build)
+
+1. Keep the matching build as the reference; port changes live behind
+   `#ifdef`s or in separate files and never affect the verified image.
+2. Replace the GameCube SDK layer (GX, DVD, PAD, OS, audio) with a PC platform
+   layer; Aurora (GX/PAD/VI over SDL and WebGPU) is the first candidate.
+3. Fill unmatched functions with behaviour-equivalent code, then fix 32-bit,
+   endianness and frame-rate assumptions.
+4. Add PC features in game code: mouse and keyboard aiming, FOV, keybinds,
+   options UI. Share the layer with a Rising Sun port where the engine allows.
+
+Exit: one level boots and plays on PC.
+
 ## Part 3 — Choosing the next target
 
 1. Prefer **shared helpers with many unfinished callers**
@@ -162,7 +176,9 @@ Exit: runtime status is measured, not assumed.
   complete source-build result, and runtime tests are distinct claims.
 - **Model roles.** A frontier model does the reconstruction directly; the
   unattended cheaper-worker pipeline was retired (it cost more review than it
-  saved). The main risk is invented types, names and boundaries, which no byte
+  saved). Several agents can work at once in separate lanes of the code on
+  one checkout; landings are serialised by a lock so each one is gated and
+  committed alone. The main risk is invented types, names and boundaries, which no byte
   comparison detects, so inferred views and helpers are marked in comments.
 - **No model verifies.** `tools/reconstruct.py` (complete-image match), the
   tests and `progress_report.py --capture` decide whether a unit lands. Each
