@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f57b4",
-      "size": 172,
+      "address": "0x800f561c",
+      "size": 580,
       "type": 1
     },
     {
@@ -51,19 +51,19 @@
     },
     {
       "name": "extab",
-      "address": "0x8000f838",
-      "size": 40,
+      "address": "0x8000f830",
+      "size": 48,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 48
+      "linked_size": 56
     },
     {
       "name": "extabindex",
-      "address": "0x80016514",
-      "size": 36,
+      "address": "0x80016508",
+      "size": 48,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 48
+      "linked_size": 60
     },
     {
       "name": ".bss",
@@ -86,6 +86,12 @@
       "binding": 0
     },
     {
+      "name": "DMClusterSynthesizeMatrices__FUlP17DMClusterObject_TP6CDMeshP13CharOrient3_t",
+      "address": "0x800f561c",
+      "size": 408,
+      "binding": 1
+    },
+    {
       "name": "DMClusterShutdown__Fv",
       "address": "0x800f57b4",
       "size": 40,
@@ -100,21 +106,31 @@
   ],
   "externals": {
     "Allocate__12CMatrixStackFUl": "0x80090ed8",
+    "GetGAMECUBEMatrix34__7CMatrixCFRA3_A4_f": "0x8008eefc",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "Store__12CMatrixStackFP7CMatrix": "0x80090d28",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "__construct_array": "0x8013834c",
     "__ct__12CMatrixStackFv": "0x80090f90",
     "__defctor__7CMatrixFv": "0x80095b40",
     "__dl__FPv": "0x8001ca2c",
     "__dt__12CMatrixStackFv": "0x80090f24",
     "__nw__FUl": "0x8001cb60",
+    "_matrix_rot_yzx__FR7CMatrixlll": "0x800f4e98",
+    "g_matStack": "0x8034eab8",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_matrix_rot_yzx__FR7CMatrixlll"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_matStack",
     "s_ClassInit__7CMatrix"
   ],
   "original_file": "dmcluster.cpp",
