@@ -1272,7 +1272,8 @@
     "alarm_list_ctor.json",
     "player_weapon_draw.json",
     "scene_update.json",
-    "publisher_erase.json"
+    "publisher_erase.json",
+    "sfir.json"
   ],
   "progress": {
     "code_bytes": 1414572,
