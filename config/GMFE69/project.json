@@ -1273,7 +1273,8 @@
     "player_weapon_draw.json",
     "scene_update.json",
     "publisher_erase.json",
-    "sfir.json"
+    "sfir.json",
+    "PathNodeList_erase.json"
   ],
   "progress": {
     "code_bytes": 1414572,

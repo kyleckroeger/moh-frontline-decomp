@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1054472,
+    "matching_code_bytes": 1055080,
     "total_executable_code_bytes": 1414572,
-    "percent": 74.54353684365306,
+    "percent": 74.58651804220641,
     "categories": {
-      "reconstructed_game": 824480,
+      "reconstructed_game": 825088,
       "restored_library": 229992
     },
-    "matching_functions": 4688
+    "matching_functions": 4689
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -209,6 +209,7 @@
     "config/GMFE69/PathNodeList.json": "34b38f257aac355b91d2f9445d576d0223a8048609af71e85c29c7505ae7ebaf",
     "config/GMFE69/PathNodeList_closest.json": "bd14fd5fca85c4b748e1c204c8d7e411d9cad5084322d705597fb3d4432f23ac",
     "config/GMFE69/PathNodeList_disable.json": "94123ad5e3a94f0e92a49df3cbc16bd2069279c7d67a39bb145a3a0cfa4a1ee5",
+    "config/GMFE69/PathNodeList_erase.json": "21acb94010706683cfc6afa5c5fd2647b78aa611ed868be53524fb9c03f6de56",
     "config/GMFE69/PathNodeList_hashmap.json": "f17589d19801d73c4a867563bb3fb3d236004a3f211c4c0edfc86fdc5c131207",
     "config/GMFE69/Pause.json": "c951796a85f2b4e4117496b88679ef9d2c01f318ca6693f8ab76810e4210a4f8",
     "config/GMFE69/Pause_reset.json": "0541833ccc8dbd3e167ec5ffd165607e5f4b8c74ede37929bca1e032c9885957",
@@ -895,7 +896,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "bdf6e262e12cef38c3b09d9e58779ff59544e00ba5ba4e6d86405d146762cbd9",
+    "config/GMFE69/project.json": "047ee4c9525d7fde216f16c278896b6175e2293d7499e14af8fc21a55f75684c",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -2422,6 +2423,7 @@
     "src/game/PathNodeList.cpp": "4d07813471d9d4fc31984159dbc04bd6875ace05f4ceb3267d05c7be06169ad9",
     "src/game/PathNodeList_closest.cpp": "0f1fbfb7dded8b24b70afcce98c9ed6bb3a2b2c756022f5977fce14f517f1456",
     "src/game/PathNodeList_disable.cpp": "116454c44398b6be3999f7e9257047109c9f6eed4ba4ef93486716ae5a06c2af",
+    "src/game/PathNodeList_erase.cpp": "c503ad8ba351769727ae5193bd70c7f5b22fcd3ead27e84c3daba472d09ffaac",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
     "src/game/Pause.cpp": "2d6d321b8fcd54038857a76293913fd0c891dd06d69d5bda64af7fe8b1519da8",
     "src/game/Pause_reset.cpp": "a03283bbf6a4af122c4d5c85f1ff871e769bcaff341cbc15af5ab9d3d8f06fda",
@@ -55202,6 +55204,45 @@
       "discarded_functions": [],
       "object_sha256": "3956a450255607bcf0852d23a7beffdc5d641e0715cc4138fd6cbd72a93923a4",
       "linked_sha256": "d3524a0a8dee6ab348526ced55bb1b7b1f68498b3717c8009bc917a3b8d97ed5"
+    },
+    {
+      "id": "PathNodeList_erase",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 608,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "83665b5c6aa0948e8baab73f743419b5e743f1012aa15b29e32dca6a226b1a4f",
+      "linked_sha256": "5895864544ec276977efbb11cb7035b095c658ffe6af241387781346e11e2bd5"
     }
   ],
   "code_map": {
@@ -55826,13 +55867,6 @@
         "file_record": 34,
         "file_name": "PathNodeList.cpp",
         "ranges": [
-          {
-            "address": "0x80054dc8",
-            "size": 608,
-            "kind": "function",
-            "name": "erase__Q23dwi40hash_map<Ui,Q213CPathNodeList9PathNodes>FQ33dwi40hash_map<Ui,Q213CPathNodeList9PathNodes>8iterator",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80055028",
             "size": 176,
