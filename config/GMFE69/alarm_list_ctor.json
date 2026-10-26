@@ -1,0 +1,93 @@
+{
+  "id": "alarm_list_ctor",
+  "source": "src/game/alarm_list_ctor.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8005a270",
+      "size": 312,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000aec4",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 16,
+      "linked_size": 24
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011ffc",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 24,
+      "linked_size": 36
+    }
+  ],
+  "functions": [
+    {
+      "name": "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc",
+      "address": "0x8005a270",
+      "size": 312,
+      "binding": 0
+    }
+  ],
+  "externals": {
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "MEM_free": "0x8014f83c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi16list<9AlarmInfo>Fv": "0x8005a1c8",
+    "reserve__Q23dwi16list<9AlarmInfo>FiPc": "0x8005a014"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "alarm.cpp",
+  "original_file_index": 2538,
+  "file_duplicates": [
+    "__dt__Q23dwi16list<9AlarmInfo>Fv",
+    "reserve__Q23dwi16list<9AlarmInfo>FiPc"
+  ],
+  "weak_locals": [
+    "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc"
+  ]
+}
