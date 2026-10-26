@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1035460,
+    "matching_code_bytes": 1036712,
     "total_executable_code_bytes": 1414572,
-    "percent": 73.19952607573174,
+    "percent": 73.28803341222645,
     "categories": {
-      "reconstructed_game": 805468,
+      "reconstructed_game": 806720,
       "restored_library": 229992
     },
-    "matching_functions": 4670
+    "matching_functions": 4671
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1176,7 +1176,7 @@
     "config/GMFE69/static_obj_type.json": "aeec6c4e3f991e5cf651f4461f370ba61c607da091286762110da09767006c1f",
     "config/GMFE69/staticmesh.json": "e448aaf4cd346498f7668371fd4dbf1a7ec8c78c8ab24303098581b6dcbb78e1",
     "config/GMFE69/staticmesh_animdraw.json": "2ba85a97592bd635e9fa7f23bbc4261bdff9950a6f8b272e8a938e093b7fcab8",
-    "config/GMFE69/staticmesh_cmshmatbin_dtor.json": "7d6cc5fe11d2fa60535fb7f05929ceafad066bb118460dfa0c43a4a6edbdaef3",
+    "config/GMFE69/staticmesh_cmshmatbin_dtor.json": "83bee024916bff2171e6f60f75a4e6763161fb5f0f9cfefd8954be3d45ed18c2",
     "config/GMFE69/staticmesh_cmshsimplebin_dtor.json": "fb5f7c7d1775b363086fd590323ff8fa3c3d028a173e3680c348680935e0930a",
     "config/GMFE69/staticmesh_cstaticanimmesh_dtor.json": "aa80c0cb1524785125cf7d268a739c21fdbfe985b55fb57de8492915eb0c26cf",
     "config/GMFE69/staticmesh_ctor.json": "2683d49ca98568d7645f4aaad6af2f3bd14883f224ca2a181274d57b75345afd",
@@ -3066,7 +3066,7 @@
     "src/game/static_obj_type.cpp": "b487613f811b0b14facf5862a7a6697bf880b30c54b030c02e8d1897a66e0ebf",
     "src/game/staticmesh.cpp": "b14d8931b46cbb1d31baafd70c630b88548eb64b4cffa43c5fefdaae8145713c",
     "src/game/staticmesh_animdraw.cpp": "4338310a4b4b90533f9a90da20b2d3df253ef86ca4416052c81975a226008a4a",
-    "src/game/staticmesh_cmshmatbin_dtor.cpp": "f3e3831b4f7f86ed50291babbc880700871cf4fe8899790a6bc4ef5d1e45597a",
+    "src/game/staticmesh_cmshmatbin_dtor.cpp": "9dcb044215091d84f653f28a2dd9c05e2fc5e3368d0bbc46b219b6a98f8c3fa5",
     "src/game/staticmesh_cmshsimplebin_dtor.cpp": "057bbd989600d656e5b112ba7dcb243176c7e19085f5e0d93c8f84142004893f",
     "src/game/staticmesh_cstaticanimmesh_dtor.cpp": "1ec89fb8978c2d138e4372c217657bbf346dc9f8fd1d00e6653d3e682d7f0f5b",
     "src/game/staticmesh_ctor.cpp": "e7eb98a60efde4ad494b850cccdf587b6a7cc13769418e9628dff2216c377817",
@@ -36265,8 +36265,8 @@
     {
       "id": "staticmesh_cmshmatbin_dtor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 108,
+      "functions": 2,
+      "code_bytes": 1360,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -36298,8 +36298,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "058c8f2d07f2eb6ce9949eee65f867c2a827e0fb5898bc693149e571fb600cd9",
-      "linked_sha256": "9f4166e046b9e8ad3ec73bc65b8025c1567682afb085553309f7b6928c136820"
+      "object_sha256": "15d7771cbf963e37102e24f70c55072b7b274a2a9fda48729a90757e61e664a2",
+      "linked_sha256": "1b6075dcd3da0caa13095def7b3b0842aec9899bf341ba8dbe0d7453e615b754"
     },
     {
       "id": "staticmesh_cmshsimplebin_dtor",
@@ -57295,13 +57295,6 @@
             "size": 1788,
             "kind": "function",
             "name": "Init__11CStaticMeshFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f2ce4",
-            "size": 1252,
-            "kind": "function",
-            "name": "UpdateLightingParams__FR10CDmaPacket",
             "evidence": "exception-index"
           }
         ]

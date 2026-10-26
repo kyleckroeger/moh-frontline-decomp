@@ -39,28 +39,34 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f31c8",
-      "size": 108,
+      "address": "0x800f2ce4",
+      "size": 1360,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f728",
-      "size": 8,
+      "address": "0x8000f720",
+      "size": 16,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 32
     },
     {
       "name": "extabindex",
-      "address": "0x8001637c",
-      "size": 12,
+      "address": "0x80016370",
+      "size": 24,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36
+      "linked_size": 48
     }
   ],
   "functions": [
+    {
+      "name": "UpdateLightingParams__FR10CDmaPacket",
+      "address": "0x800f2ce4",
+      "size": 1252,
+      "binding": 1
+    },
     {
       "name": "__dt__10CMSHMatBinFv",
       "address": "0x800f31c8",
@@ -69,19 +75,41 @@
     }
   ],
   "externals": {
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CRenderBinFv": "0x80074290",
     "__dt__11MSHMaterialFv": "0x800f1da0",
     "__vt__10CMSHMatBin": "0x8018b49c",
     "__vt__10CRenderBin": "0x80183c5c",
-    "__vt__11MSHMaterial": "0x8018b464"
+    "__vt__11MSHMaterial": "0x8018b464",
+    "g_LightParam": "0x802da670",
+    "g_bAllowLighting": "0x8034ed0c",
+    "g_bCacheLightParam": "0x8034ed20",
+    "g_pContext": "0x8034ed10",
+    "g_pLightVolume": "0x8034ed08",
+    "g_pModelToWorld": "0x8034ed1c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_bAllowLighting",
+    "g_pContext",
+    "g_pLightVolume",
+    "g_pModelToWorld"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bAllowLighting",
+    "g_bCacheLightParam",
+    "g_pContext",
+    "g_pLightVolume",
+    "g_pModelToWorld",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "staticmesh.cpp",
   "original_file_index": 9367,
   "stripped_sections": [
@@ -92,5 +120,46 @@
     "__dt__11MSHMaterialFv",
     "__vt__10CRenderBin",
     "__vt__11MSHMaterial"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8035107c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351080"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351078"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80351084"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80351088"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80351090"
+    }
   ]
 }
