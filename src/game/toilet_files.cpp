@@ -17,9 +17,11 @@
 // TLT_FindNextResourceByType); the shell-briefing big file is unloaded, and
 // loaded (its name built for the mission and stage; TLT_LoadFileNormal is
 // inlined). The big-file loaders that follow in the image (shell-briefing
-// log, slides, shell) drop anything up to a device colon with a DEBUG
+// log, slides, shell, level) drop anything up to a device colon with a DEBUG
 // warning, then look the name (without its directories) up in their big
-// file, or (slides) mount the slides big file around a sized load. Their
+// file, or (slides) mount the slides big file around a sized load; the level
+// loader falls back to TLT_LoadFileNormal (inlined; its path buffer is 260
+// bytes, which the level loader's frame shows). Their
 // colon test is written with an else branch that re-assigns the name and a
 // separate increment ('n = p; n++;'): the original keeps that empty block
 // ('bne; b') and computes the stripped name before the warning call. The
@@ -88,6 +90,25 @@ inline char* LoadFromBig(char* big, const char* name, int* size) {
 }
 extern char* szTLT_SlidesBigFileName;
 char* TLT_LoadFileNormal(const char*, int*, int);
+
+char* TLT_LoadFileFromLevelBigFile(const char* name, int* size) {
+    const char* p = strchr(name, ':');
+    {
+        const char* n = name;
+        if (!p) {
+            n = name;
+        } else {
+            n = p;
+            n++;
+            DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+        }
+        name = n;
+    }
+    char* file = LoadFromBig(g_pLevelBigFile, name, size);
+    if (!file)
+        file = TLT_LoadFileNormal(name, size, 0);
+    return file;
+}
 
 char* TLT_LoadFileFromShellBigFile(const char* name, int* size) {
     const char* p = strchr(name, ':');
@@ -237,7 +258,7 @@ void TLT_InitResourceType(void (*init)(LevelFileContentsStruct_*), TLTResourceID
 }
 
 char* TLT_LoadFileNormal(const char* name, int* size, int flags) {
-    char path[264];
+    char path[260];
     const char* file = strchr(name, ':');
     if (file == 0)
         file = name;

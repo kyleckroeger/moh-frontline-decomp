@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8001d308",
-      "size": 2476,
+      "size": 2784,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000986c",
-      "size": 88,
+      "size": 96,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010298",
-      "size": 132,
+      "size": 144,
       "type": 1
     }
   ],
@@ -133,6 +133,12 @@
       "name": "TLT_LoadFileFromShellBigFile__FPCcPi",
       "address": "0x8001dbe4",
       "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "TLT_LoadFileFromLevelBigFile__FPCcPi",
+      "address": "0x8001dcb4",
+      "size": 308,
       "binding": 1
     }
   ],
