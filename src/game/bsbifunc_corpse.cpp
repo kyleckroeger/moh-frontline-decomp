@@ -1,11 +1,16 @@
-// A fragment of bsbifunc.cpp (0x8002e5d8): the script built-ins that set up the
-// calling node's AI object's corpse field of view (RegisterCorpseSearch) or a
-// target search over a match list (RegisterTargetSearch: field of view for mode
-// 2, line of sight for mode 3) and register the script object with the
-// corpse-/target-search schedule, returning the registration. They read their
-// arguments below the script stack top and pop the built-in's arguments. The
-// file name is this project's; the original record is bsbifunc.cpp.
-// RegisterTargetSearch declares its locals first and assigns them afterwards
+// A fragment of bsbifunc.cpp (0x8002e1bc): the script built-ins that set up a
+// target check on another script object (RegisterTargetCheck: field of view for
+// mode 2, line of sight for modes 3 and 5, vision seeking for mode 4, toward its
+// position raised by 0.8 unless it is already the target), the calling node's AI
+// object's corpse field of view (RegisterCorpseSearch) or a target search over a
+// match list (RegisterTargetSearch: field of view for mode 2, line of sight for
+// mode 3) and register the script object with the target-check, corpse- or
+// target-search schedule, returning the registration. They read their arguments
+// below the script stack top and pop the built-in's arguments. The file name is
+// this project's; the original record is bsbifunc.cpp.
+// RegisterTargetCheck and RegisterTargetSearch declare their locals first and assign them
+// afterwards; RegisterTargetCheck passes its flag argument as '(bool)flag' (a '!= 0' test colours the
+// registers differently)
 // (the declaration order sets the register use). The functions, classes and globals are named by the
 // mangled symbols; ISceneNode is declared with its virtual functions in the
 // order of __vt__10ISceneNode (GetAIDoodad at +204), IMovingSceneNode's and
@@ -145,8 +150,20 @@ struct MatchListView {
     aistatus_match* list;
 };
 
+class CAIFilterRealPosition {
+public:
+    CAIFilterRealPosition() {}
+    CAIFilterRealPosition(float ax, float az, float ay) { x = ax; y = ay; z = az; }
+    float x;
+    float y;
+    float z;
+};
+
 class CAIObject {
 public:
+    void SetupLineOfSightModeObject(CAIObject*, float);
+    void SetupFieldOfViewModeObject(CAIObject*, float, float);
+    void SetupVisionSeekingMode(CAIObject*, CAIFilterRealPosition&, float);
     void SetupFieldOfViewCorpse(float, float);
     void SetupFieldOfViewModeList(aistatus_match*, int, float, float);
     void SetupLineOfSightModeList(aistatus_match*, int, float);
@@ -179,6 +196,7 @@ public:
     unsigned char unknown00[40];
 };
 
+extern BSSchedule g_TargetCheckSchedule;
 extern BSSchedule g_CorpseSearchSchedule;
 extern BSSchedule g_TargetSearchSchedule;
 extern BSSchedule g_DistanceToTargetSchedule;
@@ -205,8 +223,94 @@ inline CAIObject* GetAIObject(void* object) {
     return ((ISceneNode*)object)->GetAIDoodad()->filter->m_object;
 }
 
+/* Inferred: a script object's scene node (through its user's GetSceneNode)
+   and that node's AI filter, or null. */
+struct BSUserView {
+    unsigned char unknown00[12];
+    virtual void Destroy();
+    virtual void* GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+};
+
+struct BSObjectView {
+    unsigned char unknown00[12];
+    BSUserView* user;
+};
+
+inline CAIFilterObject* GetScriptFilter(BSObjectView* script) {
+    ISceneNode* node;
+    AIDoodadView* doodad;
+    if (script && script->user && (node = script->user->GetSceneNode()) && (doodad = node->GetAIDoodad()))
+        return doodad->filter;
+    return 0;
+}
+
+inline CAIObject* GetScriptAIObject(BSObjectView* script) {
+    CAIObject* object = 0;
+    CAIFilterObject* filter = GetScriptFilter(script);
+    if (filter)
+        object = filter->m_object;
+    return object;
+}
+
 inline bool HasTarget(CAIObject* ai) {
     return ai && (ai->m_targetStored || ai->m_target);
+}
+
+void BIFunc_RegisterTargetCheck(int** stack, void* object) {
+    int* args;
+    int count;
+    CAIFilterObject* filter;
+    int result;
+    int mode;
+    float range;
+    float angle;
+    int target;
+    unsigned short time;
+    int flag;
+    result = 0;
+    filter = ((ISceneNode*)object)->GetAIDoodad()->filter;
+    count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    args = *stack;
+    mode = *(args - (count - 1));
+    range = *(float*)(args - (count - 2));
+    angle = *(float*)(args - (count - 3));
+    target = *(args - (count - 4));
+    time = *(args - (count - 5));
+    flag = *(args - (count - 6));
+    if (target && GetScriptFilter((BSObjectView*)target)) {
+        filter->SetTargetMode(0);
+        switch (mode) {
+        case 1:
+            break;
+        case 2:
+            filter->m_object->SetupFieldOfViewModeObject(GetScriptAIObject((BSObjectView*)target), range, angle);
+            break;
+        case 3:
+            filter->m_object->SetupLineOfSightModeObject(GetScriptAIObject((BSObjectView*)target), range);
+            break;
+        case 4: {
+            CAIObject* other = GetScriptAIObject((BSObjectView*)target);
+            CAIObject* self = filter->m_object;
+            if (other == self->m_target) {
+                self->SetupVisionSeekingMode(other, *(CAIFilterRealPosition*)((char*)self + 336), range);
+            } else {
+                CAIFilterRealPosition point(((CAIFilterRealPosition*)((char*)other + 24))->x, ((CAIFilterRealPosition*)((char*)other + 24))->z, ((CAIFilterRealPosition*)((char*)other + 24))->y);
+                point.z += 0.8f;
+                self->SetupVisionSeekingMode(other, point, range);
+            }
+            break;
+        }
+        case 5:
+            filter->m_object->SetupLineOfSightModeObject(GetScriptAIObject((BSObjectView*)target), range);
+            break;
+        }
+        result = g_TargetCheckSchedule.Register(g_pBSObject, time, (bool)flag, mode, (int)range, target);
+    } else {
+        BSObjectTriggerEvent(g_pBSObject, 69, 0, g_pBSObject, true);
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+    **stack = result;
 }
 
 void BIFunc_RegisterCorpseSearch(int** stack, void* object) {

@@ -39,21 +39,28 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8002e5d8",
-      "size": 668,
+      "address": "0x8002e1bc",
+      "size": 1720,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009e1c",
-      "size": 16,
+      "address": "0x80009e14",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010af0",
-      "size": 24,
+      "address": "0x80010ae4",
+      "size": 36,
       "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034f6cc",
+      "size": 4,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -64,6 +71,12 @@
       "binding": 1
     },
     {
+      "name": "BIFunc_RegisterTargetCheck__FPPiPv",
+      "address": "0x8002e1bc",
+      "size": 1052,
+      "binding": 1
+    },
+    {
       "name": "BIFunc_RegisterTargetSearch__FPPiPv",
       "address": "0x8002e6c4",
       "size": 432,
@@ -71,11 +84,16 @@
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "Register__10BSScheduleFP8BSObjectUsbiii": "0x8003ab5c",
     "SetupFieldOfViewCorpse__9CAIObjectFff": "0x80049bfc",
     "SetupFieldOfViewModeList__9CAIObjectFP14aistatus_matchiff": "0x80049c90",
+    "SetupFieldOfViewModeObject__9CAIObjectFP9CAIObjectff": "0x80049d4c",
     "SetupLineOfSightModeList__9CAIObjectFP14aistatus_matchif": "0x80048e10",
+    "SetupLineOfSightModeObject__9CAIObjectFP9CAIObjectf": "0x80048e98",
+    "SetupVisionSeekingMode__9CAIObjectFP9CAIObjectR21CAIFilterRealPositionf": "0x80048270",
     "g_CorpseSearchSchedule": "0x801974f4",
+    "g_TargetCheckSchedule": "0x801974cc",
     "g_TargetSearchSchedule": "0x801974a4",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
@@ -86,6 +104,7 @@
   "upstream": {},
   "local_externals": [
     "g_CorpseSearchSchedule",
+    "g_TargetCheckSchedule",
     "g_TargetSearchSchedule"
   ],
   "discarded_local_functions": [],
