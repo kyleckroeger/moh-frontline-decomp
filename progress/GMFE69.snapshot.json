@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1040676,
+    "matching_code_bytes": 1041284,
     "total_executable_code_bytes": 1414572,
-    "percent": 73.56825951595253,
+    "percent": 73.61124071450587,
     "categories": {
-      "reconstructed_game": 810684,
+      "reconstructed_game": 811292,
       "restored_library": 229992
     },
-    "matching_functions": 4675
+    "matching_functions": 4676
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -22,7 +22,7 @@
     "config/GMFE69/AIFilter_astar.json": "5e14fdf1ab32d1f866d5d3b97cc4f2ef396ccb30521bf53d444544990efbd383",
     "config/GMFE69/AIFilter_caifilterobject_dtor.json": "ab035fef8e3042512f0744c46aca04bd808bacafc34e982b02a297bf111f6717",
     "config/GMFE69/AIFilter_collisiondist.json": "92bf52dc496f87dc4a92a3cf508be6f9243fe712460a130fb1f5c3bd2fd0d990",
-    "config/GMFE69/AIFilter_global.json": "bba3c2071faf989376e1f4f6ec381ce79a8cb6b3e00b4dd8dbac4078976945bd",
+    "config/GMFE69/AIFilter_global.json": "c9926bc8cd6cc857a55776d64956701f59222fafa75b30090bab77a72444d164",
     "config/GMFE69/AIFilter_linechecks.json": "2b952f4eb91c42bd2da84282d07969d91463036eca1aca3f8664a216f5df6231",
     "config/GMFE69/AIFilter_mechchecker_dtor.json": "678d5e87e222356181986273a9dcc23057b6594655905f2e38a87929b98354bc",
     "config/GMFE69/AIFilter_player.json": "0a29353fc5b906993765520470a2bc3c3a5eabad0601b7a364f48e568d19fe45",
@@ -2304,7 +2304,7 @@
     "src/game/AIFilter_astar.cpp": "e782e203b9cd13555675b326708aa972f29239f182af8c6982f44139eeaecb46",
     "src/game/AIFilter_caifilterobject_dtor.cpp": "74a1bad2f4372942648724f0ee107aa50b21424f3b9372e4a8c193961c3efaf6",
     "src/game/AIFilter_collisiondist.cpp": "71b686b852204e001142e6c5999850ad9bd2e8558e269003dbd4abeb08640286",
-    "src/game/AIFilter_global.cpp": "780c5befa940703ec17a76e84113671aefc3976136365a3ad68bde4dfffefabc",
+    "src/game/AIFilter_global.cpp": "85dad1a274f2705610739eae1521526a67938485b5c5b4d973910fd668111627",
     "src/game/AIFilter_linechecks.cpp": "251a98e238821ebe03cf95b6e2fcb5147ad84472be8a727d8887fb0a53a9c652",
     "src/game/AIFilter_mechchecker_dtor.cpp": "af8fcfe8356b90aaf2cfc22a7e597228e54591feccdd2ae17d650974988820a2",
     "src/game/AIFilter_player.cpp": "83b0253fe90a48707e8a5ae635a9534d7fc9d0d8f420e9b3d65421b09f842f70",
@@ -42401,8 +42401,8 @@
     {
       "id": "AIFilter_global",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 148,
+      "functions": 4,
+      "code_bytes": 756,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42434,8 +42434,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "bffc67f7de823d0d1e7e690a363e92d26a2ac80771f095a9a52bb2a88fb6e8a6",
-      "linked_sha256": "4802bca9ad22f10a93575e1c928bea84007cd389be802fc1ee6ce9770f5f8a4f"
+      "object_sha256": "3ff0234c9b9f6f2bc10401616ad73bbe9260d9ed8377a2760518026c76f5c95f",
+      "linked_sha256": "7e51d20fd3937b8f593b28de5f435e0d8cdcac931b4a4ab21f5b055e93fed05f"
     },
     {
       "id": "loadelf",
@@ -55718,13 +55718,6 @@
             "size": 340,
             "kind": "function",
             "name": "CreateSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8005d8b4",
-            "size": 608,
-            "kind": "function",
-            "name": "PropagateSoundToAllObjects__15CAIFilterGlobalFRC18CAIFilterSoundInfo",
             "evidence": "exception-index"
           }
         ]

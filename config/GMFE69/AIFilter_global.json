@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005db14",
-      "size": 148,
+      "address": "0x8005d8b4",
+      "size": 756,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b268",
-      "size": 16,
+      "address": "0x8000b260",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001229c",
-      "size": 24,
+      "address": "0x80012290",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PropagateSoundToAllObjects__15CAIFilterGlobalFRC18CAIFilterSoundInfo",
+      "address": "0x8005d8b4",
+      "size": 608,
+      "binding": 1
+    },
     {
       "name": "UpdateToGlobals__15CAIFilterGlobalFv",
       "address": "0x8005db14",
@@ -78,14 +84,23 @@
   ],
   "externals": {
     "GetFrameCount__Fv": "0x80017e60",
-    "__dl__FPv": "0x8001ca2c"
+    "GetGlobalListStart__9CAIObjectFv": "0x8004ec70",
+    "PropagateSoundToAllObjects__9CAIObjectFRC18CAIFilterSoundInfoP9CAIObject": "0x80047e0c",
+    "__dl__FPv": "0x8001ca2c",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "recent_sounds": "0x801c6db8",
+    "s_rNextSoundPropagateTime__15CAIFilterGlobal": "0x8034e928"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "recent_sounds"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_rNextSoundPropagateTime__15CAIFilterGlobal"
+  ],
   "original_file": "AIFilter.cpp",
   "original_file_index": 2575,
   "pooled_sections": [
@@ -95,6 +110,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x8034fb84"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 4,
       "address": "0x8034fbbc"
     }
