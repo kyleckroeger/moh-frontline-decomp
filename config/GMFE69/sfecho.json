@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8016645c",
-      "size": 376,
+      "address": "0x80166284",
+      "size": 848,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SFILTER_echo__FPviPvPvi",
+      "address": "0x80166284",
+      "size": 472,
+      "binding": 1
+    },
     {
       "name": "SFILTER_echorestore__FPv",
       "address": "0x8016645c",
@@ -63,7 +69,6 @@
     }
   ],
   "externals": {
-    "SFILTER_echo__FPviPvPvi": "0x80166284",
     "SNDI_findmult16__Fii": "0x8015fc8c",
     "SNDMEMI_allocz__Fi": "0x80158d64",
     "SNDMEMI_free__FPv": "0x80158ff0",
@@ -84,6 +89,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80351bf0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 4,
       "address": "0x80351bf4"
     },
