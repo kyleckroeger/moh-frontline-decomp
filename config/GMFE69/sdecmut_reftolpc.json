@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80162584",
-      "size": 4180,
+      "size": 7276,
       "type": 1
     }
   ],
@@ -60,16 +60,28 @@
       "address": "0x801631f4",
       "size": 996,
       "binding": 1
+    },
+    {
+      "name": "decodemut__FP10UTALKSTATE",
+      "address": "0x801635d8",
+      "size": 3096,
+      "binding": 1
     }
   ],
   "externals": {
-    "bitmask": "0x80193e50"
+    "SNDI_memcpy": "0x8016d730",
+    "_restgpr_17": "0x80138a34",
+    "_savegpr_17": "0x801389e8",
+    "bitmask": "0x80193e50",
+    "coeff_table": "0x80193e74",
+    "readsamples__FP10UTALKSTATEiPf": "0x801620fc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "bitmask"
+    "bitmask",
+    "coeff_table"
   ],
   "discarded_local_functions": [],
   "sda_externals": [],
@@ -114,6 +126,42 @@
       "offset": 24,
       "size": 8,
       "address": "0x80351b28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351b30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80351b34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80351b08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80351b0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80351b10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80351b38"
     }
   ]
 }
