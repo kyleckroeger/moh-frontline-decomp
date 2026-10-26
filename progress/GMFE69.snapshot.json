@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1049680,
+    "matching_code_bytes": 1052528,
     "total_executable_code_bytes": 1414572,
-    "percent": 74.20477713400237,
+    "percent": 74.40611011669961,
     "categories": {
-      "reconstructed_game": 819688,
+      "reconstructed_game": 822536,
       "restored_library": 229992
     },
-    "matching_functions": 4684
+    "matching_functions": 4685
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -895,7 +895,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "b7604a943b5aa87935963e706775b060a5a023b25d7914e0ffed35ab6021d292",
+    "config/GMFE69/project.json": "c1e65f6b592949cf49898a794ebfa90ec10a49082948d74ce3b86040b4fedc0a",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -1007,6 +1007,7 @@
     "config/GMFE69/scene_rmextents.json": "dd5314d6702a1948e497ec55b28396b27f32b1eba3653bed82fe30f9b27fc343",
     "config/GMFE69/scene_shutdown.json": "1069702be70b5c86a4020160874f99bce0e03adb8ec674f1f03f497293acf23e",
     "config/GMFE69/scene_sort.json": "4213408d25f549b0dbe553c814ba502bac3709b3680fbd109489ae23e9fdf32a",
+    "config/GMFE69/scene_update.json": "6f64f118699c84da705e95df7baedca4e1a78a2091e7148d082875d89e66c55f",
     "config/GMFE69/scene_vec_begin.json": "5cae122f12d4fa7eccf262febf64031a65bda60a88ffc7445159836a5a44e31e",
     "config/GMFE69/scene_vec_dtor.json": "9109918cc789e30e172ce9f1cfdfbdc98a968d71cbc9572354a28faf8f16faf3",
     "config/GMFE69/scene_vec_end.json": "ccab8d01b0ae8ddb03daf9246479b1a38c2b95f1645cc22c1e45d99de6daea5f",
@@ -3025,6 +3026,7 @@
     "src/game/scene_rmextents.cpp": "ace57df4a982b4b552a33188a3fb6d8b27e1f1bceedf7f4def22a738209ed988",
     "src/game/scene_shutdown.cpp": "8438028260d157d6d654302ee715081177115ec815e8b85bf3aa68e8b9777f7d",
     "src/game/scene_sort.cpp": "23d35520b2b2e6107bb54c1dc8c6b03e95a4c56b70953fa71c2133322b3447a7",
+    "src/game/scene_update.cpp": "7cc74e6a1610afa6d492d9c0f7644b9a59afc1a7528841e98a4cd528ae6308ca",
     "src/game/scene_vec_begin.cpp": "4ad3b952d19afd6fe539fa2ee69c89f2b77f80c8b6fe885b0ee5a8b6213e4452",
     "src/game/scene_vec_dtor.cpp": "4161253ae669c0c99f30d56180fed662529405e598ebb5cc856f0b13a976ad1e",
     "src/game/scene_vec_end.cpp": "c0fd240036e2794c18f6c95080cf49ec52f94f2ab4cdd82a14e9c49675528933",
@@ -55079,6 +55081,45 @@
       "discarded_functions": [],
       "object_sha256": "bba0e2a3530668a2cead2b4510e108ece726d4aa2621175c38cf16cd3f28a2fd",
       "linked_sha256": "ff9d849fe45ebb23c18af478c80969320801cbed9b2833c5ea3e24a102be8504"
+    },
+    {
+      "id": "scene_update",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 2848,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "97ea1c0cac8f7794c7f06bae328877c1b9edf757906664818766851858dc8035",
+      "linked_sha256": "37aff40ff9d79d6c5dc4649afca09717ee5073d67c06b276440f289d06415211"
     }
   ],
   "code_map": {
@@ -57171,13 +57212,6 @@
             "size": 632,
             "kind": "function",
             "name": "Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800da8f4",
-            "size": 2848,
-            "kind": "function",
-            "name": "Update__6CSceneFf",
             "evidence": "exception-index"
           },
           {
