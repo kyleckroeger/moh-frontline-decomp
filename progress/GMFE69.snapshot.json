@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1055080,
+    "matching_code_bytes": 1055368,
     "total_executable_code_bytes": 1414572,
-    "percent": 74.58651804220641,
+    "percent": 74.60687755731063,
     "categories": {
-      "reconstructed_game": 825088,
+      "reconstructed_game": 825376,
       "restored_library": 229992
     },
-    "matching_functions": 4689
+    "matching_functions": 4690
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -764,7 +764,7 @@
     "config/GMFE69/matrix_ps.json": "c4b6d56bc2559da083fc64c3749010d25d78d759d907fc0973f6d80ed82495c6",
     "config/GMFE69/matrix_rotate.json": "b2ddc0afac42e94e9b63c7a9c3ce5efaee88965b017fab25273e9478b8db4de2",
     "config/GMFE69/matrix_scale.json": "10a8bd77c9e5f4c68a3f9c86c80ba09222500578ebac35ccca1edd94c3338fb4",
-    "config/GMFE69/matrix_translate.json": "900602450318b946b85d28017e4485d12c6def5d30ddce8292b8b2216b3fa58d",
+    "config/GMFE69/matrix_translate.json": "f1549824f6a2a64c1f7b029c40afe74edf28ee3c526a68c586e204c5a1004e84",
     "config/GMFE69/matstack.json": "06ed41bcf932ae41e73ebbb9e73ee0eb339eeef02982bd7b29c3bff94cfd3242",
     "config/GMFE69/mbstring.json": "9de9f46cc9601517195f1c54fab48fb7e78bb2f47d69f7aa83c76823aea418d9",
     "config/GMFE69/mem.json": "ca3c317259aa8b4ae29fb186b81dae2190665955e0af421cfa574e77be7bb350",
@@ -2888,7 +2888,7 @@
     "src/game/matrix_ps.cpp": "7e8d5b559fc6aada067af7c5aa5099ec0bbc22005548f2c48d21783cd3a81738",
     "src/game/matrix_rotate.cpp": "d716ac9822a2c51e58da095862a73c960f091d2b080ae06cef4e7974d03a5b1b",
     "src/game/matrix_scale.cpp": "3446ee84a649da5a0b658e7764ad7d4f89ee2b047d60959982fc40f782c7cc62",
-    "src/game/matrix_translate.cpp": "365451a1bd73d6cb6103620f96a3f7d55b734ecfa0627f9a386a17172ac989a4",
+    "src/game/matrix_translate.cpp": "e8e402c3779848c51d6ded668ca1a6d31bf23758ebddb22047494f529ea2cb11",
     "src/game/matstack.cpp": "638dd12848a38cfa8685f9555ed05c03824115e83eb4ebe1caf090175a1351ff",
     "src/game/memory.cpp": "75e50f5f66acd16755a070f59afef29e6869b97dede92fada6399d2931c1b27c",
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
@@ -20850,8 +20850,8 @@
     {
       "id": "matrix_translate",
       "category": "reconstructed_game",
-      "functions": 9,
-      "code_bytes": 800,
+      "functions": 10,
+      "code_bytes": 1088,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -20883,8 +20883,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4981c4b5a130f7d7fa923253aac166e0060d1b350650733fea5c40d47e1646d1",
-      "linked_sha256": "e97b9487ec09bcbe35dcfb14432cd47e9f87372b961e7cb122c42ea08b015ebe"
+      "object_sha256": "19cda7b366cc8455d4e09b033ac8d361242a9615a901870812253880d253ffe3",
+      "linked_sha256": "a4a939be863c86398c6e1afc9fc102868528c55bf666c0bed6d8f9c03b9c82e9"
     },
     {
       "id": "smixer",
@@ -56600,13 +56600,6 @@
             "size": 376,
             "kind": "function",
             "name": "Rotate__7CMatrixF8CVector3f",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80090980",
-            "size": 288,
-            "kind": "function",
-            "name": "BuildRot__7CMatrixF8CVector3f",
             "evidence": "exception-index"
           }
         ]

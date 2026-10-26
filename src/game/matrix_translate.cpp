@@ -1,13 +1,15 @@
-// A fragment of matrix.cpp; the file name is this project's. CMatrix translations, row setters and builders: Translate adds a vector to
-// the position, PreTranslate adds it rotated by the matrix rows; position, up,
+// A fragment of matrix.cpp; the file name is this project's. CMatrix
+// translations, row setters and builders: Translate adds a vector to the
+// position, PreTranslate adds it rotated by the matrix rows; position, up,
 // front and right copy a vector's three coordinates into the matrix rows.
 // BuildTrans/BuildRotZ/BuildRotX reset the matrix to identity and set the
 // translation or a Z/X rotation (angle scaled to MathSinCos's fixed-point
-// units). CMatrix and CVector3 are named by the mangled symbols; the row
-// layout (right, front, up, position, 16 bytes each) is inferred from the
-// offsets. Ident is the paired-single routine of matrix_endian, inlined here
-// (inferred from the identical store sequence). The rest of the file is not
-// part of this unit.
+// units). BuildRot builds the rotation about an arbitrary unit axis (the
+// standard axis-angle matrix, t = 1 - cos). CMatrix and CVector3 are named by
+// the mangled symbols; the row layout (right, front, up, position, 16 bytes
+// each) is inferred from the offsets. Ident is the paired-single routine of
+// matrix_endian, inlined here (inferred from the identical store sequence).
+// The rest of the file is not part of this unit.
 class CVector3 {
 public:
     float x;
@@ -24,6 +26,7 @@ public:
     void BuildTrans(CVector3);
     void BuildRotZ(float);
     void BuildRotX(float);
+    void BuildRot(CVector3, float);
     void Translate(CVector3);
     void PreTranslate(CVector3);
     void SetPos(CVector3);
@@ -126,4 +129,42 @@ void CMatrix::BuildRotX(float angle) {
     front.z = s;
     up.y = -s;
     up.z = c;
+}
+
+void CMatrix::BuildRot(CVector3 axis, float angle) {
+    float s;
+    float c;
+    MathSinCos(2670176.8f * angle, &s, &c);
+    float t = 1.0f - c;
+    float tx = t * axis.x;
+    float ty = t * axis.y;
+    float tz = t * axis.z;
+    float txx = tx * axis.x;
+    float txy = t * axis.x;
+    txy *= axis.y;
+    float txz = tx * axis.z;
+    float sy = s * axis.y;
+    float tyy = ty * axis.y;
+    float tyz = t * axis.y;
+    tyz *= axis.z;
+    float sx = s * axis.x;
+    float sz = s * axis.z;
+    float tzz = tz * axis.z;
+
+    right.x = txx + c;
+    right.y = txy + sz;
+    right.z = txz - sy;
+    right.w = 0.0f;
+    front.x = txy - sz;
+    front.y = tyy + c;
+    front.z = tyz + sx;
+    front.w = 0.0f;
+    up.x = txz + sy;
+    up.y = tyz - sx;
+    up.z = tzz + c;
+    up.w = 0.0f;
+    pos.x = 0.0f;
+    pos.y = 0.0f;
+    pos.z = 0.0f;
+    pos.w = 1.0f;
 }

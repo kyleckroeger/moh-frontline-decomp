@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80090660",
-      "size": 800,
+      "size": 1088,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c688",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800136e8",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -109,6 +109,12 @@
       "name": "BuildRotX__7CMatrixFf",
       "address": "0x800908c0",
       "size": 192,
+      "binding": 1
+    },
+    {
+      "name": "BuildRot__7CMatrixF8CVector3f",
+      "address": "0x80090980",
+      "size": 288,
       "binding": 1
     }
   ],
