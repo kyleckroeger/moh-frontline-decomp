@@ -8,8 +8,16 @@
 // (+46, +48, +50). The function and the classes are named by the symbols; the
 // members, the transform and setter helpers, the row accessor and the
 // CVector3 copy forms (a member-initialiser copy constructor and an
-// assignment returning by value) are inferred. The rest of the file is in
-// other units.
+// assignment returning by value) are inferred. TriggerActivateMessages (at
+// 0x800450c8) sends, for every trigger of the object's proximity leaf whose
+// bit is set in the proximity mask (and whose index is not flagged), the
+// trigger's activate or deactivate message list (a count followed by the
+// messages) to the trigger's script object, from the object's own script
+// object; the per-trigger body is an inferred inline helper whose message
+// list and count default to empty. BSGO_Basic, BSSendMessage and
+// g_pTriggerObjects are named by the symbols; the virtual order follows the
+// other BSGO_Basic views (GetProximityData at +0x14); the proximity, leaf and
+// message layouts are inferred. The rest of the file is in other units.
 union CVector3Data {
     double pair[2];
     struct { float x, y, z, w; } c;
@@ -58,8 +66,14 @@ public:
     float w;
 };
 
+struct TriggerMessagesView {
+    unsigned int count;
+    unsigned int messages[1];
+};
+
 struct MOH_core_Struct {
-    unsigned char unknown00[16];
+    unsigned char unknown00[12];
+    int enabled;
     float x;
     float y;
     float z;
@@ -68,6 +82,9 @@ struct MOH_core_Struct {
     short size0;
     short size1;
     short size2;
+    unsigned char unknown34[52];
+    TriggerMessagesView* deactivate;
+    TriggerMessagesView* activate;
 };
 
 struct BSObject;
@@ -158,4 +175,69 @@ bool IsPointInTrigger(const CVector3& point, const TriggerObject_struct* trigger
         break;
     }
     return result;
+}
+
+class ISceneNode;
+
+struct _PropBSPLeaf {
+    unsigned int count;
+    unsigned char unknown04[28];
+    unsigned short* triggers;
+};
+
+struct ProximityDataView {
+    unsigned char unknown00[4];
+    unsigned int mask;
+    unsigned char unknown08[4];
+    _PropBSPLeaf* leaf;
+};
+
+class BSGO_Basic {
+public:
+    BSObject* object;
+    unsigned char unknown04[8];
+
+    virtual void Destroy();
+    virtual int GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+    virtual ProximityDataView* GetProximityData();
+};
+
+extern TriggerObject_struct g_pTriggerObjects[2000];
+
+void BSSendMessage(unsigned short, BSObject*, TriggerObject_struct*, BSObject*, void*);
+
+static inline void SendMessages(unsigned short* trigger, bool activate, BSGO_Basic* object, unsigned int* messages = 0, unsigned int count = 0) {
+    unsigned int i;
+    unsigned int index = *trigger & 0x7FFF;
+    if ((*trigger & 0x8000) >> 15)
+        return;
+    if (!g_pTriggerObjects[index].core->enabled)
+        return;
+    if (activate && g_pTriggerObjects[index].core->activate) {
+        count = g_pTriggerObjects[index].core->activate->count;
+        messages = g_pTriggerObjects[index].core->activate->messages;
+    } else if (!activate && g_pTriggerObjects[index].core->deactivate) {
+        count = g_pTriggerObjects[index].core->deactivate->count;
+        messages = g_pTriggerObjects[index].core->deactivate->messages;
+    }
+    for (i = 0; i < count; i++, messages++) {
+        BSSendMessage(*messages, g_pTriggerObjects[index].bsObject, &g_pTriggerObjects[index], object->object, 0);
+    }
+}
+
+void TriggerActivateMessages(BSGO_Basic* object, bool activate) {
+    unsigned short* trigger;
+    unsigned short* end;
+    ProximityDataView* proximity;
+    unsigned int mask;
+    unsigned int bit;
+    proximity = object->GetProximityData();
+    bit = 1;
+    mask = proximity->mask;
+    end = proximity->leaf->triggers + proximity->leaf->count;
+    for (trigger = proximity->leaf->triggers; trigger != end; trigger++, bit <<= 1) {
+        if (mask & bit)
+            SendMessages(trigger, activate, object);
+    }
 }

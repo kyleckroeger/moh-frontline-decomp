@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80044d3c",
-      "size": 908,
+      "size": 1200,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a62c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800116f0",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -68,12 +68,20 @@
       "address": "0x80044d3c",
       "size": 908,
       "binding": 1
+    },
+    {
+      "name": "TriggerActivateMessages__FP10BSGO_Basicb",
+      "address": "0x800450c8",
+      "size": 292,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv": "0x80039f10",
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
     "InitClass__7CMatrixFv": "0x80090b78",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "g_pTriggerObjects": "0x801a1300",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
