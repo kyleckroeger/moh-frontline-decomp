@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8001d308",
-      "size": 1848,
+      "size": 2476,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000986c",
-      "size": 64,
+      "size": 88,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010298",
-      "size": 96,
+      "size": 132,
       "type": 1
     }
   ],
@@ -116,10 +116,34 @@
       "address": "0x8001d9b0",
       "size": 144,
       "binding": 1
+    },
+    {
+      "name": "TLT_LoadFileFromShellBriefingLogBigFile__FPCcPi",
+      "address": "0x8001da40",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "TLT_LoadFileFromSlidesBigFile__FPCcPi",
+      "address": "0x8001db10",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "TLT_LoadFileFromShellBigFile__FPCcPi",
+      "address": "0x8001dbe4",
+      "size": 208,
+      "binding": 1
     }
   ],
   "externals": {
+    "BIG_locate": "0x8014a9a8",
     "BIG_locateentryz": "0x8014a510",
+    "DebugMsg__FPCce": "0x80018c88",
+    "FILESYS_addbigsync": "0x8014a1e0",
+    "FILESYS_delbigsync": "0x8014a260",
+    "FILE_loadbigheader": "0x8014e2ec",
+    "FILE_loadsize": "0x8014e0ec",
     "FILE_loadz": "0x8014dfc0",
     "FILE_sizez": "0x8014dea8",
     "MEM_free": "0x8014f83c",
@@ -131,7 +155,8 @@
     "g_pLevelFileContentsEndMarker": "0x8034e770",
     "g_pShellBriefingLogBigFile": "0x8034e754",
     "sprintf": "0x8013dab4",
-    "strchr": "0x8013fe64"
+    "strchr": "0x8013fe64",
+    "szTLT_SlidesBigFileName": "0x8034d9ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -139,7 +164,8 @@
   "local_externals": [
     "g_pCompartmentBigFileHeader",
     "g_pLevelFileContentsArray",
-    "g_pLevelFileContentsEndMarker"
+    "g_pLevelFileContentsEndMarker",
+    "szTLT_SlidesBigFileName"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
@@ -149,13 +175,14 @@
     "g_pLevelBigFile",
     "g_pLevelFileContentsArray",
     "g_pLevelFileContentsEndMarker",
-    "g_pShellBriefingLogBigFile"
+    "g_pShellBriefingLogBigFile",
+    "szTLT_SlidesBigFileName"
   ],
   "original_file": "toilet.cpp",
   "original_file_index": 367,
   "pooled_sections": [
-    ".sdata2",
-    ".rodata"
+    ".rodata",
+    ".sdata2"
   ],
   "pool_references": [
     {
@@ -165,10 +192,28 @@
       "address": "0x8016e7f4"
     },
     {
+      "section": ".rodata",
+      "offset": 28,
+      "size": 108,
+      "address": "0x8016e638"
+    },
+    {
+      "section": ".rodata",
+      "offset": 136,
+      "size": 14,
+      "address": "0x8016e810"
+    },
+    {
       "section": ".sdata2",
       "offset": 0,
       "size": 3,
       "address": "0x8034f614"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 1,
+      "address": "0x8034f610"
     }
   ]
 }

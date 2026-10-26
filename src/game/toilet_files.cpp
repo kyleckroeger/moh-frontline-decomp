@@ -16,7 +16,14 @@
 // ignores its start argument, searches from the beginning and inlines
 // TLT_FindNextResourceByType); the shell-briefing big file is unloaded, and
 // loaded (its name built for the mission and stage; TLT_LoadFileNormal is
-// inlined). The formats are pool entries. The file is compiled with -inline
+// inlined). The big-file loaders that follow in the image (shell-briefing
+// log, slides, shell) drop anything up to a device colon with a DEBUG
+// warning, then look the name (without its directories) up in their big
+// file, or (slides) mount the slides big file around a sized load. Their
+// colon test is written with an else branch that re-assigns the name and a
+// separate increment ('n = p; n++;'): the original keeps that empty block
+// ('bne; b') and computes the stripped name before the warning call. The
+// formats are pool entries. The file is compiled with -inline
 // deferred,auto: functions are emitted in reverse source order, which is why
 // functions inlined into earlier-emitted ones come later in the source. The
 // function, type and global names come from the symbols; the 12-byte contents
@@ -57,9 +64,87 @@ char* strchr(const char*, int);
 int FILE_sizez(const char*);
 char* FILE_loadz(const char*, int);
 void* BIG_locateentryz(void*, const char*, int, int*, int*);
+char* BIG_locate(void*, const char*);
+void FILESYS_addbigsync(const char*, int, int, int*);
+void FILESYS_delbigsync(int, int);
+void* FILE_loadbigheader(const char*, int);
+char* FILE_loadsize(const char*, int*, int);
 }
 
+void DebugMsg(const char*, ...);
+
+inline char* LoadFromBig(char* big, const char* name, int* size) {
+    const char* q = strchr(name, '\\');
+    while (q) {
+        name = q + 1;
+        q = strchr(name, '\\');
+    }
+    int offset;
+    if (big) {
+        if (BIG_locateentryz(big, name, 0, &offset, size))
+            return BIG_locate(big, name);
+    }
+    return 0;
+}
+extern char* szTLT_SlidesBigFileName;
 char* TLT_LoadFileNormal(const char*, int*, int);
+
+char* TLT_LoadFileFromShellBigFile(const char* name, int* size) {
+    const char* p = strchr(name, ':');
+    {
+        const char* n = name;
+        if (!p) {
+            n = name;
+        } else {
+            n = p;
+            n++;
+            DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+        }
+        name = n;
+    }
+    return LoadFromBig(g_pLevelBigFile, name, size);
+}
+
+char* TLT_LoadFileFromSlidesBigFile(const char* name, int* size) {
+    char path[140];
+    int handle;
+    const char* p = strchr(name, ':');
+    {
+        const char* n = name;
+        if (!p) {
+            n = name;
+        } else {
+            n = p;
+            n++;
+            DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+        }
+        name = n;
+    }
+    sprintf(path, "data/shell/%s", szTLT_SlidesBigFileName);
+    FILESYS_addbigsync(path, 1024, 100, &handle);
+    g_pCompartmentBigFileHeader = FILE_loadbigheader(path, 1024);
+    char* file = FILE_loadsize(name, size, 1024);
+    FILESYS_delbigsync(handle, 100);
+    MEM_free(g_pCompartmentBigFileHeader);
+    g_pCompartmentBigFileHeader = 0;
+    return file;
+}
+
+char* TLT_LoadFileFromShellBriefingLogBigFile(const char* name, int* size) {
+    const char* p = strchr(name, ':');
+    {
+        const char* n = name;
+        if (!p) {
+            n = name;
+        } else {
+            n = p;
+            n++;
+            DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+        }
+        name = n;
+    }
+    return LoadFromBig(g_pShellBriefingLogBigFile, name, size);
+}
 
 void TLT_LoadShellBriefingLogBigFile(int mission, int stage) {
     char name[128];
