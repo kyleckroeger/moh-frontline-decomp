@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1039868,
+    "matching_code_bytes": 1040676,
     "total_executable_code_bytes": 1414572,
-    "percent": 73.51113976524348,
+    "percent": 73.56825951595253,
     "categories": {
-      "reconstructed_game": 809876,
+      "reconstructed_game": 810684,
       "restored_library": 229992
     },
-    "matching_functions": 4674
+    "matching_functions": 4675
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -892,7 +892,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7fec74b37081001928753d4da31b8f7478a95217178f64fb905bebc99c057d9a",
-    "config/GMFE69/project.json": "c2caafa7d689aa05a713606cac97c5c57ae1c9f88e3136048fcac159ba36ff7f",
+    "config/GMFE69/project.json": "56018cfa1af8323e20b2a6be83ac19bcbd7dd15ee656f29ba986167e4462eef0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -1278,6 +1278,7 @@
     "config/GMFE69/world_object_list.json": "0085295bc95dbd1788b3e08bfdfcf08220f4f3d029342f036c9fb0a4c5261373",
     "config/GMFE69/world_object_list_reserve.json": "3ffc98e873e46575a9271c050b31570d27771b9d24887580d5dbf06ca326d087",
     "config/GMFE69/world_object_node_dtor.json": "76434adc707f081f309bf409afe30341feb37ab7f62830f9e9116d9ce870ae6c",
+    "config/GMFE69/world_object_request_reserve.json": "bd173964a93336df4796689d17ddc12c99f4ead386c40c254a1b530fc4b715a9",
     "config/GMFE69/world_volume.json": "b58335a5f969f8461603ce74500ac1d689974d936b2dd3ba5ab66987d43fd109",
     "config/GMFE69/world_volume_dtor.json": "9620bdd73a7debc54232c618fc9a16c093d8eed24eeb73aee499db1d2c472735",
     "config/GMFE69/world_volume_edit.json": "938e7a176d62bb7c82fe0867f6510f20476e45e338f38db5af4eeff77b8a9d6a",
@@ -3122,6 +3123,7 @@
     "src/game/world_object_list.cpp": "76cd3a5dd19a8ae9c9282f714df9d9623bd5b73a1601e3b95a26f05b83ee8fe7",
     "src/game/world_object_list_reserve.cpp": "6ed8dad99c906db035f824754517dc268212caf9f7f3726cb5bdcd25b432f238",
     "src/game/world_object_node_dtor.cpp": "b80cedb5ac04293bbd3bb1cf3faa150fba15803ae1772be8447d21a09e85f896",
+    "src/game/world_object_request_reserve.cpp": "8615b1fef1f7a1cc624b58b08c4a0b587feb05513236e144bb2398b3cf92ff87",
     "src/game/world_volume.cpp": "f6615e2f32df0c136d86133089d3957929a83d826a0294df1b6e0e21e25a4949",
     "src/game/world_volume_dtor.cpp": "df34c0515a72275269005d77f24602248d41423c0988bf9c22670a4b2b33886d",
     "src/game/world_volume_edit.cpp": "5f597d95dc56764a4cc65be86d9ceae9860da9ee6f37780708b4b4549851458b",
@@ -54915,6 +54917,45 @@
       "discarded_functions": [],
       "object_sha256": "616ffeab865a100ee4e4a83b162d61cf766d0518838c5b4f09382c65d05dc386",
       "linked_sha256": "be567cf7a7510efe830ef7dd508378a083b719068a323b36b8d6cbd6a4963e81"
+    },
+    {
+      "id": "world_object_request_reserve",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 808,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "46ecd9b62d21a404343085110a39b07904d7e758b40fd4c38c373e9a1129fa8b",
+      "linked_sha256": "4bb83d6c9b6a40e1cdab6abb7d3c53c405eb46b9d8e50a3c3b9d00e165483dc0"
     }
   ],
   "code_map": {
@@ -56685,13 +56726,6 @@
             "size": 652,
             "kind": "function",
             "name": "Acquire__12CWorldObjectFRCQ212CWorldObject11SAcquireSetb",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800b7ae0",
-            "size": 808,
-            "kind": "function",
-            "name": "reserve__Q23dwi31list<Q212CWorldObject8SRequest>FiPc",
             "evidence": "exception-index"
           }
         ]
