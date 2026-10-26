@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801536b4",
-      "size": 228,
+      "size": 424,
       "type": 1
     }
   ],
@@ -53,6 +53,12 @@
       "name": "SNDSYS_removeuserdataclient",
       "address": "0x801536ec",
       "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "SNDI_validrendermode__FPiP15SNDIPATCHHEADER",
+      "address": "0x80153798",
+      "size": 196,
       "binding": 1
     }
   ],
