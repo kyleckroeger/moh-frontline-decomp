@@ -1,5 +1,7 @@
-// Copying an animation file's meta-data into the dynamic anim-copy block:
-// the animation list, one emotion animation (header bytes, compressed data,
+// Copying an animation file's meta-data into the dynamic anim-copy block
+// (sized at a fifth of the file, shrunk to fit afterwards, with memory
+// statistics printed around it): the file header and frame table, the
+// animation list, one emotion animation (header bytes, compressed data,
 // frame table), the compressed data ('SKEL' record with its two tables) and
 // the state list. Every copy takes its memory from one bump allocator that
 // counts the allocations, rounds the size up to 4 bytes and grows the block
@@ -10,6 +12,7 @@ void DebugMsg(const char*, ...);
 void* DWI_alloc(const char*, int, int);
 extern "C" void* MEM_resize(void*, unsigned int);
 extern "C" unsigned int MEM_size(void*);
+extern "C" int MEM_totalunused(int);
 
 extern unsigned int g_amount_allocated;
 extern unsigned int g_num_allocations;
@@ -39,9 +42,14 @@ struct AnimEmotStateList_t {
 };
 
 struct AnimFileFormat_t {
-    unsigned char field00[16];
+    int field00;
+    int field04;
+    unsigned short field08;
+    unsigned short field0A;
+    unsigned short numFrames;
     AnimEmotStateList_t* states;
     AnimEmotAnimList_t* animations;
+    unsigned int* frames;
 };
 
 struct AnimCompEntry_t {
@@ -71,6 +79,8 @@ struct AnimCompressedData_t {
     AnimCompPairTable_t* pairs;
 };
 
+AnimEmotStateList_t* CopyStateList(AnimFileFormat_t*);
+AnimEmotAnimList_t* CopyAnimList(AnimFileFormat_t*);
 AnimEmotAnimation_t* CopyEmotAnimation(AnimEmotAnimation_t*, AnimFileFormat_t*, int);
 unsigned char* CopyCompressedData(unsigned char*);
 void CopyStateDef(AnimEmotStateDef_t*, AnimEmotStateDef_t*);
@@ -97,6 +107,37 @@ inline void* AnimCopyAlloc(unsigned int size) {
     void* p = g_anim_copy_memory + g_anim_copy_memory_cur;
     g_anim_copy_memory_cur += aligned;
     return p;
+}
+
+inline unsigned int* CopyFrameTable(AnimFileFormat_t* file) {
+    unsigned int* frames = (unsigned int*)AnimCopyAlloc((file->numFrames + 1) * sizeof(unsigned int));
+    for (int i = 0; i < file->numFrames; i++)
+        frames[i] = file->frames[i];
+    return frames;
+}
+
+AnimFileFormat_t* CopyAnimFileFormatStructureToDynMem(AnimFileFormat_t* file) {
+    int before = MEM_totalunused(0);
+    DebugMsg("Memory Free before: %d\n", before);
+    g_anim_copy_memory_sz = (int)(0.2 * (int)MEM_size(file));
+    g_anim_copy_memory = (char*)DWI_alloc("Animation meta-data", g_anim_copy_memory_sz, 1024);
+    g_anim_copy_memory_cur = 0;
+    AnimFileFormat_t* copy = (AnimFileFormat_t*)AnimCopyAlloc(sizeof(AnimFileFormat_t));
+    copy->field00 = file->field00;
+    copy->field04 = file->field04;
+    copy->field08 = file->field08;
+    copy->field0A = file->field0A;
+    copy->numFrames = file->numFrames;
+    copy->states = CopyStateList(file);
+    copy->animations = CopyAnimList(file);
+    unsigned int* frames = CopyFrameTable(file);
+    DebugMsg("Frame Data start %x end %x size %d\n", frames[0], file->frames, (int)file->frames - frames[0]);
+    copy->frames = frames;
+    g_anim_copy_memory_sz = MEM_size(MEM_resize(g_anim_copy_memory, g_anim_copy_memory_cur));
+    DebugMsg("Allocated %d Bytes for Anim File copy (%d allocations)\n", g_amount_allocated, g_num_allocations);
+    int after = MEM_totalunused(0);
+    DebugMsg("Memory Free after: %d (diff %d)\n", after, before - after);
+    return copy;
 }
 
 AnimEmotAnimList_t* CopyAnimList(AnimFileFormat_t* file) {

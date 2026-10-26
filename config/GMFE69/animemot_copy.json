@@ -39,20 +39,26 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800624b4",
-      "size": 2100,
+      "address": "0x800621d4",
+      "size": 2836,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b3c8",
-      "size": 32,
+      "address": "0x8000b3c0",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800124ac",
-      "size": 48,
+      "address": "0x800124a0",
+      "size": 60,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fc70",
+      "size": 16,
       "type": 1
     }
   ],
@@ -67,6 +73,12 @@
       "name": "CopyAnimList__FP16AnimFileFormat_t",
       "address": "0x800624b4",
       "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "CopyAnimFileFormatStructureToDynMem__FP16AnimFileFormat_t",
+      "address": "0x800621d4",
+      "size": 736,
       "binding": 1
     },
     {
@@ -88,6 +100,7 @@
     "DebugMsg__FPCce": "0x80018c88",
     "MEM_resize": "0x8014f98c",
     "MEM_size": "0x8014ff3c",
+    "MEM_totalunused": "0x8014f4b8",
     "g_amount_allocated": "0x8034e94c",
     "g_anim_copy_memory": "0x8034e954",
     "g_anim_copy_memory_cur": "0x8034e95c",
@@ -115,14 +128,20 @@
     {
       "section": ".rodata",
       "offset": 0,
-      "size": 30,
-      "address": "0x80170554"
+      "size": 24,
+      "address": "0x80170528"
     },
     {
       "section": ".rodata",
-      "offset": 32,
+      "offset": 24,
       "size": 20,
       "address": "0x80170540"
+    },
+    {
+      "section": ".rodata",
+      "offset": 44,
+      "size": 30,
+      "address": "0x80170554"
     }
   ]
 }

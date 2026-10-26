@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1045100,
+    "matching_code_bytes": 1045836,
     "total_executable_code_bytes": 1414572,
-    "percent": 73.88100428963672,
+    "percent": 73.93303416156972,
     "categories": {
-      "reconstructed_game": 815108,
+      "reconstructed_game": 815844,
       "restored_library": 229992
     },
-    "matching_functions": 4682
+    "matching_functions": 4683
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -361,7 +361,7 @@
     "config/GMFE69/animchan_process.json": "d315c70b969db3a2908134cbe96c9fadc67c0328dd8173455ddb68b7a1dcd3e1",
     "config/GMFE69/animdb.json": "144058a2faa5ca6e23c0083279d94f085d536c0982b14d820d0e8984aca5f620",
     "config/GMFE69/animemot.json": "dda9f478a5e308bf6a5b89f4e4b4d1e0fabdd9f1a41a1984adbbda2cf689184b",
-    "config/GMFE69/animemot_copy.json": "f7fb2de95493c682be110fa08d0429655652e3f8dd6755f92031ea7aa953c72c",
+    "config/GMFE69/animemot_copy.json": "491aeabb130295e9cd3c8d57233e42536f279f002556ef930c4915fcb17a5fed",
     "config/GMFE69/animemot_endian.json": "4024b1849707ae3ec2bf1adca9a8d68f931e508ea3d2985166b7073b60839255",
     "config/GMFE69/animemot_getframe.json": "8d0a343f50bdb0f5cd92d74bb8907aba09174866d021ce8636b2305de72d0fd3",
     "config/GMFE69/animintf.json": "ba905796430033bbaca3e45ce233b7b80583a0e8caae52cac6f4dff749ae4601",
@@ -2554,7 +2554,7 @@
     "src/game/animchan_process.cpp": "b6fb61478a6cf5d9a4d17e3dae76252e906d639319a3554e438aa3d17b3b064f",
     "src/game/animdb.cpp": "4efceebf62fc3c040ccb7b0fb88c250a727ee135d842cc2972f146147153983f",
     "src/game/animemot.cpp": "d262253f736c6e9824e5ffe86a57d78758e052c56e78a1a9f201096659f1705b",
-    "src/game/animemot_copy.cpp": "9469b2c2b9dd9ba714399c45a10d0c0faeb29720f053f9a0a29122998e7ef1b0",
+    "src/game/animemot_copy.cpp": "cdf8feb5d80c8004d89187b408821b1d0aee7696cf31c980aad1c0de99b68709",
     "src/game/animemot_endian.cpp": "234dd3cd52640295f2d0e682bb206859dedf8e8d203e16c1673944221d062c6a",
     "src/game/animemot_getframe.cpp": "a46f06596db01ec89758f3a5a8a4b241b1e47faa9449a468d45b2b3405deae88",
     "src/game/animintf.cpp": "d1c21ffbec3694b0e340aac6e3b24c7f1b0c25bedf3439836c156fee2c00b462",
@@ -54966,8 +54966,8 @@
     {
       "id": "animemot_copy",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 2100,
+      "functions": 5,
+      "code_bytes": 2836,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -54999,8 +54999,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "255b68efd9f69fa5e6687629c73bfa770b8756ae638deafdcb01b72034a8bccb",
-      "linked_sha256": "9f7034126ac88acb9fa9e92cb1bfa7fd3c7b1065b5cba7c05afbab629586808b"
+      "object_sha256": "a800cefb1b5c4e309f44bc3412d0bf9d0e1b99337d0fac8dea53a068e9df53b2",
+      "linked_sha256": "fd881b6cfe0d195a7aaf5a69fb42d96f943be1f1a29d1d23c67fc5d87a3d35a7"
     },
     {
       "id": "alarm_list_ctor",
@@ -55878,13 +55878,6 @@
         "file_record": 48,
         "file_name": "animemot.cpp",
         "ranges": [
-          {
-            "address": "0x800621d4",
-            "size": 736,
-            "kind": "function",
-            "name": "CopyAnimFileFormatStructureToDynMem__FP16AnimFileFormat_t",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80062ce8",
             "size": 1360,
