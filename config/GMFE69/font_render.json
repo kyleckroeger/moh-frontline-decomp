@@ -32,6 +32,7 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk",
     "include/dolphin-sdk/libc"
   ],
   "strip_unused": false,
@@ -39,24 +40,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007ca34",
-      "size": 380,
+      "address": "0x8007c320",
+      "size": 2192,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c010",
-      "size": 24,
+      "address": "0x8000c008",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012f8c",
-      "size": 36,
+      "address": "0x80012f80",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Link__5CFontFP7CDmaTagR10CDmaPacket",
+      "address": "0x8007c320",
+      "size": 1812,
+      "binding": 1
+    },
     {
       "name": "Render__5CFontFR10CDmaPacketPv",
       "address": "0x8007ca34",
@@ -107,6 +114,30 @@
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXGetProjectionv": "0x80130134",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetProjectionv": "0x80130058",
+    "GXSetTevAlphaIn": "0x8012f09c",
+    "GXSetTevAlphaOp": "0x8012f1e0",
+    "GXSetTevColorIn": "0x8012f01c",
+    "GXSetTevColorOp": "0x8012f120",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
+    "MathFunClamp<i>__Fiii": "0x8007c050",
+    "PSMTXIdentity": "0x80116bb0",
+    "g_viewport": "0x80194ca0",
     "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
@@ -116,5 +147,52 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "font.cpp",
-  "original_file_index": 3954
+  "original_file_index": 3954,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034ffc8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034ffcc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034ffd0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034ffd4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034ffd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034ffe0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034ffc0"
+    }
+  ]
 }
