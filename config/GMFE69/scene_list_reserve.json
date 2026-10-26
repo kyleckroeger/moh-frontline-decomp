@@ -1,0 +1,88 @@
+{
+  "id": "scene_list_reserve",
+  "source": "src/game/scene_list_reserve.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800dcdc8",
+      "size": 680,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ec18",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 16
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001586c",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "reserve__Q23dwi28list<Q210ISceneNode7SExtent>FiPc",
+      "address": "0x800dcdc8",
+      "size": 680,
+      "binding": 2
+    }
+  ],
+  "externals": {
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "MEM_free": "0x8014f83c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q23dwi28list<Q210ISceneNode7SExtent>Fv": "0x800dd294"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "scene.cpp",
+  "original_file_index": 8404,
+  "file_duplicates": [
+    "__dt__Q23dwi28list<Q210ISceneNode7SExtent>Fv"
+  ]
+}

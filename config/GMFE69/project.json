@@ -1265,7 +1265,8 @@
     "path_serviceproject.json",
     "propdat_load.json",
     "animated_draw.json",
-    "compartment_nodeshadows.json"
+    "compartment_nodeshadows.json",
+    "scene_list_reserve.json"
   ],
   "progress": {
     "code_bytes": 1414572,
