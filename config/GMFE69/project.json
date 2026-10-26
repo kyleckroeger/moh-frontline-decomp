@@ -1269,7 +1269,8 @@
     "scene_list_reserve.json",
     "world_object_request_reserve.json",
     "animemot_copy.json",
-    "alarm_list_ctor.json"
+    "alarm_list_ctor.json",
+    "player_weapon_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
