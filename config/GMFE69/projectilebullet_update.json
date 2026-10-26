@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800d11d4",
-      "size": 756,
+      "size": 2160,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e5f4",
-      "size": 48,
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015320",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -92,26 +92,56 @@
       "address": "0x800d1450",
       "size": 120,
       "binding": 1
+    },
+    {
+      "name": "Init__17CProjectileBulletF22EProjectileBulletTypesP33ProjectileBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode",
+      "address": "0x800d14c8",
+      "size": 1404,
+      "binding": 1
     }
   ],
   "externals": {
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
     "CONTACT_EPSILON": "0x80350ba8",
+    "Create__15CParticleSystemFUl": "0x80080c78",
     "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "Init__7CBulletFv": "0x800ccc20",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "MathFunRandomReal__Fff": "0x80092d60",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "Set__8CTextureFP9ShapeFileb": "0x80082d6c",
     "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc",
     "Shutdown__7CBulletFv": "0x800ccc04",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "g_BulletBin": "0x801f305c",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_cheats": "0x80196a94",
     "g_pBulletFactory": "0x8034e9e0",
     "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_BulletBin"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
     "CONTACT_EPSILON",
+    "g_bInMultiplayerMode",
     "g_pBulletFactory"
   ],
   "original_file": "projectilebullet.cpp",
@@ -131,6 +161,66 @@
       "offset": 4,
       "size": 4,
       "address": "0x80350d0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350d50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350d38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350d20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350d28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350d08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350d10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350d54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350d58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350d5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x80350d40"
     }
   ]
 }
