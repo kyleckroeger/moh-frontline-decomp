@@ -1,0 +1,124 @@
+{
+  "id": "compartment_nodeshadows",
+  "source": "src/game/compartment_nodeshadows.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80074438",
+      "size": 1600,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000bb1c",
+      "size": 152,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 208
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012ab8",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    }
+  ],
+  "functions": [
+    {
+      "name": "DrawNodeShadows__12CCompartmentFR7CPTNodeR16CCharacterShadow",
+      "address": "0x80074438",
+      "size": 1600,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetBox__16CCharacterShadowFv": "0x80074bd0",
+    "IntersectNode__FR7CPTNodeP16CCharacterShadow": "0x80074a78",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
+    "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
+    "SetDepth__7CVolBoxFf": "0x800c5258",
+    "SetHeight__7CVolBoxFf": "0x800c5268",
+    "SetWidth__7CVolBoxFf": "0x800c5278",
+    "TestCollision__7CVolBoxCFRC7CVolBoxR10CCollisionb": "0x800c37d0",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__ct__7CVolBoxFv": "0x80074bec",
+    "__ct__8CVector3FRC8CVector3": "0x80074bd8",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__7CVolBoxFv": "0x800c5458",
+    "__vt__7CVolBox": "0x801894f4",
+    "__vt__7IVolume": "0x80181e28",
+    "g_CptShadowBin": "0x801d50c4",
+    "g_pRenderList": "0x8034e980"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "IntersectNode__FR7CPTNodeP16CCharacterShadow",
+    "g_CptShadowBin",
+    "g_pRenderList"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pRenderList"
+  ],
+  "original_file": "compartment.cpp",
+  "original_file_index": 3422,
+  "weak_duplicates": [
+    "GetBox__16CCharacterShadowFv",
+    "__ct__7CVolBoxFv",
+    "__ct__8CVector3FRC8CVector3"
+  ],
+  "file_duplicates": [
+    "IntersectNode__FR7CPTNodeP16CCharacterShadow"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fdc0"
+    }
+  ]
+}
