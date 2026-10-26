@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x801067d4",
-      "size": 6388,
+      "address": "0x80105644",
+      "size": 10884,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "form_component_prediction__FPUcPUciiiiiiiii",
+      "address": "0x80105644",
+      "size": 4496,
+      "binding": 0
+    },
     {
       "name": "form_predictions__FiiiiPA2_A2_iPA2_iPii",
       "address": "0x801067d4",
@@ -58,8 +64,7 @@
     "MPDforward_reference_frame": "0x80314e14",
     "MPDpicture_coding_type": "0x8034ee74",
     "MPDpicture_structure": "0x8034ee90",
-    "MPDsecond_field": "0x8034edfc",
-    "form_component_prediction__FPUcPUciiiiiiiii": "0x80105644"
+    "MPDsecond_field": "0x8034edfc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -68,9 +73,7 @@
     "path": "recon.c",
     "reference_copy": "https://github.com/dzavalishin/phantomuserland/blob/0fa666cb50e6ca13dd048d67d397485266c0e814/phantom/apps/mpeg/recon.c"
   },
-  "local_externals": [
-    "form_component_prediction__FPUcPUciiiiiiiii"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
     "MPDcoded_picture_width",

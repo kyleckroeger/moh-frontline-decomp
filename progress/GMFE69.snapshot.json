@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1060956,
+    "matching_code_bytes": 1065452,
     "total_executable_code_bytes": 1414572,
-    "percent": 75.00190870454102,
+    "percent": 75.31974335700127,
     "categories": {
-      "reconstructed_game": 830964,
+      "reconstructed_game": 835460,
       "restored_library": 229992
     },
-    "matching_functions": 4694
+    "matching_functions": 4695
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -946,7 +946,7 @@
     "config/GMFE69/rcmpbase.json": "76b2fde8c7d557b1a3f2efbb80e56fc580819831e852f1291c81fbfaadf10fe3",
     "config/GMFE69/rcmpbase_head.json": "d540a32fd2ee0c6aa11949b937349b14632e82700f345a96d1285949d00add37",
     "config/GMFE69/real_bridge.json": "fb24361e052cc387b259a75299cf4cd5cac5657115be7c0281dad09bdf4242ab",
-    "config/GMFE69/recon.json": "ee4b39c3b8dc4b27b464b1aa560194e9d855a693eff202d41e169eec78679960",
+    "config/GMFE69/recon.json": "fc63225cfb53faf8c0510ad33bd16023bad761bd959b1cc807d5ad9f243704ca",
     "config/GMFE69/renderlist.json": "b09aaa3029fe49eccdf19467e22c65786099387cec3a2baffa06a559486c219e",
     "config/GMFE69/renderlist_draw.json": "ff4f18ae80440fc9291a4178dc66ade6d0295c115eee8345a66d6b4fbb59b96b",
     "config/GMFE69/renderlist_finish.json": "ea1ade1d16d8fa9cabdcf43774a566c706a2d3c675d6a58687b480f2b450405c",
@@ -2128,7 +2128,7 @@
     "src/ea/printstr_movechannel.cpp": "4c3add6cd6a2e0cbde5b37ea378640e014013dc006968f9dc03457ab9e3d9a68",
     "src/ea/rcmp2real.cpp": "1d046950eca9f279ad901b132d22290eb4f44d42d4605181f63b1b097122ac25",
     "src/ea/rcmp_mpc_codec_chunk_types.cpp": "b996231c1c402b6ecdd813bb69df3ae8a3580e537b71dd9fa91e238690bb3635",
-    "src/ea/recon.cpp": "c5c64caa6ea1c3d2628df3727a02c83fcd5096723e7b00c450a11edac740e0d8",
+    "src/ea/recon.cpp": "fa3159c198f40551a06bf9b84671b896f378e6e33c5693157cd6e56bface4521",
     "src/ea/s3dlow.c": "b79405b9175ff0299ba213a824c1599ebc4384af549addcc8725867ebc0390ce",
     "src/ea/saems.c": "40181da9cbbf7073758ec6a1241879c212cc164ca54d09934222d659631cb66d",
     "src/ea/saems_counter.c": "a531ab437ab79cad420778586ea9a361656ba5a331cc938e4044fcd9000a5372",
@@ -28264,8 +28264,8 @@
     {
       "id": "recon",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 6388,
+      "functions": 2,
+      "code_bytes": 10884,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28297,8 +28297,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "47976a7c90bf3b01016f5416a1459b099bbec9408ef9a3c9b258b045a3dc4a5b",
-      "linked_sha256": "6d6d8101c999a9e65eea8eae73e7a54d574066040974a4661f4f28a8813b7ab0"
+      "object_sha256": "f82700abe6a23fabfa1d1b7a530dc2e3013ec6ed8d13dfdc8737202bb8a17ab8",
+      "linked_sha256": "34619144be99a26e742f76d62761e129e3a56f0f993e11d5026cadb8d47c3ca9"
     },
     {
       "id": "motion",
@@ -57679,20 +57679,6 @@
             "size": 76,
             "kind": "function",
             "name": "__sinit_rcmpbase_cpp",
-            "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/recon.cpp [local symbols only]",
-        "file_record": 181,
-        "file_name": "recon.cpp",
-        "ranges": [
-          {
-            "address": "0x80105644",
-            "size": 4496,
-            "kind": "function",
-            "name": "form_component_prediction__FPUcPUciiiiiiiii",
             "evidence": "local-file-symbol"
           }
         ]
