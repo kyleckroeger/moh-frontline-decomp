@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80151234",
-      "size": 332,
+      "size": 1004,
       "type": 1
     }
   ],
@@ -48,10 +48,20 @@
       "address": "0x80151234",
       "size": 332,
       "binding": 0
+    },
+    {
+      "name": "PRINT_init",
+      "address": "0x80151380",
+      "size": 672,
+      "binding": 1
     }
   ],
   "externals": {
-    "PRINTchannellist": "0x80193050"
+    "PRINT_setchannelstate": "0x80151880",
+    "PRINT_setdevicestate": "0x8015180c",
+    "PRINTchannellist": "0x80193050",
+    "PRINTdevicelist": "0x80192fd4",
+    "PRINTinitialized": "0x8034f3d8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -60,7 +70,9 @@
     "PRINTchannellist"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "PRINTinitialized"
+  ],
   "original_file": "printstr.cpp",
   "original_file_index": 12482
 }
