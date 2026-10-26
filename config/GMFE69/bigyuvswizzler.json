@@ -41,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x800fc5ac",
-      "size": 1640,
+      "size": 2152,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fae8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800167f0",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -63,10 +63,18 @@
       "address": "0x800fc5ac",
       "size": 1640,
       "binding": 1
+    },
+    {
+      "name": "NEW_tBigYUVSwizzlerTexture__FP9_GXTexObjP9_GXTexObjP9_GXTexObj",
+      "address": "0x800fcc14",
+      "size": 512,
+      "binding": 1
     }
   ],
   "externals": {
+    "DCFlushRange": "0x80111880",
     "GXInitTexObjLOD": "0x8012dcc8",
+    "GXInitTlutObj": "0x8012e080",
     "GXLoadTexObj": "0x8012e02c",
     "GXLoadTlut": "0x8012e0c8",
     "GXSetIndTexCoordScale": "0x8012e9c0",
@@ -86,7 +94,10 @@
     "GXSetTevOrder": "0x8012f5b8",
     "GXSetTevSwapMode": "0x8012f3ec",
     "GXSetTevSwapModeTable": "0x8012f444",
-    "GXSetTexCoordGen2": "0x8012bc7c"
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "MEM_alloc": "0x8014f7dc",
+    "NEW_tBigSwizzlerTexture__FP9_GXTexObj": "0x800fc198",
+    "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -97,9 +108,16 @@
   "original_file": "bigyuvswizzler.cpp",
   "original_file_index": 9971,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 16,
+      "address": "0x8017aa20"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
@@ -129,6 +147,54 @@
       "offset": 16,
       "size": 8,
       "address": "0x80351268"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80351270"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80351274"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80351278"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8035127c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80351280"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80351284"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80351288"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x80351290"
     }
   ]
 }

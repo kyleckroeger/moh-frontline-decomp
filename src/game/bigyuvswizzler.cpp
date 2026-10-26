@@ -8,10 +8,31 @@
 // swap tables. The names come from the symbols; tBigSwizzler's and
 // tBigYUVSwizzler's layouts (three 256-entry IA8 tables, the two swizzlers,
 // three TLUT objects; 0x640 bytes) are inferred from this file and
-// bigswizzler.cpp, as are the parameter names. NEW_tBigYUVSwizzlerTexture
-// after it is parked (its table loop is unrolled twice in the original) and
-// DELETE_tBigYUVSwizzler is not part of this unit.
+// bigswizzler.cpp, as are the parameter names. Then NEW_tBigYUVSwizzlerTexture:
+// the structure allocated with the movie allocation flags, both swizzlers
+// created, and the three IA8 colour tables filled (YUV to RGB weights; the
+// (unsigned char) conversions give the original's twofold loop unrolling),
+// flushed and bound to the TLUT objects. DELETE_tBigYUVSwizzler is not part
+// of this unit.
 #include <dolphin/gx.h>
+
+extern "C" {
+void* MEM_alloc(const char*, int, int);
+void DCFlushRange(void*, unsigned long);
+}
+
+namespace RCMP {
+class RCMP_SYSTEM {
+public:
+    virtual ~RCMP_SYSTEM();
+
+    void* (*m_alloc)(const char*, unsigned long, int, int, int);
+    void (*m_free)(void*);
+    int m_allocFlags;
+};
+
+extern RCMP_SYSTEM rcmp_sys;
+}
 
 struct tBigSwizzler {
     unsigned int tileWidth;
@@ -33,6 +54,8 @@ struct tBigYUVSwizzler {
     GXTlutObj tlut[3];
     unsigned char unknown62c[20];
 };
+
+tBigSwizzler* NEW_tBigSwizzlerTexture(GXTexObj*);
 
 void tBigYUVSwizzler_DrawSetup(tBigYUVSwizzler* swizzler, GXTexObj* tex0, GXTexObj* tex1, GXTexObj* tex2) {
     tBigSwizzler* swizzler0 = swizzler->swizzler0;
@@ -119,4 +142,26 @@ void tBigYUVSwizzler_DrawSetup(tBigYUVSwizzler* swizzler, GXTexObj* tex0, GXTexO
     GXSetTevColorIn(GX_TEVSTAGE4, GX_CC_TEXC, GX_CC_ZERO, GX_CC_ZERO, GX_CC_CPREV);
     GXSetTevAlphaOp(GX_TEVSTAGE4, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_1, GX_TRUE, GX_TEVPREV);
     GXSetTevAlphaIn(GX_TEVSTAGE4, GX_CA_ZERO, GX_CA_ZERO, GX_CA_ZERO, GX_CA_TEXA);
+}
+
+tBigYUVSwizzler* NEW_tBigYUVSwizzlerTexture(GXTexObj* tex0, GXTexObj* tex1, GXTexObj*) {
+    tBigYUVSwizzler* swizzler = (tBigYUVSwizzler*)MEM_alloc("tBigYUVSwizzler", sizeof(tBigYUVSwizzler), RCMP::rcmp_sys.m_allocFlags);
+    swizzler->swizzler0 = NEW_tBigSwizzlerTexture(tex0);
+    swizzler->swizzler1 = NEW_tBigSwizzlerTexture(tex1);
+    for (int i = 0; i < 256; i++) {
+        float value = i - 128.0f;
+        swizzler->lut[0][i][0] = 0xff;
+        swizzler->lut[0][i][1] = i;
+        swizzler->lut[1][i][0] = (unsigned char)(0.701f * value + 128.0f);
+        swizzler->lut[1][i][1] = (unsigned char)(-0.35705f * value + 85.333336f);
+        swizzler->lut[2][i][0] = (unsigned char)(-0.17205f * value + 42.666668f);
+        swizzler->lut[2][i][1] = (unsigned char)(0.886f * value + 128.0f);
+    }
+    DCFlushRange(swizzler->lut[0], sizeof(swizzler->lut[0]));
+    DCFlushRange(swizzler->lut[1], sizeof(swizzler->lut[1]));
+    DCFlushRange(swizzler->lut[2], sizeof(swizzler->lut[2]));
+    GXInitTlutObj(&swizzler->tlut[0], swizzler->lut[0], GX_TL_IA8, 256);
+    GXInitTlutObj(&swizzler->tlut[1], swizzler->lut[1], GX_TL_IA8, 256);
+    GXInitTlutObj(&swizzler->tlut[2], swizzler->lut[2], GX_TL_IA8, 256);
+    return swizzler;
 }
