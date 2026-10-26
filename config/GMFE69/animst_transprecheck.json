@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x80067b5c",
-      "size": 328,
+      "size": 1620,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b530",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800126c8",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "_AnimStGetFreeSlotIndex__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tPvUs",
+      "address": "0x80067ca4",
+      "size": 1292,
+      "binding": 0
+    },
     {
       "name": "AnimStTransPreCheck",
       "address": "0x80067b5c",
@@ -95,12 +101,15 @@
     }
   ],
   "externals": {
+    "AnimChanStopByStateIndex": "0x800618a8",
     "GetStateAnimList__13CAnimDatabaseFUlUlP23AnimFileStateAnimList_t": "0x80061d98",
+    "GetStateCallbackID__13CAnimDatabaseFUlUs": "0x80061f04",
     "_AnimSt_CallbackTable": "0x8034e96c",
     "_AnimSt_FinishCb": "0x8034e968",
     "_AnimSt_pStatAnimList": "0x801d3e38",
     "_AnimTranQuickScan__FP12AnimObjHdr_tUsUsUsUs": "0x800681b0",
-    "g_AnimDB": "0x801d4a84"
+    "g_AnimDB": "0x801d4a84",
+    "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -116,5 +125,22 @@
     "_AnimSt_FinishCb"
   ],
   "original_file": "animst.cpp",
-  "original_file_index": 3104
+  "original_file_index": 3104,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fcf0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fcfc"
+    }
+  ]
 }
