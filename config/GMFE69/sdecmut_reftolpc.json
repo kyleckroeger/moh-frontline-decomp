@@ -18,7 +18,7 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80162584",
-      "size": 584,
+      "size": 4180,
       "type": 1
     }
   ],
@@ -48,13 +48,29 @@
       "address": "0x80162584",
       "size": 584,
       "binding": 0
+    },
+    {
+      "name": "filter__FP10UTALKSTATEii",
+      "address": "0x801627cc",
+      "size": 2600,
+      "binding": 0
+    },
+    {
+      "name": "initmut__FPcP10UTALKSTATE",
+      "address": "0x801631f4",
+      "size": 996,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "bitmask": "0x80193e50"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "bitmask"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "sdecmut.c",
@@ -68,6 +84,36 @@
       "offset": 0,
       "size": 4,
       "address": "0x80351b14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351b18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351b1c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80351b20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80351af0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80351b28"
     }
   ]
 }
