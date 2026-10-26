@@ -1,11 +1,17 @@
-// A fragment of csg_volume.cpp (0x800c90bc): CCSGVolume's collision test against a
-// line (every sub-volume of the hierarchy object is tested against the line
-// into one of twenty collision records; a result of 2 records the sub-volume
-// and its depth, a result of 3 ends the test, and CheckContacts picks the
-// nearest) and Init (the sub-volume count and the hierarchy object). The file
-// name is this project's; the original record is csg_volume.cpp. The views
-// are those of csg_volume.cpp (inferred as there); CheckContacts before these
-// is declared only.
+// A fragment of csg_volume.cpp (0x800c8f3c): CCSGVolume::CheckContacts,
+// which picks the nearest of the recorded sub-volume collisions (the
+// smallest depth, FLT_MAX when none: a miss, raising the result to 1 when
+// asked), copies its depth, line flag and result into the collision and,
+// when asked, raises the result and adds a contact (separation, both
+// vectors and the sub-volume index) for every record at that depth (each
+// copied over the nearest record first); then CCSGVolume's collision test
+// against a line (every sub-volume of the hierarchy object is tested
+// against the line into one of twenty collision records; a result of 2
+// records the sub-volume and its depth, a result of 3 ends the test, and
+// CheckContacts picks the nearest) and Init (the sub-volume count and the
+// hierarchy object). The file name is this project's; the original record
+// is csg_volume.cpp. The views are those of csg_volume.cpp (inferred as
+// there); the result is read through a small inline (inferred).
 class CMatrix;
 class CDrawContext;
 class CTriangle;
@@ -116,6 +122,49 @@ public:
     CHierObject* m_object;
     int m_count;
 };
+
+static inline int Result(const CCollision& c) { return c.m_result; }
+int CCSGVolume::CheckContacts(int* indices, float* depths, CCollision* collisions, int count, CCollision& collision,
+                              bool all) const {
+    float nearest = 3.4028235e38f;
+    int index = -1;
+    for (int i = 0; i < count; i++) {
+        if (depths[i] < nearest) {
+            nearest = depths[i];
+            index = indices[i];
+        }
+    }
+    int result;
+    if (nearest == 3.4028235e38f) {
+        if (all && collision.m_result < 1)
+            collision.m_result = 1;
+        result = 1;
+    } else {
+        CCollision& best = collisions[index];
+        collision.m_depth = best.m_depth;
+        collision.m_line = best.m_line;
+        result = Result(best);
+        if (all) {
+            for (int i = 0; i < count; i++) {
+                if (nearest == depths[i]) {
+                    int other = indices[i];
+                    best = collisions[other];
+                    if (result > collision.m_result)
+                        collision.m_result = result;
+                    if (result == 2) {
+                        SClsnContact contact;
+                        contact.m_separation = best.m_contact->m_separation;
+                        contact.m_vector0 = best.m_contact->m_vector0;
+                        contact.m_vector1 = best.m_contact->m_vector1;
+                        contact.m_index = other;
+                        collision.AddContact(contact);
+                    }
+                }
+            }
+        }
+    }
+    return result;
+}
 
 int CCSGVolume::TestCollision(const CLine3& other, CCollision& collision, bool flag) const {
     CCollision collisions[20];

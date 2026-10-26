@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800c90bc",
-      "size": 336,
+      "address": "0x800c8f3c",
+      "size": 720,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e068",
-      "size": 36,
+      "address": "0x8000e060",
+      "size": 44,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014e40",
-      "size": 12,
+      "address": "0x80014e34",
+      "size": 24,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "CheckContacts__10CCSGVolumeCFPiPfP10CCollisioniR10CCollisionb",
+      "address": "0x800c8f3c",
+      "size": 384,
+      "binding": 1
+    },
+    {
       "name": "Init__10CCSGVolumeFiP11CHierObject",
       "address": "0x800c9200",
       "size": 12,
@@ -71,8 +77,9 @@
     }
   ],
   "externals": {
-    "CheckContacts__10CCSGVolumeCFPiPfP10CCollisioniR10CCollisionb": "0x800c8f3c",
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
     "GetSubVolume__11CHierObjectCFi": "0x80099980",
+    "__as__10CCollisionFRC10CCollision": "0x800c7a58",
     "__construct_array": "0x8013834c",
     "__ct__10CCollisionFv": "0x800c7cf4",
     "__destroy_arr": "0x801382d4",
@@ -85,5 +92,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "csg_volume.cpp",
-  "original_file_index": 7628
+  "original_file_index": 7628,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350bc8"
+    }
+  ]
 }
