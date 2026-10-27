@@ -12,6 +12,7 @@ from formats import Elf32, verify_load_image
 from tool_runner import run, sha256
 from setup import CONFIG, ROOT, setup
 from setup_compiler import setup_compiler
+from extab_patch import apply_patches, load_patches
 from data_strip import DUPLICATE_SUFFIX, c_identifier, pool_item, pool_symbol, strip_objects
 from sdk_build import LEADING_FILLER, compile_sdk, resolve_external, sdk_link_script, stripped_address
 
@@ -605,6 +606,7 @@ def build_project():
     project = json.loads(project_path.read_text())
     units = [json.loads((project_path.parent / name).read_text()) for name in project["units"]]
     validate_units(original, units)
+    patches = load_patches(units)
     tools = setup()
     compiler_keys = {(u.get("compiler_family", "GC"), u["compiler_version"]) for u in units}
     compiler_keys.add(("ProDG", "3.8.1"))
@@ -634,9 +636,11 @@ def build_project():
             execute("assemble", wrapper, assembler, "compiled.s", "-o", "compiled.o")
         else:
             raise ValueError("Unsupported compiler family")
-        # compiled.o stays the hashed compiler output; input.o is what links.
+        # compiled.o stays the hashed compiler output; input.o is what links,
+        # after the listed extab padding patches (docs/Progress.md).
         check_pool(original, Elf32((work / "compiled.o").read_bytes()), unit)
-        (work / "input.o").write_bytes(strip_objects((work / "compiled.o").read_bytes(), unit))
+        patched = apply_patches((work / "compiled.o").read_bytes(), patches.get(unit["id"], []))
+        (work / "input.o").write_bytes(strip_objects(patched, unit))
         obj = Elf32((work / "input.o").read_bytes())
         validate_object(obj, unit)
         use_small_data = family == "GC" or "sda_externals" in unit
@@ -677,6 +681,7 @@ def build_project():
                             compiler_family=family, compiler_version=unit["compiler_version"], compiler_flags=unit["compiler_flags"],
                             strip_unused=unit["strip_unused"], discarded_functions=unit["discarded_functions"],
                             object_sha256=sha256(work / "compiled.o"),
+                            **({"extab_patches": patches[unit["id"]]} if unit["id"] in patches else {}),
                             linked_sha256=sha256(work / "compiled.elf")))
         print(f"Verified {unit['id']}: {reports[-1]['code_bytes']} code bytes", flush=True)
     write_context(original_path, original, blobs, directory)

@@ -38,6 +38,28 @@ report. Anyone can reproduce that public export without a game image:
 python3 tools/progress_report.py
 ```
 
+## Extab padding patches
+
+MWCC leaves two alignment bytes uninitialized in some exception-table actions:
+the padding after the registers of a `new`/`new[]` cleanup (`DELETEPOINTERCOND`,
+action byte `0x8b`) and after the unused byte of a `catch (...)` block
+(`CATCHBLOCK_32`, `0x90`), each just before a 4-byte pointer. The original build
+holds other leftover values there that no compiler version or source form
+reproduces. Approved by the user on 2026-10-27, `tools/project_build.py` patches
+those two bytes, and nothing else, after compiling and before linking
+(`tools/extab_patch.py`), for the functions listed in
+`config/GMFE69/extab_patches.json`. Each entry names the unit, the function, the
+offset of the field from the start of the function's extab record (found through
+its `extabindex` entry), the action byte, our compiler's bytes and the original bytes. The build
+fails unless the offset is the padding of such an action that the record's code
+ranges reach and the bytes there are exactly the listed compiler output, so a
+source change cannot be hidden by a patch. `compiled.o` and its hash stay the
+unpatched compiler output, the report lists each unit's patches, and the patched
+bytes are verified like every other byte; there are no masks.
+
+| Unit | Function | Action | Offset | Compiled | Original |
+| --- | --- | --- | --- | --- | --- |
+
 ## Counting rules
 
 The overall denominator is every allocated executable byte in the pinned

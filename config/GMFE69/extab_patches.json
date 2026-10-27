@@ -1,0 +1,4 @@
+{
+  "description": "User-approved 2026-10-27 post-compile patches of the two uninitialized padding bytes of MWCC new/new[] cleanup actions (DELETEPOINTERCOND 0x8b, CATCHBLOCK_32 0x90) in a function's extab record. Offset is from the start of the record; compiled is what our compiler emits (the build fails on anything else); original is what is written. See tools/extab_patch.py and docs/Progress.md.",
+  "patches": []
+}
