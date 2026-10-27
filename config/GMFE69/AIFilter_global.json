@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005d8b4",
-      "size": 756,
+      "address": "0x8005d760",
+      "size": 1096,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b260",
-      "size": 24,
+      "address": "0x8000b248",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012290",
-      "size": 36,
+      "address": "0x80012284",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CreateSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi",
+      "address": "0x8005d760",
+      "size": 340,
+      "binding": 1
+    },
     {
       "name": "PropagateSoundToAllObjects__15CAIFilterGlobalFRC18CAIFilterSoundInfo",
       "address": "0x8005d8b4",
@@ -83,10 +89,15 @@
     }
   ],
   "externals": {
+    "AllocateGenerateBuffers__20CAISplinePathManagerFv": "0x8004fb90",
+    "FreeGenerateBuffers__20CAISplinePathManagerFv": "0x8004fb34",
+    "GenerateSplinePath__20CAISplinePathManagerFUlUlUlPC19_aifilter_simple_v3": "0x8004fa94",
     "GetFrameCount__Fv": "0x80017e60",
     "GetGlobalListStart__9CAIObjectFv": "0x8004ec70",
     "PropagateSoundToAllObjects__9CAIObjectFRC18CAIFilterSoundInfoP9CAIObject": "0x80047e0c",
+    "__ct__20CAISplinePathManagerFUl": "0x8004fc18",
     "__dl__FPv": "0x8001ca2c",
+    "__nw__FUl": "0x8001cb60",
     "g_aigAIFilterGlobalObject": "0x801c6cd4",
     "recent_sounds": "0x801c6db8",
     "s_rNextSoundPropagateTime__15CAIFilterGlobal": "0x8034e928"
