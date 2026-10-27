@@ -37,24 +37,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80065bd4",
-      "size": 476,
+      "address": "0x800658c4",
+      "size": 1260,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b490",
-      "size": 8,
+      "address": "0x8000b488",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800125d8",
-      "size": 12,
+      "address": "0x800125cc",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AnimMotCalcAnimPos",
+      "address": "0x800658c4",
+      "size": 784,
+      "binding": 1
+    },
     {
       "name": "AnimMotCalcAnimRot",
       "address": "0x80065bd4",
@@ -63,7 +69,8 @@
     }
   ],
   "externals": {
-    "OrientLerpAngle": "0x800b8418"
+    "OrientLerpAngle": "0x800b8418",
+    "Rotate__8CVector2FRC8CVector2l": "0x8009226c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
