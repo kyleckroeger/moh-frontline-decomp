@@ -31,30 +31,38 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
   "strip_unused": false,
-  "source_root": "scratch/game",
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80091344",
-      "size": 220,
+      "address": "0x800910ac",
+      "size": 884,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c718",
-      "size": 8,
+      "address": "0x8000c710",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800137c0",
-      "size": 12,
+      "address": "0x800137b4",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetIntersection__6CPlaneCFRC6CLine3RfP8CVector3",
+      "address": "0x800910ac",
+      "size": 664,
+      "binding": 1
+    },
     {
       "name": "Transform__6CPlaneFRC7CMatrix",
       "address": "0x80091344",
@@ -79,5 +87,46 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "plane.cpp",
-  "original_file_index": 5476
+  "original_file_index": 5476,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350284"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350288"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350290"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350280"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350298"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8035029c"
+    }
+  ]
 }
