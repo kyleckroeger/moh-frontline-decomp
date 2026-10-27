@@ -1,0 +1,106 @@
+{
+  "id": "dmmorph_buffers",
+  "source": "src/game/dmmorph_buffers.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f6f9c",
+      "size": 400,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f900",
+      "size": 32,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016610",
+      "size": 48,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "__dt__10CMemBufferFv",
+      "address": "0x800f6f9c",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "__ct__10CMemBufferFv",
+      "address": "0x800f6ffc",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q217CBlendBufferCache15BufferCacheDataFv",
+      "address": "0x800f7070",
+      "size": 100,
+      "binding": 2
+    },
+    {
+      "name": "__dt__17CBlendBufferCacheFv",
+      "address": "0x800f7014",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "__ct__Q217CBlendBufferCache15BufferCacheDataFv",
+      "address": "0x800f70d4",
+      "size": 88,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "MEM_free": "0x8014f83c",
+    "__construct_array": "0x8013834c",
+    "__destroy_arr": "0x801382d4",
+    "__destroy_new_array": "0x80138258",
+    "__dl__FPv": "0x8001ca2c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "dmmorph.cpp",
+  "original_file_index": 9796
+}

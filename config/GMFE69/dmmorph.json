@@ -34,66 +34,83 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f6f9c",
-      "size": 400,
+      "address": "0x800f7618",
+      "size": 404,
+      "type": 1
+    },
+    {
+      "name": ".ctors",
+      "address": "0x8016e000",
+      "size": 4,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f900",
-      "size": 32,
-      "type": 1
+      "address": "0x8000f928",
+      "size": 28,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 36
     },
     {
       "name": "extabindex",
-      "address": "0x80016610",
-      "size": 48,
+      "address": "0x8001664c",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017a7e8",
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x80314290",
+      "size": 28,
+      "type": 8
     }
   ],
   "functions": [
     {
-      "name": "__dt__10CMemBufferFv",
-      "address": "0x800f6f9c",
-      "size": 96,
+      "name": "__sinit_dmmorph_cpp",
+      "address": "0x800f7650",
+      "size": 348,
+      "binding": 0
+    },
+    {
+      "name": "DMMorphSetMaxActiveTargets__FP15DMMorphObject_TUl",
+      "address": "0x800f7618",
+      "size": 8,
       "binding": 1
     },
     {
-      "name": "__ct__10CMemBufferFv",
-      "address": "0x800f6ffc",
-      "size": 24,
-      "binding": 1
-    },
-    {
-      "name": "__dt__Q217CBlendBufferCache15BufferCacheDataFv",
-      "address": "0x800f7070",
-      "size": 100,
-      "binding": 2
-    },
-    {
-      "name": "__dt__17CBlendBufferCacheFv",
-      "address": "0x800f7014",
-      "size": 92,
-      "binding": 1
-    },
-    {
-      "name": "__ct__Q217CBlendBufferCache15BufferCacheDataFv",
-      "address": "0x800f70d4",
-      "size": 88,
+      "name": "DMMorphInitObject__FP15DMMorphObject_TUl",
+      "address": "0x800f7620",
+      "size": 48,
       "binding": 1
     }
   ],
   "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
     "MEM_free": "0x8014f83c",
-    "__construct_array": "0x8013834c",
+    "__construct_new_array": "0x801384fc",
+    "__ct__Q217CBlendBufferCache15BufferCacheDataFv": "0x800f70d4",
     "__destroy_arr": "0x801382d4",
-    "__destroy_new_array": "0x80138258",
-    "__dl__FPv": "0x8001ca2c"
+    "__dl__FPv": "0x8001ca2c",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__10CMemBufferFv": "0x800f6f9c",
+    "__dt__17CBlendBufferCacheFv": "0x800f7014",
+    "__dt__Q217CBlendBufferCache15BufferCacheDataFv": "0x800f7070",
+    "__nwa__FUl": "0x8001cae8",
+    "__register_global_object": "0x801381bc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -102,5 +119,19 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "dmmorph.cpp",
-  "original_file_index": 9796
+  "original_file_index": 9796,
+  "weak_duplicates": [
+    "__dt__Q217CBlendBufferCache15BufferCacheDataFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803511c8"
+    }
+  ]
 }

@@ -32,6 +32,14 @@
       "action": "0x8b",
       "compiled": "066c",
       "original": "2500"
+    },
+    {
+      "unit": "dmmorph",
+      "function": "__sinit_dmmorph_cpp",
+      "offset": "0x16",
+      "action": "0x8b",
+      "compiled": "066c",
+      "original": "2500"
     }
   ]
 }

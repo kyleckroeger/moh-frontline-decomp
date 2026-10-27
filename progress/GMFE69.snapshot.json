@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1119412,
+    "matching_code_bytes": 1119768,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.1343247286105,
+    "percent": 79.15949135144764,
     "categories": {
-      "reconstructed_game": 889420,
+      "reconstructed_game": 889776,
       "restored_library": 229992
     },
-    "matching_functions": 4744
+    "matching_functions": 4746
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -630,8 +630,8 @@
     "config/GMFE69/dmesh_cremapbin_ctor.json": "da7030351f976874f2061ceac394e9b76af32c494408a461b39a2eb845419e6b",
     "config/GMFE69/dmesh_partbin_render.json": "95845b22cb231252ab2b4a5f8f6c7b840bbe3986c248c1bfe31a9df7c13a63a3",
     "config/GMFE69/dmgeom.json": "704331dc5c2cb08740c64493cf99b8d0b609d3359cdb925d34aae5c8008e2d89",
-    "config/GMFE69/dmmorph.json": "5d6bcd1c343237b6b5c06843d43fc5af43e209e616b20d6aca1dcad294146828",
-    "config/GMFE69/dmmorph_initobject.json": "842e2d9df3fcff21b1dcf56bd27c4b589bd0bbc611f8b30329ed7ae186de3333",
+    "config/GMFE69/dmmorph.json": "7ec6c539a40a9ebd6d216b4135ffc070fd8e0d097e2e9533945bb9cf315d14f4",
+    "config/GMFE69/dmmorph_buffers.json": "52d45ae3a2c06c9e6bacc2809e4554df01f9b0dd1ef60421b4b04fad8ab00f0d",
     "config/GMFE69/dmrender.json": "d5d678a91cbf22c5957ec172ccca32d1198bd5031249fd506550daded8e2f1eb",
     "config/GMFE69/dolphin_trk.json": "9f66a923f4f6e4103cb15c12022e534d623c661d7ace9cc644364dfd361c06b7",
     "config/GMFE69/dolphin_trk_glue.json": "9bad22a0d1cea134a59e1015e9c02cc8418e9b47e3975f25993cc3bca1bcebd7",
@@ -656,7 +656,7 @@
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
-    "config/GMFE69/extab_patches.json": "0d69609c021793f69d94520fc1311c49e1aaae308bb2f3a49535d818a38a5812",
+    "config/GMFE69/extab_patches.json": "a2703ecfbad89455215b1bdada6f0565d9bbdd24c0ba00b001975cfdc4b258c7",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "cc264d2a9c429542764aa10895a149d9243ee8ca76348c547bf0f1b154bb244f",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -902,7 +902,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "7d3e472c9b9b1a8eda15db57e3f8109ecfb91eb65964965cff4b181011ff5df0",
+    "config/GMFE69/project.json": "463899f6868170af7474879b424f10dfcb8a5ad5f6da8d532361d28f86f8010e",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -2820,8 +2820,8 @@
     "src/game/dmesh_cremapbin_ctor.cpp": "b4a5cf6ea02cdd1539386f9c7d6ad8b22b013a25f3b89cdd3d711b4312395c40",
     "src/game/dmesh_partbin_render.cpp": "7a81234238a8459231650c0167bc0da8458a441e07ba1dfb4e0288c08377cc08",
     "src/game/dmgeom.cpp": "58ad9933fab712ccbb7599ad50b90d5c5c8490b89c350677dd2f39aa0f50208d",
-    "src/game/dmmorph.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
-    "src/game/dmmorph_initobject.cpp": "cdae811d5cc9b21e2668094804aea99df81985e25886ec18806913bfc433eaa3",
+    "src/game/dmmorph.cpp": "74e313508235e2589cf84ae9e41846651c7b133bea1445d19933492626dbf10c",
+    "src/game/dmmorph_buffers.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
     "src/game/dmrender.cpp": "0c5d7e63d3e8745e0e94191ab8773469f4dde49126919b9ab13b926685d84b19",
     "src/game/draw_context.cpp": "261589cc092b9c8c7b80605255eefc78641468141f4d33264252696f62c9782b",
     "src/game/dvdStatus_drawmessage.cpp": "299e80bbd3020b4e93c3ad5c3c048992deb0636dc4cffb033130e97fd43f6ba0",
@@ -21687,7 +21687,7 @@
       "linked_sha256": "d1e39ab1e80214725b9b8aa237bfa57d719a073b4537391bcd607ff7dc59f25c"
     },
     {
-      "id": "dmmorph",
+      "id": "dmmorph_buffers",
       "category": "reconstructed_game",
       "functions": 5,
       "code_bytes": 400,
@@ -21722,8 +21722,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2e96543ea6df309ed58e28d3695a80d6e65b25ee61a003bab3d8d79cd53154a5",
-      "linked_sha256": "3dfd586bef112bb2a3140d2dd0c7ae3f6e0e0d7f595fc2252c205b906839a0db"
+      "object_sha256": "81d74958a0f1b097044ad27a2c1d9b56a3d7dbe25e1a70e0d1596ac559d161ef",
+      "linked_sha256": "bcc10f8f459e10a29abc3b53647b190a2907f0cc8c6606ad8a5c9b9b78025e1c"
     },
     {
       "id": "AISplinePath",
@@ -48745,10 +48745,10 @@
       "linked_sha256": "ce15f6f0f0ee43585c503046183db29c5fc59a4ff45c75949011dbd089c0b19c"
     },
     {
-      "id": "dmmorph_initobject",
+      "id": "dmmorph",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 48,
+      "functions": 3,
+      "code_bytes": 404,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -48778,10 +48778,20 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "1477d59ce4dd9959edf512ffa2fe8ede82740ffe58abf0138a5346da7e43cca7",
-      "linked_sha256": "fab9885d25f0d46765c6639f2622b27f9cbb85d75e83ee248c75910dc30e4c0a"
+      "object_sha256": "d1722a5ddbd58effd90651043a8a1ccd2fe74784beba24c110e16f8cac64cef7",
+      "extab_patches": [
+        {
+          "unit": "dmmorph",
+          "function": "__sinit_dmmorph_cpp",
+          "offset": "0x16",
+          "action": "0x8b",
+          "compiled": "066c",
+          "original": "2500"
+        }
+      ],
+      "linked_sha256": "cc757b021d30e8544d51911de366b59812fdf902b66ca701d97806fd67dff9c0"
     },
     {
       "id": "sfrsf_init",
@@ -57628,20 +57638,6 @@
             "kind": "function",
             "name": "DMMorphBlendDisplayLists__FP16DMRenderObject_T",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f7618",
-            "size": 8,
-            "kind": "function",
-            "name": "DMMorphSetMaxActiveTargets__FP15DMMorphObject_TUl",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800f7650",
-            "size": 348,
-            "kind": "function",
-            "name": "__sinit_dmmorph_cpp",
-            "evidence": "local-file-symbol"
           }
         ]
       },
