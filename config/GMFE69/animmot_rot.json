@@ -37,24 +37,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800658c4",
-      "size": 1260,
+      "address": "0x800656b8",
+      "size": 2456,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b488",
-      "size": 16,
+      "address": "0x8000b480",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800125cc",
-      "size": 24,
+      "address": "0x800125c0",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AnimMotCalcFloatingBone",
+      "address": "0x800656b8",
+      "size": 524,
+      "binding": 1
+    },
     {
       "name": "AnimMotCalcAnimPos",
       "address": "0x800658c4",
@@ -66,16 +72,28 @@
       "address": "0x80065bd4",
       "size": 476,
       "binding": 1
+    },
+    {
+      "name": "AnimMotCreateWeightList",
+      "address": "0x80065db0",
+      "size": 672,
+      "binding": 1
     }
   ],
   "externals": {
+    "AnimFileGetFrame": "0x80063238",
+    "AnimStGetStateWeight": "0x800671c0",
+    "Orient3Lerp": "0x800b848c",
     "OrientLerpAngle": "0x800b8418",
-    "Rotate__8CVector2FRC8CVector2l": "0x8009226c"
+    "Rotate__8CVector2FRC8CVector2l": "0x8009226c",
+    "_AnimMot_FrameList": "0x801d3688"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_AnimMot_FrameList"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animmot.cpp",
@@ -89,6 +107,12 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034fcb8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fcbc"
     }
   ]
 }
