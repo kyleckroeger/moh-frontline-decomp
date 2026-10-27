@@ -34,29 +34,35 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80023b6c",
-      "size": 956,
+      "address": "0x800238e4",
+      "size": 1604,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009b0c",
-      "size": 32,
+      "address": "0x80009ae4",
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010658",
-      "size": 48,
+      "address": "0x8001064c",
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIFunc_CreateImpact__FPPiPv",
+      "address": "0x800238e4",
+      "size": 648,
+      "binding": 1
+    },
     {
       "name": "BIFunc_CreateExplosion__FPPiPv",
       "address": "0x80023b6c",
@@ -85,9 +91,18 @@
   "externals": {
     "AmbientTrack_SetLocation__FPC8CVector3": "0x800ebdf4",
     "AmbientTrack_Volume__Ff": "0x800ebe2c",
+    "DamageClosestObject__7CImpactFv": "0x800d0164",
     "SetMuzzleStatusForPlayer__Fb": "0x800a7a64",
+    "VisitAllNodesInVolume__6CSceneFRQ23dwi22IVisitor<10ISceneNode>RC7IVolumeQ210ISceneNode11EVolumeTypeb": "0x800db458",
     "__ct__10CExplosionFR6CScene8CVector3fff17EScriptBulletTypeP10ISceneNodeb": "0x800cf6ac",
     "__dt__10CExplosionFv": "0x800cf634",
+    "__dt__10CVolSphereFv": "0x800cbb24",
+    "__dt__7CImpactFv": "0x800d0568",
+    "__dt__Q23dwi22IVisitor<10ISceneNode>Fv": "0x8001c030",
+    "__vt__10CVolSphere": "0x801896b4",
+    "__vt__7CImpact": "0x80189974",
+    "__vt__7IVolume": "0x80181e28",
+    "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778",
@@ -105,6 +120,12 @@
   ],
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
+  "stripped_sections": [
+    ".data"
+  ],
+  "weak_duplicates": [
+    "__vt__Q23dwi22IVisitor<10ISceneNode>"
+  ],
   "pooled_sections": [
     ".sdata2"
   ],
@@ -112,6 +133,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x8034f698"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 4,
       "address": "0x8034f69c"
     },

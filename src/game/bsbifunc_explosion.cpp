@@ -1,5 +1,6 @@
-// A fragment of bsbifunc.cpp (0x80023b6c): script built-ins that create a
-// script explosion (a CExplosion constructed and destroyed on the stack,
+// A fragment of bsbifunc.cpp (0x800238e4): script built-ins that create a
+// script impact (a CImpact on the stack that hits the scene nodes in its
+// sphere) or a script explosion (a CExplosion constructed and destroyed on the stack,
 // bullet type 21, at the calling node's position or the script trigger's,
 // moved by the given offset), set the ambient track's location to the script
 // trigger's position (or clear it), switch the player's muzzle fire, and set
@@ -94,8 +95,67 @@ public:
 };
 
 
-class CScene;
+class IVolume;
+
+namespace dwi {
+template <class T>
+class IVisitor {
+public:
+    IVisitor() {}
+    virtual ~IVisitor();
+    virtual bool Visit(T&) = 0;
+};
+}
+
+class CScene {
+public:
+    bool VisitAllNodesInVolume(dwi::IVisitor<ISceneNode>&, const IVolume&, ISceneNode::EVolumeType, bool);
+
+    unsigned char unknown000[328];
+};
+
 enum EScriptBulletType {};
+
+class IVolume {
+public:
+    IVolume() {}
+    virtual ~IVolume();
+};
+
+class CVolSphere : public IVolume {
+public:
+    CVolSphere(const CVector3& center, float radius) : m_radius(radius), m_center(center) {}
+    virtual ~CVolSphere();
+
+    unsigned char unknown04[8];
+    float m_radius;
+    CVector3 m_center;
+} __attribute__((aligned(8)));
+
+class CImpact : public dwi::IVisitor<ISceneNode> {
+public:
+    CImpact(CVector3 center, float radius, float damage, float unknown34, float unknown38, EScriptBulletType type,
+            ISceneNode* source)
+        : m_sphere(center, radius), m_damage(damage), m_unknown34(unknown34), m_unknown38(unknown38), m_type(type),
+          m_source(source), m_closest(0), m_closestDistance(9999.0f) {
+        Apply();
+    }
+    void Apply();
+    virtual bool Visit(ISceneNode&);
+    virtual ~CImpact();
+    void DamageClosestObject();
+
+    unsigned char unknown04[12];
+    CVolSphere m_sphere;
+    float m_damage;
+    float m_unknown34;
+    float m_unknown38;
+    EScriptBulletType m_type;
+    ISceneNode* m_source;
+    ISceneNode* m_closest;
+    float m_closestDistance;
+    unsigned char unknown4c[8];
+} __attribute__((aligned(16)));
 
 class CExplosion {
 public:
@@ -140,6 +200,40 @@ extern BSBuiltinView* g_pBuiltInFunctions;
 extern int g_iCurrentBIFIndex;
 
 void AmbientTrack_Volume(float);
+
+// Inferred: the impact is applied by its constructor: it visits every scene
+// node in its sphere and damages the closest one found (the original's EH
+// table only destroys the sphere member and the visitor base, i.e. the calls
+// run while the object is being constructed).
+inline void CImpact::Apply() {
+    g_scene.VisitAllNodesInVolume(*this, m_sphere, (ISceneNode::EVolumeType)0, true);
+    if (m_closest)
+        DamageClosestObject();
+}
+
+void BIFunc_CreateImpact(int** stack, void* object) {
+    ISceneNode* node = (ISceneNode*)object;
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    float radius = *(float*)(*stack - (count - 1));
+    float damage = *(float*)(*stack - (count - 2));
+    float dx = *(float*)(*stack - (count - 3));
+    float dy = *(float*)(*stack - (count - 4));
+    float dz = *(float*)(*stack - (count - 5));
+    float unknown6 = *(float*)(*stack - (count - 6));
+    float unknown7 = *(float*)(*stack - (count - 7));
+    CVector3 position;
+    if (object) {
+        node->GetPosition(position);
+    } else {
+        TriggerCoreView* core = g_pBSObject->trigger->core;
+        position.Set(core->x, core->y, core->z);
+    }
+    position.x += dx;
+    position.y += dy;
+    position.z += dz;
+    CImpact impact(position, radius, damage, unknown6, unknown7, (EScriptBulletType)21, node);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
 
 void BIFunc_CreateExplosion(int** stack, void* object) {
     int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
