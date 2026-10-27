@@ -1,4 +1,4 @@
-// The start of box.cpp (0x800c0320..0x800c0c54): BoxLineSqrDistance, the
+// The start of box.cpp (0x800c0320..0x800c11d8): BoxLineSqrDistance, the
 // squared distance from a line to a box, following the well-known
 // line-to-box distance (Eberly's SqrDistance(Line3, Box3)): the line is taken
 // into the box's frame (a matrix built from the basis rows and the centre,
@@ -12,8 +12,10 @@
 // zero component, i2: the i0/i1 projection is solved in the plane and the
 // i2 coordinate is clamped) follow as local functions, with the three
 // extents read up front through a by-reference form of the extent switch
-// (the value form gives other float registers); Face, the file's next local
-// function, is not part of this unit. Parameter,
+// (the value form gives other float registers), and Face (no zero
+// component: the line meets the face of axis i0, then an edge or the
+// region past it is chosen by the i1/i2 products), which CaseNoZeros calls
+// with the point minus the extents precomputed. Parameter,
 // local and helper names follow that formulation and are not original. The
 // file name is this project's; the original record is box.cpp.
 // CVector3, CMatrix, CLine3, IVolume and CVolBox are named by the mangled
@@ -124,7 +126,7 @@ public:
 
 static void Case00(int, int, int, CVector3&, const CVector3&, const CVolBox&, float*, float&);
 static void Case0(int, int, int, CVector3&, const CVector3&, const CVolBox&, float*, float&);
-void Face(int, int, int, CVector3&, const CVector3&, const CVolBox&, const CVector3&, float*, float&);
+static void Face(int, int, int, CVector3&, const CVector3&, const CVolBox&, const CVector3&, float*, float&);
 
 static inline void CaseNoZeros(CVector3& rkPnt, const CVector3& rkDir, const CVolBox& rkBox, float* pfLParam, float& rfSqrDistance) {
     CVector3 kPmE(rkPnt[0] - rkBox.Extent(0), rkPnt[1] - rkBox.Extent(1), rkPnt[2] - rkBox.Extent(2));
@@ -342,5 +344,159 @@ static void Case0(int i0, int i1, int i2, CVector3& rkPnt, const CVector3& rkDir
         fDelta = rkPnt[i2] - fE2;
         rfSqrDistance += fDelta * fDelta;
         rkPnt[i2] = fE2;
+    }
+}
+
+static void Face(int i0, int i1, int i2, CVector3& rkPnt, const CVector3& rkDir, const CVolBox& rkBox, const CVector3& rkPmE, float* pfLParam, float& rfSqrDistance) {
+    float fE0, fE1, fE2;
+    rkBox.Extent(i0, fE0);
+    rkBox.Extent(i1, fE1);
+    rkBox.Extent(i2, fE2);
+    CVector3 kPpE;
+    float fLSqr, fInv, fTmp, fParam, fT, fDelta;
+
+    kPpE[i1] = rkPnt[i1] + fE1;
+    kPpE[i2] = rkPnt[i2] + fE2;
+    if (rkDir[i0] * kPpE[i1] >= rkDir[i1] * rkPmE[i0]) {
+        if (rkDir[i0] * kPpE[i2] >= rkDir[i2] * rkPmE[i0]) {
+            if (pfLParam) {
+                rkPnt[i0] = fE0;
+                fInv = 1.0f / rkDir[i0];
+                rkPnt[i1] -= rkDir[i1] * rkPmE[i0] * fInv;
+                rkPnt[i2] -= rkDir[i2] * rkPmE[i0] * fInv;
+                *pfLParam = -rkPmE[i0] * fInv;
+            }
+        } else {
+            fLSqr = rkDir[i0] * rkDir[i0] + rkDir[i2] * rkDir[i2];
+            fTmp = fLSqr * kPpE[i1] - rkDir[i1] * (rkDir[i0] * rkPmE[i0] + rkDir[i2] * kPpE[i2]);
+            if (fTmp <= 2.0f * fLSqr * fE1) {
+                fT = fTmp / fLSqr;
+                fLSqr += rkDir[i1] * rkDir[i1];
+                fTmp = kPpE[i1] - fT;
+                fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * fTmp + rkDir[i2] * kPpE[i2];
+                fParam = -fDelta / fLSqr;
+                rfSqrDistance += rkPmE[i0] * rkPmE[i0] + fTmp * fTmp + kPpE[i2] * kPpE[i2] + fDelta * fParam;
+                if (pfLParam) {
+                    *pfLParam = fParam;
+                    rkPnt[i0] = fE0;
+                    rkPnt[i1] = fT - fE1;
+                    rkPnt[i2] = -fE2;
+                }
+            } else {
+                fLSqr += rkDir[i1] * rkDir[i1];
+                fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * rkPmE[i1] + rkDir[i2] * kPpE[i2];
+                fParam = -fDelta / fLSqr;
+                rfSqrDistance += rkPmE[i0] * rkPmE[i0] + rkPmE[i1] * rkPmE[i1] + kPpE[i2] * kPpE[i2] + fDelta * fParam;
+                if (pfLParam) {
+                    *pfLParam = fParam;
+                    rkPnt[i0] = fE0;
+                    rkPnt[i1] = fE1;
+                    rkPnt[i2] = -fE2;
+                }
+            }
+        }
+    } else {
+        if (rkDir[i0] * kPpE[i2] >= rkDir[i2] * rkPmE[i0]) {
+            fLSqr = rkDir[i0] * rkDir[i0] + rkDir[i1] * rkDir[i1];
+            fTmp = fLSqr * kPpE[i2] - rkDir[i2] * (rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1]);
+            if (fTmp <= 2.0f * fLSqr * fE2) {
+                fT = fTmp / fLSqr;
+                fLSqr += rkDir[i2] * rkDir[i2];
+                fTmp = kPpE[i2] - fT;
+                fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1] + rkDir[i2] * fTmp;
+                fParam = -fDelta / fLSqr;
+                rfSqrDistance += rkPmE[i0] * rkPmE[i0] + kPpE[i1] * kPpE[i1] + fTmp * fTmp + fDelta * fParam;
+                if (pfLParam) {
+                    *pfLParam = fParam;
+                    rkPnt[i0] = fE0;
+                    rkPnt[i1] = -fE1;
+                    rkPnt[i2] = fT - fE2;
+                }
+            } else {
+                fLSqr += rkDir[i2] * rkDir[i2];
+                fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1] + rkDir[i2] * rkPmE[i2];
+                fParam = -fDelta / fLSqr;
+                rfSqrDistance += rkPmE[i0] * rkPmE[i0] + kPpE[i1] * kPpE[i1] + rkPmE[i2] * rkPmE[i2] + fDelta * fParam;
+                if (pfLParam) {
+                    *pfLParam = fParam;
+                    rkPnt[i0] = fE0;
+                    rkPnt[i1] = -fE1;
+                    rkPnt[i2] = fE2;
+                }
+            }
+        } else {
+            fLSqr = rkDir[i0] * rkDir[i0] + rkDir[i2] * rkDir[i2];
+            fTmp = fLSqr * kPpE[i1] - rkDir[i1] * (rkDir[i0] * rkPmE[i0] + rkDir[i2] * kPpE[i2]);
+            if (fTmp >= 0.0f) {
+                if (fTmp <= 2.0f * fLSqr * fE1) {
+                    fT = fTmp / fLSqr;
+                    fLSqr += rkDir[i1] * rkDir[i1];
+                    fTmp = kPpE[i1] - fT;
+                    fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * fTmp + rkDir[i2] * kPpE[i2];
+                    fParam = -fDelta / fLSqr;
+                    rfSqrDistance += rkPmE[i0] * rkPmE[i0] + fTmp * fTmp + kPpE[i2] * kPpE[i2] + fDelta * fParam;
+                    if (pfLParam) {
+                        *pfLParam = fParam;
+                        rkPnt[i0] = fE0;
+                        rkPnt[i1] = fT - fE1;
+                        rkPnt[i2] = -fE2;
+                    }
+                } else {
+                    fLSqr += rkDir[i1] * rkDir[i1];
+                    fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * rkPmE[i1] + rkDir[i2] * kPpE[i2];
+                    fParam = -fDelta / fLSqr;
+                    rfSqrDistance += rkPmE[i0] * rkPmE[i0] + rkPmE[i1] * rkPmE[i1] + kPpE[i2] * kPpE[i2] + fDelta * fParam;
+                    if (pfLParam) {
+                        *pfLParam = fParam;
+                        rkPnt[i0] = fE0;
+                        rkPnt[i1] = fE1;
+                        rkPnt[i2] = -fE2;
+                    }
+                }
+                return;
+            }
+
+            fLSqr = rkDir[i0] * rkDir[i0] + rkDir[i1] * rkDir[i1];
+            fTmp = fLSqr * kPpE[i2] - rkDir[i2] * (rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1]);
+            if (fTmp >= 0.0f) {
+                if (fTmp <= 2.0f * fLSqr * fE2) {
+                    fT = fTmp / fLSqr;
+                    fLSqr += rkDir[i2] * rkDir[i2];
+                    fTmp = kPpE[i2] - fT;
+                    fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1] + rkDir[i2] * fTmp;
+                    fParam = -fDelta / fLSqr;
+                    rfSqrDistance += rkPmE[i0] * rkPmE[i0] + kPpE[i1] * kPpE[i1] + fTmp * fTmp + fDelta * fParam;
+                    if (pfLParam) {
+                        *pfLParam = fParam;
+                        rkPnt[i0] = fE0;
+                        rkPnt[i1] = -fE1;
+                        rkPnt[i2] = fT - fE2;
+                    }
+                } else {
+                    fLSqr += rkDir[i2] * rkDir[i2];
+                    fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1] + rkDir[i2] * rkPmE[i2];
+                    fParam = -fDelta / fLSqr;
+                    rfSqrDistance += rkPmE[i0] * rkPmE[i0] + kPpE[i1] * kPpE[i1] + rkPmE[i2] * rkPmE[i2] + fDelta * fParam;
+                    if (pfLParam) {
+                        *pfLParam = fParam;
+                        rkPnt[i0] = fE0;
+                        rkPnt[i1] = -fE1;
+                        rkPnt[i2] = fE2;
+                    }
+                }
+                return;
+            }
+
+            fLSqr += rkDir[i2] * rkDir[i2];
+            fDelta = rkDir[i0] * rkPmE[i0] + rkDir[i1] * kPpE[i1] + rkDir[i2] * kPpE[i2];
+            fParam = -fDelta / fLSqr;
+            rfSqrDistance += rkPmE[i0] * rkPmE[i0] + kPpE[i1] * kPpE[i1] + kPpE[i2] * kPpE[i2] + fDelta * fParam;
+            if (pfLParam) {
+                *pfLParam = fParam;
+                rkPnt[i0] = fE0;
+                rkPnt[i1] = -fE1;
+                rkPnt[i2] = -fE2;
+            }
+        }
     }
 }
