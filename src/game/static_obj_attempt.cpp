@@ -10,7 +10,11 @@
 // and animation, then begins the running path, script or animation motion;
 // the script begin ends finished motions with their script events); each
 // tells the matrix listener and sets the extent nodes from the listener's
-// extents or the position (the begin widens them by 1/64). CStaticObject,
+// extents or the position (the begin widens them by 1/64). BeginAnimMotionUpdate
+// advances the key time, steps the key (stopping with the key event at the last
+// key, else wrapping) and lerps/slerps between the two keys (through an
+// inferred inline LerpTo), applying the key offset and rotation for delta
+// motion, then sets the velocity and target rotation. CStaticObject,
 // CMatrix, CQuaternion, CLightVolumeManager and CDrawContext are named by
 // the mangled symbols;
 // CStaticObject declares its virtual functions in the order of
@@ -639,3 +643,72 @@ void CStaticObject::BeginUpdate(float dt) {
     }
 }
 
+/* inferred inline helper */
+inline void LerpTo(CVector3& r, const CVector3& a, const CVector3& b, float t) {
+    float fx, fy, fz;
+    fx = a.x;
+    fy = a.y;
+    fz = a.z;
+    r.x = fx + t * (b.x - fx);
+    r.y = fy + t * (b.y - fy);
+    r.z = fz + t * (b.z - fz);
+}
+
+void CStaticObject::BeginAnimMotionUpdate(float dt) {
+    if (m_keyCount && m_keyFrames) {
+        m_animPosition = PositionRow();
+        m_animRotation.SetFromMatrix(m_tm);
+        m_keyTime += dt;
+        while (m_keyTime >= (float)m_keyFrames) {
+            m_keyTime -= (float)m_keyFrames;
+            m_key++;
+        }
+        int next = m_key + 1;
+        if (m_lastKey) {
+            if (next >= m_lastKey)
+                next = m_lastKey - 1;
+            if (m_key >= m_lastKey) {
+                if (m_keyEvent != -1) {
+                    TriggerScriptEvent(m_keyEvent, 0, false);
+                    m_keyEvent = -1;
+                }
+                m_key = m_lastKey - 1;
+                m_animMove = false;
+            }
+        } else {
+            m_key %= m_keyCount;
+            next %= m_keyCount;
+        }
+        CVector3 from = m_keys[m_key].m_position;
+        CVector3 to = m_keys[next].m_position;
+        float t = m_keyTime / (float)m_keyFrames;
+        if (t < 0.0f)
+            t = 0.0f;
+        if (t > 1.0f)
+            t = 1.0f;
+        CVector3 pos;
+        LerpTo(pos, from, to, t);
+        CQuaternion current;
+        current = m_keys[m_key].m_rotation;
+        CQuaternion target;
+        target = m_keys[next].m_rotation;
+        CQuaternion rotation;
+        rotation.Slerp(target, current, t);
+        if (m_transformDelta) {
+            m_keyRotation.Rotate(pos, pos);
+            pos.x += m_keyOffset.x;
+            pos.y += m_keyOffset.y;
+            pos.z += m_keyOffset.z;
+            rotation.Multiply(m_keyRotation);
+        }
+        m_velocity.x = pos.x - m_animPosition.x;
+        float rate = 1.0f / dt;
+        m_velocity.y = pos.y - m_animPosition.y;
+        m_velocity.z = pos.z - m_animPosition.z;
+        m_targetRotation = rotation;
+        m_velocity.x *= rate;
+        m_velocity.y *= rate;
+        m_velocity.z *= rate;
+        m_rotationRate = rate;
+    }
+}

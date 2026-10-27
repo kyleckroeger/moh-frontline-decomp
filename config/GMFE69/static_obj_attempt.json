@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800b0560",
-      "size": 4084,
+      "size": 5100,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d460",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800145a0",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -80,11 +80,16 @@
       "address": "0x800b1248",
       "size": 780,
       "binding": 1
+    },
+    {
+      "name": "BeginAnimMotionUpdate__13CStaticObjectFf",
+      "address": "0x800b1554",
+      "size": 1016,
+      "binding": 1
     }
   ],
   "externals": {
     "AnimUpdate__13CStaticObjectFf": "0x800b194c",
-    "BeginAnimMotionUpdate__13CStaticObjectFf": "0x800b1554",
     "BuildScale__7CMatrixFf": "0x80090af0",
     "GetFrameCount__Fv": "0x80017e60",
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
@@ -98,6 +103,8 @@
     "Normalize__11CQuaternionFv": "0x80091d88",
     "Orthonormalize__7CMatrixFv": "0x8008f1e8",
     "RotateX__7CMatrixFf": "0x800903cc",
+    "Rotate__11CQuaternionFR8CVector38CVector3": "0x80091620",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
     "SetFront__7CMatrixF8CVector3": "0x80090760",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
     "SetRight__7CMatrixF8CVector3": "0x8009077c",
@@ -195,6 +202,12 @@
       "offset": 64,
       "size": 4,
       "address": "0x80350ba8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 8,
+      "address": "0x80350900"
     }
   ]
 }
