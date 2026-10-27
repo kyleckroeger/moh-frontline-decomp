@@ -9,10 +9,17 @@
 // toward the current one at the rotation rate, and the matrix is rebuilt
 // from it, the position and the step, optionally turned into the matrix's
 // frame, then multiplied by the two local matrices; a listener is told of
-// the new matrix). The classes and functions are named by the mangled
-// symbols; the members, flag names and listener view are inferred, and the
-// CVector3 view copies through a double pair as in player_weapon.cpp. The
-// rest of the file is not part of this unit.
+// the new matrix) and BeginAnimMotionUpdate (when keyed motion is set up:
+// restarts from the animated position and rotation, advances the key time by
+// whole key lengths, clamps to the last key (firing the key event once and
+// clearing flag 0x04) or wraps around the key count, then interpolates the
+// position and slerps the rotation between the current and next keys,
+// optionally offsets and turns them by the key transform, and sets the
+// velocity, target rotation and rotation rate for the step). The classes and
+// functions are named by the mangled symbols; the members, flag names, key
+// and listener views and the lerp helper are inferred, and the CVector3 view
+// copies through a double pair as in player_weapon.cpp. The rest of the file
+// is not part of this unit.
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -26,6 +33,7 @@ public:
         *(CVector3Pair*)this = *(const CVector3Pair*)&other;
         return *this;
     }
+    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     CVector3& operator+=(const CVector3& v) {
         x += v.x;
         y += v.y;
@@ -44,6 +52,8 @@ class CMatrix;
 class CQuaternion {
 public:
     void Slerp(CQuaternion, CQuaternion, float);
+    void Rotate(CVector3&, CVector3);
+    void Multiply(CQuaternion);
     void GetMatrix(CMatrix&) const;
 
     float w;
@@ -70,13 +80,45 @@ public:
     virtual void Update(void*, const CMatrix&);
 };
 
+/* inferred: a motion key (32 bytes): position and rotation */
+struct MotionKey {
+    CVector3 m_position;
+    CQuaternion m_rotation;
+};
+
 class CHierObject {
 public:
+    virtual void unknown008();
+    virtual void unknown00c();
+    virtual void unknown010();
+    virtual void unknown014();
+    virtual void unknown018();
+    virtual void unknown01c();
+    virtual void unknown020();
+    virtual void unknown024();
+    virtual void unknown028();
+    virtual void unknown02c();
+    virtual void unknown030();
+    virtual void unknown034();
+    virtual void unknown038();
+    virtual void unknown03c();
+    virtual void unknown040();
+    virtual void unknown044();
+    virtual void unknown048();
+    virtual void unknown04c();
+    virtual void unknown050();
+    virtual void unknown054();
+    virtual void unknown058();
+    virtual void unknown05c();
+    virtual void unknown060();
+    virtual void TriggerScriptEvent(int, void*, bool);
+
     bool SetHierCollisionState(int);
     void CommitAnimMotionUpdate();
     void AttemptAnimMotionUpdate(float);
+    void BeginAnimMotionUpdate(float);
 
-    unsigned char unknown000[64];
+    unsigned char unknown004[60];
     CMatrix m_matrix;
     unsigned char unknown080[140];
     void* m_listenerData;
@@ -84,7 +126,8 @@ public:
     MatrixListenerView* m_listener;
     unsigned char unknown118[8];
     CVector3 m_position;
-    unsigned char unknown130[32];
+    CVector3 m_keyOffset;
+    CQuaternion m_keyRotation;
     CQuaternion m_rotation;
     CVector3 m_velocity;
     unsigned char unknown170[16];
@@ -94,15 +137,20 @@ public:
     unsigned char unknown1b0[48];
     unsigned char m_flags1e0a : 4;
     bool m_transformDelta : 1;
-    unsigned char m_flags1e0b : 3;
-    unsigned char unknown1e1[67];
-    int m_animating;
-    unsigned char unknown228[4];
-    int m_animMotion;
-    unsigned char unknown230[4];
+    bool m_flag04 : 1;
+    unsigned char m_flags1e0b : 2;
+    unsigned char unknown1e1[55];
+    int m_keyEvent;
+    unsigned char unknown21c[4];
+    int m_lastKey;
+    int m_keyCount;
+    float m_keyTime;
+    int m_keyFrames;
+    int m_key;
     float m_rotationRate;
     CQuaternion m_targetRotation;
-    unsigned char unknown248[824];
+    MotionKey* m_keys;
+    unsigned char unknown24c[820];
     CHierObject* m_child;
     CHierObject* m_sibling;
     unsigned char m_flags588a : 3;
@@ -132,9 +180,9 @@ bool CHierObject::SetHierCollisionState(int state) {
 }
 
 void CHierObject::CommitAnimMotionUpdate() {
-    if (!m_animating)
+    if (!m_keyCount)
         return;
-    if (!m_animMotion)
+    if (!m_keyFrames)
         return;
     m_animRotation = m_nextRotation;
     m_animPosition += m_animDelta;
@@ -143,7 +191,7 @@ void CHierObject::CommitAnimMotionUpdate() {
 }
 
 void CHierObject::AttemptAnimMotionUpdate(float dt) {
-    if (m_animating && m_animMotion) {
+    if (m_keyCount && m_keyFrames) {
         m_animDelta.x = dt * m_velocity.x;
         m_animDelta.y = dt * m_velocity.y;
         m_animDelta.z = dt * m_velocity.z;
@@ -160,4 +208,73 @@ void CHierObject::AttemptAnimMotionUpdate(float dt) {
     }
     if (m_listener && m_listenerData)
         m_listener->Update(m_listenerData, m_matrix);
+}
+
+inline void LerpTo(CVector3& r, const CVector3& a, const CVector3& b, float t) {
+    float fx, fy, fz;
+    fx = a.x;
+    fy = a.y;
+    fz = a.z;
+    r.x = fx + t * (b.x - fx);
+    r.y = fy + t * (b.y - fy);
+    r.z = fz + t * (b.z - fz);
+}
+
+void CHierObject::BeginAnimMotionUpdate(float dt) {
+    if (m_keyCount && m_keyFrames) {
+        m_position = m_animPosition;
+        m_rotation = m_animRotation;
+        m_keyTime += dt;
+        while (m_keyTime >= (float)m_keyFrames) {
+            m_keyTime -= (float)m_keyFrames;
+            m_key++;
+        }
+        int next = m_key + 1;
+        if (m_lastKey) {
+            if (next >= m_lastKey)
+                next = m_lastKey - 1;
+            if (m_key >= m_lastKey) {
+                if (m_keyEvent != -1) {
+                    TriggerScriptEvent(m_keyEvent, 0, false);
+                    m_keyEvent = -1;
+                }
+                m_key = m_lastKey - 1;
+                m_flag04 = false;
+            }
+        } else {
+            m_key %= m_keyCount;
+            next %= m_keyCount;
+        }
+        CVector3 from = m_keys[m_key].m_position;
+        CVector3 to = m_keys[next].m_position;
+        float t = m_keyTime / (float)m_keyFrames;
+        if (t < 0.0f)
+            t = 0.0f;
+        if (t > 1.0f)
+            t = 1.0f;
+        CVector3 pos;
+        LerpTo(pos, from, to, t);
+        CQuaternion current;
+        current = m_keys[m_key].m_rotation;
+        CQuaternion target;
+        target = m_keys[next].m_rotation;
+        CQuaternion rotation;
+        rotation.Slerp(target, current, t);
+        if (m_transformDelta) {
+            m_keyRotation.Rotate(pos, pos);
+            pos.x += m_keyOffset.x;
+            pos.y += m_keyOffset.y;
+            pos.z += m_keyOffset.z;
+            rotation.Multiply(m_keyRotation);
+        }
+        m_velocity.x = pos.x - m_position.x;
+        float rate = 1.0f / dt;
+        m_velocity.y = pos.y - m_position.y;
+        m_velocity.z = pos.z - m_position.z;
+        m_targetRotation = rotation;
+        m_velocity.x *= rate;
+        m_velocity.y *= rate;
+        m_velocity.z *= rate;
+        m_rotationRate = rate;
+    }
 }

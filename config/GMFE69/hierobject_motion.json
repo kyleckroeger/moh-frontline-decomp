@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8009a3bc",
-      "size": 1384,
+      "size": 2412,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cc5c",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013d90",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -70,6 +70,12 @@
       "binding": 1
     },
     {
+      "name": "BeginAnimMotionUpdate__11CHierObjectFf",
+      "address": "0x8009a924",
+      "size": 1028,
+      "binding": 1
+    },
+    {
       "name": "SetHierCollisionState__11CHierObjectFi",
       "address": "0x8009a3bc",
       "size": 820,
@@ -78,7 +84,9 @@
   ],
   "externals": {
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "Multiply__11CQuaternionF11CQuaternion": "0x8009174c",
     "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "Rotate__11CQuaternionFR8CVector38CVector3": "0x80091620",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
     "Slerp__11CQuaternionF11CQuaternion11CQuaternionf": "0x800917f0",
     "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
@@ -91,5 +99,28 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "hierobject.cpp",
-  "original_file_index": 5972
+  "original_file_index": 5972,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803504a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803504d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803504d8"
+    }
+  ]
 }
