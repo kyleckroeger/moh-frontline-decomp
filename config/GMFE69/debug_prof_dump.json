@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800f3cd0",
-      "size": 208,
+      "size": 940,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f768",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800163dc",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "DebugProfTimerDump__Fii",
       "address": "0x800f3cd0",
       "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "DebugProfTimerDumpRecurse__Fii",
+      "address": "0x800f3da0",
+      "size": 732,
       "binding": 1
     }
   ],

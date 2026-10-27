@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1117504,
+    "matching_code_bytes": 1118236,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.99944294104506,
+    "percent": 79.05119004193494,
     "categories": {
-      "reconstructed_game": 887512,
+      "reconstructed_game": 888244,
       "restored_library": 229992
     },
-    "matching_functions": 4741
+    "matching_functions": 4742
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -607,7 +607,7 @@
     "config/GMFE69/debug_prof_bins.json": "8333507207fa32bd2e87543dc6bb2746098117e9c8b76a1da68f9f9878bf2d0c",
     "config/GMFE69/debug_prof_cdbgstatsrenderbin_dtor.json": "9813d8fdd5faf8eb748bbd832b0f22a372815337c6332050bca65ec6eb3e6244",
     "config/GMFE69/debug_prof_cprofhistrenderbin_dtor.json": "00e1830a10869cbd4761d60d782d37ea16fb7c729d7bcd4022e612351a1f37f7",
-    "config/GMFE69/debug_prof_dump.json": "a19ab3a26bb618263c022e8fb0d0c8b8e3ef273a3e3b9daa527d3fd70156bd30",
+    "config/GMFE69/debug_prof_dump.json": "f3da9e5eef1293b7a182205ba255a745de47539d0ce74edc95e57edd8123aefb",
     "config/GMFE69/debug_prof_profilebin_ctor.json": "2c58b2f55b872d81b5a2b7b1997417b5270e4ece7991a1349e35017bfd0ddf7f",
     "config/GMFE69/debug_prof_register.json": "77735f4f8c559dc6f30dfd6257832a5b4cea832e9f51fd290e6a74949bb115f0",
     "config/GMFE69/debug_prof_stats.json": "8dcd3d54a8afdfb1de007b790e6297ba0114db0f72803a6a900504683f086f17",
@@ -2800,7 +2800,7 @@
     "src/game/debug_prof_bins.cpp": "244d57b6d0b353a0fa4940864deb9b3b0d65840a5a6979e9ecd315e2ac2682af",
     "src/game/debug_prof_cdbgstatsrenderbin_dtor.cpp": "0609e8ee16b0884ca0c8944030f4db7bf87693e65bad6bfc67002b895b88a11d",
     "src/game/debug_prof_cprofhistrenderbin_dtor.cpp": "d4ce99045397aae6ce2a629ff3d63b6ca5c0d0d5f8bd3ebff390f5a7f14793e5",
-    "src/game/debug_prof_dump.cpp": "3f5757c769c03f44092891efc8458f012551e41b5f65d074fffc5fa4a7778652",
+    "src/game/debug_prof_dump.cpp": "2221d8d21a2c098ec9850f9eb051d77e82699f83e803b80fb85c1fde98d6f652",
     "src/game/debug_prof_profilebin_ctor.cpp": "7b2140c03134bf6ffa9e220a077888fb3578113c95335ff5d9a91da49d8c5204",
     "src/game/debug_prof_register.cpp": "03e38ec39909bbf6c72a269b71cf5a18726f275a47ec16c797368237555312ec",
     "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
@@ -48474,8 +48474,8 @@
     {
       "id": "debug_prof_dump",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 208,
+      "functions": 2,
+      "code_bytes": 940,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -48507,8 +48507,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "adc38e8cf0a61c9c2871ef1165f9e20bb24b02cd922cff2bd96b0247944156cf",
-      "linked_sha256": "556034398c63c82b63d78be2d50961f4b48942134b033ca734b056efe96941e9"
+      "object_sha256": "61f460ad54c510db9f053a8b08a435ca3423c9a3e1251be69a4e0dd720c41b67",
+      "linked_sha256": "cd55214e06d1b0db2ce15a4504fd8ee6840c94c3b4949da3a10bb867cf0c96df"
     },
     {
       "id": "proxtrig_leafs",
@@ -57579,13 +57579,6 @@
             "kind": "function",
             "name": "DebugProfTimerInitAll__Fv",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800f3da0",
-            "size": 732,
-            "kind": "function",
-            "name": "DebugProfTimerDumpRecurse__Fii",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800f407c",
