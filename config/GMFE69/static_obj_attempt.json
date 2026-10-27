@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800b0d20",
-      "size": 2100,
+      "address": "0x800b0560",
+      "size": 4084,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d468",
-      "size": 24,
+      "address": "0x8000d460",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800145ac",
-      "size": 36,
+      "address": "0x800145a0",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AttemptPathMotionUpdate__13CStaticObjectFf",
+      "address": "0x800b0560",
+      "size": 1984,
+      "binding": 1
+    },
     {
       "name": "AttemptAnimMotionUpdate__13CStaticObjectFf",
       "address": "0x800b0d20",
@@ -80,12 +86,22 @@
     "AnimUpdate__13CStaticObjectFf": "0x800b194c",
     "BeginAnimMotionUpdate__13CStaticObjectFf": "0x800b1554",
     "BuildScale__7CMatrixFf": "0x80090af0",
+    "GetFrameCount__Fv": "0x80017e60",
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "MathFunAtan2F__Fff": "0x8009358c",
+    "MathFunNormalizeAngleNegativePiToPi__Ff": "0x8009340c",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "MathFunRotateAboutZ__FPfPff": "0x80093474",
     "Multiply__11CQuaternionF11CQuaternion": "0x8009174c",
     "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
     "Normalize__11CQuaternionFv": "0x80091d88",
+    "Orthonormalize__7CMatrixFv": "0x8008f1e8",
+    "RotateX__7CMatrixFf": "0x800903cc",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
     "Set__11CQuaternionFffff": "0x80091e50",
     "Slerp__11CQuaternionF11CQuaternion11CQuaternionf": "0x800917f0",
     "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
@@ -116,13 +132,67 @@
     },
     {
       "section": ".sdata2",
-      "offset": 4,
+      "offset": 8,
+      "size": 8,
+      "address": "0x803508a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x803508a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
       "size": 4,
       "address": "0x803508b0"
     },
     {
       "section": ".sdata2",
-      "offset": 8,
+      "offset": 28,
+      "size": 4,
+      "address": "0x803508d8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x803508e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x803508e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x803508c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 8,
+      "address": "0x803508f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x803508f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350888"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
       "size": 4,
       "address": "0x80350ba8"
     }

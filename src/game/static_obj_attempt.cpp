@@ -1,5 +1,7 @@
-// A fragment of static_obj.cpp (0x800b0d20): CStaticObject's
-// AttemptAnimMotionUpdate (while animation motion is active, turns the
+// A fragment of static_obj.cpp (0x800b0560): CStaticObject's
+// AttemptPathMotionUpdate (steers the transform toward the path destination
+// with yaw and pitch rates that ease off before the target heading, and
+// slows the path speed while turning), AttemptAnimMotionUpdate (while animation motion is active, turns the
 // transform part way to the target rotation and moves it by the velocity
 // from the animated position), AttemptScriptMotionUpdate (steps each active
 // script motion - move, turn, scale value - by at most its remaining time,
@@ -16,6 +18,18 @@
 // here), its members, the flag names and the mesh, key, extent and listener
 // views are inferred, and the CVector3 view copies through a double pair as
 // in player_weapon.cpp. The rest of the file is not part of this unit.
+extern "C" {
+#include <math.h>
+}
+#undef fabs
+inline double fabs(double x) { return __fabs(x); }
+
+void MathFunRotateAboutZ(float*, float*, float);
+float MathFunAtan2F(float, float);
+float MathFunNormalizeAngleNegativePiToPi(float);
+float MathFunRandomReal(float, float);
+unsigned long GetFrameCount();
+
 union CVector3Pair {
     double pair[2];
     float v[4];
@@ -30,6 +44,12 @@ public:
         return *this;
     }
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+    CVector3& operator+=(const CVector3& v) {
+        x += v.x;
+        y += v.y;
+        z += v.z;
+        return *this;
+    }
 
     float x;
     float y;
@@ -44,6 +64,14 @@ public:
             InitClass();
     }
     void PreTranslate(CVector3);
+    void RotateX(float);
+    void SetRight(CVector3);
+    void SetFront(CVector3);
+    void SetUp(CVector3);
+    void Orthonormalize();
+    CVector3 GetRight() const { return right; }
+    CVector3 GetFront() const { return forward; }
+    CVector3 GetUp() const { return up; }
     void SetPos(CVector3);
     void Translate(CVector3);
     void TransformPoint(CVector3&, CVector3) const;
@@ -278,7 +306,15 @@ public:
     CMatrix m_tm;
     unsigned char unknown080[88];
     float m_speed216;
-    unsigned char unknown0dc[40];
+    unsigned char unknown0dc[4];
+    float m_maxSpeed;
+    float m_accel;
+    float m_turnSlowdown;
+    unsigned char unknown0ec[8];
+    float m_yawRate;
+    float m_pitchRate;
+    float m_maxTurnRate;
+    float m_turnAccel;
     int m_pathState;
     unsigned char unknown108[4];
     void* m_listenerData;
@@ -313,10 +349,12 @@ public:
     unsigned char m_transformDelta : 1;
     unsigned char m_animMove : 1;
     unsigned char m_flags03 : 2;
-    unsigned char m_flags1e1a : 2;
+    unsigned char m_noSteer : 1;
+    unsigned char m_flags1e1a : 1;
     unsigned char m_scriptHold : 1;
     unsigned char m_flags1e1b : 5;
-    unsigned char unknown1e2[22];
+    unsigned char unknown1e2[6];
+    CVector3 m_pathDest;
     float m_pathSpeed;
     unsigned char unknown1fc[24];
     int m_drawArg;
@@ -334,6 +372,156 @@ public:
     CVector3 m_attachOffset;
     CLightVolumeManager m_lightVolumes;
 };
+
+
+void CStaticObject::AttemptPathMotionUpdate(float dt) {
+    CVector3 dir;
+    dir.x = m_pathDest.x - m_pathPosition.x;
+    dir.y = m_pathDest.y - m_pathPosition.y;
+    dir.z = m_pathDest.z - m_pathPosition.z;
+    float length = sqrtf(dir.x * dir.x + dir.y * dir.y + dir.z * dir.z);
+    if (length != 0.0f) {
+        float inv = 1.0f / length;
+        dir.x *= inv;
+        dir.y *= inv;
+        dir.z *= inv;
+    }
+    if (!m_noSteer) {
+        CVector3 right;
+        CVector3 v;
+        CVector3 up;
+        v = m_tm.GetFront();
+        float yaw = MathFunAtan2F(v.x, v.y);
+        MathFunRotateAboutZ(&v.x, &v.y, -yaw);
+        float pitch = MathFunAtan2F(-v.z, v.y);
+        v = dir;
+        float targetYaw = MathFunAtan2F(v.x, v.y);
+        MathFunRotateAboutZ(&v.x, &v.y, -targetYaw);
+        float targetPitch = MathFunAtan2F(-v.z, v.y);
+        float turn = MathFunNormalizeAngleNegativePiToPi(targetYaw - yaw);
+        if (turn < -0.008726646f) {
+            if (m_yawRate > 0.0f) {
+                if ((float)(fabs(m_yawRate / m_turnAccel) + 2.0) >= (float)fabs(turn / m_yawRate)) {
+                    m_yawRate -= m_turnAccel;
+                } else {
+                    m_yawRate += m_turnAccel;
+                    if (m_yawRate > m_maxTurnRate)
+                        m_yawRate = m_maxTurnRate;
+                }
+            } else {
+                m_yawRate += m_turnAccel;
+                if (m_yawRate > m_maxTurnRate)
+                    m_yawRate = m_maxTurnRate;
+            }
+        } else if (turn > 0.008726646f) {
+            if (m_yawRate < 0.0f) {
+                if ((float)(fabs(m_yawRate / m_turnAccel) + 2.0) >= (float)fabs(turn / m_yawRate)) {
+                    m_yawRate += m_turnAccel;
+                } else {
+                    m_yawRate -= m_turnAccel;
+                    if (m_yawRate < -m_maxTurnRate)
+                        m_yawRate = -m_maxTurnRate;
+                }
+            } else {
+                m_yawRate -= m_turnAccel;
+                if (m_yawRate < -m_maxTurnRate)
+                    m_yawRate = -m_maxTurnRate;
+            }
+        } else {
+            m_yawRate = 0.6f * m_yawRate;
+        }
+        turn = MathFunNormalizeAngleNegativePiToPi(targetPitch - pitch);
+        if (turn < -0.008726646f) {
+            if (m_pitchRate > 0.0f) {
+                if ((float)(fabs(m_pitchRate / m_turnAccel) + 2.0) >= (float)fabs(turn / m_pitchRate)) {
+                    m_pitchRate -= m_turnAccel;
+                } else {
+                    m_pitchRate += m_turnAccel;
+                    if (m_pitchRate > m_maxTurnRate)
+                        m_pitchRate = m_maxTurnRate;
+                }
+            } else {
+                m_pitchRate += m_turnAccel;
+                if (m_pitchRate > m_maxTurnRate)
+                    m_pitchRate = m_maxTurnRate;
+            }
+        } else if (turn > 0.008726646f) {
+            if (m_pitchRate < 0.0f) {
+                if ((float)(fabs(m_pitchRate / m_turnAccel) + 2.0) >= (float)fabs(turn / m_pitchRate)) {
+                    m_pitchRate += m_turnAccel;
+                } else {
+                    m_pitchRate -= m_turnAccel;
+                    if (m_pitchRate < -m_maxTurnRate)
+                        m_pitchRate = -m_maxTurnRate;
+                }
+            } else {
+                m_pitchRate -= m_turnAccel;
+                if (m_pitchRate < -m_maxTurnRate)
+                    m_pitchRate = -m_maxTurnRate;
+            }
+        } else {
+            m_pitchRate = 0.6f * m_pitchRate;
+        }
+        m_tm.RotateX(m_pitchRate);
+        right = m_tm.GetRight();
+        v = m_tm.GetFront();
+        up = m_tm.GetUp();
+        MathFunRotateAboutZ(&right.x, &right.y, -m_yawRate);
+        MathFunRotateAboutZ(&v.x, &v.y, -m_yawRate);
+        MathFunRotateAboutZ(&up.x, &up.y, -m_yawRate);
+        m_tm.SetRight(right);
+        m_tm.SetFront(v);
+        m_tm.SetUp(up);
+        if (GetFrameCount() & 0x20)
+            m_tm.Orthonormalize();
+    }
+    float speed;
+    if (m_turnSlowdown != 0.0f) {
+        speed = m_maxSpeed * (1.0 - m_turnSlowdown / m_maxTurnRate * fabs(m_yawRate));
+    } else
+        speed = m_maxSpeed;
+    float limit = MathFunRandomReal(0.8f * speed, speed);
+    if (m_speed216 > limit) {
+        m_speed216 = m_pathSpeed - 2.0f * m_accel * dt;
+        if (m_speed216 < limit)
+            m_speed216 = limit;
+    } else {
+        m_speed216 = m_accel * dt + m_pathSpeed;
+        if (m_speed216 > limit)
+            m_speed216 = limit;
+    }
+    if (m_noSteer) {
+        float step = m_speed216 * dt;
+        dir.x *= step;
+        dir.y *= step;
+        dir.z *= step;
+    } else {
+        float step = m_speed216 * dt;
+        const CVector3& front = m_tm.GetFront();
+        dir.x = step * front.x;
+        dir.y = step * front.y;
+        dir.z = step * front.z;
+    }
+    dir += m_pathPosition;
+    m_tm.SetPos(dir);
+    if (m_listener) {
+        m_listener->Update(m_listenerData, m_tm);
+        CVector3 min;
+        CVector3 max;
+        m_listener->GetExtents(min, max);
+        m_extentMinX->m_value = min.x;
+        m_extentMinY->m_value = min.y;
+        m_extentMaxX->m_value = max.x;
+        m_extentMaxY->m_value = max.y;
+    } else {
+        CVector3 position;
+        GetPosition(position);
+        m_extentMinX->m_value = position.x;
+        m_extentMinY->m_value = position.y;
+        m_extentMaxX->m_value = position.x;
+        m_extentMaxY->m_value = position.y;
+    }
+}
 
 void CStaticObject::AttemptAnimMotionUpdate(float dt) {
     if (m_keyCount && m_keyFrames) {
