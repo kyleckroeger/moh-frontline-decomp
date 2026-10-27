@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1070848,
+    "matching_code_bytes": 1071388,
     "total_executable_code_bytes": 1414572,
-    "percent": 75.70120149416219,
+    "percent": 75.7393755849826,
     "categories": {
-      "reconstructed_game": 840856,
+      "reconstructed_game": 841396,
       "restored_library": 229992
     },
-    "matching_functions": 4700
+    "matching_functions": 4701
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -896,7 +896,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "72cc8a1fcf15b45e4af0765b435e9deccaafd95e21e9942a683899171840dce1",
+    "config/GMFE69/project.json": "c3b3dfdb67534f5ef3a06399335d98ab8ac319c0d25846a4dcedf29a1254ed62",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -1197,6 +1197,7 @@
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
     "config/GMFE69/staticobjfactory_lookup.json": "81148247f572b23dbc035fd60d24515ace28056eda9477a28b5d2dfffe75ba41",
+    "config/GMFE69/staticobjfactory_patchmvd.json": "4e5827eac58bcfe1e8f10908697a73b6245338a77c5973156f02f934d6244563",
     "config/GMFE69/staticobjfactory_weak.json": "afc8b502c5c0e974004831714710ab08f4e1334c4a6a29daf2a8a38286377c92",
     "config/GMFE69/stimemul.json": "8daf6f44288a9589aaf8719ff8e636e2f4d7d00296603d9d8ce6bcbc2ff41088",
     "config/GMFE69/stpparse.json": "f2a8a88fcf69076d6eae477faeaf668687f0f7ffe3a3400d735dc686e37439ea",
@@ -3096,6 +3097,7 @@
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
     "src/game/staticobjfactory_lookup.cpp": "7d0d6f4826015547d913fd00268f9e82e2286b35b333dca8e48de3667c721e8c",
+    "src/game/staticobjfactory_patchmvd.cpp": "d09c8a5a48ac24ad5b86a5edc5f14d62cc011cfa0210f15dae38538821677d34",
     "src/game/staticobjfactory_weak.cpp": "56a75fc11a7d8e1ad182c3759e1e7cc376527a84a4da644d13b31eb10b6fa912",
     "src/game/surfacetype.cpp": "3499ce5dc7d066f093e39c158e9b096e37683df4d6b6d234eb9b08395d411390",
     "src/game/swvideodisplaylist.cpp": "2abcaf2de1cc9eecf45b1a564f58d3e6ca10808a9021490ee3cc1b1da48ac598",
@@ -55243,6 +55245,45 @@
       "discarded_functions": [],
       "object_sha256": "b8c6e93949053a66516e3d70354725b6fc889b0d98c941173c270e862f813884",
       "linked_sha256": "1b83c69df3ec73c180568dcaed73d5b497a2bbc372e12e2f2097ccacdb6389e2"
+    },
+    {
+      "id": "staticobjfactory_patchmvd",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 540,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "3eb79f07e54d85f569e7652781f0f8eb30f6e0bac6a0309cb8f004c51142b9de",
+      "linked_sha256": "44589e957cb2cf97310bc5c69736e272f4890315bebe9e72d6f9eea0c9bbcad5"
     }
   ],
   "code_map": {
@@ -56854,13 +56895,6 @@
         "file_record": 119,
         "file_name": "staticobjfactory.cpp",
         "ranges": [
-          {
-            "address": "0x800b21f0",
-            "size": 540,
-            "kind": "function",
-            "name": "PatchUpMVDFile__20CStaticObjectFactoryFP10MotionData",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800b254c",
             "size": 3376,
