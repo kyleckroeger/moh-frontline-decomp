@@ -8,6 +8,14 @@
       "action": "0x8b",
       "compiled": "066c",
       "original": "2500"
+    },
+    {
+      "unit": "AIObject_searchnodes",
+      "function": "AddChildrenToSearchNodeQueue__9CAIObjectFP11CSearchNodePC9CPathNodeR16CSearchNodeQueueR15CSearchNodeList",
+      "offset": "0x1a",
+      "action": "0x90",
+      "compiled": "ff7f",
+      "original": "2500"
     }
   ]
 }

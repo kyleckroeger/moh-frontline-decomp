@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x8004b5b4",
-      "size": 464,
+      "size": 840,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a7fc",
-      "size": 16,
+      "size": 60,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001193c",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AddChildrenToSearchNodeQueue__9CAIObjectFP11CSearchNodePC9CPathNodeR16CSearchNodeQueueR15CSearchNodeList",
+      "address": "0x8004b784",
+      "size": 376,
+      "binding": 1
+    },
     {
       "name": "GetNextPathNode__9CAIObjectFP9CPathNodeP9CPathNode",
       "address": "0x8004b5b4",
@@ -73,9 +79,18 @@
   "externals": {
     "CheckCollisionLineToEnvironment__15CAIFilterGlobalFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP15CAIFilterObject": "0x8005c17c",
     "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList": "0x8004b2c0",
+    "GetAStarPathNodeByIndex__15CAIFilterGlobalCFi": "0x8005d640",
+    "Insert__16CSearchNodeQueueFP11CSearchNode": "0x80056644",
     "RemoveElement__11CLinkedListFP18CLinkedListElement": "0x800535a0",
+    "ReplaceElement__16CSearchNodeQueueFP11CSearchNodeP11CSearchNode": "0x8005654c",
     "SPR_BEGIN": "0x8034e2c0",
-    "__dt__11CSearchNodeFv": "0x80056210"
+    "Setup__11CSearchNodeFP11CSearchNodeP9CPathNodePC9CPathNode": "0x800560ec",
+    "__ct__11CSearchNodeFv": "0x800562a8",
+    "__dl__11CSearchNodeFPvUl": "0x8005606c",
+    "__dt__11CSearchNodeFv": "0x80056210",
+    "__nw__11CSearchNodeFUl": "0x8005607c",
+    "__throw": "0x801390ec",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

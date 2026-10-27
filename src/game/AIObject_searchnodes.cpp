@@ -1,5 +1,6 @@
 // A fragment of AIObject.cpp (0x8004b5b4): CAIObject::GetNextPathNode and
-// CAIObject::CleanupAStarPathWalk, over the A* search nodes held in the list
+// CAIObject::CleanupAStarPathWalk and
+// CAIObject::AddChildrenToSearchNodeQueue, over the A* search nodes held in the list
 // at +600 (inferred from offsets in a non-virtual view). GetNextPathNode drops
 // the reached node while the goal (+616) is unchanged; otherwise it records
 // the new goal, recomputes the path (limit 100) and skips the first node when
@@ -7,6 +8,12 @@
 // kept at +620. SPR_BEGIN (named by its symbol) is passed as the search queue;
 // its declared type is unknown. Search node and path node offsets are
 // inferred; CAIFilterRealVector3 temps follow AIObject_patrolwalk.cpp.
+// AddChildrenToSearchNodeQueue makes a search node for each enabled child of
+// the parent's path node (skipping the grandparent), keeps the cheaper of it
+// and an open node already queued for the same path node, and returns the
+// new node when it reaches the goal. The path node fields (+12 search node,
+// +16 child count, +17 flag bits, +20 child indices) and search node fields
+// (+4 parent, +20 cost, +24 closed flag) and their names are inferred.
 class CLinkedListElement;
 
 class CLinkedList {
@@ -33,36 +40,62 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
+class CSearchNode;
+
 class CPathNode {
 public:
     CAIFilterRealPosition m_position;
+    CSearchNode* m_searchNode;
+    unsigned char m_childCount;
+    unsigned char m_enabled : 1;
+    unsigned short* m_children;
 };
 
 class CSearchNode : public CLinkedListElement {
 public:
+    static void* operator new(unsigned long);
+    static void operator delete(void*, unsigned long);
+    CSearchNode();
     ~CSearchNode();
+    CSearchNode* Setup(CSearchNode*, CPathNode*, const CPathNode*);
 
-    unsigned char unknown04[4];
+    CSearchNode* m_parent;
     CPathNode* m_pathNode;
+    unsigned char unknown0c[8];
+    float m_cost;
+    bool m_closed;
+
+    /* inferred inline getter (the test reads like an inlined bool return) */
+    bool IsClosed() const { return m_closed; }
 };
 
-class CSearchNodeQueue;
+class CSearchNodeQueue {
+public:
+    void ReplaceElement(CSearchNode*, CSearchNode*);
+    void Insert(CSearchNode*);
+};
+
 class CSearchNodeList;
 class CAIFilterObject;
 
 class CAIFilterGlobal {
 public:
+    CPathNode* GetAStarPathNodeByIndex(int) const;
+
+    unsigned char unknown00[24];
     static bool CheckCollisionLineToEnvironment(const CAIFilterRealPosition&, const CAIFilterRealPosition&,
                                                 CAIFilterObject*);
 };
 
 extern void* SPR_BEGIN; /* type unknown */
+extern CAIFilterGlobal g_aigAIFilterGlobalObject;
 
 class CAIObject {
 public:
     bool ComputeAStarPath(CPathNode*, const CPathNode*, float, CSearchNodeQueue&, CSearchNodeList&);
     CPathNode* GetNextPathNode(CPathNode*, CPathNode*);
     void CleanupAStarPathWalk();
+    CSearchNode* AddChildrenToSearchNodeQueue(CSearchNode*, const CPathNode*, CSearchNodeQueue&, CSearchNodeList&);
 
     unsigned char unknown000[8];
     CAIFilterObject* m_filterObject;
@@ -132,4 +165,36 @@ void CAIObject::CleanupAStarPathWalk() {
         delete node;
         node = (CSearchNode*)m_searchNodes.m_head;
     }
+}
+
+CSearchNode* CAIObject::AddChildrenToSearchNodeQueue(CSearchNode* parent, const CPathNode* goal,
+                                                     CSearchNodeQueue& queue, CSearchNodeList& list) {
+    CPathNode* node = parent->m_pathNode;
+    unsigned short* child = node->m_children;
+    unsigned short* end = child + node->m_childCount;
+    for (; child < end; child++) {
+        CPathNode* next = g_aigAIFilterGlobalObject.GetAStarPathNodeByIndex(*child);
+        if (!(next->m_enabled))
+            continue;
+        if (parent->m_parent && parent->m_parent->m_pathNode == next)
+            continue;
+        CSearchNode* search = new CSearchNode;
+        CSearchNode* existing = search->Setup(parent, next, goal);
+        if (existing && !existing->IsClosed()) {
+            if (search->m_cost < existing->m_cost) {
+                search->m_pathNode->m_searchNode = search;
+                queue.ReplaceElement(existing, search);
+                delete existing;
+            } else {
+                delete search;
+            }
+        } else if (existing) {
+            delete search;
+        } else if (goal == next) {
+            return search;
+        } else {
+            queue.Insert(search);
+        }
+    }
+    return 0;
 }
