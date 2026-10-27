@@ -1,0 +1,229 @@
+{
+  "id": "player_commit",
+  "source": "src/game/player_commit.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800a1b88",
+      "size": 2268,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ced4",
+      "size": 88,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 96
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014090",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 24
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034eb15",
+      "size": 2,
+      "type": 8,
+      "input_alignment": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "CommitUpdate__13CPlayerObjectFv",
+      "address": "0x800a1b88",
+      "size": 2268,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ASPECT_4x3__7CCamera": "0x8034fec8",
+    "BuildRotZ__7CMatrixFf": "0x80090800",
+    "CreateSpecialThrownObject__FP20TriggerObject_structii": "0x8003ebb4",
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "DisablePassThru__10CCDBObjectFb": "0x8007164c",
+    "GetFlocoParams__15CAnimatedPlayerFRfRl": "0x8010a094",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "RotateX__7CMatrixFf": "0x800903cc",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "SetFlocoParams__15CAnimatedPlayerFfl": "0x8010a0a8",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
+    "SetPerspective__7CCameraFff": "0x80079e7c",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetVelocity__13CThrownObjectFR8CVector3": "0x800b4db4",
+    "Set_shotsFired__10CShellMenuFUib": "0x800e6b38",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "Translate__7CMatrixF8CVector3": "0x80090660",
+    "UpdateWeaponTransforms__19CPlayerWeaponObjectFv": "0x800a8874",
+    "Update__7CWeaponFfb": "0x800d5914",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__ct__9CVolFiberFRC6CLine3": "0x800ca560",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__6CLine3Fv": "0x8001c5d0",
+    "__dt__9CVolFiberFv": "0x800ca504",
+    "g_MPAnimMeshZOffset": "0x8034df10",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_MPAnimMeshZOffset"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "ASPECT_4x3__7CCamera",
+    "g_MPAnimMeshZOffset",
+    "g_bInMultiplayerMode",
+    "g_pStaticObjectMuzzleFlashPlayer",
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "player.cpp",
+  "original_file_index": 6101,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350540"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350548"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350550"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8035053c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350644"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350638"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8035063c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350648"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8035064c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350650"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350560"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350558"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350564"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350568"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x8035055c"
+    }
+  ]
+}

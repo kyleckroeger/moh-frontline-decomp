@@ -1275,7 +1275,8 @@
     "sfir.json",
     "PathNodeList_erase.json",
     "pumhandler_list_ctor.json",
-    "staticobjfactory_patchmvd.json"
+    "staticobjfactory_patchmvd.json",
+    "player_commit.json"
   ],
   "progress": {
     "code_bytes": 1414572,
