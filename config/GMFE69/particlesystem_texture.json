@@ -39,12 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80080b24",
+      "address": "0x800807e0",
+      "size": 848,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c140",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013100",
       "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UpdateSystem__15CParticleSystemFf",
+      "address": "0x800807e0",
+      "size": 836,
+      "binding": 1
+    },
     {
       "name": "GetTexture__15CParticleSystemCFv",
       "address": "0x80080b24",
@@ -52,13 +70,43 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "g_CurrentSeed": "0x8034ea4c",
+    "g_ParticleSystemManager": "0x801df69c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_ParticleSystemManager"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_CurrentSeed"
+  ],
   "original_file": "particlesystem.cpp",
-  "original_file_index": 4057
+  "original_file_index": 4057,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350000"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fff8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350030"
+    }
+  ]
 }

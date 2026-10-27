@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1108120,
+    "matching_code_bytes": 1108956,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.33606207389938,
+    "percent": 78.39516122191023,
     "categories": {
-      "reconstructed_game": 878128,
+      "reconstructed_game": 878964,
       "restored_library": 229992
     },
-    "matching_functions": 4732
+    "matching_functions": 4733
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -836,7 +836,7 @@
     "config/GMFE69/particlesystem_registerfn.json": "ec3c1a26d4ced644abe7c38251de9b895fc2247212309754fff57892874d1a2a",
     "config/GMFE69/particlesystem_reset.json": "4b9df77fbfeae8742b7fcd72e85dfd610a04917ff88d4c99f19ad42bd98e10dd",
     "config/GMFE69/particlesystem_rotation.json": "f93990bd126de25a1b458dd4e7554b136b5c9214c1915c7370abb2df09b17bf7",
-    "config/GMFE69/particlesystem_texture.json": "a9aed967c7bb39cbe37bf3aee7de649ff58391bda4b6bf6cac1c92e70f38af7e",
+    "config/GMFE69/particlesystem_texture.json": "b25922fccbd61152871c9aea7e27ecc58c5549aaf3a70d1b08b1021efdd8b8e4",
     "config/GMFE69/particlesystem_texturebin_dtor.json": "dbfb9dae907a58514bd9d26ca874193f87350b9fd1437f92189dcbdf26d4ed0a",
     "config/GMFE69/particlesystem_visible.json": "9a891a772068b75fe65ac22759507e36849eb4ad47f160b639e6065a00a92950",
     "config/GMFE69/path.json": "a130e3f795d3112c351a4623a4f8499a6f136708db1fbba95b835f98112bf65c",
@@ -2932,7 +2932,7 @@
     "src/game/particlesystem_registerfn.cpp": "ff6c74db155496d4ee0cabcc0f50dfc44fa22f93b18d8a849e6392242adf50af",
     "src/game/particlesystem_reset.cpp": "9275ffe5646a3ad0f42787dc17555bbf578f8fe16e645f2967521c54ba995e1f",
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
-    "src/game/particlesystem_texture.cpp": "b38cec7d98edc76bcac93be906aaf40081b870002054d1d4239cf5b42785d4cb",
+    "src/game/particlesystem_texture.cpp": "7bad990fa32156064c574d6c094d0b5c24b6c36095c2a4601ef31357e4d6c5c4",
     "src/game/particlesystem_texturebin_dtor.cpp": "2d93edcd84e7b4ea3ebf6d6dd535072ca217836a9b31c37a5fdc139b8262cd67",
     "src/game/particlesystem_visible.cpp": "716a1691fac052bb850ef6b1f13d288f598cb5cb9ca252317dc13f0fc817fc75",
     "src/game/plane_ctor.cpp": "af736b7d9440adb7613f32e47a5f5b0c03a4a197123168c461e02a72500bd5c4",
@@ -48898,8 +48898,8 @@
     {
       "id": "particlesystem_texture",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 12,
+      "functions": 2,
+      "code_bytes": 848,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -48931,8 +48931,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a1eaf334bc3b97842343d187da8fe04352a5867c019c86fe22e4120850345c1c",
-      "linked_sha256": "d13f1d7e8eb05af44c558a914af6313b21de4686ad5704d3b993cf692b0afec3"
+      "object_sha256": "166e6b77849fa7eb0bb2010b5ef8458fb1c3bb080e7aace58256c93e0f09ee11",
+      "linked_sha256": "2023a3926b169c41296a921e4f19bff11b1cf6a3556ebf480785eaf2d5a5f10c"
     },
     {
       "id": "dmcluster_init",
@@ -56613,13 +56613,6 @@
             "size": 2948,
             "kind": "function",
             "name": "UpdateBoundingBox__15CParticleSystemFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800807e0",
-            "size": 836,
-            "kind": "function",
-            "name": "UpdateSystem__15CParticleSystemFf",
             "evidence": "exception-index"
           },
           {
