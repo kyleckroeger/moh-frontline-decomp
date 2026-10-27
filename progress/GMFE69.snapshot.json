@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1081384,
+    "matching_code_bytes": 1084260,
     "total_executable_code_bytes": 1414572,
-    "percent": 76.44602042172474,
+    "percent": 76.64933280172377,
     "categories": {
-      "reconstructed_game": 851392,
+      "reconstructed_game": 854268,
       "restored_library": 229992
     },
-    "matching_functions": 4710
+    "matching_functions": 4711
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1254,7 +1254,7 @@
     "config/GMFE69/thrownbullet_init.json": "10a5f19e7b35fedc692565268aabba11d4e6e83bde6bfa0e0ec6483d812c9189",
     "config/GMFE69/thrownbullet_misc.json": "5bd12996b2bba3f47d0cb7d22ead6f83887e334bb6c0d3d89fa903993171d25a",
     "config/GMFE69/thrownbullet_nwa.json": "02fb713a11b4eec908c94771a82cf48c00946e03e69db6c9d8ed9c605701c454",
-    "config/GMFE69/thrownbullet_tail.json": "06c1e9416a49b66e0616f85f6b07cf2e5d3c864a6c72bc8e0e6340e03406ba56",
+    "config/GMFE69/thrownbullet_tail.json": "691d10000df0f4c83ba83175332d5c961e128473c02378386546408f7c528c87",
     "config/GMFE69/timer.json": "ae3403f8235fadb3bdcbcd4f4648ddf27c185cdab7db3542519793fce7267534",
     "config/GMFE69/timerthread.json": "993154fd5f472860102c81015ebb43aaf30afcf22cd46655a20003306ccdd50c",
     "config/GMFE69/toilet.json": "9c98e9e22e7da225d538f8413a55ab9c42fb3bbb0941b03d41407718d4d17227",
@@ -3120,7 +3120,7 @@
     "src/game/thrownbullet_init.cpp": "daa1111b2b9542c866d16975a93f5034fcfbdaf55649f408e262f3d081c02ff3",
     "src/game/thrownbullet_misc.cpp": "588fb44f12cfaa66b3ddc8d7bd8e4547ea395d1e57b936f630f4770f129f622b",
     "src/game/thrownbullet_nwa.cpp": "b22afa4e74c278b152143e4d7787186333002e520a3f3eac3637aac9786b7784",
-    "src/game/thrownbullet_tail.cpp": "586335e66d8452377a5157940db237370ac8a54035ae4bb00575ccef0de28b03",
+    "src/game/thrownbullet_tail.cpp": "ce03f7f27faa7534dcac4434849f364c735efef9dfb33e8fa794fd48e5a62452",
     "src/game/toilet.cpp": "c12666d1d5035c5db37c3880afebfb85b695c4e34c3b3e6abf0947ee89f4a3ea",
     "src/game/toilet_files.cpp": "0ea51949a26fcf921e1ada6ed9e67a5f10886fe844ef97c9bd29950a7268318f",
     "src/game/toilet_hashmap.cpp": "72018d6bdef6dc6c9c8678545711107cd8c2ed9a1357d5a4237e62b90f42a4a0",
@@ -44878,8 +44878,8 @@
     {
       "id": "thrownbullet_tail",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 768,
+      "functions": 5,
+      "code_bytes": 3644,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44911,8 +44911,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "61236da2b9242787734e0929f4657ca86956d5ad5f33c2c6d8cb5892a5947a2a",
-      "linked_sha256": "ea42a55983b51a1a7905d540931dd5033b5e3cbfa9056653b2b1cf2b1fe26465"
+      "object_sha256": "acdedc096288ae83c4b57c0d08b9a8bdc17a85374bfaf204fbe31b6e192ad707",
+      "linked_sha256": "bd4119ef5c72a38d215b2418e0dbb0f40bf15c623b83a11314bcb0adedaf9bed"
     },
     {
       "id": "Soldier_object_cleanup",
@@ -57206,13 +57206,6 @@
             "size": 1532,
             "kind": "function",
             "name": "CheckEnemies__13CThrownBulletFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d425c",
-            "size": 2876,
-            "kind": "function",
-            "name": "Init__13CThrownBulletF18EThrownBulletTypesP29ThrownBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode",
             "evidence": "exception-index"
           }
         ]

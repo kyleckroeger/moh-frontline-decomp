@@ -40,27 +40,33 @@
     {
       "name": ".text",
       "address": "0x800d3f5c",
-      "size": 768,
+      "size": 3644,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000e714",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015488",
-      "size": 48,
+      "size": 60,
       "type": 1
     },
     {
       "name": ".data",
       "address": "0x80189ebc",
-      "size": 44,
+      "size": 88,
       "type": 1,
       "input_alignment": 4
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ec68",
+      "size": 13,
+      "type": 8
     }
   ],
   "functions": [
@@ -87,26 +93,53 @@
       "address": "0x800d4228",
       "size": 52,
       "binding": 1
+    },
+    {
+      "name": "Init__13CThrownBulletF18EThrownBulletTypesP29ThrownBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode",
+      "address": "0x800d425c",
+      "size": 2876,
+      "binding": 1
     }
   ],
   "externals": {
+    "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v": "0x800d7cb8",
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
     "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "Create__6CLightFUl": "0x80078648",
     "DebugMsg__FPCce": "0x80018c88",
     "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
+    "Init__7CBulletFv": "0x800ccc20",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
     "Reset__19CLightVolumeManagerFv": "0x800790a8",
+    "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent": "0x800d80b0",
+    "SECB_NullifyPointer__FR9IObserverPP8ISubject13ESubjectEvent": "0x800d4d98",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc",
     "Shutdown__7CBulletFv": "0x800ccc04",
+    "g_bIsRubberGrenadeCheatEnabled": "0x8034eca4",
+    "g_cheats": "0x80196a94",
     "g_pBulletFactory": "0x8034e9e0",
-    "g_scene": "0x8019484c"
+    "g_pGermanList": "0x8034e894",
+    "g_scene": "0x8019484c",
+    "rand": "0x8013fc54"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "SECB_NullifyPointer__FR9IObserverPP8ISubject13ESubjectEvent"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_pBulletFactory"
+    "g_bIsRubberGrenadeCheatEnabled",
+    "g_pBulletFactory",
+    "g_pGermanList"
   ],
   "original_file": "thrownbullet.cpp",
   "original_file_index": 8132,
@@ -122,6 +155,12 @@
       "address": "0x80177f88"
     },
     {
+      "section": ".rodata",
+      "offset": 64,
+      "size": 55,
+      "address": "0x80177fc8"
+    },
+    {
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
@@ -132,6 +171,90 @@
       "offset": 4,
       "size": 4,
       "address": "0x80350ddc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350dac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350d74"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350de0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350de4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350d94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80350d78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350d80"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350de8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350dec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350df0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350df4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350df8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x80350dfc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 8,
+      "address": "0x80350db0"
     }
   ]
 }
