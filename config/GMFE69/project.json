@@ -1277,7 +1277,8 @@
     "pumhandler_list_ctor.json",
     "staticobjfactory_patchmvd.json",
     "player_commit.json",
-    "skelblend.json"
+    "skelblend.json",
+    "player_beginupdate.json"
   ],
   "progress": {
     "code_bytes": 1414572,

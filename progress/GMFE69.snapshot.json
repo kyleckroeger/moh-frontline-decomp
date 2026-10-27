@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1084260,
+    "matching_code_bytes": 1093720,
     "total_executable_code_bytes": 1414572,
-    "percent": 76.64933280172377,
+    "percent": 77.31808631868861,
     "categories": {
-      "reconstructed_game": 854268,
+      "reconstructed_game": 863728,
       "restored_library": 229992
     },
-    "matching_functions": 4711
+    "matching_functions": 4712
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -857,6 +857,7 @@
     "config/GMFE69/plane_ctor.json": "9a475934e12d5e30ecf14fd6df8ad5864bd4a5e1a1f6ec871f637c469b893e10",
     "config/GMFE69/player.json": "8de3138318ca0dcd0c9ba2142042974921f8001072a474fce9de9d4adb4c9798",
     "config/GMFE69/player_begincrouch.json": "c7aabceb3ad4e18cb775eb01cda436493db71f5bc3afe825bb7e3e95ef571cf5",
+    "config/GMFE69/player_beginupdate.json": "96d4757c391ac6186eba3c6cf2a9c7dd3ed946ffd61db279827ec1dd091e8793",
     "config/GMFE69/player_bounds.json": "99c3b1db8bf667edc415d50e6505302a385f81c01c32c8d2cd10417503695cc7",
     "config/GMFE69/player_bullet.json": "a67aa2d0032c745e279f533d568e67782401f195ed12f7df4d41bd4519d88950",
     "config/GMFE69/player_commit.json": "3668a381c6f891868a20d17bc78f04225006f4c48b9ffbb4d7442562ec0e05e5",
@@ -897,7 +898,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "68705e884100979a9a3d61a8055ef6ed8ef9b07525db22fab80ec0e66e2011a7",
+    "config/GMFE69/project.json": "79a3448e60bb68e552254b6e41fe1830dda01bb85ede9e719a1c67e16958e182",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -2932,6 +2933,7 @@
     "src/game/plane_ctor.cpp": "c975793e51bd7176e3fd93267a306a916c27da2242b6f28de6b3927421d5cdef",
     "src/game/player.cpp": "fe8cfb79e166c555007fa620c4fa5e9c43da8bc820423bc0b45d73e46686dbf4",
     "src/game/player_begincrouch.cpp": "0e1264742073db0c7ca977f38ebe6b2c253db7df93f4ef6b8197a7523921a7e1",
+    "src/game/player_beginupdate.cpp": "66cfef39206fcab1dcc3d54437874f6f8bca900ea74d095a2abdd2b2f3ef76e0",
     "src/game/player_bounds.cpp": "a43082b50053789054a368258cd5874dae55cfd38403e80d87c402d1f5d54ac7",
     "src/game/player_bullet.cpp": "163bfce0e418adc7a399771fd020c883ac8d9f73270407c22ea48ec71c35672a",
     "src/game/player_commit.cpp": "659dbec30b92b256210a7d50875c184cc180816205dd53010cf2fcba6301c6a1",
@@ -55366,6 +55368,45 @@
       "discarded_functions": [],
       "object_sha256": "cb119dc848055bdb22f77c5638bfda19f29622915c6f74a0a6a8dcac03f82499",
       "linked_sha256": "566356b5f50c50afe6b8adaeffe46a1f0047e71cc8ce5e9dd5f4d5230bf42a30"
+    },
+    {
+      "id": "player_beginupdate",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 9460,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "82f5f0348c86ae725375fb176dc10ef1f6df4ecaf64e7bf69b863ed83b8d253c",
+      "linked_sha256": "8f7002027fd3300c35afcaae90d801beeb15d1ab32c803182b9bedb92c656f81"
     }
   ],
   "code_map": {
@@ -56793,13 +56834,6 @@
             "size": 776,
             "kind": "function",
             "name": "OnCollision__13CPlayerObjectFRC10CCollision",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800a27f8",
-            "size": 9460,
-            "kind": "function",
-            "name": "BeginUpdate__13CPlayerObjectFf",
             "evidence": "exception-index"
           },
           {
