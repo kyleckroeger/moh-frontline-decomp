@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,15 +32,16 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk",
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a94a8",
-      "size": 692,
+      "address": "0x800a8de4",
+      "size": 3400,
       "type": 1
     },
     {
@@ -51,20 +52,50 @@
     },
     {
       "name": "extab",
-      "address": "0x8000d1c4",
-      "size": 16,
-      "type": 1
+      "address": "0x8000d178",
+      "size": 136,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 152,
+      "stripped_objects": [
+        "@372",
+        "@480"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x800142a0",
-      "size": 24,
+      "address": "0x80014258",
+      "size": 132,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 156,
+      "stripped_objects": [
+        "@373",
+        "@481"
+      ]
+    },
+    {
+      "name": ".data",
+      "address": "0x801880b8",
+      "size": 376,
       "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801ef130",
       "size": 564,
+      "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034df88",
+      "size": 64,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034eb20",
+      "size": 14,
       "type": 8
     }
   ],
@@ -80,15 +111,202 @@
       "address": "0x800a9724",
       "size": 56,
       "binding": 0
+    },
+    {
+      "name": "__dt__7CSkyBoxFv",
+      "address": "0x800a918c",
+      "size": 168,
+      "binding": 1
+    },
+    {
+      "name": "IsDrawEnabled__7CSkyBoxCFv",
+      "address": "0x800a8dec",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "IsVisible__7CSkyBoxCFR12CDrawContext",
+      "address": "0x800a8de4",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "Draw__7CSkyBoxFR12CDrawContext",
+      "address": "0x800a8df8",
+      "size": 644,
+      "binding": 1
+    },
+    {
+      "name": "__ct__Q27CSkyBox7SVertexFv",
+      "address": "0x800a8df4",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "SetTextures__7CSkyBoxFv",
+      "address": "0x800a907c",
+      "size": 272,
+      "binding": 1
+    },
+    {
+      "name": "__ct__8CTextureFv",
+      "address": "0x800a9234",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "DestroyInstance__7CSkyBoxFv",
+      "address": "0x800a9238",
+      "size": 124,
+      "binding": 1
+    },
+    {
+      "name": "GetInstance__7CSkyBoxFv",
+      "address": "0x800a92b4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "CreateInstance__7CSkyBoxFv",
+      "address": "0x800a92bc",
+      "size": 356,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__7CSkyBoxFP11CRenderListP7CScreen",
+      "address": "0x800a9420",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "__ct__16CSkyBoxRenderBinFv",
+      "address": "0x800a97b8",
+      "size": 136,
+      "binding": 2
+    },
+    {
+      "name": "__dt__16CSkyBoxRenderBinFv",
+      "address": "0x800a975c",
+      "size": 92,
+      "binding": 2
+    },
+    {
+      "name": "IsUsed__16CSkyBoxRenderBinFv",
+      "address": "0x800a9b04",
+      "size": 40,
+      "binding": 2
+    },
+    {
+      "name": "Link__16CSkyBoxRenderBinFP7CDmaTagR10CDmaPacket",
+      "address": "0x800a9880",
+      "size": 644,
+      "binding": 2
+    },
+    {
+      "name": "Render__16CSkyBoxRenderBinFR10CDmaPacketPv",
+      "address": "0x800a9840",
+      "size": 64,
+      "binding": 2
     }
   ],
   "externals": {
+    "AsAnimObject__10ISceneNodeCFv": "0x8001afb8",
+    "AsAnimObject__10ISceneNodeFv": "0x8001afc0",
+    "AsAnimatedPlayerObject__10ISceneNodeCFv": "0x8001aff8",
+    "AsAnimatedPlayerObject__10ISceneNodeFv": "0x8001b000",
+    "AsBullet__10ISceneNodeCFv": "0x8001b018",
+    "AsBullet__10ISceneNodeFv": "0x8001b020",
+    "AsCollisionVolume__10ISceneNodeCFv": "0x8001b028",
+    "AsCollisionVolume__10ISceneNodeFv": "0x8001b030",
+    "AsHierObject__10ISceneNodeCFv": "0x8001af98",
+    "AsHierObject__10ISceneNodeFv": "0x8001afa0",
+    "AsLight__10ISceneNodeCFv": "0x8001b008",
+    "AsLight__10ISceneNodeFv": "0x8001b010",
+    "AsMovingNode__10ISceneNodeCFv": "0x8001b058",
+    "AsMovingNode__10ISceneNodeFv": "0x8001b060",
+    "AsPlayerObject__10ISceneNodeCFv": "0x8001afd8",
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
+    "AsPlayerWeaponObject__10ISceneNodeCFv": "0x8001afe8",
+    "AsPlayerWeaponObject__10ISceneNodeFv": "0x8001aff0",
+    "AsSoldierObject__10ISceneNodeCFv": "0x8001afc8",
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
+    "AsStaticObject__10ISceneNodeCFv": "0x8001af88",
+    "AsStaticObject__10ISceneNodeFv": "0x8001af90",
+    "AsWorldObject__10ISceneNodeCFv": "0x8001afa8",
+    "AsWorldObject__10ISceneNodeFv": "0x8001afb0",
+    "AttemptUpdate__10ISceneNodeFf": "0x8001aebc",
+    "BeginUpdate__10ISceneNodeFf": "0x8001aeac",
+    "CommitAI__10ISceneNodeFv": "0x8001aeb4",
+    "CommitUpdate__10ISceneNodeFv": "0x8001aec4",
+    "ConstrainVelocity__10ISceneNodeFv": "0x8001aeb8",
+    "DebugMsg__FPCce": "0x80018c88",
+    "Destroy__13IDestructibleFv": "0x8001b054",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetTevAlphaIn": "0x8012f09c",
+    "GXSetTevAlphaOp": "0x8012f1e0",
+    "GXSetTevColorIn": "0x8012f01c",
+    "GXSetTevColorOp": "0x8012f120",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "GetAIDoodad__10ISceneNodeCFv": "0x8001b038",
+    "GetAIDoodad__10ISceneNodeFv": "0x8001b040",
+    "GetAttachedLight__10ISceneNodeCFv": "0x8001b04c",
+    "GetCollisionId__10ISceneNodeCFv": "0x8001af6c",
+    "GetForward__10ISceneNodeCFR8CVector3": "0x8001af2c",
+    "GetGAMECUBEMatrix34__7CMatrixCFRA3_A4_f": "0x8008eefc",
+    "GetLocalBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType": "0x8001aecc",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
+    "GetRightward__10ISceneNodeCFR8CVector3": "0x8001af14",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
+    "GetTMLocalToWorld__10ISceneNodeCFR7CMatrix": "0x8001aedc",
+    "GetUpward__10ISceneNodeCFR8CVector3": "0x8001af44",
+    "GetWorldBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType": "0x8001aed4",
+    "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision": "0x8001af84",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "OnCollision__10ISceneNodeFRC10CCollision": "0x8001aec0",
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "SetAttachedLight__10ISceneNodeFP6CLight8CVector3": "0x8001b048",
+    "SetCollisionId__10ISceneNodeF7EClsnId": "0x8001af74",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "Set__8CTextureFP9ShapeFileb": "0x80082d6c",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "Transform__7CMatrixCFR8CVector48CVector3": "0x8008fadc",
+    "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
+    "UpdateAI__10ISceneNodeFf": "0x8001aeb0",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
     "__construct_array": "0x8013834c",
-    "__ct__16CSkyBoxRenderBinFv": "0x800a97b8",
     "__destroy_arr": "0x801382d4",
-    "__dt__16CSkyBoxRenderBinFv": "0x800a975c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CRenderBinFv": "0x80074290",
+    "__dt__10ISceneNodeFv": "0x8001ada0",
+    "__dt__9IObserverFv": "0x800d80e0",
+    "__nw__FUl": "0x8001cb60",
     "__register_global_object": "0x801381bc",
+    "__vt__10CRenderBin": "0x80183c5c",
+    "__vt__10ISceneNode": "0x80181c78",
+    "__vt__13IDestructible": "0x8018a228",
+    "__vt__8ISubject": "0x8018a1d4",
+    "__vt__9IObserver": "0x8018a1c0",
+    "g_config": "0x80196a80",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
@@ -101,27 +319,98 @@
   ],
   "original_file": "skybox.cpp",
   "original_file_index": 6516,
+  "weak_duplicates": [
+    "__dt__10CRenderBinFv",
+    "__dt__10ISceneNodeFv"
+  ],
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
     {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 96,
+      "address": "0x80176e40"
+    },
+    {
+      "section": ".rodata",
+      "offset": 96,
+      "size": 32,
+      "address": "0x80176ea0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 128,
+      "size": 49,
+      "address": "0x80176ef4"
+    },
+    {
+      "section": ".rodata",
+      "offset": 180,
+      "size": 14,
+      "address": "0x80176ec0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 196,
+      "size": 9,
+      "address": "0x80176ed0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 208,
+      "size": 10,
+      "address": "0x80176edc"
+    },
+    {
+      "section": ".rodata",
+      "offset": 220,
+      "size": 11,
+      "address": "0x80176ee8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 232,
+      "size": 17,
+      "address": "0x80176f44"
+    },
+    {
+      "section": ".rodata",
+      "offset": 252,
+      "size": 15,
+      "address": "0x80176f34"
+    },
+    {
+      "section": ".rodata",
+      "offset": 268,
+      "size": 11,
+      "address": "0x80176f28"
+    },
+    {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x803507a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 8,
+      "address": "0x803507a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
       "size": 4,
       "address": "0x803507b0"
     },
     {
       "section": ".sdata2",
-      "offset": 4,
+      "offset": 16,
       "size": 4,
       "address": "0x803507ac"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 4,
-      "address": "0x803507a8"
     }
   ]
 }
