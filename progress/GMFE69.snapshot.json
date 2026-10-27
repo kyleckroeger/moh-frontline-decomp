@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1097748,
+    "matching_code_bytes": 1098008,
     "total_executable_code_bytes": 1414572,
-    "percent": 77.60283675910452,
+    "percent": 77.62121687690694,
     "categories": {
-      "reconstructed_game": 867756,
+      "reconstructed_game": 868016,
       "restored_library": 229992
     },
-    "matching_functions": 4716
+    "matching_functions": 4717
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -899,7 +899,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "fad91fe6fc85a9b93ecc0a4d4522d14c0fd6d03584f2df42073fe9d1fa12a236",
+    "config/GMFE69/project.json": "0b032dd29025291081d0cc7e60e2fd7fd461d24692f7be8155dc0d91abbccdf2",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -925,6 +925,7 @@
     "config/GMFE69/publisher_erase.json": "f7e3118f53bf30e77c3da1b38403fd7fe0ee497ddfc67e7c4b636e12ae5baffa",
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
     "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
+    "config/GMFE69/publisher_setsubject.json": "e07676cb0fbd649f1ce3eb79678bdb80211821ed91a4290bb96a0ad77d482940",
     "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
     "config/GMFE69/pumhandler_add.json": "fe8854e79c304d80cacf9ad63f19fc53c3a178c035fd2d995e3fedb8d74f921c",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
@@ -2996,6 +2997,7 @@
     "src/game/publisher_erase.cpp": "0bc60cf16d324d4dfb54804240d3cc08e80f87017a9163bf04fcae532794be39",
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
+    "src/game/publisher_setsubject.cpp": "b71af911609193ab664db4b18c3bd54c35b39b2682e97ffe74a9e3707e807afe",
     "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
     "src/game/pumhandler_add.cpp": "dd2febc0f9ff98f3f2d0f6f17f4f8fe5c8018543018452072a7cd750eb2e9d4e",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
@@ -55448,6 +55450,45 @@
       "discarded_functions": [],
       "object_sha256": "d4ea61e1d51a54a0b6cb7b309f9e87aebea8912fe1517cc77f7a6da5bf9a9280",
       "linked_sha256": "40776ed443a58b0bce43a233a648a0248f8b3afe9b76f8efdd4ce63efa06ba16"
+    },
+    {
+      "id": "publisher_setsubject",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 260,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "2d48516e73c22d130544a65eb78ee5465fd4ff917fcc1df7f78f7635440638d6",
+      "linked_sha256": "c75e196be601bf6bd2e7d2c83ec74f8f054a6a788aa4055da02352492f3f5ada"
     }
   ],
   "code_map": {
@@ -57282,13 +57323,6 @@
             "kind": "function",
             "name": "PublishEvent__10CPublisherFR8ISubject13ESubjectEvent",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d7fac",
-            "size": 260,
-            "kind": "function",
-            "name": "SetSubject<8ISubject>__9IObserverFPP8ISubjectP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x800d80e0",
