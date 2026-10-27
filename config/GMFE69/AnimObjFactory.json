@@ -34,25 +34,25 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x80096a74",
-      "size": 1244,
+      "size": 1860,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ca58",
-      "size": 32,
+      "size": 60,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013b20",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -86,19 +86,64 @@
       "address": "0x80096f04",
       "size": 76,
       "binding": 1
+    },
+    {
+      "name": "Init__18CAnimObjectFactoryFUlPc",
+      "address": "0x80096f50",
+      "size": 616,
+      "binding": 1
     }
   ],
   "externals": {
+    "CompareObjectDefinitions__FPCvPCv": "0x800971c8",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "InitAnimObjectFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i": "0x80096328",
+    "InitPlayerWeaponFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i": "0x80096120",
     "MEM_free": "0x8014f83c",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
+    "__construct_new_array": "0x801384fc",
+    "__ct__11CAnimObjDefFv": "0x800971b8",
+    "__ct__12CTexturePackFv": "0x80082944",
     "__dl__FPv": "0x8001ca2c",
-    "__dla__FPv": "0x8001c9e8"
+    "__dla__FPv": "0x8001c9e8",
+    "__nwa__FUl": "0x8001cae8",
+    "g_staticObjCount": "0x8034eac8",
+    "qsort": "0x8013fadc",
+    "stricmp": "0x80151ab8",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_staticObjCount"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_staticObjCount"
+  ],
   "original_file": "AnimObjFactory.cpp",
-  "original_file_index": 5769
+  "original_file_index": 5769,
+  "file_duplicates": [
+    "__ct__11CAnimObjDefFv"
+  ],
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 20,
+      "address": "0x80176840"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350460"
+    }
+  ]
 }

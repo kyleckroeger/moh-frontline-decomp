@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1114844,
+    "matching_code_bytes": 1115460,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.81140019737418,
+    "percent": 78.85494693801375,
     "categories": {
-      "reconstructed_game": 884852,
+      "reconstructed_game": 885468,
       "restored_library": 229992
     },
-    "matching_functions": 4739
+    "matching_functions": 4740
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -99,7 +99,7 @@
     "config/GMFE69/AXSPB.json": "b545c13a80837ee4ec6447cd14220ca12742a60c4525e91f744603629870f101",
     "config/GMFE69/AXVPB.json": "9c5494460b355855751e5493d2f3f4ac0f292a38e7c6e99192c28ac9268faf6a",
     "config/GMFE69/AmcExi2Stubs.json": "06e09d04a4badb35d73036086b321ab231a21afa20b86979b63e9546006ca0ce",
-    "config/GMFE69/AnimObjFactory.json": "1c2ebc7e91ddd558ee07a97d712f29fdae0ba20c30a93f092a4f3d368edca82a",
+    "config/GMFE69/AnimObjFactory.json": "f122402e5a12e5ddfe3d4c9ddb4777046307e8348d0e66852d343973b952ad84",
     "config/GMFE69/AnimObjFactory_animobjdef.json": "a4af8dd382e226f50822556050f828ca12338aa06ac8e487f187801615b2b2c9",
     "config/GMFE69/AnimObjFactory_ctor.json": "cdb9b365c933f592e729d49138191c6bfcdb02ebd27db88ffc9fd587bd6f206d",
     "config/GMFE69/AnimObjFactory_head.json": "c09406f19cb7cf7e536b410ea106b6e81e48f6ba10a26d7c1a86aa8f16f135df",
@@ -655,7 +655,7 @@
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
-    "config/GMFE69/extab_patches.json": "193611dba74a1ca50b499079c66f4b82cb8adbb88daf2c0e56f3855d1b5da240",
+    "config/GMFE69/extab_patches.json": "0d69609c021793f69d94520fc1311c49e1aaae308bb2f3a49535d818a38a5812",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "cc264d2a9c429542764aa10895a149d9243ee8ca76348c547bf0f1b154bb244f",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -2388,7 +2388,7 @@
     "src/game/AITankDoodad_ctor.cpp": "8255a774b4a9461f08ade2f235e630d06713d1fbf28edbf1bdbaec5cc5e1b4e7",
     "src/game/AITankObject.cpp": "16884551de80d9d21264f0f4b728c886d3f3e389b50300ef239697f31c4ade49",
     "src/game/AITankObject_ctor.cpp": "1f030f4858f98d025d0a1e30b0085e5e02d5393045f481cb86a72d8f752ad35c",
-    "src/game/AnimObjFactory.cpp": "4a03ed41316082416956ee8dae84b7a29ef8329bb6fcc81f8faf4f246e39a0b8",
+    "src/game/AnimObjFactory.cpp": "390cbe689dc99e896019f8996477639feb41589f19330c92cebd5dc0f3a1afa4",
     "src/game/AnimObjFactory_animobjdef.cpp": "7ee848e7df0fc2eecdc7f64dcc5144415b21dad30dbaed3ade97422ecdcedcd6",
     "src/game/AnimObjFactory_ctor.cpp": "73cb2bfab949162da8698648bbd848ec8b66d844d508f42f9351aeec0e367e36",
     "src/game/AnimObjFactory_head.cpp": "03bf356b727e62aff753fd4305b43c9aab1ebd04ceb7a11f46124aa5a2a6c26c",
@@ -21843,8 +21843,8 @@
     {
       "id": "AnimObjFactory",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 1244,
+      "functions": 6,
+      "code_bytes": 1860,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21874,10 +21874,20 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "ec16a628e507de3a2a419a0eb0cbb1a68d4da752f5b6a1d63cba274bcf2ecad8",
-      "linked_sha256": "7ff0723fc46e5f2b6e84a4a646e37c1c7214c686249f15e6a5b2aca67958cf9d"
+      "object_sha256": "9d0da207fcb5b54eb30f20048cfa129581a0a1e69e889b12d71f0a2a6b54de84",
+      "extab_patches": [
+        {
+          "unit": "AnimObjFactory",
+          "function": "Init__18CAnimObjectFactoryFUlPc",
+          "offset": "0x16",
+          "action": "0x8b",
+          "compiled": "066c",
+          "original": "2500"
+        }
+      ],
+      "linked_sha256": "55c4b1d3ff2f16bdc18c5852eede4bd3b9170c4a837773b7fda2a9ee75169bca"
     },
     {
       "id": "anim_callback",
@@ -56869,20 +56879,6 @@
             "size": 1268,
             "kind": "function",
             "name": "ConstrainVelocity__11CAnimObjectFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/AnimObjFactory.cpp [symbol evidence]",
-        "file_record": 108,
-        "file_name": "AnimObjFactory.cpp",
-        "ranges": [
-          {
-            "address": "0x80096f50",
-            "size": 616,
-            "kind": "function",
-            "name": "Init__18CAnimObjectFactoryFUlPc",
             "evidence": "exception-index"
           }
         ]

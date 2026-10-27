@@ -24,6 +24,14 @@
       "action": "0x8b",
       "compiled": "066c",
       "original": "2500"
+    },
+    {
+      "unit": "AnimObjFactory",
+      "function": "Init__18CAnimObjectFactoryFUlPc",
+      "offset": "0x16",
+      "action": "0x8b",
+      "compiled": "066c",
+      "original": "2500"
     }
   ]
 }

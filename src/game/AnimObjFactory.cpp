@@ -8,8 +8,14 @@
 // they are defined __declspec(weak). They are followed by
 // CAnimObjectFactory::Shutdown and Reset. The factory, its object definitions
 // (80 bytes each) and CAnimObject are views: their members are inferred from
-// offsets (+44 links free objects). The rest of the file (Init onwards) is not
-// part of this unit.
+// offsets (+44 links free objects). CAnimObjectFactory::Init follows: it loads
+// the level's texture pack in place, counts the animated objects (resource 9)
+// and player weapons (19), counts the static meshes (resource 10 named *.msh)
+// in g_staticObjCount, builds and sorts the object definitions and allocates
+// the object pool (its free list built as Reset does). The level-contents
+// records are inferred views; CAnimObjDef's constructor is the weak copy
+// placed by AnimObjFactory_animobjdef.cpp. The rest of the file is not part
+// of this unit.
 inline void ChangeEndian(int& value) {
     unsigned char bytes[4];
     *reinterpret_cast<int*>(bytes) = value;
@@ -68,6 +74,40 @@ struct CObjLocationCollisionData {
 
 extern "C" void MEM_free(void*);
 
+enum TLTResourceID {};
+
+/* inferred: a level-contents entry's record (names at +4 and +228) */
+struct LevelFileInfo {
+    unsigned char unknown00[4];
+    const char* m_name;
+    unsigned char unknown08[220];
+    const char* m_texturePack;
+};
+
+struct LevelFileContentsStruct_ {
+    unsigned char unknown00[8];
+    LevelFileInfo* m_info;
+};
+
+LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
+char* TLT_LoadFromRepository(const char*, int*, bool*);
+void* DWI_alloc(const char*, int, int);
+extern "C" unsigned long strlen(const char*);
+extern "C" int stricmp(const char*, const char*);
+extern "C" void qsort(void*, unsigned long, unsigned long, int (*)(const void*, const void*));
+int CompareObjectDefinitions(const void*, const void*);
+
+inline void* operator new(unsigned long, void* p) {
+    return p;
+}
+
+class CTexturePack {
+public:
+    CTexturePack();
+};
+
+extern int g_staticObjCount;
+
 class CAnimObject {
 public:
     unsigned char unknown00[44];
@@ -76,7 +116,7 @@ public:
 
 class CAnimObjDef {
 public:
-    CAnimObjDef();
+    CAnimObjDef() {}
 
     unsigned char unknown00[60];
     void* m_data;
@@ -89,6 +129,9 @@ public:
 class CAnimObjectFactory {
 public:
     CAnimObjectFactory();
+    void Init(unsigned long, char*);
+    void InitAnimObjectFromLevelContentsStruct(LevelFileContentsStruct_*, int);
+    void InitPlayerWeaponFromLevelContentsStruct(LevelFileContentsStruct_*, int);
     void Shutdown();
     void Reset();
 
@@ -136,6 +179,61 @@ void CAnimObjectFactory::Shutdown() {
 
 void CAnimObjectFactory::Reset() {
     m_free = (CAnimObject*)m_pool;
+    CAnimObject* cur;
+    CAnimObject* obj = (CAnimObject*)m_pool;
+    CAnimObject* last = 0;
+    for (int i = 0; i < m_maxObjects - 1; i++) {
+        cur = obj;
+        obj = (CAnimObject*)((char*)obj + m_objectSize);
+        cur->m_next = obj;
+        last = obj;
+    }
+    last->m_next = 0;
+}
+
+void CAnimObjectFactory::Init(unsigned long maxObjects, char*) {
+    LevelFileContentsStruct_* entry;
+    const char* name;
+    LevelFileContentsStruct_* item;
+    LevelFileContentsStruct_* weapon;
+    LevelFileContentsStruct_* mesh;
+    int count;
+    int index;
+    int size;
+    bool cached;
+    m_maxObjects = maxObjects;
+    entry = TLT_FindNextResourceByType((TLTResourceID)13, 0);
+    m_textures = TLT_LoadFromRepository(entry->m_info->m_texturePack, &size, &cached);
+    m_textures = new (m_textures) CTexturePack;
+    count = 0;
+    for (entry = TLT_FindNextResourceByType((TLTResourceID)9, 0); entry; entry = TLT_FindNextResourceByType((TLTResourceID)9, entry))
+        count++;
+    for (entry = TLT_FindNextResourceByType((TLTResourceID)19, 0); entry; entry = TLT_FindNextResourceByType((TLTResourceID)19, entry))
+        count++;
+    for (mesh = TLT_FindNextResourceByType((TLTResourceID)10, 0); mesh; mesh = TLT_FindNextResourceByType((TLTResourceID)10, mesh)) {
+        name = mesh->m_info->m_name;
+        if (name && !stricmp(&name[strlen(name) - 3], "msh"))
+            g_staticObjCount++;
+    }
+    m_numDefs = count;
+    if (count > 0) {
+        m_defs = new CAnimObjDef[count];
+        index = 0;
+        item = TLT_FindNextResourceByType((TLTResourceID)9, 0);
+        while (item) {
+            InitAnimObjectFromLevelContentsStruct(item, index);
+            item = TLT_FindNextResourceByType((TLTResourceID)9, item);
+            index++;
+        }
+        weapon = TLT_FindNextResourceByType((TLTResourceID)19, 0);
+        while (weapon) {
+            InitPlayerWeaponFromLevelContentsStruct(weapon, index);
+            weapon = TLT_FindNextResourceByType((TLTResourceID)19, weapon);
+            index++;
+        }
+    }
+    qsort(m_defs, m_numDefs, sizeof(CAnimObjDef), CompareObjectDefinitions);
+    m_free = (CAnimObject*)(m_pool = (char*)DWI_alloc("Anim object factory", m_objectSize * m_maxObjects, 1024));
     CAnimObject* cur;
     CAnimObject* obj = (CAnimObject*)m_pool;
     CAnimObject* last = 0;
