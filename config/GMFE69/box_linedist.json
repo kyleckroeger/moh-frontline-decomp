@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800c0320",
-      "size": 1752,
+      "size": 2356,
       "type": 1
     },
     {
@@ -58,6 +58,12 @@
   ],
   "functions": [
     {
+      "name": "Case0__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf",
+      "address": "0x800c09f8",
+      "size": 604,
+      "binding": 0
+    },
+    {
       "name": "Case00__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf",
       "address": "0x800c0894",
       "size": 356,
@@ -71,7 +77,6 @@
     }
   ],
   "externals": {
-    "Case0__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf": "0x800c09f8",
     "Face__FiiiR8CVector3RC8CVector3RC7CVolBoxRC8CVector3PfRf": "0x800c0c54",
     "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
     "Ident__7CMatrixFv": "0x8008f1b0",
@@ -90,7 +95,6 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "Case0__FiiiR8CVector3RC8CVector3RC7CVolBoxPfRf",
     "Face__FiiiR8CVector3RC8CVector3RC7CVolBoxRC8CVector3PfRf"
   ],
   "discarded_local_functions": [],
@@ -114,6 +118,12 @@
       "offset": 4,
       "size": 4,
       "address": "0x80350b40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350b3c"
     }
   ]
 }

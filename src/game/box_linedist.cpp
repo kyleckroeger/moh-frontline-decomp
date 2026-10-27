@@ -1,4 +1,4 @@
-// The start of box.cpp (0x800c0320..0x800c09f8): BoxLineSqrDistance, the
+// The start of box.cpp (0x800c0320..0x800c0c54): BoxLineSqrDistance, the
 // squared distance from a line to a box, following the well-known
 // line-to-box distance (Eberly's SqrDistance(Line3, Box3)): the line is taken
 // into the box's frame (a matrix built from the basis rows and the centre,
@@ -8,10 +8,12 @@
 // below 2^-122 (a pooled constant) count as zero. CaseNoZeros and Case000 are
 // inlined here, as in the original. Case00 (the line meets the box face
 // along i0 with the other two direction components zero: the point moves
-// onto the face and the other two coordinates are clamped) follows as a
-// local function, with the three extents read up front as in the original;
-// Case0 and Face, the file's next local functions, are not part of this
-// unit. Parameter,
+// onto the face and the other two coordinates are clamped) and Case0 (one
+// zero component, i2: the i0/i1 projection is solved in the plane and the
+// i2 coordinate is clamped) follow as local functions, with the three
+// extents read up front through a by-reference form of the extent switch
+// (the value form gives other float registers); Face, the file's next local
+// function, is not part of this unit. Parameter,
 // local and helper names follow that formulation and are not original. The
 // file name is this project's; the original record is box.cpp.
 // CVector3, CMatrix, CLine3, IVolume and CVolBox are named by the mangled
@@ -92,6 +94,19 @@ public:
         }
         return extent;
     }
+    void Extent(int i, float& extent) const {
+        switch (i) {
+        case 0:
+            extent = m_halfWidth;
+            break;
+        case 1:
+            extent = m_halfDepth;
+            break;
+        case 2:
+            extent = m_halfHeight;
+            break;
+        }
+    }
 
     float m_halfWidth;
     float m_halfDepth;
@@ -108,7 +123,7 @@ public:
 };
 
 static void Case00(int, int, int, CVector3&, const CVector3&, const CVolBox&, float*, float&);
-void Case0(int, int, int, CVector3&, const CVector3&, const CVolBox&, float*, float&);
+static void Case0(int, int, int, CVector3&, const CVector3&, const CVolBox&, float*, float&);
 void Face(int, int, int, CVector3&, const CVector3&, const CVolBox&, const CVector3&, float*, float&);
 
 static inline void CaseNoZeros(CVector3& rkPnt, const CVector3& rkDir, const CVolBox& rkBox, float* pfLParam, float& rfSqrDistance) {
@@ -236,9 +251,10 @@ float BoxLineSqrDistance(const CLine3& rkLine, const CVolBox& rkBox, float* pfLP
 }
 
 static void Case00(int i0, int i1, int i2, CVector3& rkPnt, const CVector3& rkDir, const CVolBox& rkBox, float* pfLParam, float& rfSqrDistance) {
-    float fE0 = rkBox.Extent(i0);
-    float fE1 = rkBox.Extent(i1);
-    float fE2 = rkBox.Extent(i2);
+    float fE0, fE1, fE2;
+    rkBox.Extent(i0, fE0);
+    rkBox.Extent(i1, fE1);
+    rkBox.Extent(i2, fE2);
     float fDelta;
 
     if (pfLParam)
@@ -254,6 +270,68 @@ static void Case00(int i0, int i1, int i2, CVector3& rkPnt, const CVector3& rkDi
         fDelta = rkPnt[i1] - fE1;
         rfSqrDistance += fDelta * fDelta;
         rkPnt[i1] = fE1;
+    }
+
+    if (rkPnt[i2] < -fE2) {
+        fDelta = rkPnt[i2] + fE2;
+        rfSqrDistance += fDelta * fDelta;
+        rkPnt[i2] = -fE2;
+    } else if (rkPnt[i2] > fE2) {
+        fDelta = rkPnt[i2] - fE2;
+        rfSqrDistance += fDelta * fDelta;
+        rkPnt[i2] = fE2;
+    }
+}
+
+static void Case0(int i0, int i1, int i2, CVector3& rkPnt, const CVector3& rkDir, const CVolBox& rkBox, float* pfLParam, float& rfSqrDistance) {
+    float fE0, fE1, fE2;
+    rkBox.Extent(i0, fE0);
+    rkBox.Extent(i1, fE1);
+    rkBox.Extent(i2, fE2);
+    float fPmE0 = rkPnt[i0] - fE0;
+    float fPmE1 = rkPnt[i1] - fE1;
+    float fProd0 = rkDir[i1] * fPmE0;
+    float fProd1 = rkDir[i0] * fPmE1;
+    float fDelta, fInvLSqr, fInv;
+
+    if (fProd0 >= fProd1) {
+        rkPnt[i0] = fE0;
+
+        float fPpE1 = rkPnt[i1] + fE1;
+        fDelta = fProd0 - rkDir[i0] * fPpE1;
+        if (fDelta >= 0.0f) {
+            fInvLSqr = 1.0f / (rkDir[i0] * rkDir[i0] + rkDir[i1] * rkDir[i1]);
+            rfSqrDistance += fDelta * fDelta * fInvLSqr;
+            if (pfLParam) {
+                rkPnt[i1] = -fE1;
+                *pfLParam = -(rkDir[i0] * fPmE0 + rkDir[i1] * fPpE1) * fInvLSqr;
+            }
+        } else {
+            if (pfLParam) {
+                fInv = 1.0f / rkDir[i0];
+                rkPnt[i1] -= fProd0 * fInv;
+                *pfLParam = -fPmE0 * fInv;
+            }
+        }
+    } else {
+        rkPnt[i1] = fE1;
+
+        float fPpE0 = rkPnt[i0] + fE0;
+        fDelta = fProd1 - rkDir[i1] * fPpE0;
+        if (fDelta >= 0.0f) {
+            fInvLSqr = 1.0f / (rkDir[i0] * rkDir[i0] + rkDir[i1] * rkDir[i1]);
+            rfSqrDistance += fDelta * fDelta * fInvLSqr;
+            if (pfLParam) {
+                rkPnt[i0] = -fE0;
+                *pfLParam = -(rkDir[i0] * fPpE0 + rkDir[i1] * fPmE1) * fInvLSqr;
+            }
+        } else {
+            if (pfLParam) {
+                fInv = 1.0f / rkDir[i1];
+                rkPnt[i0] -= fProd1 * fInv;
+                *pfLParam = -fPmE1 * fInv;
+            }
+        }
     }
 
     if (rkPnt[i2] < -fE2) {
