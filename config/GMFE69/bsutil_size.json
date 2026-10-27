@@ -39,12 +39,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003bea8",
-      "size": 52,
+      "address": "0x8003bdd0",
+      "size": 268,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Init__35BSUtilObjectInstanceMemoryAllocatorFPviii",
+      "address": "0x8003bdd0",
+      "size": 216,
+      "binding": 1
+    },
     {
       "name": "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii",
       "address": "0x8003bea8",
