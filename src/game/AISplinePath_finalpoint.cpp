@@ -1,4 +1,6 @@
-// A fragment of AISplinePath.cpp (0x8004fcbc):
+// A fragment of AISplinePath.cpp (0x8004fc18): the CAISplinePathManager
+// constructor builds twice the given count of 12-byte spline paths with
+// new[] and clears four members (the manager's members are inferred).
 // CAISplinePathTraversal::GetFinalPointForward expands the path's segment
 // at the index at +4 of the path (+16) at t = 0 into the output position.
 // GetNextPointForward advances the traversal: at the end of the path (states
@@ -89,8 +91,12 @@ inline void CAISplinePathSegment::Expand(float t, CVector3& out) {
 /* inferred: the path's segments and the final segment's index */
 class CAISplinePath {
 public:
+    CAISplinePath();
+    ~CAISplinePath();
+
     CAISplinePathSegment* m_segments;
     int m_last;
+    unsigned char unknown08[4];
 };
 
 class CAISplinePathTraversal {
@@ -117,6 +123,27 @@ public:
     CAISplinePathSegment* m_segment;
     CVector3 m_point;
 };
+
+class CAISplinePathManager {
+public:
+    CAISplinePathManager(unsigned long);
+
+    unsigned long m_count;
+    CAISplinePath* m_paths;
+    int m_unknown08;
+    int m_unknown0c;
+    int m_unknown10;
+    int m_unknown14;
+};
+
+CAISplinePathManager::CAISplinePathManager(unsigned long count) {
+    m_count = count * 2;
+    m_paths = new CAISplinePath[m_count];
+    m_unknown08 = 0;
+    m_unknown0c = 0;
+    m_unknown10 = 0;
+    m_unknown14 = 0;
+}
 
 void CAISplinePathTraversal::GetFinalPointForward(CAIFilterRealPosition* point) {
     m_path->m_segments[m_path->m_last].Expand(0.0f, *(CVector3*)point);

@@ -59,6 +59,7 @@ bytes are verified like every other byte; there are no masks.
 
 | Unit | Function | Action | Offset | Compiled | Original |
 | --- | --- | --- | --- | --- | --- |
+| `AISplinePath_finalpoint` | `__ct__20CAISplinePathManagerFUl` | `0x8b` | `0x16` | `066c` | `2500` |
 
 ## Counting rules
 

@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004fcbc",
-      "size": 1760,
+      "address": "0x8004fc18",
+      "size": 1924,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a9f8",
-      "size": 8,
+      "address": "0x8000a9dc",
+      "size": 36,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011b58",
-      "size": 12,
+      "address": "0x80011b4c",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__ct__20CAISplinePathManagerFUl",
+      "address": "0x8004fc18",
+      "size": 164,
+      "binding": 1
+    },
     {
       "name": "GetFinalPointForward__22CAISplinePathTraversalFP21CAIFilterRealPosition",
       "address": "0x8004fcbc",
@@ -76,7 +82,12 @@
     "GetDistanceSquaredXYReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6d0",
     "MakeModifiedNextPoint__22CAISplinePathTraversalFv": "0x80050760",
     "SetupNextSegmentForward__22CAISplinePathTraversalFRC21CAIFilterRealPosition": "0x800505b0",
-    "UpdateAStarPathWalk__9CAIObjectFv": "0x8004b988"
+    "UpdateAStarPathWalk__9CAIObjectFv": "0x8004b988",
+    "__construct_new_array": "0x801384fc",
+    "__ct__13CAISplinePathFv": "0x800516b0",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__13CAISplinePathFv": "0x80051674",
+    "__nwa__FUl": "0x8001cae8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

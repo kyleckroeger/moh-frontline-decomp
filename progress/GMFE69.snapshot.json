@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1113840,
+    "matching_code_bytes": 1114004,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.74042466555255,
+    "percent": 78.75201827832022,
     "categories": {
-      "reconstructed_game": 883848,
+      "reconstructed_game": 884012,
       "restored_library": 229992
     },
-    "matching_functions": 4736
+    "matching_functions": 4737
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -80,7 +80,7 @@
     "config/GMFE69/AISplinePath_astar.json": "50595422b9e11d1dfcbcdb3ad869f8dd4a9cda1efb835e03328c3574a39b261c",
     "config/GMFE69/AISplinePath_ctor.json": "ce2faed8dc2ac384c264c650ee22da611208d2287174844c43bbab18307bfc96",
     "config/GMFE69/AISplinePath_dtor.json": "ca8a7602d790168f6db0ec8bda87e7df865a8188eaa32138939dd26f9afe87ee",
-    "config/GMFE69/AISplinePath_finalpoint.json": "12c778d7b837283e36c3bb459dc6d422853a685643154f34f438613598dbd64e",
+    "config/GMFE69/AISplinePath_finalpoint.json": "a2d039e2ae5048493e16360088a6ec4719f0e823ebf34ea1b6a5bab8d9fdc7db",
     "config/GMFE69/AISplinePath_prepare.json": "142771234d2a582081f7b252819338d3427416972b6cf103a6f755196579435e",
     "config/GMFE69/AISplinePath_segment.json": "d7c8cddea3e6d1004c0bd38188db68217eabb5d9584b26434afbd21d9517862a",
     "config/GMFE69/AISplinePath_traversal_ctor.json": "546fd718c40f083da366cbe2448b0c90bcff3171998381ed5002ce8b34399d9a",
@@ -655,7 +655,7 @@
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
-    "config/GMFE69/extab_patches.json": "8fb0929b78abe68e5e7a2df29a9fe65d4cd7b6abe72f9c8e06e47b22961cf061",
+    "config/GMFE69/extab_patches.json": "4c5a81dac396a457400a9393f268559eec748567ebbe8a060d568575248938e9",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "cc264d2a9c429542764aa10895a149d9243ee8ca76348c547bf0f1b154bb244f",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -2378,7 +2378,7 @@
     "src/game/AISplinePath_astar.cpp": "74db47dc87b7835f0d0e21d70ae5af7d3bd295add0a29f292eb0c00ddf55cf39",
     "src/game/AISplinePath_ctor.cpp": "9197d89e945988e9d542e242021cbb5de91216598ef0b1a5443173340d65f504",
     "src/game/AISplinePath_dtor.cpp": "0c6b3021d20049aa523f238f211f279cc1afd3918507fc6a0a5b76ba2986a0c6",
-    "src/game/AISplinePath_finalpoint.cpp": "5cc37ec7003ff354863581a108b3195ba584f27f40f46dc1f815a8fe073da7e6",
+    "src/game/AISplinePath_finalpoint.cpp": "8f9c858d600c9d8618516cbb18610b1a353003cb8279076a7d1af19899e12ba9",
     "src/game/AISplinePath_prepare.cpp": "d491c7dc2f27f4e8c21566c25d409dd49a8897134ceeed1449b079979f0e2446",
     "src/game/AISplinePath_segment.cpp": "1fe2fd163252000e51eebebe305b7b512b764df07fbb755713d07c86e061d126",
     "src/game/AISplinePath_traversal_ctor.cpp": "1bea30b7390eb51ee337eeb9e944c1afc97abce9a6476cb35650c09b285460d7",
@@ -46893,8 +46893,8 @@
     {
       "id": "AISplinePath_finalpoint",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 1760,
+      "functions": 3,
+      "code_bytes": 1924,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -46926,8 +46926,18 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ae69eb091c8d670b53b46029f71952724ae06138a7dc36d05283304e3bf98aa9",
-      "linked_sha256": "bf572dd77d6102b50423dc092fb43da65d377bb167fb4e823c09b9e347e9896b"
+      "object_sha256": "610aa6ac0c0cc88ed6faaffb40d0f04c3cb41ce6143bb6dcacbb2e98fd1976e2",
+      "extab_patches": [
+        {
+          "unit": "AISplinePath_finalpoint",
+          "function": "__ct__20CAISplinePathManagerFUl",
+          "offset": "0x16",
+          "action": "0x8b",
+          "compiled": "066c",
+          "original": "2500"
+        }
+      ],
+      "linked_sha256": "c3e2411c0b8a1e7966a2ffcdc70820fa4f273dab0cea422cb57bc3c68503505a"
     },
     {
       "id": "animseq_start",
@@ -56076,13 +56086,6 @@
             "size": 136,
             "kind": "function",
             "name": "AllocateGenerateBuffers__20CAISplinePathManagerFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004fc18",
-            "size": 164,
-            "kind": "function",
-            "name": "__ct__20CAISplinePathManagerFUl",
             "evidence": "exception-index"
           },
           {
