@@ -576,8 +576,112 @@ inline int BSInstructionArgument() {
     return *g_piIP >> 16;
 }
 
-// BSOpCodeFunc_NEXTSTATE (first in the file) is not part of this fragment.
-void BSOpCodeFunc_NEXTSTATE();
+void BSOpCodeFunc_NEXTSTATE() {
+    int registerMessages;
+    BSMachineThread_struct *thread;
+    BSStateView **states;
+    int nextState;
+    int depth;
+    bool foundExit;
+    BSEventView *event;
+    unsigned short state;
+    bool leaveStates;
+    BSStateView *stateEntry;
+    int eventCount;
+    int i;
+    BSMessageListView **link;
+    BSMessageListView *entry;
+    BSMessageListView *next;
+    BSCode_MessageHandlerEntry_struct *message;
+    int count;
+    int j;
+    unsigned int code;
+    registerMessages = 1;
+    thread = g_pbmtThread;
+    states = thread->level->states;
+    nextState = static_cast<unsigned short>(*g_piStackTop);
+    depth = g_ppsteStateEntries[nextState]->depth;
+    foundExit = false;
+    leaveStates = depth <= g_ppsteStateEntries[thread->stateId]->depth;
+    event = 0;
+    if (!(thread->flags & 1) && leaveStates) {
+        state = thread->stateId;
+        while (state != 0xffff && !foundExit) {
+            stateEntry = states[state];
+            if (stateEntry->depth < depth)
+                break;
+            eventCount = stateEntry->eventCount;
+            event = stateEntry->events;
+            for (i = 0; i < eventCount; ++event, ++i) {
+                if (event->eventNumber == 1) {
+                    if (event->flags & 1)
+                        foundExit = true;
+                    break;
+                }
+                if (event->eventNumber > 1)
+                    break;
+            }
+            state = stateEntry->parent;
+        }
+    }
+    if (!foundExit) {
+        thread->flags &= ~1;
+        if (thread->stateId != nextState) {
+            if (leaveStates) {
+                link = &thread->messages;
+                entry = thread->messages;
+                while (entry) {
+                    next = entry->next;
+                    if (entry->depth > (unsigned int)depth
+                            || (entry->depth == (unsigned int)depth && entry->stateId != nextState)) {
+                        *link = entry->next;
+                        BSMessageRemoveHandler(entry->handler);
+                        entry->next = g_MessageListHead;
+                        g_MessageListHead = entry;
+                        if (entry->registration)
+                            reinterpret_cast<BSMessageRegistrationView*>(entry->registration)->flags &= 0xfffd;
+                    } else {
+                        if (entry->stateId == nextState)
+                            registerMessages = 0;
+                        link = &entry->next;
+                    }
+                    entry = next;
+                }
+            } else {
+                registerMessages = 1;
+            }
+            thread->stateId = nextState;
+            thread->state = g_ppsteStateEntries[nextState];
+            if (registerMessages) {
+                message = thread->state->messages;
+                count = thread->state->messageCount;
+                state = nextState;
+                for (j = 0; j < count; ++j) {
+                    BSMessageRegistration_struct *registration;
+                    BSMessageRegistration_struct *handler = BSRegisterMessage(
+                        &message[j], g_pBSObject, state, thread, &registration);
+                    entry = BSMachineGetFreeMessageList();
+                    entry->next = thread->messages;
+                    entry->registration = registration;
+                    entry->handler = handler;
+                    entry->depth = depth;
+                    entry->stateId = nextState;
+                    thread->messages = entry;
+                }
+            }
+        }
+        code = thread->state->code;
+        g_piIP = g_piCodeBase[code >> 24] + (code & 0x00ffffff);
+        g_piStackTop = g_piFrame - 1;
+    } else {
+        thread->flags |= 1;
+        g_piStackTop = g_piFrame + 1;
+        code = event->code;
+        *reinterpret_cast<unsigned int *>(g_piStackTop - 1) = nextState;
+        *reinterpret_cast<BSObject **>(g_piStackTop) = g_pBSObject;
+        g_piIP = g_piCodeBase[code >> 24] + (code & 0x00ffffff);
+    }
+}
 
 void BSOpCodeFunc_TRACE() {
     ++g_piIP;
