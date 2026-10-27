@@ -39,8 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800af468",
-      "size": 36,
+      "address": "0x800af260",
+      "size": 556,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d3b8",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800144a4",
+      "size": 12,
       "type": 1
     }
   ],
@@ -50,9 +62,21 @@
       "address": "0x800af468",
       "size": 36,
       "binding": 1
+    },
+    {
+      "name": "SetMovementPath__13CStaticObjectFibbffffP8BSObjectfb",
+      "address": "0x800af260",
+      "size": 520,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSplinePath__15CAIFilterGlobalCFUlb": "0x8005d6d4",
+    "PrepareForTraversalForward__22CAISplinePathTraversalFP13CAISplinePathbP15CAIFilterObject": "0x8005041c",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "g_scene": "0x8019484c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -60,5 +84,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "static_obj.cpp",
-  "original_file_index": 6731
+  "original_file_index": 6731,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350880"
+    }
+  ]
 }
