@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,19 +39,38 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d8148",
-      "size": 88,
+      "address": "0x800d80e0",
+      "size": 308,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e8dc",
-      "size": 16,
+      "address": "0x8000e8d4",
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015674",
+      "address": "0x80015668",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178104",
+      "size": 37,
+      "type": 1,
+      "input_alignment": 4
+    },
+    {
+      "name": ".data",
+      "address": "0x8018a1a0",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e2a0",
       "size": 24,
       "type": 1
     }
@@ -64,6 +83,18 @@
       "binding": 1
     },
     {
+      "name": "__dt__9IObserverFv",
+      "address": "0x800d80e0",
+      "size": 104,
+      "binding": 1
+    },
+    {
+      "name": "__dt__8ISubjectFv",
+      "address": "0x800d81a0",
+      "size": 116,
+      "binding": 1
+    },
+    {
       "name": "NotifyObservers__8ISubjectF13ESubjectEvent",
       "address": "0x800d8180",
       "size": 32,
@@ -71,8 +102,12 @@
     }
   ],
   "externals": {
+    "Destroy__13IDestructibleFv": "0x8001b054",
     "MarkForDestruction__13IDestructibleFi": "0x800dd524",
-    "PublishEvent__10CPublisherFR8ISubject13ESubjectEvent": "0x800d7718"
+    "PublishEvent__10CPublisherFR8ISubject13ESubjectEvent": "0x800d7718",
+    "RemoveObserver__10CPublisherFR9IObserver": "0x800d7d58",
+    "__dl__FPv": "0x8001ca2c",
+    "__vt__13IDestructible": "0x8018a228"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

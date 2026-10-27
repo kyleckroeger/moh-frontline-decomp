@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1105364,
+    "matching_code_bytes": 1105584,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.14123282519377,
+    "percent": 78.15678523256504,
     "categories": {
-      "reconstructed_game": 875372,
+      "reconstructed_game": 875592,
       "restored_library": 229992
     },
-    "matching_functions": 4725
+    "matching_functions": 4727
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -922,7 +922,7 @@
     "config/GMFE69/proxtrig_leafs.json": "86f686d585276cfe2c961d694a16196f5c7dccf5e486654378c5903c60318a49",
     "config/GMFE69/proxtrig_point.json": "08a77c56fc3b9d6474931aec5cb345283e54994635872e77321900bb06e179a3",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
-    "config/GMFE69/publisher.json": "89c7f107dc348d73abd19bedbaf5b7c4ad534145f63e8a71a9ab5646117cd718",
+    "config/GMFE69/publisher.json": "a31413c1f5b6efb8f9357657c5bb00c10aec7b392999d148f0a0e8d69fac4639",
     "config/GMFE69/publisher_erase.json": "f7e3118f53bf30e77c3da1b38403fd7fe0ee497ddfc67e7c4b636e12ae5baffa",
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
     "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
@@ -2996,7 +2996,7 @@
     "src/game/propdat_restart.cpp": "fbbc2820cf6df3937fdf86cece40194167025b89b0761ae6f23c7cae5464c7e5",
     "src/game/proxtrig_leafs.cpp": "e8c0a8365515453c9b939a9e0115f55ce91d80c7413ae0ced407e97c0a26ecf8",
     "src/game/proxtrig_point.cpp": "cae61da650ac014e78ac166b40ae5f2424133c367c8b6010f8fa654dc13e176d",
-    "src/game/publisher.cpp": "87dc201dcba9b510e214728ce34a9be1e5464a58669450da2666ef90c33df968",
+    "src/game/publisher.cpp": "be8db65e325ce14946ab26154cef64008f577aaf7689b22bd3ac8b297ad78b23",
     "src/game/publisher_erase.cpp": "0bc60cf16d324d4dfb54804240d3cc08e80f87017a9163bf04fcae532794be39",
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
@@ -21529,8 +21529,8 @@
     {
       "id": "publisher",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 88,
+      "functions": 4,
+      "code_bytes": 308,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21547,12 +21547,12 @@
         "on",
         "-O4,p",
         "-inline",
-        "auto",
+        "deferred",
         "-pragma",
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -21562,8 +21562,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "48a5973fccfa162bbce858f6dd79d87d0c5499009b8584d37988bd20e591354b",
-      "linked_sha256": "a6d1d551609797e0b34df8987ed151a7bdae947fdff83e112189c442b8066018"
+      "object_sha256": "8b757d9ba175b86097a0f51718157be96060a1d74337b3a335bb2cd11232ad6f",
+      "linked_sha256": "38f64b922794c3a33679906716f3a65e12dc3eb7e6a334d09ce5909f82a087fa"
     },
     {
       "id": "hierobject",
@@ -57334,20 +57334,6 @@
             "size": 568,
             "kind": "function",
             "name": "PublishEvent__10CPublisherFR8ISubject13ESubjectEvent",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d80e0",
-            "size": 104,
-            "kind": "function",
-            "name": "__dt__9IObserverFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d81a0",
-            "size": 116,
-            "kind": "function",
-            "name": "__dt__8ISubjectFv",
             "evidence": "exception-index"
           }
         ]
