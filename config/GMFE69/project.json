@@ -1278,7 +1278,8 @@
     "staticobjfactory_patchmvd.json",
     "player_commit.json",
     "skelblend.json",
-    "player_beginupdate.json"
+    "player_beginupdate.json",
+    "ShellMenu_update.json"
   ],
   "progress": {
     "code_bytes": 1414572,
