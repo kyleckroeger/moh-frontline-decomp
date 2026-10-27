@@ -1,0 +1,166 @@
+{
+  "id": "bsbifunc_waypointinfo",
+  "source": "src/game/bsbifunc_waypointinfo.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80027e94",
+      "size": 2044,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x80009c34",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80010814",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80182910",
+      "size": 44,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BIFunc_GetWayPointInfo__FPPiPv",
+      "address": "0x80027e94",
+      "size": 2044,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "CalculateAngleDiff__27CAIFilterRealEulerDirectionCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionPfPf": "0x8005a568",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "IsMGUsed__FP20TriggerObject_struct": "0x800421ac",
+    "MathFunAtan2F__Fff": "0x8009358c",
+    "MathFunNormalizeAngleNegativePiToPi__Ff": "0x8009340c",
+    "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBSObject": "0x8034e7e0",
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_pTriggerObjects": "0x801a1300",
+    "printf": "0x8013dc88",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_iCurrentBIFIndex",
+    "g_pBSObject",
+    "g_pBuiltInFunctions",
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "bsbifunc.cpp",
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 48,
+      "address": "0x8016e968"
+    },
+    {
+      "section": ".rodata",
+      "offset": 48,
+      "size": 56,
+      "address": "0x8016e998"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f628"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f630"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f640"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f6e4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f6e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034f6ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f6f0"
+    }
+  ]
+}

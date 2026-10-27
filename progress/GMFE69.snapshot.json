@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1115460,
+    "matching_code_bytes": 1117504,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.85494693801375,
+    "percent": 78.99944294104506,
     "categories": {
-      "reconstructed_game": 885468,
+      "reconstructed_game": 887512,
       "restored_library": 229992
     },
-    "matching_functions": 4740
+    "matching_functions": 4741
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -492,6 +492,7 @@
     "config/GMFE69/bsbifunc_targetsearch.json": "c43a5547e3af98d8d93bbcda8a0744bf129debffd171acb3d3ad166f7cd48367",
     "config/GMFE69/bsbifunc_translate.json": "1a144fd68ee4fc87e3944f3711817a1f846a56b4d3a5ea8e198315a32d03a974",
     "config/GMFE69/bsbifunc_vibration.json": "e51d7548d0337eea6a4f49cff6977eff9349c8d7e2d573a7e1f4d0349e1f0b3e",
+    "config/GMFE69/bsbifunc_waypointinfo.json": "472de43ee2cbd4a4dc813dcd3e1b4ff4ff66ed1bbec125b86309556fb4c5c576",
     "config/GMFE69/bsearch.json": "dd287b9523a5f289e22dc32f273d0f9756b610c9280ec41b84aac1d7ea50912b",
     "config/GMFE69/bsevents.json": "bf2b1285d474889e2f47f4d33dff1c673341bcf69c172d94ec39472eef01f369",
     "config/GMFE69/bsevents_head.json": "214dd97eb3b394d4a514cc4f7584f6bac263f5a8692e7ab38f1a59add09c3199",
@@ -901,7 +902,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "c2835f12d00daad0ea4e8b1146fed6795940ded03f0312d3e2b5ade0e95c8c28",
+    "config/GMFE69/project.json": "7d3e472c9b9b1a8eda15db57e3f8109ecfb91eb65964965cff4b181011ff5df0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -2690,6 +2691,7 @@
     "src/game/bsbifunc_targetsearch.cpp": "2f37472d39598f35847a4097b1394e449d40c0ec37f9d0aafcff0758bd3913a5",
     "src/game/bsbifunc_translate.cpp": "d1915d1a5106223f684829156d43feab4702a6fdc447b2532addd9941ddc195e",
     "src/game/bsbifunc_vibration.cpp": "b228bd856ecceba96d13ef3c83073889da732ca612603933e15e902ba8dbd9b9",
+    "src/game/bsbifunc_waypointinfo.cpp": "4725e14b212eba5c31ce4b97729b38e55573d46313f5fa414dda5861f5b4b5e1",
     "src/game/bsevents.cpp": "b452c77e9fd44429b0a8d8c9105a2ca9ee4bf43903bd7c71f1d82ed932f382c3",
     "src/game/bsevents_head.cpp": "b485fb5293b1ed2cb8052f460e86469f0eeabec70a4810718761d759b6d339eb",
     "src/game/bsevents_queue.cpp": "678dc2a5de24106c16e3f63e5d22d765f7279af4e4c4b77d5a51eedf13cc943f",
@@ -55613,6 +55615,45 @@
       "discarded_functions": [],
       "object_sha256": "5f5be638520974334d82388c37f85a44020c6c43d054eb4caefd4f836d673231",
       "linked_sha256": "756a040d71d6137ed499e3107f62a91237b0cdef38bee23cc733453c45079bbb"
+    },
+    {
+      "id": "bsbifunc_waypointinfo",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 2044,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "71035a4dfe8d312a672f95b4b64b2889b1a2eb428f5479ba7201bac02cb70e01",
+      "linked_sha256": "cd27609e8091f736a88b7a79dc715b3a99f8b64b09b38be3cd4a8431e9db5a99"
     }
   ],
   "code_map": {
@@ -55773,13 +55814,6 @@
             "size": 1028,
             "kind": "function",
             "name": "BIFunc_AddPlayerAmmo__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80027e94",
-            "size": 2044,
-            "kind": "function",
-            "name": "BIFunc_GetWayPointInfo__FPPiPv",
             "evidence": "exception-index"
           },
           {
