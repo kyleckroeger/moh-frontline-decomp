@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8005314c",
-      "size": 604,
+      "size": 1048,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000aad8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011c6c",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -61,6 +61,12 @@
       "name": "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE",
       "address": "0x8005314c",
       "size": 604,
+      "binding": 1
+    },
+    {
+      "name": "GetAvailablePeekPosition__11CCoverPointCFv",
+      "address": "0x800533a8",
+      "size": 444,
       "binding": 1
     }
   ],
@@ -80,9 +86,41 @@
   "original_file": "CoverPoint.cpp",
   "original_file_index": 2151,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata",
+    ".sdata"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 64,
+      "address": "0x8016fc70"
+    },
+    {
+      "section": ".sdata",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034da90"
+    },
+    {
+      "section": ".sdata",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034da94"
+    },
+    {
+      "section": ".sdata",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034da98"
+    },
+    {
+      "section": ".sdata",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034da9c"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
