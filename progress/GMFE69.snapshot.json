@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1103480,
+    "matching_code_bytes": 1104108,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.00804766388703,
+    "percent": 78.05244271765594,
     "categories": {
-      "reconstructed_game": 873488,
+      "reconstructed_game": 874116,
       "restored_library": 229992
     },
-    "matching_functions": 4721
+    "matching_functions": 4722
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -863,7 +863,7 @@
     "config/GMFE69/player_bullet.json": "a67aa2d0032c745e279f533d568e67782401f195ed12f7df4d41bd4519d88950",
     "config/GMFE69/player_commit.json": "3668a381c6f891868a20d17bc78f04225006f4c48b9ffbb4d7442562ec0e05e5",
     "config/GMFE69/player_constrain.json": "c900c79403bf4d63337eb5f017156a653081e8ed42bd07dca6ee61e7bbff098b",
-    "config/GMFE69/player_crouch.json": "5241e72dcaad0ca63526d95f16acc2790e4a728fcb0729ee6f68302f80ef67db",
+    "config/GMFE69/player_crouch.json": "55f015bfba1d0c9be91d14cda640df668d00e34768ffeea0ed5fe8df14e85003",
     "config/GMFE69/player_ctor.json": "5bceac2b5529aa93e70749117b0e33b9b0bed1a5054863120adc74abcba83f72",
     "config/GMFE69/player_death.json": "345a6f76314776f3fb60493e93691b775e5919394fe5ada799cef0def9610cd7",
     "config/GMFE69/player_draw.json": "0efe7656d98a6ecf10f34000ac69dac3ec549bbadb998fa10e740b8c86bf57a1",
@@ -2943,7 +2943,7 @@
     "src/game/player_bullet.cpp": "163bfce0e418adc7a399771fd020c883ac8d9f73270407c22ea48ec71c35672a",
     "src/game/player_commit.cpp": "659dbec30b92b256210a7d50875c184cc180816205dd53010cf2fcba6301c6a1",
     "src/game/player_constrain.cpp": "38f3ce58d4b6d37fad159de71494326a2303e3801caba17ca2a5e732cb9dfa38",
-    "src/game/player_crouch.cpp": "9d4839b777011ed4ed22f46d1e01123df0cbe1a495d635d2e046839e4f0da8f0",
+    "src/game/player_crouch.cpp": "85d6f8c052df4252049aab2d3783c8907e2c9e9c639ac611985d97dde68c4c06",
     "src/game/player_ctor.cpp": "c3c04b2fabbfb00a00d81d7e50a2ca86ec9ed4dd1b293b4c7b7ebbb48c99790a",
     "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
     "src/game/player_draw.cpp": "643e05245be92bae37e0e306cc6910d4796ad94993aea0b3e3f769f614a87f45",
@@ -44381,8 +44381,8 @@
     {
       "id": "player_crouch",
       "category": "reconstructed_game",
-      "functions": 9,
-      "code_bytes": 1928,
+      "functions": 10,
+      "code_bytes": 2556,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44414,8 +44414,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d50d02eaf9627aa9a56c3e0bf720e9acbe7c52a23efd7a4908ee33b31d026966",
-      "linked_sha256": "43acb4ae476eea77a340b41dca718d5c9b3104fffe34f4318a8d805f1411dc9c"
+      "object_sha256": "917fb6506ff73b837f07e1455d270eb9077aa004e641b9bfcf782bfc5234394b",
+      "linked_sha256": "8a0def530b34f17ed9d0b8baa7f16d38a217da678bc0dba4f538ac98e9260266"
     },
     {
       "id": "rcmp_mpc_frames",
@@ -56937,13 +56937,6 @@
         "file_record": 114,
         "file_name": "player.cpp",
         "ranges": [
-          {
-            "address": "0x8009ce84",
-            "size": 628,
-            "kind": "function",
-            "name": "PeekLeftRight__13CPlayerObjectFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8009d470",
             "size": 392,

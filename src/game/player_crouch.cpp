@@ -24,7 +24,14 @@
 // target height blended by the fraction between the standing height 1.1 and
 // the crouched height (0.7 in multiplayer, else 0). The event views, flag
 // and field names are inferred, and the MSL-style inline sqrtf is as in
-// bsbifunc_targetsearch.cpp. The rest of the file is not part of this unit.
+// bsbifunc_targetsearch.cpp. PeekLeftRight reads the peek axis (input 8,
+// scaled by 1/128), sets the peeking flags (started when peeking begins),
+// keeps the matrix's right vector, and turns the peek base moved along it,
+// less the position and flattened, scaled to 0.0417 (over its length above
+// 0.1), into the local x/y peek offsets through the matrix's fast inverse;
+// the offset sums are updated in place with ox, oy, peek and len declared
+// at the top (that sets the float registers). The rest of the file is not
+// part of this unit.
 extern bool g_bInMultiplayerMode;
 
 void AEMS_SendEvent(void*);
@@ -39,6 +46,19 @@ struct PlayerSoundEvent {
     int unknown14;
     int unknown18;
 };
+
+
+class CShellMenu;
+enum EShotLocations {};
+
+class CShellMenu {
+public:
+    void Add_MPShotLocation(int, int, int, EShotLocations);
+
+    unsigned char unknown0000[0x19dc];
+};
+
+extern CShellMenu g_Shell;
 
 extern inline float sqrtf(float x)
 {
@@ -57,27 +77,72 @@ extern inline float sqrtf(float x)
     return x;
 }
 
-class CShellMenu;
-enum EShotLocations {};
-
-class CShellMenu {
-public:
-    void Add_MPShotLocation(int, int, int, EShotLocations);
-
-    unsigned char unknown0000[0x19dc];
-};
-
-extern CShellMenu g_Shell;
-
 class CPlayerObject;
 
 class CVector3 {
 public:
+    CVector3 operator+(const CVector3& v) const {
+        CVector3 r;
+        r.x = x + v.x;
+        r.y = y + v.y;
+        r.z = z + v.z;
+        return r;
+    }
+    CVector3 operator-(const CVector3& v) const {
+        CVector3 r;
+        r.x = x - v.x;
+        r.y = y - v.y;
+        r.z = z - v.z;
+        return r;
+    }
+    void operator*=(float f) {
+        x *= f;
+        y *= f;
+        z *= f;
+    }
+    float Length() const { return sqrtf(x * x + y * y + z * z); }
+
     float x;
     float y;
     float z;
     float w;
 } __attribute__((aligned(8)));
+
+inline CVector3 operator*(float f, const CVector3& v) {
+    CVector3 r;
+    r.x = f * v.x;
+    r.y = f * v.y;
+    r.z = f * v.z;
+    return r;
+}
+
+class CMatrix {
+public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    CVector3 GetRight() const { return right; }
+    void FastInverse(const CMatrix&);
+    void TransformVector(CVector3&, CVector3) const;
+    static void InitClass();
+    static bool s_ClassInit;
+
+    CVector3 right;
+    CVector3 front;
+    CVector3 up;
+    CVector3 pos;
+} __attribute__((aligned(16)));
+
+class CInputManager {
+public:
+    int GetValue(unsigned long, unsigned long);
+
+    unsigned char unknown0000[0x2450];
+};
+
+extern CInputManager g_inputMgr;
+inline double fabs(double x) { return __fabs(x); }
 
 class CQuaternion {
 public:
@@ -219,27 +284,35 @@ public:
     void PlaySounds(bool, bool, float, float);
     void DuckDown(float);
     void PeekUp(float);
+    void PeekLeftRight();
 
-    unsigned char unknown004[172];
-    CVector3 m_position;
+    unsigned char unknown004[124];
+    CMatrix m_matrix;
     unsigned char unknown0c0[400];
     ShotStatsView* m_stats;
     unsigned char unknown254[4];
     float m_velocityX;
     float m_velocityY;
     float m_velocityZ;
-    unsigned char unknown264[52];
+    unsigned char unknown264[4];
+    float m_peekOffsetX;
+    float m_peekOffsetY;
+    unsigned char unknown270[40];
     float m_height;
-    unsigned char unknown29c[8];
+    float m_field29c;
+    unsigned char unknown2a0[4];
     float m_heightSpeed;
     unsigned char unknown2a8[236];
     unsigned char m_flags394 : 7;
     bool m_flag394 : 1;
-    unsigned char m_flags395a : 4;
+    unsigned char m_flags395a : 3;
+    bool m_peeking : 1;
     bool m_flag395 : 1;
     unsigned char m_flags395b : 3;
     unsigned char m_flag396 : 1;
-    unsigned char m_flags396 : 7;
+    unsigned char m_flags396a : 1;
+    bool m_peekStarted : 1;
+    unsigned char m_flags396b : 5;
     bool m_weaponHidden : 1;
     unsigned char m_flags397a : 2;
     bool m_flag397 : 1;
@@ -247,12 +320,19 @@ public:
     unsigned char m_flags397b : 3;
     unsigned char unknown398[4];
     float m_footstepTimer;
-    unsigned char unknown3a0[188];
+    unsigned char unknown3a0[64];
+    CVector3 m_peekBase;
+    CVector3 m_peekRight;
+    unsigned char unknown400[72];
+    float m_field448;
+    unsigned char unknown44c[16];
     int m_currentWeapon;
     CWeapon* m_weapons[188];
     short m_soundHandle;
     short m_landTimer;
-    unsigned char unknown754[24];
+    unsigned char unknown754[16];
+    unsigned long m_inputPort;
+    unsigned char unknown768[4];
     int m_playerIndex;
     unsigned char unknown770[2858];
     char m_name[16];
@@ -267,7 +347,7 @@ void CPlayerObject::DropMPDumpObject() {
         int type = *info->type;
         int flag = info->flagBase + info->flagOffset;
         CQuaternion rotation(0.0f, 0.0f, 0.0f, 1.0f);
-        CVector3 position = m_position;
+        CVector3 position = m_matrix.pos;
         CreateDumpObject(position, rotation, type, flag);
     }
 }
@@ -462,4 +542,47 @@ void CPlayerObject::PeekUp(float t) {
     float high = 1.1f;
     float target = high * t + low * (1.0f - t);
     m_heightSpeed = 0.04170838f * (target - m_height) / 0.1f;
+}
+
+void CPlayerObject::PeekLeftRight() {
+    CVector3 dir;
+    CVector3 local;
+    float ox;
+    float oy;
+    float peek;
+    float len;
+    peek = 0.0078125f * g_inputMgr.GetValue(m_inputPort, 8);
+    m_peekStarted = false;
+    if ((float)fabs(peek) > 0.01f) {
+        if (!m_peeking)
+            m_peekStarted = true;
+        m_peeking = true;
+    } else {
+        m_peeking = false;
+    }
+    CVector3 right = m_matrix.right;
+    ((double*)&m_peekRight)[0] = ((double*)&right)[0];
+    ((double*)&m_peekRight)[1] = ((double*)&right)[1];
+    m_field448 = m_field29c;
+    ox = peek * m_peekRight.x;
+    oy = peek * m_peekRight.y;
+    peek *= m_peekRight.z;
+    ox += m_peekBase.x;
+    oy += m_peekBase.y;
+    peek += m_peekBase.z;
+    CVector3 pos = m_matrix.pos;
+    dir.x = ox - pos.x;
+    dir.y = oy - pos.y;
+    dir.z = peek - pos.z;
+    dir.z = 0.0f;
+    len = dir.Length();
+    if (len > 0.1f)
+        dir *= 0.04170838f / len;
+    else
+        dir *= 0.04170838f;
+    CMatrix inverse;
+    inverse.FastInverse(m_matrix);
+    inverse.TransformVector(local, dir);
+    m_peekOffsetX = local.x;
+    m_peekOffsetY = local.y;
 }

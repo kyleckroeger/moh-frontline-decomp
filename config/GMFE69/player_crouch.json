@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8009c6fc",
-      "size": 1928,
+      "size": 2556,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cd4c",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013e80",
-      "size": 48,
+      "size": 60,
       "type": 1
     },
     {
@@ -116,15 +116,27 @@
       "address": "0x8009ce38",
       "size": 76,
       "binding": 1
+    },
+    {
+      "name": "PeekLeftRight__13CPlayerObjectFv",
+      "address": "0x8009ce84",
+      "size": 628,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_SendEvent__FPv": "0x800ec26c",
     "Add_MPShotLocation__10CShellMenuFiii14EShotLocations": "0x800e6950",
     "CreateDumpObject__FRC8CVector3RC11CQuaternionii": "0x8003fc2c",
+    "FastInverse__7CMatrixFRC7CMatrix": "0x8008f8fc",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "MakeNoise__FP10ISceneNodeifi": "0x8002bb64",
+    "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
     "g_Shell": "0x80195090",
-    "g_bInMultiplayerMode": "0x8034eca5"
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_inputMgr": "0x801ec80c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -132,7 +144,8 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_bInMultiplayerMode"
+    "g_bInMultiplayerMode",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "player.cpp",
   "original_file_index": 6101,
@@ -265,6 +278,24 @@
       "offset": 92,
       "size": 4,
       "address": "0x803505a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 96,
+      "size": 4,
+      "address": "0x803505a4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 100,
+      "size": 4,
+      "address": "0x803505a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 104,
+      "size": 8,
+      "address": "0x803505b0"
     }
   ]
 }
