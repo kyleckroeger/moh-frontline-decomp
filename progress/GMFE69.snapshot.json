@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1070304,
+    "matching_code_bytes": 1070848,
     "total_executable_code_bytes": 1414572,
-    "percent": 75.66274463229867,
+    "percent": 75.70120149416219,
     "categories": {
-      "reconstructed_game": 840312,
+      "reconstructed_game": 840856,
       "restored_library": 229992
     },
-    "matching_functions": 4699
+    "matching_functions": 4700
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -740,7 +740,7 @@
     "config/GMFE69/light_animmanager.json": "2e9a7c5f280a2aedd471b0153345f8557bfd91b140c72e7a119a8ecb8495774a",
     "config/GMFE69/light_animmanager_dtor.json": "6b170da52539da07540d0c77b71341b45d5ca1c51074abee5ff3790895294a65",
     "config/GMFE69/light_destroy.json": "8189e98d5c820d25d4a2567eaaac5f41797567f452a6a1cff0d062857922f4f2",
-    "config/GMFE69/light_dtor.json": "0c78711ec0f90949b7014c91aada7c828ba6131a161b8ad50da5571a8ef1b84d",
+    "config/GMFE69/light_dtor.json": "6e3d3ba65b7543aaee56f8944a68f799bddbb2d8df500f59601c2fac7d479968",
     "config/GMFE69/light_instanced_dtor.json": "960ee911950d8c846b9b641d00302051d9d3eaf0adeeca0446a5d663d3471c4b",
     "config/GMFE69/light_propertyanim_dtor.json": "f5cd1857fa9e57dcb4ca6c631dae9f879cb945d58e767af679b686b752982bff",
     "config/GMFE69/light_propertyanim_update.json": "30a20b5281d3201eeff834c74d292d36c7791db815124f21e1ed31a6b0e13193",
@@ -2868,7 +2868,7 @@
     "src/game/light_animmanager.cpp": "2b7a2b9080067e2c9aae6442b240292e62829640df505e38b25c262770de22e4",
     "src/game/light_animmanager_dtor.cpp": "2efd3ac7f402f9405cf423f15b9342ac2676b64494b475a4e415588ba83b5655",
     "src/game/light_destroy.cpp": "4bb90b0be5cc3ac9b509ca93ccbd9d690bbe62743d19037bfdcfb4f65da64a36",
-    "src/game/light_dtor.cpp": "17bcb6248b274d92b93f74644d29bbc3940ae94b5d946121dcdab18914254825",
+    "src/game/light_dtor.cpp": "16a2e7decfac0957bca96bc979f7a815f807aa0fe78bfe0f6c7ad5fb0946ebbb",
     "src/game/light_instanced_dtor.cpp": "dfe26b5ce2aedaefdb8fbbb89a9713b184518048a510d02cfa2d9a07b139892b",
     "src/game/light_propertyanim_dtor.cpp": "80dcf90c6fe5c35c37cb8f7c03bdaadc4678064fb5631051424a96f3fb9fabaa",
     "src/game/light_propertyanim_update.cpp": "f224bc174dcc6cceb1190fa890ff2a83eeb77ad94a6d643e25f829db180ca365",
@@ -37453,8 +37453,8 @@
     {
       "id": "light_dtor",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 128,
+      "functions": 2,
+      "code_bytes": 672,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -37486,8 +37486,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "81ba58b5ea24cc3edf16ed8afc47744758137351820df586e8479df990b59c5d",
-      "linked_sha256": "cc7964f449fbf2a868763b6985e9d953c7ac5f398f63ab3926120650e034db25"
+      "object_sha256": "b527a072d189da6a54e5251b77bfe779eced94581514b97e6069515223fbb6fb",
+      "linked_sha256": "f806eaf956c514b8ef3879c41efb308a8f74f153206a65cf0798182c8ef0688e"
     },
     {
       "id": "impact_dtor",
@@ -56279,20 +56279,6 @@
             "kind": "function",
             "name": "__sinit_compartment_cpp",
             "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/light.cpp [symbol evidence]",
-        "file_record": 66,
-        "file_name": "light.cpp",
-        "ranges": [
-          {
-            "address": "0x80078384",
-            "size": 544,
-            "kind": "function",
-            "name": "SetDefaultLight__6CLightFQ26CLight14EDefaultLights8CVector36CColorf",
-            "evidence": "exception-index"
           }
         ]
       },
