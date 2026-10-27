@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1080296,
+    "matching_code_bytes": 1080940,
     "total_executable_code_bytes": 1414572,
-    "percent": 76.3691066979977,
+    "percent": 76.41463283593907,
     "categories": {
-      "reconstructed_game": 850304,
+      "reconstructed_game": 850948,
       "restored_library": 229992
     },
-    "matching_functions": 4708
+    "matching_functions": 4709
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -897,7 +897,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "3a1a249603ece128dbcc980dc9451e60fd0716cdb8eacd21829a82b359fa80d5",
+    "config/GMFE69/project.json": "68705e884100979a9a3d61a8055ef6ed8ef9b07525db22fab80ec0e66e2011a7",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -1072,6 +1072,7 @@
     "config/GMFE69/sinit16.json": "1fe69c7afc1922b89561c7e175f2611fc832431c8e7e07ebbae6e0e54c202a2e",
     "config/GMFE69/sinitut.json": "689b9132782994796219ad392cc3a0133827537356591f4c93adb2e384e70366",
     "config/GMFE69/sinitxa.json": "411b577b864a696f54ca6f728819538a238b294030608ccd59f1af782b46221e",
+    "config/GMFE69/skelblend.json": "b8ac1a476be561b4fae4c3cd449972f6931387e83a4a8df3cbb09b3b3b86e6e9",
     "config/GMFE69/skeleton.json": "f8a7a2ca94901c7b505fe98572da97c75638732325777eab75505995999c519f",
     "config/GMFE69/skybox.json": "1cf44d6a8c4b6aa13b52831e01ab758c7139eb3118bbef074b07539503f52480",
     "config/GMFE69/skybox_bin.json": "17c9eb16310c1fd2b4be57261fa7d8f79a1b5621dd4911902705efd75667d85c",
@@ -3046,6 +3047,7 @@
     "src/game/scene_veciter_plus.cpp": "ad93d66d1c8007e54b4d61711cdf4de56b871064dc900a76265dd6bdd638136e",
     "src/game/scene_visit.cpp": "8fd272c3dbdda1e7a93131bb4502b6821a15b553425633371432a3a1aac3557c",
     "src/game/shadow.cpp": "34e0c5ba9f45935a3151b004eb661b634f49de975228d378e3dfdd16c211dcbf",
+    "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
     "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
     "src/game/skybox.cpp": "8adb822afc24145a14994d7207fa60cb48fb77c77163893ee1ac810fab783d36",
     "src/game/skybox_bin.cpp": "4679c1f8a61129831726771e304777b452d8d04d52bc3392b54a88f10ebd0766",
@@ -55325,6 +55327,45 @@
       "discarded_functions": [],
       "object_sha256": "174f4fe59bdabe327486b504309d4bc4db18e0d052b7b8c21c45c6ff972db052",
       "linked_sha256": "28133e139b8aa7dc0909ec67498da1aee10ab307a0e61f5d0194f416cdd05a1c"
+    },
+    {
+      "id": "skelblend",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 644,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "cb119dc848055bdb22f77c5638bfda19f29622915c6f74a0a6a8dcac03f82499",
+      "linked_sha256": "566356b5f50c50afe6b8adaeffe46a1f0047e71cc8ce5e9dd5f4d5230bf42a30"
     }
   ],
   "code_map": {
@@ -56218,7 +56259,7 @@
         ]
       },
       {
-        "name": "Unmatched files/skelblend.cpp [symbol evidence]",
+        "name": "Unmatched files/skelblend.cpp [local symbols only]",
         "file_record": 59,
         "file_name": "skelblend.cpp",
         "ranges": [
@@ -56228,13 +56269,6 @@
             "kind": "function",
             "name": "_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x8006a39c",
-            "size": 644,
-            "kind": "function",
-            "name": "BlendSkelFrames",
-            "evidence": "exception-index"
           }
         ]
       },

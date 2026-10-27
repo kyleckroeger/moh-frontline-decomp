@@ -1276,7 +1276,8 @@
     "PathNodeList_erase.json",
     "pumhandler_list_ctor.json",
     "staticobjfactory_patchmvd.json",
-    "player_commit.json"
+    "player_commit.json",
+    "skelblend.json"
   ],
   "progress": {
     "code_bytes": 1414572,
