@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a27d4",
-      "size": 36,
+      "address": "0x800a2464",
+      "size": 916,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cf34",
-      "size": 8,
+      "address": "0x8000cf2c",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800140a8",
-      "size": 12,
+      "address": "0x8001409c",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AttemptUpdate__13CPlayerObjectFf",
+      "address": "0x800a2464",
+      "size": 880,
+      "binding": 1
+    },
     {
       "name": "UpdateAI__13CPlayerObjectFf",
       "address": "0x800a27d4",
@@ -65,14 +71,50 @@
     }
   ],
   "externals": {
-    "Update__15CAIPlayerDoodadFf": "0x80059180"
+    "BuildRotZ__7CMatrixFf": "0x80090800",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "Translate__7CMatrixF8CVector3": "0x80090660",
+    "Update__15CAIPlayerDoodadFf": "0x80059180",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "g_MPAnimMeshZOffset": "0x8034df10",
+    "g_bInMultiplayerMode": "0x8034eca5"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_MPAnimMeshZOffset"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON",
+    "g_MPAnimMeshZOffset",
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "player.cpp",
-  "original_file_index": 6101
+  "original_file_index": 6101,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350540"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035056c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8035059c"
+    }
+  ]
 }
