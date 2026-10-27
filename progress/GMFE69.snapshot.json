@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1103348,
+    "matching_code_bytes": 1103480,
     "total_executable_code_bytes": 1414572,
-    "percent": 77.99871621946426,
+    "percent": 78.00804766388703,
     "categories": {
-      "reconstructed_game": 873356,
+      "reconstructed_game": 873488,
       "restored_library": 229992
     },
-    "matching_functions": 4720
+    "matching_functions": 4721
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -900,7 +900,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "897415a7a52170806a74d6e98b18bd821226a7497bfae81cdd7af0cf68845968",
+    "config/GMFE69/project.json": "2f41a21487a7c178589c60c0201f7418e70dc92529fd314b13b42cbf9e951ba0",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -1294,6 +1294,7 @@
     "config/GMFE69/world_object_node_dtor.json": "76434adc707f081f309bf409afe30341feb37ab7f62830f9e9116d9ce870ae6c",
     "config/GMFE69/world_object_request_reserve.json": "bd173964a93336df4796689d17ddc12c99f4ead386c40c254a1b530fc4b715a9",
     "config/GMFE69/world_volume.json": "b58335a5f969f8461603ce74500ac1d689974d936b2dd3ba5ab66987d43fd109",
+    "config/GMFE69/world_volume_ctor.json": "65419cb772aa13af604b7a04fb6ec40f100b7581c3b5fe561ca464f139d2e3f7",
     "config/GMFE69/world_volume_dtor.json": "9620bdd73a7debc54232c618fc9a16c093d8eed24eeb73aee499db1d2c472735",
     "config/GMFE69/world_volume_edit.json": "938e7a176d62bb7c82fe0867f6510f20476e45e338f38db5af4eeff77b8a9d6a",
     "config/GMFE69/world_volume_list.json": "26915355228a63f644959d7487b1714a059e5564b0db40635ef25bcf541a587c",
@@ -3153,6 +3154,7 @@
     "src/game/world_object_node_dtor.cpp": "b80cedb5ac04293bbd3bb1cf3faa150fba15803ae1772be8447d21a09e85f896",
     "src/game/world_object_request_reserve.cpp": "8615b1fef1f7a1cc624b58b08c4a0b587feb05513236e144bb2398b3cf92ff87",
     "src/game/world_volume.cpp": "f6615e2f32df0c136d86133089d3957929a83d826a0294df1b6e0e21e25a4949",
+    "src/game/world_volume_ctor.cpp": "2679a707250be4998c1fbd79974f190c3429867436cd90555e7d29b97695b200",
     "src/game/world_volume_dtor.cpp": "df34c0515a72275269005d77f24602248d41423c0988bf9c22670a4b2b33886d",
     "src/game/world_volume_edit.cpp": "5f597d95dc56764a4cc65be86d9ceae9860da9ee6f37780708b4b4549851458b",
     "src/game/world_volume_list.cpp": "1e7bf4e425352d630a3d6cdf70d16bc6cc19ed06675f44c597f0aeebadd945bc",
@@ -55530,6 +55532,45 @@
       "discarded_functions": [],
       "object_sha256": "006cac02466550f0017062a2d97a66d32c9d5fa4f55e372aca7f376a510f9bda",
       "linked_sha256": "a98f895ae08b396b65d42896636515c3dd7ae04302712c56481cd61595343452"
+    },
+    {
+      "id": "world_volume_ctor",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 132,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "5f5be638520974334d82388c37f85a44020c6c43d054eb4caefd4f836d673231",
+      "linked_sha256": "756a040d71d6137ed499e3107f62a91237b0cdef38bee23cc733453c45079bbb"
     }
   ],
   "code_map": {
@@ -57231,20 +57272,6 @@
             "kind": "function",
             "name": "__sinit_collision_cpp",
             "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/world_volume.cpp [symbol evidence]",
-        "file_record": 134,
-        "file_name": "world_volume.cpp",
-        "ranges": [
-          {
-            "address": "0x800cc29c",
-            "size": 132,
-            "kind": "function",
-            "name": "__ct__12CWorldVolumeFi",
-            "evidence": "exception-index"
           }
         ]
       },

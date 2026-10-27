@@ -1281,7 +1281,8 @@
     "player_beginupdate.json",
     "ShellMenu_update.json",
     "publisher_setsubject.json",
-    "player_draw.json"
+    "player_draw.json",
+    "world_volume_ctor.json"
   ],
   "progress": {
     "code_bytes": 1414572,
