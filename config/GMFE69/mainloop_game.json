@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007b350",
-      "size": 1476,
+      "address": "0x8007a5f8",
+      "size": 4892,
       "type": 1
     },
     {
@@ -49,14 +49,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000bf90",
-      "size": 16,
+      "address": "0x8000bf40",
+      "size": 96,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012ee4",
-      "size": 24,
+      "address": "0x80012eb4",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170cc0",
+      "size": 35,
       "type": 1
     },
     {
@@ -78,39 +84,190 @@
       "address": "0x8007b350",
       "size": 1352,
       "binding": 1
+    },
+    {
+      "name": "Gameloop_Restart__Fv",
+      "address": "0x8007a5f8",
+      "size": 536,
+      "binding": 1
+    },
+    {
+      "name": "Gameloop_Loop__Ff",
+      "address": "0x8007a810",
+      "size": 464,
+      "binding": 1
+    },
+    {
+      "name": "Gameloop_Shutdown__Fv",
+      "address": "0x8007a9e0",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "Gameloop_Init__FPFP7CSpriteP7CSpritef_vP7CSpriteP7CSprite",
+      "address": "0x8007aae8",
+      "size": 2152,
+      "binding": 1
     }
   ],
   "externals": {
+    "ASPECT_4x3__7CCamera": "0x8034fec8",
+    "Acquire__12CWorldObjectFRCQ212CWorldObject11SAcquireSetb": "0x800b737c",
+    "AddFile__13CAnimDatabaseFP16AnimFileFormat_tP14CAnimDebugFile": "0x80061fc0",
+    "AddPlayer__6CSceneFP13CPlayerObject": "0x800dc3c0",
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "AmbientTrack_Select__Fi": "0x800ebedc",
+    "AnimFileRelocate": "0x80063754",
+    "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv": "0x80039f10",
+    "BSUtilInitScriptingSystem__Fb": "0x8003b924",
+    "BSUtilShutdownScriptingSystem__Fv": "0x8003b8d0",
+    "BSUtilUpdate__Ff": "0x8003b86c",
+    "CreateInstance__7CSkyBoxFv": "0x800a92bc",
+    "DEFAULT_FOV": "0x80350538",
+    "DebugProfTimerDumpAll__Fv": "0x800f407c",
+    "DebugProfTimerInitAll__Fv": "0x800f3bec",
+    "DebugProfTimerPause__Fi": "0x800f41f0",
+    "DebugProfTimerRegister__FiPci": "0x800f3b74",
+    "DebugProfTimerResume__Fi": "0x800f41a0",
+    "DestroyInstance__7CSkyBoxFv": "0x800a9238",
+    "FindPlayerStartTriggerAndCreatePlayer__Fbi": "0x80042e7c",
+    "GetCompartment__12CWorldObjectFi": "0x800b7348",
+    "GetInstance__7CSkyBoxFv": "0x800a92b4",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSoundModeValue__10CShellMenuFv": "0x800deec8",
+    "GetVSyncs__7CScreenFv": "0x8001b908",
     "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
     "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "GlobalReset__12CCompartmentFv": "0x80076c5c",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab": "0x800a6408",
+    "InitTimeStampStuff__Fv": "0x800bb098",
+    "Init__13CPlayerObjectFv": "0x800a6d44",
+    "Init__13SoundScheduleFv": "0x80047798",
+    "Init__14CBulletFactoryFv": "0x800cd97c",
+    "Init__14CWeaponFactoryFv": "0x800d73f4",
+    "Init__18CAnimObjectFactoryFUlPc": "0x80096f50",
+    "Init__20CStaticObjectFactoryFv": "0x800b254c",
+    "Init__NotTheVirtualOne__19CBulletDecalManagerFv": "0x800839e4",
+    "LoadLevelSoundModules__Fii": "0x800ed374",
+    "MUSIC_Start__Fiii": "0x800ea684",
+    "MUSIC_Stop__Fv": "0x800ea658",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "NullifyScreenAndLibrary__Fv": "0x8008b00c",
+    "OSGetTick": "0x80116a58",
+    "PauseInit__5PauseFv": "0x800ddf78",
+    "PauseIsLibrary__Fv": "0x8008afd4",
+    "PauseIsScreen__Fv": "0x8008afe4",
+    "PauseShutdown__5PauseFv": "0x800dd758",
+    "ReInit__13CPlayerObjectFv": "0x800a6360",
+    "ResetClass__6CLightFv": "0x80078688",
+    "ResetOneShotBank__Fv": "0x800ec834",
+    "ResetTimeStampStuff__Fv": "0x800bafdc",
+    "Reset__10CPublisherFv": "0x800d7e60",
+    "Reset__12CCompartmentFv": "0x80076c0c",
+    "Reset__14CBulletFactoryFv": "0x800cd944",
+    "Reset__14CWeaponFactoryFv": "0x800d7218",
+    "Reset__15CParticleSystemFv": "0x80080ec4",
+    "Reset__16CDestructorQueueFv": "0x800dd4ac",
+    "Reset__18CAnimObjectFactoryFv": "0x80096f04",
+    "Reset__19CBulletDecalManagerFv": "0x8008397c",
+    "Reset__20CStaticObjectFactoryFv": "0x800b3298",
+    "Reset__6CSceneFv": "0x800dc44c",
+    "SetCamera__6CSceneFP7CCamera": "0x800dc2a8",
     "SetClearColor__7CScreenFRC6CColor": "0x8001b8dc",
     "SetDefaultLight__6CLightFQ26CLight14EDefaultLights8CVector36CColorf": "0x80078384",
     "SetFog__FR6CColorff": "0x80017df8",
+    "SetGlobalCheatStructure__10CShellMenuFv": "0x800def28",
+    "SetKeymap__13CInputManagerFUlP6KEYMAP": "0x80084c3c",
     "SetLandmarkStampString__FPc": "0x800baf58",
+    "SetLargestObjectSize__18CAnimObjectFactoryFi": "0x80095ba0",
+    "SetPerspective__7CCameraFff": "0x80079e7c",
+    "SetState__5PauseF10PauseState": "0x800dd5a8",
+    "SetTextures__7CSkyBoxFv": "0x800a907c",
     "SetTimeStampString__FPc": "0x800baecc",
+    "SetWorld__6CSceneFP12CWorldObject": "0x800dc334",
+    "SetXFilesTextOnscreenTime__Ff": "0x800baec4",
+    "SetupAllPlayersButtonsForMultiplayerGame__10CShellMenuFv": "0x800de428",
+    "SetupButtonsForGame__11CDualConfigFv": "0x800f978c",
+    "Shutdown__13SoundScheduleFv": "0x800476e8",
+    "Shutdown__14CBulletFactoryFv": "0x800cd8e8",
+    "Shutdown__14CWeaponFactoryFv": "0x800d70f0",
+    "Shutdown__18CAnimObjectFactoryFv": "0x80096e6c",
+    "Shutdown__6CSceneFv": "0x800dc5e0",
+    "SoundClose__Fv": "0x800ed984",
+    "SoundInit__F10ESoundMode": "0x800edb14",
+    "SoundSetMasterVolume__Fi": "0x800ed018",
+    "SoundSync__Fv": "0x800ecf2c",
+    "TLT_CloseFile__FPv": "0x8001d820",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_Init__Fii": "0x8001de64",
+    "TLT_LoadFileNormal__FPCcPii": "0x8001d308",
+    "TLT_Shutdown__Fv": "0x8001dde8",
+    "UnloadLevelSoundModules__Fv": "0x800ed164",
+    "UpdateREAL__Fv": "0x8001b098",
+    "VerifyAIDataSize__11CTankObjectFv": "0x800b4d10",
+    "__ct__12CWorldObjectFv": "0x800b77a8",
+    "__ct__13CPlayerObjectFv": "0x800a7528",
     "__ct__14CBulletFactoryFv": "0x800cda34",
     "__ct__14CWeaponFactoryFv": "0x800d76fc",
     "__ct__18CAnimObjectFactoryFv": "0x800971bc",
     "__ct__19CBulletDecalManagerFv": "0x80083d10",
+    "__dl__FPv": "0x8001ca2c",
     "__dt__14CBulletFactoryFv": "0x800cd9d0",
     "__dt__14CWeaponFactoryFv": "0x800d76c0",
     "__dt__19CBulletDecalManagerFv": "0x80083c50",
+    "__nw__FUl": "0x8001cb60",
     "__register_global_object": "0x801381bc",
+    "g_AnimDB": "0x801d4a84",
+    "g_ControllerConfig": "0x803142bc",
+    "g_FinalSinglePlayerController": "0x8034e2cc",
     "g_NumPlayers": "0x8034e2d0",
+    "g_Pause": "0x80194fec",
+    "g_ProfileBins": "0x802daca0",
     "g_Shell": "0x80195090",
+    "g_SoundSchedule": "0x8034e784",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
     "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bMPEndLevel": "0x8034e9ec",
+    "g_camera": "0x801949a0",
+    "g_cheats": "0x80196a94",
+    "g_config_keymap": "0x801858bc",
+    "g_idSet": "0x80184730",
+    "g_inputMgr": "0x801ec80c",
+    "g_levelWeaponSetID": "0x8034da0c",
+    "g_mpTimeLimit": "0x8034e9e8",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_pLevelEMT": "0x8034e9d8",
+    "g_pWeaponFactory": "0x8034e9e4",
+    "g_pWorld": "0x8034e9dc",
+    "g_scene": "0x8019484c",
     "g_screen": "0x80196ac0",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "sprintf": "0x8013dab4",
     "umTable": "0x801ef3ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_pLevelEMT"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "ASPECT_4x3__7CCamera",
+    "DEFAULT_FOV",
+    "g_FinalSinglePlayerController",
     "g_NumPlayers",
-    "g_bInMultiplayerMode"
+    "g_SoundSchedule",
+    "g_bInMultiplayerMode",
+    "g_bMPEndLevel",
+    "g_levelWeaponSetID",
+    "g_mpTimeLimit",
+    "g_pBulletFactory",
+    "g_pLevelEMT",
+    "g_pWeaponFactory",
+    "g_pWorld",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "mainloop.cpp",
   "original_file_index": 3848,
@@ -122,25 +279,139 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034ff18"
+      "address": "0x8034ff08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034ff0c"
     },
     {
       "section": ".sdata2",
       "offset": 8,
-      "size": 8,
-      "address": "0x8034ff78"
+      "size": 4,
+      "address": "0x8034ff10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034ff14"
     },
     {
       "section": ".sdata2",
       "offset": 16,
-      "size": 8,
-      "address": "0x8034ff80"
+      "size": 4,
+      "address": "0x8034ff18"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034ff1c"
     },
     {
       "section": ".sdata2",
       "offset": 24,
       "size": 4,
-      "address": "0x8034ff08"
+      "address": "0x8034ff20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034ff24"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034ff28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034ff2c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034ff30"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8034ff34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x8034ff38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8034ff3c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x8034ff40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 6,
+      "address": "0x8034ff44"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 7,
+      "address": "0x8034ff4c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 5,
+      "address": "0x8034ff54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 6,
+      "address": "0x8034ff5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 92,
+      "size": 6,
+      "address": "0x8034ff64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 104,
+      "size": 8,
+      "address": "0x8034ff70"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 112,
+      "size": 8,
+      "address": "0x8034ff78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 120,
+      "size": 8,
+      "address": "0x8034ff80"
     }
   ]
 }
