@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f15e4",
-      "size": 80,
+      "address": "0x800f151c",
+      "size": 280,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f688",
-      "size": 8,
+      "address": "0x8000f680",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800162c8",
-      "size": 12,
+      "address": "0x800162bc",
+      "size": 24,
       "type": 1
     }
   ],
@@ -62,10 +62,19 @@
       "address": "0x800f15e4",
       "size": 80,
       "binding": 1
+    },
+    {
+      "name": "Init__15CStaticAnimMeshFPvb",
+      "address": "0x800f151c",
+      "size": 200,
+      "binding": 1
     }
   ],
   "externals": {
-    "Draw__11CStaticMeshFR12CDrawContexti": "0x800f1e64"
+    "Draw__11CStaticMeshFR12CDrawContexti": "0x800f1e64",
+    "Init__11CStaticMeshFv": "0x800f25bc",
+    "offsetPtr<10StaticMesh>__FRP10StaticMeshi": "0x800f32a0",
+    "offsetPtr<P10StaticMesh>__FRPP10StaticMeshi": "0x800f32b8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
