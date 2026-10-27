@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -40,25 +40,25 @@
     {
       "name": ".text",
       "address": "0x800dd5a8",
-      "size": 432,
+      "size": 3468,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ec90",
-      "size": 16,
+      "size": 120,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800158f0",
-      "size": 24,
+      "size": 108,
       "type": 1
     },
     {
-      "name": ".sdata2",
-      "address": "0x80350ea0",
-      "size": 8,
+      "name": ".rodata",
+      "address": "0x80178298",
+      "size": 303,
       "type": 1
     }
   ],
@@ -86,24 +86,197 @@
       "address": "0x800dd6d4",
       "size": 132,
       "binding": 1
+    },
+    {
+      "name": "PauseShutdown__5PauseFv",
+      "address": "0x800dd758",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "UnpauseGame__5PauseFv",
+      "address": "0x800dd784",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "bIsGamePaused__5PauseFv",
+      "address": "0x800dd7d0",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "PauseDraw__5PauseFUl",
+      "address": "0x800dd7d8",
+      "size": 436,
+      "binding": 1
+    },
+    {
+      "name": "PauseUpdate__5PauseFUl",
+      "address": "0x800dd98c",
+      "size": 1328,
+      "binding": 1
+    },
+    {
+      "name": "Reset__5PauseFv",
+      "address": "0x800ddebc",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "PauseInit__5PauseFv",
+      "address": "0x800ddf78",
+      "size": 692,
+      "binding": 1
+    },
+    {
+      "name": "__dt__5PauseFv",
+      "address": "0x800de22c",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "__ct__5PauseFv",
+      "address": "0x800de2e4",
+      "size": 80,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_Pause__Fb": "0x800ec3e0",
+    "AEMS_SendEvent__FPv": "0x800ec26c",
     "CompletedAnotherObjective__10CShellMenuFv": "0x800df210",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
+    "GameMessage__FUlUsUsUlP10UISParam_tP10UISParam_t": "0x8008d1ec",
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetDepthBufferMax__7CScreenFv": "0x8001b840",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "ISirenStartup__7IStudioFUlUlUlUlUl": "0x8008b73c",
+    "IsReady__14CDeviceManagerFi": "0x800841b4",
     "MUSIC_Pause__Fb": "0x800ea5fc",
+    "MathFunClamp<f>__Ffff": "0x800a78f4",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetDepth__5CFontFUl": "0x8007cb4c",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "SoundGetVolumes__FRfRf": "0x800ecf4c",
     "SoundSetMasterVolume__Fi": "0x800ed018",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__ct__5CFontFPCc15ERenderPriority": "0x8007d148",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__ct__7IStudioFv": "0x8008b8f4",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__7IStudioFv": "0x8008b8b8",
+    "__nw__FUl": "0x8001cb60",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_PauseScreenLockedController": "0x8034e2c8",
     "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_cheatSequence": "0x801f70e0",
+    "g_cheatSequenceIndex": "0x8034ec98",
+    "g_cheats": "0x80196a94",
+    "g_inputMgr": "0x801ec80c",
+    "g_scene": "0x8019484c",
     "iSirenActivateScreen__7IStudioFUsUs": "0x8008b6ec",
+    "iSirenDrawProcessFnc__7IStudioFUl": "0x8008b6a4",
+    "iSirenLoadScreen__7IStudioFUsUs": "0x8008b710",
+    "iSirenShutDown__7IStudioFv": "0x8008b5e0",
+    "iSirenUpdate__7IStudioFUl": "0x8008b660",
+    "memcpy": "0x800094f8",
+    "strncmp": "0x8013fe94",
     "theObjectiveList": "0x801f70ec",
     "umTable": "0x801ef3ec"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_cheatSequence",
+    "g_cheatSequenceIndex"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_PauseScreenLockedController",
+    "g_bInMultiplayerMode",
+    "g_cheatSequenceIndex"
+  ],
   "original_file": "Pause.cpp",
-  "original_file_index": 8565
+  "original_file_index": 8565,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 6,
+      "address": "0x80350e90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80350e98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350ea0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x80350ea4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350ea8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80350eb0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350ec0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350ec4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350ec8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x80350eb8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350ecc"
+    }
+  ]
 }
