@@ -40,19 +40,32 @@
     {
       "name": ".text",
       "address": "0x80043340",
-      "size": 1004,
+      "size": 3624,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a5fc",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800116a8",
-      "size": 12,
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016f42c",
+      "size": 23,
+      "type": 1,
+      "input_alignment": 4
+    },
+    {
+      "name": ".data",
+      "address": "0x801833e0",
+      "size": 60,
       "type": 1
     }
   ],
@@ -62,9 +75,46 @@
       "address": "0x80043340",
       "size": 1004,
       "binding": 1
+    },
+    {
+      "name": "PatchUpAllPropertyData__FP9BPDHeader",
+      "address": "0x8004372c",
+      "size": 2620,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "DebugMsg__FPCce": "0x80018c88",
+    "EndianSwap__FR14BPDLightVolume": "0x800443b4",
+    "EndianSwap__FR15MOH_core_Struct": "0x80041b38",
+    "EndianSwap__FR16MOH_enemy_Struct": "0x80041810",
+    "EndianSwap__FR18xyzProperty_Struct": "0x80041e54",
+    "EndianSwap__FR19MOH_mechanic_Struct": "0x80041adc",
+    "EndianSwap__FR19MOH_particle_Struct": "0x80041238",
+    "EndianSwap__FR20MOH_fogParams_Struct": "0x80040c6c",
+    "EndianSwap__FR24MOH_animatedLight_Struct": "0x80040d58",
+    "EndianSwap__FR25MOH_mechanicEnvMod_Struct": "0x80041784",
+    "EndianSwap__FR30MOH_projectileGenerator_Struct": "0x8004103c",
+    "EndianSwap__FR31MOH_playerPathController_Struct": "0x80040e04",
+    "EndianSwap__FR36MOH_projectileGeneratorTarget_Struct": "0x80040ed0",
+    "EndianSwap__FR8BPDLight": "0x80044168",
+    "Register__15CParticleSystemFP9ShapeFile": "0x80080db0",
+    "Register__15CParticleSystemFPvi": "0x80080d9c",
+    "Register__6CLightFPvi": "0x80078674",
+    "g_pTriggerObjects": "0x801a1300",
+    "offsetPtr<10PropPlane4>__FRP10PropPlane4i": "0x80044c64",
+    "offsetPtr<11BPDPolyPath>__FRP11BPDPolyPathi": "0x80044c1c",
+    "offsetPtr<14BPDLightVolume>__FRP14BPDLightVolumei": "0x80044c7c",
+    "offsetPtr<18BPDParticleTweaker>__FRP18BPDParticleTweakeri": "0x80044c34",
+    "offsetPtr<19MOH_particle_Struct>__FRP19MOH_particle_Structi": "0x80044cf4",
+    "offsetPtr<24MOH_animatedLight_Struct>__FRP24MOH_animatedLight_Structi": "0x80044cc4",
+    "offsetPtr<8BPDLight>__FRP8BPDLighti": "0x80044c4c",
+    "offsetPtr<Pv>__FRPPvi": "0x80044d0c",
+    "offsetPtr<Ul>__FRPUli": "0x80044cac",
+    "offsetPtr<c>__FRPci": "0x80044cdc",
+    "offsetPtr<f>__FRPfi": "0x80044c94",
+    "offsetPtr<v>__FRPvi": "0x80044d24"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
