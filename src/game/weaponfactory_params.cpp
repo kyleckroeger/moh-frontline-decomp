@@ -1,8 +1,11 @@
-// First in this unit (0x800d67c8): the weak CStaticMesh constructor (its table
+// A fragment of weaponfactory.cpp (0x800d65f8): CWeaponFactory::
+// LoadWeaponObjects gives each weapon record a mesh, sharing one between
+// records with the same mesh name, allocates the meshes with new[] and loads
+// them from the repository (the record's mesh fields are inferred).
+// Then the weak CStaticMesh constructor (its table
 // pointer, a cleared word and two flag bits set; the members are inferred and
 // the class declares its destructor, defined elsewhere, first so its global
-// table stays elsewhere).
-// A fragment of weaponfactory.cpp (0x800d67fc): CWeaponFactory::
+// table stays elsewhere), CWeaponFactory::
 // LoadWeaponParameters, which loads the multiplayer or difficulty's parameter
 // file, allocates the weapon property table and fills it from the file's
 // weapon records (skipping the bullet records), the weak
@@ -11,6 +14,8 @@
 // mangled symbols; the resource, record and factory views are inferred, and
 // the byte-order helpers are the inlined ones described in propdat.cpp
 // (inferred; the converted fields are named by offset).
+extern "C" int strcmp(const char*, const char*);
+void* TLT_LoadFromRepository(const char*, int*, bool*);
 extern "C" void* memcpy(void*, const void*, unsigned long);
 void DebugMsg(const char*, ...);
 void TLT_CloseFile(void*);
@@ -92,15 +97,27 @@ struct WeaponProperties_struct {
     unsigned char data[80];
 };
 
+class CStaticMesh;
+
+// The fields of a weapon record used while loading its mesh (inferred).
+struct WeaponPropertiesView {
+    unsigned char unknown00[20];
+    char meshName[20];
+    CStaticMesh* mesh;
+    unsigned char unknown2c[36];
+};
+
 void EndianSwap(WeaponProperties_struct&);
 
 class CWeaponFactory {
 public:
+    void LoadWeaponObjects();
     void LoadWeaponParameters();
     void DestroyWeapon(CWeapon*);
 
     WeaponProperties_struct* m_properties;
-    unsigned char unknown04[8];
+    CStaticMesh* m_meshes;
+    unsigned char unknown08[4];
     CWeapon* m_free;
     CWeapon* m_active;
     unsigned char unknown14[4];
@@ -111,12 +128,56 @@ class CStaticMesh {
 public:
     virtual ~CStaticMesh(); /* defined elsewhere; keeps the table out */
     CStaticMesh();
+    void Init(void*, bool);
 
     int m_unknown04;
     unsigned char m_flag80 : 1;
     unsigned char m_flag40 : 1;
     unsigned char m_flags : 6;
 };
+
+void CWeaponFactory::LoadWeaponObjects() {
+    WeaponPropertiesView*& props = *(WeaponPropertiesView**)&m_properties;
+    int unique = 0;
+    int i;
+    int j;
+    for (i = 0; i < m_count; i++) {
+        char* name = props[i].meshName;
+        if (name[0]) {
+            for (j = 0; j < i; j++) {
+                if (strcmp(name, props[j].meshName) == 0) {
+                    props[i].mesh = (CStaticMesh*)j;
+                    break;
+                }
+            }
+            if (j == i) {
+                unique++;
+                props[i].mesh = (CStaticMesh*)i;
+            }
+        } else {
+            props[i].mesh = (CStaticMesh*)-1;
+        }
+    }
+    m_meshes = new CStaticMesh[unique];
+    int next = 0;
+    for (i = 0; i < m_count; i++) {
+        int index = (int)props[i].mesh;
+        if (index == -1) {
+            props[i].mesh = 0;
+        } else if (index < i) {
+            props[i].mesh = props[index].mesh;
+        } else if (index == i) {
+            bool compressed;
+            props[i].mesh = 0;
+            void* data = TLT_LoadFromRepository(props[i].meshName, 0, &compressed);
+            if (data) {
+                m_meshes[next].Init(data, !compressed);
+                props[i].mesh = &m_meshes[next];
+                next++;
+            }
+        }
+    }
+}
 
 __declspec(weak) CStaticMesh::CStaticMesh() : m_unknown04(0) {
     m_flag80 = 1;

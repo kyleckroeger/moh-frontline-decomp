@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d67c8",
-      "size": 1324,
+      "address": "0x800d65f8",
+      "size": 1788,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e824",
-      "size": 24,
+      "address": "0x8000e808",
+      "size": 52,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015590",
-      "size": 36,
+      "address": "0x80015584",
+      "size": 48,
       "type": 1
     },
     {
@@ -68,6 +68,12 @@
       "address": "0x800d67c8",
       "size": 52,
       "binding": 2
+    },
+    {
+      "name": "LoadWeaponObjects__14CWeaponFactoryFv",
+      "address": "0x800d65f8",
+      "size": 464,
+      "binding": 1
     },
     {
       "name": "EndianSwap__FR23WeaponProperties_struct",
@@ -91,15 +97,21 @@
   "externals": {
     "DebugMsg__FPCce": "0x80018c88",
     "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Init__11CStaticMeshFPvb": "0x800f2cb8",
     "Shutdown__7CWeaponFv": "0x800d6284",
     "TLT_CloseFile__FPv": "0x8001d820",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
+    "__construct_new_array": "0x801384fc",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__11CStaticMeshFv": "0x800f2510",
     "__nwa__FUl": "0x8001cae8",
     "__vt__11CStaticMesh": "0x8018b4f0",
     "g_Shell": "0x80195090",
     "g_bInMultiplayerMode": "0x8034eca5",
-    "memcpy": "0x800094f8"
+    "memcpy": "0x800094f8",
+    "strcmp": "0x8013fed4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

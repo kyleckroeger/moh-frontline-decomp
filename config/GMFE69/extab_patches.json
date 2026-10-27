@@ -16,6 +16,14 @@
       "action": "0x90",
       "compiled": "ff7f",
       "original": "2500"
+    },
+    {
+      "unit": "weaponfactory_params",
+      "function": "LoadWeaponObjects__14CWeaponFactoryFv",
+      "offset": "0x16",
+      "action": "0x8b",
+      "compiled": "066c",
+      "original": "2500"
     }
   ]
 }
