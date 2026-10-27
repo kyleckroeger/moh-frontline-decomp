@@ -41,23 +41,29 @@
     {
       "name": ".text",
       "address": "0x80108e18",
-      "size": 356,
+      "size": 1088,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fdcc",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016bb0",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "RFPuts__FssPc",
+      "address": "0x80108f7c",
+      "size": 732,
+      "binding": 0
+    },
     {
       "name": "DrawMessage__FiPc",
       "address": "0x80108e18",
@@ -69,12 +75,24 @@
     "FontData": "0x8034ef40",
     "FontSize": "0x8034ef48",
     "FontSpace": "0x8034ef4a",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXInitTexObj": "0x8012da0c",
+    "GXInitTexObjLOD": "0x8012dcc8",
+    "GXLoadTexMtxImm": "0x80130320",
+    "GXLoadTexObj": "0x8012e02c",
     "GXSetBlendMode": "0x8012fa78",
     "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
     "GXSetTevOp": "0x8012ee78",
     "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "LastSheet": "0x8034ef44",
+    "OSGetFontTexture": "0x80113344",
     "OSGetFontWidth": "0x801134bc",
-    "RFPuts__FssPc": "0x80108f7c",
+    "PSMTXScale": "0x80116ca4",
     "gRMode": "0x803168e0"
   },
   "undefined_in_discarded_code": [],
@@ -84,15 +102,39 @@
     "FontData",
     "FontSize",
     "FontSpace",
-    "RFPuts__FssPc",
+    "LastSheet",
     "gRMode"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "FontData",
     "FontSize",
-    "FontSpace"
+    "FontSpace",
+    "LastSheet"
   ],
   "original_file": "dvdStatus_base.c",
-  "original_file_index": 10417
+  "original_file_index": 10417,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351364"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351368"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80351378"
+    }
+  ]
 }
