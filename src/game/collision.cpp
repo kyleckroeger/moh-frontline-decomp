@@ -1,8 +1,14 @@
 // A fragment of collision.cpp (0x800c79c4): CCollision::SwapOrder, AddContact,
-// the assignment operator, the destructor and the two constructors. Contacts
-// are taken from the file's contact pool (g_contactPool, file-local in the
-// original, whose static initialisation is not part of this unit) and linked
-// through the word at +44. CCollision, SClsnContact and dwi::CFactory are named
+// the assignment operator, the destructor, the two constructors and the file's
+// static initialisation. Contacts are taken from the file's contact pool
+// (g_contactPool over the static g_aClsnContacts array, both file-local) and
+// linked through the word at +44. The pool's constructor runs its inline Init,
+// which chains every element onto the free list from the last one down; the
+// free-list address and the element slot are indexed by two counters (the
+// slot by a pre-decremented one), as the original keeps two offsets. The
+// pool's destructor is the weak template copy placed by
+// collision_factory_dtor.cpp; the contact's empty constructor, passed to the
+// array construction, is a weak copy whose original sits in csg_volume.cpp. CCollision, SClsnContact and dwi::CFactory are named
 // by the mangled symbols; their members and the pool's inline helpers are
 // inferred from the code. The pool's Allocate constructs the element with an
 // empty placement new, which leaves the null compare without a branch seen in
@@ -10,7 +16,9 @@
 // link alone (inferred), and the destructor repeats the ClearContacts loop
 // rather than calling it inline (calling it changes register assignment).
 // The rest of the file is not part of this unit.
+extern "C" void MEM_free(void*);
 inline void* operator new(unsigned long, void* p) { return p; }
+void* DWI_allocalign(const char*, int, int, int);
 
 union CVector3Pair {
     double pair[2];
@@ -50,6 +58,30 @@ namespace dwi {
 template <class T, class P>
 class CFactory {
 public:
+    CFactory(const char* name, T* storage, int count) { Init(name, storage, count); }
+    ~CFactory();
+
+    void Init(const char* name, T* storage, int count) {
+        if (m_owned)
+            MEM_free(m_memory);
+        T* memory = !storage ? (T*)DWI_allocalign(name, count * sizeof(T), 16, 1024) : storage;
+        m_free = 0;
+        m_used = 0;
+        m_memory = memory;
+        m_capacity = count;
+        m_owned = storage == 0;
+        Reset();
+    }
+    void Reset() {
+        m_free = 0;
+        m_used = 0;
+        int j = m_capacity;
+        for (int i = m_capacity; i > 0;) {
+            --j;
+            *(P*)&m_memory[--i] = m_free;
+            m_free = &m_memory[j];
+        }
+    }
     P Allocate() {
         P p = m_free;
         P next = *(P*)p;
@@ -71,9 +103,18 @@ public:
     bool m_owned;
 };
 
+template <class T, class P> __declspec(weak) CFactory<T, P>::~CFactory() {
+    if (m_owned)
+        MEM_free(m_memory);
+    m_memory = 0;
+    m_free = 0;
+    m_capacity = 0;
+    m_used = 0;
+}
 }
 
-extern dwi::CFactory<SClsnContact, SClsnContact*> g_contactPool;
+static SClsnContact g_aClsnContacts[300];
+static dwi::CFactory<SClsnContact, SClsnContact*> g_contactPool("Collision Contact Pool", g_aClsnContacts, 300);
 
 class CCollision {
 public:

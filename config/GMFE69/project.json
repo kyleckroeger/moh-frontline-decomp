@@ -990,7 +990,7 @@
     "AnimObjFactory_head.json",
     "anim_obj_initclass.json",
     "collision_head.json",
-    "collision_contacts.json",
+    "collision.json",
     "compartment_texswap.json",
     "buddy_head.json",
     "alarm_register.json",

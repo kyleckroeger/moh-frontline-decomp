@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1104108,
+    "matching_code_bytes": 1104516,
     "total_executable_code_bytes": 1414572,
-    "percent": 78.05244271765594,
+    "percent": 78.08128536405358,
     "categories": {
-      "reconstructed_game": 874116,
+      "reconstructed_game": 874524,
       "restored_library": 229992
     },
-    "matching_functions": 4722
+    "matching_functions": 4723
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -567,7 +567,7 @@
     "config/GMFE69/cdbobject_offsetptr.json": "0d67bbd2cab2036cd652831eb2cba088e30e569df1f5f590bd8e026e668b60ee",
     "config/GMFE69/cdbobject_trigroups.json": "ec60037e9618ecdf748229cab7146cd3e9602771a162601c8783a706cf69dd37",
     "config/GMFE69/coda.json": "ed79629f16e36603a2a74fe3bfd2db4c7043efb597de702316a222bcbb355440",
-    "config/GMFE69/collision_contacts.json": "123f0677f403073e06a75a03442b0eeafa7bb5be803bd67c9c99463d037bad0d",
+    "config/GMFE69/collision.json": "2c85d33e52123d2a7e4d8202542a13ce12bc7eff55e9049aef1fbe82ff9071f7",
     "config/GMFE69/collision_factory_dtor.json": "9f70e8c2c41be54390dc78252d7665e0bec56a04de62263ca730981217c1191c",
     "config/GMFE69/collision_head.json": "c233eb331f41c1f0519933e61301dd8facec1a44369ce60a3bf35023b0c4ab27",
     "config/GMFE69/collisionvolume.json": "4b42015c953c1335d95d5edae0ec810f53e76935e2b6b0e446fd20b039dbc795",
@@ -900,7 +900,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "2f41a21487a7c178589c60c0201f7418e70dc92529fd314b13b42cbf9e951ba0",
+    "config/GMFE69/project.json": "c2835f12d00daad0ea4e8b1146fed6795940ded03f0312d3e2b5ade0e95c8c28",
     "config/GMFE69/projectilebullet.json": "8c5f2d14bee107e35f4b78a78d23aa77b17b5a8b83d86d4a7d13a9284cb82c0d",
     "config/GMFE69/projectilebullet_collisionid.json": "8ea6cad37d66ed8dec049e2bb425a39b1171b806377d2019a2e1c44f5d8d5e81",
     "config/GMFE69/projectilebullet_commit.json": "3eff12de6e13c5fabbcbeb1efd1ebf674638ef8c5773f5cce2596b6ae50ad140",
@@ -2761,7 +2761,7 @@
     "src/game/cdbobject_line.cpp": "9a1aca01d57b33016c9bee73e665ee19bac161dca1e16b28ce4a1f094c76c3f1",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
     "src/game/cdbobject_trigroups.cpp": "2e29ea03b9abd26f9516a3b7a0f3d2d8787ccea9d1791c946c0e7228c6cc7ac2",
-    "src/game/collision_contacts.cpp": "0b7f43b8e7fe78f4956a2ad2c03d8b1c8396aaf73322bf89244a9b286b1278fb",
+    "src/game/collision.cpp": "08152f9b838a7c01179cde8cc9ece2cd0dd1f31e1cbf8cf808cf386a3efbd6d2",
     "src/game/collision_factory_dtor.cpp": "5fec50373bc2d14d29bc6b047fc0b5810afac67afbe129e7a18a276360498897",
     "src/game/collision_head.cpp": "746ca458a6ef009d99cf20245bd2152f0267ffdc586fb57bac739111f4f5f90b",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
@@ -44028,10 +44028,10 @@
       "linked_sha256": "c688f552b936ee00d31484f397fe638eb6ebe88155ec7c85eeedaca7a85af17f"
     },
     {
-      "id": "collision_contacts",
+      "id": "collision",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 896,
+      "functions": 7,
+      "code_bytes": 1304,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -44061,10 +44061,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "25209bbdfef6e5dd6c7afe7d57cc1d13e270284b8bd8a3533495a90886d076fe",
-      "linked_sha256": "c39c3664cac090336a9a4b3c54665119d6fcadcc7f013bcb4de17f231178d815"
+      "object_sha256": "71fc8f813fc0d9a824c2d55d062c352e4a87594e6891d0a449fff63112063505",
+      "linked_sha256": "30ae5e05c97281790f2a66e32f5e78198d18beb7019de63ae1ba90191ff6ae7a"
     },
     {
       "id": "compartment_texswap",
@@ -57250,20 +57250,6 @@
             "size": 2092,
             "kind": "function",
             "name": "FindIntersection__FRC6CLine3RC11CVolCapsulePf",
-            "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/collision.cpp [local symbols only]",
-        "file_record": 130,
-        "file_name": "collision.cpp",
-        "ranges": [
-          {
-            "address": "0x800c7d44",
-            "size": 408,
-            "kind": "function",
-            "name": "__sinit_collision_cpp",
             "evidence": "local-file-symbol"
           }
         ]
