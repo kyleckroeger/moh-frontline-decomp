@@ -1,0 +1,173 @@
+{
+  "id": "player_draw",
+  "source": "src/game/player_draw.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800a5180",
+      "size": 4156,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cfa4",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800140f0",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80176a00",
+      "size": 492,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Draw__13CPlayerObjectFR12CDrawContext",
+      "address": "0x800a5180",
+      "size": 4156,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DrawFragCount__13UserInterfaceFb": "0x800bd864",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "Draw__7CSpriteFff6CColor": "0x80082470",
+    "GetCrosshairStatus__10CShellMenuFv": "0x800df238",
+    "GetMuzzleFlashStatus__7CWeaponFv": "0x800d4f60",
+    "PopUpMessageHandler_Loop__19PopUpMessageHandlerFv": "0x800b9a00",
+    "bIsGamePaused__5PauseFv": "0x800dd7d0",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_Pause": "0x80194fec",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bMPEndLevel": "0x8034e9ec",
+    "g_cheats": "0x80196a94",
+    "g_pPopUpMessageHandler": "0x8019756c",
+    "g_pScreen": "0x8034eae8",
+    "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
+    "g_viewport": "0x80194ca0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_pScreen"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_bInMultiplayerMode",
+    "g_bMPEndLevel",
+    "g_pScreen",
+    "g_pStaticObjectMuzzleFlashPlayer"
+  ],
+  "original_file": "player.cpp",
+  "original_file_index": 6101,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350558"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035053c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803506f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803506f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350540"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x803506fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350700"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350704"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350708"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x803505b0"
+    }
+  ]
+}

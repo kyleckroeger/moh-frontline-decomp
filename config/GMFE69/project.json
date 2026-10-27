@@ -1280,7 +1280,8 @@
     "skelblend.json",
     "player_beginupdate.json",
     "ShellMenu_update.json",
-    "publisher_setsubject.json"
+    "publisher_setsubject.json",
+    "player_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
