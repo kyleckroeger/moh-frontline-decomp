@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x8003b54c",
-      "size": 984,
+      "size": 2004,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a3fc",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800113a8",
-      "size": 36,
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016ec88",
+      "size": 292,
       "type": 1
     }
   ],
@@ -98,6 +104,12 @@
       "address": "0x8003b8d0",
       "size": 84,
       "binding": 1
+    },
+    {
+      "name": "BSUtilInitScriptingSystem__Fb",
+      "address": "0x8003b924",
+      "size": 1020,
+      "binding": 1
     }
   ],
   "externals": {
@@ -107,20 +119,46 @@
     "BSEndMessage__Fv": "0x8003a2e0",
     "BSEndSchedule__Fv": "0x8003acf4",
     "BSEndTimer__Fv": "0x8003b2d4",
+    "BSEventGetMemoryRequirements__Fv": "0x800359fc",
     "BSEventProcessEvents__Fi": "0x80034ea0",
     "BSFileGetClass__FPCcPP14BSClass_struct": "0x80036960",
+    "BSFileGetMemoryRequirements__Fv": "0x80036a70",
+    "BSInitBIFuncs__Fv": "0x80034718",
+    "BSInitBSObject__Fv": "0x8003a77c",
+    "BSInitEvent__Fv": "0x80035734",
+    "BSInitFile__Fv": "0x80036a68",
+    "BSInitMachine__Fv": "0x80038174",
+    "BSInitMessage__Fv": "0x8003a2f4",
+    "BSInitSchedule__Fv": "0x8003ad04",
+    "BSInitTimer__Fv": "0x8003b2e8",
+    "BSMachineGetMemoryRequirements__Fv": "0x800383f0",
+    "BSMessageGetMemoryRequirements__Fv": "0x8003a45c",
+    "BSObjectGetMemoryRequirements__Fv": "0x8003a7d8",
     "BSProcessMessages__Fi": "0x80039ca0",
+    "BSResetBIFuncs__Fv": "0x800344bc",
+    "BSScheduleGetMemoryRequirements__Fv": "0x8003ad60",
+    "BSTimerGetMemoryRequirements__Fv": "0x8003b544",
     "BSUpdateBIFuncs__Fv": "0x800343b4",
     "BSUpdateTimer__Ff": "0x8003b18c",
+    "CreateObjectGetMemoryRequirements__Fv": "0x800409bc",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "DebugMsg__FPCce": "0x80018c88",
     "FreePropertyMemory__Fv": "0x800423c4",
+    "InitObjectCreators__Fv": "0x8004066c",
+    "LoadPropBSPTree__FPcb": "0x80042dc4",
+    "LoadPropertyData__FPcb": "0x80044600",
     "MEM_free": "0x8014f83c",
     "ShutdownObjectCreators__Fv": "0x800405b4",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_InitResourceType__FPFP24LevelFileContentsStruct__v13TLTResourceID": "0x8001d394",
     "UpdateObjectCreation__Fv": "0x800403cc",
     "UpdateProximityTriggerStatus__Fv": "0x80046378",
+    "g_iBSMessageRegistrationListSize": "0x8034e82c",
     "g_memOffset": "0x8034e86c",
     "g_memSize": "0x8034e870",
     "g_pMemAllocators": "0x801a10cc",
     "g_pScriptMemory": "0x8034e868",
+    "g_pcClassList": "0x8034e7d0",
     "strcpy": "0x80140040",
     "strlen": "0x801400f8"
   },
@@ -135,9 +173,11 @@
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_iBSMessageRegistrationListSize",
     "g_memOffset",
     "g_memSize",
-    "g_pScriptMemory"
+    "g_pScriptMemory",
+    "g_pcClassList"
   ],
   "original_file": "bsutil.cpp",
   "original_file_index": 1398,
