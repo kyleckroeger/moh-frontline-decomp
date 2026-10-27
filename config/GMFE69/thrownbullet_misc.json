@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d2384",
-      "size": 1104,
+      "address": "0x800d1d88",
+      "size": 2636,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e69c",
-      "size": 40,
+      "address": "0x8000e694",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015404",
-      "size": 60,
+      "address": "0x800153f8",
+      "size": 72,
       "type": 1
     },
     {
@@ -101,6 +101,12 @@
       "binding": 1
     },
     {
+      "name": "CheckEnemies__13CThrownBulletFv",
+      "address": "0x800d1d88",
+      "size": 1532,
+      "binding": 1
+    },
+    {
       "name": "SetDetonationTime__13CThrownBulletFf",
       "address": "0x800d2510",
       "size": 24,
@@ -114,8 +120,10 @@
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "BuildRotX__7CMatrixFf": "0x800908c0",
     "DebugMsg__FPCce": "0x80018c88",
+    "GetVarValue__9CAIStatusCF12aistatus_var": "0x8004960c",
     "InitClass__7CMatrixFv": "0x80090b78",
     "MP_THROWNBULLET_DRAW_DELAY": "0x8034e228",
     "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
@@ -123,6 +131,7 @@
     "RotateZ__7CMatrixFf": "0x80090194",
     "SetLightVolume__11CStaticMeshFP14BPDLightVolume": "0x800f2434",
     "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pGermanList": "0x8034e894",
     "g_pStaticObjectBazooka": "0x8034eb34",
     "g_pStaticObjectGrenade": "0x8034eb30",
     "g_pStaticObjectKnife": "0x8034eb3c",
@@ -138,6 +147,7 @@
   "sda_externals": [
     "MP_THROWNBULLET_DRAW_DELAY",
     "g_bInMultiplayerMode",
+    "g_pGermanList",
     "g_pStaticObjectBazooka",
     "g_pStaticObjectGrenade",
     "g_pStaticObjectKnife",
@@ -168,12 +178,6 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x80350dac"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
       "address": "0x80350d70"
     },
     {
@@ -192,11 +196,71 @@
       "section": ".sdata2",
       "offset": 24,
       "size": 4,
-      "address": "0x80350d74"
+      "address": "0x80350d88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350d8c"
     },
     {
       "section": ".sdata2",
       "offset": 32,
+      "size": 4,
+      "address": "0x80350d74"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350d90"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350d94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350d98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350d9c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350da0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350da4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350da8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80350dac"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
       "size": 8,
       "address": "0x80350db0"
     }

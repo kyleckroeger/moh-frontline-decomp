@@ -1,4 +1,11 @@
-// A fragment of thrownbullet.cpp (0x800d2384): CThrownBullet's ApplyForceTo
+// A fragment of thrownbullet.cpp (0x800d1d88): CThrownBullet's CheckEnemies
+// (once per throw, for the grenade-like types: the first live German soldier,
+// not the thrower, that the grenade is 1.3-1.9 above and in front of within a
+// side band (narrower when his weapon's flag at +74 is set) gets event 163;
+// otherwise, for a grenade lying still, the nearest soldier within 3 or 6 gets
+// event 172 or 173; every other live soldier within 6 then gets event 174 and
+// counts the friends of the chosen one, and the chosen one's event carries
+// the warning record), ApplyForceTo
 // (the velocity at +240 set to the force's direction times the weapon
 // record's first value and 1/512 of the scale, then copied to +256; the
 // CVector3 view and MSL-style inline sqrtf are those of player_weapon.cpp),
@@ -22,7 +29,9 @@
 // CBullet declares placeholder virtuals up to AsProjectile (+320, named by
 // __vt__7CBullet). CThrownBullet declares MarkForDestruction (defined
 // elsewhere) first so its table is not emitted here. The type numbers are
-// not named. The rest of the file is not part of this unit.
+// not named. The second loop of CheckEnemies is an inferred inline that
+// shares the soldier and target variables by reference. The rest of the file
+// is not part of this unit.
 class CCollision;
 class CProjectileBullet;
 
@@ -131,6 +140,10 @@ extern StaticObjectView* g_pStaticObjectBazooka;
 extern bool g_bInMultiplayerMode;
 extern float MP_THROWNBULLET_DRAW_DELAY;
 
+struct BSObject;
+class CSoldierObject;
+class CAIDoodadView;
+
 class ISceneNode {
 public:
     virtual void vf008();
@@ -147,15 +160,15 @@ public:
     virtual void vf034();
     virtual void vf038();
     virtual void vf03c();
-    virtual void vf040();
-    virtual void vf044();
-    virtual void vf048();
+    virtual void GetPosition(CVector3&) const;
+    virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
     virtual void vf04c();
     virtual void vf050();
     virtual void vf054();
     virtual void vf058();
     virtual void vf05c();
-    virtual void vf060();
+    virtual BSObject* GetScriptObject() const;
     virtual void vf064();
     virtual void vf068();
     virtual void vf06c();
@@ -168,10 +181,124 @@ public:
     virtual void vf088();
     virtual void vf08c();
     virtual void vf090();
-    virtual void vf094();
+    virtual CSoldierObject* AsSoldierObject();
     virtual void vf098();
     virtual void* AsPlayerObject();
+    virtual void vf0a0();
+    virtual void vf0a4();
+    virtual void vf0a8();
+    virtual void vf0ac();
+    virtual void vf0b0();
+    virtual void vf0b4();
+    virtual void vf0b8();
+    virtual void vf0bc();
+    virtual void vf0c0();
+    virtual void vf0c4();
+    virtual void vf0c8();
+    virtual CAIDoodadView* GetAIDoodad();
 };
+
+enum aistatus_var {};
+
+class CAIStatus {
+public:
+    int GetVarValue(aistatus_var) const;
+};
+
+/* inferred: the AI object behind a doodad (team at +20, status at +436) */
+struct AIObjectView {
+    unsigned char unknown000[20];
+    unsigned char m_team;
+    unsigned char unknown015[415];
+    CAIStatus m_status;
+};
+
+struct AIDoodadInfoView {
+    unsigned char unknown00[8];
+    AIObjectView* m_object;
+};
+
+class CAIDoodadView {
+public:
+    unsigned char unknown00[4];
+    AIDoodadInfoView* m_info;
+};
+
+/* inferred: the weapon's properties pointer (+640) and the flag at +74 */
+struct WeaponPropertiesView {
+    unsigned char unknown00[74];
+    short m_flag4a;
+};
+
+struct WeaponView {
+    unsigned char unknown000[640];
+    WeaponPropertiesView* m_properties;
+};
+
+class CSoldierObject : public ISceneNode {
+public:
+    unsigned char unknown0004[16396];
+    WeaponView* m_weapons[25];
+    int m_currentWeapon;
+};
+
+/* BSGO_Basic's three words precede its table pointer */
+class BSGO_Basic {
+public:
+    BSObject* m_object;
+    BSGO_Basic* m_next;
+    int m_field8;
+
+    virtual void Destroy();
+    virtual void* GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+};
+
+extern BSGO_Basic* g_pGermanList;
+bool BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
+
+class CThrownBullet;
+
+/* inferred: the grenade warning's event block */
+struct GrenadeWarningInfo {
+    BSObject* m_firedBy;
+    CThrownBullet* m_bullet;
+    int m_count;
+};
+
+/* inferred: whether two AI teams are enemies */
+inline bool AreEnemies(unsigned char team, unsigned char other) {
+    switch (team) {
+    case 1:
+        switch (other) {
+        case 0:
+        case 1:
+            return false;
+        case 2:
+            return true;
+        }
+        break;
+    case 2:
+        switch (other) {
+        case 0:
+        case 2:
+            return false;
+        case 1:
+            return true;
+        }
+        break;
+    case 0:
+        switch (other) {
+        case 0:
+            return false;
+        case 1:
+        case 2:
+            return true;
+        }
+        break;
+    }
+    return false;
+}
 
 class CBullet {
 public:
@@ -364,6 +491,7 @@ public:
     virtual void vf11c();
     virtual BPDLightVolume* GetLightVolume();
     void Draw(CDrawContext&);
+    void CheckEnemies();
     void ApplyForceTo(CVector3, float);
     void Halt();
     void HandleBulletCollision(CBullet*, const CCollision&);
@@ -372,7 +500,9 @@ public:
     int GetScriptBulletType() const;
     bool IsVisible(CDrawContext&) const;
 
-    unsigned char unknown004[76];
+    unsigned char unknown004[44];
+    CVector3 m_position;
+    unsigned char unknown040[16];
     CMatrix m_tm;
     float m_detonationTime;
     unsigned char unknown094[16];
@@ -393,8 +523,112 @@ public:
     unsigned char m_flags1f8 : 3;
     unsigned char m_flag10 : 1;
     unsigned char m_flag08 : 1;
-    unsigned char m_flags1f8b : 3;
+    unsigned char m_flag04 : 1;
+    unsigned char m_warned : 1;
+    unsigned char m_flag01 : 1;
 };
+
+inline void WarnOthers(CThrownBullet* self, BSGO_Basic* best, GrenadeWarningInfo& info, CVector3& delta, CSoldierObject*& soldier, AIObjectView*& target) {
+    BSGO_Basic* other;
+    AIDoodadInfoView* doodad;
+    target = best->GetSceneNode()->GetAIDoodad()->m_info->m_object;
+    for (other = g_pGermanList; other; other = other->m_next) {
+        soldier = other->GetSceneNode()->AsSoldierObject();
+        if (self->m_owner && soldier == self->m_owner->AsSoldierObject())
+            continue;
+        if (other == best)
+            continue;
+        doodad = soldier->GetAIDoodad()->m_info;
+        if (doodad->m_object->m_status.GetVarValue((aistatus_var)0) <= 0)
+            continue;
+        soldier->GetPosition(delta);
+        delta.x = self->m_position.x - delta.x;
+        delta.y = self->m_position.y - delta.y;
+        delta.z = self->m_position.z - delta.z;
+        if (delta.x * delta.x + delta.y * delta.y < 36.0f) {
+            BSObjectTriggerEvent(other->m_object, 174, &info, 0, true);
+            if (!AreEnemies(target->m_team, doodad->m_object->m_team))
+                info.m_count++;
+        }
+    }
+}
+
+void CThrownBullet::CheckEnemies() {
+    BSGO_Basic* node;
+    CSoldierObject* soldier;
+    float bestDistance;
+    BSGO_Basic* best;
+    int event;
+    bestDistance = 0.0f;
+    best = 0;
+    event = -1;
+    if (m_warned || (int)m_type == 0 || m_type - 1 <= 1 || m_type - 5 <= 5 || (int)m_type == 8)
+        return;
+    CVector3 delta;
+    CVector3 direction;
+    for (node = g_pGermanList; node; node = node->m_next) {
+        soldier = node->GetSceneNode()->AsSoldierObject();
+        if (m_owner && soldier == m_owner->AsSoldierObject())
+            continue;
+        if (soldier->GetAIDoodad()->m_info->m_object->m_status.GetVarValue((aistatus_var)0) <= 0)
+            continue;
+        soldier->GetPosition(delta);
+        delta.x = m_position.x - delta.x;
+        delta.y = m_position.y - delta.y;
+        delta.z = m_position.z - delta.z;
+        float speed = std::sqrtf(m_velocity.LengthSq());
+        if (delta.z > 1.3f && delta.z < 1.9f) {
+            soldier->GetForward(direction);
+            float facing = direction.x * delta.x + direction.y * delta.y + direction.z * delta.z;
+            if (facing < 1.0f && facing > 0.0f) {
+                float low = -0.1f;
+                float high = 0.5f;
+                WeaponView* weapon = soldier->m_weapons[soldier->m_currentWeapon];
+                if (weapon && weapon->m_properties->m_flag4a) {
+                    low = -0.3f;
+                    high = 0.2f;
+                }
+                soldier->GetRightward(direction);
+                float side = direction.x * delta.x + direction.y * delta.y + direction.z * delta.z;
+                if (side < high && side > low) {
+                    m_warned = 1;
+                    best = node;
+                    event = 163;
+                    break;
+                }
+            }
+        } else if (delta.z < 0.05f && speed < 0.05f) {
+            float distance = delta.x * delta.x + delta.y * delta.y;
+            if (distance < 9.0f) {
+                if (!best || distance < bestDistance) {
+                    m_warned = 1;
+                    bestDistance = distance;
+                    best = node;
+                    event = 172;
+                }
+            } else if (distance < 36.0f) {
+                if (!best || distance < bestDistance) {
+                    m_warned = 1;
+                    bestDistance = distance;
+                    best = node;
+                    event = 173;
+                }
+            }
+        }
+    }
+    if (best) {
+        GrenadeWarningInfo info;
+        if (m_owner)
+            info.m_firedBy = m_owner->GetScriptObject();
+        else
+            info.m_firedBy = 0;
+        info.m_bullet = this;
+        info.m_count = 0;
+        AIObjectView* target;
+        WarnOthers(this, best, info, delta, soldier, target);
+        BSObjectTriggerEvent(best->m_object, (unsigned short)event, &info, 0, true);
+    }
+}
 
 void CThrownBullet::ApplyForceTo(CVector3 force, float scale) {
     float strength = scale / 512.0f;
