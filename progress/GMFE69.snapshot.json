@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1072080,
+    "matching_code_bytes": 1073148,
     "total_executable_code_bytes": 1414572,
-    "percent": 75.78829497544133,
+    "percent": 75.8637948439528,
     "categories": {
-      "reconstructed_game": 842088,
+      "reconstructed_game": 843156,
       "restored_library": 229992
     },
-    "matching_functions": 4702
+    "matching_functions": 4703
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1176,7 +1176,7 @@
     "config/GMFE69/static_obj_commit.json": "13782cf0c53505bcbb3e0e058d868ae77368b1603d13103c62e28fa38db00e47",
     "config/GMFE69/static_obj_dtor.json": "f02abdc7c3052b254ff245d33ac389877396f88c3a9c7743d7bff835ce0ea28d",
     "config/GMFE69/static_obj_firedby.json": "e42aa5c7378930075d2b010814c1ef8d3c5f472c8ed042f0f1fb294225794351",
-    "config/GMFE69/static_obj_pathbegin.json": "19fbc42f7c5de3d98e103b992c6d324e2f5c9ce8c32730282eb926211b9bef9f",
+    "config/GMFE69/static_obj_pathbegin.json": "fbfeaab8f3fb508d9a9e88d0d5cc59584cd396767a9e7787b428857c7c5bf242",
     "config/GMFE69/static_obj_rows.json": "9a108ce0139e64467e8345ddb5f5ae7bb8bc9432e686a074a2f8790afdaf36eb",
     "config/GMFE69/static_obj_scale.json": "55b890202e2a0aaf73c39f0d4b2bb06a63067119e0e9bc52329bc94ff77532d3",
     "config/GMFE69/static_obj_setlight.json": "7534bdba6f32a2e7052ae02daf96a649ab73c306b44fb8d455135897601cf168",
@@ -3076,7 +3076,7 @@
     "src/game/static_obj_commit.cpp": "6be8c2db3c2c2e2c79ff1263a4b52b9855b05e241fe74144da9df2b7c50c49a9",
     "src/game/static_obj_dtor.cpp": "d2900e0d83d6c40dd8fd027146a758f25846f8251c15dfb928b9d909a1f9c275",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
-    "src/game/static_obj_pathbegin.cpp": "ac08601ecc27bce5a642f95836100891cbed813513452ab4f205d425c11ace53",
+    "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
     "src/game/static_obj_rows.cpp": "eebbe9899681bc25656fa953c1b1b02723564a4f9326aa07ca9ef7b8a133316c",
     "src/game/static_obj_scale.cpp": "b282586be27679bb405b605fe833a64266b9396a4442417a56465dea345476cb",
     "src/game/static_obj_setlight.cpp": "3ea1954bd20c53c8f8320fbd9f73d29312b3d848dc1cdf7e2ffce5b1c914415e",
@@ -45108,8 +45108,8 @@
     {
       "id": "static_obj_pathbegin",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 332,
+      "functions": 3,
+      "code_bytes": 1400,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45141,8 +45141,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a17ac0815c57e0efb9216b154a0a0b4b55bf59bf5de0a08bf8d6ac545e1d69f1",
-      "linked_sha256": "2cbd3d41001bc9a232492a18f74e9f046b16a29d8eb049432b7bf63d60a47b55"
+      "object_sha256": "715c0fc9f4a293d914ec0618f43a4a229fcb8a5b6597b769854a62de69007491",
+      "linked_sha256": "801f7c06a5785c605d43a2097c45cbad3dac5f5576cd184d4eea067b5855c75c"
     },
     {
       "id": "hierobject_motion",
@@ -56825,13 +56825,6 @@
         "file_record": 118,
         "file_name": "static_obj.cpp",
         "ranges": [
-          {
-            "address": "0x800aea0c",
-            "size": 1068,
-            "kind": "function",
-            "name": "UpdatePathMotionDestAndSpeed__13CStaticObjectFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800af260",
             "size": 520,

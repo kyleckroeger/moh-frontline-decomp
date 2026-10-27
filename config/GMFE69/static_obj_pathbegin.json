@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800ae8c0",
-      "size": 332,
+      "size": 1400,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d390",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014468",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -64,6 +64,12 @@
       "binding": 1
     },
     {
+      "name": "UpdatePathMotionDestAndSpeed__13CStaticObjectFv",
+      "address": "0x800aea0c",
+      "size": 1068,
+      "binding": 1
+    },
+    {
       "name": "BeginPathMotionUpdate__13CStaticObjectFf",
       "address": "0x800ae9bc",
       "size": 80,
@@ -72,7 +78,13 @@
   ],
   "externals": {
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
-    "UpdatePathMotionDestAndSpeed__13CStaticObjectFv": "0x800aea0c",
+    "GetDistanceSquaredXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a6f4",
+    "GetFinalPointForward__22CAISplinePathTraversalFP21CAIFilterRealPosition": "0x8004fcbc",
+    "GetNextPointForward__22CAISplinePathTraversalFRC21CAIFilterRealPositionP21CAIFilterRealPositionP15CAIFilterObject": "0x8004fdd4",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
     "g_cheats": "0x80196a94"
   },
   "undefined_in_discarded_code": [],
@@ -80,7 +92,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "static_obj.cpp",
   "original_file_index": 6731,
   "pooled_sections": [
@@ -92,6 +106,84 @@
       "offset": 0,
       "size": 4,
       "address": "0x80350880"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350884"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350888"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350890"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350898"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x803508a0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x803508a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x803508b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x803508b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x803508b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x803508bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x803508c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x803508c4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x803508c8"
     }
   ]
 }
