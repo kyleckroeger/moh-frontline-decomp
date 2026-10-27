@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1093720,
+    "matching_code_bytes": 1095064,
     "total_executable_code_bytes": 1414572,
-    "percent": 77.31808631868861,
+    "percent": 77.41309738917496,
     "categories": {
-      "reconstructed_game": 863728,
+      "reconstructed_game": 865072,
       "restored_library": 229992
     },
-    "matching_functions": 4712
+    "matching_functions": 4713
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -696,7 +696,7 @@
     "config/GMFE69/getpic.json": "c92c299a39d9394c5ba16c007e89eddce5dcf73e54c8930e5ba21078898cba82",
     "config/GMFE69/getvlc.json": "77db77821435a705cc4cac966fc3a2f4ebbd4327e55395878628760177a47341",
     "config/GMFE69/global_destructor_chain.json": "0fe0a3698440cd1f1bff61944bd62409272132d09eb6b5c82b9745b82413e6fa",
-    "config/GMFE69/hearingvolume.json": "e8aff4213b28d2f4046c3a9b25e9c4d289c97b8a4f6aad7802217f6faf9faa28",
+    "config/GMFE69/hearingvolume.json": "b4810e7e55e8b3ada0369970ad2643742c8ecbacfcdb30495240a5b3869cd95a",
     "config/GMFE69/hearingvolume_bullet.json": "fe66f7649067c88844e9d49ada347ce9818cd97f22ac2ef2a09b41c8ace9d321",
     "config/GMFE69/hearingvolume_ctor.json": "5732d09920cc07a935b5d77282b677d3891bc32644633fecebf585fba3ca35e1",
     "config/GMFE69/hearingvolume_init.json": "5cfe4c3ac3686d90692dbcac1cb2adbc0a2c874ed61ea1b4a96d250a04015cfe",
@@ -2840,7 +2840,7 @@
     "src/game/font_render.cpp": "82d5a453d9301b7fd3b7854619ec92a3e03e18ff1a70528cfcb5782858feea08",
     "src/game/framework.cpp": "8cebad26aba8fe4a9a9ece0492c0bf7bb34882a1eec7dd48a1b3b93d0830914f",
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
-    "src/game/hearingvolume.cpp": "60c5c156b6483fd8b538aec12fe17bfbe67f89d90750f57d4bf72ca6b9716d6b",
+    "src/game/hearingvolume.cpp": "f4e5ccb24ab2d04de853c2976e0a4a1278db30f1ac52b0b96b2452ef027715bf",
     "src/game/hearingvolume_bullet.cpp": "d675a975cda997302153895f84925033ef4b4975388d742d108434c3f9ee0ec0",
     "src/game/hearingvolume_ctor.cpp": "2eb1e8ebc87557ea9d3f15e839315eeb922a206238f8dc46e859681ae7a3f49a",
     "src/game/hearingvolume_init.cpp": "426489d92b8d59e244ea4fb51abc66ea78a94f47252c45a053605291aee269e4",
@@ -19881,8 +19881,8 @@
     {
       "id": "hearingvolume",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 168,
+      "functions": 4,
+      "code_bytes": 1512,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -19914,8 +19914,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "187885bac50123ebf690aecf1891a2f6ea323f343d963e75bf7097a1da3b4869",
-      "linked_sha256": "648587acc3c05d390792830a8c1a92d2b6355d646e73e26b172156b8d8e2b667"
+      "object_sha256": "abf988a4333a010f0ee2e72ae0b5f3c89eb5518e35dc2d50458aeba43739a5a2",
+      "linked_sha256": "3688fdf7568cd2412778fa73659a39fb1795b6b0a761f08d8df6f253bdacfcb2"
     },
     {
       "id": "player_weapon_object_head",
@@ -56778,20 +56778,6 @@
             "size": 616,
             "kind": "function",
             "name": "Init__18CAnimObjectFactoryFUlPc",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/hearingvolume.cpp [symbol evidence]",
-        "file_record": 111,
-        "file_name": "hearingvolume.cpp",
-        "ranges": [
-          {
-            "address": "0x80098408",
-            "size": 1344,
-            "kind": "function",
-            "name": "HandleBulletCollision__14CHearingVolumeFP7CBulletRC10CCollision",
             "evidence": "exception-index"
           }
         ]

@@ -40,20 +40,32 @@
     {
       "name": ".text",
       "address": "0x80098360",
-      "size": 168,
+      "size": 1512,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000cba0",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013c94",
-      "size": 12,
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801eefc8",
+      "size": 16,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ead0",
+      "size": 1,
+      "type": 8
     }
   ],
   "functions": [
@@ -62,6 +74,12 @@
       "address": "0x80098368",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "HandleBulletCollision__14CHearingVolumeFP7CBulletRC10CCollision",
+      "address": "0x80098408",
+      "size": 1344,
+      "binding": 1
     },
     {
       "name": "GetCollisionId__14CHearingVolumeCFv",
@@ -77,16 +95,70 @@
     }
   ],
   "externals": {
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Orthonormalize__7CMatrixFv": "0x8008f1e8",
     "PlayBulletWhiz__F8CVector38CVector3P13CPlayerObject": "0x800ea76c",
-    "g_scene": "0x8019484c"
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "g_cheats": "0x80196a94",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "hearingvolume.cpp",
-  "original_file_index": 5913
+  "original_file_index": 5913,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350478"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8035047c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350480"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350488"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350490"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350498"
+    }
+  ]
 }
