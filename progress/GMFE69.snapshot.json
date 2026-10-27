@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1118236,
+    "matching_code_bytes": 1119412,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.05119004193494,
+    "percent": 79.1343247286105,
     "categories": {
-      "reconstructed_game": 888244,
+      "reconstructed_game": 889420,
       "restored_library": 229992
     },
-    "matching_functions": 4742
+    "matching_functions": 4744
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -916,7 +916,7 @@
     "config/GMFE69/projectilebullet_update.json": "e97de5ae46b8d22fd130975fe57156ce7d8a30fce3b65ed063a9b79695b140cf",
     "config/GMFE69/propdat.json": "94c13be6b252275e231dd50cdadd1f04d86ac3c0a7b8d32e3b090ffd947a87c0",
     "config/GMFE69/propdat_bsp.json": "bd4b85e3a27ac50301d2ad04642bca1abf864b5f74397505530539b31bf4c0d1",
-    "config/GMFE69/propdat_core.json": "5a862dea6d4d647cf792350510a1aab4dab808c98c93515feabdee3fcf23c434",
+    "config/GMFE69/propdat_core.json": "472941bdadaf62dd30528adc52983a8ded593de7a9bc48dddd9e8c6c7980a61e",
     "config/GMFE69/propdat_endian_header.json": "fc5d8ac73779ac176f7f3b30624c834267f7809b3ffe197edba85577f73d9aef",
     "config/GMFE69/propdat_load.json": "3c22e8779fbedf6231304c0a79137e2ce814b5e44828c65e103c187fa1ab67f0",
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
@@ -2992,7 +2992,7 @@
     "src/game/projectilebullet_update.cpp": "43a8b750d423a12edabe3f002385362412413f1b80529e4b541f702fa494ac3d",
     "src/game/propdat.cpp": "b1e26b00f10be619cc409432f6748e200a0064248119fafa81774718c305885d",
     "src/game/propdat_bsp.cpp": "1433421b4435385d1bde79defe5895260b12b84328ae62750cf9b5db44d0b0ef",
-    "src/game/propdat_core.cpp": "190433b2d7e03d9951433389b4c0f3c5c416f13c6e8a4d76e5cd1334b7f8fe27",
+    "src/game/propdat_core.cpp": "03e0b724ca74bb3276c2704a657de0354898cf2ff9c1ccbd19f97307f11da28e",
     "src/game/propdat_endian_header.cpp": "a495580d0031b6979d10c5906c2235de9e8efa227c56cb5fe6d68e57a88aa50c",
     "src/game/propdat_load.cpp": "083d5123a3aad6d878565b0baa08495c869d1ac0bd35ae686f9f2044babd7470",
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
@@ -23661,8 +23661,8 @@
     {
       "id": "propdat_core",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 3624,
+      "functions": 4,
+      "code_bytes": 4800,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -23694,8 +23694,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6fd6757aed6f1945a6044cf75099cf9ab565c160773bcda23a73d49929ee89fb",
-      "linked_sha256": "9f38d17ca1aea81ee83421c6467cbe83e4c60e0626f1759db80cfa5e152fa636"
+      "object_sha256": "ebacea0b09dcf530c115f5e63f0e9c006622277b282ea01d4207b27a016a12b3",
+      "linked_sha256": "07c5a29e02b9aee6c938f6890364999df6f60cf6445e32347b9e091e21941742"
     },
     {
       "id": "saems_counter",
@@ -56031,20 +56031,6 @@
             "size": 484,
             "kind": "function",
             "name": "FindAllMGPointsInBPDFile__Fv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80044168",
-            "size": 588,
-            "kind": "function",
-            "name": "EndianSwap__FR8BPDLight",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800443b4",
-            "size": 588,
-            "kind": "function",
-            "name": "EndianSwap__FR14BPDLightVolume",
             "evidence": "exception-index"
           }
         ]

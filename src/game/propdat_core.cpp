@@ -7,15 +7,15 @@
 // tweaker lists, the polygon paths), then walks the property records, hanging
 // each on the next trigger object and dispatching on its name hash and then on
 // its type to the matching EndianSwap and PatchUpCore, and returns the size of
-// the records. The file name is this project's; the original record is
-// propdat.cpp and RestartPlayer before it is not reconstructed (its .sdata2
-// constants are pooled with the file's). The header's dwi_prime_list copy
-// (.rodata) belongs to the propdat_bsp.cpp fragment and is left out here. The
-// offsetPtr templates and the weak EndianSwap copies for BPDLight and
-// BPDLightVolume (emitted after PatchUpAllPropertyData in the original, as
-// out-of-line inlines) are declared only. Struct views, field names, the
-// record name hashes' meaning and the small inline helpers are inferred; the
-// file's globals are declared extern.
+// the records, followed by the weak out-of-line copies of the inline
+// EndianSwap for BPDLight and BPDLightVolume that it calls. The file name is
+// this project's; the original record is propdat.cpp and RestartPlayer before
+// it is not reconstructed (its .sdata2 constants are pooled with the file's).
+// The header's dwi_prime_list copy (.rodata) belongs to the propdat_bsp.cpp
+// fragment and is left out here; the offsetPtr templates are declared only.
+// Struct views, field names (the three-float vector groups are read off the
+// swap code), the record name hashes' meaning and the small inline helpers are
+// inferred; the file's globals are declared extern.
 
 
 extern "C" int rand();
@@ -453,14 +453,15 @@ struct PropPlane4 {
     float x, y, z, d;
 };
 
+// Inferred: three floats swapped as one value (a vector type of its own).
+struct PropVector3 {
+    float x, y, z;
+};
+
 struct BPDLight {
     int field00;
-    float field04;
-    float field08;
-    float field0c;
-    float field10;
-    float field14;
-    float field18;
+    PropVector3 field04;
+    PropVector3 field10;
     float field1c;
     float field20;
     float field24;
@@ -469,9 +470,7 @@ struct BPDLight {
 };
 
 struct BPDLightVolume {
-    float field00;
-    float field04;
-    float field08;
+    PropVector3 field00;
     float field0c;
     float field10;
     float field14;
@@ -630,9 +629,37 @@ inline void EndianSwap(PropPlane4& value) {
     EndianSwap(value.d, true);
 }
 
-void EndianSwap(BPDLight& value);
+inline void EndianSwap(PropVector3& value) {
+    EndianSwap(value.x, true);
+    EndianSwap(value.y, true);
+    EndianSwap(value.z, true);
+}
 
-void EndianSwap(BPDLightVolume& value);
+// The two record swaps are too large to inline; the compiler emits them as
+// weak functions after their first caller, PatchUpAllPropertyData.
+inline void EndianSwap(BPDLight& value) {
+    ChangeEndian(value.field00);
+    EndianSwap(value.field04);
+    EndianSwap(value.field10);
+    ChangeEndian(value.field1c);
+    ChangeEndian(value.field20);
+    ChangeEndian(value.field24);
+    ChangeEndian(value.field28);
+    ChangeEndian(value.field2c);
+}
+
+inline void EndianSwap(BPDLightVolume& value) {
+    EndianSwap(value.field00);
+    ChangeEndian(value.field0c);
+    ChangeEndian(value.field10);
+    ChangeEndian(value.field14);
+    ChangeEndian(value.planeCount);
+    ChangeEndian(value.planes);
+    ChangeEndian(value.lightCount);
+    ChangeEndian(value.lights);
+    ChangeEndian(value.field28);
+    ChangeEndian(value.field2c);
+}
 
 inline void EndianSwap(BPDHeader& value) {
     ChangeEndian(value.field00);

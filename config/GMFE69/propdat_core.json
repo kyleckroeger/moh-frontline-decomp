@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80043340",
-      "size": 3624,
+      "size": 4800,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a5fc",
-      "size": 16,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800116a8",
-      "size": 24,
+      "size": 48,
       "type": 1
     },
     {
@@ -77,6 +77,18 @@
       "binding": 1
     },
     {
+      "name": "EndianSwap__FR14BPDLightVolume",
+      "address": "0x800443b4",
+      "size": 588,
+      "binding": 2
+    },
+    {
+      "name": "EndianSwap__FR8BPDLight",
+      "address": "0x80044168",
+      "size": 588,
+      "binding": 2
+    },
+    {
       "name": "PatchUpAllPropertyData__FP9BPDHeader",
       "address": "0x8004372c",
       "size": 2620,
@@ -85,7 +97,6 @@
   ],
   "externals": {
     "DebugMsg__FPCce": "0x80018c88",
-    "EndianSwap__FR14BPDLightVolume": "0x800443b4",
     "EndianSwap__FR15MOH_core_Struct": "0x80041b38",
     "EndianSwap__FR16MOH_enemy_Struct": "0x80041810",
     "EndianSwap__FR18xyzProperty_Struct": "0x80041e54",
@@ -97,7 +108,6 @@
     "EndianSwap__FR30MOH_projectileGenerator_Struct": "0x8004103c",
     "EndianSwap__FR31MOH_playerPathController_Struct": "0x80040e04",
     "EndianSwap__FR36MOH_projectileGeneratorTarget_Struct": "0x80040ed0",
-    "EndianSwap__FR8BPDLight": "0x80044168",
     "Register__15CParticleSystemFP9ShapeFile": "0x80080db0",
     "Register__15CParticleSystemFPvi": "0x80080d9c",
     "Register__6CLightFPvi": "0x80078674",
