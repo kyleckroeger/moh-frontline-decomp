@@ -61,12 +61,24 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80139230",
-      "size": 68,
+      "address": "0x80138fe8",
+      "size": 652,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ExPPC_LongJump__FP12ThrowContextPvPv",
+      "address": "0x80138fe8",
+      "size": 260,
+      "binding": 0
+    },
+    {
+      "name": "__throw",
+      "address": "0x801390ec",
+      "size": 324,
+      "binding": 1
+    },
     {
       "name": "__end__catch",
       "address": "0x80139230",
@@ -74,11 +86,15 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "ExPPC_ThrowHandler__FP12ThrowContext": "0x80139274"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "ExPPC_ThrowHandler__FP12ThrowContext"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "Gecko_ExceptionPPC.cp",
