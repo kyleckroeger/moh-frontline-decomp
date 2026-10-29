@@ -279,11 +279,13 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
     keep = {(s["address"], s["size"]) for s in objects
             if not s["name"].startswith("@") and s["name"] not in duplicates
             and find(s, original, locals_) is not None}
-    if base is not None and obj.sections[index]["type"] == 8:
-        # Compiler-numbered zero-fill objects (a static initialiser's registration
-        # records) are reached through a block base register, not their own
-        # relocations; keep one when the original file has a numbered object
-        # of the same size at the placed address.
+    if base is not None:
+        # Compiler-numbered objects reached through a block base register
+        # (a static initialiser's registration records, strings addressed as
+        # ...rodata.0 + offset) or only through kept named data (a weak
+        # table's type record and base list) have no relocation of their own
+        # from kept code; keep one when the original file has a numbered
+        # object of the same size at the placed address.
         numbered = {(s["address"], s["size"]) for items in locals_.values() for s in items
                     if s["name"].startswith("@")}
         keep |= {(s["address"], s["size"]) for s in objects

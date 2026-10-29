@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -34,17 +34,205 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001af5c",
-      "size": 268,
+      "address": "0x80016e80",
+      "size": 16872,
+      "type": 1
+    },
+    {
+      "name": ".ctors",
+      "address": "0x8016df44",
+      "size": 4,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x80009600",
+      "size": 252,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8000ffe0",
+      "size": 240,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016e040",
+      "size": 1039,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8017b7e0",
+      "size": 25752,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 25972
+    },
+    {
+      "name": ".bss",
+      "address": "0x80194840",
+      "size": 9200,
+      "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034d960",
+      "size": 88,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034e6a0",
+      "size": 109,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034f520",
+      "size": 136,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "EndErrorText__Fv",
+      "address": "0x80017b80",
+      "size": 632,
+      "binding": 0
+    },
+    {
+      "name": "InitCORE__Fi",
+      "address": "0x8001a3d8",
+      "size": 408,
+      "binding": 0
+    },
+    {
+      "name": "LoadTheGame__Fv",
+      "address": "0x80019794",
+      "size": 696,
+      "binding": 0
+    },
+    {
+      "name": "GameLoop__Fv",
+      "address": "0x80018cd8",
+      "size": 2748,
+      "binding": 0
+    },
+    {
+      "name": "RestartGame__Fv",
+      "address": "0x80019e54",
+      "size": 692,
+      "binding": 0
+    },
+    {
+      "name": "DrawStatusScreen__FP7CSpriteP7CSpritef",
+      "address": "0x80019a4c",
+      "size": 1032,
+      "binding": 0
+    },
+    {
+      "name": "__sinit_Moh2_cpp",
+      "address": "0x8001a570",
+      "size": 1860,
+      "binding": 0
+    },
+    {
+      "name": "MohDVDErrorTask__Fii",
+      "address": "0x80016e80",
+      "size": 3328,
+      "binding": 1
+    },
+    {
+      "name": "SetFog__FR6CColorff",
+      "address": "0x80017df8",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "GetGameTime__Fv",
+      "address": "0x80017e2c",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "GetFrameCount__Fv",
+      "address": "0x80017e60",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "DebugMsg__FPCce",
+      "address": "0x80018c88",
+      "size": 80,
+      "binding": 2
+    },
+    {
+      "name": "main",
+      "address": "0x80017e68",
+      "size": 3616,
+      "binding": 1
+    },
+    {
+      "name": "SendRenderList__Fv",
+      "address": "0x8001a108",
+      "size": 112,
+      "binding": 1
+    },
+    {
+      "name": "WaitScreen__Fv",
+      "address": "0x8001a178",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "WaitRenderList__Fv",
+      "address": "0x8001a280",
+      "size": 344,
+      "binding": 1
+    },
+    {
+      "name": "__ct__6CPlaneFv",
+      "address": "0x8001ad2c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "__dt__6CPlaneFv",
+      "address": "0x8001acf0",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "__dt__4CFogFv",
+      "address": "0x8001acb4",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "__dt__16IMovingSceneNodeFv",
+      "address": "0x8001ad30",
+      "size": 112,
+      "binding": 2
+    },
+    {
+      "name": "__dt__10ISceneNodeFv",
+      "address": "0x8001ada0",
+      "size": 96,
+      "binding": 2
+    },
+    {
+      "name": "__dt__13IDestructibleFv",
+      "address": "0x8001ae00",
+      "size": 72,
+      "binding": 2
+    },
     {
       "name": "Destroy__13IDestructibleFv",
       "address": "0x8001b054",
@@ -250,6 +438,216 @@
       "binding": 2
     },
     {
+      "name": "GetUpward__10ISceneNodeCFR8CVector3",
+      "address": "0x8001af44",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "GetForward__10ISceneNodeCFR8CVector3",
+      "address": "0x8001af2c",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "GetRightward__10ISceneNodeCFR8CVector3",
+      "address": "0x8001af14",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "GetPosition__10ISceneNodeCFR8CVector3",
+      "address": "0x8001af00",
+      "size": 20,
+      "binding": 2
+    },
+    {
+      "name": "GetTMLocalToWorld__10ISceneNodeCFR7CMatrix",
+      "address": "0x8001aedc",
+      "size": 36,
+      "binding": 2
+    },
+    {
+      "name": "GetWorldBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
+      "address": "0x8001aed4",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "GetLocalBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
+      "address": "0x8001aecc",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "Draw__10ISceneNodeFR12CDrawContext",
+      "address": "0x8001aec8",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "CommitUpdate__10ISceneNodeFv",
+      "address": "0x8001aec4",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "OnCollision__10ISceneNodeFRC10CCollision",
+      "address": "0x8001aec0",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "AttemptUpdate__10ISceneNodeFf",
+      "address": "0x8001aebc",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "ConstrainVelocity__10ISceneNodeFv",
+      "address": "0x8001aeb8",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "CommitAI__10ISceneNodeFv",
+      "address": "0x8001aeb4",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "UpdateAI__10ISceneNodeFf",
+      "address": "0x8001aeb0",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "BeginUpdate__10ISceneNodeFf",
+      "address": "0x8001aeac",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "AsMovingNode__16IMovingSceneNodeFv",
+      "address": "0x8001aea8",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "AsMovingNode__16IMovingSceneNodeCFv",
+      "address": "0x8001aea4",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "GetLightVolume__16IMovingSceneNodeFv",
+      "address": "0x8001ae9c",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "ExitLightVolume__16IMovingSceneNodeFP14BPDLightVolume",
+      "address": "0x8001ae98",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "EnterLightVolume__16IMovingSceneNodeFP14BPDLightVolume",
+      "address": "0x8001ae94",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "GetWorldLinearVelocity__16IMovingSceneNodeCFv",
+      "address": "0x8001ae80",
+      "size": 20,
+      "binding": 2
+    },
+    {
+      "name": "Orthonormalize__16IMovingSceneNodeFv",
+      "address": "0x8001ae7c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "SetBasis__16IMovingSceneNodeF8CVector38CVector38CVector3",
+      "address": "0x8001ae78",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "SetPosition__16IMovingSceneNodeF8CVector3",
+      "address": "0x8001ae74",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Yaw__16IMovingSceneNodeFf",
+      "address": "0x8001ae70",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Roll__16IMovingSceneNodeFf",
+      "address": "0x8001ae6c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Pitch__16IMovingSceneNodeFf",
+      "address": "0x8001ae68",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Rotate__16IMovingSceneNodeF8CVector3f",
+      "address": "0x8001ae64",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Move__16IMovingSceneNodeF8CVector3",
+      "address": "0x8001ae60",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Transform__16IMovingSceneNodeFRC7CMatrix",
+      "address": "0x8001ae5c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "PreTransform__16IMovingSceneNodeFRC7CMatrix",
+      "address": "0x8001ae58",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "SetTMLocalToWorld__16IMovingSceneNodeFRC7CMatrix",
+      "address": "0x8001ae54",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "ApplyForceTo__16IMovingSceneNodeF8CVector3f",
+      "address": "0x8001ae50",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Halt__16IMovingSceneNodeFv",
+      "address": "0x8001ae4c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "Reset__16IMovingSceneNodeFv",
+      "address": "0x8001ae48",
+      "size": 4,
+      "binding": 2
+    },
+    {
       "name": "AsMovingNode__10ISceneNodeFv",
       "address": "0x8001b060",
       "size": 8,
@@ -262,13 +660,215 @@
       "binding": 2
     }
   ],
-  "externals": {},
+  "externals": {
+    "AmbientTrack_Start__Fv": "0x800ebf6c",
+    "AnimSystem_Init": "0x80064530",
+    "AnimSystem_Shutdown": "0x80064508",
+    "CalculateLevelStats__10CShellMenuFv": "0x800e6374",
+    "Capture__7CScreenFv": "0x8001b684",
+    "CheckIfThisIsTheLastLevelForTheMission__10CShellMenuFv": "0x800e1e58",
+    "DMRenderInit__Fv": "0x800f4e78",
+    "DMRenderShutdown__Fv": "0x800f4e58",
+    "DVDGetDriveStatus": "0x8011a1f8",
+    "DebugProfTimerDumpAll__Fv": "0x800f407c",
+    "DebugProfTimerPause__Fi": "0x800f41f0",
+    "DebugProfTimerResume__Fi": "0x800f41a0",
+    "DebugProfTimerStart__Fi": "0x800f4240",
+    "DebugProfTimerStop__Fi": "0x800f4120",
+    "DebugStats_Draw__Fiiiii": "0x800f429c",
+    "DebugStats_Init__FP7CScreenP11CRenderList": "0x800f43c4",
+    "DrawFragCount__13UserInterfaceFb": "0x800bd864",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawTextCentered__5CFontFfPCc": "0x8007cdb0",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
+    "Draw__11CRenderListFv": "0x800f10fc",
+    "Draw__13UserInterfaceFf": "0x800beb24",
+    "Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog": "0x800da67c",
+    "EndClass__12CMatrixStackFv": "0x80090fa4",
+    "Execute__16CDestructorQueueFv": "0x800dd3a4",
+    "Flip__7CScreenFv": "0x8001ba5c",
+    "GXDrawDone": "0x8012bff0",
+    "Gameloop_Init__FPFP7CSpriteP7CSpritef_vP7CSpriteP7CSprite": "0x8007aae8",
+    "Gameloop_Loop__Ff": "0x8007a810",
+    "Gameloop_Restart__Fv": "0x8007a5f8",
+    "Gameloop_Shutdown__Fv": "0x8007a9e0",
+    "GetHeight__7CScreenFv": "0x8001b8b0",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSoundModeValue__10CShellMenuFv": "0x800deec8",
+    "GetTMClipToView__9CViewportCFv": "0x8007914c",
+    "GetTMViewToScreen__7CScreenFv": "0x8001b690",
+    "GetVSyncs__7CScreenFv": "0x8001b908",
+    "GetValue__13CInputManagerFUlUl": "0x80084c14",
+    "GetWidth__7CScreenFv": "0x8001b8a8",
+    "Get_LanguageSuffix__10CShellMenuFv": "0x800e1500",
+    "Get__7LoadElfFv": "0x80108a28",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__11CAnimObjectFP11CRenderListP7CScreen": "0x80095b7c",
+    "InitClass__11CStaticMeshFP11CRenderListP7CScreen": "0x800f2478",
+    "InitClass__12CCompartmentFP11CRenderListP7CScreen": "0x80075db4",
+    "InitClass__12CMatrixStackFv": "0x80090ffc",
+    "InitClass__13CPlayerObjectFP7CScreenP7CCamera": "0x800a6300",
+    "InitClass__15CParticleSystemFP11CRenderListP7CScreenP6CScene": "0x80080fc8",
+    "InitClass__17CProjectileBulletFP11CRenderListP7CScreen": "0x800d1a44",
+    "InitClass__19CBulletDecalManagerFP11CRenderListP7CScreen": "0x80083c44",
+    "InitClass__19CPlayerWeaponObjectFv": "0x800a7a60",
+    "InitClass__5CFontFP11CRenderListP7CScreen": "0x8007d004",
+    "InitClass__6CDMeshFP11CRenderList": "0x800f69e4",
+    "InitClass__6CLightFP6CScene": "0x800787d4",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "InitClass__7CSkyBoxFP11CRenderListP7CScreen": "0x800a9420",
+    "InitClass__7CSpriteFP11CRenderListP7CScreen": "0x800824e4",
+    "InitControllerFromOptions__10CShellMenuFv": "0x800df240",
+    "InitREAL__Fi": "0x8001b0bc",
+    "Init__10CPublisherFi": "0x800d7eb4",
+    "Init__11CMotionBlurFP11CRenderList": "0x8007d2f0",
+    "Init__13CInputManagerFv": "0x80085144",
+    "Init__16CDestructorQueueFi": "0x800dd4bc",
+    "Init__6CFaderFP11CRenderList": "0x8007c024",
+    "Init__7CScreenFv": "0x8001be70",
+    "IsFading__13CFaderControlCFv": "0x8007bec0",
+    "IsReady__13CInputManagerFv": "0x80084a0c",
+    "Kick__11CRenderListFv": "0x800f0ed8",
+    "LoadData__10CShellMenuFv": "0x800e2338",
+    "MUSIC_Start__Fiii": "0x800ea684",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "MathFunSRandom__FUi": "0x80092e90",
+    "MathLLAngleInit__Fv": "0x80091f74",
+    "NullifyScreenAndLibrary__Fv": "0x8008b00c",
+    "OSGetResetButtonState": "0x80114c5c",
+    "OSGetTick": "0x80116a58",
+    "OSResetSystem": "0x801148d0",
+    "PADRecalibrate": "0x8011d35c",
+    "PROFILE_UPDATE__Fv": "0x800f3578",
+    "PauseDraw__5PauseFUl": "0x800dd7d8",
+    "PauseUpdate__5PauseFUl": "0x800dd98c",
+    "RCMP_Initialize__Fv": "0x80104250",
+    "RCMP_PlayMovie__FPcb": "0x8010408c",
+    "RCMP_Shutdown__Fv": "0x8010422c",
+    "ResetActuatorState__13CInputManagerFl": "0x80084adc",
+    "ResetCurrentLevelStats__10CShellMenuFv": "0x800e6b58",
+    "ResetLevelTimer__10CShellMenuFv": "0x800e6590",
+    "Reset__13CInputManagerFv": "0x80084958",
+    "Reset__5PauseFv": "0x800ddebc",
+    "Restart__11CRenderListFv": "0x800f0fd4",
+    "RunModule__7LoadElfFPCc": "0x80108a34",
+    "SYNCTASK_add": "0x801521a4",
+    "SaveData__10CShellMenuFv": "0x800e23e8",
+    "SetAmount__11CMotionBlurFf": "0x8007d2e8",
+    "SetCamera__6CSceneFP7CCamera": "0x800dc2a8",
+    "SetClearColor__7CScreenFRC6CColor": "0x8001b8dc",
+    "SetClear__7CScreenFb": "0x8001b900",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetColor__6CFaderF6CColor": "0x8007bfa4",
+    "SetControl__6CFaderFP13CFaderControl": "0x8007bf38",
+    "SetCurrent__16CScreenFieldModeFv": "0x8001b544",
+    "SetFinishedLevelData__13CPlayerObjectFv": "0x8009d470",
+    "SetKeymap__13CInputManagerFUlP6KEYMAP": "0x80084c3c",
+    "SetRect__9CViewportFffff": "0x800793b4",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "SetState__5PauseF10PauseState": "0x800dd5a8",
+    "SetViewport__9CViewportCFR7CScreen": "0x80079210",
+    "ShellDraw__10CShellMenuFUl": "0x800e7244",
+    "ShellInit__10CShellMenuFUl": "0x800e752c",
+    "ShellIsLibrary__Fv": "0x8008aff0",
+    "ShellIsScreen__Fv": "0x8008b000",
+    "ShellUpdate__10CShellMenuFUl": "0x800e7274",
+    "ShutdownREAL__Fv": "0x8001b068",
+    "ShutdownShell__10CShellMenuFv": "0x800e6f4c",
+    "Shutdown__10CPublisherFv": "0x800d7e08",
+    "Shutdown__13CInputManagerFv": "0x80084c60",
+    "Shutdown__16CDestructorQueueFv": "0x800dd454",
+    "SoundClose__Fv": "0x800ed984",
+    "SoundInit__F10ESoundMode": "0x800edb14",
+    "SoundSetMasterVolume__Fi": "0x800ed018",
+    "SoundSync__Fv": "0x800ecf2c",
+    "SysInit": "0x8001cc44",
+    "SysLoadAllModules__Fbi": "0x800f0af0",
+    "SysShutdown": "0x8001cbe0",
+    "TIMER_getfrequency": "0x80151e08",
+    "TIMER_gettick": "0x80151e00",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "TLT_UnLoadShellBriefingLogBigFile__Fv": "0x8001d978",
+    "TurnShellOn__10CShellMenuFv": "0x800e6fe0",
+    "Unload__7CSpriteFv": "0x800818ec",
+    "UpdateFromGlobals__15CAIFilterGlobalFf": "0x8005db18",
+    "UpdateLevelTimer__10CShellMenuFP13CPlayerObjectUi": "0x800e6574",
+    "UpdateREAL__Fv": "0x8001b098",
+    "UpdateSubtitles__Ff": "0x800b913c",
+    "UpdateToGlobals__15CAIFilterGlobalFv": "0x8005db14",
+    "UpdateXFilesText__Ff": "0x800bade0",
+    "Update__13CFaderControlFf": "0x8007bd00",
+    "Update__13CInputManagerFf": "0x80084c80",
+    "Update__6CSceneFf": "0x800da8f4",
+    "VIFlush": "0x8011c39c",
+    "VISetBlack": "0x8011c524",
+    "VIWaitForRetrace": "0x8011b738",
+    "VerifyAnalog__13CInputManagerFv": "0x80084a04",
+    "Wait__11CRenderListFv": "0x800f0ed4",
+    "Wait__7CScreenFv": "0x8001b910",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "__construct_array": "0x8013834c",
+    "__ct__10CShellMenuFv": "0x800e7dd8",
+    "__ct__11CRenderListFUlUl": "0x800f138c",
+    "__ct__12CDrawContextFRC7CMatrixRC7CMatrixRC7CMatrixRC7CMatrixi": "0x8007761c",
+    "__ct__13CFaderControlF6CColor6CColorf": "0x8007bedc",
+    "__ct__16CScreenFieldModeF12EScreenWidth12EFrameFormat12EDepthFormat": "0x8001b5a0",
+    "__ct__5CFontFPCc15ERenderPriority": "0x8007d148",
+    "__ct__5PauseFv": "0x800de2e4",
+    "__ct__6CSceneFv": "0x800dc8c4",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__cvt_fp2unsigned": "0x801388e8",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CShellMenuFv": "0x800e79fc",
+    "__dt__11CRenderListFv": "0x800f1338",
+    "__dt__16CScreenFieldModeFv": "0x8001b4bc",
+    "__dt__5PauseFv": "0x800de22c",
+    "__dt__6CSceneFv": "0x800dc620",
+    "__dt__7CCameraFv": "0x8007a538",
+    "__dt__7CSpriteFv": "0x800825b8",
+    "__dt__9IObserverFv": "0x800d80e0",
+    "__nw__FUl": "0x8001cb60",
+    "__register_global_object": "0x801381bc",
+    "__vt__10ISceneNode": "0x80181c78",
+    "__vt__13IDestructible": "0x8018a228",
+    "__vt__7CCamera": "0x8018460c",
+    "__vt__8ISubject": "0x8018a1d4",
+    "__vt__9IObserver": "0x8018a1c0",
+    "bIsGamePaused__5PauseFv": "0x800dd7d0",
+    "bIsShellOn__10CShellMenuFv": "0x800e723c",
+    "gPadStatus": "0x8033edf0",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_ProfileBins": "0x802daca0",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bMPEndLevel": "0x8034e9ec",
+    "g_config_keymap": "0x801858bc",
+    "g_inputMgr": "0x801ec80c",
+    "g_mpTimeLimit": "0x8034e9e8",
+    "g_pPopUpMessageHandler": "0x8019756c",
+    "g_unplugged": "0x8034ec9c",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "sprintf": "0x8013dab4",
+    "umTable": "0x801ef3ec"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_bInMultiplayerMode",
+    "g_bMPEndLevel",
+    "g_mpTimeLimit",
+    "g_unplugged",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "Moh2.cpp",
-  "original_file_index": 1
+  "original_file_index": 1,
+  "weak_duplicates": [
+    "__vt__10ISceneNode"
+  ]
 }
