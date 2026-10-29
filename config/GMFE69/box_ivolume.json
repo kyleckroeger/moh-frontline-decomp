@@ -34,26 +34,37 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800c5008",
-      "size": 324,
+      "address": "0x800c37d0",
+      "size": 6524,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000dda4",
-      "size": 16,
-      "type": 1
+      "address": "0x8000dd9c",
+      "size": 24,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 32
     },
     {
       "name": "extabindex",
-      "address": "0x80014c48",
-      "size": 24,
-      "type": 1
+      "address": "0x80014c3c",
+      "size": 36,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 48
+    },
+    {
+      "name": ".data",
+      "address": "0x80189544",
+      "size": 64,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -70,6 +81,12 @@
       "binding": 1
     },
     {
+      "name": "TestCollision__7CVolBoxCFRC7CVolBoxR10CCollisionb",
+      "address": "0x800c37d0",
+      "size": 6200,
+      "binding": 1
+    },
+    {
       "name": "Abs__8CVector3FRC8CVector3",
       "address": "0x800c50a4",
       "size": 52,
@@ -83,14 +100,58 @@
     }
   ],
   "externals": {
-    "SwapOrder__10CCollisionFv": "0x800c79c4"
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "BoxBoxTest__Fff5EAxisRfRfR5EAxis": "0x800c54b4",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "DotDotDot__8CVector3FRC8CVector3RC8CVector3RC8CVector3RC8CVector3": "0x8006c340",
+    "Normalize__8CVector3Fv": "0x8006c224",
+    "Scale__8CVector3FRC8CVector3f": "0x800a4cec",
+    "Sub__8CVector3FRC8CVector3RC8CVector3": "0x800a4dac",
+    "SwapOrder__10CCollisionFv": "0x800c79c4",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "BoxBoxTest__Fff5EAxisRfRfR5EAxis"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "box.cpp",
-  "original_file_index": 7464
+  "original_file_index": 7464,
+  "file_duplicates": [
+    "BoxBoxTest__Fff5EAxisRfRfR5EAxis"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350b4c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350b38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350b3c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350b68"
+    }
+  ]
 }
