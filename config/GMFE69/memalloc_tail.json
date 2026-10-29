@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8014f4f8",
-      "size": 24,
+      "size": 704,
       "type": 1
     },
     {
@@ -50,6 +50,12 @@
   ],
   "functions": [
     {
+      "name": "MEM_allocaligna__FPCciiiib",
+      "address": "0x8014f510",
+      "size": 680,
+      "binding": 0
+    },
+    {
       "name": "MEM_tailsize__FPCci",
       "address": "0x8014f4f8",
       "size": 24,
@@ -57,6 +63,16 @@
     }
   ],
   "externals": {
+    "FREE_add__FP8MEMCLASSP8MEMBLOCK": "0x8014fe8c",
+    "FREE_find__FP8MEMCLASSii": "0x8014fd6c",
+    "FREE_findlargest__FP8MEMCLASSii": "0x8014fdb0",
+    "FREE_remove__FP8MEMBLOCK": "0x8014ff14",
+    "MEM_initblock__FP8MEMBLOCKPCciiiP8MEMBLOCKP8MEMBLOCK": "0x8014fd40",
+    "MUTEX_lock": "0x8015212c",
+    "MUTEX_unlock": "0x80152150",
+    "_restgpr_14": "0x80138a28",
+    "_savegpr_14": "0x801389dc",
+    "mb_default": "0x8034f3c0",
     "memclass": "0x8033ee20"
   },
   "undefined_in_discarded_code": [],
@@ -64,7 +80,9 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "mb_default"
+  ],
   "original_file": "memalloc.cpp",
   "original_file_index": 12367
 }

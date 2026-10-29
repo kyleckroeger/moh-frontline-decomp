@@ -666,7 +666,7 @@ establish a type, the source comments say so.
 | `memunused.cpp` | 1 | 64 | `MEM_totalunused` (its own file record starts at 0x8014f4b8, between `memclass.cpp` and `memalloc.cpp`) |
 | `meminit.cpp` | 1 | 136 | `MEM_init`: the largest OS-heap block becomes the default class; `MEM_restore` is registered as an exit handler |
 | `memalloc.cpp` (fragment) | 3 | 132 | `MEM_allocalign`, `MEM_alloc` and `MEM_allocz`: forwarders to `MEM_allocaligna` (no alignment for the latter two; the final flag is false only for `MEM_allocz`) |
-| `memalloc_tail.cpp` (fragment of `memalloc.cpp`) | 1 | 24 | `MEM_tailsize` (`0x8014f4f8`): the tail size (MEMCLASS `+0x30`) of the class selected by the low six flag bits. A second unit of the record |
+| `memalloc_tail.cpp` (fragment of `memalloc.cpp`) | 2 | 704 | `MEM_tailsize` (`0x8014f4f8`): the tail size (MEMCLASS `+0x30`) of the class selected by the low six flag bits, and the file-local `MEM_allocaligna` behind the `memalloc` forwarders (free-list search, alignment from the bottom or the top, the remainder back on the free list, retries through the allocation failure callback; its locals are declared in the order of the original's register assignment). A second unit of the record |
 | `memrestore.cpp` | 1 | 372 | `MEM_restore`: clears duplicate `memclass` entries, then removes the classes and frees their OS-heap blocks |
 | `debugger.cpp`, `fontdriver.cpp`, `timer.cpp` | 4 | 28 | `DEBUG_break` (empty), `FONT_installdriver`, `TIMER_gettick`/`TIMER_getfrequency` |
 | `coda.cpp` | 2 | 16 | `SND::CODASetNew`/`CODASetDelete` allocation hooks |
