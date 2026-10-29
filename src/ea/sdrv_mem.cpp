@@ -2,11 +2,13 @@
    installation (unsupported), memory allocation and freeing through the
    installed allocator or ARAM (sizes rounded up to 32 bytes), and
    SNDPLATFORM_download, which flushes the block and posts its transfer to
-   ARAM through ARQ in a new DMA slot, returning the request number. snddrv
-   and sndgs are named by their symbols; their views, the DMA slot layout and
-   the slot and posting inline helpers are inferred.
-   SNDPLATFORM_downloadcomplete after it is drafted in
-   scratch/path/sdrv_dlc_wip.cpp. */
+   ARAM through ARQ in a new DMA slot, returning the request number, and
+   SNDPLATFORM_downloadcomplete, which reports whether a request is finished
+   (1 when no DMA slot holds it any more) and re-posts every slot of a
+   request that has been pending for more than 200 ticks. snddrv and sndgs
+   are named by their symbols; their views, the DMA slot layout and the slot,
+   posting and re-posting inline helpers are inferred. A slot's id is
+   volatile: the DMA callback frees the slot. */
 struct OSMutex {
     unsigned char unknown00[24];
 };
@@ -36,7 +38,7 @@ void SNDDRV_dmcallback(unsigned long);
 
 /* inferred: a DMA slot (id -1 when free) */
 struct SNDDRVDMA {
-    int id;
+    volatile int id;
     ARQRequest request;
     int priority;
     unsigned int source;
@@ -75,19 +77,21 @@ static inline int allocdma(int id) {
 static inline int postdma(int slot, int priority, unsigned int source, unsigned int dest, int length) {
     int level = OSDisableInterrupts();
     int id;
+    int index;
 
     if (slot == -1) {
-        slot = allocdma(snddrv.requests);
+        index = allocdma(snddrv.requests);
         id = snddrv.requests;
-        snddrv.dma[slot].priority = priority;
-        snddrv.dma[slot].source = source;
-        snddrv.dma[slot].dest = dest;
-        snddrv.dma[slot].length = (length + 31) & ~31;
-        snddrv.dma[slot].time = *(unsigned int*)(sndgs + 372);
+        snddrv.dma[index].priority = priority;
+        snddrv.dma[index].source = source;
+        snddrv.dma[index].dest = dest;
+        snddrv.dma[index].length = (length + 31) & ~31;
+        snddrv.dma[index].time = *(unsigned int*)(sndgs + 372);
     } else {
-        id = snddrv.dma[slot].id;
+        index = slot;
+        id = snddrv.dma[index].id;
     }
-    ARQPostRequest(&snddrv.dma[slot].request, id, 0, priority, source, dest, (length + 31) & ~31, SNDDRV_dmcallback);
+    ARQPostRequest(&snddrv.dma[index].request, id, 0, priority, source, dest, (length + 31) & ~31, SNDDRV_dmcallback);
     OSRestoreInterrupts(level);
     return snddrv.requests++;
 }
@@ -115,4 +119,42 @@ int SNDPLATFORM_memfree(int, unsigned int memory) {
 int SNDPLATFORM_download(int, void* source, void* dest, int length) {
     DCFlushRange(source, length);
     return postdma(-1, 0, (unsigned int)source, (unsigned int)dest, length);
+}
+static inline void repostdma(int id) {
+    int j;
+    int level;
+
+    level = OSDisableInterrupts();
+    for (j = 0; j < 64; j++) {
+        if (snddrv.dma[j].id == id) {
+            ARQRemoveRequest(&snddrv.dma[j].request);
+            postdma(j, snddrv.dma[j].priority, snddrv.dma[j].source, snddrv.dma[j].dest, snddrv.dma[j].length);
+        }
+    }
+    OSRestoreInterrupts(level);
+}
+
+int SNDPLATFORM_downloadcomplete(int id) {
+    int level;
+    int i;
+    int j;
+    int priority;
+    unsigned int source;
+    unsigned int dest;
+    unsigned int length;
+
+    level = OSDisableInterrupts();
+    for (i = 0; i < 64; i++) {
+        if (snddrv.dma[i].id != -1 && snddrv.dma[i].id == id) {
+            if (*(unsigned int*)(sndgs + 372) - snddrv.dma[i].time > 200) {
+                OSRestoreInterrupts(level);
+                repostdma(id);
+            } else {
+                OSRestoreInterrupts(level);
+            }
+            return 0;
+        }
+    }
+    OSRestoreInterrupts(level);
+    return 1;
 }
