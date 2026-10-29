@@ -1,9 +1,9 @@
 {
-  "id": "sdecmut_reftolpc",
-  "source": "src/ea/sdecmut_reftolpc.c",
+  "id": "sdecmut",
+  "source": "src/ea/sdecmut.c",
   "category": "reconstructed_game",
   "compiler_family": "GC",
-  "compiler_version": "1.3.2",
+  "compiler_version": "1.3",
   "compiler_flags": [
     "-nodefaults",
     "-proc",
@@ -37,8 +37,14 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80162584",
-      "size": 7276,
+      "address": "0x801620fc",
+      "size": 8436,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80193e50",
+      "size": 1152,
       "type": 1
     }
   ],
@@ -56,6 +62,12 @@
       "binding": 0
     },
     {
+      "name": "readsamples__FP10UTALKSTATEiPf",
+      "address": "0x801620fc",
+      "size": 1160,
+      "binding": 1
+    },
+    {
       "name": "initmut__FPcP10UTALKSTATE",
       "address": "0x801631f4",
       "size": 996,
@@ -71,18 +83,12 @@
   "externals": {
     "SNDI_memcpy": "0x8016d730",
     "_restgpr_17": "0x80138a34",
-    "_savegpr_17": "0x801389e8",
-    "bitmask": "0x80193e50",
-    "coeff_table": "0x80193e74",
-    "readsamples__FP10UTALKSTATEiPf": "0x801620fc"
+    "_savegpr_17": "0x801389e8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "bitmask",
-    "coeff_table"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "sdecmut.c",
@@ -95,71 +101,89 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x80351b14"
+      "address": "0x80351af0"
     },
     {
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80351b18"
+      "address": "0x80351af4"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80351b1c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 12,
-      "size": 4,
-      "address": "0x80351b20"
+      "address": "0x80351af8"
     },
     {
       "section": ".sdata2",
       "offset": 16,
-      "size": 4,
-      "address": "0x80351af0"
+      "size": 8,
+      "address": "0x80351b00"
     },
     {
       "section": ".sdata2",
       "offset": 24,
-      "size": 8,
-      "address": "0x80351b28"
+      "size": 4,
+      "address": "0x80351b14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80351b18"
     },
     {
       "section": ".sdata2",
       "offset": 32,
       "size": 4,
-      "address": "0x80351b30"
+      "address": "0x80351b1c"
     },
     {
       "section": ".sdata2",
       "offset": 36,
       "size": 4,
-      "address": "0x80351b34"
+      "address": "0x80351b20"
     },
     {
       "section": ".sdata2",
       "offset": 40,
-      "size": 4,
-      "address": "0x80351b08"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 44,
-      "size": 4,
-      "address": "0x80351b0c"
+      "size": 8,
+      "address": "0x80351b28"
     },
     {
       "section": ".sdata2",
       "offset": 48,
       "size": 4,
-      "address": "0x80351b10"
+      "address": "0x80351b30"
     },
     {
       "section": ".sdata2",
       "offset": 52,
+      "size": 4,
+      "address": "0x80351b34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80351b08"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80351b0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x80351b10"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
       "size": 4,
       "address": "0x80351b38"
     }
