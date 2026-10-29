@@ -1,12 +1,19 @@
 // AI spline paths, the functions at the start of the file: the path manager
 // generates a test path and its reverse (the reverse in the second half of
-// the path array, tagged with bit 24) and frees its generation buffers. The class and
+// the path array, tagged with bit 24), frees and allocates its generation buffers. The class and
 // structure names come from the mangled symbols; the members are inferred from
-// offsets. AllocateGenerateBuffers follows; its buffer names sit 108 bytes
-// into the file's string pool, after strings of later functions, so it and
-// the constructor (draft in scratch/lib/AISplinePath_wip.cpp) are not part of
-// this unit.
+// offsets. The buffer names follow the header's prime list in the file's .rodata.
 extern "C" void MEM_free(void*);
+void* DWI_alloc(const char*, int, int);
+
+// Header-defined hash-table primes; every unit that includes the header carries a copy.
+namespace dwi {
+static const unsigned long dwi_prime_list[27] = {
+    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
+    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
+    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
+};
+}
 
 struct _aifilter_simple_v3;
 class CAISplinePathManager;
@@ -23,6 +30,7 @@ class CAISplinePathManager {
 public:
     void GenerateSplinePath(unsigned long, unsigned long, unsigned long, const _aifilter_simple_v3*);
     void FreeGenerateBuffers();
+    void AllocateGenerateBuffers();
 
     unsigned long m_count;
     CAISplinePath* m_paths;
@@ -50,4 +58,11 @@ void CAISplinePathManager::FreeGenerateBuffers() {
     m_diagonals = 0;
     m_deltas = 0;
     m_derivatives = 0;
+}
+
+void CAISplinePathManager::AllocateGenerateBuffers() {
+    m_points = DWI_alloc("AI Spline Path Points", 16384, 256);
+    m_diagonals = DWI_alloc("AI Spline Path Diagonals", 4096, 256);
+    m_deltas = DWI_alloc("AI Spline Path Deltas", 16384, 256);
+    m_derivatives = DWI_alloc("AI Spline Path Derivatives", 16384, 256);
 }

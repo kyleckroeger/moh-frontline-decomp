@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x8004fa94",
-      "size": 252,
+      "size": 388,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a9c4",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011b28",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,9 +68,16 @@
       "address": "0x8004fb34",
       "size": 92,
       "binding": 1
+    },
+    {
+      "name": "AllocateGenerateBuffers__20CAISplinePathManagerFv",
+      "address": "0x8004fb90",
+      "size": 136,
+      "binding": 1
     }
   ],
   "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
     "GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b": "0x80050af4",
     "MEM_free": "0x8014f83c"
   },
@@ -81,5 +88,16 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AISplinePath.cpp",
-  "original_file_index": 2053
+  "original_file_index": 2053,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x8016faf0"
+    }
+  ]
 }

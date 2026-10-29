@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1147608,
+    "matching_code_bytes": 1147744,
     "total_executable_code_bytes": 1414572,
-    "percent": 81.12757781152179,
+    "percent": 81.13719202698766,
     "categories": {
-      "reconstructed_game": 917616,
+      "reconstructed_game": 917752,
       "restored_library": 229992
     },
-    "matching_functions": 4775
+    "matching_functions": 4776
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -76,7 +76,7 @@
     "config/GMFE69/AISoldierDoodad_scenenode.json": "48521a0f0c4e8680692b87893b3c72c59d43736496d98a18196a53c277187360",
     "config/GMFE69/AISoldierObject.json": "2fe56901d843c55a92b5262907968fbdddac62d1f54de2f92ab38c7bb6aeb303",
     "config/GMFE69/AISoldierObject_ctor.json": "6fa1a6bd7abc272aec251e8de9e81dc882cb7543bb4e51f29856a5efb2091263",
-    "config/GMFE69/AISplinePath.json": "1c74a6525471caf1cb13b2fe967be1a1bf475b3ff54eb31f3481afd4c20d4b49",
+    "config/GMFE69/AISplinePath.json": "96a0d5f51f109d93a894ad727abeed5d86dc3d62c4d300474b9e962fec52bcb2",
     "config/GMFE69/AISplinePath_astar.json": "50595422b9e11d1dfcbcdb3ad869f8dd4a9cda1efb835e03328c3574a39b261c",
     "config/GMFE69/AISplinePath_ctor.json": "ce2faed8dc2ac384c264c650ee22da611208d2287174844c43bbab18307bfc96",
     "config/GMFE69/AISplinePath_dtor.json": "ca8a7602d790168f6db0ec8bda87e7df865a8188eaa32138939dd26f9afe87ee",
@@ -2360,7 +2360,7 @@
     "src/game/AISoldierDoodad_scenenode.cpp": "b49cc5a1d366518213a3a68e50116a85d5af46159e68e3d06fe277bf0f9d5cd3",
     "src/game/AISoldierObject.cpp": "a593952b1af4a61f6b42eff1b8aad2b710a467741e61c0348b9e1df05578873d",
     "src/game/AISoldierObject_ctor.cpp": "86458ba29907f92ba9c9d81cfb59616d227e0c6402d4448fe1478d22516f9e6d",
-    "src/game/AISplinePath.cpp": "add4c235edc4c831ad4a130df34d27367a7806edc416fa12cfdf29421fb3ecf5",
+    "src/game/AISplinePath.cpp": "38d4df58568995a0bef7ac5ba52719f92793f5b3de82c71b302ccc1a23664be5",
     "src/game/AISplinePath_astar.cpp": "74db47dc87b7835f0d0e21d70ae5af7d3bd295add0a29f292eb0c00ddf55cf39",
     "src/game/AISplinePath_ctor.cpp": "9197d89e945988e9d542e242021cbb5de91216598ef0b1a5443173340d65f504",
     "src/game/AISplinePath_dtor.cpp": "0c6b3021d20049aa523f238f211f279cc1afd3918507fc6a0a5b76ba2986a0c6",
@@ -21655,8 +21655,8 @@
     {
       "id": "AISplinePath",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 252,
+      "functions": 3,
+      "code_bytes": 388,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21688,8 +21688,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4cae4b6f83b5a7555884f64602469c52bde8726c0d10a9a05bd791767d8a08fb",
-      "linked_sha256": "dd7abde5aa0c8f64aabbd95e57f43ab2e4133d48d29565f3922f821f22f71727"
+      "object_sha256": "d219a223e0f976b53b79612d6ddac78a775d07015081940273f3647c56c9be08",
+      "linked_sha256": "a2d1f6dec9ef0fbeb38be37e4d83deaeb4c56d327605cb8cbd97243a276a87e4"
     },
     {
       "id": "csg_volume",
@@ -55404,13 +55404,6 @@
         "file_record": 28,
         "file_name": "AISplinePath.cpp",
         "ranges": [
-          {
-            "address": "0x8004fb90",
-            "size": 136,
-            "kind": "function",
-            "name": "AllocateGenerateBuffers__20CAISplinePathManagerFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80050af4",
             "size": 2944,
