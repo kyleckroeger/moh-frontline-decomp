@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1158488,
+    "matching_code_bytes": 1159084,
     "total_executable_code_bytes": 1414572,
-    "percent": 81.89671504879215,
+    "percent": 81.93884793421614,
     "categories": {
-      "reconstructed_game": 928496,
+      "reconstructed_game": 929092,
       "restored_library": 229992
     },
-    "matching_functions": 4782
+    "matching_functions": 4783
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1091,7 +1091,7 @@
     "config/GMFE69/smixer_stop.json": "0438b58dc8e4527dd53f8dab69d5aa96ed5fdb0c117179a247790346f6daa29f",
     "config/GMFE69/smixfram.json": "f48cdb7bc9da745b20bad9346763bf9529f416c449e77f891e5179d6cc9675cc",
     "config/GMFE69/smixfx.json": "5c0cd28c1b30f61605379c29c03cd20fdfefaead06442c015f44c047c2531b0b",
-    "config/GMFE69/smixfx_modlap.json": "9a68e319bc5643e08443a563e98436f2035fa2f1fab76f35450968add4332d4e",
+    "config/GMFE69/smixfx_modlap.json": "b97e87595a8d7526f558d5342e295207fa27944522697ff63baf008ec38375b3",
     "config/GMFE69/smixhip.json": "4a68e74acc78bdfaacebfbe6adad36c62e7fd215878203935887f97448739d71",
     "config/GMFE69/smixlowp.json": "d53e5c31fe798368a255f83acad448258398036638284e3bc62c00683bf6796a",
     "config/GMFE69/smixptch.json": "3ee346a2468c72ab7527f27bcf6828417178cbb8b0f2d6e04fbe0403fd87e159",
@@ -2222,7 +2222,7 @@
     "src/ea/smixer_stop.c": "76b102d37d5cbeedf318784213b1d95c86e990eaad3bc4676f1bff6777c98b35",
     "src/ea/smixfram.c": "073e7cd19bca6296d28b16d131301630bd240927295173ca3c6cad7fd395abd3",
     "src/ea/smixfx.c": "c1520eb4498f4529f1ee66a4bb3a2f70f129c04f2e0a8bd395ddb913d2d45f37",
-    "src/ea/smixfx_modlap.c": "0b802145965dfa34177e6534316175d8715b0e196a97186731419d2c10f8c882",
+    "src/ea/smixfx_modlap.c": "b242c0631849f250ebbc27d1cdd4f6837466eaafba66d9ad7210af93d814c54b",
     "src/ea/smixhip.c": "9c4a7a18f876ffc3e83e6a7c36d95de022bcc5ad2e1324cf0d1981305d2d9a0c",
     "src/ea/smixlowp.c": "3a30e12bbbc6bdbce38ef1897a4b0dbe9342d675ad94bd13908f6643525fe6c2",
     "src/ea/smixptch.c": "47a348d834dba9fe0175a712c545385b61ba841ff47a27dc7fb70381cc7723fb",
@@ -42449,8 +42449,8 @@
     {
       "id": "smixfx_modlap",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 552,
+      "functions": 2,
+      "code_bytes": 1148,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42482,8 +42482,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "aa23681ff578b266ec2fc85ac7175b49bfa64812737f7657064fee6c0f2951c3",
-      "linked_sha256": "db2373e589111cef3dfde72c23438af0438d054f241937b6da0a6f11ab3566f6"
+      "object_sha256": "49a49afb47d4eb84ed303e89c899dfb54718d783e5bb5b7322a9b7bd7b1e2960",
+      "linked_sha256": "65fe5fd8ef80061644b9dfb74da3d17a3a8fa289ae2812dedbb82a036ba1d074"
     },
     {
       "id": "scene_copy",
@@ -57090,20 +57090,6 @@
             "size": 752,
             "kind": "function",
             "name": "MIX_audioslice",
-            "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/smixfx.c [symbol evidence]",
-        "file_record": 511,
-        "file_name": "smixfx.c",
-        "ranges": [
-          {
-            "address": "0x80160f7c",
-            "size": 596,
-            "kind": "function",
-            "name": "SNDMIXI_fxadd",
             "evidence": "private-reference"
           }
         ]

@@ -4,11 +4,18 @@
 // output's effect head once (on the dry and wet work buffers) and adds the wet
 // result to that output and to every output the copy table lists for it,
 // marking them done, and finally clears the effect buffer for the block.
-// sndfx's layout, the mixer, header and head views and the copy table's shape
-// are inferred (the mixer as in smixer_create.c). The rest of the file is not
-// part of this unit.
+// SNDMIXI_fxadd runs the reverb modules of the three effect stages over a
+// block (the first stage in place on the effect buffer, the later stages
+// chaining through the second and third effect buffers), splitting the block
+// at each module's two update periods, then adds the stage outputs to the
+// mixer outputs (odd outputs take the second stage's buffer when it has
+// modules, the others the third stage's buffer when it has modules, else the
+// effect buffer; output 5 gets nothing) and clears the effect buffer; the
+// module position is an index into sndfb. sndfx's layout, the mixer, header,
+// head and module views and the copy table's shape are inferred (the mixer as
+// in smixer_create.c). The rest of the file is not part of this unit.
 extern "C" void* memset(void*, int, unsigned long);
-extern "C" char sndfx[];
+extern "C" float sndfx[];
 
 // File-local in the original; declared extern so this fragment can refer to it.
 extern int FXfilterindex;
@@ -69,7 +76,7 @@ extern signed char tablecopyto[][6][6][6];
 
 extern "C" void SNDMIXI_modlapifxadd(int count) {
     int done[6] = {0, 0, 0, 0, 0, 0};
-    (*(int*)(sndfx + 1920))++;
+    (*(int*)(sndfx + 480))++;
     int* dry = sndmix.alignedWork[0];
     int* wet = sndmix.alignedWork[1];
     int filters = SNDI_getb(&pheaderinfo->filtercount[validstructoutputs - 1], 4);
@@ -95,3 +102,77 @@ extern "C" void SNDMIXI_modlapifxadd(int count) {
     memset(sndfx, 0, count * 4);
 }
 
+/* inferred: a reverb module (36 bytes) with two countdowns to its next
+   update and their reload period */
+struct REVERBVIEW {
+    int countA;
+    int countB;
+    int period;
+    unsigned char unknown0c[24];
+};
+
+extern "C" {
+extern REVERBVIEW sndfb[];
+extern int sndfxnummodules[3];
+void MIXI_reverbblock(REVERBVIEW*, int, float*, float*);
+}
+
+extern "C" void SNDMIXI_fxadd(int count) {
+    float* in;
+    float* out;
+    int n;
+    int left;
+    int module;
+    REVERBVIEW* reverb;
+    int stage;
+    int i;
+
+    module = 0;
+    (*(int*)(sndfx + 480))++;
+    in = sndfx;
+    out = sndfx;
+    for (stage = 0; stage < 3; stage++) {
+        for (i = 0; i < sndfxnummodules[stage]; module++, i++) {
+            reverb = &sndfb[module];
+            if (stage == 1) {
+                if (i == 0)
+                    out = sndfx + 160;
+                else if (i == 1)
+                    in = sndfx + 160;
+            } else if (stage == 2) {
+                if (i == 0) {
+                    out = sndfx + 320;
+                    in = sndfx;
+                } else if (i == 1) {
+                    in = sndfx + 320;
+                }
+            }
+            for (left = count; left > 0;) {
+                n = left;
+                if (reverb->countA <= 0)
+                    reverb->countA = reverb->period;
+                if (reverb->countB <= 0)
+                    reverb->countB = reverb->period;
+                if (reverb->countA < n)
+                    n = reverb->countA;
+                if (reverb->countB < n)
+                    n = reverb->countB;
+                MIXI_reverbblock(reverb, n, in + (count - left), out + (count - left));
+                left -= n;
+                reverb->countA -= n;
+                reverb->countB -= n;
+            }
+        }
+    }
+    for (i = 0; i < sndmix.outputs; i++) {
+        if (i == 5)
+            continue;
+        if ((i & 1) && sndfxnummodules[1])
+            sndmix.scalemix(count, 1.0f, (int*)(sndfx + 320), (float*)sndmix.alignedMix[i]);
+        else if (sndfxnummodules[2])
+            sndmix.scalemix(count, 1.0f, (int*)(sndfx + 160), (float*)sndmix.alignedMix[i]);
+        else
+            sndmix.scalemix(count, 1.0f, (int*)sndfx, (float*)sndmix.alignedMix[i]);
+    }
+    memset(sndfx, 0, count * 4);
+}

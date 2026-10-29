@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80160d54",
-      "size": 552,
+      "size": 1148,
       "type": 1
     }
   ],
@@ -48,19 +48,30 @@
       "address": "0x80160d54",
       "size": 552,
       "binding": 1
+    },
+    {
+      "name": "SNDMIXI_fxadd",
+      "address": "0x80160f7c",
+      "size": 596,
+      "binding": 1
     }
   ],
   "externals": {
     "FXfilterindex": "0x8034f4d4",
+    "MIXI_reverbblock": "0x801686c0",
     "SFILTER_initSOURCE__FP8SRCSTATEPv": "0x80166244",
     "SNDI_getb__FPvi": "0x8015e1a4",
+    "_restgpr_20": "0x80138a40",
     "_restgpr_21": "0x80138a44",
+    "_savegpr_20": "0x801389f4",
     "_savegpr_21": "0x801389f8",
     "memset": "0x80009410",
     "pfilterlist": "0x8034f4bc",
     "phead": "0x8034f4c0",
     "pheaderinfo": "0x8034f4b8",
+    "sndfb": "0x80341838",
     "sndfx": "0x803410b0",
+    "sndfxnummodules": "0x803419c4",
     "sndmix": "0x80340eb0",
     "tablecopyto": "0x80193918",
     "validstructoutputs": "0x8034f4d0"
@@ -82,8 +93,8 @@
   "original_file": "smixfx.c",
   "original_file_index": 13011,
   "pooled_sections": [
-    ".rodata",
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
     {
