@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1179568,
+    "matching_code_bytes": 1180264,
     "total_executable_code_bytes": 1414572,
-    "percent": 83.38691844600345,
+    "percent": 83.43612060750532,
     "categories": {
       "reconstructed_game": 948464,
-      "restored_library": 231104
+      "restored_library": 231800
     },
-    "matching_functions": 4804
+    "matching_functions": 4805
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1018,7 +1018,7 @@
     "config/GMFE69/sdspmix.json": "e86013ec6c3e4f8ab5b68095fd98d1a71d4966009a651edb3bc843eae8bc97fc",
     "config/GMFE69/sdspmix_vol.json": "21fc1385a6a221cd0de565a12e62633e15c1316fab29dc15a21ca51d61746e26",
     "config/GMFE69/seffect.json": "1f2e675cdc34dcfe499834a7adf6256a18d28d06f23e058f49a77fa789234528",
-    "config/GMFE69/serpoll.json": "faaac3f7ba5c4c9dd3ae24cedf33edd4c3e11a903a07b7e45f9a6c29abd5ba7b",
+    "config/GMFE69/serpoll.json": "c357811c39f77394186f6d79d324aac01e4429ca14cd4285b2240ba8feed1f0a",
     "config/GMFE69/sexithndl.json": "6c5ce5b1a58d2ddb2c89bc93ff456205622350a9281cc71a3231093184cedeff",
     "config/GMFE69/sfamplf.json": "b13155860911dd0c0ff3c10fca722f704b10c707b79e2b42f2eb5c58404709ed",
     "config/GMFE69/sfbpffir8.json": "9a121acbb87071aed5df297c56321e6f5bbd065a7b358c60e155d420e68f6068",
@@ -3303,7 +3303,7 @@
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/notify.c": "c9cd381f7ce38f51999c7978e6641155895d782110da437c6456fd73ece6414c",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/nubevent.c": "a41d7572df570cfc078384c59729d88bb42bf60da82cec67411bb367319b671b",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/nubinit.c": "15388195f704abe90d1fed3dd7dcc1ddfb7b56977a07f9e5292aff8d383e0484",
-    "src/tww/TRK_MINNOW_DOLPHIN/Portable/serpoll.c": "d4df692db6cdd5dce0fe431f72dc1d1a9dc0a5c2c3953e550f863cbbe7685fe5",
+    "src/tww/TRK_MINNOW_DOLPHIN/Portable/serpoll.c": "ca8a164f7002570a7b4883e25b9230ed859fd6c8f65d6a31a959c820ff77e8b2",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c": "dd06df08831ebfb73004e07d3018fd123ac4f10f0e4f727ba5a6f8151fe7f6fd",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/usr_put.c": "5eab8f8b2a06943f52ef98cdaa9d0c9df64e14aa52e36461ecc399cb2648cf3f",
     "src/tww/TRK_MINNOW_DOLPHIN/ppc/Export/targsupp.s": "81660b12f70bd32ec3ad8a305d098aadcf813fd40904e4b5ff029f4a30f5574e",
@@ -17468,8 +17468,8 @@
     {
       "id": "serpoll",
       "category": "restored_library",
-      "functions": 4,
-      "code_bytes": 276,
+      "functions": 5,
+      "code_bytes": 972,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17521,8 +17521,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5c041d669b645bd103fd5890e8699ca8930919087dc19c46b0ba15cb504b8393",
-      "linked_sha256": "b64f6ff9411a1d59109b13c521ea06d9b3de14288ad7a111285037abcba7a7f1"
+      "object_sha256": "670e0d8d8648bb8f6f862dbdc00b31fd4d4eca14ae68e4e08b8b97589cf6d888",
+      "linked_sha256": "17e140b7ed2ed11698a9a1f05a7db5ba5df7f8fe779b2b97ebd70ed83f523309"
     },
     {
       "id": "smixlowp",
@@ -55999,20 +55999,6 @@
             "kind": "function",
             "name": "TRKMessageSend",
             "evidence": "unknown-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/serpoll.c [symbol evidence]",
-        "file_record": 276,
-        "file_name": "serpoll.c",
-        "ranges": [
-          {
-            "address": "0x801320e8",
-            "size": 696,
-            "kind": "function",
-            "name": "TRKTestForPacket",
-            "evidence": "private-reference"
           }
         ]
       },
