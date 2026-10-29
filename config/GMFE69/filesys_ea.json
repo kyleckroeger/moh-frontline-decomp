@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x801482ec",
-      "size": 3868,
+      "size": 4552,
       "type": 1
     },
     {
@@ -170,6 +170,12 @@
       "address": "0x801490c8",
       "size": 320,
       "binding": 1
+    },
+    {
+      "name": "FILESYS_addbig",
+      "address": "0x80149208",
+      "size": 684,
+      "binding": 1
     }
   ],
   "externals": {
@@ -185,9 +191,11 @@
     "THREAD_iscurrent": "0x8015206c",
     "THREAD_yield": "0x80151fbc",
     "_restgpr_23": "0x80138a4c",
+    "_restgpr_24": "0x80138a50",
     "_restgpr_25": "0x80138a54",
     "_restgpr_27": "0x80138a5c",
     "_savegpr_23": "0x80138a00",
+    "_savegpr_24": "0x80138a04",
     "_savegpr_25": "0x80138a08",
     "_savegpr_27": "0x80138a10",
     "freehandle__FP10HANDLE_def": "0x80149e68",
@@ -200,6 +208,7 @@
     "reservehandle__Fv": "0x80149db8",
     "reserveop__Fv": "0x80149c68",
     "stopreadfile__FP10HANDLE_def": "0x801482e0",
+    "strncmp": "0x8013fe94",
     "strncpy": "0x8013fffc"
   },
   "undefined_in_discarded_code": [],
