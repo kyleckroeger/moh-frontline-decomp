@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1146436,
+    "matching_code_bytes": 1147608,
     "total_executable_code_bytes": 1414572,
-    "percent": 81.04472589588936,
+    "percent": 81.12757781152179,
     "categories": {
-      "reconstructed_game": 916444,
+      "reconstructed_game": 917616,
       "restored_library": 229992
     },
-    "matching_functions": 4774
+    "matching_functions": 4775
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1097,7 +1097,7 @@
     "config/GMFE69/smixtmul.json": "37f93dd19460569e21edd1a0a60fc37651d392a42d8313b9ac31b49488492459",
     "config/GMFE69/snddrv.json": "14cb6c44e004930954fc8f3efa1497d5c6f5e6f1eb4dd3f839cb6ccfa569d194",
     "config/GMFE69/snddrv_frame.json": "ca68bf3a1a886ede2dc53bdbf03484529bc7c049ae2d52d4446a2325d59bbb3f",
-    "config/GMFE69/snddrv_thread.json": "c5c93760373681a33dddada3c90f4b0fc903a053de73dd9578d8c305a67b7cc4",
+    "config/GMFE69/snddrv_thread.json": "8be8e61abb06556705b5b4c96b53fd1b9e7f82be09c495240739b257a73339f7",
     "config/GMFE69/snddrv_voice.json": "4d15ca21e2f371c0931f4ee838372bb63c3b1966319b33487018bcada9e13389",
     "config/GMFE69/sound.json": "c0820bcc277cb606bdb02bae88b759d6f8c4aabd706a941af17d29a42950e4e5",
     "config/GMFE69/soundschedule.json": "489a371c48f8b56e91c18aebcfc9f294ca9aff193b830a94cd2fffa5d81b3926",
@@ -2228,7 +2228,7 @@
     "src/ea/smixtmul.c": "904c72fe015bac10ded57e46ac9f7fc9a4acb0218e25e3cbe4091b750336d11f",
     "src/ea/snddrv.c": "b2c7317eaf9685685540cc3440acdf95584674f76562a36e0b043c7375149280",
     "src/ea/snddrv_frame.c": "57f5896d88ee107f33fa9c6f427319a37092cf55224205ec6c37bd6c493baf38",
-    "src/ea/snddrv_thread.c": "f49bd59dd891a060965ead21531a98a74aacf4f5f702ff7aad4c5b8750c119e7",
+    "src/ea/snddrv_thread.c": "826ee4c7a5cd717be256cb3b0c1328a17bc6fa507a692a9261d1fca9d8b4be25",
     "src/ea/snddrv_voice.c": "19c231e913635debafde6b32f0c9cb462f8397737c6b54d341f6f8d539c7925d",
     "src/ea/sover.c": "195a5eb257fd99eb0337c24b3f263591fc147eb5c4d343a039faaf66c2cbd950",
     "src/ea/spantoaz.c": "e31c00ca71938e75d62f7465384c809d31a6bd0daa4b46f9d2576df1cbe2775c",
@@ -29119,8 +29119,8 @@
     {
       "id": "snddrv_thread",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 408,
+      "functions": 3,
+      "code_bytes": 1580,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -29152,8 +29152,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5b4ae5ef53df0d96a7e8861ee01fc9b9668fda008476f3ee6bebbfaa33ca7c4f",
-      "linked_sha256": "66b4eeb8297f9b3f28820d9260f64f8ed654156afbbb533237c722cf2930937c"
+      "object_sha256": "b8920ce647bca1741bb25a2619a3c656bcb8b82bba0549165d0430aa3257e1ef",
+      "linked_sha256": "4a8d999f05e26b7de6fd009ec9482eb81ac4fc3675138529c37678d5d6963140"
     },
     {
       "id": "MemoryCardGC_status",
@@ -57220,13 +57220,6 @@
         "file_record": 552,
         "file_name": "snddrv.c",
         "ranges": [
-          {
-            "address": "0x801696dc",
-            "size": 1172,
-            "kind": "function",
-            "name": "SNDDRV_fillbufwithpackets__FiP13SNDDRVPKTCHANP7CHANPUB",
-            "evidence": "between-same-file"
-          },
           {
             "address": "0x80169d08",
             "size": 2160,

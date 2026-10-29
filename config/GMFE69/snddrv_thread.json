@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80169b70",
-      "size": 408,
+      "address": "0x801696dc",
+      "size": 1580,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDDRV_fillbufwithpackets__FiP13SNDDRVPKTCHANP7CHANPUB",
+      "address": "0x801696dc",
+      "size": 1172,
+      "binding": 1
+    },
     {
       "name": "SNDDRV_thread__FPv",
       "address": "0x80169b70",
@@ -58,12 +64,21 @@
   ],
   "externals": {
     "ARGetBaseAddress": "0x8011e890",
+    "ARQPostRequest": "0x8011f45c",
+    "DCFlushRange": "0x80111880",
     "MIXaudioslicefn": "0x8034f4a0",
+    "OSDisableInterrupts": "0x801135cc",
+    "OSRestoreInterrupts": "0x801135f4",
     "OSSleepThread": "0x80116850",
+    "SNDDRV_dmcallback__FUl": "0x80169384",
+    "SNDI_memcpy": "0x8016d730",
     "SNDI_mutexlock__Fv": "0x8016cb60",
     "SNDI_mutexunlock__Fv": "0x8016cb90",
     "SNDPKTPLAYI_flushcallbackdata__Fv": "0x8015aff4",
+    "SNDPKTPLAYI_get__FiiPiPi": "0x8015ad74",
     "SNDSYSI_100hzserver__Fv": "0x801532b4",
+    "_restgpr_19": "0x80138a3c",
+    "_savegpr_19": "0x801389f0",
     "everyother": "0x8034f4f0",
     "snddrv": "0x80341a20",
     "sndgs": "0x80340860"
