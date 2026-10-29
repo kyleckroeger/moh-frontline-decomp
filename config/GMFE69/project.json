@@ -1262,7 +1262,8 @@
     "getpic_head.json",
     "scrsfl.json",
     "UISStack.json",
-    "Gecko_ExceptionPPC_unexpected.json"
+    "Gecko_ExceptionPPC_unexpected.json",
+    "resize.json"
   ],
   "progress": {
     "code_bytes": 1414572,
