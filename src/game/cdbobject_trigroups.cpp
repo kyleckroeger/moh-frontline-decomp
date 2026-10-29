@@ -16,6 +16,9 @@
 class CMatrix;
 /* Inferred: CVector3 as four floats overlaid with two doubles (its copies
    move doubleword pairs). */
+#include <math.h>
+#undef fabs
+inline double fabs(double x) { return __fabs(x); }
 union CVector3Data {
     double pair[2];
     float v[4];
@@ -25,6 +28,7 @@ class CVector3 {
 public:
     CVector3() {}
     CVector3(const struct CDBVector& v);
+    CVector3(float x, float y, float z) { d.v[0] = x; d.v[1] = y; d.v[2] = z; }
     CVector3Data d;
 } __attribute__((aligned(8)));
 
@@ -117,7 +121,17 @@ public:
     virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
 };
 
-class CVolBox : public IVolume {};
+/* Inferred: the box's half sizes and its frame (three axis rows and the
+   centre row, 16-aligned), as GetDistanceFromPlane reads them. */
+struct CVolBoxFrame {
+    CVector3 m_row[4];
+};
+
+class CVolBox : public IVolume {
+public:
+    float m_halfSize[3];
+    CVolBoxFrame m_frame;
+};
 class CVolSphere : public IVolume {
 public:
     float GetRadius() const;
@@ -304,6 +318,36 @@ inline float GetDistanceFromPlane(const CPlane& plane, const CVolSphere& sphere)
 
 float GetDistanceFromPlane(const CPlane&, const CVolCapsule&);
 
+/* Inferred inline (as the sphere's): the box's projected radius is the sum of
+   its half sizes scaled by how much each axis faces the plane. The axis rows
+   are copied in reverse into named locals declared in order (the stack slots
+   and the copy schedule), the projection uses the three-float constructor
+   (arguments evaluated right to left), and the centre row is copied last. */
+inline float Dot(const CVector3& a, const CVector3& b) {
+    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
+}
+
+inline float GetDistanceFromPlane(const CPlane& plane, const CVolBox& box) {
+    CVector3 r0, r1, r2;
+    r2 = box.m_frame.m_row[2];
+    r1 = box.m_frame.m_row[1];
+    r0 = box.m_frame.m_row[0];
+    CVector3 proj(Dot(r0, plane.m_normal), Dot(r1, plane.m_normal), Dot(r2, plane.m_normal));
+    float width = (float)fabs(proj.d.v[0]);
+    float depth = (float)fabs(proj.d.v[1]);
+    float height = (float)fabs(proj.d.v[2]);
+    float radius = width * box.m_halfSize[0] + depth * box.m_halfSize[1] + height * box.m_halfSize[2];
+    CVector3 r3 = box.m_frame.m_row[3];
+    float distance = plane.Dist(r3);
+    float side = distance - radius;
+    if (side > 0.0f)
+        return side;
+    side = distance + radius;
+    if (side < 0.0f)
+        return side;
+    return 0.0f;
+}
+
 /* CCDBObject's destructor (defined elsewhere) is declared first so its
    table is not emitted here; the leaf-node test template is declared only. */
 class CCDBObject : public IVolume {
@@ -351,7 +395,7 @@ __declspec(weak) int CCDBObject::TestCDBBranchNodeCollision(const CDBBranchNode&
     return result;
 }
 
-/* The box instance (after these) is not part of this unit. */
+template int CCDBObject::TestCDBBranchNodeCollision<CVolBox>(const CDBBranchNode&, const CVolBox&, CCollision&, bool, dwi::fast_vec<CDBTriGroup*>&) const;
 template int CCDBObject::TestCDBBranchNodeCollision<CVolSphere>(const CDBBranchNode&, const CVolSphere&, CCollision&, bool, dwi::fast_vec<CDBTriGroup*>&) const;
 template int CCDBObject::TestCDBBranchNodeCollision<CVolCapsule>(const CDBBranchNode&, const CVolCapsule&, CCollision&, bool, dwi::fast_vec<CDBTriGroup*>&) const;
 template int CCDBObject::TestCDBBranchNodeCollision<CAnimatedVolume>(const CDBBranchNode&, const CAnimatedVolume&, CCollision&, bool, dwi::fast_vec<CDBTriGroup*>&) const;

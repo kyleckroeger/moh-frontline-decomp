@@ -40,31 +40,31 @@
     {
       "name": ".text",
       "address": "0x800716b8",
-      "size": 3640,
+      "size": 4380,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b914",
-      "size": 264,
+      "size": 304,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 280,
+      "linked_size": 320,
       "stripped_objects": [
-        "@53",
-        "@395"
+        "@64",
+        "@434"
       ]
     },
     {
       "name": "extabindex",
       "address": "0x80012998",
-      "size": 96,
+      "size": 108,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 120,
+      "linked_size": 132,
       "stripped_objects": [
-        "@54",
-        "@396"
+        "@65",
+        "@435"
       ]
     },
     {
@@ -118,6 +118,12 @@
       "binding": 2
     },
     {
+      "name": "TestCDBBranchNodeCollision<7CVolBox>__10CCDBObjectCFRC13CDBBranchNodeRC7CVolBoxR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>",
+      "address": "0x800724f0",
+      "size": 740,
+      "binding": 2
+    },
+    {
       "name": "TestCollisionWithTriGroups<7CVolBox>__FRCQ23dwi24fast_vec<P11CDBTriGroup>RC7CVolBoxR10CCollisionb",
       "address": "0x80071cf4",
       "size": 340,
@@ -133,6 +139,7 @@
     "TestCDBLeafNodeCollision<10CVolSphere>__10CCDBObjectCFRC11CDBLeafNodeRC10CVolSphereR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>": "0x80072bac",
     "TestCDBLeafNodeCollision<11CVolCapsule>__10CCDBObjectCFRC11CDBLeafNodeRC11CVolCapsuleR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>": "0x80072ca8",
     "TestCDBLeafNodeCollision<15CAnimatedVolume>__10CCDBObjectCFRC11CDBLeafNodeRC15CAnimatedVolumeR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>": "0x80072da4",
+    "TestCDBLeafNodeCollision<7CVolBox>__10CCDBObjectCFRC11CDBLeafNodeRC7CVolBoxR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>": "0x80072ab0",
     "TestCollision__12CCDBTriangleCFRC10CVolSphereR10CCollisionPC6CDBTrib": "0x8006c614",
     "TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib": "0x8006a71c",
     "TestCollision__12CCDBTriangleCFRC15CAnimatedVolumeR10CCollisionPC6CDBTrib": "0x8006c428",

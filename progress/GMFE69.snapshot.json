@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1165480,
+    "matching_code_bytes": 1166220,
     "total_executable_code_bytes": 1414572,
-    "percent": 82.39099883215559,
+    "percent": 82.4433114751317,
     "categories": {
-      "reconstructed_game": 934376,
+      "reconstructed_game": 935116,
       "restored_library": 231104
     },
-    "matching_functions": 4796
+    "matching_functions": 4797
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -553,7 +553,7 @@
     "config/GMFE69/cdbobject_leaf.json": "7957dc8cf020a408acefdb9935b09237b6d1fe2c141214ae2f108c55018dbad3",
     "config/GMFE69/cdbobject_line.json": "91bd47e7a562d0b8378533ea53f11df8c56f5a4050726c04a7d0025b3409432d",
     "config/GMFE69/cdbobject_offsetptr.json": "0d67bbd2cab2036cd652831eb2cba088e30e569df1f5f590bd8e026e668b60ee",
-    "config/GMFE69/cdbobject_trigroups.json": "ec60037e9618ecdf748229cab7146cd3e9602771a162601c8783a706cf69dd37",
+    "config/GMFE69/cdbobject_trigroups.json": "55eda7139b7fd5d3db33f736de12c8d13f43712986368cac8f9e6299158a824f",
     "config/GMFE69/coda.json": "ed79629f16e36603a2a74fe3bfd2db4c7043efb597de702316a222bcbb355440",
     "config/GMFE69/collision.json": "2c85d33e52123d2a7e4d8202542a13ce12bc7eff55e9049aef1fbe82ff9071f7",
     "config/GMFE69/collision_factory_dtor.json": "9f70e8c2c41be54390dc78252d7665e0bec56a04de62263ca730981217c1191c",
@@ -2728,7 +2728,7 @@
     "src/game/cdbobject_leaf.cpp": "c782e229306e88a14918ff585632511c18809a438356b62645ff34a9cd19b38e",
     "src/game/cdbobject_line.cpp": "9a1aca01d57b33016c9bee73e665ee19bac161dca1e16b28ce4a1f094c76c3f1",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
-    "src/game/cdbobject_trigroups.cpp": "2e29ea03b9abd26f9516a3b7a0f3d2d8787ccea9d1791c946c0e7228c6cc7ac2",
+    "src/game/cdbobject_trigroups.cpp": "d9fd7a9260a3bb81a55fbf4433bab78c18a78ae0af15afadcdca8046d66251f1",
     "src/game/collision.cpp": "08152f9b838a7c01179cde8cc9ece2cd0dd1f31e1cbf8cf808cf386a3efbd6d2",
     "src/game/collision_factory_dtor.cpp": "5fec50373bc2d14d29bc6b047fc0b5810afac67afbe129e7a18a276360498897",
     "src/game/collision_head.cpp": "746ca458a6ef009d99cf20245bd2152f0267ffdc586fb57bac739111f4f5f90b",
@@ -38173,8 +38173,8 @@
     {
       "id": "cdbobject_trigroups",
       "category": "reconstructed_game",
-      "functions": 8,
-      "code_bytes": 3640,
+      "functions": 9,
+      "code_bytes": 4380,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38206,8 +38206,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "65d8f064b283b50c474b432b557038a46e18a34d1221e90059b82bf1f5d85873",
-      "linked_sha256": "496cd0366774e47bc51b8017c2a1e7e53f2eef552a87ec0ece0479dd61665a71"
+      "object_sha256": "9c3ab3de2fc034a820f531075544b5ac86e75f4733ae962680e6411fcfa6a0c1",
+      "linked_sha256": "6a0a0376661bd49d2f62b6640a6a17d2c14d5c69fff90345efb8ca0d10be6f88"
     },
     {
       "id": "cdbobject_leaf",
@@ -55464,13 +55464,6 @@
             "size": 784,
             "kind": "function",
             "name": "Init__10CCDBObjectFP3CDB",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800724f0",
-            "size": 740,
-            "kind": "function",
-            "name": "TestCDBBranchNodeCollision<7CVolBox>__10CCDBObjectCFRC13CDBBranchNodeRC7CVolBoxR10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>",
             "evidence": "exception-index"
           }
         ]
