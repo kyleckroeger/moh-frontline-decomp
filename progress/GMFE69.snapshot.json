@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1125840,
+    "matching_code_bytes": 1126536,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.58873779489485,
+    "percent": 79.6379399563967,
     "categories": {
-      "reconstructed_game": 895848,
+      "reconstructed_game": 896544,
       "restored_library": 229992
     },
-    "matching_functions": 4754
+    "matching_functions": 4755
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -691,7 +691,7 @@
     "config/GMFE69/gcSystem.json": "3bf2743737fe9c041930fdcb9879f7d17600a25c1ffc836927c0901688b92aea",
     "config/GMFE69/getbits.json": "b9fe0dd162306306e1f39356422acba5e25693c9575875cf14003c97b852d30d",
     "config/GMFE69/getblk.json": "2098f50b2d5c8abaa4d8c0a2a770f0e894fe24ddfe9251b7f676ac258b85fca6",
-    "config/GMFE69/gethdr.json": "6a55803728de8b3a748b2c6618ef9aa3d0b191ba7b6c3fddb19b8496910c7dce",
+    "config/GMFE69/gethdr.json": "8642fd876043b6d5c61926592bce3b4d1fc10185fe57b1ccf763b53460c1e93e",
     "config/GMFE69/getpic.json": "c92c299a39d9394c5ba16c007e89eddce5dcf73e54c8930e5ba21078898cba82",
     "config/GMFE69/getvlc.json": "77db77821435a705cc4cac966fc3a2f4ebbd4327e55395878628760177a47341",
     "config/GMFE69/global_destructor_chain.json": "0fe0a3698440cd1f1bff61944bd62409272132d09eb6b5c82b9745b82413e6fa",
@@ -2076,7 +2076,7 @@
     "src/ea/fontnull.cpp": "f5c2dfb2e21956fc5d3a1b11c46ae763d9b5cd956badc5e3db912b1e59a9d641",
     "src/ea/getbits.cpp": "323da114300bf7f7dfca115b3fefd296934e41c454a5a30a283350e4118e2812",
     "src/ea/getblk.cpp": "a9369a21cf466a7a1bdf1d27b1354c2d698ef6ea456c858918cf3eed0656d53a",
-    "src/ea/gethdr.cpp": "52bb30246707e2660f30a53cd80427c8961669bb98796d6d8aaceaee5367d1d0",
+    "src/ea/gethdr.cpp": "5d1d8519203f858d3682951a4db43629a69ee0cb0f9fd92a02d149853939f6c0",
     "src/ea/getpic.cpp": "a845a0d5c23c2ee58f4ab73d74167c5be44a9e99ec943e244795df0ab9850e27",
     "src/ea/getvlc.cpp": "29e34e61054a5753c4f7d278fc4f41bff003d9c0dcaf2adf0a831c6528ad9914",
     "src/ea/hlafile.cpp": "c5587efab5f4438e65f43708c38271b62dedc7a6cd770eef6be95ca023aa9d63",
@@ -47805,8 +47805,8 @@
     {
       "id": "gethdr",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 3484,
+      "functions": 6,
+      "code_bytes": 4180,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47838,8 +47838,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "93336a8a013b6076b715a0f890434df30611b1976d90f2b0960f9f9bb3e06593",
-      "linked_sha256": "ef2d41680b68de2febc7856604824cd2deab5af838baaf5fcf23f8614d5176aa"
+      "object_sha256": "c841a710831630d4db6139bd6470e5603be335780030e51fbb96bb6b8d14fd1b",
+      "linked_sha256": "ff294824ed366b8c7d0b237c11ae2c94b73fc0ed87ac9eebfcecfd031f69f560"
     },
     {
       "id": "PathNodeList_closest",
@@ -57111,20 +57111,6 @@
             "size": 1260,
             "kind": "function",
             "name": "DMMorphBlendDisplayLists__FP16DMRenderObject_T",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/gethdr.cpp [symbol evidence]",
-        "file_record": 170,
-        "file_name": "gethdr.cpp",
-        "ranges": [
-          {
-            "address": "0x80100698",
-            "size": 696,
-            "kind": "function",
-            "name": "Get_Hdr__Fv",
             "evidence": "exception-index"
           }
         ]

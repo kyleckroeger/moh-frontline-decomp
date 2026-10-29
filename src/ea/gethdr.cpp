@@ -29,16 +29,19 @@
  */
 
 // A fragment of gethdr.cpp (0x800ff8fc): the reference decoder's header
-// parsers from marker_bit through next_start_code, in the reference's
-// definition order (the game emits them reversed). Changes from the reference:
+// parsers from Get_Hdr through marker_bit, in the reference's definition
+// order (the game emits them reversed). Changes from the reference:
 // the decoder's globals carry the game's MPD names, all printing (the verbose
 // copyright report included) is absent, and the bit readers are declared here
 // returning int, as the signed comparisons of their results show. The
 // extension parsers, all inlined, are declared inline here so that, as in the
 // original link, no out-of-line copies remain. The layer-data view is
 // inferred; the constants and the globals' types are the reference's
-// (mpeg2dec.h, global.h). Get_Hdr after these functions, with the
-// group-of-pictures and picture headers it inlines, is not reconstructed.
+// (mpeg2dec.h, global.h). Get_Hdr inlines the group-of-pictures and
+// picture headers and Update_Temporal_Reference_Tacking_Data, declared inline
+// here for the same reason. Its default case keeps the reference's
+// quiet-flag test around a report that prints nothing; the dead test is what
+// leaves the original's unreachable loop branch after the final return.
 #define ERROR (-1)
 #define PICTURE_START_CODE      0x100
 #define SLICE_START_CODE_MIN    0x101
@@ -141,10 +144,13 @@ extern struct layer_data *MPDld;
 extern double MPDbit_rate;
 extern double MPDframe_rate;
 extern int MPDaspect_ratio_information;
+extern int MPDbackward_f_code;
 extern int MPDbit_rate_value;
+extern int MPDbroken_link;
 extern int MPDburst_amplitude;
 extern int MPDchroma_420_type;
 extern int MPDchroma_format;
+extern int MPDclosed_gop;
 extern int MPDcolor_description;
 extern int MPDcolor_primaries;
 extern int MPDcomposite_display_flag;
@@ -157,17 +163,23 @@ extern int MPDcopyright_number_2;
 extern int MPDcopyright_number_3;
 extern int MPDdisplay_horizontal_size;
 extern int MPDdisplay_vertical_size;
+extern int MPDdrop_flag;
 extern int MPDf_code[2][2];
 extern int MPDfield_sequence;
+extern int MPDforward_f_code;
+extern int MPDframe;
 extern int MPDframe_center_horizontal_offset[3];
 extern int MPDframe_center_vertical_offset[3];
 extern int MPDframe_pred_frame_dct;
 extern int MPDframe_rate_code;
 extern int MPDframe_rate_extension_d;
 extern int MPDframe_rate_extension_n;
+extern int MPDfull_pel_backward_vector;
+extern int MPDfull_pel_forward_vector;
 extern int MPDhorizontal_size;
 extern int MPDhorizontal_subsampling_factor_m;
 extern int MPDhorizontal_subsampling_factor_n;
+extern int MPDhour;
 extern int MPDintra_dc_precision;
 extern int MPDintra_vlc_format;
 extern int MPDlayer_id;
@@ -181,20 +193,26 @@ extern int MPDlower_layer_progressive_frame;
 extern int MPDlower_layer_temporal_reference;
 extern int MPDlower_layer_vertical_offset;
 extern int MPDmatrix_coefficients;
+extern int MPDminute;
 extern int MPDoriginal_or_copy;
+extern int MPDpicture_coding_type;
 extern int MPDpicture_structure;
 extern int MPDprofile;
 extern int MPDprofile_and_level_indication;
 extern int MPDprogressive_frame;
 extern int MPDprogressive_sequence;
 extern int MPDrepeat_first_field;
+extern int MPDsec;
 extern int MPDspatial_temporal_weight_code_table_index;
 extern int MPDsub_carrier;
 extern int MPDsub_carrier_phase;
+extern int MPDtemporal_reference;
 extern int MPDtop_field_first;
 extern int MPDtransfer_characteristics;
+extern int MPDtrue_framenum;
 extern int MPDv_axis;
 extern int MPDvbv_buffer_size;
+extern int MPDvbv_delay;
 extern int MPDvertical_size;
 extern int MPDvertical_subsampling_factor_m;
 extern int MPDvertical_subsampling_factor_n;
@@ -215,6 +233,8 @@ void marker_bit(char *text);
 
 /* private prototypes */
 static void sequence_header _ANSI_ARGS_((void));
+static inline void group_of_pictures_header _ANSI_ARGS_((void));
+static inline void picture_header _ANSI_ARGS_((void));
 static void extension_and_user_data _ANSI_ARGS_((void));
 static inline void sequence_extension _ANSI_ARGS_((void));
 static inline void sequence_display_extension _ANSI_ARGS_((void));
@@ -232,7 +252,12 @@ static inline void user_data _ANSI_ARGS_((void));
 
 
 
+/* introduced in September 1995 to assist spatial scalable decoding */
+static inline void Update_Temporal_Reference_Tacking_Data _ANSI_ARGS_((void));
 /* private variables */
+static int Temporal_Reference_Base = 0;
+static int True_Framenum_max  = -1;
+static int Temporal_Reference_GOP_Reset = 0;
 
 #define RESERVED    -1 
 static double frame_rate_Table[16] =
@@ -255,6 +280,46 @@ static double frame_rate_Table[16] =
   RESERVED,
   RESERVED
 };
+
+/*
+ * decode headers from one input stream
+ * until an End of Sequence or picture start code
+ * is found
+ */
+extern int MPDquiet_flag;
+static inline void Report(unsigned int code) {} /* the reference's fprintf */
+int Get_Hdr()
+{
+  unsigned int code;
+
+  for (;;)
+  {
+    /* look for next_start_code */
+    next_start_code();
+    code = Get_Bits32();
+  
+    switch (code)
+    {
+    case SEQUENCE_HEADER_CODE:
+      sequence_header();
+      break;
+    case GROUP_START_CODE:
+      group_of_pictures_header();
+      break;
+    case PICTURE_START_CODE:
+      picture_header();
+      return 1;
+      break;
+    case SEQUENCE_END_CODE:
+      return 0;
+      break;
+    default:
+      if (!MPDquiet_flag)
+        Report(code);
+      break;
+    }
+  }
+}
 
 
 /* align to start of next next_start_code */
@@ -324,8 +389,71 @@ static void sequence_header()
 
 
 
+/* decode group of pictures header */
+/* ISO/IEC 13818-2 section 6.2.2.6 */
+static inline void group_of_pictures_header()
+{
+  int pos;
+
+  if (MPDld == &MPDbase)
+  {
+    Temporal_Reference_Base = True_Framenum_max + 1; 	/* *CH* */
+    Temporal_Reference_GOP_Reset = 1;
+  }
+  pos = MPDld->Bitcnt;
+  MPDdrop_flag   = Get_Bits(1);
+  MPDhour        = Get_Bits(5);
+  MPDminute      = Get_Bits(6);
+  marker_bit("group_of_pictures_header()");
+  MPDsec         = Get_Bits(6);
+  MPDframe       = Get_Bits(6);
+  MPDclosed_gop  = Get_Bits(1);
+  MPDbroken_link = Get_Bits(1);
+
+
+
+  extension_and_user_data();
+
+}
+
 
 /* decode picture header */
+
+/* ISO/IEC 13818-2 section 6.2.3 */
+static inline void picture_header()
+{
+  int pos;
+  int Extra_Information_Byte_Count;
+
+  /* unless later overwritten by picture_spatial_scalable_extension() */
+  MPDld->pict_scal = 0; 
+  
+  pos = MPDld->Bitcnt;
+  MPDtemporal_reference  = Get_Bits(10);
+  MPDpicture_coding_type = Get_Bits(3);
+  MPDvbv_delay           = Get_Bits(16);
+
+  if (MPDpicture_coding_type==P_TYPE || MPDpicture_coding_type==B_TYPE)
+  {
+    MPDfull_pel_forward_vector = Get_Bits(1);
+    MPDforward_f_code = Get_Bits(3);
+  }
+  if (MPDpicture_coding_type==B_TYPE)
+  {
+    MPDfull_pel_backward_vector = Get_Bits(1);
+    MPDbackward_f_code = Get_Bits(3);
+  }
+
+
+
+  Extra_Information_Byte_Count = 
+    extra_bit_information();
+  
+  extension_and_user_data();
+
+  /* update tracking information used to assist spatial scalability */
+  Update_Temporal_Reference_Tacking_Data();
+}
 
 /* decode slice header */
 
@@ -811,3 +939,42 @@ static inline void copyright_extension()
 }
 
 
+
+/* introduced in September 1995 to assist Spatial Scalability */
+static inline void Update_Temporal_Reference_Tacking_Data()
+{
+  static int temporal_reference_wrap  = 0;
+  static int temporal_reference_old   = 0;
+
+  if (MPDld == &MPDbase)			/* *CH* */
+  {
+    if (MPDpicture_coding_type!=B_TYPE && MPDtemporal_reference!=temporal_reference_old) 	
+    /* check first field of */
+    {							
+       /* non-B-MPDframe */
+      if (temporal_reference_wrap) 		
+      {/* wrap occured at previous I- or P-MPDframe */	
+       /* now all intervening B-frames which could 
+          still have high MPDtemporal_reference values are done  */
+        Temporal_Reference_Base += 1024;
+	    temporal_reference_wrap = 0;
+      }
+      
+      /* distinguish from a reset */
+      if (MPDtemporal_reference<temporal_reference_old && !Temporal_Reference_GOP_Reset)	
+	    temporal_reference_wrap = 1;  /* we must have just passed a GOP-Header! */
+      
+      temporal_reference_old = MPDtemporal_reference;
+      Temporal_Reference_GOP_Reset = 0;
+    }
+
+    MPDtrue_framenum = Temporal_Reference_Base + MPDtemporal_reference;
+    
+    /* temporary wrap of TR at 1024 for M frames */
+    if (temporal_reference_wrap && MPDtemporal_reference <= temporal_reference_old)	
+      MPDtrue_framenum += 1024;				
+
+    True_Framenum_max = (MPDtrue_framenum > True_Framenum_max) ?
+                        MPDtrue_framenum : True_Framenum_max;
+  }
+}
