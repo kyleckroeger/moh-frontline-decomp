@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8016b0f0",
-      "size": 1296,
+      "address": "0x8016ada0",
+      "size": 2144,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "iSNDserve__Fv",
+      "address": "0x8016ada0",
+      "size": 848,
+      "binding": 1
+    },
     {
       "name": "SNDPLATFORM_getvoicerange__FiPiPi",
       "address": "0x8016b0f0",
@@ -71,7 +77,11 @@
     "MIX_play": "0x80160800",
     "MIX_playinit": "0x801605bc",
     "SNDDRV_allocateaxvoice__Fi": "0x80169084",
+    "SNDDRV_fillbufwithpackets__FiP13SNDDRVPKTCHANP7CHANPUB": "0x801696dc",
+    "SNDDRV_freeaxvoice__Fii": "0x80169250",
     "SNDI_memcpy": "0x8016d730",
+    "SNDPKTPLAYI_flushcallbackdata__Fv": "0x8015aff4",
+    "SNDPKTPLAYI_freeframes__Fiii": "0x8015af8c",
     "SNDPLATFORM_highpass__Fii": "0x8016c364",
     "SNDPLATFORM_lowpass__Fii": "0x8016c270",
     "SNDPLATFORM_set3dpos__Fi": "0x8016bdfc",
