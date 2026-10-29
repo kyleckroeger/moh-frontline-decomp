@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8014a9a8",
-      "size": 220,
+      "address": "0x8014a510",
+      "size": 1396,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "BIG_locateentryz",
+      "address": "0x8014a510",
+      "size": 1176,
+      "binding": 1
+    },
     {
       "name": "BIG_locate",
       "address": "0x8014a9a8",
@@ -57,12 +63,18 @@
     }
   ],
   "externals": {
-    "BIG_locateentryz": "0x8014a510"
+    "BIG_debuginfo__FPCvPiPUi": "0x8014a3dc",
+    "__lower_map": "0x80190958",
+    "_restgpr_23": "0x80138a4c",
+    "_savegpr_23": "0x80138a00",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "BIG_debuginfo__FPCvPiPUi"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "locatbig.cpp",

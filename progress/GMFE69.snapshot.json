@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1127868,
+    "matching_code_bytes": 1129044,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.7321027137537,
+    "percent": 79.81523740042924,
     "categories": {
-      "reconstructed_game": 897876,
+      "reconstructed_game": 899052,
       "restored_library": 229992
     },
-    "matching_functions": 4758
+    "matching_functions": 4759
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -751,7 +751,7 @@
     "config/GMFE69/line.json": "4c909b09d3890aa1b14d3e08b8685227c16a8bb5dea5bdf96541e31260483913",
     "config/GMFE69/loadelf.json": "3e6c069028434cecfead5071921a89f51ef2e6d1d0370f69f5ec01db854a6f82",
     "config/GMFE69/locatbig.json": "951de0b6c115be49b7755a129307e91c30deb6c630ba9c49821cf71f0db076f0",
-    "config/GMFE69/locatbig_locate.json": "cd4a02c36b783ef772c8e4b35aba23d1c214f28ebc12cd85212abb0eb86b080c",
+    "config/GMFE69/locatbig_locate.json": "25f42036ddafa598fe82ca4e2b6a647ef460685e4bd6c53584eeb8c4c0b33e6c",
     "config/GMFE69/location_collision.json": "bfd9cb0edbdb5f60f1965ef8bf9eea9e339bad440f6f71319546cce315055b1d",
     "config/GMFE69/main_TRK.json": "53a7c3f8fdc516d26210c5002897d55d0bb651015e4e46852c26248d117ade9b",
     "config/GMFE69/mainloop.json": "2994436609fef577d03fa3220d0c44d5933025297dcfae7a7880dded142e765a",
@@ -2082,7 +2082,7 @@
     "src/ea/ipad.cpp": "a14bbc51e2978782915128143189e4eb8d4af5c1907756e67001303383c6b168",
     "src/ea/ipad_vbl.cpp": "56fbf60ad4c9724f4b71ac88420af75b74bb2dcbbb730d63cd88cfa102dc4fe5",
     "src/ea/locatbig.cpp": "ca45ed414f16861187ae9feb34372cec3e208f72a2f3123058e6f7b1dc395275",
-    "src/ea/locatbig_locate.cpp": "53e30436b85bd74a41bc403fe17f7a231060142d60827565b7852eef5b9a8f35",
+    "src/ea/locatbig_locate.cpp": "155d3e3823129937e072f81683311947542a6db22099e152f29bdf25b02316f3",
     "src/ea/memalloc.cpp": "1fb8d6c6965d9916235e6ee35c94a13b67f5d332f5f5adbf44ff3c8285f12e21",
     "src/ea/memalloc_tail.cpp": "6d6e05a90c089921c531f5149bdad60f5eb4d87c0daa98197f23fca1948bd6e9",
     "src/ea/memblock.cpp": "9c22c07fb0234fb28e395fc44ebaa5d07b2ae93122bdbfb90b8e1b0da347e3ef",
@@ -42133,8 +42133,8 @@
     {
       "id": "locatbig_locate",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 220,
+      "functions": 3,
+      "code_bytes": 1396,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42166,8 +42166,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e8c5ff196fa7f7e022d824b6f823d08171bcf90a7d3b8d453644d82f71e5a51d",
-      "linked_sha256": "e471865dfdae28671323d3d1b760fadc8b2bdc1e4863dffc1bd0d8c2ff9e6bce"
+      "object_sha256": "337d731260bd3f68169fb37c61d8de2220c2dcc7ecc3dc6a2ef4887c0e3f958e",
+      "linked_sha256": "5f32669f07937255a844c2d5e95ef68493d52004809092e4696f076dd9d48d51"
     },
     {
       "id": "ipad_vbl",
@@ -57051,20 +57051,6 @@
             "size": 684,
             "kind": "function",
             "name": "FILESYS_addbig",
-            "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/locatbig.cpp [symbol evidence]",
-        "file_record": 366,
-        "file_name": "locatbig.cpp",
-        "ranges": [
-          {
-            "address": "0x8014a510",
-            "size": 1176,
-            "kind": "function",
-            "name": "BIG_locateentryz",
             "evidence": "between-same-file"
           }
         ]
