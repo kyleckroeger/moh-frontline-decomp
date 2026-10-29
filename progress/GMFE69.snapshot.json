@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1140948,
+    "matching_code_bytes": 1142072,
     "total_executable_code_bytes": 1414572,
-    "percent": 80.65676402473682,
+    "percent": 80.73622268785188,
     "categories": {
-      "reconstructed_game": 910956,
+      "reconstructed_game": 912080,
       "restored_library": 229992
     },
-    "matching_functions": 4767
+    "matching_functions": 4768
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -898,7 +898,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "12232cdf68ccbed9f12676834474c7d4979c3e3b7aa3a618074506f08076179c",
+    "config/GMFE69/project.json": "30208753ef2919226e61b5612264e3f011392407694640c4e5bbbe520104d4f6",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -1016,6 +1016,7 @@
     "config/GMFE69/scene_veciter_plus.json": "205eb56bd0657ab36ad7d71ef486f776bb5b5454c979a9a9a430d7434196b039",
     "config/GMFE69/scene_visit.json": "d43eb4dcf141cc885016b62fdd63eb2e17a079c487a7f3753ad0b1f826e8aa7d",
     "config/GMFE69/sclnt100.json": "1240eb5a92ecbe7c25755312ec960a23192c75240675f6cecbbd3c91b2f54fc5",
+    "config/GMFE69/scrsfl.json": "d710e5945e4c4c44882521b970856e3a9b8bf281025d20b7e7c8620cbd072a7e",
     "config/GMFE69/sctlfilt.json": "b1b4403df5f172a96a7c8189f27b7f46a0c740002e8f50e74e0a783e2488cd73",
     "config/GMFE69/sctrldry.json": "561b4b93070d6a4cbfb714e3f6de5824f583795298bba426606a1ad4803dc401",
     "config/GMFE69/sdecmut.json": "fca793b683317a46832786821776d63c566438dc646cb15b9f14cab0e53a035b",
@@ -2152,6 +2153,7 @@
     "src/ea/scalcfx.c": "85fda0fc3ffdc7563b22f679957d60cf1299536991c8cb699928150067286be5",
     "src/ea/scalcpitch.c": "926dcf6048d0f4d5a2cccd84255306ca1c55bdba5f8f47e59bdc6a86d14951bc",
     "src/ea/sclnt100.c": "b66db7c5dd3ac2f356f6d1a28160a54beae4ba3a0b9c96c20bce6ef6d59fddca",
+    "src/ea/scrsfl.c": "4c11e2fab6a492a858966bc15535bc08bb91c6223e03803accfd952cf1ae9aaa",
     "src/ea/sctlfilt.c": "f0ee0f9939f8a8bf3d378bd02f819abd234a5da38120e7e84861b2ec0a3b180b",
     "src/ea/sctrldry.cpp": "98429e0252980217b230bcd6d5250668bdac5623e921d3124d66481497622d43",
     "src/ea/sdecmut.c": "c52ed14cdd5e9df96b4c1f4cc2922f780b052daeb21b4e354d04c7ecc0d20e75",
@@ -54942,6 +54944,45 @@
       "discarded_functions": [],
       "object_sha256": "9ab843be01023c046927e2379a8710e31c582f1c57adbbfcfc37939799edb33f",
       "linked_sha256": "4be8ff6add13ef2b672888810bc27feccdddf0e60403c4ba2b42e941fc307dbe"
+    },
+    {
+      "id": "scrsfl",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1124,
+      "compiler_family": "GC",
+      "compiler_version": "1.3",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "b27cb3eab52266f29bab2ecb114db41f20cf1430f240cb85de47064ae21c6093",
+      "linked_sha256": "a5a4f81828f80148fbfc472608a241828371cd724bce1d3d2ed69ced897ac759"
     }
   ],
   "code_map": {
@@ -57199,20 +57240,6 @@
             "kind": "function",
             "name": "SFILTER_rsf__FPviPvPvi",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/scrsfl.c [symbol evidence]",
-        "file_record": 546,
-        "file_name": "scrsfl.c",
-        "ranges": [
-          {
-            "address": "0x80167510",
-            "size": 1124,
-            "kind": "function",
-            "name": "rsflc",
-            "evidence": "private-reference"
           }
         ]
       },

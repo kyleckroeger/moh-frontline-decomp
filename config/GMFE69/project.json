@@ -1265,7 +1265,8 @@
     "player_draw.json",
     "world_volume_ctor.json",
     "bsbifunc_waypointinfo.json",
-    "getpic_head.json"
+    "getpic_head.json",
+    "scrsfl.json"
   ],
   "progress": {
     "code_bytes": 1414572,
