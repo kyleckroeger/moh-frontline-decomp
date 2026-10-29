@@ -1,0 +1,109 @@
+{
+  "id": "UISStack",
+  "source": "src/game/UISStack.c",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80085a8c",
+      "size": 8236,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c398",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800133d0",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80185cf8",
+      "size": 584,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801eec60",
+      "size": 80,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350178",
+      "size": 16,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t",
+      "address": "0x80085a8c",
+      "size": 8236,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "UISAddThreadAction__FP9UISInfo_t16UISThreadActionTP19UISThreadGroupInfoTlP10UISParam_t": "0x80085678",
+    "UISFindRateFnc__FP9UISInfo_tP16UISControlInfo_tUl": "0x80085a40",
+    "UISFindSiblingEnableControl__FP11UISScreen_tP16UISControlInfo_t": "0x8008a608",
+    "UISLoadAdvRateFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP16UISControlInfo_tUlPUcPUcUlfUl": "0x800858fc",
+    "UISLoadRateFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tUlPUcUl": "0x80085860",
+    "UISStringFormat__FP12UISScrData_tP11UISString_tP11UISString_tUlP10UISParam_t": "0x8008a774",
+    "UISUnloadRateFnc__FP9UISInfo_tP16UISControlInfo_tUl": "0x800857fc",
+    "UISUpdateVisibility__FP9UISInfo_tP11UISScreen_tUlPvUl": "0x80087ab8",
+    "strncpy": "0x8013fffc",
+    "uisEventNotProcess": "0x8034ea90"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "uisEventNotProcess"
+  ],
+  "original_file": "UISStack.c",
+  "original_file_index": 4527
+}

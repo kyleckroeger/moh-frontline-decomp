@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1148424,
+    "matching_code_bytes": 1156660,
     "total_executable_code_bytes": 1414572,
-    "percent": 81.18526310431706,
+    "percent": 81.767488682089,
     "categories": {
-      "reconstructed_game": 918432,
+      "reconstructed_game": 926668,
       "restored_library": 229992
     },
-    "matching_functions": 4777
+    "matching_functions": 4778
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -280,6 +280,7 @@
     "config/GMFE69/TibText.json": "b8e641009fcfc20a9602b6f70d38f98def7eecaffca3618f01d16c79cfdbd1d6",
     "config/GMFE69/UISActionProcess.json": "b8982d8977fc3cc190673d20cb03584db2332ecab498e97bc57a276fcc9cd7dd",
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
+    "config/GMFE69/UISStack.json": "15bdb41b0015c963d032ed319b82130335d534b24450619eeada8191b34f5660",
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
     "config/GMFE69/UISUtils_actionptr.json": "85b92076125f12f009807d17b2c64a9081741d2e84c232ce0be7a2fc74e2ae48",
     "config/GMFE69/UISUtils_dohint.json": "faa6b748b1aaf73e5e7b786ee3176348335df131563e6d3382de44c96cd4f84e",
@@ -898,7 +899,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "30208753ef2919226e61b5612264e3f011392407694640c4e5bbbe520104d4f6",
+    "config/GMFE69/project.json": "5eeb34f5f6fdd95c3bada2a660a95bd6ab10939efdf8a8473c6932574381786a",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2481,6 +2482,7 @@
     "src/game/TibText.cpp": "add98adc4d7d0cb0bd0d15f50a5a5589b10e1e2843e2a9c5200cc69c0a73a0fc",
     "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
+    "src/game/UISStack.c": "ac4a84336c1d458da41b45333132362936a75d99bc1f8f05f8fca8b10a5b40b0",
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
     "src/game/UISUtils_actionptr.c": "137fc6515e8a573306876f5fe9684956ad392a129c11a2c15556f4e46a4e34ad",
     "src/game/UISUtils_dohint.c": "b09914bf3eb297eefa127c5154a523eb6532db1bd5b11ac0422f8d2d30a9b34e",
@@ -54983,6 +54985,47 @@
       "discarded_functions": [],
       "object_sha256": "b27cb3eab52266f29bab2ecb114db41f20cf1430f240cb85de47064ae21c6093",
       "linked_sha256": "a5a4f81828f80148fbfc472608a241828371cd724bce1d3d2ed69ced897ac759"
+    },
+    {
+      "id": "UISStack",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 8236,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "85d47d762ca31b3fd9b567d5c1f5288bd150679cb0fddea877fd1498fec9e80d",
+      "linked_sha256": "47ea2d66c88d3170cf6a421b2c83ab637c9a4ba63f0b5a414c6ffb9ba99cf8e8"
     }
   ],
   "code_map": {
@@ -55948,20 +55991,6 @@
             "size": 1220,
             "kind": "function",
             "name": "Update__13CInputManagerFf",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/UISStack.c [symbol evidence]",
-        "file_record": 86,
-        "file_name": "UISStack.c",
-        "ranges": [
-          {
-            "address": "0x80085a8c",
-            "size": 8236,
-            "kind": "function",
-            "name": "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t",
             "evidence": "exception-index"
           }
         ]
