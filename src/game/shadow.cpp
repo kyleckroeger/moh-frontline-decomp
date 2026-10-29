@@ -1,4 +1,6 @@
-// A fragment of shadow.cpp (0x80081454): CCharacterShadow::Draw (unless the
+// A fragment of shadow.cpp (0x8008144c): CCharacterShadow's weak IsDrawEnabled
+// (inline in the original; defined out of line first to keep the text order),
+// then CCharacterShadow::Draw (unless the
 // configuration's switch at +2 disables shadows or drawing is off: copies the
 // owner's (+100) world box, fades the alpha (+108, from +104) by the camera
 // distance over g_FadeDistance, widens the box by g_ShadowScale, sets its
@@ -224,7 +226,7 @@ public:
     virtual ~CCharacterShadow();
     static void InitClass();
     virtual void Draw(CDrawContext&);
-    virtual bool IsDrawEnabled() const { return m_drawEnabled; }
+    virtual bool IsDrawEnabled() const;
 
     unsigned char unknown04[12];
     CVolBox m_box;
@@ -234,6 +236,10 @@ public:
     float m_value68;
     float m_value6C;
 };
+
+__declspec(weak) bool CCharacterShadow::IsDrawEnabled() const {
+    return m_drawEnabled;
+}
 
 void CCharacterShadow::Draw(CDrawContext& context) {
     if (g_config.m_noShadows)

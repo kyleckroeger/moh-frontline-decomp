@@ -34,13 +34,13 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": true,
+  "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80081454",
-      "size": 1088,
+      "address": "0x8008144c",
+      "size": 1096,
       "type": 1
     },
     {
@@ -94,6 +94,12 @@
       "binding": 0
     },
     {
+      "name": "IsDrawEnabled__16CCharacterShadowCFv",
+      "address": "0x8008144c",
+      "size": 8,
+      "binding": 2
+    },
+    {
       "name": "Draw__16CCharacterShadowFR12CDrawContext",
       "address": "0x80081454",
       "size": 644,
@@ -121,7 +127,6 @@
   "externals": {
     "GetDepth__7CVolBoxCFv": "0x800c514c",
     "GetWidth__7CVolBoxCFv": "0x800c515c",
-    "IsDrawEnabled__16CCharacterShadowCFv": "0x8008144c",
     "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
     "SetDepth__7CVolBoxFf": "0x800c5258",
     "SetHeight__7CVolBoxFf": "0x800c5268",
@@ -171,9 +176,6 @@
   ],
   "original_file": "shadow.cpp",
   "original_file_index": 4202,
-  "weak_duplicates": [
-    "IsDrawEnabled__16CCharacterShadowCFv"
-  ],
   "pooled_sections": [
     ".sdata2"
   ],
