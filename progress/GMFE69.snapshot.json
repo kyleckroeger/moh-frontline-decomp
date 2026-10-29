@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1142072,
+    "matching_code_bytes": 1143552,
     "total_executable_code_bytes": 1414572,
-    "percent": 80.73622268785188,
+    "percent": 80.84084797380409,
     "categories": {
-      "reconstructed_game": 912080,
+      "reconstructed_game": 913560,
       "restored_library": 229992
     },
-    "matching_functions": 4768
+    "matching_functions": 4769
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1183,7 +1183,7 @@
     "config/GMFE69/staticmesh_initdata.json": "b7d6cbe0e96412cde141964b74bed29a3afb64ae2a4ab74149a7e9dfbe0c25d9",
     "config/GMFE69/staticmesh_mshmaterial_dtor.json": "e8ed6079397248e73d513bd5621430fe85d14ba7a099c05aa353b721683e6784",
     "config/GMFE69/staticmesh_mshnode_copy.json": "47a01754624f180434dd9cdee6b121abe06d56e057d61ea0c67d53e5d08e79c7",
-    "config/GMFE69/staticmesh_render.json": "8706f10d4ec4af9c4dc449be5a1d6f869cd3422c520b6c543cf57460b161c5d0",
+    "config/GMFE69/staticmesh_render.json": "80022f223a2809a618a45978a88a4fc5b354218a04cdfd62297c68bf72b673da",
     "config/GMFE69/staticmesh_simplebin.json": "5fb23a801437c0a09b0f12aec1762ea737197d71a1aa7a2c8e748b89b51f8abe",
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
@@ -3074,7 +3074,7 @@
     "src/game/staticmesh_initdata.cpp": "4f6f5143030470d067fbe9507186c6c743722765acf40b43a9e13b312fc01a0f",
     "src/game/staticmesh_mshmaterial_dtor.cpp": "954a7a5fa8c0bb7d070ac1d15646a07b506991ca2a8c66e40301e8742089324c",
     "src/game/staticmesh_mshnode_copy.cpp": "f78396a1c13e87d8c4ebec6647315bb6dc59f0bb9c7da292b4ed6be3aa46f046",
-    "src/game/staticmesh_render.cpp": "3f82f45df8a968dcb67dddaf130bf325787a952bbdcf1da6b5debcd4d3a01ec1",
+    "src/game/staticmesh_render.cpp": "b9a18d1774546ebfd08aceb076bbaa731a18061d46667cbdbd80420d1ae96cb9",
     "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
@@ -39123,8 +39123,8 @@
     {
       "id": "staticmesh_render",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 328,
+      "functions": 2,
+      "code_bytes": 1808,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -39156,8 +39156,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "64466aa4cb410d7f5ce7405d63cb90afdc4b4ba7e03251e53a2d431794f957f6",
-      "linked_sha256": "18a6230a9dd0269b31c1a11652a6a00950f4944d703a681fe9080c4d89e60dfa"
+      "object_sha256": "404e38bb5b6f3aa6d875641d189a7ae2136cb4d745b8f9139d9c430559aaec26",
+      "linked_sha256": "c92f4e76b9f1515cdb6fbbdcd7cd0837d432969055a214ed7d15193b77975c5d"
     },
     {
       "id": "staticmesh_simplebin",
@@ -56685,13 +56685,6 @@
         "file_record": 155,
         "file_name": "staticmesh.cpp",
         "ranges": [
-          {
-            "address": "0x800f1690",
-            "size": 1480,
-            "kind": "function",
-            "name": "Link__10CMSHMatBinFP7CDmaTagR10CDmaPacket",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800f1e64",
             "size": 556,

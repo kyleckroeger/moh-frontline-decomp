@@ -32,6 +32,7 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk",
     "include/dolphin-sdk/libc"
   ],
   "strip_unused": false,
@@ -39,24 +40,42 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f1c58",
-      "size": 328,
+      "address": "0x800f1690",
+      "size": 1808,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f6a0",
-      "size": 8,
+      "address": "0x8000f698",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800162ec",
-      "size": 12,
+      "address": "0x800162e0",
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x802da730",
+      "size": 192,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ed38",
+      "size": 5,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "Link__10CMSHMatBinFP7CDmaTagR10CDmaPacket",
+      "address": "0x800f1690",
+      "size": 1480,
+      "binding": 1
+    },
     {
       "name": "Render__10CMSHMatBinFR10CDmaPacketPv",
       "address": "0x800f1c58",
@@ -65,26 +84,69 @@
     }
   ],
   "externals": {
+    "GXCallDisplayList": "0x8012ff14",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXInitLightColor": "0x8012d39c",
+    "GXInitLightPos": "0x8012d370",
+    "GXLoadLightObjImm": "0x8012d3c4",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXLoadTexObj": "0x8012e02c",
+    "GXLoadTlut": "0x8012e0c8",
+    "GXSetAlphaCompare": "0x8012f4e4",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetChanAmbColor": "0x8012d50c",
+    "GXSetChanCtrl": "0x8012d828",
+    "GXSetChanMatColor": "0x8012d674",
+    "GXSetColorUpdate": "0x8012fb7c",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetFog": "0x8012f7c8",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetTevOp": "0x8012ee78",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZCompLoc": "0x8012fc74",
+    "GXSetZMode": "0x8012fbfc",
     "GetGAMECUBEMatrix34__7CMatrixCFRA3_A4_f": "0x8008eefc",
     "UpdateLightingParams__FR10CDmaPacket": "0x800f2ce4",
+    "g_ActualWorldToCameraMatrix": "0x802da520",
+    "g_CurrMaterial": "0x8034ed28",
     "g_CurrState": "0x8034ed24",
-    "g_WorldToCameraMatrix": "0x802da560"
+    "g_FarPlane": "0x8034ed30",
+    "g_GCFogType": "0x8018b400",
+    "g_NearPlane": "0x8034ed2c",
+    "g_WorldToCameraMatrix": "0x802da560",
+    "g_pFog": "0x8034ed18"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "g_ActualWorldToCameraMatrix",
+    "g_CurrMaterial",
     "g_CurrState",
-    "g_WorldToCameraMatrix"
+    "g_FarPlane",
+    "g_GCFogType",
+    "g_NearPlane",
+    "g_WorldToCameraMatrix",
+    "g_pFog"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_CurrState"
+    "g_CurrMaterial",
+    "g_CurrState",
+    "g_FarPlane",
+    "g_NearPlane",
+    "g_pFog"
   ],
   "original_file": "staticmesh.cpp",
   "original_file_index": 9367,
   "pooled_sections": [
-    ".sdata"
+    ".sdata",
+    ".sdata2"
   ],
   "pool_references": [
     {
@@ -92,6 +154,24 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034e320"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351070"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351074"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80351078"
     }
   ]
 }
