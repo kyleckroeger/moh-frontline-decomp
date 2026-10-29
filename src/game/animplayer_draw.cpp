@@ -4,11 +4,11 @@
 // lets the player's own bullets through (the scene excludes the pair, type
 // 5, and the bullet penetrates); a projectile hit places a blood particle
 // system at the contact, oriented to its normal as in
-// Soldier_object_bullet.cpp, and the hit is passed to the player. The
+// Soldier_object_attach.cpp, and the hit is passed to the player. The
 // classes and functions are named by the mangled symbols; the members and
 // views are inferred, CAnimatedPlayer is a non-virtual view deriving from
 // CSoldierObject, and the vector helpers and the inline frsqrte sqrtf are
-// as in Soldier_object_bullet.cpp. The rest of the file is in other units.
+// as in Soldier_object_attach.cpp. The rest of the file is in other units.
 class CDrawContext {
 public:
     unsigned char unknown000[0x114];

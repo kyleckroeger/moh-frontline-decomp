@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,23 +40,48 @@
     {
       "name": ".text",
       "address": "0x800a9f1c",
-      "size": 2052,
+      "size": 9204,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d220",
-      "size": 40,
+      "size": 104,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001430c",
-      "size": 60,
+      "size": 156,
       "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80176f58",
+      "size": 643,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80188230",
+      "size": 608,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dfcc",
+      "size": 56,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "HandleBulletCollision__14CSoldierObjectFP7CBulletRC10CCollision",
+      "address": "0x800aaea0",
+      "size": 2988,
+      "binding": 1
+    },
     {
       "name": "DetachObject__14CSoldierObjectFPc",
       "address": "0x800aa1b8",
@@ -67,6 +92,18 @@
       "name": "AttachObject__14CSoldierObjectFP13CStaticObjectPci",
       "address": "0x800aa25c",
       "size": 432,
+      "binding": 1
+    },
+    {
+      "name": "OnCollision__14CSoldierObjectFRC10CCollision",
+      "address": "0x800abc6c",
+      "size": 1700,
+      "binding": 1
+    },
+    {
+      "name": "SetAttachedLight__14CSoldierObjectFP6CLight8CVector3",
+      "address": "0x800abbbc",
+      "size": 176,
       "binding": 1
     },
     {
@@ -92,17 +129,156 @@
       "address": "0x800aa40c",
       "size": 788,
       "binding": 1
+    },
+    {
+      "name": "FireWeapon__14CSoldierObjectFiR8CVector3R8CVector3f",
+      "address": "0x800aa720",
+      "size": 1176,
+      "binding": 1
+    },
+    {
+      "name": "GetBulletEmitterMatrix__14CSoldierObjectFR7CMatrix",
+      "address": "0x800aabb8",
+      "size": 192,
+      "binding": 1
+    },
+    {
+      "name": "EjectHelmet__14CSoldierObjectFP8CVector3",
+      "address": "0x800aac78",
+      "size": 548,
+      "binding": 1
+    },
+    {
+      "name": "GetVelocity__7CBulletFR8CVector3",
+      "address": "0x800aae9c",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "GetLookMatrix__14CSoldierObjectFR7CMatrix",
+      "address": "0x800aba4c",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "AddWeapon__14CSoldierObjectFii",
+      "address": "0x800abb1c",
+      "size": 160,
+      "binding": 1
     }
   ],
   "externals": {
+    "ApplyForceTo__11CAnimObjectF8CVector3f": "0x80093a98",
+    "AsAnimObject__11CAnimObjectCFv": "0x80093620",
+    "AsAnimObject__11CAnimObjectFv": "0x80093624",
+    "AsAnimatedPlayerObject__10ISceneNodeCFv": "0x8001aff8",
+    "AsAnimatedPlayerObject__10ISceneNodeFv": "0x8001b000",
+    "AsBullet__10ISceneNodeCFv": "0x8001b018",
+    "AsBullet__10ISceneNodeFv": "0x8001b020",
+    "AsCollisionVolume__10ISceneNodeCFv": "0x8001b028",
+    "AsCollisionVolume__10ISceneNodeFv": "0x8001b030",
+    "AsHierObject__10ISceneNodeCFv": "0x8001af98",
+    "AsHierObject__10ISceneNodeFv": "0x8001afa0",
+    "AsLight__10ISceneNodeCFv": "0x8001b008",
+    "AsLight__10ISceneNodeFv": "0x8001b010",
+    "AsMovingNode__16IMovingSceneNodeCFv": "0x8001aea4",
+    "AsMovingNode__16IMovingSceneNodeFv": "0x8001aea8",
+    "AsPlayerObject__10ISceneNodeCFv": "0x8001afd8",
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
+    "AsPlayerWeaponObject__10ISceneNodeCFv": "0x8001afe8",
+    "AsPlayerWeaponObject__10ISceneNodeFv": "0x8001aff0",
+    "AsSoldierObject__14CSoldierObjectCFv": "0x800a9b34",
+    "AsSoldierObject__14CSoldierObjectFv": "0x800a9b38",
+    "AsStaticObject__10ISceneNodeCFv": "0x8001af88",
+    "AsStaticObject__10ISceneNodeFv": "0x8001af90",
+    "AsWorldObject__10ISceneNodeCFv": "0x8001afa8",
+    "AsWorldObject__10ISceneNodeFv": "0x8001afb0",
+    "AttachFloatingBone__14CSoldierObjectFv": "0x800a9d1c",
+    "AttemptUpdate__14CSoldierObjectFf": "0x800ac448",
+    "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "BeginUpdate__14CSoldierObjectFf": "0x800ac648",
+    "CommitAI__10ISceneNodeFv": "0x8001aeb4",
+    "CommitUpdate__14CSoldierObjectFv": "0x800ac428",
+    "ConstrainVelocity__11CAnimObjectFv": "0x80093e64",
+    "Constrain__8CVector3FRC8CVector3f": "0x8009213c",
+    "CreateSpecialThrownObject__FP20TriggerObject_structii": "0x8003ebb4",
+    "CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei": "0x800d6cf4",
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DestroyWeapon__14CWeaponFactoryFP7CWeapon": "0x800d6c88",
+    "Destroy__14CSoldierObjectFv": "0x800a9b3c",
+    "DetachFloatingBone__14CSoldierObjectFv": "0x800a9d04",
+    "DoesHelmetTypeStopBullets__20CStaticObjectFactoryFi": "0x800b240c",
+    "Draw__14CSoldierObjectFR12CDrawContext": "0x800ac9e4",
+    "EnterLightVolume__11CAnimObjectFP14BPDLightVolume": "0x80093750",
+    "ExitLightVolume__11CAnimObjectFP14BPDLightVolume": "0x8009372c",
+    "Explode__13CThrownBulletFv": "0x800d2528",
+    "GetAIDoodad__14CSoldierObjectCFv": "0x800a9b2c",
+    "GetAIDoodad__14CSoldierObjectFv": "0x80032b00",
+    "GetAttachPointMatrix__14CSoldierObjectFPcP7CMatrix": "0x800a9e84",
+    "GetAttachedLight__10ISceneNodeCFv": "0x8001b04c",
+    "GetCollisionId__11CAnimObjectCFv": "0x800939a8",
+    "GetForward__11CAnimObjectCFR8CVector3": "0x80093798",
+    "GetLightVolume__11CAnimObjectFv": "0x80093708",
+    "GetLocalBoundingVolume__14CSoldierObjectCFQ210ISceneNode11EVolumeType": "0x800ac368",
+    "GetPosition__11CAnimObjectCFR8CVector3": "0x800937e0",
+    "GetRightward__11CAnimObjectCFR8CVector3": "0x800937bc",
+    "GetScriptObject__11CAnimObjectCFv": "0x8002fcec",
+    "GetTMLocalToWorld__11CAnimObjectCFR7CMatrix": "0x80093a6c",
+    "GetUpward__11CAnimObjectCFR8CVector3": "0x80093774",
+    "GetVarValue__9CAIStatusCF12aistatus_var": "0x8004960c",
+    "GetWorldBoundingVolume__14CSoldierObjectCFQ210ISceneNode11EVolumeType": "0x800ac310",
+    "GetWorldLinearVelocity__11CAnimObjectCFv": "0x8005b480",
+    "Halt__11CAnimObjectFv": "0x80093ba0",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitAI__14CSoldierObjectFv": "0x800ae218",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__14CSoldierObjectFv": "0x800ae240",
     "Inverse__7CMatrixFRC7CMatrix": "0x8008f5c0",
+    "IsDrawEnabled__11CAnimObjectCFv": "0x800939b0",
+    "IsVisible__11CAnimObjectCFR12CDrawContext": "0x800939b8",
+    "MarkForDestruction__11CAnimObjectFi": "0x80093664",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "MathFunRandomReal__Fff": "0x80092d60",
+    "Move__11CAnimObjectF8CVector3": "0x800938fc",
     "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "OnCollision__11CAnimObjectFRC10CCollision": "0x80093bb8",
+    "Orthonormalize__11CAnimObjectFv": "0x80093804",
+    "Pitch__11CAnimObjectFf": "0x80093654",
+    "PlayImpactSound__FUsUs8CVector3b": "0x800eb17c",
+    "PreTransform__11CAnimObjectFRC7CMatrix": "0x80093648",
+    "PreTranslate__7CMatrixF8CVector3": "0x80090694",
+    "Reset__11CAnimObjectFv": "0x8009396c",
+    "Roll__11CAnimObjectFf": "0x80093658",
+    "Rotate__11CAnimObjectF8CVector3f": "0x80093650",
+    "SetBasis__11CAnimObjectF8CVector38CVector38CVector3": "0x8009365c",
+    "SetCollisionId__11CAnimObjectF7EClsnId": "0x80025ec0",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
     "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetPosition__11CAnimObjectF8CVector3": "0x80093934",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetScript__11CAnimObjectFP8BSObject": "0x8003f8b0",
+    "SetTMLocalToWorld__11CAnimObjectFRC7CMatrix": "0x800936e4",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "SetVelocity__13CThrownObjectFR8CVector3": "0x800b4db4",
+    "Set_hits__10CShellMenuFUib": "0x800e6b18",
+    "Set_shotLocation__10CShellMenuFUi14EShotLocationsb": "0x800e6a28",
     "Shoot__7CWeaponF16EWeaponShootTypeff": "0x800d6238",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
     "TransformVector__7CMatrixCFR8CVector38CVector3": "0x8008fa84",
+    "Transform__11CAnimObjectFRC7CMatrix": "0x8009364c",
+    "TriggerScriptEvent__11CAnimObjectFiPvb": "0x800950f0",
+    "UpdateAI__14CSoldierObjectFf": "0x800ac4ac",
+    "UpdateAnimation__14CSoldierObjectFf": "0x800acfb8",
+    "UpdateLocalBoundingVolume__14CSoldierObjectFQ210ISceneNode11EVolumeTypeRC8CVector3RC8CVector3": "0x800ac3c0",
+    "Yaw__11CAnimObjectFf": "0x80093894",
     "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "__dt__14CSoldierObjectFv": "0x800ae160",
     "acos": "0x801438e0",
+    "g_Shell": "0x80195090",
+    "g_WeaponFactory": "0x801dde58",
+    "g_cheats": "0x80196a94",
     "s_ClassInit__7CMatrix": "0x8034eab0",
     "sin": "0x80143790",
     "stricmp": "0x80151ab8"
@@ -168,6 +344,96 @@
       "offset": 48,
       "size": 4,
       "address": "0x803507e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x803507ec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x803507f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x803507f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
+      "size": 4,
+      "address": "0x803507f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 4,
+      "address": "0x803507fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 72,
+      "size": 4,
+      "address": "0x80350800"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 76,
+      "size": 4,
+      "address": "0x80350804"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x80350808"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x8035080c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
+      "size": 4,
+      "address": "0x80350810"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 92,
+      "size": 4,
+      "address": "0x80350814"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 96,
+      "size": 8,
+      "address": "0x80350818"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 104,
+      "size": 4,
+      "address": "0x80350820"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 108,
+      "size": 4,
+      "address": "0x80350824"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 112,
+      "size": 4,
+      "address": "0x80350828"
     }
   ]
 }

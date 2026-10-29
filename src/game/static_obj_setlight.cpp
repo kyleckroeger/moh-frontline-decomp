@@ -13,7 +13,7 @@
 // otherwise it explodes unless it is of type 3 or 4 and the object has no
 // owner node, or the owner's script state is not positive. The classes and
 // functions are named by the symbols; the members, virtual slots, the event
-// block and the CMatrix and CVector3 views (as in Soldier_object_look.cpp and
+// block and the CMatrix and CVector3 views (as in Soldier_object_attach.cpp and
 // anim_obj_bullet.cpp) are inferred. The rest of the file is in other units.
 class ISubject;
 class IObserver;

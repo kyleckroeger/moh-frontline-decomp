@@ -7,7 +7,7 @@
 // attachment point) and GetAttachPointMatrix (copies the named emitter's
 // matrix; both return whether the emitter was found). The emitter table is
 // read through an inferred inline accessor, which keeps it in one register
-// across the search, as in Soldier_object_look.cpp. The
+// across the search, as in Soldier_object_attach.cpp. The
 // file name is this project's; the original record is Soldier_object.cpp and
 // the functions around these are not reconstructed. CSoldierObject is named
 // by the mangled symbols; its members are inferred.

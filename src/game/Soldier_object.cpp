@@ -9,7 +9,7 @@
 // reproduced. The accessor and casts are inline in the original (weak
 // symbols), so they are defined __declspec(weak). The emitter table is read
 // through an inferred inline accessor (register order, as in
-// Soldier_object_look.cpp) and the loop variables are declared in the order
+// Soldier_object_attach.cpp) and the loop variables are declared in the order
 // that gives the original's registers.
 extern "C" int stricmp(const char*, const char*);
 
