@@ -41,8 +41,26 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008a9fc",
-      "size": 284,
+      "address": "0x8008a774",
+      "size": 932,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c478",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013520",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80171228",
+      "size": 160,
       "type": 1
     },
     {
@@ -50,9 +68,21 @@
       "address": "0x80185f40",
       "size": 96,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801eecd0",
+      "size": 512,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "UISStringFormat__FP12UISScrData_tP11UISString_tP11UISString_tUlP10UISParam_t",
+      "address": "0x8008a774",
+      "size": 648,
+      "binding": 1
+    },
     {
       "name": "UISSetColorAdditive__Fffff",
       "address": "0x8008a9fc",
@@ -86,7 +116,9 @@
   ],
   "externals": {
     "_AdditiveColorFactor": "0x801eecc0",
-    "_MultiplerColorFactor": "0x801eecb0"
+    "_MultiplerColorFactor": "0x801eecb0",
+    "sprintf": "0x8013dab4",
+    "strncpy": "0x8013fffc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
