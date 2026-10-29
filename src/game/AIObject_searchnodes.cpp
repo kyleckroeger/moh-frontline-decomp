@@ -18,7 +18,10 @@ class CLinkedListElement;
 
 class CLinkedList {
 public:
+    bool IsEmpty();
     void RemoveElement(CLinkedListElement*);
+    void AddElementAtEnd(CLinkedListElement*);
+    void AddElementAtBeginning(CLinkedListElement*);
 
     CLinkedListElement* m_head;
 };
@@ -61,7 +64,8 @@ public:
 
     CSearchNode* m_parent;
     CPathNode* m_pathNode;
-    unsigned char unknown0c[8];
+    float m_unknown0c;
+    float m_unknown10;
     float m_cost;
     bool m_closed;
 
@@ -71,11 +75,16 @@ public:
 
 class CSearchNodeQueue {
 public:
+    void Clear();
+    CSearchNode* PopFirst();
     void ReplaceElement(CSearchNode*, CSearchNode*);
     void Insert(CSearchNode*);
+
+    int m_count;
 };
 
-class CSearchNodeList;
+class CSearchNodeList : public CLinkedList {
+};
 class CAIFilterObject;
 
 class CAIFilterGlobal {
@@ -107,6 +116,77 @@ public:
     CPathNode* m_unknown268;
     CPathNode* m_unknown26c;
 };
+
+bool CAIObject::ComputeAStarPath(CPathNode* start, const CPathNode* goal, float maxCost,
+                                 CSearchNodeQueue& queue, CSearchNodeList& list) {
+    queue.m_count = 1;
+    CSearchNode* node;
+    CSearchNode* found = 0;
+    while (!list.IsEmpty()) {
+        CSearchNode* node = (CSearchNode*)list.m_head;
+        list.RemoveElement(node);
+        delete node;
+    }
+    if (start == goal) {
+        found = new CSearchNode;
+        found->Setup(0, start, goal);
+    } else {
+        CSearchNode* node = new CSearchNode;
+        node->Setup(0, start, goal);
+        queue.Insert(node);
+        float limit = 0.25f * maxCost;
+        while (queue.m_count > 1) {
+            CSearchNode* best = queue.PopFirst();
+            if (best->m_cost > maxCost && best->m_unknown0c > limit) {
+                delete best;
+                break;
+            }
+            best->m_closed = true;
+            list.AddElementAtEnd(best);
+            found = AddChildrenToSearchNodeQueue(best, goal, queue, list);
+            if (found)
+                break;
+        }
+        queue.Clear();
+    }
+    bool result = found != 0;
+    if (found) {
+        if (!found->IsClosed())
+            found->m_closed = true;
+        list.AddElementAtEnd(found);
+    } else {
+        CSearchNode* nearestNode = 0;
+        float distance;
+        float nearest = 0.0f;
+        for (CSearchNode* node = (CSearchNode*)list.m_head; node; node = (CSearchNode*)node->m_next) {
+            distance = node->m_unknown10;
+            if (!nearestNode || distance < nearest) {
+                nearestNode = node;
+                nearest = distance;
+            }
+        }
+        found = nearestNode;
+    }
+    if (found) {
+        for (node = found; node; node = node->m_parent) {
+            node->m_pathNode->m_searchNode = 0;
+            node->m_closed = !node->m_closed;
+        }
+        CSearchNode* cur = (CSearchNode*)list.m_head;
+        while (cur) {
+            node = (CSearchNode*)cur->m_next;
+            list.RemoveElement(cur);
+            if (cur->m_closed) {
+                cur->m_closed = !cur->m_closed;
+                delete cur;
+            }
+            cur = node;
+        }
+        for (node = found; node; node = node->m_parent)
+            list.AddElementAtBeginning(node);
+    }
+    return result;
+}
 
 CPathNode* CAIObject::GetNextPathNode(CPathNode* start, CPathNode* end) {
     CSearchNode* first = (CSearchNode*)m_searchNodes.m_head;

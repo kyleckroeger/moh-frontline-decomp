@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1125076,
+    "matching_code_bytes": 1125832,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.53472852566006,
+    "percent": 79.58817225280862,
     "categories": {
-      "reconstructed_game": 895084,
+      "reconstructed_game": 895840,
       "restored_library": 229992
     },
-    "matching_functions": 4752
+    "matching_functions": 4753
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -57,7 +57,7 @@
     "config/GMFE69/AIObject_obstacle.json": "cd0eefc6c667100e1ae64807408111aa9b9b486a591f87909777e931d24d540f",
     "config/GMFE69/AIObject_patrolwalk.json": "7df6a570786406709acb4ce8b4809208762cf00b55f298b607386870a9ce8ff7",
     "config/GMFE69/AIObject_reachable.json": "35f6b3b0c1ec2e6381955711f95e8a21247e28bc2213ac16287840a55d2503ae",
-    "config/GMFE69/AIObject_searchnodes.json": "869d418d68ecc8c1304979bcfbf0c94b3e65eea1484580669b1387cfece43d66",
+    "config/GMFE69/AIObject_searchnodes.json": "bd448d775d7d88c7c06cca95704aedeadbfec1f25c46b55a1547bfa7fc4cd1fb",
     "config/GMFE69/AIObject_setcover.json": "eed00dea433a231254700738415d7c2dc338beefaaf656796bc6514d342886f1",
     "config/GMFE69/AIObject_setlocation.json": "d0645b9342e7eedc46228451cfa526f6f1503a65c60d16f2f3a3a33b096f3981",
     "config/GMFE69/AIObject_spline.json": "1607b3deacc4120d1f5bb330c17b5c127697003815192f38f7b18af31a0137e0",
@@ -652,7 +652,7 @@
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
-    "config/GMFE69/extab_patches.json": "a2703ecfbad89455215b1bdada6f0565d9bbdd24c0ba00b001975cfdc4b258c7",
+    "config/GMFE69/extab_patches.json": "12d396c941ad0a5cec06e9a8c9507a866c57b6c11c7a1ad6bcaa49363d33bb48",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "cc264d2a9c429542764aa10895a149d9243ee8ca76348c547bf0f1b154bb244f",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -2345,7 +2345,7 @@
     "src/game/AIObject_obstacle.cpp": "d6efae3b4577f7c6ab7feaa633274cb78422a899ce4862def01892d111aa7508",
     "src/game/AIObject_patrolwalk.cpp": "51134d27e4942b7cd269f618a5bfbbdb5e7b58fae9e336644325eecfc7d35b30",
     "src/game/AIObject_reachable.cpp": "fea3cd43a0cc49672013b1166b66893b12f9b846dab120e506d1dc6f74e515a9",
-    "src/game/AIObject_searchnodes.cpp": "f1e6b3d7cd7d813a299cf1c68a1bdaf8e4828935ac6cc48d5be870f6225127e7",
+    "src/game/AIObject_searchnodes.cpp": "ec764b443db5b5a9a4a249997ab28540ea75879e71820942f6982e8cf0b33dd4",
     "src/game/AIObject_setcover.cpp": "e4537c10b68b7defa5d93d557e93abdd5cf2dc9f68a95d70219547df5cacbf53",
     "src/game/AIObject_setlocation.cpp": "323e6db0c8d1ef0589ff4dee7fe7c751d2aaa2cf9f330e9d8697bf868575c8e9",
     "src/game/AIObject_spline.cpp": "8c461ea113ef55bdc73101b92e076c88a9430ea7efd97adc7283d8f8855347ed",
@@ -28586,8 +28586,8 @@
     {
       "id": "AIObject_searchnodes",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 840,
+      "functions": 4,
+      "code_bytes": 1596,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -28619,7 +28619,7 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "495d27aaa65ae8f5892521f9051cc71796c14399193299335ec1d15c0b25d00b",
+      "object_sha256": "9405b120020a8cbad2c06f442ee13838b4fbc3afd2606aa0e0ec4f50391aab1a",
       "extab_patches": [
         {
           "unit": "AIObject_searchnodes",
@@ -28628,9 +28628,25 @@
           "action": "0x90",
           "compiled": "ff7f",
           "original": "2500"
+        },
+        {
+          "unit": "AIObject_searchnodes",
+          "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
+          "offset": "0x2a",
+          "action": "0x90",
+          "compiled": "ff7f",
+          "original": "2500"
+        },
+        {
+          "unit": "AIObject_searchnodes",
+          "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
+          "offset": "0x3e",
+          "action": "0x90",
+          "compiled": "ff7f",
+          "original": "2500"
         }
       ],
-      "linked_sha256": "c30d889f6754186604db3ac5a9bda9e68cf96effe75af2dcb2fd7ead264218fc"
+      "linked_sha256": "9cdeba550ef90920ad8c4f596d2e6a54f1c431f16d722307c0dff941656b3731"
     },
     {
       "id": "player_init",
@@ -55632,13 +55648,6 @@
             "size": 368,
             "kind": "function",
             "name": "ChooseCoverPoint__9CAIObjectF24ECoverPointSelectionTypePC10ISceneNodeff",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004b2c0",
-            "size": 756,
-            "kind": "function",
-            "name": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
             "evidence": "exception-index"
           },
           {

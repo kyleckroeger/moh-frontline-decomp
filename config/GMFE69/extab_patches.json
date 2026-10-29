@@ -40,6 +40,22 @@
       "action": "0x8b",
       "compiled": "066c",
       "original": "2500"
+    },
+    {
+      "unit": "AIObject_searchnodes",
+      "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
+      "offset": "0x2a",
+      "action": "0x90",
+      "compiled": "ff7f",
+      "original": "2500"
+    },
+    {
+      "unit": "AIObject_searchnodes",
+      "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
+      "offset": "0x3e",
+      "action": "0x90",
+      "compiled": "ff7f",
+      "original": "2500"
     }
   ]
 }
