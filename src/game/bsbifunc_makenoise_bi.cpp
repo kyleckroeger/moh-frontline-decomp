@@ -1,6 +1,6 @@
-// A fragment of bsbifunc.cpp (0x8002b60c): the built-in script function
-// MakeNoise. Its arguments are a flag (noise type 52, or 51 when it is zero)
-// and a loudness; the noise is made by the running script object's scene
+// A fragment of bsbifunc.cpp (0x8002b60c): the built-in script functions
+// MakeNoise and MakeNoiseFromInputTrigger. MakeNoise's arguments are a flag
+// (noise type 52, or 51 when it is zero) and a loudness; the noise is made by the running script object's scene
 // node (MakeNoise(ISceneNode*, ...), inlined with the general MakeNoise it
 // inlines in turn) or, for a script object without a scene node, at its
 // trigger's position with the calling object as the source (the general
@@ -11,7 +11,11 @@
 // The functions, classes and globals are named by the symbols; the views
 // follow bsbifunc_makenoise.cpp and bsbifunc_attach.cpp (script object:
 // trigger +8, user +12; the user's GetSceneNode slot +0x10), and the noise
-// types' meanings are inferred. The rest of the file is in other units.
+// types' meanings are inferred. MakeNoiseFromInputTrigger takes a trigger,
+// a flag and a loudness and makes the noise at the trigger's position with
+// the value 1; its type local has an enum type (the enum is inferred: an int
+// if/else of two adjacent constants compiles to branch-free arithmetic, and
+// the original branches). The rest of the file is in other units.
 class CVector3 {
 public:
     CVector3() {}
@@ -252,6 +256,23 @@ void MakeNoise(ISceneNode* node, int type, float loudness, int value) {
         node->GetPosition(position);
     const CVector3& pos = position;
     MakeNoise(node, filter, pos, type, loudness, true, value);
+}
+
+enum ENoiseType { NOISE_TYPE_51 = 51, NOISE_TYPE_52 = 52 };
+
+void BIFunc_MakeNoiseFromInputTrigger(int** stack, void* object) {
+    ENoiseType type;
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    TriggerObject_struct* trigger = *(TriggerObject_struct**)(*stack - (count - 1));
+    float loudness = *(float*)(*stack - (count - 3));
+    if (*(*stack - (count - 2)) == 0)
+        type = NOISE_TYPE_51;
+    else
+        type = NOISE_TYPE_52;
+    TriggerCoreView* core = trigger->core;
+    CVector3 position(core->x, core->y, core->z);
+    MakeNoise(object, 0, position, type, loudness, true, 1);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
 
 void BIFunc_MakeNoise(int** stack, void* object) {
