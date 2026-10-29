@@ -1,8 +1,10 @@
 // A fragment of debug_prof.cpp (0x800f3b74): DebugProfTimerRegister checks a
 // new timer, then names the timer record (52 bytes in g_pDebugProfTimers),
-// stores its value and clears its four counters. The functions and the
-// table are named by the symbols; the record view is inferred. The rest of
-// the file is in other units.
+// stores its value and clears its four counters; DebugProfTimerInitAll
+// resets all 16 records (value -1, empty name, zero counters) through an
+// inferred inline helper. The functions and the table are named by the
+// symbols; the record view and the helper are inferred. The rest of the file
+// is in other units.
 extern "C" char* strcpy(char*, const char*);
 
 void DebugProfTimerVerifyNew(int, char*, int);
@@ -25,4 +27,20 @@ void DebugProfTimerRegister(int index, char* name, int value) {
     timer->counts[1] = 0;
     timer->counts[2] = 0;
     timer->counts[3] = 0;
+}
+
+/* inferred: resets one timer record */
+static inline void ResetTimer(DebugProfTimerView* timer) {
+    int* counts = timer->counts;
+    timer->value = -1;
+    timer->name[0] = 0;
+    counts[0] = 0;
+    counts[1] = 0;
+    counts[2] = 0;
+    counts[3] = 0;
+}
+
+void DebugProfTimerInitAll() {
+    for (int i = 0; i < 16; i++)
+        ResetTimer(&g_pDebugProfTimers[i]);
 }

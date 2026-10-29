@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x800f3b74",
-      "size": 120,
+      "size": 348,
       "type": 1
     },
     {
@@ -61,6 +61,12 @@
       "name": "DebugProfTimerRegister__FiPci",
       "address": "0x800f3b74",
       "size": 120,
+      "binding": 1
+    },
+    {
+      "name": "DebugProfTimerInitAll__Fv",
+      "address": "0x800f3bec",
+      "size": 228,
       "binding": 1
     }
   ],
