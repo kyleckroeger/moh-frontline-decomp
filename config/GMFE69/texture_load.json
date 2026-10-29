@@ -41,19 +41,31 @@
     {
       "name": ".text",
       "address": "0x80082a60",
-      "size": 80,
+      "size": 1516,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c268",
-      "size": 8,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013238",
-      "size": 12,
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170f88",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80184d68",
+      "size": 88,
       "type": 1
     }
   ],
@@ -63,11 +75,30 @@
       "address": "0x80082a60",
       "size": 80,
       "binding": 1
+    },
+    {
+      "name": "Set__8CTextureFP5Shapeb",
+      "address": "0x80082ab0",
+      "size": 700,
+      "binding": 1
+    },
+    {
+      "name": "Set__8CTextureFP9ShapeFileb",
+      "address": "0x80082d6c",
+      "size": 736,
+      "binding": 1
     }
   ],
   "externals": {
+    "DebugMsg__FPCce": "0x80018c88",
+    "GXInitTexObj": "0x8012da0c",
+    "GXInitTexObjCI": "0x8012dc80",
+    "GXInitTexObjLOD": "0x8012dcc8",
+    "GXInitTlutObj": "0x8012e080",
     "GXLoadTexObj": "0x8012e02c",
-    "GXLoadTlut": "0x8012e0c8"
+    "GXLoadTlut": "0x8012e0c8",
+    "printf": "0x8013dc88",
+    "strncmp": "0x8013fe94"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -76,5 +107,34 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "texture.cpp",
-  "original_file_index": 4320
+  "original_file_index": 4320,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803500b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803500bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803500c0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 5,
+      "address": "0x803500c8"
+    }
+  ]
 }

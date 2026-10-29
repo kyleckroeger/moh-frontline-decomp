@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1131064,
+    "matching_code_bytes": 1132500,
     "total_executable_code_bytes": 1414572,
-    "percent": 79.95803677720187,
+    "percent": 80.05955158167983,
     "categories": {
-      "reconstructed_game": 901072,
+      "reconstructed_game": 902508,
       "restored_library": 229992
     },
-    "matching_functions": 4762
+    "matching_functions": 4764
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1228,7 +1228,7 @@
     "config/GMFE69/targimpl_step.json": "4fde52c66246c87b644241ba980658b973f2679d42792de87237bb9be7f9372d",
     "config/GMFE69/targimpl_stop.json": "44420ea2f5a10a88f1937520601413bebbee631af8fb0062ca1e98dd7204b3ce",
     "config/GMFE69/texpack.json": "e72b98cff12a06a8815f3de46a2dddeaaff0a28ea13a88b19df4444349d53607",
-    "config/GMFE69/texture_load.json": "20d82e5d913230986bf68d597082e3c4c2e07171b7378f5c7d25adefd299c56a",
+    "config/GMFE69/texture_load.json": "4dff02940e0fa6f17a5e2f17bcf98eab9846c56f050c870a7d5ffb72838ca9fb",
     "config/GMFE69/threads.json": "7ff759b6a25e060f4b0e42e0a441b2c1fa6dbd23dbaf68600e832b617feeb943",
     "config/GMFE69/threads_current.json": "d67345101e55cef32123d176a89cc9c1735c957bf68e3f47494940f744ea29f3",
     "config/GMFE69/thrown_obj.json": "bd01ec174db980900c8347de44aceb41594e3b38e73ae7135acbd48d4e6c877f",
@@ -3084,7 +3084,7 @@
     "src/game/swvideodisplaylist_dtor.cpp": "c8bebb49b923d50c1c1079024d34925617559fa12b806e6380a36dab63378725",
     "src/game/system.cpp": "a6b1bce950e974ebaf7e6c7afc31ecab8f41566550163428c632534bc8f78b83",
     "src/game/texpack.cpp": "170a3a9592cbea2d199a09aba976cc93963f0104100915e1f5d9d23eaf30f61a",
-    "src/game/texture_load.cpp": "e9841cfbee518d609bc9512a90b20581f7adffab867ec5bbe642c65f4fcb573b",
+    "src/game/texture_load.cpp": "5bd7afafdc4cd8b745f19394cdb9d5fbba410aa4ca0a0207974a45294a610b4c",
     "src/game/thrown_obj.cpp": "96b3022a0fc57bf98f807cc8d280e8d11c00e38febddbb8fa1dcb71971a9d451",
     "src/game/thrown_obj_cleanup.cpp": "79bb8e7340666538e5ec0fcff536a5a0e016268d9005a863fa0bcfb1e8d6b766",
     "src/game/thrown_obj_ctor.cpp": "647f68be7799d6f797bddad332d8755facbe936767d16742c7146bb7696886cb",
@@ -49948,8 +49948,8 @@
     {
       "id": "texture_load",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 80,
+      "functions": 3,
+      "code_bytes": 1516,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -49981,8 +49981,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6edcd93c80efbc1e5ac0c72b708a9c93f45db48cc27da090e9cdf175f848e2e0",
-      "linked_sha256": "31db055d29b51458efc270f0b3df20b3c135e4baff195a4ae592922f5fce2244"
+      "object_sha256": "b2d11f34770d0ca82974d41ca5b65fb09c8a618a4fcc83ec71360e45b9097ac7",
+      "linked_sha256": "627c805b9b9ca6fcc72f8e91b2a0baa9bfb4919e83f523798cfd3ac2e87e2e91"
     },
     {
       "id": "fiber_testfiber",
@@ -55922,27 +55922,6 @@
             "kind": "function",
             "name": "@32@__dt__22CParticleSystemManagerFv",
             "evidence": "same-class (inferred)"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/texture.cpp [symbol evidence]",
-        "file_record": 78,
-        "file_name": "texture.cpp",
-        "ranges": [
-          {
-            "address": "0x80082ab0",
-            "size": 700,
-            "kind": "function",
-            "name": "Set__8CTextureFP5Shapeb",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80082d6c",
-            "size": 736,
-            "kind": "function",
-            "name": "Set__8CTextureFP9ShapeFileb",
-            "evidence": "exception-index"
           }
         ]
       },
