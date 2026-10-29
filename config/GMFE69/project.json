@@ -1248,7 +1248,8 @@
     "UISStack.json",
     "Gecko_ExceptionPPC_unexpected.json",
     "resize.json",
-    "dvdStatus_check.json"
+    "dvdStatus_check.json",
+    "msg.json"
   ],
   "progress": {
     "code_bytes": 1414572,
