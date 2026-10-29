@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1160844,
+    "matching_code_bytes": 1161372,
     "total_executable_code_bytes": 1414572,
-    "percent": 82.06326719318635,
+    "percent": 82.10059297087741,
     "categories": {
       "reconstructed_game": 930268,
-      "restored_library": 230576
+      "restored_library": 231104
     },
-    "matching_functions": 4786
+    "matching_functions": 4788
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -152,6 +152,7 @@
     "config/GMFE69/Gecko_ExceptionPPC_endcatch.json": "861b571a390411224ddbf686036d6b38fa7d82437eb8e4339a6c793b48e58627",
     "config/GMFE69/Gecko_ExceptionPPC_find.json": "4f3e346d1e764cc06bbbf8e268e3bdfb547ecad6f0b97211eedf6f6f34292622",
     "config/GMFE69/Gecko_ExceptionPPC_throw.json": "92ab95c4ac855104cfd4251b19683407e324552df881b13775c3f8dd8e2cdd2d",
+    "config/GMFE69/Gecko_ExceptionPPC_unexpected.json": "bab448bc51652150bcf8670a4a4ee83c3083380a31dfc8c42535945471dc3b7a",
     "config/GMFE69/Gecko_ExceptionPPC_what.json": "af228e218fa88f001e891f6608cebc27f5e68c02e955542a5495dec4a372aad2",
     "config/GMFE69/IStudio.json": "a83168b4a2683c40e6118b7200793a72f131ba6787b7cd9a349c706a6b69a300",
     "config/GMFE69/IStudioFuncs.json": "9bcb68b80673feaca960b8532184a3983320ee23fa83e607ec55b14e4fddce6a",
@@ -647,7 +648,7 @@
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
-    "config/GMFE69/extab_patches.json": "12d396c941ad0a5cec06e9a8c9507a866c57b6c11c7a1ad6bcaa49363d33bb48",
+    "config/GMFE69/extab_patches.json": "804615c85aad410b4c4da5d7bc4a8f1ebac142ee84f45c20c9000daf377e4e76",
     "config/GMFE69/fader.json": "7c759a52dda17e0ab0aacb6bceba9106e449636cd59be6966c2d6853ba73a028",
     "config/GMFE69/fader_control.json": "cc264d2a9c429542764aa10895a149d9243ee8ca76348c547bf0f1b154bb244f",
     "config/GMFE69/fader_dtor.json": "5662994976edfa8ebc4b444663df2c690c6567deb22fef332142bc8595eb6c28",
@@ -893,7 +894,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "7a10987bf9d3967b30d37df9416a88fc3c54c3de78e51aaade139173041f1465",
+    "config/GMFE69/project.json": "c6a79d17f9cc164c7fda4331877dfab73c7e0e31a4b71558d3f649361aff19b1",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -3123,6 +3124,7 @@
     "src/msl/Gecko_ExceptionPPC_endcatch.cp": "9ab9d39fdc8e4ffb3b959f2909cf239d6d5621144e05648495775b2ab5e0fde5",
     "src/msl/Gecko_ExceptionPPC_find.cp": "2b6933b536967b6e772ba87f14759adeeea17a5af8531f9a0d5c70338c0f0017",
     "src/msl/Gecko_ExceptionPPC_throw.cp": "d25ab9b6cb8a958cb87a1b992f7ded6ff2b0b29b86e4018466dbe223a11233d9",
+    "src/msl/Gecko_ExceptionPPC_unexpected.cp": "f847792215c47d2b50b905b7f504112e2846cb41e0aa63e75a49e3bd35f5cd09",
     "src/msl/Gecko_ExceptionPPC_what.cp": "bdc1da6b56e0d8805435b9a5f67cf060943f2939b02f1e9cac7e7463ad697fd0",
     "src/msl/NewMore.cp": "cb60e70e586609256a8ff5c7a4b0efbdf7586b7fa7e3cb43b7f84e309e87c1be",
     "src/msl/bsearch.c": "e18222caa9298644a58b0d497c283f472396491e6297b39abb4865632978533a",
@@ -54780,6 +54782,70 @@
       "discarded_functions": [],
       "object_sha256": "85d47d762ca31b3fd9b567d5c1f5288bd150679cb0fddea877fd1498fec9e80d",
       "linked_sha256": "47ea2d66c88d3170cf6a421b2c83ab637c9a4ba63f0b5a414c6ffb9ba99cf8e8"
+    },
+    {
+      "id": "Gecko_ExceptionPPC_unexpected",
+      "category": "restored_library",
+      "functions": 2,
+      "code_bytes": 528,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-pragma",
+        "warn_notinlined off",
+        "-maxerrors",
+        "1",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-fp_contract",
+        "on",
+        "-str",
+        "reuse",
+        "-multibyte",
+        "-DVERSION=0",
+        "-DNDEBUG=1",
+        "-O4,p",
+        "-use_lmw_stmw",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-common",
+        "off",
+        "-inline",
+        "deferred,auto",
+        "-char",
+        "signed"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "caa3b183be3ab8d836b0695707c049c4269af13463ab65a24ae7766eefd11a58",
+      "extab_patches": [
+        {
+          "unit": "Gecko_ExceptionPPC_unexpected",
+          "function": "__unexpected",
+          "offset": "0x1a",
+          "action": "0x90",
+          "compiled": "ff7f",
+          "original": "2500"
+        }
+      ],
+      "linked_sha256": "cae4bbb08fa219c2c11f55ff48db315bf52db953f15807b513c251072d5655b4"
     }
   ],
   "code_map": {
@@ -56659,27 +56725,6 @@
             "kind": "function",
             "name": "TRKSuppAccessFile",
             "evidence": "unknown-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/Gecko_ExceptionPPC.cp [symbol evidence]",
-        "file_record": 304,
-        "file_name": "Gecko_ExceptionPPC.cp",
-        "ranges": [
-          {
-            "address": "0x80139684",
-            "size": 436,
-            "kind": "function",
-            "name": "__unexpected",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80139838",
-            "size": 92,
-            "kind": "function",
-            "name": "__dt__Q23std13bad_exceptionFv",
-            "evidence": "exception-index"
           }
         ]
       },

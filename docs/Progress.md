@@ -66,6 +66,7 @@ bytes are verified like every other byte; there are no masks.
 | `dmmorph` | `__sinit_dmmorph_cpp` | `0x8b` | `0x16` | `066c` | `2500` |
 | `AIObject_searchnodes` | `ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList` | `0x90` | `0x2a` | `ff7f` | `2500` |
 | `AIObject_searchnodes` | `ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList` | `0x90` | `0x3e` | `ff7f` | `2500` |
+| `Gecko_ExceptionPPC_unexpected` | `__unexpected` | `0x90` | `0x1a` | `ff7f` | `2500` |
 
 ## Counting rules
 

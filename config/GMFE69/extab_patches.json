@@ -56,6 +56,14 @@
       "action": "0x90",
       "compiled": "ff7f",
       "original": "2500"
+    },
+    {
+      "unit": "Gecko_ExceptionPPC_unexpected",
+      "function": "__unexpected",
+      "offset": "0x1a",
+      "action": "0x90",
+      "compiled": "ff7f",
+      "original": "2500"
     }
   ]
 }
