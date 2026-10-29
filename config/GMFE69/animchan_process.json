@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80061acc",
-      "size": 300,
+      "address": "0x800618fc",
+      "size": 764,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b380",
-      "size": 8,
+      "address": "0x8000b378",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012440",
-      "size": 12,
+      "address": "0x80012434",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "AnimChanStartAnim",
+      "address": "0x800618fc",
+      "size": 464,
+      "binding": 1
+    },
     {
       "name": "AnimChanProcess",
       "address": "0x80061acc",
@@ -65,8 +71,12 @@
     }
   ],
   "externals": {
+    "AnimFileGetAnimation": "0x80063730",
+    "AnimFileGetFileNum": "0x80063744",
     "AnimSeqGrow": "0x80066278",
+    "AnimSeqStart": "0x80066388",
     "AnimWgtProcess": "0x80068eec",
+    "AnimWgtSet": "0x80068f9c",
     "_AnimUserCallbackPopInfo__Fv": "0x800692ac",
     "_AnimUserCallbackPopState__Fv": "0x800692bc",
     "_AnimUserCallbackPushInfo__FPv": "0x800692cc",
@@ -88,11 +98,17 @@
       "section": ".sdata2",
       "offset": 0,
       "size": 4,
-      "address": "0x8034fc64"
+      "address": "0x8034fc60"
     },
     {
       "section": ".sdata2",
       "offset": 4,
+      "size": 4,
+      "address": "0x8034fc64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
       "size": 4,
       "address": "0x8034fc68"
     }
