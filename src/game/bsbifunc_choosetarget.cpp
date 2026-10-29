@@ -5,9 +5,11 @@
 // object, reached through its user object's scene node, AI doodad and filter,
 // or the object itself as a non-AI target, returning true) and choose a target
 // (the AI filter's virtual ChooseTarget with the given time, its result
-// returned through an integer/float union). Each pops the built-in's arguments.
-// The file name is this project's; the original record is bsbifunc.cpp;
-// AISetupTargetMatchList after these is 8 instructions off. The functions,
+// returned through an integer/float union), and set up the AI filter's target
+// match list (its virtual SetupTargetMatchList with the mode, the list read
+// through the second argument and the count). Each pops the built-in's
+// arguments. The file name is this project's; the original record is
+// bsbifunc.cpp. The functions,
 // classes and globals are named by the mangled symbols; ISceneNode is declared
 // with its virtual functions in the order of __vt__10ISceneNode,
 // CAIFilterObject in the order of __vt__15CAIFilterObject (its AI object at +8)
@@ -211,3 +213,11 @@ void BIFunc_AIChooseTarget(int** stack, void* object) {
 
 void BIFunc_AISetupTargetMatchList(int** stack, void* object);
 
+
+void BIFunc_AISetupTargetMatchList(int** stack, void* object) {
+    AIDoodadView* doodad = ((ISceneNode*)object)->GetAIDoodad();
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    doodad->filter->SetupTargetMatchList((aifilter_target_mode)*(*stack - (count - 1)),
+                                 *(aistatus_match**)*(*stack - (count - 2)), *(*stack - (count - 3)));
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}

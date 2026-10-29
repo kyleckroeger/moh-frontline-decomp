@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80033de4",
-      "size": 796,
+      "size": 988,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a16c",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80010fe8",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -73,6 +73,12 @@
       "name": "BIFunc_AIChooseTarget__FPPiPv",
       "address": "0x80034044",
       "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_AISetupTargetMatchList__FPPiPv",
+      "address": "0x80034100",
+      "size": 192,
       "binding": 1
     }
   ],
