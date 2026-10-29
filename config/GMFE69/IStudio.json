@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x8008b01c",
-      "size": 1824,
+      "size": 2204,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c488",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013538",
-      "size": 72,
+      "size": 84,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801761f8",
+      "size": 14,
       "type": 1
     }
   ],
@@ -92,22 +98,41 @@
       "address": "0x8008b710",
       "size": 44,
       "binding": 1
+    },
+    {
+      "name": "ISirenStartup__7IStudioFUlUlUlUlUl",
+      "address": "0x8008b73c",
+      "size": 380,
+      "binding": 1
     }
   ],
   "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DummyPluginProcessFnc__FPvUlUlP10UISParam_tP10UISParam_t": "0x8008bcd0",
+    "GameMessage__FUlUsUsUlP10UISParam_tP10UISParam_t": "0x8008d1ec",
     "GetValue__13CInputManagerFUlUl": "0x80084c14",
     "Ident__12CMatrixStackFv": "0x80090d90",
     "MEM_free": "0x8014f83c",
+    "ResLoadScreen__FUsUs": "0x8008bc10",
+    "ResUnloadScreen__FUsUsPv": "0x8008bbe4",
+    "TibPolyProcessFnc__FPvUlUlP10UISParam_tP10UISParam_t": "0x8008c630",
+    "TibTextProcessFnc__FPvUlUlP10UISParam_tP10UISParam_t": "0x8008ce84",
     "UISDrawObjects": "0x80087fac",
     "UISGetMemSize": "0x80088d48",
     "UISIdleProcess": "0x80087f08",
+    "UISInit": "0x80088c34",
     "UISLoadScreen": "0x80088770",
     "UISProcessEvent": "0x80088120",
+    "UISRegisterMessageFnc": "0x80088b7c",
+    "UISRegisterPluginFnc": "0x80088b4c",
+    "UISRegisterResourceFncs": "0x80088b70",
+    "UISRegisterTransformFncs": "0x80088b68",
     "UISSetScreenActive": "0x8008825c",
     "UISShutdown": "0x80088b84",
     "g_PauseScreenLockedController": "0x8034e2c8",
     "g_inputMgr": "0x801ec80c",
     "g_matStack": "0x8034eab8",
+    "iSirenTransformfnc__F18UISTransformActionP14UISTransform_t": "0x8008b914",
     "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],

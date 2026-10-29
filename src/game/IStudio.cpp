@@ -6,13 +6,28 @@
 // UISGetMemSize from the stored parameters, frees it and clears the
 // parameters), the per-frame update (event processing, then the studio's
 // idle pass) and draw pass (identity matrix, then the studio's objects),
-// activating a screen and loading one (with no extra parameters). IStudio
+// activating a screen and loading one (with no extra parameters), and
+// ISirenStartup (stores the five memory parameters, allocates the studio
+// memory sized by UISGetMemSize, initialises the studio and registers the
+// resource, transform, message and plugin callbacks). IStudio
 // and UISInfo_t are named by the symbols; the studio record pointer at the
 // start of the object and the memory parameters after it (passed to
 // UISGetMemSize; meanings unknown) are inferred, and the UIS functions'
 // parameter types beyond the ids and the event arguments' meanings are left
 // generic. The rest of the file is not part of this unit.
 struct UISInfo_t;
+struct UISTransform_t;
+struct UISParam_t;
+enum UISTransformAction {};
+
+void* DWI_alloc(const char*, int, int);
+int ResLoadScreen(unsigned short, unsigned short);
+int ResUnloadScreen(unsigned short, unsigned short, void*);
+int iSirenTransformfnc(UISTransformAction, UISTransform_t*);
+int GameMessage(unsigned long, unsigned short, unsigned short, unsigned long, UISParam_t*, UISParam_t*);
+int TibPolyProcessFnc(void*, unsigned long, unsigned long, UISParam_t*, UISParam_t*);
+int TibTextProcessFnc(void*, unsigned long, unsigned long, UISParam_t*, UISParam_t*);
+int DummyPluginProcessFnc(void*, unsigned long, unsigned long, UISParam_t*, UISParam_t*);
 
 extern "C" {
 int UISSetScreenActive(UISInfo_t*, unsigned short, unsigned short);
@@ -20,7 +35,14 @@ int UISLoadScreen(UISInfo_t*, unsigned short, unsigned short, int, int);
 void UISIdleProcess(UISInfo_t*, unsigned long);
 void UISDrawObjects(UISInfo_t*, unsigned long);
 void UISShutdown(UISInfo_t*);
-unsigned long UISGetMemSize(int, int, int, int, int, int);
+unsigned long UISGetMemSize(unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
+void UISInit(UISInfo_t*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
+void UISRegisterResourceFncs(UISInfo_t*, int (*)(unsigned short, unsigned short),
+                             int (*)(unsigned short, unsigned short, void*));
+void UISRegisterTransformFncs(UISInfo_t*, int (*)(UISTransformAction, UISTransform_t*));
+void UISRegisterMessageFnc(UISInfo_t*,
+                           int (*)(unsigned long, unsigned short, unsigned short, unsigned long, UISParam_t*, UISParam_t*));
+void UISRegisterPluginFnc(UISInfo_t*, int, int (*)(void*, unsigned long, unsigned long, UISParam_t*, UISParam_t*));
 void* memset(void*, int, unsigned long);
 void MEM_free(void*);
 int UISProcessEvent(UISInfo_t*, unsigned long, int, int, float*, int);
@@ -50,6 +72,7 @@ public:
     void iSirenActivateScreen(unsigned short, unsigned short);
     void iSirenLoadScreen(unsigned short, unsigned short);
     void iSirenShutDown();
+    void ISirenStartup(unsigned long, unsigned long, unsigned long, unsigned long, unsigned long);
 
     UISInfo_t* m_info;
     int m_memParam04;
@@ -187,4 +210,27 @@ void IStudio::iSirenActivateScreen(unsigned short group, unsigned short id) {
 
 void IStudio::iSirenLoadScreen(unsigned short group, unsigned short id) {
     UISLoadScreen(m_info, group, id, 0, 0);
+}
+
+void IStudio::ISirenStartup(unsigned long p1, unsigned long p2, unsigned long p3, unsigned long p4,
+                            unsigned long p5) {
+    m_memParam04 = p1;
+    m_memParam08 = p2;
+    m_memParam0c = p3;
+    m_memParam10 = p4;
+    m_field14 = p5;
+    unsigned long size = UISGetMemSize(p1, p2, p3, p1, p4, p4);
+    m_info = (UISInfo_t*)DWI_alloc("ISiren memory", size, 1024);
+    UISInit(m_info, p1, p2, p3, p1, p4, p4, p5);
+    UISRegisterResourceFncs(m_info, ResLoadScreen, ResUnloadScreen);
+    UISRegisterTransformFncs(m_info, iSirenTransformfnc);
+    UISRegisterMessageFnc(m_info, GameMessage);
+    UISRegisterPluginFnc(m_info, 0, TibPolyProcessFnc);
+    UISRegisterPluginFnc(m_info, 7, TibTextProcessFnc);
+    UISRegisterPluginFnc(m_info, 1, DummyPluginProcessFnc);
+    UISRegisterPluginFnc(m_info, 2, DummyPluginProcessFnc);
+    UISRegisterPluginFnc(m_info, 3, DummyPluginProcessFnc);
+    UISRegisterPluginFnc(m_info, 4, DummyPluginProcessFnc);
+    UISRegisterPluginFnc(m_info, 5, DummyPluginProcessFnc);
+    UISRegisterPluginFnc(m_info, 6, DummyPluginProcessFnc);
 }
