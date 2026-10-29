@@ -1,4 +1,7 @@
-// A fragment of PathNodeList.cpp (0x800550d8): CPathNodeList's
+// A fragment of PathNodeList.cpp (0x80055028): CPathNodeList::EnableAll
+// walks the path-node map and sets the enabled flag of every node of each
+// entry that is not marked (the node loop's byte offset is written out, as
+// the compiler's own strength reduction colours it differently). CPathNodeList's
 // GreedySearchAwayFromPoint starts at the node closest to the position and
 // keeps moving to the neighbour farthest from the point to avoid while that
 // is farther and the distance is still below the wanted one, returning the
@@ -12,8 +15,9 @@
 // unless collisions are ignored (none when the cell has no entry). The
 // classes, the template and the functions are named by the mangled symbols;
 // the node view (enabled flag bit 7 of +17), the map's find and iterator
-// (as in publisher_reset.cpp), the inline cell-key helper and distance, and
-// the copy of each node's position it works on are inferred. The rest of the
+// (as in publisher_reset.cpp, with its begin and ++), the inline cell-key
+// helper and distance, and the copy of each node's position it works on are
+// inferred. The rest of the
 // file is in other units. The second GetClosestNode(position, direction)
 // prefers, among the cell's enabled nodes ahead (direction dot product above
 // 0.01), the one with the least squared distance over that product, else the
@@ -96,11 +100,27 @@ public:
     class iterator {
     public:
         iterator(value_type* p) : m_p(p) {}
+        bool IsValid() const {
+            K key = m_p->first;
+            return (int)key != -1 && (int)key != -2;
+        }
+        iterator& operator++() {
+            while ((int)(++m_p)->first == -1)
+                ;
+            return *this;
+        }
         bool operator==(const iterator& other) const { return m_p == other.m_p; }
+        bool operator!=(const iterator& other) const { return m_p != other.m_p; }
         value_type* operator->() const { return m_p; }
         value_type* m_p;
     };
 
+    iterator begin() {
+        iterator it(m_data);
+        if (!it.IsValid())
+            ++it;
+        return it;
+    }
     iterator end() { return iterator(m_data + m_size); }
 
     iterator find(K key) {
@@ -143,6 +163,7 @@ public:
         return ((cy & 0x7fff) << 16) + ((cx & 0x7fff) << 1);
     }
 
+    static void EnableAll();
     CPathNode* GetPathNodeByID(int) const;
     CPathNode* GreedySearchAwayFromPoint(const CAIFilterRealPosition&, const CAIFilterRealPosition&, float) const;
 
@@ -150,6 +171,17 @@ public:
 
     CPathNode* m_nodes;
 };
+
+void CPathNodeList::EnableAll() {
+    for (dwi::hash_map<unsigned int, PathNodes>::iterator it = s_pathNodeMap.begin(); it != s_pathNodeMap.end(); ++it) {
+        if (!it->second.marked) {
+            int offset;
+            int i;
+            for (i = 0, offset = 0; i < it->second.count; i++, offset += 4)
+                (*(CPathNode**)((char*)it->second.nodes + offset))->m_enabled = true;
+        }
+    }
+}
 
 CPathNode* CPathNodeList::GreedySearchAwayFromPoint(const CAIFilterRealPosition& from,
                                                     const CAIFilterRealPosition& away, float distance) const {

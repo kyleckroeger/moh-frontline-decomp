@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800550d8",
-      "size": 1736,
+      "address": "0x80055028",
+      "size": 1912,
       "type": 1
     },
     {
@@ -57,6 +57,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "EnableAll__13CPathNodeListFv",
+      "address": "0x80055028",
+      "size": 176,
+      "binding": 1
+    },
     {
       "name": "GetClosestNode__13CPathNodeListCFRC21CAIFilterRealPositionb",
       "address": "0x800552e8",
