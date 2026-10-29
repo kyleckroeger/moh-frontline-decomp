@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800b66b4",
-      "size": 3272,
+      "size": 3924,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d814",
-      "size": 40,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014810",
-      "size": 36,
+      "size": 48,
       "type": 1
     },
     {
@@ -87,9 +87,16 @@
       "address": "0x800b7348",
       "size": 52,
       "binding": 1
+    },
+    {
+      "name": "Acquire__12CWorldObjectFRCQ212CWorldObject11SAcquireSetb",
+      "address": "0x800b737c",
+      "size": 652,
+      "binding": 1
     }
   ],
   "externals": {
+    "ASYNCFILE_cancel": "0x8014b9dc",
     "ASYNCFILE_getstatus": "0x8014b6f4",
     "ASYNCFILE_read": "0x8014b5c4",
     "ASYNCFILE_release": "0x8014b790",

@@ -337,6 +337,7 @@ void MakeNoise(void*, CAIFilterObject*, const CVector3&, int, float, bool, int);
 extern "C" {
 int FILESYS_opensync(const char*, int, int, int*);
 int FILESYS_closesync(int, int);
+int ASYNCFILE_cancel(int);
 int ASYNCFILE_read(int, int, void*, int);
 int ASYNCFILE_getstatus(int);
 int ASYNCFILE_release(int, int*, int*);
@@ -426,6 +427,59 @@ struct LoadedHeaderView {
 
 class CWorldObject {
 public:
+    struct SAcquireSet {
+        /* inferred: whether the set lacks the index */
+        bool Lacks(const int& index) const {
+            int i;
+            bool lacks;
+            lacks = true;
+            const int* p = m_indices;
+            for (i = 0; i < 4 && lacks; p++, i++)
+                lacks = *p != index;
+            return lacks;
+        }
+
+        int m_indices[4];
+    };
+
+    /* inferred: a compartment load request (the request view's payload) */
+    struct SRequest {
+        int m_index;
+        int m_state;
+        int m_file;
+        int m_async;
+        unsigned char m_reuse[4];
+        char** m_buffer;
+        char* m_cursor;
+        int m_offset;
+        CPTHeader* m_cpt;
+        CDB* m_cdb;
+    };
+
+    struct RequestNodeView {
+        RequestNodeView* prev;
+        RequestNodeView* next;
+        SRequest request;
+    };
+
+    /* inferred: the request list's push (an insert before pos) */
+    void PushRequest(const SRequest& request, RequestNodeView* pos) {
+        RequestNodeView* node;
+        RequestNodeView* prev = pos->prev;
+        node = (RequestNodeView*)m_requestFree;
+        m_requestFree = (WorldRequestView*)node->next;
+        if (node) {
+            node->prev = 0;
+            node->next = 0;
+            node->request = request;
+        }
+        m_requestCount++;
+        prev->next = node;
+        node->prev = prev;
+        node->next = pos;
+        pos->prev = node;
+    }
+
     void HandleBulletCollision(CBullet*, const CCollision&);
     void ServiceDataStreamer(float);
     void PushCompartment(WorldCompartmentNodeView* pos, const CCompartment& value) {
@@ -446,6 +500,7 @@ public:
     }
     void HandleExplosion(const CExplosion&);
     CCompartment* GetCompartment(int);
+    void Acquire(const SAcquireSet&, bool);
     static void (*GetCptFilename)(int, char*, int);
     static void (*GetCdbFilename)(int, char*, int);
 
@@ -467,6 +522,7 @@ public:
     unsigned char unknown0e0[48];
     CWorldVolume m_world;
     float m_progress;
+    int m_pending;
 };
 
 void CWorldObject::HandleBulletCollision(CBullet* bullet, const CCollision& collision) {
@@ -726,4 +782,84 @@ CCompartment* CWorldObject::GetCompartment(int index) {
             return &node->compartment;
     }
     return 0;
+}
+
+void CWorldObject::Acquire(const SAcquireSet& set, bool reset) {
+    if (reset) {
+        m_progress = 0.0f;
+        m_pending = 0;
+    }
+    RequestNodeView* it = (RequestNodeView*)m_requests.next;
+    RequestNodeView* node;
+    RequestNodeView* end = (RequestNodeView*)&m_requests;
+    while (it != end) {
+        node = it;
+        it = it->next;
+        if (set.Lacks(node->request.m_index)) {
+            ASYNCFILE_cancel(node->request.m_async);
+            FILESYS_closesync(node->request.m_file, 100);
+            char** buffer = node->request.m_buffer;
+            if (buffer) {
+                m_buffersUsed--;
+                *buffer = (char*)m_bufferFree;
+                m_bufferFree = buffer;
+            }
+            RequestNodeView* next;
+            RequestNodeView* prev;
+            prev = node->prev;
+            next = node->next;
+            prev->next = next;
+            next->prev = prev;
+            node->prev = 0;
+            node->next = (RequestNodeView*)m_requestFree;
+            m_requestFree = (WorldRequestView*)node;
+            m_requestCount--;
+        }
+    }
+    WorldCompartmentNodeView* cend = (WorldCompartmentNodeView*)&m_compartments;
+    for (WorldCompartmentNodeView* c = m_compartments.next; c != cend; c = c->next) {
+        bool lacks = true;
+        const int* p = set.m_indices;
+        for (int j = 0; j < 4 && lacks; p++, j++)
+            lacks = *p != c->compartment.m_index;
+        c->compartment.m_loaded = lacks;
+    }
+    for (int i = 0; i < 4; i++) {
+        int index = set.m_indices[i];
+        CCompartment* compartment;
+        WorldCompartmentNodeView* c2;
+        for (c2 = m_compartments.next; c2 != cend; c2 = c2->next) {
+            if (index == c2->compartment.m_index) {
+                compartment = &c2->compartment;
+                goto found;
+            }
+        }
+        compartment = 0;
+    found:
+        if (compartment)
+            continue;
+        RequestNodeView* rn;
+        bool requested = false;
+        for (rn = (RequestNodeView*)m_requests.next; rn != end; rn = rn->next) {
+            if (index == rn->request.m_index) {
+                requested = true;
+                break;
+            }
+        }
+        if (requested)
+            continue;
+        SRequest request;
+        request.m_state = 0;
+        request.m_index = index;
+        request.m_file = 0;
+        request.m_async = 0;
+        request.m_reuse[0] = 0;
+        request.m_buffer = 0;
+        request.m_cursor = 0;
+        request.m_offset = 0;
+        request.m_cpt = 0;
+        request.m_cdb = 0;
+        PushRequest(request, end);
+        m_pending++;
+    }
 }
