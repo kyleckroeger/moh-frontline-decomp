@@ -1,0 +1,91 @@
+{
+  "id": "getpic_head",
+  "source": "src/ea/getpic_head.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto,deferred",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80100950",
+      "size": 224,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034edb8",
+      "size": 8,
+      "type": 8
+    }
+  ],
+  "functions": [
+    {
+      "name": "Decode_Picture__FP18MPC_CODEC_INTERNALi",
+      "address": "0x80100950",
+      "size": 224,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "MPDmb_height": "0x8034ee14",
+    "MPDmb_width": "0x8034ee10",
+    "MPDpicture_coding_type": "0x8034ee74",
+    "MPDpicture_structure": "0x8034ee90",
+    "MPDprogressive_frame": "0x8034eeac",
+    "MPDsecond_field": "0x8034edfc",
+    "Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL": "0x80100a30",
+    "slice__Fi": "0x80100db8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {
+    "name": "MPEG Software Simulation Group mpeg2decode",
+    "path": "getpic.c",
+    "reference_copy": "https://github.com/dzavalishin/phantomuserland/blob/0fa666cb50e6ca13dd048d67d397485266c0e814/phantom/apps/mpeg/getpic.c"
+  },
+  "local_externals": [
+    "Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL",
+    "slice__Fi"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "MPDmb_height",
+    "MPDmb_width",
+    "MPDpicture_coding_type",
+    "MPDpicture_structure",
+    "MPDprogressive_frame",
+    "MPDsecond_field"
+  ],
+  "original_file": "getpic.cpp",
+  "original_file_index": 10058
+}
