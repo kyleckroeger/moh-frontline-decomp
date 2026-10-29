@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1183404,
+    "matching_code_bytes": 1183636,
     "total_executable_code_bytes": 1414572,
-    "percent": 83.65809587634988,
+    "percent": 83.6744965968505,
     "categories": {
-      "reconstructed_game": 951128,
-      "restored_library": 232276
+      "reconstructed_game": 951020,
+      "restored_library": 232616
     },
-    "matching_functions": 4808
+    "matching_functions": 4809
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -1197,7 +1197,7 @@
     "config/GMFE69/susercb.json": "e80bc2f16fbcef2e736a50ff0b3921077c21dd3d14c8b56efac2673923bfe424",
     "config/GMFE69/svol.json": "d8a88817980d0e9762a77fbe16ea5420750e51bb76915aad39f96858658fa525",
     "config/GMFE69/swvideodisplaylist.json": "5a2a7cf01420d31ceafc624c74db3f9b24ee1bb5a489cad32eebd8d9b02eead0",
-    "config/GMFE69/swvideodisplaylist_dtor.json": "f35aad9ec5bac9a3bec269f63cca660bd4ef05742bd473989f131b4dab677172",
+    "config/GMFE69/swvideodisplaylist_dtor.json": "559957d045775f4bb5481c609124fe375fcb745f57b4f1db2978bfc7c4e2dd40",
     "config/GMFE69/sx87d16.json": "8db07e92493ba063618c550310b083b722c98e9843bbe9e1676bc525ced828d8",
     "config/GMFE69/syncfile.json": "c33d07d48b5325ac1b036ded00dbb632d156bd5b19b438cf37e2eb467807e6b2",
     "config/GMFE69/systask.json": "26903b4345f60da176e9919b3acdf5fbccf8b21b572e7041418810c542b6d5c9",
@@ -3047,7 +3047,7 @@
     "src/game/staticobjfactory_weak.cpp": "56a75fc11a7d8e1ad182c3759e1e7cc376527a84a4da644d13b31eb10b6fa912",
     "src/game/surfacetype.cpp": "3499ce5dc7d066f093e39c158e9b096e37683df4d6b6d234eb9b08395d411390",
     "src/game/swvideodisplaylist.cpp": "2abcaf2de1cc9eecf45b1a564f58d3e6ca10808a9021490ee3cc1b1da48ac598",
-    "src/game/swvideodisplaylist_dtor.cpp": "c8bebb49b923d50c1c1079024d34925617559fa12b806e6380a36dab63378725",
+    "src/game/swvideodisplaylist_dtor.cpp": "8cf874b99913a2f537806b9c7113dcf33fdde88d57d80762b4caedaa56268c2b",
     "src/game/system.cpp": "a6b1bce950e974ebaf7e6c7afc31ecab8f41566550163428c632534bc8f78b83",
     "src/game/texpack.cpp": "170a3a9592cbea2d199a09aba976cc93963f0104100915e1f5d9d23eaf30f61a",
     "src/game/texture_load.cpp": "5bd7afafdc4cd8b745f19394cdb9d5fbba410aa4ca0a0207974a45294a610b4c",
@@ -40771,9 +40771,9 @@
     },
     {
       "id": "swvideodisplaylist_dtor",
-      "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 108,
+      "category": "restored_library",
+      "functions": 2,
+      "code_bytes": 340,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -40803,10 +40803,12 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "53afa393d92a4ed554da573aa986db67155208eed2bed6f17fd4a8d6bc98e0f1",
-      "linked_sha256": "5f387a4df531ea3dfa702cea3bf4dc88c4807aa89ff17cd670ec7dd2d885e86f"
+      "strip_unused": true,
+      "discarded_functions": [
+        "__dl__Q24RCMP12VIDEO_DRIVERFPv"
+      ],
+      "object_sha256": "f9d4eb885be25171da7602c4fe68b647f223604d74cfaf8dca9c3b8bb868de69",
+      "linked_sha256": "6984c761e485c6339ef801d34ff14305872c2266475d0b0a7729bc3b4956af77"
     },
     {
       "id": "path_createtrack",
@@ -55967,7 +55969,7 @@
         ]
       },
       {
-        "name": "Unmatched files/swvideodisplaylist.cpp [symbol evidence]",
+        "name": "Unmatched files/swvideodisplaylist.cpp [local symbols only]",
         "file_record": 182,
         "file_name": "swvideodisplaylist.cpp",
         "ranges": [
@@ -55977,13 +55979,6 @@
             "kind": "function",
             "name": "YUV_WriteRow__FPUcPUcPUcPci",
             "evidence": "local-file-symbol"
-          },
-          {
-            "address": "0x801086b4",
-            "size": 232,
-            "kind": "function",
-            "name": "GCSW_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAMEP16_GXRenderModeObjPv",
-            "evidence": "exception-index"
           }
         ]
       },

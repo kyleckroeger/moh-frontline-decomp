@@ -1,7 +1,7 @@
 {
   "id": "swvideodisplaylist_dtor",
   "source": "src/game/swvideodisplaylist_dtor.cpp",
-  "category": "reconstructed_game",
+  "category": "restored_library",
   "compiler_family": "GC",
   "compiler_version": "1.3.2",
   "compiler_flags": [
@@ -34,26 +34,30 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x80108648",
-      "size": 108,
+      "size": 340,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fd8c",
-      "size": 8,
-      "type": 1
+      "size": 16,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 32
     },
     {
       "name": "extabindex",
       "address": "0x80016b50",
-      "size": 12,
-      "type": 1
+      "size": 24,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 48
     },
     {
       "name": ".data",
@@ -74,6 +78,12 @@
       "address": "0x80108648",
       "size": 108,
       "binding": 1
+    },
+    {
+      "name": "GCSW_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAMEP16_GXRenderModeObjPv",
+      "address": "0x801086b4",
+      "size": 232,
+      "binding": 1
     }
   ],
   "externals": {
@@ -82,17 +92,23 @@
     "ReDraw__7GCSW_VDFv": "0x80108104",
     "SetPosition__7GCSW_VDFfff": "0x80108210",
     "SetScale__7GCSW_VDFff": "0x8010820c",
+    "__dt__Q24RCMP12VIDEO_DRIVERFv": "0x801029d8",
     "__vt__Q24RCMP12VIDEO_DRIVER": "0x8018c304",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "__dl__Q24RCMP12VIDEO_DRIVERFPv"
+  ],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "swvideodisplaylist.cpp",
   "original_file_index": 10343,
+  "weak_duplicates": [
+    "__dt__Q24RCMP12VIDEO_DRIVERFv"
+  ],
   "pooled_sections": [
     ".rodata",
     ".sdata2"
@@ -107,6 +123,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 1,
+      "address": "0x80351350"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 8,
       "address": "0x80351348"
     }
