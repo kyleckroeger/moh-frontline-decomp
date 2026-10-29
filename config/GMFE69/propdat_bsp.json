@@ -39,30 +39,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800423c4",
-      "size": 2980,
+      "address": "0x800421e0",
+      "size": 3464,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a5ac",
-      "size": 72,
+      "address": "0x8000a5a4",
+      "size": 80,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011630",
-      "size": 108,
+      "address": "0x80011624",
+      "size": 120,
       "type": 1
     },
     {
       "name": ".rodata",
       "address": "0x8016f290",
-      "size": 108,
+      "size": 412,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "FindAllMGPointsInBPDFile__Fv",
+      "address": "0x800421e0",
+      "size": 484,
+      "binding": 1
+    },
     {
       "name": "FreePropertyMemory__Fv",
       "address": "0x800423c4",
@@ -120,10 +126,12 @@
   ],
   "externals": {
     "CreateObject__FP20TriggerObject_structiPv": "0x8004029c",
+    "DebugMsg__FPCce": "0x80018c88",
     "TLT_CloseFile__FPv": "0x8001d820",
     "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
     "g_bInMultiplayerMode": "0x8034eca5",
     "g_pBPDHeader": "0x8034e8c0",
+    "g_pMGTriggerObject": "0x801a70c0",
     "g_pNumTriggers": "0x8034e8bc",
     "g_pPBSPHead": "0x8034e8c8",
     "g_pPBSPHeader": "0x8034e8c4",
@@ -142,5 +150,22 @@
     "g_pPBSPHeader"
   ],
   "original_file": "propdat.cpp",
-  "original_file_index": 1602
+  "original_file_index": 1602,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f7e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f7ec"
+    }
+  ]
 }

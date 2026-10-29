@@ -1,7 +1,11 @@
-// A second fragment of propdat.cpp (0x800423c4-0x80042f68; src/game/propdat.cpp
+// A second fragment of propdat.cpp (0x800421e0-0x80042f68; src/game/propdat.cpp
 // holds the endian conversions and machine-gun lookups before it). The file
-// name is this project's; the original record is propdat.cpp, and
-// FindAllMGPointsInBPDFile between the two parts is not reconstructed.
+// name is this project's; the original record is propdat.cpp.
+// FindAllMGPointsInBPDFile pairs every machine-gun waypoint trigger with the
+// nearest machine-gun mechanic trigger in the machine-gun table (a DEBUG
+// warning instead when the nearest is more than 10 units away); the table is
+// written by index and the trigger list walked with a pointer, and its
+// messages follow the header's prime list in the file's .rodata block.
 // FreePropertyMemory closes the BSP and property files; PatchUpPropBSPTreeLeaf
 // and PatchUpPropBSPTreeNode convert a property BSP tree in place (byte order,
 // then file offsets to pointers, recursing into both children);
@@ -587,6 +591,7 @@ extern MGTriggerObjectView g_pMGTriggerObject[32];
 extern int g_playerStartIndices[15];
 extern bool g_takenPlayerStarts[15];
 
+
 inline void EndianSwap(_PropBSPLeaf& value) {
     ChangeEndian(value.field00);
     ChangeEndian(value.field04);
@@ -718,6 +723,51 @@ void MarkMGAsUsed(TriggerObject_struct* trigger, bool used);
 
 void FindAllMGPointsInBPDFile();
 
+void FindAllMGPointsInBPDFile() {
+    int count = 0;
+    TriggerObject_struct* trigger = g_pTriggerObjects;
+    for (unsigned int i = 0; i < g_pNumTriggers; i++, trigger++) {
+        MOH_core_Struct* core = trigger->core;
+        if (trigger->core->field0c == 5 && core->field48 == 0x5b607813) {
+            float best = 1e37f;
+            TriggerObject_struct* other = g_pTriggerObjects;
+            TriggerObject_struct* closest = 0;
+            for (unsigned int j = 0; j < g_pNumTriggers; j++, other++) {
+                if (other->core->field0c == 2 &&
+                    (other->core->field48 == 0x29f985d6 || other->core->field48 == (int)0xf6798fe8 ||
+                     other->core->field48 == 0x6e39be8f)) {
+                    float dx = other->core->position[0];
+                    float dy = other->core->position[1];
+                    float dz = other->core->position[2];
+                    dx -= core->position[0];
+                    dy -= core->position[1];
+                    dz -= core->position[2];
+                    float distance = dx * dx + dy * dy + dz * dz;
+                    if (distance < best) {
+                        best = distance;
+                        closest = other;
+                    }
+                }
+            }
+            if (closest) {
+                if (best > 10.0f) {
+                    DebugMsg("++++++++++++++++++++++++ START MMG WARNING ++++++++++++++++++++++++");
+                    DebugMsg("WARNING:  Possible bad waypoint placement at x: %d  y: %d  z: %d\n",
+                             (int)trigger->core->position[0], (int)trigger->core->position[1],
+                             (int)trigger->core->position[2]);
+                    DebugMsg("          Closest machine gun mechanic is %d away\n", (int)best);
+                    DebugMsg("          We are going to ignore the waypoint\n");
+                    DebugMsg("+++++++++++++++++++++++++ END MMG WARNING +++++++++++++++++++++++++");
+                } else {
+                    g_pMGTriggerObject[count].waypoint = trigger;
+                    g_pMGTriggerObject[count].mechanic = closest;
+                    count++;
+                }
+            }
+        }
+    }
+}
+
 void FreePropertyMemory() {
     if (g_pPBSPHeader) {
         TLT_CloseFile(g_pPBSPHeader);
@@ -835,4 +885,3 @@ static void PatchUpAnimatedLightArrays(MOH_animatedLight_Struct* light, int base
 int PatchUpAllPropertyData(BPDHeader* header);
 
 void LoadPropertyData(char* name, bool reload);
-
