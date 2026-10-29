@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800be590",
-      "size": 1428,
+      "address": "0x800be108",
+      "size": 2588,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000db10",
-      "size": 8,
+      "address": "0x8000db08",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014a5c",
-      "size": 12,
+      "address": "0x80014a50",
+      "size": 24,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "DrawViewportEdge__13UserInterfaceFv",
+      "address": "0x800be108",
+      "size": 1160,
+      "binding": 1
+    },
     {
       "name": "DrawScore__13UserInterfaceFv",
       "address": "0x800be590",
@@ -79,14 +85,17 @@
     "GetMPPlayerStats__10CShellMenuFi": "0x800e6688",
     "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetScale__5CFontFRfRf": "0x8007cb30",
+    "LetterBoxVerts": "0x80188d10",
     "SetColor__5CFontF6CColor": "0x8007cba0",
     "SetScale__5CFontFff": "0x8007cb1c",
     "StarSpriteVerts": "0x80189010",
     "TempVerts": "0x801ef4a8",
     "floor": "0x801432fc",
+    "g_NumPlayers": "0x8034e2d0",
     "g_Shell": "0x80195090",
     "g_scene": "0x8019484c",
     "g_viewport": "0x80194ca0",
+    "greySprite__13UserInterface": "0x8034ebdc",
     "memcpy": "0x800094f8",
     "smallMPFont__13UserInterface": "0x8034ebec",
     "sprintf": "0x8013dab4",
@@ -99,6 +108,8 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_NumPlayers",
+    "greySprite__13UserInterface",
     "smallMPFont__13UserInterface",
     "starSprite__13UserInterface"
   ],
@@ -118,74 +129,86 @@
     {
       "section": ".sdata2",
       "offset": 0,
-      "size": 8,
-      "address": "0x80350af4"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 3,
-      "address": "0x80350ac4"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 12,
       "size": 4,
       "address": "0x80350a50"
     },
     {
       "section": ".sdata2",
-      "offset": 16,
-      "size": 4,
-      "address": "0x80350afc"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 20,
-      "size": 4,
-      "address": "0x80350a9c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 24,
-      "size": 4,
-      "address": "0x80350b00"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 28,
-      "size": 4,
-      "address": "0x80350a14"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 32,
+      "offset": 4,
       "size": 4,
       "address": "0x80350aec"
     },
     {
       "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350a8c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350af0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350a40"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350af4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 3,
+      "address": "0x80350ac4"
+    },
+    {
+      "section": ".sdata2",
       "offset": 36,
       "size": 4,
-      "address": "0x80350a94"
+      "address": "0x80350afc"
     },
     {
       "section": ".sdata2",
       "offset": 40,
       "size": 4,
-      "address": "0x80350aa4"
+      "address": "0x80350a9c"
     },
     {
       "section": ".sdata2",
       "offset": 44,
       "size": 4,
-      "address": "0x80350b04"
+      "address": "0x80350b00"
     },
     {
       "section": ".sdata2",
       "offset": 48,
-      "size": 8,
-      "address": "0x80350a40"
+      "size": 4,
+      "address": "0x80350a14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350a94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350aa4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350b04"
     }
   ]
 }

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1180740,
+    "matching_code_bytes": 1181900,
     "total_executable_code_bytes": 1414572,
-    "percent": 83.46977036163588,
+    "percent": 83.55177396413897,
     "categories": {
-      "reconstructed_game": 948464,
+      "reconstructed_game": 949624,
       "restored_library": 232276
     },
-    "matching_functions": 4806
+    "matching_functions": 4807
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -289,7 +289,7 @@
     "config/GMFE69/UserInterface_hitdirection.json": "13d32667063590cf0321f1f6259a2990e667cf05f1719702e9bd4b4629e34d1d",
     "config/GMFE69/UserInterface_hitstatus.json": "1d0b8b284fe70fe3256751d7800ab5b145b1f79bfe7f2e99c50601af9a6bbd1d",
     "config/GMFE69/UserInterface_radar.json": "4013ee444ae39cd76e922001d4c89a95fc321d833d8f494d74c0ecc40188b79b",
-    "config/GMFE69/UserInterface_score.json": "58afad2bb36bb48cda7143fd6fd92666a36faaab1562311ced657bcbc2921072",
+    "config/GMFE69/UserInterface_score.json": "18c2a259ce6bb5acd6ca1fe3dade7b0d20140540b43fffa582c62539f0c6480a",
     "config/GMFE69/UserInterface_update.json": "37d7d6827fcc091d75cf88d1345427241ccae4ac2d363d59a933b0269c5f308d",
     "config/GMFE69/UserInterface_weaponname.json": "93fb40b2fbafe553f507c76dd5291883c2f29e8367c66f5066b0dd0999d6d4e6",
     "config/GMFE69/UserInterface_xfilestime.json": "563f4114aae83f9dc0b1fba6443500d879055bfc214df282dccfdc166938060b",
@@ -2473,7 +2473,7 @@
     "src/game/UserInterface_hitdirection.cpp": "be5cf2f90c91bb77926b82e4ceffc7cd5cce2f4841a51b363d23ea662797f334",
     "src/game/UserInterface_hitstatus.cpp": "75f6b1bb06ebec72ea1742bcce25cfc03f953aa25fca0f2227cfe621d9914fb4",
     "src/game/UserInterface_radar.cpp": "07e042ee53fe2d9f4d7c9691d662130d9dd294af07a4825d7c761b4a44301607",
-    "src/game/UserInterface_score.cpp": "f8af5424f1539174d10cf01719eac934cb4bb62f539a5ed6a200407f1efc2b17",
+    "src/game/UserInterface_score.cpp": "e30334ab9d561fc13665b365be15ffd24bad6bfb2d5a9b2502f80f5f9d10b7fc",
     "src/game/UserInterface_update.cpp": "b95457f5d1a096090bcdc2a35bfe1565df598eec494373de15ea2d5492f8def4",
     "src/game/UserInterface_weaponname.cpp": "108f0e3ba6894147d493d5bdab412525199771675a66ed1d49846aa7df0a9c36",
     "src/game/UserInterface_xfilestime.cpp": "c35ac6a61d69b47633c0407fb52c57e9b53a9054676949ade31ebe6803d0e255",
@@ -52842,8 +52842,8 @@
     {
       "id": "UserInterface_score",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 1428,
+      "functions": 2,
+      "code_bytes": 2588,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -52875,8 +52875,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "98a64ac9c5b969bcd90982275f046182b0d3d17a5683ea94cdabcdd863f36a39",
-      "linked_sha256": "3052703222905c598c91ae76b25504b67070a3b8e78310fef93dd40712b559d8"
+      "object_sha256": "d2cad39f3ea43e14c9e1f5b1c719b0c53d2f95bbe5e14662ae9bcb35989147cc",
+      "linked_sha256": "a7d4b6966d59e602957c71069cffcc10870b6b23d1e8d6ec025d2214e222e329"
     },
     {
       "id": "pumhandler_add",
@@ -55486,13 +55486,6 @@
             "size": 2212,
             "kind": "function",
             "name": "DrawFragCount__13UserInterfaceFb",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800be108",
-            "size": 1160,
-            "kind": "function",
-            "name": "DrawViewportEdge__13UserInterfaceFv",
             "evidence": "exception-index"
           },
           {
