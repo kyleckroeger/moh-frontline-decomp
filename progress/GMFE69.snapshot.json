@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1181900,
+    "matching_code_bytes": 1183404,
     "total_executable_code_bytes": 1414572,
-    "percent": 83.55177396413897,
+    "percent": 83.65809587634988,
     "categories": {
-      "reconstructed_game": 949624,
+      "reconstructed_game": 951128,
       "restored_library": 232276
     },
-    "matching_functions": 4807
+    "matching_functions": 4808
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -561,7 +561,7 @@
     "config/GMFE69/compartment_intersect.json": "b239f7ddbb23d4aa42c1db20430f1a39dc2419cab1bc5a36ef98bc86e19ef723",
     "config/GMFE69/compartment_nodeshadows.json": "0cd8658af574420b3d6755d9a95a60869950f9feab77c27404a1630ab702a042",
     "config/GMFE69/compartment_offsetptr.json": "c89f7040f223afc1a4bf47cbc9062b8e67e605676fecdd5439b2f8b3bca083c8",
-    "config/GMFE69/compartment_render.json": "4d09aa4db392978e4dfc889d456ad0fdf430f6a5dae47b535d90212c2f53335d",
+    "config/GMFE69/compartment_render.json": "ba5b594fb47e580c575224480c48ecb8e4a8cde0e923ffa65065641910e5f69f",
     "config/GMFE69/compartment_renderbin.json": "fa245038da69a28a010b1187885941cccd72a67ea9a4792fbff780ca8abdc9e9",
     "config/GMFE69/compartment_renderbin_dtor.json": "2fe709fc74e1de5f587ed05655d9d85b1a4b6cbb4009c1fabb257969f37f0a84",
     "config/GMFE69/compartment_reset.json": "7099d7453c73e4ecc3d1d3ddec49d4ea4d2f09fb01e13f294a20c5fb6a8a95fe",
@@ -2725,7 +2725,7 @@
     "src/game/compartment_intersect.cpp": "39b39b0cb006e21e5f448ec9c441c987282a77b10848d2a1e9245ccce817d24b",
     "src/game/compartment_nodeshadows.cpp": "26d2cff9bf0f38c3e88db773a01e0f23767f95bae0bc584fb5ac595c210d64f6",
     "src/game/compartment_offsetptr.cpp": "98eb0a97ef56f3f224fd6fade8b1f349452f64bc0539de3d7be49fb1b8877569",
-    "src/game/compartment_render.cpp": "09c82660449f7290a99c44f1d5a48dfe3be7e8df0c0311a3eea3772dd871c352",
+    "src/game/compartment_render.cpp": "e67f21a910f8e20b272bbc3787d8d182ebe753307e91fede3370a8836c50c867",
     "src/game/compartment_renderbin.cpp": "d20855d8450d97ca6150c490cfde412a3d9cc5f3833650c6ffb908ccb6f13042",
     "src/game/compartment_renderbin_dtor.cpp": "27318602e98e49e9f856754c5790850ee7c1aa1b74c6fff5312a870e582af98f",
     "src/game/compartment_reset.cpp": "f42cf2d3f8bef992135db1345b3b772066fe06974fee0f85af85f9867c9c680a",
@@ -38737,8 +38737,8 @@
     {
       "id": "compartment_render",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 128,
+      "functions": 2,
+      "code_bytes": 1632,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38770,8 +38770,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e31e58cf448ad2c6651f0fa88d2ef9fb14646a29ecabbe28219b4199539abe22",
-      "linked_sha256": "0f156d1c5d7ab5531c5460c69261239bdae85b37852e4dd920ff66b299281ccf"
+      "object_sha256": "6bf4a281063995001d78477f33d3077a6225b0f428683f678a6fea6234e3ab7e",
+      "linked_sha256": "3935cef26a340f4af236f50d1ffe2ecca191391b01576e29b6d9e70ee8322124"
     },
     {
       "id": "staticmesh_render",
@@ -55026,13 +55026,6 @@
         "file_record": 64,
         "file_name": "compartment.cpp",
         "ranges": [
-          {
-            "address": "0x80073bd4",
-            "size": 1504,
-            "kind": "function",
-            "name": "Link__10CCPTMatBinFP7CDmaTagR10CDmaPacket",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80074cc8",
             "size": 860,
