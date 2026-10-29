@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,20 +39,44 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f083c",
-      "size": 604,
+      "address": "0x800ee7a4",
+      "size": 8948,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f610",
-      "size": 32,
+      "address": "0x8000f548",
+      "size": 232,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016214",
-      "size": 48,
+      "address": "0x800160e8",
+      "size": 348,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80179720",
+      "size": 2546,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018a780",
+      "size": 3200,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x802d8500",
+      "size": 8192,
+      "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e308",
+      "size": 16,
       "type": 1
     },
     {
@@ -60,9 +84,177 @@
       "address": "0x8034ecf0",
       "size": 1,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351030",
+      "size": 62,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetPort__11CMemoryCardFv",
+      "address": "0x800ee7a4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "GetSaveGameOverheadSize__11CMemoryCardFb",
+      "address": "0x800ee7ac",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "MountPortIfRequired__11CMemoryCardFi",
+      "address": "0x800f03dc",
+      "size": 616,
+      "binding": 1
+    },
+    {
+      "name": "ArePrefsPresent__11CMemoryCardFv",
+      "address": "0x800ee7b4",
+      "size": 352,
+      "binding": 1
+    },
+    {
+      "name": "LoadPrefs__11CMemoryCardFPUcUi",
+      "address": "0x800ee914",
+      "size": 632,
+      "binding": 1
+    },
+    {
+      "name": "SavePrefs__11CMemoryCardFPUcUi",
+      "address": "0x800eeb8c",
+      "size": 640,
+      "binding": 1
+    },
+    {
+      "name": "CreatePrefs__11CMemoryCardFv",
+      "address": "0x800eee0c",
+      "size": 564,
+      "binding": 1
+    },
+    {
+      "name": "Write__11CMemoryCardFPUcUi",
+      "address": "0x800ef040",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "Read__11CMemoryCardFPUcUi",
+      "address": "0x800ef15c",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "Close__11CMemoryCardFv",
+      "address": "0x800ef278",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "Open__11CMemoryCardFUib",
+      "address": "0x800ef324",
+      "size": 324,
+      "binding": 1
+    },
+    {
+      "name": "DeletePrefFile__11CMemoryCardFi",
+      "address": "0x800ef468",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "DeleteSaveGame__11CMemoryCardFUi",
+      "address": "0x800ef514",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "IsSaveGamePresent__11CMemoryCardFi",
+      "address": "0x800ef5c4",
+      "size": 244,
+      "binding": 1
+    },
+    {
+      "name": "GetNextSaveGame__11CMemoryCardFPUiPUiPc",
+      "address": "0x800ef6b8",
+      "size": 780,
+      "binding": 1
+    },
+    {
+      "name": "GetNumSaveGames__11CMemoryCardFv",
+      "address": "0x800efef4",
+      "size": 460,
+      "binding": 1
+    },
+    {
+      "name": "RewindSaveGameList__11CMemoryCardFv",
+      "address": "0x800ef9c4",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "Format__11CMemoryCardFv",
+      "address": "0x800ef9ec",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "CreateNewSaveGame__11CMemoryCardFPUiPc",
+      "address": "0x800efb18",
+      "size": 988,
+      "binding": 1
+    },
+    {
+      "name": "GetCheckCardStatus__11CMemoryCardFv",
+      "address": "0x800f00c0",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "GetFilesFree__11CMemoryCardFi",
+      "address": "0x800f0118",
+      "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "GetAvailableMemory__11CMemoryCardFv",
+      "address": "0x800f01ac",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "IsFormated__11CMemoryCardFv",
+      "address": "0x800f02c8",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "GetMaxBlocksOnCard__11CMemoryCardFi",
+      "address": "0x800f0378",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "Is8KCard__11CMemoryCardFi",
+      "address": "0x800f0644",
+      "size": 152,
+      "binding": 1
+    },
+    {
+      "name": "IsAnyDeviceInPort__11CMemoryCardFi",
+      "address": "0x800f06dc",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "IsEncodingCorrect__11CMemoryCardFi",
+      "address": "0x800f0760",
+      "size": 220,
+      "binding": 1
+    },
     {
       "name": "OpenSlot__11CMemoryCardFi",
       "address": "0x800f083c",
@@ -95,12 +287,38 @@
     }
   ],
   "externals": {
+    "CARDCheckAsync": "0x801267dc",
+    "CARDClose": "0x80127fa8",
+    "CARDCreateAsync": "0x80128134",
+    "CARDDelete": "0x80128cb4",
+    "CARDFastOpen": "0x80127cd0",
+    "CARDFormatAsync": "0x80127a08",
+    "CARDFreeBlocks": "0x80123b10",
+    "CARDGetResultCode": "0x80123ae0",
+    "CARDGetSectorSize": "0x80123c60",
+    "CARDGetStatus": "0x80128ef4",
     "CARDInit": "0x801238f0",
+    "CARDMountAsync": "0x80126f84",
+    "CARDOpen": "0x80127e30",
     "CARDProbe": "0x80126804",
     "CARDProbeEx": "0x8012683c",
+    "CARDReadAsync": "0x8012863c",
+    "CARDSetAttributes": "0x801294ec",
+    "CARDSetStatus": "0x80129194",
     "CARDUnmount": "0x801271c0",
+    "CARDWrite": "0x80128ab8",
+    "CARDWriteAsync": "0x801289a4",
+    "DebugMsg__FPCce": "0x80018c88",
+    "MohDVDErrorTask__Fii": "0x80016e80",
     "__dl__FPv": "0x8001ca2c",
-    "memset": "0x80009410"
+    "atoi": "0x80140114",
+    "memcpy": "0x800094f8",
+    "memset": "0x80009410",
+    "sprintf": "0x8013dab4",
+    "strlen": "0x801400f8",
+    "strncmp": "0x8013fe94",
+    "strncpy": "0x8013fffc",
+    "strstr": "0x8013fdb4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
