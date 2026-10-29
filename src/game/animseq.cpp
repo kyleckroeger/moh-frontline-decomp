@@ -13,7 +13,9 @@ struct AnimSeqAnimInfo_t {
     float rate;
     float life;
     float time;
-    unsigned char field10[8];
+    unsigned short start;
+    unsigned short frame;
+    float progress;
     unsigned short position;
     unsigned short frames;
     unsigned char field1C[20];
@@ -22,8 +24,9 @@ struct AnimSeqAnimInfo_t {
 extern "C" AnimSeqAnimInfo_t* _AnimSeq_CurrentInfo;
 
 // File-local in the original; declared without static here because this
-// fragment does not define it (the manifest lists it as a local external).
+// fragment does not define them (the manifest lists them as local externals).
 int _AnimSeqParseToEnd(AnimSeqAnimInfo_t*, AnimSeqFrameList_t*, unsigned short);
+unsigned short _ParseForFrame(AnimSeqAnimInfo_t*, float, unsigned char);
 
 // Inferred helper: the body of AnimSeqSetRate, inlined into
 // AnimSeqScaleDuration.
@@ -80,5 +83,31 @@ extern "C" float AnimSeqGetLife(AnimSeqFrameList_t* list) {
     return end.life;
 }
 
-// AnimSeqGrow, AnimSeqStart, _AnimSeqParseToEnd and _ParseForFrame follow in
-// the original file and are not reconstructed.
+extern "C" bool AnimSeqGrow(AnimSeqAnimInfo_t* info, float dt) {
+    bool ended = false;
+    float step = info->time;
+    info->time -= dt;
+    if (info->time < 0.0f) {
+        while (info->time < 0.0f && !ended) {
+            info->start = info->frame;
+            info->frame = _ParseForFrame(info, step, 0);
+            if (info->frame == 0xFFFF) {
+                ended = true;
+                info->frame = info->start;
+            }
+            info->time += info->rate;
+            step = info->rate;
+        }
+        info->life += info->rate - info->time;
+    } else {
+        info->life += dt;
+    }
+    if (!ended)
+        info->progress = (info->rate - info->time) / info->rate;
+    else
+        info->progress = 1.0f;
+    return ended;
+}
+
+// AnimSeqStart, _AnimSeqParseToEnd and _ParseForFrame follow in the original
+// file (unit animseq_start).

@@ -40,25 +40,25 @@
     {
       "name": ".text",
       "address": "0x80066094",
-      "size": 484,
+      "size": 756,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b4a8",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800125fc",
-      "size": 36,
+      "size": 48,
       "type": 1
     },
     {
       "name": ".sdata2",
       "address": "0x8034fcc0",
-      "size": 16,
+      "size": 24,
       "type": 1
     }
   ],
@@ -92,17 +92,25 @@
       "address": "0x80066244",
       "size": 52,
       "binding": 1
+    },
+    {
+      "name": "AnimSeqGrow",
+      "address": "0x80066278",
+      "size": 272,
+      "binding": 1
     }
   ],
   "externals": {
     "_AnimSeqParseToEnd__FP17AnimSeqAnimInfo_tP18AnimSeqFrameList_tUs": "0x80066484",
-    "_AnimSeq_CurrentInfo": "0x8034e960"
+    "_AnimSeq_CurrentInfo": "0x8034e960",
+    "_ParseForFrame__FP17AnimSeqAnimInfo_tfUc": "0x8006669c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "_AnimSeqParseToEnd__FP17AnimSeqAnimInfo_tP18AnimSeqFrameList_tUs"
+    "_AnimSeqParseToEnd__FP17AnimSeqAnimInfo_tP18AnimSeqFrameList_tUs",
+    "_ParseForFrame__FP17AnimSeqAnimInfo_tfUc"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
