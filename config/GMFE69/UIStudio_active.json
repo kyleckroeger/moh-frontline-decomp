@@ -41,24 +41,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008825c",
-      "size": 92,
+      "address": "0x80088120",
+      "size": 408,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c3d8",
-      "size": 8,
+      "address": "0x8000c3d0",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013430",
-      "size": 12,
+      "address": "0x80013424",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "UISProcessEvent",
+      "address": "0x80088120",
+      "size": 316,
+      "binding": 1
+    },
     {
       "name": "UISSetScreenActive",
       "address": "0x8008825c",
@@ -68,14 +74,21 @@
   ],
   "externals": {
     "UISAddThreadAction__FP9UISInfo_t16UISThreadActionTP19UISThreadGroupInfoTlP10UISParam_t": "0x80085678",
-    "UISProcessThreadAction__FP9UISInfo_tUc": "0x800852c8"
+    "UISFindScreen__FP9UISInfo_tUsUs": "0x8008af80",
+    "UISProcessThreadAction__FP9UISInfo_tUc": "0x800852c8",
+    "_ParseMaps__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlUlP10UISParam_tPSc": "0x80089200",
+    "uisEventNotProcess": "0x8034ea90"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "_ParseMaps__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlUlP10UISParam_tPSc"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "uisEventNotProcess"
+  ],
   "original_file": "UIStudio.c",
   "original_file_index": 4545
 }
