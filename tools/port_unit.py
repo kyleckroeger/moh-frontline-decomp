@@ -96,9 +96,16 @@ def find(symbol, original, locals_):
 CODE_SECTIONS = (".text", ".init")
 
 
+def is_label(symbol):
+    """An assembly file's entry point: a size-0 NOTYPE symbol."""
+    return symbol["type"] == 0 and symbol["size"] == 0 and symbol["name"] and 0 < symbol["section"] < 0xFF00
+
+
 def text_layout(obj, original, locals_, duplicates=(), file_duplicates=()):
     """Keep functions the original has; discard absent ones; reject size changes.
 
+    A function whose original symbol is a size-0 NOTYPE label (an assembly
+    file) is kept with its compiled size; the build compares its bytes.
     Named weak duplicates are dropped like discarded functions; the original's
     copy elsewhere is linked instead.
 
@@ -120,7 +127,7 @@ def text_layout(obj, original, locals_, duplicates=(), file_duplicates=()):
             target = find(function, original, locals_)
             absent = target is None and not (locals_.get(function["name"]) if function["binding"] == 0
                                              else original.globals(function["name"]))
-            if target is not None and target["size"] == function["size"]:
+            if target is not None and (target["size"] == function["size"] or is_label(target)):
                 kept.append((function, packed))
                 packed += function["size"]
             elif absent:
@@ -170,7 +177,8 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
                 and symbol["name"] not in duplicates):
             target = find(symbol, original, locals_)
             offset = position(symbol["section"], symbol["address"])
-            if target is not None and target["size"] == symbol["size"] and offset is not None:
+            label = symbol["type"] == 2 and target is not None and is_label(target)
+            if target is not None and (target["size"] == symbol["size"] or label) and offset is not None:
                 anchor(addresses, names[symbol["section"]], target["address"] - offset)
     if not any(names[i] in addresses for i in layout):
         raise ValueError("No compiled function was found in the original file record"
@@ -441,6 +449,14 @@ def draft(args):
     functions = [{"name": s["name"], "address": hex(s["address"]), "size": s["size"], "binding": s["binding"]}
                  for s in original.symbols if s["type"] == 2 and s["section"]
                  and any(a <= s["address"] < b for a, b in code)]
+    label_functions = []
+    for index, (kept_, _) in layout.items():
+        for function, packed in kept_:
+            target = find(function, original, original.locals_of(file_index))
+            if is_label(target):
+                label_functions.append({"name": function["name"],
+                                        "address": hex(addresses[obj.sections[index]["name"]] + packed),
+                                        "size": function["size"], "binding": target["binding"]})
     obj_symbols = list(obj.symbols())
     undefined = sorted({s["name"] for s in obj_symbols if s["binding"] and not s["section"] and s["name"]}
                        | duplicates)
@@ -462,6 +478,8 @@ def draft(args):
         unit.update(original_file=original.symbols[file_index]["name"], original_file_index=file_index)
     else:
         unit["discarded_local_functions"] = []
+    if label_functions:
+        unit["label_functions"] = label_functions
     if stripped:
         unit["stripped_sections"] = stripped
     if args.weak_duplicate:
@@ -482,8 +500,9 @@ def draft(args):
             unit["adapted_from"] = adapted
     output = CONFIG / f"{args.id}.json"
     output.write_text(json.dumps(unit, indent=2) + "\n")
-    print(f"Drafted {output.relative_to(ROOT)}: {len(functions)} functions, "
-          f"{sum(f['size'] for f in functions)} code bytes at " + ", ".join(hex(a) for a, _ in code))
+    placed = functions + label_functions
+    print(f"Drafted {output.relative_to(ROOT)}: {len(placed)} functions, "
+          f"{sum(f['size'] for f in placed)} code bytes at " + ", ".join(hex(a) for a, _ in code))
 
 
 if __name__ == "__main__":

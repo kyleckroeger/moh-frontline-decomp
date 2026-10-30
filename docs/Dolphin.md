@@ -273,6 +273,24 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   `.text` (`__start.c`, `__mem.c`, `__ppc_eabi_init.cpp`). Each code section
   must be tiled exactly by original functions, and discarded functions may sit
   anywhere in it.
+- **Assembly labels.** An assembly source file (`targsupp.s`, `__exception.s`,
+  `gc_idct.asm`) left only size-0 `NOTYPE` labels in the original, so its code
+  has no sized function symbol. A unit compiles it as CodeWarrior `asm`
+  functions, each named after the label at its start, with `entry` statements
+  for the labels inside it, and lists each in `label_functions` (name, address,
+  size, binding). The size is the compiled function's; the original only
+  bounds it. `validate_units` requires exactly one original size-0 `NOTYPE`
+  label of that name, address and binding in a code section (a local one in the
+  unit's file record), no sized original function or object of that name, no
+  sized original symbol inside the extent, and the code section tiled by
+  `functions` and `label_functions` together. `verify_unit` requires every
+  original label inside the extent at its address in the linked unit, and
+  every global label the compiled function defines (up to its end) to be an
+  original global label at the same address. Local branch labels (`entry
+  static`, as `gc_idct`'s second pass) may be extra. The bytes are compared as
+  usual, and label functions count as matched code (progress, code map).
+  `port_unit.py` drafts the list when a compiled function's original symbol
+  is such a label.
 
 ## Open problems
 

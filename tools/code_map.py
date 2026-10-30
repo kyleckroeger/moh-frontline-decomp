@@ -146,10 +146,14 @@ def build_code_map(elf, accepted, file_owners=None):
     for index, section in sections.items():
         cursor, stop = section["address"], section["address"] + section["size"]
         gaps = []
-        for cluster in [c for c in clusters if c["section"] == index]:
-            if cursor < cluster["start"]:
-                gaps.append((cursor, cluster["start"]))
-            cursor = cluster["end"]
+        # Accepted source may cover code no sized symbol names (an assembly
+        # file's size-0 labels), so it bounds the unidentified gaps too.
+        spans = sorted([(c["start"], c["end"]) for c in clusters if c["section"] == index]
+                       + [(a, b) for a, b in accepted if cursor <= a < stop])
+        for start, end in spans:
+            if cursor < start:
+                gaps.append((cursor, start))
+            cursor = max(cursor, end)
         if cursor < stop:
             gaps.append((cursor, stop))
         if gaps:

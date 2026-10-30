@@ -74,7 +74,9 @@ The overall denominator is every allocated executable byte in the pinned
 `Moh2RelGC.elf`: 1,414,572 bytes (`.init` 9,452 + `.text` 1,405,120). Only
 nonoverlapping, verified source-built function bytes earn credit. Restored library
 code and reconstructed game code are distinct categories. Accepted units may be
-fragments of an original translation unit.
+fragments of an original translation unit. Code under an assembly file's size-0
+labels counts by the extent of the verified compiled function placed at each
+label (`label_functions`, see [Dolphin.md](Dolphin.md)).
 
 Unreconstructed code is represented by named file groups, explicitly unassigned
 function groups, shared entry-point groups, and unidentified code/padding ranges,

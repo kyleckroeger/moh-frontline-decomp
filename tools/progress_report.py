@@ -77,7 +77,7 @@ def capture(root):
         verify_unit(original, Elf32((work / "compiled.elf").read_bytes()), unit)
     # Allow-list public fields. In particular, never copy source_blobs paths.
     accepted = [(int(f["address"], 16), int(f["address"], 16) + f["size"])
-                for unit in units for f in unit["functions"]]
+                for unit in units for f in unit["functions"] + unit.get("label_functions", [])]
     return {"schema_version": 2, "verification": "local-complete-image-match",
             "target": report["target"], "original_elf_sha256": report["original_elf_sha256"],
             "dol_sha1": report["dol_sha1"], "runtime_tested": False,
@@ -116,7 +116,7 @@ def export(snapshot, root):
     function_count = 0
     for manifest in manifests:
         unit = by_id[manifest["id"]]
-        functions = manifest["functions"]
+        functions = manifest["functions"] + manifest.get("label_functions", [])
         size = sum(f["size"] for f in functions)
         category = manifest["category"]
         if (category not in ("reconstructed_game", "restored_library") or

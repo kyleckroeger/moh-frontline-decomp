@@ -35,6 +35,74 @@ def manifest_functions(unit):
                   for f in unit["functions"])
 
 
+def label_functions(unit):
+    """Compiled functions placed where the original has only a size-0 NOTYPE
+    label (an assembly source file): the label names the function, the
+    compiled code gives its extent, and its bytes are compared as usual."""
+    return sorted((f["name"], int(f["address"], 16), f["size"], f["binding"])
+                  for f in unit.get("label_functions", []))
+
+
+def covered_functions(unit):
+    """Every function a unit places and credits: sized originals and labels."""
+    return sorted(manifest_functions(unit) + label_functions(unit), key=lambda f: (f[1], f[0]))
+
+
+def is_label(symbol):
+    return symbol["type"] == 0 and symbol["size"] == 0 and symbol["name"] and 0 < symbol["section"] < 0xFF00
+
+
+def check_label_functions(original, symbols, unit, code, file_index):
+    """Each label function starts at one original size-0 NOTYPE label of its
+    name and binding (a local one in the unit's file record), and its extent
+    holds no sized original symbol."""
+    record = set()
+    if file_index is not None:
+        for index in range(file_index + 1, len(symbols)):
+            if symbols[index]["type"] == 4:
+                break
+            record.add(index)
+    names = [f[0] for f in label_functions(unit)]
+    if len(set(names)) != len(names):
+        raise ValueError("Duplicate label function")
+    for name, address, size, binding in label_functions(unit):
+        if not isinstance(size, int) or size <= 0 or binding not in (0, 1, 2):
+            raise ValueError(f"Invalid label function: {name}")
+        labels = [i for i, s in enumerate(symbols) if s["name"] == name and s["address"] == address and is_label(s)
+                  and original.sections[s["section"]]["name"] in CODE_SECTIONS
+                  and (s["binding"] or i in record)]
+        if len(labels) != 1 or symbols[labels[0]]["binding"] != binding:
+            raise ValueError(f"Label function lacks one original size-0 label: {name}")
+        if any(s["name"] == name and s["type"] in (1, 2) and s["section"] for s in symbols):
+            raise ValueError(f"Label function has a sized original symbol: {name}")
+        section = symbols[labels[0]]["section"]
+        if not any(a <= address and address + size <= b for a, b in code):
+            raise ValueError(f"Label function is outside the unit's code: {name}")
+        if any(s["section"] == section and s["size"] and s["type"] != 4
+               and s["address"] < address + size and address < s["address"] + s["size"] for s in symbols):
+            raise ValueError(f"Label function overlaps a sized original symbol: {name}")
+
+
+def check_linked_labels(original, linked, unit):
+    """The labels inside a label function are the original's: every original
+    label within it is linked at its address, and every global label the
+    compiled function defines (entry points, up to its end) is an original
+    global label at the same address."""
+    original_labels = {(s["name"], s["address"]) for s in original.symbols() if is_label(s)}
+    original_globals = {(s["name"], s["address"]) for s in original.symbols() if is_label(s) and s["binding"]}
+    linked_labels = [s for s in linked.symbols() if is_label(s)
+                     and linked.sections[s["section"]]["name"] in CODE_SECTIONS]
+    linked_names = {(s["name"], s["address"]) for s in linked_labels}
+    for name, address, size, _ in label_functions(unit):
+        inner = {(n, a) for n, a in original_labels if address < a < address + size}
+        if not inner <= linked_names:
+            raise ValueError(f"Label function lacks an original label: {name} {sorted(inner - linked_names)}")
+        for s in linked_labels:
+            if (s["binding"] and address <= s["address"] <= address + size
+                    and (s["name"], s["address"]) not in original_globals):
+                raise ValueError(f"Label function defines a label the original lacks: {name} {s['name']}")
+
+
 def function_name(name, binding):
     # MW numbers compiler-generated local functions per compilation
     # (__arraydtor$497); compare their identifier, binding, address and size.
@@ -125,6 +193,8 @@ def validate_units(original, units):
         functions = manifest_functions(unit)
         if functions != [f for f in original_functions if any(a <= f[1] < b for a, b in code)]:
             raise ValueError(f"Original function coverage differs: {unit['id']}")
+        check_label_functions(original, symbols, unit, code, file_index)
+        functions = covered_functions(unit)
         for start, end in code:
             cursor = start
             for _, address, size, _ in sorted((f for f in functions if start <= f[1] < end), key=lambda f: f[1]):
@@ -316,9 +386,10 @@ def validate_object(obj, unit):
     functions = [s for s in symbols if s["type"] == 2 and s["section"]]
     renamed = {name + DUPLICATE_SUFFIX for name in unit.get("weak_duplicates", []) + unit.get("file_duplicates", [])}
     duplicates = {s["name"] for s in functions if s["name"] in renamed}
-    expected = ({function_name(f["name"], f["binding"]) for f in unit["functions"]}
+    placed = unit["functions"] + unit.get("label_functions", [])
+    expected = ({function_name(f["name"], f["binding"]) for f in placed}
                 | set(unit["discarded_functions"]) | duplicates)
-    if (len(functions) != len(unit["functions"]) + len(unit["discarded_functions"]) + len(duplicates)
+    if (len(functions) != len(placed) + len(unit["discarded_functions"]) + len(duplicates)
             or {function_name(s["name"], s["binding"]) for s in functions} != expected):
         raise ValueError("Unexpected compiler function set")
     output = {s["name"]: s for s in allocated(obj)}
@@ -352,7 +423,7 @@ def validate_object(obj, unit):
     compiled_binding = {function_name(s["name"], s["binding"]): s["binding"] for s in functions}
     weak_locals = set(unit.get("weak_locals", []))
     compiled_binding.update({name: 0 for name in weak_locals if compiled_binding.get(name) == 2})
-    if any(compiled_binding.get(function_name(f["name"], f["binding"])) != f["binding"] for f in unit["functions"]):
+    if any(compiled_binding.get(function_name(f["name"], f["binding"])) != f["binding"] for f in placed):
         raise ValueError("Compiled function binding differs from original")
     if any(f["section"] not in code for f in functions):
         raise ValueError("Unaccounted compiler code")
@@ -467,8 +538,9 @@ def verify_unit(original, linked, unit):
                        1 if name in unit.get("weak_locals", []) else min(binding, 1))
                       for name, address, size, binding in records)
 
-    if linked_binding(function_records(linked)) != linked_binding(manifest_functions(unit)):
+    if linked_binding(function_records(linked)) != linked_binding(covered_functions(unit)):
         raise ValueError("Linked source functions differ from original")
+    check_linked_labels(original, linked, unit)
     if any(s["type"] in (4, 9) and s["size"] for s in linked.sections):
         raise ValueError("Linked source still has relocations")
     undefined_symbols = [s for s in linked.symbols() if s["binding"] and not s["section"] and s["name"]]
@@ -588,12 +660,12 @@ def progress(original, units, project):
     if sections != project["progress"]["executable_sections"] or total != project["progress"]["code_bytes"]:
         raise ValueError("Progress denominator differs from the original executable")
     validate_units(original, units)
-    categories = {category: sum(f["size"] for u in units if u["category"] == category for f in u["functions"])
+    categories = {category: sum(f[2] for u in units if u["category"] == category for f in covered_functions(u))
                   for category in ("reconstructed_game", "restored_library")}
     matched = sum(categories.values())
     return dict(matching_code_bytes=matched, total_executable_code_bytes=total,
                 percent=100 * matched / total, categories=categories,
-                matching_functions=sum(len(u["functions"]) for u in units))
+                matching_functions=sum(len(covered_functions(u)) for u in units))
 
 
 def build_project():
@@ -655,7 +727,7 @@ def build_project():
         kept_text = [(f["section"], f["address"], f["address"] + f["size"]) for f in obj.symbols()
                      if f["type"] == 2 and f["name"] not in unit["discarded_functions"]
                      and obj.sections[f["section"]]["name"] in CODE_SECTIONS] if unit["strip_unused"] else []
-        roots = [f["name"] for f in unit["functions"] if f["binding"]] + sorted(
+        roots = [f[0] for f in covered_functions(unit) if f[3]] + sorted(
             {s["name"] for s in obj.symbols() if s["binding"] and s["type"] == 0 and s["section"]
              and s["section"] < 0xFF00 and obj.sections[s["section"]]["name"] in CODE_SECTIONS
              and any(i == s["section"] and a <= s["address"] < b for i, a, b in kept_text)})
@@ -664,7 +736,7 @@ def build_project():
         if unit.get("retain_function_symbols", False):
             # Preserve local entry points and their verification symbols without
             # creating unresolved global symbols through --undefined.
-            (work / "functions.keep").write_text("".join(f["name"] + "\n" for f in unit["functions"]))
+            (work / "functions.keep").write_text("".join(f[0] + "\n" for f in covered_functions(unit)))
             strip_args += ["--retain-symbols-file", "functions.keep"]
         execute("link", wrapper, linker / "ngcld.exe", *strip_args,
                 *(["--fix-sda"] if use_small_data else []), "-T", "source.ld",
@@ -677,7 +749,7 @@ def build_project():
                 Path(blob["path"]).write_bytes(data)
         blobs.extend(generated)
         reports.append(dict(id=unit["id"], category=unit["category"],
-                            functions=len(unit["functions"]), code_bytes=sum(f["size"] for f in unit["functions"]),
+                            functions=len(covered_functions(unit)), code_bytes=sum(f[2] for f in covered_functions(unit)),
                             compiler_family=family, compiler_version=unit["compiler_version"], compiler_flags=unit["compiler_flags"],
                             strip_unused=unit["strip_unused"], discarded_functions=unit["discarded_functions"],
                             object_sha256=sha256(work / "compiled.o"),
