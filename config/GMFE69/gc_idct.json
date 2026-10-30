@@ -1,0 +1,75 @@
+{
+  "id": "gc_idct",
+  "source": "src/ea/gc_idct.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto,deferred",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800fce60",
+      "size": 824,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x8018b900",
+      "size": 32,
+      "type": 1
+    }
+  ],
+  "functions": [],
+  "externals": {},
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "gc_idct.asm",
+  "original_file_index": 10001,
+  "label_functions": [
+    {
+      "name": "PS_IDCT_row",
+      "address": "0x800fce60",
+      "size": 544,
+      "binding": 1
+    },
+    {
+      "name": "GC_IDCT",
+      "address": "0x800fd080",
+      "size": 280,
+      "binding": 1
+    }
+  ]
+}
