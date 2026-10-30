@@ -1249,7 +1249,8 @@
     "dvdStatus_check.json",
     "msg.json",
     "targsupp.json",
-    "gc_idct.json"
+    "gc_idct.json",
+    "__exception.json"
   ],
   "progress": {
     "code_bytes": 1414572,
