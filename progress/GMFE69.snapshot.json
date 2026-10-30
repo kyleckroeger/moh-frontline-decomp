@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1199788,
+    "matching_code_bytes": 1200156,
     "total_executable_code_bytes": 1414572,
-    "percent": 84.81632606894523,
+    "percent": 84.84234100491173,
     "categories": {
-      "reconstructed_game": 959152,
+      "reconstructed_game": 959520,
       "restored_library": 240636
     },
-    "matching_functions": 4819
+    "matching_functions": 4820
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -61,7 +61,7 @@
     "config/GMFE69/AIObject_setcover.json": "eed00dea433a231254700738415d7c2dc338beefaaf656796bc6514d342886f1",
     "config/GMFE69/AIObject_setlocation.json": "d0645b9342e7eedc46228451cfa526f6f1503a65c60d16f2f3a3a33b096f3981",
     "config/GMFE69/AIObject_spline.json": "1607b3deacc4120d1f5bb330c17b5c127697003815192f38f7b18af31a0137e0",
-    "config/GMFE69/AIObject_storecover.json": "9f168af9d186f56287d50f9e896fc13a804eb60e36e30a6a9970837cd6a010db",
+    "config/GMFE69/AIObject_storecover.json": "ec26e675fd10298a76356fe187f001c580590ed2070edf27729740403fb20594",
     "config/GMFE69/AIObject_threat.json": "6d3e3022737debc074fe50ada989c0ff7692d42cc48b516dae1f45bd7d44533a",
     "config/GMFE69/AIObject_visionseek.json": "a30d49e25c88a24daca9409bd0413884cbde11f7ed44d34e9e5440c4d6d3a867",
     "config/GMFE69/AIObject_visionsetup.json": "f9c0562cf6e27653acef6e58904f86dd328c3dd55fce06c52b93396852b6ff12",
@@ -2325,7 +2325,7 @@
     "src/game/AIObject_setcover.cpp": "e4537c10b68b7defa5d93d557e93abdd5cf2dc9f68a95d70219547df5cacbf53",
     "src/game/AIObject_setlocation.cpp": "323e6db0c8d1ef0589ff4dee7fe7c751d2aaa2cf9f330e9d8697bf868575c8e9",
     "src/game/AIObject_spline.cpp": "8c461ea113ef55bdc73101b92e076c88a9430ea7efd97adc7283d8f8855347ed",
-    "src/game/AIObject_storecover.cpp": "5938d285983112bd5a4f19e1d53942fb05e6fca9ce7dec74f30b86cc08914376",
+    "src/game/AIObject_storecover.cpp": "b41ea8541233684f8d1fd8d1a2af64e1acd5b8dba2f29f0c524536d32483427b",
     "src/game/AIObject_threat.cpp": "b73f90c4fb60e8a575792316f9297fe3c8b7f27985428ef554f445498b6d2574",
     "src/game/AIObject_visionseek.cpp": "10e92330cc0145d76891301d4a9c2023bcceeca29921a648de5a4edbf9e2f8a4",
     "src/game/AIObject_visionsetup.cpp": "789e15dfce77b8220bbca4011f55c8b4981d5db2346beb3869946b6ac6309304",
@@ -45426,8 +45426,8 @@
     {
       "id": "AIObject_storecover",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 336,
+      "functions": 2,
+      "code_bytes": 704,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45459,8 +45459,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c3e52c38a0845e4853e13008d1bd52945b45971e112685704454454847d79bb9",
-      "linked_sha256": "02916848c62ad73598f58b884eed98995e2307fc24974c2a2e9327122d8f5af5"
+      "object_sha256": "66b1f003ba5b3052a116dd13032c0a749ed2eaf9e6d364916e3a00993d936a3f",
+      "linked_sha256": "7768c3b66ffdc39c5fc38a40581c09c4e7d85e46f31f6526ddcfcf00e68f4f24"
     },
     {
       "id": "AIFilter_runaway",
@@ -54460,13 +54460,6 @@
             "size": 384,
             "kind": "function",
             "name": "CheckFieldOfViewModeList__9CAIObjectFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8004b000",
-            "size": 368,
-            "kind": "function",
-            "name": "ChooseCoverPoint__9CAIObjectF24ECoverPointSelectionTypePC10ISceneNodeff",
             "evidence": "exception-index"
           },
           {

@@ -1,4 +1,11 @@
-// A fragment of AIObject.cpp (0x8004b170): CAIObject::StoreClosestCoverPoint
+// A fragment of AIObject.cpp (0x8004b000): CAIObject::ChooseCoverPoint
+// chooses a cover point of the given selection type from the filter: away
+// from the given node's position (or the threat's, +196) within half the
+// radius squared and the range squared, or without either the closest usable
+// cover point, around the object's position raised by 0.5; the choice is
+// stored at +680. The 'self' and 'type' locals, the split float temporaries
+// and the selecting static inline are inferred.
+// CAIObject::StoreClosestCoverPoint
 // asks the global filter for the closest usable cover point to the position
 // (raised by 0.5) within half the cover radius (+520), away from the threat
 // (+196) when there is one, in the object's proximity leaf; it stores the
@@ -19,6 +26,8 @@ long long MathFunRandomI64(long long, long long);
 
 class CAIFilterRealPosition {
 public:
+    float GetDistanceXYZReal(const CAIFilterRealPosition&) const;
+
     float x;
     float y;
     float z;
@@ -30,13 +39,45 @@ public:
 } __attribute__((aligned(8)));
 
 enum COVERPOINT_TYPE {};
+enum ECoverPointSelectionType {};
 enum COVERPOINT_WALK_MODE {};
 
 class CAIObject;
+class CMatrix;
+
+class CVector3 {
+public:
+    float x;
+    float y;
+    float z;
+};
+
+/* ISceneNode's virtuals up to GetPosition, in table order */
+class ISceneNode {
+public:
+    virtual void MarkForDestruction(int);
+    virtual ~ISceneNode();
+    virtual void Destroy();
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float);
+    virtual void CommitAI();
+    virtual void ConstrainVelocity();
+    virtual void AttemptUpdate(float);
+    virtual void OnCollision(const void*);
+    virtual void CommitUpdate();
+    virtual void Draw(void*);
+    virtual int GetLocalBoundingVolume(int) const;
+    virtual int GetWorldBoundingVolume(int) const;
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
+};
 
 class CCoverPoint {
 public:
+    void FlagAsUnoccupied(COVERPOINT_TYPE);
     bool FlagAsOccupied(COVERPOINT_TYPE);
+    COVERPOINT_TYPE GetAvailablePeekPosition() const;
+    void GetModifiedPosition(CAIFilterRealVector3&, COVERPOINT_TYPE) const;
     CAIFilterRealVector3 GetPeekLocation();
 };
 
@@ -63,6 +104,10 @@ struct AIFilterScriptView {
 
 class CAIFilterGlobal {
 public:
+    CCoverPoint* GetCoverPointByIndex(int) const;
+    CCoverPoint* ChooseCoverPointByType(const _PropBSPLeaf*, const CAIFilterRealPosition&,
+                                        const CAIFilterRealPosition*, ECoverPointSelectionType, float, float,
+                                        CAIObject*) const;
     CCoverPoint* GetClosestUsableCoverPoint(const _PropBSPLeaf*, const CAIFilterRealPosition&,
                                             const CAIFilterRealPosition*, COVERPOINT_WALK_MODE*, COVERPOINT_TYPE*,
                                             CAIFilterRealPosition*, float, CAIObject*) const;
@@ -74,6 +119,8 @@ extern CAIFilterGlobal g_aigAIFilterGlobalObject;
 
 class CAIObject {
 public:
+    void SetCoverPoint(int, bool);
+    void ChooseCoverPoint(ECoverPointSelectionType, const ISceneNode*, float, float);
     CCoverPoint* StoreClosestCoverPoint();
 
     unsigned char unknown000[8];
@@ -82,15 +129,69 @@ public:
     CAIFilterRealPosition m_position;
     unsigned char unknown024[160];
     CAIObject* m_threat;
-    unsigned char unknown0c8[320];
+    unsigned char unknown0c8[224];
+    unsigned long m_flags1a8;
+    unsigned char unknown1ac[92];
     float m_coverRadius;
-    unsigned char unknown20c[132];
+    unsigned char unknown20c[12];
+    int m_moveMode;
+    unsigned char unknown21c[116];
     CCoverPoint* m_coverPoint;
     COVERPOINT_TYPE m_coverType;
     CAIFilterRealPosition m_coverPosition;
-    unsigned char unknown2a4[12];
+    unsigned char unknown2a4[4];
+    CCoverPoint* m_chosenCoverPoint;
+    bool m_flag2ac;
+    unsigned char unknown2ad[3];
     CAIFilterRealPosition m_peekLocation;
+    unsigned char unknown2bc[4];
+    bool m_atCoverPoint;
 };
+
+static inline CCoverPoint* Select(CAIObject* self, const CAIFilterRealVector3& position,
+                                  const CAIFilterRealPosition* from, int type, float distance, float range) {
+    if (from)
+        return g_aigAIFilterGlobalObject.ChooseCoverPointByType(
+            self->m_filter->user->GetProximityData()->leaf, position, from, (ECoverPointSelectionType)type, distance,
+            range, self);
+    return g_aigAIFilterGlobalObject.GetClosestUsableCoverPoint(
+        self->m_filter->user->GetProximityData()->leaf, position, 0, 0, 0, 0, distance, self);
+}
+
+static inline CAIObject* Me(CAIObject* p) { return p; }
+static inline int TypeOf(ECoverPointSelectionType p) { return p; }
+
+void CAIObject::ChooseCoverPoint(ECoverPointSelectionType type, const ISceneNode* node, float radius,
+                                 float range) {
+    CAIObject* const self = this;
+    float z;
+    float y;
+    float x;
+    float distance;
+    const CAIFilterRealPosition* from;
+    int t = type;
+    CAIFilterRealVector3 position;
+    CVector3 nodePosition;
+    if (node) {
+        from = (const CAIFilterRealPosition*)&nodePosition;
+        node->GetPosition(*(CVector3*)from);
+    } else if (self->m_threat) {
+        from = &self->m_threat->m_position;
+    } else {
+        from = 0;
+    }
+    z = m_position.z;
+    y = m_position.y;
+    x = m_position.x;
+    position.x = x;
+    position.y = y;
+    position.z = z;
+    position.z += 0.5f;
+    float half = 0.5f * radius;
+    distance = half * half;
+    range *= range;
+    m_chosenCoverPoint = Select(self, position, from, t, distance, range);
+}
 
 CCoverPoint* CAIObject::StoreClosestCoverPoint() {
     const CAIFilterRealPosition* threat;

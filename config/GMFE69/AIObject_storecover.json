@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8004b170",
-      "size": 336,
+      "address": "0x8004b000",
+      "size": 704,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a7a4",
-      "size": 8,
+      "address": "0x8000a79c",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011924",
-      "size": 12,
+      "address": "0x80011918",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ChooseCoverPoint__9CAIObjectF24ECoverPointSelectionTypePC10ISceneNodeff",
+      "address": "0x8004b000",
+      "size": 368,
+      "binding": 1
+    },
     {
       "name": "StoreClosestCoverPoint__9CAIObjectFv",
       "address": "0x8004b170",
@@ -66,6 +72,7 @@
   ],
   "externals": {
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject": "0x8005ca88",
     "FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE": "0x80052f6c",
     "GetClosestUsableCoverPoint__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPositionP20COVERPOINT_WALK_MODEP15COVERPOINT_TYPEP21CAIFilterRealPositionfP9CAIObject": "0x8005d0e8",
     "GetPeekLocation__11CCoverPointFv": "0x800523cc",
