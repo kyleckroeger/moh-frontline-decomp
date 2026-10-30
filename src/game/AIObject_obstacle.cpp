@@ -1,4 +1,11 @@
-// A fragment of AIObject.cpp (0x80049af4): CAIObject::CheckFieldOfViewModeObject
+// A fragment of AIObject.cpp (0x80049974): CAIObject::CheckFieldOfViewModeList
+// (walks the global AI object list from the last found object - or from the
+// list start - for the next object other than this one whose status matches
+// the stored match list, and returns it when it is in the field of view at the
+// list vision distance - halved for a flag at +1840, times 0.75 when it is
+// crouching - and the list angle; the list search is an inferred static inline
+// taking the object as a parameter, the list start an inferred getter),
+// CAIObject::CheckFieldOfViewModeObject
 // (the watched object, when in the field of view at the vision distance -
 // halved for a flag at +1840 of the object, times 0.75 when it is crouching -
 // and the field-of-view angle; when it is the object at +196 its position is
@@ -41,6 +48,14 @@ struct aistatus_match {
     int value[3];
 };
 
+class CAIStatus {
+public:
+    bool MatchStatusList(aistatus_match*, int);
+};
+
+class CAIObject;
+extern CAIObject* g_paioAIObjectListStart; // file-local in the original
+
 class CAIObject {
 public:
     virtual ~CAIObject();
@@ -48,7 +63,26 @@ public:
     virtual void Update(float);
     virtual bool IsCrouching() const;
 
+    CAIObject* CheckFieldOfViewModeList();
     CAIObject* CheckFieldOfViewModeObject(); /* result type inferred */
+    /* inferred: the next object of the global list matching the watch list */
+    CAIObject* SearchList(CAIObject* object, CAIObject* first) {
+        for (;;) {
+            object = object->m_next;
+            if (!object)
+                object = first;
+            if (object != this && object->m_status.MatchStatusList(m_list, m_listCount)) {
+                m_listObject = object;
+                return m_listObject;
+            }
+            if (m_listObject) {
+                if (object == m_listObject)
+                    return 0;
+            } else if (object == first) {
+                return 0;
+            }
+        }
+    }
     bool IsObjectInFieldOfView(CAIFilterRealPosition&, float, float, bool);
     void SetupFieldOfViewCorpse(float, float);
     void SetupFieldOfViewModeList(aistatus_match*, int, float, float);
@@ -56,7 +90,8 @@ public:
     void ProcessObstacleAvoidance();
     void EngageObstacleAvoidance(bool, float, float, float);
 
-    unsigned char unknown004[20];
+    CAIObject* m_next;
+    unsigned char unknown008[16];
     CAIFilterRealPosition m_position;
     unsigned char unknown024[44];
     CAIFilterRealPosition m_unknown050;
@@ -64,7 +99,9 @@ public:
     CAIObject* m_unknownC4;
     unsigned char unknown0c8[136];
     CAIFilterRealPosition m_unknown150;
-    unsigned char unknown15c[392];
+    unsigned char unknown15c[88];
+    CAIStatus m_status;
+    unsigned char unknown1b5[303];
     bool m_unknown2e4;
     unsigned char unknown2e5[3];
     CObstacleAvoidance m_obstacleAvoidance;
@@ -92,6 +129,48 @@ public:
     bool m_unknown730;
     bool m_unknown731;
 };
+
+static inline CAIObject* GetListStart() { return g_paioAIObjectListStart; }
+static inline CAIObject* Search2(CAIObject* self, CAIObject* first, CAIObject* object) {
+    for (;;) {
+        object = object->m_next;
+        if (!object)
+            object = first;
+        if (object != self && object->m_status.MatchStatusList(self->m_list, self->m_listCount)) {
+            self->m_listObject = object;
+            return self->m_listObject;
+        }
+        if (self->m_listObject) {
+            if (object == self->m_listObject)
+                return 0;
+        } else if (object == first) {
+            return 0;
+        }
+    }
+}
+
+CAIObject* CAIObject::CheckFieldOfViewModeList() {
+    CAIObject* start = m_listObject;
+    CAIObject* object = Search2(this, GetListStart(), start ? start : GetListStart());
+    if (!object)
+        return 0;
+    float distance;
+    float angle;
+    angle = m_listAngle;
+    distance = m_listDistance;
+    if (object->m_unknown730)
+        distance *= 0.5f;
+    if (object->IsCrouching())
+        distance *= 0.75f;
+    CAIObject* result;
+    if (IsObjectInFieldOfView(object->m_position, distance, angle, object->IsCrouching()))
+        result = object;
+    else if (object == start)
+        result = 0;
+    else
+        result = 0;
+    return result;
+}
 
 CAIObject* CAIObject::CheckFieldOfViewModeObject() {
     float distance;

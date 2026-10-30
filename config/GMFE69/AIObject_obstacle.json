@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80049af4",
-      "size": 916,
+      "address": "0x80049974",
+      "size": 1300,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a71c",
-      "size": 48,
+      "address": "0x8000a714",
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011858",
-      "size": 72,
+      "address": "0x8001184c",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CheckFieldOfViewModeList__9CAIObjectFv",
+      "address": "0x80049974",
+      "size": 384,
+      "binding": 1
+    },
     {
       "name": "CheckFieldOfViewModeObject__9CAIObjectFv",
       "address": "0x80049af4",
@@ -97,17 +103,23 @@
   "externals": {
     "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80053738",
     "IsObjectInFieldOfView__9CAIObjectFR21CAIFilterRealPositionffb": "0x80048eec",
+    "MatchStatusList__9CAIStatusFP14aistatus_matchi": "0x80051cd0",
     "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition": "0x80054304",
     "RunEnvironmentCollisionChecks__18CObstacleAvoidanceFv": "0x80053c34",
+    "g_paioAIObjectListStart": "0x8034e8ec",
     "memcpy": "0x800094f8",
     "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_paioAIObjectListStart"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_paioAIObjectListStart"
+  ],
   "original_file": "AIObject.cpp",
   "original_file_index": 1752,
   "pooled_sections": [
