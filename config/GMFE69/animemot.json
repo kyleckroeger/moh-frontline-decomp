@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x800621d4",
-      "size": 5504,
+      "size": 9012,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b3c0",
-      "size": 80,
+      "size": 96,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800124a0",
-      "size": 120,
+      "size": 144,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170528",
+      "size": 472,
       "type": 1
     },
     {
@@ -164,14 +170,28 @@
       "address": "0x8006374c",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "EndianSwap__FR16AnimFileFormat_t",
+      "address": "0x8006438c",
+      "size": 380,
+      "binding": 2
+    },
+    {
+      "name": "AnimFileRelocate",
+      "address": "0x80063754",
+      "size": 3128,
+      "binding": 1
     }
   ],
   "externals": {
     "ARAM_alloc": "0x8015067c",
     "ARQPostRequest": "0x8011f45c",
+    "AnimStGetCallbackIndexFromID": "0x8006727c",
     "DCFlushRange": "0x80111880",
     "DWI_alloc__FPCcii": "0x8001c974",
     "DebugMsg__FPCce": "0x80018c88",
+    "EndianSwapAnimPlugIn__FR20AnimFilePluginData_ti": "0x8005de58",
     "MEM_resize": "0x8014f98c",
     "MEM_size": "0x8014ff3c",
     "MEM_totalunused": "0x8014f4b8",
@@ -190,7 +210,8 @@
     "g_fromARAM_request": "0x801d3620",
     "g_num_allocations": "0x8034e950",
     "g_toARAM_request": "0x801d3640",
-    "memcpy": "0x800094f8"
+    "memcpy": "0x800094f8",
+    "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -213,40 +234,5 @@
     "g_num_allocations"
   ],
   "original_file": "animemot.cpp",
-  "original_file_index": 2906,
-  "pooled_sections": [
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 24,
-      "address": "0x80170528"
-    },
-    {
-      "section": ".rodata",
-      "offset": 24,
-      "size": 20,
-      "address": "0x80170540"
-    },
-    {
-      "section": ".rodata",
-      "offset": 44,
-      "size": 30,
-      "address": "0x80170554"
-    },
-    {
-      "section": ".rodata",
-      "offset": 204,
-      "size": 10,
-      "address": "0x801705f4"
-    },
-    {
-      "section": ".rodata",
-      "offset": 216,
-      "size": 67,
-      "address": "0x80170600"
-    }
-  ]
+  "original_file_index": 2906
 }

@@ -1,18 +1,21 @@
-// animemot.cpp from its start to AnimFileGetObjectType: copying an animation
-// file's meta-data into the dynamic anim-copy block (header, frame table,
-// animation list, emotion animations with their compressed 'SKEL' data, the
-// state list and each state definition with its transition and animation
-// lists and data blobs), all through one bump allocator that counts the
-// allocations, rounds sizes up to 4 bytes and grows the block by 100000 bytes;
-// fetching a frame from ARAM into the frame cache; uploading the frame data to
-// ARAM and rebasing the frame table; the ARAM transfer callbacks; and the
-// state/animation queries. Globals, functions and AnimFileFormat_t are named
-// by the symbols; the record layouts are inferred from the code. Notes on the
-// forms: a blob's size is 'length + 4' computed from a short local at each use;
-// list entries are copied by small inlines (the state-animation one takes the
-// source first); the upload length is built as 'finish - start' plus the lead.
-// AnimFileRelocate and the weak EndianSwap(AnimFileFormat_t&) are not part of
-// this unit.
+// animemot.cpp: copying an animation file's meta-data into the dynamic
+// anim-copy block (header, frame table, animation list, emotion animations
+// with their compressed 'SKEL' data, the state list and each state definition
+// with its transition and animation lists and data blobs), all through one
+// bump allocator that counts the allocations, rounds sizes up to 4 bytes and
+// grows the block by 100000 bytes; fetching a frame from ARAM into the frame
+// cache; uploading the frame data to ARAM and rebasing the frame table; the
+// ARAM transfer callbacks; the state/animation queries; and relocating a
+// loaded file (byte-swapping it and turning its offsets into pointers, with a
+// warning for a file from another eMotion version). Globals, functions and
+// AnimFileFormat_t are named by the symbols; the record layouts are inferred
+// from the code. Notes on the forms: a blob's size is 'length + 4' computed
+// from a short local at each use; list entries are copied by small inlines
+// (the state-animation one takes the source first); the upload length is
+// built as 'finish - start' plus the lead. The byte-swap helpers are reached
+// through one or two typed wrappers per field, which is what sets the order of
+// their stack temporaries; the header swap EndianSwap(AnimFileFormat_t&) is an
+// inline too large to inline, so it is emitted (weak) at the end of the file.
 typedef struct ARQRequest ARQRequest;
 typedef void (*ARQCallback)(unsigned long);
 
@@ -23,6 +26,8 @@ void VIWaitForRetrace(void);
 void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long,
                     unsigned long, ARQCallback);
 unsigned long ARAM_alloc(void*, const char*, unsigned long, int);
+int printf(const char*, ...);
+int AnimStGetCallbackIndexFromID(int);
 }
 
 void DebugMsg(const char*, ...);
@@ -522,4 +527,279 @@ unsigned short AnimFileGetObjectType(AnimFileView_t* file) {
     return file->objecttype;
 }
 
+}
+
+inline void ChangeEndian(short& value) {
+    unsigned char bytes[2];
+    *reinterpret_cast<short*>(bytes) = value;
+    unsigned char c = bytes[0];
+    bytes[0] = bytes[1];
+    bytes[1] = c;
+    value = *reinterpret_cast<short*>(bytes);
+}
+
+inline void ChangeEndian(int& value) {
+    unsigned char bytes[4];
+    *reinterpret_cast<int*>(bytes) = value;
+    unsigned char c = bytes[0];
+    bytes[0] = bytes[3];
+    bytes[3] = c;
+    c = bytes[1];
+    bytes[1] = bytes[2];
+    bytes[2] = c;
+    value = *reinterpret_cast<int*>(bytes);
+}
+
+inline void ChangeEndian(unsigned int& value) { ChangeEndian(*reinterpret_cast<int*>(&value)); }
+inline void ChangeEndian(unsigned short& value) { ChangeEndian(*reinterpret_cast<short*>(&value)); }
+inline void ChangeEndian(long& value) { ChangeEndian(*reinterpret_cast<unsigned int*>(&value)); }
+template <class T> inline void ChangeEndian(T*& value) { ChangeEndian(*reinterpret_cast<unsigned int*>(&value)); }
+inline void SwapShort(unsigned short& value) { ChangeEndian(value); }
+
+
+
+struct AnimFilePluginData_t;
+void EndianSwapAnimPlugIn(AnimFilePluginData_t&, int);
+
+inline void EndianSwap(AnimFileFormat_t& value) {
+    ChangeEndian(value.field00);
+    ChangeEndian(value.field04);
+    ChangeEndian(value.field08);
+    ChangeEndian(value.field0A);
+    ChangeEndian(value.numFrames);
+    ChangeEndian(value.field0E);
+    ChangeEndian(*reinterpret_cast<int*>(&value.states));
+    ChangeEndian(*reinterpret_cast<int*>(&value.animations));
+    ChangeEndian(*reinterpret_cast<int*>(&value.frames));
+}
+
+// Views of the file as loaded (offsets not yet relocated) used by
+// AnimFileRelocate.
+struct RelCompTable_t { unsigned short count; };
+struct RelCompPairTable_t { unsigned short count; };
+struct RelCompressedData_t {
+    int magic;
+    RelCompTable_t* table;
+    RelCompPairTable_t* pairs;
+};
+
+struct RelEmotAnimation_t {
+    unsigned char header[4];
+    RelCompressedData_t* data;
+    unsigned short frames[1];
+};
+
+struct RelEmotAnimList_t {
+    long count;
+    RelEmotAnimation_t* items[1];
+};
+
+struct RelStateAnim_t {
+    unsigned short id;
+    unsigned short pad;
+    AnimFilePluginData_t* data;
+};
+
+struct RelStateAnimList_t {
+    int count;
+    RelStateAnim_t items[1];
+};
+
+struct RelTransBlob_t {
+    short a, b, c, d;
+    int e;
+    short f, g;
+};
+inline void EndianSwap(RelTransBlob_t& blob) {
+    ChangeEndian(*(unsigned short*)&blob.a);
+    ChangeEndian(*(unsigned short*)&blob.b);
+    ChangeEndian(*(unsigned short*)&blob.c);
+    ChangeEndian(*(unsigned short*)&blob.d);
+    ChangeEndian(*(unsigned int*)&blob.e);
+    ChangeEndian(*(unsigned short*)&blob.f);
+    ChangeEndian(*(unsigned short*)&blob.g);
+}
+
+struct RelTransition_t {
+    unsigned short values[5];
+    RelTransBlob_t* blob;
+};
+
+struct RelTransList_t {
+    int count;
+    RelTransition_t items[1];
+};
+
+inline void EndianSwap(RelStateAnim_t& item) {
+    ChangeEndian(item.id);
+    ChangeEndian(item.pad);
+    ChangeEndian(*(unsigned int*)&item.data);
+}
+inline void EndianSwap(RelStateAnimList_t& list) {
+    ChangeEndian(*(unsigned int*)&list.count);
+    for (unsigned int i = 0; i < list.count; i++)
+        EndianSwap(list.items[i]);
+}
+inline void EndianSwap(RelTransition_t& item) {
+    ChangeEndian(item.values[0]);
+    ChangeEndian(item.values[1]);
+    ChangeEndian(item.values[2]);
+    ChangeEndian(item.values[3]);
+    ChangeEndian(item.values[4]);
+    ChangeEndian(*(unsigned int*)&item.blob);
+}
+inline void EndianSwap(RelTransList_t& list) {
+    ChangeEndian(*(unsigned int*)&list.count);
+    for (unsigned int i = 0; i < list.count; i++)
+        EndianSwap(list.items[i]);
+}
+struct RelEmotStateDef_t {
+    unsigned short id;
+    unsigned short flags;
+    int callback;
+    RelStateAnimList_t* anims;
+    AnimFilePluginData_t* info;
+    RelTransList_t* transitions;
+};
+
+struct RelEmotStateList_t {
+    long count;
+    RelEmotStateDef_t states[1];
+};
+
+struct RelFileFormat_t {
+    int magic;
+    int version;
+    unsigned short objecttype;
+    unsigned short filenum;
+    unsigned short numFrames;
+    unsigned short field0e;
+    RelEmotStateList_t* states;
+    RelEmotAnimList_t* animations;
+    int* frames;
+};
+
+inline void EndianSwap(RelEmotAnimList_t& list) {
+    ChangeEndian(*(unsigned int*)&list.count);
+    for (unsigned int i = 0; i < list.count; i++)
+        ChangeEndian(*(unsigned int*)&list.items[i]);
+}
+
+inline int AnimFrameCount(RelEmotAnimation_t* anim, RelFileFormat_t* file, long index) {
+    unsigned int bytes;
+    int count;
+    if (anim->data) {
+        bytes = (char*)anim->data - (char*)anim->frames;
+        count = bytes / 2;
+    } else {
+        if (index < file->animations->count - 1U)
+            bytes = (char*)file->animations->items[index + 1] - (char*)file->animations->items[index];
+        else
+            bytes = (char*)file->animations - (char*)file->animations->items[index];
+        bytes -= 10;
+        count = bytes / 2;
+    }
+    return count;
+}
+
+inline void SwapAnimFrames(RelEmotAnimation_t* anim, RelFileFormat_t* file, long index) {
+    unsigned int bytes;
+    int count;
+    if (anim->data) {
+        bytes = (char*)anim->data - (char*)anim->frames;
+        count = bytes / 2;
+    } else {
+        if (index < file->animations->count - 1U)
+            bytes = (char*)file->animations->items[index + 1] - (char*)file->animations->items[index];
+        else
+            bytes = (char*)file->animations - (char*)file->animations->items[index];
+        bytes -= 10;
+        count = bytes / 2;
+    }
+    for (int k = 0; k < count; k++)
+        ChangeEndian(anim->frames[k]);
+}
+
+inline void RelocateCompressed(RelCompressedData_t* data, RelFileFormat_t* file) {
+    {
+        ChangeEndian(*(unsigned int*)&data->table);
+        ChangeEndian(*(unsigned int*)&data->pairs);
+        data->table = (RelCompTable_t*)((char*)data->table + (int)file);
+        data->pairs = (RelCompPairTable_t*)((char*)data->pairs + (int)file);
+        ChangeEndian(data->pairs->count);
+        ChangeEndian(data->table->count);
+    }
+}
+
+extern "C" void AnimFileRelocate(RelFileFormat_t* file, const char* name) {
+    EndianSwap(*(AnimFileFormat_t*)file);
+    if (file->magic != 'EMT\0') {
+        const char* def = "no_name_specified";
+        if (!name)
+            name = def;
+        printf("The EMT file %s was exported with an old version of eMotion\n", name);
+    } else if (file->version != 1U) {
+        printf("The EMT file %s was exported with an different version of eMotion\n", name);
+        printf("EMT version = %d, code version = %d", file->version, 1);
+    }
+    file->states = (RelEmotStateList_t*)((char*)file->states + (int)file);
+    file->animations = (RelEmotAnimList_t*)((char*)file->animations + (int)file);
+    file->frames = (int*)((char*)file->frames + (int)file);
+    int i;
+    for (i = 0; i < file->numFrames; i++) {
+        ChangeEndian(*(unsigned int*)&file->frames[i]);
+        file->frames[i] += (int)file;
+    }
+
+    ChangeEndian(file->states->count);
+    for (i = 0; i < file->states->count; i++) {
+        RelEmotStateDef_t* state = &file->states->states[i];
+        SwapShort(state->id);
+        SwapShort(state->flags);
+        ChangeEndian(*(unsigned int*)&state->callback);
+        ChangeEndian(state->anims);
+        ChangeEndian(state->info);
+        ChangeEndian(state->transitions);
+        state->callback = AnimStGetCallbackIndexFromID(state->callback);
+
+        state->anims = (RelStateAnimList_t*)((char*)state->anims + (int)file);
+        EndianSwap(*state->anims);
+        int j;
+        for (j = 0; j < state->anims->count; j++) {
+            if (state->anims->items[j].data) {
+                state->anims->items[j].data = (AnimFilePluginData_t*)((char*)state->anims->items[j].data + (int)file);
+                EndianSwapAnimPlugIn(*state->anims->items[j].data, state->callback);
+            }
+        }
+        if (state->info) {
+            state->info = (AnimFilePluginData_t*)((char*)state->info + (int)file);
+            EndianSwapAnimPlugIn(*state->info, state->callback);
+        }
+
+        state->transitions = (RelTransList_t*)((char*)state->transitions + (int)file);
+        EndianSwap(*state->transitions);
+        for (j = 0; j < state->transitions->count; j++) {
+            if (state->transitions->items[j].blob) {
+                state->transitions->items[j].blob = (RelTransBlob_t*)((char*)state->transitions->items[j].blob + (int)file);
+                EndianSwap(*state->transitions->items[j].blob);
+            }
+        }
+    }
+
+    EndianSwap(*file->animations);
+    for (i = 0; i < file->animations->count; i++) {
+        file->animations->items[i] = (RelEmotAnimation_t*)((char*)file->animations->items[i] + (int)file);
+        ChangeEndian(file->animations->items[i]->data);
+        if (file->animations->items[i]->data) {
+            file->animations->items[i]->data = (RelCompressedData_t*)((char*)file->animations->items[i]->data + (int)file);
+            ChangeEndian(*(unsigned int*)&file->animations->items[i]->data->magic);
+            SwapAnimFrames(file->animations->items[i], file, i);
+            if (file->animations->items[i]->data->magic == 'SKEL')
+                RelocateCompressed(file->animations->items[i]->data, file);
+        }
+    }
+    for (i = 0; i < file->animations->count; i++) {
+        if (!file->animations->items[i]->data)
+            SwapAnimFrames(file->animations->items[i], file, i);
+    }
 }
