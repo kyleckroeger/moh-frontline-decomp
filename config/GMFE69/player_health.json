@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800a1580",
-      "size": 1544,
+      "address": "0x800a1278",
+      "size": 2320,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000cec4",
-      "size": 16,
+      "address": "0x8000cebc",
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014078",
-      "size": 24,
+      "address": "0x8001406c",
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,16 +68,25 @@
       "address": "0x800a1580",
       "size": 496,
       "binding": 1
+    },
+    {
+      "name": "OnCollision__13CPlayerObjectFRC10CCollision",
+      "address": "0x800a1278",
+      "size": 776,
+      "binding": 1
     }
   ],
   "externals": {
     "AEMS_SendEvent__FPv": "0x800ec26c",
     "AddAmo__19CPlayerWeaponObjectFi": "0x800a7fac",
     "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
+    "DebugMsg__FPCce": "0x80018c88",
     "DoneReloading__19CPlayerWeaponObjectFv": "0x800a800c",
     "EnableDumpCollisionsByType__F9EDumpTypeib": "0x8003f8b8",
+    "GetSoundIndex__12CSurfaceTypeFi": "0x8001bfe0",
     "GetWeaponInfoByCRC__13CPlayerObjectFiPiPi": "0x8009f58c",
     "GetWeaponSoundType__7CWeaponCFv": "0x800d4ff8",
+    "HitDumpObject__FP13CStaticObjectPiPiP9EDumpTypePi": "0x8003fbdc",
     "IsSelectable__19CPlayerWeaponObjectCFv": "0x800a8074",
     "MarkDumpObjectForDestruction__FPv": "0x8003fb0c",
     "MathFunRandomI64__Fxx": "0x80092dd4",
@@ -99,12 +108,25 @@
   "original_file": "player.cpp",
   "original_file_index": 6101,
   "pooled_sections": [
-    ".sdata2"
+    ".sdata2",
+    ".rodata"
   ],
   "pool_references": [
     {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 53,
+      "address": "0x80176c3c"
+    },
+    {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350620"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 3,
       "address": "0x80350640"
     }
