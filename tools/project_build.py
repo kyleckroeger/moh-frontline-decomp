@@ -276,6 +276,18 @@ def validate_units(original, units):
                     or any(s["name"] == name and s["binding"] and s["section"] for s in symbols)
                     or not unit.get("original_file")):
                 raise ValueError(f"Weak local is not a file-local original function: {name}")
+        # Classes the original linker removed whole, kept in the source as
+        # minimal stubs (their type-name strings survive in a pooled block):
+        # an explicit list of their functions (discarded) and data objects.
+        stubs = unit.get("linker_stripped", {})
+        stub_names = stubs.get("functions", []) + stubs.get("objects", [])
+        if stubs and (set(stubs) - {"functions", "objects"} or not stub_names or not unit["strip_unused"]
+                      or not unit.get("original_file") or len(set(stub_names)) != len(stub_names)
+                      or not set(stubs.get("functions", [])) <= set(unit["discarded_functions"])):
+            raise ValueError("Linker-stripped definitions need a stripping, file-scoped unit")
+        for name in stub_names:
+            if name in names:
+                raise ValueError(f"Cannot strip a definition present in the target: {name}")
         validate_pool(original, unit)
         local_discards = set(unit.get("discarded_local_functions", []))
         if not local_discards <= set(unit["discarded_functions"]) or (local_discards and not unit.get("original_file")):

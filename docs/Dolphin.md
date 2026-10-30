@@ -173,6 +173,25 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   Use it instead of `linked_offset` for leading objects too when the shifted
   base would break the section's alignment; SN then pads the start (`dsp_task`
   `.sbss`, `GXTexture` `.data`).
+- **Linker-stripped classes.** MW's linker could remove a class whole (its
+  functions, virtual table and type record) while its type-name string
+  survived in the file's pooled string block, which retained code addresses
+  by offset (`Screen.cpp`'s `CScreenFrameMode` and `CScreenFieldModePAL`).
+  The source then keeps minimal stubs of such classes (empty bodies, attested
+  by those names) so that the block holds the names in their places, and the
+  unit lists the stubs in `linker_stripped`: `functions` (which must also be
+  `discarded_functions`) and `objects` (virtual tables and type records), by
+  their compiled names. Each name must be exactly one compiled function or data
+  object, or the build fails; none may exist in the target. `data_strip.py`
+  removes, object by object, the listed objects, each listed function's
+  exception records (the `extabindex` entry that points at it and the `extab`
+  entry that entry names) and each listed type record's base list (the
+  anonymous object its second word points at); the type-name strings stay.
+  It moves them after their sections' kept bytes like stripped objects, and
+  fails if one would land inside a section's kept slice. The trimmed-tail
+  checks then apply, and SN's unused-code stripping drops the functions.
+  `port_unit.py --linker-stripped NAME` (functions and objects alike)
+  applies the same move before matching and drafts the list.
 - **Small data at 4 mod 8.** MWCC gives `.sdata`, `.sbss`, `.sdata2` and
   `.rodata` 8-byte alignment, but MW's linker placed some of these input
   sections at addresses that are 4 mod 8 (`smixfx` `.sbss` at `0x8034f4d4`).

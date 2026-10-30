@@ -13,7 +13,7 @@ import struct
 from pathlib import Path
 
 from audit import load_target
-from data_strip import pool_item, section_chunks
+from data_strip import linker_stripped, pool_item, section_chunks, strip_objects
 from formats import Elf32
 from sdk_build import compile_sdk
 from setup import CONFIG, ROOT
@@ -148,11 +148,12 @@ def pool_reference(obj, section, offset, target, pool):
     anchor(pool, (section["name"], start, pool_item(obj, section, start)), target - (offset - start))
 
 
-def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=()):
+def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(), dropped=()):
     """Return section addresses, external addresses and the stripped text layout.
 
     References into a pooled section are recorded per item in `pool` instead
-    of placing the section.
+    of placing the section. Relocations inside `dropped` objects (linker-
+    stripped definitions) pin nothing.
     """
     symbols = list(obj.symbols())
     locals_ = original.locals_of(file_index)
@@ -186,7 +187,7 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
     # Relocations inside a weak duplicate (a dropped virtual table's entries)
     # must not pin anything: the duplicate is not placed.
     dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
-                     if s["name"] in duplicates and s["section"] and s["section"] < 0xFF00]
+                     if (s["name"] in duplicates or s["name"] in dropped) and s["section"] and s["section"] < 0xFF00]
 
     def in_dropped(section, where):
         return any(section == d and a <= where < b for d, a, b in dropped_spans)
@@ -399,9 +400,26 @@ def draft(args):
     compiler, wrapper = setup_compiler(unit["compiler_version"], "GC")
     compile_sdk(unit, compiler, wrapper, work, lambda stage, *a: run(a, work, work / f"{stage}.log"))
     obj = Elf32((work / "compiled.o").read_bytes())
+    stubs = set()
+    if args.linker_stripped:
+        # Classes the original linker removed whole: move their objects to the
+        # end of their sections, as the build does, and match the rest.
+        names = {s["name"]: s for s in obj.symbols() if s["section"] and s["section"] < 0xFF00}
+        spec = {"functions": [n for n in args.linker_stripped if n in names and names[n]["type"] == 2],
+                "objects": [n for n in args.linker_stripped if n in names and names[n]["type"] == 1]}
+        if len(spec["functions"]) + len(spec["objects"]) != len(args.linker_stripped):
+            raise ValueError("A linker-stripped name is not a compiled function or data object")
+        unit["linker_stripped"] = {k: v for k, v in spec.items() if v}
+        data_sections = [{"name": s["name"], "size": s["size"]} for s in obj.sections
+                         if s["flags"] & 2 and s["size"] and s["name"] not in CODE_SECTIONS]
+        obj = Elf32(strip_objects((work / "compiled.o").read_bytes(),
+                                  {"strip_unused": True, "linker_stripped": unit["linker_stripped"],
+                                   "sections": data_sections}, check_kept=False))
+        _, objects = linker_stripped(obj, unit)
+        stubs = {s["name"] for s in objects}
     try:
         addresses, externals, layout, discarded, pool = match(obj, original, file_index, set(args.weak_duplicate),
-                                                             set(args.pool), set(args.file_duplicate))
+                                                             set(args.pool), set(args.file_duplicate), stubs)
         kept = [k for kept_, _ in layout.values() for k in kept_]
     except ValueError:
         compare_functions(obj, original, file_index)
@@ -409,6 +427,8 @@ def draft(args):
     sections, stripped = [], []
     dropped = discarded or args.weak_duplicate or args.file_duplicate
     duplicates = set(args.weak_duplicate) | set(args.file_duplicate)
+    if stubs and not {f["name"] for f in discarded} >= set(unit["linker_stripped"].get("functions", [])):
+        raise ValueError("A linker-stripped function is in the original")
     for section in obj.sections:
         if not section["flags"] & 2 or not section["size"] or section["name"] in args.pool:
             continue
@@ -424,7 +444,7 @@ def draft(args):
                              "size": layout[section["index"]][1], "type": 1})
             continue
         span = kept_span(obj, section["index"], kept, original, original.locals_of(file_index),
-                         addresses[section["name"]], duplicates)
+                         addresses[section["name"]], duplicates | stubs)
         if span is None and dropped:
             stripped.append(section["name"])
             continue
@@ -523,6 +543,8 @@ if __name__ == "__main__":
                         help="A function this unit compiles whose original copy another unit of the same file places")
     parser.add_argument("--pool", action="append", default=[],
                         help="A compiler data section whose items link at their original pool addresses")
+    parser.add_argument("--linker-stripped", action="append", default=[],
+                        help="A function or data object (vtable, RTTI record) of a class the original linker removed whole")
     parser.add_argument("--leading-filler", type=int,
                         help="Bytes of the file's earlier .bss that set this fragment's .bss alignment phase")
     parser.add_argument("--upstream-path", help="Path of the source in the upstream repository")

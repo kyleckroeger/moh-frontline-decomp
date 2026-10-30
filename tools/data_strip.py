@@ -40,6 +40,16 @@ lower, to 2 or 1, when every object in it allows that alignment: MW packs
 one-byte function-static guards at odd `.sbss` addresses. Only the section
 header's alignment changes; the bytes are still compared with the original.
 
+A unit may list `linker_stripped` definitions: functions and data objects
+(virtual tables, RTTI records) of classes the original linker removed
+entirely, which the source keeps as minimal stubs only because strings of
+theirs survive in a pooled block. Each listed name must be exactly one
+compiled definition. The functions are discarded functions; their exception
+records (the `extabindex` entry that points at the function and the `extab`
+entry it names) and the listed objects, with the base list each listed RTTI
+record names, are moved to the end of their sections like stripped objects,
+so the trimmed-tail checks keep them out of the compared and credited bytes.
+
 The rewrite permutes bytes and keeps the file size (apart from the symbol
 tables that weak duplicates and pool references move); the original compiler
 output is still what the build report hashes.
@@ -187,6 +197,73 @@ def redirect_pool_references(data, unit):
     return bytes(out)
 
 
+def linker_stripped(obj, unit):
+    """The compiled objects of a unit's `linker_stripped` definitions.
+
+    Returns (functions, objects): the listed function symbols, and every data
+    object to remove (the listed objects, the listed functions' exception
+    records and listed RTTI records' base lists). A listed name that is not
+    exactly one compiled definition of its kind fails.
+    """
+    spec = unit.get("linker_stripped", {})
+    if not spec:
+        return [], []
+    if set(spec) - {"functions", "objects"}:
+        raise ValueError("Unknown linker-stripped definition kind")
+    symbols = list(obj.symbols())
+
+    def code(symbol):
+        return obj.sections[symbol["section"]]["name"] in (".text", ".init")
+
+    def one(name, kind):
+        found = [s for s in symbols if s["name"] == name and 0 < s["section"] < 0xFF00
+                 and s["type"] == kind and s["size"] and code(s) == (kind == STT_FUNC)]
+        if len(found) != 1:
+            raise ValueError(f"Linker-stripped definition is not one compiled "
+                             f"{'function' if kind == STT_FUNC else 'data object'}: {name}")
+        return found[0]
+
+    functions = [one(name, STT_FUNC) for name in spec.get("functions", [])]
+    listed = [one(name, STT_OBJECT) for name in spec.get("objects", [])]
+    objects = {(s["section"], s["address"]): s for s in symbols
+               if s["type"] == STT_OBJECT and s["size"] and 0 < s["section"] < 0xFF00}
+
+    def containing(section, offset):
+        found = [s for (i, a), s in objects.items() if i == section and a <= offset < a + s["size"]]
+        return found[0] if len(found) == 1 else None
+
+    references = []  # (located object, target section, target offset)
+    for rela in obj.sections:
+        if rela["type"] != 4 or not obj.sections[rela["info"]]["flags"] & 2:
+            continue
+        for entry in range(0, rela["size"], 12):
+            where, info, addend = struct.unpack_from(">IIi", obj.contents(rela), entry)
+            symbol = symbols[info >> 8]
+            located = containing(rela["info"], where)
+            if located is not None and 0 < symbol["section"] < 0xFF00:
+                references.append((located, where - located["address"], symbol["section"], symbol["address"] + addend))
+    removed = {(s["section"], s["address"]): s for s in listed}
+    by_name = {s["index"]: s["name"] for s in obj.sections}
+    for function in functions:
+        for located, _, section, target in references:
+            if (by_name[located["section"]] == "extabindex" and section == function["section"]
+                    and target == function["address"]):
+                removed[(located["section"], located["address"])] = located
+                for other, _, extab, offset in references:
+                    if other is located and by_name[extab] == "extab":
+                        record = containing(extab, offset)
+                        if record is None:
+                            raise ValueError(f"Exception record is not one compiler object: {function['name']}")
+                        removed[(record["section"], record["address"])] = record
+    for record in listed:
+        if record["name"].startswith("__RTTI__"):
+            for located, offset, section, target in references:
+                base_list = containing(section, target)
+                if located is record and offset == 4 and base_list is not None and base_list["name"].startswith("@"):
+                    removed[(base_list["section"], base_list["address"])] = base_list
+    return functions, list(removed.values())
+
+
 def natural_alignment(size):
     """Largest power of two up to 8 dividing an object's size."""
     alignment = 1
@@ -201,8 +278,11 @@ def c_identifier(name):
     return match.group(1) if match else name
 
 
-def section_chunks(obj, section, names):
-    """Split a section at object starts; return (chunks, stripped flags)."""
+def section_chunks(obj, section, names, offsets=()):
+    """Split a section at object starts; return (chunks, stripped flags).
+
+    `offsets` are the starts of further objects to strip (linker-stripped
+    definitions, found by symbol rather than by C name)."""
     objects = sorted((s["address"], s["size"], c_identifier(s["name"])) for s in obj.symbols()
                      if s["section"] == section["index"] and s["type"] == STT_OBJECT and s["size"])
     starts = sorted({a for a, _, _ in objects} | {0})
@@ -219,6 +299,8 @@ def section_chunks(obj, section, names):
         if address + size > bounds[index][1]:
             raise ValueError(f"Stripped object overlaps the next object: {name}")
         stripped[index] = True
+    for address in offsets:
+        stripped[starts.index(address)] = True
     return bounds, stripped
 
 
@@ -240,20 +322,33 @@ def offset_map(bounds, stripped, size):
     return order, remap
 
 
-def strip_objects(data, unit):
-    """Return a rewritten object for linking, or the input when nothing applies."""
+def strip_objects(data, unit, check_kept=True):
+    """Return a rewritten object for linking, or the input when nothing applies.
+
+    `check_kept` requires every linker-stripped object to land outside its
+    section's kept slice (port_unit drafts the slices from the moved object)."""
     data = redirect_pool_references(redirect_weak_duplicates(data, unit), unit)
     obj = Elf32(data)
     out = bytearray(data)
     by_name = {s["name"]: s for s in obj.sections}
     remaps, dead = {}, {}  # section index -> remap function / dead [start, end) ranges
+    _, stubs = linker_stripped(obj, unit)
+    stub_offsets = {}
+    for stub in stubs:
+        stub_offsets.setdefault(stub["section"], set()).add(stub["address"])
+    placed = {by_name[m["name"]]["index"] for m in unit["sections"]}
+    parked = {by_name[n]["index"] for n in unit.get("stripped_sections", []) + unit.get("pooled_sections", [])
+              if n in by_name}
+    if any(index not in placed | parked for index in stub_offsets):
+        raise ValueError("Linker-stripped data lies in an unaccounted section")
     for manifest in unit["sections"]:
         names = manifest.get("stripped_objects", [])
         section = by_name[manifest["name"]]
-        if names:
+        offsets = stub_offsets.get(section["index"], ())
+        if names or offsets:
             if not unit["strip_unused"] or manifest["name"] in (".text", ".init"):
                 raise ValueError("Object stripping requires native unused-code stripping of data")
-            bounds, stripped = section_chunks(obj, section, names)
+            bounds, stripped = section_chunks(obj, section, names, offsets)
             order, remap = offset_map(bounds, stripped, section["size"])
             remaps[section["index"]] = remap
             if section["type"] != 8:
@@ -265,6 +360,13 @@ def strip_objects(data, unit):
             dead[section["index"]] = [(0, start), (start + manifest["size"], section["size"])]
     for name in unit.get("stripped_sections", []) + unit.get("pooled_sections", []):
         dead[by_name[name]["index"]] = [(0, by_name[name]["size"])]
+    if check_kept:
+        for stub in stubs:
+            remap = remaps.get(stub["section"])
+            offset = remap(stub["address"]) if remap else stub["address"]
+            if stub["section"] not in dead or not any(a <= offset and offset + stub["size"] <= b
+                                                      for a, b in dead[stub["section"]]):
+                raise ValueError(f"Linker-stripped object is inside the kept data: {stub['name']}")
 
     section_headers = struct.unpack_from(">I", data, 32)[0]
     for manifest in unit["sections"]:
