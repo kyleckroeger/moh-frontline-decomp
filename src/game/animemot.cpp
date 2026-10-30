@@ -1,15 +1,388 @@
-// ARAM transfer callbacks (record the completion tick and clear the
-// transfer-in-progress flag for the direction) and the animation-file
-// queries: a state's info, callback id, transition and animation lists (the
-// lists are appended to caller-provided arrays with a count and a capacity),
-// an animation by index, and the file number and object type. The globals and
-// AnimFileFormat_t are named by the symbols; their layouts and the table and
-// list views are inferred. The rest of the file is not part of this unit.
-extern "C" unsigned long OSGetTick(void);
+// animemot.cpp from its start to AnimFileGetObjectType: copying an animation
+// file's meta-data into the dynamic anim-copy block (header, frame table,
+// animation list, emotion animations with their compressed 'SKEL' data, the
+// state list and each state definition with its transition and animation
+// lists and data blobs), all through one bump allocator that counts the
+// allocations, rounds sizes up to 4 bytes and grows the block by 100000 bytes;
+// fetching a frame from ARAM into the frame cache; uploading the frame data to
+// ARAM and rebasing the frame table; the ARAM transfer callbacks; and the
+// state/animation queries. Globals, functions and AnimFileFormat_t are named
+// by the symbols; the record layouts are inferred from the code. Notes on the
+// forms: a blob's size is 'length + 4' computed from a short local at each use;
+// list entries are copied by small inlines (the state-animation one takes the
+// source first); the upload length is built as 'finish - start' plus the lead.
+// AnimFileRelocate and the weak EndianSwap(AnimFileFormat_t&) are not part of
+// this unit.
+typedef struct ARQRequest ARQRequest;
+typedef void (*ARQCallback)(unsigned long);
 
+extern "C" {
+unsigned long OSGetTick(void);
+void DCFlushRange(void*, unsigned long);
+void VIWaitForRetrace(void);
+void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long,
+                    unsigned long, ARQCallback);
+unsigned long ARAM_alloc(void*, const char*, unsigned long, int);
+}
+
+void DebugMsg(const char*, ...);
+void* DWI_alloc(const char*, int, int);
+extern "C" void* MEM_resize(void*, unsigned int);
+extern "C" unsigned int MEM_size(void*);
+extern "C" int MEM_totalunused(int);
+
+extern unsigned int g_amount_allocated;
+extern unsigned int g_num_allocations;
+extern char* g_anim_copy_memory;
+extern unsigned int g_anim_copy_memory_sz;
+extern unsigned int g_anim_copy_memory_cur;
+
+// Inferred views.
+struct AnimEmotAnimation_t {
+    unsigned char header[4];
+    unsigned char* data;
+    unsigned short frames[1];
+};
+
+struct AnimEmotAnimList_t {
+    unsigned int count;
+    AnimEmotAnimation_t* items[1];
+};
+
+struct AnimBlob_t {
+    unsigned short type;
+    unsigned short length;
+};
+struct AnimTransition_t {
+    unsigned short state;
+    AnimBlob_t* blob;
+};
+struct AnimTransList_t {
+    unsigned int count;
+    AnimTransition_t entries[1];
+};
+struct AnimStateAnim_t {
+    unsigned short values[5];
+    AnimBlob_t* blob;
+};
+struct AnimStateAnimList_t {
+    unsigned int count;
+    AnimStateAnim_t entries[1];
+};
+struct AnimEmotStateDef_t {
+    unsigned short id;
+    unsigned short flags;
+    int callback;
+    AnimTransList_t* transitions;
+    AnimBlob_t* blob;
+    AnimStateAnimList_t* anims;
+};
+
+struct AnimEmotStateList_t {
+    int count;
+    AnimEmotStateDef_t states[1];
+};
+
+struct AnimFileFormat_t {
+    int field00;
+    int field04;
+    unsigned short field08;
+    unsigned short field0A;
+    unsigned short numFrames;
+    unsigned short field0E;
+    AnimEmotStateList_t* states;
+    AnimEmotAnimList_t* animations;
+    unsigned int* frames;
+};
+
+struct AnimCompEntry_t {
+    short a;
+    short b;
+    short c;
+};
+
+struct AnimCompTable_t {
+    unsigned short count;
+    AnimCompEntry_t entries[1];
+};
+
+struct AnimCompPair_t {
+    unsigned char a;
+    unsigned char b;
+};
+
+struct AnimCompPairTable_t {
+    unsigned short count;
+    AnimCompPair_t entries[1];
+};
+
+struct AnimCompressedData_t {
+    int magic;
+    AnimCompTable_t* table;
+    AnimCompPairTable_t* pairs;
+};
+
+AnimEmotStateList_t* CopyStateList(AnimFileFormat_t*);
+AnimEmotAnimList_t* CopyAnimList(AnimFileFormat_t*);
+AnimEmotAnimation_t* CopyEmotAnimation(AnimEmotAnimation_t*, AnimFileFormat_t*, int);
+unsigned char* CopyCompressedData(unsigned char*);
+void CopyStateDef(AnimEmotStateDef_t*, AnimEmotStateDef_t*);
+
+// The shared allocator (inlined at every copy).
+inline void* AnimCopyAlloc(unsigned int size) {
+    g_amount_allocated += size;
+    g_num_allocations++;
+    unsigned int aligned = size;
+    if (size & 3) {
+        aligned = (~size & 3) + size;
+        aligned += 1;
+    }
+    if (g_anim_copy_memory_cur + aligned > g_anim_copy_memory_sz) {
+        DebugMsg("Growing animation data array\n");
+        if (!g_anim_copy_memory) {
+            g_anim_copy_memory_sz += 100000;
+            g_anim_copy_memory = (char*)DWI_alloc("Animation meta-data", 100000, 1024);
+        } else {
+            g_anim_copy_memory_sz += 100000;
+            g_anim_copy_memory_sz = MEM_size(MEM_resize(g_anim_copy_memory, g_anim_copy_memory_sz));
+        }
+    }
+    void* p = g_anim_copy_memory + g_anim_copy_memory_cur;
+    g_anim_copy_memory_cur += aligned;
+    return p;
+}
+
+inline unsigned int* CopyFrameTable(AnimFileFormat_t* file) {
+    unsigned int* frames = (unsigned int*)AnimCopyAlloc((file->numFrames + 1) * sizeof(unsigned int));
+    for (int i = 0; i < file->numFrames; i++)
+        frames[i] = file->frames[i];
+    return frames;
+}
+
+AnimFileFormat_t* CopyAnimFileFormatStructureToDynMem(AnimFileFormat_t* file) {
+    int before = MEM_totalunused(0);
+    DebugMsg("Memory Free before: %d\n", before);
+    g_anim_copy_memory_sz = (int)(0.2 * (int)MEM_size(file));
+    g_anim_copy_memory = (char*)DWI_alloc("Animation meta-data", g_anim_copy_memory_sz, 1024);
+    g_anim_copy_memory_cur = 0;
+    AnimFileFormat_t* copy = (AnimFileFormat_t*)AnimCopyAlloc(sizeof(AnimFileFormat_t));
+    copy->field00 = file->field00;
+    copy->field04 = file->field04;
+    copy->field08 = file->field08;
+    copy->field0A = file->field0A;
+    copy->numFrames = file->numFrames;
+    copy->states = CopyStateList(file);
+    copy->animations = CopyAnimList(file);
+    unsigned int* frames = CopyFrameTable(file);
+    DebugMsg("Frame Data start %x end %x size %d\n", frames[0], file->frames, (int)file->frames - frames[0]);
+    copy->frames = frames;
+    g_anim_copy_memory_sz = MEM_size(MEM_resize(g_anim_copy_memory, g_anim_copy_memory_cur));
+    DebugMsg("Allocated %d Bytes for Anim File copy (%d allocations)\n", g_amount_allocated, g_num_allocations);
+    int after = MEM_totalunused(0);
+    DebugMsg("Memory Free after: %d (diff %d)\n", after, before - after);
+    return copy;
+}
+
+AnimEmotAnimList_t* CopyAnimList(AnimFileFormat_t* file) {
+    unsigned int size = (file->animations->count - 1) * 4 + 8;
+    AnimEmotAnimList_t* list = (AnimEmotAnimList_t*)AnimCopyAlloc(size);
+    list->count = file->animations->count;
+    for (unsigned int i = 0; i < list->count; i++)
+        list->items[i] = CopyEmotAnimation(file->animations->items[i], file, i);
+    return list;
+}
+
+// The frame count comes from the gap between the frame table and the
+// compressed data, or (without data) from the gap to the next animation.
+AnimEmotAnimation_t* CopyEmotAnimation(AnimEmotAnimation_t* anim, AnimFileFormat_t* file, int index) {
+    unsigned int bytes;
+    int count;
+    if (anim->data) {
+        bytes = (char*)anim->data - (char*)anim->frames;
+        count = bytes / 2;
+    } else {
+        AnimEmotAnimList_t* list = file->animations;
+        if (index < list->count - 1)
+            bytes = (char*)list->items[index + 1] - (char*)list->items[index];
+        else
+            bytes = (char*)list - (char*)list->items[index];
+        bytes -= 10;
+        count = bytes / 2;
+    }
+    unsigned int size = (count - 1) * sizeof(short) + sizeof(AnimEmotAnimation_t);
+    AnimEmotAnimation_t* copy = (AnimEmotAnimation_t*)AnimCopyAlloc(size);
+    copy->header[0] = anim->header[0];
+    copy->header[1] = anim->header[1];
+    copy->header[2] = anim->header[2];
+    copy->header[3] = anim->header[3];
+    copy->data = CopyCompressedData(anim->data);
+    for (int i = 0; i < count; i++)
+        copy->frames[i] = anim->frames[i];
+    return copy;
+}
+
+inline AnimCompTable_t* CopyCompTable(AnimCompTable_t* from) {
+    AnimCompTable_t* to = (AnimCompTable_t*)AnimCopyAlloc((from->count - 1) * sizeof(AnimCompEntry_t) + sizeof(AnimCompTable_t));
+    to->count = from->count;
+    for (int i = 0; i < from->count; i++)
+        to->entries[i] = from->entries[i];
+    return to;
+}
+
+inline AnimCompPairTable_t* CopyCompPairTable(AnimCompPairTable_t* from) {
+    AnimCompPairTable_t* to = (AnimCompPairTable_t*)AnimCopyAlloc((from->count - 1) * sizeof(AnimCompPair_t) + sizeof(AnimCompPairTable_t));
+    to->count = from->count;
+    for (int i = 0; i < to->count; i++)
+        to->entries[i] = from->entries[i];
+    return to;
+}
+
+unsigned char* CopyCompressedData(unsigned char* data) {
+    if (!data)
+        return 0;
+    AnimCompressedData_t* src = (AnimCompressedData_t*)data;
+    if (src->magic == 'SKEL') {
+        AnimCompressedData_t* copy = (AnimCompressedData_t*)AnimCopyAlloc(sizeof(AnimCompressedData_t));
+        copy->magic = src->magic;
+        copy->table = CopyCompTable(src->table);
+        copy->pairs = CopyCompPairTable(src->pairs);
+        return (unsigned char*)copy;
+    }
+    return 0;
+}
+
+AnimEmotStateList_t* CopyStateList(AnimFileFormat_t* file) {
+    unsigned int size = (file->states->count - 1) * sizeof(AnimEmotStateDef_t) + sizeof(AnimEmotStateList_t);
+    AnimEmotStateList_t* list = (AnimEmotStateList_t*)AnimCopyAlloc(size);
+    list->count = file->states->count;
+    for (int i = 0; i < file->states->count; i++)
+        CopyStateDef(&list->states[i], &file->states->states[i]);
+    return list;
+}
+
+extern "C" void* memcpy(void*, const void*, unsigned long);
+inline AnimBlob_t* CopyBlob(AnimBlob_t* from) {
+    if (from) {
+        unsigned short len = from->length;
+        AnimBlob_t* p = (AnimBlob_t*)AnimCopyAlloc(len + 4);
+        memcpy(p, from, len + 4);
+        return p;
+    }
+    return 0;
+}
+
+inline void CopyTransEntry(AnimTransition_t* to, AnimTransition_t* from) {
+    to->state = from->state;
+    to->blob = CopyBlob(from->blob);
+}
+inline AnimTransList_t* CopyTransList(AnimTransList_t* from) {
+    AnimTransList_t* to = (AnimTransList_t*)AnimCopyAlloc((from->count - 1) * sizeof(AnimTransition_t) + sizeof(AnimTransList_t));
+    to->count = from->count;
+    for (unsigned int i = 0; i < to->count; i++)
+        CopyTransEntry(&to->entries[i], &from->entries[i]);
+    return to;
+}
+
+inline void CopyStateAnim(AnimStateAnim_t* from, AnimStateAnim_t* to) {
+    to->values[0] = from->values[0];
+    to->values[1] = from->values[1];
+    to->values[2] = from->values[2];
+    to->values[3] = from->values[3];
+    to->values[4] = from->values[4];
+    to->blob = CopyBlob(from->blob);
+}
+inline AnimStateAnimList_t* CopyStateAnimList(AnimStateAnimList_t* from) {
+    AnimStateAnimList_t* to = (AnimStateAnimList_t*)AnimCopyAlloc((from->count - 1) * sizeof(AnimStateAnim_t) + sizeof(AnimStateAnimList_t));
+    to->count = from->count;
+    for (unsigned int i = 0; i < to->count; i++)
+        CopyStateAnim(&from->entries[i], &to->entries[i]);
+    return to;
+}
+
+void CopyStateDef(AnimEmotStateDef_t* dst, AnimEmotStateDef_t* src) {
+    dst->id = src->id;
+    dst->flags = src->flags;
+    dst->callback = src->callback;
+    dst->transitions = CopyTransList(src->transitions);
+    dst->blob = CopyBlob(src->blob);
+    dst->anims = CopyStateAnimList(src->anims);
+}
+
+
+void DMAFromARAMCallback(unsigned long);
+
+struct FrameFile_t {
+    unsigned char field00[24];
+    unsigned long* frames;
+};
+
+extern unsigned char g_frame_cache[0xc800];
+extern int g_frame_cache_used;
+extern volatile bool g_bDMAToMRAM;
+extern ARQRequest g_fromARAM_request; // file-local in the original
+
+static inline unsigned char* DMAFrame(unsigned long src, int length) {
+    unsigned char* cache;
+    int skip;
+    unsigned long aligned;
+    int size;
+    aligned = src & ~31;
+    skip = src - aligned;
+    length += skip;
+    size = (length + 31) & ~31;
+    if (size > 0xc800 - g_frame_cache_used)
+        g_frame_cache_used = 0;
+    cache = g_frame_cache + g_frame_cache_used;
+    OSGetTick();
+    DCFlushRange(cache, size);
+    g_bDMAToMRAM = true;
+    ARQPostRequest(&g_fromARAM_request, 0, 1, 1, aligned, (unsigned long)cache, size, DMAFromARAMCallback);
+    while (g_bDMAToMRAM) {
+    }
+    cache += skip;
+    g_frame_cache_used += size;
+    return cache;
+}
+
+extern "C" unsigned char* AnimFileGetFrame(FrameFile_t* file, int frame) {
+    unsigned long start = file->frames[frame];
+    return DMAFrame(start, file->frames[frame + 1] - start);
+}
+
+
+extern void* g_ARAM_poolman;
+extern ARQRequest g_toARAM_request;
 extern unsigned long end;
-extern bool g_bDMAToARAM;
-extern bool g_bDMAToMRAM;
+extern volatile bool g_bDMAToARAM;
+void DMAToARAMCallback(unsigned long);
+
+void UploadFramesToARAM(AnimFileFormat_t* file, unsigned char* start, unsigned char* finish) {
+    unsigned char* aligned;
+    unsigned long size;
+    int lead;
+    unsigned long length;
+    unsigned long aram;
+    unsigned long begin;
+    aligned = (unsigned char*)((unsigned long)start & ~31);
+    size = finish - start;
+    lead = start - aligned;
+    length = finish - start;
+    length += lead;
+    length = (length + 31) & ~31;
+    aram = ARAM_alloc(g_ARAM_poolman, "Animation", length, 0);
+    begin = OSGetTick();
+    DCFlushRange(aligned, length);
+    g_bDMAToARAM = true;
+    ARQPostRequest(&g_toARAM_request, 0, 0, 1, (unsigned long)aligned, aram, length, DMAToARAMCallback);
+    while (g_bDMAToARAM)
+        VIWaitForRetrace();
+    DebugMsg("Transfered %d bytes of animation frame data to ARAM in %f seconds\n", length,
+             (float)(end - begin) / (float)(*(unsigned long*)0x800000F8 / 4));
+    for (int i = 0; i < file->numFrames; i++)
+        file->frames[i] = aram + (file->frames[i] - (unsigned long)start) + lead;
+    file->frames[file->numFrames] = aram + size + lead;
+}
+
 
 void DMAToARAMCallback(unsigned long) {
     end = OSGetTick();
@@ -46,7 +419,7 @@ struct AnimFileStateTable_t {
     AnimFileState_t states[1];
 };
 
-struct AnimFileFormat_t {
+struct AnimFileView_t {
     unsigned char field00[8];
     unsigned short objecttype;
     unsigned short filenum;
@@ -56,7 +429,7 @@ struct AnimFileFormat_t {
 };
 
 struct AnimFileTransEntry_t {
-    AnimFileFormat_t* file;
+    AnimFileView_t* file;
     unsigned short filenum;
     unsigned short pad;
     void* transitions;
@@ -70,7 +443,7 @@ struct AnimFileTransList_t {
 };
 
 struct AnimFileAnimEntry_t {
-    AnimFileFormat_t* file;
+    AnimFileView_t* file;
     unsigned short id;
     unsigned short pad;
     int data;
@@ -84,7 +457,7 @@ struct AnimFileStateAnimList_t {
 
 extern "C" {
 
-void* AnimFileGetStateInfo(AnimFileFormat_t* file, unsigned int id) {
+void* AnimFileGetStateInfo(AnimFileView_t* file, unsigned int id) {
     for (unsigned int i = 0; i < file->states->count; i++) {
         if (file->states->states[i].id == id)
             return file->states->states[i].info;
@@ -92,7 +465,7 @@ void* AnimFileGetStateInfo(AnimFileFormat_t* file, unsigned int id) {
     return 0;
 }
 
-void AnimFileGetStateTransList(AnimFileFormat_t* file, unsigned int id, AnimFileTransList_t* list) {
+void AnimFileGetStateTransList(AnimFileView_t* file, unsigned int id, AnimFileTransList_t* list) {
     if (list->count >= list->max)
         return;
     for (unsigned int i = 0; i < file->states->count; i++) {
@@ -111,7 +484,7 @@ void AnimFileGetStateTransList(AnimFileFormat_t* file, unsigned int id, AnimFile
     }
 }
 
-void AnimFileGetStateAnimList(AnimFileFormat_t* file, unsigned int id, AnimFileStateAnimList_t* list) {
+void AnimFileGetStateAnimList(AnimFileView_t* file, unsigned int id, AnimFileStateAnimList_t* list) {
     if (list->count >= list->max)
         return;
     for (unsigned int i = 0; i < file->states->count; i++) {
@@ -129,7 +502,7 @@ void AnimFileGetStateAnimList(AnimFileFormat_t* file, unsigned int id, AnimFileS
     }
 }
 
-int AnimFileGetStateCallbackID(AnimFileFormat_t* file, unsigned int id) {
+int AnimFileGetStateCallbackID(AnimFileView_t* file, unsigned int id) {
     for (unsigned int i = 0; i < file->states->count; i++) {
         if (file->states->states[i].id == id)
             return file->states->states[i].callbackid;
@@ -137,15 +510,15 @@ int AnimFileGetStateCallbackID(AnimFileFormat_t* file, unsigned int id) {
     return -1;
 }
 
-void* AnimFileGetAnimation(AnimFileFormat_t* file, int index) {
+void* AnimFileGetAnimation(AnimFileView_t* file, int index) {
     return file->animations[index + 1];
 }
 
-unsigned short AnimFileGetFileNum(AnimFileFormat_t* file) {
+unsigned short AnimFileGetFileNum(AnimFileView_t* file) {
     return file->filenum;
 }
 
-unsigned short AnimFileGetObjectType(AnimFileFormat_t* file) {
+unsigned short AnimFileGetObjectType(AnimFileView_t* file) {
     return file->objecttype;
 }
 

@@ -39,24 +39,66 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80063490",
-      "size": 708,
+      "address": "0x800621d4",
+      "size": 5504,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b400",
-      "size": 16,
+      "address": "0x8000b3c0",
+      "size": 80,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012500",
+      "address": "0x800124a0",
+      "size": 120,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fc70",
       "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "CopyStateList__FP16AnimFileFormat_t",
+      "address": "0x80062b9c",
+      "size": 332,
+      "binding": 1
+    },
+    {
+      "name": "CopyAnimList__FP16AnimFileFormat_t",
+      "address": "0x800624b4",
+      "size": 336,
+      "binding": 1
+    },
+    {
+      "name": "CopyAnimFileFormatStructureToDynMem__FP16AnimFileFormat_t",
+      "address": "0x800621d4",
+      "size": 736,
+      "binding": 1
+    },
+    {
+      "name": "CopyEmotAnimation__FP19AnimEmotAnimation_tP16AnimFileFormat_ti",
+      "address": "0x80062604",
+      "size": 592,
+      "binding": 1
+    },
+    {
+      "name": "CopyCompressedData__FPUc",
+      "address": "0x80062854",
+      "size": 840,
+      "binding": 1
+    },
+    {
+      "name": "CopyStateDef__FP18AnimEmotStateDef_tP18AnimEmotStateDef_t",
+      "address": "0x80062ce8",
+      "size": 1360,
+      "binding": 1
+    },
     {
       "name": "DMAFromARAMCallback__FUl",
       "address": "0x800634bc",
@@ -64,9 +106,21 @@
       "binding": 1
     },
     {
+      "name": "AnimFileGetFrame",
+      "address": "0x80063238",
+      "size": 252,
+      "binding": 1
+    },
+    {
       "name": "DMAToARAMCallback__FUl",
       "address": "0x80063490",
       "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "UploadFramesToARAM__FP16AnimFileFormat_tPUcPUc",
+      "address": "0x80063334",
+      "size": 348,
       "binding": 1
     },
     {
@@ -113,21 +167,86 @@
     }
   ],
   "externals": {
+    "ARAM_alloc": "0x8015067c",
+    "ARQPostRequest": "0x8011f45c",
+    "DCFlushRange": "0x80111880",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DebugMsg__FPCce": "0x80018c88",
+    "MEM_resize": "0x8014f98c",
+    "MEM_size": "0x8014ff3c",
+    "MEM_totalunused": "0x8014f4b8",
     "OSGetTick": "0x80116a58",
+    "VIWaitForRetrace": "0x8011b738",
     "end": "0x8034e948",
+    "g_ARAM_poolman": "0x8034e930",
+    "g_amount_allocated": "0x8034e94c",
+    "g_anim_copy_memory": "0x8034e954",
+    "g_anim_copy_memory_cur": "0x8034e95c",
+    "g_anim_copy_memory_sz": "0x8034e958",
     "g_bDMAToARAM": "0x8034e944",
-    "g_bDMAToMRAM": "0x8034e945"
+    "g_bDMAToMRAM": "0x8034e945",
+    "g_frame_cache": "0x801c6e20",
+    "g_frame_cache_used": "0x8034e940",
+    "g_fromARAM_request": "0x801d3620",
+    "g_num_allocations": "0x8034e950",
+    "g_toARAM_request": "0x801d3640",
+    "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_fromARAM_request",
+    "g_toARAM_request"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
     "end",
+    "g_ARAM_poolman",
+    "g_amount_allocated",
+    "g_anim_copy_memory",
+    "g_anim_copy_memory_cur",
+    "g_anim_copy_memory_sz",
     "g_bDMAToARAM",
-    "g_bDMAToMRAM"
+    "g_bDMAToMRAM",
+    "g_frame_cache_used",
+    "g_num_allocations"
   ],
   "original_file": "animemot.cpp",
-  "original_file_index": 2906
+  "original_file_index": 2906,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 24,
+      "address": "0x80170528"
+    },
+    {
+      "section": ".rodata",
+      "offset": 24,
+      "size": 20,
+      "address": "0x80170540"
+    },
+    {
+      "section": ".rodata",
+      "offset": 44,
+      "size": 30,
+      "address": "0x80170554"
+    },
+    {
+      "section": ".rodata",
+      "offset": 204,
+      "size": 10,
+      "address": "0x801705f4"
+    },
+    {
+      "section": ".rodata",
+      "offset": 216,
+      "size": 67,
+      "address": "0x80170600"
+    }
+  ]
 }
