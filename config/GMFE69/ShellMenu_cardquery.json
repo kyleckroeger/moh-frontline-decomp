@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e4bb8",
-      "size": 228,
+      "address": "0x800e4738",
+      "size": 1380,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f0d8",
-      "size": 48,
+      "address": "0x8000f0c0",
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015ba8",
-      "size": 72,
+      "address": "0x80015b9c",
+      "size": 84,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "MemoryCardLoadGame__10CShellMenuFiUi",
+      "address": "0x800e4738",
+      "size": 1152,
+      "binding": 1
+    },
     {
       "name": "MemoryCardGetCorruptFileName__10CShellMenuFPci",
       "address": "0x800e4bb8",
@@ -95,11 +101,28 @@
     }
   ],
   "externals": {
+    "CheckDataCRC__10CShellMenuCFPUciUl": "0x800e2000",
+    "Close__11CMemoryCardFv": "0x800ef278",
+    "DebugMsg__FPCce": "0x80018c88",
     "GetFilesFree__11CMemoryCardFi": "0x800f0118",
     "GetMaxBlocksOnCard__11CMemoryCardFi": "0x800f0378",
+    "GetPort__11CMemoryCardFv": "0x800ee7a4",
     "Is8KCard__11CMemoryCardFi": "0x800f0644",
     "IsAnyDeviceInPort__11CMemoryCardFi": "0x800f06dc",
     "IsEncodingCorrect__11CMemoryCardFi": "0x800f0760",
+    "OSSetSoundMode": "0x8011575c",
+    "OpenSlot__11CMemoryCardFi": "0x800f083c",
+    "Open__11CMemoryCardFUib": "0x800ef324",
+    "Read__11CMemoryCardFPUcUi": "0x800ef15c",
+    "SetVolume__12CSoundStreamFi": "0x800ecd0c",
+    "SoundSetMode__F10ESoundMode": "0x800ecea8",
+    "SoundSetVolumes__Fff": "0x800ecf60",
+    "__ct__13CSoundSysLockFv": "0x800ecbf8",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__13CSoundSysLockFv": "0x800ecba8",
+    "__nwa__FUl": "0x8001cae8",
+    "memcpy": "0x800094f8",
+    "pSoundStream": "0x8034eca0",
     "strcpy": "0x80140040"
   },
   "undefined_in_discarded_code": [],
@@ -107,7 +130,57 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "pSoundStream"
+  ],
   "original_file": "ShellMenu.cpp",
-  "original_file_index": 8612
+  "original_file_index": 8612,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 35,
+      "address": "0x80178d94"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 1,
+      "address": "0x80350f5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 2,
+      "address": "0x80350f60"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 2,
+      "address": "0x80350f64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350f54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80350f58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350ee0"
+    }
+  ]
 }
