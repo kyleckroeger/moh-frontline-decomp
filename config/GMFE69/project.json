@@ -1249,7 +1249,8 @@
     "Gecko_ExceptionPPC_unexpected.json",
     "resize.json",
     "dvdStatus_check.json",
-    "msg.json"
+    "msg.json",
+    "targsupp.json"
   ],
   "progress": {
     "code_bytes": 1414572,
