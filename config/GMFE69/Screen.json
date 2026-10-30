@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -34,33 +34,84 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
+  "linker_stripped": {
+    "functions": [
+      "SetDraw__16CScreenFrameModeFv",
+      "Rebuild__16CScreenFrameModeFv",
+      "__dt__16CScreenFrameModeFv",
+      "__dt__19CScreenFieldModePALFv"
+    ],
+    "objects": [
+      "__vt__16CScreenFrameMode",
+      "__RTTI__16CScreenFrameMode",
+      "__vt__19CScreenFieldModePAL",
+      "__RTTI__19CScreenFieldModePAL"
+    ]
+  },
   "sections": [
     {
       "name": ".text",
-      "address": "0x8001b7e8",
-      "size": 852,
+      "address": "0x8001b12c",
+      "size": 3728,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009744",
-      "size": 24,
-      "type": 1
+      "address": "0x80009714",
+      "size": 104,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 120
     },
     {
       "name": "extabindex",
-      "address": "0x8001013c",
-      "size": 36,
+      "address": "0x800100f4",
+      "size": 156,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 180
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016e450",
+      "size": 169,
       "type": 1
     },
     {
+      "name": ".data",
+      "address": "0x80181d58",
+      "size": 204,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 428
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034d9b8",
+      "size": 16,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 32
+    },
+    {
       "name": ".sbss",
-      "address": "0x8034e723",
-      "size": 2,
-      "type": 8,
-      "input_alignment": 1
+      "address": "0x8034e710",
+      "size": 29,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034f5a8",
+      "size": 65,
+      "type": 1
+    },
+    {
+      "name": ".sbss2",
+      "address": "0x80351cc0",
+      "size": 4,
+      "type": 8
     }
   ],
   "functions": [
@@ -68,6 +119,12 @@
       "name": "Clear__7CScreenFv",
       "address": "0x8001b7ec",
       "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "GetTMViewToScreen__7CScreenFv",
+      "address": "0x8001b690",
+      "size": 344,
       "binding": 1
     },
     {
@@ -99,6 +156,18 @@
       "address": "0x8001b8a0",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "GetWidthScale__7CScreenFv",
+      "address": "0x8001b134",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "GetHeightScale__7CScreenFv",
+      "address": "0x8001b12c",
+      "size": 8,
+      "binding": 2
     },
     {
       "name": "GetWidth__7CScreenFv",
@@ -143,6 +212,66 @@
       "binding": 1
     },
     {
+      "name": "_Capture__16CScreenFieldModeFv",
+      "address": "0x8001b13c",
+      "size": 884,
+      "binding": 1
+    },
+    {
+      "name": "SetCurrent__7CScreenFv",
+      "address": "0x8001bb3c",
+      "size": 812,
+      "binding": 1
+    },
+    {
+      "name": "PutDisp__16CScreenFieldModeFv",
+      "address": "0x8001b4b0",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "SetDraw__16CScreenFieldModeFv",
+      "address": "0x8001b4b4",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "Rebuild__16CScreenFieldModeFv",
+      "address": "0x8001b4b8",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "__dt__16CScreenFieldModeFv",
+      "address": "0x8001b4bc",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "SetCurrent__16CScreenFieldModeFv",
+      "address": "0x8001b544",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "__ct__16CScreenFieldModeF12EScreenWidth12EFrameFormat12EDepthFormat",
+      "address": "0x8001b5a0",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "_Capture__7CScreenFv",
+      "address": "0x8001b658",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "Capture__7CScreenFv",
+      "address": "0x8001b684",
+      "size": 12,
+      "binding": 1
+    },
+    {
       "name": "PutDisp__7CScreenFv",
       "address": "0x8001b7e8",
       "size": 4,
@@ -159,73 +288,89 @@
       "address": "0x8001b908",
       "size": 8,
       "binding": 1
+    },
+    {
+      "name": "GetCurrent__7CScreenFv",
+      "address": "0x8001be68",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "VBlankHandler__7CScreenFUl",
+      "address": "0x8001bf1c",
+      "size": 160,
+      "binding": 1
+    },
+    {
+      "name": "Init__7CScreenFv",
+      "address": "0x8001be70",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "__dt__7CScreenFv",
+      "address": "0x8001bea4",
+      "size": 120,
+      "binding": 1
     }
   ],
   "externals": {
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "DebugMsg__FPCce": "0x80018c88",
+    "File_Close__Fi": "0x8001c61c",
+    "File_Open__FPCc9EOpenMode": "0x8001c670",
+    "File_Seek__Fii11ESeekOrigin": "0x8001c60c",
+    "File_Write__FiPvi": "0x8001c614",
+    "GXAdjustForOverscan": "0x8012c6f4",
     "GXCopyDisp": "0x8012cf78",
     "GXDrawDone": "0x8012bff0",
+    "GXGetYScaleFactor": "0x8012c9c0",
+    "GXInit": "0x80129610",
     "GXInvalidateVtxCache": "0x8012bc6c",
+    "GXNtsc480IntDf": "0x80190120",
     "GXSetColorUpdate": "0x8012fb7c",
     "GXSetCopyClear": "0x8012cccc",
+    "GXSetCopyFilter": "0x8012cd34",
+    "GXSetDispCopyDst": "0x8012c8d4",
+    "GXSetDispCopyGamma": "0x8012cf5c",
+    "GXSetDispCopySrc": "0x8012c814",
+    "GXSetDispCopyYScale": "0x8012cbf8",
+    "GXSetPixelFmt": "0x8012fcb4",
+    "GXSetScissor": "0x801304e4",
     "GXSetViewport": "0x801304c0",
     "GXSetViewportJitter": "0x801303a4",
     "GXSetZMode": "0x8012fbfc",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "MEM_free": "0x8014f83c",
+    "Scale__7CMatrixF8CVector3": "0x8008fd04",
     "Update__6CFaderFf": "0x8007bfcc",
+    "VIConfigure": "0x8011bc00",
     "VIFlush": "0x8011c39c",
     "VIGetNextField": "0x8011c608",
+    "VIInit": "0x8011b2c0",
     "VISetBlack": "0x8011c524",
     "VISetNextFrameBuffer": "0x8011c4b8",
-    "g_FrameNum": "0x8034e718",
-    "g_WaitFrameNum": "0x8034e71c",
-    "g_bCapture": "0x8034e722",
-    "g_bSwap": "0x8034e720"
+    "VISetPreRetraceCallback": "0x8011aff4",
+    "VIWaitForRetrace": "0x8011b738",
+    "__dl__FPv": "0x8001ca2c",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "sprintf": "0x8013dab4"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
-  "upstream": {},
-  "local_externals": [
-    "g_FrameNum",
-    "g_WaitFrameNum",
-    "g_bCapture",
-    "g_bSwap"
+  "discarded_functions": [
+    "SetDraw__16CScreenFrameModeFv",
+    "Rebuild__16CScreenFrameModeFv",
+    "__dt__16CScreenFrameModeFv",
+    "__dt__19CScreenFieldModePALFv"
   ],
+  "upstream": {},
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_FrameNum",
-    "g_WaitFrameNum",
-    "g_bCapture",
-    "g_bSwap"
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "Screen.cpp",
-  "original_file_index": 183,
-  "pooled_sections": [
-    ".sdata2",
-    ".sbss2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sbss2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80351cc0"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x8034f5bc"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
-      "address": "0x8034f5d8"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 8,
-      "address": "0x8034f5d0"
-    }
-  ]
+  "original_file_index": 183
 }
