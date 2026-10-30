@@ -175,7 +175,7 @@ public:
 };
 
 /* Inferred: the field-of-view values of an AI object (+1768 angle, +1840 a
-   halving flag), as in AIObject_obstacle.cpp. */
+   halving flag), as in AIObject_visionseek.cpp. */
 struct AIVisionView {
     unsigned char unknown000[1768];
     float m_angle;

@@ -10,7 +10,7 @@
       "original": "2500"
     },
     {
-      "unit": "AIObject_searchnodes",
+      "unit": "AIObject_visionseek",
       "function": "AddChildrenToSearchNodeQueue__9CAIObjectFP11CSearchNodePC9CPathNodeR16CSearchNodeQueueR15CSearchNodeList",
       "offset": "0x1a",
       "action": "0x90",
@@ -42,7 +42,7 @@
       "original": "2500"
     },
     {
-      "unit": "AIObject_searchnodes",
+      "unit": "AIObject_visionseek",
       "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
       "offset": "0x2a",
       "action": "0x90",
@@ -50,7 +50,7 @@
       "original": "2500"
     },
     {
-      "unit": "AIObject_searchnodes",
+      "unit": "AIObject_visionseek",
       "function": "ComputeAStarPath__9CAIObjectFP9CPathNodePC9CPathNodefR16CSearchNodeQueueR15CSearchNodeList",
       "offset": "0x3e",
       "action": "0x90",

@@ -6,7 +6,7 @@
 // down to the target gives -1, else 600 times the throw speed with a random
 // spread (+508). The parameter is unused, as in the code. The classes and
 // functions are named by the symbols; the members, the throw's constants'
-// meanings and the vector views (as in AIObject_storecover.cpp) are
+// meanings and the vector views (as in AIObject_visionseek.cpp) are
 // inferred. The rest of the file is in other units.
 extern "C" {
 #include <math.h>

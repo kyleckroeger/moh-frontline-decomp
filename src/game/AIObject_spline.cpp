@@ -5,7 +5,7 @@
 // the walk state as StartWalkToArbitraryPoint does (deleting the A* search
 // nodes), prepares the traversal of the path and walks to its first point
 // (the earlier WalkNextSplinePathPoint inlined). The members are inferred from
-// offsets in a non-virtual view (see AIObject_arbitrary.cpp); the 0.1f is an
+// offsets in a non-virtual view (see AIObject_visionseek.cpp); the 0.1f is an
 // entry of the file's .sdata2 pool.
 enum aifilter_target_mode {};
 enum EMovePointType {};

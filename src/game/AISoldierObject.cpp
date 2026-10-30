@@ -96,7 +96,7 @@ public:
 };
 
 /* inferred: the AI object's virtual functions as far as ChooseTarget needs
-   them (the table order of CAIObject, AIObject_fovcorpse.cpp); the call at
+   them (the table order of CAIObject, AIObject_visionseek.cpp); the call at
    +24 is not named */
 class CAIObjectVirtuals {
 public:

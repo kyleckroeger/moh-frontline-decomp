@@ -9,7 +9,7 @@
 // point's low byte and returns them, reduced to 'avail & (1 - avail)' when
 // more than one bit is left. The class, the type and the functions are named
 // by the symbols; the object view, the vector and matrix views (as in
-// AIObject_coverwalkto.cpp), the type meanings, the type-set helper (its
+// AIObject_visionseek.cpp), the type meanings, the type-set helper (its
 // operands bound to 'const int&', so the original's small-data literals are
 // emitted) and the inline helpers are inferred. The rest of the file is in
 // other units.
