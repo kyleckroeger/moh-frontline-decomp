@@ -42,19 +42,19 @@
     {
       "name": ".text",
       "address": "0x8008a774",
-      "size": 932,
+      "size": 1804,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c478",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013520",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
@@ -77,6 +77,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "UISExecuteFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP14UISStackInfo_tPvUlP10UISParam_tUlP10UISParam_tUclP10UISParam_t",
+      "address": "0x8008ab18",
+      "size": 872,
+      "binding": 1
+    },
     {
       "name": "UISStringFormat__FP12UISScrData_tP11UISString_tP11UISString_tUlP10UISParam_t",
       "address": "0x8008a774",
@@ -115,6 +121,7 @@
     }
   ],
   "externals": {
+    "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t": "0x80085a8c",
     "_AdditiveColorFactor": "0x801eecc0",
     "_MultiplerColorFactor": "0x801eecb0",
     "sprintf": "0x8013dab4",

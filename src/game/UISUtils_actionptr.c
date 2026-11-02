@@ -1,5 +1,7 @@
-// A fragment of UISUtils.c (0x8008a774-0x8008ab18). The file's inlining is
-// deferred, so the functions are defined in reverse image order. The setters
+// A fragment of UISUtils.c (0x8008a774-0x8008ae80). The file's inlining is
+// deferred, so the functions are defined in reverse image order. UISExecuteFnc
+// pushes a result slot, the parameters and the control on the UIS stack and
+// runs it from the given code pointer. The setters
 // and getters of the additive and multiplier colour factors (four floats
 // each, file-local in the original and declared extern here; the result type
 // of the getters is inferred), then UISGetActionPtrValue, which returns the
@@ -27,8 +29,6 @@ union UISStringParamView {
 };
 
 struct UISScrData_t;
-struct UISParam_t;
-
 extern "C" {
 int sprintf(char*, const char*, ...);
 char* strncpy(char*, const char*, unsigned long);
@@ -61,6 +61,57 @@ struct UISControlInfo_t {
 
 extern float _AdditiveColorFactor[4];  // file-local in the original
 extern float _MultiplerColorFactor[4]; // file-local in the original
+
+struct UISInfo_t;
+struct UISScreen_t;
+
+struct UISParam_t {
+    unsigned long value;
+};
+
+/* inferred: the stack state (stack pointer at +12, code pointer at +16) */
+struct UISStackInfo_t {
+    unsigned long value00;
+    unsigned long value04;
+    unsigned long value08;
+    UISParam_t* sp;
+    void* pc;
+};
+
+signed char UISStackProcess(UISInfo_t*, UISParam_t*, UISStackInfo_t*, UISScreen_t*, UISControlInfo_t*);
+
+inline void Push(UISStackInfo_t* stack, unsigned long value) {
+    stack->sp->value = value;
+    stack->sp++;
+}
+
+signed char UISExecuteFnc(UISInfo_t* info, UISScreen_t* screen, UISControlInfo_t* control, UISStackInfo_t* stack,
+                          void* pc, unsigned long count, UISParam_t* params, unsigned long count2,
+                          UISParam_t* params2, unsigned char extra, long extraValue, UISParam_t* result) {
+    UISParam_t* frame;
+    UISScreen_t* const scr = screen;
+    frame = stack->sp;
+    if (!result)
+        frame->value = 0;
+    else
+        frame->value = result->value;
+    stack->sp++;
+    if (extra)
+        Push(stack, extraValue);
+    for (unsigned long i = 0; i < count; i++)
+        Push(stack, params[i].value);
+    for (unsigned long i = 0; i < count2; i++)
+        Push(stack, params2[i].value);
+    Push(stack, (unsigned long)control);
+    Push(stack, 0);
+    stack->pc = pc;
+    int status = UISStackProcess(info, frame, stack, scr, control);
+    if (result)
+        result->value = frame->value;
+    if (status != 3)
+        stack->sp = frame;
+    return status;
+}
 
 float* UISGetActionPtrValue(unsigned long action, UISControlInfo_t* control) {
     switch (action) {

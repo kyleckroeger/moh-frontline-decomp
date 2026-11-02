@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1205552,
+    "matching_code_bytes": 1206424,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.22379914207265,
+    "percent": 85.28544322947153,
     "categories": {
-      "reconstructed_game": 964916,
+      "reconstructed_game": 965788,
       "restored_library": 240636
     },
-    "matching_functions": 4827
+    "matching_functions": 4828
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -240,7 +240,7 @@
     "config/GMFE69/UISEvent.json": "494508d3a1bc6ee076038b4f42906c60c3d009f45520a50f128c75aed4f00631",
     "config/GMFE69/UISStack.json": "15bdb41b0015c963d032ed319b82130335d534b24450619eeada8191b34f5660",
     "config/GMFE69/UISUtils.json": "efb6adb11439bbdf0f7153b9bac8ac1e71d95b8f42f7f910ca4bf1e48a28b9ae",
-    "config/GMFE69/UISUtils_actionptr.json": "7bc1adfe0719796d01ac5e57c16c946213dd40f35ee9165fadc9e5eeb8e88d9d",
+    "config/GMFE69/UISUtils_actionptr.json": "b98be3d03c81411cd350ae1dfd8dadaf78db35ba180b1f42ddd6b7d10c44bdf5",
     "config/GMFE69/UISUtils_dohint.json": "faa6b748b1aaf73e5e7b786ee3176348335df131563e6d3382de44c96cd4f84e",
     "config/GMFE69/UISUtils_movescreen.json": "36019e2d512c7729797991db2c48fb935a113c84a5aa90e2d9aa2d1590f5138f",
     "config/GMFE69/UISUtils_parsehints.json": "c9b5eb74b12899c0818a1b73fbf9336a2095230a0dc5ce67ddcac282c11b545b",
@@ -2406,7 +2406,7 @@
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
     "src/game/UISStack.c": "ac4a84336c1d458da41b45333132362936a75d99bc1f8f05f8fca8b10a5b40b0",
     "src/game/UISUtils.c": "111f09959d20e4e5ef3e01e5487451247ef1d864d1d835c525f98014b205bdc2",
-    "src/game/UISUtils_actionptr.c": "4e5a319bcaf088d072b98619060d6e5471a31b3d30817b151b17b0a606c5a592",
+    "src/game/UISUtils_actionptr.c": "55d60f7cf31b592b2da80afd6c45b5345b4b452f1d72e5ac89a64e8358d7b370",
     "src/game/UISUtils_dohint.c": "b09914bf3eb297eefa127c5154a523eb6532db1bd5b11ac0422f8d2d30a9b34e",
     "src/game/UISUtils_movescreen.c": "ff9dcdd0f19822997dcb6794f1cbc74d35fa68bc17c42ca204fc7eff5b99a890",
     "src/game/UISUtils_parsehints.c": "c6ceeb5deecbbd132c4f64e585fbdec0309599e3f05c34926a3540b321389d51",
@@ -44978,8 +44978,8 @@
     {
       "id": "UISUtils_actionptr",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 932,
+      "functions": 7,
+      "code_bytes": 1804,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -45013,8 +45013,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "caac30ed7bd1760d707ce75534e815522457a689b1a293a0536dd49c33723cdb",
-      "linked_sha256": "3519b1a6c1725691bf7bb3bbae6c227ee5e35e7cc471f1c164aaac26e54a761f"
+      "object_sha256": "c9a2dad1c8409ad4b2106e5f76bacb3246428ef8625960ae8b204af4d243789e",
+      "linked_sha256": "a78d8eeb23bab68431b26953dd5f25bb713abb6af184fde16934e44c592fd5f0"
     },
     {
       "id": "objcreate_swap",
@@ -54356,20 +54356,6 @@
             "size": 1220,
             "kind": "function",
             "name": "Update__13CInputManagerFf",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/UISUtils.c [symbol evidence]",
-        "file_record": 88,
-        "file_name": "UISUtils.c",
-        "ranges": [
-          {
-            "address": "0x8008ab18",
-            "size": 872,
-            "kind": "function",
-            "name": "UISExecuteFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP14UISStackInfo_tPvUlP10UISParam_tUlP10UISParam_tUclP10UISParam_t",
             "evidence": "exception-index"
           }
         ]
