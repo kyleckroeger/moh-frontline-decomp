@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801689b8",
-      "size": 168,
+      "size": 1256,
       "type": 1
     },
     {
@@ -72,11 +72,18 @@
       "address": "0x80168a28",
       "size": 56,
       "binding": 1
+    },
+    {
+      "name": "Decode__Q23SND12CEAXABLKDecfFPPfi",
+      "address": "0x80168a60",
+      "size": 1088,
+      "binding": 1
     }
   ],
   "externals": {
     "CODADelete__3SND": "0x8034f4ec",
-    "CODANew__3SND": "0x8034f4e8"
+    "CODANew__3SND": "0x8034f4e8",
+    "decodexac__3SNDFPQ23SND10MXAPACKETF": "0x80168828"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

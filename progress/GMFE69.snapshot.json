@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1203704,
+    "matching_code_bytes": 1204792,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.09315892015394,
+    "percent": 85.17007264388097,
     "categories": {
-      "reconstructed_game": 963068,
+      "reconstructed_game": 964156,
       "restored_library": 240636
     },
-    "matching_functions": 4825
+    "matching_functions": 4826
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -606,7 +606,7 @@
     "config/GMFE69/e_fmod.json": "7056afd90d65651c8d1c0c35cf144127d16df527dcd0fa643641609aaa37097a",
     "config/GMFE69/e_pow.json": "e6c83f5e3be5e99bc505061239912ce9f8fa394c9f37a38034ece7786dea460d",
     "config/GMFE69/e_rem_pio2.json": "9a217bc41cbc7dbd160fd9b8170c55fb494d44d9f79f1a2cc3cecf82078e7391",
-    "config/GMFE69/eaxadecf.json": "e095322fde507f7d6d85b9294940f8c4af5079fd98e5f52618a059d444cb4aff",
+    "config/GMFE69/eaxadecf.json": "18bfe5352bd48cbf51529c0a42b32e74e7378c2380b761b18270173e49e37a36",
     "config/GMFE69/eaxadecf_state.json": "1ff14c07304ea5528a72341167912d021ffedf9bff5f17f2009b26802934e0ab",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "c61b8b02d955d6aeb5ced5088f25b2423c2aa109b2c38e6a5f02f8106934c975",
@@ -2015,7 +2015,7 @@
     "src/ea/coda.cpp": "74b5cc425b4854acc7492acc32278c5de4dd9d9f0508a4905040ab1d94425884",
     "src/ea/cpudetect.cpp": "82ad74ceba8d5dcd8eda8284a31e54ca3a660ce35f0909967bfb80204e8081e7",
     "src/ea/debugger.cpp": "b0711b163c768b8390ea6365a85df7956af716b54562db26832d845fcf84421b",
-    "src/ea/eaxadecf.cpp": "0f0479301f8ee5e4c8dd76563e3baae9003cbc9503e21289a559dd3161583ccf",
+    "src/ea/eaxadecf.cpp": "aea9019825d52a31f3ec2cecc72f5bfc6de9e9a8ee348f20553590a0bb6f1247",
     "src/ea/eaxadecf_state.cpp": "73c049a051a480e5d30db9b87346e7034eb13e3fdcea47e77a64e5a0cb51728e",
     "src/ea/exit.cpp": "74497f5488a200cd082a1769249e659f5cd17b94ee5c7e6b2b4f3b240c9f1923",
     "src/ea/filedev.cpp": "cb36b6354374cee49383e978a2f329ab48bddca0107bf61a0453c99ecec7735d",
@@ -17837,8 +17837,8 @@
     {
       "id": "eaxadecf",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 168,
+      "functions": 5,
+      "code_bytes": 1256,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17870,8 +17870,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7e37411c1d09e76c62602d36842387828d4207bb88bec43d8917a08e3b5a39b1",
-      "linked_sha256": "24c03af07c3abd87fdb002c821811436ff02ed36fc1ce31fde04ead7ce159fe5"
+      "object_sha256": "b3388cccd50a6ea704b56cf4c079388999d2ab82689cb3c9ca11a4111ac94dc6",
+      "linked_sha256": "b67692a816a503dc82ede949e8fcb9a69a7847ccfe2db8340dee87f3554871ff"
     },
     {
       "id": "configfile",
@@ -55301,20 +55301,6 @@
             "kind": "function",
             "name": "decodexac__3SNDFPQ23SND10MXAPACKETF",
             "evidence": "same-class (inferred)"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/eaxadecf.cpp [symbol evidence]",
-        "file_record": 551,
-        "file_name": "eaxadecf.cpp",
-        "ranges": [
-          {
-            "address": "0x80168a60",
-            "size": 1088,
-            "kind": "function",
-            "name": "Decode__Q23SND12CEAXABLKDecfFPPfi",
-            "evidence": "between-same-file"
           }
         ]
       },
