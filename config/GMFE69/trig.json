@@ -40,25 +40,31 @@
     {
       "name": ".text",
       "address": "0x80091e64",
-      "size": 272,
+      "size": 728,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c760",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001382c",
-      "size": 48,
+      "size": 60,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801eef50",
+      "size": 116,
+      "type": 8
     },
     {
       "name": ".sdata2",
       "address": "0x803502c8",
-      "size": 24,
+      "size": 164,
       "type": 1
     }
   ],
@@ -86,11 +92,18 @@
       "address": "0x80091f50",
       "size": 36,
       "binding": 1
+    },
+    {
+      "name": "MathLLAngleInit__Fv",
+      "address": "0x80091f74",
+      "size": 456,
+      "binding": 1
     }
   ],
   "externals": {
     "atan2": "0x80143920",
     "cos": "0x80143228",
+    "pow": "0x80143960",
     "sin": "0x80143790"
   },
   "undefined_in_discarded_code": [],
