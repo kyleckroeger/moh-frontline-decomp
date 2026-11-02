@@ -1229,7 +1229,8 @@
     "targsupp.json",
     "gc_idct.json",
     "__exception.json",
-    "path_choosebeat.json"
+    "path_choosebeat.json",
+    "staticmesh_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,

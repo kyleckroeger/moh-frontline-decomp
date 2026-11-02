@@ -1,0 +1,107 @@
+{
+  "id": "staticmesh_init",
+  "source": "src/game/staticmesh_init.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "on",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f25bc",
+      "size": 1788,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f6e8",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016358",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017a138",
+      "size": 20,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Init__11CStaticMeshFv",
+      "address": "0x800f25bc",
+      "size": 1788,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DCFlushRange": "0x80111880",
+    "GXInitTexObj": "0x8012da0c",
+    "GXInitTexObjCI": "0x8012dc80",
+    "GXInitTlutObj": "0x8012e080",
+    "OSReport": "0x80112520",
+    "__dt__11MSHMaterialFv": "0x800f1da0",
+    "__vt__10CMSHMatBin": "0x8018b49c",
+    "__vt__10CRenderBin": "0x80183c5c",
+    "__vt__11MSHMaterial": "0x8018b464",
+    "g_MshSimpleAlphaBin": "0x802da70c",
+    "g_MshSimpleBin": "0x802da6dc",
+    "offsetPtr<10CMSHMatBin>__FRP10CMSHMatBini": "0x800f3348",
+    "offsetPtr<12MSHVertex_GC>__FRP12MSHVertex_GCi": "0x800f32d0",
+    "offsetPtr<13MSHAttachNode>__FRP13MSHAttachNodei": "0x800f3300",
+    "offsetPtr<7MSHNode>__FRP7MSHNodei": "0x800f3318",
+    "offsetPtr<8MSHChunk>__FRP8MSHChunki": "0x800f3330",
+    "offsetPtr<9ShapeFile>__FRP9ShapeFilei": "0x80076fcc",
+    "offsetPtr<Uc>__FRPUci": "0x800f32e8",
+    "offsetPtr<Ul>__FRPUli": "0x80044cac",
+    "offsetPtr<f>__FRPfi": "0x80044c94",
+    "offsetPtr<v>__FRPvi": "0x80044d24"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_MshSimpleAlphaBin",
+    "g_MshSimpleBin"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "staticmesh.cpp",
+  "original_file_index": 9367
+}
