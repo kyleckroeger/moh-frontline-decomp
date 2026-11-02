@@ -1228,7 +1228,8 @@
     "msg.json",
     "targsupp.json",
     "gc_idct.json",
-    "__exception.json"
+    "__exception.json",
+    "path_choosebeat.json"
   ],
   "progress": {
     "code_bytes": 1414572,
