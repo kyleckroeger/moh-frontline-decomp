@@ -1,11 +1,12 @@
 /* The sound driver's packet buffer fill, mixing thread and platform output
-   capabilities (a fragment of snddrv.c). SNDDRV_fillbufwithpackets copies
+   capabilities and settings (a fragment of snddrv.c). SNDDRV_fillbufwithpackets copies
    1536 bytes per channel from the packet player's packets (silence when none
    is queued) into the channel's half buffer and posts each half to ARAM by
    DMA; the thread runs the sndgs hooks, mixes a 160-sample slice into the mix
    buffers and runs the 100 Hz server every other frame;
    SNDPLATFORM_outputcaps fills sndgs with the GameCube output parameters and
-   the ARAM range. sndgs and snddrv are named by their symbols; the views of
+   the ARAM range; SNDPLATFORM_outputset clamps the requested output options
+   against those limits and applies them. sndgs and snddrv are named by their symbols; the views of
    them, of the channel records and the DMA helpers are inferred. everyother
    is the file's frame counter (static in the original; declared here as an
    external). */
@@ -241,5 +242,266 @@ int SNDPLATFORM_outputcaps() {
     U16(136) = 0x4000;
     U16(138) = 0x8000;
     U16(140) = 0xc000;
+    return 0;
+}
+
+/* inferred: an 8-byte member (two words) */
+struct SNDPAIR {
+    int a[2];
+};
+
+/* inferred: a 7-byte name */
+struct SNDNAME7 {
+    char c[7];
+};
+
+/* inferred: the output options: the options block's first 152 bytes */
+struct SNDOUTOPTS {
+    int field00;
+    int field04;
+    unsigned short field08;
+    unsigned short field0a;
+    unsigned short field0c;
+    unsigned char field0e;
+    unsigned char field0f;
+    unsigned char field10;
+    unsigned char field11;
+    unsigned char field12;
+    unsigned char field13;
+    unsigned char field14;
+    SNDNAME7 name;
+    unsigned char field1c;
+    unsigned char field1d;
+    unsigned char field1e;
+    unsigned char field1f;
+    unsigned char field20;
+    unsigned char field21;
+    unsigned char field22;
+    unsigned char field23;
+    unsigned char field24;
+    unsigned char field25;
+    unsigned char field26;
+    unsigned char field27;
+    unsigned char field28;
+    unsigned char field29;
+    unsigned char field2a;
+    unsigned char field2b;
+    unsigned char field2c;
+    unsigned char field2d;
+    unsigned char field2e;
+    SNDPAIR field30;
+    int field38;
+    int field3c;
+    int field40;
+    int field44;
+    int field48;
+    int field4c;
+    int field50;
+    int field54;
+    SNDPAIR field58;
+    SNDPAIR field60;
+    SNDPAIR field68;
+    SNDPAIR field70;
+    SNDPAIR field78;
+    SNDPAIR field80;
+    SNDPAIR field88;
+    SNDPAIR field90;
+};
+
+/* inferred: the global state as the output settings see it */
+struct SNDPLATGSVIEW {
+    unsigned char unknown00[4];
+    unsigned char minfield28;
+    unsigned char maxfield28;
+    unsigned char maxfield0e;
+    unsigned char unknown07;
+    unsigned char unknown08[3];
+    unsigned char maxfield13;
+    unsigned char unknown0c[20];
+    SNDOUTOPTS opts;
+    unsigned char unknownb8[24];
+    SNDOUTOPTS applied;
+    signed char useapplied;
+    unsigned char unknown169[7];
+    unsigned short channels;
+};
+
+int SNDPLATFORM_outputset(void) {
+    SNDPLATGSVIEW* gs = (SNDPLATGSVIEW*)sndgs;
+    SNDOUTOPTS opts;
+
+    opts.field00 = gs->opts.field00;
+    opts.field04 = gs->opts.field04;
+    opts.field08 = gs->opts.field08;
+    opts.field0a = gs->opts.field0a;
+    opts.field0c = gs->opts.field0c;
+    opts.field0e = gs->opts.field0e;
+    opts.field0f = gs->opts.field0f;
+    opts.field10 = gs->opts.field10;
+    opts.field11 = gs->opts.field11;
+    opts.field12 = gs->opts.field12;
+    opts.field13 = gs->opts.field13;
+    opts.field14 = gs->opts.field14;
+    opts.name = gs->opts.name;
+    opts.field1c = ((SNDPLATGSVIEW*)sndgs)->opts.field1c;
+    opts.field1d = ((SNDPLATGSVIEW*)sndgs)->opts.field1d;
+    opts.field1e = ((SNDPLATGSVIEW*)sndgs)->opts.field1e;
+    opts.field1f = ((SNDPLATGSVIEW*)sndgs)->opts.field1f;
+    opts.field20 = ((SNDPLATGSVIEW*)sndgs)->opts.field20;
+    opts.field21 = ((SNDPLATGSVIEW*)sndgs)->opts.field21;
+    opts.field22 = ((SNDPLATGSVIEW*)sndgs)->opts.field22;
+    opts.field23 = ((SNDPLATGSVIEW*)sndgs)->opts.field23;
+    opts.field24 = ((SNDPLATGSVIEW*)sndgs)->opts.field24;
+    opts.field25 = ((SNDPLATGSVIEW*)sndgs)->opts.field25;
+    opts.field26 = ((SNDPLATGSVIEW*)sndgs)->opts.field26;
+    opts.field27 = ((SNDPLATGSVIEW*)sndgs)->opts.field27;
+    opts.field28 = ((SNDPLATGSVIEW*)sndgs)->opts.field28;
+    opts.field29 = ((SNDPLATGSVIEW*)sndgs)->opts.field29;
+    opts.field2a = ((SNDPLATGSVIEW*)sndgs)->opts.field2a;
+    opts.field2b = ((SNDPLATGSVIEW*)sndgs)->opts.field2b;
+    opts.field2c = ((SNDPLATGSVIEW*)sndgs)->opts.field2c;
+    opts.field2d = ((SNDPLATGSVIEW*)sndgs)->opts.field2d;
+    opts.field2e = ((SNDPLATGSVIEW*)sndgs)->opts.field2e;
+    opts.field30 = ((SNDPLATGSVIEW*)sndgs)->opts.field30;
+    opts.field38 = ((SNDPLATGSVIEW*)sndgs)->opts.field38;
+    opts.field3c = ((SNDPLATGSVIEW*)sndgs)->opts.field3c;
+    opts.field40 = ((SNDPLATGSVIEW*)sndgs)->opts.field40;
+    opts.field44 = ((SNDPLATGSVIEW*)sndgs)->opts.field44;
+    opts.field48 = ((SNDPLATGSVIEW*)sndgs)->opts.field48;
+    opts.field4c = ((SNDPLATGSVIEW*)sndgs)->opts.field4c;
+    opts.field50 = ((SNDPLATGSVIEW*)sndgs)->opts.field50;
+    opts.field54 = ((SNDPLATGSVIEW*)sndgs)->opts.field54;
+    opts.field58 = ((SNDPLATGSVIEW*)sndgs)->opts.field58;
+    opts.field60 = ((SNDPLATGSVIEW*)sndgs)->opts.field60;
+    opts.field68 = ((SNDPLATGSVIEW*)sndgs)->opts.field68;
+    opts.field70 = ((SNDPLATGSVIEW*)sndgs)->opts.field70;
+    opts.field78 = ((SNDPLATGSVIEW*)sndgs)->opts.field78;
+    opts.field80 = ((SNDPLATGSVIEW*)sndgs)->opts.field80;
+    opts.field88 = ((SNDPLATGSVIEW*)sndgs)->opts.field88;
+    opts.field90 = ((SNDPLATGSVIEW*)sndgs)->opts.field90;
+    if (((SNDPLATGSVIEW*)sndgs)->useapplied) {
+        gs->opts.field00 = ((SNDPLATGSVIEW*)sndgs)->applied.field00;
+        gs->opts.field04 = ((SNDPLATGSVIEW*)sndgs)->applied.field04;
+        gs->opts.field08 = ((SNDPLATGSVIEW*)sndgs)->applied.field08;
+        gs->opts.field0a = ((SNDPLATGSVIEW*)sndgs)->applied.field0a;
+        gs->opts.field0c = ((SNDPLATGSVIEW*)sndgs)->applied.field0c;
+        gs->opts.field0e = ((SNDPLATGSVIEW*)sndgs)->applied.field0e;
+        gs->opts.field0f = ((SNDPLATGSVIEW*)sndgs)->applied.field0f;
+        gs->opts.field10 = ((SNDPLATGSVIEW*)sndgs)->applied.field10;
+        gs->opts.field11 = ((SNDPLATGSVIEW*)sndgs)->applied.field11;
+        gs->opts.field12 = ((SNDPLATGSVIEW*)sndgs)->applied.field12;
+        gs->opts.field13 = ((SNDPLATGSVIEW*)sndgs)->applied.field13;
+        gs->opts.field14 = ((SNDPLATGSVIEW*)sndgs)->applied.field14;
+        ((SNDPLATGSVIEW*)sndgs)->opts.name = ((SNDPLATGSVIEW*)sndgs)->applied.name;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field1c = ((SNDPLATGSVIEW*)sndgs)->applied.field1c;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field1d = ((SNDPLATGSVIEW*)sndgs)->applied.field1d;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field1e = ((SNDPLATGSVIEW*)sndgs)->applied.field1e;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field1f = ((SNDPLATGSVIEW*)sndgs)->applied.field1f;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field20 = ((SNDPLATGSVIEW*)sndgs)->applied.field20;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field21 = ((SNDPLATGSVIEW*)sndgs)->applied.field21;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field22 = ((SNDPLATGSVIEW*)sndgs)->applied.field22;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field23 = ((SNDPLATGSVIEW*)sndgs)->applied.field23;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field24 = ((SNDPLATGSVIEW*)sndgs)->applied.field24;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field25 = ((SNDPLATGSVIEW*)sndgs)->applied.field25;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field26 = ((SNDPLATGSVIEW*)sndgs)->applied.field26;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field27 = ((SNDPLATGSVIEW*)sndgs)->applied.field27;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field28 = ((SNDPLATGSVIEW*)sndgs)->applied.field28;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field29 = ((SNDPLATGSVIEW*)sndgs)->applied.field29;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field2a = ((SNDPLATGSVIEW*)sndgs)->applied.field2a;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field2b = ((SNDPLATGSVIEW*)sndgs)->applied.field2b;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field2c = ((SNDPLATGSVIEW*)sndgs)->applied.field2c;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field2d = ((SNDPLATGSVIEW*)sndgs)->applied.field2d;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field2e = ((SNDPLATGSVIEW*)sndgs)->applied.field2e;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field30 = ((SNDPLATGSVIEW*)sndgs)->applied.field30;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field38 = ((SNDPLATGSVIEW*)sndgs)->applied.field38;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field3c = ((SNDPLATGSVIEW*)sndgs)->applied.field3c;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field40 = ((SNDPLATGSVIEW*)sndgs)->applied.field40;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field44 = ((SNDPLATGSVIEW*)sndgs)->applied.field44;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field48 = ((SNDPLATGSVIEW*)sndgs)->applied.field48;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field4c = ((SNDPLATGSVIEW*)sndgs)->applied.field4c;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field50 = ((SNDPLATGSVIEW*)sndgs)->applied.field50;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field54 = ((SNDPLATGSVIEW*)sndgs)->applied.field54;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field58 = ((SNDPLATGSVIEW*)sndgs)->applied.field58;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field60 = ((SNDPLATGSVIEW*)sndgs)->applied.field60;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field68 = ((SNDPLATGSVIEW*)sndgs)->applied.field68;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field70 = ((SNDPLATGSVIEW*)sndgs)->applied.field70;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field78 = ((SNDPLATGSVIEW*)sndgs)->applied.field78;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field80 = ((SNDPLATGSVIEW*)sndgs)->applied.field80;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field88 = ((SNDPLATGSVIEW*)sndgs)->applied.field88;
+        ((SNDPLATGSVIEW*)sndgs)->opts.field90 = ((SNDPLATGSVIEW*)sndgs)->applied.field90;
+    }
+    opts.field0a = 32000;
+    if (opts.field28 < ((SNDPLATGSVIEW*)sndgs)->minfield28)
+        opts.field28 = ((SNDPLATGSVIEW*)sndgs)->minfield28;
+    if (opts.field28 > ((SNDPLATGSVIEW*)sndgs)->maxfield28)
+        opts.field28 = ((SNDPLATGSVIEW*)sndgs)->maxfield28;
+    if (opts.field0e > ((SNDPLATGSVIEW*)sndgs)->maxfield0e)
+        opts.field0e = ((SNDPLATGSVIEW*)sndgs)->maxfield0e;
+    if (opts.field13 > ((SNDPLATGSVIEW*)sndgs)->maxfield13)
+        opts.field13 = ((SNDPLATGSVIEW*)sndgs)->maxfield13;
+    if (opts.field27 > 32)
+        opts.field27 = 32;
+    {
+        int rate = gs->opts.field14;
+        if (rate < 1)
+            rate = 1;
+        else if (rate > 200)
+            rate = 200;
+        gs->opts.field14 = rate;
+    }
+    if (((SNDPLATGSVIEW*)sndgs)->useapplied)
+        return 0;
+    int const a = opts.field0e;
+    int const b = opts.field13;
+    ((SNDPLATGSVIEW*)sndgs)->channels = a + b;
+    gs->opts.field00 = opts.field00;
+    gs->opts.field04 = opts.field04;
+    gs->opts.field08 = opts.field08;
+    gs->opts.field0a = opts.field0a;
+    gs->opts.field0c = opts.field0c;
+    gs->opts.field0e = a;
+    gs->opts.field0f = opts.field0f;
+    gs->opts.field10 = opts.field10;
+    gs->opts.field11 = opts.field11;
+    gs->opts.field12 = opts.field12;
+    gs->opts.field13 = b;
+    gs->opts.field14 = opts.field14;
+    ((SNDPLATGSVIEW*)sndgs)->opts.name = opts.name;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field1c = opts.field1c;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field1d = opts.field1d;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field1e = opts.field1e;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field1f = opts.field1f;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field20 = opts.field20;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field21 = opts.field21;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field22 = opts.field22;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field23 = opts.field23;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field24 = opts.field24;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field25 = opts.field25;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field26 = opts.field26;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field27 = opts.field27;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field28 = opts.field28;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field29 = opts.field29;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field2a = opts.field2a;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field2b = opts.field2b;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field2c = opts.field2c;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field2d = opts.field2d;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field2e = opts.field2e;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field30 = opts.field30;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field38 = opts.field38;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field3c = opts.field3c;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field40 = opts.field40;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field44 = opts.field44;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field48 = opts.field48;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field4c = opts.field4c;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field50 = opts.field50;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field54 = opts.field54;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field58 = opts.field58;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field60 = opts.field60;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field68 = opts.field68;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field70 = opts.field70;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field78 = opts.field78;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field80 = opts.field80;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field88 = opts.field88;
+    ((SNDPLATGSVIEW*)sndgs)->opts.field90 = opts.field90;
     return 0;
 }

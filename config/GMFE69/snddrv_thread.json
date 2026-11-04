@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801696dc",
-      "size": 1580,
+      "size": 3740,
       "type": 1
     }
   ],
@@ -60,6 +60,12 @@
       "address": "0x80169c18",
       "size": 240,
       "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_outputset__Fv",
+      "address": "0x80169d08",
+      "size": 2160,
+      "binding": 1
     }
   ],
   "externals": {
@@ -77,7 +83,10 @@
     "SNDPKTPLAYI_flushcallbackdata__Fv": "0x8015aff4",
     "SNDPKTPLAYI_get__FiiPiPi": "0x8015ad74",
     "SNDSYSI_100hzserver__Fv": "0x801532b4",
+    "__copy": "0x801381d4",
+    "_restgpr_14": "0x80138a28",
     "_restgpr_19": "0x80138a3c",
+    "_savegpr_14": "0x801389dc",
     "_savegpr_19": "0x801389f0",
     "everyother": "0x8034f4f0",
     "snddrv": "0x80341a20",
