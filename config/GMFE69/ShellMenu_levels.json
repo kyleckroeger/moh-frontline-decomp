@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800e6524",
-      "size": 392,
+      "size": 1068,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f168",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015c80",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -122,15 +122,28 @@
       "address": "0x800e669c",
       "size": 16,
       "binding": 1
+    },
+    {
+      "name": "Add_MPPlayerKilled__10CShellMenuFii",
+      "address": "0x800e66ac",
+      "size": 676,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "GetCurrentWeapon__13CPlayerObjectCFv": "0x8009fb78",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "g_bMPEndLevel": "0x8034e9ec",
+    "g_scene": "0x8019484c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bMPEndLevel"
+  ],
   "original_file": "ShellMenu.cpp",
   "original_file_index": 8612
 }

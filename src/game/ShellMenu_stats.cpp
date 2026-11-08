@@ -11,8 +11,8 @@
 // enums and functions are named by the mangled symbols; CShellMenu, the
 // records, the weapon view and the counter names are inferred (the scene view
 // only needs a size outside small data), and the unused
-// bool parameters are left unnamed. Add_MPPlayerKilled before this and the
-// rest of the file are not part of this unit.
+// bool parameters are left unnamed. The rest of the file is not part of this
+// unit.
 enum EShotLocations {};
 
 extern "C" void* memset(void*, int, unsigned long);

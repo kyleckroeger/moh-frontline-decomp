@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1211172,
+    "matching_code_bytes": 1211848,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.62109245764796,
+    "percent": 85.66888076393425,
     "categories": {
-      "reconstructed_game": 970536,
+      "reconstructed_game": 971212,
       "restored_library": 240636
     },
-    "matching_functions": 4831
+    "matching_functions": 4832
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -206,7 +206,7 @@
     "config/GMFE69/ShellMenu_fade.json": "0fd80286af9cab6f438b558b6f15fa754d9684e1c05d140db984ab7c9c8052e1",
     "config/GMFE69/ShellMenu_gallery.json": "24637baf8fca81c6f8cde925c7c7fe398f7d4f9bd8226a844f7d23b87180d72c",
     "config/GMFE69/ShellMenu_lastlevel.json": "6603db54eec39831d89af1ac3f9e37b85da56136856f77b93997615b3eaad248",
-    "config/GMFE69/ShellMenu_levels.json": "f2ef8f3404387c4a7efd85a6c8445fbd6cc1eec9e119bc83a32a605a48b3d5fb",
+    "config/GMFE69/ShellMenu_levels.json": "96bdcb169c63643650ba67308245a025e6d0d94c09551dc8aeb6678d645faff1",
     "config/GMFE69/ShellMenu_levelstats.json": "e69c5213ca66cf2162ff85d03d85358418e51a42b276712354301332a6a33600",
     "config/GMFE69/ShellMenu_load.json": "871179b1cb01622f61e64d48de8addcfba3682ca2df14e757614fa6d674b54c8",
     "config/GMFE69/ShellMenu_messages.json": "7a51b162dbdbca042eebe511c3eca1f52f491eaa004ea29019a0a55fd7aa0b6a",
@@ -2373,7 +2373,7 @@
     "src/game/ShellMenu_fade.cpp": "dd8ca1153bb5a1e5283e12593e8b476801d39497863a785f20adf0edc4404c4d",
     "src/game/ShellMenu_gallery.cpp": "8e18cbfa4dd6168d52c1b1a7a2cd6322a5499065fbfba56b45bae0131607a917",
     "src/game/ShellMenu_lastlevel.cpp": "145b45eaec5354964b4676873a718cd8510dfa0a81f1bb4b1263e2442eb155a8",
-    "src/game/ShellMenu_levels.cpp": "7725919006107aa8c2dee7d6142fb64ed999096ac96d51e9d55c418630259a7b",
+    "src/game/ShellMenu_levels.cpp": "0dabc221476428a0bc71ea02b5205cedc72cc02891e060da6cf6d70e3cf58433",
     "src/game/ShellMenu_levelstats.cpp": "f901cdb98992adb9c06bb4bcc8afafbff587ec43d0669f62a6da05c0b2fa7aa9",
     "src/game/ShellMenu_load.cpp": "c45fd2491d1763a5a6cc7c15973e530c1bcd9c55a4b68fc5fda8a5b11716c615",
     "src/game/ShellMenu_messages.cpp": "c6c46ac78f03f26fbb583211a9bfebd75ccf16c69c226b6f5d4eaa2140a075ed",
@@ -2386,7 +2386,7 @@
     "src/game/ShellMenu_specialmedals.cpp": "5ff0775d1be0aa26ed32a0036d6e6ab9a7b0ec7fd64a95ffe862b739bc633844",
     "src/game/ShellMenu_stars.cpp": "95f56e9b48ade92f9d008250caa7584eb673d039c7aecd580c91fe43a5ce7136",
     "src/game/ShellMenu_starstatus.cpp": "06fd4b286d6e2b33389e4dbf859972f48e7c161193f9f4bcb40427faa936fe2b",
-    "src/game/ShellMenu_stats.cpp": "92b47c2788687b9e9b16dd1309429c8298205506a9ed83a6af655dd89918d648",
+    "src/game/ShellMenu_stats.cpp": "bcf16cc5f7e1cce41e0ef73c4a85cee7f842a5687f1622b64e2ea202845e45a2",
     "src/game/ShellMenu_unlock.cpp": "a9aa4de786f6d7e8370b23fbdf457f1c80e61f1846fc34624ef47b527505b21f",
     "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
     "src/game/ShellMenu_update.cpp": "056175d9c526fc3b09ffc91ddb768e308eafb27dc8795067788a109d00d0b5fc",
@@ -24957,8 +24957,8 @@
     {
       "id": "ShellMenu_levels",
       "category": "reconstructed_game",
-      "functions": 11,
-      "code_bytes": 392,
+      "functions": 12,
+      "code_bytes": 1068,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -24990,8 +24990,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "045f28cfd5fa55306762fa1f7d12a412ab0e88021ebf332fd9fa2fac5d6b4f5f",
-      "linked_sha256": "0d23f87a5b919283ef6f4207088050fb25979f998eb576aedba511a42a8ce168"
+      "object_sha256": "201848eca5246557a3fd9111863d274427d9978d3988d354d2efca928d5b9bb3",
+      "linked_sha256": "48fc68ced2c72092c6d6d790ae72b60e0994152df9234fdd81c5cbaa3b83ae4e"
     },
     {
       "id": "sphere_dispatch",
@@ -54887,13 +54887,6 @@
             "size": 432,
             "kind": "function",
             "name": "CalculateLevelStats__10CShellMenuFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e66ac",
-            "size": 676,
-            "kind": "function",
-            "name": "Add_MPPlayerKilled__10CShellMenuFii",
             "evidence": "exception-index"
           },
           {
