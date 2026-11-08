@@ -10,15 +10,15 @@ Progress counts verified, nonoverlapping source-built function bytes against all
 
 ## Status
 
-As of 2026-10-25, **1,017,928 of 1,414,572 code bytes (71.96%)** are built from source and verified, covering **4,644 functions in 1,262 units**:
+As of 2026-11-08, **1,219,272 of 1,414,572 code bytes (86.19%)** are built from source and verified, covering **4,839 functions in 1,236 units**:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 787,936 | 3,655 | 1,082 | CodeWarrior `GC/1.3.2` (and `GC/1.3`) |
-| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 229,992 | 989 | 180 | `GC/1.2.5n`, `GC/1.2.5`, `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 978,636 | 3,840 | 1,051 | CodeWarrior `GC/1.3.2` (and `GC/1.3`) |
+| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5n`, `GC/1.2.5`, `GC/1.3`, `GC/1.3.2` |
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
-- The remaining ~28% is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain.
+- The remaining ~14% (about 195 KB in 172 functions) is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain. [Remaining.md](docs/Remaining.md) breaks it down by area.
 - The rebuilt image has **not** been runtime-tested.
 
 Most recent work is AI-assisted (Claude Code agents working against the same verification gate as any contributor); see [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every accepted unit follows.
@@ -68,17 +68,20 @@ Run the scripts from any directory; all outputs remain inside this checkout. `ba
 
 ## Contributing units
 
-`tools/port_unit.py` drafts a unit manifest from a source file by matching its relocations to the original's, and `tools/unit_diff.py` shows per-function disassembly differences after a failed verification. After a build, `tools/objdiff_config.py` writes a git-ignored `objdiff.json` for local per-function diffing. See [Dolphin SDK units](docs/Dolphin.md) for the workflow, compiler profile and the CodeWarrior linker behaviors the verifier models.
+`tools/port_unit.py` drafts a unit manifest from a source file by matching its relocations to the original's, and `tools/unit_diff.py` shows per-function disassembly differences after a failed verification. After a build, `tools/objdiff_config.py` writes a git-ignored `objdiff.json` for local per-function diffing. See [Dolphin SDK units](docs/Dolphin.md) for the workflow, compiler profile and the CodeWarrior linker behaviors the verifier models, [Game.md](docs/Game.md) for the game-code method, and [Remaining.md](docs/Remaining.md) for priorities and which source forms are accepted.
 
 ## Next work
 
-1. **Game code near misses.** Many parked functions are within a few instructions of matching; [Game.md](docs/Game.md) has the method and the CodeWarrior behaviours that matter.
-2. **Large and untried functions**, especially in player, scene, UI and AI code.
-3. **Remaining library code.** EA audio (SND/saems), MPEG/UTALK decoding and the rest of MSL and MetroTRK ([Runtime.md](docs/Runtime.md), [Dolphin.md](docs/Dolphin.md#open-problems)).
-4. **Whole files.** Merge fragments into complete source files as the gaps between them close, and resolve the file boundaries still marked uncertain in the [audit](docs/initial-audit.md#per-file-splits).
-5. **Runtime testing** of the rebuilt image in Dolphin.
+The matching source is meant to be the base of a native PC port without multiplayer, kept separate from the matching build, so the remaining work is ordered by what that port needs ([details](docs/Remaining.md)):
 
-Longer term, the matching source is meant to serve as the base for a native PC port, kept separate from the matching build.
+1. **Collision, scripting, AI and animation** (about 121 KB).
+2. **Everything else that isn't multiplayer:** rendering, shell and HUD, audio, video and system code.
+3. **Multiplayer**, last, for the completeness of the decompilation.
+
+Alongside that:
+
+- **Whole files.** Merge fragments into complete source files as the gaps between them close, and resolve the file boundaries still marked uncertain in the [audit](docs/initial-audit.md#per-file-splits).
+- **Runtime testing** of the rebuilt image in Dolphin.
 
 ## License
 

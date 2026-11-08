@@ -13,3 +13,5 @@ Run checks appropriate to the change. The original-image baseline command is `py
 Progress counts verified matching source-built function bytes against all 1,414,572 original executable section bytes (`.init` and `.text`). Preserve the separate reconstructed-game and restored-library categories, upstream attribution and licenses. Never count original context, linker tables, data bytes, discarded functions or overlapping ranges toward code progress.
 
 Check the repository-local commit identity before committing; never inherit a personal identity without authorization. Preserve contributors' pseudonymity and upstream attribution. Follow docs/Progress.md when changing source, headers, configuration or tools: regenerate the public snapshot only after complete local verification. CI validates a snapshot and must not be described as rebuilding the game.
+
+Before choosing work, read docs/Remaining.md: it sets the priority order (collision, scripting, AI and animation first; multiplayer last) and lists which source forms are accepted or declined.

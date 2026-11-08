@@ -10,11 +10,12 @@ in `AGENTS.md` win.
 
 ## Where the project is
 
-- Verified snapshot (2026-10-25): **1,017,928 / 1,414,572** executable bytes
-  (**71.96%**), 4,644 functions in 1,262 units: **787,936** bytes of
-  `reconstructed_game` (1,082 units, `docs/Game.md`) and **229,992** bytes of
-  `restored_library` (180 units: Dolphin SDK, MSL, MW runtime, EA audio
-  libraries; `docs/Dolphin.md`). Runtime is untested.
+- Verified snapshot (2026-11-08): **1,219,272 / 1,414,572** executable bytes
+  (**86.19%**), 4,839 functions in 1,236 units: **978,636** bytes of
+  `reconstructed_game` (1,051 units, `docs/Game.md`) and **240,636** bytes of
+  `restored_library` (185 units: Dolphin SDK, MSL, MW runtime, EA audio
+  libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
+  are in `docs/Remaining.md`.
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
   (game and EA code), linked with
@@ -102,7 +103,7 @@ reference-backed versus opaque.
    not invent types, names or source boundaries.
 3. Gate every unit with `tools/reconstruct.py` and refresh the snapshot.
 
-Exit: first `reconstructed_game` bytes accepted (reached; 787,936 bytes now).
+Exit: first `reconstructed_game` bytes accepted (reached; 978,636 bytes now).
 
 ### Phase C — Ghidra for unreferenced game code (in use)
 
@@ -143,13 +144,16 @@ Exit: runtime status is measured, not assumed.
 2. Replace the GameCube SDK layer (GX, DVD, PAD, OS, audio) with a PC platform
    layer; Aurora (GX/PAD/VI over SDL and WebGPU) is the first candidate.
 3. Fill unmatched functions with behaviour-equivalent code, then fix 32-bit,
-   endianness and frame-rate assumptions.
+   endianness and frame-rate assumptions. Multiplayer is out of scope.
 4. Add PC features in game code: mouse and keyboard aiming, FOV, keybinds,
    options UI. Share the layer with a Rising Sun port where the engine allows.
 
 Exit: one level boots and plays on PC.
 
 ## Part 3 — Choosing the next target
+
+`docs/Remaining.md` sets the order: collision, scripting, AI and animation first,
+multiplayer last. Within a priority group:
 
 1. Prefer **shared helpers with many unfinished callers**
    (`tools/dependencies.py`) — one accepted function unlocks more.
@@ -196,6 +200,7 @@ Exit: one level boots and plays on PC.
 
 ## References
 
+- `docs/Remaining.md` — what is left, priorities, accepted and declined source forms
 - `docs/Progress.md` — verification boundary and counting rules
 - `docs/Dolphin.md` — SDK revision strategy, compiler profiles, open problems
 - `docs/initial-audit.md` — target layout, toolchain, per-file splits
