@@ -1231,7 +1231,8 @@
     "__exception.json",
     "path_choosebeat.json",
     "staticmesh_init.json",
-    "ShellMenu_bootcheck.json"
+    "ShellMenu_bootcheck.json",
+    "ShellMenu_autoload.json"
   ],
   "progress": {
     "code_bytes": 1414572,
