@@ -1,3 +1,5 @@
+#include "ShellMenu_block.h"
+
 // A fragment of ShellMenu.cpp (0x800de420): the SKU mode (always 1) and
 // setting up the multiplayer buttons of each
 // open window's player in the controller configuration, and
@@ -5,11 +7,14 @@
 // most (the first of the seven per-player hit counts with the highest
 // positive count: head, arm, arm, torso, leg, leg, groin, else "None"), and
 // PassMP_PrefTargetToIStudio, which names the player this player hit most
-// (else "None") and returns that player's index or -1.
+// (else "None") and returns that player's index or -1, and
+// PassMP_PrefWeaponNameToIStudio, which copies the name of the weapon the
+// player killed most with (of 45 counts; message 407 + index of the user
+// message table, else "None") and shortens a few long names.
 // CShellMenu,
 // CDualConfig and the functions are named by the mangled symbols; the
 // members, the 28-byte player records, the 256-byte statistics records and
-// the configuration fields are inferred; the names are .sdata2 pool entries
+// the configuration fields and the message table are inferred; the names are .sdata2 (and .rodata) pool entries
 // and the switch's jump table is this unit's .data. MoveStatsIntoProperAreaForIstudio before this (the start of the
 // record) is drafted in scratch/game/movestats_wip.cpp; the rest of the file
 // is not part of this unit.
@@ -34,12 +39,29 @@ struct MPPlayerButtonsView {
 };
 
 extern "C" char* strcpy(char*, const char*);
+extern "C" char* strstr(const char*, const char*);
+
+/* inferred view of the user message table (8-byte entries, text first) */
+struct UserMessageView {
+    char* text;
+    int id;
+};
+
+class CUserMessageTable {
+public:
+    char* GetMessage(int id) const { return id < m_count ? m_entries[id].text : 0; }
+
+    UserMessageView* m_entries;
+    unsigned char unknown04[8];
+    int m_count;
+};
+
 
 /* inferred view of a player's 256-byte multiplayer statistics record */
 struct MPStatsView {
     unsigned char unknown00[4];
     int hitLocations[7];
-    unsigned char unknown20[180];
+    int weaponKills[45];
     int targets[4];
     unsigned char unknowne4[28];
 };
@@ -49,6 +71,7 @@ public:
     int GetSKUMode();
     void PassMP_PrefHitLocationToIStudio(int, char*);
     int PassMP_PrefTargetToIStudio(int, char*);
+    void PassMP_PrefWeaponNameToIStudio(int, char*);
     void SetupAllPlayersButtonsForMultiplayerGame();
 
     unsigned char unknown0000[5196];
@@ -56,6 +79,8 @@ public:
     unsigned char unknown14bc[16];
     MPStatsView m_mpStats[4];
     int m_activeWindows[4];
+    unsigned char unknown18dc[232];
+    CUserMessageTable m_messages;
 };
 
 int CShellMenu::GetSKUMode() {
@@ -126,4 +151,32 @@ int CShellMenu::PassMP_PrefTargetToIStudio(int player, char* name) {
     else
         strcpy(name, "None");
     return target;
+}
+
+void CShellMenu::PassMP_PrefWeaponNameToIStudio(int player, char* name) {
+    int preferred = -1;
+    int most = 0;
+    for (int i = 0; i < 45; i++) {
+        if (m_mpStats[player].weaponKills[i] > most) {
+            most = m_mpStats[player].weaponKills[i];
+            preferred = i;
+        }
+    }
+    if (preferred >= 0) {
+        strcpy(name, preferred + 407 < m_messages.m_count ? m_messages.m_entries[preferred + 407].text : 0);
+        if (strstr(name, "Walther"))
+            strcpy(name, "P38");
+        else if (strstr(name, "Stiel Gran"))
+            strcpy(name, "S. Granate");
+        else if (strstr(name, "Silenced"))
+            strcpy(name, "S. Pistol");
+        else if (strstr(name, "Panzerschr"))
+            strcpy(name, "Panzer");
+        else if (strstr(name, "Gewehr"))
+            strcpy(name, "Gewehr 43");
+        else if (strstr(name, "Springfiel"))
+            strcpy(name, "Spring.");
+    } else {
+        strcpy(name, "None");
+    }
 }

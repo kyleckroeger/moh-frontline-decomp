@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1212472,
+    "matching_code_bytes": 1213068,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.71299304666005,
+    "percent": 85.75512593208406,
     "categories": {
-      "reconstructed_game": 971836,
+      "reconstructed_game": 972432,
       "restored_library": 240636
     },
-    "matching_functions": 4833
+    "matching_functions": 4834
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -216,7 +216,7 @@
     "config/GMFE69/ShellMenu_pass.json": "14a65a0950e859830e698be5b8e289c8c89b60afa92994cbc1db745ab864d944",
     "config/GMFE69/ShellMenu_playtime.json": "3b3c7b8389541f4d06200f606affc6f6566b59480b27e4ab4064ce3f241ee65d",
     "config/GMFE69/ShellMenu_shelloff.json": "ad896cc240738f0d8b365002c536e17e584571dd32301208867dc8941d98de34",
-    "config/GMFE69/ShellMenu_sku.json": "39b602284883cfb047370f78da354433c96ff89a3bdad50c42fe30378cabe4ca",
+    "config/GMFE69/ShellMenu_sku.json": "a4a659199b01d72739ffc895eacd4a70adcc0580d131f1020feb02f9a84f0493",
     "config/GMFE69/ShellMenu_specialmedals.json": "a188ee59a14b815badc1beb0ec9a5440f62857c310171940640dcbb1f0284630",
     "config/GMFE69/ShellMenu_stars.json": "defb4a20ec7186cd2632267462859fdcd94aa99247f6e2de699540813baf66a4",
     "config/GMFE69/ShellMenu_starstatus.json": "3b6b1d3c9119fd5a33ace5009cddc62fb0309dbffad6fd83e27ed4a541fbfa3e",
@@ -2385,7 +2385,7 @@
     "src/game/ShellMenu_pass.cpp": "e3c09b5f0f35cfc0b140ac9dac92f626512649c870f49c0daded18b149bb8bdd",
     "src/game/ShellMenu_playtime.cpp": "bab10c8b07350c545d7ebf229469a9df13b14421fbd2e8c54c467f3a279e4cba",
     "src/game/ShellMenu_shelloff.cpp": "3a13f08286b624a9e799f944ec89afd94c63db5dd217439c1682f366b99b20bb",
-    "src/game/ShellMenu_sku.cpp": "147cd5090360a4ffd8a4fe1640ee3319aa237fc5e6121892abd58cc331dc87a0",
+    "src/game/ShellMenu_sku.cpp": "d1a76bf0a453e7026be8913493c29bb2c4b9f84118e4c17d764c753dbe195139",
     "src/game/ShellMenu_specialmedals.cpp": "5ff0775d1be0aa26ed32a0036d6e6ab9a7b0ec7fd64a95ffe862b739bc633844",
     "src/game/ShellMenu_stars.cpp": "95f56e9b48ade92f9d008250caa7584eb673d039c7aecd580c91fe43a5ce7136",
     "src/game/ShellMenu_starstatus.cpp": "06fd4b286d6e2b33389e4dbf859972f48e7c161193f9f4bcb40427faa936fe2b",
@@ -31265,8 +31265,8 @@
     {
       "id": "ShellMenu_sku",
       "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 656,
+      "functions": 5,
+      "code_bytes": 1252,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -31296,10 +31296,12 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "cc56222c21bd79e28074c4ee76489e83dec4ccf54af5c25455fc75220790941f",
-      "linked_sha256": "958888154530aa63b68b61078ba949e23092c19e1e1267f9d4893a16d04e3096"
+      "strip_unused": true,
+      "discarded_functions": [
+        "ShellMenuBlockStrings__Fv"
+      ],
+      "object_sha256": "28babfc24572d2063667f42cc73c7090bc1932eec62f86035116924a99046ee3",
+      "linked_sha256": "b2fc8da1fc36f8cf8a0bd294f9f8f855e8e98ddda14514dbe23ea665c43e8dde"
     },
     {
       "id": "ShellMenu_load",
@@ -54868,13 +54870,6 @@
             "size": 236,
             "kind": "function",
             "name": "MoveStatsIntoProperAreaForIstudio__10CShellMenuFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800de6b0",
-            "size": 596,
-            "kind": "function",
-            "name": "PassMP_PrefWeaponNameToIStudio__10CShellMenuFiPc",
             "evidence": "exception-index"
           },
           {

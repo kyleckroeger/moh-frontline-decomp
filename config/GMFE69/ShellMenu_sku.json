@@ -34,25 +34,25 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x800de420",
-      "size": 656,
+      "size": 1252,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ed10",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015968",
-      "size": 36,
+      "size": 48,
       "type": 1
     },
     {
@@ -86,15 +86,26 @@
       "address": "0x800de5fc",
       "size": 180,
       "binding": 1
+    },
+    {
+      "name": "PassMP_PrefWeaponNameToIStudio__10CShellMenuFiPc",
+      "address": "0x800de6b0",
+      "size": 596,
+      "binding": 1
     }
   ],
   "externals": {
     "SetupButtonsForMultiplayerGame__11CDualConfigFv": "0x800f77ac",
     "g_ControllerConfig": "0x803142bc",
-    "strcpy": "0x80140040"
+    "strcpy": "0x80140040",
+    "strstr": "0x8013fdb4"
   },
-  "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "undefined_in_discarded_code": [
+    "ShellMenuBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "ShellMenuBlockStrings__Fv"
+  ],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
@@ -102,9 +113,16 @@
   "original_file": "ShellMenu.cpp",
   "original_file_index": 8612,
   "pooled_sections": [
+    ".rodata",
     ".sdata2"
   ],
   "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x801783c8"
+    },
     {
       "section": ".sdata2",
       "offset": 0,
@@ -140,6 +158,36 @@
       "offset": 32,
       "size": 5,
       "address": "0x80350f0c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x80350f14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350f1c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 7,
+      "address": "0x80350f20"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 7,
+      "address": "0x80350f28"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 68,
+      "size": 8,
+      "address": "0x80350f30"
     }
   ]
 }
