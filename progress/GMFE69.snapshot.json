@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1210372,
+    "matching_code_bytes": 1211172,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.56453824902515,
+    "percent": 85.62109245764796,
     "categories": {
-      "reconstructed_game": 969736,
+      "reconstructed_game": 970536,
       "restored_library": 240636
     },
-    "matching_functions": 4830
+    "matching_functions": 4831
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -593,7 +593,7 @@
     "config/GMFE69/dsp_debug.json": "abb1bf69b26be3567a5e3a22a729922f11d7a3b8c74ed938895798d0072114a0",
     "config/GMFE69/dsp_task.json": "23fad1688cbbe0178fb9b445cc0d319c557ace917f657fe4d2e1b34efa7c90b7",
     "config/GMFE69/dvd.json": "121312ac4bb040c75b0e7189d8e139340898c69323bf7bc7f171b1e302751427",
-    "config/GMFE69/dvdStatus_check.json": "250f9ff3a9bf424a52d12f72a243cae6a339b854e32cc3d759850b77bb4e6d9e",
+    "config/GMFE69/dvdStatus_check.json": "9850a73a263aa3a65eee9054cff0b4f5ad9920808bc43e2fc47cf907f2ad2fff",
     "config/GMFE69/dvdStatus_drawmessage.json": "e0cb439268540cf079521e5c1d66a5ee4b5411df95a270d15cb0d92aeceb116b",
     "config/GMFE69/dvdStatus_gxinit.json": "fce3a897547e7d56cf6985c779dfeadb69e8077a52b7372c8fbcef48646f6bc7",
     "config/GMFE69/dvderror.json": "e707cc3372abd7ab11663cb1d927b494694905f6aff6c33152a9b6fcf015590b",
@@ -2727,7 +2727,7 @@
     "src/game/dmmorph_buffers.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
     "src/game/dmrender.cpp": "0c5d7e63d3e8745e0e94191ab8773469f4dde49126919b9ab13b926685d84b19",
     "src/game/draw_context.cpp": "261589cc092b9c8c7b80605255eefc78641468141f4d33264252696f62c9782b",
-    "src/game/dvdStatus_check.cpp": "863b09583db1b98a149cea981ad55b9858b0a25793670f23d1434d6bfc052cf6",
+    "src/game/dvdStatus_check.cpp": "6235cb08f81890f463ca2777c2db3787c142a0eee9f596d2ae72dfeabe06635d",
     "src/game/dvdStatus_drawmessage.cpp": "299e80bbd3020b4e93c3ad5c3c048992deb0636dc4cffb033130e97fd43f6ba0",
     "src/game/dvdStatus_gxinit.cpp": "3b8c2acd3cb4c9a00d2164c67b668017797e6ebdc1897c4ea906845ce70460e2",
     "src/game/explosion_dtor.cpp": "c7b75a75a314713574f2cce66dbc20cab30e31bccc670ed78c6082766e5b33df",
@@ -53269,8 +53269,8 @@
     {
       "id": "dvdStatus_check",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 524,
+      "functions": 2,
+      "code_bytes": 1324,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -53302,8 +53302,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "db7b4f92f3d9b5abf2aaedbb03c3bfe75be2c2a22da20926cf3de1367a78d3bf",
-      "linked_sha256": "0adb6036cf1deb5bb8d64da992747224c3e65e605a6dc59ad1c092e6a631e949"
+      "object_sha256": "35239625b72d9dac8397cfa983ad829d7bd46d592dcfec2d0a157bdb0fa47cde",
+      "linked_sha256": "b4d27855dc26199652b7302c6391c1f434b9c69bb2b3bbf959feccb777b1859a"
     },
     {
       "id": "msg",
@@ -55118,20 +55118,6 @@
             "size": 620,
             "kind": "function",
             "name": "YUV_WriteRow__FPUcPUcPUcPci",
-            "evidence": "local-file-symbol"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/dvdStatus_base.c [local symbols only]",
-        "file_record": 185,
-        "file_name": "dvdStatus_base.c",
-        "ranges": [
-          {
-            "address": "0x80109464",
-            "size": 800,
-            "kind": "function",
-            "name": "ShowDVDError__Fi",
             "evidence": "local-file-symbol"
           }
         ]

@@ -7,19 +7,34 @@
 // (the screen is blacked out again), else 0. The names come from the symbols
 // and strings; parameter and local names are inferred. The pad check is an
 // inferred inline helper that owns the two function statics (it gives the
-// original's loop registers). The rest of the file is in other units.
+// original's loop registers). ShowDVDError follows: it sets up GX and VI on
+// first use, loads the ROM font, clears the screen with a black quad and draws
+// the message lines for the drive state. The black colour comes from an
+// inferred inline (Black); it gives the original's stack slots. The rest of the
+// file is in other units.
 extern "C" {
 #include <stdio.h>
 #include <string.h>
 }
+#include <dolphin/gx.h>
+#include <dolphin/mtx.h>
 #include <dolphin/os.h>
 #include <dolphin/pad.h>
 #include <dolphin/vi.h>
 #include <dolphin/dvd.h>
 
 static int got_reset;
-/* file-local in the original; declared extern here (in another unit) */
-void ShowDVDError(int error);
+static void ShowDVDError(int error);
+
+/* the file's other globals and functions are in other units; file-local in the original */
+extern GXRenderModeObj gRMode;
+extern void* gFrameBuffer;
+extern u32 gHeapPtr;
+extern OSFontHeader* FontData;
+extern s16 FontSize;
+extern s16 FontSpace;
+extern "C" void GxAndVIInit();
+void DrawMessage(int y, char* text);
 
 static inline void CheckPadReset(PADStatus* pads) {
     static u8 got_reset[4] = { 0 };
@@ -99,3 +114,84 @@ extern "C" int CheckDVDError() {
     return shown;
 }
 
+static inline void SetMatColor(GXColor c) {
+    GXSetChanMatColor(GX_COLOR0, c);
+}
+static inline GXColor Black() {
+    GXColor c = { 0, 0, 0, 255 };
+    return c;
+}
+
+static void ShowDVDError(int error) {
+    Mtx identity;
+    Mtx44 projection;
+
+    GxAndVIInit();
+    FontData = (OSFontHeader*)(gHeapPtr + 0x80700000);
+    OSInitFont(FontData);
+    FontSize = FontData->cellWidth * 16;
+    FontSpace = -16;
+    int width;
+    int height = gRMode.efbHeight;
+    GXColor black = Black();
+    width = gRMode.fbWidth;
+    GXSetNumChans(1);
+    GXSetChanCtrl(GX_COLOR0, GX_FALSE, GX_SRC_REG, GX_SRC_REG, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+    SetMatColor(black);
+    GXSetBlendMode(GX_BM_BLEND, GX_BL_ONE, GX_BL_ZERO, GX_LO_CLEAR);
+    GXSetNumTexGens(0);
+    GXSetNumTevStages(1);
+    GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD_NULL, GX_TEXMAP_NULL, GX_COLOR0);
+    GXSetTevOp(GX_TEVSTAGE0, GX_PASSCLR);
+    GXSetCullMode(GX_CULL_NONE);
+    GXClearVtxDesc();
+    GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_S16, 0);
+    MTXOrtho(projection, 0.0f, height, 0.0f, width, 0.0f, 1.0f);
+    GXSetProjection(projection, GX_ORTHOGRAPHIC);
+    MTXIdentity(identity);
+    GXLoadPosMtxImm(identity, GX_PNMTX0);
+    GXSetCurrentMtx(GX_PNMTX0);
+    GXBegin(GX_QUADS, GX_VTXFMT0, 4);
+    GXPosition3s16(0, 0, 0);
+    GXPosition3s16(width, 0, 0);
+    GXPosition3s16(width, height, 0);
+    GXPosition3s16(0, height, 0);
+    GXEnd();
+    switch (error) {
+    case DVD_STATE_COVER_OPEN:
+        DrawMessage(196, "The Disc Cover is open.");
+        DrawMessage(232, "If you want to continue the game, ");
+        DrawMessage(260, "please close the Disc Cover.");
+        break;
+    case DVD_STATE_NO_DISK:
+        DrawMessage(196, "Please insert the");
+        DrawMessage(232, "Medal of Honor Frontline");
+        DrawMessage(260, "Game Disc.");
+        break;
+    case DVD_STATE_WRONG_DISK:
+        DrawMessage(196, "This is not the Medal of Honor Frontline Game Disc.");
+        DrawMessage(232, "Please insert the Medal of Honor Frontline");
+        DrawMessage(260, "Game Disc.");
+        break;
+    case DVD_STATE_RETRY:
+        DrawMessage(186, "The Game Disc could not be read.");
+        DrawMessage(232, "Please read the");
+        DrawMessage(260, "Nintendo GameCube\x99 Instruction Booklet");
+        DrawMessage(288, "for more information.");
+        break;
+    case DVD_STATE_FATAL_ERROR:
+        DrawMessage(186, "An error has occurred.");
+        DrawMessage(232, "Turn off the power and refer to the");
+        DrawMessage(260, "Nintendo GameCube\x99 Instruction Booklet");
+        DrawMessage(288, "for further instructions.");
+        break;
+    }
+    VISetBlack(FALSE);
+    u8* frameBuffer = (u8*)gFrameBuffer;
+    GXCopyDisp(frameBuffer, GX_TRUE);
+    GXDrawDone();
+    VISetNextFrameBuffer(frameBuffer);
+    VIFlush();
+    VIWaitForRetrace();
+}

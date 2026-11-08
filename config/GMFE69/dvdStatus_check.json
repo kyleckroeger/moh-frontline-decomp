@@ -41,31 +41,31 @@
     {
       "name": ".text",
       "address": "0x80109258",
-      "size": 524,
+      "size": 1324,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fddc",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80016bc8",
-      "size": 12,
+      "size": 24,
       "type": 1
     },
     {
       "name": ".rodata",
       "address": "0x8017ae48",
-      "size": 212,
+      "size": 662,
       "type": 1
     },
     {
       "name": ".data",
       "address": "0x8018c4a0",
-      "size": 68,
+      "size": 120,
       "type": 1
     },
     {
@@ -79,9 +79,21 @@
       "address": "0x8034ef60",
       "size": 4,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351360",
+      "size": 24,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ShowDVDError__Fi",
+      "address": "0x80109464",
+      "size": 800,
+      "binding": 0
+    },
     {
       "name": "CheckDVDError",
       "address": "0x80109258",
@@ -90,15 +102,45 @@
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
     "DVDGetDriveStatus": "0x8011a1f8",
+    "DrawMessage__FiPc": "0x80108e18",
+    "FontData": "0x8034ef40",
+    "FontSize": "0x8034ef48",
+    "FontSpace": "0x8034ef4a",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXCopyDisp": "0x8012cf78",
+    "GXDrawDone": "0x8012bff0",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetChanCtrl": "0x8012d828",
+    "GXSetChanMatColor": "0x8012d674",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetTevOp": "0x8012ee78",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GxAndVIInit": "0x80109784",
     "OSGetResetButtonState": "0x80114c5c",
     "OSGetTime": "0x80116a40",
+    "OSInitFont": "0x80113264",
     "OSResetSystem": "0x801148d0",
     "PADRead": "0x8011d460",
-    "ShowDVDError__Fi": "0x80109464",
+    "PSMTXIdentity": "0x80116bb0",
     "VIFlush": "0x8011c39c",
     "VISetBlack": "0x8011c524",
+    "VISetNextFrameBuffer": "0x8011c4b8",
+    "VIWaitForRetrace": "0x8011b738",
     "__div2i": "0x80138b60",
+    "gFrameBuffer": "0x8034ef50",
+    "gHeapPtr": "0x8034ef54",
+    "gRMode": "0x803168e0",
     "memset": "0x80009410",
     "printf": "0x8013dc88"
   },
@@ -106,10 +148,22 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "ShowDVDError__Fi"
+    "DrawMessage__FiPc",
+    "FontData",
+    "FontSize",
+    "FontSpace",
+    "gFrameBuffer",
+    "gHeapPtr",
+    "gRMode"
   ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "FontData",
+    "FontSize",
+    "FontSpace",
+    "gFrameBuffer",
+    "gHeapPtr"
+  ],
   "original_file": "dvdStatus_base.c",
   "original_file_index": 10417
 }
