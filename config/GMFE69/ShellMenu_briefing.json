@@ -1,0 +1,149 @@
+{
+  "id": "ShellMenu_briefing",
+  "source": "src/game/ShellMenu_briefing.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800e0770",
+      "size": 1804,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000ee08",
+      "size": 200,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015aac",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "PlayBriefingMovie__10CShellMenuFi",
+      "address": "0x800e0770",
+      "size": 1804,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "FadeVolume__12CSoundStreamFii": "0x800ecc78",
+    "GetRequestStatus__12CSoundStreamCFiR21SSndStrmRequestStatus": "0x800eccc0",
+    "GetStatus__12CSoundStreamCFR16SSndStreamStatus": "0x800ecce8",
+    "GetValueAnyPlayer__13CInputManagerFUl": "0x80084b58",
+    "GetVolume__12CSoundStreamCFv": "0x800ecc9c",
+    "Pause__12CSoundStreamFv": "0x800ecc50",
+    "PurgeQueue__12CSoundStreamFv": "0x800ecd30",
+    "QueueFile__12CSoundStreamFPCcii": "0x800ecd54",
+    "SendRenderList__Fv": "0x8001a108",
+    "SetVolume__12CSoundStreamFi": "0x800ecd0c",
+    "SoundSetVolumes__Fff": "0x800ecf60",
+    "Unpause__12CSoundStreamFv": "0x800ecc28",
+    "UpdateREAL__Fv": "0x8001b098",
+    "Update__13CInputManagerFf": "0x80084c80",
+    "WaitRenderList__Fv": "0x8001a280",
+    "WaitScreen__Fv": "0x8001a178",
+    "__ct__12CSoundStreamFii": "0x800ecdf0",
+    "__ct__13CSoundSysLockFv": "0x800ecbf8",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__12CSoundStreamFv": "0x800ecd84",
+    "__dt__13CSoundSysLockFv": "0x800ecba8",
+    "__nw__FUl": "0x8001cb60",
+    "g_inputMgr": "0x801ec80c",
+    "g_soundStreamRequest": "0x8034dc80",
+    "pSoundStream": "0x8034eca0",
+    "sprintf": "0x8013dab4"
+  },
+  "undefined_in_discarded_code": [
+    "ShellMenuBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "ShellMenuBlockStrings__Fv"
+  ],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_soundStreamRequest",
+    "pSoundStream"
+  ],
+  "original_file": "ShellMenu.cpp",
+  "original_file_index": 8612,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x801783c8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350f58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350f54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350ee8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x80350ee0"
+    }
+  ]
+}
