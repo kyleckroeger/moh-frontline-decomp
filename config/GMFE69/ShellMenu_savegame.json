@@ -1,0 +1,110 @@
+{
+  "id": "ShellMenu_savegame",
+  "source": "src/game/ShellMenu_savegame.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800e4c9c",
+      "size": 1484,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f108",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015bf0",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "MemoryCardSaveGame__10CShellMenuFiiPc",
+      "address": "0x800e4c9c",
+      "size": 1484,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "ArePrefsPresent__11CMemoryCardFv": "0x800ee7b4",
+    "Close__11CMemoryCardFv": "0x800ef278",
+    "CreateNewSaveGame__11CMemoryCardFPUiPc": "0x800efb18",
+    "CreatePrefs__11CMemoryCardFv": "0x800eee0c",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DeleteSaveGame__11CMemoryCardFUi": "0x800ef514",
+    "GetAvailableMemory__11CMemoryCardFv": "0x800f01ac",
+    "GetPort__11CMemoryCardFv": "0x800ee7a4",
+    "GetSaveGameOverheadSize__11CMemoryCardFb": "0x800ee7ac",
+    "IsFormated__11CMemoryCardFv": "0x800f02c8",
+    "IsSaveGamePresent__11CMemoryCardFi": "0x800ef5c4",
+    "OpenSlot__11CMemoryCardFi": "0x800f083c",
+    "Open__11CMemoryCardFUib": "0x800ef324",
+    "SavePrefs__11CMemoryCardFPUcUi": "0x800eeb8c",
+    "Write__11CMemoryCardFPUcUi": "0x800ef040",
+    "__dl__FPv": "0x8001ca2c",
+    "__nw__FUl": "0x8001cb60",
+    "strncpy": "0x8013fffc"
+  },
+  "undefined_in_discarded_code": [
+    "ShellMenuBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "ShellMenuBlockStrings__Fv"
+  ],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "ShellMenu.cpp",
+  "original_file_index": 8612,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x801783c8"
+    }
+  ]
+}
