@@ -1230,7 +1230,8 @@
     "gc_idct.json",
     "__exception.json",
     "path_choosebeat.json",
-    "staticmesh_init.json"
+    "staticmesh_init.json",
+    "ShellMenu_bootcheck.json"
   ],
   "progress": {
     "code_bytes": 1414572,

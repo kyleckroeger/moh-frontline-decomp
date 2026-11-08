@@ -311,6 +311,16 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   `port_unit.py` drafts the list when a compiled function's original symbol
   is such a label.
 
+`src/game/ShellMenu_block.h` is a layout device for the ShellMenu units whose
+code reaches `ShellMenu.cpp`'s constant block as base + immediate offset. That
+block holds strings whose users the original linker removed, so no surviving
+function can recreate its layout. The header copies the block's strings and
+tables from the original into a function with no logic (`ShellMenuBlockStrings`)
+and named constants. Each unit discards the function, so it never reaches the
+image and earns no credit; the shape is not recovered source. `PlayBriefingMovie`
+and `PlayCreditsSlideShow` copy their tables from those constants where the
+original probably declared local arrays; the generated code is identical.
+
 ## Open problems
 
 - **Revision differences.** Remaining SDK files differ from both reconstructions

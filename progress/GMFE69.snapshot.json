@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1211848,
+    "matching_code_bytes": 1212472,
     "total_executable_code_bytes": 1414572,
-    "percent": 85.66888076393425,
+    "percent": 85.71299304666005,
     "categories": {
-      "reconstructed_game": 971212,
+      "reconstructed_game": 971836,
       "restored_library": 240636
     },
-    "matching_functions": 4832
+    "matching_functions": 4833
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -195,6 +195,7 @@
     "config/GMFE69/ShellMenu.json": "8dd6d4ec65f514a1f54b37bc84805970f0bea890598fe1b03be548df82af6f74",
     "config/GMFE69/ShellMenu_audio.json": "1a043c64b33ba21651b30a0ec86b3b0ce178ba7dd7382efa78f2c9bdfbfab85c",
     "config/GMFE69/ShellMenu_audioset.json": "27607fed353c1360321b5725b5513d31bcfca481fc718dfb4841a217b873360c",
+    "config/GMFE69/ShellMenu_bootcheck.json": "51973c9e73602aed9a3b726153ee987d1a59fc0d9a2412378db602295b5b98a3",
     "config/GMFE69/ShellMenu_buttons.json": "5ee1b9f016e36d01fbde2d9a4fd30b395e06309cbb39786c3e8b32d7cb247f65",
     "config/GMFE69/ShellMenu_card.json": "39d9fc867595c068623b7bc1b2946a0ae62c8aebe5f9625dbf54143c10424f44",
     "config/GMFE69/ShellMenu_cardquery.json": "aeaad9cb743d1dcee1b7a5e3f809f3b17a65cc71600a8faa405e54f637ef547e",
@@ -859,7 +860,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "8688a539152393597d31a30ed6e684d8887811ec94b2809704195216decb5fe5",
+    "config/GMFE69/project.json": "588506e2fab6ea0a8dff0734d69a1a9705bf035622a26efd25374b20586f664c",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2362,6 +2363,8 @@
     "src/game/ShellMenu.cpp": "e03b478aa25e400ae26b61840f1147b0b0293e518a216ca8e670c39aab756f38",
     "src/game/ShellMenu_audio.cpp": "e6c28700ad3c8dfa57727eeba4291575c2dd67050e85f0d3814bed9881463edb",
     "src/game/ShellMenu_audioset.cpp": "eaed4c52183e4d52249d7f60476c64a6c2bf21a5882d2c66793c2e3957bae9ae",
+    "src/game/ShellMenu_block.h": "aa931d76b6b5b02c8449ca930f112f268019d4ae425893faa515f675853d0cec",
+    "src/game/ShellMenu_bootcheck.cpp": "e1f3393a907995fae5d92776b83d799b9bd47ac658347d709e9372d9e41a3960",
     "src/game/ShellMenu_buttons.cpp": "ce08d46ac72d029e87f9437a1a959869af093341fb55af461ed0e457db0005aa",
     "src/game/ShellMenu_card.cpp": "8b1e97e98921cc9c17679c1317a69483cded761ac6a955e2a3158eee5ac1b2aa",
     "src/game/ShellMenu_cardquery.cpp": "24afdd003227b2c62651d37f0bffeff56395ce8576140e4045d3f31031982f65",
@@ -53600,6 +53603,47 @@
       "discarded_functions": [],
       "object_sha256": "6123c4be02aa5e128eecf4d3f58b057efb92b6b72ef6ebae16afce43c493332c",
       "linked_sha256": "8fb75f4253496dc79d1de68054939ba41a67d3f7c9d7c58f42ee3f601ae67e3e"
+    },
+    {
+      "id": "ShellMenu_bootcheck",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 624,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [
+        "ShellMenuBlockStrings__Fv"
+      ],
+      "object_sha256": "7111ab552185097bc3ab50dae42d80fb99f4b0c463dfb9df0a67444132b32f42",
+      "linked_sha256": "27d9c3b4dfa253af5c4b95c941f9a5b18034e6bf9adbe0eb5aa2a3f8021af443"
     }
   ],
   "code_map": {
@@ -54859,13 +54903,6 @@
             "size": 5024,
             "kind": "function",
             "name": "MemoryCardBootUpPortCheck__10CShellMenuFi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e3aac",
-            "size": 624,
-            "kind": "function",
-            "name": "MemoryCardBootUpCheck__10CShellMenuFv",
             "evidence": "exception-index"
           },
           {
