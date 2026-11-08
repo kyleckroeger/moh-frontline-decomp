@@ -157,7 +157,7 @@ void CStaticObject::TranslateFromScript(CVector3& velocity, CVector3& distance, 
     m_flag40 = 1;
     m_translateEvent = event;
     if (distance.x == 0.0f && distance.y == 0.0f && distance.z == 0.0f) {
-        m_translateTime = -1.0f;
+        m_translateTime = 3.4028235e38f;
     } else {
         CVector3 time;
         time.z = 0.0f;

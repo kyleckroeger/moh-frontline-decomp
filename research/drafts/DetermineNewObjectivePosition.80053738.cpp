@@ -96,8 +96,6 @@ public:
 
 extern float f_rrObstacleAvoidanceLineAngleMin[11];
 extern float f_rrObstacleAvoidanceLineAngleMax[11];
-extern const float OBSTACLE_MARGIN;
-extern const float OBSTACLE_NONE;
 
 inline int FindLine(float angle) {
     for (int i = 0; i < 11; i++) {
@@ -121,7 +119,7 @@ class CObstacleAvoidance {
 public:
     void DetermineNewObjectivePosition(CAIFilterRealPosition&);
     bool HasClearance() const {
-        if (OBSTACLE_NONE == m_unknown38c[2])
+        if (0.0f == m_unknown38c[2])
             return false;
         return true;
     }
@@ -152,7 +150,7 @@ public:
         case 6:
             return false;
         }
-        if (m_grid[line].m_distance[0] < OBSTACLE_MARGIN + m_unknown38c[2])
+        if (m_grid[line].m_distance[0] < 0.25f + m_unknown38c[2])
             return false;
         return true;
     }
@@ -190,7 +188,7 @@ void CObstacleAvoidance::DetermineNewObjectivePosition(CAIFilterRealPosition& ou
         break;
     case 4:
         CopyPosition(out, m_position);
-        if (m_owner->m_position.GetDistanceSquaredXYReal(m_avoidPosition) < OBSTACLE_MARGIN + m_unknown38c[2]) {
+        if (m_owner->m_position.GetDistanceSquaredXYReal(m_avoidPosition) < 0.25f + m_unknown38c[2]) {
             m_state = 3;
             BSObjectTriggerEvent(m_owner->m_filter->m_script, 144, 0, 0, false);
         }

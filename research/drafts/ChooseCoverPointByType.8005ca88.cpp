@@ -104,7 +104,7 @@ static inline bool IsBesideAndCloser(float dot, float distance, float toThreat, 
     bool result;
     unsigned char inside;
     inside = result = false;
-    if (fabs(dot) < 1.69 && distance < toThreat)
+    if (fabs(dot) < 0.38f && distance < toThreat)
         inside = true;
     if (inside && threatDistance < distance)
         result = true;
@@ -115,7 +115,7 @@ static inline bool IsBesideAndNearer(float dot, float distance, float toThreat, 
     bool result;
     unsigned char inside;
     inside = result = false;
-    if (fabs(dot) < 1.69 && distance < toThreat)
+    if (fabs(dot) < 0.38f && distance < toThreat)
         inside = true;
     if (inside && distance < threatDistance)
         result = true;

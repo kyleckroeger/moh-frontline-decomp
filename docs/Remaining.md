@@ -39,6 +39,8 @@ Verified: **1,219,272 / 1,414,572 code bytes (86.19%)**. Left: about 195.1 KB in
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
 Priority 1 is 120.8 KB and would take the project to 94.7% at most.
+
+Partial-source sweep: 5 code-exact, not yet linked (5.7 KB), 89 consistent (119.7 KB), 8 flagged as differing (11.2 KB); 68 functions (58.5 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -51,6 +53,32 @@ A draft is only proven by the complete build, because the near-miss scorer ignor
 small-data constants. For the port, a logically correct draft may be usable before
 it matches. Earlier attempts at each function are in `research/log/`: search there
 before retrying one.
+
+## Partial-source sweep
+
+As of 2026-11-08 the main goal is logically correct source for every remaining
+function, with exact matching second. Exact matching had slowed to a crawl, and the
+port needs complete, correct logic more than identical bytes. The approach follows
+[Rising Sun's partial-source workflow](https://github.com/lifewillbeokay/moh-rising-sun/blob/main/docs/Progress.md#partial-source-workflow),
+including its three separate states:
+
+- **Partial:** the whole function compiles and is compared, and the differences are
+  known. The original bytes stay in the verified image.
+- **Exact, unlinked:** every instruction matches, but it hasn't passed the complete
+  build. Near-misses in this state may depend on layout devices or declined forms.
+- **Linked and verified:** it passed the complete-image build and earns progress.
+
+Unlike Rising Sun, partial source lives in `research/drafts/` for now, not `src/`,
+because a change under `src/` needs a full rebuild. Partial source earns no progress
+credit, and 86.19% won't move because of it.
+
+`research/tools/check_draft.py` compares each draft with the original by content:
+calls in order, floating constants, strings and tables, globals, field offsets. It
+writes `research/drafts/status.tsv`. A similarity score is never proof of correctness,
+and "consistent" doesn't prove behaviour; the real test is running swept functions
+in Dolphin or the port. Work order: functions with no draft in priority 1, then drafts
+flagged as differing, then the other areas, then multiplayer. Anything that happens
+to match exactly still lands the normal way.
 
 ## Known blockers in priority 1
 

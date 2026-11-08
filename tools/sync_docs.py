@@ -8,6 +8,7 @@ stays hand-written: only text between `<!-- sync_docs:NAME -->` markers and the
 counts and rows of the Game.md unit tables are generated.
 """
 import argparse
+import csv
 import json
 import re
 import sys
@@ -117,7 +118,25 @@ def remaining_block(snapshot):
     first = sum(v for k, v in sizes.items() if k[0] == 1)
     ceiling = 100 * (p["matching_code_bytes"] + first) / p["total_executable_code_bytes"]
     lines += ["", f"Priority 1 is {kb(first)} and would take the project to {ceiling:.1f}% at most."]
+    lines += ["", sweep_line(rows)]
     return "\n".join(lines)
+
+
+def sweep_line(rows):
+    """Partial-source progress, from the status file research/tools/check_draft.py writes."""
+    path = ROOT / "research/drafts/status.tsv"
+    sizes = {name: size for _, name, size in rows}
+    counts, total = Counter(), Counter()
+    for row in csv.DictReader(path.read_text().splitlines(), delimiter="\t"):
+        if row["function"] in sizes:
+            counts[row["status"]] += 1
+            total[row["status"]] += sizes[row["function"]]
+    left = set(sizes) - {row["function"] for row in csv.DictReader(path.read_text().splitlines(), delimiter="\t")}
+    parts = [(s, l) for s, l in (("code_exact", "code-exact, not yet linked"), ("consistent", "consistent"),
+                                 ("differs", "flagged as differing"), ("no_compile", "not compiling")) if counts[s]]
+    done = ", ".join(f"{counts[s]} {label} ({kb(total[s])})" for s, label in parts)
+    return (f"Partial-source sweep: {done}; {len(left)} functions ({kb(sum(sizes[n] for n in left))}) have no draft yet. "
+            "These are checker results, not proof of behaviour, and earn no progress credit.")
 
 
 def replace_block(text, name, body):

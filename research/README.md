@@ -47,7 +47,8 @@ These are working notes, kept as written:
 
 `drafts/index.tsv` gives each draft's differing lines, size, address, function, the
 manifest to take compiler settings from, and its path. The line counts were measured
-when the drafts were collected.
+when the drafts were collected. `drafts/status.tsv` holds the latest checker result for
+each, and [Remaining.md](../docs/Remaining.md#partial-source-sweep) explains the sweep.
 
 - **A low score isn't proof.** The scorer ignores small-data constants: three drafts
   that scored 0 had wrong floats. Only `one_unit.py` and `tools/reconstruct.py` prove
@@ -65,6 +66,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 
 | Script | Use |
 | --- | --- |
+| `check_draft.py <name>...`, `--all` | Compare drafts with the original by content (calls, constants, strings, globals, offsets). `--all` rewrites `drafts/status.tsv`. Use this first. |
 | `score_draft.py <name>...` | Differing lines of matching drafts against the original |
 | `sbs.py <manifest> <draft> <function> <start> <end>` | Side-by-side original and draft, marking register differences |
 | `varmap.py` | Which variable sits in which register (uses `-sym on` debug output) |

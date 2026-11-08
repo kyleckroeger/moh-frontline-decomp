@@ -173,7 +173,7 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
     screenX = screen->GetX();
     screenY = screen->GetY();
     scaleX = g_viewport.m_scaleX;
-    elapsed = 0.016666668f * m_speed;
+    elapsed = (1.0f / 59.94f) * m_speed;
     scaleY = g_viewport.m_scaleY;
     if (g_bInMultiplayerMode) {
         float offsetX = (float)screenX * g_viewport.m_x;

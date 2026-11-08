@@ -99,7 +99,7 @@ public:
 };
 
 inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
-    float line = 0.4f * g_screen.m_scaleY;
+    float line = 50.0f * g_screen.m_scaleY;
     char working[128];
     int i = 0;
     do {
@@ -141,7 +141,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     g_inputMgr.Update(1.0f);
     float spacing = 22.0f;
     step = (int)spacing;
-    float top = 0.4f * scale;
+    float top = 50.0f * scale;
     do {
         char text[260];
         char blockText[256];
@@ -185,7 +185,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                     font.DrawTextCentered(y, text);
                     y += 22.0f;
                     font.DrawTextCentered(y, m_messages.GetText(804));
-                    y += 11.0f;
+                    y += 44.0f;
                     font.DrawTextCentered(y, m_messages.GetText(805));
                     y += 22.0f;
                     sprintf(text, m_messages.GetText(806), (int)letter);
@@ -337,7 +337,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                     font.DrawTextCentered(y, m_messages.GetText(781));
                     y += 22.0f;
                     font.DrawTextCentered(y, m_messages.GetText(782));
-                    y += 11.0f;
+                    y += 44.0f;
                     font.DrawTextCentered(y, m_messages.GetText(784));
                     y += 22.0f;
                     font.DrawTextCentered(y, m_messages.GetText(785));
@@ -367,13 +367,13 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 if (!FormatCard(slot)) {
                     char failed[80];
                     sprintf(text, m_messages.GetText(836), (int)letter);
-                    float failY = 0.4f * g_screen.m_scaleY;
+                    float failY = 50.0f * g_screen.m_scaleY;
                     do {
                         font.DrawTextCentered(failY, m_messages.GetText(835));
                         float next = failY + 22.0f;
                         sprintf(failed, m_messages.GetText(836), (int)letter);
                         font.DrawTextCentered(next, failed);
-                        next += 11.0f;
+                        next += 44.0f;
                         font.DrawTextCentered(next, m_messages.GetText(832));
                         font.DrawTextCentered(next + 22.0f, m_messages.GetText(833));
                         WaitRenderList();

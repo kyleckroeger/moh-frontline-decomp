@@ -95,8 +95,8 @@ struct CAIFilterTrackView {
     void Update(const CAIFilterRealVector3& target, const CAIFilterRealVector3& targetRate, float dt) {
         float t = dt;
         float step = 0.008333334f;
-        if (t > 0.1f)
-            t = 0.1f;
+        if (t > 0.10000001f)
+            t = 0.10000001f;
         for (; t; t -= step) {
             if (step > t)
                 step = t;
@@ -135,8 +135,8 @@ struct CAIFilterTrackView {
     void Update2(const CAIFilterRealVector3& target, const CAIFilterRealVector3& targetRate, float dt) {
         float t = dt;
         float step = 0.008333334f;
-        if (t > 0.1f)
-            t = 0.1f;
+        if (t > 0.10000001f)
+            t = 0.10000001f;
         for (; t; t -= step) {
             if (step > t)
                 step = t;
