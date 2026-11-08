@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1217612,
+    "matching_code_bytes": 1219272,
     "total_executable_code_bytes": 1414572,
-    "percent": 86.07635383706167,
+    "percent": 86.19370381995402,
     "categories": {
-      "reconstructed_game": 976976,
+      "reconstructed_game": 978636,
       "restored_library": 240636
     },
-    "matching_functions": 4838
+    "matching_functions": 4839
   },
   "input_sha256": {
     "config/GMFE69/AIDoodad.json": "fbe6da2750e71d43ae68554e3fcdce413e76e9d8463f18206e347c607056e6f8",
@@ -204,6 +204,7 @@
     "config/GMFE69/ShellMenu_cardsize.json": "34491cc4fef2503918da944e59bab05513c54085f2bb02020d0bf82cd00dc46f",
     "config/GMFE69/ShellMenu_cheatall.json": "63ca1c2b0d0700c54d0696c31f82a41abe4e31bc76761905826b1b768d2333a2",
     "config/GMFE69/ShellMenu_corrupt.json": "9bbd080d4140caa1294dc613ee0852d4295ab0a19077863912eb1be24c4c230e",
+    "config/GMFE69/ShellMenu_credits.json": "dc511945612ff7cf00860b397771e2d1d54405abe8c2d955cb9424f2d2a28882",
     "config/GMFE69/ShellMenu_ctor.json": "e98ce112d75402949b0979b7dda2ae1265e02f6f8affac245111e0b2249e13c5",
     "config/GMFE69/ShellMenu_dtor.json": "0a63e8a0bdd75c2c7e60283100e6c092625721f838226010e42fd7c21301ca65",
     "config/GMFE69/ShellMenu_fade.json": "0fd80286af9cab6f438b558b6f15fa754d9684e1c05d140db984ab7c9c8052e1",
@@ -864,7 +865,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "22bbed5a196257ae368ab3451ece184eb317206e9b2b5b8c9efeea6548ffe116",
+    "config/GMFE69/project.json": "7f3b54310411b7796bc856365e4fcc63e634f883f84cf0d2f37f0a4827858f4f",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2377,6 +2378,7 @@
     "src/game/ShellMenu_cardsize.cpp": "9832c3eb257b487686198cfc911aab5a7247774f8719aa6951ac14b995e7d1a3",
     "src/game/ShellMenu_cheatall.cpp": "ef43d852b0d0e7c0c8f2fe653e36e065ffe8516650fe007fa908535bd5c42431",
     "src/game/ShellMenu_corrupt.cpp": "aadda0ac2f297fb34a3209f298c49cdc401cf4711df98ec386bcd7ac33b73488",
+    "src/game/ShellMenu_credits.cpp": "c1238b8a92b9ee86ce644d5574f05a7efdf557247e60de49a3a5343a4ae22de2",
     "src/game/ShellMenu_ctor.cpp": "a293f1b64fcaaf753b2a0559d7974cc1f4ab3b982677e5825d2b1f7260faf908",
     "src/game/ShellMenu_dtor.cpp": "b7b79f580b8c0de75140427ee0a71590e260016e60441dc5e588511777d84be2",
     "src/game/ShellMenu_fade.cpp": "dd8ca1153bb5a1e5283e12593e8b476801d39497863a785f20adf0edc4404c4d",
@@ -53818,6 +53820,47 @@
       ],
       "object_sha256": "cf5d21063e650f6895bdcb548b93a66238c196f3b9ec93893506f0deb8935bfd",
       "linked_sha256": "66bef96d3f743f0bca773d2ff5e9ce2353b4481c00b59743590c5e89e0333b8a"
+    },
+    {
+      "id": "ShellMenu_credits",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1660,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [
+        "ShellMenuBlockStrings__Fv"
+      ],
+      "object_sha256": "e0410efc963df7975b7eb242ed6ebd4070554d0bb83b9472fc50dcac7d94c9e1",
+      "linked_sha256": "5c9440b8e5757e62f34805faeaa374823d26f79d6eea524eb58beadede418ac7"
     }
   ],
   "code_map": {
@@ -55042,13 +55085,6 @@
             "size": 236,
             "kind": "function",
             "name": "MoveStatsIntoProperAreaForIstudio__10CShellMenuFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800e0e7c",
-            "size": 1660,
-            "kind": "function",
-            "name": "PlayCreditsSlideShow__10CShellMenuFv",
             "evidence": "exception-index"
           },
           {
