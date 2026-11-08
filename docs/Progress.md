@@ -23,7 +23,12 @@ To refresh after an accepted source/tooling change, on a supported local machine
 python3 tools/reconstruct.py
 python3 -m unittest discover -s tests -v
 python3 tools/progress_report.py --capture
+python3 tools/sync_docs.py
 ```
+
+`sync_docs.py` regenerates the figures and unit tables in `README.md` and `docs/`
+from that snapshot and the manifests. A test fails if they are stale, so documents
+change in the same commit as the source.
 
 Capture rechecks the complete rebuilt image against its pinned identity, original
 load layout, source ranges and compiled unit hashes/bytes. It emits only selected

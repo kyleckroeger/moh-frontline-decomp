@@ -10,15 +10,19 @@ Progress counts verified, nonoverlapping source-built function bytes against all
 
 ## Status
 
-As of 2026-11-08, **1,219,272 of 1,414,572 code bytes (86.19%)** are built from source and verified, covering **4,839 functions in 1,236 units**:
+<!-- sync_docs:status -->
+**1,219,272 of 1,414,572 code bytes (86.19%)** are built from source and verified, covering **4,839 functions in 1,236 units**:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 978,636 | 3,840 | 1,051 | CodeWarrior `GC/1.3.2` (and `GC/1.3`) |
-| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5n`, `GC/1.2.5`, `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 978,636 | 3,840 | 1,051 | `GC/1.3`, `GC/1.3.2` |
+| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
+
+About 195.3 KB is left, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
+<!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
-- The remaining ~14% (about 195 KB in 172 functions) is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain. [Remaining.md](docs/Remaining.md) breaks it down by area.
+- What remains is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain.
 - The rebuilt image has **not** been runtime-tested.
 
 Most recent work is AI-assisted (Claude Code agents working against the same verification gate as any contributor); see [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every accepted unit follows.
@@ -66,15 +70,21 @@ Run the scripts from any directory; all outputs remain inside this checkout. `ba
 | `build/reconstruction/report.json` | Complete source-build result |
 | `progress/GMFE69.snapshot.json` | Public, locally verified progress snapshot |
 
+`tools/sync_docs.py` regenerates this page's status and the other docs' figures and unit tables from that snapshot. A test fails if they fall behind.
+
 ## Contributing units
 
 `tools/port_unit.py` drafts a unit manifest from a source file by matching its relocations to the original's, and `tools/unit_diff.py` shows per-function disassembly differences after a failed verification. After a build, `tools/objdiff_config.py` writes a git-ignored `objdiff.json` for local per-function diffing. See [Dolphin SDK units](docs/Dolphin.md) for the workflow, compiler profile and the CodeWarrior linker behaviors the verifier models, [Game.md](docs/Game.md) for the game-code method, and [Remaining.md](docs/Remaining.md) for priorities and which source forms are accepted.
+
+## Research
+
+[`research/`](research/README.md) holds everything learned so far that isn't accepted source: the full work logs, matching tricks, the best draft of each open function and the scripts behind them. Search it before starting on a function; most have earlier attempts.
 
 ## Next work
 
 The matching source is meant to be the base of a native PC port without multiplayer, kept separate from the matching build, so the remaining work is ordered by what that port needs ([details](docs/Remaining.md)):
 
-1. **Collision, scripting, AI and animation** (about 121 KB).
+1. **Collision, scripting, AI and animation.**
 2. **Everything else that isn't multiplayer:** rendering, shell and HUD, audio, video and system code.
 3. **Multiplayer**, last, for the completeness of the decompilation.
 

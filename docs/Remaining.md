@@ -1,8 +1,8 @@
 # Remaining work and priorities
 
-Snapshot: 2026-11-08, **1,219,272 / 1,414,572 code bytes (86.19%)**. This file
-records what is left and in what order it gets done. Figures here are a dated
-survey; `progress/GMFE69.snapshot.json` is the verified count.
+This file records what is left and in what order it gets done. The figures are
+generated from `progress/GMFE69.snapshot.json` by `tools/sync_docs.py`; the rest
+is kept by hand and changes in the same commit as the decision or work behind it.
 
 ## Why the order matters
 
@@ -22,30 +22,35 @@ A cheaper function in a later group does not jump the queue.
 
 ## What is left
 
-About 195 KB in 172 functions across 70 source files, all game and engine C/C++.
-Most of those files are already partly matched. Areas are a judgement call based
-on file and function names.
+<!-- sync_docs:status -->
+Verified: **1,219,272 / 1,414,572 code bytes (86.19%)**. Left: about 195.1 KB in 170 functions across 64 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
-| 1 | Scripting and level objects | 58.8 KB | `bsbifunc.cpp`, `objcreate.cpp`, `buddy.cpp`, `staticobjfactory.cpp`, `proxtrig.cpp`, `bsfile.cpp`, `explosion.cpp`, `impact.cpp` |
-| 1 | Collision | 25.2 KB | `cdbgeom.cpp`, `box.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp` |
+| 1 | Scripting and level objects | 58.8 KB | `bsbifunc.cpp`, `objcreate.cpp`, `buddy.cpp`, `staticobjfactory.cpp`, `proxtrig.cpp`, `bsfile.cpp` |
+| 1 | Collision | 25.2 KB | `cdbgeom.cpp`, `box.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
 | 1 | AI | 21.1 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Animation | 15.7 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `animmorph.cpp`, `dmcluster.cpp` |
-| 2 | Rendering | 22.5 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `font.cpp` |
-| 2 | Shell and HUD | 15.8 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `pumhandler.cpp` |
-| 2 | Audio | 16.3 KB | `path.c`, `salloc.c`, `soundschedule.cpp`, `sound.cpp`, `smixer.c` |
+| 2 | Rendering | 22.5 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `font.cpp`, `decal.cpp` |
+| 2 | Audio | 16.2 KB | `path.c`, `salloc.c`, `soundschedule.cpp`, `sound.cpp`, `smixer.c`, `spktplay.c` |
+| 2 | Shell and HUD | 15.8 KB | `ShellMenu.cpp`, `pumhandler.cpp`, `UserInterface.cpp`, `popup.cpp` |
 | 2 | System | 7.1 KB | `debug_prof.cpp`, `toilet.cpp`, `input.cpp`, `aramalloc.cpp` |
-| 2 | Video | 4.3 KB | `rcmp_main.cpp`, `getpic.cpp`, `hwvideodisplaylist.cpp` |
+| 2 | Video | 4.3 KB | `rcmp_main.cpp`, `getpic.cpp`, `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 finishes at about 94.7% at most. Other functions may turn out to be
-partly multiplayer; those move to priority 3 when they are identified.
+Priority 1 is 120.8 KB and would take the project to 94.7% at most.
+<!-- /sync_docs:status -->
 
-About 137 KB of the total has a working draft outside the repository, and about
-61 KB is within 30 differing lines. Those counts come from a scorer that ignores
-small-data constants, so a draft is only proven by the complete build. For the
-port, a logically correct draft may be usable before it matches.
+All of it is game and engine C/C++, and most of those files are already partly
+matched. Areas are a judgement call based on file and function names, and other
+functions may turn out to be partly multiplayer; those move to priority 3 when
+they are identified.
+
+Many of these functions have drafts in [`research/drafts/`](../research/README.md).
+A draft is only proven by the complete build, because the near-miss scorer ignores
+small-data constants. For the port, a logically correct draft may be usable before
+it matches. Earlier attempts at each function are in `research/log/`: search there
+before retrying one.
 
 ## Known blockers in priority 1
 

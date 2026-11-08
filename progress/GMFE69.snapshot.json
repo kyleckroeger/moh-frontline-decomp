@@ -3315,6 +3315,7 @@
     "tools/setup.py": "eb4acee34b23a267076a95ad80a33f0b0180573777b7dc47b3b241f891c6ebd3",
     "tools/setup_compiler.py": "39fbf4faae7103405bd01c5c9df214f3a2e10ea92ba3ea3bdb093348a5065b5c",
     "tools/split_config.py": "ffb569bf3f576a772865d88595909137bf2f88b1243c80bd7e7c9f28bd5d8ffb",
+    "tools/sync_docs.py": "473b7d78c6d8d58b8960de19280483496495d4a9ac51c351aa4593168c793b80",
     "tools/tool_runner.py": "bbbfef4ab75b86d03beea250ceeb3aafed4609bb2f0258d3db6c2ad1be9953f7",
     "tools/toolchain.json": "1b0f0c99f6d0dde8d74b58432e49a87cd14c20c408d3b36d95bdaab8c88d7314",
     "tools/unit_diff.py": "fe6b356d2fcd70eb1df0d388c243561e343b2c0a92b8bedbd9ff953b0c02ad0d"

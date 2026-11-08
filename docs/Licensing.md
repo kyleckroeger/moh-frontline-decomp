@@ -11,6 +11,10 @@ The build, verification and progress tooling under `tools/` and `tests/` is
 adapted from [moh-rising-sun](https://github.com/lifewillbeokay/moh-rising-sun),
 which is also dedicated under CC0 1.0. Credit is retained here and in the README.
 
+The working notes and scripts in `research/` fall under the same dedication. Its
+drafts are unaccepted reconstruction work, on the same terms as `src/`, and the
+third-party exclusions below apply to them too.
+
 ## Third-party material
 
 The root dedication does not relicense imported source, headers, library code or

@@ -10,19 +10,22 @@ in `AGENTS.md` win.
 
 ## Where the project is
 
-- Verified snapshot (2026-11-08): **1,219,272 / 1,414,572** executable bytes
+<!-- sync_docs:status -->
+- Verified snapshot: **1,219,272 / 1,414,572** executable bytes
   (**86.19%**), 4,839 functions in 1,236 units: **978,636** bytes of
   `reconstructed_game` (1,051 units, `docs/Game.md`) and **240,636** bytes of
   `restored_library` (185 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
   are in `docs/Remaining.md`.
+<!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
   (game and EA code), linked with
   SN ProDG 3.8.1 `ngcld` (`tools/toolchain.json`, `tools/compilers.json`).
 - Analysis already present: `tools/file_map.py`, `tools/code_map.py`,
   `tools/dependencies.py`, `tools/port_unit.py`, `tools/unit_diff.py`,
-  `tools/baseline.py`, `tools/reconstruct.py`, `tools/progress_report.py`.
+  `tools/baseline.py`, `tools/reconstruct.py`, `tools/progress_report.py`,
+  `tools/sync_docs.py`.
 - Rough `.text` split (heuristic, see `docs/initial-audit.md`): ~72% C++ game
   code and EA libraries, ~11% Dolphin SDK, ~8% EA audio, remainder MSL/MetroTRK/UI.
 
@@ -175,7 +178,8 @@ multiplayer last. Within a priority group:
 - **Ghidra/decompiler output is a hypothesis.** Treat names, types and layouts
   from any decompiler as leads to verify against the pinned target bytes.
 - **Keep provenance.** Originals, tool binaries, decompiler dumps and bulk
-  research stay under ignored `orig/`, `build/` or `scratch/`.
+  experiments stay under ignored `orig/`, `build/` or `scratch/`. Findings, attempts
+  and the best drafts go in `research/`, so contributors have them.
 - **Report separately.** Original-image baseline, individual function matches,
   complete source-build result, and runtime tests are distinct claims.
 - **Model roles.** A frontier model does the reconstruction directly; the
@@ -201,6 +205,7 @@ multiplayer last. Within a priority group:
 ## References
 
 - `docs/Remaining.md` — what is left, priorities, accepted and declined source forms
+- `research/README.md` — work logs, matching tricks, drafts of open functions, working scripts
 - `docs/Progress.md` — verification boundary and counting rules
 - `docs/Dolphin.md` — SDK revision strategy, compiler profiles, open problems
 - `docs/initial-audit.md` — target layout, toolchain, per-file splits
