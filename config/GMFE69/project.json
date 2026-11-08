@@ -1233,7 +1233,8 @@
     "staticmesh_init.json",
     "ShellMenu_bootcheck.json",
     "ShellMenu_autoload.json",
-    "ShellMenu_savegame.json"
+    "ShellMenu_savegame.json",
+    "ShellMenu_gallerymovie.json"
   ],
   "progress": {
     "code_bytes": 1414572,
