@@ -133,8 +133,9 @@ Exit: faster iteration on functions that are close but not yet byte-exact.
 ### Phase E — Verification hardening and runtime
 
 1. Broaden mutation tests.
-2. Test the linked build in Dolphin via its GDB stub; report runtime separately
-   from matching.
+2. Test the linked build in Dolphin; report runtime separately from matching.
+   `research/tools/dolphin_boot.py` boots and bisects; input movies and frame
+   comparison are next ([PortReadiness.md](PortReadiness.md), step 1).
 
 Exit: runtime status is measured, not assumed.
 

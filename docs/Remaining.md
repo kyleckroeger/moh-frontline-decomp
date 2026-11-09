@@ -20,6 +20,10 @@ to match.
 
 A cheaper function in a later group does not jump the queue.
 
+Matching is no longer the only work. [PortReadiness.md](PortReadiness.md) is the plan
+for what the port needs beyond it: drafts proven in play, all data in source, and one
+declaration per class. It sets the overall order; these priorities apply within it.
+
 ## What is left
 
 <!-- sync_docs:status -->
