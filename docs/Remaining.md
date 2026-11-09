@@ -40,7 +40,7 @@ Verified: **1,219,272 / 1,414,572 code bytes (86.19%)**. Left: about 195.1 KB in
 
 Priority 1 is 120.8 KB and would take the project to 94.7% at most.
 
-Partial-source sweep: 5 code-exact, not yet linked (5.7 KB), 89 consistent (119.7 KB), 8 flagged as differing (11.2 KB); 68 functions (58.5 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 6 code-exact, not yet linked (6.3 KB), 114 consistent (141.6 KB), 8 flagged as differing (11.2 KB); 42 functions (36.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
