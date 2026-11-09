@@ -57,6 +57,13 @@ and a comparison.
 5. **Record.** Add a `proven` column to `research/drafts/status.tsv`, and report proven
    bytes as a third figure next to exact and linked.
 
+First result (2026-11-09): the opening of Mission 1 crashed while loading with all
+drafts active. The cause was `CreateCollisionVolume`'s view of `BSGO_Basic`, which put the
+virtual table pointer first (CodeWarrior places it where the first virtual function is
+declared). `check_draft.py` had rated the draft consistent with only 80.5% of its field
+offsets agreeing. So any draft under 100% offsets is now a suspect, and those get
+reviewed first: 29 are under 95%, including `TLT_LoadFromRepository` at 73.7%.
+
 Already checked: drafts read and write the original's globals, not private copies
 (`link_drafts.py` resolves every named symbol to the original). As of 2026-11-09, 11
 symbols in 7 drafts stay private, and all are function-local statics (init guards, local
@@ -120,9 +127,13 @@ rules in [Remaining.md](Remaining.md). The order changes:
 
 The port's source-list generator needs one generated file, not a crawl of the repo.
 
-- `progress/port_manifest.json`. For each function address: its source file (a unit or
-  a draft) and its status (verified, exact unlinked, proven, consistent, differs). For
-  each data symbol: its source file, or `original` while it has none.
+- `progress/GMFE69.port_manifest.json`, written by `tools/port_manifest.py` (the
+  tests fail if it's stale; `land.sh` regenerates it). For each function symbol: its
+  address, size, status (verified, exact, consistent, differs, none) and source file. For
+  each data symbol: its owning unit's file, or `original`. First version 2026-11-09:
+  1,210,428 B of function symbols verified, 6,440 exact, 178,544 consistent, 10,144
+  differs, none without source; data owned 723,834 of 1,976,252 B. Verified code outside
+  sized function symbols (about 8.8 KB) isn't listed. A `proven` status comes with step 1.
 - When the port repo has a build, a long-lived `port` branch here, merged from `main`.
 - Format knowledge goes in `docs/` as it's recovered from loaders: scripts
   (`research/tools/bs_disasm.py`), `.lfc`, `.mvd`, `.skl`, `.dmf`, `.emt`.

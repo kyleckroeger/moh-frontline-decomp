@@ -8,6 +8,7 @@ done
 python3 tools/reconstruct.py | tail -1 | grep -q 'Complete image identical' || { echo RECONSTRUCT FAILED; exit 1; }
 out=$(python3 tools/progress_report.py --capture 2>&1) || { echo "$out" | tail -3; echo "PROGRESS CAPTURE FAILED (re-run reconstruct, then land again)"; exit 1; }
 echo "$out" | tail -1
+python3 tools/port_manifest.py >/dev/null || { echo PORT MANIFEST FAILED; exit 1; }
 python3 tools/sync_docs.py || { echo DOC SYNC FAILED; exit 1; }
 python3 -m unittest discover -s tests 2>&1 | tail -1 | grep -q OK || { echo TESTS FAILED; exit 1; }
 git add -A config/GMFE69 src docs research progress include tools tests README.md AGENTS.md CONTRIBUTING.md 2>/dev/null

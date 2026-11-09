@@ -8,7 +8,8 @@ the disc, points the FST entry at it, and runs Dolphin with a logging profile.
 
   dolphin_boot.py prepare --iso ORIGINAL.iso --dolphin Dolphin.exe --work DIR
   dolphin_boot.py run    --work DIR ELF [--secs 35]
-  dolphin_boot.py bisect --work DIR ELF [--secs 35]
+  dolphin_boot.py bisect --work DIR ELF [--secs 35] [--reference CONTROL.log]
+  dolphin_boot.py diff A.log B.log
 
 DIR must be on the Windows side (for example under /mnt/c/.../Temp) so Dolphin
 can read it. `run` prints one JSON line: exception number, SRR0, LR, the
@@ -30,6 +31,7 @@ import shutil
 import struct
 import subprocess
 import sys
+import time
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 ORIG = os.path.join(ROOT, "orig", "GMFE69", "Moh2RelGC.elf")
@@ -50,6 +52,10 @@ BOOT = True
 CORE = True
 MI = True
 """
+# 64 MB of MEM1 instead of 24: the drafts' code segment takes about 510 KB from the
+# game's heap, and with 24 MB Mission 1 runs out while loading. Control and test
+# images get the same memory, so comparisons stay fair. The clock is fixed too:
+# with the real time, two runs of the same image drift apart within a minute.
 DOLPHIN_INI = """[Analytics]
 PermissionAsked = True
 Enabled = False
@@ -60,6 +66,10 @@ UsePanicHandlers = False
 RenderToMain = True
 [Core]
 CPUThread = False
+RAMOverrideEnable = True
+MEM1Size = 67108864
+EnableCustomRTC = True
+CustomRTCValue = 946684800
 """
 
 
@@ -126,7 +136,7 @@ def function_names(data):
 class Linked:
     """The original and linked images, and the function entries the link patched."""
 
-    def __init__(self, path):
+    def __init__(self, path, keep=()):
         self.orig = open(ORIG, "rb").read()
         self.linked = open(path, "rb").read()
         self.osegs, self.lsegs = segments(self.orig), segments(self.linked)
@@ -142,7 +152,7 @@ class Linked:
                     continue
                 old = self.orig[s[1] + o:s[1] + o + 4]
                 new = self.linked[lo:lo + 4]
-                if old != new and new[0] >> 2 == 18:
+                if old != new and new[0] >> 2 == 18 and self.names[va] not in keep:
                     self.patches.append(va)
 
     def build(self, active):
@@ -179,8 +189,15 @@ def run(work, elf, secs, tag="run"):
     put_elf(work, elf)
     config = json.load(open(os.path.join(work, "dolphin_boot.json")))
     log = os.path.join(work, "user", "Logs", "dolphin.log")
-    if os.path.exists(log):
-        os.remove(log)
+    # A Dolphin left over from an interrupted run keeps the log open.
+    subprocess.run(["/mnt/c/Windows/System32/taskkill.exe", "/IM", "Dolphin.exe", "/F"], capture_output=True)
+    for _ in range(10):
+        try:
+            if os.path.exists(log):
+                os.remove(log)
+            break
+        except PermissionError:
+            time.sleep(2)
     subprocess.run(
         ["timeout", str(secs + 40), POWERSHELL, "-NoProfile", "-ExecutionPolicy", "Bypass",
          "-File", winpath(os.path.join(work, "run.ps1")), "-exe", config["dolphin"],
@@ -189,6 +206,9 @@ def run(work, elf, secs, tag="run"):
         cwd=work, capture_output=True)
     text = open(log, errors="replace").read() if os.path.exists(log) else ""
     text = text[text.find("Calling entry point"):]
+    with open(os.path.join(work, tag + ".log"), "w") as f:
+        f.write(text)
+    trace = re.findall(r"TRACE (.*)", text)
     exc = re.search(r"Unhandled Exception (\d+)", text)
     srr0 = re.search(r"SRR0 = (0x[0-9a-f]+)", text)
     lr = re.search(r"LR   = (0x[0-9a-f]+)", text)
@@ -199,11 +219,38 @@ def run(work, elf, secs, tag="run"):
         stack=re.findall(r"0x[0-9a-f]{8}:\s+0x[0-9a-f]{8}\s+(0x[0-9a-f]{8})", text)[:8],
         movies=len(re.findall("Ave FrameRate", text)),
         booted="booted from" in text,
-        lines=text.count("\n"))
+        lines=text.count("\n"),
+        trace_lines=len(trace),
+        last_trace=trace[-1].strip() if trace else None)
 
 
 def good(result):
     return result["exc"] is None and result["movies"] >= 1
+
+
+def traces(path):
+    """The probe's trace lines from a saved run log, without Dolphin's timestamps."""
+    return [m.group(1).strip() for m in re.finditer(r"TRACE (.*)", open(path, errors="replace").read())]
+
+
+def first_difference(a, b):
+    """(index, line in a, line in b) of the first differing trace line, or None."""
+    for i, (x, y) in enumerate(zip(a, b)):
+        if x != y:
+            return i, x, y
+    if len(a) != len(b):
+        i = min(len(a), len(b))
+        return i, a[i] if i < len(a) else None, b[i] if i < len(b) else None
+    return None
+
+
+def cmd_diff(args):
+    d = first_difference(traces(args.a), traces(args.b))
+    if d is None:
+        print("traces identical:", len(traces(args.a)), "lines")
+    else:
+        print(f"first difference at trace line {d[0]}:\n  {args.a}: {d[1]}\n  {args.b}: {d[2]}")
+        sys.exit(1)
 
 
 def cmd_prepare(args):
@@ -225,17 +272,27 @@ def cmd_run(args):
 
 
 def cmd_bisect(args):
-    linked = Linked(args.elf)
+    linked = Linked(args.elf, args.keep)
     print("patched functions:", len(linked.patches), flush=True)
     log = open(os.path.join(args.work, "bisect.log"), "a")
 
+    reference = traces(args.reference) if args.reference else None
+
     def go(active, label):
-        r = run(args.work, linked.build(set(active)), args.secs, "bisect")
+        r = run(args.work, linked.build(set(active)), args.secs, "bisect-run")
         r.update(label=label, active=len(active))
+        if reference is not None:
+            d = first_difference(reference, traces(os.path.join(args.work, "bisect-run.log")))
+            r["differs_at"] = None if d is None else d[0]
         print(json.dumps(r), flush=True)
         log.write(json.dumps(r) + "\n")
         log.flush()
         return r
+
+    def good(r):
+        if r["exc"] is not None or r["movies"] < 1:
+            return False
+        return reference is None or r["differs_at"] is None
 
     if not good(go([], "control")):
         sys.exit("control failed: the image with every patch restored does not boot")
@@ -272,10 +329,17 @@ def main():
     s.add_argument("--dolphin", required=True, help="Dolphin.exe, as a WSL or Windows path")
     s.add_argument("--work", required=True)
     s.set_defaults(func=cmd_prepare)
+    s = sub.add_parser("diff", help="compare the traces of two saved run logs")
+    s.add_argument("a")
+    s.add_argument("b")
+    s.set_defaults(func=cmd_diff)
     for name, func in (("run", cmd_run), ("bisect", cmd_bisect)):
         s = sub.add_parser(name)
         s.add_argument("--work", required=True)
         s.add_argument("--secs", type=int, default=35)
+        s.add_argument("--keep", nargs="*", default=["iPAD_update__Fv"],
+                       help="patched functions that are test probes, never restored by bisect")
+        s.add_argument("--reference", help="bisect: a control run's log; a run is good only if its trace matches")
         s.add_argument("elf")
         s.set_defaults(func=func)
     args = p.parse_args()

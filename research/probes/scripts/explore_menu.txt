@@ -1,0 +1,16 @@
+# First look at the shell: press Start at the title, then A through menus.
+trace 60
+at 1900
+press START
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 240
+press A
+wait 240
+press A

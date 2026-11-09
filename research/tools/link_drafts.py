@@ -210,6 +210,10 @@ def main():
     ap.add_argument("--only", nargs="*", default=[])
     ap.add_argument("--exclude", nargs="*", default=[])
     ap.add_argument("--report-only", action="store_true")
+    ap.add_argument("--probe", nargs="*", default=[],
+                    help="extra source files whose functions replace originals of the same name "
+                         "(test harnesses such as research/probes/input_probe.cpp); not counted as progress")
+    ap.add_argument("--output", default="build/linked/Moh2RelGC_linked.elf")
     args = ap.parse_args()
     os.chdir(ROOT)
     snapshot = json.load(open("progress/GMFE69.snapshot.json"))
@@ -225,6 +229,16 @@ def main():
     original = Path(fast.ELF).read_bytes()
     orig_elf = Elf32(original)
     orig = original_symbols(orig_elf)
+    probes = set()
+    for path in args.probe:
+        path = str(Path(path).resolve())
+        first = Path(path).read_text().splitlines()[0]
+        settings = first.split("settings:")[1].strip() if "settings:" in first else "config/GMFE69/ipad.json"
+        names = re.findall(r"^//\s*replaces:\s*(\S+)", Path(path).read_text(), re.M)
+        for name in names:
+            groups[(path, settings)].append(dict(function=name, address=f"{orig[0][name]:x}"))
+            probes.add(name)
+            open_sizes.setdefault(name, 0)
     refs = original_references(orig_elf)
     arena = (orig[0]["__ArenaLo"] + 31) & ~31
     linked, failed, blob, patches = [], [], bytearray(), []
@@ -257,7 +271,8 @@ def main():
         for r, name in good:
             sec, start, _ = unit.funcs[name]
             patches.append((int(r["address"], 16), unit.place[sec] + start))
-            linked.append(r["function"])
+            if r["function"] not in probes:
+                linked.append(r["function"])
         blob += unit.blob
 
     p = snapshot["progress"]
@@ -270,7 +285,7 @@ def main():
         linked_functions=len(linked), failed_functions=len(failed), segment_bytes=len(blob),
         symbols_matched_loosely=len(LOOSE), unresolved_unreachable_references=unresolved_data,
         failed=dict(sorted(failed)))
-    if not args.only and not args.exclude:
+    if not args.only and not args.exclude and not args.probe:
         Path("progress/GMFE69.linked.json").write_text(json.dumps(figures, indent=1) + "\n")
     print(f"linked {len(linked)} functions, {linked_bytes:,} bytes -> {total:,} ({figures['linked_percent']}%); "
           f"failed {len(failed)}; segment {len(blob):,} bytes; {len(LOOSE)} symbols matched loosely; "
@@ -278,7 +293,7 @@ def main():
     for name, why in sorted(failed):
         print(f"  {name[:60]}: {why[:160]}")
     if not args.report_only:
-        write_elf(original, orig_elf, patches, arena, blob)
+        write_elf(original, orig_elf, patches, arena, blob, args.output)
 
 
 def build_elf(original, patches, arena, blob):
@@ -327,9 +342,9 @@ def build_elf(original, patches, arena, blob):
     return data, end
 
 
-def write_elf(original, elf, patches, arena, blob):
+def write_elf(original, elf, patches, arena, blob, output="build/linked/Moh2RelGC_linked.elf"):
     data, end = build_elf(original, patches, arena, blob)
-    out = ROOT / "build/linked/Moh2RelGC_linked.elf"
+    out = ROOT / output
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(data)
     print(f"wrote {out.relative_to(ROOT)}: {len(patches)} patches, arena now starts at {end:#x}")

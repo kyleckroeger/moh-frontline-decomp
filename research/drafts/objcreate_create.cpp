@@ -82,10 +82,13 @@ inline void* operator new(unsigned long, void* p) { return p; }
 class BSGO_Basic {
 public:
     BSGO_Basic() : m_script(0), m_next(0), m_prev(0) {}
-    virtual void Function08();
+    // The data comes first: CodeWarrior puts the virtual table pointer where the
+    // first virtual function is declared, and the original has it at +0x0c
+    // (the constructor clears +0, +4 and +8, then stores the table at +0x0c).
     BSObject* m_script;
     BSGO_Basic* m_next;
     BSGO_Basic* m_prev;
+    virtual void Function08();
 };
 class BSGO_Destructable : public BSGO_Basic {
 public:

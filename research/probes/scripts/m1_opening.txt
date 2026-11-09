@@ -1,0 +1,26 @@
+# Mission 1 (Omaha) from boot: the title, A through the shell into the first
+# level, then move, look and fire once the boat lands. Times are pad updates.
+trace 30
+at 1900
+press START
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 240
+press A
+wait 240
+press A
+# In the landing craft; the player has control from about update 8300.
+wait 5500
+stick 0 127 300          # forward
+stick 0 127 120 A        # forward and fire
+cstick 100 0 60          # turn right
+stick 0 127 300
+cstick -100 0 60         # turn left
+stick -127 0 120         # strafe left
+stick 0 127 600 A

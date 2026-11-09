@@ -74,7 +74,10 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `block_files.py` | Per file, which open functions share a data block and can't land alone |
 | `genh.py <output>` | Regenerate `src/game/ShellMenu_block.h` from the original's bytes |
 | `bs_disasm.py <elf> <level.viv> <class>`, `--opcodes`, `--verify <viv>...` | Disassemble GameCube behaviour scripts (`.cbs`/`.sin`). Opcodes come from `BSInitMachine`'s code and built-in names from `BIFunc_` symbols. Its output is game data: don't commit it. |
-| `dolphin_boot.py prepare/run/bisect` | Boot a linked ELF in Dolphin from WSL and bisect crashing drafts (below) |
+| `dolphin_boot.py prepare/run/bisect/diff` | Boot a linked ELF in Dolphin from WSL, compare traces, and bisect crashing or diverging drafts (below) |
+| `input_script.py <script.txt> <out.cpp>` | Build the input probe (`research/probes/input_probe.cpp`) from a text input script (`research/probes/scripts/`) |
+| `unowned_data.py [--list KIND]` | Data symbols no accepted unit owns, by kind |
+| `vtables.py [Class]`, `--json` | Each class's virtual table from the original's relocations, slot by slot |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the
 whole machine down (`notes/oom-guard.md`).
@@ -101,3 +104,22 @@ python3 research/tools/dolphin_boot.py run --work /mnt/c/.../mohf-dolphin build/
 
 Dolphin's movie playback shows thin vertical stripes in this setup for the original ELF too,
 so they aren't a draft bug.
+
+### Scripted play
+
+`research/probes/input_probe.cpp` replaces the pad driver's per-frame update in a test
+image: controller 1 follows a fixed script, and every few updates it prints a trace line
+(player position, yaw, pitch, weapon and a hash of the player object) with `OSReport`.
+Build one with `input_script.py`, link it with `link_drafts.py --probe FILE --output ELF`,
+and run it with `dolphin_boot.py run`. The run's log is saved as `<work>/<tag>.log`.
+
+For a fair comparison, the control is the drafted image with every draft patch restored
+(`dolphin_boot.Linked(...).build(set())`): same memory layout, same probe, original code.
+`dolphin_boot.py diff A.log B.log` finds the first differing trace line, and
+`bisect --reference CONTROL.log` treats any difference as a failure.
+
+`prepare` gives Dolphin 64 MB of MEM1. The drafts' code segment takes about 510 KB from the
+game's heap, and with the usual 24 MB, Mission 1 runs out while loading and crashes in
+`CScene::AddNode_now` on a null node. That's the test setup, not a draft bug.
+`research/probes/scripts/m1_opening.txt` reaches Omaha's beach from boot; the player has
+control from about update 8,300.
