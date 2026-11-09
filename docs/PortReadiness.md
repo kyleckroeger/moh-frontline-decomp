@@ -1,7 +1,10 @@
 # Port readiness plan
 
 This repository exists to be the source of a native PC port of Frontline
-([moh-frontline-pc](https://github.com/kyleckroeger/moh-frontline-pc)). The port's
+([moh-frontline-pc](https://github.com/kyleckroeger/moh-frontline-pc)), but it stays a
+decompilation: it delivers source, data and `progress/GMFE69.port_manifest.json` that
+match the original, all checked on GameCube. Platform layers, shims, PC build files and
+PC-specific fixes belong in the port's repository, not here. The port's
 strategy report (in that repo, `reports/`) measured this decomp on 2026-11-09 and found
 that matching percentage overstates how ready the code is for a port. This file is the
 plan for closing that gap. It sets the work order for everything except
@@ -153,6 +156,6 @@ The port's source-list generator needs one generated file, not a crawl of the re
 
 Step 4 fills gaps between these and stays in port order.
 
-On the port side, the next measurement is a compile-only pass of this source with a PC
-compiler (`clang -fsyntax-only` per unit). Its error count is the real to-do list for
-step 3. It needs a native toolchain installed in WSL, which hasn't been approved yet.
+Compiling this source for PC is the port's job, in its own repository. Here, a PC
+compiler (clang, installed in WSL on 2026-11-09) may only check the decomp's own source,
+for example that every file declares a class with the same layout (step 3.1).
