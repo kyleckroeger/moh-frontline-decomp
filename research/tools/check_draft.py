@@ -205,6 +205,8 @@ def analyse(img, rows):
                 pass
             if base in bases and bases[base][0]["name"].startswith("..."):
                 refs[describe(img, bases[base][0], bases[base][1] + imm, mn)] += 1
+            elif base in ("r10", "r11", "r12") and (imm < 0 or imm >= 0xF00):
+                pass  # register saves and restores in the prologue and epilogue, not fields
             elif base not in ("r1", "r2", "r13"):
                 offsets[(mn[0], imm)] += 1
             if mn[0] == "l":
@@ -267,7 +269,8 @@ def compare(draft_text, settings, function, address, size):
     status = "differs" if not same else "code_exact" if lines and lines[0] == 0 else "consistent"
     return dict(status=status, similarity=sim, offsets=osim, lines=lines[0] if lines else None,
                 length=(len(target["seq"]), len(ours["seq"])), calls_same=target["calls"] == ours["calls"],
-                target_calls=target["calls"], our_calls=ours["calls"], missing=missing, extra=extra)
+                target_calls=target["calls"], our_calls=ours["calls"], missing=missing, extra=extra,
+                offsets_missing=target["offsets"] - ours["offsets"], offsets_extra=ours["offsets"] - target["offsets"])
 
 
 def report(row, r):
@@ -282,6 +285,16 @@ def report(row, r):
     for label, c in (("missing", r["missing"]), ("extra", r["extra"])):
         if c:
             print(f"  {label}: " + "; ".join(f"{k[0]} {k[1]!r}" + (f" x{v}" if v > 1 else "") for k, v in c.items())[:800])
+    if r["offsets"] < 1:
+        # Field offsets (load/store displacements off non-stack registers). Counts differ
+        # when the compiler reuses a loaded value; an offset only one side has is the flag.
+        only_t = sorted(set(k[1] for k in r["offsets_missing"]) - set(k[1] for k in r["offsets_extra"]))
+        only_o = sorted(set(k[1] for k in r["offsets_extra"]) - set(k[1] for k in r["offsets_missing"]))
+        both = sorted(set(k[1] for k in r["offsets_missing"]) & set(k[1] for k in r["offsets_extra"]))
+        print(f"  offsets only in original: {[hex(x) for x in only_t]}")
+        print(f"  offsets only in draft:    {[hex(x) for x in only_o]}")
+        if both:
+            print(f"  offsets used a different number of times: {[hex(x) for x in both]}")
 
 
 def main():

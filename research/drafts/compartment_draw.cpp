@@ -163,14 +163,15 @@ struct LightPoolNode {
     unsigned char unknown00[8];
     LightPoolNode* m_next;
 };
+// As matched in compartment_shadowbins.cpp: 256 entries of 12 bytes linked
+// through +8, then the pointers and counts (0xc14 bytes in all).
 struct LightPool {
     LightPoolNode m_nodes[256];
-    int m_used;      // +3068 (the pool's bookkeeping sits past its nodes)
-    LightPoolNode* m_base;
-    int m_count;
-    LightPoolNode* m_free;
-    int m_capacity;
-    int m_flags;
+    LightPoolNode* m_base;     // +0xc00
+    LightPoolNode* m_used;     // +0xc04
+    LightPoolNode* m_free;     // +0xc08
+    int m_capacity;            // +0xc0c
+    int m_count;               // +0xc10
 };
 extern LightPool g_LightPool;
 
@@ -184,10 +185,10 @@ void CCompartment::InitClass(CRenderList* list, CScreen* screen) {
         list->Register(g_CptShadowBin);
         g_LightPool.m_capacity = 256;
         g_LightPool.m_base = g_LightPool.m_nodes;
-        g_LightPool.m_count = 0;
-        g_LightPool.m_free = g_LightPool.m_nodes;
-        g_LightPool.m_flags = 0;
         g_LightPool.m_used = 0;
+        g_LightPool.m_free = g_LightPool.m_nodes;
+        g_LightPool.m_count = 0;
+        g_LightPool.m_base[g_LightPool.m_capacity - 1].m_next = 0;
         for (int i = 0; i < g_LightPool.m_capacity - 1; i++)
             g_LightPool.m_free[i].m_next = &g_LightPool.m_free[i + 1];
     }
