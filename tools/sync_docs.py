@@ -81,19 +81,36 @@ def linked_line():
             "Linked doesn't mean correct: that build has not been run.")
 
 
+def measures_table(p, unit_count):
+    """Exact and linked side by side, each as its own share of the same code bytes."""
+    total = p["total_executable_code_bytes"]
+    rows = [f"| **Exact** | {p['matching_code_bytes']:,} | **{p['percent']:.2f}%** | Built from source and byte-identical to the "
+            f"original in the complete-image comparison: {p['matching_functions']:,} functions in {unit_count:,} units. |"]
+    path = ROOT / "progress/GMFE69.linked.json"
+    if path.exists():
+        d = json.loads(path.read_text())
+        rows.append(f"| **Linked** | {d['linked_bytes']:,} | **{d['linked_percent']:.2f}%** | The exact code plus "
+                    f"{d['linked_draft_bytes']:,} bytes ({100 * d['linked_draft_bytes'] / total:.2f}%) of partial source in "
+                    f"{d['linked_functions']} functions. It links into a non-matching build that has not been run, "
+                    "so linked doesn't mean correct. |")
+    return "\n".join(["| Measure | Code bytes | Share | What it means |", "| --- | ---: | ---: | --- |", *rows])
+
+
 def status_block(snapshot):
     p, c, rows = snapshot["progress"], categories(snapshot), remaining(snapshot)
     game, lib = c["reconstructed_game"], c["restored_library"]
-    return f"""**{p['matching_code_bytes']:,} of {p['total_executable_code_bytes']:,} code bytes ({p['percent']:.2f}%)** are built from source and verified, covering **{p['matching_functions']:,} functions in {len(snapshot['units']):,} units**:
+    return f"""{measures_table(p, len(snapshot['units']))}
+
+Both are shares of the {p['total_executable_code_bytes']:,} code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
+
+Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
 | `reconstructed_game` (game code and EA engine) | {game['bytes']:,} | {game['functions']:,} | {game['units']:,} | {compilers(game)} |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | {lib['bytes']:,} | {lib['functions']:,} | {lib['units']:,} | {compilers(lib)} |
 
-About {kb(p['total_executable_code_bytes'] - p['matching_code_bytes'])} is left, in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
-
-{linked_line()}"""
+About {kb(p['total_executable_code_bytes'] - p['matching_code_bytes'])} isn't exact yet, in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files; [Remaining.md](docs/Remaining.md) breaks it down by area."""
 
 
 def roadmap_block(snapshot):

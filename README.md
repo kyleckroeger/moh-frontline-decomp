@@ -6,21 +6,26 @@ A matching decompilation of **Medal of Honor: Frontline** for GameCube, targetin
 
 The project follows the structure and verification rules of the sibling [Medal of Honor: Rising Sun decompilation](https://github.com/lifewillbeokay/moh-rising-sun), whose CC0 tooling it adapts. Accepted source is checked against the original executable as part of a complete rebuilt-image comparison; the remainder stays original binary context. AI-assisted contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-Progress counts verified, nonoverlapping source-built function bytes against all bytes in the original executable sections (`.init` and `.text`). Data and BSS earn no code-progress credit; neither do linker-generated tables or original context. See [how progress is verified and published](docs/Progress.md).
+The project reports two figures. **Exact** is the verified progress figure: nonoverlapping source-built function bytes against all bytes in the original executable sections (`.init` and `.text`). Data and BSS earn no code-progress credit; neither do linker-generated tables or original context. **Linked** adds partial source that isn't byte-identical yet but links into a separate, non-matching build. See [how progress is verified and published](docs/Progress.md).
 
 ## Status
 
 <!-- sync_docs:status -->
-**1,219,272 of 1,414,572 code bytes (86.19%)** are built from source and verified, covering **4,839 functions in 1,236 units**:
+| Measure | Code bytes | Share | What it means |
+| --- | ---: | ---: | --- |
+| **Exact** | 1,219,272 | **86.19%** | Built from source and byte-identical to the original in the complete-image comparison: 4,839 functions in 1,236 units. |
+| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that has not been run, so linked doesn't mean correct. |
+
+Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
+
+Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
 | `reconstructed_game` (game code and EA engine) | 978,636 | 3,840 | 1,051 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 195.3 KB is left, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
-
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build has not been run.
+About 195.3 KB isn't exact yet, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
