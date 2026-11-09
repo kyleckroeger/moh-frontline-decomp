@@ -167,3 +167,5 @@ real_lines	size	address	function	compile_settings_from	draft
 	8	80083f6c	@36@Link__19CBulletDecalManagerFP7CDmaTagR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
 	8	80083f74	@36@__dt__19CBulletDecalManagerFv	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
 	276	800ba7ac	__sinit_pumhandler_cpp	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
+	1032	8001ebf8	BIFunc_MPAddPlayerHealth__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp
+	3936	800220e8	BIFunc_UpdateFragCount__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp

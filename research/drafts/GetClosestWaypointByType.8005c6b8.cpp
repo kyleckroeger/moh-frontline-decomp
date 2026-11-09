@@ -74,9 +74,12 @@ public:
                                                    DWI_OBJECT_CRC_ENUM, bool, float) const;
 };
 
-static inline TriggerObject_struct* Closest(float distance, bool all, DWI_OBJECT_CRC_ENUM type, const _PropBSPLeaf* leaf, const CAIFilterRealPosition& position) {
-    int index = -1;
-    TriggerObject_struct* waypoint = NextWaypoint(leaf, index, 0, type, all);
+TriggerObject_struct* CAIFilterGlobal::GetClosestWaypointByType(const _PropBSPLeaf* leaf,
+                                                                const CAIFilterRealPosition& position,
+                                                                DWI_OBJECT_CRC_ENUM type, bool all,
+                                                                float distance) const {
+    int index = 0;
+    TriggerObject_struct* waypoint = FindWaypoint(leaf, index, 0, type, all);
     float nearest = distance;
     TriggerObject_struct* closest = 0;
     while (waypoint) {
@@ -93,11 +96,4 @@ static inline TriggerObject_struct* Closest(float distance, bool all, DWI_OBJECT
         waypoint = NextWaypoint(leaf, index, waypoint, type, all);
     }
     return closest;
-}
-
-TriggerObject_struct* CAIFilterGlobal::GetClosestWaypointByType(const _PropBSPLeaf* leaf,
-                                                                const CAIFilterRealPosition& position,
-                                                                DWI_OBJECT_CRC_ENUM type, bool all,
-                                                                float distance) const {
-    return Closest(distance, all, type, leaf, position);
 }

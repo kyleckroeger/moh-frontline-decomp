@@ -136,6 +136,7 @@ void InitTimeStampStuff() {
     timestampFont = new CFont(file, (ERenderPriority)111);
     timestampFont->SetColor(CColor(128, 128, 128, 128));
     timestampFont->SetScale(1.0f, 1.0f);
-    if (CScreen::GetCurrent())
-        timestampFont->SetDepth(CScreen::GetCurrent()->GetDepthBufferMax());
+    CScreen* screen = CScreen::GetCurrent();
+    if (screen)
+        timestampFont->SetDepth(screen->GetDepthBufferMax());
 }

@@ -114,18 +114,11 @@ void SweepExtents(dwi::list<ISceneNode::SExtent>&, dwi::fast_vec<CScene::UNodePa
 bool CmpNodePairs(const CScene::UNodePair&, const CScene::UNodePair&);
 
 namespace dwi {
-template <class I, class C, class T>
-void quick_sort_(I first, I last, C comp, T&);
-
 template <class I, class C>
-static void quick_sort(I first, I last, C comp) {
-    quick_sort_(first, last, comp, *first);
-}
+void quick_sort(I first, I last, C comp);
 }
 
 typedef bool (*NodePairCompare)(const CScene::UNodePair&, const CScene::UNodePair&);
-
-template void dwi::quick_sort(CScene::UNodePair*, CScene::UNodePair*, NodePairCompare);
 
 void CScene::SweepAllExtents() {
     long times[3];

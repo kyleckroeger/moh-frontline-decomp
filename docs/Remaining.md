@@ -40,7 +40,7 @@ Verified: **1,219,272 / 1,414,572 code bytes (86.19%)**. Left: about 195.1 KB in
 
 Priority 1 is 120.8 KB and would take the project to 94.7% at most.
 
-Partial-source sweep: 15 code-exact, not yet linked (6.4 KB), 141 consistent (165.3 KB), 12 flagged as differing (18.5 KB); 2 functions (5.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 15 code-exact, not yet linked (6.4 KB), 150 consistent (178.5 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -81,9 +81,9 @@ credit, and 86.19% won't move because of it.
 calls, floating constants, strings and tables, globals, field offsets. It
 writes `research/drafts/status.tsv`. A similarity score is never proof of correctness,
 and "consistent" doesn't prove behaviour; the real test is running swept functions
-in Dolphin or the port. Work order: functions with no draft in priority 1, then drafts
-flagged as differing, then the other areas, then multiplayer. Anything that happens
-to match exactly still lands the normal way.
+in Dolphin or the port. Every function now has a draft. Drafts still flagged differ in
+load counts or one table word, and each is listed in `research/drafts/status.tsv`.
+Anything that happens to match exactly still lands the normal way.
 
 ### Two progress figures, after the sweep
 

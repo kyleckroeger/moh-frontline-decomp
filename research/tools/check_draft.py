@@ -45,10 +45,12 @@ class Image:
         self.rel = relocs(self.elf)
         self.symbols = list(self.elf.symbols())
         self.named = {}
+        self.sizes = {}
         for sym in self.symbols:
             n = sym["name"]
             if n and sym["section"] and sym["section"] < 0xFF00 and not n.startswith(("@", "...")) and sym["type"] in (0, 1):
                 self.named.setdefault((sym["section"], sym["address"]), n)
+                self.sizes.setdefault((sym["section"], sym["address"]), sym.get("size", 0))
         self.data_relocs = set()
         for sec in self.elf.sections:
             if sec["type"] == 4 and sec["info"] and self.elf.sections[sec["info"]]["name"] not in (".text", "extab", "extabindex"):
@@ -68,7 +70,10 @@ class Image:
             return None
         where = sym["address"] + addend
         near = [a for s, a in self.named if s == sym["section"] and a <= where]
-        return self.named[(sym["section"], max(near))] if near else None
+        if not near:
+            return None
+        start = (sym["section"], max(near))
+        return self.named[start] if where < start[1] + self.sizes[start] else None  # Not a neighbour.
 
     def is_table(self, sym, addend):
         """A switch jump table: its words are relocated code addresses."""

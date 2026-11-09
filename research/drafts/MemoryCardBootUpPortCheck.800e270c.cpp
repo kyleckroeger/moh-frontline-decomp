@@ -14,7 +14,7 @@ public:
     void SetColor(CColor);
     unsigned char unknown00[36];
 };
-class CScreen {
+class CScreenScale {
 public:
     unsigned char unknown00[40];
     float m_scaleX;
@@ -46,7 +46,7 @@ void WaitRenderList();
 void WaitScreen();
 void SendRenderList();
 void MohDVDErrorTask(int, int);
-extern CScreen g_screen;
+extern CScreenScale g_screen;
 extern CInputManager g_inputMgr;
 extern "C" {
 int sprintf(char*, const char*, ...);
@@ -84,9 +84,9 @@ public:
     unsigned char unknown1910[180];
     CUserMessageTable m_messages;
 };
-class CScreenCurrent {
+class CScreen {
 public:
-    static CScreenCurrent* GetCurrent();
+    static CScreen* GetCurrent();
     virtual void vf08();
     virtual void vf0c();
     virtual void vf10();
@@ -157,7 +157,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
         if (!ok || !f4) {
             float y = top;
             done = false;
-            CScreenCurrent::GetCurrent()->GetHeight();
+            CScreen::GetCurrent()->GetHeight();
             MohDVDErrorTask(0, 0);
             mode = 0;
             if (!f5) {
