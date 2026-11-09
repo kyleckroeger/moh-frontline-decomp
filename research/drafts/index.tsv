@@ -127,3 +127,13 @@ real_lines	size	address	function	compile_settings_from	draft
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 30	152	800f2478	InitClass__11CStaticMeshFP11CRenderListP7CScreen	config/GMFE69/staticmesh_head.json	research/drafts/InitClass.800f2478.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
+	108	800343b4	BSUpdateBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
+	156	80034420	BSCleanUpBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
+	604	800344bc	BSResetBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
+	408	8002aecc	displayPromptBuffer__Fi	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
+	612	8002ab34	DisplayHintText__FPCc	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
+	832	8002a40c	BIFunc_DisplayPromptInteger__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
+	860	8002a74c	BIFunc_DisplayPromptText__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
+	1028	80026e7c	BIFunc_AddPlayerAmmo__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
+	552	8003bf88	NonVisDestructFarthestSoldiers__Fi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
+	344	8003c3d0	Destroy__17BSGO_DestructableFv	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp

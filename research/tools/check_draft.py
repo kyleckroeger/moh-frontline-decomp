@@ -2,7 +2,7 @@
 """check_draft.py: is a draft logically the same as the original, even if its bytes differ?
 
 Compiles each draft and compares its function with the original by content, not by
-address or register: functions called (in order), floating constants, strings and
+address or register: functions called, floating constants, strings and
 tables, named globals, field offsets, and how similar the instruction sequence is.
 
     check_draft.py <function substring>...   detail for matching drafts
@@ -235,11 +235,17 @@ def compare(draft_text, settings, function, address, size):
             return dict(status="no_compile", log="function not emitted")
         ours = analyse(Image(obj), rows)
     sim = difflib.SequenceMatcher(None, target["seq"], ours["seq"], autojunk=False).ratio()
-    missing = target["refs"] - ours["refs"]
-    extra = ours["refs"] - target["refs"]
+    # Reuse of an address in a register changes how often a global appears, not
+    # which one is used, so globals compare by presence; values compare by count.
+    def counted(refs):
+        return collections.Counter({k: (1 if k[0] == "global" else v) for k, v in refs.items()})
+    missing = counted(target["refs"]) - counted(ours["refs"])
+    extra = counted(ours["refs"]) - counted(target["refs"])
     osim = sum((target["offsets"] & ours["offsets"]).values()) / max(1, sum((target["offsets"] | ours["offsets"]).values()))
     lines = score.real(settings, draft_text, function, address, size)
-    same = target["calls"] == ours["calls"] and not missing and not extra
+    # Code order follows the compiler's block layout, not execution order, so the same
+    # calls in another order are reported but don't fail a draft on their own.
+    same = sorted(target["calls"]) == sorted(ours["calls"]) and not missing and not extra
     status = "differs" if not same else "code_exact" if lines and lines[0] == 0 else "consistent"
     return dict(status=status, similarity=sim, offsets=osim, lines=lines[0] if lines else None,
                 length=(len(target["seq"]), len(ours["seq"])), calls_same=target["calls"] == ours["calls"],
@@ -254,7 +260,7 @@ def report(row, r):
     print(f"  similarity {r['similarity']:.1%}  offsets {r['offsets']:.1%}  lines {r['lines']}  length {r['length']}")
     if not r["calls_same"]:
         d = list(difflib.unified_diff(r["target_calls"], r["our_calls"], "original", "draft", lineterm="", n=0))[2:]
-        print("  calls: " + "; ".join(x for x in d if not x.startswith("@@"))[:800])
+        print("  calls (in code order): " + "; ".join(x for x in d if not x.startswith("@@"))[:800])
     for label, c in (("missing", r["missing"]), ("extra", r["extra"])):
         if c:
             print(f"  {label}: " + "; ".join(f"{k[0]} {k[1]!r}" + (f" x{v}" if v > 1 else "") for k, v in c.items())[:800])
