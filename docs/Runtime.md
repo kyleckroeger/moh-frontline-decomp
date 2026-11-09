@@ -103,21 +103,17 @@ with `strtol` inlined), and `__load_buffer` and `setvbuf` in `buffer_io.c`
 
 ## Open work
 
-- No reference links these, so they need reconstruction from the
-  disassembly: the C++ throw/unwind code of `Gecko_ExceptionPPC.cp`
-  (`__throw`, `ExPPC_*`, about 5 KB; `__end__catch`, the assembly functions `__throw` and `ExPPC_LongJump`, `__unexpected` (`src/msl/Gecko_ExceptionPPC_unexpected.cp`, exceptions and RTTI on, compiler 1.3.2),
-  `ExPPC_ThrowHandler` (`src/msl/Gecko_ExceptionPPC_throw.cp`), `ExPPC_UnwindStack`, `ExPPC_PopStackFrame`, `ExPPC_NextAction` and `ExPPC_FindExceptionRecord` are done, in `src/msl/Gecko_ExceptionPPC_endcatch.cp`
-  and `src/msl/Gecko_ExceptionPPC_find.cp`), `__get_file_modes` (a draft differs in
-  one register choice) and `__fread`/`fread`.
-- MetroTRK: Frontline links the Wind Waker's revision (117 of 118 function
-  sizes agree), but the Wind Waker decompilation marks most TRK files
-  non-matching. The matching files (`mainloop`, `nubevent`, `usr_put`,
-  `mutex_TRK`, `flush_cache`, `mpc_7xx_603e`, `targcont`, `main_TRK`,
-  `target_options`, `dolphin_trk`, `dispatch`, `notify`, `msgbuf`, `mem_TRK`) are verified. The rest needs decompilation work: for
-  example `TRKMessageSend` is a 40-byte stub in the reference and 476 bytes in
-  the target (now reconstructed; left: `support.c`, `nubinit.c`,
-  `msghndlr.c`, `targimpl.c`), plus the
-  assembly `targsupp.s`.
+Only `TRKSuppAccessFile` (MetroTRK's `support.c`) is left in these libraries. Its draft
+is in `research/drafts/`.
+
+Notes from the finished work:
+
+- No reference links the C++ throw/unwind code of `Gecko_ExceptionPPC.cp`, so it was
+  reconstructed from the disassembly, in the `Gecko_ExceptionPPC_*` files of `src/msl/`.
+- MetroTRK: Frontline links the Wind Waker's revision (117 of 118 function sizes
+  agree), but the Wind Waker decompilation marks most TRK files non-matching, so many
+  needed decompilation work. For example, `TRKMessageSend` is a 40-byte stub in the
+  reference and 476 bytes in the target.
 - `msgbuf.c` was an inlining puzzle: under `-inline deferred,auto` the
   appenders inlined `TRKAppendBuffer`, which the target calls out of line.
   [Pikmin's](https://github.com/doldecomp/pikmin) CC0 `msgbuf.c` wraps

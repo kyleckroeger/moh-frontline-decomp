@@ -8,7 +8,7 @@ The user runs `/loop Continue the autopilot: read scratch/AUTOPILOT.md and work 
 scratch/ in the repo persists across sessions (it is only git-ignored); what is wiped per session is Claude's /tmp scratchpad. Because scratch/ has no git backup, tarballs go to ~/moh-scratch-backups/ (first one 2026-10-06 14:06, ~100 MB).
 
 **Why:** the user believed scratch/ was lost between sessions; it was not.
-**How to apply:** at loop start, read the Queue and "Waiting on the user" sections; never decide the listed policy items alone. Re-rank the queue when it goes stale. Related: [[game-code]], [[frontline-decomp-setup]], [[port-unit-category]]
+**How to apply:** at loop start, read the Queue and "Waiting on the user" sections; never decide the listed policy items alone. Re-rank the queue when it goes stale. Related: [[game-code]], [[port-unit-category]]
 
 User decisions 2026-10-07: ALLOW a tooling fix so small-data slices at 4 mod 8 link at their original address. ALLOW discarding duplicate weak copies the way the original linker did. HOLD the extab 2-byte padding field (do not relax verification). Details and the functions each unblocks are in AUTOPILOT.md under "Tooling work the user approved".
 

@@ -26,11 +26,10 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `notes/matching-tricks.md` | Source forms that fixed specific compiler output. Try these on a near-miss. |
 | `notes/game-code.md`, `notes/register-tools.md` | Compiler behaviour and register-allocation findings |
 | `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised |
-| `notes/agent-pipeline.md`, `notes/opencode-v2-quirks.md` | A retired worker setup, kept as history |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
 | `tools/` | Working scripts, tested from the repository root |
-| `tools/reference/` | Older scripts, kept for their method. They read local data that isn't in the repo, so they won't run as they are. |
+| `tools/reference/` | Older scripts, kept for their method; logs and notes refer to them. They read local data that isn't in the repo, so they won't run as they are. |
 
 ## Reading the notes
 
@@ -57,8 +56,6 @@ each, and [Remaining.md](../docs/Remaining.md#partial-source-sweep) explains the
   only because of forms that were declined; see [Remaining.md](../docs/Remaining.md).
 - **Types are inferred.** Class views in a draft are what that function needed, not
   recovered declarations.
-- **Not every open function has a draft here.** Functions with attempts but no scored
-  draft only appear in the logs.
 
 ## Working tools
 
@@ -82,7 +79,7 @@ whole machine down (`notes/oom-guard.md`).
 
 ## Linked build
 
-`tools/link_drafts.py` links every draft into `build/linked/Moh2RelGC_linked.elf` by patching
+`research/tools/link_drafts.py` links every draft into `build/linked/Moh2RelGC_linked.elf` by patching
 the original image, and writes the linked figure. Use `--exclude NAME` to leave functions out
 when bisecting a crash. How it works and its known risks are in
 [docs/Remaining.md](../docs/Remaining.md#two-progress-figures).

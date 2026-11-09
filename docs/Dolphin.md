@@ -321,13 +321,12 @@ image and earns no credit; the shape is not recovered source. `PlayBriefingMovie
 and `PlayCreditsSlideShow` copy their tables from those constants where the
 original probably declared local arrays; the generated code is identical.
 
-## Open problems
+## Comparing revisions
 
-- **Revision differences.** Remaining SDK files differ from both reconstructions
-  in some functions. A `scratch`-style comparison of each function's size against
-  the 2001 and 2004 builds shows where to start. `CARDCheck`, `CARDFormat`,
-  `CARDWrite` and `Pad` were resolved from the 2004 source that way.
+Every Dolphin SDK function is now accepted. These notes apply if a unit is revisited:
+
+- SDK files can differ from both reconstructions in some functions. Comparing each
+  function's size against the 2001 and 2004 builds shows where to start. `CARDCheck`,
+  `CARDFormat`, `CARDWrite` and `Pad` were resolved from the 2004 source that way.
 - Compiled code that calls a different function than the original is reported by
   `port_unit.py` (for example `OSGetTime` vs `__OSGetSystemTime`).
-- `PPCArch`, `odenotstub`: linked function symbols differ (likely asm-only or
-  alias functions).

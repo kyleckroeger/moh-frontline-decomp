@@ -1,5 +1,0 @@
-#ifndef GCN_EXI2_GDEV_GCN_MAIN_H
-#define GCN_EXI2_GDEV_GCN_MAIN_H
-
-
-#endif /* GCN_EXI2_GDEV_GCN_MAIN_H */

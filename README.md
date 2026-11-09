@@ -25,12 +25,12 @@ Exact bytes by category:
 | `reconstructed_game` (game code and EA engine) | 978,636 | 3,840 | 1,051 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 195.3 KB isn't exact yet, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
+About 195.1 KB isn't exact yet, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
-- What remains is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain.
-- The rebuilt image has **not** been runtime-tested.
+- What remains is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain. Every remaining function has a draft in [`research/drafts/`](research/README.md), and those drafts are what the linked build is made from.
+- Neither build has been runtime-tested.
 
 Most recent work is AI-assisted (Claude Code agents working against the same verification gate as any contributor); see [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every accepted unit follows.
 
@@ -98,7 +98,7 @@ The matching source is meant to be the base of a native PC port without multipla
 Alongside that:
 
 - **Whole files.** Merge fragments into complete source files as the gaps between them close, and resolve the file boundaries still marked uncertain in the [audit](docs/initial-audit.md#per-file-splits).
-- **Runtime testing** of the rebuilt image in Dolphin.
+- **Runtime testing** of the linked build in Dolphin ([how it's built and its known risks](docs/Remaining.md#two-progress-figures)).
 
 ## License
 

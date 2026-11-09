@@ -70,12 +70,20 @@ def compilers(entry):
     return ", ".join(f"`GC/{v}`" for v in sorted(entry["compilers"]))
 
 
-def linked_line():
+def source_files(rows):
+    return len({r[0] for r in rows} - {"?"})
+
+
+def linked_figures():
     """The second progress figure, from what research/tools/link_drafts.py last measured."""
     path = ROOT / "progress/GMFE69.linked.json"
-    if not path.exists():
+    return json.loads(path.read_text()) if path.exists() else None
+
+
+def linked_line():
+    d = linked_figures()
+    if not d:
         return ""
-    d = json.loads(path.read_text())
     return (f"Linked: **{d['linked_bytes']:,} of {d['total_bytes']:,} code bytes ({d['linked_percent']:.2f}%)** are exact or "
             f"partial source that links into a non-matching build ({d['linked_functions']} partial functions). "
             "Linked doesn't mean correct: that build has not been run.")
@@ -86,9 +94,8 @@ def measures_table(p, unit_count):
     total = p["total_executable_code_bytes"]
     rows = [f"| **Exact** | {p['matching_code_bytes']:,} | **{p['percent']:.2f}%** | Built from source and byte-identical to the "
             f"original in the complete-image comparison: {p['matching_functions']:,} functions in {unit_count:,} units. |"]
-    path = ROOT / "progress/GMFE69.linked.json"
-    if path.exists():
-        d = json.loads(path.read_text())
+    d = linked_figures()
+    if d:
         rows.append(f"| **Linked** | {d['linked_bytes']:,} | **{d['linked_percent']:.2f}%** | The exact code plus "
                     f"{d['linked_draft_bytes']:,} bytes ({100 * d['linked_draft_bytes'] / total:.2f}%) of partial source in "
                     f"{d['linked_functions']} functions. It links into a non-matching build that has not been run, "
@@ -98,7 +105,7 @@ def measures_table(p, unit_count):
 
 def status_block(snapshot):
     p, c, rows = snapshot["progress"], categories(snapshot), remaining(snapshot)
-    game, lib = c["reconstructed_game"], c["restored_library"]
+    game, lib, left = c["reconstructed_game"], c["restored_library"], sum(r[2] for r in rows)
     return f"""{measures_table(p, len(snapshot['units']))}
 
 Both are shares of the {p['total_executable_code_bytes']:,} code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
@@ -110,18 +117,20 @@ Exact bytes by category:
 | `reconstructed_game` (game code and EA engine) | {game['bytes']:,} | {game['functions']:,} | {game['units']:,} | {compilers(game)} |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | {lib['bytes']:,} | {lib['functions']:,} | {lib['units']:,} | {compilers(lib)} |
 
-About {kb(p['total_executable_code_bytes'] - p['matching_code_bytes'])} isn't exact yet, in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files; [Remaining.md](docs/Remaining.md) breaks it down by area."""
+About {kb(left)} isn't exact yet, in {len(rows)} functions across {source_files(rows)} source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another {p['total_executable_code_bytes'] - p['matching_code_bytes'] - left} bytes are outside any function symbol, which is why linked stops short of 100%."""
 
 
 def roadmap_block(snapshot):
     p, c = snapshot["progress"], categories(snapshot)
     game, lib = c["reconstructed_game"], c["restored_library"]
+    d = linked_figures()
+    linked = f"\n- Linked, which adds partial source to a non-matching build: **{d['linked_bytes']:,}** bytes (**{d['linked_percent']:.2f}%**). That build has not been run." if d else ""
     return f"""- Verified snapshot: **{p['matching_code_bytes']:,} / {p['total_executable_code_bytes']:,}** executable bytes
   (**{p['percent']:.2f}%**), {p['matching_functions']:,} functions in {len(snapshot['units']):,} units: **{game['bytes']:,}** bytes of
   `reconstructed_game` ({game['units']:,} units, `docs/Game.md`) and **{lib['bytes']:,}** bytes of
   `restored_library` ({lib['units']:,} units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
-  are in `docs/Remaining.md`."""
+  are in `docs/Remaining.md`.{linked}"""
 
 
 def remaining_block(snapshot):
@@ -137,7 +146,7 @@ def remaining_block(snapshot):
         if file != "?":
             by_file[key][file] += size
     lines = [f"Verified: **{p['matching_code_bytes']:,} / {p['total_executable_code_bytes']:,} code bytes ({p['percent']:.2f}%)**. "
-             f"Left: about {kb(sum(r[2] for r in rows))} in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files.", "",
+             f"Left: about {kb(sum(r[2] for r in rows))} in {len(rows)} functions across {source_files(rows)} source files.", "",
              "| Priority | Area | Left | Main files |", "| ---: | --- | ---: | --- |"]
     for key in sorted(sizes, key=lambda k: (k[0], -sizes[k])):
         main = ", ".join(f"`{f}`" for f, _ in by_file[key].most_common(6))

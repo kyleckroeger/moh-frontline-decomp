@@ -29,8 +29,9 @@ This mirrors Rising Sun's `boot.dol` → `MOH3RDVD.ELF` / `STUBRDVD.ELF` layout.
 Metrowerks CodeWarrior, from: `extab`/`extabindex` exception tables,
 `.mwcats.text`, `__sinit_<file>_cpp` static initializers, CodeWarrior C++ name
 mangling, and the MW linker-generated `_rom_copy_info`, `_bss_init_info` and
-`_eti_init_info` tables. The exact compiler version and flags are not yet
-established. Rising Sun is a useful reference: its Dolphin SDK units match
+`_eti_init_info` tables. This audit did not establish the exact compiler
+version and flags; [Game.md](Game.md), [Dolphin.md](Dolphin.md) and
+[Runtime.md](Runtime.md) have the profiles units use. Rising Sun is a useful reference: its Dolphin SDK units match
 with CodeWarrior `GC/1.2.5n`, but its game code is ProDG, which does not apply here.
 
 ### Rough composition

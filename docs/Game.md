@@ -18,10 +18,10 @@ tables verify:
   source order and only earlier definitions are inlined), `-RTTI off`,
   `-str reuse`, `-enum int`, `-fp hardware`, default small-data thresholds.
 
-### Additional evidence from `propdat.cpp` (not yet verified as a unit)
+### Additional evidence from `propdat.cpp`
 
-Per-function comparisons of a `propdat.cpp` candidate (38 of its 43 functions
-match; the unit is not accepted) add three observations. `bstimer.cpp` compiles
+Per-function comparisons of an early `propdat.cpp` candidate (38 of its 43 functions
+matched) added three observations. `bstimer.cpp` compiles
 identically with and without both flag changes, so its manifest is unaffected.
 
 - **`-fp_contract on`.** Float code uses fused `fmadds`/`fnmsub` (distance
@@ -915,8 +915,8 @@ conversion, so the overloads are recovered from the code they leave:
   established.
 
 The fragment covers only these functions. The remaining propdat functions (BSP
-patch-up, trigger setup, player starts and `PatchUpAllPropertyData`) are drafted
-in scratch and are not accepted.
+patch-up, trigger setup, player starts and `PatchUpAllPropertyData`) landed later in
+the other `propdat_*` units.
 
 ## EA library units (`src/ea/`)
 

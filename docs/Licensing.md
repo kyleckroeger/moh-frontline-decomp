@@ -23,9 +23,12 @@ presence here, or its matching the original executable, does not establish
 permission to reuse it under CC0. Where a reference supplies no license, this
 project grants no rights in that reference's material.
 
+Only files that accepted units build or include are kept here. The rest of each
+upstream tree was removed on 2026-11-09 and is available at the commits below.
+
 | Material | Applicable notices and provenance |
 | --- | --- |
-| Dolphin SDK reconstructions in `src/dolphin/` and headers in `include/dolphin-sdk/` | Copied unchanged from [moh-rising-sun](https://github.com/lifewillbeokay/moh-rising-sun) commit `a701671cad4189cee989327ef33176a7289bac4e`. They keep that project's [SDK notice](../src/dolphin/NOTICE) and network notice; the Prime-derived subset retains [LICENSE.PrimeDecomp](../src/dolphin/LICENSE.PrimeDecomp) and the BFBB-derived subset [LICENSE.bfbb](../src/dolphin/LICENSE.bfbb). The upstream dolsdk2004 reference has no repository-wide license grant |
+| Dolphin SDK reconstructions in `src/dolphin/` and headers in `include/dolphin-sdk/` | Copied unchanged from [moh-rising-sun](https://github.com/lifewillbeokay/moh-rising-sun) commit `a701671cad4189cee989327ef33176a7289bac4e`. They keep that project's [SDK notice](../src/dolphin/NOTICE); the Prime-derived subset retains [LICENSE.PrimeDecomp](../src/dolphin/LICENSE.PrimeDecomp) and the BFBB-derived subset [LICENSE.bfbb](../src/dolphin/LICENSE.bfbb). The upstream dolsdk2004 reference has no repository-wide license grant |
 | `src/dolphin/mtx/mtx.c` and `src/dolphin/os/OSMemory.c` | Imported directly from [dolsdk2004](https://github.com/doldecomp/dolsdk2004) commit `2328b4164b1a98422a2255d83ce9a5a7548990cc`, the same upstream as the rest of `src/dolphin/`; no repository-wide license grant. Local changes are in `docs/Dolphin.md` |
 | Dolphin SDK 2001 reconstructions in `src/dolsdk2001/` and headers in `include/dolsdk2001/` | Copied from [dolsdk2001](https://github.com/doldecomp/dolsdk2001) commit `eb1234c45e6df75757c652c835507ca89674f9a8`, which has no license file; see [its notice](../src/dolsdk2001/NOTICE). Local changes are in `docs/Dolphin.md` |
 | MSL, runtime, MetroTRK and debugger-stub reconstructions in `src/tww/` and headers in `include/tww/` | Copied from [The Wind Waker decompilation](https://github.com/zeldaret/tww) commit `a1854d47ce5aa9d0f21c7fb5a71aaade63659693`, dedicated under CC0 1.0 ([LICENSE.tww](../src/tww/LICENSE.tww), [notice](../src/tww/NOTICE)). Local changes are in `docs/Runtime.md` |

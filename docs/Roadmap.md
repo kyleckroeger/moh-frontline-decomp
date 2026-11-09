@@ -17,15 +17,17 @@ in `AGENTS.md` win.
   `restored_library` (185 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
   are in `docs/Remaining.md`.
+- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build has not been run.
 <!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
-  CodeWarrior `GC/1.2.5n` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
+  CodeWarrior `GC/1.2.5n` and `GC/1.2.5` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
   (game and EA code), linked with
   SN ProDG 3.8.1 `ngcld` (`tools/toolchain.json`, `tools/compilers.json`).
 - Analysis already present: `tools/file_map.py`, `tools/code_map.py`,
   `tools/dependencies.py`, `tools/port_unit.py`, `tools/unit_diff.py`,
   `tools/baseline.py`, `tools/reconstruct.py`, `tools/progress_report.py`,
-  `tools/sync_docs.py`.
+  `tools/sync_docs.py`, `research/tools/check_draft.py`,
+  `research/tools/link_drafts.py`.
 - Rough `.text` split (heuristic, see `docs/initial-audit.md`): ~72% C++ game
   code and EA libraries, ~11% Dolphin SDK, ~8% EA audio, remainder MSL/MetroTRK/UI.
 
@@ -36,6 +38,10 @@ mostly register-allocation and stack-slot near misses, large functions, and
 whole-file merges where a file's shared data block (`...rodata.0`,
 `...bss.0`) can only be placed by one unit for the whole file.
 
+Since 2026-11-08 the first goal is logically correct source for every function, with
+exact matching second. Every function now has a draft, and the next step is running
+the linked build ([details](Remaining.md#partial-source-sweep)).
+
 ## Part 1 — Tooling landscape
 
 ### Already in use (keep)
@@ -45,7 +51,7 @@ whole-file merges where a file's shared data block (`...rodata.0`,
 | decomp-toolkit 1.8.4 (`dtk`) | ELF/DOL split, symbol config, `elf2dol`; pinned in `tools/toolchain.json` |
 | gc-wii-binutils 2.42-2 | `as`/`ld`/`objdump`/`readelf` for PowerPC |
 | wibo 1.0.3 | runs the Windows compilers on Linux/macOS |
-| CodeWarrior `GC/1.2.5n`, `GC/1.3.2` | SDK and game compiler profiles (`tools/compilers.json`) |
+| CodeWarrior `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` | SDK, library and game compiler profiles (`tools/compilers.json`) |
 | SN ProDG 3.8.1 `ngcld` | links each unit at its original addresses |
 | objdiff v2 report | progress export from the verified snapshot (`tools/progress_report.py`) |
 | Project Python tools | complete-image verification, file map, dependency scan, unit porting |
@@ -84,19 +90,11 @@ whole-file merges where a file's shared data block (`...rodata.0`,
 
 ## Part 2 — Plan
 
-### Phase A — Consolidate the library phase (done; remaining SDK files are blocked or small)
+### Phase A — Consolidate the library phase (done)
 
-1. Continue the SDK unit queue (`scratch/remaining.txt`). Each accepted unit
-   settles file boundaries and adds verified bytes.
-2. Maintain `docs/ReuseMap.md`: each recovered file group mapped to candidate
-   published references (dolsdk2001, dolsdk2004, MWCC MSL/runtime, NFS MW EAGL,
-   Rising Sun, …), with evidence, limits and the ranked backlog.
-3. Use `tools/code_map.py` and `tools/dependencies.py` to rank shared helpers
-   by unfinished callers, and record the ranking (a `docs/Dependencies.md`).
-4. Add mutation tests for accepted units in `tests/test_reconstruction.py`.
-
-Exit: coverage rises; the reuse index says which remaining groups are
-reference-backed versus opaque.
+The Dolphin SDK, MSL, runtime and MetroTRK are accepted, apart from
+`TRKSuppAccessFile` in MetroTRK's `support.c`. `docs/ReuseMap.md` keeps the
+references and leads. Broadening the mutation tests continues under Phase E.
 
 ### Phase B — First game-code reconstruction (done: `bstimer.cpp` first, now most game bytes)
 
@@ -110,12 +108,11 @@ Exit: first `reconstructed_game` bytes accepted (reached; 978,636 bytes now).
 
 ### Phase C — Ghidra for unreferenced game code (in use)
 
-1. Install a JDK and Ghidra; load `Moh2RelGC.elf`; seed symbols from
-   `build/audit/`.
+1. Load `Moh2RelGC.elf` in Ghidra and seed symbols from `build/audit/`.
 2. Run cross-binary matching (Ghidra Version Tracking or Diaphora) against a
    sibling build to generate name/structure leads.
-3. A pyghidra MCP server gives agents decompilation and xrefs (the OpenCode
-   worker setup is retired). Keep dumps under `scratch/`.
+3. A pyghidra MCP server gives agents decompilation and xrefs. Keep dumps under
+   `scratch/`.
 
 Exit: leads transferred from a sibling build; first targets reconstructed from
 decompilation rather than a published reference.
@@ -136,7 +133,8 @@ Exit: faster iteration on functions that are close but not yet byte-exact.
 ### Phase E — Verification hardening and runtime
 
 1. Broaden mutation tests.
-2. Test in Dolphin via its GDB stub; report runtime separately from matching.
+2. Test the linked build in Dolphin via its GDB stub; report runtime separately
+   from matching.
 
 Exit: runtime status is measured, not assumed.
 
@@ -160,12 +158,11 @@ multiplayer last. Within a priority group:
 
 1. Prefer **shared helpers with many unfinished callers**
    (`tools/dependencies.py`) — one accepted function unlocks more.
-2. If the target is Dolphin SDK / MSL / runtime, stay in Phase A.
-3. If the target looks like EA engine code with a published reference, go to
+2. If the target looks like EA engine code with a published reference, go to
    Phase B.
-4. If the target has no reference and needs its semantics recovered, go to
+3. If the target has no reference and needs its semantics recovered, go to
    Phase C (Ghidra).
-5. If a target is semantically right but not byte-exact, go to Phase D.
+4. If a target is semantically right but not byte-exact, go to Phase D.
 
 ## Part 4 — How agents should work
 
@@ -182,9 +179,7 @@ multiplayer last. Within a priority group:
   and the best drafts go in `research/`, so contributors have them.
 - **Report separately.** Original-image baseline, individual function matches,
   complete source-build result, and runtime tests are distinct claims.
-- **Model roles.** A frontier model does the reconstruction directly; the
-  unattended cheaper-worker pipeline was retired (it cost more review than it
-  saved). Several agents can work at once in separate lanes of the code on
+- **Model roles.** A frontier model does the reconstruction directly. Several agents can work at once in separate lanes of the code on
   one checkout; landings are serialised by a lock so each one is gated and
   committed alone. The main risk is invented types, names and boundaries, which no byte
   comparison detects, so inferred views and helpers are marked in comments.
@@ -207,7 +202,7 @@ multiplayer last. Within a priority group:
 - `docs/Remaining.md` — what is left, priorities, accepted and declined source forms
 - `research/README.md` — work logs, matching tricks, drafts of open functions, working scripts
 - `docs/Progress.md` — verification boundary and counting rules
-- `docs/Dolphin.md` — SDK revision strategy, compiler profiles, open problems
+- `docs/Dolphin.md` — SDK revision strategy, compiler profiles, local changes
 - `docs/initial-audit.md` — target layout, toolchain, per-file splits
 - `docs/Licensing.md` — provenance and third-party terms
 - Sibling project: <https://github.com/lifewillbeokay/moh-rising-sun>
