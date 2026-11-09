@@ -73,6 +73,8 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `land.sh "<subject>" [body]` | Full rebuild, snapshot, doc sync and tests, then commit |
 | `block_files.py` | Per file, which open functions share a data block and can't land alone |
 | `genh.py <output>` | Regenerate `src/game/ShellMenu_block.h` from the original's bytes |
+| `bs_disasm.py <elf> <level.viv> <class>`, `--opcodes`, `--verify <viv>...` | Disassemble GameCube behaviour scripts (`.cbs`/`.sin`). Opcodes come from `BSInitMachine`'s code and built-in names from `BIFunc_` symbols. Its output is game data: don't commit it. |
+| `dolphin_boot.py prepare/run/bisect` | Boot a linked ELF in Dolphin from WSL and bisect crashing drafts (below) |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the
 whole machine down (`notes/oom-guard.md`).
@@ -83,3 +85,19 @@ whole machine down (`notes/oom-guard.md`).
 the original image, and writes the linked figure. Use `--exclude NAME` to leave functions out
 when bisecting a crash. How it works and its known risks are in
 [docs/Remaining.md](../docs/Remaining.md#two-progress-figures).
+
+`research/tools/dolphin_boot.py` runs it. `prepare` copies the player's ISO into a
+Windows-side work directory and writes a logging Dolphin profile; `run` writes an ELF after
+the last file on that disc, points the FST entry at it, boots it and prints one JSON line
+(exception, SRR0, LR, logged stack, movies played); `bisect` restores patched functions to
+their original first instruction, halving until it finds the draft behind a crash. A run
+takes about a minute. The control image for a bisect is the linked image with every patch
+restored, so its memory layout is the same as the linked build's.
+
+```sh
+python3 research/tools/dolphin_boot.py prepare --iso "<Frontline ISO>" --dolphin "<Dolphin.exe>" --work /mnt/c/.../mohf-dolphin
+python3 research/tools/dolphin_boot.py run --work /mnt/c/.../mohf-dolphin build/linked/Moh2RelGC_linked.elf
+```
+
+Dolphin's movie playback shows thin vertical stripes in this setup for the original ELF too,
+so they aren't a draft bug.
