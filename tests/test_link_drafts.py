@@ -6,7 +6,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "research/tools"))
-from link_drafts import (ARENA_LO_HI, ARENA_LO_LO, ARENA_STACK_HI, ARENA_STACK_LO, build_elf)
+from link_drafts import (ARENA_LO_HI, ARENA_LO_LO, ARENA_STACK_HI, ARENA_STACK_LO, build_elf,
+                         choose_address, references_in)
 
 PHOFF, PHSIZE, SHSIZE = 0x34, 32, 40
 CODE_ADDRESS = 0x80110000
@@ -78,6 +79,21 @@ class BuildElf(unittest.TestCase):
         shoff = struct.unpack_from(">I", self.data, 32)[0]
         at = struct.unpack_from(">I", self.data, shoff + SHSIZE + 16)[0]
         self.assertEqual(self.data[at:at + len(SECTION_DATA)], SECTION_DATA)
+
+
+class DuplicateNames(unittest.TestCase):
+    def test_direct_reference_wins(self):
+        self.assertEqual(choose_address({0x100, 0x900}, [0x900, 0x5000]), 0x900)
+
+    def test_nearest_to_a_section_anchor(self):
+        self.assertEqual(choose_address({0x100, 0x900}, [0x880]), 0x900)
+
+    def test_no_hints_is_deterministic(self):
+        self.assertEqual(choose_address({0x900, 0x100}, []), 0x100)
+
+    def test_references_stay_within_the_function(self):
+        refs = [(0x10, 1), (0x20, 2), (0x24, 3), (0x30, 4)]
+        self.assertEqual(references_in(refs, 0x20, 0x10), [2, 3])
 
 
 if __name__ == "__main__":

@@ -42,7 +42,7 @@ Priority 1 is 120.8 KB and would take the project to 94.7% at most.
 
 Partial-source sweep: 15 code-exact, not yet linked (6.4 KB), 150 consistent (178.5 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build doesn't reach the game in Dolphin yet.
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -97,11 +97,13 @@ separately, and only the first is proof of anything exact.
 `research/tools/link_drafts.py` measures it and writes `progress/GMFE69.linked.json`. Run
 it after changing drafts, then `tools/sync_docs.py`. A complete relink isn't needed:
 
-1. Each draft is compiled with small data turned off, because its data can't stay in
-   range of the original small-data registers.
+1. Each draft is compiled with small data and pooling turned off. Its data can't stay
+   in range of the original small-data registers, and pooled globals are reached from
+   a section anchor that would leave the draft using its own copies.
 2. Its symbols resolve against the original image. Anything else the draft defines
    also resolves to the original, except the functions being linked and statics that
-   exist only in the draft.
+   exist only in the draft. Where a name has several original addresses (file-local
+   statics), the one the original function refers to, or nearest to, is used.
 3. The compiled code and data become a new load segment at the old start of the arena,
    and both of `OSInit`'s arena assignments (`__ArenaLo`, then `_stack_addr`) move past it.
    The program headers stay at the start of the file, because the game's disc loader
@@ -109,12 +111,12 @@ it after changing drafts, then `tools/sync_docs.py`. A complete relink isn't nee
 4. The first instruction of each original function becomes a branch to its draft.
 
 The result is `build/linked/Moh2RelGC_linked.elf`, which the boot loader loads as
-`Moh2RelGC.elf` from a disc image. **Runtime result (Dolphin 2609, 2026-11-09): it
-doesn't reach the game yet.** All 14 segments load and it gets through OS and static
-initialisation into `main`, then fetches an instruction from address 0. The stack is
-`main`, `CShellMenu::ShellInit` (a draft), `WaitRenderList`, `CRenderList::Draw`,
-`Finish`, `FinishBin`. The draft responsible isn't identified yet. With every draft
-patch removed, the same layout boots and plays the opening movies.
+`Moh2RelGC.elf` from a disc image. **Runtime result (Dolphin 2609, 2026-11-09): with
+all 170 drafts it boots, plays the three opening movies and reaches the main menu.**
+Gameplay is untested. Two findings got it there: the pooling problem above, and
+`__sinit_compartment_cpp`'s draft constructing its render bins with the virtual table
+pointer at `+0` instead of `+0x1c`. A bisect over the patched functions found that one,
+so the same method applies to later crashes.
 
 Known risks:
 

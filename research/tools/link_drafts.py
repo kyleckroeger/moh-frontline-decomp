@@ -17,7 +17,7 @@ every symbol a draft can reach was resolved. It doesn't mean the draft behaves
 correctly; only running the game shows that. Exceptions thrown through a draft aren't
 supported, because the drafts' exception tables are dropped.
 """
-import argparse, collections, csv, json, os, re, struct, sys, tempfile
+import argparse, bisect, collections, csv, json, os, re, struct, sys, tempfile
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[2]
 sys.path[:0] = [str(ROOT / "research/tools"), str(ROOT / "tools")]
@@ -34,17 +34,47 @@ LOOSE = set()  # Symbols matched by name and class only, since a draft's paramet
 
 def original_symbols(elf):
     exact, by_base, prefixes = {}, collections.defaultdict(set), collections.defaultdict(set)
+    every = collections.defaultdict(set)
     for s in elf.symbols():
         name, addr = s["name"], s["address"]
         if not name or not s["section"] or name.startswith(("@", "...")):
             continue
         exact.setdefault(name, addr)
+        every[name].add(addr)
         if "$" in name:
             by_base[name.split("$")[0]].add(addr)
         m = re.match(r"(.+?__(?:\d+\w+?|Q\d\w+?)?)[FC]", name)
         if m:
             prefixes[loose_key(name)].add(addr)
-    return exact, by_base, prefixes
+    return exact, by_base, prefixes, every
+
+
+def original_references(elf):
+    """(address of the reference, address it refers to) for every original relocation."""
+    symbols = list(elf.symbols())
+    refs = []
+    for sec in elf.sections:
+        if sec["type"] != 4 or not sec["name"].startswith((".rela.text", ".rela.init")):
+            continue
+        data = elf.contents(sec)
+        for off in range(0, len(data), 12):
+            where, info, addend = struct.unpack_from(">IIi", data, off)
+            refs.append((where, symbols[info >> 8]["address"] + addend))
+    return sorted(refs)
+
+
+def references_in(refs, start, size):
+    low = bisect.bisect_left(refs, (start, 0))
+    high = bisect.bisect_left(refs, (start + size, 0))
+    return [target for _, target in refs[low:high]]
+
+
+def choose_address(candidates, hints):
+    """Pick among file-local symbols sharing a name: the one the original function uses or is nearest."""
+    candidates = sorted(candidates)
+    if not hints:
+        return candidates[0]
+    return min(candidates, key=lambda c: min(abs(c - h) for h in hints))
 
 
 def loose_key(name):
@@ -82,17 +112,18 @@ class Unit:
         for s in self.symbols:
             if s["name"] and s["section"] in self.place and s["size"] and s["type"] == 2:
                 self.funcs[s["name"]] = (s["section"], s["address"], s["size"])
+        self.hints = []  # What the original versions of this draft's functions refer to.
 
 
 def resolve(sym, unit, wanted, orig):
     """The address of a symbol, or None. Own copies are used only for what's being linked."""
-    exact, by_base, loose = orig
+    exact, by_base, loose, every = orig
     name = sym["name"]
     defined = sym["section"] in unit.place
     if defined and (not name or name.startswith("@") or name in wanted):
         return unit.place[sym["section"]] + sym["address"]
     if name in exact:
-        return exact[name]
+        return choose_address(every[name], unit.hints) if unit.hints else exact[name]
     if "$" in name:
         hits = by_base.get(name.split("$")[0], ())
         if len(hits) == 1:
@@ -161,7 +192,9 @@ def apply_relocs(unit, wanted, orig):
 
 def compile_draft(draft, settings, work):
     template = dict(json.load(open(ROOT / settings)))
-    template["compiler_flags"] = list(template["compiler_flags"]) + ["-sdata", "0", "-sdata2", "0"]
+    # With pooling on, neighbouring globals are reached from a section anchor plus fixed
+    # offsets, which would leave the draft using a private copy instead of the original's.
+    template["compiler_flags"] = list(template["compiler_flags"]) + ["-sdata", "0", "-sdata2", "0", "-pool", "off"]
     text = (ROOT / draft).read_text(errors="replace")
     # As in check_draft.py; a few .c drafts only compile as C++, and some names are mangled.
     os.environ["SUFFIX"] = "cpp"
@@ -192,6 +225,7 @@ def main():
     original = Path(fast.ELF).read_bytes()
     orig_elf = Elf32(original)
     orig = original_symbols(orig_elf)
+    refs = original_references(orig_elf)
     arena = (orig[0]["__ArenaLo"] + 31) & ~31
     linked, failed, blob, patches = [], [], bytearray(), []
     unresolved_data = 0
@@ -204,6 +238,7 @@ def main():
             while (arena + len(blob)) % 32:
                 blob.append(0)
             unit = Unit(obj, arena + len(blob))
+        unit.hints = [t for r in group for t in references_in(refs, int(r["address"], 16), open_sizes[r["function"]])]
         wanted = {r["function"] for r in group}
         good = []
         for r in group:

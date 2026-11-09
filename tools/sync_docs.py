@@ -86,7 +86,7 @@ def linked_line():
         return ""
     return (f"Linked: **{d['linked_bytes']:,} of {d['total_bytes']:,} code bytes ({d['linked_percent']:.2f}%)** are exact or "
             f"partial source that links into a non-matching build ({d['linked_functions']} partial functions). "
-            "Linked doesn't mean correct: that build doesn't reach the game in Dolphin yet.")
+            "Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.")
 
 
 def measures_table(p, unit_count):
@@ -98,7 +98,7 @@ def measures_table(p, unit_count):
     if d:
         rows.append(f"| **Linked** | {d['linked_bytes']:,} | **{d['linked_percent']:.2f}%** | The exact code plus "
                     f"{d['linked_draft_bytes']:,} bytes ({100 * d['linked_draft_bytes'] / total:.2f}%) of partial source in "
-                    f"{d['linked_functions']} functions. It links into a non-matching build that doesn't reach the game in Dolphin yet, "
+                    f"{d['linked_functions']} functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), "
                     "so linked doesn't mean correct. |")
     return "\n".join(["| Measure | Code bytes | Share | What it means |", "| --- | ---: | ---: | --- |", *rows])
 
@@ -124,7 +124,7 @@ def roadmap_block(snapshot):
     p, c = snapshot["progress"], categories(snapshot)
     game, lib = c["reconstructed_game"], c["restored_library"]
     d = linked_figures()
-    linked = f"\n- Linked, which adds partial source to a non-matching build: **{d['linked_bytes']:,}** bytes (**{d['linked_percent']:.2f}%**). That build doesn't reach the game in Dolphin yet." if d else ""
+    linked = f"\n- Linked, which adds partial source to a non-matching build: **{d['linked_bytes']:,}** bytes (**{d['linked_percent']:.2f}%**). That build reaches the main menu in Dolphin; gameplay is untested." if d else ""
     return f"""- Verified snapshot: **{p['matching_code_bytes']:,} / {p['total_executable_code_bytes']:,}** executable bytes
   (**{p['percent']:.2f}%**), {p['matching_functions']:,} functions in {len(snapshot['units']):,} units: **{game['bytes']:,}** bytes of
   `reconstructed_game` ({game['units']:,} units, `docs/Game.md`) and **{lib['bytes']:,}** bytes of

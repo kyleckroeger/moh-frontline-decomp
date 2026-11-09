@@ -153,8 +153,8 @@ code_exact	1.000	1.000	0	72	__dt__Q24RCMP11RCMP_SYSTEMFv	True	0	0	research/draft
 consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp
 differs	0.662	1.000	255	1160	Init__13UserInterfaceFv	True	0	1	research/drafts/UserInterface_init.cpp
 consistent	0.915	0.956	167	988	__ct__19PopUpMessageHandlerFPcPc	True	0	0	research/drafts/pumhandler_ctor.cpp
-consistent	0.754	0.765	640	2628	Init__12CCompartmentFv	False	0	0	research/drafts/compartment_init.cpp
-consistent	0.770	0.806	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp
+consistent	0.754	0.984	639	2628	Init__12CCompartmentFv	False	0	0	research/drafts/compartment_init.cpp
+consistent	0.848	0.941	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp
 consistent	0.842	1.000	162	708	TRKSuppAccessFile	False	0	0	research/drafts/TRKSuppAccessFile.80135324.cpp
 consistent	0.889	0.987	402	1868	Play__21OPTION_PARSING_PLAYERFb	False	0	0	research/drafts/rcmp_play.cpp
 differs	0.567	0.950	1079	4532	RenderSystem__15CParticleSystemFR10CDmaPacket	True	0	7	research/drafts/particlesystem_render.cpp

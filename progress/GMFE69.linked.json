@@ -6,7 +6,7 @@
  "linked_percent": 99.99,
  "linked_functions": 170,
  "failed_functions": 0,
- "segment_bytes": 508880,
+ "segment_bytes": 522032,
  "symbols_matched_loosely": 2,
  "unresolved_unreachable_references": 4,
  "failed": {}

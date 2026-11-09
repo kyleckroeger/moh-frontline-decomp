@@ -29,17 +29,36 @@ struct PaletteHeader {
     unsigned char m_colors[1];
 };
 
-class CRenderBin {
-public:
-    CRenderBin(int priority = 3)
-        : m_prev(0), m_next(0), m_head(0), m_tail(0), m_field10(0), m_priority(priority) {}
-    virtual ~CRenderBin();
-    CRenderBin* m_prev;
-    CRenderBin* m_next;
-    CRenderBin* m_head;
-    CRenderBin* m_tail;
+class CDmaPacket;
+class CDmaTag;
+
+// CRenderBin's non-polymorphic base, so the virtual table pointer is at +0x1c (see
+// renderlist_finish.cpp, which reads it there).
+struct CRenderBinData {
+    class CRenderBin* m_prev;
+    class CRenderBin* m_next;
+    class CRenderBin* m_head;
+    class CRenderBin* m_tail;
     int m_field10;
     int m_priority;
+    int m_field18;
+};
+
+class CRenderBin : public CRenderBinData {
+public:
+    CRenderBin(int priority = 3) {
+        m_prev = 0;
+        m_next = 0;
+        m_head = 0;
+        m_tail = 0;
+        m_field10 = 0;
+        m_priority = priority;
+    }
+    virtual ~CRenderBin();
+    virtual int Render(CDmaPacket&, void*);
+    virtual void Init();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual bool IsUsed();
 };
 class CPTMaterial : public CRenderBin {
 public:
@@ -51,6 +70,7 @@ public:
     CCPTMatBin() {}
     virtual ~CCPTMatBin();
     void Load(int base);
+    unsigned char unknown20[8];
     unsigned char m_texture[0x20]; // +0x28
     unsigned char m_tlut[0xc];     // +0x48
     int m_hasPalette;   // +0x54
@@ -233,27 +253,34 @@ public:
 
 class CUcodeRenderBin : public CRenderBin {
 public:
-    CUcodeRenderBin(int priority) : CRenderBin(priority), m_pending(0) {}
+    CUcodeRenderBin(int priority) : CRenderBin(priority) {}
     virtual ~CUcodeRenderBin();
-    int m_pad18;
-    int m_pending;
 };
 class CCptSimpleBin : public CUcodeRenderBin {
 public:
-    CCptSimpleBin(int priority) : CUcodeRenderBin(priority) {}
+    CCptSimpleBin(int priority) : CUcodeRenderBin(priority), m_field20(0) {}
     virtual ~CCptSimpleBin();
-    unsigned char unknown24[12];
+    virtual void Init();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual bool IsUsed();
+    bool m_field20;
+    unsigned char unknown21[15];
 };
 class CCptShadowCleanUpBin : public CRenderBin {
 public:
     CCptShadowCleanUpBin() : CRenderBin(3) {}
     virtual ~CCptShadowCleanUpBin();
-    unsigned char unknown[0x10];
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual bool IsUsed();
+    unsigned char unknown[0xc];
 };
 class CCptShadowBin : public CUcodeRenderBin {
 public:
-    CCptShadowBin(CCptShadowCleanUpBin* cleanUp) : CUcodeRenderBin(5) { m_head = cleanUp; }
+    CCptShadowBin(CCptShadowCleanUpBin* cleanUp) : CUcodeRenderBin(5), m_field20(0) { m_head = cleanUp; }
     virtual ~CCptShadowBin();
+    virtual int Render(CDmaPacket&, void*);
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    int m_field20;
     unsigned char unknown24[12];
 };
 struct TextureSwapEntry {

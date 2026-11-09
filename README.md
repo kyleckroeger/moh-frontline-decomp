@@ -14,7 +14,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
 | **Exact** | 1,219,272 | **86.19%** | Built from source and byte-identical to the original in the complete-image comparison: 4,839 functions in 1,236 units. |
-| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that doesn't reach the game in Dolphin yet, so linked doesn't mean correct. |
+| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), so linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
 
