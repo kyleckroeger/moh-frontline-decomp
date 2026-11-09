@@ -28,6 +28,7 @@ import sync_docs
 ADDR32, ADDR16_LO, ADDR16_HI, ADDR16_HA, REL24, REL14, REL32, SDA21 = 1, 4, 5, 6, 10, 11, 26, 109
 SKIP_SECTIONS = {"extab", "extabindex", ".comment", ".ctors", ".dtors"}
 ARENA_LO_HI, ARENA_LO_LO = 0x801104bc, 0x801104c0  # lis/addi of __ArenaLo in OSInit.
+ARENA_STACK_HI, ARENA_STACK_LO = 0x801104f4, 0x801104f8  # lis/addi of _stack_addr in OSInit.
 LOOSE = set()  # Symbols matched by name and class only, since a draft's parameter types differed.
 
 
@@ -245,11 +246,12 @@ def main():
         write_elf(original, orig_elf, patches, arena, blob)
 
 
-def write_elf(original, elf, patches, arena, blob):
+def build_elf(original, patches, arena, blob):
+    """Return (ELF bytes, new arena start) with the patches and the new load segment."""
     data = bytearray(original)
-    phoff, = struct.unpack_from(">I", data, 28)
-    phsize, phnum = struct.unpack_from(">HH", data, 42)
-    headers = [struct.unpack_from(">8I", data, phoff + i * phsize) for i in range(phnum)]
+    phoff, shoff = struct.unpack_from(">II", data, 28)
+    phsize, phnum, shsize, shnum = struct.unpack_from(">HHHH", data, 42)
+    headers = [list(struct.unpack_from(">8I", data, phoff + i * phsize)) for i in range(phnum)]
 
     def offset(addr):
         for h in headers:
@@ -258,23 +260,40 @@ def write_elf(original, elf, patches, arena, blob):
         raise ValueError(hex(addr))
     for addr, target in patches:
         struct.pack_into(">I", data, offset(addr), 0x48000000 | ((target - addr) & 0x03fffffc))
-    # OSInit's fallback for the start of the arena moves past the new segment.
+    # OSInit sets the arena start twice: first from __ArenaLo, then from _stack_addr when
+    # the boot information block has none. Both must move past the new segment.
     end = (arena + len(blob) + 31) & ~31
-    lis, addi = offset(ARENA_LO_HI), offset(ARENA_LO_LO)
-    struct.pack_into(">H", data, lis + 2, ((end + 0x8000) >> 16) & 0xffff)
-    struct.pack_into(">H", data, addi + 2, end & 0xffff)
-    while len(data) % 32:
-        data.append(0)
-    blob_at = len(data)
-    data += blob
-    while len(data) % 32:
-        data.append(0)
-    table = len(data)
-    headers.append((1, blob_at, arena, 0, len(blob), len(blob), 7, 32))
+    for hi, lo in ((ARENA_LO_HI, ARENA_LO_LO), (ARENA_STACK_HI, ARENA_STACK_LO)):
+        struct.pack_into(">H", data, offset(hi) + 2, ((end + 0x8000) >> 16) & 0xffff)
+        struct.pack_into(">H", data, offset(lo) + 2, end & 0xffff)
+    # The game's disc loader reads every segment as empty if the program headers move away
+    # from the start of the file, so make room for the new one where the table already is.
+    first = min(h[1] for h in headers if h[4])
+    table_end = phoff + phsize * (phnum + 1)
+    shift = (max(table_end - first, 0) + 31) & ~31
+    data[first:first] = bytes(shift)
     for h in headers:
-        data += struct.pack(">8I", *h)
-    struct.pack_into(">I", data, 28, table)
+        if h[1] >= first:
+            h[1] += shift
+    if shoff >= first:
+        struct.pack_into(">I", data, 32, shoff + shift)
+        for i in range(shnum):
+            at = shoff + shift + i * shsize + 16
+            section_offset, = struct.unpack_from(">I", data, at)
+            if section_offset >= first:
+                struct.pack_into(">I", data, at, section_offset + shift)
+    while len(data) % 32:
+        data.append(0)
+    headers.append([1, len(data), arena, 0, len(blob), len(blob), 7, 32])
+    data += blob
+    for i, h in enumerate(headers):
+        struct.pack_into(">8I", data, phoff + i * phsize, *h)
     struct.pack_into(">H", data, 44, len(headers))
+    return data, end
+
+
+def write_elf(original, elf, patches, arena, blob):
+    data, end = build_elf(original, patches, arena, blob)
     out = ROOT / "build/linked/Moh2RelGC_linked.elf"
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_bytes(data)

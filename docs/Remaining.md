@@ -42,7 +42,7 @@ Priority 1 is 120.8 KB and would take the project to 94.7% at most.
 
 Partial-source sweep: 15 code-exact, not yet linked (6.4 KB), 150 consistent (178.5 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build has not been run.
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build doesn't reach the game in Dolphin yet.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -103,15 +103,23 @@ it after changing drafts, then `tools/sync_docs.py`. A complete relink isn't nee
    also resolves to the original, except the functions being linked and statics that
    exist only in the draft.
 3. The compiled code and data become a new load segment at the old start of the arena,
-   and `OSInit`'s fallback for the arena start moves past it.
+   and both of `OSInit`'s arena assignments (`__ArenaLo`, then `_stack_addr`) move past it.
+   The program headers stay at the start of the file, because the game's disc loader
+   reads every segment as empty if they move.
 4. The first instruction of each original function becomes a branch to its draft.
 
-The result is `build/linked/Moh2RelGC_linked.elf`, which the boot loader should load
-as `Moh2RelGC.elf` from a disc image. **It has not been run**, because Dolphin isn't
-available where it was built. Known risks:
+The result is `build/linked/Moh2RelGC_linked.elf`, which the boot loader loads as
+`Moh2RelGC.elf` from a disc image. **Runtime result (Dolphin 2609, 2026-11-09): it
+doesn't reach the game yet.** All 14 segments load and it gets through OS and static
+initialisation into `main`, then fetches an instruction from address 0. The stack is
+`main`, `CShellMenu::ShellInit` (a draft), `WaitRenderList`, `CRenderList::Draw`,
+`Finish`, `FinishBin`. The draft responsible isn't identified yet. With every draft
+patch removed, the same layout boots and plays the opening movies.
+
+Known risks:
 
 - `OSInit` uses the arena start from the boot information block when that's set; the
-  new segment assumes the fallback is used.
+  new segment assumes it isn't, which held in Dolphin.
 - Exceptions can't unwind through a draft, because its exception tables are dropped.
 - Drafts are only as right as their inferred layouts. To find a bad one, rebuild with
   `--exclude` and bisect; a function left out runs the original code.

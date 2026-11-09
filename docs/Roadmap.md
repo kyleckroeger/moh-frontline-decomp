@@ -17,7 +17,7 @@ in `AGENTS.md` win.
   `restored_library` (185 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
   are in `docs/Remaining.md`.
-- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build has not been run.
+- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build doesn't reach the game in Dolphin yet.
 <!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` and `GC/1.2.5` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
