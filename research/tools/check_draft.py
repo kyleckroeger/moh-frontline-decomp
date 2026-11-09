@@ -230,7 +230,9 @@ def compare(draft_text, settings, function, address, size):
         obj, log = fast.compile_object(json.load(open(settings)), draft_text, work)
         if not obj:
             return dict(status="no_compile", log=log[-400:])
-        rows = disasm(["--disassemble=" + function, obj])
+        # The compiler names static initialisers after the file it compiled.
+        emitted = "__sinit_probe_cpp" if function.startswith("__sinit_") else function
+        rows = disasm(["--disassemble=" + emitted, obj])
         if not rows:
             return dict(status="no_compile", log="function not emitted")
         ours = analyse(Image(obj), rows)

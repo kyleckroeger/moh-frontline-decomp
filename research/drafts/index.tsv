@@ -137,3 +137,9 @@ real_lines	size	address	function	compile_settings_from	draft
 	1028	80026e7c	BIFunc_AddPlayerAmmo__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	552	8003bf88	NonVisDestructFarthestSoldiers__Fi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
 	344	8003c3d0	Destroy__17BSGO_DestructableFv	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
+	1236	8003ed10	CreateCollisionVolume__FP20TriggerObject_structi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
+	1732	8003f1ec	CreateGerman__FP20TriggerObject_structib	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
+	1228	80034718	BSInitBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
+	224	80058e44	__sinit_buddy_cpp	config/GMFE69/buddy_copy_info.json	research/drafts/__sinit_buddy_cpp.80058e44.cpp
+33	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
+	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
