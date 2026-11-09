@@ -1,0 +1,13 @@
+{
+ "exact_bytes": 1219272,
+ "linked_draft_bytes": 195128,
+ "linked_bytes": 1414400,
+ "total_bytes": 1414572,
+ "linked_percent": 99.99,
+ "linked_functions": 170,
+ "failed_functions": 0,
+ "segment_bytes": 508880,
+ "symbols_matched_loosely": 2,
+ "unresolved_unreachable_references": 4,
+ "failed": {}
+}

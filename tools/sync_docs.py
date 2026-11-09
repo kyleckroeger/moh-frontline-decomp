@@ -70,6 +70,17 @@ def compilers(entry):
     return ", ".join(f"`GC/{v}`" for v in sorted(entry["compilers"]))
 
 
+def linked_line():
+    """The second progress figure, from what research/tools/link_drafts.py last measured."""
+    path = ROOT / "progress/GMFE69.linked.json"
+    if not path.exists():
+        return ""
+    d = json.loads(path.read_text())
+    return (f"Linked: **{d['linked_bytes']:,} of {d['total_bytes']:,} code bytes ({d['linked_percent']:.2f}%)** are exact or "
+            f"partial source that links into a non-matching build ({d['linked_functions']} partial functions). "
+            "Linked doesn't mean correct: that build has not been run.")
+
+
 def status_block(snapshot):
     p, c, rows = snapshot["progress"], categories(snapshot), remaining(snapshot)
     game, lib = c["reconstructed_game"], c["restored_library"]
@@ -80,7 +91,9 @@ def status_block(snapshot):
 | `reconstructed_game` (game code and EA engine) | {game['bytes']:,} | {game['functions']:,} | {game['units']:,} | {compilers(game)} |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | {lib['bytes']:,} | {lib['functions']:,} | {lib['units']:,} | {compilers(lib)} |
 
-About {kb(p['total_executable_code_bytes'] - p['matching_code_bytes'])} is left, in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files; [Remaining.md](docs/Remaining.md) breaks it down by area."""
+About {kb(p['total_executable_code_bytes'] - p['matching_code_bytes'])} is left, in {len(rows)} functions across {len({r[0] for r in rows} - {"?"})} source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
+
+{linked_line()}"""
 
 
 def roadmap_block(snapshot):
@@ -118,7 +131,7 @@ def remaining_block(snapshot):
     first = sum(v for k, v in sizes.items() if k[0] == 1)
     ceiling = 100 * (p["matching_code_bytes"] + first) / p["total_executable_code_bytes"]
     lines += ["", f"Priority 1 is {kb(first)} and would take the project to {ceiling:.1f}% at most."]
-    lines += ["", sweep_line(rows)]
+    lines += ["", sweep_line(rows), "", linked_line()]
     return "\n".join(lines)
 
 

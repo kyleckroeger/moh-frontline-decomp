@@ -79,3 +79,10 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the
 whole machine down (`notes/oom-guard.md`).
+
+## Linked build
+
+`tools/link_drafts.py` links every draft into `build/linked/Moh2RelGC_linked.elf` by patching
+the original image, and writes the linked figure. Use `--exclude NAME` to leave functions out
+when bisecting a crash. How it works and its known risks are in
+[docs/Remaining.md](../docs/Remaining.md#two-progress-figures).

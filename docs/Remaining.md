@@ -41,6 +41,8 @@ Verified: **1,219,272 / 1,414,572 code bytes (86.19%)**. Left: about 195.1 KB in
 Priority 1 is 120.8 KB and would take the project to 94.7% at most.
 
 Partial-source sweep: 15 code-exact, not yet linked (6.4 KB), 150 consistent (178.5 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build has not been run.
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -74,8 +76,8 @@ unpublished. So attempts are time-boxed, and the work is published with its
 differences measured rather than left in `scratch/`.
 
 Unlike Rising Sun, partial source lives in `research/drafts/` for now, not `src/`,
-because a change under `src/` needs a full rebuild. Partial source earns no progress
-credit, and 86.19% won't move because of it.
+because a change under `src/` needs a full rebuild. Partial source earns no credit in
+the verified figure, and 86.19% won't move because of it.
 
 `research/tools/check_draft.py` compares each draft with the original by content:
 calls, floating constants, strings and tables, globals, field offsets. It
@@ -85,14 +87,34 @@ in Dolphin or the port. Every function now has a draft. Drafts still flagged dif
 load counts or one table word, and each is listed in `research/drafts/status.tsv`.
 Anything that happens to match exactly still lands the normal way.
 
-### Two progress figures, after the sweep
+### Two progress figures
 
 The verified figure stays the headline and its rules don't change: bytes that match
-exactly in the complete-image comparison. After the sweep, a second figure will report
-**linked** bytes: exact bytes plus partial source that compiles and links into a working,
-non-matching build. It needs its own build, since partial functions differ in size and
-can't sit at the original addresses, and the two figures are always reported separately.
-Linked doesn't mean correct; only runtime testing shows that.
+exactly in the complete-image comparison. The second figure, **linked** bytes, adds
+partial source that links into a non-matching build. The two are always reported
+separately, and only the first is proof of anything exact.
+
+`research/tools/link_drafts.py` measures it and writes `progress/GMFE69.linked.json`. Run
+it after changing drafts, then `tools/sync_docs.py`. A complete relink isn't needed:
+
+1. Each draft is compiled with small data turned off, because its data can't stay in
+   range of the original small-data registers.
+2. Its symbols resolve against the original image. Anything else the draft defines
+   also resolves to the original, except the functions being linked and statics that
+   exist only in the draft.
+3. The compiled code and data become a new load segment at the old start of the arena,
+   and `OSInit`'s fallback for the arena start moves past it.
+4. The first instruction of each original function becomes a branch to its draft.
+
+The result is `build/linked/Moh2RelGC_linked.elf`, which the boot loader should load
+as `Moh2RelGC.elf` from a disc image. **It has not been run**, because Dolphin isn't
+available where it was built. Known risks:
+
+- `OSInit` uses the arena start from the boot information block when that's set; the
+  new segment assumes the fallback is used.
+- Exceptions can't unwind through a draft, because its exception tables are dropped.
+- Drafts are only as right as their inferred layouts. To find a bad one, rebuild with
+  `--exclude` and bisect; a function left out runs the original code.
 
 ## Known blockers in priority 1
 

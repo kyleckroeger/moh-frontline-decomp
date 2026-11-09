@@ -189,10 +189,10 @@ static inline void BuildDisplayList(CPTDisplayList* list, int base) {
     DCFlushRange(list->m_commands, 52);
 }
 
-class CCDB;
+class CDB;
 class CCDBObject {
 public:
-    CCDBObject(CCDB*);
+    CCDBObject(CDB*);
     unsigned char unknown[0x28];
 };
 class IDestructible {

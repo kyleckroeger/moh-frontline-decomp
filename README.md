@@ -19,6 +19,8 @@ Progress counts verified, nonoverlapping source-built function bytes against all
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
 About 195.3 KB is left, in 170 functions across 64 source files; [Remaining.md](docs/Remaining.md) breaks it down by area.
+
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build has not been run.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
