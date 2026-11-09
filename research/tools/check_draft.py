@@ -62,6 +62,14 @@ class Image:
             return None
         return self.named.get((sym["section"], sym["address"] + addend))
 
+    def containing(self, sym, addend):
+        """The named object around a reference into uninitialised data, if there is one."""
+        if not sym["section"] or sym["section"] >= 0xFF00 or self.elf.sections[sym["section"]]["type"] != 8:
+            return None
+        where = sym["address"] + addend
+        near = [a for s, a in self.named if s == sym["section"] and a <= where]
+        return self.named[(sym["section"], max(near))] if near else None
+
     def is_table(self, sym, addend):
         """A switch jump table: its words are relocated code addresses."""
         if not sym["section"] or sym["section"] >= 0xFF00:
@@ -95,6 +103,9 @@ def describe(img, sym, addend, mnem):
     at = img.name_at(sym, addend)
     if at:
         return ("global", plain(at))
+    around = img.containing(sym, addend)  # Middle of a variable: no contents to compare.
+    if around:
+        return ("global", plain(around))
     if mnem in ("lfs", "lfsu", "lfsx"):
         raw = img.read(sym, addend, 4)
         return ("const", f"{struct.unpack('>f', raw)[0]:g} ({raw.hex()})") if raw and len(raw) == 4 else ("unknown", name)

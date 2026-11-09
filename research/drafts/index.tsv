@@ -143,3 +143,27 @@ real_lines	size	address	function	compile_settings_from	draft
 	224	80058e44	__sinit_buddy_cpp	config/GMFE69/buddy_copy_info.json	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 33	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
 	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
+	164	800f407c	DebugProfTimerDumpAll__Fv	config/GMFE69/debug_prof_dump.json	research/drafts/debug_prof_misc.cpp
+	552	800f394c	DebugProfTimerVerifyNew__FiPci	config/GMFE69/debug_prof_dump.json	research/drafts/debug_prof_misc.cpp
+	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof_dump.json	research/drafts/debug_prof_misc.cpp
+	860	80074cc8	Draw__12CCompartmentFR12CDrawContext	config/GMFE69/compartment_render.json	research/drafts/compartment_draw.cpp
+	244	80075db4	InitClass__12CCompartmentFP11CRenderListP7CScreen	config/GMFE69/compartment_render.json	research/drafts/compartment_draw.cpp
+	556	800f1e64	Draw__11CStaticMeshFR12CDrawContexti	config/GMFE69/staticmesh_render.json	research/drafts/staticmesh_draw.cpp
+	72	801055b0	__dt__Q24RCMP11RCMP_SYSTEMFv	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
+	76	801055f8	__sinit_rcmpbase_cpp	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
+	1160	800bee4c	Init__13UserInterfaceFv	config/GMFE69/UserInterface.json	research/drafts/UserInterface_init.cpp
+	988	800ba3d0	__ct__19PopUpMessageHandlerFPcPc	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
+	2628	800761c8	Init__12CCompartmentFv	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
+	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
+	708	80135324	TRKSuppAccessFile	config/GMFE69/msgbuf.json	research/drafts/TRKSuppAccessFile.80135324.cpp
+	1868	8010370c	Play__21OPTION_PARSING_PLAYERFb	config/GMFE69/rcmp_main.json	research/drafts/rcmp_play.cpp
+	4532	8007d704	RenderSystem__15CParticleSystemFR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/particlesystem_render.cpp
+	8	80081424	@32@IsDrawEnabled__22CParticleSystemManagerCFv	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	8008142c	@32@IsVisible__22CParticleSystemManagerCFR12CDrawContext	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	80081434	@32@Draw__22CParticleSystemManagerFR12CDrawContext	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	8008143c	@32@BeginUpdate__22CParticleSystemManagerFf	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	80081444	@32@__dt__22CParticleSystemManagerFv	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	80083f64	@36@IsUsed__19CBulletDecalManagerFv	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	80083f6c	@36@Link__19CBulletDecalManagerFP7CDmaTagR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	8	80083f74	@36@__dt__19CBulletDecalManagerFv	config/GMFE69/particlesystem_link.json	research/drafts/thunks_particle_decal.cpp
+	276	800ba7ac	__sinit_pumhandler_cpp	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
