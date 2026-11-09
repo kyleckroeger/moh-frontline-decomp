@@ -68,6 +68,11 @@ including its three separate states:
   build. Near-misses in this state may depend on layout devices or declined forms.
 - **Linked and verified:** it passed the complete-image build and earns progress.
 
+Readable source is useful even with a few differences left: its behaviour and types
+can be read and reviewed, and a swapped pair of register moves shouldn't keep it
+unpublished. So attempts are time-boxed, and the work is published with its
+differences measured rather than left in `scratch/`.
+
 Unlike Rising Sun, partial source lives in `research/drafts/` for now, not `src/`,
 because a change under `src/` needs a full rebuild. Partial source earns no progress
 credit, and 86.19% won't move because of it.

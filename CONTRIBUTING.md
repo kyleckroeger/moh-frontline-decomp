@@ -11,6 +11,8 @@ AI-assisted work is welcome. Contributors are responsible for verifying proposed
 
 Check [research/](research/README.md) before starting on a function: most have earlier attempts, and it has the logs, drafts and tools. Add your own findings there, including what didn't work, in the same pull request.
 
+Useful partial work is welcome, and incompleteness alone is not a review failure. Time-box attempts to close compiler differences, then submit readable, measured source with its remaining differences and uncertainties, rather than leaving it indefinitely in an ignored folder. See [the partial-source sweep](docs/Remaining.md#partial-source-sweep). Measured means checked with `research/tools/check_draft.py`; a high similarity score does not prove correctness, and partial source earns no progress credit.
+
 Open an issue to coordinate a unit or research topic, then submit a focused pull
 request. Include the target revision, compiler/settings, commands run, match result,
 progress change and remaining uncertainties. Documentation and tooling contributions
