@@ -105,8 +105,8 @@ public:
     virtual void Function08();
     int m_health;           // +0x10
     void* m_scriptData;     // +0x14
-    unsigned char unknown18[200];
-    class CSoldierObject* m_node; // +0xe4
+    unsigned char unknown18[204];
+    class CSoldierObject* m_node; // +0xe4 (BSGO_Soldier::GetSceneNode reads it here)
     int m_stateE8;
     int m_stateEC;
     int m_stateF0;

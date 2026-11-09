@@ -138,7 +138,7 @@ consistent	0.857	0.789	253	1028	BIFunc_AddPlayerAmmo__FPPiPv	True	0	0	research/d
 consistent	0.754	0.857	110	552	NonVisDestructFarthestSoldiers__Fi	False	0	0	research/drafts/objcreate_soldiers.cpp
 consistent	0.919	1.000	75	344	Destroy__17BSGO_DestructableFv	False	0	0	research/drafts/objcreate_soldiers.cpp
 consistent	0.896	1.000	240	1236	CreateCollisionVolume__FP20TriggerObject_structi	False	0	0	research/drafts/objcreate_create.cpp
-consistent	0.716	0.951	414	1732	CreateGerman__FP20TriggerObject_structib	False	0	0	research/drafts/objcreate_create.cpp
+consistent	0.716	0.975	414	1732	CreateGerman__FP20TriggerObject_structib	False	0	0	research/drafts/objcreate_create.cpp
 consistent	0.868	1.000	290	1228	BSInitBIFuncs__Fv	True	0	0	research/drafts/bsbifunc_setup.cpp
 consistent	0.982	1.000	None	224	__sinit_buddy_cpp	True	0	0	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 consistent	1.000	1.000	33	1492	Link__8CPartBinFP7CDmaTagR10CDmaPacket	True	0	0	research/drafts/CPartBin_Link.800f5930.cpp

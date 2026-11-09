@@ -277,12 +277,15 @@ def cmd_bisect(args):
     log = open(os.path.join(args.work, "bisect.log"), "a")
 
     reference = traces(args.reference) if args.reference else None
+    if reference is not None and args.lines:
+        reference = reference[:args.lines]
 
     def go(active, label):
         r = run(args.work, linked.build(set(active)), args.secs, "bisect-run")
         r.update(label=label, active=len(active))
         if reference is not None:
-            d = first_difference(reference, traces(os.path.join(args.work, "bisect-run.log")))
+            got = traces(os.path.join(args.work, "bisect-run.log"))[:len(reference)]
+            d = first_difference(reference, got)
             r["differs_at"] = None if d is None else d[0]
         print(json.dumps(r), flush=True)
         log.write(json.dumps(r) + "\n")
@@ -340,6 +343,7 @@ def main():
         s.add_argument("--keep", nargs="*", default=["iPAD_update__Fv"],
                        help="patched functions that are test probes, never restored by bisect")
         s.add_argument("--reference", help="bisect: a control run's log; a run is good only if its trace matches")
+        s.add_argument("--lines", type=int, help="bisect: compare only the first N trace lines (a run must reach them)")
         s.add_argument("elf")
         s.set_defaults(func=func)
     args = p.parse_args()
