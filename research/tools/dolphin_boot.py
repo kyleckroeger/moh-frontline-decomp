@@ -8,7 +8,7 @@ the disc, points the FST entry at it, and runs Dolphin with a logging profile.
 
   dolphin_boot.py prepare --iso ORIGINAL.iso --dolphin Dolphin.exe --work DIR
   dolphin_boot.py run    --work DIR ELF [--secs 35]
-  dolphin_boot.py bisect --work DIR ELF [--secs 35] [--reference CONTROL.log]
+  dolphin_boot.py bisect --work DIR ELF [--secs 35] [--reference CONTROL.log | --reach N]
   dolphin_boot.py diff A.log B.log
 
 DIR must be on the Windows side (for example under /mnt/c/.../Temp) so Dolphin
@@ -18,6 +18,10 @@ restores patched functions in the linked ELF to their original first
 instruction, halving the set until it finds the draft that causes the crash,
 then repeats until the rest boot cleanly. It prints and writes
 DIR/bisect.json. One run takes about a minute.
+
+Bisect a hang with --reach, not --reference: an exact trace match fails on
+correct drafts too, because changed code changes CPU timing and the game's
+frame timing then drifts a little from the reference.
 
 The original ELF comes from orig/GMFE69/Moh2RelGC.elf. No game data is
 written inside the repository.
@@ -295,6 +299,11 @@ def cmd_bisect(args):
     def good(r):
         if r["exc"] is not None or r["movies"] < 1:
             return False
+        if args.reach:
+            # A hang or crash, not drift: changed code changes CPU timing, and the
+            # game's frame timing then drifts from the reference after a few
+            # thousand updates even when a draft is correct.
+            return r["trace_lines"] >= args.reach
         return reference is None or r["differs_at"] is None
 
     if not good(go([], "control")):
@@ -343,6 +352,7 @@ def main():
         s.add_argument("--keep", nargs="*", default=["iPAD_update__Fv"],
                        help="patched functions that are test probes, never restored by bisect")
         s.add_argument("--reference", help="bisect: a control run's log; a run is good only if its trace matches")
+        s.add_argument("--reach", type=int, help="bisect: a run is good if it doesn't crash and logs at least N trace lines")
         s.add_argument("--lines", type=int, help="bisect: compare only the first N trace lines (a run must reach them)")
         s.add_argument("elf")
         s.set_defaults(func=func)
