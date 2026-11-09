@@ -216,6 +216,12 @@ def analyse(img, rows):
             refs[describe(img, bases[args[1]][0], bases[args[1]][1] + int(args[2]), mn)] += 1
             bases.pop(dest, None)
             continue
+        if mn == "addi" and len(args) == 3 and args[1] not in ("r1", "r2", "r13") and args[1] not in bases:
+            # A field's address, e.g. a member passed by reference (SweepAllExtents passed
+            # m_exclusions from +264 where the original uses +280; loads alone missed it).
+            # 0 and +-1 are arithmetic (copies, counters); large values are address halves.
+            if 2 <= int(args[2], 0) < 0x2000:
+                offsets[("a", int(args[2], 0))] += 1
         if dest in bases and dest.startswith("r") and not mn.startswith(("cmp", "st", "b")):
             if mn == "mr" and args[1] in bases:
                 bases[dest] = bases[args[1]]

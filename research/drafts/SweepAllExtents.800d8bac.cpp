@@ -106,7 +106,8 @@ public:
     dwi::list<ISceneNode::SExtent> m_extents172;
     dwi::fast_vec<UNodePair> m_pairs;
     dwi::fast_vec<UNodePair> m_pairs2;
-    dwi::fast_vec<SExclusionEntry> m_exclusions;
+    unsigned char unknown108[16];
+    dwi::fast_vec<SExclusionEntry> m_exclusions; /* +0x118, as in src/game/scene_visit.cpp */
 };
 
 void SweepExtents(dwi::list<ISceneNode::SExtent>&, dwi::fast_vec<CScene::UNodePair>&,
