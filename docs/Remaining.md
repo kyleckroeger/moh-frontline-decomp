@@ -85,6 +85,15 @@ in Dolphin or the port. Work order: functions with no draft in priority 1, then 
 flagged as differing, then the other areas, then multiplayer. Anything that happens
 to match exactly still lands the normal way.
 
+### Two progress figures, after the sweep
+
+The verified figure stays the headline and its rules don't change: bytes that match
+exactly in the complete-image comparison. After the sweep, a second figure will report
+**linked** bytes: exact bytes plus partial source that compiles and links into a working,
+non-matching build. It needs its own build, since partial functions differ in size and
+can't sit at the original addresses, and the two figures are always reported separately.
+Linked doesn't mean correct; only runtime testing shows that.
+
 ## Known blockers in priority 1
 
 - **`buddy.cpp`:** `DestroyBuddyDataStructures` needs the file's `.bss`, and so
