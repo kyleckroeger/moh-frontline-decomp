@@ -216,10 +216,14 @@ def analyse(img, rows):
             refs[describe(img, bases[args[1]][0], bases[args[1]][1] + int(args[2]), mn)] += 1
             bases.pop(dest, None)
             continue
-        if mn == "addi" and len(args) == 3 and args[1] not in ("r1", "r2", "r13") and args[1] not in bases:
+        if (mn == "addi" and len(args) == 3 and args[1] not in ("r1", "r2", "r13") and args[1] not in bases
+                and args[0] != args[1]):
             # A field's address, e.g. a member passed by reference (SweepAllExtents passed
             # m_exclusions from +264 where the original uses +280; loads alone missed it).
             # 0 and +-1 are arithmetic (copies, counters); large values are address halves.
+            # "addi rX,rX,n" steps a pointer through an array (BSCleanUpBIFuncs' +4 loop
+            # over g_pPopUpMessageHandler), so it isn't counted: a draft that indexes the
+            # array instead has no such instruction.
             if 2 <= int(args[2], 0) < 0x2000:
                 offsets[("a", int(args[2], 0))] += 1
         if dest in bases and dest.startswith("r") and not mn.startswith(("cmp", "st", "b")):

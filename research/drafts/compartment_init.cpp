@@ -333,14 +333,16 @@ struct TextureCacheView {
     int m_third;
 };
 TextureCacheView g_TextureCache;
+// Field names as in compartment_draw.cpp's LightPool (+0xc00 base, +0xc04 used,
+// +0xc08 free, +0xc0c capacity, +0xc10 count); the constructor zeroes all five.
 struct LightPoolView {
-    LightPoolView() : m_base(0), m_count(0), m_free(0), m_capacity(0), m_flags(0) {}
+    LightPoolView() : m_base(0), m_used(0), m_free(0), m_capacity(0), m_count(0) {}
     unsigned char m_nodes[3072];
     void* m_base;
-    int m_count;
+    void* m_used;
     void* m_free;
     int m_capacity;
-    int m_flags;
+    int m_count;
 };
 LightPoolView g_LightPool;
 extern char SPR_BEGIN[];

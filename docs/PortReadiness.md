@@ -73,6 +73,19 @@ symbols in 7 drafts stay private, and all are function-local statics (init guard
 buffers) plus a padding array in the multiplayer `InitMultiplayer` draft. Their
 originals are only used by the functions being replaced, so they aren't a risk.
 
+Static review, 2026-11-10 (no Dolphin): the drafts `check_draft.py` newly flagged after
+the `SweepAllExtents` fix were reviewed against the original's code. None was a logic bug.
+`BSCleanUpBIFuncs`, `displayPromptBuffer`, `BSInitBIFuncs` and `BSResetBIFuncs` were
+flagged because the original steps a pointer through an array (`addi r31,r31,4`), which the
+checker counted as a field address; it now ignores in-place increments, and all four are at
+100%. `CreateCollisionVolume`'s +0x50 is the volume allocator reached from a shared global
+base, and its +0x18 is `&m_scriptData`, which the draft also passes.
+`TLT_LoadFromRepository` (73.7%) matches the original statement by statement: its two
+"missing" offsets are `g_Repository`'s fields, which the original reads through a base
+register. `NonVisDestructFarthestSoldiers`' extra +0 is the same indexing difference.
+The `SweepAllExtents` fix still needs one Dolphin run to confirm that Mission 1 gets past
+the hang.
+
 Exit: every non-multiplayer draft is proven, or bisected and fixed. Multiplayer drafts
 are recorded as unproven.
 
@@ -90,6 +103,14 @@ are recorded as unproven.
 3. **Vtables** come from step 3.
 4. **Pure-source link.** Link every unit, draft and data file with no original bytes, and
    count undefined and duplicate symbols. That count is the step's progress figure.
+
+Started 2026-11-10: `research/data/` holds the input, script and collision tables, all
+byte-exact including relocations (`research/tools/check_data.py`, tested by
+`tests/test_data_tables.py`): `g_config_keymap`, `g_BIFCRCArray`, `masterEventTable`,
+`g_theCollisionTable` (4,147 bytes). Two format facts came out of them. A script
+built-in's CRC is the standard CRC-32 of its name in upper case, without the `BIFunc_`
+prefix, for all 288 built-ins. The collision table is the lower triangle of a symmetric
+matrix over 29 collision types, indexed `a + b * (b + 1) / 2` for `a <= b`.
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
@@ -113,6 +134,22 @@ with it.
 4. **Decision point after the first three classes.** Measure how many fragments kept
    their match. If moves often cost matches, keep a fragment's own view behind a guard
    and report how many guards there are.
+
+Layout lint, 2026-11-10: `research/tools/layout_lint.py` compiles all 1,198 game units and
+drafts with `-sym on` and compares 1,299 classes by name (`research/layout/conflicts.tsv`,
+`classes.tsv`). There are no vtable-pointer or base-class conflicts. There are 164
+conflicts by member name and 6 by scalar width. 24 of them are "draft only": a draft
+holds an offset that no matched file does. The 23 outside multiplayer were all checked
+against the original, and all are names reused for different fields, not bugs. For
+example, a BSP leaf has three count/list pairs, and one draft calls the waypoint pair
+"triggers". The rest are matched files that disagree on names, e.g. `CQuaternion` is
+xyzw in 34 files and wxyz in 16. They are byte-exact either way, so they are work for
+the shared headers, not bugs. On the drafts as they stood before the 2026-11-09 fixes,
+the lint flags `SweepAllExtents` and `CreateCollisionVolume`. It misses `BSGO_Soldier`
+and the light pool, because no matched file has a view of those classes under the same
+name. `layout_lint.py --check FILE SETTINGS` lints one draft in seconds. The lint isn't in
+the test suite: a full run takes several minutes, and the naming conflicts must be
+resolved by step 3.3 first.
 
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
@@ -148,10 +185,10 @@ The port's source-list generator needs one generated file, not a crawl of the re
 2. `port_manifest.json` and the `unowned_data.py` figures in the generated docs (step 5).
    These are cheap, and they make progress visible.
 3. Layout lint and vtable generator (step 3.1-3.2). These are tools only; they don't
-   change any source.
+   change any source. Both exist as of 2026-11-10 (`layout_lint.py`, `vtables.py`).
 4. Prove 1_1's opening, fixing drafts as they're found (step 1.3-1.4).
 5. `.bss` declarations and the first data tables, then the first pure-source link
-   attempt (step 2).
+   attempt (step 2). The first four tables are done (2026-11-10).
 6. Shared headers for the first three classes, then the decision point (step 3.3-3.4).
 
 Step 4 fills gaps between these and stays in port order.
