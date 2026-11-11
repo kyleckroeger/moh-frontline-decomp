@@ -27,7 +27,7 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `notes/game-code.md`, `notes/register-tools.md` | Compiler behaviour and register-allocation findings |
 | `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
-| `plans/` | Plans for unattended runs: `three-day-loop.md` (rules, phases, state) and its ranked queue `loop_queue.tsv` |
+| `plans/` | Plans for unattended runs: `three-day-loop.md` (coordinator rules and state), `loop-agents.md` (lane agents' brief and shared-checkout protocol), ranked queue `loop_queue.tsv` |
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
 | `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |
@@ -86,6 +86,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `bss_decls.py [--force]`, `--dry-run` | Write `data/bss/`: a definition for each `.bss`/`.sbss` global no source defines, one file per original file, typed from existing extern declarations. Rerunnable; edit the output by hand afterwards. |
 | `source_link.py [--jobs N]`, `--list KIND` | Resolve every unit, draft and data file with no original bytes, as a linker would: undefined, fragment-local, duplicate and small-data mismatches. Writes `layout/source_link.tsv` (PortReadiness 2.4). |
 | `try_header.py CLASS [--only UNIT...]` | Move every unit with its own view of CLASS onto `include/game/CLASS.h` in a copy (field spellings rewritten), verify it like `one_unit.py`, and write `layout/header_moves/CLASS.tsv` (kept, lost, no_compile). Nothing in `src/` or `config/` changes. |
+| `landlock.sh acquire\|release NAME`, `status` | Landing lock for parallel agents (scratch/loop3/LANDLOCK): only the holder builds, lands, edits research/ or pushes |
 | `check_data.py [FILE]` | Compile the tables in `data/` and compare each with the original symbol: section, size, bytes and relocation targets. Tested (`tests/test_data_tables.py`). |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the

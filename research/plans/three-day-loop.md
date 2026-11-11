@@ -1,124 +1,101 @@
 # Three-day matching loop (2026-11-12 to 2026-11-14)
 
 The maintainer is away for three 12-hour work days. Claude runs unattended on `/loop` to
-match as much of the remaining code as possible, byte for byte. This file is the loop's
-instructions: read it at the start of every iteration, and keep **State** current.
+match as much of the remaining code as possible, byte for byte, with four parallel lane
+agents. Usage is not a concern; WSL memory is. This file is the coordinator's instructions;
+the agents' brief and protocol are in `loop-agents.md`.
 
 Start command (the maintainer runs it):
 
 ```
-/loop Continue the three-day matching loop: read research/plans/three-day-loop.md and work the queue
+/loop Continue the three-day matching loop: read research/plans/three-day-loop.md and coordinate
 ```
 
 ## Goal
 
 Raise the verified figure (86.19%, 1,219,272 / 1,414,572 bytes at the start) by landing
 exact functions. Priority 1 first (collision, scripting, AI, animation), then priority 2,
-multiplayer last. Every landing keeps the complete image identical.
+multiplayer not at all. Every landing keeps the complete image identical.
 
-## State (the loop updates this after every landing or park)
+## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 86.19% (1,219,272 bytes) at 7c716368. Landings this run: 0.
-- Current item: none yet; start with Phase A.
-- Last push: 7c716368.
+- Verified: 86.19% (1,219,272 bytes) at 4577b499. Landings this run: 0.
+- Lanes: geometry, scripting, airender, systems: not started.
+- Waiting on the maintainer: nothing.
 
-## Hard rules
+## Hard rules (for the coordinator and every agent)
 
-1. **Land only with `research/tools/land.sh "<subject>" "<body>"`.** It runs the complete
-   build, the snapshot, the port manifest, doc sync and the tests, then commits. If it fails,
-   fix or revert; never commit around it.
-2. **Push after every successful landing** (`git push`), so a WSL update or crash loses
-   nothing that was verified. Push nothing else: experiments stay in `scratch/`.
-3. **Source forms.** Only those docs/Remaining.md accepts. Declined forms (storage or code
-   added only to steer registers, aliases, identity wrappers, invented functions) are never
-   landed, even if they match. Gap functions stay on HOLD (ShellMenu.cpp pilot only). Don't
-   invent types, names or file boundaries; mark inferred views in comments.
-4. **No Dolphin runs, no parallel agents, no workflows.** Static checks only.
-5. **Resources.** Run untested scripts under `ulimit -v 6000000` and `timeout`. Build with
-   limited parallelism (`--jobs 4`, `ninja -j4`). A full `tools/reconstruct.py` takes about
-   2 minutes; don't run two at once.
-6. **Git.** No destructive commands (no reset --hard, no force push, no rebase). Never
-   touch `orig/` or the disc image. Commits carry the Co-Authored-By trailer (land.sh adds it).
-7. **Time box.** At most two iterations (about 45 minutes) on one function. Then park it:
-   one log line with the draft path, best score and what was tried, and move on.
-8. **Search history first.** Before working a function, `grep -n <name> research/log/*
-   research/notes/*`. Many have had several attempts; don't repeat one.
-9. **Keep the repo current** (docs-stay-current): each landing's commit carries its log line
-   in `research/log/autopilot.md`, its `research/drafts/` cleanup (remove the draft and its
-   index.tsv row once the function is in a unit), and doc sync.
-10. **The shared header.** New units that use CVector3 should include `game/CVector3.h`
-    when that keeps the match; otherwise a local view is fine (see PortReadiness step 3).
+1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
+   runs the complete build, snapshot, port manifest, doc sync and tests, then commits.
+   On failure, revert and release; never commit around it.
+2. **Push after every successful landing** (inside the lock), so a WSL update or crash loses
+   nothing verified. Experiments stay in `scratch/` and are never pushed.
+3. **Source forms**: only what docs/Remaining.md accepts. Declined forms are never landed,
+   even when they match. Gap functions stay on HOLD (ShellMenu.cpp pilot only). Don't invent
+   types, names or file boundaries; mark inferred views in comments.
+4. **No Dolphin runs. No workflows.** Exactly four lane agents (below), no more.
+5. **Memory.** WSL has 10 GB + 8 GB swap. Untested scripts run under `ulimit -v` and
+   `timeout`; permuters at most 2 jobs each; one Ghidra JVM at a time (the MCP server
+   already runs one); nothing heavy starts while `free -m` shows under 2,500 MB available.
+   A full `tools/reconstruct.py` takes about 2 minutes and runs only under the lock.
+6. **Git.** No reset, rebase, amend or force push. Never touch `orig/` or the disc image.
+7. **Time box.** About 45 minutes per function, then park it in the lane's notes.
+8. **History first.** grep a function in `research/log/*` and `research/notes/*` before trying it.
+9. **Keep the repo current.** Each landing's commit carries its log line, its draft removal
+   and doc sync (land.sh runs sync_docs).
+10. **Shared header.** New units use `game/CVector3.h` when that keeps the match; otherwise
+    a local view is fine.
 
-## Method for one function
+## Lanes and queue
 
-1. Read its draft (`research/plans/loop_queue.tsv` columns `best_draft`, `draft`) and the
-   history (rule 8).
-2. `python3 research/tools/check_draft.py <name>` for the logic status;
-   `score_draft.py` / `sbs.py` for differing lines; `varmap.py` for register colouring.
-3. Try the tricks in `research/notes/matching-tricks.md` and `research/notes/register-tools.md`
-   first: declaration order, inline depth, accessor inlines, const copies.
-4. When the function matches in isolation, make it a unit (`tools/port_unit.py`, pass
-   `--category reconstructed_game` for game code; check pool values with `poolvals.py`),
-   register it (`addunit.py`), verify it (`one_unit.py <unit>`), then land with land.sh.
-5. If it can't match without a declined form or a decision, park it (rule 7) and note why.
+`research/plans/loop_queue.tsv` ranks all 170 unfinished functions: priority, code-exact
+drafts, fewest differing lines (best scores from `scratch/solo/gb/real.tsv`, 2026-11-08),
+size. Rows with a `note` are blocked (declined form, buddy.cpp knot, user said not now);
+nobody works them.
 
-## Queue
+| Agent | Area | Functions | Bytes |
+| --- | --- | ---: | ---: |
+| geometry | Collision, Animation | 27 | 40.9 KB |
+| scripting | Scripting and level objects | 46 | 57.5 KB |
+| airender | AI, Rendering | 40 | 38.1 KB |
+| systems | Audio, Shell/HUD, System, Video, Other; first the code-exact drafts | 48 | 42.8 KB |
 
-`research/plans/loop_queue.tsv` ranks all 170 unfinished functions: priority first, then
-code-exact drafts, then fewest differing lines (best score from `scratch/solo/gb/real.tsv`,
-2026-11-08), then size. The 7 known blockers are at the end with a note; skip them.
+(Unblocked functions only; the 4 multiplayer functions belong to no lane.)
 
-### Phase A (day 1 morning): the code-exact drafts
+When a lane runs dry, its next agent takes the unclaimed tail of the largest remaining lane.
+When every lane is dry or parked: secondary work that touches no verified source
+(initialised data tables for the 181 undefined data symbols, `source_link.py --list
+undefined`; `layout_lint.py --reuse`), one agent at a time.
 
-15 drafts are byte-exact in isolation and need only a unit (6.4 KB). Skip
-UpdateTargetPosition, InitMultiplayer, STREAM_kill, BIFunc_UpdateBuddyCheckpoints and
-DestroyBuddyDataStructures (blocked: see notes). Land the rest: CParticleSystemManager::Draw
-and its five `@32@` thunks, `RCMP::RCMP_SYSTEM::~RCMP_SYSTEM`, the three
-CBulletDecalManager `@36@` thunks. If one needs the file's data block or a whole-file
-merge, park it with the reason.
+## Coordinator procedure (each wake-up)
 
-### Phase B (days 1-2): priority 1 near-misses
-
-Queue ranks 1-120 (priority 1): collision, scripting, AI, animation, fewest differing lines
-first. Expect most of the time here. Watch for whole-file opportunities: when several
-functions of one file are close, a merged unit can land them together.
-
-### Phase C (days 2-3): priority 2
-
-Rendering, audio, shell/HUD, system and video, same method. The drafts fixed on
-2026-11-11 (CCompartment::Draw, CStaticMesh::Draw and the five padded views) are
-logically right now and are good candidates.
-
-### Phase D (only when A-C are exhausted or all parked)
-
-Safe secondary work that changes no verified source:
-- Initialised data as source (PortReadiness step 2.2): tables in `research/data/`,
-  checked by `check_data.py`, for the 181 undefined data symbols (`source_link.py --list
-  undefined`).
-- Re-run `research/tools/layout_lint.py --reuse` so `research/layout/` reflects the
-  11-11 view fixes.
-
-Not in this run: multiplayer (priority 3), moving more units onto shared headers (each move
-is a maintainer decision), CMatrix/ISceneNode headers, Dolphin.
+1. **Memory.** `free -m`. Under 2,500 MB available: SendMessage every agent to stop its
+   permuter and pause heavy work. Under 1,500 MB: find the biggest process (`ps -eo
+   pid,rss,cmd --sort=-rss | head`) and stop it (a runaway script or permuter: kill its PID;
+   an agent: TaskStop, then relaunch it later).
+2. **Lock.** `sh research/tools/landlock.sh status`. Held more than 30 minutes by an agent
+   that has finished or died: check `git status`; if the tree is clean and its commit exists,
+   remove `scratch/loop3/LANDLOCK`; if it left partial changes, revert only its files.
+3. **Agents.** Any lane without a running agent gets a fresh one (Agent tool, background,
+   general-purpose): "Read research/plans/loop-agents.md and follow it as agent NAME on lane
+   LANE." An agent stopped by a usage limit is resumed with SendMessage after the reset
+   rather than relaunched. A lane whose last two agents landed nothing and improved nothing
+   is retired; its agent slot moves to the largest remaining lane.
+4. **State.** Under the lock: update the State section above (figure from the latest
+   land.sh, landings per lane, parks, questions), commit it, push, release.
+5. **Schedule.** `ScheduleWakeup` 1,800 s. Agent completions wake the coordinator earlier.
 
 ## Stop and wait (don't push through these)
 
-Stop scheduling work and write a note at the top of **State** if:
+Stop launching agents and write the reason at the top of State if:
 - the complete build stops being identical and a revert doesn't fix it;
-- tests fail for a reason unrelated to the current function;
-- a landing would need a declined form, a gap function or a policy change;
-- disk, memory or tool failures repeat.
-
-Otherwise keep going until the maintainer is back, parking anything stuck.
-
-## Iteration pacing
-
-Work to a natural checkpoint (a landing, a park, or about 30 minutes of progress), update
-**State** and the log, then `ScheduleWakeup` 60 s with the same prompt. If a long build or
-search runs in the background, wait for its notification instead of polling.
+- tests fail for a reason unrelated to any landing;
+- memory runs out twice in a row despite the limits;
+- an agent reports a policy question whose answer blocks its whole lane (park the lane,
+  keep the others going).
 
 ## End of run
 
-On the last iteration (or when the maintainer returns), write a summary at the top of
-**State**: landings with bytes and commits, the new figure, parks with reasons, and
-anything waiting for a decision.
+On the last wake-up (or when the maintainer returns): ask agents to wrap up, then write a
+summary at the top of State: landings with bytes and commits, the new figure, parks with
+reasons, and the open questions.
