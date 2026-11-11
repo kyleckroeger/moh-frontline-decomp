@@ -9,12 +9,18 @@ using its own byte-verification tooling, adapted from
 
 The public workflow validates a **locally verified snapshot**. It does not have
 the original executables and does not rerun the proprietary compiler toolchain.
-`progress/GMFE69.snapshot.json` records hashes of every source file, header,
-configuration file and build script, plus verified unit counts and object hashes.
+`progress/GMFE69.snapshot.json` records hashes of every source file, header and
+configuration file, plus verified unit counts and object hashes.
 It also includes an executable-symbol map for unfinished code, generated from the
 pinned original during capture.
-Changes, additions and removals in those directories make CI fail until someone
-with the pinned original completes verification and refreshes the snapshot.
+Changes, additions and removals in `src/`, `include/` and `config/` make CI fail
+until someone with the pinned original completes verification and refreshes the
+snapshot. In `tools/`, the snapshot records only what verification depended on:
+the Python modules the build and the capture imported, plus every non-Python file
+(compiler and toolchain pins). Changing or removing one of those makes CI fail too.
+Adding or editing a tool that verification never loads (such as `sync_docs.py` or
+`port_manifest.py`) does not, so it doesn't need a rebuild
+([`tools/inputs.py`](../tools/inputs.py)).
 Documentation-only changes do not require rebuilding.
 
 To refresh after an accepted source/tooling change, on a supported local machine:

@@ -66,6 +66,44 @@ class PublicProgress(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Stale"):
             export(self.snapshot, self.root)
 
+    def use_tool(self):
+        tools = self.root / "tools"
+        tools.mkdir(exist_ok=True)
+        (tools / "verifier.py").write_text("CHECK = 1\n")
+        self.snapshot["input_sha256"] = fingerprints(self.root, ["tools/verifier.py"])
+
+    def test_changed_recorded_tool_is_stale(self):
+        self.use_tool()
+        (self.root / "tools/verifier.py").write_text("CHECK = 2\n")
+        with self.assertRaisesRegex(ValueError, "Stale"):
+            export(self.snapshot, self.root)
+
+    def test_removed_recorded_tool_is_stale(self):
+        self.use_tool()
+        (self.root / "tools/verifier.py").unlink()
+        with self.assertRaisesRegex(ValueError, "Stale"):
+            export(self.snapshot, self.root)
+
+    def test_unrecorded_tool_changes_stay_fresh(self):
+        self.use_tool()
+        (self.root / "tools/docs_helper.py").write_text("print('docs')\n")
+        export(self.snapshot, self.root)
+        (self.root / "tools/docs_helper.py").write_text("print('changed')\n")
+        export(self.snapshot, self.root)
+
+    def test_loaded_tools_cover_imports_and_pins(self):
+        # A fresh process, as in a real build: other tests import sync_docs here.
+        import subprocess
+        tools = Path(__file__).resolve().parents[1] / "tools"
+        names = json.loads(subprocess.run(
+            [sys.executable, "-c", "import json, progress_report, inputs; "
+             "print(json.dumps(inputs.loaded_tools(progress_report.ROOT)))"],
+            cwd=tools, capture_output=True, text=True, check=True).stdout)
+        self.assertIn("tools/progress_report.py", names)
+        self.assertIn("tools/inputs.py", names)
+        self.assertIn("tools/toolchain.json", names)
+        self.assertNotIn("tools/sync_docs.py", names)
+
     def test_inflated_snapshot_total_is_rejected(self):
         self.snapshot["progress"]["matching_code_bytes"] += 1
         with self.assertRaisesRegex(ValueError, "totals"):

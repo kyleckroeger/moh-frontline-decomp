@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 
 from code_map import bounds, build_code_map, validate_code_map
+from inputs import fingerprints, is_fresh, loaded_tools
 from setup import GAME_ID
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -29,15 +30,8 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def fingerprints(root):
-    return {p.relative_to(root).as_posix(): digest(p)
-            for folder in ("src", "include", "config", "tools")
-            for p in sorted((root / folder).rglob("*"))
-            if p.is_file() and "__pycache__" not in p.parts}
-
-
 def require_fresh(snapshot, root):
-    if snapshot["input_sha256"] != fingerprints(root):
+    if not is_fresh(snapshot["input_sha256"], root):
         raise ValueError("Stale progress snapshot: rebuild, then run progress_report.py --capture")
 
 
@@ -78,11 +72,15 @@ def capture(root):
     # Allow-list public fields. In particular, never copy source_blobs paths.
     accepted = [(int(f["address"], 16), int(f["address"], 16) + f["size"])
                 for unit in units for f in unit["functions"] + unit.get("label_functions", [])]
+    code_map = build_code_map(original, accepted, file_owners(original, units))
+    # Record the tools both the build and this capture loaded (see inputs.py).
+    tools = {name for name in report["input_sha256"] if name.startswith("tools/")}
+    tools |= set(loaded_tools(root))
     return {"schema_version": 2, "verification": "local-complete-image-match",
             "target": report["target"], "original_elf_sha256": report["original_elf_sha256"],
             "dol_sha1": report["dol_sha1"], "runtime_tested": False,
-            "progress": report["progress"], "input_sha256": report["input_sha256"],
-            "units": report["units"], "code_map": build_code_map(original, accepted, file_owners(original, units))}
+            "progress": report["progress"], "input_sha256": fingerprints(root, sorted(tools)),
+            "units": report["units"], "code_map": code_map}
 
 
 def file_owners(original, units=None):

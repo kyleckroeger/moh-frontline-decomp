@@ -9,6 +9,7 @@ from pathlib import Path
 
 from audit import load_target
 from formats import Elf32, verify_load_image
+from inputs import fingerprints, loaded_tools
 from tool_runner import run, sha256
 from setup import CONFIG, ROOT, setup
 from setup_compiler import setup_compiler
@@ -784,17 +785,16 @@ def build_project():
     if actual != expected:
         raise ValueError("Complete reconstructed image differs from original")
     verify_load_image(original, actual)
-    # Fingerprint all source, headers, manifests, and build tools, including any
-    # unused headers. These are provenance, not substitutes for byte verification.
-    inputs = [p for folder in ("src", "include", "config", "tools")
-              for p in (ROOT / folder).rglob("*") if p.is_file() and "__pycache__" not in p.parts]
+    # Fingerprint all source, headers and manifests (including unused headers) and
+    # the tools this build loaded; see inputs.py. These are provenance, not
+    # substitutes for byte verification.
     report = dict(status="identical", target=original_path.name, original_elf_sha256=sha256(original_path),
                   comparison="complete ELF-derived DOL and every allocated ELF byte, entry point and BSS extent",
                   progress=progress(original, units, project), units=reports,
                   source_data_bytes=sum(b["size"] for b in blobs if b["section"] not in CODE_SECTIONS and b["type"] != 8),
                   source_bss_bytes=sum(b["size"] for b in blobs if b["type"] == 8),
                   source_blobs=[dict(b, sha256=sha256(Path(b["path"]))) if "path" in b else b for b in blobs],
-                  input_sha256={str(p.relative_to(ROOT)): sha256(p) for p in sorted(inputs)},
+                  input_sha256=fingerprints(ROOT, loaded_tools(ROOT)),
                   compiler_executables={version: {p.name: sha256(p) for p in compiler.glob("*.exe")}
                                         for version, (compiler, _) in compilers.items()},
                   dol_size=len(actual), dol_sha1=hashlib.sha1(actual).hexdigest(),
