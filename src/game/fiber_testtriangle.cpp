@@ -12,15 +12,9 @@
 // is in other units.
 class CTriangle;
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 class CLine3 {
 public:
@@ -94,9 +88,9 @@ int CVolFiber::TestCollision(const CPlane& plane, CCollision& collision, bool re
             collision.m_result = result;
         SClsnContact contact;
         contact.m_separation = 0.0f;
-        contact.m_vector0.d.v[0] = -plane.m_normal.d.v[0];
-        contact.m_vector0.d.v[1] = -plane.m_normal.d.v[1];
-        contact.m_vector0.d.v[2] = -plane.m_normal.d.v[2];
+        contact.m_vector0.x = -plane.m_normal.x;
+        contact.m_vector0.y = -plane.m_normal.y;
+        contact.m_vector0.z = -plane.m_normal.z;
         contact.m_vector1 = point;
         contact.m_index = 0;
         collision.AddContact(contact);

@@ -12,13 +12,7 @@
 // of matrix_endian, inlined here (inferred from the identical store
 // sequence); its 0 and 1 are entries of the file's .sdata2 pool. The unit
 // defines the file's .bss block (s_TempMat, _Mat_Unit).
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 extern "C" void* memcpy(void*, const void*, unsigned long);
 

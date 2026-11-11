@@ -16,15 +16,7 @@
 // BSGO_Basic in the order of __vt__10BSGO_Basic; the vector view (four floats,
 // 8-byte aligned, built by an inline constructor), script-object and built-in
 // record views are inferred.
-class CVector3 {
-public:
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 enum EClsnId {};
 class CCollision;

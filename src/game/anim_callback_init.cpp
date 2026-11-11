@@ -32,28 +32,9 @@
 // callback result types are not known.
 // Inferred views: a state's animation list (a count, then 12-byte entries of
 // animation, flags and weight record).
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    void operator-=(const CVector3& other) {
-        x -= other.x;
-        y -= other.y;
-        z -= other.z;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 // Inferred: the object the skinned animation drives (members by offset).
 class CSoldierObject;

@@ -37,13 +37,7 @@ class CVolCapsule;
 class CVolSphere;
 class CVolBox;
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class IVolume {
 public:

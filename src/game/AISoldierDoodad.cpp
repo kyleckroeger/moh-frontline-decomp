@@ -15,22 +15,9 @@
 class CStaticObject;
 struct BSObject;
 
-struct CVector3Pair {
-    double a;
-    double b;
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& o) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&o;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CAIFilterRealPosition : public CVector3 {
 };

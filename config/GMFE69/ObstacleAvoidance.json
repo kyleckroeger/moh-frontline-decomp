@@ -31,7 +31,9 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include"
+  ],
   "strip_unused": false,
   "source_root": "scratch/game",
   "sections": [

@@ -13,23 +13,9 @@
 // CVector3 view: four floats, 8-byte aligned, overlaid with two doubles (the
 // union is inferred from the code, not the original declaration), with a
 // copy constructor and a three-float constructor.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& o) : d(o.d) {}
-    CVector3(float x, float y, float z) {
-        d.v[2] = z;
-        d.v[0] = x;
-        d.v[1] = y;
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

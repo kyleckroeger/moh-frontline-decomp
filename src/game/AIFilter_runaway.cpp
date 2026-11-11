@@ -8,13 +8,7 @@
 // position (+24 of the object at +8) are inferred, as are the result types
 // (found or not; the node's position first). The rest of the file is in
 // other units.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix;
 class CDrawContext;

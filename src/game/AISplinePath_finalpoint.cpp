@@ -19,24 +19,7 @@
 // this unit marks it inline so that it is inlined without being emitted.
 // The path view, the output's CVector3 view of the position and the index's
 // meaning are inferred. The rest of the file is in other units.
-class CVector3 {
-public:
-    void operator+=(const CVector3& o) {
-        x += o.x;
-        y += o.y;
-        z += o.z;
-    }
-    void operator*=(float s) {
-        x *= s;
-        y *= s;
-        z *= s;
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-};
+#include "game/CVector3.h"
 
 class CAIFilterRealPosition {
 public:

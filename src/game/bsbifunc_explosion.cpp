@@ -14,19 +14,8 @@
 // view of 80 bytes, 16-byte aligned (inferred from the stack frame), and the
 // vector view (four floats, 8-byte aligned, with an inline setter), trigger,
 // script-object and built-in record views are inferred.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
+#include "game/CVector3.h"
 
-    void Set(float ax, float ay, float az) {
-        x = ax;
-        y = ay;
-        z = az;
-    }
-} __attribute__((aligned(8)));
 enum EClsnId {};
 class CCollision;
 class CDrawContext;

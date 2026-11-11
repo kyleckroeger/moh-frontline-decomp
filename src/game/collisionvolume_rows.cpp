@@ -15,23 +15,9 @@
 // (placeholders named by offset); the members, the event block, the extent
 // and volume views and the row getters returning by value are inferred, and
 // the CVector3 view copies through a double pair as in player_weapon.cpp.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

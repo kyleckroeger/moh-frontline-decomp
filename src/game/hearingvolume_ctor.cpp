@@ -17,10 +17,7 @@
 // copies of the tables and destructors here; all four are weak duplicates,
 // linked to the original copies.
 
-class CVector3 {
-public:
-    float x, y, z, w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

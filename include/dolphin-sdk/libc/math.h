@@ -29,6 +29,7 @@ double copysign(double x, double y);
 
 double floor(double x);
 
+#ifndef GAME_MSL_SQRTF_H // include/game/msl_sqrtf.h defines the same function
 extern inline float sqrtf(float x)
 {
     const double _half = .5;
@@ -50,6 +51,7 @@ extern inline float sqrtf(float x)
     }
     return x;
 }
+#endif
 
 // TODO: this isn't correct! It's just to generate sdata2 in GXDraw.o
 extern inline float sqrt(float x)

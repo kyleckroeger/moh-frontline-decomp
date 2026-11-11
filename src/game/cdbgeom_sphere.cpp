@@ -16,17 +16,9 @@
 #include <math.h>
 
 /* Inferred: CVector3 as four floats overlaid with two doubles. */
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& v) : d(v.d) {}
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 class CDBTri;
 class IVolume;
@@ -68,10 +60,10 @@ inline int TestSphere(const CCDBTriangle* t, const CVolSphere& sphere, CCollisio
     CVector3 nearest = t->GetNearestPoint(sphere.GetCenter(), 0, 0);
     const CVector3& center = sphere.GetCenter();
     CVector3 diff;
-    diff.d.v[0] = center.d.v[0] - nearest.d.v[0];
-    diff.d.v[1] = center.d.v[1] - nearest.d.v[1];
-    diff.d.v[2] = center.d.v[2] - nearest.d.v[2];
-    float distance = sqrtf(diff.d.v[0] * diff.d.v[0] + diff.d.v[1] * diff.d.v[1] + diff.d.v[2] * diff.d.v[2]);
+    diff.x = center.x - nearest.x;
+    diff.y = center.y - nearest.y;
+    diff.z = center.z - nearest.z;
+    float distance = sqrtf(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z);
     float separation = distance - sphere.GetRadius();
     int result;
     if (separation > CONTACT_EPSILON)
@@ -86,9 +78,9 @@ inline int TestSphere(const CCDBTriangle* t, const CVolSphere& sphere, CCollisio
         if (result == 2) {
             float scale = 1.0f / distance;
             SClsnContact contact;
-            contact.m_vector0.d.v[0] = scale * diff.d.v[0];
-            contact.m_vector0.d.v[1] = scale * diff.d.v[1];
-            contact.m_vector0.d.v[2] = scale * diff.d.v[2];
+            contact.m_vector0.x = scale * diff.x;
+            contact.m_vector0.y = scale * diff.y;
+            contact.m_vector0.z = scale * diff.z;
             contact.m_vector1 = nearest;
             contact.m_separation = separation;
             contact.m_tri = tri;
@@ -106,10 +98,10 @@ int CCDBTriangle::TestCollision(const CVolSphere& sphere, CCollision& collision,
     CVector3 nearest = GetNearestPoint(sphere.GetCenter(), 0, 0);
     const CVector3& center = sphere.GetCenter();
     CVector3 diff;
-    diff.d.v[0] = center.d.v[0] - nearest.d.v[0];
-    diff.d.v[1] = center.d.v[1] - nearest.d.v[1];
-    diff.d.v[2] = center.d.v[2] - nearest.d.v[2];
-    float distance = sqrtf(diff.d.v[0] * diff.d.v[0] + diff.d.v[1] * diff.d.v[1] + diff.d.v[2] * diff.d.v[2]);
+    diff.x = center.x - nearest.x;
+    diff.y = center.y - nearest.y;
+    diff.z = center.z - nearest.z;
+    float distance = sqrtf(diff.x * diff.x + diff.y * diff.y + diff.z * diff.z);
     float separation = distance - sphere.GetRadius();
     int result;
     if (separation > CONTACT_EPSILON)
@@ -124,9 +116,9 @@ int CCDBTriangle::TestCollision(const CVolSphere& sphere, CCollision& collision,
         if (result == 2) {
             float scale = 1.0f / distance;
             SClsnContact contact;
-            contact.m_vector0.d.v[0] = scale * diff.d.v[0];
-            contact.m_vector0.d.v[1] = scale * diff.d.v[1];
-            contact.m_vector0.d.v[2] = scale * diff.d.v[2];
+            contact.m_vector0.x = scale * diff.x;
+            contact.m_vector0.y = scale * diff.y;
+            contact.m_vector0.z = scale * diff.z;
             contact.m_vector1 = nearest;
             contact.m_separation = separation;
             contact.m_tri = tri;

@@ -30,15 +30,7 @@
 // in other units.
 extern "C" void* memcpy(void*, const void*, unsigned long);
 
-class CVector3 {
-public:
-    CVector3() {}
-
-    float x;
-    float y;
-    float z;
-    float w;
-};
+#include "game/CVector3.h"
 
 class CAIFilterRealVector3 {
 public:

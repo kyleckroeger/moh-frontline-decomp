@@ -12,12 +12,8 @@
 // bulletfactory.cpp, defined __declspec(weak) out of the class and
 // instantiated explicitly; only this unit's members are defined. The rest of
 // the file is not part of this unit.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 class ISceneNode;
 enum EClsnId {};
 enum EThrownBulletTypes {};

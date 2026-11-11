@@ -11,15 +11,9 @@
 extern "C" void MEM_free(void*);
 
 /* Inferred: CVector3 as four floats overlaid with two doubles. */
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 /* The line view of capsule_create.cpp (16-aligned): the stored points and
    direction, then cached values and their flags; its assignment copies the

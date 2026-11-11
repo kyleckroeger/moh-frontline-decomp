@@ -9,13 +9,7 @@
 // constructor and members are inferred, and the sphere view is 16-byte
 // aligned because the target realigns the stack for it. The rest of the file
 // is not part of this unit.
-class CVector3 {
-public:
-    union {
-        double pair[2];
-        float v[4];
-    };
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix;
 class CTriangle;

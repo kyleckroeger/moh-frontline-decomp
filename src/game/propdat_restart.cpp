@@ -23,22 +23,6 @@ void DebugMsg(const char*, ...);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 void TLT_CloseFile(void*);
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y ;
-    }
-    return x;
-}
 
 inline void ChangeEndian(short& value) {
     unsigned char bytes[2];
@@ -103,24 +87,7 @@ template <class T> void offsetPtr(T*& pointer, int base) {
 
 class CMatrix;
 
-class CVector3 {
-public:
-    float x, y, z, w;
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    // Frontline's out-of-line copy constructor copies two doublewords.
-    CVector3(const CVector3& o) {
-        reinterpret_cast<double*>(this)[0] = reinterpret_cast<const double*>(&o)[0];
-        reinterpret_cast<double*>(this)[1] = reinterpret_cast<const double*>(&o)[1];
-    }
-    CVector3& operator-=(const CVector3& o) {
-        x -= o.x;
-        y -= o.y;
-        z -= o.z;
-        return *this;
-    }
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CQuaternion {
 public:

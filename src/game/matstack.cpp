@@ -5,12 +5,7 @@
 extern "C" int MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

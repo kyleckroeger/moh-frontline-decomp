@@ -23,37 +23,11 @@ extern "C" int stricmp(const char*, const char*);
 
 float MathFunRandomReal(float, float);
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { d = other.d; }
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
 
-    void Scale(const CVector3& a, float s) {
-        d.v[0] = s * a.d.v[0];
-        d.v[1] = s * a.d.v[1];
-        d.v[2] = s * a.d.v[2];
-    }
-    CVector3& operator+=(const CVector3& v) {
-        d.v[0] += v.d.v[0];
-        d.v[1] += v.d.v[1];
-        d.v[2] += v.d.v[2];
-        return *this;
-    }
+#include "game/CVector3.h"
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
-
-inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.d.v[0], f * v.d.v[1], f * v.d.v[2]); }
+inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
 
 class CMatrix {
 public:

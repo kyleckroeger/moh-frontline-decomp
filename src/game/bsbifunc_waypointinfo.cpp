@@ -19,10 +19,7 @@
 // and .rodata pool entries; the switch's jump table is this unit's.
 #include <math.h>
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
+
 
 struct TriggerPositionView {
     float x;
@@ -30,57 +27,7 @@ struct TriggerPositionView {
     float z;
 };
 
-class CVector3 {
-public:
-    CVector3(const TriggerPositionView& v) : x(v.x), y(v.y), z(v.z) {}
-    CVector3() {}
-    CVector3(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-    }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    void SetCross(const CVector3& a, const CVector3& b) {
-        x = a.y * b.z - a.z * b.y;
-        y = a.z * b.x - a.x * b.z;
-        z = a.x * b.y - a.y * b.x;
-    }
-    float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
-    float LengthSq() const { return x * x + y * y + z * z; }
-    void Normalize() {
-        float length = sqrtf(LengthSq());
-        if (length != 0.0f) {
-            x *= 1.0f / length;
-            y *= 1.0f / length;
-            z *= 1.0f / length;
-        }
-    }
-    CVector3& operator*=(float f) {
-        x *= f;
-        y *= f;
-        z *= f;
-        return *this;
-    }
-    CVector3& operator-=(const CVector3& o) {
-        x -= o.x;
-        y -= o.y;
-        z -= o.z;
-        return *this;
-    }
-    CVector3& operator+=(const CVector3& o) {
-        x += o.x;
-        y += o.y;
-        z += o.z;
-        return *this;
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 
 class CMatrix;

@@ -18,13 +18,7 @@
 // CAIFilterObject's in the order of its table (SetTargetMode at +16); the
 // doodad, filter, AI object, schedule (BSSchedule's size is not known),
 // thrown-object and built-in record views and the helpers are inferred.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 enum EClsnId {};
 class CCollision;

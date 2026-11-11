@@ -19,16 +19,8 @@ enum EClsnId {};
 class CCollision;
 class CDrawContext;
 class CMatrix;
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 class CBullet;
 class CLight;
 class CPlayerObject;

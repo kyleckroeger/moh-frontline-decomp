@@ -14,13 +14,7 @@
 // The classes and functions are named by the mangled symbols; CAnimated and
 // the mesh and material views are inferred (members at their offsets, names
 // not original).
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CTexture;
 struct CharSkel_t;

@@ -26,14 +26,7 @@
 #include <dolphin/gx.h>
 #include <dolphin/mtx.h>
 
-class CVector3 {
-public:
-    CVector3() {}
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 /* Inferred: the fog colour, range and type. */
 struct FogView {
@@ -240,7 +233,7 @@ void CCPTMatBin::Link(CDmaTag* tag, CDmaPacket&) {
                 CVector3 eye;
                 PSMTXMultVec(g_WorldToCameraGCMatrix, (Vec*)&position, (Vec*)&eye);
                 GXLoadNrmMtxImm(g_WorldToCameraGCMatrix, i * 3);
-                GXInitLightPos(&light->m_lightObj, eye.d.v[0], eye.d.v[1], eye.d.v[2]);
+                GXInitLightPos(&light->m_lightObj, eye.x, eye.y, eye.z);
                 GXInitLightDistAttn(&light->m_lightObj, 0.5f * light->m_radius, 0.4f, GX_DA_STEEP);
                 GXLightID id = (GXLightID)(1 << i);
                 GXLoadLightObjImm(&light->m_lightObj, id);

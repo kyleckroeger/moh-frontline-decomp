@@ -84,6 +84,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `source_symbols.py [--jobs N]`, `--missing SECTION` | Which of the original's named symbols the units, drafts and `data/` would define in a pure-source link: defined, missing or duplicate, by section (PortReadiness 2.4's figure until that link exists). Writes `layout/source_symbols.tsv`. |
 | `bss_decls.py [--force]`, `--dry-run` | Write `data/bss/`: a definition for each `.bss`/`.sbss` global no source defines, one file per original file, typed from existing extern declarations. Rerunnable; edit the output by hand afterwards. |
 | `source_link.py [--jobs N]`, `--list KIND` | Resolve every unit, draft and data file with no original bytes, as a linker would: undefined, fragment-local, duplicate and small-data mismatches. Writes `layout/source_link.tsv` (PortReadiness 2.4). |
+| `try_header.py CLASS [--only UNIT...]` | Move every unit with its own view of CLASS onto `include/game/CLASS.h` in a copy (field spellings rewritten), verify it like `one_unit.py`, and write `layout/header_moves/CLASS.tsv` (kept, lost, no_compile). Nothing in `src/` or `config/` changes. |
 | `check_data.py [FILE]` | Compile the tables in `data/` and compare each with the original symbol: section, size, bytes and relocation targets. Tested (`tests/test_data_tables.py`). |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the

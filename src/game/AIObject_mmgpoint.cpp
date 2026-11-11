@@ -20,22 +20,7 @@
 // in other units. The square root of the sound distance is taken in place
 // (an inferred inline taking the value by reference: the result shares the
 // distance's register).
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
+
 
 /* inferred: the square root taken in place (as sqrtf) */
 inline void SqrtInPlace(float& x)
@@ -54,30 +39,9 @@ inline void SqrtInPlace(float& x)
     }
 }
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) { d.v[0] = ax; d.v[1] = ay; d.v[2] = az; }
-    CVector3(const CVector3& other) { d.pair[0] = other.d.pair[0]; d.pair[1] = other.d.pair[1]; }
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.v[0] *= scale;
-            d.v[1] *= scale;
-            d.v[2] *= scale;
-        }
-    }
-    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
 
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:
@@ -251,9 +215,9 @@ bool CAIObject::ShouldILeaveMMG(TriggerObject_struct* trigger) {
         CVector3 forward(*&row);
         forward.Normalize();
         CVector3 delta;
-        delta.d.v[0] = m_target->m_position.x - position.x;
-        delta.d.v[1] = m_target->m_position.y - position.y;
-        delta.d.v[2] = m_target->m_position.z - position.z;
+        delta.x = m_target->m_position.x - position.x;
+        delta.y = m_target->m_position.y - position.y;
+        delta.z = m_target->m_position.z - position.z;
         delta.Normalize();
         if (delta.Dot(forward) < 0.866f)
             return true;
@@ -284,9 +248,9 @@ TriggerObject_struct* CAIObject::ChooseMMGPoint() {
             forward.Normalize();
             if (m_target) {
                 CVector3 delta;
-                delta.d.v[0] = m_target->m_position.x - position.x;
-                delta.d.v[1] = m_target->m_position.y - position.y;
-                delta.d.v[2] = m_target->m_position.z - position.z;
+                delta.x = m_target->m_position.x - position.x;
+                delta.y = m_target->m_position.y - position.y;
+                delta.z = m_target->m_position.z - position.z;
                 delta.Normalize();
                 if (delta.Dot(forward) < 0.866f)
                     continue;

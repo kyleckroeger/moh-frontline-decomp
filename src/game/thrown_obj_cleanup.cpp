@@ -23,29 +23,9 @@ struct BSObject;
 
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) {
-        x = ax;
-        y = ay;
-        z = az;
-    }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 /* inferred: a surface record, its impact sound index in the top 11 bits of the halfword at +12 */
 struct SurfaceView {

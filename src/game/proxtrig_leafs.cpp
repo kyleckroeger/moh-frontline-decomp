@@ -17,11 +17,7 @@
 // views, the leaf bounds and the inline tests are inferred; the order of the
 // coordinate locals gives the original's loads. The rest of the file is in
 // other units.
-struct CVector3 {
-    float x;
-    float y;
-    float z;
-};
+#include "game/CVector3.h"
 
 struct PropPlane4 {
     float x, y, z, d;

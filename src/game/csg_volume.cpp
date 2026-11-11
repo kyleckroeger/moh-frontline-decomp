@@ -39,15 +39,9 @@ class CAnimatedVolume;
 
 // Inferred: CVector3 as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 
 class CCollision {
@@ -122,30 +116,30 @@ void CCSGVolume::TransformedCopy(const IVolume&, const CMatrix&) {
 }
 
 void CCSGVolume::GetExtents(CVector3& minimum, CVector3& maximum) const {
-    minimum.d.v[0] = 3.4028235e38f;
-    minimum.d.v[1] = 3.4028235e38f;
-    minimum.d.v[2] = 3.4028235e38f;
-    maximum.d.v[0] = -3.4028235e38f;
-    maximum.d.v[1] = -3.4028235e38f;
-    maximum.d.v[2] = -3.4028235e38f;
+    minimum.x = 3.4028235e38f;
+    minimum.y = 3.4028235e38f;
+    minimum.z = 3.4028235e38f;
+    maximum.x = -3.4028235e38f;
+    maximum.y = -3.4028235e38f;
+    maximum.z = -3.4028235e38f;
     for (int i = 0; i < m_count; i++) {
         IVolume* volume = m_object->GetSubVolume(i);
         if (volume) {
             CVector3 low;
             CVector3 high;
             volume->GetExtents(low, high);
-            if (low.d.v[0] < minimum.d.v[0])
-                minimum.d.v[0] = low.d.v[0];
-            if (low.d.v[1] < minimum.d.v[1])
-                minimum.d.v[1] = low.d.v[1];
-            if (low.d.v[2] < minimum.d.v[2])
-                minimum.d.v[2] = low.d.v[2];
-            if (high.d.v[0] > maximum.d.v[0])
-                maximum.d.v[0] = high.d.v[0];
-            if (high.d.v[1] > maximum.d.v[1])
-                maximum.d.v[1] = high.d.v[1];
-            if (high.d.v[2] > maximum.d.v[2])
-                maximum.d.v[2] = high.d.v[2];
+            if (low.x < minimum.x)
+                minimum.x = low.x;
+            if (low.y < minimum.y)
+                minimum.y = low.y;
+            if (low.z < minimum.z)
+                minimum.z = low.z;
+            if (high.x > maximum.x)
+                maximum.x = high.x;
+            if (high.y > maximum.y)
+                maximum.y = high.y;
+            if (high.z > maximum.z)
+                maximum.z = high.z;
         }
     }
 }

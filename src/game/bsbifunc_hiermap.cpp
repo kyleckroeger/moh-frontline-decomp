@@ -15,13 +15,7 @@
 // __vt__10BSGO_Basic; the tank-object, trigger, script-object, script-data
 // (fields named by offset; their meanings are not known) and built-in record
 // views and the argument helper are inferred.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 enum EClsnId {};
 class CCollision;

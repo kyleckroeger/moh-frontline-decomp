@@ -83,42 +83,10 @@ class CWorldObject;
 class CExplosion;
 enum EScriptBulletType {};
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
 /* inferred: a 16-byte vector (four floats overlaid with two doubles, copied
    as two doubles) */
-class CVector3 {
-public:
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            d.v[0] *= 1.0f / length;
-            d.v[1] *= 1.0f / length;
-            d.v[2] *= 1.0f / length;
-        }
-    }
-
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 void MakeNoise(void*, CAIFilterObject*, const CVector3&, int, float, bool, int);
 
@@ -412,9 +380,9 @@ bool CExplosion::Visit(ISceneNode& node) {
         node.GetForward(forward);
         node.GetPosition(delta);
         const CVector3& center = m_sphere.GetCenter();
-        delta.d.v[0] = delta.d.v[0] - center.d.v[0];
-        delta.d.v[1] = delta.d.v[1] - center.d.v[1];
-        delta.d.v[2] = delta.d.v[2] - center.d.v[2];
+        delta.x = delta.x - center.x;
+        delta.y = delta.y - center.y;
+        delta.z = delta.z - center.z;
         float falloff = 1.0f - delta.Length() / m_sphere.GetRadius();
         if (falloff < 0.5f)
             falloff = 0.5f;
@@ -424,7 +392,7 @@ bool CExplosion::Visit(ISceneNode& node) {
             info->m_source = m_source->GetScriptObject();
         else
             info->m_source = 0;
-        if (forward.d.v[0] * delta.d.v[0] + forward.d.v[1] * delta.d.v[1] + forward.d.v[2] * delta.d.v[2] <= 0.0f)
+        if (forward.x * delta.x + forward.y * delta.y + forward.z * delta.z <= 0.0f)
             info->m_front = 0;
         else
             info->m_front = 1;
@@ -451,10 +419,10 @@ bool CExplosion::Visit(ISceneNode& node) {
                 IMovingSceneNode* moving = node.AsMovingNode();
                 delta.Normalize();
                 if (player && data40) {
-                    delta.d.v[2] = g_fScriptExplosionHeightScaleOnPlayer * (0.5f * falloff + 0.5f);
+                    delta.z = g_fScriptExplosionHeightScaleOnPlayer * (0.5f * falloff + 0.5f);
                     moving->ApplyForceTo(delta, g_fScriptExplosionVelocityScaleOnPlayer * (30.0f * falloff + 20.0f));
                 } else {
-                    delta.d.v[2] = 0.5f * falloff + 0.5f;
+                    delta.z = 0.5f * falloff + 0.5f;
                     moving->ApplyForceTo(delta, 30.0f * falloff + 20.0f);
                 }
             }
@@ -489,8 +457,8 @@ bool CExplosion::Visit(ISceneNode& node) {
             player->GetForward(playerForward);
             CVector3 playerRight;
             player->GetRightward(playerRight);
-            float ahead = playerForward.d.v[0] * delta.d.v[0] + playerForward.d.v[1] * delta.d.v[1] + playerForward.d.v[2] * delta.d.v[2];
-            float side = playerRight.d.v[0] * delta.d.v[0] + playerRight.d.v[1] * delta.d.v[1] + playerRight.d.v[2] * delta.d.v[2];
+            float ahead = playerForward.x * delta.x + playerForward.y * delta.y + playerForward.z * delta.z;
+            float side = playerRight.x * delta.x + playerRight.y * delta.y + playerRight.z * delta.z;
             if (side < -0.7071f)
                 player->m_ui.AddHitDirection(2);
             else if (side > 0.7071f)

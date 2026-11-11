@@ -14,18 +14,7 @@
 // original declaration: whole-vector copies in this file (the row accessors)
 // move each vector as two lfd/stfd pairs, which an implicit copy through the
 // double pair reproduces.
-class CVector3 {
-public:
-    union {
-        struct {
-            float x;
-            float y;
-            float z;
-            float w;
-        };
-        double pair[2];
-    };
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

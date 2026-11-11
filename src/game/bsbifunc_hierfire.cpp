@@ -16,15 +16,9 @@
 // __vt__13CStaticObject (AsHierTankObject at +328; the unnamed entry at +300
 // as a placeholder); the tank-object and built-in record views and the
 // argument helper are inferred.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 enum EClsnId {};
 class CCollision;
@@ -227,7 +221,7 @@ void BIFunc_HierObjectGetAimAngle(int** stack, void* object) {
     else
         aim = tank->m_aimTarget;
     target = aim;
-    target.d.v[2] += height;
+    target.z += height;
     sub->GetRightward(rightward);
     if (tilt) {
         sub->GetForward(forward);

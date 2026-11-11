@@ -18,32 +18,7 @@
 // rest of the file is in other units.
 #include <math.h>
 
-class CVector3 {
-public:
-    void Normalize() {
-        float length = sqrtf(x * x + y * y + z * z);
-        if (length != 0.0f) {
-            x *= 1.0f / length;
-            y *= 1.0f / length;
-            z *= 1.0f / length;
-        }
-    }
-    void operator+=(const CVector3& o) {
-        x += o.x;
-        y += o.y;
-        z += o.z;
-    }
-    void operator*=(float s) {
-        x *= s;
-        y *= s;
-        z *= s;
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-};
+#include "game/CVector3.h"
 
 class CAIFilterRealVector3;
 

@@ -25,42 +25,14 @@
 // record views, the slot and information helpers are inferred (members at their
 // offsets, names not original).
 /* The MSL inline sqrtf (three Newton steps from frsqrte). */
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y ;
-    }
-    return x;
-}
+
 
 enum EClsnId {};
 class CCollision;
 class CDrawContext;
 class CMatrix;
-class CVector3 {
-public:
-    float LengthSq() const { return x * x + y * y + z * z; }
-    CVector3& operator-=(const CVector3& o) {
-        x -= o.x;
-        y -= o.y;
-        z -= o.z;
-        return *this;
-    }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 class CBullet;
 class CLight;
 class CPlayerObject;

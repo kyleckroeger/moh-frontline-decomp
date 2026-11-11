@@ -15,18 +15,7 @@
 // union is inferred from the code, not the original declaration: vectors are
 // copied as two lfd/stfd pairs, which an implicit copy through the double pair
 // reproduces.
-class CVector3 {
-public:
-    union {
-        struct {
-            float x;
-            float y;
-            float z;
-            float w;
-        };
-        double pair[2];
-    };
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

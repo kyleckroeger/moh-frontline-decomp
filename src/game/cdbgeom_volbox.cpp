@@ -21,25 +21,16 @@ inline double fabs(double x) { return __fabs(x); }
 
 class CMatrix;
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) { d.c.x = x; d.c.y = y; d.c.z = z; }
-    float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 class CTriangle;
 // Inferred plane view: the normal and the distance from the origin.
 class CPlane {
 public:
     float GetDistance(CVector3 point) const {
-        return m_normal.d.c.x * point.d.c.x + m_normal.d.c.y * point.d.c.y + m_normal.d.c.z * point.d.c.z - m_distance;
+        return m_normal.x * point.x + m_normal.y * point.y + m_normal.z * point.z - m_distance;
     }
 
     CVector3 m_normal;
@@ -147,9 +138,9 @@ public:
 
 int CCDBVolBox::TestCollision(const CPlane& plane, CCollision&, bool) const {
     CVector3 proj(m_axes[0].Dot(plane.m_normal), m_axes[1].Dot(plane.m_normal), m_axes[2].Dot(plane.m_normal));
-    float width = (float)fabs(proj.d.c.x);
-    float depth = (float)fabs(proj.d.c.y);
-    float height = (float)fabs(proj.d.c.z);
+    float width = (float)fabs(proj.x);
+    float depth = (float)fabs(proj.y);
+    float height = (float)fabs(proj.z);
     float separation = plane.GetDistance(m_center) - (width * m_half[0] + depth * m_half[1] + height * m_half[2]);
     if (separation > CONTACT_EPSILON)
         return 1;
@@ -173,13 +164,13 @@ int CCDBVolBox::TestCollision(const CAnimatedVolume& other, CCollision& collisio
 int CCDBVolBox::TestCollision(const CVolSphere& sphere, CCollision&, bool) const {
     const CVector3& center = sphere.GetCenter();
     CVector3 diff;
-    diff.d.c.x = center.d.c.x - m_center.d.c.x;
-    diff.d.c.y = center.d.c.y - m_center.d.c.y;
-    diff.d.c.z = center.d.c.z - m_center.d.c.z;
+    diff.x = center.x - m_center.x;
+    diff.y = center.y - m_center.y;
+    diff.z = center.z - m_center.z;
     CVector3 local(m_axes[0].Dot(diff), m_axes[1].Dot(diff), m_axes[2].Dot(diff));
-    float a0 = (float)fabs(local.d.c.x);
-    float a1 = (float)fabs(local.d.c.y);
-    float a2 = (float)fabs(local.d.c.z);
+    float a0 = (float)fabs(local.x);
+    float a1 = (float)fabs(local.y);
+    float a2 = (float)fabs(local.z);
     float distSq;
     float separation;
     distSq = 0.0f;

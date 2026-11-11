@@ -31,13 +31,7 @@
 
 extern "C" double tan(double);
 
-class CVector3 {
-public:
-    union {
-        float v[4];
-        double pair[2];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:
@@ -75,11 +69,11 @@ class CPlane {
 public:
     void Transform(const CMatrix&);
     void NormalizeNormal() {
-        float length = sqrtf(m_normal.d.v[0] * m_normal.d.v[0] + m_normal.d.v[1] * m_normal.d.v[1] + m_normal.d.v[2] * m_normal.d.v[2]);
+        float length = sqrtf(m_normal.x * m_normal.x + m_normal.y * m_normal.y + m_normal.z * m_normal.z);
         if (length != 0.0f) {
-            m_normal.d.v[0] *= 1.0f / length;
-            m_normal.d.v[1] *= 1.0f / length;
-            m_normal.d.v[2] *= 1.0f / length;
+            m_normal.x *= 1.0f / length;
+            m_normal.y *= 1.0f / length;
+            m_normal.z *= 1.0f / length;
         }
     }
 
@@ -316,9 +310,9 @@ void CCamera::AttemptUpdate(float) {
     if (!g_bInMultiplayerMode) {
         CVector3 position;
         ((const CameraNodeView*)this)->GetPosition(position);
-        m_follower0c->value = position.d.v[0];
-        m_follower14->value = position.d.v[1];
-        m_follower10->value = position.d.v[0];
-        m_follower18->value = position.d.v[1];
+        m_follower0c->value = position.x;
+        m_follower14->value = position.y;
+        m_follower10->value = position.x;
+        m_follower18->value = position.y;
     }
 }

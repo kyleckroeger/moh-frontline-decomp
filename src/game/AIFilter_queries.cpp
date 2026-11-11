@@ -16,12 +16,7 @@ extern "C" {
 
 struct TriggerObject_struct;
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CAIFilterRealVector3 {
 public:

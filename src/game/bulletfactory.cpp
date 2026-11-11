@@ -12,12 +12,8 @@ class CThrownBullet;
 class ISceneNode;
 enum EClsnId {};
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 struct ProjectileBulletProperties_struct;
 struct ThrownBulletProperties_struct;
 enum EProjectileBulletTypes {};

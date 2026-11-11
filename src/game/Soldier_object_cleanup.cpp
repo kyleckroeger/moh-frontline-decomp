@@ -26,35 +26,10 @@ enum EMoodType {};
 enum EClsnId {};
 enum EWeaponTypes {};
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
+
 
 /* inferred: CVector3 copies move it as a doubleword pair (player_weapon.cpp) */
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator*=(float f) {
-        x *= f;
-        y *= f;
-        z *= f;
-        return *this;
-    }
-    CVector3& operator+=(const CVector3& v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
-        return *this;
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

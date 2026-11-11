@@ -16,25 +16,7 @@ extern "C" {
 #include <string.h>
 }
 
-class CVector3 {
-public:
-    float Dot(const CVector3& v) const { return x * v.x + y * v.y + z * v.z; }
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            x *= scale;
-            y *= scale;
-            z *= scale;
-        }
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 struct CColor {
     unsigned char r;

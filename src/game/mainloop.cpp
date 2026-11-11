@@ -42,43 +42,11 @@
 // table between them needs no construction. The classes and globals are named by the
 // symbols; the object sizes come from the symbols and the other members are
 // opaque here.
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.v[0] *= scale;
-            d.v[1] *= scale;
-            d.v[2] *= scale;
-        }
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 struct CColor {
     CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
@@ -978,27 +946,27 @@ void LoadLevelSettings() {
     color.r = level->m_data->lights[0].color[0].i;
     color.g = level->m_data->lights[0].color[1].i;
     color.b = level->m_data->lights[0].color[2].i;
-    direction.d.v[0] = level->m_data->lights[0].direction[0].f;
-    direction.d.v[1] = level->m_data->lights[0].direction[1].f;
-    direction.d.v[2] = level->m_data->lights[0].direction[2].f;
+    direction.x = level->m_data->lights[0].direction[0].f;
+    direction.y = level->m_data->lights[0].direction[1].f;
+    direction.z = level->m_data->lights[0].direction[2].f;
     direction.Normalize();
     intensity = level->m_data->lights[0].intensity.f;
     CLight::SetDefaultLight((CLight::EDefaultLights)1, direction, color, intensity);
     color.r = level->m_data->lights[1].color[0].i;
     color.g = level->m_data->lights[1].color[1].i;
     color.b = level->m_data->lights[1].color[2].i;
-    direction.d.v[0] = level->m_data->lights[1].direction[0].f;
-    direction.d.v[1] = level->m_data->lights[1].direction[1].f;
-    direction.d.v[2] = level->m_data->lights[1].direction[2].f;
+    direction.x = level->m_data->lights[1].direction[0].f;
+    direction.y = level->m_data->lights[1].direction[1].f;
+    direction.z = level->m_data->lights[1].direction[2].f;
     direction.Normalize();
     intensity = level->m_data->lights[1].intensity.f;
     CLight::SetDefaultLight((CLight::EDefaultLights)2, direction, color, intensity);
     color.r = level->m_data->lights[2].color[0].i;
     color.g = level->m_data->lights[2].color[1].i;
     color.b = level->m_data->lights[2].color[2].i;
-    direction.d.v[0] = level->m_data->lights[2].direction[0].f;
-    direction.d.v[1] = level->m_data->lights[2].direction[1].f;
-    direction.d.v[2] = level->m_data->lights[2].direction[2].f;
+    direction.x = level->m_data->lights[2].direction[0].f;
+    direction.y = level->m_data->lights[2].direction[1].f;
+    direction.z = level->m_data->lights[2].direction[2].f;
     direction.Normalize();
     intensity = level->m_data->lights[2].intensity.f;
     CLight::SetDefaultLight((CLight::EDefaultLights)3, direction, color, intensity);

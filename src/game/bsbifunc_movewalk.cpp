@@ -28,28 +28,10 @@ enum EClsnId {};
 enum EMovePointType {};
 struct BS_STRUCT_Vector_struct;
 
-struct CVector3Pair {
-    double a;
-    double b;
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& o) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&o;
-        return *this;
-    }
-    void Set(float x_, float y_, float z_) {
-        x = x_;
-        y = y_;
-        z = z_;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 class CCollision;
 class CDrawContext;
 class CMatrix;

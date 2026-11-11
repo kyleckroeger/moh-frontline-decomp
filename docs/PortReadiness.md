@@ -173,6 +173,31 @@ name. `layout_lint.py --check FILE SETTINGS` lints one draft in seconds. The lin
 the test suite: a full run takes several minutes, and the naming conflicts must be
 resolved by step 3.3 first.
 
+Shared headers, 2026-11-11: `include/game/CVector3.h` (with `msl_sqrtf.h`). Decision
+point reached on the first class. `research/tools/try_header.py CLASS` moves every unit
+with its own view onto the header in a copy, rewriting the view's field spellings, and
+verifies it as `one_unit.py` does (the unchanged unit first, as a control). Of 256 units,
+109 kept their match, 115 lost it and 32 didn't compile
+(`research/layout/header_moves/CVector3.tsv`). Decision (user): move the 109; the other
+147 keep their own view and count as guards. The complete image stays identical
+(86.19%).
+
+What the header is based on. The original keeps weak out-of-line copies of 12 CVector3
+methods; they give `Normalize()` returning the length, `Scale` with the factor first,
+`Abs`, `Cross`, `DotDotDot`, `Add`, `Sub`, and both constructors. Fields are plain `x, y,
+z, w`: MWCC 1.3.2 can't reach an anonymous struct's members anywhere (inside the class or
+out, with `gcc_extensions` on or off), so the views' `d.v[i]`, `d.c.x` and `c.x` can't
+alias them and are rewritten. Why one header can't keep every match: copy behaviour. Some
+matched files need copies as two doubles, others memberwise floats, and the original's one
+out-of-line `operator=` returns by value, which adds a stack temporary that matched code
+such as `CCamera::GetPosition` lacks. Three variants were tried on a sample (by-value
+`operator=`, by-reference, implicit assignment); by-reference kept the most. Units that
+emit the original's weak copies themselves lose them once the header makes the method
+inline (8 "unexpected compiler function set"). Also learnt: the original has no static
+`CMatrix::Multiply(CMatrix&, const CMatrix&, const CMatrix&)`, only the member
+`Multiply(const CMatrix&, const CMatrix&)`, and its `CMatrix` constructor takes a
+defaulted argument (`__defctor__7CMatrixFv`). CMatrix and ISceneNode are next.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

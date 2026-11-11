@@ -19,20 +19,9 @@ class CAnimObject;
 enum EClsnId {};
 enum EMoodType {};
 
-struct CVector3Pair {
-    double pair[2];
-};
 
-class CVector3 {
-public:
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CVolSphere {
 public:

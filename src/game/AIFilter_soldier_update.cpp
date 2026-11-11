@@ -32,23 +32,9 @@ struct aistatus_match;
 class CAIFilterRealPosition;
 class CAIFilterRealVector3;
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 /* Inferred: the game object's animation object (table slots up to
    GetUpward, as in ISceneNode; members by offset). */

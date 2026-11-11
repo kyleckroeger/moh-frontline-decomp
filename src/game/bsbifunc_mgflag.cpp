@@ -18,41 +18,11 @@ enum EClsnId {};
 class CCollision;
 class CDrawContext;
 class CMatrix;
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y ;
-    }
-    return x;
-}
 
 
-class CVector3 {
-public:
-    float LengthSq() const { return x * x + y * y + z * z; }
-    void Normalize() {
-        float length = sqrtf(LengthSq());
-        if (length != 0.0f) {
-            x *= 1.0f / length;
-            y *= 1.0f / length;
-            z *= 1.0f / length;
-        }
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 class CBullet;
 class CLight;
 struct BSObject;

@@ -13,23 +13,9 @@
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
 
-union CVector3Data {
-    double pair[2];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.c.x = x;
-        d.c.y = y;
-        d.c.z = z;
-    }
-    float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 struct FrustumPlane {
     CVector3 m_normal;
@@ -81,13 +67,13 @@ bool CVolBox::TestVisibility(CDrawContext& context) const {
     h0 = m_half[0];
     for (int i = 0; i < 6; i++) {
         unsigned int mask = *code;
-        float nx = plane->m_normal.d.c.x;
-        float ny = plane->m_normal.d.c.y;
-        float nz = plane->m_normal.d.c.z;
-        CVector3 proj(m_axes[0].d.c.x * nx + m_axes[0].d.c.y * ny + m_axes[0].d.c.z * nz, m_axes[1].d.c.x * nx + m_axes[1].d.c.y * ny + m_axes[1].d.c.z * nz, m_axes[2].d.c.x * nx + m_axes[2].d.c.y * ny + m_axes[2].d.c.z * nz);
-        float a0 = (float)fabs(proj.d.c.x);
-        float a1 = (float)fabs(proj.d.c.y);
-        float a2 = (float)fabs(proj.d.c.z);
+        float nx = plane->m_normal.x;
+        float ny = plane->m_normal.y;
+        float nz = plane->m_normal.z;
+        CVector3 proj(m_axes[0].x * nx + m_axes[0].y * ny + m_axes[0].z * nz, m_axes[1].x * nx + m_axes[1].y * ny + m_axes[1].z * nz, m_axes[2].x * nx + m_axes[2].y * ny + m_axes[2].z * nz);
+        float a0 = (float)fabs(proj.x);
+        float a1 = (float)fabs(proj.y);
+        float a2 = (float)fabs(proj.z);
         float radius = Radius(a0, a1, a2, h0, h1, h2);
         float distance = plane->GetDistance(m_center);
         if (distance > radius)

@@ -13,19 +13,9 @@
 // the pool and manager views and the helper names are inferred.
 extern "C" int rand(void);
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) { d.v[0] = ax; d.v[1] = ay; d.v[2] = az; }
-    CVector3(const CVector3& other) { d.pair[0] = other.d.pair[0]; d.pair[1] = other.d.pair[1]; }
 
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:
@@ -182,9 +172,9 @@ static inline void Setup(CPropertyParticleSystem* ps) {
     CVector3 velocity;
     ps->GetVelocity(velocity);
     inverse.TransformVector(velocity, velocity);
-    ps->m_props->velocity[0] = velocity.d.v[0];
-    ps->m_props->velocity[1] = velocity.d.v[1];
-    ps->m_props->velocity[2] = velocity.d.v[2];
+    ps->m_props->velocity[0] = velocity.x;
+    ps->m_props->velocity[1] = velocity.y;
+    ps->m_props->velocity[2] = velocity.z;
 }
 
 CParticleSystem* CParticleSystem::Create(void* data) {

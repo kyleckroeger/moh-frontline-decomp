@@ -25,13 +25,7 @@
 // other units.
 enum ERenderPriority {};
 
-class CVector3 {
-public:
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:
@@ -158,13 +152,13 @@ void TibPolyDraw(TibPolyData_t* poly) {
     for (int i = 0; i < 4; i++) {
         CVector3 screen;
         CVector3 point;
-        point.d.v[0] = poly->vertices[i].x1;
-        point.d.v[1] = poly->vertices[i].y1;
-        point.d.v[2] = poly->vertices[i].z;
+        point.x = poly->vertices[i].x1;
+        point.y = poly->vertices[i].y1;
+        point.z = poly->vertices[i].z;
         g_matStack->Current().TransformPoint(screen, point);
-        out->x = screen.d.v[0] * g_screen.m_scaleX;
-        out->y = screen.d.v[1] * g_screen.m_scaleY;
-        out->z = screen.d.v[2];
+        out->x = screen.x * g_screen.m_scaleX;
+        out->y = screen.y * g_screen.m_scaleY;
+        out->z = screen.z;
         if ((poly->flags & 1) || !(poly->flags & 2)) {
             out->color[0] = (int)(0.5f * (mul[0] * ((float)poly->vertices[i].r + add[0])));
             if (out->color[0] > 127)

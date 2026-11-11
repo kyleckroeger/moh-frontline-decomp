@@ -23,15 +23,7 @@ struct CColor {
     unsigned char a;
 };
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CParticleSystem {
 public:

@@ -29,18 +29,7 @@ class CLight;
 class CPlayerObject;
 class CSoldierObject;
 
-class CVector3 {
-public:
-    void Set(float ax, float ay, float az) {
-        x = ax;
-        y = ay;
-        z = az;
-    }
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class ISceneNode {
 public:

@@ -2,12 +2,7 @@
 // three columns of each of the four rows by the factor, or by a vector's
 // coordinates. CMatrix and CVector3 are named by the mangled symbols; the
 // element layout is inferred. The rest of the file is not part of this unit.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

@@ -20,15 +20,9 @@ class CMatrix;
 struct AIDoodadView;
 enum EClsnId {};
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 /* inferred: a 16-byte, 8-aligned position (copied as two doubles) */
 class CAIFilterRealPosition : public CVector3 {};
@@ -40,9 +34,9 @@ public:
     void SetSE(CVector3 start, CVector3 end) {
         m_start = start;
         m_end = end;
-        m_dir.d.v[0] = m_end.d.v[0] - m_start.d.v[0];
-        m_dir.d.v[1] = m_end.d.v[1] - m_start.d.v[1];
-        m_dir.d.v[2] = m_end.d.v[2] - m_start.d.v[2];
+        m_dir.x = m_end.x - m_start.x;
+        m_dir.y = m_end.y - m_start.y;
+        m_dir.z = m_end.z - m_start.z;
         m_flag38 = 0;
         m_flag39 = 0;
     }

@@ -24,10 +24,7 @@ class CPlane;
 class CTriangle;
 class CDrawContext;
 
-class CVector3 {
-public:
-    float x, y, z, w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 /* IVolume's virtuals in table order up to GetExtents. */
 class IVolume {

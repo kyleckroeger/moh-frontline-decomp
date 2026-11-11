@@ -18,20 +18,7 @@ double cos(double);
 double atan(double);
 }
 
-class CVector3 {
-public:
-    CVector3& operator-=(const CVector3& v) {
-        x -= v.x;
-        y -= v.y;
-        z -= v.z;
-        return *this;
-    }
-
-    float x;
-    float y;
-    float z;
-    float w;
-};
+#include "game/CVector3.h"
 
 float MathFunNormalizeAngleNegativePiToPi(float);
 void MathFunRotateAboutZ(float*, float*, float);

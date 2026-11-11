@@ -385,11 +385,7 @@ void EndianSwap(xyzProperty_Struct& value) {
 // these functions use is declared. CVector3 is 16 bytes and 8-byte aligned
 // (its stack slots and doubleword copies); ISceneNode's virtual slots follow
 // Frontline's ISceneNode table (GetPosition at +0x40).
-class CVector3 {
-public:
-    float x, y, z, w;
-    CVector3() {}
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 
 class CMatrix;

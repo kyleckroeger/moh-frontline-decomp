@@ -26,41 +26,9 @@ class IVolume;
 
 // Inferred: CVector3 as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-    }
-    void Scale(const CVector3& v, float k) {
-        d.v[0] = k * v.d.v[0];
-        d.v[1] = k * v.d.v[1];
-        d.v[2] = k * v.d.v[2];
-    }
-    CVector3& operator+=(const CVector3& o) {
-        d.v[0] += o.d.v[0];
-        d.v[1] += o.d.v[1];
-        d.v[2] += o.d.v[2];
-        return *this;
-    }
-    float LengthSq() const { return d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]; }
-    void Normalize() {
-        float length = sqrtf(LengthSq());
-        if (length != 0.0f) {
-            d.v[0] *= 1.0f / length;
-            d.v[1] *= 1.0f / length;
-            d.v[2] *= 1.0f / length;
-        }
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 // Inferred: the line's start and end (as in fiber_ivolume.cpp) with the
 // projection of a point.
@@ -94,7 +62,7 @@ class CTriangle;
 class CPlane {
 public:
     float Dist(const CVector3& v) const {
-        return v.d.v[0] * m_normal.d.v[0] + v.d.v[1] * m_normal.d.v[1] + v.d.v[2] * m_normal.d.v[2] - m_d;
+        return v.x * m_normal.x + v.y * m_normal.y + v.z * m_normal.z - m_d;
     }
 
     CVector3 m_normal;
@@ -287,9 +255,9 @@ int CVolCapsule::TestCollision(const CLine3& line, CCollision& collision, bool f
         result = 2;
     } else {
         const CVector3& end = line.GetEnd();
-        delta.d.v[0] = point.d.v[0] - end.d.v[0];
-        delta.d.v[1] = point.d.v[1] - end.d.v[1];
-        delta.d.v[2] = point.d.v[2] - end.d.v[2];
+        delta.x = point.x - end.x;
+        delta.y = point.y - end.y;
+        delta.z = point.z - end.z;
         t = delta.LengthSq();
         result = CompareSqrd(t);
         if (result != 2)
@@ -305,9 +273,9 @@ int CVolCapsule::TestCollision(const CLine3& line, CCollision& collision, bool f
                 nearest = m_axis.GetStart();
             else if (s > 1.0f)
                 nearest = m_axis.GetEnd();
-            delta.d.v[0] = point.d.v[0] - nearest.d.v[0];
-            delta.d.v[1] = point.d.v[1] - nearest.d.v[1];
-            delta.d.v[2] = point.d.v[2] - nearest.d.v[2];
+            delta.x = point.x - nearest.x;
+            delta.y = point.y - nearest.y;
+            delta.z = point.z - nearest.z;
             delta.Normalize();
             SClsnContact contact;
             contact.m_separation = -sqrtf(t);

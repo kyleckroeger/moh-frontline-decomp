@@ -6,29 +6,9 @@
 // sqrtf for the length) are inferred. The rest of the file is in other units.
 #include <math.h>
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { d = other.d; }
-    void operator-=(const CVector3& o) {
-        d.v[0] -= o.d.v[0];
-        d.v[1] -= o.d.v[1];
-        d.v[2] -= o.d.v[2];
-    }
-    float Length() const {
-        float xx = d.v[0] * d.v[0];
-        float yy = d.v[1] * d.v[1];
-        float zz = d.v[2] * d.v[2];
-        return sqrtf(xx + yy + zz);
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CPlayerObject {
 public:

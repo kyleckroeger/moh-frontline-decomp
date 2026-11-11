@@ -14,10 +14,7 @@
 // virtual table is not emitted here. The compiler's weak array constructor
 // for CMatrix (__defctor__7CMatrixFv) and its copies of IVolume's inline destructor and weak table are
 // weak duplicates, linked to the original copies.
-class CVector3 {
-public:
-    float x, y, z, w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

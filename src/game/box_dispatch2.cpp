@@ -14,15 +14,10 @@
 class CMatrix;
 // Inferred: CVector3 as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 class CTriangle;
 class CPlane;
 class CLine3;

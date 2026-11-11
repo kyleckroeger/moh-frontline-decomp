@@ -24,15 +24,9 @@ class CMatrix;
 
 // Inferred: CVector3 as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 // Inferred contact record view: two vectors, the separation and an index.
 struct SClsnContact {
@@ -123,15 +117,15 @@ class CAnimatedVolume : public CVolSphere {};
 
 int CVolSphere::TestCollision(CVector3 point, CCollision& collision, bool flag) const {
     CVector3 direction;
-    direction.d.v[0] = point.d.v[0] - m_center.d.v[0];
-    direction.d.v[1] = point.d.v[1] - m_center.d.v[1];
-    direction.d.v[2] = point.d.v[2] - m_center.d.v[2];
-    float distance = sqrtf(direction.d.v[0] * direction.d.v[0] + direction.d.v[1] * direction.d.v[1] +
-                           direction.d.v[2] * direction.d.v[2]);
+    direction.x = point.x - m_center.x;
+    direction.y = point.y - m_center.y;
+    direction.z = point.z - m_center.z;
+    float distance = sqrtf(direction.x * direction.x + direction.y * direction.y +
+                           direction.z * direction.z);
     if (distance != 0.0f) {
-        direction.d.v[0] *= 1.0f / distance;
-        direction.d.v[1] *= 1.0f / distance;
-        direction.d.v[2] *= 1.0f / distance;
+        direction.x *= 1.0f / distance;
+        direction.y *= 1.0f / distance;
+        direction.z *= 1.0f / distance;
     }
     float separation = distance - m_radius;
     int result;
@@ -149,12 +143,12 @@ int CVolSphere::TestCollision(CVector3 point, CCollision& collision, bool flag) 
             contact.m_separation = separation;
             float radius = m_radius;
             contact.m_vector0 = direction;
-            direction.d.v[0] *= radius;
-            direction.d.v[1] *= radius;
-            direction.d.v[2] *= radius;
-            contact.m_vector1.d.v[0] = m_center.d.v[0] + direction.d.v[0];
-            contact.m_vector1.d.v[1] = m_center.d.v[1] + direction.d.v[1];
-            contact.m_vector1.d.v[2] = m_center.d.v[2] + direction.d.v[2];
+            direction.x *= radius;
+            direction.y *= radius;
+            direction.z *= radius;
+            contact.m_vector1.x = m_center.x + direction.x;
+            contact.m_vector1.y = m_center.y + direction.y;
+            contact.m_vector1.z = m_center.z + direction.z;
             contact.m_index = 0;
             collision.AddContact(contact);
         }
@@ -193,15 +187,15 @@ int CVolSphere::TestCollision(const CAnimatedVolume& other, CCollision& collisio
 
 int CVolSphere::TestCollision(const CVolSphere& other, CCollision& collision, bool flag) const {
     CVector3 direction;
-    direction.d.v[0] = other.m_center.d.v[0] - m_center.d.v[0];
-    direction.d.v[1] = other.m_center.d.v[1] - m_center.d.v[1];
-    direction.d.v[2] = other.m_center.d.v[2] - m_center.d.v[2];
-    float distance = sqrtf(direction.d.v[0] * direction.d.v[0] + direction.d.v[1] * direction.d.v[1] +
-                           direction.d.v[2] * direction.d.v[2]);
+    direction.x = other.m_center.x - m_center.x;
+    direction.y = other.m_center.y - m_center.y;
+    direction.z = other.m_center.z - m_center.z;
+    float distance = sqrtf(direction.x * direction.x + direction.y * direction.y +
+                           direction.z * direction.z);
     if (distance != 0.0f) {
-        direction.d.v[0] *= 1.0f / distance;
-        direction.d.v[1] *= 1.0f / distance;
-        direction.d.v[2] *= 1.0f / distance;
+        direction.x *= 1.0f / distance;
+        direction.y *= 1.0f / distance;
+        direction.z *= 1.0f / distance;
     }
     float separation = distance - (m_radius + other.m_radius);
     int result;
@@ -219,12 +213,12 @@ int CVolSphere::TestCollision(const CVolSphere& other, CCollision& collision, bo
             contact.m_separation = separation;
             float radius = m_radius;
             contact.m_vector0 = direction;
-            direction.d.v[0] *= radius;
-            direction.d.v[1] *= radius;
-            direction.d.v[2] *= radius;
-            contact.m_vector1.d.v[0] = m_center.d.v[0] + direction.d.v[0];
-            contact.m_vector1.d.v[1] = m_center.d.v[1] + direction.d.v[1];
-            contact.m_vector1.d.v[2] = m_center.d.v[2] + direction.d.v[2];
+            direction.x *= radius;
+            direction.y *= radius;
+            direction.z *= radius;
+            contact.m_vector1.x = m_center.x + direction.x;
+            contact.m_vector1.y = m_center.y + direction.y;
+            contact.m_vector1.z = m_center.z + direction.z;
             contact.m_index = 0;
             collision.AddContact(contact);
         }

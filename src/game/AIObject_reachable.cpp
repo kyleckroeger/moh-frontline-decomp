@@ -7,20 +7,14 @@
 // AIFilter_queries.cpp); the position class's member-wise copy constructor
 // and its 8-byte alignment (16-byte stack slots) are inferred. The rest of
 // the file is in other units.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 class CAIFilterRealPosition {
 public:
     CAIFilterRealPosition() {}
-    CAIFilterRealPosition(CVector3 v) : x(v.d.v[0]), y(v.d.v[1]), z(v.d.v[2]) {}
+    CAIFilterRealPosition(CVector3 v) : x(v.x), y(v.y), z(v.z) {}
     CAIFilterRealPosition(const CAIFilterRealPosition& o) {
         float x = o.x;
         float y = o.y;

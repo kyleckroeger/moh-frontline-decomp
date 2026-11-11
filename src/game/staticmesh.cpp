@@ -15,15 +15,7 @@
 class CDmaTag;
 class CDmaPacket;
 
-class CVector3 {
-public:
-    CVector3() {}
-
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(16)));
+#include "game/CVector3.h"
 
 class CMatrix {
 public:

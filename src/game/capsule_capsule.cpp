@@ -20,65 +20,14 @@
 class IVolume;
 
 // Inferred: CVector3 as four floats overlaid with two doubles.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
-    CVector3 operator=(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-        return *this;
-    }
-    void Cross(const CVector3& a, const CVector3& b) {
-        d.v[0] = a.d.v[1] * b.d.v[2] - a.d.v[2] * b.d.v[1];
-        d.v[1] = a.d.v[2] * b.d.v[0] - a.d.v[0] * b.d.v[2];
-        d.v[2] = a.d.v[0] * b.d.v[1] - a.d.v[1] * b.d.v[0];
-    }
-    void Scale(const CVector3& v, float k) {
-        d.c.x = k * v.d.c.x;
-        d.c.y = k * v.d.c.y;
-        d.c.z = k * v.d.c.z;
-    }
-    CVector3& operator+=(const CVector3& o) {
-        d.c.x += o.d.c.x;
-        d.c.y += o.d.c.y;
-        d.c.z += o.d.c.z;
-        return *this;
-    }
-    void Normalize() {
-        float length = sqrtf(LengthSq());
-        if (length != 0.0f) {
-            d.c.x *= 1.0f / length;
-            d.c.y *= 1.0f / length;
-            d.c.z *= 1.0f / length;
-        }
-    }
-    CVector3& operator*=(float k) {
-        d.c.x *= k;
-        d.c.y *= k;
-        d.c.z *= k;
-        return *this;
-    }
-    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
-    float LengthSq() const { return d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]; }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.v[0] = a.d.v[0] - b.d.v[0];
-    r.d.v[1] = a.d.v[1] - b.d.v[1];
-    r.d.v[2] = a.d.v[2] - b.d.v[2];
+    r.x = a.x - b.x;
+    r.y = a.y - b.y;
+    r.z = a.z - b.z;
 }
 
 // Inferred: the line with its lazily cached length and squared length.
@@ -208,9 +157,9 @@ int CVolCapsule::TestCollision(const CVolCapsule& other, CCollision& collision, 
                 }
             } else {
                 normal = otherAxis.GetStart();
-                normal.d.c.x -= p0.d.c.x;
-                normal.d.c.y -= p0.d.c.y;
-                normal.d.c.z -= p0.d.c.z;
+                normal.x -= p0.x;
+                normal.y -= p0.y;
+                normal.z -= p0.z;
                 normal.Normalize();
                 point.Scale(normal, m_radius);
                 point += p0;

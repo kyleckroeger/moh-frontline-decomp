@@ -13,15 +13,9 @@
 // from the mangled symbols; the list, turn-info and object views and the
 // result types are inferred. The strings are .rodata and the constants
 // .sdata2 pool entries.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 long MathArcTan2(float, float);
 void DebugMsg(const char*, ...);
@@ -84,10 +78,10 @@ unsigned short CAnimCallbacks::_TurnFindTurnAnimInfo(AnimFileStateAnimList_t* li
     if (angle == 0.0) {
         CVector3 target = object->m_target;
         CVector3 position = object->m_position;
-        target.d.v[0] -= position.d.v[0];
-        target.d.v[1] -= position.d.v[1];
-        target.d.v[2] -= position.d.v[2];
-        turn = ((MathArcTan2(-target.d.v[0], target.d.v[1]) & 0xffffff) - (object->m_yaw & 0xffffff)) & 0xffffff;
+        target.x -= position.x;
+        target.y -= position.y;
+        target.z -= position.z;
+        turn = ((MathArcTan2(-target.x, target.y) & 0xffffff) - (object->m_yaw & 0xffffff)) & 0xffffff;
     } else {
         turn = 2670176.75f * angle;
     }

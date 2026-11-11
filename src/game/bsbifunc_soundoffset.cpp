@@ -16,19 +16,7 @@
 // and 8 use 449, the rest 454), and plays the scripted sound event when the
 // sound table has it, returning the result or -1. The trigger, property list,
 // node, shell and sound-table views are inferred.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-
-    void Set(float ax, float ay, float az) {
-        x = ax;
-        y = ay;
-        z = az;
-    }
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 struct TriggerObject_struct;
 class BSObject;

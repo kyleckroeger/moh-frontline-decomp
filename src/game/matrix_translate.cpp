@@ -10,13 +10,7 @@
 // each) is inferred from the offsets. Ident is the paired-single routine of
 // matrix_endian, inlined here (inferred from the identical store sequence).
 // The rest of the file is not part of this unit.
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 void MathSinCos(long, float*, float*);
 

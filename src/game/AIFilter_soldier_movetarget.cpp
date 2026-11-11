@@ -9,15 +9,9 @@
 // inline are inferred. The functions are weak copies of header inlines
 // emitted in this file, so they are defined __declspec(weak). The rest of
 // the file is not part of this unit.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
 
 class CMatrix {
 public:
@@ -37,7 +31,7 @@ public:
 class CAIFilterRealVector3 {
 public:
     CAIFilterRealVector3() {}
-    CAIFilterRealVector3(CVector3 v) : x(v.d.v[0]), y(v.d.v[1]), z(v.d.v[2]) {}
+    CAIFilterRealVector3(CVector3 v) : x(v.x), y(v.y), z(v.z) {}
 
     float x;
     float y;
