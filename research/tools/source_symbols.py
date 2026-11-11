@@ -7,7 +7,7 @@ symbols. Until that link exists, this counts the same thing from symbol tables:
 
     units   build/reconstruction/units/*/compiled.o (run tools/reconstruct.py first)
     drafts  research/drafts/index.tsv, each compiled with its listed settings
-    data    research/data/*.cpp
+    data    research/data/**/*.cpp
 
 For every named symbol in the original ELF it reports whether some source defines it
 ("defined"), none does ("missing"), or more than one non-weak definition exists
@@ -83,7 +83,7 @@ def sources(jobs):
     work = [(r["draft"], r["compile_settings_from"])
             for r in csv.DictReader(open(ROOT / "research/drafts/index.tsv"), delimiter="\t")]
     work += [(os.path.relpath(f, ROOT), "config/GMFE69/ConfigGC_dualconfig.json")
-             for f in sorted(glob.glob(str(ROOT / "research/data/*.cpp")))]
+             for f in sorted(glob.glob(str(ROOT / "research/data/**/*.cpp"), recursive=True))]
     # research/data files name their own settings.
     for i, (f, s) in enumerate(work):
         if f.startswith("research/data/"):
@@ -136,7 +136,7 @@ def main():
         else:
             status = "defined"
         for sec, size in copies:
-            rows.append((status, sec, size, name, " ".join(sorted({d[0] for d in defs}))[:200]))
+            rows.append((status, sec, size, name, " ".join(sorted({d[0] for d in defs}))))
     if a.missing:
         for st, sec, size, name, by in sorted(rows, key=lambda r: -r[2]):
             if st == "missing" and sec == a.missing:

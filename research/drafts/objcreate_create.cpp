@@ -144,6 +144,7 @@ class ISceneNode;
 class CScene {
 public:
     void Add(ISceneNode&);
+    unsigned char unknown[0x148]; // g_scene's size: addressed absolutely, not through r13
 };
 extern CScene g_scene;
 
@@ -261,6 +262,7 @@ enum EObjectClass {};
 class CAnimObjectFactory {
 public:
     CSoldierObject* AllocateObject(unsigned long, EObjectClass);
+    unsigned char unknown[0x1c]; // g_AnimObjFactory's size: addressed absolutely, not through r13
 };
 extern CAnimObjectFactory g_AnimObjFactory;
 

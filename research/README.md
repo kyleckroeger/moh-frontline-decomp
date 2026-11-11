@@ -28,7 +28,7 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
-| `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2) |
+| `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |
 | `tools/` | Working scripts, tested from the repository root |
 | `tools/reference/` | Older scripts, kept for their method; logs and notes refer to them. They read local data that isn't in the repo, so they won't run as they are. |
@@ -82,6 +82,8 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `vtables.py [Class]`, `--json` | Each class's virtual table from the original's relocations, slot by slot |
 | `layout_lint.py`, `--class NAME`, `--check FILE SETTINGS`, `--reuse` | Compare every file's view of each class (from `-sym on` debug output): members, vtable pointer, bases. Writes `layout/`. `--check` lints one new or edited draft against the stored views in seconds; run it before trusting a draft's class view. |
 | `source_symbols.py [--jobs N]`, `--missing SECTION` | Which of the original's named symbols the units, drafts and `data/` would define in a pure-source link: defined, missing or duplicate, by section (PortReadiness 2.4's figure until that link exists). Writes `layout/source_symbols.tsv`. |
+| `bss_decls.py [--force]`, `--dry-run` | Write `data/bss/`: a definition for each `.bss`/`.sbss` global no source defines, one file per original file, typed from existing extern declarations. Rerunnable; edit the output by hand afterwards. |
+| `source_link.py [--jobs N]`, `--list KIND` | Resolve every unit, draft and data file with no original bytes, as a linker would: undefined, fragment-local, duplicate and small-data mismatches. Writes `layout/source_link.tsv` (PortReadiness 2.4). |
 | `check_data.py [FILE]` | Compile the tables in `data/` and compare each with the original symbol: section, size, bytes and relocation targets. Tested (`tests/test_data_tables.py`). |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the

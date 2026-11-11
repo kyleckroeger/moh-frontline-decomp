@@ -169,7 +169,7 @@ def check_file(path, orig, verbose=False):
 
 def main():
     orig = Image(ORIGINAL)
-    files = sys.argv[1:] or sorted(glob.glob(str(ROOT / "research/data/*.c*")))
+    files = sys.argv[1:] or sorted(glob.glob(str(ROOT / "research/data/**/*.c*"), recursive=True))
     total = collections.Counter()
     for f in files:
         for path, name, status, info in check_file(f, orig, verbose=bool(sys.argv[1:])):

@@ -105,6 +105,7 @@ extern int g_CurrState;
 struct ConfigView {
     unsigned char m_noDraw;
     unsigned char m_noWorldDraw;
+    unsigned char unknown02[0x12]; // g_config is 0x14 bytes, addressed absolutely
 };
 extern ConfigView g_config;
 

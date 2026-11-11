@@ -59,6 +59,7 @@ extern int g_ParticleCounter;
 class CShellMenu {
 public:
     int Get_currentMission();
+    unsigned char unknown[0x19dc]; // g_Shell's size: addressed absolutely, not through r13
 };
 extern CShellMenu g_Shell;
 

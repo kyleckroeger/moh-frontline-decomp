@@ -112,6 +112,28 @@ built-in's CRC is the standard CRC-32 of its name in upper case, without the `BI
 prefix, for all 288 built-ins. The collision table is the lower triangle of a symmetric
 matrix over 29 collision types, indexed `a + b * (b + 1) / 2` for `a <= b`.
 
+2026-11-11: `.bss` and `.sbss` done. `research/tools/bss_decls.py` wrote
+`research/data/bss/`, one file per original file (44 files, 404 globals, all the right
+section and size by `check_data.py`). Types come from the drafts' and units' own extern
+declarations; 25 types no source spells out yet are byte views sized from the original,
+and 9 globals have no type at all. A file static unique to one original file is defined
+global, because units and drafts split that file into fragments that reach it with
+extern. What's left in `.bss`/`.sbss` is function statics (`name$123`), which come with
+their functions.
+
+First pure-source resolution (`research/tools/source_link.py`, from symbol and
+relocation tables: GNU ld stops at the first unresolvable small-data relocation):
+1,236 units, 147 drafts and 48 data files; 197 undefined, 163 fragment-local, 35
+duplicate. The undefined are 181 initialised data symbols (sub-step 2, next), one
+`extabindex` entry and 15 names the original doesn't have (wrong mangling such as
+`Multiply__7CMatrixFR7CMatrixRC7CMatrixRC7CMatrix`, view names in mangled names,
+SDK aliases such as `PSVECNormalize`). Fragment-local symbols are a file's statics
+reached across its fragments; they resolve when a file's fragments are merged. The
+duplicates are 22 between drafts of one file and 13 between units (`AIObject_threat`
+and `AIObject_visionseek` both define the `ComputeStatus*` functions). Five drafts
+reached a large global through r13 because their view was too small; padded to the
+original size, all five match better.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 

@@ -79,7 +79,11 @@ public:
     MSHData* m_data;
     unsigned char m_allowLighting : 1;
 };
-extern unsigned char g_config;
+struct ConfigView {
+    unsigned char m_noDraw;
+    unsigned char unknown01[0x13]; // g_config is 0x14 bytes, addressed absolutely
+};
+extern ConfigView g_config;
 extern bool g_bCacheLightParam;
 extern unsigned char g_bAllowLighting;
 extern CDrawContext* g_pContext;
@@ -100,7 +104,7 @@ extern CRenderBin g_MshSimpleAlphaBin;
 extern CRenderList* g_pRenderList;
 
 void CStaticMesh::Draw(CDrawContext& context, int) {
-    if (g_config)
+    if (g_config.m_noDraw)
         return;
     g_bCacheLightParam = false;
     g_bAllowLighting = m_allowLighting;

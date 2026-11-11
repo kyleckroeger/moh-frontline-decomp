@@ -148,6 +148,7 @@ public:
 class CShellMenu {
 public:
     void Add_MPPlayerKilled(int, int);
+    unsigned char unknown[0x19dc]; // g_Shell's size: addressed absolutely, not through r13
 };
 extern CShellMenu g_Shell;
 struct ScriptClassView {

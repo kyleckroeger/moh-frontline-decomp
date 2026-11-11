@@ -1,12 +1,21 @@
 status	section	size	symbol	defined_by
+defined	.bss	460800	g_AEMSOneShotMem	data:research/data/bss/sound.cpp
 defined	.bss	223572	g_ProfileBinsHistory	unit:debug_prof
+defined	.bss	204800	SoundBankHeapStart	data:research/data/bss/Pause.cpp
+defined	.bss	204800	gAEMSStreamBuf	data:research/data/bss/sound.cpp
 defined	.bss	114688	s_rsnAStarSearchNodePool	unit:SearchNode_tail
 defined	.bss	53248	g_DecalList	draft:research/drafts/Init.800839e4.cpp unit:decal
+defined	.bss	51200	g_AEMSOneShotStreamBuf	data:research/data/bss/sound.cpp
+defined	.bss	51200	g_frame_cache	data:research/data/bss/unassigned.cpp
+defined	.bss	43808	snddrv	data:research/data/bss/unassigned.cpp
+defined	.bss	36864	g_MessageQueue	data:research/data/bss/bsmessage.cpp
+defined	.bss	32864	gCurRead	data:research/data/bss/filedev.cpp
 defined	.bss	32800	g_TextureSwapCache	draft:research/drafts/compartment_init.cpp
 defined	.bss	32256	__AXVPB	unit:AXVPB
 defined	.bss	24000	g_pTriggerObjects	unit:propdat_restart
 defined	.bss	16384	__AXUpdates	unit:AXVPB
 defined	.bss	16384	ax_dram_image	unit:AXOut
+defined	.bss	16384	g_scratch_pad	data:research/data/bss/unassigned.cpp
 defined	.bss	14400	g_AllRecords	unit:bsschedule unit:soundschedule
 defined	.bss	14400	g_aClsnContacts	unit:collision
 defined	.bss	12288	__AXPB	unit:AXVPB
@@ -25,9 +34,13 @@ defined	.bss	4112	stringPacket	unit:font
 defined	.bss	4096	TimerThreadStack	unit:timerthread
 defined	.bss	4096	__AXITD	unit:AXVPB
 defined	.bss	3092	g_LightPool	draft:research/drafts/compartment_init.cpp
+defined	.bss	3004	_AnimSt_pStatAnimList	data:research/data/bss/animst.cpp
+defined	.bss	2632	MPDbase	data:research/data/bss/unassigned.cpp
 defined	.bss	2048	g_openFiles	unit:filesys
 defined	.bss	2048	iclip	unit:idct
 defined	.bss	1928	_AnimMot_FrameList	unit:animmot
+defined	.bss	1924	sndfx	data:research/data/bss/srandom.cpp
+defined	.bss	1696	pfstates	data:research/data/bss/unassigned.cpp
 defined	.bss	1600	g_promptBuffer	unit:bsbifunc
 defined	.bss	1536	__AXCommandList	unit:AXCL
 defined	.bss	1484	g_BulletDecalManager	unit:mainloop_game
@@ -35,8 +48,12 @@ defined	.bss	1280	__AXOutBuffer	unit:AXOut
 defined	.bss	1280	_remap_pool	unit:dmesh
 defined	.bss	1272	gxData	unit:GXInit
 defined	.bss	1200	debugStats	unit:debug_prof
+defined	.bss	1072	gTRKCPUState	data:research/data/bss/targimpl.cpp
+defined	.bss	1024	sndaztospkr	data:research/data/bss/unassigned.cpp
 defined	.bss	924	g_ClsnMap	unit:location_collision
+defined	.bss	900	sndpps	data:research/data/bss/systask.cpp
 defined	.bss	832	g_pDebugProfTimers	unit:debug_prof
+defined	.bss	804	theObjectiveList	data:research/data/bss/Pause.cpp
 defined	.bss	784	DefaultThread	unit:OSThread
 defined	.bss	784	IdleThread	unit:OSThread
 defined	.bss	784	ReadFileThread	unit:filedev_head
@@ -47,13 +64,21 @@ defined	.bss	672	g_camera	unit:Moh2
 defined	.bss	672	g_mpViewports	unit:Moh2
 defined	.bss	640	__AXOutSBuffer	unit:AXOut
 defined	.bss	640	g_szHintBuffer	unit:bsbifunc
+defined	.bss	576	TempVerts	data:research/data/bss/UserInterface.cpp
+defined	.bss	568	sndgs	data:research/data/bss/unassigned.cpp
 defined	.bss	544	__CARDBlock	unit:CARDBios
+defined	.bss	512	sndmix	data:research/data/bss/srandom.cpp
+defined	.bss	396	sndfb	data:research/data/bss/srandom.cpp
 defined	.bss	384	g_pMGTriggerObject	unit:propdat_restart
+defined	.bss	360	MovementText	data:research/data/bss/unassigned.cpp
+defined	.bss	336	movementText	data:research/data/bss/unassigned.cpp
 defined	.bss	328	g_scene	unit:Moh2
 defined	.bss	272	g_screen	unit:Moh2
 defined	.bss	264	g_skyBoxRenderBin	unit:skybox
 defined	.bss	256	RunQueue	unit:OSThread
 defined	.bss	256	__atexit_funcs	unit:abort_exit
+defined	.bss	256	g_soundStreamFilename	data:research/data/bss/mainloop.cpp
+defined	.bss	256	memclass	data:research/data/bss/unassigned.cpp
 defined	.bss	256	stderr_buff	unit:ansi_files
 defined	.bss	256	stdin_buff	unit:ansi_files
 defined	.bss	256	stdout_buff	unit:ansi_files
@@ -64,8 +89,10 @@ defined	.bss	192	Ecb	unit:EXIBios
 defined	.bss	192	recent_sounds_mem	unit:AIFilter
 defined	.bss	180	g_pGermanCreationQueue	unit:objcreate
 defined	.bss	176	g_AnimDB	unit:anim
+defined	.bss	164	gTRKState	data:research/data/bss/targimpl.cpp
 defined	.bss	160	Alarm	unit:SIBios unit:inittmr
 defined	.bss	152	g_Pause	unit:Moh2
+defined	.bss	148	gTRKSaveState	data:research/data/bss/targimpl.cpp
 defined	.bss	132	g_bocfOpCodeFuncs	unit:bsmachin
 defined	.bss	128	FifoObj	unit:GXInit
 defined	.bss	128	Packet	unit:SIBios
@@ -74,15 +101,19 @@ defined	.bss	128	TimerThreadMsgData	unit:timerthread
 defined	.bss	128	__AXStackHead	unit:AXAlloc
 defined	.bss	128	__AXStackTail	unit:AXAlloc
 defined	.bss	128	g_skyBoxVertices	unit:skybox
+defined	.bss	128	sndss	data:research/data/bss/unassigned.cpp
 defined	.bss	128	tmpBuffer	unit:dvd
 defined	.bss	124	g_ParticleSystemManager	unit:particlesystem
 defined	.bss	118	regs	unit:vi
 defined	.bss	118	shdwRegs	unit:vi
 defined	.bss	112	g_viewport	unit:Moh2
+defined	.bss	104	AnimTran_TransListArray	data:research/data/bss/animst.cpp
 defined	.bss	104	g_GlobalCpt	draft:research/drafts/compartment_init.cpp
 defined	.bss	100	g_BulletBin	unit:projectilebullet
+defined	.bss	100	g_pMGCrossHairMem	data:research/data/bss/player.cpp
 defined	.bss	96	g_LightParam	unit:staticmesh
 defined	.bss	96	g_skyBoxNormals	unit:skybox
+defined	.bss	96	pathxinfo	data:research/data/bss/Pause.cpp
 defined	.bss	88	HorVer	unit:vi
 defined	.bss	88	g_AnimLightManager	unit:light
 defined	.bss	88	g_subtitle_queue	draft:research/drafts/pumhandler_ctor.cpp
@@ -94,7 +125,10 @@ defined	.bss	80	g_pGenericSoundMemory	unit:bsbifunc
 defined	.bss	80	task	unit:AXOut
 defined	.bss	80	uisFormatStringStack	unit:UISStack
 defined	.bss	76	g_popUpMessage	unit:bsbifunc
+defined	.bss	72	_AnimObj_StateSelFuncArray	data:research/data/bss/anim_callback.cpp
 defined	.bss	68	g_ControllerConfig	unit:ConfigGC
+defined	.bss	68	sndaems	data:research/data/bss/systask.cpp
+defined	.bss	64	MPDtranspose_table	data:research/data/bss/rcmp_main.cpp
 defined	.bss	64	TypeCallback	unit:SIBios
 defined	.bss	64	_Mat_Unit	unit:matrix
 defined	.bss	64	__OSErrorTable	unit:OSError
@@ -117,13 +151,22 @@ defined	.bss	64	g_texture	unit:shadow
 defined	.bss	64	s_TempMat__7CMatrix	unit:matrix
 defined	.bss	63	bb2Buf	unit:fstload
 defined	.bss	60	CommandList	unit:dvdlow
+defined	.bss	60	gRMode	data:research/data/bss/dvdStatus_base.cpp
 defined	.bss	60	g_playerStartIndices	unit:propdat_restart
 defined	.bss	56	__AXLocalProfile	unit:AXOut
+defined	.bss	56	filehead	data:research/data/bss/srandom.cpp
 defined	.bss	56	g_pObjectAllocators	unit:objcreate
 defined	.bss	54	__AXStudio	unit:AXSPB
 defined	.bss	52	g_BulletFactory	unit:mainloop_game
 defined	.bss	48	DummyCommandBlock	unit:dvd
 defined	.bss	48	Origin	unit:Pad
+defined	.bss	48	gPadStatus	data:research/data/bss/unassigned.cpp
+defined	.bss	48	g_WorldToCameraGCMatrix	data:research/data/bss/compartment.cpp
+defined	.bss	48	landmark	data:research/data/bss/UserInterface.cpp
+defined	.bss	48	landmarkDisplayText	data:research/data/bss/UserInterface.cpp
+defined	.bss	48	timestamp	data:research/data/bss/UserInterface.cpp
+defined	.bss	48	timestampDisplayText	data:research/data/bss/UserInterface.cpp
+defined	.bss	48	vgPadStatus	data:research/data/bss/unassigned.cpp
 defined	.bss	44	f_rrObstacleAvoidanceLineAngleMax	unit:ObstacleAvoidance
 defined	.bss	44	f_rrObstacleAvoidanceLineAngleMin	unit:ObstacleAvoidance
 defined	.bss	40	Alarm	unit:SIBios unit:inittmr
@@ -158,6 +201,8 @@ defined	.bss	32	_Math_TaylorConst	unit:trig
 defined	.bss	32	__CARDDiskNone	unit:CARDBios
 defined	.bss	32	_finish_bin	unit:dmesh
 defined	.bss	32	_finish_bin_weapon	unit:dmesh
+defined	.bss	32	gAEMSBank	data:research/data/bss/sound.cpp
+defined	.bss	32	gAEMSbHandle	data:research/data/bss/sound.cpp
 defined	.bss	32	g_BlurBin	unit:motionblur
 defined	.bss	32	g_CptShadowCleanUpBin	draft:research/drafts/compartment_init.cpp
 defined	.bss	32	g_DbgStatsRenderBin	unit:debug_prof
@@ -165,6 +210,8 @@ defined	.bss	32	g_DrawContext	unit:sprite
 defined	.bss	32	g_FaderBin	unit:fader
 defined	.bss	32	g_ProfHistRenderBin	unit:debug_prof
 defined	.bss	32	g_SpriteNoTexture	unit:sprite
+defined	.bss	32	g_fromARAM_request	data:research/data/bss/animemot.cpp
+defined	.bss	32	g_toARAM_request	data:research/data/bss/animemot.cpp
 defined	.bss	28	_Sys_CritSectSema	unit:gcSystem
 defined	.bss	28	g_AnimObjFactory	unit:mainloop_game
 defined	.bss	28	g_BuddyPlayerCheckSchedule	unit:bsbifunc
@@ -183,6 +230,7 @@ defined	.bss	28	mutex	unit:hlafile
 defined	.bss	24	FileMutex	unit:filesys_ea
 defined	.bss	24	SNDIrandseed	draft:research/drafts/iSNDrandom.8015f934.c unit:srandom
 defined	.bss	24	cpuinfo	unit:cpudetect
+defined	.bss	24	gMusicOpts	data:research/data/bss/sound.cpp
 defined	.bss	24	g_aigAIFilterGlobalObject	unit:AIFilter
 defined	.bss	24	recent_sounds	unit:AIFilter
 defined	.bss	24	signal_funcs	unit:signal
@@ -200,9 +248,15 @@ defined	.bss	16	CAMERA_STAND_OFFSET	unit:player
 defined	.bss	16	CmdProbeDevice	unit:Pad
 defined	.bss	16	InputBufferValid	unit:SIBios
 defined	.bss	16	InputBufferVcount	unit:SIBios
+defined	.bss	16	MPDf_code	data:research/data/bss/unassigned.cpp
 defined	.bss	16	RDSTHandler	unit:SIBios
+defined	.bss	16	TRKvalue128_temp	data:research/data/bss/targimpl.cpp
 defined	.bss	16	Type	unit:Pad unit:SIBios
+defined	.bss	16	_AdditiveColorFactor	data:research/data/bss/UISUtils.cpp
+defined	.bss	16	_MultiplerColorFactor	data:research/data/bss/UISUtils.cpp
 defined	.bss	16	_blendCache	unit:dmmorph
+defined	.bss	16	g_CamPos	data:research/data/bss/compartment.cpp unit:staticmesh
+defined	.bss	16	g_CamPos	data:research/data/bss/compartment.cpp unit:staticmesh
 defined	.bss	16	g_CameraOffset	unit:player
 defined	.bss	16	g_DumpObjectContainer	unit:objcreate
 defined	.bss	16	g_XAxis	draft:research/drafts/Draw.8007eabc.cpp unit:particlesystem unit:projectilebullet
@@ -213,11 +267,17 @@ defined	.bss	16	g_ZAxis	draft:research/drafts/Draw.8007eabc.cpp unit:particlesys
 defined	.bss	16	g_ambientSourcePos	unit:sound
 defined	.bss	16	g_pPlayers	unit:mainloop_game
 defined	.bss	16	g_pPopUpMessageHandler	unit:bsbifunc
+defined	.bss	16	sndaram	data:research/data/bss/unassigned.cpp
 defined	.bss	16	teamColors	unit:UserInterface
 defined	.bss	16	umTable	draft:research/drafts/pumhandler_ctor.cpp
 defined	.bss	16	vCameraForward	unit:particlesystem
 defined	.bss	15	g_takenPlayerStarts	unit:propdat_restart
 defined	.bss	12	Curr	unit:dvdlow
+defined	.bss	12	MPDbackward_reference_frame	data:research/data/bss/rcmp_main.cpp
+defined	.bss	12	MPDcurrent_frame	data:research/data/bss/unassigned.cpp
+defined	.bss	12	MPDforward_reference_frame	data:research/data/bss/rcmp_main.cpp
+defined	.bss	12	MPDframe_center_horizontal_offset	data:research/data/bss/unassigned.cpp
+defined	.bss	12	MPDframe_center_vertical_offset	data:research/data/bss/unassigned.cpp
 defined	.bss	12	Prev	unit:dvdlow
 defined	.bss	12	_Anim_UserCallbackState	unit:anim
 defined	.bss	12	_Anim_pCurrentUserData	unit:anim
@@ -227,6 +287,8 @@ defined	.bss	12	g_Repository	draft:research/drafts/TLT_LoadLevelContentsFile.800
 defined	.bss	12	g_SPRStack	draft:research/drafts/compartment_init.cpp
 defined	.bss	12	g_TextureCache	draft:research/drafts/compartment_init.cpp
 defined	.bss	12	s_pathNodeMap__13CPathNodeList	draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp unit:PathNodeList
+defined	.bss	12	sndfxnummodules	data:research/data/bss/srandom.cpp
+defined	.bss	9	g_cheatSequence	data:research/data/bss/Pause.cpp
 defined	.bss	4	IsTRKConnected	unit:msghndlr
 defined	.bss	4	TRK_mainError	unit:main_TRK
 defined	.bss	4	_MetroTRK_Has_Framing	unit:dolphin_trk_glue
@@ -256,7 +318,7 @@ defined	.data	336	__vt__17CProjectileBullet	unit:projectilebullet
 defined	.data	332	__vt__14CSoldierObject	unit:Soldier_object_attach
 defined	.data	320	__files	unit:ansi_files
 defined	.data	304	timing	unit:vi
-defined	.data	292	__vt__16IMovingSceneNode	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:player_ctor unit:player_dtor unit:static_o
+defined	.data	292	__vt__16IMovingSceneNode	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:player_ctor unit:player_dtor unit:static_obj_dtor
 defined	.data	288	HitSpriteVerts	draft:research/drafts/DrawFragCount.800bd864.cpp
 defined	.data	264	__vt__22CParticleSystemManager	draft:research/drafts/thunks_particle_decal.cpp
 defined	.data	256	__ctype_map	unit:ctype
@@ -265,7 +327,7 @@ defined	.data	256	__upper_map	unit:ctype
 defined	.data	256	coeff_table	unit:sdecmut
 defined	.data	256	exitfunctions	unit:exit
 defined	.data	256	sndpantoazimuthtab	unit:spantoaz
-defined	.data	220	__vt__10ISceneNode	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:collisionvolume_ctor unit:compartment_ctor unit:hearingvolume_ctor unit:light unit:light_animmanager_dtor unit:li
+defined	.data	220	__vt__10ISceneNode	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:collisionvolume_ctor unit:compartment_ctor unit:hearingvolume_ctor unit:light unit:light_animmanager_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:particlesystem unit:particlesystem_manager_dtor unit:player_ctor unit:player_dtor unit:static_obj_dtor unit:world_object_dtor
 defined	.data	220	__vt__7CSkyBox	unit:skybox
 defined	.data	210	configArray	unit:ConfigGC_dualconfig
 defined	.data	208	MBAtab2	unit:getvlc
@@ -284,7 +346,7 @@ defined	.data	96	__vt__16CScreenFieldMode	unit:Screen
 defined	.data	96	__vt__7CScreen	unit:Screen
 defined	.data	96	headshotImageVerts	draft:research/drafts/DrawFragCount.800bd864.cpp
 defined	.data	80	headshotImages__13UserInterface	draft:research/drafts/DrawFragCount.800bd864.cpp
-defined	.data	76	__vt__7IVolume	unit:Soldier_object_ctor unit:animated_volume_ctor unit:box_dtor unit:capsule_dtor unit:cdbobject_ctor unit:cdbobject_dtor unit:compartment_volbox unit:csg_volume_ctor unit:fiber_dtor unit:hearingvolu
+defined	.data	76	__vt__7IVolume	unit:Soldier_object_ctor unit:animated_volume_ctor unit:box_dtor unit:capsule_dtor unit:cdbobject_ctor unit:cdbobject_dtor unit:compartment_volbox unit:csg_volume_ctor unit:fiber_dtor unit:hearingvolume_ctor unit:player_ctor unit:sphere_dtor unit:thrownbullet_ctor unit:volume_query_test unit:world_volume_ctor unit:world_volume_dtor
 defined	.data	72	ErrorTable	unit:dvderror
 defined	.data	64	CBPtab0	unit:getvlc
 defined	.data	64	DCchromtab0	unit:getvlc
@@ -328,7 +390,7 @@ defined	.data	32	spIMBtab	unit:getvlc
 defined	.data	32	spPMBtab0	unit:getvlc
 defined	.data	32	spPMBtab1	unit:getvlc
 defined	.data	28	__vt__10BSGO_Basic	unit:objcreate_volumes
-defined	.data	28	__vt__10CRenderBin	unit:compartment_bindtors unit:compartment_ccptmatbin_dtor unit:compartment_renderbin_dtor unit:debug_prof_cdbgstatsrenderbin_dtor unit:debug_prof_cprofhistrenderbin_dtor unit:dmesh_cdmrenderbin_dtor 
+defined	.data	28	__vt__10CRenderBin	unit:compartment_bindtors unit:compartment_ccptmatbin_dtor unit:compartment_renderbin_dtor unit:debug_prof_cdbgstatsrenderbin_dtor unit:debug_prof_cprofhistrenderbin_dtor unit:dmesh_cdmrenderbin_dtor unit:fader_dtor unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_cparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor unit:projectilebullet_dtor unit:sprite_csprite_dtor unit:sprite_dtor unit:staticmesh_cmshmatbin_dtor unit:staticmesh_cmshsimplebin_dtor
 defined	.data	28	__vt__11BSGO_Player	unit:objcreate_volumes
 defined	.data	28	__vt__11CPTMaterial	unit:compartment_ccptmatbin_dtor unit:compartment_cptmaterial_dtor
 defined	.data	28	__vt__11MSHMaterial	unit:staticmesh_cmshmatbin_dtor unit:staticmesh_mshmaterial_dtor
@@ -366,7 +428,7 @@ defined	.data	16	Type	unit:Pad unit:SIBios
 defined	.data	16	_AnimWgt_pFunctions	unit:animwgt
 defined	.data	16	__vt__10CExplosion	unit:explosion_dtor
 defined	.data	16	__vt__7CImpact	draft:research/drafts/Visit.800cf794.cpp
-defined	.data	16	__vt__Q23dwi22IVisitor<10ISceneNode>	draft:research/drafts/Visit.800cf794.cpp unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:AIFilter_mechchecker_dtor unit:bsbifunc_explosion unit:explosion_dtor unit:impact_dtor unit:volume_qu
+defined	.data	16	__vt__Q23dwi22IVisitor<10ISceneNode>	draft:research/drafts/Visit.800cf794.cpp unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:AIFilter_mechchecker_dtor unit:bsbifunc_explosion unit:explosion_dtor unit:impact_dtor unit:volume_query_test
 defined	.data	16	__vt__Q23std13bad_exception	unit:Gecko_ExceptionPPC_unexpected
 defined	.data	16	__vt__Q23std9exception	unit:Gecko_ExceptionPPC_unexpected unit:NewMore
 defined	.data	16	gTRKExceptionStatus	unit:targimpl
@@ -405,31 +467,31 @@ defined	.rodata	512	ICON_CLUT_DATA	unit:MemoryCardGC
 defined	.rodata	435	g_theCollisionTable	data:research/data/collision_table.cpp
 defined	.rodata	264	two_over_pi	unit:e_rem_pio2
 defined	.rodata	128	npio2_hw	unit:e_rem_pio2
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
-defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.c
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
+defined	.rodata	108	dwi_prime_list__3dwi	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/Init.800839e4.cpp draft:research/drafts/Init.800b254c.cpp draft:research/drafts/PublishEvent.800d7718.cpp draft:research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp draft:research/drafts/Update.80046bc8.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp draft:research/drafts/__ct__6CSceneFv.800dc8c4.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:AIObject_visionseek unit:AISplinePath unit:AnimObjFactory_weapon unit:GameMessage unit:Moh2 unit:Pause unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku unit:Soldier_object_attach unit:bsutil_update unit:location_collision unit:player_draw unit:propdat_bsp unit:propdat_restart unit:publisher_reset unit:sound unit:soundschedule_sound unit:toilet
 defined	.rodata	104	T	unit:k_tan
 defined	.rodata	96	g_skyBoxVertIndices	unit:skybox
 defined	.rodata	88	aT	unit:s_atan
@@ -452,6 +514,8 @@ defined	.sbss	8	HoldUp	unit:OSResetSW
 defined	.sbss	8	LastReadFinished	unit:dvdlow
 defined	.sbss	8	LastReadIssued	unit:dvdlow
 defined	.sbss	8	LastResetEnd	unit:dvdlow
+defined	.sbss	8	MPDbit_rate	data:research/data/bss/unassigned.cpp
+defined	.sbss	8	MPDframe_rate	data:research/data/bss/unassigned.cpp
 defined	.sbss	8	ResetFunctionQueue	unit:OSReset
 defined	.sbss	8	__AXOsTime	unit:AXOut
 defined	.sbss	8	__DVDThreadQueue	unit:dvdfs
@@ -482,6 +546,8 @@ defined	.sbss	4	BootInfo	unit:OS unit:dvdfs
 defined	.sbss	4	BootInfo	unit:OS unit:dvdfs
 defined	.sbss	4	BreakPointCB	unit:GXFifo
 defined	.sbss	4	Breaking	unit:dvdlow
+defined	.sbss	4	CODADelete__3SND	data:research/data/bss/coda.cpp
+defined	.sbss	4	CODANew__3SND	data:research/data/bss/coda.cpp
 defined	.sbss	4	CPUFifo	unit:GXFifo
 defined	.sbss	4	Callback	unit:OSReboot unit:dvdlow
 defined	.sbss	4	CancelCallback	unit:dvd
@@ -490,6 +556,7 @@ defined	.sbss	4	Canceling	unit:dvd
 defined	.sbss	4	Chan	unit:EXIUart
 defined	.sbss	4	CharsInSheet	unit:OSFont
 defined	.sbss	4	CheckingBits	unit:Pad
+defined	.sbss	4	CurentOPPlayer	data:research/data/bss/rcmp_main.cpp
 defined	.sbss	4	CurrCommand	unit:dvd
 defined	.sbss	4	CurrTiming	unit:vi
 defined	.sbss	4	CurrTvMode	unit:vi
@@ -504,9 +571,12 @@ defined	.sbss	4	DrawDoneCB	unit:GXMisc
 defined	.sbss	4	Enabled	unit:EXIUart
 defined	.sbss	4	EnabledBits	unit:Pad
 defined	.sbss	4	FBSet	unit:vi
+defined	.sbss	4	FONTstand	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	FXfilterindex	unit:smixfx
 defined	.sbss	4	FatalErrorFlag	unit:dvd
 defined	.sbss	4	FirstTimeInBootrom	unit:dvd
+defined	.sbss	4	FontData	data:research/data/bss/dvdStatus_base.cpp unit:OSFont
+defined	.sbss	4	FontData	data:research/data/bss/dvdStatus_base.cpp unit:OSFont
 defined	.sbss	4	FontLoaded	unit:Moh2
 defined	.sbss	4	FstStart	unit:dvdfs
 defined	.sbss	4	FstStringStart	unit:dvdfs
@@ -518,15 +588,110 @@ defined	.sbss	4	InterruptHandlerTable	unit:OSInterrupt
 defined	.sbss	4	LastCommandWasRead	unit:dvdlow
 defined	.sbss	4	LastError	unit:dvd
 defined	.sbss	4	LastLength	unit:dvdlow
+defined	.sbss	4	LastSheet	data:research/data/bss/dvdStatus_base.cpp
 defined	.sbss	4	LastState	unit:OSResetSW unit:dvd
 defined	.sbss	4	LastState	unit:OSResetSW unit:dvd
+defined	.sbss	4	LibraryInfo	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	MEM_allocfailcallback	unit:memalloc_tail
+defined	.sbss	4	MIXaudioslicefn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXinitfn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXplayfn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXplayinitfn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXrestorefn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXsetpitchfn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MIXstopfn	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDaspect_ratio_information	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDbackward_f_code	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDbit_rate_value	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDbroken_link	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDburst_amplitude	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDchroma_420_type	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDchroma_format	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDchroma_height	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDchroma_width	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDclip	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDclosed_gop	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcoded_picture_height	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcoded_picture_width	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcolor_description	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcolor_primaries	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcomposite_display_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDconcealment_motion_vectors	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDconstrained_parameters_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcopyright_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcopyright_identifier	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcopyright_number_1	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcopyright_number_2	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDcopyright_number_3	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDdisplay_horizontal_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDdisplay_vertical_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDdrop_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDfault_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDfield_sequence	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDforward_f_code	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDframe	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDframe_pred_frame_dct	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDframe_rate_code	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDframe_rate_extension_d	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDframe_rate_extension_n	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDfull_pel_backward_vector	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDfull_pel_forward_vector	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDhorizontal_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDhorizontal_subsampling_factor_m	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDhorizontal_subsampling_factor_n	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDhour	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDintra_dc_precision	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDintra_vlc_format	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlayer_id	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDld	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlevel	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlow_delay	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_deinterlaced_field_select	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_horizontal_offset	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_prediction_horizontal_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_prediction_vertical_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_progressive_frame	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_temporal_reference	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDlower_layer_vertical_offset	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDmatrix_coefficients	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDmb_height	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDmb_width	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDminute	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDoriginal_or_copy	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDpicture_coding_type	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDpicture_structure	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDprofile	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDprofile_and_level_indication	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDprogressive_frame	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDprogressive_sequence	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDquiet_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDrepeat_first_field	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDsec	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDsecond_field	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDspatial_temporal_weight_code_table_index	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDsub_carrier	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDsub_carrier_phase	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDtemporal_reference	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDtop_field_first	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDtrace_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDtransfer_characteristics	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDtrue_framenum	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDv_axis	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvbv_buffer_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvbv_delay	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDverbose_flag	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvertical_size	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvertical_subsampling_factor_m	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvertical_subsampling_factor_n	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	MPDvideo_format	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	MTRCallback	unit:DebuggerDriver
 defined	.sbss	4	MaxEntryNum	unit:dvdfs
 defined	.sbss	4	NextCommandNumber	unit:dvdlow
 defined	.sbss	4	NumHeaps	unit:OSAlloc
 defined	.sbss	4	NumInternalRetry	unit:dvd
 defined	.sbss	4	OSExceptionTable	unit:OS
+defined	.sbss	4	OldCallBack	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	PRINTinitialized	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	PauseFlag	unit:dvd
 defined	.sbss	4	PausingFlag	unit:dvd
 defined	.sbss	4	PendingBits	unit:Pad
@@ -547,6 +712,7 @@ defined	.sbss	4	ResettingBits	unit:Pad
 defined	.sbss	4	ResumeFromHere	unit:dvd
 defined	.sbss	4	RunQueueBits	unit:OSThread
 defined	.sbss	4	RunQueueHint	unit:OSThread
+defined	.sbss	4	RuntimeErrorFnc	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	SNDAEMSalmbcloseop	unit:saemsmbf
 defined	.sbss	4	SNDAEMSalmbfhandle	unit:saemsmbf
 defined	.sbss	4	SNDAEMSalmbfilename	unit:saemsmbf
@@ -565,13 +731,16 @@ defined	.sbss	4	SNDAEMSalmbpriority	unit:saemsmbf
 defined	.sbss	4	SNDAEMSalmbsecondreadop	unit:saemsmbf
 defined	.sbss	4	SNDAEMSalmbstreamfilename	unit:saemsmbf
 defined	.sbss	4	SNDAEMSalmbstreamfileoffset	unit:saemsmbf
+defined	.sbss	4	SNDMIXfxv2inited	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	SamplingCallback	unit:Pad
 defined	.sbss	4	SamplingRate	unit:SISamplingRate
 defined	.sbss	4	SaveEnd	unit:OSReboot
 defined	.sbss	4	SaveStart	unit:OSReboot
+defined	.sbss	4	ScreenInfo	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	SendMailData	unit:DebuggerDriver
 defined	.sbss	4	SheetImage	unit:OSFont
 defined	.sbss	4	StopAtNextInt	unit:dvdlow
+defined	.sbss	4	TIMERhz	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	Temporal_Reference_Base	unit:gethdr
 defined	.sbss	4	Temporal_Reference_GOP_Reset	unit:gethdr
 defined	.sbss	4	TimesInited	unit:timerthread
@@ -581,6 +750,9 @@ defined	.sbss	4	WaitingCoverClose	unit:dvdlow
 defined	.sbss	4	WidthTable	unit:OSFont
 defined	.sbss	4	WorkAroundSeekLocation	unit:dvdlow
 defined	.sbss	4	WorkAroundType	unit:dvdlow
+defined	.sbss	4	_AnimSeq_CurrentInfo	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	_AnimSt_CallbackTable	data:research/data/bss/animst.cpp
+defined	.sbss	4	_AnimSt_FinishCb	data:research/data/bss/animst.cpp
 defined	.sbss	4	_Anim_pUserOpcodeCallback	unit:anim
 defined	.sbss	4	_Anim_pUserOpcodeSkipCallback	unit:anim
 defined	.sbss	4	_Sys_CritSectCtr	unit:gcSystem
@@ -674,70 +846,237 @@ defined	.sbss	4	__peReg	unit:GXInit
 defined	.sbss	4	__piReg	unit:GXInit
 defined	.sbss	4	__stdio_exit	unit:abort_exit
 defined	.sbss	4	_dmeshStack	unit:dmcluster
+defined	.sbss	4	_remap_next	data:research/data/bss/dmesh.cpp
+defined	.sbss	4	_renderList	data:research/data/bss/dmesh.cpp
+defined	.sbss	4	ammoSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	bb2	unit:fstload
+defined	.sbss	4	blackSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	bootInfo	unit:dvd
+defined	.sbss	4	bulletText__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	changeMode	unit:vi
+defined	.sbss	4	charMarkerForLandmarkString	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	charMarkerForTimeStampString	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	circleSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	compassEdgeSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	compassSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	conlist	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	cosCoverPointEffectiveAngle	unit:CoverPoint
 defined	.sbss	4	currID	unit:dvd
 defined	.sbss	4	currentDirectory	unit:dvdfs
 defined	.sbss	4	currentIndex	unit:debug_prof
+defined	.sbss	4	dotSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	encoderType	unit:vi
+defined	.sbss	4	end	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	errno	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	errorFont	unit:Moh2
 defined	.sbss	4	everyother	unit:snddrv_voice
 defined	.sbss	4	executing	unit:dvd
 defined	.sbss	4	flushFlag	unit:vi
+defined	.sbss	4	gAEMSBankCount	data:research/data/bss/sound.cpp
+defined	.sbss	4	gAEMSsystem	data:research/data/bss/sound.cpp
+defined	.sbss	4	gDefaultFifoObj	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	4	gFifoBuf	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	4	gFrameBuffer	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	4	gGxIsInit	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	4	gHeapPtr	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	4	gMusicBuf	data:research/data/bss/sound.cpp
+defined	.sbss	4	gMusicBufSize	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	gMusicMap	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_AEMSOneShotLoadState	data:research/data/bss/sound.cpp
+defined	.sbss	4	g_AEMSOneShotMemOffset	data:research/data/bss/sound.cpp
 defined	.sbss	4	g_ARAM_pool	unit:animdb
 defined	.sbss	4	g_ARAM_poolman	unit:animdb
 defined	.sbss	4	g_AllRecords	unit:bsschedule unit:soundschedule
 defined	.sbss	4	g_BlurAmount	unit:motionblur
+defined	.sbss	4	g_CompartmentBigFile	data:research/data/bss/toilet.cpp
+defined	.sbss	4	g_CurrMaterial	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_CurrMaterial	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_CurrState	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_CurrState	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_CurrentSeed	data:research/data/bss/particlesystem.cpp
 defined	.sbss	4	g_CurrentTime	unit:bstimer
+defined	.sbss	4	g_FarPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_FarPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_FarPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
 defined	.sbss	4	g_FrameNum	unit:Screen
+defined	.sbss	4	g_FreeRecordList	data:research/data/bss/soundschedule.cpp unit:bsschedule
+defined	.sbss	4	g_FreeRecordList	data:research/data/bss/soundschedule.cpp unit:bsschedule
 defined	.sbss	4	g_GraphCursor	unit:debug_prof
 defined	.sbss	4	g_HistoryCursor	unit:debug_prof
 defined	.sbss	4	g_LastHashIndex	unit:bstimer
+defined	.sbss	4	g_LevelBigFileSize	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_MessageList	unit:bsmachin
 defined	.sbss	4	g_MessageListHead	unit:bsmachin
+defined	.sbss	4	g_MessageQueueHead	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_MessageQueueTail	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_MessageRegistrationArray	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_MessageRegistrationFreeList	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_MessageRegistrationFreeListHead	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_MipMapBias	data:research/data/bss/compartment.cpp
+defined	.sbss	4	g_NearClip	data:research/data/bss/compartment.cpp
+defined	.sbss	4	g_NearPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_NearPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_NearPlane	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_ParticleCounter	data:research/data/bss/particlesystem.cpp
+defined	.sbss	4	g_ParticleCounterMax	data:research/data/bss/particlesystem.cpp
+defined	.sbss	4	g_PopUpMsgTimer	data:research/data/bss/proxtrig.cpp
 defined	.sbss	4	g_ProfileBinGraph	unit:debug_prof
 defined	.sbss	4	g_ProfileBinSelect	unit:debug_prof
 defined	.sbss	4	g_ProfileBinTOP	unit:debug_prof
+defined	.sbss	4	g_RenderTypeCache	data:research/data/bss/particlesystem.cpp
+defined	.sbss	4	g_ScreenXOffset	data:research/data/bss/font.cpp data:research/data/bss/sprite.cpp
+defined	.sbss	4	g_ScreenXOffset	data:research/data/bss/font.cpp data:research/data/bss/sprite.cpp
+defined	.sbss	4	g_ScreenYOffset	data:research/data/bss/font.cpp data:research/data/bss/sprite.cpp
+defined	.sbss	4	g_ScreenYOffset	data:research/data/bss/font.cpp data:research/data/bss/sprite.cpp
+defined	.sbss	4	g_SharedCompartmentSize	data:research/data/bss/compartment.cpp
+defined	.sbss	4	g_ShellBriefingLogBigFileSize	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_TexturesCached	data:research/data/bss/compartment.cpp
 defined	.sbss	4	g_WaitFrameNum	unit:Screen
+defined	.sbss	4	g_WidthScale	data:research/data/bss/particlesystem.cpp
+defined	.sbss	4	g_amount_allocated	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_anim_copy_memory	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_anim_copy_memory_cur	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_anim_copy_memory_sz	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_bMPEndLevel	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_cScreenHeight	data:research/data/bss/player.cpp
+defined	.sbss	4	g_cScreenWidth	data:research/data/bss/player.cpp
+defined	.sbss	4	g_cheatSequenceIndex	data:research/data/bss/Pause.cpp
 defined	.sbss	4	g_color	unit:fader
+defined	.sbss	4	g_connectedBits	data:research/data/bss/devicemgr.cpp
+defined	.sbss	4	g_delayDestroyHead	data:research/data/bss/objcreate.cpp
+defined	.sbss	4	g_delayDestroyTail	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_drawTime	unit:Moh2
+defined	.sbss	4	g_eProcessState	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_fDumpObjectCollisionRadius	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_fGraphCursor	unit:debug_prof
+defined	.sbss	4	g_fScaleValueX	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_fScaleValueY	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_fScaleValueZ	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_fScriptExplosionHeightScaleOnPlayer	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_fScriptExplosionVelocityScaleOnPlayer	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_flipWait	unit:Moh2
+defined	.sbss	4	g_frameCounter	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_frameNum	unit:Moh2
+defined	.sbss	4	g_frame_cache_used	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_fw	unit:rcmp_main
+defined	.sbss	4	g_iAIObjectCount	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_iBSMessageRegistrationListSize	data:research/data/bss/bsmessage.cpp
 defined	.sbss	4	g_iCurrentBIFIndex	unit:bsbifunc
+defined	.sbss	4	g_iGermanCreationQueueHeadIndex	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_iGermanCreationQueueTailIndex	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_iHighestObjectiveNumber	unit:bsbifunc
 defined	.sbss	4	g_iHintBufferIndex	unit:bsbifunc
+defined	.sbss	4	g_iNumGermansQueuedThisFrame	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_iNumOpenFiles	unit:filesys
+defined	.sbss	4	g_iNumberOfEnemiesSpawned	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_iStopThread	unit:bsmachin
 defined	.sbss	4	g_listDraw	unit:Moh2
 defined	.sbss	4	g_listWait	unit:Moh2
 defined	.sbss	4	g_mainTime	unit:Moh2
 defined	.sbss	4	g_matStack	unit:matstack
+defined	.sbss	4	g_maxActiveSoldiers	data:research/data/bss/objcreate.cpp
+defined	.sbss	4	g_memOffset	data:research/data/bss/bsutil.cpp
+defined	.sbss	4	g_memSize	data:research/data/bss/bsutil.cpp
+defined	.sbss	4	g_mpTimeLimit	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_numActiveSoldiers	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_numPlayerStarts	unit:propdat_restart
+defined	.sbss	4	g_num_allocations	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_objSound	data:research/data/bss/sound.cpp
 defined	.sbss	4	g_pBPDHeader	unit:propdat_restart
+defined	.sbss	4	g_pBSEventMemory	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pBSEventMemoryOffset	data:research/data/bss/bsevents.cpp
 defined	.sbss	4	g_pBSMachineMemory	unit:bsmachin
 defined	.sbss	4	g_pBSMachineMemoryOffset	unit:bsmachin
+defined	.sbss	4	g_pBSMessageMemory	data:research/data/bss/bsmessage.cpp
+defined	.sbss	4	g_pBSMessageMemoryOffset	data:research/data/bss/bsmessage.cpp
 defined	.sbss	4	g_pBSObject	unit:bsmachin
 defined	.sbss	4	g_pBSTimerMemory	unit:bstimer
 defined	.sbss	4	g_pBSTimerMemoryOffset	unit:bstimer
+defined	.sbss	4	g_pBazookaOverlay	data:research/data/bss/player.cpp
+defined	.sbss	4	g_pBoxList	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_pBuiltInFunctions	unit:bsbifunc
+defined	.sbss	4	g_pBulletFactory	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_pCDB	unit:surfacetype
+defined	.sbss	4	g_pCamera	data:research/data/bss/player.cpp
+defined	.sbss	4	g_pCompartmentBigFileHeader	data:research/data/bss/toilet.cpp
+defined	.sbss	4	g_pContext	data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
+defined	.sbss	4	g_pContext	data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
+defined	.sbss	4	g_pContext	data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
+defined	.sbss	4	g_pContext	data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
+defined	.sbss	4	g_pCurrentFont	data:research/data/bss/font.cpp
+defined	.sbss	4	g_pCurrentProcessingEvent	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pCurrentShadow	data:research/data/bss/compartment.cpp
+defined	.sbss	4	g_pEventHashTable	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pEventRecordArray	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pEventRecordExecutionListHead	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pEventRecordExecutionListTail	data:research/data/bss/bsevents.cpp
 defined	.sbss	4	g_pFaderControl	unit:fader
+defined	.sbss	4	g_pFog	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pFog	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pFog	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pFog	data:research/data/bss/compartment.cpp data:research/data/bss/dmesh.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pFreeEventRecordHead	data:research/data/bss/bsevents.cpp
 defined	.sbss	4	g_pFreeTimerEventHead	unit:bstimer
+defined	.sbss	4	g_pFrustum	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pFrustum	data:research/data/bss/compartment.cpp data:research/data/bss/staticmesh.cpp
+defined	.sbss	4	g_pGermanList	data:research/data/bss/objcreate.cpp
+defined	.sbss	4	g_pImageData	data:research/data/bss/shadow.cpp
+defined	.sbss	4	g_pImmediateEventQueue	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pImmediateEventQueueTail	data:research/data/bss/bsevents.cpp
+defined	.sbss	4	g_pLevelBigFile	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pLevelEMT	data:research/data/bss/mainloop.cpp
+defined	.sbss	4	g_pLevelFileContentsArray	data:research/data/bss/toilet.cpp
+defined	.sbss	4	g_pLevelFileContentsEndMarker	data:research/data/bss/toilet.cpp
+defined	.sbss	4	g_pLightVolume	data:research/data/bss/staticmesh.cpp
 defined	.sbss	4	g_pLightVolumes	unit:propdat_restart
+defined	.sbss	4	g_pMGCrossHair	data:research/data/bss/player.cpp
 defined	.sbss	4	g_pMPWeaponSet	unit:bsbifunc
+defined	.sbss	4	g_pModelToWorld	data:research/data/bss/staticmesh.cpp
 defined	.sbss	4	g_pNumBuiltInFunctions	unit:bsbifunc
+defined	.sbss	4	g_pNumLevelFileContents	data:research/data/bss/toilet.cpp
 defined	.sbss	4	g_pNumTriggers	unit:propdat_restart
 defined	.sbss	4	g_pObj	unit:bsmachin
 defined	.sbss	4	g_pPBSPHead	unit:propdat_restart
 defined	.sbss	4	g_pPBSPHeader	unit:propdat_restart
 defined	.sbss	4	g_pRawPropertyData	unit:propdat_restart
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pRenderList	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
+defined	.sbss	4	g_pScene	data:research/data/bss/particlesystem.cpp
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScreen	data:research/data/bss/compartment.cpp data:research/data/bss/debug_prof.cpp data:research/data/bss/font.cpp data:research/data/bss/particlesystem.cpp data:research/data/bss/player.cpp data:research/data/bss/sprite.cpp data:research/data/bss/staticmesh.cpp draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
+defined	.sbss	4	g_pScriptMemory	data:research/data/bss/bsutil.cpp
+defined	.sbss	4	g_pShellBriefingLogBigFile	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectBazooka	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectGrenade	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectKnife	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectMuzzleFlashNPC	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectMuzzleFlashPlayer	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectStickGrenade	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pStaticObjectWrench	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pTankList	data:research/data/bss/objcreate.cpp
 defined	.sbss	4	g_pTimerEventArray	unit:bstimer
 defined	.sbss	4	g_pTimerHashTable	unit:bstimer
+defined	.sbss	4	g_pWeaponFactory	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	g_pWorld	data:research/data/bss/mainloop.cpp
+defined	.sbss	4	g_paioAIObjectListStart	data:research/data/bss/AIObject.cpp
 defined	.sbss	4	g_pbmtThread	unit:bsmachin
+defined	.sbss	4	g_pcClassList	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	g_piCodeBase	unit:bsmachin
 defined	.sbss	4	g_piFrame	unit:bsmachin
 defined	.sbss	4	g_piGlobals	unit:bsmachin
@@ -754,27 +1093,72 @@ defined	.sbss	4	g_prompt	unit:bsbifunc
 defined	.sbss	4	g_promptColumn	unit:bsbifunc
 defined	.sbss	4	g_screenHeight	unit:debug_prof
 defined	.sbss	4	g_screenWidth	unit:debug_prof
+defined	.sbss	4	g_staticObjCount	data:research/data/bss/AnimObjFactory.cpp
 defined	.sbss	4	g_thMain	unit:threads
 defined	.sbss	4	g_uiGameState	unit:Moh2
 defined	.sbss	4	g_uniqueIDCount	unit:bsobject
 defined	.sbss	4	g_updateTime	unit:Moh2
+defined	.sbss	4	g_zDeltaMin	data:research/data/bss/shadow.cpp
+defined	.sbss	4	giPADStarted	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	got_reset	unit:dvdStatus_check
+defined	.sbss	4	greySprite__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	healthSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	hitMeterSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	iGC_OsMemoryInitized	unit:initosalloc
 defined	.sbss	4	iclp	unit:idct
 defined	.sbss	4	idTmp	unit:fstload
+defined	.sbss	4	lastoutputchannels	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	libticks	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	m_ModeCounter0__17CPerformanceCount	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	m_ModeCounter1__17CPerformanceCount	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	m_sCompartmentSize__12CWorldObject	data:research/data/bss/world_object.cpp
+defined	.sbss	4	mb_default	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	milliseconds	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	modlist	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	numoutputchannels	unit:sdspmix
 defined	.sbss	4	numrequests	unit:hlafile
+defined	.sbss	4	onscreenTime	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	pEXIInputFlag	unit:DebuggerDriver
+defined	.sbss	4	pSoundStream	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pathService	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pathTimer	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pathabortmsg	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pathprintf	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pconhead	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pfactive	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pfilterlist	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pfstate	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	phead	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	pheaderinfo	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	plisthead	data:research/data/bss/unassigned.cpp
 defined	.sbss	4	request	unit:hlafile
+defined	.sbss	4	requestidcounter	data:research/data/bss/stream.cpp unit:hlafile
+defined	.sbss	4	requestidcounter	data:research/data/bss/stream.cpp unit:hlafile
 defined	.sbss	4	resethappend	unit:Moh2
 defined	.sbss	4	retraceCount	unit:vi
 defined	.sbss	4	s_currentStack__12CMatrixStack	unit:matstack
+defined	.sbss	4	s_pPathNodeMapEntries__13CPathNodeList	data:research/data/bss/PathNodeList.cpp
+defined	.sbss	4	s_paioAttacker__9CAIStatus	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	s_paioTarget__9CAIStatus	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	s_pnlCurrent__13CPathNodeList	data:research/data/bss/PathNodeList.cpp
+defined	.sbss	4	s_rNextSoundPropagateTime__15CAIFilterGlobal	data:research/data/bss/AIFilter.cpp
 defined	.sbss	4	s_rsnAStarSearchNodeFreeList	unit:SearchNode_tail
 defined	.sbss	4	shdwChangeMode	unit:vi
 defined	.sbss	4	sm_pRenderList__7CSkyBox	unit:skybox
 defined	.sbss	4	sm_pScreen__7CSkyBox	unit:skybox
+defined	.sbss	4	sm_pSingleton__16CDestructorQueue	data:research/data/bss/destructor_queue.cpp
 defined	.sbss	4	sm_pSingleton__7CSkyBox	unit:skybox
+defined	.sbss	4	sm_pThePublisher__10CPublisher	data:research/data/bss/publisher.cpp
+defined	.sbss	4	smallMPFont__13UserInterface	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	songprogress	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	starSprite__13UserInterface	data:research/data/bss/UserInterface.cpp
 defined	.sbss	4	status	unit:fstload
+defined	.sbss	4	ticks	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	timestampFont	data:research/data/bss/UserInterface.cpp
+defined	.sbss	4	validstructoutputs	data:research/data/bss/unassigned.cpp
+defined	.sbss	4	vblticks	data:research/data/bss/unassigned.cpp
+defined	.sbss	2	FontSize	data:research/data/bss/dvdStatus_base.cpp
+defined	.sbss	2	FontSpace	data:research/data/bss/dvdStatus_base.cpp
 defined	.sbss	2	__OSLastInterrupt	unit:OSInterrupt
 defined	.sbss	2	displayOffsetH	unit:vi
 defined	.sbss	2	displayOffsetV	unit:vi
@@ -783,23 +1167,56 @@ defined	.sbss	1	DrawDone	unit:GXMisc
 defined	.sbss	1	EXIInputFlag	unit:DebuggerDriver
 defined	.sbss	1	SNDAEMSalmbmidiloaded	unit:saemsmbf
 defined	.sbss	1	SNDAEMSalmbsfxloaded	unit:saemsmbf
+defined	.sbss	1	SoundHasBeenInitialized	data:research/data/bss/unassigned.cpp
 defined	.sbss	1	SysCardInit	unit:MemoryCardGC
 defined	.sbss	1	_Anim_ModuleActive	unit:anim
 defined	.sbss	1	_Anim_UserDataStackPosition	unit:anim
 defined	.sbss	1	_Anim_UserStateStackPosition	unit:anim
 defined	.sbss	1	_Sys_ModuleActive	unit:system
+defined	.sbss	1	bDisplayLandmarkStamp	data:research/data/bss/UserInterface.cpp
+defined	.sbss	1	bDisplayTimeStamp	data:research/data/bss/UserInterface.cpp
+defined	.sbss	1	bDoneFading	data:research/data/bss/UserInterface.cpp
+defined	.sbss	1	bDoneParsingLandmark	data:research/data/bss/UserInterface.cpp
+defined	.sbss	1	bDoneParsingTimeStamp	data:research/data/bss/UserInterface.cpp
+defined	.sbss	1	bDoneShowingXFilesText	data:research/data/bss/UserInterface.cpp
 defined	.sbss	1	bIsAlarmInited	unit:inittmr
 defined	.sbss	1	bIsTimerInited	unit:inittmr
+defined	.sbss	1	f_bObstacleAvoidanceLinesInitialized	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	gAEMSStreamUsed	data:research/data/bss/sound.cpp
 defined	.sbss	1	g_ProfileDataInit	unit:debug_prof
+defined	.sbss	1	g_alarm_activated	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	g_bAllowLighting	data:research/data/bss/staticmesh.cpp
+defined	.sbss	1	g_bCPTDisableLighting	data:research/data/bss/compartment.cpp
+defined	.sbss	1	g_bCPTFogDisabled	data:research/data/bss/compartment.cpp
+defined	.sbss	1	g_bCPTForceClipped	data:research/data/bss/compartment.cpp
+defined	.sbss	1	g_bCacheLightParam	data:research/data/bss/staticmesh.cpp
 defined	.sbss	1	g_bCached	unit:projectilebullet
 defined	.sbss	1	g_bCapture	unit:Screen
+defined	.sbss	1	g_bDMAToARAM	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	g_bDMAToMRAM	data:research/data/bss/unassigned.cpp
 defined	.sbss	1	g_bDebugStatsDrawProfData	unit:debug_prof
+defined	.sbss	1	g_bDisableMipMapBias	data:research/data/bss/compartment.cpp
+defined	.sbss	1	g_bInMultiplayerMode	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	g_bIsRubberGrenadeCheatEnabled	data:research/data/bss/unassigned.cpp
 defined	.sbss	1	g_bMallocInitialized	unit:MallocInit
 defined	.sbss	1	g_bMathFunRandomSeeded	unit:MathFun
+defined	.sbss	1	g_bMipMapScale	data:research/data/bss/compartment.cpp
+defined	.sbss	1	g_bPaused	data:research/data/bss/particlesystem.cpp
+defined	.sbss	1	g_bReady	data:research/data/bss/font.cpp data:research/data/bss/light.cpp data:research/data/bss/particlesystem.cpp unit:Screen
+defined	.sbss	1	g_bReady	data:research/data/bss/font.cpp data:research/data/bss/light.cpp data:research/data/bss/particlesystem.cpp unit:Screen
+defined	.sbss	1	g_bReady	data:research/data/bss/font.cpp data:research/data/bss/light.cpp data:research/data/bss/particlesystem.cpp unit:Screen
+defined	.sbss	1	g_bReady	data:research/data/bss/font.cpp data:research/data/bss/light.cpp data:research/data/bss/particlesystem.cpp unit:Screen
+defined	.sbss	1	g_bShadowSet	data:research/data/bss/compartment.cpp
 defined	.sbss	1	g_bSwap	unit:Screen
+defined	.sbss	1	g_subtitle_queue_initialized	data:research/data/bss/pumhandler.cpp
+defined	.sbss	1	g_unplugged	data:research/data/bss/Pause.cpp
 defined	.sbss	1	init$40	unit:UserInterface_xfilestime
 defined	.sbss	1	init$43	unit:UserInterface_xfilestime
+defined	.sbss	1	inited	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	paused	data:research/data/bss/unassigned.cpp
+defined	.sbss	1	s_ClassInit__7CMatrix	data:research/data/bss/matrix.cpp
 defined	.sbss	1	s_bInitialized	unit:filesys
+defined	.sbss	1	uisEventNotProcess	data:research/data/bss/unassigned.cpp
 defined	.sdata	8	ClampRegion	unit:Padclamp
 defined	.sdata	8	GXTexImage0Ids	unit:GXTexture
 defined	.sdata	8	GXTexImage1Ids	unit:GXTexture
@@ -1743,7 +2160,7 @@ defined	.text	436	PauseDraw__5PauseFUl	unit:Pause
 defined	.text	436	__CARDStart	unit:CARDBios
 defined	.text	436	__unexpected	unit:Gecko_ExceptionPPC_unexpected
 defined	.text	436	reserve__Q23dwi16list<9AlarmInfo>FiPc	unit:alarm_list_ctor unit:alarm_list_reserve
-defined	.text	436	reserve__Q23dwi16list<9BuddyInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	436	reserve__Q23dwi16list<9BuddyInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_list_reserve
 defined	.text	436	reserve__Q23dwi22list<14QueuedSubtitle>FiPc	unit:pumhandler_list_ctor unit:pumhandler_list_reserve
 defined	.text	432	AttachObject__14CSoldierObjectFP13CStaticObjectPci	unit:Soldier_object_attach
 defined	.text	432	BIFunc_DetachFromSoldier__FPPiPv	unit:bsbifunc_asweapon
@@ -1878,8 +2295,8 @@ defined	.text	376	PATH_pause	draft:research/drafts/PATH_event.8010b93c.cpp unit:
 defined	.text	376	PassMP_StatsToIStudio__10CShellMenuFiPi	unit:ShellMenu_mp
 defined	.text	376	Rotate__7CMatrixF8CVector3f	draft:research/drafts/Rotate.800904e8.cpp
 defined	.text	376	__get_file_modes	unit:file_io
-defined	.text	376	reserve__Q23dwi18vector<9BuddyInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-defined	.text	376	reserve__Q23dwi23vector<13BuddyPathInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	376	reserve__Q23dwi18vector<9BuddyInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_info_reserve
+defined	.text	376	reserve__Q23dwi23vector<13BuddyPathInfo>FiPc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_path_reserve
 defined	.text	372	AXAcquireVoice	unit:AXAlloc
 defined	.text	372	BIFunc_SetAIObjectSharedDataPropVars__FPPiPv	unit:bsbifunc_hiermap
 defined	.text	372	CARDSetStatusAsync	unit:CARDStat
@@ -2441,8 +2858,8 @@ defined	.text	228	SYNCTASK_run	unit:systask
 defined	.text	228	TRKDoDisconnect	unit:msghndlr
 defined	.text	228	UpdateManualUpdateVars__22CAIFilterSoldierObjectFv	unit:AIFilter_soldier_dtor
 defined	.text	228	UpdateXFilesText__Ff	unit:UserInterface_xfilestime
-defined	.text	228	__dt__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-defined	.text	228	__dt__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	228	__dt__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_info_dtor
+defined	.text	228	__dt__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_path_dtor
 defined	.text	228	__mod2u	unit:runtime
 defined	.text	228	cbForStateMotorStopped	unit:dvd
 defined	.text	228	loadfilesizeatom__FiPv	unit:hlsfile
@@ -2874,7 +3291,7 @@ defined	.text	168	__ct__16CCollisionVolumeFv	unit:collisionvolume_ctor
 defined	.text	168	__dt__11CHierObjectFv	unit:hierobject_tree
 defined	.text	168	__dt__7CSkyBoxFv	unit:skybox
 defined	.text	168	__dt__Q23dwi16list<9AlarmInfo>Fv	unit:alarm_list unit:alarm_list_ctor unit:alarm_list_reserve
-defined	.text	168	__dt__Q23dwi16list<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	168	__dt__Q23dwi16list<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_list unit:buddy_list_reserve
 defined	.text	168	__dt__Q23dwi20list<PC10CCDBObject>Fv	unit:world_volume_list unit:world_volume_list_reserve
 defined	.text	168	__dt__Q23dwi22list<14QueuedSubtitle>Fv	unit:pumhandler_list unit:pumhandler_list_ctor unit:pumhandler_list_reserve
 defined	.text	168	__dt__Q23dwi28list<Q210ISceneNode7SExtent>Fv	unit:scene_list_extent unit:scene_list_reserve
@@ -3497,7 +3914,7 @@ defined	.text	112	__count_trailing_zerol	unit:ansi_fp
 defined	.text	112	__ct__13CAITankObjectFPv	unit:AITankObject_ctor
 defined	.text	112	__ct__16CAISoldierObjectFPv	unit:AISoldierObject_ctor
 defined	.text	112	__dt__16CCollisionVolumeFv	unit:collisionvolume_ctor
-defined	.text	112	__dt__16IMovingSceneNodeFv	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:player_ctor unit:player_dtor unit:static_o
+defined	.text	112	__dt__16IMovingSceneNodeFv	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:player_ctor unit:player_dtor unit:static_obj_dtor
 defined	.text	112	__dt__17CAnimLightManagerFv	unit:light_animmanager_dtor
 defined	.text	112	__dt__19CAIFilterTankObjectFv	unit:AIFilter_tank_dtor
 defined	.text	112	__dt__22CAIFilterSoldierObjectFv	unit:AIFilter_soldier_dtor
@@ -3710,7 +4127,7 @@ defined	.text	96	WriteSramCallback	unit:OSRtc
 defined	.text	96	__DVDDequeueWaitingQueue	unit:dvdqueue
 defined	.text	96	__dt__10CCDBVolBoxFv	draft:research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp draft:research/drafts/TestCollision.8006a71c.cpp unit:cdbgeom unit:cdbobject_intersect unit:cdbobject_leaf
 defined	.text	96	__dt__10CMemBufferFv	draft:research/drafts/DMMorphBlendDisplayLists.800f712c.cpp unit:dmmorph_buffers
-defined	.text	96	__dt__10ISceneNodeFv	draft:research/drafts/Init.800839e4.cpp unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:collisionvolume_ctor unit:compartment_ctor unit:decal_dtor unit:hearingvo
+defined	.text	96	__dt__10ISceneNodeFv	draft:research/drafts/Init.800839e4.cpp unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:collisionvolume_ctor unit:compartment_ctor unit:decal_dtor unit:hearingvolume_ctor unit:light unit:light_animmanager_dtor unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor unit:particlesystem unit:particlesystem_manager_dtor unit:player_ctor unit:player_dtor unit:skybox unit:static_obj_dtor unit:world_object_dtor
 defined	.text	96	__dt__13CThrownObjectFv	unit:thrown_obj_dtor
 defined	.text	96	__dt__15CAIPlayerDoodadFv	unit:AIPlayerDoodad_ctor
 defined	.text	96	__dt__15CAIPlayerObjectFv	unit:AIPlayerObject_ctor
@@ -3779,7 +4196,7 @@ defined	.text	92	__dt__12CAnimSkinnedFv	unit:animskinned_dtor
 defined	.text	92	__dt__14CFinishPartBinFv	unit:dmesh_cremapbin_ctor
 defined	.text	92	__dt__15CParticleSystemFv	unit:particlesystem_cparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor
 defined	.text	92	__dt__15CStaticAnimMeshFv	unit:staticmesh_cstaticanimmesh_dtor
-defined	.text	92	__dt__15CUcodeRenderBinFv	draft:research/drafts/Init.800839e4.cpp unit:compartment_bindtors unit:compartment_shadowbins unit:decal_dtor unit:dmesh unit:dmesh_cdmrenderbin_dtor unit:particlesystem unit:particlesystem_manager_dt
+defined	.text	92	__dt__15CUcodeRenderBinFv	draft:research/drafts/Init.800839e4.cpp unit:compartment_bindtors unit:compartment_shadowbins unit:decal_dtor unit:dmesh unit:dmesh_cdmrenderbin_dtor unit:particlesystem unit:particlesystem_manager_dtor unit:staticmesh unit:staticmesh_cmshsimplebin_dtor
 defined	.text	92	__dt__16CSkyBoxRenderBinFv	unit:skybox
 defined	.text	92	__dt__17CBlendBufferCacheFv	draft:research/drafts/DMMorphBlendDisplayLists.800f712c.cpp unit:dmmorph_buffers
 defined	.text	92	__dt__18CDbgStatsRenderBinFv	unit:debug_prof_cdbgstatsrenderbin_dtor
@@ -4077,11 +4494,11 @@ defined	.text	72	__DBExceptionDestinationAux	unit:db
 defined	.text	72	__OSContextInit	unit:OSContext
 defined	.text	72	__OSDoHotReset	unit:OSReset
 defined	.text	72	__destroy_global_chain	unit:global_destructor_chain
-defined	.text	72	__dt__10CRenderBinFv	draft:research/drafts/CPartBin_Link.800f5930.cpp draft:research/drafts/Init.800839e4.cpp unit:compartment_bindtors unit:compartment_ccptmatbin_dtor unit:compartment_renderbin_dtor unit:debug_prof unit
+defined	.text	72	__dt__10CRenderBinFv	draft:research/drafts/CPartBin_Link.800f5930.cpp draft:research/drafts/Init.800839e4.cpp unit:compartment_bindtors unit:compartment_ccptmatbin_dtor unit:compartment_renderbin_dtor unit:debug_prof unit:debug_prof_cdbgstatsrenderbin_dtor unit:debug_prof_cprofhistrenderbin_dtor unit:decal_dtor unit:dmesh unit:dmesh_bins unit:dmesh_cdmrenderbin_dtor unit:dmesh_cremapbin_ctor unit:fader unit:fader_dtor unit:font_dtor unit:motionblur unit:particlesystem unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_cparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor unit:particlesystem_register unit:projectilebullet unit:projectilebullet_dtor unit:skybox unit:sprite unit:sprite_csprite_dtor unit:sprite_ctor unit:sprite_dtor unit:staticmesh unit:staticmesh_cmshmatbin_dtor unit:staticmesh_cmshsimplebin_dtor
 defined	.text	72	__dt__11CStaticMeshFv	unit:staticmesh_ctor
 defined	.text	72	__dt__13IDestructibleFv	unit:Moh2 unit:destructor_queue
 defined	.text	72	__dt__15CAIFilterObjectFv	unit:AIFilter_caifilterobject_dtor
-defined	.text	72	__dt__7IVolumeFv	unit:PathNodeList_disable unit:Soldier_object_ctor unit:animated_volume_ctor unit:box_dtor unit:capsule_dtor unit:cdbobject_ctor unit:cdbobject_dtor unit:cdbobject_leaf unit:compartment_volbox unit:cs
+defined	.text	72	__dt__7IVolumeFv	unit:PathNodeList_disable unit:Soldier_object_ctor unit:animated_volume_ctor unit:box_dtor unit:capsule_dtor unit:cdbobject_ctor unit:cdbobject_dtor unit:cdbobject_leaf unit:compartment_volbox unit:csg_volume_ctor unit:fiber_dtor unit:hearingvolume_ctor unit:player_ctor unit:projectilebullet unit:sphere_dtor unit:thrownbullet_ctor unit:volume_query_test unit:world_volume_ctor unit:world_volume_dtor
 defined	.text	72	__dt__9CAIDoodadFv	unit:AIDoodad
 defined	.text	72	__dt__9CAnimatedFv	unit:animated_dtor unit:animmorph unit:animskinned
 defined	.text	72	__dt__Q23dwi22IVisitor<10ISceneNode>Fv	draft:research/drafts/Visit.800cf794.cpp unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:AIFilter_mechchecker_dtor unit:explosion_dtor unit:impact_dtor unit:volume_query_test
@@ -4152,9 +4569,9 @@ defined	.text	68	__dl__FPv	unit:memory
 defined	.text	68	__dla__FPv	unit:memory
 defined	.text	68	__dt__13CAITankObjectFv	unit:AITankObject_ctor
 defined	.text	68	__dt__16CAISoldierObjectFv	unit:AISoldierObject_ctor
-defined	.text	68	__dt__Q23dwi20vec_iter<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	68	__dt__Q23dwi20vec_iter<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_info_dtor unit:buddy_vec_info_reserve unit:buddy_veciter_info_dtor
 defined	.text	68	__dt__Q23dwi22vec_iter<10CCollision>Fv	unit:scene_dtor unit:scene_fast unit:scene_findif unit:scene_query unit:scene_reset unit:scene_update unit:scene_vec_dtor unit:scene_vec_erase unit:scene_vec_reserve unit:scene_veciter_dtor
-defined	.text	68	__dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	68	__dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_path_dtor unit:buddy_vec_path_reserve unit:buddy_veciter_path_dtor
 defined	.text	68	__dt__Q23dwi28vec_const_iter<10CCollision>Fv	unit:scene_update unit:scene_vecconst_dtor
 defined	.text	68	__end__catch	unit:Gecko_ExceptionPPC_endcatch
 defined	.text	68	__sinit_PathNodeList_cpp	unit:PathNodeList
@@ -4292,7 +4709,7 @@ defined	.text	60	__dt__20CAISplinePathSegmentFv	draft:research/drafts/GetClosest
 defined	.text	60	__dt__22CAISplinePathTraversalFv	unit:AISplinePath_traversal_dtor
 defined	.text	60	__dt__35BSUtilObjectInstanceMemoryAllocatorFv	unit:bsevents
 defined	.text	60	__dt__4CFogFv	unit:Moh2
-defined	.text	60	__dt__6CLine3Fv	draft:research/drafts/CheckForObstructions.800ce450.cpp draft:research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp draft:research/drafts/TestCollision.8006a71c.cpp unit:AIFilter_collisiond
+defined	.text	60	__dt__6CLine3Fv	draft:research/drafts/CheckForObstructions.800ce450.cpp draft:research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp draft:research/drafts/TestCollision.8006a71c.cpp unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:anim_obj_ground unit:capsule_capsule unit:cdbobject_fastvec_frame unit:debug_picker unit:player_begincrouch unit:player_beginupdate unit:player_commit unit:weapon_bullet
 defined	.text	60	__dt__6CPlaneFv	draft:research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp unit:Moh2 unit:camera_dtor unit:cdbobject_intersect unit:cdbobject_trigroups unit:player_ctor
 defined	.text	60	__dt__7IStudioFv	unit:IStudio_ctor
 defined	.text	60	__dt__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>Fv	unit:bulletfactory_thrown_ctor
@@ -5017,9 +5434,9 @@ defined	.text	24	__ct__10CMemBufferFv	draft:research/drafts/DMMorphBlendDisplayL
 defined	.text	24	__ct__17CUserMessageTableFv	unit:pumhandler_umt_dtor
 defined	.text	24	__ct__6CPlaneF8CVector3f	unit:plane_ctor
 defined	.text	24	__register_global_object	unit:global_destructor_chain
-defined	.text	24	end__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	24	end__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_info
 defined	.text	24	end__Q23dwi20vector<10CCollision>Fv	unit:scene_vec_end
-defined	.text	24	end__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	24	end__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_path_end
 defined	.text	24	offsetPtr<10CCPTMatBin>__FRP10CCPTMatBini	unit:compartment_offsetptr
 defined	.text	24	offsetPtr<10CMSHMatBin>__FRP10CMSHMatBini	unit:staticmesh
 defined	.text	24	offsetPtr<10CPTTexSwap>__FRP10CPTTexSwapi	unit:compartment_offsetptr
@@ -5275,9 +5692,9 @@ defined	.text	12	__ct__10BSScheduleFv	unit:bsschedule
 defined	.text	12	__ct__18CAnimObjectFactoryFv	unit:AnimObjFactory_ctor
 defined	.text	12	__ct__18CLinkedListElementFv	unit:LinkedList
 defined	.text	12	__ct__20StaticObjectTemplateFv	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_weak
-defined	.text	12	begin__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	12	begin__Q23dwi18vector<9BuddyInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_info
 defined	.text	12	begin__Q23dwi20vector<10CCollision>Fv	unit:scene_vec_begin
-defined	.text	12	begin__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+defined	.text	12	begin__Q23dwi23vector<13BuddyPathInfo>Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_vec_path_begin
 defined	.text	12	numFrames__15CStaticAnimMeshCFv	unit:staticmesh_head
 defined	.text	12	ticksPerFrame__15CStaticAnimMeshCFv	unit:staticmesh_head
 defined	.text	12	what__Q23std13bad_exceptionCFv	unit:Gecko_ExceptionPPC_unexpected unit:Gecko_ExceptionPPC_what
@@ -5814,9 +6231,9 @@ defined	.text	4	__sinit_shadow_cpp	unit:shadow
 defined	.text	4	iFILE_perror__FP17FILEOPERATION_def	unit:filesys_ea_del
 defined	.text	4	stopreadfile__FP10HANDLE_def	unit:filedev
 defined	.text	4	usr_put_initialize	unit:usr_put
-duplicate	.bss	48	g_ready_buddies	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.bss	16	g_attached_buddies	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.bss	16	g_buddy_path_base	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.bss	48	g_ready_buddies	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.bss	16	g_attached_buddies	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.bss	16	g_buddy_path_base	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.bss	16	rcmp_sys__4RCMP	draft:research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp draft:research/drafts/rcmpbase_system.cpp
 duplicate	.bss	12	g_ppAllocatorFreeLists	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
 duplicate	.data	256	__vt__19CBulletDecalManager	draft:research/drafts/Init.800839e4.cpp draft:research/drafts/thunks_particle_decal.cpp
@@ -5845,8 +6262,8 @@ duplicate	.sbss	4	g_pStaticObjectFreeList	draft:research/drafts/AllocateStaticOb
 duplicate	.sbss	4	g_pStaticObjectTemplates	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
 duplicate	.sbss	4	g_pThrownObjectArray	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
 duplicate	.sbss	4	g_pThrownObjectFreeList	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
-duplicate	.sbss	4	g_player_checkpoint	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.sbss	1	g_bInitialized	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.sbss	4	g_player_checkpoint	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.sbss	1	g_bInitialized	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.sbss	1	init$34	draft:research/drafts/SNDVOICEI_alloc.8015d530.c draft:research/drafts/SNDVOICEI_free.8015dbd4.c
 duplicate	.sbss	1	init$46	unit:Screen unit:UserInterface_xfilestime
 duplicate	.sdata	8	__RTTI__10BSGO_Basic	unit:objcreate_destroy unit:objcreate_volumes
@@ -5854,22 +6271,22 @@ duplicate	.sdata	8	__RTTI__Q24RCMP11RCMP_SYSTEM	draft:research/drafts/__ct__Q24R
 duplicate	.text	3376	Init__20CStaticObjectFactoryFv	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
 duplicate	.text	2728	AllocateStaticObject__20CStaticObjectFactoryFii	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp
 duplicate	.text	1700	SNDVOICEI_alloc__FiiPiii	draft:research/drafts/SNDVOICEI_alloc.8015d530.c draft:research/drafts/SNDVOICEI_free.8015dbd4.c
-duplicate	.text	1424	BIFunc_UpdateBuddyProgress__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.text	1264	BIFunc_GetInitialBuddyOrders__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.text	1244	BIFunc_BuddyDied__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.text	912	AddBuddy__F9BuddyInfob	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.text	900	BIFunc_UpdateBuddyCheckpoints__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
-duplicate	.text	892	BIFunc_AddBuddy__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	1424	BIFunc_UpdateBuddyProgress__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.text	1264	BIFunc_GetInitialBuddyOrders__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.text	1244	BIFunc_BuddyDied__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.text	912	AddBuddy__F9BuddyInfob	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.text	900	BIFunc_UpdateBuddyCheckpoints__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
+duplicate	.text	892	BIFunc_AddBuddy__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.text	764	CompleteTransfer	unit:EXIBios unit:SIBios
-duplicate	.text	716	BIFunc_CreateBuddyDataStructures__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	716	BIFunc_CreateBuddyDataStructures__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.text	584	Reset__20CStaticObjectFactoryFv	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_lookup
 duplicate	.text	456	DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_lookup
 duplicate	.text	436	ComputeStatusLOSValue__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
 duplicate	.text	412	MakeNoise__FP10ISceneNodeifi	unit:bsbifunc_makenoise unit:bsbifunc_makenoise_bi
 duplicate	.text	396	SNDVOICEI_free__Fi	draft:research/drafts/SNDVOICEI_alloc.8015d530.c draft:research/drafts/SNDVOICEI_free.8015dbd4.c
-duplicate	.text	376	DestroyBuddyDataStructures__Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	376	DestroyBuddyDataStructures__Fv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.text	372	TestCollision__11CVolCapsuleCFRC6CPlaneR10CCollisionb	draft:research/drafts/FindIntersection.800c5cb4.cpp draft:research/drafts/GetExtents.800c555c.cpp unit:capsule_plane
-duplicate	.text	360	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	360	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp
 duplicate	.text	344	IntersectNode__FR7CPTNodeP16CCharacterShadow	unit:compartment_intersect unit:compartment_nodeshadows
 duplicate	.text	324	__dt__9CAIObjectFv	unit:AIObject_ctor unit:AIObject_visionseek
 duplicate	.text	308	MakeNoise__FPvP15CAIFilterObjectRC8CVector3ifbi	unit:bsbifunc_makenoise unit:bsbifunc_makenoise_bi
@@ -5878,7 +6295,7 @@ duplicate	.text	268	separate__Fffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperating
 duplicate	.text	236	GetStaticMesh__20CStaticObjectFactoryFii	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_lookup
 duplicate	.text	216	GetMotionData__20CStaticObjectFactoryFii	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_lookup
 duplicate	.text	204	ComputeStatusIsEnemy__9CAIObjectFP9CAIObject	unit:AIObject_enemy unit:AIObject_visionseek
-duplicate	.text	192	BIFunc_SetBuddyPathGroup__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	192	BIFunc_SetBuddyPathGroup__FPPiPv	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_head
 duplicate	.text	192	__dt__19CBulletDecalManagerFv	draft:research/drafts/Init.800839e4.cpp draft:research/drafts/thunks_particle_decal.cpp unit:decal_dtor
 duplicate	.text	188	ResetTimeStampStuff__Fv	draft:research/drafts/InitTimeStampStuff.800bb098.cpp draft:research/drafts/ResetTimeStampStuff.800bafdc.cpp
 duplicate	.text	168	BoxBoxTest__Fff5EAxisRfRfR5EAxis	unit:box_dtor unit:box_ivolume
@@ -5886,91 +6303,29 @@ duplicate	.text	168	separate__Ffff21EBoxTriSeperatingAxisRfR21EBoxTriSeperatingA
 duplicate	.text	140	SetTimeStampString__FPc	draft:research/drafts/InitTimeStampStuff.800bb098.cpp draft:research/drafts/ResetTimeStampStuff.800bafdc.cpp unit:UserInterface_xfilestime
 duplicate	.text	132	SetLandmarkStampString__FPc	draft:research/drafts/InitTimeStampStuff.800bb098.cpp draft:research/drafts/ResetTimeStampStuff.800bafdc.cpp unit:UserInterface_xfilestime
 duplicate	.text	104	ComputeStatusThreatValue__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
-duplicate	.text	100	copy<Q23dwi20vec_iter<9BuddyInfo>,Q23dwi20vec_iter<9BuddyInfo>>__3dwiFQ23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	100	copy<Q23dwi20vec_iter<9BuddyInfo>,Q23dwi20vec_iter<9BuddyInfo>>__3dwiFQ23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_copy_info
 duplicate	.text	96	SNDVOICEI_get__Fi	draft:research/drafts/SNDVOICEI_alloc.8015d530.c draft:research/drafts/SNDVOICEI_free.8015dbd4.c unit:salloc
 duplicate	.text	84	CompareStaticObjectDefinitions__FPCvPCv	draft:research/drafts/AllocateStaticObject.800b386c.cpp draft:research/drafts/Init.800b254c.cpp unit:staticobjfactory_compare
 duplicate	.text	84	ComputeStatusDistance__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
 duplicate	.text	80	OnReset	unit:CARDBios unit:OSMemory unit:Pad
 duplicate	.text	80	_UISFindHintPC__FP12UISControl_tUl	unit:UISUtils unit:UISUtils_parsehints
-duplicate	.text	68	copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructure
+duplicate	.text	68	copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>	draft:research/drafts/AddBuddy.80057eac.cpp draft:research/drafts/BIFunc_AddBuddy.80057b30.cpp draft:research/drafts/BIFunc_BuddyDied.80057164.cpp draft:research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp draft:research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp draft:research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp draft:research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp draft:research/drafts/DestroyBuddyDataStructures.80058ccc.cpp draft:research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp draft:research/drafts/__sinit_buddy_cpp.80058e44.cpp unit:buddy_copy_path
 duplicate	.text	60	OnReset	unit:CARDBios unit:OSMemory unit:Pad
 duplicate	.text	8	ComputeStatusVisibility__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
 duplicate	.text	8	SetXFilesTextOnscreenTime__Ff	draft:research/drafts/InitTimeStampStuff.800bb098.cpp draft:research/drafts/ResetTimeStampStuff.800bafdc.cpp unit:UserInterface_xfilestime
 duplicate	.text	8	TestCollision__11CVolCapsuleCFRC9CTriangleR10CCollisionb	draft:research/drafts/FindIntersection.800c5cb4.cpp draft:research/drafts/GetExtents.800c555c.cpp unit:capsule_plane
 duplicate	.text	8	TestVisibility__11CVolCapsuleCFR12CDrawContext	draft:research/drafts/FindIntersection.800c5cb4.cpp draft:research/drafts/GetExtents.800c555c.cpp unit:capsule_plane
-missing	.bss	460800	g_AEMSOneShotMem	
-missing	.bss	204800	SoundBankHeapStart	
-missing	.bss	204800	gAEMSStreamBuf	
-missing	.bss	51200	g_AEMSOneShotStreamBuf	
-missing	.bss	51200	g_frame_cache	
-missing	.bss	43808	snddrv	
-missing	.bss	36864	g_MessageQueue	
-missing	.bss	32864	gCurRead	
-missing	.bss	16384	g_scratch_pad	
 missing	.bss	8192	CARDData$282	
-missing	.bss	3004	_AnimSt_pStatAnimList	
-missing	.bss	2632	MPDbase	
-missing	.bss	1924	sndfx	
-missing	.bss	1696	pfstates	
-missing	.bss	1072	gTRKCPUState	
-missing	.bss	1024	sndaztospkr	
-missing	.bss	900	sndpps	
-missing	.bss	804	theObjectiveList	
-missing	.bss	576	TempVerts	
-missing	.bss	568	sndgs	
 missing	.bss	512	Temp$133	
-missing	.bss	512	sndmix	
-missing	.bss	396	sndfb	
-missing	.bss	360	MovementText	
-missing	.bss	336	movementText	
-missing	.bss	256	g_soundStreamFilename	
-missing	.bss	256	memclass	
 missing	.bss	192	light$739	
-missing	.bss	164	gTRKState	
-missing	.bss	148	gTRKSaveState	
-missing	.bss	128	sndss	
-missing	.bss	104	AnimTran_TransListArray	
-missing	.bss	100	g_pMGCrossHairMem	
-missing	.bss	96	pathxinfo	
-missing	.bss	72	_AnimObj_StateSelFuncArray	
-missing	.bss	68	sndaems	
-missing	.bss	64	MPDtranspose_table	
 missing	.bss	64	ident$906	
 missing	.bss	64	standingAxis$2503	
-missing	.bss	60	gRMode	
-missing	.bss	56	filehead	
 missing	.bss	56	protopool$192	
 missing	.bss	50	lastString$883	
 missing	.bss	48	block$16	
-missing	.bss	48	gPadStatus	
-missing	.bss	48	g_WorldToCameraGCMatrix	
-missing	.bss	48	landmark	
-missing	.bss	48	landmarkDisplayText	
-missing	.bss	48	timestamp	
-missing	.bss	48	timestampDisplayText	
-missing	.bss	48	vgPadStatus	
-missing	.bss	32	gAEMSBank	
-missing	.bss	32	gAEMSbHandle	
-missing	.bss	32	g_fromARAM_request	
-missing	.bss	32	g_toARAM_request	
-missing	.bss	24	gMusicOpts	
 missing	.bss	20	fadeOut$2453	
-missing	.bss	16	MPDf_code	
-missing	.bss	16	TRKvalue128_temp	
-missing	.bss	16	_AdditiveColorFactor	
-missing	.bss	16	_MultiplerColorFactor	
 missing	.bss	16	cmdFixDevice$326	
-missing	.bss	16	g_CamPos	unit:staticmesh
-missing	.bss	16	g_CamPos	unit:staticmesh
-missing	.bss	16	sndaram	
 missing	.bss	16	vRight$706	
-missing	.bss	12	MPDbackward_reference_frame	
-missing	.bss	12	MPDcurrent_frame	
-missing	.bss	12	MPDforward_reference_frame	
-missing	.bss	12	MPDframe_center_horizontal_offset	
-missing	.bss	12	MPDframe_center_vertical_offset	
-missing	.bss	12	sndfxnummodules	
-missing	.bss	9	g_cheatSequence	
 missing	.ctors	212	_ctors	
 missing	.data	7408	FONTstandfile	
 missing	.data	6624	axDspSlave	
@@ -6127,409 +6482,58 @@ missing	.init	132	_rom_copy_info
 missing	.init	32	_bss_init_info	
 missing	.rodata	12	next$334	
 missing	.rodata	10	_floco_anim_ranges	
-missing	.sbss	8	MPDbit_rate	
-missing	.sbss	8	MPDframe_rate	
-missing	.sbss	4	CODADelete__3SND	
-missing	.sbss	4	CODANew__3SND	
 missing	.sbss	4	CurIndexType$720	
-missing	.sbss	4	CurentOPPlayer	
-missing	.sbss	4	FONTstand	
 missing	.sbss	4	FirstTime$703	
-missing	.sbss	4	FontData	unit:OSFont
-missing	.sbss	4	FontData	unit:OSFont
-missing	.sbss	4	LastSheet	
-missing	.sbss	4	LibraryInfo	
 missing	.sbss	4	MAX_NUM_LOOPS$663	
-missing	.sbss	4	MIXaudioslicefn	
-missing	.sbss	4	MIXinitfn	
-missing	.sbss	4	MIXplayfn	
-missing	.sbss	4	MIXplayinitfn	
-missing	.sbss	4	MIXrestorefn	
-missing	.sbss	4	MIXsetpitchfn	
-missing	.sbss	4	MIXstopfn	
-missing	.sbss	4	MPDaspect_ratio_information	
-missing	.sbss	4	MPDbackward_f_code	
-missing	.sbss	4	MPDbit_rate_value	
-missing	.sbss	4	MPDbroken_link	
-missing	.sbss	4	MPDburst_amplitude	
-missing	.sbss	4	MPDchroma_420_type	
-missing	.sbss	4	MPDchroma_format	
-missing	.sbss	4	MPDchroma_height	
-missing	.sbss	4	MPDchroma_width	
-missing	.sbss	4	MPDclip	
-missing	.sbss	4	MPDclosed_gop	
-missing	.sbss	4	MPDcoded_picture_height	
-missing	.sbss	4	MPDcoded_picture_width	
-missing	.sbss	4	MPDcolor_description	
-missing	.sbss	4	MPDcolor_primaries	
-missing	.sbss	4	MPDcomposite_display_flag	
-missing	.sbss	4	MPDconcealment_motion_vectors	
-missing	.sbss	4	MPDconstrained_parameters_flag	
-missing	.sbss	4	MPDcopyright_flag	
-missing	.sbss	4	MPDcopyright_identifier	
-missing	.sbss	4	MPDcopyright_number_1	
-missing	.sbss	4	MPDcopyright_number_2	
-missing	.sbss	4	MPDcopyright_number_3	
-missing	.sbss	4	MPDdisplay_horizontal_size	
-missing	.sbss	4	MPDdisplay_vertical_size	
-missing	.sbss	4	MPDdrop_flag	
-missing	.sbss	4	MPDfault_flag	
-missing	.sbss	4	MPDfield_sequence	
-missing	.sbss	4	MPDforward_f_code	
-missing	.sbss	4	MPDframe	
-missing	.sbss	4	MPDframe_pred_frame_dct	
-missing	.sbss	4	MPDframe_rate_code	
-missing	.sbss	4	MPDframe_rate_extension_d	
-missing	.sbss	4	MPDframe_rate_extension_n	
-missing	.sbss	4	MPDfull_pel_backward_vector	
-missing	.sbss	4	MPDfull_pel_forward_vector	
-missing	.sbss	4	MPDhorizontal_size	
-missing	.sbss	4	MPDhorizontal_subsampling_factor_m	
-missing	.sbss	4	MPDhorizontal_subsampling_factor_n	
-missing	.sbss	4	MPDhour	
-missing	.sbss	4	MPDintra_dc_precision	
-missing	.sbss	4	MPDintra_vlc_format	
-missing	.sbss	4	MPDlayer_id	
-missing	.sbss	4	MPDld	
-missing	.sbss	4	MPDlevel	
-missing	.sbss	4	MPDlow_delay	
-missing	.sbss	4	MPDlower_layer_deinterlaced_field_select	
-missing	.sbss	4	MPDlower_layer_horizontal_offset	
-missing	.sbss	4	MPDlower_layer_prediction_horizontal_size	
-missing	.sbss	4	MPDlower_layer_prediction_vertical_size	
-missing	.sbss	4	MPDlower_layer_progressive_frame	
-missing	.sbss	4	MPDlower_layer_temporal_reference	
-missing	.sbss	4	MPDlower_layer_vertical_offset	
-missing	.sbss	4	MPDmatrix_coefficients	
-missing	.sbss	4	MPDmb_height	
-missing	.sbss	4	MPDmb_width	
-missing	.sbss	4	MPDminute	
-missing	.sbss	4	MPDoriginal_or_copy	
-missing	.sbss	4	MPDpicture_coding_type	
-missing	.sbss	4	MPDpicture_structure	
-missing	.sbss	4	MPDprofile	
-missing	.sbss	4	MPDprofile_and_level_indication	
-missing	.sbss	4	MPDprogressive_frame	
-missing	.sbss	4	MPDprogressive_sequence	
-missing	.sbss	4	MPDquiet_flag	
-missing	.sbss	4	MPDrepeat_first_field	
-missing	.sbss	4	MPDsec	
-missing	.sbss	4	MPDsecond_field	
-missing	.sbss	4	MPDspatial_temporal_weight_code_table_index	
-missing	.sbss	4	MPDsub_carrier	
-missing	.sbss	4	MPDsub_carrier_phase	
-missing	.sbss	4	MPDtemporal_reference	
-missing	.sbss	4	MPDtop_field_first	
-missing	.sbss	4	MPDtrace_flag	
-missing	.sbss	4	MPDtransfer_characteristics	
-missing	.sbss	4	MPDtrue_framenum	
-missing	.sbss	4	MPDv_axis	
-missing	.sbss	4	MPDvbv_buffer_size	
-missing	.sbss	4	MPDvbv_delay	
-missing	.sbss	4	MPDverbose_flag	
-missing	.sbss	4	MPDvertical_size	
-missing	.sbss	4	MPDvertical_subsampling_factor_m	
-missing	.sbss	4	MPDvertical_subsampling_factor_n	
-missing	.sbss	4	MPDvideo_format	
 missing	.sbss	4	MP_PUM_LEFT_JUSTIFY$764	
 missing	.sbss	4	Newref_progressive_frame$424	
-missing	.sbss	4	OldCallBack	
 missing	.sbss	4	Oldref_progressive_frame$423	
-missing	.sbss	4	PRINTinitialized	
-missing	.sbss	4	RuntimeErrorFnc	
-missing	.sbss	4	SNDMIXfxv2inited	
-missing	.sbss	4	ScreenInfo	
-missing	.sbss	4	TIMERhz	
-missing	.sbss	4	_AnimSeq_CurrentInfo	
-missing	.sbss	4	_AnimSt_CallbackTable	
-missing	.sbss	4	_AnimSt_FinishCb	
 missing	.sbss	4	_captureNum$620	
-missing	.sbss	4	_remap_next	
-missing	.sbss	4	_renderList	
-missing	.sbss	4	ammoSprite__13UserInterface	
 missing	.sbss	4	araminited$870	
-missing	.sbss	4	blackSprite__13UserInterface	
-missing	.sbss	4	bulletText__13UserInterface	
-missing	.sbss	4	charMarkerForLandmarkString	
-missing	.sbss	4	charMarkerForTimeStampString	
-missing	.sbss	4	circleSprite__13UserInterface	
 missing	.sbss	4	cmdTypeAndStatus$371	
 missing	.sbss	4	cmdTypeAndStatus$77	
-missing	.sbss	4	compassEdgeSprite__13UserInterface	
-missing	.sbss	4	compassSprite__13UserInterface	
-missing	.sbss	4	conlist	
 missing	.sbss	4	counter$1016	
-missing	.sbss	4	dotSprite__13UserInterface	
-missing	.sbss	4	end	
-missing	.sbss	4	errno	
 missing	.sbss	4	frame$1272	
 missing	.sbss	4	frame$1299	
-missing	.sbss	4	gAEMSBankCount	
-missing	.sbss	4	gAEMSsystem	
-missing	.sbss	4	gDefaultFifoObj	
-missing	.sbss	4	gFifoBuf	
-missing	.sbss	4	gFrameBuffer	
-missing	.sbss	4	gGxIsInit	
-missing	.sbss	4	gHeapPtr	
-missing	.sbss	4	gMusicBuf	
-missing	.sbss	4	gMusicBufSize	
-missing	.sbss	4	gMusicMap	
-missing	.sbss	4	g_AEMSOneShotLoadState	
-missing	.sbss	4	g_AEMSOneShotMemOffset	
-missing	.sbss	4	g_CompartmentBigFile	
-missing	.sbss	4	g_CurrMaterial	
-missing	.sbss	4	g_CurrMaterial	
-missing	.sbss	4	g_CurrState	
-missing	.sbss	4	g_CurrState	
-missing	.sbss	4	g_CurrentSeed	
 missing	.sbss	4	g_DefaultHW$827	
-missing	.sbss	4	g_FarPlane	
-missing	.sbss	4	g_FarPlane	
-missing	.sbss	4	g_FarPlane	
-missing	.sbss	4	g_FreeRecordList	unit:bsschedule
-missing	.sbss	4	g_FreeRecordList	unit:bsschedule
-missing	.sbss	4	g_HeightScale	
-missing	.sbss	4	g_LevelBigFileSize	
-missing	.sbss	4	g_MessageQueueHead	
-missing	.sbss	4	g_MessageQueueTail	
-missing	.sbss	4	g_MessageRegistrationArray	
-missing	.sbss	4	g_MessageRegistrationFreeList	
-missing	.sbss	4	g_MessageRegistrationFreeListHead	
-missing	.sbss	4	g_MipMapBias	
-missing	.sbss	4	g_NearClip	
-missing	.sbss	4	g_NearPlane	
-missing	.sbss	4	g_NearPlane	
-missing	.sbss	4	g_NearPlane	
-missing	.sbss	4	g_ParticleCounter	
-missing	.sbss	4	g_ParticleCounterMax	
-missing	.sbss	4	g_PopUpMsgTimer	
-missing	.sbss	4	g_RenderTypeCache	
-missing	.sbss	4	g_ScreenXOffset	
-missing	.sbss	4	g_ScreenXOffset	
-missing	.sbss	4	g_ScreenYOffset	
-missing	.sbss	4	g_ScreenYOffset	
-missing	.sbss	4	g_SharedCompartmentSize	
-missing	.sbss	4	g_ShellBriefingLogBigFileSize	
-missing	.sbss	4	g_TexturesCached	
-missing	.sbss	4	g_WidthScale	
-missing	.sbss	4	g_amount_allocated	
-missing	.sbss	4	g_anim_copy_memory	
-missing	.sbss	4	g_anim_copy_memory_cur	
-missing	.sbss	4	g_anim_copy_memory_sz	
-missing	.sbss	4	g_bMPEndLevel	
-missing	.sbss	4	g_cScreenHeight	
-missing	.sbss	4	g_cScreenWidth	
-missing	.sbss	4	g_cheatSequenceIndex	
-missing	.sbss	4	g_connectedBits	
-missing	.sbss	4	g_delayDestroyHead	
-missing	.sbss	4	g_delayDestroyTail	
-missing	.sbss	4	g_eProcessState	
-missing	.sbss	4	g_fDumpObjectCollisionRadius	
-missing	.sbss	4	g_fScaleValueX	
-missing	.sbss	4	g_fScaleValueY	
-missing	.sbss	4	g_fScaleValueZ	
-missing	.sbss	4	g_fScriptExplosionHeightScaleOnPlayer	
-missing	.sbss	4	g_fScriptExplosionVelocityScaleOnPlayer	
-missing	.sbss	4	g_frameCounter	
-missing	.sbss	4	g_frame_cache_used	
-missing	.sbss	4	g_iAIObjectCount	
-missing	.sbss	4	g_iBSMessageRegistrationListSize	
-missing	.sbss	4	g_iGermanCreationQueueHeadIndex	
-missing	.sbss	4	g_iGermanCreationQueueTailIndex	
-missing	.sbss	4	g_iNumGermansQueuedThisFrame	
-missing	.sbss	4	g_iNumberOfEnemiesSpawned	
-missing	.sbss	4	g_maxActiveSoldiers	
-missing	.sbss	4	g_memOffset	
-missing	.sbss	4	g_memSize	
-missing	.sbss	4	g_mpTimeLimit	
-missing	.sbss	4	g_numActiveSoldiers	
-missing	.sbss	4	g_num_allocations	
-missing	.sbss	4	g_objSound	
-missing	.sbss	4	g_pBSEventMemory	
-missing	.sbss	4	g_pBSEventMemoryOffset	
-missing	.sbss	4	g_pBSMessageMemory	
-missing	.sbss	4	g_pBSMessageMemoryOffset	
-missing	.sbss	4	g_pBazookaOverlay	
-missing	.sbss	4	g_pBoxList	
-missing	.sbss	4	g_pBulletFactory	
-missing	.sbss	4	g_pCamera	
-missing	.sbss	4	g_pCompartmentBigFileHeader	
-missing	.sbss	4	g_pContext	draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
-missing	.sbss	4	g_pContext	draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
-missing	.sbss	4	g_pContext	draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
-missing	.sbss	4	g_pContext	draft:research/drafts/Init.800839e4.cpp unit:projectilebullet
-missing	.sbss	4	g_pCurrentFont	
-missing	.sbss	4	g_pCurrentProcessingEvent	
-missing	.sbss	4	g_pCurrentShadow	
-missing	.sbss	4	g_pEventHashTable	
-missing	.sbss	4	g_pEventRecordArray	
-missing	.sbss	4	g_pEventRecordExecutionListHead	
-missing	.sbss	4	g_pEventRecordExecutionListTail	
-missing	.sbss	4	g_pFog	
-missing	.sbss	4	g_pFog	
-missing	.sbss	4	g_pFog	
-missing	.sbss	4	g_pFog	
-missing	.sbss	4	g_pFreeEventRecordHead	
-missing	.sbss	4	g_pFrustum	
-missing	.sbss	4	g_pFrustum	
-missing	.sbss	4	g_pGermanList	
-missing	.sbss	4	g_pImageData	
-missing	.sbss	4	g_pImmediateEventQueue	
-missing	.sbss	4	g_pImmediateEventQueueTail	
-missing	.sbss	4	g_pLevelBigFile	
-missing	.sbss	4	g_pLevelEMT	
-missing	.sbss	4	g_pLevelFileContentsArray	
-missing	.sbss	4	g_pLevelFileContentsEndMarker	
-missing	.sbss	4	g_pLightVolume	
-missing	.sbss	4	g_pMGCrossHair	
-missing	.sbss	4	g_pModelToWorld	
-missing	.sbss	4	g_pNumLevelFileContents	
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pRenderList	draft:research/drafts/Init.800839e4.cpp unit:fader unit:motionblur unit:projectilebullet
-missing	.sbss	4	g_pScene	
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScreen	draft:research/drafts/Init.800839e4.cpp unit:Screen unit:projectilebullet
-missing	.sbss	4	g_pScriptMemory	
-missing	.sbss	4	g_pShellBriefingLogBigFile	
-missing	.sbss	4	g_pStaticObjectBazooka	
-missing	.sbss	4	g_pStaticObjectGrenade	
-missing	.sbss	4	g_pStaticObjectKnife	
-missing	.sbss	4	g_pStaticObjectMuzzleFlashNPC	
-missing	.sbss	4	g_pStaticObjectMuzzleFlashPlayer	
-missing	.sbss	4	g_pStaticObjectStickGrenade	
-missing	.sbss	4	g_pStaticObjectWrench	
-missing	.sbss	4	g_pTankList	
-missing	.sbss	4	g_pWeaponFactory	
-missing	.sbss	4	g_pWorld	
-missing	.sbss	4	g_paioAIObjectListStart	
-missing	.sbss	4	g_pcClassList	
-missing	.sbss	4	g_staticObjCount	
-missing	.sbss	4	g_zDeltaMin	
-missing	.sbss	4	giPADStarted	
+missing	.sbss	4	g_HeightScale	data:research/data/bss/particlesystem.cpp
 missing	.sbss	4	gotcaps$39	
-missing	.sbss	4	greySprite__13UserInterface	
 missing	.sbss	4	guysLostCount$1016	
 missing	.sbss	4	handle$1117	
-missing	.sbss	4	healthSprite__13UserInterface	
-missing	.sbss	4	hitMeterSprite__13UserInterface	
 missing	.sbss	4	initialized$16	
 missing	.sbss	4	lastTimeRemaining$848	
 missing	.sbss	4	lastUsedSlotOnTop$880	
 missing	.sbss	4	lastVSync$833	
 missing	.sbss	4	lasthandle$45	
-missing	.sbss	4	lastoutputchannels	
 missing	.sbss	4	lastsystemtask$144	
-missing	.sbss	4	libticks	
-missing	.sbss	4	m_ModeCounter0__17CPerformanceCount	
-missing	.sbss	4	m_ModeCounter1__17CPerformanceCount	
-missing	.sbss	4	m_sCompartmentSize__12CWorldObject	
 missing	.sbss	4	maxPower$969	
 missing	.sbss	4	max_osc$1498	
-missing	.sbss	4	mb_default	
 missing	.sbss	4	message$332	
-missing	.sbss	4	milliseconds	
 missing	.sbss	4	minPower$972	
-missing	.sbss	4	modlist	
-missing	.sbss	4	onscreenTime	
 missing	.sbss	4	osc$1492	
 missing	.sbss	4	osc_add$1495	
 missing	.sbss	4	osc_dist$1501	
-missing	.sbss	4	pSoundStream	
-missing	.sbss	4	pathService	
-missing	.sbss	4	pathTimer	
-missing	.sbss	4	pathabortmsg	
-missing	.sbss	4	pathprintf	
-missing	.sbss	4	pconhead	
-missing	.sbss	4	pfactive	
-missing	.sbss	4	pfilterlist	
-missing	.sbss	4	pfstate	
-missing	.sbss	4	phead	
-missing	.sbss	4	pheaderinfo	
-missing	.sbss	4	plisthead	
 missing	.sbss	4	prevVertFormat$1091	
 missing	.sbss	4	ptr$499	
 missing	.sbss	4	reentry$98	
-missing	.sbss	4	requestidcounter	unit:hlafile
-missing	.sbss	4	requestidcounter	unit:hlafile
 missing	.sbss	4	ret$42	
-missing	.sbss	4	s_pPathNodeMapEntries__13CPathNodeList	
-missing	.sbss	4	s_paioAttacker__9CAIStatus	
-missing	.sbss	4	s_paioTarget__9CAIStatus	
-missing	.sbss	4	s_pnlCurrent__13CPathNodeList	
-missing	.sbss	4	s_rNextSoundPropagateTime__15CAIFilterGlobal	
-missing	.sbss	4	sm_pSingleton__16CDestructorQueue	
-missing	.sbss	4	sm_pThePublisher__10CPublisher	
-missing	.sbss	4	smallMPFont__13UserInterface	
 missing	.sbss	4	softwareresetcheckstarted$1043	
 missing	.sbss	4	softwareresetstarttime$1046	
-missing	.sbss	4	songprogress	
-missing	.sbss	4	starSprite__13UserInterface	
 missing	.sbss	4	systaskadded$130	
 missing	.sbss	4	temporal_reference_old$317	
 missing	.sbss	4	temporal_reference_wrap$314	
-missing	.sbss	4	ticks	
-missing	.sbss	4	timestampFont	
 missing	.sbss	4	uiLoopCount$923	
-missing	.sbss	4	validstructoutputs	
-missing	.sbss	4	vblticks	
 missing	.sbss	4	xxxFadeValue$1326	
 missing	.sbss	4	xxxLandmarkX$1275	
 missing	.sbss	4	xxxLandmarkY$1278	
 missing	.sbss	4	xxxTimeStampX$1302	
 missing	.sbss	4	xxxTimeStampY$1305	
-missing	.sbss	2	FontSize	
-missing	.sbss	2	FontSpace	
 missing	.sbss	2	opcount$819	
 missing	.sbss	1	DemoFirstFrame$388	
-missing	.sbss	1	SoundHasBeenInitialized	
-missing	.sbss	1	bDisplayLandmarkStamp	
-missing	.sbss	1	bDisplayTimeStamp	
-missing	.sbss	1	bDoneFading	
-missing	.sbss	1	bDoneParsingLandmark	
-missing	.sbss	1	bDoneParsingTimeStamp	
-missing	.sbss	1	bDoneShowingXFilesText	
 missing	.sbss	1	bReady$594	
 missing	.sbss	1	bReady$730	
-missing	.sbss	1	f_bObstacleAvoidanceLinesInitialized	
 missing	.sbss	1	firstframe$755	
 missing	.sbss	1	freekey$33	
-missing	.sbss	1	gAEMSStreamUsed	
-missing	.sbss	1	g_alarm_activated	
-missing	.sbss	1	g_bAllowLighting	
-missing	.sbss	1	g_bCPTDisableLighting	
-missing	.sbss	1	g_bCPTFogDisabled	
-missing	.sbss	1	g_bCPTForceClipped	
-missing	.sbss	1	g_bCacheLightParam	
-missing	.sbss	1	g_bDMAToARAM	
-missing	.sbss	1	g_bDMAToMRAM	
-missing	.sbss	1	g_bDisableMipMapBias	
-missing	.sbss	1	g_bInMultiplayerMode	
-missing	.sbss	1	g_bIsRubberGrenadeCheatEnabled	
-missing	.sbss	1	g_bMipMapScale	
-missing	.sbss	1	g_bPaused	
-missing	.sbss	1	g_bReady	unit:Screen
-missing	.sbss	1	g_bReady	unit:Screen
-missing	.sbss	1	g_bReady	unit:Screen
-missing	.sbss	1	g_bReady	unit:Screen
-missing	.sbss	1	g_bShadowSet	
-missing	.sbss	1	g_subtitle_queue_initialized	
-missing	.sbss	1	g_unplugged	
 missing	.sbss	1	init$1017	
 missing	.sbss	1	init$1017	
 missing	.sbss	1	init$1044	
@@ -6580,14 +6584,10 @@ missing	.sbss	1	init$924
 missing	.sbss	1	init$970	
 missing	.sbss	1	init$973	
 missing	.sbss	1	init$99	
-missing	.sbss	1	inited	
 missing	.sbss	1	isCSFWarningEnabled$1159	
 missing	.sbss	1	isCSFWarningEnabled$656	
-missing	.sbss	1	paused	
 missing	.sbss	1	ready$478	
-missing	.sbss	1	s_ClassInit__7CMatrix	
 missing	.sbss	1	toggle$1645	
-missing	.sbss	1	uisEventNotProcess	
 missing	.sdata	8	PauseScreenInfo	
 missing	.sdata	8	ShellScreenInfo	
 missing	.sdata	8	_AnimObj_StateDef	
@@ -6893,7 +6893,7 @@ missing	.sdata	4	g_CurrentMission
 missing	.sdata	4	g_CurrentSoundBank	
 missing	.sdata	4	g_FadeDistance	
 missing	.sdata	4	g_FinalSinglePlayerController	
-missing	.sdata	4	g_HeightScale	
+missing	.sdata	4	g_HeightScale	data:research/data/bss/particlesystem.cpp
 missing	.sdata	4	g_MPAnimMeshZOffset	
 missing	.sdata	4	g_NumPlayers	
 missing	.sdata	4	g_PauseScreenLockedController	
