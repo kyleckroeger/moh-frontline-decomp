@@ -27,6 +27,7 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `notes/game-code.md`, `notes/register-tools.md` | Compiler behaviour and register-allocation findings |
 | `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
+| `plans/` | Plans for unattended runs: `three-day-loop.md` (rules, phases, state) and its ranked queue `loop_queue.tsv` |
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
 | `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |

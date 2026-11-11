@@ -1,0 +1,171 @@
+rank	prio	area	file	function	size	status	best_real	best_draft	draft	note
+1	1	Collision	cdbobject.cpp	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	2696	consistent	1	scratch/par/lines/s18/g6.cpp	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	
+2	1	Scripting and level objects	staticobjfactory.cpp	AllocateStaticObject__20CStaticObjectFactoryFii	2728	consistent	2	scratch/solo/ret/o/AllocateStaticObject.01bb139f.cpp	research/drafts/AllocateStaticObject.800b386c.cpp	
+3	1	Scripting and level objects	player_weapon_object.cpp	AddAmo__19CPlayerWeaponObjectFi	96	consistent	2	scratch/par/bigfiles/amo4/z2.cpp	research/drafts/AddAmo.800a7fac.cpp	
+4	1	AI	CoverPoint.cpp	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	480	consistent	4	scratch/par/soldier/cpo/t.cpp	research/drafts/FlagAsOccupied.80052f6c.cpp	
+5	1	AI	CoverPoint.cpp	GetPeekLocation__11CCoverPointFv	740	consistent	6	scratch/par/soldier/gpl2/J.cpp	research/drafts/GetPeekLocation.800523cc.cpp	
+6	1	Scripting and level objects	bsbifunc.cpp	DisplayHint__Fv	400	consistent	6	scratch/par/soldier/dh16/i1.cpp	research/drafts/DisplayHint.8001e0f8.cpp	
+7	1	Scripting and level objects	bsbifunc.cpp	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	156	consistent	7	scratch/par/soldier/cw19/h6.cpp	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	
+8	1	Scripting and level objects	proxtrig.cpp	UpdateProximityTriggerStatus__Fv	2128	consistent	9	scratch/solo/s2/upts/k6/d_u5.cpp	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	
+9	1	AI	CoverPoint.cpp	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	1184	consistent	10	scratch/par/soldier/clc/o6.cpp	research/drafts/CheckLineCollision.80052abc.cpp	
+10	1	Animation	animst.cpp	AnimStStartState	1156	consistent	10	scratch/par/parks/s20/ss/acc.cpp	research/drafts/AnimStStartState.800676d8.cpp	
+11	1	Scripting and level objects	player.cpp	SetFinishedLevelData__13CPlayerObjectFv	392	consistent	11	scratch/solo/ret/o/SetFinishedLevelData.a66d5a49.cpp	research/drafts/SetFinishedLevelData.8009d470.cpp	
+12	1	Collision	cdbgeom.cpp	GetNearestPoint__12CCDBTriangleCF8CVector3PfPf	964	consistent	13	scratch/par/lines/gnp_BEST.cpp	research/drafts/GetNearestPoint.8006c800.cpp	
+13	1	Scripting and level objects	bsbifunc.cpp	BIFunc_GetObjInfo__FPPiPv	6224	consistent	16	scratch/solo/ret/o/BIFunc_GetObjInfo.05d14b85.cpp	research/drafts/BIFunc_GetObjInfo.8002c258.cpp	
+14	1	Scripting and level objects	buddy.cpp	BIFunc_BuddyDied__FPPiPv	1244	consistent	16	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_BuddyDied.80057164.cpp	
+15	1	Scripting and level objects	weaponfactory.cpp	CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei	520	consistent	17	scratch/par/bigfiles/wfc2/x_mv.cpp	research/drafts/CreateWeaponByCRC.800d6cf4.cpp	
+16	1	Animation	animmorph.cpp	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	1272	consistent	18	scratch/par/parks/s13/llc5.cpp	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp	
+17	1	AI	AIFilter.cpp	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	1632	consistent	19	scratch/solo/ret/o/ChooseCoverPointByType.9a1a67cb.cpp	research/drafts/ChooseCoverPointByType.8005ca88.cpp	
+18	1	Collision	matrix.cpp	Orthonormalize__7CMatrixFv	688	consistent	21	scratch/par/lines/orth16.cpp	research/drafts/Orthonormalize.8008f1e8.cpp	
+19	1	Scripting and level objects	buddy.cpp	AddBuddy__F9BuddyInfob	912	consistent	22	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/AddBuddy.80057eac.cpp	
+20	1	Animation	animst.cpp	AnimStProcess	1044	consistent	23	scratch/par/parks/s20/asp/ps3.cpp	research/drafts/AnimStProcess.800672c4.cpp	
+21	1	AI	anim_obj.cpp	ConstrainVelocity__11CAnimObjectFv	1268	consistent	24	scratch/par/lines/acv3/fo_best6.cpp	research/drafts/ConstrainVelocity.80093e64.cpp	
+22	1	Collision	cdbgeom.cpp	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	6920	consistent	25	scratch/par/lines/tcap_BEST.cpp	research/drafts/TestCollision.8006a71c.cpp	
+23	1	Scripting and level objects	explosion.cpp	CheckForObstructions__10CExplosionFR10ISceneNode	2436	consistent	25	scratch/solo/ret/o/CheckForObstructions.4e796ffa.cpp	research/drafts/CheckForObstructions.800ce450.cpp	
+24	1	Scripting and level objects	buddy.cpp	BIFunc_GetInitialBuddyOrders__FPPiPv	1264	consistent	27	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	
+25	1	Animation	anim_callback.cpp	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	1064	consistent	28	scratch/solo/ret/o/death_cb.8ae63353.cpp	research/drafts/death_cb.8005fb58.cpp	
+26	1	Collision	quaternion.cpp	Multiply__11CQuaternionF11CQuaternion	164	consistent	28	scratch/solo/gb/rt2/8009174c_19.cpp	research/drafts/Multiply.8009174c.cpp	
+27	1	Scripting and level objects	objcreate.cpp	CreateDumpObject__FRC8CVector3RC11CQuaternionii	1640	consistent	31	scratch/solo/ret/o/CreateDumpObject.94fb4c15.cpp	research/drafts/CreateDumpObject.8003fc2c.cpp	
+28	1	Scripting and level objects	objcreate.cpp	CreateDestructable__FP20TriggerObject_structi	2028	consistent	33	scratch/par/bigfiles/ds/cd_BEST33.cpp	research/drafts/CreateDestructable.8003c93c.cpp	
+29	1	Scripting and level objects	bsbifunc.cpp	BIFunc_PlayerScreenFlash__FPPiPv	388	consistent	42	scratch/par/lines/psf/p51.cpp	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	
+30	1	Scripting and level objects	static_obj.cpp	TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	308	consistent	42	scratch/solo/gb/tfs2/qzyx_zyx.cpp	research/drafts/TranslateFromScript.800af68c.cpp	
+31	1	Scripting and level objects	objcreate.cpp	CreateRootHierObject__FP20TriggerObject_structi	3416	consistent	44	scratch/par/bigfiles/ds/crh_tail2.cpp	research/drafts/CreateRootHierObject.8003dde8.cpp	
+32	1	Scripting and level objects	publisher.cpp	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	568	consistent	46	scratch/par/bigfiles/pub10/x2.cpp	research/drafts/PublishEvent.800d7718.cpp	
+33	1	Scripting and level objects	bsbifunc.cpp	BIFunc_RotateRel__FPPiPv	528	consistent	47	scratch/par/soldier/rr2/v/h2.cpp	research/drafts/BIFunc_RotateRel.800287ac.cpp	
+34	1	AI	Soldier_object.cpp	UpdateAnimation__14CSoldierObjectFf	3828	consistent	56	scratch/solo/ret/o/UpdateAnimation.c71eb708.cpp	research/drafts/UpdateAnimation.800acfb8.cpp	
+35	1	Scripting and level objects	static_obj.cpp	RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	512	consistent	57	scratch/solo/ret/o/RotateFromScript.d1562e0b.cpp	research/drafts/RotateFromScript.800af48c.cpp	
+36	1	Animation	anim_callback.cpp	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	2264	consistent	61	scratch/par/soldier/aim10/hc_tmp_2201810.cpp	research/drafts/aim_cb.8005e9ec.cpp	
+37	1	Scripting and level objects	buddy.cpp	BIFunc_CreateBuddyDataStructures__FPPiPv	716	consistent	80	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	
+38	1	AI	AISplinePath.cpp	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	1056	consistent	94	scratch/par/soldier/gcp/h0.cpp	research/drafts/GetClosestParameter.800516b4.cpp	
+39	1	Animation	anim_callback.cpp	_find_aim_blend_values__FffPf	576	consistent	94	scratch/par/soldier/fab/bf_best3.cpp	research/drafts/_find_aim_blend_values.8005e494.cpp	
+40	1	Scripting and level objects	bsbifunc.cpp	DoTargetCheck__FP8BSObjectiiiPiPi	540	consistent	96	scratch/par/lines/sw/DoTargetCheck.cpp	research/drafts/DoTargetCheck.8001e59c.cpp	
+41	1	AI	PathNodeList.cpp	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	1916	consistent	99	scratch/par/bigfiles/pnl/tk.cpp	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp	
+42	1	Scripting and level objects	bsbifunc.cpp	BIFunc_MechFollowPath__FPPiPv	456	consistent	105	scratch/par/soldier/mfp13/b2.cpp	research/drafts/BIFunc_MechFollowPath.80021220.cpp	
+43	1	Animation	dmcluster.cpp	_matrix_rot_yzx__FR7CMatrixlll	1016	consistent	109	scratch/par/lines/mry/h_perm2.cpp	research/drafts/_matrix_rot_yzx.800f4e98.cpp	
+44	1	Scripting and level objects	buddy.cpp	BIFunc_UpdateBuddyProgress__FPPiPv	1424	consistent	112	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp	
+45	1	Animation	dmcluster.cpp	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	604	consistent	143	scratch/par/lines/dsh/h1.cpp	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp	
+46	1	Animation	skelblend.cpp	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	1820	consistent	157	scratch/par/parks/s20/usk/base.cpp	research/drafts/_unpack_skel_frame.80069c80.cpp	
+47	1	Animation	animtran.cpp	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	1740	consistent	185	scratch/par/parks/s20/dt/base.cpp	research/drafts/_AnimTranDoTransition.8006862c.cpp	
+48	1	AI	AIFilter.cpp	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	784	consistent	195	scratch/par/soldier/gcw7/v/o43201.cpp	research/drafts/GetClosestWaypointByType.8005c6b8.cpp	
+49	1	Scripting and level objects	buddy.cpp	BIFunc_AddBuddy__FPPiPv	892	consistent	216	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_AddBuddy.80057b30.cpp	
+50	1	AI	ObstacleAvoidance.cpp	DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition	1276	consistent	234	scratch/par/lines/dno_BEST.cpp	research/drafts/DetermineNewObjectivePosition.80053738.cpp	
+51	1	Animation	dmmorph.cpp	DMMorphBlendDisplayLists__FP16DMRenderObject_T	1260	consistent	252	scratch/game/dmmorph_blend_wip.cpp	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	
+52	1	Collision	capsule.cpp	FindIntersection__FRC6CLine3RC11CVolCapsulePf	2092	consistent	323	scratch/par/lines/fic/d2.cpp	research/drafts/FindIntersection.800c5cb4.cpp	
+53	1	Scripting and level objects	staticobjfactory.cpp	Init__20CStaticObjectFactoryFv	3376	consistent	371	scratch/solo/ret/o/AllocateStaticObject.01bb139f.cpp	research/drafts/Init.800b254c.cpp	
+54	1	Collision	cdbgeom.cpp	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	3856	consistent	463	scratch/par/lines/s19/vbt_best495.cpp	research/drafts/TestCollision.8006e0b0.cpp	
+55	1	Collision	box.cpp	TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	2292	consistent	547	scratch/par/lines/s19/bpl/n3.cpp	research/drafts/TestCollision.800c15ec.cpp	
+56	1	Scripting and level objects	impact.cpp	Visit__7CImpactFR10ISceneNode	2512	consistent	598	scratch/par/soldier/im/im14.cpp	research/drafts/Visit.800cf794.cpp	
+57	1	Scripting and level objects	bsfile.cpp	BSFileReadClass__FPCcbbPP14BSClass_struct	3768	consistent	708	scratch/par/bigfiles/bsf4_3.cpp	research/drafts/BSFileReadClass.80035aa8.cpp	
+58	1	Scripting and level objects	proxtrig.cpp	TriggerEnterAndLeaveMessages__FP10BSGO_Basicb	3480	consistent	804	scratch/par/lines/tel/a12.cpp	research/drafts/TriggerEnterAndLeaveMessages.800451ec.cpp	
+59	1	Collision	box.cpp	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	2308	consistent			research/drafts/TestCollision.800c290c.cpp	
+60	1	Scripting and level objects	objcreate.cpp	CreateGerman__FP20TriggerObject_structib	1732	consistent			research/drafts/objcreate_create.cpp	
+61	1	Animation	dmesh.cpp	Link__8CPartBinFP7CDmaTagR10CDmaPacket	1492	consistent			research/drafts/CPartBin_Link.800f5930.cpp	
+62	1	AI	Soldier_object.cpp	Draw__14CSoldierObjectFR12CDrawContext	1480	consistent			research/drafts/Draw.800ac9e4.cpp	
+63	1	Collision	box.cpp	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	1472	consistent			research/drafts/TestCollision.800c3210.cpp	
+64	1	Scripting and level objects	static_obj.cpp	OnCollision__13CStaticObjectFRC10CCollision	1332	consistent			research/drafts/OnCollision.800afc08.cpp	
+65	1	Scripting and level objects	objcreate.cpp	CreateCollisionVolume__FP20TriggerObject_structi	1236	consistent			research/drafts/objcreate_create.cpp	
+66	1	Scripting and level objects	bsbifunc.cpp	BSInitBIFuncs__Fv	1228	consistent			research/drafts/bsbifunc_setup.cpp	
+67	1	Scripting and level objects	bsbifunc.cpp	BIFunc_AddPlayerAmmo__FPPiPv	1028	consistent			research/drafts/bsbifunc_prompt.cpp	
+68	1	Scripting and level objects	bsbifunc.cpp	BIFunc_DisplayPromptText__FPPiPv	860	consistent			research/drafts/bsbifunc_prompt.cpp	
+69	1	Scripting and level objects	thrown_obj.cpp	Init__13CThrownObjectFv	856	consistent			research/drafts/Init.800b5fec.cpp	
+70	1	Scripting and level objects	bsbifunc.cpp	BIFunc_DisplayPromptInteger__FPPiPv	832	consistent			research/drafts/bsbifunc_prompt.cpp	
+71	1	Collision	cdbobject.cpp	Init__10CCDBObjectFP3CDB	784	consistent			research/drafts/Init.8007133c.cpp	
+72	1	Scripting and level objects	bsbifunc.cpp	DisplayHintText__FPCc	612	consistent			research/drafts/bsbifunc_prompt.cpp	
+73	1	Scripting and level objects	bsbifunc.cpp	BSResetBIFuncs__Fv	604	consistent			research/drafts/bsbifunc_setup.cpp	
+74	1	Scripting and level objects	objcreate.cpp	NonVisDestructFarthestSoldiers__Fi	552	consistent			research/drafts/objcreate_soldiers.cpp	
+75	1	Animation	animmorph.cpp	Draw__10CAnimMorphFR12CDrawContext	424	consistent			research/drafts/Draw.800653c0.cpp	
+76	1	Scripting and level objects	bsbifunc.cpp	displayPromptBuffer__Fi	408	consistent			research/drafts/bsbifunc_prompt.cpp	
+77	1	Collision	matrix.cpp	Rotate__7CMatrixF8CVector3f	376	consistent			research/drafts/Rotate.800904e8.cpp	
+78	1	Scripting and level objects	buddy.cpp	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	360	consistent			research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp	
+79	1	Scripting and level objects	objcreate.cpp	Destroy__17BSGO_DestructableFv	344	consistent			research/drafts/objcreate_soldiers.cpp	
+80	1	Collision	capsule.cpp	GetExtents__11CVolCapsuleCFR8CVector3R8CVector3	304	consistent			research/drafts/GetExtents.800c555c.cpp	
+81	1	Collision	box.cpp	GetExtents__7CVolBoxCFR8CVector3R8CVector3	280	consistent			research/drafts/GetExtents.800c13b4.cpp	
+82	1	Scripting and level objects	buddy.cpp	__sinit_buddy_cpp	224	consistent			research/drafts/__sinit_buddy_cpp.80058e44.cpp	
+83	1	Scripting and level objects	bsbifunc.cpp	BSCleanUpBIFuncs__Fv	156	consistent			research/drafts/bsbifunc_setup.cpp	
+84	1	Scripting and level objects	bsbifunc.cpp	BSUpdateBIFuncs__Fv	108	consistent			research/drafts/bsbifunc_setup.cpp	
+85	2	Rendering	particlesystem.cpp	Draw__22CParticleSystemManagerFR12CDrawContext	628	code_exact			research/drafts/Draw.8007eabc.cpp	
+86	2	Video	rcmpbase.cpp	__dt__Q24RCMP11RCMP_SYSTEMFv	72	code_exact			research/drafts/rcmpbase_system.cpp	
+87	2	Rendering	particlesystem.cpp	@32@IsDrawEnabled__22CParticleSystemManagerCFv	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+88	2	Rendering	particlesystem.cpp	@32@IsVisible__22CParticleSystemManagerCFR12CDrawContext	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+89	2	Rendering	particlesystem.cpp	@32@Draw__22CParticleSystemManagerFR12CDrawContext	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+90	2	Rendering	particlesystem.cpp	@32@BeginUpdate__22CParticleSystemManagerFf	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+91	2	Rendering	particlesystem.cpp	@32@__dt__22CParticleSystemManagerFv	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+92	2	Rendering	decal.cpp	@36@IsUsed__19CBulletDecalManagerFv	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+93	2	Rendering	decal.cpp	@36@Link__19CBulletDecalManagerFP7CDmaTagR10CDmaPacket	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+94	2	Rendering	decal.cpp	@36@__dt__19CBulletDecalManagerFv	8	code_exact			research/drafts/thunks_particle_decal.cpp	
+95	2	Audio	spktplay.c	SNDPKTPLAY_start	812	consistent	2	scratch/par/parks/s20/spt/base.cpp	research/drafts/SNDPKTPLAY_start.8015a81c.cpp	
+96	2	System	input.cpp	Update__13CInputManagerFf	1220	consistent	3	scratch/solo/s2/ium/inl.cpp	research/drafts/Update.80084c80.cpp	
+97	2	System	toilet.cpp	TLT_LoadLevelContentsFile__Fii	1060	consistent	3	scratch/solo/ret/o/TLT_LoadLevelContentsFil.65740c88.cpp	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp	
+98	2	Rendering	font.cpp	DrawTextCenteredF__5CFontFfPCce	512	consistent	3	scratch/par/bigfiles/dtc2/b6.cpp	research/drafts/DrawTextCenteredF.8007cbb0.cpp	
+99	2	Shell and HUD	ShellMenu.cpp	MoveStatsIntoProperAreaForIstudio__10CShellMenuFv	236	consistent	3	scratch/par/bigfiles/smm4/g.cpp	research/drafts/MoveStatsIntoProperAreaForIstudio.800de334.cpp	
+100	2	Rendering	staticmesh.cpp	DrawNode__11CStaticMeshFR7MSHNodeUl	800	consistent	5	scratch/par/bigfiles/smd/o_nref.cpp/probe.cpp	research/drafts/DrawNode.800f2090.cpp	
+101	2	Shell and HUD	popup.cpp	Scroll__12PopUpMessageFv	500	consistent	6	scratch/solo/ret/o/Scroll.733a0632.cpp	research/drafts/Scroll.800bf4f8.cpp	
+102	2	Rendering	font.cpp	DrawTextCentered__5CFontFfPCc	416	consistent	8	scratch/par/bigfiles/dtc/o_center_scale_viewWidth_viewX_width.cpp/probe.cpp	research/drafts/DrawTextCentered.8007cdb0.cpp	
+103	2	Shell and HUD	pumhandler.cpp	Load__17CUserMessageTableFPcPc	436	consistent	10	scratch/solo/ret/o/Load.aae22769.cpp	research/drafts/Load.800b85bc.cpp	
+104	2	Rendering	scene.cpp	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	804	consistent	11	scratch/par/bigfiles/qs5/p2.cpp	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	
+105	2	Shell and HUD	ShellMenu.cpp	CalculateLevelStats__10CShellMenuFv	432	consistent	14	scratch/solo/rs/o/cl_47.cpp	research/drafts/CalculateLevelStats.800e6374.cpp	
+106	2	Video	hwvideodisplaylist.cpp	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	724	consistent	17	scratch/par/parks/s20/vd/ool.cpp	research/drafts/MOHFL_VD_create.80102a20.cpp	
+107	2	Shell and HUD	ShellMenu.cpp	ResetShell__10CShellMenuFv	860	consistent	18	scratch/solo/rs/o/rs_swrv.cpp	research/drafts/ResetShell.800e7a7c.cpp	
+108	2	Rendering	font.cpp	EndDraw__11CFontDriverFP4FONT	108	consistent	19	scratch/solo/ret/o/EndDraw.b9624578.cpp	research/drafts/EndDraw.8007c194.cpp	
+109	2	Audio	?	SFILTER_unpackxaf__FPviPvPvi	172	consistent	22	scratch/solo/ret/o/SFILTER_unpackxaf.3d72caf8.cpp	research/drafts/SFILTER_unpackxaf.801641f0.cpp	
+110	2	System	aramalloc.cpp	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	712	consistent	25	scratch/par/parks/s16/aan/w35.cpp	research/drafts/ARAM_alloc_node.801503b4.cpp	
+111	2	Audio	path.c	PATH_event	1884	consistent	26	scratch/solo/ret/o/PATH_event.faf5985a.cpp	research/drafts/PATH_event.8010b93c.cpp	
+112	2	Video	getpic.cpp	Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL	904	consistent	27	scratch/par/parks/s18/upb/a4.cpp	research/drafts/Update_Picture_Buffers.80100a30.cpp	
+113	2	Shell and HUD	UserInterface.cpp	ResetTimeStampStuff__Fv	188	consistent	31	scratch/solo/ret/o/InitTimeStampStuff.b0b84665.cpp	research/drafts/ResetTimeStampStuff.800bafdc.cpp	
+114	2	Audio	coda.cpp	decodexac__3SNDFPQ23SND10MXAPACKETF	400	consistent	32	scratch/par/parks/s5/xi2.cpp	research/drafts/decodexac.80168828.cpp	
+115	2	Rendering	scene.cpp	SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>	712	consistent	39	scratch/par/bigfiles/swe2/DL_ans.cpp	research/drafts/SweepExtents.800d9e48.cpp	
+116	2	Shell and HUD	pumhandler.cpp	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	2308	consistent	43	scratch/solo/ret/o/PopUpMessageHandler_Loop.a3555a03.cpp	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp	
+117	2	Audio	?	SFILTER_unpackxalf__FPviPvPvi	508	consistent	51	scratch/solo/xalf/setloop_call.cpp	research/drafts/SFILTER_unpackxalf.80164370.cpp	
+118	2	Rendering	compartment.cpp	HandleExplosion__12CCompartmentFRC10CExplosion	736	consistent	53	scratch/solo/ret/o/HandleExplosion.8192d52d.cpp	research/drafts/HandleExplosion.800756cc.cpp	
+119	2	Shell and HUD	UserInterface.cpp	InitTimeStampStuff__Fv	276	consistent	60	scratch/solo/ret/o/InitTimeStampStuff.b0b84665.cpp	research/drafts/InitTimeStampStuff.800bb098.cpp	
+120	2	Video	swvideodisplaylist.cpp	YUV_WriteRow__FPUcPUcPUcPci	620	consistent	68	scratch/par/parks/s8/yuv/dv4.cpp	research/drafts/YUV_WriteRow.801083dc.cpp	
+121	2	Audio	path.c	PATHI_seeknextnode__Fi	908	consistent	73	scratch/par/parks/s5/t5.cpp	research/drafts/PATHI_seeknextnode.8010e988.cpp	
+122	2	System	?	random	340	consistent	82	scratch/game/random_wip.cpp	research/drafts/random.8014f114.cpp	
+123	2	Rendering	scene.cpp	__ct__6CSceneFv	900	consistent	92	scratch/par/bigfiles/sct/tk.cpp	research/drafts/__ct__6CSceneFv.800dc8c4.cpp	
+124	2	Rendering	particlesystem.cpp	UpdateBoundingBox__15CParticleSystemFv	2948	consistent	101	scratch/par/bigfiles/ubb/t_lref.cpp	research/drafts/UpdateBoundingBox.8007fbe8.cpp	
+125	2	System	toilet.cpp	TLT_LoadFromRepository__FPCcPiPb	572	consistent	104	scratch/par/bigfiles/tlr3/f3.cpp	research/drafts/TLT_LoadFromRepository.8001cca8.cpp	
+126	2	Shell and HUD	ShellMenu.cpp	ShellInit__10CShellMenuFUl	1232	differs	135	scratch/solo/sm/k8/inl.cpp	research/drafts/ShellInit.800e752c.cpp	
+127	2	Shell and HUD	UserInterface.cpp	DrawBulletStats__13UserInterfaceFv	1848	consistent	140	scratch/uiw/bs_o5.cpp	research/drafts/DrawBulletStats.800bce58.cpp	
+128	2	Rendering	scene.cpp	SweepAllExtents__6CSceneFv	800	consistent	192	scratch/par/bigfiles/swa/a2.cpp	research/drafts/SweepAllExtents.800d8bac.cpp	
+129	2	Audio	path.c	PATHI_eventstart__Fi	2296	consistent	195	scratch/par/parks/s11/sv2.cpp	research/drafts/PATHI_eventstart.8010ee50.cpp	
+130	2	System	debug_prof.cpp	PROFILE_UPDATE__Fv	980	consistent	196	scratch/game/debugprof_update_wip.cpp	research/drafts/PROFILE_UPDATE.800f3578.cpp	
+131	2	Audio	sound.cpp	PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject	1336	consistent	326	scratch/uiw/playscriptedsound.cpp	research/drafts/PlayScriptedSound.800e9ba8.cpp	
+132	2	Audio	soundschedule.cpp	Update__13SoundScheduleFi	1864	consistent	441	scratch/solo/s2/ssu/h4.cpp	research/drafts/Update.80046bc8.cpp	
+133	2	Rendering	particlesystem.cpp	RenderSystem__15CParticleSystemFR10CDmaPacket	4532	differs			research/drafts/particlesystem_render.cpp	
+134	2	Rendering	compartment.cpp	Init__12CCompartmentFv	2628	consistent			research/drafts/compartment_init.cpp	
+135	2	Video	rcmp_main.cpp	Play__21OPTION_PARSING_PLAYERFb	1868	consistent			research/drafts/rcmp_play.cpp	
+136	2	Rendering	compartment.cpp	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	1704	consistent			research/drafts/DrawNode.80075024.cpp	
+137	2	Audio	salloc.c	SNDVOICEI_alloc__FiiPiii	1700	consistent			research/drafts/SNDVOICEI_alloc.8015d530.c	
+138	2	Shell and HUD	UserInterface.cpp	Init__13UserInterfaceFv	1160	differs			research/drafts/UserInterface_init.cpp	
+139	2	Rendering	compartment.cpp	__sinit_compartment_cpp	1128	consistent			research/drafts/compartment_init.cpp	
+140	2	Shell and HUD	pumhandler.cpp	__ct__19PopUpMessageHandlerFPcPc	988	consistent			research/drafts/pumhandler_ctor.cpp	
+141	2	Rendering	compartment.cpp	Draw__12CCompartmentFR12CDrawContext	860	consistent			research/drafts/compartment_draw.cpp	
+142	2	System	debug_prof.cpp	__ct__17CProfileInitClassFv	836	consistent			research/drafts/debug_prof_misc.cpp	
+143	2	Audio	sfrsf.c	SFILTER_rsf__FPviPvPvi	780	consistent			research/drafts/SFILTER_rsf.801671b8.c	
+144	2	Audio	smixer.c	MIX_audioslice	752	consistent			research/drafts/MIX_audioslice.801609d0.c	
+145	2	System	?	TRKSuppAccessFile	708	consistent			research/drafts/TRKSuppAccessFile.80135324.cpp	
+146	2	Audio	?	SNDI_precalcaztospkrvol__Fv	708	consistent			research/drafts/SNDI_precalcaztospkrvol.8015f538.c	
+147	2	Rendering	scene.cpp	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	632	consistent			research/drafts/Draw.800da67c.cpp	
+148	2	Rendering	decal.cpp	Init__NotTheVirtualOne__19CBulletDecalManagerFv	608	consistent			research/drafts/Init.800839e4.cpp	
+149	2	Rendering	staticmesh.cpp	Draw__11CStaticMeshFR12CDrawContexti	556	consistent			research/drafts/staticmesh_draw.cpp	
+150	2	System	debug_prof.cpp	DebugProfTimerVerifyNew__FiPci	552	consistent			research/drafts/debug_prof_misc.cpp	
+151	2	Audio	smixer.c	SNDMIXI_volramp__FP11SNDMIXVOICE	408	consistent			research/drafts/SNDMIXI_volramp.80160114.c	
+152	2	Audio	salloc.c	SNDVOICEI_free__Fi	396	consistent			research/drafts/SNDVOICEI_free.8015dbd4.c	
+153	2	Audio	?	iSNDrandom__Fv	340	consistent			research/drafts/iSNDrandom.8015f934.c	
+154	2	Shell and HUD	pumhandler.cpp	__sinit_pumhandler_cpp	276	differs			research/drafts/pumhandler_ctor.cpp	
+155	2	Rendering	compartment.cpp	InitClass__12CCompartmentFP11CRenderListP7CScreen	244	consistent			research/drafts/compartment_draw.cpp	
+156	2	Audio	?	SNDtimeremaining	244	consistent			research/drafts/SNDtimeremaining.8015d238.c	
+157	2	System	debug_prof.cpp	DebugProfTimerDumpAll__Fv	164	consistent			research/drafts/debug_prof_misc.cpp	
+158	2	Rendering	staticmesh.cpp	InitClass__11CStaticMeshFP11CRenderListP7CScreen	152	consistent			research/drafts/InitClass.800f2478.cpp	
+159	2	Video	rcmpbase.cpp	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	80	consistent			research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp	
+160	2	Video	rcmpbase.cpp	__sinit_rcmpbase_cpp	76	consistent			research/drafts/rcmpbase_system.cpp	
+161	2	Shell and HUD	ShellMenu.cpp	MemoryCardBootUpPortCheck__10CShellMenuFi	5024	consistent	1183	scratch/solo/sm/k7/plain_nocopy.cpp	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	
+162	3	Multiplayer	UserInterface.cpp	DrawFragCount__13UserInterfaceFb	2212	consistent	25	scratch/solo/ret/o/DrawFragCount.e4c40c11.cpp	research/drafts/DrawFragCount.800bd864.cpp	
+163	3	Multiplayer	bsbifunc.cpp	BIFunc_UpdateFragCount__FPPiPv	3936	consistent			research/drafts/bsbifunc_multiplayer.cpp	
+164	3	Multiplayer	bsbifunc.cpp	BIFunc_MPAddPlayerHealth__FPPiPv	1032	consistent			research/drafts/bsbifunc_multiplayer.cpp	
+165	1	AI	AIObject.cpp	UpdateTargetPosition__9CAIObjectFv	2516	code_exact	0	scratch/par/bigfiles/ut/UT_DUP0.cpp	research/drafts/UpdateTargetPosition.8004e024.cpp	matches only with a declined form (duplicate inline)
+166	1	Scripting and level objects	buddy.cpp	BIFunc_UpdateBuddyCheckpoints__FPPiPv	900	code_exact	0	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp	buddy.cpp knot
+167	1	Scripting and level objects	buddy.cpp	DestroyBuddyDataStructures__Fv	376	code_exact	0	scratch/solo/ret/o/BIFunc_GetInitialBuddyOr.5a49fc0a.cpp	research/drafts/DestroyBuddyDataStructures.80058ccc.cpp	needs buddy.cpp .bss (__sinit_buddy_cpp BuddyInfo temp)
+168	1	AI	AISplinePath.cpp	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	2944	differs			research/drafts/GenerateTestSplinePath.80050af4.cpp	draft differs (unfinished); skipped by user 11-02
+169	2	Audio	stream.cpp	STREAM_kill	664	code_exact	0	scratch/par/parks/s15/sk_vpp.cpp	research/drafts/STREAM_kill.8014d6dc.cpp	matches only with a declined alias
+170	3	Multiplayer	player.cpp	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	1220	code_exact	0	scratch/par/soldier/pim/fn_c2.cpp	research/drafts/InitMultiplayer.800a6408.cpp	multiplayer; matches only with a declined form
