@@ -7,6 +7,7 @@ tables, named globals, field offsets, and how similar the instruction sequence i
 
     check_draft.py <function substring>...   detail for matching drafts
     check_draft.py --all                     write research/drafts/status.tsv
+    check_draft.py --widths                  list drafts that access some field at a different size
 
 Statuses, for code that is not yet linked and verified:
     code_exact    every instruction matches; still needs one_unit.py and reconstruct.py
@@ -136,6 +137,18 @@ def callee(name):
     return name.split("__F")[0]
 
 
+def width(mn):
+    """Bytes a load or store moves (psq for paired singles), from its mnemonic."""
+    if mn.startswith("psq"):
+        return "psq"
+    stem = mn.rstrip("ux")
+    for size, stems in ((1, ("lbz", "stb")), (2, ("lhz", "lha", "sth", "lhbr", "sthbr")),
+                        (4, ("lwz", "stw", "lfs", "stfs", "lwbr", "stwbr")), (8, ("lfd", "stfd"))):
+        if stem in stems:
+            return size
+    return None
+
+
 HELPERS = re.compile(r"^(_savegpr|_restgpr|_savefpr|_restfpr)_")
 
 
@@ -156,6 +169,7 @@ def item(img, sym, addend):
 def analyse(img, rows):
     """rows: (location, mnemonic, operands) -> feature summary."""
     calls, refs, offsets, seq = [], collections.Counter(), collections.Counter(), []
+    widths = collections.defaultdict(set)  # field offset -> access sizes
     bases = {}
     rel = next(iter(img.rel.values())) if img.linked else None
     text = next(i for i, s in enumerate(img.elf.sections) if s["name"] == ".text")
@@ -209,6 +223,8 @@ def analyse(img, rows):
                 pass  # register saves and restores in the prologue and epilogue, not fields
             elif base not in ("r1", "r2", "r13"):
                 offsets[(mn[0], imm)] += 1
+                if width(mn):
+                    widths[imm].add(width(mn))
             if mn[0] == "l":
                 bases.pop(dest, None)
             continue
@@ -233,7 +249,7 @@ def analyse(img, rows):
                 bases.pop(dest)
         elif mn == "mr" and len(args) == 2 and args[1] in bases:
             bases[dest] = bases[args[1]]
-    return dict(calls=calls, refs=refs, offsets=offsets, seq=seq)
+    return dict(calls=calls, refs=refs, offsets=offsets, seq=seq, widths=widths)
 
 
 def disasm(args):
@@ -280,7 +296,13 @@ def compare(draft_text, settings, function, address, size):
     return dict(status=status, similarity=sim, offsets=osim, lines=lines[0] if lines else None,
                 length=(len(target["seq"]), len(ours["seq"])), calls_same=target["calls"] == ours["calls"],
                 target_calls=target["calls"], our_calls=ours["calls"], missing=missing, extra=extra,
-                offsets_missing=target["offsets"] - ours["offsets"], offsets_extra=ours["offsets"] - target["offsets"])
+                offsets_missing=target["offsets"] - ours["offsets"], offsets_extra=ours["offsets"] - target["offsets"],
+                # An offset both sides use but at different sizes: a byte field written as
+                # an int (CCompartment::Draw's stw over the bin's one-byte flag) clobbers
+                # its neighbours with every offset still "matching".
+                widths={k: (sorted(target["widths"][k], key=str), sorted(ours["widths"][k], key=str))
+                        for k in target["widths"].keys() & ours["widths"].keys()
+                        if target["widths"][k] != ours["widths"][k]})
 
 
 def report(row, r):
@@ -295,6 +317,9 @@ def report(row, r):
     for label, c in (("missing", r["missing"]), ("extra", r["extra"])):
         if c:
             print(f"  {label}: " + "; ".join(f"{k[0]} {k[1]!r}" + (f" x{v}" if v > 1 else "") for k, v in c.items())[:800])
+    if r["widths"]:
+        print("  access sizes differ (offset: original vs draft): "
+              + "; ".join(f"{k:#x}: {a} vs {b}" for k, b_a in sorted(r["widths"].items()) for a, b in [b_a]))
     if r["offsets"] < 1:
         # Field offsets (load/store displacements off non-stack registers). Counts differ
         # when the compiler reuses a loaded value; an offset only one side has is the flag.
@@ -309,6 +334,12 @@ def report(row, r):
 
 def main():
     rows = list(csv.DictReader(open("research/drafts/index.tsv"), delimiter="\t"))
+    if sys.argv[1:] == ["--widths"]:
+        for row in rows:
+            r = compare(open(row["draft"], errors="replace").read(), row["compile_settings_from"], row["function"], row["address"], row["size"])
+            if r["status"] != "no_compile" and r["widths"]:
+                print(row["function"][:70], row["draft"], "; ".join(f"{k:#x}: {a} vs {b}" for k, (a, b) in sorted(r["widths"].items())), sep="\t", flush=True)
+        return
     if sys.argv[1:] == ["--all"]:
         with open("research/drafts/status.tsv", "w") as out:
             out.write("status\tsimilarity\toffsets\tlines\tsize\tfunction\tcalls_same\tmissing\textra\tdraft\n")

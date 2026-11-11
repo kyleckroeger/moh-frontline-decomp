@@ -65,7 +65,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 
 | Script | Use |
 | --- | --- |
-| `check_draft.py <name>...`, `--all` | Compare drafts with the original by content (calls, constants, strings, globals, offsets). `--all` rewrites `drafts/status.tsv`. Use this first. |
+| `check_draft.py <name>...`, `--all`, `--widths` | Compare drafts with the original by content (calls, constants, strings, globals, offsets, and the size of each field access). `--all` rewrites `drafts/status.tsv`; `--widths` lists drafts that read or write some field at a different size. Use this first. |
 | `score_draft.py <name>...` | Differing lines of matching drafts against the original |
 | `sbs.py <manifest> <draft> <function> <start> <end>` | Side-by-side original and draft, marking register differences |
 | `varmap.py` | Which variable sits in which register (uses `-sym on` debug output) |

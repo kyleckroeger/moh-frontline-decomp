@@ -7,6 +7,13 @@ class CVector3 {
 public:
     CVector3() {}
     CVector3(const CVector3& other) { d = other.d; }
+    // The original assigns x, y and z only: g_CamPos's w is left alone.
+    CVector3& operator=(const CVector3& other) {
+        d.v[0] = other.d.v[0];
+        d.v[1] = other.d.v[1];
+        d.v[2] = other.d.v[2];
+        return *this;
+    }
     CVector3Data d;
 } __attribute__((aligned(8)));
 class CMatrix {
@@ -44,7 +51,8 @@ struct CDrawContext {
 class CRenderBin {
 public:
     unsigned char unknown00[0x20];
-    int m_pending;
+    bool m_pending; // +0x20, a byte: the original writes it with stb
+    unsigned char unknown21[3];
     unsigned char unknown24[0x44];
     int m_count;
     unsigned char unknown6c[4];

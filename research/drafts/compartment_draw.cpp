@@ -40,7 +40,8 @@ typedef void (*GetPositionFn)(CameraView*, CVector3*);
 class CRenderBin {
 public:
     unsigned char unknown00[0x20];
-    int m_pending;
+    bool m_pending; // +0x20, a byte: the original writes it with stb
+    unsigned char unknown21[3];
     unsigned char unknown24[0x44];
     int m_count;   // +0x68
     unsigned char unknown6c[4];
