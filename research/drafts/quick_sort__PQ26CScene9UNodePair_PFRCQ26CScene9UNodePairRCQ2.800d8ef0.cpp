@@ -95,7 +95,7 @@ static void quick_sort_(I first, I last, C comp, T&) {
         I mid = first + 16;
         insertion_sort(first, mid, comp);
         for (I i = mid; i != last; ++i)
-            uli3(i, *i, comp, i - 1);
+            unguarded_linear_insert(i, *i, comp);
     }
 }
 

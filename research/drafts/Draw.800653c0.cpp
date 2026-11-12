@@ -23,8 +23,15 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
+
+inline void Assign(CVector3& d, const CVector3& s) { d = s; }
+inline CVector3 Copy(const CVector3& s) { return s; }
 class CVector4 {
 public:
+    void DivY() { y /= w; }
+    void DivX() { x /= w; }
+    void Div() { float iw = w; y /= iw; x /= iw; }
+    void Div2() { y /= w; x /= w; }
     float x;
     float y;
     float z;
@@ -127,14 +134,14 @@ void CAnimMorph::Draw(CDrawContext& context) {
         context.m_viewToScreen->Transform(a, left);
         CVector4 b;
         context.m_viewToScreen->Transform(b, right);
-        a.y /= a.w;
-        b.y /= b.w;
         a.x /= a.w;
+        a.y /= a.w;
         b.x /= b.w;
+        b.y /= b.w;
         float dy = b.y - a.y;
         float dx = b.x - a.x;
         if (dx * dx + dy * dy > 1.5f)
             DMMorphBlendDisplayLists(&m_render);
+        CAnimated::Draw(context);
     }
-    CAnimated::Draw(context);
 }

@@ -248,6 +248,7 @@ inline int TestLine(const CMatrix& frame, const CVector3& start, const CVector3&
 /* inferred: is the explosion more than 2 units above the node (only for
    bullet types 21 to 23) */
 inline bool IsAbove(const CExplosion& explosion, ISceneNode& node) {
+    bool above;
     switch (explosion.m_type) {
     case 21:
     case 22:
@@ -257,11 +258,13 @@ inline bool IsAbove(const CExplosion& explosion, ISceneNode& node) {
         CVector3 center = explosion.m_sphere.GetCenter();
         if (center.d.v[2] - nodePosition.d.v[2] > 2.0f)
             return true;
-        return false;
+        above = false;
+        break;
     }
     default:
         return false;
     }
+    return above;
 }
 
 bool CExplosion::CheckForObstructions(ISceneNode& node) {
