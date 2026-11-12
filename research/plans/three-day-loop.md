@@ -19,12 +19,13 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 89.20% (1,261,812 bytes) at 8881a8a4, +42,540 this run. Landing commits: 61.
-- Lanes (2026-11-12 09:18): **matching has run dry for now.** Every remaining
+- Verified: 89.20% (1,261,812 bytes) at 4e927077, +42,540 this run. Landing commits: 65.
+- Lanes (2026-11-12 09:49): **matching has run dry for now.** Every remaining
   draft either waits on a question below or has been worked without a new lead (climb1's
   declaration-order climb over all drafts at 15 lines or fewer found nothing). One agent runs
-  secondary work: hdr1, a shared CMatrix header like 666d079d (views and includes only, units
-  that keep their match). The coordinator refills slots only for a fresh lead. Since 07:45:
+  secondary research: cv1, why the shared CVector3 header's copy constructor recolours some
+  units (it blocks 115 CVector3 and 87 CMatrix header moves and needed local views in
+  several matches). The coordinator refills slots only for a fresh lead. Since 07:45:
   TestCollision(CPlane) 2,292, Orthonormalize 688, GetClosestParameter 1,056; real-name renames
   7a325e0f, f6ae520c (map: research/notes/real-names-map-2026-11-12.tsv). Usage limit stopped
   all agents 00:10-00:40 and 03:50-05:40 on 11-12.
@@ -131,6 +132,13 @@ multiplayer not at all. Every landing keeps the complete image identical.
      returning, body `a < b ? a : b`) in GetClosestParameter (1,056, 1b0b4dc8); the original's
      pointer select between two stack slots is what that inline compiles to. And PlayerScreenFlash goes 39 -> 34 with a
      CColor `operator=` taking its argument by value (slots1 judged it not natural; uncommitted).
+  17. **Shared headers (secondary work, research/notes/shared-headers.md).** CMatrix.h and
+     ISceneNode.h landed (8881a8a4, 306aa460, b9bf12de, ac0e8fe7, 4e927077): 53 + 3 units on
+     CMatrix, 12 + 53 on ISceneNode, complete image identical. The coordinator ruled that the
+     weak copies of ISceneNode's inline virtuals go in `weak_duplicates` (every original unit that
+     called them emitted them too). Open: collisionvolume_ctor is ready but would break
+     tests/test_data_strip.py's `['.data']` fixture assertion; player_ctor's 8-aligned matrices
+     vs CMatrix's 16-byte alignment; the GetTranslation/SetAxes helpers.
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), Update_Picture_Buffers 904 (q14), DrawTextCentered 416 (q8), PopUpMessageHandler::Loop 2,308 (q15). Total 10,828.
