@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 146860, "differs": 10144, "exact": 4472, "verified": 1244080},
+ "function_bytes_by_status": {"consistent": 146556, "differs": 10144, "exact": 4472, "verified": 1244384},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2494,7 +2494,7 @@
  [2148291572, 100, "__as__7CVolBoxFRC7CVolBox", "verified", "src/game/box_create.cpp"],
  [2148291672, 92, "__dt__7CVolBoxFv", "verified", "src/game/box_dtor.cpp"],
  [2148291764, 168, "BoxBoxTest__Fff5EAxisRfRfR5EAxis", "verified", "src/game/box_dtor.cpp"],
- [2148291932, 304, "GetExtents__11CVolCapsuleCFR8CVector3R8CVector3", "consistent", "research/drafts/GetExtents.800c555c.cpp"],
+ [2148291932, 304, "GetExtents__11CVolCapsuleCFR8CVector3R8CVector3", "verified", "src/game/capsule_plane.cpp"],
  [2148292236, 8, "TestVisibility__11CVolCapsuleCFR12CDrawContext", "verified", "src/game/capsule_plane.cpp"],
  [2148292244, 8, "TestCollision__11CVolCapsuleCFRC9CTriangleR10CCollisionb", "verified", "src/game/capsule_plane.cpp"],
  [2148292252, 372, "TestCollision__11CVolCapsuleCFRC6CPlaneR10CCollisionb", "verified", "src/game/capsule_plane.cpp"],

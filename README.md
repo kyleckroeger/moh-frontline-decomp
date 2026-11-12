@@ -13,7 +13,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 <!-- sync_docs:status -->
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
-| **Exact** | 1,252,924 | **88.57%** | Built from source and byte-identical to the original in the complete-image comparison: 4,888 functions in 1,253 units. |
+| **Exact** | 1,253,228 | **88.59%** | Built from source and byte-identical to the original in the complete-image comparison: 4,889 functions in 1,253 units. |
 | **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), so linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
@@ -22,10 +22,10 @@ Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 1,012,288 | 3,889 | 1,068 | `GC/1.3`, `GC/1.3.2` |
-| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 240,636 | 999 | 185 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 1,014,168 | 3,894 | 1,069 | `GC/1.3`, `GC/1.3.2` |
+| `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 239,060 | 995 | 184 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 161.5 KB isn't exact yet, in 121 functions across 59 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
+About 161.2 KB isn't exact yet, in 120 functions across 59 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.

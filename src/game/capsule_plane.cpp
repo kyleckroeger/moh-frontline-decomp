@@ -1,5 +1,7 @@
-// A fragment of capsule.cpp (0x800c568c): CVolCapsule's TestVisibility
-// (always visible) and triangle test (no collision), then its plane test.
+// A fragment of capsule.cpp (0x800c555c): CVolCapsule's extents (the axis end
+// points, each grown by the radius plus the contact epsilon, give the minimum
+// and maximum per axis), its TestVisibility (always visible) and triangle
+// test (no collision), then its plane test.
 // When both axis end points lie on the same side of the plane beyond the
 // radius, the plane is tested against a sphere of the capsule's radius at the
 // end point nearer to it; otherwise the capsule straddles the plane: the
@@ -169,6 +171,7 @@ public:
     virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
     int TestCollision(const CCSGVolume&, CCollision&, bool) const;
     bool TestVisibility(CDrawContext&) const;
+    void GetExtents(CVector3&, CVector3&) const;
 
     unsigned char unknown04[8];
     float m_radius;
@@ -178,6 +181,47 @@ public:
 class CAnimatedVolume : public CVolSphere {
 public:
 };
+
+// Inferred: value-returning add and subtract helpers (the extents use them
+// for every term).
+inline float SubV(float a, float b) { return a - b; }
+inline float AddV(float a, float b) { return a + b; }
+
+void CVolCapsule::GetExtents(CVector3& min, CVector3& max) const {
+    float radius = m_radius + CONTACT_EPSILON;
+    {
+        CVector3 a = m_axis.m_start;
+        float ax = SubV(a.x, radius);
+        float ay = SubV(a.y, radius);
+        float az = SubV(a.z, radius);
+        CVector3 b = m_axis.m_end;
+        float bx = SubV(b.x, radius);
+        float by = SubV(b.y, radius);
+        float bz = SubV(b.z, radius);
+        ax = ax < bx ? ax : bx;
+        min.x = ax;
+        ay = ay < by ? ay : by;
+        min.y = ay;
+        az = az < bz ? az : bz;
+        min.z = az;
+    }
+    {
+        CVector3 a = m_axis.m_start;
+        float ax = AddV(a.x, radius);
+        float ay = AddV(a.y, radius);
+        float az = AddV(a.z, radius);
+        CVector3 b = m_axis.m_end;
+        float bx = AddV(b.x, radius);
+        float by = AddV(b.y, radius);
+        float bz = AddV(b.z, radius);
+        ax = ax > bx ? ax : bx;
+        max.x = ax;
+        ay = ay > by ? ay : by;
+        max.y = ay;
+        az = az > bz ? az : bz;
+        max.z = az;
+    }
+}
 
 bool CVolCapsule::TestVisibility(CDrawContext&) const {
     return true;

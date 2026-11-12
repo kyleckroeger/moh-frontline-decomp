@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1252924,
+    "matching_code_bytes": 1253228,
     "total_executable_code_bytes": 1414572,
-    "percent": 88.57265660567295,
+    "percent": 88.59414720494962,
     "categories": {
-      "reconstructed_game": 1012288,
-      "restored_library": 240636
+      "reconstructed_game": 1014168,
+      "restored_library": 239060
     },
-    "matching_functions": 4888
+    "matching_functions": 4889
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -775,7 +775,7 @@
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
     "src/game/capsule_dispatch2.cpp": "11e72f277d2f9f76a1177319d991eff35084442fd4fd00356fba38ecc6ff3fe6",
     "src/game/capsule_dtor.cpp": "333de2394a1a5f4a94e0c2449a2b496c5c6dbb635476bc68c75def6ae5ea903c",
-    "src/game/capsule_plane.cpp": "2a5c716117a64d32011b702c550bce647532789371df636561931d4ddf9e6e9a",
+    "src/game/capsule_plane.cpp": "5de65a5ccff1c4e0d7d0175b5099ffb6dd12791dd7b36ed0476b370e3cb76bad",
     "src/game/cdbgeom.cpp": "a412910bc84f57d95605c155c2beba8de7d0e357272cd926512a4f2ca2d0ca4c",
     "src/game/cdbgeom_fiber.cpp": "aec87b1ec98038c4914d03643a6192d0c80174b0724059f2ffba6e35f6c9b0e1",
     "src/game/cdbgeom_sphere.cpp": "499b7a5ae72a249376d49c248cab0f9c4936d4a0b8bddf43249452283baa6e87",
@@ -2187,7 +2187,7 @@
     "config/GMFE69/capsule_dispatch.json": "8d4ce50085d048b2ca15db431aa32afcb32d3faf6e2d9555a17e8dd9ed937f06",
     "config/GMFE69/capsule_dispatch2.json": "72621c946bdd4e654f8af699c5ac013a53cf88b06aa3493775bddc68a81c9721",
     "config/GMFE69/capsule_dtor.json": "177319596dc914de76158b4bbcc4dc54c296e8d842f7a9c8c044e4d50ca55b8c",
-    "config/GMFE69/capsule_plane.json": "0cd9eea5654039cfddcfcd8364f49dd36ae3a33b81c719b031d80e2618dee2eb",
+    "config/GMFE69/capsule_plane.json": "22b90bd5b04579e4362d26f09bb5160f6adf02a94dc92dc1ceec0c44fd11ed2a",
     "config/GMFE69/cdbgeom.json": "dabab8db3824dfad33aca913a6868ef2ea5e38bc7b6d0f71f5613dbd835f82ab",
     "config/GMFE69/cdbgeom_fiber.json": "97f71f075556256285b961bb4fe5f0bb63eb52faf1b931c41b859105611774f9",
     "config/GMFE69/cdbgeom_sphere.json": "1bcac1534388319ef24eeb3a3aad2481b5f3dac85400879512d470d8db4448a1",
@@ -38810,9 +38810,9 @@
     },
     {
       "id": "capsule_plane",
-      "category": "restored_library",
-      "functions": 4,
-      "code_bytes": 1576,
+      "category": "reconstructed_game",
+      "functions": 5,
+      "code_bytes": 1880,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38844,8 +38844,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0ee0edde826f2beac140bc805fd05f9d6d8b066351c515125f62760b0ab886a2",
-      "linked_sha256": "6437783162a46bc62c252b058943ce1adc9e60860cc35922fa46530dd0f3b2f3"
+      "object_sha256": "f17fa73a5796087a6f457d91d522c38cbfe0ed95af0637dd1481b6257e242e1d",
+      "linked_sha256": "a9d83ea2c64c8d51f862407daa1702765111026a1d59bced8b82171794b8900e"
     },
     {
       "id": "particlesystem_visible",
@@ -54976,17 +54976,10 @@
         ]
       },
       {
-        "name": "Unmatched files/capsule.cpp [symbol evidence]",
+        "name": "Unmatched files/capsule.cpp [local symbols only]",
         "file_record": 129,
         "file_name": "capsule.cpp",
         "ranges": [
-          {
-            "address": "0x800c555c",
-            "size": 304,
-            "kind": "function",
-            "name": "GetExtents__11CVolCapsuleCFR8CVector3R8CVector3",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800c5cb4",
             "size": 2092,
