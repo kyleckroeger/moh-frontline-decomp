@@ -19,14 +19,15 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.77% (1,255,660 bytes) at 1976c05b, +36,388 this run. Landing commits: 48.
-- Lanes (2026-11-12 06:51): geometry, airender and systems lanes dry;
-  the four slots: land2 (harvested near-misses: CalculateLevelStats, TLT_LoadFromRepository,
-  GetInitialBuddyOrders, SoundSchedule::Update; pending-form drafts archived to
-  research/drafts/pending/), knots2 (register knots on harvested drafts), mid3 (15-60-line
-  drafts), natural1 (natural replacements for the audit's load-bearing forms). harvest1 moved
-  17 scratch bests into research/drafts (64c0d5b0, f476a06f); clean1 applied the audit's free
-  fixes (45c5c504). Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
+- Verified: 88.85% (1,256,876 bytes) at 26fe226b, +37,604 this run. Landing commits: 51.
+- Lanes (2026-11-12 07:16): geometry, airender and systems lanes dry;
+  the four slots: zero1 (the li/mr shared-zero rule, starting with CalculateLevelStats at 1
+  line), knots3 (knots2's locals-first and add-in-place recipes on geometry knots), scene1
+  (CScene::Draw at 48, frame now right; CScene ctor), mid4 (least-worked drafts by bytes).
+  Recent: SoundSchedule::Update 1,864 (a842943c), CCDBObject::Init 784 (f748ce87),
+  SNDVOICEI_free 396 (7dcdeb04); audit free fixes 45c5c504 and natural forms 1976c05b, cf37912d;
+  pending-form drafts in research/drafts/pending/. Usage limit stopped all agents 00:10-00:40
+  and 03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -103,7 +104,10 @@ multiplayer not at all. Every landing keeps the complete image identical.
      CVolCapsule::GetExtents), DumpBuddyVector in BuddyDied, debug_prof's `(void)0`, and local
      CVector3 views that the shared header would also match. Its "not needed" items were
      cleaned up during the run (agent clean1). From 06:40 on 11-12, agents no longer land forms
-     of the wrapper and duplicate-inline kind. Held back under that rule: Update_Picture_Buffers
+     of the wrapper and duplicate-inline kind. natural1 replaced three load-bearing forms with
+     natural ones (1976c05b: GetPalette inline, `bin = new (bin) CCPTMatBin(base)`, which you
+     may still read as a write-back; cf37912d: debug_prof's `(void)0` gone). Still load-bearing:
+     WriteSwapVCD (4 lines without), DumpBuddyVector (28), SubV/AddV (66), Mul (2). Held back under that rule: Update_Picture_Buffers
      (904 B) is code exact with an invented `third_plane(height, width, data)` inline whose
      parameter order sets the registers; on a yes, getpic.cpp becomes one complete unit (recipe
      in scratch/loop3/knots1/notes.md, draft research/drafts/Update_Picture_Buffers.80100a30.cpp).
@@ -117,7 +121,8 @@ multiplayer not at all. Every landing keeps the complete image identical.
      groups (one block per inline expansion), so they reflect real structure, but the names are
      inferred and the Node*/Position* pairs have similar bodies with different inputs. Also: is
      the `GiveBuddyOrders(vec_iter&)` forwarding overload (needed by GetInitialBuddyOrders, 7
-     lines) an inline helper or a forwarding wrapper?
+     lines) an inline helper or a forwarding wrapper? And PlayerScreenFlash goes 39 -> 34 with a
+     CColor `operator=` taking its argument by value (slots1 judged it not natural; uncommitted).
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), Update_Picture_Buffers 904 (q14), DrawTextCentered 416 (q8), PopUpMessageHandler::Loop 2,308 (q15). Total 10,828.
