@@ -140,4 +140,7 @@ lost units differ in .text or sections (code-level differences), 33 don't compil
 or spellings). Table: research/layout/header_moves/CVector3.tsv.
 Follow-up: hierobject, skybox and static_obj_dtor (their CVector3 view now shared) also move onto
 CMatrix.h, again after renaming their stripped labels (same matching); staticobjfactory_lookup
-has no CMatrix view.
+has no CMatrix view. On ISceneNode.h: staticobjfactory_lookup moves after renaming its stripped labels;
+static_obj_dtor (it constructs an ISceneNode, as compartment_ctor) with its weak copies listed and its
+labels from port_unit's draft (redraft.py), including the new ~IDestructible extab pair; skybox
+loses (.rodata pool item size differs).

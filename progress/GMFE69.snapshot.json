@@ -1117,7 +1117,7 @@
     "src/game/static_obj_bounds.cpp": "95f46ee3f954cb34559dde7b632acbee9ba83303048b65c584a359bf2e07da11",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
     "src/game/static_obj_commit.cpp": "103ecdc512d7ac7ac7772a3089f58f98a6eb1e323378a4b811a67594d86e6f8c",
-    "src/game/static_obj_dtor.cpp": "401fc569f9816b943dc63449b888af274bc9d6b42a53ef7e52874aa328b6237c",
+    "src/game/static_obj_dtor.cpp": "acdac16e8e2c243a4d0d28aba27b965c6d76de90e30029007308184f0e17bb66",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
     "src/game/static_obj_rows.cpp": "0fb0976dfd3b7139664668b9748e19b44fa4d7b4d3f297c0d6d69c1ae2baa28e",
@@ -1142,7 +1142,7 @@
     "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
-    "src/game/staticobjfactory_lookup.cpp": "dde9f684fb0de568a3f42f4be46f0f7c09e256e79024bcc4c083f0f16138a00c",
+    "src/game/staticobjfactory_lookup.cpp": "19eb9d9ed032b6cc222426f494c36a3905175be43960e079bad86030b04feee9",
     "src/game/staticobjfactory_patchmvd.cpp": "d09c8a5a48ac24ad5b86a5edc5f14d62cc011cfa0210f15dae38538821677d34",
     "src/game/staticobjfactory_weak.cpp": "56a75fc11a7d8e1ad182c3759e1e7cc376527a84a4da644d13b31eb10b6fa912",
     "src/game/surfacetype.cpp": "3499ce5dc7d066f093e39c158e9b096e37683df4d6b6d234eb9b08395d411390",
@@ -2827,7 +2827,7 @@
     "config/GMFE69/static_obj_bounds.json": "0e67d1a04445e710862a60b33ac2bbf71f681f4b82fe9b7c73b27f7cac923522",
     "config/GMFE69/static_obj_collisionid.json": "2e09b85ddda256c2d2c9ec91ccd8bd78419d2fb6a16bc9a74607a4a9a86e4101",
     "config/GMFE69/static_obj_commit.json": "b4e5d617c45dd5dea7c23dad8499520227451b32eb900e1d2199517caa430515",
-    "config/GMFE69/static_obj_dtor.json": "d0df1b890f3c2f28f256f740207876b8a710952fa6853bff019b90a0657d41c4",
+    "config/GMFE69/static_obj_dtor.json": "24160d73cdbe037ff6245b700f9e5bf1c13046b940ab849125aa14695803da1d",
     "config/GMFE69/static_obj_firedby.json": "e42aa5c7378930075d2b010814c1ef8d3c5f472c8ed042f0f1fb294225794351",
     "config/GMFE69/static_obj_pathbegin.json": "fbfeaab8f3fb508d9a9e88d0d5cc59584cd396767a9e7787b428857c7c5bf242",
     "config/GMFE69/static_obj_rows.json": "5f6fe659cc550fe18e9c8ee5c8df6aad5cc98934b97ab7eaeae277dcfd6aea4c",
@@ -2852,7 +2852,7 @@
     "config/GMFE69/staticmesh_simplebin.json": "5fb23a801437c0a09b0f12aec1762ea737197d71a1aa7a2c8e748b89b51f8abe",
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
-    "config/GMFE69/staticobjfactory_lookup.json": "7e2d2b5ac1570cea9a57addb662141d5a06d686e9e421fb63a0c1e37ab213bbe",
+    "config/GMFE69/staticobjfactory_lookup.json": "2c76c1d9181f0a2cf4d9ec71061b1ef82417b793908a375073312dd328cba2f4",
     "config/GMFE69/staticobjfactory_patchmvd.json": "4e5827eac58bcfe1e8f10908697a73b6245338a77c5973156f02f934d6244563",
     "config/GMFE69/staticobjfactory_weak.json": "afc8b502c5c0e974004831714710ab08f4e1334c4a6a29daf2a8a38286377c92",
     "config/GMFE69/stimemul.json": "8daf6f44288a9589aaf8719ff8e636e2f4d7d00296603d9d8ce6bcbc2ff41088",
@@ -29078,8 +29078,8 @@
       "discarded_functions": [
         "__dt__12MESHSLOTVIEWFv"
       ],
-      "object_sha256": "1ac046c538ef7708e86702a55edaef1a3e76a360d5e3d43d0dda42696687d997",
-      "linked_sha256": "6ad2cd50c24ac0a77dc1e6a9fd1d41c6df18866c5d4fc63fe9a2a662f881dc3d"
+      "object_sha256": "5404b95d2f82faa9fa9ee4d3299f0f6790b019f990b1675e51d3bc6fb0c535f8",
+      "linked_sha256": "1665787dc7b26921911c5aeade4024df33d9935a77af95b94a81b383d9ac08fa"
     },
     {
       "id": "filesys_ea_del",
@@ -36040,8 +36040,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "750b1f3e97787949ed70c047331ef46432727fde67f47593dccf388df3cc63ec",
-      "linked_sha256": "fc9835668218c32dfda8fa7ed4152acd9d6b2ec1ad61238d17b3b80d83ab9567"
+      "object_sha256": "c53f6f03c6b731ac81dd7909f0ee613b9c924cf6c4911281a224f3913e4d9966",
+      "linked_sha256": "0d62485ac4f113aa3fee3c0315ddb711171e3f3c074acea2773e986e0f9230b8"
     },
     {
       "id": "bullet_ctor",
