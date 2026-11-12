@@ -738,8 +738,6 @@
     "pumhandler_list.json",
     "world_volume_list.json",
     "scene_list_extent.json",
-    "buddy_vec_info.json",
-    "buddy_veciter_info_dtor.json",
     "buddy_vec_path_end.json",
     "buddy_veciter_path_dtor.json",
     "buddy_vec_path_begin.json",

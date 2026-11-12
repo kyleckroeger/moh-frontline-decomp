@@ -1,7 +1,6 @@
 status	similarity	offsets	lines	size	function	calls_same	missing	extra	draft
 code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	research/drafts/UpdateTargetPosition.8004e024.cpp
 code_exact	1.000	1.000	0	1220	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	True	0	0	research/drafts/InitMultiplayer.800a6408.cpp
-code_exact	1.000	1.000	0	900	BIFunc_UpdateBuddyCheckpoints__FPPiPv	True	0	0	research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp
 code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp
 consistent	1.000	1.000	1	2696	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	True	0	0	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
 consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp
@@ -74,7 +73,6 @@ consistent	1.000	1.000	101	2948	UpdateBoundingBox__15CParticleSystemFv	True	0	0	
 consistent	0.910	0.737	104	572	TLT_LoadFromRepository__FPCcPiPb	True	0	0	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
 consistent	0.791	1.000	105	456	BIFunc_MechFollowPath__FPPiPv	True	0	0	research/drafts/BIFunc_MechFollowPath.80021220.cpp
 consistent	0.898	1.000	109	1016	_matrix_rot_yzx__FR7CMatrixlll	True	0	0	research/drafts/_matrix_rot_yzx.800f4e98.cpp
-consistent	0.983	1.000	112	1424	BIFunc_UpdateBuddyProgress__FPPiPv	False	0	0	research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp
 differs	0.998	1.000	135	1232	ShellInit__10CShellMenuFUl	True	1	1	research/drafts/ShellInit.800e752c.cpp
 consistent	0.959	1.000	140	1848	DrawBulletStats__13UserInterfaceFv	True	0	0	research/drafts/DrawBulletStats.800bce58.cpp
 consistent	0.983	1.000	143	604	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	True	0	0	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp

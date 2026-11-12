@@ -27,7 +27,7 @@ real_lines	size	address	function	compile_settings_from	draft
 11	804	800d8ef0	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	config/GMFE69/scene_quicksort.json	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp
 11	392	8009d470	SetFinishedLevelData__13CPlayerObjectFv	config/GMFE69/player_begincrouch.json	research/drafts/SetFinishedLevelData.8009d470.cpp
 16	6224	8002c258	BIFunc_GetObjInfo__FPPiPv	config/GMFE69/bsbifunc_setobjinfo.json	research/drafts/BIFunc_GetObjInfo.8002c258.cpp
-16	1244	80057164	BIFunc_BuddyDied__FPPiPv	config/GMFE69/buddy_veciter_info_dtor.json	research/drafts/BIFunc_BuddyDied.80057164.cpp
+16	1244	80057164	BIFunc_BuddyDied__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_BuddyDied.80057164.cpp
 17	724	80102a20	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	config/GMFE69/hwvideodisplaylist_delete.json	research/drafts/MOHFL_VD_create.80102a20.cpp
 17	520	800d6cf4	CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei	config/GMFE69/weaponfactory_params.json	research/drafts/CreateWeaponByCRC.800d6cf4.cpp
 18	1272	80064ca0	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	config/GMFE69/animmorph_weight.json	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp
@@ -44,7 +44,7 @@ real_lines	size	address	function	compile_settings_from	draft
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
 25	712	801503b4	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	config/GMFE69/aramalloc_alloc.json	research/drafts/ARAM_alloc_node.801503b4.cpp
 26	1884	8010b93c	PATH_event	config/GMFE69/path_stop.json	research/drafts/PATH_event.8010b93c.cpp
-27	1264	80057640	BIFunc_GetInitialBuddyOrders__FPPiPv	config/GMFE69/buddy_veciter_info_dtor.json	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
+27	1264	80057640	BIFunc_GetInitialBuddyOrders__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
 27	904	80100a30	Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL	config/GMFE69/getpic.json	research/drafts/Update_Picture_Buffers.80100a30.cpp
 28	1064	8005fb58	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_weapon.json	research/drafts/death_cb.8005fb58.cpp
 28	164	8009174c	Multiply__11CQuaternionF11CQuaternion	config/GMFE69/quaternion.json	research/drafts/Multiply.8009174c.cpp
@@ -72,7 +72,6 @@ real_lines	size	address	function	compile_settings_from	draft
 104	572	8001cca8	TLT_LoadFromRepository__FPCcPiPb	config/GMFE69/system.json	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
 105	456	80021220	BIFunc_MechFollowPath__FPPiPv	config/GMFE69/bsbifunc_vibration.json	research/drafts/BIFunc_MechFollowPath.80021220.cpp
 109	1016	800f4e98	_matrix_rot_yzx__FR7CMatrixlll	config/GMFE69/dmrender.json	research/drafts/_matrix_rot_yzx.800f4e98.cpp
-112	1424	80056bd4	BIFunc_UpdateBuddyProgress__FPPiPv	config/GMFE69/buddy_veciter_info_dtor.json	research/drafts/BIFunc_UpdateBuddyProgress.80056bd4.cpp
 135	1232	800e752c	ShellInit__10CShellMenuFUl	config/GMFE69/ShellMenu_playtime.json	research/drafts/ShellInit.800e752c.cpp
 140	1848	800bce58	DrawBulletStats__13UserInterfaceFv	config/GMFE69/UserInterface_compass.json	research/drafts/DrawBulletStats.800bce58.cpp
 143	604	800f53c0	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	config/GMFE69/dmcluster_init.json	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp
