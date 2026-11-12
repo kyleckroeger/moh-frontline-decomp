@@ -33,3 +33,10 @@ Decompiles: re-run Ghidra decompile on 0x800567e8, 0x80056bd4, 0x80057164, 0x800
   REFERENCE ('SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint)'); a BuddyInfo* parameter or direct code mirrors x/z.
 - Rule seen in every buddy BIFunc: the FIRST object-info block of a function has x in f31, every later one x in f29.
   BuddyDied (12) has exactly that left: its DumpAttached/DumpReady blocks come out x=f31.
+- BuddyDied matched (2026-11-11): the attached-list dump body takes the vector as a parameter
+  ('DumpBuddyVector(dwi::vector<BuddyInfo>&)', called by DumpAttachedBuddies): one more inline level flips its FPRs to x=f29.
+  GiveBuddyOrders has an iterator overload ('GiveBuddyOrders(dwi::vec_iter<BuddyInfo>&)') used by every loop, and its
+  BuddyInfo* parameter is 'BuddyInfo* const' (GetInitialBuddyOrders 18 -> 7; the rest stay 0).
+- GetInitialBuddyOrders (scratch/loop3/scripting/chk/g28/const.cpp): 7 lines left, DumpReadyBuddies' node/soldier registers
+  swapped (orig node r30 = the dead function-level soldier's register, soldier r26). DumpReady decl orders (multi-function
+  climb), const locals, raw node pointer, generic list parameter: no gain.

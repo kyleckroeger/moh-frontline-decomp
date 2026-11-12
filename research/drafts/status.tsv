@@ -28,7 +28,6 @@ consistent	1.000	1.000	11	804	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNo
 consistent	1.000	1.000	11	392	SetFinishedLevelData__13CPlayerObjectFv	True	0	0	research/drafts/SetFinishedLevelData.8009d470.cpp
 consistent	1.000	1.000	13	964	GetNearestPoint__12CCDBTriangleCF8CVector3PfPf	True	0	0	research/drafts/GetNearestPoint.8006c800.cpp
 consistent	1.000	1.000	16	6224	BIFunc_GetObjInfo__FPPiPv	True	0	0	research/drafts/BIFunc_GetObjInfo.8002c258.cpp
-consistent	1.000	1.000	16	1244	BIFunc_BuddyDied__FPPiPv	True	0	0	research/drafts/BIFunc_BuddyDied.80057164.cpp
 consistent	0.994	1.000	17	724	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	True	0	0	research/drafts/MOHFL_VD_create.80102a20.cpp
 consistent	1.000	1.000	17	520	CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei	True	0	0	research/drafts/CreateWeaponByCRC.800d6cf4.cpp
 consistent	1.000	1.000	18	1272	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	True	0	0	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp

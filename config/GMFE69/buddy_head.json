@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80056728",
-      "size": 2620,
+      "size": 3864,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ac2c",
-      "size": 64,
+      "size": 88,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011dc8",
-      "size": 48,
+      "size": 60,
       "type": 1
     }
   ],
@@ -92,9 +92,16 @@
       "address": "0x80056bd4",
       "size": 1424,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_BuddyDied__FPPiPv",
+      "address": "0x80057164",
+      "size": 1244,
+      "binding": 1
     }
   ],
   "externals": {
+    "AddBuddy__F9BuddyInfob": "0x80057eac",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "DebugMsg__FPCce": "0x80018c88",
     "__dl__FPv": "0x8001ca2c",

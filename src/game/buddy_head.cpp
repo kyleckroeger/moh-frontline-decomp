@@ -1,11 +1,13 @@
-// The start of buddy.cpp (0x80056728..0x80057164): the built-in script
+// The start of buddy.cpp (0x80056728..0x80057640): the built-in script
 // functions SetBuddyPathGroup (stores a path base in g_buddy_path_base),
 // UpdateBuddyCheckpoints (records the player's checkpoint, gives every active
-// attached buddy its orders, then dumps the attached list through DebugMsg)
-// and UpdateBuddyProgress (moves an attached buddy on to a checkpoint, or
+// attached buddy its orders, then dumps the attached list through DebugMsg),
+// UpdateBuddyProgress (moves an attached buddy on to a checkpoint, or
 // updates the progress of the ready buddies of that soldier, then dumps the
-// ready list), with the weak dwi::vector<BuddyInfo> begin/end and
-// vec_iter<BuddyInfo> destructor CW emits after their first user.
+// ready list) and BuddyDied (frees the dead soldier's attached slot and
+// attaches the first ready buddy in its place, or drops the soldier from the
+// ready list, then dumps both lists), with the weak dwi::vector<BuddyInfo>
+// begin/end and vec_iter<BuddyInfo> destructor CW emits after their first user.
 // The file's .rodata block starts with the dwi header's prime table, so it is
 // defined here and the block is pooled (the functions address their strings
 // from the block base). The globals are defined by the rest of the file
@@ -384,7 +386,7 @@ inline BSPlacementView* GetPlacement(BSObject* object) {
 /* inferred inline: start the buddy along its next path while the player is ahead */
 void AddBuddy(BuddyInfo, bool);
 
-inline void GiveBuddyOrders(BuddyInfo* buddy) {
+inline void GiveBuddyOrders(BuddyInfo* const buddy) {
     DebugMsg("BUDDY_DEBUG: Attempting GiveBuddyOrders\n");
     if (buddy->progress < g_player_checkpoint) {
         if (!buddy->moving) {
@@ -421,18 +423,25 @@ inline void GiveBuddyOrders(BuddyInfo* buddy) {
     }
 }
 
-inline void SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint) {
-    it->progress = checkpoint;
-    it->moving = 0;
+/* inferred: the iterator form used by the loops (an extra inline level, as the FPR colouring shows) */
+inline void GiveBuddyOrders(dwi::vec_iter<BuddyInfo>& it) {
     GiveBuddyOrders(it.operator->());
 }
 
-inline void DumpAttachedBuddies() {
+inline void SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint) {
+    it->progress = checkpoint;
+    it->moving = 0;
+    GiveBuddyOrders(it);
+}
+
+/* inferred: the attached-list dump body takes the vector as a parameter (the extra inline level
+   gives BuddyDied's dump blocks their original FPR colouring) */
+inline void DumpBuddyVector(dwi::vector<BuddyInfo>& buddies) {
     DebugMsg("BUDDY_DEBUG: Dumping attached list...\n");
     CBuddySoldier* soldier;
-    for (int i = 0; i < g_attached_buddies.m_size; i++) {
-        if (g_attached_buddies[i].active == true) {
-            soldier = g_attached_buddies[i].soldier;
+    for (int i = 0; i < buddies.m_size; i++) {
+        if (buddies[i].active == true) {
+            soldier = buddies[i].soldier;
             BSObject* object = soldier->GetScriptObject();
             float z;
             float y;
@@ -455,6 +464,10 @@ inline void DumpAttachedBuddies() {
                      (int)z, state->state, i);
         }
     }
+}
+
+inline void DumpAttachedBuddies() {
+    DumpBuddyVector(g_attached_buddies);
 }
 
 inline void DumpReadyBuddies() {
@@ -509,7 +522,7 @@ void BIFunc_UpdateBuddyCheckpoints(int** stack, void*) {
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
         if (it->active)
-            GiveBuddyOrders(it.operator->());
+            GiveBuddyOrders(it);
     }
     DumpAttachedBuddies();
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
@@ -586,3 +599,54 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
     **stack = result;
 }
 
+void BIFunc_BuddyDied(int** stack, void*) {
+    BSObject* object = (BSObject*)*(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument - 1));
+    CBuddySoldier* soldier = object->m_class->GetOwner()->GetSoldier();
+    if (soldier) {
+        bool found = false;
+        dwi::vec_iter<BuddyInfo> it;
+        for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
+            if (it->soldier == soldier) {
+                it->active = false;
+                it->soldier = 0;
+                float z;
+                float y;
+                float x = 0.0f;
+                y = x;
+                z = x;
+                int index = 0;
+                if (object->m_node) {
+                    BSPlacementView* placement = object->m_node->placement;
+                    if (placement) {
+                        x = placement->x;
+                        y = placement->y;
+                        z = placement->z;
+                    }
+                    if (placement)
+                        index = placement->pathIndex;
+                }
+                BSStateView* state = object->m_class->GetState();
+                DebugMsg("BUDDY_DEBUG: BuddyDied=%x[%3d @(%4d,%4d,%4d) %4d]\n", soldier, index, (int)x, (int)y, (int)z,
+                         state->state);
+                if (g_ready_buddies.m_count > 0) {
+                    AddBuddy(g_ready_buddies.m_head.m_next->m_data, true);
+                    g_ready_buddies.erase(g_ready_buddies.m_head.m_next);
+                }
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            for (dwi::list_node<BuddyInfo>* node = g_ready_buddies.m_head.m_next; node != &g_ready_buddies.m_head;
+                 node = node->m_next) {
+                if (node->m_data.soldier == soldier) {
+                    g_ready_buddies.erase(node);
+                    break;
+                }
+            }
+        }
+        DumpAttachedBuddies();
+        DumpReadyBuddies();
+    }
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}

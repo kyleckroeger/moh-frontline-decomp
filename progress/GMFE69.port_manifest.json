@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1246,
- "function_bytes_by_status": {"consistent": 166396, "differs": 10144, "exact": 4472, "verified": 1224544},
+ "function_bytes_by_status": {"consistent": 165152, "differs": 10144, "exact": 4472, "verified": 1225788},
  "data_bytes_owned": 723983,
  "data_bytes_total": 1976252,
  "functions": [
@@ -958,7 +958,7 @@
  [2147838852, 12, "begin__Q23dwi18vector<9BuddyInfo>Fv", "verified", "src/game/buddy_head.cpp"],
  [2147838864, 68, "__dt__Q23dwi20vec_iter<9BuddyInfo>Fv", "verified", "src/game/buddy_head.cpp"],
  [2147838932, 1424, "BIFunc_UpdateBuddyProgress__FPPiPv", "verified", "src/game/buddy_head.cpp"],
- [2147840356, 1244, "BIFunc_BuddyDied__FPPiPv", "consistent", "research/drafts/BIFunc_BuddyDied.80057164.cpp"],
+ [2147840356, 1244, "BIFunc_BuddyDied__FPPiPv", "verified", "src/game/buddy_head.cpp"],
  [2147841600, 1264, "BIFunc_GetInitialBuddyOrders__FPPiPv", "consistent", "research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp"],
  [2147842864, 892, "BIFunc_AddBuddy__FPPiPv", "consistent", "research/drafts/BIFunc_AddBuddy.80057b30.cpp"],
  [2147843756, 912, "AddBuddy__F9BuddyInfob", "consistent", "research/drafts/AddBuddy.80057eac.cpp"],
