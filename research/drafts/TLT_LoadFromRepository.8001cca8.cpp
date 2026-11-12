@@ -1,3 +1,8 @@
+// best WIP (harvest1, 2026-11-12): 13 real lines (was 53; index said 53), from
+// scratch/loop3/struct5/tlt/TLT_BEST.cpp: plain g_Repository.find(data) inline instead of the hand-
+// written bucket walk. Left: register colouring of the inlined find (p/data/last); writing find out in
+// the caller gives the right registers but the found branch becomes 'beq found' instead of 'bne +8; b
+// found' (scratch/loop3/struct4, struct5 notes).
 namespace dwi {
 template <class K, class V>
 class hash_map {
@@ -106,20 +111,7 @@ char* TLT_LoadFromRepository(const char* name, int* size, bool* cached) {
     char* data = TLT_LoadFileFromLevelBigFile(name, size);
     *cached = false;
     if (data) {
-        dwi::hash_map<char*, char*>::iterator it;
-        if (g_Repository.m_count == 0) {
-            it = g_Repository.end();
-        } else {
-            it = g_Repository.m_data + (unsigned long)data % g_Repository.m_size;
-            while ((int)it->first != -1) {
-                if (it->first == data)
-                    goto found;
-                if (++it == g_Repository.m_data + g_Repository.m_size)
-                    it = g_Repository.m_data;
-            }
-            it = g_Repository.end();
-        }
-    found:
+        dwi::hash_map<char*, char*>::iterator it = g_Repository.find(data);
         *cached = it != g_Repository.end();
         if (!*cached)
             g_Repository.insert(data, data);

@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 83 real lines (was 105; index said 105), from
+// scratch/loop3/scripting/mfp3/BEST83.cpp: argument locals declared at their reads,
+// yaw/pitch/target/value named before the call. Left: GPR rotation in block 1; 1008 argument
+// spellings/orders inert (scratch/loop3/scripting/s10).
 // A fragment of bsbifunc.cpp (0x80021220): the built-in MechFollowPath sets a
 // mechanism (the object's static object) moving along a path: the path, two
 // flags (non-zero tests), a speed (above 1000: reversed, less 1000), an
@@ -99,16 +103,11 @@ extern int g_iCurrentBIFIndex;
 
 void BIFunc_MechFollowPath(int** stack, void* object) {
     CStaticObject* mech = ((ISceneNode*)object)->AsStaticObject();
-    int* args = *stack;
     int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
-    int path;
-    bool flag1;
-    bool flag2;
-    int speed;
-    path = *(args - (count - 1));
-    flag2 = *(args - (count - 3)) != 0;
-    speed = *(args - (count - 4));
-    flag1 = *(args - (count - 2)) != 0;
+    int path = *(*stack - (count - 1));
+    bool flag2 = (bool)*(*stack - (count - 3));
+    bool flag1 = (bool)*(*stack - (count - 2));
+    int speed = *(*stack - (count - 4));
     bool reverse;
     if (speed > 1000) {
         reverse = true;
@@ -116,11 +115,12 @@ void BIFunc_MechFollowPath(int** stack, void* object) {
     } else {
         reverse = false;
     }
-    int accel = *(args - (count - 5));
-    accel = accel + 1;
+    int accel = *(*stack - (count - 5)) + 1;
+    float yaw = *(float*)(*stack - (count - 6));
+    float pitch = *(float*)(*stack - (count - 7));
+    BSObject* target = (BSObject*)*(*stack - (count - 8));
+    int value = *(*stack - (count - 9));
     mech->SetMovementPath(path, flag1, flag2, 0.016683351f * speed, 0.001f * (accel * accel),
-                          0.017453292f * (0.016683351f * *(float*)(args - (count - 6))),
-                          0.017453292f * (0.016683351f * *(float*)(args - (count - 7))), (BSObject*)*(args - (count - 8)),
-                          *(args - (count - 9)), reverse);
+                          0.017453292f * (0.016683351f * yaw), 0.017453292f * (0.016683351f * pitch), target, value, reverse);
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }

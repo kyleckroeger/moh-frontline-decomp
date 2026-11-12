@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 7 real lines (was 27; index said 27), from
+// scratch/loop3/scripting/chk/GI_BEST7.cpp: list iterators and single-use inline helpers
+// (DumpBuddyVector, SetBuddyProgress, a vec_iter overload of GiveBuddyOrders). Left: DumpReadyBuddies'
+// node/soldier registers swapped (scratch/loop3/scripting notes, session 10+).
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 inline void* operator new(unsigned long, void* p) { return p; }
@@ -132,15 +136,11 @@ public:
 };
 
 /* inferred: an attached buddy (soldier, checkpoint progress, path base, moving flag, in use) */
-template <class T> inline void Zero(T& x) { x = 0; }
 struct BuddyInfo {
     BuddyInfo() : soldier(0), progress(0) {
-        Clear(this);
-    }
-    static void Clear(BuddyInfo* b) {
-        b->moving = 0;
-        b->active = false;
-        b->path = 0;
+        moving = 0;
+        active = false;
+        path = 0;
     }
     BuddyInfo(const BuddyInfo& other) : soldier(other.soldier), progress(other.progress) {
         moving = other.moving;
@@ -375,7 +375,7 @@ inline BSPlacementView* GetPlacement(BSObject* object) {
 /* inferred inline: start the buddy along its next path while the player is ahead */
 void AddBuddy(BuddyInfo, bool);
 
-inline void GiveBuddyOrders(BuddyInfo* buddy) {
+inline void GiveBuddyOrders(BuddyInfo* const buddy) {
     DebugMsg("BUDDY_DEBUG: Attempting GiveBuddyOrders\n");
     if (buddy->progress < g_player_checkpoint) {
         if (!buddy->moving) {
@@ -412,12 +412,22 @@ inline void GiveBuddyOrders(BuddyInfo* buddy) {
     }
 }
 
-inline void DumpAttachedBuddies() {
+inline void GiveBuddyOrders(dwi::vec_iter<BuddyInfo>& it) {
+    GiveBuddyOrders(it.operator->());
+}
+
+inline void SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint) {
+    it->progress = checkpoint;
+    it->moving = 0;
+    GiveBuddyOrders(it);
+}
+
+inline void DumpBuddyVector(dwi::vector<BuddyInfo>& buddies) {
     DebugMsg("BUDDY_DEBUG: Dumping attached list...\n");
     CBuddySoldier* soldier;
-    for (int i = 0; i < g_attached_buddies.m_size; i++) {
-        if (g_attached_buddies[i].active == true) {
-            soldier = g_attached_buddies[i].soldier;
+    for (int i = 0; i < buddies.m_size; i++) {
+        if (buddies[i].active == true) {
+            soldier = buddies[i].soldier;
             BSObject* object = soldier->GetScriptObject();
             float z;
             float y;
@@ -442,19 +452,29 @@ inline void DumpAttachedBuddies() {
     }
 }
 
+inline void DumpAttachedBuddies() {
+    DumpBuddyVector(g_attached_buddies);
+}
+
 inline void DumpReadyBuddies() {
+    dwi::list_iter<BuddyInfo> node(0);
+    CBuddySoldier* soldier;
+    BSObject* object;
+    float x;
+    float y;
+    float z;
+    int index;
+    int i;
+    BSStateView* state;
     DebugMsg("BUDDY_DEBUG: Dumping ready list...\n");
-    dwi::list_node<BuddyInfo>* node;
-    int i = 0;
-    for (node = g_ready_buddies.m_head.m_next; node != &g_ready_buddies.m_head; node = node->m_next) {
-        CBuddySoldier* soldier = node->m_data.soldier;
-        BSObject* object = soldier->GetScriptObject();
-        float z;
-        float y;
-        float x = 0.0f;
+    i = 0;
+    for (node = g_ready_buddies.begin(); node != g_ready_buddies.end(); ++node) {
+        soldier = (*node).soldier;
+        object = soldier->GetScriptObject();
+        x = 0.0f;
         y = x;
         z = x;
-        int index = 0;
+        index = 0;
         if (object->m_node) {
             BSPlacementView* placement = object->m_node->placement;
             if (placement) {
@@ -465,7 +485,7 @@ inline void DumpReadyBuddies() {
             if (placement)
                 index = placement->pathIndex;
         }
-        BSStateView* state = object->m_class->GetState();
+        state = object->m_class->GetState();
         DebugMsg("BUDDY_DEBUG:   Ready=%x[%3d @(%4d,%4d,%4d) %4d] In Slot %d\n", soldier, index, (int)x, (int)y, (int)z,
                  state->state, i);
         i++;
@@ -488,13 +508,16 @@ void BIFunc_UpdateBuddyCheckpoints(int** stack, void*) {
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
         if (it->active)
-            GiveBuddyOrders(it.operator->());
+            GiveBuddyOrders(it);
     }
     DumpAttachedBuddies();
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
 
 void BIFunc_UpdateBuddyProgress(int** stack, void*) {
+    float z;
+    float y;
+    float x;
     short first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
     BSObject* object = (BSObject*)*(*stack - (first - 1));
     int checkpoint = *(*stack - (first - 2));
@@ -505,9 +528,7 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
         if (it->soldier == soldier && it->active) {
-            float z;
-            float y;
-            float x = 0.0f;
+            x = 0.0f;
             y = x;
             z = x;
             int index = 0;
@@ -524,27 +545,21 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
             BSStateView* state = object->m_class->GetState();
             DebugMsg("BUDDY_DEBUG: UpdateBuddyProgress Buddy=%x[%3d @(%4d,%4d,%4d) %4d] Checkpoint=%d->%d\n", soldier,
                      index, (int)x, (int)y, (int)z, state->state, it->progress, checkpoint);
-            if (it->progress < checkpoint) {
+            if (it->progress >= checkpoint) {
+                DebugMsg("BUDDY_DEBUG: Already past there\n");
+            } else {
                 DebugMsg("BUDDY_DEBUG: Haven't reached yet\n");
-                it->progress = checkpoint;
-                it->moving = 0;
-                GiveBuddyOrders(it.operator->());
-                result = it->moving != 0;
-                found = true;
-                break;
+                SetBuddyProgress(it, checkpoint);
+                result = it->moving;
             }
-            DebugMsg("BUDDY_DEBUG: Already past there\n");
             found = true;
             break;
         }
     }
     if (!found) {
-        for (dwi::list_node<BuddyInfo>* node = g_ready_buddies.m_head.m_next; node != &g_ready_buddies.m_head;
-             node = node->m_next) {
-            if (node->m_data.soldier == soldier && node->m_data.progress < checkpoint) {
-                float z;
-                float y;
-                float x = 0.0f;
+        for (dwi::list_iter<BuddyInfo> node = g_ready_buddies.begin(); node != g_ready_buddies.end(); ++node) {
+            if ((*node).soldier == soldier && (*node).progress < checkpoint) {
+                x = 0.0f;
                 y = x;
                 z = x;
                 int index = 0;
@@ -561,7 +576,7 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
                 object->m_class->GetState();
                 DebugMsg("BUDDY_DEBUG: Update Potential Buddy Progress Buddy=%x Checkpoint=%d\n", soldier, index, (int)x,
                          (int)y, (int)z, checkpoint);
-                node->m_data.progress = checkpoint;
+                (*node).progress = checkpoint;
             }
         }
     }
@@ -647,7 +662,7 @@ void BIFunc_GetInitialBuddyOrders(int** stack, void* caller) {
             BSStateView* state = object->m_class->GetState();
             DebugMsg("BUDDY_DEBUG: GetInitialBuddyOrders=%x[%3d @(%4d,%4d,%4d) %4d]\n", soldier, index, (int)x, (int)y,
                      (int)z, state->state);
-            GiveBuddyOrders(it.operator->());
+            GiveBuddyOrders(it);
             break;
         }
     }

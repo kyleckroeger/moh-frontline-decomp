@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 1 real lines (was 9; index said 9), from
+// scratch/loop3/harvest1/cls_merge.cpp: the shot-location search written in the function (from
+// scratch/uiw/cls_x5.cpp) instead of the MH3 inline. Left: 1 line.
 // A fragment of ShellMenu.cpp (0x800e5a14): CShellMenu::GetCumulativeStats
 // and CShellMenu::GetLevelStats.
 // GetCumulativeStats finishes the running totals for the studio: the total
@@ -104,19 +107,6 @@ static inline int MostHit(const unsigned int* values) {
         }
     }
     return location;
-}
-
-static inline int MH3(const unsigned int* values) {
-unsigned int hits = 0;
-int best = hits;
-for (int j = 0; j < 7; j++) {
- unsigned int v = values[j];
- if (v > hits) {
- hits = v;
- best = j;
- }
- }
-return best;
 }
 
 unsigned int* CShellMenu::GetCumulativeStats() {
@@ -264,7 +254,14 @@ void CShellMenu::CalculateLevelStats() {
         }
     }
     m_weapon = weapon;
-    location = MH3(m_shotLocations);
+    unsigned int hits = 0;
+    location = hits;
+    for (int j = 0; j < 7; j++) {
+        if (m_shotLocations[j] > hits) {
+            hits = m_shotLocations[j];
+            location = j;
+        }
+    }
     m_evaluation = location * 5 + rand() % 5;
     unsigned int halfMinutes = m_levelTimer / 30;
     m_stat340 = halfMinutes / 2 + halfMinutes % 2;

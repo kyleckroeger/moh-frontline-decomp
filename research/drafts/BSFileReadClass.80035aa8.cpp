@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 414 real lines (was 708; index said 708), from
+// scratch/loop3/scripting/s11/bsf/BEST414.cpp: 'while (count-- > 0)' for the state copy loop (branch
+// offsets now all match). Left: final loop colouring, the hoisted count load (orig lwz r11,100(r1);
+// ours r0).
 extern "C" int sprintf(char*, const char*, ...);
 extern "C" unsigned long strlen(const char*);
 extern "C" int stricmp(const char*, const char*);
@@ -165,7 +169,7 @@ int BSFileReadClass(const char* name, bool, bool, BSClass_struct** result) {
                     int count = state->m_opcodes[j]->m_numArgs;
                     BSArg* arg = state->m_opcodes[j]->m_args;
                     offset += count * sizeof(BSArg);
-                    for (int k = 0; k < count; k++) {
+                    while (count-- > 0) {
                         ChangeEndian(arg->m_value);
                         ChangeEndian(arg->m_type);
                         arg++;

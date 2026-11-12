@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 2 real lines (was 44; index said 44), from
+// scratch/loop3/mid2/CRH_BEST2.cpp: world volume through the file's own AllocateBoxVolume() (attested,
+// same body as src/game/objcreate_volumes.cpp), box cast from the allocator then 'new (box) CVolBox'.
+// Left: the placement-new knot (State question 7, scratch/loop3/pnew1/notes.md).
 // A fragment of objcreate.cpp (0x8003d130): DestroySubHierObject calls the
 // virtual function at slot 0x164 (a placeholder named by offset) of a
 // hierarchical object's sub-object; SwapHierObject swaps a
@@ -442,6 +446,10 @@ public:
     StaticMeshView* m_mesh;
 };
 
+void* AllocateBoxVolume() {
+    return new (g_pVolumeAllocator.GetFreeElement(true)) CVolBox;
+}
+
 void DestroySubHierObject(CHierObject* object, int sub) {
     object->GetSubObject(sub)->unknown164();
 }
@@ -514,11 +522,11 @@ static inline void AttachScript(TriggerObject_struct* trigger, int flag, Trigger
 }
 
 BSGO_Basic* CreateRootHierObject(TriggerObject_struct* trigger, int flag) {
+    BSGO_Tank* go;
+    CHierObject* object;
+    CTankObject* tank;
     CVolBox* box;
     TriggerCoreView* core;
-    BSGO_Tank* go;
-    CTankObject* tank;
-    CHierObject* object;
     CVolBox* world;
     core = trigger->core;
     go = new BSGO_Tank;
@@ -534,7 +542,8 @@ BSGO_Basic* CreateRootHierObject(TriggerObject_struct* trigger, int flag) {
     core->rotation.GetMatrix(matrix);
     matrix.SetPos(position);
     object->SetTMLocalToWorld(matrix);
-    box = new (g_pVolumeAllocator.GetFreeElement(true)) CVolBox;
+    box = (CVolBox*)g_pVolumeAllocator.GetFreeElement(true);
+    new (box) CVolBox;
     BoxAxesView* source = object->m_mesh->m_data->m_box;
     CVector3 a(source->m_axes[0]);
     CVector3 b(source->m_axes[1]);
@@ -568,7 +577,7 @@ BSGO_Basic* CreateRootHierObject(TriggerObject_struct* trigger, int flag) {
     box->SetCenter(center);
     ((CStaticObject*)object)->SetLocalBoundingVolume((ISceneNode::EVolumeType)3, box);
     ((CStaticObject*)object)->SetLocalBoundingVolume((ISceneNode::EVolumeType)0, box);
-    world = new (g_pVolumeAllocator.GetFreeElement(true)) CVolBox;
+    world = (CVolBox*)AllocateBoxVolume();
     *world = *box;
     ((CStaticObject*)object)->SetWorldBoundingVolume((ISceneNode::EVolumeType)3, world);
     ((CStaticObject*)object)->SetWorldBoundingVolume((ISceneNode::EVolumeType)0, world);

@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 11 real lines (was 33; index said 33), from
+// scratch/loop3/scripting/cd/a1.cpp: x/y/z declared at the top. Left: the placement-new knot (State
+// question 7: CW null-checks placement new; systems5 cd_i6/cd_o4 reach 3/1 only with cast copies or a
+// double beq).
 // A fragment of objcreate.cpp (0x8003c688): CreatePlayer. The trigger's core
 // is marked created and the indexed player is placed at the core's rotation
 // and position; the player's script object (embedded at +0x770) is bound to
@@ -488,6 +492,9 @@ BSGO_PlayerView* CreatePlayer(TriggerObject_struct* trigger, int index) {
 BSGO_Destructable* CreateDestructable(TriggerObject_struct* trigger, int param) {
     TriggerObject_struct* const c_trigger = trigger;
     int const c_param = param;
+    int z;
+    int y;
+    int x;
 
     TriggerCoreView* core = c_trigger->core;
     BSGO_Destructable* script = new BSGO_Destructable;
@@ -534,9 +541,9 @@ BSGO_Destructable* CreateDestructable(TriggerObject_struct* trigger, int param) 
         object->SetScriptObject(script->m_object);
         BSObjectTriggerEvent(script->m_object, 44, (void*)c_param, 0, false);
     } else {
-        int x = position.d.v[0];
-        int y = position.d.v[1];
-        int z = position.d.v[2];
+        x = position.d.v[0];
+        y = position.d.v[1];
+        z = position.d.v[2];
         DebugMsg("SOON TO BE ERROR! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);
         DebugMsg("(repeated for importance)! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);
         DebugMsg("(repeated for importance)! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);

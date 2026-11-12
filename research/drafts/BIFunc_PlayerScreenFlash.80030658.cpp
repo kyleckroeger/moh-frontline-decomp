@@ -1,5 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 39 real lines (was 42; index said 42), from
+// scratch/loop3/scripting/psf10/BEST39.cpp: CColor without the empty default constructor. Left: the
+// colour temporaries' stack order (orig pairs c/ret per colour; ours Bc, Ac, Aret, Bret).
 struct CColor {
-    CColor() {}
     CColor& operator=(const CColor& c) { r = c.r; g = c.g; b = c.b; a = c.a; return *this; }
     unsigned char r;
     unsigned char g;
