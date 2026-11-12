@@ -99,7 +99,7 @@ public:
         return *this;
     }
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    void SetCross(const CVector3& a, const CVector3& b) {
+    void Cross(const CVector3& a, const CVector3& b) {
         x = a.y * b.z - a.z * b.y;
         y = a.z * b.x - a.x * b.z;
         z = a.x * b.y - a.y * b.x;

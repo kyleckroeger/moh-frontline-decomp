@@ -102,7 +102,8 @@ class CPlayerObject : public ISceneNode {
 
 class CStaticObject {
 public:
-    bool IsMoving() const { return m_state != 0 && m_state != 1; }
+    /* CStaticObject::IsFollowingPath (weak copy at 0x8009b944) */
+    bool IsFollowingPath() const { return m_state != 0 && m_state != 1; }
     float GetSpeed() const {
         return sqrtf(m_velocity[0] * m_velocity[0] + m_velocity[1] * m_velocity[1] + m_velocity[2] * m_velocity[2]);
     }
@@ -242,14 +243,14 @@ static inline float PositionDistance(const CVector3& position) {
 static inline unsigned int ObjectSpeed(CStaticObject* object) {
     unsigned int speed;
     if (g_Shell.Get_currentMission() == 4 && g_Shell.Get_currentStage() == 2 && !g_bInMultiplayerMode) {
-        if (object->IsMoving()) {
+        if (object->IsFollowingPath()) {
             speed = (0.16f + object->m_speed) * (220.0f / (0.16f + object->m_maxSpeed));
         } else {
             float length = object->GetSpeed();
             speed = length * (220.0f * object->m_scale);
         }
     } else {
-        if (object->IsMoving()) {
+        if (object->IsFollowingPath()) {
             speed = object->m_speed * (220.0f / object->m_maxSpeed);
         } else {
             float length = object->GetSpeed();

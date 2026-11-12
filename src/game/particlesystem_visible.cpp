@@ -26,6 +26,11 @@ struct CVector3Pair {
 class CVector3 {
 public:
     float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
+    void Scale(const CVector3& v, float s) {
+        x = s * v.x;
+        y = s * v.y;
+        z = s * v.z;
+    }
     CVector3() {}
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
@@ -163,15 +168,6 @@ bool CParticleSystem::IsVisible(CDrawContext& context) {
     float dz = center.z - camera.z;
     m_cameraDistSq = dx * dx + dy * dy + dz * dz;
     return visible;
-}
-
-/* Inferred: a vector scaled by a factor. */
-inline CVector3 Scale(float s, const CVector3& v) {
-    CVector3 r;
-    r.x = s * v.x;
-    r.y = s * v.y;
-    r.z = s * v.z;
-    return r;
 }
 
 /* Inferred: a frustum plane (normal first, distance at +16, 32 bytes). */

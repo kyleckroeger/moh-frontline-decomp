@@ -8,7 +8,8 @@
 // object (dwi::list::iterator, as Rising Sun's dwi containers), which gives
 // the original's register order. CScene, UNodePair, SExtent, the dwi
 // containers and the functions are named by the mangled symbols; members,
-// locals and the inline helpers are inferred. CmpNodePairs is a weak copy of
+// locals and the inline helpers are inferred, except fast_vec::reserve(T*, int)
+// (adopting the scratch pad; the original's weak copy is at 0x800770a4). CmpNodePairs is a weak copy of
 // a header inline emitted in this file, so it is defined __declspec(weak); the
 // fast_vec destructor's original copy is placed by scene_fastvec_node. The
 // rest of the file is not part of this unit.
@@ -134,10 +135,10 @@ public:
         if (m_owned && m_data)
             MEM_free(m_data);
     }
-    void UseBuffer(void* buffer, int capacity) {
+    void reserve(T* buffer, int capacity) {
         if (m_owned && m_data)
             MEM_free(m_data);
-        m_data = (T*)buffer;
+        m_data = buffer;
         m_capacity = capacity;
         m_owned = false;
     }
@@ -227,7 +228,7 @@ static void SweepExtents(dwi::list<ISceneNode::SExtent>& extents, dwi::fast_vec<
     dwi::list<ISceneNode::SExtent>::iterator node;
     ISceneNode* sceneNode;
     ISceneNode** it;
-    active.UseBuffer(SPR_BEGIN, 250);
+    active.reserve((ISceneNode**)SPR_BEGIN, 250);
     for (node = extents.begin(); node != extents.end(); ++node) {
         sceneNode = (*node).node;
         if (sceneNode->GetCollisionId() == -1)

@@ -59,7 +59,7 @@ public:
         return *this;
     }
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    void SetCross(const CVector3& a, const CVector3& b) {
+    void Cross(const CVector3& a, const CVector3& b) {
         x = a.y * b.z - a.z * b.y;
         y = a.z * b.x - a.x * b.z;
         z = a.x * b.y - a.y * b.x;
@@ -391,9 +391,9 @@ void BIFunc_FireProjectile(int** stack, void* object) {
 static void AdjustAim(CVector3& dir, float accuracy) {
     CVector3 up(0.0f, 0.0f, 1.0f);
     CVector3 side;
-    side.SetCross(dir, up);
+    side.Cross(dir, up);
     side.Normalize();
-    up.SetCross(side, dir);
+    up.Cross(side, dir);
     up.Normalize();
     float spread = 0.5f * accuracy;
     float a = MathFunRandomReal(-spread, spread);

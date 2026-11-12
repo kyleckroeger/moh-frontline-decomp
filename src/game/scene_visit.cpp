@@ -182,7 +182,8 @@ public:
 
     /* inferred helpers */
     bool IsFlagged() const { return m_flag1e0a || m_flag1e0b || m_flag1e0c; }
-    bool IsMoving() const { return m_state != 0 && m_state != 1; }
+    /* CStaticObject::IsFollowingPath (weak copy at 0x8009b944) */
+    bool IsFollowingPath() const { return m_state != 0 && m_state != 1; }
 };
 
 /* inferred view: the player flag word at +916 */
@@ -269,7 +270,7 @@ void CScene::ExcludeCollision(const ISceneNode& a, const ISceneNode& b, int prio
     if (player) {
         const CHierObject* other = b.AsHierObject() ? b.AsHierObject() : a.AsHierObject();
         if (other && other->GetCollisionId() == 23) {
-            if (other->IsFlagged() || other->IsMoving()) {
+            if (other->IsFlagged() || other->IsFollowingPath()) {
                 ExclusionEventView* event = (ExclusionEventView*)BSEventGetEventMemoryBlock(24);
                 event->m_valuec = 0;
                 event->m_value4 = 0x7fffffff;

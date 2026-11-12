@@ -230,7 +230,8 @@ public:
     void BeginAnimMotionUpdate(float);
     void BeginScriptMotionUpdate(float);
     CVector3 GetWorldLinearVelocity() const;
-    bool IsMoving() const { return m_pathState != 0 && m_pathState != 1; }
+    /* CStaticObject::IsFollowingPath (weak copy at 0x8009b944) */
+    bool IsFollowingPath() const { return m_pathState != 0 && m_pathState != 1; }
     bool IsScripted() const { return m_scriptMove || m_scriptTurn || m_flag10; }
 
     unsigned char pad004[8];
@@ -309,7 +310,7 @@ void CHierObject::CommitUpdate() {
     ConstrainVelocity();
     if (m_matrixListener != m_listener)
         m_matrixListener->Update(m_listenerData, m_matrix);
-    if (IsMoving()) {
+    if (IsFollowingPath()) {
         CommitPathMotionUpdate();
         m_animPosition = m_matrix.GetPos();
         m_animRotation.SetFromMatrix(m_matrix);
@@ -324,7 +325,7 @@ void CHierObject::CommitUpdate() {
 }
 
 void CHierObject::AttemptUpdate(float dt) {
-    if (IsMoving()) {
+    if (IsFollowingPath()) {
         AttemptPathMotionUpdate(dt);
     } else if (m_scriptMove || m_scriptTurn || m_flag10) {
         AttemptScriptMotionUpdate(dt);
@@ -354,7 +355,7 @@ void CHierObject::AttemptUpdate(float dt) {
 }
 
 CVector3 CHierObject::GetWorldLinearVelocity() const {
-    if (IsMoving())
+    if (IsFollowingPath())
         return CVector3(m_speed * m_matrix.GetFront());
     return m_velocity;
 }

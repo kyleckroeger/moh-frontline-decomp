@@ -3,7 +3,8 @@
 // at +9024 and the 80 transforms reset to identity; three vectors set to zero
 // through an inferred inline setter that stores z first; words, flags and a
 // halfword reset; the collision list pointed at the object's own 128-record
-// storage through an inferred inline helper, freeing owned storage first; a
+// storage through dwi::fast_vec::reserve(T*, int) (the body of the original's
+// weak copy at 0x800770a4), freeing owned storage first; a
 // float cleared) and the CAnimObject default
 // constructor (the scene-node base constructors: table pointers and eight
 // cleared words; then the members in order: the skinned animation at +48,
@@ -74,7 +75,7 @@ namespace dwi {
 template <class T>
 class fast_vec {
 public:
-    void SetStorage(T* storage, int capacity) {
+    void reserve(T* storage, int capacity) {
         if (m_owned && m_data)
             MEM_free(m_data);
         m_data = storage;
@@ -236,7 +237,7 @@ void CAnimObject::Init() {
     data2388 = 0;
     data238c = 0;
     data2394 = -1;
-    m_collisions.SetStorage(m_collisionStorage, 128);
+    m_collisions.reserve(m_collisionStorage, 128);
     data2390 = 0;
     flag245a = 0;
     flag245b = 0;

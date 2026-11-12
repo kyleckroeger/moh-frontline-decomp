@@ -10,7 +10,8 @@
 // player once. CScene, ISceneNode and the As* accessors are named by the
 // symbols (vtable slots from __vt__10ISceneNode, the others are
 // placeholders); the scene, node, list and vector-element layouts, the
-// player flag and the link/unlink helpers are inferred. These functions are
+// player flag and the link/unlink helpers are inferred, except IsNodeInScene
+// (this file's own function at 0x800d8214, inlined here). These functions are
 // not inlined into the command functions in the original, so they are a
 // separate unit here (deferred inlining in one TU would inline them).
 // Compiled with deferred inlining, so the functions appear in reverse.
@@ -152,7 +153,7 @@ public:
         m_tail = node;
         m_nodeCount++;
     }
-    bool IsLinked(ISceneNode* node) {
+    bool IsNodeInScene(const ISceneNode* node) const {
         if (!node)
             return false;
         if (m_head == node)
@@ -276,7 +277,7 @@ void CScene::AddNode_now(ISceneNode* node) {
 }
 
 void CScene::RemoveNode_now(ISceneNode* node) {
-    if (!IsLinked(node))
+    if (!IsNodeInScene(node))
         return;
     Unlink(node);
     CStaticObject* object = node->AsStaticObject();

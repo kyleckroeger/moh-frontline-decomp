@@ -119,3 +119,11 @@ left for the maintainer: reverting them loses their matches.
   and stays). Drafts: CCDBTriangle::TestCollision(CVolCapsule) Sub/Add (no operator+=, still 7), ConstrainVelocity
   first block Scale + Sub (still 14), CCDBVolBox::TestCollision(CTriangle) and CStaticMesh::DrawNode renamed (same
   scores). CMatrix::Orthonormalize landed with Scale/Sub/Dot/Normalize only (3a9096c2).
+- (names2) Systematic real-name pass over all inline helpers in src/game and src/ea (1963; each emitted out of line and
+  matched against every original function, then checked exactly): SetCross -> CVector3::Cross (weak 0x800c5008),
+  IsMoving -> CStaticObject::IsFollowingPath (weak 0x8009b944; on the CHierObject views too), fast_vec SetStorage/UseBuffer
+  -> reserve(T*, int) (weak 0x800770a4), CScene::IsLinked -> IsNodeInScene (0x800d8214, same file), unused free Scale ->
+  CVector3::Scale. 10 units, objects identical. Left as probable, not renamed: CurrentWeapon/CurrentPlayerWeapon (bodies of
+  GetCurrentWeapon/GetCurrentPlayerWeapon, but also inlined before their definition), FadeTheVolume in ShellMenu_briefing/
+  credits (callers precede CShellMenu::FadeTheVolume), Min/Max (Rising Sun min/max), operator+= (same code as the weak Add).
+  Map: research/notes/real-names-map-2026-11-12.tsv.

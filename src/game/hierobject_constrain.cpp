@@ -386,7 +386,8 @@ public:
     }
     void BeginScriptMotionUpdate(float);
     CVector3 GetWorldLinearVelocity() const;
-    bool IsMoving() const { return m_pathState != 0 && m_pathState != 1; }
+    /* CStaticObject::IsFollowingPath (weak copy at 0x8009b944) */
+    bool IsFollowingPath() const { return m_pathState != 0 && m_pathState != 1; }
 
     unsigned char pad004[8];
     ExtentNodeView* m_extentMinX;
@@ -477,7 +478,7 @@ void CHierObject::ConstrainVelocity() {
         m_turnStep = 0.0f;
         m_nextRotation = m_animRotation;
         m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
-        if (IsMoving()) {
+        if (IsFollowingPath()) {
             ResetPathMotion();
         } else if (m_scriptMove || m_scriptTurn) {
             m_animRotation.GetMatrix(m_matrix);
@@ -514,7 +515,7 @@ void CHierObject::OnCollision(const CCollision& collision) {
             CVector3 push(contactPos.d.v[0] - otherPos.d.v[0], contactPos.d.v[1] - otherPos.d.v[1], contactPos.d.v[2] - otherPos.d.v[2]);
             push.Normalize();
             CVector3 normal;
-            if (IsMoving()) {
+            if (IsFollowingPath()) {
                 const CVector3& pos = m_matrix.GetPos();
                 normal.d.v[0] = pos.d.v[0] - m_pathPosition.d.v[0];
                 normal.d.v[1] = pos.d.v[1] - m_pathPosition.d.v[1];
@@ -538,7 +539,7 @@ void CHierObject::OnCollision(const CCollision& collision) {
                 m_turnStep = 0.0f;
                 m_nextRotation = m_animRotation;
                 m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
-                if (IsMoving()) {
+                if (IsFollowingPath()) {
                     ResetPathMotion();
                 } else if (m_scriptMove || m_scriptTurn) {
                     m_animRotation.GetMatrix(m_matrix);
