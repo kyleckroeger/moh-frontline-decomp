@@ -19,14 +19,14 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.61% (1,253,400 bytes) at 64c0d5b0, +34,128 this run. Landing commits: 45.
-- Lanes (2026-11-12 06:21): geometry, airender and systems lanes dry;
-  the four slots: knots1 (small register knots), harvest1 (moves scratch bests into
-  research/drafts so nothing is lost), lint1 (layout_lint conflicts, secondary), audit1
-  (read-only review of this run's landings against docs/Remaining.md; report in
-  scratch/loop3/audit1/report.md). Parked after deep work: UpdateAnimation 59 -> 16,
-  CVolBox::TestCollision(CPlane) 547 -> 56, UpdateBoundingBox 101 -> 56, RenderSystem (needs a
-  whole-file landing). Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
+- Verified: 88.77% (1,255,660 bytes) at 1976c05b, +36,388 this run. Landing commits: 48.
+- Lanes (2026-11-12 06:51): geometry, airender and systems lanes dry;
+  the four slots: land2 (harvested near-misses: CalculateLevelStats, TLT_LoadFromRepository,
+  GetInitialBuddyOrders, SoundSchedule::Update; pending-form drafts archived to
+  research/drafts/pending/), knots2 (register knots on harvested drafts), mid3 (15-60-line
+  drafts), natural1 (natural replacements for the audit's load-bearing forms). harvest1 moved
+  17 scratch bests into research/drafts (64c0d5b0, f476a06f); clean1 applied the audit's free
+  fixes (45c5c504). Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -103,10 +103,24 @@ multiplayer not at all. Every landing keeps the complete image identical.
      CVolCapsule::GetExtents), DumpBuddyVector in BuddyDied, debug_prof's `(void)0`, and local
      CVector3 views that the shared header would also match. Its "not needed" items were
      cleaned up during the run (agent clean1). From 06:40 on 11-12, agents no longer land forms
-     of the wrapper and duplicate-inline kind.
+     of the wrapper and duplicate-inline kind. Held back under that rule: Update_Picture_Buffers
+     (904 B) is code exact with an invented `third_plane(height, width, data)` inline whose
+     parameter order sets the registers; on a yes, getpic.cpp becomes one complete unit (recipe
+     in scratch/loop3/knots1/notes.md, draft research/drafts/Update_Picture_Buffers.80100a30.cpp).
+  15. **Empty switch case.** PopUpMessageHandler::Loop (2,308 B) is code exact (draft, 7dcdeb04)
+     except that the original keeps a separate empty `case 8`. Only the identity statement
+     `message = (PopUpMessage*)(void*)message;` reproduces it; every empty form drops one
+     instruction. Acceptable, or is there an accepted form?
+  16. **Inline helpers read from stack-slot groups.** SoundSchedule::Update (1,864, a842943c)
+     landed with five single-use inlines (NodeAzimuth/NodeDistance, PositionAzimuth/
+     PositionDistance, ObjectSpeed). Their boundaries are read from the original's stack-slot
+     groups (one block per inline expansion), so they reflect real structure, but the names are
+     inferred and the Node*/Position* pairs have similar bodies with different inputs. Also: is
+     the `GiveBuddyOrders(vec_iter&)` forwarding overload (needed by GetInitialBuddyOrders, 7
+     lines) an inline helper or a forwarding wrapper?
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
-  (q3), DrawTextCentered 416 (q8). Total 7,616.
+  (q3), Update_Picture_Buffers 904 (q14), DrawTextCentered 416 (q8), PopUpMessageHandler::Loop 2,308 (q15). Total 10,828.
 ## Hard rules (for the coordinator and every agent)
 
 1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
