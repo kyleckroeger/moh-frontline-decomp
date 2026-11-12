@@ -49,17 +49,19 @@ public:
 class CPlayerObject {
 public:
     void SetFinishedLevelData();
+    void SaveAmmo(int, int);
     unsigned char unknown000[592];
     ShotStatsView* m_stats;
     unsigned char unknown254[524];
     CWeapon* m_weapons[45];
 };
 
-static inline void SaveAmmo(void* p, int mission, int stage) {
-CPlayerObject* player = (CPlayerObject*)p;
+// DRAFT NOTE (loop knots2, 2026-11-12): SaveAmmo is an inferred member inline (no symbol
+// attests it; knots1 form, same 11 lines as the earlier void* free inline).
+inline void CPlayerObject::SaveAmmo(int mission, int stage) {
     short offset; short base; int i; CWeapon* weapon;
     for (i = 0; i < 45; i++) {
-        weapon = player->m_weapons[i];
+        weapon = m_weapons[i];
         if (weapon && weapon->m_dumpInfo) {
             base = weapon->m_dumpInfo->flagBase;
             offset = weapon->m_dumpInfo->flagOffset;
@@ -87,5 +89,5 @@ void CPlayerObject::SetFinishedLevelData() {
     }
     g_Shell.SetPlayersFinishedLevelSuccessfully(mission, stage);
     g_Shell.SetPlayersFinishedLevelHealth(mission, stage, *m_stats->counter->unknown00c());
-    SaveAmmo(this, mission, stage);
+    SaveAmmo(mission, stage);
 }
