@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 25 real lines, unchanged: front.Sub and the line's m_dir.Sub (the original's CVector3 Sub member).
 extern inline float sqrtf(float x)
 {
     const double _half = .5;
@@ -25,6 +26,7 @@ public:
         d.v[1] = a.d.v[2] * b.d.v[0] - a.d.v[0] * b.d.v[2];
         d.v[2] = a.d.v[0] * b.d.v[1] - a.d.v[1] * b.d.v[0];
     }
+    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
     float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
     float Normalize() {
         float length = Length();
@@ -68,9 +70,7 @@ public:
     void SetSE(CVector3 start, CVector3 end) {
         m_start = start;
         m_end = end;
-        m_dir.d.v[0] = m_end.d.v[0] - m_start.d.v[0];
-        m_dir.d.v[1] = m_end.d.v[1] - m_start.d.v[1];
-        m_dir.d.v[2] = m_end.d.v[2] - m_start.d.v[2];
+        m_dir.Sub(m_end, m_start);
         m_flag38 = 0;
         m_flag39 = 0;
     }
@@ -272,9 +272,7 @@ bool CExplosion::CheckForObstructions(ISceneNode& node) {
     CVector3 front;
     CVector3 position;
     node.GetPosition(position);
-    front.d.v[0] = position.d.v[0] - center.d.v[0];
-    front.d.v[1] = position.d.v[1] - center.d.v[1];
-    front.d.v[2] = position.d.v[2] - center.d.v[2];
+    front.Sub(position, center);
     front.d.v[2] = 0.0f;
     float distance = front.Normalize();
     if (distance < 0.001f)

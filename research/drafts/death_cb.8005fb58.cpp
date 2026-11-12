@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 5 real lines, unchanged: delta.Sub, move.Sub, m_unknown23d8.Scale (the original's CVector3 members) replace the invented operator-= and per-component code.
 // A fragment of anim_callback.cpp (0x8005ff80): CAnimCallbacks::turn_cb
 // (on event 0 picks the turn animation through _TurnFindTurnAnimInfo - its
 // 7th argument is read as a float - starts it, scales its sequence by the
@@ -43,11 +44,8 @@ public:
         *(CVector3Pair*)this = *(const CVector3Pair*)&other;
         return *this;
     }
-    void operator-=(const CVector3& other) {
-        x -= other.x;
-        y -= other.y;
-        z -= other.z;
-    }
+    void Scale(const CVector3& o, float k) { x = k * o.x; y = k * o.y; z = k * o.z; }
+    void Sub(const CVector3& a, const CVector3& b) { x = a.x - b.x; y = a.y - b.y; z = a.z - b.z; }
 
     float x;
     float y;
@@ -504,7 +502,7 @@ int CAnimCallbacks::turn_cb(AnimFileStateAnimList_t* list, unsigned short state,
                     owner->m_target = target;
                     delta = owner->m_target;
                     position = owner->m_position;
-                    delta -= position;
+                    delta.Sub(delta, position);
                     int yaw = MathArcTan2(-delta.x, delta.y);
                     float angle = 360.0f * (int)(((yaw & 0xffffff) - owner->m_yaw) & 0xffffff) / 16777216.0f;
                     if (angle > 180.0f)
@@ -525,9 +523,7 @@ int CAnimCallbacks::turn_cb(AnimFileStateAnimList_t* list, unsigned short state,
                     move.x = memory->destination.x;
                     move.y = memory->destination.y;
                     move.z = memory->destination.z;
-                    move.x = move.x - owner->m_unknown23b8.x;
-                    move.y = move.y - owner->m_unknown23b8.y;
-                    move.z = move.z - owner->m_unknown23b8.z;
+                    move.Sub(move, owner->m_unknown23b8);
                     if (memory->remaining > 0.0f) {
                         float step = time;
                         if (time > memory->remaining)
@@ -537,9 +533,7 @@ int CAnimCallbacks::turn_cb(AnimFileStateAnimList_t* list, unsigned short state,
                         float progress = memory->remaining / memory->total;
                         owner->m_unknown23e8 = progress;
                         float scale = (1.0f - progress) * ratio;
-                        owner->m_unknown23d8.x = scale * move.x;
-                        owner->m_unknown23d8.y = scale * move.y;
-                        owner->m_unknown23d8.z = scale * move.z;
+                        owner->m_unknown23d8.Scale(move, scale);
                     } else {
                         owner->m_unknown23e8 = 0.0f;
                         owner->m_unknown23d8 = move;
@@ -583,7 +577,7 @@ int CAnimCallbacks::pathing_cb(AnimFileStateAnimList_t* list, unsigned short sta
                 CVector3 delta;
                 delta = owner->m_target;
                 position = owner->m_position;
-                delta -= position;
+                delta.Sub(delta, position);
                 int yaw = MathArcTan2(-delta.x, delta.y);
                 float angle = 360.0f * (int)(((yaw & 0xffffff) - owner->m_yaw) & 0xffffff) / 16777216.0f;
                 if (angle > 180.0f)

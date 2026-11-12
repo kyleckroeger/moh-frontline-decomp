@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 13 real lines, unchanged: diff.Sub, normal.Add, contact.m_vector1.Add and abs.Abs(local) (the original's CVector3 Sub/Add/Abs members) replace per-component code and the += operator.
 #include <math.h>
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
@@ -38,12 +39,9 @@ public:
         d.c.y = k * v.d.c.y;
         d.c.z = k * v.d.c.z;
     }
-    CVector3& operator+=(const CVector3& o) {
-        d.c.x += o.d.c.x;
-        d.c.y += o.d.c.y;
-        d.c.z += o.d.c.z;
-        return *this;
-    }
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
+    void Add(const CVector3& o) { d.c.x += o.d.c.x; d.c.y += o.d.c.y; d.c.z += o.d.c.z; }
+    void Abs(const CVector3& o) { d.c.x = (float)fabs(o.d.c.x); d.c.y = (float)fabs(o.d.c.y); d.c.z = (float)fabs(o.d.c.z); }
     void Negate(const CVector3& v) {
         d.c.x = -v.d.c.x;
         d.c.y = -v.d.c.y;
@@ -133,24 +131,18 @@ int CVolBox::TestCollision(const CVolSphere& sphere, CCollision& collision, bool
     OSGetTick();
     const CVector3& center = sphere.GetCenter();
     CVector3 diff;
-    diff.d.c.x = center.d.c.x - m_center.d.c.x;
-    diff.d.c.y = center.d.c.y - m_center.d.c.y;
-    diff.d.c.z = center.d.c.z - m_center.d.c.z;
+    diff.Sub(center, m_center);
     CVector3 local;
     local.d.c.z = m_axes[2].Dot(diff);
     local.d.c.y = m_axes[1].Dot(diff);
     local.d.c.x = m_axes[0].Dot(diff);
-    float a1;
     CVector3 normal;
-    float a2;
     bool outside;
     float maxDist;
     CVector3 closest;
-    float a0;
     float distSq;
-    a0 = (float)fabs(local.d.c.x);
-    a1 = (float)fabs(local.d.c.y);
-    a2 = (float)fabs(local.d.c.z);
+    CVector3 abs;
+    abs.Abs(local);
     outside = false;
     maxDist = -3.4028235e+38f;
     distSq = 0.0f;
@@ -159,52 +151,52 @@ int CVolBox::TestCollision(const CVolSphere& sphere, CCollision& collision, bool
         normal.d.c.z = 0.0f;
         normal.d.c.y = 0.0f;
         normal.d.c.x = 0.0f;
-        float d = a0 - m_half[0];
+        float d = abs.d.c.x - m_half[0];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
             float s = Sign(local.d.c.x);
-            normal += CVector3(s * d, 0.0f, 0.0f);
+            normal.Add(CVector3(s * d, 0.0f, 0.0f));
             closest.d.c.x = s * m_half[0];
         } else {
             maxDist = d;
         }
-        d = a1 - m_half[1];
+        d = abs.d.c.y - m_half[1];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
             float s = Sign(local.d.c.y);
-            normal += CVector3(0.0f, s * d, 0.0f);
+            normal.Add(CVector3(0.0f, s * d, 0.0f));
             closest.d.c.y = s * m_half[1];
         } else if (d > maxDist) {
             maxDist = d;
         }
-        d = a2 - m_half[2];
+        d = abs.d.c.z - m_half[2];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
             float s = Sign(local.d.c.z);
-            normal += CVector3(0.0f, 0.0f, s * d);
+            normal.Add(CVector3(0.0f, 0.0f, s * d));
             closest.d.c.z = s * m_half[2];
         } else if (d > maxDist) {
             maxDist = d;
         }
     } else {
-        float d = a0 - m_half[0];
+        float d = abs.d.c.x - m_half[0];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
         } else {
             maxDist = d;
         }
-        d = a1 - m_half[1];
+        d = abs.d.c.y - m_half[1];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
         } else if (d > maxDist) {
             maxDist = d;
         }
-        d = a2 - m_half[2];
+        d = abs.d.c.z - m_half[2];
         if (d > 0.0f) {
             distSq += d * d;
             outside = true;
@@ -246,7 +238,7 @@ int CVolBox::TestCollision(const CVolSphere& sphere, CCollision& collision, bool
             contact.m_vector1.d.c.z = xz * closest.d.c.x + yz * closest.d.c.y + zz * closest.d.c.z;
             contact.m_vector1.d.c.x = xx * closest.d.c.x + yx * closest.d.c.y + zx * closest.d.c.z;
             contact.m_vector1.d.c.y = xy * closest.d.c.x + yy * closest.d.c.y + zy * closest.d.c.z;
-            contact.m_vector1 += m_center;
+            contact.m_vector1.Add(m_center);
             contact.m_index = 0;
             collision.AddContact(contact);
         }

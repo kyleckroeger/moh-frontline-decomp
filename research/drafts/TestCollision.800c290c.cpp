@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 102 real lines, unchanged: diff.Sub and o.Scale (the original's CVector3 members) replace per-component code; n as a CVector3 with Sub/Scale costs 25-458 lines.
 #include <math.h>
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
@@ -38,12 +39,8 @@ public:
         d.c.y = k * v.d.c.y;
         d.c.z = k * v.d.c.z;
     }
-    CVector3& operator+=(const CVector3& o) {
-        d.c.x += o.d.c.x;
-        d.c.y += o.d.c.y;
-        d.c.z += o.d.c.z;
-        return *this;
-    }
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
+    void Add(const CVector3& o) { d.c.x += o.d.c.x; d.c.y += o.d.c.y; d.c.z += o.d.c.z; }
     void Negate(const CVector3& v) {
         d.c.x = -v.d.c.x;
         d.c.y = -v.d.c.y;
@@ -241,9 +238,7 @@ int CVolBox::TestCollision(const CVolCapsule& capsule, CCollision& collision, bo
     CVector3 dir = capsule.m_axis.GetDirection();
     const CLine3& line = capsule.m_axis;
     CVector3 diff;
-    diff.d.c.x = start.d.c.x - m_center.d.c.x;
-    diff.d.c.y = start.d.c.y - m_center.d.c.y;
-    diff.d.c.z = start.d.c.z - m_center.d.c.z;
+    diff.Sub(start, m_center);
     float r = CONTACT_EPSILON + capsule.m_radius;
     int result;
     if (AxisSeparates(dir.Dot(m_axes[0]), diff.Dot(m_axes[0]), m_half[0], r)) {
@@ -314,13 +309,11 @@ int CVolBox::TestCollision(const CVolCapsule& capsule, CCollision& collision, bo
                 normal.Normalize();
                 SClsnContact contact;
                 contact.m_separation = separation;
-                float k = -capsule.m_radius;
-                float ox = k * normal.d.c.x;
-                float oy = k * normal.d.c.y;
-                float oz = k * normal.d.c.z;
-                tmp.d.c.x = cx + ox;
-                tmp.d.c.y = cy + oy;
-                tmp.d.c.z = cz + oz;
+                CVector3 o;
+                o.Scale(normal, -capsule.m_radius);
+                tmp.d.c.x = cx + o.d.c.x;
+                tmp.d.c.y = cy + o.d.c.y;
+                tmp.d.c.z = cz + o.d.c.z;
                 contact.m_vector1 = tmp;
                 contact.m_vector0 = normal;
                 contact.m_index = 0;

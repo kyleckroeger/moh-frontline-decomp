@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 101 real lines, unchanged: start.Scale, aa.Scale, m_center.Sub/Add (the original's CVector3 members). The Mul inline stays load-bearing (acc.Scale + start.Add: 103); vel as a vector 735.
 
 class CPSManager {
 public:
@@ -23,6 +24,8 @@ public:
         d.v[1] = k * v.d.v[1];
         d.v[2] = k * v.d.v[2];
     }
+    void Add(const CVector3& v) { d.v[0] += v.d.v[0]; d.v[1] += v.d.v[1]; d.v[2] += v.d.v[2]; }
+    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
     CVector3& operator+=(const CVector3& v) {
         d.v[0] += v.d.v[0];
         d.v[1] += v.d.v[1];
@@ -222,15 +225,11 @@ void CParticleSystem::UpdateBoundingBox() {
         m_max.d.v[2] += radius;
         m_localMin = m_min;
         m_localMax = m_max;
-        m_center.d.v[0] = m_max.d.v[0] - m_min.d.v[0];
-        m_center.d.v[1] = m_max.d.v[1] - m_min.d.v[1];
-        m_center.d.v[2] = m_max.d.v[2] - m_min.d.v[2];
+        m_center.Sub(m_max, m_min);
         m_center.d.v[0] *= 0.5f;
         m_center.d.v[1] *= 0.5f;
         m_center.d.v[2] *= 0.5f;
-        m_center.d.v[0] += m_min.d.v[0];
-        m_center.d.v[1] += m_min.d.v[1];
-        m_center.d.v[2] += m_min.d.v[2];
+        m_center.Add(m_min);
         ValidateBoundingBox(true);
     }
     if (IsMoving()) {
@@ -261,9 +260,7 @@ void CParticleSystem::UpdateBoundingBox() {
         t2 = t * t;
         a2 = age * age;
         CVector3 start;
-        start.d.v[0] = t * sv.d.v[0];
-        start.d.v[1] = t * sv.d.v[1];
-        start.d.v[2] = t * sv.d.v[2];
+        start.Scale(sv, t);
         sx = Mul(t2, sa.d.v, 0);
         sy = Mul(t2, sa.d.v, 1);
         sz = Mul(t2, sa.d.v, 2);
@@ -282,12 +279,11 @@ void CParticleSystem::UpdateBoundingBox() {
         ex += start.d.v[0];
         ey += start.d.v[1];
         ez += start.d.v[2];
-        ax = a2 * sa.d.v[0];
-        ay = a2 * sa.d.v[1];
-        az = a2 * sa.d.v[2];
-        ex += ax;
-        ey += ay;
-        ez += az;
+        CVector3 aa;
+        aa.Scale(sa, a2);
+        ex += aa.d.v[0];
+        ey += aa.d.v[1];
+        ez += aa.d.v[2];
         CVector3 lo = start;
         CVector3 hi = start;
         CVector3* plo = &lo;

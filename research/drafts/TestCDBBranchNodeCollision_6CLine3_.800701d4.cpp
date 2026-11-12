@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 1 real line, unchanged: the split point is mid.Scale(GetDirection(), t); mid.Add(GetStart()) and SetSE uses m_dir.Sub (the original's CVector3 members), replacing an invented scaling constructor, operator* and operator+= (direct field arguments: 590-607).
 class CMatrix;
 // Inferred: CVector3 as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
@@ -11,22 +12,18 @@ class CVector3 {
 public:
     CVector3() {}
     CVector3(const CDBVector& v);
-    CVector3(float t, CVector3 v) {
-        d.v[0] = t * v.d.v[0];
-        d.v[1] = t * v.d.v[1];
-        d.v[2] = t * v.d.v[2];
-    }
     CVector3(float x, float y, float z) {
         d.v[0] = x;
         d.v[1] = y;
         d.v[2] = z;
     }
-    CVector3& operator+=(CVector3 o) { d.v[0] += o.d.v[0]; d.v[1] += o.d.v[1]; d.v[2] += o.d.v[2]; return *this; }
+    void Scale(const CVector3& o, float k) { d.v[0] = k * o.d.v[0]; d.v[1] = k * o.d.v[1]; d.v[2] = k * o.d.v[2]; }
+    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
+    void Add(const CVector3& o) { d.v[0] += o.d.v[0]; d.v[1] += o.d.v[1]; d.v[2] += o.d.v[2]; }
     CVector3Data d;
 } __attribute__((aligned(8)));
 
 
-inline CVector3 operator*(float t, CVector3 v) { return CVector3(t * v.d.v[0], t * v.d.v[1], t * v.d.v[2]); }
 
 class CTriangle;
 class CPlane;
@@ -40,9 +37,7 @@ public:
     void SetSE(CVector3 start, CVector3 end) {
         m_start = start;
         m_end = end;
-        m_dir.d.v[0] = m_end.d.v[0] - m_start.d.v[0];
-        m_dir.d.v[1] = m_end.d.v[1] - m_start.d.v[1];
-        m_dir.d.v[2] = m_end.d.v[2] - m_start.d.v[2];
+        m_dir.Sub(m_end, m_start);
         m_flag38 = 0;
         m_flag39 = 0;
     }
@@ -60,6 +55,7 @@ public:
     }
     CVector3 GetStart() const { return m_start; }
     CVector3 GetEnd() const { return m_end; }
+    CVector3 GetDirection() const { return m_dir; }
     CVector3 GetDir() const { return m_dir; }
 
     CVector3 m_start;
@@ -362,8 +358,9 @@ int CCDBObject::TestCDBBranchNodeCollision<CLine3>(const CDBBranchNode& root, co
             if (d1 < 0.0f) {
                 second = cur.m_node->m_back;
                 float t = d0 / (d0 - d1);
-                CVector3 mid(t, cur.m_line.m_dir);
-                mid += cur.m_line.m_start;
+                CVector3 mid;
+                mid.Scale(cur.m_line.GetDirection(), t);
+                mid.Add(cur.m_line.GetStart());
                 front.SetSE(cur.m_line.m_start, mid);
                 back.SetSE(mid, cur.m_line.m_end);
             } else {
@@ -374,8 +371,9 @@ int CCDBObject::TestCDBBranchNodeCollision<CLine3>(const CDBBranchNode& root, co
             if (d1 >= 0.0f) {
                 second = cur.m_node->m_front;
                 float t = -d0 / (d1 - d0);
-                CVector3 mid(t, cur.m_line.m_dir);
-                mid += cur.m_line.m_start;
+                CVector3 mid;
+                mid.Scale(cur.m_line.GetDirection(), t);
+                mid.Add(cur.m_line.GetStart());
                 back.SetSE(cur.m_line.m_start, mid);
                 front.SetSE(mid, cur.m_line.m_end);
             } else {

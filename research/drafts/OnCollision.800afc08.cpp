@@ -1,3 +1,4 @@
+// real2 (2026-11-12): 3 real lines, unchanged: away.Sub, member Normalize and away.Dot(motion) replace per-component code and a free Normalize (motion.Sub instead of the copy-then-subtract: 33).
 // A fragment of static_obj.cpp (0x800b013c): CStaticObject's Draw (when
 // the object is shown, points the draw context at its transform, sets the
 // light volume when the mesh is lit and draws the mesh), CommitUpdate (tells
@@ -36,17 +37,18 @@ public:
             float w;
         } c;
     };
-} __attribute__((aligned(8)));
-
-inline void Normalize(CVector3& v) {
-    float length = sqrtf(v.c.x * v.c.x + v.c.y * v.c.y + v.c.z * v.c.z);
-    if (length != 0.0f) {
-        float scale = 1.0f / length;
-        v.c.x *= scale;
-        v.c.y *= scale;
-        v.c.z *= scale;
+    void Sub(const CVector3& a, const CVector3& b) { c.x = a.c.x - b.c.x; c.y = a.c.y - b.c.y; c.z = a.c.z - b.c.z; }
+    float Dot(const CVector3& v) const { return c.x * v.c.x + c.y * v.c.y + c.z * v.c.z; }
+    void Normalize() {
+        float length = sqrtf(c.x * c.x + c.y * c.y + c.z * c.z);
+        if (length != 0.0f) {
+            float scale = 1.0f / length;
+            c.x *= scale;
+            c.y *= scale;
+            c.z *= scale;
+        }
     }
-}
+} __attribute__((aligned(8)));
 
 class CMatrix {
 public:
@@ -475,10 +477,8 @@ void CStaticObject::OnCollision(const CCollision& collision) {
             CVector3 position;
             player->GetPosition(position);
             CVector3 away;
-            away.c.x = point.c.x - position.c.x;
-            away.c.y = point.c.y - position.c.y;
-            away.c.z = point.c.z - position.c.z;
-            Normalize(away);
+            away.Sub(point, position);
+            away.Normalize();
             CVector3 motion;
             motion.c.x = point.c.x;
             motion.c.y = point.c.y;
@@ -486,8 +486,8 @@ void CStaticObject::OnCollision(const CCollision& collision) {
             motion.c.x -= local.c.x;
             motion.c.y -= local.c.y;
             motion.c.z -= local.c.z;
-            Normalize(motion);
-            if (away.c.x * motion.c.x + away.c.y * motion.c.y + away.c.z * motion.c.z > 0.0f)
+            motion.Normalize();
+            if (away.Dot(motion) > 0.0f)
                 stop = false;
         }
         if (stop) {
