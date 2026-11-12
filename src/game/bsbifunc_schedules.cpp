@@ -3,7 +3,12 @@
 // schedules, the sound schedule with one step, then the corpse search, buddy
 // player check and machine-gun point check schedules) and their shutdown at the
 // end of a level (the same schedules shut down, then the four pop-up message
-// handlers deleted). Both return 0. The file name is this project's; the original
+// handlers deleted), and their reset for a new level (the level's built-in
+// table file header byte-swapped, the sound schedule initialised, the six
+// schedules reset with their functions, periods and offsets, the highest
+// objective number cleared, the generic sound memory's last word marked
+// 0xaeaeaeae and the 20 hint texts and the hint buffer index cleared). Each
+// returns 0. The file name is this project's; the original
 // record is bsbifunc.cpp, whose other built-ins are reconstructed in the other
 // bsbifunc_*.cpp fragments. The schedules sit in the file's .bss block and are
 // reached from its base register, so the block is defined here with size views and
@@ -35,11 +40,30 @@ public:
 };
 extern SoundSchedule g_SoundSchedule;
 
+bool DoDistanceToTarget(BSObject*, int, int, int, int*, int*);
+bool DoTargetSearch(BSObject*, int, int, int, int*, int*);
+bool DoTargetCheck(BSObject*, int, int, int, int*, int*);
+bool DoCorpseSearch(BSObject*, int, int, int, int*, int*);
+bool DoBuddyPlayerCheck(BSObject*, int, int, int, int*, int*);
+bool DoMMGPointCheck(BSObject*, int, int, int, int*, int*);
+
+enum TLTResourceID {};
+/* inferred: the level resource's file names (the built-in table file second) */
+struct LevelFileContentsStruct_ {
+    unsigned char unknown00[8];
+    char** m_data;
+};
+LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
+void* TLT_LoadFileFromLevelBigFile(const char*, int*);
+
 struct HintText {
     int a;
     int b;
     int c;
 };
+
+extern int g_iHighestObjectiveNumber;
+extern int g_iHintBufferIndex;
 
 /* inferred: the file's .bss block (0x80197470, 2,936 bytes) is reached from one
    base register, so it is defined here in original order with size views and
@@ -103,3 +127,44 @@ int BSCleanUpBIFuncs() {
     return 0;
 }
 
+static inline void ChangeEndian(int& value) {
+    unsigned char bytes[4];
+    *reinterpret_cast<int*>(bytes) = value;
+    unsigned char c = bytes[0];
+    bytes[0] = bytes[3];
+    bytes[3] = c;
+    c = bytes[1];
+    bytes[1] = bytes[2];
+    bytes[2] = c;
+    value = *reinterpret_cast<int*>(bytes);
+}
+static inline void ChangeEndian(short& value) {
+    value = (short)((((unsigned short)value) >> 8) | (value << 8));
+}
+
+int BSResetBIFuncs() {
+    TLT_FindNextResourceByType((TLTResourceID)11, 0);
+    LevelFileContentsStruct_* resource = TLT_FindNextResourceByType((TLTResourceID)1, 0);
+    int* file = (int*)TLT_LoadFileFromLevelBigFile(resource->m_data[1], 0);
+    ChangeEndian(file[1]);
+    ChangeEndian(file[2]);
+    ChangeEndian(file[3]);
+    ChangeEndian(file[4]);
+    g_SoundSchedule.Init();
+    g_DistanceToTargetSchedule.Reset(DoDistanceToTarget, 5, 1);
+    g_TargetSearchSchedule.Reset(DoTargetSearch, 5, 1);
+    g_TargetCheckSchedule.Reset(DoTargetCheck, 5, 7);
+    g_CorpseSearchSchedule.Reset(DoCorpseSearch, 5, 29);
+    g_BuddyPlayerCheckSchedule.Reset(DoBuddyPlayerCheck, 1, 120);
+    g_MMGPointCheckSchedule.Reset(DoMMGPointCheck, 5, 7);
+    g_pGenericSoundMemory[19] = 0xaeaeaeae;
+    g_iHighestObjectiveNumber = 0;
+    HintText* h = g_HintTextArray;
+    for (int i = 0; i < 20; i++, h++) {
+        h->c = 0;
+        h->a = 0;
+        h->b = 0;
+    }
+    g_iHintBufferIndex = 0;
+    return 0;
+}

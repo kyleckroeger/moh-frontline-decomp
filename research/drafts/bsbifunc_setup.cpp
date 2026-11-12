@@ -76,32 +76,6 @@ static inline void ChangeEndian(short& value) {
     value = (short)((((unsigned short)value) >> 8) | (value << 8));
 }
 
-int BSResetBIFuncs() {
-    TLT_FindNextResourceByType((TLTResourceID)11, 0);
-    LevelFileContentsStruct_* resource = TLT_FindNextResourceByType((TLTResourceID)1, 0);
-    int* file = (int*)TLT_LoadFileFromLevelBigFile(resource->m_data[1], 0);
-    ChangeEndian(file[1]);
-    ChangeEndian(file[2]);
-    ChangeEndian(file[3]);
-    ChangeEndian(file[4]);
-    g_SoundSchedule.Init();
-    g_DistanceToTargetSchedule.Reset(DoDistanceToTarget, 5, 1);
-    g_TargetSearchSchedule.Reset(DoTargetSearch, 5, 1);
-    g_TargetCheckSchedule.Reset(DoTargetCheck, 5, 7);
-    g_CorpseSearchSchedule.Reset(DoCorpseSearch, 5, 29);
-    g_BuddyPlayerCheckSchedule.Reset(DoBuddyPlayerCheck, 1, 120);
-    g_MMGPointCheckSchedule.Reset(DoMMGPointCheck, 5, 7);
-    g_iHighestObjectiveNumber = 0;
-    g_pGenericSoundMemory[19] = 0xaeaeaeae;
-    for (int i = 0; i < 20; i++) {
-        g_HintTextArray[i].c = 0;
-        g_HintTextArray[i].a = 0;
-        g_HintTextArray[i].b = 0;
-    }
-    g_iHintBufferIndex = 0;
-    return 0;
-}
-
 // The built-in function table is loaded from the level's "bif" file, whose fields
 // are little endian. Each entry's CRC names one of the engine's built-ins.
 struct BIFEntry {
