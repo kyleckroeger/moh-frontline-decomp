@@ -52,7 +52,7 @@
       "linked_offset": 0,
       "linked_size": 40,
       "stripped_objects": [
-        "@92"
+        "@96"
       ]
     },
     {
@@ -63,7 +63,7 @@
       "linked_offset": 0,
       "linked_size": 60,
       "stripped_objects": [
-        "@93"
+        "@97"
       ]
     }
   ],

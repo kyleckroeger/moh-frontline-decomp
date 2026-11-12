@@ -66,7 +66,7 @@ hearingvolume	scratch/loop3/hdr3/try/hearingvolume/src/hearingvolume.cpp	kept	mo
 hearingvolume_ctor	scratch/try/hearingvolume_ctor/src/hearingvolume_ctor.cpp	kept	
 hearingvolume_init	scratch/try/hearingvolume_init/src/hearingvolume_init.cpp	kept	
 hearingvolume_rows	scratch/loop3/hdr3/try/hearingvolume_rows/src/hearingvolume_rows.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
-hierobject	scratch/loop3/hdr3/try/hierobject/src/hierobject.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject.cpp # ------------------------------
+hierobject	scratch/loop3/hdr3/try/hierobject/src/hierobject.cpp	kept	moved 2026-11-12 (hdr3, after its CVector3 move; stripped_objects relabelled @92/@93 -> @96/@97)
 hierobject_constrain	scratch/loop3/hdr3/try/hierobject_constrain/src/hierobject_constrain.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 hierobject_draw	scratch/try/hierobject_draw/src/hierobject_draw.cpp	kept	
 hierobject_motion	scratch/loop3/hdr3/try/hierobject_motion/src/hierobject_motion.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\hierobject_motion.cpp # ------------------------------------- #      30: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
@@ -123,7 +123,7 @@ propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	kept
 proxtrig_point	scratch/loop3/hdr3/try/proxtrig_point/src/proxtrig_point.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_point.cpp # ---------------------------------- #      39: CVector3Data d;
 quaternion_matrix	scratch/loop3/hdr3/try/quaternion_matrix/src/quaternion_matrix.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\quaternion_matrix.cpp # -------------------------------------
 skeleton	scratch/try/skeleton/src/skeleton.cpp	kept	
-skybox	scratch/loop3/hdr3/try/skybox/src/skybox.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\skybox.cpp # -------------------------- #      57: CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
+skybox	scratch/loop3/hdr3/try/skybox/src/skybox.cpp	kept	moved 2026-11-12 (hdr3, after its CVector3 move; stripped_objects relabelled @379/@380 -> @391/@392, @473/@474 -> @490/@491)
 sound	scratch/loop3/hdr3/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\sound.cpp # ------------------------- #     173: CVector3Data d;
 sphere	scratch/loop3/hdr3/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere.cpp # --------------------------
 sphere_extents	scratch/loop3/hdr3/try/sphere_extents/src/sphere_extents.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
@@ -131,7 +131,7 @@ static_obj_anim	scratch/try/static_obj_anim/src/static_obj_anim.cpp	kept
 static_obj_attempt	scratch/loop3/hdr3/try/static_obj_attempt/src/static_obj_attempt.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 static_obj_bounds	scratch/try/static_obj_bounds/src/static_obj_bounds.cpp	kept	
 static_obj_commit	scratch/loop3/hdr3/try/static_obj_commit/src/static_obj_commit.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
-static_obj_dtor	scratch/loop3/hdr3/try/static_obj_dtor/src/static_obj_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_dtor.cpp # -----------------------------------
+static_obj_dtor	scratch/loop3/hdr3/try/static_obj_dtor/src/static_obj_dtor.cpp	kept	moved 2026-11-12 (hdr3, after its CVector3 move; stripped_objects relabelled @56/@57 -> @59/@60, @60/@61 -> @63/@64)
 static_obj_rows	scratch/try/static_obj_rows/src/static_obj_rows.cpp	kept	
 static_obj_scale	scratch/loop3/hdr3/try/static_obj_scale/src/static_obj_scale.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_scale.cpp # ------------------------------------ #      24: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 static_obj_setlight	scratch/loop3/hdr3/try/static_obj_setlight/src/static_obj_setlight.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_setlight.cpp # --------------------------------------- #      37: *(CVector3Pair*)this = *(const CVector3Pair*)&other;

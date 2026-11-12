@@ -83,21 +83,8 @@ class CStaticMesh;
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Ident();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
 
 class CStaticObject : public IMovingSceneNode {
 public:

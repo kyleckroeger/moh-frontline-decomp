@@ -223,7 +223,7 @@ different headers. The header now keeps the fields in an 8-byte-aligned plain ba
 constructor each break a different group. 42 more units moved (matrix_ps, thrown_obj_init and
 compartment_intersect among them) and the 168 already on it still match. A re-run over the 110
 units still on their own view moved 4 more, each after renaming its stripped extab labels; the
-rest differ in code (76) or don't compile (33).
+rest differ in code (76) or don't compile (33). Three of the four then moved onto CMatrix.h too.
 
 CMatrix, 2026-11-12: `include/game/CMatrix.h`, four CVector3 rows `right, front, up, pos`
 (named after the original's `SetRight`/`SetFront`/`SetUp`/`SetPos`), 16-byte aligned, every

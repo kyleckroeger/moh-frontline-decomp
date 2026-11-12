@@ -13,15 +13,8 @@
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void PostMultiply(const CMatrix& m) { Multiply(*this, m); }
-    void SetPos(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 class CQuaternion {
 public:

@@ -891,7 +891,7 @@
     "src/game/hearingvolume_ctor.cpp": "fb9cc85fba1a9d5cb322379bbce4aadcb1645a46016425f24a930147a156884c",
     "src/game/hearingvolume_init.cpp": "2621762cce03b4672f7b5fb1acf858b6175abf19e97f0a0073fd3e60ea957c0a",
     "src/game/hearingvolume_rows.cpp": "603368903d1c34fc6b47d62627396e0744f4527fd629b9786503a89423d4ea5b",
-    "src/game/hierobject.cpp": "441d124fb1a364a124891efacdd771b3f6bd9619cd8a061d4b9bacdcf49b4a85",
+    "src/game/hierobject.cpp": "5cf7c3ea9b9e21259c12fffd9d48fd7f15c716cbfbf82d275b9008908916f169",
     "src/game/hierobject_constrain.cpp": "13edf79bd4a6a5646c90a7d65d551ae74a9c36697cea644d3019cf2dd9353127",
     "src/game/hierobject_draw.cpp": "67a66f0e3948333dc004a9e723b8bf8995572b5dacac294b12d397e422f50e4a",
     "src/game/hierobject_motion.cpp": "a014904bcd8f0aca42d1dff4a936a4c5d0020639a868674ff9c23cc243d20318",
@@ -1094,7 +1094,7 @@
     "src/game/shadow.cpp": "a065583d8c1eca57a086b3ca047e1ffe81221bad1ef499e5fceae924c6666f1f",
     "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
     "src/game/skeleton.cpp": "889f952bdeb2b5c6e1787e01d515e338160f5a7c5db43aa20a76e3db73812572",
-    "src/game/skybox.cpp": "7f9c4c0e355025a71a2a6af217f2b9b4978f258ae25450b4010a4ff9eb2285de",
+    "src/game/skybox.cpp": "7a53516d19d24ee2b538137030e242a1aeb2ae8f344dc8bbd6f93138628049c8",
     "src/game/sound.cpp": "70dcdd80bf1dd58afd5a384334f7cc43d1665cde528ae5fd770643d269600c55",
     "src/game/soundschedule.cpp": "c694f97d087bfc7f21c516d5e3ccca496446691cf3b37b2f183e5926872a483d",
     "src/game/soundschedule_sound.cpp": "c7cf749da8b9723eee6f8581d787465a55c7470057a7da9fcf926591173f598e",
@@ -1117,7 +1117,7 @@
     "src/game/static_obj_bounds.cpp": "95f46ee3f954cb34559dde7b632acbee9ba83303048b65c584a359bf2e07da11",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
     "src/game/static_obj_commit.cpp": "103ecdc512d7ac7ac7772a3089f58f98a6eb1e323378a4b811a67594d86e6f8c",
-    "src/game/static_obj_dtor.cpp": "9c001f019b9c0cd978549a30ad21b14e8b5d5b80a577db3b26aaad7a39fc0a90",
+    "src/game/static_obj_dtor.cpp": "401fc569f9816b943dc63449b888af274bc9d6b42a53ef7e52874aa328b6237c",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
     "src/game/static_obj_rows.cpp": "0fb0976dfd3b7139664668b9748e19b44fa4d7b4d3f297c0d6d69c1ae2baa28e",
@@ -2356,7 +2356,7 @@
     "config/GMFE69/hearingvolume_ctor.json": "bba5cdf2cf44a15bb762ffc21729b9b9ffbf42e7d15d2e55f055e9d6611d8b66",
     "config/GMFE69/hearingvolume_init.json": "ec3de2a1e6372373d289fd2a9b4f27f43cea6da77fa32929a50aa432cf52b8af",
     "config/GMFE69/hearingvolume_rows.json": "c7204ce18b9eab5e2c7f0cc939d875a4a9b5bd677d223836c1ed4c6c48386d0a",
-    "config/GMFE69/hierobject.json": "610c409063d1e491a2f79f23b8c3e3babcbd01b83f964c13d108740e1dcd57aa",
+    "config/GMFE69/hierobject.json": "721e1c1e0fd79cf371cbbd1ffa848c2cd7fa8ea38cc2ee0ee118db68a81adc0a",
     "config/GMFE69/hierobject_constrain.json": "91d921adf6c9ef973ca23c94f23e689ddebf68eb46231706edc78ae6cfcc34ad",
     "config/GMFE69/hierobject_draw.json": "eda533592402fa26cb260d588ee3e971154caf3e0a9b1e091f19baea810dd367",
     "config/GMFE69/hierobject_motion.json": "862ddf511f4fc1e06db3ae7b03902830536071543761956f061dcbd61f783dc0",
@@ -2731,7 +2731,7 @@
     "config/GMFE69/sinitxa.json": "411b577b864a696f54ca6f728819538a238b294030608ccd59f1af782b46221e",
     "config/GMFE69/skelblend.json": "b8ac1a476be561b4fae4c3cd449972f6931387e83a4a8df3cbb09b3b3b86e6e9",
     "config/GMFE69/skeleton.json": "062ee8b6fc9df3485b0709519a577c5e43758863e16e0f222d8c2a24c79d31ee",
-    "config/GMFE69/skybox.json": "9439ccb2e625ff32b131a1a1362a6e9815014f58e43e5bb8f3f874433e407284",
+    "config/GMFE69/skybox.json": "bcb0f86b85d122e1533e477858d491b8c04111c4df2c07cfdea3ac1d2fc7143c",
     "config/GMFE69/slib.json": "175b59682d7176e6914e303e81ec26cb60fcb86ab08f884e84a2df96c09626de",
     "config/GMFE69/slinklst.json": "78f5a23f4c875365e7cc005444f78777fe3ee3972c723fd05c9472f7f00830a2",
     "config/GMFE69/slinkmix.json": "0d66b0e0297a0e7e7bf0c13cc7f212971c66ee4114cf017c282deb2b452f6755",
@@ -2827,7 +2827,7 @@
     "config/GMFE69/static_obj_bounds.json": "0e67d1a04445e710862a60b33ac2bbf71f681f4b82fe9b7c73b27f7cac923522",
     "config/GMFE69/static_obj_collisionid.json": "2e09b85ddda256c2d2c9ec91ccd8bd78419d2fb6a16bc9a74607a4a9a86e4101",
     "config/GMFE69/static_obj_commit.json": "b4e5d617c45dd5dea7c23dad8499520227451b32eb900e1d2199517caa430515",
-    "config/GMFE69/static_obj_dtor.json": "57635a5a7a6f2fc2e7f02003db395a8f552d76deca8eae27018deaa9cf290deb",
+    "config/GMFE69/static_obj_dtor.json": "d0df1b890f3c2f28f256f740207876b8a710952fa6853bff019b90a0657d41c4",
     "config/GMFE69/static_obj_firedby.json": "e42aa5c7378930075d2b010814c1ef8d3c5f472c8ed042f0f1fb294225794351",
     "config/GMFE69/static_obj_pathbegin.json": "fbfeaab8f3fb508d9a9e88d0d5cc59584cd396767a9e7787b428857c7c5bf242",
     "config/GMFE69/static_obj_rows.json": "5f6fe659cc550fe18e9c8ee5c8df6aad5cc98934b97ab7eaeae277dcfd6aea4c",
@@ -21129,8 +21129,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "d31a7d5097f75b70305db1cc80f7ba1c322999eda10eb49941bab58917cc3e65",
-      "linked_sha256": "0663afe3ae9db3b205a52f6eec89ee195d2b868b5c4b8b91fde21bda5221640e"
+      "object_sha256": "4d9762271324d2c7b910f4fc056e0720e13842b67fe191aecb72d6dbf53e60b9",
+      "linked_sha256": "a055a677d7a43ab31b87a7e85285f83a2e741c47ba7ea06dfb3e9d90cc81d2d7"
     },
     {
       "id": "motionblur",
@@ -36040,8 +36040,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "72ea7e2f177ff1cf234df77e777ead2f650adb1d251322e98a71ee371ff42c5e",
-      "linked_sha256": "29a7040302b0c50d07f7a7e21348c994f9372fb22881026c101313fa38605368"
+      "object_sha256": "750b1f3e97787949ed70c047331ef46432727fde67f47593dccf388df3cc63ec",
+      "linked_sha256": "fc9835668218c32dfda8fa7ed4152acd9d6b2ec1ad61238d17b3b80d83ab9567"
     },
     {
       "id": "bullet_ctor",
@@ -48275,8 +48275,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "6a379e262876d6b056a50f86cdf7ebe92a1eb916502d272d483d3ac1368f4875",
-      "linked_sha256": "b08b466984511cada4822680893740f7ecae943fd800a4c5f3ae4a92c2fef777"
+      "object_sha256": "656740b44866eb427c3bd112de4470d505de6144bd90ebef9032efcc125a1c3f",
+      "linked_sha256": "82d9611244704f32fcb78469e2403cced5afde6189ebbcc4f03996d80c6e66f8"
     },
     {
       "id": "sbasync_download",

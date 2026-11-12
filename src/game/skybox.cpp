@@ -58,22 +58,8 @@ public:
     float x, y, z, w;
 };
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    CMatrix& operator=(const CMatrix&);
-    void SetPos(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void Transform(CVector4&, CVector3) const;
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 /* Inferred: the packet's write cursor at +8. */
 class CDmaPacket {
@@ -367,7 +353,7 @@ public:
                 GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
                 GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
                 GXSetVtxDesc(GX_VA_TEX0, GX_DIRECT);
-                GXSetProjection(g_ProjectionMatrix.m, GX_PERSPECTIVE);
+                GXSetProjection(((float(*)[4])&g_ProjectionMatrix.right), GX_PERSPECTIVE);
                 GXSetCurrentMtx(3);
                 GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_F32, 0);
                 GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_CLR0, GX_CLR_RGBA, GX_RGBA8, 0);

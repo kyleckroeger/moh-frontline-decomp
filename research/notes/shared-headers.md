@@ -138,3 +138,6 @@ function set" units define or call the original's weak copies (default construct
 particlesystem_active gains a non-weak __sinit), so listing weak copies doesn't help. The other
 lost units differ in .text or sections (code-level differences), 33 don't compile (own methods
 or spellings). Table: research/layout/header_moves/CVector3.tsv.
+Follow-up: hierobject, skybox and static_obj_dtor (their CVector3 view now shared) also move onto
+CMatrix.h, again after renaming their stripped labels (same matching); staticobjfactory_lookup
+has no CMatrix view.
