@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 44 real lines (was 47; index said 47), from
+// scratch/loop3/harvest1/svf_merge.c: body shape from scratch/lib/salloc_free_wip.c (indexed p[i]
+// walk, v from VOICES directly). Left: registers.
 // The voice allocator (salloc.c). SNDVOICEI_alloc reserves count voices in
 // [first, last): free voices first (oldest start time), then by stealing
 // voices of a lower priority (oldest first among equals). The reserved list
@@ -171,22 +174,19 @@ static inline void releasevoice(SNDVOICE* v) {
 }
 
 void SNDVOICEI_free(int voice) {
-    SNDVOICE* voices = VOICES;
-    SNDVOICE* const v = &voices[voice];
-    SNDVOICE* p;
-    int group;
-    int i;
+    SNDVOICE* v = &VOICES[voice];
+    int group = v->group;
     int n = 0;
     int lead = -1;
+    int i;
+    SNDVOICE* p;
 
-
-    group = v->group;
     if (v->group) {
-        p = voices;
-        for (i = 0; i < *(short*)(sndgs + 368); p++, i++) {
-            if (p->group == group && p->handle >= 0 && p->active) {
+        p = VOICES;
+        for (i = 0; i < *(short*)(sndgs + 368); i++) {
+            if (group == p[i].group && p[i].handle >= 0 && p[i].active) {
                 n++;
-                if (p->lead)
+                if (p[i].lead)
                     lead = i;
             }
         }
@@ -194,7 +194,7 @@ void SNDVOICEI_free(int voice) {
             releasevoice(v);
             return;
         }
-        p = &voices[lead];
+        p = &VOICES[lead];
         if (p->active == 2 && voice != lead && n == 2) {
             releasevoice(v);
             VOICES[lead].active = 0;
@@ -208,9 +208,9 @@ void SNDVOICEI_free(int voice) {
             return;
         }
         releasevoice(v);
-    } else {
-        releasevoice(v);
+        return;
     }
+    releasevoice(v);
 }
 
 int SNDVOICEI_get(int handle) {

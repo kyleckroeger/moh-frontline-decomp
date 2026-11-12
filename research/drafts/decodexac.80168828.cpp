@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 28 real lines (was 32; index said 32), from
+// scratch/loop3/harvest1/dx_merge.cpp: 'table = &xatablef[(*packet->in++ & 0xF) * 16]' in place (from
+// scratch/lib/coda_wip.cpp). Left: FPR colouring in the loop.
 namespace SND {
 /* inferred: a decode request */
 struct MXAPACKETF {
@@ -12,10 +15,6 @@ extern float xafilterf[];
 extern float xatablef[];
 
 void decodexac(MXAPACKETF* packet);
-}
-
-static inline float* gettable(SND::MXAPACKETF* packet) {
-    return &SND::xatablef[(*packet->in & 0xF) * 16];
 }
 
 void SND::decodexac(SND::MXAPACKETF* packet) {
@@ -34,9 +33,8 @@ void SND::decodexac(SND::MXAPACKETF* packet) {
         filter = &xafilterf[*packet->in >> 4];
         packet->count -= 28;
         c0 = filter[0];
-        table = gettable(packet);
+        table = &SND::xatablef[(*packet->in++ & 0xF) * 16];
         c1 = filter[4];
-        packet->in++;
         for (i = 0; i < 14; i++) {
             unsigned char b = packet->in[i];
             packet->out[0] = packet->out[-2] * c1 + (packet->out[-1] * c0 + table[b >> 4]);

@@ -1,3 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 0 real lines (was 6; index said 6), from
+// scratch/loop3/rs2/pev/q_int_bl.cpp: beats held in an int local, record index built in a separate 'a'
+// local. Code exact as a function; landing waits on State question 5 ('#pragma auto_inline off/reset'
+// around PATH_pause; unit merge scratch/loop3/rs2/pev/PATH_event_unit_autoinline.c).
 /* A second fragment of the music path player's path.c (src/ea/path.c holds
    PATH_control onward): PATH_volume clamps the volume to 0..100, keeps it as
    the global volume scale for the all-tracks handle (-1), and for each masked
@@ -337,6 +341,9 @@ extern "C" int PATH_event(unsigned int handle, unsigned int id, int flags) {
     PATHEVENTVIEW event;
     PATHRECORDVIEW record;
     PATHMAPVIEW* map;
+    int a;
+    int beats;
+    int index;
     unsigned int song;
     unsigned int project;
     int eventnum;
@@ -371,10 +378,13 @@ extern "C" int PATH_event(unsigned int handle, unsigned int id, int flags) {
                 for (j = 0; j < 24; j++) {
                     if (pfstate->tracks[j] && (handle & (1 << j))) {
                         map = pfstate->active;
-                        { int index = eventnum * map->beats;
-                        index += map->beats * (j * map->events);
+                        beats = map->beats;
+                        a = eventnum;
+                        a *= beats;
+                        index = beats * (j * map->events);
+                        index = a + index;
                         index += pfstate->beat;
-                        record = pfstate->records[pfstate->recordmap[index]]; }
+                        record = pfstate->records[pfstate->recordmap[index]];
                         if ((record.flags & 3) || record.unknown0 >= 0)
                             event.mask -= 1 << j;
                         if (hold || (record.flags & 8))

@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 52 real lines (was 53; index said 56), from
+// scratch/loop3/vec7/tcp/hc2_best_1.cpp: vec7 hill-climb result (field-wise corner steps). Left: the
+// f29/f6 pair (scratch/loop3/vec7/notes.md).
 #include <math.h>
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
@@ -130,29 +133,44 @@ int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag
     CVector3 b;
     CVector3 c;
     a.d.c.x = MulV(m_half[0], m_axes[0].d.c.x);
+    SClsnContact contact;
     a.d.c.y = MulV(m_half[0], m_axes[0].d.c.y);
     a.d.c.z = MulV(m_half[0], m_axes[0].d.c.z);
     b.d.c.x = MulV(m_half[1], m_axes[1].d.c.x);
     b.d.c.y = MulV(m_half[1], m_axes[1].d.c.y);
+    CVector3 point;
     b.d.c.z = MulV(m_half[1], m_axes[1].d.c.z);
     c.d.c.x = MulV(m_half[2], m_axes[2].d.c.x);
     c.d.c.y = MulV(m_half[2], m_axes[2].d.c.y);
-    CVector3 point;
     CVector3 corner = m_center;
-    SClsnContact contact;
     corner.d.c.x -= a.d.c.x;
-    corner.d.c.x -= b.d.c.x;
-    corner.d.c.x -= c.d.c.x;
-    contact.m_vector0.Negate(plane.m_normal);
+    corner.d.c.x = corner.d.c.x - b.d.c.x;
+    corner.d.c.y = corner.d.c.y - a.d.c.y;
+    corner.d.c.x = corner.d.c.x - c.d.c.x;
+    contact.m_vector0.d.c.x = -plane.m_normal.d.c.x;
+    contact.m_vector0.d.c.y = -plane.m_normal.d.c.y;
+    contact.m_vector0.d.c.z = -plane.m_normal.d.c.z;
     c.d.c.z = MulV(m_half[2], m_axes[2].d.c.z);
-    corner.d.c.y -= a.d.c.y;
     corner.d.c.y -= b.d.c.y;
-    corner.d.c.y -= c.d.c.y;
     corner.d.c.z -= a.d.c.z;
     corner.d.c.z -= b.d.c.z;
+    corner.d.c.y = corner.d.c.y - c.d.c.y;
     corner.d.c.z -= c.d.c.z;
     contact.m_separation = plane.Project2(corner, point);
     contact.m_vector1 = point;
+    corner.d.c.x = corner.d.c.x + a.d.c.x;
+    corner.d.c.z += a.d.c.z;
+    corner.d.c.x = corner.d.c.x + a.d.c.x;
+    corner.d.c.y += a.d.c.y;
+    corner.d.c.y = corner.d.c.y + a.d.c.y;
+    corner.d.c.z = corner.d.c.z + a.d.c.z;
+    {
+        float distance = plane.Project2(corner, point);
+        if (distance < contact.m_separation) {
+            contact.m_separation = distance;
+            contact.m_vector1 = point;
+        }
+    }
 #define STEP(v, op) \
     corner op v; \
     corner op v; \
@@ -163,7 +181,6 @@ int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag
             contact.m_vector1 = point; \
         } \
     }
-    STEP(a, +=)
     STEP(b, +=)
     STEP(a, -=)
     STEP(c, +=)

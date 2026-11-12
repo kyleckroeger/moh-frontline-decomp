@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 88 real lines (was 113; index said 196), from
+// scratch/loop3/struct1/v/pcube.cpp: 'move = move * (move * move); g_fGraphCursor += move;' (unfused,
+// matches the original's length). Left: registers.
 // A fragment of debug_prof.cpp (0x800f34f0): the SProfHistBin constructor
 // (six halfwords set to -1, then 300 profile bins built by __construct_array)
 // and the weak SProfileBin constructor, which sets the first word to -1 and
@@ -121,7 +124,8 @@ void PROFILE_UPDATE() {
         g_bProfileUpdateHistory = !g_bProfileUpdateHistory;
     if (!g_bProfileUpdateHistory) {
         float move = 0.0078125f * (float)g_inputMgr.GetValue(0, 137);
-        g_fGraphCursor += move * (move * move);
+        move = move * (move * move);
+        g_fGraphCursor += move;
         if (g_fGraphCursor < 0.0f)
             g_fGraphCursor = 299.0f + g_fGraphCursor;
         else if (g_fGraphCursor >= 300.0f)

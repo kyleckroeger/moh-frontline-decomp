@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 3 real lines (was 4; index said 4), from
+// scratch/loop3/airender/fao/BEST3.cpp: 'types = types & ...' instead of '&='. Left: 3 lines (the 1|2
+// 'or' order); the sweep1 FAO_BEST3 inline-view variant is State question 8 and not used.
 enum COVERPOINT_TYPE {};
 
 void DebugMsg(const char*, ...);
@@ -54,8 +57,8 @@ public:
                 bits |= table[i].type;
         }
         types.m_bits = bits;
-        types &= 0xff;
-        types &= CoverPointTypes(1) | 2 | 4;
+        types = types & 0xff;
+        types = types & (CoverPointTypes(1) | 2 | 4);
         return types;
     }
 

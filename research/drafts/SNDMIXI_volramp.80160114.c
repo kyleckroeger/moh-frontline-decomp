@@ -1,3 +1,6 @@
+// best WIP (harvest1, 2026-11-12): 20 real lines (was 28; index said 28), from
+// scratch/game/smixer_volramp_wip.c: the ramp written in the function on sndmix directly (no
+// Ramp(voice, &sndmix) helper). Left: registers.
 // The mixer's allocation hooks: SNDI_New takes cleared sound memory and
 // SNDI_Delete frees it. The rest of the file is not part of this unit.
 void* SNDMEMI_allocz(int);
@@ -57,27 +60,6 @@ extern SNDMIXVIEW sndmix;
 extern float sndfx[];
 }
 
-static inline void Ramp(SNDMIXVOICE* voice, SNDMIXVIEW* m) {
-    voice->last = ((float*)sndmix.alignedWork[1])[15];
-    if (m->value0f) {
-        if (voice->volume != voice->targetVolume) {
-            MIXI_interpolatemix(voice->volume, voice->targetVolume, (float*)sndmix.alignedWork[1], sndfx);
-            voice->volume = voice->targetVolume;
-        } else if (0.0f != voice->targetVolume) {
-            m->scalemix(16, voice->targetVolume, sndmix.alignedWork[1], sndfx);
-        }
-    }
-    for (int i = 0; i < m->outputs; i++) {
-        if (voice->pan[i] != voice->targetPan[i]) {
-            MIXI_interpolatemix(voice->pan[i], voice->targetPan[i], (float*)sndmix.alignedWork[1],
-                                (float*)m->alignedMix[i]);
-            voice->pan[i] = voice->targetPan[i];
-        } else if (0.0f != voice->targetPan[i]) {
-            m->scalemix(16, voice->targetPan[i], sndmix.alignedWork[1], (float*)m->alignedMix[i]);
-        }
-    }
-}
-
 int SNDMIXI_volramp(SNDMIXVOICE* voice) {
     if (voice->decoder->decode(voice->decoder, 16, sndmix.alignedWork[0], sndmix.alignedWork[1], 0) <= 0) {
         voice->volume = voice->targetVolume;
@@ -85,7 +67,24 @@ int SNDMIXI_volramp(SNDMIXVOICE* voice) {
             voice->pan[i] = voice->targetPan[i];
         return 0;
     }
-    Ramp(voice, &sndmix);
+    voice->last = ((float*)sndmix.alignedWork[1])[15];
+    if (sndmix.value0f) {
+        if (voice->volume != voice->targetVolume) {
+            MIXI_interpolatemix(voice->volume, voice->targetVolume, (float*)sndmix.alignedWork[1], sndfx);
+            voice->volume = voice->targetVolume;
+        } else if (0.0f != voice->targetVolume) {
+            sndmix.scalemix(16, voice->targetVolume, sndmix.alignedWork[1], sndfx);
+        }
+    }
+    for (int i = 0; i < sndmix.outputs; i++) {
+        if (voice->pan[i] != voice->targetPan[i]) {
+            MIXI_interpolatemix(voice->pan[i], voice->targetPan[i], (float*)sndmix.alignedWork[1],
+                                (float*)sndmix.alignedMix[i]);
+            voice->pan[i] = voice->targetPan[i];
+        } else if (0.0f != voice->targetPan[i]) {
+            sndmix.scalemix(16, voice->targetPan[i], sndmix.alignedWork[1], (float*)sndmix.alignedMix[i]);
+        }
+    }
     return 16;
 }
 

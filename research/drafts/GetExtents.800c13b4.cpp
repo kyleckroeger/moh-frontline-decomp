@@ -1,6 +1,7 @@
+// best WIP (harvest1, 2026-11-12): 37 real lines (was 45; index said 45), from
+// scratch/loop3/geometry/bge/best_split_4_d0m.cpp: declaration order xx..zz and the fabs terms
+// reordered; the local fabs override is gone. Left: FPR colouring.
 #include <math.h>
-#undef fabs
-inline double fabs(double x) { return __fabs(x); }
 // A fragment of box.cpp (0x800c11d8): BoxPointSqrDistance, the squared
 // distance from a point to a box, following the well-known point-to-box
 // distance (Eberly's SqrDistance(Vector3, Box3)): the point is taken into the
@@ -127,16 +128,16 @@ float BoxPointSqrDistance(const CVector3& rkPoint, const CVolBox& rkBox, float* 
 }
 
 void CVolBox::GetExtents(CVector3& min, CVector3& max) const {
-    float xx, xy, zz, yx, yy, zx, yz, zy, xz;
-    zx = fabs(m_halfHeight * m_basis[2].d.c.x);
+    float xx, xy, xz, yx, yy, yz, zx, zy, zz;
     yy = fabs(m_halfDepth * m_basis[1].d.c.y);
-    xx = fabs(m_halfWidth * m_basis[0].d.c.x);
-    yz = fabs(m_halfDepth * m_basis[1].d.c.z);
-    zz = fabs(m_halfHeight * m_basis[2].d.c.z);
-    xy = fabs(m_halfWidth * m_basis[0].d.c.y);
-    yx = fabs(m_halfDepth * m_basis[1].d.c.x);
-    xz = fabs(m_halfWidth * m_basis[0].d.c.z);
+    zx = fabs(m_halfHeight * m_basis[2].d.c.x);
     zy = fabs(m_halfHeight * m_basis[2].d.c.y);
+    yx = fabs(m_halfDepth * m_basis[1].d.c.x);
+    xy = fabs(m_halfWidth * m_basis[0].d.c.y);
+    xx = fabs(m_halfWidth * m_basis[0].d.c.x);
+    zz = fabs(m_halfHeight * m_basis[2].d.c.z);
+    xz = fabs(m_halfWidth * m_basis[0].d.c.z);
+    yz = fabs(m_halfDepth * m_basis[1].d.c.z);
 
     min.d.c.x = m_center.d.c.x - xx - yx - zx;
     min.d.c.y = m_center.d.c.y - xy - yy - zy;
