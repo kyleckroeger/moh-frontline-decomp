@@ -19,10 +19,10 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 87.52% (1,238,080 bytes) at 6e3c8d59, +18,808 this run. Landing commits: 22.
-- Lanes (2026-11-11 23:17): geometry dry after 2 agents (slot
-  now runs the Rising Sun helper-boundary sweep, agent rs1); scripting 5th agent (top), systems
-  slot on the scripting bottom (systems4); airender 5th agent (Rising Sun trick on near-misses);
+- Verified: 87.80% (1,242,004 bytes) at 5e72bb35, +22,732 this run. Landing commits: 26.
+- Lanes (2026-11-11 23:57): geometry dry after 2 agents (slot
+  now runs the Rising Sun helper-boundary sweep, agent rs1, then rs2); systems
+  slot on CreateCollisionVolume/CreateDestructable/CreateGerman (systems5); airender dry after 5 agents (slot: mid2, scripting middle); scripting 7th agent on far-off drafts; rs2 on systems rows;
   systems dry after 2 agents. Biggest single landing: CCompartment::Init, 2,628 (6e3c8d59).
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
@@ -35,6 +35,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
      since fixes one case in port_unit). Both pass the full build.
   3. **Dead branch inside a real function** to place a string the layout proves was created
      there (TLT_LoadLevelContentsFile, 1,060 bytes, code exact). Parked; not used.
+  4. **Pointer-cast field spelling** for CStaticObjectFactory::Init's variant motion name:
+     `((const char**)&((LevelFileInfo*)def)->fields[i * 3 + 7])[1]` with a LevelField view
+     (as in AnimObjFactory_head.cpp), replacing the declined `(char*)def + (i*24 + 0x38)`.
+     Plain member spellings lose the original's separate +4 induction variable. Init is
+     parked on registers anyway; this only matters if they are solved.
+  5. **`#pragma auto_inline off` / `reset`** around PATH_pause in `src/ea/path_stop.c`. With
+     it PATH_event (1,884 bytes) matches, plus all 6 other functions in the merged unit
+     (scratch/loop3/rs2/pev/PATH_event_unit_autoinline.c). The accepted `dont_inline` also
+     stops selectstate inlining inside PATH_pause (83 lines off). Not on the accepted list
+     (which names dont_inline in game code), so parked, ready to land on a yes.
 ## Hard rules (for the coordinator and every agent)
 
 1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
