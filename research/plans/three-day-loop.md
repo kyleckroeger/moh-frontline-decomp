@@ -19,13 +19,12 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 89.20% (1,261,812 bytes) at 4e927077, +42,540 this run. Landing commits: 65.
-- Lanes (2026-11-12 09:49): **matching has run dry for now.** Every remaining
+- Verified: 89.20% (1,261,812 bytes) at 8c84b851, +42,540 this run. Landing commits: 67.
+- Lanes (2026-11-12 10:24): **matching has run dry for now.** Every remaining
   draft either waits on a question below or has been worked without a new lead (climb1's
   declaration-order climb over all drafts at 15 lines or fewer found nothing). One agent runs
-  secondary research: cv1, why the shared CVector3 header's copy constructor recolours some
-  units (it blocks 115 CVector3 and 87 CMatrix header moves and needed local views in
-  several matches). The coordinator refills slots only for a fresh lead. Since 07:45:
+  secondary work: hdr3, re-running the CVector3/CMatrix/ISceneNode header moves after
+  cv1's CVector3 base form (d8cf803c). The coordinator refills slots only for a fresh lead. Since 07:45:
   TestCollision(CPlane) 2,292, Orthonormalize 688, GetClosestParameter 1,056; real-name renames
   7a325e0f, f6ae520c (map: research/notes/real-names-map-2026-11-12.tsv). Usage limit stopped
   all agents 00:10-00:40 and 03:50-05:40 on 11-12.
@@ -138,7 +137,12 @@ multiplayer not at all. Every landing keeps the complete image identical.
      weak copies of ISceneNode's inline virtuals go in `weak_duplicates` (every original unit that
      called them emitted them too). Open: collisionvolume_ctor is ready but would break
      tests/test_data_strip.py's `['.data']` fixture assertion; player_ctor's 8-aligned matrices
-     vs CMatrix's 16-byte alignment; the GetTranslation/SetAxes helpers.
+     vs CMatrix's 16-byte alignment; the GetTranslation/SetAxes helpers. cv1 (d8cf803c) changed
+     CVector3.h's copy constructor to a base-class form (`CVector3 : CVector3Base`, aligned(8)):
+     one header then fits both groups of units (166 of 168 kept, 42 more moved, all 210 verify).
+     The base-class spelling is this project's choice; the original may have spelled it
+     differently. Two units changed source (not code) to take the header: AIObject_mmgpoint and
+     bsbifunc_waypointinfo.
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), Update_Picture_Buffers 904 (q14), DrawTextCentered 416 (q8), PopUpMessageHandler::Loop 2,308 (q15). Total 10,828.
