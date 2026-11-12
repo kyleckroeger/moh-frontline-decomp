@@ -52,7 +52,6 @@ real_lines	size	address	function	compile_settings_from	draft
 68	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
-32	1056	800516b4	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	config/GMFE69/AISplinePath_ctor.json	research/drafts/GetClosestParameter.800516b4.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 141320, "differs": 10144, "exact": 4472, "verified": 1249620},
+ "function_bytes_by_status": {"consistent": 140264, "differs": 10144, "exact": 4472, "verified": 1250676},
  "data_bytes_owned": 724422,
  "data_bytes_total": 1976252,
  "functions": [
@@ -883,7 +883,7 @@
  [2147814132, 2944, "GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b", "differs", "research/drafts/GenerateTestSplinePath.80050af4.cpp"],
  [2147817076, 60, "__dt__13CAISplinePathFv", "verified", "src/game/AISplinePath_dtor.cpp"],
  [2147817136, 4, "__ct__13CAISplinePathFv", "verified", "src/game/AISplinePath_ctor.cpp"],
- [2147817140, 1056, "GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3", "consistent", "research/drafts/GetClosestParameter.800516b4.cpp"],
+ [2147817140, 1056, "GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3", "verified", "src/game/AISplinePath_segment.cpp"],
  [2147818196, 188, "ExpandDerivative__20CAISplinePathSegmentFfR8CVector3", "verified", "src/game/AISplinePath_segment.cpp"],
  [2147818384, 256, "Expand__20CAISplinePathSegmentFfR8CVector3", "verified", "src/game/AISplinePath_segment.cpp"],
  [2147818640, 60, "__dt__20CAISplinePathSegmentFv", "verified", "src/game/AISplinePath_segment.cpp"],
