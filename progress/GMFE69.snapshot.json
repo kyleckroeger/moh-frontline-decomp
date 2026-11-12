@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1219900,
+    "matching_code_bytes": 1219964,
     "total_executable_code_bytes": 1414572,
-    "percent": 86.23809887372293,
+    "percent": 86.24262321041276,
     "categories": {
-      "reconstructed_game": 979264,
+      "reconstructed_game": 979328,
       "restored_library": 240636
     },
-    "matching_functions": 4840
+    "matching_functions": 4848
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -832,7 +832,7 @@
     "src/game/debug_prof_register.cpp": "1f216976df8d77f69eb7adf9c77bd972a88b8fd3f051cea00a87c403f49d8b37",
     "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
-    "src/game/decal.cpp": "e0d86b79d68c4cdff929cd76e1617ddc7ab1860c96cacd7e388a9dccc9d2745c",
+    "src/game/decal.cpp": "782fa444ef46e9747f2332c2c1ce08d910173509ed4d246b14095ae02cb9c21d",
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "bacae8a4e726d84634f4a9723e7c05de4257ccf33c187ce51740130f12d99ab3",
@@ -944,7 +944,7 @@
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "ade90b093521074685e489563b85cdf5e1bb8cc864a5ad2b32a748128d92471a",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
-    "src/game/particlesystem.cpp": "5d66a90f3ba032a261f30085ec1d1e21d9af3a54fb76084d7af08f3965f93202",
+    "src/game/particlesystem.cpp": "f1652b8db622d87594148aac72fb5d1a368b3f61fa52dc08d68d8f48bf42ea3a",
     "src/game/particlesystem_active.cpp": "c6900100e25bc2343e8bc91544bd038ce33e62b4f8ee35b613f0ec891cd22913",
     "src/game/particlesystem_beginupdate.cpp": "a6532acd0524ead88d7ba7af1d6fcda76df7213bd60976c2155ea00ba8e00248",
     "src/game/particlesystem_cinstancedparticlesystem_dtor.cpp": "9d40870b2dc1fe0176a5b01f1d0f67303358bdf16eb989ea9bccd63d8b4c0834",
@@ -2232,7 +2232,7 @@
     "config/GMFE69/debug_prof_stats.json": "8dcd3d54a8afdfb1de007b790e6297ba0114db0f72803a6a900504683f086f17",
     "config/GMFE69/debug_prof_timers.json": "55be7658fe193c6c91eef7449b78be88ec1a421e62537cafe7f4df8d85f2aac1",
     "config/GMFE69/debugger.json": "b4812b86753209416cae697106b949c189ef985bbe634aca332ff006abd18fdb",
-    "config/GMFE69/decal.json": "f775815ac9b5507f5affed7a669b6cc54e9967c55017d1bdc9aff8559f9d065a",
+    "config/GMFE69/decal.json": "aff701e567330c0ce68e3a55d33ccf645943909896644f1a96dcad57008c424f",
     "config/GMFE69/decal_dtor.json": "a454c6b4f69ad8d7b90dd660a437dd63dba158c6bb2328ad6cf5dbd6d6b165cc",
     "config/GMFE69/decal_initclass.json": "23494926356c2f036a09c4dcbb5113091a7d86daedd49d772f11b546616aae79",
     "config/GMFE69/decal_link.json": "a9cd419b7f28f863b525d23f4d8f33aaf81204d1a1c12a6f8e9fa4f2c48ffd11",
@@ -2442,7 +2442,7 @@
     "config/GMFE69/odenotstub.json": "cde02d0bad08735240dc149deb947f684b59c706dfabe1fb3f4af2f61ebd0dd5",
     "config/GMFE69/orient.json": "72f98d12bf7b19da6ff9a44a8ce663105d3d9487243682393bb08cac62bb16bd",
     "config/GMFE69/pad.json": "7224d4f0d776e7eb7e4a31710a8da2314d18ca859f84d972016cd4aae36ba462",
-    "config/GMFE69/particlesystem.json": "2428678b644b9ee9188a34c44de0690be51c98cae73fcd4f434fa87ec5e2854b",
+    "config/GMFE69/particlesystem.json": "24068e7fe2c1a843548a8170cc5ca29a7c4b6b8501f636371e278e843c7ad9c2",
     "config/GMFE69/particlesystem_active.json": "78dc93952b4c4a957af60cd7754810e7cb5e5fd7a2b262842b46983a8df0754f",
     "config/GMFE69/particlesystem_beginupdate.json": "daf24fb6d7215109a11579e6c1d7ff3e5149d7d6159972445ac6948c344f3b7c",
     "config/GMFE69/particlesystem_cinstancedparticlesystem_dtor.json": "0640e6630dd5461b08fed79d8cc861d7707a2f46802b70a88c779919b3b0c9b5",
@@ -38463,8 +38463,8 @@
     {
       "id": "particlesystem",
       "category": "reconstructed_game",
-      "functions": 15,
-      "code_bytes": 408,
+      "functions": 20,
+      "code_bytes": 448,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -38496,8 +38496,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "cc6eae648bc3d21fd2a80f0869fb0da6d69d02b21f83c84e6f677d50f9350af5",
-      "linked_sha256": "7b84aa3b454e77b78f081fdf9cd32cd5b4433abaaab5b0ee3421780d9b9cafb3"
+      "object_sha256": "a73449bfbd66e383ffb7e2322b14df12fc9b5247e250e0562db448f3221d8f67",
+      "linked_sha256": "509eb49fc3ff2c3882bedc610a8ac622931f980ac001fe34fc5fbc57832d48ac"
     },
     {
       "id": "debug_prof",
@@ -39009,8 +39009,8 @@
     {
       "id": "decal",
       "category": "reconstructed_game",
-      "functions": 2,
-      "code_bytes": 164,
+      "functions": 5,
+      "code_bytes": 188,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -39040,10 +39040,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "969b3d7d08871c5aa14b9771fb0789c5db37b052496d3811887967265336d945",
-      "linked_sha256": "3646a00210ec1047581cbfdad6a27c27aa59764bb090630f479bd3dfa32ea9b7"
+      "object_sha256": "e4d2d6f2b783b3207c4b401d7a289fd6bf6c647d06fbdd1f20db9d730c2171b3",
+      "linked_sha256": "ec18b55f5885b035c81489727bbf5842dcabadd3e7309f60cf85c42ff2037449"
     },
     {
       "id": "animskinned",
@@ -54165,7 +54165,7 @@
         ]
       },
       {
-        "name": "Unmatched files/particlesystem.cpp [inferred file group]",
+        "name": "Unmatched files/particlesystem.cpp [symbol evidence]",
         "file_record": 74,
         "file_name": "particlesystem.cpp",
         "ranges": [
@@ -54182,46 +54182,11 @@
             "kind": "function",
             "name": "UpdateBoundingBox__15CParticleSystemFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80081424",
-            "size": 8,
-            "kind": "function",
-            "name": "@32@IsDrawEnabled__22CParticleSystemManagerCFv",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x8008142c",
-            "size": 8,
-            "kind": "function",
-            "name": "@32@IsVisible__22CParticleSystemManagerCFR12CDrawContext",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80081434",
-            "size": 8,
-            "kind": "function",
-            "name": "@32@Draw__22CParticleSystemManagerFR12CDrawContext",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x8008143c",
-            "size": 8,
-            "kind": "function",
-            "name": "@32@BeginUpdate__22CParticleSystemManagerFf",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80081444",
-            "size": 8,
-            "kind": "function",
-            "name": "@32@__dt__22CParticleSystemManagerFv",
-            "evidence": "same-class (inferred)"
           }
         ]
       },
       {
-        "name": "Unmatched files/decal.cpp [inferred file group]",
+        "name": "Unmatched files/decal.cpp [symbol evidence]",
         "file_record": 79,
         "file_name": "decal.cpp",
         "ranges": [
@@ -54231,27 +54196,6 @@
             "kind": "function",
             "name": "Init__NotTheVirtualOne__19CBulletDecalManagerFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80083f64",
-            "size": 8,
-            "kind": "function",
-            "name": "@36@IsUsed__19CBulletDecalManagerFv",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80083f6c",
-            "size": 8,
-            "kind": "function",
-            "name": "@36@Link__19CBulletDecalManagerFP7CDmaTagR10CDmaPacket",
-            "evidence": "same-class (inferred)"
-          },
-          {
-            "address": "0x80083f74",
-            "size": 8,
-            "kind": "function",
-            "name": "@36@__dt__19CBulletDecalManagerFv",
-            "evidence": "same-class (inferred)"
           }
         ]
       },

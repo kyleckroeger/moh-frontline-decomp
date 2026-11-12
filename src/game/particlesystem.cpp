@@ -12,8 +12,11 @@
 // are named by the mangled symbols; CParticleSystem is a non-virtual view and
 // its flag bit-field, the manager's members, the vector constructor and the
 // identity-matrix constructor are inferred. The weak this-adjusting thunks
-// after the initialiser belong to the manager's table, which is emitted with
-// its key function elsewhere in the file; they are not part of this unit.
+// after the initialiser (for the ISceneNode base at +32: IsDrawEnabled,
+// IsVisible, Draw, BeginUpdate and the destructor) belong to the manager's
+// table, which is emitted with its key function IsUsed; IsUsed is defined here
+// only for that and is placed by particlesystem_manager_init.cpp (a file
+// duplicate, like the table). ISceneNode's virtual functions are named by its table.
 struct ShapeFile;
 
 struct CColor {
@@ -98,6 +101,12 @@ __declspec(weak) void CParticleSystem::SetSystemAcceleration(CVector3) {
 
 class CDmaTag;
 class CDmaPacket;
+class CDrawContext;
+class CCollision;
+class CBullet;
+class CLight;
+struct BSObject;
+enum EClsnId {};
 
 class CMatrix {
 public:
@@ -125,11 +134,13 @@ public:
     IDestructible() {}
     virtual void MarkForDestruction(int);
     virtual ~IDestructible();
+    virtual void Destroy();
 };
 
 class ISubject : public IDestructible {
 public:
     ISubject() {}
+    virtual void MarkForDestruction(int);
     virtual ~ISubject();
 };
 
@@ -143,6 +154,57 @@ class ISceneNode : public IObserver {
 public:
     ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
     virtual ~ISceneNode() {}
+    enum EVolumeType {};
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float);
+    virtual void CommitAI();
+    virtual void ConstrainVelocity();
+    virtual void AttemptUpdate(float);
+    virtual void OnCollision(const CCollision&);
+    virtual void CommitUpdate();
+    virtual void Draw(CDrawContext&);
+    virtual int GetLocalBoundingVolume(EVolumeType) const;
+    virtual int GetWorldBoundingVolume(EVolumeType) const;
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
+    virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
+    virtual void GetUpward(CVector3&) const;
+    virtual bool IsVisible(CDrawContext&) const;
+    virtual bool IsDrawEnabled() const;
+    virtual EClsnId GetCollisionId() const;
+    virtual void SetCollisionId(EClsnId);
+    virtual BSObject* GetScriptObject() const;
+    virtual void TriggerScriptEvent(int, void*, bool);
+    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+    virtual void* AsMovingNode();
+    virtual const void* AsMovingNode() const;
+    virtual void* AsStaticObject();
+    virtual const void* AsStaticObject() const;
+    virtual void* AsHierObject();
+    virtual const void* AsHierObject() const;
+    virtual void* AsWorldObject();
+    virtual const void* AsWorldObject() const;
+    virtual void* AsAnimObject();
+    virtual const void* AsAnimObject() const;
+    virtual void* AsSoldierObject();
+    virtual const void* AsSoldierObject() const;
+    virtual void* AsPlayerObject();
+    virtual const void* AsPlayerObject() const;
+    virtual void* AsPlayerWeaponObject();
+    virtual const void* AsPlayerWeaponObject() const;
+    virtual void* AsAnimatedPlayerObject();
+    virtual const void* AsAnimatedPlayerObject() const;
+    virtual CLight* AsLight();
+    virtual const CLight* AsLight() const;
+    virtual CBullet* AsBullet();
+    virtual const CBullet* AsBullet() const;
+    virtual void* AsCollisionVolume();
+    virtual const void* AsCollisionVolume() const;
+    virtual void* GetAIDoodad();
+    virtual const void* GetAIDoodad() const;
+    virtual void SetAttachedLight(CLight*, CVector3);
+    virtual CLight* GetAttachedLight() const;
 
     int data04;
     int data08;
@@ -156,11 +218,11 @@ public:
 
 class CRenderBinData {
 public:
-    CRenderBinData() : m_field0(0), m_field4(0), m_field8(0), m_fieldC(0), m_field10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_fieldC(0), m_field10(0), m_priority(3) {}
 
-    int m_field0;
-    int m_field4;
-    int m_field8;
+    CRenderBinData* m_prev;
+    CRenderBinData* m_next;
+    CRenderBinData* m_children;
     int m_fieldC;
     int m_field10;
     int m_priority;
@@ -184,6 +246,7 @@ public:
 
 class CParticleSystemManager : public CUcodeRenderBin, public ISceneNode {
 public:
+    virtual bool IsUsed();
     virtual void Init();
     CParticleSystemManager()
         : data54(0), data58(0), data5c(0), data60(0), data64(0), data68(0), data6c(0), data70(0), data74(0),
@@ -191,6 +254,11 @@ public:
         m_priority = 7;
     }
     virtual ~CParticleSystemManager();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual void Draw(CDrawContext&);
+    virtual bool IsVisible(CDrawContext&) const;
+    virtual bool IsDrawEnabled() const;
+    virtual void BeginUpdate(float);
 
     int unknown44[4];
     int data54;
@@ -204,6 +272,13 @@ public:
     int data74;
     int data78;
 };
+
+/* The manager's key function (declared first: inferred); its matched copy
+   is placed by particlesystem_manager_init.cpp. Defining it here emits the
+   table and the this-adjusting thunks after the initialiser. */
+bool CParticleSystemManager::IsUsed() {
+    return m_children != 0;
+}
 
 static CMatrix g_ModelToScreenMatrix(true);
 static CVector3 g_XAxis;
