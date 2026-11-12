@@ -1,0 +1,108 @@
+{
+  "id": "staticmesh_initclass",
+  "source": "src/game/staticmesh_initclass.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "on",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800f2478",
+      "size": 152,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f6d0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80016334",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ed34",
+      "size": 2,
+      "type": 8,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "InitClass__11CStaticMeshFP11CRenderListP7CScreen",
+      "address": "0x800f2478",
+      "size": 152,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "g_pLightVolume": "0x8034ed08",
+    "g_pRenderList": "0x8034ed00",
+    "g_pScreen": "0x8034ed04",
+    "memset": "0x80009410"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_pLightVolume",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pLightVolume",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "original_file": "staticmesh.cpp",
+  "original_file_index": 9367,
+  "pooled_sections": [
+    ".bss"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 64,
+      "address": "0x802da520"
+    }
+  ]
+}

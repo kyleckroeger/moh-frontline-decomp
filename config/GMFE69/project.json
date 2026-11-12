@@ -1237,7 +1237,8 @@
     "ShellMenu_briefing.json",
     "ShellMenu_credits.json",
     "UserInterface_timestamp.json",
-    "bsbifunc_schedules.json"
+    "bsbifunc_schedules.json",
+    "staticmesh_initclass.json"
   ],
   "progress": {
     "code_bytes": 1414572,

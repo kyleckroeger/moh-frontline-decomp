@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1223848,
+    "matching_code_bytes": 1224000,
     "total_executable_code_bytes": 1414572,
-    "percent": 86.51719389327656,
+    "percent": 86.52793919291489,
     "categories": {
-      "reconstructed_game": 983212,
+      "reconstructed_game": 983364,
       "restored_library": 240636
     },
-    "matching_functions": 4858
+    "matching_functions": 4859
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1120,6 +1120,7 @@
     "src/game/staticmesh_ctor.cpp": "e7eb98a60efde4ad494b850cccdf587b6a7cc13769418e9628dff2216c377817",
     "src/game/staticmesh_head.cpp": "64b055742ce5b22fd411205b7719e9f589f2887c2e5dcba5bf685d54589f20c5",
     "src/game/staticmesh_init.cpp": "06878d25f98e1faaa02d74c9bbc217b3f0302f703e4578e6cb7a83dd7239b58b",
+    "src/game/staticmesh_initclass.cpp": "b212f3866e96f50ff6a8902fca9e36da582ada2aa962daac9ae1ea0d0d862e45",
     "src/game/staticmesh_initdata.cpp": "4f6f5143030470d067fbe9507186c6c743722765acf40b43a9e13b312fc01a0f",
     "src/game/staticmesh_mshmaterial_dtor.cpp": "954a7a5fa8c0bb7d070ac1d15646a07b506991ca2a8c66e40301e8742089324c",
     "src/game/staticmesh_mshnode_copy.cpp": "f78396a1c13e87d8c4ebec6647315bb6dc59f0bb9c7da292b4ed6be3aa46f046",
@@ -2527,7 +2528,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "2765ea4afadae8a4235b501fa1f5575c214ee0820426c21c3a19a2146a7956f8",
+    "config/GMFE69/project.json": "a2931803e9d4d250fb41f50c7f506b89cf4ea519273bbce3b6c4350303388aed",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2811,6 +2812,7 @@
     "config/GMFE69/staticmesh_ctor.json": "2683d49ca98568d7645f4aaad6af2f3bd14883f224ca2a181274d57b75345afd",
     "config/GMFE69/staticmesh_head.json": "3f3a2b10fd7fca1d957fe67df37b164c213fdbd5b8977ce82cd8eea61cf3a3e1",
     "config/GMFE69/staticmesh_init.json": "7942d93af86711262e6a6b0d912297f2c9f7e870c3c5437ebe1c9c2b13fa2941",
+    "config/GMFE69/staticmesh_initclass.json": "5ad039704a1a3daeaa3131da2b619a85c1e89fc06d5409fa52a2659a45465c52",
     "config/GMFE69/staticmesh_initdata.json": "b7d6cbe0e96412cde141964b74bed29a3afb64ae2a4ab74149a7e9dfbe0c25d9",
     "config/GMFE69/staticmesh_mshmaterial_dtor.json": "e8ed6079397248e73d513bd5621430fe85d14ba7a099c05aa353b721683e6784",
     "config/GMFE69/staticmesh_mshnode_copy.json": "47a01754624f180434dd9cdee6b121abe06d56e057d61ea0c67d53e5d08e79c7",
@@ -53516,6 +53518,45 @@
       "discarded_functions": [],
       "object_sha256": "fd294a39a10c507fb59f63ca4ea018568d1104f6f347bfc473c13ecdb1c6eca9",
       "linked_sha256": "ee2704a73e84a5fe0f24f2f4059fc31c7e0be2426cf6ff794d45660ddf3757e6"
+    },
+    {
+      "id": "staticmesh_initclass",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 152,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "a579b3f3147b0678ba661b100e154d921b7f4d18c686571e35e8f516de9159ca",
+      "linked_sha256": "837cc3960ec36a1ade2a1de2790a891d2710dd24d30972ae8f0a7a208acf6092"
     }
   ],
   "code_map": {
@@ -54684,13 +54725,6 @@
             "size": 800,
             "kind": "function",
             "name": "DrawNode__11CStaticMeshFR7MSHNodeUl",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x800f2478",
-            "size": 152,
-            "kind": "function",
-            "name": "InitClass__11CStaticMeshFP11CRenderListP7CScreen",
             "evidence": "exception-index"
           }
         ]
