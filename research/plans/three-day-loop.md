@@ -19,10 +19,11 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 86.97% (1,230,232 bytes) at 9ea3edcd, +10,960 this run. Landing commits: 16.
-- Lanes (2026-11-11 22:15): geometry 1st agent; scripting 3rd (1st landed 0, 2nd landed 9
-  functions); airender 2nd (1st landed 2); systems dry after 2 agents (5 commits), its slot
-  now takes the bottom of the largest lane (agent systems3).
+- Verified: 87.52% (1,238,080 bytes) at 6e3c8d59, +18,808 this run. Landing commits: 22.
+- Lanes (2026-11-11 23:17): geometry dry after 2 agents (slot
+  now runs the Rising Sun helper-boundary sweep, agent rs1); scripting 5th agent (top), systems
+  slot on the scripting bottom (systems4); airender 5th agent (Rising Sun trick on near-misses);
+  systems dry after 2 agents. Biggest single landing: CCompartment::Init, 2,628 (6e3c8d59).
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
