@@ -19,16 +19,15 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 89.20% (1,261,812 bytes) at 154c6e17, +42,540 this run. Landing commits: 59.
-- Lanes (2026-11-12 08:16): two agents run, two slots are left empty on
-  purpose (deviation from "exactly four"): the remaining targets either wait on the questions
-  below or have been worked without a new lead, and fewer agents lower the risk of a third
-  usage-limit stop. Running: real3 (member-call order on drafts now written with the
-  original's CVector3 members), names2 (map invented inline names in landed units to real
-  symbols, rename where byte-identical). Since 07:45: CVolBox::TestCollision(CPlane) 2,292
-  (4e2dff8f), CMatrix::Orthonormalize 688 (3a9096c2), GetClosestParameter 1,056 (1b0b4dc8);
-  real-name renames in 13 units (7a325e0f). Usage limit stopped all agents 00:10-00:40 and
-  03:50-05:40 on 11-12.
+- Verified: 89.20% (1,261,812 bytes) at 8881a8a4, +42,540 this run. Landing commits: 61.
+- Lanes (2026-11-12 09:18): **matching has run dry for now.** Every remaining
+  draft either waits on a question below or has been worked without a new lead (climb1's
+  declaration-order climb over all drafts at 15 lines or fewer found nothing). One agent runs
+  secondary work: hdr1, a shared CMatrix header like 666d079d (views and includes only, units
+  that keep their match). The coordinator refills slots only for a fresh lead. Since 07:45:
+  TestCollision(CPlane) 2,292, Orthonormalize 688, GetClosestParameter 1,056; real-name renames
+  7a325e0f, f6ae520c (map: research/notes/real-names-map-2026-11-12.tsv). Usage limit stopped
+  all agents 00:10-00:40 and 03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
