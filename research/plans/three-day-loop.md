@@ -20,7 +20,7 @@ multiplayer not at all. Every landing keeps the complete image identical.
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
 - Verified: 86.19% (1,219,272 bytes) at 4577b499. Landings this run: 0.
-- Lanes: geometry, scripting, airender, systems: not started.
+- Lanes: geometry, scripting, airender, systems: first agents launched 2026-11-11.
 - Waiting on the maintainer: nothing.
 
 ## Hard rules (for the coordinator and every agent)
