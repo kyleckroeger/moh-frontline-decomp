@@ -56,7 +56,6 @@ real_lines	size	address	function	compile_settings_from	draft
 43	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
 44	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
 46	568	800d7718	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	config/GMFE69/weaponfactory.json	research/drafts/PublishEvent.800d7718.cpp
-53	736	800756cc	HandleExplosion__12CCompartmentFRC10CExplosion	config/GMFE69/compartment_fastvec_tri.json	research/drafts/HandleExplosion.800756cc.cpp
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp
 57	512	800af48c	RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	config/GMFE69/static_obj_scale.json	research/drafts/RotateFromScript.800af48c.cpp
 59	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp

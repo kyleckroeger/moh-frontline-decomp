@@ -34,29 +34,44 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
+  "linker_stripped": {
+    "functions": [
+      "__dt__Q23dwi11fast_vec<i>Fv"
+    ]
+  },
   "sections": [
     {
       "name": ".text",
-      "address": "0x800759ac",
-      "size": 104,
+      "address": "0x800756cc",
+      "size": 840,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000bc2c",
-      "size": 8,
-      "type": 1
+      "address": "0x8000bc14",
+      "size": 32,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 40
     },
     {
       "name": "extabindex",
-      "address": "0x80012b00",
-      "size": 12,
-      "type": 1
+      "address": "0x80012af4",
+      "size": 24,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 36
     }
   ],
   "functions": [
+    {
+      "name": "HandleExplosion__12CCompartmentFRC10CExplosion",
+      "address": "0x800756cc",
+      "size": 736,
+      "binding": 1
+    },
     {
       "name": "__dt__Q23dwi19fast_vec<PC6CDBTri>Fv",
       "address": "0x800759ac",
@@ -65,13 +80,19 @@
     }
   ],
   "externals": {
+    "GetIntersectingTris__10CCDBObjectCFRQ23dwi19fast_vec<PC6CDBTri>RC10CVolSphere": "0x8006fa54",
     "MEM_free": "0x8014f83c",
-    "__dl__FPv": "0x8001ca2c"
+    "__dl__FPv": "0x8001ca2c",
+    "g_TextureSwapCache": "0x801d5120"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "__dt__Q23dwi11fast_vec<i>Fv"
+  ],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_TextureSwapCache"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "compartment.cpp",
