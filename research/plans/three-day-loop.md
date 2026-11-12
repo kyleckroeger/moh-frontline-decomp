@@ -19,14 +19,14 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.61% (1,253,400 bytes) at 54d3c9c8, +34,128 this run. Landing commits: 42.
-- Lanes (2026-11-12 05:41): geometry, airender and systems lanes dry;
-  the four slots run cross-lane work: big1 (UpdateAnimation, 3,828), near1 (near-misses from
-  fresh1's logic fixes), fresh2 and fresh3 (queue rows untouched this run, from
-  scratch/loop3/fresh1/untouched.tsv). New check: research/tools/brchk.py compares draft branch
-  offsets; the scorers hid real logic bugs in several long-parked drafts. Parked after deep work:
-  CVolBox::TestCollision(CPlane) 547 -> 56, UpdateBoundingBox 101 -> 56, RenderSystem
-  (needs whole-file landing). Usage limit stopped all agents 00:10-00:40 on 11-12.
+- Verified: 88.61% (1,253,400 bytes) at 64c0d5b0, +34,128 this run. Landing commits: 45.
+- Lanes (2026-11-12 06:21): geometry, airender and systems lanes dry;
+  the four slots: knots1 (small register knots), harvest1 (moves scratch bests into
+  research/drafts so nothing is lost), lint1 (layout_lint conflicts, secondary), audit1
+  (read-only review of this run's landings against docs/Remaining.md; report in
+  scratch/loop3/audit1/report.md). Parked after deep work: UpdateAnimation 59 -> 16,
+  CVolBox::TestCollision(CPlane) 547 -> 56, UpdateBoundingBox 101 -> 56, RenderSystem (needs a
+  whole-file landing). Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -94,6 +94,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
      fc2de588 if you see it as code written only to steer output. Same class, not landed yet:
      GetClosestWaypointByType's draft (structural 0, d5baeeb8) re-zeroes `found = 0;` after a
      loop to get the original's second `li r3,0`.
+  13. **Constant chains.** Does the chained-assignment decline cover `a = b = c = 3.4e38f`?
+     The DMClusterSkelTraverseHeirarchy draft uses one; it is treated as declined until you say.
+  14. **Audit of this run's landings: research/notes/loop-audit-2026-11-12.md.** An
+     independent reviewer rates 7 landings likely declined and 7 needing a look. The
+     load-bearing ones are coordinator approvals it disagrees with: the second WriteVCD copy in
+     CCompartment::Init (2,628), the Mul/SubV/AddV value wrappers (DrawTextCenteredF,
+     CVolCapsule::GetExtents), DumpBuddyVector in BuddyDied, debug_prof's `(void)0`, and local
+     CVector3 views that the shared header would also match. Its "not needed" items were
+     cleaned up during the run (agent clean1). From 06:40 on 11-12, agents no longer land forms
+     of the wrapper and duplicate-inline kind.
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), DrawTextCentered 416 (q8). Total 7,616.
