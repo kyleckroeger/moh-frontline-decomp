@@ -211,6 +211,8 @@ public:
     bool m_flag2451;
 };
 
+// inferred: compound-copy multiply helper (keeps the product in its first operand's register)
+inline float Mul(float a, float b) { float r = a; r *= b; return r; }
 void CAnimObject::ConstrainVelocity() {
     if (m_collisions.m_size == 0 || m_flag2450)
         return;
@@ -301,21 +303,21 @@ void CAnimObject::ConstrainVelocity() {
                 solved = true;
             }
             if (solved) {
-                float vx = velocity.x;
-                float tz = pz * a;
-                float ty = py * a;
-                float tx = px * a;
-                float sz = b * bz;
-                float sx = b * bx;
-                float vz = velocity.z;
                 float vy = velocity.y;
-                float uz = sz + tz;
+                float tz = pz * a;
+                float sy = Mul(b, by);
+                float sz = Mul(b, bz);
+                float vx = velocity.x;
+                float ty = py * a;
+                float uz = tz + sz;
+                float sx = Mul(b, bx);
+                float tx = Mul(px, a);
                 float ux = sx + tx;
-                float sy = b * by;
-                float dx = ux * 1.05f;
-                float uy = sy + ty;
-                float dz = uz * 1.05f;
-                float dy = uy * 1.05f;
+                float vz = velocity.z;
+                float dz = Mul(uz, 1.05f);
+                float uy = ty + sy;
+                float dx = Mul(ux, 1.05f);
+                float dy = Mul(uy, 1.05f);
                 m_velocity.x = vx - dx;
                 m_velocity.y = vy - dy;
                 m_velocity.z = vz - dz;

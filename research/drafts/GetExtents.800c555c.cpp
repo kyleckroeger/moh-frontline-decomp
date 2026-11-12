@@ -185,38 +185,42 @@ static inline void MaxOf(float& a, float b) {
     if (b > a) a = b;
 }
 
+// inferred: value-returning add/sub helpers (they fix the min block colouring; the max block
+// still differs in two copy-load registers)
+inline float SubV(float a, float b) { return a - b; }
+inline float AddV(float a, float b) { return a + b; }
 void CVolCapsule::GetExtents(CVector3& min, CVector3& max) const {
     float radius = m_radius + CONTACT_EPSILON;
     {
         CVector3 a = m_axis.GetStart();
         CVector3 b = m_axis.GetEnd();
-        float ax = a.d.v[0] - radius;
-        float ay = a.d.v[1] - radius;
-        float az = a.d.v[2] - radius;
-        float bx = b.d.v[0] - radius;
-        float by = b.d.v[1] - radius;
-        float bz = b.d.v[2] - radius;
-        if (ax < b.d.v[0] - radius) ax = a.d.v[0] - radius; else ax = bx;
+        float ax = SubV(a.d.v[0], radius);
+        float ay = SubV(a.d.v[1], radius);
+        float az = SubV(a.d.v[2], radius);
+        float bx = SubV(b.d.v[0], radius);
+        float by = SubV(b.d.v[1], radius);
+        float bz = SubV(b.d.v[2], radius);
+        ax = ax < bx ? ax : bx;
         min.d.v[0] = ax;
-        if (ay < by) ay = a.d.v[1] - radius; else ay = by;
+        ay = ay < by ? ay : by;
         min.d.v[1] = ay;
-        if (az < bz) az = a.d.v[2] - radius; else az = bz;
+        az = az < bz ? az : bz;
         min.d.v[2] = az;
     }
     {
         CVector3 a = m_axis.GetStart();
         CVector3 b = m_axis.GetEnd();
-        float ax = a.d.v[0] + radius;
-        float ay = a.d.v[1] + radius;
-        float az = a.d.v[2] + radius;
-        float bx = b.d.v[0] + radius;
-        float by = b.d.v[1] + radius;
-        float bz = b.d.v[2] + radius;
-        if (ax > bx) ax = a.d.v[0] + radius; else ax = bx;
+        float ax = AddV(a.d.v[0], radius);
+        float ay = AddV(a.d.v[1], radius);
+        float az = AddV(a.d.v[2], radius);
+        float bx = AddV(b.d.v[0], radius);
+        float by = AddV(b.d.v[1], radius);
+        float bz = AddV(b.d.v[2], radius);
+        ax = ax > bx ? ax : bx;
         max.d.v[0] = ax;
-        if (ay > by) ay = a.d.v[1] + radius; else ay = by;
+        ay = ay > by ? ay : by;
         max.d.v[1] = ay;
-        if (az > bz) az = a.d.v[2] + radius; else az = bz;
+        az = az > bz ? az : bz;
         max.d.v[2] = az;
     }
 }
