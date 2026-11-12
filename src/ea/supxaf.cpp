@@ -37,9 +37,26 @@ struct UNPACKXASTATE {
     int position;
 };
 
-// SFILTER_unpackxaf (the decode step) comes first in the original file; it
-// is drafted in scratch but not matched, so this unit starts after it.
-int SFILTER_unpackxaf(void*, int, void*, void*, int);
+extern "C" void* memset(void*, int, unsigned long);
+
+// Decodes up to count samples into the destination; a short decode is
+// zero-filled to count. Returns -1 once every frame has been decoded.
+int SFILTER_unpackxaf(void* data, int count, void*, void* destination, int) {
+    UNPACKXASTATE* state = (UNPACKXASTATE*)data;
+    float* out = (float*)destination;
+    int total = 0;
+    if (state->position >= state->length) return -1;
+    int decoded = state->decoder->Decode(&out, count);
+    total += decoded;
+    state->position += decoded;
+    out += decoded;
+    if (decoded < count) {
+        count -= decoded;
+        memset(out, 0, count * sizeof(float));
+        total += count;
+    }
+    return total;
+}
 
 int SFILTER_unpackgetframexaf(void* data) {
     return ((UNPACKXASTATE*)data)->position;

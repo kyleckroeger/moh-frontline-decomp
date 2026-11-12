@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8016429c",
-      "size": 212,
+      "address": "0x801641f0",
+      "size": 384,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SFILTER_unpackxaf__FPviPvPvi",
+      "address": "0x801641f0",
+      "size": 172,
+      "binding": 1
+    },
     {
       "name": "SFILTER_unpackgetframexaf__FPv",
       "address": "0x8016429c",
@@ -63,11 +69,12 @@
     }
   ],
   "externals": {
+    "Decode__Q23SND12CEAXABLKDecfFPPfi": "0x80168a60",
     "Feed__Q23SND12CEAXABLKDecfFPvii": "0x80168a28",
-    "SFILTER_unpackxaf__FPviPvPvi": "0x801641f0",
     "__ct__Q23SND12CEAXABLKDecfFv": "0x80168a08",
     "__dl__Q23SND12CEAXABLKDecfFPv": "0x801689e0",
-    "__nw__Q23SND12CEAXABLKDecfFUl": "0x801689b8"
+    "__nw__Q23SND12CEAXABLKDecfFUl": "0x801689b8",
+    "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

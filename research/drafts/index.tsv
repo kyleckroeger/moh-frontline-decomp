@@ -30,7 +30,6 @@ real_lines	size	address	function	compile_settings_from	draft
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
 7	688	8008f1e8	Orthonormalize__7CMatrixFv	config/GMFE69/matrix_endian.json	research/drafts/Orthonormalize.8008f1e8.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
-7	172	801641f0	SFILTER_unpackxaf__FPviPvPvi	config/GMFE69/supxaf.json	research/drafts/SFILTER_unpackxaf.801641f0.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
 16	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
 25	6920	8006a71c	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	config/GMFE69/cdbgeom.json	research/drafts/TestCollision.8006a71c.cpp

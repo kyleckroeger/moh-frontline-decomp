@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 146556, "differs": 10144, "exact": 4472, "verified": 1244384},
+ "function_bytes_by_status": {"consistent": 146384, "differs": 10144, "exact": 4472, "verified": 1244556},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -4874,7 +4874,7 @@
  [2148935628, 2600, "filter__FP10UTALKSTATEii", "verified", "src/ea/sdecmut.c"],
  [2148938228, 996, "initmut__FPcP10UTALKSTATE", "verified", "src/ea/sdecmut.c"],
  [2148939224, 3096, "decodemut__FP10UTALKSTATE", "verified", "src/ea/sdecmut.c"],
- [2148942320, 172, "SFILTER_unpackxaf__FPviPvPvi", "consistent", "research/drafts/SFILTER_unpackxaf.801641f0.cpp"],
+ [2148942320, 172, "SFILTER_unpackxaf__FPviPvPvi", "verified", "src/ea/supxaf.cpp"],
  [2148942492, 8, "SFILTER_unpackgetframexaf__FPv", "verified", "src/ea/supxaf.cpp"],
  [2148942500, 44, "SFILTER_unpackxafrestore__FPv", "verified", "src/ea/supxaf.cpp"],
  [2148942544, 160, "SFILTER_unpackxafinit__FPvP16UNPACKINITPARAMS", "verified", "src/ea/supxaf.cpp"],

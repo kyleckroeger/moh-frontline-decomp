@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1253228,
+    "matching_code_bytes": 1253400,
     "total_executable_code_bytes": 1414572,
-    "percent": 88.59414720494962,
+    "percent": 88.60630635980353,
     "categories": {
-      "reconstructed_game": 1014168,
+      "reconstructed_game": 1014340,
       "restored_library": 239060
     },
-    "matching_functions": 4889
+    "matching_functions": 4890
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -372,7 +372,7 @@
     "src/ea/supmutf.c": "9dd420f031cc5c776078ad4d7385adfbd4be1c6fe16b6832cf0130623106f98e",
     "src/ea/supmutpf.c": "7866df8fcc9a8a35705e2ffc9c1b566f7d0ec12900ca6e5f7f83acc9c8f0854e",
     "src/ea/suppf.c": "8b7a849da40a4b7f11f438a10e331fd9ee368139d8419d818ecb789219a2b7cf",
-    "src/ea/supxaf.cpp": "8466eb56327cbf7858f548254cfcaced984063e9be11486858dcc56d8a6d1dc3",
+    "src/ea/supxaf.cpp": "a986d6f4b93ac6102818323fe1ae787ffc8fe92a9e2f16a8b7ad01546d58159a",
     "src/ea/supxalf.cpp": "219c6a2b342a03647116cbf400a132c5d69b5d3f7b17d5676e519410962a92f3",
     "src/ea/supxapf.cpp": "27fb1b8932a5635f57b548f6f1c025edd7dbac066527ec1c1f7adb70c597f9af",
     "src/ea/susercb.c": "dc9174959178f4290e9b32be0814d44bb55663e07b6fcadda954f3bafa832f20",
@@ -2868,7 +2868,7 @@
     "config/GMFE69/supmutpf.json": "0d451c9335c55a574975b1f2a84c867d8fb8cfacd17012cdcde963ded62952fe",
     "config/GMFE69/suppf.json": "21c4b8c1c272385cc4bfb7064f50cb3a07523349e74c3ca2ea38e1460277c66f",
     "config/GMFE69/support.json": "ab678e1f218c1f088288543d73bdc61b6b3126ae3ff480714f8d3f13a83e360c",
-    "config/GMFE69/supxaf.json": "07cb26751de588b28f4dbc0821a96a7f1103ec73da7c38694c0fd0dd27b19c7c",
+    "config/GMFE69/supxaf.json": "5770d2495b551947242beeb93225377e10f9b1e7e237c927b151eef2fff65776",
     "config/GMFE69/supxalf.json": "5649c5ead2c3498e6abe7d13c59af2f8cf2bdde86e3c3a499a6b2ab53142f7b8",
     "config/GMFE69/supxapf.json": "ed96fba3d4f7bec21bd81ddad8e03c9d1fb2f14d221c809e0cb4d9d18f0fc533",
     "config/GMFE69/surfacetype.json": "86dc7dabf78f07ec11a9d5eca99eb78762ddd2392826818716ae3082c324a362",
@@ -17385,8 +17385,8 @@
     {
       "id": "supxaf",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 212,
+      "functions": 4,
+      "code_bytes": 384,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17418,8 +17418,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5a4771a06366325731c32aeadd0b0065757d89fc91e44b2e749dd7e182ce7428",
-      "linked_sha256": "7d0968c759852dd54d04f96549d01f1fcba85f03e5518a161ded8ce2d590d6f9"
+      "object_sha256": "77898d7348b07f7c386a32b42f586d3a5ea4aa3d01dbf219793cf341374ac0c0",
+      "linked_sha256": "543ec39c83e06d8d9566ff8e24a39d6028b1b68fff50a32442a61ec4ede92440"
     },
     {
       "id": "supxalf",
@@ -55424,18 +55424,6 @@
             "kind": "function",
             "name": "MIX_audioslice",
             "evidence": "private-reference"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 801641f0",
-        "ranges": [
-          {
-            "address": "0x801641f0",
-            "size": 172,
-            "kind": "function",
-            "name": "SFILTER_unpackxaf__FPviPvPvi",
-            "evidence": "unknown-file"
           }
         ]
       },
