@@ -19,18 +19,21 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 86.52% (1,223,848 bytes) at 9de067ca, +4,576 bytes. Landings this run: 9
-  (systems 4, scripting 4, geometry 1; airender 0 so far).
-- Lanes (2026-11-11 21:37): geometry 1st agent, scripting 2nd (1st landed 0, parked
-  AddAmo, CThrownObject::Init, BIFunc_PlayerScreenFlash, TranslateFromScript), airender
-  1st, systems 2nd (1st landed 4).
-- Waiting on the maintainer: **is the `.bss` size-view form acceptable?** A fragment
-  defines its file's `.bss` objects in original order with exact sizes (plain views, no
-  constructors, no `__sinit`, marked inferred) and ports with `--pool .bss`. Not listed as
-  accepted or declined in docs/Remaining.md; it adds no storage the original lacks, so the
-  coordinator let agents continue. Every such commit has "(.bss pooled)" in its subject so
-  it can be found and reverted (`git log --grep '.bss pooled'`).
-
+- Verified: 86.97% (1,230,232 bytes) at 9ea3edcd, +10,960 this run. Landing commits: 16.
+- Lanes (2026-11-11 22:15): geometry 1st agent; scripting 3rd (1st landed 0, 2nd landed 9
+  functions); airender 2nd (1st landed 2); systems dry after 2 agents (5 commits), its slot
+  now takes the bottom of the largest lane (agent systems3).
+- Waiting on the maintainer (agents continue meanwhile; all reversible):
+  1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
+     with exact sizes and ports with `--pool .bss`: plain views, container views with their
+     constructors removed, and 12-byte placeholders for the compiler's destructor-chain
+     records, all marked inferred, no `__sinit` compiled. Not listed in docs/Remaining.md;
+     adds no storage the original lacks. Find them: `git log --grep '.bss pooled'`.
+  2. **Hand-trimmed manifests.** `buddy_destroy.json` and `debug_prof_register.json` had
+     their extab/extabindex slices cut by hand where port_unit kept foreign records (5ef1c047
+     since fixes one case in port_unit). Both pass the full build.
+  3. **Dead branch inside a real function** to place a string the layout proves was created
+     there (TLT_LoadLevelContentsFile, 1,060 bytes, code exact). Parked; not used.
 ## Hard rules (for the coordinator and every agent)
 
 1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
