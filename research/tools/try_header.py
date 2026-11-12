@@ -33,6 +33,9 @@ PROVIDES = {
     "CVector3": {"types": ["CVector3XYZW", "CVector3Data", "CVector3Pair"], "functions": ["sqrtf"]},
     # CMatrix.h includes CVector3.h: a unit already on CVector3.h may still define its helpers
     "CMatrix": {"types": ["CVector3XYZW", "CVector3Data", "CVector3Pair"]},
+    # ISceneNode.h has the class's bases and includes CMatrix.h
+    "ISceneNode": {"types": ["IDestructible", "ISubject", "IObserver", "CVector3XYZW", "CVector3Data", "CVector3Pair"],
+                   "enums": ["EClsnId"]},
 }
 
 
@@ -150,6 +153,8 @@ def moved(text, cls):
             if not s:
                 break
             out = out[:s[0]] + out[s[1]:]
+    for name in extra.get("enums", []):
+        out = re.sub(r"^enum\s+" + re.escape(name) + r"\s*\{[^}]*\}\s*;[ \t]*\n?", "", out, flags=re.M)
     for name in extra.get("functions", []):
         s = function_span(out, name)
         if s:

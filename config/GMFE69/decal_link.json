@@ -33,7 +33,8 @@
   ],
   "include_dirs": [
     "include/dolphin-sdk",
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": false,
   "source_root": "src/game",

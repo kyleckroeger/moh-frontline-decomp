@@ -6,10 +6,8 @@
 // the file are not part of this unit.
 class IVolume;
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 /* inferred: storage of an embedded volume object (its class is not known) */
 struct EmbeddedVolumeView {

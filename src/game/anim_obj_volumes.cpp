@@ -21,10 +21,8 @@ struct BSObject;
 
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 #include "game/CVector3.h"
 

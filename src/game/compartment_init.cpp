@@ -244,27 +244,11 @@ public:
     CCDBObject(CDB*);
     unsigned char unknown[0x28];
 };
-class IDestructible {
-public:
-    IDestructible() {}
-    virtual ~IDestructible();
-};
-class ISubject : public IDestructible {
-public:
-    ISubject() {}
-    virtual ~ISubject();
-};
-class IObserver : public ISubject {
-public:
-    IObserver() {}
-    virtual ~IObserver();
-};
-class ISceneNode : public IObserver {
-public:
-    ISceneNode() : m_field04(0), m_field08(0), m_field0c(0), m_field10(0), m_field14(0), m_field18(0), m_field1c(0), m_field20(0) {}
-    virtual ~ISceneNode();
-    int m_field04, m_field08, m_field0c, m_field10, m_field14, m_field18, m_field1c, m_field20;
-};
+
+
+
+#include "game/ISceneNode.h"
+
 class CCompartment : public ISceneNode {
 public:
     CCompartment() : m_db(0), m_field50(-1), m_field54(0), m_data(0), m_field5c(0), m_field60(true), m_field61(false) {}

@@ -51,10 +51,8 @@ public:
     CAnimatedVolume();
 };
 
-class ISceneNode {
-public:
-    virtual void MarkForDestruction(int);
-};
+#include "game/ISceneNode.h"
+
 
 struct BSObjectView {
     unsigned char unknown00[16];

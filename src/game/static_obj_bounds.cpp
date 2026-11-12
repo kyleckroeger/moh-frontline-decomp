@@ -17,10 +17,8 @@ public:
     virtual void TransformedCopy(const IVolume&, const CMatrix&);
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 class CStaticObject {
 public:

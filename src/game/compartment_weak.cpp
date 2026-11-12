@@ -19,10 +19,8 @@ struct CPTNode;
 struct CPTChunk;
 class CCPTMatBin;
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 /* inferred: storage of the embedded volume (its class is not known) */
 struct EmbeddedVolumeView {
