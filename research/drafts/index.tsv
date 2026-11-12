@@ -65,7 +65,7 @@ real_lines	size	address	function	compile_settings_from	draft
 82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
 92	900	800dc8c4	__ct__6CSceneFv	config/GMFE69/scene_dtor.json	research/drafts/__ct__6CSceneFv.800dc8c4.cpp
 94	1056	800516b4	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	config/GMFE69/AISplinePath_ctor.json	research/drafts/GetClosestParameter.800516b4.cpp
-94	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
+5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
 101	2948	8007fbe8	UpdateBoundingBox__15CParticleSystemFv	config/GMFE69/particlesystem_visible.json	research/drafts/UpdateBoundingBox.8007fbe8.cpp
@@ -103,7 +103,7 @@ real_lines	size	address	function	compile_settings_from	draft
 21	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
 138	3376	800b254c	Init__20CStaticObjectFactoryFv	config/GMFE69/staticobjfactory_helmet.json	research/drafts/Init.800b254c.cpp
 16	856	800b5fec	Init__13CThrownObjectFv	config/GMFE69/thrown_obj.json	research/drafts/Init.800b5fec.cpp
-60	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp
+45	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp
 9	304	800c555c	GetExtents__11CVolCapsuleCFR8CVector3R8CVector3	config/GMFE69/capsule_dispatch.json	research/drafts/GetExtents.800c555c.cpp
 49	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
 3	244	8015d238	SNDtimeremaining	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDtimeremaining.8015d238.c

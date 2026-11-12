@@ -140,27 +140,17 @@ void EndianSwapAnimPlugIn(AnimFilePluginData_t& data, int state) {
     }
 }
 
-// Inferred inline: barycentric weights of (x, y) in the triangle of the
-// origin and the corners (bx, by) and (cx, cy); the doubled area is -2.
+// Inferred inlines: the 2D cross product, and the barycentric weights of
+// (x, y) in the triangle of the origin and the corners (bx, by) and (cx, cy)
+// (the doubled area is -2). Written with the differences as call arguments.
+inline float Cross2(float ax, float ay, float bx, float by) { return ax * by - bx * ay; }
 static inline void TriangleBlend(float x, float y, float bx, float by, float cx, float cy,
                                  float& wa, float& wb, float& wc) {
-    float pax;
-    float pcx;
-    float pay;
-    float pbx;
-    float pcy;
-    float pby;
-    pax = -x;
-    pay = -y;
-    pbx = bx - x;
-    pby = by - y;
-    pcx = cx - x;
-    pcy = cy - y;
-    wa = -0.5f * (pbx * pcy - pcx * pby);
-    wb = -0.5f * (-(pax * pcy - pcx * pay));
-    wc = -0.5f * (pax * pby - pay * pbx);
+    float k = -0.5f;
+    wa = k * Cross2(bx - x, by - y, cx - x, cy - y);
+    wb = k * Cross2(cx - x, cy - y, -x, -y);
+    wc = k * Cross2(-x, -y, bx - x, by - y);
 }
-
 void _find_aim_blend_values(float x, float y, float* blend) {
     blend[0] = blend[1] = blend[2] = blend[3] = blend[4] = 0.0f;
     if (x == 0.0f && y == 0.0f) {

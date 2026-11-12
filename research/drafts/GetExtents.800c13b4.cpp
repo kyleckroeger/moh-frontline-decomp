@@ -127,15 +127,16 @@ float BoxPointSqrDistance(const CVector3& rkPoint, const CVolBox& rkBox, float* 
 }
 
 void CVolBox::GetExtents(CVector3& min, CVector3& max) const {
-    float xx = fabs(m_halfWidth * m_basis[0].d.c.x);
-    float xy = fabs(m_halfWidth * m_basis[0].d.c.y);
-    float xz = fabs(m_halfWidth * m_basis[0].d.c.z);
-    float yx = fabs(m_halfDepth * m_basis[1].d.c.x);
-    float yy = fabs(m_halfDepth * m_basis[1].d.c.y);
-    float yz = fabs(m_halfDepth * m_basis[1].d.c.z);
-    float zx = fabs(m_halfHeight * m_basis[2].d.c.x);
-    float zy = fabs(m_halfHeight * m_basis[2].d.c.y);
-    float zz = fabs(m_halfHeight * m_basis[2].d.c.z);
+    float xx, xy, zz, yx, yy, zx, yz, zy, xz;
+    zx = fabs(m_halfHeight * m_basis[2].d.c.x);
+    yy = fabs(m_halfDepth * m_basis[1].d.c.y);
+    xx = fabs(m_halfWidth * m_basis[0].d.c.x);
+    yz = fabs(m_halfDepth * m_basis[1].d.c.z);
+    zz = fabs(m_halfHeight * m_basis[2].d.c.z);
+    xy = fabs(m_halfWidth * m_basis[0].d.c.y);
+    yx = fabs(m_halfDepth * m_basis[1].d.c.x);
+    xz = fabs(m_halfWidth * m_basis[0].d.c.z);
+    zy = fabs(m_halfHeight * m_basis[2].d.c.y);
 
     min.d.c.x = m_center.d.c.x - xx - yx - zx;
     min.d.c.y = m_center.d.c.y - xy - yy - zy;
