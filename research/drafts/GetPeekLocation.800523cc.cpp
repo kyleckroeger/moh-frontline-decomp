@@ -23,7 +23,7 @@ struct CoverPointTypes {
     CoverPointTypes operator&(const CoverPointTypes& o) const { return CoverPointTypes(m_bits & o.m_bits); }
     CoverPointTypes& operator|=(const int& bits) { m_bits |= bits; return *this; }
     CoverPointTypes& operator=(const CoverPointTypes& o) { m_bits = o.m_bits; return *this; }
-    friend CoverPointTypes operator|(const CoverPointTypes& a, const CoverPointTypes& o) { CoverPointTypes t; t.m_bits = a.m_bits | o.m_bits; return t; }
+    CoverPointTypes operator|(const CoverPointTypes& o) const { CoverPointTypes t; t.m_bits = m_bits | o.m_bits; return t; }
 };
 inline CoverPointTypes Mask(unsigned int v) { CoverPointTypes t; t.m_bits = v; return t; }
 

@@ -129,6 +129,8 @@ inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
     r.d.c.z = a.d.c.z - b.d.c.z;
 }
 
+// Inferred: a value-returning product (the contact point's edge terms use it).
+inline float MulV(float a, float b) { return a * b; }
 inline void SetSum(CVector3& r, const CVector3& a, const CVector3& b) {
     r.d.c.x = a.d.c.x + b.d.c.x;
     r.d.c.y = a.d.c.y + b.d.c.y;
@@ -459,10 +461,14 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
         if (code == 2) {
             CVector3 point;
             CVector3 sv;
-            sv.Scale(e0, fS);
-            SetSum(point, sv, m_vertices[0]);
+            sv.d.c.x = MulV(fS, e0.d.c.x);
+            sv.d.c.y = MulV(fS, e0.d.c.y);
+            sv.d.c.z = MulV(fS, e0.d.c.z);
+            SetSum(point, m_vertices[0], sv);
             CVector3 tv;
-            tv.Scale(e1, fT);
+            tv.d.c.x = MulV(fT, e1.d.c.x);
+            tv.d.c.y = MulV(fT, e1.d.c.y);
+            tv.d.c.z = MulV(fT, e1.d.c.z);
             point += tv;
             CVector3 rv;
             rv.Scale(dir, fR);
