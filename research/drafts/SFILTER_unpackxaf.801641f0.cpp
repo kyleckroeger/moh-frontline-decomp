@@ -41,11 +41,16 @@ int SFILTER_unpackxaf(void* filter, int count, void*, void* destination, int) {
     UNPACKXAFSTATE* state = static_cast<UNPACKXAFSTATE*>(filter);
     float* out = static_cast<float*>(destination);
     if (state->frame >= state->frames) return -1;
-    int decoded;
-    state->frame += (decoded = state->decoder->Decode(&out, count));
+    int decoded = state->decoder->Decode(&out, count);
     out += decoded;
-    if (decoded < count) { count -= decoded; memset(out, 0, count * sizeof(float)); decoded += count; }
-    return decoded;
+    int result = decoded;
+    state->frame += decoded;
+    if (decoded < count) {
+        int remaining = count - decoded;
+        memset(out, 0, remaining * sizeof(float));
+        result += remaining;
+    }
+    return result;
 }
 
 int SFILTER_unpackgetframexaf(void* filter) {

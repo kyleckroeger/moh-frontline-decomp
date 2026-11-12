@@ -30,7 +30,7 @@ real_lines	size	address	function	compile_settings_from	draft
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
 7	688	8008f1e8	Orthonormalize__7CMatrixFv	config/GMFE69/matrix_endian.json	research/drafts/Orthonormalize.8008f1e8.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
-22	172	801641f0	SFILTER_unpackxaf__FPviPvPvi	config/GMFE69/supxaf.json	research/drafts/SFILTER_unpackxaf.801641f0.cpp
+7	172	801641f0	SFILTER_unpackxaf__FPviPvPvi	config/GMFE69/supxaf.json	research/drafts/SFILTER_unpackxaf.801641f0.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
 16	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
 25	6920	8006a71c	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	config/GMFE69/cdbgeom.json	research/drafts/TestCollision.8006a71c.cpp
@@ -40,7 +40,7 @@ real_lines	size	address	function	compile_settings_from	draft
 6	1884	8010b93c	PATH_event	config/GMFE69/path_stop.json	research/drafts/PATH_event.8010b93c.cpp
 27	1264	80057640	BIFunc_GetInitialBuddyOrders__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
 27	904	80100a30	Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL	config/GMFE69/getpic.json	research/drafts/Update_Picture_Buffers.80100a30.cpp
-28	1064	8005fb58	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_weapon.json	research/drafts/death_cb.8005fb58.cpp
+5	1064	8005fb58	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_weapon.json	research/drafts/death_cb.8005fb58.cpp
 28	164	8009174c	Multiply__11CQuaternionF11CQuaternion	config/GMFE69/quaternion.json	research/drafts/Multiply.8009174c.cpp
 32	400	80168828	decodexac__3SNDFPQ23SND10MXAPACKETF	config/GMFE69/eaxadecf.json	research/drafts/decodexac.80168828.cpp
 33	2028	8003c93c	CreateDestructable__FP20TriggerObject_structi	config/GMFE69/objcreate_createplayer.json	research/drafts/CreateDestructable.8003c93c.cpp

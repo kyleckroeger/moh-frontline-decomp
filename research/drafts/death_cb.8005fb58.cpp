@@ -311,9 +311,6 @@ struct AnimDeathInfoView {
 #define INFO(k) ((AnimDeathInfoView*)list->entries[k].info)
 int CAnimCallbacks::death_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
                              AnimChannel_t* channel, void* user, unsigned long event, void* data, float) {
-    AnimObjHdr_t* const c_header = header;
-    unsigned long const c_event = event;
-    void* const c_data = data;
 
     unsigned int i;
     unsigned int kept;
@@ -323,10 +320,10 @@ int CAnimCallbacks::death_cb(AnimFileStateAnimList_t* list, unsigned short state
     AnimDeathInfoView* chosen;
     unsigned int total;
     int index;
-    DeathInfoView* death = (DeathInfoView*)c_data;
+    DeathInfoView* death = (DeathInfoView*)data;
     int candidates[256];
     int weights[256];
-    switch (c_event) {
+    switch (event) {
     case 0: {
         switch (death->bullet) {
         case 2:
@@ -398,7 +395,7 @@ int CAnimCallbacks::death_cb(AnimFileStateAnimList_t* list, unsigned short state
                 bit++;
             death->result = bit + 1;
         }
-        AnimChanStartAnim(c_header, channel, list->entries[candidates[pick]].anim, list->entries[candidates[pick]].flags, state, user, 1.0f);
+        AnimChanStartAnim(header, channel, list->entries[candidates[pick]].anim, list->entries[candidates[pick]].flags, state, user, 1.0f);
         break;
     }
     case 1:
