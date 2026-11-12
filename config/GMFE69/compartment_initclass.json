@@ -1,0 +1,106 @@
+{
+  "id": "compartment_initclass",
+  "source": "src/game/compartment_initclass.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x80075db4",
+      "size": 244,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000bc3c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012b18",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034e9bc",
+      "size": 2,
+      "type": 8,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "InitClass__12CCompartmentFP11CRenderListP7CScreen",
+      "address": "0x80075db4",
+      "size": 244,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "g_LightPool": "0x801dd14c",
+    "g_pRenderList": "0x8034e980",
+    "g_pScreen": "0x8034e984"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_LightPool",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pRenderList",
+    "g_pScreen"
+  ],
+  "original_file": "compartment.cpp",
+  "original_file_index": 3422,
+  "pooled_sections": [
+    ".bss"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 64,
+      "address": "0x801d4ee0"
+    }
+  ]
+}

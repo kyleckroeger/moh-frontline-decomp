@@ -1238,7 +1238,8 @@
     "ShellMenu_credits.json",
     "UserInterface_timestamp.json",
     "bsbifunc_schedules.json",
-    "staticmesh_initclass.json"
+    "staticmesh_initclass.json",
+    "compartment_initclass.json"
   ],
   "progress": {
     "code_bytes": 1414572,

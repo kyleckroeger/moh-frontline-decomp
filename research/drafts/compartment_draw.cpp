@@ -177,21 +177,3 @@ struct LightPool {
 };
 extern LightPool g_LightPool;
 
-void CCompartment::InitClass(CRenderList* list, CScreen* screen) {
-    static bool bReady = false;
-    if (!bReady) {
-        g_pRenderList = list;
-        g_pScreen = screen;
-        list->Register(g_CptSimpleBin);
-        list->Register(g_CptSimpleAlphaBin);
-        list->Register(g_CptShadowBin);
-        g_LightPool.m_capacity = 256;
-        g_LightPool.m_base = g_LightPool.m_nodes;
-        g_LightPool.m_used = 0;
-        g_LightPool.m_free = g_LightPool.m_nodes;
-        g_LightPool.m_count = 0;
-        g_LightPool.m_base[g_LightPool.m_capacity - 1].m_next = 0;
-        for (int i = 0; i < g_LightPool.m_capacity - 1; i++)
-            g_LightPool.m_free[i].m_next = &g_LightPool.m_free[i + 1];
-    }
-}

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1224000,
+    "matching_code_bytes": 1224244,
     "total_executable_code_bytes": 1414572,
-    "percent": 86.52793919291489,
+    "percent": 86.54518822654485,
     "categories": {
-      "reconstructed_game": 983364,
+      "reconstructed_game": 983608,
       "restored_library": 240636
     },
-    "matching_functions": 4859
+    "matching_functions": 4860
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -807,6 +807,7 @@
     "src/game/compartment_ctor.cpp": "5af6071d5c8944f859381400dd2e6c8aaacf7dbf6d31ef0ea21703faec0fd2bf",
     "src/game/compartment_fastvec.cpp": "b67fa66488486aa480bb256f6ce890c1659c38fd1ed0706c56064105ff4d9bb5",
     "src/game/compartment_fastvec_tri.cpp": "b1c8700913471fca13bbcce6ed019d1086ac70f3980e9e9603caf2af6d9c2cae",
+    "src/game/compartment_initclass.cpp": "8f2877a15006d14b6e1769cd37db1fdb748aa857956726fca87b817b3fd775a9",
     "src/game/compartment_intersect.cpp": "39b39b0cb006e21e5f448ec9c441c987282a77b10848d2a1e9245ccce817d24b",
     "src/game/compartment_nodeshadows.cpp": "26d2cff9bf0f38c3e88db773a01e0f23767f95bae0bc584fb5ac595c210d64f6",
     "src/game/compartment_offsetptr.cpp": "98eb0a97ef56f3f224fd6fade8b1f349452f64bc0539de3d7be49fb1b8877569",
@@ -2205,6 +2206,7 @@
     "config/GMFE69/compartment_ctor.json": "931645eb9c633084b6b261f0f7818bb587f821ec8453874e0fbe4db8ca410461",
     "config/GMFE69/compartment_fastvec.json": "7713e637d0fc612620e8a649b85e20f06ae17e77a1b007db110fda38c192d73c",
     "config/GMFE69/compartment_fastvec_tri.json": "9e1ce0b12ee1bf635d83384bf922f51bb30d5b16e88ac5fbf7d664abf3124bb9",
+    "config/GMFE69/compartment_initclass.json": "6128f988b7dac99e12195704717e89de84a5fe4531c30c3085c127604a0bf555",
     "config/GMFE69/compartment_intersect.json": "b239f7ddbb23d4aa42c1db20430f1a39dc2419cab1bc5a36ef98bc86e19ef723",
     "config/GMFE69/compartment_nodeshadows.json": "0cd8658af574420b3d6755d9a95a60869950f9feab77c27404a1630ab702a042",
     "config/GMFE69/compartment_offsetptr.json": "c89f7040f223afc1a4bf47cbc9062b8e67e605676fecdd5439b2f8b3bca083c8",
@@ -2528,7 +2530,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "a2931803e9d4d250fb41f50c7f506b89cf4ea519273bbce3b6c4350303388aed",
+    "config/GMFE69/project.json": "9c73cfcdea49a260ece898140e47754e1f23fd110c657962e6151332965bb969",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -53557,6 +53559,45 @@
       "discarded_functions": [],
       "object_sha256": "a579b3f3147b0678ba661b100e154d921b7f4d18c686571e35e8f516de9159ca",
       "linked_sha256": "837cc3960ec36a1ade2a1de2790a891d2710dd24d30972ae8f0a7a208acf6092"
+    },
+    {
+      "id": "compartment_initclass",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 244,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "4d1de9e6e4ee44927e22fa673fe1a6e9a80953641073cceb566cd5dcffe1dd92",
+      "linked_sha256": "f994a2e48e51d217ff228192b8bf4b7db7630d2140061009c0596cd0e7b2ecc7"
     }
   ],
   "code_map": {
@@ -54151,13 +54192,6 @@
             "size": 736,
             "kind": "function",
             "name": "HandleExplosion__12CCompartmentFRC10CExplosion",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80075db4",
-            "size": 244,
-            "kind": "function",
-            "name": "InitClass__12CCompartmentFP11CRenderListP7CScreen",
             "evidence": "exception-index"
           },
           {
