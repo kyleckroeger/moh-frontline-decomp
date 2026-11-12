@@ -73,6 +73,10 @@ public:
     CVector3 m_max;
 };
 
+// DRAFT NOTE (loop knots1, 2026-11-12): the size components and position.x are read
+// straight from d (no locals) while py/pz/qx/qy/qz stay locals: that puts sz and the
+// 0.5 double in the original's callee FPRs (real 41 -> 22). Left: a volatile rotation
+// (px/py/pz f0/f1/f2 vs ours f2/f0/f1, |r1.y|, |r0.x|) in the first block.
 void CCDBObject::Init(CDB* db) {
     m_db = db;
     int base = (int)m_db;
@@ -106,28 +110,20 @@ void CCDBObject::Init(CDB* db) {
     }
     if (m_db->m_leafCount > 0) {
         CDB* d = m_db;
-        float sx;
         float py;
         float qy;
         float qx;
         float pz;
-        float sz;
         float z;
         float qz;
         float y;
-        float px;
         float x;
-        float sy;
-        sz = d->m_size.z;
-        sx = d->m_size.x;
-        sy = d->m_size.y;
-        px = d->m_position.x;
         py = d->m_position.y;
         pz = d->m_position.z;
-        x = sx * (0.5f * (float)fabs(d->m_rows[0].x)) + sy * (0.5f * (float)fabs(d->m_rows[1].x)) + sz * (0.5 * fabs(d->m_rows[2].x));
-        y = sx * (0.5f * (float)fabs(d->m_rows[0].y)) + sy * (0.5f * (float)fabs(d->m_rows[1].y)) + sz * (0.5 * fabs(d->m_rows[2].y));
-        z = sx * (0.5f * (float)fabs(d->m_rows[0].z)) + sy * (0.5f * (float)fabs(d->m_rows[1].z)) + sz * (0.5 * fabs(d->m_rows[2].z));
-        m_min.d.v[0] = px - x;
+        x = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].x)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].x)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].x));
+        y = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].y)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].y)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].y));
+        z = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].z)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].z)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].z));
+        m_min.d.v[0] = d->m_position.x - x;
         m_min.d.v[1] = py - y;
         m_min.d.v[2] = pz - z;
         qx = d->m_position.x;

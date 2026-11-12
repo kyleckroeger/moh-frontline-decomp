@@ -28,19 +28,27 @@
  *
  */
 
-// A fragment of getpic.cpp (0x80100db8): the reference decoder's slice,
+// getpic.cpp from Decode_Picture (0x80100950) to the end of its code: the
+// reference decoder's Decode_Picture (with picture_data and the
+// frame-reordering step inlined), Update_Picture_Buffers, slice,
 // decode_macroblock and Add_Block, with start_of_slice, skipped_macroblock,
 // motion_compensation and macroblock_modes inlined. Changes from the
-// reference, as the game's code shows: 4:2:0 only (six blocks, chroma
-// coordinates halved by the caller), no SNR, spatial or data-partitioning
-// layers apart from decode_macroblock's base quantizer update, no Clear_Block
-// (Add_Block indexes each row, steps a whole line and clears the block as it
-// adds it), GC_IDCT after each coded block, slice taking only MBAmax, and no
-// printing. The inlined helpers are declared inline here so that, as in the
-// original link, no out-of-line copies remain. The layer-data view is
-// inferred; the constants are the reference's (mpeg2dec.h). Decode_Picture
-// and Update_Picture_Buffers before slice, which work on the game's
-// MPC_CODEC_INTERNAL, are not reconstructed.
+// reference, as the game's code shows: Update_Picture_Buffers is rewritten
+// around the game's codec frame objects (each frame's image holds the three
+// planes back to back); 4:2:0 only (six blocks, chroma coordinates halved by
+// the caller), no SNR, spatial or data-partitioning layers apart from
+// decode_macroblock's base quantizer update, no Clear_Block (Add_Block indexes
+// each row, steps a whole line and clears the block as it adds it), GC_IDCT
+// after each coded block, slice taking only MBAmax, and no printing. The
+// inlined helpers are declared inline here so that, as in the original link,
+// no out-of-line copies remain. With deferred inlining the functions are
+// emitted in reverse source order. The layer-data, codec, frame and image
+// views are inferred; the constants are the reference's (mpeg2dec.h).
+// DRAFT NOTE (loop knots1, 2026-11-12): code exact with third_plane, an
+// invented helper whose (height, width, data) parameter order is what gives the
+// original's registers (any other order, or the plain expression, swaps the
+// third plane's data/width registers). Under the 2026-11-12 audit rule this is
+// a maintainer question, so it is not landed.
 #define I_TYPE 1
 #define P_TYPE 2
 #define B_TYPE 3
@@ -729,22 +737,11 @@ resync: /* if Fault_Flag: resynchronize to next next_start_code */
   }
 }
 
-/* set the decoder's frame pointers to a frame's three planes */
-static inline void set_frame_planes(unsigned char *planes[3], RCMP::FRAME *frame)
+/* a frame's third plane: after the full-size first plane and the quarter-size
+   second plane (4:2:0) */
+static inline unsigned char *third_plane(int height, int width, unsigned char *data)
 {
-  if (frame)
-  {
-    planes[0] = frame->image->Data();
-    planes[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    planes[2] = frame->image->Data() + frame->image->width*frame->image->height
-                + (frame->image->width/2)*(frame->image->height/2);
-  }
-  else
-  {
-    planes[0] = 0;
-    planes[1] = 0;
-    planes[2] = 0;
-  }
+  return data + width*height + (width/2)*(height/2);
 }
 
 /* IMPLEMENTATION: update picture buffer pointers */
@@ -780,7 +777,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDbackward_reference_frame[0] = frame->image->Data();
     MPDbackward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    MPDbackward_reference_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
+    MPDbackward_reference_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
   }
   else
   {
@@ -793,7 +790,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDforward_reference_frame[0] = frame->image->Data();
     MPDforward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    MPDforward_reference_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
+    MPDforward_reference_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
   }
   else
   {
@@ -806,7 +803,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDcurrent_frame[0] = frame->image->Data();
     MPDcurrent_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    MPDcurrent_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
+    MPDcurrent_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
   }
   else
   {
