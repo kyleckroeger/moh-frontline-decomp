@@ -19,16 +19,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.96% (1,258,464 bytes) at 3a9096c2, +39,192 this run. Landing commits: 55.
-- Lanes (2026-11-12 07:45): geometry, airender and systems lanes dry;
-  the four slots: real1 (land Orthonormalize with the original's real CVector3 members; rename
-  the invented SetDifference to CVector3::Sub), eh1 (read the original's exception-table
-  records to restore member destructors in constructors), rank1 (rule for later values
-  outranking `this` in callee registers), undo1 (named locals instead of value wrappers).
-  New rules found: shared zero (zero1), member destructors change ctor registers (scene1),
-  real vector helpers are void CVector3 members Sub/Scale/Add (names1). Recent landings:
-  CScene ctor 900 (ea52bfd7), CalculateLevelStats 432, natural-form fixes bac20c93, 7d599836.
-  Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
+- Verified: 89.20% (1,261,812 bytes) at 154c6e17, +42,540 this run. Landing commits: 59.
+- Lanes (2026-11-12 08:16): two agents run, two slots are left empty on
+  purpose (deviation from "exactly four"): the remaining targets either wait on the questions
+  below or have been worked without a new lead, and fewer agents lower the risk of a third
+  usage-limit stop. Running: real3 (member-call order on drafts now written with the
+  original's CVector3 members), names2 (map invented inline names in landed units to real
+  symbols, rename where byte-identical). Since 07:45: CVolBox::TestCollision(CPlane) 2,292
+  (4e2dff8f), CMatrix::Orthonormalize 688 (3a9096c2), GetClosestParameter 1,056 (1b0b4dc8);
+  real-name renames in 13 units (7a325e0f). Usage limit stopped all agents 00:10-00:40 and
+  03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -128,7 +128,9 @@ multiplayer not at all. Every landing keeps the complete image identical.
      groups (one block per inline expansion), so they reflect real structure, but the names are
      inferred and the Node*/Position* pairs have similar bodies with different inputs. Also: is
      the `GiveBuddyOrders(vec_iter&)` forwarding overload (needed by GetInitialBuddyOrders, 7
-     lines) an inline helper or a forwarding wrapper? And PlayerScreenFlash goes 39 -> 34 with a
+     lines) an inline helper or a forwarding wrapper? Also inferred: `dwi::min` (reference-
+     returning, body `a < b ? a : b`) in GetClosestParameter (1,056, 1b0b4dc8); the original's
+     pointer select between two stack slots is what that inline compiles to. And PlayerScreenFlash goes 39 -> 34 with a
      CColor `operator=` taking its argument by value (slots1 judged it not natural; uncommitted).
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
