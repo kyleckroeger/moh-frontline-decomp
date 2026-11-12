@@ -1239,7 +1239,10 @@
     "UserInterface_timestamp.json",
     "bsbifunc_schedules.json",
     "staticmesh_initclass.json",
-    "compartment_initclass.json"
+    "compartment_initclass.json",
+    "bsbifunc_promptbuffer.json",
+    "bsbifunc_hinttext.json",
+    "buddy_destroy.json"
   ],
   "progress": {
     "code_bytes": 1414572,

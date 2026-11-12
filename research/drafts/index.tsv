@@ -3,7 +3,6 @@ real_lines	size	address	function	compile_settings_from	draft
 0	1220	800a6408	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	config/GMFE69/player_init.json	research/drafts/InitMultiplayer.800a6408.cpp
 0	900	800567e8	BIFunc_UpdateBuddyCheckpoints__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp
 0	664	8014d6dc	STREAM_kill	config/GMFE69/stream_greedy.json	research/drafts/STREAM_kill.8014d6dc.cpp
-0	376	80058ccc	DestroyBuddyDataStructures__Fv	config/GMFE69/buddy_copy_info.json	research/drafts/DestroyBuddyDataStructures.80058ccc.cpp
 1	2696	800701d4	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	config/GMFE69/cdbobject_line.json	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
 1	508	80164370	SFILTER_unpackxalf__FPviPvPvi	config/GMFE69/supxalf.json	research/drafts/SFILTER_unpackxalf.80164370.cpp
 2	2728	800b386c	AllocateStaticObject__20CStaticObjectFactoryFii	config/GMFE69/staticobjfactory_lookup.json	research/drafts/AllocateStaticObject.800b386c.cpp
@@ -121,8 +120,6 @@ real_lines	size	address	function	compile_settings_from	draft
 108	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
-	408	8002aecc	displayPromptBuffer__Fi	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
-	612	8002ab34	DisplayHintText__FPCc	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	832	8002a40c	BIFunc_DisplayPromptInteger__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	860	8002a74c	BIFunc_DisplayPromptText__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	1028	80026e7c	BIFunc_AddPlayerAmmo__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp

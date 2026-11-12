@@ -3,7 +3,6 @@ code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	resear
 code_exact	1.000	1.000	0	1220	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	True	0	0	research/drafts/InitMultiplayer.800a6408.cpp
 code_exact	1.000	1.000	0	900	BIFunc_UpdateBuddyCheckpoints__FPPiPv	True	0	0	research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp
 code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp
-code_exact	1.000	1.000	0	376	DestroyBuddyDataStructures__Fv	True	0	0	research/drafts/DestroyBuddyDataStructures.80058ccc.cpp
 consistent	1.000	1.000	1	2696	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	True	0	0	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
 consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp
 consistent	0.997	1.000	2	2728	AllocateStaticObject__20CStaticObjectFactoryFii	True	0	0	research/drafts/AllocateStaticObject.800b386c.cpp
@@ -123,8 +122,6 @@ consistent	0.979	1.000	108	2308	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CColl
 consistent	1.000	1.000	13	1472	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	True	0	0	research/drafts/TestCollision.800c3210.cpp
 consistent	0.827	0.000	30	152	InitClass__11CStaticMeshFP11CRenderListP7CScreen	True	0	0	research/drafts/InitClass.800f2478.cpp
 consistent	0.950	1.000	2	80	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	True	0	0	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
-consistent	0.811	1.000	111	408	displayPromptBuffer__Fi	True	0	0	research/drafts/bsbifunc_prompt.cpp
-consistent	0.648	0.500	160	612	DisplayHintText__FPCc	True	0	0	research/drafts/bsbifunc_prompt.cpp
 consistent	0.854	0.778	208	832	BIFunc_DisplayPromptInteger__FPPiPv	True	0	0	research/drafts/bsbifunc_prompt.cpp
 consistent	0.858	0.818	207	860	BIFunc_DisplayPromptText__FPPiPv	True	0	0	research/drafts/bsbifunc_prompt.cpp
 consistent	0.857	0.789	253	1028	BIFunc_AddPlayerAmmo__FPPiPv	True	0	0	research/drafts/bsbifunc_prompt.cpp

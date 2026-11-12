@@ -96,73 +96,31 @@ static inline void SetUpMessage(unsigned char r, unsigned char g, unsigned char 
     g_popUpMessage.Set_rgba(r, g, b, a);
 }
 
-// Shows the prompt lines written since the last call, newest first. A port of -1
-// sends them to every player's handler; outside multiplayer it is always port 0.
+static inline void NextHintLine() {
+    g_iHintBufferIndex = g_iHintBufferIndex == 7 ? 0 : g_iHintBufferIndex + 1;
+}
+
+// Landed in src/game/bsbifunc_promptbuffer.cpp; kept here because the prompt
+// built-ins below inline it.
 void displayPromptBuffer(int port) {
+    char* text;
     int line = g_prompt;
     while (line != g_promptstart) {
         SetUpMessage(63, 63, 63, 63);
-        char* text = g_promptBuffer[line];
+        text = g_promptBuffer[line];
         g_popUpMessage.SetString(text);
         if (!g_bInMultiplayerMode)
             port = 0;
         if (port == -1) {
             for (int i = 0; i < 4; i++)
-                PromptUserMessage(text, g_pPopUpMessageHandler[i], &g_popUpMessage);
+                PromptUserMessage(g_promptBuffer[line], g_pPopUpMessageHandler[i], &g_popUpMessage);
         } else {
-            PromptUserMessage(text, g_pPopUpMessageHandler[port], &g_popUpMessage);
+            PromptUserMessage(g_promptBuffer[line], g_pPopUpMessageHandler[port], &g_popUpMessage);
         }
         line = line != 0 ? line - 1 : 19;
     }
     g_promptstart = g_prompt;
     NextPromptLine();
-}
-
-static inline void NextHintLine() {
-    g_iHintBufferIndex = g_iHintBufferIndex == 7 ? 0 : g_iHintBufferIndex + 1;
-}
-
-// Single player only: splits the hint into lines and shows them, newest first.
-void DisplayHintText(const char* text) {
-    int length = strlen(text);
-    int lines = 0;
-    if (g_bInMultiplayerMode)
-        return;
-    while (length > g_promptLineWidth) {
-        const char* end = text;
-        while (end - text <= g_promptLineWidth) {
-            const char* space = strchr(end, ' ');
-            if (!space) {
-                if (length <= g_promptMaxSize)
-                    end = text + length;
-                break;
-            }
-            if (space + 1 - text > g_promptMaxSize)
-                break;
-            end = space + 1;
-        }
-        strncpy(g_szHintBuffer[g_iHintBufferIndex], text, end - text);
-        int index = g_iHintBufferIndex;
-        lines++;
-        NextHintLine();
-        g_szHintBuffer[index][end - text] = 0;
-        length = strlen(end);
-        text = end;
-    }
-    if (length > 0) {
-        strcpy(g_szHintBuffer[g_iHintBufferIndex], text);
-        lines++;
-        int index = g_iHintBufferIndex;
-        NextHintLine();
-        g_szHintBuffer[index][length] = 0;
-    }
-    int line = g_iHintBufferIndex != 0 ? g_iHintBufferIndex - 1 : 7;
-    while (--lines >= 0) {
-        SetUpMessage(60, 60, 40, 128);
-        g_popUpMessage.SetString(g_szHintBuffer[line]);
-        PromptUserMessage(g_szHintBuffer[line], g_pPopUpMessageHandler[0], &g_popUpMessage);
-        line = line != 0 ? line - 1 : 7;
-    }
 }
 
 void BIFunc_DisplayPromptInteger(int** sp, void*) {
