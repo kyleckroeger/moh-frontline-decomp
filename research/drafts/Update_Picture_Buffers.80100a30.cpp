@@ -755,7 +755,9 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   /* B pictures do not need to be save for future reference */
   if (MPDpicture_coding_type==B_TYPE)
   {
-    codec->output = codec->current = codec->CreateB();
+    frame = codec->CreateB();
+    codec->current = frame;
+    codec->output = frame;
   }
   else if (MPDpicture_coding_type==P_TYPE || MPDpicture_coding_type==I_TYPE)
   {
@@ -764,8 +766,12 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
     {
       if (codec->forward)
         codec->ReleaseFrame(codec->forward);
-      codec->output = codec->forward = codec->backward;
-      codec->current = codec->backward = codec->CreateIorP();
+      frame = codec->backward;
+      codec->forward = frame;
+      codec->output = frame;
+      frame = codec->CreateIorP();
+      codec->backward = frame;
+      codec->current = frame;
     }
   }
 
@@ -774,7 +780,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDbackward_reference_frame[0] = frame->image->Data();
     MPDbackward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    { unsigned char* d = frame->image->Data(); MPDbackward_reference_frame[2] = d + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2); }
+    MPDbackward_reference_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
   }
   else
   {
@@ -787,7 +793,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDforward_reference_frame[0] = frame->image->Data();
     MPDforward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    { unsigned char* d = frame->image->Data(); MPDforward_reference_frame[2] = d + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2); }
+    MPDforward_reference_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
   }
   else
   {
@@ -800,7 +806,7 @@ static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
   {
     MPDcurrent_frame[0] = frame->image->Data();
     MPDcurrent_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
-    { unsigned char* d = frame->image->Data(); MPDcurrent_frame[2] = d + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2); }
+    MPDcurrent_frame[2] = frame->image->Data() + frame->image->width*frame->image->height + (frame->image->width/2)*(frame->image->height/2);
   }
   else
   {
