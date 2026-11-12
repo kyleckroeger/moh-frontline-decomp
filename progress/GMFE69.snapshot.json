@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1259520,
+    "matching_code_bytes": 1261812,
     "total_executable_code_bytes": 1414572,
-    "percent": 89.03894605576811,
+    "percent": 89.20097386347248,
     "categories": {
-      "reconstructed_game": 1020460,
+      "reconstructed_game": 1022752,
       "restored_library": 239060
     },
-    "matching_functions": 4897
+    "matching_functions": 4898
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -641,7 +641,7 @@
     "src/game/box_linedist.cpp": "bb82786ed81ec3ca3dab7c5098c948b3b035b00fb7f4c24ece1c0bbcfd34c3ae",
     "src/game/box_pointdist.cpp": "c285aa0ab0dd21eea8580d4e13663ba13e59661e6116a61e0825814f6ff516cd",
     "src/game/box_setters.cpp": "8dc7b9d0e9310692670003153178577012ec4f73d4c998f2ce8f15c14919495a",
-    "src/game/box_testtriangle.cpp": "2d883af43b84c1f19d39227a0e9558e78b7e12fd8a22c2f8a6419d8a98ba6651",
+    "src/game/box_testtriangle.cpp": "fb162e55fea2b2b48dad3ae30e0bf621cc62ef01e21e543c103e6a38eb327f01",
     "src/game/box_visibility.cpp": "a8d41137f1849ca8b90803825d87e498c8dfba07c0caa04f0d15c6c508e979f3",
     "src/game/bsbifunc.cpp": "7b7932011bc49cfe64e954bae9f5068855094b818897ecbbd7aa822c3be427c2",
     "src/game/bsbifunc_aemsvalues.cpp": "383bf42ba27fc516db1f68e9af0272e233b8e413fa99ff431f860495a406355f",
@@ -2052,7 +2052,7 @@
     "config/GMFE69/box_linedist.json": "581504593e1ce50affc575939f7d2a4e6fb9d0028ecf8be6b540a7167d646920",
     "config/GMFE69/box_pointdist.json": "aef4e1db6a9c6559c87ea0c7b46f1df62b440e19812d4bd683b9a448eef1a78d",
     "config/GMFE69/box_setters.json": "193dcf17a7e86d335b23786d1242ba384b45f0a3b2e14853c139f538252c08d2",
-    "config/GMFE69/box_testtriangle.json": "fffd968ea0690673f9fa980554b08e8410dd9f0ca5a0ccf3e2eebe5d7f9a2324",
+    "config/GMFE69/box_testtriangle.json": "3a5cf7ab6356713b91a2331b5c370e4c4b829232332599760e0468c9cceee3be",
     "config/GMFE69/box_visibility.json": "02b41474296f3f604bb90ec15796bc7033e191b3cbc519d0f5977754bd2d3777",
     "config/GMFE69/bsbifunc.json": "20fc606c8c3849041106a992a379e99aa28247f377a6db5747211c6e37ac1b8e",
     "config/GMFE69/bsbifunc_aemsvalues.json": "cfb2c81b75868952f4f6d26c0c9f9be92bd5f89688d84e132632f06900955cd9",
@@ -47443,8 +47443,8 @@
     {
       "id": "box_testtriangle",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 8,
+      "functions": 2,
+      "code_bytes": 2300,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -47476,8 +47476,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "570672688180f6ec18e909db8d2d4fb8baef81d83d86a634f3c76abf1099ad21",
-      "linked_sha256": "cf0458785706bbbf357a6add921b109f638f9ed4278afd606ba8d71504474c2e"
+      "object_sha256": "dc841ed13aea5a1d8fc65c94d5e7674ca28a17808ff1cc616a9a82c04e71b75e",
+      "linked_sha256": "045332818cc816e473374524c4f4b27209128d98a89120e0557c4da251a94636"
     },
     {
       "id": "sphere_testtriangle",
@@ -54957,13 +54957,6 @@
             "kind": "function",
             "name": "GetExtents__7CVolBoxCFR8CVector3R8CVector3",
             "evidence": "between-same-file"
-          },
-          {
-            "address": "0x800c15ec",
-            "size": 2292,
-            "kind": "function",
-            "name": "TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb",
-            "evidence": "exception-index"
           },
           {
             "address": "0x800c290c",

@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 140264, "differs": 10144, "exact": 4472, "verified": 1250676},
+ "function_bytes_by_status": {"consistent": 137972, "differs": 10144, "exact": 4472, "verified": 1252968},
  "data_bytes_owned": 724422,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2466,7 +2466,7 @@
  [2148275124, 280, "GetExtents__7CVolBoxCFR8CVector3R8CVector3", "consistent", "research/drafts/GetExtents.800c13b4.cpp"],
  [2148275404, 280, "TestVisibility__7CVolBoxCFR12CDrawContext", "verified", "src/game/box_visibility.cpp"],
  [2148275684, 8, "TestCollision__7CVolBoxCFRC9CTriangleR10CCollisionb", "verified", "src/game/box_testtriangle.cpp"],
- [2148275692, 2292, "TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb", "consistent", "research/drafts/TestCollision.800c15ec.cpp"],
+ [2148275692, 2292, "TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb", "verified", "src/game/box_testtriangle.cpp"],
  [2148277984, 1872, "TestCollision__7CVolBoxCFRC6CLine3R10CCollisionb", "verified", "src/game/box_line.cpp"],
  [2148279856, 116, "TestCollision__7CVolBoxCFRC15CAnimatedVolumeR10CCollisionb", "verified", "src/game/box_dispatch2.cpp"],
  [2148279972, 120, "TestCollision__7CVolBoxCFRC9CVolFiberR10CCollisionb", "verified", "src/game/box_dispatch2.cpp"],

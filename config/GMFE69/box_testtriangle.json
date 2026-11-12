@@ -40,11 +40,29 @@
     {
       "name": ".text",
       "address": "0x800c15e4",
+      "size": 2300,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000dd3c",
       "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014bc4",
+      "size": 12,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb",
+      "address": "0x800c15ec",
+      "size": 2292,
+      "binding": 1
+    },
     {
       "name": "TestCollision__7CVolBoxCFRC9CTriangleR10CCollisionb",
       "address": "0x800c15e4",
@@ -52,13 +70,18 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON": "0x80350ba8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "box.cpp",
   "original_file_index": 7464
 }
