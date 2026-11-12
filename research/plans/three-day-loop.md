@@ -19,14 +19,14 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.56% (1,252,688 bytes) at 2829d872, +33,416 this run. Landing commits: 37.
-- Lanes (2026-11-12 02:46): geometry, airender and systems lanes dry;
-  the four slots run cross-lane work: vec4 (TestCollision(CPlane), Orthonormalize), vec5
-  (UpdateBoundingBox, RenderSystem), struct5 (TLT_LoadFromRepository, GetClosestWaypointByType),
-  fresh1 (rows untouched this run). Usage limit stopped all agents 00:10-00:40 on 11-12.
-  Largest landings: TriggerEnterAndLeaveMessages 3,480, CCompartment::Init 2,628,
-  CImpact::Visit 2,512. port_unit now drafts extab trims itself (9d94f2c9). Data step 2:
-  undefined 197 -> 82.
+- Verified: 88.61% (1,253,400 bytes) at 54d3c9c8, +34,128 this run. Landing commits: 42.
+- Lanes (2026-11-12 05:41): geometry, airender and systems lanes dry;
+  the four slots run cross-lane work: big1 (UpdateAnimation, 3,828), near1 (near-misses from
+  fresh1's logic fixes), fresh2 and fresh3 (queue rows untouched this run, from
+  scratch/loop3/fresh1/untouched.tsv). New check: research/tools/brchk.py compares draft branch
+  offsets; the scorers hid real logic bugs in several long-parked drafts. Parked after deep work:
+  CVolBox::TestCollision(CPlane) 547 -> 56, UpdateBoundingBox 101 -> 56, RenderSystem
+  (needs whole-file landing). Usage limit stopped all agents 00:10-00:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -55,7 +55,9 @@ multiplayer not at all. Every landing keeps the complete image identical.
   6. **Data step 2 (agent data1: d5d1282e, 18f0a9a4, d0f84b89; undefined 197 -> 82).**
      Review: files inferred from section neighbours (marked); MPD/gFileSysOpts/FONTcurrentdriverext
      put in init/unassigned.cpp against the map's guess; six plain MP float constants included
-     (drop them if multiplayer-last should cover data too); should `_eti_init_info` and the
+     (drop them if multiplayer-last should cover data too). Related: e959464b landed
+     CShellMenu::MoveStatsIntoProperAreaForIstudio (236), which packs multiplayer stats for
+     iStudio but is queued under Shell/HUD; should `_eti_init_info` and the
      vtables stay out of step 2; should research/data/init/ merge with bss/ later.
   7. **Placement-new knot** (CreateRootHierObject 3,416 B at 1 line, CreateDestructable at 1):
      CW always null-checks placement new and keeps a redundant beq; no natural form gives both
@@ -89,7 +91,9 @@ multiplayer not at all. Every landing keeps the complete image identical.
   12. **Duplicated condition, landed (fc2de588).** DetermineNewObjectivePosition (1,276) matches
      only with IsClear testing the height-1 distance twice (`d < a[1] && d < a[1] && ...`),
      following earlier landed redundant tests (GiveEnemyGrenadeWeapon, AddBulletDecal). Revert
-     fc2de588 if you see it as code written only to steer output.
+     fc2de588 if you see it as code written only to steer output. Same class, not landed yet:
+     GetClosestWaypointByType's draft (structural 0, d5baeeb8) re-zeroes `found = 0;` after a
+     loop to get the original's second `li r3,0`.
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), DrawTextCentered 416 (q8). Total 7,616.
