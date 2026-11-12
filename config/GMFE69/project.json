@@ -1250,7 +1250,8 @@
     "compartment_init.json",
     "weaponfactory_create.json",
     "objcreate_collvol.json",
-    "objcreate_german.json"
+    "objcreate_german.json",
+    "font_centeredf.json"
   ],
   "progress": {
     "code_bytes": 1414572,

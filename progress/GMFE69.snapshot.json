@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1242004,
+    "matching_code_bytes": 1242516,
     "total_executable_code_bytes": 1414572,
-    "percent": 87.80069165797146,
+    "percent": 87.83688635149007,
     "categories": {
-      "reconstructed_game": 1001368,
+      "reconstructed_game": 1001880,
       "restored_library": 240636
     },
-    "matching_functions": 4880
+    "matching_functions": 4881
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -878,6 +878,7 @@
     "src/game/fiber_visibility.cpp": "fe3137b7bfbdc6c744b78db6ebb7cbabd48b4888ade40afde4bcffd621dd3238",
     "src/game/filesys.cpp": "edc914b77e55cfec7501ffc2150c34cefc432d28c3e9aa1eceea55a4cbe755ad",
     "src/game/font.cpp": "65255c01226641dd00889793fe46dd4a6a31eee9be31b7b6aeaf2ce6c561398a",
+    "src/game/font_centeredf.cpp": "c32546bc6be0736016caf755900c91c600dfe7c1fc7d71a54d508aeb44f862e0",
     "src/game/font_draw.cpp": "5382fff844b701321c4540955f1a674985d2c3c9b5ec25e2b34c6bc8e1945eb7",
     "src/game/font_driver.cpp": "bf6a37772fdeda1200bca043c621d97e1062969444c5ac825ebc2eeaaf217bb5",
     "src/game/font_dtor.cpp": "281b2f2308b17efc94ab050458e3fc94f3565f6726af6c92f31ad0ea4234ab69",
@@ -2321,6 +2322,7 @@
     "config/GMFE69/filesys_ea_del.json": "42ec0436e074b8549cd6d4042c9475e5de4119516b2b2b3e8b06d0f517ce663b",
     "config/GMFE69/flush_cache.json": "aa1c08f24f7fa7ce6bf2cfa32e6ae398b7b93fea2374de2a6120d5e28e6b9578",
     "config/GMFE69/font.json": "56ec5e4085fe4be430a0e0bc9f2870a0bae1430b36449d0f699317f3ab478655",
+    "config/GMFE69/font_centeredf.json": "8bbfc66dea81d21c6e4e6275db81a298494116ac5dc2cbe35e0bad01f3aedcc0",
     "config/GMFE69/font_draw.json": "e1d6e44b196fe1d4eeaf0a5b2a1c061d4372684fe40ea58c8d46c45b783467b2",
     "config/GMFE69/font_driver.json": "6b6cf9d6937c5cd191b23edd80f9b11e5300b4d0dd4fd7ab2b2dde997d2cb36a",
     "config/GMFE69/font_dtor.json": "f1e6fc09ed6f7382f41553679d5b7fdc87bb855b2ff4be00ecbaae021af006f9",
@@ -2550,7 +2552,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "414a6dd7780ac20861628ac147e8d0c7d1ba10ef86c729af21e1c2b5586f971b",
+    "config/GMFE69/project.json": "1bade0bba16ee9adce6b1576eb0debf332c820c3296f3c6448964aa8876d11df",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -54051,6 +54053,45 @@
       "discarded_functions": [],
       "object_sha256": "a8ee76139fc9b02675480ae4bc28aeddac04603567f3b6fd1ad0d2ede1edd034",
       "linked_sha256": "5f0452564e519127c3024d9728adf884dfe31db2187c1175969a503179c0257f"
+    },
+    {
+      "id": "font_centeredf",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 512,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "0c5f2f09f789d958fb63149fb2a0c370924cdaed2b7037c8b584901962bdda43",
+      "linked_sha256": "f7040f074bbde8ec06f76319439afe8fe61377d0d1ebe5a18da3846e2477afbe"
     }
   ],
   "code_map": {
@@ -54568,13 +54609,6 @@
             "size": 108,
             "kind": "function",
             "name": "EndDraw__11CFontDriverFP4FONT",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8007cbb0",
-            "size": 512,
-            "kind": "function",
-            "name": "DrawTextCenteredF__5CFontFfPCce",
             "evidence": "exception-index"
           },
           {

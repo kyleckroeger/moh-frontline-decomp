@@ -9,7 +9,6 @@ consistent	1.000	0.966	2	812	SNDPKTPLAY_start	True	0	0	research/drafts/SNDPKTPLA
 consistent	1.000	1.000	2	96	AddAmo__19CPlayerWeaponObjectFi	True	0	0	research/drafts/AddAmo.800a7fac.cpp
 consistent	1.000	1.000	3	1220	Update__13CInputManagerFf	True	0	0	research/drafts/Update.80084c80.cpp
 consistent	0.992	1.000	3	1060	TLT_LoadLevelContentsFile__Fii	True	0	0	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp
-consistent	1.000	1.000	3	512	DrawTextCenteredF__5CFontFfPCce	True	0	0	research/drafts/DrawTextCenteredF.8007cbb0.cpp
 consistent	1.000	1.000	3	236	MoveStatsIntoProperAreaForIstudio__10CShellMenuFv	True	0	0	research/drafts/MoveStatsIntoProperAreaForIstudio.800de334.cpp
 consistent	1.000	1.000	4	480	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	True	0	0	research/drafts/FlagAsOccupied.80052f6c.cpp
 consistent	1.000	1.000	4	308	TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	True	0	0	research/drafts/TranslateFromScript.800af68c.cpp

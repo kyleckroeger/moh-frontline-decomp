@@ -1,3 +1,9 @@
+// CFont::DrawTextCenteredF (font.cpp): formats the text, centres it in the
+// current viewport and draws it through the inline DrawText. CFont, FONT, CScreen
+// and g_viewport are views reduced to the members this function touches; the
+// screen's virtual slots and the viewport field names are inferred, not original.
+// Mul is a stand-in for the original's product helper: its compound form gives
+// the original's operand order (conversion first) for the width product.
 namespace std {
 struct __tag_va_List {
     char gpr;
@@ -77,6 +83,7 @@ inline CScreen* CurrentScreen() {
     return CScreen::GetCurrent();
 }
 
+inline float Mul(float a, float b) { float r = a; r *= b; return r; }
 void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     std::va_list args;
     char text[1024];
@@ -86,10 +93,12 @@ void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     CScreen* screen = CurrentScreen();
     float viewX;
     float viewWidth = g_viewport.m_width;
-    float width = (float)screen->GetWidth() * +viewWidth;
+    float width = Mul((float)screen->GetWidth(), viewWidth);
     viewX = g_viewport.m_x;
     float scale = screen->GetScale();
-    float center = (width / 2.0f + (float)screen->GetWidth() * +viewX) / scale;
+    float center = (float)screen->GetWidth();
+    center *= viewX;
+    center = (width / 2.0f + center) / scale;
     float bottom;
     float right;
     float top;

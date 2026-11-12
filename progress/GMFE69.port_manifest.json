@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1250,
- "function_bytes_by_status": {"consistent": 157780, "differs": 10144, "exact": 4472, "verified": 1233160},
+ "verified_units": 1251,
+ "function_bytes_by_status": {"consistent": 157268, "differs": 10144, "exact": 4472, "verified": 1233672},
  "data_bytes_owned": 724053,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1520,7 +1520,7 @@
  [2147994444, 28, "SetDepth__5CFontFUl", "verified", "src/game/font_render.cpp"],
  [2147994472, 56, "GetColor__5CFontFv", "verified", "src/game/font_render.cpp"],
  [2147994528, 16, "SetColor__5CFontF6CColor", "verified", "src/game/font_render.cpp"],
- [2147994544, 512, "DrawTextCenteredF__5CFontFfPCce", "consistent", "research/drafts/DrawTextCenteredF.8007cbb0.cpp"],
+ [2147994544, 512, "DrawTextCenteredF__5CFontFfPCce", "verified", "src/game/font_centeredf.cpp"],
  [2147995056, 416, "DrawTextCentered__5CFontFfPCc", "consistent", "research/drafts/DrawTextCentered.8007cdb0.cpp"],
  [2147995472, 180, "DrawText__5CFontFffPCc", "verified", "src/game/font_dtor.cpp"],
  [2147995652, 188, "InitClass__5CFontFP11CRenderListP7CScreen", "verified", "src/game/font_dtor.cpp"],
