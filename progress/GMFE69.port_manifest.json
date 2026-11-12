@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 142008, "differs": 10144, "exact": 4472, "verified": 1248932},
+ "function_bytes_by_status": {"consistent": 141320, "differs": 10144, "exact": 4472, "verified": 1249620},
  "data_bytes_owned": 724422,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1776,7 +1776,7 @@
  [2148069304, 252, "ToEulerXZY__7CMatrixCFRfRfRf", "verified", "src/game/matrix_endian.cpp"],
  [2148069556, 252, "ToEulerXYZ__7CMatrixCFRfRfRf", "verified", "src/game/matrix_endian.cpp"],
  [2148069808, 56, "Ident__7CMatrixFv", "verified", "src/game/matrix_endian.cpp"],
- [2148069864, 688, "Orthonormalize__7CMatrixFv", "consistent", "research/drafts/Orthonormalize.8008f1e8.cpp"],
+ [2148069864, 688, "Orthonormalize__7CMatrixFv", "verified", "src/game/matrix_ps.cpp"],
  [2148070552, 296, "Transpose__7CMatrixFv", "verified", "src/game/matrix_ps.cpp"],
  [2148070848, 828, "Inverse__7CMatrixFRC7CMatrix", "verified", "src/game/matrix_ps.cpp"],
  [2148071676, 268, "FastInverse__7CMatrixFRC7CMatrix", "verified", "src/game/matrix_ps.cpp"],

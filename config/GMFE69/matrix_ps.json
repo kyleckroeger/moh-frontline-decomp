@@ -39,24 +39,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008f498",
-      "size": 1800,
+      "address": "0x8008f1e8",
+      "size": 2488,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000c620",
-      "size": 32,
+      "address": "0x8000c618",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001364c",
-      "size": 48,
+      "address": "0x80013640",
+      "size": 60,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Orthonormalize__7CMatrixFv",
+      "address": "0x8008f1e8",
+      "size": 688,
+      "binding": 1
+    },
     {
       "name": "Transpose__7CMatrixFv",
       "address": "0x8008f498",
@@ -127,19 +133,31 @@
       "section": ".sdata2",
       "offset": 8,
       "size": 8,
-      "address": "0x80350258"
+      "address": "0x80350248"
     },
     {
       "section": ".sdata2",
       "offset": 16,
-      "size": 4,
-      "address": "0x80350260"
+      "size": 8,
+      "address": "0x80350250"
     },
     {
       "section": ".sdata2",
-      "offset": 20,
+      "offset": 24,
       "size": 4,
       "address": "0x80350230"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80350258"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350260"
     }
   ]
 }

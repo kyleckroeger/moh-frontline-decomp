@@ -1,4 +1,6 @@
-// A fragment of matrix.cpp (0x8008f498): CMatrix::Transpose (in place),
+// A fragment of matrix.cpp (0x8008f1e8): CMatrix::Orthonormalize (Gram-Schmidt
+// on the rows: right normalized, forward made orthogonal to it, up to both,
+// each normalized; the position row is left alone), Transpose (in place),
 // Inverse (the general inverse of an affine matrix: the 3x3 determinant
 // accumulated from its positive and negative terms, nothing done when it is
 // zero or below 1e-15 relative to their difference, then the scaled adjoint
@@ -14,15 +16,36 @@
 // float layout are as in matrix_endian.cpp. The rest of the file is not part
 // of this unit.
 
-// Inferred: CVector3 as four floats overlaid with two doubles (its copies
-// move doubleword pairs).
+// Inferred: CVector3 (no constructors, so its copies stay plain doubleword
+// moves; the shared header's copy constructor recolours Orthonormalize) as
+// four floats overlaid with two doubles. Sub, Scale, Dot, Length and
+// Normalize are the original's CVector3 members (Sub and Scale write into
+// this, as the weak copies at 800a4dac and 800a4cec do); their bodies here
+// are inferred from those copies and inline as in the original.
+#include <math.h>
+
 union CVector3Data {
     double pair[2];
     float v[4];
+    struct { float x, y, z, w; } c;
 };
 
 class CVector3 {
 public:
+    float Dot(const CVector3& v) const { return d.c.x * v.d.c.x + d.c.y * v.d.c.y + d.c.z * v.d.c.z; }
+    float Length() const { return sqrtf(d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z); }
+    void Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            float scale = 1.0f / length;
+            d.c.x *= scale;
+            d.c.y *= scale;
+            d.c.z *= scale;
+        }
+    }
+    void Scale(const CVector3& o, float k) { d.c.x = k * o.d.c.x; d.c.y = k * o.d.c.y; d.c.z = k * o.d.c.z; }
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
+
     CVector3Data d;
 } __attribute__((aligned(8)));
 
@@ -41,6 +64,7 @@ void PSTransformPoint(float*, const float*, const float*);
 
 class CMatrix {
 public:
+    void Orthonormalize();
     void Transpose();
     void Inverse(const CMatrix&);
     const CVector3& Row(int i) const { return *(const CVector3*)m[i]; }
@@ -52,6 +76,27 @@ public:
 
     float m[4][4];
 } __attribute__((aligned(16)));
+
+void CMatrix::Orthonormalize() {
+    CVector3 forward = Row(1);
+    CVector3 up = Row(2);
+    CVector3 right = Row(0);
+    right.Normalize();
+    CVector3 t;
+    t.Scale(right, forward.Dot(right));
+    CVector3 f;
+    f.Sub(forward, t);
+    f.Normalize();
+    CVector3 u;
+    t.Scale(right, up.Dot(right));
+    u.Sub(up, t);
+    t.Scale(f, up.Dot(f));
+    u.Sub(u, t);
+    u.Normalize();
+    m[0][0] = right.d.c.x; m[0][1] = right.d.c.y; m[0][2] = right.d.c.z;
+    m[1][0] = f.d.c.x; m[1][1] = f.d.c.y; m[1][2] = f.d.c.z;
+    m[2][0] = u.d.c.x; m[2][1] = u.d.c.y; m[2][2] = u.d.c.z;
+}
 
 void CMatrix::Transpose() {
     for (int i = 1; i < 4; i++) {

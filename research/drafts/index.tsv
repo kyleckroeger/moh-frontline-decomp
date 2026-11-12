@@ -27,7 +27,6 @@ real_lines	size	address	function	compile_settings_from	draft
 18	860	800e7a7c	ResetShell__10CShellMenuFv	config/GMFE69/ShellMenu_dtor.json	research/drafts/ResetShell.800e7a7c.cpp
 11	108	8007c194	EndDraw__11CFontDriverFP4FONT	config/GMFE69/font_driver.json	research/drafts/EndDraw.8007c194.cpp
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
-7	688	8008f1e8	Orthonormalize__7CMatrixFv	config/GMFE69/matrix_endian.json	research/drafts/Orthonormalize.8008f1e8.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
 14	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp

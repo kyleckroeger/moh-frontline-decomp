@@ -13,7 +13,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 <!-- sync_docs:status -->
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
-| **Exact** | 1,257,776 | **88.92%** | Built from source and byte-identical to the original in the complete-image comparison: 4,895 functions in 1,254 units. |
+| **Exact** | 1,258,464 | **88.96%** | Built from source and byte-identical to the original in the complete-image comparison: 4,896 functions in 1,254 units. |
 | **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), so linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
@@ -22,10 +22,10 @@ Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 1,018,716 | 3,900 | 1,070 | `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 1,019,404 | 3,901 | 1,070 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 239,060 | 995 | 184 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 156.6 KB isn't exact yet, in 114 functions across 58 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
+About 155.9 KB isn't exact yet, in 113 functions across 58 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
