@@ -314,10 +314,28 @@ static inline unsigned char isplaying(PATHTRACKVIEW* track) {
     return track->node >= 0 && track->current;
 }
 
+static inline void PATHI_getmastertrack(void) {
+    int i;
+    PATHTRACKVIEW* track;
+
+    pfstate->latency = 0;
+    pfstate->leader = -1;
+    pfstate->beat = 0;
+    for (i = 0; i < 24; i++) {
+        track = pfstate->tracks[i];
+        if (track && !track->paused && isplaying(track)) {
+            if (pfstate->latency < track->latency) {
+                pfstate->latency = track->latency;
+                pfstate->leader = i;
+                pfstate->beat = track->current->beat;
+            }
+        }
+    }
+}
+
 extern "C" int PATH_event(unsigned int handle, unsigned int id, int flags) {
     PATHEVENTVIEW event;
     PATHRECORDVIEW record;
-    PATHTRACKVIEW* track;
     PATHMAPVIEW* map;
     unsigned int song;
     unsigned int project;
@@ -341,31 +359,22 @@ extern "C" int PATH_event(unsigned int handle, unsigned int id, int flags) {
             if (selectstate((unsigned char)i)) {
                 if (eventnum >= pfstate->active->events)
                     goto done;
-                event.node = eventnum;
-                pfstate->latency = 0;
-                pfstate->leader = -1;
                 event.unknown2a = prio;
-                event.unknown2b = 0;
+                event.node = eventnum;
                 event.type = type;
-                event.track = j = 0;
+                event.unknown2b = 0;
+                event.track = 0;
                 event.unknown4 = 0;
                 event.unknown8 = 0;
                 event.mask = -1;
-                pfstate->beat = 0;
-                for (; j < 24; j++) {
-                    track = pfstate->tracks[j];
-                    if (pfstate->tracks[j] && !pfstate->tracks[j]->paused && isplaying(pfstate->tracks[j])) {
-                        if (pfstate->latency < track->latency) {
-                            pfstate->latency = track->latency;
-                            pfstate->leader = j;
-                            pfstate->beat = track->current->beat;
-                        }
-                    }
-                }
+                PATHI_getmastertrack();
                 for (j = 0; j < 24; j++) {
                     if (pfstate->tracks[j] && (handle & (1 << j))) {
                         map = pfstate->active;
-                        record = pfstate->records[pfstate->recordmap[eventnum * map->beats + map->beats * (j * map->events) + pfstate->beat]];
+                        { int index = eventnum * map->beats;
+                        index += map->beats * (j * map->events);
+                        index += pfstate->beat;
+                        record = pfstate->records[pfstate->recordmap[index]]; }
                         if ((record.flags & 3) || record.unknown0 >= 0)
                             event.mask -= 1 << j;
                         if (hold || (record.flags & 8))

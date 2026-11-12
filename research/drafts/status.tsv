@@ -23,7 +23,6 @@ consistent	1.000	1.000	9	2128	UpdateProximityTriggerStatus__Fv	True	0	0	research
 consistent	1.000	1.000	9	432	CalculateLevelStats__10CShellMenuFv	True	0	0	research/drafts/CalculateLevelStats.800e6374.cpp
 consistent	1.000	1.000	10	1184	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	True	0	0	research/drafts/CheckLineCollision.80052abc.cpp
 consistent	1.000	1.000	10	1156	AnimStStartState	True	0	0	research/drafts/AnimStStartState.800676d8.cpp
-consistent	0.982	1.000	10	436	Load__17CUserMessageTableFPcPc	True	0	0	research/drafts/Load.800b85bc.cpp
 consistent	1.000	1.000	11	804	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	True	0	0	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp
 consistent	1.000	1.000	11	392	SetFinishedLevelData__13CPlayerObjectFv	True	0	0	research/drafts/SetFinishedLevelData.8009d470.cpp
 consistent	1.000	1.000	13	964	GetNearestPoint__12CCDBTriangleCF8CVector3PfPf	True	0	0	research/drafts/GetNearestPoint.8006c800.cpp
@@ -43,7 +42,7 @@ consistent	1.000	1.000	25	6920	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10
 consistent	0.997	1.000	25	2436	CheckForObstructions__10CExplosionFR10ISceneNode	True	0	0	research/drafts/CheckForObstructions.800ce450.cpp
 consistent	0.993	1.000	25	2212	DrawFragCount__13UserInterfaceFb	True	0	0	research/drafts/DrawFragCount.800bd864.cpp
 consistent	1.000	1.000	25	712	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	True	0	0	research/drafts/ARAM_alloc_node.801503b4.cpp
-consistent	0.998	1.000	26	1884	PATH_event	True	0	0	research/drafts/PATH_event.8010b93c.cpp
+consistent	0.998	1.000	6	1884	PATH_event	True	0	0	research/drafts/PATH_event.8010b93c.cpp
 consistent	1.000	1.000	27	1264	BIFunc_GetInitialBuddyOrders__FPPiPv	True	0	0	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
 consistent	1.000	1.000	27	904	Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL	True	0	0	research/drafts/Update_Picture_Buffers.80100a30.cpp
 consistent	0.992	1.000	28	1064	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	True	0	0	research/drafts/death_cb.8005fb58.cpp

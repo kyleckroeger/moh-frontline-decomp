@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x800b8544",
-      "size": 120,
+      "size": 556,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d958",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800148e8",
-      "size": 12,
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177864",
+      "size": 45,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -62,11 +69,20 @@
       "address": "0x800b8544",
       "size": 120,
       "binding": 1
+    },
+    {
+      "name": "Load__17CUserMessageTableFPcPc",
+      "address": "0x800b85bc",
+      "size": 436,
+      "binding": 1
     }
   ],
   "externals": {
+    "DebugMsg__FPCce": "0x80018c88",
     "TLT_CloseFile__FPv": "0x8001d820",
-    "__dla__FPv": "0x8001c9e8"
+    "TLT_LoadFileNormal__FPCcPii": "0x8001d308",
+    "__dla__FPv": "0x8001c9e8",
+    "__nwa__FUl": "0x8001cae8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
