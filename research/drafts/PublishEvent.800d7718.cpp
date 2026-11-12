@@ -218,10 +218,10 @@ void CPublisher::PublishEvent(ISubject& subject, ESubjectEvent event) {
     } else {
         dwi::hash_map<ISubject*, SItem>::iterator it = sm_pThePublisher->m_map.find(&subject);
         while (it != sm_pThePublisher->m_map.end()) {
-            IObserver& observer = *it->second.m_observer;
-            SubjectCallback callback = it->second.m_callback;
-            if (&subject == *it->second.m_slot)
-                callback(observer, it->second.m_slot, event);
+            SItem& item = it->second;
+            IObserver& observer = *item.m_observer;
+            if (&subject == *item.m_slot)
+                item.m_callback(observer, item.m_slot, event);
             it = sm_pThePublisher->m_map.find_next(it);
         }
     }
