@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1252,
- "function_bytes_by_status": {"consistent": 149228, "differs": 10144, "exact": 4472, "verified": 1241712},
+ "verified_units": 1253,
+ "function_bytes_by_status": {"consistent": 148372, "differs": 10144, "exact": 4472, "verified": 1242568},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2339,7 +2339,7 @@
  [2148227188, 872, "ConstrainVelocity__13CThrownObjectFv", "verified", "src/game/thrown_obj.cpp"],
  [2148228060, 904, "OnCollision__13CThrownObjectFRC10CCollision", "verified", "src/game/thrown_obj_cleanup.cpp"],
  [2148228964, 136, "CleanUp__13CThrownObjectFv", "verified", "src/game/thrown_obj_cleanup.cpp"],
- [2148229100, 856, "Init__13CThrownObjectFv", "consistent", "research/drafts/Init.800b5fec.cpp"],
+ [2148229100, 856, "Init__13CThrownObjectFv", "verified", "src/game/thrown_obj_init.cpp"],
  [2148229956, 96, "__dt__13CThrownObjectFv", "verified", "src/game/thrown_obj_dtor.cpp"],
  [2148230052, 164, "__ct__13CThrownObjectFP11CStaticMeshiiiiiPQ213CStaticObject11MotionFrameP24LevelFileContentsStruct_", "verified", "src/game/thrown_obj_dtor.cpp"],
  [2148230216, 124, "__ct__13CThrownObjectFv", "verified", "src/game/thrown_obj_ctor.cpp"],

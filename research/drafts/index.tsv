@@ -91,7 +91,6 @@ real_lines	size	address	function	compile_settings_from	draft
 8	1480	800ac9e4	Draw__14CSoldierObjectFR12CDrawContext	config/GMFE69/Soldier_object.json	research/drafts/Draw.800ac9e4.cpp
 21	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
 138	3376	800b254c	Init__20CStaticObjectFactoryFv	config/GMFE69/staticobjfactory_helmet.json	research/drafts/Init.800b254c.cpp
-16	856	800b5fec	Init__13CThrownObjectFv	config/GMFE69/thrown_obj.json	research/drafts/Init.800b5fec.cpp
 45	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp
 4	304	800c555c	GetExtents__11CVolCapsuleCFR8CVector3R8CVector3	config/GMFE69/capsule_dispatch.json	research/drafts/GetExtents.800c555c.cpp
 49	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp

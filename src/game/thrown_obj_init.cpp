@@ -1,13 +1,15 @@
-// CThrownObject::CleanUp (a fragment of thrown_obj.cpp): free the local and
-// world bounding spheres (once when they are the same) and clear the sphere
-// and collider pointers. The names come from the mangled symbols;
+// CThrownObject::Init (a fragment of thrown_obj.cpp from 0x800b5fec): runs
+// the static object's Init, takes two values from the thrown-object record
+// (+92 as a float, +76 as a flag), clears the two vectors at +648 and +680 and
+// the state flags, sets the bounding sphere's radius to the longest of the
+// mesh frame's three axes and its centre to the frame's centre, uses it as
+// the local bounding volume and a copy as the world one, and clears the
+// pending values and sound. The names come from the mangled symbols;
 // ISceneNode's virtual functions follow __vt__13CThrownObject (slots through
 // GetWorldBoundingVolume, +48 as a placeholder) and CThrownObject declares
 // OnCollision first so this file does not emit its vtable. BSGO_Basic keeps
-// its three words before its vtable pointer, as the constructors store them;
-// its first virtual entry is a placeholder. The members are inferred from
-// offsets (the mesh-constructor that sets the orientation reads constants
-// pooled with the rest of the file and is not part of these fragments).
+// its three words before its vtable pointer, as the constructors store them.
+// The members and the mesh, frame and record views are inferred from offsets.
 class CCollision;
 class CStaticMesh;
 class IVolume;
@@ -31,16 +33,12 @@ extern inline float sqrtf(float x)
 }
 }
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
-
+/* inferred: a CVector3 view without constructors (a plain aggregate, as in
+   impact_dtor.cpp) and with the plain Length body; with the shared header's
+   constructors the compiler does not fuse the axis lengths' squares */
 class CVector3 {
 public:
-    CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    float Length() const { float a = x; return std::sqrtf(a * a + y * y + this->z * this->z); }
+    float Length() const { return std::sqrtf(x * x + y * y + z * z); }
 
     float x;
     float y;
@@ -138,7 +136,6 @@ public:
     virtual void unknown08();
 };
 
-void FreeSphereVolume(void*);
 
 class CThrownObject : public CStaticObject {
 public:
@@ -186,19 +183,6 @@ public:
     int m_value2f8;
     int m_value2fc;
 };
-
-void CThrownObject::CleanUp() {
-    void* local = GetLocalBoundingVolume((EVolumeType)3);
-    void* world;
-
-    if (local)
-        FreeSphereVolume(local);
-    world = GetWorldBoundingVolume((EVolumeType)3);
-    if (world && world != local)
-        FreeSphereVolume(world);
-    m_sphere = 0;
-    m_lastCollider = 0;
-}
 
 void CThrownObject::Init() {
     ((CStaticObject*)this)->Init();
