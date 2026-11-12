@@ -40,8 +40,8 @@ public:
     }
     void Negate(const CVector3& v) {
         d.c.x = -v.d.c.x;
-        d.c.z = -v.d.c.z;
         d.c.y = -v.d.c.y;
+        d.c.z = -v.d.c.z;
     }
     float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
     float LengthSq() const { return d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z; }
@@ -121,9 +121,9 @@ public:
     CVector3 m_center;
 };
 
-// Value-returning inlines on the half-axis products (and one corner difference)
-// give the original's FPR colouring of a, b and c.x (loop vec4).
-inline float SubV(float a, float b) { return a - b; }
+// Value-returning inlines on the half-axis products
+// give the original's FPR colouring of a, b and c.x (loop vec4). Statement order
+// (corner.x finished, then the negated normal, then c.z) sets the rest (loop vec6).
 inline float MulV(float a, float b) { return a * b; }
 int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag) const {
     CVector3 a;
@@ -137,20 +137,20 @@ int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag
     b.d.c.z = MulV(m_half[1], m_axes[1].d.c.z);
     c.d.c.x = MulV(m_half[2], m_axes[2].d.c.x);
     c.d.c.y = MulV(m_half[2], m_axes[2].d.c.y);
-    c.d.c.z = MulV(m_half[2], m_axes[2].d.c.z);
     CVector3 point;
     CVector3 corner = m_center;
-    corner.d.c.x -= a.d.c.x;
-    corner.d.c.y = SubV(corner.d.c.y, a.d.c.y);
-    corner.d.c.z -= a.d.c.z;
-    corner.d.c.x -= b.d.c.x;
-    corner.d.c.y -= b.d.c.y;
-    corner.d.c.z -= b.d.c.z;
-    corner.d.c.x -= c.d.c.x;
-    corner.d.c.y -= c.d.c.y;
-    corner.d.c.z -= c.d.c.z;
     SClsnContact contact;
+    corner.d.c.x -= a.d.c.x;
+    corner.d.c.x -= b.d.c.x;
+    corner.d.c.x -= c.d.c.x;
     contact.m_vector0.Negate(plane.m_normal);
+    c.d.c.z = MulV(m_half[2], m_axes[2].d.c.z);
+    corner.d.c.y -= a.d.c.y;
+    corner.d.c.y -= b.d.c.y;
+    corner.d.c.y -= c.d.c.y;
+    corner.d.c.z -= a.d.c.z;
+    corner.d.c.z -= b.d.c.z;
+    corner.d.c.z -= c.d.c.z;
     contact.m_separation = plane.Project2(corner, point);
     contact.m_vector1 = point;
 #define STEP(v, op) \
