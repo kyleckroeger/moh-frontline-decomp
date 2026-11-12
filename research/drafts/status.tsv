@@ -104,7 +104,6 @@ consistent	0.928	0.988	1183	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	
 consistent	1.000	1.000	26	424	Draw__10CAnimMorphFR12CDrawContext	True	0	0	research/drafts/Draw.800653c0.cpp
 consistent	1.000	1.000	41	784	Init__10CCDBObjectFP3CDB	True	0	0	research/drafts/Init.8007133c.cpp
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp
-code_exact	1.000	1.000	0	628	Draw__22CParticleSystemManagerFR12CDrawContext	True	0	0	research/drafts/Draw.8007eabc.cpp
 consistent	0.987	0.965	31	608	Init__NotTheVirtualOne__19CBulletDecalManagerFv	True	0	0	research/drafts/Init.800839e4.cpp
 consistent	1.000	1.000	14	376	Rotate__7CMatrixF8CVector3f	True	0	0	research/drafts/Rotate.800904e8.cpp
 consistent	0.995	1.000	8	1480	Draw__14CSoldierObjectFR12CDrawContext	True	0	0	research/drafts/Draw.800ac9e4.cpp
