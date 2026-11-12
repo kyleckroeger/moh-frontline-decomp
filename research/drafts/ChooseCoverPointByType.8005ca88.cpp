@@ -158,9 +158,9 @@ CCoverPoint* CAIFilterGlobal::ChooseCoverPointByType(const _PropBSPLeaf* leaf, c
     float dy;
     float dz;
     float closest;
-    dy = enemy.y + -origin.y;
-    dx = enemy.x + -origin.x;
-    dz = enemy.z + -origin.z;
+    dy = enemy.y - origin.y;
+    dx = enemy.x - origin.x;
+    dz = enemy.z - origin.z;
     threatDistance = dx * dx + dy * dy + dz * dz;
     if (threatDistance < 36.0f)
         return 0;

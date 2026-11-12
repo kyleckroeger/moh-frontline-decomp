@@ -236,6 +236,8 @@ static inline CAIFilterObject* GetFilter(ISceneNode* node) {
 #define ARG(n) (*stack - (count - (n)))
 #define CheckVisionLine CAIFilterGlobal::CheckVisionLineToEnvironment
 
+// Draft workaround (not landable as is): ArgObject only steers registers; written out as
+// '*(BSObjectView**)ARG(2)' the function is 194 lines off (filter/ARG(2) offset ranks).
 static inline BSObjectView* ArgObject(int** stack, int count, int n) {
     return *(BSObjectView**)(*stack - (count - n));
 }
@@ -252,7 +254,8 @@ void BIFunc_GetObjInfo(int** stack, void* object) {
     float fresult;
     float value;
     int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
-    iresult = (int)(filter = 0);
+    filter = 0;
+    iresult = 0;
     basic = 0;
     node = 0;
     fresult = 0.0f;

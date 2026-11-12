@@ -31,7 +31,7 @@ real_lines	size	address	function	compile_settings_from	draft
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
 14	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
-10	6920	8006a71c	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	config/GMFE69/cdbgeom.json	research/drafts/TestCollision.8006a71c.cpp
+7	6920	8006a71c	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	config/GMFE69/cdbgeom.json	research/drafts/TestCollision.8006a71c.cpp
 25	2436	800ce450	CheckForObstructions__10CExplosionFR10ISceneNode	config/GMFE69/bulletfactory_projectile_pool.json	research/drafts/CheckForObstructions.800ce450.cpp
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
 25	712	801503b4	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	config/GMFE69/aramalloc_alloc.json	research/drafts/ARAM_alloc_node.801503b4.cpp
@@ -54,7 +54,7 @@ real_lines	size	address	function	compile_settings_from	draft
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
 92	900	800dc8c4	__ct__6CSceneFv	config/GMFE69/scene_dtor.json	research/drafts/__ct__6CSceneFv.800dc8c4.cpp
-94	1056	800516b4	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	config/GMFE69/AISplinePath_ctor.json	research/drafts/GetClosestParameter.800516b4.cpp
+32	1056	800516b4	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	config/GMFE69/AISplinePath_ctor.json	research/drafts/GetClosestParameter.800516b4.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp

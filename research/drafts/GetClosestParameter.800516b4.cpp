@@ -48,8 +48,8 @@ public:
 /* inferred: the cubic, its derivative and its second derivative at t, as
    Expand and ExpandDerivative (in-place vector operations) */
 inline void Position(const CVector3* c, float t, CVector3& out) {
-    out.y = t * c[0].y;
     out.x = t * c[0].x;
+    out.y = t * c[0].y;
     out.z = t * c[0].z;
     out += c[1];
     out *= t;
@@ -59,8 +59,8 @@ inline void Position(const CVector3* c, float t, CVector3& out) {
 }
 
 inline void Derivative(const CVector3* c, float t, CVector3& out) {
-    out.y = 1.5f * t * c[0].y;
     out.x = 1.5f * t * c[0].x;
+    out.y = 1.5f * t * c[0].y;
     out.z = 1.5f * t * c[0].z;
     out += c[1];
     out *= 2.0f * t;
@@ -68,8 +68,8 @@ inline void Derivative(const CVector3* c, float t, CVector3& out) {
 }
 
 inline void SecondDerivative(const CVector3* c, float t, CVector3& out) {
-    out.y = 3.0f * t * c[0].y;
     out.x = 3.0f * t * c[0].x;
+    out.y = 3.0f * t * c[0].y;
     out.z = 3.0f * t * c[0].z;
     out += c[1];
     out *= 2.0f;
@@ -94,8 +94,8 @@ float CAISplinePathSegment::GetClosestParameter(float start, const CAIFilterReal
         p.z -= target.z;
         Derivative(m_coefficients, t, d);
         SecondDerivative(m_coefficients, t, dd);
-        num = p.y * d.y + p.x * d.x + p.z * d.z;
-        den = d.y * d.y + d.x * d.x + d.z * d.z + (p.y * dd.y + p.x * dd.x + p.z * dd.z);
+        num = p.x * d.x + p.y * d.y + p.z * d.z;
+        den = d.x * d.x + d.y * d.y + d.z * d.z + (p.x * dd.x + p.y * dd.y + p.z * dd.z);
         if (!((float)__fabs(den) > (float)__fabs(0.0001f * num)))
             break;
         next = t - num / den;
@@ -111,18 +111,18 @@ float CAISplinePathSegment::GetClosestParameter(float start, const CAIFilterReal
     p.x -= target.x;
     p.y -= target.y;
     p.z -= target.z;
-    bestDistance = p.y * p.y + p.x * p.x + p.z * p.z;
+    bestDistance = p.x * p.x + p.y * p.y + p.z * p.z;
     float a = 1.0f + m_step;
     float b = 16.0f * m_step + start;
     float* end = a < b ? &a : &b;
-    for (t = start + m_step; t < *end; t += m_step) {
-        Position(m_coefficients, t, p);
+    for (float u = start + m_step; u < *end; u += m_step) {
+        Position(m_coefficients, u, p);
         p.x -= target.x;
         p.y -= target.y;
         p.z -= target.z;
-        distance = p.y * p.y + p.x * p.x + p.z * p.z;
+        distance = p.x * p.x + p.y * p.y + p.z * p.z;
         if (distance < bestDistance) {
-            best = t;
+            best = u;
             bestDistance = distance;
         }
     }

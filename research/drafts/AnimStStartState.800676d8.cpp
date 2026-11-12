@@ -109,18 +109,17 @@ extern "C" void* memset(void*, int, unsigned long);
 extern "C" void* memcpy(void*, const void*, unsigned long);
 extern "C" void AnimChanStopByStateIndex(AnimObjHdr_t*, AnimChannel_t*, unsigned short);
 
-inline unsigned short _St(AnimStateOwnerView* o, int k) { return o->slots[k].state; }
 /* inferred: a state id no slot uses, counting down from 0xFFFE */
 inline unsigned short _AnimStGetUnusedStateID(AnimStateOwnerView* owner) {
     unsigned int id = 0xFFFE;
     bool unique;
     do {
-        AnimStateOwnerView* o = owner;
+        AnimStateSlotView* slots = owner->slots;
         unique = true;
-        if (_St(o, 0) == (unsigned short)id) { unique = false; id--; }
-        else if (_St(o, 1) == (unsigned short)id) { unique = false; id--; }
-        else if (_St(o, 2) == (unsigned short)id) { unique = false; id--; }
-        else if (_St(o, 3) == (unsigned short)id) { unique = false; id--; }
+        if ((unsigned short)id == slots[0].state) { unique = false; id--; }
+        else if ((unsigned short)id == slots[1].state) { unique = false; id--; }
+        else if ((unsigned short)id == slots[2].state) { unique = false; id--; }
+        else if ((unsigned short)id == slots[3].state) { unique = false; id--; }
     } while (!unique);
     return id;
 }
