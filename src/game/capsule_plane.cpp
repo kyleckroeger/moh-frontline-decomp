@@ -182,44 +182,37 @@ class CAnimatedVolume : public CVolSphere {
 public:
 };
 
-// Inferred: value-returning add and subtract helpers (the extents use them
-// for every term).
-inline float SubV(float a, float b) { return a - b; }
-inline float AddV(float a, float b) { return a + b; }
-
 void CVolCapsule::GetExtents(CVector3& min, CVector3& max) const {
     float radius = m_radius + CONTACT_EPSILON;
     {
-        CVector3 a = m_axis.m_start;
-        float ax = SubV(a.x, radius);
-        float ay = SubV(a.y, radius);
-        float az = SubV(a.z, radius);
-        CVector3 b = m_axis.m_end;
-        float bx = SubV(b.x, radius);
-        float by = SubV(b.y, radius);
-        float bz = SubV(b.z, radius);
-        ax = ax < bx ? ax : bx;
-        min.x = ax;
-        ay = ay < by ? ay : by;
-        min.y = ay;
-        az = az < bz ? az : bz;
-        min.z = az;
+        CVector3 start = m_axis.m_start;
+        CVector3 s;
+        s.x = start.x - radius;
+        s.y = start.y - radius;
+        s.z = start.z - radius;
+        CVector3 end = m_axis.m_end;
+        CVector3 e;
+        e.x = end.x - radius;
+        e.y = end.y - radius;
+        e.z = end.z - radius;
+        min.x = s.x < e.x ? s.x : e.x;
+        min.y = s.y < e.y ? s.y : e.y;
+        min.z = s.z < e.z ? s.z : e.z;
     }
     {
-        CVector3 a = m_axis.m_start;
-        float ax = AddV(a.x, radius);
-        float ay = AddV(a.y, radius);
-        float az = AddV(a.z, radius);
-        CVector3 b = m_axis.m_end;
-        float bx = AddV(b.x, radius);
-        float by = AddV(b.y, radius);
-        float bz = AddV(b.z, radius);
-        ax = ax > bx ? ax : bx;
-        max.x = ax;
-        ay = ay > by ? ay : by;
-        max.y = ay;
-        az = az > bz ? az : bz;
-        max.z = az;
+        CVector3 start = m_axis.m_start;
+        CVector3 s;
+        s.x = start.x + radius;
+        s.y = start.y + radius;
+        s.z = start.z + radius;
+        CVector3 end = m_axis.m_end;
+        CVector3 e;
+        e.x = end.x + radius;
+        e.y = end.y + radius;
+        e.z = end.z + radius;
+        max.x = s.x > e.x ? s.x : e.x;
+        max.y = s.y > e.y ? s.y : e.y;
+        max.z = s.z > e.z ? s.z : e.z;
     }
 }
 

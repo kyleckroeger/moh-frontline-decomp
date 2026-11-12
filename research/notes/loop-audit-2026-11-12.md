@@ -99,3 +99,9 @@ left for the maintainer: reverting them loses their matches.
   variable to reuse; plain forms tested in scratch/loop3/zero2/var/): PickUp (68 inlined), PATHI fadein (target reuse
   11; only reusing the dead `index` param as the char flag gets 4), SendMessages (50: loop-carried vars are one web),
   init_free (alarm 9, pumhandler 11: `next` gets its own li), FindClasses (-1 follows the rule too: 2, li+li vs li+mr).
+- (undo1) CVolCapsule::GetExtents: `SubV`/`AddV` removed. Each block computes the two moved endpoints field by field
+  into plain CVector3 locals (`CVector3 start = m_axis.m_start; CVector3 s; s.x = start.x - radius; ...; CVector3 end
+  = m_axis.m_end; CVector3 e; ...`) and selects straight into the output (`min.x = s.x < e.x ? s.x : e.x`). The struct
+  fields behave like the inline return temps (result kept in the term's register). Unit verifies, image identical.
+  Near misses: `CVector3 s(start.x - radius, ...)` constructor 32 (arguments evaluated z before y), mixed 20-28, all
+  endpoint copies declared first 8, no endpoint copies 66. Drafts: scratch/loop3/undo1/cap/.
