@@ -1,3 +1,16 @@
+// A fragment of cdbobject.cpp (0x8007133c): CCDBObject::Init. It keeps the
+// CDB image, rebases the image's pointers (tris, tri groups, leaves, branch
+// nodes, materials, then each group's tris and their vertices, each leaf's
+// groups and each branch node's children) by the image's address, and sets
+// the object's bounds from the image's box: the half extents along the world
+// axes are the box size weighted by the absolute rotation rows (rows 0 and 1
+// halved in float, row 2 in double), and the bounds are the position minus
+// and plus them; an image without leaves gets empty bounds. The file name is
+// this project's; the original record is cdbobject.cpp. CCDBObject, CDB and
+// offsetPtr are named by the mangled symbols; the CDB image layout, the
+// member names and the base class view are inferred from offsets. The
+// position is read into locals before the bounds are stored and read again
+// for the upper bound (the stores may alias it), as the original does.
 inline double fabs(double x) { return __fabs(x); }
 class CDBNode;
 class CDBMaterial;
@@ -48,15 +61,7 @@ public:
 
 template <class T> void offsetPtr(T*& pointer, int base);
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
-
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class IVolume {
 public:
@@ -73,10 +78,6 @@ public:
     CVector3 m_max;
 };
 
-// DRAFT NOTE (loop knots1, 2026-11-12): the size components and position.x are read
-// straight from d (no locals) while py/pz/qx/qy/qz stay locals: that puts sz and the
-// 0.5 double in the original's callee FPRs (real 41 -> 22). Left: a volatile rotation
-// (px/py/pz f0/f1/f2 vs ours f2/f0/f1, |r1.y|, |r0.x|) in the first block.
 void CCDBObject::Init(CDB* db) {
     m_db = db;
     int base = (int)m_db;
@@ -110,34 +111,39 @@ void CCDBObject::Init(CDB* db) {
     }
     if (m_db->m_leafCount > 0) {
         CDB* d = m_db;
-        float py;
-        float qy;
-        float qx;
-        float pz;
-        float z;
-        float qz;
-        float y;
         float x;
+        float y;
+        float z;
+        float px;
+        float py;
+        float pz;
+        float qx;
+        float qy;
+        float qz;
+        px = d->m_position.x;
         py = d->m_position.y;
         pz = d->m_position.z;
         x = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].x)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].x)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].x));
         y = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].y)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].y)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].y));
         z = d->m_size.x * (0.5f * (float)fabs(d->m_rows[0].z)) + d->m_size.y * (0.5f * (float)fabs(d->m_rows[1].z)) + d->m_size.z * (0.5 * fabs(d->m_rows[2].z));
-        m_min.d.v[0] = d->m_position.x - x;
-        m_min.d.v[1] = py - y;
-        m_min.d.v[2] = pz - z;
+        m_min.x = px - x;
+        m_min.y = py - y;
+        m_min.z = pz - z;
         qx = d->m_position.x;
         qy = d->m_position.y;
         qz = d->m_position.z;
-        m_max.d.v[0] = qx + x;
-        m_max.d.v[1] = qy + y;
-        m_max.d.v[2] = qz + z;
+        qx += x;
+        qy += y;
+        qz += z;
+        m_max.x = qx;
+        m_max.y = qy;
+        m_max.z = qz;
     } else {
-        m_min.d.v[2] = 0.0f;
-        m_min.d.v[1] = 0.0f;
-        m_min.d.v[0] = 0.0f;
-        m_max.d.v[2] = 0.0f;
-        m_max.d.v[1] = 0.0f;
-        m_max.d.v[0] = 0.0f;
+        m_min.z = 0.0f;
+        m_min.y = 0.0f;
+        m_min.x = 0.0f;
+        m_max.z = 0.0f;
+        m_max.y = 0.0f;
+        m_max.x = 0.0f;
     }
 }

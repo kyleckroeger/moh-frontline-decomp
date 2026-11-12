@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 144124, "differs": 10144, "exact": 4472, "verified": 1246816},
+ "verified_units": 1254,
+ "function_bytes_by_status": {"consistent": 143340, "differs": 10144, "exact": 4472, "verified": 1247600},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1307,7 +1307,7 @@
  [2147946860, 256, "TestCollision__10CCDBObjectCFRC7CVolBoxR10CCollisionb", "verified", "src/game/cdbobject_csg.cpp"],
  [2147947116, 116, "TestCollision__10CCDBObjectCFRC7IVolumeR10CCollisionb", "verified", "src/game/cdbobject_csg.cpp"],
  [2147947232, 92, "__dt__10CCDBObjectFv", "verified", "src/game/cdbobject_dtor.cpp"],
- [2147947324, 784, "Init__10CCDBObjectFP3CDB", "consistent", "research/drafts/Init.8007133c.cpp"],
+ [2147947324, 784, "Init__10CCDBObjectFP3CDB", "verified", "src/game/cdbobject_init.cpp"],
  [2147948108, 8, "DisablePassThru__10CCDBObjectFb", "verified", "src/game/cdbobject_ctor.cpp"],
  [2147948116, 68, "__ct__10CCDBObjectFRC10CCDBObject", "verified", "src/game/cdbobject_ctor.cpp"],
  [2147948184, 32, "__ct__10CCDBObjectFP3CDB", "verified", "src/game/cdbobject_ctor.cpp"],

@@ -1253,7 +1253,8 @@
     "objcreate_german.json",
     "font_centeredf.json",
     "proxtrig_messages.json",
-    "thrown_obj_init.json"
+    "thrown_obj_init.json",
+    "cdbobject_init.json"
   ],
   "progress": {
     "code_bytes": 1414572,
