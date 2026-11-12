@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1238,
- "function_bytes_by_status": {"consistent": 176340, "differs": 10144, "exact": 5748, "verified": 1213324},
+ "function_bytes_by_status": {"consistent": 175376, "differs": 10144, "exact": 5748, "verified": 1214288},
  "data_bytes_owned": 723882,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1269,7 +1269,7 @@
  [2147926948, 132, "Length__8CVector3CFv", "verified", "src/game/cdbgeom_vector.cpp"],
  [2147927080, 492, "TestCollision__12CCDBTriangleCFRC15CAnimatedVolumeR10CCollisionPC6CDBTrib", "verified", "src/game/cdbgeom_sphere.cpp"],
  [2147927572, 492, "TestCollision__12CCDBTriangleCFRC10CVolSphereR10CCollisionPC6CDBTrib", "verified", "src/game/cdbgeom_sphere.cpp"],
- [2147928064, 964, "GetNearestPoint__12CCDBTriangleCF8CVector3PfPf", "consistent", "research/drafts/GetNearestPoint.8006c800.cpp"],
+ [2147928064, 964, "GetNearestPoint__12CCDBTriangleCF8CVector3PfPf", "verified", "src/game/cdbgeom_sphere.cpp"],
  [2147929028, 3844, "TestCollision__12CCDBTriangleCFRC7CVolBoxR10CCollisionPC6CDBTrib", "verified", "src/game/cdbgeom_triangle_line.cpp"],
  [2147932872, 1424, "TestCollision__12CCDBTriangleCFRC6CLine3R10CCollisionPC6CDBTrib", "verified", "src/game/cdbgeom_triangle_line.cpp"],
  [2147934296, 88, "__ct__12CCDBTriangleFRC6CDBTri", "verified", "src/game/cdbgeom_triangle_ctor.cpp"],

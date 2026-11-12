@@ -41,23 +41,29 @@
     {
       "name": ".text",
       "address": "0x8006c428",
-      "size": 984,
+      "size": 1948,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b630",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012830",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetNearestPoint__12CCDBTriangleCF8CVector3PfPf",
+      "address": "0x8006c800",
+      "size": 964,
+      "binding": 1
+    },
     {
       "name": "TestCollision__12CCDBTriangleCFRC15CAnimatedVolumeR10CCollisionPC6CDBTrib",
       "address": "0x8006c428",
@@ -75,7 +81,6 @@
     "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
     "CONTACT_EPSILON": "0x80350ba8",
     "GetCenter__10CVolSphereCFv": "0x800cba30",
-    "GetNearestPoint__12CCDBTriangleCF8CVector3PfPf": "0x8006c800",
     "GetRadius__10CVolSphereCFv": "0x800cba28"
   },
   "undefined_in_discarded_code": [],
@@ -115,6 +120,12 @@
       "offset": 24,
       "size": 4,
       "address": "0x8034fd64"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034fd6c"
     }
   ]
 }
