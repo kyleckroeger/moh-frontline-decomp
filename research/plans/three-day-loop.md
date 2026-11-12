@@ -19,14 +19,14 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.47% (1,251,412 bytes) at 0ae3ff10, +32,140 this run. Landing commits: 35.
-- Lanes (2026-11-12 02:20): geometry, airender and systems lanes dry;
-  the four slots run cross-lane work: vec2 (constructor-free CVector3 on geometry), vec3
-  (UpdateBoundingBox, RenderSystem with an operator[] pin), scripting 11th (structural
-  scripting rows), tool1 (port_unit kept_span fix so manifests need no hand trims). Usage limit
-  stopped all agents 00:10-00:40 on 11-12; resumed with SendMessage. Largest landings:
-  TriggerEnterAndLeaveMessages 3,480 (72ffb0fc), CCompartment::Init 2,628, CImpact::Visit 2,512.
-  Data step 2 by data1: undefined 197 -> 82.
+- Verified: 88.56% (1,252,688 bytes) at 2829d872, +33,416 this run. Landing commits: 37.
+- Lanes (2026-11-12 02:46): geometry, airender and systems lanes dry;
+  the four slots run cross-lane work: vec4 (TestCollision(CPlane), Orthonormalize), vec5
+  (UpdateBoundingBox, RenderSystem), struct5 (TLT_LoadFromRepository, GetClosestWaypointByType),
+  fresh1 (rows untouched this run). Usage limit stopped all agents 00:10-00:40 on 11-12.
+  Largest landings: TriggerEnterAndLeaveMessages 3,480, CCompartment::Init 2,628,
+  CImpact::Visit 2,512. port_unit now drafts extab trims itself (9d94f2c9). Data step 2:
+  undefined 197 -> 82.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -81,6 +81,15 @@ multiplayer not at all. Every landing keeps the complete image identical.
      (and `float* operator[](int)` on an inferred 3x3 view class, `CMatrix33`). The coordinator
      let agents use it (RenderSystem structural 943 -> 644 alias-free); confirm, and whether an
      inferred 3x3 class is acceptable if Rising Sun has no real name for it.
+  11. **Dead stack copies the original visibly keeps.** DoTargetCheck is 2 lines off with a
+     natural form (bool return, attested by bsbifunc_schedules.cpp). The rest is two dead copies
+     of the other node's position. They survive only through a declined identity `Copy()` or a
+     constructor that writes through a cast of `this` (which changes landed AIFilter_queries).
+     Rising Sun has the same copies from a dead `a = otherPosition`. Is there an accepted form?
+  12. **Duplicated condition, landed (fc2de588).** DetermineNewObjectivePosition (1,276) matches
+     only with IsClear testing the height-1 distance twice (`d < a[1] && d < a[1] && ...`),
+     following earlier landed redundant tests (GiveEnemyGrenadeWeapon, AddBulletDecal). Revert
+     fc2de588 if you see it as code written only to steer output.
 - **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
   BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
   (q3), DrawTextCentered 416 (q8). Total 7,616.
