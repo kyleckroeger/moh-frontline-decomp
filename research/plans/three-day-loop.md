@@ -19,9 +19,17 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 86.19% (1,219,272 bytes) at 4577b499. Landings this run: 0.
-- Lanes: geometry, scripting, airender, systems: first agents launched 2026-11-11.
-- Waiting on the maintainer: nothing.
+- Verified: 86.52% (1,223,848 bytes) at 9de067ca, +4,576 bytes. Landings this run: 9
+  (systems 4, scripting 4, geometry 1; airender 0 so far).
+- Lanes (2026-11-11 21:37): geometry 1st agent, scripting 2nd (1st landed 0, parked
+  AddAmo, CThrownObject::Init, BIFunc_PlayerScreenFlash, TranslateFromScript), airender
+  1st, systems 2nd (1st landed 4).
+- Waiting on the maintainer: **is the `.bss` size-view form acceptable?** A fragment
+  defines its file's `.bss` objects in original order with exact sizes (plain views, no
+  constructors, no `__sinit`, marked inferred) and ports with `--pool .bss`. Not listed as
+  accepted or declined in docs/Remaining.md; it adds no storage the original lacks, so the
+  coordinator let agents continue. Every such commit has "(.bss pooled)" in its subject so
+  it can be found and reverted (`git log --grep '.bss pooled'`).
 
 ## Hard rules (for the coordinator and every agent)
 
