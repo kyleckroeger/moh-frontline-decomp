@@ -1,0 +1,215 @@
+{
+  "id": "objcreate_collvol",
+  "source": "src/game/objcreate_collvol.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "on",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8003ed10",
+      "size": 1236,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a4cc",
+      "size": 8,
+      "type": 1,
+      "linked_offset": 24,
+      "linked_size": 32
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800114e0",
+      "size": 12,
+      "type": 1,
+      "linked_offset": 36,
+      "linked_size": 48
+    }
+  ],
+  "functions": [
+    {
+      "name": "CreateCollisionVolume__FP20TriggerObject_structi",
+      "address": "0x8003ed10",
+      "size": 1236,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CleanUp__13CPlayerObjectFv": "0x800a6314",
+    "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "CreatePlayer__FP20TriggerObject_structi": "0x8003c688",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DestroyBSObject__FP8BSObject": "0x8003a59c",
+    "Destroy__11BSGO_PlayerFv": "0x8003c38c",
+    "GetEmbeddedHitReactionInfo__10BSGO_BasicFv": "0x800290a8",
+    "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetPlayersFinishedLevelHealth__10CShellMenuFii": "0x800e65fc",
+    "GetProximityData__11BSGO_PlayerFv": "0x8003bf80",
+    "GetSceneNode__11BSGO_PlayerFv": "0x8003bf78",
+    "GetScriptData__11BSGO_PlayerFv": "0x8003bf70",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "InitAI__13CPlayerObjectFv": "0x800a6338",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__16CCollisionVolumeFP7IVolumeP7CMatrix7EClsnId": "0x80098200",
+    "NonVisDestructFarthestSoldiers__Fi": "0x8003bf88",
+    "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
+    "SetCenter__10CVolSphereF8CVector3": "0x800cba4c",
+    "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
+    "SetDepth__7CVolBoxFf": "0x800c5258",
+    "SetHeight__7CVolBoxFf": "0x800c5268",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetRadius__10CVolSphereFf": "0x800cba44",
+    "SetWidth__7CVolBoxFf": "0x800c5278",
+    "ShouldIUsePlayersFinishedLevelData__10CShellMenuFii": "0x800e659c",
+    "__ct__16CCollisionVolumeFv": "0x800982b8",
+    "__vt__10BSGO_Basic": "0x8018334c",
+    "__vt__10CVolSphere": "0x801896b4",
+    "__vt__17BSGO_Destructable": "0x80183374",
+    "__vt__7CVolBox": "0x801894f4",
+    "__vt__7IVolume": "0x80181e28",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_maxActiveSoldiers": "0x8034e8a0",
+    "g_numActiveSoldiers": "0x8034e89c",
+    "g_pBoxList": "0x8034e890",
+    "g_pGermanList": "0x8034e894",
+    "g_pPlayers": "0x801dddfc",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "__RTTI__10BSGO_Basic": "0x8034da28",
+    "__RTTI__11BSGO_Player": "0x8034da30",
+    "__vt__11BSGO_Player": "0x801832cc"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "__RTTI__10BSGO_Basic",
+    "__RTTI__11BSGO_Player"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "g_maxActiveSoldiers",
+    "g_numActiveSoldiers",
+    "g_pBoxList",
+    "g_pGermanList",
+    "s_ClassInit__7CMatrix"
+  ],
+  "original_file": "objcreate.cpp",
+  "original_file_index": 1440,
+  "file_duplicates": [
+    "CreatePlayer__FP20TriggerObject_structi",
+    "Destroy__11BSGO_PlayerFv",
+    "NonVisDestructFarthestSoldiers__Fi",
+    "__RTTI__10BSGO_Basic",
+    "__RTTI__11BSGO_Player",
+    "__vt__11BSGO_Player"
+  ],
+  "pooled_sections": [
+    ".rodata",
+    ".bss",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 12,
+      "address": "0x801a1120"
+    },
+    {
+      "section": ".rodata",
+      "offset": 108,
+      "size": 12,
+      "address": "0x8016ee1c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 120,
+      "size": 11,
+      "address": "0x8016ee28"
+    },
+    {
+      "section": ".rodata",
+      "offset": 604,
+      "size": 84,
+      "address": "0x8016f00c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 688,
+      "size": 93,
+      "address": "0x8016f060"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f75c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f768"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f7a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x8034f78c"
+    }
+  ],
+  "stripped_sections": [
+    ".data",
+    ".sdata"
+  ]
+}

@@ -117,7 +117,6 @@ consistent	0.979	1.000	108	2308	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CColl
 consistent	1.000	1.000	13	1472	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	True	0	0	research/drafts/TestCollision.800c3210.cpp
 consistent	0.827	0.000	30	152	InitClass__11CStaticMeshFP11CRenderListP7CScreen	True	0	0	research/drafts/InitClass.800f2478.cpp
 consistent	0.950	1.000	2	80	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	True	0	0	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
-consistent	0.901	0.947	257	1236	CreateCollisionVolume__FP20TriggerObject_structi	False	0	0	research/drafts/objcreate_create.cpp
 consistent	0.724	0.976	417	1732	CreateGerman__FP20TriggerObject_structib	False	0	0	research/drafts/objcreate_create.cpp
 consistent	0.868	1.000	290	1228	BSInitBIFuncs__Fv	True	0	0	research/drafts/bsbifunc_setup.cpp
 consistent	0.982	1.000	None	224	__sinit_buddy_cpp	True	0	0	research/drafts/__sinit_buddy_cpp.80058e44.cpp

@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1248,
- "function_bytes_by_status": {"consistent": 160748, "differs": 10144, "exact": 4472, "verified": 1230192},
+ "verified_units": 1249,
+ "function_bytes_by_status": {"consistent": 159512, "differs": 10144, "exact": 4472, "verified": 1231428},
  "data_bytes_owned": 724048,
  "data_bytes_total": 1976252,
  "functions": [
@@ -677,7 +677,7 @@
  [2147737064, 3416, "CreateRootHierObject__FP20TriggerObject_structi", "consistent", "research/drafts/CreateRootHierObject.8003dde8.cpp"],
  [2147740480, 116, "DeleteSpecialThrownObject__FP13CThrownObject", "verified", "src/game/objcreate_thrown.cpp"],
  [2147740596, 348, "CreateSpecialThrownObject__FP20TriggerObject_structii", "verified", "src/game/objcreate_thrown.cpp"],
- [2147740944, 1236, "CreateCollisionVolume__FP20TriggerObject_structi", "consistent", "research/drafts/objcreate_create.cpp"],
+ [2147740944, 1236, "CreateCollisionVolume__FP20TriggerObject_structi", "verified", "src/game/objcreate_collvol.cpp"],
  [2147742180, 8, "SetScript__16CCollisionVolumeFP8BSObject", "verified", "src/game/objcreate_setscript_volume.cpp"],
  [2147742188, 1732, "CreateGerman__FP20TriggerObject_structib", "consistent", "research/drafts/objcreate_create.cpp"],
  [2147743920, 8, "SetScript__11CAnimObjectFP8BSObject", "verified", "src/game/objcreate_setscript_anim.cpp"],

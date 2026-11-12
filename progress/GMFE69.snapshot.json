@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1239036,
+    "matching_code_bytes": 1240272,
     "total_executable_code_bytes": 1414572,
-    "percent": 87.5908755439808,
+    "percent": 87.67825179630304,
     "categories": {
-      "reconstructed_game": 998400,
+      "reconstructed_game": 999636,
       "restored_library": 240636
     },
-    "matching_functions": 4878
+    "matching_functions": 4879
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -940,6 +940,7 @@
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
     "src/game/objcreate.cpp": "1210b348972c22fcf28832c8186fe4c4a2a1a5afa66b4ca761f79326320b28ca",
     "src/game/objcreate_bsgoplayer.cpp": "95319c17bf06f9212158b3730fd9a240e8c8bde962c8368d97b3bed50c115cdc",
+    "src/game/objcreate_collvol.cpp": "fb5ca7261ff47677ebd012139e2750a386fc21e57f0b610f318f73c21ee81b64",
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_createplayer.cpp": "a5f552e36a0182c3cafcd7865310e32a99a32605a61c6bdb5b6c61e52e2dc84d",
     "src/game/objcreate_destroy.cpp": "8398c89a1afae6ab4deb18269d385c9f784844708e928d7e7e76495da45b9aa6",
@@ -2448,6 +2449,7 @@
     "config/GMFE69/nubinit.json": "31d1c39b2e8b521619a8057a399755f5ef941d3d9949999f6b99a43d81fe87a2",
     "config/GMFE69/objcreate.json": "0ae863c651c76e20a941fd2a07f1aa364640faebf031400724bc055cacb7af80",
     "config/GMFE69/objcreate_bsgoplayer.json": "8e87fc6148e0cebde99bcec67b7acd975130aa1447d751361eb850d3c7ad9875",
+    "config/GMFE69/objcreate_collvol.json": "726ef6945553b4228844202f9715eb34a0ce4d1e478efa9f615c77588b230281",
     "config/GMFE69/objcreate_create.json": "78e2e45e1384d07383fe5d951cf87350f1fda306b6410c29996374f4627185db",
     "config/GMFE69/objcreate_createplayer.json": "1921e7de09b5cc146cc52d4fff1f7800c84e36462b3b915b05b037bf91bb4901",
     "config/GMFE69/objcreate_destroy.json": "c902e63b2eded191888ca82d6d3f76f8d703627ced0902a291e6dd4ba7c8d773",
@@ -2546,7 +2548,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "05c6c9d85df095c777c60a6b1dd17068c73ea22892785a9a326a46c2cf4506fa",
+    "config/GMFE69/project.json": "9ca81b941b88b39daf1e7086ed298d98beef286a453986b58e225b2e8ad58220",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -53969,6 +53971,45 @@
       "discarded_functions": [],
       "object_sha256": "5f5901c6f00e64d8d30aebceaf62765680e64d1b7d426bd8c93a644067b9c3a7",
       "linked_sha256": "2db2de614c45ab45bce01b3f7bb8e36b57782a455a5053c47516d1221415257f"
+    },
+    {
+      "id": "objcreate_collvol",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1236,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "70b3bdf54d7bd89a50e26c1a298a65bec31044f0b23a534b2587123f7c64264f",
+      "linked_sha256": "a525753796983519f5240fc04f8aa21391385c6b46eccc1e0dfd5cde370c8c7f"
     }
   ],
   "code_map": {
@@ -54108,13 +54149,6 @@
             "size": 3416,
             "kind": "function",
             "name": "CreateRootHierObject__FP20TriggerObject_structi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003ed10",
-            "size": 1236,
-            "kind": "function",
-            "name": "CreateCollisionVolume__FP20TriggerObject_structi",
             "evidence": "exception-index"
           },
           {
