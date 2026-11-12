@@ -19,22 +19,27 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.08% (1,245,996 bytes) at 39b69cd3, +26,724 this run. Landing commits: 31.
-- Lanes (2026-11-12 01:12): geometry, airender and systems lanes dry;
-  all four slots now run cross-lane work: scripting 9th agent (MechFollowPath, session-8
-  tricks), late2 (SweepExtents 7, AIStartCoverPointWalkToStored 3), struct1 (far-off
-  non-scripting drafts), sweep2 (Mul/FPR tricks on geometry knots). Usage limit stopped all
-  agents 00:10-00:40 on 11-12; resumed with SendMessage. Largest landing:
-  TriggerEnterAndLeaveMessages, 3,480 (72ffb0fc). Data step 2 by data1: undefined 197 -> 82.
+- Verified: 88.47% (1,251,412 bytes) at 0ae3ff10, +32,140 this run. Landing commits: 35.
+- Lanes (2026-11-12 02:20): geometry, airender and systems lanes dry;
+  the four slots run cross-lane work: vec2 (constructor-free CVector3 on geometry), vec3
+  (UpdateBoundingBox, RenderSystem with an operator[] pin), scripting 11th (structural
+  scripting rows), tool1 (port_unit kept_span fix so manifests need no hand trims). Usage limit
+  stopped all agents 00:10-00:40 on 11-12; resumed with SendMessage. Largest landings:
+  TriggerEnterAndLeaveMessages 3,480 (72ffb0fc), CCompartment::Init 2,628, CImpact::Visit 2,512.
+  Data step 2 by data1: undefined 197 -> 82.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
      constructors removed, and 12-byte placeholders for the compiler's destructor-chain
      records, all marked inferred, no `__sinit` compiled. Not listed in docs/Remaining.md;
      adds no storage the original lacks. Find them: `git log --grep '.bss pooled'`.
-  2. **Hand-trimmed manifests.** `buddy_destroy.json` and `debug_prof_register.json` had
-     their extab/extabindex slices cut by hand where port_unit kept foreign records (5ef1c047
-     since fixes one case in port_unit). Both pass the full build.
+  2. **Hand-trimmed manifests: largely answered by tooling.** 9d94f2c9 (agent tool1) makes
+     port_unit decide extab/extabindex ownership from relocations, so it now drafts the trims
+     agents had made by hand (8 of the 9 hand-trimmed units regenerate exactly; 102 of 105
+     changed drafts across all units match their committed manifests). Left for you: three
+     manifests (scene_cmppairs, impact_dtor, AIObject_visionseek) list a trailing dropped
+     record in stripped_objects where the tool trims it; same bytes, style only. attachobject_ctor
+     and matstack can't be regenerated from their manifest arguments (unrelated, pre-existing).
   3. **Dead branch inside a real function** to place a string the layout proves was created
      there (TLT_LoadLevelContentsFile, 1,060 bytes, code exact). Parked; not used.
   4. **Pointer-cast field spelling** for CStaticObjectFactory::Init's variant motion name:
@@ -63,6 +68,22 @@ multiplayer not at all. Every landing keeps the complete image identical.
      DTC_BEST0.cpp). FlagAsOccupied has the same shape. Treated as the declined "duplicate
      inline" form, so not landed. Also: late1's SweepExtents writes an inline's loop out in the
      caller; the coordinator accepted that as ordinary source (adds nothing).
+  9. **Gap functions (on HOLD) now gate code-exact work:** OPTION_PARSING_PLAYER::Play (1,868)
+     and UserInterface::Init (1,160) are code exact (drafts 39b69cd3) but their `...rodata.0`
+     offsets run past strings only stripped functions used. BSInitBIFuncs (1,228) is the same,
+     with an unlanded multiplayer function in the head. The PopUpMessageHandler constructor
+     (structural 1, relocation only) is the same: 188 bytes of unreferenced templates ahead.
+  10. **Vector locals kept in memory.** CParticleSystem::RenderSystem (4,532; structural
+     1069 -> 943, every stack slot right) and UpdateBoundingBox need 18 vector locals and a
+     matrix kept in memory with dead stores. MWCC 1.3.2 only does that when a named pointer or
+     reference is bound to them, an alias form that was declined. Is there an accepted form?
+     vec1 found one that adds no code: a member `float& operator[](int)` used once on the local
+     (and `float* operator[](int)` on an inferred 3x3 view class, `CMatrix33`). The coordinator
+     let agents use it (RenderSystem structural 943 -> 644 alias-free); confirm, and whether an
+     inferred 3x3 class is acceptable if Rising Sun has no real name for it.
+- **Code exact, waiting on an answer above (bytes):** PATH_event 1,884 (q5), Play 1,868 (q9),
+  BSInitBIFuncs 1,228 (q9), UserInterface::Init 1,160 (q9), TLT_LoadLevelContentsFile 1,060
+  (q3), DrawTextCentered 416 (q8). Total 7,616.
 ## Hard rules (for the coordinator and every agent)
 
 1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
