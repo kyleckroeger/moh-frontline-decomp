@@ -5,12 +5,8 @@ undefined	Multiply__7CMatrixFR7CMatrixRC7CMatrixRC7CMatrix	draft:particlesystem_
 undefined	PATHI_choosebeat__FP12PATHNODEVIEWP12PATHNODEVIEWPiPi	draft:PATHI_eventstart.8010ee50
 undefined	PSVECCrossProduct	unit:mtx
 undefined	PSVECNormalize	unit:mtx
-undefined	PauseLibraryInfo	unit:ispauselibrary
-undefined	PauseScreenInfo	unit:ispausegroup
 undefined	Render__15CUcodeRenderBinFR10CDmaPacketPv	unit:particlesystem
-undefined	ShellLibraryInfo	unit:isShellLibrary
 undefined	ShellMenuBlockItem__FPCv	unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku
-undefined	ShellScreenInfo	unit:isShellGroup
 undefined	__CARDIsWritable	unit:CARDDelete
 undefined	__dl__7CSpriteFPv	draft:ShellInit.800e752c
 undefined	__double_max	unit:ansi_fp
