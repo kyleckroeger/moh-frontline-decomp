@@ -325,7 +325,7 @@ static int FindIntersection(const CLine3& line, const CVolCapsule& capsule, floa
 
     CVector3 kU;
     float fInvLength;
-    float ay = fabs(kW.d.c.y); float ax = fabs(kW.d.c.x); if (ax >= ay) {
+    if (fabs(kW.d.c.x) >= fabs(kW.d.c.y)) {
         fInvLength = 1.0f / sqrtf(kW.d.c.x * kW.d.c.x + kW.d.c.z * kW.d.c.z);
         kU.d.v[0] = -kW.d.c.z * fInvLength;
         kU.d.c.y = 0.0f;
@@ -356,7 +356,7 @@ static int FindIntersection(const CLine3& line, const CVolCapsule& capsule, floa
     float fInv, fA, fB, fC, fDiscr, fRoot, fT, fTmp;
 
     if ((float)fabs(kD.d.c.z) >= 1.0f - 1e-05f) {
-        fA = fRadiusSqr - (kP.d.v[1] * kP.d.c.y + kP.d.c.x * kP.d.c.x);
+        fA = fRadiusSqr - (kP.d.c.x * kP.d.c.x + kP.d.c.y * kP.d.c.y);
         if (fA >= 0.0f) {
             fB = sqrtf(fA);
             afT[0] = fInvDLength * -(fB + kP.d.c.z);
@@ -366,9 +366,9 @@ static int FindIntersection(const CLine3& line, const CVolCapsule& capsule, floa
         return 0;
     }
 
-    fA = kD.d.c.y * kD.d.c.y + kD.d.c.x * kD.d.v[0];
-    fB = kP.d.v[1] * kD.d.c.y + kP.d.c.x * kD.d.c.x;
-    fC = kP.d.c.y * kP.d.v[1] + kP.d.c.x * kP.d.c.x - fRadiusSqr;
+    fA = kD.d.c.x * kD.d.c.x + kD.d.c.y * kD.d.c.y;
+    fB = kP.d.c.x * kD.d.c.x + kP.d.c.y * kD.d.c.y;
+    fC = kP.d.c.x * kP.d.c.x + kP.d.c.y * kP.d.c.y - fRadiusSqr;
     fDiscr = fB * fB - fA * fC;
     if (fDiscr < 0.0f)
         return 0;
@@ -376,8 +376,7 @@ static int FindIntersection(const CLine3& line, const CVolCapsule& capsule, floa
     int iQuantity = 0;
 
     if (fDiscr > 1e-05f) {
-        fDiscr = sqrtf(fDiscr);
-        fRoot = fDiscr;
+        fRoot = sqrtf(fDiscr);
         fInv = 1.0f / fA;
         fT = (-fB - fRoot) * fInv;
         fTmp = kP.d.c.z + fT * kD.d.v[2];

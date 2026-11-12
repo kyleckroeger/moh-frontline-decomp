@@ -105,3 +105,7 @@ left for the maintainer: reverting them loses their matches.
   fields behave like the inline return temps (result kept in the term's register). Unit verifies, image identical.
   Near misses: `CVector3 s(start.x - radius, ...)` constructor 32 (arguments evaluated z before y), mixed 20-28, all
   endpoint copies declared first 8, no endpoint copies 66. Drafts: scratch/loop3/undo1/cap/.
+- (undo1) CFont::DrawTextCenteredF: `Mul` still load-bearing (2 lines). Plain, compound, reassigned-viewWidth and
+  direct `g_viewport.m_width * ...` products, each with every declaration order of the five locals: the product's
+  operands come out viewWidth-first whenever its result shares viewWidth's register (the original has the conversion
+  first). Drafts: scratch/loop3/undo1/font/.
