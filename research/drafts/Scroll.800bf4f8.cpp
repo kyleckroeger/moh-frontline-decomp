@@ -250,21 +250,7 @@ void PopUpMessage::Scroll() {
             break;
         }
     } else {
-        onScreenTime = 5.0f;
-        screenLocX = 320;
-        screenLocY = 12.0f * g_screen.scale;
-        top = 12.0f * g_screen.scale;
-        bottom = 88.0f * g_screen.scale;
-        field16 = 4;
-        a = 35;
-        b = 35;
-        g = 35;
-        r = 35;
-        textSize = 22;
-        property = 1;
-        placement = 4;
-        available = 1;
-        memset(string, 0, 50);
+        Reset();
     }
 }
 

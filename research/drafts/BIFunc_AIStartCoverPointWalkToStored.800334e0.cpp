@@ -163,10 +163,9 @@ inline void BSRetB(int** s, bool v) {
     **s = v;
 }
 inline bool BSArgB(int** s) { return **s; }
-inline bool StartWalk(void* object, bool f) { return GetAIObject(object)->StartCoverPointWalkToStored(f); }
 void BIFunc_AIStartCoverPointWalkToStored(int** stack, void* object) {
     bool flag = **stack;
-    bool result = StartWalk(object, flag);
+    bool result = GetAIObject(object)->StartCoverPointWalkToStored(flag);
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     **stack = result;
 }

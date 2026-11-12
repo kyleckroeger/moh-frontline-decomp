@@ -152,7 +152,11 @@ static inline void TriangleBlend(float x, float y, float bx, float by, float cx,
     wc = k * Cross2(-x, -y, bx - x, by - y);
 }
 void _find_aim_blend_values(float x, float y, float* blend) {
-    blend[0] = blend[1] = blend[2] = blend[3] = blend[4] = 0.0f;
+    blend[4] = 0.0f;
+    blend[3] = 0.0f;
+    blend[2] = 0.0f;
+    blend[1] = 0.0f;
+    blend[0] = 0.0f;
     if (x == 0.0f && y == 0.0f) {
         blend[4] = 1.0f;
         return;
