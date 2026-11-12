@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1237,
- "function_bytes_by_status": {"consistent": 178080, "differs": 10144, "exact": 5748, "verified": 1211584},
+ "function_bytes_by_status": {"consistent": 177552, "differs": 10144, "exact": 5748, "verified": 1212112},
  "data_bytes_owned": 723834,
  "data_bytes_total": 1976252,
  "functions": [
@@ -329,7 +329,7 @@
  [2147647124, 2044, "BIFunc_GetWayPointInfo__FPPiPv", "verified", "src/game/bsbifunc_waypointinfo.cpp"],
  [2147649168, 136, "BIFunc_GetObjective__FPPiPv", "verified", "src/game/bsbifunc_objectives.cpp"],
  [2147649304, 148, "BIFunc_SetObjective__FPPiPv", "verified", "src/game/bsbifunc_objectives.cpp"],
- [2147649452, 528, "BIFunc_RotateRel__FPPiPv", "consistent", "research/drafts/BIFunc_RotateRel.800287ac.cpp"],
+ [2147649452, 528, "BIFunc_RotateRel__FPPiPv", "verified", "src/game/bsbifunc_translate.cpp"],
  [2147649980, 424, "BIFunc_TranslateRel__FPPiPv", "verified", "src/game/bsbifunc_translate.cpp"],
  [2147650404, 232, "BIFunc_StopMotionPlayback__FPPiPv", "verified", "src/game/bsbifunc_translate.cpp"],
  [2147650636, 320, "BIFunc_StartMotionPlayback__FPPiPv", "verified", "src/game/bsbifunc_translate.cpp"],

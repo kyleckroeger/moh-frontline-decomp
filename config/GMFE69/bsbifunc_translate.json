@@ -40,20 +40,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800289bc",
-      "size": 1488,
+      "address": "0x800287ac",
+      "size": 2016,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x80009c54",
-      "size": 40,
+      "address": "0x80009c4c",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80010844",
-      "size": 60,
+      "address": "0x80010838",
+      "size": 72,
       "type": 1
     }
   ],
@@ -83,6 +83,12 @@
       "binding": 1
     },
     {
+      "name": "BIFunc_RotateRel__FPPiPv",
+      "address": "0x800287ac",
+      "size": 528,
+      "binding": 1
+    },
+    {
       "name": "BIFunc_TranslateRel__FPPiPv",
       "address": "0x800289bc",
       "size": 424,
@@ -108,5 +114,34 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f6f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f6f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f6d4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f618"
+    }
+  ]
 }

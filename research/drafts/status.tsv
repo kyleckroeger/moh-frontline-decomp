@@ -58,7 +58,6 @@ consistent	0.959	1.000	42	388	BIFunc_PlayerScreenFlash__FPPiPv	True	0	0	research
 consistent	0.997	1.000	43	2308	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	True	0	0	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
 consistent	1.000	1.000	44	3416	CreateRootHierObject__FP20TriggerObject_structi	True	0	0	research/drafts/CreateRootHierObject.8003dde8.cpp
 consistent	0.993	1.000	46	568	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	True	0	0	research/drafts/PublishEvent.800d7718.cpp
-consistent	1.000	1.000	47	528	BIFunc_RotateRel__FPPiPv	True	0	0	research/drafts/BIFunc_RotateRel.800287ac.cpp
 consistent	1.000	1.000	53	736	HandleExplosion__12CCompartmentFRC10CExplosion	True	0	0	research/drafts/HandleExplosion.800756cc.cpp
 consistent	0.998	1.000	56	1640	CreateDumpObject__FRC8CVector3RC11CQuaternionii	True	0	0	research/drafts/CreateDumpObject.8003fc2c.cpp
 consistent	0.996	1.000	57	512	RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	True	0	0	research/drafts/RotateFromScript.800af48c.cpp

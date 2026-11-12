@@ -1,4 +1,7 @@
-// A fragment of bsbifunc.cpp (0x800289bc): script built-ins that move the
+// A fragment of bsbifunc.cpp (0x800287ac): script built-ins that rotate the
+// script object's static object (or a hierarchy sub-object, by the same rule;
+// the index argument is held as a float, and the angles and speeds are
+// converted from degrees in place before the vectors are built) and that move the
 // script object's static object (or, for a sub-object index other than -1, that
 // sub-object of its hierarchy object) relative to its position by script, with
 // a delta, a speed and a completion event, stop and start a motion playback (on
@@ -163,6 +166,31 @@ struct BSBuiltinView {
 
 extern BSBuiltinView* g_pBuiltInFunctions;
 extern int g_iCurrentBIFIndex;
+
+void BIFunc_RotateRel(int** stack, void*) {
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    float sub = *(*stack - (count - 1));
+    float x = *(float*)(*stack - (count - 2));
+    float y = *(float*)(*stack - (count - 3));
+    float z = *(float*)(*stack - (count - 4));
+    float sx = *(float*)(*stack - (count - 5));
+    float sy = *(float*)(*stack - (count - 6));
+    float sz = *(float*)(*stack - (count - 7));
+    EBSEventEnum event = (EBSEventEnum)*(*stack - (count - 8));
+    x = 3.1415927f * x / 180.0f;
+    y = 3.1415927f * y / 180.0f;
+    z = 3.1415927f * z / 180.0f;
+    sx = 3.1415927f * sx / 180.0f;
+    sy = 3.1415927f * sy / 180.0f;
+    sz = 3.1415927f * sz / 180.0f;
+    CVector3 angles(x, y, z);
+    CVector3 speed(sx, sy, sz);
+    if (sub != -1.0f)
+        g_pBSObject->user->GetSceneNode()->AsHierObject()->GetSubObject(sub)->RotateFromScript(angles, speed, event);
+    else
+        g_pBSObject->user->GetSceneNode()->AsStaticObject()->RotateFromScript(angles, speed, event);
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
 
 void BIFunc_TranslateRel(int** stack, void*) {
     int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
