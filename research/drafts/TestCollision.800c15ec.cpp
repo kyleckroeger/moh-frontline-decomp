@@ -12,6 +12,8 @@ class CCDBObject;
 class CWorldVolume;
 class CAnimatedVolume;
 
+// Inferred view: CVector3 without constructors (its implicit copy moves the two
+// doubles), as in matrix_ps.cpp; members are the inline helpers the code needs.
 union CVector3Data {
     double pair[2];
     struct { float x, y, z, w; } c;
@@ -19,11 +21,6 @@ union CVector3Data {
 
 class CVector3 {
 public:
-    CVector3() {}
-    CVector3(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-    }
     void Scale(const CVector3& v, float k) {
         d.c.x = k * v.d.c.x;
         d.c.y = k * v.d.c.y;
@@ -100,12 +97,8 @@ public:
     float GetDistance(CVector3 r) const {
         return m_normal.d.c.x * r.d.c.x + m_normal.d.c.y * r.d.c.y + m_normal.d.c.z * r.d.c.z - m_distance;
     }
-    static CVector3 Id(CVector3 v) {
-        CVector3 q = v;
-        return q;
-    }
     float Project2(CVector3 p, CVector3& out) const {
-        float distance = GetDistance(Id(p));
+        float distance = GetDistance(p);
         out.Scale(m_normal, -distance);
         out += p;
         return distance;
@@ -142,7 +135,8 @@ int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag
     corner -= c;
     SClsnContact contact;
     contact.m_vector0.Negate(plane.m_normal);
-    contact.m_separation = plane.Project2(corner, contact.m_vector1);
+    contact.m_separation = plane.Project2(corner, point);
+    contact.m_vector1 = point;
 #define STEP(v, op) \
     corner op v; \
     corner op v; \

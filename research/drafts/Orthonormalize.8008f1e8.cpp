@@ -14,7 +14,7 @@
 // float layout are as in matrix_endian.cpp. The rest of the file is not part
 // of this unit.
 
-// Inferred: CVector3 as four floats overlaid with two doubles (its copies
+// Inferred: CVector3 (no constructors) as four floats overlaid with two doubles (its copies
 // move doubleword pairs).
 #include <math.h>
 
@@ -26,8 +26,6 @@ union CVector3Data {
 
 class CVector3 {
 public:
-    CVector3() {}
-    CVector3(float x, float y, float z) { d.c.x = x; d.c.y = y; d.c.z = z; }
     float Dot(const CVector3& v) const { return d.c.x * v.d.c.x + d.c.y * v.d.c.y + d.c.z * v.d.c.z; }
     float Length() const { return sqrtf(d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z); }
     void Normalize() {
@@ -71,31 +69,38 @@ public:
     float m[4][4];
 } __attribute__((aligned(16)));
 
+inline float Mul(float a, float b) { float r = a; r *= b; return r; }
 void CMatrix::Orthonormalize() {
     CVector3 forward = Row(1);
     CVector3 up = Row(2);
     CVector3 right = Row(0);
     right.Normalize();
-    const CVector3& fw = forward;
-    float dot = fw.Dot(right);
+    const CVector3* fw = &forward;
+    float dot = fw->Dot(right);
     float pz = dot * right.d.c.z;
     float px = dot * right.d.c.x;
     float py = dot * right.d.c.y;
     CVector3 f;
-    f.d.c.x = fw.d.c.x - px;
-    f.d.c.y = fw.d.c.y - py;
-    f.d.c.z = fw.d.c.z - pz;
+    f.d.c.x = fw->d.c.x - px;
+    f.d.c.y = fw->d.c.y - py;
+    f.d.c.z = fw->d.c.z - pz;
     f.Normalize();
-    const CVector3& uv = up;
-    float dotRight = uv.Dot(right);
-    float dotForward = uv.Dot(f);
-    float fz = dotForward * f.d.c.z;
+    const CVector3* uv = &up;
+    float dotRight = uv->Dot(right);
+    float dotForward = uv->Dot(f);
+    float fz = Mul(dotForward, f.d.c.z);
     float fx = dotForward * f.d.c.x;
-    float fy = f.d.c.y * dotForward;
-    float ry = dotRight * right.d.c.y;
-    float rx = right.d.c.x * dotRight;
-    float rz = right.d.c.z * dotRight;
-    CVector3 u(uv.d.c.x - rx - fx, uv.d.c.y - ry - fy, uv.d.c.z - rz - fz);
+    float fy = dotForward * f.d.c.y;
+    float ry = Mul(dotRight, right.d.c.y);
+    float rx = dotRight * right.d.c.x;
+    float rz = Mul(dotRight, right.d.c.z);
+    CVector3 u;
+    u.d.c.x = uv->d.c.x - rx;
+    u.d.c.y = uv->d.c.y - ry;
+    u.d.c.z = uv->d.c.z - rz;
+    u.d.c.x -= fx;
+    u.d.c.y -= fy;
+    u.d.c.z -= fz;
     u.Normalize();
     m[0][0] = right.d.c.x;
     m[0][1] = right.d.c.y;
