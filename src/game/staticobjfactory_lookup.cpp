@@ -111,13 +111,8 @@ struct AIDoodadView;
 enum EClsnId {};
 enum EBSEventEnum {};
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CThrownObject;
 class CStaticObject;

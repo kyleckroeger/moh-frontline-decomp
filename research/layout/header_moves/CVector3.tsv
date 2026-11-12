@@ -1,112 +1,112 @@
 unit	source	status	detail
-AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	lost	Linked source sections differ from manifest
-AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	lost	Stripped object is not one compiler object: @53
-AIFilter_tank_update	scratch/try/AIFilter_tank_update/src/AIFilter_tank_update.cpp	lost	Compiled source bytes differ: AIFilter_tank_update .text
-AIObject	scratch/try/AIObject/src/AIObject.cpp	lost	Compiled source bytes differ: AIObject .text
-AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     116: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-AISplinePath_segment	scratch/try/AISplinePath_segment/src/AISplinePath_segment.cpp	lost	Unexpected compiler function set
-AnimObjFactory	scratch/try/AnimObjFactory/src/AnimObjFactory.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AnimObjFactory.cpp # ---------------------------------- #     155: m_rows[0].EndianSwap();
-AnimObjFactory_head	scratch/try/AnimObjFactory_head/src/AnimObjFactory_head.cpp	lost	Compiled source bytes differ: AnimObjFactory_head .text
-CoverPoint_invalidate	scratch/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	lost	Linked source sections differ from manifest
-Moh2	scratch/try/Moh2/src/Moh2.cpp	lost	Compiler data layout differs from manifest
-Soldier_object_attach	scratch/try/Soldier_object_attach/src/Soldier_object_attach.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_attach.cpp # ----------------------------------------- #     100: CVector3 GetPos() const { return CVector3(*(const CVector3Pair*)&pos); }
-Soldier_object_bounds	scratch/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	lost	Linked source sections differ from manifest
-Tank_object_weapons	scratch/try/Tank_object_weapons/src/Tank_object_weapons.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Tank_object_weapons.cpp # --------------------------------------- #     150: pos.v.z += 1.0f;
-TibText	scratch/try/TibText/src/TibText.cpp	lost	Compiled source bytes differ: TibText .text
-anim_obj_collide	scratch/try/anim_obj_collide/src/anim_obj_collide.cpp	lost	Compiled source bytes differ: anim_obj_collide .text
-anim_obj_ctor	scratch/try/anim_obj_ctor/src/anim_obj_ctor.cpp	lost	Compiled source bytes differ: anim_obj_ctor .text
-anim_obj_draw	scratch/try/anim_obj_draw/src/anim_obj_draw.cpp	lost	Compiled source bytes differ: anim_obj_draw .text
-anim_obj_update	scratch/try/anim_obj_update/src/anim_obj_update.cpp	lost	Compiled source bytes differ: anim_obj_update .text
-animated_volume_line	scratch/try/animated_volume_line/src/animated_volume_line.cpp	lost	Compiled source bytes differ: animated_volume_line .text
-animmot_rot	scratch/try/animmot_rot/src/animmot_rot.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\animmot_rot.cpp # ------------------------------- #     165: pos.Lerp(other->m_floatPos, frame->m_floatPos, lerp);
-animplayer_weak	scratch/try/animplayer_weak/src/animplayer_weak.cpp	lost	Compiled source bytes differ: animplayer_weak .text
-animskinned_skeleton	scratch/try/animskinned_skeleton/src/animskinned_skeleton.cpp	lost	Compiled source bytes differ: animskinned_skeleton .text
-attachobject_ctor	scratch/try/attachobject_ctor/src/attachobject_ctor.cpp	lost	Stripped object is not one compiler object: @111
-box_create	scratch/try/box_create/src/box_create.cpp	lost	Unexpected compiler function set
-box_ivolume	scratch/try/box_ivolume/src/box_ivolume.cpp	lost	Unexpected compiler function set
-box_line	scratch/try/box_line/src/box_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_line.cpp # ---------------------------- #      90: nearNormal.Negate(axis);
-box_linedist	scratch/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_linedist.cpp # -------------------------------- #     118: CVector3 kPmE(rkPnt[0] - rkBox.Extent(0), rkPnt[1] - rkBox.Extent(1), rkPnt[2] - rkBox.Extent(2));
-box_pointdist	scratch/try/box_pointdist/src/box_pointdist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_pointdist.cpp # --------------------------------- #      77: if (kClosest[0] < -rkBox.m_halfWidth) {
-box_setters	scratch/try/box_setters/src/box_setters.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_setters.cpp # ------------------------------- #      53: m_center.v.x = b.v.x + a.v.x;
-box_testtriangle	scratch/try/box_testtriangle/src/box_testtriangle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_testtriangle.cpp # ------------------------------------ #      92: contact.m_vector0.Negate(plane.m_normal);
-bsbifunc_dump	scratch/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #     319: start = CVector3(core->position);
-bsbifunc_getpropbyid	scratch/try/bsbifunc_getpropbyid/src/bsbifunc_getpropbyid.cpp	lost	Linked source sections differ from manifest
-bsbifunc_makenoise	scratch/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	lost	Linked source sections differ from manifest
-bsbifunc_makenoise_bi	scratch/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	lost	Linked source sections differ from manifest
-bsbifunc_mpprompt	scratch/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #     398: start = CVector3(from->trigger->core->position);
-bsbifunc_setobjinfo	scratch/try/bsbifunc_setobjinfo/src/bsbifunc_setobjinfo.cpp	lost	Compiled source bytes differ: bsbifunc_setobjinfo .text
-camera_frustum	scratch/try/camera_frustum/src/camera_frustum.cpp	lost	Linked source sections differ from manifest
-capsule_create	scratch/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_create.cpp # ---------------------------------- #      41: m_dir.v[0] = m_end.v[0] - m_start.v[0];
-capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	lost	Linked source sections differ from manifest
-capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	lost	Linked source sections differ from manifest
-cdbgeom_triangle_ctor	scratch/try/cdbgeom_triangle_ctor/src/cdbgeom_triangle_ctor.cpp	lost	Unexpected compiler function set
-cdbgeom_triangle_line	scratch/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	lost	Pool item differs from the original: cdbgeom_triangle_line .sdata2+0x4
-cdbgeom_vector	scratch/try/cdbgeom_vector/src/cdbgeom_vector.cpp	lost	Pooled compiler section is missing: .sdata2
-cdbgeom_volbox_ctor	scratch/try/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox_ctor.cpp # --------------------------------------- #      67: CVector3 right(box.basis[0]);
-cdbobject_fastvec_push	scratch/try/cdbobject_fastvec_push/src/cdbobject_fastvec_push.cpp	lost	Compiled source bytes differ: cdbobject_fastvec_push .text
-cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_intersect.cpp # --------------------------------------- #     188: inline CPlane::CPlane(const CDBPlane& p) : m_normal(p.m_normal), m_d(p.m_d) {}
-cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_leaf.cpp # ---------------------------------- #     234: inline CPlane::CPlane(const CDBPlane& p) : m_normal(p.m_normal), m_d(p.m_d) {}
-cdbobject_line	scratch/try/cdbobject_line/src/cdbobject_line.cpp	lost	Compiled source bytes differ: cdbobject_line .text
-cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_trigroups.cpp # --------------------------------------- #     203: CVector3 normal(group.m_normal);
-collision	scratch/try/collision/src/collision.cpp	lost	Compiled source bytes differ: collision .text
-compartment_volbox	scratch/try/compartment_volbox/src/compartment_volbox.cpp	lost	Unexpected compiler function set
-csg_volume_line	scratch/try/csg_volume_line/src/csg_volume_line.cpp	lost	Compiled source bytes differ: csg_volume_line .text
-fiber_create	scratch/try/fiber_create/src/fiber_create.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_create.cpp # -------------------------------- #      39: m_dir.v[0] = m_end.v[0] - m_start.v[0];
-fiber_dtor	scratch/try/fiber_dtor/src/fiber_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_dtor.cpp # ------------------------------ #      31: m_dir.v[0] = m_end.v[0] - m_start.v[0];
-fiber_line	scratch/try/fiber_line/src/fiber_line.cpp	lost	Linked source sections differ from manifest
-fiber_point	scratch/try/fiber_point/src/fiber_point.cpp	lost	Linked source sections differ from manifest
-fiber_visibility	scratch/try/fiber_visibility/src/fiber_visibility.cpp	lost	Unexpected compiler function set
-hierobject	scratch/try/hierobject/src/hierobject.cpp	lost	Stripped object is not one compiler object: @85
-hierobject_motion	scratch/try/hierobject_motion/src/hierobject_motion.cpp	lost	Compiled source bytes differ: hierobject_motion .text
-hierobject_playback	scratch/try/hierobject_playback/src/hierobject_playback.cpp	lost	Compiled source bytes differ: hierobject_playback .text
-hierobject_tree	scratch/try/hierobject_tree/src/hierobject_tree.cpp	lost	Stripped object is not one compiler object: @197
-impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\impact_dtor.cpp # ------------------------------- #     438: origin.Add(0.0f, 0.0f, 0.75f);
-light_dtor	scratch/try/light_dtor/src/light_dtor.cpp	lost	Compiled source bytes differ: light_dtor .text
-line	scratch/try/line/src/line.cpp	lost	Compiled source bytes differ: line .text
-objcreate_createplayer	scratch/try/objcreate_createplayer/src/objcreate_createplayer.cpp	lost	Linked source sections differ from manifest
-particlesystem_active	scratch/try/particlesystem_active/src/particlesystem_active.cpp	lost	Unexpected compiler function set
-particlesystem_cpropertyparticlesystem_dtor	scratch/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	lost	Linked source sections differ from manifest
-particlesystem_emit	scratch/try/particlesystem_emit/src/particlesystem_emit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_emit.cpp # ---------------------------------------
-particlesystem_property	scratch/try/particlesystem_property/src/particlesystem_property.cpp	lost	Compiled source bytes differ: particlesystem_property .text
-plane_ctor	scratch/try/plane_ctor/src/plane_ctor.cpp	lost	Linked source sections differ from manifest
-player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	lost	Compiled source bytes differ: player_begincrouch .text
-player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      89: CVector3 GetPos() const { return CVector3(m_pos.d); }
-player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #     467: m_tm.SetPos(m_scriptPosition.d);
-player_health	scratch/try/player_health/src/player_health.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     343: c.m_normal.SetNegative(contact->m_normal);
-player_mmg	scratch/try/player_mmg/src/player_mmg.cpp	lost	Linked source sections differ from manifest
-player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	lost	Linked source sections differ from manifest
-player_transform	scratch/try/player_transform/src/player_transform.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_transform.cpp # ------------------------------------ #     124: m_vector268.Zero();
-player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_updateai.cpp # ----------------------------------- #     263: m_tm.SetPos(m_position.d);
-player_vec_add	scratch/try/player_vec_add/src/player_vec_add.cpp	lost	'.text'
-player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	lost	Unexpected compiler function set
-player_weapon	scratch/try/player_weapon/src/player_weapon.cpp	lost	Compiled source bytes differ: player_weapon .text
-player_weapon_object_init	scratch/try/player_weapon_object_init/src/player_weapon_object_init.cpp	lost	Compiled source bytes differ: player_weapon_object_init .text
-projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\projectilebullet.cpp # ------------------------------------ #     615: velocity.v[0] = speed * direction.v[0];
-projectilebullet_link	scratch/try/projectilebullet_link/src/projectilebullet_link.cpp	lost	Linked source sections differ from manifest
-proxtrig_point	scratch/try/proxtrig_point/src/proxtrig_point.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_point.cpp # ---------------------------------- #      82: Set3(d0, d1, d2, r0.Dot(dx, dy, dz), r1.Dot(dx, dy, dz), r2.Dot(dx, dy, dz));
-shadow	scratch/try/shadow/src/shadow.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\shadow.cpp # -------------------------- #     232: float distance = std::sqrtf(dx * dx + dy * dy + dz * dz);
-skybox	scratch/try/skybox/src/skybox.cpp	lost	Stripped object is not one compiler object: @372
-sound	scratch/try/sound/src/sound.cpp	lost	Stripped object is not one compiler object: @673
-soundschedule_sound	scratch/try/soundschedule_sound/src/soundschedule_sound.cpp	lost	Compiled source bytes differ: soundschedule_sound .text
-sphere	scratch/try/sphere/src/sphere.cpp	lost	Compiled source bytes differ: sphere .text
-sphere_testtriangle	scratch/try/sphere_testtriangle/src/sphere_testtriangle.cpp	lost	Linked source sections differ from manifest
-static_obj_dtor	scratch/try/static_obj_dtor/src/static_obj_dtor.cpp	lost	Stripped object is not one compiler object: @44
-static_obj_pathbegin	scratch/try/static_obj_pathbegin/src/static_obj_pathbegin.cpp	lost	Compiled source bytes differ: static_obj_pathbegin .text
-static_obj_scale	scratch/try/static_obj_scale/src/static_obj_scale.cpp	lost	Compiled source bytes differ: static_obj_scale .text
-static_obj_setlight	scratch/try/static_obj_setlight/src/static_obj_setlight.cpp	lost	Compiled source bytes differ: static_obj_setlight .text
-static_obj_setpos	scratch/try/static_obj_setpos/src/static_obj_setpos.cpp	lost	Compiled source bytes differ: static_obj_setpos .text
-staticmesh_draw	scratch/try/staticmesh_draw/src/staticmesh_draw.cpp	lost	Linked source sections differ from manifest
-staticmesh_mshnode_copy	scratch/try/staticmesh_mshnode_copy/src/staticmesh_mshnode_copy.cpp	lost	Unexpected compiler function set
-staticobjfactory_lookup	scratch/try/staticobjfactory_lookup/src/staticobjfactory_lookup.cpp	lost	Stripped object is not one compiler object: @106
-staticobjfactory_patchmvd	scratch/try/staticobjfactory_patchmvd/src/staticobjfactory_patchmvd.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\staticobjfactory_patchmvd.cpp # --------------------------------------------- #      68: data->frames[i].position.EndianSwap();
-thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrown_obj.cpp # ------------------------------ #     310: float speed = sqrtf(m_velocity.v.x * m_velocity.v.x + m_velocity.v.y * m_velocity.v.y + m_velocity.v.z * m_velocity.v.z);
+AIFilter_collisiondist	scratch/loop3/hdr3/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	lost	Linked source sections differ from manifest
+AIFilter_linechecks	scratch/loop3/hdr3/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	lost	Stripped object is not one compiler object: @53
+AIFilter_tank_update	scratch/loop3/hdr3/try/AIFilter_tank_update/src/AIFilter_tank_update.cpp	lost	Compiled source bytes differ: AIFilter_tank_update .text
+AIObject	scratch/loop3/hdr3/try/AIObject/src/AIObject.cpp	lost	Compiled source bytes differ: AIObject .text
+AIObject_visionseek	scratch/loop3/hdr3/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     116: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+AISplinePath_segment	scratch/loop3/hdr3/try/AISplinePath_segment/src/AISplinePath_segment.cpp	lost	Unexpected compiler function set
+AnimObjFactory	scratch/loop3/hdr3/try/AnimObjFactory/src/AnimObjFactory.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AnimObjFactory.cpp # ---------------------------------- #     155: m_rows[0].EndianSwap();
+AnimObjFactory_head	scratch/loop3/hdr3/try/AnimObjFactory_head/src/AnimObjFactory_head.cpp	lost	Compiled source bytes differ: AnimObjFactory_head .text
+CoverPoint_invalidate	scratch/loop3/hdr3/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	lost	Linked source sections differ from manifest
+Moh2	scratch/loop3/hdr3/try/Moh2/src/Moh2.cpp	lost	Compiler data layout differs from manifest
+Soldier_object_attach	scratch/loop3/hdr3/try/Soldier_object_attach/src/Soldier_object_attach.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_attach.cpp # ----------------------------------------- #     100: CVector3 GetPos() const { return CVector3(*(const CVector3Pair*)&pos); }
+Soldier_object_bounds	scratch/loop3/hdr3/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	lost	Linked source sections differ from manifest
+Tank_object_weapons	scratch/loop3/hdr3/try/Tank_object_weapons/src/Tank_object_weapons.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Tank_object_weapons.cpp # --------------------------------------- #     150: pos.v.z += 1.0f;
+TibText	scratch/loop3/hdr3/try/TibText/src/TibText.cpp	lost	Compiled source bytes differ: TibText .text
+anim_obj_collide	scratch/loop3/hdr3/try/anim_obj_collide/src/anim_obj_collide.cpp	lost	Compiled source bytes differ: anim_obj_collide .text
+anim_obj_ctor	scratch/loop3/hdr3/try/anim_obj_ctor/src/anim_obj_ctor.cpp	lost	Compiled source bytes differ: anim_obj_ctor .text
+anim_obj_draw	scratch/loop3/hdr3/try/anim_obj_draw/src/anim_obj_draw.cpp	lost	Compiled source bytes differ: anim_obj_draw .text
+anim_obj_update	scratch/loop3/hdr3/try/anim_obj_update/src/anim_obj_update.cpp	lost	Compiled source bytes differ: anim_obj_update .text
+animated_volume_line	scratch/loop3/hdr3/try/animated_volume_line/src/animated_volume_line.cpp	lost	Compiled source bytes differ: animated_volume_line .text
+animmot_rot	scratch/loop3/hdr3/try/animmot_rot/src/animmot_rot.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\animmot_rot.cpp # ------------------------------- #     165: pos.Lerp(other->m_floatPos, frame->m_floatPos, lerp);
+animplayer_weak	scratch/loop3/hdr3/try/animplayer_weak/src/animplayer_weak.cpp	lost	Compiled source bytes differ: animplayer_weak .text
+animskinned_skeleton	scratch/loop3/hdr3/try/animskinned_skeleton/src/animskinned_skeleton.cpp	lost	Compiled source bytes differ: animskinned_skeleton .text
+attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
+box_create	scratch/loop3/hdr3/try/box_create/src/box_create.cpp	lost	Unexpected compiler function set
+box_ivolume	scratch/loop3/hdr3/try/box_ivolume/src/box_ivolume.cpp	lost	Unexpected compiler function set
+box_line	scratch/loop3/hdr3/try/box_line/src/box_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_line.cpp # ---------------------------- #      90: nearNormal.Negate(axis);
+box_linedist	scratch/loop3/hdr3/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_linedist.cpp # -------------------------------- #     118: CVector3 kPmE(rkPnt[0] - rkBox.Extent(0), rkPnt[1] - rkBox.Extent(1), rkPnt[2] - rkBox.Extent(2));
+box_pointdist	scratch/loop3/hdr3/try/box_pointdist/src/box_pointdist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_pointdist.cpp # --------------------------------- #      77: if (kClosest[0] < -rkBox.m_halfWidth) {
+box_setters	scratch/loop3/hdr3/try/box_setters/src/box_setters.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_setters.cpp # ------------------------------- #      53: m_center.v.x = b.v.x + a.v.x;
+box_testtriangle	scratch/loop3/hdr3/try/box_testtriangle/src/box_testtriangle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_testtriangle.cpp # ------------------------------------ #      92: contact.m_vector0.Negate(plane.m_normal);
+bsbifunc_dump	scratch/loop3/hdr3/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #     319: start = CVector3(core->position);
+bsbifunc_getpropbyid	scratch/loop3/hdr3/try/bsbifunc_getpropbyid/src/bsbifunc_getpropbyid.cpp	lost	Linked source sections differ from manifest
+bsbifunc_makenoise	scratch/loop3/hdr3/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	lost	Linked source sections differ from manifest
+bsbifunc_makenoise_bi	scratch/loop3/hdr3/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	lost	Linked source sections differ from manifest
+bsbifunc_mpprompt	scratch/loop3/hdr3/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #     398: start = CVector3(from->trigger->core->position);
+bsbifunc_setobjinfo	scratch/loop3/hdr3/try/bsbifunc_setobjinfo/src/bsbifunc_setobjinfo.cpp	lost	Compiled source bytes differ: bsbifunc_setobjinfo .text
+camera_frustum	scratch/loop3/hdr3/try/camera_frustum/src/camera_frustum.cpp	lost	Linked source sections differ from manifest
+capsule_create	scratch/loop3/hdr3/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_create.cpp # ---------------------------------- #      41: m_dir.v[0] = m_end.v[0] - m_start.v[0];
+capsule_dispatch	scratch/loop3/hdr3/try/capsule_dispatch/src/capsule_dispatch.cpp	lost	Linked source sections differ from manifest
+capsule_dispatch2	scratch/loop3/hdr3/try/capsule_dispatch2/src/capsule_dispatch2.cpp	lost	Linked source sections differ from manifest
+cdbgeom_triangle_ctor	scratch/loop3/hdr3/try/cdbgeom_triangle_ctor/src/cdbgeom_triangle_ctor.cpp	lost	Unexpected compiler function set
+cdbgeom_triangle_line	scratch/loop3/hdr3/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	lost	Pool item differs from the original: cdbgeom_triangle_line .sdata2+0x4
+cdbgeom_vector	scratch/loop3/hdr3/try/cdbgeom_vector/src/cdbgeom_vector.cpp	lost	Pooled compiler section is missing: .sdata2
+cdbgeom_volbox_ctor	scratch/loop3/hdr3/try/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox_ctor.cpp # --------------------------------------- #      67: CVector3 right(box.basis[0]);
+cdbobject_fastvec_push	scratch/loop3/hdr3/try/cdbobject_fastvec_push/src/cdbobject_fastvec_push.cpp	lost	Compiled source bytes differ: cdbobject_fastvec_push .text
+cdbobject_intersect	scratch/loop3/hdr3/try/cdbobject_intersect/src/cdbobject_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_intersect.cpp # --------------------------------------- #     188: inline CPlane::CPlane(const CDBPlane& p) : m_normal(p.m_normal), m_d(p.m_d) {}
+cdbobject_leaf	scratch/loop3/hdr3/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_leaf.cpp # ---------------------------------- #     234: inline CPlane::CPlane(const CDBPlane& p) : m_normal(p.m_normal), m_d(p.m_d) {}
+cdbobject_line	scratch/loop3/hdr3/try/cdbobject_line/src/cdbobject_line.cpp	lost	Compiled source bytes differ: cdbobject_line .text
+cdbobject_trigroups	scratch/loop3/hdr3/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_trigroups.cpp # --------------------------------------- #     203: CVector3 normal(group.m_normal);
+collision	scratch/loop3/hdr3/try/collision/src/collision.cpp	lost	Compiled source bytes differ: collision .text
+compartment_volbox	scratch/loop3/hdr3/try/compartment_volbox/src/compartment_volbox.cpp	lost	Unexpected compiler function set
+csg_volume_line	scratch/loop3/hdr3/try/csg_volume_line/src/csg_volume_line.cpp	lost	Compiled source bytes differ: csg_volume_line .text
+fiber_create	scratch/loop3/hdr3/try/fiber_create/src/fiber_create.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_create.cpp # -------------------------------- #      39: m_dir.v[0] = m_end.v[0] - m_start.v[0];
+fiber_dtor	scratch/loop3/hdr3/try/fiber_dtor/src/fiber_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_dtor.cpp # ------------------------------ #      31: m_dir.v[0] = m_end.v[0] - m_start.v[0];
+fiber_line	scratch/loop3/hdr3/try/fiber_line/src/fiber_line.cpp	lost	Linked source sections differ from manifest
+fiber_point	scratch/loop3/hdr3/try/fiber_point/src/fiber_point.cpp	lost	Linked source sections differ from manifest
+fiber_visibility	scratch/loop3/hdr3/try/fiber_visibility/src/fiber_visibility.cpp	lost	Unexpected compiler function set
+hierobject	scratch/loop3/hdr3/try/hierobject/src/hierobject.cpp	kept	moved 2026-11-12 (hdr3, stripped_objects relabelled @85/@86 -> @92/@93)
+hierobject_motion	scratch/loop3/hdr3/try/hierobject_motion/src/hierobject_motion.cpp	lost	Compiled source bytes differ: hierobject_motion .text
+hierobject_playback	scratch/loop3/hdr3/try/hierobject_playback/src/hierobject_playback.cpp	lost	Compiled source bytes differ: hierobject_playback .text
+hierobject_tree	scratch/loop3/hdr3/try/hierobject_tree/src/hierobject_tree.cpp	lost	Stripped object is not one compiler object: @197
+impact_dtor	scratch/loop3/hdr3/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\impact_dtor.cpp # ------------------------------- #     438: origin.Add(0.0f, 0.0f, 0.75f);
+light_dtor	scratch/loop3/hdr3/try/light_dtor/src/light_dtor.cpp	lost	Compiled source bytes differ: light_dtor .text
+line	scratch/loop3/hdr3/try/line/src/line.cpp	lost	Compiled source bytes differ: line .text
+objcreate_createplayer	scratch/loop3/hdr3/try/objcreate_createplayer/src/objcreate_createplayer.cpp	lost	Linked source sections differ from manifest
+particlesystem_active	scratch/loop3/hdr3/try/particlesystem_active/src/particlesystem_active.cpp	lost	Unexpected compiler function set
+particlesystem_cpropertyparticlesystem_dtor	scratch/loop3/hdr3/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	lost	Linked source sections differ from manifest
+particlesystem_emit	scratch/loop3/hdr3/try/particlesystem_emit/src/particlesystem_emit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_emit.cpp # ---------------------------------------
+particlesystem_property	scratch/loop3/hdr3/try/particlesystem_property/src/particlesystem_property.cpp	lost	Compiled source bytes differ: particlesystem_property .text
+plane_ctor	scratch/loop3/hdr3/try/plane_ctor/src/plane_ctor.cpp	lost	Linked source sections differ from manifest
+player_begincrouch	scratch/loop3/hdr3/try/player_begincrouch/src/player_begincrouch.cpp	lost	Compiled source bytes differ: player_begincrouch .text
+player_beginupdate	scratch/loop3/hdr3/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      89: CVector3 GetPos() const { return CVector3(m_pos.d); }
+player_commit	scratch/loop3/hdr3/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #     467: m_tm.SetPos(m_scriptPosition.d);
+player_health	scratch/loop3/hdr3/try/player_health/src/player_health.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     343: c.m_normal.SetNegative(contact->m_normal);
+player_mmg	scratch/loop3/hdr3/try/player_mmg/src/player_mmg.cpp	lost	Linked source sections differ from manifest
+player_respawn	scratch/loop3/hdr3/try/player_respawn/src/player_respawn.cpp	lost	Linked source sections differ from manifest
+player_transform	scratch/loop3/hdr3/try/player_transform/src/player_transform.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_transform.cpp # ------------------------------------ #     124: m_vector268.Zero();
+player_updateai	scratch/loop3/hdr3/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_updateai.cpp # ----------------------------------- #     263: m_tm.SetPos(m_position.d);
+player_vec_add	scratch/loop3/hdr3/try/player_vec_add/src/player_vec_add.cpp	lost	'.text'
+player_vec_sub	scratch/loop3/hdr3/try/player_vec_sub/src/player_vec_sub.cpp	lost	Unexpected compiler function set
+player_weapon	scratch/loop3/hdr3/try/player_weapon/src/player_weapon.cpp	lost	Compiled source bytes differ: player_weapon .text
+player_weapon_object_init	scratch/loop3/hdr3/try/player_weapon_object_init/src/player_weapon_object_init.cpp	lost	Compiled source bytes differ: player_weapon_object_init .text
+projectilebullet	scratch/loop3/hdr3/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\projectilebullet.cpp # ------------------------------------ #     615: velocity.v[0] = speed * direction.v[0];
+projectilebullet_link	scratch/loop3/hdr3/try/projectilebullet_link/src/projectilebullet_link.cpp	lost	Linked source sections differ from manifest
+proxtrig_point	scratch/loop3/hdr3/try/proxtrig_point/src/proxtrig_point.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_point.cpp # ---------------------------------- #      82: Set3(d0, d1, d2, r0.Dot(dx, dy, dz), r1.Dot(dx, dy, dz), r2.Dot(dx, dy, dz));
+shadow	scratch/loop3/hdr3/try/shadow/src/shadow.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\shadow.cpp # -------------------------- #     232: float distance = std::sqrtf(dx * dx + dy * dy + dz * dz);
+skybox	scratch/loop3/hdr3/try/skybox/src/skybox.cpp	kept	moved 2026-11-12 (hdr3, stripped_objects relabelled @372/@373 -> @379/@380, @480/@481 -> @473/@474)
+sound	scratch/loop3/hdr3/try/sound/src/sound.cpp	lost	Stripped object is not one compiler object: @673
+soundschedule_sound	scratch/loop3/hdr3/try/soundschedule_sound/src/soundschedule_sound.cpp	lost	Compiled source bytes differ: soundschedule_sound .text
+sphere	scratch/loop3/hdr3/try/sphere/src/sphere.cpp	lost	Compiled source bytes differ: sphere .text
+sphere_testtriangle	scratch/loop3/hdr3/try/sphere_testtriangle/src/sphere_testtriangle.cpp	lost	Linked source sections differ from manifest
+static_obj_dtor	scratch/loop3/hdr3/try/static_obj_dtor/src/static_obj_dtor.cpp	kept	moved 2026-11-12 (hdr3, stripped_objects relabelled @44/@45 -> @56/@57, @48/@49 -> @60/@61)
+static_obj_pathbegin	scratch/loop3/hdr3/try/static_obj_pathbegin/src/static_obj_pathbegin.cpp	lost	Compiled source bytes differ: static_obj_pathbegin .text
+static_obj_scale	scratch/loop3/hdr3/try/static_obj_scale/src/static_obj_scale.cpp	lost	Compiled source bytes differ: static_obj_scale .text
+static_obj_setlight	scratch/loop3/hdr3/try/static_obj_setlight/src/static_obj_setlight.cpp	lost	Compiled source bytes differ: static_obj_setlight .text
+static_obj_setpos	scratch/loop3/hdr3/try/static_obj_setpos/src/static_obj_setpos.cpp	lost	Compiled source bytes differ: static_obj_setpos .text
+staticmesh_draw	scratch/loop3/hdr3/try/staticmesh_draw/src/staticmesh_draw.cpp	lost	Linked source sections differ from manifest
+staticmesh_mshnode_copy	scratch/loop3/hdr3/try/staticmesh_mshnode_copy/src/staticmesh_mshnode_copy.cpp	lost	Unexpected compiler function set
+staticobjfactory_lookup	scratch/loop3/hdr3/try/staticobjfactory_lookup/src/staticobjfactory_lookup.cpp	kept	moved 2026-11-12 (hdr3, stripped_objects relabelled @106/@107 -> @114/@115, @119/@120 -> @127/@128)
+staticobjfactory_patchmvd	scratch/loop3/hdr3/try/staticobjfactory_patchmvd/src/staticobjfactory_patchmvd.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\staticobjfactory_patchmvd.cpp # --------------------------------------------- #      68: data->frames[i].position.EndianSwap();
+thrown_obj	scratch/loop3/hdr3/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrown_obj.cpp # ------------------------------ #     310: float speed = sqrtf(m_velocity.v.x * m_velocity.v.x + m_velocity.v.y * m_velocity.v.y + m_velocity.v.z * m_velocity.v.z);
 thrown_obj_init	scratch/try/thrown_obj_init/src/thrown_obj_init.cpp	kept	
-thrownbullet	scratch/try/thrownbullet/src/thrownbullet.cpp	lost	Compiled source bytes differ: thrownbullet .text
-thrownbullet_explosion	scratch/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	lost	Linked source sections differ from manifest
-thrownbullet_misc	scratch/try/thrownbullet_misc/src/thrownbullet_misc.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_misc.cpp # ------------------------------------- #     536: float speed = std::sqrtf(m_velocity.LengthSq());
-thrownbullet_tail	scratch/try/thrownbullet_tail/src/thrownbullet_tail.cpp	lost	Compiled source bytes differ: thrownbullet_tail .text
-vector	scratch/try/vector/src/vector.cpp	lost	Linked source sections differ from manifest
-weapon_bullet	scratch/try/weapon_bullet/src/weapon_bullet.cpp	lost	Compiled source bytes differ: weapon_bullet .text
-weapon_head	scratch/try/weapon_head/src/weapon_head.cpp	lost	Compiled source bytes differ: weapon_head .text
-world_object_draw	scratch/try/world_object_draw/src/world_object_draw.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\world_object_draw.cpp # ------------------------------------- #     175: m_bounds[0]->key = low.v.x;
-world_volume	scratch/try/world_volume/src/world_volume.cpp	lost	Compiled source bytes differ: world_volume .text
+thrownbullet	scratch/loop3/hdr3/try/thrownbullet/src/thrownbullet.cpp	lost	Compiled source bytes differ: thrownbullet .text
+thrownbullet_explosion	scratch/loop3/hdr3/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	lost	Linked source sections differ from manifest
+thrownbullet_misc	scratch/loop3/hdr3/try/thrownbullet_misc/src/thrownbullet_misc.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_misc.cpp # ------------------------------------- #     536: float speed = std::sqrtf(m_velocity.LengthSq());
+thrownbullet_tail	scratch/loop3/hdr3/try/thrownbullet_tail/src/thrownbullet_tail.cpp	lost	Compiled source bytes differ: thrownbullet_tail .text
+vector	scratch/loop3/hdr3/try/vector/src/vector.cpp	lost	Linked source sections differ from manifest
+weapon_bullet	scratch/loop3/hdr3/try/weapon_bullet/src/weapon_bullet.cpp	lost	Compiled source bytes differ: weapon_bullet .text
+weapon_head	scratch/loop3/hdr3/try/weapon_head/src/weapon_head.cpp	lost	Compiled source bytes differ: weapon_head .text
+world_object_draw	scratch/loop3/hdr3/try/world_object_draw/src/world_object_draw.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\world_object_draw.cpp # ------------------------------------- #     175: m_bounds[0]->key = low.v.x;
+world_volume	scratch/loop3/hdr3/try/world_volume/src/world_volume.cpp	lost	Compiled source bytes differ: world_volume .text

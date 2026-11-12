@@ -124,3 +124,17 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
   CAIDoodad; renaming the view would change code), 7 BSObject/BSObjectView the same way,
   4 the scene's `SExtent` nested in their own ISceneNode view, 5 name the data members
   (m_link8, m_prev/m_next, m_sceneNext), 2 their own sqrtf, the rest single cases.
+
+## CVector3 re-run (2026-11-12, agent hdr3)
+
+try_header.py CVector3 over the 110 units still on their own view after the base form (d8cf803c):
+none kept as is. 4 kept after renaming their stripped extab/extabindex labels (the header's
+inlines renumber them): hierobject, skybox, static_obj_dtor, staticobjfactory_lookup, each label
+matched to the moved compile's object with the same section, size, bytes and relocation targets
+(scratch/loop3/hdr3/relabel.py), then verified; moved. The other 3 with renumbered labels
+(AIFilter_linechecks, hierobject_tree, sound) still differ after the rename. The 9 "unexpected
+function set" units define or call the original's weak copies (default constructor, Normalize,
+...) in a way the inline header changes (port_unit's draft: the calling functions differ; 
+particlesystem_active gains a non-weak __sinit), so listing weak copies doesn't help. The other
+lost units differ in .text or sections (code-level differences), 33 don't compile (own methods
+or spellings). Table: research/layout/header_moves/CVector3.tsv.

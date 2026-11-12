@@ -48,21 +48,10 @@ void DebugMsg(const char*, ...);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 void TLT_CloseFile(void*);
 
-struct CVector3Pair {
-    double d[2];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CVector4 {
 public:

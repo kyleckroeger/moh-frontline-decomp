@@ -10,15 +10,8 @@
 // slots are placeholders named by offset) and the other classes are
 // non-virtual views. The rest of the file is not part of this unit.
 /* inferred: copies move it as a doubleword pair */
-class CVector3 {
-public:
-    CVector3(const CVector3& other) : d(other.d) {}
+#include "game/CVector3.h"
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

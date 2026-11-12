@@ -891,7 +891,7 @@
     "src/game/hearingvolume_ctor.cpp": "fb9cc85fba1a9d5cb322379bbce4aadcb1645a46016425f24a930147a156884c",
     "src/game/hearingvolume_init.cpp": "2621762cce03b4672f7b5fb1acf858b6175abf19e97f0a0073fd3e60ea957c0a",
     "src/game/hearingvolume_rows.cpp": "603368903d1c34fc6b47d62627396e0744f4527fd629b9786503a89423d4ea5b",
-    "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
+    "src/game/hierobject.cpp": "441d124fb1a364a124891efacdd771b3f6bd9619cd8a061d4b9bacdcf49b4a85",
     "src/game/hierobject_constrain.cpp": "13edf79bd4a6a5646c90a7d65d551ae74a9c36697cea644d3019cf2dd9353127",
     "src/game/hierobject_draw.cpp": "67a66f0e3948333dc004a9e723b8bf8995572b5dacac294b12d397e422f50e4a",
     "src/game/hierobject_motion.cpp": "a014904bcd8f0aca42d1dff4a936a4c5d0020639a868674ff9c23cc243d20318",
@@ -1094,7 +1094,7 @@
     "src/game/shadow.cpp": "a065583d8c1eca57a086b3ca047e1ffe81221bad1ef499e5fceae924c6666f1f",
     "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
     "src/game/skeleton.cpp": "889f952bdeb2b5c6e1787e01d515e338160f5a7c5db43aa20a76e3db73812572",
-    "src/game/skybox.cpp": "c81a7fa9fcb0b72f605b4e35f443be4cc71e7ebc449a0eaec87efa565e99bc85",
+    "src/game/skybox.cpp": "7f9c4c0e355025a71a2a6af217f2b9b4978f258ae25450b4010a4ff9eb2285de",
     "src/game/sound.cpp": "70dcdd80bf1dd58afd5a384334f7cc43d1665cde528ae5fd770643d269600c55",
     "src/game/soundschedule.cpp": "c694f97d087bfc7f21c516d5e3ccca496446691cf3b37b2f183e5926872a483d",
     "src/game/soundschedule_sound.cpp": "c7cf749da8b9723eee6f8581d787465a55c7470057a7da9fcf926591173f598e",
@@ -1117,7 +1117,7 @@
     "src/game/static_obj_bounds.cpp": "95f46ee3f954cb34559dde7b632acbee9ba83303048b65c584a359bf2e07da11",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
     "src/game/static_obj_commit.cpp": "103ecdc512d7ac7ac7772a3089f58f98a6eb1e323378a4b811a67594d86e6f8c",
-    "src/game/static_obj_dtor.cpp": "d2900e0d83d6c40dd8fd027146a758f25846f8251c15dfb928b9d909a1f9c275",
+    "src/game/static_obj_dtor.cpp": "9c001f019b9c0cd978549a30ad21b14e8b5d5b80a577db3b26aaad7a39fc0a90",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
     "src/game/static_obj_rows.cpp": "0fb0976dfd3b7139664668b9748e19b44fa4d7b4d3f297c0d6d69c1ae2baa28e",
@@ -1142,7 +1142,7 @@
     "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
-    "src/game/staticobjfactory_lookup.cpp": "7d0d6f4826015547d913fd00268f9e82e2286b35b333dca8e48de3667c721e8c",
+    "src/game/staticobjfactory_lookup.cpp": "dde9f684fb0de568a3f42f4be46f0f7c09e256e79024bcc4c083f0f16138a00c",
     "src/game/staticobjfactory_patchmvd.cpp": "d09c8a5a48ac24ad5b86a5edc5f14d62cc011cfa0210f15dae38538821677d34",
     "src/game/staticobjfactory_weak.cpp": "56a75fc11a7d8e1ad182c3759e1e7cc376527a84a4da644d13b31eb10b6fa912",
     "src/game/surfacetype.cpp": "3499ce5dc7d066f093e39c158e9b096e37683df4d6b6d234eb9b08395d411390",
@@ -2356,7 +2356,7 @@
     "config/GMFE69/hearingvolume_ctor.json": "bba5cdf2cf44a15bb762ffc21729b9b9ffbf42e7d15d2e55f055e9d6611d8b66",
     "config/GMFE69/hearingvolume_init.json": "ec3de2a1e6372373d289fd2a9b4f27f43cea6da77fa32929a50aa432cf52b8af",
     "config/GMFE69/hearingvolume_rows.json": "c7204ce18b9eab5e2c7f0cc939d875a4a9b5bd677d223836c1ed4c6c48386d0a",
-    "config/GMFE69/hierobject.json": "97c84bb7a2ef58333c47171b0d1f398ff7f354e472820d36102c939f48982ddc",
+    "config/GMFE69/hierobject.json": "610c409063d1e491a2f79f23b8c3e3babcbd01b83f964c13d108740e1dcd57aa",
     "config/GMFE69/hierobject_constrain.json": "91d921adf6c9ef973ca23c94f23e689ddebf68eb46231706edc78ae6cfcc34ad",
     "config/GMFE69/hierobject_draw.json": "eda533592402fa26cb260d588ee3e971154caf3e0a9b1e091f19baea810dd367",
     "config/GMFE69/hierobject_motion.json": "862ddf511f4fc1e06db3ae7b03902830536071543761956f061dcbd61f783dc0",
@@ -2731,7 +2731,7 @@
     "config/GMFE69/sinitxa.json": "411b577b864a696f54ca6f728819538a238b294030608ccd59f1af782b46221e",
     "config/GMFE69/skelblend.json": "b8ac1a476be561b4fae4c3cd449972f6931387e83a4a8df3cbb09b3b3b86e6e9",
     "config/GMFE69/skeleton.json": "062ee8b6fc9df3485b0709519a577c5e43758863e16e0f222d8c2a24c79d31ee",
-    "config/GMFE69/skybox.json": "9880e24855987d7e12d9077dc8e56972580cff36f2b460932dfd8e122f73b00f",
+    "config/GMFE69/skybox.json": "9439ccb2e625ff32b131a1a1362a6e9815014f58e43e5bb8f3f874433e407284",
     "config/GMFE69/slib.json": "175b59682d7176e6914e303e81ec26cb60fcb86ab08f884e84a2df96c09626de",
     "config/GMFE69/slinklst.json": "78f5a23f4c875365e7cc005444f78777fe3ee3972c723fd05c9472f7f00830a2",
     "config/GMFE69/slinkmix.json": "0d66b0e0297a0e7e7bf0c13cc7f212971c66ee4114cf017c282deb2b452f6755",
@@ -2827,7 +2827,7 @@
     "config/GMFE69/static_obj_bounds.json": "0e67d1a04445e710862a60b33ac2bbf71f681f4b82fe9b7c73b27f7cac923522",
     "config/GMFE69/static_obj_collisionid.json": "2e09b85ddda256c2d2c9ec91ccd8bd78419d2fb6a16bc9a74607a4a9a86e4101",
     "config/GMFE69/static_obj_commit.json": "b4e5d617c45dd5dea7c23dad8499520227451b32eb900e1d2199517caa430515",
-    "config/GMFE69/static_obj_dtor.json": "f02abdc7c3052b254ff245d33ac389877396f88c3a9c7743d7bff835ce0ea28d",
+    "config/GMFE69/static_obj_dtor.json": "57635a5a7a6f2fc2e7f02003db395a8f552d76deca8eae27018deaa9cf290deb",
     "config/GMFE69/static_obj_firedby.json": "e42aa5c7378930075d2b010814c1ef8d3c5f472c8ed042f0f1fb294225794351",
     "config/GMFE69/static_obj_pathbegin.json": "fbfeaab8f3fb508d9a9e88d0d5cc59584cd396767a9e7787b428857c7c5bf242",
     "config/GMFE69/static_obj_rows.json": "5f6fe659cc550fe18e9c8ee5c8df6aad5cc98934b97ab7eaeae277dcfd6aea4c",
@@ -2852,7 +2852,7 @@
     "config/GMFE69/staticmesh_simplebin.json": "5fb23a801437c0a09b0f12aec1762ea737197d71a1aa7a2c8e748b89b51f8abe",
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
-    "config/GMFE69/staticobjfactory_lookup.json": "81148247f572b23dbc035fd60d24515ace28056eda9477a28b5d2dfffe75ba41",
+    "config/GMFE69/staticobjfactory_lookup.json": "7e2d2b5ac1570cea9a57addb662141d5a06d686e9e421fb63a0c1e37ab213bbe",
     "config/GMFE69/staticobjfactory_patchmvd.json": "4e5827eac58bcfe1e8f10908697a73b6245338a77c5973156f02f934d6244563",
     "config/GMFE69/staticobjfactory_weak.json": "afc8b502c5c0e974004831714710ab08f4e1334c4a6a29daf2a8a38286377c92",
     "config/GMFE69/stimemul.json": "8daf6f44288a9589aaf8719ff8e636e2f4d7d00296603d9d8ce6bcbc2ff41088",
@@ -21129,8 +21129,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "82a496612c824a79ec7b4bb8c1f05a5c5efdf6c260d142b6cca61a41cbe8c709",
-      "linked_sha256": "0ca60eb176941e90665edbe4e27a487f39b654dce9048016c7ada897e0532e1b"
+      "object_sha256": "d31a7d5097f75b70305db1cc80f7ba1c322999eda10eb49941bab58917cc3e65",
+      "linked_sha256": "0663afe3ae9db3b205a52f6eec89ee195d2b868b5c4b8b91fde21bda5221640e"
     },
     {
       "id": "motionblur",
@@ -29078,8 +29078,8 @@
       "discarded_functions": [
         "__dt__12MESHSLOTVIEWFv"
       ],
-      "object_sha256": "87bb1423db0e7eed6b14c6c68444c0d037eb9abfcbbe229a19efdb0a8c07c406",
-      "linked_sha256": "14b3705e39e62140aaf96c8ea055547ccfb0a289e15924d79975a82b501d7519"
+      "object_sha256": "1ac046c538ef7708e86702a55edaef1a3e76a360d5e3d43d0dda42696687d997",
+      "linked_sha256": "6ad2cd50c24ac0a77dc1e6a9fd1d41c6df18866c5d4fc63fe9a2a662f881dc3d"
     },
     {
       "id": "filesys_ea_del",
@@ -36040,8 +36040,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "da94dd7a626e4eb640ab4b8ad3dfa9019160a38e5cb65c90ce7eab86f6c71195",
-      "linked_sha256": "6b41d04d3dfd2a847b34d4637a3c618bf413f739c28fb76f9fb43f1ff692e55b"
+      "object_sha256": "72ea7e2f177ff1cf234df77e777ead2f650adb1d251322e98a71ee371ff42c5e",
+      "linked_sha256": "29a7040302b0c50d07f7a7e21348c994f9372fb22881026c101313fa38605368"
     },
     {
       "id": "bullet_ctor",
@@ -48275,8 +48275,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "222e99cbb24f0a6b4bbad50bb8de76d8e81c58a0ff10ca3620fbe9dc54e58379",
-      "linked_sha256": "13ac9e8e79aed75746fc98b64a8c520b8d5b0bf6d9bfd88b4f871522cac506e5"
+      "object_sha256": "6a379e262876d6b056a50f86cdf7ebe92a1eb916502d272d483d3ac1368f4875",
+      "linked_sha256": "b08b466984511cada4822680893740f7ecae943fd800a4c5f3ae4a92c2fef777"
     },
     {
       "id": "sbasync_download",

@@ -221,7 +221,9 @@ whose other units only matched without one, so the split was the constructor's f
 different headers. The header now keeps the fields in an 8-byte-aligned plain base,
 `CVector3Base`, and the copy constructor copies it; the pair-cast form and no copy
 constructor each break a different group. 42 more units moved (matrix_ps, thrown_obj_init and
-compartment_intersect among them) and the 168 already on it still match.
+compartment_intersect among them) and the 168 already on it still match. A re-run over the 110
+units still on their own view moved 4 more, each after renaming its stripped extab labels; the
+rest differ in code (76) or don't compile (33).
 
 CMatrix, 2026-11-12: `include/game/CMatrix.h`, four CVector3 rows `right, front, up, pos`
 (named after the original's `SetRight`/`SetFront`/`SetUp`/`SetPos`), 16-byte aligned, every
