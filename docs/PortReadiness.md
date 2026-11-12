@@ -139,7 +139,7 @@ initialised globals from the original's bytes and relocations, one file per orig
 file as for `.bss` (constants, switches, the default and blend light sets, fog types,
 the identity matrix, filename hooks); all exact by `check_data.py`. A file the file map
 doesn't name is inferred from the neighbours in the original's section and the users,
-and marked; the rest are in `init/unassigned.cpp`. The 84 vtables wait for step 3.
+and marked; the rest are in `init/unassigned.cpp`. The libraries' data followed: EA's hooks (`SNDAEMS_*`, `REALabortmessage`), print channels, AEMS component table, mix and reverb maps, XA ADPCM tables, MPEG decoder tables, the built-in font (`FONTstandfile`, a whole font file) and MSL's `__float_nan`/`__float_huge`. `axDspSlave` and its length stay platform-owned. The 84 vtables wait for step 3.
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.

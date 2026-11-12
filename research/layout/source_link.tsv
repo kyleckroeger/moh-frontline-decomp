@@ -1,37 +1,19 @@
 kind	symbol	objects
 undefined	C_VECDotProduct	unit:mtx
 undefined	C_VECNormalize	unit:mtx
-undefined	FONTcurrentdriver	unit:fontcreate unit:fontdraw unit:fontdriver
-undefined	FONTcurrentdriverext	unit:fontdraw
-undefined	FONTstandfile	unit:fontinit
-undefined	MPDdefault_intra_quantizer_matrix	unit:gethdr
-undefined	MPDnon_linear_quantizer_scale	draft:Update_Picture_Buffers.80100a30 unit:gethdr unit:getpic
-undefined	MPDscan	unit:getblk unit:gethdr
 undefined	Multiply__7CMatrixFR7CMatrixRC7CMatrixRC7CMatrix	draft:particlesystem_render
 undefined	PATHI_choosebeat__FP12PATHNODEVIEWP12PATHNODEVIEWPiPi	draft:PATHI_eventstart.8010ee50
-undefined	PRINTchannellist	unit:printstr unit:printstr_movechannel
 undefined	PSVECCrossProduct	unit:mtx
 undefined	PSVECNormalize	unit:mtx
 undefined	PauseLibraryInfo	unit:ispauselibrary
 undefined	PauseScreenInfo	unit:ispausegroup
-undefined	REALabortmessage	unit:abortmsg
 undefined	Render__15CUcodeRenderBinFR10CDmaPacketPv	unit:particlesystem
-undefined	SNDAEMS_addmodulebank	unit:sound
-undefined	SNDAEMS_addsystem	unit:sound
-undefined	SNDAEMS_beginevent	draft:PlayScriptedSound.800e9ba8 unit:saems unit:sound
-undefined	SNDAEMS_endevent	unit:sound
-undefined	SNDAEMS_removemodulebank	unit:saems_system unit:sound
-undefined	SNDAEMS_removesystem	unit:saems_system unit:sound
-undefined	SNDAEMS_setglobal	unit:sound
-undefined	SNDAEMS_updateevent	unit:sound
 undefined	ShellLibraryInfo	unit:isShellLibrary
 undefined	ShellMenuBlockItem__FPCv	unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku
 undefined	ShellScreenInfo	unit:isShellGroup
 undefined	__CARDIsWritable	unit:CARDDelete
 undefined	__dl__7CSpriteFPv	draft:ShellInit.800e752c
 undefined	__double_max	unit:ansi_fp
-undefined	__float_huge	unit:ansi_fp unit:e_acos unit:e_asin unit:e_pow
-undefined	__float_nan	unit:e_acos unit:e_asin unit:e_pow
 undefined	__vt__10BSGO_Dummy	draft:CreateDumpObject.8003fc2c unit:thrown_obj_ctor unit:thrown_obj_dtor unit:thrownbullet_ctor unit:weapon_ctor
 undefined	__vt__10CAnimMorph	unit:animmorph unit:animmorph_dtor
 undefined	__vt__10CCDBObject	unit:cdbobject_ctor unit:cdbobject_dtor
@@ -100,26 +82,9 @@ undefined	__vt__9CFaderBin	unit:fader unit:fader_dtor
 undefined	__vt__9CRemapBin	unit:dmesh unit:dmesh_cremapbin_ctor
 undefined	__vt__9CVolFiber	unit:fiber_create unit:fiber_dtor unit:projectilebullet unit:thrownbullet_ctor
 undefined	_eti_init_info	unit:__init_cpp_exceptions
-undefined	aemscompinfo	unit:saems unit:saems_counter unit:saems_system
 undefined	axDspSlave	unit:AXOut
 undefined	axDspSlaveLength	unit:AXOut
-undefined	bankservice	unit:path_service unit:path_serviceproject
-undefined	filtermodsizetable	unit:sfxrevc unit:smixfx
-undefined	filtersizetable	unit:sfxrevc
-undefined	fxdefault	unit:sdfx
-undefined	gFileSysOpts	unit:filesys_ea unit:filesys_ea_del unit:hlafile unit:hlsfile
-undefined	mapchannel	unit:sfxrevc
 undefined	nextafter	unit:ansi_fp
-undefined	sndbas	unit:sbasync unit:sbasync_done unit:sbasync_download
-undefined	sndcents	unit:scalcpitch
-undefined	snddefaultenvelope	unit:stpparse
-undefined	sndlibauthor	unit:ssysinit
-undefined	tablecopyto	unit:smixfx_modlap
-undefined	tmrsub	unit:inittmr
-undefined	vbltmrsub	unit:initvblt
-undefined	volscale	draft:PATH_event.8010b93c unit:path_createtrack unit:path_stop
-undefined	xafilterf__3SND	draft:decodexac.80168828
-undefined	xatablef__3SND	draft:decodexac.80168828
 fragment_local	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	unit:aramalloc_alloc
 fragment_local	AdjustAim__FR8CVector3f	unit:bsbifunc_mpprompt
 fragment_local	BIG_debuginfo__FPCvPiPUi	unit:locatbig_locate
