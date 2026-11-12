@@ -1,4 +1,6 @@
-// best WIP (harvest1, 2026-11-12): 88 real lines (was 113; index said 196), from
+// loop knots2 (2026-11-12): 88 -> 82 real lines with all locals hoisted to the top in a hill-climbed
+// order (scratch/loop3/knots2/pu/hc.py); i now in r29 as the original. Left: hist/IV/pointer colouring.
+// Earlier: best WIP (harvest1, 2026-11-12): 88 real lines (was 113; index said 196), from
 // scratch/loop3/struct1/v/pcube.cpp: 'move = move * (move * move); g_fGraphCursor += move;' (unfused,
 // matches the original's length). Left: registers.
 // A fragment of debug_prof.cpp (0x800f34f0): the SProfHistBin constructor
@@ -56,21 +58,29 @@ extern int g_ProfileBinTOP;
 extern int g_ProfileBinSelect;
 
 void PROFILE_UPDATE() {
-    int i;
+    short* min1;
+    short* max2;
     int k;
+    short* min2;
+    SProfHistBin* hist;
+    short* min3;
     int j;
+    short* max1;
+    int* value;
+    short* max3;
+    int i;
 
     if (g_bProfileUpdateHistory)
         g_HistoryCursor = (g_HistoryCursor + 1) % 300;
     for (i = 0; i < 31; i++) {
-        SProfHistBin* hist = &g_ProfileBinsHistory[i];
+        hist = &g_ProfileBinsHistory[i];
         hist->m_bins[g_HistoryCursor] = g_ProfileBins[i];
-        short* min1 = &hist->m_value0;
-        short* max1 = &hist->m_value2;
-        short* min2 = &hist->m_value4;
-        short* max2 = &hist->m_value6;
-        short* min3 = &hist->m_value8;
-        short* max3 = &hist->m_valueA;
+        min1 = &hist->m_value0;
+        max1 = &hist->m_value2;
+        min2 = &hist->m_value4;
+        max2 = &hist->m_value6;
+        min3 = &hist->m_value8;
+        max3 = &hist->m_valueA;
         *min1 = g_HistoryCursor;
         *max1 = g_HistoryCursor;
         *min2 = g_HistoryCursor;
@@ -79,7 +89,7 @@ void PROFILE_UPDATE() {
         *max3 = g_HistoryCursor;
         j = (g_HistoryCursor + 1) % 300;
         for (k = 0; k < 300; k++) {
-            int* value = &hist->m_bins[j].m_values[1];
+            value = &hist->m_bins[j].m_values[1];
             if (*value < hist->m_bins[*min1].m_values[1])
                 *min1 = j;
             if (*value > hist->m_bins[*max1].m_values[1])
