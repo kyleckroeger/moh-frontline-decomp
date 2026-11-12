@@ -53,7 +53,6 @@ real_lines	size	address	function	compile_settings_from	draft
 68	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
-92	900	800dc8c4	__ct__6CSceneFv	config/GMFE69/scene_dtor.json	research/drafts/__ct__6CSceneFv.800dc8c4.cpp
 32	1056	800516b4	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3	config/GMFE69/AISplinePath_ctor.json	research/drafts/GetClosestParameter.800516b4.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
@@ -86,7 +85,7 @@ real_lines	size	address	function	compile_settings_from	draft
 3	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
 138	3376	800b254c	Init__20CStaticObjectFactoryFv	config/GMFE69/staticobjfactory_helmet.json	research/drafts/Init.800b254c.cpp
 37	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp
-48	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
+39	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
 3	244	8015d238	SNDtimeremaining	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDtimeremaining.8015d238.c
 53	1700	8015d530	SNDVOICEI_alloc__FiiPiii	config/GMFE69/salloc.json	research/drafts/SNDVOICEI_alloc.8015d530.c
 79	708	8015f538	SNDI_precalcaztospkrvol__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDI_precalcaztospkrvol.8015f538.c

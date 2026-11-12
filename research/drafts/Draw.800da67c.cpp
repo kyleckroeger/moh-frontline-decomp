@@ -152,11 +152,20 @@ public:
 class CScene {
 public:
     struct SModCommand {
-        void (CScene::*m_fn)();
-        int m_unused;
+        void (CScene::*m_fn)(ISceneNode*);
+        ISceneNode* m_node;
     };
 
     void Draw(CViewport&, CScreen&, CRenderList&, CFog&);
+
+    void ProcessCommands() {
+        m_drawing = false;
+        for (SModCommand* cmd = m_commands.begin(); cmd != m_commands.end(); cmd++) {
+            SModCommand c = *cmd;
+            (this->*c.m_fn)(c.m_node);
+        }
+        m_commands.clear();
+    }
 
     ISceneNode* m_firstNode;
     unsigned char unknown004[20];
@@ -209,10 +218,5 @@ void CScene::Draw(CViewport& viewport, CScreen& screen, CRenderList& list, CFog&
             node->Draw(context);
     }
     m_world->DrawShadows(context);
-    m_drawing = false;
-    for (SModCommand* cmd = m_commands.begin(); cmd != m_commands.end(); cmd++) {
-        SModCommand c = *cmd;
-        (this->*c.m_fn)();
-    }
-    m_commands.clear();
+    ProcessCommands();
 }
