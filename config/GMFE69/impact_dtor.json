@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,35 +32,70 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d0164",
-      "size": 1148,
+      "address": "0x800cf794",
+      "size": 3660,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e58c",
-      "size": 16,
+      "address": "0x8000e504",
+      "size": 152,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 168,
+      "stripped_objects": [
+        "@278",
+        "@336"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x80015284",
-      "size": 24,
+      "address": "0x80015278",
+      "size": 36,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36
+      "linked_size": 60,
+      "stripped_objects": [
+        "@279",
+        "@337"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177d38",
+      "size": 26,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189968",
+      "size": 28,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 44
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e1c0",
+      "size": 16,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Visit__7CImpactFR10ISceneNode",
+      "address": "0x800cf794",
+      "size": 2512,
+      "binding": 1
+    },
     {
       "name": "__dt__7CImpactFv",
       "address": "0x800d0568",
@@ -82,12 +117,20 @@
     "GetAzimuth__F8CVector3PC13CPlayerObject": "0x800ebc90",
     "GetCenter__10CVolSphereCFv": "0x800cba30",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "IsShootThru__12CSurfaceTypeFi": "0x8001bfbc",
     "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
+    "__ct__10CCollisionFv": "0x800c7cf4",
+    "__ct__9CVolFiberF8CVector38CVector3": "0x800ca5cc",
+    "__ct__9CVolFiberFRC6CLine3": "0x800ca560",
     "__dl__FPv": "0x8001ca2c",
+    "__dt__10CCollisionFv": "0x800c7b80",
     "__dt__10CVolSphereFv": "0x800cbb24",
+    "__dt__6CLine3Fv": "0x8001c5d0",
+    "__dt__9CVolFiberFv": "0x800ca504",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv": "0x8001c030",
-    "__vt__7CImpact": "0x80189974",
     "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
     "g_cheats": "0x80196a94",
     "g_inputMgr": "0x801ec80c",
     "g_scene": "0x8019484c"
@@ -97,13 +140,13 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "impact.cpp",
   "original_file_index": 7982,
-  "stripped_sections": [
-    ".data"
-  ],
   "weak_duplicates": [
+    "__dt__6CLine3Fv",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv",
     "__vt__Q23dwi22IVisitor<10ISceneNode>"
   ],
@@ -114,36 +157,78 @@
     {
       "section": ".sdata2",
       "offset": 0,
-      "size": 4,
-      "address": "0x80350cc8"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
-      "address": "0x80350cf4"
+      "size": 8,
+      "address": "0x80350cc0"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80350cf8"
+      "address": "0x80350cc8"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x80350cfc"
+      "address": "0x80350ccc"
     },
     {
       "section": ".sdata2",
       "offset": 16,
       "size": 4,
+      "address": "0x80350cd0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80350cd8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80350ce0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
       "address": "0x80350ce8"
     },
     {
       "section": ".sdata2",
-      "offset": 20,
+      "offset": 44,
+      "size": 4,
+      "address": "0x80350cec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350cf0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x80350cf4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x80350cf8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 60,
+      "size": 4,
+      "address": "0x80350cfc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 64,
       "size": 4,
       "address": "0x80350d00"
     }
