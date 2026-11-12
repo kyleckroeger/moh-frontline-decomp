@@ -150,6 +150,8 @@ def check_file(path, orig, verbose=False):
             if k not in orel or k not in mrel:
                 problems.append(f"+{k:#x}: relocation only in {'original' if k in orel else 'source'}")
                 continue
+            if orel[k][1]["name"] and orel[k][1]["name"] == mrel[k][1]["name"] and orel[k][2] == mrel[k][2]:
+                continue  # the same symbol and addend as recorded (one past an array's end too)
             ot, mt = orig.target(orel[k][1], orel[k][2]), mine.target(mrel[k][1], mrel[k][2])
             if ot[0] == "literal" and mt[0] == "literal":
                 same = ot[2] == mt[2]

@@ -134,6 +134,13 @@ and `AIObject_visionseek` both define the `ComputeStatus*` functions). Five draf
 reached a large global through r13 because their view was too small; padded to the
 original size, all five match better.
 
+Initialised data, 2026-11-12: `research/data/init/` defines the game's undefined
+initialised globals from the original's bytes and relocations, one file per original
+file as for `.bss` (constants, switches, the default and blend light sets, fog types,
+the identity matrix, filename hooks); all exact by `check_data.py`. A file the file map
+doesn't name is inferred from the neighbours in the original's section and the users,
+and marked; the rest are in `init/unassigned.cpp`. The 84 vtables wait for step 3.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
