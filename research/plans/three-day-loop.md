@@ -19,15 +19,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 88.85% (1,256,876 bytes) at 26fe226b, +37,604 this run. Landing commits: 51.
-- Lanes (2026-11-12 07:16): geometry, airender and systems lanes dry;
-  the four slots: zero1 (the li/mr shared-zero rule, starting with CalculateLevelStats at 1
-  line), knots3 (knots2's locals-first and add-in-place recipes on geometry knots), scene1
-  (CScene::Draw at 48, frame now right; CScene ctor), mid4 (least-worked drafts by bytes).
-  Recent: SoundSchedule::Update 1,864 (a842943c), CCDBObject::Init 784 (f748ce87),
-  SNDVOICEI_free 396 (7dcdeb04); audit free fixes 45c5c504 and natural forms 1976c05b, cf37912d;
-  pending-form drafts in research/drafts/pending/. Usage limit stopped all agents 00:10-00:40
-  and 03:50-05:40 on 11-12.
+- Verified: 88.96% (1,258,464 bytes) at 3a9096c2, +39,192 this run. Landing commits: 55.
+- Lanes (2026-11-12 07:45): geometry, airender and systems lanes dry;
+  the four slots: real1 (land Orthonormalize with the original's real CVector3 members; rename
+  the invented SetDifference to CVector3::Sub), eh1 (read the original's exception-table
+  records to restore member destructors in constructors), rank1 (rule for later values
+  outranking `this` in callee registers), undo1 (named locals instead of value wrappers).
+  New rules found: shared zero (zero1), member destructors change ctor registers (scene1),
+  real vector helpers are void CVector3 members Sub/Scale/Add (names1). Recent landings:
+  CScene ctor 900 (ea52bfd7), CalculateLevelStats 432, natural-form fixes bac20c93, 7d599836.
+  Usage limit stopped all agents 00:10-00:40 and 03:50-05:40 on 11-12.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -107,7 +108,13 @@ multiplayer not at all. Every landing keeps the complete image identical.
      of the wrapper and duplicate-inline kind. natural1 replaced three load-bearing forms with
      natural ones (1976c05b: GetPalette inline, `bin = new (bin) CCPTMatBin(base)`, which you
      may still read as a write-back; cf37912d: debug_prof's `(void)0` gone). Still load-bearing:
-     WriteSwapVCD (4 lines without), DumpBuddyVector (28), SubV/AddV (66), Mul (2). Held back under that rule: Update_Picture_Buffers
+     WriteSwapVCD (4 lines without), DumpBuddyVector (28), Mul (2); SubV/AddV removed by undo1
+     (bac20c93). knots3 found
+     the floating-point knots left in the geometry drafts (GetExtents, Orthonormalize,
+     ConstrainVelocity, the capsule tests) are all products that only a value-returning inline's
+     return temp reproduces; plain locals, in-place statements and getters colour differently.
+     So the original probably did use small value-returning inlines there; the open part is
+     only their names and signatures. Held back under that rule: Update_Picture_Buffers
      (904 B) is code exact with an invented `third_plane(height, width, data)` inline whose
      parameter order sets the registers; on a yes, getpic.cpp becomes one complete unit (recipe
      in scratch/loop3/knots1/notes.md, draft research/drafts/Update_Picture_Buffers.80100a30.cpp).
