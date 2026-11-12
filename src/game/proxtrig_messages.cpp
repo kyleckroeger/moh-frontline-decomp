@@ -27,12 +27,7 @@ class CStaticObject;
 struct AIDoodadView;
 struct EClsnIdView;
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CVector3.h"
 
 struct BPDLightVolume {
     unsigned char data[48];

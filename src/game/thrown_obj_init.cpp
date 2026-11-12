@@ -188,8 +188,12 @@ void CThrownObject::Init() {
     ((CStaticObject*)this)->Init();
     m_value280 = m_definition->record->m_value5c;
     flag3 = m_definition->record->m_value4c != 0;
-    m_vector288[0] = m_vector288[1] = m_vector288[2] = 0.0f;
-    m_vector2a8[0] = m_vector2a8[1] = m_vector2a8[2] = 0.0f;
+    m_vector288[2] = 0.0f;
+    m_vector288[1] = 0.0f;
+    m_vector288[0] = 0.0f;
+    m_vector2a8[2] = 0.0f;
+    m_vector2a8[1] = 0.0f;
+    m_vector2a8[0] = 0.0f;
     flag0 = 1;
     flag1 = 0;
     flag2 = 0;
@@ -215,8 +219,10 @@ void CThrownObject::Init() {
     *world = *local;
     SetWorldBoundingVolume((EVolumeType)3, (IVolume*)world);
     SetWorldBoundingVolume((EVolumeType)0, (IVolume*)world);
-    m_value2e4 = m_value2e8 = 0;
-    m_value2ec = m_value2f0 = 0;
+    m_value2e8 = 0;
+    m_value2e4 = 0;
+    m_value2f0 = 0;
+    m_value2ec = 0;
     m_scriptObject.m_field0 = 0;
     m_self = this;
     m_pendingSound = 0;

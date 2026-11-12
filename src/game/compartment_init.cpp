@@ -1,5 +1,9 @@
-// compartment.cpp: fixes up a loaded compartment and creates the file's globals, as
-// partial source. Loaded files store offsets, which offsetPtr turns into pointers.
+// A fragment of compartment.cpp (0x800761c8): CCompartment::Init fixes up a
+// loaded compartment, as partial source. Loaded files store offsets, which
+// offsetPtr turns into pointers. The file's .bss block is laid out below with
+// views that have no constructors; this unit does not construct the file's
+// globals. The Shape, palette and CPT record views and their member names are
+// inferred from this function's accesses.
 extern "C" {
 void OSReport(const char*, ...);
 void DCFlushRange(void*, unsigned long);

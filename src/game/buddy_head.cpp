@@ -423,15 +423,10 @@ inline void GiveBuddyOrders(BuddyInfo* const buddy) {
     }
 }
 
-/* inferred: the iterator form used by the loops (an extra inline level, as the FPR colouring shows) */
-inline void GiveBuddyOrders(dwi::vec_iter<BuddyInfo>& it) {
-    GiveBuddyOrders(it.operator->());
-}
-
 inline void SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint) {
     it->progress = checkpoint;
     it->moving = 0;
-    GiveBuddyOrders(it);
+    GiveBuddyOrders(it.operator->());
 }
 
 /* inferred: the attached-list dump body takes the vector as a parameter (the extra inline level
@@ -522,7 +517,7 @@ void BIFunc_UpdateBuddyCheckpoints(int** stack, void*) {
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
         if (it->active)
-            GiveBuddyOrders(it);
+            GiveBuddyOrders(it.operator->());
     }
     DumpAttachedBuddies();
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;

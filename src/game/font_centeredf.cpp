@@ -79,10 +79,6 @@ public:
     FONT* m_font;
 };
 
-inline CScreen* CurrentScreen() {
-    return CScreen::GetCurrent();
-}
-
 inline float Mul(float a, float b) { float r = a; r *= b; return r; }
 void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     std::va_list args;
@@ -90,7 +86,7 @@ void CFont::DrawTextCenteredF(float y, const char* format, ...) {
 
     __builtin_va_info(&args);
     vsprintf(text, format, args);
-    CScreen* screen = CurrentScreen();
+    CScreen* screen = CScreen::GetCurrent();
     float viewX;
     float viewWidth = g_viewport.m_width;
     float width = Mul((float)screen->GetWidth(), viewWidth);

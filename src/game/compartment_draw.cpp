@@ -11,10 +11,8 @@
 // compartment.cpp unit places it. The other file statics are declared extern.
 // Classes and functions are named by the symbols; member names and the
 // camera's virtual-table view are inferred.
-class CVector3 {
-public:
-    float x, y, z, w;
-};
+#include "game/CVector3.h"
+
 class CMatrix {
 public:
     void Multiply(const CMatrix&, const CMatrix&);

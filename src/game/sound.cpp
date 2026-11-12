@@ -1431,8 +1431,11 @@ int PlayScriptedSound(ISceneNode* node, CVector3 position, const CSoundTable::SS
         CVector3 listener;
         if (player)
             player->GetPosition(listener);
-        else
-            listener.d.v[0] = listener.d.v[1] = listener.d.v[2] = 0.0f;
+        else {
+            listener.d.v[2] = 0.0f;
+            listener.d.v[1] = 0.0f;
+            listener.d.v[0] = 0.0f;
+        }
         float dx = position.d.v[0] - listener.d.v[0];
         float dy = position.d.v[1] - listener.d.v[1];
         float dz = position.d.v[2] - listener.d.v[2];

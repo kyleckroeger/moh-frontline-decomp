@@ -118,8 +118,6 @@ class CCompartment {
 public:
     void HandleExplosion(const CExplosion&);
     bool TextureSwapCollisionDisabled(int index);
-    bool SwapCollisionDisabled(int index);
-    void SwapTexture(int index);
     void TextureSwap(int index);
 
     unsigned char unknown00[40];
@@ -132,14 +130,14 @@ public:
 
 /* Inferred: the bodies of TextureSwapCollisionDisabled and TextureSwap, shared
    with HandleExplosion. */
-inline bool CCompartment::SwapCollisionDisabled(int index) {
+inline bool CCompartment::TextureSwapCollisionDisabled(int index) {
     const CDBTri* tri = m_geometry->m_tris[index];
     if (((tri->m_swap.m_flags >> 3) & 3) == 0)
         return ((g_TextureSwapCache.m_entries[m_swapSet][index].m_state.m_flags >> 5) & 7) == (tri->m_swap.m_flags & 7) - 1;
     return false;
 }
 
-inline void CCompartment::SwapTexture(int index) {
+inline void CCompartment::TextureSwap(int index) {
     CDBTri* tri = m_geometry->m_tris[index];
     if (tri->m_countdown-- != 0)
         return;
@@ -195,8 +193,8 @@ void CCompartment::HandleExplosion(const CExplosion& explosion) {
             }
         }
         for (int j = 0; j < indices.m_size; j++) {
-            if (!SwapCollisionDisabled(indices.m_data[j]))
-                SwapTexture(indices.m_data[j]);
+            if (!TextureSwapCollisionDisabled(indices.m_data[j]))
+                TextureSwap(indices.m_data[j]);
         }
     }
 }

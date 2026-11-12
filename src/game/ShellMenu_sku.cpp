@@ -72,8 +72,8 @@ struct MPStatsView {
 
 class CShellMenu {
 public:
-    /* counts the open windows (the same count as Get_NumPlayers) */
-    int CountWindows() {
+    /* counts the open windows, one per player */
+    int Get_NumPlayers() {
         int count = 0;
         if (m_activeWindows[0] != 0)
             count++;
@@ -105,7 +105,7 @@ public:
 };
 
 void CShellMenu::MoveStatsIntoProperAreaForIstudio() {
-    int count = CountWindows();
+    int count = Get_NumPlayers();
     if (count < 2 || count > 3)
         return;
     {
