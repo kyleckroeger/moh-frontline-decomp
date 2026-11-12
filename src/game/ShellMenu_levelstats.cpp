@@ -1,5 +1,5 @@
-// A fragment of ShellMenu.cpp (0x800e5a14): CShellMenu::GetCumulativeStats
-// and CShellMenu::GetLevelStats.
+// A fragment of ShellMenu.cpp (0x800e5a14): CShellMenu::GetCumulativeStats,
+// CShellMenu::GetLevelStats and CShellMenu::CalculateLevelStats.
 // GetCumulativeStats finishes the running totals for the studio: the total
 // accuracy, the favourite weapon (most kills over the 45 weapons), a new
 // evaluation (the most-hit body location times five plus a random 0-4) when
@@ -14,11 +14,17 @@
 // (level number, rating, kills, shots, hits, accuracy, favourite weapon, hits
 // per body location, evaluation, minutes rounded to the nearest, whether a
 // medal or movie was unlocked) clamped to 9999999, and adds the level's
-// counts into the running totals. The classes, functions and globals are
-// named by the mangled symbols; the members, the objective list and level
-// record views, the unused objective count and the most-hit-location helper
-// (MostHit) are inferred.
+// counts into the running totals.
+// CalculateLevelStats computes the level's accuracy, logs and picks the
+// favourite weapon, the evaluation (most-hit location times five plus a
+// random 0-4) and the level time in minutes rounded to the nearest.
+// Both most-hit searches reuse the weapon search's 'most' and 'weapon'
+// variables (the reused variables give the original's shared zero register).
+// The classes, functions and globals are named by the mangled symbols; the
+// members, the objective list and level record views and the unused
+// objective count are inferred.
 extern "C" int rand();
+void iDebugMsg(const char*, ...);
 
 struct StarLevelsInBits;
 
@@ -45,6 +51,7 @@ class CShellMenu {
 public:
     unsigned int* GetCumulativeStats();
     unsigned int* GetLevelStats();
+    void CalculateLevelStats();
     LevelRecordView& Record(int mission, int stage) { return m_records[mission][stage]; }
     bool CheckIfMovieAndMedalNeedsToBeUnlocked();
     bool CheckIfSpecialMedalsNeedToBeUnlocked();
@@ -91,19 +98,6 @@ public:
     unsigned int m_stats[21];
 };
 
-static inline int MostHit(const unsigned int* values) {
-    unsigned int hits = 0;
-    int location = 0;
-    for (int j = 0; j < 7; j++) {
-        unsigned int v = values[j];
-        if (v > hits) {
-            hits = v;
-            location = j;
-        }
-    }
-    return location;
-}
-
 unsigned int* CShellMenu::GetCumulativeStats() {
     if (m_totalShotsFired != 0)
         m_totalAccuracy = 100.0f * ((float)m_totalHits / (float)m_totalShotsFired);
@@ -121,8 +115,15 @@ unsigned int* CShellMenu::GetCumulativeStats() {
     }
     m_totalWeapon = weapon;
     if (m_lastShotsFired < m_totalShotsFired) {
-        int location = MostHit(m_totalShotLocations);
-        m_totalEvaluation = location * 5 + rand() % 5;
+        most = 0;
+        weapon = 0;
+        for (int j = 0; j < 7; j++) {
+            if (m_totalShotLocations[j] > most) {
+                most = m_totalShotLocations[j];
+                weapon = j;
+            }
+        }
+        m_totalEvaluation = weapon * 5 + rand() % 5;
     }
     m_lastShotsFired = m_totalShotsFired;
     m_stats[0] = m_totalShotsFired;
@@ -230,4 +231,33 @@ unsigned int* CShellMenu::GetLevelStats() {
     for (unsigned int i = 0; i < 45; i++)
         m_totalWeaponKills[i] += m_weaponKills[i];
     return m_stats;
+}
+
+void CShellMenu::CalculateLevelStats() {
+    if (m_shotsFired != 0)
+        m_accuracy = 100.0f * ((float)m_hits / (float)m_shotsFired);
+    else
+        m_accuracy = 0.0f;
+    unsigned int i = 0;
+    unsigned int most = 0;
+    int weapon = 0;
+    for (; i < 45; i++) {
+        iDebugMsg("Current hit stats for Weapon[ %d ] = %d \n", i, m_weaponKills[i]);
+        if (m_weaponKills[i] > most) {
+            most = m_weaponKills[i];
+            weapon = i;
+        }
+    }
+    m_weapon = weapon;
+    most = 0;
+    weapon = 0;
+    for (int j = 0; j < 7; j++) {
+        if (m_shotLocations[j] > most) {
+            most = m_shotLocations[j];
+            weapon = j;
+        }
+    }
+    m_evaluation = weapon * 5 + rand() % 5;
+    unsigned int halfMinutes = m_levelTimer / 30;
+    m_stat340 = halfMinutes / 2 + halfMinutes % 2;
 }

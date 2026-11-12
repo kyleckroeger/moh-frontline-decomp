@@ -40,20 +40,27 @@
     {
       "name": ".text",
       "address": "0x800e5a14",
-      "size": 2400,
+      "size": 2832,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000f150",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80015c5c",
-      "size": 24,
+      "size": 36,
       "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178dec",
+      "size": 42,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -68,6 +75,12 @@
       "address": "0x800e5dc4",
       "size": 1456,
       "binding": 1
+    },
+    {
+      "name": "CalculateLevelStats__10CShellMenuFv",
+      "address": "0x800e6374",
+      "size": 432,
+      "binding": 1
     }
   ],
   "externals": {
@@ -75,6 +88,7 @@
     "CheckIfSpecialMedalsNeedToBeUnlocked__10CShellMenuFv": "0x800e1c1c",
     "SetStarRatingStatus__FP16StarLevelsInBitsUiUi": "0x800e85a0",
     "__cvt_fp2unsigned": "0x801388e8",
+    "iDebugMsg__FPCce": "0x800e6524",
     "rand": "0x8013fc54",
     "theObjectiveList": "0x801f70ec"
   },
