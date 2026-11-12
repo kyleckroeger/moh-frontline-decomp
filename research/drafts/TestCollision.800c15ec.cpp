@@ -40,8 +40,8 @@ public:
     }
     void Negate(const CVector3& v) {
         d.c.x = -v.d.c.x;
-        d.c.y = -v.d.c.y;
         d.c.z = -v.d.c.z;
+        d.c.y = -v.d.c.y;
     }
     float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
     float LengthSq() const { return d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z; }
@@ -121,18 +121,34 @@ public:
     CVector3 m_center;
 };
 
+// Value-returning inlines on the half-axis products (and one corner difference)
+// give the original's FPR colouring of a, b and c.x (loop vec4).
+inline float SubV(float a, float b) { return a - b; }
+inline float MulV(float a, float b) { return a * b; }
 int CVolBox::TestCollision(const CPlane& plane, CCollision& collision, bool flag) const {
     CVector3 a;
     CVector3 b;
     CVector3 c;
-    a.Scale(m_axes[0], m_half[0]);
-    b.Scale(m_axes[1], m_half[1]);
-    c.Scale(m_axes[2], m_half[2]);
+    a.d.c.x = MulV(m_half[0], m_axes[0].d.c.x);
+    a.d.c.y = MulV(m_half[0], m_axes[0].d.c.y);
+    a.d.c.z = MulV(m_half[0], m_axes[0].d.c.z);
+    b.d.c.x = MulV(m_half[1], m_axes[1].d.c.x);
+    b.d.c.y = MulV(m_half[1], m_axes[1].d.c.y);
+    b.d.c.z = MulV(m_half[1], m_axes[1].d.c.z);
+    c.d.c.x = MulV(m_half[2], m_axes[2].d.c.x);
+    c.d.c.y = MulV(m_half[2], m_axes[2].d.c.y);
+    c.d.c.z = MulV(m_half[2], m_axes[2].d.c.z);
     CVector3 point;
     CVector3 corner = m_center;
-    corner -= a;
-    corner -= b;
-    corner -= c;
+    corner.d.c.x -= a.d.c.x;
+    corner.d.c.y = SubV(corner.d.c.y, a.d.c.y);
+    corner.d.c.z -= a.d.c.z;
+    corner.d.c.x -= b.d.c.x;
+    corner.d.c.y -= b.d.c.y;
+    corner.d.c.z -= b.d.c.z;
+    corner.d.c.x -= c.d.c.x;
+    corner.d.c.y -= c.d.c.y;
+    corner.d.c.z -= c.d.c.z;
     SClsnContact contact;
     contact.m_vector0.Negate(plane.m_normal);
     contact.m_separation = plane.Project2(corner, point);
