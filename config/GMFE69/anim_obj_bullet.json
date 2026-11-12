@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -73,9 +73,11 @@
     }
   ],
   "externals": {
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
     "BSEventGetEventMemoryBlock__FUi": "0x80034dbc",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "Explode__13CThrownBulletFv": "0x800d2528",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
     "PlayImpactSound__FUsUs8CVector3b": "0x800eb17c",
     "Set_hits__10CShellMenuFUib": "0x800e6b18",
     "Set_shotLocation__10CShellMenuFUi14EShotLocationsb": "0x800e6a28",
@@ -129,5 +131,9 @@
       "size": 8,
       "address": "0x803503d8"
     }
+  ],
+  "weak_duplicates": [
+    "AsPlayerObject__10ISceneNodeFv",
+    "GetScriptObject__10ISceneNodeCFv"
   ]
 }

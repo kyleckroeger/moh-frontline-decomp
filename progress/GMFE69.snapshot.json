@@ -576,7 +576,7 @@
     "src/game/anim_callback_init.cpp": "a2b82386c785f95da4c4c5373663ce10d5ec1b7fd15cf4369224b6138c507def",
     "src/game/anim_callback_weapon.cpp": "6d09fda883df47ab3e98f7a878a0e607b58a98e659ae69dc6be03849781d1d08",
     "src/game/anim_obj.cpp": "5ff28a68f25f3cf74483fa4d701321a4908d42124588403ac021cdb463266eec",
-    "src/game/anim_obj_bullet.cpp": "2a1de884a456c68aa537f711796b927a8ab1fe4cdc873ea414135cfbe4243755",
+    "src/game/anim_obj_bullet.cpp": "7ee7e4e297f5f7e556de8f4658eb2da6903ce266d8e4b32ed75fcec5f8e83adf",
     "src/game/anim_obj_collide.cpp": "e3f6af7f355f4334031f214121af5f9e9685073eee4f7492c1bb03339525b613",
     "src/game/anim_obj_ctor.cpp": "eb919c56cf4e1875e41d585720c1e2f72e5b98c55734292de4407a06d2d34f46",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
@@ -608,9 +608,9 @@
     "src/game/animmorph_weight.cpp": "00404a1d8e58eb98d991ce4ac15e944319d67294248c54d07fcdc80e77474265",
     "src/game/animmot.cpp": "a45a8abe1f4cf7ff29d111e21ddc34a94f2de557f14ba7b00b699d7cec9acad9",
     "src/game/animmot_rot.cpp": "ae868a1dcf1b6f54f0f353736386dcadcdc005a552c17455d187ee62344c404c",
-    "src/game/animplayer.cpp": "a5028e38ea23c867f2e81323584c8d3cd10fb3234bef6afa0418254d812fe1bd",
+    "src/game/animplayer.cpp": "806cd2d23243dac58ba4e7c748fb6e9ed5beebc095d29139a1d5f8d6826a34af",
     "src/game/animplayer_ctor.cpp": "8732028eb72a949d36cf29fd9ef46b3dc2ec9a1de84d3db6530484958cf508d3",
-    "src/game/animplayer_draw.cpp": "983e3a5430a8b3144694965477c91045a488b992803413d0a98f8b6cf84f726f",
+    "src/game/animplayer_draw.cpp": "f64545612c410aca1969c88354bd5fed911bbbb95ad02f3b9820858dfb063109",
     "src/game/animplayer_initai.cpp": "9bd9ff11bf52b7770f872fadec39a7acd7b44e6cf4ecd44ab91d84f0059f77fc",
     "src/game/animplayer_weak.cpp": "aaf6f62fa5138013edb00bd7b8b905b1fe4a56d45a4015f45875c543cec5c04b",
     "src/game/animseq.cpp": "f075b77f6b41363f0b79573233d34916c09577707c4eb82895fe222ed6fc7998",
@@ -845,7 +845,7 @@
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "f9e3352c2c8466d6932bd947e4da1f38448984c5ee142c27ff99722ee6db03e4",
-    "src/game/decal_reset.cpp": "fe343ef012abcba3c498f2915eef163cfb70498a83f3c8fb1d1b8eed4546fb01",
+    "src/game/decal_reset.cpp": "9e109618f9dcfa573e9cb13405023fedbd42e962a3bdd7a6a38ac355f9af7247",
     "src/game/destructor_queue.cpp": "e03cf0b6880befec4f40a6abaa44cef7bdbfff9ef781396eec3ab266e7f89d14",
     "src/game/devicemgr.cpp": "7b3153cdd86bbdb41db94ee960dc7e388af5996235f5a3982151b7abd341e82d",
     "src/game/dmcluster.cpp": "13992df577f960a585c38db6290a2d3d07fe3229fb7a17a4ece88aa953437fe0",
@@ -890,9 +890,9 @@
     "src/game/hearingvolume_bullet.cpp": "d675a975cda997302153895f84925033ef4b4975388d742d108434c3f9ee0ec0",
     "src/game/hearingvolume_ctor.cpp": "fb9cc85fba1a9d5cb322379bbce4aadcb1645a46016425f24a930147a156884c",
     "src/game/hearingvolume_init.cpp": "2621762cce03b4672f7b5fb1acf858b6175abf19e97f0a0073fd3e60ea957c0a",
-    "src/game/hearingvolume_rows.cpp": "3d1c356b962dd59c4c98a420a27aee312da033240bf5f928bc9e9ca0309f5b58",
+    "src/game/hearingvolume_rows.cpp": "603368903d1c34fc6b47d62627396e0744f4527fd629b9786503a89423d4ea5b",
     "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
-    "src/game/hierobject_constrain.cpp": "313ade0deadd72fe07b7b4818b114ebd87ce348101bb18e3b8b95417dc65d56e",
+    "src/game/hierobject_constrain.cpp": "13edf79bd4a6a5646c90a7d65d551ae74a9c36697cea644d3019cf2dd9353127",
     "src/game/hierobject_draw.cpp": "67a66f0e3948333dc004a9e723b8bf8995572b5dacac294b12d397e422f50e4a",
     "src/game/hierobject_motion.cpp": "a014904bcd8f0aca42d1dff4a936a4c5d0020639a868674ff9c23cc243d20318",
     "src/game/hierobject_playback.cpp": "4f5b5b4b45e5fee046ef836082862248430fc79c2b7102e4dc92fb3c8fef0628",
@@ -953,7 +953,7 @@
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
     "src/game/objcreate_setscript_static.cpp": "71730808faa7ee0f1af80c554b0dad8b983185857460ac66966694459a463df8",
     "src/game/objcreate_setscript_volume.cpp": "12a3843e480d1d2090ce101d2718f0dc5195ec1cb8fe1af313a94a05700784d6",
-    "src/game/objcreate_swap.cpp": "df61ca540f213beb275b85a17cc539b1f24ed3130cbab9c496b49d5280bf7d8c",
+    "src/game/objcreate_swap.cpp": "b951097ef7f8aaf20c7799ca95aca4c4434ca1b32f95d27db83d68d2ba46eda1",
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "be55a81dc45eb7fb40ce8c66b22c8ecd73d841668b7cd12b0457e2184472b0e1",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
@@ -977,7 +977,7 @@
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
     "src/game/particlesystem_texture.cpp": "7bad990fa32156064c574d6c094d0b5c24b6c36095c2a4601ef31357e4d6c5c4",
     "src/game/particlesystem_texturebin_dtor.cpp": "2d93edcd84e7b4ea3ebf6d6dd535072ca217836a9b31c37a5fdc139b8262cd67",
-    "src/game/particlesystem_visible.cpp": "35613e0d8c3a1492b6ed22197040f41b70235042c7152370d6591a3cf0135f45",
+    "src/game/particlesystem_visible.cpp": "77cb0777fb75ba9ff0651832aedb5de3af910d738128894d370288aee1cdab67",
     "src/game/plane_ctor.cpp": "7aee56bff805ef1115a9d56238266d91276c2956dc8d2d7b2befaea40b58a263",
     "src/game/player.cpp": "68929cf79fe628386c90e66e662f39ab538c6f19f1e400cb161c319870e16112",
     "src/game/player_begincrouch.cpp": "0e1264742073db0c7ca977f38ebe6b2c253db7df93f4ef6b8197a7523921a7e1",
@@ -1981,7 +1981,7 @@
     "config/GMFE69/anim_callback_init.json": "241512086ec9ce26975b11d27544d97e869293be10fdafc1f830717b925667f3",
     "config/GMFE69/anim_callback_weapon.json": "5ff2bed5b40f1f49f4925a1b54f27f0f286a128aec5ac897105498f13ab84973",
     "config/GMFE69/anim_obj.json": "66dd65ccb20489e87c4dafe2feb7a0c9498d819bfe874953694df511dba9b9af",
-    "config/GMFE69/anim_obj_bullet.json": "ae249f605a40ec5f0f6f29437b80019957d274ac0978909f2463b44800ed4e7b",
+    "config/GMFE69/anim_obj_bullet.json": "73a54507e222be9a38bbf46b9a2c152391d62edc1fcc5e609ac2a7688342cf4d",
     "config/GMFE69/anim_obj_collide.json": "0371a13545fefd524fd743f64704b746dd6618d3e5a3ff966481859b5a999b82",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
     "config/GMFE69/anim_obj_draw.json": "8dcee46deff75776476d8b84ebbcdb3f3b486c18fa40e70e0e179606823b5017",
@@ -2355,9 +2355,9 @@
     "config/GMFE69/hearingvolume_bullet.json": "fe66f7649067c88844e9d49ada347ce9818cd97f22ac2ef2a09b41c8ace9d321",
     "config/GMFE69/hearingvolume_ctor.json": "bba5cdf2cf44a15bb762ffc21729b9b9ffbf42e7d15d2e55f055e9d6611d8b66",
     "config/GMFE69/hearingvolume_init.json": "ec3de2a1e6372373d289fd2a9b4f27f43cea6da77fa32929a50aa432cf52b8af",
-    "config/GMFE69/hearingvolume_rows.json": "33b7242d074851978585dc25c346f2372665c958e20fe54505f5d9fa7003f420",
+    "config/GMFE69/hearingvolume_rows.json": "c7204ce18b9eab5e2c7f0cc939d875a4a9b5bd677d223836c1ed4c6c48386d0a",
     "config/GMFE69/hierobject.json": "97c84bb7a2ef58333c47171b0d1f398ff7f354e472820d36102c939f48982ddc",
-    "config/GMFE69/hierobject_constrain.json": "0574043fcfd082b4cf36b0bad36228178aee92fde2d94f39f2ca0b4d124199fa",
+    "config/GMFE69/hierobject_constrain.json": "91d921adf6c9ef973ca23c94f23e689ddebf68eb46231706edc78ae6cfcc34ad",
     "config/GMFE69/hierobject_draw.json": "eda533592402fa26cb260d588ee3e971154caf3e0a9b1e091f19baea810dd367",
     "config/GMFE69/hierobject_motion.json": "862ddf511f4fc1e06db3ae7b03902830536071543761956f061dcbd61f783dc0",
     "config/GMFE69/hierobject_playback.json": "8a74b5774fd2f8b8aa6ffb4c2d51ca9804fa1c349753d4536fc4bb76cc72f925",
@@ -2495,7 +2495,7 @@
     "config/GMFE69/particlesystem_rotation.json": "f93990bd126de25a1b458dd4e7554b136b5c9214c1915c7370abb2df09b17bf7",
     "config/GMFE69/particlesystem_texture.json": "b25922fccbd61152871c9aea7e27ecc58c5549aaf3a70d1b08b1021efdd8b8e4",
     "config/GMFE69/particlesystem_texturebin_dtor.json": "dbfb9dae907a58514bd9d26ca874193f87350b9fd1437f92189dcbdf26d4ed0a",
-    "config/GMFE69/particlesystem_visible.json": "ded46f2a17f2860f584deed292f4f4c78ef96220015396171562eb72e29cda64",
+    "config/GMFE69/particlesystem_visible.json": "817a432497521e69e11d537f4d15ccc5bd953e28053358c1e98aac8a5bfd6cdc",
     "config/GMFE69/path.json": "a130e3f795d3112c351a4623a4f8499a6f136708db1fbba95b835f98112bf65c",
     "config/GMFE69/path_choosebeat.json": "35dda38239fa0304a04495686b4c594c9396d0b2e46799372495fbf23f8fa6b3",
     "config/GMFE69/path_createtrack.json": "dbb9b5d264e63ad0153f175fb27a0e4c93e66f92abaaf90e2b3dcdce334bf11a",
@@ -21960,8 +21960,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5292f3a277b9b663aed6386e0ccf0ba3bd4df0da37b0021bd871397ba980fdb5",
-      "linked_sha256": "a01e449193b48ec3a4d0b4a9c88ca847d40d4c9b188fa2696dd1d76195d0c986"
+      "object_sha256": "c6ecfcba8fc9591419b330c3285ba1b2ae2071b3fcce9a59bccfadf60538b149",
+      "linked_sha256": "63752a611ff7afa256ab0ac7058bec892b3a05ee0ab3afb28890048ff65c8231"
     },
     {
       "id": "msghndlr",
@@ -23912,10 +23912,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "77182ce3e3b7c15ec5dd8e7b052b04804b0e0132197275980e30dc6061528416",
-      "linked_sha256": "f9c55fa5024488123222e449289196ec68809a5f4d65899e346cf00b41ae5c16"
+      "object_sha256": "6a5cc3613f7edd31117ec1411f0102f2314378f1d16dfeb657d14f606a139bad",
+      "linked_sha256": "5ec5b0991e8d872114be467dceccec0e37a42ce4e1eea25953a04c1db35a9e8c"
     },
     {
       "id": "player_rows",
@@ -37600,8 +37600,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "181e4d5414bab180909e6fa7715bc8288b93d74f35877b42818e95a973a08115",
-      "linked_sha256": "0e9438b0f3a4b07b4646f10b992768adbab9c042cf51a7aadaa46bedc469dad2"
+      "object_sha256": "14f03b652838b0d6c503f782fd122603a4463e1835aa18332b215d790c3681b0",
+      "linked_sha256": "39412cbd4271bb1c779a919de059b1984b5284bca0e6953608f13bab0e02b315"
     },
     {
       "id": "dmesh_bins",
@@ -38885,10 +38885,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "54f4f7796e38d584f4789a697fa2077ca3dd269ce0bffbc63bf0cb12d9bfe6be",
-      "linked_sha256": "c85f1e942af592a6df48b2da1af6f0075e97e42417c9b09a31a4c359a4b33fe7"
+      "object_sha256": "c16ee0220a1f20c9c92ab91638ddec61e84d3e2901a89d5b2eef57492a10b987",
+      "linked_sha256": "403d3da9fbf059e744d0f59a44716435ea3b5dd5ef7e2ad7cc631f025e635380"
     },
     {
       "id": "objcreate_thrown",
@@ -43693,10 +43693,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e291e2717aaf60f6356a9f4c5da71fe88fce1850808054ecff14c4e988c331d4",
-      "linked_sha256": "a75eb93650cfd204fa97256e525b796659b109bf9f1cb2e22e193d56b398d791"
+      "object_sha256": "10c42943a17ce4bf4a421e3d00385251f290835947cc4805b04809b0fdff89cd",
+      "linked_sha256": "00369ac5fa4c71d97730ed2031bfad518f602e4e250c634b2737d5771bd871e4"
     },
     {
       "id": "hierobject_constrain",
@@ -43732,10 +43732,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "02e2a20c2b6b91e1199eeccb5fb2687e493f6ec3e04290ef6eade7dd8e10b2d2",
-      "linked_sha256": "9f98c712ead243c092b75b787b57e70481d71d1ee499b7f34675e4e6ba935af2"
+      "object_sha256": "8270eeadd10cc57d1182f4c5dc4e7980edd09c12ed896391765523b7eb9257a1",
+      "linked_sha256": "b26fc7b8c3c76a6ee28c27e0d23912c95c9545f660de11aa7a8182c1854ec183"
     },
     {
       "id": "particlesystem_manager_init",
@@ -44645,8 +44645,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "945aa22dc43493956da06e51022decb2a87bc13d6794809c05028a4087d3ee22",
-      "linked_sha256": "b51af2b5688079703950bebd47d568577e33f04168559de7b468992a6f131a3e"
+      "object_sha256": "2e44e5ea9c6a8a6f41ca54d0c75b8772496465113e1819b6596791d47b0396ae",
+      "linked_sha256": "7bdf034bc98e8f011970caad585fc1dff4876a6bee8b7832e9ece2aa18859953"
     },
     {
       "id": "AIFilter_runaway",
@@ -48236,8 +48236,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "fc96ed4803d63172454fce0e9793242ee6a68afba540df3a9bc89c5345cde1a7",
-      "linked_sha256": "2f00ffa8933f12e6a9e9df8982bef92146c217b186366875f9b8ea138d7d813c"
+      "object_sha256": "f805843d61fdc3beeb19f1fc405eeb313082449a815723ba2e7592406f56f69d",
+      "linked_sha256": "f28b8cfc7afa252378882eebba17d558bcc01a8d7724179d9547592aabbfd954"
     },
     {
       "id": "skybox",

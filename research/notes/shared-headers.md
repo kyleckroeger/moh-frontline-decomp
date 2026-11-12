@@ -110,6 +110,16 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
   __dt__10ISceneNodeFv and its extab entry) plus @87/@88, the extab pair of the new
   ~IDestructible weak copy, and its 54 weak copies listed (it constructs an ISceneNode, so
   it emits every inline virtual). decal_dtor, with the same treatment, differs in .data.
+- **Re-run 2026-11-12 (hdr3, after the CVector3 base form and the CMatrix re-run):** 114 units
+  still had their own view. 4 kept and moved (animplayer, animplayer_draw, decal_reset,
+  objcreate_swap); 4 more with their weak copies listed (redraft.py: anim_obj_bullet,
+  hearingvolume_rows, hierobject_constrain, particlesystem_visible). 37 still have their own
+  CVector3 view, 1 its own CMatrix view, 43 other no_compile (the groups below). Still lost:
+  the 8 .text differs above plus bsbifunc_attach and light_propertyanim_dtor (.text, after the
+  weak copies), hierobject_draw, mainloop_game, objcreate_destroy, particlesystem_beginupdate,
+  thrown_obj_ctor/dtor/init (.text), anim_obj (compiler dependencies), bsbifunc_explosion and
+  particlesystem (.sdata2 pool), decal_dtor, the two CPropertyAnimLight destructors and
+  collisionvolume_ctor (held, test).
 - 39 didn't compile: 15 use `AIDoodadView` members through GetAIDoodad() (the real class is
   CAIDoodad; renaming the view would change code), 7 BSObject/BSObjectView the same way,
   4 the scene's `SExtent` nested in their own ISceneNode view, 5 name the data members

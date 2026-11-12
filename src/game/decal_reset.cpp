@@ -22,7 +22,6 @@ class CLight;
 class CPlayerObject;
 class CStaticObject;
 struct AIDoodadView;
-enum EClsnId {};
 
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
@@ -58,93 +57,17 @@ struct TLTResourceView {
     DecalResourceData* data;
 };
 
-class IDestructible {
-public:
-    IDestructible() {}
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-    virtual void Destroy();
-};
 
-class ISubject : public IDestructible {
-public:
-    ISubject() {}
-    virtual ~ISubject();
-};
 
-class IObserver : public ISubject {
-public:
-    IObserver() {}
-    virtual ~IObserver();
-};
+
+
+
 
 /* ISceneNode's virtuals in table order (slots 20 to 216). They are the weak
    inline defaults of Moh2.cpp in the original; their bodies are not repeated
    here, so they are declared without one. */
-class ISceneNode : public IObserver {
-public:
-    enum EVolumeType {};
-    ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
-    virtual ~ISceneNode() {}
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual EClsnId GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
-    virtual void TriggerScriptEvent(int, void*, bool);
-    virtual void HandleBulletCollision(CBullet*, const CCollision&);
-    virtual void* AsMovingNode();
-    virtual const void* AsMovingNode() const;
-    virtual CStaticObject* AsStaticObject();
-    virtual const void* AsStaticObject() const;
-    virtual void* AsHierObject();
-    virtual const void* AsHierObject() const;
-    virtual void* AsWorldObject();
-    virtual const void* AsWorldObject() const;
-    virtual void* AsAnimObject();
-    virtual const void* AsAnimObject() const;
-    virtual void* AsSoldierObject();
-    virtual const void* AsSoldierObject() const;
-    virtual CPlayerObject* AsPlayerObject();
-    virtual const void* AsPlayerObject() const;
-    virtual void* AsPlayerWeaponObject();
-    virtual const void* AsPlayerWeaponObject() const;
-    virtual void* AsAnimatedPlayerObject();
-    virtual const void* AsAnimatedPlayerObject() const;
-    virtual CLight* AsLight();
-    virtual const CLight* AsLight() const;
-    virtual CBullet* AsBullet();
-    virtual const CBullet* AsBullet() const;
-    virtual void* AsCollisionVolume();
-    virtual const void* AsCollisionVolume() const;
-    virtual AIDoodadView* GetAIDoodad();
-    virtual const void* GetAIDoodad() const;
-    virtual void SetAttachedLight(CLight*, CVector3);
-    virtual CLight* GetAttachedLight() const;
-    int data04;
-    int data08;
-    int data0c;
-    int data10;
-    int data14;
-    int data18;
-    int data1c;
-    int data20;
-};
+#include "game/ISceneNode.h"
+
 
 class CRenderBin;
 

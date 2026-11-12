@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -72,6 +72,7 @@
     }
   ],
   "externals": {
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "InitClass__7CMatrixFv": "0x80090b78",
     "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
     "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
@@ -108,5 +109,8 @@
       "size": 4,
       "address": "0x8034fffc"
     }
+  ],
+  "weak_duplicates": [
+    "GetPosition__10ISceneNodeCFR8CVector3"
   ]
 }

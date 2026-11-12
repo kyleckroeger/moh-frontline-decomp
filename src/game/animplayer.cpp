@@ -161,10 +161,8 @@ public:
     void SetCorners(CVector3, CVector3);
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 class CAnimatedPlayer {
 public:

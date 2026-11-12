@@ -79,10 +79,8 @@ struct StaticMeshView {
     MeshDataView* m_data;
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 class CStaticObject {
 public:

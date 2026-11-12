@@ -243,7 +243,8 @@ CMatrix view; of the other 125, 12 kept their match and were moved. 63 lost only
 MWCC emits a weak copy of each inline virtual a unit calls, which the unit configs didn't
 list. The original's objects had those copies too (the linker kept Moh2.cpp's), so the
 configs now list them as `weak_duplicates`: 53 of the 63 kept their match, 52 were moved (and compartment_ctor after renaming its stripped extab labels)
-(`research/notes/shared-headers.md`).
+(`research/notes/shared-headers.md`). After the CVector3 base form and the CMatrix re-run, 8 more
+moved (4 with their weak copies listed); 38 still have their own CVector3 or CMatrix view.
 
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 

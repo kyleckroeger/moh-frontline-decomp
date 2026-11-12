@@ -54,24 +54,8 @@ public:
 };
 
 /* Only GetPosition (table offset 64) of the camera node is used. */
-class ISceneNode {
-public:
-    virtual void unknown08();
-    virtual void unknown0c();
-    virtual void unknown10();
-    virtual void unknown14();
-    virtual void unknown18();
-    virtual void unknown1c();
-    virtual void unknown20();
-    virtual void unknown24();
-    virtual void unknown28();
-    virtual void unknown2c();
-    virtual void unknown30();
-    virtual void unknown34();
-    virtual void unknown38();
-    virtual void unknown3c();
-    virtual void GetPosition(CVector3&) const;
-};
+#include "game/ISceneNode.h"
+
 
 /* Inferred: the camera node at +212. */
 class CDrawContext {

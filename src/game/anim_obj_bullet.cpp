@@ -35,47 +35,8 @@ public:
 
 extern CShellMenu g_Shell;
 
-class ISceneNode {
-public:
-    virtual void vf008();
-    virtual void vf00c();
-    virtual void vf010();
-    virtual void vf014();
-    virtual void vf018();
-    virtual void vf01c();
-    virtual void vf020();
-    virtual void vf024();
-    virtual void vf028();
-    virtual void vf02c();
-    virtual void vf030();
-    virtual void vf034();
-    virtual void vf038();
-    virtual void vf03c();
-    virtual void vf040();
-    virtual void vf044();
-    virtual void vf048();
-    virtual void vf04c();
-    virtual void vf050();
-    virtual void vf054();
-    virtual void vf058();
-    virtual void vf05c();
-    virtual BSObject* GetScriptObject() const;
-    virtual void vf064();
-    virtual void vf068();
-    virtual void vf06c();
-    virtual void vf070();
-    virtual void vf074();
-    virtual void vf078();
-    virtual void vf07c();
-    virtual void vf080();
-    virtual void vf084();
-    virtual void vf088();
-    virtual void vf08c();
-    virtual void vf090();
-    virtual void vf094();
-    virtual void vf098();
-    virtual CPlayerObject* AsPlayerObject();
-};
+#include "game/ISceneNode.h"
+
 
 class CThrownBullet {
 public:

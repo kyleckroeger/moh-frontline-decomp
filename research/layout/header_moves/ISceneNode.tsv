@@ -1,147 +1,147 @@
 unit	source	status	detail
-AIFilter_collisiondist	src/game/AIFilter_collisiondist.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-AIFilter_linechecks	src/game/AIFilter_linechecks.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-AIFilter_queries	scratch/try/AIFilter_queries/src/AIFilter_queries.cpp	lost	Unexpected compiler function set
+AIFilter_collisiondist	scratch/loop3/hdr3/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIFilter_collisiondist.cpp # ------------------------------------------ #      37: CVector3Data d;
+AIFilter_linechecks	scratch/loop3/hdr3/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIFilter_linechecks.cpp # --------------------------------------- #      33: CVector3Data d;
+AIFilter_queries	scratch/loop3/hdr3/try/AIFilter_queries/src/AIFilter_queries.cpp	lost	Unexpected compiler function set
 AIFilter_runaway	scratch/try/AIFilter_runaway/src/AIFilter_runaway.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-AIObject_visionseek	src/game/AIObject_visionseek.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-Moh2	src/game/Moh2.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-Soldier_object_attach	src/game/Soldier_object_attach.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-Soldier_object_bounds	src/game/Soldier_object_bounds.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-Tank_object_update	scratch/try/Tank_object_update/src/Tank_object_update.cpp	lost	Unexpected compiler function set
-alarm_builtins	scratch/try/alarm_builtins/src/alarm_builtins.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\alarm_builtins.cpp # ---------------------------------- #      48: {
+AIObject_visionseek	scratch/loop3/hdr3/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     116: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+Moh2	scratch/loop3/hdr3/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Moh2.cpp # ------------------------
+Soldier_object_attach	scratch/loop3/hdr3/try/Soldier_object_attach/src/Soldier_object_attach.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_attach.cpp # ----------------------------------------- #      99: CVector3(const CVector3Pair& p) { *(CVector3Pair*)this = p; }
+Soldier_object_bounds	scratch/loop3/hdr3/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_bounds.cpp # ----------------------------------------- #      35: CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
+Tank_object_update	scratch/loop3/hdr3/try/Tank_object_update/src/Tank_object_update.cpp	lost	Unexpected compiler function set
+alarm_builtins	scratch/loop3/hdr3/try/alarm_builtins/src/alarm_builtins.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\alarm_builtins.cpp # ---------------------------------- #      48: {
 alarm_register	scratch/try/alarm_register/src/alarm_register.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-anim_callback_init	scratch/try/anim_callback_init/src/anim_callback_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_callback_init.cpp # -------------------------------------- #     293: CAIObject* ai = soldier->GetAIDoodad()->filter->m_object;
-anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	lost	Unexpected compiler dependencies
-anim_obj_bullet	src/game/anim_obj_bullet.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-anim_obj_collide	src/game/anim_obj_collide.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-anim_obj_ctor	src/game/anim_obj_ctor.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-anim_obj_draw	src/game/anim_obj_draw.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+anim_callback_init	scratch/loop3/hdr3/try/anim_callback_init/src/anim_callback_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_callback_init.cpp # -------------------------------------- #     293: CAIObject* ai = soldier->GetAIDoodad()->filter->m_object;
+anim_obj	scratch/loop3/hdr3/try/anim_obj/src/anim_obj.cpp	lost	Unexpected compiler dependencies
+anim_obj_bullet	scratch/loop3/hdr3/try/anim_obj_bullet/src/anim_obj_bullet.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form; weak copies listed)
+anim_obj_collide	scratch/loop3/hdr3/try/anim_obj_collide/src/anim_obj_collide.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_collide.cpp # ------------------------------------ #      27: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+anim_obj_ctor	scratch/loop3/hdr3/try/anim_obj_ctor/src/anim_obj_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_ctor.cpp # --------------------------------- #      75: class CVector3 {
+anim_obj_draw	scratch/loop3/hdr3/try/anim_obj_draw/src/anim_obj_draw.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_draw.cpp # --------------------------------- #      26: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 anim_obj_dtor	scratch/try/anim_obj_dtor/src/anim_obj_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-anim_obj_ground	src/game/anim_obj_ground.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+anim_obj_ground	scratch/loop3/hdr3/try/anim_obj_ground/src/anim_obj_ground.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_ground.cpp # ----------------------------------- #     163: IVolume* world = g_scene.m_worldObject->GetWorldBoundingVolume(0);
 anim_obj_volumes	scratch/try/anim_obj_volumes/src/anim_obj_volumes.cpp	kept	
 animintf	scratch/try/animintf/src/animintf.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-animplayer	src/game/animplayer.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-animplayer_draw	src/game/animplayer_draw.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-attachobject_ctor	src/game/attachobject_ctor.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-attachobject_update	scratch/try/attachobject_update/src/attachobject_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\attachobject_update.cpp # --------------------------------------- #      99: if (m_attached[i]->GetScriptObject()->id != m_attachScriptId[i]) {
-bsbifunc_ai	scratch/try/bsbifunc_ai/src/bsbifunc_ai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_ai.cpp # ------------------------------- #      72: ((ISceneNode*)object)->GetAIDoodad()->filter->ResetTargetMatchList((aifilter_target_mode)**stack);
-bsbifunc_aim	scratch/try/bsbifunc_aim/src/bsbifunc_aim.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_aim.cpp # -------------------------------- #      96: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_aistatus	scratch/try/bsbifunc_aistatus/src/bsbifunc_aistatus.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_aistatus.cpp # ------------------------------------- #     120: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+animplayer	scratch/loop3/hdr3/try/animplayer/src/animplayer.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+animplayer_draw	scratch/loop3/hdr3/try/animplayer_draw/src/animplayer_draw.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
+attachobject_update	scratch/loop3/hdr3/try/attachobject_update/src/attachobject_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\attachobject_update.cpp # --------------------------------------- #      99: if (m_attached[i]->GetScriptObject()->id != m_attachScriptId[i]) {
+bsbifunc_ai	scratch/loop3/hdr3/try/bsbifunc_ai/src/bsbifunc_ai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_ai.cpp # ------------------------------- #      72: ((ISceneNode*)object)->GetAIDoodad()->filter->ResetTargetMatchList((aifilter_target_mode)**stack);
+bsbifunc_aim	scratch/loop3/hdr3/try/bsbifunc_aim/src/bsbifunc_aim.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_aim.cpp # -------------------------------- #      96: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_aistatus	scratch/loop3/hdr3/try/bsbifunc_aistatus/src/bsbifunc_aistatus.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_aistatus.cpp # ------------------------------------- #     120: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
 bsbifunc_ammo	scratch/try/bsbifunc_ammo/src/bsbifunc_ammo.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_astar	scratch/try/bsbifunc_astar/src/bsbifunc_astar.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_astar.cpp # ---------------------------------- #     104: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_asweapon	scratch/try/bsbifunc_asweapon/src/bsbifunc_asweapon.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_asweapon.cpp # ------------------------------------- #     200: BSGO_Basic* user = object->GetScriptObject()->user;
-bsbifunc_attach	src/game/bsbifunc_attach.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_astar	scratch/loop3/hdr3/try/bsbifunc_astar/src/bsbifunc_astar.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_astar.cpp # ---------------------------------- #     104: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_asweapon	scratch/loop3/hdr3/try/bsbifunc_asweapon/src/bsbifunc_asweapon.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_asweapon.cpp # ------------------------------------- #     200: BSGO_Basic* user = object->GetScriptObject()->user;
+bsbifunc_attach	scratch/loop3/hdr3/try/bsbifunc_attach/src/bsbifunc_attach.cpp	lost	Unexpected compiler function set
 bsbifunc_cheats	scratch/try/bsbifunc_cheats/src/bsbifunc_cheats.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_choosetarget	scratch/try/bsbifunc_choosetarget/src/bsbifunc_choosetarget.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_choosetarget.cpp # ----------------------------------------- #     103: AIDoodadView* doodad = node->GetAIDoodad();
-bsbifunc_collision	scratch/try/bsbifunc_collision/src/bsbifunc_collision.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_collision.cpp # -------------------------------------- #      69: CAIFilterView* filter = ((ISceneNode*)object)->GetAIDoodad()->filter;
+bsbifunc_choosetarget	scratch/loop3/hdr3/try/bsbifunc_choosetarget/src/bsbifunc_choosetarget.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_choosetarget.cpp # ----------------------------------------- #     103: AIDoodadView* doodad = node->GetAIDoodad();
+bsbifunc_collision	scratch/loop3/hdr3/try/bsbifunc_collision/src/bsbifunc_collision.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_collision.cpp # -------------------------------------- #      69: CAIFilterView* filter = ((ISceneNode*)object)->GetAIDoodad()->filter;
 bsbifunc_cook	scratch/try/bsbifunc_cook/src/bsbifunc_cook.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_corpse	scratch/try/bsbifunc_corpse/src/bsbifunc_corpse.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_corpse.cpp # ----------------------------------- #     161: return ((ISceneNode*)object)->GetAIDoodad()->filter->m_object;
-bsbifunc_corpsesearch	scratch/try/bsbifunc_corpsesearch/src/bsbifunc_corpsesearch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_corpsesearch.cpp # ----------------------------------------- #      93: CAIFilterView* filter = object->user->GetSceneNode()->GetAIDoodad()->filter;
-bsbifunc_cover	scratch/try/bsbifunc_cover/src/bsbifunc_cover.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_cover.cpp # ---------------------------------- #      88: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_coverleave	scratch/try/bsbifunc_coverleave/src/bsbifunc_coverleave.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverleave.cpp # --------------------------------------- #     100: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_coverpoint	scratch/try/bsbifunc_coverpoint/src/bsbifunc_coverpoint.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverpoint.cpp # --------------------------------------- #     116: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_coverstart	scratch/try/bsbifunc_coverstart/src/bsbifunc_coverstart.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverstart.cpp # --------------------------------------- #      90: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
-bsbifunc_death	scratch/try/bsbifunc_death/src/bsbifunc_death.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_death.cpp # ---------------------------------- #     155: DisguiseView* disguise = g_scene.GetPlayer(0)->GetScriptObject()->user->GetScriptData();
+bsbifunc_corpse	scratch/loop3/hdr3/try/bsbifunc_corpse/src/bsbifunc_corpse.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_corpse.cpp # ----------------------------------- #     161: return ((ISceneNode*)object)->GetAIDoodad()->filter->m_object;
+bsbifunc_corpsesearch	scratch/loop3/hdr3/try/bsbifunc_corpsesearch/src/bsbifunc_corpsesearch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_corpsesearch.cpp # ----------------------------------------- #      93: CAIFilterView* filter = object->user->GetSceneNode()->GetAIDoodad()->filter;
+bsbifunc_cover	scratch/loop3/hdr3/try/bsbifunc_cover/src/bsbifunc_cover.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_cover.cpp # ---------------------------------- #      88: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_coverleave	scratch/loop3/hdr3/try/bsbifunc_coverleave/src/bsbifunc_coverleave.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverleave.cpp # --------------------------------------- #     100: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_coverpoint	scratch/loop3/hdr3/try/bsbifunc_coverpoint/src/bsbifunc_coverpoint.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverpoint.cpp # --------------------------------------- #     116: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_coverstart	scratch/loop3/hdr3/try/bsbifunc_coverstart/src/bsbifunc_coverstart.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_coverstart.cpp # --------------------------------------- #      90: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_death	scratch/loop3/hdr3/try/bsbifunc_death/src/bsbifunc_death.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_death.cpp # ---------------------------------- #     155: DisguiseView* disguise = g_scene.GetPlayer(0)->GetScriptObject()->user->GetScriptData();
 bsbifunc_debug	scratch/try/bsbifunc_debug/src/bsbifunc_debug.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_distance	src/game/bsbifunc_distance.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-bsbifunc_dump	src/game/bsbifunc_dump.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_distance	scratch/loop3/hdr3/try/bsbifunc_distance/src/bsbifunc_distance.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_distance.cpp # ------------------------------------- #     195: return ((ISceneNode*)object)->GetAIDoodad()->filter->m_object;
+bsbifunc_dump	scratch/loop3/hdr3/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #      55: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 bsbifunc_events	scratch/try/bsbifunc_events/src/bsbifunc_events.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_explosion	scratch/try/bsbifunc_explosion/src/bsbifunc_explosion.cpp	lost	Pool item differs from the original: bsbifunc_explosion .sdata2+0x4
-bsbifunc_floatingbone	scratch/try/bsbifunc_floatingbone/src/bsbifunc_floatingbone.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_floatingbone.cpp # ----------------------------------------- #     157: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
+bsbifunc_explosion	scratch/loop3/hdr3/try/bsbifunc_explosion/src/bsbifunc_explosion.cpp	lost	Pool item differs from the original: bsbifunc_explosion .sdata2+0x4
+bsbifunc_floatingbone	scratch/loop3/hdr3/try/bsbifunc_floatingbone/src/bsbifunc_floatingbone.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_floatingbone.cpp # ----------------------------------------- #     157: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
 bsbifunc_fog	scratch/try/bsbifunc_fog/src/bsbifunc_fog.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_getpropbyid	src/game/bsbifunc_getpropbyid.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-bsbifunc_grenade	scratch/try/bsbifunc_grenade/src/bsbifunc_grenade.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_grenade.cpp # ------------------------------------ #     195: ((ISceneNode*)object)->GetScriptObject()->user->GetScriptData()->grenadeSlot = slot;
+bsbifunc_getpropbyid	scratch/loop3/hdr3/try/bsbifunc_getpropbyid/src/bsbifunc_getpropbyid.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_getpropbyid.cpp # ----------------------------------------
+bsbifunc_grenade	scratch/loop3/hdr3/try/bsbifunc_grenade/src/bsbifunc_grenade.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_grenade.cpp # ------------------------------------ #     195: ((ISceneNode*)object)->GetScriptObject()->user->GetScriptData()->grenadeSlot = slot;
 bsbifunc_ground	scratch/try/bsbifunc_ground/src/bsbifunc_ground.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_hier	scratch/try/bsbifunc_hier/src/bsbifunc_hier.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_hierfire	scratch/try/bsbifunc_hierfire/src/bsbifunc_hierfire.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_hiermap	scratch/try/bsbifunc_hiermap/src/bsbifunc_hiermap.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_hiermap.cpp # ------------------------------------ #     157: CTankObject* tank = ((ISceneNode*)object)->AsHierObject()->AsHierTankObject();
+bsbifunc_hiermap	scratch/loop3/hdr3/try/bsbifunc_hiermap/src/bsbifunc_hiermap.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_hiermap.cpp # ------------------------------------ #     157: CTankObject* tank = ((ISceneNode*)object)->AsHierObject()->AsHierTankObject();
 bsbifunc_holdtime	scratch/try/bsbifunc_holdtime/src/bsbifunc_holdtime.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_jaw	scratch/try/bsbifunc_jaw/src/bsbifunc_jaw.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_level	scratch/try/bsbifunc_level/src/bsbifunc_level.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_level.cpp # ---------------------------------- #     203: filter = ((ISceneNode*)((ISceneNode*)object)->AsPlayerObject())->GetAIDoodad()->filter;
-bsbifunc_makenoise	src/game/bsbifunc_makenoise.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-bsbifunc_makenoise_bi	src/game/bsbifunc_makenoise_bi.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_level	scratch/loop3/hdr3/try/bsbifunc_level/src/bsbifunc_level.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_level.cpp # ---------------------------------- #     203: filter = ((ISceneNode*)((ISceneNode*)object)->AsPlayerObject())->GetAIDoodad()->filter;
+bsbifunc_makenoise	scratch/loop3/hdr3/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_makenoise.cpp # --------------------------------------
+bsbifunc_makenoise_bi	scratch/loop3/hdr3/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_makenoise_bi.cpp # -----------------------------------------
 bsbifunc_melee	scratch/try/bsbifunc_melee/src/bsbifunc_melee.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_mgflag	scratch/try/bsbifunc_mgflag/src/bsbifunc_mgflag.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_mmg	scratch/try/bsbifunc_mmg/src/bsbifunc_mmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mmg.cpp # -------------------------------- #      79: point = ((ISceneNode*)object)->GetAIDoodad()->filter->ChooseMMGPoint();
+bsbifunc_mmg	scratch/loop3/hdr3/try/bsbifunc_mmg/src/bsbifunc_mmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mmg.cpp # -------------------------------- #      79: point = ((ISceneNode*)object)->GetAIDoodad()->filter->ChooseMMGPoint();
 bsbifunc_mood	scratch/try/bsbifunc_mood/src/bsbifunc_mood.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_mountedmg	scratch/try/bsbifunc_mountedmg/src/bsbifunc_mountedmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mountedmg.cpp # -------------------------------------- #      72: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
-bsbifunc_movewalk	scratch/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_movewalk.cpp # ------------------------------------- #     122: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
+bsbifunc_mountedmg	scratch/loop3/hdr3/try/bsbifunc_mountedmg/src/bsbifunc_mountedmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mountedmg.cpp # -------------------------------------- #      72: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
+bsbifunc_movewalk	scratch/loop3/hdr3/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_movewalk.cpp # ------------------------------------- #     122: return ((ISceneNode*)object)->GetAIDoodad()->filter->object;
 bsbifunc_mpplayer	scratch/try/bsbifunc_mpplayer/src/bsbifunc_mpplayer.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_mpprompt	src/game/bsbifunc_mpprompt.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-bsbifunc_mpweapons	src/game/bsbifunc_mpweapons.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_mpprompt	scratch/loop3/hdr3/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #      95: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+bsbifunc_mpweapons	scratch/loop3/hdr3/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpweapons.cpp # -------------------------------------- #     253: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
 bsbifunc_objective	scratch/try/bsbifunc_objective/src/bsbifunc_objective.cpp	kept	
-bsbifunc_obstacle	scratch/try/bsbifunc_obstacle/src/bsbifunc_obstacle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_obstacle.cpp # ------------------------------------- #     144: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
-bsbifunc_particle	src/game/bsbifunc_particle.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_obstacle	scratch/loop3/hdr3/try/bsbifunc_obstacle/src/bsbifunc_obstacle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_obstacle.cpp # ------------------------------------- #     144: if (node && node->AsStaticObject() && (script = node->GetScriptObject()) && script->trigger == trigger)
+bsbifunc_particle	scratch/loop3/hdr3/try/bsbifunc_particle/src/bsbifunc_particle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_particle.cpp # ------------------------------------- #     273: t VolumeView* volume = node->GetWorldBoundingVolume((ISceneNode::EVolumeType)3);
 bsbifunc_pathfinder	scratch/try/bsbifunc_pathfinder/src/bsbifunc_pathfinder.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_playerammo	scratch/try/bsbifunc_playerammo/src/bsbifunc_playerammo.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_playercoll	scratch/try/bsbifunc_playercoll/src/bsbifunc_playercoll.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_playercoll.cpp # --------------------------------------- #     121: ((ISceneNode*)object)->AsStaticObject()->allowCollisionDamage = allow != 0;
+bsbifunc_playercoll	scratch/loop3/hdr3/try/bsbifunc_playercoll/src/bsbifunc_playercoll.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_playercoll.cpp # --------------------------------------- #     121: ((ISceneNode*)object)->AsStaticObject()->allowCollisionDamage = allow != 0;
 bsbifunc_random	scratch/try/bsbifunc_random/src/bsbifunc_random.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_reload	scratch/try/bsbifunc_reload/src/bsbifunc_reload.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_respawn	scratch/try/bsbifunc_respawn/src/bsbifunc_respawn.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_rotate	scratch/try/bsbifunc_rotate/src/bsbifunc_rotate.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_setobjinfo	src/game/bsbifunc_setobjinfo.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+bsbifunc_setobjinfo	scratch/loop3/hdr3/try/bsbifunc_setobjinfo/src/bsbifunc_setobjinfo.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_setobjinfo.cpp # ---------------------------------------
 bsbifunc_shake	scratch/try/bsbifunc_shake/src/bsbifunc_shake.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_soundbank	scratch/try/bsbifunc_soundbank/src/bsbifunc_soundbank.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_soundinfo	scratch/try/bsbifunc_soundinfo/src/bsbifunc_soundinfo.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_soundoffset	scratch/try/bsbifunc_soundoffset/src/bsbifunc_soundoffset.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_stop	scratch/try/bsbifunc_stop/src/bsbifunc_stop.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-bsbifunc_targetsearch	scratch/try/bsbifunc_targetsearch/src/bsbifunc_targetsearch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_targetsearch.cpp # ----------------------------------------- #     115: {
+bsbifunc_targetsearch	scratch/loop3/hdr3/try/bsbifunc_targetsearch/src/bsbifunc_targetsearch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_targetsearch.cpp # ----------------------------------------- #     115: {
 bsbifunc_translate	scratch/try/bsbifunc_translate/src/bsbifunc_translate.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_vibration	scratch/try/bsbifunc_vibration/src/bsbifunc_vibration.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bsbifunc_waypointinfo	scratch/try/bsbifunc_waypointinfo/src/bsbifunc_waypointinfo.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 bullet_ctor	scratch/try/bullet_ctor/src/bullet_ctor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 camera_dtor	scratch/try/camera_dtor/src/camera_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-collision_head	scratch/try/collision_head/src/collision_head.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\collision_head.cpp # ---------------------------------- #     160: IVolume* first = m_first->GetWorldBoundingVolume(volume);
-collisionvolume_ctor	scratch/try/collisionvolume_ctor/src/collisionvolume_ctor.cpp	lost	verifies with weak copies listed, held back: tests/test_data_strip.py pins its stripped_sections to [.data] (the copies add .sdata2)
+collision_head	scratch/loop3/hdr3/try/collision_head/src/collision_head.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\collision_head.cpp # ---------------------------------- #     160: IVolume* first = m_first->GetWorldBoundingVolume(volume);
+collisionvolume_ctor	scratch/loop3/hdr3/try/collisionvolume_ctor/src/collisionvolume_ctor.cpp	lost	Unexpected compiler function set
 collisionvolume_rows	scratch/try/collisionvolume_rows/src/collisionvolume_rows.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 compartment_ctor	scratch/try/compartment_ctor/src/compartment_ctor.cpp	kept	stripped_objects labels renumbered (@69/@70 -> @83/@84, same objects by relocation target) and the weak copies listed (hdr2)
 compartment_init	scratch/try/compartment_init/src/compartment_init.cpp	kept	
-compartment_render	scratch/try/compartment_render/src/compartment_render.cpp	lost	Unexpected compiler function set
+compartment_render	scratch/loop3/hdr3/try/compartment_render/src/compartment_render.cpp	lost	Unexpected compiler function set
 compartment_weak	scratch/try/compartment_weak/src/compartment_weak.cpp	kept	
 decal	scratch/try/decal/src/decal.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-decal_dtor	scratch/try/decal_dtor/src/decal_dtor.cpp	lost	Stripped object is not one compiler object: @43; with labels renumbered and weak copies listed: .data differs (hdr2)
+decal_dtor	scratch/loop3/hdr3/try/decal_dtor/src/decal_dtor.cpp	lost	Stripped object is not one compiler object: @43
 decal_link	scratch/try/decal_link/src/decal_link.cpp	kept	
-decal_reset	src/game/decal_reset.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	lost	Unexpected compiler function set
+decal_reset	scratch/loop3/hdr3/try/decal_reset/src/decal_reset.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+explosion_dtor	scratch/loop3/hdr3/try/explosion_dtor/src/explosion_dtor.cpp	lost	Unexpected compiler function set
 hearingvolume_ctor	scratch/try/hearingvolume_ctor/src/hearingvolume_ctor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 hearingvolume_init	scratch/try/hearingvolume_init/src/hearingvolume_init.cpp	kept	
-hearingvolume_rows	src/game/hearingvolume_rows.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-hierobject_constrain	src/game/hierobject_constrain.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-hierobject_draw	scratch/try/hierobject_draw/src/hierobject_draw.cpp	lost	Compiled source bytes differ: hierobject_draw .text
-impact_dtor	src/game/impact_dtor.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+hearingvolume_rows	scratch/loop3/hdr3/try/hearingvolume_rows/src/hearingvolume_rows.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form; weak copies listed)
+hierobject_constrain	scratch/loop3/hdr3/try/hierobject_constrain/src/hierobject_constrain.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form; weak copies listed)
+hierobject_draw	scratch/loop3/hdr3/try/hierobject_draw/src/hierobject_draw.cpp	lost	Compiled source bytes differ: hierobject_draw .text
+impact_dtor	scratch/loop3/hdr3/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\impact_dtor.cpp # ------------------------------- #      58: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 light	scratch/try/light/src/light.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-light_animmanager	scratch/try/light_animmanager/src/light_animmanager.cpp	lost	Unexpected compiler function set
+light_animmanager	scratch/loop3/hdr3/try/light_animmanager/src/light_animmanager.cpp	lost	Unexpected compiler function set
 light_animmanager_dtor	scratch/try/light_animmanager_dtor/src/light_animmanager_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-light_dtor	src/game/light_dtor.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+light_dtor	scratch/loop3/hdr3/try/light_dtor/src/light_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\light_dtor.cpp # ------------------------------
 light_instanced_dtor	scratch/try/light_instanced_dtor/src/light_instanced_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-light_propertyanim_dtor	src/game/light_propertyanim_dtor.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-light_propertyanim_update	scratch/try/light_propertyanim_update/src/light_propertyanim_update.cpp	lost	Unexpected compiler function set
-mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	lost	Compiled source bytes differ: mainloop_game .text
+light_propertyanim_dtor	scratch/loop3/hdr3/try/light_propertyanim_dtor/src/light_propertyanim_dtor.cpp	lost	Unexpected compiler function set
+light_propertyanim_update	scratch/loop3/hdr3/try/light_propertyanim_update/src/light_propertyanim_update.cpp	lost	Unexpected compiler function set
+mainloop_game	scratch/loop3/hdr3/try/mainloop_game/src/mainloop.cpp	lost	Compiled source bytes differ: mainloop_game .text
 objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-objcreate_destroy	scratch/try/objcreate_destroy/src/objcreate_destroy.cpp	lost	Compiled source bytes differ: objcreate_destroy .text
-objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	lost	Unexpected compiler function set
+objcreate_destroy	scratch/loop3/hdr3/try/objcreate_destroy/src/objcreate_destroy.cpp	lost	Compiled source bytes differ: objcreate_destroy .text
+objcreate_german	scratch/loop3/hdr3/try/objcreate_german/src/objcreate_german.cpp	lost	Unexpected compiler function set
 objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-objcreate_swap	src/game/objcreate_swap.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+objcreate_swap	scratch/loop3/hdr3/try/objcreate_swap/src/objcreate_swap.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 objcreate_volumes	scratch/try/objcreate_volumes/src/objcreate_volumes.cpp	kept	
-particlesystem	scratch/try/particlesystem/src/particlesystem.cpp	lost	Pool item differs from the original: particlesystem .sdata2+0x4
-particlesystem_beginupdate	scratch/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	lost	Compiled source bytes differ: particlesystem_beginupdate .text
+particlesystem	scratch/loop3/hdr3/try/particlesystem/src/particlesystem.cpp	lost	Pool item differs from the original: particlesystem .sdata2+0x4
+particlesystem_beginupdate	scratch/loop3/hdr3/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	lost	Compiled source bytes differ: particlesystem_beginupdate .text
 particlesystem_manager_dtor	scratch/try/particlesystem_manager_dtor/src/particlesystem_manager_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-particlesystem_reset	scratch/try/particlesystem_reset/src/particlesystem_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\particlesystem_reset.cpp # ---------------------------------------- #     125: g_ParticleSystemManager.m_sceneNext = 0;
-particlesystem_visible	src/game/particlesystem_visible.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-player_begincrouch	src/game/player_begincrouch.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-player_beginupdate	src/game/player_beginupdate.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+particlesystem_reset	scratch/loop3/hdr3/try/particlesystem_reset/src/particlesystem_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\particlesystem_reset.cpp # ---------------------------------------- #     125: g_ParticleSystemManager.m_sceneNext = 0;
+particlesystem_visible	scratch/loop3/hdr3/try/particlesystem_visible/src/particlesystem_visible.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form; weak copies listed)
+player_begincrouch	scratch/loop3/hdr3/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_begincrouch.cpp # -------------------------------------- #      23: CVector3Data d;
+player_beginupdate	scratch/loop3/hdr3/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      55: CVector3(const CVector3Data& o) : d(o) {}
 player_bounds	scratch/try/player_bounds/src/player_bounds.cpp	kept	
-player_bullet	scratch/try/player_bullet/src/player_bullet.cpp	lost	Unexpected compiler function set
-player_commit	src/game/player_commit.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-player_ctor	src/game/player_ctor.cpp	not_tried	own view of CMatrix (ISceneNode.h includes CMatrix.h)
-player_draw	scratch/try/player_draw/src/player_draw.cpp	lost	Unexpected compiler function set
+player_bullet	scratch/loop3/hdr3/try/player_bullet/src/player_bullet.cpp	lost	Unexpected compiler function set
+player_commit	scratch/loop3/hdr3/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #      56: CVector3(const CVector3Data& o) : d(o) {}
+player_ctor	scratch/loop3/hdr3/try/player_ctor/src/player_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #      89: class CMatrix {
+player_draw	scratch/loop3/hdr3/try/player_draw/src/player_draw.cpp	lost	Unexpected compiler function set
 player_dtor	scratch/try/player_dtor/src/player_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-player_health	src/game/player_health.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-player_respawn	src/game/player_respawn.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-player_vec_sub	src/game/player_vec_sub.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-player_weapon_object_init	src/game/player_weapon_object_init.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-projectilebullet	src/game/projectilebullet.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
+player_health	scratch/loop3/hdr3/try/player_health/src/player_health.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     157: CVector3Pair d;
+player_respawn	scratch/loop3/hdr3/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_respawn.cpp # ---------------------------------- #      47: CVector3Data d;
+player_vec_sub	scratch/loop3/hdr3/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_vec_sub.cpp # ---------------------------------- #      32: CVector3Data d;
+player_weapon_object_init	scratch/loop3/hdr3/try/player_weapon_object_init/src/player_weapon_object_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon_object_init.cpp # --------------------------------------------- #      57: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+projectilebullet	scratch/loop3/hdr3/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
 propdat	scratch/try/propdat/src/propdat.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 propdat_bsp	scratch/try/propdat_bsp/src/propdat_bsp.cpp	kept	
 propdat_core	scratch/try/propdat_core/src/propdat_core.cpp	kept	
@@ -149,32 +149,32 @@ propdat_load	scratch/try/propdat_load/src/propdat_load.cpp	kept
 propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 proxtrig_leafs	scratch/try/proxtrig_leafs/src/proxtrig_leafs.cpp	kept	weak copies listed as weak_duplicates (hdr2)
 proxtrig_messages	scratch/try/proxtrig_messages/src/proxtrig_messages.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-scene_cmppairs	scratch/try/scene_cmppairs/src/scene_cmppairs.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_cmppairs.cpp # ---------------------------------- #     165: static void SweepExtents(dwi::list<ISceneNode::SExtent>& extents, dwi::fast_vec<CScene::UNodePair>& pairs,
-scene_dtor	scratch/try/scene_dtor/src/scene_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_dtor.cpp # ------------------------------ #     189: dwi::list<ISceneNode::SExtent> m_extentsX;
+scene_cmppairs	scratch/loop3/hdr3/try/scene_cmppairs/src/scene_cmppairs.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_cmppairs.cpp # ---------------------------------- #     165: static void SweepExtents(dwi::list<ISceneNode::SExtent>& extents, dwi::fast_vec<CScene::UNodePair>& pairs,
+scene_dtor	scratch/loop3/hdr3/try/scene_dtor/src/scene_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_dtor.cpp # ------------------------------ #     189: dwi::list<ISceneNode::SExtent> m_extentsX;
 scene_fast	scratch/try/scene_fast/src/scene_fast.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-scene_list_extent	scratch/try/scene_list_extent/src/scene_list_extent.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_list_extent.cpp # ------------------------------------- #      57: template class dwi::list<ISceneNode::SExtent>;
-scene_list_reserve	scratch/try/scene_list_reserve/src/scene_list_reserve.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_list_reserve.cpp # -------------------------------------- #     181: template class dwi::list<ISceneNode::SExtent>;
-scene_now	scratch/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_now.cpp # ----------------------------- #     122: ISceneNode* prev = node->m_prev;
-scene_query	scratch/try/scene_query/src/scene_query.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_query.cpp # ------------------------------- #     210: if (node->m_link8)
-scene_reset	scratch/try/scene_reset/src/scene_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_reset.cpp # ------------------------------- #     120: dwi::list<ISceneNode::SExtent> m_extents128;
-scene_rmextents	scratch/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      56: inline bool IsExtent(const ISceneNode::SExtent& e, ISceneNode* node, bool max) {
-scene_update	scratch/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_update.cpp # -------------------------------- #     264: for (node = m_head; node; node = node->m_next)
-scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #     271: for (ISceneNode* node = m_firstNode; node; node = node->m_link8) {
-skybox	src/game/skybox.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-sound	src/game/sound.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-soundschedule_sound	src/game/soundschedule_sound.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+scene_list_extent	scratch/loop3/hdr3/try/scene_list_extent/src/scene_list_extent.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_list_extent.cpp # ------------------------------------- #      57: template class dwi::list<ISceneNode::SExtent>;
+scene_list_reserve	scratch/loop3/hdr3/try/scene_list_reserve/src/scene_list_reserve.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_list_reserve.cpp # -------------------------------------- #     181: template class dwi::list<ISceneNode::SExtent>;
+scene_now	scratch/loop3/hdr3/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_now.cpp # ----------------------------- #     122: ISceneNode* prev = node->m_prev;
+scene_query	scratch/loop3/hdr3/try/scene_query/src/scene_query.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_query.cpp # ------------------------------- #     210: if (node->m_link8)
+scene_reset	scratch/loop3/hdr3/try/scene_reset/src/scene_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_reset.cpp # ------------------------------- #     120: dwi::list<ISceneNode::SExtent> m_extents128;
+scene_rmextents	scratch/loop3/hdr3/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      56: inline bool IsExtent(const ISceneNode::SExtent& e, ISceneNode* node, bool max) {
+scene_update	scratch/loop3/hdr3/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_update.cpp # -------------------------------- #     264: for (node = m_head; node; node = node->m_next)
+scene_visit	scratch/loop3/hdr3/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #     271: for (ISceneNode* node = m_firstNode; node; node = node->m_link8) {
+skybox	scratch/loop3/hdr3/try/skybox/src/skybox.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\skybox.cpp # -------------------------- #      56: CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
+sound	scratch/loop3/hdr3/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\sound.cpp # ------------------------- #     173: CVector3Data d;
+soundschedule_sound	scratch/loop3/hdr3/try/soundschedule_sound/src/soundschedule_sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\soundschedule_sound.cpp # --------------------------------------- #      46: CVector3Data d;
 static_obj_bounds	scratch/try/static_obj_bounds/src/static_obj_bounds.cpp	kept	
-static_obj_dtor	src/game/static_obj_dtor.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-static_obj_setlight	src/game/static_obj_setlight.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-staticobjfactory_lookup	src/game/staticobjfactory_lookup.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-thrown_obj	src/game/thrown_obj.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-thrown_obj_cleanup	scratch/try/thrown_obj_cleanup/src/thrown_obj_cleanup.cpp	lost	Unexpected compiler function set
-thrown_obj_ctor	scratch/try/thrown_obj_ctor/src/thrown_obj_ctor.cpp	lost	Compiled source bytes differ: thrown_obj_ctor .text
-thrown_obj_dtor	scratch/try/thrown_obj_dtor/src/thrown_obj_dtor.cpp	lost	Compiled source bytes differ: thrown_obj_dtor .text
-thrown_obj_init	src/game/thrown_obj_init.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-thrownbullet	src/game/thrownbullet.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
-thrownbullet_misc	src/game/thrownbullet_misc.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-thrownbullet_tail	src/game/thrownbullet_tail.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-weapon_bullet	src/game/weapon_bullet.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
-world_object_draw	src/game/world_object_draw.cpp	not_tried	own view of CVector3 (ISceneNode.h includes CMatrix.h)
+static_obj_dtor	scratch/loop3/hdr3/try/static_obj_dtor/src/static_obj_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_dtor.cpp # ----------------------------------- #      58: class CVector3 {
+static_obj_setlight	scratch/loop3/hdr3/try/static_obj_setlight/src/static_obj_setlight.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_setlight.cpp # --------------------------------------- #      37: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+staticobjfactory_lookup	scratch/loop3/hdr3/try/staticobjfactory_lookup/src/staticobjfactory_lookup.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\staticobjfactory_lookup.cpp # -------------------------------------------
+thrown_obj	scratch/loop3/hdr3/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrown_obj.cpp # ------------------------------
+thrown_obj_cleanup	scratch/loop3/hdr3/try/thrown_obj_cleanup/src/thrown_obj_cleanup.cpp	lost	Unexpected compiler function set
+thrown_obj_ctor	scratch/loop3/hdr3/try/thrown_obj_ctor/src/thrown_obj_ctor.cpp	lost	Compiled source bytes differ: thrown_obj_ctor .text
+thrown_obj_dtor	scratch/loop3/hdr3/try/thrown_obj_dtor/src/thrown_obj_dtor.cpp	lost	Compiled source bytes differ: thrown_obj_dtor .text
+thrown_obj_init	scratch/loop3/hdr3/try/thrown_obj_init/src/thrown_obj_init.cpp	lost	Compiled source bytes differ: thrown_obj_init .text
+thrownbullet	scratch/loop3/hdr3/try/thrownbullet/src/thrownbullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\thrownbullet.cpp # --------------------------------
+thrownbullet_misc	scratch/loop3/hdr3/try/thrownbullet_misc/src/thrownbullet_misc.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_misc.cpp # ------------------------------------- #      66: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+thrownbullet_tail	scratch/loop3/hdr3/try/thrownbullet_tail/src/thrownbullet_tail.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_tail.cpp # ------------------------------------- #     123: typedef void (*SubjectCallback)(IObserver&, ISubject**, ESubjectEvent);
+weapon_bullet	scratch/loop3/hdr3/try/weapon_bullet/src/weapon_bullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\weapon_bullet.cpp # ---------------------------------
+world_object_draw	scratch/loop3/hdr3/try/world_object_draw/src/world_object_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\world_object_draw.cpp # -------------------------------------
 world_object_dtor	scratch/try/world_object_dtor/src/world_object_dtor.cpp	kept	weak copies listed as weak_duplicates (hdr2)
