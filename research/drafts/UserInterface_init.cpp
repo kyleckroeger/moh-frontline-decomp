@@ -1,20 +1,32 @@
 // UserInterface.cpp: loads the HUD's sprites and fonts, as partial source. The
 // multiplayer branches stay in, since the same function serves both modes.
+// Code-exact in isolation (2026-11-12): CSprite has an inline class operator
+// new taking its size from DWI_alloc (gives the original's double result copy),
+// colours are passed as CColor(r, g, b, a) temporaries, and the two cleared
+// HUD members at +0x7d4/+0x7d8 are ints (stw of a shared zero). Landing needs
+// the file's whole ...rodata.0 block: the base register reaches the "" path
+// template at +108 and the names at +476, past orphan strings of stripped
+// functions (Team Score .. Accuracy, controller messages), so it waits for the
+// gap-function decision.
 extern "C" int sprintf(char*, const char*, ...);
 inline void* operator new(unsigned long, void* p) { return p; }
-void* DWI_alloc(const char*, int, int);
 
+void* DWI_alloc(const char*, int, int);
 enum ERenderPriority {};
 class CSprite {
 public:
     enum ESpriteLoadType {};
     CSprite(const char*, ESpriteLoadType, ERenderPriority);
+    static void* operator new(unsigned long size) { return DWI_alloc(0, size, 0x400); }
+    unsigned char unknown[100];
 };
 class CColor {
 public:
-    CColor(unsigned int rgba) : m_rgba(rgba) {}
-    CColor(const CColor& other) : m_rgba(other.m_rgba) {}
-    unsigned int m_rgba;
+    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+    unsigned char a;
 };
 class CFont {
 public:
@@ -57,8 +69,8 @@ public:
     unsigned char unknown000[0x7a8];
     float m_hitFade[4];       // +0x7a8
     unsigned char unknown7b8[0x1c];
-    float m_field7d4;
-    float m_field7d8;
+    int m_field7d4;
+    int m_field7d8;
     float m_field7dc;
     float m_field7e0;
     unsigned char unknown7e4[0x14];
@@ -73,7 +85,7 @@ public:
 
 static inline void LoadSprite(CSprite*& sprite, const char* name, int priority) {
     if (!sprite)
-        sprite = new (DWI_alloc(0, 100, 0x400)) CSprite(name, (CSprite::ESpriteLoadType)1, (ERenderPriority)priority);
+        sprite = new CSprite(name, (CSprite::ESpriteLoadType)1, (ERenderPriority)priority);
 }
 
 void UserInterface::Init() {
@@ -91,7 +103,7 @@ void UserInterface::Init() {
         for (int i = 0; i < 20; i++) {
             if (!headshotImages[i]) {
                 sprintf(path, "bitmaps\\Model%02d.gsh", i + 1);
-                headshotImages[i] = new (DWI_alloc(0, 100, 0x400)) CSprite(path, (CSprite::ESpriteLoadType)1, (ERenderPriority)0x6f);
+                headshotImages[i] = new CSprite(path, (CSprite::ESpriteLoadType)1, (ERenderPriority)0x6f);
             }
         }
     }
@@ -102,31 +114,29 @@ void UserInterface::Init() {
     const char* fontData = TLT_LoadFileFromLevelBigFile(fonts->m_data[3], 0);
     if (!bulletText)
         bulletText = new CFont(fontData, (ERenderPriority)0x6f);
-    CColor grey(0x40404040);
-    bulletText->SetColor(grey);
+    bulletText->SetColor(CColor(64, 64, 64, 64));
     bulletText->SetScale(1.0f, 1.0f);
     if (CScreen::GetCurrent())
         bulletText->SetDepth(CScreen::GetDepthBufferMax());
     if (g_bInMultiplayerMode && !smallMPFont) {
         fontData = TLT_LoadFileFromLevelBigFile(fonts->m_data[7], 0);
         smallMPFont = new CFont(fontData, (ERenderPriority)0x6f);
-        CColor white(0x80808080);
-        smallMPFont->SetColor(white);
+        smallMPFont->SetColor(CColor(128, 128, 128, 128));
     }
 
     m_field7dc = 4.5f;
-    m_field7d4 = 0.0f;
+    m_field7d4 = 0;
     m_field7e0 = 4.5f;
-    m_field7d8 = 0.0f;
-    m_hitFade[0] = 1.0f;
-    m_hitFade[1] = 1.0f;
-    m_hitFade[2] = 1.0f;
-    m_hitFade[3] = 1.0f;
-    m_field7fc = 1.0f;
-    m_field7f8 = 1.0f;
+    m_field7d8 = 0;
+    m_hitFade[0] = 0.0f;
+    m_hitFade[1] = 0.0f;
+    m_hitFade[2] = 0.0f;
+    m_hitFade[3] = 0.0f;
+    m_field7fc = 0.0f;
+    m_field7f8 = 0.0f;
     m_field800 = false;
     if (g_bInMultiplayerMode)
-        m_field820 = 1.0f;
+        m_field820 = 0.0f;
     LevelFileContentsStruct_* level = TLT_FindNextResourceByType((TLTResourceID)13, 0);
     if (level && *(int*)((char*)level->m_data + 0x1d4))
         m_field814 = true;
