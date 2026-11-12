@@ -22,20 +22,8 @@ extern "C" void* memset(void*, int, unsigned long);
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix(const CMatrix& other) { *this = other; }
-    static void InitClass();
-    CMatrix& operator=(const CMatrix&);
-    void Multiply(const CMatrix&, const CMatrix&);
-    float m[3][4];
-    CVector3 m_pos;
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
+
 
 class CMatrixStack {
 public:
@@ -301,7 +289,7 @@ void CAnimated::Draw(CDrawContext& context) {
     float bestWeight;
         CLight* best = 0;
         bestWeight = 0.0f;
-        CVector3 pos = context.m_localToWorld->m_pos;
+        CVector3 pos = context.m_localToWorld->pos;
         py = pos.y;
         pz = pos.z;
         for (CLight** it = lights->m_data; it != context.m_lights->m_data + context.m_lights->m_size; it++) {

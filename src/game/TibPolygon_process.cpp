@@ -27,12 +27,8 @@ enum ERenderPriority {};
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    void TransformPoint(CVector3&, CVector3) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 class CMatrixStack {
 public:

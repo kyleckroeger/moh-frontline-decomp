@@ -14,25 +14,8 @@
 
 void MathSinCos(long, float*, float*);
 
-class CMatrix {
-public:
-    void Ident();
-    void BuildTrans(CVector3);
-    void BuildRotZ(float);
-    void BuildRotX(float);
-    void BuildRot(CVector3, float);
-    void Translate(CVector3);
-    void PreTranslate(CVector3);
-    void SetPos(CVector3);
-    void SetUp(CVector3);
-    void SetFront(CVector3);
-    void SetRight(CVector3);
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-};
 
 void CMatrix::Translate(CVector3 v) {
     pos.x += v.x;

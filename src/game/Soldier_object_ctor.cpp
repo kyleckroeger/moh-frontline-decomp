@@ -16,23 +16,8 @@
 // weak duplicates, linked to the original copies.
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    /* The original's default constructor takes a default argument (the
-       compiler made the __defctor wrapper for the array); what it is, is not
-       known, and it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
 
 class IVolume {
 public:

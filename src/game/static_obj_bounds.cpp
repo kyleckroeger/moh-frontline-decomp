@@ -7,10 +7,8 @@
 // named by the mangled symbols; the members and the object's virtual slots
 // (+88, +92) are inferred, and IVolume's first slots are as in
 // animated_volume_dispatch.cpp. The rest of the file is not part of this unit.
-class CMatrix {
-public:
-    unsigned char data[64];
-};
+#include "game/CMatrix.h"
+
 
 class IVolume {
 public:

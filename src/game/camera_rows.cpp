@@ -33,29 +33,8 @@ extern "C" double tan(double);
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
-    void Orthographic(float, float, float, float);
-    void Perspective(float, float, float, float);
-    void Orthonormalize();
-    void RotateX(float);
-    void RotateY(float);
-    void RotateZ(float);
-    void Rotate(CVector3, float);
-    void Translate(CVector3);
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void SetPos(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void Ident();
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
 
 /* Inferred: the draw context's word at +256. */
 class CDrawContext {
@@ -136,9 +115,9 @@ public:
     void CommitUpdate();
 
     CVector3 UpRow() const { return m_tm.up; }
-    CVector3 ForwardRow() const { return m_tm.forward; }
+    CVector3 ForwardRow() const { return m_tm.front; }
     CVector3 RightRow() const { return m_tm.right; }
-    CVector3 PositionRow() const { return m_tm.position; }
+    CVector3 PositionRow() const { return m_tm.pos; }
 
     void UpdateWorldToCamera();
     void AttemptUpdate(float);

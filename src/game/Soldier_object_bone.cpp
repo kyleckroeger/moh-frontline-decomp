@@ -24,19 +24,8 @@ extern "C" int stricmp(const char*, const char*);
 class CStaticObject;
 class CAIDoodad;
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    CMatrix& operator=(const CMatrix&);
-    void Inverse(const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[16];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 // The object at BSObject+12; only its first virtual slot is called here, and
 // its name is unknown (as in bsmachin.cpp).

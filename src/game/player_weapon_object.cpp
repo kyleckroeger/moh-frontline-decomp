@@ -7,18 +7,8 @@
 // camera-to-clip matrix's inline constructor initialises the matrix class
 // once. The rest of the file is in other units. g_Cam2clip and CMatrix are
 // named by the symbols; the object size comes from the symbol.
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 // Inferred views: CAnimObject (its constructor, its first two virtuals as in
 // the table - the destructor gives the constructor's cleanup entry - and the

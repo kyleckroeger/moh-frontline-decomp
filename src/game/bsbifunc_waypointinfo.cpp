@@ -42,21 +42,8 @@ public:
     float w;
 };
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-    CVector3 GetFront() const { return front; }
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 enum EClsnId {};
 class CCollision;

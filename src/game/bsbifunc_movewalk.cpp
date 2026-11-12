@@ -199,21 +199,8 @@ void BIFunc_AIStartMovePointWalk(int** stack, void* object) {
 }
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CVector3 GetFront() const { return front; }
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:

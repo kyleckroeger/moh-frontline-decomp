@@ -10,12 +10,8 @@ class CDrawContext;
 class CCollision;
 class IVolume;
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 class CCSGVolume {
 public:

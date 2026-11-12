@@ -13,12 +13,8 @@
 // camera's virtual-table view are inferred.
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    void Multiply(const CMatrix&, const CMatrix&);
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
-    float m[4][4];
-};
+#include "game/CMatrix.h"
+
 /* view: the camera through its ISceneNode virtual table (slot 0x40 is
    GetPosition) */
 class CameraView {

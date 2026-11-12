@@ -13,22 +13,8 @@
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix& operator=(const CMatrix&);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void Inverse(const CMatrix&);
-    CVector3 GetPos() const { return *(const CVector3*)m[3]; }
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 struct ScriptObjectView {
     unsigned char unknown00[16];

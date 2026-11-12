@@ -400,7 +400,7 @@
     "src/game/AIFilter_runaway.cpp": "0f7b132294149f492c5b39783fe572f68b24d792cc0f24358af78e2be61e73e6",
     "src/game/AIFilter_soldier_ctor.cpp": "f436457b079a2ca07870874e59ca34068104021a07205e29256d2e7fdbf02e9d",
     "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
-    "src/game/AIFilter_soldier_movetarget.cpp": "df8233daa7e67260166bfbb7c11fe6ecd9c48205e85ef083dcf6af5b098f33ef",
+    "src/game/AIFilter_soldier_movetarget.cpp": "79943e8633f491064479d8a5f5300dc77286fdda1b5a9996cb469aefc68b2ba9",
     "src/game/AIFilter_soldier_update.cpp": "cdfba022f42b2da16805a063826668e068ac50a0e2db369ce2310f7407cad760",
     "src/game/AIFilter_tank_ctor.cpp": "8cefe168ad49b13bce86c3fd174366ca405d36a84ef4948ca6d618058f7f6b81",
     "src/game/AIFilter_tank_dtor.cpp": "14d51831147223f9d414bcf01f8670bf2db4606b73f85789c39f1f58c95dcde0",
@@ -412,7 +412,7 @@
     "src/game/AIObject_globallist.cpp": "26eebb83b81dfc134f7aaadb905ec3b4b8fa4ec0e2105c556158040677c7408c",
     "src/game/AIObject_grenadeshot.cpp": "083d5b391c35101e3f299c2182ffc0c4d15bd1504b71fd66eddb62302d0b4896",
     "src/game/AIObject_init.cpp": "73c8ba0d3090d6cc3b71ea28b2b69d75b6131577c53ba56d9a982ced7805b640",
-    "src/game/AIObject_mmgpoint.cpp": "70c5c4f619975a3870781da94b0043cc7668d5cb63ac42578960ca231b179ed8",
+    "src/game/AIObject_mmgpoint.cpp": "f90e3cce60046267350375916ed9effdc45d6fe3cf51ae7e268118073c7461cf",
     "src/game/AIObject_reachable.cpp": "f7d3bc45e433f59b5a297dbf4b74b1ff0c769ba0225540e4c63175ab30cb4c39",
     "src/game/AIObject_setlocation.cpp": "323e6db0c8d1ef0589ff4dee7fe7c751d2aaa2cf9f330e9d8697bf868575c8e9",
     "src/game/AIObject_spline.cpp": "b7ff50d39d4e57bf95369e0977512fcc94813a211656fc9275fa3ef64ebc1d1f",
@@ -514,18 +514,18 @@
     "src/game/ShellMenu_unlock.cpp": "a9aa4de786f6d7e8370b23fbdf457f1c80e61f1846fc34624ef47b527505b21f",
     "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
     "src/game/ShellMenu_update.cpp": "056175d9c526fc3b09ffc91ddb768e308eafb27dc8795067788a109d00d0b5fc",
-    "src/game/Soldier_object.cpp": "9128c155fccad1ca48a812b3ce662367620b6885e1160e703b1a75e781990945",
+    "src/game/Soldier_object.cpp": "3f1017249e8ecd67e9264f5d14823e2edac2aee95f5afe787d547f3e8ad7c41b",
     "src/game/Soldier_object_attach.cpp": "2fcc9b4d951748d72c13153b899571c4bcdabae3afa90bd2e0f9b1242cceeff3",
-    "src/game/Soldier_object_bone.cpp": "71b17fff19ef6c4c6fe21f57d6badb204c12b204ae4e6df265291892b57143fa",
+    "src/game/Soldier_object_bone.cpp": "9c7fbdac85cc64aa9832ad8578776fe0376a77f651004f9595ef3e95ad21e566",
     "src/game/Soldier_object_bounds.cpp": "e8b762bd7087f0bc0f2089d6b91b85ff2e1f1e068b1e51f0c9b0dcfb213f55d7",
     "src/game/Soldier_object_cleanup.cpp": "aa4802480887356683df3bd93378fd66370fe0a116ba656a0232163e1c28d1f5",
-    "src/game/Soldier_object_ctor.cpp": "118fa1fe3abdba03f52db2b1b74533509e409d72b728841a373d4367d3e6fbbc",
+    "src/game/Soldier_object_ctor.cpp": "c02032b20d75e7dadae71dc29e5dd4eff07bf931e5f05d7dbc2d50b720a723de",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
     "src/game/Tank_object.cpp": "898b0122c0c2efaf7919e2f4c17241cd68d0733d4f8fda2f2473ec61eb2df9d5",
     "src/game/Tank_object_draw.cpp": "afdff9d134f2cb71c11bb49945abe5032baba9f687dc6e4f9cc226385deb8383",
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
-    "src/game/TibPolygon_process.cpp": "46cb4ab79fab6a6f4dfb3c70bab1e96cf90850105ba773672e83b7ae9702bd30",
+    "src/game/TibPolygon_process.cpp": "156a03d5743b5be3314d8e310ab9ff48deb4a15dd17ff06a6f8d78c9ba790a6f",
     "src/game/TibText.cpp": "add98adc4d7d0cb0bd0d15f50a5a5589b10e1e2843e2a9c5200cc69c0a73a0fc",
     "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
@@ -575,7 +575,7 @@
     "src/game/anim_callback_finish.cpp": "3bb0012ec88003fa13b72591de0ef882dde66ee3635e1c67c34fbe0115d2ac53",
     "src/game/anim_callback_init.cpp": "a2b82386c785f95da4c4c5373663ce10d5ec1b7fd15cf4369224b6138c507def",
     "src/game/anim_callback_weapon.cpp": "6d09fda883df47ab3e98f7a878a0e607b58a98e659ae69dc6be03849781d1d08",
-    "src/game/anim_obj.cpp": "c7b40aedb1a9014a0f6e27c6740c065df91cc9242568bcc532e8b4f96f1bb866",
+    "src/game/anim_obj.cpp": "5ff28a68f25f3cf74483fa4d701321a4908d42124588403ac021cdb463266eec",
     "src/game/anim_obj_bullet.cpp": "e9120613130f971a773b1e1948f79031bf6636e9564a7e7a1ff1b0bd03b19759",
     "src/game/anim_obj_collide.cpp": "e3f6af7f355f4334031f214121af5f9e9685073eee4f7492c1bb03339525b613",
     "src/game/anim_obj_ctor.cpp": "eb919c56cf4e1875e41d585720c1e2f72e5b98c55734292de4407a06d2d34f46",
@@ -583,12 +583,12 @@
     "src/game/anim_obj_dtor.cpp": "ded2328fd03696ffe2ec71e42ac7f20628401f86810cb7e62fcd3f83e7d9eb7b",
     "src/game/anim_obj_ground.cpp": "f3bc0bcf206fb8fba565f8508f70bd406b9d0e6d387d13213aa44285c7f07b6e",
     "src/game/anim_obj_initclass.cpp": "6bd9bcf65e1ffa90102e512164bf0265bbd8a3b7d1cb97702d2e10eb7c113704",
-    "src/game/anim_obj_tm.cpp": "a5f37d67fd202500423ae61f24ce0a1fec6fb7f8241280b762ac36ded40f3f5a",
+    "src/game/anim_obj_tm.cpp": "d7c4953982f480f43e57b76f687a87660d8277c377c2b76f352d10e0ad4a2bc6",
     "src/game/anim_obj_update.cpp": "50757c929718a257ab1aa6737a68207b089b958b7fc8f67ffbeb3c7ca61b02d2",
     "src/game/anim_obj_volumes.cpp": "c37730fe7fd55fb031868c7bb041e5d8f0be40c748aff497bd3363146e01c724",
     "src/game/animated.cpp": "7201a9c7fc7443902e3ff26bebada1970237b53aeeb9d6727209e4572908d76d",
     "src/game/animated_bind.cpp": "9be6df780d50a36362131d8bd4a65ed82d469e347b1092ac3f738e8336139889",
-    "src/game/animated_draw.cpp": "b0f86a409d4218d90f24cac6b192c2f93e39c8ada822e92d2bbd4aa8e66cbd48",
+    "src/game/animated_draw.cpp": "eac2c115d29c6208432dfb2939770e29d8315f7966102bfbe866b675d248b90f",
     "src/game/animated_dtor.cpp": "5c9de439ec8ddfa64e70c609a3f296643d349ad9b9a1e03ed63abb68e56e7e96",
     "src/game/animated_finish.cpp": "2421dda2f32a5e5f83d205e4ea7c438c881c0ccdadf54cd347422090be3229d8",
     "src/game/animated_volume.cpp": "974fe13c25e5c448e5e4aaac96e4175fe0b1277d4ee8990a3814c510e8bb3443",
@@ -626,7 +626,7 @@
     "src/game/attachobject.cpp": "7beae62a0ded89a3876b3019473c6e6dfdc1d1d2b44c8822272f346352f02833",
     "src/game/attachobject_ctor.cpp": "e0eb46b3633af1cb357dfee7e8ae4a66cd799a555003be8e7ec6d84b5224fbc7",
     "src/game/attachobject_type.cpp": "2cc5b7fc297396790cfb5f76b6c7b53fa38d4ee347a5aae5f09ffc2dd5fe2789",
-    "src/game/attachobject_update.cpp": "4a63f5a00b026462cc4846699ffaf596d6873d1b30ac588b8d2ec80d8827e033",
+    "src/game/attachobject_update.cpp": "3a32920a87d360256689094dffca528b94c371b35ee8506954fec5428814c67d",
     "src/game/audioplayer.cpp": "a2e2f459fef6730ca450a002f0477bd921b671f94c1d81818cf1602d21b1d414",
     "src/game/avplayer.cpp": "f6a87e2eda181317ce0f35df24b8a6722ed3988080edf2be0f240a663ab4d6fb",
     "src/game/bigswizzler.cpp": "dc2c49e6154009380c2fe35d15ab352bcb62c1136b88c0647b9cbc9248179e79",
@@ -667,7 +667,7 @@
     "src/game/bsbifunc_coverpoint.cpp": "d478649f7ca354250c20793c963fbe90f63601e47e06673b57bf0ec079d66bed",
     "src/game/bsbifunc_coverstart.cpp": "d8a9e6183a6455756b736fc2c7de220412f7b9f8f041e20bfe9c8c98c7677707",
     "src/game/bsbifunc_death.cpp": "7cd8e6e79eef6c5d6e539bcd57729e9f8af755ba56019272b14baffa501447a4",
-    "src/game/bsbifunc_debug.cpp": "ff0802a14d1eb3397dfa9c0dee506e25ff810fdfde96413839c960959f6ac7c1",
+    "src/game/bsbifunc_debug.cpp": "cfd61fcb99fdaeb3031ef7d656e1b80ea5557a740b08273fa5ad04385fa498d5",
     "src/game/bsbifunc_distance.cpp": "d4e5f37d866b7ba0efb8d60486f3348833c91ebec1c7d8b3b93be4011a6f6c0e",
     "src/game/bsbifunc_dump.cpp": "f78e1a214739a9e923b1cafb039e3eae5482968d6d411e0c911dffc5d2b4bb81",
     "src/game/bsbifunc_endsound.cpp": "269518fa4bd130bb303ac13d145eb933344fa3b2eaa37cc8640b28f8df36b437",
@@ -694,7 +694,7 @@
     "src/game/bsbifunc_mmg.cpp": "a1d4efa0ea72ef2b3bad132cf4f53c8696d7b72e06a1e88a825a976f0f8f311b",
     "src/game/bsbifunc_mood.cpp": "e06a1f18ae64497a5d8e2f6ceba08f2904709851da3ee67e14f82919e01266fe",
     "src/game/bsbifunc_mountedmg.cpp": "b1cb58cc907e651f34d4919e2f95ccdc07a39b3b1ccdf5fa2dbc5bc4d92b8942",
-    "src/game/bsbifunc_movewalk.cpp": "67400b7250dbf26d8ae1aeba897c2d0d450aa85627ca0847341cd9c944aafd37",
+    "src/game/bsbifunc_movewalk.cpp": "7d88733a59a45863a375d0202f2171c3025fb255a5ee5a74ba0d3446b77a6930",
     "src/game/bsbifunc_mpplayer.cpp": "163a34d3170b06d3fc48c48495bdc0939633b0e053a311dfdcd3520331b5c699",
     "src/game/bsbifunc_mpprompt.cpp": "ea30913518fe038b569a108e38a418522a7c8bf1f8bddc7f9e966b83bf12eaab",
     "src/game/bsbifunc_mpweapons.cpp": "e8aeafe84db8543e0c2e3f99dc3a39873dfdab17817359fd0247530c4e4f4fb4",
@@ -725,7 +725,7 @@
     "src/game/bsbifunc_targetsearch.cpp": "2f37472d39598f35847a4097b1394e449d40c0ec37f9d0aafcff0758bd3913a5",
     "src/game/bsbifunc_translate.cpp": "d6712245b72f15c5a03bdd778b81de81608241a40c8c94c7204d013ee1779fe3",
     "src/game/bsbifunc_vibration.cpp": "b228bd856ecceba96d13ef3c83073889da732ca612603933e15e902ba8dbd9b9",
-    "src/game/bsbifunc_waypointinfo.cpp": "91a58545f170d92a5512031ef1fd0ad2dfa2f82784043586289d45d847af9d64",
+    "src/game/bsbifunc_waypointinfo.cpp": "8efd2ffb82bb9269a57ec8aa3143d80014f075184ca2ed5a3b8acdf8f191f1b8",
     "src/game/bsevents.cpp": "b452c77e9fd44429b0a8d8c9105a2ca9ee4bf43903bd7c71f1d82ed932f382c3",
     "src/game/bsevents_head.cpp": "5388eb4c3e5d496c04d0ef47cb4697c307c96d29a2b776374bae2fc299d57e5a",
     "src/game/bsevents_queue.cpp": "678dc2a5de24106c16e3f63e5d22d765f7279af4e4c4b77d5a51eedf13cc943f",
@@ -757,9 +757,9 @@
     "src/game/buddy_vec_path_reserve.cpp": "8edffc8b5c64eeccd67970a0ea039974e1ac83e04c366bc1354b66952fb6dd1f",
     "src/game/buddy_veciter_path_dtor.cpp": "da28bd810e9d80517ac0bdd7eefe9f5c58bb71a8c1391bd137ad6eccc7475c43",
     "src/game/bullet_asbullet.cpp": "2975a506b876058410ff94b47dac21c0128e08b6504df39afc4aeb9cc85b7c87",
-    "src/game/bullet_ctor.cpp": "42978a13107646eba5caad9bfda37c476ad504456238f77dc0b8d225c6bece59",
+    "src/game/bullet_ctor.cpp": "73313c93d9d8a4c2ffa43dc65206333946b47b2e62d2599643d3c4c6760cfdd6",
     "src/game/bullet_draw.cpp": "09df292753cae3ef115faaa9d446070b7a605ae7f70bceff59a555dad9e17add",
-    "src/game/bullet_rows.cpp": "f96ff0b8b951314e6aef81d67ce5a53b1ceed1eaf4b8e1b28b63785b35b6c868",
+    "src/game/bullet_rows.cpp": "a80cc07b11a0e8960b5473b90a1b6cc05c35150fc7a4dae6eb2a0f605c43082b",
     "src/game/bulletfactory.cpp": "91c50f9fbebc515b12e72a809b18c4b36e85ba07d972a50ce3df617da6ec1ee9",
     "src/game/bulletfactory_init.cpp": "1544cfb56bcd665918a179dbc362a3c4f478f860de1e81f03cf10e543bacebff",
     "src/game/bulletfactory_projectile_ctor.cpp": "b2bcf6cbe33b6305e97271453f92e6a188b9b853e780e128504be4441224374c",
@@ -769,7 +769,7 @@
     "src/game/bulletfactory_thrown_pool.cpp": "68e7bd51b8e93071890e172b5301a8ce70f7b31d5cd313c9f260bd4a82bf0dba",
     "src/game/camera_dtor.cpp": "0ff34e7089128735738983773a98dc0b02813b2b745d1de37624412931e1f637",
     "src/game/camera_frustum.cpp": "032b4c73100a68963048e8051abb824cc9774eb7466ab66e1c0980593f78475d",
-    "src/game/camera_rows.cpp": "6fa639de5acc6b4c9b2d544a62f07c4509f1aa67c52c9ce4b6f75dd0f4fe7358",
+    "src/game/camera_rows.cpp": "8382573f6a9f267b33c4633eac0b565890c2496f49328c0b39d60d28f64cba00",
     "src/game/capsule_capsule.cpp": "16427d1edd7c847061182a2ec1543df696dc3ee881826e558ecad55cfa9239bf",
     "src/game/capsule_create.cpp": "e5bdd4e3000036dbae68266376af90a76a315822e580f2da15283faec1d3127b",
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
@@ -802,15 +802,15 @@
     "src/game/collision_factory_dtor.cpp": "5fec50373bc2d14d29bc6b047fc0b5810afac67afbe129e7a18a276360498897",
     "src/game/collision_head.cpp": "746ca458a6ef009d99cf20245bd2152f0267ffdc586fb57bac739111f4f5f90b",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
-    "src/game/collisionvolume_ctor.cpp": "4b35bdea1a3b8805179c4a96623a2b489487833b59c8644da7602944fb3f4466",
-    "src/game/collisionvolume_rows.cpp": "c3390f72cc29d6807231e01fcc9348eb357ae7d902a37d3d43c4a0f6f9c7336b",
+    "src/game/collisionvolume_ctor.cpp": "9180b64da831df0209f607f79ff60ad24e36a63a2c6ba9dcc7986646af060e9d",
+    "src/game/collisionvolume_rows.cpp": "a67058eb28176186ea3722bb413d2c0d22183a4f616ee5210d373c5ce38fda1e",
     "src/game/compartment.cpp": "961e8dcd34f7a1f1ba19e0007164b1c9a19163487825e83430b3023ed47ef0d0",
     "src/game/compartment_bindtors.cpp": "bdbb1db55d3fbcdefa25457f0c027c104e49b3b05c53edc52ffb85bd208717ca",
     "src/game/compartment_bins.cpp": "409ec7f06c13ee2414a3b803f316f0d77fa3c119c82e96acce7bec67d2f649d4",
     "src/game/compartment_ccptmatbin_dtor.cpp": "85b54c38b801c0221f25db368653fed436bd4a5dd10b137b0bf2a7c30c8b0eee",
     "src/game/compartment_cptmaterial_dtor.cpp": "129613724839e1d61fe5207971156640988500660088dac2783e135c6f84dd28",
     "src/game/compartment_ctor.cpp": "5af6071d5c8944f859381400dd2e6c8aaacf7dbf6d31ef0ea21703faec0fd2bf",
-    "src/game/compartment_draw.cpp": "294df723ccf347dc3715d4efdc488259e857e4671f103c929511042b106192f3",
+    "src/game/compartment_draw.cpp": "d0c833e7815fc1fff5a7c5349a7781889251971bf138d47782cc8886c20e0d54",
     "src/game/compartment_fastvec.cpp": "b67fa66488486aa480bb256f6ce890c1659c38fd1ed0706c56064105ff4d9bb5",
     "src/game/compartment_fastvec_tri.cpp": "06262e2f53a800d1607a14984a240a2c7629f27337f9775d8df2b3aa2dac72e1",
     "src/game/compartment_init.cpp": "85b1c6b6a643f07cae9566304b6cf6fbb5d7fc3dafc2786f0c65e28e07b62dec",
@@ -841,7 +841,7 @@
     "src/game/debug_prof_register.cpp": "e655902202d1ae9eaa0fccfee1836c729faaea83ea7f814976450039b52aa9b5",
     "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
-    "src/game/decal.cpp": "782fa444ef46e9747f2332c2c1ce08d910173509ed4d246b14095ae02cb9c21d",
+    "src/game/decal.cpp": "8b99cb384dfb6f45065ade7a8c70c3bda204dab2cd4089c636e7d00b349c4521",
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "bacae8a4e726d84634f4a9723e7c05de4257ccf33c187ce51740130f12d99ab3",
@@ -854,12 +854,12 @@
     "src/game/dmesh_bins.cpp": "7fbbef7254a61a8e02ff62e9fe1d52f2ab5ceb49a6790d85dcb534e3e2190d55",
     "src/game/dmesh_cdmrenderbin_dtor.cpp": "f7166e01710b5976a04c82f69bedf1d0abe9770f52d41a9ae0cc94e87b446af7",
     "src/game/dmesh_cremapbin_ctor.cpp": "b4a5cf6ea02cdd1539386f9c7d6ad8b22b013a25f3b89cdd3d711b4312395c40",
-    "src/game/dmesh_partbin_render.cpp": "7a81234238a8459231650c0167bc0da8458a441e07ba1dfb4e0288c08377cc08",
+    "src/game/dmesh_partbin_render.cpp": "efd4a71701be8932705d57134752d02c927586222a344e2ed6b2bb0f09ddc1eb",
     "src/game/dmgeom.cpp": "58ad9933fab712ccbb7599ad50b90d5c5c8490b89c350677dd2f39aa0f50208d",
     "src/game/dmmorph.cpp": "74e313508235e2589cf84ae9e41846651c7b133bea1445d19933492626dbf10c",
     "src/game/dmmorph_buffers.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
     "src/game/dmrender.cpp": "0c5d7e63d3e8745e0e94191ab8773469f4dde49126919b9ab13b926685d84b19",
-    "src/game/draw_context.cpp": "261589cc092b9c8c7b80605255eefc78641468141f4d33264252696f62c9782b",
+    "src/game/draw_context.cpp": "5c2e1ad294e586bb2d98908cb20a336a3567ae655b7e08a8648636c2082d4ed0",
     "src/game/dvdStatus_check.cpp": "6235cb08f81890f463ca2777c2db3787c142a0eee9f596d2ae72dfeabe06635d",
     "src/game/dvdStatus_drawmessage.cpp": "299e80bbd3020b4e93c3ad5c3c048992deb0636dc4cffb033130e97fd43f6ba0",
     "src/game/dvdStatus_gxinit.cpp": "3b8c2acd3cb4c9a00d2164c67b668017797e6ebdc1897c4ea906845ce70460e2",
@@ -888,12 +888,12 @@
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
     "src/game/hearingvolume.cpp": "f4e5ccb24ab2d04de853c2976e0a4a1278db30f1ac52b0b96b2452ef027715bf",
     "src/game/hearingvolume_bullet.cpp": "d675a975cda997302153895f84925033ef4b4975388d742d108434c3f9ee0ec0",
-    "src/game/hearingvolume_ctor.cpp": "02eece96dc2fd346eddf3a44bb0d51042e988a8fe3ff1a84598f2eba6d43f9ff",
-    "src/game/hearingvolume_init.cpp": "1527c070638a90ebb17af9749cda3e461b518e7bb27d3ab40fc3a63c12a1f049",
+    "src/game/hearingvolume_ctor.cpp": "80c05cecc46a6554e6f2b39b4ef537361241ac497af278d435713c390a50e989",
+    "src/game/hearingvolume_init.cpp": "4f53f4a3a92fc14d8702141d861e6d16bbb4af2d8758456a211354e49bf91d1c",
     "src/game/hearingvolume_rows.cpp": "eb889ebdafa103d1056ac79d8d0d2a63be8c8366b4d470bfd50d5ba078a3651e",
     "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
     "src/game/hierobject_constrain.cpp": "5bbaa659ef69a2946a0ddf059834ee88194a7d9d3e18ce6c8b42672127297cd9",
-    "src/game/hierobject_draw.cpp": "c5e1811b7ea46f78644c7dce50feab94b0ab5492fdf94d86584eafd87e8138af",
+    "src/game/hierobject_draw.cpp": "67a66f0e3948333dc004a9e723b8bf8995572b5dacac294b12d397e422f50e4a",
     "src/game/hierobject_motion.cpp": "a014904bcd8f0aca42d1dff4a936a4c5d0020639a868674ff9c23cc243d20318",
     "src/game/hierobject_playback.cpp": "4f5b5b4b45e5fee046ef836082862248430fc79c2b7102e4dc92fb3c8fef0628",
     "src/game/hierobject_script.cpp": "8095c6c67853c2a66485d7a45382f6536c4c1bc67b6f2bf39ac6894b3c0a9307",
@@ -922,32 +922,32 @@
     "src/game/light_instanced_dtor.cpp": "dfe26b5ce2aedaefdb8fbbb89a9713b184518048a510d02cfa2d9a07b139892b",
     "src/game/light_propertyanim_dtor.cpp": "80dcf90c6fe5c35c37cb8f7c03bdaadc4678064fb5631051424a96f3fb9fabaa",
     "src/game/light_propertyanim_update.cpp": "f224bc174dcc6cceb1190fa890ff2a83eeb77ad94a6d643e25f829db180ca365",
-    "src/game/light_rows.cpp": "a2266b9d092e5d9f49d0e786605e8b294c5aca785c004edcd3f393199efc905b",
+    "src/game/light_rows.cpp": "147d2a704a04010cce0d336956aed6a0fbe35bf6a38bfbc389536d45533171a7",
     "src/game/light_statics.cpp": "3b668c751c5611c7fcb137dca194e5abf94fac42d94cf7ec498be79b9b11f1eb",
     "src/game/light_visible.cpp": "73e385bea5e6c408f5844bffb8984a2e96ffc5c5c5a7b95849bf84e38d48b67a",
     "src/game/lightvolman_volumes.cpp": "5261152d5cc4b0e16210cb7ce143ad63ffcdff2aa02f7df097bfaee578575ea5",
     "src/game/line.cpp": "68ab3165c7ee278d2b66cc6dfb6102c4b0288a7bce9c494dc5028e3cf3b37824",
     "src/game/loadelf.cpp": "9decbe9395499ba51bd97defcfb741e00b906e9de4229451b9876c4eef8f1c2f",
     "src/game/location_collision.cpp": "f1a62ea2763f552fee804adca73ebbde64080dfca79eb763f963947d9dc48d7e",
-    "src/game/mainloop.cpp": "8a78439e7f07894923bd48b43bbc97f4a87fcd82015be2960d93e790f670e97c",
-    "src/game/matrix.cpp": "acbcdddc86e289fd61ad88bf932cdf4749cb51e59c7fbad4d43eecea57104f9c",
-    "src/game/matrix_endian.cpp": "e342534dedf41a3cc8e97898b3e66ada0e476de40351f51bef798d27a64a5e46",
-    "src/game/matrix_multiply.cpp": "042a95889b8f9cc8ca1e37ee3097ccc485cf5f94943c7f753507c5dc1cdcfa0c",
+    "src/game/mainloop.cpp": "365ffd3fdf7c5a4f77aaf53fa18fcd6ce8ef074adfbf0f76c74c94a83edce044",
+    "src/game/matrix.cpp": "fe98a358831e8381c6cbbc7f9fe676fa721b338056d82a37ac639c78c9b3a284",
+    "src/game/matrix_endian.cpp": "ad1afae81341a9281c7597079a9c3c42d90e125562c1157aedba8bb8103a3482",
+    "src/game/matrix_multiply.cpp": "49f33363fb311402ccab6665abe9d97b71eabb37dfd34ef5ee2a0b07a1e6affd",
     "src/game/matrix_ps.cpp": "d9b215ab396eef006c441bae6aa08a225926d829ac81e79dbe048ac13bafe23d",
-    "src/game/matrix_rotate.cpp": "d716ac9822a2c51e58da095862a73c960f091d2b080ae06cef4e7974d03a5b1b",
-    "src/game/matrix_scale.cpp": "590da45bd0674fcedfdcf7364cc5a871ea729ad6cc77769c4cfccbe24f87232c",
-    "src/game/matrix_translate.cpp": "476a4a368cfa32f3e4ef2f2b7324eb3d3999458b918e58431f31f74af39d7a14",
-    "src/game/matstack.cpp": "2b4bbdb7146edc2939e5998f78249b3f40333d7268965639f9da17091a6081bd",
+    "src/game/matrix_rotate.cpp": "20c0595668136f1fcc405744691a14b6d72350a329ee7f324e332e16f7801826",
+    "src/game/matrix_scale.cpp": "47d6c42715b5d4bb1ca4d9a43655ed755dfb1422cba662aaa0805cb76d098707",
+    "src/game/matrix_translate.cpp": "b10967b45b0401d09d0f03035a7ddea0d393dcfa378fc906482538d289fd4990",
+    "src/game/matstack.cpp": "066e631e98e2894539cd4ac006028a5d2ac0323cd68ca23583fb0490aace296e",
     "src/game/memory.cpp": "75e50f5f66acd16755a070f59afef29e6869b97dede92fada6399d2931c1b27c",
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
     "src/game/objcreate.cpp": "1210b348972c22fcf28832c8186fe4c4a2a1a5afa66b4ca761f79326320b28ca",
     "src/game/objcreate_bsgoplayer.cpp": "95319c17bf06f9212158b3730fd9a240e8c8bde962c8368d97b3bed50c115cdc",
-    "src/game/objcreate_collvol.cpp": "fb5ca7261ff47677ebd012139e2750a386fc21e57f0b610f318f73c21ee81b64",
+    "src/game/objcreate_collvol.cpp": "b7bfa5de74fe7b6c72488fb15d2eb2f94118aa4bf03c187cb0abf14480343350",
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_createplayer.cpp": "a5f552e36a0182c3cafcd7865310e32a99a32605a61c6bdb5b6c61e52e2dc84d",
     "src/game/objcreate_destroy.cpp": "8398c89a1afae6ab4deb18269d385c9f784844708e928d7e7e76495da45b9aa6",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
-    "src/game/objcreate_german.cpp": "9df2b05a02af0105a6bcfbea3681e9373a4891cc1ce9fb87d7aab86b82af3dc3",
+    "src/game/objcreate_german.cpp": "e5241da17a2125e4fe85863a8486c00fb9831815dafdc7aac49b109e9e5c3225",
     "src/game/objcreate_nonvis.cpp": "d464acfcbaa4440e22b73f03d357ac011aa22f17e16494ee9df809026f168004",
     "src/game/objcreate_playerscript.cpp": "d3681c9f3eeba80156a23c349866d5c41172f659a275c80c02ca7cff786e77fa",
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
@@ -957,14 +957,14 @@
     "src/game/objcreate_thrown.cpp": "dcc9f04cb2ce7d179050d878b8edc26588b24564e0a6d32677edf4bf4f011649",
     "src/game/objcreate_volumes.cpp": "ade90b093521074685e489563b85cdf5e1bb8cc864a5ad2b32a748128d92471a",
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
-    "src/game/particlesystem.cpp": "f1652b8db622d87594148aac72fb5d1a368b3f61fa52dc08d68d8f48bf42ea3a",
+    "src/game/particlesystem.cpp": "1dcd4b8cd7e17099d99c22f7dd63d3ed7e1eddbfea079b9a6134f4e3cb36b900",
     "src/game/particlesystem_active.cpp": "c6900100e25bc2343e8bc91544bd038ce33e62b4f8ee35b613f0ec891cd22913",
     "src/game/particlesystem_beginupdate.cpp": "a6532acd0524ead88d7ba7af1d6fcda76df7213bd60976c2155ea00ba8e00248",
     "src/game/particlesystem_cinstancedparticlesystem_dtor.cpp": "9d40870b2dc1fe0176a5b01f1d0f67303358bdf16eb989ea9bccd63d8b4c0834",
     "src/game/particlesystem_color.cpp": "7a15fec28bd5b4e09a2a04546307ee5affdc1167d9bdbd8c481015bfa382044d",
     "src/game/particlesystem_cparticlesystem_dtor.cpp": "4f83c65fee1c6f1394c63b527124e37016012f18aea04a1e332c8b9f9e8f62e1",
     "src/game/particlesystem_cpropertyparticlesystem_dtor.cpp": "3eb8b77f62e2467ef6640f6545f1f9c756293a80df6bd627ddc8d0314da291e2",
-    "src/game/particlesystem_create.cpp": "cb1105dc9ffa2ad8d8ec383c385c1efc40d61f85ef8bfd37fbb5b49f2a15b06c",
+    "src/game/particlesystem_create.cpp": "92629d98b34d231417990ef61ba1753b7f539abda9ae44e457ff639cf5634d56",
     "src/game/particlesystem_emit.cpp": "65a48237a98b6a85d09eba8fad135c4227b9c623fbefecb5a5496fc446a8cc1b",
     "src/game/particlesystem_link.cpp": "13dd477fda799fd17af5b91eec434df7c09343967b2ccc599b08c980111dc264",
     "src/game/particlesystem_manager_dtor.cpp": "4579673e4531997696db4d3e61a262b0e8269a440480666ed644a0779d7508c2",
@@ -992,18 +992,18 @@
     "src/game/player_draw.cpp": "643e05245be92bae37e0e306cc6910d4796ad94993aea0b3e3f769f614a87f45",
     "src/game/player_dtor.cpp": "9be753a44e98bf59c85712ce3ca679aa7f49559d7ef0f3215184ccd58a9eada3",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
-    "src/game/player_fov.cpp": "5116b1d2b84cc00a9448a424d92f87773a5dc73f1b1d610612e1495d8b433060",
+    "src/game/player_fov.cpp": "5eb851f7186bb6e36da45c3c0cc1d29ce9331294498917b2406c64effca8f6a3",
     "src/game/player_health.cpp": "e94f903097f1cdd867cd719f4b73df7c8b881d9bcf69bf32d0eaa4e2aa4de77f",
     "src/game/player_init.cpp": "074fd5823b15ac7dcaf4280da909dc19842915180bc8a36c4aefbad8b4f03b18",
     "src/game/player_lightvolume.cpp": "444d0087a505f892078a468e1bb6182645b0123c278babb08a49f6531958c4cd",
     "src/game/player_mmg.cpp": "f65c8f48688d519e83c507c186c3eae13b5bd5720c0fcee9f4035d94a58cb9d7",
-    "src/game/player_move.cpp": "b221536178303e73aceb2be66f1b0f2ca3422ff0e3805a670d98c550df871847",
+    "src/game/player_move.cpp": "2fd5a978662b9f90572db18265b1eb29880d7d41ed2d0721c715b391a7c80a27",
     "src/game/player_respawn.cpp": "22867df64fddb1f47c975a12459892cba2fb0134e73d52a1da6582a78efcf6fe",
-    "src/game/player_rows.cpp": "9a4104fba58f9850a02f7a80c3d7f9c11ec86c0af5530d3bbd07bdb2bb7a9a19",
+    "src/game/player_rows.cpp": "e7c41cf5729a9d829fbc155133857a2eb050444e1f92c41ef65300aa3b315bc1",
     "src/game/player_setweaponenable.cpp": "6756e35db77d3b0091de395be8604e6019461908d95b62e4c6384109d0a6dbbd",
     "src/game/player_sqrtf.cpp": "5244f4cca0d1bb5192bf073eefed7032fa74e4bfea45bcc7fe546afa0e6a368d",
     "src/game/player_switchweapon.cpp": "34fbfd10a314712db72f76716a9ca565ff808a10457767dde350374f2e0a3515",
-    "src/game/player_tm.cpp": "989c9abbffb1f30e45ef1cdcddceb57f18718453227e422aca30ece2fd1726c3",
+    "src/game/player_tm.cpp": "2c304adaf902f64c0b0472924fb4ef198d61e949e418a9b3598977a0f2c389e1",
     "src/game/player_transform.cpp": "80c1eced80af8cee2b6d8d30b363618e944a798303ed942d49d9fa6b1bbe1c54",
     "src/game/player_updateai.cpp": "6082a35cdf026233ba53fdfacd7426f83d7a8ceb31e96edd6a376ac957a33ee6",
     "src/game/player_vec_add.cpp": "ce56941a1cb5ff6262f839238d95d29f1854cf7513c379df83318227c1fa9003",
@@ -1012,8 +1012,8 @@
     "src/game/player_weapon_donereload.cpp": "276b86e2f1ccf65f0dbd5efb3effdc6f6c18c35406378a8900eda198910a6ad8",
     "src/game/player_weapon_draw.cpp": "31ee63309930c52310595f51efbc1607db59b599ef46f4cdbbd9ce2d8aa9aac4",
     "src/game/player_weapon_drawenabled.cpp": "38a90c25715e1cb193ea2adfb7cbb12b6914fbb8ec8a7c770c70457725d465e4",
-    "src/game/player_weapon_object.cpp": "001394430675badb66c0186e288da422e8d72474d15128d1301ea87c9825c72c",
-    "src/game/player_weapon_object_head.cpp": "2e0cc37416f8711a377a01d6f026e3aaba832de6d8273c792643ed2aa8f3b599",
+    "src/game/player_weapon_object.cpp": "c5c93cb166b4041f25f6610abed163debe934a6cfd137c1716ab80add93f8442",
+    "src/game/player_weapon_object_head.cpp": "0f19122a9a21184a333fe39d7093559f095c3a34670862375505e1613f34e00c",
     "src/game/player_weapon_object_init.cpp": "1c96bb2ef064f8b792e9e15688825a13093002e3bec4ae66531e1c60933650c8",
     "src/game/player_weapon_object_update.cpp": "f55048dd7068960fde8a6bbf86636dc1dc80cf22840b71b493ecadaaa8247aaa",
     "src/game/player_weapon_selectable.cpp": "948a057eff27a7b565104c23d7cfddef4a5202207c2c4342f63865c782cd2741",
@@ -1023,12 +1023,12 @@
     "src/game/projectilebullet_dtor.cpp": "346cf1d92e80b034a1e28b918f39a6f0d3a6f3e8990f24082535d93c1d37c007",
     "src/game/projectilebullet_link.cpp": "19f80fe3f63f4dd8e99c0ea4721e5ae6d3b514a6257b554432be60eab125ad4c",
     "src/game/propdat.cpp": "992bd16a7b8a0595867f21166162551e9970cddb176a9adba66e2d6243abf794",
-    "src/game/propdat_bsp.cpp": "81fe3d2dee58065e321a31bcbb18da50d006bfe08108f12ebed45e95ce1f77f1",
-    "src/game/propdat_core.cpp": "2eda05418511553d0ab5f712d1a2f39f0b883d6680aa3695027d30e9c30588da",
+    "src/game/propdat_bsp.cpp": "996ec615df53be8ac1262a12f3b46202bae0550c4379fc19ac2546613382ff34",
+    "src/game/propdat_core.cpp": "93c0ec5d33378dcd9dfc3618d21a1234f6f100cc3381056c785548676a2ca817",
     "src/game/propdat_endian_header.cpp": "a495580d0031b6979d10c5906c2235de9e8efa227c56cb5fe6d68e57a88aa50c",
-    "src/game/propdat_load.cpp": "98e8e1c6ac5c18e60a923a3bdfbcf93b1e91191f61d15c7965226ec7cc9c00eb",
+    "src/game/propdat_load.cpp": "bd925f015ce6d7765f4cd59478a08620bca3299a813aa30fafb07cd1ce59447a",
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
-    "src/game/propdat_restart.cpp": "fde69e0e5b177ac973269b5931bb0b38c1d2b07c146386fb73b20c27e0921315",
+    "src/game/propdat_restart.cpp": "7a42693e687364d8a56a4e28fc97727e8f58ec0ed9abc383558f081b786dac2f",
     "src/game/proxtrig_leafs.cpp": "179078dd5943adf6266b5fd1d3f9e8bece13e96b580aa3edf53801650875567f",
     "src/game/proxtrig_messages.cpp": "3d6c95c4afc8f0b5509c00f9816cc271214130d6f8d3ea47b1105da7e97e3d3a",
     "src/game/proxtrig_point.cpp": "cae61da650ac014e78ac166b40ae5f2424133c367c8b6010f8fa654dc13e176d",
@@ -1093,7 +1093,7 @@
     "src/game/scene_visit.cpp": "713a874db6490a021cfd691c835beebeaac8713c59b8967c771321196c93eaff",
     "src/game/shadow.cpp": "a065583d8c1eca57a086b3ca047e1ffe81221bad1ef499e5fceae924c6666f1f",
     "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
-    "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
+    "src/game/skeleton.cpp": "889f952bdeb2b5c6e1787e01d515e338160f5a7c5db43aa20a76e3db73812572",
     "src/game/skybox.cpp": "c81a7fa9fcb0b72f605b4e35f443be4cc71e7ebc449a0eaec87efa565e99bc85",
     "src/game/sound.cpp": "70dcdd80bf1dd58afd5a384334f7cc43d1665cde528ae5fd770643d269600c55",
     "src/game/soundschedule.cpp": "c694f97d087bfc7f21c516d5e3ccca496446691cf3b37b2f183e5926872a483d",
@@ -1112,20 +1112,20 @@
     "src/game/sprite_dtor.cpp": "8b2228e3fc8f7af009f687d4211669a300b7279d5d8e2f8bfb58ccfa56771b36",
     "src/game/sprite_init.cpp": "ca86c0e36bcafeb13e8d6dd7329025015df2aee3e685ec1f1e5dd7e3391e7596",
     "src/game/sprite_notexturebin.cpp": "0d076b157d366c895de1fb05c96b8f1b4a4c3e79aa89040b4cabfa6d3428a54f",
-    "src/game/static_obj_anim.cpp": "4f6bf558e5f36228ca9e5744bd72f1ce2415a5eb29fd80aab00fed32aebcd3aa",
+    "src/game/static_obj_anim.cpp": "0cff608fdca1e08636de0aeeb4a70fdf58a83a597a27ef0208a587b66e0e9cdf",
     "src/game/static_obj_attempt.cpp": "11fc434465ef370ced03b69815a3c7bec6c97775fc6b815b0c0d6bf342348acd",
-    "src/game/static_obj_bounds.cpp": "42758ce058b28a87feece41d46488b520f1033fcb93e1a8d01f7fc6fbc13e617",
+    "src/game/static_obj_bounds.cpp": "8e1b169bd6f7413a0245d1b7166da0d63716eda2e1022d5861fef2dbc35b788d",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
     "src/game/static_obj_commit.cpp": "6be8c2db3c2c2e2c79ff1263a4b52b9855b05e241fe74144da9df2b7c50c49a9",
     "src/game/static_obj_dtor.cpp": "d2900e0d83d6c40dd8fd027146a758f25846f8251c15dfb928b9d909a1f9c275",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
-    "src/game/static_obj_rows.cpp": "55723449b2063f82ab41c199f41c9711eb9c77a3924d0e09de64458c1936264d",
+    "src/game/static_obj_rows.cpp": "0fb0976dfd3b7139664668b9748e19b44fa4d7b4d3f297c0d6d69c1ae2baa28e",
     "src/game/static_obj_scale.cpp": "ebaf6b29a785efa1d27531effc96c32037f2e0a32f9ac7124e3c402d17e1f673",
     "src/game/static_obj_setlight.cpp": "05a2254611965ce57260a0807b2d34506a04e3ec0c03723ce65ea11d9800f253",
     "src/game/static_obj_setpos.cpp": "69cdfc4c8de5a0ea500c11997f419afc8402acd720f86eed210e942a4d3db064",
     "src/game/static_obj_type.cpp": "f3b8b46468b3522aa8b2349792586dbb94b9211519bb96a074c8737f61416dcb",
-    "src/game/staticmesh.cpp": "4b5643955f4c4e9b834ba002d435e02c54da2509ab08a85e8ddcc6d9cf66ea23",
+    "src/game/staticmesh.cpp": "65a6937d938853f8425319ea696ea8897bbd5358dccd74630dfc5c336bacb542",
     "src/game/staticmesh_animdraw.cpp": "53a8f685e3ab342109cd2c7bac17bf4ecf60bb16c302600455979ab14f4bc147",
     "src/game/staticmesh_cmshmatbin_dtor.cpp": "9dcb044215091d84f653f28a2dd9c05e2fc5e3368d0bbc46b219b6a98f8c3fa5",
     "src/game/staticmesh_cmshsimplebin_dtor.cpp": "057bbd989600d656e5b112ba7dcb243176c7e19085f5e0d93c8f84142004893f",
@@ -1538,6 +1538,7 @@
     "include/dolsdk2001/libc/string.h": "96be3fae011f3a3a8c785c1b4e156d0edec8c93510350c32a17cd83a0005e7ed",
     "include/dolsdk2001/libc/wchar.h": "eb9359b3f8c80e980c291b31b08b913739a9fda753a2a5007f8bf2bf3c646439",
     "include/dolsdk2001/macros.h": "501c9c8160161354e35f291cb101a508877ab32d5e28450839be2b3d3da86a39",
+    "include/game/CMatrix.h": "2a80633f9aefbbbaf5811470968dedf0fb0befe143fe54d100bb0b2fef2b3951",
     "include/game/CVector3.h": "a694db3fcba54c47b1df35512d67d795f24586957b6022e3e7a30686e00928b3",
     "include/game/msl_sqrtf.h": "f91d44ff20bd7fad0236d97ebde51f625247d746d9c04afa093c6b531d55b457",
     "include/prime/libc/ansi_files.h": "22d530eb96d140cfe20ec168096d3dbfaa57a34c5e4601ffd6f0962eb90996e1",
@@ -1907,9 +1908,9 @@
     "config/GMFE69/ShellMenu_unlock.json": "ef523fd8e25c9220cce3e44ead128bb4800165526d04f2af5153493acb097261",
     "config/GMFE69/ShellMenu_unlockedstatus.json": "5653ecf1d2ef5ecc0b705f83e4b5987b06501dffc7a372a5c96766f55185090c",
     "config/GMFE69/ShellMenu_update.json": "6faa8f486b8e05c93250d20d1dd4d7f81bd1fcddee76548f2957fc00d548e665",
-    "config/GMFE69/Soldier_object.json": "bcdf6fb3cd097fb5e61fa082c09729fa3837546446a7611897f7f4d85abbc2e6",
+    "config/GMFE69/Soldier_object.json": "7a30bc59f2da99e09dc88cccbb7a487368d9a3383563fab93cdadbe149091aa5",
     "config/GMFE69/Soldier_object_attach.json": "2e04f75725ea3aff4077c15d79c8744fa099e6a9a8ee72312da93ce4d9558a4e",
-    "config/GMFE69/Soldier_object_bone.json": "2ed638304eaaeb7f118d834d0a019a174870a814bb085d21db48a0ce88290468",
+    "config/GMFE69/Soldier_object_bone.json": "38ce62183c7deb6c624b01eb076df8fa6fa2870f8efe2f294f30c6fb0945ce6d",
     "config/GMFE69/Soldier_object_bounds.json": "6ead974ffb35a32a1b224efa8fed5bbb4d57a839ce7cae7b85c809a2b3cf68e7",
     "config/GMFE69/Soldier_object_cleanup.json": "2274e2e5d22ff4ed34870dcaa16ecbf8dcb609b960c283e8bb9a8822d6236f0b",
     "config/GMFE69/Soldier_object_ctor.json": "d6e0e4af8e37fc29359157d118acc7ce68bda7ad0a20d124ab1f663f41447fd9",
@@ -2259,7 +2260,7 @@
     "config/GMFE69/debug_prof_stats.json": "8dcd3d54a8afdfb1de007b790e6297ba0114db0f72803a6a900504683f086f17",
     "config/GMFE69/debug_prof_timers.json": "55be7658fe193c6c91eef7449b78be88ec1a421e62537cafe7f4df8d85f2aac1",
     "config/GMFE69/debugger.json": "b4812b86753209416cae697106b949c189ef985bbe634aca332ff006abd18fdb",
-    "config/GMFE69/decal.json": "aff701e567330c0ce68e3a55d33ccf645943909896644f1a96dcad57008c424f",
+    "config/GMFE69/decal.json": "3dccc79cba7e8908f86d40a762656f1904eb314d3bcaffbd5e7dfcfbe42aa0fd",
     "config/GMFE69/decal_dtor.json": "a454c6b4f69ad8d7b90dd660a437dd63dba158c6bb2328ad6cf5dbd6d6b165cc",
     "config/GMFE69/decal_initclass.json": "23494926356c2f036a09c4dcbb5113091a7d86daedd49d772f11b546616aae79",
     "config/GMFE69/decal_link.json": "a9cd419b7f28f863b525d23f4d8f33aaf81204d1a1c12a6f8e9fa4f2c48ffd11",
@@ -2274,14 +2275,14 @@
     "config/GMFE69/dmesh_bins.json": "bed9ef710a20bde94fd3d05e7a5bd4bb437c22d839da779c49eed55ee99bc5b1",
     "config/GMFE69/dmesh_cdmrenderbin_dtor.json": "9268c39adea76876007405b66193ec625771adcbaf7ec550e54206a3828962dc",
     "config/GMFE69/dmesh_cremapbin_ctor.json": "da7030351f976874f2061ceac394e9b76af32c494408a461b39a2eb845419e6b",
-    "config/GMFE69/dmesh_partbin_render.json": "95845b22cb231252ab2b4a5f8f6c7b840bbe3986c248c1bfe31a9df7c13a63a3",
+    "config/GMFE69/dmesh_partbin_render.json": "481186ef27ac2cbf1b56a894bffba5f37d5d13557cef0478c13bbf68bc7a2473",
     "config/GMFE69/dmgeom.json": "704331dc5c2cb08740c64493cf99b8d0b609d3359cdb925d34aae5c8008e2d89",
     "config/GMFE69/dmmorph.json": "7ec6c539a40a9ebd6d216b4135ffc070fd8e0d097e2e9533945bb9cf315d14f4",
     "config/GMFE69/dmmorph_buffers.json": "52d45ae3a2c06c9e6bacc2809e4554df01f9b0dd1ef60421b4b04fad8ab00f0d",
     "config/GMFE69/dmrender.json": "d5d678a91cbf22c5957ec172ccca32d1198bd5031249fd506550daded8e2f1eb",
     "config/GMFE69/dolphin_trk.json": "9f66a923f4f6e4103cb15c12022e534d623c661d7ace9cc644364dfd361c06b7",
     "config/GMFE69/dolphin_trk_glue.json": "9bad22a0d1cea134a59e1015e9c02cc8418e9b47e3975f25993cc3bca1bcebd7",
-    "config/GMFE69/draw_context.json": "982726912b09ce3e360e31108753cc5cd578e2c0267a2268454edfd80816387a",
+    "config/GMFE69/draw_context.json": "78df6365f1226c41f91448f8837aa2b1376dd351501476390c482474843222d5",
     "config/GMFE69/dsp.json": "6c4ba9a2f66c0ef3e23283c2ae295edd31558a47efcff76f281c5ba678f4d74d",
     "config/GMFE69/dsp_debug.json": "abb1bf69b26be3567a5e3a22a729922f11d7a3b8c74ed938895798d0072114a0",
     "config/GMFE69/dsp_task.json": "23fad1688cbbe0178fb9b445cc0d319c557ace917f657fe4d2e1b34efa7c90b7",
@@ -2356,7 +2357,7 @@
     "config/GMFE69/hearingvolume_rows.json": "b5d842a31bc5a9a612c9dff0557bd27d482e7f26d1daa66bc7d9d4b935f319c8",
     "config/GMFE69/hierobject.json": "97c84bb7a2ef58333c47171b0d1f398ff7f354e472820d36102c939f48982ddc",
     "config/GMFE69/hierobject_constrain.json": "e012314e541ae6b058d9dc04031c74291037b5d34a84b470bb18d893b6da63e9",
-    "config/GMFE69/hierobject_draw.json": "8418a044e890a3e7311069a90c1d8984d95369e34dd9b191972e91082d32405b",
+    "config/GMFE69/hierobject_draw.json": "eda533592402fa26cb260d588ee3e971154caf3e0a9b1e091f19baea810dd367",
     "config/GMFE69/hierobject_motion.json": "862ddf511f4fc1e06db3ae7b03902830536071543761956f061dcbd61f783dc0",
     "config/GMFE69/hierobject_playback.json": "8a74b5774fd2f8b8aa6ffb4c2d51ca9804fa1c349753d4536fc4bb76cc72f925",
     "config/GMFE69/hierobject_script.json": "4bcd2452542b1a785c200767db551dabee5af0c17df4e0a41c7ad40570c6ff10",
@@ -2411,10 +2412,10 @@
     "config/GMFE69/mainloop_game.json": "f25cc319dd6f59591b9d41ff736c4ab682f245a7ff53038cd453b9e121ce6849",
     "config/GMFE69/math_ppc.json": "b9333b4067895dff685beb9b33137457e747e7894562c6b8de8258785645b3f6",
     "config/GMFE69/matrix.json": "89917fb347c16696ac4d68ede2609ac095e85ecb79ddfe6f1c5447fe3cb85e95",
-    "config/GMFE69/matrix_endian.json": "a73459bb11c116b29d29294ff37486a7bf1c7a94ed76da3c4f75b26be69c2884",
-    "config/GMFE69/matrix_multiply.json": "9db81bd189cfbcd3e33e9759809a01a5b1cd32a0ab0b7f3b4a5dfae378bbf0a5",
+    "config/GMFE69/matrix_endian.json": "aecfc0ae0c1da20dc7f771445cec17e30bb4c71da44997306932726a38465508",
+    "config/GMFE69/matrix_multiply.json": "d6171f751a0b5a15b707964bf7a262b844331a7de56cd566eb772c12492fef4a",
     "config/GMFE69/matrix_ps.json": "7e37cc79dbfc7f04b85a20c7b1b9310032c5081dea2c05651993a02c0687c656",
-    "config/GMFE69/matrix_rotate.json": "b2ddc0afac42e94e9b63c7a9c3ce5efaee88965b017fab25273e9478b8db4de2",
+    "config/GMFE69/matrix_rotate.json": "003616aceabe4db191c881ca747668811225bc067e7cf62cef5468c5ae306fe6",
     "config/GMFE69/matrix_scale.json": "db25360d787598540d60850cb42e168522f80685d7573a7844b09acd45f53186",
     "config/GMFE69/matrix_translate.json": "b4c21f4dbe5506ffd94eeb9edb319c0fc68978fc63757140a87a62ff84d3760f",
     "config/GMFE69/matstack.json": "f81ae47a25f59620752b069c9c0e5f22977f17406cdceab494891bcfbe4b0051",
@@ -2545,7 +2546,7 @@
     "config/GMFE69/player_weapon_donereload.json": "a3facf6c268178dc2341e884a58d67c96b155db973719ff87037ba9cc50856aa",
     "config/GMFE69/player_weapon_draw.json": "67944ef90ab4e0023f257bdfc9b58cff80581196f05b86f326dd2f70dfe54b25",
     "config/GMFE69/player_weapon_drawenabled.json": "af72358eb27d827370c188a11c8476c390a14426de1aab2adce0e2c0533ccff1",
-    "config/GMFE69/player_weapon_object.json": "ce3639a3f73b3918592fbae568b2a8eb94bf4fe66615825fefeb64cb17b3b0bd",
+    "config/GMFE69/player_weapon_object.json": "b3532295a69486feb560976d9294d0325fe178973ff984e6a8bde6d4b23fcb51",
     "config/GMFE69/player_weapon_object_head.json": "a44ae051a568d43332f48c6a47d9d4cef09cf7884de4da4cf76cf3cad9672250",
     "config/GMFE69/player_weapon_object_init.json": "8dc7c7e042d26e44e300c5b61f7073d635cd9417130db9796a3b100329226cfc",
     "config/GMFE69/player_weapon_object_update.json": "f29c28d61ce246810a98958aff750804969262a55480f40c633c322b236a83dc",
@@ -2728,7 +2729,7 @@
     "config/GMFE69/sinitut.json": "689b9132782994796219ad392cc3a0133827537356591f4c93adb2e384e70366",
     "config/GMFE69/sinitxa.json": "411b577b864a696f54ca6f728819538a238b294030608ccd59f1af782b46221e",
     "config/GMFE69/skelblend.json": "b8ac1a476be561b4fae4c3cd449972f6931387e83a4a8df3cbb09b3b3b86e6e9",
-    "config/GMFE69/skeleton.json": "f8a7a2ca94901c7b505fe98572da97c75638732325777eab75505995999c519f",
+    "config/GMFE69/skeleton.json": "062ee8b6fc9df3485b0709519a577c5e43758863e16e0f222d8c2a24c79d31ee",
     "config/GMFE69/skybox.json": "9880e24855987d7e12d9077dc8e56972580cff36f2b460932dfd8e122f73b00f",
     "config/GMFE69/slib.json": "175b59682d7176e6914e303e81ec26cb60fcb86ab08f884e84a2df96c09626de",
     "config/GMFE69/slinklst.json": "78f5a23f4c875365e7cc005444f78777fe3ee3972c723fd05c9472f7f00830a2",
@@ -2822,7 +2823,7 @@
     "config/GMFE69/stagpat_playpatch.json": "41a355b9623bd9cfb92071ac8ae92758187d262d2557969cac6b66a01275565d",
     "config/GMFE69/static_obj_anim.json": "fe44c31cbdfea3e363af5e51d87143de3315b3bad035a3930b5072d889fc2470",
     "config/GMFE69/static_obj_attempt.json": "a4d5db708395486ba3b4e8d6d40d90d47d61d817a9749d923dd318a60dfe441d",
-    "config/GMFE69/static_obj_bounds.json": "017358940e40c16193afee9a8d7a7c2d081178ca69416a081c9866c003b1801a",
+    "config/GMFE69/static_obj_bounds.json": "0e67d1a04445e710862a60b33ac2bbf71f681f4b82fe9b7c73b27f7cac923522",
     "config/GMFE69/static_obj_collisionid.json": "2e09b85ddda256c2d2c9ec91ccd8bd78419d2fb6a16bc9a74607a4a9a86e4101",
     "config/GMFE69/static_obj_commit.json": "13782cf0c53505bcbb3e0e058d868ae77368b1603d13103c62e28fa38db00e47",
     "config/GMFE69/static_obj_dtor.json": "f02abdc7c3052b254ff245d33ac389877396f88c3a9c7743d7bff835ce0ea28d",
@@ -17264,8 +17265,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "557b44cdacb2a06ffc36c56755ec8a54cc5b762156e8e566918f05eb8ce0178f",
-      "linked_sha256": "2eb344fc6537ca33471e4410b5f4f1f6ffa7db21275e1c970dbd03a23381277b"
+      "object_sha256": "e87b83543fc80cb500398c8c160659b921ddbd80a8b850cc7a1778e8c9c57feb",
+      "linked_sha256": "d8f989dfbe4d3eb9dca898eaa3c54d9c218f15db68107e4f13998e8116d03b0c"
     },
     {
       "id": "viewport",
@@ -17771,8 +17772,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5497364ab4473babe0734741e612f7a6312f5480117c2c2914a942ccd9c93cbb",
-      "linked_sha256": "31aeb0e6198ebead22b31cafd2010aecfdda1a238a1e7650cfd0f6090fe4e382"
+      "object_sha256": "482e8739daed83f53924ed7e73d8e03a61ac6b3f59aa653745af657ef4aa36f9",
+      "linked_sha256": "7323358bef1e6acca03b0a08a90cef231d572dcce61d1323f85551388d306798"
     },
     {
       "id": "animintf",
@@ -18185,8 +18186,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "af2be278f6ba97fa2e48a1531ab156e8a4a69985071a79929cd8e43df9978659",
-      "linked_sha256": "f4985e52ed70e99fc27b941526327e4a733722a3ab094bd49a0272a1e2b73ddc"
+      "object_sha256": "49b707fb57cabd66c60f021e3d280378f5b9fc8445b05301c91fd6693dfb2724",
+      "linked_sha256": "80c54c73baa882523df8118da54982f0ad6c359fc6e0c624f7345ddda6f86122"
     },
     {
       "id": "anim_obj",
@@ -18224,8 +18225,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7c1f5d3c8cba9359e187869b0fdfb199cf0a16e9c506e4d5ebc64e9bc3701641",
-      "linked_sha256": "8bbea8113f97d5cb67f6ca1a9bbac48dcfdacb768c29d882fc62f7a596cc0b0c"
+      "object_sha256": "62bb12981b2bab1bff2f969ff1b7b027d0c9b2cac32361f1d1653d05d65d2088",
+      "linked_sha256": "df3e5e75b4619f0a26faf1643241a61b0995988016c0aed480def2d305976d63"
     },
     {
       "id": "fader_control",
@@ -19131,8 +19132,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b6a2ecf8c52b5abd546f15d832f2dcd0401c9a85abf062c811b2e89641193910",
-      "linked_sha256": "6d7571064ba4917d573e119d4ae9f141509c9d172e46a15e3aaa328405d066eb"
+      "object_sha256": "d66b30c7dc0b414c095f8e1b5190338a953dc0c9c64e3830a06c8a3df8826657",
+      "linked_sha256": "d838e141754b9ca7cc27158d727fdeedecebb8dc2451f61e43bba2307c07615f"
     },
     {
       "id": "world_object_draw",
@@ -19521,8 +19522,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ee6ea6e51a7bf09acf5d6249bc4dccd95e0bf53e61297c06d14e25014d6ec3e7",
-      "linked_sha256": "d081c34577e0dbb8a47617f7100900f534380d53119adc43cc8ca391a25da5b9"
+      "object_sha256": "c81a0e12fa96f448f4fd4c19ea53067851b057a09cc77d939dc412eb97c840dd",
+      "linked_sha256": "d4c9ed77bf73e0f55dcef7c570392777de2143a4735df63d2c6cfc06f166f251"
     },
     {
       "id": "Pause",
@@ -20425,8 +20426,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "3c2e78dbf937fb4887d3b088e077e5118b2685b3aede103f22091695dba25f8a",
-      "linked_sha256": "c9c1424910b8c2317f31273cd3a5592adc801e8023f460c3da18d7cc1ac183c3"
+      "object_sha256": "20370a015c7332ecda55d6816520d2657ac2826b980b61c21d092a2793a8b49a",
+      "linked_sha256": "94c9445f21981947b7639e89d2de8108906a87b5d8177b5687f68eaf73e522af"
     },
     {
       "id": "smixer",
@@ -23138,8 +23139,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "70dd319a342deb96b186f3b776fdcae62869a0422cc7f7d63d7ebb059ffd602e",
-      "linked_sha256": "bb5a6c34a6894c24220616e8315c8de8e016f6edd29c0de2fe2eb82f6c3f65f9"
+      "object_sha256": "b885266be0132a70a80a01365f05479252f011731f10bf1c4b49908e0239c4e0",
+      "linked_sha256": "d0b2a9aaa7ff16543207fcf87d2ebe155d924f50a2dcbf5a41b28bca2dd8c820"
     },
     {
       "id": "propdat_core",
@@ -23177,8 +23178,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "18703115e0980b4421688a751f301d74398fd90b33637abfc4785301062c8798",
-      "linked_sha256": "5a3a1e19c188beef9403fb018c16e524c3d7ddad5bac764330b02a093c3ae6d6"
+      "object_sha256": "b88c5fbe31f90c5248d817b20eb20395f31d7792b2c6f202b1588a4153f6d6ab",
+      "linked_sha256": "e98ee85a27eb042c7537233ce38907e875c9e01cd853b0ccc3833672874ddd5f"
     },
     {
       "id": "saems_counter",
@@ -23717,8 +23718,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b6511519f98ba4a08250912fe4ff4dda53c8b569bff87cca51993dbc9b6bf113",
-      "linked_sha256": "a751f9ed7df6f678e1e16fde1186f98c994e6294d5e1aa519468f198b9b3f8c2"
+      "object_sha256": "477c85d93614620fec6d493ec1018a42dcc0f7d5071b4c8c4449d465b2109183",
+      "linked_sha256": "f5a6e90f8d5f6a649aee8e02732fce6020b56d0d1d6d3e0ccf5137223babf0eb"
     },
     {
       "id": "bsutil_size",
@@ -23795,8 +23796,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "668d2aa4abdfc33b601643dbfa43da54e4737a745bb693f0dbb2c23a5f535494",
-      "linked_sha256": "34cd41024ec5ee7296aa9784d314546d44fc12ec07c7f52a8a47bf9d33e8944a"
+      "object_sha256": "6466b43e3a06eaeed531c8516a9e425144f2182b51a69d610403096c0c1446cb",
+      "linked_sha256": "1c2ef72a3d4717e52a97d657511f2d594bd9b6b5ec68b025a76727ac45815676"
     },
     {
       "id": "light_rows",
@@ -23834,8 +23835,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c56459841cf15df131e8e81fba62c9cc87a9e316ee2b2e383187b1c53063cc6b",
-      "linked_sha256": "39c667eeec0f0e581a601ae60f19f2f5db07b4d06baff283c81568d30f419832"
+      "object_sha256": "dc807d304bee1a90b74a7b5aba7942965b76f10830825ff443d39ec809975782",
+      "linked_sha256": "10fc01c63d28891a8c50f4045e9905ad7bc774022fbfc2a38afe6c113700e609"
     },
     {
       "id": "camera_rows",
@@ -23873,8 +23874,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "acfad9dc5f8b59d3666369b108c2af52eae2e18b26a1d7c06f67af35f5976727",
-      "linked_sha256": "6fdb7ac8293a87e5dd88036536dace6ad5ab85006d5539c4df021b49a23fde1b"
+      "object_sha256": "ba59529107d2d8c69443d8f21ceef54cf875468b44f0151faa884de8631a01a1",
+      "linked_sha256": "35c210a103df93d5e4e990f2e68c456d6e2dcc5d718eb075a83ae80e0d5328d4"
     },
     {
       "id": "hearingvolume_rows",
@@ -23951,8 +23952,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "381d93aa633b2b13f84a9abb50dbb4a4d6f7bbbfc0adeb3c2e48067d80eca625",
-      "linked_sha256": "5a7608d0bd8c540131e65dfaeddfe3c6ffcf82ced4f0cc6bfd2782331bdd5a9a"
+      "object_sha256": "859efef0331b7bb00e15b1ddf54d0c748a2a22d038cf81f5086165af81767905",
+      "linked_sha256": "bae6d0ade6cffdd2810cec750cbf378a2b9adacfc247eb3c73b24f963f7abf0c"
     },
     {
       "id": "static_obj_rows",
@@ -23990,8 +23991,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ab3d800ef66ac4f0a20c4927c588bc970bce3de37c51941ca020c5360de18df1",
-      "linked_sha256": "7e3198eaa5582a7ff707dbd9e9733cf8b2f0340d1a379818c3715a9a281d3427"
+      "object_sha256": "503aeed56b67ad567c244ce66d9b6c5233f21a448d292a7f969d32a042325b5d",
+      "linked_sha256": "2bac538ac586107b2f9f104515527f891520e4b4b02d3f2a6780de77e6c43c94"
     },
     {
       "id": "bullet_rows",
@@ -24029,8 +24030,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a4e5d3789a6ba5dc344fcad5b9f8f584b7f0595cfb2aabeb5cb03a9b6c30ae8a",
-      "linked_sha256": "5eea46b94872a3c1f89f52854287c04c03394f9f115b20fdc20a44c6cbafc67f"
+      "object_sha256": "4a9ca21d907135038cff6fe585d90fba8fc32ba2c3706a771e1257c4fc396763",
+      "linked_sha256": "0df5bdb38d1d23d1826515e88f6c8c192431c6d807275e6947255d1d6c5c36c2"
     },
     {
       "id": "player_move",
@@ -24068,8 +24069,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4446c430f75ee573212c4da6092a3c8662a2a5ee76ebe02b1732653d4b977337",
-      "linked_sha256": "0782db37ea05c2aac4a7bd8d90e91e26ebe8eb052a30f3f256deae8c3ba60a6d"
+      "object_sha256": "4e3ad06ec5d6d573f152eb02b457988730a1d0c3bec948887151cdd83dc6b53d",
+      "linked_sha256": "8c4bdb3e8e574e5bc21293d0ddee696d4a5fd92d1ccf39c5a8d73ad3c82f23e1"
     },
     {
       "id": "player_transform",
@@ -24185,8 +24186,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "36642ce17b885daaf83487b45a8eeee675f36567b5db43a8a7285891ba9ad33e",
-      "linked_sha256": "4f8fc3040d941c8f6eae5253f329e196e38747e3e93d758e93061d226377a05d"
+      "object_sha256": "5ace0de01ecddf7ca0ec801931f97ab46c5403b931909255b91924f25b81ab70",
+      "linked_sha256": "916737227a6a13617e8ba9e22d1831c381ea0cb34835c2c144c571aef73ef810"
     },
     {
       "id": "player_tm",
@@ -24224,8 +24225,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1a1d94fcd559ab5a30ec95519241feaf6df9775afbbe6d160d3035cd0fe8665a",
-      "linked_sha256": "5602e6fa50ee19d87e295dd846cd4a8971e9f9e858fc4ca3f1ee6e607b141bab"
+      "object_sha256": "dd7aa59cad45ff395c8afb718ace65da1b6e7c643c622f812ca8da56abecdcf7",
+      "linked_sha256": "7201f8f3b9e3f169603e0d8f816e8655013b54c96fb00e0ccc04f416f86a8d1c"
     },
     {
       "id": "player_weapon",
@@ -25706,8 +25707,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "624d231ffdf9827b2a241c09b8d30dcc31c3f5e93b77376a6f44d293afb2eeb8",
-      "linked_sha256": "b455e307e28252724eb0be00dff48536bcc2dce43b39758d59b20abf70ee470d"
+      "object_sha256": "65b68a4d1606685bca3ad855493a40a046bd1d9d304c5667c95febeeb985f8ae",
+      "linked_sha256": "118ee0847243d9235690cfeadf2ee2e17cd79242cb4c2eb793687526a7f66bc5"
     },
     {
       "id": "bsbifunc_mpweapons",
@@ -27149,8 +27150,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0130f24e279f2cf66592feeb95932d3ccb107cc90ea27f4e7b9d1481e521ac75",
-      "linked_sha256": "209916250e22a4544f95b19af7b81c0ba2a8f02dde35a3ad0535d02951286892"
+      "object_sha256": "0a2164eb77962152f9b4f8ff19563db867f2f9acbb53ea7658b3b75aba53270a",
+      "linked_sha256": "0089658100873148eff0a0c3e0c8057927c1aabc99ed9a20af0454f4144aab13"
     },
     {
       "id": "bsbifunc_hierfire",
@@ -28360,8 +28361,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d028f7b0d0980bcd33247f2c1ad9edf52c79378422017ad6ade3797de0495e7e",
-      "linked_sha256": "da348da3a7e118d99e391b4a7e98607dbb77afcc259a0775fd3cb40cb9a67603"
+      "object_sha256": "c9a93bf0c9651c9df4945b1b56da88dc441bb329bd4481529f1fe1c0af0c4573",
+      "linked_sha256": "6ba65ff86e920c92c3ef788c24160f78798603a65d382165281aca03d0292f1f"
     },
     {
       "id": "weaponfactory_params",
@@ -28487,8 +28488,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "28c5bdfcebc419579a67adcabc19dd4948fc141b8eb506e01b7ea57fb0e559b0",
-      "linked_sha256": "669162e5f132e332eef3314ba1276ae61bfc24a102603883ad5fa92d000621aa"
+      "object_sha256": "8b07dec9d84625656cd3b30f68a968712a0e5e83f26d69bacc94529019d95186",
+      "linked_sha256": "11299048c82d6bb9320533648d51b4319f0417ffd33f32afacb960f898137d02"
     },
     {
       "id": "snddrv_frame",
@@ -31350,8 +31351,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "08620ecf365a509538ef35afbaf30071ee615a4312b38d67d31b326bb68f2d2a",
-      "linked_sha256": "39ab35e06cbea1ea0a7d09ca47c9c815e82e49fefce7db7975004efa8af55685"
+      "object_sha256": "c1cfb817014a2bba602a3080ee9ba362f8e3d8e3905156a51c081ab3b2054493",
+      "linked_sha256": "3d87dbcfab6f09e9b0b6d2f63f81f61ae82c335f8a25e9e68544484b78e09cc5"
     },
     {
       "id": "Soldier_object_bounds",
@@ -31740,8 +31741,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c081878b4e12da4223a2372d69a9cc2eb55190ce2bb06e625a19d6f5c1b49d5a",
-      "linked_sha256": "0a5b1138f987626b53c258932cd39a10dce57558558c6882f1d60f51f5fa61d5"
+      "object_sha256": "218d4ad546cbc4b508c62ad4d523221a0a761a04eaf3f3fbed98f29a88792f8e",
+      "linked_sha256": "fcb713b3f351fa056f7a5c9d0879383362d9b3aeaf115b6c6a725a077d1e3c3f"
     },
     {
       "id": "player_vec_add",
@@ -34495,8 +34496,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7ad2c8930670307e3eff65d69a84ae87dd55aeaa4af3ea34e1674b3d5fda1188",
-      "linked_sha256": "eeeaf91ec758400e34e45d196b967a84d69053c85d62aa93295acb86f1473dd5"
+      "object_sha256": "e7d32fd9ff663596ff50d77013cd4b9c662e72ad39b4ac84e11484e0b2193447",
+      "linked_sha256": "3bd6787aca4839327a58b6bdc9a39a1c9e5d271d691f938562d81c590f6e971e"
     },
     {
       "id": "matrix",
@@ -34534,8 +34535,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "9965e6a1923e4ed26570830b645b6c011cbcc86175ae0de15221acff6eb0e38f",
-      "linked_sha256": "e93f7bb871752baff64d4242802db9d97f017238f604c4c61f0d29c7c6e329cc"
+      "object_sha256": "623bb0a3e2907e909f15aacb61fae98b97b8d37707cacf4cbbb69ccd23bdabaf",
+      "linked_sha256": "cd6bfe303931593cbbcc7dbf2d4f7f66a882bf18e112063e654d188dce81bd74"
     },
     {
       "id": "hearingvolume_init",
@@ -34573,8 +34574,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "50e916f23a412c57e199d6d6c167bd6b24e3900c2262e68085d9e78f99f555aa",
-      "linked_sha256": "64a1865842463c50166ff7dc64230d9a44aef8d00c3e7f0680f7e9eca6078f15"
+      "object_sha256": "65518a0f00f384ce44ad3961adc387c7713e71c5a966265b9b4fbf9f4d65c7ec",
+      "linked_sha256": "d8cec3ef7bef9ba22d1914c4be681fe8451643ea4d52d2b5428cce6a3372c2dd"
     },
     {
       "id": "nubinit",
@@ -34790,8 +34791,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "5b75ce96146e414eca55acaf898087ceb3e37e0db05ea3168fc4014ad376b473",
-      "linked_sha256": "0dfd87fe6bdcf3fb99e63363613e881db3336ecc58926c95527788aedc546a2e"
+      "object_sha256": "5b11ee88ba147837771a7e653238afc3b1d7537d8b33f522860f5a8522bb40d5",
+      "linked_sha256": "9a27109befdcff665cf8e2881afa3fb59d3e1f2c24922ac0f90e84bee03f432e"
     },
     {
       "id": "hearingvolume_ctor",
@@ -34829,8 +34830,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "b74d3aaa3b00b82c78ff1720cba685e6b69540928e3594b004d9e178a5e23f62",
-      "linked_sha256": "dafa8c5c7ce66e764aa2975d1c5a20a1ef342b1209667490f6695fd777b9303f"
+      "object_sha256": "2546ab857d83ee8c7bef12de208971cf85ddea402257978ba74770f120dd20af",
+      "linked_sha256": "c446ad76bb1b00b2142930c056dfc7fdca088d6317dadbc1cee14bbf6fe037c9"
     },
     {
       "id": "compartment_bindtors",
@@ -36077,8 +36078,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "53ba956823eeef5ce095c8177fe81a9d3486b7cb5c2ca137c87d4d95d0ce4162",
-      "linked_sha256": "69d8ab8e8551ba910094c6feee39087c74740c0206f36eb45b8cc22d1ba065b2"
+      "object_sha256": "95cc4a7d0aa9b4f6448c7e023dc87c115374598e17add61e3f1a6afa1cae3270",
+      "linked_sha256": "4920542bf7dd47cc8b2b5b97b3b8c15aec6ba87446f473f2c9eba1106c0180f7"
     },
     {
       "id": "Soldier_object_ctor",
@@ -36116,8 +36117,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "58d0436d09071eb13b65ade2f3d6c9a7796f695a8610a5000f013a836e2a8441",
-      "linked_sha256": "c32a8b41287ec0038d2ceb75383af112fbc9933f4efec09539476288dcbaf3cf"
+      "object_sha256": "02bacce15df48314fd611569039fbd9b7d3b23d0bf02aaa9462738d836cf199d",
+      "linked_sha256": "c7aeda90dfc30099e305251c3653905067180836d3506388ebeddde80b56565d"
     },
     {
       "id": "compartment_ctor",
@@ -37715,8 +37716,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6b17c3ef13582e381aa6a5f0aeab6023065416f1e93fc562fc8daafe211d48ea",
-      "linked_sha256": "b89c7f22a99682b861512b181e16687297bf4ab08882e7e78a978ab55973cae8"
+      "object_sha256": "5c997e9690f15da728c4f6fb9bbfd338599af912372f9b3776bac4015bf295a7",
+      "linked_sha256": "05320dc515bac2d84cbdd10d93eed4a5f08feb472672e35d31df1a435b92e7f3"
     },
     {
       "id": "csg_volume_line",
@@ -38417,8 +38418,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "366e1f7bef29c7f3c1b060ba9ee7c9a03315f3ba80b59c97d46fec68d867b278",
-      "linked_sha256": "34f72a52b2a911c714bdb7f4bba7f0dd1faf773819a047c437d71263f3ef47e9"
+      "object_sha256": "84d2cfc194164c0f1114320cf9912ec89cab8f12e93e0b2fad13b3a2507b115c",
+      "linked_sha256": "901dc5330a6cff9c63487c8a4cc311d7545310dce9b2d63fe832a4d76e1a6972"
     },
     {
       "id": "particlesystem",
@@ -38456,8 +38457,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a73449bfbd66e383ffb7e2322b14df12fc9b5247e250e0562db448f3221d8f67",
-      "linked_sha256": "509eb49fc3ff2c3882bedc610a8ac622931f980ac001fe34fc5fbc57832d48ac"
+      "object_sha256": "5b882070dccf6dfd4d4845600817bcbf38206d8bad53e6bc7e02d24c2411839a",
+      "linked_sha256": "c3bbe31f1641407aea756f845f401a5a5fb5734f87dd6a68074995d203d0d57b"
     },
     {
       "id": "debug_prof",
@@ -39002,8 +39003,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e4d2d6f2b783b3207c4b401d7a289fd6bf6c647d06fbdd1f20db9d730c2171b3",
-      "linked_sha256": "ec18b55f5885b035c81489727bbf5842dcabadd3e7309f60cf85c42ff2037449"
+      "object_sha256": "10d9d1f440df215af9b9e406de200cb2d5464d78471de72cc907bdaae74c4ae3",
+      "linked_sha256": "a11ad3eb19d2d2f1549bb6f086f26d0cee1139a6fa1a438d0757eb5f12560504"
     },
     {
       "id": "animskinned",
@@ -39477,8 +39478,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "8c79c938850aaed80f2e63b42ce7087dba8f590af876153282f271c39fabfe8c",
-      "linked_sha256": "e2dfaf634fe580006cb6ba2a435dc132b9fa6c37e62d12b2550594d48fe6fc5a"
+      "object_sha256": "748ed77f814c2af2ec2612ffa94b9836040ba65cc68ae1724c1f91de5296c057",
+      "linked_sha256": "7a834b9dc5145273c07e8fa1821ba78f1b0935c376f066773657b1adae52882b"
     },
     {
       "id": "toilet",
@@ -39555,8 +39556,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "07af2595a827bb31ff56621629867898161135b6fa210acb2bb262478f8f28d6",
-      "linked_sha256": "1073d6090831405d5314a0a32d314a26a689106991eb64511f7798e4bb9e06f6"
+      "object_sha256": "85bbc85f7fdb1690bb2106e229dfb8083d3d916ce3643018f8299a67d4429b43",
+      "linked_sha256": "53b3f7a5dbb48d1adeb7fa3fcd3a947cf40299fc09031ebde58548caa0e339fe"
     },
     {
       "id": "AITankDoodad_ctor",
@@ -40573,8 +40574,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cf4094989eebd347a88f933e6d0ed033c81aa4cbbb405f9af83cc2061988f988",
-      "linked_sha256": "ca075d38f1246e4dd8d4c0c3620aecd7a063948bf60f6880f42fa986e7e6d17e"
+      "object_sha256": "436a50d4b03ac70e8e553a3eb1b29accae8dd83ec6fe5a3c0dd4956ddda58e8f",
+      "linked_sha256": "1a3c2b158ae6e3bdca4d44a449a3d1271fe1378bec3e5526b7d176600c201eba"
     },
     {
       "id": "AIFilter_tank_ctor",
@@ -41977,8 +41978,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b195a65b977d9a1a050db5b0d55a10b2912db40271b4b4c3c1a2dab1211607a6",
-      "linked_sha256": "25f881d13ac73d7be31ffa3a230d3003daedef47c06d88b3cbfbfd35f5cd857a"
+      "object_sha256": "dbe8151e54e58a07296650c4d0b69144d7826699cf43edd0054ab6ba43a8da7a",
+      "linked_sha256": "abe283286c20d9108425ea42b4c66f2736353836b71215cc5d2067c6540ac465"
     },
     {
       "id": "compartment_sprstack_dtor",
@@ -42913,8 +42914,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e3979a5a71e63942855e0fc46d2fb9ef69bac884eb990ef8dacdb47f3eec862b",
-      "linked_sha256": "41c7d60612c49e874641255f466d887dcc128538b5b1b11b4c37aee97423a7c4"
+      "object_sha256": "9233099018e70df8040e255642b232ce93c96cb29916eb1dea1b41b11672a703",
+      "linked_sha256": "d254b7fe2fa9e859fd51e672f517a7be8c7de755ce048def30e7ee88ff73afb1"
     },
     {
       "id": "quaternion_matrix",
@@ -43498,8 +43499,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "90ab4c576189ac61149dd72e231bc6d4c303f7a1bef409f7272ee4ee62dbfa8d",
-      "linked_sha256": "aa7c77638eb949b1384e2dad7060493d8229fb9c311e9641fa71b254e8b6652c"
+      "object_sha256": "f8ebd78f838237f4c6006c08f18614b6be6936dd8a886d50fe433d197f43ddd0",
+      "linked_sha256": "f287d891d068ed96a32ee17d19ea4b0fa3885537bfeacebc56811e71bced509b"
     },
     {
       "id": "anim_obj_draw",
@@ -46216,8 +46217,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7a809528b39633331791e1b06ed10322b8dabab078ab58b6a869ed409017d2b2",
-      "linked_sha256": "ffdf69ab051546d800fdb77951e77b9375a6dbdac1e578d8937957026a05c400"
+      "object_sha256": "483be504ea1649874fa040d69bda9439a037717d89dc32db683a2c3eb6afed1f",
+      "linked_sha256": "141b15ab14ed36c26b8ff66bf44b49d462b36b57e9c529dd8e60c11fd21b28d2"
     },
     {
       "id": "static_obj_scale",
@@ -48552,8 +48553,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "41aa3046ad42f31662af177d548a99e16a40461f30e552311efb8b270c12f4e6",
-      "linked_sha256": "cba492f5705d3e2f7c12be4b186ac5127fdc17d9ebea09fe5e224d172a018e70"
+      "object_sha256": "938f518b93a40630aef9cf43b50e00d99e68eff5b1261e7861909dfbf013d097",
+      "linked_sha256": "2aa8072ccb2d992ad0feb245344ef96ae0e8ab5c28d93e1dae241e09e0e7be39"
     },
     {
       "id": "stretch_head",
@@ -50750,8 +50751,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "31507db46427227a7ffb21c69e1ed3cee8092b65870e43508a5cffe988c91701",
-      "linked_sha256": "a1e982001ad9c9792f905292c403e5f81da64b40955c1356cf41d5a879bf1f30"
+      "object_sha256": "6ccb0d1a7ddcb7ec8feedc630bb4c887afd6df9abb1eafaa187fa89d9a7fe8ce",
+      "linked_sha256": "fe747b62dab8c3e9021e0779272190230598c6d9077397b26fcf3d72b8b56bba"
     },
     {
       "id": "fiber_line",
@@ -51257,8 +51258,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f168f1935b2ae607538f4bca5c7f3ecc56730e022bcb814544f2ffdaf70569da",
-      "linked_sha256": "c7dd4921fcc70a8f8ddbe7fb4ecc1846e9a96e6981d60c5d748ab92c912e97bc"
+      "object_sha256": "0dd045064583704290767627ff2ca37b38b4f820f1b7c6f5237184a28a846a57",
+      "linked_sha256": "f66e790c7560ef9f13f3ee4ec1671c947ce9e5a792a1754360eda9f3378c6e44"
     },
     {
       "id": "particlesystem_texturebin_dtor",
@@ -51811,8 +51812,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "df7c45d089a85301e56acbc6f5aea77764f5976ac3b9c0b14e9d705da60915da",
-      "linked_sha256": "23b04d4d2176dd87b209884025c0773b2ee186ce3b2fcf51fc775db06a01f0ca"
+      "object_sha256": "c9101b61e9d3a37a0a0d5ce92985b367f7ee5083e55d41c4447990858321058a",
+      "linked_sha256": "a367fe9249d6e281e33d168860ef6cfb65dbad65fb99c6e114cf9a5ad4b812a0"
     },
     {
       "id": "animated_draw",
@@ -51850,8 +51851,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2b6c40107962c11976ebe5b56796ea1e2048e974b3054dcedea2ec63ae044c17",
-      "linked_sha256": "261f0912bcbf449131aca25029f9899b36c947807c4d4b0ed6bff5b237525bad"
+      "object_sha256": "222bfaec8c3121ee60e5cbcd8d78b0e433c47d11a11de3e1a464ed7044376e27",
+      "linked_sha256": "4e337bd8669186681a6eaca8947cb6f14be10ae65b59c03b3a03b419b315fdc5"
     },
     {
       "id": "compartment_nodeshadows",
@@ -52591,8 +52592,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "634caf9662a6ff895440db8e13b160c1904cebe9005f8123c34ae8b4bedbc07a",
-      "linked_sha256": "ef9061d2dbfd1d23a8b19967886c199fe95859201a1afa2122a6b67053a7b2b0"
+      "object_sha256": "a15e0861716378293f3c48c6a90c2398616db81e40646261d790072f899c9f76",
+      "linked_sha256": "00bafe32a3388f8b7da1d62b5679b683094015c60abde5ae4cf8365a5bab0862"
     },
     {
       "id": "getpic_head",
@@ -53745,8 +53746,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "72687ac9bc887baa7648ea905e7600a00add590710ed7f05078616c6127ef919",
-      "linked_sha256": "4cd5cc31baf046045dfb447efc57dd74ea7b7293f7a845d835c3e55353240f14"
+      "object_sha256": "f83d64648e06feec485698607086e6d82707359a424c2e548b588c85e7ec05d6",
+      "linked_sha256": "561e8b8fad5b2d148d5d2d62d038ba940d6b29b7c2a094add655aadb9a1a15c4"
     },
     {
       "id": "bsbifunc_prompttext",
@@ -54018,8 +54019,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "70b3bdf54d7bd89a50e26c1a298a65bec31044f0b23a534b2587123f7c64264f",
-      "linked_sha256": "a525753796983519f5240fc04f8aa21391385c6b46eccc1e0dfd5cde370c8c7f"
+      "object_sha256": "7c58201ca6b50cc2f0e96e8c4178b18455a6c50b7a3244ac5e4a41055cc662eb",
+      "linked_sha256": "a1d8089f1ae04f7db86c61bfbae5a96af699bd8f94e50c9325741bd8237065b3"
     },
     {
       "id": "objcreate_german",
@@ -54057,8 +54058,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a8ee76139fc9b02675480ae4bc28aeddac04603567f3b6fd1ad0d2ede1edd034",
-      "linked_sha256": "5f0452564e519127c3024d9728adf884dfe31db2187c1175969a503179c0257f"
+      "object_sha256": "b044f650c44ac2f7cbf755e27d157ac0d262bcaf58bbf2aee7bd7a6b60ae8170",
+      "linked_sha256": "458f4d00d5070c9ce24f96fe154e7bf96aca6d54dae8ba491f772ee29abef55b"
     },
     {
       "id": "font_centeredf",

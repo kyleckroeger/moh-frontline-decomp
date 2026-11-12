@@ -108,26 +108,8 @@ class CLight;
 struct BSObject;
 enum EClsnId {};
 
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    /* Inferred: a constructor that also sets the identity. */
-    CMatrix(bool identity) {
-        if (!s_ClassInit)
-            InitClass();
-        if (identity)
-            Ident();
-    }
-    static void InitClass();
-    void Ident();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class IDestructible {
 public:

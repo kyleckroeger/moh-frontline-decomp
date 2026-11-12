@@ -29,29 +29,8 @@ float MathFunRandomReal(float, float);
 
 inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix(const CMatrix& other) { *this = other; }
-    static void InitClass();
-    CMatrix& operator=(const CMatrix&);
-    void BuildScale(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void TransformPoint(CVector3&, CVector3) const;
-    void TransformVector(CVector3&, CVector3) const;
-    void RotateX(float);
-    void RotateY(float);
-    void RotateZ(float);
+#include "game/CMatrix.h"
 
-    CVector3 m_right;
-    CVector3 m_front;
-    CVector3 m_up;
-    CVector3 m_pos;
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -432,7 +411,7 @@ void CPlayerWeaponObject::CreateEjectedShell(int type) {
     world.Multiply(world, m_bones[skeleton->m_nodes[m_attachNode].m_bone]);
     CVector3 position;
     CVector3 point;
-    m_matrix.TransformPoint(point, world.m_pos);
+    m_matrix.TransformPoint(point, world.pos);
     position = point;
     float vx;
     float vy;

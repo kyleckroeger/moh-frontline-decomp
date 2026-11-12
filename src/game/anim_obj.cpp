@@ -16,20 +16,8 @@
 // double pair reproduces.
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
-    void Orthonormalize();
-    void RotateZ(float);
-    void Translate(CVector3);
-    void SetPos(CVector3);
-    void Ident();
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
 
 class CStaticObject;
 class BPDLightVolume;
@@ -156,9 +144,9 @@ public:
     bool IsDrawEnabled() const;
 
     CVector3 GetUp() const { return m_tm.up; }
-    CVector3 GetFwd() const { return m_tm.forward; }
+    CVector3 GetFwd() const { return m_tm.front; }
     CVector3 GetRight() const { return m_tm.right; }
-    CVector3 GetPos() const { return m_tm.position; }
+    CVector3 GetPos() const { return m_tm.pos; }
 
     char field0000[9024];
     CMatrix m_tm;

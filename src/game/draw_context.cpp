@@ -8,19 +8,8 @@ void GXSetProjection(const float mtx[4][4], int type);
 void GXLoadPosMtxImm(const float mtx[3][4], unsigned long id);
 }
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Multiply(const CMatrix&, const CMatrix&);
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-};
 
 class CDrawContext {
 public:
@@ -59,7 +48,7 @@ CDrawContext::CDrawContext(const CMatrix& source0, const CMatrix& source1, const
     m_matrix0.Multiply(m_source0, m_source1);
     m_matrix40.Multiply(m_source2, m_source3);
     m_matrix80.Multiply(m_matrix0, m_matrix40);
-    GXSetProjection(m_source1.m, 0);
+    GXSetProjection(((float(*)[4])&m_source1.right), 0);
     m_source0.GetGAMECUBEMatrix34(mtx);
     GXLoadPosMtxImm(mtx, 0);
 }

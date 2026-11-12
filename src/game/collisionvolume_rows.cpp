@@ -19,15 +19,8 @@
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
 
 struct BSObject;
 class CCollision;
@@ -209,9 +202,9 @@ public:
     void HandleBulletCollision(CBullet*, const CCollision&);
 
     CVector3 GetUp() const { return m_tm.up; }
-    CVector3 GetFwd() const { return m_tm.forward; }
+    CVector3 GetFwd() const { return m_tm.front; }
     CVector3 GetRight() const { return m_tm.right; }
-    CVector3 GetPos() const { return m_tm.position; }
+    CVector3 GetPos() const { return m_tm.pos; }
 
     unsigned char unknown04[8];
     ExtentNodeView* m_extentMinX;

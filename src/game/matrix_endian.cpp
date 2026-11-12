@@ -189,87 +189,78 @@ template <class T> inline void ChangeEndian(T& value) {
     ChangeEndian(*reinterpret_cast<int*>(&value));
 }
 
-class CMatrix {
-public:
-    void EndianSwap();
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
-    void TibToMOHFL();
-    void ToEulerXZY(float&, float&, float&) const;
-    void Ident();
-    void ToEulerXYZ(float&, float&, float&) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 void CMatrix::EndianSwap() {
-    ChangeEndian(m[0][0]);
-    ChangeEndian(m[1][0]);
-    ChangeEndian(m[2][0]);
-    ChangeEndian(m[3][0]);
-    ChangeEndian(m[0][1]);
-    ChangeEndian(m[1][1]);
-    ChangeEndian(m[2][1]);
-    ChangeEndian(m[3][1]);
-    ChangeEndian(m[0][2]);
-    ChangeEndian(m[1][2]);
-    ChangeEndian(m[2][2]);
-    ChangeEndian(m[3][2]);
-    ChangeEndian(m[0][3]);
-    ChangeEndian(m[1][3]);
-    ChangeEndian(m[2][3]);
-    ChangeEndian(m[3][3]);
+    ChangeEndian(right.x);
+    ChangeEndian(front.x);
+    ChangeEndian(up.x);
+    ChangeEndian(pos.x);
+    ChangeEndian(right.y);
+    ChangeEndian(front.y);
+    ChangeEndian(up.y);
+    ChangeEndian(pos.y);
+    ChangeEndian(right.z);
+    ChangeEndian(front.z);
+    ChangeEndian(up.z);
+    ChangeEndian(pos.z);
+    ChangeEndian(right.w);
+    ChangeEndian(front.w);
+    ChangeEndian(up.w);
+    ChangeEndian(pos.w);
 }
 
 void CMatrix::GetGAMECUBEMatrix34(float (&out)[3][4]) const {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 4; j++)
-            out[i][j] = m[j][i];
+            out[i][j] = ((float(*)[4])&right)[j][i];
     }
 }
 
 void CMatrix::TibToMOHFL() {
-    m[0][0] = -m[0][0];
-    m[0][1] = -m[0][1];
-    m[0][2] = -m[0][2];
+    right.x = -right.x;
+    right.y = -right.y;
+    right.z = -right.z;
     for (int i = 0; i < 3; i++) {
-        float t = m[1][i];
-        m[1][i] = m[2][i];
-        m[2][i] = t;
+        float t = ((float(*)[4])&right)[1][i];
+        ((float(*)[4])&right)[1][i] = ((float(*)[4])&right)[2][i];
+        ((float(*)[4])&right)[2][i] = t;
     }
 }
 
 void CMatrix::ToEulerXZY(float& x, float& y, float& z) const {
-    if (m[0][1] < 1.0f) {
-        if (m[0][1] > -1.0f) {
-            y = atan2(-m[0][2], m[0][0]);
-            z = asin(m[0][1]);
-            x = atan2(-m[2][1], m[1][1]);
+    if (right.y < 1.0f) {
+        if (right.y > -1.0f) {
+            y = atan2(-right.z, right.x);
+            z = asin(right.y);
+            x = atan2(-up.y, front.y);
         } else {
-            x = -(float)atan2(m[1][2], m[2][2]);
+            x = -(float)atan2(front.z, up.z);
             z = -1.5707964f;
             y = 0.0f;
         }
     } else {
-        x = atan2(m[1][2], m[2][2]);
+        x = atan2(front.z, up.z);
         z = 1.5707964f;
         y = 0.0f;
     }
 }
 
 void CMatrix::ToEulerXYZ(float& x, float& y, float& z) const {
-    if (m[0][2] < 1.0f) {
-        if (m[0][2] > -1.0f) {
-            x = asin(-m[1][2]);
-            y = atan2(-m[0][2], m[2][2]);
-            z = atan2(m[0][1], m[0][0]);
+    if (right.z < 1.0f) {
+        if (right.z > -1.0f) {
+            x = asin(-front.z);
+            y = atan2(-right.z, up.z);
+            z = atan2(right.y, right.x);
         } else {
             x = -1.5707964f;
-            y = -(float)atan2(m[1][0], m[1][1]);
+            y = -(float)atan2(front.x, front.y);
             z = 0.0f;
         }
     } else {
         x = 1.5707964f;
-        y = atan2(m[1][0], m[1][1]);
+        y = atan2(front.x, front.y);
         z = 0.0f;
     }
 }

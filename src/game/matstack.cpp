@@ -7,19 +7,8 @@ void* DWI_allocalign(const char*, int, int, int);
 
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix& operator=(const CMatrix&);
-    void Ident();
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 class CMatrixStack {
 public:
@@ -51,15 +40,15 @@ CMatrixStack* CMatrixStack::s_currentStack;
 void CMatrixStack::ScaleRow(CVector3 scale) {
     CMatrix* matrix = &m_stack[m_index];
 
-    matrix->m[0][0] *= scale.x;
-    matrix->m[0][1] *= scale.x;
-    matrix->m[0][2] *= scale.x;
-    matrix->m[1][0] *= scale.y;
-    matrix->m[1][1] *= scale.y;
-    matrix->m[1][2] *= scale.y;
-    matrix->m[2][0] *= scale.z;
-    matrix->m[2][1] *= scale.z;
-    matrix->m[2][2] *= scale.z;
+    matrix->right.x *= scale.x;
+    matrix->right.y *= scale.x;
+    matrix->right.z *= scale.x;
+    matrix->front.x *= scale.y;
+    matrix->front.y *= scale.y;
+    matrix->front.z *= scale.y;
+    matrix->up.x *= scale.z;
+    matrix->up.y *= scale.z;
+    matrix->up.z *= scale.z;
 }
 
 void CMatrixStack::Store(CMatrix* matrix) {

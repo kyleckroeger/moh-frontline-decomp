@@ -20,13 +20,19 @@ import argparse, glob, json, os, re, shutil, sys, traceback
 from concurrent.futures import ProcessPoolExecutor
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(os.environ.get("TRY_HEADER_ROOT", Path(__file__).resolve().parents[2]))
 CONFIG = ROOT / "config/GMFE69"
 OUT = ROOT / "research/layout/header_moves"
+# TRY_HEADER_DIR / TRY_HEADER_WORK let a header be tried before it is committed (a private
+# scratch directory holds the draft header, the copies and the builds).
+HEADER_DIR = Path(os.environ.get("TRY_HEADER_DIR", ROOT / "include"))
+WORK = Path(os.environ.get("TRY_HEADER_WORK", ROOT / "scratch/try"))
 
 # What a header provides besides its class, by class: removed from the moved copy too.
 PROVIDES = {
     "CVector3": {"types": ["CVector3XYZW", "CVector3Data", "CVector3Pair"], "functions": ["sqrtf"]},
+    # CMatrix.h includes CVector3.h: a unit already on CVector3.h may still define its helpers
+    "CMatrix": {"types": ["CVector3XYZW", "CVector3Data", "CVector3Pair"]},
 }
 
 
@@ -72,6 +78,66 @@ def function_span(text, name):
     return m.start(), block_end(text, m.end() - 1)
 
 
+def _arity(params):
+    params = params.strip()
+    return 0 if params in ("", "void") else params.count(",") + 1
+
+
+ROWS = ["right", "front", "up", "pos"]
+_EXPR = r"([\w\]\[]+(?:(?:\.|->)[\w\]\[]+)*)"  # a postfix chain: a.b->c[i]
+
+
+def _cmatrix_view(out, view):
+    """Rewrite a CMatrix view's field spellings to the header's rows right/front/up/pos."""
+    fields = dict((n, t) for t, n in re.findall(r"^\s*((?:unsigned\s+)?\w+)\s+(\w+)(?:\[[^;]*)?;", view, re.M)
+                  if t not in ("static", "return", "typedef", "friend"))
+    names = {"forward": "front", "position": "pos", "m_right": "right", "m_front": "front", "m_up": "up", "m_pos": "pos"}
+    for old, new in names.items():
+        if old in fields:
+            out = re.sub(r"(?<=\.|>)" + old + r"\b", new, out)
+    decl = re.search(r"^\s*float\s+m\s*((?:\[\d+\])+)\s*;", view, re.M)
+    if not decl:
+        return out
+    dims = [int(d) for d in re.findall(r"\d+", decl[1])]
+    # bodies of out-of-line CMatrix members: there the bare m is the field
+    spans = []
+    for m in re.finditer(r"\bCMatrix::~?\w+\s*\([^;{]*\)\s*(?:const\s*)?\{", out):
+        spans.append((m.end(), block_end(out, m.end() - 1)))
+
+    def sub(pattern, repl, s):
+        res, last = [], 0
+        for a, b in spans:
+            res.append(s[last:a]); res.append(re.sub(pattern, repl, s[a:b])); last = b
+        res.append(s[last:])
+        return "".join(res)
+
+    if dims == [4, 4] or dims == [3, 4]:
+        two = lambda pre: (lambda m: f"{pre(m)}{ROWS[int(m['i'])]}.{_XYZW[int(m['j'])]}")
+        one = lambda pre: (lambda m: f"&{pre(m)}{ROWS[int(m['i'])]}.x")
+        anyi = lambda pre: (lambda m: f"((float(*)[4])&{pre(m)}right)")
+        q = lambda m: m["x"] + m["op"]
+        bare = lambda m: ""
+        out = re.sub(_EXPR.replace("(", "(?P<x>", 1) + r"(?P<op>\.|->)m\[(?P<i>\d)\]\[(?P<j>\d)\]", two(q), out)
+        out = re.sub(_EXPR.replace("(", "(?P<x>", 1) + r"(?P<op>\.|->)m\[(?P<i>\d)\](?!\[)", one(q), out)
+        out = re.sub(_EXPR.replace("(", "(?P<x>", 1) + r"(?P<op>\.|->)m\b(?!\w)", anyi(q), out)
+        out = sub(r"(?<![\w.>])m\[(?P<i>\d)\]\[(?P<j>\d)\]", two(bare), out)
+        out = sub(r"(?<![\w.>])m\[(?P<i>\d)\](?!\[)", one(bare), out)
+        out = sub(r"(?<![\w.>&])m\b(?!\w)", anyi(bare), out)
+    elif dims == [16]:
+        flat = lambda pre: (lambda m: f"{pre(m)}{ROWS[int(m['k']) // 4]}.{_XYZW[int(m['k']) % 4]}")
+        anyk = lambda pre: (lambda m: f"((float*)&{pre(m)}right)")
+        q = lambda m: m["x"] + m["op"]
+        bare = lambda m: ""
+        out = re.sub(_EXPR.replace("(", "(?P<x>", 1) + r"(?P<op>\.|->)m\[(?P<k>1[0-5]|\d)\]", flat(q), out)
+        out = re.sub(_EXPR.replace("(", "(?P<x>", 1) + r"(?P<op>\.|->)m\b(?!\w)", anyk(q), out)
+        out = sub(r"(?<![\w.>])m\[(?P<k>1[0-5]|\d)\]", flat(bare), out)
+        out = sub(r"(?<![\w.>&])m\b(?!\w)", anyk(bare), out)
+    return out
+
+
+VIEW_REWRITES = {"CMatrix": _cmatrix_view}
+
+
 def moved(text, cls):
     span = type_span(text, cls)
     if not span:
@@ -90,14 +156,18 @@ def moved(text, cls):
             out = out[:s[0]] + out[s[1]:]
     for pattern, repl in REWRITES.get(cls, []):
         out = re.sub(pattern, repl, out)
+    if cls in VIEW_REWRITES:
+        out = VIEW_REWRITES[cls](out, text[span[0]:span[1]])
     # Out-of-line definitions of the class's methods the header now defines inline
     # (units emit the original's weak copies this way): the header's body replaces them.
-    header = (ROOT / f"include/game/{cls}.h").read_text()
-    inline = set(re.findall(r"^\s+(?:[\w&\*]+\s+)*?(\w+|operator\S+?)\s*\([^;{]*\)\s*(?:const\s*)?(?::[^{;]*)?\{", header, re.M))
+    header = (HEADER_DIR / f"game/{cls}.h").read_text()
+    inline = set(re.findall(r"^\s+(?:[\w&\*]+\s+)*?(\w+|operator\S+?)\s*\(([^;{]*)\)\s*(?:const\s*)?(?::[^{;]*)?\{", header, re.M))
+    inline = {(n, _arity(p)) for n, p in inline}
     pat = re.compile(r"^(?:__declspec\(weak\)\s+)?(?:inline\s+)?[\w\s&\*]*?\b" + re.escape(cls)
-                     + r"::(~?\w+|operator\S+?)\s*\([^;{]*\)\s*(?:const\s*)?(?::[^{;]*)?\{", re.M)
+                     + r"::(~?\w+|operator\S+?)\s*\(([^;{]*)\)\s*(?:const\s*)?(?::[^{;]*)?\{", re.M)
     while True:
-        m = next((m for m in pat.finditer(out) if m[1] in inline or (m[1] == cls and cls in inline)), None)
+        # by name and parameter count: an inline overload doesn't remove an out-of-line one
+        m = next((m for m in pat.finditer(out) if (m[1], _arity(m[2])) in inline), None)
         if not m:
             break
         out = out[:m.start()] + out[block_end(out, m.end() - 1):]
@@ -163,7 +233,7 @@ def verify(unit, work):
 def attempt(job):
     uid, cls = job
     unit = json.loads((CONFIG / f"{uid}.json").read_text())
-    base = ROOT / "scratch/try" / uid
+    base = WORK / uid
     status, detail = verify(unit, base / "control")
     if status != "kept":
         return uid, unit["source"], "control_fail", detail
@@ -172,7 +242,7 @@ def attempt(job):
     copy = base / "src" / Path(unit["source"]).name
     copy.parent.mkdir(parents=True, exist_ok=True)
     copy.write_text(new)
-    unit = dict(unit, source=str(copy.relative_to(ROOT)), include_dirs=unit["include_dirs"] + ["include"])
+    unit = dict(unit, source=str(copy.relative_to(ROOT)), include_dirs=unit["include_dirs"] + ([str(HEADER_DIR.relative_to(ROOT))] if HEADER_DIR != ROOT / "include" else []) + ["include"])
     try:
         status, detail = verify(unit, base / "moved")
     except Exception:
@@ -201,8 +271,9 @@ def main():
         for row in pool.map(attempt, jobs):
             rows.append(row)
             print("\t".join(row[:3]), flush=True)
-    OUT.mkdir(parents=True, exist_ok=True)
-    out = OUT / f"{a.cls}.tsv"
+    outdir = Path(os.environ.get("TRY_HEADER_OUT", OUT))
+    outdir.mkdir(parents=True, exist_ok=True)
+    out = outdir / f"{a.cls}.tsv"
     if a.only and out.exists():  # merge a partial rerun into the full table
         old = {r.split("\t")[0]: r for r in out.read_text().splitlines()[1:]}
         for r in rows:

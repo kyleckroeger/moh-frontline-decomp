@@ -17,19 +17,14 @@
 // reproduces.
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-};
+#include "game/CMatrix.h"
+
 
 class CBullet {
 public:
     void GetPosition(CVector3&) const;
 
-    CVector3 PositionRow() const { return m_tm.position; }
+    CVector3 PositionRow() const { return m_tm.pos; }
 
     unsigned char unknown00[80];
     CMatrix m_tm;

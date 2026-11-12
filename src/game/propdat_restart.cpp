@@ -95,17 +95,8 @@ public:
     float x, y, z, w;
 };
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void SetPos(CVector3);
-    static bool s_ClassInit;
-    float m[4][4];
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
+
 
 class CCollision;
 class CDrawContext;

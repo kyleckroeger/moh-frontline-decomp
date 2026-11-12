@@ -215,6 +215,17 @@ inline (8 "unexpected compiler function set"). Also learnt: the original has no 
 `Multiply(const CMatrix&, const CMatrix&)`, and its `CMatrix` constructor takes a
 defaulted argument (`__defctor__7CMatrixFv`). CMatrix and ISceneNode are next.
 
+CMatrix, 2026-11-12: `include/game/CMatrix.h`, four CVector3 rows `right, front, up, pos`
+(named after the original's `SetRight`/`SetFront`/`SetUp`/`SetPos`), 16-byte aligned, every
+out-of-line member the original has, its two weak copies (`__defctor__`, `PostMultiply`)
+and a few inferred getters. Moving a file rewrites the views' `m[4][4]`, `m[16]` and
+forward/position spellings. Of 148 units with their own view, 53 kept their match and were
+moved; 87 still have their own CVector3 view, which the header's `game/CVector3.h`
+redefines; 8 lost or need code changes (`research/notes/shared-headers.md`,
+`research/layout/header_moves/CMatrix.tsv`). The alignment is the original's (it realigns
+the stack for local matrices); player_ctor's CPlayerObject view, with matrices at 8-aligned
+offsets, is the one conflict.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

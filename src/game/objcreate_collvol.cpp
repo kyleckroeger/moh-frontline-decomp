@@ -34,19 +34,8 @@ class CDrawContext;
 class CCollision;
 enum EClsnId {};
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void SetPos(CVector3);
-    void ToEulerXYZ(float&, float&, float&) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:

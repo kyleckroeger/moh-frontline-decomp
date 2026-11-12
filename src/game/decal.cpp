@@ -27,21 +27,8 @@ struct ColorView {
     }
 };
 
-class CMatrix {
-public:
-    /* Inferred: a constructor that also sets the identity. */
-    CMatrix(bool identity) {
-        if (!s_ClassInit)
-            InitClass();
-        if (identity)
-            Ident();
-    }
-    static void InitClass();
-    void Ident();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 /* Inferred: a decal vertex (position, colour, texture coordinates). */
 struct DecalVertexView {

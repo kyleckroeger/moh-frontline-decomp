@@ -181,18 +181,8 @@ LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileCon
 
 class ISceneNode;
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Multiply(const CMatrix&, const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CCamera {
 public:

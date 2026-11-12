@@ -11,12 +11,8 @@ extern "C" void* memcpy(void*, const void*, unsigned long);
 class CDmaTag;
 
 /* Only the assignment and the 16-aligned layout of the matrix. */
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 /* Inferred: the packet's write cursor at +8. */
 class CDmaPacket {

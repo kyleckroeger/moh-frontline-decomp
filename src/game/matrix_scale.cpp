@@ -4,26 +4,21 @@
 // element layout is inferred. The rest of the file is not part of this unit.
 #include "game/CVector3.h"
 
-class CMatrix {
-public:
-    void Scale(float);
-    void Scale(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 void CMatrix::Scale(float scale) {
     for (int i = 0; i < 4; i++) {
-        m[i][0] *= scale;
-        m[i][1] *= scale;
-        m[i][2] *= scale;
+        ((float(*)[4])&right)[i][0] *= scale;
+        ((float(*)[4])&right)[i][1] *= scale;
+        ((float(*)[4])&right)[i][2] *= scale;
     }
 }
 
 void CMatrix::Scale(CVector3 scale) {
     for (int i = 0; i < 4; i++) {
-        m[i][0] *= scale.x;
-        m[i][1] *= scale.y;
-        m[i][2] *= scale.z;
+        ((float(*)[4])&right)[i][0] *= scale.x;
+        ((float(*)[4])&right)[i][1] *= scale.y;
+        ((float(*)[4])&right)[i][2] *= scale.z;
     }
 }

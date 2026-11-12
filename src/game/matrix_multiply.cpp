@@ -13,15 +13,8 @@
 void PSMultMatrix(float*, const float*, const float*);
 extern "C" void C_MTXFrustum(float (*)[4], float, float, float, float, float, float);
 
-class CMatrix {
-public:
-    void Ident();
-    void Orthographic(float, float, float, float);
-    void Perspective(float, float, float, float);
-    void Multiply(const CMatrix&, const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[16];
-};
 
 // Ident as in matrix_endian.cpp (see above).
 inline void CMatrix::Ident() {
@@ -49,17 +42,17 @@ inline void CMatrix::Ident() {
 void CMatrix::Orthographic(float w, float h, float n, float f) {
     float depth = 1.0f / (f - n);
     Ident();
-    m[0] = 1.0f / w;
-    m[5] = 1.0f / h;
-    m[10] = 2.0f * depth;
-    m[14] = depth * (f + n);
-    m[15] = 0.0f;
+    right.x = 1.0f / w;
+    front.y = 1.0f / h;
+    up.z = 2.0f * depth;
+    pos.z = depth * (f + n);
+    pos.w = 0.0f;
 }
 
 void CMatrix::Perspective(float x, float y, float n, float) {
-    C_MTXFrustum((float (*)[4])m, y * n, -y * n, -x * n, x * n, n, 1000.0f);
+    C_MTXFrustum((float (*)[4])((float*)&right), y * n, -y * n, -x * n, x * n, n, 1000.0f);
 }
 
 void CMatrix::Multiply(const CMatrix& a, const CMatrix& b) {
-    PSMultMatrix(m, a.m, b.m);
+    PSMultMatrix(((float*)&right), ((float*)&a.right), ((float*)&b.right));
 }

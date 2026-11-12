@@ -53,10 +53,8 @@ struct CharJointHierarchy_t {
     CharJointHierarchy_t* children[1];
 };
 
-class CMatrix {
-public:
-    void EndianSwap();
-};
+#include "game/CMatrix.h"
+
 
 struct CharBone_t {
     unsigned char field00[16];

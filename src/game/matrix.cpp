@@ -19,32 +19,8 @@ extern "C" void* memcpy(void*, const void*, unsigned long);
 class CMatrix;
 extern const CMatrix _Mat_Data;
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    /* Inferred: a constructor that also sets the identity. */
-    CMatrix(bool identity) {
-        if (!s_ClassInit)
-            InitClass();
-        if (identity)
-            Ident();
-    }
-    void Ident();
-    void BuildScale(CVector3);
-    void BuildScale(float);
-    CMatrix& operator=(const CMatrix&);
-    static void InitClass();
-    static bool s_ClassInit;
-    static CMatrix s_TempMat;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-};
 
 inline void CMatrix::Ident() {
     register CMatrix* mtx = this;
