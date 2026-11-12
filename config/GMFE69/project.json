@@ -1247,7 +1247,8 @@
     "bsbifunc_playerammo.json",
     "objcreate_nonvis.json",
     "bsbifunc_promptinteger.json",
-    "compartment_init.json"
+    "compartment_init.json",
+    "weaponfactory_create.json"
   ],
   "progress": {
     "code_bytes": 1414572,

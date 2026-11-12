@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1247,
- "function_bytes_by_status": {"consistent": 161704, "differs": 10144, "exact": 4472, "verified": 1229236},
+ "verified_units": 1248,
+ "function_bytes_by_status": {"consistent": 161184, "differs": 10144, "exact": 4472, "verified": 1229756},
  "data_bytes_owned": 724003,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2758,7 +2758,7 @@
  [2148362236, 608, "LoadWeaponParameters__14CWeaponFactoryFv", "verified", "src/game/weaponfactory_params.cpp"],
  [2148362844, 556, "EndianSwap__FR23WeaponProperties_struct", "verified", "src/game/weaponfactory_params.cpp"],
  [2148363400, 108, "DestroyWeapon__14CWeaponFactoryFP7CWeapon", "verified", "src/game/weaponfactory_params.cpp"],
- [2148363508, 520, "CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei", "consistent", "research/drafts/CreateWeaponByCRC.800d6cf4.cpp"],
+ [2148363508, 520, "CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei", "verified", "src/game/weaponfactory_create.cpp"],
  [2148364028, 404, "GetWeaponPropertiesByCRC__14CWeaponFactoryFiPi", "verified", "src/game/weaponfactory_props.cpp"],
  [2148364432, 96, "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei", "verified", "src/game/weaponfactory_props.cpp"],
  [2148364528, 296, "Shutdown__14CWeaponFactoryFv", "verified", "src/game/weaponfactory_props.cpp"],
