@@ -39,38 +39,44 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003c528",
-      "size": 352,
+      "address": "0x8003c3d0",
+      "size": 696,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a47c",
-      "size": 16,
-      "type": 1
-    },
-    {
-      "name": "extabindex",
-      "address": "0x80011468",
+      "address": "0x8000a474",
       "size": 24,
       "type": 1
     },
     {
+      "name": "extabindex",
+      "address": "0x8001145c",
+      "size": 36,
+      "type": 1
+    },
+    {
       "name": ".data",
-      "address": "0x80183390",
-      "size": 80,
+      "address": "0x80183368",
+      "size": 120,
       "type": 1
     },
     {
       "name": ".sdata",
-      "address": "0x8034da48",
-      "size": 16,
+      "address": "0x8034da40",
+      "size": 24,
       "type": 1,
       "linked_offset": 8,
-      "linked_size": 24
+      "linked_size": 32
     }
   ],
   "functions": [
+    {
+      "name": "Destroy__17BSGO_DestructableFv",
+      "address": "0x8003c3d0",
+      "size": 344,
+      "binding": 1
+    },
     {
       "name": "Destroy__9BSGO_TankFv",
       "address": "0x8003c528",
@@ -86,23 +92,27 @@
   ],
   "externals": {
     "CleanUp__14CSoldierObjectFv": "0x800adfa4",
+    "DeallocateStaticObject__20CStaticObjectFactoryFP13CStaticObject": "0x800b36a4",
     "DestroyBSObject__FP8BSObject": "0x8003a59c",
     "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
     "GetEmbeddedHitReactionInfo__10BSGO_BasicFv": "0x800290a8",
     "GetEmbeddedHitReactionInfo__12BSGO_SoldierFv": "0x80040b54",
     "GetProximityData__12BSGO_SoldierFv": "0x80040b4c",
+    "GetProximityData__17BSGO_DestructableFv": "0x80040b1c",
     "GetProximityData__9BSGO_TankFv": "0x80040b34",
     "GetSceneNode__12BSGO_SoldierFv": "0x80040b44",
+    "GetSceneNode__17BSGO_DestructableFv": "0x80040b14",
     "GetSceneNode__9BSGO_TankFv": "0x80040b2c",
     "GetScriptData__12BSGO_SoldierFv": "0x80040b3c",
+    "GetScriptData__17BSGO_DestructableFv": "0x80040b0c",
     "GetScriptData__9BSGO_TankFv": "0x80040b24",
     "ReleaseObject__18CAnimObjectFactoryFP11CAnimObject": "0x80095bb8",
     "Remove__6CSceneFR10ISceneNode": "0x800dc190",
     "__RTTI__10BSGO_Basic": "0x8034da28",
     "g_AnimObjFactory": "0x801ddde0",
     "g_numActiveSoldiers": "0x8034e89c",
+    "g_pBoxList": "0x8034e890",
     "g_pGermanList": "0x8034e894",
-    "g_pObjectAllocators": "0x801a112c",
     "g_pTankList": "0x8034e898",
     "g_scene": "0x8019484c"
   },
@@ -110,12 +120,12 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "__RTTI__10BSGO_Basic",
-    "g_pObjectAllocators"
+    "__RTTI__10BSGO_Basic"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "g_numActiveSoldiers",
+    "g_pBoxList",
     "g_pGermanList",
     "g_pTankList"
   ],
@@ -125,18 +135,37 @@
     "__RTTI__10BSGO_Basic"
   ],
   "pooled_sections": [
-    ".rodata"
+    ".rodata",
+    ".bss"
   ],
   "pool_references": [
     {
+      "section": ".bss",
+      "offset": 0,
+      "size": 12,
+      "address": "0x801a1120"
+    },
+    {
+      "section": ".bss",
+      "offset": 12,
+      "size": 56,
+      "address": "0x801a112c"
+    },
+    {
       "section": ".rodata",
       "offset": 0,
+      "size": 18,
+      "address": "0x8016f25c"
+    },
+    {
+      "section": ".rodata",
+      "offset": 32,
       "size": 10,
       "address": "0x8016f270"
     },
     {
       "section": ".rodata",
-      "offset": 24,
+      "offset": 44,
       "size": 13,
       "address": "0x8016f27c"
     }

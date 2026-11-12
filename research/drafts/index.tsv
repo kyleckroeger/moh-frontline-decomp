@@ -129,7 +129,6 @@ real_lines	size	address	function	compile_settings_from	draft
 	860	8002a74c	BIFunc_DisplayPromptText__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	1028	80026e7c	BIFunc_AddPlayerAmmo__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
 	552	8003bf88	NonVisDestructFarthestSoldiers__Fi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
-	344	8003c3d0	Destroy__17BSGO_DestructableFv	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
 	1236	8003ed10	CreateCollisionVolume__FP20TriggerObject_structi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
 	1732	8003f1ec	CreateGerman__FP20TriggerObject_structib	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
 	1228	80034718	BSInitBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp

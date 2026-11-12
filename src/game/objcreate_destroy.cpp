@@ -1,19 +1,27 @@
-// A fragment of objcreate.cpp (0x8003c528): BSGO_Tank::Destroy and
-// BSGO_Soldier::Destroy. Each unlinks the script game object from its list
-// (the tank list, or the German list after counting one less active
-// soldier), releases its scene object (a tank is removed from the scene and
-// cleaned up through its table; a soldier is cleaned up and returned to the
-// animated-object factory), destroys the script object, clears both pointers
-// and returns the record to the second object allocator. Each Destroy is the
-// key function of its class's table, so the unit holds __vt__9BSGO_Tank and
-// __vt__12BSGO_Soldier with their type records (RTTI on); BSGO_Basic's
-// file-local type record is a file duplicate of objcreate_volumes'. The file
+// A fragment of objcreate.cpp (0x8003c3d0): BSGO_Destructable::Destroy,
+// BSGO_Tank::Destroy and BSGO_Soldier::Destroy. Each unlinks the script game
+// object from its list (the box list, the tank list, or the German list after
+// counting one less active soldier) and releases its scene object: a
+// destructable is removed from the scene, its local and world box volumes go
+// back to the volume allocator (the world one only when it is a separate
+// volume), and its object goes back to the static-object factory (script class
+// types 2 and 4) or the environment-mechanic allocator (type 8); a tank is
+// removed from the scene and cleaned up through its table; a soldier is cleaned
+// up and returned to the animated-object factory. Each then destroys the script
+// object, clears both pointers and returns the record to its object allocator
+// (the first for a destructable, the second otherwise). Each Destroy is the key
+// function of its class's table, so the unit holds __vt__17BSGO_Destructable,
+// __vt__9BSGO_Tank and __vt__12BSGO_Soldier with their type records (RTTI on);
+// BSGO_Basic's file-local type record is a file duplicate of objcreate_volumes'.
+// The allocators belong to the file's .bss block, reached from its base
+// register, so the block is defined here with size views and pooled. The file
 // is compiled with deferred inlining (the tables come out in that order), so
 // the functions are written in reverse image order. The classes, functions
 // and globals are named by the symbols; BSGO_Basic's three words before its table pointer (the
 // script object and the list links) follow objcreate_volumes.cpp, the
 // scene-object members follow objcreate.cpp, and the tank's clean-up slot
-// (+356), the Unlink inline and the accessors' result types are inferred.
+// (+356), the destructable's scene object (+28) and volume slots, the script
+// class view, the Unlink inline and the accessors' result types are inferred.
 class BSObject;
 void DestroyBSObject(BSObject*);
 
@@ -194,10 +202,91 @@ public:
     unsigned char m_proximity[4];
 };
 
+/* inferred: a destructable's scene object, whose bounding volumes (slots +52
+   and +56 of __vt__10ISceneNode) come from the volume allocator */
+class DestructableNodeView : public ISceneNode {
+public:
+    virtual void vf00c();
+    virtual void vf010();
+    virtual void vf014();
+    virtual void vf018();
+    virtual void vf01c();
+    virtual void vf020();
+    virtual void vf024();
+    virtual void vf028();
+    virtual void vf02c();
+    virtual void vf030();
+    virtual void* GetLocalBoundingVolume(int);
+    virtual void* GetWorldBoundingVolume(int);
+};
+
+class CStaticObject;
+class CStaticObjectFactory {
+public:
+    static void DeallocateStaticObject(CStaticObject*);
+};
+
+/* inferred: the script class's info record (type at +12) */
+struct BSClassInfoView {
+    unsigned char unknown00[12];
+    int m_type;
+};
+struct BSClassView {
+    unsigned char unknown00[4];
+    BSClassInfoView* m_info;
+};
+struct BSObjectView {
+    unsigned char unknown00[8];
+    BSClassView* m_class;
+};
+
+class BSGO_Destructable : public BSGO_Basic {
+public:
+    virtual void Destroy();
+    virtual void* GetScriptData();
+    virtual ISceneNode* GetSceneNode();
+    virtual void* GetProximityData();
+
+    unsigned char unknown10[12];
+    DestructableNodeView* m_node;
+};
+
+extern BSGO_Basic* g_pBoxList;
+
 extern BSGO_Basic* g_pTankList;
 extern BSGO_Basic* g_pGermanList;
 extern int g_numActiveSoldiers;
-extern BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[2];
+
+/* inferred: the file's .bss block (0x801a1120, 480 bytes) is reached from one
+   base register, so it is defined here in original order with size views and
+   pooled; each 12-byte entry is the destructor-chain record the compiler keeps
+   for the static object after it. No constructors, so no initialiser is compiled;
+   objcreate.cpp places the block. */
+struct DtorChainView {
+    unsigned char data[12];
+};
+/* view: sizes from the original */
+struct DumpObjectContainerView {
+    unsigned char data[0x10];
+};
+struct GermanCreationQueueView {
+    unsigned char data[0xb4];
+};
+struct DelayDestroyListView {
+    unsigned char data[0x50];
+};
+static DtorChainView s_chain861;
+static BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[2];
+static DtorChainView s_chain862;
+static BSUtilObjectInstanceMemoryAllocator g_pVolumeAllocator;
+static DtorChainView s_chain863;
+static BSUtilObjectInstanceMemoryAllocator g_pAnimatedVolumeAllocator;
+static DtorChainView s_chain864;
+static BSUtilObjectInstanceMemoryAllocator g_pEnvModMechAllocator;
+static DtorChainView s_chain865;
+static DumpObjectContainerView g_DumpObjectContainer;
+static GermanCreationQueueView g_pGermanCreationQueue;
+static DelayDestroyListView g_pDelayDestroyList;
 
 void BSGO_Soldier::Destroy() {
     g_numActiveSoldiers--;
@@ -218,4 +307,28 @@ void BSGO_Tank::Destroy() {
     m_object = 0;
     m_tank = 0;
     g_pObjectAllocators[1].FreeElement(this);
+}
+
+void BSGO_Destructable::Destroy() {
+    Unlink(g_pBoxList);
+    g_scene.Remove(*m_node);
+    void* local = m_node->GetLocalBoundingVolume(3);
+    if (local)
+        g_pVolumeAllocator.FreeElement(local);
+    void* world = m_node->GetWorldBoundingVolume(3);
+    if (world && world != local)
+        g_pVolumeAllocator.FreeElement(world);
+    switch (((BSObjectView*)m_object)->m_class->m_info->m_type) {
+    case 8:
+        g_pEnvModMechAllocator.FreeElement(m_node);
+        break;
+    case 2:
+    case 4:
+        CStaticObjectFactory::DeallocateStaticObject((CStaticObject*)m_node);
+        break;
+    }
+    DestroyBSObject(m_object);
+    m_object = 0;
+    m_node = 0;
+    g_pObjectAllocators[0].FreeElement(this);
 }

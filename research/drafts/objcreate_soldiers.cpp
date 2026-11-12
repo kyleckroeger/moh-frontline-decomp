@@ -135,31 +135,3 @@ public:
 };
 extern BSGO_Destructable* g_pBoxList;
 
-void BSGO_Destructable::Destroy() {
-    if (m_prev)
-        m_prev->m_next = m_next;
-    if (m_next)
-        m_next->m_prev = m_prev;
-    if (g_pBoxList == this)
-        g_pBoxList = m_next;
-    g_scene.Remove(*m_node);
-    void* local = ((GetVolumeFn)Slot(m_node, 0x34))(m_node, 3);
-    if (local)
-        g_pVolumeAllocator.FreeElement(local);
-    void* world = ((GetVolumeFn)Slot(m_node, 0x38))(m_node, 3);
-    if (world && world != local)
-        g_pVolumeAllocator.FreeElement(world);
-    switch (m_script->m_class->m_info->m_type) {
-    case 2:
-    case 4:
-        CStaticObjectFactory::DeallocateStaticObject((CStaticObject*)m_node);
-        break;
-    case 8:
-        g_pEnvModMechAllocator.FreeElement(m_node);
-        break;
-    }
-    DestroyBSObject((BSObject*)m_script);
-    m_script = 0;
-    m_node = 0;
-    g_pObjectAllocators.FreeElement(this);
-}
