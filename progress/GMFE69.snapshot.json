@@ -838,7 +838,7 @@
     "src/game/debug_prof_cdbgstatsrenderbin_dtor.cpp": "0609e8ee16b0884ca0c8944030f4db7bf87693e65bad6bfc67002b895b88a11d",
     "src/game/debug_prof_cprofhistrenderbin_dtor.cpp": "d4ce99045397aae6ce2a629ff3d63b6ca5c0d0d5f8bd3ebff390f5a7f14793e5",
     "src/game/debug_prof_profilebin_ctor.cpp": "7b2140c03134bf6ffa9e220a077888fb3578113c95335ff5d9a91da49d8c5204",
-    "src/game/debug_prof_register.cpp": "661579b17d0ea52badd75a8bebe4c67c03f8d7526f814f7450f3adbdadc903af",
+    "src/game/debug_prof_register.cpp": "e655902202d1ae9eaa0fccfee1836c729faaea83ea7f814976450039b52aa9b5",
     "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
     "src/game/decal.cpp": "782fa444ef46e9747f2332c2c1ce08d910173509ed4d246b14095ae02cb9c21d",
@@ -44319,8 +44319,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "4e5fa2a230802565b82fac4450ce7bdda45a775f0934dbe258bc7a76ed327211",
-      "linked_sha256": "0cfe371462d92d488e6f0018f899d380e2dc8e89d73b37cc09177b5b7aedc98f"
+      "object_sha256": "ac3d3458d405b47d1f216c52b9c07aacb2ed3054898a28adeab16c3702ed2c7e",
+      "linked_sha256": "7ff97f73634deee76c8abebbf7cce014996ab3e5d4e8f36c3f02109c31ca9ed5"
     },
     {
       "id": "AISplinePath_astar",

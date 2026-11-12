@@ -76,3 +76,20 @@ left for the maintainer: reverting them loses their matches.
   `WriteSwapVCD` still load-bearing (4 lines, one register: the swap loop's normals load coalesces with its mask in
   the original, not in the chunk loop); ~40 natural variants inert (decl orders, list/stride/swap/j/k scopes,
   shared helpers, WriteCP/mask spellings). Drafts: scratch/loop3/natural1/cpt/.
+- (natural1) debug_prof: `(void)0;` removed. DebugProfTimerDump names the printed values
+  (`count`, `timeLow`, `timeHigh` read from counts[0..2], then printed high, low, count): the same statement
+  count, so DumpRecurse keeps the original's inline depth. Unit verifies, image identical. Plain alternatives
+  that change the count differently: name/length locals (15-194), for/while loop forms (5-359).
+- (natural1) BIFunc_BuddyDied: `DumpBuddyVector` still load-bearing (28 lines, FPR x/z mirror in both dump
+  blocks). Only reaching the vector through an inline's reference PARAMETER flips it: local references or
+  pointers to g_attached_buddies (const or not, before/after the message), an unused parameter, a both-lists
+  wrapper, a shared object-info inline over all six blocks, x/y/z/soldier/i declaration orders, iterator forms
+  of the ready-list walk: all inert or worse. Drafts: scratch/loop3/natural1/bud/.
+- (natural1) CVolCapsule::GetExtents: `SubV`/`AddV` still load-bearing (66 fast lines without them). The original's
+  selects keep the result in the term's own register ('bge; b; fmr ax,bx'), which CW does only when the term is
+  copy-defined (an inline's return temp). Inert or worse: if/else and if-assign selects, new result locals, reversed
+  or negated ternaries, Min/Max inlines, compound 'ax = a.x; ax -= radius', field-wise '-=' on the copies, the RS
+  sphere form (CVector3 extent + '-='/'+='), CVector3::Sub/Add (original weak methods). Drafts: natural1/cap/.
+- (natural1) CFont::DrawTextCenteredF: `Mul` still load-bearing (2 lines: 'fmuls f29,f0,f29' operand order). Plain
+  product in either order, named conversion locals, int/unsigned locals, in-place 'viewWidth *=', compound forms,
+  a 9-declaration order search: inert or worse. Drafts: natural1/font/.

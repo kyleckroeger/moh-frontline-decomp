@@ -20,8 +20,9 @@
 // by the symbols and RTTI; the record view, the bins' layout before the table
 // pointer, IsUsed's result and the helper are inferred, and CScreen's virtuals
 // are declared in table order up to GetWidth (as in Screen_fieldmode.cpp).
-// The '(void)0;' stands in for compiled-out debug code: without it the
-// inliner expands the recursion one level deeper than the original.
+// DebugProfTimerDump's statement count sets how deep the inliner expands the
+// recursion in DebugProfTimerDumpRecurse; naming the printed values gives the
+// original's depth.
 extern "C" {
 int printf(const char*, ...);
 unsigned long strlen(const char*);
@@ -166,10 +167,12 @@ void DebugProfTimerDump(int index, int depth) {
         printf(" ");
     printf("%2d, %s", depth, timer->name);
     int column = depth + 4 + strlen(timer->name);
-    (void)0;
     for (; column < 40; column++)
         printf(" ");
-    printf(", %u%09u, %u", timer->counts[2], timer->counts[1], timer->counts[0]);
+    unsigned int count = timer->counts[0];
+    unsigned int timeLow = timer->counts[1];
+    unsigned int timeHigh = timer->counts[2];
+    printf(", %u%09u, %u", timeHigh, timeLow, count);
     printf("\n");
 }
 
