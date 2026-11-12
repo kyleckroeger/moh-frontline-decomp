@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1251412,
+    "matching_code_bytes": 1252688,
     "total_executable_code_bytes": 1414572,
-    "percent": 88.46576915137582,
+    "percent": 88.55597311412922,
     "categories": {
-      "reconstructed_game": 1010776,
+      "reconstructed_game": 1012052,
       "restored_library": 240636
     },
-    "matching_functions": 4886
+    "matching_functions": 4887
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -465,7 +465,7 @@
     "src/game/MathFun_rotate.cpp": "588510cfcb042e0ebfbac34e97fdced1632426e9073261dd47ed6c742598ddbd",
     "src/game/MemoryCardGC.cpp": "618ed230c73b7eb2d4056fcc2751fb7848eedcac8e52d2254775901bcd6e9ede",
     "src/game/Moh2.cpp": "99ac0fe37b7a471c9219d28021c6c99bce4cf047d3253168edbc3e99081fc4fe",
-    "src/game/ObstacleAvoidance.cpp": "869a92ea5abc57275930addf9cd57fe3e4f055814335361d239c64529c499ec4",
+    "src/game/ObstacleAvoidance.cpp": "e1b00075c7069729095f69727cc9b5c595248fa5e58d15db6d98085afd0860e5",
     "src/game/PathNodeList.cpp": "4d07813471d9d4fc31984159dbc04bd6875ace05f4ceb3267d05c7be06169ad9",
     "src/game/PathNodeList_closest.cpp": "252b37aa833f3fd9d0ae9775f752e7a3b8c26933bf94ee10d5faff8da3783f07",
     "src/game/PathNodeList_disable.cpp": "78d37fab5d15b12ec89ee8ca392f4307c7ad7ad9da2fe8cca663fee8237af2b2",
@@ -1848,7 +1848,7 @@
     "config/GMFE69/OSSync.json": "06255b0aaf96ae8e5c7cf3b363d66e1b7b7a7ba742a870e2256f7705d5eb2a14",
     "config/GMFE69/OSThread.json": "38638c5451250dd068469a8b6b609d98e9aabad647ceb265a4cfd78f3d497cca",
     "config/GMFE69/OSTime.json": "f59f3f37208ab6ad04e71ab8586afb08b51deaad6157f0183cead030e4d8749c",
-    "config/GMFE69/ObstacleAvoidance.json": "81afcda84316ec226c947f877e5cf7513d5192af6d8a250bce4c02aa31a04c41",
+    "config/GMFE69/ObstacleAvoidance.json": "7454cc9f33fc4d027c9cc36c498ae880961c2c99510ae87af7259f54cea48806",
     "config/GMFE69/PPCArch.json": "50ec6b45f5de2b4550e0dd0179b4dc3147c26faa63dffcd8bd32d9afa71f2ff8",
     "config/GMFE69/Pad.json": "0b2c4b221832a5e352c0236d90c02e9938bb4a00392741832f1510da07a7770d",
     "config/GMFE69/Padclamp.json": "570f443e7a228e96a9e869248c68a59a1d9e68052c20523d1c9a482772bfe76b",
@@ -39162,8 +39162,8 @@
     {
       "id": "ObstacleAvoidance",
       "category": "reconstructed_game",
-      "functions": 8,
-      "code_bytes": 3036,
+      "functions": 9,
+      "code_bytes": 4312,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -39195,8 +39195,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "eafb27a02d257c88ddfb43696257c106a7f26b4c9552685c6b00063ff28b2c97",
-      "linked_sha256": "a50ea489a59c3de6d6dbd0de5aa382ccfe9ebbe2960e9b1dfc6a570e1821925b"
+      "object_sha256": "a1c5e9eed858f73d9200c160ccc094c794b12a1016eb0e4dccb35f68e4a319f7",
+      "linked_sha256": "2af5b353fbc40bf1b37791a2d0db6c11e0b1c711259a734121ac00432eb65fe7"
     },
     {
       "id": "animmot",
@@ -54411,20 +54411,6 @@
             "size": 480,
             "kind": "function",
             "name": "FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/ObstacleAvoidance.cpp [symbol evidence]",
-        "file_record": 33,
-        "file_name": "ObstacleAvoidance.cpp",
-        "ranges": [
-          {
-            "address": "0x80053738",
-            "size": 1276,
-            "kind": "function",
-            "name": "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition",
             "evidence": "exception-index"
           }
         ]

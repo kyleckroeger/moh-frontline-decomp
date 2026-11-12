@@ -1,4 +1,11 @@
-// The end of ObstacleAvoidance.cpp (0x80053c34): CObstacleAvoidance::
+// The end of ObstacleAvoidance.cpp (0x80053738): CObstacleAvoidance::
+// DetermineNewObjectivePosition (state 3 and unknown states keep the
+// objective; state 4 keeps it and, once the owner is within the clearance of
+// the avoidance position, returns to state 3 and triggers script event 144;
+// state 0 finds the line sector of the objective's angle, keeps the objective
+// when that line is clear, may switch to avoidance (state 4) on the centre
+// line, else takes the first free line, preferring the remembered side and
+// then searching outwards on both sides), CObstacleAvoidance::
 // RunEnvironmentCollisionChecks (one obstacle-avoidance line per call: the
 // line from the owner's position, raised by the current height, along its
 // forward/right/up axes scaled by the line's end point and the range scale,
@@ -29,6 +36,9 @@
 // registers). The constants are .sdata2 pool entries. The rest of the file is
 // in other units.
 extern "C" void* memcpy(void*, const void*, unsigned long);
+
+struct BSObject;
+void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
 #include "game/CVector3.h"
 
@@ -69,6 +79,7 @@ public:
         z += v.z;
         return *this;
     }
+    float GetDistanceSquaredXYReal(const CAIFilterRealPosition&) const;
     float GetDistanceSquaredXYZReal(const CAIFilterRealPosition&) const;
     CAIFilterRealPosition() {}
     CAIFilterRealPosition(float ax, float ay, float az) {
@@ -83,7 +94,19 @@ public:
     float z;
 } __attribute__((aligned(8)));
 
-class CAIFilterObject;
+class CAIFilterRealEulerDirection {
+public:
+    void CalculateAngleDiff(const CAIFilterRealPosition&, const CAIFilterRealPosition&, float*, float*) const;
+
+    float m_angles[3];
+};
+
+/* Only the members used here are part of this view. */
+class CAIFilterObject {
+public:
+    unsigned char unknown00[12];
+    BSObject* m_script;
+};
 
 class CAIFilterGlobal {
 public:
@@ -100,7 +123,9 @@ public:
     CAIFilterObject* m_filter;
     unsigned char unknown00c[12];
     CAIFilterRealPosition m_position;
-    unsigned char unknown028[392];
+    unsigned char unknown028[56];
+    CAIFilterRealEulerDirection m_direction;
+    unsigned char unknown06c[324];
     unsigned long m_flags;
 };
 
@@ -118,6 +143,18 @@ class CObstacleGridEntry {
 public:
     CObstacleGridEntry();
     ~CObstacleGridEntry();
+    /* Inferred: the blocked flags as a mask (bit 0 = height level 2). */
+    bool IsBlocked() const { if (m_blocked[2]) return true; return false; }
+    int GetBlockedMask() const {
+        int mask = 0;
+        if (IsBlocked())
+            mask = 1;
+        if (m_blocked[1])
+            mask += 2;
+        if (m_blocked[0])
+            mask += 4;
+        return mask;
+    }
     /* Inferred: each direction's distance, blocked when below the range. */
     void Set(int i, float distance, float range) {
         m_distance[i] = distance;
@@ -151,10 +188,43 @@ public:
 
 class CObstacleAvoidance {
 public:
+    void DetermineNewObjectivePosition(CAIFilterRealPosition&);
     void RunEnvironmentCollisionChecks();
     void PrepareForAvoidance(CAIFilterRealPosition&);
     ~CObstacleAvoidance();
     CObstacleAvoidance();
+    /* Inferred helpers of DetermineNewObjectivePosition. */
+    bool HasClearance() const {
+        if (0.0f == m_unknown38c[2])
+            return false;
+        return true;
+    }
+    bool IsClear(float distance, int line) const {
+        if (distance < m_grid[line].m_distance[1] && distance < m_grid[line].m_distance[1] && distance < m_grid[line].m_distance[2])
+            return true;
+        return false;
+    }
+    bool ShouldAvoid(int line, int mask) const {
+        bool has = HasClearance();
+        if (!has)
+            return false;
+        if (line != 5)
+            return false;
+        switch (mask) {
+        case 0:
+        case 1:
+        case 5:
+        case 7:
+            return false;
+        case 2:
+        case 3:
+        case 6:
+            return false;
+        }
+        if (m_grid[line].m_distance[0] < 0.25f + m_unknown38c[2])
+            return false;
+        return true;
+    }
 
     unsigned short m_line;
     short m_counters[3];
@@ -170,7 +240,7 @@ public:
     float m_unknown360;
     int m_unknown364;
     CAIFilterRealPosition m_position;
-    unsigned char unknown378[16];
+    CAIFilterRealPosition m_avoidPosition;
     CAIObject* m_owner;
     float m_unknown38c[3];
     int m_unknown398;
@@ -181,6 +251,99 @@ CVector3 f_rv3ObstacleAvoidanceLines[13];
 float f_rrObstacleAvoidanceLineAngleMin[11];
 float f_rrObstacleAvoidanceLineAngleMax[11];
 extern bool f_bObstacleAvoidanceLinesInitialized;
+
+/* Inferred: the line sector containing the angle, else the centre line. */
+inline int FindLine(float angle) {
+    for (int i = 0; i < 11; i++) {
+        if (angle >= f_rrObstacleAvoidanceLineAngleMin[i] && angle <= f_rrObstacleAvoidanceLineAngleMax[i])
+            return i;
+    }
+    return 5;
+}
+
+void CObstacleAvoidance::DetermineNewObjectivePosition(CAIFilterRealPosition& out) {
+    switch (m_unknown398) {
+    case 3:
+    default:
+        CopyPosition(out, m_position);
+        break;
+    case 4:
+        CopyPosition(out, m_position);
+        if (m_owner->m_position.GetDistanceSquaredXYReal(m_avoidPosition) < 0.25f + m_unknown38c[2]) {
+            m_unknown398 = 3;
+            BSObjectTriggerEvent(m_owner->m_filter->m_script, 144, 0, 0, false);
+        }
+        break;
+    case 0: {
+        float distance = m_owner->m_position.GetDistanceSquaredXYReal(m_position);
+        float other;
+        float angle;
+        m_owner->m_direction.CalculateAngleDiff(m_owner->m_position, m_position, &angle, &other);
+        int low;
+        int next;
+        int line = FindLine(angle);
+        bool clear;
+        if (IsClear(distance, line)) {
+            clear = true;
+        } else {
+            int mask = m_grid[line].GetBlockedMask();
+            if (ShouldAvoid(line, mask)) {
+                m_unknown398 = 4;
+                clear = true;
+                CopyPosition(m_avoidPosition, m_grid[line].m_position);
+            } else {
+                if (mask == 0)
+                    clear = true;
+                else
+                    clear = false;
+            }
+        }
+        if (clear) {
+            CopyPosition(out, m_position);
+            m_unknown39c = 0;
+            return;
+        }
+        low = line;
+        next = -1;
+        if (m_unknown39c == 1) {
+            if (line > 0) {
+                int t = line - 1;
+                next = t;
+                low = t;
+            }
+        } else if (m_unknown39c == 2) {
+            if (line < 10) {
+                int t = line + 1;
+                next = t;
+                line = t;
+            }
+        }
+        if (next != -1 && m_grid[next].GetBlockedMask() == 0) {
+            CopyPosition(out, m_grid[next].m_position);
+            return;
+        }
+        do {
+            if (low > 0) {
+                int i = --low;
+                if (m_grid[i].GetBlockedMask() == 0) {
+                    CopyPosition(out, m_grid[i].m_position);
+                    return;
+                }
+            }
+            if (line < 10) {
+                int i = ++line;
+                if (m_grid[i].GetBlockedMask() == 0) {
+                    CopyPosition(out, m_grid[i].m_position);
+                    return;
+                }
+            }
+        } while (low != 0 || line != 10);
+        CopyPosition(out, m_position);
+        break;
+    }
+    }
+}
+
 
 void CObstacleAvoidance::RunEnvironmentCollisionChecks() {
     float range = m_range;

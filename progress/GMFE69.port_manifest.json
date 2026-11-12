@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 148372, "differs": 10144, "exact": 4472, "verified": 1242568},
+ "function_bytes_by_status": {"consistent": 147096, "differs": 10144, "exact": 4472, "verified": 1243844},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -918,7 +918,7 @@
  [2147825372, 20, "__ct__11CLinkedListFv", "verified", "src/game/LinkedList.cpp"],
  [2147825392, 60, "__dt__18CLinkedListElementFv", "verified", "src/game/LinkedList.cpp"],
  [2147825452, 12, "__ct__18CLinkedListElementFv", "verified", "src/game/LinkedList.cpp"],
- [2147825464, 1276, "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition", "consistent", "research/drafts/DetermineNewObjectivePosition.80053738.cpp"],
+ [2147825464, 1276, "DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition", "verified", "src/game/ObstacleAvoidance.cpp"],
  [2147826740, 1744, "RunEnvironmentCollisionChecks__18CObstacleAvoidanceFv", "verified", "src/game/ObstacleAvoidance.cpp"],
  [2147828484, 304, "PrepareForAvoidance__18CObstacleAvoidanceFR21CAIFilterRealPosition", "verified", "src/game/ObstacleAvoidance.cpp"],
  [2147828788, 124, "__dt__18CObstacleAvoidanceFv", "verified", "src/game/ObstacleAvoidance.cpp"],

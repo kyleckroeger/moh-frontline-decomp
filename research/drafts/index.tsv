@@ -75,7 +75,6 @@ real_lines	size	address	function	compile_settings_from	draft
 195	784	8005c6b8	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	config/GMFE69/AIFilter_visit.json	research/drafts/GetClosestWaypointByType.8005c6b8.cpp
 196	980	800f3578	PROFILE_UPDATE__Fv	config/GMFE69/debug_prof_profilebin_ctor.json	research/drafts/PROFILE_UPDATE.800f3578.cpp
 207	892	80057b30	BIFunc_AddBuddy__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_AddBuddy.80057b30.cpp
-234	1276	80053738	DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition	config/GMFE69/LinkedList.json	research/drafts/DetermineNewObjectivePosition.80053738.cpp
 252	1260	800f712c	DMMorphBlendDisplayLists__FP16DMRenderObject_T	config/GMFE69/dmmorph_buffers.json	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp
 323	2092	800c5cb4	FindIntersection__FRC6CLine3RC11CVolCapsulePf	config/GMFE69/capsule_plane.json	research/drafts/FindIntersection.800c5cb4.cpp
 441	1864	80046bc8	Update__13SoundScheduleFi	config/GMFE69/soundschedule_sound.json	research/drafts/Update.80046bc8.cpp
