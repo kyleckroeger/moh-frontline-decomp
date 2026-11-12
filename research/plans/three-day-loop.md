@@ -19,11 +19,13 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 87.80% (1,242,004 bytes) at 5e72bb35, +22,732 this run. Landing commits: 26.
-- Lanes (2026-11-11 23:57): geometry dry after 2 agents (slot
-  now runs the Rising Sun helper-boundary sweep, agent rs1, then rs2); systems
-  slot on CreateCollisionVolume/CreateDestructable/CreateGerman (systems5); airender dry after 5 agents (slot: mid2, scripting middle); scripting 7th agent on far-off drafts; rs2 on systems rows;
-  systems dry after 2 agents. Biggest single landing: CCompartment::Init, 2,628 (6e3c8d59).
+- Verified: 88.08% (1,245,996 bytes) at 39b69cd3, +26,724 this run. Landing commits: 31.
+- Lanes (2026-11-12 01:12): geometry, airender and systems lanes dry;
+  all four slots now run cross-lane work: scripting 9th agent (MechFollowPath, session-8
+  tricks), late2 (SweepExtents 7, AIStartCoverPointWalkToStored 3), struct1 (far-off
+  non-scripting drafts), sweep2 (Mul/FPR tricks on geometry knots). Usage limit stopped all
+  agents 00:10-00:40 on 11-12; resumed with SendMessage. Largest landing:
+  TriggerEnterAndLeaveMessages, 3,480 (72ffb0fc). Data step 2 by data1: undefined 197 -> 82.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
@@ -45,6 +47,22 @@ multiplayer not at all. Every landing keeps the complete image identical.
      (scratch/loop3/rs2/pev/PATH_event_unit_autoinline.c). The accepted `dont_inline` also
      stops selectstate inlining inside PATH_pause (83 lines off). Not on the accepted list
      (which names dont_inline in game code), so parked, ready to land on a yes.
+  6. **Data step 2 (agent data1: d5d1282e, 18f0a9a4, d0f84b89; undefined 197 -> 82).**
+     Review: files inferred from section neighbours (marked); MPD/gFileSysOpts/FONTcurrentdriverext
+     put in init/unassigned.cpp against the map's guess; six plain MP float constants included
+     (drop them if multiplayer-last should cover data too); should `_eti_init_info` and the
+     vtables stay out of step 2; should research/data/init/ merge with bss/ later.
+  7. **Placement-new knot** (CreateRootHierObject 3,416 B at 1 line, CreateDestructable at 1):
+     CW always null-checks placement new and keeps a redundant beq; no natural form gives both
+     the original's `mr.` and the register ranking (scratch/loop3/pnew1/notes.md). The only
+     untried form writes the two vtable pointers by hand after `if (box)`. The coordinator
+     expects that to be declined (code written only to steer output), so it was not tried.
+  8. **Per-fragment inline views that differ.** CFont::DrawTextCentered (416 B) is code exact
+     only if its fragment's view of the inline DrawText declares scaleY before scaleX, while the
+     landed DrawTextCenteredF and font_dtor need scaleX first (scratch/loop3/sweep1/
+     DTC_BEST0.cpp). FlagAsOccupied has the same shape. Treated as the declined "duplicate
+     inline" form, so not landed. Also: late1's SweepExtents writes an inline's loop out in the
+     caller; the coordinator accepted that as ordinary source (adds nothing).
 ## Hard rules (for the coordinator and every agent)
 
 1. **Land only with `research/tools/land.sh`**, holding `research/tools/landlock.sh`. It
