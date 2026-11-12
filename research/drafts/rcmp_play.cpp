@@ -90,12 +90,13 @@ VIDEO_DISPLAY* MOHFL_VD_create(DECODER*, FRAME*);
 VIDEO_DISPLAY* GCSW_VD_create(DECODER*, FRAME*, _GXRenderModeObj*, void*);
 }
 
-// Frame-time record: the ring fills, then is copied whole into the history (inferred).
-struct FrameTimes {
+// Frame-time record (DISP_OLD_FRAMES: name and empty inline destructor from the original's
+// extab record and weak dtor): the ring fills, then is copied whole into the history (layout inferred).
+struct DISP_OLD_FRAMES {
     int m_index;
     float m_history[16];
     float m_ring[16];
-    FrameTimes() {
+    DISP_OLD_FRAMES() {
         m_index = 0;
         for (int i = 0; i < 16; i++) {
             m_history[i] = 0.0f;
@@ -109,6 +110,7 @@ struct FrameTimes {
             MEM_copy(m_history, m_ring, sizeof(m_ring));
         }
     }
+    ~DISP_OLD_FRAMES() {}
 };
 
 static inline unsigned int Ticks() {
@@ -159,7 +161,7 @@ void OPTION_PARSING_PLAYER::Play(bool finished) {
     float cpuTime;
     int flags;
     unsigned int format;
-    FrameTimes times;
+    DISP_OLD_FRAMES times;
     audioDone = false;
     totalTicks = 0;
     frames = 0;

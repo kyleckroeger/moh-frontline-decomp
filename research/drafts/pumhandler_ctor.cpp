@@ -92,9 +92,9 @@ inline void ChangeEndian(unsigned short& value) {
 }
 
 inline void CUserMessageTable::Load(char* textFile, char* indexFile) {
-    int pos;
-    unsigned char* index;
     char* text;
+    unsigned char* index;
+    int pos;
     if (m_strings || m_lengths || m_table)
         Unload();
     m_strings = (char*)TLT_LoadFileNormal(textFile, 0, 0);

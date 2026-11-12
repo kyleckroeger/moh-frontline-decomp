@@ -45,7 +45,7 @@ public:
     virtual ~CSprite();
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
     static void* operator new(unsigned long size) { return DWI_alloc(0, size, 1024); }
-    static void operator delete(void*);
+    // No class operator delete: the original's extab frees a failed 'new CSprite' through ::operator delete.
     unsigned char unknown20[68];
 };
 class CFont {
