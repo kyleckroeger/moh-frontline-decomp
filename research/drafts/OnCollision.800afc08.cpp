@@ -480,13 +480,12 @@ void CStaticObject::OnCollision(const CCollision& collision) {
             away.c.z = point.c.z - position.c.z;
             Normalize(away);
             CVector3 motion;
-            motion.c.z = point.c.z;
-            motion.c.z -= local.c.z;
-            float px = point.c.x;
-            motion.c.x = px;
+            motion.c.x = point.c.x;
             motion.c.y = point.c.y;
-            motion.c.y -= local.c.y;
+            motion.c.z = point.c.z;
             motion.c.x -= local.c.x;
+            motion.c.y -= local.c.y;
+            motion.c.z -= local.c.z;
             Normalize(motion);
             if (away.c.x * motion.c.x + away.c.y * motion.c.y + away.c.z * motion.c.z > 0.0f)
                 stop = false;
