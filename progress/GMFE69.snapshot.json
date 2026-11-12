@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1242516,
+    "matching_code_bytes": 1245996,
     "total_executable_code_bytes": 1414572,
-    "percent": 87.83688635149007,
+    "percent": 88.08289715899933,
     "categories": {
-      "reconstructed_game": 1001880,
+      "reconstructed_game": 1005360,
       "restored_library": 240636
     },
-    "matching_functions": 4881
+    "matching_functions": 4882
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1029,6 +1029,7 @@
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
     "src/game/propdat_restart.cpp": "fde69e0e5b177ac973269b5931bb0b38c1d2b07c146386fb73b20c27e0921315",
     "src/game/proxtrig_leafs.cpp": "179078dd5943adf6266b5fd1d3f9e8bece13e96b580aa3edf53801650875567f",
+    "src/game/proxtrig_messages.cpp": "94c0877683f33ab88a1b9473e1c0c44943fdc5bf4f13b6d5e3403e38870a6992",
     "src/game/proxtrig_point.cpp": "cae61da650ac014e78ac166b40ae5f2424133c367c8b6010f8fa654dc13e176d",
     "src/game/publisher.cpp": "be8db65e325ce14946ab26154cef64008f577aaf7689b22bd3ac8b297ad78b23",
     "src/game/publisher_erase.cpp": "0bc60cf16d324d4dfb54804240d3cc08e80f87017a9163bf04fcae532794be39",
@@ -2552,7 +2553,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "1bade0bba16ee9adce6b1576eb0debf332c820c3296f3c6448964aa8876d11df",
+    "config/GMFE69/project.json": "5c173f4e0935047ce677d311e465e28157a6c3021a106ad6fb2f84e14be6fa67",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2564,6 +2565,7 @@
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
     "config/GMFE69/propdat_restart.json": "5358883626a28ecda617e618c382ff6f6010f9215b9c4dc683ea298c32c6ac5c",
     "config/GMFE69/proxtrig_leafs.json": "25f18b1e31fefda65c11935178ba9d616a1234bfa0e274a749e8dfc441441abf",
+    "config/GMFE69/proxtrig_messages.json": "a80cadae069bd3b8861ef2c96ecf0bd6a2fc3dbf13dd28c84ab83999ccbb37cc",
     "config/GMFE69/proxtrig_point.json": "08a77c56fc3b9d6474931aec5cb345283e54994635872e77321900bb06e179a3",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "a31413c1f5b6efb8f9357657c5bb00c10aec7b392999d148f0a0e8d69fac4639",
@@ -54092,6 +54094,45 @@
       "discarded_functions": [],
       "object_sha256": "0c5f2f09f789d958fb63149fb2a0c370924cdaed2b7037c8b584901962bdda43",
       "linked_sha256": "f7040f074bbde8ec06f76319439afe8fe61377d0d1ebe5a18da3846e2477afbe"
+    },
+    {
+      "id": "proxtrig_messages",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 3480,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "aa8292e578f4959c94b144d37fef4454603a571392a857ced6c7737347ccaf03",
+      "linked_sha256": "6cd8f94601910628ee132f753391d3a26cc966a88828685516a7284449d97da2"
     }
   ],
   "code_map": {
@@ -54247,13 +54288,6 @@
         "file_record": 23,
         "file_name": "proxtrig.cpp",
         "ranges": [
-          {
-            "address": "0x800451ec",
-            "size": 3480,
-            "kind": "function",
-            "name": "TriggerEnterAndLeaveMessages__FP10BSGO_Basicb",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80046378",
             "size": 2128,

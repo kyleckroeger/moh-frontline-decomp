@@ -85,7 +85,6 @@ real_lines	size	address	function	compile_settings_from	draft
 547	2292	800c15ec	TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	config/GMFE69/box_testtriangle.json	research/drafts/TestCollision.800c15ec.cpp
 598	2512	800cf794	Visit__7CImpactFR10ISceneNode	config/GMFE69/explosion_dtor.json	research/drafts/Visit.800cf794.cpp
 708	3768	80035aa8	BSFileReadClass__FPCcbbPP14BSClass_struct	config/GMFE69/bsevents.json	research/drafts/BSFileReadClass.80035aa8.cpp
-804	3480	800451ec	TriggerEnterAndLeaveMessages__FP10BSGO_Basicb	config/GMFE69/proxtrig_point.json	research/drafts/TriggerEnterAndLeaveMessages.800451ec.cpp
 1183	5024	800e270c	MemoryCardBootUpPortCheck__10CShellMenuFi	config/GMFE69/ShellMenu_load.json	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
 26	424	800653c0	Draw__10CAnimMorphFR12CDrawContext	config/GMFE69/animmorph_dtor.json	research/drafts/Draw.800653c0.cpp
 41	784	8007133c	Init__10CCDBObjectFP3CDB	config/GMFE69/cdbobject.json	research/drafts/Init.8007133c.cpp

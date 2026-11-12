@@ -1,0 +1,96 @@
+{
+  "id": "proxtrig_messages",
+  "source": "src/game/proxtrig_messages.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800451ec",
+      "size": 3480,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a63c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011708",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "TriggerEnterAndLeaveMessages__FP10BSGO_Basicb",
+      "address": "0x800451ec",
+      "size": 3480,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Acquire__12CWorldObjectFRCQ212CWorldObject11SAcquireSetb": "0x800b737c",
+    "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv": "0x80039f10",
+    "SetClimbingState__13CPlayerObjectFb": "0x8009ea14",
+    "g_pLightVolumes": "0x8034e8cc",
+    "g_pTriggerObjects": "0x801a1300",
+    "g_scene": "0x8019484c"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pLightVolumes"
+  ],
+  "original_file": "proxtrig.cpp",
+  "original_file_index": 1686,
+  "pooled_sections": [
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 16,
+      "address": "0x8016f448"
+    }
+  ]
+}

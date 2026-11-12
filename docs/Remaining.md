@@ -27,11 +27,11 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,242,516 / 1,414,572 code bytes (87.84%)**. Left: about 171.9 KB in 128 functions across 63 source files.
+Verified: **1,245,996 / 1,414,572 code bytes (88.08%)**. Left: about 168.4 KB in 127 functions across 63 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
-| 1 | Scripting and level objects | 44.5 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `proxtrig.cpp`, `buddy.cpp`, `bsfile.cpp` |
+| 1 | Scripting and level objects | 41.0 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `impact.cpp` |
 | 1 | Collision | 24.2 KB | `cdbgeom.cpp`, `box.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
 | 1 | AI | 21.1 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Animation | 15.7 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `animmorph.cpp`, `dmcluster.cpp` |
@@ -42,9 +42,9 @@ Verified: **1,242,516 / 1,414,572 code bytes (87.84%)**. Left: about 171.9 KB in
 | 2 | Video | 4.3 KB | `rcmp_main.cpp`, `getpic.cpp`, `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 105.6 KB and would take the project to 95.3% at most.
+Priority 1 is 102.1 KB and would take the project to 95.3% at most.
 
-Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 119 consistent (157.3 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 118 consistent (153.8 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->
