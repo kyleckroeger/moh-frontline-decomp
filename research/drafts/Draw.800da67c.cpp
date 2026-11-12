@@ -141,7 +141,7 @@ public:
     unsigned char unknownd8[20];
     dwi::fast_vec<ISceneNode*>* m_visible;
     dwi::fast_vec<ISceneNode*>* m_list104;
-    unsigned char unknownf8[44];
+    unsigned char unknownf8[40];
 } __attribute__((aligned(16)));
 
 class CWorldObject {

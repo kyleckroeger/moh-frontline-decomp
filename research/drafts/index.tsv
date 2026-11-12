@@ -87,7 +87,7 @@ real_lines	size	address	function	compile_settings_from	draft
 3	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
 138	3376	800b254c	Init__20CStaticObjectFactoryFv	config/GMFE69/staticobjfactory_helmet.json	research/drafts/Init.800b254c.cpp
 37	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp
-49	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
+48	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
 3	244	8015d238	SNDtimeremaining	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDtimeremaining.8015d238.c
 53	1700	8015d530	SNDVOICEI_alloc__FiiPiii	config/GMFE69/salloc.json	research/drafts/SNDVOICEI_alloc.8015d530.c
 79	708	8015f538	SNDI_precalcaztospkrvol__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDI_precalcaztospkrvol.8015f538.c
