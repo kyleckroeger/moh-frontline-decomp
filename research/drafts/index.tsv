@@ -133,7 +133,7 @@ real_lines	size	address	function	compile_settings_from	draft
 	224	80058e44	__sinit_buddy_cpp	config/GMFE69/buddy_copy_info.json	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 33	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
 	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
-	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof_dump.json	research/drafts/debug_prof_misc.cpp
+	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof.json	research/drafts/debug_prof_misc.cpp
 	860	80074cc8	Draw__12CCompartmentFR12CDrawContext	config/GMFE69/compartment_render.json	research/drafts/compartment_draw.cpp
 	556	800f1e64	Draw__11CStaticMeshFR12CDrawContexti	config/GMFE69/staticmesh_render.json	research/drafts/staticmesh_draw.cpp
 	72	801055b0	__dt__Q24RCMP11RCMP_SYSTEMFv	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
