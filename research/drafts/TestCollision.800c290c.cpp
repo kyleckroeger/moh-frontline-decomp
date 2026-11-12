@@ -264,8 +264,8 @@ int CVolBox::TestCollision(const CVolCapsule& capsule, CCollision& collision, bo
         CVector3 normal;
         float t, b0, b1, b2;
         line.GetProjection(m_center, p, b2);
-        float ny = p.d.c.y - m_center.d.c.y;
         float nx = p.d.c.x - m_center.d.c.x;
+        float ny = p.d.c.y - m_center.d.c.y;
         float nz = p.d.c.z - m_center.d.c.z;
         if (nx * nx + ny * ny + nz * nz > r * r) {
     float h0;
@@ -280,9 +280,9 @@ int CVolBox::TestCollision(const CVolCapsule& capsule, CCollision& collision, bo
             lenSq = nx * nx + ny * ny + nz * nz;
             len = sqrtf(lenSq);
             inv = 1.0f / len;
-            nz *= inv;
             nx *= inv;
             ny *= inv;
+            nz *= inv;
         h0 = m_half[0];
             h2 = m_half[2];
             a2 = (float)fabs(h2 * m_axes[2].d.c.x * nx + h2 * m_axes[2].d.c.y * ny + h2 * m_axes[2].d.c.z * nz);

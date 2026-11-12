@@ -303,24 +303,21 @@ void CAnimObject::ConstrainVelocity() {
                 solved = true;
             }
             if (solved) {
-                float vy = velocity.y;
-                float tz = pz * a;
-                float sy = Mul(b, by);
-                float sz = Mul(b, bz);
-                float vx = velocity.x;
-                float ty = py * a;
-                float uz = tz + sz;
                 float sx = Mul(b, bx);
                 float tx = Mul(px, a);
                 float ux = sx + tx;
-                float vz = velocity.z;
-                float dz = Mul(uz, 1.05f);
-                float uy = ty + sy;
                 float dx = Mul(ux, 1.05f);
+                float sy = Mul(b, by);
+                float ty = Mul(py, a);
+                float uy = sy + ty;
                 float dy = Mul(uy, 1.05f);
-                m_velocity.x = vx - dx;
-                m_velocity.y = vy - dy;
-                m_velocity.z = vz - dz;
+                float sz = Mul(b, bz);
+                float tz = Mul(pz, a);
+                float uz = sz + tz;
+                float dz = Mul(uz, 1.05f);
+                m_velocity.x = velocity.x - dx;
+                m_velocity.y = velocity.y - dy;
+                m_velocity.z = velocity.z - dz;
             }
             for (it = begin; found && it != end; ++it) {
                 if (it == first || it == second)

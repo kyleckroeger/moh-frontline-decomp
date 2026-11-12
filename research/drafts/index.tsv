@@ -31,7 +31,7 @@ real_lines	size	address	function	compile_settings_from	draft
 7	688	8008f1e8	Orthonormalize__7CMatrixFv	config/GMFE69/matrix_endian.json	research/drafts/Orthonormalize.8008f1e8.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
-16	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
+14	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
 10	6920	8006a71c	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	config/GMFE69/cdbgeom.json	research/drafts/TestCollision.8006a71c.cpp
 25	2436	800ce450	CheckForObstructions__10CExplosionFR10ISceneNode	config/GMFE69/bulletfactory_projectile_pool.json	research/drafts/CheckForObstructions.800ce450.cpp
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
@@ -99,7 +99,7 @@ real_lines	size	address	function	compile_settings_from	draft
 73	752	801609d0	MIX_audioslice	config/GMFE69/smixer.json	research/drafts/MIX_audioslice.801609d0.c
 5	780	801671b8	SFILTER_rsf__FPviPvPvi	config/GMFE69/sfrsf.json	research/drafts/SFILTER_rsf.801671b8.c
 3	360	80058988	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	config/GMFE69/buddy_list.json	research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp
-108	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
+102	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
 	1228	80034718	BSInitBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
