@@ -1,6 +1,9 @@
 #include "ShellMenu_block.h"
 
-// A fragment of ShellMenu.cpp (0x800de420): the SKU mode (always 1) and
+// A fragment of ShellMenu.cpp (0x800de334): MoveStatsIntoProperAreaForIstudio,
+// which with two or three open windows moves the players' statistics records
+// (stored in player order) into the slots of the windows they play in, the
+// SKU mode (always 1) and
 // setting up the multiplayer buttons of each
 // open window's player in the controller configuration, and
 // PassMP_PrefHitLocationToIStudio, which names the body part a player hit
@@ -15,9 +18,8 @@
 // CDualConfig and the functions are named by the mangled symbols; the
 // members, the 28-byte player records, the 256-byte statistics records and
 // the configuration fields and the message table are inferred; the names are .sdata2 (and .rodata) pool entries
-// and the switch's jump table is this unit's .data. MoveStatsIntoProperAreaForIstudio before this (the start of the
-// record) is drafted in scratch/game/movestats_wip.cpp; the rest of the file
-// is not part of this unit.
+// and the switch's jump table is this unit's .data. The rest of the file is
+// not part of this unit.
 class CDualConfig {
 public:
     void SetupButtonsForMultiplayerGame();
@@ -40,6 +42,8 @@ struct MPPlayerButtonsView {
 
 extern "C" char* strcpy(char*, const char*);
 extern "C" char* strstr(const char*, const char*);
+extern "C" void* memcpy(void*, const void*, unsigned long);
+extern "C" void* memset(void*, int, unsigned long);
 
 /* inferred view of the user message table (8-byte entries, text first) */
 struct UserMessageView {
@@ -68,13 +72,30 @@ struct MPStatsView {
 
 class CShellMenu {
 public:
+    /* counts the open windows (the same count as Get_NumPlayers) */
+    int CountWindows() {
+        int count = 0;
+        if (m_activeWindows[0] != 0)
+            count++;
+        if (m_activeWindows[1] != 0)
+            count++;
+        if (m_activeWindows[2] != 0)
+            count++;
+        if (m_activeWindows[3] != 0)
+            count++;
+        m_activeWindowCount = count;
+        return count;
+    }
+    void MoveStatsIntoProperAreaForIstudio();
     int GetSKUMode();
     void PassMP_PrefHitLocationToIStudio(int, char*);
     int PassMP_PrefTargetToIStudio(int, char*);
     void PassMP_PrefWeaponNameToIStudio(int, char*);
     void SetupAllPlayersButtonsForMultiplayerGame();
 
-    unsigned char unknown0000[5196];
+    unsigned char unknown0000[5140];
+    int m_activeWindowCount;
+    unsigned char unknown1418[52];
     MPPlayerButtonsView m_players[4];
     unsigned char unknown14bc[16];
     MPStatsView m_mpStats[4];
@@ -82,6 +103,25 @@ public:
     unsigned char unknown18dc[232];
     CUserMessageTable m_messages;
 };
+
+void CShellMenu::MoveStatsIntoProperAreaForIstudio() {
+    int count = CountWindows();
+    if (count < 2 || count > 3)
+        return;
+    {
+        MPStatsView stats[4];
+        memset(stats, 0, sizeof(stats));
+        MPStatsView* dest = stats;
+        int window = 0;
+        for (int i = 0; i < count; window++, dest++) {
+            if (m_activeWindows[window]) {
+                memcpy(dest, &m_mpStats[i], sizeof(MPStatsView));
+                i++;
+            }
+        }
+        memcpy(m_mpStats, stats, sizeof(stats));
+    }
+}
 
 int CShellMenu::GetSKUMode() {
     return 1;

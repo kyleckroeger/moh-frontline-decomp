@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800de420",
-      "size": 1252,
+      "address": "0x800de334",
+      "size": 1488,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ed10",
-      "size": 32,
+      "address": "0x8000ed08",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015968",
-      "size": 48,
+      "address": "0x8001595c",
+      "size": 60,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "MoveStatsIntoProperAreaForIstudio__10CShellMenuFv",
+      "address": "0x800de334",
+      "size": 236,
+      "binding": 1
+    },
     {
       "name": "GetSKUMode__10CShellMenuFv",
       "address": "0x800de420",
@@ -97,6 +103,8 @@
   "externals": {
     "SetupButtonsForMultiplayerGame__11CDualConfigFv": "0x800f77ac",
     "g_ControllerConfig": "0x803142bc",
+    "memcpy": "0x800094f8",
+    "memset": "0x80009410",
     "strcpy": "0x80140040",
     "strstr": "0x8013fdb4"
   },

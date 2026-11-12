@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 147096, "differs": 10144, "exact": 4472, "verified": 1243844},
+ "function_bytes_by_status": {"consistent": 146860, "differs": 10144, "exact": 4472, "verified": 1244080},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2851,7 +2851,7 @@
  [2148392824, 692, "PauseInit__5PauseFv", "verified", "src/game/Pause.cpp"],
  [2148393516, 184, "__dt__5PauseFv", "verified", "src/game/Pause.cpp"],
  [2148393700, 80, "__ct__5PauseFv", "verified", "src/game/Pause.cpp"],
- [2148393780, 236, "MoveStatsIntoProperAreaForIstudio__10CShellMenuFv", "consistent", "research/drafts/MoveStatsIntoProperAreaForIstudio.800de334.cpp"],
+ [2148393780, 236, "MoveStatsIntoProperAreaForIstudio__10CShellMenuFv", "verified", "src/game/ShellMenu_sku.cpp"],
  [2148394016, 8, "GetSKUMode__10CShellMenuFv", "verified", "src/game/ShellMenu_sku.cpp"],
  [2148394024, 132, "SetupAllPlayersButtonsForMultiplayerGame__10CShellMenuFv", "verified", "src/game/ShellMenu_sku.cpp"],
  [2148394156, 336, "PassMP_PrefHitLocationToIStudio__10CShellMenuFiPc", "verified", "src/game/ShellMenu_sku.cpp"],
