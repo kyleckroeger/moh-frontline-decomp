@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1240272,
+    "matching_code_bytes": 1242004,
     "total_executable_code_bytes": 1414572,
-    "percent": 87.67825179630304,
+    "percent": 87.80069165797146,
     "categories": {
-      "reconstructed_game": 999636,
+      "reconstructed_game": 1001368,
       "restored_library": 240636
     },
-    "matching_functions": 4879
+    "matching_functions": 4880
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -945,6 +945,7 @@
     "src/game/objcreate_createplayer.cpp": "a5f552e36a0182c3cafcd7865310e32a99a32605a61c6bdb5b6c61e52e2dc84d",
     "src/game/objcreate_destroy.cpp": "8398c89a1afae6ab4deb18269d385c9f784844708e928d7e7e76495da45b9aa6",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
+    "src/game/objcreate_german.cpp": "9df2b05a02af0105a6bcfbea3681e9373a4891cc1ce9fb87d7aab86b82af3dc3",
     "src/game/objcreate_nonvis.cpp": "d464acfcbaa4440e22b73f03d357ac011aa22f17e16494ee9df809026f168004",
     "src/game/objcreate_playerscript.cpp": "d3681c9f3eeba80156a23c349866d5c41172f659a275c80c02ca7cff786e77fa",
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
@@ -2454,6 +2455,7 @@
     "config/GMFE69/objcreate_createplayer.json": "1921e7de09b5cc146cc52d4fff1f7800c84e36462b3b915b05b037bf91bb4901",
     "config/GMFE69/objcreate_destroy.json": "c902e63b2eded191888ca82d6d3f76f8d703627ced0902a291e6dd4ba7c8d773",
     "config/GMFE69/objcreate_dump.json": "7d5b8f37126976784d28facfab6738be8b14e79d2b2aad0f8ab51bf4a24377df",
+    "config/GMFE69/objcreate_german.json": "194f99b21a742791cb3f1256a2d7e89b86ae3ab39e95ebdfc5b3ab717423202f",
     "config/GMFE69/objcreate_nonvis.json": "ce2b2b3338fbd7448af238406eea6bf162cc73a176a1806c1cc4b89ebd37effe",
     "config/GMFE69/objcreate_playerscript.json": "7f7c40f0d50a1ea691f3c15e5d6009c2a8c4179b9833d111f26fdcc64a606710",
     "config/GMFE69/objcreate_setscript_anim.json": "f63df65d6d1e6d00dda55458818e6dcd053a479d2aba7f6c53aa4835938280d5",
@@ -2548,7 +2550,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "9ca81b941b88b39daf1e7086ed298d98beef286a453986b58e225b2e8ad58220",
+    "config/GMFE69/project.json": "414a6dd7780ac20861628ac147e8d0c7d1ba10ef86c729af21e1c2b5586f971b",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -54010,6 +54012,45 @@
       "discarded_functions": [],
       "object_sha256": "70b3bdf54d7bd89a50e26c1a298a65bec31044f0b23a534b2587123f7c64264f",
       "linked_sha256": "a525753796983519f5240fc04f8aa21391385c6b46eccc1e0dfd5cde370c8c7f"
+    },
+    {
+      "id": "objcreate_german",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1732,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "on",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "a8ee76139fc9b02675480ae4bc28aeddac04603567f3b6fd1ad0d2ede1edd034",
+      "linked_sha256": "5f0452564e519127c3024d9728adf884dfe31db2187c1175969a503179c0257f"
     }
   ],
   "code_map": {
@@ -54149,13 +54190,6 @@
             "size": 3416,
             "kind": "function",
             "name": "CreateRootHierObject__FP20TriggerObject_structi",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x8003f1ec",
-            "size": 1732,
-            "kind": "function",
-            "name": "CreateGerman__FP20TriggerObject_structib",
             "evidence": "exception-index"
           },
           {

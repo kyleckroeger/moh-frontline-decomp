@@ -1249,7 +1249,8 @@
     "bsbifunc_promptinteger.json",
     "compartment_init.json",
     "weaponfactory_create.json",
-    "objcreate_collvol.json"
+    "objcreate_collvol.json",
+    "objcreate_german.json"
   ],
   "progress": {
     "code_bytes": 1414572,

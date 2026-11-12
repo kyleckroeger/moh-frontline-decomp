@@ -905,6 +905,7 @@ the notes are views inferred from the code unless the source says otherwise.
 | `compartment_init.cpp` (fragment of `compartment.cpp`) | 1 | 2,628 | — | `0x800761c8`: Compartment.cpp: fixes up a loaded compartment and creates the file's globals, as partial source. Loaded files store offsets, which offsetPtr turns into pointers. |
 | `weaponfactory_create.cpp` (fragment of `weaponfactory.cpp`) | 1 | 520 | — | `0x800d6cf4`: CWeaponFactory::CreateWeaponByCRC looks the weapon's properties up by CRC (falling back to the first record for a non-zero CRC that has none, returning no weapon for CRC 0), takes a weapon from the free list onto the active list and initialises it. The lookup is GetWeaponPropertiesByCRC inlined: its out-of-line copy follows in the original (weaponfactory_props.cpp places it). |
 | `objcreate_collvol.cpp` (fragment of `objcreate.cpp`) | 1 | 1,236 | — | `0x8003ed10`: CreateCollisionVolume. A destructable script object is taken from the object allocator and linked at the head of the box list, and a collision-volume scene node from the mechanic allocator is placed at the trigger core's rotation and position. |
+| `objcreate_german.cpp` (fragment of `objcreate.cpp`) | 1 | 1,732 | — | `0x8003f1ec`: CreateGerman. At the soldier limit the trigger is queued (when asked) in the 15-entry German creation queue, dropping the newest entry and counting lost guys when the queue wraps onto its head, and nothing is created. |
 
 ## Endian conversions
 
