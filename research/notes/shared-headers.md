@@ -39,8 +39,11 @@ Result: 148 units with their own view. **53 kept** (moved in the landing commit)
 - `hierobject_tree`: has its own CVector3 view.
 - `animmorph`, `animskinned`, `dmesh` (lost, "Stripped object is not one compiler object"):
   the header's inline functions shift the compiler's anonymous label numbers (@18 -> @38),
-  and the unit config names its stripped extab objects by number. Recoverable by renaming
-  `stripped_objects` in their configs; not done (config, not view).
+  and the unit config names its stripped extab objects by number. **Moved 2026-11-12 (hdr2):**
+  their `stripped_objects` renamed to the header compile's labels (animmorph and animskinned
+  @18/@19 -> @38/@39, dmesh @281/@282 -> @291/@292), each confirmed the same object by its
+  relocations (the extabindex entry points at the same discarded destructor, __dt__9CAnimatedFv
+  or __dt__10CRenderBinFv, and at the renamed extab entry); `include` added to include_dirs.
 - `player_ctor` (lost, .text differs): its CPlayerObject view places matrices at 8-aligned
   offsets (m_matrix518 ...); with the 16-aligned header they move by 8. Without the
   alignment player_ctor keeps its match but 13 others lose theirs (the original realigns

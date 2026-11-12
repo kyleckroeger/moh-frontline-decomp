@@ -35,19 +35,8 @@
 class CDmaTag;
 class CDmaPacket;
 
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
-    CMatrix& operator=(const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class CRenderBinData {
 public:

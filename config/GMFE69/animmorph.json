@@ -31,7 +31,9 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include"
+  ],
   "strip_unused": true,
   "source_root": "scratch/game",
   "sections": [
@@ -55,7 +57,7 @@
       "linked_offset": 0,
       "linked_size": 24,
       "stripped_objects": [
-        "@18"
+        "@38"
       ]
     },
     {
@@ -66,7 +68,7 @@
       "linked_offset": 0,
       "linked_size": 36,
       "stripped_objects": [
-        "@19"
+        "@39"
       ]
     },
     {

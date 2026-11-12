@@ -602,7 +602,7 @@
     "src/game/animdb.cpp": "4efceebf62fc3c040ccb7b0fb88c250a727ee135d842cc2972f146147153983f",
     "src/game/animemot.cpp": "26367c6dd4abc4b102dd8af8131d956dc6a5f0a426a94f781e30d2eee554dcd4",
     "src/game/animintf.cpp": "3bfb0a6cf6c16e6cd435790192f25c39eaacde6ae99c98303e7f655bbbc0c65c",
-    "src/game/animmorph.cpp": "def84f4bdd60ed576a7b99ba68c7b82c234b29c015a6a1cc0b783f78db0343fe",
+    "src/game/animmorph.cpp": "b404ba0b0114dea979f508c76f307d34d14a59e7641aa6b241146db5ae866570",
     "src/game/animmorph_as.cpp": "34d671d6f3e3c918326fa77ebb86c044ea15692bc23caddaa2401883f5952138",
     "src/game/animmorph_dtor.cpp": "6521fc2f47cbe35266b08dfeeae7573a720f8a6f74438c8d3b20dc0d5f5cda04",
     "src/game/animmorph_weight.cpp": "00404a1d8e58eb98d991ce4ac15e944319d67294248c54d07fcdc80e77474265",
@@ -615,7 +615,7 @@
     "src/game/animplayer_weak.cpp": "aaf6f62fa5138013edb00bd7b8b905b1fe4a56d45a4015f45875c543cec5c04b",
     "src/game/animseq.cpp": "f075b77f6b41363f0b79573233d34916c09577707c4eb82895fe222ed6fc7998",
     "src/game/animseq_start.cpp": "c0268daba0ef6ab296bb451e0217254e349f9f1a9f6eaaaa52dc5a1a7dac0faf",
-    "src/game/animskinned.cpp": "e75e1b1739d923674072b8aa07d54237f44b43d7cbc7f3e136d5a7a54a083ad8",
+    "src/game/animskinned.cpp": "1641713f1226f38ba48efcab9191190fd4c85a4832c42a56815a0aa82d9bdade",
     "src/game/animskinned_as.cpp": "d4d029cabcff9000d25d64356a3ad77545ba4e8687fbc3f31a0b126095cdeadb",
     "src/game/animskinned_dtor.cpp": "f8051dbb14c2ada9078b6b9638b6e2dbd2e79720c568cfd083f6d7214d2413aa",
     "src/game/animskinned_skeleton.cpp": "a7897db451a17f6db5cf5b95b97aac21c44a2f06d827a1f0b23f5d0b3d9c5f27",
@@ -850,7 +850,7 @@
     "src/game/devicemgr.cpp": "7b3153cdd86bbdb41db94ee960dc7e388af5996235f5a3982151b7abd341e82d",
     "src/game/dmcluster.cpp": "4f280e578fe38b6f374900c220a13f3a210c785e120450c11cfee0f4b4044691",
     "src/game/dmcluster_init.cpp": "d84d1826a9f509e0e4667935fc01c0459c965871d29fc7c6747771d0f59d1c81",
-    "src/game/dmesh.cpp": "efabe4b1473ec64543d2bd1f5504d2513b96eac9c453fe1ad8733a1d85d67111",
+    "src/game/dmesh.cpp": "e8a53aa4b7c987faecd8ffbabc73a74583f05eb1ca345d9803b8a7efec6c0046",
     "src/game/dmesh_bins.cpp": "7fbbef7254a61a8e02ff62e9fe1d52f2ab5ceb49a6790d85dcb534e3e2190d55",
     "src/game/dmesh_cdmrenderbin_dtor.cpp": "f7166e01710b5976a04c82f69bedf1d0abe9770f52d41a9ae0cc94e87b446af7",
     "src/game/dmesh_cremapbin_ctor.cpp": "b4a5cf6ea02cdd1539386f9c7d6ad8b22b013a25f3b89cdd3d711b4312395c40",
@@ -2007,7 +2007,7 @@
     "config/GMFE69/animdb.json": "144058a2faa5ca6e23c0083279d94f085d536c0982b14d820d0e8984aca5f620",
     "config/GMFE69/animemot.json": "0643cc64e4ff857f622ee71c1d42e554d654a323102d5106457970183b9c0b13",
     "config/GMFE69/animintf.json": "3684c8b31d432313aa9478bc6079a7291dff2a8c7292cc3862733294aff48317",
-    "config/GMFE69/animmorph.json": "fde4d4e52d237e161f26b1ce600e179cae840da627629f27036833be76bacc3b",
+    "config/GMFE69/animmorph.json": "ed69b3773181988ec92c698411c459bb009db0e355ac4fbaed5f5bb9a50ad1fb",
     "config/GMFE69/animmorph_as.json": "24a859903323347f1a0174446ef22652fe986515f521e5e912db773e582d174a",
     "config/GMFE69/animmorph_dtor.json": "4c07a2b66746cfdb466d7c0a56247186ac3080cb983d3621e828a21662ecac59",
     "config/GMFE69/animmorph_weight.json": "266313fd3693dcf7f29939f806d755252562157701e925dfc1f7326a2261a105",
@@ -2020,7 +2020,7 @@
     "config/GMFE69/animplayer_weak.json": "4b25174786764debb7f74f70d6eee859c60d7bd8663635c65b5516cfbb9675bc",
     "config/GMFE69/animseq.json": "33250c8d51f71f609ece11fefa319a2dd2f67f4e83b7b7dd9b91422286c299e9",
     "config/GMFE69/animseq_start.json": "f2709157c81c5fbf6a43978c92ae5e3e1861785612da728c7c1cd0a96b58042a",
-    "config/GMFE69/animskinned.json": "5d83f4f4dc599102760733b67df7133fe658a8e44e0a30db4229a1f9a4bfef9f",
+    "config/GMFE69/animskinned.json": "20f2464cd803e532a0896985a96302cf649b3eb97b290f74e28bd9a609b084bc",
     "config/GMFE69/animskinned_as.json": "f6ce495bbd64d03867150c390affd1eaf0463150052eeca33471cd36ba466cd0",
     "config/GMFE69/animskinned_dtor.json": "cfbd4b49c98a64c05b9eaffa85a1b08d8fa326d3a85e0035c594ed661ef8d987",
     "config/GMFE69/animskinned_skeleton.json": "50fa4ecdb6985401ef86f806476c1d28ad0e9843577183c0064528629642a61c",
@@ -2272,7 +2272,7 @@
     "config/GMFE69/dispatch.json": "9785b3256f8baf02b4d894ff082a1103522e7730d2bea7f05c504b418b5a462f",
     "config/GMFE69/dmcluster.json": "3648fb7ca9799a31a728d671b1cf9015cb3248440ad4053e486ec0319ce0fbd9",
     "config/GMFE69/dmcluster_init.json": "a929a8aa37b58d6a7d0e46955d834ee33dfcede0594cb213e2880e62d7be40b3",
-    "config/GMFE69/dmesh.json": "439c4ae6d9dcb01a173efc59ce4d718e34bbd61166cb56e0cef4e5554544a520",
+    "config/GMFE69/dmesh.json": "f3d28d812af95d54aabb0dae561f6e77203c2768c4f85ef0c0d1c8ea99380a71",
     "config/GMFE69/dmesh_bins.json": "bed9ef710a20bde94fd3d05e7a5bd4bb437c22d839da779c49eed55ee99bc5b1",
     "config/GMFE69/dmesh_cdmrenderbin_dtor.json": "9268c39adea76876007405b66193ec625771adcbaf7ec550e54206a3828962dc",
     "config/GMFE69/dmesh_cremapbin_ctor.json": "da7030351f976874f2061ceac394e9b76af32c494408a461b39a2eb845419e6b",
@@ -38536,8 +38536,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "391685528b42b2cc4d8275da5f478a57f94b24e0bb0c747c94c2e440f0f7b22f",
-      "linked_sha256": "7b5cb15d73398a697d999a628a50df567790b29bfd8ae56bdcb38f31b99fe6f2"
+      "object_sha256": "6888b29324bac269c81eb2955a7eb7555aab3bad613285861d867b42fc0940a3",
+      "linked_sha256": "ca6958180d0848755018d238aacce6e5bf486f3d481cf0310c4db14224e0c45d"
     },
     {
       "id": "light",
@@ -39043,8 +39043,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "3fdc8091c84af1fd7d27126dc07f9b2c64068316418a13681febb22e61f318c7",
-      "linked_sha256": "bc670c00690855ecf887a16e2596d3bfd04d880b021020f697932d2ecd6de0af"
+      "object_sha256": "e1e2bcb6422a432e33307cafa95ec7298afe36ac0d220509e14bcb720a4dcdac",
+      "linked_sha256": "4abe46b46c322cc75628b1888e3e1620ce039af34d80f674d09cda68cb57e0f3"
     },
     {
       "id": "world_object",
@@ -39160,8 +39160,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a54b2b86e0235444ba882fcff85a3a59faff5b23ee8c4ba2a187d146d8269724",
-      "linked_sha256": "5db6a6dbea7456252b50be5fa1e625ff4ef709d30ab65f625c42700432a961d1"
+      "object_sha256": "cd4315549dd5a6e904675219907cd1ddfd89e64e7f680112aecb86edb874110d",
+      "linked_sha256": "11fc79f8963b38bee988d23724dedfdee9dded292c87e4c89583044220fdd807"
     },
     {
       "id": "ObstacleAvoidance",

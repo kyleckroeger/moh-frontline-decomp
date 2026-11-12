@@ -11,18 +11,8 @@
 // classes declare UpdateAnimation (defined elsewhere) first so that their
 // tables stay elsewhere; CAnimated's inline destructor (exception clean-up)
 // is a weak duplicate.
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class CVector4 {
 public:

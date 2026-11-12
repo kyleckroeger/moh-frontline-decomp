@@ -26,10 +26,10 @@ anim_obj_tm	scratch/try/anim_obj_tm/src/anim_obj_tm.cpp	kept
 anim_obj_update	scratch/try/anim_obj_update/src/anim_obj_update.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_update.cpp # -----------------------------------
 animated_draw	scratch/try/animated_draw/src/animated_draw.cpp	kept	
 animated_volume_line	scratch/try/animated_volume_line/src/animated_volume_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\animated_volume_line.cpp # ----------------------------------------
-animmorph	scratch/try/animmorph/src/animmorph.cpp	lost	Stripped object is not one compiler object: @18
+animmorph	scratch/try/animmorph/src/animmorph.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
 animplayer	scratch/try/animplayer/src/animplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\animplayer.cpp # ------------------------------
 animplayer_draw	scratch/try/animplayer_draw/src/animplayer_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\animplayer_draw.cpp # -----------------------------------
-animskinned	scratch/try/animskinned/src/animskinned.cpp	lost	Stripped object is not one compiler object: @18
+animskinned	scratch/try/animskinned/src/animskinned.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
 attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
 attachobject_update	scratch/try/attachobject_update/src/attachobject_update.cpp	kept	
 box_create	scratch/try/box_create/src/box_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_create.cpp # ------------------------------
@@ -57,7 +57,7 @@ decal	scratch/try/decal/src/decal.cpp	kept
 decal_reset	scratch/try/decal_reset/src/decal_reset.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\decal_reset.cpp # -------------------------------
 dmcluster	scratch/try/dmcluster/src/dmcluster.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmcluster.cpp # -----------------------------
 dmcluster_init	scratch/try/dmcluster_init/src/dmcluster_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmcluster_init.cpp # ----------------------------------
-dmesh	scratch/try/dmesh/src/dmesh.cpp	lost	Stripped object is not one compiler object: @281
+dmesh	scratch/try/dmesh/src/dmesh.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
 dmesh_partbin_render	scratch/try/dmesh_partbin_render/src/dmesh_partbin_render.cpp	kept	
 dmrender	scratch/try/dmrender/src/dmrender.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmrender.cpp # ----------------------------
 draw_context	scratch/try/draw_context/src/draw_context.cpp	kept	
