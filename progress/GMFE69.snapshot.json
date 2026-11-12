@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1249220,
+    "matching_code_bytes": 1250556,
     "total_executable_code_bytes": 1414572,
-    "percent": 88.31081061974929,
+    "percent": 88.4052561481494,
     "categories": {
-      "reconstructed_game": 1008584,
+      "reconstructed_game": 1009920,
       "restored_library": 240636
     },
-    "matching_functions": 4884
+    "matching_functions": 4885
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1094,7 +1094,7 @@
     "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
     "src/game/skeleton.cpp": "9b1683e21a438e638340e27133e7171efe815a6bfa063b3675ba18e6ea224294",
     "src/game/skybox.cpp": "c81a7fa9fcb0b72f605b4e35f443be4cc71e7ebc449a0eaec87efa565e99bc85",
-    "src/game/sound.cpp": "f12cabded19be7785348b5868038d3bfb5f51b2c206a098430e6dd6602073d65",
+    "src/game/sound.cpp": "e51d5b4c4abf17fd75aa9ae7045881ffe7ca143f992be8012d47b3631440605d",
     "src/game/soundschedule.cpp": "c694f97d087bfc7f21c516d5e3ccca496446691cf3b37b2f183e5926872a483d",
     "src/game/soundschedule_sound.cpp": "77d44a194f06d623947e41eb16e760eb45a211814c6fd93a29cf20a6759d738d",
     "src/game/soundtable.cpp": "999b27bcde4106fdba28d8fd6a8b9b6b2b609e615746b1d1ae2216d3fa33a481",
@@ -2756,7 +2756,7 @@
     "config/GMFE69/snddrv_frame.json": "ca68bf3a1a886ede2dc53bdbf03484529bc7c049ae2d52d4446a2325d59bbb3f",
     "config/GMFE69/snddrv_thread.json": "a8d57cc26eb46c92964085da21a0239f9b09d3847537e6b1aca3070dd25fb65f",
     "config/GMFE69/snddrv_voice.json": "4d15ca21e2f371c0931f4ee838372bb63c3b1966319b33487018bcada9e13389",
-    "config/GMFE69/sound.json": "c0820bcc277cb606bdb02bae88b759d6f8c4aabd706a941af17d29a42950e4e5",
+    "config/GMFE69/sound.json": "adc36912c2b3dc8a5e32cfe214a15e299aba10ccb9d11e25074c310227a007f8",
     "config/GMFE69/soundschedule.json": "489a371c48f8b56e91c18aebcfc9f294ca9aff193b830a94cd2fffa5d81b3926",
     "config/GMFE69/soundschedule_sound.json": "29cecac25cc05627eadb74e88301b62edbbf8f9fac00334e9927f4d25df4e319",
     "config/GMFE69/soundtable.json": "f4697fcad0ee8bd466b2f8c9a8d08ae80a80bac0c08853d62f4b4f17f49173e8",
@@ -39394,8 +39394,8 @@
     {
       "id": "sound",
       "category": "reconstructed_game",
-      "functions": 61,
-      "code_bytes": 15780,
+      "functions": 62,
+      "code_bytes": 17116,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -39434,8 +39434,8 @@
         "UnloadAEMSModules__Fv",
         "UnloadMusic__Fv"
       ],
-      "object_sha256": "33852598db32aeb4ad5fac4f770ca1a40a43bd783e6d8227c16d151b44003d15",
-      "linked_sha256": "66df0345ffc03361e840b311c263901b342e6a5e267ac7bd6ef3ad310d99bc84"
+      "object_sha256": "8fb29bb3e8e4b017ac42e1adc979c0cd5c1cbb3ea5716f46873c6a5d4f22976d",
+      "linked_sha256": "9ce6c04872cd7ffb8414caecd1bccfb9d6800844626e1b468797661c13f04e79"
     },
     {
       "id": "player_weapon_object",
@@ -55084,20 +55084,6 @@
             "size": 860,
             "kind": "function",
             "name": "ResetShell__10CShellMenuFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/sound.cpp [symbol evidence]",
-        "file_record": 150,
-        "file_name": "sound.cpp",
-        "ranges": [
-          {
-            "address": "0x800e9ba8",
-            "size": 1336,
-            "kind": "function",
-            "name": "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject",
             "evidence": "exception-index"
           }
         ]

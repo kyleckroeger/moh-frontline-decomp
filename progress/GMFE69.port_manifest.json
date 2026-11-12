@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1252,
- "function_bytes_by_status": {"consistent": 150564, "differs": 10144, "exact": 4472, "verified": 1240376},
+ "function_bytes_by_status": {"consistent": 149228, "differs": 10144, "exact": 4472, "verified": 1241712},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -3006,7 +3006,7 @@
  [2148440652, 108, "PATHX_milliseconds", "verified", "src/ea/pathx_overhead.c"],
  [2148440760, 52, "PATHX_isynctask__Fii", "verified", "src/ea/pathxSND.c"],
  [2148440812, 188, "PATHX_ifade__Fiiic", "verified", "src/ea/pathxSND.c"],
- [2148441000, 1336, "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject", "consistent", "research/drafts/PlayScriptedSound.800e9ba8.cpp"],
+ [2148441000, 1336, "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject", "verified", "src/game/sound.cpp"],
  [2148442336, 80, "msg__FPce", "verified", "src/game/sound.cpp"],
  [2148442416, 80, "err__FPce", "verified", "src/game/sound.cpp"],
  [2148442496, 868, "_userdata_client__FP17SNDUSERDATACBINFO", "verified", "src/game/sound.cpp"],

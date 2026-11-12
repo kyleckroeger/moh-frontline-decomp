@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ea0e0",
-      "size": 15780,
+      "address": "0x800e9ba8",
+      "size": 17116,
       "type": 1
     },
     {
@@ -51,34 +51,34 @@
     },
     {
       "name": "extab",
-      "address": "0x8000f350",
-      "size": 464,
+      "address": "0x8000f348",
+      "size": 472,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 512,
+      "linked_size": 520,
       "stripped_objects": [
-        "@562",
-        "@573",
-        "@738",
-        "@1200",
-        "@1278",
-        "@1287"
+        "@673",
+        "@681",
+        "@846",
+        "@1308",
+        "@1386",
+        "@1395"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x80015e0c",
-      "size": 672,
+      "address": "0x80015e00",
+      "size": 684,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 744,
+      "linked_size": 756,
       "stripped_objects": [
-        "@563",
-        "@574",
-        "@739",
-        "@1201",
-        "@1279",
-        "@1288"
+        "@674",
+        "@682",
+        "@847",
+        "@1309",
+        "@1387",
+        "@1396"
       ]
     },
     {
@@ -150,6 +150,12 @@
       "address": "0x800ede28",
       "size": 92,
       "binding": 0
+    },
+    {
+      "name": "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject",
+      "address": "0x800e9ba8",
+      "size": 1336,
+      "binding": 1
     },
     {
       "name": "EndianSwap__FR23SOUND_MULTISUBTITLEDATA",
@@ -477,6 +483,7 @@
     }
   ],
   "externals": {
+    "AddSound__13SoundScheduleFQ213SoundSchedule24ESoundScheduleObjectTypeP10ISceneNodeP8CVector3PviiiiiP8BSObject12EBSEventEnumfbi": "0x80047458",
     "DWI_alloc__FPCcii": "0x8001c974",
     "DWI_allocalign__FPCciii": "0x8001c8ec",
     "DebugMsg__FPCce": "0x80018c88",
@@ -490,6 +497,7 @@
     "InitClass__7CMatrixFv": "0x80090b78",
     "Init__11CSoundTableFii": "0x800ee164",
     "MEM_free": "0x8014f83c",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
     "PATH_addmapfile": "0x8010cbbc",
     "PATH_control": "0x8010c098",
     "PATH_createtrack": "0x8010cb8c",
@@ -502,7 +510,6 @@
     "PATH_pause": "0x8010b1b8",
     "PATH_stop": "0x8010b078",
     "PATH_volume": "0x8010aec4",
-    "PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject": "0x800e9ba8",
     "SNDAEMS_addmodulebank": "0x8034e680",
     "SNDAEMS_addsystem": "0x8034e660",
     "SNDAEMS_asyncloadmodulebank": "0x8034e68c",
@@ -568,11 +575,13 @@
     "g_AEMSOneShotMemOffset": "0x8034eccc",
     "g_AEMSOneShotStreamBuf": "0x8025b4d0",
     "g_Shell": "0x80195090",
+    "g_SoundSchedule": "0x8034e784",
     "g_ambientSourceOnPlayer": "0x8034e2ec",
     "g_bInMultiplayerMode": "0x8034eca5",
     "g_hAEMSAmbientTrack": "0x8034e2f0",
     "g_musicVolume": "0x8034e2e8",
     "g_objSound": "0x8034ecbc",
+    "g_pGenericSoundMemory": "0x80197e94",
     "g_scene": "0x8019484c",
     "g_screen": "0x80196ac0",
     "g_sfxVolume": "0x8034e2e4",
@@ -639,6 +648,7 @@
     "gMusicProjectID",
     "g_AEMSOneShotLoadState",
     "g_AEMSOneShotMemOffset",
+    "g_SoundSchedule",
     "g_ambientSourceOnPlayer",
     "g_bInMultiplayerMode",
     "g_hAEMSAmbientTrack",
@@ -657,6 +667,12 @@
     {
       "section": ".sdata2",
       "offset": 0,
+      "size": 4,
+      "address": "0x80350fc8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
       "size": 4,
       "address": "0x80350fcc"
     },

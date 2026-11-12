@@ -190,6 +190,7 @@ public:
 } __attribute__((aligned(16)));
 
 struct BSObject;
+class CSoldierObject;
 
 class ISceneNode {
 public:
@@ -215,7 +216,20 @@ public:
     virtual void vf54();
     virtual void vf58();
     virtual void vf5c();
-    virtual void* GetScriptObject() const;
+    virtual BSObject* GetScriptObject() const;
+    virtual void vf64();
+    virtual void vf68();
+    virtual void vf6c();
+    virtual void vf70();
+    virtual void vf74();
+    virtual void vf78();
+    virtual void vf7c();
+    virtual void vf80();
+    virtual void vf84();
+    virtual void vf88();
+    virtual void vf8c();
+    virtual void vf90();
+    virtual CSoldierObject* AsSoldierObject();
 };
 
 class CPlayerObject : public ISceneNode {
@@ -249,19 +263,6 @@ public:
 
 class CBullet : public ISceneNode {
 public:
-    virtual void vf64();
-    virtual void vf68();
-    virtual void vf6c();
-    virtual void vf70();
-    virtual void vf74();
-    virtual void vf78();
-    virtual void vf7c();
-    virtual void vf80();
-    virtual void vf84();
-    virtual void vf88();
-    virtual void vf8c();
-    virtual void vf90();
-    virtual void vf94();
     virtual void vf98();
     virtual void vf9c();
     virtual void vfa0();
@@ -310,8 +311,21 @@ public:
 
 class CSoundTable {
 public:
+    /* inferred: a sound record's flags and values */
     struct SSoundParms {
-        unsigned char unknown00[16];
+        signed char m_volumeMin;
+        signed char m_volumeMax;
+        signed char m_type14 : 1;
+        signed char m_flag40 : 1;
+        signed char m_scheduled : 1;
+        signed char m_positioned : 1;
+        signed char m_kind : 4;
+        short m_pitchMin;
+        short m_pitchMax;
+        short m_value2;
+        short m_scale;
+        short m_value4;
+        unsigned char unknown0e[2];
     };
 
     bool GetSoundEvent(int, SSoundParms*) const;
@@ -328,6 +342,19 @@ public:
 };
 
 extern CSoldierObject* g_objSound;
+extern unsigned long g_pGenericSoundMemory[20];
+long long MathFunRandomI64(long long, long long);
+
+enum EBSEventEnum {};
+
+class SoundSchedule {
+public:
+    enum ESoundScheduleObjectType {};
+    int AddSound(ESoundScheduleObjectType, ISceneNode*, CVector3*, void*, int, int, int, int, int, BSObject*,
+                 EBSEventEnum, float, bool, int);
+};
+
+extern SoundSchedule g_SoundSchedule;
 
 /* inferred: the shell's subtitle flag (+536) and multiplayer music track (+5176) */
 class CShellMenu {
@@ -430,7 +457,7 @@ public:
 
 void EndianSwap(SOUND_MULTISUBTITLEDATA&);
 void DisplaySubtitle(const char*, float, CColor);
-void PlayScriptedSound(ISceneNode*, CVector3, const CSoundTable::SSoundParms&, int, BSObject*);
+int PlayScriptedSound(ISceneNode*, CVector3, const CSoundTable::SSoundParms&, int, BSObject*);
 void AEMS_Update();
 void* AEMSOneShotMalloc(int);
 static void aems_Init(char*, char*, char*, char*, bool);
@@ -1372,4 +1399,80 @@ static void err(char*, ...) {
 }
 
 static void msg(char*, ...) {
+}
+
+/* Plays a sound described by a sound-table record: for a positioned sound the
+   listener is the closest player in multiplayer (else the first player; the
+   origin when there is none), the distance is the record's volume scale / 256
+   times 256 per unit, at most 32767, and the azimuth comes from GetAzimuth.
+   A soldier node becomes the current sound object. The generic event memory
+   is filled (event 7, or 14 for the type flag) and begun; a scheduled sound is
+   then added to the sound schedule for the node (or the given script object).
+   The record view and the event and schedule arguments' meanings are
+   inferred. First in .text (deferred inlining emits the file in reverse). */
+int PlayScriptedSound(ISceneNode* node, CVector3 position, const CSoundTable::SSoundParms& parms, int event,
+                      BSObject* script) {
+    float scale = parms.m_scale / 256.0f;
+    int type;
+    int distance;
+    int azimuth;
+    CPlayerObject* player;
+    CSoldierObject* soldier;
+    int pitch;
+    int* data;
+    int handle;
+    distance = 0;
+    azimuth = 0;
+    if (parms.m_positioned) {
+        if (g_bInMultiplayerMode)
+            player = g_scene.FindClosestPlayer(position);
+        else
+            player = g_scene.GetPlayer(0);
+        CVector3 listener;
+        if (player)
+            player->GetPosition(listener);
+        else
+            listener.d.v[0] = listener.d.v[1] = listener.d.v[2] = 0.0f;
+        float dx = position.d.v[0] - listener.d.v[0];
+        float dy = position.d.v[1] - listener.d.v[1];
+        float dz = position.d.v[2] - listener.d.v[2];
+        distance = scale * (256.0f * sqrtf(dx * dx + dy * dy + dz * dz));
+        if (distance > 32767)
+            distance = 32767;
+        azimuth = GetAzimuth(position, player);
+    }
+    soldier = node ? node->AsSoldierObject() : 0;
+    if (soldier)
+        g_objSound = soldier;
+    type = 7;
+    if (parms.m_type14)
+        type = 14;
+    pitch = MathFunRandomI64(parms.m_pitchMin, parms.m_pitchMax);
+    data = (int*)g_pGenericSoundMemory;
+    data[0] = type;
+    data[1] = parms.m_kind;
+    data[2] = MathFunRandomI64(parms.m_volumeMin, parms.m_volumeMax);
+    data[3] = parms.m_value4 == 0 ? pitch : 0;
+    data[4] = azimuth;
+    data[5] = distance;
+    data[6] = 0;
+    data[7] = 24999;
+    data[8] = 0;
+    data[9] = parms.m_value2;
+    handle = BeginEvent(data);
+    if (parms.m_scheduled) {
+        data[3] = pitch;
+        BSObject* object;
+        int kind;
+        if (node) {
+            object = node->GetScriptObject();
+            kind = 0;
+        } else {
+            object = script;
+            kind = 1;
+        }
+        g_SoundSchedule.AddSound((SoundSchedule::ESoundScheduleObjectType)kind, node, &position, data, 40, handle, 4,
+                                 5, -1, object, (EBSEventEnum)event, scale, data[1] == 1, parms.m_value4);
+    }
+    return handle;
 }
