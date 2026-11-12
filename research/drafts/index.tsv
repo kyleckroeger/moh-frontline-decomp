@@ -61,7 +61,7 @@ real_lines	size	address	function	compile_settings_from	draft
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
 101	2948	8007fbe8	UpdateBoundingBox__15CParticleSystemFv	config/GMFE69/particlesystem_visible.json	research/drafts/UpdateBoundingBox.8007fbe8.cpp
-104	572	8001cca8	TLT_LoadFromRepository__FPCcPiPb	config/GMFE69/system.json	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
+53	572	8001cca8	TLT_LoadFromRepository__FPCcPiPb	config/GMFE69/system.json	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
 105	456	80021220	BIFunc_MechFollowPath__FPPiPv	config/GMFE69/bsbifunc_vibration.json	research/drafts/BIFunc_MechFollowPath.80021220.cpp
 109	1016	800f4e98	_matrix_rot_yzx__FR7CMatrixlll	config/GMFE69/dmrender.json	research/drafts/_matrix_rot_yzx.800f4e98.cpp
 135	1232	800e752c	ShellInit__10CShellMenuFUl	config/GMFE69/ShellMenu_playtime.json	research/drafts/ShellInit.800e752c.cpp
@@ -71,7 +71,7 @@ real_lines	size	address	function	compile_settings_from	draft
 185	1740	8006862c	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	config/GMFE69/animtran_quickscan.json	research/drafts/_AnimTranDoTransition.8006862c.cpp
 192	800	800d8bac	SweepAllExtents__6CSceneFv	config/GMFE69/scene_findif.json	research/drafts/SweepAllExtents.800d8bac.cpp
 195	2296	8010ee50	PATHI_eventstart__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_eventstart.8010ee50.cpp
-195	784	8005c6b8	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	config/GMFE69/AIFilter_visit.json	research/drafts/GetClosestWaypointByType.8005c6b8.cpp
+94	784	8005c6b8	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	config/GMFE69/AIFilter_visit.json	research/drafts/GetClosestWaypointByType.8005c6b8.cpp
 196	980	800f3578	PROFILE_UPDATE__Fv	config/GMFE69/debug_prof_profilebin_ctor.json	research/drafts/PROFILE_UPDATE.800f3578.cpp
 207	892	80057b30	BIFunc_AddBuddy__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_AddBuddy.80057b30.cpp
 252	1260	800f712c	DMMorphBlendDisplayLists__FP16DMRenderObject_T	config/GMFE69/dmmorph_buffers.json	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp

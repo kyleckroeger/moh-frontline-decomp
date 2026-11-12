@@ -1,5 +1,6 @@
 class CAIFilterRealPosition {
 public:
+    float& operator[](int i) { return ((float*)this)[i]; }
     float x;
     float y;
     float z;
@@ -45,14 +46,16 @@ inline TriggerObject_struct* FindWaypoint(const _PropBSPLeaf* leaf, int& index, 
             return trigger;
     }
     if (index == leaf->triggerCount) {
+        TriggerObject_struct* found = 0;
         if (all) {
             for (TriggerObject_struct* trigger = g_pTriggerObjects; trigger < g_pTriggerObjects + g_pNumTriggers;
                  trigger++) {
                 if (trigger->core->type == 5 && trigger->core->crc == type)
                     return trigger;
             }
+            found = 0;
         }
-        return 0;
+        return found;
     }
     TriggerObject_struct* trigger = current;
     for (trigger++; trigger < g_pTriggerObjects + g_pNumTriggers; trigger++) {
@@ -78,13 +81,16 @@ TriggerObject_struct* CAIFilterGlobal::GetClosestWaypointByType(const _PropBSPLe
                                                                 const CAIFilterRealPosition& position,
                                                                 DWI_OBJECT_CRC_ENUM type, bool all,
                                                                 float distance) const {
-    int index = 0;
-    TriggerObject_struct* waypoint = FindWaypoint(leaf, index, 0, type, all);
+    int index = -1;
+    TriggerObject_struct* waypoint = NextWaypoint(leaf, index, 0, type, all);
     float nearest = distance;
     TriggerObject_struct* closest = 0;
     while (waypoint) {
-        CAIFilterRealPosition point = waypoint->core->position;
-        if (MathFunCloseToZero(point.z - position.z, 2.0f)) {
+        CAIFilterRealPosition point;
+        point.y = waypoint->core->position.y;
+        point.x = waypoint->core->position.x;
+        point.z = waypoint->core->position.z;
+        if (MathFunCloseToZero(point[2] - position.z, 2.0f)) {
             float dy = point.y - position.y;
             float dx = point.x - position.x;
             float squared = dx * dx + dy * dy;

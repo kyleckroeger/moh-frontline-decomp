@@ -12,25 +12,22 @@ public:
     iterator end() { return m_data + m_size; }
 
     iterator find(K key) {
-        if (m_count != 0) {
-            value_type* last = m_data + m_size;
-            value_type* p = m_data + (unsigned long)key % m_size;
-            while ((int)p->first != -1) {
-                if (p->first == key)
-                    return p;
-                if (++p == last)
-                    p = m_data;
-            }
-            return last;
+        if (m_count == 0)
+            return end();
+        value_type* p = m_data + (unsigned long)key % m_size;
+        while ((int)p->first != -1) {
+            if (p->first == key)
+                return p;
+            if (++p == m_data + m_size)
+                p = m_data;
         }
         return end();
     }
 
     void insert(K key, V value) {
-        value_type* last = m_data + m_size;
         value_type* p = m_data + (unsigned long)key % m_size;
         while ((int)p->first != -1) {
-            if (++p == last)
+            if (++p == m_data + m_size)
                 p = m_data;
         }
         p->first = key;
@@ -59,40 +56,71 @@ extern char* g_pLevelBigFile;
 // File-local in the original; declared extern so this fragment can refer to it.
 extern dwi::hash_map<char*, char*> g_Repository;
 
-char* TLT_LoadFromRepository(const char* name, int* size, bool* cached) {
-    const char* colon = strchr(name, ':');
-    const char* n;
-    if (!colon) {
-        n = name;
-    } else {
-        n = colon;
-        n++;
-        DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+inline char* LoadFromBig(char* big, const char* name, int* size) {
+    const char* q = strchr(name, '\\');
+    while (q) {
+        name = q + 1;
+        q = strchr(name, '\\');
     }
-    name = n;
-    char* big = g_pLevelBigFile;
-    const char* base = name;
-    for (const char* slash = strchr(name, '\\'); slash; slash = strchr(base, '\\'))
-        base = slash + 1;
-    int entry;
-    char* data;
-    if (big && BIG_locateentryz(big, base, 0, &entry, size))
-        data = BIG_locate(big, base);
+    int offset;
+    if (big) {
+        if (BIG_locateentryz(big, name, 0, &offset, size))
+            return BIG_locate(big, name);
+    }
+    return 0;
+}
+
+inline char* TLT_LoadFileNormal(const char* name, int* size, int flags) {
+    char path[256];
+    const char* file = strchr(name, ':');
+    if (file == 0)
+        file = name;
     else
-        data = 0;
-    if (!data) {
-        char path[260];
-        colon = strchr(name, ':');
-        if (colon)
-            name = colon + 1;
-        sprintf(path, "%s", name);
-        if (size)
-            *size = FILE_sizez(path);
-        data = FILE_loadz(path, 1024);
+        file = file + 1;
+    sprintf(path, "%s", file);
+    if (size)
+        *size = FILE_sizez(path);
+    return FILE_loadz(path, flags | 1024);
+}
+
+inline char* TLT_LoadFileFromLevelBigFile(const char* name, int* size) {
+    const char* p = strchr(name, ':');
+    {
+        const char* n = name;
+        if (!p) {
+            n = name;
+        } else {
+            n = p;
+            n++;
+            DebugMsg("WARNING: When loading from a big file, strip off the %s part.\nSince it's a DEBUG build, I'll do it for you\n", "");
+        }
+        name = n;
     }
+    char* file = LoadFromBig(g_pLevelBigFile, name, size);
+    if (!file)
+        file = TLT_LoadFileNormal(name, size, 0);
+    return file;
+}
+
+char* TLT_LoadFromRepository(const char* name, int* size, bool* cached) {
+    char* data = TLT_LoadFileFromLevelBigFile(name, size);
     *cached = false;
     if (data) {
-        *cached = g_Repository.find(data) != g_Repository.end();
+        dwi::hash_map<char*, char*>::iterator it;
+        if (g_Repository.m_count == 0) {
+            it = g_Repository.end();
+        } else {
+            it = g_Repository.m_data + (unsigned long)data % g_Repository.m_size;
+            while ((int)it->first != -1) {
+                if (it->first == data)
+                    goto found;
+                if (++it == g_Repository.m_data + g_Repository.m_size)
+                    it = g_Repository.m_data;
+            }
+            it = g_Repository.end();
+        }
+    found:
+        *cached = it != g_Repository.end();
         if (!*cached)
             g_Repository.insert(data, data);
     }
