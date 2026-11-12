@@ -1053,7 +1053,6 @@
     "ConfigGC_init.json",
     "dvdStatus_gxinit.json",
     "UserInterface_compass.json",
-    "debug_prof_dump.json",
     "proxtrig_leafs.json",
     "animmot_rot.json",
     "AIObject_reachable.json",

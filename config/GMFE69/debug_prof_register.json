@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -34,29 +34,52 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800f3b74",
-      "size": 348,
+      "address": "0x800f394c",
+      "size": 2004,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000f760",
-      "size": 8,
-      "type": 1
+      "address": "0x8000f758",
+      "size": 40,
+      "type": 1,
+      "linked_offset": 8,
+      "linked_size": 64
     },
     {
       "name": "extabindex",
-      "address": "0x800163d0",
-      "size": 12,
+      "address": "0x800163c4",
+      "size": 60,
+      "type": 1,
+      "linked_offset": 12,
+      "linked_size": 96
+    },
+    {
+      "name": ".data",
+      "address": "0x8018b510",
+      "size": 60,
       "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e36c",
+      "size": 24,
+      "type": 1,
+      "input_alignment": 4
     }
   ],
   "functions": [
+    {
+      "name": "DebugProfTimerVerifyNew__FiPci",
+      "address": "0x800f394c",
+      "size": 552,
+      "binding": 1
+    },
     {
       "name": "DebugProfTimerRegister__FiPci",
       "address": "0x800f3b74",
@@ -68,19 +91,133 @@
       "address": "0x800f3bec",
       "size": 228,
       "binding": 1
+    },
+    {
+      "name": "DebugProfTimerDump__Fii",
+      "address": "0x800f3cd0",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "DebugProfTimerDumpRecurse__Fii",
+      "address": "0x800f3da0",
+      "size": 732,
+      "binding": 1
+    },
+    {
+      "name": "DebugProfTimerDumpAll__Fv",
+      "address": "0x800f407c",
+      "size": 164,
+      "binding": 1
     }
   ],
   "externals": {
-    "DebugProfTimerVerifyNew__FiPci": "0x800f394c",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DebugStats_Draw__Fiiiii": "0x800f429c",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket": "0x80076e20",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "Render__18CProfHistRenderBinFR10CDmaPacketPv": "0x800f451c",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__18CProfHistRenderBinFv": "0x800f3494",
+    "__vt__10CRenderBin": "0x80183c5c",
+    "currentIndex": "0x8034ed58",
+    "debugStats": "0x802da7f0",
+    "g_DbgStatsRenderBin": "0x80311c28",
+    "g_ProfHistRenderBin": "0x80311c54",
+    "g_ProfileBinGraph": "0x8034ed74",
+    "g_ProfileBinSelect": "0x8034ed70",
+    "g_bDebugStatsDisabled": "0x8034e368",
+    "g_bDebugStatsDrawProfData": "0x8034ed5c",
     "g_pDebugProfTimers": "0x803118dc",
-    "strcpy": "0x80140040"
+    "g_pRenderList": "0x8034ed4c",
+    "g_pScreen": "0x8034ed48",
+    "printf": "0x8013dc88",
+    "strcmp": "0x8013fed4",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "currentIndex",
+    "debugStats",
+    "g_DbgStatsRenderBin",
+    "g_ProfHistRenderBin",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "currentIndex",
+    "g_ProfileBinGraph",
+    "g_ProfileBinSelect",
+    "g_bDebugStatsDisabled",
+    "g_bDebugStatsDrawProfData",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
   "original_file": "debug_prof.cpp",
-  "original_file_index": 9478
+  "original_file_index": 9478,
+  "file_duplicates": [
+    "DebugStats_Draw__Fiiiii",
+    "Render__18CProfHistRenderBinFR10CDmaPacketPv",
+    "__dt__18CProfHistRenderBinFv"
+  ],
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 20,
+      "address": "0x8017a1b0"
+    },
+    {
+      "section": ".rodata",
+      "offset": 20,
+      "size": 19,
+      "address": "0x8017a1c4"
+    },
+    {
+      "section": ".rodata",
+      "offset": 40,
+      "size": 15,
+      "address": "0x8017a1d8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 56,
+      "size": 11,
+      "address": "0x8017a1e8"
+    },
+    {
+      "section": ".rodata",
+      "offset": 568,
+      "size": 13,
+      "address": "0x8017a3e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 2,
+      "address": "0x803510b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 8,
+      "address": "0x803510b4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 2,
+      "address": "0x803510bc"
+    }
+  ]
 }

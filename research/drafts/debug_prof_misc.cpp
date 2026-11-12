@@ -5,53 +5,12 @@ extern "C" int printf(const char*, ...);
 extern "C" unsigned long strlen(const char*);
 extern "C" int strcmp(const char*, const char*);
 void DebugMsg(const char*, ...);
-void DebugProfTimerDumpRecurse(int, int);
-
-void DebugProfTimerDumpAll() {
-    printf("------------------------------\n");
-    printf("--   Begin Profile Dump     --\n");
-    printf("------------------------------\n");
-    printf("\n");
-    printf("Rank, Name, Time, Count\n");
-    DebugProfTimerDumpRecurse(-1, -1);
-    printf("\n");
-    printf("------------------------------\n");
-    printf("--    End Profile Dump      --\n");
-    printf("------------------------------\n");
-}
 
 struct DebugProfTimer {
     int m_parent;
     char m_name[48];
 };
 extern DebugProfTimer g_pDebugProfTimers[16];
-
-void DebugProfTimerVerifyNew(int slot, char* name, int parent) {
-    if (g_pDebugProfTimers[slot].m_name[0]) {
-        int i;
-        for (i = 0; i < 16; i++) {
-            if (!g_pDebugProfTimers[i].m_name[0])
-                break;
-        }
-        if (i == 16)
-            DebugMsg("Debug Prof Timer: All slots used.  Increase DEBUG_PROF_TIMER_MAX.\n");
-        else
-            DebugMsg("Debug Prof Timer: Slot %d is already used.  The first available slot is %d.\n", slot, i);
-    }
-    if (!name || !name[0])
-        DebugMsg("Debug Prof Timer: Slot name is NULL for slot %d.\n", slot);
-    strlen(name);
-    for (int j = 0; j < 16; j++)
-        strcmp(name, g_pDebugProfTimers[j].m_name);
-    for (int p = parent; p != -1; p = g_pDebugProfTimers[p].m_parent) {
-        if (p == slot)
-            DebugMsg("Debug Prof Timer: Timer %d (%s) is trying to use %d as a parent, but that leads to a circular dependency.\n", slot, name, parent);
-    }
-    if (parent != -1 && (parent < 0 || parent > 15))
-        DebugMsg("Debug Prof Timer: Timer %d (%s) is trying to use %d as a parent, but %d is not a valid timer.\n", slot, name, parent, parent);
-    if (parent != -1 && !g_pDebugProfTimers[parent].m_name[0])
-        DebugMsg("Debug Prof Timer: Timer %d (%s) is trying to use %d as a parent, but %d is not initialized.\n", slot, name, parent, parent);
-}
 
 struct CProfileBin {
     void Set(const char* name, int parent) {
