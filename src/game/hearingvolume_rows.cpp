@@ -12,23 +12,14 @@
 // transform declared, the bodies are inferred from the calls, and the by-value
 // row getters are inferred inline helpers.
 //
-// CVector3 view: four floats, 8-byte aligned, overlaid with two doubles. The
-// union is inferred from the code, not the original declaration: vectors are
-// copied as two lfd/stfd pairs, which an implicit copy through the double pair
-// reproduces. The scene-node views are as in bsbifunc_corpse.cpp (the owner
+// CVector3 is the shared game/CVector3.h. The scene-node views are as in bsbifunc_corpse.cpp (the owner
 // is taken to be a CStaticObject, whose velocity getter is at +276); the
 // owner at +36, the sort-key records, the held volumes and the last position
 // at +112 are inferred.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:
@@ -235,9 +226,9 @@ void CHearingVolume::AttemptUpdate(float dt) {
     if (m_owner) {
         const CVector3& velocity = m_owner->GetWorldLinearVelocity();
         CVector3 step;
-        step.d.v[0] = dt * velocity.d.v[0];
-        step.d.v[1] = dt * velocity.d.v[1];
-        step.d.v[2] = dt * velocity.d.v[2];
+        step.x = dt * velocity.x;
+        step.y = dt * velocity.y;
+        step.z = dt * velocity.z;
         m_tm.SetPos(m_lastPosition);
         m_tm.Translate(step);
     }
@@ -245,10 +236,10 @@ void CHearingVolume::AttemptUpdate(float dt) {
     CVector3 minimum;
     CVector3 maximum;
     m_worldVolume.GetExtents(minimum, maximum);
-    m_minX->m_key = minimum.d.v[0];
-    m_minY->m_key = minimum.d.v[1];
-    m_maxX->m_key = maximum.d.v[0];
-    m_maxY->m_key = maximum.d.v[1];
+    m_minX->m_key = minimum.x;
+    m_minY->m_key = minimum.y;
+    m_maxX->m_key = maximum.x;
+    m_maxY->m_key = maximum.y;
 }
 
 void CHearingVolume::BeginUpdate(float) {

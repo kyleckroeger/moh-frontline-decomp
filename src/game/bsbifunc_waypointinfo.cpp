@@ -230,7 +230,8 @@ void BIFunc_GetWayPointInfo(int** stack, void* object) {
     case 5: {
         CMatrix matrix;
         waypoint->rotation.GetMatrix(matrix);
-        CVector3 direction = matrix.GetFront();
+        CVector3 direction;
+        direction = matrix.GetFront();
         CVector3 front;
         CVector3 right;
         g_pBSObject->user->GetSceneNode()->GetForward(front);

@@ -17,21 +17,11 @@
 // symbols; CStaticObject declares its virtual functions in the order of
 // __vt__13CStaticObject (placeholders named by offset for the slots not used
 // here), its members, the flag names and the mesh, attached-object,
-// listener and draw-context views are inferred, and the CVector3 view and
-// by-value position getter are as in static_obj_setpos.cpp. The rest of the
+// listener and draw-context views are inferred, and the by-value position
+// getter is as in static_obj_setpos.cpp (CVector3 is game/CVector3.h). The rest of the
 // file is not part of this unit.
-class CVector3 {
-public:
-    union {
-        struct {
-            float x;
-            float y;
-            float z;
-            float w;
-        };
-        double pair[2];
-    };
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

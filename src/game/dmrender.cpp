@@ -7,16 +7,8 @@
 // original.
 extern "C" void* memset(void*, int, unsigned long);
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

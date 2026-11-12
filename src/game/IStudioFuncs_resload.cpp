@@ -16,25 +16,8 @@
 // inferred (the wrappers give the argument copies their stack order). The
 // constants are entries of the file's .sdata2 pool. The rest of the file is
 // in other units.
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
-    void Set(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
+#include "game/CVector3.h"
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

@@ -22,19 +22,10 @@ public:
 };
 
 /* Inferred: CVector3 copied as two doubles. */
-struct CVector3Pair {
-    double d[2];
-};
 
-class CVector3 {
-public:
-    CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 struct VECTOR3VIEW {
     float x;

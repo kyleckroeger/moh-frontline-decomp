@@ -15,7 +15,7 @@
 // sound from a non-enemy source). The classes, functions and globals are
 // named by the symbols; the trigger core, CAIObject members and the vector and
 // matrix views are shared with ShouldILeaveMMG (the forward row's dead 16-byte
-// copy is the temporary bound to a const reference); the threat direction is
+// copy is GetRow's returned temporary, assigned to forward); the threat direction is
 // assigned component by component (its FPR numbers). The rest of the file is
 // in other units. The square root of the sound distance is taken in place
 // (an inferred inline taking the value by reference: the result shares the
@@ -201,8 +201,8 @@ bool CAIObject::ShouldILeaveMMG(TriggerObject_struct* trigger) {
         position.z = z;
         CMatrix matrix;
         core->rotation.GetMatrix(matrix);
-        const CVector3& row = matrix.GetRow(1);
-        CVector3 forward(*&row);
+        CVector3 forward;
+        forward = matrix.GetRow(1);
         forward.Normalize();
         CVector3 delta;
         delta.x = m_target->m_position.x - position.x;
@@ -233,8 +233,8 @@ TriggerObject_struct* CAIObject::ChooseMMGPoint() {
             position.z = z;
             CMatrix matrix;
             core->rotation.GetMatrix(matrix);
-            const CVector3& row = matrix.GetRow(1);
-            CVector3 forward(*&row);
+            CVector3 forward;
+            forward = matrix.GetRow(1);
             forward.Normalize();
             if (m_target) {
                 CVector3 delta;

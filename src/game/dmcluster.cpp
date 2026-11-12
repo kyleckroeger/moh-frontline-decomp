@@ -27,10 +27,8 @@ public:
     unsigned char unknown00[12];
 };
 
-class CVector3 {
-public:
-    float x, y, z, w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

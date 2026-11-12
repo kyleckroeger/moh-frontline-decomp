@@ -25,34 +25,10 @@ class CCDBObject;
 class CWorldVolume;
 class CAnimatedVolume;
 
-union CVector3Data {
-    double pair[2];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-    }
-    void Scale(const CVector3& v, float k) {
-        d.c.x = k * v.d.c.x;
-        d.c.y = k * v.d.c.y;
-        d.c.z = k * v.d.c.z;
-    }
-    CVector3& operator+=(const CVector3& o) {
-        d.c.x += o.d.c.x;
-        d.c.y += o.d.c.y;
-        d.c.z += o.d.c.z;
-        return *this;
-    }
-    float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
-    float LengthSq() const { return d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z; }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CLine3 {
 public:
@@ -137,9 +113,9 @@ int CCDBVolBox::TestCollision(const CLine3& line, CCollision&, bool) const {
     float tFar = 3.4028235e+38f;
     dir = line.GetDirection();
     const CVector3& start = line.GetStart();
-    offset.d.c.x = m_center.d.c.x - start.d.c.x;
-    offset.d.c.y = m_center.d.c.y - start.d.c.y;
-    offset.d.c.z = m_center.d.c.z - start.d.c.z;
+    offset.x = m_center.x - start.x;
+    offset.y = m_center.y - start.y;
+    offset.z = m_center.z - start.z;
     const CVector3* rdir = &dir;
     const CVector3* roff = &offset;
     if (!Clip(GetAxis(0), *roff, *rdir, m_half[0], tNear, tFar))

@@ -24,31 +24,8 @@
 // is the SDK's inline) and the collision-id table's meaning are inferred.
 #include <math.h>
 
-class CVector3 {
-public:
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            x *= scale;
-            y *= scale;
-            z *= scale;
-        }
-    }
-    CVector3& operator*=(float scale) {
-        x *= scale;
-        y *= scale;
-        z *= scale;
-        return *this;
-    }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

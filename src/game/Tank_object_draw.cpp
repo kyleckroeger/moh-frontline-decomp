@@ -23,10 +23,8 @@ struct VECTOR3VIEW {
     float z;
 } __attribute__((aligned(8)));
 
-class CVector3 {
-public:
-    VECTOR3VIEW v;
-};
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

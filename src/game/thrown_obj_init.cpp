@@ -15,36 +15,15 @@ class CStaticMesh;
 class IVolume;
 
 namespace std {
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
+
 }
 
-/* inferred: a CVector3 view without constructors (a plain aggregate, as in
-   impact_dtor.cpp) and with the plain Length body; with the shared header's
-   constructors the compiler does not fuse the axis lengths' squares */
-class CVector3 {
-public:
-    float Length() const { return std::sqrtf(x * x + y * y + z * z); }
+/* CVector3 is the shared game/CVector3.h: its copy constructor copies the
+   plain base, which keeps the frame vectors' copies as doubleword moves (a
+   cast copy constructor, or a constructor-free class with only a default
+   constructor added, changes how the lengths' squares are fused) */
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CVolSphere {
 public:

@@ -17,55 +17,16 @@
 // functions and globals are named by the symbols; the member names and
 // views, the contact record (normal, depth, object; 24 bytes as in
 // player_ctor.cpp's CClsnInfo), the bit names and the begin/data copy
-// (found by the permuter) are inferred. The CVector3 view is a union of two
-// doubles and a named float struct (CW cannot look up members of an
-// anonymous struct inside the class's own methods). The rest of the file is
+// (found by the permuter) are inferred. CVector3 is the shared
+// game/CVector3.h. The rest of the file is
 // in other units.
 extern bool g_bInMultiplayerMode;
 extern const float CONTACT_EPSILON;
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y ;
-    }
-    return x;
-}
 
 
-class CVector3 {
-public:
-    union {
-        double pair[2];
-        struct {
-            float x;
-            float y;
-            float z;
-            float w;
-        } c;
-    };
+#include "game/CVector3.h"
 
-    float LengthSq() const { return this->c.x * this->c.x + this->c.y * this->c.y + this->c.z * this->c.z; }
-    float Normalize() {
-        float length = sqrtf(this->c.x * this->c.x + this->c.y * this->c.y + this->c.z * this->c.z);
-        if (length != 0.0f) {
-            float inv = 1.0f / length;
-            this->c.x *= inv;
-            this->c.y *= inv;
-            this->c.z *= inv;
-        }
-        return length;
-    }
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:
@@ -165,8 +126,8 @@ void CPlayerObject::ConstrainVelocity() {
     if (m_collisions.m_size == 0)
         return;
     if ((float)__fabs(m_velocity.LengthSq()) < 1e-06f && m_heightSpeed <= 0.0f) {
-        m_velocity.c.x = m_velocity.c.y = m_velocity.c.z = 0.0f;
-        m_localVelocity.c.x = m_localVelocity.c.y = m_localVelocity.c.z = 0.0f;
+        m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
+        m_localVelocity.x = m_localVelocity.y = m_localVelocity.z = 0.0f;
         return;
     }
     if (m_flag396_80)
@@ -194,16 +155,16 @@ void CPlayerObject::ConstrainVelocity() {
         if (it->m_object)
             it->m_object->vf20();
         CVector3 normal = it->m_normal;
-        float d = velocity.c.x * normal.c.x + velocity.c.y * normal.c.y + velocity.c.z * normal.c.z;
+        float d = velocity.x * normal.x + velocity.y * normal.y + velocity.z * normal.z;
         if (d < best) {
             best = d;
             first = it;
         }
         bool onFloor = false;
-        if (it->m_normal.c.z <= 0.642f && it->m_normal.c.z > 0.01f)
+        if (it->m_normal.z <= 0.642f && it->m_normal.z > 0.01f)
             onFloor = true;
         m_onGround &= onFloor;
-        if (m_heightSpeed > zero && it->m_normal.c.z < zero) {
+        if (m_heightSpeed > zero && it->m_normal.z < zero) {
             if (m_flag395_40 && m_flag397_08) {
                 float depth = it->m_depth;
                 if (depth > zero)
@@ -211,17 +172,17 @@ void CPlayerObject::ConstrainVelocity() {
                 float scale = (CONTACT_EPSILON + depth) / CONTACT_EPSILON;
                 CVector3 dir = velocity;
                 dir.Normalize();
-                float limit = -0.28f * scale * (0.5f * (dir.c.x * it->m_normal.c.x + dir.c.y * it->m_normal.c.y + dir.c.z * it->m_normal.c.z) + 0.5f);
+                float limit = -0.28f * scale * (0.5f * (dir.x * it->m_normal.x + dir.y * it->m_normal.y + dir.z * it->m_normal.z) + 0.5f);
                 if (limit > -0.0f)
                     limit = -0.0f;
                 else if (limit < -0.28f)
                     limit = -0.28f;
-                if (it->m_normal.c.z < limit && m_flag397_08) {
+                if (it->m_normal.z < limit && m_flag397_08) {
                     m_flag395_80 = 1;
                     m_flag395_40 = 1;
                     m_heightSpeed = -(g_bInMultiplayerMode ? 0.02666667f : 0.07333334f);
                 }
-            } else if (it->m_normal.c.z < -0.0f) {
+            } else if (it->m_normal.z < -0.0f) {
                 m_heightSpeed = 0.0f;
             }
         }
@@ -229,19 +190,19 @@ void CPlayerObject::ConstrainVelocity() {
     bool found = first != end;
     if (found) {
         float k = 1.00001f * best;
-        float bx = k * first->m_normal.c.x;
-        float by = k * first->m_normal.c.y;
-        float bz = k * first->m_normal.c.z;
-        m_velocity.c.x = velocity.c.x - bx;
-        m_velocity.c.y = velocity.c.y - by;
-        m_velocity.c.z = velocity.c.z - bz;
-        length = sqrtf(m_velocity.c.x * m_velocity.c.x + m_velocity.c.y * m_velocity.c.y + m_velocity.c.z * m_velocity.c.z);
+        float bx = k * first->m_normal.x;
+        float by = k * first->m_normal.y;
+        float bz = k * first->m_normal.z;
+        m_velocity.x = velocity.x - bx;
+        m_velocity.y = velocity.y - by;
+        m_velocity.z = velocity.z - bz;
+        length = sqrtf(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y + m_velocity.z * m_velocity.z);
         changed = true;
         for (it = begin; it != end; ++it) {
             if (it == first)
                 continue;
             CVector3 normal = it->m_normal;
-            float d = m_velocity.c.x * normal.c.x + m_velocity.c.y * normal.c.y + m_velocity.c.z * normal.c.z;
+            float d = m_velocity.x * normal.x + m_velocity.y * normal.y + m_velocity.z * normal.z;
             if (d < -0.0034906515f * length && d < best2) {
                 best2 = d;
                 second = it;
@@ -253,17 +214,17 @@ void CPlayerObject::ConstrainVelocity() {
         CVector3& n1 = first->m_normal;
         CVector3& n2 = second->m_normal;
         CVector3 axis;
-        axis.c.x = n1.c.y * n2.c.z - n1.c.z * n2.c.y;
-        axis.c.y = n1.c.z * n2.c.x - n1.c.x * n2.c.z;
-        axis.c.z = n1.c.x * n2.c.y - n1.c.y * n2.c.x;
+        axis.x = n1.y * n2.z - n1.z * n2.y;
+        axis.y = n1.z * n2.x - n1.x * n2.z;
+        axis.z = n1.x * n2.y - n1.y * n2.x;
         float len = axis.Normalize();
         found = len > 0.0034906515f;
         if (found) {
-            float d = axis.c.x * velocity.c.x + axis.c.y * velocity.c.y + axis.c.z * velocity.c.z;
-            m_velocity.c.x = d * axis.c.x;
-            m_velocity.c.y = d * axis.c.y;
-            m_velocity.c.z = d * axis.c.z;
-            length = sqrtf(m_velocity.c.x * m_velocity.c.x + m_velocity.c.y * m_velocity.c.y + m_velocity.c.z * m_velocity.c.z);
+            float d = axis.x * velocity.x + axis.y * velocity.y + axis.z * velocity.z;
+            m_velocity.x = d * axis.x;
+            m_velocity.y = d * axis.y;
+            m_velocity.z = d * axis.z;
+            length = sqrtf(m_velocity.x * m_velocity.x + m_velocity.y * m_velocity.y + m_velocity.z * m_velocity.z);
             changed = true;
         }
     }
@@ -272,10 +233,10 @@ void CPlayerObject::ConstrainVelocity() {
             if (begin == first || begin == second)
                 continue;
             CVector3 normal = begin->m_normal;
-            if (m_velocity.c.x * normal.c.x + m_velocity.c.y * normal.c.y + m_velocity.c.z * normal.c.z < -0.0034906515f * length) {
+            if (m_velocity.x * normal.x + m_velocity.y * normal.y + m_velocity.z * normal.z < -0.0034906515f * length) {
                 changed = true;
                 found = false;
-                m_velocity.c.x = m_velocity.c.y = m_velocity.c.z = 0.0f;
+                m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
             }
         }
     }

@@ -34,53 +34,9 @@ inline void* operator new(unsigned long, void* place) {
     return place;
 }
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
-    void Scale(float f) {
-        x = f * x;
-        y = f * y;
-        z = f * z;
-    }
-    float Dot(const CVector3& v) const { return x * v.x + y * v.y + z * v.z; }
-    void Cross(const CVector3& a, const CVector3& b) {
-        x = a.y * b.z - a.z * b.y;
-        y = a.z * b.x - a.x * b.z;
-        z = a.x * b.y - a.y * b.x;
-    }
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            x *= 1.0f / length;
-            y *= 1.0f / length;
-            z *= 1.0f / length;
-        }
-    }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

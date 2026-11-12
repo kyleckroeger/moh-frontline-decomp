@@ -19,27 +19,10 @@ class CDmaTag;
 class CDmaPacket;
 
 /* Inferred: vectors are copied as two doubles. */
-struct CVector3Pair {
-    double d[2];
-};
 
-class CVector3 {
-public:
-    float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
-    void Scale(const CVector3& v, float s) {
-        x = s * v.x;
-        y = s * v.y;
-        z = s * v.z;
-    }
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 struct VECTOR3VIEW {
     float x;

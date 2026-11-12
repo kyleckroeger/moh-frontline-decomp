@@ -11,35 +11,11 @@
 // the mangled symbols; the members, flag names and the listener, extent and
 // volume views are inferred, CHierObject declares its virtual functions in
 // the order of __vt__11CHierObject (placeholders named by offset for the
-// slots not used here), and the CVector3 view copies through a double pair
-// as in player_weapon.cpp. The rest of the file is not part of this unit.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
+// slots not used here), and CVector3 is the shared game/CVector3.h. The rest of the file is not part of this unit.
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3 operator*(float f) const { return CVector3(x * f, y * f, z * f); }
-    CVector3& operator+=(const CVector3& v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix;
 

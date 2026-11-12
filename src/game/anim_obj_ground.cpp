@@ -13,16 +13,8 @@
 // weapon_bullet.cpp; CLine3 has an inline destructor whose weak copy the
 // linker took from another file) are inferred. The rest of the file is in
 // other units.
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) { d.v[0] = x; d.v[1] = y; d.v[2] = z; }
+#include "game/CVector3.h"
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:
@@ -39,9 +31,9 @@ public:
     void SetSE(CVector3 start, CVector3 end) {
         m_start = start;
         m_end = end;
-        m_dir.d.v[0] = m_end.d.v[0] - m_start.d.v[0];
-        m_dir.d.v[1] = m_end.d.v[1] - m_start.d.v[1];
-        m_dir.d.v[2] = m_end.d.v[2] - m_start.d.v[2];
+        m_dir.x = m_end.x - m_start.x;
+        m_dir.y = m_end.y - m_start.y;
+        m_dir.z = m_end.z - m_start.z;
         m_flag38 = 0;
         m_flag39 = 0;
     }
@@ -186,15 +178,15 @@ float CAnimObject::DetectGround() {
     CCollision collision;
     int hit = 1;
     m_stopped = false;
-    if (m_detectGround && (!m_jumping || m_velocity.d.v[2] < 0.0f)) {
+    if (m_detectGround && (!m_jumping || m_velocity.z < 0.0f)) {
         IVolume* world = g_scene.m_worldObject->GetWorldBoundingVolume(0);
         CVector3 bottom = m_tm.GetPos();
-        bottom.d.v[2] -= 0.05f;
-        CLine3 line(CVector3(bottom.d.v[0], bottom.d.v[1], 1.0f + bottom.d.v[2]), bottom);
+        bottom.z -= 0.05f;
+        CLine3 line(CVector3(bottom.x, bottom.y, 1.0f + bottom.z), bottom);
         CVolFiber fiber(line);
         hit = world->TestCollision(fiber, collision, true);
         if (hit == 1) {
-            CLine3 up(CVector3(bottom.d.v[0], bottom.d.v[1], 100.0f + bottom.d.v[2]), CVector3(bottom.d.v[0], bottom.d.v[1], bottom.d.v[2] - 100.0f));
+            CLine3 up(CVector3(bottom.x, bottom.y, 100.0f + bottom.z), CVector3(bottom.x, bottom.y, bottom.z - 100.0f));
             CVolFiber fiber2(up);
             CCollision collision2;
             if (world->TestCollision(fiber2, collision2, true) == 1)
@@ -202,9 +194,9 @@ float CAnimObject::DetectGround() {
         }
     }
     if (m_stopped) {
-        m_velocity.d.v[0] = 0.0f;
-        m_velocity.d.v[1] = 0.0f;
-        m_velocity.d.v[2] = 0.0f;
+        m_velocity.x = 0.0f;
+        m_velocity.y = 0.0f;
+        m_velocity.z = 0.0f;
     } else if (hit != 1) {
         m_onGround = true;
         m_jumping = false;

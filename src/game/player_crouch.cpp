@@ -60,53 +60,11 @@ public:
 
 extern CShellMenu g_Shell;
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y ;
-    }
-    return x;
-}
 
 class CPlayerObject;
 
-class CVector3 {
-public:
-    CVector3 operator+(const CVector3& v) const {
-        CVector3 r;
-        r.x = x + v.x;
-        r.y = y + v.y;
-        r.z = z + v.z;
-        return r;
-    }
-    CVector3 operator-(const CVector3& v) const {
-        CVector3 r;
-        r.x = x - v.x;
-        r.y = y - v.y;
-        r.z = z - v.z;
-        return r;
-    }
-    void operator*=(float f) {
-        x *= f;
-        y *= f;
-        z *= f;
-    }
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 inline CVector3 operator*(float f, const CVector3& v) {
     CVector3 r;

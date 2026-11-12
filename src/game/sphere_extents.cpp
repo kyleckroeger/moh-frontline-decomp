@@ -12,22 +12,10 @@
 // the draw context's flags and rectangle (+256..+272) and the flag bits (bool
 // bitfields; the plane order of the bits is read from the code) are inferred.
 // The rest of the file is in other units.
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CVector4 {
 public:
@@ -47,7 +35,7 @@ public:
 
 struct CFrustumPlane {
     float GetDistance(CVector3 point) const {
-        return normal.d.v[0] * point.d.v[0] + normal.d.v[1] * point.d.v[1] + normal.d.v[2] * point.d.v[2] - distance;
+        return normal.x * point.x + normal.y * point.y + normal.z * point.z - distance;
     }
 
     CVector3 normal;
@@ -97,12 +85,12 @@ public:
 
 void CVolSphere::GetExtents(CVector3& min, CVector3& max) const {
     float radius = m_radius;
-    min.d.v[0] = m_center.d.v[0] - radius;
-    min.d.v[1] = m_center.d.v[1] - radius;
-    min.d.v[2] = m_center.d.v[2] - radius;
-    max.d.v[0] = m_center.d.v[0] + radius;
-    max.d.v[1] = m_center.d.v[1] + radius;
-    max.d.v[2] = m_center.d.v[2] + radius;
+    min.x = m_center.x - radius;
+    min.y = m_center.y - radius;
+    min.z = m_center.z - radius;
+    max.x = m_center.x + radius;
+    max.y = m_center.y + radius;
+    max.z = m_center.z + radius;
 }
 
 bool CVolSphere::TestVisibility(CDrawContext& context) const {
@@ -110,8 +98,8 @@ bool CVolSphere::TestVisibility(CDrawContext& context) const {
     CMatrix* projection = &view->m_projection;
     CVector3 point;
     view->m_worldToView.TransformPoint(point, m_center);
-    CVector3 low(point.d.v[0] - m_radius, point.d.v[1] - m_radius, point.d.v[2]);
-    CVector3 high(m_radius + point.d.v[0], m_radius + point.d.v[1], point.d.v[2]);
+    CVector3 low(point.x - m_radius, point.y - m_radius, point.z);
+    CVector3 high(m_radius + point.x, m_radius + point.y, point.z);
     CVector4 lowScreen;
     CVector4 highScreen;
     projection->Transform(lowScreen, low);

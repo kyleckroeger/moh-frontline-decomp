@@ -36,19 +36,10 @@ extern "C" void GXInitLightDir(GXLightObj*, float, float, float);
 extern "C" void GXInitLightDistAttn(GXLightObj*, float, float, int);
 extern "C" void GXInitLightSpot(GXLightObj*, float, int);
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) { d.v[0] = ax; d.v[1] = ay; d.v[2] = az; }
-    CVector3(const CVector3& other) { d.pair[0] = other.d.pair[0]; d.pair[1] = other.d.pair[1]; }
 
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:
@@ -209,7 +200,7 @@ public:
     void UpdateDirection() {
         CVector3 dir;
         dir = m_matrix.GetRow(1);
-        GXInitLightDir(&m_light, dir.d.v[0], dir.d.v[1], dir.d.v[2]);
+        GXInitLightDir(&m_light, dir.x, dir.y, dir.z);
     }
     void UpdateAttenuation() { GXInitLightDistAttn(&m_light, 0.5f * m_range, 0.15f, 2); }
     void UpdateSpot() { GXInitLightSpot(&m_light, (180.0f / 3.1415927f) * m_spotAngle, 2); }

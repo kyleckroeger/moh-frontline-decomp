@@ -23,22 +23,8 @@ class CDmaTag;
 
 #include <math.h>
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
-    CVector3(const CVector3& other) : d(other.d) {}
-    float LengthSquared() const { return d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]; }
+#include "game/CVector3.h"
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:
@@ -168,9 +154,9 @@ void UpdateLightingParams(CDmaPacket& packet) {
                     CVector3 out;
                     inverse.TransformVector(out, in);
                     count++;
-                    dir[0] = out.d.v[0];
-                    dir[1] = out.d.v[1];
-                    dir[2] = out.d.v[2];
+                    dir[0] = out.x;
+                    dir[1] = out.y;
+                    dir[2] = out.z;
                     dir[9] = 255.0f * light->r * light->intensity;
                     dir[10] = 255.0f * light->g * light->intensity;
                     dir[11] = 255.0f * light->b * light->intensity;
@@ -188,9 +174,9 @@ void UpdateLightingParams(CDmaPacket& packet) {
                 for (it = lights->begin; it != g_pContext->m_lights->begin + g_pContext->m_lights->count; it++) {
                     CVector3 p;
                     (*it)->GetPosition(p);
-                    p.d.v[0] -= eye.d.v[0];
-                    p.d.v[1] -= eye.d.v[1];
-                    p.d.v[2] -= eye.d.v[2];
+                    p.x -= eye.x;
+                    p.y -= eye.y;
+                    p.z -= eye.z;
                     float distance = p.LengthSquared();
                     float radius = (*it)->radius * (*it)->radius;
                     if (distance < radius) {
@@ -206,22 +192,22 @@ void UpdateLightingParams(CDmaPacket& packet) {
                         count = 2;
                     CVector3 d;
                     best->GetPosition(d);
-                    d.d.v[0] -= eye.d.v[0];
-                    d.d.v[1] -= eye.d.v[1];
-                    d.d.v[2] -= eye.d.v[2];
-                    float length = sqrtf(d.d.v[0] * d.d.v[0] + d.d.v[1] * d.d.v[1] + d.d.v[2] * d.d.v[2]);
+                    d.x -= eye.x;
+                    d.y -= eye.y;
+                    d.z -= eye.z;
+                    float length = sqrtf(d.x * d.x + d.y * d.y + d.z * d.z);
                     if (length != 0.0f) {
                         float scale = 1.0f / length;
-                        d.d.v[0] *= scale;
-                        d.d.v[1] *= scale;
-                        d.d.v[2] *= scale;
+                        d.x *= scale;
+                        d.y *= scale;
+                        d.z *= scale;
                     }
                     float r = best->r;
                     float g = best->g;
                     float b = best->b;
-                    g_LightParam.dir[count][0] = d.d.v[0];
-                    g_LightParam.dir[count][1] = d.d.v[1];
-                    g_LightParam.dir[count][2] = d.d.v[2];
+                    g_LightParam.dir[count][0] = d.x;
+                    g_LightParam.dir[count][1] = d.y;
+                    g_LightParam.dir[count][2] = d.z;
                     g_LightParam.color[count][0] = bestValue * r;
                     g_LightParam.color[count][1] = bestValue * g;
                     g_LightParam.color[count][2] = bestValue * b;

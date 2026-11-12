@@ -113,12 +113,8 @@ enum EScreenWidth {};
 enum EFrameFormat {};
 enum EDepthFormat {};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    float x, y, z, w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

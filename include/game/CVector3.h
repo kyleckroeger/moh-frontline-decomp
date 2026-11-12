@@ -34,22 +34,31 @@ struct CVector3Pair {
     double b;
 };
 
-class CVector3 {
-public:
+// The fields live in an 8-byte-aligned plain struct so that the copy constructor can copy
+// them as one plain object (see the copy constructor). The base is this project's spelling:
+// the original may have used a member or a typedef'd C struct to the same effect; it
+// changes neither the layout nor any mangled name.
+struct CVector3Base {
     float x, y, z, w;
+} __attribute__((aligned(8)));
 
+class CVector3 : public CVector3Base {
+public:
     // Bodies marked "original" are read from the weak copies the original image keeps
     // (inline functions the compiler didn't inline somewhere): Moh2RelGC.elf has
     // __as__, both constructors, Length, Normalize, Scale, Add, Sub, Abs, Cross and
     // DotDotDot of CVector3.
     CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}                // original
-    // Copies move the 16 bytes as two doubles, like the original's weak __ct__ and __as__.
+    CVector3(float ax, float ay, float az) { x = ax; y = ay; z = az; }          // original
     // operator= returns a reference: with a by-value return the inlined assignment keeps
     // a dead copy on the stack that matched code doesn't have (e.g. CCamera::GetPosition).
     // The original's one out-of-line __as__ does return by value; the unit that emits it
     // keeps its own view (see research/layout/header_moves/CVector3.tsv).
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; } // original
+    // The copy constructor copies the plain base: the compiler moves it as two doubles (lfd/stfd
+    // pairs, as the weak __ct__ at 80074bd8 does) but schedules and colours the inlined copy
+    // like an implicit one. A cast copy through CVector3Pair (the earlier form) or no copy constructor at all
+    // each break a different group of matched units (research/notes/cvector3-header-variants.md).
+    CVector3(const CVector3& other) : CVector3Base(other) {}                     // original
     CVector3& operator=(const CVector3& other) {
         *(CVector3Pair*)this = *(const CVector3Pair*)&other;
         return *this;

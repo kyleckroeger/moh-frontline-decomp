@@ -32,24 +32,12 @@
 // functions whose names are unknown; return types not visible in the code are
 // left as int or void, and the built-in record view is inferred.
 //
-// CVector3 view: four floats, 8-byte aligned, built by an inline constructor
-// from x, y and z (inferred; the copy to the by-value argument is two lfd/stfd
-// pairs).
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
+// CVector3 is the shared game/CVector3.h (the copy to the by-value argument is
+// two lfd/stfd pairs).
 
-class CVector3 {
-public:
-    CVector3(float ax, float ay, float az) {
-        d.v[0] = ax;
-        d.v[1] = ay;
-        d.v[2] = az;
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

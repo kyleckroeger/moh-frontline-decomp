@@ -27,35 +27,10 @@ enum EClsnId {};
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
 
-union CVector3Data {
-    double pair[2];
-    struct {
-        float x, y, z, w;
-    } c;
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) {
-        d.c.x = x;
-        d.c.y = y;
-        d.c.z = z;
-    }
-    void Cross(const CVector3& a, const CVector3& b) {
-        d.c.x = a.d.c.y * b.d.c.z - a.d.c.z * b.d.c.y;
-        d.c.y = a.d.c.z * b.d.c.x - a.d.c.x * b.d.c.z;
-        d.c.z = a.d.c.x * b.d.c.y - a.d.c.y * b.d.c.x;
-    }
-    CVector3& operator*=(float f) {
-        d.c.x *= f;
-        d.c.y *= f;
-        d.c.z *= f;
-        return *this;
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:
@@ -337,7 +312,7 @@ void CBulletDecalManager::InitBulletDecalFromCollision(BulletDecal* decal, const
     CVector3 front;
     CVector3 p;
     CVector3 out;
-    if (fabs(normal.d.c.z) < fabs(normal.d.c.x)) {
+    if (fabs(normal.z) < fabs(normal.x)) {
         front.Cross(normal, CVector3(0.0f, 0.0f, -1.0f));
         right.Cross(front, normal);
     } else {
@@ -368,26 +343,26 @@ void CBulletDecalManager::InitBulletDecalFromCollision(BulletDecal* decal, const
     v[3].x = -x;
     v[3].y = -y;
     v[3].z = 0.005f;
-    p.d.c.x = v[0].x;
-    p.d.c.y = v[0].y;
-    p.d.c.z = v[0].z;
+    p.x = v[0].x;
+    p.y = v[0].y;
+    p.z = v[0].z;
     matrix.TransformPoint(out, p);
-    SetXYZ(v[0], out.d.c.x, out.d.c.y, out.d.c.z);
-    p.d.c.x = v[1].x;
-    p.d.c.y = v[1].y;
-    p.d.c.z = v[1].z;
+    SetXYZ(v[0], out.x, out.y, out.z);
+    p.x = v[1].x;
+    p.y = v[1].y;
+    p.z = v[1].z;
     matrix.TransformPoint(out, p);
-    SetXYZ(v[1], out.d.c.x, out.d.c.y, out.d.c.z);
-    p.d.c.x = v[2].x;
-    p.d.c.y = v[2].y;
-    p.d.c.z = v[2].z;
+    SetXYZ(v[1], out.x, out.y, out.z);
+    p.x = v[2].x;
+    p.y = v[2].y;
+    p.z = v[2].z;
     matrix.TransformPoint(out, p);
-    SetXYZ(v[2], out.d.c.x, out.d.c.y, out.d.c.z);
-    p.d.c.x = v[3].x;
-    p.d.c.y = v[3].y;
-    p.d.c.z = v[3].z;
+    SetXYZ(v[2], out.x, out.y, out.z);
+    p.x = v[3].x;
+    p.y = v[3].y;
+    p.z = v[3].z;
     matrix.TransformPoint(out, p);
-    SetXYZ(v[3], out.d.c.x, out.d.c.y, out.d.c.z);
+    SetXYZ(v[3], out.x, out.y, out.z);
 }
 
 void CBulletDecalManager::AddBulletDecal(const CCollision& collision, bool flag) {

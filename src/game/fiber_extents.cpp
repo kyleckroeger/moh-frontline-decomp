@@ -16,15 +16,10 @@ class CWorldVolume;
 class CAnimatedVolume;
 
 // Inferred: CVector3 as x, y, z (and padding) over two doubles.
-union CVector3Data {
-    double pair[2];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 
 // Inferred: the line's start, end and direction with by-value getters.
 class CLine3 {
@@ -51,25 +46,25 @@ public:
 };
 
 void CVolFiber::GetExtents(CVector3& min, CVector3& max) const {
-    if (m_line.GetStart().d.c.x < m_line.GetEnd().d.c.x) {
-        min.d.c.x = m_line.GetStart().d.c.x;
-        max.d.c.x = m_line.GetEnd().d.c.x;
+    if (m_line.GetStart().x < m_line.GetEnd().x) {
+        min.x = m_line.GetStart().x;
+        max.x = m_line.GetEnd().x;
     } else {
-        max.d.c.x = m_line.GetStart().d.c.x;
-        min.d.c.x = m_line.GetEnd().d.c.x;
+        max.x = m_line.GetStart().x;
+        min.x = m_line.GetEnd().x;
     }
-    if (m_line.GetStart().d.c.y < m_line.GetEnd().d.c.y) {
-        min.d.c.y = m_line.GetStart().d.c.y;
-        max.d.c.y = m_line.GetEnd().d.c.y;
+    if (m_line.GetStart().y < m_line.GetEnd().y) {
+        min.y = m_line.GetStart().y;
+        max.y = m_line.GetEnd().y;
     } else {
-        max.d.c.y = m_line.GetStart().d.c.y;
-        min.d.c.y = m_line.GetEnd().d.c.y;
+        max.y = m_line.GetStart().y;
+        min.y = m_line.GetEnd().y;
     }
-    if (m_line.GetStart().d.c.z < m_line.GetEnd().d.c.z) {
-        min.d.c.z = m_line.GetStart().d.c.z;
-        max.d.c.z = m_line.GetEnd().d.c.z;
+    if (m_line.GetStart().z < m_line.GetEnd().z) {
+        min.z = m_line.GetStart().z;
+        max.z = m_line.GetEnd().z;
     } else {
-        max.d.c.z = m_line.GetStart().d.c.z;
-        min.d.c.z = m_line.GetEnd().d.c.z;
+        max.z = m_line.GetStart().z;
+        min.z = m_line.GetEnd().z;
     }
 }

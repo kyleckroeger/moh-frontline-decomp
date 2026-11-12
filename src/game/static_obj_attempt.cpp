@@ -20,8 +20,7 @@
 // CStaticObject declares its virtual functions in the order of
 // __vt__13CStaticObject (placeholders named by offset for the slots not used
 // here), its members, the flag names and the mesh, key, extent and listener
-// views are inferred, and the CVector3 view copies through a double pair as
-// in player_weapon.cpp. The rest of the file is not part of this unit.
+// views are inferred, and CVector3 is the shared game/CVector3.h. The rest of the file is not part of this unit.
 extern "C" {
 #include <math.h>
 }
@@ -34,32 +33,10 @@ float MathFunNormalizeAngleNegativePiToPi(float);
 float MathFunRandomReal(float, float);
 unsigned long GetFrameCount();
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3& operator+=(const CVector3& v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:

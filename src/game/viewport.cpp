@@ -12,15 +12,8 @@ unsigned long VIGetNextField(void);
 
 // The by-value copies are made with lfd/stfd pairs, so this view is 8-byte
 // aligned (16 bytes with padding); the original declaration is not known.
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

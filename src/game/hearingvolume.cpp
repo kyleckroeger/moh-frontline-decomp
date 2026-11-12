@@ -22,54 +22,11 @@ class IMovingSceneNode;
 
 enum EClsnId {};
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
 inline double fabs(double x) { return __fabs(x); }
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float nx, float ny, float nz) {
-        x = nx;
-        y = ny;
-        z = nz;
-    }
-    float Dot(const CVector3& v) const { return x * v.x + y * v.y + z * v.z; }
-    float Length() const { return sqrtf(x * x + y * y + z * z); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            x *= 1.0f / length;
-            y *= 1.0f / length;
-            z *= 1.0f / length;
-        }
-    }
-    void Cross(const CVector3& a, const CVector3& b) {
-        x = a.y * b.z - a.z * b.y;
-        y = a.z * b.x - a.x * b.z;
-        z = a.x * b.y - a.y * b.x;
-    }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

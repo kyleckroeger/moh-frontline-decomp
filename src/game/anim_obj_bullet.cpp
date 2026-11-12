@@ -10,27 +10,11 @@
 // CAnimObject declare the used virtual functions at their table slots
 // (placeholders named by offset), the event block, contact and collision
 // views, the part and location values' meaning and the members are
-// inferred, and the CVector3 view copies through a double pair as in
-// player_weapon.cpp. The rest of the file is not part of this unit.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
+// inferred, and CVector3 is the shared game/CVector3.h. The rest of the file is not part of this unit.
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 struct BSObject;
 class CPlayerObject;

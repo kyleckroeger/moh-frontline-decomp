@@ -12,35 +12,13 @@
 // rotation is normalised while turning). The classes and functions are named
 // by the mangled symbols; the members, flag names, event fields and listener
 // view are inferred, CHierObject declares placeholder virtuals up to
-// TriggerScriptEvent (+100), and the CVector3 view copies through a double
-// pair as in player_weapon.cpp. The rest of the file is not part of this
+// TriggerScriptEvent (+100), and CVector3 is the shared
+// game/CVector3.h. The rest of the file is not part of this
 // unit.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3& operator+=(const CVector3& v) {
-        x += v.x;
-        y += v.y;
-        z += v.z;
-        return *this;
-    }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix;
 

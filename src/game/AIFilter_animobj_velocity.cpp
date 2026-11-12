@@ -5,15 +5,10 @@
 // double-pair view (its copies move doubleword pairs). The function is a weak
 // copy of a header inline emitted in this file, so it is defined
 // __declspec(weak). The rest of the file is not part of this unit.
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 
 class CAnimObject {
 public:

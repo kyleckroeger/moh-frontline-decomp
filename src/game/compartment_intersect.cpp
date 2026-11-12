@@ -21,10 +21,8 @@ struct CVector3View {
     double pair[2];
 } __attribute__((aligned(16)));
 
-class CVector3 {
-public:
-    CVector3View v;
-};
+#include "game/CVector3.h"
+
 
 struct VECTOR3VIEW {
     float x;

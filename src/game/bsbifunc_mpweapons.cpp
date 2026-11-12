@@ -23,15 +23,8 @@
 // the class once), the node search is an inferred inline helper, and the
 // weapon-set, trigger, script-object and built-in record views and the argument
 // helper are inferred (members at their offsets, names not original).
-class CVector3 {
-public:
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
 class CMatrix {
 public:

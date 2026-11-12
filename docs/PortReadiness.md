@@ -215,6 +215,14 @@ inline (8 "unexpected compiler function set"). Also learnt: the original has no 
 `Multiply(const CMatrix&, const CMatrix&)`, and its `CMatrix` constructor takes a
 defaulted argument (`__defctor__7CMatrixFv`). CMatrix and ISceneNode are next.
 
+CVector3 copy constructor, 2026-11-12 (`research/notes/cvector3-header-variants.md`): the
+original's weak copies show a user copy constructor in compartment.cpp and hierobject.cpp,
+whose other units only matched without one, so the split was the constructor's form, not
+different headers. The header now keeps the fields in an 8-byte-aligned plain base,
+`CVector3Base`, and the copy constructor copies it; the pair-cast form and no copy
+constructor each break a different group. 42 more units moved (matrix_ps, thrown_obj_init and
+compartment_intersect among them) and the 168 already on it still match.
+
 CMatrix, 2026-11-12: `include/game/CMatrix.h`, four CVector3 rows `right, front, up, pos`
 (named after the original's `SetRight`/`SetFront`/`SetUp`/`SetPos`), 16-byte aligned, every
 out-of-line member the original has, its two weak copies (`__defctor__`, `PostMultiply`)

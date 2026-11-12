@@ -24,57 +24,12 @@
 // holds its components in a union with a double pair (implicit copies as
 // doubleword pairs, components kept in registers). The rest of the file is
 // not part of this unit.
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) {
-        d.v[0] = ax;
-        d.v[1] = ay;
-        d.v[2] = az;
-    }
-    CVector3 operator*(float f) const { return CVector3(d.v[0] * f, d.v[1] * f, d.v[2] * f); }
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.v[0] *= scale;
-            d.v[1] *= scale;
-            d.v[2] *= scale;
-        }
-    }
-    float Dot(const CVector3& v) const { return d.v[0] * v.d.v[0] + d.v[1] * v.d.v[1] + d.v[2] * v.d.v[2]; }
-    CVector3& operator+=(const CVector3& v) {
-        d.v[0] += v.d.v[0];
-        d.v[1] += v.d.v[1];
-        d.v[2] += v.d.v[2];
-        return *this;
-    }
 
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 
 class CMatrix;
 
@@ -96,7 +51,7 @@ public:
     float z;
 };
 
-inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.d.v[0], f * v.d.v[1], f * v.d.v[2]); }
+inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
 
 class CMatrix {
 public:
@@ -477,7 +432,7 @@ void CHierObject::ConstrainVelocity() {
         m_moveStep = 0.0f;
         m_turnStep = 0.0f;
         m_nextRotation = m_animRotation;
-        m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
+        m_animDelta.x = m_animDelta.y = m_animDelta.z = 0.0f;
         if (IsFollowingPath()) {
             ResetPathMotion();
         } else if (m_scriptMove || m_scriptTurn) {
@@ -486,7 +441,7 @@ void CHierObject::ConstrainVelocity() {
             m_matrix.Multiply(m_matrix, m_matrix630);
             m_matrix.Multiply(m_matrix, m_matrix5f0);
         } else if (m_flag04) {
-            m_velocity.d.v[0] = m_velocity.d.v[1] = m_velocity.d.v[2] = 0.0f;
+            m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
             m_targetRotation = m_rotation;
         }
     }
@@ -512,14 +467,14 @@ void CHierObject::OnCollision(const CCollision& collision) {
             CVector3 contactPos = collision.m_contacts->m_position;
             CVector3 otherPos;
             other->GetPosition(otherPos);
-            CVector3 push(contactPos.d.v[0] - otherPos.d.v[0], contactPos.d.v[1] - otherPos.d.v[1], contactPos.d.v[2] - otherPos.d.v[2]);
+            CVector3 push(contactPos.x - otherPos.x, contactPos.y - otherPos.y, contactPos.z - otherPos.z);
             push.Normalize();
             CVector3 normal;
             if (IsFollowingPath()) {
                 const CVector3& pos = m_matrix.GetPos();
-                normal.d.v[0] = pos.d.v[0] - m_pathPosition.d.v[0];
-                normal.d.v[1] = pos.d.v[1] - m_pathPosition.d.v[1];
-                normal.d.v[2] = pos.d.v[2] - m_pathPosition.d.v[2];
+                normal.x = pos.x - m_pathPosition.x;
+                normal.y = pos.y - m_pathPosition.y;
+                normal.z = pos.z - m_pathPosition.z;
                 normal.Normalize();
             } else if (m_scriptMove || m_scriptTurn || m_flag10) {
                 CMatrix inverse;
@@ -529,16 +484,16 @@ void CHierObject::OnCollision(const CCollision& collision) {
                 m_animRotation.GetMatrix(inverse);
                 inverse.SetPos(m_pathPosition);
                 inverse.TransformPoint(local, local);
-                normal.d.v[0] = contactPos.d.v[0] - local.d.v[0];
-                normal.d.v[1] = contactPos.d.v[1] - local.d.v[1];
-                normal.d.v[2] = contactPos.d.v[2] - local.d.v[2];
+                normal.x = contactPos.x - local.x;
+                normal.y = contactPos.y - local.y;
+                normal.z = contactPos.z - local.z;
                 normal.Normalize();
             }
             if (push.Dot(normal) < 0.0f) {
                 m_moveStep = 0.0f;
                 m_turnStep = 0.0f;
                 m_nextRotation = m_animRotation;
-                m_animDelta.d.v[0] = m_animDelta.d.v[1] = m_animDelta.d.v[2] = 0.0f;
+                m_animDelta.x = m_animDelta.y = m_animDelta.z = 0.0f;
                 if (IsFollowingPath()) {
                     ResetPathMotion();
                 } else if (m_scriptMove || m_scriptTurn) {
@@ -547,7 +502,7 @@ void CHierObject::OnCollision(const CCollision& collision) {
                     m_matrix.Multiply(m_matrix, m_matrix630);
                     m_matrix.Multiply(m_matrix, m_matrix5f0);
                 } else if (m_flag04) {
-                    m_velocity.d.v[0] = m_velocity.d.v[1] = m_velocity.d.v[2] = 0.0f;
+                    m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
                     m_targetRotation = m_rotation;
                 }
                 for (CHierObject* child = m_firstChild; child; child = child->m_nextSibling) {

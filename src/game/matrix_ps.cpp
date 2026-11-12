@@ -12,42 +12,20 @@
 // TransformPoint, which pass the result, the matrix and the vector to the
 // paired-single helpers PSTransformVector and PSTransformPoint, and Transform
 // (a point to homogeneous coordinates, in C). CMatrix, CVector3 and the
-// helpers are named by the mangled symbols; the CVector3 view and the 4x4
-// float layout are as in matrix_endian.cpp. The rest of the file is not part
+// helpers are named by the mangled symbols; the 4x4 float layout is as in
+// matrix_endian.cpp. The rest of the file is not part
 // of this unit.
 
-// Inferred: CVector3 (no constructors, so its copies stay plain doubleword
-// moves; the shared header's copy constructor recolours Orthonormalize) as
-// four floats overlaid with two doubles. Sub, Scale, Dot, Length and
-// Normalize are the original's CVector3 members (Sub and Scale write into
-// this, as the weak copies at 800a4dac and 800a4cec do); their bodies here
-// are inferred from those copies and inline as in the original.
+// CVector3 is the shared game/CVector3.h (its copy constructor copies the
+// 8-byte-aligned base, see research/notes/cvector3-header-variants.md). Sub,
+// Scale, Dot, Length and Normalize are the original's CVector3 members (Sub
+// and Scale write into this, as the weak copies at 800a4dac and 800a4cec do).
 #include <math.h>
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    float Dot(const CVector3& v) const { return d.c.x * v.d.c.x + d.c.y * v.d.c.y + d.c.z * v.d.c.z; }
-    float Length() const { return sqrtf(d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.c.x *= scale;
-            d.c.y *= scale;
-            d.c.z *= scale;
-        }
-    }
-    void Scale(const CVector3& o, float k) { d.c.x = k * o.d.c.x; d.c.y = k * o.d.c.y; d.c.z = k * o.d.c.z; }
-    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 // Inferred: a four-float vector.
 class CVector4 {
@@ -93,9 +71,9 @@ void CMatrix::Orthonormalize() {
     t.Scale(f, up.Dot(f));
     u.Sub(u, t);
     u.Normalize();
-    m[0][0] = right.d.c.x; m[0][1] = right.d.c.y; m[0][2] = right.d.c.z;
-    m[1][0] = f.d.c.x; m[1][1] = f.d.c.y; m[1][2] = f.d.c.z;
-    m[2][0] = u.d.c.x; m[2][1] = u.d.c.y; m[2][2] = u.d.c.z;
+    m[0][0] = right.x; m[0][1] = right.y; m[0][2] = right.z;
+    m[1][0] = f.x; m[1][1] = f.y; m[1][2] = f.z;
+    m[2][0] = u.x; m[2][1] = u.y; m[2][2] = u.z;
 }
 
 void CMatrix::Transpose() {
@@ -183,34 +161,34 @@ void CMatrix::FastInverse(const CMatrix& src) {
     m[2][1] = src.m[1][2];
     m[2][2] = src.m[2][2];
     m[2][3] = 0.0f;
-    m[3][0] = -(pos.d.v[0] * right.d.v[0] + pos.d.v[1] * right.d.v[1] + pos.d.v[2] * right.d.v[2]);
-    m[3][1] = -(pos.d.v[0] * up.d.v[0] + pos.d.v[1] * up.d.v[1] + pos.d.v[2] * up.d.v[2]);
-    m[3][2] = -(pos.d.v[0] * front.d.v[0] + pos.d.v[1] * front.d.v[1] + pos.d.v[2] * front.d.v[2]);
+    m[3][0] = -(pos.x * right.x + pos.y * right.y + pos.z * right.z);
+    m[3][1] = -(pos.x * up.x + pos.y * up.y + pos.z * up.z);
+    m[3][2] = -(pos.x * front.x + pos.y * front.y + pos.z * front.z);
     m[3][3] = 1.0f;
 }
 
 CVector3 CMatrix::TransformToLocal(CVector3 v) const {
     CVector3 result;
     CVector3 delta;
-    delta.d.v[2] = v.d.v[2] - m[3][2];
-    delta.d.v[1] = v.d.v[1] - m[3][1];
-    delta.d.v[0] = v.d.v[0] - m[3][0];
-    PSTransformToLocal(result.d.v, m[0], delta.d.v);
-    result.d.v[3] = 1.0f;
+    delta.z = v.z - m[3][2];
+    delta.y = v.y - m[3][1];
+    delta.x = v.x - m[3][0];
+    PSTransformToLocal(&result.x, m[0], &delta.x);
+    result.w = 1.0f;
     return result;
 }
 
 void CMatrix::TransformVector(CVector3& result, CVector3 v) const {
-    PSTransformVector(result.d.v, m[0], v.d.v);
+    PSTransformVector(&result.x, m[0], &v.x);
 }
 
 void CMatrix::TransformPoint(CVector3& result, CVector3 v) const {
-    PSTransformPoint(result.d.v, m[0], v.d.v);
+    PSTransformPoint(&result.x, m[0], &v.x);
 }
 
 void CMatrix::Transform(CVector4& result, CVector3 v) const {
-    result.x = v.d.v[0] * m[0][0] + v.d.v[1] * m[1][0] + v.d.v[2] * m[2][0] + m[3][0];
-    result.y = v.d.v[0] * m[0][1] + v.d.v[1] * m[1][1] + v.d.v[2] * m[2][1] + m[3][1];
-    result.z = v.d.v[0] * m[0][2] + v.d.v[1] * m[1][2] + v.d.v[2] * m[2][2] + m[3][2];
-    result.w = v.d.v[0] * m[0][3] + v.d.v[1] * m[1][3] + v.d.v[2] * m[2][3] + m[3][3];
+    result.x = v.x * m[0][0] + v.y * m[1][0] + v.z * m[2][0] + m[3][0];
+    result.y = v.x * m[0][1] + v.y * m[1][1] + v.z * m[2][1] + m[3][1];
+    result.z = v.x * m[0][2] + v.y * m[1][2] + v.z * m[2][2] + m[3][2];
+    result.w = v.x * m[0][3] + v.y * m[1][3] + v.z * m[2][3] + m[3][3];
 }

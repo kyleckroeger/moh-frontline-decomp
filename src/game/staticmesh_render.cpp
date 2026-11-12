@@ -23,18 +23,8 @@
 // here.
 #include <dolphin/gx.h>
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-    }
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix {
 public:
@@ -203,7 +193,7 @@ void CMSHMatBin::Link(CDmaTag* tag, CDmaPacket&) {
                         CVector3 position;
                         position = lightPos;
                         GXInitLightColor(&light[i], color);
-                        GXInitLightPos(&light[i], position.d.v[0], position.d.v[1], position.d.v[2]);
+                        GXInitLightPos(&light[i], position.x, position.y, position.z);
                         GXLightID id = (GXLightID)(1 << i);
                         GXLoadLightObjImm(&light[i], id);
                         mask |= id;
