@@ -282,6 +282,9 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
 
     Weak duplicates (a compiled copy of a weak table the original links from
     elsewhere) are never kept: references to them link to the original copy.
+    Nor are linker-stripped records (passed with them), not even when the move
+    to the section's end puts one where a numbered record of the same size
+    follows in the original.
     """
     symbols = list(obj.symbols())
     objects = [s for s in symbols if s["section"] == index and s["type"] == 1 and s["size"]]
@@ -298,7 +301,8 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
         numbered = {(s["address"], s["size"]) for items in locals_.values() for s in items
                     if s["name"].startswith("@")}
         keep |= {(s["address"], s["size"]) for s in objects
-                 if s["name"].startswith("@") and (base + s["address"], s["size"]) in numbered}
+                 if s["name"].startswith("@") and s["name"] not in duplicates
+                 and (base + s["address"], s["size"]) in numbered}
     roots = [(f["section"], f["address"], f["address"] + f["size"]) for f, _ in kept]
     # Objects that point at kept code (exception-index entries) are kept too.
     kept_ranges = [(f["section"], f["address"], f["address"] + f["size"]) for f, _ in kept]

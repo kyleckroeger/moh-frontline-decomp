@@ -16,8 +16,39 @@ sys.path.insert(0, str(ROOT / 'tools'))
 from audit import load_target
 from data_strip import linker_stripped, strip_objects
 from formats import Elf32
+from port_unit import kept_span
 from project_build import validate_object, validate_units
 from setup import CONFIG
+
+
+class FakeObject:
+    """Just enough of an Elf32 for kept_span: one extab section, no relocations."""
+    def __init__(self, objects):
+        self.sections = [{"index": 0, "name": "", "type": 0, "flags": 0, "size": 0},
+                         {"index": 1, "name": "extab", "type": 1, "flags": 2,
+                          "size": sum(size for _, _, size in objects)}]
+        self._symbols = [{"name": name, "section": 1, "address": address, "size": size, "type": 1, "binding": 0}
+                         for name, address, size in objects]
+
+    def symbols(self):
+        return iter(self._symbols)
+
+
+class StubKeptSpan(unittest.TestCase):
+    """A linker-stripped function's exception record from the middle of a
+    section, moved to the end by data_strip, must not be kept because a
+    numbered record of the same size follows the unit in the original
+    (CCompartment::HandleExplosion and the unreferenced fast_vec<int> dtor)."""
+    obj = FakeObject([("@136", 0, 24), ("@148", 24, 8), ("@142", 32, 8)])
+    numbered = {"@1": [{"name": "@1", "address": 0x100, "size": 24}],
+                "@2": [{"name": "@2", "address": 0x118, "size": 8}],
+                "@3": [{"name": "@3", "address": 0x120, "size": 8}]}
+
+    def test_numbered_records_are_kept_by_address(self):
+        self.assertEqual(kept_span(self.obj, 1, [], None, self.numbered, 0x100), (0, 40, []))
+
+    def test_moved_stub_record_is_not_kept(self):
+        self.assertEqual(kept_span(self.obj, 1, [], None, self.numbered, 0x100, {"@142"}), (0, 32, []))
 
 
 class LinkerStripped(unittest.TestCase):

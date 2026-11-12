@@ -191,7 +191,13 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   fails if one would land inside a section's kept slice. The trimmed-tail
   checks then apply, and SN's unused-code stripping drops the functions.
   `port_unit.py --linker-stripped NAME` (functions and objects alike)
-  applies the same move before matching and drafts the list.
+  applies the same move before matching and drafts the list; a moved record
+  is never kept for matching the size of a numbered record that follows the
+  unit in the original. The list also takes an unreferenced weak template
+  instance that the original linker removed and the compiler emitted between
+  kept functions (`compartment.cpp`'s `dwi::fast_vec<int>` destructor after
+  `CCompartment::HandleExplosion`): its exception records move out of the
+  middle of `extab` and `extabindex`.
 - **Small data at 4 mod 8.** MWCC gives `.sdata`, `.sbss`, `.sdata2` and
   `.rodata` 8-byte alignment, but MW's linker placed some of these input
   sections at addresses that are 4 mod 8 (`smixfx` `.sbss` at `0x8034f4d4`).
