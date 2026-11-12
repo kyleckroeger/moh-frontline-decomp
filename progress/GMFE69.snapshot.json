@@ -812,7 +812,7 @@
     "src/game/compartment_draw.cpp": "294df723ccf347dc3715d4efdc488259e857e4671f103c929511042b106192f3",
     "src/game/compartment_fastvec.cpp": "b67fa66488486aa480bb256f6ce890c1659c38fd1ed0706c56064105ff4d9bb5",
     "src/game/compartment_fastvec_tri.cpp": "06262e2f53a800d1607a14984a240a2c7629f27337f9775d8df2b3aa2dac72e1",
-    "src/game/compartment_init.cpp": "1b1abb37ca1d07f10304aa51bc341d900481f0b32c2420378481f01ddb1c4b6a",
+    "src/game/compartment_init.cpp": "85b1c6b6a643f07cae9566304b6cf6fbb5d7fc3dafc2786f0c65e28e07b62dec",
     "src/game/compartment_initclass.cpp": "8f2877a15006d14b6e1769cd37db1fdb748aa857956726fca87b817b3fd775a9",
     "src/game/compartment_intersect.cpp": "39b39b0cb006e21e5f448ec9c441c987282a77b10848d2a1e9245ccce817d24b",
     "src/game/compartment_nodeshadows.cpp": "26d2cff9bf0f38c3e88db773a01e0f23767f95bae0bc584fb5ac595c210d64f6",
@@ -53938,8 +53938,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c399f514962a097fce8b976b22c20fff683fe9072dfd610dc9da615943ea8c37",
-      "linked_sha256": "74be2c315f702503359d979ee99bf75a0d6764761fcd31dda51db8414167706c"
+      "object_sha256": "3362cbf9a1ac261ac5a8cc7484af3aeb79925c060c8c89fbac47be9fee725f37",
+      "linked_sha256": "77e3cce3d0dd5230d8b77b59938aefdc23a5d552e73a83d0aff9db8be0a10dba"
     },
     {
       "id": "weaponfactory_create",

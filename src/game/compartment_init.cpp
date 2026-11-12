@@ -85,6 +85,18 @@ public:
     CCPTMatBin* m_global; // +0x6c: an index, until it's fixed up
 };
 
+// The shape's palette record, when its type is known (as in staticmesh_init.cpp and
+// texture_load.cpp).
+static inline PaletteHeader* GetPalette(ShapeHeader* header) {
+    int offset = header->m_paletteOffset;
+    if (!offset)
+        return 0;
+    PaletteHeader* palette = (PaletteHeader*)((char*)header + offset);
+    if (palette->m_type == 0x20 || palette->m_type == 0x21 || palette->m_type == 0x30 || palette->m_type == 0x31 || palette->m_type == 0x32)
+        return palette;
+    return 0;
+}
+
 inline void CCPTMatBin::Load(int base) {
     offsetPtr(m_shape, base);
     if (!m_shape)
@@ -92,16 +104,7 @@ inline void CCPTMatBin::Load(int base) {
     ShapeHeader* header = (ShapeHeader*)((char*)m_shape + m_shape->m_shapeOffset);
     if (((int)header & 0x10) != 0x10)
         return;
-    int paletteOffset = header->m_paletteOffset;
-    PaletteHeader* palette;
-    if (!paletteOffset)
-        palette = 0;
-    else {
-        palette = (PaletteHeader*)((char*)header + paletteOffset);
-if (!(palette->m_type == 0x20 || palette->m_type == 0x21 || palette->m_type == 0x30 || palette->m_type == 0x31)) {
-            if (palette->m_type == 0x32) palette = (PaletteHeader*)((char*)header + paletteOffset); else palette = 0;
-        }
-    }
+    PaletteHeader* palette = GetPalette(header);
     m_hasPalette = palette != 0;
     unsigned int type = header->m_type;
     switch (type) {
@@ -414,26 +417,24 @@ void CCompartment::Init() {
     previous = 0;
     bin = m_data->m_simple;
     for (i = 0; i < m_data->m_numSimple; i++, bin++) {
-        CCPTMatBin* b = new (bin) CCPTMatBin(base);
+        bin = new (bin) CCPTMatBin(base);
         if (previous)
-            previous->m_next = b;
-        b->m_prev = previous;
-        previous = b;
-        if (b->m_flags & 2)
-            b->m_global = g_GlobalCpt.m_data->m_simple + (int)b->m_global;
-        bin = b;
+            previous->m_next = bin;
+        bin->m_prev = previous;
+        previous = bin;
+        if (bin->m_flags & 2)
+            bin->m_global = g_GlobalCpt.m_data->m_simple + (int)bin->m_global;
     }
     previous = 0;
     bin = m_data->m_alpha;
     for (n = 0; n < m_data->m_numAlpha; n++, bin++) {
-        CCPTMatBin* b = new (bin) CCPTMatBin(base);
+        bin = new (bin) CCPTMatBin(base);
         if (previous)
-            previous->m_next = b;
-        b->m_prev = previous;
-        previous = b;
-        if (b->m_flags & 2)
-            b->m_global = g_GlobalCpt.m_data->m_alpha + (int)b->m_global;
-        bin = b;
+            previous->m_next = bin;
+        bin->m_prev = previous;
+        previous = bin;
+        if (bin->m_flags & 2)
+            bin->m_global = g_GlobalCpt.m_data->m_alpha + (int)bin->m_global;
     }
 
     chunk = m_data->m_chunks;

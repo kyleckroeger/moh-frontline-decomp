@@ -70,3 +70,9 @@ The coordinator assigned the **not needed** items (chained zeroing, invented nam
 CurrentScreen, GiveBuddyOrders(vec_iter&), and the rule-10 header switches that still verify)
 to a cleanup agent; each change must keep the complete image identical. Load-bearing items are
 left for the maintainer: reverting them loses their matches.
+- (natural1) CCompartment::Init: the palette self-recompute (:98) is now the sibling units' `GetPalette(header)`
+  inline (staticmesh_init.cpp, texture_load.cpp: one five-type test, `return palette` / `return 0`), and
+  `bin = b;` is gone: `bin = new (bin) CCPTMatBin(base);` with `bin` used throughout. Unit verifies, image identical.
+  `WriteSwapVCD` still load-bearing (4 lines, one register: the swap loop's normals load coalesces with its mask in
+  the original, not in the chunk loop); ~40 natural variants inert (decl orders, list/stride/swap/j/k scopes,
+  shared helpers, WriteCP/mask spellings). Drafts: scratch/loop3/natural1/cpt/.
