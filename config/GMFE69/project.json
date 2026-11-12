@@ -1244,7 +1244,9 @@
     "bsbifunc_hinttext.json",
     "buddy_destroy.json",
     "staticmesh_draw.json",
-    "compartment_draw.json"
+    "compartment_draw.json",
+    "bsbifunc_prompttext.json",
+    "bsbifunc_playerammo.json"
   ],
   "progress": {
     "code_bytes": 1414572,

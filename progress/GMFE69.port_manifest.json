@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1244,
- "function_bytes_by_status": {"consistent": 171092, "differs": 10144, "exact": 5372, "verified": 1218948},
+ "verified_units": 1246,
+ "function_bytes_by_status": {"consistent": 169204, "differs": 10144, "exact": 5372, "verified": 1220836},
  "data_bytes_owned": 723975,
  "data_bytes_total": 1976252,
  "functions": [
@@ -317,7 +317,7 @@
  [2147642488, 296, "BIFunc_PlayerEjectShell__FPPiPv", "verified", "src/game/bsbifunc_cheats.cpp"],
  [2147642784, 56, "BIFunc_IsPlayerInvincible__FPPiPv", "verified", "src/game/bsbifunc_cheats.cpp"],
  [2147642840, 164, "BIFunc_PlayerSuperAimMode__FPPiPv", "verified", "src/game/bsbifunc_cheats.cpp"],
- [2147643004, 1028, "BIFunc_AddPlayerAmmo__FPPiPv", "consistent", "research/drafts/bsbifunc_prompt.cpp"],
+ [2147643004, 1028, "BIFunc_AddPlayerAmmo__FPPiPv", "verified", "src/game/bsbifunc_playerammo.cpp"],
  [2147644032, 408, "BIFunc_GetPlayerAmmo__FPPiPv", "verified", "src/game/bsbifunc_ammo.cpp"],
  [2147644440, 136, "BIFunc_SetGrenadeTimer__FPPiPv", "verified", "src/game/bsbifunc_ammo.cpp"],
  [2147644576, 120, "BIFunc_GetGrenadeTimer__FPPiPv", "verified", "src/game/bsbifunc_grenade.cpp"],
@@ -363,7 +363,7 @@
  [2147656148, 528, "PlaySoundFromTriggerOrObject__FP20TriggerObject_structP8BSObjectPviiR8CVector3", "verified", "src/game/bsbifunc_soundoffset.cpp"],
  [2147656676, 40, "BIFunc_SEDEvent__FPPiPv", "verified", "src/game/bsbifunc_sedevent.cpp"],
  [2147656716, 832, "BIFunc_DisplayPromptInteger__FPPiPv", "consistent", "research/drafts/bsbifunc_prompt.cpp"],
- [2147657548, 860, "BIFunc_DisplayPromptText__FPPiPv", "consistent", "research/drafts/bsbifunc_prompt.cpp"],
+ [2147657548, 860, "BIFunc_DisplayPromptText__FPPiPv", "verified", "src/game/bsbifunc_prompttext.cpp"],
  [2147658408, 140, "BIFunc_DisplayPrompt__FPPiPv", "verified", "src/game/bsbifunc_prompt.cpp"],
  [2147658548, 612, "DisplayHintText__FPCc", "verified", "src/game/bsbifunc_hinttext.cpp"],
  [2147659160, 308, "appendMessageToPrompt__FPCci", "verified", "src/game/bsbifunc_appendprompt.cpp"],

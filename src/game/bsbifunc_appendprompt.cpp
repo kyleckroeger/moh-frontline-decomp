@@ -32,9 +32,8 @@ void appendMessageToPrompt(const char* text, int) {
                 break;
             end = space + 1;
         }
-        length = end - text;
-        strncpy(g_promptCursor, text, length);
-        g_promptCursor[length] = 0;
+        strncpy(g_promptCursor, text, end - text);
+        g_promptCursor[end - text] = 0;
         text = end;
         g_promptColumn = 0;
         g_prompt = (g_prompt + 1) % 20;

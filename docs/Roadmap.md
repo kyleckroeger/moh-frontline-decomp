@@ -11,9 +11,9 @@ in `AGENTS.md` win.
 ## Where the project is
 
 <!-- sync_docs:status -->
-- Verified snapshot: **1,227,792 / 1,414,572** executable bytes
-  (**86.80%**), 4,866 functions in 1,244 units: **987,156** bytes of
-  `reconstructed_game` (1,059 units, `docs/Game.md`) and **240,636** bytes of
+- Verified snapshot: **1,229,680 / 1,414,572** executable bytes
+  (**86.93%**), 4,868 functions in 1,246 units: **989,044** bytes of
+  `reconstructed_game` (1,061 units, `docs/Game.md`) and **240,636** bytes of
   `restored_library` (185 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
   are in `docs/Remaining.md`.
