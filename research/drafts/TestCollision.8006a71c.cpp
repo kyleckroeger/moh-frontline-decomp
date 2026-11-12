@@ -1,3 +1,5 @@
+// real3 (2026-11-12): 7 -> 5 real lines: rv.Scale(dir, fR) moved before the edge products, and the declaration order of the contact locals
+// (svz, rv, sv, svy, point, svx, tvx, tv, tvy, tvz). Scale for sv/tv still costs (21-28). Left: fS load vs first product colour swap.
 // CCDBVolBox's weak destructor (0x8006a620: its table pointer, then CVolBox's
 // destructor, called; the object freed when asked) and collision tests
 // emitted in cdbgeom.cpp: no collision with world volumes, and the point, CDB-object, box and generic-volume tests made as its
@@ -449,25 +451,31 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
         if (code == 2) {
             // The edge products are named locals (the original keeps them apart from the
             // edge loads); no value wrapper.
-            CVector3 point;
-            float svx = fS * e0.d.c.x;
-            float svy = fS * e0.d.c.y;
-            float svz = fS * e0.d.c.z;
+            float svz;
+            CVector3 rv;
             CVector3 sv;
+            float svy;
+            rv.Scale(dir, fR);
+            CVector3 point;
+            float svx;
+            float tvx;
+            svx = fS * e0.d.c.x;
+            svy = fS * e0.d.c.y;
+            svz = fS * e0.d.c.z;
             sv.d.c.x = svx;
+            CVector3 tv;
             sv.d.c.y = svy;
             sv.d.c.z = svz;
             SetSum(point, m_vertices[0], sv);
-            float tvx = fT * e1.d.c.x;
-            float tvy = fT * e1.d.c.y;
-            float tvz = fT * e1.d.c.z;
-            CVector3 tv;
+            float tvy;
+            tvx = fT * e1.d.c.x;
+            tvy = fT * e1.d.c.y;
+            float tvz;
             tv.d.c.x = tvx;
             tv.d.c.y = tvy;
+            tvz = fT * e1.d.c.z;
             tv.d.c.z = tvz;
             point.Add(tv);
-            CVector3 rv;
-            rv.Scale(dir, fR);
             diff.d.c.x = start.d.c.x + rv.d.c.x - point.d.c.x;
             diff.d.c.y = start.d.c.y + rv.d.c.y - point.d.c.y;
             diff.d.c.z = start.d.c.z + rv.d.c.z - point.d.c.z;

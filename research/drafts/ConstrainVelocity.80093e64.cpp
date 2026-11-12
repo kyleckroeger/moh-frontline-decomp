@@ -1,3 +1,5 @@
+// real3 (2026-11-12): 14 -> 6 real lines by the declaration order of the second-solve locals (det, e, bd, n2, py, px, n1, dc, d2, inv, pz;
+// found by a statement/declaration-order hill climb). Mul is still load-bearing (6 left in the solved block; plain products 19, Scale/Add/*= members 40).
 extern "C" {
 #include <math.h>
 }
@@ -270,20 +272,20 @@ void CAnimObject::ConstrainVelocity() {
             found = second != end;
         }
         if (found) {
-            float py;
             float det;
-            float dc;
-            float px;
-            float pz;
             float e;
             float bd;
+            CVector3& n2 = second->m_normal;
+            float py;
+            float px;
+            CVector3& n1 = first->m_normal;
+            float dc;
             float d2;
             float inv;
-            CVector3& n1 = first->m_normal;
-            CVector3& n2 = second->m_normal;
             dc = best * (n1.x * n2.x + n1.y * n2.y + n1.z * n2.z);
             d2 = best2 + dc;
             px = d2 * n2.x;
+            float pz;
             py = d2 * n2.y;
             pz = d2 * n2.z;
             e = px * n1.x + py * n1.y + pz * n1.z;
