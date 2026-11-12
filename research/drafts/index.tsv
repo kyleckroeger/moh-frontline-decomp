@@ -26,7 +26,7 @@ real_lines	size	address	function	compile_settings_from	draft
 17	724	80102a20	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	config/GMFE69/hwvideodisplaylist_delete.json	research/drafts/MOHFL_VD_create.80102a20.cpp
 18	1272	80064ca0	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	config/GMFE69/animmorph_weight.json	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp
 18	860	800e7a7c	ResetShell__10CShellMenuFv	config/GMFE69/ShellMenu_dtor.json	research/drafts/ResetShell.800e7a7c.cpp
-19	108	8007c194	EndDraw__11CFontDriverFP4FONT	config/GMFE69/font_driver.json	research/drafts/EndDraw.8007c194.cpp
+11	108	8007c194	EndDraw__11CFontDriverFP4FONT	config/GMFE69/font_driver.json	research/drafts/EndDraw.8007c194.cpp
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
 7	688	8008f1e8	Orthonormalize__7CMatrixFv	config/GMFE69/matrix_endian.json	research/drafts/Orthonormalize.8008f1e8.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp

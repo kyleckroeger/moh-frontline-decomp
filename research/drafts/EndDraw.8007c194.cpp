@@ -8,7 +8,18 @@ extern "C" void* memset(void*, int, unsigned long);
 struct Shape;
 struct CColor {
  unsigned char r, g, b, a;
- CColor& operator=(const CColor& c) { b = c.b; g = c.g; r = c.r; a = c.a; return *this; }
+    CColor() {}
+    CColor(const CColor& c) {
+        unsigned char cr = c.r;
+        unsigned char cg = c.g;
+        unsigned char ca = c.a;
+        unsigned char cb = c.b;
+        r = cr;
+        g = cg;
+        b = cb;
+        a = ca;
+    }
+    CColor& operator=(const CColor& c) { a = c.a; g = c.g; b = c.b; r = c.r; return *this; }
 };
 
 
@@ -30,7 +41,7 @@ public:
 };
 
 struct FontDataView {
-    CColor GetColor() const { return color; }
+    CColor GetColor() const { CColor c; *(unsigned int*)&c = *(unsigned int*)&color; return c; }
     unsigned char unknown00[32];
     CColor color;
     unsigned char unknown24[20];
@@ -112,7 +123,7 @@ void CFontDriver::CreateFont(FONT* font) {
 
 void CFontDriver::EndDraw(FONT* font) {
     CFont* renderFont = font->font;
-    stringPacket.color = renderFont->m_data->color;
+    stringPacket.color = renderFont->m_data->GetColor();
     stringPacket.scaleX = renderFont->m_data->scaleX;
     stringPacket.scaleY = renderFont->m_data->scaleY;
     g_pRenderList->Render(*(CRenderBin*)renderFont, &stringPacket);

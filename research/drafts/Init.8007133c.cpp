@@ -137,7 +137,11 @@ void CCDBObject::Init(CDB* db) {
         m_max.d.v[1] = qy + y;
         m_max.d.v[2] = qz + z;
     } else {
-        m_min.d.v[0] = m_min.d.v[1] = m_min.d.v[2] = 0.0f;
-        m_max.d.v[0] = m_max.d.v[1] = m_max.d.v[2] = 0.0f;
+        m_min.d.v[2] = 0.0f;
+        m_min.d.v[1] = 0.0f;
+        m_min.d.v[0] = 0.0f;
+        m_max.d.v[2] = 0.0f;
+        m_max.d.v[1] = 0.0f;
+        m_max.d.v[0] = 0.0f;
     }
 }
