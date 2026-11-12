@@ -1246,7 +1246,8 @@
     "staticmesh_draw.json",
     "compartment_draw.json",
     "bsbifunc_prompttext.json",
-    "bsbifunc_playerammo.json"
+    "bsbifunc_playerammo.json",
+    "objcreate_nonvis.json"
   ],
   "progress": {
     "code_bytes": 1414572,

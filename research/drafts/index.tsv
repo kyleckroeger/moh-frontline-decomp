@@ -120,7 +120,6 @@ real_lines	size	address	function	compile_settings_from	draft
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
 	832	8002a40c	BIFunc_DisplayPromptInteger__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_prompt.cpp
-	552	8003bf88	NonVisDestructFarthestSoldiers__Fi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_soldiers.cpp
 	1236	8003ed10	CreateCollisionVolume__FP20TriggerObject_structi	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
 	1732	8003f1ec	CreateGerman__FP20TriggerObject_structib	config/GMFE69/objcreate_destroy.json	research/drafts/objcreate_create.cpp
 	1228	80034718	BSInitBIFuncs__Fv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_setup.cpp
