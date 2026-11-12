@@ -19,15 +19,20 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
-- Verified: 89.20% (1,261,812 bytes) at 8c84b851, +42,540 this run. Landing commits: 67.
-- Lanes (2026-11-12 10:24): **matching has run dry for now.** Every remaining
-  draft either waits on a question below or has been worked without a new lead (climb1's
-  declaration-order climb over all drafts at 15 lines or fewer found nothing). One agent runs
-  secondary work: hdr3, re-running the CVector3/CMatrix/ISceneNode header moves after
-  cv1's CVector3 base form (d8cf803c). The coordinator refills slots only for a fresh lead. Since 07:45:
-  TestCollision(CPlane) 2,292, Orthonormalize 688, GetClosestParameter 1,056; real-name renames
-  7a325e0f, f6ae520c (map: research/notes/real-names-map-2026-11-12.tsv). Usage limit stopped
-  all agents 00:10-00:40 and 03:50-05:40 on 11-12.
+- Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
+- **Run paused by the coordinator, 2026-11-12 ~10:50.** Matching ran dry: every remaining
+  draft waits on a question below or has been worked repeatedly with no new lead, and the
+  secondary header work (CVector3/CMatrix/ISceneNode, 8c84b851..9da917fa) has taken every unit
+  that verifies. Restart with the /loop command at the top of this file after answering
+  questions; answers to q1, q5, q9, q14 and q15 alone unlock about 10.8 KB of code-exact drafts.
+  Summary of the run (11-11 20:40 to 11-12 10:50): +42,540 verified bytes (86.19% -> 89.20%)
+  over 67 landing commits; 17 scratch bests moved into research/drafts; 152 data symbols
+  defined (undefined 197 -> 82); shared CMatrix.h (87 units), ISceneNode.h (75) and a revised
+  CVector3.h (+46 units); tools: brchk.py, extab_records.py, port_unit kept_span fix; rules found
+  (scratch/loop3/TRICKS.md): shared zero, member destructors in ctors, real CVector3 members,
+  stack-slot inline groups, callee rank; independent audit in
+  research/notes/loop-audit-2026-11-12.md with its free fixes applied. Usage limit stopped all
+  agents 00:10-00:40 and 03:50-05:40.
 - Waiting on the maintainer (agents continue meanwhile; all reversible):
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
