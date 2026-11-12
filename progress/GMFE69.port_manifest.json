@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 146384, "differs": 10144, "exact": 4472, "verified": 1244556},
+ "function_bytes_by_status": {"consistent": 145988, "differs": 10144, "exact": 4472, "verified": 1244952},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -4799,7 +4799,7 @@
  [2148914264, 92, "SNDplaysetdef", "verified", "src/ea/splysdef.c"],
  [2148914356, 124, "SND_attrsetdef", "verified", "src/ea/sattrdef.c"],
  [2148914480, 1700, "SNDVOICEI_alloc__FiiPiii", "consistent", "research/drafts/SNDVOICEI_alloc.8015d530.c"],
- [2148916180, 396, "SNDVOICEI_free__Fi", "consistent", "research/drafts/SNDVOICEI_free.8015dbd4.c"],
+ [2148916180, 396, "SNDVOICEI_free__Fi", "verified", "src/ea/salloc.c"],
  [2148916576, 96, "SNDVOICEI_get__Fi", "verified", "src/ea/salloc.c"],
  [2148916672, 128, "SNDI_calcfxlevel__Fii", "verified", "src/ea/scalcfx.c"],
  [2148916800, 192, "iSNDcalcvol__Fi", "verified", "src/ea/slib.c"],

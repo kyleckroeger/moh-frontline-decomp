@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8015dd60",
-      "size": 96,
+      "address": "0x8015dbd4",
+      "size": 492,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDVOICEI_free__Fi",
+      "address": "0x8015dbd4",
+      "size": 396,
+      "binding": 1
+    },
     {
       "name": "SNDVOICEI_get__Fi",
       "address": "0x8015dd60",

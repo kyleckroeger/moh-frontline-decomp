@@ -1,4 +1,7 @@
 // A fragment of pumhandler.cpp (0x800b9a00): PopUpMessageHandler_Loop.
+// Code exact (2026-11-12, loop mid3) but NOT landable: the original's switch keeps a separate empty
+// 'case 8' node ('cmpwi 8; beq; bge; b'), which only the identity statement in case 8 reproduces
+// (declined form; every empty/break/default spelling drops the node, -1 instruction). Maintainer question.
 extern "C" void FONT_getrecta(void*, const char*, float*, float*, float*, float*);
 
 struct CColor {
@@ -137,16 +140,18 @@ public:
 };
 
 void PopUpMessageHandler::PopUpMessageHandler_Loop() {
-    PopUpMessageHandler* const self = this;
-
     float scaleX;
-    float top;
-    float bottom;
+    float sy0;
+    float sy1;
+    float sy2;
+    float sy3;
     CScreen* screen;
     int screenX;
     int screenY;
     float left;
     float right;
+    float top;
+    float bottom;
     float scaleY;
     float x;
     float y;
@@ -156,10 +161,7 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
     float fontScaleY;
     int count;
     int i;
-    float sy0;
-    float sy1;
-    float sy2;
-    float sy3;
+    int shrink;
     float elapsed;
     short minTop;
     short topSlot;
@@ -176,12 +178,10 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
     elapsed = (1.0f / 59.94f) * m_speed;
     scaleY = g_viewport.m_scaleY;
     if (g_bInMultiplayerMode) {
-        float offsetX = (float)screenX * g_viewport.m_x;
-        left = 10.0f * scaleX + offsetX;
-        right = (right - 10.0f) * scaleX + offsetX;
-        float offsetY = (float)screenY * g_viewport.m_y;
-        top = top * scaleY + offsetY;
-        bottom = bottom * scaleY + offsetY;
+        left = 10.0f * scaleX + (float)screenX * g_viewport.m_x;
+        right = (right - 10.0f) * scaleX + (float)screenX * g_viewport.m_x;
+        top = top * scaleY + (float)screenY * g_viewport.m_y;
+        bottom = bottom * scaleY + (float)screenY * g_viewport.m_y;
     }
     switch (g_NumPlayers) {
     case 1:
@@ -202,7 +202,7 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
                 count++;
         }
         if (count > 0) {
-            int shrink = (4 - count) * 22;
+            shrink = (4 - count) * 22;
             _spritepolyvert verts[4] = {
                 { 0.0f, 0.0f, left, 0.0f, 0.0f, 0x80808040 },
                 { 1.0f, 0.0f, right, 0.0f, 0.0f, 0x80808040 },
@@ -273,7 +273,7 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
                             if (g_bInMultiplayerMode) {
                                 static int MP_PUM_LEFT_JUSTIFY = 30;
                                 float textX = scaleX * MP_PUM_LEFT_JUSTIFY + (float)screenX * g_viewport.m_x;
-                                unsigned short locY = message->Get_screenLocY();
+                                float locY = message->Get_screenLocY();
                                 float textY = fontScaleY * locY + (float)screenY * g_viewport.m_y;
                                 textY += 8.0f;
                                 m_font->DrawText(textX, textY, message->GetString());

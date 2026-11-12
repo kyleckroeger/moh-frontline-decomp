@@ -44,7 +44,7 @@ real_lines	size	address	function	compile_settings_from	draft
 28	400	80168828	decodexac__3SNDFPQ23SND10MXAPACKETF	config/GMFE69/eaxadecf.json	research/drafts/decodexac.80168828.cpp
 11	2028	8003c93c	CreateDestructable__FP20TriggerObject_structi	config/GMFE69/objcreate_createplayer.json	research/drafts/CreateDestructable.8003c93c.cpp
 39	388	80030658	BIFunc_PlayerScreenFlash__FPPiPv	config/GMFE69/bsbifunc_death.json	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
-27	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
+0	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
 2	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
 3	568	800d7718	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	config/GMFE69/weaponfactory.json	research/drafts/PublishEvent.800d7718.cpp
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp
@@ -92,7 +92,6 @@ real_lines	size	address	function	compile_settings_from	draft
 49	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
 3	244	8015d238	SNDtimeremaining	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDtimeremaining.8015d238.c
 53	1700	8015d530	SNDVOICEI_alloc__FiiPiii	config/GMFE69/salloc.json	research/drafts/SNDVOICEI_alloc.8015d530.c
-44	396	8015dbd4	SNDVOICEI_free__Fi	config/GMFE69/salloc.json	research/drafts/SNDVOICEI_free.8015dbd4.c
 79	708	8015f538	SNDI_precalcaztospkrvol__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDI_precalcaztospkrvol.8015f538.c
 80	340	8015f934	iSNDrandom__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/iSNDrandom.8015f934.c
 20	408	80160114	SNDMIXI_volramp__FP11SNDMIXVOICE	config/GMFE69/smixer.json	research/drafts/SNDMIXI_volramp.80160114.c

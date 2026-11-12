@@ -84,8 +84,8 @@ public:
     ~CShellMenu();
     void ResetShell();
 
-    inline void ResetGame(int type) { m_flag218_40 = 0; m_flag218_20 = 0; SetGameType(type); }
-    inline void SetGameType(int type) {        switch (m_gameType = type) {
+    inline void SetGameType(int type) {
+        switch (m_gameType = type) {
         case 1:
             m_gameTypeSuffix = "";
             m_gameTypeIndex = 0;
@@ -230,7 +230,10 @@ void CShellMenu::ResetShell() {
     g_cheats.Reset();
     memset(m_block120, 0, sizeof(m_block120));
     memset(m_block02c, 0, sizeof(m_block02c));
-        ResetGame(1);    m_gameTypeSuffix = "";
+    m_flag218_40 = 0;
+    m_flag218_20 = 0;
+    SetGameType(1);
+    m_gameTypeSuffix = "";
     m_value18ec = 0;
     m_value19a5 = 0;
     m_value19a6 = 1;
