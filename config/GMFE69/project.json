@@ -1242,7 +1242,9 @@
     "compartment_initclass.json",
     "bsbifunc_promptbuffer.json",
     "bsbifunc_hinttext.json",
-    "buddy_destroy.json"
+    "buddy_destroy.json",
+    "staticmesh_draw.json",
+    "compartment_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,
