@@ -607,10 +607,8 @@ void CSoldierObject::UpdateAnimation(float dt) {
                     front.z = 0.0f;
                     front.Normalize();
                     flat.Normalize();
-                    float d = flat.Dot(front);
-                    if (d < 0.0f) {
-                        float k = d * -2.0f;
-                        flat += k * front;
+                    if (flat.Dot(front) < 0.0f) {
+                        flat += (flat.Dot(front) * -2.0f) * front;
                         scale = dir.x * dir.x + dir.y * dir.y;
                     }
                     front = body.GetUp();
@@ -645,19 +643,22 @@ void CSoldierObject::UpdateAnimation(float dt) {
                 float az;
                 float ay;
                 result.ToEulerXZY(ax, az, ay);
+                short dx = (int)(2670176.8f * (ax - 0.34906584f)) >> 8;
+                short dy = (int)(2670176.8f * az) >> 8;
+                short dz = (int)(2670176.8f * ay) >> 8;
                 short* angles = m_boneAngles[bone];
-                int dx = (short)((int)(2670176.8f * (ax - 0.34906584f)) >> 8);
-                int dy = (short)((int)(2670176.8f * az) >> 8);
-                int dz = (short)((int)(2670176.8f * ay) >> 8);
                 int x = angles[0];
                 int y = angles[1];
                 int z = angles[2];
-                dx = (short)(dx - x);
-                dy = (short)(dy - y);
-                dz = (short)(dz - z);
-                angles[0] = (short)(dx * t) + x;
-                angles[1] = (short)(dy * t) + y;
-                angles[2] = (short)(dz * t) + z;
+                dx = dx - x;
+                short sx = dx * t;
+                angles[0] = sx + x;
+                dy = dy - y;
+                short sy = dy * t;
+                angles[1] = sy + y;
+                dz = dz - z;
+                short sz = dz * t;
+                angles[2] = sz + z;
                 if (m_value43c8 < m_value43c4)
                     m_value43c8++;
             }

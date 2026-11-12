@@ -48,7 +48,7 @@ real_lines	size	address	function	compile_settings_from	draft
 44	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
 46	568	800d7718	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	config/GMFE69/weaponfactory.json	research/drafts/PublishEvent.800d7718.cpp
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp
-59	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp
+16	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp
 61	2264	8005e9ec	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_finish.json	research/drafts/aim_cb.8005e9ec.cpp
 66	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
 68	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
