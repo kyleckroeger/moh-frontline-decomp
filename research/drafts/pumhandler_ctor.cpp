@@ -14,12 +14,16 @@ class CSprite {
 public:
     enum ESpriteLoadType {};
     CSprite(const char*, ESpriteLoadType, ERenderPriority);
+    void* operator new(unsigned long size) { return DWI_alloc(0, size, 0x400); }
+    unsigned char unknown[100];
 };
 class CColor {
 public:
-    CColor(unsigned int rgba) : m_rgba(rgba) {}
-    CColor(const CColor& other) : m_rgba(other.m_rgba) {}
-    unsigned int m_rgba;
+    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+    unsigned char a;
 };
 class CFont {
 public:
@@ -66,12 +70,59 @@ public:
         }
         m_count = 0;
     }
+    void Load(char*, char*);
     UserMessage* m_table;
     char* m_strings;
     unsigned char* m_lengths;
     int m_count;
 };
 CUserMessageTable umTable;
+
+inline void ChangeEndian(short& value) {
+    unsigned char bytes[2];
+    *reinterpret_cast<short*>(bytes) = value;
+    unsigned char c = bytes[0];
+    bytes[0] = bytes[1];
+    bytes[1] = c;
+    value = *reinterpret_cast<short*>(bytes);
+}
+
+inline void ChangeEndian(unsigned short& value) {
+    ChangeEndian(*reinterpret_cast<short*>(&value));
+}
+
+inline void CUserMessageTable::Load(char* textFile, char* indexFile) {
+    int pos;
+    unsigned char* index;
+    char* text;
+    if (m_strings || m_lengths || m_table)
+        Unload();
+    m_strings = (char*)TLT_LoadFileNormal(textFile, 0, 0);
+    m_lengths = (unsigned char*)TLT_LoadFileNormal(indexFile, 0, 0);
+    text = m_strings;
+    if (!text || !(index = m_lengths)) {
+        DebugMsg("Can't find User message files: %s and %s!!!\n", textFile, indexFile);
+        return;
+    }
+    pos = 2;
+    unsigned short count = *(unsigned short*)index;
+    ChangeEndian(count);
+    m_count = count;
+    if (m_table)
+        delete[] m_table;
+    m_table = new UserMessage[m_count];
+    for (unsigned short i = 0; i < m_count; i++, pos += 2) {
+        unsigned char* entry = index + pos;
+        unsigned char extra = entry[0];
+        m_table[i].m_length = extra;
+        unsigned char length = entry[1];
+        m_table[i].m_text = text;
+        char* end = text + length;
+        text = end + 1 + extra;
+        m_table[i].m_padding = length;
+        *end = 0;
+    }
+}
 
 class PopUpMessage {
 public:
@@ -99,32 +150,7 @@ public:
 };
 
 PopUpMessageHandler::PopUpMessageHandler(char* stringFile, char* lengthFile) {
-    if (umTable.m_strings || umTable.m_lengths || umTable.m_table)
-        umTable.Unload();
-    umTable.m_strings = (char*)TLT_LoadFileNormal(stringFile, 0, 0);
-    umTable.m_lengths = (unsigned char*)TLT_LoadFileNormal(lengthFile, 0, 0);
-    char* text = umTable.m_strings;
-    unsigned char* lengths = umTable.m_lengths;
-    if (!text || !lengths) {
-        DebugMsg("Can't find User message files: %s and %s!!!\n", stringFile, lengthFile);
-    } else {
-        umTable.m_count = (lengths[1] << 8) | lengths[0];
-        if (umTable.m_table)
-            delete[] umTable.m_table;
-        umTable.m_table = new UserMessage[umTable.m_count];
-        int offset = 2;
-        for (unsigned short i = 0; i < umTable.m_count; i++) {
-            unsigned char* entry = lengths + offset;
-            offset += 2;
-            umTable.m_table[i].m_length = entry[0];
-            unsigned char padding = entry[1];
-            char* end = text + padding;
-            umTable.m_table[i].m_text = text;
-            text = end + entry[0] + 1;
-            umTable.m_table[i].m_padding = padding;
-            *end = 0;
-        }
-    }
+    umTable.Load(stringFile, lengthFile);
 
     LevelFileContentsStruct_* fonts = TLT_FindNextResourceByType((TLTResourceID)11, 0);
     const char* fontData;
@@ -137,21 +163,19 @@ PopUpMessageHandler::PopUpMessageHandler(char* stringFile, char* lengthFile) {
         POPUPS_IN_SECTION = 2;
 
     m_font = new CFont(fontData, (ERenderPriority)0x6f);
-    CColor color(0x3f3f3f80);
-    m_font->SetColor(color);
+    m_font->SetColor(CColor(63, 63, 63, 128));
     CScreen* screen = CScreen::GetCurrent();
     if (screen)
         m_font->SetDepth(screen->GetDepthBufferMax());
     m_subtitleFont = new CFont(subtitleData, (ERenderPriority)0x70);
-    CColor subtitleColor(0x3f3f3f3f);
-    m_subtitleFont->SetColor(subtitleColor);
+    m_subtitleFont->SetColor(CColor(63, 63, 63, 63));
     m_subtitleFont->SetScale(1.0f, 1.0f);
     if (screen)
         m_subtitleFont->SetDepth(screen->GetDepthBufferMax());
     if (!m_back)
-        m_back = new (DWI_alloc(0, 100, 0x400)) CSprite("data\\bitmaps\\popupBack.gsh", (CSprite::ESpriteLoadType)1, (ERenderPriority)0x6e);
+        m_back = new CSprite("data\\bitmaps\\popupBack.gsh", (CSprite::ESpriteLoadType)1, (ERenderPriority)0x6e);
     if (!m_subtitleBack)
-        m_subtitleBack = new (DWI_alloc(0, 100, 0x400)) CSprite("data\\bitmaps\\popupSubtitleBack.gsh", (CSprite::ESpriteLoadType)1, (ERenderPriority)10);
+        m_subtitleBack = new CSprite("data\\bitmaps\\popupSubtitleBack.gsh", (CSprite::ESpriteLoadType)1, (ERenderPriority)10);
     m_subtitles = g_Shell.m_subtitles;
 }
 

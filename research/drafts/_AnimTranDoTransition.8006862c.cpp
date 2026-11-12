@@ -123,7 +123,7 @@ struct AnimChannel_t {
     unsigned char unknown72[22];
 };
 
-struct AnimTransition_t {
+struct AnimTranData_t {
     unsigned char unknown00[4];
     unsigned short type;
     unsigned short frames;
@@ -161,7 +161,7 @@ static inline int StrongestChannel(AnimObjHdr_t* object, AnimChannel_t* channels
 }
 
 static inline bool StartTransition(AnimStInfo_t* states, AnimObjHdr_t* object, AnimChannel_t* channels, unsigned short to,
-                                   void* info, AnimTransition_t* transition, AnimStSlot_t* slot, int k) {
+                                   void* info, AnimTranData_t* transition, AnimStSlot_t* slot, int k) {
     void* file = g_AnimDB.GetFileFromFileNum(object->set, transition->fileNum);
     if (file) {
         unsigned int channel = AnimChanStartAnim(object, channels, file, transition->anim, 0xffff, info, 1.0f);
@@ -200,14 +200,14 @@ void _AnimTranDoTransition(AnimStInfo_t* states, AnimObjHdr_t* object, AnimChann
                     AnimChannel_t* next = &channels[toChannel];
                     AnimChannel_t* prev = &channels[fromChannel];
                     unsigned short prevAnim = prev->anim;
-                    AnimTransition_t* transition =
-                        (AnimTransition_t*)FindTransition(array, next->anim, next->fileNum, to, prevAnim, prev->position);
+                    AnimTranData_t* transition =
+                        (AnimTranData_t*)FindTransition(array, next->anim, next->fileNum, to, prevAnim, prev->position);
                     if (!transition)
-                        transition = (AnimTransition_t*)FindTransition(array, 0xffff, 0, to, prevAnim, prev->position);
+                        transition = (AnimTranData_t*)FindTransition(array, 0xffff, 0, to, prevAnim, prev->position);
                     if (!transition)
-                        transition = (AnimTransition_t*)FindTransition(array, next->anim, next->fileNum, to, 0xffff, 0);
+                        transition = (AnimTranData_t*)FindTransition(array, next->anim, next->fileNum, to, 0xffff, 0);
                     if (!transition)
-                        transition = (AnimTransition_t*)FindTransition(array, 0xffff, 0, to, 0xffff, 0);
+                        transition = (AnimTranData_t*)FindTransition(array, 0xffff, 0, to, 0xffff, 0);
                     if (transition) {
                         switch (transition->type) {
                         case 0:

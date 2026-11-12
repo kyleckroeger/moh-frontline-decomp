@@ -180,6 +180,16 @@ name. `layout_lint.py --check FILE SETTINGS` lints one draft in seconds. The lin
 the test suite: a full run takes several minutes, and the naming conflicts must be
 resolved by step 3.3 first.
 
+Layout lint rerun, 2026-11-12 (full recompile, about a minute with 4 jobs): 1,185 files,
+1,304 classes, 170 conflicts (163 member, 6 width, 1 vtable pointer), 18 draft-only;
+168 and 16 after the two draft fixes below.
+`research/notes/layout-conflicts.md` decides each width conflict and the most frequent
+member conflicts from the original's loads and stores. One was a real draft bug: the
+PopUpMessageHandler constructor draft built `CColor` as one word where the original stores
+four bytes (fixed). `CQuaternion` is wxyz (scalar at +0, from `Rotate`). The new
+vtable-pointer row is `decal.cpp`'s CRenderBin view (+0 against +0x1c in 77 files): wrong
+but harmless, listed there with the other verified-unit views for the header step.
+
 Shared headers, 2026-11-11: `include/game/CVector3.h` (with `msl_sqrtf.h`). Decision
 point reached on the first class. `research/tools/try_header.py CLASS` moves every unit
 with its own view onto the header in a copy, rewriting the view's field spellings, and
