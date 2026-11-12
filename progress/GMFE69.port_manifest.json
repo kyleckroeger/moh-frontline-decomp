@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1237,
- "function_bytes_by_status": {"consistent": 177552, "differs": 10144, "exact": 5748, "verified": 1212112},
+ "verified_units": 1238,
+ "function_bytes_by_status": {"consistent": 177288, "differs": 10144, "exact": 5748, "verified": 1212376},
  "data_bytes_owned": 723834,
  "data_bytes_total": 1976252,
  "functions": [
@@ -523,8 +523,8 @@
  [2147697212, 124, "BIFunc_AISetTargetMode__FPPiPv", "verified", "src/game/bsbifunc_ai.cpp"],
  [2147697336, 120, "BIFunc_DoSomethingInteresting__FPPiPv", "verified", "src/game/bsbifunc_ai.cpp"],
  [2147697456, 132, "BSBifuncInvalid__FPPiPv", "verified", "src/game/bsbifunc_ai.cpp"],
- [2147697588, 108, "BSUpdateBIFuncs__Fv", "consistent", "research/drafts/bsbifunc_setup.cpp"],
- [2147697696, 156, "BSCleanUpBIFuncs__Fv", "consistent", "research/drafts/bsbifunc_setup.cpp"],
+ [2147697588, 108, "BSUpdateBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
+ [2147697696, 156, "BSCleanUpBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
  [2147697852, 604, "BSResetBIFuncs__Fv", "consistent", "research/drafts/bsbifunc_setup.cpp"],
  [2147698456, 1228, "BSInitBIFuncs__Fv", "consistent", "research/drafts/bsbifunc_setup.cpp"],
  [2147699684, 328, "__sinit_bsbifunc_cpp", "verified", "src/game/bsbifunc.cpp"],

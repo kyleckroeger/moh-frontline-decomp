@@ -61,32 +61,6 @@ extern unsigned long g_pGenericSoundMemory[20];
 extern HintText g_HintTextArray[20];
 extern int g_iHintBufferIndex;
 
-int BSUpdateBIFuncs() {
-    g_DistanceToTargetSchedule.Update();
-    g_TargetSearchSchedule.Update();
-    g_TargetCheckSchedule.Update();
-    g_SoundSchedule.Update(1);
-    g_CorpseSearchSchedule.Update();
-    g_BuddyPlayerCheckSchedule.Update();
-    g_MMGPointCheckSchedule.Update();
-    return 0;
-}
-
-int BSCleanUpBIFuncs() {
-    g_DistanceToTargetSchedule.Shutdown();
-    g_TargetSearchSchedule.Shutdown();
-    g_TargetCheckSchedule.Shutdown();
-    g_SoundSchedule.Shutdown();
-    g_CorpseSearchSchedule.Shutdown();
-    g_BuddyPlayerCheckSchedule.Shutdown();
-    g_MMGPointCheckSchedule.Shutdown();
-    for (int i = 0; i < 4; i++) {
-        if (g_pPopUpMessageHandler[i])
-            delete g_pPopUpMessageHandler[i];
-    }
-    return 0;
-}
-
 static inline void ChangeEndian(int& value) {
     unsigned char bytes[4];
     *reinterpret_cast<int*>(bytes) = value;

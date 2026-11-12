@@ -1,0 +1,103 @@
+{
+  "id": "bsbifunc_schedules",
+  "source": "src/game/bsbifunc_schedules.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800343b4",
+      "size": 264,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a1ac",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011048",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "BSUpdateBIFuncs__Fv",
+      "address": "0x800343b4",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "BSCleanUpBIFuncs__Fv",
+      "address": "0x80034420",
+      "size": 156,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Shutdown__10BSScheduleFv": "0x8003ac2c",
+    "Shutdown__13SoundScheduleFv": "0x800476e8",
+    "Update__10BSScheduleFv": "0x8003a844",
+    "Update__13SoundScheduleFi": "0x80046bc8",
+    "__dt__19PopUpMessageHandlerFv": "0x800ba304",
+    "g_SoundSchedule": "0x8034e784"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_SoundSchedule"
+  ],
+  "original_file": "bsbifunc.cpp",
+  "original_file_index": 443,
+  "pooled_sections": [
+    ".bss"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 12,
+      "address": "0x80197470"
+    }
+  ]
+}
