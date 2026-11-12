@@ -1,12 +1,39 @@
-// A fragment of static_obj.cpp (0x800af260-0x800af48c): CStaticObject::SetMovementPath
-// and CStaticObject::ScaleFromScript.
+// A fragment of static_obj.cpp (0x800af260-0x800af7c0): CStaticObject::SetMovementPath,
+// ScaleFromScript, RotateFromScript and TranslateFromScript.
 // SetMovementPath (a script call) picks a spline path by id and starts the
 // traversal (optionally also the look traversal and following the player),
 // or stops/finishes the movement for the negative ids -1/-2. Class and
 // function names are from the symbols; the member meanings are inferred.
 // ScaleFromScript starts a scripted value change: the script-value flag is
 // set, the event to fire is kept, and the target value and the time divided
-// by it are stored. The rest of the file is in other units.
+// by it are stored. RotateFromScript and TranslateFromScript start a scripted
+// rotation / translation: flag, event, the time until the first axis arrives
+// (CalculateMovementTime, an inline member as in Rising Sun's
+// StaticObjectTranslate.cpp; FLT_MAX when every rate is zero), and the
+// rotation target as a quaternion / the velocity. The rest of the file is in
+// other units.
+/* Inferred view: copied as two doubles through a union (the velocity
+   store loads both halves before storing). */
+union CVector3Pair {
+    double pair[2];
+    float v[4];
+};
+
+class CVector3 {
+public:
+    CVector3() {}
+    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
+    CVector3& operator=(const CVector3& other) {
+        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+        return *this;
+    }
+
+    float x;
+    float y;
+    float z;
+    float w;
+} __attribute__((aligned(8)));
+
 class BSObject;
 class CAISplinePath;
 class CAIFilterObject;
@@ -47,10 +74,38 @@ public:
 
 enum EBSEventEnum {};
 
+class CMatrix {
+public:
+    CMatrix() {
+        if (!s_ClassInit)
+            InitClass();
+    }
+    static void InitClass();
+    void BuildRotX(float);
+    void RotateY(float);
+    void RotateZ(float);
+    static bool s_ClassInit;
+
+    float m[4][4];
+} __attribute__((aligned(16)));
+
+class CQuaternion {
+public:
+    void SetFromMatrix(const CMatrix&);
+
+    float x;
+    float y;
+    float z;
+    float w;
+};
+
 class CStaticObject {
 public:
     void SetMovementPath(int, bool, bool, float, float, float, float, BSObject*, float, bool);
     void ScaleFromScript(float, float, EBSEventEnum);
+    void RotateFromScript(CVector3&, CVector3&, EBSEventEnum);
+    void TranslateFromScript(CVector3&, CVector3&, EBSEventEnum);
+    float CalculateMovementTime(const CVector3&, const CVector3&);
 
     unsigned char unknown000[136];
     CAISplinePathTraversal m_lookTraversal;
@@ -67,11 +122,18 @@ public:
     float m_unknownfc;
     float m_unknown100;
     int m_movementState;
-    unsigned char unknown108[168];
+    unsigned char unknown108[88];
+    CVector3 m_translateVelocity;
+    unsigned char unknown170[32];
+    CQuaternion m_scriptTurn;
+    unsigned char unknown1a0[16];
     float m_value1b0;
-    unsigned char unknown1b4[12];
+    unsigned char unknown1b4[4];
+    float m_translateTime;
+    float m_rotateTime;
     float m_time1c0;
-    unsigned char unknown1c4[8];
+    int m_translateEvent;
+    int m_turnEvent;
     int m_valueEvent;
     unsigned char unknown1d0[16];
     unsigned char m_flag80 : 1;
@@ -133,4 +195,54 @@ void CStaticObject::ScaleFromScript(float value, float time, EBSEventEnum event)
     m_valueEvent = event;
     m_value1b0 = value;
     m_time1c0 = time / value;
+}
+
+// Seconds until the first axis with a non-zero rate and distance arrives
+// (zero times are ignored).
+inline float CStaticObject::CalculateMovementTime(const CVector3& rate, const CVector3& distance) {
+    float tx = 0.0f;
+    float ty = 0.0f;
+    float tz = 0.0f;
+    if (rate.x != 0.0f && distance.x != 0.0f)
+        tx = distance.x / rate.x;
+    if (rate.y != 0.0f && distance.y != 0.0f)
+        ty = distance.y / rate.y;
+    if (rate.z != 0.0f && distance.z != 0.0f)
+        tz = distance.z / rate.z;
+    float t = ((tx < ty && tx > 0.0f) || ty == 0.0f) ? tx : ty;
+    return ((t < tz && t > 0.0f) || tz == 0.0f) ? t : tz;
+}
+
+void CStaticObject::RotateFromScript(CVector3& angles, CVector3& rates, EBSEventEnum event) {
+    CVector3 a = angles;
+    CVector3 b = rates;
+    a.x = -a.x;
+    a.y = -a.y;
+    a.z = -a.z;
+    b.x = -b.x;
+    b.y = -b.y;
+    b.z = -b.z;
+    m_scriptRotate = true;
+    m_turnEvent = event;
+    if (b.x == 0.0f && b.y == 0.0f && b.z == 0.0f) {
+        m_rotateTime = 3.4028235e38f;
+    } else {
+        m_rotateTime = CalculateMovementTime(a, b);
+    }
+    CMatrix m;
+    m.BuildRotX(a.x);
+    m.RotateY(a.y);
+    m.RotateZ(a.z);
+    m_scriptTurn.SetFromMatrix(m);
+}
+
+void CStaticObject::TranslateFromScript(CVector3& velocity, CVector3& distance, EBSEventEnum event) {
+    m_scriptMove = 1;
+    m_translateEvent = event;
+    if (distance.x == 0.0f && distance.y == 0.0f && distance.z == 0.0f) {
+        m_translateTime = 3.4028235e38f;
+    } else {
+        m_translateTime = CalculateMovementTime(velocity, distance);
+    }
+    m_translateVelocity = velocity;
 }

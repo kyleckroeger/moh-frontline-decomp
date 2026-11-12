@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x800af260",
-      "size": 556,
+      "size": 1376,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000d3b8",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800144a4",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -64,6 +64,18 @@
       "binding": 1
     },
     {
+      "name": "RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum",
+      "address": "0x800af48c",
+      "size": 512,
+      "binding": 1
+    },
+    {
+      "name": "TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum",
+      "address": "0x800af68c",
+      "size": 308,
+      "binding": 1
+    },
+    {
       "name": "SetMovementPath__13CStaticObjectFibbffffP8BSObjectfb",
       "address": "0x800af260",
       "size": 520,
@@ -71,18 +83,26 @@
     }
   ],
   "externals": {
+    "BuildRotX__7CMatrixFf": "0x800908c0",
     "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetSplinePath__15CAIFilterGlobalCFUlb": "0x8005d6d4",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "PrepareForTraversalForward__22CAISplinePathTraversalFP13CAISplinePathbP15CAIFilterObject": "0x8005041c",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "SetFromMatrix__11CQuaternionFRC7CMatrix": "0x80091990",
     "g_aigAIFilterGlobalObject": "0x801c6cd4",
-    "g_scene": "0x8019484c"
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "static_obj.cpp",
   "original_file_index": 6731,
   "pooled_sections": [
@@ -94,6 +114,12 @@
       "offset": 0,
       "size": 4,
       "address": "0x80350880"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803508d4"
     }
   ]
 }

@@ -12,7 +12,6 @@ real_lines	size	address	function	compile_settings_from	draft
 3	512	8007cbb0	DrawTextCenteredF__5CFontFfPCce	config/GMFE69/font_render.json	research/drafts/DrawTextCenteredF.8007cbb0.cpp
 3	236	800de334	MoveStatsIntoProperAreaForIstudio__10CShellMenuFv	config/GMFE69/Pause.json	research/drafts/MoveStatsIntoProperAreaForIstudio.800de334.cpp
 4	480	80052f6c	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	config/GMFE69/CoverPoint_unoccupied.json	research/drafts/FlagAsOccupied.80052f6c.cpp
-4	308	800af68c	TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	config/GMFE69/static_obj_setpos.json	research/drafts/TranslateFromScript.800af68c.cpp
 5	800	800f2090	DrawNode__11CStaticMeshFR7MSHNodeUl	config/GMFE69/staticmesh_mshnode_copy.json	research/drafts/DrawNode.800f2090.cpp
 6	740	800523cc	GetPeekLocation__11CCoverPointFv	config/GMFE69/AITankObject_ctor.json	research/drafts/GetPeekLocation.800523cc.cpp
 6	500	800bf4f8	Scroll__12PopUpMessageFv	config/GMFE69/popup_displaytime.json	research/drafts/Scroll.800bf4f8.cpp
@@ -55,7 +54,6 @@ real_lines	size	address	function	compile_settings_from	draft
 44	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
 46	568	800d7718	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	config/GMFE69/weaponfactory.json	research/drafts/PublishEvent.800d7718.cpp
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp
-57	512	800af48c	RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum	config/GMFE69/static_obj_scale.json	research/drafts/RotateFromScript.800af48c.cpp
 59	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp
 61	2264	8005e9ec	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_finish.json	research/drafts/aim_cb.8005e9ec.cpp
 66	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
