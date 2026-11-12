@@ -1,0 +1,139 @@
+{
+  "id": "UserInterface_timestamp",
+  "source": "src/game/UserInterface_timestamp.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto,deferred",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800bafdc",
+      "size": 464,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000daa8",
+      "size": 32,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800149d8",
+      "size": 24,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "ResetTimeStampStuff__Fv",
+      "address": "0x800bafdc",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "InitTimeStampStuff__Fv",
+      "address": "0x800bb098",
+      "size": 276,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetDepthBufferMax__7CScreenFv": "0x8001b840",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetDepth__5CFontFUl": "0x8007cb4c",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__ct__5CFontFPCc15ERenderPriority": "0x8007d148",
+    "__dl__FPv": "0x8001ca2c",
+    "__nw__FUl": "0x8001cb60",
+    "bDisplayLandmarkStamp": "0x8034ec04",
+    "bDisplayTimeStamp": "0x8034ec05",
+    "bDoneFading": "0x8034ec08",
+    "bDoneParsingLandmark": "0x8034ec06",
+    "bDoneParsingTimeStamp": "0x8034ec07",
+    "bDoneShowingXFilesText": "0x8034ec09",
+    "charMarkerForLandmarkString": "0x8034ebfc",
+    "charMarkerForTimeStampString": "0x8034ec00",
+    "memset": "0x80009410",
+    "onscreenTime": "0x8034ebf4",
+    "timestampFont": "0x8034ebf8"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "bDisplayLandmarkStamp",
+    "bDisplayTimeStamp",
+    "bDoneFading",
+    "bDoneParsingLandmark",
+    "bDoneParsingTimeStamp",
+    "bDoneShowingXFilesText",
+    "charMarkerForLandmarkString",
+    "charMarkerForTimeStampString",
+    "onscreenTime",
+    "timestampFont"
+  ],
+  "original_file": "UserInterface.cpp",
+  "original_file_index": 7237,
+  "pooled_sections": [
+    ".bss",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 16,
+      "address": "0x801ef498"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350a14"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350a50"
+    }
+  ]
+}

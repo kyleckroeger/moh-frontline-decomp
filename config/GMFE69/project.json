@@ -1236,7 +1236,8 @@
     "ShellMenu_savegame.json",
     "ShellMenu_gallerymovie.json",
     "ShellMenu_briefing.json",
-    "ShellMenu_credits.json"
+    "ShellMenu_credits.json",
+    "UserInterface_timestamp.json"
   ],
   "progress": {
     "code_bytes": 1414572,

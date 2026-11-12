@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1236,
- "function_bytes_by_status": {"consistent": 178544, "differs": 10144, "exact": 5748, "verified": 1211120},
+ "verified_units": 1237,
+ "function_bytes_by_status": {"consistent": 178080, "differs": 10144, "exact": 5748, "verified": 1211584},
  "data_bytes_owned": 723834,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2395,8 +2395,8 @@
  [2148249284, 8, "SetXFilesTextOnscreenTime__Ff", "verified", "src/game/UserInterface_xfilestime.cpp"],
  [2148249292, 140, "SetTimeStampString__FPc", "verified", "src/game/UserInterface_xfilestime.cpp"],
  [2148249432, 132, "SetLandmarkStampString__FPc", "verified", "src/game/UserInterface_xfilestime.cpp"],
- [2148249564, 188, "ResetTimeStampStuff__Fv", "consistent", "research/drafts/ResetTimeStampStuff.800bafdc.cpp"],
- [2148249752, 276, "InitTimeStampStuff__Fv", "consistent", "research/drafts/InitTimeStampStuff.800bb098.cpp"],
+ [2148249564, 188, "ResetTimeStampStuff__Fv", "verified", "src/game/UserInterface_timestamp.cpp"],
+ [2148249752, 276, "InitTimeStampStuff__Fv", "verified", "src/game/UserInterface_timestamp.cpp"],
  [2148250028, 1352, "DrawRadar__13UserInterfaceFv", "verified", "src/game/UserInterface_radar.cpp"],
  [2148251380, 1228, "Update__13UserInterfaceFf", "verified", "src/game/UserInterface_update.cpp"],
  [2148252608, 736, "DrawHitStatus__13UserInterfaceFv", "verified", "src/game/UserInterface_hitstatus.cpp"],
