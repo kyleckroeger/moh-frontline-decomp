@@ -150,14 +150,14 @@ public:
 
 static inline const char* StartScreen(char* name) {
     switch (LoadElf::Get()->m_state) {
+    case 0:
+    default:
+        return "data/start.gsh";
     case 2:
         return "data/victory.gsh";
     case 1:
     case 3:
         return "data/return.gsh";
-    case 0:
-    default:
-        return "data/start.gsh";
     case 4: {
         int stage = LoadElf::Get()->m_stage;
         sprintf(name, "data/vict%d_%d.gsh", LoadElf::Get()->m_mission, stage);

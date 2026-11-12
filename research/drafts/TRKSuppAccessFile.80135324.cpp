@@ -30,9 +30,11 @@ int TRKSuppAccessFile(unsigned int handle, unsigned char* data, unsigned int* le
     int error = 0;
     MessageBuffer* reply;
     while (!exit && done < *length && !error && !*ioResult) {
-        unsigned int block = *length - done;
-        if (block > 0x800)
+        unsigned int block;
+        if (*length - done > 0x800)
             block = 0x800;
+        else
+            block = *length - done;
         int bufferId;
         MessageBuffer* buffer;
         error = TRKGetFreeBuffer(&bufferId, &buffer);
@@ -63,8 +65,9 @@ int TRKSuppAccessFile(unsigned int handle, unsigned char* data, unsigned int* le
                 if (!error) {
                     reply = TRKGetBuffer(replyId);
                     TRKSetBufferPosition(reply, 2);
-                    error = TRKReadBuffer1_ui8(reply, &replyResult);
                 }
+                if (!error)
+                    error = TRKReadBuffer1_ui8(reply, &replyResult);
                 if (!error)
                     error = TRKReadBuffer1_ui16(reply, &replyLength);
                 if (isRead && !error) {
