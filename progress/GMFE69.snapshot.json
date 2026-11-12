@@ -457,7 +457,7 @@
     "src/game/GameMessage.cpp": "2edfea6e02b9251c94e07bba0c92649d0218f70c919a10974e7de4cf67787603",
     "src/game/IStudio.cpp": "580c9c9d031511dfc13742c1474a6c88a4db909da0005484e00accd86a2d76b1",
     "src/game/IStudioFuncs.cpp": "433d6999510ba488d6c2d5cb9529a5c839670b394416bdaeec09c6f3eca0a9cf",
-    "src/game/IStudioFuncs_resload.cpp": "2f248bd0f771bf6ae194a0bf41c6233984da885f503d98feb0f13a9c87cdaa8d",
+    "src/game/IStudioFuncs_resload.cpp": "7d7decf11d00e1e956896f1ae5883d4f07fc5c5119bd8c039215c722e77d9d10",
     "src/game/IStudio_ctor.cpp": "7d3b2f8752707e546fdf01e894c8fc5a5d756ab0841ab5dbbaee0f037583e86d",
     "src/game/LinkedList.cpp": "3007b79180a5844b8b799dc4fc11618f6b5da77679e6c73c6f388fec501beb2a",
     "src/game/MallocInit.cpp": "ba35f4c9ac530c717f81930ab9aa3a203ea81844e4776914ae6b51acf4188a74",
@@ -472,7 +472,7 @@
     "src/game/PathNodeList_erase.cpp": "c503ad8ba351769727ae5193bd70c7f5b22fcd3ead27e84c3daba472d09ffaac",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
     "src/game/Pause.cpp": "7897fa9f7062711f1021a58a737f37aabfff5645372fb92614b8dd99458fbcce",
-    "src/game/Screen.cpp": "2d5e04dbee319d5f28238388024b45b102021aca112eb1081694b965af026c79",
+    "src/game/Screen.cpp": "6edd00ba6677d04cc93a4713fddf9809afdb8f6630679c6e9b428dc3ddfe914e",
     "src/game/SearchNode.cpp": "e8db06597a8f2032822e557cd948934a13b14f14d2c1757084d8b134dfc1a4ef",
     "src/game/SearchNodeList.cpp": "738d75054ffdc5c611f06f3c0f8d330d60226794efc3684079e2280494a4d65c",
     "src/game/SearchNode_head.cpp": "7434006ac9a182e7764f5d9029d9dfe6d939d455cc7c7603f4685aedb6b8f5d7",
@@ -522,7 +522,7 @@
     "src/game/Soldier_object_ctor.cpp": "c02032b20d75e7dadae71dc29e5dd4eff07bf931e5f05d7dbc2d50b720a723de",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
     "src/game/Tank_object.cpp": "898b0122c0c2efaf7919e2f4c17241cd68d0733d4f8fda2f2473ec61eb2df9d5",
-    "src/game/Tank_object_draw.cpp": "28355c6a334ccba54fe452f8781a1a36ab69479de25ec418831ccf6fb9505d80",
+    "src/game/Tank_object_draw.cpp": "431313dc0fffb5bda54e8ba05370b45d242200d8c7cfdc6b4d3260ede8ac3504",
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
     "src/game/TibPolygon_process.cpp": "156a03d5743b5be3314d8e310ab9ff48deb4a15dd17ff06a6f8d78c9ba790a6f",
@@ -581,7 +581,7 @@
     "src/game/anim_obj_ctor.cpp": "eb919c56cf4e1875e41d585720c1e2f72e5b98c55734292de4407a06d2d34f46",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
     "src/game/anim_obj_dtor.cpp": "cfa732864ae7f8e51ac723d82419719426817edd523ef1c8216ee0273b0e7d62",
-    "src/game/anim_obj_ground.cpp": "296f111e9e903308294d550f069608c39941193afd24f73c095a81bba23b5efd",
+    "src/game/anim_obj_ground.cpp": "1d2eb69ee119a79917fd2ed5ed96874c985c579af126a33e2ada9ce0cc4df124",
     "src/game/anim_obj_initclass.cpp": "6bd9bcf65e1ffa90102e512164bf0265bbd8a3b7d1cb97702d2e10eb7c113704",
     "src/game/anim_obj_tm.cpp": "d7c4953982f480f43e57b76f687a87660d8277c377c2b76f352d10e0ad4a2bc6",
     "src/game/anim_obj_update.cpp": "50757c929718a257ab1aa6737a68207b089b958b7fc8f67ffbeb3c7ca61b02d2",
@@ -608,9 +608,9 @@
     "src/game/animmorph_weight.cpp": "00404a1d8e58eb98d991ce4ac15e944319d67294248c54d07fcdc80e77474265",
     "src/game/animmot.cpp": "a45a8abe1f4cf7ff29d111e21ddc34a94f2de557f14ba7b00b699d7cec9acad9",
     "src/game/animmot_rot.cpp": "ae868a1dcf1b6f54f0f353736386dcadcdc005a552c17455d187ee62344c404c",
-    "src/game/animplayer.cpp": "6c7f433172ed315ad0b8bf04f6a31f3aba015ecad7bf2fcb2bf1f1bca9124cdf",
+    "src/game/animplayer.cpp": "a5028e38ea23c867f2e81323584c8d3cd10fb3234bef6afa0418254d812fe1bd",
     "src/game/animplayer_ctor.cpp": "8732028eb72a949d36cf29fd9ef46b3dc2ec9a1de84d3db6530484958cf508d3",
-    "src/game/animplayer_draw.cpp": "23f5be830fa601d33bd0388e382ee409035cb0b4032cc3f15d6d491d0b1bd185",
+    "src/game/animplayer_draw.cpp": "983e3a5430a8b3144694965477c91045a488b992803413d0a98f8b6cf84f726f",
     "src/game/animplayer_initai.cpp": "9bd9ff11bf52b7770f872fadec39a7acd7b44e6cf4ecd44ab91d84f0059f77fc",
     "src/game/animplayer_weak.cpp": "aaf6f62fa5138013edb00bd7b8b905b1fe4a56d45a4015f45875c543cec5c04b",
     "src/game/animseq.cpp": "f075b77f6b41363f0b79573233d34916c09577707c4eb82895fe222ed6fc7998",
@@ -655,7 +655,7 @@
     "src/game/bsbifunc_appendprompt.cpp": "31675787bfc2917c1b6707dc5f96805000cdb97fe21ad71500c82e442cf1095c",
     "src/game/bsbifunc_astar.cpp": "46da81738b36a76fca2ca1e1b59c3cbbc091a5b091be1cd5d552c63725b640e1",
     "src/game/bsbifunc_asweapon.cpp": "a45cc31bbecca13448ce0610e2c20126743de398783fe3184b89ef9c89f3d105",
-    "src/game/bsbifunc_attach.cpp": "f4fb413a09f66de4b02f4b79e6889ec47937b0e3ffa18bf7a5cfe4ae38c5be7a",
+    "src/game/bsbifunc_attach.cpp": "a0abb4c70b2fb1d5a27706ee30a003331a2948ce7a6738b6661a051ffdad5284",
     "src/game/bsbifunc_cheats.cpp": "b381793264cff271e1d9b6e37ab20f86085f16db101efcbd62aeab7c01dadad9",
     "src/game/bsbifunc_choosetarget.cpp": "841e56382b245be5114b726c18f228b10db98305e045d145c03ee9e92125c6dd",
     "src/game/bsbifunc_collision.cpp": "630c3ce69b93d5207dee4e8f9a05f1e76af8390b71b864f691b0636b44d1823c",
@@ -668,7 +668,7 @@
     "src/game/bsbifunc_coverstart.cpp": "d8a9e6183a6455756b736fc2c7de220412f7b9f8f041e20bfe9c8c98c7677707",
     "src/game/bsbifunc_death.cpp": "7cd8e6e79eef6c5d6e539bcd57729e9f8af755ba56019272b14baffa501447a4",
     "src/game/bsbifunc_debug.cpp": "aa18252cb26bb4f2b8e28a220404679235d9cc5c5950de3de55100c8bff0ba2f",
-    "src/game/bsbifunc_distance.cpp": "41c97806f6173a03a8a3a6f4b63d73f9553fb38c4ed99a236894558994948378",
+    "src/game/bsbifunc_distance.cpp": "c78a2c6975c2d334aa5c408757ea4274711a3284ec3df9ccaa976b204443b2a7",
     "src/game/bsbifunc_dump.cpp": "f78e1a214739a9e923b1cafb039e3eae5482968d6d411e0c911dffc5d2b4bb81",
     "src/game/bsbifunc_endsound.cpp": "269518fa4bd130bb303ac13d145eb933344fa3b2eaa37cc8640b28f8df36b437",
     "src/game/bsbifunc_events.cpp": "ccfc72389a9a7c8f1b188efb2b3ac115497576a9dbd422acafaa792e113e0af8",
@@ -697,12 +697,12 @@
     "src/game/bsbifunc_movewalk.cpp": "7d88733a59a45863a375d0202f2171c3025fb255a5ee5a74ba0d3446b77a6930",
     "src/game/bsbifunc_mpplayer.cpp": "5a75fe11c9c7d04e800ac143f7207b585fdcdb632795efe6062a2168f8ada80c",
     "src/game/bsbifunc_mpprompt.cpp": "ea30913518fe038b569a108e38a418522a7c8bf1f8bddc7f9e966b83bf12eaab",
-    "src/game/bsbifunc_mpweapons.cpp": "b8e976a7f68db5cf159df72f62e49122af7cd58166b54a32c368f5f403282ad1",
+    "src/game/bsbifunc_mpweapons.cpp": "e21efefa32b5dad446641d7aa039912f4b91bae17790ed6ebfccbd5e8421cf00",
     "src/game/bsbifunc_objective.cpp": "5fa7bbf76ccc6ee0f3df96c790ccc6788d0d6bbe3c2951f8a1e96a70a976dd58",
     "src/game/bsbifunc_objectives.cpp": "afee1caa6dd810dfdd476d6eed2a920d59d6d142091abd5207deda7cf4cebc23",
     "src/game/bsbifunc_obstacle.cpp": "f1adf94913770ec9708373fb92cf4727da4e7c78982fd534540980ca1d8fc3f4",
     "src/game/bsbifunc_orient.cpp": "5a8192da9fff9b0ad7a0f8022819735fed1877eec8c5edc89245d1a2cf787dbf",
-    "src/game/bsbifunc_particle.cpp": "75616f2ba7f1df64e20da733dc05c93e04b521928df6ed0fdf85735f59e81ed4",
+    "src/game/bsbifunc_particle.cpp": "7b9e1b0bf680ad4ecbb1ffb3a150e387203527dc1cbb15c304bb881f4dcd5267",
     "src/game/bsbifunc_pathfinder.cpp": "4ea445abc80e2ecd8706dd52e4bd91599f46ad2063482dad97bc6ee432233fe7",
     "src/game/bsbifunc_playerammo.cpp": "238a562e12f8dba1b64b0f395f0a6e99fa02f65823e6c092676ca639d9319628",
     "src/game/bsbifunc_playercoll.cpp": "5311cb49fae0e431e2b0facb533887fc1538af7dcc1c7b3b664cc9a214a7aaf8",
@@ -845,11 +845,11 @@
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "f9e3352c2c8466d6932bd947e4da1f38448984c5ee142c27ff99722ee6db03e4",
-    "src/game/decal_reset.cpp": "481e433c256b6a4f2dd14d7ec937e054d9d270eee2feb95e699c187c7fb805d3",
+    "src/game/decal_reset.cpp": "fe343ef012abcba3c498f2915eef163cfb70498a83f3c8fb1d1b8eed4546fb01",
     "src/game/destructor_queue.cpp": "e03cf0b6880befec4f40a6abaa44cef7bdbfff9ef781396eec3ab266e7f89d14",
     "src/game/devicemgr.cpp": "7b3153cdd86bbdb41db94ee960dc7e388af5996235f5a3982151b7abd341e82d",
-    "src/game/dmcluster.cpp": "bf790039e7cf9b64d19e96570d28333a2faa943c557b14b5544f0161b390f2de",
-    "src/game/dmcluster_init.cpp": "9ab395ffcfc207add691fd745731e6f92f9a6fc1d07ebb91d0b061d685b991ee",
+    "src/game/dmcluster.cpp": "13992df577f960a585c38db6290a2d3d07fe3229fb7a17a4ece88aa953437fe0",
+    "src/game/dmcluster_init.cpp": "7157ee9ac8698c5ad38cf49eb6ba63ea27e6b625185af054316aacd1a8b9feb3",
     "src/game/dmesh.cpp": "e8a53aa4b7c987faecd8ffbabc73a74583f05eb1ca345d9803b8a7efec6c0046",
     "src/game/dmesh_bins.cpp": "7fbbef7254a61a8e02ff62e9fe1d52f2ab5ceb49a6790d85dcb534e3e2190d55",
     "src/game/dmesh_cdmrenderbin_dtor.cpp": "f7166e01710b5976a04c82f69bedf1d0abe9770f52d41a9ae0cc94e87b446af7",
@@ -858,7 +858,7 @@
     "src/game/dmgeom.cpp": "58ad9933fab712ccbb7599ad50b90d5c5c8490b89c350677dd2f39aa0f50208d",
     "src/game/dmmorph.cpp": "74e313508235e2589cf84ae9e41846651c7b133bea1445d19933492626dbf10c",
     "src/game/dmmorph_buffers.cpp": "bd3896c6b9956acda3fe9efaa958a3ae4ae04e95a706b93e0a682241354a77f3",
-    "src/game/dmrender.cpp": "55cc17d6b04d9ebdbe7fea745beacb510c5cbdb1684aa5709c375f1814431d0b",
+    "src/game/dmrender.cpp": "cd8abf9af2e5ea5e47ba9f94e2f2d73bfa1e9b4e763443fea3b2ae259513644f",
     "src/game/draw_context.cpp": "5c2e1ad294e586bb2d98908cb20a336a3567ae655b7e08a8648636c2082d4ed0",
     "src/game/dvdStatus_check.cpp": "6235cb08f81890f463ca2777c2db3787c142a0eee9f596d2ae72dfeabe06635d",
     "src/game/dvdStatus_drawmessage.cpp": "299e80bbd3020b4e93c3ad5c3c048992deb0636dc4cffb033130e97fd43f6ba0",
@@ -886,19 +886,19 @@
     "src/game/font_render.cpp": "82d5a453d9301b7fd3b7854619ec92a3e03e18ff1a70528cfcb5782858feea08",
     "src/game/framework.cpp": "8cebad26aba8fe4a9a9ece0492c0bf7bb34882a1eec7dd48a1b3b93d0830914f",
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
-    "src/game/hearingvolume.cpp": "b19b3981b9579c8735403f20e2e04b3cdcc1bf4fe35d7070d0bd5fa3849c0135",
+    "src/game/hearingvolume.cpp": "d51278ae7e8e76809d8c061249e1fefc013da8a19f9ee78fe13979684e5c6e17",
     "src/game/hearingvolume_bullet.cpp": "d675a975cda997302153895f84925033ef4b4975388d742d108434c3f9ee0ec0",
     "src/game/hearingvolume_ctor.cpp": "fb9cc85fba1a9d5cb322379bbce4aadcb1645a46016425f24a930147a156884c",
     "src/game/hearingvolume_init.cpp": "2621762cce03b4672f7b5fb1acf858b6175abf19e97f0a0073fd3e60ea957c0a",
-    "src/game/hearingvolume_rows.cpp": "075c234c80ba87d0686fb0f247e8f786fa54e9c103a8a5ea660867a99a82cf19",
+    "src/game/hearingvolume_rows.cpp": "3d1c356b962dd59c4c98a420a27aee312da033240bf5f928bc9e9ca0309f5b58",
     "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
-    "src/game/hierobject_constrain.cpp": "27d982d041d427726f461e3eaff9f3768ccc37d9650150937349eaadcd947045",
+    "src/game/hierobject_constrain.cpp": "313ade0deadd72fe07b7b4818b114ebd87ce348101bb18e3b8b95417dc65d56e",
     "src/game/hierobject_draw.cpp": "67a66f0e3948333dc004a9e723b8bf8995572b5dacac294b12d397e422f50e4a",
     "src/game/hierobject_motion.cpp": "a014904bcd8f0aca42d1dff4a936a4c5d0020639a868674ff9c23cc243d20318",
     "src/game/hierobject_playback.cpp": "4f5b5b4b45e5fee046ef836082862248430fc79c2b7102e4dc92fb3c8fef0628",
-    "src/game/hierobject_script.cpp": "507cd7ac1cf9fb1556c37d213a4972e247214e29a43034c4290768f26b619466",
+    "src/game/hierobject_script.cpp": "83b83011d58d2f9e88c6fda6d5f5fa021581ff0d106e56e0107cb66df75e9c0d",
     "src/game/hierobject_tree.cpp": "f1b3e125cf44df87e6b6929563add9a762dfb19fc942a79fa0fabd82fa67bbe8",
-    "src/game/hierobject_update.cpp": "924ada0dd6401b34940d0a97c68f11c408ee5b46ac9b80c6378c8646bbe4ccdf",
+    "src/game/hierobject_update.cpp": "1d58817dcd9339fd34c3b1b55cddb5d9a08d4f9f38da9bac4917fa9642584c58",
     "src/game/hierobject_weak.cpp": "a8d1a322d05fa7f6bcb64d45e62d5d5f67fe3e354def1a7aa1609ad81dbe47d5",
     "src/game/hwvideodisplaylist.cpp": "7248530e7052ea44fcd8c8907fe69ccfa4150aefb8404efa7e072533cd507e6d",
     "src/game/hwvideodisplaylist_delete.cpp": "11e0674544c95de8b475112b7bcc1035d44799374d67b43b623749b2784d9e25",
@@ -920,7 +920,7 @@
     "src/game/light_destroy.cpp": "4bb90b0be5cc3ac9b509ca93ccbd9d690bbe62743d19037bfdcfb4f65da64a36",
     "src/game/light_dtor.cpp": "16a2e7decfac0957bca96bc979f7a815f807aa0fe78bfe0f6c7ad5fb0946ebbb",
     "src/game/light_instanced_dtor.cpp": "73fd0bdbf8e472d38db152ad163ffd6db0bafb9acd21d8ae669a5de3f26f3aed",
-    "src/game/light_propertyanim_dtor.cpp": "e9e7a78ad242a150fa6415f3b6c6d7d7722948913268ae1b87065cf47dcb277c",
+    "src/game/light_propertyanim_dtor.cpp": "9f61e3317444076162b301eb4d61b955ed6d7cff8f54985589421b1471243554",
     "src/game/light_propertyanim_update.cpp": "f224bc174dcc6cceb1190fa890ff2a83eeb77ad94a6d643e25f829db180ca365",
     "src/game/light_rows.cpp": "147d2a704a04010cce0d336956aed6a0fbe35bf6a38bfbc389536d45533171a7",
     "src/game/light_statics.cpp": "3b668c751c5611c7fcb137dca194e5abf94fac42d94cf7ec498be79b9b11f1eb",
@@ -977,7 +977,7 @@
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
     "src/game/particlesystem_texture.cpp": "7bad990fa32156064c574d6c094d0b5c24b6c36095c2a4601ef31357e4d6c5c4",
     "src/game/particlesystem_texturebin_dtor.cpp": "2d93edcd84e7b4ea3ebf6d6dd535072ca217836a9b31c37a5fdc139b8262cd67",
-    "src/game/particlesystem_visible.cpp": "fd81262b2b7dbc90b371d1e82348b19b99c28f391ae74ff31dbbc2329482ff21",
+    "src/game/particlesystem_visible.cpp": "35613e0d8c3a1492b6ed22197040f41b70235042c7152370d6591a3cf0135f45",
     "src/game/plane_ctor.cpp": "7aee56bff805ef1115a9d56238266d91276c2956dc8d2d7b2befaea40b58a263",
     "src/game/player.cpp": "68929cf79fe628386c90e66e662f39ab538c6f19f1e400cb161c319870e16112",
     "src/game/player_begincrouch.cpp": "0e1264742073db0c7ca977f38ebe6b2c253db7df93f4ef6b8197a7523921a7e1",
@@ -985,8 +985,8 @@
     "src/game/player_bounds.cpp": "5bb7984c3b4dd36ed4de52f9b4e4f94d48ac9a543155ff2fe1099b3cff7f67a5",
     "src/game/player_bullet.cpp": "61863e2fc1ec53988cb86bb9a26c7e60f43a550d5b712da53c0c8a5c44c000d6",
     "src/game/player_commit.cpp": "659dbec30b92b256210a7d50875c184cc180816205dd53010cf2fcba6301c6a1",
-    "src/game/player_constrain.cpp": "ba36b117d75420a325ab25354ae9bc546e71aca0faed6f492c0edcde34e57960",
-    "src/game/player_crouch.cpp": "292729805aa8302733744e061d2db13fb74f9f094daaeb704fe8213b2c06bea9",
+    "src/game/player_constrain.cpp": "4e42ea5450d1d54860747bd0cce9e1967efb99cd81854f8ebfe8e769ccd51d30",
+    "src/game/player_crouch.cpp": "85adcba4ff071e579c6b86b61851405e28c72e661f9bc2f659ecb12827c77fc2",
     "src/game/player_ctor.cpp": "adb5b353e370aa95bf1d32fb3f01958b2da5060490c5811134fce1a46584fc34",
     "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
     "src/game/player_draw.cpp": "643e05245be92bae37e0e306cc6910d4796ad94993aea0b3e3f769f614a87f45",
@@ -1010,7 +1010,7 @@
     "src/game/player_vec_sub.cpp": "e6f431ec9a993a3349adc755d2f7e79c87a951a084d0d90c2b10ba4058ebe6b0",
     "src/game/player_weapon.cpp": "d656e89113c05d302dc2c3b3ea1c362ceab5c209c5af2346a9f23265f51b45f0",
     "src/game/player_weapon_donereload.cpp": "276b86e2f1ccf65f0dbd5efb3effdc6f6c18c35406378a8900eda198910a6ad8",
-    "src/game/player_weapon_draw.cpp": "3099adaafa097932b8d51dde3120188272c03a5a9f52e3a9a4457da9ede55269",
+    "src/game/player_weapon_draw.cpp": "8716083a5e6b8ffbf4e52ffd48f316b5982551c673034bda9c6912b94843acf8",
     "src/game/player_weapon_drawenabled.cpp": "38a90c25715e1cb193ea2adfb7cbb12b6914fbb8ec8a7c770c70457725d465e4",
     "src/game/player_weapon_object.cpp": "c5c93cb166b4041f25f6610abed163debe934a6cfd137c1716ab80add93f8442",
     "src/game/player_weapon_object_head.cpp": "0f19122a9a21184a333fe39d7093559f095c3a34670862375505e1613f34e00c",
@@ -1103,7 +1103,7 @@
     "src/game/sphere_create.cpp": "4f2ad9592bc15cab266e199a7fbbd785d9d756c7d11b527e660c3059b0109505",
     "src/game/sphere_dispatch.cpp": "6ce83a070b3265036bf40bac4473852488133b777b768e0ba4fb702815bb1256",
     "src/game/sphere_dtor.cpp": "94868ca15a7fa361f41ca283682757ebd8085ae6291fa13407861993af0b6005",
-    "src/game/sphere_extents.cpp": "2b287704ebbc33c96483e79936e065e0e6eb60b0f95e2c2f38bf13b69498dde5",
+    "src/game/sphere_extents.cpp": "44f1aabb9b5eb7feca6a86fffde036769597db73f9079002ba7b588223e256da",
     "src/game/sphere_testtriangle.cpp": "ad9e8ed1e231231c3444f8c67464f7ad1d659fb0cda629caebc6634537b63e51",
     "src/game/sprite.cpp": "104b7bb47ff08649eb2e0412884332605376541f78b6b7262f8bf4bf7d9be164",
     "src/game/sprite_csprite_dtor.cpp": "ad89a18f0c521f888cb692de60853565dfdcd733f9f7ea5dae4ee750a74da16a",
@@ -1113,10 +1113,10 @@
     "src/game/sprite_init.cpp": "ca86c0e36bcafeb13e8d6dd7329025015df2aee3e685ec1f1e5dd7e3391e7596",
     "src/game/sprite_notexturebin.cpp": "0d076b157d366c895de1fb05c96b8f1b4a4c3e79aa89040b4cabfa6d3428a54f",
     "src/game/static_obj_anim.cpp": "0cff608fdca1e08636de0aeeb4a70fdf58a83a597a27ef0208a587b66e0e9cdf",
-    "src/game/static_obj_attempt.cpp": "fe02e57c175ba45e91b68277757fc104623361d155a6f2c060bee824b4cdc549",
+    "src/game/static_obj_attempt.cpp": "af67ea8a7f7b101a18575c5f640bea71f9a1d13607d310f6884103c5d8ffb1d2",
     "src/game/static_obj_bounds.cpp": "95f46ee3f954cb34559dde7b632acbee9ba83303048b65c584a359bf2e07da11",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
-    "src/game/static_obj_commit.cpp": "a27724ec075fbe04d4069b9a112bcd7e8e201e9cd9540a30427a75bd57a1a3e5",
+    "src/game/static_obj_commit.cpp": "103ecdc512d7ac7ac7772a3089f58f98a6eb1e323378a4b811a67594d86e6f8c",
     "src/game/static_obj_dtor.cpp": "d2900e0d83d6c40dd8fd027146a758f25846f8251c15dfb928b9d909a1f9c275",
     "src/game/static_obj_firedby.cpp": "b3ea90061b1402a4b960f44cc59058cd0ccfef3213fd5f62e07d849a14037271",
     "src/game/static_obj_pathbegin.cpp": "3c7b2e933185767027ca2760f54dbe91b0cefdd6442d51bcec8ba163f908da6f",
@@ -1127,7 +1127,7 @@
     "src/game/static_obj_type.cpp": "f3b8b46468b3522aa8b2349792586dbb94b9211519bb96a074c8737f61416dcb",
     "src/game/staticmesh.cpp": "65a6937d938853f8425319ea696ea8897bbd5358dccd74630dfc5c336bacb542",
     "src/game/staticmesh_animdraw.cpp": "53a8f685e3ab342109cd2c7bac17bf4ecf60bb16c302600455979ab14f4bc147",
-    "src/game/staticmesh_cmshmatbin_dtor.cpp": "3c568c27e13d4af0d23c02b16329e109cea7850106b453959298d2e52b880fde",
+    "src/game/staticmesh_cmshmatbin_dtor.cpp": "c7385ac8690f4a861f4dbae732afbcc8622615ef78f18e432ef0ef534d7c005e",
     "src/game/staticmesh_cmshsimplebin_dtor.cpp": "057bbd989600d656e5b112ba7dcb243176c7e19085f5e0d93c8f84142004893f",
     "src/game/staticmesh_cstaticanimmesh_dtor.cpp": "1ec89fb8978c2d138e4372c217657bbf346dc9f8fd1d00e6653d3e682d7f0f5b",
     "src/game/staticmesh_ctor.cpp": "e7eb98a60efde4ad494b850cccdf587b6a7cc13769418e9628dff2216c377817",
@@ -1138,7 +1138,7 @@
     "src/game/staticmesh_initdata.cpp": "4f6f5143030470d067fbe9507186c6c743722765acf40b43a9e13b312fc01a0f",
     "src/game/staticmesh_mshmaterial_dtor.cpp": "954a7a5fa8c0bb7d070ac1d15646a07b506991ca2a8c66e40301e8742089324c",
     "src/game/staticmesh_mshnode_copy.cpp": "f78396a1c13e87d8c4ebec6647315bb6dc59f0bb9c7da292b4ed6be3aa46f046",
-    "src/game/staticmesh_render.cpp": "d09f6399f17cd94bdf27a00fffc49639afcb912f95da7d90fb41c4c245d3fb05",
+    "src/game/staticmesh_render.cpp": "da4c440140dbbcf24a363f89caafebf74ce626d233b617bcdcf1a799833f87f0",
     "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
@@ -1170,7 +1170,7 @@
     "src/game/toilet_shutdown.cpp": "62e806b99d2d39e96ad4b3017125d3f86caaccebd15627fa663d56e15bac0856",
     "src/game/trig.cpp": "d1a822fa510ed8a71d640bd7ae13dd8648de829126e077e09d336089f0c3bf0b",
     "src/game/vector.cpp": "418a16a82127cea03fd102a27d28bf20ccd7f83caafb1ff1425f09bd38ed113d",
-    "src/game/viewport.cpp": "0db9e1bc775747f68b604ead075228f296eebd16a6566b51deb28cb2cbc06e01",
+    "src/game/viewport.cpp": "ae8c27814383dbca3ca9f09d1b5bae5a0c163dfcf22c314e2a0309454d93a905",
     "src/game/volume_query_test.cpp": "f27391442bb5de104dfada1f736c71a7f00eafa637b37e2bf1b3daa90b3b4bab",
     "src/game/weapon.cpp": "da4ad616d34d0d6284dc9ea736170b7af8bdcbb3f2dc3ee75e6e95010deaab5f",
     "src/game/weapon_bullet.cpp": "ffa066c291f5e97439e2e403623a2beeaf507f48250364be9fa005a469255a0a",
@@ -1183,7 +1183,7 @@
     "src/game/world_object.cpp": "873a97a1b663e39ab1b96ed82d1b43eba7dc38b78a1cc9942c5491c49f2a3740",
     "src/game/world_object_draw.cpp": "f2b34f4519d28c52ea318baa0ddbd5d2a916b6fcb034fbc7ef21b1c8bd48731e",
     "src/game/world_object_dtor.cpp": "0d30f63f1ad02a39c23399516350c3b2eebabe4edc17dfba42e72f1ef259777c",
-    "src/game/world_object_explosion.cpp": "b06bc4a90c2ad5ee450f173548658ad1d021a37aff5d2b9a39209e50aca9e567",
+    "src/game/world_object_explosion.cpp": "69fca1037862daaaa1ce25dda3e8ece7f40181f4094cae7b561b5b01732fee71",
     "src/game/world_object_list.cpp": "76cd3a5dd19a8ae9c9282f714df9d9623bd5b73a1601e3b95a26f05b83ee8fe7",
     "src/game/world_object_list_reserve.cpp": "6ed8dad99c906db035f824754517dc268212caf9f7f3726cb5bdcd25b432f238",
     "src/game/world_object_node_dtor.cpp": "b80cedb5ac04293bbd3bb1cf3faa150fba15803ae1772be8447d21a09e85f896",
@@ -17305,8 +17305,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "91a63c060e7dee45e19537681f730e10718bf74134297c3629e1322d2084ff98",
-      "linked_sha256": "53a3930441cac57f503b0f84aadbc887f88a72d74018b08c1c78327187673e47"
+      "object_sha256": "867f9937f65a2aefa311def3cc1df2f9293a30eb124907c27708acd0b8636661",
+      "linked_sha256": "22250a19bca5e2230c5d6bac09a70e9103006cb1d236aefa05a6b5ef33929a8b"
     },
     {
       "id": "threads",
@@ -18304,8 +18304,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "7634bf7e956492c039923226542984c5be3c9dd5101cb2c452fd6dbaab923459",
-      "linked_sha256": "beba2da5c638999dc1fd0028d284704d7cead4519a8b729adac4ee2107786e90"
+      "object_sha256": "cf589273c59dc2d0940389d5e836db883bce8d333e0b377dd041e8dae026814c",
+      "linked_sha256": "960fd547581025e3611f7554ea9052a4727ed92ab7f1a189c3fc796471d7a18c"
     },
     {
       "id": "sserver",
@@ -19484,8 +19484,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "82a7bff986ba08ea6cee63a57acaa1c0f4feba8ba15766eec538726ea577186d",
-      "linked_sha256": "b281b2a8209d6e59b896b66a315bf518ae39c66a25cd464e014a88c0fb4d05ae"
+      "object_sha256": "b8928e6212285d0445c7b653c5211d5f3a4fa5259b1f13763210b43ce5f67154",
+      "linked_sha256": "ac1d39a86fb132687bcdf8c325174c29014aaf57d769f844f1d929eb10f52b42"
     },
     {
       "id": "player_weapon_object_head",
@@ -20035,8 +20035,8 @@
         "__dt__16CScreenFrameModeFv",
         "__dt__19CScreenFieldModePALFv"
       ],
-      "object_sha256": "f6c7709ced59d60b668f9c1d20f269987c6b11edbea666b700b4d8aa43b4fc78",
-      "linked_sha256": "dd3a36ffb9a78e59336e000d8cddc0ccc8ce9bd83c92715d0296df2a2abdbcb0"
+      "object_sha256": "03e3801fee127a404533ded75148484d4706cc410e5d92082ce88bbd298ee8c2",
+      "linked_sha256": "738ed2df7a1d28323d50a0ee1dc3bd0be0b00aa9c780ef80dda354fbdbc6db4c"
     },
     {
       "id": "staticmesh_head",
@@ -21921,8 +21921,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "c7372579690a02bd150cee859ea38c0a9268fa3cdb863636c661f4d22137b2b5",
-      "linked_sha256": "1f3843d80630e098355ea2613e9df99c595033771e6e015d704c7c0c150a1072"
+      "object_sha256": "3beca995954206d616bec2ab0d2b649a34b999ba54ead188f291bde7c2266dd6",
+      "linked_sha256": "68645f28a501a8b3da79950335feae19307c555a8dc44aa05732e019d330c369"
     },
     {
       "id": "animplayer",
@@ -21960,8 +21960,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4db0445ae19b90e9588ab3798cc25cf5f4bbc6a1a45aa233fa80e6294cb9e3f7",
-      "linked_sha256": "08bb5f7c7e31670e940d3c5d578dfb466b6a2b0f58a302c29f481f8085ce6a9a"
+      "object_sha256": "5292f3a277b9b663aed6386e0ccf0ba3bd4df0da37b0021bd871397ba980fdb5",
+      "linked_sha256": "a01e449193b48ec3a4d0b4a9c88ca847d40d4c9b188fa2696dd1d76195d0c986"
     },
     {
       "id": "msghndlr",
@@ -23914,8 +23914,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "38db09bc2f32ccc1f2401501a632872eeca97f0256c1c17ee3d797f594c4cea9",
-      "linked_sha256": "4aa2929743098c4cb8e9061414caaf6491e076efd748ee1a7633a1c23a5e5d06"
+      "object_sha256": "77182ce3e3b7c15ec5dd8e7b052b04804b0e0132197275980e30dc6061528416",
+      "linked_sha256": "f9c55fa5024488123222e449289196ec68809a5f4d65899e346cf00b41ae5c16"
     },
     {
       "id": "player_rows",
@@ -25747,8 +25747,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "99fb0981c9b1f456e82ab428b0ca8eb47a8b6993fbe72ff4f59ddaf4624721aa",
-      "linked_sha256": "0e6b017ca3b2b6d65a77bb99e4c789e92ff260a2e15c2fc52f3ff2b12927b3b4"
+      "object_sha256": "a40f0bd63456a9baa53f238f7b433325e1960cd654dd59307785399f9fb994cb",
+      "linked_sha256": "79f3c23ece272a7e5355265726cb99f70d685a9b61f7e38c58581e87aed0a119"
     },
     {
       "id": "bsbifunc_objective",
@@ -26332,8 +26332,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "520c54719ede38b13cbf4393186301c427d6b7f026c72af06f82a82e9239562f",
-      "linked_sha256": "95fd3cde15d0bebac28c6aebba1753c0bd171986f1e6b14d9d0b8601bb922258"
+      "object_sha256": "c36e3969a104cc031cc6f99d45e0378c1b1e1d83c830d97efbc9a6f70f23541d",
+      "linked_sha256": "d46c65cadb93063d95fa025239f0184ed04eca113c0e5a5e46d2d642b8c6e19f"
     },
     {
       "id": "bsbifunc_attach",
@@ -26371,8 +26371,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cacc1f265ab796ebcb4ad12321db09a4912bc02dbc3c0b14f40e0c5f32928831",
-      "linked_sha256": "1d8c6e72aa3ae9f7d4ac6a26fa29b2172f9edbafbd41af12cbe8ea180bfd3e5a"
+      "object_sha256": "cead5ff4d1b71db2146a9a211323e90205e9e378131e61a846ccb8e1bd6c346b",
+      "linked_sha256": "dad6907d1ffaf75acfe9bdcd13f0b7d8342c436123beeb57e22062fecef4b199"
     },
     {
       "id": "bsbifunc_grenade",
@@ -26995,8 +26995,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "07e4d8211dc11290e5937be0f5c664649887d5c3b0db2f3032bfb42918d3b3d2",
-      "linked_sha256": "9a27f787fc45dc8e2b5039d482e726af2621ecacdd57b66c6f6f11f11a6a0db2"
+      "object_sha256": "751f4e32724699f34df09a75eab270ba8a90c03021a9e2ffaeec1c9de0110018",
+      "linked_sha256": "2bd847640dd48a9495b23cb8fbb561465bcccfb6e028ff17c126c86dc85f5c1c"
     },
     {
       "id": "bsbifunc_coverleave",
@@ -28803,8 +28803,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "070452c2b1c0ebb61435dfcdaa6df80ffe150412da6dfd70b442cec7abcaa20b",
-      "linked_sha256": "1bd5f5b5944442592f0739d9fcbaa87791f7f2a9cec90e892526452c4689dea9"
+      "object_sha256": "a9a577de1dd906ba0b28c720a6399c174f2fc7e1631aae1c2493690ec509fb31",
+      "linked_sha256": "d06d9309e3c3a4ff286ae00d7f1a9b0885f6de56c701077d48545c41584275b4"
     },
     {
       "id": "thrown_obj_cleanup",
@@ -31313,8 +31313,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4f287c3031f94bf0b52f5e8ff3abf7d387fc54fdc8edf37f713b6e149488705a",
-      "linked_sha256": "243c1a7797da2cfdae70e69030272d965a4138143d2d527b1e5d5b1675f8fd88"
+      "object_sha256": "21e1e8bf03912d4be93da81031198f4a896c6ddb9305ee1d8cb606ffa1247eb3",
+      "linked_sha256": "7628abff24d02eb3cc01a99fdc4cc8cd4dadcd15abb7c8121f67787625aef435"
     },
     {
       "id": "static_obj_bounds",
@@ -35299,8 +35299,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "46f2a6a1d69263ee5ffb346a58211455b61e59e67bbd47cb8fc9a781dcbf69ca",
-      "linked_sha256": "8c412b6d13878d70507b0f2ad02f2782d38e0f2e43065ed87db85a559b0db32a"
+      "object_sha256": "edd2ed4fb4c8ac6c1905a15c281aa02d7ab76cb4d54e8c444d9fda0d93a7cba0",
+      "linked_sha256": "6a88f24f602ca00779516aa73b6724f245c0f55ffbfc0321a01e527d4b97b6cb"
     },
     {
       "id": "staticmesh_cmshsimplebin_dtor",
@@ -36508,8 +36508,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "31eae3e52dbe523d63827311acabff5eeb11dac86b916172dfb3ca28f83a6055",
-      "linked_sha256": "a50275cbbac8883215420dcbd74b601813d18ded459e4a7840b817592d09a053"
+      "object_sha256": "e8121971f208502dab21b95f3fb29f12b4e3836e4b864b8d166e6a212a8f9b17",
+      "linked_sha256": "d16638711754fd96c397e06100a39e60688a552a4a8fd7e737de77916b16e152"
     },
     {
       "id": "light_animmanager_dtor",
@@ -37600,8 +37600,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "09efb8c276e11acdbf80ef1b8f4c706f2dee8e9420375cb5d549f0e9dc95e2b0",
-      "linked_sha256": "ef6bfd4f1e7e47004e780bc4109298c7ad84ec577a36361ddf5f0c49f73f3f0f"
+      "object_sha256": "181e4d5414bab180909e6fa7715bc8288b93d74f35877b42818e95a973a08115",
+      "linked_sha256": "0e9438b0f3a4b07b4646f10b992768adbab9c042cf51a7aadaa46bedc469dad2"
     },
     {
       "id": "dmesh_bins",
@@ -38068,8 +38068,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "acdd621fbb3185b89230c860ecb4062b85456a575949ad157fe5de8d57e1827b",
-      "linked_sha256": "c91baaac4bd4472be53d16a49104e96eb31266e85240c0f5e27788131e5dbea6"
+      "object_sha256": "508794855b2c3ac647ae5925062f0db86175826e5cb6b53e0c8f0559f1098c0e",
+      "linked_sha256": "5d1b33eaf58e8bbca625292d8da72e9bde6113d6e2af0881979c01b777fe0cb8"
     },
     {
       "id": "staticmesh_simplebin",
@@ -38887,8 +38887,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c0a83b8514cc0d5164f5133142faa7ed22e813b3cd0b2c7592c8c007b33ef105",
-      "linked_sha256": "96a74b55e884016d6b3dde71b2850da0657e827c06d1861fa0536d1d264ff6c2"
+      "object_sha256": "54f4f7796e38d584f4789a697fa2077ca3dd269ce0bffbc63bf0cb12d9bfe6be",
+      "linked_sha256": "c85f1e942af592a6df48b2da1af6f0075e97e42417c9b09a31a4c359a4b33fe7"
     },
     {
       "id": "objcreate_thrown",
@@ -42720,8 +42720,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "003e1651a13efd20a9e3966d75c0e5fa39cb05db8f20d8575195a5a780b29e99",
-      "linked_sha256": "b921f6f0e9b3482297de7b7a0fd30fe9b7367c5b02ab659405dbe5c04b145c03"
+      "object_sha256": "f9de8e49724bcbbf12db5714ca5a07cb25a2d9155136b8856474ded144557bae",
+      "linked_sha256": "702b5f1a9dffcc702d478dc207c58559e91710c7afe4a0424cd307343d1c78f9"
     },
     {
       "id": "rcmp_mpc_frames",
@@ -43383,8 +43383,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4a755ae82313a4703c1771ad5269ae30b63018094ab2fa4bb84b03ebadca49c4",
-      "linked_sha256": "fb1a2e3bc5bc58ee5d1541f70258ed466f5bc2cef9d811af4d982092e0c8286a"
+      "object_sha256": "732ab76c52777463718793b87479aa1a943cab61b8a855a8aae4ca47ff188e5c",
+      "linked_sha256": "778b100300cc844cdb57ec38b1aaae34c7b5ca75a34c4c2b320484a74158472c"
     },
     {
       "id": "hierobject_update",
@@ -43422,8 +43422,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "853f21dad805b47f08bb90121a4615bedf671ea6c16a21f75ad053120dbe4e52",
-      "linked_sha256": "ab180f1ff90fe6f126ad68a8aa87be17cd3e36c205621264e36633ea0e172ad8"
+      "object_sha256": "991bef47086ba99790af28841cd8008656c8d59c13cc458005cafc23beeb3014",
+      "linked_sha256": "76d42e08dec8ad7e3e91069fae7f91750e64629b107e97ff51ae92091e8a3dc6"
     },
     {
       "id": "static_obj_attempt",
@@ -43461,8 +43461,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cbebdfe9b525e5a0735360ef09e5d94f9fda57e7f5dd104b9d599f27acf759d9",
-      "linked_sha256": "ce52b3cc09c9bc3b5169a5e4cf638658862fda01ad6af72f22a76a551c1fb3b7"
+      "object_sha256": "631c43a0e302bf22585f56d6cf99dbb3317edc970a661e19b56393dd7424063e",
+      "linked_sha256": "a8e6b444ec18b5a88d44ee713be0cc0e2d0d39ae8057dff2dfa00a2ed76ed70a"
     },
     {
       "id": "static_obj_anim",
@@ -43734,8 +43734,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4bd56386c2c33d7d4c8c073333cbdb9f41987fd2645e44fbdac3b92d2072bbbd",
-      "linked_sha256": "2678fde7d291a3f6c752febe2f12eb3bf7ba1990ccbca545591aafc082fc1cf9"
+      "object_sha256": "02e2a20c2b6b91e1199eeccb5fb2687e493f6ec3e04290ef6eade7dd8e10b2d2",
+      "linked_sha256": "9f98c712ead243c092b75b787b57e70481d71d1ee499b7f34675e4e6ba935af2"
     },
     {
       "id": "particlesystem_manager_init",
@@ -44046,8 +44046,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c3e54ddd1323ce5a43ca4214feb2c4a958e0afd3ca09d8881051790064487457",
-      "linked_sha256": "595918ed3f72ed677b3459bcc5beebb7ab14f743f5ae1b488a2ae601851bd733"
+      "object_sha256": "95b95e044c344b664cd34decdcd37ab8c8af4987a41726bbcc57b07217ebdd2c",
+      "linked_sha256": "28368628122622d8e911423338eb72040559f9b688235e589345c2f2b75b8157"
     },
     {
       "id": "animmorph_weight",
@@ -44163,8 +44163,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cbcd84f0291abd2ffdff12c903e7f31cf0eccb35df2951fc96d0965f9a1dbef2",
-      "linked_sha256": "835c220be803749616c2f1484d4b74bea57468a0da2cecfe3211576a74454eb4"
+      "object_sha256": "ec6424649b14b7920a88161e7c0db1b3efa97b58c5dadbbf9608b6804bdccd94",
+      "linked_sha256": "1efaf86f908231a812f31946df0d96eda33a6b3298eec60fb5e01dc450694bc4"
     },
     {
       "id": "AISplinePath_traversal_dtor",
@@ -46462,8 +46462,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1dec0956d7c767a090b9ff96cec03890eaa6693d6c2266dea41190c68850e597",
-      "linked_sha256": "6ff6c3225c4edc15800781176161d84c3a380436b10750b7cc199319dfaac99c"
+      "object_sha256": "b384769ce5d0d15d0ec1fbea8163d513de12d03f0fb7060917c9ab2eeb0920ad",
+      "linked_sha256": "cb645e69b879663c59e0f74b48fd4dcb69b1a6631d3432f11199d08fada7bcab"
     },
     {
       "id": "objcreate_bsgoplayer",
@@ -48236,8 +48236,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d9f6afda0b9080746e3ce46da955b594eeff86e6040247ae4a2921b1298791d5",
-      "linked_sha256": "f3b864b22981ce94c4a03d4cf38aeea9a35a9747fa97b4cdd5b450e300fc3743"
+      "object_sha256": "fc96ed4803d63172454fce0e9793242ee6a68afba540df3a9bc89c5345cde1a7",
+      "linked_sha256": "2f00ffa8933f12e6a9e9df8982bef92146c217b186366875f9b8ea138d7d813c"
     },
     {
       "id": "skybox",
@@ -48392,8 +48392,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "869ce4a590e5f7348f99352bfef122689dfc23e934c21c238ad5cadd304cd8bf",
-      "linked_sha256": "6b7607ebb52481041e3d84ec582cca32951e9d1399e532e78d4fa140031cc339"
+      "object_sha256": "7804050b59bdc4d2a9d1fe56cb3a7f5891b44c6faaf9808502a6796bc8e90829",
+      "linked_sha256": "e351ece1a202d63691db60d7d94dd69f06e51a86adf8dca380bf2f8fada6ed42"
     },
     {
       "id": "UIStudio_internalload",
@@ -50596,8 +50596,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "9378d19aff9d95a50774d34af4bb63e79e67fb998f1727b908da88eff571dc42",
-      "linked_sha256": "0049a43bc3c256879d5d07202e58036c1f5446fc8ef57d6599b673f72577eee1"
+      "object_sha256": "b67b82f783215186e17c040a002d6f0b4e205577fbd72067c6287cabcf289762",
+      "linked_sha256": "2ad4438ae4658b5727e6a4a4b83fcef6cb5bdbd8ef72a5dc4de8bb8ac164754c"
     },
     {
       "id": "fiber_point",
@@ -51655,8 +51655,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "096cf442778fe41ea1f4387e9482ae68f75e66797a5b582b12c03c3e6aa321eb",
-      "linked_sha256": "15e967496e49b134f143442cec0a1c29a2bf8565ba6635e63a8c94c0b50eea2a"
+      "object_sha256": "7df6f5549ff3347ca0db1199af961332bd457b0cc3ebe1f40fed100f9566f541",
+      "linked_sha256": "8353b877491a9ab3117a9468ad1cd7fdc36499d113b8f6e35e8351d7835d4983"
     },
     {
       "id": "proxtrig_point",
@@ -52047,8 +52047,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "beb453ccb756b44793e2ccb07e124fc443c681c3e79bf6f56b21c4c229c1a117",
-      "linked_sha256": "6a3ed9f0fca2d27ee1f62ecbca3b81b5dd53afcd9056c62d3b50e005ce3659aa"
+      "object_sha256": "351cddd7ffc18b2fb52999fe29d70b2896a67f65f540876f69949a54e0ba3330",
+      "linked_sha256": "c7ecc81942a082b61d41ddf8730ef02f96060fe22edb7962098c7b83b5a1adc5"
     },
     {
       "id": "scene_update",

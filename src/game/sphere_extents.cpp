@@ -25,13 +25,8 @@ public:
     float w;
 };
 
-class CMatrix {
-public:
-    void TransformPoint(CVector3&, CVector3) const;
-    void Transform(CVector4&, CVector3) const;
+#include "game/CMatrix.h"
 
-    float m[16];
-};
 
 struct CFrustumPlane {
     float GetDistance(CVector3 point) const {

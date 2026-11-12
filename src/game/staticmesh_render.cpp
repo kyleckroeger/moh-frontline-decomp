@@ -26,12 +26,8 @@
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 struct FogView {
     unsigned char unknown00[64];

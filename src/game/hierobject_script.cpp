@@ -39,15 +39,8 @@ public:
     float z;
 };
 
-class CMatrix {
-public:
-    void TransformPoint(CVector3&, CVector3) const;
-    void SetPos(CVector3);
-    void Translate(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 /* inferred: the object told of the new matrix through its slot +16 */
 class MatrixListenerView {

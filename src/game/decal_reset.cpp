@@ -32,24 +32,8 @@ inline double fabs(double x) { return __fabs(x); }
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void SetPos(CVector3);
-    void BuildRotZ(float);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void TransformPoint(CVector3&, CVector3) const;
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 float MathFunRandomReal(float, float);
 float MathFunRandomRealSigned(float, float);

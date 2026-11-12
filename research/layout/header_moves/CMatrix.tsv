@@ -1,149 +1,149 @@
 unit	source	status	detail
 AIFilter_soldier_movetarget	scratch/try/AIFilter_soldier_movetarget/src/AIFilter_soldier_movetarget.cpp	kept	
 AIObject_mmgpoint	scratch/try/AIObject_mmgpoint/src/AIObject_mmgpoint.cpp	kept	
-AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\AIObject_visionseek.cpp # ---------------------------------------
-AISoldierDoodad	scratch/try/AISoldierDoodad/src/AISoldierDoodad.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AISoldierDoodad.cpp # ----------------------------------- #     141: origin = emitter.GetTranslation();
-CoverPoint_invalidate	scratch/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\CoverPoint_invalidate.cpp # -----------------------------------------
-CoverPoint_modified	scratch/try/CoverPoint_modified/src/CoverPoint_modified.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\CoverPoint_modified.cpp # ---------------------------------------
-IStudioFuncs_resload	scratch/try/IStudioFuncs_resload/src/IStudioFuncs_resload.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\IStudioFuncs_resload.cpp # ----------------------------------------
-Moh2	scratch/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Moh2.cpp # ------------------------
-Screen	scratch/try/Screen/src/Screen.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Screen.cpp # --------------------------
+AIObject_visionseek	scratch/loop3/hdr3/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     116: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+AISoldierDoodad	scratch/loop3/hdr3/try/AISoldierDoodad/src/AISoldierDoodad.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AISoldierDoodad.cpp # ----------------------------------- #     141: origin = emitter.GetTranslation();
+CoverPoint_invalidate	scratch/loop3/hdr3/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\CoverPoint_invalidate.cpp # ----------------------------------------- #      26: CVector3Data d;
+CoverPoint_modified	scratch/loop3/hdr3/try/CoverPoint_modified/src/CoverPoint_modified.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\CoverPoint_modified.cpp # --------------------------------------- #      33: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+IStudioFuncs_resload	scratch/loop3/hdr3/try/IStudioFuncs_resload/src/IStudioFuncs_resload.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+Moh2	scratch/loop3/hdr3/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Moh2.cpp # ------------------------
+Screen	scratch/loop3/hdr3/try/Screen/src/Screen.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 Soldier_object	scratch/try/Soldier_object/src/Soldier_object.cpp	kept	
-Soldier_object_attach	scratch/try/Soldier_object_attach/src/Soldier_object_attach.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\Soldier_object_attach.cpp # -----------------------------------------
+Soldier_object_attach	scratch/loop3/hdr3/try/Soldier_object_attach/src/Soldier_object_attach.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_attach.cpp # ----------------------------------------- #      99: CVector3(const CVector3Pair& p) { *(CVector3Pair*)this = p; }
 Soldier_object_bone	scratch/try/Soldier_object_bone/src/Soldier_object_bone.cpp	kept	
-Soldier_object_bounds	scratch/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Soldier_object_bounds.cpp # -----------------------------------------
-Soldier_object_cleanup	scratch/try/Soldier_object_cleanup/src/Soldier_object_cleanup.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_cleanup.cpp # ------------------------------------------ #     431: m_aimMatrix.SetAxes(right, front, up);
+Soldier_object_bounds	scratch/loop3/hdr3/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_bounds.cpp # ----------------------------------------- #      35: CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
+Soldier_object_cleanup	scratch/loop3/hdr3/try/Soldier_object_cleanup/src/Soldier_object_cleanup.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_cleanup.cpp # ------------------------------------------ #     431: m_aimMatrix.SetAxes(right, front, up);
 Soldier_object_ctor	scratch/try/Soldier_object_ctor/src/Soldier_object_ctor.cpp	kept	
-Tank_object_draw	scratch/try/Tank_object_draw/src/Tank_object_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Tank_object_draw.cpp # ------------------------------------
-Tank_object_weapons	scratch/try/Tank_object_weapons/src/Tank_object_weapons.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Tank_object_weapons.cpp # ---------------------------------------
+Tank_object_draw	scratch/loop3/hdr3/try/Tank_object_draw/src/Tank_object_draw.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+Tank_object_weapons	scratch/loop3/hdr3/try/Tank_object_weapons/src/Tank_object_weapons.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Tank_object_weapons.cpp # ---------------------------------------
 TibPolygon_process	scratch/try/TibPolygon_process/src/TibPolygon_process.cpp	kept	
-TibText	scratch/try/TibText/src/TibText.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\TibText.cpp # ---------------------------
+TibText	scratch/loop3/hdr3/try/TibText/src/TibText.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\TibText.cpp # ---------------------------
 anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	kept	
-anim_obj_ctor	scratch/try/anim_obj_ctor/src/anim_obj_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_ctor.cpp # ---------------------------------
-anim_obj_draw	scratch/try/anim_obj_draw/src/anim_obj_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_draw.cpp # ---------------------------------
-anim_obj_ground	scratch/try/anim_obj_ground/src/anim_obj_ground.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_ground.cpp # -----------------------------------
+anim_obj_ctor	scratch/loop3/hdr3/try/anim_obj_ctor/src/anim_obj_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_ctor.cpp # ---------------------------------
+anim_obj_draw	scratch/loop3/hdr3/try/anim_obj_draw/src/anim_obj_draw.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_draw.cpp # --------------------------------- #      26: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+anim_obj_ground	scratch/loop3/hdr3/try/anim_obj_ground/src/anim_obj_ground.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 anim_obj_tm	scratch/try/anim_obj_tm/src/anim_obj_tm.cpp	kept	
-anim_obj_update	scratch/try/anim_obj_update/src/anim_obj_update.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\anim_obj_update.cpp # -----------------------------------
+anim_obj_update	scratch/loop3/hdr3/try/anim_obj_update/src/anim_obj_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\anim_obj_update.cpp # ----------------------------------- #      35: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 animated_draw	scratch/try/animated_draw/src/animated_draw.cpp	kept	
-animated_volume_line	scratch/try/animated_volume_line/src/animated_volume_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\animated_volume_line.cpp # ----------------------------------------
+animated_volume_line	scratch/loop3/hdr3/try/animated_volume_line/src/animated_volume_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\animated_volume_line.cpp # ---------------------------------------- #      36: CVector3Data d;
 animmorph	scratch/try/animmorph/src/animmorph.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
-animplayer	scratch/try/animplayer/src/animplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\animplayer.cpp # ------------------------------
-animplayer_draw	scratch/try/animplayer_draw/src/animplayer_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\animplayer_draw.cpp # -----------------------------------
+animplayer	scratch/loop3/hdr3/try/animplayer/src/animplayer.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+animplayer_draw	scratch/loop3/hdr3/try/animplayer_draw/src/animplayer_draw.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 animskinned	scratch/try/animskinned/src/animskinned.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
 attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
 attachobject_update	scratch/try/attachobject_update/src/attachobject_update.cpp	kept	
-box_create	scratch/try/box_create/src/box_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_create.cpp # ------------------------------
-box_ivolume	scratch/try/box_ivolume/src/box_ivolume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_ivolume.cpp # -------------------------------
-box_linedist	scratch/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_linedist.cpp # --------------------------------
-box_pointdist	scratch/try/box_pointdist/src/box_pointdist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_pointdist.cpp # ---------------------------------
-bsbifunc_attach	scratch/try/bsbifunc_attach/src/bsbifunc_attach.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_attach.cpp # -----------------------------------
+box_create	scratch/loop3/hdr3/try/box_create/src/box_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\box_create.cpp # ------------------------------
+box_ivolume	scratch/loop3/hdr3/try/box_ivolume/src/box_ivolume.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_ivolume.cpp # ------------------------------- #      47: CVector3Data d;
+box_linedist	scratch/loop3/hdr3/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_linedist.cpp # -------------------------------- #      40: CVector3Data d;
+box_pointdist	scratch/loop3/hdr3/try/box_pointdist/src/box_pointdist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_pointdist.cpp # --------------------------------- #      21: CVector3Data d;
+bsbifunc_attach	scratch/loop3/hdr3/try/bsbifunc_attach/src/bsbifunc_attach.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 bsbifunc_debug	scratch/try/bsbifunc_debug/src/bsbifunc_debug.cpp	kept	
-bsbifunc_distance	scratch/try/bsbifunc_distance/src/bsbifunc_distance.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_distance.cpp # -------------------------------------
-bsbifunc_dump	scratch/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_dump.cpp # ---------------------------------
+bsbifunc_distance	scratch/loop3/hdr3/try/bsbifunc_distance/src/bsbifunc_distance.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+bsbifunc_dump	scratch/loop3/hdr3/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #      55: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
 bsbifunc_movewalk	scratch/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	kept	
-bsbifunc_mpprompt	scratch/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_mpprompt.cpp # -------------------------------------
-bsbifunc_mpweapons	scratch/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_mpweapons.cpp # --------------------------------------
-bsbifunc_particle	scratch/try/bsbifunc_particle/src/bsbifunc_particle.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_particle.cpp # -------------------------------------
+bsbifunc_mpprompt	scratch/loop3/hdr3/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #      95: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+bsbifunc_mpweapons	scratch/loop3/hdr3/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+bsbifunc_particle	scratch/loop3/hdr3/try/bsbifunc_particle/src/bsbifunc_particle.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 bsbifunc_waypointinfo	scratch/try/bsbifunc_waypointinfo/src/bsbifunc_waypointinfo.cpp	kept	
 bullet_ctor	scratch/try/bullet_ctor/src/bullet_ctor.cpp	kept	
 bullet_rows	scratch/try/bullet_rows/src/bullet_rows.cpp	kept	
-camera_frustum	scratch/try/camera_frustum/src/camera_frustum.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\camera_frustum.cpp # ----------------------------------
+camera_frustum	scratch/loop3/hdr3/try/camera_frustum/src/camera_frustum.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\camera_frustum.cpp # ----------------------------------
 camera_rows	scratch/try/camera_rows/src/camera_rows.cpp	kept	
-capsule_create	scratch/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\capsule_create.cpp # ----------------------------------
+capsule_create	scratch/loop3/hdr3/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\capsule_create.cpp # ----------------------------------
 collisionvolume_ctor	scratch/try/collisionvolume_ctor/src/collisionvolume_ctor.cpp	kept	
 collisionvolume_rows	scratch/try/collisionvolume_rows/src/collisionvolume_rows.cpp	kept	
 compartment_draw	scratch/try/compartment_draw/src/compartment_draw.cpp	kept	
 decal	scratch/try/decal/src/decal.cpp	kept	
-decal_reset	scratch/try/decal_reset/src/decal_reset.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\decal_reset.cpp # -------------------------------
-dmcluster	scratch/try/dmcluster/src/dmcluster.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmcluster.cpp # -----------------------------
-dmcluster_init	scratch/try/dmcluster_init/src/dmcluster_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmcluster_init.cpp # ----------------------------------
+decal_reset	scratch/loop3/hdr3/try/decal_reset/src/decal_reset.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+dmcluster	scratch/loop3/hdr3/try/dmcluster/src/dmcluster.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+dmcluster_init	scratch/loop3/hdr3/try/dmcluster_init/src/dmcluster_init.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 dmesh	scratch/try/dmesh/src/dmesh.cpp	kept	stripped_objects labels renumbered (same extab/extabindex objects by relocation target; hdr2)
 dmesh_partbin_render	scratch/try/dmesh_partbin_render/src/dmesh_partbin_render.cpp	kept	
-dmrender	scratch/try/dmrender/src/dmrender.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\dmrender.cpp # ----------------------------
+dmrender	scratch/loop3/hdr3/try/dmrender/src/dmrender.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 draw_context	scratch/try/draw_context/src/draw_context.cpp	kept	
-fiber_create	scratch/try/fiber_create/src/fiber_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\fiber_create.cpp # --------------------------------
-hearingvolume	scratch/try/hearingvolume/src/hearingvolume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\hearingvolume.cpp # ---------------------------------
+fiber_create	scratch/loop3/hdr3/try/fiber_create/src/fiber_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\fiber_create.cpp # --------------------------------
+hearingvolume	scratch/loop3/hdr3/try/hearingvolume/src/hearingvolume.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 hearingvolume_ctor	scratch/try/hearingvolume_ctor/src/hearingvolume_ctor.cpp	kept	
 hearingvolume_init	scratch/try/hearingvolume_init/src/hearingvolume_init.cpp	kept	
-hearingvolume_rows	scratch/try/hearingvolume_rows/src/hearingvolume_rows.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hearingvolume_rows.cpp # --------------------------------------
-hierobject	scratch/try/hierobject/src/hierobject.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject.cpp # ------------------------------
-hierobject_constrain	scratch/try/hierobject_constrain/src/hierobject_constrain.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\hierobject_constrain.cpp # ----------------------------------------
+hearingvolume_rows	scratch/loop3/hdr3/try/hearingvolume_rows/src/hearingvolume_rows.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+hierobject	scratch/loop3/hdr3/try/hierobject/src/hierobject.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject.cpp # ------------------------------
+hierobject_constrain	scratch/loop3/hdr3/try/hierobject_constrain/src/hierobject_constrain.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 hierobject_draw	scratch/try/hierobject_draw/src/hierobject_draw.cpp	kept	
-hierobject_motion	scratch/try/hierobject_motion/src/hierobject_motion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject_motion.cpp # -------------------------------------
-hierobject_script	scratch/try/hierobject_script/src/hierobject_script.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject_script.cpp # -------------------------------------
-hierobject_tree	scratch/try/hierobject_tree/src/hierobject_tree.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\hierobject_tree.cpp # ----------------------------------- #      25: class CVector3 {
-hierobject_update	scratch/try/hierobject_update/src/hierobject_update.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\hierobject_update.cpp # -------------------------------------
-light_propertyanim_dtor	scratch/try/light_propertyanim_dtor/src/light_propertyanim_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\light_propertyanim_dtor.cpp # -------------------------------------------
+hierobject_motion	scratch/loop3/hdr3/try/hierobject_motion/src/hierobject_motion.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\hierobject_motion.cpp # ------------------------------------- #      30: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+hierobject_script	scratch/loop3/hdr3/try/hierobject_script/src/hierobject_script.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+hierobject_tree	scratch/loop3/hdr3/try/hierobject_tree/src/hierobject_tree.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\hierobject_tree.cpp # ----------------------------------- #      25: class CVector3 {
+hierobject_update	scratch/loop3/hdr3/try/hierobject_update/src/hierobject_update.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+light_propertyanim_dtor	scratch/loop3/hdr3/try/light_propertyanim_dtor/src/light_propertyanim_dtor.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 light_rows	scratch/try/light_rows/src/light_rows.cpp	kept	
 mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	kept	
 matrix	scratch/try/matrix/src/matrix.cpp	kept	
 matrix_endian	scratch/try/matrix_endian/src/matrix_endian.cpp	kept	
 matrix_multiply	scratch/try/matrix_multiply/src/matrix_multiply.cpp	kept	
-matrix_ps	scratch/try/matrix_ps/src/matrix_ps.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\matrix_ps.cpp # -----------------------------
+matrix_ps	scratch/loop3/hdr3/try/matrix_ps/src/matrix_ps.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\matrix_ps.cpp # ----------------------------- #      47: CVector3 forward = Row(1);
 matrix_rotate	scratch/try/matrix_rotate/src/matrix_rotate.cpp	kept	
 matrix_scale	scratch/try/matrix_scale/src/matrix_scale.cpp	kept	
 matrix_translate	scratch/try/matrix_translate/src/matrix_translate.cpp	kept	
 matstack	scratch/try/matstack/src/matstack.cpp	kept	
 objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	kept	
-objcreate_createplayer	scratch/try/objcreate_createplayer/src/objcreate_createplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\objcreate_createplayer.cpp # ------------------------------------------
+objcreate_createplayer	scratch/loop3/hdr3/try/objcreate_createplayer/src/objcreate_createplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\objcreate_createplayer.cpp # ------------------------------------------
 objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	kept	
 particlesystem	scratch/try/particlesystem/src/particlesystem.cpp	kept	
-particlesystem_active	scratch/try/particlesystem_active/src/particlesystem_active.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_active.cpp # -----------------------------------------
-particlesystem_cpropertyparticlesystem_dtor	scratch/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_cpropertyparticlesystem_dtor.cpp # ---------------------------------------------------------------
+particlesystem_active	scratch/loop3/hdr3/try/particlesystem_active/src/particlesystem_active.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_active.cpp # -----------------------------------------
+particlesystem_cpropertyparticlesystem_dtor	scratch/loop3/hdr3/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\particlesystem_cpropertyparticlesystem_dtor.cpp # --------------------------------------------------------------- #      27: CVector3Pair d;
 particlesystem_create	scratch/try/particlesystem_create/src/particlesystem_create.cpp	kept	
-particlesystem_emit	scratch/try/particlesystem_emit/src/particlesystem_emit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_emit.cpp # ---------------------------------------
-particlesystem_property	scratch/try/particlesystem_property/src/particlesystem_property.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_property.cpp # -------------------------------------------
-particlesystem_visible	scratch/try/particlesystem_visible/src/particlesystem_visible.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_visible.cpp # ------------------------------------------
-plane_ctor	scratch/try/plane_ctor/src/plane_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\plane_ctor.cpp # ------------------------------
-player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_begincrouch.cpp # --------------------------------------
-player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_beginupdate.cpp # --------------------------------------
-player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_commit.cpp # ---------------------------------
-player_constrain	scratch/try/player_constrain/src/player_constrain.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_constrain.cpp # ------------------------------------
-player_crouch	scratch/try/player_crouch/src/player_crouch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_crouch.cpp # ---------------------------------
-player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	lost	Compiled source bytes differ: player_ctor .text
+particlesystem_emit	scratch/loop3/hdr3/try/particlesystem_emit/src/particlesystem_emit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_emit.cpp # ---------------------------------------
+particlesystem_property	scratch/loop3/hdr3/try/particlesystem_property/src/particlesystem_property.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\particlesystem_property.cpp # -------------------------------------------
+particlesystem_visible	scratch/loop3/hdr3/try/particlesystem_visible/src/particlesystem_visible.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+plane_ctor	scratch/loop3/hdr3/try/plane_ctor/src/plane_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\plane_ctor.cpp # ------------------------------ #      39: CVector3Data d;
+player_begincrouch	scratch/loop3/hdr3/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_begincrouch.cpp # -------------------------------------- #      23: CVector3Data d;
+player_beginupdate	scratch/loop3/hdr3/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      55: CVector3(const CVector3Data& o) : d(o) {}
+player_commit	scratch/loop3/hdr3/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #      56: CVector3(const CVector3Data& o) : d(o) {}
+player_constrain	scratch/loop3/hdr3/try/player_constrain/src/player_constrain.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+player_crouch	scratch/loop3/hdr3/try/player_crouch/src/player_crouch.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+player_ctor	scratch/loop3/hdr3/try/player_ctor/src/player_ctor.cpp	lost	Compiled source bytes differ: player_ctor .text
 player_fov	scratch/try/player_fov/src/player_fov.cpp	kept	
-player_mmg	scratch/try/player_mmg/src/player_mmg.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_mmg.cpp # ------------------------------
+player_mmg	scratch/loop3/hdr3/try/player_mmg/src/player_mmg.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_mmg.cpp # ------------------------------
 player_move	scratch/try/player_move/src/player_move.cpp	kept	
 player_rows	scratch/try/player_rows/src/player_rows.cpp	kept	
 player_tm	scratch/try/player_tm/src/player_tm.cpp	kept	
-player_transform	scratch/try/player_transform/src/player_transform.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_transform.cpp # ------------------------------------
-player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_updateai.cpp # -----------------------------------
-player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_vec_sub.cpp # ----------------------------------
-player_weapon	scratch/try/player_weapon/src/player_weapon.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_weapon.cpp # ---------------------------------
-player_weapon_draw	scratch/try/player_weapon_draw/src/player_weapon_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_weapon_draw.cpp # --------------------------------------
+player_transform	scratch/loop3/hdr3/try/player_transform/src/player_transform.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_transform.cpp # ------------------------------------
+player_updateai	scratch/loop3/hdr3/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_updateai.cpp # ----------------------------------- #      25: CVector3(const CVector3Data& o) : d(o) {}
+player_vec_sub	scratch/loop3/hdr3/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_vec_sub.cpp # ---------------------------------- #      32: CVector3Data d;
+player_weapon	scratch/loop3/hdr3/try/player_weapon/src/player_weapon.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon.cpp # --------------------------------- #      84: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+player_weapon_draw	scratch/loop3/hdr3/try/player_weapon_draw/src/player_weapon_draw.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 player_weapon_object	scratch/try/player_weapon_object/src/player_weapon_object.cpp	kept	
 player_weapon_object_head	scratch/try/player_weapon_object_head/src/player_weapon_object_head.cpp	kept	
-player_weapon_object_init	scratch/try/player_weapon_object_init/src/player_weapon_object_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_weapon_object_init.cpp # ---------------------------------------------
-projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
-projectilebullet_link	scratch/try/projectilebullet_link/src/projectilebullet_link.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet_link.cpp # -----------------------------------------
+player_weapon_object_init	scratch/loop3/hdr3/try/player_weapon_object_init/src/player_weapon_object_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon_object_init.cpp # --------------------------------------------- #      57: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+projectilebullet	scratch/loop3/hdr3/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
+projectilebullet_link	scratch/loop3/hdr3/try/projectilebullet_link/src/projectilebullet_link.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet_link.cpp # -----------------------------------------
 propdat_bsp	scratch/try/propdat_bsp/src/propdat_bsp.cpp	kept	
 propdat_core	scratch/try/propdat_core/src/propdat_core.cpp	kept	
 propdat_load	scratch/try/propdat_load/src/propdat_load.cpp	kept	
 propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	kept	
-proxtrig_point	scratch/try/proxtrig_point/src/proxtrig_point.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\proxtrig_point.cpp # ----------------------------------
-quaternion_matrix	scratch/try/quaternion_matrix/src/quaternion_matrix.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\quaternion_matrix.cpp # -------------------------------------
+proxtrig_point	scratch/loop3/hdr3/try/proxtrig_point/src/proxtrig_point.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_point.cpp # ---------------------------------- #      39: CVector3Data d;
+quaternion_matrix	scratch/loop3/hdr3/try/quaternion_matrix/src/quaternion_matrix.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\quaternion_matrix.cpp # -------------------------------------
 skeleton	scratch/try/skeleton/src/skeleton.cpp	kept	
-skybox	scratch/try/skybox/src/skybox.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\skybox.cpp # --------------------------
-sound	scratch/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\sound.cpp # -------------------------
-sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere.cpp # --------------------------
-sphere_extents	scratch/try/sphere_extents/src/sphere_extents.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere_extents.cpp # ----------------------------------
+skybox	scratch/loop3/hdr3/try/skybox/src/skybox.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\skybox.cpp # -------------------------- #      57: CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
+sound	scratch/loop3/hdr3/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\sound.cpp # ------------------------- #     173: CVector3Data d;
+sphere	scratch/loop3/hdr3/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere.cpp # --------------------------
+sphere_extents	scratch/loop3/hdr3/try/sphere_extents/src/sphere_extents.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 static_obj_anim	scratch/try/static_obj_anim/src/static_obj_anim.cpp	kept	
-static_obj_attempt	scratch/try/static_obj_attempt/src/static_obj_attempt.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_attempt.cpp # --------------------------------------
+static_obj_attempt	scratch/loop3/hdr3/try/static_obj_attempt/src/static_obj_attempt.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
 static_obj_bounds	scratch/try/static_obj_bounds/src/static_obj_bounds.cpp	kept	
-static_obj_commit	scratch/try/static_obj_commit/src/static_obj_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_commit.cpp # -------------------------------------
-static_obj_dtor	scratch/try/static_obj_dtor/src/static_obj_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_dtor.cpp # -----------------------------------
+static_obj_commit	scratch/loop3/hdr3/try/static_obj_commit/src/static_obj_commit.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+static_obj_dtor	scratch/loop3/hdr3/try/static_obj_dtor/src/static_obj_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_dtor.cpp # -----------------------------------
 static_obj_rows	scratch/try/static_obj_rows/src/static_obj_rows.cpp	kept	
-static_obj_scale	scratch/try/static_obj_scale/src/static_obj_scale.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_scale.cpp # ------------------------------------
-static_obj_setlight	scratch/try/static_obj_setlight/src/static_obj_setlight.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_setlight.cpp # ---------------------------------------
-static_obj_setpos	scratch/try/static_obj_setpos/src/static_obj_setpos.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_setpos.cpp # -------------------------------------
+static_obj_scale	scratch/loop3/hdr3/try/static_obj_scale/src/static_obj_scale.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_scale.cpp # ------------------------------------ #      24: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+static_obj_setlight	scratch/loop3/hdr3/try/static_obj_setlight/src/static_obj_setlight.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_setlight.cpp # --------------------------------------- #      37: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+static_obj_setpos	scratch/loop3/hdr3/try/static_obj_setpos/src/static_obj_setpos.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\static_obj_setpos.cpp # -------------------------------------
 staticmesh	scratch/try/staticmesh/src/staticmesh.cpp	kept	
-staticmesh_cmshmatbin_dtor	scratch/try/staticmesh_cmshmatbin_dtor/src/staticmesh_cmshmatbin_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\staticmesh_cmshmatbin_dtor.cpp # ----------------------------------------------
-staticmesh_draw	scratch/try/staticmesh_draw/src/staticmesh_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\staticmesh_draw.cpp # -----------------------------------
-staticmesh_render	scratch/try/staticmesh_render/src/staticmesh_render.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\staticmesh_render.cpp # -------------------------------------
-thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrown_obj.cpp # ------------------------------
-thrownbullet_explosion	scratch/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrownbullet_explosion.cpp # ------------------------------------------
-thrownbullet_misc	scratch/try/thrownbullet_misc/src/thrownbullet_misc.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\thrownbullet_misc.cpp # -------------------------------------
-thrownbullet_tail	scratch/try/thrownbullet_tail/src/thrownbullet_tail.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrownbullet_tail.cpp # -------------------------------------
-viewport	scratch/try/viewport/src/viewport.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\viewport.cpp # ----------------------------
-weapon_bullet	scratch/try/weapon_bullet/src/weapon_bullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\weapon_bullet.cpp # ---------------------------------
-world_object_explosion	scratch/try/world_object_explosion/src/world_object_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\world_object_explosion.cpp # ------------------------------------------
+staticmesh_cmshmatbin_dtor	scratch/loop3/hdr3/try/staticmesh_cmshmatbin_dtor/src/staticmesh_cmshmatbin_dtor.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+staticmesh_draw	scratch/loop3/hdr3/try/staticmesh_draw/src/staticmesh_draw.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\staticmesh_draw.cpp # ----------------------------------- #      23: CVector3Data d;
+staticmesh_render	scratch/loop3/hdr3/try/staticmesh_render/src/staticmesh_render.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+thrown_obj	scratch/loop3/hdr3/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrown_obj.cpp # ------------------------------
+thrownbullet_explosion	scratch/loop3/hdr3/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrownbullet_explosion.cpp # ------------------------------------------
+thrownbullet_misc	scratch/loop3/hdr3/try/thrownbullet_misc/src/thrownbullet_misc.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_misc.cpp # ------------------------------------- #      66: *(CVector3Pair*)this = *(const CVector3Pair*)&other;
+thrownbullet_tail	scratch/loop3/hdr3/try/thrownbullet_tail/src/thrownbullet_tail.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrownbullet_tail.cpp # -------------------------------------
+viewport	scratch/loop3/hdr3/try/viewport/src/viewport.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)
+weapon_bullet	scratch/loop3/hdr3/try/weapon_bullet/src/weapon_bullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\weapon_bullet.cpp # ---------------------------------
+world_object_explosion	scratch/loop3/hdr3/try/world_object_explosion/src/world_object_explosion.cpp	kept	moved 2026-11-12 (hdr3, after the CVector3 base form)

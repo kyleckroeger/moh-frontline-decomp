@@ -37,15 +37,8 @@ struct CharOrient3_t;
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    void PreTranslate(CVector3);
-    void RotateX(float);
-    void RotateY(float);
-    void RotateZ(float);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class CMatrixStack {
 public:

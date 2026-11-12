@@ -41,19 +41,8 @@ extern "C" void GXInitLightSpot(GXLightObj*, float, int);
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Ident();
-    CVector3 GetRow(int i) const { CVector3 r = *(const CVector3*)m[i]; return r; }
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 struct MOH_animatedLight_Struct {
     unsigned char unknown00[16];

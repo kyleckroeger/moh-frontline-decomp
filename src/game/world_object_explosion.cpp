@@ -38,22 +38,8 @@ inline void* operator new(unsigned long, void* place) {
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Ident();
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void SetPos(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 /* inferred: a surface's packed type fields (+12) */
 struct SurfaceView {

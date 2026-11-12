@@ -30,19 +30,8 @@ struct VECTOR3VIEW {
     float z;
 } __attribute__((aligned(8)));
 
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void TransformPoint(CVector3&, CVector3) const;
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class IVolume {
 public:

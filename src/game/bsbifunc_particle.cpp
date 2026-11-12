@@ -39,21 +39,8 @@
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Ident();
-    void SetPos(CVector3);
-    void PreTranslate(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -369,7 +356,7 @@ void BIFunc_ResetParticleSystemRotation(int** stack, void*) {
     if (system) {
         CMatrix matrix;
         system->unknown54(matrix);
-        CVector3 position = *(const CVector3*)matrix.m[3];
+        CVector3 position = *(const CVector3*)&matrix.pos.x;
         matrix.Ident();
         matrix.SetPos(position);
         system->SetLocalToWorld(matrix);

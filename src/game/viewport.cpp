@@ -15,13 +15,8 @@ unsigned long VIGetNextField(void);
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    void BuildScale(CVector3);
-    void SetPos(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 struct CScreenMode {
     char field0[24];

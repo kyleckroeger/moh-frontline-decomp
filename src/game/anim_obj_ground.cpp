@@ -16,13 +16,8 @@
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    const CVector3& GetRow(int i) const { return *(const CVector3*)m[i]; }
-    const CVector3& GetPos() const { return GetRow(3); }
+#include "game/CMatrix.h"
 
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 class CLine3 {
 public:

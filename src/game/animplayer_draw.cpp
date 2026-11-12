@@ -19,23 +19,8 @@ public:
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void Ident();
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void SetPos(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 /* inferred: a collision contact: normal and position */
 struct ContactView {

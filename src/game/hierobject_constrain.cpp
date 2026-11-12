@@ -53,28 +53,8 @@ public:
 
 inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
-    void FastInverse(const CMatrix&);
-    void TransformPoint(CVector3&, CVector3) const;
-    void SetPos(CVector3);
-    void Translate(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
-    CMatrix& operator=(const CMatrix&);
-    CVector3 GetFront() const { return front; }
-    CVector3 GetPos() const { return pos; }
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-} __attribute__((aligned(16)));
 
 /* inferred: the object told of the new matrix through its slot +16 */
 class MatrixListenerView {

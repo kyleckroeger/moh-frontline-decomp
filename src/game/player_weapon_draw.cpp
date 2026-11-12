@@ -19,21 +19,8 @@ public:
     float w;
 };
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    CMatrix& operator=(const CMatrix&);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void Transform(CVector4&, CVector3) const;
-    void Perspective(float, float, float, float);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 /* inferred: the camera's near and far distances */
 struct CameraView {

@@ -51,6 +51,13 @@ Result: 148 units with their own view. **53 kept** (moved in the landing commit)
   stays and CPlayerObject's layout is the open question.
 - `attachobject_ctor`: control failure (doesn't verify unchanged in this harness).
 
+**Re-run 2026-11-12 (hdr3, after the CVector3 base form d8cf803c):** 92 units still had their own
+view. 31 kept and moved (no config change: all had `include` already). 54 still have their own
+CVector3 view; 5 other no_compile: AISoldierDoodad and Soldier_object_cleanup (invented helpers),
+quaternion_matrix (its own sqrtf clashes with msl_sqrtf.h), CoverPoint_modified (defines a CVector3
+member out of line through a pair cast), matrix_ps (`CVector3 forward = Row(1)`: an own `Row`
+getter); player_ctor lost (alignment, above), attachobject_ctor control_fail.
+
 Variants tried: no alignment (40 kept of the 61 compilable), `bool` vs `int` constructor
 argument (same result on the units it touches).
 

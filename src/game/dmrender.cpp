@@ -10,13 +10,8 @@ extern "C" void* memset(void*, int, unsigned long);
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix& operator=(const CMatrix&);
-    void TransformVector(CVector3&, CVector3) const;
+#include "game/CMatrix.h"
 
-    float m[4][4];
-};
 
 class CMatrixStack {
 public:

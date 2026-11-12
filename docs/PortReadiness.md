@@ -232,7 +232,8 @@ moved, and 3 more after renaming their stripped extab labels; 87 still have thei
 redefines; 5 lost or need code changes (`research/notes/shared-headers.md`,
 `research/layout/header_moves/CMatrix.tsv`). The alignment is the original's (it realigns
 the stack for local matrices); player_ctor's CPlayerObject view, with matrices at 8-aligned
-offsets, is the one conflict.
+offsets, is the one conflict. After the CVector3 base form, a re-run over the 92 units still on their own
+view moved 31 more; 54 of the rest still have their own CVector3 view.
 
 ISceneNode, 2026-11-12: `include/game/ISceneNode.h` with its bases (IDestructible, ISubject,
 IObserver: the chain the original's RTTI gives) and the original's vtable order. Every

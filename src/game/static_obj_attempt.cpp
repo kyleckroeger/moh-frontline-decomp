@@ -38,34 +38,8 @@ unsigned long GetFrameCount();
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    void PreTranslate(CVector3);
-    void RotateX(float);
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void Orthonormalize();
-    CVector3 GetRight() const { return right; }
-    CVector3 GetFront() const { return forward; }
-    CVector3 GetUp() const { return up; }
-    void SetPos(CVector3);
-    void Translate(CVector3);
-    void TransformPoint(CVector3&, CVector3) const;
-    void Multiply(const CMatrix&, const CMatrix&);
-    void BuildScale(float);
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -236,7 +210,7 @@ public:
     virtual void CommitPathMotionUpdate();
 
     bool IsFollowingPath() const { return m_pathState != 0 && m_pathState != 1; }
-    CVector3 PositionRow() const { return m_tm.position; }
+    CVector3 PositionRow() const { return m_tm.pos; }
     void AnimUpdate(float);
     void BeginAnimMotionUpdate(float);
     /* inferred: no out-of-line copy survives; BeginUpdate inlines it */

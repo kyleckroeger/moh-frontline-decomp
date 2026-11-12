@@ -30,26 +30,8 @@ public:
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    /* The default argument is not known; it does not change this code. */
-    CMatrix(int unknown = 0) {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix(const CMatrix& other) { *this = other; }
-    CMatrix& operator=(const CMatrix&);
-    void SetPos(CVector3);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-} __attribute__((aligned(16)));
 
 static CMatrixStack* _dmeshStack;
 static CMatrix _scratchMats[128];
@@ -126,7 +108,7 @@ void DMClusterSynthesizeMatrices(unsigned long index, DMClusterObject_T* cluster
         dc = (dc << 16) >> 16;
         CMatrix m(mats[parent]);
         _matrix_rot_yzx(m, a + ((da * t) >> 12), b + ((db * t) >> 12), c + ((dc * t) >> 12));
-        m.SetPos(mats[bone].position);
+        m.SetPos(mats[bone].pos);
         CMatrix top;
         g_matStack->Store(&top);
         CMatrix result;

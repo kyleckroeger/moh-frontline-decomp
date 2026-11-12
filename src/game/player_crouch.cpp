@@ -74,23 +74,8 @@ inline CVector3 operator*(float f, const CVector3& v) {
     return r;
 }
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CVector3 GetRight() const { return right; }
-    void FastInverse(const CMatrix&);
-    void TransformVector(CVector3&, CVector3) const;
-    static void InitClass();
-    static bool s_ClassInit;
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-} __attribute__((aligned(16)));
 
 class CInputManager {
 public:

@@ -26,20 +26,8 @@ class CDmaTag;
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
-    void FastInverse(const CMatrix&);
-    void TransformVector(CVector3&, CVector3) const;
+#include "game/CMatrix.h"
 
-    float m[3][4];
-    CVector3 pos;
-} __attribute__((aligned(16)));
 
 /* inferred: the DMA packet's write pointer (+8) */
 class CDmaPacket {

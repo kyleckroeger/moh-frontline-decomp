@@ -33,27 +33,8 @@ class CMatrix;
 #include "game/CVector3.h"
 
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix(const CMatrix& other) { *this = other; }
-    static void InitClass();
-    static bool s_ClassInit;
-    CMatrix& operator=(const CMatrix&);
-    void SetPos(CVector3);
-    void Translate(CVector3);
-    void BuildRotZ(float);
-    void Multiply(const CMatrix&, const CMatrix&);
-    CVector3 GetPos() const { return position; }
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -359,7 +340,7 @@ void CAnimatedPlayer::AttemptUpdate(float dt) {
     CMatrix bone(m_matrices[1]);
     CQuaternion rotation;
     rotation.SetFromMatrix(bone);
-    CVector3 position = bone.position;
+    CVector3 position = bone.pos;
     float pz = m_bonePosition.z;
     float py = m_bonePosition.y;
     float px = m_bonePosition.x;
@@ -369,7 +350,7 @@ void CAnimatedPlayer::AttemptUpdate(float dt) {
     m_nextBoneRotation.Slerp(rotation, m_boneRotation, dt);
     m_nextBoneRotation.GetMatrix(bone);
     bone.SetPos(m_nextBonePosition);
-    if (m_tm.position.z < -250.0f)
+    if (m_tm.pos.z < -250.0f)
         BSObjectTriggerEvent(m_script, 45, 0, 0, false);
     if (!m_frozen) {
         m_yaw = (m_lastYaw + ((long)(2670176.8f * turn) & 0xffffff)) & 0xffffff;
