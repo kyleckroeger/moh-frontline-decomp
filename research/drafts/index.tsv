@@ -125,7 +125,6 @@ real_lines	size	address	function	compile_settings_from	draft
 	76	801055f8	__sinit_rcmpbase_cpp	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
 	1160	800bee4c	Init__13UserInterfaceFv	config/GMFE69/UserInterface.json	research/drafts/UserInterface_init.cpp
 	988	800ba3d0	__ct__19PopUpMessageHandlerFPcPc	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
-	2628	800761c8	Init__12CCompartmentFv	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
 	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
 	708	80135324	TRKSuppAccessFile	config/GMFE69/msgbuf.json	research/drafts/TRKSuppAccessFile.80135324.cpp
 	1868	8010370c	Play__21OPTION_PARSING_PLAYERFb	config/GMFE69/rcmp_main.json	research/drafts/rcmp_play.cpp
