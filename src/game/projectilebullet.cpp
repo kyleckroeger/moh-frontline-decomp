@@ -81,6 +81,7 @@ void* DWI_alloc(const char*, int, int);
 /* inferred: CVector3 as four floats (copies move doubleword pairs) */
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return v[0] * o.v[0] + v[1] * o.v[1] + v[2] * o.v[2]; }
     CVector3() {}
     CVector3(const CVector3& o) {
         pair[0] = o.pair[0];
@@ -124,10 +125,6 @@ public:
         float v[4];
     };
 } __attribute__((aligned(8)));
-
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.v[0] * b.v[0] + a.v[1] * b.v[1] + a.v[2] * b.v[2];
-}
 
 class CMatrix {
 public:
@@ -765,7 +762,7 @@ void CProjectileBullet::Penetrate(const CCollision& collision) {
     const CVector3& normal = *collision.m_normal;
     CVector3 dir;
     GetForward(dir);
-    float d = Dot(dir, normal);
+    float d = dir.Dot(normal);
     if ((float)fabs(d) > 1e-5f) {
         dir *= CONTACT_EPSILON / (float)fabs(d);
     } else if (d > 0.0f) {

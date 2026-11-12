@@ -25,6 +25,7 @@ class CRenderList;
 /* Inferred: CVector3 as four floats (copies move doubleword pairs). */
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
     CVector3() {}
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     float Length() const { return sqrtf(x * x + y * y + z * z); }
@@ -46,10 +47,6 @@ public:
 
 inline CVector3 operator*(float s, const CVector3& v) {
     return CVector3(s * v.x, s * v.y, s * v.z);
-}
-
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
 }
 
 /* Only the GX export of the matrix is part of this view. */
@@ -171,7 +168,7 @@ inline void STracer::GetVerts(CVector3* verts) {
     dir.x = m_end.x - m_start.x;
     dir.y = m_end.y - m_start.y;
     dir.z = m_end.z - m_start.z;
-    if (Dot(dir, g_XAxis) * Dot(dir, g_YAxis) > 0.0f) {
+    if (dir.Dot(g_XAxis) * dir.Dot(g_YAxis) > 0.0f) {
         side.x = g_YAxis.x - g_XAxis.x;
         side.y = g_YAxis.y - g_XAxis.y;
         side.z = g_YAxis.z - g_XAxis.z;

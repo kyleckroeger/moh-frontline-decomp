@@ -20,6 +20,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3() {}
     CVector3(float x, float y, float z) {
         d.v[0] = x;
@@ -40,10 +41,6 @@ public:
     float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
     CVector3Data d;
 } __attribute__((aligned(8)));
-
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
 
 class CMatrix {
 public:
@@ -96,8 +93,8 @@ static const float kEpsilon = 0.001745328f;
 unsigned char CPlane::GetIntersection(const CLine3& line, float& t, CVector3* point) const {
     CVector3 dir;
     dir = line.GetDir();
-    float denominator = Dot(m_normal, dir);
-    float numerator = Dot(m_normal, line.GetStart());
+    float denominator = m_normal.Dot(dir);
+    float numerator = m_normal.Dot(line.GetStart());
     if (Abs(denominator) > kEpsilon * line.GetLength()) {
         t = (m_d - numerator) / denominator;
     } else {

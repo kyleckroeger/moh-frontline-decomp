@@ -109,3 +109,13 @@ left for the maintainer: reverting them loses their matches.
   direct `g_viewport.m_width * ...` products, each with every declaration order of the five locals: the product's
   operands come out viewWidth-first whenever its result shares viewWidth's register (the original has the conversion
   first). Drafts: scratch/loop3/undo1/font/.
+- (real1) Invented vector helpers renamed to the original's CVector3 members (names1's symbol evidence: Sub at 800a4dac,
+  Scale at 800a4cec, Add at 800a4d14 are void weak members writing into `this`; Rising Sun has CVector3::Dot):
+  free `SetDifference(r, a, b)` -> `r.Sub(a, b)` in cdbgeom_triangle_line, fiber_line, fiber_point (member added to
+  the unit's view) and capsule_capsule (unused there; the shared header already has Sub); free `Dot(a, b)` ->
+  `a.Dot(b)` in cdbobject_leaf, projectilebullet, cdbobject_trigroups, thrownbullet_explosion, particlesystem_visible,
+  projectilebullet_link, camera_frustum, plane_ctor and line. All 13 units verify; each object compiled identical
+  before and after. No two-argument SetSum exists (the only one, in the CCDBTriangle-capsule draft, is three-argument
+  and stays). Drafts: CCDBTriangle::TestCollision(CVolCapsule) Sub/Add (no operator+=, still 7), ConstrainVelocity
+  first block Scale + Sub (still 14), CCDBVolBox::TestCollision(CTriangle) and CStaticMesh::DrawNode renamed (same
+  scores). CMatrix::Orthonormalize landed with Scale/Sub/Dot/Normalize only (3a9096c2).

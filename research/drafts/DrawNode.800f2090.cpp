@@ -7,15 +7,12 @@ union CVector3Pair {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3() {}
     CVector3(const CVector3& other) { d = other.d; }
 
     CVector3Pair d;
 } __attribute__((aligned(8)));
-
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
 
 class CMatrix {
 public:
@@ -26,7 +23,7 @@ public:
 /* inferred: a frustum plane (normal, distance at +16) */
 class CPlane {
 public:
-    float GetDistance(CVector3 p) const { return Dot(m_normal, p) - m_d; }
+    float GetDistance(CVector3 p) const { return m_normal.Dot(p) - m_d; }
 
     CVector3 m_normal;
     float m_d;
@@ -109,9 +106,9 @@ static inline bool IsOutside(MSHNode& world, unsigned long planes, unsigned long
         if (planes & bit) {
             plane = &g_pFrustum[i];
             const CVector3& n = plane->m_normal;
-            double f2 = fabs(Dot(world.vectors[2], n));
-            double f1 = fabs(Dot(world.vectors[1], n));
-            double f0 = fabs(Dot(world.vectors[0], n));
+            double f2 = fabs(world.vectors[2].Dot(n));
+            double f1 = fabs(world.vectors[1].Dot(n));
+            double f0 = fabs(world.vectors[0].Dot(n));
             float r = (float)f0 + (float)f1 + (float)f2;
             float d = plane->GetDistance(world.vectors[3]);
             if (d > r)

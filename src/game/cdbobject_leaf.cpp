@@ -30,6 +30,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3() {}
     CVector3(const struct CDBVector& v);
     CVector3Data d;
@@ -53,9 +54,6 @@ public:
 } __attribute__((aligned(16)));
 
 class CTriangle;
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
 class CLine3;
 class CVolBox;
 class CVolSphere;
@@ -297,8 +295,8 @@ inline float Sq(float x) { return x * x; }
 static float GetDistanceFromPlane(const CPlane& plane, const CVolCapsule& capsule) {
     CVector3 start = capsule.m_start;
     CVector3 end = capsule.m_end;
-    float a = Dot(start, plane.m_normal) - plane.m_d;
-    float b = Dot(end, plane.m_normal) - plane.m_d;
+    float a = start.Dot(plane.m_normal) - plane.m_d;
+    float b = end.Dot(plane.m_normal) - plane.m_d;
     if (a * b > Sq(capsule.m_radius)) {
         float fb = __fabs(b);
         float fa = __fabs(a);

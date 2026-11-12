@@ -68,12 +68,8 @@ public:
         r.d.c.z = d.c.z - o.d.c.z;
         return r;
     }
-    CVector3& operator+=(const CVector3& o) {
-        d.c.x += o.d.c.x;
-        d.c.y += o.d.c.y;
-        d.c.z += o.d.c.z;
-        return *this;
-    }
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
+    void Add(const CVector3& o) { d.c.x += o.d.c.x; d.c.y += o.d.c.y; d.c.z += o.d.c.z; }
     float Normalize();
     float Length() const;
     void DotDotDot(const CVector3&, const CVector3&, const CVector3&, const CVector3&);
@@ -121,12 +117,6 @@ __declspec(weak) bool CCDBVolBox::TestCollision(const CVolBox& other, CCollision
 
 __declspec(weak) bool CCDBVolBox::TestCollision(const IVolume& other, CCollision& collision, bool flag) const {
     return CVolBox::TestCollision(other, collision, flag);
-}
-
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.c.x = a.d.c.x - b.d.c.x;
-    r.d.c.y = a.d.c.y - b.d.c.y;
-    r.d.c.z = a.d.c.z - b.d.c.z;
 }
 
 inline void SetSum(CVector3& r, const CVector3& a, const CVector3& b) {
@@ -213,7 +203,7 @@ public:
     line.GetSquaredDistanceBetweenSegments(seg, a, b, &dist)
 #define POINT(p) \
     pt = GetNearestPoint(p, &fS0, &fT0); \
-    SetDifference(delta, p, pt); \
+    delta.Sub(p, pt); \
     fSqrDist0 = delta.LengthSq()
 #define TAKE() \
     if (fSqrDist0 < fSqrDist) { \
@@ -245,10 +235,10 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
     CVector3 e1;
     CVector3 e2;
     CVector3 normal;
-    SetDifference(diff, m_vertices[0], start);
-    SetDifference(e0, m_vertices[1], m_vertices[0]);
-    SetDifference(e1, m_vertices[2], m_vertices[0]);
-    SetDifference(e2, m_vertices[2], m_vertices[1]);
+    diff.Sub(m_vertices[0], start);
+    e0.Sub(m_vertices[1], m_vertices[0]);
+    e1.Sub(m_vertices[2], m_vertices[0]);
+    e2.Sub(m_vertices[2], m_vertices[1]);
     normal.Cross(e0, e1);
     float lengthN = normal.Length();
     float lengthD = dir.Length();
@@ -304,7 +294,7 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
                     TAKE();
                 } else {
                     pt = GetNearestPoint(start, &fS, &fT);
-                    SetDifference(delta, start, pt);
+                    delta.Sub(start, pt);
                     fSqrDist = delta.LengthSq();
                     fR = 0.0f;
                 }
@@ -316,7 +306,7 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
                     fS0 = 1.0f - fT0;
                     TAKE();
                     pt = GetNearestPoint(start, &fS0, &fT0);
-                    SetDifference(diff, start, pt);
+                    diff.Sub(start, pt);
                     fSqrDist0 = diff.LengthSq2();
                     fR0 = 0.0f;
                     TAKE();
@@ -403,7 +393,7 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
                     TAKE();
                 } else {
                     pt = GetNearestPoint(end, &fS, &fT);
-                    SetDifference(delta, end, pt);
+                    delta.Sub(end, pt);
                     fSqrDist = delta.LengthSq();
                     fR = 1.0f;
                 }
@@ -475,7 +465,7 @@ int CCDBTriangle::TestCollision(const CVolCapsule& capsule, CCollision& collisio
             tv.d.c.x = tvx;
             tv.d.c.y = tvy;
             tv.d.c.z = tvz;
-            point += tv;
+            point.Add(tv);
             CVector3 rv;
             rv.Scale(dir, fR);
             diff.d.c.x = start.d.c.x + rv.d.c.x - point.d.c.x;

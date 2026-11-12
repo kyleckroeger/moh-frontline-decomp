@@ -51,6 +51,7 @@ extern inline float sqrtf(float x)
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
     void Normalize() {
         float length = Length();
@@ -279,8 +280,6 @@ struct CheatsView {
 extern CheatsView g_cheats;
 
 inline float DotXYZ(float x, float y, float z, const CVector3& v) { return x * v.d.v[0] + y * v.d.v[1] + z * v.d.v[2]; }
-
-inline float Dot(const CVector3& a, const CVector3& b) { return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2]; }
 
 struct BSObject;
 struct TriggerObject_struct;
@@ -772,13 +771,13 @@ void CThrownBullet::ConstrainVelocity() {
             speed = m_velocity.Length();
         m_normal.Normalize();
         normal = m_normal;
-        along = Dot(m_velocity, normal);
+        along = m_velocity.Dot(normal);
         if (along > 0.0f) {
             m_normal.d.v[0] = -m_normal.d.v[0];
             m_normal.d.v[1] = -m_normal.d.v[1];
             m_normal.d.v[2] = -m_normal.d.v[2];
             normal = m_normal;
-            along = Dot(m_velocity, normal);
+            along = m_velocity.Dot(normal);
         }
         normal *= 2.0f * along;
         m_velocity.d.v[0] -= normal.d.v[0];
@@ -844,7 +843,7 @@ void CThrownBullet::Penetrate(const CCollision& collision) {
     const CVector3* normal = collision.m_normal;
     CVector3 offset;
     GetForward(offset);
-    float along = Dot(offset, *normal);
+    float along = offset.Dot(*normal);
     if ((float)__fabs(along) > 1e-05f) {
         offset *= CONTACT_EPSILON / (float)__fabs(along);
     } else if (along > 0.0f) {

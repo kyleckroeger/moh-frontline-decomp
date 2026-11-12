@@ -29,6 +29,8 @@ public:
         }
     }
 
+    void Scale(const CVector3& o, float k) { x = k * o.x; y = k * o.y; z = k * o.z; }
+    void Sub(const CVector3& a, const CVector3& b) { x = a.x - b.x; y = a.y - b.y; z = a.z - b.z; }
     float x;
     float y;
     float z;
@@ -222,9 +224,7 @@ void CAnimObject::ConstrainVelocity() {
         CClsnInfo* end;
         CClsnInfo* first;
         CClsnInfo* second;
-        float bx;
-        float by;
-        float bz;
+        CVector3 bv;
         float best;
         float best2;
         float b;
@@ -252,12 +252,8 @@ void CAnimObject::ConstrainVelocity() {
         }
         bool found = first != end;
         if (found) {
-            bx = best * first->m_normal.x;
-            by = best * first->m_normal.y;
-            bz = best * first->m_normal.z;
-            m_velocity.x -= bx;
-            m_velocity.y -= by;
-            m_velocity.z -= bz;
+            bv.Scale(first->m_normal, best);
+            m_velocity.Sub(m_velocity, bv);
             for (it = begin; it != end; ++it) {
                 if (it == first)
                     continue;
@@ -303,15 +299,15 @@ void CAnimObject::ConstrainVelocity() {
                 solved = true;
             }
             if (solved) {
-                float sx = Mul(b, bx);
+                float sx = Mul(b, bv.x);
                 float tx = Mul(px, a);
                 float ux = sx + tx;
                 float dx = Mul(ux, 1.05f);
-                float sy = Mul(b, by);
+                float sy = Mul(b, bv.y);
                 float ty = Mul(py, a);
                 float uy = sy + ty;
                 float dy = Mul(uy, 1.05f);
-                float sz = Mul(b, bz);
+                float sz = Mul(b, bv.z);
                 float tz = Mul(pz, a);
                 float uz = sz + tz;
                 float dz = Mul(uz, 1.05f);

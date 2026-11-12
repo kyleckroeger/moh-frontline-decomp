@@ -25,6 +25,7 @@ struct CVector3Pair {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
     CVector3() {}
     CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
     CVector3(const CVector3& o) { *(CVector3Pair*)this = *(const CVector3Pair*)&o; }
@@ -164,10 +165,6 @@ bool CParticleSystem::IsVisible(CDrawContext& context) {
     return visible;
 }
 
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.x * b.x + a.y * b.y + a.z * b.z;
-}
-
 /* Inferred: a vector scaled by a factor. */
 inline CVector3 Scale(float s, const CVector3& v) {
     CVector3 r;
@@ -183,7 +180,7 @@ struct FrustumPlaneView {
     float d;
     unsigned char unknown14[12];
 
-    float Distance(CVector3 p) const { return Dot(normal, p) - d; }
+    float Distance(CVector3 p) const { return normal.Dot(p) - d; }
 };
 
 static bool IsBoxVisible(const CVolBox& box, CDrawContext& context) {
@@ -205,7 +202,7 @@ static bool IsBoxVisible(const CVolBox& box, CDrawContext& context) {
     a2.y = box.m_halfHeight * b2.y;
     a2.z = box.m_halfHeight * b2.z;
     for (int i = 0; i < 6; i++) {
-        float r = (float)fabs(Dot(a0, plane->normal)) + (float)fabs(Dot(a1, plane->normal)) + (float)fabs(Dot(a2, plane->normal));
+        float r = (float)fabs(a0.Dot(plane->normal)) + (float)fabs(a1.Dot(plane->normal)) + (float)fabs(a2.Dot(plane->normal));
         if (plane->Distance(c) > r)
             return false;
         plane++;

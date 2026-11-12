@@ -18,6 +18,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3Data d;
 } __attribute__((aligned(8)));
 
@@ -47,10 +48,6 @@ inline double fabs(double x) {
     return __fabs(x);
 }
 
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
-
 bool CLine3::IsDegenerate() const {
     return GetLengthSquared() < 1e-12f;
 }
@@ -61,11 +58,11 @@ bool CLine3::GetSquaredDistanceBetweenSegments(const CLine3& other, float& fS, f
     kDiff.d.v[1] = m_start.d.v[1] - other.m_start.d.v[1];
     kDiff.d.v[2] = m_start.d.v[2] - other.m_start.d.v[2];
     float fA00 = GetLengthSquared();
-    float fA01 = -Dot(m_dir, other.m_dir);
+    float fA01 = -m_dir.Dot(other.m_dir);
     float fA11 = other.GetLengthSquared();
-    float fB0 = Dot(m_dir, kDiff);
-    float fB1 = -Dot(other.m_dir, kDiff);
-    float fC = Dot(kDiff, kDiff);
+    float fB0 = m_dir.Dot(kDiff);
+    float fB1 = -other.m_dir.Dot(kDiff);
+    float fC = kDiff.Dot(kDiff);
     float fDet = fabs(fA00 * fA11 - fA01 * fA01);
     float fSqrDist;
     bool parallel;
@@ -296,7 +293,7 @@ void CLine3::GetProjection(CVector3 point, CVector3& projection, float& t) const
         diff.d.v[0] = point.d.v[0] - m_start.d.v[0];
         diff.d.v[1] = point.d.v[1] - m_start.d.v[1];
         diff.d.v[2] = point.d.v[2] - m_start.d.v[2];
-        t = Dot(m_dir, diff) / GetLengthSquared();
+        t = m_dir.Dot(diff) / GetLengthSquared();
         float s = t;
         projection.d.v[0] = s * m_dir.d.v[0];
         projection.d.v[1] = s * m_dir.d.v[1];

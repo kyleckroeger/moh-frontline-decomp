@@ -24,12 +24,6 @@ class IVolume;
 
 #include "game/CVector3.h"
 
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.x = a.x - b.x;
-    r.y = a.y - b.y;
-    r.z = a.z - b.z;
-}
-
 // Inferred: the line with its lazily cached length and squared length.
 class CLine3 {
 public:

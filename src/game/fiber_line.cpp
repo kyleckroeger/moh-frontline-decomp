@@ -38,6 +38,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
     CVector3() {}
     CVector3 operator=(const CVector3& o) { d.pair[0] = o.d.pair[0]; d.pair[1] = o.d.pair[1]; return *this; }
     CVector3(float x, float y, float z) {
@@ -70,12 +71,6 @@ public:
 } __attribute__((aligned(8)));
 
 
-
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.c.x = a.d.c.x - b.d.c.x;
-    r.d.c.y = a.d.c.y - b.d.c.y;
-    r.d.c.z = a.d.c.z - b.d.c.z;
-}
 
 class CLine3 {
 public:
@@ -131,9 +126,9 @@ int CVolFiber::TestCollision(const CLine3& line, CCollision& collision, bool fla
     CVector3 p21;
     CVector3 p43;
     CVector3 p13;
-    SetDifference(p21, m_line.GetEnd(), m_line.GetStart());
-    SetDifference(p43, line.GetEnd(), line.GetStart());
-    SetDifference(p13, m_line.GetStart(), line.GetStart());
+    p21.Sub(m_line.GetEnd(), m_line.GetStart());
+    p43.Sub(line.GetEnd(), line.GetStart());
+    p13.Sub(m_line.GetStart(), line.GetStart());
     if (fabs(p21.d.c.x) < 1e-12f && fabs(p21.d.c.y) < 1e-12f && fabs(p21.d.c.z) < 1e-12f) {
         if (flag && collision.m_result < 1)
             collision.m_result = 1;
@@ -183,7 +178,7 @@ int CVolFiber::TestCollision(const CLine3& line, CCollision& collision, bool fla
         if (collision.m_result < 2)
             collision.m_result = 2;
         SClsnContact contact;
-        SetDifference(n, pa, m_line.GetStart());
+        n.Sub(pa, m_line.GetStart());
         contact.m_separation = n.Length();
         collision.m_time = mua;
         n = m_line.GetDirection();

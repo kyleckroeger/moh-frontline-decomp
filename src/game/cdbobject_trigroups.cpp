@@ -26,6 +26,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3() {}
     CVector3(const struct CDBVector& v);
     CVector3(float x, float y, float z) { d.v[0] = x; d.v[1] = y; d.v[2] = z; }
@@ -323,16 +324,12 @@ float GetDistanceFromPlane(const CPlane&, const CVolCapsule&);
    are copied in reverse into named locals declared in order (the stack slots
    and the copy schedule), the projection uses the three-float constructor
    (arguments evaluated right to left), and the centre row is copied last. */
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
-
 inline float GetDistanceFromPlane(const CPlane& plane, const CVolBox& box) {
     CVector3 r0, r1, r2;
     r2 = box.m_frame.m_row[2];
     r1 = box.m_frame.m_row[1];
     r0 = box.m_frame.m_row[0];
-    CVector3 proj(Dot(r0, plane.m_normal), Dot(r1, plane.m_normal), Dot(r2, plane.m_normal));
+    CVector3 proj(r0.Dot(plane.m_normal), r1.Dot(plane.m_normal), r2.Dot(plane.m_normal));
     float width = (float)fabs(proj.d.v[0]);
     float depth = (float)fabs(proj.d.v[1]);
     float height = (float)fabs(proj.d.v[2]);

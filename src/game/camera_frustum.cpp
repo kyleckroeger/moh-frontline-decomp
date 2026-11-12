@@ -22,12 +22,13 @@
 // vector locals sit at 16-byte offsets in a 16-aligned frame), with a
 // constructor and a copy constructor that moves the double pair (arguments
 // are built in place and copies are lfd/stfd pairs). The alignment, the
-// members and the Dot helper are inferred, as is the placement of the row
-// copies after the right row is negated.
+// members and the Dot body are inferred (Dot is the original's CVector3 member),
+// as is the placement of the row copies after the right row is negated.
 #include <math.h>
 
 class CVector3 {
 public:
+    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
     CVector3() {}
     CVector3(float x, float y, float z) {
         d.v[0] = x;
@@ -49,10 +50,6 @@ public:
         double pair[2];
     } d;
 } __attribute__((aligned(16)));
-
-inline float Dot(const CVector3& a, const CVector3& b) {
-    return a.d.v[0] * b.d.v[0] + a.d.v[1] * b.d.v[1] + a.d.v[2] * b.d.v[2];
-}
 
 class CMatrix {
 public:
@@ -193,7 +190,7 @@ void CCamera::UpdateWorldToCamera() {
     m_worldToCamera.SetRight(CVector3(right.d.v[0], up.d.v[0], forward.d.v[0]));
     m_worldToCamera.SetFront(CVector3(right.d.v[1], up.d.v[1], forward.d.v[1]));
     m_worldToCamera.SetUp(CVector3(right.d.v[2], up.d.v[2], forward.d.v[2]));
-    CVector3 t(Dot(right, position), Dot(up, position), Dot(forward, position));
+    CVector3 t(right.Dot(position), up.Dot(position), forward.Dot(position));
     t.d.v[0] = -t.d.v[0];
     t.d.v[1] = -t.d.v[1];
     t.d.v[2] = -t.d.v[2];

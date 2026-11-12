@@ -26,6 +26,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
     CVector3() {}
     CVector3(float x, float y, float z) {
         d.v[0] = x;
@@ -47,12 +48,6 @@ public:
 
     CVector3Data d;
 } __attribute__((aligned(8)));
-
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.v[0] = a.d.v[0] - b.d.v[0];
-    r.d.v[1] = a.d.v[1] - b.d.v[1];
-    r.d.v[2] = a.d.v[2] - b.d.v[2];
-}
 
 // Inferred: the line with its lazily cached length and squared length.
 class CLine3 {
@@ -124,7 +119,7 @@ int CVolFiber::TestCollision(CVector3 point, CCollision& collision, bool flag) c
     CVector3 diff;
     collision.m_line = 1;
     dir = m_line.GetDirection();
-    SetDifference(diff, point, m_line.GetStart());
+    diff.Sub(point, m_line.GetStart());
     float t = dir.Dot(diff);
     float distSq = diff.LengthSq();
     float dist = sqrtf(distSq);

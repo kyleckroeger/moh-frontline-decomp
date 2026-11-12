@@ -7,6 +7,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
     CVector3() {}
     float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
     float LengthSq() const { return d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z; }
@@ -26,12 +27,6 @@ public:
 
     CVector3Data d;
 } __attribute__((aligned(8)));
-
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.c.x = a.d.c.x - b.d.c.x;
-    r.d.c.y = a.d.c.y - b.d.c.y;
-    r.d.c.z = a.d.c.z - b.d.c.z;
-}
 
 class CCollision;
 extern const float CONTACT_EPSILON;

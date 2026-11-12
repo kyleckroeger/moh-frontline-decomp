@@ -52,6 +52,7 @@ union CVector3Data {
 
 class CVector3 {
 public:
+    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
     CVector3() {}
     CVector3 operator=(const CVector3& o) {
         d.pair[0] = o.d.pair[0];
@@ -95,12 +96,6 @@ public:
 
     CVector3Data d;
 } __attribute__((aligned(8)));
-
-inline void SetDifference(CVector3& r, const CVector3& a, const CVector3& b) {
-    r.d.c.x = a.d.c.x - b.d.c.x;
-    r.d.c.y = a.d.c.y - b.d.c.y;
-    r.d.c.z = a.d.c.z - b.d.c.z;
-}
 
 class CLine3 {
 public:
@@ -221,10 +216,10 @@ int CCDBTriangle::TestCollision(const CVolBox& box, CCollision& collision, const
     float h1;
     float best = 3.4028235e38f;
     EBoxTriSeperatingAxis bestAxis = (EBoxTriSeperatingAxis)0;
-    SetDifference(diff, m_vertices[0], box.GetCenter());
-    SetDifference(e0, m_vertices[1], m_vertices[0]);
-    SetDifference(e1, m_vertices[2], m_vertices[0]);
-    SetDifference(e2, m_vertices[2], m_vertices[1]);
+    diff.Sub(m_vertices[0], box.GetCenter());
+    e0.Sub(m_vertices[1], m_vertices[0]);
+    e1.Sub(m_vertices[2], m_vertices[0]);
+    e2.Sub(m_vertices[2], m_vertices[1]);
     h0 = box.m_half[0];
     CVector3 a0 = box.GetAxis(0);
     p.DotDotDot(diff, e0, e1, a0);
@@ -363,8 +358,8 @@ int CCDBTriangle::TestCollision(const CLine3& line, CCollision& collision, const
     CVector3 normal;
     CVector3 e1;
     CVector3 e2;
-    SetDifference(e1, m_vertices[1], m_vertices[0]);
-    SetDifference(e2, m_vertices[2], m_vertices[0]);
+    e1.Sub(m_vertices[1], m_vertices[0]);
+    e2.Sub(m_vertices[2], m_vertices[0]);
     dir = line.GetDirection();
     CVector3 p;
     p.Cross(dir, e2);
@@ -376,7 +371,7 @@ int CCDBTriangle::TestCollision(const CLine3& line, CCollision& collision, const
     }
     float inv = 1.0f / det;
     CVector3 s;
-    SetDifference(s, line.GetStart(), m_vertices[0]);
+    s.Sub(line.GetStart(), m_vertices[0]);
     float u = inv * s.Dot(p);
     if (u < 0.0f || u > 1.0f) {
         if (flag && collision.m_result < 1)
@@ -403,7 +398,7 @@ int CCDBTriangle::TestCollision(const CLine3& line, CCollision& collision, const
     point += line.GetStart();
     collision.m_time = t;
     CVector3 rest;
-    SetDifference(rest, point, line.GetEnd());
+    rest.Sub(point, line.GetEnd());
     dir.Unitize();
     float separation = dir.Dot(rest);
     int result = Compare(separation);
