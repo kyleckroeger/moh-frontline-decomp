@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1245,
- "function_bytes_by_status": {"consistent": 167228, "differs": 10144, "exact": 4472, "verified": 1223712},
+ "verified_units": 1246,
+ "function_bytes_by_status": {"consistent": 166396, "differs": 10144, "exact": 4472, "verified": 1224544},
  "data_bytes_owned": 723983,
  "data_bytes_total": 1976252,
  "functions": [
@@ -362,7 +362,7 @@
  [2147655956, 192, "BIFunc_PlaySoundFromInputTrigger__FPPiPv", "verified", "src/game/bsbifunc_soundoffset.cpp"],
  [2147656148, 528, "PlaySoundFromTriggerOrObject__FP20TriggerObject_structP8BSObjectPviiR8CVector3", "verified", "src/game/bsbifunc_soundoffset.cpp"],
  [2147656676, 40, "BIFunc_SEDEvent__FPPiPv", "verified", "src/game/bsbifunc_sedevent.cpp"],
- [2147656716, 832, "BIFunc_DisplayPromptInteger__FPPiPv", "consistent", "research/drafts/bsbifunc_prompt.cpp"],
+ [2147656716, 832, "BIFunc_DisplayPromptInteger__FPPiPv", "verified", "src/game/bsbifunc_promptinteger.cpp"],
  [2147657548, 860, "BIFunc_DisplayPromptText__FPPiPv", "verified", "src/game/bsbifunc_prompttext.cpp"],
  [2147658408, 140, "BIFunc_DisplayPrompt__FPPiPv", "verified", "src/game/bsbifunc_prompt.cpp"],
  [2147658548, 612, "DisplayHintText__FPCc", "verified", "src/game/bsbifunc_hinttext.cpp"],
