@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1252,
- "function_bytes_by_status": {"consistent": 153788, "differs": 10144, "exact": 4472, "verified": 1237152},
+ "function_bytes_by_status": {"consistent": 153076, "differs": 10144, "exact": 4472, "verified": 1237864},
  "data_bytes_owned": 724053,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2799,7 +2799,7 @@
  [2148375776, 272, "median<Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFQ26CScene9UNodePairQ26CScene9UNodePairQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b", "verified", "src/game/scene_sort.cpp"],
  [2148376048, 52, "iter_swap<PQ26CScene9UNodePair,PQ26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePair", "verified", "src/game/scene_sort.cpp"],
  [2148376100, 36, "CmpNodePairs__FRCQ26CScene9UNodePairRCQ26CScene9UNodePair", "verified", "src/game/scene_cmppairs.cpp"],
- [2148376136, 712, "SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>", "consistent", "research/drafts/SweepExtents.800d9e48.cpp"],
+ [2148376136, 712, "SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>", "verified", "src/game/scene_cmppairs.cpp"],
  [2148376848, 104, "__dt__Q23dwi23fast_vec<P10ISceneNode>Fv", "verified", "src/game/scene_fastvec_node.cpp"],
  [2148376952, 508, "RemoveNodeExtents__6CSceneFR10ISceneNode", "verified", "src/game/scene_rmextents.cpp"],
  [2148377460, 460, "AddNodeExtents__6CSceneFR10ISceneNode", "verified", "src/game/scene_rmextents.cpp"],

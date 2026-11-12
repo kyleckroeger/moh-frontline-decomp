@@ -45,7 +45,6 @@ real_lines	size	address	function	compile_settings_from	draft
 28	164	8009174c	Multiply__11CQuaternionF11CQuaternion	config/GMFE69/quaternion.json	research/drafts/Multiply.8009174c.cpp
 32	400	80168828	decodexac__3SNDFPQ23SND10MXAPACKETF	config/GMFE69/eaxadecf.json	research/drafts/decodexac.80168828.cpp
 33	2028	8003c93c	CreateDestructable__FP20TriggerObject_structi	config/GMFE69/objcreate_createplayer.json	research/drafts/CreateDestructable.8003c93c.cpp
-39	712	800d9e48	SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>	config/GMFE69/scene_cmppairs.json	research/drafts/SweepExtents.800d9e48.cpp
 42	388	80030658	BIFunc_PlayerScreenFlash__FPPiPv	config/GMFE69/bsbifunc_death.json	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
 43	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
 44	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
