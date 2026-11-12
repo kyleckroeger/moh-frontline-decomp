@@ -93,3 +93,9 @@ left for the maintainer: reverting them loses their matches.
 - (natural1) CFont::DrawTextCenteredF: `Mul` still load-bearing (2 lines: 'fmuls f29,f0,f29' operand order). Plain
   product in either order, named conversion locals, int/unsigned locals, in-place 'viewWidth *=', compound forms,
   a 9-declaration order search: inert or worse. Drafts: natural1/font/.
+- (zero2) Shared zero by variable reuse (zero1's rule): SNDBANKI_playpatch drops the inferred `markvoices` inline:
+  one function-level `i` for the key search, tagging and stop loops (compaction keeps its own `j`), tagging stores a
+  literal 0; re-assigning `i` gives 'li r17,0; mr r16,r17'. Unit verifies, image identical. Kept (no earlier live
+  variable to reuse; plain forms tested in scratch/loop3/zero2/var/): PickUp (68 inlined), PATHI fadein (target reuse
+  11; only reusing the dead `index` param as the char flag gets 4), SendMessages (50: loop-carried vars are one web),
+  init_free (alarm 9, pumhandler 11: `next` gets its own li), FindClasses (-1 follows the rule too: 2, li+li vs li+mr).

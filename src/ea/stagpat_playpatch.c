@@ -5,9 +5,12 @@
    voices that are already over, tags the remaining voices with the patch key
    and marks the last one; when a timbre fails or nothing is left the started
    voices are stopped. The function and SNDIPATCHHEADER/SNDPLAYOPTS/
-   TAGGEDPATCH are named by the mangled symbol; the views and the voice
-   tagging inline are inferred. Locals are declared in the order that gives
-   the original's registers. SNDBANKI_playtimbre before it is in stagpat. */
+   TAGGEDPATCH are named by the mangled symbol; the views are inferred.
+   Locals are declared in the order that gives the original's registers; one
+   function-level 'i' serves the key search, the voice tagging and the stop
+   loops (the tagging loop's 'i = 0' re-assigns it, so the compiler shares
+   that zero with the stored 0, as in the original). SNDBANKI_playtimbre
+   before it is in stagpat. */
 struct TAGGEDPATCH;
 
 struct SNDIPATCHHEADER {
@@ -52,23 +55,6 @@ extern "C" int SNDover(int);
 extern "C" void SNDstop(int);
 int SNDVOICEI_get(int);
 
-/* inferred: tags the started voices with the patch key; the caller marks the
-   last one */
-static inline void markvoices(SNDGSVIEW* gs, int* h, int count, unsigned char patchKey, SNDVOICEVIEW*& voice) {
-    int i = 0;
-    unsigned char last = 0;
-
-    for (; i < count; i++) {
-        int index = SNDVOICEI_get(*h);
-        if (index >= 0) {
-            voice = &gs->voices[index];
-            voice->patchKey = patchKey;
-            voice->lastOfPatch = last;
-        }
-        h++;
-    }
-}
-
 int SNDBANKI_playpatch(void* data, TAGGEDPATCH* patch, int handle, int bank, SNDPLAYOPTS* options) {
     int* out;
     unsigned char patchKey;
@@ -84,6 +70,7 @@ int SNDBANKI_playpatch(void* data, TAGGEDPATCH* patch, int handle, int bank, SND
     int more;
     SNDGSVIEW* gs;
     int handles[12];
+    int i;
     SNDIPATCHHEADER header;
 
     if (!patch)
@@ -103,7 +90,7 @@ retry:
     patchKey = freekey;
     {
         SNDVOICEVIEW* v = voices;
-        for (int i = 0; i < n; i++) {
+        for (i = 0; i < n; i++) {
             if (v->active && v->patchKey == patchKey)
                 goto retry;
             v++;
@@ -132,7 +119,7 @@ retry:
         int* dst = h;
         int started = count;
         count = 0;
-        for (int i = 0; i < started; i++) {
+        for (int j = 0; j < started; j++) {
             if (!SNDover(*src)) {
                 count++;
                 *dst++ = *src;
@@ -150,12 +137,20 @@ retry:
             single->lastOfPatch = 0;
         }
     } else {
-        markvoices(gs, h, count, patchKey, voice);
+        for (i = 0; i < count; i++) {
+            int index = SNDVOICEI_get(*h);
+            if (index >= 0) {
+                voice = &gs->voices[index];
+                voice->patchKey = patchKey;
+                voice->lastOfPatch = 0;
+            }
+            h++;
+        }
         voice->lastOfPatch = 1;
     }
     return result;
 stop:
-    for (int i = 0; i < count; i++) {
+    for (i = 0; i < count; i++) {
         SNDstop(*h);
         h++;
     }

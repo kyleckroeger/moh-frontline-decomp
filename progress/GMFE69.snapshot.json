@@ -357,7 +357,7 @@
     "src/ea/ssysreal.c": "2a5f454268823038839a4ea3219f804e213c28358abedaf60e10cb978d3c2a41",
     "src/ea/ssysserv.c": "c652ea041a804d456cc780e25f0ecfa648623be37c1c1bd170e18555761ec31d",
     "src/ea/stagpat.c": "d1225132699b70d61dfb8b95b79f4892bdbf75c57f17b83d2467eb3fbe79168c",
-    "src/ea/stagpat_playpatch.c": "5aee32d69d47c22157738d14ada4816abf987c8bcdb15f1bc31c75f250fb6a6a",
+    "src/ea/stagpat_playpatch.c": "6ddf2f68568b19f63fc0e427afb9679f2e7129a164ec3cba6c1c8e16fc5bd91f",
     "src/ea/stimemul.c": "fe4a33747721800f1d82a72032bc415a12b399b6a6ebdc8bed634faeb2ed7494",
     "src/ea/stpparse.c": "f8bf5ef91a0d9021a21df9b6133d68916b53999020635150f948d478c7bfcc40",
     "src/ea/stream.cpp": "7998a165a467c9b0d0d6ddbd139d8e7c881c05fe7d8ec3a74d8ee53aac581451",
@@ -51614,8 +51614,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "66123313ee904fa7786173c81974d489f4d680277b70061be41012f4fa209ca0",
-      "linked_sha256": "32d87b7edc1db8e20a019d71381305d12fc77a72a52c5553cdb8d036a68d123e"
+      "object_sha256": "bb226df2a285a82eeff44b699c147495e193c5930ca5d5d3fdeae246d6106b0d",
+      "linked_sha256": "7cc48752bf831a474afa9fdf1146d2d62e9ee0f418b2738a6def5790ac0c01bc"
     },
     {
       "id": "anim_obj_ground",
