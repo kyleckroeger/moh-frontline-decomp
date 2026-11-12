@@ -44,7 +44,7 @@ real_lines	size	address	function	compile_settings_from	draft
 32	400	80168828	decodexac__3SNDFPQ23SND10MXAPACKETF	config/GMFE69/eaxadecf.json	research/drafts/decodexac.80168828.cpp
 33	2028	8003c93c	CreateDestructable__FP20TriggerObject_structi	config/GMFE69/objcreate_createplayer.json	research/drafts/CreateDestructable.8003c93c.cpp
 42	388	80030658	BIFunc_PlayerScreenFlash__FPPiPv	config/GMFE69/bsbifunc_death.json	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
-43	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
+27	2308	800b9a00	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	config/GMFE69/pumhandler_add.json	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
 44	3416	8003dde8	CreateRootHierObject__FP20TriggerObject_structi	config/GMFE69/objcreate_swap.json	research/drafts/CreateRootHierObject.8003dde8.cpp
 3	568	800d7718	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	config/GMFE69/weaponfactory.json	research/drafts/PublishEvent.800d7718.cpp
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp

@@ -23,8 +23,7 @@ for r in csv.DictReader(open('research/drafts/index.tsv'),delimiter='\t'):
     t=json.load(open(r['compile_settings_from'])); t['include_dirs']=t.get('include_dirs',[])+['src/game','src/ea','include']
     a=int(r['address'],16); n=int(r['size'])
     with tempfile.TemporaryDirectory() as w:
-        if r['draft'].endswith('.c'): os.environ['SUFFIX']='c'
-        else: os.environ['SUFFIX']='cpp'
+        os.environ['SUFFIX']='cpp'  # .c drafts are scored as C++ too (score.py); SUFFIX=c fails to compile them
         o,log=fast.compile_object(t,open(r['draft'],errors='replace').read(),w)
         if not o: print('COMPILEFAIL',r['function'][:60]); continue
         d=subprocess.run([O,'-d',o],capture_output=True,text=True).stdout

@@ -220,8 +220,8 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
             m_background->DrawPoly(verts, 4, (EPolyPrimType)5);
         }
         count = 0;
-        for (i = 0; i < POPUPS_IN_SECTION; i++) {
-            if (!m_messages[1][i].Available())
+        for (int j = 0; j < POPUPS_IN_SECTION; j++) {
+            if (!m_messages[1][j].Available())
                 count++;
         }
         if (count > 0 && !g_scene.GetPlayer(0)->m_hideMessages && !g_bInMultiplayerMode) {
@@ -237,9 +237,9 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
     topSlot = -1;
     minTop = 2345;
     PopUpMessage* topMessage = m_messages[4];
-    for (slot = 0; slot < POPUPS_IN_SECTION; slot++, topMessage++) {
+    for (slot = 0; slot < POPUPS_IN_SECTION; topMessage++, slot++) {
         if (!topMessage->Available()) {
-            short messageTop = topMessage->Get_top();
+            int messageTop = topMessage->Get_top();
             if (messageTop < minTop) {
                 topSlot = slot;
                 minTop = messageTop;
@@ -247,7 +247,7 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
         }
     }
     for (section = 0; section < 5; section++) {
-        for (i = 0; i < POPUPS_IN_SECTION; i++) {
+        for (int i = 0; i < POPUPS_IN_SECTION; i++) {
             PopUpMessage* message = &m_messages[section][i];
             if (!message->Available()) {
                 switch (message->Get_property()) {
