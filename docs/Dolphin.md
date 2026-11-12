@@ -170,6 +170,13 @@ The original was linked by the MW linker, unlike Rising Sun's ProDG link:
   section's other bytes in a copy of the object (`input.o`; `compiled.o` stays
   the hashed compiler output). The trimmed-tail rules then apply. A listed name
   may not exist in the target, and retained code may not refer to it.
+  `port_unit.py` drafts the exception records of code a unit drops (discarded
+  statics, weak and file duplicates) as stripped objects, or trims them at a
+  section's ends: an object whose first word points at dropped code (its
+  `extabindex` entry) and the numbered objects it reaches (its `extab` record)
+  belong to that code, so they are never kept for pointing at a kept
+  destructor or for matching the size of a numbered record at the placed
+  address.
   Use it instead of `linked_offset` for leading objects too when the shifted
   base would break the section's alignment; SN then pads the start (`dsp_task`
   `.sbss`, `GXTexture` `.data`).

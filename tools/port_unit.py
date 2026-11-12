@@ -277,6 +277,41 @@ def referenced(obj, index, kept, addresses, duplicates=()):
     return False
 
 
+def foreign_records(obj, symbols, kept_ranges):
+    """(section, address) of the data objects owned by code the unit drops.
+
+    An object whose first word is a relocation to code outside the kept
+    functions is that code's record (an exception-index entry); numbered
+    objects reached from it (the exception table it indexes) are its too.
+    """
+    code = {s["index"] for s in obj.sections if s["name"] in CODE_SECTIONS}
+    data = {}
+    for s in symbols:
+        if s["type"] == 1 and s["size"] and s["section"] and s["section"] < 0xFF00 and s["section"] not in code:
+            data.setdefault(s["section"], []).append(s)
+    relocs = list(relocations(obj))
+    owned = set()
+    for section, where, _, symbol, addend in relocs:
+        target = symbol["address"] + addend
+        if (symbol["section"] in code and section in data
+                and not any(symbol["section"] == c and a <= target < b for c, a, b in kept_ranges)):
+            owned |= {(section, s["address"]) for s in data[section] if s["address"] == where}
+    roots = list(owned)
+    while roots:
+        section, start = roots.pop()
+        end = next(s["address"] + s["size"] for s in data[section] if s["address"] == start)
+        for where_section, where, _, symbol, addend in relocs:
+            if where_section != section or not start <= where < end:
+                continue
+            target = symbol["address"] + addend
+            for s in data.get(symbol["section"], []):
+                key = (symbol["section"], s["address"])
+                if s["name"].startswith("@") and s["address"] <= target < s["address"] + s["size"] and key not in owned:
+                    owned.add(key)
+                    roots.append(key)
+    return owned
+
+
 def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
     """Compiled [start, end) of objects the original kept, if MW trimmed the ends.
 
@@ -284,10 +319,15 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
     elsewhere) are never kept: references to them link to the original copy.
     Nor are linker-stripped records (passed with them), not even when the move
     to the section's end puts one where a numbered record of the same size
-    follows in the original.
+    follows in the original. Nor are the records of code this unit does not
+    keep (discarded statics, file and weak duplicates): an object whose first
+    word points at such code (its exception-index entry) and the numbered
+    objects it reaches (its exception table) belong to that code.
     """
     symbols = list(obj.symbols())
     objects = [s for s in symbols if s["section"] == index and s["type"] == 1 and s["size"]]
+    kept_ranges = [(f["section"], f["address"], f["address"] + f["size"]) for f, _ in kept]
+    foreign = foreign_records(obj, symbols, kept_ranges)
     keep = {(s["address"], s["size"]) for s in objects
             if not s["name"].startswith("@") and s["name"] not in duplicates
             and find(s, original, locals_) is not None}
@@ -302,10 +342,12 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
                     if s["name"].startswith("@")}
         keep |= {(s["address"], s["size"]) for s in objects
                  if s["name"].startswith("@") and s["name"] not in duplicates
+                 and (index, s["address"]) not in foreign
                  and (base + s["address"], s["size"]) in numbered}
     roots = [(f["section"], f["address"], f["address"] + f["size"]) for f, _ in kept]
-    # Objects that point at kept code (exception-index entries) are kept too.
-    kept_ranges = [(f["section"], f["address"], f["address"] + f["size"]) for f, _ in kept]
+    # Objects that point at kept code (exception-index entries) are kept too,
+    # unless they belong to dropped code (its exception table naming a kept
+    # destructor).
     if not objects:
         # No objects to trim by (a .ctors entry): kept whole if it points at kept code.
         if any(where_section == index and any(symbol["section"] == c and a <= symbol["address"] + addend < b
@@ -321,7 +363,8 @@ def kept_span(obj, index, kept, original, locals_, base=None, duplicates=()):
         target = symbol["address"] + addend
         if any(symbol["section"] == c and a <= target < b for c, a, b in kept_ranges):
             for s in by_section.get(where_section, []):
-                if s["address"] <= where < s["address"] + s["size"] and s["name"] not in duplicates:
+                if (s["address"] <= where < s["address"] + s["size"] and s["name"] not in duplicates
+                        and (where_section, s["address"]) not in foreign):
                     if where_section == index:
                         keep.add((s["address"], s["size"]))
                     roots.append((where_section, s["address"], s["address"] + s["size"]))

@@ -7,6 +7,7 @@ build discards them object by object.
 """
 import copy
 import json
+import struct
 import sys
 import unittest
 from pathlib import Path
@@ -49,6 +50,66 @@ class StubKeptSpan(unittest.TestCase):
 
     def test_moved_stub_record_is_not_kept(self):
         self.assertEqual(kept_span(self.obj, 1, [], None, self.numbered, 0x100, {"@142"}), (0, 32, []))
+
+
+class FakeRelocatable:
+    """An Elf32 stand-in with .text, extab and extabindex and their relocations.
+
+    `symbols` are (name, section, address, size, type); `relocs` are
+    (section, offset, symbol name) with no addend.
+    """
+    NAMES = ("", ".text", "extab", "extabindex")
+
+    def __init__(self, symbols, relocs):
+        self._symbols = [{"name": n, "section": sec, "address": a, "size": size, "type": t, "binding": 0}
+                         for n, sec, a, size, t in symbols]
+        index = {s["name"]: i for i, s in enumerate(self._symbols)}
+        self.sections = [{"index": i, "name": n, "type": 1 if i else 0, "flags": 2 if i else 0,
+                          "size": max([s["address"] + s["size"] for s in self._symbols if s["section"] == i] or [0])}
+                         for i, n in enumerate(self.NAMES)]
+        self._contents = {}
+        for i in range(1, len(self.NAMES)):
+            rows = [(off, index[name]) for sec, off, name in relocs if sec == i]
+            if rows:
+                self._contents[len(self.sections)] = b"".join(
+                    struct.pack(">IIi", off, (sym << 8) | 1, 0) for off, sym in rows)
+                self.sections.append({"index": len(self.sections), "name": ".rela", "type": 4, "flags": 0,
+                                      "info": i, "size": 12 * len(rows)})
+
+    def symbols(self):
+        return iter(self._symbols)
+
+    def contents(self, section):
+        return self._contents[section["index"]]
+
+
+class DroppedCodeKeptSpan(unittest.TestCase):
+    """Exception records of code the unit drops (a discarded static, a file
+    duplicate) are never kept, although the original has a numbered record
+    of the same size at the placed address (every 8- or 12-byte record finds
+    one): sound.cpp, bsbifunc.cpp and objcreate.cpp fragments, scene_cmppairs."""
+    # Kept functions A and C, dropped B between them. B's exception table
+    # names the kept destructor C (it points at kept code too).
+    obj = FakeRelocatable(
+        [("A", 1, 0, 16, 2), ("B", 1, 16, 16, 2), ("C", 1, 32, 16, 2),
+         ("@10", 2, 0, 8, 1), ("@11", 2, 8, 16, 1), ("@12", 2, 24, 8, 1),
+         ("@20", 3, 0, 12, 1), ("@21", 3, 12, 12, 1), ("@22", 3, 24, 12, 1)],
+        [(3, 0, "A"), (3, 8, "@10"), (3, 12, "B"), (3, 20, "@11"), (3, 24, "C"), (3, 32, "@12"),
+         (2, 12, "C")])
+    kept = [({"name": "A", "section": 1, "address": 0, "size": 16}, 0),
+            ({"name": "C", "section": 1, "address": 32, "size": 16}, 16)]
+    # The original numbers a record of every compiled size at every address.
+    numbered = {f"@{a:x}.{n}": [{"name": f"@{a:x}.{n}", "address": a, "size": n}]
+                for a in range(0x100, 0x140, 4) for n in (8, 12, 16)}
+
+    def test_dropped_function_records_are_stripped(self):
+        self.assertEqual(kept_span(self.obj, 2, self.kept, None, self.numbered, 0x100), (0, 32, ["@11"]))
+        self.assertEqual(kept_span(self.obj, 3, self.kept, None, self.numbered, 0x100), (0, 36, ["@21"]))
+
+    def test_trailing_dropped_records_are_trimmed(self):
+        kept = self.kept[:1]
+        self.assertEqual(kept_span(self.obj, 2, kept, None, self.numbered, 0x100), (0, 8, []))
+        self.assertEqual(kept_span(self.obj, 3, kept, None, self.numbered, 0x100), (0, 12, []))
 
 
 class LinkerStripped(unittest.TestCase):
