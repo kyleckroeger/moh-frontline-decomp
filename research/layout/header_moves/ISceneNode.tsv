@@ -95,12 +95,12 @@ camera_dtor	scratch/try/camera_dtor/src/camera_dtor.cpp	kept	weak copies listed 
 collision_head	scratch/try/collision_head/src/collision_head.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\collision_head.cpp # ---------------------------------- #     160: IVolume* first = m_first->GetWorldBoundingVolume(volume);
 collisionvolume_ctor	scratch/try/collisionvolume_ctor/src/collisionvolume_ctor.cpp	lost	verifies with weak copies listed, held back: tests/test_data_strip.py pins its stripped_sections to [.data] (the copies add .sdata2)
 collisionvolume_rows	scratch/try/collisionvolume_rows/src/collisionvolume_rows.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-compartment_ctor	scratch/try/compartment_ctor/src/compartment_ctor.cpp	lost	Stripped object is not one compiler object: @69
+compartment_ctor	scratch/try/compartment_ctor/src/compartment_ctor.cpp	kept	stripped_objects labels renumbered (@69/@70 -> @83/@84, same objects by relocation target) and the weak copies listed (hdr2)
 compartment_init	scratch/try/compartment_init/src/compartment_init.cpp	kept	
 compartment_render	scratch/try/compartment_render/src/compartment_render.cpp	lost	Unexpected compiler function set
 compartment_weak	scratch/try/compartment_weak/src/compartment_weak.cpp	kept	
 decal	scratch/try/decal/src/decal.cpp	kept	weak copies listed as weak_duplicates (hdr2)
-decal_dtor	scratch/try/decal_dtor/src/decal_dtor.cpp	lost	Stripped object is not one compiler object: @43
+decal_dtor	scratch/try/decal_dtor/src/decal_dtor.cpp	lost	Stripped object is not one compiler object: @43; with labels renumbered and weak copies listed: .data differs (hdr2)
 decal_link	scratch/try/decal_link/src/decal_link.cpp	kept	
 decal_reset	src/game/decal_reset.cpp	not_tried	own view of CMatrix and CVector3 (ISceneNode.h includes CMatrix.h)
 explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	lost	Unexpected compiler function set

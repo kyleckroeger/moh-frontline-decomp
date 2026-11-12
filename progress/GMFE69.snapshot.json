@@ -809,7 +809,7 @@
     "src/game/compartment_bins.cpp": "409ec7f06c13ee2414a3b803f316f0d77fa3c119c82e96acce7bec67d2f649d4",
     "src/game/compartment_ccptmatbin_dtor.cpp": "85b54c38b801c0221f25db368653fed436bd4a5dd10b137b0bf2a7c30c8b0eee",
     "src/game/compartment_cptmaterial_dtor.cpp": "129613724839e1d61fe5207971156640988500660088dac2783e135c6f84dd28",
-    "src/game/compartment_ctor.cpp": "5af6071d5c8944f859381400dd2e6c8aaacf7dbf6d31ef0ea21703faec0fd2bf",
+    "src/game/compartment_ctor.cpp": "60c1f848eb8e3f678c460017a9c91662c976e2b6e79b8aba7a53c24c7196648c",
     "src/game/compartment_draw.cpp": "d0c833e7815fc1fff5a7c5349a7781889251971bf138d47782cc8886c20e0d54",
     "src/game/compartment_fastvec.cpp": "b67fa66488486aa480bb256f6ce890c1659c38fd1ed0706c56064105ff4d9bb5",
     "src/game/compartment_fastvec_tri.cpp": "06262e2f53a800d1607a14984a240a2c7629f27337f9775d8df2b3aa2dac72e1",
@@ -2225,7 +2225,7 @@
     "config/GMFE69/compartment_bins.json": "4c750e628935453e0ab25cfb5e9f9f7241afe8249fc112ec59fe931c0d6cf7a8",
     "config/GMFE69/compartment_ccptmatbin_dtor.json": "b667dbb1cd3d733a1c12eb9673ce325e2b254b06ce0e5674f12e92287fb8ea38",
     "config/GMFE69/compartment_cptmaterial_dtor.json": "c48c3dc74966bdc712070c14fc0cc2127012867f3a67dba40f0d64433519ecc8",
-    "config/GMFE69/compartment_ctor.json": "931645eb9c633084b6b261f0f7818bb587f821ec8453874e0fbe4db8ca410461",
+    "config/GMFE69/compartment_ctor.json": "3f8f74e3282c30f473f90ad006febe929fa08e5314efcf1d5627f680aef0f67c",
     "config/GMFE69/compartment_draw.json": "249684e90039b0886229894c7969d87e031b382832e068595c22bf504f99b8e5",
     "config/GMFE69/compartment_fastvec.json": "7713e637d0fc612620e8a649b85e20f06ae17e77a1b007db110fda38c192d73c",
     "config/GMFE69/compartment_fastvec_tri.json": "90b49e1197303105ca372d99f03681b3d2370fb97dc748112856bb4915c751f6",
@@ -36157,8 +36157,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "39d96db3350d271dba730c55db4ad7298bf1d94648110816e25d0a9727b00b65",
-      "linked_sha256": "fc1e9f32a79a76d191e0b29a9d057b3d5027f069720191952414aa3fd461b038"
+      "object_sha256": "5da4d01c8577d7386ccb0c901941664ad933c12a9ea5e1ff5d44669d51bba472",
+      "linked_sha256": "f385db45fbc8337aea6bc72c4f2fb465a62b8a0eb488dc2afef674ac03cb247f"
     },
     {
       "id": "anim_obj_dtor",

@@ -98,7 +98,11 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
   - 2 emit a non-weak `__dt__18CPropertyAnimLightFv` with the header (light_animmanager,
     light_propertyanim_update): the derived destructor is no longer implicit; not resolved.
 - 2 lost to label renumbering of stripped objects (as for CMatrix); 9 others lost with
-  bytes or sections differing (mainloop_game: .text).
+  bytes or sections differing (mainloop_game: .text). **Follow-up (hdr2):** compartment_ctor
+  moved with `stripped_objects` @69/@70 -> @83/@84 (the extabindex entry still points at
+  __dt__10ISceneNodeFv and its extab entry) plus @87/@88, the extab pair of the new
+  ~IDestructible weak copy, and its 54 weak copies listed (it constructs an ISceneNode, so
+  it emits every inline virtual). decal_dtor, with the same treatment, differs in .data.
 - 39 didn't compile: 15 use `AIDoodadView` members through GetAIDoodad() (the real class is
   CAIDoodad; renaming the view would change code), 7 BSObject/BSObjectView the same way,
   4 the scene's `SExtent` nested in their own ISceneNode view, 5 name the data members
