@@ -39,20 +39,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80047310",
-      "size": 1160,
+      "address": "0x80046bc8",
+      "size": 3024,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000a664",
-      "size": 32,
+      "address": "0x8000a65c",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80011744",
-      "size": 48,
+      "address": "0x80011738",
+      "size": 60,
       "type": 1
     },
     {
@@ -63,6 +63,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "Update__13SoundScheduleFi",
+      "address": "0x80046bc8",
+      "size": 1864,
+      "binding": 1
+    },
     {
       "name": "UpdateSound__13SoundScheduleFiPvi",
       "address": "0x80047310",
@@ -90,9 +96,21 @@
   ],
   "externals": {
     "AEMS_EndEvent__FPvi": "0x800ec004",
+    "AEMS_UpdateEvent__FPvi": "0x800ec0b4",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "DebugMsg__FPCce": "0x80018c88",
+    "FindClosestPlayer__6CSceneF8CVector3": "0x800da540",
+    "GetAzimuth__F8CVector3PC13CPlayerObject": "0x800ebc90",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
+    "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "__cvt_fp2unsigned": "0x801388e8",
     "g_FreeRecordList": "0x8034e8e0",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_scene": "0x8019484c",
     "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
@@ -103,7 +121,8 @@
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_FreeRecordList"
+    "g_FreeRecordList",
+    "g_bInMultiplayerMode"
   ],
   "original_file": "soundschedule.cpp",
   "original_file_index": 1712,
@@ -116,6 +135,36 @@
       "offset": 0,
       "size": 4,
       "address": "0x8034f810"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034f818"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 8,
+      "address": "0x8034f820"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f828"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x8034f808"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x8034f80c"
     }
   ]
 }

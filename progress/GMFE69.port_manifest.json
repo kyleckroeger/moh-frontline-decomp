@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1253,
- "function_bytes_by_status": {"consistent": 145988, "differs": 10144, "exact": 4472, "verified": 1244952},
+ "function_bytes_by_status": {"consistent": 144124, "differs": 10144, "exact": 4472, "verified": 1246816},
  "data_bytes_owned": 724123,
  "data_bytes_total": 1976252,
  "functions": [
@@ -757,7 +757,7 @@
  [2147770244, 520, "CheckLeafsTriggers__FPC12_PropBSPLeafRC8CVector3P14_ProximityDatabb", "verified", "src/game/proxtrig_leafs.cpp"],
  [2147770764, 492, "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb", "verified", "src/game/proxtrig_leafs.cpp"],
  [2147771256, 2128, "UpdateProximityTriggerStatus__Fv", "consistent", "research/drafts/UpdateProximityTriggerStatus.80046378.cpp"],
- [2147773384, 1864, "Update__13SoundScheduleFi", "consistent", "research/drafts/Update.80046bc8.cpp"],
+ [2147773384, 1864, "Update__13SoundScheduleFi", "verified", "src/game/soundschedule_sound.cpp"],
  [2147775248, 92, "UpdateSound__13SoundScheduleFiPvi", "verified", "src/game/soundschedule_sound.cpp"],
  [2147775340, 236, "RemoveSound__13SoundScheduleFib", "verified", "src/game/soundschedule_sound.cpp"],
  [2147775576, 656, "AddSound__13SoundScheduleFQ213SoundSchedule24ESoundScheduleObjectTypeP10ISceneNodeP8CVector3PviiiiiP8BSObject12EBSEventEnumfbi", "verified", "src/game/soundschedule_sound.cpp"],

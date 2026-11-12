@@ -1,4 +1,12 @@
-// A fragment of soundschedule.cpp (0x80047310): SoundSchedule::UpdateSound
+// A fragment of soundschedule.cpp (0x80046bc8): SoundSchedule::Update refreshes
+// every scheduled sound that is not delayed: for a node sound the azimuth and
+// distance to the listener (the closest player in multiplayer, else player 0)
+// from the node's position, and for a moving static object the speed parameter
+// (scaled to 220, with a separate formula in mission 4 stage 2); for a fixed
+// sound the same azimuth and distance from its stored position. It then counts
+// down the delays and updates the AEMS events under the sound critical section,
+// and returns finished records to the free list (triggering the object's end
+// event and releasing a soldier's voice). UpdateSound
 // copies new AEMS event data into the scheduled sound with the given handle
 // (found by an inline search of the schedule); RemoveSound removes the sound
 // with the given handle (triggering its object's end event, optionally ending
@@ -15,8 +23,11 @@
 // BSObject, EBSEventEnum and the free list are named by the symbols; the
 // record (144 bytes) and the soldier view are inferred (the voice handle at
 // +17312, as in bsbifunc), as is the inline record search. AddSound's zero is
-// a .sdata2 pool entry. Update before these and Init after them are not part
-// of this unit (Init is in scratch/ssw, 7 lines off).
+// a .sdata2 pool entry, as are Update's float constants. Update's helpers
+// (NodeAzimuth, NodeDistance, PositionAzimuth, PositionDistance, ObjectSpeed),
+// the static object, scene and shell views are inferred; the helpers' grouping
+// follows the original's stack-slot layout. Init after these is not part of
+// this unit (Init is in scratch/ssw, 7 lines off).
 class BSObject;
 enum EBSEventEnum {};
 
@@ -24,6 +35,9 @@ void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 void AEMS_EndEvent(void*, int);
 void DebugMsg(const char*, ...);
 extern "C" void* memcpy(void*, const void*, unsigned long);
+extern "C" {
+#include <math.h>
+}
 
 union CVector3Data {
     double pair[2];
@@ -40,6 +54,8 @@ public:
     unsigned char unknown0000[17312];
     int m_voice;
 };
+
+class CStaticObject;
 
 class ISceneNode {
 public:
@@ -70,7 +86,7 @@ public:
     virtual void HandleBulletCollision(void*, const void*);
     virtual void* AsMovingNode();
     virtual const void* AsMovingNode() const;
-    virtual void* AsStaticObject();
+    virtual CStaticObject* AsStaticObject();
     virtual const void* AsStaticObject() const;
     virtual void* AsHierObject();
     virtual const void* AsHierObject() const;
@@ -80,6 +96,51 @@ public:
     virtual const void* AsAnimObject() const;
     virtual CSoldierObject* AsSoldierObject();
 };
+
+class CPlayerObject : public ISceneNode {
+};
+
+class CStaticObject {
+public:
+    bool IsMoving() const { return m_state != 0 && m_state != 1; }
+    float GetSpeed() const {
+        return sqrtf(m_velocity[0] * m_velocity[0] + m_velocity[1] * m_velocity[1] + m_velocity[2] * m_velocity[2]);
+    }
+
+    unsigned char unknown000[128];
+    float m_scale;
+    unsigned char unknown084[84];
+    float m_speed;
+    float m_maxSpeed;
+    unsigned char unknown0e0[36];
+    int m_state;
+    unsigned char unknown108[88];
+    float m_velocity[3];
+};
+
+class CScene {
+public:
+    unsigned char unknown0000[16];
+
+    CPlayerObject* GetPlayer(int) const;
+    CPlayerObject* FindClosestPlayer(CVector3);
+};
+
+class CShellMenu {
+public:
+    unsigned char unknown0000[16];
+
+    unsigned int Get_currentStage();
+    unsigned int Get_currentMission();
+};
+
+extern CScene g_scene;
+extern CShellMenu g_Shell;
+extern bool g_bInMultiplayerMode;
+unsigned short GetAzimuth(CVector3, const CPlayerObject*);
+int AEMS_UpdateEvent(void*, int);
+extern "C" void SNDSYS_entercritical();
+extern "C" void SNDSYS_leavecritical();
 
 class SoundScheduleRegistrationRecord {
 public:
@@ -124,6 +185,7 @@ public:
         }
         return 0;
     }
+    void Update(int);
     void Shutdown();
     void UpdateSound(int, void*, int);
     void RemoveSound(int, bool);
@@ -133,6 +195,121 @@ public:
     int m_count;
     SoundScheduleRegistrationRecord* m_records;
 };
+
+static inline int NodeAzimuth(SoundScheduleRegistrationRecord* record) {
+    CVector3 position;
+    record->node->GetPosition(position);
+    if (g_bInMultiplayerMode) {
+        CVector3 nodePosition;
+        record->node->GetPosition(nodePosition);
+        return GetAzimuth(nodePosition, g_scene.FindClosestPlayer(nodePosition));
+    }
+    return GetAzimuth(position, g_scene.GetPlayer(0));
+}
+static inline float NodeDistance(SoundScheduleRegistrationRecord* record) {
+    CVector3 delta;
+    record->node->GetPosition(delta);
+    CVector3 listener;
+    if (g_bInMultiplayerMode)
+        {
+        CVector3 nodePosition;
+        record->node->GetPosition(nodePosition);
+        g_scene.FindClosestPlayer(nodePosition)->GetPosition(listener);
+    }
+    else
+        g_scene.GetPlayer(0)->GetPosition(listener);
+    delta.d.v[0] -= listener.d.v[0];
+    delta.d.v[1] -= listener.d.v[1];
+    delta.d.v[2] -= listener.d.v[2];
+    return sqrtf(delta.d.v[0] * delta.d.v[0] + delta.d.v[1] * delta.d.v[1] + delta.d.v[2] * delta.d.v[2]);
+}
+static inline int PositionAzimuth(const CVector3& position) {
+    if (g_bInMultiplayerMode)
+        return GetAzimuth(position, g_scene.FindClosestPlayer(position));
+    return GetAzimuth(position, g_scene.GetPlayer(0));
+}
+static inline float PositionDistance(const CVector3& position) {
+    CVector3 listener;
+    if (g_bInMultiplayerMode)
+        g_scene.FindClosestPlayer(position)->GetPosition(listener);
+    else
+        g_scene.GetPlayer(0)->GetPosition(listener);
+    listener.d.v[0] -= position.d.v[0];
+    listener.d.v[1] -= position.d.v[1];
+    listener.d.v[2] -= position.d.v[2];
+    return sqrtf(listener.d.v[0] * listener.d.v[0] + listener.d.v[1] * listener.d.v[1] + listener.d.v[2] * listener.d.v[2]);
+}
+static inline unsigned int ObjectSpeed(CStaticObject* object) {
+    unsigned int speed;
+    if (g_Shell.Get_currentMission() == 4 && g_Shell.Get_currentStage() == 2 && !g_bInMultiplayerMode) {
+        if (object->IsMoving()) {
+            speed = (0.16f + object->m_speed) * (220.0f / (0.16f + object->m_maxSpeed));
+        } else {
+            float length = object->GetSpeed();
+            speed = length * (220.0f * object->m_scale);
+        }
+    } else {
+        if (object->IsMoving()) {
+            speed = object->m_speed * (220.0f / object->m_maxSpeed);
+        } else {
+            float length = object->GetSpeed();
+            speed = length * (220.0f * object->m_scale);
+        }
+    }
+    return speed;
+}
+void SoundSchedule::Update(int frames) {
+    SoundScheduleRegistrationRecord* record;
+    for (record = m_records; record; record = record->next) {
+        if (record->delay != 0)
+            continue;
+        if (record->type == 0) {
+            record->aemsEvent[record->azimuthParam] = NodeAzimuth(record);
+            float distance = NodeDistance(record);
+            record->aemsEvent[record->distanceParam] = (int)(256.0f * (record->distanceScale * distance));
+            CStaticObject* object = record->node->AsStaticObject();
+            if (object && record->speedParam != -1) {
+                record->aemsEvent[record->speedParam] = ObjectSpeed(object);
+            }
+        } else {
+            record->aemsEvent[record->azimuthParam] = PositionAzimuth(record->position);
+            float distance = PositionDistance(record->position);
+            record->aemsEvent[record->distanceParam] = (int)(256.0f * (record->distanceScale * distance));
+        }
+    }
+    SNDSYS_entercritical();
+    for (record = m_records; record; record = record->next) {
+        if (record->delay != 0) {
+            record->delay -= frames;
+            if (record->delay < 0)
+                record->delay = 0;
+        } else if (AEMS_UpdateEvent(record->aemsEvent, record->aemsHandle) < 0) {
+            record->done = 1;
+        }
+    }
+    SNDSYS_leavecritical();
+    SoundScheduleRegistrationRecord* previous = 0;
+    record = m_records;
+    while (record) {
+        SoundScheduleRegistrationRecord* next = record->next;
+        if (record->done) {
+            if (record->object && record->endEvent != -1)
+                BSObjectTriggerEvent(record->object, record->endEvent, 0, 0, false);
+            if (record->soldier)
+                record->soldier->m_voice = -1;
+            record->next = g_FreeRecordList;
+            g_FreeRecordList = record;
+            m_count--;
+            if (previous)
+                previous->next = next;
+            else
+                m_records = next;
+        } else {
+            previous = record;
+        }
+        record = next;
+    }
+}
 
 void SoundSchedule::UpdateSound(int handle, void* data, int size) {
     SoundScheduleRegistrationRecord* record = Find(handle);
