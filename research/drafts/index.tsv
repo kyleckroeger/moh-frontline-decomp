@@ -1,7 +1,6 @@
 real_lines	size	address	function	compile_settings_from	draft
 0	2516	8004e024	UpdateTargetPosition__9CAIObjectFv	config/GMFE69/AIObject_setlocation.json	research/drafts/UpdateTargetPosition.8004e024.cpp
 0	1220	800a6408	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	config/GMFE69/player_init.json	research/drafts/InitMultiplayer.800a6408.cpp
-0	900	800567e8	BIFunc_UpdateBuddyCheckpoints__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_UpdateBuddyCheckpoints.800567e8.cpp
 0	664	8014d6dc	STREAM_kill	config/GMFE69/stream_greedy.json	research/drafts/STREAM_kill.8014d6dc.cpp
 1	2696	800701d4	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	config/GMFE69/cdbobject_line.json	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
 1	508	80164370	SFILTER_unpackxalf__FPviPvPvi	config/GMFE69/supxalf.json	research/drafts/SFILTER_unpackxalf.80164370.cpp

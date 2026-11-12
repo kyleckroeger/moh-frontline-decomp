@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1230232,
+    "matching_code_bytes": 1231132,
     "total_executable_code_bytes": 1414572,
-    "percent": 86.96849647808666,
+    "percent": 87.03211996278733,
     "categories": {
-      "reconstructed_game": 989596,
+      "reconstructed_game": 990496,
       "restored_library": 240636
     },
-    "matching_functions": 4869
+    "matching_functions": 4870
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -745,7 +745,7 @@
     "src/game/buddy_copy_info.cpp": "c28c4afeffa69fd1e732aa2085de884a4e61abaa3a6cc40d2a51cf8b6225550b",
     "src/game/buddy_copy_path.cpp": "9fd8379683f3ac91728a12f6991c3041a5a55578ee12fa138ba4b2d6682e6ede",
     "src/game/buddy_destroy.cpp": "5c461b0024d0f5bcd6f860d22fa0503cac0bce899fa5575fd9c52e04434b1d7f",
-    "src/game/buddy_head.cpp": "8be98948c8298ce5bc7281b2331742e84414da26a3b6e4c00e26496f5a0a3d94",
+    "src/game/buddy_head.cpp": "d4797f4e0869147adb94e04b0da77c10f60db519a48600779c1961f76e2e5028",
     "src/game/buddy_list.cpp": "fa3ea552b450b337884c57c7ebfde922ed3516660b34f90b1d394dc342c74bad",
     "src/game/buddy_list_reserve.cpp": "17ba4c505282b76818f86d8a399107bbd9ce5e4bc6d153441740ffd3d1bf8eb0",
     "src/game/buddy_vec_info.cpp": "9aacf73d114af64a58d072677ad851f662fcc58cfa637e03622cefff43287d53",
@@ -2150,7 +2150,7 @@
     "config/GMFE69/buddy_copy_info.json": "70d5fa85b8dfa7c854ed3ba22c6bc2630aa35d57e22502931d1740303daadc8c",
     "config/GMFE69/buddy_copy_path.json": "566a6454a4c08ac8d6c2c4b2fe68095bc16744e689349df188284bd0d88bf281",
     "config/GMFE69/buddy_destroy.json": "a8ceee29b4db9c3b4508aeb6ebbb99ebd384197cb771b7cc71ccb5cbb7b3bb65",
-    "config/GMFE69/buddy_head.json": "d694207c011a6fa36961f8d6fc3a0cf432e4d7968fe0d410b631ce6a4f114849",
+    "config/GMFE69/buddy_head.json": "0fc54fb6fe01fc97495ef84622c040f7dcb6b4f5c7c6bee0af83e137c8046f5b",
     "config/GMFE69/buddy_list.json": "ecc6fb1220836e07ff46f4a434a7c81fece596470939c5d5bd55845b5828a649",
     "config/GMFE69/buddy_list_reserve.json": "b69182e782f8e77b126d927b263ceaa9edb8c6fe276f887403b6267163625de3",
     "config/GMFE69/buddy_vec_info.json": "837b7fbe1b7daae27e111a3abd4d24031797747f1c22a6077efe774d5a814c2b",
@@ -42515,8 +42515,8 @@
     {
       "id": "buddy_head",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 192,
+      "functions": 2,
+      "code_bytes": 1092,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -42546,10 +42546,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8b7141bc13500f9bdf2f576b87667775454d92c51c6256567b5646755ff2c1bd",
-      "linked_sha256": "218021693d6fdd1e08b82d1c531c5f5139481337b302a88f800d325b3ac30ddd"
+      "object_sha256": "71feacae6ecbaddf8762a71a48f145be30ba9f45ff55c957f89aa7e2c256dd3f",
+      "linked_sha256": "9e959df38017d702f8b4da29316ae5d553a45da7c02d4c3be10494f69ba21cc2"
     },
     {
       "id": "alarm_register",
@@ -54230,13 +54230,6 @@
         "file_record": 37,
         "file_name": "buddy.cpp",
         "ranges": [
-          {
-            "address": "0x800567e8",
-            "size": 900,
-            "kind": "function",
-            "name": "BIFunc_UpdateBuddyCheckpoints__FPPiPv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80056bd4",
             "size": 1424,
