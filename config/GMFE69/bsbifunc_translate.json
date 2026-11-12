@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -96,6 +96,8 @@
     }
   ],
   "externals": {
+    "AsHierObject__10ISceneNodeFv": "0x8001afa0",
+    "AsStaticObject__10ISceneNodeFv": "0x8001af90",
     "GetSubObject__11CHierObjectFi": "0x8009bd38",
     "PlayAnimation__13CStaticObjectFiii12EBSEventEnum": "0x800af90c",
     "StopMotionPlayback__13CStaticObjectFv": "0x800af7c0",
@@ -143,5 +145,9 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsHierObject__10ISceneNodeFv",
+    "AsStaticObject__10ISceneNodeFv"
   ]
 }

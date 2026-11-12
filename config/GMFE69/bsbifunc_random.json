@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -101,6 +102,7 @@
     }
   ],
   "externals": {
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
     "CanPlayerSwitchWeapon__13CPlayerObjectFv": "0x800a74a8",
     "CreateRootHierObject__FP20TriggerObject_structi": "0x8003dde8",
     "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
@@ -124,5 +126,8 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "weak_duplicates": [
+    "AsPlayerObject__10ISceneNodeFv"
+  ]
 }

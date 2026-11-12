@@ -172,40 +172,13 @@ void displayPromptBuffer(int port) {
     NextPromptLine();
 }
 
-enum EClsnId {};
 class CCollision;
 class CDrawContext;
 class CMatrix;
 class CVector3;
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-    virtual void MarkForDestruction(int);
-    virtual ~ISceneNode();
-    virtual void Destroy();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual EClsnId GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
-    virtual void TriggerScriptEvent(int, void*, bool);
-};
+#include "game/ISceneNode.h"
+
 
 class CWeapon {
 public:

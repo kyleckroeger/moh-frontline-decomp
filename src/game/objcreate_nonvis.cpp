@@ -33,46 +33,12 @@ class BSObject;
 class CMatrix;
 class CDrawContext;
 class CCollision;
-class IDestructible {
-public:
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-    virtual void Destroy();
-};
-class ISubject : public IDestructible {
-public:
-    virtual ~ISubject();
-};
-class IObserver : public ISubject {
-public:
-    virtual ~IObserver();
-};
+
+
+
 /* ISceneNode's table in slot order up to the script object (+0x60), as AIFilter_visit.cpp. */
-class ISceneNode : public IObserver {
-public:
-    enum EVolumeType {};
-    virtual ~ISceneNode();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual int GetCollisionId() const;
-    virtual void SetCollisionId(int);
-    virtual BSObject* GetScriptObject() const;
-};
+#include "game/ISceneNode.h"
+
 
 class BSGO_Basic {
 public:

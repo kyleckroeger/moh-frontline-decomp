@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -84,8 +84,11 @@
     }
   ],
   "externals": {
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
     "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
+    "GetForward__10ISceneNodeCFR8CVector3": "0x8001af2c",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
     "MathFunRandomReal__Fff": "0x80092d60",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
@@ -157,5 +160,10 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsPlayerObject__10ISceneNodeFv",
+    "GetForward__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv"
   ]
 }

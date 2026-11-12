@@ -53,13 +53,17 @@
       "name": "extab",
       "address": "0x8000c2f0",
       "size": 8,
-      "type": 1
+      "type": 1,
+      "linked_offset": 8,
+      "linked_size": 16
     },
     {
       "name": "extabindex",
       "address": "0x800132d4",
       "size": 12,
-      "type": 1
+      "type": 1,
+      "linked_offset": 12,
+      "linked_size": 24
     },
     {
       "name": ".bss",
@@ -175,10 +179,61 @@
   "original_file": "decal.cpp",
   "original_file_index": 4342,
   "stripped_sections": [
-    ".data"
+    ".data",
+    ".sdata2"
   ],
   "file_duplicates": [
     "IsUsed__19CBulletDecalManagerFv",
     "__vt__19CBulletDecalManager"
+  ],
+  "weak_duplicates": [
+    "AsAnimObject__10ISceneNodeCFv",
+    "AsAnimObject__10ISceneNodeFv",
+    "AsAnimatedPlayerObject__10ISceneNodeCFv",
+    "AsAnimatedPlayerObject__10ISceneNodeFv",
+    "AsBullet__10ISceneNodeCFv",
+    "AsBullet__10ISceneNodeFv",
+    "AsCollisionVolume__10ISceneNodeCFv",
+    "AsCollisionVolume__10ISceneNodeFv",
+    "AsHierObject__10ISceneNodeCFv",
+    "AsHierObject__10ISceneNodeFv",
+    "AsLight__10ISceneNodeCFv",
+    "AsLight__10ISceneNodeFv",
+    "AsMovingNode__10ISceneNodeCFv",
+    "AsMovingNode__10ISceneNodeFv",
+    "AsPlayerObject__10ISceneNodeCFv",
+    "AsPlayerObject__10ISceneNodeFv",
+    "AsPlayerWeaponObject__10ISceneNodeCFv",
+    "AsPlayerWeaponObject__10ISceneNodeFv",
+    "AsSoldierObject__10ISceneNodeCFv",
+    "AsSoldierObject__10ISceneNodeFv",
+    "AsStaticObject__10ISceneNodeCFv",
+    "AsStaticObject__10ISceneNodeFv",
+    "AsWorldObject__10ISceneNodeCFv",
+    "AsWorldObject__10ISceneNodeFv",
+    "AttemptUpdate__10ISceneNodeFf",
+    "BeginUpdate__10ISceneNodeFf",
+    "CommitAI__10ISceneNodeFv",
+    "CommitUpdate__10ISceneNodeFv",
+    "ConstrainVelocity__10ISceneNodeFv",
+    "Destroy__13IDestructibleFv",
+    "GetAIDoodad__10ISceneNodeCFv",
+    "GetAIDoodad__10ISceneNodeFv",
+    "GetAttachedLight__10ISceneNodeCFv",
+    "GetCollisionId__10ISceneNodeCFv",
+    "GetForward__10ISceneNodeCFR8CVector3",
+    "GetLocalBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetRightward__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv",
+    "GetTMLocalToWorld__10ISceneNodeCFR7CMatrix",
+    "GetUpward__10ISceneNodeCFR8CVector3",
+    "GetWorldBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
+    "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision",
+    "OnCollision__10ISceneNodeFRC10CCollision",
+    "SetAttachedLight__10ISceneNodeFP6CLight8CVector3",
+    "SetCollisionId__10ISceneNodeF7EClsnId",
+    "TriggerScriptEvent__10ISceneNodeFiPvb",
+    "UpdateAI__10ISceneNodeFf"
   ]
 }

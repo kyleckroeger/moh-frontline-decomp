@@ -61,83 +61,15 @@ class CBullet;
 class CLight;
 class CVector3;
 struct BSObject;
-enum EClsnId {};
 
-class IDestructible {
-public:
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-    virtual void Destroy();
-};
 
-class ISubject : public IDestructible {
-public:
-    virtual void MarkForDestruction(int);
-    virtual ~ISubject();
-};
 
-class IObserver : public ISubject {
-public:
-    virtual ~IObserver();
-};
 
-class ISceneNode : public IObserver {
-public:
-    virtual ~ISceneNode();
-    enum EVolumeType {};
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual bool IsVisible(CDrawContext&) const;
-    virtual bool IsDrawEnabled() const;
-    virtual EClsnId GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual BSObject* GetScriptObject() const;
-    virtual void TriggerScriptEvent(int, void*, bool);
-    virtual void HandleBulletCollision(CBullet*, const CCollision&);
-    virtual void* AsMovingNode();
-    virtual const void* AsMovingNode() const;
-    virtual void* AsStaticObject();
-    virtual const void* AsStaticObject() const;
-    virtual void* AsHierObject();
-    virtual const void* AsHierObject() const;
-    virtual void* AsWorldObject();
-    virtual const void* AsWorldObject() const;
-    virtual void* AsAnimObject();
-    virtual const void* AsAnimObject() const;
-    virtual void* AsSoldierObject();
-    virtual const void* AsSoldierObject() const;
-    virtual void* AsPlayerObject();
-    virtual const void* AsPlayerObject() const;
-    virtual void* AsPlayerWeaponObject();
-    virtual const void* AsPlayerWeaponObject() const;
-    virtual void* AsAnimatedPlayerObject();
-    virtual const void* AsAnimatedPlayerObject() const;
-    virtual CLight* AsLight();
-    virtual const CLight* AsLight() const;
-    virtual CBullet* AsBullet();
-    virtual const CBullet* AsBullet() const;
-    virtual void* AsCollisionVolume();
-    virtual const void* AsCollisionVolume() const;
-    virtual void* GetAIDoodad();
-    virtual const void* GetAIDoodad() const;
-    virtual void SetAttachedLight(CLight*, CVector3);
-    virtual CLight* GetAttachedLight() const;
 
-    int data04[8];
-};
+
+
+#include "game/ISceneNode.h"
+
 
 class CRenderBin {
 public:

@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -77,6 +78,8 @@
     }
   ],
   "externals": {
+    "AsAnimObject__10ISceneNodeFv": "0x8001afc0",
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
     "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778"
@@ -91,5 +94,9 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "weak_duplicates": [
+    "AsAnimObject__10ISceneNodeFv",
+    "AsSoldierObject__10ISceneNodeFv"
+  ]
 }

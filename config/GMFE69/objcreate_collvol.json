@@ -83,9 +83,11 @@
     "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
     "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetPlayersFinishedLevelHealth__10CShellMenuFii": "0x800e65fc",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "GetProximityData__11BSGO_PlayerFv": "0x8003bf80",
     "GetSceneNode__11BSGO_PlayerFv": "0x8003bf78",
     "GetScriptData__11BSGO_PlayerFv": "0x8003bf70",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
     "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
     "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
     "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
@@ -102,9 +104,12 @@
     "SetRadius__10CVolSphereFf": "0x800cba44",
     "SetWidth__7CVolBoxFf": "0x800c5278",
     "ShouldIUsePlayersFinishedLevelData__10CShellMenuFii": "0x800e659c",
+    "__RTTI__10BSGO_Basic": "0x8034da28",
+    "__RTTI__11BSGO_Player": "0x8034da30",
     "__ct__16CCollisionVolumeFv": "0x800982b8",
     "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__10CVolSphere": "0x801896b4",
+    "__vt__11BSGO_Player": "0x801832cc",
     "__vt__17BSGO_Destructable": "0x80183374",
     "__vt__7CVolBox": "0x801894f4",
     "__vt__7IVolume": "0x80181e28",
@@ -116,10 +121,7 @@
     "g_pGermanList": "0x8034e894",
     "g_pPlayers": "0x801dddfc",
     "g_scene": "0x8019484c",
-    "s_ClassInit__7CMatrix": "0x8034eab0",
-    "__RTTI__10BSGO_Basic": "0x8034da28",
-    "__RTTI__11BSGO_Player": "0x8034da30",
-    "__vt__11BSGO_Player": "0x801832cc"
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -211,5 +213,9 @@
   "stripped_sections": [
     ".data",
     ".sdata"
+  ],
+  "weak_duplicates": [
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv"
   ]
 }

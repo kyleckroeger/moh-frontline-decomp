@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
@@ -69,6 +70,7 @@
     }
   ],
   "externals": {
+    "AsBullet__10ISceneNodeFv": "0x8001b020",
     "OSGetTick": "0x80116a58",
     "SweepAllExtents__6CSceneFv": "0x800d8bac",
     "Test__10CCollisionFRf": "0x800c7510",
@@ -93,6 +95,7 @@
   "original_file": "scene.cpp",
   "original_file_index": 8404,
   "weak_duplicates": [
+    "AsBullet__10ISceneNodeFv",
     "__dt__Q23dwi22vec_iter<10CCollision>Fv"
   ],
   "pooled_sections": [

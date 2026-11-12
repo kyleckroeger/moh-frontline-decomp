@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -66,6 +66,7 @@
     }
   ],
   "externals": {
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "GreedySearchAwayFromPoint__13CPathNodeListCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionf": "0x800550d8",
     "g_aigAIFilterGlobalObject": "0x801c6cd4"
   },
@@ -76,5 +77,11 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "AIFilter.cpp",
-  "original_file_index": 2575
+  "original_file_index": 2575,
+  "stripped_sections": [
+    ".sdata2"
+  ],
+  "weak_duplicates": [
+    "GetPosition__10ISceneNodeCFR8CVector3"
+  ]
 }

@@ -14,25 +14,8 @@ class CMatrix;
 class CDrawContext;
 class CCollision;
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-    virtual void MarkForDestruction(int);
-    virtual ~ISceneNode();
-    virtual void Destroy();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-};
+#include "game/ISceneNode.h"
+
 
 class CAIFilterRealPosition {
 public:

@@ -78,12 +78,22 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
 - 63 lost with "unexpected compiler function set": MWCC 1.3.2 emits a weak out-of-line copy
   of an inline virtual in every unit that calls it (AIFilter_queries gets
   GetForward/GetPosition just for calling them through an ISceneNode*). The original's
-  objects had those copies too and the linker kept one, but the unit configs don't list
-  them, so the views declare the virtuals without bodies. Measured: with a variant of the
-  header whose ISceneNode virtuals are only declared, 42 of these 63 keep their match
-  (54 in all). That variant misstates the original (the functions are weak there), so it
-  is not committed. **Question for the maintainer:** list the weak ISceneNode copies in
-  those units' `discarded_functions`, or accept a declaration-only header?
+  objects had those copies too and the linker kept one (Moh2.cpp's), so the units list them.
+  **Follow-up (2026-11-12, agent hdr2, maintainer's ruling: list them):** each unit's config
+  names the copies in `weak_duplicates` (externals -> the original's retained weak copy),
+  which turns on `strip_unused` where it was off, as port_unit does for any dropped function;
+  sections/stripped_sections come from port_unit's own draft (`--weak-duplicate`), every other
+  field stays as it was (objcreate_collvol/nonvis keep their hand-resolved local RTTI
+  externals). 30 units also gained `include` in include_dirs. Tool:
+  scratch/loop3/hdr2/redraft.py. **53 of the 63 kept; 52 moved**; the rest:
+  - collisionvolume_ctor verifies but is held back: tests/test_data_strip.py uses it as the
+    weak-vtable fixture and pins its stripped_sections to [.data]; the copies add .sdata2.
+    Moving it needs that assertion updated (a test change, left to the maintainer).
+  - 8 .text differs (real code differences, not the weak copies): AIFilter_queries,
+    Tank_object_update, compartment_render, explosion_dtor, objcreate_german, player_bullet,
+    player_draw, thrown_obj_cleanup.
+  - 2 emit a non-weak `__dt__18CPropertyAnimLightFv` with the header (light_animmanager,
+    light_propertyanim_update): the derived destructor is no longer implicit; not resolved.
 - 2 lost to label renumbering of stripped objects (as for CMatrix); 9 others lost with
   bytes or sections differing (mainloop_game: .text).
 - 39 didn't compile: 15 use `AIDoodadView` members through GetAIDoodad() (the real class is

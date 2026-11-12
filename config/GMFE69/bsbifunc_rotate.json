@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -78,6 +79,7 @@
     }
   ],
   "externals": {
+    "AsHierObject__10ISceneNodeFv": "0x8001afa0",
     "GetBulletDamageMultiplierByClass__11CHierObjectFii": "0x80098e14",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778"
@@ -103,5 +105,8 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsHierObject__10ISceneNodeFv"
   ]
 }

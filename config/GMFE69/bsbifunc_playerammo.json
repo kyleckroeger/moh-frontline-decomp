@@ -85,6 +85,7 @@
     "Set_rgba__12PopUpMessageFUcUcUcUc": "0x800bf808",
     "Set_screenLocs__12PopUpMessageFUsUs": "0x800bf838",
     "Set_textSize__12PopUpMessageFUc": "0x800bf81c",
+    "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
     "appendMessageToPrompt__FPCci": "0x8002ad98",
     "displayPromptBuffer__Fi": "0x8002aecc",
     "g_bInMultiplayerMode": "0x8034eca5",
@@ -156,5 +157,8 @@
       "size": 4,
       "address": "0x8034f63c"
     }
+  ],
+  "weak_duplicates": [
+    "TriggerScriptEvent__10ISceneNodeFiPvb"
   ]
 }

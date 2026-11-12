@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -89,6 +90,8 @@
     }
   ],
   "externals": {
+    "GetAIDoodad__10ISceneNodeFv": "0x8001b040",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
     "Register__10BSScheduleFP8BSObjectUsbiii": "0x8003ab5c",
     "Unregister__10BSScheduleFP35BSScheduleRegistrationRecord_struct": "0x8003aaf4",
     "Unregister__10BSScheduleFP8BSObject": "0x8003aa58",
@@ -116,5 +119,9 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "weak_duplicates": [
+    "GetAIDoodad__10ISceneNodeFv",
+    "GetScriptObject__10ISceneNodeCFv"
+  ]
 }

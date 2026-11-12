@@ -17,39 +17,14 @@
 // the file's .sdata2 pool, linked at their original addresses.
 class CDrawContext;
 
-class IDestructible {
-public:
-    IDestructible() {}
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-};
 
-class ISubject : public IDestructible {
-public:
-    ISubject() {}
-    virtual ~ISubject();
-};
 
-class IObserver : public ISubject {
-public:
-    IObserver() {}
-    virtual ~IObserver();
-};
 
-class ISceneNode : public IObserver {
-public:
-    ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
-    virtual ~ISceneNode() {}
 
-    int data04;
-    int data08;
-    int data0c;
-    int data10;
-    int data14;
-    int data18;
-    int data1c;
-    int data20;
-};
+
+
+#include "game/ISceneNode.h"
+
 
 class IMovingSceneNode : public ISceneNode {
 public:

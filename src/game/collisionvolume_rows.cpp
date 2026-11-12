@@ -28,34 +28,8 @@ class CCollision;
 void* BSEventGetEventMemoryBlock(unsigned int);
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
+#include "game/ISceneNode.h"
 
-    virtual void vf008();
-    virtual void vf00c();
-    virtual void vf010();
-    virtual void vf014();
-    virtual void vf018();
-    virtual void vf01c();
-    virtual void vf020();
-    virtual void vf024();
-    virtual void vf028();
-    virtual void vf02c();
-    virtual void vf030();
-    virtual void vf034();
-    virtual void vf038();
-    virtual void vf03c();
-    virtual void vf040();
-    virtual void vf044();
-    virtual void vf048();
-    virtual void vf04c();
-    virtual void vf050();
-    virtual void vf054();
-    virtual void vf058();
-    virtual void vf05c();
-    virtual BSObject* GetScriptObject() const;
-};
 
 class CProjectileBullet;
 

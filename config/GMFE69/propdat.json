@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -150,6 +150,7 @@
     }
   ],
   "externals": {
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "g_pMGTriggerObject": "0x801a70c0"
   },
   "undefined_in_discarded_code": [],
@@ -168,5 +169,8 @@
       "include/game/Endian.h"
     ],
     "note": "structure (one ChangeEndian per converted field) and core/xyz field types from Rising Sun's reconstruction of EA's later revision"
-  }
+  },
+  "weak_duplicates": [
+    "GetPosition__10ISceneNodeCFR8CVector3"
+  ]
 }

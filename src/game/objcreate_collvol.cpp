@@ -32,7 +32,6 @@ static const unsigned long dwi_prime_list[27] = {
 class BSObject;
 class CDrawContext;
 class CCollision;
-enum EClsnId {};
 
 #include "game/CMatrix.h"
 
@@ -47,76 +46,12 @@ public:
     float w;
 };
 
-class IDestructible {
-public:
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-    virtual void Destroy();
-};
-class ISubject : public IDestructible {
-public:
-    virtual ~ISubject();
-};
-class IObserver : public ISubject {
-public:
-    virtual ~IObserver();
-};
+
+
+
 /* ISceneNode's table in slot order up to the script object (+0x60), as AIFilter_visit.cpp. */
-class ISceneNode : public IObserver {
-public:
-    enum EVolumeType {};
-    virtual ~ISceneNode();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual int GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual BSObject* GetScriptObject() const;
-    virtual void unknown064();
-    virtual void unknown068();
-    virtual void unknown06c();
-    virtual void unknown070();
-    virtual void unknown074();
-    virtual void unknown078();
-    virtual void unknown07c();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown08c();
-    virtual void unknown090();
-    virtual void unknown094();
-    virtual void unknown098();
-    virtual void unknown09c();
-    virtual void unknown0a0();
-    virtual void unknown0a4();
-    virtual void unknown0a8();
-    virtual void unknown0ac();
-    virtual void unknown0b0();
-    virtual void unknown0b4();
-    virtual void unknown0b8();
-    virtual void unknown0bc();
-    virtual void unknown0c0();
-    virtual void unknown0c4();
-    virtual void unknown0c8();
-    virtual void unknown0cc();
-    virtual void unknown0d0();
-    virtual void unknown0d4();
-    virtual void unknown0d8();
-};
+#include "game/ISceneNode.h"
+
 
 class BSGO_Basic {
 public:

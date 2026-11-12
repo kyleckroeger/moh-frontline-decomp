@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -90,7 +90,10 @@
     }
   ],
   "externals": {
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
     "EjectHelmet__14CSoldierObjectFP8CVector3": "0x800aac78",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
+    "GetRightward__10ISceneNodeCFR8CVector3": "0x8001af14",
     "MathFunGetPanAngleDiffNoRoll__FP8CVector3P8CVector3P8CVector3": "0x80093248",
     "SetHeadTrackPlayer__14CSoldierObjectFbi": "0x800a9bb4",
     "g_iCurrentBIFIndex": "0x8034e77c",
@@ -123,5 +126,10 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsSoldierObject__10ISceneNodeFv",
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetRightward__10ISceneNodeCFR8CVector3"
   ]
 }

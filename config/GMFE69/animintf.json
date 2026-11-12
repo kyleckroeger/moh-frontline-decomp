@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -99,12 +100,16 @@
     "AnimStShutdown": "0x80067c80",
     "AnimWgtInit": "0x80069010",
     "AnimWgtShutdown": "0x80069008",
+    "AsAnimatedPlayerObject__10ISceneNodeFv": "0x8001b000",
+    "AsPlayerWeaponObject__10ISceneNodeFv": "0x8001aff0",
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
     "FinishAnimationState__9CAnimatedFUs": "0x80061384",
     "PlayAnimTriggeredSound__FlP11CAnimObject": "0x800eb824",
     "PlayEnemyMovement__FUslP11CAnimObject": "0x800eb8b0",
     "PlayReloadSound__FlP11CAnimObject": "0x800eb4b8",
     "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
     "SetHeadTrackPlayer__14CSoldierObjectFbi": "0x800a9bb4",
+    "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
     "g_bInMultiplayerMode": "0x8034eca5",
     "g_inputMgr": "0x801ec80c",
     "sprintf": "0x8013dab4"
@@ -135,5 +140,11 @@
       "size": 35,
       "address": "0x80170724"
     }
+  ],
+  "weak_duplicates": [
+    "AsAnimatedPlayerObject__10ISceneNodeFv",
+    "AsPlayerWeaponObject__10ISceneNodeFv",
+    "AsSoldierObject__10ISceneNodeFv",
+    "TriggerScriptEvent__10ISceneNodeFiPvb"
   ]
 }

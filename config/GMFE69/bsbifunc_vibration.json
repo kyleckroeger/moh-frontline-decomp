@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -95,6 +96,8 @@
     }
   ],
   "externals": {
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
+    "AsStaticObject__10ISceneNodeFv": "0x8001af90",
     "FadeOut__14CSoldierObjectFf": "0x800a9bd8",
     "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb": "0x8004618c",
     "GetPlayer__6CSceneCFi": "0x800d8274",
@@ -135,5 +138,9 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsPlayerObject__10ISceneNodeFv",
+    "AsStaticObject__10ISceneNodeFv"
   ]
 }

@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -108,9 +108,11 @@
     }
   ],
   "externals": {
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
     "GetAvailablePeekPosition__11CCoverPointCFv": "0x800533a8",
     "GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf": "0x8005c6b8",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
     "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
     "LoadOneShotSound__Fiii": "0x800ec754",
@@ -144,5 +146,12 @@
     "g_pBuiltInFunctions"
   ],
   "original_file": "bsbifunc.cpp",
-  "original_file_index": 443
+  "original_file_index": 443,
+  "stripped_sections": [
+    ".sdata2"
+  ],
+  "weak_duplicates": [
+    "AsSoldierObject__10ISceneNodeFv",
+    "GetPosition__10ISceneNodeCFR8CVector3"
+  ]
 }

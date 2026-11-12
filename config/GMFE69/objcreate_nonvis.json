@@ -83,9 +83,11 @@
     "Destroy__11BSGO_PlayerFv": "0x8003c38c",
     "GetEmbeddedHitReactionInfo__10BSGO_BasicFv": "0x800290a8",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
     "GetProximityData__11BSGO_PlayerFv": "0x8003bf80",
     "GetSceneNode__11BSGO_PlayerFv": "0x8003bf78",
     "GetScriptData__11BSGO_PlayerFv": "0x8003bf70",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
     "__RTTI__10BSGO_Basic": "0x8034da28",
     "__RTTI__11BSGO_Player": "0x8034da30",
     "__vt__11BSGO_Player": "0x801832cc",
@@ -129,5 +131,9 @@
       "size": 108,
       "address": "0x8016edb0"
     }
+  ],
+  "weak_duplicates": [
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv"
   ]
 }

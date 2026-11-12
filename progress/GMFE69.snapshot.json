@@ -397,7 +397,7 @@
     "src/game/AIFilter_player_ctor.cpp": "1df6be20b5da0fed633c83c942ab83d89d2888edad1c290c43dccc0df0b73e60",
     "src/game/AIFilter_player_update.cpp": "3f0386f3d8149b9f17b88b41d3aa3010a42159a59a9c56ea406c1ac05114caa0",
     "src/game/AIFilter_queries.cpp": "cd75e9ca1f68078a2d16bd3e134c7b723a84f40c104c1a583b402aa4d3f57b5f",
-    "src/game/AIFilter_runaway.cpp": "0f7b132294149f492c5b39783fe572f68b24d792cc0f24358af78e2be61e73e6",
+    "src/game/AIFilter_runaway.cpp": "33bd9586de536f7cd154dd3292fc57f5c06b88120b133cb7dd6984aebcc155cd",
     "src/game/AIFilter_soldier_ctor.cpp": "f436457b079a2ca07870874e59ca34068104021a07205e29256d2e7fdbf02e9d",
     "src/game/AIFilter_soldier_dtor.cpp": "3689994def7b12277e7838fae8a21b40c9473fe4af8fc4d6889713c4039c3fb3",
     "src/game/AIFilter_soldier_movetarget.cpp": "79943e8633f491064479d8a5f5300dc77286fdda1b5a9996cb469aefc68b2ba9",
@@ -405,7 +405,7 @@
     "src/game/AIFilter_tank_ctor.cpp": "8cefe168ad49b13bce86c3fd174366ca405d36a84ef4948ca6d618058f7f6b81",
     "src/game/AIFilter_tank_dtor.cpp": "14d51831147223f9d414bcf01f8670bf2db4606b73f85789c39f1f58c95dcde0",
     "src/game/AIFilter_tank_update.cpp": "1a7dffad190493bb7740d2cf65ab1a84f01a026083ef7d3fbc585956e04d24b4",
-    "src/game/AIFilter_visit.cpp": "8b960bc222337cf422f8b29d4cb5f05c9fb703cfec6d8765e386976d4eca7c98",
+    "src/game/AIFilter_visit.cpp": "147557ac143f39b34c5f6fd20e7250a4a181a6787f1b4131b61c3afd3eb33895",
     "src/game/AIObject.cpp": "49f2ba29b99522372af4cd65687fb473096c86ae6503ee4b8bf445dc9d0f811c",
     "src/game/AIObject_ctor.cpp": "e23a81d466c3d56d591da66a8218eb89e295f1aa254bb4afaea072d378607cf3",
     "src/game/AIObject_enemy.cpp": "a2b3f80aaf450d23b0e8a8e5dd19374c4c038c8e57d8b1a5a5b7994ef500ae5b",
@@ -569,7 +569,7 @@
     "src/game/alarm_list.cpp": "b5313d7b9c04afdb831347013d8105b6269879eec1840643341937665400bd01",
     "src/game/alarm_list_ctor.cpp": "4a5e2b6408f9eb5b0143149a0b5af24b614a8c7f326d84a7dfd827213220227d",
     "src/game/alarm_list_reserve.cpp": "2a3d64d96a4001e13158d685a9e9c5856eddcc0e52e1d15038e6bdb6c934756a",
-    "src/game/alarm_register.cpp": "b3b96c54f0c667976a1daedc797143599a8a7dade1091e33b7f867ba49b5f776",
+    "src/game/alarm_register.cpp": "60551bc55f8f8d84a39288f4ee22ae3374cbda9385467d61d208663fec81e0ba",
     "src/game/anim.cpp": "9e086af4631ac941623f4e90cc4d858d9a4a1ddde96c1433e494b2f9411978d3",
     "src/game/anim_callback.cpp": "6364e30e1a95c04cf9b0da29fc29dddb3a3b2d334fdedb52b88d73ac2c3b574b",
     "src/game/anim_callback_finish.cpp": "3bb0012ec88003fa13b72591de0ef882dde66ee3635e1c67c34fbe0115d2ac53",
@@ -580,7 +580,7 @@
     "src/game/anim_obj_collide.cpp": "e3f6af7f355f4334031f214121af5f9e9685073eee4f7492c1bb03339525b613",
     "src/game/anim_obj_ctor.cpp": "eb919c56cf4e1875e41d585720c1e2f72e5b98c55734292de4407a06d2d34f46",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
-    "src/game/anim_obj_dtor.cpp": "ded2328fd03696ffe2ec71e42ac7f20628401f86810cb7e62fcd3f83e7d9eb7b",
+    "src/game/anim_obj_dtor.cpp": "cfa732864ae7f8e51ac723d82419719426817edd523ef1c8216ee0273b0e7d62",
     "src/game/anim_obj_ground.cpp": "f3bc0bcf206fb8fba565f8508f70bd406b9d0e6d387d13213aa44285c7f07b6e",
     "src/game/anim_obj_initclass.cpp": "6bd9bcf65e1ffa90102e512164bf0265bbd8a3b7d1cb97702d2e10eb7c113704",
     "src/game/anim_obj_tm.cpp": "d7c4953982f480f43e57b76f687a87660d8277c377c2b76f352d10e0ad4a2bc6",
@@ -601,7 +601,7 @@
     "src/game/animchan_process.cpp": "f65f265b7564a8b1c6638a3128b5d1114a0c16788b1dde38ebcaae6481c644e2",
     "src/game/animdb.cpp": "4efceebf62fc3c040ccb7b0fb88c250a727ee135d842cc2972f146147153983f",
     "src/game/animemot.cpp": "26367c6dd4abc4b102dd8af8131d956dc6a5f0a426a94f781e30d2eee554dcd4",
-    "src/game/animintf.cpp": "d1c21ffbec3694b0e340aac6e3b24c7f1b0c25bedf3439836c156fee2c00b462",
+    "src/game/animintf.cpp": "3bfb0a6cf6c16e6cd435790192f25c39eaacde6ae99c98303e7f655bbbc0c65c",
     "src/game/animmorph.cpp": "def84f4bdd60ed576a7b99ba68c7b82c234b29c015a6a1cc0b783f78db0343fe",
     "src/game/animmorph_as.cpp": "34d671d6f3e3c918326fa77ebb86c044ea15692bc23caddaa2401883f5952138",
     "src/game/animmorph_dtor.cpp": "6521fc2f47cbe35266b08dfeeae7573a720f8a6f74438c8d3b20dc0d5f5cda04",
@@ -649,17 +649,17 @@
     "src/game/bsbifunc_aim.cpp": "d768b13aa9600c7ce9db211f5e474e238474a993c5bbc09f68b270c68dec2e90",
     "src/game/bsbifunc_aistatus.cpp": "c3cd1f3343364cab494886a8edb307058afa11bcf94b0b17e24502c4379e0e96",
     "src/game/bsbifunc_ambselect.cpp": "4b3153e3510b1ffbdbf48687c7278ee82793e36a2f159850602650224e8cd3ff",
-    "src/game/bsbifunc_ammo.cpp": "e14eb34f9ae95c1c04ee1c0ff3d1d033ed230504d23acf4ee0c58f53b2f0ed62",
+    "src/game/bsbifunc_ammo.cpp": "24195b87a37b32417e2afea2cb34438239b7e99dcd8f928298465da2d0d97b01",
     "src/game/bsbifunc_anim.cpp": "e7af14b55f4fe69422303a1b78f51749bb8c0fbe3d2b5f4b4d5d702f4fc7a636",
     "src/game/bsbifunc_animevent.cpp": "39c74e6d74cda1496cd7499f27b18442e305b074411da7af047e775b11084a3a",
     "src/game/bsbifunc_appendprompt.cpp": "31675787bfc2917c1b6707dc5f96805000cdb97fe21ad71500c82e442cf1095c",
     "src/game/bsbifunc_astar.cpp": "46da81738b36a76fca2ca1e1b59c3cbbc091a5b091be1cd5d552c63725b640e1",
     "src/game/bsbifunc_asweapon.cpp": "a45cc31bbecca13448ce0610e2c20126743de398783fe3184b89ef9c89f3d105",
     "src/game/bsbifunc_attach.cpp": "316e282d009f4744640d32c1c6010f8c42a9218f1d4bc0c977fefc011f6d9351",
-    "src/game/bsbifunc_cheats.cpp": "00acc9dd5e35f49e1ca1b6831beff946c72290dffeba51e1fef6dc6406fd10cd",
+    "src/game/bsbifunc_cheats.cpp": "b381793264cff271e1d9b6e37ab20f86085f16db101efcbd62aeab7c01dadad9",
     "src/game/bsbifunc_choosetarget.cpp": "841e56382b245be5114b726c18f228b10db98305e045d145c03ee9e92125c6dd",
     "src/game/bsbifunc_collision.cpp": "630c3ce69b93d5207dee4e8f9a05f1e76af8390b71b864f691b0636b44d1823c",
-    "src/game/bsbifunc_cook.cpp": "55e3ed96cfac8204a6a0b7b1c1e9fed5d9d53e0cc7a071d61265c8f3d09eb362",
+    "src/game/bsbifunc_cook.cpp": "0289d08584cf25ef9a14ad71c4e32e10ec65123960809ced304c0c642def30c9",
     "src/game/bsbifunc_corpse.cpp": "78f8fcd381f34bad073757430a096b398e069b772d899e9ce90329ebb00a70bf",
     "src/game/bsbifunc_corpsesearch.cpp": "a859242edaea964c9213dcdde0b0d65e99ca76ae316a2430102ace711c9bbdb2",
     "src/game/bsbifunc_cover.cpp": "3d6b80c8f329ec9c74249e9e598582a363031511da2944f930cfcd6a1d4edca2",
@@ -667,35 +667,35 @@
     "src/game/bsbifunc_coverpoint.cpp": "d478649f7ca354250c20793c963fbe90f63601e47e06673b57bf0ec079d66bed",
     "src/game/bsbifunc_coverstart.cpp": "d8a9e6183a6455756b736fc2c7de220412f7b9f8f041e20bfe9c8c98c7677707",
     "src/game/bsbifunc_death.cpp": "7cd8e6e79eef6c5d6e539bcd57729e9f8af755ba56019272b14baffa501447a4",
-    "src/game/bsbifunc_debug.cpp": "cfd61fcb99fdaeb3031ef7d656e1b80ea5557a740b08273fa5ad04385fa498d5",
+    "src/game/bsbifunc_debug.cpp": "aa18252cb26bb4f2b8e28a220404679235d9cc5c5950de3de55100c8bff0ba2f",
     "src/game/bsbifunc_distance.cpp": "d4e5f37d866b7ba0efb8d60486f3348833c91ebec1c7d8b3b93be4011a6f6c0e",
     "src/game/bsbifunc_dump.cpp": "f78e1a214739a9e923b1cafb039e3eae5482968d6d411e0c911dffc5d2b4bb81",
     "src/game/bsbifunc_endsound.cpp": "269518fa4bd130bb303ac13d145eb933344fa3b2eaa37cc8640b28f8df36b437",
-    "src/game/bsbifunc_events.cpp": "248e55cb6f27566b5621e9965f9ef6f1cd70685c687c071d17e4ee1ddf46832a",
+    "src/game/bsbifunc_events.cpp": "ccfc72389a9a7c8f1b188efb2b3ac115497576a9dbd422acafaa792e113e0af8",
     "src/game/bsbifunc_explosion.cpp": "5deaa40daffbb1e294665c9cf1025cfd382ff0ecf488b610bdb9a76c5145af41",
     "src/game/bsbifunc_floatingbone.cpp": "6ebfc4da3b458e17bf8dbdaa06e9bcaf75feb33b7aaa72f14b4da7844719dfec",
-    "src/game/bsbifunc_fog.cpp": "fd522e0e8ab814781afcd161c73dce95a859d9b0a627aef98005b7c0d06585e4",
+    "src/game/bsbifunc_fog.cpp": "af10e5441ba0595a10305bfe82ac4df4be36a573833b6deb9621c8c1df9e3442",
     "src/game/bsbifunc_getpropbyid.cpp": "57dcf007dce4181644197a6c235dade7eeeb6de36bc8d27bf8195fecc4e64084",
     "src/game/bsbifunc_givegrenade.cpp": "761516467a3d60b8231c64b5d1a74489b45f34a12dc4c057a70557f5c1afea00",
     "src/game/bsbifunc_grenade.cpp": "7c4493f0fb1a982e9569b837d2bfc5504e90e9e0b77dbb0e1c56bd00283fe8f6",
-    "src/game/bsbifunc_ground.cpp": "66788db093b932478b7f56325762cb374c7d12d4bb6c88c98dbc85ba1fb88358",
-    "src/game/bsbifunc_hier.cpp": "6382d0dd5086aede6ba386898d21e3739f60a1cb346345e24dba445cf382e678",
-    "src/game/bsbifunc_hierfire.cpp": "0d39ba192ff5cee9815ae6196c4f1e7a61fe032250c919f9a1db4fea217ad77b",
+    "src/game/bsbifunc_ground.cpp": "19ee1564a269bd4b1db61b66d2e738cce2f40fe199a0c2a770bbb3a7e8882248",
+    "src/game/bsbifunc_hier.cpp": "e7154e959979355a59f93b2fb1251da86b2919de2dbb4a347f280fc68d9002c7",
+    "src/game/bsbifunc_hierfire.cpp": "0e373a2aad900259cb6015efb2b4104fc5bd0eec8cdaf4948144128ded50fdf6",
     "src/game/bsbifunc_hiermap.cpp": "5d1fbee607d4441331fc5f95588bd59e71cb1977e22becf596bb36b00d8ab4d3",
     "src/game/bsbifunc_hinttext.cpp": "9303b34ee322dcd6d55cfcc1770cf2ea892847d5a9c98315c620554c8cfdc192",
-    "src/game/bsbifunc_holdtime.cpp": "6e9fc66483be188cf10247ea9c15de21174873c14d5668e2dfc46e4e8362ed11",
-    "src/game/bsbifunc_jaw.cpp": "3473828e12aa08ab2130f5c2fd076ac0d36a34a8a8db95e9862e8a6a542517ac",
+    "src/game/bsbifunc_holdtime.cpp": "0a1f93ab05fbf356b9562e15e161a753dc8adba09e61bf47a9b52fcfb8b21859",
+    "src/game/bsbifunc_jaw.cpp": "d3ce10dd604a05c09e05b8f06aba7081e165cb1425aef6eb4ba0e6f16d8c5936",
     "src/game/bsbifunc_level.cpp": "cc7d8efbae710073b42456962c3a65ad588a1266121e193240fa930aa79671da",
     "src/game/bsbifunc_makenoise.cpp": "7c1a562f16159d3a5b89404ea5d0ee46a3132aa4111a56ca4d5f45a78a45c584",
     "src/game/bsbifunc_makenoise_bi.cpp": "6fe600762ad9b5373e949ae2dd8bc79296e892aff66f341737029d08fefe0a50",
-    "src/game/bsbifunc_melee.cpp": "93088fb52d8094a0f403ca30591b06f24627eac9ac946e672c83fa18404c3774",
-    "src/game/bsbifunc_mgflag.cpp": "a3186b00159f3a187022b8cb9451b06db37812584435ce1a834deec03dafa7af",
+    "src/game/bsbifunc_melee.cpp": "c3c8e7bf2fe36edc1920314f5584a4cc5bb08da377ff980af6b123ae44421640",
+    "src/game/bsbifunc_mgflag.cpp": "277a4d590fa75db4783755831df9ad1b0de3a40a3629ce23722e05e0d0dcae3d",
     "src/game/bsbifunc_misc.cpp": "90cfba09a28ef4b22ee48a561213172fad37d4d4d28c39c7b962163f81086c2a",
     "src/game/bsbifunc_mmg.cpp": "a1d4efa0ea72ef2b3bad132cf4f53c8696d7b72e06a1e88a825a976f0f8f311b",
-    "src/game/bsbifunc_mood.cpp": "e06a1f18ae64497a5d8e2f6ceba08f2904709851da3ee67e14f82919e01266fe",
+    "src/game/bsbifunc_mood.cpp": "c66630ca952ee6b5bd1dad364c9ff679bac2927f74e15b54310e62f06cc40e4e",
     "src/game/bsbifunc_mountedmg.cpp": "b1cb58cc907e651f34d4919e2f95ccdc07a39b3b1ccdf5fa2dbc5bc4d92b8942",
     "src/game/bsbifunc_movewalk.cpp": "7d88733a59a45863a375d0202f2171c3025fb255a5ee5a74ba0d3446b77a6930",
-    "src/game/bsbifunc_mpplayer.cpp": "163a34d3170b06d3fc48c48495bdc0939633b0e053a311dfdcd3520331b5c699",
+    "src/game/bsbifunc_mpplayer.cpp": "5a75fe11c9c7d04e800ac143f7207b585fdcdb632795efe6062a2168f8ada80c",
     "src/game/bsbifunc_mpprompt.cpp": "ea30913518fe038b569a108e38a418522a7c8bf1f8bddc7f9e966b83bf12eaab",
     "src/game/bsbifunc_mpweapons.cpp": "e8aeafe84db8543e0c2e3f99dc3a39873dfdab17817359fd0247530c4e4f4fb4",
     "src/game/bsbifunc_objective.cpp": "5fa7bbf76ccc6ee0f3df96c790ccc6788d0d6bbe3c2951f8a1e96a70a976dd58",
@@ -703,29 +703,29 @@
     "src/game/bsbifunc_obstacle.cpp": "f1adf94913770ec9708373fb92cf4727da4e7c78982fd534540980ca1d8fc3f4",
     "src/game/bsbifunc_orient.cpp": "5a8192da9fff9b0ad7a0f8022819735fed1877eec8c5edc89245d1a2cf787dbf",
     "src/game/bsbifunc_particle.cpp": "d3f06ec07f106ccea4f7c9c67e900aeb503b3df9a8f91eff42be12c9f8f627ff",
-    "src/game/bsbifunc_pathfinder.cpp": "f0d0d126760dfdd0410b1c627f69868f3e0609d68eb950318de6fb347d270489",
-    "src/game/bsbifunc_playerammo.cpp": "e233275b9350ce624da42417f89eac38a165215573a1c173732ef66e23a13f2f",
+    "src/game/bsbifunc_pathfinder.cpp": "4ea445abc80e2ecd8706dd52e4bd91599f46ad2063482dad97bc6ee432233fe7",
+    "src/game/bsbifunc_playerammo.cpp": "238a562e12f8dba1b64b0f395f0a6e99fa02f65823e6c092676ca639d9319628",
     "src/game/bsbifunc_playercoll.cpp": "5311cb49fae0e431e2b0facb533887fc1538af7dcc1c7b3b664cc9a214a7aaf8",
     "src/game/bsbifunc_prompt.cpp": "14539d33b84672cb531afb0cfa35b9f25f373f0dbc613b748791991bb53ae5e1",
     "src/game/bsbifunc_promptbuffer.cpp": "7540258ee887721957c57fd16ff0149361b1f7af99a77dc354f7b29f66c9b189",
     "src/game/bsbifunc_promptinteger.cpp": "ecc26a79933719376d0639aed0fe0eaad01285e69433c170896243ae24aa7a7c",
     "src/game/bsbifunc_prompttext.cpp": "fec9603a6fc064f3326f0e97f2975d5f65a26e6322e0de0f25ba7c8a557f2037",
-    "src/game/bsbifunc_random.cpp": "179f7df10bf1672ec32fc61f1501f11934527c50c4e251beda69e3b8ef44c68f",
-    "src/game/bsbifunc_reload.cpp": "346efa2193b56f60aaa41ae94192172fbee3d6251aab2a68b18ab83aa91f4a7b",
-    "src/game/bsbifunc_respawn.cpp": "e996fdfd6f7a94c0fc9ffdc464e8ac2e77c7f8a4acbc911e6d756c6a56e9d65b",
-    "src/game/bsbifunc_rotate.cpp": "c68744337850b6c7543138758a789570cb8da2ff1de5d504f26d07db4abbf85f",
+    "src/game/bsbifunc_random.cpp": "232a053942d1a3b19b7de6bd1d54fe06628b6b2b509ad3d97acd5b4ca8f4918c",
+    "src/game/bsbifunc_reload.cpp": "da453ec6b3de464516d3539dcb00ca9613c4188773394e67ff13c53e78f92cad",
+    "src/game/bsbifunc_respawn.cpp": "c933729ec92e3eb33ad3265fb40569ab859692e8fa89d52e4764491d863b298c",
+    "src/game/bsbifunc_rotate.cpp": "f8ca86524944ad48418fe5009b924b2bfd70b96e8596566bbab6f59bee6f97a0",
     "src/game/bsbifunc_schedules.cpp": "857869df04227332721de0b892023c20590d21255c82e496a24c102708fa0289",
     "src/game/bsbifunc_sedevent.cpp": "f08bfccf34c6a94bae55bc5894bc1f785da3c53140caa234595dc6cbeb700f1e",
     "src/game/bsbifunc_setobjinfo.cpp": "cbe4a9f16a716fa235457a819c1391021ff54b66fef235a79cdb32b1965382d3",
-    "src/game/bsbifunc_shake.cpp": "24364ceeefd9b2d4dc0004d49a1f4d758381ddb8101515ccb30fae9ae0a469cf",
-    "src/game/bsbifunc_soundbank.cpp": "759fd3b92195b45f076bb967e32b41332ffe32d171beeb209e08287853acd218",
-    "src/game/bsbifunc_soundinfo.cpp": "b1b191e44fbd62eb9225991e466abe72e48b47196cbdc854a9f25a21efc79fe0",
-    "src/game/bsbifunc_soundoffset.cpp": "0b0adf468514f1480b77767bee46c6920acb064fb8b3b763084d8ffe8c54e106",
-    "src/game/bsbifunc_stop.cpp": "87aed18c9707f23dfd25b31db66d17a05d8f554625042c0e8bd6e10875f4c05f",
+    "src/game/bsbifunc_shake.cpp": "5227f66482b60c80609bcb8e72473e55993c7cfc28db2b187e7fddd397a3cb74",
+    "src/game/bsbifunc_soundbank.cpp": "cac0c102f2879e05b8320130e0ad57832117e40b629f7d2fcc73e8025dec4e92",
+    "src/game/bsbifunc_soundinfo.cpp": "37517e597679184c9859d407a3796f44560fd4d8500a2b31d0759bd3d5b47b9f",
+    "src/game/bsbifunc_soundoffset.cpp": "a97292beba7e3db2b3e1ccaa819f2537763aa16e314c4881adc28a86739b9a06",
+    "src/game/bsbifunc_stop.cpp": "1a4cff4f1c07b1f379f8f062d90f7bc74763d1b2c53d5b268cc7384f2caa2daf",
     "src/game/bsbifunc_targetsearch.cpp": "2f37472d39598f35847a4097b1394e449d40c0ec37f9d0aafcff0758bd3913a5",
-    "src/game/bsbifunc_translate.cpp": "d6712245b72f15c5a03bdd778b81de81608241a40c8c94c7204d013ee1779fe3",
-    "src/game/bsbifunc_vibration.cpp": "b228bd856ecceba96d13ef3c83073889da732ca612603933e15e902ba8dbd9b9",
-    "src/game/bsbifunc_waypointinfo.cpp": "8efd2ffb82bb9269a57ec8aa3143d80014f075184ca2ed5a3b8acdf8f191f1b8",
+    "src/game/bsbifunc_translate.cpp": "0ffba1148eb0873fa8ef53e3a90273c68a26a40bc1225a8fed898b2227a3f750",
+    "src/game/bsbifunc_vibration.cpp": "e87edded39ca7a843d4f457dbeecfe28096402fe36c09489f243daf617282505",
+    "src/game/bsbifunc_waypointinfo.cpp": "9a58437209a1aa2231b395709211ce0b5a4c9c37d7321454ea0f30a5120ebc1c",
     "src/game/bsevents.cpp": "b452c77e9fd44429b0a8d8c9105a2ca9ee4bf43903bd7c71f1d82ed932f382c3",
     "src/game/bsevents_head.cpp": "5388eb4c3e5d496c04d0ef47cb4697c307c96d29a2b776374bae2fc299d57e5a",
     "src/game/bsevents_queue.cpp": "678dc2a5de24106c16e3f63e5d22d765f7279af4e4c4b77d5a51eedf13cc943f",
@@ -757,7 +757,7 @@
     "src/game/buddy_vec_path_reserve.cpp": "8edffc8b5c64eeccd67970a0ea039974e1ac83e04c366bc1354b66952fb6dd1f",
     "src/game/buddy_veciter_path_dtor.cpp": "da28bd810e9d80517ac0bdd7eefe9f5c58bb71a8c1391bd137ad6eccc7475c43",
     "src/game/bullet_asbullet.cpp": "2975a506b876058410ff94b47dac21c0128e08b6504df39afc4aeb9cc85b7c87",
-    "src/game/bullet_ctor.cpp": "73313c93d9d8a4c2ffa43dc65206333946b47b2e62d2599643d3c4c6760cfdd6",
+    "src/game/bullet_ctor.cpp": "bc87d0dc50bc4ce32a666d508d10ef68b47e923a12adb1277fa678fca78ab44f",
     "src/game/bullet_draw.cpp": "09df292753cae3ef115faaa9d446070b7a605ae7f70bceff59a555dad9e17add",
     "src/game/bullet_rows.cpp": "a80cc07b11a0e8960b5473b90a1b6cc05c35150fc7a4dae6eb2a0f605c43082b",
     "src/game/bulletfactory.cpp": "91c50f9fbebc515b12e72a809b18c4b36e85ba07d972a50ce3df617da6ec1ee9",
@@ -767,7 +767,7 @@
     "src/game/bulletfactory_sprites.cpp": "b9f54fc574513bbe0ca4b8adf5d9f1a60975f2ad5ffc6f9744650d11e41e4993",
     "src/game/bulletfactory_thrown_ctor.cpp": "720017aba67365d2b11bc05907e553661622b405fbb89fcd2bf63156d6ea3e21",
     "src/game/bulletfactory_thrown_pool.cpp": "68e7bd51b8e93071890e172b5301a8ce70f7b31d5cd313c9f260bd4a82bf0dba",
-    "src/game/camera_dtor.cpp": "0ff34e7089128735738983773a98dc0b02813b2b745d1de37624412931e1f637",
+    "src/game/camera_dtor.cpp": "4be51e59c90d7b4bd09ce317d4166cb8a2ca5ab4ea4e0dd7e416486cefb96565",
     "src/game/camera_frustum.cpp": "032b4c73100a68963048e8051abb824cc9774eb7466ab66e1c0980593f78475d",
     "src/game/camera_rows.cpp": "8382573f6a9f267b33c4633eac0b565890c2496f49328c0b39d60d28f64cba00",
     "src/game/capsule_capsule.cpp": "16427d1edd7c847061182a2ec1543df696dc3ee881826e558ecad55cfa9239bf",
@@ -803,7 +803,7 @@
     "src/game/collision_head.cpp": "746ca458a6ef009d99cf20245bd2152f0267ffdc586fb57bac739111f4f5f90b",
     "src/game/collisionvolume.cpp": "43ba2b786b6016be28ed111443666151b7721d434b959794c048a582f6b8b826",
     "src/game/collisionvolume_ctor.cpp": "9180b64da831df0209f607f79ff60ad24e36a63a2c6ba9dcc7986646af060e9d",
-    "src/game/collisionvolume_rows.cpp": "a67058eb28176186ea3722bb413d2c0d22183a4f616ee5210d373c5ce38fda1e",
+    "src/game/collisionvolume_rows.cpp": "d1757d03939aa9a464f396935a6ae8f14bde0e29f62f62cd43146b101735c21e",
     "src/game/compartment.cpp": "961e8dcd34f7a1f1ba19e0007164b1c9a19163487825e83430b3023ed47ef0d0",
     "src/game/compartment_bindtors.cpp": "bdbb1db55d3fbcdefa25457f0c027c104e49b3b05c53edc52ffb85bd208717ca",
     "src/game/compartment_bins.cpp": "409ec7f06c13ee2414a3b803f316f0d77fa3c119c82e96acce7bec67d2f649d4",
@@ -841,7 +841,7 @@
     "src/game/debug_prof_register.cpp": "e655902202d1ae9eaa0fccfee1836c729faaea83ea7f814976450039b52aa9b5",
     "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
-    "src/game/decal.cpp": "8b99cb384dfb6f45065ade7a8c70c3bda204dab2cd4089c636e7d00b349c4521",
+    "src/game/decal.cpp": "cc27d07cd78afd24b70d159ad75aa7d12f4daf175665b1eac0ef7b68d312d1ef",
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
     "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
     "src/game/decal_link.cpp": "f9e3352c2c8466d6932bd947e4da1f38448984c5ee142c27ff99722ee6db03e4",
@@ -888,7 +888,7 @@
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
     "src/game/hearingvolume.cpp": "f4e5ccb24ab2d04de853c2976e0a4a1278db30f1ac52b0b96b2452ef027715bf",
     "src/game/hearingvolume_bullet.cpp": "d675a975cda997302153895f84925033ef4b4975388d742d108434c3f9ee0ec0",
-    "src/game/hearingvolume_ctor.cpp": "80c05cecc46a6554e6f2b39b4ef537361241ac497af278d435713c390a50e989",
+    "src/game/hearingvolume_ctor.cpp": "fb9cc85fba1a9d5cb322379bbce4aadcb1645a46016425f24a930147a156884c",
     "src/game/hearingvolume_init.cpp": "2621762cce03b4672f7b5fb1acf858b6175abf19e97f0a0073fd3e60ea957c0a",
     "src/game/hearingvolume_rows.cpp": "eb889ebdafa103d1056ac79d8d0d2a63be8c8366b4d470bfd50d5ba078a3651e",
     "src/game/hierobject.cpp": "baaa85c4922f17f0ef79fff3da3332b92e11d62e44b43f5a8ca2159379292fce",
@@ -914,12 +914,12 @@
     "src/game/ispauselibrary.cpp": "401366234b5be8c2c4373684294ab2f4cb1e03911118fb1f984429b39d9b5c3c",
     "src/game/jaw_controller.cpp": "8c1ffb26c6fecbf77d6e014ceb5aa8cea83116d659188b6de96ef98698ea7c8d",
     "src/game/jaw_motiontype.cpp": "b5d4ff68517a7e487c9609f6d0953d17061f5e7fb0e1c901005931673926444e",
-    "src/game/light.cpp": "22f1d023455434ab323fc674ae4ac2ad4a370703fdbadb2411677c4c4a427eab",
+    "src/game/light.cpp": "a7433e75ce821e704264482545da52d72df4574629094d34c92b7efad43d97cd",
     "src/game/light_animmanager.cpp": "2b7a2b9080067e2c9aae6442b240292e62829640df505e38b25c262770de22e4",
-    "src/game/light_animmanager_dtor.cpp": "2efd3ac7f402f9405cf423f15b9342ac2676b64494b475a4e415588ba83b5655",
+    "src/game/light_animmanager_dtor.cpp": "a770ec1b2c71edc3d05c0d5c7a530782f9b3a95550b633bbab8774a3f35db35e",
     "src/game/light_destroy.cpp": "4bb90b0be5cc3ac9b509ca93ccbd9d690bbe62743d19037bfdcfb4f65da64a36",
     "src/game/light_dtor.cpp": "16a2e7decfac0957bca96bc979f7a815f807aa0fe78bfe0f6c7ad5fb0946ebbb",
-    "src/game/light_instanced_dtor.cpp": "dfe26b5ce2aedaefdb8fbbb89a9713b184518048a510d02cfa2d9a07b139892b",
+    "src/game/light_instanced_dtor.cpp": "73fd0bdbf8e472d38db152ad163ffd6db0bafb9acd21d8ae669a5de3f26f3aed",
     "src/game/light_propertyanim_dtor.cpp": "80dcf90c6fe5c35c37cb8f7c03bdaadc4678064fb5631051424a96f3fb9fabaa",
     "src/game/light_propertyanim_update.cpp": "f224bc174dcc6cceb1190fa890ff2a83eeb77ad94a6d643e25f829db180ca365",
     "src/game/light_rows.cpp": "147d2a704a04010cce0d336956aed6a0fbe35bf6a38bfbc389536d45533171a7",
@@ -942,13 +942,13 @@
     "src/game/motionblur.cpp": "1b31c01402463956146e455b7b7d444b73c86d939f8738f31f1bce3f99ee9a83",
     "src/game/objcreate.cpp": "1210b348972c22fcf28832c8186fe4c4a2a1a5afa66b4ca761f79326320b28ca",
     "src/game/objcreate_bsgoplayer.cpp": "95319c17bf06f9212158b3730fd9a240e8c8bde962c8368d97b3bed50c115cdc",
-    "src/game/objcreate_collvol.cpp": "b7bfa5de74fe7b6c72488fb15d2eb2f94118aa4bf03c187cb0abf14480343350",
+    "src/game/objcreate_collvol.cpp": "c832c841166256762dbdb6b5eab2a590c023459a2bec442828e0c162bbc276e4",
     "src/game/objcreate_create.cpp": "8db73930cf904ed828129fb89ed6eb8f44a8b8d233a0ab9cefce928b7ef8bead",
     "src/game/objcreate_createplayer.cpp": "a5f552e36a0182c3cafcd7865310e32a99a32605a61c6bdb5b6c61e52e2dc84d",
     "src/game/objcreate_destroy.cpp": "8398c89a1afae6ab4deb18269d385c9f784844708e928d7e7e76495da45b9aa6",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
     "src/game/objcreate_german.cpp": "e5241da17a2125e4fe85863a8486c00fb9831815dafdc7aac49b109e9e5c3225",
-    "src/game/objcreate_nonvis.cpp": "d464acfcbaa4440e22b73f03d357ac011aa22f17e16494ee9df809026f168004",
+    "src/game/objcreate_nonvis.cpp": "76caf33005bea7fa014996415c759f0c8d427abb89a3bce675bfb4636760bdaf",
     "src/game/objcreate_playerscript.cpp": "d3681c9f3eeba80156a23c349866d5c41172f659a275c80c02ca7cff786e77fa",
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
     "src/game/objcreate_setscript_static.cpp": "71730808faa7ee0f1af80c554b0dad8b983185857460ac66966694459a463df8",
@@ -967,7 +967,7 @@
     "src/game/particlesystem_create.cpp": "92629d98b34d231417990ef61ba1753b7f539abda9ae44e457ff639cf5634d56",
     "src/game/particlesystem_emit.cpp": "65a48237a98b6a85d09eba8fad135c4227b9c623fbefecb5a5496fc446a8cc1b",
     "src/game/particlesystem_link.cpp": "13dd477fda799fd17af5b91eec434df7c09343967b2ccc599b08c980111dc264",
-    "src/game/particlesystem_manager_dtor.cpp": "4579673e4531997696db4d3e61a262b0e8269a440480666ed644a0779d7508c2",
+    "src/game/particlesystem_manager_dtor.cpp": "07721d446713871360ad34f0d807321d87c5b5d2c4f47c01abd2f280be11db94",
     "src/game/particlesystem_manager_init.cpp": "f3fc4b0d9c44a08368aa7f8868a5387e2560b12cade6614924fe5445dcb78597",
     "src/game/particlesystem_moving.cpp": "c32f991551005a4227c0d7409f4d3fc695b66f639ddac35405bef204ff1ced3c",
     "src/game/particlesystem_property.cpp": "2709d21829562f73d5954863a85ba57c2a0a7e0ec3c763061a1b802008f495bf",
@@ -990,7 +990,7 @@
     "src/game/player_ctor.cpp": "adb5b353e370aa95bf1d32fb3f01958b2da5060490c5811134fce1a46584fc34",
     "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
     "src/game/player_draw.cpp": "643e05245be92bae37e0e306cc6910d4796ad94993aea0b3e3f769f614a87f45",
-    "src/game/player_dtor.cpp": "9be753a44e98bf59c85712ce3ca679aa7f49559d7ef0f3215184ccd58a9eada3",
+    "src/game/player_dtor.cpp": "0e805e3295442b1d862c3abcfb2f3f342fabbf439285904436688165fd77c48e",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
     "src/game/player_fov.cpp": "5eb851f7186bb6e36da45c3c0cc1d29ce9331294498917b2406c64effca8f6a3",
     "src/game/player_health.cpp": "e94f903097f1cdd867cd719f4b73df7c8b881d9bcf69bf32d0eaa4e2aa4de77f",
@@ -1022,15 +1022,15 @@
     "src/game/projectilebullet.cpp": "fa70c636a0b9f009a16572f09456e397a443aef336ba36f9869f57295f72699f",
     "src/game/projectilebullet_dtor.cpp": "346cf1d92e80b034a1e28b918f39a6f0d3a6f3e8990f24082535d93c1d37c007",
     "src/game/projectilebullet_link.cpp": "19f80fe3f63f4dd8e99c0ea4721e5ae6d3b514a6257b554432be60eab125ad4c",
-    "src/game/propdat.cpp": "992bd16a7b8a0595867f21166162551e9970cddb176a9adba66e2d6243abf794",
+    "src/game/propdat.cpp": "767fd2eaeea716ebd6278be62203bead962bd30420767a32ee901b51daa6a867",
     "src/game/propdat_bsp.cpp": "13b6832f719222c1b3e8b9e455845d806b75128b22f03a1f9bbe2d52724ddf3a",
     "src/game/propdat_core.cpp": "97cf4b2f52d04887c40fda137cbf394a2daa5a5cdb8ca08b373b09d1594cbb9a",
     "src/game/propdat_endian_header.cpp": "a495580d0031b6979d10c5906c2235de9e8efa227c56cb5fe6d68e57a88aa50c",
     "src/game/propdat_load.cpp": "8c8bce27e24ac5cfdeb44ec88f0ef91d1df9711b0c3290f45d85149a7948ef13",
     "src/game/propdat_offsetptr.cpp": "50897c5d8ad1992eb302e37bf51c5a7a155273c5a8953ed8d96b588368fce18c",
-    "src/game/propdat_restart.cpp": "7a42693e687364d8a56a4e28fc97727e8f58ec0ed9abc383558f081b786dac2f",
-    "src/game/proxtrig_leafs.cpp": "179078dd5943adf6266b5fd1d3f9e8bece13e96b580aa3edf53801650875567f",
-    "src/game/proxtrig_messages.cpp": "3d6c95c4afc8f0b5509c00f9816cc271214130d6f8d3ea47b1105da7e97e3d3a",
+    "src/game/propdat_restart.cpp": "76c552fe0f613bbcc093d70cae29b022f6db9b90219d3c9d9c4c06d6dbe9a598",
+    "src/game/proxtrig_leafs.cpp": "a7c15cba3dcaaba09a4aa6fd461fe50fd1e590e679487961ad5d8952875175ee",
+    "src/game/proxtrig_messages.cpp": "cb30234db1be6fed5cd9d0b111dd0447df301755097c1a45005fcaf4ffbad31f",
     "src/game/proxtrig_point.cpp": "cae61da650ac014e78ac166b40ae5f2424133c367c8b6010f8fa654dc13e176d",
     "src/game/publisher.cpp": "be8db65e325ce14946ab26154cef64008f577aaf7689b22bd3ac8b297ad78b23",
     "src/game/publisher_erase.cpp": "0bc60cf16d324d4dfb54804240d3cc08e80f87017a9163bf04fcae532794be39",
@@ -1066,7 +1066,7 @@
     "src/game/scene_cmppairs.cpp": "57567f1cbb4457d941e2d31cb546fbb5d6debb98cb722f1dc070f3964ac83ed6",
     "src/game/scene_copy.cpp": "47afbe0f76fb20a7c8a07dfc7c3d34860dff5effbf6035418fe5252755301dec",
     "src/game/scene_dtor.cpp": "6138c571cf66db959f6e7c577df9c8e810bb3eba49cac4e74a8232b103baafa5",
-    "src/game/scene_fast.cpp": "b037a9670bc19ae80e1a15c3ff81dd6c7128403d318f3465017f862fb3ebf605",
+    "src/game/scene_fast.cpp": "543e0fa6cc962c03552ce535235a2ab72b8a0ca4c2a80b2a71902c38f76c16e3",
     "src/game/scene_fastvec_commands.cpp": "130932a619e72af3893f67e4a04eef775dd43b170c5239019317f2f1a61956ae",
     "src/game/scene_fastvec_node.cpp": "fe9f51c5d82e80699d3b888ee95de513905e8e89353212610b8927963ed6d00c",
     "src/game/scene_fastvec_pairs.cpp": "2f08397719cf26d9dca0c24e43369832e5dbcd36ec44831fd95041a694265f6d",
@@ -1182,7 +1182,7 @@
     "src/game/weaponfactory_props.cpp": "91f7cb43186530bece6bb6751d8457b64e1d29101824872b3e37a4c20758737a",
     "src/game/world_object.cpp": "873a97a1b663e39ab1b96ed82d1b43eba7dc38b78a1cc9942c5491c49f2a3740",
     "src/game/world_object_draw.cpp": "f2b34f4519d28c52ea318baa0ddbd5d2a916b6fcb034fbc7ef21b1c8bd48731e",
-    "src/game/world_object_dtor.cpp": "064c9ece58bd87cd4b359a01ed3117b37e6204628fc896257bb56142f3b740b3",
+    "src/game/world_object_dtor.cpp": "0d30f63f1ad02a39c23399516350c3b2eebabe4edc17dfba42e72f1ef259777c",
     "src/game/world_object_explosion.cpp": "33bbf68b0ed56cd609047c34e950497aa95ebd5e997b8608fd85a7f3eca372a0",
     "src/game/world_object_list.cpp": "76cd3a5dd19a8ae9c9282f714df9d9623bd5b73a1601e3b95a26f05b83ee8fe7",
     "src/game/world_object_list_reserve.cpp": "6ed8dad99c906db035f824754517dc268212caf9f7f3726cb5bdcd25b432f238",
@@ -1709,7 +1709,7 @@
     "config/GMFE69/AIFilter_player_ctor.json": "ce370654ed49439348e1a5e6db368ad2f60a086266c7ae1ee20ea7e16f87689f",
     "config/GMFE69/AIFilter_player_update.json": "2ad02792a1771499a63cecf2c603e2392b0e9c671210ac2118469f2ecf588cc4",
     "config/GMFE69/AIFilter_queries.json": "9e4fc8e832ed6676c6b96f3385213ecc5ae8e07e768f777152a85c0dca176c7b",
-    "config/GMFE69/AIFilter_runaway.json": "c9de4d8eb4f370fb79e92b085a0ea57470560e10726e32619b394c54cdffd3bd",
+    "config/GMFE69/AIFilter_runaway.json": "68a514bb12d51ced666e702d0d6a3c810bca7c6fc892f3ec0d02ea2ebdb52777",
     "config/GMFE69/AIFilter_soldier_ctor.json": "300124c62146e37ae64ad575daa684c33daad31a78212aa70b9f7e52f738b64b",
     "config/GMFE69/AIFilter_soldier_dtor.json": "03333f75283dc7b52902483605118cba9f5150551dba5294d2357be487d1c352",
     "config/GMFE69/AIFilter_soldier_movetarget.json": "0623b724f77a32726992f89444462211014708b7af97a52154e280bd9c12f42f",
@@ -1717,7 +1717,7 @@
     "config/GMFE69/AIFilter_tank_ctor.json": "14539e480251341e95a312263e500970f4afd83a1c9a3756d818c54b2a4a3a0a",
     "config/GMFE69/AIFilter_tank_dtor.json": "44eccb1e32b2fa3b72343c73908b166dcf5ff5c3ab01b1918de9ae0137100a6f",
     "config/GMFE69/AIFilter_tank_update.json": "05cd3af30f919a8e73d6b1d3367aae944a8b7feb250af978a1d451f9db99ec3b",
-    "config/GMFE69/AIFilter_visit.json": "afb92301b51c1dc0406f0522873477145a382d5ec9deed35487579ef2bee4b3c",
+    "config/GMFE69/AIFilter_visit.json": "99d394423a2e20d46f6b05b44397b19177230589432da65ef45d26da004d55aa",
     "config/GMFE69/AIObject.json": "096e50ebc13aded11d0ae221668c5ec9445df2d7ae828194204095062e38e365",
     "config/GMFE69/AIObject_ctor.json": "c8219887cefa41e0b90a67eb5a3e65b9267025c7fea4237614bd422032f220fd",
     "config/GMFE69/AIObject_enemy.json": "59502e12ffe7782c05a67a681f29e81b902cb6aaed21af44b8ec0fbdb4e5dcd5",
@@ -1973,7 +1973,7 @@
     "config/GMFE69/alarm_list.json": "3f8474bf95aa9c6fa36dee21ebe1f013685f99c927d4da8a4b618535148f0668",
     "config/GMFE69/alarm_list_ctor.json": "94b5688f6a813691f1535e5deb6408edb7ed12c71eb53b039133d2d34554573b",
     "config/GMFE69/alarm_list_reserve.json": "f91028f2ee40ad2fc70ffcf5c4272d341b9689a79e62e2c819fc819f4c9af5f0",
-    "config/GMFE69/alarm_register.json": "c9c400375e8dd1b8aa3c6494b931dfdd0ce0de466c99beec90474cfbe3d43d9a",
+    "config/GMFE69/alarm_register.json": "7da97e6bc66fd317bb03931e794bdfec2c5cc6c016444d061fd04ae05e48e4e5",
     "config/GMFE69/alloc.json": "fb00980764751afb051dcf8d20531d16fad345cbb4ab5446ac3f13dae1d82c1e",
     "config/GMFE69/anim.json": "6c0f7deb10acc52b25def57dae0a0ea6329965cecfc7a591ba086eda441dd7a8",
     "config/GMFE69/anim_callback.json": "937a9409585d7e6813853da0dbdb6b7057a2f32bc4255a1bf44c4d988be46098",
@@ -1985,7 +1985,7 @@
     "config/GMFE69/anim_obj_collide.json": "0371a13545fefd524fd743f64704b746dd6618d3e5a3ff966481859b5a999b82",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
     "config/GMFE69/anim_obj_draw.json": "8dcee46deff75776476d8b84ebbcdb3f3b486c18fa40e70e0e179606823b5017",
-    "config/GMFE69/anim_obj_dtor.json": "d21016be0ade8a6d1e9c9bf0f365cd522c2a6babc2e399fdbe8ab10f60858f71",
+    "config/GMFE69/anim_obj_dtor.json": "ec88d6bd78be5fab616458550ac0d527da639e1e4918c223454a122bcd537f96",
     "config/GMFE69/anim_obj_ground.json": "bd972bc7c9d473d649099bd848528be641351148caecf349e085f1a8d068f7a9",
     "config/GMFE69/anim_obj_initclass.json": "2064ffa3106e6f315e061efddae9db2bf55b7d8ee6322964597ceddb6fc1b62b",
     "config/GMFE69/anim_obj_tm.json": "00e3e1497d13191e7e741d5deb96ec3570ee16ce3e2459818e8d36f9f5fac756",
@@ -2006,7 +2006,7 @@
     "config/GMFE69/animchan_process.json": "31e5676db10d86a2d82e728a0fc0415c4afd9386fe140135b3781ffa46a65f2d",
     "config/GMFE69/animdb.json": "144058a2faa5ca6e23c0083279d94f085d536c0982b14d820d0e8984aca5f620",
     "config/GMFE69/animemot.json": "0643cc64e4ff857f622ee71c1d42e554d654a323102d5106457970183b9c0b13",
-    "config/GMFE69/animintf.json": "ba905796430033bbaca3e45ce233b7b80583a0e8caae52cac6f4dff749ae4601",
+    "config/GMFE69/animintf.json": "3684c8b31d432313aa9478bc6079a7291dff2a8c7292cc3862733294aff48317",
     "config/GMFE69/animmorph.json": "fde4d4e52d237e161f26b1ce600e179cae840da627629f27036833be76bacc3b",
     "config/GMFE69/animmorph_as.json": "24a859903323347f1a0174446ef22652fe986515f521e5e912db773e582d174a",
     "config/GMFE69/animmorph_dtor.json": "4c07a2b66746cfdb466d7c0a56247186ac3080cb983d3621e828a21662ecac59",
@@ -2062,17 +2062,17 @@
     "config/GMFE69/bsbifunc_aim.json": "213f275adfc8e6bbfd8658fc03a904e831d1730113c2fcc44749f5c3a46b3a6f",
     "config/GMFE69/bsbifunc_aistatus.json": "991ac027230315d725a2692df0fce35e9b58960b2a85fa4ce0e86b1c48791476",
     "config/GMFE69/bsbifunc_ambselect.json": "eff64f36d04507b5e83f72a0e8592a5fdb37d65d0fb7135e25901a8151e24658",
-    "config/GMFE69/bsbifunc_ammo.json": "0a0de083d59859a8124731abfda61c3c77bdc1516dc6a77925118eb1b284f03f",
+    "config/GMFE69/bsbifunc_ammo.json": "afd4a779eef220c42db5fd52e37ed4ddb5e067675eeaaec3cbfe0c6dce22cb20",
     "config/GMFE69/bsbifunc_anim.json": "2c957fbb14d153c4b9e46c9dd1872d15d7698b7755c34b6688da26e7961fd7d4",
     "config/GMFE69/bsbifunc_animevent.json": "a7e35da1f9c955a8aea20227676c547b9cb0f9403a2c03279a11f9d4c1ffba61",
     "config/GMFE69/bsbifunc_appendprompt.json": "7ee7db63bf8c53644486247dba4de7ab65aecf865440f80011b35b41b2561680",
     "config/GMFE69/bsbifunc_astar.json": "fb69b3584dd1374403b62a03aa279fee8264dde51edf07738cc52dc7c04d1602",
     "config/GMFE69/bsbifunc_asweapon.json": "c4f233408b34a943b69747aa23be56d3ac7eb6be32e9f1da2b360c5a8a093925",
     "config/GMFE69/bsbifunc_attach.json": "dd734e422b406236be51e524f6cd0fef9d552912888cf0e2cc1040d0b1cd85a5",
-    "config/GMFE69/bsbifunc_cheats.json": "4e4c4ed7102ff06795f1c3baac5d659de0d3537625937ab60a95afe14bce7a76",
+    "config/GMFE69/bsbifunc_cheats.json": "8183eaa9c130ff5ec2b16b441d0de25d31495cc767e1cf83112f75d41b79d45e",
     "config/GMFE69/bsbifunc_choosetarget.json": "a685625638485d9508c7125179b9dbac48a5495143e693be0e5927b8f576f570",
     "config/GMFE69/bsbifunc_collision.json": "3f683d5a0e4811eea3ad8426b7b5918d37a53eb0c769155b6377d5cf1b124f13",
-    "config/GMFE69/bsbifunc_cook.json": "b51926e8510b156aa39d1fa132c0b093fe0323539bf7ebdfa6731ffd8bffef16",
+    "config/GMFE69/bsbifunc_cook.json": "4746d04820a5978ab67f7c181c95757220c4d91e4271c4bd64e7ea52f484e271",
     "config/GMFE69/bsbifunc_corpse.json": "55f55cbca2abe468651a5290f2da38e9c00e34704842b12dafbe87f8545760d2",
     "config/GMFE69/bsbifunc_corpsesearch.json": "c30d3749449cb90354ea03cedf3708305bf8c328ab0c9519e69f3fd57310e5b1",
     "config/GMFE69/bsbifunc_cover.json": "a3ea5a60daf69ca5b869e8e34544f2777ef34fa64fc4aba66a2e71c6c44b900c",
@@ -2080,35 +2080,35 @@
     "config/GMFE69/bsbifunc_coverpoint.json": "9939fe47d3e82fc5196fd138cda07908d3779cb4be49707a558f71dcb67d2ace",
     "config/GMFE69/bsbifunc_coverstart.json": "aa9490dca1e571ebf43c5a14ac6a757de9e5dac666076a2d694a6ab8e66aa2f8",
     "config/GMFE69/bsbifunc_death.json": "c6c1d98a8958c183c7404a5ea8f813d76e8c4b1a24ed3f73207a779555ad306d",
-    "config/GMFE69/bsbifunc_debug.json": "70db3cb625ad3e4ccf878a1288daf67a2ec08c9b3fe39ea84a83be6a6b00ebfc",
+    "config/GMFE69/bsbifunc_debug.json": "7e207df2a3c16ce1f5442e2843954bd07dcd3e91ffdf334ecc2023012955967d",
     "config/GMFE69/bsbifunc_distance.json": "74a22d214de648595c2ac265a27f66c74b484f6f79ee12c70dd1be21ec44c75c",
     "config/GMFE69/bsbifunc_dump.json": "e8fac85cf1137929e2a0b21d026761a44e322dda23877ceccba3f9e485213445",
     "config/GMFE69/bsbifunc_endsound.json": "e771da1d90cee00a28e086bd867f248b607536efed6ecb956e0e5e4ab5638751",
-    "config/GMFE69/bsbifunc_events.json": "8366a926aeee79b9f396c50697816dd8f15de20e4d880d4e40e5c94a5726d166",
+    "config/GMFE69/bsbifunc_events.json": "9b103c145369c392d459fd8f5568531cf52de1be54f87d893d2a96b97c45068d",
     "config/GMFE69/bsbifunc_explosion.json": "9d7e5392d96dcd6620ee7a43bbe0a45c20410230b189cf93ba65dfb9186208f2",
     "config/GMFE69/bsbifunc_floatingbone.json": "4f816f5021817a4755409f663f829bef4132e3f47ee112771d5a855732c912bd",
-    "config/GMFE69/bsbifunc_fog.json": "c8ae4a1fa92e445dbfc3a032e967e23e33893f9c25f8a1282cef08c881d5ee8d",
+    "config/GMFE69/bsbifunc_fog.json": "33af6e9ddf748ea1ecca380556c275dae60774dc994f2d3c2e632348a5196f32",
     "config/GMFE69/bsbifunc_getpropbyid.json": "b14f02bb4ac846ade09cad4f1a780851c2c1df8f39697db7c019e94bb426e942",
     "config/GMFE69/bsbifunc_givegrenade.json": "cb8671af1ad9780e1c867134e78c90263bba01e1c715c9318d49a01d1530372b",
     "config/GMFE69/bsbifunc_grenade.json": "0f9226f7977bd260cf70ca38b345286a321794773261c1f3b3b43b0d107bde21",
-    "config/GMFE69/bsbifunc_ground.json": "69e8185c13a7c676e7c10fdb8a5c04bdf98c4b45c6c4a3e1b02442d8cd6754ba",
-    "config/GMFE69/bsbifunc_hier.json": "5ad8f3f13ab2ad46f21eaf8ae512b96c7c651be2bad28cd6f2ffd6f9c0b7e1ae",
-    "config/GMFE69/bsbifunc_hierfire.json": "8fd58e9aeadebea1f3dfa7dff08b3aae416c60c8d7ec0641181952ee4f1e0701",
+    "config/GMFE69/bsbifunc_ground.json": "50d03648e2a1fed6f7f27359780faa7daeb0da1a3680a2031e172885b14c32ee",
+    "config/GMFE69/bsbifunc_hier.json": "a6e30cc99b2c066882f6031b6e456e9a30451cd7c46ce97dc4a64582760d8b09",
+    "config/GMFE69/bsbifunc_hierfire.json": "440f7cf22e15cacbed025c652f23657cc3275a290097ab77f2a3322afc52b4c6",
     "config/GMFE69/bsbifunc_hiermap.json": "af4023a1f96eb7dc47f3538f4fa5b58eccd730009925231e9cfdb426e2677423",
     "config/GMFE69/bsbifunc_hinttext.json": "4bdf2b007d1551e71ca03d7204b25c2aa36d1653a4fffb507a3de4fc301cdc01",
-    "config/GMFE69/bsbifunc_holdtime.json": "f6b54ccdce1386687473fb3047ff8b2c2fb0f77ec224f8ea9773311d4f2c63c2",
-    "config/GMFE69/bsbifunc_jaw.json": "725d6ec8748dc0a35b26efadb00a7a05c3daab608410247ea9c94b26699e302d",
+    "config/GMFE69/bsbifunc_holdtime.json": "57bb2a96a3696a39d57449bb7e2d328d1b289b7818c0c408cc3a21994eaf180c",
+    "config/GMFE69/bsbifunc_jaw.json": "0f0438bff6a7865a994acfd347ce45fde386db5ec9d4723734121ce9b0ea96df",
     "config/GMFE69/bsbifunc_level.json": "a8b2a21f79e90bd2303812ef6d9cb690deedf1796a27b9cca322e715bfbea182",
     "config/GMFE69/bsbifunc_makenoise.json": "548e7a0d6442afd09f0412274ffefe2aa252c7209aa93b449273763862225b60",
     "config/GMFE69/bsbifunc_makenoise_bi.json": "7b78d497a3447c209f6c96c654d3e3e9f27a8515391fcbfbb8b56ba444967d95",
-    "config/GMFE69/bsbifunc_melee.json": "f73e8034fc5eccbcab61071451edf5a5686f87525c1f4daa191561d705f99211",
-    "config/GMFE69/bsbifunc_mgflag.json": "18812b2d30c33a620e2df6d26b9cbf0429c8d75dddb022c5272d349ce756d2de",
+    "config/GMFE69/bsbifunc_melee.json": "d2853dcf8e0de36556696a85ab9d4cbd39763ae261a32faab910861d30d4c44e",
+    "config/GMFE69/bsbifunc_mgflag.json": "e9a3e6cc9ea52d87606579468d748e4ad34db5f423080625f25bc56004ad5bf9",
     "config/GMFE69/bsbifunc_misc.json": "73b18dc15e92b4ca0cec527da4308df9915fa2303c0d3afed34df245269339ff",
     "config/GMFE69/bsbifunc_mmg.json": "a6b43aa7d9536043860e082b2778ec31d9c0e4e764c84e13535bb07025d504d0",
-    "config/GMFE69/bsbifunc_mood.json": "57746555693136b562102bf77d016d3c0c64243ac31fd4ee812f09f1e7555d99",
+    "config/GMFE69/bsbifunc_mood.json": "a578d5c1b57209fa55219098b7bd3af7f0191c06192e18569a497b4bc9627c15",
     "config/GMFE69/bsbifunc_mountedmg.json": "1e7378152809d72e45cbd87c15a2c8de1b3c7b32775662fd5122c03818eb6a67",
     "config/GMFE69/bsbifunc_movewalk.json": "cbfc4bb3544e9e3aeb51ff5253737e114ea86ca5fecd62e4e860bdd40b7c0a68",
-    "config/GMFE69/bsbifunc_mpplayer.json": "e94740b19f3d84f215be44b20cef01c7a57e9099c400ba55b544dfa440e77766",
+    "config/GMFE69/bsbifunc_mpplayer.json": "cb9a5b835889e052dd3267921526b78d9d06b6d1989d706aa3427d2dacbf6eab",
     "config/GMFE69/bsbifunc_mpprompt.json": "b16b76158d733e5fd62e63a4f8b418142b2880cd73761e979eb494e7983fa5c7",
     "config/GMFE69/bsbifunc_mpweapons.json": "fb583dfaa8b15edeaa3398bff13452120474f1d1cc4cb2120ee1e1dca23c3a12",
     "config/GMFE69/bsbifunc_objective.json": "4abeeb58c700d33f378c9377ebbc23a362742584e2827e9c6d219f19dc553ab7",
@@ -2116,29 +2116,29 @@
     "config/GMFE69/bsbifunc_obstacle.json": "d806971b4aa5540363d726a85239190109669a2900fa58faf99812d373c15d7a",
     "config/GMFE69/bsbifunc_orient.json": "21a86faf671286f043860fb55a8e6e0935d9e22cef7bfa660f9858e4287aeb60",
     "config/GMFE69/bsbifunc_particle.json": "f3331abe06599038570c73f75188859e73c190e0d7abc9d38d1f72694136ac32",
-    "config/GMFE69/bsbifunc_pathfinder.json": "7c84686dfe6b6b8ccddcfe89c7937d933ca639ab89217b3ce9af34735859795d",
-    "config/GMFE69/bsbifunc_playerammo.json": "847e0f61b9dfe9956f22a0b5d8a970d08216b1f24298599ac229bb64a8b076e7",
+    "config/GMFE69/bsbifunc_pathfinder.json": "f1d3f7ec33e844ad0d742c8547b5149b564c7b3eadcca03ae836a17b7a88f430",
+    "config/GMFE69/bsbifunc_playerammo.json": "c900d54aef874b0f37a285bdb768bbda45d4fae83a6125675bc85ce28b40031c",
     "config/GMFE69/bsbifunc_playercoll.json": "8208b100c67eef9fd0725631586fc2dd2d973ccf42211ca1d88a3f1d40b2dcd7",
     "config/GMFE69/bsbifunc_prompt.json": "357a20b764c91ac199b4cc4a12f66f09308e473c94fabb6047267942f58224c0",
     "config/GMFE69/bsbifunc_promptbuffer.json": "fbb684d2f2dba8ce02f9fa47f8b4812b7e334cf460497696e20f5e8493ae6d10",
     "config/GMFE69/bsbifunc_promptinteger.json": "f2facee0b6350d20f0c91f7625229343edc02f11a93246922094e055a0548068",
     "config/GMFE69/bsbifunc_prompttext.json": "3b6f90cde43de0371419015003b16199017dc42ee96786a86bcdf937cca6e95d",
-    "config/GMFE69/bsbifunc_random.json": "1820370bbc260928c38073774ea81c44f4381ff9d4bd58bff7e60d6512e1acdd",
-    "config/GMFE69/bsbifunc_reload.json": "a3c34f0cad37e9486797c10dc93b594c9e24f9e6293798941544757d6c8a8c14",
-    "config/GMFE69/bsbifunc_respawn.json": "2d3409622542bba55e7a39ca11a927a194f3bf6ea02574ef8a717f967976f0cd",
-    "config/GMFE69/bsbifunc_rotate.json": "fecea8886bdc5128ea380275e112f49fbdf45049b534946705b498c1deb1e8d7",
+    "config/GMFE69/bsbifunc_random.json": "cba7f8a2af62fae47eae5fc3919c3195fb7e9eaaf3cfffa101b22c3273cee03e",
+    "config/GMFE69/bsbifunc_reload.json": "7fd74674a6fc8239e8a6f2414091e0059acd51d06cf161436e97a8dbec2659ff",
+    "config/GMFE69/bsbifunc_respawn.json": "612b02005911282e03038cc4d8a0be961dd45508981c0c6b7437d58d0ea8923f",
+    "config/GMFE69/bsbifunc_rotate.json": "fbf815921e6320da590d2f4e00ed4be31c48c274d2317220a604cbad653d943a",
     "config/GMFE69/bsbifunc_schedules.json": "623da966d98d39a66ac1e525bedbf383c5c93454e4e524ffeff0fcd1f6d992c3",
     "config/GMFE69/bsbifunc_sedevent.json": "ea87a62d2569f83e194d37f0c40954e373194eb10ff053d299e720a3e6f12b9f",
     "config/GMFE69/bsbifunc_setobjinfo.json": "35d0dc1a43b7fde5b5189f92970305964b93fe3c3b674125bb7e2619aae9d38a",
-    "config/GMFE69/bsbifunc_shake.json": "60524dbbd8a210a233d12b36b1ea0da9f51087e4690ceb581be9ad13eb5cc66f",
-    "config/GMFE69/bsbifunc_soundbank.json": "57b30728b0a627f33b1b11eb9559720add7d483e8b777efbadef2a28e7a6b0f8",
-    "config/GMFE69/bsbifunc_soundinfo.json": "e0dffd565f15864c9844156999e32d7579d3269de50b73b7b815d9ecdaddf6a9",
-    "config/GMFE69/bsbifunc_soundoffset.json": "abd4d4d924c254318c133da7abf4b1d0ccbc1edb0e45a3d891b991c1fb5767c0",
-    "config/GMFE69/bsbifunc_stop.json": "465f84e151cc6c8400be71af102b4ef15b614ac165f251e04fbd6ef77bc11b4c",
+    "config/GMFE69/bsbifunc_shake.json": "c65f425710fb6712a3510fe06465fcbaee430ee30e3cf0e1d36e792343453556",
+    "config/GMFE69/bsbifunc_soundbank.json": "3e6af679ffc1ff9b8edf3a80b261b8b17ecdb96deedad540f9cf49e941af3a66",
+    "config/GMFE69/bsbifunc_soundinfo.json": "aac58aec00c99e36a1ef500bb7f871955dd2cf3a3bb8f3ca7868448f17f67c01",
+    "config/GMFE69/bsbifunc_soundoffset.json": "08aafdb00fa7ab6368bc780c3811ca56faedea82c71a06ceaae208300457cae6",
+    "config/GMFE69/bsbifunc_stop.json": "efc7447074f1524eb6e7c1d7d2104f75be1ec77e1228759466f22c2ec38c2e02",
     "config/GMFE69/bsbifunc_targetsearch.json": "c43a5547e3af98d8d93bbcda8a0744bf129debffd171acb3d3ad166f7cd48367",
-    "config/GMFE69/bsbifunc_translate.json": "6884d2f3e7225d9180ecc0eade38db9d7211a79411dae46f7802b6841bbeb735",
-    "config/GMFE69/bsbifunc_vibration.json": "e51d7548d0337eea6a4f49cff6977eff9349c8d7e2d573a7e1f4d0349e1f0b3e",
-    "config/GMFE69/bsbifunc_waypointinfo.json": "80cde6d30f3856386366d4fa1641635123ac16f96333684c19e10dc66087bdb1",
+    "config/GMFE69/bsbifunc_translate.json": "95d8ae499a78f8bab7727547e341b51e4fa237be1fc295c367b997cc3ce8ac96",
+    "config/GMFE69/bsbifunc_vibration.json": "4e8775a39ba3340b33164baa915f43d5e525dc85748f17e534cbaffeaf0ce218",
+    "config/GMFE69/bsbifunc_waypointinfo.json": "170f44317f2635728cb9e8ccc034b2e9a3df536a067875164ba2af6171d644c1",
     "config/GMFE69/bsearch.json": "dd287b9523a5f289e22dc32f273d0f9756b610c9280ec41b84aac1d7ea50912b",
     "config/GMFE69/bsevents.json": "bf2b1285d474889e2f47f4d33dff1c673341bcf69c172d94ec39472eef01f369",
     "config/GMFE69/bsevents_head.json": "37d0a9ac04cfd4ab8595e6f51256a215838fcc0d4efc9e9ef0e25fccb3056925",
@@ -2172,7 +2172,7 @@
     "config/GMFE69/buddy_veciter_path_dtor.json": "c370ecacaddd40e7e143c2b4fa6c758b3778c631d0a3dc0a362fafddb789c925",
     "config/GMFE69/buffer_io.json": "9a997068c0c387e86e9609ec66493e7caa8d98ea675676441eb2ff729f5d4186",
     "config/GMFE69/bullet_asbullet.json": "b71b282c15d9e53319ebbc43dcd7686ce181305594ca0ffb1f0a806bf91b3423",
-    "config/GMFE69/bullet_ctor.json": "30f68e5edd3202f4b893579aa1265eac92a409df10b4eb44219f9fa9f356e093",
+    "config/GMFE69/bullet_ctor.json": "59f7c7ed937b177ebd1a6c9b38b3e6818165c2d33398cb482d7158a28f0b0f5c",
     "config/GMFE69/bullet_draw.json": "094d31966b0f5d63864f43d166790e5c9f0549c3cce656f8fd959a57de16a6b8",
     "config/GMFE69/bullet_rows.json": "ccf727f5dac8aa5c58bc75dc46da40158093f00b084602637f1d43ea9faadb53",
     "config/GMFE69/bulletfactory.json": "3cdabd0dbc99f8b01cfb2b5fb00afa34869b728101b6e4992a416f21ba31dd56",
@@ -2182,7 +2182,7 @@
     "config/GMFE69/bulletfactory_sprites.json": "ae311cccd0ef2fe2fcf7da4dc35b195c719409e68b70d0b9fb677f9e129d2722",
     "config/GMFE69/bulletfactory_thrown_ctor.json": "2b6b7c163084670e455076bace0c772c569b37e2041a6bb04f3c6b7a3de490b3",
     "config/GMFE69/bulletfactory_thrown_pool.json": "a9e81926241af0a371a1f0996d07f881d2c0799d523d0b1b4050a6dc01f8e187",
-    "config/GMFE69/camera_dtor.json": "8fda5d013b822dddd4ca34337ca7d0e498694d558397e2429fb3bd14cd03a8c7",
+    "config/GMFE69/camera_dtor.json": "0ad923e17d8a490a573ca738721461285dfd8206bfd5ec403cf07c84fe86c318",
     "config/GMFE69/camera_frustum.json": "dd868911c0bb5f7130e480dea97aea615832a43bd844faae55322f42dd291934",
     "config/GMFE69/camera_rows.json": "941be3d5166cc24e4dde682b2a3d0beacbeb63abf3afd117ea85d08b5fd93f7e",
     "config/GMFE69/capsule_capsule.json": "1322c218c61422c92d90d4c2662edc6b2de1262a5ebf877657f588f789d29d46",
@@ -2219,7 +2219,7 @@
     "config/GMFE69/collision_head.json": "c233eb331f41c1f0519933e61301dd8facec1a44369ce60a3bf35023b0c4ab27",
     "config/GMFE69/collisionvolume.json": "4b42015c953c1335d95d5edae0ec810f53e76935e2b6b0e446fd20b039dbc795",
     "config/GMFE69/collisionvolume_ctor.json": "3cbc2f63e594ee59be0586e7ad98499d56bfa14f83e9eb68a470f02212f7e9cb",
-    "config/GMFE69/collisionvolume_rows.json": "6496b72f47e3c76eb47620d574b6b32e638abe6e7811f3272cb6243aea96702c",
+    "config/GMFE69/collisionvolume_rows.json": "3f4d23a7fdbfd73dffb552ab132197ac083ad1070fc11564fdfabd3d54e2bec7",
     "config/GMFE69/compartment.json": "4a503c9a78fd337a9a3815669a5feb3649585619f92cf4b0ec811408e6c10696",
     "config/GMFE69/compartment_bindtors.json": "951ce58858c5898cf6aad90776d271d5a2063b2eee5a31deded1d5c5804d456e",
     "config/GMFE69/compartment_bins.json": "4c750e628935453e0ab25cfb5e9f9f7241afe8249fc112ec59fe931c0d6cf7a8",
@@ -2261,7 +2261,7 @@
     "config/GMFE69/debug_prof_stats.json": "8dcd3d54a8afdfb1de007b790e6297ba0114db0f72803a6a900504683f086f17",
     "config/GMFE69/debug_prof_timers.json": "55be7658fe193c6c91eef7449b78be88ec1a421e62537cafe7f4df8d85f2aac1",
     "config/GMFE69/debugger.json": "b4812b86753209416cae697106b949c189ef985bbe634aca332ff006abd18fdb",
-    "config/GMFE69/decal.json": "3dccc79cba7e8908f86d40a762656f1904eb314d3bcaffbd5e7dfcfbe42aa0fd",
+    "config/GMFE69/decal.json": "288ed3352163b37fd27f6fb032618dc8d70350e6b657d2e23886ef6e46fc9207",
     "config/GMFE69/decal_dtor.json": "a454c6b4f69ad8d7b90dd660a437dd63dba158c6bb2328ad6cf5dbd6d6b165cc",
     "config/GMFE69/decal_initclass.json": "23494926356c2f036a09c4dcbb5113091a7d86daedd49d772f11b546616aae79",
     "config/GMFE69/decal_link.json": "6c44f9f728fb27e8eb84c4f62bc5d009c54dda14fc141dc97168cdff36637a64",
@@ -2353,7 +2353,7 @@
     "config/GMFE69/global_destructor_chain.json": "0fe0a3698440cd1f1bff61944bd62409272132d09eb6b5c82b9745b82413e6fa",
     "config/GMFE69/hearingvolume.json": "b4810e7e55e8b3ada0369970ad2643742c8ecbacfcdb30495240a5b3869cd95a",
     "config/GMFE69/hearingvolume_bullet.json": "fe66f7649067c88844e9d49ada347ce9818cd97f22ac2ef2a09b41c8ace9d321",
-    "config/GMFE69/hearingvolume_ctor.json": "941471a9ac18c38d0f43717b3e955a67234efd236dc11f95ac99b0aaaafa578a",
+    "config/GMFE69/hearingvolume_ctor.json": "bba5cdf2cf44a15bb762ffc21729b9b9ffbf42e7d15d2e55f055e9d6611d8b66",
     "config/GMFE69/hearingvolume_init.json": "ec3de2a1e6372373d289fd2a9b4f27f43cea6da77fa32929a50aa432cf52b8af",
     "config/GMFE69/hearingvolume_rows.json": "b5d842a31bc5a9a612c9dff0557bd27d482e7f26d1daa66bc7d9d4b935f319c8",
     "config/GMFE69/hierobject.json": "97c84bb7a2ef58333c47171b0d1f398ff7f354e472820d36102c939f48982ddc",
@@ -2391,12 +2391,12 @@
     "config/GMFE69/k_rem_pio2.json": "98e7c06d536b5d074d8001e65314d859cc90af96052300f3d60796c07912caec",
     "config/GMFE69/k_sin.json": "83303a92dec0945bbc9e8d29698030d3fed1d722b341f4dfd5c163705e01f806",
     "config/GMFE69/k_tan.json": "5e836f5272de8311719911c6d828e87588e253e3c00bf27901135926e0aedd42",
-    "config/GMFE69/light.json": "f7a3d309dc81cfa9672e639943725337b2bcc7428e3e53899a0540be223dc591",
+    "config/GMFE69/light.json": "b89cf2b07166c4c06f327ecb94177ac1c6ba6cdf42deb50242cb5528d497d0e7",
     "config/GMFE69/light_animmanager.json": "2e9a7c5f280a2aedd471b0153345f8557bfd91b140c72e7a119a8ecb8495774a",
-    "config/GMFE69/light_animmanager_dtor.json": "6b170da52539da07540d0c77b71341b45d5ca1c51074abee5ff3790895294a65",
+    "config/GMFE69/light_animmanager_dtor.json": "ec946f5a6cbd29eab1070aa0cc6980ae9d5fac55aee7595212d1450ecf14890d",
     "config/GMFE69/light_destroy.json": "8189e98d5c820d25d4a2567eaaac5f41797567f452a6a1cff0d062857922f4f2",
     "config/GMFE69/light_dtor.json": "6e3d3ba65b7543aaee56f8944a68f799bddbb2d8df500f59601c2fac7d479968",
-    "config/GMFE69/light_instanced_dtor.json": "960ee911950d8c846b9b641d00302051d9d3eaf0adeeca0446a5d663d3471c4b",
+    "config/GMFE69/light_instanced_dtor.json": "fa14517286fa8411d79381e7552dabbeb38b008ff09088c1376d57fb46b680f9",
     "config/GMFE69/light_propertyanim_dtor.json": "f5cd1857fa9e57dcb4ca6c631dae9f879cb945d58e767af679b686b752982bff",
     "config/GMFE69/light_propertyanim_update.json": "30a20b5281d3201eeff834c74d292d36c7791db815124f21e1ed31a6b0e13193",
     "config/GMFE69/light_rows.json": "370c7c783fe7ff47a8e7aec1b6fa5d7d038ef9a0e46d7eddee102ab49dfaca27",
@@ -2458,13 +2458,13 @@
     "config/GMFE69/nubinit.json": "31d1c39b2e8b521619a8057a399755f5ef941d3d9949999f6b99a43d81fe87a2",
     "config/GMFE69/objcreate.json": "0ae863c651c76e20a941fd2a07f1aa364640faebf031400724bc055cacb7af80",
     "config/GMFE69/objcreate_bsgoplayer.json": "8e87fc6148e0cebde99bcec67b7acd975130aa1447d751361eb850d3c7ad9875",
-    "config/GMFE69/objcreate_collvol.json": "726ef6945553b4228844202f9715eb34a0ce4d1e478efa9f615c77588b230281",
+    "config/GMFE69/objcreate_collvol.json": "90a0f1dd8a5e5af93ef84a64afb23e1deaab54a979296eab96b830fb6da8171d",
     "config/GMFE69/objcreate_create.json": "78e2e45e1384d07383fe5d951cf87350f1fda306b6410c29996374f4627185db",
     "config/GMFE69/objcreate_createplayer.json": "1921e7de09b5cc146cc52d4fff1f7800c84e36462b3b915b05b037bf91bb4901",
     "config/GMFE69/objcreate_destroy.json": "c902e63b2eded191888ca82d6d3f76f8d703627ced0902a291e6dd4ba7c8d773",
     "config/GMFE69/objcreate_dump.json": "7d5b8f37126976784d28facfab6738be8b14e79d2b2aad0f8ab51bf4a24377df",
     "config/GMFE69/objcreate_german.json": "194f99b21a742791cb3f1256a2d7e89b86ae3ab39e95ebdfc5b3ab717423202f",
-    "config/GMFE69/objcreate_nonvis.json": "ce2b2b3338fbd7448af238406eea6bf162cc73a176a1806c1cc4b89ebd37effe",
+    "config/GMFE69/objcreate_nonvis.json": "0508c58114af874f38f35a61e3a34b94db2f94567b651310b13c07adb650f82a",
     "config/GMFE69/objcreate_playerscript.json": "7f7c40f0d50a1ea691f3c15e5d6009c2a8c4179b9833d111f26fdcc64a606710",
     "config/GMFE69/objcreate_setscript_anim.json": "f63df65d6d1e6d00dda55458818e6dcd053a479d2aba7f6c53aa4835938280d5",
     "config/GMFE69/objcreate_setscript_static.json": "7aafc0bef6302ff62ece6f0b06f28b1abba89ce0bb1f8176a1ac066a9e1d0e7b",
@@ -2485,7 +2485,7 @@
     "config/GMFE69/particlesystem_create.json": "c7562db3bc2a492ff048418c94aca47fb87c0508f423589cb342c0f857846f30",
     "config/GMFE69/particlesystem_emit.json": "c678d3d94ac5940012aabc0770790bd3f5d82aa5dff03472ec3a49f663dbfafb",
     "config/GMFE69/particlesystem_link.json": "59dc27ed472101beb8241c398f4eb47fbc3c7236e8aaf764fceb2e014c559fc8",
-    "config/GMFE69/particlesystem_manager_dtor.json": "5c75ee97b9a5e48bc70f98dae709b0a63ee737b77c3bc264df051a23029a696f",
+    "config/GMFE69/particlesystem_manager_dtor.json": "53c9178243eb6d94e54537975198c4856855d4cbaf4e15b1d9f940856469eabc",
     "config/GMFE69/particlesystem_manager_init.json": "6854b9d1a4911f300f46a981eff9be9f7b846077cc67e2ed9c074b091feb5138",
     "config/GMFE69/particlesystem_moving.json": "a56e9d3365e82b24f34f37ec9a147d7f162a162a5510b953c1a87b6a356d4d8a",
     "config/GMFE69/particlesystem_property.json": "f480c26d2e5535433e7a1e8af521073341101133f75504526b37741786c737f0",
@@ -2525,7 +2525,7 @@
     "config/GMFE69/player_ctor.json": "460be5776b7a975b8ba07e6fd3410a02b5bb2bd48ba479e92851ff37735ca5da",
     "config/GMFE69/player_death.json": "345a6f76314776f3fb60493e93691b775e5919394fe5ada799cef0def9610cd7",
     "config/GMFE69/player_draw.json": "0efe7656d98a6ecf10f34000ac69dac3ec549bbadb998fa10e740b8c86bf57a1",
-    "config/GMFE69/player_dtor.json": "fc10b203c591c37df2f0876678b14805af3022bfc8e45226cfcf4cf0638edb6e",
+    "config/GMFE69/player_dtor.json": "2addf648ae929e538fe24d565505aec938d14b6b26e8b9df37fc121f3b9dc584",
     "config/GMFE69/player_fastvec.json": "153f1254b111c01809192da6859030d347549296ae4eeccb87c58108764a04fa",
     "config/GMFE69/player_fov.json": "9bc221128255f6256db8f6709ae39b849ca2d2b3b5a3de5601299ed560c949d1",
     "config/GMFE69/player_health.json": "d7d2fb5c1199ad365401780dcd68069909170d82c2b59e95aee3231b22c54993",
@@ -2562,15 +2562,15 @@
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
-    "config/GMFE69/propdat.json": "42690061304babe3ddf9cac7a75128facedc2faa0cdd76645649d9df6b16d8b8",
+    "config/GMFE69/propdat.json": "a8e7cb93b861253640dd9a0813519a89d0d1f9510542d02071b0456bc172b43b",
     "config/GMFE69/propdat_bsp.json": "2894bb7000fce34075bc0669b8434d96a7d4234f25f8e93c5380da79bb4c7dfe",
     "config/GMFE69/propdat_core.json": "bf4b83cd7e2a2cfc4011528ad3cba8edff73426050c3a7092aa31557072f394c",
     "config/GMFE69/propdat_endian_header.json": "fc5d8ac73779ac176f7f3b30624c834267f7809b3ffe197edba85577f73d9aef",
     "config/GMFE69/propdat_load.json": "4b5679e217fa109cf0b64443402cb5fa591728e8bb8d2b24076fc6ffdaae6fa2",
     "config/GMFE69/propdat_offsetptr.json": "0c16d9baa89a90905971cf9955e8c0f70058bdb5de40304bc152c2ed34603509",
-    "config/GMFE69/propdat_restart.json": "5358883626a28ecda617e618c382ff6f6010f9215b9c4dc683ea298c32c6ac5c",
-    "config/GMFE69/proxtrig_leafs.json": "25f18b1e31fefda65c11935178ba9d616a1234bfa0e274a749e8dfc441441abf",
-    "config/GMFE69/proxtrig_messages.json": "8151fc4cbb6f20a5bbfd0deba73eb90886e0804863b8f5bd266e181919bd0224",
+    "config/GMFE69/propdat_restart.json": "031f6d6c8c61810e6909e4df2b66f12ece840307f127b929c28ec0f546eb239c",
+    "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
+    "config/GMFE69/proxtrig_messages.json": "e4e35b1dc1036490748dde9ec79728fe300db87d8dc3735bec2fd697ba388166",
     "config/GMFE69/proxtrig_point.json": "08a77c56fc3b9d6474931aec5cb345283e54994635872e77321900bb06e179a3",
     "config/GMFE69/ptmf.json": "b261bfb2316a4aae28596c05a3ae448164b71e7fc35a597b7f09e1115a699973",
     "config/GMFE69/publisher.json": "a31413c1f5b6efb8f9357657c5bb00c10aec7b392999d148f0a0e8d69fac4639",
@@ -2652,7 +2652,7 @@
     "config/GMFE69/scene_cmppairs.json": "4368218c85f80a0d9c0b21191f5dcd91e83e361d1d6e3d1feea3e9a59f09d0c5",
     "config/GMFE69/scene_copy.json": "8a8a34a800716122c9ac865100e3f20b51e3e6eb2bd215759e5bdf30a889b984",
     "config/GMFE69/scene_dtor.json": "56332f8f230dd2d7abccaae34a5b9d43165b6cf8aa177c2e4514fb0bf11ab886",
-    "config/GMFE69/scene_fast.json": "38c477a2ed63892863451b0cdbb16553f40ccf026ce1a6f7e5605a48e18607cc",
+    "config/GMFE69/scene_fast.json": "a92f6e28400085419674bb1e022558a8a13958893590f97e22c67774f93cb348",
     "config/GMFE69/scene_fastvec_commands.json": "fb1dc632c48d0db6014304f1ae3dfc8d5eff40e4b74a868a6e766ecb8e384a8d",
     "config/GMFE69/scene_fastvec_node.json": "607d260638f87d0e03f12d14e38ad81150c296114725f7f2bcaad4d79c08c50f",
     "config/GMFE69/scene_fastvec_pairs.json": "e569c1fa2274c1a33014f7f97cc7cd3990b961f31e4d13ece8052c720ea968af",
@@ -2940,7 +2940,7 @@
     "config/GMFE69/weaponfactory_props.json": "b514ffe4e70691a036b9c1d3bf9b27465153ea78b5a83d08a37ce6dc98380203",
     "config/GMFE69/world_object.json": "39e2976cde987ce2b62cf81df6e3fc429a97613aeaa2f5f291b2560ff7ea13e4",
     "config/GMFE69/world_object_draw.json": "15115a01fa0b7e788d1465730d30fc0a38139c4ac2bd072165cb9ab2d7a0a38b",
-    "config/GMFE69/world_object_dtor.json": "be19570f814397f4583dfa363b2da4843312b071caa6c09ced524f0b6f77a092",
+    "config/GMFE69/world_object_dtor.json": "3be00e74eb19b153675e6fe9e1dccb2c0f24f32f47f6559c090a53a158f9aa3d",
     "config/GMFE69/world_object_explosion.json": "1a3304a8876e295655e4a9a423ec5550c00ad7c8a5295c48d53aeb5b14912dd2",
     "config/GMFE69/world_object_list.json": "0085295bc95dbd1788b3e08bfdfcf08220f4f3d029342f036c9fb0a4c5261373",
     "config/GMFE69/world_object_list_reserve.json": "3ffc98e873e46575a9271c050b31570d27771b9d24887580d5dbf06ca326d087",
@@ -10208,10 +10208,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "7aeeb155cc833f02717f52b9227397b2ab895579329c83a4cbe9d6829192b63e",
-      "linked_sha256": "10673a108a2b89dfbf83e46740cc25ee609f74912031ad01a13466aac04be886"
+      "object_sha256": "d5745004443f185747187edeabd19b394eb268116ff8a29611f0777b590444f0",
+      "linked_sha256": "b3f3162dd3fde4c983944a93b5c26deb89ef9deeec29a55524225eeffc5942a1"
     },
     {
       "id": "rcmp_mpc_codec_chunk_types",
@@ -17810,10 +17810,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "302c690af91c9fbf20ccb67254aaec202de8173902c649691493fcc507dccd4a",
-      "linked_sha256": "deec008b195fe59766335ef29cb583a0d61c2bb3aa737a41e944693cab0be8e2"
+      "object_sha256": "850b7632611a72d177c1e8d80ed6ab3711d04d7741321f274611ad160b02016c",
+      "linked_sha256": "38f958dcf8a029dbe9e4e726d8621d537009c18a0910669f9e39ff96bd0e129f"
     },
     {
       "id": "bsschedule",
@@ -23795,10 +23795,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "6466b43e3a06eaeed531c8516a9e425144f2182b51a69d610403096c0c1446cb",
-      "linked_sha256": "1c2ef72a3d4717e52a97d657511f2d594bd9b6b5ec68b025a76727ac45815676"
+      "object_sha256": "cb08a0ae81775a36cb38f816a5053598dee0cb545059a702224260f7d842fbfe",
+      "linked_sha256": "004594686a97152e1ff82afd5214e972b44665c19edafee4a6945b085827a265"
     },
     {
       "id": "light_rows",
@@ -25160,10 +25160,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "f59cdee4e66c7f9e1b1eaa183140c60cf780ca6f36c80a0ebae2d02c9d39271a",
-      "linked_sha256": "c83ac5e588c33c5618922cb9e6b84ddac4da386e54ec079ca02c05858190bdcb"
+      "object_sha256": "13bd602add23a704447c295f65f907392dae82456f3024d173c10c2bd6fab4bb",
+      "linked_sha256": "bd489df138f486c0b52e353023676a1f2cb930e06466e941ca10a3344f3d004e"
     },
     {
       "id": "bsbifunc_cook",
@@ -25199,10 +25199,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8cabf1cf122e789418ffde9dfbc029d23b7be6458ddab492a7d87aedc6b3d83b",
-      "linked_sha256": "e8c90ec636f97ca12b9675b071194298d85137a4eb2063a9d322d785c249d2c8"
+      "object_sha256": "daaa65755414f11d7d08a67f7f86204396dcea70f46349bf53751d7208a5a8aa",
+      "linked_sha256": "257d45279999a6a84b53ba5d266af9a508191eea8733baf4c2d124186cb3cd60"
     },
     {
       "id": "bsbifunc_holdtime",
@@ -25238,10 +25238,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "3d47df76f9937031c7dc06399cf197a1d100fb829f94446d2b6d6e41ec1808db",
-      "linked_sha256": "df25e0e99edc6b43958db1578aa11881cb588639e0d6cf9ddc2a55d60ab3585f"
+      "object_sha256": "a1c50728dde52321cc423ae81f9862a17c3e6d9d1811997b2ecdf5a9b0a4d5b7",
+      "linked_sha256": "328027e9909931332446c77053bd7f6b1c13798be3cf9e4b121ff3a1f416473d"
     },
     {
       "id": "bsbifunc_ai",
@@ -25355,10 +25355,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "2822b598101507ab968fba3fbaa57f0f11e04d02df76374adfff7452ec2f21e8",
-      "linked_sha256": "c564b9433860e0a55b7f1c1795e6c266d726329d7e8e87aba2c371102f77900c"
+      "object_sha256": "9d79677fb68c04c14a001b8e0a8fa11e0c0c6cbdd2c954a33287761bad280250",
+      "linked_sha256": "f64f00885dc1cc03264ef3e7d2dc936684257eab59913f9008ac9f18aa6a8ec0"
     },
     {
       "id": "bsbifunc_melee",
@@ -25394,10 +25394,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "cb4d030fd9c588144632d2be429e4d4ec77dea7216af9fa698b5018d8fc106a7",
-      "linked_sha256": "683c62f75720fa105e041cbe60ba82463e48242d40b361b1b638980484d40211"
+      "object_sha256": "19d29a8401fc62f66bc4932beeb36fc782eec0e32dd8340ec08ceb6ed617769d",
+      "linked_sha256": "578977d26e3e66bc33b2825a054ed2a93c6d735fb28e10d1fc557847544bcd5b"
     },
     {
       "id": "bsbifunc_events",
@@ -25433,10 +25433,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "f899cce247672a7716b08a93f862b51aa62155f36e5b68a473bcee92545cf6eb",
-      "linked_sha256": "f0f6d3b715f06a903e905538edccb9e79bd34696331f5defdd6d08418a85e61b"
+      "object_sha256": "52f44b2ce2c371e0ed8b4d5d20468411ce76d2137294b9da71be8495ff811bc6",
+      "linked_sha256": "f5c3afd70f74944c18fc8cfa77e8345926f603048578727d08fc3005b6c72f6a"
     },
     {
       "id": "bsbifunc_cover",
@@ -25589,10 +25589,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "03d37be79d5e355e4bb732f9e7829876ad9fa4b0cbeba9f2e27335e65114cf7f",
-      "linked_sha256": "1edc22794c9eb598fc54c560aaff145f3210bd8e6491a98a0b7b0150cbb97b92"
+      "object_sha256": "7d456718f2b1307915ef508875596b833e203abb1d7f8cd620d2d244710af667",
+      "linked_sha256": "22503c55d9191085a3348a31a768be423a84b13867cb8e061de5024b3a48ff90"
     },
     {
       "id": "bsbifunc_level",
@@ -25823,10 +25823,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "7b6885409a6e1140b18498fe439ca04955fe9484223e13515e03aec5cedf308b",
-      "linked_sha256": "dc68de7111ae055532ae5a50b0e150806b3c15a854cda012b5931fcf88b8436b"
+      "object_sha256": "b3c8f7523c76f8e31c2a9fd777fa04554fa75d983b41bfb8653940c37abe8dd7",
+      "linked_sha256": "b3cee1d20ac3e4655d8c91bd1e6a0ab809ef6c60b435c10dfd9c016fd13bf9cb"
     },
     {
       "id": "bsbifunc_collision",
@@ -25940,10 +25940,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8f119150b871d4eecc29b0345e0b3d17f10897a2710a0a09f79d62925386dd9c",
-      "linked_sha256": "b2a009331f66c9697295d6813e04e6ec204db07d6ffdacbc8bd05eabbb5ce48d"
+      "object_sha256": "40965a0f86aadbbfea249fe369d9a9e1e0a2f50f0e91f1d9dd544ca75de068c5",
+      "linked_sha256": "0dd1044b9b37a770b52df5ad430db1c59b1c323e1e30ac7e833d04b8279062bd"
     },
     {
       "id": "bsbifunc_respawn",
@@ -25979,10 +25979,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "07005ac6fe29604be0ac025d50c2cf6fa104ae9548ee82d899631b1fccb9900a",
-      "linked_sha256": "d2011f37fca906c7da3a4f42d6695de2afaea1a094c94e228b1152b0e8d34da1"
+      "object_sha256": "5c028cda9e6885d24c319e85fc322f9bef5bbeeb2c6482fbad1b82c3f626c4d4",
+      "linked_sha256": "36f7272568a20f36a1c8006066dbf7ac2d4597c5ceb90c0d5d20f5a706db5baf"
     },
     {
       "id": "bsbifunc_mpplayer",
@@ -26018,10 +26018,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "54f8279c324f9959b8413c4c72bb72458b85a788d4743da6398f49e7a36cc8f8",
-      "linked_sha256": "26aa3bd147b6fd96edfe84374f7d130699eed3ea0a4d490b4964221a574f6797"
+      "object_sha256": "3977830dfe89caab71bbb9e162d942d7d464d352ede76938dce294c6a57c3f92",
+      "linked_sha256": "fafb1956d98216e1cef4cf406d3c3d9b264662dbfb8a94ce0def6453328115e8"
     },
     {
       "id": "bsbifunc_choosetarget",
@@ -26135,10 +26135,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "fbf7b9c22d53ea91c18155c7f1376368003db4f27ea15ad56a89494c4b532981",
-      "linked_sha256": "214acf2c58fad5fb27f8a742dc30e625ac9c40e87563aca2bd44f47017ad6e12"
+      "object_sha256": "77336733d6920ef52b02f35696c2eb1b9b435ef68e7a253f3d550b45f3af06e2",
+      "linked_sha256": "f7814abfe1aa56278b16852b93c0d4dca0a92143d8e085c5f25895b9b0ff52d8"
     },
     {
       "id": "bsbifunc_playercoll",
@@ -26252,10 +26252,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a9c8f498f31b5c12d0f31717428b2992d0a019a8f95451457d2304a1baa87651",
-      "linked_sha256": "218fa5b30c7ca3f7d289e4597054e5730c3517dbc995583f41ceb19cd4d61f30"
+      "object_sha256": "b115adfe0e7b887cd5ab473ae8d8db1b3deeba1c0004528e6069e634d6ab8c10",
+      "linked_sha256": "ede27a846d471ebc4d2d07fe9acb895629e8aac56a34ab804f52bf7548365d75"
     },
     {
       "id": "bsbifunc_shake",
@@ -26291,10 +26291,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "5d0479de7ff061a5dc03dd2d2b97d314fa85554f72179cd4c39a34ab8d1171fb",
-      "linked_sha256": "7aeef4048b4b72f877c3a3d62cc9c2127abb71da12aefb78bc209d1769045d44"
+      "object_sha256": "6c6a95d72557fa63399cda02e80770adf97271b86c0e8b6de76d2565fa5e1ed3",
+      "linked_sha256": "c39a49825b9f19bf15bb4e2e5e76c842f1442833637351670a2480bc08a86cf5"
     },
     {
       "id": "bsbifunc_particle",
@@ -26447,10 +26447,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "ceb2887679a806afb56be73545da737ab951ca9f80c8ee0f03f70376d36e0373",
-      "linked_sha256": "cc8675899d4b2658b01b332de894c88f629635895b0d2218c30f7a15c21e2761"
+      "object_sha256": "98398329a6555ca5e2463ac7d27253dc8b71c2a14dea6f994b88c8aadcec46ca",
+      "linked_sha256": "d7d3e47fa34cf5ac437a83232099f67b514909bd4a273c6e65c2f3d90382c5c3"
     },
     {
       "id": "bsbifunc_ammo",
@@ -26486,10 +26486,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "7954593504574e49c64d9eaa7467c91807d8a44cdf8cc48a3f4563779216215f",
-      "linked_sha256": "900783bd50e7308097c38db567bc8d1c5ec0b5be0630d6a92b2d8f6ca147fde3"
+      "object_sha256": "7d51ab68b147ce725cb6dda15ec0137ccf4179c2019dfbef1329c256f2d94a0b",
+      "linked_sha256": "f052c01b0443a1b04cdba9300fff892a4c0d6585deda75610081c8afeeb7c0f6"
     },
     {
       "id": "bsbifunc_explosion",
@@ -26564,10 +26564,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "64446ff8abdd2fc9744c58081756f477f3d5848933bd20e0bfdcb61ca8994274",
-      "linked_sha256": "9777e96d6a3f01aff839331050391904e1757cef3f628f4d7b022b54166f2ce4"
+      "object_sha256": "ae3b4773867511c2e4c90e80d7b6e08b43db118e85565f0ca2313e830be02051",
+      "linked_sha256": "96ce909b051f56960547ae587c9cfe2d2a4519dcc286d4bfdeee26613a074040"
     },
     {
       "id": "bsbifunc_mountedmg",
@@ -26759,10 +26759,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "5cbd2f4618d50c7ffc817be3fefa4ad73a3958cbeb9f6db17ef3b5d4eda4b6d0",
-      "linked_sha256": "07f11a88b4d58fee3e6ba7825374df793a35c2d4b16e0c3aebdc3729de6c4e6b"
+      "object_sha256": "894c8329d00311cc1ab4d29de15515560e8530f05e45d8a35a6d434d4860e558",
+      "linked_sha256": "bc51c1626179d5cf30eacb9cbe124281f8a1f451935f9ba25a75207bd350e60f"
     },
     {
       "id": "bsbifunc_dump",
@@ -26876,10 +26876,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "2f40ffcf778909bddda70cb64a437581785dd749d60ed955ad6322d492ff86c8",
-      "linked_sha256": "0c140bdda9c0b8c1f73f7382c0aee081286443fafb8b9ccccf33378e71d3f1de"
+      "object_sha256": "72977f7d65af1058fa0393040c4ff0e1e719672d45b4c645705ba7785b77bda1",
+      "linked_sha256": "6f1f88e0cf55e442f6afb83fdf480177318a8d19fdca6e52f68721142de7d4e8"
     },
     {
       "id": "bsbifunc_mood",
@@ -26915,10 +26915,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "c13b934e11e1f9ab38c49bb33eedbea7a073edc2741c5298c38bff84ab08af61",
-      "linked_sha256": "e2bcaad819a212057900c6b09416d10c5de0c1b5c7163562155f74c26e72ac54"
+      "object_sha256": "ec04b4b826b361de7cf216a3bc3e992ff2dd207f375b694d1a36c2b376d87a98",
+      "linked_sha256": "ea3c367d124830c1da2742f3bb422a8e74a21aaf61f31f345c2ea5ddce07df5a"
     },
     {
       "id": "bsbifunc_corpse",
@@ -27149,10 +27149,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "0a2164eb77962152f9b4f8ff19563db867f2f9acbb53ea7658b3b75aba53270a",
-      "linked_sha256": "0089658100873148eff0a0c3e0c8057927c1aabc99ed9a20af0454f4144aab13"
+      "object_sha256": "502e6f31ae4eb6ba7c7a46590890281a0845ecab9cec40d88a3aa1a001e9a3ea",
+      "linked_sha256": "8ee369e9d1a94af9b3430825cdd3d5c5c7232a9d9d5cba12a47aae880b4efb59"
     },
     {
       "id": "bsbifunc_hierfire",
@@ -27188,10 +27188,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "89a98c732275dc6eb7d094e3063223f2881cc4913db16026abb2d61d4a9179fa",
-      "linked_sha256": "fb9b432f33791686af435394a5fc318840aae8b3f1452383cd3a10ade64f198d"
+      "object_sha256": "944e891456acbeaf76fbabeae1137285d9df5e1f7dc8cdc7688f56ae60820860",
+      "linked_sha256": "48cc91877e7ce503cdc8b42a5266c382971107e57d3c2d9f251ae2860f2f6383"
     },
     {
       "id": "bsbifunc_hiermap",
@@ -27266,10 +27266,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a51d77d8a514b4024f949b37718ce65b3c842583ae7b4b013f4b4fa523781712",
-      "linked_sha256": "93168ef53182dc0c557601fc0b09914eab57dbb35f8e2b57b738716fcbbe3353"
+      "object_sha256": "f328ca65860d65749c901ac352983b635afb94ac66c8d75c305534abed79bbe2",
+      "linked_sha256": "5963a99cb1e3900966691a88080ef627d4b3ff2edce300ae5772458766bd3975"
     },
     {
       "id": "bsbifunc_endsound",
@@ -27344,10 +27344,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "857e86682a7a1bfad7221c62bced1f423f477726811447f10aef2290454515c3",
-      "linked_sha256": "8b9bbbe6806ed81679daee4d288f86162643fc6e5fe3d46be71d12b20795a742"
+      "object_sha256": "1088ac9a490c3eb8f7d5a0df0ecb0fa4f96f7ebf20cfc5a0af05144b5ed13525",
+      "linked_sha256": "ce44f4a27457b716212a5477d82dc2bf79e5f13fb475955db846f72bbba0a4fa"
     },
     {
       "id": "bsbifunc_soundinfo",
@@ -27383,10 +27383,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "d1ccd00f36b74c8be3b9a663fbca482e50a4e2f96aa875d1a1779a890b27695e",
-      "linked_sha256": "66412a156a791674049932142e9bce2363e045df0f5b31ffda2f3662f3dc53d9"
+      "object_sha256": "c297a91db91576d60a1707f5a881a936e895744f8675646abe82659fc49050f2",
+      "linked_sha256": "234d5589a2e9287ba38507ee21dc3b4ca0bfdaba894570d16d67b012e297e077"
     },
     {
       "id": "bsbifunc_fog",
@@ -27422,10 +27422,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "eaee2d3178bb997f00ab648595be812701c4155d5bef79a62e7bd3ddf8af1153",
-      "linked_sha256": "63b2afbcaca41b04038d1071c9ad0a370f365c8779c4d51d86efebc957266b8a"
+      "object_sha256": "00e944f602dd5e577de4d88c6311e9672a7b11e3793316a1c23fd49a6a3ed20a",
+      "linked_sha256": "1bb6ef40331a638345e667e975f6f78151878d3a75b330ccbec4498476fff1c5"
     },
     {
       "id": "bsbifunc_animevent",
@@ -27578,10 +27578,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "84dbcfd8854d9beb9c0ebd5b36203c921635973bf6f5db6facfae2df3e171ac5",
-      "linked_sha256": "db595cfee4cac251e69424eecd465550598e89878ffa6a3d8b23dabeb5d6e418"
+      "object_sha256": "945a3cb67b51aaadd1fb03da2323ff940cb15f36d6a40be6b6189e338c10b299",
+      "linked_sha256": "1d68f7f4bf6a220558d9c0e6819ce55291356d991c1f73ec0896fa9a8dce9832"
     },
     {
       "id": "bsbifunc_aemsvalues",
@@ -34495,10 +34495,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e7d32fd9ff663596ff50d77013cd4b9c662e72ad39b4ac84e11484e0b2193447",
-      "linked_sha256": "3bd6787aca4839327a58b6bdc9a39a1c9e5d271d691f938562d81c590f6e971e"
+      "object_sha256": "2b66ce94cad815e44b8989325388b18525e97a5eb1bcdf86c92afa5c06931462",
+      "linked_sha256": "f3469a77f822f599a36b68037342afb245563a2f3c4389fe4c488bbcf309e903"
     },
     {
       "id": "matrix",
@@ -34831,8 +34831,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "2546ab857d83ee8c7bef12de208971cf85ddea402257978ba74770f120dd20af",
-      "linked_sha256": "c446ad76bb1b00b2142930c056dfc7fdca088d6317dadbc1cee14bbf6fe037c9"
+      "object_sha256": "31d2e6aded452a40cdbf1a7dba3cc1360298ec66f1504a0db7badf4813da84a4",
+      "linked_sha256": "fa114acca41e6268fbc91a3033873315243d8c06f5b8a8a1b31d8a34e4135f4e"
     },
     {
       "id": "compartment_bindtors",
@@ -36079,8 +36079,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "95cc4a7d0aa9b4f6448c7e023dc87c115374598e17add61e3f1a6afa1cae3270",
-      "linked_sha256": "4920542bf7dd47cc8b2b5b97b3b8c15aec6ba87446f473f2c9eba1106c0180f7"
+      "object_sha256": "bcfe7bb33040110e97c7373750e31510b68812fb8e004903df03690911e07d57",
+      "linked_sha256": "34bcfbfff1015de0c0a9ef944111dd0e9ebc0e72221151172ae9c38b6c01537e"
     },
     {
       "id": "Soldier_object_ctor",
@@ -36196,8 +36196,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8c2c64d8f5ffe96bc83d44656bf6a7fbfabf01a1ecb96dbbc5b9845f39c2a3aa",
-      "linked_sha256": "c9fb659939f2393a8806d8c4694e09f9024bd9395b9336a175bc04d781713d61"
+      "object_sha256": "2bcdd2340287b4ba8eff86ae892406010f865ac7894a61920ceaec98980c69d1",
+      "linked_sha256": "6734e7504c75ce3cdbae138a69b03a2b1cc6f20587081f6336a500fb127f44ed"
     },
     {
       "id": "anim_obj_ctor",
@@ -36274,8 +36274,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "54bccb71fde5f83ba4a55223b3519d98893795e3bdaad8142c296e0403332f34",
-      "linked_sha256": "169e8cf88cec02028f6b53a8b44b120e1c69839dbfe99ce4877e573be78c1baf"
+      "object_sha256": "5207a4a6b8f2a8a10dbb3befd910ebee6436b463818416e2a9214bb02293071f",
+      "linked_sha256": "b563b74acb2979278d836d837474a4038cd212de3e5747f63d4ff033f7d7f553"
     },
     {
       "id": "light_dtor",
@@ -36469,8 +36469,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "952c07822a451a64e25beac0bdcc645025dd43af3b23357e716054f24317eea6",
-      "linked_sha256": "c7742663abc3c7d42a0a7e7a30850a76ccb32f905933dc376b0e7a39b3ea5a2c"
+      "object_sha256": "5845e309a3da1c2d12c8f59f278ffead51aeb0f6816c77ceaf360934cb76e94a",
+      "linked_sha256": "aeaf26d63a02de0e3f350a61452ac84a5a649383e6f137a89a2459d30b969f8d"
     },
     {
       "id": "light_propertyanim_dtor",
@@ -36547,8 +36547,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "53d26138a6f8ada93bceca480a9c16eba16de15b1a107cb1db4e218b50d0020a",
-      "linked_sha256": "82868335d597045d7f2bcf0127559fb0066aefdc82bb18b684f22da758295f06"
+      "object_sha256": "7140ff8c87fe95161b6119ca41caf6d149ef4fb2a025761d922eb55f0f6dca7d",
+      "linked_sha256": "c1847db067cab6e55737129893f891a83aaaec3647e50457c5ec3b3217e41212"
     },
     {
       "id": "font_dtor",
@@ -36664,8 +36664,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a466e9d7010b2aeed62e4bd35b5044cfe7fd33aa4632f686a3db0dc4018e9b3d",
-      "linked_sha256": "f000d3eab22d997ad4fac58cc1a66972bfcff1ba7a09bcd57cd5573d65a52bba"
+      "object_sha256": "fdb6fd65b7bbf148693ee4a42c9c7670f495ba07d79d94961962275a34430193",
+      "linked_sha256": "d9fa143f6082bb6d6865c73ff730c285a65ac0418a956313cbc05f53dc789901"
     },
     {
       "id": "particlesystem_manager_dtor",
@@ -36703,8 +36703,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e2140b79ce2e617386b0a554f19503684e17c99add5525e088395ebff35c59ba",
-      "linked_sha256": "21236286964b027d30dd55c6082c76a885129b1a8cf13ca0cbfcaa780afdd3c6"
+      "object_sha256": "1913ee613b5224df28ac8face63f2ba6423a473eb82db8ed7cbdb58ac909440d",
+      "linked_sha256": "b3ff53773f93c034be985e0ea58f61e0f7c77a969201c315eb62efc50af5482b"
     },
     {
       "id": "world_volume_dtor",
@@ -36781,8 +36781,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "24bb45980fce80db9db8d3b2d810b8ca7ede4f13ffd0f0df292489c605655252",
-      "linked_sha256": "542fdef4841dd7787b5cefb640c99f1a8f91aaff5d9a004508af9888d1d2d932"
+      "object_sha256": "4b6057a2f925dc9faf872dc8e2fe608c74a2ab3540924a8411471c1efc2c63d6",
+      "linked_sha256": "193049730a08deb75b636f515c5c5d9e77aeff952b5656285aab3d230a150379"
     },
     {
       "id": "weapon_ctor",
@@ -37130,10 +37130,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "5a88ec02003d221747323766172798f5cd0df5d8986914a87b10734b717a5029",
-      "linked_sha256": "b3a4f5910620c41fe80d069c8b92386bd16a595600cc1ac000503ebe02ac6d34"
+      "object_sha256": "7ba683dfbc654291b07674fb2eca660135d02d8ff4a6639f5761381bcb76d983",
+      "linked_sha256": "d2b0ccbbee50e94a0c9c4e95ae981f81e3a3287da0a19e8753de33c2dc2aa8cb"
     },
     {
       "id": "world_volume_edit",
@@ -38575,8 +38575,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "9d9ab4011d3250373d06a8798da9309583e81a50a91eba473f410d046c77a9ae",
-      "linked_sha256": "ff6df092fd86faaf31af2684c6404f17ebcb87c358e7bdf12a65c3e80c0187d3"
+      "object_sha256": "87753c18cbf1567c7ced883f0a38d632201bec091cb28869c73931867694a07b",
+      "linked_sha256": "ac51fbe40a204a40b80b575f1b95fc93db3d2eebfca326deded10d64032b76ba"
     },
     {
       "id": "bsbifunc",
@@ -39004,8 +39004,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "10d9d1f440df215af9b9e406de200cb2d5464d78471de72cc907bdaae74c4ae3",
-      "linked_sha256": "a11ad3eb19d2d2f1549bb6f086f26d0cee1139a6fa1a438d0757eb5f12560504"
+      "object_sha256": "1b83837322c08be36dbab3505292a91d0c92fe8067a8f11cafb66956e511b540",
+      "linked_sha256": "5c73e795d3ff5474cb4f231ca6265ab8870692190a20bf512a4a680beb7de4c1"
     },
     {
       "id": "animskinned",
@@ -42523,10 +42523,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8eee4df5d8b01c646df7f8ad8c000eca285ca02b93e211aa80cf877af2b09a1c",
-      "linked_sha256": "659487e2083dae67763ee2b6179fd37aa9ff3e81465e09cad456b30053b0999b"
+      "object_sha256": "bbfb4d1410e7243f2e7ec5ba3063fd7020f6884b6cefe42f13a7860e91f21479",
+      "linked_sha256": "d6ad2c83f89181be4dc3a5ad07a08d30105c4ee77416ea0bbf900b6b63f4aec8"
     },
     {
       "id": "location_collision",
@@ -44682,10 +44682,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "6ae47080be298542f920a26258bfa1850a3611c7d0e86c30dd066cdcfc186f82",
-      "linked_sha256": "dc2fc832de71ad1c10ba89053f9ded73f239426cdac1d346a926d45237448fc9"
+      "object_sha256": "4f5e1ccb9f5d678b24217cb97e871d53543cb95d63f90d093a9b9aa2fbc5fd65",
+      "linked_sha256": "31a846a8ee4df9f3cf0c222dd23815db7b989501afd26ae0814810b234142005"
     },
     {
       "id": "AIObject_visionseek",
@@ -46099,10 +46099,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "0c500d68f0892ea6484deb1b9f37817fdd47b94cc2b74b9b3956ff13e007a8b1",
-      "linked_sha256": "9a09e292b8c50e6e84b7de01502b6007959425e0cc212f4ea4ef5cb3c7629dc7"
+      "object_sha256": "777d2c240f8498187487d5cef2c2a1f14ebe4bc879efd2cab5a3b1b24a4ae723",
+      "linked_sha256": "e99b0c51610a8bf0222c976f8cb426598e9b6d9fc9c54757d04635be7331d007"
     },
     {
       "id": "animmot_rot",
@@ -49533,8 +49533,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "490c45580274a6353520c993af7eb06f73a5f50d2f7a5b414cd353d8b3a9d015",
-      "linked_sha256": "7274eb3895478631f80e89cc6b7ab67cb668fdf0e71c88c8fc8db3774a022dad"
+      "object_sha256": "f2a8886a74ca71bfb159e9d7a15c647e30ee5dc29d3d17535515df823119f106",
+      "linked_sha256": "112f826c4948b9a254097fb8c827816c72af1277b81d0a32fac6073d592bbab8"
     },
     {
       "id": "objcreate_createplayer",
@@ -52591,10 +52591,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a15e0861716378293f3c48c6a90c2398616db81e40646261d790072f899c9f76",
-      "linked_sha256": "00bafe32a3388f8b7da1d62b5679b683094015c60abde5ae4cf8365a5bab0862"
+      "object_sha256": "c6c05f0a70ae27046f57b48ecce6fd3e8c0f3c889eaaed2f90883dd3b1d182e1",
+      "linked_sha256": "152d7b6b714dc209d77224fbfbdccf94439370cbe435813172c3abd78d29df92"
     },
     {
       "id": "getpic_head",
@@ -53825,8 +53825,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "88ac610a098471f9ebace5cef683e417929c28848fb5caeea3c1befaccf93bbc",
-      "linked_sha256": "47a9eb79a91ddaee67b9abdd4b1f04c93ee26c6c0c582782ea67b9ab26db7822"
+      "object_sha256": "35a57ddf27e35fd379779689509ba6cc5fc5ea8a9ba43dc40ebd530f873f3272",
+      "linked_sha256": "82d119a3a546b9bfa176735b9883885b6a3077c4411fdd83ee89afe6075f7414"
     },
     {
       "id": "objcreate_nonvis",
@@ -53864,8 +53864,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "0c9c721b45f314b69fd5887508ea3a3650fd471624051448d368b6b0edb1c1eb",
-      "linked_sha256": "57e2fd2573c4491cd1ae90173773d375f40b4c70c7d1bd56cb417fee97b684bf"
+      "object_sha256": "12c07e95a38100596e17ba51b7e03d94cca9d5ef51b7da4a3241aef1edf1b3f1",
+      "linked_sha256": "4c20b995d26af1b987fbaad96201f4e1a72e58d6807147fb0a2cd68f3cc5afba"
     },
     {
       "id": "bsbifunc_promptinteger",
@@ -54020,8 +54020,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "7c58201ca6b50cc2f0e96e8c4178b18455a6c50b7a3244ac5e4a41055cc662eb",
-      "linked_sha256": "a1d8089f1ae04f7db86c61bfbae5a96af699bd8f94e50c9325741bd8237065b3"
+      "object_sha256": "16d2251ecaab370184ccf7c1e0d1478db352cf85990febc924f0a4ab7baa37ff",
+      "linked_sha256": "01607ca656c8ce813211fee4937425c0cd0434560ad96cd4340d3838ed62c9c4"
     },
     {
       "id": "objcreate_german",
@@ -54135,10 +54135,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a011f77332ea49d324d2b5411bebda52925c94b999224647f809956a3becd9ce",
-      "linked_sha256": "54a0e119857616efb4c4fd019e61c3173e9fe486f7aa8cb95e1894a9a04bca27"
+      "object_sha256": "536c6db910f1c25de1453088109a54015d4fa91188ad79f36e164d1eb431b928",
+      "linked_sha256": "718c0af7a3447b4af79301f4a3875048d2b5719cd79093aeae3b83bbae9442e1"
     },
     {
       "id": "thrown_obj_init",

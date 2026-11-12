@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -67,6 +67,7 @@
   ],
   "externals": {
     "Acquire__12CWorldObjectFRCQ212CWorldObject11SAcquireSetb": "0x800b737c",
+    "AsMovingNode__10ISceneNodeFv": "0x8001b060",
     "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv": "0x80039f10",
     "SetClimbingState__13CPlayerObjectFb": "0x8009ea14",
     "g_pLightVolumes": "0x8034e8cc",
@@ -93,5 +94,8 @@
       "size": 16,
       "address": "0x8016f448"
     }
+  ],
+  "weak_duplicates": [
+    "AsMovingNode__10ISceneNodeFv"
   ]
 }

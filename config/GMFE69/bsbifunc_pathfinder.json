@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -84,6 +84,7 @@
     "AEMS_SetObject__FP14CSoldierObject": "0x800ebff4",
     "AEMS_UpdateEvent__FPvi": "0x800ec0b4",
     "AddSound__13SoundScheduleFQ213SoundSchedule24ESoundScheduleObjectTypeP10ISceneNodeP8CVector3PviiiiiP8BSObject12EBSEventEnumfbi": "0x80047458",
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
     "GetAEMSStructureValues__FiPiPiPiPi": "0x8001e288",
     "MUSIC_SendEvent__Fi": "0x800ea528",
     "MUSIC_SetLevel__Fi": "0x800ea5b4",
@@ -117,5 +118,8 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "AsSoldierObject__10ISceneNodeFv"
   ]
 }
