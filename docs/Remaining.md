@@ -171,7 +171,9 @@ the maintainer has decided which forms are acceptable.
     Scale, Add, Dot, ...) are preferred wherever the original's symbols give one.
   - Redundant tests, redundant zeroing and dead `else` code when the original's instructions
     show them (the compiler cannot create them).
-  - Constant initialisation chains (`a = b = c = K` with a literal K).
+  - Constant initialisation chains (`a = b = c = K` with a literal K), and a store chain into a
+    member plus a local the code goes on using (`extra = m_messages[i].m_extra = entry[0];`,
+    PopUpMessageHandler ctor, 78daa000). Copy chains that only steer registers stay declined.
   - A member `operator[]` used once to keep a local in memory, and an inferred 3x3 matrix view.
   - Inline helpers whose boundaries are read from the original's stack-slot groups, forwarding
     overloads, and the reference-returning `dwi::min`/`dwi::max`.
