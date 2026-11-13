@@ -35,25 +35,35 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x8006a620",
-      "size": 252,
+      "size": 7172,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b5e0",
-      "size": 40,
-      "type": 1
+      "size": 64,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 72
     },
     {
       "name": "extabindex",
       "address": "0x800127d0",
-      "size": 60,
+      "size": 72,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 84
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fd60",
+      "size": 32,
       "type": 1
     }
   ],
@@ -93,14 +103,29 @@
       "address": "0x8006a680",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib",
+      "address": "0x8006a71c",
+      "size": 6920,
+      "binding": 1
     }
   ],
   "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "DotDotDot__8CVector3FRC8CVector3RC8CVector3RC8CVector3RC8CVector3": "0x8006c340",
+    "GetNearestPoint__12CCDBTriangleCF8CVector3PfPf": "0x8006c800",
+    "GetSquaredDistanceBetweenSegments__6CLine3CFRC6CLine3RfRfPf": "0x80092344",
+    "Length__8CVector3CFv": "0x8006c3a4",
+    "Normalize__8CVector3Fv": "0x8006c224",
+    "SetSD__6CLine3F8CVector38CVector3": "0x8006c2e0",
     "TestCollision__7CVolBoxCF8CVector3R10CCollisionb": "0x800c271c",
     "TestCollision__7CVolBoxCFRC10CCDBObjectR10CCollisionb": "0x800c2898",
     "TestCollision__7CVolBoxCFRC7CVolBoxR10CCollisionb": "0x800c37d0",
     "TestCollision__7CVolBoxCFRC7IVolumeR10CCollisionb": "0x800c50d8",
     "__dl__FPv": "0x8001ca2c",
+    "__dt__6CLine3Fv": "0x8001c5d0",
     "__dt__7CVolBoxFv": "0x800c5458",
     "__vt__10CCDBVolBox": "0x80183978"
   },
@@ -109,7 +134,12 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON"
+  ],
   "original_file": "cdbgeom.cpp",
-  "original_file_index": 3230
+  "original_file_index": 3230,
+  "weak_duplicates": [
+    "__dt__6CLine3Fv"
+  ]
 }
