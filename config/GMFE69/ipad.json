@@ -37,12 +37,24 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8014f028",
-      "size": 236,
+      "address": "0x8014eef8",
+      "size": 540,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "iPADVBLUpdate__Fv",
+      "address": "0x8014eef8",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "iPAD_init__Fv",
+      "address": "0x8014ef80",
+      "size": 168,
+      "binding": 1
+    },
     {
       "name": "iPAD_update__Fv",
       "address": "0x8014f028",
@@ -52,13 +64,20 @@
   ],
   "externals": {
     "MEM_copy": "0x80150880",
+    "MEM_fill": "0x80150db4",
     "OSDisableInterrupts": "0x801135cc",
     "OSRestoreInterrupts": "0x801135f4",
+    "OldCallBack": "0x8034f3b4",
+    "PADClamp": "0x8011c8f4",
+    "PADRead": "0x8011d460",
     "PADReset": "0x8011d25c",
+    "PADSetSamplingCallback": "0x8011dd08",
     "SIProbe": "0x80147774",
+    "SISetSamplingRate": "0x80147798",
     "_restgpr_22": "0x80138a48",
     "_savegpr_22": "0x801389fc",
     "gPadStatus": "0x8033edf0",
+    "giPADStarted": "0x8034f3b0",
     "vgPadStatus": "0x8033edc0"
   },
   "undefined_in_discarded_code": [],
@@ -66,7 +85,10 @@
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "OldCallBack",
+    "giPADStarted"
+  ],
   "original_file": "ipad.cpp",
   "original_file_index": 12307
 }
