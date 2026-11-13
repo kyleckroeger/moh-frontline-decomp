@@ -1,3 +1,6 @@
+// forms1 (2026-11-12): the variant motion names are read through the LevelField view (accepted
+// pointer-cast spelling, as AnimObjFactory_head.cpp) instead of the declined byte-offset spelling;
+// same 138 real lines, the DELPTRCOND condition/object register ranks remain the knot.
 /* CStaticObjectFactory::Reset, GetMotionData, GetStaticMesh and
    DeallocateStaticObject (a fragment of staticobjfactory.cpp). Reset links each object pool into its free list
    (static, hierarchy, attachable, thrown and static AI objects; the next
@@ -481,6 +484,21 @@ struct PoolSettingsView {
     int m_thrownPool;
 };
 
+/* Inferred: a level contents field (a tag word, then the value), as in
+   AnimObjFactory_head.cpp; a variant's motion names are read through it. */
+struct LevelField {
+    int tag;
+    union {
+        int i;
+        float f;
+        const char* s;
+    };
+};
+
+struct LevelFileInfo {
+    LevelField fields[27];
+};
+
 #define DEF(type, r) ((type*)(r)->m_definition)
 
 void CStaticObjectFactory::Init() {
@@ -570,11 +588,11 @@ void CStaticObjectFactory::Init() {
                 g_pStaticObjectTemplates[count].m_flags |= 8;
                 g_pStaticObjectTemplates[count].m_contents = r;
                 g_pStaticObjectTemplates[count].m_variant = i;
-                if (((const char**)((char*)DEF(VariantDefView, r) + (i * 24 + 0x38)))[1]) {
+                if (((const char**)&((LevelFileInfo*)(r)->m_definition)->fields[i * 3 + 7])[1]) {
                     int size = 0;
                     bool cached = false;
                     g_pStaticObjectTemplates[count].m_motionData =
-                        (MotionData*)TLT_LoadFromRepository(((const char**)((char*)DEF(VariantDefView, r) + (i * 24 + 0x38)))[1], &size, &cached);
+                        (MotionData*)TLT_LoadFromRepository(((const char**)&((LevelFileInfo*)(r)->m_definition)->fields[i * 3 + 7])[1], &size, &cached);
                     if (!cached)
                         PatchUpMVDFile(g_pStaticObjectTemplates[count].m_motionData);
                 } else {

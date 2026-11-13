@@ -1,3 +1,5 @@
+// forms1 (2026-11-12): 28 -> 27 real lines with the compound-copy Mul on the three x*rtd terms
+// (sweep2's grid; small value-returning inline, accepted 2026-11-12).
 // The start of quaternion.cpp (0x80091420): CQuaternion::EndianSwap
 // byte-swaps the vector part and then the scalar part; Rotate(out, v) rotates
 // a vector by the quaternion's rotation matrix (elements built from doubled
@@ -82,6 +84,9 @@ void CQuaternion::EndianSwap() {
     ::EndianSwap(w, true);
 }
 
+// Inferred: a value-returning product helper (its return temporary gives the
+// original's register colouring for the three scaled vector terms).
+inline float Mul(float a, float b) { float r = a; r *= b; return r; }
 void CQuaternion::Multiply(CQuaternion q) {
     float const rtc = q.z;
     float const rtd = q.w;
@@ -89,9 +94,9 @@ void CQuaternion::Multiply(CQuaternion q) {
     float ny = z * q.x - x * rtc;
     float nx = y * rtc - z * q.y;
     float nz = x * q.y - y * q.x;
-    float ax = x * rtd;
-    float ay = y * rtd;
-    float az = z * rtd;
+    float ax = Mul(x, rtd);
+    float ay = Mul(y, rtd);
+    float az = Mul(z, rtd);
     float by = q.y * w;
     float bx = q.x * w;
     float bz = rtc * w;

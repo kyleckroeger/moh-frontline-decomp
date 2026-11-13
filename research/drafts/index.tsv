@@ -34,7 +34,7 @@ real_lines	size	address	function	compile_settings_from	draft
 25	712	801503b4	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	config/GMFE69/aramalloc_alloc.json	research/drafts/ARAM_alloc_node.801503b4.cpp
 7	1264	80057640	BIFunc_GetInitialBuddyOrders__FPPiPv	config/GMFE69/buddy_head.json	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
 5	1064	8005fb58	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_weapon.json	research/drafts/death_cb.8005fb58.cpp
-28	164	8009174c	Multiply__11CQuaternionF11CQuaternion	config/GMFE69/quaternion.json	research/drafts/Multiply.8009174c.cpp
+27	164	8009174c	Multiply__11CQuaternionF11CQuaternion	config/GMFE69/quaternion.json	research/drafts/Multiply.8009174c.cpp
 28	400	80168828	decodexac__3SNDFPQ23SND10MXAPACKETF	config/GMFE69/eaxadecf.json	research/drafts/decodexac.80168828.cpp
 11	2028	8003c93c	CreateDestructable__FP20TriggerObject_structi	config/GMFE69/objcreate_createplayer.json	research/drafts/CreateDestructable.8003c93c.cpp
 39	388	80030658	BIFunc_PlayerScreenFlash__FPPiPv	config/GMFE69/bsbifunc_death.json	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
