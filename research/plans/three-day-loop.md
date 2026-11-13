@@ -33,7 +33,11 @@ multiplayer not at all. Every landing keeps the complete image identical.
   stack-slot inline groups, callee rank; independent audit in
   research/notes/loop-audit-2026-11-12.md with its free fixes applied. Usage limit stopped all
   agents 00:10-00:40 and 03:50-05:40.
-- Waiting on the maintainer (agents continue meanwhile; all reversible):
+- **Decided 2026-11-12 (maintainer: "I will go with whatever you recommend"):** questions
+  1, 2, 4, 5, 6, 10, 12, 13, 14, 15, 16 and 17 accepted; 3, 7, 8, 11 and the PlayerScreenFlash
+  part of 16 declined; 9 accepted narrowly (strings-only block headers). Recorded in
+  docs/Remaining.md "Source forms". The original questions follow for the record.
+- Questions as asked:
   1. **`.bss` size views.** A fragment defines its file's `.bss` objects in original order
      with exact sizes and ports with `--pool .bss`: plain views, container views with their
      constructors removed, and 12-byte placeholders for the compiler's destructor-chain

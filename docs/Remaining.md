@@ -155,6 +155,30 @@ the maintainer has decided which forms are acceptable.
 - `src/game/ShellMenu_block.h`, for `ShellMenu.cpp` only: the block's strings and
   tables copied from the original into a discarded function with no logic
   ([Dolphin.md](Dolphin.md)).
+- Added 2026-11-12 (maintainer delegated these to the coordinator's recommendations; see
+  the State section of research/plans/three-day-loop.md, questions 1-17):
+  - `.bss` size views: a fragment defines its file's `.bss` objects in original order with
+    exact sizes, container views without constructors and 12-byte destructor-chain
+    placeholders, all marked inferred, no `__sinit` (commits tagged "(.bss pooled)").
+  - `#pragma auto_inline off` / `reset`, like `dont_inline`, in game and EA code.
+  - The block-header form (strings and tables copied into a discarded function with no
+    logic) for any file whose `...rodata.0` head holds strings only stripped functions used:
+    rcmp_main, UserInterface, pumhandler and bsbifunc so far.
+  - Small value-returning inline helpers (products, differences) where the original's
+    register colouring shows a return temporary, single-purpose helpers whose parameter order
+    reproduces the original, and two inline copies of a block when the original's two
+    copies compile differently. Names are inferred and marked so; real names (CVector3::Sub,
+    Scale, Add, Dot, ...) are preferred wherever the original's symbols give one.
+  - Redundant tests, redundant zeroing and dead `else` code when the original's instructions
+    show them (the compiler cannot create them).
+  - Constant initialisation chains (`a = b = c = K` with a literal K).
+  - A member `operator[]` used once to keep a local in memory, and an inferred 3x3 matrix view.
+  - Inline helpers whose boundaries are read from the original's stack-slot groups, forwarding
+    overloads, and the reference-returning `dwi::min`/`dwi::max`.
+  - An identity statement standing in for a compiled-out statement in an otherwise empty
+    `case`, with a comment saying so.
+  - A view-based pointer-cast field spelling (LevelField) in place of byte offsets.
+  - The shared CVector3 header's base-class copy constructor (`CVector3 : CVector3Base`).
 
 **Declined:**
 - Devices that add storage, slots or code only to steer registers: one-element
@@ -165,7 +189,13 @@ the maintainer has decided which forms are acceptable.
   for `UpdateTargetPosition`.
 - Invented dead functions with made-up logic to hold orphan strings.
 - Identity wrappers such as `RetV`: useful for discovery, never landed.
-- Using the block header outside `ShellMenu.cpp`, unless the maintainer agrees.
+- Using the block header outside the files listed above.
+- Dead branches with logic inside a real function to place a string (TLT_LoadLevelContentsFile).
+- Hand-written vtable stores after placement new.
+- Different bodies for the same inline in different fragments (DrawTextCentered, FlagAsOccupied).
+- An identity `Copy()` to keep dead stack copies (DoTargetCheck), and a by-value `operator=`
+  only to move slots (PlayerScreenFlash).
 
-**On hold:** gap functions, where a unit compiles an unmatched function of its
-file and strips it, leaving its bytes uncovered, to hold the file's data layout.
+**On hold:** gap functions with logic, where a unit compiles an unmatched function of its
+file and strips it, leaving its bytes uncovered, to hold the file's data layout. (Strings-only
+block headers are accepted above.)
