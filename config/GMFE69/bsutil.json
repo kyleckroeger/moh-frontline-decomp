@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -31,14 +31,17 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
   "strip_unused": false,
-  "source_root": "scratch/game",
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8003bedc",
-      "size": 148,
+      "address": "0x8003b54c",
+      "size": 2596,
       "type": 1
     },
     {
@@ -49,14 +52,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a41c",
-      "size": 16,
+      "address": "0x8000a3fc",
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800113d8",
-      "size": 24,
+      "address": "0x800113a8",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016ec88",
+      "size": 292,
       "type": 1
     },
     {
@@ -64,6 +73,18 @@
       "address": "0x801a10c0",
       "size": 96,
       "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034e868",
+      "size": 12,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034f750",
+      "size": 4,
+      "type": 1
     }
   ],
   "functions": [
@@ -80,6 +101,84 @@
       "binding": 0
     },
     {
+      "name": "BSUtilPreLoadScriptCallback__FP24LevelFileContentsStruct_",
+      "address": "0x8003b54c",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilComputeClassMemoryRequirements__FP14BSClass_struct",
+      "address": "0x8003b5a4",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilFreeObjectInstanceMemory__FPv",
+      "address": "0x8003b6ac",
+      "size": 164,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilGetObjectInstanceMemory__FP14BSClass_struct",
+      "address": "0x8003b750",
+      "size": 236,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilGetMemory__Fii",
+      "address": "0x8003b83c",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilUpdate__Ff",
+      "address": "0x8003b86c",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilShutdownScriptingSystem__Fv",
+      "address": "0x8003b8d0",
+      "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "BSUtilInitScriptingSystem__Fb",
+      "address": "0x8003b924",
+      "size": 1020,
+      "binding": 1
+    },
+    {
+      "name": "DoWeOwnThisMemory__35BSUtilObjectInstanceMemoryAllocatorFPv",
+      "address": "0x8003bd20",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv",
+      "address": "0x8003bd6c",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb",
+      "address": "0x8003bd90",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "Init__35BSUtilObjectInstanceMemoryAllocatorFPviii",
+      "address": "0x8003bdd0",
+      "size": 216,
+      "binding": 1
+    },
+    {
+      "name": "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii",
+      "address": "0x8003bea8",
+      "size": 52,
+      "binding": 1
+    },
+    {
       "name": "__ct__35BSUtilObjectInstanceMemoryAllocatorFv",
       "address": "0x8003bf6c",
       "size": 4,
@@ -87,17 +186,64 @@
     }
   ],
   "externals": {
+    "BSCleanUpBIFuncs__Fv": "0x80034420",
+    "BSEndEvent__Fv": "0x8003571c",
+    "BSEndMachine__Fv": "0x80038128",
+    "BSEndMessage__Fv": "0x8003a2e0",
+    "BSEndSchedule__Fv": "0x8003acf4",
+    "BSEndTimer__Fv": "0x8003b2d4",
+    "BSEventGetMemoryRequirements__Fv": "0x800359fc",
+    "BSEventProcessEvents__Fi": "0x80034ea0",
+    "BSFileGetClass__FPCcPP14BSClass_struct": "0x80036960",
+    "BSFileGetMemoryRequirements__Fv": "0x80036a70",
+    "BSInitBIFuncs__Fv": "0x80034718",
+    "BSInitBSObject__Fv": "0x8003a77c",
+    "BSInitEvent__Fv": "0x80035734",
+    "BSInitFile__Fv": "0x80036a68",
+    "BSInitMachine__Fv": "0x80038174",
+    "BSInitMessage__Fv": "0x8003a2f4",
+    "BSInitSchedule__Fv": "0x8003ad04",
+    "BSInitTimer__Fv": "0x8003b2e8",
+    "BSMachineGetMemoryRequirements__Fv": "0x800383f0",
+    "BSMessageGetMemoryRequirements__Fv": "0x8003a45c",
+    "BSObjectGetMemoryRequirements__Fv": "0x8003a7d8",
+    "BSProcessMessages__Fi": "0x80039ca0",
+    "BSResetBIFuncs__Fv": "0x800344bc",
+    "BSScheduleGetMemoryRequirements__Fv": "0x8003ad60",
+    "BSTimerGetMemoryRequirements__Fv": "0x8003b544",
+    "BSUpdateBIFuncs__Fv": "0x800343b4",
+    "BSUpdateTimer__Ff": "0x8003b18c",
+    "CreateObjectGetMemoryRequirements__Fv": "0x800409bc",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "DebugMsg__FPCce": "0x80018c88",
+    "FreePropertyMemory__Fv": "0x800423c4",
+    "InitObjectCreators__Fv": "0x8004066c",
+    "LoadPropBSPTree__FPcb": "0x80042dc4",
+    "LoadPropertyData__FPcb": "0x80044600",
+    "MEM_free": "0x8014f83c",
+    "ShutdownObjectCreators__Fv": "0x800405b4",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_InitResourceType__FPFP24LevelFileContentsStruct__v13TLTResourceID": "0x8001d394",
+    "UpdateObjectCreation__Fv": "0x800403cc",
+    "UpdateProximityTriggerStatus__Fv": "0x80046378",
     "__construct_array": "0x8013834c",
     "__destroy_arr": "0x801382d4",
     "__dt__35BSUtilObjectInstanceMemoryAllocatorFv": "0x80035a6c",
-    "__register_global_object": "0x801381bc"
+    "__register_global_object": "0x801381bc",
+    "g_iBSMessageRegistrationListSize": "0x8034e82c",
+    "g_pcClassList": "0x8034e7d0",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_iBSMessageRegistrationListSize",
+    "g_pcClassList"
+  ],
   "original_file": "bsutil.cpp",
   "original_file_index": 1398
 }
