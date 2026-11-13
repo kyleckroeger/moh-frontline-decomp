@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,25 +40,37 @@
     {
       "name": ".text",
       "address": "0x8004f31c",
-      "size": 1724,
+      "size": 1912,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a988",
-      "size": 24,
+      "size": 60,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011aec",
-      "size": 36,
+      "size": 60,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016fad0",
+      "size": 30,
       "type": 1
     },
     {
       "name": ".data",
-      "address": "0x80183570",
-      "size": 40,
+      "address": "0x80183548",
+      "size": 80,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034da70",
+      "size": 16,
       "type": 1
     }
   ],
@@ -73,6 +85,12 @@
       "name": "PreUpdate__16CAISoldierObjectFv",
       "address": "0x8004f9d4",
       "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "__dt__16CAISoldierObjectFv",
+      "address": "0x8004f9d8",
+      "size": 68,
       "binding": 1
     },
     {
@@ -104,13 +122,27 @@
       "address": "0x8004f830",
       "size": 156,
       "binding": 1
+    },
+    {
+      "name": "__ct__16CAISoldierObjectFPv",
+      "address": "0x8004fa1c",
+      "size": 112,
+      "binding": 1
+    },
+    {
+      "name": "__nw__16CAISoldierObjectFUlPv",
+      "address": "0x8004fa8c",
+      "size": 8,
+      "binding": 1
     }
   ],
   "externals": {
     "CheckCoverpointUsefulness__9CAIObjectFv": "0x8004aa28",
     "GetDistanceXYZReal__9CAIObjectFP9CAIObject": "0x8004d5b8",
     "Init__9CAIObjectFv": "0x8004ebe0",
+    "IsCrouching__9CAIObjectCFv": "0x800478a8",
     "IsObjectInLineOfSight__9CAIObjectFR21CAIFilterRealPositionfb": "0x80048408",
+    "IsPlayer__9CAIObjectCFv": "0x800478b0",
     "ProcessObstacleAvoidance__9CAIObjectFv": "0x80049dd4",
     "SetTarget__9CAIObjectFP9CAIObject": "0x8004d41c",
     "UpdateReactionTime__9CAIObjectFv": "0x8004ec04",
@@ -120,7 +152,9 @@
     "WalkToArbitraryPoint__9CAIObjectFv": "0x80049e88",
     "WalkToCoverPointDirect__9CAIObjectFv": "0x8004a284",
     "WalkToCoverPointIndirect__9CAIObjectFv": "0x8004a0ec",
-    "WalkToCoverPoint__9CAIObjectFv": "0x8004a454"
+    "WalkToCoverPoint__9CAIObjectFv": "0x8004a454",
+    "__ct__9CAIObjectFv": "0x8004f024",
+    "__dt__9CAIObjectFv": "0x8004eee0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
