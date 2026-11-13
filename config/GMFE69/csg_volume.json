@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -35,31 +35,53 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x800c7f50",
-      "size": 4076,
+      "size": 4928,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000debc",
-      "size": 420,
-      "type": 1
+      "size": 472,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 480,
+      "stripped_objects": [
+        "@336"
+      ]
     },
     {
       "name": "extabindex",
       "address": "0x80014d8c",
-      "size": 168,
+      "size": 204,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 216,
+      "stripped_objects": [
+        "@337"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177c38",
+      "size": 11,
       "type": 1
     },
     {
-      "name": ".sdata2",
-      "address": "0x80350bc8",
-      "size": 8,
+      "name": ".data",
+      "address": "0x801895e8",
+      "size": 92,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e140",
+      "size": 16,
       "type": 1
     }
   ],
@@ -125,6 +147,12 @@
       "binding": 1
     },
     {
+      "name": "TestCollision__10CCSGVolumeCFRC6CLine3R10CCollisionb",
+      "address": "0x800c90bc",
+      "size": 324,
+      "binding": 1
+    },
+    {
       "name": "TestCollision__10CCSGVolumeCFRC6CPlaneR10CCollisionb",
       "address": "0x800c8720",
       "size": 324,
@@ -159,18 +187,45 @@
       "address": "0x800c7f58",
       "size": 292,
       "binding": 1
+    },
+    {
+      "name": "__dt__10CCSGVolumeFv",
+      "address": "0x800c920c",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "CheckContacts__10CCSGVolumeCFPiPfP10CCollisioniR10CCollisionb",
+      "address": "0x800c8f3c",
+      "size": 384,
+      "binding": 1
+    },
+    {
+      "name": "Init__10CCSGVolumeFiP11CHierObject",
+      "address": "0x800c9200",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "__ct__10CCSGVolumeFv",
+      "address": "0x800c9268",
+      "size": 40,
+      "binding": 1
     }
   ],
   "externals": {
-    "CheckContacts__10CCSGVolumeCFPiPfP10CCollisioniR10CCollisionb": "0x800c8f3c",
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
     "GetSubVolume__11CHierObjectCFi": "0x80099980",
     "SwapOrder__10CCollisionFv": "0x800c79c4",
+    "TestVisibility__7IVolumeCFR12CDrawContext": "0x8001c12c",
+    "__as__10CCollisionFRC10CCollision": "0x800c7a58",
     "__construct_array": "0x8013834c",
     "__ct__10CCollisionFv": "0x800c7cf4",
     "__destroy_arr": "0x801382d4",
+    "__dl__FPv": "0x8001ca2c",
     "__dt__10CCollisionFv": "0x800c7b80",
+    "__dt__7IVolumeFv": "0x8001c078",
     "__nw__FUl": "0x8001cb60",
-    "__vt__10CCSGVolume": "0x801895f4",
     "__vt__7IVolume": "0x80181e28"
   },
   "undefined_in_discarded_code": [],
@@ -180,5 +235,31 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "csg_volume.cpp",
-  "original_file_index": 7628
+  "original_file_index": 7628,
+  "weak_duplicates": [
+    "__dt__7IVolumeFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x80350bc0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350bc8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x80350bcc"
+    }
+  ]
 }
