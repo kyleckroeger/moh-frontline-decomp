@@ -178,13 +178,24 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
     def in_dropped(section, where):
         return any(section == d and a <= where < b for d, a, b in dropped_spans)
 
+    # The section's address is that of its compiled start (a leading run of dropped
+    # objects is trimmed later and adds to the address), so only the dropped spans
+    # after its first placed object close up.
+    first_placed = {}
+    for s in symbols:
+        if (s["type"] == 1 and s["size"] and s["section"] and s["section"] < 0xFF00
+                and not in_dropped(s["section"], s["address"])):
+            first_placed[s["section"]] = min(first_placed.get(s["section"], s["address"]), s["address"])
+
     def position(section, offset):
         """Offset after stripping: discarded code has no position, and the dropped
-        records of a data section (exception records of discarded code) close up."""
+        records between placed objects of a data section (exception records of
+        discarded code) close up."""
         if section not in layout:
             if in_dropped(section, offset):
                 return None
-            return offset - sum(b - a for d, a, b in dropped_spans if d == section and b <= offset)
+            first = first_placed.get(section, offset)
+            return offset - sum(b - a for d, a, b in dropped_spans if d == section and first <= a and b <= offset)
         for function, packed in layout[section][0]:
             if function["address"] <= offset < function["address"] + function["size"]:
                 return packed + offset - function["address"]
