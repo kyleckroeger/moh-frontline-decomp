@@ -13,7 +13,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 <!-- sync_docs:status -->
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
-| **Exact** | 1,281,040 | **90.56%** | Built from source and byte-identical to the original in the complete-image comparison: 4,909 functions in 1,097 units. |
+| **Exact** | 1,281,040 | **90.56%** | Built from source and byte-identical to the original in the complete-image comparison: 4,909 functions in 1,094 units. |
 | **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), so linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
@@ -22,7 +22,7 @@ Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 1,044,988 | 3,918 | 920 | `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 1,044,988 | 3,918 | 917 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 236,052 | 991 | 177 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
 About 133.4 KB isn't exact yet, in 100 functions across 54 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.

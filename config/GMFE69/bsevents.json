@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80035734",
-      "size": 884,
+      "address": "0x80034d2c",
+      "size": 3452,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000a224",
-      "size": 32,
+      "address": "0x8000a1e4",
+      "size": 96,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800110e4",
-      "size": 48,
+      "address": "0x80011084",
+      "size": 144,
       "type": 1
     },
     {
@@ -72,6 +72,78 @@
       "address": "0x80035a34",
       "size": 56,
       "binding": 0
+    },
+    {
+      "name": "BSEventCurrentlyProcessingMessages__Fb",
+      "address": "0x80034d2c",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "BSEventIsEventMemoryBlock__FPv",
+      "address": "0x80034d44",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "BSEventCheckMemBlockReferenceCount__FPv",
+      "address": "0x80034d70",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "BSEventGetEventMemoryBlock__FUi",
+      "address": "0x80034dbc",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "BSEventFindDeclaredState__FUsP22BSMachineThread_structPP31BSCode_EventHandlerEntry_struct",
+      "address": "0x80034df0",
+      "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "BSEventProcessImmediateEvents__Fv",
+      "address": "0x8003521c",
+      "size": 548,
+      "binding": 1
+    },
+    {
+      "name": "BSEventProcessEvents__Fi",
+      "address": "0x80034ea0",
+      "size": 892,
+      "binding": 1
+    },
+    {
+      "name": "BSEventQueueImmediateEvent__FP8BSObjectP22BSMachineThread_structP31BSCode_EventHandlerEntry_structUsPvP8BSObject",
+      "address": "0x80035440",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "BSEventTriggerEvent__FP8BSObjectP22BSMachineThread_structP31BSCode_EventHandlerEntry_structUsPvP8BSObject",
+      "address": "0x8003556c",
+      "size": 328,
+      "binding": 1
+    },
+    {
+      "name": "BSEventDecrimentReferenceCount__FPv",
+      "address": "0x800356b4",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "BSEventIncrimentReferenceCount__FPv",
+      "address": "0x8003570c",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "BSEndEvent__Fv",
+      "address": "0x8003571c",
+      "size": 24,
+      "binding": 1
     },
     {
       "name": "BSInitEvent__Fv",
@@ -93,20 +165,27 @@
     }
   ],
   "externals": {
+    "BSExecuteThread__FP8BSObjectP22BSMachineThread_struct": "0x80037e70",
     "BSUtilGetMemory__Fii": "0x8003b83c",
     "ComputeNeededSize__35BSUtilObjectInstanceMemoryAllocatorFiii": "0x8003bea8",
+    "DoWeOwnThisMemory__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd20",
+    "FreeElement__35BSUtilObjectInstanceMemoryAllocatorFPv": "0x8003bd6c",
+    "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
     "Init__35BSUtilObjectInstanceMemoryAllocatorFPviii": "0x8003bdd0",
     "__dl__FPv": "0x8001ca2c",
     "__register_global_object": "0x801381bc",
     "g_eProcessState": "0x8034e7c0",
     "g_pBSEventMemory": "0x8034e7c4",
     "g_pBSEventMemoryOffset": "0x8034e7c8",
+    "g_pCurrentProcessingEvent": "0x8034e7b4",
     "g_pEventHashTable": "0x8034e7a0",
     "g_pEventRecordArray": "0x8034e7a4",
     "g_pEventRecordExecutionListHead": "0x8034e7ac",
     "g_pEventRecordExecutionListTail": "0x8034e7b0",
     "g_pFreeEventRecordHead": "0x8034e7a8",
-    "g_pImmediateEventQueue": "0x8034e7b8"
+    "g_pImmediateEventQueue": "0x8034e7b8",
+    "g_pImmediateEventQueueTail": "0x8034e7bc",
+    "g_piStackTop": "0x8034e7d8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -115,24 +194,29 @@
     "g_eProcessState",
     "g_pBSEventMemory",
     "g_pBSEventMemoryOffset",
+    "g_pCurrentProcessingEvent",
     "g_pEventHashTable",
     "g_pEventRecordArray",
     "g_pEventRecordExecutionListHead",
     "g_pEventRecordExecutionListTail",
     "g_pFreeEventRecordHead",
-    "g_pImmediateEventQueue"
+    "g_pImmediateEventQueue",
+    "g_pImmediateEventQueueTail"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "g_eProcessState",
     "g_pBSEventMemory",
     "g_pBSEventMemoryOffset",
+    "g_pCurrentProcessingEvent",
     "g_pEventHashTable",
     "g_pEventRecordArray",
     "g_pEventRecordExecutionListHead",
     "g_pEventRecordExecutionListTail",
     "g_pFreeEventRecordHead",
-    "g_pImmediateEventQueue"
+    "g_pImmediateEventQueue",
+    "g_pImmediateEventQueueTail",
+    "g_piStackTop"
   ],
   "original_file": "bsevents.cpp",
   "original_file_index": 1139
