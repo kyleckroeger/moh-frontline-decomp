@@ -17,13 +17,8 @@ class CPlayerObject;
 #include "game/ISceneNode.h"
 
 
-class CPlayerObject {
-public:
-    void StartGrenadeCook();
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[1112];
-    float m_grenadeHoldTime;
-};
 
 struct BSBuiltinView {
     void (*function)(int**, void*);

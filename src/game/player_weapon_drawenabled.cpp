@@ -27,12 +27,8 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[919];
-    unsigned char m_flag919 : 1;
-    unsigned char unknown397 : 7;
-};
+#include "game/CPlayerObject.h"
+
 
 class CPlayerWeaponObject {
 public:
@@ -53,7 +49,7 @@ public:
 
 bool CPlayerWeaponObject::IsDrawEnabled() const {
     bool enabled = false;
-    if (m_drawEnabled && !m_player->m_flag919)
+    if (m_drawEnabled && !m_player->m_weaponHidden)
         enabled = true;
     return enabled;
 }

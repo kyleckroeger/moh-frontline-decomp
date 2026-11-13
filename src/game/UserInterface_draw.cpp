@@ -29,16 +29,8 @@ public:
     char m_name[1];
 };
 
-class CPlayerObject {
-public:
-    CPlayerWeaponObject* GetCurrentPlayerWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[919];
-    unsigned char m_hideHud : 1;
-    unsigned char m_showScores : 1;
-    unsigned char unknown398[972];
-    int m_controller;
-};
 
 #include "game/CScene.h"
 
@@ -95,14 +87,14 @@ void UserInterface::Draw(float time) {
     if (!firstframe) {
         if (!m_letterBox) {
             int state = g_Pause.m_state;
-            if (!player->m_hideHud && (state < 3 || state >= 6)) {
+            if (!player->m_weaponHidden && (state < 3 || state >= 6)) {
                 if (g_bInMultiplayerMode) {
                     CPlayerObject* local = g_scene.GetPlayer(m_player);
                     if (!g_bMPEndLevel) {
                         if (g_Pause.bIsGamePaused()) {
                             if (g_PauseScreenLockedController != local->m_controller)
                                 DrawFragCount(false);
-                        } else if (local->m_showScores || g_inputMgr.GetValue(local->m_controller, 23)) {
+                        } else if (local->m_dead || g_inputMgr.GetValue(local->m_controller, 23)) {
                             DrawFragCount(false);
                             DrawViewportEdge();
                         } else {

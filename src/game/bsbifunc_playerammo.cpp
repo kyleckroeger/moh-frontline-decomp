@@ -198,12 +198,8 @@ public:
     unsigned char m_reloaded : 1;
     unsigned char m_flags2 : 5;
 };
-class CPlayerObject : public ISceneNode {
-public:
-    CPlayerWeaponObject* GetWeapon(int) const;
-    CPlayerWeaponObject* GetCurrentWeapon() const;
-    void CycleWeapon(int, int);
-};
+#include "game/CPlayerObject.h"
+
 #include "game/CScene.h"
 
 extern CScene g_scene;

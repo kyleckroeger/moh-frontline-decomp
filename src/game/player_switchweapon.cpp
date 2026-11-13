@@ -10,14 +10,8 @@ public:
     bool IsSelectable() const;
 };
 
-class CPlayerObject {
-public:
-    bool CanPlayerSwitchWeapon();
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[1116];
-    int m_currentWeapon;
-    CPlayerWeaponObject* m_weapons[45];
-};
 
 bool CPlayerObject::CanPlayerSwitchWeapon() {
     for (int i = 1; i < 45; i++) {

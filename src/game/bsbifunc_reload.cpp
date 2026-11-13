@@ -33,10 +33,8 @@ public:
     unsigned char flags : 7;
 };
 
-class CPlayerObject {
-public:
-    CWeapon* GetCurrentWeapon() const;
-};
+#include "game/CPlayerObject.h"
+
 
 struct BSBuiltinView {
     void (*function)(int**, void*);

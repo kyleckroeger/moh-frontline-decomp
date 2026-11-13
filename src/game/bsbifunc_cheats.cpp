@@ -34,19 +34,8 @@ public:
     void CreateEjectedShell(int);
 };
 
-class CPlayerObject {
-public:
-    CPlayerWeaponObject* GetCurrentPlayerWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[918];
-    unsigned char unknown396 : 1;
-    unsigned char m_noShells : 1;
-    unsigned char unknown396b : 6;
-    unsigned char unknown397;
-    unsigned char unknown398 : 1;
-    unsigned char m_superAim : 1;
-    unsigned char unknown398b : 6;
-};
 
 #include "game/CScene.h"
 

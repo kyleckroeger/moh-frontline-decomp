@@ -49,11 +49,8 @@ struct TriggerObject_struct {
     TriggerCoreView* core;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[1896];
-    int m_index;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/ISceneNode.h"
 
@@ -153,7 +150,7 @@ int PlaySoundFromTriggerOrObject(TriggerObject_struct* trigger, BSObject* script
     position.z = position.z + offset.z;
     if (type == -1 && sound == 82 && node && node->AsPlayerObject()) {
         if (g_bInMultiplayerMode) {
-            int index = node->AsPlayerObject()->m_index;
+            int index = node->AsPlayerObject()->m_viewport;
             switch (g_Shell.m_mpPlayers[index].character) {
             case 5:
             case 7:

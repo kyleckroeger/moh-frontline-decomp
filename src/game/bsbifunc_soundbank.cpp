@@ -96,11 +96,8 @@ public:
     int m_mpLevel;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown0000[4720];
-    bool m_letterbox;
-};
+#include "game/CPlayerObject.h"
+
 
 class CSoldierObject {
 public:
@@ -174,7 +171,7 @@ void BIFunc_LoadOneShotSoundBank(int** stack, void*) {
 
 void BIFunc_DisplayLetterbox(int** stack, void*) {
     bool show = *(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 1)) != 0;
-    g_scene.GetPlayer(0)->m_letterbox = show;
+    g_scene.GetPlayer(0)->m_showUI = show;
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
 

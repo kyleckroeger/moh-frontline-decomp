@@ -38,33 +38,10 @@ class IMovingSceneNode;
 #include "game/ISceneNode.h"
 
 
-class IMovingSceneNode : public ISceneNode {
-public:
-    virtual ~IMovingSceneNode();
-    virtual void Reset();
-    virtual void Halt();
-    virtual void ApplyForceTo(CVector3, float);
-    virtual void SetTMLocalToWorld(const CMatrix&);
-    virtual void PreTransform(const CMatrix&);
-    virtual void Transform(const CMatrix&);
-    virtual void Move(CVector3);
-    virtual void Rotate(CVector3, float);
-    virtual void Pitch(float);
-    virtual void Roll(float);
-    virtual void Yaw(float);
-    virtual void SetPosition(CVector3);
-    virtual void SetBasis(CVector3, CVector3, CVector3);
-    virtual void Orthonormalize();
-    virtual int GetWorldLinearVelocity() const;
-    virtual void EnterLightVolume(BPDLightVolume*);
-    virtual void ExitLightVolume(BPDLightVolume*);
-    virtual int GetLightVolume();
-};
+#include "game/CPlayerObject.h"
 
-class CPlayerObject : public IMovingSceneNode {
-public:
-    void SetClimbingState(bool);
-};
+
+
 
 class CWorldObject {
 public:

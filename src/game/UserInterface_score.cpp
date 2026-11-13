@@ -80,13 +80,8 @@ public:
     unsigned char unknown1434[1448];
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown0000[1896];
-    int m_index;
-    unsigned char unknown076c[2884];
-    int m_team;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 
@@ -173,10 +168,10 @@ void UserInterface::DrawViewportEdge() {
     CScreen* screen = CScreen::GetCurrent();
     int width = screen->GetWidth();
     int height = screen->GetHeight();
-    bool top = IsTop(player->m_index);
-    bool bottom = IsBottom(player->m_index);
-    bool left = IsLeft(player->m_index);
-    bool right = IsRight(player->m_index);
+    bool top = IsTop(player->m_viewport);
+    bool bottom = IsBottom(player->m_viewport);
+    bool left = IsLeft(player->m_viewport);
+    bool right = IsRight(player->m_viewport);
     float x0 = width * g_viewport.left;
     float x1 = width * g_viewport.right - 1.0f;
     float y0 = height * g_viewport.top;

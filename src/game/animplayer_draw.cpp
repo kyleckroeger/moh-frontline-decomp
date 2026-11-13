@@ -180,37 +180,8 @@ public:
 
 extern CScene g_scene;
 
-class CPlayerObject {
-public:
-    virtual void vf008();
-    virtual void vf00c();
-    virtual void vf010();
-    virtual void vf014();
-    virtual void vf018();
-    virtual void vf01c();
-    virtual void vf020();
-    virtual void vf024();
-    virtual void vf028();
-    virtual void vf02c();
-    virtual void vf030();
-    virtual void vf034();
-    virtual void vf038();
-    virtual void vf03c();
-    virtual void vf040();
-    virtual void vf044();
-    virtual void vf048();
-    virtual void vf04c();
-    virtual void vf050();
-    virtual void vf054();
-    virtual void vf058();
-    virtual void vf05c();
-    virtual void vf060();
-    virtual void vf064();
-    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown004[0x764];
-    int m_value768;
-};
 
 class CSoldierObject {
 public:
@@ -227,7 +198,7 @@ public:
 };
 
 void CAnimatedPlayer::Draw(CDrawContext& context) {
-    if (context.m_value114 != m_player->m_value768)
+    if (context.m_value114 != m_player->m_viewport)
         CSoldierObject::Draw(context);
 }
 

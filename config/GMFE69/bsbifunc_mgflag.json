@@ -84,6 +84,7 @@
     }
   ],
   "externals": {
+    "ApplyForceTo__16IMovingSceneNodeF8CVector3f": "0x8001ae50",
     "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
     "CycleWeapon__13CPlayerObjectFii": "0x8009fbec",
     "GetForward__10ISceneNodeCFR8CVector3": "0x8001af2c",
@@ -162,6 +163,7 @@
     }
   ],
   "weak_duplicates": [
+    "ApplyForceTo__16IMovingSceneNodeF8CVector3f",
     "AsPlayerObject__10ISceneNodeFv",
     "GetForward__10ISceneNodeCFR8CVector3",
     "GetScriptObject__10ISceneNodeCFv"

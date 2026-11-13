@@ -84,14 +84,8 @@ public:
     AnimStateMachineView m_machine;
 };
 
-class CPlayerObject {
-public:
-    bool IsPlayerCrouching() const;
-    bool IsPlayerJumping() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown0000[4788];
-    unsigned char m_unknown12b4;
-};
 
 class CAnimatedPlayer {
 public:
@@ -188,7 +182,7 @@ int CAnimCallbacks::floco_cb(AnimFileStateAnimList_t* list, unsigned short state
         if (player->IsPlayerJumping() && !memory->crouching) {
             int jump;
             int offset;
-            player->m_unknown12b4 = offset = 0;
+            player->m_jumping = offset = 0;
             jump = _floco_anim_ranges[8];
             if (speed > 0.1f)
                 offset = type + 1;

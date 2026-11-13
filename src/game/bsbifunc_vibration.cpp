@@ -38,13 +38,8 @@ public:
     unsigned int m_mechFlags;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[1892];
-    unsigned long m_controller;
-    unsigned char unknown768[4];
-    int m_port;
-};
+#include "game/CPlayerObject.h"
+
 
 class CSoldierObject {
 public:
@@ -98,7 +93,7 @@ void BIFunc_BlockNewVibrations(int** stack, void*) {
     int port = 0;
     bool block = *(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 1)) != 0;
     if (g_bInMultiplayerMode)
-        port = g_pBSObject->user->GetSceneNode()->AsPlayerObject()->m_port;
+        port = g_pBSObject->user->GetSceneNode()->AsPlayerObject()->m_playerIndex;
     g_inputMgr.m_feedbackOff[port] = block;
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }

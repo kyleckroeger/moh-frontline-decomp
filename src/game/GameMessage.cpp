@@ -206,12 +206,8 @@ public:
     unsigned char unknown00[16];
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[1892];
-    int m_controller;
-    int m_value1896;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 
@@ -754,9 +750,9 @@ void GameMessage(unsigned long message, unsigned short, unsigned short, unsigned
                 if (player && g_PauseScreenLockedController == player->m_controller)
                     break;
             }
-            out->value = player->m_value1896;
+            out->value = player->m_viewport;
         } else {
-            out->value = g_scene.GetPlayer(0)->m_value1896;
+            out->value = g_scene.GetPlayer(0)->m_viewport;
         }
         break;
     }

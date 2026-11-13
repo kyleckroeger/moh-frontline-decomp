@@ -47,15 +47,8 @@ public:
     WeaponPropertiesView* m_properties;
 };
 
-class CPlayerObject {
-public:
-    void FireMyWeapon(float);
-    CWeapon* GetCurrentWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[919];
-    unsigned char unknown397 : 7;
-    unsigned char m_wielding : 1;
-};
 
 extern BSObjectView* g_pBSObject;
 

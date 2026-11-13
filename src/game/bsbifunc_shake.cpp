@@ -36,17 +36,8 @@ struct BSObjectView {
     BSGO_Basic* user;
 };
 
-class CPlayerObject {
-public:
-    void DoMotionShake(float, float);
-    void StopCameraShake(float);
-    void StartCameraShake(float, float);
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[919];
-    unsigned char unknown397 : 4;
-    unsigned char m_canCrouch : 1;
-    unsigned char unknown397b : 3;
-};
 
 #include "game/CScene.h"
 

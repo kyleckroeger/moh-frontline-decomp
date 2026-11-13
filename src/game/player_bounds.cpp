@@ -14,18 +14,8 @@ struct EmbeddedVolumeView {
     unsigned char data[80];
 };
 
-class CPlayerObject {
-public:
-    IVolume* GetWorldBoundingVolume(ISceneNode::EVolumeType) const;
-    IVolume* GetLocalBoundingVolume(ISceneNode::EVolumeType) const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[256];
-    IVolume* m_localVolume3;
-    IVolume* m_worldVolume3;
-    unsigned char unknown108[168];
-    EmbeddedVolumeView m_localVolume;
-    EmbeddedVolumeView m_worldVolume;
-};
 
 IVolume* CPlayerObject::GetWorldBoundingVolume(ISceneNode::EVolumeType type) const {
     switch (type) {
@@ -34,7 +24,7 @@ IVolume* CPlayerObject::GetWorldBoundingVolume(ISceneNode::EVolumeType type) con
     case 0:
     case 1:
     case 2:
-        return (IVolume*)&m_worldVolume;
+        return (IVolume*)&m_worldCapsule;
     case 4:
         return 0;
     }
@@ -48,7 +38,7 @@ IVolume* CPlayerObject::GetLocalBoundingVolume(ISceneNode::EVolumeType type) con
     case 0:
     case 1:
     case 2:
-        return (IVolume*)&m_localVolume;
+        return (IVolume*)&m_localCapsule;
     case 4:
         return 0;
     }

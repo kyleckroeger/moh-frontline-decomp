@@ -21,12 +21,8 @@ struct AIDoodadView;
 #include "game/ISceneNode.h"
 
 
-class CPlayerObject {
-public:
-    void Respawn();
-    void SetFallingDamageState(bool);
-    bool IsPlayerCrouching() const;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

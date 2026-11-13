@@ -41,12 +41,9 @@ struct AIDoodadView;
 
 
 
-enum EWeaponTypes {};
+#include "game/CPlayerObject.h"
 
-class CPlayerObject {
-public:
-    bool SetWeaponEnable(EWeaponTypes, bool);
-};
+
 
 extern "C" int printf(const char*, ...);
 

@@ -10,24 +10,8 @@
 
 #include "game/CVector3.h"
 
-class CPlayerObject {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual void vf24();
-    virtual void vf28();
-    virtual void vf2c();
-    virtual void vf30();
-    virtual void vf34();
-    virtual void vf38();
-    virtual void vf3c();
-    virtual void GetPosition(CVector3&) const;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

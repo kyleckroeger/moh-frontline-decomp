@@ -279,3 +279,47 @@ impact_dtor, projectilebullet, sound: each label +1, matched by relabel.py). Not
   CPlayerObject* would need CPlayerObject's definition there.
 - proxtrig_messages: an invented inline helper (`Acquire`).
 Table: `research/layout/header_moves/CScene.tsv`.
+
+## CPlayerObject (2026-11-13, agent hdr5)
+
+`include/game/CPlayerObject.h` (includes CCamera.h: the player holds its camera at +0x7d0).
+Evidence:
+
+- `__vt__13CPlayerObject`: IMovingSceneNode's 71 slots plus SetScript (+0x124). Real names for
+  the views' renames: GetScriptObject (+0x60, "GetInventory" in two views), SetScript
+  ("SetScriptObject" in three); moved files' calls are renamed.
+- Weak in the original, so inline with the matched bodies: Destroy, both AsPlayerObject,
+  GetWorldLinearVelocity, both GetAIDoodad, SetCollisionId, GetScriptObject. Every other member
+  (the 49 non-virtual ones in the symbols) is out of line; constness from the mangled names
+  (CanPlayerSwitchWeapon is not const).
+- 0x12d0 bytes (mainloop.cpp's `new CPlayerObject`). Fields at the offsets the matched views
+  agree on, named by the most common view; the five flag bytes +0x394..+0x398 as one-bit
+  bitfields (most significant first, the views' semantic names). Moved files are rewritten by
+  offset and by bit (`_offset_names`, OFFSET_BITS).
+- Layout only (byte ranges, commented): the AI doodad (+0x24), the two boxes and two capsules,
+  the contact list (dwi::fast_vec<CPlayerObject::CClsnInfo>), the hearing volume, the script
+  object (a BSGO_Player) and the user interface (+0xa70..+0x1234).
+
+Result: 103 units with their own view (1 control failure, attachobject_ctor). **41 kept and
+moved**: 37 as is, bsbifunc_mgflag and proxtrig_messages with their weak IMovingSceneNode
+copies listed, bsbifunc_playerammo with ISceneNode::TriggerScriptEvent dropped from its
+weak_duplicates (CPlayerObject overrides it, so the unit no longer emits it), and
+player_switchweapon. Not moved:
+
+- 40 still have their own CVector3, CMatrix or ISceneNode view, which CCamera.h's includes
+  redefine (Moh2, mainloop_game, player_ctor, most player_* and bsbifunc_* units ...).
+- player_dtor: **table kept off on purpose** (it defines ~CPlayerObject; on the header its
+  destructor compiles differently and the table would be emitted). Kept on its view.
+- player and objcreate_playerscript define the weak copies themselves (`__declspec(weak)`
+  out of line); with the header's inline bodies they lose (extab, .text). bsbifunc_random:
+  compiler dependencies differ.
+- 17 need code changes: fields used as other types (player_crouch and player_setweaponenable
+  read m_weapons as CWeapon*/WeaponView*, player_constrain and player_fastvec use the contact
+  list's members, player_init the doodad's, objcreate_collvol the script object's address as a
+  BSGO view, player_lightvolume calls through m_weapons), GetScriptObject's result as a
+  CInventory* (UserInterface_drawcompass, UserInterface_update), an int stored into
+  m_collisionId (player_death), the flag byte +0x396 read whole (Pause), invented helpers
+  (player_move PositionRow, player_rows UpRow, ShellMenu_levels GetTeam), a field the header
+  doesn't have (pumhandler_loop m_hideMessages), m_soldier's members (bsbifunc_mpplayer), and
+  GetCurrentWeapon's result as a CWeaponFlagsView* (player_weapon_object_head).
+Table: `research/layout/header_moves/CPlayerObject.tsv`.

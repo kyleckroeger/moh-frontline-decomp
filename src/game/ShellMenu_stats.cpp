@@ -23,10 +23,8 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    CWeapon* GetCurrentWeapon() const;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

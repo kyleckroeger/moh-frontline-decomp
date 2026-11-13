@@ -120,17 +120,8 @@ public:
     unsigned char unknown2c0b : 2;
 };
 
-class CPlayerObject {
-public:
-    CWeapon* GetCurrentWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[672];
-    float m_value2a0;
-    unsigned char unknown2a4[243];
-    unsigned char m_flag397a : 1;
-    bool m_flag397b : 1;
-    unsigned char m_flags397 : 6;
-};
 
 class CAnimMorph : public CAnimated {
 public:
@@ -382,7 +373,7 @@ void CAnimatedPlayer::AttemptUpdate(float dt) {
     m_value2440 = 0;
     m_flag2450 = false;
     CWeapon* weapon = m_player->GetCurrentWeapon();
-    if (m_player->m_flag397b) {
+    if (m_player->m_dead) {
         m_weapons[m_currentWeapon]->muzzleFlash = 0;
         m_weapons[m_currentWeapon]->m_flag1e0 = 0;
     } else {
@@ -465,7 +456,7 @@ void CAnimatedPlayer::SetFlocoParams(float param, long count) {
 void CAnimatedPlayer::UpdateAnimation(float dt) {
     CMatrix unused;
     ((CAnimObject*)this)->UpdateAnimation(dt);
-    m_value30d8 = m_player->m_value2a0;
+    m_value30d8 = m_player->m_pitch;
     if (m_statePending) {
         m_statePending = false;
         if (m_morph.ValidState(m_state)) {

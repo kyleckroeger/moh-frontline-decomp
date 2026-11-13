@@ -74,30 +74,8 @@ public:
     void UpdateSkeletonMatrices(CMatrix*, CVector3*, CVector3*);
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[916];
-    unsigned char m_flag80 : 1;
-    unsigned char m_flag40 : 1;
-    unsigned char m_flag20 : 1;
-    unsigned char m_flag10 : 1;
-    unsigned char m_flag08 : 1;
-    unsigned char m_flag04 : 1;
-    unsigned char m_flag02 : 1;
-    unsigned char m_flag01 : 1;
-    unsigned char unknown395;
-    unsigned char m_flags396a : 1;
-    unsigned char m_flag396 : 1;
-    unsigned char m_flags396b : 6;
-    unsigned char unknown397[149];
-    float m_fov;
-    unsigned char unknown430[12];
-    CSprite* m_flashSprite;
-    unsigned char unknown440[808];
-    int m_viewport;
-    unsigned char unknown76c[2820];
-    unsigned char m_dead;
-};
+#include "game/CPlayerObject.h"
+
 
 class CWeapon {
 public:
@@ -208,7 +186,7 @@ void CPlayerWeaponObject::Draw(CDrawContext& context) {
         fov = m_zoom * (0.017453292f * m_player->m_fov);
     else
         fov = m_zoom * (0.017453292f * DEFAULT_FOV);
-    if (m_weapon->GetMuzzleFlashStatus() && !m_player->m_flag396 && !g_cheats.m_noFlash) {
+    if (m_weapon->GetMuzzleFlashStatus() && !m_player->m_noShells && !g_cheats.m_noFlash) {
         float width = g_screen.GetWidth();
         float height = g_screen.GetHeight();
         float x = width * g_viewport.scaleX;
@@ -250,7 +228,7 @@ void CPlayerWeaponObject::Draw(CDrawContext& context) {
             v->y += top;
             v++;
         }
-        m_player->m_flashSprite->DrawPoly(verts, 4, (CSprite::EPolyPrimType)5);
+        m_player->m_muzzleFlash->DrawPoly(verts, 4, (CSprite::EPolyPrimType)5);
     }
     if (g_NumPlayers != 2) {
         far = context.m_camera->m_far;
@@ -270,7 +248,7 @@ void CPlayerWeaponObject::Draw(CDrawContext& context) {
     CVector3 scale = context.m_scale;
     bool draw = true;
     context.m_scale.Set(m_scale.x, m_scale.y, m_scale.z);
-    if (m_player->m_flag08) {
+    if (m_player->m_aiming) {
         int mode;
         if (g_cheats.m_cheat2)
             mode = 3;
@@ -284,7 +262,7 @@ void CPlayerWeaponObject::Draw(CDrawContext& context) {
                 draw = false;
         }
     }
-    if (!g_scene.GetPlayer(0)->m_dead && draw)
+    if (!g_scene.GetPlayer(0)->m_showUI && draw)
         m_animated.Draw(context);
     context.m_viewToScreen = viewToScreen;
     (CMatrix&)context = saved;

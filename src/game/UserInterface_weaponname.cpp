@@ -46,11 +46,8 @@ struct PopUpMessageHandlerView {
     CFont* font;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[1896];
-    int m_index;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 
@@ -75,7 +72,7 @@ extern PopUpMessageHandlerView* g_pPopUpMessageHandler[];
 
 void UserInterface::DrawWeaponName(const char* name) {
     if (*name) {
-        CFont* font = g_pPopUpMessageHandler[g_scene.GetPlayer(m_player)->m_index]->font;
+        CFont* font = g_pPopUpMessageHandler[g_scene.GetPlayer(m_player)->m_viewport]->font;
         CColor saved;
         saved = font->GetColor();
         font->SetColor(CColor(128, 128, 128, (unsigned char)(96.0f * m_nameFade * m_alpha)));

@@ -54,10 +54,8 @@ public:
 
 };
 
-class CPlayerObject {
-public:
-    void CleanUp();
-};
+#include "game/CPlayerObject.h"
+
 
 void DestroyBSObject(BSObject*);
 

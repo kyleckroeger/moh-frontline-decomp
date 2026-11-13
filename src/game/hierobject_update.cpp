@@ -56,10 +56,8 @@ struct MotionKey {
     CQuaternion m_rotation;
 };
 
-class CPlayerObject {
-public:
-    void SetPlayersMountedMGPositions(CMatrix*);
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

@@ -6,10 +6,8 @@
 // store it are not reconstructed here. IsPlayer is inline in the original (a
 // weak symbol), so it is defined __declspec(weak). The health value is
 // rounded up to fifteenths of the maximum.
-class CPlayerObject {
-public:
-    bool IsPlayerCrouching() const;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

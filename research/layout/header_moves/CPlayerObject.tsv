@@ -1,0 +1,104 @@
+unit	source	status	detail
+AIPlayerObject	scratch/try/AIPlayerObject/src/AIPlayerObject.cpp	kept	
+GameMessage	scratch/try/GameMessage/src/GameMessage.cpp	kept	
+Moh2	scratch/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\Moh2.cpp # ------------------------
+Pause	scratch/try/Pause/src/Pause.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Pause.cpp # ------------------------- #     302: if (!(g_scene.GetPlayer(0)->m_flags396 & 1))
+ShellMenu_levels	scratch/try/ShellMenu_levels/src/ShellMenu_levels.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\ShellMenu_levels.cpp # ------------------------------------ #     163: team = g_scene.GetPlayer(killer)->GetTeam();
+ShellMenu_stats	scratch/try/ShellMenu_stats/src/ShellMenu_stats.cpp	kept	
+UserInterface_compass	scratch/try/UserInterface_compass/src/UserInterface_compass.cpp	kept	
+UserInterface_draw	scratch/try/UserInterface_draw/src/UserInterface_draw.cpp	kept	
+UserInterface_drawcompass	scratch/try/UserInterface_drawcompass/src/UserInterface_drawcompass.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\UserInterface_drawcompass.cpp # --------------------------------------------- #     137: CInventory* inventory = player->GetScriptObject();
+UserInterface_radar	scratch/try/UserInterface_radar/src/UserInterface_radar.cpp	kept	
+UserInterface_score	scratch/try/UserInterface_score/src/UserInterface_score.cpp	kept	
+UserInterface_update	scratch/try/UserInterface_update/src/UserInterface_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\UserInterface_update.cpp # ---------------------------------------- #     101: CInventory* inventory = player->GetScriptObject();
+UserInterface_weaponname	scratch/try/UserInterface_weaponname/src/UserInterface_weaponname.cpp	kept	
+anim_callback_weapon	scratch/try/anim_callback_weapon/src/anim_callback_weapon.cpp	kept	
+animintf	scratch/try/animintf/src/animintf.cpp	kept	
+animplayer	scratch/try/animplayer/src/animplayer.cpp	kept	
+animplayer_draw	scratch/try/animplayer_draw/src/animplayer_draw.cpp	kept	
+attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
+attachobject_update	scratch/try/attachobject_update/src/attachobject_update.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\attachobject_update.cpp # ---------------------------------------
+bsbifunc_ammo	scratch/try/bsbifunc_ammo/src/bsbifunc_ammo.cpp	kept	
+bsbifunc_attach	scratch/try/bsbifunc_attach/src/bsbifunc_attach.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_attach.cpp # ----------------------------------- #      59: class ISceneNode {
+bsbifunc_cheats	scratch/try/bsbifunc_cheats/src/bsbifunc_cheats.cpp	kept	
+bsbifunc_cook	scratch/try/bsbifunc_cook/src/bsbifunc_cook.cpp	kept	
+bsbifunc_death	scratch/try/bsbifunc_death/src/bsbifunc_death.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_death.cpp # ---------------------------------- #      31: class ISceneNode {
+bsbifunc_debug	scratch/try/bsbifunc_debug/src/bsbifunc_debug.cpp	kept	
+bsbifunc_dump	scratch/try/bsbifunc_dump/src/bsbifunc_dump.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #      48: class CVector3 {
+bsbifunc_events	scratch/try/bsbifunc_events/src/bsbifunc_events.cpp	kept	
+bsbifunc_grenade	scratch/try/bsbifunc_grenade/src/bsbifunc_grenade.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_grenade.cpp # ------------------------------------ #      43: class ISceneNode {
+bsbifunc_holdtime	scratch/try/bsbifunc_holdtime/src/bsbifunc_holdtime.cpp	kept	
+bsbifunc_level	scratch/try/bsbifunc_level/src/bsbifunc_level.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_level.cpp # ---------------------------------- #      35: class ISceneNode {
+bsbifunc_makenoise	scratch/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_makenoise.cpp # --------------------------------------
+bsbifunc_makenoise_bi	scratch/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\bsbifunc_makenoise_bi.cpp # -----------------------------------------
+bsbifunc_melee	scratch/try/bsbifunc_melee/src/bsbifunc_melee.cpp	kept	
+bsbifunc_mgflag	scratch/try/bsbifunc_mgflag/src/bsbifunc_mgflag.cpp	kept	weak IMovingSceneNode copies listed in weak_duplicates (redraft.py)
+bsbifunc_mountedmg	scratch/try/bsbifunc_mountedmg/src/bsbifunc_mountedmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mountedmg.cpp # -------------------------------------- #      26: class ISceneNode {
+bsbifunc_mpplayer	scratch/try/bsbifunc_mpplayer/src/bsbifunc_mpplayer.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpplayer.cpp # ------------------------------------- #      90: player->m_soldier->GetFlocoParams(velocity, frame);
+bsbifunc_mpprompt	scratch/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #      88: class CVector3 {
+bsbifunc_mpweapons	scratch/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpweapons.cpp # -------------------------------------- #      53: class ISceneNode {
+bsbifunc_playerammo	scratch/try/bsbifunc_playerammo/src/bsbifunc_playerammo.cpp	kept	weak_duplicates: ISceneNode::TriggerScriptEvent dropped (the header overrides it; no longer emitted)
+bsbifunc_playercoll	scratch/try/bsbifunc_playercoll/src/bsbifunc_playercoll.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_playercoll.cpp # --------------------------------------- #      29: class ISceneNode {
+bsbifunc_random	scratch/try/bsbifunc_random/src/bsbifunc_random.cpp	lost	Unexpected compiler dependencies
+bsbifunc_reload	scratch/try/bsbifunc_reload/src/bsbifunc_reload.cpp	kept	
+bsbifunc_respawn	scratch/try/bsbifunc_respawn/src/bsbifunc_respawn.cpp	kept	
+bsbifunc_shake	scratch/try/bsbifunc_shake/src/bsbifunc_shake.cpp	kept	
+bsbifunc_soundbank	scratch/try/bsbifunc_soundbank/src/bsbifunc_soundbank.cpp	kept	
+bsbifunc_soundoffset	scratch/try/bsbifunc_soundoffset/src/bsbifunc_soundoffset.cpp	kept	
+bsbifunc_vibration	scratch/try/bsbifunc_vibration/src/bsbifunc_vibration.cpp	kept	
+collision_head	scratch/try/collision_head/src/collision_head.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\collision_head.cpp # ---------------------------------- #     112: class ISceneNode {
+explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\explosion_dtor.cpp # ----------------------------------
+hierobject_constrain	scratch/try/hierobject_constrain/src/hierobject_constrain.cpp	kept	
+hierobject_update	scratch/try/hierobject_update/src/hierobject_update.cpp	kept	
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\impact_dtor.cpp # -------------------------------
+mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\mainloop.cpp # ---------------------------- #     313: class ISceneNode {};
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_collvol.cpp # ------------------------------------- #     480: script = &player->m_scriptObject;
+objcreate_createplayer	scratch/try/objcreate_createplayer/src/objcreate_createplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\objcreate_createplayer.cpp # ------------------------------------------
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_german.cpp # ------------------------------------ #      57: class ISceneNode : public IObserver {
+objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	kept	
+objcreate_playerscript	scratch/try/objcreate_playerscript/src/objcreate_playerscript.cpp	lost	'.text'
+objcreate_volumes	scratch/try/objcreate_volumes/src/objcreate_volumes.cpp	kept	
+player	scratch/try/player/src/player.cpp	lost	'extab'
+player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_begincrouch.cpp # -------------------------------------- #      14: class CVector3 {
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      49: class CVector3 {
+player_bounds	scratch/try/player_bounds/src/player_bounds.cpp	kept	
+player_bullet	scratch/try/player_bullet/src/player_bullet.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_bullet.cpp # --------------------------------- #      30: class ISceneNode {
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_commit.cpp # ---------------------------------
+player_constrain	scratch/try/player_constrain/src/player_constrain.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_constrain.cpp # ------------------------------------ #      62: if (m_collisions.m_size == 0)
+player_crouch	scratch/try/player_crouch/src/player_crouch.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_crouch.cpp # --------------------------------- #     195: CWeapon* weapon = m_weapons[m_currentWeapon];
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #      38: class ISceneNode : public IObserver {
+player_death	scratch/try/player_death/src/player_death.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_death.cpp # -------------------------------- #      86: m_collisionId = 25;
+player_draw	scratch/try/player_draw/src/player_draw.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\player_draw.cpp # -------------------------------
+player_dtor	scratch/try/player_dtor/src/player_dtor.cpp	lost	table kept off on purpose (defines ~CPlayerObject); with the header the destructor differs. Unexpected compiler function set
+player_fastvec	scratch/try/player_fastvec/src/player_fastvec.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_fastvec.cpp # ---------------------------------- #      33: template class dwi::fast_vec<CPlayerObject::CClsnInfo>;
+player_fov	scratch/try/player_fov/src/player_fov.cpp	kept	
+player_health	scratch/try/player_health/src/player_health.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     143: class CVector3 {
+player_init	scratch/try/player_init/src/player_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_init.cpp # ------------------------------- #      43: m_doodad.CleanUp();
+player_lightvolume	scratch/try/player_lightvolume/src/player_lightvolume.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_lightvolume.cpp # -------------------------------------- #      91: m_weapons[i]->ExitLightVolume(volume);
+player_mmg	scratch/try/player_mmg/src/player_mmg.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_mmg.cpp # ------------------------------
+player_move	scratch/try/player_move/src/player_move.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_move.cpp # ------------------------------- #      52: m_position = PositionRow();
+player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_respawn.cpp # ---------------------------------- #      34: class CVector3 {
+player_rows	scratch/try/player_rows/src/player_rows.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_rows.cpp # ------------------------------- #      25: v = UpRow();
+player_setweaponenable	scratch/try/player_setweaponenable/src/player_setweaponenable.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_setweaponenable.cpp # ------------------------------------------ #      20: WeaponView* weapon = m_weapons[type];
+player_switchweapon	scratch/try/player_switchweapon/src/player_switchweapon.cpp	kept	after CanPlayerSwitchWeapon was made non-const (the symbol has no C)
+player_tm	scratch/try/player_tm/src/player_tm.cpp	kept	
+player_transform	scratch/try/player_transform/src/player_transform.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\player_transform.cpp # ------------------------------------
+player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_updateai.cpp # ----------------------------------- #      21: class CVector3 {
+player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_vec_sub.cpp # ---------------------------------- #      24: class CVector3 {
+player_weapon	scratch/try/player_weapon/src/player_weapon.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon.cpp # --------------------------------- #      80: class CVector3 {
+player_weapon_donereload	scratch/try/player_weapon_donereload/src/player_weapon_donereload.cpp	kept	
+player_weapon_draw	scratch/try/player_weapon_draw/src/player_weapon_draw.cpp	kept	
+player_weapon_drawenabled	scratch/try/player_weapon_drawenabled/src/player_weapon_drawenabled.cpp	kept	
+player_weapon_object_head	scratch/try/player_weapon_object_head/src/player_weapon_object_head.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon_object_head.cpp # --------------------------------------------- #     372: CWeaponFlagsView* weapon = g_scene.GetPlayer(0)->GetCurrentWeapon();
+player_weapon_object_init	scratch/try/player_weapon_object_init/src/player_weapon_object_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon_object_init.cpp # --------------------------------------------- #      45: class CVector3 {
+player_weapon_selectable	scratch/try/player_weapon_selectable/src/player_weapon_selectable.cpp	kept	
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
+proxtrig_messages	scratch/try/proxtrig_messages/src/proxtrig_messages.cpp	kept	weak IMovingSceneNode copies listed in weak_duplicates (redraft.py)
+pumhandler_loop	scratch/try/pumhandler_loop/src/pumhandler_loop.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\pumhandler_loop.cpp # ----------------------------------- #     195: if (count > 0 && !g_scene.GetPlayer(0)->m_hideMessages && !g_bInMultiplayerMode) {
+scene_closestplayer	scratch/try/scene_closestplayer/src/scene_closestplayer.cpp	kept	
+scene_now	scratch/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\scene_now.cpp # -----------------------------
+scene_update	scratch/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\scene_update.cpp # --------------------------------
+scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #      96: class ISceneNode {
+sound	scratch/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\sound.cpp # ------------------------- #     148: class CVector3 {
+soundschedule_sound	scratch/try/soundschedule_sound/src/soundschedule_sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\soundschedule_sound.cpp # --------------------------------------- #      45: class CVector3 {
+thrownbullet_explosion	scratch/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\thrownbullet_explosion.cpp # ------------------------------------------

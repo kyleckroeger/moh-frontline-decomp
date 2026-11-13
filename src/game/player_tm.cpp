@@ -16,18 +16,8 @@
 #include "game/CMatrix.h"
 
 
-class CPlayerObject {
-public:
-    void GetTMLocalToWorld(CMatrix&) const;
+#include "game/CPlayerObject.h"
 
-    CVector3 UpRow() const { return m_tm.up; }
-    CVector3 ForwardRow() const { return m_tm.front; }
-    CVector3 RightRow() const { return m_tm.right; }
-    CVector3 PositionRow() const { return m_tm.pos; }
-
-    unsigned char unknown00[128];
-    CMatrix m_tm;
-};
 
 void CPlayerObject::GetTMLocalToWorld(CMatrix& matrix) const {
     matrix = m_tm;

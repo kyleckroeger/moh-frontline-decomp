@@ -112,11 +112,8 @@ struct AIDoodadView;
 
 class CAnimObject : public ISceneNode {};
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[1892];
-    unsigned long m_controller;
-};
+#include "game/CPlayerObject.h"
+
 
 class CSoldierObject {
 public:

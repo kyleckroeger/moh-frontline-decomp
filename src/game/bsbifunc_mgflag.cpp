@@ -40,10 +40,8 @@ struct BSObjectView {
     TriggerFlagsView* trigger;
 };
 
-class CPlayerObject {
-public:
-    void CycleWeapon(int, int);
-};
+#include "game/CPlayerObject.h"
+
 
 extern BSObjectView* g_pBSObject;
 
@@ -58,12 +56,7 @@ struct BSBuiltinView {
 extern BSBuiltinView* g_pBuiltInFunctions;
 extern int g_iCurrentBIFIndex;
 
-class IMovingSceneNode : public ISceneNode {
-public:
-    virtual void Reset();
-    virtual void Halt();
-    virtual void ApplyForceTo(CVector3, float);
-};
+
 
 #include "game/CScene.h"
 

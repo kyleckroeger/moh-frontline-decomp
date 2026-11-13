@@ -46,35 +46,8 @@ struct ViewportView {
     float height;
 };
 
-class CPlayerObject {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual void vf24();
-    virtual void vf28();
-    virtual void vf2c();
-    virtual void vf30();
-    virtual void vf34();
-    virtual void vf38();
-    virtual void vf3c();
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown004[915];
-    unsigned char flag397_7 : 1;
-    unsigned char m_dead : 1;
-    unsigned char flag397_low : 6;
-    unsigned char unknown398[972];
-    unsigned long m_controller;
-    unsigned char unknown768[2888];
-    int m_team;
-};
 
 #include "game/CScene.h"
 

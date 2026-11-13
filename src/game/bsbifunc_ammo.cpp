@@ -51,10 +51,8 @@ public:
     CWeapon* m_weapon;
 };
 
-class CPlayerObject {
-public:
-    CPlayerWeaponObject* GetWeapon(int) const;
-};
+#include "game/CPlayerObject.h"
+
 
 #include "game/CScene.h"
 

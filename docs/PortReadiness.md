@@ -294,6 +294,13 @@ are in the mangled names). It includes no other header, so units still on their 
 or CVector3 view can use it. 74 of 94 units moved (4 after renaming stripped labels); the 10
 scene units that use the containers by member wait for a dwi header.
 
+CPlayerObject, 2026-11-13: `include/game/CPlayerObject.h`, 0x12d0 bytes, the original's 72-slot
+table with its weak members inline, the agreed fields and flag bits, and byte ranges for the
+embedded objects that have no header yet. 41 of 103 units moved; 40 still have their own
+CVector3/CMatrix/ISceneNode view, player_dtor keeps the table off, the rest need code changes.
+With this the boot-path classes of this step (ISceneNode, CScene, CPlayerObject, CCamera,
+CScreen, CInputManager) all have a shared header.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

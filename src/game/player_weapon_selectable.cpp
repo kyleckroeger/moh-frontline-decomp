@@ -26,12 +26,8 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    unsigned char unknown000[919];
-    unsigned char m_flag919 : 1;
-    unsigned char unknown397 : 7;
-};
+#include "game/CPlayerObject.h"
+
 
 class CPlayerWeaponObject {
 public:

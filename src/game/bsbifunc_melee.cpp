@@ -52,15 +52,8 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    void CycleWeapon(int, int);
-    bool CanPlayerSwitchWeapon();
-    CWeapon* GetCurrentWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[1892];
-    int m_playerIndex;
-};
 
 class CSoldierObject {
 public:
