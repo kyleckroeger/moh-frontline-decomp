@@ -432,7 +432,7 @@
     "sphere.json",
     "UserInterface.json",
     "ConfigGC.json",
-    "pumhandler.json",
+    "pumhandler_dtor.json",
     "saems.json",
     "snddrv.json",
     "devicemgr.json",
@@ -1256,7 +1256,8 @@
     "cdbobject_init.json",
     "pumhandler_loop.json",
     "UserInterface_init.json",
-    "pumhandler_ctor.json"
+    "pumhandler_ctor.json",
+    "pumhandler.json"
   ],
   "progress": {
     "code_bytes": 1414572,

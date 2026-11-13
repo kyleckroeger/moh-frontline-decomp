@@ -1,40 +1,80 @@
-// PopUpMessageHandler's destructor: it deletes the three objects it holds and
-// then its array of pop-up messages is destroyed. PopUpMessageHandler and
-// PopUpMessage are named by the mangled symbols; the members are inferred
-// from offsets. The held pointers are deleted through a virtual destructor at
-// the slot CRenderBin's sprites and fonts use, so they are viewed as
-// CRenderBin pointers (their exact classes are not known). CRenderBin is an
-// inferred view: 28 bytes of members, then its virtual table pointer, with
-// the virtual destructor in the first slot.
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
+// The end of pumhandler.cpp (0x800ba7ac): the file's static initialiser.
+// It constructs the user message table and the subtitle queue in the file's
+// .bss block and registers their destructors. The CUserMessageTable
+// constructor (placed by pumhandler_umt_dtor, a file duplicate here) is
+// compiled first and inlined into the initialiser. The queue's sentinel is
+// built from a default QueuedSubtitle whose times are never set: the
+// compiler keeps them in f31, saved but never loaded, as in the original.
+// CUserMessageTable, QueuedSubtitle, the dwi list and the globals are named
+// by the mangled symbols; the members, the inline list constructor and the
+// QueuedSubtitle view (its colour as four bytes, inferred: a CColor member
+// keeps the times on the stack) are inferred. lastString is a size view of
+// AddSubtitle's 50-byte static buffer, which sits between the two objects in
+// the original block. The rest of the file is not part of this unit.
 
-    virtual ~CRenderBin();
+/* inferred: a queued subtitle's delay, on-screen time, colour and text */
+struct QueuedSubtitle {
+    QueuedSubtitle() : m_r(0), m_g(0), m_b(0), m_a(128) {}
+
+    float m_delay;
+    float m_time;
+    unsigned char m_r;
+    unsigned char m_g;
+    unsigned char m_b;
+    unsigned char m_a;
+    char m_text[48];
 };
 
-class PopUpMessage {
-public:
-    ~PopUpMessage();
+namespace dwi {
+template <class T>
+struct list_node {
+    list_node(list_node* prev, list_node* next, const T& data) : m_prev(prev), m_next(next), m_data(data) {}
 
-    unsigned char unknown00[76];
+    list_node* m_prev;
+    list_node* m_next;
+    T m_data;
 };
 
-class PopUpMessageHandler {
+template <class T>
+class list {
 public:
-    ~PopUpMessageHandler();
+    list() : m_count(0), m_capacity(0), m_pool(0), m_free(0), m_head(&m_head, &m_head, T()), m_owned(true) {}
+    ~list();
 
-    PopUpMessage m_messages[20];
-    unsigned char unknown5f0[4];
-    CRenderBin* m_bin5f4;
-    unsigned char unknown5f8[4];
-    CRenderBin* m_bin5fc;
-    CRenderBin* m_bin600;
+    int m_count;
+    int m_capacity;
+    list_node<T>* m_pool;
+    list_node<T>* m_free;
+    list_node<T> m_head;
+    bool m_owned;
 };
-
-PopUpMessageHandler::~PopUpMessageHandler() {
-    delete m_bin600;
-    delete m_bin5fc;
-    delete m_bin5f4;
-    m_bin5f4 = 0;
 }
+
+struct SUserMessage {
+    char* m_text;
+    unsigned char m_length;
+    unsigned char m_extra;
+};
+
+class CUserMessageTable {
+public:
+    ~CUserMessageTable();
+    CUserMessageTable();
+
+    SUserMessage* m_messages;
+    char* m_text;
+    unsigned char* m_index;
+    int m_count;
+};
+
+CUserMessageTable::CUserMessageTable() {
+    m_messages = 0;
+    m_index = 0;
+    m_text = 0;
+    m_count = 0;
+}
+
+CUserMessageTable umTable;
+/* view: AddSubtitle's static buffer (lastString), placed by pumhandler_add */
+static char s_lastStringView[50];
+dwi::list<QueuedSubtitle> g_subtitle_queue;

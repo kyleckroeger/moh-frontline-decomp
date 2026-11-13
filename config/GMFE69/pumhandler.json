@@ -34,40 +34,47 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800ba304",
-      "size": 204,
+      "address": "0x800ba7ac",
+      "size": 276,
+      "type": 1
+    },
+    {
+      "name": ".ctors",
+      "address": "0x8016dfd8",
+      "size": 4,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000d9b8",
+      "address": "0x8000da78",
       "size": 8,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80014978",
+      "address": "0x80014990",
       "size": 12,
       "type": 1
     }
   ],
   "functions": [
     {
-      "name": "__dt__19PopUpMessageHandlerFv",
-      "address": "0x800ba304",
-      "size": 204,
-      "binding": 1
+      "name": "__sinit_pumhandler_cpp",
+      "address": "0x800ba7ac",
+      "size": 276,
+      "binding": 0
     }
   ],
   "externals": {
-    "__destroy_arr": "0x801382d4",
-    "__dl__FPv": "0x8001ca2c",
-    "__dt__12PopUpMessageFv": "0x800bf918"
+    "__ct__17CUserMessageTableFv": "0x800b87f4",
+    "__dt__17CUserMessageTableFv": "0x800b8770",
+    "__dt__Q23dwi22list<14QueuedSubtitle>Fv": "0x800b8e58",
+    "__register_global_object": "0x801381bc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -76,5 +83,19 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "pumhandler.cpp",
-  "original_file_index": 7152
+  "original_file_index": 7152,
+  "file_duplicates": [
+    "__ct__17CUserMessageTableFv"
+  ],
+  "pooled_sections": [
+    ".bss"
+  ],
+  "pool_references": [
+    {
+      "section": ".bss",
+      "offset": 0,
+      "size": 12,
+      "address": "0x801ef3e0"
+    }
+  ]
 }

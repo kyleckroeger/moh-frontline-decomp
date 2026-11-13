@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1280340,
+    "matching_code_bytes": 1280616,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.510769335177,
+    "percent": 90.53028053715187,
     "categories": {
-      "reconstructed_game": 1041280,
+      "reconstructed_game": 1041556,
       "restored_library": 239060
     },
-    "matching_functions": 4907
+    "matching_functions": 4908
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1039,10 +1039,11 @@
     "src/game/publisher_reset.cpp": "a1cfa9d08b42939f2e2475bc59be0c73655d1887d88f4cf095a59655c3b63c57",
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
     "src/game/publisher_setsubject.cpp": "b71af911609193ab664db4b18c3bd54c35b39b2682e97ffe74a9e3707e807afe",
-    "src/game/pumhandler.cpp": "e57974fbd64a054880e20417a2677e984dab9d510d6681e542f811b257cd123a",
+    "src/game/pumhandler.cpp": "525478a92890bbbb3fb8cebc7d9c151ffebf018a126645f37b59289ce0214dee",
     "src/game/pumhandler_add.cpp": "dd2febc0f9ff98f3f2d0f6f17f4f8fe5c8018543018452072a7cd750eb2e9d4e",
     "src/game/pumhandler_block.h": "f0b0344cd5ce6a5ac802b9fcc8759e9cff50a1af136f6ccc0fbbda412454fb47",
     "src/game/pumhandler_ctor.cpp": "ab5d5f62d5e36a87bb48099587be23bead575565e770258364b5a0f184b52f6b",
+    "src/game/pumhandler_dtor.cpp": "f0a2cc2d3273db70a909976fbf87574e1848b63866640d8e240d3630305f4eab",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_ctor.cpp": "2473a2861abe4ceaafe89851cda62ace1190d541eeaf1bbdd0852ed1d0abb6ae",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
@@ -2564,7 +2565,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "12f3738ee24db427d6272824ef99202b411c1cb7e52c0dfb71ff5d88624a7f0e",
+    "config/GMFE69/project.json": "68991963b406630012bcbdad3e049b0b2a51b375daaaf9414fa979b4471c2c0f",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2584,9 +2585,10 @@
     "config/GMFE69/publisher_reset.json": "141acd769ac3bb90714139ed8a28b1b7c5c3618857a481f05092cc2621f2bf1a",
     "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
     "config/GMFE69/publisher_setsubject.json": "e07676cb0fbd649f1ce3eb79678bdb80211821ed91a4290bb96a0ad77d482940",
-    "config/GMFE69/pumhandler.json": "6807ad331fe3446f44854a45813c1a5f2986c2ef63431ba845f359ae17aa3393",
+    "config/GMFE69/pumhandler.json": "4a1b9c1c0ad38d848976223b974a49c13ff2b783970c8734f0b38fc77ab873e0",
     "config/GMFE69/pumhandler_add.json": "fe8854e79c304d80cacf9ad63f19fc53c3a178c035fd2d995e3fedb8d74f921c",
     "config/GMFE69/pumhandler_ctor.json": "4b8064fb00e0213cca7da4b4e6a3c57d9ecbd5e4780842bff61cf19d854f3abf",
+    "config/GMFE69/pumhandler_dtor.json": "eb1fa3c0678cfc63cc3e93936b88f995bacc9a497f81ba0d1141697823d52233",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_ctor.json": "afd763151cd34d04af50ee01cd475a2ac936c950291a77939b2ab0013d27fa87",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
@@ -21619,7 +21621,7 @@
       "linked_sha256": "544781b94e4bbb005fe1ed2361e93f1da6da4849a36747fd8a8955b656091b96"
     },
     {
-      "id": "pumhandler",
+      "id": "pumhandler_dtor",
       "category": "reconstructed_game",
       "functions": 1,
       "code_bytes": 204,
@@ -21654,8 +21656,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "01e93f814df4f886c5843b9af2c0331401d9f01b67d31bb395cd27e1395b4e4b",
-      "linked_sha256": "0940a6a4c7bcdff5e81cb1d4daace1d08ce4e72627c1aaf0bc3e5fc1bbf464a1"
+      "object_sha256": "b72a9c5932b4c5b5e538c5242b6155c5d8cdbadd73fdbde0da948b7d14f645cc",
+      "linked_sha256": "4a14ec3c74511c7b328007863d22a90f1fe4b92a1632466196bd41ba7dffb349"
     },
     {
       "id": "saems",
@@ -54311,6 +54313,45 @@
       ],
       "object_sha256": "55d71cd08a2c0d98507a47ee7906748232791b2bf34fb29105c1348a05b419d8",
       "linked_sha256": "8f2932604f51faeda1fcd188d038888cc65a9eb439671da845ff615d232ba0bf"
+    },
+    {
+      "id": "pumhandler",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 276,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": true,
+      "discarded_functions": [],
+      "object_sha256": "9a209348165dad7c1b85a95b1e1eb1f89bf9232077f0152915882d7819fc7452",
+      "linked_sha256": "3e1ec4d49c21a5dc8516d7ec971793a564aca9c580ecd09ddb2978214fbe8efd"
     }
   ],
   "code_map": {
@@ -54941,20 +54982,6 @@
             "kind": "function",
             "name": "AllocateStaticObject__20CStaticObjectFactoryFii",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/pumhandler.cpp [local symbols only]",
-        "file_record": 124,
-        "file_name": "pumhandler.cpp",
-        "ranges": [
-          {
-            "address": "0x800ba7ac",
-            "size": 276,
-            "kind": "function",
-            "name": "__sinit_pumhandler_cpp",
-            "evidence": "local-file-symbol"
           }
         ]
       },

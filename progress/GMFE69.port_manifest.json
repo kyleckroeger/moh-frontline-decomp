@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1256,
- "function_bytes_by_status": {"consistent": 120604, "differs": 8984, "exact": 4472, "verified": 1271496},
+ "verified_units": 1257,
+ "function_bytes_by_status": {"consistent": 120604, "differs": 8708, "exact": 4472, "verified": 1271772},
  "data_bytes_owned": 724660,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2385,9 +2385,9 @@
  [2148242316, 148, "PromptUserMessage__FUiP19PopUpMessageHandler", "verified", "src/game/pumhandler_prompt.cpp"],
  [2148242464, 1504, "AddPopUpMessage__19PopUpMessageHandlerFPcUcUsUsUcUcUcUcUcUcUc", "verified", "src/game/pumhandler_add.cpp"],
  [2148243968, 2308, "PopUpMessageHandler_Loop__19PopUpMessageHandlerFv", "verified", "src/game/pumhandler_loop.cpp"],
- [2148246276, 204, "__dt__19PopUpMessageHandlerFv", "verified", "src/game/pumhandler.cpp"],
+ [2148246276, 204, "__dt__19PopUpMessageHandlerFv", "verified", "src/game/pumhandler_dtor.cpp"],
  [2148246480, 988, "__ct__19PopUpMessageHandlerFPcPc", "verified", "src/game/pumhandler_ctor.cpp"],
- [2148247468, 276, "__sinit_pumhandler_cpp", "differs", "research/drafts/pumhandler_ctor.cpp"],
+ [2148247468, 276, "__sinit_pumhandler_cpp", "verified", "src/game/pumhandler.cpp"],
  [2148247744, 36, "AddHitDirection__13UserInterfaceFUi", "verified", "src/game/UserInterface_hitdirection.cpp"],
  [2148247780, 632, "DisplayTimeStamp__Ff", "verified", "src/game/UserInterface_xfilestime.cpp"],
  [2148248412, 644, "DisplayLandmarkStamp__Ff", "verified", "src/game/UserInterface_xfilestime.cpp"],
