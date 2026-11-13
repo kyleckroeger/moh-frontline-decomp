@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80160cc0",
-      "size": 1296,
+      "size": 1308,
       "type": 1
     },
     {
@@ -78,6 +78,12 @@
       "name": "SNDMIXI_fxadd",
       "address": "0x80160f7c",
       "size": 596,
+      "binding": 1
+    },
+    {
+      "name": "MIX_getwetbuffer",
+      "address": "0x801611d0",
+      "size": 12,
       "binding": 1
     }
   ],

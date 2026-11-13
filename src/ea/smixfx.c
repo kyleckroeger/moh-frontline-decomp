@@ -16,7 +16,7 @@
 // FXfilterindex is the file's static. sndfx's layout, the mixer, header,
 // head, module and module-list views and the copy table's shape are inferred
 // (the mixer as in smixer_create.c). The file's last function,
-// MIX_getwetbuffer, is in the smixfram unit (its range starts there).
+// MIX_getwetbuffer, returns the wet (effects) buffer, sndfx.
 extern "C" void* memset(void*, int, unsigned long);
 extern "C" float sndfx[];
 
@@ -201,4 +201,8 @@ extern "C" void SNDMIXI_fxadd(int count) {
             sndmix.scalemix(count, 1.0f, (int*)sndfx, (float*)sndmix.alignedMix[i]);
     }
     memset(sndfx, 0, count * 4);
+}
+
+extern "C" void* MIX_getwetbuffer(void) {
+    return sndfx;
 }

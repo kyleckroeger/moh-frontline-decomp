@@ -4843,7 +4843,7 @@
  [2148928704, 148, "SNDMIXI_fxinit", "verified", "src/ea/smixfx.c"],
  [2148928852, 552, "SNDMIXI_modlapifxadd", "verified", "src/ea/smixfx.c"],
  [2148929404, 596, "SNDMIXI_fxadd", "verified", "src/ea/smixfx.c"],
- [2148930000, 12, "MIX_getwetbuffer", "verified", "src/ea/smixfram.c"],
+ [2148930000, 12, "MIX_getwetbuffer", "verified", "src/ea/smixfx.c"],
  [2148930012, 80, "MIX_getframe", "verified", "src/ea/smixfram.c"],
  [2148930092, 216, "MIX_setpitch", "verified", "src/ea/smixptch.c"],
  [2148930308, 64, "MIX_settimemult", "verified", "src/ea/smixtmul.c"],
