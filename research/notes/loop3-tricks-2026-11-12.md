@@ -990,3 +990,13 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
 - CW removes a dead '-OSGetTick()' start chain completely in every form tried (sa/toy1-2), yet SweepAllExtents' original
   keeps three dead 'neg' results in callee registers: some construct keeps the start values live until after register
   allocation. Open.
+- (late1) Single integer-type substitution sweep (scratch/loop3/day2/l1/tsweep.py: every int-like type token
+  in the function body and in prototypes/inline headers, one at a time) over 24 rows. Leads, none landable:
+  CPartBin::Link 'char skinned' for 'bool skinned' (= mesh->m_skin != 0) puts EVERY register where the
+  original has it (difflib 62 -> 13); only the signed char's extsb/extsb. remain, so the knot is that bool's
+  value, not the rest (bool/!!/?:/0 != x/placement: 62-120). LLCharObjCompositeMorph: ChangeEndian
+  reading back through 'unsigned short*' fixes the first expansion's r5/r8/r9 rotation but loads lhz/srawi
+  (logic differs). The first DecodeMorphFrame expansion alone differs; the CompositeFrame copy is exact.
+  _find_aim_blend_values: only the 4th TriangleBlend expansion differs. CVolBox::TestCollision(CVolSphere):
+  'CVector3 local(Dot0, Dot1, Dot2)' gives the original's x, y, z store order but shifts the FPRs (38/28).
+  '-inline' variants (auto/deferred/on/noauto/all/level=1) changed nothing on any of the 45 rows.
