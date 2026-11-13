@@ -1,6 +1,6 @@
 {
-  "id": "dvdStatus_check",
-  "source": "src/game/dvdStatus_check.cpp",
+  "id": "dvdStatus_base",
+  "source": "src/game/dvdStatus_base.cpp",
   "category": "reconstructed_game",
   "compiler_family": "GC",
   "compiler_version": "1.3.2",
@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,20 +40,20 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80109258",
-      "size": 1324,
+      "address": "0x80108e18",
+      "size": 2988,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fddc",
-      "size": 16,
+      "address": "0x8000fdcc",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80016bc8",
-      "size": 24,
+      "address": "0x80016bb0",
+      "size": 60,
       "type": 1
     },
     {
@@ -69,6 +69,12 @@
       "type": 1
     },
     {
+      "name": ".bss",
+      "address": "0x803168e0",
+      "size": 60,
+      "type": 8
+    },
+    {
       "name": ".sdata",
       "address": "0x8034e428",
       "size": 4,
@@ -76,18 +82,24 @@
     },
     {
       "name": ".sbss",
-      "address": "0x8034ef60",
-      "size": 4,
+      "address": "0x8034ef40",
+      "size": 36,
       "type": 8
-    },
-    {
-      "name": ".sdata2",
-      "address": "0x80351360",
-      "size": 24,
-      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "RFPuts__FssPc",
+      "address": "0x80108f7c",
+      "size": 732,
+      "binding": 0
+    },
+    {
+      "name": "DrawMessage__FiPc",
+      "address": "0x80108e18",
+      "size": 356,
+      "binding": 0
+    },
     {
       "name": "ShowDVDError__Fi",
       "address": "0x80109464",
@@ -99,71 +111,114 @@
       "address": "0x80109258",
       "size": 524,
       "binding": 1
+    },
+    {
+      "name": "GxAndVIInit",
+      "address": "0x80109784",
+      "size": 576,
+      "binding": 1
     }
   ],
   "externals": {
     "C_MTXOrtho": "0x80116dbc",
     "DVDGetDriveStatus": "0x8011a1f8",
-    "DrawMessage__FiPc": "0x80108e18",
-    "FontData": "0x8034ef40",
-    "FontSize": "0x8034ef48",
-    "FontSpace": "0x8034ef4a",
+    "GXAdjustForOverscan": "0x8012c6f4",
     "GXBegin": "0x8012c3c8",
     "GXClearVtxDesc": "0x8012b554",
     "GXCopyDisp": "0x8012cf78",
     "GXDrawDone": "0x8012bff0",
+    "GXInit": "0x80129610",
+    "GXInitTexObj": "0x8012da0c",
+    "GXInitTexObjLOD": "0x8012dcc8",
     "GXLoadPosMtxImm": "0x80130238",
+    "GXLoadTexMtxImm": "0x80130320",
+    "GXLoadTexObj": "0x8012e02c",
+    "GXMpal480IntDf": "0x8019015c",
+    "GXNtsc480IntDf": "0x80190120",
+    "GXPal528IntDf": "0x80190198",
     "GXSetBlendMode": "0x8012fa78",
     "GXSetChanCtrl": "0x8012d828",
     "GXSetChanMatColor": "0x8012d674",
+    "GXSetCopyFilter": "0x8012cd34",
     "GXSetCullMode": "0x8012c63c",
     "GXSetCurrentMtx": "0x801302e4",
+    "GXSetDispCopyDst": "0x8012c8d4",
+    "GXSetDispCopyGamma": "0x8012cf5c",
+    "GXSetDispCopySrc": "0x8012c814",
+    "GXSetDispCopyYScale": "0x8012cbf8",
     "GXSetNumChans": "0x8012d7dc",
     "GXSetNumTevStages": "0x8012f794",
     "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetPixelFmt": "0x8012fcb4",
     "GXSetProjection": "0x8012ff84",
+    "GXSetScissor": "0x801304e4",
     "GXSetTevOp": "0x8012ee78",
     "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetViewport": "0x801304c0",
     "GXSetVtxAttrFmt": "0x8012b5a0",
     "GXSetVtxDesc": "0x8012b08c",
-    "GxAndVIInit": "0x80109784",
+    "OSGetFontTexture": "0x80113344",
+    "OSGetFontWidth": "0x801134bc",
     "OSGetResetButtonState": "0x80114c5c",
     "OSGetTime": "0x80116a40",
     "OSInitFont": "0x80113264",
     "OSResetSystem": "0x801148d0",
     "PADRead": "0x8011d460",
     "PSMTXIdentity": "0x80116bb0",
+    "PSMTXScale": "0x80116ca4",
+    "VIConfigure": "0x8011bc00",
     "VIFlush": "0x8011c39c",
+    "VIGetTvFormat": "0x8011c748",
+    "VIInit": "0x8011b2c0",
     "VISetBlack": "0x8011c524",
     "VISetNextFrameBuffer": "0x8011c4b8",
     "VIWaitForRetrace": "0x8011b738",
     "__div2i": "0x80138b60",
-    "gFrameBuffer": "0x8034ef50",
-    "gHeapPtr": "0x8034ef54",
-    "gRMode": "0x803168e0",
     "memset": "0x80009410",
     "printf": "0x8013dc88"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "DrawMessage__FiPc",
-    "FontData",
-    "FontSize",
-    "FontSpace",
-    "gFrameBuffer",
-    "gHeapPtr",
-    "gRMode"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [
-    "FontData",
-    "FontSize",
-    "FontSpace",
-    "gFrameBuffer",
-    "gHeapPtr"
-  ],
+  "sda_externals": [],
   "original_file": "dvdStatus_base.c",
-  "original_file_index": 10417
+  "original_file_index": 10417,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80351364"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80351368"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x80351378"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x80351360"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x80351370"
+    }
+  ]
 }
