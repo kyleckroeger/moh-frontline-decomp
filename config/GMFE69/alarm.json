@@ -31,14 +31,17 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
-  "strip_unused": false,
-  "source_root": "scratch/game",
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8005a3a8",
-      "size": 104,
+      "address": "0x80059974",
+      "size": 2716,
       "type": 1
     },
     {
@@ -49,14 +52,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000aecc",
-      "size": 8,
+      "address": "0x8000ae8c",
+      "size": 72,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80012008",
-      "size": 12,
+      "address": "0x80011fa8",
+      "size": 108,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170310",
+      "size": 11,
       "type": 1
     },
     {
@@ -64,26 +73,114 @@
       "address": "0x801c6c98",
       "size": 48,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fb30",
+      "size": 24,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc",
+      "address": "0x8005a270",
+      "size": 312,
+      "binding": 0
+    },
     {
       "name": "__sinit_alarm_cpp",
       "address": "0x8005a3a8",
       "size": 104,
       "binding": 0
+    },
+    {
+      "name": "BIFunc_SetAlarmActivated__FPPiPv",
+      "address": "0x80059974",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_IsAlarmActivated__FPPiPv",
+      "address": "0x800599c4",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_AlarmIsAvailable__FPPiPv",
+      "address": "0x800599f8",
+      "size": 424,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_GetClosestAlarm__FPPiPv",
+      "address": "0x80059ba0",
+      "size": 444,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_SetAlarmOccupy__FPPiPv",
+      "address": "0x80059d5c",
+      "size": 272,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_UnregisterAlarm__FPPiPv",
+      "address": "0x80059e6c",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "reserve__Q23dwi16list<9AlarmInfo>FiPc",
+      "address": "0x8005a014",
+      "size": 436,
+      "binding": 2
+    },
+    {
+      "name": "BIFunc_RegisterAlarm__FPPiPv",
+      "address": "0x80059f3c",
+      "size": 216,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q23dwi16list<9AlarmInfo>Fv",
+      "address": "0x8005a1c8",
+      "size": 168,
+      "binding": 2
     }
   ],
   "externals": {
-    "__dt__Q23dwi16list<9AlarmInfo>Fv": "0x8005a1c8",
-    "__register_global_object": "0x801381bc"
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
+    "MEM_free": "0x8014f83c",
+    "__ct__21CAIFilterRealPositionFv": "0x800523c8",
+    "__dl__FPv": "0x8001ca2c",
+    "__register_global_object": "0x801381bc",
+    "g_alarm_activated": "0x8034e920",
+    "g_iCurrentBIFIndex": "0x8034e77c",
+    "g_pBuiltInFunctions": "0x8034e778"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_alarm_activated",
+    "g_iCurrentBIFIndex",
+    "g_pBuiltInFunctions"
+  ],
   "original_file": "alarm.cpp",
-  "original_file_index": 2538
+  "original_file_index": 2538,
+  "weak_duplicates": [
+    "AsSoldierObject__10ISceneNodeFv",
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv"
+  ],
+  "weak_locals": [
+    "__ct<Q23dwi21list_iter<9AlarmInfo>>__Q23dwi16list<9AlarmInfo>FiQ23dwi21list_iter<9AlarmInfo>Q23dwi21list_iter<9AlarmInfo>Pc"
+  ]
 }
