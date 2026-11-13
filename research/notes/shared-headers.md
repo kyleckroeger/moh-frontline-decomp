@@ -99,6 +99,8 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
   - collisionvolume_ctor verifies but is held back: tests/test_data_strip.py uses it as the
     weak-vtable fixture and pins its stripped_sections to [.data]; the copies add .sdata2.
     Moving it needs that assertion updated (a test change, left to the maintainer).
+    Moved 2026-11-12 (q17 accepted, agent unlockA): the assertion now requires `.data` and allows
+    `.sdata2` beside it.
   - 8 .text differs (real code differences, not the weak copies): AIFilter_queries,
     Tank_object_update, compartment_render, explosion_dtor, objcreate_german, player_bullet,
     player_draw, thrown_obj_cleanup.
@@ -119,7 +121,7 @@ or CMatrix view, which the header's include of game/CMatrix.h redefines. Of the 
   weak copies), hierobject_draw, mainloop_game, objcreate_destroy, particlesystem_beginupdate,
   thrown_obj_ctor/dtor/init (.text), anim_obj (compiler dependencies), bsbifunc_explosion and
   particlesystem (.sdata2 pool), decal_dtor, the two CPropertyAnimLight destructors and
-  collisionvolume_ctor (held, test).
+  collisionvolume_ctor (held, test; moved later, see above).
 - 39 didn't compile: 15 use `AIDoodadView` members through GetAIDoodad() (the real class is
   CAIDoodad; renaming the view would change code), 7 BSObject/BSObjectView the same way,
   4 the scene's `SExtent` nested in their own ISceneNode view, 5 name the data members

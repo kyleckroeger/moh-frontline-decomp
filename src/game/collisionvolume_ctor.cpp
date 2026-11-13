@@ -14,47 +14,13 @@
 // original (kept from another file) and the compiler emits a weak copy of the
 // table and of the destructor here; both are weak duplicates, linked to the
 // original copies.
-enum EClsnId {};
 class IVolume;
 
 #include "game/CVector3.h"
 
 #include "game/CMatrix.h"
 
-
-class IDestructible {
-public:
-    IDestructible() {}
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-};
-
-class ISubject : public IDestructible {
-public:
-    ISubject() {}
-    virtual ~ISubject();
-};
-
-class IObserver : public ISubject {
-public:
-    IObserver() {}
-    virtual ~IObserver();
-};
-
-class ISceneNode : public IObserver {
-public:
-    ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
-    virtual ~ISceneNode() {}
-
-    int data04;
-    int data08;
-    int data0c;
-    int data10;
-    int data14;
-    int data18;
-    int data1c;
-    int data20;
-};
+#include "game/ISceneNode.h"
 
 class CCollisionVolume : public ISceneNode {
 public:

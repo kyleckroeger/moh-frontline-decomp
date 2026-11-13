@@ -169,7 +169,10 @@ class DataStripping(unittest.TestCase):
         compiled, unit = self.weak_data_duplicate_unit()
         name = '__vt__10ISceneNode'
         self.assertIn(name, unit['weak_duplicates'])
-        self.assertEqual(unit['stripped_sections'], ['.data'])
+        # .data holds the compiled weak vtable; with the shared ISceneNode header the
+        # weak inline copies may also bring .sdata2, which is stripped as well.
+        self.assertIn('.data', unit['stripped_sections'])
+        self.assertLessEqual(set(unit['stripped_sections']), {'.data', '.sdata2'})
         after = Elf32(strip_objects(compiled, unit))
         defined = [s for s in after.symbols() if s['name'] == name + '$duplicate']
         self.assertEqual([(s['binding'], s['type']) for s in defined], [(2, 1)])
