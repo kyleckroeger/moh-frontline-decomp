@@ -1,6 +1,15 @@
-// projectilebullet.cpp from CProjectileBulletRenderBin::Render (0x800d0b3c) to
-// the end of the file. The render bin's destructor and Link before Render are
-// separate units (projectilebullet_dtor, projectilebullet_link).
+// projectilebullet.cpp, the whole file. It is compiled with deferred inlining
+// and written last function first (the image order is the reverse), which
+// puts the render bins' RTTI names first in .rodata as in the original.
+//
+// The CProjectileBulletRenderBin destructor (weak) and Link (GX state for
+// textured, vertex-coloured, blended quads with depth test but no depth
+// writes; each linked tracer drawn as a white quad from the four corners
+// STracer::GetVerts gives in camera space; depth writes back on and the camera
+// axes marked cached) with the weak STracer::GetVerts emitted after it (the
+// segment's ends moved either way along a side vector: the camera's Y axis
+// minus, or negated minus, its X axis as the segment runs, normalised and
+// scaled by the tracer's width times a mode factor).
 //
 // CProjectileBulletRenderBin::Render: the first time, the camera's rightward
 // and upward axes are cached in the file's g_XAxis and g_YAxis; the tracer's
@@ -63,6 +72,7 @@
 // type numbers are inferred. CVector3 is a double-pair view (copies move
 // doubleword pairs). The accessors are inline in the original (weak
 // symbols); they are defined __declspec(weak) in the original text order.
+#include <dolphin/gx.h>
 #include <math.h>
 
 class CDrawContext;
@@ -71,6 +81,9 @@ class CCollision;
 class CLine3;
 class CScreen;
 class CDmaTag;
+struct STracer;
+class CDmaPacket;
+class CRenderList;
 class CPlayerObject;
 class CLight;
 class BPDLightVolume;
@@ -144,6 +157,7 @@ public:
     void SetUp(CVector3);
     CVector3 GetPos() const { return pos; }
     CVector3 GetFront() const { return front; }
+    void GetGAMECUBEMatrix34(float (&)[3][4]) const;
 
     CVector3 right;
     CVector3 front;
@@ -450,6 +464,7 @@ class ShapeFile;
 class CTexture {
 public:
     void Set(ShapeFile*, bool);
+    void Load(CDmaPacket&, CRenderList*);
 
     int unknown00[16];
 };
@@ -466,6 +481,13 @@ struct LevelFileContentsStruct_ {
 LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
 ShapeFile* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
+/* Inferred: a render tag's link and its tracer. */
+class CDmaTag {
+public:
+    CDmaTag* m_next;
+    STracer* m_tracer;
+};
+
 /* Inferred: the packet's write cursor at +8. */
 class CDmaPacket {
 public:
@@ -475,6 +497,8 @@ public:
 
 /* Inferred: a tracer's segment and width (40 bytes, added to the packet). */
 struct STracer {
+    void GetVerts(CVector3*);
+
     CVector3 m_start;
     float m_width;
     CVector3 m_end;
@@ -515,6 +539,7 @@ class CProjectileBulletRenderBin : public CRenderBin {
 public:
     virtual ~CProjectileBulletRenderBin();
     virtual int Render(CDmaPacket&, void*);
+    virtual void Link(CDmaTag*, CDmaPacket&);
     CProjectileBulletRenderBin() : m_loaded(false) { m_priority = 7; }
 
     bool m_loaded;
@@ -625,223 +650,52 @@ static CScreen* g_pScreen;
 static CDrawContext* g_pContext;
 static bool g_bCached;
 
-int CProjectileBulletRenderBin::Render(CDmaPacket& packet, void* data) {
-    TracerData* tracer = (TracerData*)data;
-    if (!g_bCached) {
-        g_bCached = true;
-        g_pContext->m_camera->GetRightward(g_XAxis);
-        g_pContext->m_camera->GetUpward(g_YAxis);
-    }
-    STracer copy;
-    copy.m_start = tracer->start;
-    copy.m_end = tracer->end;
-    copy.m_width = tracer->width;
-    g_WorldToCamera = *g_pContext->m_worldToCamera;
-    STracer* out = (STracer*)packet.m_cur;
-    out->m_start = copy.m_start;
-    out->m_end = copy.m_end;
-    out->m_width = copy.m_width;
-    packet.m_cur += sizeof(STracer);
-    return 0;
-}
-
-void CProjectileBullet::GetVelocity(CVector3& velocity) {
-    CVector3 direction = m_matrix.front;
-    float speed = m_speed;
-    velocity.v[0] = speed * direction.v[0];
-    velocity.v[1] = speed * direction.v[1];
-    velocity.v[2] = speed * direction.v[2];
-}
-
-void CProjectileBullet::SetExclusionPair(ISceneNode* node) {
-    if (m_excluded)
-        g_scene.IncludeCollision(*m_excluded, *this);
-    m_excluded = node;
-}
-
-int CProjectileBullet::GetScriptBulletType() const {
-    switch (m_type) {
-    case 0:
-    case 1:
-        return 10;
-    case 2:
-    case 3:
-        return 0;
-    case 4:
-    case 5:
-        return 4;
-    case 6:
-        return 12;
-    case 7:
-    case 8:
-        return 13;
-    case 9:
-        return 11;
-    case 10:
-    case 13:
-        return 5;
-    case 11:
-        return 14;
-    case 12:
-        return 15;
-    case 14:
-    case 15:
-        return 6;
-    case 16:
-    case 17:
-        return 1;
-    case 18:
-    case 19:
-        return 16;
-    case 20:
-    case 21:
-        return 19;
-    case 22:
-    case 23:
-        return 20;
-    case 24:
-    case 25:
-        return 2;
-    case 26:
-    case 27:
-        return 18;
-    case 28:
-        return 17;
-    case 29:
-        return 27;
-    default:
-        DebugMsg("WARNING: Unknown proj bullet type in GetScriptBulletType.  Type %d\n", m_type);
-        return 4;
-    }
-}
-
-bool CProjectileBullet::IsVisible(CDrawContext& context) const {
-    return m_fiberB.TestVisibility(context);
-}
-
-void CProjectileBullet::Draw(CDrawContext& context) {
-    if (g_cheats.flag0b)
-        return;
-    if (g_bInMultiplayerMode && m_owner && m_owner->AsPlayerObject() &&
-        context.GetViewport() != m_owner->AsPlayerObject()->GetViewport() &&
-        m_life > (float)m_properties->life - MP_PROJBULLET_DRAW_DELAY)
-        return;
-    if (m_properties->width == 0.0f)
-        return;
-    TracerData data;
-    CVector3 velocity;
-    GetVelocity(velocity);
-    velocity *= 0.09f * (m_properties->width - 0.5f) + 0.455f;
-    float offset = m_offset;
-    const CVector3& dir = m_fiberB.GetLine().GetDirection();
-    float x = offset * dir.v[0];
-    float y = offset * dir.v[1];
-    float z = offset * dir.v[2];
-    CVector3 start(m_prevPosition.v[0] + x, m_prevPosition.v[1] + y, m_prevPosition.v[2] + z);
-    CVector3 end(start.v[0] + velocity.v[0], start.v[1] + velocity.v[1], start.v[2] + velocity.v[2]);
-    data.width = m_properties->width;
-    data.start = start;
-    data.end = end;
-    g_pContext = &context;
-    g_pRenderList->Render(g_BulletBin, &data);
-}
-
-EClsnId CProjectileBullet::GetCollisionId() const {
-    return m_collisionId;
-}
-
-void CProjectileBullet::Penetrate(const CCollision& collision) {
-    const CVector3& normal = *collision.m_normal;
-    CVector3 dir;
-    GetForward(dir);
-    float d = dir.Dot(normal);
-    if ((float)fabs(d) > 1e-5f) {
-        dir *= CONTACT_EPSILON / (float)fabs(d);
-    } else if (d > 0.0f) {
-        dir.v[0] = CONTACT_EPSILON * normal.v[0];
-        dir.v[1] = CONTACT_EPSILON * normal.v[1];
-        dir.v[2] = CONTACT_EPSILON * normal.v[2];
-    } else {
-        dir.v[0] = -CONTACT_EPSILON * normal.v[0];
-        dir.v[1] = -CONTACT_EPSILON * normal.v[1];
-        dir.v[2] = -CONTACT_EPSILON * normal.v[2];
-    }
-    SetPosition(m_matrix.GetPos() + dir);
-    m_dead = false;
-}
-
-void CProjectileBullet::CommitUpdate() {
-    if (m_life <= 0.0f || m_dead) {
-        MarkForDestruction(1);
-    } else {
-        CVector3 pos = m_matrix.pos;
-        m_position = pos;
-    }
-}
-
-void CProjectileBullet::AttemptUpdate(float dt) {
-    m_value94 = 3.4028235e+38f;
-    float step = m_speed * dt;
-    const CVector3& dir = m_matrix.GetFront();
-    float dx = step * dir.v[0];
-    float dy = step * dir.v[1];
-    float dz = step * dir.v[2];
-    CVector3 newPos(m_position.v[0] + dx, m_position.v[1] + dy, m_position.v[2] + dz);
-    m_matrix.SetPos(newPos);
-    CVector3 start(0.0f, -step, 0.0f);
-    m_fiberA.Set(start, CVector3(0.0f, 0.0f, 0.0f));
-    m_fiberB.TransformedCopy(m_fiberA, m_matrix);
-    CVector3 low;
-    CVector3 high;
-    m_fiberB.GetExtents(low, high);
-    m_extentMinX->m_value = low.v[0] - CONTACT_EPSILON;
-    m_extentMinY->m_value = low.v[1] - CONTACT_EPSILON;
-    m_extentMaxX->m_value = CONTACT_EPSILON + high.v[0];
-    m_extentMaxY->m_value = CONTACT_EPSILON + high.v[1];
-}
-
-void CProjectileBullet::BeginUpdate(float dt) {
-    CVector3 pos = m_matrix.pos;
-    m_position = pos;
-    m_prevPosition = m_position;
-    m_value94 = 3.4028235e+38f;
-    if (m_life > 0.0f) {
-        m_life -= dt;
-        if (m_life < 0.0f)
-            m_life = 0.0f;
-    }
-}
-
-void CProjectileBullet::OnCollision(const CCollision& collision) {
-    ISceneNode* other = collision.m_nodeA;
-    if (other == this)
-        other = collision.m_nodeB;
-    m_dead = true;
-    other->HandleBulletCollision(this, collision);
-}
-
-void CProjectileBullet::Shutdown() {
-    m_shutdown = true;
-    CBullet::Shutdown();
-}
-
-void CProjectileBullet::Destroy() {
-    g_pBulletFactory->DestroyBullet(this);
-}
-
-void CProjectileBullet::MarkForDestruction(int flag) {
-    ISubject::MarkForDestruction(flag);
-    m_dead = true;
-    g_scene.Remove(*this);
-    m_collisionId = (EClsnId)-1;
-    if (m_effect) {
-        m_effect->unknown01c();
-        m_effect = 0;
-    }
-}
-
+/* Init and the code after Penetrate use an inline fabs (Penetrate uses the
+   math.h macro, __fabs). */
 #undef fabs
 inline double fabs(double x) { return __fabs(x); }
+
+__declspec(weak) CProjectileBullet* CProjectileBullet::AsProjectile() {
+    return this;
+}
+
+__declspec(weak) ISceneNode* CProjectileBullet::GetFiredBy() const {
+    return m_owner;
+}
+
+__declspec(weak) float CProjectileBullet::GetDamage() const {
+    return m_properties->damage;
+}
+
+__declspec(weak) IVolume* CProjectileBullet::GetWorldBoundingVolume(EVolumeType) const {
+    return (IVolume*)&m_fiberB;
+}
+
+__declspec(weak) IVolume* CProjectileBullet::GetLocalBoundingVolume(EVolumeType) const {
+    return (IVolume*)&m_fiberA;
+}
+
+__declspec(weak) void CProjectileBullet::Init() {
+    CBullet::Init();
+}
+
+void* CProjectileBullet::operator new[](unsigned long size) {
+    return DWI_alloc(0, size, 1024);
+}
+
+CProjectileBullet::CProjectileBullet() {
+    m_data28 = 1;
+}
+
+CProjectileBullet::~CProjectileBullet() {
+}
+
+void CProjectileBullet::InitClass(CRenderList* list, CScreen* screen) {
+    g_pRenderList = list;
+    g_pScreen = screen;
+    list->Register(g_BulletBin);
+}
+
 void CProjectileBullet::Init(EProjectileBulletTypes type, ProjectileBulletProperties_struct* properties, const CVector3& position,
                              const CVector3& direction, float speed, EClsnId id, float, ISceneNode* owner) {
     CBullet::Init();
@@ -912,43 +766,303 @@ void CProjectileBullet::Init(EProjectileBulletTypes type, ProjectileBulletProper
     }
 }
 
-void CProjectileBullet::InitClass(CRenderList* list, CScreen* screen) {
-    g_pRenderList = list;
-    g_pScreen = screen;
-    list->Register(g_BulletBin);
+void CProjectileBullet::MarkForDestruction(int flag) {
+    ISubject::MarkForDestruction(flag);
+    m_dead = true;
+    g_scene.Remove(*this);
+    m_collisionId = (EClsnId)-1;
+    if (m_effect) {
+        m_effect->unknown01c();
+        m_effect = 0;
+    }
 }
 
-CProjectileBullet::~CProjectileBullet() {
+void CProjectileBullet::Destroy() {
+    g_pBulletFactory->DestroyBullet(this);
 }
 
-CProjectileBullet::CProjectileBullet() {
-    m_data28 = 1;
+void CProjectileBullet::Shutdown() {
+    m_shutdown = true;
+    CBullet::Shutdown();
 }
 
-void* CProjectileBullet::operator new[](unsigned long size) {
-    return DWI_alloc(0, size, 1024);
+void CProjectileBullet::OnCollision(const CCollision& collision) {
+    ISceneNode* other = collision.m_nodeA;
+    if (other == this)
+        other = collision.m_nodeB;
+    m_dead = true;
+    other->HandleBulletCollision(this, collision);
 }
 
-__declspec(weak) void CProjectileBullet::Init() {
-    CBullet::Init();
+void CProjectileBullet::BeginUpdate(float dt) {
+    CVector3 pos = m_matrix.pos;
+    m_position = pos;
+    m_prevPosition = m_position;
+    m_value94 = 3.4028235e+38f;
+    if (m_life > 0.0f) {
+        m_life -= dt;
+        if (m_life < 0.0f)
+            m_life = 0.0f;
+    }
 }
 
-__declspec(weak) IVolume* CProjectileBullet::GetLocalBoundingVolume(EVolumeType) const {
-    return (IVolume*)&m_fiberA;
+void CProjectileBullet::AttemptUpdate(float dt) {
+    m_value94 = 3.4028235e+38f;
+    float step = m_speed * dt;
+    const CVector3& dir = m_matrix.GetFront();
+    float dx = step * dir.v[0];
+    float dy = step * dir.v[1];
+    float dz = step * dir.v[2];
+    CVector3 newPos(m_position.v[0] + dx, m_position.v[1] + dy, m_position.v[2] + dz);
+    m_matrix.SetPos(newPos);
+    CVector3 start(0.0f, -step, 0.0f);
+    m_fiberA.Set(start, CVector3(0.0f, 0.0f, 0.0f));
+    m_fiberB.TransformedCopy(m_fiberA, m_matrix);
+    CVector3 low;
+    CVector3 high;
+    m_fiberB.GetExtents(low, high);
+    m_extentMinX->m_value = low.v[0] - CONTACT_EPSILON;
+    m_extentMinY->m_value = low.v[1] - CONTACT_EPSILON;
+    m_extentMaxX->m_value = CONTACT_EPSILON + high.v[0];
+    m_extentMaxY->m_value = CONTACT_EPSILON + high.v[1];
 }
 
-__declspec(weak) IVolume* CProjectileBullet::GetWorldBoundingVolume(EVolumeType) const {
-    return (IVolume*)&m_fiberB;
+void CProjectileBullet::CommitUpdate() {
+    if (m_life <= 0.0f || m_dead) {
+        MarkForDestruction(1);
+    } else {
+        CVector3 pos = m_matrix.pos;
+        m_position = pos;
+    }
 }
 
-__declspec(weak) float CProjectileBullet::GetDamage() const {
-    return m_properties->damage;
+void CProjectileBullet::Penetrate(const CCollision& collision) {
+    const CVector3& normal = *collision.m_normal;
+    CVector3 dir;
+    GetForward(dir);
+    float d = dir.Dot(normal);
+    if ((float)__fabs(d) > 1e-5f) {
+        dir *= CONTACT_EPSILON / (float)__fabs(d);
+    } else if (d > 0.0f) {
+        dir.v[0] = CONTACT_EPSILON * normal.v[0];
+        dir.v[1] = CONTACT_EPSILON * normal.v[1];
+        dir.v[2] = CONTACT_EPSILON * normal.v[2];
+    } else {
+        dir.v[0] = -CONTACT_EPSILON * normal.v[0];
+        dir.v[1] = -CONTACT_EPSILON * normal.v[1];
+        dir.v[2] = -CONTACT_EPSILON * normal.v[2];
+    }
+    SetPosition(m_matrix.GetPos() + dir);
+    m_dead = false;
 }
 
-__declspec(weak) ISceneNode* CProjectileBullet::GetFiredBy() const {
-    return m_owner;
+EClsnId CProjectileBullet::GetCollisionId() const {
+    return m_collisionId;
 }
 
-__declspec(weak) CProjectileBullet* CProjectileBullet::AsProjectile() {
-    return this;
+void CProjectileBullet::Draw(CDrawContext& context) {
+    if (g_cheats.flag0b)
+        return;
+    if (g_bInMultiplayerMode && m_owner && m_owner->AsPlayerObject() &&
+        context.GetViewport() != m_owner->AsPlayerObject()->GetViewport() &&
+        m_life > (float)m_properties->life - MP_PROJBULLET_DRAW_DELAY)
+        return;
+    if (m_properties->width == 0.0f)
+        return;
+    TracerData data;
+    CVector3 velocity;
+    GetVelocity(velocity);
+    velocity *= 0.09f * (m_properties->width - 0.5f) + 0.455f;
+    float offset = m_offset;
+    const CVector3& dir = m_fiberB.GetLine().GetDirection();
+    float x = offset * dir.v[0];
+    float y = offset * dir.v[1];
+    float z = offset * dir.v[2];
+    CVector3 start(m_prevPosition.v[0] + x, m_prevPosition.v[1] + y, m_prevPosition.v[2] + z);
+    CVector3 end(start.v[0] + velocity.v[0], start.v[1] + velocity.v[1], start.v[2] + velocity.v[2]);
+    data.width = m_properties->width;
+    data.start = start;
+    data.end = end;
+    g_pContext = &context;
+    g_pRenderList->Render(g_BulletBin, &data);
+}
+
+bool CProjectileBullet::IsVisible(CDrawContext& context) const {
+    return m_fiberB.TestVisibility(context);
+}
+
+int CProjectileBullet::GetScriptBulletType() const {
+    switch (m_type) {
+    case 0:
+    case 1:
+        return 10;
+    case 2:
+    case 3:
+        return 0;
+    case 4:
+    case 5:
+        return 4;
+    case 6:
+        return 12;
+    case 7:
+    case 8:
+        return 13;
+    case 9:
+        return 11;
+    case 10:
+    case 13:
+        return 5;
+    case 11:
+        return 14;
+    case 12:
+        return 15;
+    case 14:
+    case 15:
+        return 6;
+    case 16:
+    case 17:
+        return 1;
+    case 18:
+    case 19:
+        return 16;
+    case 20:
+    case 21:
+        return 19;
+    case 22:
+    case 23:
+        return 20;
+    case 24:
+    case 25:
+        return 2;
+    case 26:
+    case 27:
+        return 18;
+    case 28:
+        return 17;
+    case 29:
+        return 27;
+    default:
+        DebugMsg("WARNING: Unknown proj bullet type in GetScriptBulletType.  Type %d\n", m_type);
+        return 4;
+    }
+}
+
+void CProjectileBullet::SetExclusionPair(ISceneNode* node) {
+    if (m_excluded)
+        g_scene.IncludeCollision(*m_excluded, *this);
+    m_excluded = node;
+}
+
+void CProjectileBullet::GetVelocity(CVector3& velocity) {
+    CVector3 direction = m_matrix.front;
+    float speed = m_speed;
+    velocity.v[0] = speed * direction.v[0];
+    velocity.v[1] = speed * direction.v[1];
+    velocity.v[2] = speed * direction.v[2];
+}
+
+inline void STracer::GetVerts(CVector3* verts) {
+    CVector3 side;
+    CVector3 dir;
+    dir.v[0] = m_end.v[0] - m_start.v[0];
+    dir.v[1] = m_end.v[1] - m_start.v[1];
+    dir.v[2] = m_end.v[2] - m_start.v[2];
+    if (dir.Dot(g_XAxis) * dir.Dot(g_YAxis) > 0.0f) {
+        side.v[0] = g_YAxis.v[0] - g_XAxis.v[0];
+        side.v[1] = g_YAxis.v[1] - g_XAxis.v[1];
+        side.v[2] = g_YAxis.v[2] - g_XAxis.v[2];
+    } else {
+        CVector3 flipped(-1.0f * g_YAxis.v[0], -1.0f * g_YAxis.v[1], -1.0f * g_YAxis.v[2]);
+        side.v[0] = flipped.v[0] - g_XAxis.v[0];
+        side.v[1] = flipped.v[1] - g_XAxis.v[1];
+        side.v[2] = flipped.v[2] - g_XAxis.v[2];
+    }
+    float width = m_width * (g_bInMultiplayerMode ? 0.05f : 0.025f);
+    side.Normalize();
+    side.v[0] *= width;
+    side.v[1] *= width;
+    side.v[2] *= width;
+    verts[0].v[0] = m_start.v[0] + side.v[0];
+    verts[0].v[1] = m_start.v[1] + side.v[1];
+    verts[0].v[2] = m_start.v[2] + side.v[2];
+    verts[1].v[0] = m_start.v[0] - side.v[0];
+    verts[1].v[1] = m_start.v[1] - side.v[1];
+    verts[1].v[2] = m_start.v[2] - side.v[2];
+    verts[2].v[0] = m_end.v[0] - side.v[0];
+    verts[2].v[1] = m_end.v[1] - side.v[1];
+    verts[2].v[2] = m_end.v[2] - side.v[2];
+    verts[3].v[0] = m_end.v[0] + side.v[0];
+    verts[3].v[1] = m_end.v[1] + side.v[1];
+    verts[3].v[2] = m_end.v[2] + side.v[2];
+}
+
+int CProjectileBulletRenderBin::Render(CDmaPacket& packet, void* data) {
+    TracerData* tracer = (TracerData*)data;
+    if (!g_bCached) {
+        g_bCached = true;
+        g_pContext->m_camera->GetRightward(g_XAxis);
+        g_pContext->m_camera->GetUpward(g_YAxis);
+    }
+    STracer copy;
+    copy.m_start = tracer->start;
+    copy.m_end = tracer->end;
+    copy.m_width = tracer->width;
+    g_WorldToCamera = *g_pContext->m_worldToCamera;
+    STracer* out = (STracer*)packet.m_cur;
+    out->m_start = copy.m_start;
+    out->m_end = copy.m_end;
+    out->m_width = copy.m_width;
+    packet.m_cur += sizeof(STracer);
+    return 0;
+}
+
+void CProjectileBulletRenderBin::Link(CDmaTag* tag, CDmaPacket& packet) {
+    GXClearVtxDesc();
+    GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
+    GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
+    GXSetVtxDesc(GX_VA_TEX0, GX_DIRECT);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_F32, 0);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_CLR0, GX_CLR_RGBA, GX_RGBA8, 0);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_TEX0, GX_TEX_ST, GX_F32, 0);
+    GXSetNumChans(1);
+    GXSetNumTexGens(1);
+    GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 60, GX_FALSE, 125);
+    GXSetNumTevStages(1);
+    GXSetBlendMode(GX_BM_BLEND, GX_BL_SRCALPHA, GX_BL_INVSRCALPHA, GX_LO_NOOP);
+    GXSetZMode(GX_TRUE, GX_LEQUAL, GX_FALSE);
+    GXSetCullMode(GX_CULL_NONE);
+    GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP0, GX_COLOR0A0);
+    GXSetTevColorIn(GX_TEVSTAGE0, GX_CC_ZERO, GX_CC_TEXC, GX_CC_RASC, GX_CC_ZERO);
+    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_2, GX_TRUE, GX_TEVPREV);
+    GXSetTevAlphaIn(GX_TEVSTAGE0, GX_CA_ZERO, GX_CA_TEXA, GX_CA_RASA, GX_CA_ZERO);
+    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_4, GX_TRUE, GX_TEVPREV);
+    GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_VTX, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+    m_texture.Load(packet, 0);
+    for (CDmaTag* t = tag; t; t = t->m_next) {
+        CVector3 verts[4];
+        float matrix[3][4];
+        t->m_tracer->GetVerts(verts);
+        g_WorldToCamera.GetGAMECUBEMatrix34(matrix);
+        GXLoadPosMtxImm(matrix, GX_PNMTX0);
+        GXSetCurrentMtx(GX_PNMTX0);
+        GXBegin(GX_QUADS, GX_VTXFMT0, 4);
+        GXPosition3f32(verts[0].v[0], verts[0].v[1], verts[0].v[2]);
+        GXColor4u8(255, 255, 255, 255);
+        GXTexCoord2f32(0.0f, 0.0f);
+        GXPosition3f32(verts[1].v[0], verts[1].v[1], verts[1].v[2]);
+        GXColor4u8(255, 255, 255, 255);
+        GXTexCoord2f32(0.0f, 1.0f);
+        GXPosition3f32(verts[2].v[0], verts[2].v[1], verts[2].v[2]);
+        GXColor4u8(255, 255, 255, 255);
+        GXTexCoord2f32(1.0f, 1.0f);
+        GXPosition3f32(verts[3].v[0], verts[3].v[1], verts[3].v[2]);
+        GXColor4u8(255, 255, 255, 255);
+        GXTexCoord2f32(1.0f, 0.0f);
+    }
+    GXSetZMode(GX_TRUE, GX_LEQUAL, GX_TRUE);
+    g_bCached = true;
+}
+
+/* ---- definitions ---- */
+__declspec(weak) CProjectileBulletRenderBin::~CProjectileBulletRenderBin() {
 }

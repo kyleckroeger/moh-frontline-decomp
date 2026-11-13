@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -32,6 +32,7 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk",
     "include/dolphin-sdk/libc",
     "include"
   ],
@@ -40,8 +41,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d0b3c",
-      "size": 4380,
+      "address": "0x800d05e0",
+      "size": 5752,
       "type": 1
     },
     {
@@ -52,38 +53,37 @@
     },
     {
       "name": "extab",
-      "address": "0x8000e5b4",
-      "size": 184,
+      "address": "0x8000e59c",
+      "size": 208,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 200,
+      "linked_size": 224,
       "stripped_objects": [
-        "@439"
+        "@808"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x800152c0",
-      "size": 252,
+      "address": "0x8001529c",
+      "size": 288,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 276,
+      "linked_size": 312,
       "stripped_objects": [
-        "@440"
+        "@809"
       ]
     },
     {
       "name": ".rodata",
-      "address": "0x80177d90",
-      "size": 157,
+      "address": "0x80177d58",
+      "size": 213,
       "type": 1
     },
     {
       "name": ".data",
-      "address": "0x801899c4",
-      "size": 648,
-      "type": 1,
-      "input_alignment": 4
+      "address": "0x80189988",
+      "size": 708,
+      "type": 1
     },
     {
       "name": ".bss",
@@ -93,8 +93,8 @@
     },
     {
       "name": ".sdata",
-      "address": "0x8034e1ec",
-      "size": 56,
+      "address": "0x8034e1d4",
+      "size": 80,
       "type": 1,
       "input_alignment": 4
     },
@@ -113,10 +113,28 @@
       "binding": 0
     },
     {
+      "name": "Link__26CProjectileBulletRenderBinFP7CDmaTagR10CDmaPacket",
+      "address": "0x800d063c",
+      "size": 788,
+      "binding": 1
+    },
+    {
       "name": "Render__26CProjectileBulletRenderBinFR10CDmaPacketPv",
       "address": "0x800d0b3c",
       "size": 260,
       "binding": 1
+    },
+    {
+      "name": "__dt__26CProjectileBulletRenderBinFv",
+      "address": "0x800d05e0",
+      "size": 92,
+      "binding": 2
+    },
+    {
+      "name": "GetVerts__7STracerFP8CVector3",
+      "address": "0x800d0950",
+      "size": 492,
+      "binding": 2
     },
     {
       "name": "GetVelocity__17CProjectileBulletFR8CVector3",
@@ -308,10 +326,30 @@
     "EnterLightVolume__16IMovingSceneNodeFP14BPDLightVolume": "0x8001ae94",
     "ExcludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNodei": "0x800db778",
     "ExitLightVolume__16IMovingSceneNodeFP14BPDLightVolume": "0x8001ae98",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetChanCtrl": "0x8012d828",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetTevAlphaIn": "0x8012f09c",
+    "GXSetTevAlphaOp": "0x8012f1e0",
+    "GXSetTevColorIn": "0x8012f01c",
+    "GXSetTevColorOp": "0x8012f120",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
     "GetAIDoodad__10ISceneNodeCFv": "0x8001b038",
     "GetAIDoodad__10ISceneNodeFv": "0x8001b040",
     "GetAttachedLight__10ISceneNodeCFv": "0x8001b04c",
     "GetForward__7CBulletCFR8CVector3": "0x800950a4",
+    "GetGAMECUBEMatrix34__7CMatrixCFRA3_A4_f": "0x8008eefc",
     "GetLightVolume__16IMovingSceneNodeFv": "0x8001ae9c",
     "GetLine__9CVolFiberCFv": "0x800ca2f4",
     "GetPlayer__6CSceneCFi": "0x800d8274",
@@ -328,8 +366,11 @@
     "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision": "0x8001af84",
     "IncludeCollision__6CSceneFRC10ISceneNodeRC10ISceneNode": "0x800db630",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__10CRenderBinFv": "0x80073b2c",
     "Init__7CBulletFv": "0x800ccc20",
     "IsDrawEnabled__7CBulletCFv": "0x800ccb7c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
     "MP_PROJBULLET_DRAW_DELAY": "0x8034e1d0",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "MathFunRandomReal__Fff": "0x80092d60",
@@ -367,13 +408,11 @@
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CCollisionFv": "0x800c7b80",
     "__dt__10CRenderBinFv": "0x80074290",
-    "__dt__26CProjectileBulletRenderBinFv": "0x800d05e0",
     "__dt__7CBulletFv": "0x800ccc74",
     "__dt__7IVolumeFv": "0x8001c078",
     "__dt__9CVolFiberFv": "0x800ca504",
     "__register_global_object": "0x801381bc",
     "__vt__10CRenderBin": "0x80183c5c",
-    "__vt__26CProjectileBulletRenderBin": "0x801899a8",
     "__vt__7IVolume": "0x80181e28",
     "__vt__9CVolFiber": "0x80189654",
     "g_Shell": "0x80195090",
@@ -415,89 +454,101 @@
       "section": ".sdata2",
       "offset": 4,
       "size": 4,
-      "address": "0x80350d30"
+      "address": "0x80350d08"
     },
     {
       "section": ".sdata2",
       "offset": 8,
       "size": 4,
-      "address": "0x80350d34"
+      "address": "0x80350d10"
     },
     {
       "section": ".sdata2",
       "offset": 12,
       "size": 4,
-      "address": "0x80350d38"
+      "address": "0x80350d14"
     },
     {
       "section": ".sdata2",
       "offset": 16,
-      "size": 8,
-      "address": "0x80350d40"
+      "size": 4,
+      "address": "0x80350d18"
     },
     {
       "section": ".sdata2",
       "offset": 24,
-      "size": 4,
-      "address": "0x80350d48"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 28,
-      "size": 4,
-      "address": "0x80350d4c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 32,
-      "size": 4,
-      "address": "0x80350d50"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 40,
       "size": 8,
       "address": "0x80350d20"
     },
     {
       "section": ".sdata2",
-      "offset": 48,
+      "offset": 32,
       "size": 8,
       "address": "0x80350d28"
     },
     {
       "section": ".sdata2",
-      "offset": 56,
+      "offset": 40,
       "size": 4,
-      "address": "0x80350d08"
+      "address": "0x80350d30"
     },
     {
       "section": ".sdata2",
-      "offset": 60,
+      "offset": 44,
       "size": 4,
-      "address": "0x80350d10"
+      "address": "0x80350d34"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x80350d38"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 8,
+      "address": "0x80350d40"
     },
     {
       "section": ".sdata2",
       "offset": 64,
       "size": 4,
-      "address": "0x80350d54"
+      "address": "0x80350d48"
     },
     {
       "section": ".sdata2",
       "offset": 68,
       "size": 4,
-      "address": "0x80350d58"
+      "address": "0x80350d4c"
     },
     {
       "section": ".sdata2",
       "offset": 72,
       "size": 4,
-      "address": "0x80350d5c"
+      "address": "0x80350d50"
     },
     {
       "section": ".sdata2",
       "offset": 76,
+      "size": 4,
+      "address": "0x80350d54"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 80,
+      "size": 4,
+      "address": "0x80350d58"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 84,
+      "size": 4,
+      "address": "0x80350d5c"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 88,
       "size": 8,
       "address": "0x80350d60"
     }
