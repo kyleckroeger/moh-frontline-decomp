@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,19 +40,37 @@
     {
       "name": ".text",
       "address": "0x80059178",
-      "size": 288,
+      "size": 452,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000addc",
-      "size": 48,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011eb8",
-      "size": 48,
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801702b0",
+      "size": 26,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183638",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dad0",
+      "size": 16,
       "type": 1
     }
   ],
@@ -62,6 +80,12 @@
       "address": "0x80059178",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "__dt__15CAIPlayerDoodadFv",
+      "address": "0x80059298",
+      "size": 96,
+      "binding": 1
     },
     {
       "name": "Update__15CAIPlayerDoodadFf",
@@ -86,9 +110,17 @@
       "address": "0x80059204",
       "size": 148,
       "binding": 1
+    },
+    {
+      "name": "__ct__15CAIPlayerDoodadFv",
+      "address": "0x800592f8",
+      "size": 68,
+      "binding": 1
     }
   ],
   "externals": {
+    "FireAtCurrentTarget__9CAIDoodadFf": "0x80032bb4",
+    "FireMMGAtCurrentTarget__9CAIDoodadFP13CStaticObject": "0x80032afc",
     "Init__15CAIPlayerObjectFv": "0x8004f1a4",
     "Init__9CAIDoodadFv": "0x800590f4",
     "LinkGameObject__15CAIFilterObjectFPv": "0x8005be40",
@@ -97,7 +129,9 @@
     "UpdateManualUpdateVars__21CAIFilterPlayerObjectFv": "0x8005abfc",
     "Update__21CAIFilterPlayerObjectFf": "0x8005aa2c",
     "__ct__21CAIFilterPlayerObjectFv": "0x8005ad6c",
+    "__ct__9CAIDoodadFv": "0x80059140",
     "__dl__FPv": "0x8001ca2c",
+    "__dt__9CAIDoodadFv": "0x800590f8",
     "__nw__FUl": "0x8001cb60"
   },
   "undefined_in_discarded_code": [],

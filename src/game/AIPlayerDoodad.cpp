@@ -1,13 +1,18 @@
-// CAIPlayerDoodad, the functions at the start of the file: the AI doodad that
-// drives a player object through a CAIFilterPlayerObject.
-// The class names come from the mangled symbols. This is an inferred,
-// non-virtual view of CAIPlayerDoodad: only the members these functions touch
-// are declared, at their offsets, and its virtual table (with the inline
-// CAIDoodad fire methods) is not reproduced, so the destructor and
-// constructor that store it are not reconstructed here. GetSceneNode is
-// inline in the original (a weak symbol), so it is defined __declspec(weak).
+// AIPlayerDoodad.cpp: CAIPlayerDoodad, the AI doodad that drives a player
+// object through a CAIFilterPlayerObject. The whole file: the weak
+// GetSceneNode, Update, PreUpdate, CleanUp, Init, the destructor (its table
+// pointer, then CAIDoodad's destructor) and the constructor (CAIDoodad's
+// constructor, its table pointer, the filter pointer at +4 cleared), with
+// the class's virtual table and RTTI record.
+// The class names come from the mangled symbols; the table's slot order from
+// __vt__15CAIPlayerDoodad (CAIDoodad's destructor, GetSceneNode and its two
+// fire methods, defined in other files). Only the members these functions
+// touch are declared, at their offsets. GetSceneNode is inline in the
+// original (a weak symbol), so it is defined __declspec(weak) where the
+// original places it; the destructor is the key function.
 class ISceneNode;
 class CPlayerObject;
+class CStaticObject;
 
 class CAIPlayerObject {
 public:
@@ -35,14 +40,19 @@ public:
 
 class CAIDoodad {
 public:
+    CAIDoodad();
+    virtual ~CAIDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    virtual void FireAtCurrentTarget(float);
+    virtual void FireMMGAtCurrentTarget(CStaticObject*);
     void Init();
-
-    unsigned char unknown00[4];
 };
 
 class CAIPlayerDoodad : public CAIDoodad {
 public:
-    ISceneNode* GetSceneNode() const;
+    virtual ~CAIPlayerDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    CAIPlayerDoodad();
     void Update(float);
     void PreUpdate();
     void CleanUp();
@@ -79,4 +89,11 @@ void CAIPlayerDoodad::Init(CPlayerObject* player) {
     filter->SetOneTimeVars();
     filter->UpdateManualUpdateVars();
     filter->m_playerObject->Init();
+}
+
+CAIPlayerDoodad::~CAIPlayerDoodad() {
+}
+
+CAIPlayerDoodad::CAIPlayerDoodad() {
+    m_filter = 0;
 }

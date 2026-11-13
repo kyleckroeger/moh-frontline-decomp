@@ -889,7 +889,6 @@
     "AITankDoodad_ctor.json",
     "AISoldierDoodad_ctor.json",
     "AIDoodad.json",
-    "AIPlayerDoodad_ctor.json",
     "AISoldierObject_ctor.json",
     "AIPlayerObject_ctor.json",
     "AITankObject_ctor.json",
