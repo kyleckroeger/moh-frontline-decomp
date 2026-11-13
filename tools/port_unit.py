@@ -162,10 +162,29 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
     layout, discarded = text_layout(obj, original, locals_, duplicates, file_duplicates)
     duplicates = set(duplicates) | set(file_duplicates)
 
+    # Relocations inside a weak duplicate (a dropped virtual table's entries)
+    # must not pin anything: the duplicate is not placed.
+    dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
+                     if (s["name"] in duplicates or s["name"] in dropped) and s["section"] and s["section"] < 0xFF00]
+    # Nor do the records of code the unit drops (a weak duplicate's exception-index
+    # entry and table): their relocations point where the original linker kept
+    # another file's records.
+    kept_ranges = [(f["section"], f["address"], f["address"] + f["size"])
+                   for kept, _ in layout.values() for f, _ in kept]
+    foreign = foreign_records(obj, symbols, kept_ranges)
+    dropped_spans += [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
+                      if s["type"] == 1 and s["size"] and (s["section"], s["address"]) in foreign]
+
+    def in_dropped(section, where):
+        return any(section == d and a <= where < b for d, a, b in dropped_spans)
+
     def position(section, offset):
-        """Offset after stripping: discarded code has no position."""
+        """Offset after stripping: discarded code has no position, and the dropped
+        records of a data section (exception records of discarded code) close up."""
         if section not in layout:
-            return offset
+            if in_dropped(section, offset):
+                return None
+            return offset - sum(b - a for d, a, b in dropped_spans if d == section and b <= offset)
         for function, packed in layout[section][0]:
             if function["address"] <= offset < function["address"] + function["size"]:
                 return packed + offset - function["address"]
@@ -184,22 +203,6 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
     if not any(names[i] in addresses for i in layout):
         raise ValueError("No compiled function was found in the original file record"
                          if file_index is not None else "No compiled global function was found in the original")
-    # Relocations inside a weak duplicate (a dropped virtual table's entries)
-    # must not pin anything: the duplicate is not placed.
-    dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
-                     if (s["name"] in duplicates or s["name"] in dropped) and s["section"] and s["section"] < 0xFF00]
-    # Nor do the records of code the unit drops (a weak duplicate's exception-index
-    # entry and table): their relocations point where the original linker kept
-    # another file's records.
-    kept_ranges = [(f["section"], f["address"], f["address"] + f["size"])
-                   for kept, _ in layout.values() for f, _ in kept]
-    foreign = foreign_records(obj, symbols, kept_ranges)
-    dropped_spans += [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
-                      if s["type"] == 1 and s["size"] and (s["section"], s["address"]) in foreign]
-
-    def in_dropped(section, where):
-        return any(section == d and a <= where < b for d, a, b in dropped_spans)
-
     # Relocations pin the rest; repeat until no new section is placed.
     changed = True
     while changed:
@@ -246,8 +249,9 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
             continue
         target = addresses[names[symbol["section"]]] + offset
         sources = [w for w, k in original.referrers.get(target, []) if k == kind and original.section_of(w) == name]
-        if len(sources) == 1:
-            anchor(addresses, name, sources[0] - where)
+        packed = position(section, where)
+        if len(sources) == 1 and packed is not None:
+            anchor(addresses, name, sources[0] - packed)
             changed = True
     while changed:
         changed = False

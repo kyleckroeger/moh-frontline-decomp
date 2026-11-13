@@ -39,25 +39,39 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80104cb4",
-      "size": 1380,
+      "address": "0x801042f0",
+      "size": 3880,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fcd4",
-      "size": 32,
+      "address": "0x8000fc74",
+      "size": 128,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 40
+      "linked_size": 144,
+      "stripped_objects": [
+        "@226",
+        "@234"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x80016a3c",
-      "size": 48,
+      "address": "0x800169e8",
+      "size": 132,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 60
+      "linked_size": 156,
+      "stripped_objects": [
+        "@227",
+        "@235"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017ac20",
+      "size": 51,
+      "type": 1
     },
     {
       "name": ".data",
@@ -70,9 +84,27 @@
       "address": "0x8034e3f8",
       "size": 16,
       "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351310",
+      "size": 40,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ReleaseFrame__18MPC_CODEC_INTERNALFPQ24RCMP5FRAME",
+      "address": "0x801043d0",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "GetFrame__18MPC_CODEC_INTERNALFUi",
+      "address": "0x801044f8",
+      "size": 184,
+      "binding": 1
+    },
     {
       "name": "GetFrameRate__18MPC_CODEC_INTERNALFv",
       "address": "0x80104d30",
@@ -98,6 +130,60 @@
       "binding": 1
     },
     {
+      "name": "MPC_CODEC_create__4RCMPFv",
+      "address": "0x801042f0",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q24RCMP5CODECFv",
+      "address": "0x80104374",
+      "size": 88,
+      "binding": 2
+    },
+    {
+      "name": "Error__FPc",
+      "address": "0x801043cc",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "CreateB__18MPC_CODEC_INTERNALFv",
+      "address": "0x80104420",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "CreateIorP__18MPC_CODEC_INTERNALFv",
+      "address": "0x8010448c",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "SkipChunks__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNKUi",
+      "address": "0x801045b0",
+      "size": 620,
+      "binding": 1
+    },
+    {
+      "name": "DecodeChunk__18MPC_CODEC_INTERNALFPPQ24RCMP5CHUNK",
+      "address": "0x8010481c",
+      "size": 516,
+      "binding": 1
+    },
+    {
+      "name": "LowLevelDecodeChunk__18MPC_CODEC_INTERNALFPQ24RCMP5CHUNK",
+      "address": "0x80104a20",
+      "size": 600,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q24RCON19TDLNODE<9MPC_FRAME>Fv",
+      "address": "0x80104c78",
+      "size": 60,
+      "binding": 2
+    },
+    {
       "name": "__dt__Q24RCMP5FRAMEFv",
       "address": "0x80104cb4",
       "size": 76,
@@ -111,67 +197,67 @@
     }
   ],
   "externals": {
-    "GetFrame__18MPC_CODEC_INTERNALFUi": "0x801044f8",
+    "Decode_Picture__FP18MPC_CODEC_INTERNALi": "0x80100950",
+    "GetChunk__Q24RCMP7DECODERFv": "0x801052b0",
+    "Get_Hdr__Fv": "0x80100698",
+    "Initialize_Buffer__FPUc": "0x800fd7bc",
     "Initialize_Fast_IDCT__Fv": "0x80102d28",
+    "MEM_fill": "0x80150db4",
     "MPDbackward_reference_frame": "0x80314e08",
     "MPDbase": "0x80314e58",
+    "MPDchroma_height": "0x8034edf8",
+    "MPDchroma_width": "0x8034edf4",
     "MPDclip": "0x8034ede8",
+    "MPDcoded_picture_height": "0x8034edf0",
+    "MPDcoded_picture_width": "0x8034edec",
+    "MPDframe_pred_frame_dct": "0x8034ee98",
     "MPDframe_rate": "0x8034ee20",
+    "MPDhorizontal_size": "0x8034ee08",
     "MPDld": "0x8034ef30",
+    "MPDmatrix_coefficients": "0x8034ee64",
+    "MPDmb_height": "0x8034ee14",
+    "MPDmb_width": "0x8034ee10",
+    "MPDpicture_structure": "0x8034ee90",
+    "MPDprogressive_frame": "0x8034eeac",
+    "MPDprogressive_sequence": "0x8034ee40",
     "MPDquiet_flag": "0x8034edd8",
     "MPDtrace_flag": "0x8034eddc",
     "MPDtranspose_table": "0x80314dc8",
     "MPDverbose_flag": "0x8034ede4",
-    "ReleaseFrame__18MPC_CODEC_INTERNALFPQ24RCMP5FRAME": "0x801043d0",
-    "__dt__Q24RCMP5CODECFv": "0x80104374",
+    "MPDvertical_size": "0x8034ee0c",
+    "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK": "0x80105280",
+    "__dl__FPv": "0x8001ca2c",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "__dt__Q24RCON18TDLIST<9MPC_FRAME>Fv",
+    "__dl__Q24RCMP5CODECFPv"
+  ],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "MPDchroma_height",
+    "MPDchroma_width",
     "MPDclip",
+    "MPDcoded_picture_height",
+    "MPDcoded_picture_width",
+    "MPDframe_pred_frame_dct",
     "MPDframe_rate",
+    "MPDhorizontal_size",
     "MPDld",
+    "MPDmatrix_coefficients",
+    "MPDmb_height",
+    "MPDmb_width",
+    "MPDpicture_structure",
+    "MPDprogressive_frame",
+    "MPDprogressive_sequence",
     "MPDquiet_flag",
     "MPDtrace_flag",
-    "MPDverbose_flag"
+    "MPDverbose_flag",
+    "MPDvertical_size"
   ],
   "original_file": "rcmp_mpc_codec.cpp",
-  "original_file_index": 10240,
-  "weak_duplicates": [
-    "__dt__Q24RCMP5CODECFv"
-  ],
-  "pooled_sections": [
-    ".sdata2",
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 19,
-      "address": "0x8017ac20"
-    },
-    {
-      "section": ".rodata",
-      "offset": 20,
-      "size": 12,
-      "address": "0x8017ac34"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80351310"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 8,
-      "address": "0x80351330"
-    }
-  ]
+  "original_file_index": 10240
 }
