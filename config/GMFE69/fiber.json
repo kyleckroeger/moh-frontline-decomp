@@ -1,0 +1,259 @@
+{
+  "id": "fiber",
+  "source": "src/game/fiber.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto,deferred",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "on",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800c9290",
+      "size": 5176,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000e094",
+      "size": 168,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 176,
+      "stripped_objects": [
+        "@293"
+      ]
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014e58",
+      "size": 228,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 240,
+      "stripped_objects": [
+        "@294"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177c48",
+      "size": 10,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189648",
+      "size": 92,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e150",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350bd0",
+      "size": 52,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "GetExtents__9CVolFiberCFR8CVector3R8CVector3",
+      "address": "0x800c9290",
+      "size": 432,
+      "binding": 1
+    },
+    {
+      "name": "TestVisibility__9CVolFiberCFR12CDrawContext",
+      "address": "0x800c9440",
+      "size": 196,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC7IVolumeR10CCollisionb",
+      "address": "0x800ca280",
+      "size": 116,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC7CVolBoxR10CCollisionb",
+      "address": "0x800ca1fc",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC10CVolSphereR10CCollisionb",
+      "address": "0x800ca178",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC11CVolCapsuleR10CCollisionb",
+      "address": "0x800ca0f4",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC10CCDBObjectR10CCollisionb",
+      "address": "0x800ca070",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC9CVolFiberR10CCollisionb",
+      "address": "0x800c9b64",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC15CAnimatedVolumeR10CCollisionb",
+      "address": "0x800c9fec",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC10CCSGVolumeR10CCollisionb",
+      "address": "0x800c9f68",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC12CWorldVolumeR10CCollisionb",
+      "address": "0x800c9ee4",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCF8CVector3R10CCollisionb",
+      "address": "0x800c9ba4",
+      "size": 832,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC6CLine3R10CCollisionb",
+      "address": "0x800c9668",
+      "size": 1276,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC6CPlaneR10CCollisionb",
+      "address": "0x800c951c",
+      "size": 332,
+      "binding": 1
+    },
+    {
+      "name": "TestCollision__9CVolFiberCFRC9CTriangleR10CCollisionb",
+      "address": "0x800c9504",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "TransformedCopy__9CVolFiberFRC7IVolumeRC7CMatrix",
+      "address": "0x800ca374",
+      "size": 332,
+      "binding": 1
+    },
+    {
+      "name": "Create__9CVolFiberCFv",
+      "address": "0x800ca4c0",
+      "size": 68,
+      "binding": 1
+    },
+    {
+      "name": "__dt__9CVolFiberFv",
+      "address": "0x800ca504",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "GetLine__9CVolFiberCFv",
+      "address": "0x800ca2f4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "Set__9CVolFiberF8CVector38CVector3",
+      "address": "0x800ca2fc",
+      "size": 120,
+      "binding": 1
+    },
+    {
+      "name": "__ct__9CVolFiberFRC6CLine3",
+      "address": "0x800ca560",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "__ct__9CVolFiberF8CVector38CVector3",
+      "address": "0x800ca5cc",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "__ct__9CVolFiberFRC9CVolFiber",
+      "address": "0x800ca65c",
+      "size": 108,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "AddContact__10CCollisionFRC12SClsnContact": "0x800c79d8",
+    "GetIntersection__6CPlaneCFRC6CLine3RfP8CVector3": "0x800910ac",
+    "SetCorners__7CVolBoxF8CVector38CVector3": "0x800c516c",
+    "SwapOrder__10CCollisionFv": "0x800c79c4",
+    "TestVisibility__7CVolBoxCFR12CDrawContext": "0x800c14cc",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__7CVolBoxFv": "0x800c5458",
+    "__dt__7IVolumeFv": "0x8001c078",
+    "__nw__FUl": "0x8001cb60",
+    "__vt__7CVolBox": "0x801894f4",
+    "__vt__7IVolume": "0x80181e28"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "fiber.cpp",
+  "original_file_index": 7678,
+  "weak_duplicates": [
+    "__dt__7IVolumeFv"
+  ]
+}
