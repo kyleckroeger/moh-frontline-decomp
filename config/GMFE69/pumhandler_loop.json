@@ -1,0 +1,204 @@
+{
+  "id": "pumhandler_loop",
+  "source": "src/game/pumhandler_loop.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800b9a00",
+      "size": 2308,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d9b0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x8001496c",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801777a4",
+      "size": 192,
+      "type": 1,
+      "input_alignment": 4
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ebb0",
+      "size": 5,
+      "type": 8
+    }
+  ],
+  "functions": [
+    {
+      "name": "PopUpMessageHandler_Loop__19PopUpMessageHandlerFv",
+      "address": "0x800b9a00",
+      "size": 2308,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "Available__12PopUpMessageFv": "0x800bf7c0",
+    "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType": "0x8008240c",
+    "DrawTextCentered__5CFontFfPCc": "0x8007cdb0",
+    "DrawText__5CFontFffPCc": "0x8007cf50",
+    "FONT_getrecta": "0x8014e53c",
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetHeight__7CScreenFv": "0x8001b8b0",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetScale__5CFontFRfRf": "0x8007cb30",
+    "GetString__12PopUpMessageFv": "0x800bf768",
+    "GetWidth__7CScreenFv": "0x8001b8a8",
+    "Get_a__12PopUpMessageFv": "0x800bf778",
+    "Get_onScreenTime__12PopUpMessageFv": "0x800bf798",
+    "Get_property__12PopUpMessageFv": "0x800bf7a0",
+    "Get_r__12PopUpMessageFv": "0x800bf790",
+    "Get_screenLocX__12PopUpMessageFv": "0x800bf7b0",
+    "Get_screenLocY__12PopUpMessageFv": "0x800bf7a8",
+    "Get_top__12PopUpMessageFv": "0x800bf770",
+    "MP_PUM_TEXT_SCALE_X_2P": "0x8034e0ec",
+    "MP_PUM_TEXT_SCALE_X_4P": "0x8034e0f4",
+    "MP_PUM_TEXT_SCALE_Y_2P": "0x8034e0f0",
+    "MP_PUM_TEXT_SCALE_Y_4P": "0x8034e0f8",
+    "POPUPS_IN_SECTION": "0x8034e0e8",
+    "Reset__12PopUpMessageFv": "0x800bf84c",
+    "Scroll__12PopUpMessageFv": "0x800bf4f8",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "UpdateDisplayTime__12PopUpMessageFf": "0x800bf4e8",
+    "bIsGamePaused__5PauseFv": "0x800dd7d0",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_Pause": "0x80194fec",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_scene": "0x8019484c",
+    "g_screen": "0x80196ac0",
+    "g_viewport": "0x80194ca0"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "MP_PUM_TEXT_SCALE_X_2P",
+    "MP_PUM_TEXT_SCALE_X_4P",
+    "MP_PUM_TEXT_SCALE_Y_2P",
+    "MP_PUM_TEXT_SCALE_Y_4P",
+    "POPUPS_IN_SECTION"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "MP_PUM_TEXT_SCALE_X_2P",
+    "MP_PUM_TEXT_SCALE_X_4P",
+    "MP_PUM_TEXT_SCALE_Y_2P",
+    "MP_PUM_TEXT_SCALE_Y_4P",
+    "POPUPS_IN_SECTION",
+    "g_NumPlayers",
+    "g_bInMultiplayerMode"
+  ],
+  "original_file": "pumhandler.cpp",
+  "original_file_index": 7152,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803509a8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803509f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803509f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803509b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x803509f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x803509fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x80350a00"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 28,
+      "size": 4,
+      "address": "0x80350a04"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x803509b8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 8,
+      "address": "0x803509e8"
+    }
+  ]
+}

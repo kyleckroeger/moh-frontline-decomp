@@ -1,7 +1,6 @@
-// A fragment of pumhandler.cpp (0x800b9a00): PopUpMessageHandler_Loop.
-// Code exact (2026-11-12, loop mid3) but NOT landable: the original's switch keeps a separate empty
-// 'case 8' node ('cmpwi 8; beq; bge; b'), which only the identity statement in case 8 reproduces
-// (declined form; every empty/break/default spelling drops the node, -1 instruction). Maintainer question.
+// A fragment of pumhandler.cpp (0x800b9a00): PopUpMessageHandler::PopUpMessageHandler_Loop
+// draws and ages the handler's pop-up messages. The classes, functions and globals are named
+// by the mangled symbols; the views and local names are inferred.
 extern "C" void FONT_getrecta(void*, const char*, float*, float*, float*, float*);
 
 struct CColor {
@@ -293,6 +292,9 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
                 case 7:
                     break;
                 case 8:
+                    /* Stands in for a statement the compiler removed: the original keeps a
+                       separate empty case 8 node, which an empty case would drop
+                       (identity statement, accepted 2026-11-12). */
                     message = (PopUpMessage*)(void*)message;
                 }
                 if (!g_Pause.bIsGamePaused()) {

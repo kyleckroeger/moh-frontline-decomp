@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1274616,
+    "matching_code_bytes": 1276924,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.10612397248072,
+    "percent": 90.26928286435756,
     "categories": {
-      "reconstructed_game": 1035556,
+      "reconstructed_game": 1037864,
       "restored_library": 239060
     },
-    "matching_functions": 4903
+    "matching_functions": 4904
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1042,6 +1042,7 @@
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_ctor.cpp": "2473a2861abe4ceaafe89851cda62ace1190d541eeaf1bbdd0852ed1d0abb6ae",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
+    "src/game/pumhandler_loop.cpp": "730197a013d613d259fd8c9e9cea4f8e2b19f511348b2ba9d97ff22ee044dac7",
     "src/game/pumhandler_prompt.cpp": "ac71c30d19abbe271524f96c45279d59de2fc3e7595554e81ed15bbef9be1047",
     "src/game/pumhandler_subtitles.cpp": "1f1dfee08ca0bc404e4cc771363f3e510d494032679a72db04d9fa6ebbf545d0",
     "src/game/pumhandler_umt_dtor.cpp": "65fe75ceb5a717c9695ed22ee5af250e646142adfc4c241ff4b2569c5787e64e",
@@ -2558,7 +2559,7 @@
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "7f4aafcc4ffd925b00bf8fb0d0a8985a091cd20c4e95d8e299b32ebf72d84a5c",
     "config/GMFE69/printstr_movechannel.json": "7794f7e7239ae1223734d5d7bd092ac1e832c14603beac3de883709f4eea7825",
-    "config/GMFE69/project.json": "5cb933eee923a970bf49941156fe635034ffd199dd8541a8032d7c8c398fd1ba",
+    "config/GMFE69/project.json": "3582f53004d8e74a5658111fdb99dc0fd01b1a1da7058a633af64fcef176a8f8",
     "config/GMFE69/projectilebullet.json": "aedaaafe818e36f4652ab0e1dac6f4069b94cdb2eaebc694cabdf25ebdbc08f0",
     "config/GMFE69/projectilebullet_dtor.json": "aba7badbb4f5e46c7283a00f5951e082c9bb858412001c0a1c4924539072cea8",
     "config/GMFE69/projectilebullet_link.json": "2baa1545bd23d530bc9eefabf0fa73a6fc9196399939034d25664b7c432a31dd",
@@ -2583,6 +2584,7 @@
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_ctor.json": "afd763151cd34d04af50ee01cd475a2ac936c950291a77939b2ab0013d27fa87",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
+    "config/GMFE69/pumhandler_loop.json": "083f00c3dd4aeed02cd5b773798e976e040dc04a4dddee44464b97f94b382678",
     "config/GMFE69/pumhandler_prompt.json": "a2b27b1646eb28ce41b3f90f69bd46c89fc65430467b1ecafaf5da4643f5a4d2",
     "config/GMFE69/pumhandler_subtitles.json": "d7c42ca41fbb2b990bd77b9269b556cfb44625f182320e9982899e4d8079e322",
     "config/GMFE69/pumhandler_umt_dtor.json": "819d1b3919e5621005c600a9a0fb38e9035c014a74b47b2827c24aa90707236a",
@@ -54182,6 +54184,45 @@
       "discarded_functions": [],
       "object_sha256": "9ab20a93d008f287b8cfeca14767634ecf1d160999ec2c6a00dc2facac41a3c0",
       "linked_sha256": "1ec0fccad779cedcd91f460a3172a2d1c0636a40057d329eac469053ce05f47d"
+    },
+    {
+      "id": "pumhandler_loop",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 2308,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e678b0417737bdf1b3c06c2a4a30a35df5988d14c306907601591c46515a62a3",
+      "linked_sha256": "3b36eb908aa8cd3cc59d3177d75cd9ba76810645afd62e88e42ef41b4cc65dc6"
     }
   ],
   "code_map": {
@@ -54834,13 +54875,6 @@
         "file_record": 124,
         "file_name": "pumhandler.cpp",
         "ranges": [
-          {
-            "address": "0x800b9a00",
-            "size": 2308,
-            "kind": "function",
-            "name": "PopUpMessageHandler_Loop__19PopUpMessageHandlerFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800ba3d0",
             "size": 988,
