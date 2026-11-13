@@ -226,6 +226,24 @@ undefined. Not merged: weapon and thrown_obj (fragments on private vector views 
 placeholder scene-node views that conflict with CStaticObject's members), hierobject, light,
 thrownbullet and animplayer (not attempted).
 
+More vtable owners merged, 2026-11-13 (agent merge5, `scratch/loop3/merge5/notes.md`):
+hierobject, weapon, thrown_obj, thrownbullet and animplayer are one unit each and define
+`__vt__11CHierObject`, `__vt__7CWeapon`, `__vt__13CThrownObject`, `__vt__13CThrownBullet` and
+`__vt__15CAnimatedPlayer` with their files' RTTI records (thrownbullet also
+`MP_THROWNBULLET_DRAW_DELAY`, so `research/data/init/thrownbullet.cpp` is gone, and its file
+static `SECB_NullifyPointer`). hierobject's CStaticObject (attachobject's declaration with the
+motion, path, volume and light members named in its padding) is reused by weapon and
+thrown_obj; CBullet, CAnimObject and CSoldierObject are declared from their vtables. File-private
+views: hierobject and animplayer use the shared CVector3 with the assignment through the
+double-pair union; weapon a vector/matrix pair declared before the shared scene-node headers
+(include guards predefined); thrown_obj and thrownbullet constructor-free vectors with private
+copies of ISceneNode/IMovingSceneNode (two inline bodies rewritten for the view). Re-run
+(1,117 units, 98 drafts, 78 data files, all compiled): **61 undefined, 108 fragment-local,
+50 duplicate**, 0 small-data, with 5 vtables fewer undefined. Not merged: light (all 45
+functions match; the weak `__vt__17CAnimLightManager` and its RTTI record come out after the
+other vtables instead of right after `__vt__19CInstancedAnimLight`, and its two weak functions
+in the other order), anim_obj, alarm, pumhandler and world_object (not attempted).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
