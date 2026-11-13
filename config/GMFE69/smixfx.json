@@ -38,7 +38,13 @@
     {
       "name": ".text",
       "address": "0x80160cc0",
-      "size": 148,
+      "size": 1296,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017b7b0",
+      "size": 24,
       "type": 1
     },
     {
@@ -47,6 +53,12 @@
       "size": 4,
       "type": 8,
       "input_alignment": 4
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351ac8",
+      "size": 4,
+      "type": 1
     }
   ],
   "functions": [
@@ -55,13 +67,40 @@
       "address": "0x80160cc0",
       "size": 148,
       "binding": 1
+    },
+    {
+      "name": "SNDMIXI_modlapifxadd",
+      "address": "0x80160d54",
+      "size": 552,
+      "binding": 1
+    },
+    {
+      "name": "SNDMIXI_fxadd",
+      "address": "0x80160f7c",
+      "size": 596,
+      "binding": 1
     }
   ],
   "externals": {
+    "MIXI_reverbblock": "0x801686c0",
+    "SFILTER_initSOURCE__FP8SRCSTATEPv": "0x80166244",
+    "SNDI_getb__FPvi": "0x8015e1a4",
+    "_restgpr_20": "0x80138a40",
+    "_restgpr_21": "0x80138a44",
+    "_savegpr_20": "0x801389f4",
+    "_savegpr_21": "0x801389f8",
     "filtermodsizetable": "0x80193e28",
     "memset": "0x80009410",
+    "pfilterlist": "0x8034f4bc",
+    "phead": "0x8034f4c0",
+    "pheaderinfo": "0x8034f4b8",
     "plisthead": "0x8034f4c4",
-    "sndfx": "0x803410b0"
+    "sndfb": "0x80341838",
+    "sndfx": "0x803410b0",
+    "sndfxnummodules": "0x803419c4",
+    "sndmix": "0x80340eb0",
+    "tablecopyto": "0x80193918",
+    "validstructoutputs": "0x8034f4d0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -69,7 +108,11 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "plisthead"
+    "pfilterlist",
+    "phead",
+    "pheaderinfo",
+    "plisthead",
+    "validstructoutputs"
   ],
   "original_file": "smixfx.c",
   "original_file_index": 13011
