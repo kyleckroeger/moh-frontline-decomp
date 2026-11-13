@@ -15,7 +15,7 @@
     "-fp",
     "hardware",
     "-Cpp_exceptions",
-    "off",
+    "on",
     "-O4,p",
     "-inline",
     "auto",
@@ -25,9 +25,9 @@
     "-RTTI",
     "off",
     "-str",
-    "reuse",
+    "reuse,readonly",
     "-use_lmw_stmw",
-    "off",
+    "on",
     "-lang",
     "c++"
   ],
@@ -37,16 +37,136 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800e9ab8",
-      "size": 240,
+      "address": "0x800e883c",
+      "size": 4972,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000f2b8",
+      "size": 144,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80015d28",
+      "size": 216,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178ec0",
+      "size": 21,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350fa8",
+      "size": 32,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "PATHX_stop",
+      "address": "0x800e883c",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_pause",
+      "address": "0x800e88a8",
+      "size": 152,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_statusall",
+      "address": "0x800e9000",
+      "size": 784,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_volume",
+      "address": "0x800e8940",
+      "size": 220,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_modifyhold",
+      "address": "0x800e8a1c",
+      "size": 68,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_queuefile",
+      "address": "0x800e8a60",
+      "size": 1028,
+      "binding": 1
+    },
+    {
       "name": "PATHX_isynctask__Fii",
       "address": "0x800e9ab8",
       "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_endservice",
+      "address": "0x800e8e64",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_initservice",
+      "address": "0x800e8eac",
+      "size": 192,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_status",
+      "address": "0x800e8f6c",
+      "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_timeremaining",
+      "address": "0x800e9310",
+      "size": 156,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_readyfornewrequest",
+      "address": "0x800e93ac",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_getvolume",
+      "address": "0x800e940c",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_destroytrack",
+      "address": "0x800e946c",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_createtrack",
+      "address": "0x800e9574",
+      "size": 1148,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_overheadtrack",
+      "address": "0x800e99f0",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "PATHX_milliseconds",
+      "address": "0x800e9a4c",
+      "size": 108,
       "binding": 1
     },
     {
@@ -57,12 +177,54 @@
     }
   ],
   "externals": {
+    "FILESYS_closesync": "0x8014a130",
+    "FILESYS_opensync": "0x8014a088",
+    "FILESYS_readsync": "0x8014a108",
+    "FILE_size": "0x8014de68",
+    "MEM_allocz": "0x8014f80c",
+    "MEM_free": "0x8014f83c",
+    "REAL_abortmessage": "0x80151078",
+    "SNDBANK_patchinfo": "0x80159870",
+    "SNDBANK_play": "0x8015a628",
+    "SNDCTRL_getprogvol": "0x8015cdb4",
     "SNDSTRM_autovol": "0x8015c600",
+    "SNDSTRM_create": "0x8015becc",
+    "SNDSTRM_destroy": "0x8015bef4",
+    "SNDSTRM_getprogvol": "0x8015c674",
+    "SNDSTRM_modifyhold": "0x8015c4b0",
+    "SNDSTRM_overhead": "0x8015c230",
+    "SNDSTRM_pitchmult": "0x8015c728",
+    "SNDSTRM_purge": "0x8015c028",
+    "SNDSTRM_queuefile": "0x8015c004",
+    "SNDSTRM_queuemem": "0x8015c544",
+    "SNDSTRM_requeststatus": "0x8015c37c",
+    "SNDSTRM_status": "0x8015c288",
+    "SNDSTRM_vol": "0x8015c5b0",
+    "SNDSYS_add100hzclient": "0x801535bc",
     "SNDSYS_entercritical": "0x80153554",
     "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_remove100hzclient": "0x801535f4",
     "SNDautovol": "0x8015cc3c",
+    "SNDbankadd": "0x80159474",
+    "SNDbankheadercopy": "0x801597e8",
+    "SNDbankheadersize": "0x801597cc",
+    "SNDbankremove": "0x80159600",
+    "SNDpitchmult": "0x8015ce8c",
+    "SNDplaysetdef": "0x8015d458",
+    "SNDstop": "0x8015d148",
+    "SNDtimeremaining": "0x8015d238",
+    "SNDvol": "0x8015ccf0",
+    "SYNCTASK_add": "0x801521a4",
+    "SYNCTASK_del": "0x8015233c",
+    "TIMER_gettick": "0x80151e00",
+    "TIMERhz": "0x8034f3e4",
     "pathService": "0x8034ecb0",
-    "pathxinfo": "0x801f7410"
+    "pathTimer": "0x8034ecb4",
+    "pathabortmsg": "0x8034eca8",
+    "pathprintf": "0x8034ecac",
+    "pathxinfo": "0x801f7410",
+    "printf": "0x8013dc88",
+    "sprintf": "0x8013dab4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -70,7 +232,11 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "pathService"
+    "TIMERhz",
+    "pathService",
+    "pathTimer",
+    "pathabortmsg",
+    "pathprintf"
   ],
   "original_file": "pathxSND.c",
   "original_file_index": 8920

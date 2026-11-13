@@ -54,6 +54,14 @@ multiplayer not at all. Every landing keeps the complete image identical.
   which is a gap function with logic, still on hold). rcmp_main's unexplained 4-byte .sbss gap
   may be filled with an inferred size-view static (an object the original has, from code the
   linker removed), the accepted .bss-view form.
+- **OPEN QUESTION for the user (not decided by the coordinator):** gap functions with logic.
+  Two whole-file merges are fully matched except for where one weak copy is emitted, and only a
+  compiled-then-stripped function between two real ones fixes it: light.cpp (a discarded helper
+  that deletes a CAnimLightManager) and world_volume.cpp (a Probe() with a local dwi::list
+  between ~CWorldVolume and the constructor; the original's extab label gaps suggest a real
+  dead-stripped function there). Its bytes would be stripped, not left uncovered. Accept for
+  weak-copy placement, or keep on hold? Drafts: scratch/loop3/merge5/lt/,
+  scratch/loop3/merge11/wv/gap1.cpp.
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by
