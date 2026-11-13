@@ -926,3 +926,27 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   out-of-line ~list<CCompartment> is exact and reserve's node/next keep the right relative order, but
   both sit one register lower (r26/r25 for r27/r26) whatever the clear() spelling (pw/wov.py, 7
   forms): the second inline level seems to add one ranked value. Open.
+
+## Deferred-mode emission order, colour copies, world_object's reserve rank (merge9, 2026-11-13; scratch/loop3/merge9)
+- With '-inline deferred(,auto)' functions come out in reverse source order, and a weak copy of an
+  IN-CLASS inline member comes out right after the first function (in output order) that needs it
+  out of line, followed by what it needs itself (pumhandler: DisplaySubtitle, reserve, ~list, the
+  range constructor, UpdateSubtitles). Out-of-class template members and member templates go to
+  the END of the file; an explicit 'template class X<T>;' places the ordinary members where it
+  stands but not the member templates. So define every list member in the class.
+- Deferred evidence without RTTI: function statics and the .bss destructor-chain records (12
+  bytes) numbered below every extab label (pumhandler: @648, @716.., @880, @936 < @1128).
+- An __sinit storing uninitialised floats from f31: set the temporary's colour in its
+  constructor BODY ('m_color.r = 0; ...'), not with a CColor(0,0,0,128) initialiser (which takes
+  the member's address and keeps the temporary on the stack).
+- A CColor copied as one word to the stack and read back by bytes = passed BY VALUE (an inline
+  taking CColor); 'CColor c = node->m_data.m_color;' with game/CColor.h copies member-wise and
+  propagates the bytes (UpdateSubtitles 96 -> 0 with an inline ShowSubtitle(..., CColor)).
+- world_object's reserve<CCompartment> (clear() loop one callee register low, r26/r25 for
+  r27/r26): split the range constructor into the inline helpers init_free() and link_range(), as
+  pumhandler/alarm, with 'const T& value = *it;' before the placement new: reserve and the
+  out-of-line ~list both exact (scratch/loop3/merge9/wo/h3.cpp).
+- world_volume (open): the original is deferred with RTTI (RTTI labels @364/@365 below extab
+  @386) and ~CWorldVolume inlines ~list, yet the weak ~list comes out right after it; explicit
+  instantiation after ~CWorldVolume, ': m_subVolumes()', ~list out of class (plain/weak/inline)
+  are all inert.

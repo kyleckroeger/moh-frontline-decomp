@@ -294,6 +294,23 @@ small-data; two vtables fewer undefined. Still not merged: alarm, pumhandler and
 local orders, as world_volume's; alarm's other 10 functions match in one file), anim_obj and
 AnimObjFactory (not attempted), and the files listed above.
 
+Merges continued, 2026-11-13 (agents dtor1 and merge9, `scratch/loop3/dtor1/notes.md`,
+`scratch/loop3/merge9/notes.md`): the dwi::list destructor case is solved by routing `~list`
+through the inline `clear()` (an expanded inline numbers its locals in reverse declaration
+order, so the out-of-line copy and the copy inlined into reserve colour alike only when both
+expand clear()); `include/game/DwiContainers.h` now does the same (all 115 units on the Dwi and
+CScene headers verified unchanged, scene_dtor's stripped labels renumbered). alarm, bsutil and
+pumhandler are one unit each (pumhandler: deferred inlining written last to first, every list
+member defined in the class so the weak copies are emitted before UpdateSubtitles,
+`.sdata2` pooled; `pumhandler_block.h` and the file's research/data drafts removed). Re-run
+(1,048 units, 98 drafts, 75 data files, all compiled): **56 undefined, 103 fragment-local, 47
+duplicate**, 0 small-data (`PumhandlerBlockItem`, `g_pMemAllocators` and the duplicate
+`CUserMessageTable::Load` gone). Still not merged: world_volume (all 27 functions match; the weak
+`~list` must come out right after `~CWorldVolume`, which inlines it), world_object (its list pair
+now matches with the range constructor in two inline helpers; the whole file, deferred with
+RTTI like hearingvolume, is not written), anim_obj and AnimObjFactory (not attempted), and the
+files listed above.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
