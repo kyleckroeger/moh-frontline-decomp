@@ -950,3 +950,19 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   @386) and ~CWorldVolume inlines ~list, yet the weak ~list comes out right after it; explicit
   instantiation after ~CWorldVolume, ': m_subVolumes()', ~list out of class (plain/weak/inline)
   are all inert.
+
+## merge11 (world_object, world_volume)
+- One dwi::list template for a POD element and a class element (world_object reserve<SRequest> and
+  reserve<CCompartment>): range ctor 'link_range(end(), first, last)' with 'head = end.m_node;
+  stop = last.m_node; tail = head->m_prev;' and end() computed from this+16. Taking head from
+  &m_head lets it be hoisted (SRequest: r0 vs r7). Taking tail from m_head.m_prev loads it
+  frame-relative (CCompartment 128(r1) vs 16(r28)).
+- If the element class really derives from a class with a virtual destructor, 'x.~T()' becomes a
+  virtual call. The original's direct call comes from destroying the node ('node->~list_node<T>()').
+- A struct with an array member is not scalarised: a local built and then copied into a node keeps
+  its stack copy (world_object Acquire: SRequest's 'unsigned char m_reuse[4]', 79 diffs as bool).
+- Deferred + written last to first: global objects with destructors defined at the END of the
+  source put their dtor-chain records after the other .bss temporaries.
+- world_volume: a weak in-class copy comes out right after a dead-stripped function. Its order needs
+  a function in the source between ~CWorldVolume and the constructor that needs ~list out of line.
+  Large extab label gaps between neighbouring functions are the sign.

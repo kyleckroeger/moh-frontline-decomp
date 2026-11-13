@@ -311,6 +311,18 @@ now matches with the range constructor in two inline helpers; the whole file, de
 RTTI like hearingvolume, is not written), anim_obj and AnimObjFactory (not attempted), and the
 files listed above.
 
+Merges continued, 2026-11-13 (agents merge10 and merge11, `scratch/loop3/merge11/notes.md`):
+anim_obj, AnimObjFactory, saems and world_object are one unit each. world_object (8 fragments,
+27 functions) defines `__vt__12CWorldObject`, its RTTI records and statics: deferred inlining
+with RTTI, written last to first, CWorldObject on the shared ISceneNode with real dwi::list and
+CMemFactory members; one list template serves both reserves with the tail taken from the
+sentinel and end() computed from `this`. Re-run (`source_link.py --jobs 4`, 1,025 units, 98
+drafts, 72 data files, all compiled): **54 undefined, 103 fragment-local, 47 duplicate**, 0
+small-data (`__vt__12CWorldObject` and `__vt__11CAnimObject` gone). world_volume stays split:
+its weak `~list` is placed after `~CWorldVolume` only when a function between `~CWorldVolume`
+and the constructor needs it out of line. The original's extab label gaps point to functions
+that the linker removed, so this needs a gap function, which is on hold.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
