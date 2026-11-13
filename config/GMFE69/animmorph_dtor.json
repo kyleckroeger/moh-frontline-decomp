@@ -32,31 +32,44 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80065568",
-      "size": 92,
+      "address": "0x800653c0",
+      "size": 516,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000b468",
-      "size": 8,
+      "address": "0x8000b460",
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x8001259c",
-      "size": 12,
+      "address": "0x80012590",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fcb0",
+      "size": 8,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "Draw__10CAnimMorphFR12CDrawContext",
+      "address": "0x800653c0",
+      "size": 424,
+      "binding": 1
+    },
     {
       "name": "__dt__10CAnimMorphFv",
       "address": "0x80065568",
@@ -65,9 +78,17 @@
     }
   ],
   "externals": {
+    "DMMorphBlendDisplayLists__FP16DMRenderObject_T": "0x800f712c",
+    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c",
+    "Draw__9CAnimatedFR12CDrawContext": "0x80060e0c",
+    "GetEntry__16CAnimMatrixCacheFPvRb": "0x80060a04",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "Transform__7CMatrixCFR8CVector48CVector3": "0x8008fadc",
+    "Update__16CAnimMatrixCacheFv": "0x80060b38",
     "__dl__FPv": "0x8001ca2c",
     "__vt__10CAnimMorph": "0x801838e4",
-    "__vt__9CAnimated": "0x801838a8"
+    "__vt__9CAnimated": "0x801838a8",
+    "g_animMorphCache": "0x801d3660"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

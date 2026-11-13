@@ -887,3 +887,4 @@ sub-object members (plain colour bytes instead of a CColor member) rather than h
   sub-object (self = this, &member, subscripts, member ctor this in an __sinit) makes the whole temp memory; plain typed
   accesses scalarise everything. buddy.cpp's BuddyInfo() temp (sinit, list range ctor, Create) is such a partial temp
   with TYPED region stores; no natural source found yet (scratch/loop3/sinit2/notes.md).
+- (g1b, 2026-11-13) A dead stack copy that the scheduler places BEFORE the assigned object's second half: with a by-value operator= the return temp is created after the whole assignment; an inline that copies through a local first ('T t = s; d = t;' with a reference operator=) creates it before. CAnimMorph::Draw 3 -> 0.

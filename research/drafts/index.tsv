@@ -69,7 +69,6 @@ real_lines	size	address	function	compile_settings_from	draft
 463	3856	8006e0b0	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	config/GMFE69/cdbgeom_triangle_ctor.json	research/drafts/TestCollision.8006e0b0.cpp
 414	3768	80035aa8	BSFileReadClass__FPCcbbPP14BSClass_struct	config/GMFE69/bsevents.json	research/drafts/BSFileReadClass.80035aa8.cpp
 1183	5024	800e270c	MemoryCardBootUpPortCheck__10CShellMenuFi	config/GMFE69/ShellMenu_load.json	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
-3	424	800653c0	Draw__10CAnimMorphFR12CDrawContext	config/GMFE69/animmorph_dtor.json	research/drafts/Draw.800653c0.cpp
 58	1704	80075024	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	config/GMFE69/compartment.json	research/drafts/DrawNode.80075024.cpp
 31	608	800839e4	Init__NotTheVirtualOne__19CBulletDecalManagerFv	config/GMFE69/decal_dtor.json	research/drafts/Init.800839e4.cpp
 21	376	800904e8	Rotate__7CMatrixF8CVector3f	config/GMFE69/matrix_translate.json	research/drafts/Rotate.800904e8.cpp
