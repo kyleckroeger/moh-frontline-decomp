@@ -594,7 +594,6 @@
     "smemman.json",
     "stream_cb.json",
     "path_restore.json",
-    "sst_queue.json",
     "spkt_tail.json",
     "smixer_reset.json",
     "smixer_dry.json",
