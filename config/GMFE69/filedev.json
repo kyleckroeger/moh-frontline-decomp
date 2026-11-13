@@ -18,18 +18,20 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse",
     "-use_lmw_stmw",
-    "on",
+    "off",
     "-fp_contract",
-    "on"
+    "on",
+    "-char",
+    "signed"
   ],
   "include_dirs": [],
   "strip_unused": false,
@@ -37,12 +39,90 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8014817c",
-      "size": 368,
+      "address": "0x801478a0",
+      "size": 2636,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017b770",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80190f48",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x80334940",
+      "size": 42016,
+      "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e598",
+      "size": 24,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ReadFileThreadFunc__FPv",
+      "address": "0x8014807c",
+      "size": 256,
+      "binding": 0
+    },
+    {
+      "name": "MWIO_openfile__FPCcUiPPQ23std5_FILE",
+      "address": "0x80147934",
+      "size": 132,
+      "binding": 0
+    },
+    {
+      "name": "AyncDVDCallback__FlP11DVDFileInfo",
+      "address": "0x8014804c",
+      "size": 48,
+      "binding": 0
+    },
+    {
+      "name": "AyncDVDRead__FP11DVDFileInfo",
+      "address": "0x80147c14",
+      "size": 596,
+      "binding": 0
+    },
+    {
+      "name": "StartNonAlignedAyncRead__FP11DVDFileInfoPvll",
+      "address": "0x80147e68",
+      "size": 484,
+      "binding": 0
+    },
+    {
+      "name": "initfiledev__Fv",
+      "address": "0x801478a0",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "killfiledev__Fv",
+      "address": "0x8014790c",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "openfile__FPCcUiP10HANDLE_def",
+      "address": "0x801479b8",
+      "size": 516,
+      "binding": 1
+    },
+    {
+      "name": "closefile__FP10HANDLE_def",
+      "address": "0x80147bbc",
+      "size": 88,
+      "binding": 1
+    },
     {
       "name": "readfile__FP10HANDLE_defPvii",
       "address": "0x8014817c",
@@ -75,19 +155,36 @@
     }
   ],
   "externals": {
+    "DCInvalidateRange": "0x80111850",
+    "DVDClose": "0x80118110",
+    "DVDConvertPathToEntrynum": "0x80117ce0",
+    "DVDFastOpen": "0x80117fd4",
+    "DVDGetDriveStatus": "0x8011a1f8",
+    "DVDReadAsyncPrio": "0x80118358",
+    "MEM_copy": "0x80150880",
+    "OSCreateThread": "0x80116098",
+    "OSInitMessageQueue": "0x80113e4c",
+    "OSReceiveMessage": "0x80113f74",
+    "OSResumeThread": "0x80116458",
     "OSSendMessage": "0x80113eac",
-    "ReadFileThreadMsgQ": "0x80336c50",
+    "OSSuspendThread": "0x801166e0",
+    "REAL_abortmessage": "0x80151078",
+    "THREAD_yield": "0x80151fbc",
+    "__lower_map": "0x80190958",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_27": "0x80138a10",
+    "fclose": "0x8013d174",
+    "fopen": "0x8013cff4",
+    "fread": "0x8013cd0c",
     "fseek": "0x8013d234",
     "ftell": "0x8013d490",
     "fwrite": "0x8013c99c",
-    "gCurRead": "0x80336d00"
+    "iFILE_CommandCompleteCallback__Fi": "0x80149b9c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "gCurRead"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "filedev.cpp",
