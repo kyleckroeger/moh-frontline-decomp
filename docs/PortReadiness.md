@@ -149,6 +149,26 @@ are the SDK aliases (`PSVECNormalize` ...), MSL's `nextafter`/`__double_max`, `a
 `_eti_init_info`, `__CARDIsWritable`, one draft's `PATHI_choosebeat` and
 `CUcodeRenderBin::Render`. Why the vtables stay undefined is in step 3.2 below.
 
+Whole-file merges, 2026-11-13 (agent merge1; the maintainer's rule: a file's vtables are
+defined by merging its fragments into one unit once the file is complete, not from
+`research/data/`). 80 original files had all their functions verified but were still split
+into fragment units (`scratch/loop3/merge1/complete_files.tsv`: 30 own a global vtable, 21
+more have fragment-local statics). Twelve were merged into one unit each, named after the
+file and owning its `.text`, `.rodata`, `.data` and `.sdata`. Nine own a vtable, now defined
+from source with its base lists and the file's local RTTI records: AIPlayerDoodad, AIPlayerObject,
+AISoldierObject, AITankDoodad, AITankObject, AISoldierDoodad, csg_volume, collisionvolume and
+bullet. Three are EA files whose static becomes file-local again: locatbig, memalloc and
+printstr. These units compile with RTTI on and declare the destructor first as the key
+function. When a file has other `.data` (switch tables) or several classes' RTTI, the
+original's order only comes out with `-inline auto,deferred` and the functions written in
+reverse. The re-run (`source_link.py --jobs 4`, 1,240 units, 80 drafts, 85 data files) gives
+**92 undefined, 144 fragment-local, 51 duplicate**, 0 small-data. The merges removed 9
+undefined vtables (55 global ones are left) and 3 fragment-local symbols. The undefined count
+rose because 18 drafts no longer compile in the link: commit 4c75217f moved them onto the
+shared headers, but their settings templates lack the `include` directory. 17 of the
+undefined symbols are functions that only those drafts define. Without them the count would
+be 75.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
