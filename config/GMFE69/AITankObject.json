@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,32 +40,37 @@
     {
       "name": ".text",
       "address": "0x80051e8c",
-      "size": 1152,
+      "size": 1344,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000aa6c",
-      "size": 32,
+      "size": 68,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011be8",
-      "size": 48,
+      "size": 72,
       "type": 1
     },
     {
       "name": ".rodata",
-      "address": "0x8016fbe4",
-      "size": 133,
-      "type": 1,
-      "input_alignment": 4
+      "address": "0x8016fbc8",
+      "size": 161,
+      "type": 1
     },
     {
       "name": ".data",
-      "address": "0x801835f8",
-      "size": 40,
+      "address": "0x801835d0",
+      "size": 80,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034da80",
+      "size": 16,
       "type": 1
     }
   ],
@@ -80,6 +85,12 @@
       "name": "PreUpdate__13CAITankObjectFv",
       "address": "0x80052308",
       "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "__dt__13CAITankObjectFv",
+      "address": "0x80052314",
+      "size": 68,
       "binding": 1
     },
     {
@@ -105,12 +116,32 @@
       "address": "0x80052174",
       "size": 140,
       "binding": 1
+    },
+    {
+      "name": "__nw__13CAITankObjectFUlPv",
+      "address": "0x8005230c",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "__ct__21CAIFilterRealPositionFv",
+      "address": "0x800523c8",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "__ct__13CAITankObjectFPv",
+      "address": "0x80052358",
+      "size": 112,
+      "binding": 1
     }
   ],
   "externals": {
     "CheckCoverpointUsefulness__9CAIObjectFv": "0x8004aa28",
     "DebugMsg__FPCce": "0x80018c88",
     "Init__9CAIObjectFv": "0x8004ebe0",
+    "IsCrouching__9CAIObjectCFv": "0x800478a8",
+    "IsPlayer__9CAIObjectCFv": "0x800478b0",
     "ProcessObstacleAvoidance__9CAIObjectFv": "0x80049dd4",
     "SetTarget__9CAIObjectFP9CAIObject": "0x8004d41c",
     "UpdateReactionTime__9CAIObjectFv": "0x8004ec04",
@@ -120,7 +151,10 @@
     "WalkToArbitraryPoint__9CAIObjectFv": "0x80049e88",
     "WalkToCoverPointDirect__9CAIObjectFv": "0x8004a284",
     "WalkToCoverPointIndirect__9CAIObjectFv": "0x8004a0ec",
-    "WalkToCoverPoint__9CAIObjectFv": "0x8004a454"
+    "WalkToCoverPoint__9CAIObjectFv": "0x8004a454",
+    "__construct_array": "0x8013834c",
+    "__ct__9CAIObjectFv": "0x8004f024",
+    "__dt__9CAIObjectFv": "0x8004eee0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

@@ -888,7 +888,6 @@
     "mainloop_game.json",
     "AISoldierDoodad_ctor.json",
     "AIDoodad.json",
-    "AITankObject_ctor.json",
     "debug_picker.json",
     "plane_ctor.json",
     "AIFilter_soldier_ctor.json",
