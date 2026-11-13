@@ -242,6 +242,29 @@ static inline unsigned short FindCentre(AnimFileStateAnimList_t* list) {
     return 0;
 }
 
+// Inferred (g2, 11-13): the pitch rotation of forward/up as one inline used by both copies; tan(a) as its
+// argument gives the original's earlier colour for t (61 -> 59).
+static inline void PitchRotate(CVector3& forward, CVector3& up, float c, float s, float t) {
+    CVector3 cf = c * forward;
+    CVector3 su = s * up;
+    forward.y = cf.y + su.y;
+    float bx;
+    forward.x = cf.x + su.x;
+    forward.z = cf.z + su.z;
+    up *= c;
+    float bz;
+    float by;
+    bz = forward.z - su.z;
+    by = forward.y - su.y;
+    bx = forward.x - su.x;
+    bx *= t;
+    by *= t;
+    bz *= t;
+    up.x -= bx;
+    up.y -= by;
+    up.z -= bz;
+}
+
 int CAnimCallbacks::aim_cb(AnimFileStateAnimList_t* list, unsigned short state, AnimObjHdr_t* header,
                            AnimChannel_t* channel, void* user, unsigned long event, void* extra, float time) {
     CAIFilterObject* filter;
@@ -303,22 +326,7 @@ int CAnimCallbacks::aim_cb(AnimFileStateAnimList_t* list, unsigned short state, 
             float a = 0.017453 * pitch;
             c = cos(a);
             s = sin(a);
-            float t = tan(a);
-            CVector3 cf = c * forward;
-            CVector3 su = s * up;
-            Y(forward) = Y(cf) + Y(su);
-            X(forward) = X(cf) + X(su);
-            Z(forward) = Z(cf) + Z(su);
-            up *= c;
-            float bz = Z(forward) - Z(su);
-            float by = Y(forward) - Y(su);
-            float bx = X(forward) - X(su);
-            bx *= t;
-            by *= t;
-            bz *= t;
-            X(up) -= bx;
-            Y(up) -= by;
-            Z(up) -= bz;
+            PitchRotate(forward, up, c, s, tan(a));
         }
         float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + Z(forward) * Z(diff);
         float vertical = X(up) * X(diff) + Y(up) * Y(diff) + Z(up) * Z(diff);
@@ -357,22 +365,7 @@ int CAnimCallbacks::aim_cb(AnimFileStateAnimList_t* list, unsigned short state, 
                     float a = 0.017453 * pitch;
                     float c = cos(a);
                     float s = sin(a);
-                    float t = tan(a);
-                    CVector3 cf = c * forward;
-                    CVector3 su = s * up;
-                    Y(forward) = Y(cf) + Y(su);
-                    X(forward) = X(cf) + X(su);
-                    Z(forward) = Z(cf) + Z(su);
-                    up *= c;
-                    float bz = Z(forward) - Z(su);
-                    float by = Y(forward) - Y(su);
-                    float bx = X(forward) - X(su);
-                    bx *= t;
-                    by *= t;
-                    bz *= t;
-                    X(up) -= bx;
-                    Y(up) -= by;
-                    Z(up) -= bz;
+                    PitchRotate(forward, up, c, s, tan(a));
                 }
                 float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + Z(forward) * Z(diff);
                 float vertical = X(up) * X(diff) + Y(up) * Y(diff) + Z(up) * Z(diff);

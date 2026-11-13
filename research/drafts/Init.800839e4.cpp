@@ -170,9 +170,6 @@ enum TLTResourceID {};
 void DebugMsg(const char*, ...);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
-// The decal.crp record as (key, value) pairs (decal_reset.cpp's DecalParam); the name pair is read counted
-// from the start of the data (pair i * 6 + 1, the original's separate +8 induction value). The union member
-// is inferred (g2, 11-13: 31 -> 28).
 struct DecalParam {
     int key;
     union {
@@ -358,8 +355,10 @@ void CBulletDecalManager::Init__NotTheVirtualOne() {
 
     m_decals = g_DecalList;
     InitDecalList();
-    resource = TLT_FindNextResourceByType((TLTResourceID)20, 0);
-    m_resource = resource;
+    // g2 (11-13): read back from the member: every callee register as in the original (28 -> 14), but the
+    // original copies the call result (mr r31,r3) where this reloads it; from the call result resource ranks lowest.
+    m_resource = TLT_FindNextResourceByType((TLTResourceID)20, 0);
+    resource = m_resource;
     if (resource->data->m_count > 13) {
         DebugMsg("WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  \n");
         DebugMsg("WARNING:  The engine is only aware of %d number of decals while\n", 13);
