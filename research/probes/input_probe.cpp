@@ -10,6 +10,9 @@
 //
 // research/tools/input_script.py writes the script table below from a text
 // script; this file holds a short default (wait, then press Start and A).
+// With REAL_PAD set (input_script.py --dtm), the pad is not scripted: the body
+// is the original iPAD_update (src/ea/ipad.cpp), so a Dolphin input movie
+// drives the game, and the probe only adds the trace.
 
 struct PADStatus {
     unsigned short button;
@@ -24,9 +27,17 @@ struct PADStatus {
     signed char err;
 };
 
+extern PADStatus vgPadStatus[4];
 extern PADStatus gPadStatus[4];
 extern unsigned char* g_pPlayers[4];
-extern "C" void OSReport(const char*, ...);
+extern "C" {
+void OSReport(const char*, ...);
+int PADReset(unsigned long);
+unsigned long SIProbe(int);
+int OSDisableInterrupts(void);
+int OSRestoreInterrupts(int);
+void* MEM_copy(void*, const void*, int);
+}
 
 // One step: from `frame` on, hold these inputs until the next step.
 struct Step {
@@ -41,6 +52,7 @@ static const Step s_script[] = {
     {0, 0, 0, 0, 0, 0, 0, 0},
 };
 static const unsigned int TRACE_EVERY = 30;
+static const int REAL_PAD = 0;
 // SCRIPT END
 
 static unsigned int s_update;
@@ -57,7 +69,32 @@ static unsigned int Hash(const unsigned char* p, int size) {
     return h;
 }
 
-void iPAD_update(void) {
+// The original iPAD_update.
+static void RealPad(void) {
+    int level = OSDisableInterrupts();
+    MEM_copy(gPadStatus, vgPadStatus, sizeof(gPadStatus));
+    OSRestoreInterrupts(level);
+    unsigned long reset = 0;
+    for (int i = 0; i < 4; i++) {
+        unsigned long bit = 0x80000000 >> i;
+        switch ((int)SIProbe(i)) {
+        case 0x09000000:
+        case (int)0x8B100000:
+            if (gPadStatus[i].err == -1) {
+                vgPadStatus[i].err = -2;
+                reset |= bit;
+            }
+            break;
+        default:
+            vgPadStatus[i].err = -1;
+            break;
+        }
+    }
+    if (reset)
+        PADReset(reset);
+}
+
+static void ScriptPad(void) {
     const unsigned int steps = sizeof(s_script) / sizeof(s_script[0]);
     while (s_step + 1 < steps && s_script[s_step + 1].frame <= s_update)
         s_step++;
@@ -75,18 +112,30 @@ void iPAD_update(void) {
     pad.err = 0;
     for (int i = 1; i < 4; i++)
         gPadStatus[i].err = -1;
+}
+
+void iPAD_update(void) {
+    if (REAL_PAD)
+        RealPad();
+    else
+        ScriptPad();
 
     if (s_update % TRACE_EVERY == 0) {
         const unsigned char* p = g_pPlayers[0];
+        const PADStatus& pad = gPadStatus[0];
         if (p) {
             // Offsets from CPlayerObject in player_beginupdate.cpp, where
             // CVector3 is 16 bytes: m_tm's position at 0xb0, m_yaw 0x29c,
-            // m_pitch 0x2a0, m_currentWeapon 0x45c.
-            OSReport("TRACE %u step %u pos %.3f %.3f %.3f yaw %.4f pitch %.4f weapon %d hash %08x\n",
-                     s_update, s_step, F(p, 0xb0), F(p, 0xb4), F(p, 0xb8), F(p, 0x29c), F(p, 0x2a0),
-                     *(const int*)(p + 0x45c), Hash(p, 0x800));
+            // m_pitch 0x2a0, the state flags 0x394..0x397, m_currentWeapon
+            // 0x45c; the HUD's copy of the reserve and clip ammunition at
+            // m_ui (0xa70) + 0x804 and + 0x808 (research/layout/classes.tsv).
+            OSReport("TRACE %u step %u pad %04x %d %d %d %d pos %.3f %.3f %.3f yaw %.4f pitch %.4f flags %08x weapon %d ammo %d/%d hash %08x\n",
+                     s_update, s_step, pad.button, pad.stickX, pad.stickY, pad.substickX, pad.substickY, F(p, 0xb0), F(p, 0xb4), F(p, 0xb8), F(p, 0x29c), F(p, 0x2a0),
+                     *(const unsigned int*)(p + 0x394), *(const int*)(p + 0x45c),
+                     *(const int*)(p + 0x1278), *(const int*)(p + 0x1274), Hash(p, 0x800));
         } else {
-            OSReport("TRACE %u step %u noplayer\n", s_update, s_step);
+            OSReport("TRACE %u step %u pad %04x %d %d %d %d noplayer\n", s_update, s_step, pad.button, pad.stickX,
+                     pad.stickY, pad.substickX, pad.substickY);
         }
     }
     s_update++;

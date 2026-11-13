@@ -121,8 +121,18 @@ void quick_sort(I first, I last, C comp);
 
 typedef bool (*NodePairCompare)(const CScene::UNodePair&, const CScene::UNodePair&);
 
+// The original keeps three of the profiling timers' OSGetTick results in r29-r31, so it
+// saves r28-r31 and has a 32-byte frame; CodeWarrior drops every timer operation here,
+// which left a 16-byte frame. That changed the game in Dolphin (2026-11-13, Mission 1
+// route): with only this draft active, the player object differed from the original from
+// update 8,070, though the code is otherwise the original's instruction for instruction.
+// So some later code (not identified) evidently reads stack memory that it never wrote,
+// and this function's frame size changes what it finds there. The unused volatile array restores the 32-byte frame; with it
+// the route replays identically to the original. Inferred: not in the original source.
 void CScene::SweepAllExtents() {
     long times[3];
+    volatile long pad[4];
+    pad[0] = 0;
     m_pairs.m_size = 0;
     times[0] = -OSGetTick();
     m_extents128.sort();

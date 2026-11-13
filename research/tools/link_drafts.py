@@ -11,6 +11,9 @@ instruction becomes a branch to the draft. Everything else stays original.
     link_drafts.py --only A B       only functions whose name contains A or B
     link_drafts.py --exclude A B    leave these out, to bisect a crash
     link_drafts.py --report-only    write the figures but no ELF
+    link_drafts.py --probe P.cpp --coverage --output X.elf
+                                    a test image (research/tools/dolphin_boot.py) that
+                                    also logs "COVER name" the first time each draft runs
 
 Writes build/linked/Moh2RelGC_linked.elf and progress/GMFE69.linked.json. "Linked" means
 every symbol a draft can reach was resolved. It doesn't mean the draft behaves
@@ -213,6 +216,8 @@ def main():
     ap.add_argument("--probe", nargs="*", default=[],
                     help="extra source files whose functions replace originals of the same name "
                          "(test harnesses such as research/probes/input_probe.cpp); not counted as progress")
+    ap.add_argument("--coverage", action="store_true",
+                    help="enter each draft through a stub that logs 'COVER name' with OSReport on its first call")
     ap.add_argument("--output", default="build/linked/Moh2RelGC_linked.elf")
     args = ap.parse_args()
     os.chdir(ROOT)
@@ -292,8 +297,65 @@ def main():
           f"{unresolved_data} unresolved references outside reachable code")
     for name, why in sorted(failed):
         print(f"  {name[:60]}: {why[:160]}")
+    if args.coverage:
+        names = {int(r["address"], 16): r["function"] for g in groups.values() for r in g}
+        patches = coverage_stubs(patches, {a: names[a] for a, _ in patches if names[a] not in probes},
+                                 orig[0]["OSReport"], arena, blob)
     if not args.report_only:
         write_elf(original, orig_elf, patches, arena, blob, args.output)
+
+
+def coverage_stubs(patches, names, osreport, arena, blob):
+    """Route each patch in `names` through a stub that reports the draft's first call.
+
+    The stub tests its flag byte, and on the first call saves the argument registers
+    (r3-r10, f1-f8, CR), calls OSReport("COVER name\n"), restores them and branches on to
+    the draft. r11, r12 and r0 are free at a function's entry. Appends to `blob`."""
+    def ha(v):
+        return ((v + 0x8000) >> 16) & 0xffff
+
+    def d_form(op, rd, ra, imm):
+        return (op << 26) | (rd << 21) | (ra << 16) | (imm & 0xffff)
+    STUB = 53 * 4
+    while (arena + len(blob)) % 32:
+        blob.append(0)
+    todo = [(a, t) for a, t in patches if a in names]
+    base = arena + len(blob)
+    strings = base + STUB * len(todo)
+    text, out = bytearray(), []
+    pool = bytearray()
+    entries = []
+    for addr, target in todo:
+        entries.append((addr, target, len(pool)))
+        pool += f"COVER {names[addr]}\n".encode() + b"\0"
+    while len(pool) % 4:
+        pool.append(0)
+    flag_base = strings + len(pool)
+    for i, (addr, target, soff) in enumerate(entries):
+        here = base + len(text)
+        flag, string = flag_base + i, strings + soff
+        code = [d_form(15, 11, 0, ha(flag)), d_form(34, 12, 11, flag), d_form(11, 0, 12, 0)]
+        go = len(code)  # patched below: bne to the final branch
+        code += [0, d_form(14, 12, 0, 1), d_form(38, 12, 11, flag),
+                 d_form(37, 1, 1, -0x80), 0x7C0802A6, d_form(36, 0, 1, 0x84), 0x7D800026, d_form(36, 12, 1, 0x6c)]
+        code += [d_form(36, r, 1, 8 + 4 * (r - 3)) for r in range(3, 11)]
+        code += [d_form(54, f, 1, 0x28 + 8 * (f - 1)) for f in range(1, 9)]
+        code += [d_form(15, 3, 0, ha(string)), d_form(14, 3, 3, string), 0x4CC63182]
+        call = here + 4 * len(code)
+        code += [0x48000001 | ((osreport - call) & 0x03fffffc)]
+        code += [d_form(32, 12, 1, 0x6c), 0x7D8FF120]
+        code += [d_form(32, r, 1, 8 + 4 * (r - 3)) for r in range(3, 11)]
+        code += [d_form(50, f, 1, 0x28 + 8 * (f - 1)) for f in range(1, 9)]
+        code += [d_form(32, 0, 1, 0x84), 0x7C0803A6, d_form(14, 1, 1, 0x80)]
+        last = len(code)
+        code += [0x48000000 | ((target - (here + 4 * last)) & 0x03fffffc)]
+        code[go] = (16 << 26) | (4 << 21) | (2 << 16) | ((4 * (last - go)) & 0xfffc)
+        assert len(code) * 4 == STUB, len(code)
+        text += b"".join(struct.pack(">I", w) for w in code)
+        out.append((addr, here))
+    blob += text + pool + bytes(len(entries))
+    redirected = dict(out)
+    return [(a, redirected.get(a, t)) for a, t in patches]
 
 
 def build_elf(original, patches, arena, blob):

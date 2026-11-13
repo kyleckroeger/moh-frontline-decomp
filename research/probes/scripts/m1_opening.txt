@@ -1,5 +1,8 @@
 # Mission 1 (Omaha) from boot: the title, A through the shell into the first
-# level, then move, look and fire once the boat lands. Times are pad updates.
+# level, then on the beach: walk, look, fire, jump, cycle weapons and throw.
+# Times are pad updates. The player has control from about update 6700.
+# Sticks: keep within -72..72 (a real pad's range); the device manager scales
+# by 1.76 into a byte, so larger values wrap round and reverse.
 trace 30
 at 1900
 press START
@@ -15,12 +18,26 @@ wait 240
 press A
 wait 240
 press A
-# In the landing craft; the player has control from about update 8300.
-wait 5500
-stick 0 127 300          # forward
-stick 0 127 120 A        # forward and fire
-cstick 100 0 60          # turn right
-stick 0 127 300
-cstick -100 0 60         # turn left
-stick -127 0 120         # strafe left
-stick 0 127 600 A
+at 7000
+stick 0 72 300            # walk forward
+cstick 72 0 30            # turn right
+stick 0 72 200            # forward again
+cstick -72 0 30           # turn back left
+trigger R 10              # fire
+wait 60
+trigger R 10              # fire
+wait 60
+press X 10                # jump
+wait 90
+stick -72 0 90            # strafe left
+press UP 10               # next weapon
+wait 90
+press UP 10
+wait 90
+press UP 10
+wait 90
+press UP 10
+wait 90
+trigger R 10              # fire (or throw) what is selected
+wait 150
+stick 0 72 300 R          # advance while firing

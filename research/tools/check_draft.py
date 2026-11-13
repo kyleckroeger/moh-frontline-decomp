@@ -8,6 +8,12 @@ tables, named globals, field offsets, and how similar the instruction sequence i
     check_draft.py <function substring>...   detail for matching drafts
     check_draft.py --all                     write research/drafts/status.tsv
     check_draft.py --widths                  list drafts that access some field at a different size
+    check_draft.py --prove ROUTE FUNCTION... mark drafts proven in play by a Dolphin route
+
+The `proven` column of status.tsv names the route that ran the draft with every draft
+linked and replayed identically to the control image (research/tools/dolphin_boot.py
+prove), with the first 8 hex digits of the draft file's SHA-1 when it was proven:
+`m1_opening@1a2b3c4d`. `--all` keeps the mark only while the draft file is unchanged.
 
 Statuses, for code that is not yet linked and verified:
     code_exact    every instruction matches; still needs one_unit.py and reconstruct.py
@@ -17,7 +23,7 @@ Statuses, for code that is not yet linked and verified:
 
 "consistent" is not proof of behaviour, and similarity is not a measure of correctness.
 """
-import collections, csv, difflib, json, re, struct, subprocess, sys, tempfile
+import collections, csv, difflib, hashlib, json, re, struct, subprocess, sys, tempfile
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import fast, score
@@ -332,7 +338,45 @@ def report(row, r):
             print(f"  offsets used a different number of times: {[hex(x) for x in both]}")
 
 
+STATUS = "research/drafts/status.tsv"
+COLUMNS = ["status", "similarity", "offsets", "lines", "size", "function", "calls_same", "missing", "extra", "draft", "proven"]
+
+
+def draft_hash(path):
+    return hashlib.sha1(Path(path).read_bytes()).hexdigest()[:8]
+
+
+def proven_marks():
+    """function -> proven mark, for marks whose draft file is unchanged since."""
+    if not Path(STATUS).exists():
+        return {}
+    marks = {}
+    for r in csv.DictReader(open(STATUS), delimiter="\t"):
+        mark = r.get("proven") or ""
+        if "@" in mark and Path(r["draft"]).exists() and mark.split("@")[1] == draft_hash(r["draft"]):
+            marks[r["function"]] = mark
+    return marks
+
+
+def prove(route, functions):
+    rows = list(csv.DictReader(open(STATUS), delimiter="\t"))
+    done = set()
+    for r in rows:
+        if r["function"] in functions:
+            r["proven"] = f"{route}@{draft_hash(r['draft'])}"
+            done.add(r["function"])
+    with open(STATUS, "w") as out:
+        out.write("\t".join(COLUMNS) + "\n")
+        for r in rows:
+            out.write("\t".join(r.get(c) or "" for c in COLUMNS) + "\n")
+    for f in sorted(set(functions) - done):
+        print("not in status.tsv:", f)
+    print(f"{len(done)} drafts marked proven by {route}")
+
+
 def main():
+    if sys.argv[1:2] == ["--prove"] and len(sys.argv) > 3:
+        return prove(sys.argv[2], set(sys.argv[3:]))
     rows = list(csv.DictReader(open("research/drafts/index.tsv"), delimiter="\t"))
     if sys.argv[1:] == ["--widths"]:
         for row in rows:
@@ -341,15 +385,16 @@ def main():
                 print(row["function"][:70], row["draft"], "; ".join(f"{k:#x}: {a} vs {b}" for k, (a, b) in sorted(r["widths"].items())), sep="\t", flush=True)
         return
     if sys.argv[1:] == ["--all"]:
-        with open("research/drafts/status.tsv", "w") as out:
-            out.write("status\tsimilarity\toffsets\tlines\tsize\tfunction\tcalls_same\tmissing\textra\tdraft\n")
+        marks = proven_marks()
+        with open(STATUS, "w") as out:
+            out.write("\t".join(COLUMNS) + "\n")
             for row in rows:
                 text = open(row["draft"], errors="replace").read()
                 r = compare(text, row["compile_settings_from"], row["function"], row["address"], row["size"])
                 if r["status"] == "no_compile":
-                    out.write(f"no_compile\t\t\t\t{row['size']}\t{row['function']}\t\t\t\t{row['draft']}\n")
+                    out.write(f"no_compile\t\t\t\t{row['size']}\t{row['function']}\t\t\t\t{row['draft']}\t\n")
                 else:
-                    out.write(f"{r['status']}\t{r['similarity']:.3f}\t{r['offsets']:.3f}\t{r['lines']}\t{row['size']}\t{row['function']}\t{r['calls_same']}\t{sum(r['missing'].values())}\t{sum(r['extra'].values())}\t{row['draft']}\n")
+                    out.write(f"{r['status']}\t{r['similarity']:.3f}\t{r['offsets']:.3f}\t{r['lines']}\t{row['size']}\t{row['function']}\t{r['calls_same']}\t{sum(r['missing'].values())}\t{sum(r['extra'].values())}\t{row['draft']}\t{marks.get(row['function'], '')}\n")
                 print(r["status"], row["function"][:60], flush=True)
         return
     for row in rows:

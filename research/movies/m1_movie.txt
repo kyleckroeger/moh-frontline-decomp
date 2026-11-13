@@ -1,0 +1,28 @@
+# Dolphin input movie for Mission 1 (input_script.py m1_movie.txt m1_movie.dtm).
+# Times are controller polls (emulated time, about 60 a second), not game
+# updates: a movie doesn't wait for the game. With a movie playing, Dolphin
+# reads the disc at the real drive's speed, so the intro movies and loading
+# take longer than in the probe's runs: no input until the main menu is up
+# (about 180 s), then A through the shell into Mission 1, then walk and fire.
+at 12500
+press A 40
+wait 600
+press A 40
+wait 600
+press A 40
+wait 600
+press A 40
+wait 600
+press A 40
+wait 600
+press A 40
+wait 600
+press A 40
+at 19500
+stick 0 72 600            # walk forward
+trigger R 12              # fire
+wait 120
+cstick 72 0 60            # turn right
+trigger R 12
+wait 120
+stick 0 72 600

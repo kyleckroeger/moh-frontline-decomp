@@ -7,9 +7,12 @@ player's ISO in a Windows work directory, writes the ELF after the last file on
 the disc, points the FST entry at it, and runs Dolphin with a logging profile.
 
   dolphin_boot.py prepare --iso ORIGINAL.iso --dolphin Dolphin.exe --work DIR
-  dolphin_boot.py run    --work DIR ELF [--secs 35]
+  dolphin_boot.py prepare --work DIR          (refresh the settings of an existing DIR)
+  dolphin_boot.py run    --work DIR ELF [--secs 35] [--movie M.dtm] [--tag NAME]
+  dolphin_boot.py control --work DIR ELF [...]  (run ELF with every draft restored)
   dolphin_boot.py bisect --work DIR ELF [--secs 35] [--reference CONTROL.log | --reach N]
   dolphin_boot.py diff A.log B.log
+  dolphin_boot.py prove --route NAME TEST.log CONTROL.log   (mark the drafts TEST ran proven)
 
 DIR must be on the Windows side (for example under /mnt/c/.../Temp) so Dolphin
 can read it. `run` prints one JSON line: exception number, SRR0, LR, the
@@ -19,15 +22,25 @@ instruction, halving the set until it finds the draft that causes the crash,
 then repeats until the rest boot cleanly. It prints and writes
 DIR/bisect.json. One run takes about a minute.
 
-Bisect a hang with --reach, not --reference: an exact trace match fails on
-correct drafts too, because changed code changes CPU timing and the game's
-frame timing then drifts a little from the reference.
+Comparing play: link the drafts with research/probes/input_probe.cpp (the
+input script and a state trace) and research/probes/clock_probe.cpp (a fixed
+frame time, a fixed random seed and a frame-buffer hash, "FRAME n hash h").
+With the clock probe, the game's state no longer depends on CPU timing, so the
+control (`control`: the same ELF with every patched function restored) and the
+drafted image must log identical TRACE and FRAME lines, and `bisect
+--reference CONTROL.log` finds the first draft that changes them. Without it,
+bisect a hang with --reach: changed code changes CPU timing and the game's
+frame timing then drifts a little from the reference (11-09).
+
+A Dolphin input movie (--movie, from input_script.py) plays the pad instead of
+the probe; link with `input_script.py --real-pad` to keep the trace.
 
 The original ELF comes from orig/GMFE69/Moh2RelGC.elf. No game data is
 written inside the repository.
 """
 
 import argparse
+import glob
 import json
 import os
 import re
@@ -60,6 +73,7 @@ MI = True
 # game's heap, and with 24 MB Mission 1 runs out while loading. Control and test
 # images get the same memory, so comparisons stay fair. The clock is fixed too:
 # with the real time, two runs of the same image drift apart within a minute.
+# The speed limit is off: emulated time doesn't depend on it, and runs finish sooner.
 DOLPHIN_INI = """[Analytics]
 PermissionAsked = True
 Enabled = False
@@ -74,7 +88,12 @@ RAMOverrideEnable = True
 MEM1Size = 67108864
 EnableCustomRTC = True
 CustomRTCValue = 946684800
+EmulationSpeed = 0.00000000
 """
+# Frame buffer copies go to main memory, where clock_probe.cpp hashes them.
+GFX_SETTINGS = {"Hacks": {"XFBToTextureEnable": "False"}}
+# Functions the test probes replace: never restored by bisect or control.
+PROBES = ["iPAD_update__Fv", "Wait__7CScreenFv", "MathFunSRandom__FUi"]
 
 
 def winpath(path):
@@ -189,8 +208,39 @@ def put_elf(work, elf):
         f.write(struct.pack(">II", at, len(elf)))
 
 
-def run(work, elf, secs, tag="run"):
+def set_ini(path, settings):
+    """Set keys in an ini file, keeping the rest of it."""
+    lines = open(path).read().splitlines() if os.path.exists(path) else []
+    for section, values in settings.items():
+        head = f"[{section}]"
+        if head not in lines:
+            lines += [head]
+        at = lines.index(head) + 1
+        end = at
+        while end < len(lines) and not lines[end].startswith("["):
+            end += 1
+        for key, value in values.items():
+            for i in range(at, end):
+                if lines[i].split("=")[0].strip() == key:
+                    lines[i] = f"{key} = {value}"
+                    break
+            else:
+                lines.insert(at, f"{key} = {value}")
+                end += 1
+    with open(path, "w") as f:
+        f.write("\n".join(lines) + "\n")
+
+
+def run(work, elf, secs, tag="run", movie=None, shot=15):
     put_elf(work, elf)
+    # A fresh, empty memory card every run: a save left by one run changes the next.
+    for card in glob.glob(os.path.join(work, "user", "GC", "*", "Card ?")):
+        for name in os.listdir(card):
+            os.remove(os.path.join(card, name))
+    extra = []
+    if movie:
+        shutil.copy(movie, os.path.join(work, "movie.dtm"))
+        extra = ["-movie", winpath(os.path.join(work, "movie.dtm"))]
     config = json.load(open(os.path.join(work, "dolphin_boot.json")))
     log = os.path.join(work, "user", "Logs", "dolphin.log")
     # A Dolphin left over from an interrupted run keeps the log open.
@@ -206,13 +256,14 @@ def run(work, elf, secs, tag="run"):
         ["timeout", str(secs + 40), POWERSHELL, "-NoProfile", "-ExecutionPolicy", "Bypass",
          "-File", winpath(os.path.join(work, "run.ps1")), "-exe", config["dolphin"],
          "-iso", winpath(os.path.join(work, "patched.iso")), "-user", winpath(os.path.join(work, "user")),
-         "-secs", str(secs), "-out", winpath(os.path.join(work, tag))],
+         "-secs", str(secs), "-out", winpath(os.path.join(work, tag)), "-shot", str(shot)] + extra,
         cwd=work, capture_output=True)
     text = open(log, errors="replace").read() if os.path.exists(log) else ""
     text = text[text.find("Calling entry point"):]
     with open(os.path.join(work, tag + ".log"), "w") as f:
         f.write(text)
     trace = re.findall(r"TRACE (.*)", text)
+    frames = re.findall(r"FRAME (.*)", text)
     exc = re.search(r"Unhandled Exception (\d+)", text)
     srr0 = re.search(r"SRR0 = (0x[0-9a-f]+)", text)
     lr = re.search(r"LR   = (0x[0-9a-f]+)", text)
@@ -225,6 +276,10 @@ def run(work, elf, secs, tag="run"):
         booted="booted from" in text,
         lines=text.count("\n"),
         trace_lines=len(trace),
+        frame_lines=len(frames),
+        movie_end="Movie End" in text,
+        covered=len(re.findall(r"COVER (\S+)", text)),
+        slips=len(re.findall(r"SLIP \d+", text)),
         last_trace=trace[-1].strip() if trace else None)
 
 
@@ -232,9 +287,18 @@ def good(result):
     return result["exc"] is None and result["movies"] >= 1
 
 
-def traces(path):
-    """The probe's trace lines from a saved run log, without Dolphin's timestamps."""
-    return [m.group(1).strip() for m in re.finditer(r"TRACE (.*)", open(path, errors="replace").read())]
+def traces(path, skip=0, no_hash=False):
+    """The probes' TRACE and FRAME lines from a saved run log, without Dolphin's timestamps,
+    from update (or frame) `skip` on. `no_hash` drops the player-object hash from TRACE lines:
+    it also covers fields that stale stack memory reaches (see docs/Dolphin.md)."""
+    out = []
+    for m in re.finditer(r"((?:TRACE|FRAME) (\d+).*)", open(path, errors="replace").read()):
+        if int(m.group(2)) >= skip:
+            line = m.group(1).strip()
+            if no_hash and line.startswith("TRACE"):
+                line = re.sub(r" hash [0-9a-f]+$", "", line)
+            out.append(line)
+    return out
 
 
 def first_difference(a, b):
@@ -249,30 +313,77 @@ def first_difference(a, b):
 
 
 def cmd_diff(args):
-    d = first_difference(traces(args.a), traces(args.b))
+    a, b = traces(args.a, args.skip, args.no_hash), traces(args.b, args.skip, args.no_hash)
+    d = first_difference(a, b)
     if d is None:
-        print("traces identical:", len(traces(args.a)), "lines")
+        print("traces identical:", len(a), "lines")
     else:
         print(f"first difference at trace line {d[0]}:\n  {args.a}: {d[1]}\n  {args.b}: {d[2]}")
         sys.exit(1)
 
 
+def covered(path, lines=None, skip=0):
+    """Drafts a run first entered (link_drafts.py --coverage) after update or frame `skip`
+    and before the `lines`-th trace line counted from there."""
+    names, seen, started = [], 0, skip == 0
+    for m in re.finditer(r"(COVER|TRACE|FRAME) (\S*)", open(path, errors="replace").read()):
+        if m.group(1) == "COVER":
+            if started:
+                names.append(m.group(2))
+        elif int(m.group(2)) >= skip:
+            started = True
+            seen += 1
+            if lines is not None and seen >= lines:
+                break
+    return names
+
+
+def cmd_prove(args):
+    test = traces(args.test, args.skip, args.no_hash)
+    control = traces(args.control, args.skip, args.no_hash)
+    d = first_difference(test, control)
+    if d is not None and not (d[0] == min(len(test), len(control)) and d[0] >= args.min_lines):
+        sys.exit(f"not proven: first difference at line {d[0]}:\n  test:    {d[1]}\n  control: {d[2]}")
+    same = d[0] if d else len(test)
+    if same < args.min_lines:
+        sys.exit(f"not proven: only {same} matching lines")
+    names = covered(args.test, same, args.skip)
+    if not names:
+        sys.exit("no COVER lines: link the test image with link_drafts.py --coverage")
+    print(f"{same} trace lines identical; {len(names)} drafts ran")
+    subprocess.run([sys.executable, os.path.join(ROOT, "research", "tools", "check_draft.py"),
+                    "--prove", args.route] + names, cwd=ROOT, check=True)
+
+
 def cmd_prepare(args):
-    os.makedirs(os.path.join(args.work, "user", "Config"), exist_ok=True)
-    with open(os.path.join(args.work, "user", "Config", "Logger.ini"), "w") as f:
+    config = os.path.join(args.work, "user", "Config")
+    os.makedirs(config, exist_ok=True)
+    with open(os.path.join(config, "Logger.ini"), "w") as f:
         f.write(LOGGER_INI)
-    with open(os.path.join(args.work, "user", "Config", "Dolphin.ini"), "w") as f:
-        f.write(DOLPHIN_INI)
+    set_ini(os.path.join(config, "Dolphin.ini"),
+            {sec: dict(l.split(" = ", 1) for l in body.strip().splitlines())
+             for sec, body in re.findall(r"\[(\w+)\]\n([^\[]*)", DOLPHIN_INI)})
+    set_ini(os.path.join(config, "GFX.ini"), GFX_SETTINGS)
     shutil.copy(RUN_PS1, os.path.join(args.work, "run.ps1"))
-    dolphin = args.dolphin if re.match(r"^[A-Za-z]:\\", args.dolphin) else winpath(args.dolphin)
-    json.dump({"dolphin": dolphin}, open(os.path.join(args.work, "dolphin_boot.json"), "w"))
-    print("copying", args.iso)
-    shutil.copy(args.iso, os.path.join(args.work, "patched.iso"))
+    if args.dolphin:
+        dolphin = args.dolphin if re.match(r"^[A-Za-z]:\\", args.dolphin) else winpath(args.dolphin)
+        json.dump({"dolphin": dolphin}, open(os.path.join(args.work, "dolphin_boot.json"), "w"))
+    if args.iso:
+        print("copying", args.iso)
+        shutil.copy(args.iso, os.path.join(args.work, "patched.iso"))
+    for need in ("patched.iso", "dolphin_boot.json"):
+        if not os.path.exists(os.path.join(args.work, need)):
+            sys.exit(f"{need} missing: give --iso and --dolphin")
     print("ready:", args.work)
 
 
 def cmd_run(args):
-    print(json.dumps(run(args.work, open(args.elf, "rb").read(), args.secs)))
+    print(json.dumps(run(args.work, open(args.elf, "rb").read(), args.secs, args.tag or "run", args.movie, args.shot)))
+
+
+def cmd_control(args):
+    linked = Linked(args.elf, args.keep)
+    print(json.dumps(run(args.work, linked.build(set()), args.secs, args.tag or "control", args.movie, args.shot)))
 
 
 def cmd_bisect(args):
@@ -280,15 +391,15 @@ def cmd_bisect(args):
     print("patched functions:", len(linked.patches), flush=True)
     log = open(os.path.join(args.work, "bisect.log"), "a")
 
-    reference = traces(args.reference) if args.reference else None
+    reference = traces(args.reference, args.skip, args.no_hash) if args.reference else None
     if reference is not None and args.lines:
         reference = reference[:args.lines]
 
     def go(active, label):
-        r = run(args.work, linked.build(set(active)), args.secs, "bisect-run")
+        r = run(args.work, linked.build(set(active)), args.secs, "bisect-run", args.movie)
         r.update(label=label, active=len(active))
         if reference is not None:
-            got = traces(os.path.join(args.work, "bisect-run.log"))[:len(reference)]
+            got = traces(os.path.join(args.work, "bisect-run.log"), args.skip, args.no_hash)[:len(reference)]
             d = first_difference(reference, got)
             r["differs_at"] = None if d is None else d[0]
         print(json.dumps(r), flush=True)
@@ -337,23 +448,41 @@ def main():
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     s = sub.add_parser("prepare")
-    s.add_argument("--iso", required=True)
-    s.add_argument("--dolphin", required=True, help="Dolphin.exe, as a WSL or Windows path")
+    s.add_argument("--iso", help="the player's disc image (first time only)")
+    s.add_argument("--dolphin", help="Dolphin.exe, as a WSL or Windows path (first time only)")
     s.add_argument("--work", required=True)
     s.set_defaults(func=cmd_prepare)
     s = sub.add_parser("diff", help="compare the traces of two saved run logs")
+    s.add_argument("--skip", type=int, default=0, help="ignore lines before this update or frame")
+    s.add_argument("--no-hash", action="store_true", help="compare TRACE lines without the player-object hash")
     s.add_argument("a")
     s.add_argument("b")
     s.set_defaults(func=cmd_diff)
-    for name, func in (("run", cmd_run), ("bisect", cmd_bisect)):
+    s = sub.add_parser("prove", help="mark the drafts a matching run entered as proven in status.tsv")
+    s.add_argument("--route", required=True)
+    s.add_argument("--min-lines", type=int, default=100, help="at least this many identical trace lines")
+    s.add_argument("--skip", type=int, default=0,
+                   help="ignore lines before this update or frame; drafts first entered before it are not marked")
+    s.add_argument("--no-hash", action="store_true", help="compare TRACE lines without the player-object hash")
+    s.add_argument("test")
+    s.add_argument("control")
+    s.set_defaults(func=cmd_prove)
+    for name, func in (("run", cmd_run), ("control", cmd_control), ("bisect", cmd_bisect)):
         s = sub.add_parser(name)
         s.add_argument("--work", required=True)
         s.add_argument("--secs", type=int, default=35)
-        s.add_argument("--keep", nargs="*", default=["iPAD_update__Fv"],
+        s.add_argument("--movie", help="a Dolphin input movie (.dtm) to play")
+        s.add_argument("--shot", type=int, default=15, help="seconds between window captures")
+        s.add_argument("--tag", help="run/control: name of the saved log (default: the command)")
+        s.add_argument("--keep", nargs="*", default=PROBES,
                        help="patched functions that are test probes, never restored by bisect")
         s.add_argument("--reference", help="bisect: a control run's log; a run is good only if its trace matches")
         s.add_argument("--reach", type=int, help="bisect: a run is good if it doesn't crash and logs at least N trace lines")
         s.add_argument("--lines", type=int, help="bisect: compare only the first N trace lines (a run must reach them)")
+        s.add_argument("--no-hash", action="store_true", help="bisect: compare TRACE lines without the player-object hash")
+        s.add_argument("--skip", type=int, default=0,
+                       help="bisect: ignore lines before this update or frame (the intro movies and shell "
+                            "are paced by emulated time, so their frames differ when CPU timing does)")
         s.add_argument("elf")
         s.set_defaults(func=func)
     args = p.parse_args()

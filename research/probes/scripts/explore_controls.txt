@@ -1,0 +1,50 @@
+# Mission 1 from boot, then one control at a time on the beach, 150 updates apart
+# (about 5 s), to learn the default layout from the trace and the captures.
+# The 127 stick values here are how the wrap was found: keep sticks within -72..72.
+trace 30
+at 1900
+press START
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 240
+press A
+wait 240
+press A
+at 7000
+stick 0 127 120
+at 7200
+trigger R 10
+at 7350
+trigger R 10
+at 7500
+press A 10
+at 7650
+press B 10
+at 7800
+press X 10
+at 7950
+press Y 10
+at 8100
+press Z 10
+at 8250
+trigger L 30
+at 8400
+press UP 10
+at 8550
+press DOWN 10
+at 8700
+press LEFT 10
+at 8850
+press RIGHT 10
+at 9000
+trigger R 10
+at 9150
+cstick 127 0 30
+at 9300
+stick 127 0 60

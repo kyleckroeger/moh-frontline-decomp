@@ -343,3 +343,108 @@ Every Dolphin SDK function is now accepted. These notes apply if a unit is revis
   `CARDFormat`, `CARDWrite` and `Pad` were resolved from the 2004 source that way.
 - Compiled code that calls a different function than the original is reported by
   `port_unit.py` (for example `OSGetTime` vs `__OSGetSystemTime`).
+
+# Testing drafts in the Dolphin emulator
+
+`research/tools/dolphin_boot.py` boots a linked image (`research/tools/link_drafts.py`) in
+the Dolphin emulator from WSL and checks that drafted code plays like the original
+(docs/PortReadiness.md, step 1). Run one Dolphin at a time, and check `free -m` first. A run
+of 300 seconds reaches about update 13,000, well onto the beach in Mission 1.
+
+## Input
+
+`research/tools/input_script.py` reads one small script format and writes it out in one of
+two forms. The commands are `at`, `wait`, `press`, `hold`, `stick`, `cstick`, `trigger` and
+`trace`; its docstring describes them.
+
+- **A probe** (`SCRIPT.txt OUT.cpp`). `research/probes/input_probe.cpp` replaces the pad
+  driver's `iPAD_update` and plays the script one step per game update. Times are pad
+  updates, so two images replay the script identically whatever their speed. Use this
+  form to compare drafts.
+- **A Dolphin input movie** (`SCRIPT.txt OUT.dtm`) in Dolphin's DTM format. The movie is a
+  256-byte header (game `GMFE69`, controller port 1, memory card in slot A, `bSaveConfig`
+  off so Dolphin keeps the harness's settings) followed by 8 bytes per poll of controller
+  1 (buttons with `is_connected` set, triggers, and sticks centred on 128). `dolphin_boot.py
+  run --movie M.dtm` plays it with `Dolphin.exe -m`. A movie needs no change to the image,
+  so it also plays the untouched original. Its times are controller polls, which are
+  emulated time and not game updates. While a movie plays, Dolphin reads the disc at the
+  real drive's speed, so the intro and loading take longer than in probe runs: the main
+  menu appears after about 180 s. To keep the trace, link `input_script.py --real-pad
+  OUT.cpp` (the original `iPAD_update` plus the trace). `input_script.py --show M.dtm` prints
+  a movie.
+
+Keep stick values within -72..72, a real pad's range. The device manager (`devicemgr.cpp`)
+scales them by 1.76 into a byte, so larger values wrap round and turn the wrong way: 127
+forward barely moved the player. Default controls found on the beach in Mission 1:
+
+| Input | Action |
+| --- | --- |
+| R | fire (clip 8 to 7) |
+| X | jump |
+| D-pad up and down | cycle weapons (14 is the M1 Garand, 6 the Colt) |
+| main stick | move |
+| C stick | look |
+
+Routes are in `research/probes/scripts/` (probe form) and `research/movies/` (movie form).
+`m1_opening.txt` goes from boot to Mission 1. On the beach it walks, turns, fires twice,
+jumps, strafes, cycles weapons four times, fires, then advances while firing.
+
+## Comparison
+
+Every probe build also links `research/probes/clock_probe.cpp`, which removes CPU timing
+from the game's state:
+
+- `CScreen::Wait` holds each frame to exactly three vertical retraces (20 updates a second)
+  and returns 3 instead of the number that passed. The game scales every update by that number. With the real
+  count, a draft that runs faster or slower than the original changes the game's state
+  (the 11-09 "drift"). Holding the frame also keeps updates in step with emulated time,
+  which paces the audio streams and movies that scripts wait on. Without the hold, the
+  landing craft set off one update later in an image whose code ran faster. A frame that
+  overruns its budget is logged as `SLIP n vsyncs`. With two retraces the beach slipped
+  366 times; with three, only loading screens slip.
+- `MathFunSRandom` seeds with a constant. `InitCORE` passes `OSGetTick()`, which depends on
+  how long the code before it took.
+- Every 30th frame it logs `FRAME n hash h`, an FNV-1a hash of the finished frame in the
+  external frame buffer. `prepare` turns off "Store XFB Copies to Texture Only"
+  (`GFX.ini [Hacks] XFBToTextureEnable = False`) so that the frame is in main memory.
+
+Every 30 updates the input probe logs a `TRACE` line: pad state, player position, yaw,
+pitch, state flags, weapon, the HUD's clip and reserve counts, and a hash of the player
+object's first 0x800 bytes.
+
+The control is the same ELF with every patched function restored to its original first
+instruction (`dolphin_boot.py control`). It has the same memory layout and the same probes,
+but runs the original code.
+
+- `dolphin_boot.py diff TEST.log CONTROL.log` names the first differing TRACE or FRAME line.
+- `bisect --reference CONTROL.log [--skip N] [--lines M]` halves the set of patched
+  functions until it finds the draft that changes those lines.
+- `link_drafts.py --coverage` enters every draft through a stub that logs `COVER name` on
+  its first call.
+- `dolphin_boot.py prove --route NAME TEST.log CONTROL.log` marks as proven every draft that
+  ran inside the identical part of the trace. The mark goes in the `proven` column of
+  `research/drafts/status.tsv` as `route@` plus the start of the draft file's SHA-1.
+  `check_draft.py --all` keeps a mark only while the draft file is unchanged.
+
+`prepare` also turns the speed limit off (`EmulationSpeed = 0`). Emulated time doesn't
+depend on it, and a 240-second run reaches about update 20,000. `run` empties the memory
+card folder before each run, because a save left by one run changes the next.
+
+### Results (2026-11-13)
+
+- **Determinism.** The same image gives identical lines on every run: in probe mode, and
+  with a movie (953 lines, including the intro movies).
+- **Mission 1 route.** With every draft except `CParticleSystem::RenderSystem`, the
+  visible state and every in-level frame match the original for 20,000 updates. 48 drafts
+  are marked proven.
+- **Stale stack.** Some original code reads stack memory it never wrote. A draft whose
+  frame size differs from the original's can therefore change the game even when its code
+  is right. Calling the original `RenderSystem` 16 bytes deeper changes the player object
+  at update 8,070. `SweepAllExtents` caused exactly that difference and was given back its
+  32-byte frame. That is why `prove` uses `--no-hash`: the player-object hash also covers
+  such fields. One shell frame (1530) differs only when drafts from both halves are active
+  (bisect: interaction).
+- **Open: `RenderSystem`.** Its particles differ from the level start. A symbolic
+  comparison of its FIFO writes against the original's finds no difference, and moving or
+  delaying the original reproduces nothing. The next step is to capture each call's FIFO
+  output with `GXRedirectWriteGatherPipe`.

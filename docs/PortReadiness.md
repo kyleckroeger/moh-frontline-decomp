@@ -86,6 +86,15 @@ register. `NonVisDestructFarthestSoldiers`' extra +0 is the same indexing differ
 The `SweepAllExtents` fix still needs one Dolphin run to confirm that Mission 1 gets past
 the hang.
 
+Input and comparison (2026-11-13, [details](Dolphin.md#testing-drafts-in-the-dolphin-emulator)):
+`input_script.py` writes probe scripts and Dolphin movies; `clock_probe.cpp` holds frames to
+emulated time and hashes the frame buffer; `link_drafts.py --coverage` and `dolphin_boot.py
+prove` fill the new `proven` column of `research/drafts/status.tsv`. Both modes are
+deterministic. On the Mission 1 route, 49 drafts are proven. `SweepAllExtents` was fixed:
+it needed the original's 32-byte frame, because some original code reads stale stack memory.
+`CParticleSystem::RenderSystem` still changes particle frames, and its cause is not found
+yet.
+
 Exit: every non-multiplayer draft is proven, or bisected and fixed. Multiplayer drafts
 are recorded as unproven.
 
