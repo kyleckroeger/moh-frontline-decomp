@@ -38,6 +38,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
   GiveBuddyOrders inline, which breaks landed UpdateBuddyCheckpoints/Progress; all three are in
   buddy.cpp, so they must share one body (kept declined). CPartBin::Link's draft relies on a
   steering copy chain (`CVector3 tmp = lightPos; position = tmp;`): unlandable as written.
+  Merges (merge3): a merged whole-file unit may keep a file-private CVector3/CMatrix view,
+  marked inferred, where the shared header's copy doesn't keep the match (plan rule 10). Where
+  an inline's out-of-line weak copy and its inlined copies need different local orders
+  (bsutil's DoWeOwnThisMemory, world_volume's dwi::list destructor), the file stays split
+  until one body serves both; no second body.
+  Dolphin step 1 (dol1, e60f4d6b): input scripts and movies replay deterministically; route
+  m1_opening proves 49 drafts in play. The SweepAllExtents draft got an unused volatile array to
+  restore the original's 32-byte frame (stale-stack reads elsewhere depend on it); that is a
+  declined device for a landing, so it marks what the landing must reproduce naturally (the
+  original's dead -OSGetTick() values). RenderSystem still changes particle frames: unproven.
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by
