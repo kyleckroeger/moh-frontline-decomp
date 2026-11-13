@@ -12,9 +12,9 @@ in `AGENTS.md` win.
 
 <!-- sync_docs:status -->
 - Verified snapshot: **1,281,040 / 1,414,572** executable bytes
-  (**90.56%**), 4,909 functions in 1,227 units: **1,041,980** bytes of
-  `reconstructed_game` (1,043 units, `docs/Game.md`) and **239,060** bytes of
-  `restored_library` (184 units: Dolphin SDK, MSL, MW runtime, EA audio
+  (**90.56%**), 4,909 functions in 1,223 units: **1,042,912** bytes of
+  `reconstructed_game` (1,040 units, `docs/Game.md`) and **238,128** bytes of
+  `restored_library` (183 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
   are in `docs/Remaining.md`.
 - Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build reaches the main menu in Dolphin; gameplay is untested.
