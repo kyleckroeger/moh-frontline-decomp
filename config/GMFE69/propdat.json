@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -41,25 +41,49 @@
     {
       "name": ".text",
       "address": "0x80040c6c",
-      "size": 5492,
+      "size": 16592,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a544",
-      "size": 96,
+      "size": 232,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011594",
-      "size": 144,
+      "size": 348,
       "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016f290",
+      "size": 435,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801833e0",
+      "size": 60,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801a1300",
+      "size": 24459,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034e8b8",
+      "size": 28,
+      "type": 8
     },
     {
       "name": ".sdata2",
       "address": "0x8034f7d0",
-      "size": 24,
+      "size": 32,
       "type": 1
     }
   ],
@@ -147,29 +171,221 @@
       "address": "0x800421b8",
       "size": 40,
       "binding": 1
+    },
+    {
+      "name": "FindAllMGPointsInBPDFile__Fv",
+      "address": "0x800421e0",
+      "size": 484,
+      "binding": 1
+    },
+    {
+      "name": "FreePropertyMemory__Fv",
+      "address": "0x800423c4",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "EndianSwap__FR12_PropBSPLeaf",
+      "address": "0x80042674",
+      "size": 620,
+      "binding": 2
+    },
+    {
+      "name": "PatchUpPropBSPTreeLeaf__FPcP12_PropBSPLeaf",
+      "address": "0x80042410",
+      "size": 612,
+      "binding": 1
+    },
+    {
+      "name": "EndianSwap__FRfb",
+      "address": "0x80042d88",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "EndianSwap__FR14PBSPNodeOrLeaf",
+      "address": "0x80042d4c",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "EndianSwap__FR12_PropBSPNode",
+      "address": "0x80042cb0",
+      "size": 156,
+      "binding": 2
+    },
+    {
+      "name": "PatchUpPropBSPTreeNode__FPcP12_PropBSPNode",
+      "address": "0x800428e0",
+      "size": 976,
+      "binding": 1
+    },
+    {
+      "name": "LoadPropBSPTree__FPcb",
+      "address": "0x80042dc4",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "FindPlayerStartTriggerAndCreatePlayer__Fbi",
+      "address": "0x80042e7c",
+      "size": 236,
+      "binding": 1
+    },
+    {
+      "name": "RestartPlayer__Fi",
+      "address": "0x80042f68",
+      "size": 984,
+      "binding": 1
+    },
+    {
+      "name": "offsetPtr<Ul>__FRPUli",
+      "address": "0x80044cac",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<f>__FRPfi",
+      "address": "0x80044c94",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<v>__FRPvi",
+      "address": "0x80044d24",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "PatchUpCore__FP15MOH_core_Struct",
+      "address": "0x80043340",
+      "size": 1004,
+      "binding": 1
+    },
+    {
+      "name": "EndianSwap__FR14BPDLightVolume",
+      "address": "0x800443b4",
+      "size": 588,
+      "binding": 2
+    },
+    {
+      "name": "EndianSwap__FR8BPDLight",
+      "address": "0x80044168",
+      "size": 588,
+      "binding": 2
+    },
+    {
+      "name": "PatchUpAllPropertyData__FP9BPDHeader",
+      "address": "0x8004372c",
+      "size": 2620,
+      "binding": 1
+    },
+    {
+      "name": "offsetPtr<Pv>__FRPPvi",
+      "address": "0x80044d0c",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<19MOH_particle_Struct>__FRP19MOH_particle_Structi",
+      "address": "0x80044cf4",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<c>__FRPci",
+      "address": "0x80044cdc",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<24MOH_animatedLight_Struct>__FRP24MOH_animatedLight_Structi",
+      "address": "0x80044cc4",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<14BPDLightVolume>__FRP14BPDLightVolumei",
+      "address": "0x80044c7c",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<10PropPlane4>__FRP10PropPlane4i",
+      "address": "0x80044c64",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<8BPDLight>__FRP8BPDLighti",
+      "address": "0x80044c4c",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<18BPDParticleTweaker>__FRP18BPDParticleTweakeri",
+      "address": "0x80044c34",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "offsetPtr<11BPDPolyPath>__FRP11BPDPolyPathi",
+      "address": "0x80044c1c",
+      "size": 24,
+      "binding": 2
+    },
+    {
+      "name": "EndianSwap__FR9BPDHeader",
+      "address": "0x800447f0",
+      "size": 1068,
+      "binding": 2
+    },
+    {
+      "name": "LoadPropertyData__FPcb",
+      "address": "0x80044600",
+      "size": 496,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CreateAStarPathNodeList__15CAIFilterGlobalFPvP18BPDPathFindingNodei": "0x8005d678",
+    "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "CreateObject__FP20TriggerObject_structiPv": "0x8004029c",
+    "CreateSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi": "0x8005d760",
+    "Create__15CParticleSystemFPv": "0x80080b30",
+    "Create__6CLightFPv": "0x8007861c",
+    "DebugMsg__FPCce": "0x80018c88",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
-    "g_pMGTriggerObject": "0x801a70c0"
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Register__15CParticleSystemFP9ShapeFile": "0x80080db0",
+    "Register__15CParticleSystemFPvi": "0x80080d9c",
+    "Register__6CLightFPvi": "0x80078674",
+    "ResetSplinePathManager__15CAIFilterGlobalFPvP11BPDPolyPathi": "0x8005d72c",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "g_NumPlayers": "0x8034e2d0",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_scene": "0x8019484c",
+    "rand": "0x8013fc54",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_NumPlayers",
+    "g_bInMultiplayerMode",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "propdat.cpp",
   "original_file_index": 1602,
-  "adapted_from": {
-    "repository": "https://github.com/lifewillbeokay/moh-rising-sun",
-    "paths": [
-      "src/bpd/endian.cpp",
-      "include/game/BPD.h",
-      "include/game/Endian.h"
-    ],
-    "note": "structure (one ChangeEndian per converted field) and core/xyz field types from Rising Sun's reconstruction of EA's later revision"
-  },
   "weak_duplicates": [
     "GetPosition__10ISceneNodeCFR8CVector3"
   ]
