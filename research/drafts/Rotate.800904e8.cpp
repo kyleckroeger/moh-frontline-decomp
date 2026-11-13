@@ -10,6 +10,11 @@
 // (functions are emitted in reverse source order), so the radian overloads
 // are defined first; the conversion's separate scaling statement is inferred.
 // The constants are entries of the file's .sdata2 pool.
+// The inline BuildRot body below is the landed out-of-line CMatrix::BuildRot
+// (src/game/matrix_translate.cpp) respelled so that it still compiles
+// byte-exact out of line: BuildRot must stay as landed. With it, Rotate is 21
+// lines off (the 1.0f constant's register and s's register). MulV is an inferred
+// value-returning product helper.
 void MathSinCos(long, float*, float*);
 void PSMultMatrix(float*, const float*, const float*);
 extern "C" void* memcpy(void*, const void*, unsigned long);
@@ -57,54 +62,35 @@ inline void CMatrix::Multiply(const CMatrix& a, const CMatrix& b) {
     PSMultMatrix(&m[0][0], &a.m[0][0], &b.m[0][0]);
 }
 
+inline float MulV(float a, float b) { return a * b; }
+
 inline void CMatrix::BuildRot(CVector3 axis, float angle) {
     float s;
     float c;
+    float tyy;
+    float txz;
+    float tyz;
+    float sy;
     MathSinCos(2670176.8f * angle, &s, &c);
     float t = 1.0f - c;
-
-
-
-
     float tx = t * axis.x;
-
-
-
-
-    float tz = t * axis.z;
-
-
-
-
-    float txx = tx * axis.x;
-
-
-
-
-    float txy = tx * axis.y;
-
-
-
-
-    float txz = tx * axis.z;
-
-    float sy = s * axis.y;
-
     float ty = t * axis.y;
-    float tyy = axis.y * ty;
+    float txy = t * axis.x;
+    txy *= axis.y;
+    txz = tx;
+    txz *= axis.z;
+    tyy = ty;
+    tyy *= axis.y;
+    tyz = t * axis.y;
+    tyz *= axis.z;
+    float tz = MulV(t, axis.z);
+    sy = s;
+    sy *= axis.y;
+    float txx = tx * axis.x;
     float sx = s * axis.x;
-
-
-
-    float tyz = ty * axis.z;
-
-
-
-
     float tzz = tz * axis.z;
-
-
-    float sz = s * axis.z;
+    float sz = s;
+    sz *= axis.z;
 
 
     m[0][0] = txx + c;

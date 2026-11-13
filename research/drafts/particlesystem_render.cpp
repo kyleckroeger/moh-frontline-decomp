@@ -1,27 +1,57 @@
-// particlesystem.cpp: draws a particle system as camera-facing quads, as partial
-// source. Particles aren't stored: each generation replays a seeded random sequence,
-// so a particle's start values are the same every frame and its state follows from
-// its age. Virtual functions are called by table offset; the names are inferred.
-extern "C" {
-void GXSetBlendMode(int, int, int, int);
-void GXSetCullMode(int);
-void GXLoadPosMtxImm(const float (*)[4], int);
-void GXSetCurrentMtx(unsigned long);
-void GXBegin(int, int, unsigned short);
-double sin(double);
-double cos(double);
-}
+// Research draft for CParticleSystem::RenderSystem (0x8007d704), real 835 lines off
+// (the previous draft was 1064; branch targets: 1 difference against the previous 6).
+// It is the whole particlesystem.cpp fragment around it (the function can land only
+// with the whole file: rodata/bss block base). Vector locals are kept in memory by the
+// member `float& operator[](int)` and the inferred 3x3 view CMatrix33; the mixed `[i]`
+// and `.x` spellings in the inner loop were found by search (accepted forms, 2026-11-12).
+// check_draft reports the same extra 0.0f/1.0f constants and 8-byte access at +0x8 as
+// the previous draft. Source: scratch/loop3/vec3/RS_BEST514.cpp.
+// A fragment of particlesystem.cpp (0x8007d438): CParticleSystemManager::Link
+// (the GX state shared by the particle systems: position, colour and
+// texture coordinates in direct format, one textured stage modulating the
+// vertex colour, depth test without update and an unlit channel; the render
+// type cache and particle counter are reset, every child bin is linked, the
+// count is reported every tenth call through DebugMsg and its maximum kept,
+// and the children are cleared), CPropertyParticleSystem::Link (the system's
+// texture is loaded unless the previous system used the same shape file,
+// then the system is rendered through its virtual RenderSystem) and
+// CPropertyParticleSystem::Render (nothing to add; returns 0). The file name
+// is this project's; the original record is particlesystem.cpp. The classes,
+// functions and globals are named by the mangled symbols; the members are
+// inferred, and the virtual functions are declared in the order of
+// __vt__23CPropertyParticleSystem (result types not known). The counter and
+// maximum are file-local in the original and declared extern to link to
+// them. Each class declares its destructor (defined elsewhere) first so its
+// table is not emitted here. The report's string links to its pool entry.
+#include <dolphin/gx.h>
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
+extern "C" double sin(double);
+extern "C" double cos(double);
+
 class CVector3 {
 public:
     CVector3() {}
-    CVector3(const CVector3& other) { d = other.d; }
-    CVector3Data d;
+    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
+    CVector3(const CVector3& o) { *(double*)&x = *(const double*)&o.x; *(double*)&z = *(const double*)&o.z; }
+    float& operator[](int i) { return ((float*)this)[i]; }
+    void Scale(const CVector3& o, float k) { x = k * o.x; y = k * o.y; z = k * o.z; }
+    void Sub(const CVector3& a, const CVector3& b) { x = a.x - b.x; y = a.y - b.y; z = a.z - b.z; }
+    CVector3& operator+=(const CVector3& o) { x += o.x; y += o.y; z += o.z; return *this; }
+    float x, y, z, w;
 } __attribute__((aligned(8)));
+
+/* inferred: a 3x3 matrix view (no 3x3 matrix type or name in the symbols or Rising Sun) */
+struct CMatrix33 {
+    float* operator[](int i) { return ((float*)this) + 3 * i; }
+    float e[3][3];
+};
+
+class CColor {
+public:
+    CColor() : r(0), g(0), b(0), a(0x80) {}
+    unsigned char r, g, b, a;
+};
+
 class CMatrix {
 public:
     CMatrix() {
@@ -30,21 +60,163 @@ public:
     }
     CMatrix(const CMatrix& other) { *this = other; }
     static void InitClass();
-    static void Multiply(CMatrix&, const CMatrix&, const CMatrix&);
+    void Multiply(const CMatrix&, const CMatrix&);
     void GetGAMECUBEMatrix34(float (&)[3][4]) const;
     CMatrix& operator=(const CMatrix&);
     float m[4][4];
     static bool s_ClassInit;
 } __attribute__((aligned(16)));
-extern CMatrix g_WorldToCamera;
-extern CVector3 g_XAxis;
-extern CVector3 g_YAxis;
-extern CVector3 g_ZAxis;
-struct ParticleManagerView {
-    unsigned char unknown00[0x44];
-    float m_time;
+
+class CDmaTag;
+class CDrawContext;
+class CRenderList;
+struct ShapeFile;
+
+void DebugMsg(const char*, ...);
+
+/* Inferred: the packet's interface is not used directly here. */
+class CDmaPacket;
+
+/* Only Load and the 64-byte layout are part of this view. */
+class CTexture {
+public:
+    void Load(CDmaPacket&, CRenderList*);
 };
-extern ParticleManagerView g_ParticleSystemManager;
+
+/* Inferred: the shape file's texture at +32. */
+struct ShapeFile {
+    unsigned char unknown00[32];
+    CTexture m_texture;
+};
+
+class CRenderBin;
+
+/* CRenderBin's non-polymorphic base (see dmesh_cremapbin_ctor.cpp). */
+struct CRenderBinData {
+    CRenderBin* data00;
+    CRenderBin* m_next;
+    CRenderBin* m_children;
+    int data0c;
+    int data10;
+    int m_priority;
+    int data18;
+};
+
+/* CRenderBin's virtuals in table order. */
+class CRenderBin : public CRenderBinData {
+public:
+    virtual ~CRenderBin();
+    virtual int Render(CDmaPacket&, void*);
+    virtual void Init();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+    virtual bool IsUsed();
+};
+
+class CUcodeRenderBin : public CRenderBin {
+public:
+    virtual ~CUcodeRenderBin();
+};
+
+class CParticleSystemManager : public CUcodeRenderBin {
+public:
+    virtual ~CParticleSystemManager();
+    virtual void Link(CDmaTag*, CDmaPacket&);
+};
+
+class CParticleSystem : public CRenderBin {
+public:
+    virtual ~CParticleSystem();
+    virtual void DeActivate();
+    virtual void Terminate();
+    virtual void IsActive() const;
+    virtual void IsEmitting() const;
+    virtual void IsBoundingBoxValid() const;
+    virtual void IsMoving() const;
+    virtual bool HasRotation() const;
+    virtual void GetTexture() const;
+    virtual int GetRenderType() const;
+    virtual int GetSeed() const;
+    virtual int GetEmmisionRate() const;
+    virtual int GetEmmisionDelay() const;
+    virtual void GetSystemLifetime() const;
+    virtual float GetParticleLifetime() const;
+    virtual void GetLocalToWorld(CMatrix&) const;
+    virtual void GetSystemInitialVelocity(CVector3&) const;
+    virtual void GetSystemAcceleration(CVector3&) const;
+    virtual void GetParticleColor(CColor&, CColor&, CColor&, CColor&) const;
+    virtual void GetParticleSize(CVector3&, CVector3&, float&) const;
+    virtual void GetParticlePosition(CVector3&, CVector3&) const;
+    virtual void GetParticleVelocity(CVector3&, CVector3&) const;
+    virtual void GetParticleAcceleration(CVector3&) const;
+    virtual void GetParticleRotation(float&, float&) const;
+    virtual void GetParticleAlpha(float&, float&, float&) const;
+    virtual void GetFogEnable() const;
+    virtual void SetSeed(int);
+    virtual void SetRenderType(int);
+    virtual void SetTexture(ShapeFile*);
+    virtual void SetLocalToWorld(const CMatrix&);
+    virtual void SetEmmisionRate(float);
+    virtual void SetEmmisionDelay(float);
+    virtual void SetSystemLifetime(float);
+    virtual void SetParticleLifetime(float);
+    virtual void SetSystemInitialVelocity(CVector3);
+    virtual void SetSystemAcceleration(CVector3);
+    virtual void SetParticleColor(CColor, CColor);
+    virtual void SetParticleSize(CVector3, CVector3, float);
+    virtual void SetParticlePosition(CVector3, CVector3);
+    virtual void SetParticleVelocity(CVector3, CVector3);
+    virtual void SetParticleAcceleration(CVector3);
+    virtual void SetFogEnable(bool);
+    virtual void UpdateSystem(float);
+    virtual bool RenderSystem(CDmaPacket&);
+
+    unsigned char unknown20[84];
+    ShapeFile* m_shape;
+    float m_startTime;
+    float m_maxTime;
+    float m_time;
+    float m_endTime;
+    unsigned char m_active : 1;
+    unsigned char m_emitting : 1;
+    unsigned char m_flags : 6;
+};
+
+class CPropertyParticleSystem : public CParticleSystem {
+public:
+    virtual ~CPropertyParticleSystem();
+    virtual int Render(CDmaPacket&, void*);
+    virtual void Link(CDmaTag*, CDmaPacket&);
+};
+
+extern int g_RenderTypeCache;
+extern int g_ParticleCounter;
+extern int g_ParticleCounterMax;
+
+/* the file's .bss block, in original order (size views: no constructors) */
+struct MatrixView {
+    float m[4][4];
+} __attribute__((aligned(16)));
+struct VectorView {
+    float x, y, z, w;
+} __attribute__((aligned(8)));
+struct DestructorChainView {
+    int data[3];
+};
+class CPSManager {
+public:
+    float GetCurrentTicks() const { return m_currentTicks; }
+    unsigned char unknown00[68];
+    float m_currentTicks;
+    unsigned char unknown48[0x7c - 0x48];
+};
+static MatrixView g_ModelToScreenMatrix;
+static VectorView g_XAxis;
+static VectorView g_YAxis;
+static VectorView g_ZAxis;
+static MatrixView g_WorldToCamera;
+static DestructorChainView g_chain503;
+static CPSManager g_ParticleSystemManager;
+
 struct FogView {
     unsigned char unknown00[0x48];
     float m_end;
@@ -53,290 +225,270 @@ struct FogView {
 extern FogView* g_pFog;
 extern bool g_bAllowRotation;
 extern bool g_bInMultiplayerMode;
-extern int g_RenderTypeCache;
 extern int g_CurrentSeed;
-extern int g_ParticleCounter;
 class CShellMenu {
 public:
-    int Get_currentMission();
-    unsigned char unknown[0x19dc]; // g_Shell's size: addressed absolutely, not through r13
+    unsigned int Get_currentMission();
+    unsigned char unknown[0x19dc];
 };
 extern CShellMenu g_Shell;
 
-struct GXFifo {
-    union {
-        volatile float f;
-        volatile unsigned char b;
-    };
-};
-#define GX_FIFO (*(GXFifo*)0xcc008000)
-
-static inline float Random01() {
-    g_CurrentSeed = g_CurrentSeed * 0x41c64e6d + 0x3039;
-    return (float)(g_CurrentSeed & 0x7fff) * 3.051851e-05f;
+static inline int Random() {
+    g_CurrentSeed = g_CurrentSeed * 1103515245 + 12345;
+    return g_CurrentSeed & 0x7fff;
 }
-static inline float Lerp(float low, float range) { return range * Random01() + low; }
+static inline float RandomFloat() { return (float)Random() * (1.0f / 32767.0f); }
 
-struct Color8 {
-    unsigned char r, g, b, a;
-};
-struct Vec3 {
-    float x, y, z;
-    float pad;
-};
-class CDmaPacket;
-class CParticleSystem {
-public:
-    bool RenderSystem(CDmaPacket&);
-    unsigned char unknown00[0x1c];
-    void** m_table;     // +0x1c
-    unsigned char unknown20[0x58];
-    float m_startTime;  // +0x78
-    float m_maxTime;    // +0x7c
-    float m_time;       // +0x80
-    float m_endTime;    // +0x84
-    unsigned char m_flags; // +0x88: bit 6 ignores m_maxTime
-};
-typedef bool (*GetBoolFn)(CParticleSystem*);
-typedef int (*GetIntFn)(CParticleSystem*);
-typedef float (*GetFloatFn)(CParticleSystem*);
-typedef void (*GetMatrixFn)(CParticleSystem*, CMatrix*);
-typedef void (*GetVecFn)(CParticleSystem*, Vec3*);
-typedef void (*GetPairFn)(CParticleSystem*, Vec3*, Vec3*);
-typedef void (*GetSizeFn)(CParticleSystem*, Vec3*, Vec3*, float*);
-typedef void (*GetColorsFn)(CParticleSystem*, Color8*, Color8*, Color8*, Color8*);
-typedef void (*GetRotationFn)(CParticleSystem*, float*, float*);
-typedef void (*GetAlphaFn)(CParticleSystem*, float*, float*, float*);
+void CParticleSystemManager::Link(CDmaTag*, CDmaPacket& packet) {
+    GXClearVtxDesc();
+    GXSetVtxDesc(GX_VA_POS, GX_DIRECT);
+    GXSetVtxDesc(GX_VA_CLR0, GX_DIRECT);
+    GXSetVtxDesc(GX_VA_TEX0, GX_DIRECT);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_POS, GX_POS_XYZ, GX_F32, 0);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_CLR0, GX_CLR_RGBA, GX_RGBA8, 0);
+    GXSetVtxAttrFmt(GX_VTXFMT0, GX_VA_TEX0, GX_TEX_ST, GX_F32, 0);
+    GXSetNumChans(1);
+    GXSetNumTexGens(1);
+    GXSetTexCoordGen2(GX_TEXCOORD0, GX_TG_MTX2x4, GX_TG_TEX0, 60, GX_FALSE, 125);
+    GXSetNumTevStages(1);
+    GXSetZMode(GX_TRUE, GX_LEQUAL, GX_FALSE);
+    GXSetTevOrder(GX_TEVSTAGE0, GX_TEXCOORD0, GX_TEXMAP0, GX_COLOR0A0);
+    GXSetTevColorIn(GX_TEVSTAGE0, GX_CC_ZERO, GX_CC_TEXC, GX_CC_RASC, GX_CC_ZERO);
+    GXSetTevColorOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_2, GX_TRUE, GX_TEVPREV);
+    GXSetTevAlphaIn(GX_TEVSTAGE0, GX_CA_ZERO, GX_CA_TEXA, GX_CA_RASA, GX_CA_ZERO);
+    GXSetTevAlphaOp(GX_TEVSTAGE0, GX_TEV_ADD, GX_TB_ZERO, GX_CS_SCALE_4, GX_TRUE, GX_TEVPREV);
+    GXSetChanCtrl(GX_COLOR0A0, GX_FALSE, GX_SRC_REG, GX_SRC_VTX, GX_LIGHT_NULL, GX_DF_NONE, GX_AF_NONE);
+    g_RenderTypeCache = -1;
+    g_ParticleCounter = 0;
+    for (CRenderBin* child = m_children; child; child = child->m_next)
+        child->Link(0, packet);
+    static int counter = 10;
+    if (counter-- <= 0) {
+        counter = 10;
+        DebugMsg("# Particles = %d (MAX %d)\n", g_ParticleCounter, g_ParticleCounterMax);
+    }
+    if (g_ParticleCounter > g_ParticleCounterMax)
+        g_ParticleCounterMax = g_ParticleCounter;
+    m_children = 0;
+}
+
+void CPropertyParticleSystem::Link(CDmaTag*, CDmaPacket& packet) {
+    bool load = true;
+    if (data00 && m_shape == ((CPropertyParticleSystem*)data00)->m_shape)
+        load = false;
+    if (load)
+        m_shape->m_texture.Load(packet, 0);
+    RenderSystem(packet);
+}
+
+int CPropertyParticleSystem::Render(CDmaPacket&, void*) {
+    return 0;
+}
+
+static inline void RotateByRows(CVector3& r, const CMatrix& t, CVector3 v) {
+    r.x = v.x * t.m[0][0] + v.y * t.m[0][1] + v.z * t.m[0][2];
+    r.y = v.x * t.m[1][0] + v.y * t.m[1][1] + v.z * t.m[1][2];
+    r.z = v.x * t.m[2][0] + v.y * t.m[2][1] + v.z * t.m[2][2];
+}
 
 bool CParticleSystem::RenderSystem(CDmaPacket&) {
-    bool rotate = ((GetBoolFn)m_table[0x34 / 4])(this) & g_bAllowRotation;
-    int renderType = ((GetIntFn)m_table[0x3c / 4])(this);
+    CVector3 sizeLow, sizeHigh, sizeRange;
+    CVector3 spawnLow, spawnHigh, spawnRange;
+    CVector3 velLow, velHigh, velRange;
+    CVector3 pull, accel, drift;
+    CVector3 birth, deathBase, birthRange, deathRange;
+    CVector3 right, up;
+    CVector3 offset, force, spawn, vel, color, size, centre, a, b;
+    float growth;
+    bool rotate = HasRotation(); rotate &= g_bAllowRotation;
+    int renderType = GetRenderType();
     if (renderType != g_RenderTypeCache) {
         g_RenderTypeCache = renderType;
-        if (renderType == 1)
-            GXSetBlendMode(3, 1, 1, 5);
-        else if (renderType == 0)
-            GXSetBlendMode(1, 4, 1, 5);
-        else
-            GXSetBlendMode(1, 4, 5, 5);
+        switch (renderType) {
+        default:
+            GXSetBlendMode((GXBlendMode)1, (GXBlendFactor)4, (GXBlendFactor)5, (GXLogicOp)5);
+            break;
+        case 0:
+            GXSetBlendMode((GXBlendMode)1, (GXBlendFactor)4, (GXBlendFactor)1, (GXLogicOp)5);
+            break;
+        case 1:
+            GXSetBlendMode((GXBlendMode)3, (GXBlendFactor)1, (GXBlendFactor)1, (GXLogicOp)5);
+            break;
+        }
     }
-    GXSetCullMode(0);
-
+    GXSetCullMode(GX_CULL_NONE);
     CMatrix toWorld;
-    ((GetMatrixFn)m_table[0x54 / 4])(this, &toWorld);
-    float now = g_ParticleSystemManager.m_time;
-    int period = ((GetIntFn)m_table[0x48 / 4])(this);
-    int count = ((GetIntFn)m_table[0x44 / 4])(this);
-    float rate = ((GetFloatFn)m_table[0x50 / 4])(this);
+
+    GetLocalToWorld(toWorld);
+    float now = g_ParticleSystemManager.GetCurrentTicks();
+    int delay = GetEmmisionDelay();
+    int count = GetEmmisionRate();
+    float lifetime = GetParticleLifetime();
+    float life = 60.0f * lifetime;
     float endTime = m_endTime;
-    float life = 60.0f * rate;
-    if (!((m_flags >> 6) & 1) && m_maxTime < endTime)
+    if (!m_emitting && m_endTime > m_maxTime)
         endTime = m_maxTime;
     if (g_Shell.Get_currentMission() == 6 && !g_bInMultiplayerMode)
         count >>= 1;
+    CColor c0, c1, c2, c3;
 
-    Color8 color0;
-    color0.r = 0;
-    color0.g = 0;
-    color0.b = 0;
-    color0.a = 0x80;
-    Color8 color1;
-    color1.r = 0;
-    color1.g = 0;
-    color1.b = 0;
-    color1.a = 0x80;
-    Color8 color2;
-    color2.r = 0;
-    color2.g = 0;
-    color2.b = 0;
-    color2.a = 0x80;
-    Color8 color3;
-    color3.r = 0;
-    color3.g = 0;
-    color3.b = 0;
-    color3.a = 0x80;
-    int seed = ((GetIntFn)m_table[0x40 / 4])(this);
-    Vec3 sizeLow, sizeHigh, spawnLow, spawnHigh, velocityLow, velocityHigh, pull, acceleration, drift;
-    float growth, rotationLow, rotationHigh, alphaStart, alphaMid, alphaEnd;
-    ((GetSizeFn)m_table[0x64 / 4])(this, &sizeLow, &sizeHigh, &growth);
-    ((GetPairFn)m_table[0x68 / 4])(this, &spawnLow, &spawnHigh);
-    ((GetPairFn)m_table[0x6c / 4])(this, &velocityLow, &velocityHigh);
-    ((GetVecFn)m_table[0x58 / 4])(this, &pull);
-    ((GetVecFn)m_table[0x5c / 4])(this, &acceleration);
-    ((GetVecFn)m_table[0x70 / 4])(this, &drift);
-    ((GetColorsFn)m_table[0x60 / 4])(this, &color0, &color1, &color2, &color3);
-    ((GetRotationFn)m_table[0x74 / 4])(this, &rotationLow, &rotationHigh);
-    ((GetAlphaFn)m_table[0x78 / 4])(this, &alphaStart, &alphaMid, &alphaEnd);
+    int seed = GetSeed();
+    GetParticleSize(sizeLow, sizeHigh, growth);
+    GetParticlePosition(spawnLow, spawnHigh);
+    GetParticleVelocity(velLow, velHigh);
+    GetSystemInitialVelocity(pull);
+    GetSystemAcceleration(accel);
+    GetParticleAcceleration(drift);
+    GetParticleColor(c0, c1, c2, c3);
+    float rotLow, rotHigh;
+    GetParticleRotation(rotLow, rotHigh);
+    float a0, a1, a2;
+    GetParticleAlpha(a0, a1, a2);
 
-    // Fade with distance from the camera, near the far end of the fog.
     if (g_pFog->m_type) {
         float fadeEnd = 2.0f * g_pFog->m_end;
         float fadeStart = (9.0f * fadeEnd) / 10.0f;
         fadeStart *= fadeStart;
+        fadeEnd *= fadeEnd;
         const float (*w)[4] = g_WorldToCamera.m;
         const float (*t)[4] = toWorld.m;
-        float depth = (w[3][2] + t[3][2] * w[2][2] + t[3][0] * w[0][2] + t[3][1] * w[1][2]) * -1.0f;
-        float side = (w[3][0] + t[3][2] * w[2][0] + t[3][0] * w[0][0] + t[3][1] * w[1][0]) * -1.0f;
-        float distance = side * side + depth * depth;
-        if (fadeStart < distance) {
-            float fade = 0.0f;
-            if (distance < fadeEnd * fadeEnd)
-                fade = 1.0f - (distance - fadeStart) / (fadeEnd * fadeEnd - fadeStart);
+        float z = (w[3][2] + (t[3][0] * w[0][2] + t[3][1] * w[1][2] + t[3][2] * w[2][2])) * -1.0f;
+        float x = (w[3][0] + (t[3][0] * w[0][0] + t[3][1] * w[1][0] + t[3][2] * w[2][0])) * -1.0f;
+        float distance = x * x + z * z;
+        if (distance > fadeStart) {
+            float fade;
+            if (distance < fadeEnd)
+                fade = 1.0f - (distance - fadeStart) / (fadeEnd - fadeStart);
+            else
+                fade = 0.0f;
             if (fade == 0.0f)
                 return true;
-            alphaStart *= fade;
-            alphaMid *= fade;
-            alphaEnd *= fade;
+            a0 *= fade;
+            a1 *= fade;
+            a2 *= fade;
         }
     }
 
-    float spin = 3.1415927f * (2.0f * rate);
-    rotationLow *= spin;
-    rotationHigh *= spin;
-    float rotationRange = rotationHigh - rotationLow;
-    sizeHigh.y *= 0.7f;
+    float spin = 3.1415927f * (2.0f * lifetime);
+    rotLow *= spin;
+    rotHigh *= spin;
     sizeLow.y *= 0.7f;
-    float sizeRangeX = sizeHigh.x - sizeLow.x;
-    float sizeRangeY = sizeHigh.y - sizeLow.y;
+    float rotRange = rotHigh - rotLow;
+    sizeHigh.y *= 0.7f;
+    sizeRange.Sub(sizeHigh, sizeLow);
+    spawnRange.Sub(spawnHigh, spawnLow);
+    velRange.Sub(velHigh, velLow);
+    birth[3] = a0;
+    birth[0] = c0.r;
+    birth[1] = c0.g;
+    birth[2] = c0.b;
+    birthRange.Sub(CVector3(c1.r, c1.g, c1.b), birth);
+    deathBase[0] = c2.r;
     growth -= 1.0f;
-    Vec3 spawnRange, velocityRange;
-    spawnRange.x = spawnHigh.x - spawnLow.x;
-    spawnRange.y = spawnHigh.y - spawnLow.y;
-    spawnRange.z = spawnHigh.z - spawnLow.z;
-    velocityRange.x = velocityHigh.x - velocityLow.x;
-    velocityRange.y = velocityHigh.y - velocityLow.y;
-    velocityRange.z = velocityHigh.z - velocityLow.z;
-
-    // Red, green, blue and alpha, each random between two colours or alphas, at
-    // birth and at death.
-    float birthR = color0.b, birthG = color0.g, birthB = color0.r;
-    float birthRange[4], deathBase[4], deathRange[4];
-    birthRange[0] = (float)color1.b - birthR;
-    birthRange[1] = (float)color1.g - birthG;
-    birthRange[2] = (float)color1.r - birthB;
-    birthRange[3] = alphaMid - alphaStart;
-    deathBase[0] = color2.b;
-    deathBase[1] = color2.g;
-    deathBase[2] = color2.r;
-    deathBase[3] = alphaEnd;
-    deathRange[0] = (float)color3.b - deathBase[0];
-    deathRange[1] = (float)color3.g - deathBase[1];
-    deathRange[2] = (float)color3.r - deathBase[2];
-    deathRange[3] = alphaEnd - alphaEnd;
-
+    birthRange[3] = a1 - a0;
+    deathBase[1] = c2.g;
+    deathBase[2] = c2.b;
+    deathBase[3] = a2;
+    float emitStep = (float)delay / 60.0f;
+    deathRange.Sub(CVector3(c3.r, c3.g, c3.b), deathBase);
+    deathRange[3] = a2 - a2;
     float elapsed = now - m_time;
     float age = elapsed / life;
     float seconds = elapsed / 60.0f;
-    float ageStep = -(float)period / life;
-    float secondsStep = -(float)period / 60.0f;
     float emitTime = (m_time - m_startTime) / 60.0f;
-    float emitStep = (float)period / 60.0f;
-
-    CMatrix toCamera(g_WorldToCamera);
-    CMatrix::Multiply(toCamera, toWorld, toCamera);
-    float gcMatrix[3][4];
-    toCamera.GetGAMECUBEMatrix34(gcMatrix);
-    GXLoadPosMtxImm(gcMatrix, 3);
+    float secondsStep = -(float)delay / 60.0f;
+    float ageStep = -(float)delay / life;
+    CMatrix toCamera(*(CMatrix*)&g_WorldToCamera);
+    toCamera.Multiply(toWorld, toCamera);
+    float gc[3][4];
+    toCamera.GetGAMECUBEMatrix34(gc);
+    GXLoadPosMtxImm(gc, 3);
     GXSetCurrentMtx(3);
 
-    // The camera axes, in the system's space.
-    CVector3 xAxis = g_XAxis, yAxis = g_YAxis, zAxis = g_ZAxis;
-    const float (*t)[4] = toWorld.m;
-    float rightX = xAxis.d.v[2] * t[0][2] + xAxis.d.v[0] * t[0][0] + xAxis.d.v[1] * t[0][1];
-    float rightY = xAxis.d.v[2] * t[1][2] + xAxis.d.v[0] * t[1][0] + xAxis.d.v[1] * t[1][1];
-    float rightZ = xAxis.d.v[2] * t[2][2] + xAxis.d.v[0] * t[2][0] + xAxis.d.v[1] * t[2][1];
-    float upX = yAxis.d.v[2] * t[0][2] + yAxis.d.v[0] * t[0][0] + yAxis.d.v[1] * t[0][1];
-    float upY = yAxis.d.v[2] * t[1][2] + yAxis.d.v[0] * t[1][0] + yAxis.d.v[1] * t[1][1];
-    float upZ = yAxis.d.v[2] * t[2][2] + yAxis.d.v[0] * t[2][0] + yAxis.d.v[1] * t[2][1];
-    float axisX = zAxis.d.v[2] * t[0][2] + zAxis.d.v[0] * t[0][0] + zAxis.d.v[1] * t[0][1];
-    float axisY = zAxis.d.v[2] * t[1][2] + zAxis.d.v[0] * t[1][0] + zAxis.d.v[1] * t[1][1];
-    float axisZ = zAxis.d.v[2] * t[2][2] + zAxis.d.v[0] * t[2][0] + zAxis.d.v[1] * t[2][1];
+    RotateByRows(right, toWorld, *(CVector3*)&g_XAxis);
+    RotateByRows(up, toWorld, *(CVector3*)&g_YAxis);
+    CVector3 axis;
+    RotateByRows(axis, toWorld, *(CVector3*)&g_ZAxis);
 
     g_CurrentSeed = seed;
-    for (int generation = (int)m_time; (float)generation <= endTime; generation += period) {
-        float scale = 0.5f * (growth * age + 1.0f);
+    for (int gen = (int)m_time; (float)gen <= endTime; gen += delay) {
         float emit2 = emitTime * emitTime;
         float seconds2 = seconds * seconds;
-        Vec3 offset, force;
-        force.x = seconds2 * drift.x;
-        force.y = seconds2 * drift.y;
-        force.z = seconds2 * drift.z;
-        offset.x = emitTime * pull.x + emit2 * acceleration.x;
-        offset.y = emitTime * pull.y + emit2 * acceleration.y;
-        offset.z = emitTime * pull.z + emit2 * acceleration.z;
-        GXBegin(0x80, 0, (count & 0x3fff) << 2);
+        offset.Scale(pull, emitTime);
+        CVector3 acc;
+        acc.Scale(accel, emit2);
+        force.Scale(drift, seconds2);
+        offset += acc;
+        float scale = 0.5f * (growth * age + 1.0f);
+        GXBegin(GX_QUADS, GX_VTXFMT0, count * 4);
         float youth = 1.0f - age;
         for (int i = 0; i < count; i++) {
-            float spawnX = Lerp(spawnLow.x, spawnRange.x);
-            float spawnY = Lerp(spawnLow.y, spawnRange.y);
-            float spawnZ = Lerp(spawnLow.z, spawnRange.z);
-            float velocityX = Lerp(velocityLow.x, velocityRange.x);
-            float velocityY = Lerp(velocityLow.y, velocityRange.y);
-            float velocityZ = Lerp(velocityLow.z, velocityRange.z);
-            float mixA = Random01();
-            float mixB = Random01();
-            float red = youth * (birthRange[0] * mixA + birthR) + age * (deathRange[0] * mixB + deathBase[0]);
-            float green = youth * (birthRange[1] * mixA + birthG) + age * (deathRange[1] * mixB + deathBase[1]);
-            float blue = youth * (birthRange[2] * mixA + birthB) + age * (deathRange[2] * mixB + deathBase[2]);
-            float alpha = youth * (birthRange[3] * mixA + alphaStart) + age * (deathRange[3] * mixB + deathBase[3]);
-            float centreX = offset.x + (spawnX + (velocityX * seconds + force.x));
-            float centreY = offset.y + (spawnY + (velocityY * seconds + force.y));
-            float centreZ = offset.z + (spawnZ + (velocityZ * seconds + force.z));
-            float width = Lerp(sizeLow.x, sizeRangeX);
-            float height = Lerp(sizeLow.y, sizeRangeY);
-            float angle = age * Lerp(rotationLow, rotationRange);
-
-            float rx, ry, rz, ux, uy, uz;
+            spawn.x = spawnLow.x + spawnRange.x * RandomFloat();
+            spawn.y = spawnLow.y + spawnRange[1] * RandomFloat();
+            spawn.z = spawnLow.z + spawnRange.z * RandomFloat();
+            vel[0] = velLow.x + velRange[0] * RandomFloat();
+            vel[1] = velLow[1] + velRange[1] * RandomFloat();
+            vel[2] = velLow.z + velRange.z * RandomFloat();
+            float mixA = RandomFloat();
+            centre[0] = offset[0] + (spawn[0] + (vel.x * seconds + force.x));
+            centre[1] = offset[1] + (spawn[1] + (vel.y * seconds + force.y));
+            float mixB = RandomFloat();
+            color[1] = youth * (birth.y + birthRange.y * mixA) + age * (deathBase[1] + deathRange[1] * mixB);
+            color[2] = youth * (birth.z + birthRange[2] * mixA) + age * (deathBase[2] + deathRange.z * mixB);
+            color[3] = youth * (birth.w + birthRange[3] * mixA) + age * (deathBase[3] + deathRange[3] * mixB);
+            color[0] = youth * (birth[0] + birthRange.x * mixA) + age * (deathBase[0] + deathRange[0] * mixB);
+            size.x = sizeLow.x + sizeRange[0] * RandomFloat();
+            size.y = sizeLow.y + sizeRange.y * RandomFloat();
+            centre[2] = offset.z + (spawn.z + (vel[2] * seconds + force[2]));
+            float angle = age * (rotLow + rotRange * RandomFloat());
             if (!rotate) {
-                float w = scale * width;
-                float h = scale * height;
-                rx = rightX * w;
-                ry = rightY * w;
-                rz = rightZ * w;
-                ux = upX * h;
-                uy = upY * h;
-                uz = upZ * h;
+                float w = scale * size[0];
+                a[0] = right[0] * w;
+                a[1] = right[1] * w;
+                a[2] = right[2] * w;
+                float h = scale * size[1];
+                b[0] = up[0] * h;
+                b[1] = up[1] * h;
+                b[2] = up[2] * h;
             } else {
-                // Rotate about the view axis.
-                float s = (float)sin(angle);
-                float c = (float)cos(angle);
+                float s = sin(angle);
+                float c = cos(angle);
                 float k = 1.0f - c;
-                float kx = k * axisX;
-                float m00 = kx * axisX + c;
-                float m01 = kx * axisY - s * axisZ;
-                float m02 = kx * axisZ + s * axisY;
-                float m10 = kx * axisY + s * axisZ;
-                float m11 = axisY * (k * axisY) + c;
-                float kyz = axisZ * (k * axisY);
-                float m12 = kyz - s * axisX;
-                float m20 = kx * axisZ - s * axisY;
-                float m21 = s * axisX + kyz;
-                float m22 = axisZ * (k * axisZ) + c;
-                float w = scale * width;
-                rx = w * (rightZ * m02 + rightX * m00 + rightY * m01);
-                ry = w * (rightZ * m12 + rightX * m10 + rightY * m11);
-                rz = w * (rightZ * m22 + rightX * m20 + rightY * m21);
-                float h = scale * height;
-                ux = h * (upZ * m02 + upX * m00 + upY * m01);
-                uy = h * (upZ * m12 + upX * m10 + upY * m11);
-                uz = h * (upZ * m22 + upX * m20 + upY * m21);
+                CMatrix33 m;
+                m[0][0] = k * axis.x * axis.x + c;
+                m[0][1] = k * axis.x * axis.y - s * axis.z;
+                m[0][2] = s * axis.y + k * axis.x * axis.z;
+                m[1][0] = s * axis.z + k * axis.x * axis.y;
+                m[1][1] = axis.y * (k * axis.y) + c;
+                m[1][2] = axis.z * (k * axis.y) - s * axis.x;
+                m[2][0] = k * axis.x * axis.z - s * axis.y;
+                m[2][1] = s * axis.x + axis.z * (k * axis.y);
+                m[2][2] = axis.z * (k * axis.z) + c;
+                float w = scale * size[0];
+                a[0] = w * (right[0] * m[0][0] + right[1] * m[0][1] + right[2] * m[0][2]);
+                a[1] = w * (right[0] * m[1][0] + right[1] * m[1][1] + right[2] * m[1][2]);
+                a[2] = w * (right[0] * m[2][0] + right[1] * m[2][1] + right[2] * m[2][2]);
+                float h = scale * size[1];
+                b[0] = h * (up[0] * m[0][0] + up[1] * m[0][1] + up[2] * m[0][2]);
+                b[1] = h * (up[0] * m[1][0] + up[1] * m[1][1] + up[2] * m[1][2]);
+                b[2] = h * (up[0] * m[2][0] + up[1] * m[2][1] + up[2] * m[2][2]);
             }
-            int ir = (int)red, ig = (int)green, ib = (int)blue, ia = (int)alpha;
-            float ax = centreX - rx, ay = centreY - ry, az = centreZ - rz;
-            float bx = centreX + rx, by = centreY + ry, bz = centreZ + rz;
-#define VERTEX(x, y, z, s, t) \
-    GX_FIFO.f = (x); GX_FIFO.f = (y); GX_FIFO.f = (z); \
-    GX_FIFO.b = ib; GX_FIFO.b = ig; GX_FIFO.b = ir; GX_FIFO.b = ia; \
-    GX_FIFO.f = (s); GX_FIFO.f = (t)
-            VERTEX(ax + ux, ay + uy, az + uz, 0.0f, 0.0f);
-            VERTEX(bx + ux, by + uy, bz + uz, 1.0f, 0.0f);
-            VERTEX(bx - ux, by - uy, bz - uz, 1.0f, 1.0f);
-            VERTEX(ax - ux, ay - uy, az - uz, 0.0f, 1.0f);
-#undef VERTEX
+            GXPosition3f32(centre[0] - a[0] + b[0], centre[1] - a[1] + b[1], centre[2] - a[2] + b[2]);
+            GXColor4u8(color[0], color.y, color[2], color[3]);
+            GXTexCoord2f32(0.0f, 0.0f);
+            GXPosition3f32(centre[0] + a[0] + b[0], centre[1] + a[1] + b[1], centre[2] + a[2] + b[2]);
+            GXColor4u8(color[0], color[1], color[2], color.w);
+            GXTexCoord2f32(1.0f, 0.0f);
+            GXPosition3f32(centre[0] + a[0] - b[0], centre[1] + a[1] - b[1], centre[2] + a[2] - b[2]);
+            GXColor4u8(color[0], color[1], color[2], color[3]);
+            GXTexCoord2f32(1.0f, 1.0f);
+            GXPosition3f32(centre[0] - a[0] - b[0], centre[1] - a[1] - b[1], centre[2] - a[2] - b[2]);
+            GXColor4u8(color[0], color[1], color[2], color.w);
+            GXTexCoord2f32(0.0f, 1.0f);
             g_ParticleCounter++;
         }
-        age += ageStep;
         seconds += secondsStep;
+        age += ageStep;
         emitTime += emitStep;
     }
     GXSetCurrentMtx(0);

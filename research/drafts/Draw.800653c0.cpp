@@ -24,8 +24,10 @@ public:
 } __attribute__((aligned(8)));
 
 
+/* inferred: a single-use assigning inline (name inferred). The original's last stack slot
+   holds the dead operator= return temporary below the argument copies, so 'left = view'
+   ran inside an inline (accepted form, 2026-11-12). */
 inline void Assign(CVector3& d, const CVector3& s) { d = s; }
-inline CVector3 Copy(const CVector3& s) { return s; }
 class CVector4 {
 public:
     void DivY() { y /= w; }
@@ -126,7 +128,7 @@ void CAnimMorph::Draw(CDrawContext& context) {
         CVector3 view;
         context.m_worldToView->TransformPoint(view, position);
         CVector3 left;
-        left = view;
+        Assign(left, view);
         left.x -= 1.0f;
         CVector3 right = view;
         right.x += 1.0f;
