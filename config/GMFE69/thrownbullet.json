@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,31 +32,86 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d1c78",
-      "size": 272,
+      "address": "0x800d1c58",
+      "size": 13008,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e674",
-      "size": 32,
-      "type": 1
+      "address": "0x8000e66c",
+      "size": 260,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 276,
+      "stripped_objects": [
+        "@547",
+        "@1495"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x800153c8",
-      "size": 48,
+      "address": "0x800153bc",
+      "size": 312,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 336,
+      "stripped_objects": [
+        "@548",
+        "@1496"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177e30",
+      "size": 463,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189c50",
+      "size": 708,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e228",
+      "size": 60,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ec68",
+      "size": 13,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350d68",
+      "size": 152,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SECB_NullifyPointer__FR9IObserverPP8ISubject13ESubjectEvent",
+      "address": "0x800d4d98",
+      "size": 72,
+      "binding": 0
+    },
+    {
+      "name": "Penetrate__13CThrownBulletFRC10CCollision",
+      "address": "0x800d3de8",
+      "size": 372,
+      "binding": 1
+    },
     {
       "name": "GetVelocity__13CThrownBulletFR8CVector3",
       "address": "0x800d1ca8",
@@ -68,6 +123,12 @@
       "address": "0x800d1ca4",
       "size": 4,
       "binding": 2
+    },
+    {
+      "name": "GetScriptBulletType__13CThrownBulletCFv",
+      "address": "0x800d2540",
+      "size": 148,
+      "binding": 1
     },
     {
       "name": "GetDamage__13CThrownBulletCFv",
@@ -100,10 +161,52 @@
       "binding": 2
     },
     {
+      "name": "Destroy__13CThrownBulletFv",
+      "address": "0x800d4134",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "ApplyForceTo__13CThrownBulletF8CVector3f",
+      "address": "0x800d2384",
+      "size": 276,
+      "binding": 1
+    },
+    {
+      "name": "Halt__13CThrownBulletFv",
+      "address": "0x800d2498",
+      "size": 32,
+      "binding": 1
+    },
+    {
+      "name": "GetCollisionId__13CThrownBulletCFv",
+      "address": "0x800d27d4",
+      "size": 8,
+      "binding": 1
+    },
+    {
       "name": "IsCollisionEnabled__13CThrownBulletCFv",
       "address": "0x800d1c88",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "HandleBulletCollision__13CThrownBulletFP7CBulletRC10CCollision",
+      "address": "0x800d24b8",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "ConstrainVelocity__13CThrownBulletFv",
+      "address": "0x800d38e4",
+      "size": 1284,
+      "binding": 1
+    },
+    {
+      "name": "IsVisible__13CThrownBulletCFR12CDrawContext",
+      "address": "0x800d25d4",
+      "size": 44,
+      "binding": 1
     },
     {
       "name": "GetWorldBoundingVolume__13CThrownBulletCFQ210ISceneNode11EVolumeType",
@@ -118,23 +221,305 @@
       "binding": 2
     },
     {
+      "name": "Draw__13CThrownBulletFR12CDrawContext",
+      "address": "0x800d2600",
+      "size": 468,
+      "binding": 1
+    },
+    {
+      "name": "CommitUpdate__13CThrownBulletFv",
+      "address": "0x800d27dc",
+      "size": 2112,
+      "binding": 1
+    },
+    {
+      "name": "AttemptUpdate__13CThrownBulletFf",
+      "address": "0x800d324c",
+      "size": 552,
+      "binding": 1
+    },
+    {
+      "name": "BeginUpdate__13CThrownBulletFf",
+      "address": "0x800d3474",
+      "size": 1136,
+      "binding": 1
+    },
+    {
+      "name": "OnCollision__13CThrownBulletFRC10CCollision",
+      "address": "0x800d3f5c",
+      "size": 472,
+      "binding": 1
+    },
+    {
+      "name": "MarkForDestruction__13CThrownBulletFi",
+      "address": "0x800d415c",
+      "size": 204,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__13CThrownBulletFv",
+      "address": "0x800d4228",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "Init__13CThrownBulletFv",
+      "address": "0x800d1c58",
+      "size": 32,
+      "binding": 2
+    },
+    {
+      "name": "__dt__13CThrownBulletFv",
+      "address": "0x800d4de0",
+      "size": 136,
+      "binding": 1
+    },
+    {
       "name": "SomebodyCaughtYou__13CThrownBulletFv",
       "address": "0x800d1d28",
       "size": 96,
       "binding": 1
+    },
+    {
+      "name": "CheckEnemies__13CThrownBulletFv",
+      "address": "0x800d1d88",
+      "size": 1532,
+      "binding": 1
+    },
+    {
+      "name": "SetDetonationTime__13CThrownBulletFf",
+      "address": "0x800d2510",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "Explode__13CThrownBulletFv",
+      "address": "0x800d2528",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "CreateExplosionEffect__FRC7CMatrixbb",
+      "address": "0x800d301c",
+      "size": 560,
+      "binding": 1
+    },
+    {
+      "name": "Init__13CThrownBulletF18EThrownBulletTypesP29ThrownBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode",
+      "address": "0x800d425c",
+      "size": 2876,
+      "binding": 1
+    },
+    {
+      "name": "__ct__13CThrownBulletFv",
+      "address": "0x800d4e68",
+      "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "__nwa__13CThrownBulletFUl",
+      "address": "0x800d4efc",
+      "size": 44,
+      "binding": 1
     }
   ],
   "externals": {
+    "AEMS_SendEvent__FPv": "0x800ec26c",
+    "AddSubscription__10CPublisherFR9IObserverPP8ISubjectPFR9IObserverPP8ISubject13ESubjectEvent_v": "0x800d7cb8",
     "AddVolume__19CLightVolumeManagerFP14BPDLightVolume": "0x80078ee4",
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "AsAnimObject__10ISceneNodeCFv": "0x8001afb8",
+    "AsAnimObject__10ISceneNodeFv": "0x8001afc0",
+    "AsAnimatedPlayerObject__10ISceneNodeCFv": "0x8001aff8",
+    "AsAnimatedPlayerObject__10ISceneNodeFv": "0x8001b000",
+    "AsBullet__7CBulletCFv": "0x800ccbf8",
+    "AsBullet__7CBulletFv": "0x800ccbfc",
+    "AsCollisionVolume__10ISceneNodeCFv": "0x8001b028",
+    "AsCollisionVolume__10ISceneNodeFv": "0x8001b030",
+    "AsHierObject__10ISceneNodeCFv": "0x8001af98",
+    "AsHierObject__10ISceneNodeFv": "0x8001afa0",
+    "AsLight__10ISceneNodeCFv": "0x8001b008",
+    "AsLight__10ISceneNodeFv": "0x8001b010",
+    "AsMovingNode__16IMovingSceneNodeCFv": "0x8001aea4",
+    "AsMovingNode__16IMovingSceneNodeFv": "0x8001aea8",
+    "AsPlayerObject__10ISceneNodeCFv": "0x8001afd8",
+    "AsPlayerObject__10ISceneNodeFv": "0x8001afe0",
+    "AsPlayerWeaponObject__10ISceneNodeCFv": "0x8001afe8",
+    "AsPlayerWeaponObject__10ISceneNodeFv": "0x8001aff0",
+    "AsProjectile__7CBulletFv": "0x800950e8",
+    "AsSoldierObject__10ISceneNodeCFv": "0x8001afc8",
+    "AsSoldierObject__10ISceneNodeFv": "0x8001afd0",
+    "AsStaticObject__10ISceneNodeCFv": "0x8001af88",
+    "AsStaticObject__10ISceneNodeFv": "0x8001af90",
+    "AsWorldObject__10ISceneNodeCFv": "0x8001afa8",
+    "AsWorldObject__10ISceneNodeFv": "0x8001afb0",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv": "0x80039f10",
+    "BuildRotX__7CMatrixFf": "0x800908c0",
+    "BuildTrans__7CMatrixF8CVector3": "0x80090798",
+    "CONTACT_EPSILON": "0x80350ba8",
+    "CancelSubscription__10CPublisherFR9IObserverPP8ISubject": "0x800d7bb0",
+    "CommitAI__10ISceneNodeFv": "0x8001aeb4",
+    "Create__15CParticleSystemFUl": "0x80080c78",
+    "Create__6CLightFUl": "0x80078648",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DebugMsg__FPCce": "0x80018c88",
+    "DestroyBullet__14CBulletFactoryFP7CBullet": "0x800cd810",
+    "FindClosestPlayer__6CSceneF8CVector3": "0x800da540",
+    "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb": "0x8004618c",
+    "GetAIDoodad__10ISceneNodeCFv": "0x8001b038",
+    "GetAIDoodad__10ISceneNodeFv": "0x8001b040",
+    "GetAzimuth__F8CVector3PC13CPlayerObject": "0x800ebc90",
+    "GetFiredBy__13CThrownBulletCFv": "0x800af258",
+    "GetForward__10ISceneNodeCFR8CVector3": "0x8001af2c",
+    "GetForward__7CBulletCFR8CVector3": "0x800950a4",
+    "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetPosition__10ISceneNodeCFR8CVector3": "0x8001af00",
+    "GetPosition__7CBulletCFR8CVector3": "0x8002daa8",
+    "GetRightward__10ISceneNodeCFR8CVector3": "0x8001af14",
+    "GetRightward__7CBulletCFR8CVector3": "0x800ccb84",
+    "GetScriptObject__10ISceneNodeCFv": "0x8001af78",
+    "GetTMLocalToWorld__7CBulletCFR7CMatrix": "0x800ccbcc",
+    "GetUp__7CBulletCFR8CVector3": "0x800ccba8",
+    "GetUpward__10ISceneNodeCFR8CVector3": "0x8001af44",
+    "GetVarValue__9CAIStatusCF12aistatus_var": "0x8004960c",
     "GetVolume__19CLightVolumeManagerFv": "0x80078a3c",
-    "RemoveVolume__19CLightVolumeManagerFP14BPDLightVolume": "0x80078df8"
+    "GetWorldLinearVelocity__16IMovingSceneNodeCFv": "0x8001ae80",
+    "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision": "0x8001af84",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__7CBulletFv": "0x800ccc20",
+    "IsDrawEnabled__7CBulletCFv": "0x800ccb7c",
+    "MarkForDestruction__8ISubjectFi": "0x800d8148",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "Move__16IMovingSceneNodeF8CVector3": "0x8001ae60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "Orthonormalize__16IMovingSceneNodeFv": "0x8001ae7c",
+    "Pitch__16IMovingSceneNodeFf": "0x8001ae68",
+    "PreTransform__16IMovingSceneNodeFRC7CMatrix": "0x8001ae58",
+    "RemoveVolume__19CLightVolumeManagerFP14BPDLightVolume": "0x80078df8",
+    "Remove__6CSceneFR10ISceneNode": "0x800dc190",
+    "Reset__16IMovingSceneNodeFv": "0x8001ae48",
+    "Reset__19CLightVolumeManagerFv": "0x800790a8",
+    "Roll__16IMovingSceneNodeFf": "0x8001ae6c",
+    "RotateY__7CMatrixFf": "0x800902b0",
+    "RotateZ__7CMatrixFf": "0x80090194",
+    "Rotate__16IMovingSceneNodeF8CVector3f": "0x8001ae64",
+    "SECB_NullifyPointerOnMarked__FR9IObserverPP8ISubject13ESubjectEvent": "0x800d80b0",
+    "SetAttachedLight__10ISceneNodeFP6CLight8CVector3": "0x8001b048",
+    "SetBasis__16IMovingSceneNodeF8CVector38CVector38CVector3": "0x8001ae78",
+    "SetCollisionId__10ISceneNodeF7EClsnId": "0x8001af74",
+    "SetExclusionPair__7CBulletFP10ISceneNode": "0x8009894c",
+    "SetFront__7CMatrixF8CVector3": "0x80090760",
+    "SetLightVolume__11CStaticMeshFP14BPDLightVolume": "0x800f2434",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
+    "SetPosition__16IMovingSceneNodeF8CVector3": "0x8001ae74",
+    "SetRight__7CMatrixF8CVector3": "0x8009077c",
+    "SetTMLocalToWorld__16IMovingSceneNodeFRC7CMatrix": "0x8001ae54",
+    "SetUp__7CMatrixF8CVector3": "0x80090744",
+    "Set__9CVolFiberF8CVector38CVector3": "0x800ca2fc",
+    "Shutdown__7CBulletFv": "0x800ccc04",
+    "Transform__16IMovingSceneNodeFRC7CMatrix": "0x8001ae5c",
+    "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
+    "UpdateAI__10ISceneNodeFf": "0x8001aeb0",
+    "Update__19CLightVolumeManagerFf": "0x80079070",
+    "Yaw__16IMovingSceneNodeFf": "0x8001ae70",
+    "__ct__10CExplosionFR6CScene8CVector3fff17EScriptBulletTypeP10ISceneNodeb": "0x800cf6ac",
+    "__ct__19CLightVolumeManagerFv": "0x80079128",
+    "__ct__7CBulletFv": "0x800cccf4",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CExplosionFv": "0x800cf634",
+    "__dt__19CLightVolumeManagerFv": "0x800790cc",
+    "__dt__7CBulletFv": "0x800ccc74",
+    "__dt__7IVolumeFv": "0x8001c078",
+    "__dt__9CVolFiberFv": "0x800ca504",
+    "__vt__10BSGO_Basic": "0x8018334c",
+    "__vt__10BSGO_Dummy": "0x80183330",
+    "__vt__7IVolume": "0x80181e28",
+    "__vt__9CVolFiber": "0x80189654",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_bIsRubberGrenadeCheatEnabled": "0x8034eca4",
+    "g_cheats": "0x80196a94",
+    "g_pBulletFactory": "0x8034e9e0",
+    "g_pGermanList": "0x8034e894",
+    "g_pStaticObjectBazooka": "0x8034eb34",
+    "g_pStaticObjectGrenade": "0x8034eb30",
+    "g_pStaticObjectKnife": "0x8034eb3c",
+    "g_pStaticObjectStickGrenade": "0x8034eb38",
+    "g_pStaticObjectWrench": "0x8034eb40",
+    "g_scene": "0x8019484c",
+    "rand": "0x8013fc54",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "CONTACT_EPSILON",
+    "g_bInMultiplayerMode",
+    "g_bIsRubberGrenadeCheatEnabled",
+    "g_pBulletFactory",
+    "g_pGermanList",
+    "g_pStaticObjectBazooka",
+    "g_pStaticObjectGrenade",
+    "g_pStaticObjectKnife",
+    "g_pStaticObjectStickGrenade",
+    "g_pStaticObjectWrench",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "thrownbullet.cpp",
-  "original_file_index": 8132
+  "original_file_index": 8132,
+  "weak_duplicates": [
+    "AsAnimObject__10ISceneNodeCFv",
+    "AsAnimObject__10ISceneNodeFv",
+    "AsAnimatedPlayerObject__10ISceneNodeCFv",
+    "AsAnimatedPlayerObject__10ISceneNodeFv",
+    "AsCollisionVolume__10ISceneNodeCFv",
+    "AsCollisionVolume__10ISceneNodeFv",
+    "AsHierObject__10ISceneNodeCFv",
+    "AsHierObject__10ISceneNodeFv",
+    "AsLight__10ISceneNodeCFv",
+    "AsLight__10ISceneNodeFv",
+    "AsMovingNode__16IMovingSceneNodeCFv",
+    "AsMovingNode__16IMovingSceneNodeFv",
+    "AsPlayerObject__10ISceneNodeCFv",
+    "AsPlayerObject__10ISceneNodeFv",
+    "AsPlayerWeaponObject__10ISceneNodeCFv",
+    "AsPlayerWeaponObject__10ISceneNodeFv",
+    "AsSoldierObject__10ISceneNodeCFv",
+    "AsSoldierObject__10ISceneNodeFv",
+    "AsStaticObject__10ISceneNodeCFv",
+    "AsStaticObject__10ISceneNodeFv",
+    "AsWorldObject__10ISceneNodeCFv",
+    "AsWorldObject__10ISceneNodeFv",
+    "CommitAI__10ISceneNodeFv",
+    "GetAIDoodad__10ISceneNodeCFv",
+    "GetAIDoodad__10ISceneNodeFv",
+    "GetFiredBy__13CThrownBulletCFv",
+    "GetForward__10ISceneNodeCFR8CVector3",
+    "GetPosition__10ISceneNodeCFR8CVector3",
+    "GetRightward__10ISceneNodeCFR8CVector3",
+    "GetScriptObject__10ISceneNodeCFv",
+    "GetUpward__10ISceneNodeCFR8CVector3",
+    "GetWorldLinearVelocity__16IMovingSceneNodeCFv",
+    "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision",
+    "Move__16IMovingSceneNodeF8CVector3",
+    "Orthonormalize__16IMovingSceneNodeFv",
+    "Pitch__16IMovingSceneNodeFf",
+    "PreTransform__16IMovingSceneNodeFRC7CMatrix",
+    "Reset__16IMovingSceneNodeFv",
+    "Roll__16IMovingSceneNodeFf",
+    "Rotate__16IMovingSceneNodeF8CVector3f",
+    "SetAttachedLight__10ISceneNodeFP6CLight8CVector3",
+    "SetBasis__16IMovingSceneNodeF8CVector38CVector38CVector3",
+    "SetCollisionId__10ISceneNodeF7EClsnId",
+    "SetPosition__16IMovingSceneNodeF8CVector3",
+    "SetTMLocalToWorld__16IMovingSceneNodeFRC7CMatrix",
+    "Transform__16IMovingSceneNodeFRC7CMatrix",
+    "TriggerScriptEvent__10ISceneNodeFiPvb",
+    "UpdateAI__10ISceneNodeFf",
+    "Yaw__16IMovingSceneNodeFf",
+    "__dt__7IVolumeFv"
+  ]
 }
