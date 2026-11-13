@@ -1,122 +1,105 @@
-// CHearingVolume, the functions at the start of the file: the weak collision
-// id accessors and the bullet whiz-by sound, played at the bullet's position
-// and heading for the scene's first player. The class names come from the
-// mangled symbols. CHearingVolume is an inferred, non-virtual view (its
-// virtual table is not reproduced); CBullet is declared with the ISceneNode
-// virtual functions in the order of __vt__10ISceneNode, flattened, and
-// CVector3 is the game's 16-byte, 8-aligned vector (copied by value).
-// HandleBulletCollision follows: normally, for a projectile bullet, it calls
-// the volume's handler (+196) with its owner (+36), excludes the bullet from
-// the volume and lets it pass through (the collision pair is excluded from
-// the scene); with the bullet-shield cheat it instead creates a spark effect
-// oriented along the bullet's direction reflected about the contact normal
-// (a frame built against the function-static vRight, or against z when the
-// reflection is nearly along it) at the contact position, and then calls the
-// handler. The CBullet slot names, the contact, cheat and effect views and
-// the reflection helpers are inferred; the effect id is from the code.
+// hearingvolume.cpp (0x80098360..0x80098de4): CHearingVolume, a scene node that hears bullets
+// passing its owner. The collision id accessors (weak inline copies), the bullet whiz-by sound,
+// HandleBulletCollision (normally: for a projectile bullet, call the handler with the owner,
+// exclude the bullet from the volume and let it pass; with the bullet-shield cheat, a spark
+// effect along the bullet's direction reflected about the contact normal), CBullet's empty
+// SetExclusionPair and Penetrate (weak inline copies emitted here), the update and row
+// accessors, Init, the destructor and the constructor. Merged from the fragments
+// hearingvolume, hearingvolume_bullet, hearingvolume_rows, hearingvolume_init and
+// hearingvolume_ctor; it defines __vt__14CHearingVolume.
+//
+// Names from the mangled symbols and the vtables (__vt__14CHearingVolume, __vt__7CBullet,
+// __vt__10CVolSphere). Inferred: the members past ISceneNode (owner +0x24, the matrix +0x30,
+// the last position +0x70, the local and world spheres +0x80/+0xa0, the collision id +0xc0
+// and the bullet handler +0xc4), the sweep-extent records that ISceneNode's words +0x0c..+0x18
+// point at (SortKeyView), the contact, cheat and particle-system views and the reflection
+// helpers.
+//
+// The file compiles with RTTI on and deferred inlining, so the definitions below are written
+// last to first (the compiler emits them in reverse; the original numbers CHearingVolume's RTTI
+// records before every function's, which only the deferred compile reproduces).
 class CDrawContext;
 class CCollision;
-class CMatrix;
 class CPlayerObject;
-class IMovingSceneNode;
-
-enum EClsnId {};
-
+class CThrownBullet;
+class CProjectileBullet;
+class BPDLightVolume;
 
 inline double fabs(double x) { return __fabs(x); }
 
 #include "game/CVector3.h"
-
-
 #include "game/CMatrix.h"
+#include "game/IMovingSceneNode.h"
 
-
-class ISceneNode;
-
-class CBullet {
+class CStaticObject : public IMovingSceneNode {
 public:
-    enum EVolumeType {};
+    virtual ~CStaticObject();
+    virtual CVector3 GetWorldLinearVelocity() const;
+};
 
-    virtual void MarkForDestruction(int);
+class CTriangle;
+class CPlane;
+class CLine3;
+class CVolBox;
+class CVolSphere;
+class CVolCapsule;
+class CVolFiber;
+class CCDBObject;
+class CWorldVolume;
+class CAnimatedVolume;
+
+class IVolume {
+public:
+    IVolume() {}
+    virtual ~IVolume() {}
+    virtual IVolume* Create() const;
+    virtual void TransformedCopy(const IVolume&, const CMatrix&);
+    virtual int TestCollision(const IVolume&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolBox&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolSphere&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolCapsule&, CCollision&, bool) const;
+    virtual int TestCollision(const CCDBObject&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolFiber&, CCollision&, bool) const;
+    virtual int TestCollision(const CAnimatedVolume&, CCollision&, bool) const;
+    virtual int TestCollision(const CWorldVolume&, CCollision&, bool) const;
+    virtual int TestCollision(CVector3, CCollision&, bool) const;
+    virtual int TestCollision(const CLine3&, CCollision&, bool) const;
+    virtual int TestCollision(const CPlane&, CCollision&, bool) const;
+    virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
+    virtual bool TestVisibility(CDrawContext&) const;
+    virtual void GetExtents(CVector3&, CVector3&) const;
+};
+
+class CVolSphere : public IVolume {
+public:
+    CVolSphere() {}
+    virtual ~CVolSphere();
+    void SetCenter(CVector3);
+    void SetRadius(float);
+
+    unsigned char unknown04[28];
+};
+
+class CBullet : public IMovingSceneNode {
+public:
     virtual ~CBullet();
-    virtual void Destroy();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
     virtual void Draw(CDrawContext&);
-    virtual const void* GetLocalBoundingVolume(EVolumeType) const;
-    virtual const void* GetWorldBoundingVolume(EVolumeType) const;
     virtual void GetTMLocalToWorld(CMatrix&) const;
     virtual void GetPosition(CVector3&) const;
     virtual void GetRightward(CVector3&) const;
     virtual void GetForward(CVector3&) const;
-    virtual void unknown04c();
-    virtual void unknown050();
-    virtual void unknown054();
-    virtual void unknown058();
-    virtual void unknown05c();
-    virtual void unknown060();
-    virtual void unknown064();
-    virtual void unknown068();
-    virtual void unknown06c();
-    virtual void unknown070();
-    virtual void unknown074();
-    virtual void unknown078();
-    virtual void unknown07c();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown08c();
-    virtual void unknown090();
-    virtual void unknown094();
-    virtual void unknown098();
-    virtual void unknown09c();
-    virtual void unknown0a0();
-    virtual void unknown0a4();
-    virtual void unknown0a8();
-    virtual void unknown0ac();
-    virtual void unknown0b0();
-    virtual void unknown0b4();
-    virtual void unknown0b8();
-    virtual void unknown0bc();
-    virtual void unknown0c0();
-    virtual void unknown0c4();
-    virtual void unknown0c8();
-    virtual void unknown0cc();
-    virtual void unknown0d0();
-    virtual void unknown0d4();
-    virtual void unknown0d8();
-    virtual void unknown0dc();
-    virtual void unknown0e0();
-    virtual void unknown0e4();
-    virtual void unknown0e8();
-    virtual void unknown0ec();
-    virtual void unknown0f0();
-    virtual void unknown0f4();
-    virtual void unknown0f8();
-    virtual void unknown0fc();
-    virtual void unknown100();
-    virtual void unknown104();
-    virtual void unknown108();
-    virtual void unknown10c();
-    virtual void unknown110();
-    virtual void unknown114();
-    virtual void unknown118();
-    virtual void unknown11c();
-    virtual void unknown120();
-    virtual void unknown124();
-    virtual void unknown128();
-    virtual void unknown12c();
-    virtual void unknown130();
-    virtual void unknown134();
-    virtual void unknown138();
-    virtual void unknown13c();
-    virtual void* AsProjectile();
-    virtual void unknown144();
+    virtual bool IsDrawEnabled() const;
+    virtual CBullet* AsBullet();
+    virtual const CBullet* AsBullet() const;
+    virtual void Init();
+    virtual void Shutdown();
+    virtual void GetUp(CVector3&) const;
+    virtual float GetDamage() const;
+    virtual int GetScriptBulletType() const;
+    virtual ISceneNode* GetFiredBy() const;
+    virtual CThrownBullet* AsThrown();
+    virtual CProjectileBullet* AsProjectile();
+    virtual void GetVelocity(CVector3&);
     virtual void SetExclusionPair(ISceneNode*);
     virtual void Penetrate(const CCollision&);
 };
@@ -188,39 +171,137 @@ extern CheatsView g_cheats;
 
 #include "game/CScene.h"
 
-
 extern CScene g_scene;
 
 void PlayBulletWhiz(CVector3, CVector3, CPlayerObject*);
 
-class CHearingVolume {
-public:
-    EClsnId GetCollisionId() const;
-    void SetCollisionId(EClsnId);
-    void HandleBulletCollision(CBullet*, const CCollision&);
+/* inferred: a sweep-extent record; ISceneNode's words +0x0c..+0x18 point at them */
+struct SortKeyView {
+    unsigned char unknown00[8];
+    float m_key;
+};
 
-    unsigned char unknown000[36];
-    IMovingSceneNode* m_owner;
-    unsigned char unknown028[152];
+class CHearingVolume : public ISceneNode {
+public:
+    virtual ~CHearingVolume();
+    virtual void BeginUpdate(float);
+    virtual void AttemptUpdate(float);
+    virtual void CommitUpdate();
+    virtual IVolume* GetLocalBoundingVolume(EVolumeType) const;
+    virtual IVolume* GetWorldBoundingVolume(EVolumeType) const;
+    virtual void GetTMLocalToWorld(CMatrix&) const;
+    virtual void GetPosition(CVector3&) const;
+    virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
+    virtual void GetUpward(CVector3&) const;
+    virtual EClsnId GetCollisionId() const;
+    virtual void SetCollisionId(EClsnId);
+    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+    CHearingVolume();
+    void Init(IMovingSceneNode*, EClsnId, float, float, void (*)(IMovingSceneNode*, CBullet*));
+
+    CVector3 UpRow() const { return m_tm.up; }
+    CVector3 ForwardRow() const { return m_tm.front; }
+    CVector3 RightRow() const { return m_tm.right; }
+    CVector3 PositionRow() const { return m_tm.pos; }
+    SortKeyView* MinX() const { return (SortKeyView*)data0c; }
+    SortKeyView* MaxX() const { return (SortKeyView*)data10; }
+    SortKeyView* MinY() const { return (SortKeyView*)data14; }
+    SortKeyView* MaxY() const { return (SortKeyView*)data18; }
+
+    CStaticObject* m_owner;
+    unsigned char unknown28[8];
+    CMatrix m_tm;
+    CVector3 m_lastPosition;
+    CVolSphere m_localVolume;
+    CVolSphere m_worldVolume;
     EClsnId m_collisionId;
     void (*m_onBullet)(IMovingSceneNode*, CBullet*);
 };
 
-__declspec(weak) EClsnId CHearingVolume::GetCollisionId() const {
-    return m_collisionId;
+CHearingVolume::CHearingVolume() {
+    m_owner = 0;
 }
 
-__declspec(weak) void CHearingVolume::SetCollisionId(EClsnId id) {
+CHearingVolume::~CHearingVolume() {
+}
+
+void CHearingVolume::Init(IMovingSceneNode* owner, EClsnId id, float radius, float height,
+                          void (*callback)(IMovingSceneNode*, CBullet*)) {
+    m_tm.Ident();
+    m_localVolume.SetCenter(CVector3(0.0f, 0.0f, height));
+    m_localVolume.SetRadius(radius);
+    m_owner = (CStaticObject*)owner;
     m_collisionId = id;
+    m_onBullet = callback;
+    data08 = 0;
+    data04 = 0;
+    g_scene.Add(*(ISceneNode*)this);
 }
 
-void PlayBulletWhizBys(IMovingSceneNode*, CBullet* bullet) {
-    CVector3 position;
-    CVector3 direction;
+void CHearingVolume::GetTMLocalToWorld(CMatrix& matrix) const {
+    matrix = m_tm;
+}
 
-    bullet->GetPosition(position);
-    bullet->GetForward(direction);
-    PlayBulletWhiz(position, direction, g_scene.GetPlayer(0));
+void CHearingVolume::GetPosition(CVector3& v) const {
+    v = PositionRow();
+}
+
+void CHearingVolume::GetRightward(CVector3& v) const {
+    v = RightRow();
+}
+
+void CHearingVolume::GetForward(CVector3& v) const {
+    v = ForwardRow();
+}
+
+void CHearingVolume::GetUpward(CVector3& v) const {
+    v = UpRow();
+}
+
+IVolume* CHearingVolume::GetLocalBoundingVolume(EVolumeType) const {
+    return (IVolume*)&m_localVolume;
+}
+
+IVolume* CHearingVolume::GetWorldBoundingVolume(EVolumeType) const {
+    return (IVolume*)&m_worldVolume;
+}
+
+void CHearingVolume::BeginUpdate(float) {
+    if (m_owner) {
+        m_owner->GetTMLocalToWorld(m_tm);
+        m_lastPosition = PositionRow();
+    }
+}
+
+void CHearingVolume::AttemptUpdate(float dt) {
+    if (m_owner) {
+        const CVector3& velocity = m_owner->GetWorldLinearVelocity();
+        CVector3 step;
+        step.x = dt * velocity.x;
+        step.y = dt * velocity.y;
+        step.z = dt * velocity.z;
+        m_tm.SetPos(m_lastPosition);
+        m_tm.Translate(step);
+    }
+    m_worldVolume.TransformedCopy(m_localVolume, m_tm);
+    CVector3 minimum;
+    CVector3 maximum;
+    m_worldVolume.GetExtents(minimum, maximum);
+    MinX()->m_key = minimum.x;
+    MinY()->m_key = minimum.y;
+    MaxX()->m_key = maximum.x;
+    MaxY()->m_key = maximum.y;
+}
+
+void CHearingVolume::CommitUpdate() {
+    m_lastPosition = PositionRow();
+}
+
+__declspec(weak) void CBullet::SetExclusionPair(ISceneNode*) {
+}
+
+__declspec(weak) void CBullet::Penetrate(const CCollision&) {
 }
 
 inline float Dot3(float x, float y, float z, const CVector3& v) { return x * v.x + y * v.y + z * v.z; }
@@ -241,7 +322,7 @@ inline void Reflect(CVector3& r, const CVector3& d, const CVector3& n) {
 void CHearingVolume::HandleBulletCollision(CBullet* bullet, const CCollision& collision) {
     if (!g_cheats.bulletShield) {
         if (bullet->AsProjectile()) {
-            m_onBullet(m_owner, bullet);
+            m_onBullet((IMovingSceneNode*)m_owner, bullet);
             bullet->SetExclusionPair((ISceneNode*)this);
             bullet->Penetrate(collision);
             g_scene.ExcludeCollision(*collision.m_node0, *collision.m_node1, -1);
@@ -277,5 +358,23 @@ void CHearingVolume::HandleBulletCollision(CBullet* bullet, const CCollision& co
         matrix.Orthonormalize();
         sparks->SetLocalToWorld(matrix);
     }
-    m_onBullet(m_owner, bullet);
+    m_onBullet((IMovingSceneNode*)m_owner, bullet);
+}
+
+void PlayBulletWhizBys(IMovingSceneNode*, CBullet* bullet) {
+    CVector3 position;
+    CVector3 direction;
+
+    bullet->GetPosition(position);
+    bullet->GetForward(direction);
+    PlayBulletWhiz(position, direction, g_scene.GetPlayer(0));
+}
+
+__declspec(weak) void CHearingVolume::SetCollisionId(EClsnId id) {
+    m_collisionId = id;
+}
+
+/* ---- definitions ---- */
+__declspec(weak) EClsnId CHearingVolume::GetCollisionId() const {
+    return m_collisionId;
 }
