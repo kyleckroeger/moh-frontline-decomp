@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1272484,
+    "matching_code_bytes": 1273712,
     "total_executable_code_bytes": 1414572,
-    "percent": 89.9554070065009,
+    "percent": 90.04221771673693,
     "categories": {
-      "reconstructed_game": 1033424,
+      "reconstructed_game": 1034652,
       "restored_library": 239060
     },
-    "matching_functions": 4901
+    "matching_functions": 4902
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -656,6 +656,7 @@
     "src/game/bsbifunc_astar.cpp": "46da81738b36a76fca2ca1e1b59c3cbbc091a5b091be1cd5d552c63725b640e1",
     "src/game/bsbifunc_asweapon.cpp": "a45cc31bbecca13448ce0610e2c20126743de398783fe3184b89ef9c89f3d105",
     "src/game/bsbifunc_attach.cpp": "a0abb4c70b2fb1d5a27706ee30a003331a2948ce7a6738b6661a051ffdad5284",
+    "src/game/bsbifunc_block.h": "362eabed9e206b97d17ae19c745937226db25cdb3cd0e691d6c1e56ab4d532f7",
     "src/game/bsbifunc_cheats.cpp": "b381793264cff271e1d9b6e37ab20f86085f16db101efcbd62aeab7c01dadad9",
     "src/game/bsbifunc_choosetarget.cpp": "841e56382b245be5114b726c18f228b10db98305e045d145c03ee9e92125c6dd",
     "src/game/bsbifunc_collision.cpp": "630c3ce69b93d5207dee4e8f9a05f1e76af8390b71b864f691b0636b44d1823c",
@@ -714,7 +715,7 @@
     "src/game/bsbifunc_reload.cpp": "da453ec6b3de464516d3539dcb00ca9613c4188773394e67ff13c53e78f92cad",
     "src/game/bsbifunc_respawn.cpp": "c933729ec92e3eb33ad3265fb40569ab859692e8fa89d52e4764491d863b298c",
     "src/game/bsbifunc_rotate.cpp": "f8ca86524944ad48418fe5009b924b2bfd70b96e8596566bbab6f59bee6f97a0",
-    "src/game/bsbifunc_schedules.cpp": "857869df04227332721de0b892023c20590d21255c82e496a24c102708fa0289",
+    "src/game/bsbifunc_schedules.cpp": "79b54b6d034ca5f9326104c4aa0224621b5cc978a2c519777dcd1b22cdcd8625",
     "src/game/bsbifunc_sedevent.cpp": "f08bfccf34c6a94bae55bc5894bc1f785da3c53140caa234595dc6cbeb700f1e",
     "src/game/bsbifunc_setobjinfo.cpp": "cbe4a9f16a716fa235457a819c1391021ff54b66fef235a79cdb32b1965382d3",
     "src/game/bsbifunc_shake.cpp": "5227f66482b60c80609bcb8e72473e55993c7cfc28db2b187e7fddd397a3cb74",
@@ -2128,7 +2129,7 @@
     "config/GMFE69/bsbifunc_reload.json": "7fd74674a6fc8239e8a6f2414091e0059acd51d06cf161436e97a8dbec2659ff",
     "config/GMFE69/bsbifunc_respawn.json": "612b02005911282e03038cc4d8a0be961dd45508981c0c6b7437d58d0ea8923f",
     "config/GMFE69/bsbifunc_rotate.json": "fbf815921e6320da590d2f4e00ed4be31c48c274d2317220a604cbad653d943a",
-    "config/GMFE69/bsbifunc_schedules.json": "623da966d98d39a66ac1e525bedbf383c5c93454e4e524ffeff0fcd1f6d992c3",
+    "config/GMFE69/bsbifunc_schedules.json": "667eae7857c71f01a1620ac05d13ee4aa8af6c0d79ae6325af38aafb95a34266",
     "config/GMFE69/bsbifunc_sedevent.json": "ea87a62d2569f83e194d37f0c40954e373194eb10ff053d299e720a3e6f12b9f",
     "config/GMFE69/bsbifunc_setobjinfo.json": "35d0dc1a43b7fde5b5189f92970305964b93fe3c3b674125bb7e2619aae9d38a",
     "config/GMFE69/bsbifunc_shake.json": "c65f425710fb6712a3510fe06465fcbaee430ee30e3cf0e1d36e792343453556",
@@ -53444,8 +53445,8 @@
     {
       "id": "bsbifunc_schedules",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 868,
+      "functions": 4,
+      "code_bytes": 2096,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -53475,10 +53476,12 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "fd294a39a10c507fb59f63ca4ea018568d1104f6f347bfc473c13ecdb1c6eca9",
-      "linked_sha256": "ee2704a73e84a5fe0f24f2f4059fc31c7e0be2426cf6ff794d45660ddf3757e6"
+      "strip_unused": true,
+      "discarded_functions": [
+        "BsbifuncBlockStrings__Fv"
+      ],
+      "object_sha256": "fdb3690b2b73cef46f9cf4bfd7a96e49e4c380a3c2ada1aec52ce69ace904c8b",
+      "linked_sha256": "243a1b0ba8e02a4a2a0e682eebdb5672bff0057e095fb0b7f1620e0b296ca596"
     },
     {
       "id": "staticmesh_initclass",
@@ -54317,13 +54320,6 @@
             "size": 156,
             "kind": "function",
             "name": "BIFunc_AIStartCoverPointWalkToStored__FPPiPv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x80034718",
-            "size": 1228,
-            "kind": "function",
-            "name": "BSInitBIFuncs__Fv",
             "evidence": "exception-index"
           }
         ]

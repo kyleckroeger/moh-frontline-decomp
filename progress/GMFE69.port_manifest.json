@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 127300, "differs": 10144, "exact": 4472, "verified": 1263640},
+ "function_bytes_by_status": {"consistent": 126072, "differs": 10144, "exact": 4472, "verified": 1264868},
  "data_bytes_owned": 724459,
  "data_bytes_total": 1976252,
  "functions": [
@@ -526,7 +526,7 @@
  [2147697588, 108, "BSUpdateBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
  [2147697696, 156, "BSCleanUpBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
  [2147697852, 604, "BSResetBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
- [2147698456, 1228, "BSInitBIFuncs__Fv", "consistent", "research/drafts/bsbifunc_setup.cpp"],
+ [2147698456, 1228, "BSInitBIFuncs__Fv", "verified", "src/game/bsbifunc_schedules.cpp"],
  [2147699684, 328, "__sinit_bsbifunc_cpp", "verified", "src/game/bsbifunc.cpp"],
  [2147700012, 24, "BSEventCurrentlyProcessingMessages__Fb", "verified", "src/game/bsevents_head.cpp"],
  [2147700036, 44, "BSEventIsEventMemoryBlock__FPv", "verified", "src/game/bsevents_head.cpp"],

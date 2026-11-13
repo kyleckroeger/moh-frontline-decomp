@@ -35,25 +35,25 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x800343b4",
-      "size": 868,
+      "size": 2096,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a1ac",
-      "size": 24,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011048",
-      "size": 36,
+      "size": 48,
       "type": 1
     }
   ],
@@ -75,44 +75,82 @@
       "address": "0x800344bc",
       "size": 604,
       "binding": 1
+    },
+    {
+      "name": "BSInitBIFuncs__Fv",
+      "address": "0x80034718",
+      "size": 1228,
+      "binding": 1
     }
   ],
   "externals": {
+    "BSBifuncInvalid__FPPiPv": "0x80034330",
+    "DebugMsg__FPCce": "0x80018c88",
     "DoBuddyPlayerCheck__FP8BSObjectiiiPiPi": "0x8001e3ec",
     "DoCorpseSearch__FP8BSObjectiiiPiPi": "0x8001e500",
     "DoDistanceToTarget__FP8BSObjectiiiPiPi": "0x8001e8b4",
     "DoMMGPointCheck__FP8BSObjectiiiPiPi": "0x8001ea6c",
     "DoTargetCheck__FP8BSObjectiiiPiPi": "0x8001e59c",
     "DoTargetSearch__FP8BSObjectiiiPiPi": "0x8001e7b8",
+    "Init__10BSScheduleFPFP8BSObjectiiiPiPi_bii": "0x8003ac84",
     "Init__13SoundScheduleFv": "0x80047798",
     "Reset__10BSScheduleFPFP8BSObjectiiiPiPi_bii": "0x8003ac5c",
     "Shutdown__10BSScheduleFv": "0x8003ac2c",
     "Shutdown__13SoundScheduleFv": "0x800476e8",
+    "TLT_FindNextResourceByTypeAndVal__F13TLTResourceIDiiP24LevelFileContentsStruct_": "0x8001d878",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
     "Update__10BSScheduleFv": "0x8003a844",
     "Update__13SoundScheduleFi": "0x80046bc8",
+    "__ct__19PopUpMessageHandlerFPcPc": "0x800ba3d0",
+    "__dl__FPv": "0x8001ca2c",
     "__dt__19PopUpMessageHandlerFv": "0x800ba304",
+    "__nw__FUl": "0x8001cb60",
+    "g_BIFCRCArray": "0x80181e88",
+    "g_NumPlayers": "0x8034e2d0",
     "g_SoundSchedule": "0x8034e784",
+    "g_bInMultiplayerMode": "0x8034eca5",
     "g_iHighestObjectiveNumber": "0x8034e798",
-    "g_iHintBufferIndex": "0x8034e78c"
+    "g_iHintBufferIndex": "0x8034e78c",
+    "g_levelWeaponSetID": "0x8034da0c",
+    "g_pBuiltInFunctions": "0x8034e778",
+    "g_pMPWeaponSet": "0x8034e79c",
+    "g_pNumBuiltInFunctions": "0x8034e780",
+    "g_promptLineWidth": "0x8034d9f8",
+    "g_promptMaxSize": "0x8034d9fc"
   },
-  "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "undefined_in_discarded_code": [
+    "BsbifuncBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "BsbifuncBlockStrings__Fv"
+  ],
   "upstream": {},
   "local_externals": [
-    "g_iHintBufferIndex"
+    "g_iHintBufferIndex",
+    "g_pMPWeaponSet",
+    "g_promptLineWidth",
+    "g_promptMaxSize"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_NumPlayers",
     "g_SoundSchedule",
+    "g_bInMultiplayerMode",
     "g_iHighestObjectiveNumber",
-    "g_iHintBufferIndex"
+    "g_iHintBufferIndex",
+    "g_levelWeaponSetID",
+    "g_pBuiltInFunctions",
+    "g_pMPWeaponSet",
+    "g_pNumBuiltInFunctions",
+    "g_promptLineWidth",
+    "g_promptMaxSize"
   ],
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
   "pooled_sections": [
-    ".bss"
+    ".bss",
+    ".rodata"
   ],
   "pool_references": [
     {
@@ -120,6 +158,12 @@
       "offset": 0,
       "size": 12,
       "address": "0x80197470"
+    },
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x8016e820"
     }
   ]
 }
