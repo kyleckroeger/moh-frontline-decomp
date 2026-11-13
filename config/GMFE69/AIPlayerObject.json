@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -41,19 +41,37 @@
     {
       "name": ".text",
       "address": "0x8004f16c",
-      "size": 260,
+      "size": 432,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a960",
-      "size": 24,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011ab0",
-      "size": 36,
+      "size": 60,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016fab0",
+      "size": 26,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183520",
+      "size": 40,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034da60",
+      "size": 16,
       "type": 1
     },
     {
@@ -89,9 +107,21 @@
       "binding": 1
     },
     {
+      "name": "__dt__15CAIPlayerObjectFv",
+      "address": "0x8004f270",
+      "size": 96,
+      "binding": 1
+    },
+    {
       "name": "Init__15CAIPlayerObjectFv",
       "address": "0x8004f1a4",
       "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "__ct__15CAIPlayerObjectFPv",
+      "address": "0x8004f2d0",
+      "size": 76,
       "binding": 1
     }
   ],
@@ -99,6 +129,9 @@
     "GetPlayer__6CSceneCFi": "0x800d8274",
     "Init__9CAIObjectFv": "0x8004ebe0",
     "IsPlayerCrouching__13CPlayerObjectCFv": "0x8009c938",
+    "__ct__9CAIObjectFv": "0x8004f024",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__9CAIObjectFv": "0x8004eee0",
     "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],

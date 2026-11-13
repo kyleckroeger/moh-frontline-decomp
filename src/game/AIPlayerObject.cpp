@@ -1,11 +1,14 @@
-// CAIPlayerObject, the functions at the start of the file: the AI-side view
-// of the player. The class names come from the mangled symbols. This is an
-// inferred, non-virtual view: only the members these functions touch are
-// declared, at their offsets (their names are not original), and the class's
-// virtual table is not reproduced, so the destructor and constructor that
-// store it are not reconstructed here. IsPlayer is inline in the original (a
-// weak symbol), so it is defined __declspec(weak). The health value is
-// rounded up to fifteenths of the maximum.
+// AIPlayerObject.cpp: CAIPlayerObject, the AI-side view of the player. The
+// whole file: the weak IsPlayer, IsCrouching, Init, Update, PreUpdate, the
+// destructor (its table pointer, then CAIObject's destructor, and the object
+// freed when asked) and the constructor (CAIObject's constructor, its table
+// pointer, the owner kept at +8), with the class's virtual table and RTTI
+// record. The class names come from the mangled symbols, the table's slot
+// order from __vt__15CAIPlayerObject. Only the members these functions touch
+// are declared, at their offsets (their names are not original). IsPlayer is
+// inline in the original (a weak symbol), so it is defined __declspec(weak);
+// the destructor is the key function. The health value is rounded up to
+// fifteenths of the maximum.
 #include "game/CPlayerObject.h"
 
 
@@ -16,9 +19,17 @@ extern CScene g_scene;
 
 class CAIObject {
 public:
+    CAIObject();
+    virtual ~CAIObject();
+    virtual void PreUpdate();
+    virtual void Update(float);
+    virtual bool IsCrouching() const;
+    virtual bool IsPlayer() const;
     void Init();
 
-    unsigned char unknown0000[20];
+    unsigned char unknown0004[4];
+    void* m_owner;
+    unsigned char unknown000c[8];
     unsigned char unknown0014;
     unsigned char unknown0015;
     unsigned char unknown0016[414];
@@ -39,11 +50,13 @@ public:
 
 class CAIPlayerObject : public CAIObject {
 public:
-    bool IsPlayer() const;
-    bool IsCrouching() const;
+    virtual ~CAIPlayerObject();
+    virtual bool IsPlayer() const;
+    virtual bool IsCrouching() const;
     void Init();
-    void Update(float);
-    void PreUpdate();
+    virtual void Update(float);
+    virtual void PreUpdate();
+    CAIPlayerObject(void*);
 };
 
 __declspec(weak) bool CAIPlayerObject::IsPlayer() const {
@@ -72,4 +85,11 @@ void CAIPlayerObject::Update(float) {
 }
 
 void CAIPlayerObject::PreUpdate() {
+}
+
+CAIPlayerObject::~CAIPlayerObject() {
+}
+
+CAIPlayerObject::CAIPlayerObject(void* owner) {
+    m_owner = owner;
 }

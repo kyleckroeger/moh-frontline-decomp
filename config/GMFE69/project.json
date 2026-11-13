@@ -890,7 +890,6 @@
     "AISoldierDoodad_ctor.json",
     "AIDoodad.json",
     "AISoldierObject_ctor.json",
-    "AIPlayerObject_ctor.json",
     "AITankObject_ctor.json",
     "debug_picker.json",
     "plane_ctor.json",
