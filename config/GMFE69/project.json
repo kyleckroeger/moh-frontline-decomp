@@ -630,7 +630,6 @@
     "sdrv_dry.json",
     "sdrv_timemult.json",
     "sdrv_restore.json",
-    "sdspmix_vol.json",
     "eaxadecf_state.json",
     "smixer_reset.json",
     "smixer_dry.json",

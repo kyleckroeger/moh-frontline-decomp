@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8016d00c",
-      "size": 732,
+      "size": 1828,
       "type": 1
     },
     {
@@ -77,6 +77,24 @@
       "name": "SNDDRV_DSPMixerInitChannel__FP6_AXVPBUliUsUs",
       "address": "0x8016d1d8",
       "size": 272,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_DSPMixerReleaseChannel__FP6_AXVPB",
+      "address": "0x8016d2e8",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_DSPMixerSetVol__FP6_AXVPBi",
+      "address": "0x8016d304",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_DSPMixerUpdate__Fv",
+      "address": "0x8016d330",
+      "size": 1024,
       "binding": 1
     }
   ],
