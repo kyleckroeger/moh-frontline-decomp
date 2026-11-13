@@ -12,8 +12,12 @@ keep the base's slot, new virtuals append in declaration order; MWCC also append
 override of a secondary base's virtual, as CParticleSystemManager's table shows), and
 compares the primary part with the original's:
 
-    name       a named virtual sits at a slot that holds another method in the original
-    placeholder  a placeholder (unknown024, vf24, ...) names a different offset than it gets
+    order      a named virtual sits at a slot that holds another method, and the original
+               has that name at another slot
+    rename     a named virtual sits at a slot whose method the original names differently
+               (the name is not in the table: a guessed name, harmless to the code)
+    placeholder  a placeholder (unknown024, vf24, Function024; a few views count in decimal)
+                 names a different offset than it gets
     beyond     a virtual past the end of the original's table
     signature  the right method but a different constness or argument count
 
@@ -38,18 +42,15 @@ KEYWORDS = {"int", "char", "short", "long", "float", "double", "bool", "void", "
 # ------------------------------------------------------------------ the original
 
 def original():
-    """{qualified class: [(name, const, nargs, mangled)]} for part 0, plus the raw rows."""
+    """{qualified class: [(name, const, nargs, mangled)] for every word from +8}, plus the raw rows."""
     tables, rows = {}, collections.defaultdict(list)
     for r in csv.DictReader(open(TSV), delimiter="\t"):
         rows[r["class"]].append(r)
     for cls, rs in rows.items():
-        q = qualify(cls)
-        slots = []
-        for r in rs:
-            if r["part"] != "0" or r["role"] != "slot":
-                continue
-            slots.append(method_of(r["value"], r["demangled"]))
-        tables[q] = slots
+        # every word after the first part's RTTI and offset: markers for later parts' RTTI and offset
+        tables[qualify(cls)] = [("<rtti>", False, None, r["value"]) if r["role"] == "rtti" else
+                                ("<offset>", False, None, r["value"]) if r["role"] == "offset" else
+                                method_of(r["value"], r["demangled"]) for r in rs[2:]]
     return tables, rows
 
 
@@ -66,6 +67,8 @@ def qualify(key):
 
 
 def method_of(mangled, demangled):
+    if mangled.startswith("@"):  # a secondary part's thunk: @offset@target
+        mangled = mangled.split("@", 2)[2]
     if mangled == "0":
         return ("<pure>", False, None, "0")
     name = "~" if mangled.startswith("__dt__") else mangled.split("__")[0] or mangled
@@ -236,10 +239,14 @@ def classes_of(path):
 
 
 def view_table(cls, visible, depth=0):
-    """[(name, params, const, owner)] for the primary part; None when a base can't be found."""
+    """Every word of the view's table from +8: [(name, params, const, owner, secondary)], with
+    ("<rtti>",) and ("<offset>",) entries where a secondary base's part starts. MWCC lays out
+    the primary base's table, then each secondary base's part (RTTI, offset, its slots), then
+    the class's new virtuals and its overrides of secondary-base virtuals, in declaration
+    order (CParticleSystemManager, CBulletDecalManager). None when a base can't be found."""
     if depth > 20:
         return None, "base cycle"
-    primary, secondaries = None, []
+    slots, primary_done = [], False
     for b in cls["bases"]:
         bc = find(b, visible, before=cls)
         if bc is None:
@@ -247,19 +254,24 @@ def view_table(cls, visible, depth=0):
         tab, err = view_table(bc, visible, depth + 1)
         if tab is None:
             return None, err
-        if tab and primary is None:
-            primary = tab
-        elif tab:
-            secondaries.append(tab)
-    slots = list(primary or [])
-    for name, params, const, virtual in cls["methods"]:
-        hit = override(slots, name, params, const)
-        if hit is not None:
-            slots[hit] = (name, params, const, cls["name"])
+        if not tab:
             continue
-        sec = any(override(s, name, params, const) is not None for s in secondaries)
-        if virtual or sec:
-            slots.append((name, params, const, cls["name"]))
+        if not primary_done:
+            slots, primary_done = list(tab), True
+        else:
+            slots += [("<rtti>", (), False, b, True), ("<offset>", (), False, b, True)]
+            slots += [e[:4] + (True,) for e in tab]
+    inherited = len(slots)  # an overload declared in the class itself is a new slot, not an override
+    for name, params, const, virtual in cls["methods"]:
+        hit = override(slots[:inherited], name, params, const)
+        if hit is not None:
+            secondary = slots[hit][4]
+            slots[hit] = (name, params, const, cls["name"], secondary)
+            if secondary:  # the thunk stays in the base's part; the method gets its own slot
+                slots.append((name, params, const, cls["name"], False))
+            continue
+        if virtual:
+            slots.append((name, params, const, cls["name"], False))
     return slots, None
 
 
@@ -294,12 +306,18 @@ def find(short, visible, before=None):
 def compare(slots, orig):
     """[(kind, slot index, offset, view entry, original entry)]"""
     out = []
-    for i, (name, params, const, owner) in enumerate(slots):
+    for i, entry in enumerate(slots):
+        name, params, const = entry[:3]
         off = 8 + 4 * i
         o = orig[i] if i < len(orig) else None
+        if name in ("<rtti>", "<offset>"):
+            if o is None or o[0] != name:
+                out.append(("order", i, off, f"{name} of {entry[3]}", o[3] if o else "-"))
+            continue
         ph = PLACEHOLDER.match(name)
         if ph:
-            if int(ph.group(1), 16) != off:
+            digits = ph.group(1)  # hex in most views, decimal in a few (unknown012 = +12)
+            if int(digits, 16) != off and not (digits.isdigit() and int(digits) == off):
                 out.append(("placeholder", i, off, name, o[3] if o else "-"))
             continue
         if o is None:
@@ -308,8 +326,8 @@ def compare(slots, orig):
             continue
         elif o[0] != name:
             where = [j for j, x in enumerate(orig) if x[0] == name]
-            out.append(("name", i, off, name, o[3] + (f" ({name} at slot {where[0]} +{8 + 4 * where[0]:#x})"
-                                                      if where else f" ({name} not in table)")))
+            out.append(("order" if where else "rename", i, off, name,
+                        o[3] + (f" ({name} at +{8 + 4 * where[0]:#x})" if where else "")))
         elif o[1] != const or (o[2] is not None and o[2] != len(params)):
             out.append(("signature", i, off, f"{name}({', '.join(params)}){' const' if const else ''}", o[3]))
     return out
@@ -361,15 +379,23 @@ def main():
         sig = [v for v in views if v[2] is not None and v[3] and all(p[0] == "signature" for p in v[3])]
         rows.append((cls, len(views), bad, sig))
     if a.md:
-        print("| Class | Views | Order differs | Signature only | Files (first problem) |")
+        # one row per view that differs; "kept off" = the file says its table is not emitted
+        # there (a deliberate first-virtual order that keeps MWCC from emitting the table)
+        print("| Class | File | Kinds | First difference (view at offset: original) | Kept off |")
         print("| --- | --- | --- | --- | --- |")
         for cls, n, bad, sig in rows:
-            if not bad and not sig:
-                continue
-            det = "; ".join(f"`{Path(r).name}:{l}` " + (f"{e}" if s is None else
-                            f"{p[0][0][0]} {p[0][3]} at +{p[0][2]:#x} = `{p[0][4]}`")
-                            for r, l, s, e in bad for p in [[x for x in (e if s is not None else []) if x[0] != 'signature'] or [("?", 0, 0, "", "")]])
-            print(f"| {cls} | {n} | {len(bad)} | {len(sig)} | {det} |")
+            for rel, line, slots, probs in bad + sig:
+                text = open(ROOT / rel, errors="replace").read()
+                kept = "yes" if re.search(r"not (be )?emitted|isn't emitted|not emit", text) else ""
+                if slots is None:
+                    print(f"| {cls} | `{rel[len('src/game/'):] if rel.startswith('src/game/') else rel}:{line}` | base | {probs} | {kept} |")
+                    continue
+                kinds = collections.Counter(p[0] for p in probs)
+                first = next((p for p in probs if p[0] != "signature"), probs[0])
+                orig_txt = first[4].replace("|", "\\|")
+                print(f"| {cls} | `{rel[len('src/game/'):] if rel.startswith('src/game/') else rel}:{line}` | "
+                      f"{', '.join(f'{k} {v}' for k, v in sorted(kinds.items()))} | "
+                      f"`{first[3]}` at +{first[2]:#x}: `{orig_txt}` | {kept} |")
         return
     tot = sum(n for _, n, _, _ in rows)
     print(f"{len(rows)} classes with views, {tot} views; {sum(len(b) for _, _, b, _ in rows)} differ in order, "
@@ -389,4 +415,7 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except BrokenPipeError:
+        pass

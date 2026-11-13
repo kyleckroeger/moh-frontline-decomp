@@ -80,7 +80,8 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `dolphin_boot.py prepare/run/bisect/diff` | Boot a linked ELF in Dolphin from WSL, compare traces, and bisect crashing or diverging drafts (below) |
 | `input_script.py <script.txt> <out.cpp>` | Build the input probe (`research/probes/input_probe.cpp`) from a text input script (`research/probes/scripts/`) |
 | `unowned_data.py [--list KIND]` | Data symbols no accepted unit owns, by kind |
-| `vtables.py [Class]`, `--json` | Each class's virtual table from the original's relocations, slot by slot |
+| `vtables.py [Class]`, `--json`, `--tsv` | Each class's virtual table from the original's relocations, word by word (parts, RTTI, offset, slots, pure-virtual zeros). `--tsv` writes `layout/vtables.tsv` with demangled targets |
+| `vtable_order.py [--drafts]`, `--class NAME`, `--md` | Compare every class view's declared virtuals (text, bases and secondary parts followed) with `layout/vtables.tsv`: order, rename, placeholder, beyond, signature. Notes: `notes/vtable-order.md` |
 | `layout_lint.py`, `--class NAME`, `--check FILE SETTINGS`, `--reuse` | Compare every file's view of each class (from `-sym on` debug output): members, vtable pointer, bases. Writes `layout/`. `--check` lints one new or edited draft against the stored views in seconds; run it before trusting a draft's class view. |
 | `source_symbols.py [--jobs N]`, `--missing SECTION` | Which of the original's named symbols the units, drafts and `data/` would define in a pure-source link: defined, missing or duplicate, by section (PortReadiness 2.4's figure until that link exists). Writes `layout/source_symbols.tsv`. |
 | `bss_decls.py [--force]`, `--dry-run` | Write `data/bss/`: a definition for each `.bss`/`.sbss` global no source defines, one file per original file, typed from existing extern declarations. Rerunnable; edit the output by hand afterwards. |

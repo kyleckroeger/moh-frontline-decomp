@@ -141,6 +141,14 @@ the identity matrix, filename hooks); all exact by `check_data.py`. A file the f
 doesn't name is inferred from the neighbours in the original's section and the users,
 and marked; the rest are in `init/unassigned.cpp`. The libraries' data followed: EA's hooks (`SNDAEMS_*`, `REALabortmessage`), print channels, AEMS component table, mix and reverb maps, XA ADPCM tables, MPEG decoder tables, the built-in font (`FONTstandfile`, a whole font file) and MSL's `__float_nan`/`__float_huge`. `axDspSlave` and its length stay platform-owned. The shell's screen-tool exports came last: `PauseLibraryInfo`, `ShellLibraryInfo`, `PauseScreenInfo` and `ShellScreenInfo` with the 40 file-name and object-slot arrays they point at (`init/is*.cpp`). The 84 vtables wait for step 3.
 
+Pure-source link, 2026-11-13 (`source_link.py --jobs 4`): 1,257 units, 98 drafts and 85 data
+files, all compiled. **84 undefined, 152 fragment-local, 53 duplicate**, 0 small-data. Of
+the 84 undefined, 67 are vtables (64 global, 3 weak). There are 5 string-block device
+calls (`ShellMenuBlockItem` and four like it), which the units strip, and 12 others. Those
+are the SDK aliases (`PSVECNormalize` ...), MSL's `nextafter`/`__double_max`, `axDspSlave`,
+`_eti_init_info`, `__CARDIsWritable`, one draft's `PATHI_choosebeat` and
+`CUcodeRenderBin::Render`. Why the vtables stay undefined is in step 3.2 below.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
@@ -156,6 +164,20 @@ with it.
    in the tests.
 2. **Vtables from the original.** `.rela.data` gives the exact target of every slot in
    every `__vt__` symbol. A generator writes each class's virtual method order from it.
+
+   Done 2026-11-13: `research/layout/vtables.tsv` (`vtables.py --tsv`) has every word of the
+   113 tables. That is 115 RTTI and offset pairs and 2,721 slots, with 30 pure-virtual zeros.
+   Two classes have a second part, and their overrides of the second base are appended after
+   it. `vtable_order.py` compares each class view with these tables
+   (`research/notes/vtable-order.md`). 1,029 of 1,173 views agree in every slot they declare.
+   `include/game/ISceneNode.h` agrees in all 53 slots, so no header needed a fix. Most of the
+   144 that differ are deliberate. A fragment that defines a key function but mustn't own
+   its class's table declares another virtual first, so MWCC doesn't emit the table there.
+   The others are reduced views and 20 mislabelled slots (wrong names at the right offsets),
+   listed for the header moves. Every one of the 64 undefined global vtables has its key
+   function in a verified unit or draft that keeps the table off on purpose: the table's
+   bytes lie outside that fragment. Defining them needs a unit that owns the bytes, or a
+   rule for emitting tables from `research/data/`. That is a decision for the maintainer.
 3. **Shared headers** in `include/game/`. Do value types first (`CVector3`, `CMatrix`),
    then the classes the port's boot path compiles (`ISceneNode`, `CScene`,
    `CPlayerObject`, `CCamera`, `CScreen`, `CInputManager`). Every move passes the
