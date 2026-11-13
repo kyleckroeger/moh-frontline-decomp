@@ -119,7 +119,7 @@ consistent	0.950	1.000	2	80	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	True	0	
 consistent	0.868	1.000	290	1228	BSInitBIFuncs__Fv	True	0	0	research/drafts/bsbifunc_setup.cpp
 consistent	0.982	1.000	None	224	__sinit_buddy_cpp	True	0	0	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 consistent	1.000	1.000	33	1492	Link__8CPartBinFP7CDmaTagR10CDmaPacket	True	0	0	research/drafts/CPartBin_Link.800f5930.cpp
-consistent	0.923	0.996	731	2944	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	True	0	0	research/drafts/GenerateTestSplinePath.80050af4.cpp
+consistent	0.986	1.000	211	2944	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	True	0	0	research/drafts/GenerateTestSplinePath.80050af4.cpp
 consistent	0.789	1.000	203	836	__ct__17CProfileInitClassFv	True	0	0	research/drafts/debug_prof_misc.cpp
 code_exact	1.000	1.000	0	72	__dt__Q24RCMP11RCMP_SYSTEMFv	True	0	0	research/drafts/rcmpbase_system.cpp
 consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp

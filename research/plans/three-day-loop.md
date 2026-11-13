@@ -29,6 +29,11 @@ multiplayer not at all. Every landing keeps the complete image identical.
   fragments that define their key functions; the coordinator chose fragment merges (a unit
   owns its file's vtable bytes once the file's fragments merge), not vtables emitted from
   research/data/, since that matches the original's structure.
+  Boot-path headers (hdr5): CScreen, CCamera, CInputManager, CScene, CPlayerObject landed (166
+  units). Accepted: CScene.h declares VisitAllNodesInVolume only under `#ifdef GAME_ISCENENODE_H`
+  as a transitional guard until the remaining CScene units take ISceneNode.h; and
+  bsbifunc_playerammo's stale TriggerScriptEvent weak copy was dropped from weak_duplicates
+  (CPlayerObject now overrides it).
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by

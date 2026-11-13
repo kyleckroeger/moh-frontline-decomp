@@ -6,7 +6,9 @@
 // The segment's next pointer, its Set and the local names are inferred; the
 // coefficient layout follows the landed segment functions. The stack layout
 // (zero, then a, b, c, d declared d first) and the copy loops' temporary are read
-// from the original's frame. Left: one callee FPR too many in the segment loop.
+// from the original's frame; the arc-length sum is right-nested as the original's
+// fmadds chain shows. Left: volatile register colouring around delta[last] and in
+// the segment loop.
 // CVector3 and sqrtf: copies of include/game/CVector3.h and msl_sqrtf.h (the unit would include them).
 extern inline float sqrtf(float x) {
     const double _half = .5;
@@ -161,11 +163,12 @@ public:
 
 void CAISplinePath::GenerateTestSplinePath(const CAISplinePathManager& manager, unsigned long count,
                                            const _aifilter_simple_v3* source, bool reversed) {
+    unsigned long last;
     CVector3* points = manager.m_points;
     float* gamma = manager.m_diagonals;
     CVector3* delta = manager.m_deltas;
     CVector3* tangents = manager.m_derivatives;
-    unsigned long last = count - 1;
+    last = count - 1;
     m_lastIndex = last;
     m_segments = new CAISplinePathSegment[count];
 
@@ -196,7 +199,8 @@ void CAISplinePath::GenerateTestSplinePath(const CAISplinePathManager& manager, 
     gamma[0] = 0.5f;
     for (i = 1; i < last; i++)
         gamma[i] = 1.0f / (4.0f - gamma[i - 1]);
-    gamma[last] = 1.0f / (2.0f - gamma[last - 1]);
+    float* g = &gamma[last];
+    *g = 1.0f / (2.0f - g[-1]);
 
     delta[0].Sub(points[1], points[0]);
     delta[0] *= 3.0f * gamma[0];
@@ -213,7 +217,7 @@ void CAISplinePath::GenerateTestSplinePath(const CAISplinePathManager& manager, 
 
     // Back substitution.
     tangents[last] = delta[last];
-    for (i = count - 2; i != -1; i--) {
+    for (i = last - 1; i != -1; i--) {
         tangents[i].Scale(tangents[i + 1], -gamma[i]);
         tangents[i].Add(delta[i]);
     }
@@ -230,27 +234,26 @@ void CAISplinePath::GenerateTestSplinePath(const CAISplinePathManager& manager, 
         CVector3& p1 = (&p0)[1];
         CVector3& d0 = tangents[i];
         CVector3& d1 = (&d0)[1];
-        c = d0;
-        a.Sub(p0, p1);
-        a *= 2.0f;
-        a += d0;
-        a += d1;
+        d = p0;
         b.Sub(p1, p0);
+        c = d0;
         b *= 3.0f;
         CVector3 t;
         t.Scale(d0, 2.0f);
+        a.Sub(p0, p1);
+        a *= 2.0f;
+        a += d0;
         t += d1;
+        a += d1;
         b -= t;
-        d = p0;
-        float estimate = c.Dot(c) + 2.0f * b.Dot(c) + 1.3333332f * b.Dot(b) + 2.0f * a.Dot(c)
-                       + 1.8f * a.Dot(a) + 3.0f * a.Dot(b);
-        CAISplinePathSegment& segment = m_segments[i];
+        float estimate = c.Dot(c) + (2.0f * b.Dot(c) + (1.3333332f * b.Dot(b) + (2.0f * a.Dot(c)
+                       + (1.8f * a.Dot(a) + 3.0f * a.Dot(b)))));
         if (estimate < 1.0f) {
             c.Sub(p1, p0);
-            segment.Set(0.25f, zero, zero, c, d);
+            m_segments[i].Set(0.25f, zero, zero, c, d);
         } else {
             float step = 0.25f / sqrtf(estimate);
-            segment.Set(step, a, b, c, d);
+            m_segments[i].Set(step, a, b, c, d);
         }
     }
 
