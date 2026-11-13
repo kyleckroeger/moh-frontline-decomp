@@ -104,7 +104,9 @@ inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
     int i = 0;
     do {
         i++;
-        sprintf(working, m_messages.GetText(842), (int)(char)('B' - (slot == 0)));
+        // g2 (11-13): the caller's letter expression; the original computes it once for both (1183 -> 1023).
+        char letter = 'A' + (slot != 0);
+        sprintf(working, m_messages.GetText(842), (int)letter);
         font.DrawTextCentered(line, working);
         font.DrawTextCentered(line + 22.0f, m_messages.GetText(843));
         font.DrawTextCentered(line + 22.0f + 22.0f, m_messages.GetText(844));
@@ -117,7 +119,6 @@ inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
 }
 
 bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
-    CShellMenu* const self = this;
     int step;
     bool done;
     const char* data;
