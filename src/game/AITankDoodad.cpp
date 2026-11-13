@@ -1,13 +1,18 @@
-// CAITankDoodad, the functions at the start of the file: the AI doodad that
-// drives a tank through a CAIFilterTankObject placed in the tank's memory.
-// The class names come from the mangled symbols. This is an inferred,
-// non-virtual view of CAITankDoodad: only the members these functions touch
-// are declared, at their offsets, and its virtual table (with the inline
-// CAIDoodad fire methods) is not reproduced, so the destructor and
-// constructor that store it are not reconstructed here. GetSceneNode is
-// inline in the original (a weak symbol), so it is defined __declspec(weak).
+// AITankDoodad.cpp: CAITankDoodad, the AI doodad that drives a tank through
+// a CAIFilterTankObject placed in the tank's memory. The whole file: the weak
+// GetSceneNode, Update, PreUpdate, CleanUp, Init, the destructor (its table
+// pointer; the filter object at +4 deleted through its virtual destructor
+// and cleared; then CAIDoodad's destructor) and the constructor (CAIDoodad's
+// constructor, then its table pointer), with the class's virtual table and
+// RTTI record. The class names come from the mangled symbols; the table's
+// slot order from __vt__13CAITankDoodad (CAIDoodad's two fire methods are
+// defined in another file). Only the members these functions touch are
+// declared, at their offsets. GetSceneNode is inline in the original (a weak
+// symbol), so it is defined __declspec(weak) where the original places it;
+// the destructor is the key function.
 class ISceneNode;
 class CTankObject;
+class CStaticObject;
 
 class CAITankObject {
 public:
@@ -36,14 +41,19 @@ public:
 
 class CAIDoodad {
 public:
+    CAIDoodad();
+    virtual ~CAIDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    virtual void FireAtCurrentTarget(float);
+    virtual void FireMMGAtCurrentTarget(CStaticObject*);
     void Init();
-
-    unsigned char unknown00[4];
 };
 
 class CAITankDoodad : public CAIDoodad {
 public:
-    ISceneNode* GetSceneNode() const;
+    virtual ~CAITankDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    CAITankDoodad();
     void Update(float);
     void PreUpdate();
     void CleanUp();
@@ -80,4 +90,12 @@ void CAITankDoodad::Init(CTankObject* tank) {
     filter->SetOneTimeVars();
     filter->UpdateManualUpdateVars();
     filter->m_tankObject->Init();
+}
+
+CAITankDoodad::~CAITankDoodad() {
+    delete m_filter;
+    m_filter = 0;
+}
+
+CAITankDoodad::CAITankDoodad() {
 }

@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,19 +40,37 @@
     {
       "name": ".text",
       "address": "0x80059784",
-      "size": 296,
+      "size": 496,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ae5c",
-      "size": 32,
+      "size": 48,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011f60",
-      "size": 48,
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801702f0",
+      "size": 26,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183688",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034daf0",
+      "size": 16,
       "type": 1
     }
   ],
@@ -62,6 +80,12 @@
       "address": "0x80059784",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "__dt__13CAITankDoodadFv",
+      "address": "0x800598ac",
+      "size": 140,
+      "binding": 1
     },
     {
       "name": "Update__13CAITankDoodadFf",
@@ -86,9 +110,17 @@
       "address": "0x80059824",
       "size": 136,
       "binding": 1
+    },
+    {
+      "name": "__ct__13CAITankDoodadFv",
+      "address": "0x80059938",
+      "size": 60,
+      "binding": 1
     }
   ],
   "externals": {
+    "FireAtCurrentTarget__9CAIDoodadFf": "0x80032bb4",
+    "FireMMGAtCurrentTarget__9CAIDoodadFP13CStaticObject": "0x80032afc",
     "Init__13CAITankObjectFv": "0x80052174",
     "Init__9CAIDoodadFv": "0x800590f4",
     "LinkGameObject__15CAIFilterObjectFPv": "0x8005be40",
@@ -97,6 +129,9 @@
     "UpdateManualUpdateVars__19CAIFilterTankObjectFv": "0x8005b15c",
     "Update__19CAIFilterTankObjectFf": "0x8005af98",
     "__ct__19CAIFilterTankObjectFv": "0x8005b408",
+    "__ct__9CAIDoodadFv": "0x80059140",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__9CAIDoodadFv": "0x800590f8",
     "__nw__19CAIFilterTankObjectFUlPv": "0x8005b390"
   },
   "undefined_in_discarded_code": [],
