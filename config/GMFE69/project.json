@@ -970,7 +970,6 @@
     "scene_closestplayer.json",
     "camera_frustum.json",
     "texture_load.json",
-    "jaw_motiontype.json",
     "AnimObjFactory_weapon.json",
     "aramalloc_alloc.json",
     "rcmp_mpc_create.json",

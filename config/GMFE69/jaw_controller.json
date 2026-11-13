@@ -39,12 +39,48 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8009c6a8",
-      "size": 84,
+      "address": "0x8009c13c",
+      "size": 1472,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000cd3c",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80013e68",
+      "size": 24,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80187b58",
+      "size": 32,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x803504e0",
+      "size": 88,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SetMotionType__14CJawControllerF8EJawType",
+      "address": "0x8009c13c",
+      "size": 872,
+      "binding": 1
+    },
+    {
+      "name": "Update__14CJawControllerFi",
+      "address": "0x8009c4a4",
+      "size": 516,
+      "binding": 1
+    },
     {
       "name": "__ct__14CJawControllerFv",
       "address": "0x8009c6a8",
@@ -52,7 +88,10 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "MathFunRandomUI32Raw__Fv": "0x80092e6c",
+    "sin": "0x80143790"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -60,16 +99,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "jaw_controller.cpp",
-  "original_file_index": 6068,
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x803504ec"
-    }
-  ]
+  "original_file_index": 6068
 }
