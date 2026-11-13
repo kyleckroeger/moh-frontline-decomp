@@ -770,8 +770,6 @@
     "cdbgeom_sphere.json",
     "cdbgeom_triangle_ctor.json",
     "staticmesh_animdraw.json",
-    "renderlist_draw.json",
-    "renderlist_finish.json",
     "compartment_render.json",
     "staticmesh_render.json",
     "staticmesh_simplebin.json",

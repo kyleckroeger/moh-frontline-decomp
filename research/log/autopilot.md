@@ -2824,3 +2824,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge6] merged jaw_controller.cpp (2 fragments, 1472 B): the constructor appended to SetMotionType and Update.
 - 2026-11-13 [loop merge6] merged MathFun.cpp (2 fragments, 2504 B): deferred inlining for the whole file (the rotate half needs it), the random helpers written after the angle functions in reverse image order; .sdata2 pool order as the original.
 - 2026-11-13 [loop merge6] merged animchan.cpp (3 fragments, 1668 B): one channel/owner view (animchan_process's superset).
+- 2026-11-13 [loop merge6] merged renderlist.cpp (3 fragments, 2424 B): the list's buffer, end, cursor, tag and maximum words as anonymous unions of the word/byte/entry views; the bin's first word unions the link-data and prev views.
