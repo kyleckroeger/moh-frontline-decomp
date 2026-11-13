@@ -1,20 +1,23 @@
-// A fragment of SearchNode.cpp (0x80056210): the CSearchNode destructor and
-// constructor. The destructor unlinks the node from its path node, clears its
-// open flag, link and path node, and returns the node to the free list when
-// deleting; the constructor clears the link and path node. The file name is
-// this project's; the original record is SearchNode.cpp. SearchNode.cpp holds
-// operator new/delete and GetCostValue; Setup between the two parts is not
-// part of this unit. The file's static data are defined here: the pool of
-// 4096 nodes (built by its static initialisation, with its array destructor
-// registered) and the free list, whose initialiser links the whole pool (as
-// CSearchNode::Reset does, through the same inferred inline helper).
-// CSearchNode and CPathNode are named by the mangled symbols; members are
-// inferred from offsets.
-// CSearchNode: A* search nodes from a fixed pool of 4096 with a free list
-// (class operator new/delete), linked to path nodes, with the cost so far,
-// the estimate to the goal and their sum. CSearchNode, CPathNode and
-// CAIFilterRealPosition are named by the mangled symbols; members are
-// inferred from offsets and are not original.
+// SearchNode.cpp (0x80055fc8): CSearchNode, A* search nodes from a fixed pool
+// of 4096 with a free list (class operator new and delete), linked to path
+// nodes, with the cost so far, the estimate to the goal and their sum. Reset
+// links the whole pool into the free list (built in a register by an inferred
+// inline helper); operator delete and new return nodes to and take them from
+// the free list; GetCostValue is the real distance between two nodes' path
+// node positions; Setup links a search node to its parent and path node
+// (claiming the path node when it has no search node yet, and returning the
+// previous one), takes the cost from the parent (GetCostValue, inlined, plus
+// the parent's cost, or 0 at the root) and the estimate to the goal (the
+// inferred inline GetEstimate) and their sum. The destructor unlinks the node
+// from its path node, clears its open flag, link and path node, and returns
+// the node to the free list when deleting (operator delete inlined); the
+// constructor clears the link and path node. The file's statics are the pool
+// (built by the static initialisation, with its array destructor registered)
+// and the free list, whose initialiser links the whole pool. CSearchNode,
+// CPathNode, CLinkedListElement and CAIFilterRealPosition are named by the
+// mangled symbols; the node and path-node layouts are inferred, and the
+// position class is built from three floats here (its constructors are
+// inline; this one is inferred).
 class CLinkedListElement {
 public:
     CLinkedListElement* next;
@@ -23,39 +26,42 @@ public:
     CLinkedListElement();
 };
 
+struct CPathNodePositionView {
+    float x;
+    float y;
+    float z;
+};
+
 class CAIFilterRealPosition {
 public:
-    CAIFilterRealPosition(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
+    CAIFilterRealPosition(float px, float py, float pz) : x(px), y(py), z(pz) {}
     float GetDistanceXYZReal(const CAIFilterRealPosition&) const;
 
     float x;
     float y;
     float z;
-    float w;
-};
+} __attribute__((aligned(8)));
 
 class CSearchNode;
 
 class CPathNode {
 public:
-    CAIFilterRealPosition GetPosition() const { return CAIFilterRealPosition(m_position[0], m_position[1], m_position[2]); }
-
-    float m_position[3];
-    CSearchNode* m_pSearchNode;
+    CPathNodePositionView m_position;
+    CSearchNode* m_searchNode;
 };
 
 class CSearchNode : public CLinkedListElement {
 public:
     CSearchNode();
     ~CSearchNode();
-    static void* operator new(unsigned long);
-    static void operator delete(void*, unsigned long);
     static void Reset();
+    static void operator delete(void*, unsigned long);
+    static void* operator new(unsigned long);
     float GetCostValue(const CSearchNode*);
     CSearchNode* Setup(CSearchNode*, CPathNode*, const CPathNode*);
 
-    CSearchNode* m_pParent;
-    CPathNode* m_pPathNode;
+    CSearchNode* m_next;
+    CPathNode* m_node;
     float m_cost;
     float m_estimate;
     float m_total;
@@ -67,8 +73,8 @@ static CSearchNode s_rsnAStarSearchNodePool[4096];
 inline CSearchNode* BuildFreeList() {
     CSearchNode* list = 0;
     for (int i = 0; i < 4096; i++) {
-        s_rsnAStarSearchNodePool[i].m_pParent = list;
-        s_rsnAStarSearchNodePool[i].m_pPathNode = 0;
+        s_rsnAStarSearchNodePool[i].m_next = list;
+        s_rsnAStarSearchNodePool[i].m_node = 0;
         s_rsnAStarSearchNodePool[i].m_open = false;
         list = &s_rsnAStarSearchNodePool[i];
     }
@@ -77,31 +83,65 @@ inline CSearchNode* BuildFreeList() {
 
 static CSearchNode* s_rsnAStarSearchNodeFreeList = BuildFreeList();
 
-void CSearchNode::Reset();
+void CSearchNode::Reset() {
+    s_rsnAStarSearchNodeFreeList = BuildFreeList();
+}
 
-// Inlined into the deleting destructor; its out-of-line copy belongs to the
-// SearchNode.cpp unit, so this fragment keeps an inline copy of the same body.
-inline void CSearchNode::operator delete(void* p, unsigned long) {
-    ((CSearchNode*)p)->m_pParent = s_rsnAStarSearchNodeFreeList;
+void CSearchNode::operator delete(void* p, unsigned long) {
+    ((CSearchNode*)p)->m_next = s_rsnAStarSearchNodeFreeList;
     s_rsnAStarSearchNodeFreeList = (CSearchNode*)p;
 }
 
-void* CSearchNode::operator new(unsigned long);
+void* CSearchNode::operator new(unsigned long) {
+    CSearchNode* node = s_rsnAStarSearchNodeFreeList;
+    s_rsnAStarSearchNodeFreeList = node->m_next;
+    return node;
+}
 
-float CSearchNode::GetCostValue(const CSearchNode* other);
+float CSearchNode::GetCostValue(const CSearchNode* other) {
+    CPathNodePositionView& a = m_node->m_position;
+    CAIFilterRealPosition mine(a.x, a.y, a.z);
+    CPathNodePositionView& b = other->m_node->m_position;
+    CAIFilterRealPosition theirs(b.x, b.y, b.z);
+    return theirs.GetDistanceXYZReal(mine);
+}
 
-CSearchNode* CSearchNode::Setup(CSearchNode* parent, CPathNode* node, const CPathNode* goal);
+// inferred inline: the distance from this node's path node to the goal
+inline float GetEstimate(const CSearchNode* node, const CPathNode* goal) {
+    const CPathNodePositionView& c = node->m_node->m_position;
+    const CPathNodePositionView& d = goal->m_position;
+    CAIFilterRealPosition mine(c.x, c.y, c.z);
+    CAIFilterRealPosition target(d.x, d.y, d.z);
+    return mine.GetDistanceXYZReal(target);
+}
+
+CSearchNode* CSearchNode::Setup(CSearchNode* parent, CPathNode* node, const CPathNode* goal) {
+    CSearchNode* previous = node->m_searchNode;
+    m_next = parent;
+    m_node = node;
+    if (!previous)
+        node->m_searchNode = this;
+    if (parent) {
+        m_cost = GetCostValue(parent);
+        m_cost += parent->m_cost;
+    } else {
+        m_cost = 0.0f;
+    }
+    m_estimate = GetEstimate(this, goal);
+    m_total = m_cost + m_estimate;
+    return previous;
+}
 
 CSearchNode::~CSearchNode() {
-    if (m_pPathNode->m_pSearchNode == this)
-        m_pPathNode->m_pSearchNode = 0;
+    if (m_node->m_searchNode == this)
+        m_node->m_searchNode = 0;
     if (m_open)
         m_open = !m_open;
     next = 0;
-    m_pPathNode = 0;
+    m_node = 0;
 }
 
 CSearchNode::CSearchNode() {
     next = 0;
-    m_pPathNode = 0;
+    m_node = 0;
 }
