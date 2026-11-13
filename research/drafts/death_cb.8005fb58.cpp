@@ -1,3 +1,5 @@
+// late2c (2026-11-13): signed/unsigned grid over i, kept, count, located (16): best stays 5 (unsigned i and kept needed);
+// for-init/comma/split counter-init forms for the posture and location loops (20): inert.
 class CAIDoodad;
 // real2 (2026-11-12): 5 real lines, unchanged: delta.Sub, move.Sub, m_unknown23d8.Scale (the original's CVector3 members) replace the invented operator-= and per-component code.
 // A fragment of anim_callback.cpp (0x8005ff80): CAnimCallbacks::turn_cb

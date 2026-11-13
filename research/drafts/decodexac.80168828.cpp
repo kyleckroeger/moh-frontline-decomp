@@ -1,3 +1,5 @@
+// late2c (2026-11-13): 4 table spellings x 4 in-increment forms ('*in++', split ++, += 1, in[0]) x 6 orders of
+// count/c0/c1: best stays 28.
 // best WIP (harvest1, 2026-11-12): 28 real lines (was 32; index said 32), from
 // scratch/loop3/harvest1/dx_merge.cpp: 'table = &xatablef[(*packet->in++ & 0xF) * 16]' in place (from
 // scratch/lib/coda_wip.cpp). Left: FPR colouring in the loop.

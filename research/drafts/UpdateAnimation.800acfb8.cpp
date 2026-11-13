@@ -1,3 +1,4 @@
+// late2c (2026-11-13): shared-header Normalize forms (scale local, return length): identical code (16).
 // A fragment of Soldier_object.cpp (0x800adeac): CSoldierObject's
 // SetFaceAnimationState (stores the face state at +17182 and flags it as set
 // at +17180), RemoveWeapons (detaches the hand objects "lt_hand" and

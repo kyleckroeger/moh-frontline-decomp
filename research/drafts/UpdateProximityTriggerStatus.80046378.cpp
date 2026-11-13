@@ -1,3 +1,7 @@
+// late2c (2026-11-13): this draft scores 9 only through 'UpdateStatus(copy = object, ...)', the declined chained-copy form;
+// the plain call scores 24 (object r30, g_scene r29, data r28, German pointer r29; orig g_scene r30, data r29, object r28,
+// German pointer r31 = i's). Inert on the plain form: object/user locals hoisted or reused, per-loop locals (46), reference
+// parameter (both spellings), the inline's locals in ForceUpdate's order (88).
 // A fragment of proxtrig.cpp (0x80045f84): CheckLeafsTriggers tests the point
 // against each trigger listed by the BSP leaf, setting one bit per entry: an
 // entry with its top bit set indexes a light volume, inside when the point is

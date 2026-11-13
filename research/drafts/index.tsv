@@ -78,7 +78,7 @@ real_lines	size	address	function	compile_settings_from	draft
 39	632	800da67c	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	config/GMFE69/scene.json	research/drafts/Draw.800da67c.cpp
 3	244	8015d238	SNDtimeremaining	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDtimeremaining.8015d238.c
 53	1700	8015d530	SNDVOICEI_alloc__FiiPiii	config/GMFE69/salloc.json	research/drafts/SNDVOICEI_alloc.8015d530.c
-79	708	8015f538	SNDI_precalcaztospkrvol__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/SNDI_precalcaztospkrvol.8015f538.c
+4	708	8015f538	SNDI_precalcaztospkrvol__Fv	config/GMFE69/satospkr.json	research/drafts/SNDI_precalcaztospkrvol.8015f538.c
 80	340	8015f934	iSNDrandom__Fv	config/GMFE69/ShellMenu_ctor.json	research/drafts/iSNDrandom.8015f934.c
 20	408	80160114	SNDMIXI_volramp__FP11SNDMIXVOICE	config/GMFE69/smixer.json	research/drafts/SNDMIXI_volramp.80160114.c
 73	752	801609d0	MIX_audioslice	config/GMFE69/smixer.json	research/drafts/MIX_audioslice.801609d0.c

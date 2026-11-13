@@ -1,3 +1,5 @@
+// late2c (2026-11-13): a Mix() accessor for value0f/scalemix/alignedMix (20), the post-return part as an inline taking
+// SNDMIXVIEW* or SNDMIXVIEW& (28), a 'SNDMIXVIEW& m = sndmix' local (68): none gives the orig's third &sndmix register.
 // best WIP (harvest1, 2026-11-12): 20 real lines (was 28; index said 28), from
 // scratch/game/smixer_volramp_wip.c: the ramp written in the function on sndmix directly (no
 // Ramp(voice, &sndmix) helper). Left: registers.

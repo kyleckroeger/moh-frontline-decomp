@@ -1,3 +1,5 @@
+// late2c (2026-11-13): owner r30 / slot r31 swap (orig owner r31): 'self' copies (const or not, before/after slot), slot
+// set in the for-init, &owner->slots[0]: inert (23); indexed owner->slots[i] with the slot dropped from the inline: 215-239.
 // Animation states: each object carries four 104-byte state slots. This unit
 // covers the slot accessors at the start of the file. The slot, owner and
 // callback-table views are inferred from offsets; their names are not
