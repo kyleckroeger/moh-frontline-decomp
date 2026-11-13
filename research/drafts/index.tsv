@@ -103,7 +103,6 @@ real_lines	size	address	function	compile_settings_from	draft
 	988	800ba3d0	__ct__19PopUpMessageHandlerFPcPc	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
 	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
 	708	80135324	TRKSuppAccessFile	config/GMFE69/msgbuf.json	research/drafts/TRKSuppAccessFile.80135324.cpp
-	1868	8010370c	Play__21OPTION_PARSING_PLAYERFb	config/GMFE69/rcmp_main.json	research/drafts/rcmp_play.cpp
 	4532	8007d704	RenderSystem__15CParticleSystemFR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/particlesystem_render.cpp
 	276	800ba7ac	__sinit_pumhandler_cpp	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
 	1032	8001ebf8	BIFunc_MPAddPlayerHealth__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp

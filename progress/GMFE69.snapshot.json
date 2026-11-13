@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1270616,
+    "matching_code_bytes": 1272484,
     "total_executable_code_bytes": 1414572,
-    "percent": 89.82335292936662,
+    "percent": 89.9554070065009,
     "categories": {
-      "reconstructed_game": 1031556,
+      "reconstructed_game": 1033424,
       "restored_library": 239060
     },
-    "matching_functions": 4900
+    "matching_functions": 4901
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1049,7 +1049,8 @@
     "src/game/quaternion.cpp": "9f0524892f35e4063da292077fd7cb6c19c3748f567e2495a916d96d9fd6adf1",
     "src/game/quaternion_matrix.cpp": "383496979fbe847699f6b98bbf186da56e8ae9960812590e8c2095bba9a41aa9",
     "src/game/rcmp_main.cpp": "5b1605324c9b03893ef343f652291f8039f8797b86f7c3ba03668613b68ffb29",
-    "src/game/rcmp_main_delete.cpp": "73241fde4c1b1f4a0e1c05c312f789ef77dbc1f63a46d98cd54c989924ac15d6",
+    "src/game/rcmp_main_block.h": "86b0d7bad76a670b3e5800c5b2d9d2f351eca22e90a5347476fb4698cbb7c7d7",
+    "src/game/rcmp_main_delete.cpp": "c8b9e585b60b64106bf7c0ceb5ebf2bc621b1a6141797411390355405b8910fa",
     "src/game/rcmp_mpc_codec.cpp": "20275a867f71e391cec165a9ab505853717f67ac77ac067734045ded730abd17",
     "src/game/rcmp_mpc_create.cpp": "1a0b662385d3e651b635d455dd3cbf89706f33280d01636e75ef5a447e63be71",
     "src/game/rcmp_mpc_frames.cpp": "531780b3e8ffd894f7001897600304fca74e8bb5c67aa6904a256e5a8fde5526",
@@ -2593,7 +2594,7 @@
     "config/GMFE69/rand.json": "958d1564ced02e430faca2258c920c5b7f36bd3ba70f168d2cbb54dace181f59",
     "config/GMFE69/rcmp2real.json": "7a6660763df07bcc921df0044bbfbe2c11bf23eb576075092436214c3c81b4d5",
     "config/GMFE69/rcmp_main.json": "34aafc1bb2f388a47a856dd39445c571936efb16efebcbf4d5db613085304bf4",
-    "config/GMFE69/rcmp_main_delete.json": "a68aaffa7e0489d73d560375fe65fb9880bbac8db9bdcc6ec3610f357b7014f1",
+    "config/GMFE69/rcmp_main_delete.json": "13c2799bd325a58194651e35827fe60c66e7a07852fb2531905d018807314735",
     "config/GMFE69/rcmp_mpc_codec.json": "e19ac24595d1215fd65778779d27b29c6f88163987cb2f51df85ff162004d7cf",
     "config/GMFE69/rcmp_mpc_codec_chunk_types.json": "42f8600fb47568b4635edb3182a0d6d788bb94c0419a514e14604d564197d33d",
     "config/GMFE69/rcmp_mpc_create.json": "f9c38c2e92825d8832cb0e8a73191f4db10fe1f15be632a98e8bfe4dcdacc7e6",
@@ -32723,8 +32724,8 @@
     {
       "id": "rcmp_main_delete",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 564,
+      "functions": 4,
+      "code_bytes": 2432,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -32754,10 +32755,12 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "ea63201d85f44a1ed3883a0167fc148652f6e3daaaf4c2672625415ad687f902",
-      "linked_sha256": "7c39d65854676423a7bdd9098b6f8ee4a5031fa3f03684c154a9b09818c1be1f"
+      "strip_unused": true,
+      "discarded_functions": [
+        "RcmpMainBlockStrings__Fv"
+      ],
+      "object_sha256": "5374b48a28c1d5fd903fe8a0d50cabdda6f073423b90962487aedc4ca9edd42e",
+      "linked_sha256": "9b00c3a1ff06b7efe9b57123aa4bf7131555673fb654fde8a42975872d087e09"
     },
     {
       "id": "scene_cmppairs",
@@ -55175,20 +55178,6 @@
             "size": 724,
             "kind": "function",
             "name": "MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/rcmp_main.cpp [symbol evidence]",
-        "file_record": 176,
-        "file_name": "rcmp_main.cpp",
-        "ranges": [
-          {
-            "address": "0x8010370c",
-            "size": 1868,
-            "kind": "function",
-            "name": "Play__21OPTION_PARSING_PLAYERFb",
             "evidence": "exception-index"
           }
         ]
