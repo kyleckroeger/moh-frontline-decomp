@@ -194,7 +194,6 @@ static inline void InitLightPos(GXLightObj* light, CVector3 position) {
 void CPartBin::Link(CDmaTag* tag, CDmaPacket& packet) {
     GXColor fogColor;
     DMeshLightingView* lighting;
-    int slot;
     CDMeshLinkView* mesh;
     int mask = 0;
     GXClearVtxDesc();
@@ -259,12 +258,15 @@ void CPartBin::Link(CDmaTag* tag, CDmaPacket& packet) {
                 CVector3 position;
                 CVector3 lightPos;
                 color.r = (u8)red;
-                lightPos = lighting->m_lightPos[i];
+                // 4 lines left: the original stores the light position to 72, 56, 88 (in that
+                // order; GXInitLightPos reads 88); this form stores 56, 72, 88. 'position =
+                // CVector3(lightPos)' (an unnamed temporary) or the earlier 'CVector3 tmp =
+                // lightPos; position = tmp;' chain give 0 but are copy chains (declined).
+                lightPos = lighting->GetLightPos(i);
                 color.g = (u8)lighting->m_lightColor[i][1];
                 color.b = (u8)lighting->m_lightColor[i][2];
                 color.a = (u8)lighting->m_alpha;
-                CVector3 tmp = lightPos;
-                position = tmp;
+                position = lightPos;
                 GXInitLightColor(&lights[i], color);
                 GXInitLightPos(&lights[i], position.x, position.y, position.z);
                 GXLightID id = (GXLightID)(1 << i);
@@ -293,14 +295,14 @@ void CPartBin::Link(CDmaTag* tag, CDmaPacket& packet) {
         u32 p;
         for (p = 0; p < this->m_count; p++) {
             CPartView* part = &this->m_parts[p];
-            slot = 0;
             int j;
             for (j = 0; j < part->m_numMatrices; j++) {
                 u8 index = part->m_matrices[j];
-                GXLoadPosMtxIndx(index, slot);
+                // The matrix slot is j * 3 (strength-reduced; a separate slot += 3 counter
+                // colours this/tag/packet and the count/p registers one off).
+                GXLoadPosMtxIndx(index, j * 3);
                 PSMTXInvXpose(matrices[index], normal);
-                GXLoadNrmMtxImm(normal, slot);
-                slot += 3;
+                GXLoadNrmMtxImm(normal, j * 3);
             }
             void* list;
             u32 size;

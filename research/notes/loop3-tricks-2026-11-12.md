@@ -1040,3 +1040,17 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
 - (buddy) A list view that must stay constructor-free (pooled .bss size views) while its element type has a
   constructor: give the sentinel a view type (links + 'unsigned char m_data[sizeof(T)]') and cast '&m_head' to the
   node pointer in clear(); no __sinit is generated.
+- (csweep) SUFFIX=c only matters for units WITHOUT '-lang c++' in compiler_flags (library units such as TRK's
+  support.json). All game/EA units, including the .c originals (EA audio, path.c), pass '-lang c++' and compile
+  identically either way; no unlanded draft changed.
+- (csweep) A loop counter stepping by a constant beside the loop index ('slot = 0; ... slot += 3') is often the
+  compiler's strength-reduced 'j * 3': write the product. In CPartBin::Link the separate counter coloured
+  this/tag/packet and the count/p registers one off (62 difflib); 'j * 3' made them all exact. Signs: the
+  original's 'li rX,0' for the IV comes AFTER the index's 'li', and a type change elsewhere ('char skinned')
+  "fixes" the colouring by accident (extra temporaries change interference degrees). late2c found the same with
+  'i * 256' (SNDI_precalcaztospkrvol).
+- (csweep) Stack-slot order of copy chains: slots are handed out in creation order from the top (88, 72, 56),
+  stores follow the chain. 'lightPos = GetLightPos(i)' (by-value inline) creates the return temporary AFTER the
+  declared locals, so the chain runs 56 -> 72 -> 88; the original runs 72 -> 56 -> 88, which only an unnamed
+  temporary after lightPos ('position = CVector3(lightPos)') reproduces. By-value operator= (private view, pair
+  copies) gives 72 -> 88 -> 56 (dead return temporary stored last).
