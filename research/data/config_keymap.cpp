@@ -1,10 +1,10 @@
 // g_config_keymap (.data 0x801858bc, 0x410 bytes): the default button map of each of
 // the four controller ports. CInputManager::SetKeymap takes the whole array (Moh2.cpp,
 // mainloop.cpp), and CDualConfig rewrites one port's entries when the player picks a
-// controller layout (ConfigGC_dualconfig.cpp, whose KeyMapView this follows).
+// controller layout (ConfigGC.cpp, whose KeyMapView this follows).
 // Every port starts with the same 34 entries; unused entries are zero.
 // Checked by research/tools/check_data.py.
-// settings: config/GMFE69/ConfigGC_dualconfig.json
+// settings: config/GMFE69/ConfigGC.json
 
 struct KeyMapEntry {
     unsigned short button;

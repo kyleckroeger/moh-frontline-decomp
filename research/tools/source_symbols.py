@@ -82,7 +82,7 @@ def sources(jobs):
         raise SystemExit("no unit objects: run tools/reconstruct.py first")
     work = [(r["draft"], r["compile_settings_from"])
             for r in csv.DictReader(open(ROOT / "research/drafts/index.tsv"), delimiter="\t")]
-    work += [(os.path.relpath(f, ROOT), "config/GMFE69/ConfigGC_dualconfig.json")
+    work += [(os.path.relpath(f, ROOT), "config/GMFE69/ConfigGC.json")
              for f in sorted(glob.glob(str(ROOT / "research/data/**/*.cpp"), recursive=True))]
     # research/data files name their own settings.
     for i, (f, s) in enumerate(work):

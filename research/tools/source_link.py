@@ -39,7 +39,7 @@ from formats import Elf32  # noqa: E402
 
 WORK = ROOT / "build/source_link"
 OUT = ROOT / "research/layout/source_link.tsv"
-DEFAULT_SETTINGS = "config/GMFE69/ConfigGC_dualconfig.json"
+DEFAULT_SETTINGS = "config/GMFE69/ConfigGC.json"
 
 
 def compile_one(job):

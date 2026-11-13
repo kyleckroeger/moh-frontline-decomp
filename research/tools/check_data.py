@@ -14,7 +14,7 @@ it defines, compares with the symbol of the same name in the original ELF:
                          the same bytes there
 
 A file chooses its compiler settings with a line "// settings: config/GMFE69/<unit>.json"
-(default: ConfigGC_dualconfig.json, a game unit). A symbol defined more than once in the
+(default: ConfigGC.json, a game unit). A symbol defined more than once in the
 original (file statics) needs "// address: <name> 0x8xxxxxxx".
 
     check_data.py                       check every file, print one line per symbol
@@ -28,7 +28,7 @@ sys.path.insert(0, str(ROOT / "tools"))
 from formats import Elf32  # noqa: E402
 
 ORIGINAL = ROOT / "orig/GMFE69/Moh2RelGC.elf"
-DEFAULT_SETTINGS = "config/GMFE69/ConfigGC_dualconfig.json"
+DEFAULT_SETTINGS = "config/GMFE69/ConfigGC.json"
 DATA_SECTIONS = {".data", ".rodata", ".sdata", ".sdata2", ".bss", ".sbss", ".sbss2"}
 ADDR32, UADDR32 = 1, 24
 
