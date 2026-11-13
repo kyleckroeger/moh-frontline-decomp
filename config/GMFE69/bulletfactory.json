@@ -40,24 +40,54 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800cd7ac",
-      "size": 316,
+      "address": "0x800ccda8",
+      "size": 5800,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e360",
-      "size": 16,
+      "address": "0x8000e328",
+      "size": 292,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80015164",
-      "size": 24,
+      "address": "0x80015140",
+      "size": 264,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177ce0",
+      "size": 46,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "GetBulletWeight__14CBulletFactoryFbi",
+      "address": "0x800ccda8",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "DeleteBulletGUISprites__14CBulletFactoryFv",
+      "address": "0x800ccdd0",
+      "size": 408,
+      "binding": 1
+    },
+    {
+      "name": "LoadBulletGUISprites__14CBulletFactoryFv",
+      "address": "0x800ccf68",
+      "size": 500,
+      "binding": 1
+    },
+    {
+      "name": "LoadBulletParameters__14CBulletFactoryFv",
+      "address": "0x800cd15c",
+      "size": 1616,
+      "binding": 1
+    },
     {
       "name": "CanBulletTypeCook__14CBulletFactoryFbi",
       "address": "0x800cd7ac",
@@ -71,30 +101,166 @@
       "binding": 1
     },
     {
+      "name": "DestroyBullet__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>FP17CProjectileBullet",
+      "address": "0x800ce3d8",
+      "size": 120,
+      "binding": 2
+    },
+    {
+      "name": "DestroyBullet__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>FP13CThrownBullet",
+      "address": "0x800cdeec",
+      "size": 120,
+      "binding": 2
+    },
+    {
       "name": "DestroyBullet__14CBulletFactoryFP7CBullet",
       "address": "0x800cd810",
       "size": 60,
       "binding": 1
     },
     {
+      "name": "CreateBullet__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>F22EProjectileBulletTypes8CVector38CVector3f7EClsnIdfP10ISceneNode",
+      "address": "0x800ce35c",
+      "size": 124,
+      "binding": 2
+    },
+    {
+      "name": "CreateBullet__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>F18EThrownBulletTypes8CVector38CVector3f7EClsnIdfP10ISceneNode",
+      "address": "0x800cde70",
+      "size": 124,
+      "binding": 2
+    },
+    {
       "name": "CreateBullet__14CBulletFactoryFib8CVector38CVector3f7EClsnIdfP10ISceneNode",
       "address": "0x800cd84c",
       "size": 156,
       "binding": 1
+    },
+    {
+      "name": "Shutdown__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>Fv",
+      "address": "0x800ce318",
+      "size": 68,
+      "binding": 2
+    },
+    {
+      "name": "Shutdown__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>Fv",
+      "address": "0x800cde2c",
+      "size": 68,
+      "binding": 2
+    },
+    {
+      "name": "Shutdown__14CBulletFactoryFv",
+      "address": "0x800cd8e8",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "Reset__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>Fv",
+      "address": "0x800ce168",
+      "size": 432,
+      "binding": 2
+    },
+    {
+      "name": "Reset__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>Fv",
+      "address": "0x800cdc80",
+      "size": 428,
+      "binding": 2
+    },
+    {
+      "name": "Reset__14CBulletFactoryFv",
+      "address": "0x800cd944",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "Init__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>FP33ProjectileBulletProperties_struct",
+      "address": "0x800cdfbc",
+      "size": 428,
+      "binding": 2
+    },
+    {
+      "name": "Init__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>FP29ThrownBulletProperties_struct",
+      "address": "0x800cdad8",
+      "size": 424,
+      "binding": 2
+    },
+    {
+      "name": "Init__14CBulletFactoryFv",
+      "address": "0x800cd97c",
+      "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "__dt__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>Fv",
+      "address": "0x800cda9c",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "__dt__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>Fv",
+      "address": "0x800cdf80",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "__dt__14CBulletFactoryFv",
+      "address": "0x800cd9d0",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "__ct__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>Fv",
+      "address": "0x800cdf64",
+      "size": 28,
+      "binding": 2
+    },
+    {
+      "name": "__ct__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>Fv",
+      "address": "0x800cda80",
+      "size": 28,
+      "binding": 2
+    },
+    {
+      "name": "__ct__14CBulletFactoryFv",
+      "address": "0x800cda34",
+      "size": 76,
+      "binding": 1
     }
   ],
   "externals": {
-    "CreateBullet__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>F22EProjectileBulletTypes8CVector38CVector3f7EClsnIdfP10ISceneNode": "0x800ce35c",
-    "CreateBullet__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>F18EThrownBulletTypes8CVector38CVector3f7EClsnIdfP10ISceneNode": "0x800cde70",
-    "DestroyBullet__102CBulletFactoryHelper<17CProjectileBullet,33ProjectileBulletProperties_struct,22EProjectileBulletTypes>FP17CProjectileBullet": "0x800ce3d8",
-    "DestroyBullet__90CBulletFactoryHelper<13CThrownBullet,29ThrownBulletProperties_struct,18EThrownBulletTypes>FP13CThrownBullet": "0x800cdeec"
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DebugMsg__FPCce": "0x80018c88",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Init__13CThrownBulletF18EThrownBulletTypesP29ThrownBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode": "0x800d425c",
+    "Init__17CProjectileBulletF22EProjectileBulletTypesP33ProjectileBulletProperties_structRC8CVector3RC8CVector3f7EClsnIdfP10ISceneNode": "0x800d14c8",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__construct_new_array": "0x801384fc",
+    "__ct__13CThrownBulletFv": "0x800d4e68",
+    "__ct__17CProjectileBulletFv": "0x800d1af4",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__destroy_new_array": "0x80138258",
+    "__dl__FPv": "0x8001ca2c",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__13CThrownBulletFv": "0x800d4de0",
+    "__dt__17CProjectileBulletFv": "0x800d1a78",
+    "__nwa__13CThrownBulletFUl": "0x800d4efc",
+    "__nwa__17CProjectileBulletFUl": "0x800d1b58",
+    "__nwa__FUl": "0x8001cae8",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "memcpy": "0x800094f8",
+    "strcmp": "0x8013fed4"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode"
+  ],
   "original_file": "bulletfactory.cpp",
   "original_file_index": 7891
 }
