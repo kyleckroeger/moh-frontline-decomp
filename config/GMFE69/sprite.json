@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,15 +32,17 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include/dolphin-sdk",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80082818",
-      "size": 156,
+      "address": "0x80081894",
+      "size": 4128,
       "type": 1
     },
     {
@@ -51,25 +53,61 @@
     },
     {
       "name": "extab",
-      "address": "0x8000c248",
-      "size": 8,
+      "address": "0x8000c1e4",
+      "size": 108,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 16
+      "linked_size": 116,
+      "stripped_objects": [
+        "@498"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x80013208",
-      "size": 12,
+      "address": "0x80013190",
+      "size": 132,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 144,
+      "stripped_objects": [
+        "@499"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170eb0",
+      "size": 164,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80184cf8",
+      "size": 108,
+      "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801df768",
       "size": 76,
       "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dd60",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ea60",
+      "size": 16,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350070",
+      "size": 68,
+      "type": 1
     }
   ],
   "functions": [
@@ -78,15 +116,132 @@
       "address": "0x80082818",
       "size": 156,
       "binding": 0
+    },
+    {
+      "name": "Init__7CSpriteFv",
+      "address": "0x80081894",
+      "size": 88,
+      "binding": 2
+    },
+    {
+      "name": "Link__7CSpriteFP7CDmaTagR10CDmaPacket",
+      "address": "0x8008192c",
+      "size": 1800,
+      "binding": 1
+    },
+    {
+      "name": "Render__7CSpriteFR10CDmaPacketPv",
+      "address": "0x80082034",
+      "size": 876,
+      "binding": 1
+    },
+    {
+      "name": "__dt__7CSpriteFv",
+      "address": "0x800825b8",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "Unload__7CSpriteFv",
+      "address": "0x800818ec",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "DrawPolyNoTex__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
+      "address": "0x800823a0",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "DrawPoly__7CSpriteFP15_spritepolyvertiQ27CSprite13EPolyPrimType",
+      "address": "0x8008240c",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "Draw__7CSpriteFff6CColor",
+      "address": "0x80082470",
+      "size": 116,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__7CSpriteFP11CRenderListP7CScreen",
+      "address": "0x800824e4",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority",
+      "address": "0x80082648",
+      "size": 360,
+      "binding": 1
+    },
+    {
+      "name": "Link__19CSpriteNoTextureBinFP7CDmaTagR10CDmaPacket",
+      "address": "0x800827b0",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "Render__19CSpriteNoTextureBinFR10CDmaPacketPv",
+      "address": "0x800827b4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "__dt__19CSpriteNoTextureBinFv",
+      "address": "0x800827bc",
+      "size": 92,
+      "binding": 2
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
+    "DebugMsg__FPCce": "0x80018c88",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXGetProjectionv": "0x80130134",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetAlphaCompare": "0x8012f4e4",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetCurrentMtx": "0x801302e4",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetProjectionv": "0x80130058",
+    "GXSetTevAlphaIn": "0x8012f09c",
+    "GXSetTevAlphaOp": "0x8012f1e0",
+    "GXSetTevColorIn": "0x8012f01c",
+    "GXSetTevColorOp": "0x8012f120",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetTexCoordGen2": "0x8012bc7c",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
+    "MathFunClamp<i>__Fiii": "0x8007c050",
+    "PSMTXIdentity": "0x80116bb0",
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
+    "Set__8CTextureFP9ShapeFileb": "0x80082d6c",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "TLT_LoadFileFromShellBigFile__FPCcPi": "0x8001dbe4",
+    "TLT_LoadFileFromShellBriefingLogBigFile__FPCcPi": "0x8001da40",
+    "TLT_LoadFileFromSlidesBigFile__FPCcPi": "0x8001db10",
+    "UnRegister__11CRenderListFR10CRenderBin": "0x800f1230",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CRenderBinFv": "0x80074290",
-    "__dt__19CSpriteNoTextureBinFv": "0x800827bc",
     "__register_global_object": "0x801381bc",
     "__vt__10CRenderBin": "0x80183c5c",
-    "__vt__19CSpriteNoTextureBin": "0x80184d48"
+    "g_config": "0x80196a80",
+    "g_screen": "0x80196ac0",
+    "g_viewport": "0x80194ca0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
