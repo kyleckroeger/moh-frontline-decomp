@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x8014a318",
-      "size": 504,
+      "size": 1900,
       "type": 1
     }
   ],
@@ -60,9 +60,32 @@
       "address": "0x8014a364",
       "size": 120,
       "binding": 1
+    },
+    {
+      "name": "BIG_locateentryz",
+      "address": "0x8014a510",
+      "size": 1176,
+      "binding": 1
+    },
+    {
+      "name": "BIG_locate",
+      "address": "0x8014a9a8",
+      "size": 104,
+      "binding": 1
+    },
+    {
+      "name": "BIG_count",
+      "address": "0x8014aa10",
+      "size": 116,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "__lower_map": "0x80190958",
+    "_restgpr_23": "0x80138a4c",
+    "_savegpr_23": "0x80138a00",
+    "strlen": "0x801400f8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},

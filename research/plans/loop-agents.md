@@ -70,6 +70,8 @@ NEVER write to `config/`, `src/`, `include/`, `docs/`, `tools/`, `tests/`, `prog
 
 **Landing (one agent at a time).**
 1. Finish matching first, then `sh research/tools/landlock.sh acquire NAME` (waits up to 20 min).
+   After a release, wait about 60 s before acquiring again so other agents get a turn
+   (2026-11-13: back-to-back merges starved the 5 s pollers).
 2. `git status --porcelain` must show nothing but your own work. If someone else's files are
    there, release and report it; don't touch them.
 3. `tools/port_unit.py ... --category reconstructed_game` (game code), check
