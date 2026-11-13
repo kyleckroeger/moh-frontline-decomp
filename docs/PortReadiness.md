@@ -323,6 +323,20 @@ its weak `~list` is placed after `~CWorldVolume` only when a function between `~
 and the constructor needs it out of line. The original's extab label gaps point to functions
 that the linker removed, so this needs a gap function, which is on hold.
 
+Agent merge10's part (`scratch/loop3/merge10/notes.md`): anim_obj (11 fragments, 72 functions;
+`__vt__11CAnimObject`, 82 slots exact, with animplayer's virtual order; deferred inlining
+with RTTI, written last to first), AnimObjFactory (5 fragments; one CAnimObjDef, the
+level-contents pointer views as an anonymous union), saems (3 fragments; shared
+AEMSCOMPDYNAMIC/SNDAEMSVIEW/AEMSCOMPINFOVIEW views, `SNDAEMSI_destroyinstance` returns int:
+it ends with `li r3,0`) and pathxSND (6 fragments; one file setting covers both string modes,
+`-str reuse,readonly`, because only `PATHX_createtrack` has strings, built with exceptions on
+since the original has an exception record for each function). Re-run after pathxSND
+(`source_link.py --jobs 4`, 1,020 units, 98 drafts, 72 data files, all compiled): **54
+undefined, 103 fragment-local, 47 duplicate**, 0 small-data, the same counts (pathxSND's
+merge removes no cross-unit symbol). Of `scratch/loop3/merge1/complete_files.tsv`, the only
+rows still split are light (ruling: it stays split), world_volume (above) and
+Gecko_ExceptionPPC (two compilers).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
