@@ -187,6 +187,19 @@ weapon, attachobject, thrown_obj, sphere, fiber, hierobject, light, thrownbullet
 have fragments on private CVector3/CMatrix views; each needs them moved onto the shared
 headers before it can be one unit.
 
+More whole-file merges, 2026-11-13 (agent merge3, `scratch/loop3/merge3/notes.md`): filesys,
+bsmachin, filedev, dvdStatus_base, UIStudio, UISUtils, snddrv, targimpl, propdat (with the
+former propdat_offsetptr unit), soundschedule and collision, plus smixfx.c's last function
+(MIX_getwetbuffer) moved from smixfram into smixfx. Re-run (1,162 units, 98 drafts, 79 data
+files, all compiled): **70 undefined, 109 fragment-local, 50 duplicate**, 0 small-data: 28
+fragment-local symbols gone (file statics now defined by their file's unit; the per-file .bss
+data files of filedev, dvdStatus_base, UISUtils, targimpl and soundschedule removed, snddrv's
+record out of research/data/bss/unassigned.cpp). Not merged: Gecko_ExceptionPPC (needs GC 1.3
+for ExPPC_UnwindStack and 1.3.2 for __unexpected), bsutil and world_volume (an inline
+function's out-of-line copy and its inlined copies need different local orders), the vtable
+owners (fragments on private CVector3 views that the shared header's copy changes), and alarm,
+pumhandler, world_object, anim_obj (local dwi templates or private scene-node views).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
