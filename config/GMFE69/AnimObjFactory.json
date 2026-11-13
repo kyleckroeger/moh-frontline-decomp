@@ -32,36 +32,91 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": true,
+  "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x80096a74",
-      "size": 1860,
+      "address": "0x80095ba0",
+      "size": 5720,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000ca58",
-      "size": 60,
+      "address": "0x8000ca10",
+      "size": 132,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x80013b20",
-      "size": 60,
+      "address": "0x80013afc",
+      "size": 96,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80176748",
+      "size": 268,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034eac8",
+      "size": 4,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350440",
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "SetLargestObjectSize__18CAnimObjectFactoryFi",
+      "address": "0x80095ba0",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "ReleaseObject__18CAnimObjectFactoryFP11CAnimObject",
+      "address": "0x80095bb8",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "CompareObjectDefinitions__FPCvPCv",
+      "address": "0x800971c8",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "AllocateObject__18CAnimObjectFactoryFUl12EObjectClass",
+      "address": "0x80095bc8",
+      "size": 1368,
+      "binding": 1
+    },
+    {
+      "name": "InitPlayerWeaponFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i",
+      "address": "0x80096120",
+      "size": 520,
+      "binding": 1
+    },
+    {
       "name": "EndianSwap__FR25CObjLocationCollisionData",
       "address": "0x80096a74",
       "size": 192,
       "binding": 2
+    },
+    {
+      "name": "InitAnimObjectFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i",
+      "address": "0x80096328",
+      "size": 1868,
+      "binding": 1
     },
     {
       "name": "EndianSwap__FR24CObjLocationCollisionBox",
@@ -92,23 +147,56 @@
       "address": "0x80096f50",
       "size": 616,
       "binding": 1
+    },
+    {
+      "name": "__ct__11CAnimObjDefFv",
+      "address": "0x800971b8",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "__ct__18CAnimObjectFactoryFv",
+      "address": "0x800971bc",
+      "size": 12,
+      "binding": 1
     }
   ],
   "externals": {
-    "CompareObjectDefinitions__FPCvPCv": "0x800971c8",
+    "AttachMesh__14CSoldierObjectFP11CStaticMeshPci": "0x800aa01c",
+    "BindLocationCollision__11CAnimObjectFP25CObjLocationCollisionDataP24CObjLocationCollisionMap": "0x80095824",
+    "BindMesh__9CAnimatedFP6CDMesh": "0x80060dcc",
+    "BindSkeleton__6CDMeshFP10CharSkel_t": "0x800f647c",
+    "BindTextures__6CDMeshFP12CTexturePackPc": "0x800f6328",
+    "CharRelocateSkeleton__FP10CharSkel_t": "0x80069468",
     "DWI_alloc__FPCcii": "0x8001c974",
-    "InitAnimObjectFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i": "0x80096328",
-    "InitPlayerWeaponFromLevelContentsStruct__18CAnimObjectFactoryFP24LevelFileContentsStruct_i": "0x80096120",
+    "DebugMsg__FPCce": "0x80018c88",
+    "FindTexture__12CTexturePackFPc": "0x800828b4",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Init__6CDMeshFb": "0x800f6634",
     "MEM_free": "0x8014f83c",
+    "MathFunRandomI64__Fxx": "0x80092dd4",
+    "SetHelmetOffset__14CSoldierObjectFR8CVector3": "0x800a9f1c",
+    "SetNodeState__11CAnimObjectFll": "0x800952a4",
+    "SetWeaponName__19CPlayerWeaponObjectFPCc": "0x800a7aa4",
     "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
     "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
     "__construct_new_array": "0x801384fc",
-    "__ct__11CAnimObjDefFv": "0x800971b8",
+    "__ct__11CAnimObjectFv": "0x800959a4",
+    "__ct__11CStaticMeshFP10StaticMeshb": "0x800f2558",
     "__ct__12CTexturePackFv": "0x80082944",
+    "__ct__14CSoldierObjectFv": "0x800ae72c",
+    "__ct__15CAnimatedPlayerFv": "0x8010ac90",
+    "__ct__19CPlayerWeaponObjectFv": "0x800a8d30",
+    "__ct__24CObjLocationCollisionMapFRC25CObjLocationCollisionData": "0x80072ea0",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
     "__dl__FPv": "0x8001ca2c",
     "__dla__FPv": "0x8001c9e8",
+    "__nw__FUl": "0x8001cb60",
     "__nwa__FUl": "0x8001cae8",
-    "g_staticObjCount": "0x8034eac8",
+    "bsearch": "0x8013c274",
+    "g_Shell": "0x80195090",
+    "g_cheats": "0x80196a94",
+    "printf": "0x8013dc88",
     "qsort": "0x8013fadc",
     "stricmp": "0x80151ab8",
     "strlen": "0x801400f8"
@@ -116,34 +204,9 @@
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "g_staticObjCount"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [
-    "g_staticObjCount"
-  ],
+  "sda_externals": [],
   "original_file": "AnimObjFactory.cpp",
-  "original_file_index": 5769,
-  "file_duplicates": [
-    "__ct__11CAnimObjDefFv"
-  ],
-  "pooled_sections": [
-    ".sdata2",
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 20,
-      "address": "0x80176840"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80350460"
-    }
-  ]
+  "original_file_index": 5769
 }
