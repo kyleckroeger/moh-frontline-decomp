@@ -162,8 +162,8 @@ class DataStripping(unittest.TestCase):
             strip_objects(compiled, unit)
 
     def weak_data_duplicate_unit(self):
-        compiled = (self.build / 'units/collisionvolume_ctor/compiled.o').read_bytes()
-        return compiled, json.loads((CONFIG / 'collisionvolume_ctor.json').read_text())
+        compiled = (self.build / 'units/compartment_ctor/compiled.o').read_bytes()
+        return compiled, json.loads((CONFIG / 'compartment_ctor.json').read_text())
 
     def test_weak_data_duplicate_references_go_to_the_original_copy(self):
         compiled, unit = self.weak_data_duplicate_unit()
