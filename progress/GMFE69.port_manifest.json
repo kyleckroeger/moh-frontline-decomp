@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 122860, "differs": 10144, "exact": 4472, "verified": 1268080},
+ "function_bytes_by_status": {"consistent": 121592, "differs": 10144, "exact": 4472, "verified": 1269348},
  "data_bytes_owned": 724656,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1902,7 +1902,7 @@
  [2148088472, 264, "ApplyForceTo__11CAnimObjectF8CVector3f", "verified", "src/game/anim_obj_collide.cpp"],
  [2148088736, 24, "Halt__11CAnimObjectFv", "verified", "src/game/anim_obj_collide.cpp"],
  [2148088760, 684, "OnCollision__11CAnimObjectFRC10CCollision", "verified", "src/game/anim_obj_collide.cpp"],
- [2148089444, 1268, "ConstrainVelocity__11CAnimObjectFv", "consistent", "research/drafts/ConstrainVelocity.80093e64.cpp"],
+ [2148089444, 1268, "ConstrainVelocity__11CAnimObjectFv", "verified", "src/game/anim_obj_collide.cpp"],
  [2148090712, 204, "CommitUpdate__11CAnimObjectFv", "verified", "src/game/anim_obj_update.cpp"],
  [2148090916, 908, "AttemptUpdate__11CAnimObjectFf", "verified", "src/game/anim_obj_update.cpp"],
  [2148091824, 364, "BeginUpdate__11CAnimObjectFf", "verified", "src/game/anim_obj_update.cpp"],

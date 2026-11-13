@@ -27,12 +27,12 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,276,924 / 1,414,572 code bytes (90.27%)**. Left: about 137.5 KB in 105 functions across 56 source files.
+Verified: **1,278,192 / 1,414,572 code bytes (90.36%)**. Left: about 136.2 KB in 104 functions across 55 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
 | 1 | Scripting and level objects | 36.4 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `explosion.cpp` |
-| 1 | AI | 18.8 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
+| 1 | AI | 17.5 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Animation | 15.7 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `animmorph.cpp`, `dmcluster.cpp` |
 | 1 | Collision | 13.2 KB | `box.cpp`, `cdbgeom.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
 | 2 | Rendering | 14.5 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
@@ -42,9 +42,9 @@ Verified: **1,276,924 / 1,414,572 code bytes (90.27%)**. Left: about 137.5 KB in
 | 2 | Video | 1.6 KB | `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 84.2 KB and would take the project to 96.2% at most.
+Priority 1 is 82.9 KB and would take the project to 96.2% at most.
 
-Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 96 consistent (122.9 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 95 consistent (121.6 KB), 5 flagged as differing (10.1 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->

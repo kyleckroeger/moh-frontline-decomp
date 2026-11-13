@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1276924,
+    "matching_code_bytes": 1278192,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.26928286435756,
+    "percent": 90.35892128502473,
     "categories": {
-      "reconstructed_game": 1037864,
+      "reconstructed_game": 1039132,
       "restored_library": 239060
     },
-    "matching_functions": 4904
+    "matching_functions": 4905
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -576,7 +576,7 @@
     "src/game/anim_callback_weapon.cpp": "6d09fda883df47ab3e98f7a878a0e607b58a98e659ae69dc6be03849781d1d08",
     "src/game/anim_obj.cpp": "5ff28a68f25f3cf74483fa4d701321a4908d42124588403ac021cdb463266eec",
     "src/game/anim_obj_bullet.cpp": "7ee7e4e297f5f7e556de8f4658eb2da6903ce266d8e4b32ed75fcec5f8e83adf",
-    "src/game/anim_obj_collide.cpp": "e3f6af7f355f4334031f214121af5f9e9685073eee4f7492c1bb03339525b613",
+    "src/game/anim_obj_collide.cpp": "47006fabf2ff28246de1d617922d4f8499cb57756e1387f734e94fd9ba86f32b",
     "src/game/anim_obj_ctor.cpp": "eb919c56cf4e1875e41d585720c1e2f72e5b98c55734292de4407a06d2d34f46",
     "src/game/anim_obj_draw.cpp": "0496e2d386e970053d6bbf7ae0a68b3b39c69aa0030450fcab67db9cab48c777",
     "src/game/anim_obj_dtor.cpp": "cfa732864ae7f8e51ac723d82419719426817edd523ef1c8216ee0273b0e7d62",
@@ -1984,7 +1984,7 @@
     "config/GMFE69/anim_callback_weapon.json": "5ff2bed5b40f1f49f4925a1b54f27f0f286a128aec5ac897105498f13ab84973",
     "config/GMFE69/anim_obj.json": "66dd65ccb20489e87c4dafe2feb7a0c9498d819bfe874953694df511dba9b9af",
     "config/GMFE69/anim_obj_bullet.json": "73a54507e222be9a38bbf46b9a2c152391d62edc1fcc5e609ac2a7688342cf4d",
-    "config/GMFE69/anim_obj_collide.json": "0371a13545fefd524fd743f64704b746dd6618d3e5a3ff966481859b5a999b82",
+    "config/GMFE69/anim_obj_collide.json": "806c40cb894c0f515215bb18669564c62a464d45f9b9796917e5a28542798fe2",
     "config/GMFE69/anim_obj_ctor.json": "9d261affd4b5c3fb7690b189ed0b7e9311d2af1b9b2d36680c1101472e441854",
     "config/GMFE69/anim_obj_draw.json": "8dcee46deff75776476d8b84ebbcdb3f3b486c18fa40e70e0e179606823b5017",
     "config/GMFE69/anim_obj_dtor.json": "ec88d6bd78be5fab616458550ac0d527da639e1e4918c223454a122bcd537f96",
@@ -43588,8 +43588,8 @@
     {
       "id": "anim_obj_collide",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 972,
+      "functions": 4,
+      "code_bytes": 2240,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -43621,8 +43621,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e4a4f73627a42cf41c1bf706083d073a738bafa9479232288822006fd1e417a7",
-      "linked_sha256": "6fa2dd675904620b501f7acba7a81fd1a397cf8e423e15d46b0ecf993f333edc"
+      "object_sha256": "3b8e6ce5065ffb1de67237363d516481066e07978a9496218a85cba14156b0a6",
+      "linked_sha256": "fc35716aedaffd1f4bceba5b56475a6e1deb68c4fd7857aa9a507a7ee5a587e1"
     },
     {
       "id": "hierobject_playback",
@@ -54761,20 +54761,6 @@
             "size": 164,
             "kind": "function",
             "name": "Multiply__11CQuaternionF11CQuaternion",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/anim_obj.cpp [symbol evidence]",
-        "file_record": 107,
-        "file_name": "anim_obj.cpp",
-        "ranges": [
-          {
-            "address": "0x80093e64",
-            "size": 1268,
-            "kind": "function",
-            "name": "ConstrainVelocity__11CAnimObjectFv",
             "evidence": "exception-index"
           }
         ]

@@ -840,3 +840,4 @@ Lever found (CheckForObstructions): 'int sign = 1; if (IsAbove(*this, node)) sig
   Inert under the same climb: OnCollision (3), box-sphere top block (13), box-capsule n block (102), death_cb loop inits.
   Box-sphere: 'CVector3 local(m_axes[0].Dot(diff), m_axes[1].Dot(diff), m_axes[2].Dot(diff))' (3-float ctor, args right to left)
   gives the original's compute-z-first/store-x-first order, but scores 19 (vs 13): y and abs.x colours swap.
+- (fpr2) Two FPRs swapped while the SCHEDULE already matches (orig 'fmuls f6,A; fmuls f8,B', ours 'fmuls f6,B; fmuls f8,A'): CW colours in value-creation order and schedules separately, so swap which of the two statements comes FIRST in the source (move the one the orig gives the lower reg earlier); the scheduler keeps the emitted order (ConstrainVelocity 2 -> 0).

@@ -40,23 +40,29 @@
     {
       "name": ".text",
       "address": "0x80093a98",
-      "size": 972,
+      "size": 2240,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c890",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800139f4",
-      "size": 24,
+      "size": 36,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "ConstrainVelocity__11CAnimObjectFv",
+      "address": "0x80093e64",
+      "size": 1268,
+      "binding": 1
+    },
     {
       "name": "ApplyForceTo__11CAnimObjectF8CVector3f",
       "address": "0x80093a98",
@@ -124,6 +130,30 @@
       "offset": 28,
       "size": 4,
       "address": "0x803503fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 4,
+      "address": "0x80350400"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 36,
+      "size": 4,
+      "address": "0x80350404"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x80350408"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8035040c"
     }
   ]
 }

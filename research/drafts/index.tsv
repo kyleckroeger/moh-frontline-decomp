@@ -29,7 +29,6 @@ real_lines	size	address	function	compile_settings_from	draft
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
-2	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
 25	2436	800ce450	CheckForObstructions__10CExplosionFR10ISceneNode	config/GMFE69/bulletfactory_projectile_pool.json	research/drafts/CheckForObstructions.800ce450.cpp
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
 25	712	801503b4	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	config/GMFE69/aramalloc_alloc.json	research/drafts/ARAM_alloc_node.801503b4.cpp
