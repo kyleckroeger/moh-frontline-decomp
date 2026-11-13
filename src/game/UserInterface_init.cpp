@@ -1,13 +1,13 @@
 // UserInterface.cpp: loads the HUD's sprites and fonts, as partial source. The
 // multiplayer branches stay in, since the same function serves both modes.
-// Code-exact in isolation (2026-11-12): CSprite has an inline class operator
-// new taking its size from DWI_alloc (gives the original's double result copy),
-// colours are passed as CColor(r, g, b, a) temporaries, and the two cleared
-// HUD members at +0x7d4/+0x7d8 are ints (stw of a shared zero). Landing needs
-// the file's whole ...rodata.0 block: the base register reaches the "" path
-// template at +108 and the names at +476, past orphan strings of stripped
-// functions (Team Score .. Accuracy, controller messages), so it waits for the
-// gap-function decision.
+// CSprite has an inline class operator new taking its size from DWI_alloc
+// (gives the original's double result copy), colours are passed as
+// CColor(r, g, b, a) temporaries, and the two cleared HUD members at
+// +0x7d4/+0x7d8 are ints (stw of a shared zero). Init reaches the file's
+// ...rodata.0 block through a base register (the "" path template at +108, the
+// names at +476), past orphan strings of stripped functions; UserInterface_block.h
+// recreates that head and defines the headshot loop's inline, whose template is
+// the +108 item.
 extern "C" int sprintf(char*, const char*, ...);
 inline void* operator new(unsigned long, void* p) { return p; }
 
@@ -83,6 +83,8 @@ public:
     float m_field820;
 };
 
+#include "UserInterface_block.h"
+
 static inline void LoadSprite(CSprite*& sprite, const char* name, int priority) {
     if (!sprite)
         sprite = new CSprite(name, (CSprite::ESpriteLoadType)1, (ERenderPriority)priority);
@@ -99,13 +101,8 @@ void UserInterface::Init() {
         LoadSprite(dotSprite, "data\\dot.gsh", 0x6f);
         LoadSprite(greySprite, "data\\grey.gsh", 0x6f);
         LoadSprite(starSprite, "data\\star.gsh", 0x6f);
-        char path[20] = "";
-        for (int i = 0; i < 20; i++) {
-            if (!headshotImages[i]) {
-                sprintf(path, "bitmaps\\Model%02d.gsh", i + 1);
-                headshotImages[i] = new CSprite(path, (CSprite::ESpriteLoadType)1, (ERenderPriority)0x6f);
-            }
-        }
+        int i;
+        LoadHeadshots(i);
     }
     LoadSprite(blackSprite, "data\\blackSprite.gsh", 10);
     ammoSprite = 0;

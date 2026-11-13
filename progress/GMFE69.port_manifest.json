@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 121592, "differs": 10144, "exact": 4472, "verified": 1269348},
+ "verified_units": 1255,
+ "function_bytes_by_status": {"consistent": 121592, "differs": 8984, "exact": 4472, "verified": 1270508},
  "data_bytes_owned": 724656,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2408,7 +2408,7 @@
  [2148262152, 1160, "DrawViewportEdge__13UserInterfaceFv", "verified", "src/game/UserInterface_score.cpp"],
  [2148263312, 1428, "DrawScore__13UserInterfaceFv", "verified", "src/game/UserInterface_score.cpp"],
  [2148264740, 808, "Draw__13UserInterfaceFf", "verified", "src/game/UserInterface_draw.cpp"],
- [2148265548, 1160, "Init__13UserInterfaceFv", "differs", "research/drafts/UserInterface_init.cpp"],
+ [2148265548, 1160, "Init__13UserInterfaceFv", "verified", "src/game/UserInterface_init.cpp"],
  [2148266708, 280, "__dt__13UserInterfaceFv", "verified", "src/game/UserInterface.cpp"],
  [2148266988, 160, "__ct__13UserInterfaceFv", "verified", "src/game/UserInterface.cpp"],
  [2148267148, 92, "__sinit_UserInterface_cpp", "verified", "src/game/UserInterface.cpp"],

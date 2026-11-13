@@ -1,0 +1,152 @@
+{
+  "id": "UserInterface_init",
+  "source": "src/game/UserInterface_init.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x800bee4c",
+      "size": 1160,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000db20",
+      "size": 200,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80014a74",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "Init__13UserInterfaceFv",
+      "address": "0x800bee4c",
+      "size": 1160,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "GetCurrent__7CScreenFv": "0x8001be68",
+    "GetDepthBufferMax__7CScreenFv": "0x8001b840",
+    "SetColor__5CFontF6CColor": "0x8007cba0",
+    "SetDepth__5CFontFUl": "0x8007cb4c",
+    "SetScale__5CFontFff": "0x8007cb1c",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "__ct__5CFontFPCc15ERenderPriority": "0x8007d148",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__dl__FPv": "0x8001ca2c",
+    "__nw__FUl": "0x8001cb60",
+    "ammoSprite__13UserInterface": "0x8034ebc8",
+    "blackSprite__13UserInterface": "0x8034ebd4",
+    "bulletText__13UserInterface": "0x8034ebe8",
+    "circleSprite__13UserInterface": "0x8034ebe4",
+    "compassEdgeSprite__13UserInterface": "0x8034ebcc",
+    "compassSprite__13UserInterface": "0x8034ebc4",
+    "dotSprite__13UserInterface": "0x8034ebd8",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "greySprite__13UserInterface": "0x8034ebdc",
+    "headshotImages__13UserInterface": "0x80188cc0",
+    "healthSprite__13UserInterface": "0x8034ebc0",
+    "hitMeterSprite__13UserInterface": "0x8034ebd0",
+    "smallMPFont__13UserInterface": "0x8034ebec",
+    "sprintf": "0x8013dab4",
+    "starSprite__13UserInterface": "0x8034ebe0"
+  },
+  "undefined_in_discarded_code": [
+    "UserInterfaceBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "UserInterfaceBlockStrings__Fv"
+  ],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "ammoSprite__13UserInterface",
+    "blackSprite__13UserInterface",
+    "bulletText__13UserInterface",
+    "circleSprite__13UserInterface",
+    "compassEdgeSprite__13UserInterface",
+    "compassSprite__13UserInterface",
+    "dotSprite__13UserInterface",
+    "g_bInMultiplayerMode",
+    "greySprite__13UserInterface",
+    "healthSprite__13UserInterface",
+    "hitMeterSprite__13UserInterface",
+    "smallMPFont__13UserInterface",
+    "starSprite__13UserInterface"
+  ],
+  "original_file": "UserInterface.cpp",
+  "original_file_index": 7237,
+  "pooled_sections": [
+    ".sdata2",
+    ".rodata"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 0,
+      "size": 108,
+      "address": "0x801778f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x80350a50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x80350a88"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x80350a14"
+    }
+  ]
+}

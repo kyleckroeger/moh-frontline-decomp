@@ -123,7 +123,6 @@ differs	0.654	0.701	817	2944	GenerateTestSplinePath__13CAISplinePathFRC20CAISpli
 consistent	0.789	1.000	203	836	__ct__17CProfileInitClassFv	True	0	0	research/drafts/debug_prof_misc.cpp
 code_exact	1.000	1.000	0	72	__dt__Q24RCMP11RCMP_SYSTEMFv	True	0	0	research/drafts/rcmpbase_system.cpp
 consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp
-differs	0.662	1.000	255	1160	Init__13UserInterfaceFv	True	0	1	research/drafts/UserInterface_init.cpp
 consistent	1.000	1.000	10	988	__ct__19PopUpMessageHandlerFPcPc	True	0	0	research/drafts/pumhandler_ctor.cpp
 consistent	0.848	0.942	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp
 consistent	0.842	0.929	162	708	TRKSuppAccessFile	False	0	0	research/drafts/TRKSuppAccessFile.80135324.cpp
