@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1254,
- "function_bytes_by_status": {"consistent": 137972, "differs": 10144, "exact": 4472, "verified": 1252968},
+ "function_bytes_by_status": {"consistent": 136088, "differs": 10144, "exact": 4472, "verified": 1254852},
  "data_bytes_owned": 724422,
  "data_bytes_total": 1976252,
  "functions": [
@@ -3415,7 +3415,7 @@
  [2148577720, 376, "PATH_pause", "verified", "src/ea/path_stop.c"],
  [2148578096, 924, "PATH_destroy", "verified", "src/ea/path_stop.c"],
  [2148579020, 624, "PATH_jump", "verified", "src/ea/path_stop.c"],
- [2148579644, 1884, "PATH_event", "consistent", "research/drafts/PATH_event.8010b93c.cpp"],
+ [2148579644, 1884, "PATH_event", "verified", "src/ea/path_stop.c"],
  [2148581528, 488, "PATH_control", "verified", "src/ea/path.c"],
  [2148582016, 176, "PATH_latency", "verified", "src/ea/path.c"],
  [2148582192, 84, "PATH_overheadtrack", "verified", "src/ea/path.c"],

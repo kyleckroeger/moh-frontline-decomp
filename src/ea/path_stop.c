@@ -11,10 +11,11 @@
    destroys the first masked track, deactivates its state when that song has
    no tracks left and ends the service when no song has any; PATH_jump queues a
    jump event (node -node-1, the type from the third argument, forced to 64 when
-   no track leads) for each masked track whose node belongs to it. The file
-   name is this project's, not the original's: the original file record is
-   path.c and PATH_event (between PATH_jump and PATH_control) is not
-   reconstructed, so the two parts are separate units. All views, field names
+   no track leads) for each masked track whose node belongs to it; PATH_event
+   (0x8010b93c, just before PATH_control) queues a song event's records on the
+   matching states' tracks, after the master track (latency leader) is found.
+   The file name is this project's, not the original's: the original file
+   record is path.c, split here into two units. All views, field names
    and the inline helpers (state selection, track count, track fade) are inferred from the
    code; pfstates and the functions are named by their symbols. */
 struct PATHNODEVIEW {
@@ -101,6 +102,7 @@ extern "C" void PATHX_pause(int, int);
 extern "C" void PATHX_destroytrack(int);
 extern "C" void PATHX_endservice(void);
 void PATHI_sortprojects(void);
+void PATHI_eventrestore(short);
 
 static inline int selectstate(int index) {
     if (!pfactive)
@@ -232,6 +234,9 @@ extern "C" void PATH_stop(unsigned int handle) {
     pfstate = 0;
 }
 
+/* The original calls PATH_pause out of line from PATH_event but inlines selectstate into it:
+   auto_inline off (not dont_inline) keeps both. */
+#pragma auto_inline off
 extern "C" void PATH_pause(unsigned int handle, int pause) {
     unsigned int project;
     unsigned int song;
@@ -259,6 +264,7 @@ extern "C" void PATH_pause(unsigned int handle, int pause) {
     pfactive = 0;
     pfstate = 0;
 }
+#pragma auto_inline reset
 
 extern "C" PATHTRACKVIEW* PATH_destroy(unsigned int handle) {
     unsigned int project;
@@ -345,6 +351,118 @@ extern "C" int PATH_jump(unsigned int handle, int node, signed char type) {
                         }
                         pfstate->events[0] = event;
                         pfstate->events[1].mask = 0;
+                    }
+                }
+            }
+        }
+    }
+done:
+    pfactive = 0;
+    pfstate = 0;
+    return 0;
+}
+
+static inline unsigned char isplaying(PATHTRACKVIEW* track) {
+    return track->node >= 0 && track->current;
+}
+
+static inline void PATHI_getmastertrack(void) {
+    int i;
+    PATHTRACKVIEW* track;
+
+    pfstate->latency = 0;
+    pfstate->leader = -1;
+    pfstate->beat = 0;
+    for (i = 0; i < 24; i++) {
+        track = pfstate->tracks[i];
+        if (track && !track->paused && isplaying(track)) {
+            if (pfstate->latency < track->latency) {
+                pfstate->latency = track->latency;
+                pfstate->leader = i;
+                pfstate->beat = track->current->beat;
+            }
+        }
+    }
+}
+
+extern "C" int PATH_event(unsigned int handle, unsigned int id, int flags) {
+    PATHEVENTVIEW event;
+    PATHRECORDVIEW record;
+    PATHMAPVIEW* map;
+    int a;
+    int beats;
+    int index;
+    unsigned int song;
+    unsigned int project;
+    int eventnum;
+    unsigned int i;
+    int j;
+    unsigned int songbit;
+    int k;
+    int pos = 16;
+    signed char hold = flags & 8;
+    signed char type = flags & 0x70;
+    int prio = flags & ~0x78;
+    if (!inited || pfactive || !selectstate(-1))
+        return -18;
+    songbit = 0x01000000 << ((id >> 8) & 15);
+    song = handle & 0x0F000000;
+    project = handle & 0xF0000000;
+    eventnum = id & 0xFF;
+    for (i = 0; i < 4; i++) {
+        if (pfstates[i].active && (songbit & pfstates[i].id) && (song & pfstates[i].id) && (project & pfstates[i].id)) {
+            if (selectstate((unsigned char)i)) {
+                if (eventnum >= pfstate->active->events)
+                    goto done;
+                event.unknown2a = prio;
+                event.node = eventnum;
+                event.type = type;
+                event.unknown2b = 0;
+                event.track = 0;
+                event.unknown4 = 0;
+                event.unknown8 = 0;
+                event.mask = -1;
+                PATHI_getmastertrack();
+                for (j = 0; j < 24; j++) {
+                    if (pfstate->tracks[j] && (handle & (1 << j))) {
+                        map = pfstate->active;
+                        beats = map->beats;
+                        a = eventnum;
+                        a *= beats;
+                        index = beats * (j * map->events);
+                        index = a + index;
+                        index += pfstate->beat;
+                        record = pfstate->records[pfstate->recordmap[index]];
+                        if ((record.flags & 3) || record.unknown0 >= 0)
+                            event.mask -= 1 << j;
+                        if (hold || (record.flags & 8))
+                            event.unknown2b = 1;
+                        if (!type)
+                            event.type = record.flags & 0x70;
+                    }
+                }
+                if (flags == -1) {
+                    PATHI_eventrestore((unsigned char)eventnum);
+                    goto done;
+                }
+                for (k = 0; k < 16; k++) {
+                    if (!pfstate->events[k].mask || pfstate->events[k].unknown2a < event.unknown2a) {
+                        pos = k;
+                        break;
+                    }
+                }
+                if (pos >= 16)
+                    continue;
+                for (k = 15; k > pos; k--)
+                    pfstate->events[k] = pfstate->events[k - 1];
+                pfstate->events[pos] = event;
+                if (event.unknown2a == 2) {
+                    pfstate->events[pos].unknown2a = 1;
+                    if (pos == 0) {
+                        pfactive = 0;
+                        pfstate = 0;
+                        PATH_stop(0xFFFFFFFF);
+                        PATH_pause(0xFFFFFFFF, 0);
                     }
                 }
             }

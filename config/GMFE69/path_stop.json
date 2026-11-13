@@ -40,7 +40,7 @@
     {
       "name": ".text",
       "address": "0x8010acd4",
-      "size": 3176,
+      "size": 5060,
       "type": 1
     }
   ],
@@ -80,9 +80,16 @@
       "address": "0x8010b6cc",
       "size": 624,
       "binding": 1
+    },
+    {
+      "name": "PATH_event",
+      "address": "0x8010b93c",
+      "size": 1884,
+      "binding": 1
     }
   ],
   "externals": {
+    "PATHI_eventrestore__Fs": "0x8010ed14",
     "PATHI_sortprojects__Fv": "0x8010fd80",
     "PATHX_destroytrack": "0x800e946c",
     "PATHX_endservice": "0x800e8e64",
