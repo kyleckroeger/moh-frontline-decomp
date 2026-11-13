@@ -41,19 +41,31 @@
     {
       "name": ".text",
       "address": "0x800fc5ac",
-      "size": 2152,
+      "size": 2216,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000fae8",
-      "size": 16,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800167f0",
-      "size": 24,
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017aa20",
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351258",
+      "size": 64,
       "type": 1
     }
   ],
@@ -69,10 +81,17 @@
       "address": "0x800fcc14",
       "size": 512,
       "binding": 1
+    },
+    {
+      "name": "DELETE_tBigYUVSwizzler__FP15tBigYUVSwizzler",
+      "address": "0x800fce14",
+      "size": 64,
+      "binding": 1
     }
   ],
   "externals": {
     "DCFlushRange": "0x80111880",
+    "DELETE_tBigSwizzler__FP12tBigSwizzler": "0x800fc56c",
     "GXInitTexObjLOD": "0x8012dcc8",
     "GXInitTlutObj": "0x8012e080",
     "GXLoadTexObj": "0x8012e02c",
@@ -96,6 +115,7 @@
     "GXSetTevSwapModeTable": "0x8012f444",
     "GXSetTexCoordGen2": "0x8012bc7c",
     "MEM_alloc": "0x8014f7dc",
+    "MEM_free": "0x8014f83c",
     "NEW_tBigSwizzlerTexture__FP9_GXTexObj": "0x800fc198",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
@@ -106,95 +126,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "bigyuvswizzler.cpp",
-  "original_file_index": 9971,
-  "pooled_sections": [
-    ".sdata2",
-    ".rodata"
-  ],
-  "pool_references": [
-    {
-      "section": ".rodata",
-      "offset": 0,
-      "size": 16,
-      "address": "0x8017aa20"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80351258"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
-      "address": "0x8035125c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 4,
-      "address": "0x80351260"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 12,
-      "size": 4,
-      "address": "0x80351264"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 16,
-      "size": 8,
-      "address": "0x80351268"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 24,
-      "size": 4,
-      "address": "0x80351270"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 28,
-      "size": 4,
-      "address": "0x80351274"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 32,
-      "size": 4,
-      "address": "0x80351278"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 36,
-      "size": 4,
-      "address": "0x8035127c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 40,
-      "size": 4,
-      "address": "0x80351280"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 44,
-      "size": 4,
-      "address": "0x80351284"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 48,
-      "size": 4,
-      "address": "0x80351288"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 56,
-      "size": 8,
-      "address": "0x80351290"
-    }
-  ]
+  "original_file_index": 9971
 }

@@ -1,4 +1,4 @@
-// The start of bigyuvswizzler.cpp (0x800fc5ac): tBigYUVSwizzler_DrawSetup,
+// bigyuvswizzler.cpp: tBigYUVSwizzler_DrawSetup,
 // the GX state for drawing a YUV movie frame through two "big swizzler"
 // indirect lookups: the three plane textures (nearest filtering, no LOD) and
 // the swizzler's three colour lookup tables loaded, the swizzlers' tile and
@@ -12,8 +12,8 @@
 // the structure allocated with the movie allocation flags, both swizzlers
 // created, and the three IA8 colour tables filled (YUV to RGB weights; the
 // (unsigned char) conversions give the original's twofold loop unrolling),
-// flushed and bound to the TLUT objects. DELETE_tBigYUVSwizzler is not part
-// of this unit.
+// flushed and bound to the TLUT objects. Last, DELETE_tBigYUVSwizzler
+// deletes the two swizzlers and frees the structure.
 #include <dolphin/gx.h>
 
 extern "C" {
@@ -164,4 +164,13 @@ tBigYUVSwizzler* NEW_tBigYUVSwizzlerTexture(GXTexObj* tex0, GXTexObj* tex1, GXTe
     GXInitTlutObj(&swizzler->tlut[1], swizzler->lut[1], GX_TL_IA8, 256);
     GXInitTlutObj(&swizzler->tlut[2], swizzler->lut[2], GX_TL_IA8, 256);
     return swizzler;
+}
+
+void DELETE_tBigSwizzler(tBigSwizzler*);
+extern "C" void MEM_free(void*);
+
+void DELETE_tBigYUVSwizzler(tBigYUVSwizzler* swizzler) {
+    DELETE_tBigSwizzler(swizzler->swizzler0);
+    DELETE_tBigSwizzler(swizzler->swizzler1);
+    MEM_free(swizzler);
 }

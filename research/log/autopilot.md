@@ -2817,3 +2817,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge6] merged sst.c (2 fragments, 4172 B): the stream record's player, serial and external members as anonymous unions of the two halves' views (volatility and signedness differ); the link node's request word.
 - 2026-11-13 [loop merge6] merged IStudio.cpp (2 fragments, 2296 B): the destructor and constructor appended; the constructor clears the six words under the main view's names.
 - 2026-11-13 [loop merge6] merged IStudioFuncs.cpp (2 fragments, 960 B): the shell big-file functions and DummyPluginProcessFnc appended to the transform callback and screen loaders.
+- 2026-11-13 [loop merge6] merged bigyuvswizzler.cpp (2 fragments, 2216 B): DELETE_tBigYUVSwizzler appended on the main view's swizzler members.
