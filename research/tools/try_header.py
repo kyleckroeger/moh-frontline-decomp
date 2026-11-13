@@ -39,6 +39,7 @@ PROVIDES = {
     # CScreen.h has CScreenFieldMode, the render mode record and includes CColor.h/CRect.h
     "CCamera": {"types": ["IMovingSceneNode", "CPlane", "IDestructible", "ISubject", "IObserver",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId"]},
+    "CInputManager": {"types": ["CDeviceManager", "CGCDevice", "CGCActuatorView"]},
     "CScreen": {"types": ["CColor", "CRect", "GXRenderModeObj", "_GXRenderModeObj", "CScreenFieldMode",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"],
                 "enums": ["EScreenWidth", "EFrameFormat", "EDepthFormat"]},
@@ -232,6 +233,9 @@ def _offset_names(out, view, cls, path):
 
 # The header's field names by offset, for _offset_names.
 OFFSET_NAMES = {
+    "CInputManager": {0x2430: "m_keymap", 0x2434: "m_playerKeymaps", 0x2444: "field2444",
+                      0x2445: "m_feedback", 0x2446: "m_feedbackOff", 0x244a: "m_inverted",
+                      0x244b: "m_zooming"},
     "CCamera": {0x24: "m_near", 0x28: "m_far", 0x2c: "m_width", 0x30: "m_height", 0x40: "m_tm",
                 0x80: "m_worldToCamera", 0xc0: "m_projection", 0x100: "m_worldToScreen",
                 0x140: "m_perspective", 0x141: "m_flag141", 0x142: "m_projectionValid",
@@ -247,8 +251,14 @@ def _ccamera_view(out, view, path=None):
     return out
 
 
-VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view, "CCamera": _ccamera_view}
-VIEW_PATH = {"CCamera"}
+def _cinputmanager_view(out, view, path=None):
+    out = re.sub(r"^int CInputManager::VerifyAnalog\(\)", "bool CInputManager::VerifyAnalog()", out, flags=re.M)
+    return _offset_names(out, view, "CInputManager", path) if path else out
+
+
+VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view, "CCamera": _ccamera_view,
+                 "CInputManager": _cinputmanager_view}
+VIEW_PATH = {"CCamera", "CInputManager"}
 
 
 def moved(text, cls, path=None):

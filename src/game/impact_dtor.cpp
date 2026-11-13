@@ -238,12 +238,8 @@ public:
     unsigned char unknown01c[300];
 };
 
-class CInputManager {
-public:
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown00[64];
-};
 
 struct CheatsView {
     bool enabled;

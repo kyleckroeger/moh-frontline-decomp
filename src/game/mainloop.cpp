@@ -483,12 +483,8 @@ struct KEYMAP {
 };
 extern KEYMAP g_config_keymap[4];
 
-class CInputManager {
-public:
-    void SetKeymap(unsigned long, KEYMAP*);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9296];
-};
 extern CInputManager g_inputMgr;
 
 class CDualConfig {

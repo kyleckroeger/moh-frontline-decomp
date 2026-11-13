@@ -317,15 +317,8 @@ public:
     unsigned char unknown00[84];
 };
 
-class CInputManager {
-public:
-    int GetValue(unsigned long, unsigned long);
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9290];
-    bool m_inverted;
-    unsigned char m_zooming[5];
-};
 
 extern CInputManager g_inputMgr;
 

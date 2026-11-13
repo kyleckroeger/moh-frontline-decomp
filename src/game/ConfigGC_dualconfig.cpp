@@ -182,12 +182,8 @@ public:
 };
 extern CShellMenu g_Shell;
 
-class CInputManager {
-public:
-    long GetValue(unsigned long, unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown00[64];
-};
 extern CInputManager g_inputMgr;
 
 /* inferred: the sprite's size bitfields at +0x60 */

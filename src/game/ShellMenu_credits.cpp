@@ -52,12 +52,8 @@ public:
     static void* operator new(unsigned long size) { return DWI_alloc(0, size, 1024); }
     unsigned char unknown20[68];
 };
-class CInputManager {
-public:
-    void Update(float);
-    bool GetValueAnyPlayer(unsigned long);
-    unsigned char unknown[0x2500];
-};
+#include "game/CInputManager.h"
+
 extern CInputManager g_inputMgr;
 struct AudioOptionsView {
     signed char m_settings[3];

@@ -115,12 +115,8 @@ public:
 
 extern CShellMenu g_Shell;
 
-class CInputManager {
-public:
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown000[24];
-};
 
 extern CInputManager g_inputMgr;
 

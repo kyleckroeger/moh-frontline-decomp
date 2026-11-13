@@ -13,13 +13,8 @@ public:
     unsigned char unknown00[36];
 };
 
-class CInputManager {
-public:
-    void Update(float);
-    bool GetValueAnyPlayer(unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown[0x2500];
-};
 struct UserMessageView {
     const char* text;
     unsigned char unknown04[4];

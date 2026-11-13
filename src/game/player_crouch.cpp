@@ -77,12 +77,8 @@ inline CVector3 operator*(float f, const CVector3& v) {
 #include "game/CMatrix.h"
 
 
-class CInputManager {
-public:
-    int GetValue(unsigned long, unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[0x2450];
-};
 
 extern CInputManager g_inputMgr;
 inline double fabs(double x) { return __fabs(x); }

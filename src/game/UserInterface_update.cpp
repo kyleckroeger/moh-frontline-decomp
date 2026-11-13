@@ -73,11 +73,8 @@ public:
     bool bIsGamePaused();
 };
 
-class CInputManager {
-public:
-    unsigned char unknown00[64];
-    void SetFeedback(unsigned long, long, long, float, float);
-};
+#include "game/CInputManager.h"
+
 
 extern CScene g_scene;
 extern Pause g_Pause;

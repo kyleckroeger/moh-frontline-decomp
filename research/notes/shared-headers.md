@@ -215,3 +215,31 @@ player_dtor (its 18 weak IMovingSceneNode copies listed in weak_duplicates). Not
 - camera_rows: invented inline row getters (UpRow ...) and the ISceneNode words +0xc..+0x18
   used as `CameraFollowerView*`; box_visibility: its planes as `FrustumPlane`: code changes.
 Table: `research/layout/header_moves/CCamera.tsv`.
+
+## CInputManager (2026-11-13, agent hdr5)
+
+`include/game/CInputManager.h` and `include/game/CDeviceManager.h` (CDeviceManager, CGCDevice,
+the actuator record; devicemgr.cpp's view). No virtuals. Evidence:
+
+- Out of line: Init (input_init), Update (a draft), Reset, VerifyAnalog, IsReady, SetFeedback,
+  ResetActuatorState, GetValueAnyPlayer, GetValue, SetKeymap, Shutdown (input_manager); the
+  destructor is weak (input.cpp, with g_inputMgr, 0x2450 bytes).
+- **The device manager is a member, not a base.** input_init.cpp and input_manager.cpp view
+  it as a base, input.cpp as a member at +0. The weak destructor destroys it with `li r4,-1`;
+  as a base MWCC passes 0 (tried: input.cpp loses its match with the base form). The header
+  keeps the destructor implicit: an explicit `~CInputManager() {}` renumbers impact_dtor's
+  stripped labels.
+- VerifyAnalog returns bool: Moh2.cpp, the only caller, tests it as a bool (Moh2 loses its
+  match with int); input_manager.cpp's definition said int (same code for `return 1`).
+- +0x244a m_inverted and +0x244b m_zooming[4] (one byte per player) are player_beginupdate.cpp's;
+  bsbifunc_vibration.cpp's m_blockVibrations is m_feedbackOff (+0x2446), renamed by offset.
+
+Result: 23 units with their own view, **20 kept and moved** (Moh2, input and mainloop_game among
+them). Not moved, all code changes:
+- Pause: calls `g_inputMgr.IsReady(controller)`, CDeviceManager's IsReady(int) through the
+  manager (as a base); with the member it is `g_inputMgr.m_deviceMgr.IsReady(...)`, same code.
+- input_init and input_manager: call CDeviceManager's members as a base's
+  (`CDeviceManager::IsReady(i)`, `CDeviceManager::Shutdown()`), and input_manager reaches the
+  key table through its own InputDeviceView/GetKeyTable helper; input_init clears
+  +0x244a..+0x244e as one 5-byte array.
+Table: `research/layout/header_moves/CInputManager.tsv`.

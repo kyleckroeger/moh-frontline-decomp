@@ -283,6 +283,11 @@ weak in the original) and `CPlane.h`. Of 14 units with their own view only 2 mov
 have their own CVector3 or ISceneNode view, camera_dtor keeps its view to keep the table off,
 2 need code changes.
 
+CInputManager, 2026-11-13: `include/game/CInputManager.h` with `CDeviceManager.h`. The device
+manager is a member at +0, not the base two views made it (the weak destructor destroys it as a
+member). 20 of 23 units with their own view moved; 3 call the device manager as a base (same
+code, different source) and stay on their views.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

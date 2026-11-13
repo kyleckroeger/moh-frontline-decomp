@@ -51,13 +51,8 @@ public:
     void FadeOut(float);
 };
 
-class CInputManager {
-public:
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9286];
-    bool m_blockVibrations[4];
-};
 
 class BSGO_Basic {
     unsigned char unknown00[12];
@@ -108,7 +103,7 @@ void BIFunc_BlockNewVibrations(int** stack, void*) {
     bool block = *(*stack - (g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount - 1)) != 0;
     if (g_bInMultiplayerMode)
         port = g_pBSObject->user->GetSceneNode()->AsPlayerObject()->m_port;
-    g_inputMgr.m_blockVibrations[port] = block;
+    g_inputMgr.m_feedbackOff[port] = block;
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
 

@@ -54,11 +54,8 @@ public:
     int m_state;
 };
 
-class CInputManager {
-public:
-    unsigned char unknown00[64];
-    int GetValue(unsigned long, unsigned long);
-};
+#include "game/CInputManager.h"
+
 
 #include "game/CScreen.h"
 

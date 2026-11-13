@@ -48,11 +48,8 @@ void MEM_free(void*);
 int UISProcessEvent(UISInfo_t*, unsigned long, int, int, float*, int);
 }
 
-class CInputManager {
-public:
-    unsigned char unknown00[64];
-    long GetValue(unsigned long, unsigned long);
-};
+#include "game/CInputManager.h"
+
 
 extern CInputManager g_inputMgr;
 extern int g_PauseScreenLockedController;

@@ -25,13 +25,8 @@ public:
 #include "game/CScreen.h"
 
 
-class CInputManager {
-public:
-    void Update(float);
-    bool GetValueAnyPlayer(unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown00[64];
-};
 
 class CMemoryCard {
 public:

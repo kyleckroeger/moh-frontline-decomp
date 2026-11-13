@@ -315,12 +315,8 @@ public:
     virtual CThrownBullet* AsThrown();
 };
 
-class CInputManager {
-public:
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown00[64];
-};
 
 extern CInputManager g_inputMgr;
 

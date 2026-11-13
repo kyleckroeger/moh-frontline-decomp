@@ -295,13 +295,8 @@ void OPTION_PARSING_PLAYER::Play(bool readInput) {
     }
 }
 
-class CInputManager {
-public:
-    void Update(float);
-    unsigned char GetValueAnyPlayer(unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9296];
-};
 
 extern CInputManager g_inputMgr;
 

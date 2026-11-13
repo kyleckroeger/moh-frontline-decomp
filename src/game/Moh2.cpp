@@ -454,20 +454,8 @@ struct KEYMAP {
 };
 extern KEYMAP g_config_keymap[4];
 
-class CInputManager {
-public:
-    void Init();
-    void SetKeymap(unsigned long, KEYMAP*);
-    void Update(float);
-    int GetValue(unsigned long, unsigned long);
-    bool VerifyAnalog();
-    void Reset();
-    bool IsReady();
-    void ResetActuatorState(long);
-    void Shutdown();
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9296];
-};
 extern CInputManager g_inputMgr;
 
 enum ERenderPriority {};

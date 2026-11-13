@@ -16,19 +16,9 @@ template <class T> __declspec(weak) T MathFunClamp(T value, T low, T high) {
 
 template long MathFunClamp<long>(long, long, long);
 
-class CDeviceManager {
-public:
-    CDeviceManager();
-    ~CDeviceManager();
 
-    unsigned char unknown0000[9296];
-};
 
-class CInputManager {
-public:
-    ~CInputManager() {}
+#include "game/CInputManager.h"
 
-    CDeviceManager m_devices;
-};
 
 CInputManager g_inputMgr;

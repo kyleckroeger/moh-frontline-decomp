@@ -135,12 +135,8 @@ public:
     CPlayerObject* m_player;
 };
 
-class CInputManager {
-public:
-    void SetFeedback(unsigned long, long, long, float, float);
+#include "game/CInputManager.h"
 
-    unsigned char unknown0000[9296];
-};
 
 class CAnimated {
 public:

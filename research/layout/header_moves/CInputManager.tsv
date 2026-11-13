@@ -1,0 +1,24 @@
+unit	source	status	detail
+ConfigGC_dualconfig	scratch/try/ConfigGC_dualconfig/src/ConfigGC_dualconfig.cpp	kept	
+IStudio	scratch/try/IStudio/src/IStudio.cpp	kept	
+Moh2	scratch/try/Moh2/src/Moh2.cpp	kept	
+Pause	scratch/try/Pause/src/Pause.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Pause.cpp # ------------------------- #     307: ready = g_inputMgr.IsReady(g_scene.GetPlayer(0)->m_controller);
+ShellMenu_autoload	scratch/try/ShellMenu_autoload/src/ShellMenu_autoload.cpp	kept	
+ShellMenu_bootcheck	scratch/try/ShellMenu_bootcheck/src/ShellMenu_bootcheck.cpp	kept	
+ShellMenu_briefing	scratch/try/ShellMenu_briefing/src/ShellMenu_briefing.cpp	kept	
+ShellMenu_corrupt	scratch/try/ShellMenu_corrupt/src/ShellMenu_corrupt.cpp	kept	
+ShellMenu_credits	scratch/try/ShellMenu_credits/src/ShellMenu_credits.cpp	kept	
+UserInterface_draw	scratch/try/UserInterface_draw/src/UserInterface_draw.cpp	kept	
+UserInterface_update	scratch/try/UserInterface_update/src/UserInterface_update.cpp	kept	
+animintf	scratch/try/animintf/src/animintf.cpp	kept	
+bsbifunc_vibration	scratch/try/bsbifunc_vibration/src/bsbifunc_vibration.cpp	kept	
+explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	kept	
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	kept	
+input	scratch/try/input/src/input.cpp	kept	
+input_init	scratch/try/input_init/src/input_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\input_init.cpp # ------------------------------ #      18: if (CDeviceManager::IsReady(i))
+input_manager	scratch/try/input_manager/src/input_manager.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\input_manager.cpp # --------------------------------- #      47: CDeviceManager::Shutdown();
+mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	kept	
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	kept	
+player_bullet	scratch/try/player_bullet/src/player_bullet.cpp	kept	
+player_crouch	scratch/try/player_crouch/src/player_crouch.cpp	kept	
+rcmp_main_delete	scratch/try/rcmp_main_delete/src/rcmp_main_delete.cpp	kept	
