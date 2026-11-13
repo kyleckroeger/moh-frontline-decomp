@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x800615c0",
-      "size": 828,
+      "size": 1668,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000b370",
-      "size": 8,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012428",
-      "size": 12,
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fc58",
+      "size": 20,
       "type": 1
     }
   ],
@@ -98,6 +104,24 @@
       "address": "0x800618a8",
       "size": 84,
       "binding": 1
+    },
+    {
+      "name": "AnimChanStartAnim",
+      "address": "0x800618fc",
+      "size": 464,
+      "binding": 1
+    },
+    {
+      "name": "AnimChanProcess",
+      "address": "0x80061acc",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "AnimChanInitChannels",
+      "address": "0x80061bf8",
+      "size": 76,
+      "binding": 1
     }
   ],
   "externals": {
@@ -107,6 +131,8 @@
     "AnimSeqGrow": "0x80066278",
     "AnimSeqSetRate": "0x800661e0",
     "AnimSeqStart": "0x80066388",
+    "AnimWgtProcess": "0x80068eec",
+    "AnimWgtSet": "0x80068f9c",
     "_AnimUserCallbackPopInfo__Fv": "0x800692ac",
     "_AnimUserCallbackPopState__Fv": "0x800692bc",
     "_AnimUserCallbackPushInfo__FPv": "0x800692cc",
@@ -120,16 +146,5 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "animchan.cpp",
-  "original_file_index": 2867,
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 8,
-      "address": "0x8034fc58"
-    }
-  ]
+  "original_file_index": 2867
 }
