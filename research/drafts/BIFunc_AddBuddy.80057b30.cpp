@@ -1,6 +1,7 @@
-// buddy (2026-11-13): 207 -> 39 with BuddyInfo's nested BuddyState and the constructor's dead state copy (info's
-// path/moving/active at 36..44, soldier/progress in registers, as the original). Left: soldier/progress take
-// r26/r27 instead of r27/r28 (and the dump loops' callee registers rotate with them), the dump block's x/z FPRs.
+// buddy (2026-11-13): 207 -> 39 -> 22 with BuddyInfo's nested BuddyState (the constructor's dead state copy keeps only
+// path/moving/active in memory) and 'BuddyInfo info;' declared first, soldier and progress assigned before the
+// flags. Left: soldier/progress in r26/r27 instead of r27/r28 (the dump loops' registers rotate with them) and the
+// debug block's x/z FPRs (f31/f29 vs f29/f31). A single-use inline for the debug block: 188.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
@@ -468,12 +469,12 @@ void BIFunc_GetInitialBuddyOrders(int** stack, void* caller) {
 }
 
 void BIFunc_AddBuddy(int** stack, void* caller) {
-    short first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
     BuddyInfo info;
+    short first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
     info.soldier = ((BSOwnerView*)caller)->GetSoldier();
+    info.progress = *(*stack - (first - 1));
     info.state.moving = 0;
     info.state.active = true;
-    info.progress = *(*stack - (first - 1));
     {
         BSObject* object = g_pBSObject;
         float z;

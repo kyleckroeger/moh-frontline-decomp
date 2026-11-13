@@ -1030,3 +1030,13 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   the arguments and destination slots swapped and gets to 4 (the sum's register).
 - The index row of SNDI_precalcaztospkrvol named ShellMenu_ctor.json; the EA file's own template is
   config/GMFE69/satospkr.json (same score here, but EA flags differ: no exceptions, no stmw, no fp_contract).
+- (buddy) A BIFunc whose prologue loads the argument-stack word and firstArgument into r6/r7 the wrong way round:
+  declare 'first' as int instead of short (CreateBuddyDataStructures 6 -> 0; args locals and statement orders inert).
+- (buddy) Pooled-section base order in a FRAGMENT: CW loads the base of whichever pooled section was referenced first
+  in the translation unit. A lone BIFunc_CreateBuddyDataStructures loads .rodata (its strings) before .bss, while the
+  original (and the whole-file draft, where earlier functions already referenced the .bss globals) loads .bss first.
+  The score tools mask relocated immediates, so check the HA/LO relocation order (objdump -dr) before landing a
+  fragment that uses two pooled bases; land such a function together with an earlier user of the other section.
+- (buddy) A list view that must stay constructor-free (pooled .bss size views) while its element type has a
+  constructor: give the sentinel a view type (links + 'unsigned char m_data[sizeof(T)]') and cast '&m_head' to the
+  node pointer in clear(); no __sinit is generated.

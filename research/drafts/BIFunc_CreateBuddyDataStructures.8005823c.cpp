@@ -1,6 +1,10 @@
-// buddy (2026-11-13): 66 -> 6 with BuddyInfo's nested BuddyState and the constructor's dead state copy
-// (the BuddyInfo() temp now keeps only path/moving/active at 48..56, as the original). Left: the prologue's
-// argument loads take r6/r7 the other way round (stack word vs firstArgument); args local and order inert.
+// buddy (2026-11-13): 0 by score (66 -> 6 -> 0): BuddyInfo's nested BuddyState with the constructor's dead state copy,
+// and 'int first' (a short gives the prologue's r6/r7 the other way round). Landing blocked: compiled as a fragment
+// (scratch/loop3/buddy/final_create.cpp: container views without constructors, a ctor-less sentinel view, the
+// pooled .bss block as in buddy_destroy, five weak duplicates; everything else verified by port_unit) CW loads the
+// .rodata base before the .bss base, the other order from the original and from this whole-file draft. In the whole
+// file an earlier function (AddBuddy, 6) has already referenced the pooled .bss; so Create should land together
+// with AddBuddy (or in a buddy.cpp merge), not alone.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
@@ -565,7 +569,7 @@ template <class T> inline void vector<T>::reserve(int capacity, char* name) {
 }
 
 void BIFunc_CreateBuddyDataStructures(int** stack, void*) {
-    short first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
+    int first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
     int count = *(*stack - (first - 1));
     int ready = *(*stack - (first - 2));
     if (!g_bInitialized) {
