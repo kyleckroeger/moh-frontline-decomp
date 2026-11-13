@@ -170,17 +170,21 @@ enum TLTResourceID {};
 void DebugMsg(const char*, ...);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
-struct DecalEntryView {
-    int data00;
-    const char* m_name;
-    unsigned char unknown08[36];
-    float m_angle;
+// The decal.crp record as (key, value) pairs (decal_reset.cpp's DecalParam); the name pair is read counted
+// from the start of the data (pair i * 6 + 1, the original's separate +8 induction value). The union member
+// is inferred (g2, 11-13: 31 -> 28).
+struct DecalParam {
+    int key;
+    union {
+        float value;
+        const char* name;
+    };
 };
 
 struct DecalResourceData {
     int data00;
     int m_count;
-    DecalEntryView m_entries[1];
+    DecalParam m_params[6]; /* six pairs per decal type */
 };
 
 struct TLTResourceView {
@@ -370,12 +374,12 @@ void CBulletDecalManager::Init__NotTheVirtualOne() {
         int size;
         const char* name;
         if (i < resource->data->m_count)
-            name = resource->data->m_entries[(unsigned int)i].m_name;
+            name = ((DecalParam*)resource->data)[(unsigned int)(i * 6 + 1)].name;
         else
-            name = resource->data->m_entries[0].m_name;
+            name = resource->data->m_params[0].name;
         m_bins[i].Init((ShapeFile*)TLT_LoadFileFromLevelBigFile(name, &size));
         AddChild(&m_bins[i]);
-        resource->data->m_entries[i].m_angle *= 3.14159265f / 180.0;
+        resource->data->m_params[i * 6 + 5].value *= 3.14159265f / 180.0;
     }
     m_active = 0;
     g_scene.Add(*this);

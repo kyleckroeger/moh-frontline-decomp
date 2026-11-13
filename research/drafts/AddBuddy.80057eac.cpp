@@ -307,7 +307,8 @@ public:
         m_count = 0;
     }
     void push_front(const T& value) {
-        list_node<T>* pos = m_head.m_next;
+        // g2 (11-13): through the iterator (begin()), not m_head.m_next: gives the node/pos registers (22 -> 6)
+        list_node<T>* pos = begin().m_node;
         list_node<T>* prev = pos->m_prev;
         list_node<T>* node = alloc_node();
         new (node) list_node<T>(0, 0, value);

@@ -27,7 +27,7 @@ real_lines	size	address	function	compile_settings_from	draft
 18	860	800e7a7c	ResetShell__10CShellMenuFv	config/GMFE69/ShellMenu_dtor.json	research/drafts/ResetShell.800e7a7c.cpp
 11	108	8007c194	EndDraw__11CFontDriverFP4FONT	config/GMFE69/font_driver.json	research/drafts/EndDraw.8007c194.cpp
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
-22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
+6	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
 25	2436	800ce450	CheckForObstructions__10CExplosionFR10ISceneNode	config/GMFE69/bulletfactory_projectile_pool.json	research/drafts/CheckForObstructions.800ce450.cpp
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
@@ -46,7 +46,7 @@ real_lines	size	address	function	compile_settings_from	draft
 66	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
 45	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
-82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
+79	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
@@ -70,7 +70,7 @@ real_lines	size	address	function	compile_settings_from	draft
 414	3768	80035aa8	BSFileReadClass__FPCcbbPP14BSClass_struct	config/GMFE69/bsevents.json	research/drafts/BSFileReadClass.80035aa8.cpp
 1183	5024	800e270c	MemoryCardBootUpPortCheck__10CShellMenuFi	config/GMFE69/ShellMenu_load.json	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
 58	1704	80075024	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	config/GMFE69/compartment.json	research/drafts/DrawNode.80075024.cpp
-31	608	800839e4	Init__NotTheVirtualOne__19CBulletDecalManagerFv	config/GMFE69/decal_dtor.json	research/drafts/Init.800839e4.cpp
+28	608	800839e4	Init__NotTheVirtualOne__19CBulletDecalManagerFv	config/GMFE69/decal_dtor.json	research/drafts/Init.800839e4.cpp
 21	376	800904e8	Rotate__7CMatrixF8CVector3f	config/GMFE69/matrix_translate.json	research/drafts/Rotate.800904e8.cpp
 8	1480	800ac9e4	Draw__14CSoldierObjectFR12CDrawContext	config/GMFE69/Soldier_object.json	research/drafts/Draw.800ac9e4.cpp
 3	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
