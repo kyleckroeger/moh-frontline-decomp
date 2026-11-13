@@ -20,6 +20,15 @@ multiplayer not at all. Every landing keeps the complete image identical.
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
 - Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
+- **For the user, next time (decided by the coordinator, reversible):** CAnimMorph::Draw (16d5b52a)
+  landed with Assign's body as `CVector3 t = s; d = t;` (the dead copy is Assign's own local,
+  in the original's last stack slot); kept as the accepted Assign form, not the declined
+  DoTargetCheck `Copy()`. GetObjInfo's ArgObject helper ruled an accepted single-purpose inline.
+  STREAM_kill's by-reference handle declined (it would be a second body for a shared inline).
+  Vtables (vt1, 91da456a): the 64 undefined global vtables are kept off on purpose by the
+  fragments that define their key functions; the coordinator chose fragment merges (a unit
+  owns its file's vtable bytes once the file's fragments merge), not vtables emitted from
+  research/data/, since that matches the original's structure.
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by

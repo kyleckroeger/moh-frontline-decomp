@@ -81,5 +81,6 @@ NEVER write to `config/`, `src/`, `include/`, `docs/`, `tools/`, `tests/`, `prog
 6. `sh research/tools/landlock.sh release NAME`. ALWAYS release, even on failure: first revert
    your partial changes (`git checkout -- <your files>`, remove your untracked files).
 
-Never amend, rebase, reset or force-push. Commit only through land.sh. Never decide policy:
+Keep work in progress under scratch/ until you land it: land.sh adds all of research/, so
+untracked research/ files are swept into whoever lands next (2026-11-13, vt1). Never amend, rebase, reset or force-push. Commit only through land.sh. Never decide policy:
 a function that needs a declined form or a gap function is parked with a question.

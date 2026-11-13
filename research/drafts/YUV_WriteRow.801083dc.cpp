@@ -176,9 +176,9 @@ static void YUV_WriteRow(unsigned char* y, unsigned char* u, unsigned char* v, c
         GXRedirectWriteGatherPipe(dst);
         for (;;) {
             if (i + 8 < n) {
-                unsigned char* vp = v + i;
                 unsigned char* yp = y + j;
                 unsigned char* up = u + i;
+                unsigned char* vp = v + i;
                 unsigned int a, b, c, d;
 
                 a = yp[0 * 2] << 24; b = yp[1 * 2] << 24; c = yp[2 * 2] << 24; d = yp[3 * 2] << 24;

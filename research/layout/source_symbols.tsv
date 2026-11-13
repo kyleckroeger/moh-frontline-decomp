@@ -1772,7 +1772,7 @@ defined	.text	712	BSInitEvent__Fv	unit:bsevents
 defined	.text	712	SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>	draft:research/drafts/SweepExtents.800d9e48.cpp
 defined	.text	708	SNDI_precalcaztospkrvol__Fv	draft:research/drafts/SNDI_precalcaztospkrvol.8015f538.c
 defined	.text	708	SNDPLATFORM_downloadcomplete__Fi	unit:sdrv_mem
-defined	.text	708	TRKSuppAccessFile	draft:research/drafts/TRKSuppAccessFile.80135324.cpp
+defined	.text	708	TRKSuppAccessFile	draft:research/drafts/TRKSuppAccessFile.80135324.c
 defined	.text	704	Init__11CDualConfigFv	unit:ConfigGC_init
 defined	.text	704	SNDBANKI_playpatch__FPvP11TAGGEDPATCHiiP11SNDPLAYOPTS	unit:stagpat_playpatch
 defined	.text	704	SNDSTRMI_parseheader__FiP14STREAMCHUNKHDR	unit:sst

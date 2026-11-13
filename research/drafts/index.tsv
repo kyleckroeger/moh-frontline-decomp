@@ -44,7 +44,7 @@ real_lines	size	address	function	compile_settings_from	draft
 16	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp
 61	2264	8005e9ec	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_finish.json	research/drafts/aim_cb.8005e9ec.cpp
 66	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
-68	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
+45	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 82	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
@@ -90,12 +90,12 @@ real_lines	size	address	function	compile_settings_from	draft
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
 	224	80058e44	__sinit_buddy_cpp	config/GMFE69/buddy_copy_info.json	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 33	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
-	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
+731	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
 	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof.json	research/drafts/debug_prof_misc.cpp
 	72	801055b0	__dt__Q24RCMP11RCMP_SYSTEMFv	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
 	76	801055f8	__sinit_rcmpbase_cpp	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
 	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
-	708	80135324	TRKSuppAccessFile	config/GMFE69/msgbuf.json	research/drafts/TRKSuppAccessFile.80135324.cpp
+97	708	80135324	TRKSuppAccessFile	config/GMFE69/support.json	research/drafts/TRKSuppAccessFile.80135324.c
 	4532	8007d704	RenderSystem__15CParticleSystemFR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/particlesystem_render.cpp
 	1032	8001ebf8	BIFunc_MPAddPlayerHealth__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp
 	3936	800220e8	BIFunc_UpdateFragCount__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp
