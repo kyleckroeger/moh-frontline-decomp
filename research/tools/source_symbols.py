@@ -64,7 +64,7 @@ def compile_draft(job):
             probe = Path(work) / ("probe" + suffix)
             probe.write_text(src.read_text(errors="replace"))
             cmd = [str(wrapper), str(compiler / "mwcceppc.exe"), "-c", *t["compiler_flags"], "-I-",
-                   f"-I{src.parent}", *[f"-I{ROOT / p}" for p in t.get("include_dirs", [])], str(probe), "-o", "probe.o"]
+                   f"-I{src.parent}", *[f"-I{ROOT / p}" for p in t.get("include_dirs", []) + ([] if "include" in t.get("include_dirs", []) else ["include"])], str(probe), "-o", "probe.o"]
             for _ in range(3):
                 r = subprocess.run(cmd, cwd=work, capture_output=True, text=True)
                 if r.returncode == 0:

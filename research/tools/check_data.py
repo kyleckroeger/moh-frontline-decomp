@@ -97,7 +97,7 @@ def compile_file(path, settings):
     src = Path(work) / ("probe" + Path(path).suffix)
     src.write_text(Path(path).read_text())
     cmd = [str(wrapper), str(compiler / "mwcceppc.exe"), "-c", *t["compiler_flags"], "-I-",
-           f"-I{Path(path).resolve().parent}", *[f"-I{ROOT / p}" for p in t.get("include_dirs", [])],
+           f"-I{Path(path).resolve().parent}", *[f"-I{ROOT / p}" for p in t.get("include_dirs", []) + ([] if "include" in t.get("include_dirs", []) else ["include"])],
            str(src), "-o", "probe.o"]
     for _ in range(3):
         r = subprocess.run(cmd, cwd=work, capture_output=True, text=True)

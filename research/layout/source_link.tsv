@@ -1,37 +1,24 @@
 kind	symbol	objects
-undefined	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	data:bif_crc_array.cpp
 undefined	BsbifuncBlockItem__FPCv	unit:bsbifunc_schedules
 undefined	C_VECDotProduct	unit:mtx
 undefined	C_VECNormalize	unit:mtx
-undefined	CreateDestructable__FP20TriggerObject_structi	unit:objcreate_create
-undefined	CreateDumpObject__FRC8CVector3RC11CQuaternionii	unit:bsbifunc_dump unit:player_crouch
-undefined	DrawNode__11CStaticMeshFR7MSHNodeUl	unit:staticmesh_draw
-undefined	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	unit:compartment_draw
-undefined	Init__NotTheVirtualOne__19CBulletDecalManagerFv	unit:mainloop_game
-undefined	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	unit:rcmp_main_delete
-undefined	MemoryCardBootUpPortCheck__10CShellMenuFi	unit:ShellMenu_bootcheck
 undefined	PATHI_choosebeat__FP12PATHNODEVIEWP12PATHNODEVIEWPiPi	draft:PATHI_eventstart.8010ee50
-undefined	PROFILE_UPDATE__Fv	unit:Moh2
 undefined	PSVECCrossProduct	unit:mtx
 undefined	PSVECNormalize	unit:mtx
 undefined	PumhandlerBlockItem__FPCv	unit:pumhandler_ctor
 undefined	RcmpMainBlockItem__FPCv	unit:rcmp_main_delete
 undefined	Render__15CUcodeRenderBinFR10CDmaPacketPv	unit:particlesystem
 undefined	ShellMenuBlockItem__FPCv	unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku
-undefined	TLT_LoadFromRepository__FPCcPiPb	draft:AllocateStaticObject.800b386c unit:AnimObjFactory unit:AnimObjFactory_weapon unit:player_weapon_object_head unit:weaponfactory_params
-undefined	TLT_LoadLevelContentsFile__Fii	unit:toilet
-undefined	UpdateAnimation__14CSoldierObjectFf	unit:Soldier_object_attach
-undefined	Update__13CInputManagerFf	draft:ShellInit.800e752c unit:Moh2 unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_corrupt unit:ShellMenu_credits unit:input_init unit:rcmp_main_delete
 undefined	UserInterfaceBlockItem__FPCv	unit:UserInterface_init
 undefined	__CARDIsWritable	unit:CARDDelete
 undefined	__double_max	unit:ansi_fp
-undefined	__vt__10BSGO_Dummy	unit:thrown_obj_ctor unit:thrown_obj_dtor unit:thrownbullet_ctor unit:weapon_ctor
+undefined	__vt__10BSGO_Dummy	draft:CreateDumpObject.8003fc2c unit:thrown_obj_ctor unit:thrown_obj_dtor unit:thrownbullet_ctor unit:weapon_ctor
 undefined	__vt__10CAnimMorph	unit:animmorph unit:animmorph_dtor
 undefined	__vt__10CCDBObject	unit:cdbobject_ctor unit:cdbobject_dtor
 undefined	__vt__10CCDBVolBox	draft:TestCDBBranchNodeCollision_6CLine3_.800701d4 unit:cdbgeom unit:cdbgeom_volbox_ctor unit:cdbobject_intersect unit:cdbobject_leaf
 undefined	__vt__10CCPTMatBin	draft:compartment_init unit:compartment_ccptmatbin_dtor unit:compartment_init
 undefined	__vt__10CMSHMatBin	unit:staticmesh_cmshmatbin_dtor unit:staticmesh_init
-undefined	__vt__10CVolSphere	draft:FindIntersection.800c5cb4 unit:PathNodeList_disable unit:Soldier_object_ctor unit:Tank_object_update unit:animated_volume_ctor unit:animated_volume_dispatch unit:box_dispatch2 unit:bsbifunc_explosion unit:capsule_plane unit:cdbobject_leaf unit:explosion_dtor unit:hearingvolume_ctor unit:light_
+undefined	__vt__10CVolSphere	draft:CreateDumpObject.8003fc2c draft:FindIntersection.800c5cb4 unit:PathNodeList_disable unit:Soldier_object_ctor unit:Tank_object_update unit:animated_volume_ctor unit:animated_volume_dispatch unit:box_dispatch2 unit:bsbifunc_explosion unit:capsule_plane unit:cdbobject_leaf unit:explosion_dtor uni
 undefined	__vt__11CAnimObject	unit:anim_obj_ctor unit:anim_obj_dtor
 undefined	__vt__11CHierObject	unit:hierobject_tree
 undefined	__vt__11CTankObject	unit:Tank_object_update
@@ -54,7 +41,7 @@ undefined	__vt__15CAIFilterObject	unit:AIFilter_caifilterobject_dtor unit:AIFilt
 undefined	__vt__15CAnimatedPlayer	unit:animplayer_ctor
 undefined	__vt__15CAnimatedVolume	unit:animated_volume_ctor unit:animated_volume_dispatch
 undefined	__vt__15CParticleSystem	unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_cparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor
-undefined	__vt__15CStaticAnimMesh	draft:AllocateStaticObject.800b386c unit:staticmesh_cstaticanimmesh_dtor
+undefined	__vt__15CStaticAnimMesh	draft:AllocateStaticObject.800b386c draft:Init.800b254c unit:staticmesh_cstaticanimmesh_dtor
 undefined	__vt__17CAnimLightManager	unit:light unit:light_animmanager_dtor
 undefined	__vt__17CAttachableObject	unit:attachobject_ctor unit:attachobject_type unit:hierobject_tree
 undefined	__vt__18CDbgStatsRenderBin	unit:debug_prof unit:debug_prof_cdbgstatsrenderbin_dtor
@@ -66,7 +53,6 @@ undefined	__vt__19CSpriteNoTextureBin	unit:sprite unit:sprite_dtor
 undefined	__vt__20CCptShadowCleanUpBin	draft:compartment_init unit:compartment_bindtors
 undefined	__vt__21CAIFilterPlayerObject	unit:AIFilter_player unit:AIFilter_player_ctor
 undefined	__vt__22CAIFilterSoldierObject	unit:AIFilter_soldier_ctor unit:AIFilter_soldier_dtor
-undefined	__vt__22CBulletDecalTextureBin	unit:decal_dtor
 undefined	__vt__23CPropertyParticleSystem	unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor
 undefined	__vt__24CInstancedParticleSystem	unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_create
 undefined	__vt__24MechanicCollisionChecker	unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:AIFilter_mechchecker_dtor
@@ -77,7 +63,7 @@ undefined	__vt__5CPart	unit:dmesh
 undefined	__vt__6CLight	unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor
 undefined	__vt__7CCamera	unit:Moh2 unit:camera_dtor unit:player_ctor
 undefined	__vt__7CSprite	unit:sprite_csprite_dtor unit:sprite_ctor
-undefined	__vt__7CVolBox	draft:CreateRootHierObject.8003dde8 unit:animated_volume_ctor unit:animated_volume_line unit:box_create unit:box_dtor unit:cdbgeom_volbox_ctor unit:compartment_intersect unit:compartment_nodeshadows unit:compartment_volbox unit:fiber_visibility unit:objcreate_collvol unit:objcreate_german unit:objcr
+undefined	__vt__7CVolBox	draft:CreateDestructable.8003c93c draft:CreateRootHierObject.8003dde8 unit:animated_volume_ctor unit:animated_volume_line unit:box_create unit:box_dtor unit:cdbgeom_volbox_ctor unit:compartment_intersect unit:compartment_nodeshadows unit:compartment_volbox unit:fiber_visibility unit:objcreate_collvo
 undefined	__vt__7CWeapon	unit:weapon_ctor
 undefined	__vt__8CPartBin	unit:dmesh
 undefined	__vt__9CAnimated	unit:animated_dtor unit:animmorph unit:animmorph_dtor unit:animskinned unit:animskinned_dtor
@@ -88,9 +74,6 @@ undefined	_eti_init_info	unit:__init_cpp_exceptions
 undefined	axDspSlave	unit:AXOut
 undefined	axDspSlaveLength	unit:AXOut
 undefined	nextafter	unit:ansi_fp
-undefined	szTLT_CompartmentBigFileName	unit:toilet
-undefined	szTLT_LevelBigFileName	unit:toilet
-undefined	szTLT_SlidesBigFileName	unit:toilet_files
 fragment_local	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	unit:aramalloc_alloc
 fragment_local	AdjustAim__FR8CVector3f	unit:bsbifunc_mpprompt
 fragment_local	CAMERA_STAND_OFFSET	unit:player_mmg
@@ -159,17 +142,19 @@ fragment_local	g_CurrMaterial	unit:compartment_render unit:staticmesh_render
 fragment_local	g_CurrState	unit:compartment_draw unit:compartment_render unit:staticmesh_draw unit:staticmesh_render
 fragment_local	g_DbgStatsRenderBin	unit:debug_prof_register unit:debug_prof_stats
 fragment_local	g_DrawContext	unit:sprite_draw
-fragment_local	g_DumpObjectContainer	unit:objcreate_dump
-fragment_local	g_FarPlane	unit:compartment_draw unit:compartment_render unit:dmesh unit:staticmesh_draw unit:staticmesh_render
+fragment_local	g_DumpObjectContainer	draft:CreateDumpObject.8003fc2c unit:objcreate_dump
+fragment_local	g_FarPlane	draft:CPartBin_Link.800f5930 unit:compartment_draw unit:compartment_render unit:dmesh unit:staticmesh_draw unit:staticmesh_render
 fragment_local	g_FontDriver	unit:font_dtor
 fragment_local	g_FreeRecordList	unit:soundschedule unit:soundschedule_sound
-fragment_local	g_GCFogType	unit:compartment_render unit:staticmesh_render
+fragment_local	g_GCFogType	draft:CPartBin_Link.800f5930 unit:compartment_render unit:staticmesh_render
 fragment_local	g_MshSimpleAlphaBin	unit:staticmesh_init
 fragment_local	g_MshSimpleBin	unit:staticmesh_init
-fragment_local	g_NearPlane	unit:compartment_draw unit:compartment_render unit:dmesh unit:staticmesh_draw unit:staticmesh_render
+fragment_local	g_NearPlane	draft:CPartBin_Link.800f5930 unit:compartment_draw unit:compartment_render unit:dmesh unit:staticmesh_draw unit:staticmesh_render
 fragment_local	g_ParticleSystemManager	draft:UpdateBoundingBox.8007fbe8 unit:particlesystem_cpropertyparticlesystem_dtor unit:particlesystem_create unit:particlesystem_moving unit:particlesystem_register unit:particlesystem_registerfn unit:particlesystem_reset unit:particlesystem_texture
 fragment_local	g_PerspectiveMatrix	unit:dmesh_partbin_render
 fragment_local	g_ProfHistRenderBin	unit:debug_prof_register unit:debug_prof_stats
+fragment_local	g_ProfileBinsHistory	draft:PROFILE_UPDATE.800f3578
+fragment_local	g_Repository	draft:TLT_LoadFromRepository.8001cca8
 fragment_local	g_ScreenXOffset	unit:font_dtor unit:sprite_draw
 fragment_local	g_ScreenYOffset	unit:font_dtor unit:sprite_draw
 fragment_local	g_SpriteNoTexture	unit:sprite_draw
@@ -196,14 +181,14 @@ fragment_local	g_pAttachableObjectArray	unit:staticobjfactory_lookup
 fragment_local	g_pAttachableObjectFreeList	unit:staticobjfactory_lookup
 fragment_local	g_pContext	unit:decal_link unit:particlesystem_active unit:staticmesh_cmshmatbin_dtor unit:staticmesh_draw
 fragment_local	g_pDelayDestroyList	unit:objcreate_create
-fragment_local	g_pFog	draft:particlesystem_render unit:compartment_draw unit:compartment_render unit:dmesh unit:particlesystem_active unit:staticmesh_draw unit:staticmesh_render
-fragment_local	g_pFrustum	unit:compartment_draw unit:staticmesh_draw
+fragment_local	g_pFog	draft:CPartBin_Link.800f5930 draft:particlesystem_render unit:compartment_draw unit:compartment_render unit:dmesh unit:particlesystem_active unit:staticmesh_draw unit:staticmesh_render
+fragment_local	g_pFrustum	draft:DrawNode.80075024 draft:DrawNode.800f2090 unit:compartment_draw unit:staticmesh_draw
 fragment_local	g_pGermanCreationQueue	unit:objcreate_create
 fragment_local	g_pHierObjectArray	unit:staticobjfactory_lookup
 fragment_local	g_pHierObjectFreeList	unit:staticobjfactory_lookup
 fragment_local	g_pMPWeaponSet	unit:bsbifunc_mpweapons unit:bsbifunc_schedules
 fragment_local	g_pMemAllocators	unit:bsutil_update
-fragment_local	g_pObjectAllocators	draft:CreateRootHierObject.8003dde8 unit:objcreate_thrown
+fragment_local	g_pObjectAllocators	draft:CreateDestructable.8003c93c draft:CreateRootHierObject.8003dde8 unit:objcreate_thrown
 fragment_local	g_pRenderList	draft:EndDraw.8007c194 unit:compartment_draw unit:compartment_initclass unit:compartment_nodeshadows unit:debug_prof_register unit:debug_prof_stats unit:decal_initclass unit:decal_link unit:font_dtor unit:particlesystem_active unit:particlesystem_reset unit:sprite_csprite_dtor unit:sprite_ctor unit:
 fragment_local	g_pScreen	draft:InitMultiplayer.800a6408 unit:compartment_initclass unit:debug_prof_bins unit:debug_prof_register unit:debug_prof_stats unit:decal_initclass unit:font_dtor unit:particlesystem_reset unit:player_draw unit:player_init unit:player_respawn unit:sprite_draw unit:staticmesh_initclass
 fragment_local	g_pStaticAIObjectArray	unit:staticobjfactory_lookup
@@ -213,7 +198,7 @@ fragment_local	g_pStaticObjectFreeList	unit:staticobjfactory_lookup
 fragment_local	g_pStaticObjectTemplates	unit:staticobjfactory_helmet unit:staticobjfactory_lookup
 fragment_local	g_pThrownObjectArray	unit:staticobjfactory_lookup
 fragment_local	g_pThrownObjectFreeList	unit:staticobjfactory_lookup
-fragment_local	g_pVolumeAllocator	draft:CreateRootHierObject.8003dde8 unit:objcreate_dump unit:objcreate_swap unit:objcreate_volumes
+fragment_local	g_pVolumeAllocator	draft:CreateDestructable.8003c93c draft:CreateDumpObject.8003fc2c draft:CreateRootHierObject.8003dde8 unit:objcreate_dump unit:objcreate_swap unit:objcreate_volumes
 fragment_local	g_popUpMessage	draft:bsbifunc_multiplayer
 fragment_local	g_ppAllocatorFreeLists	unit:staticobjfactory_lookup
 fragment_local	g_prompt	draft:bsbifunc_multiplayer unit:bsbifunc_appendprompt unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext
@@ -235,10 +220,14 @@ fragment_local	s_rsnAStarSearchNodePool	unit:SearchNode
 fragment_local	sort_<PQ26CScene9UNodePair,Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bPQ26CScene9UNodePair	draft:quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0
 fragment_local	startnextrequest__FP15STREAMHEADERtagi	draft:STREAM_kill.8014d6dc unit:stream_greedy
 fragment_local	stringPacket	draft:EndDraw.8007c194 unit:font_draw
-duplicate	AddBuddy__F9BuddyInfob	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
-duplicate	BIFunc_AddBuddy__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
-duplicate	BIFunc_CreateBuddyDataStructures__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
-duplicate	BIFunc_GetInitialBuddyOrders__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+fragment_local	szTLT_CompartmentBigFileName	unit:toilet
+fragment_local	szTLT_LevelBigFileName	unit:toilet
+fragment_local	szTLT_SlidesBigFileName	unit:toilet_files
+duplicate	AddBuddy__F9BuddyInfob	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+duplicate	AllocateStaticObject__20CStaticObjectFactoryFii	draft:AllocateStaticObject.800b386c draft:Init.800b254c
+duplicate	BIFunc_AddBuddy__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+duplicate	BIFunc_CreateBuddyDataStructures__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+duplicate	BIFunc_GetInitialBuddyOrders__FPPiPv	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
 duplicate	ComputeStatusDistance__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
 duplicate	ComputeStatusIsEnemy__9CAIObjectFP9CAIObject	unit:AIObject_enemy unit:AIObject_visionseek
 duplicate	ComputeStatusLOSValue__9CAIObjectFP9CAIObject	unit:AIObject_threat unit:AIObject_visionseek
@@ -249,6 +238,7 @@ duplicate	CreatePlayer__FP20TriggerObject_structi	unit:objcreate_collvol unit:ob
 duplicate	DebugStats_Draw__Fiiiii	unit:debug_prof_register unit:debug_prof_stats
 duplicate	Destroy__11BSGO_PlayerFv	unit:objcreate_collvol unit:objcreate_german unit:objcreate_nonvis unit:objcreate_volumes
 duplicate	GetWeaponPropertiesByCRC__14CWeaponFactoryFiPi	unit:weaponfactory_create unit:weaponfactory_props
+duplicate	Init__20CStaticObjectFactoryFv	draft:AllocateStaticObject.800b386c draft:Init.800b254c
 duplicate	IsUsed__19CBulletDecalManagerFv	unit:decal unit:decal_link
 duplicate	IsUsed__22CParticleSystemManagerFv	unit:particlesystem unit:particlesystem_manager_init
 duplicate	Load__17CUserMessageTableFPcPc	unit:pumhandler_ctor unit:pumhandler_umt_unload
@@ -275,10 +265,10 @@ duplicate	g_LightParam	unit:staticmesh unit:staticmesh_draw unit:staticmesh_init
 duplicate	g_MMGPointCheckSchedule	unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
 duplicate	g_TargetCheckSchedule	unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
 duplicate	g_TargetSearchSchedule	unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
-duplicate	g_bInitialized	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+duplicate	g_bInitialized	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
 duplicate	g_pGenericSoundMemory	unit:bsbifunc unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
 duplicate	g_pPopUpMessageHandler	unit:bsbifunc unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
-duplicate	g_player_checkpoint	draft:AddBuddy.80057eac draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
+duplicate	g_player_checkpoint	draft:AddBuddy.80057eac draft:BIFunc_AddBuddy.80057b30 draft:BIFunc_CreateBuddyDataStructures.8005823c draft:BIFunc_GetInitialBuddyOrders.80057640 draft:__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988 draft:__sinit_buddy_cpp.80058e44
 duplicate	g_screenflash	unit:bsbifunc unit:bsbifunc_hinttext unit:bsbifunc_playerammo unit:bsbifunc_promptbuffer unit:bsbifunc_promptinteger unit:bsbifunc_prompttext unit:bsbifunc_schedules
 duplicate	landmark	data:bss_UserInterface.cpp unit:UserInterface_timestamp
 duplicate	landmarkDisplayText	data:bss_UserInterface.cpp unit:UserInterface_timestamp
@@ -286,21 +276,3 @@ duplicate	rcmp_sys__4RCMP	draft:__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.801
 duplicate	teamColors	unit:UserInterface unit:UserInterface_timestamp
 duplicate	timestamp	data:bss_UserInterface.cpp unit:UserInterface_timestamp
 duplicate	timestampDisplayText	data:bss_UserInterface.cpp unit:UserInterface_timestamp
-no_compile	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	ceneNode.h" # Error: ^ # the file 'game/ISceneNode.h' cannot be opened ### mwcceppc.exe Compiler: # 91: return ((ISceneNode*)object)->GetAIDoodad()->filter->object; # Error: ^^^^^^^^^^ # undefined ide
-no_compile	research/drafts/BIFunc_AddBuddy.80057b30.cpp	sion syntax error ### mwcceppc.exe Compiler: # 578: g_ready_buddies.clear(); # Error: ^^^^^ # expression syntax error ### mwcceppc.exe Compiler: # 579: g_buddy_path_base.clear(); # Error: ^^^^^ # expr
-no_compile	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	sion syntax error ### mwcceppc.exe Compiler: # 574: g_ready_buddies.clear(); # Error: ^^^^^ # expression syntax error ### mwcceppc.exe Compiler: # 575: g_buddy_path_base.clear(); # Error: ^^^^^ # expr
-no_compile	research/drafts/CPartBin_Link.800f5930.cpp	0; k < 30; k += 3) # Error: ^^^ # declaration syntax error ### mwcceppc.exe Compiler: # 325: GXLoadNrmMtxImm(identity, k); # Error: ^^^^^^^^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler
-no_compile	research/drafts/CreateDestructable.8003c93c.cpp	^^^^^ # undefined identifier 'position' ### mwcceppc.exe Compiler: # 412: y = position.y; # Error: ^^^^^^^^ # undefined identifier 'position' ### mwcceppc.exe Compiler: # 413: z = position.z; # Error:
-no_compile	research/drafts/CreateDumpObject.8003fc2c.cpp	dummy, true); # Error: ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler: # 443: return object; # Error: ^^^^^^ # declaration syntax error ### mwcceppc.exe Compile
-no_compile	research/drafts/DrawNode.80075024.cpp	ts); # Error: ^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler: # 312: g_SPRStack.m_top -= parentLights.size() * 4; # Error: ^^^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compile
-no_compile	research/drafts/DrawNode.800f2090.cpp	fier 'word54' ### mwcceppc.exe Compiler: # 170: word58 = other.word58; # Error: ^^^^^^ # undefined identifier 'word58' ### mwcceppc.exe Compiler: # 171: word5c = other.word5c; # Error: ^^^^^^ # undefi
-no_compile	research/drafts/Init.800839e4.cpp	shMap.h' cannot be opened ### mwcceppc.exe Compiler: # 201: static CMatrix g_Ident(true); # Error: ^ # declaration syntax error ### mwcceppc.exe Compiler: # 275: g_scene.Add(*this); # Error: ^^^^^^^ #
-no_compile	research/drafts/Init.800b254c.cpp	(t->GetMesh(), t->NumFrames(), t->TicksPerFrame(), 0, 0, 0, 0); # Error: ^ # function call 'operator new(unsigned long, int)' does not match # 'operator new(unsigned long)' # 'operator new(unsigned lo
-no_compile	research/drafts/MOHFL_VD_create.80102a20.cpp	221: } # Error: ^ # declaration syntax error ### mwcceppc.exe Compiler: # 228: return new GCHW_VD(decoder, frame, g_screen.m_mode); # Error: ^ # illegal use of abstract class ('RCMP::VIDEO_DRIVER::Set
-no_compile	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	375: TLT_CloseFile((void*)data); # Error: ^^^^^^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler: # 376: return result; # Error: ^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler
-no_compile	research/drafts/PROFILE_UPDATE.800f3578.cpp	er: # 140: g_GraphCursor = (int)g_fGraphCursor; # Error: ^^^^^^^^^^^^^ # declaration syntax error ### mwcceppc.exe Compiler: # 141: } # Error: ^ # declaration syntax error ### mwcceppc.exe Compiler: #
-no_compile	research/drafts/TLT_LoadFromRepository.8001cca8.cpp	ifier 'dwi' ### mwcceppc.exe Compiler: # 74: *cached = it != g_Repository.end(); # Error: ^^ # undefined identifier 'it' ### mwcceppc.exe Compiler: # 76: g_Repository.insert(data, data); # Error: ^^^^
-no_compile	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp	Compiler: # 106: static dwi::hash_map<char*, char*> g_Repository; # Error: ^^^ # undefined identifier 'dwi' ### mwcceppc.exe Compiler: # 371: g_Repository.Resize(BIG_count(g_pLevelBigFile)); # Error: 
-no_compile	research/drafts/TestCollision.8006e0b0.cpp	diff); # Error: ^ # undefined identifier 'c' ### mwcceppc.exe Compiler: # 208: c.Cross(m_axes[2], e1); # Error: ^ # undefined identifier 'c' ### mwcceppc.exe Compiler: # 209: c21 = c.Dot(diff); # Erro
-no_compile	research/drafts/Update.80084c80.cpp	^^^^^ # undefined identifier 'table' ### mwcceppc.exe Compiler: # 245: table->keys[j].value = 0; # Error: ^^^^^ # undefined identifier 'table' ### mwcceppc.exe Compiler: # 246: table->keys[j].field04 
-no_compile	research/drafts/UpdateAnimation.800acfb8.cpp	pc.exe Compiler: # 725: if (g_scene.IsNodeInScene((ISceneNode*)m_weapons[i])) # Error: ^^^^^^^ # undefined identifier 'g_scene' ### mwcceppc.exe Compiler: # 726: g_scene.Remove(*(ISceneNode*)m_weapons

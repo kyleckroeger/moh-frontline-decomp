@@ -169,6 +169,13 @@ shared headers, but their settings templates lack the `include` directory. 17 of
 undefined symbols are functions that only those drafts define. Without them the count would
 be 75.
 
+Include fix, 2026-11-13 (agent merge2): `source_link.py`, `source_symbols.py`,
+`layout_lint.py` and `check_data.py` now append `include/` to a source's include directories,
+as `fast.py` does since 4c75217f (`brchk.py` already did). Re-run (1,240 units, 98 drafts,
+85 data files, all compiled): **75 undefined, 149 fragment-local, 53 duplicate**, 0
+small-data. The 18 drafts compile again and define their 17 functions; they also bring back
+5 fragment-local and 2 duplicate symbols that the failed compiles had hidden.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
