@@ -96,6 +96,8 @@ it needed the original's 32-byte frame, because some original code reads stale s
 f19 across `CMatrix::Multiply`, whose hand-written `PSMultMatrix` overwrites f14-f19
 without saving them. Fixed, and proven by comparing its graphics commands per call
 (`research/probes/gx_capture_probe.cpp`); frame hashes also depend on CPU timing.
+Routes for the menu and for levels 1_2, 2_1, 3_1, 4_1, 5_1 and 6_1 (dol2) found one crash,
+`__sinit_compartment_cpp` (fixed), and prove 29 more drafts: 79 of the 100 are proven.
 
 Exit: every non-multiplayer draft is proven, or bisected and fixed. Multiplayer drafts
 are recorded as unproven.

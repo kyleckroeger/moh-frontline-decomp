@@ -1,0 +1,32 @@
+# Menu route (probe form: times are game updates): boot, Start at the title, then down
+# the main menu into the Mission Log screens and back out with B. Proves the drafts that
+# run during boot and in the shell (compare with --ignore-frames 1530, docs/Dolphin.md).
+trace 30
+at 1900
+press START
+at 2300
+press DOWN
+at 2700
+press A
+at 3100
+press DOWN
+at 3500
+press A
+at 3900
+press B
+at 4300
+press B
+at 4700
+press DOWN
+at 5100
+press A
+at 5500
+press DOWN
+at 5900
+press A
+at 6300
+press B
+at 6700
+press B
+at 7100
+press B

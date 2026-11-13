@@ -1,0 +1,74 @@
+# Route 5_1 (probe form: times are game updates). Boot, the shell to a new game as in
+# m1_opening.txt, with research/probes/levels/level_5_1.cpp forcing level 5_1, then the
+# first minutes of play (level_play.txt). Link: input_script.py route_5_1.txt OUT.cpp, then
+# link_drafts.py --coverage --probe OUT.cpp research/probes/clock_probe.cpp
+# research/probes/levels/level_5_1.cpp; keep the level probe in the control.
+trace 30
+at 1900
+press START
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 120
+press A
+wait 240
+press A
+wait 240
+press A
+at 3300
+stick 0 72 200            # walk forward
+cstick 72 0 30            # turn right
+trigger R 10              # fire
+wait 40
+trigger R 10
+wait 40
+stick 0 72 200 R          # advance while firing
+press X 10                # jump
+wait 60
+cstick -72 0 60           # turn left
+stick -72 0 90            # strafe left
+stick 72 0 90             # strafe right
+press UP 10               # next weapon
+wait 60
+trigger R 10              # fire or throw it
+wait 90
+press UP 10
+wait 60
+trigger R 10
+wait 90
+press UP 10
+wait 60
+trigger R 10
+wait 120
+press DOWN 10             # back
+wait 60
+press DOWN 10
+wait 60
+press DOWN 10
+wait 60
+cstick 0 40 20            # look up
+cstick 0 -40 20           # and down
+press B 10
+wait 60
+press Y 10
+wait 60
+press L 10
+wait 60
+press Z 10
+wait 60
+press A 10
+wait 60
+stick 0 72 400 R          # advance while firing
+cstick 72 0 45
+stick 0 72 300
+trigger R 20
+wait 40
+stick 72 72 200 R
+cstick -72 0 60
+stick 0 72 400 R
+stick 0 -72 200
+trigger R 40
+wait 300

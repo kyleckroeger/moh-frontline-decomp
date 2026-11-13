@@ -1,13 +1,13 @@
 status	similarity	offsets	lines	size	function	calls_same	missing	extra	draft	proven
-code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	research/drafts/UpdateTargetPosition.8004e024.cpp	
+code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	research/drafts/UpdateTargetPosition.8004e024.cpp	route_1_2@d25a78f8
 code_exact	1.000	1.000	0	1220	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	True	0	0	research/drafts/InitMultiplayer.800a6408.cpp	
-code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp	
+code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp	route_menu@4e822918
 consistent	1.000	1.000	1	2696	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	True	0	0	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	m1_opening@147ec715
 consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp	
 consistent	0.997	1.000	2	2728	AllocateStaticObject__20CStaticObjectFactoryFii	True	0	0	research/drafts/AllocateStaticObject.800b386c.cpp	m1_opening@ca676d40
-consistent	1.000	0.966	2	812	SNDPKTPLAY_start	True	0	0	research/drafts/SNDPKTPLAY_start.8015a81c.cpp	
+consistent	1.000	0.966	2	812	SNDPKTPLAY_start	True	0	0	research/drafts/SNDPKTPLAY_start.8015a81c.cpp	route_menu@d0354f50
 consistent	1.000	1.000	2	96	AddAmo__19CPlayerWeaponObjectFi	True	0	0	research/drafts/AddAmo.800a7fac.cpp	
-consistent	1.000	1.000	3	1220	Update__13CInputManagerFf	True	0	0	research/drafts/Update.80084c80.cpp	
+consistent	1.000	1.000	3	1220	Update__13CInputManagerFf	True	0	0	research/drafts/Update.80084c80.cpp	route_menu@5df4b974
 consistent	0.992	1.000	3	1060	TLT_LoadLevelContentsFile__Fii	True	0	0	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp	m1_opening@ce865e53
 consistent	1.000	1.000	3	480	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	True	0	0	research/drafts/FlagAsOccupied.80052f6c.cpp	
 consistent	1.000	1.000	5	800	DrawNode__11CStaticMeshFR7MSHNodeUl	True	0	0	research/drafts/DrawNode.800f2090.cpp	m1_opening@4506dd9d
@@ -15,27 +15,27 @@ consistent	0.995	1.000	3	740	GetPeekLocation__11CCoverPointFv	True	0	0	research/
 consistent	0.968	1.000	6	500	Scroll__12PopUpMessageFv	True	0	0	research/drafts/Scroll.800bf4f8.cpp	m1_opening@2c7fb4ad
 consistent	0.980	0.947	6	400	DisplayHint__Fv	True	0	0	research/drafts/DisplayHint.8001e0f8.cpp	
 consistent	0.974	1.000	7	156	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	True	0	0	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	
-consistent	1.000	1.000	8	416	DrawTextCentered__5CFontFfPCc	True	0	0	research/drafts/DrawTextCentered.8007cdb0.cpp	
+consistent	1.000	1.000	8	416	DrawTextCentered__5CFontFfPCc	True	0	0	research/drafts/DrawTextCentered.8007cdb0.cpp	route_menu@2777c065
 consistent	1.000	1.000	9	2128	UpdateProximityTriggerStatus__Fv	True	0	0	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	m1_opening@4b8a57a4
 consistent	1.000	1.000	10	1184	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	True	0	0	research/drafts/CheckLineCollision.80052abc.cpp	
 consistent	1.000	1.000	10	1156	AnimStStartState	True	0	0	research/drafts/AnimStStartState.800676d8.cpp	m1_opening@738898c8
 consistent	1.000	1.000	6	804	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	True	0	0	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	m1_opening@347bdb0f
 consistent	1.000	1.000	11	392	SetFinishedLevelData__13CPlayerObjectFv	True	0	0	research/drafts/SetFinishedLevelData.8009d470.cpp	
 consistent	1.000	1.000	16	6224	BIFunc_GetObjInfo__FPPiPv	True	0	0	research/drafts/BIFunc_GetObjInfo.8002c258.cpp	m1_opening@361fe3e9
-consistent	0.994	1.000	17	724	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	True	0	0	research/drafts/MOHFL_VD_create.80102a20.cpp	
+consistent	0.994	1.000	17	724	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	True	0	0	research/drafts/MOHFL_VD_create.80102a20.cpp	route_menu@637d76bd
 consistent	1.000	1.000	18	1272	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	True	0	0	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp	m1_opening@6d166d20
 consistent	0.926	1.000	18	860	ResetShell__10CShellMenuFv	True	0	0	research/drafts/ResetShell.800e7a7c.cpp	
-consistent	1.000	1.000	11	108	EndDraw__11CFontDriverFP4FONT	True	0	0	research/drafts/EndDraw.8007c194.cpp	
-consistent	1.000	1.000	20	1632	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	True	0	0	research/drafts/ChooseCoverPointByType.8005ca88.cpp	
-consistent	1.000	1.000	6	912	AddBuddy__F9BuddyInfob	True	0	0	research/drafts/AddBuddy.80057eac.cpp	
+consistent	1.000	1.000	11	108	EndDraw__11CFontDriverFP4FONT	True	0	0	research/drafts/EndDraw.8007c194.cpp	route_menu@7a2df232
+consistent	1.000	1.000	20	1632	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	True	0	0	research/drafts/ChooseCoverPointByType.8005ca88.cpp	route_1_2@e384536b
+consistent	1.000	1.000	6	912	AddBuddy__F9BuddyInfob	True	0	0	research/drafts/AddBuddy.80057eac.cpp	route_2_1@4b0ccf12
 consistent	1.000	1.000	23	1044	AnimStProcess	True	0	0	research/drafts/AnimStProcess.800672c4.cpp	m1_opening@d71a2f04
 consistent	0.997	1.000	25	2436	CheckForObstructions__10CExplosionFR10ISceneNode	True	0	0	research/drafts/CheckForObstructions.800ce450.cpp	m1_opening@227b7f48
 consistent	0.993	1.000	25	2212	DrawFragCount__13UserInterfaceFb	True	0	0	research/drafts/DrawFragCount.800bd864.cpp	
 consistent	1.000	1.000	25	712	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	True	0	0	research/drafts/ARAM_alloc_node.801503b4.cpp	m1_opening@f91a8887
-consistent	1.000	1.000	7	1264	BIFunc_GetInitialBuddyOrders__FPPiPv	True	0	0	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	
+consistent	1.000	1.000	7	1264	BIFunc_GetInitialBuddyOrders__FPPiPv	True	0	0	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	route_2_1@2a4fc994
 consistent	0.992	1.000	5	1064	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	True	0	0	research/drafts/death_cb.8005fb58.cpp	m1_opening@b6124242
 consistent	0.951	1.000	27	164	Multiply__11CQuaternionF11CQuaternion	True	0	0	research/drafts/Multiply.8009174c.cpp	m1_opening@507e59f1
-consistent	0.970	1.000	28	400	decodexac__3SNDFPQ23SND10MXAPACKETF	True	0	0	research/drafts/decodexac.80168828.cpp	
+consistent	0.970	1.000	28	400	decodexac__3SNDFPQ23SND10MXAPACKETF	True	0	0	research/drafts/decodexac.80168828.cpp	route_menu@496e91a9
 consistent	1.000	1.000	11	2028	CreateDestructable__FP20TriggerObject_structi	True	0	0	research/drafts/CreateDestructable.8003c93c.cpp	m1_opening@87d4e884
 consistent	0.959	1.000	39	388	BIFunc_PlayerScreenFlash__FPPiPv	True	0	0	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	
 consistent	1.000	1.000	2	3416	CreateRootHierObject__FP20TriggerObject_structi	True	0	0	research/drafts/CreateRootHierObject.8003dde8.cpp	
@@ -43,32 +43,32 @@ consistent	0.993	1.000	3	568	PublishEvent__10CPublisherFR8ISubject13ESubjectEven
 consistent	0.998	1.000	56	1640	CreateDumpObject__FRC8CVector3RC11CQuaternionii	True	0	0	research/drafts/CreateDumpObject.8003fc2c.cpp	
 consistent	1.000	1.000	16	3828	UpdateAnimation__14CSoldierObjectFf	True	0	0	research/drafts/UpdateAnimation.800acfb8.cpp	m1_opening@b5bb76db
 consistent	1.000	1.000	59	2264	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	True	0	0	research/drafts/aim_cb.8005e9ec.cpp	m1_opening@a8a8b978
-consistent	0.981	1.000	66	716	BIFunc_CreateBuddyDataStructures__FPPiPv	True	0	0	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	
+consistent	0.981	1.000	66	716	BIFunc_CreateBuddyDataStructures__FPPiPv	True	0	0	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	route_2_1@5da60717
 consistent	0.923	1.000	45	620	YUV_WriteRow__FPUcPUcPUcPci	True	0	0	research/drafts/YUV_WriteRow.801083dc.cpp	
-consistent	1.000	1.000	73	908	PATHI_seeknextnode__Fi	True	0	0	research/drafts/PATHI_seeknextnode.8010e988.cpp	
+consistent	1.000	1.000	73	908	PATHI_seeknextnode__Fi	True	0	0	research/drafts/PATHI_seeknextnode.8010e988.cpp	route_1_2@6a5aa27f
 consistent	0.976	1.000	79	340	random	True	0	0	research/drafts/random.8014f114.cpp	m1_opening@30299c23
 consistent	1.000	1.000	5	576	_find_aim_blend_values__FffPf	True	0	0	research/drafts/_find_aim_blend_values.8005e494.cpp	m1_opening@7c190809
-consistent	0.958	1.000	96	540	DoTargetCheck__FP8BSObjectiiiPiPi	True	0	0	research/drafts/DoTargetCheck.8001e59c.cpp	
-consistent	0.994	1.000	99	1916	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	True	0	0	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp	
+consistent	0.958	1.000	96	540	DoTargetCheck__FP8BSObjectiiiPiPi	True	0	0	research/drafts/DoTargetCheck.8001e59c.cpp	route_1_2@922c6d25
+consistent	0.994	1.000	99	1916	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	True	0	0	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp	route_1_2@92b2f5f0
 consistent	1.000	1.000	56	2948	UpdateBoundingBox__15CParticleSystemFv	True	0	0	research/drafts/UpdateBoundingBox.8007fbe8.cpp	m1_opening@3c2c49c4
 consistent	0.986	1.000	13	572	TLT_LoadFromRepository__FPCcPiPb	True	0	0	research/drafts/TLT_LoadFromRepository.8001cca8.cpp	m1_opening@10a6a59b
 consistent	0.819	1.000	83	456	BIFunc_MechFollowPath__FPPiPv	True	0	0	research/drafts/BIFunc_MechFollowPath.80021220.cpp	
 consistent	0.898	1.000	109	1016	_matrix_rot_yzx__FR7CMatrixlll	True	0	0	research/drafts/_matrix_rot_yzx.800f4e98.cpp	m1_opening@ae58be95
-differs	0.998	1.000	135	1232	ShellInit__10CShellMenuFUl	True	1	1	research/drafts/ShellInit.800e752c.cpp	
+differs	0.998	1.000	135	1232	ShellInit__10CShellMenuFUl	True	1	1	research/drafts/ShellInit.800e752c.cpp	route_menu@67cd5ced
 consistent	0.959	1.000	140	1848	DrawBulletStats__13UserInterfaceFv	True	0	0	research/drafts/DrawBulletStats.800bce58.cpp	m1_opening@f612bfb3
 consistent	0.993	1.000	31	604	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	True	0	0	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp	m1_opening@ba5f3ae1
 consistent	0.960	1.000	157	1820	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	True	0	0	research/drafts/_unpack_skel_frame.80069c80.cpp	m1_opening@64d3f11e
 consistent	1.000	1.000	185	1740	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	True	0	0	research/drafts/_AnimTranDoTransition.8006862c.cpp	m1_opening@ad9f52b7
 consistent	0.967	1.000	185	800	SweepAllExtents__6CSceneFv	True	0	0	research/drafts/SweepAllExtents.800d8bac.cpp	m1_opening@eb77c9f7
-consistent	1.000	1.000	195	2296	PATHI_eventstart__Fi	True	0	0	research/drafts/PATHI_eventstart.8010ee50.cpp	
+consistent	1.000	1.000	195	2296	PATHI_eventstart__Fi	True	0	0	research/drafts/PATHI_eventstart.8010ee50.cpp	route_1_2@5204d5e1
 consistent	1.000	1.000	94	784	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	True	0	0	research/drafts/GetClosestWaypointByType.8005c6b8.cpp	m1_opening@e3a2e9c0
 consistent	0.984	1.000	82	980	PROFILE_UPDATE__Fv	True	0	0	research/drafts/PROFILE_UPDATE.800f3578.cpp	m1_opening@8b8690db
-consistent	0.936	1.000	207	892	BIFunc_AddBuddy__FPPiPv	True	0	0	research/drafts/BIFunc_AddBuddy.80057b30.cpp	
+consistent	0.936	1.000	207	892	BIFunc_AddBuddy__FPPiPv	True	0	0	research/drafts/BIFunc_AddBuddy.80057b30.cpp	route_2_1@4495b478
 consistent	0.895	1.000	252	1260	DMMorphBlendDisplayLists__FP16DMRenderObject_T	True	0	0	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	m1_opening@fc3d851d
 consistent	0.996	1.000	320	2092	FindIntersection__FRC6CLine3RC11CVolCapsulePf	True	0	0	research/drafts/FindIntersection.800c5cb4.cpp	m1_opening@f7bf4e4f
 consistent	1.000	1.000	463	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	
 consistent	0.998	1.000	414	3768	BSFileReadClass__FPCcbbPP14BSClass_struct	True	0	0	research/drafts/BSFileReadClass.80035aa8.cpp	m1_opening@c506c5c1
-consistent	0.929	0.994	1023	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	
+consistent	0.929	0.994	1023	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	route_menu@9d28f039
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp	m1_opening@4f327e94
 consistent	0.987	0.982	14	608	Init__NotTheVirtualOne__19CBulletDecalManagerFv	True	0	0	research/drafts/Init.800839e4.cpp	m1_opening@63ba12ee
 consistent	1.000	1.000	21	376	Rotate__7CMatrixF8CVector3f	True	0	0	research/drafts/Rotate.800904e8.cpp	m1_opening@3de6527e
@@ -78,23 +78,23 @@ consistent	0.996	1.000	138	3376	Init__20CStaticObjectFactoryFv	True	0	0	research
 consistent	0.914	1.000	37	280	GetExtents__7CVolBoxCFR8CVector3R8CVector3	True	0	0	research/drafts/GetExtents.800c13b4.cpp	m1_opening@6e4e7440
 consistent	0.987	1.000	39	632	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	True	0	0	research/drafts/Draw.800da67c.cpp	m1_opening@f8838ce6
 consistent	1.000	1.000	3	244	SNDtimeremaining	True	0	0	research/drafts/SNDtimeremaining.8015d238.c	
-consistent	0.986	1.000	53	1700	SNDVOICEI_alloc__FiiPiii	True	0	0	research/drafts/SNDVOICEI_alloc.8015d530.c	
-consistent	0.960	0.875	79	708	SNDI_precalcaztospkrvol__Fv	True	0	0	research/drafts/SNDI_precalcaztospkrvol.8015f538.c	
+consistent	0.986	1.000	53	1700	SNDVOICEI_alloc__FiiPiii	True	0	0	research/drafts/SNDVOICEI_alloc.8015d530.c	route_menu@9d86b883
+consistent	0.960	0.875	79	708	SNDI_precalcaztospkrvol__Fv	True	0	0	research/drafts/SNDI_precalcaztospkrvol.8015f538.c	route_menu@3bfca079
 consistent	0.988	1.000	80	340	iSNDrandom__Fv	True	0	0	research/drafts/iSNDrandom.8015f934.c	m1_opening@e7a4f577
 consistent	0.980	1.000	20	408	SNDMIXI_volramp__FP11SNDMIXVOICE	True	0	0	research/drafts/SNDMIXI_volramp.80160114.c	m1_opening@aa4cbb04
-consistent	0.981	1.000	73	752	MIX_audioslice	True	0	0	research/drafts/MIX_audioslice.801609d0.c	
-consistent	0.990	1.000	5	780	SFILTER_rsf__FPviPvPvi	True	0	0	research/drafts/SFILTER_rsf.801671b8.c	
-consistent	1.000	1.000	3	360	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	True	0	0	research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp	
+consistent	0.981	1.000	73	752	MIX_audioslice	True	0	0	research/drafts/MIX_audioslice.801609d0.c	route_menu@d0f9286a
+consistent	0.990	1.000	5	780	SFILTER_rsf__FPviPvPvi	True	0	0	research/drafts/SFILTER_rsf.801671b8.c	route_menu@106b0c99
+consistent	1.000	1.000	3	360	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	True	0	0	research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp	route_2_1@cd5eb5a4
 consistent	0.979	1.000	102	2308	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	True	0	0	research/drafts/TestCollision.800c290c.cpp	m1_opening@d7c30d57
 consistent	1.000	1.000	13	1472	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	True	0	0	research/drafts/TestCollision.800c3210.cpp	m1_opening@08c62e29
-consistent	0.950	1.000	2	80	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	True	0	0	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp	
-consistent	0.982	1.000	None	224	__sinit_buddy_cpp	True	0	0	research/drafts/__sinit_buddy_cpp.80058e44.cpp	
+consistent	0.950	1.000	2	80	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	True	0	0	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp	route_menu@8421ed54
+consistent	0.982	1.000	None	224	__sinit_buddy_cpp	True	0	0	research/drafts/__sinit_buddy_cpp.80058e44.cpp	route_menu@c2e68e5f
 consistent	1.000	1.000	33	1492	Link__8CPartBinFP7CDmaTagR10CDmaPacket	True	0	0	research/drafts/CPartBin_Link.800f5930.cpp	m1_opening@d2098eaf
 consistent	0.986	1.000	211	2944	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	True	0	0	research/drafts/GenerateTestSplinePath.80050af4.cpp	m1_opening@caaa6288
-consistent	0.789	1.000	202	836	__ct__17CProfileInitClassFv	True	0	0	research/drafts/debug_prof_misc.cpp	
+consistent	0.789	1.000	202	836	__ct__17CProfileInitClassFv	True	0	0	research/drafts/debug_prof_misc.cpp	route_menu@e4e29f09
 code_exact	1.000	1.000	0	72	__dt__Q24RCMP11RCMP_SYSTEMFv	True	0	0	research/drafts/rcmpbase_system.cpp	
-consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp	
-consistent	0.848	0.942	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp	
+consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp	route_menu@d9c279c3
+consistent	0.859	0.942	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp	route_menu@4b6c5e99
 consistent	0.986	1.000	97	708	TRKSuppAccessFile	True	0	0	research/drafts/TRKSuppAccessFile.80135324.c	
 differs	0.752	0.967	854	4532	RenderSystem__15CParticleSystemFR10CDmaPacket	True	0	7	research/drafts/particlesystem_render.cpp	m1_opening_gx@1c514b2e
 consistent	0.894	0.923	256	1032	BIFunc_MPAddPlayerHealth__FPPiPv	True	0	0	research/drafts/bsbifunc_multiplayer.cpp	

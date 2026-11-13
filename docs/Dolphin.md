@@ -389,6 +389,17 @@ Routes are in `research/probes/scripts/` (probe form) and `research/movies/` (mo
 `m1_opening.txt` goes from boot to Mission 1. On the beach it walks, turns, fires twice,
 jumps, strafes, cycles weapons four times, fires, then advances while firing.
 
+Further routes (dol2) are in `research/movies/` in probe form: `route_menu.txt` (boot, the
+title, down the main menu into the Mission Log screens and back with B) and
+`route_M_S.txt` for levels 1_2, 2_1, 3_1, 4_1, 5_1 and 6_1. A level route takes the shell
+presses of `m1_opening.txt`, and `research/probes/levels/level_M_S.cpp` replaces
+`CShellMenu::Get_currentMission` and `Get_currentStage` so that both first store the
+route's mission and stage: the new game then loads that level, and every reader of the two
+members agrees. Keep the level probe in the control. After the shell come the first
+minutes of play from update 3300 (`level_play.txt`): walk, turn, fire, jump, strafe, cycle
+weapons and fire or throw each, look up and down, press B, Y, L, Z and A, then advance
+while firing. The player has control from about update 2,800.
+
 ## Comparison
 
 Every probe build also links `research/probes/clock_probe.cpp`, which removes CPU timing
@@ -455,6 +466,28 @@ card folder before each run, because a save left by one run changes the next.
   `research/tools/fprclob.py` checks every draft for this: 118 original functions reach
   `PSMultMatrix` without saving f14-f19 themselves, and no other draft keeps a value in
   those registers across a call to one of them.
+- **More routes (dol2).** With every draft but `RenderSystem` (proven by its commands
+  instead), the menu route and the six level routes replay identically to their controls
+  from boot to the end of the shorter run (2,167 to 4,663 compared lines each, no player
+  hash), except shell frame 1530 (below). 29 more drafts are proven: the 17 boot and shell
+  drafts and the fixed `__sinit_compartment_cpp` (route_menu), 6 in 1_2 (path streams,
+  `UpdateTargetPosition`, `DoTargetCheck`, `ChooseCoverPointByType`) and 5 in 2_1 (the
+  buddy drafts). 79 of the 100 drafts are now proven; the other 21 (20,680 bytes) never ran
+  on any route: multiplayer, cover-point walking, level end, debug and a few others.
+- **`__sinit_compartment_cpp`: a crash, fixed (dol2).** Level 2_1 crashed after the first
+  grenade (a call through a null pointer in `CScene::Update`); bisect named the static
+  initializer of compartment.cpp. Its view declared `SPR_BEGIN` and `SPR_END` as arrays,
+  but they are pointer variables in `.sdata`, so the scratch stack (`g_SPRStack`) started
+  at the variables themselves and its users overwrote `.sdata`. Declared as `void*`, the
+  route matches the original. `check_draft.py` can't see this (both forms name the same
+  symbol); `research/tools/addrval.py` now compares, per global, whether the original and
+  the draft take its address or access its memory, and finds no other case.
+- **Frame 1530 is a movie frame.** Frames 1410 to 1680 are the intro movies, which play in
+  step with the audio stream. With every draft linked, frame 1530 differs on every route
+  and nothing else in the shell does (dol1's bisect: no single draft). Movie frames change
+  with stream timing alone: the original with a busy-wait added to `STREAM_kill` changes
+  movie frame 210 and nothing else. `diff`, `prove` and `bisect` take
+  `--ignore-frames 1530` for this, and the boot drafts are proven with it.
 - **Frames depend on CPU timing.** With the fixed `RenderSystem`, 25 in-level frame hashes
   out of 150 still differ, and the same happens with no draft at all: the original
   with a busy-wait after each particle system changes 101 frames, starting before the

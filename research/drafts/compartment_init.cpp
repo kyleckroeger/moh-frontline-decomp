@@ -345,11 +345,14 @@ struct LightPoolView {
     int m_count;
 };
 LightPoolView g_LightPool;
-extern char SPR_BEGIN[];
-extern char SPR_END[];
+// Pointer variables in .sdata holding the scratch area's bounds (as in scene_cmppairs.cpp),
+// not arrays: the stack starts at their values (fixed 2026-11-13, dol2: with arrays the
+// stack started at the variables themselves and its users overwrote .sdata).
+extern void* SPR_BEGIN;
+extern void* SPR_END;
 class CSPRStack {
 public:
-    CSPRStack() : m_begin(SPR_BEGIN), m_end(SPR_END), m_top(SPR_BEGIN) {}
+    CSPRStack() : m_begin((char*)SPR_BEGIN), m_end((char*)SPR_END), m_top((char*)SPR_BEGIN) {}
     ~CSPRStack();
     char* m_begin;
     char* m_end;

@@ -287,12 +287,16 @@ def good(result):
     return result["exc"] is None and result["movies"] >= 1
 
 
-def traces(path, skip=0, no_hash=False):
+def traces(path, skip=0, no_hash=False, ignore_frames=()):
     """The probes' TRACE and FRAME lines from a saved run log, without Dolphin's timestamps,
     from update (or frame) `skip` on. `no_hash` drops the player-object hash from TRACE lines:
-    it also covers fields that stale stack memory reaches (see docs/Dolphin.md)."""
+    it also covers fields that stale stack memory reaches (see docs/Dolphin.md).
+    `ignore_frames` drops the FRAME lines of those frame numbers: frames that depend on CPU
+    timing even in the original (docs/Dolphin.md)."""
     out = []
     for m in re.finditer(r"((?:TRACE|FRAME) (\d+).*)", open(path, errors="replace").read()):
+        if m.group(1).startswith("FRAME") and int(m.group(2)) in ignore_frames:
+            continue
         if int(m.group(2)) >= skip:
             line = m.group(1).strip()
             if no_hash and line.startswith("TRACE"):
@@ -313,7 +317,8 @@ def first_difference(a, b):
 
 
 def cmd_diff(args):
-    a, b = traces(args.a, args.skip, args.no_hash), traces(args.b, args.skip, args.no_hash)
+    a, b = (traces(args.a, args.skip, args.no_hash, args.ignore_frames),
+            traces(args.b, args.skip, args.no_hash, args.ignore_frames))
     d = first_difference(a, b)
     if d is None:
         print("traces identical:", len(a), "lines")
@@ -339,8 +344,8 @@ def covered(path, lines=None, skip=0):
 
 
 def cmd_prove(args):
-    test = traces(args.test, args.skip, args.no_hash)
-    control = traces(args.control, args.skip, args.no_hash)
+    test = traces(args.test, args.skip, args.no_hash, args.ignore_frames)
+    control = traces(args.control, args.skip, args.no_hash, args.ignore_frames)
     d = first_difference(test, control)
     if d is not None and not (d[0] == min(len(test), len(control)) and d[0] >= args.min_lines):
         sys.exit(f"not proven: first difference at line {d[0]}:\n  test:    {d[1]}\n  control: {d[2]}")
@@ -391,7 +396,7 @@ def cmd_bisect(args):
     print("patched functions:", len(linked.patches), flush=True)
     log = open(os.path.join(args.work, "bisect.log"), "a")
 
-    reference = traces(args.reference, args.skip, args.no_hash) if args.reference else None
+    reference = traces(args.reference, args.skip, args.no_hash, args.ignore_frames) if args.reference else None
     if reference is not None and args.lines:
         reference = reference[:args.lines]
 
@@ -399,7 +404,8 @@ def cmd_bisect(args):
         r = run(args.work, linked.build(set(active)), args.secs, "bisect-run", args.movie)
         r.update(label=label, active=len(active))
         if reference is not None:
-            got = traces(os.path.join(args.work, "bisect-run.log"), args.skip, args.no_hash)[:len(reference)]
+            got = traces(os.path.join(args.work, "bisect-run.log"), args.skip, args.no_hash,
+                         args.ignore_frames)[:len(reference)]
             d = first_difference(reference, got)
             r["differs_at"] = None if d is None else d[0]
         print(json.dumps(r), flush=True)
@@ -455,6 +461,8 @@ def main():
     s = sub.add_parser("diff", help="compare the traces of two saved run logs")
     s.add_argument("--skip", type=int, default=0, help="ignore lines before this update or frame")
     s.add_argument("--no-hash", action="store_true", help="compare TRACE lines without the player-object hash")
+    s.add_argument("--ignore-frames", type=lambda v: {int(x) for x in v.split(",")}, default=set(),
+                   help="comma-separated frame numbers whose FRAME lines are left out (timing-dependent even in the original)")
     s.add_argument("a")
     s.add_argument("b")
     s.set_defaults(func=cmd_diff)
@@ -464,6 +472,8 @@ def main():
     s.add_argument("--skip", type=int, default=0,
                    help="ignore lines before this update or frame; drafts first entered before it are not marked")
     s.add_argument("--no-hash", action="store_true", help="compare TRACE lines without the player-object hash")
+    s.add_argument("--ignore-frames", type=lambda v: {int(x) for x in v.split(",")}, default=set(),
+                   help="comma-separated frame numbers whose FRAME lines are left out (timing-dependent even in the original)")
     s.add_argument("test")
     s.add_argument("control")
     s.set_defaults(func=cmd_prove)
@@ -480,6 +490,8 @@ def main():
         s.add_argument("--reach", type=int, help="bisect: a run is good if it doesn't crash and logs at least N trace lines")
         s.add_argument("--lines", type=int, help="bisect: compare only the first N trace lines (a run must reach them)")
         s.add_argument("--no-hash", action="store_true", help="bisect: compare TRACE lines without the player-object hash")
+        s.add_argument("--ignore-frames", type=lambda v: {int(x) for x in v.split(",")}, default=set(),
+                       help="comma-separated frame numbers whose FRAME lines are left out (timing-dependent even in the original)")
         s.add_argument("--skip", type=int, default=0,
                        help="bisect: ignore lines before this update or frame (the intro movies and shell "
                             "are paced by emulated time, so their frames differ when CPU timing does)")
