@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -41,17 +41,113 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8008ae80",
-      "size": 340,
+      "address": "0x8008a044",
+      "size": 3984,
       "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000c458",
+      "size": 48,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800134f0",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80171228",
+      "size": 160,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80185f40",
+      "size": 96,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x801eecb0",
+      "size": 544,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "_ParseHints__FP9UISInfo_tP11UISScreen_tP14UISStackInfo_tUlUlUlP10UISParam_t",
+      "address": "0x8008a0d4",
+      "size": 844,
+      "binding": 0
+    },
     {
       "name": "_UISFindHintPC__FP12UISControl_tUl",
       "address": "0x8008ae80",
       "size": 80,
       "binding": 0
+    },
+    {
+      "name": "UISDoHint__FP9UISInfo_tUlUlP10UISParam_t",
+      "address": "0x8008a044",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "UISExecuteFnc__FP9UISInfo_tP11UISScreen_tP16UISControlInfo_tP14UISStackInfo_tPvUlP10UISParam_tUlP10UISParam_tUclP10UISParam_t",
+      "address": "0x8008ab18",
+      "size": 872,
+      "binding": 1
+    },
+    {
+      "name": "UISMoveScreenDrawPosition__FP9UISInfo_tUsUsl",
+      "address": "0x8008a420",
+      "size": 488,
+      "binding": 1
+    },
+    {
+      "name": "UISFindSiblingEnableControl__FP11UISScreen_tP16UISControlInfo_t",
+      "address": "0x8008a608",
+      "size": 364,
+      "binding": 1
+    },
+    {
+      "name": "UISStringFormat__FP12UISScrData_tP11UISString_tP11UISString_tUlP10UISParam_t",
+      "address": "0x8008a774",
+      "size": 648,
+      "binding": 1
+    },
+    {
+      "name": "UISSetColorAdditive__Fffff",
+      "address": "0x8008a9fc",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "UISSetColorMultipler__Fffff",
+      "address": "0x8008aa18",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "UISGetColorAdditive",
+      "address": "0x8008aa34",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "UISGetColorMultipler",
+      "address": "0x8008aa40",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "UISGetActionPtrValue__FUlP16UISControlInfo_t",
+      "address": "0x8008aa4c",
+      "size": 204,
+      "binding": 1
     },
     {
       "name": "UISFindSubControlEventPC__FP12UISControl_tUsUl",
@@ -72,7 +168,12 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "UISStackProcess__FP9UISInfo_tP10UISParam_tP14UISStackInfo_tP11UISScreen_tP16UISControlInfo_t": "0x80085a8c",
+    "memcpy": "0x800094f8",
+    "sprintf": "0x8013dab4",
+    "strncpy": "0x8013fffc"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},

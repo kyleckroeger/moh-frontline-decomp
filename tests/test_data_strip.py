@@ -118,8 +118,8 @@ class DataStripping(unittest.TestCase):
             strip_objects(compiled, unit)
 
     def test_file_duplicate_references_go_to_the_original_copy(self):
-        compiled = (self.build / 'units/UISUtils_parsehints/compiled.o').read_bytes()
-        unit = json.loads((CONFIG / 'UISUtils_parsehints.json').read_text())
+        compiled = (self.build / 'units/box_ivolume/compiled.o').read_bytes()
+        unit = json.loads((CONFIG / 'box_ivolume.json').read_text())
         name = unit['file_duplicates'][0]
         after = Elf32(strip_objects(compiled, unit))
         self.assertEqual([s['binding'] for s in after.symbols() if s['name'] == name + '$duplicate'], [0])
