@@ -48,6 +48,12 @@ multiplayer not at all. Every landing keeps the complete image identical.
   restore the original's 32-byte frame (stale-stack reads elsewhere depend on it); that is a
   declined device for a landing, so it marks what the landing must reproduce naturally (the
   original's dead -OSGetTick() values). RenderSystem still changes particle frames: unproven.
+  (Later: dol2 fixed RenderSystem's register clobber and __sinit_compartment_cpp's crash; 79
+  of 100 drafts proven.) merge6 rulings: light.cpp stays split (the only trigger that places
+  CAnimLightManager's weak vtable is a discarded helper doing `delete (CAnimLightManager*)p`,
+  which is a gap function with logic, still on hold). rcmp_main's unexplained 4-byte .sbss gap
+  may be filled with an inferred size-view static (an object the original has, from code the
+  linker removed), the accepted .bss-view form.
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by

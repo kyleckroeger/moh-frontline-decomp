@@ -32,15 +32,16 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010422c",
-      "size": 196,
+      "address": "0x8010370c",
+      "size": 3044,
       "type": 1
     },
     {
@@ -51,14 +52,20 @@
     },
     {
       "name": "extab",
-      "address": "0x8000fc54",
-      "size": 32,
+      "address": "0x8000fc0c",
+      "size": 104,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800169b8",
-      "size": 48,
+      "address": "0x8001697c",
+      "size": 108,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8017aac0",
+      "size": 197,
       "type": 1
     },
     {
@@ -70,7 +77,7 @@
     {
       "name": ".sbss",
       "address": "0x8034edc8",
-      "size": 4,
+      "size": 13,
       "type": 8
     }
   ],
@@ -80,6 +87,36 @@
       "address": "0x80104280",
       "size": 52,
       "binding": 0
+    },
+    {
+      "name": "ReadInput__21OPTION_PARSING_PLAYERFv",
+      "address": "0x80103e94",
+      "size": 456,
+      "binding": 1
+    },
+    {
+      "name": "Play__21OPTION_PARSING_PLAYERFb",
+      "address": "0x8010370c",
+      "size": 1868,
+      "binding": 1
+    },
+    {
+      "name": "__dt__15DISP_OLD_FRAMESFv",
+      "address": "0x80103e58",
+      "size": 60,
+      "binding": 2
+    },
+    {
+      "name": "__dl__Q24RCMP9AV_PLAYERFPv",
+      "address": "0x8010405c",
+      "size": 48,
+      "binding": 2
+    },
+    {
+      "name": "RCMP_PlayMovie__FPcb",
+      "address": "0x8010408c",
+      "size": 416,
+      "binding": 1
     },
     {
       "name": "RCMP_Shutdown__Fv",
@@ -101,19 +138,112 @@
     }
   ],
   "externals": {
+    "DCStoreRange": "0x801118b4",
+    "FILE_exists": "0x8014ddcc",
+    "Flip__7CScreenFv": "0x8001ba5c",
+    "GCSW_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAMEP16_GXRenderModeObjPv": "0x801086b4",
+    "GXDrawDone": "0x8012bff0",
+    "GetFirstFrame__Q24RCMP9AV_PLAYERFUii": "0x800fb770",
+    "GetFrame__Q24RCMP9AV_PLAYERFf": "0x800fb710",
+    "GetHeight__7CScreenFv": "0x8001b8b0",
+    "GetValueAnyPlayer__13CInputManagerFUl": "0x80084b58",
+    "GetWidth__7CScreenFv": "0x8001b8a8",
     "Init__9FRAMEWORKFv": "0x800fce58",
+    "IsAudioFinished__Q24RCMP9AV_PLAYERFv": "0x800fb4cc",
+    "IsTimeForDecode__Q24RCMP9AV_PLAYERFv": "0x800fb500",
+    "MEM_copy": "0x80150880",
+    "MEM_fill": "0x80150db4",
+    "MEM_totalunused": "0x8014f4b8",
+    "MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME": "0x80102a20",
+    "PRINT_string__FPCce": "0x8015176c",
+    "Pause__Q24RCMP9AV_PLAYERFv": "0x800fb3f8",
     "Restore__9FRAMEWORKFv": "0x800fce54",
+    "SYNCTASK_run": "0x80152394",
     "SetREALDefaults__Q24RCMP11RCMP_SYSTEMFv": "0x80105234",
+    "THREAD_yield": "0x80151fbc",
+    "TIMER_gettick": "0x80151e00",
+    "TIMERhz": "0x8034f3e4",
+    "UnPause__Q24RCMP9AV_PLAYERFv": "0x800fb324",
+    "Update__13CInputManagerFf": "0x80084c80",
+    "VIFlush": "0x8011c39c",
+    "VISetBlack": "0x8011c524",
+    "Wait__7CScreenFv": "0x8001b910",
+    "__ct__Q24RCMP9AV_PLAYERFPCciPCciQ34RCMP9AV_PLAYER9LOAD_ENUMQ34RCMP9AV_PLAYER10SOUND_ENUM": "0x800fc114",
+    "__cvt_sll_flt": "0x80138dec",
+    "__div2i": "0x80138b60",
     "__dl__FPv": "0x8001ca2c",
+    "__dt__Q24RCMP9AV_PLAYERFv": "0x800fbc1c",
+    "__nw__FUl": "0x8001cb60",
     "__register_global_object": "0x801381bc",
+    "g_inputMgr": "0x801ec80c",
+    "g_screen": "0x80196ac0",
     "rcmp_sys__4RCMP": "0x803158ac"
   },
-  "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "undefined_in_discarded_code": [
+    "RcmpMainBlockItem__FPCv"
+  ],
+  "discarded_functions": [
+    "RcmpMainBlockStrings__Fv"
+  ],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "TIMERhz"
+  ],
   "original_file": "rcmp_main.cpp",
-  "original_file_index": 10180
+  "original_file_index": 10180,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803512f0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803512e0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x803512f4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x803512f8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x803512fc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x803512e8"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x80351300"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 1,
+      "address": "0x80351308"
+    }
+  ]
 }
