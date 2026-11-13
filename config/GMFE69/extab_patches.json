@@ -18,7 +18,7 @@
       "original": "2500"
     },
     {
-      "unit": "weaponfactory_params",
+      "unit": "weaponfactory",
       "function": "LoadWeaponObjects__14CWeaponFactoryFv",
       "offset": "0x16",
       "action": "0x8b",

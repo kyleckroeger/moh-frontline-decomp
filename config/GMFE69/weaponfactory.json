@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -39,24 +39,102 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x800d76c0",
-      "size": 88,
+      "address": "0x800d65f8",
+      "size": 4384,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000e874",
-      "size": 8,
+      "address": "0x8000e808",
+      "size": 116,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800155f0",
-      "size": 12,
+      "address": "0x80015584",
+      "size": 120,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80178058",
+      "size": 63,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350e50",
+      "size": 6,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__ct__11CStaticMeshFv",
+      "address": "0x800d67c8",
+      "size": 52,
+      "binding": 2
+    },
+    {
+      "name": "LoadWeaponObjects__14CWeaponFactoryFv",
+      "address": "0x800d65f8",
+      "size": 464,
+      "binding": 1
+    },
+    {
+      "name": "EndianSwap__FR23WeaponProperties_struct",
+      "address": "0x800d6a5c",
+      "size": 556,
+      "binding": 2
+    },
+    {
+      "name": "LoadWeaponParameters__14CWeaponFactoryFv",
+      "address": "0x800d67fc",
+      "size": 608,
+      "binding": 1
+    },
+    {
+      "name": "DestroyWeapon__14CWeaponFactoryFP7CWeapon",
+      "address": "0x800d6c88",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei",
+      "address": "0x800d6cf4",
+      "size": 520,
+      "binding": 1
+    },
+    {
+      "name": "GetWeaponPropertiesByCRC__14CWeaponFactoryFiPi",
+      "address": "0x800d6efc",
+      "size": 404,
+      "binding": 1
+    },
+    {
+      "name": "CreateWeapon__14CWeaponFactoryF12EWeaponTypesP10ISceneNodei",
+      "address": "0x800d7090",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "Shutdown__14CWeaponFactoryFv",
+      "address": "0x800d70f0",
+      "size": 296,
+      "binding": 1
+    },
+    {
+      "name": "Reset__14CWeaponFactoryFv",
+      "address": "0x800d7218",
+      "size": 476,
+      "binding": 1
+    },
+    {
+      "name": "Init__14CWeaponFactoryFv",
+      "address": "0x800d73f4",
+      "size": 716,
+      "binding": 1
+    },
     {
       "name": "__dt__14CWeaponFactoryFv",
       "address": "0x800d76c0",
@@ -71,14 +149,47 @@
     }
   ],
   "externals": {
-    "__dl__FPv": "0x8001ca2c"
+    "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DebugMsg__FPCce": "0x80018c88",
+    "Get_currentDifficulty__10CShellMenuFv": "0x800e6ec4",
+    "Init__11CStaticMeshFPvb": "0x800f2cb8",
+    "Init__7CWeaponF12EWeaponTypesP23WeaponProperties_structP10ISceneNodes": "0x800d6288",
+    "Shutdown__7CWeaponFv": "0x800d6284",
+    "TLT_CloseFile__FPv": "0x8001d820",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
+    "TLT_LoadFromRepository__FPCcPiPb": "0x8001cca8",
+    "__construct_new_array": "0x801384fc",
+    "__ct__7CSpriteFPCcQ27CSprite15ESpriteLoadType15ERenderPriority": "0x80082648",
+    "__ct__7CWeaponFv": "0x800d6548",
+    "__destroy_new_array": "0x80138258",
+    "__dl__FPv": "0x8001ca2c",
+    "__dla__FPv": "0x8001c9e8",
+    "__dt__11CStaticMeshFv": "0x800f2510",
+    "__dt__7CWeaponFv": "0x800d64e8",
+    "__nwa__7CWeaponFUlPc": "0x800d65c8",
+    "__nwa__FUl": "0x8001cae8",
+    "__vt__11CStaticMesh": "0x8018b4f0",
+    "g_Shell": "0x80195090",
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_pStaticObjectMuzzleFlashNPC": "0x8034ec78",
+    "g_pStaticObjectMuzzleFlashPlayer": "0x8034ec7c",
+    "memcpy": "0x800094f8",
+    "strcmp": "0x8013fed4",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_bInMultiplayerMode",
+    "g_pStaticObjectMuzzleFlashNPC",
+    "g_pStaticObjectMuzzleFlashPlayer"
+  ],
   "original_file": "weaponfactory.cpp",
   "original_file_index": 8328
 }
