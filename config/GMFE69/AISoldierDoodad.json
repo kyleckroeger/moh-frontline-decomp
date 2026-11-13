@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,20 +40,38 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80059344",
-      "size": 896,
+      "address": "0x8005933c",
+      "size": 1096,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ae1c",
-      "size": 48,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011f00",
-      "size": 72,
+      "size": 96,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x801702d0",
+      "size": 30,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183660",
+      "size": 36,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dae0",
+      "size": 16,
       "type": 1
     }
   ],
@@ -68,6 +86,18 @@
       "name": "FireAtCurrentTarget__16CAISoldierDoodadFf",
       "address": "0x80059418",
       "size": 344,
+      "binding": 1
+    },
+    {
+      "name": "GetSceneNode__16CAISoldierDoodadCFv",
+      "address": "0x8005933c",
+      "size": 8,
+      "binding": 2
+    },
+    {
+      "name": "__dt__16CAISoldierDoodadFv",
+      "address": "0x800596c4",
+      "size": 132,
       "binding": 1
     },
     {
@@ -93,6 +123,12 @@
       "address": "0x8005963c",
       "size": 136,
       "binding": 1
+    },
+    {
+      "name": "__ct__16CAISoldierDoodadFv",
+      "address": "0x80059748",
+      "size": 60,
+      "binding": 1
     }
   ],
   "externals": {
@@ -112,6 +148,9 @@
     "UpdateManualUpdateVars__22CAIFilterSoldierObjectFv": "0x8005ba1c",
     "Update__22CAIFilterSoldierObjectFf": "0x8005b894",
     "__ct__22CAIFilterSoldierObjectFv": "0x8005bda4",
+    "__ct__9CAIDoodadFv": "0x80059140",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__9CAIDoodadFv": "0x800590f8",
     "__nw__22CAIFilterSoldierObjectFUlPv": "0x8005bd2c",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },

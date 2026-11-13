@@ -1,17 +1,22 @@
-// CAISoldierDoodad, the fire, update, clean-up and initialisation functions in
-// the middle of the file: the AI doodad that drives a soldier through a
-// CAIFilterSoldierObject placed in the soldier's memory. Both fire functions
-// take the filter's target guess position, finish a pending reload of the
-// soldier's current weapon (20 rounds added), fire (the MMG at the target, or
-// the current weapon from the bullet emitter's position towards the target)
-// and, when a shot was fired, set bit 0 of the AI soldier's flags (+432). The
-// class names come from the mangled symbols. This is an inferred, non-virtual
-// view: only the members these functions touch are declared, at their offsets
-// (their names are not original), and the virtual table is not reproduced; the
-// reload, weapon-slot and translation helpers are inferred inlines (the
-// translation returned by value gives the original's dead stack copy). The
-// scene-node function before these and the destructor and constructor after
-// them are not reconstructed here.
+// AISoldierDoodad.cpp: CAISoldierDoodad, the AI doodad that drives a soldier
+// through a CAIFilterSoldierObject placed in the soldier's memory. The whole
+// file, with the class's virtual table and RTTI record (slot order from
+// __vt__16CAISoldierDoodad; the destructor is the key function).
+// GetSceneNode returns the soldier at +80; it is inline in the original (a
+// weak symbol), so it is defined __declspec(weak) where the original places
+// it. Both fire functions take the filter's target guess position, finish a
+// pending reload of the soldier's current weapon (20 rounds added), fire (the
+// MMG at the target, or the current weapon from the bullet emitter's
+// position towards the target) and, when a shot was fired, set bit 0 of the
+// AI soldier's flags (+432). Update, PreUpdate, CleanUp and Init follow, then
+// the destructor (its table pointer; the filter object at +4 deleted through
+// its virtual destructor; then CAIDoodad's destructor) and the constructor
+// (CAIDoodad's constructor, then its table pointer). The class names come
+// from the mangled symbols. Only the members these functions touch are
+// declared, at their offsets (their names are not original); the reload,
+// weapon-slot and translation helpers are inferred inlines (the translation
+// returned by value gives the original's dead stack copy).
+class ISceneNode;
 class CStaticObject;
 struct BSObject;
 
@@ -106,15 +111,21 @@ public:
 
 class CAIDoodad {
 public:
+    CAIDoodad();
+    virtual ~CAIDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    virtual void FireAtCurrentTarget(float);
+    virtual void FireMMGAtCurrentTarget(CStaticObject*);
     void Init();
-
-    unsigned char unknown00[4];
 };
 
 class CAISoldierDoodad : public CAIDoodad {
 public:
-    void FireMMGAtCurrentTarget(CStaticObject*);
-    void FireAtCurrentTarget(float);
+    virtual ~CAISoldierDoodad();
+    virtual ISceneNode* GetSceneNode() const;
+    CAISoldierDoodad();
+    virtual void FireMMGAtCurrentTarget(CStaticObject*);
+    virtual void FireAtCurrentTarget(float);
     void Update(float);
     void PreUpdate();
     void CleanUp();
@@ -126,6 +137,10 @@ public:
     unsigned char unknown10[64];
     CSoldierObject* m_soldier;
 };
+
+__declspec(weak) ISceneNode* CAISoldierDoodad::GetSceneNode() const {
+    return (ISceneNode*)m_soldier;
+}
 
 void CAISoldierDoodad::FireMMGAtCurrentTarget(CStaticObject* gun) {
     CAIFilterSoldierObject* filter = m_filter;
@@ -182,4 +197,11 @@ void CAISoldierDoodad::Init(CSoldierObject* soldier) {
     filter->SetOneTimeVars();
     filter->UpdateManualUpdateVars();
     filter->m_soldierObject->Init();
+}
+
+CAISoldierDoodad::~CAISoldierDoodad() {
+    delete m_filter;
+}
+
+CAISoldierDoodad::CAISoldierDoodad() {
 }
