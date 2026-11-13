@@ -41,25 +41,31 @@
     {
       "name": ".text",
       "address": "0x8008b01c",
-      "size": 2204,
+      "size": 2296,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c488",
-      "size": 56,
+      "size": 64,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013538",
-      "size": 84,
+      "size": 96,
       "type": 1
     },
     {
       "name": ".rodata",
       "address": "0x801761f8",
       "size": 14,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80350198",
+      "size": 16,
       "type": 1
     }
   ],
@@ -105,6 +111,18 @@
       "address": "0x8008b73c",
       "size": 380,
       "binding": 1
+    },
+    {
+      "name": "__dt__7IStudioFv",
+      "address": "0x8008b8b8",
+      "size": 60,
+      "binding": 1
+    },
+    {
+      "name": "__ct__7IStudioFv",
+      "address": "0x8008b8f4",
+      "size": 32,
+      "binding": 1
     }
   ],
   "externals": {
@@ -130,6 +148,7 @@
     "UISRegisterTransformFncs": "0x80088b68",
     "UISSetScreenActive": "0x8008825c",
     "UISShutdown": "0x80088b84",
+    "__dl__FPv": "0x8001ca2c",
     "g_PauseScreenLockedController": "0x8034e2c8",
     "g_inputMgr": "0x801ec80c",
     "g_matStack": "0x8034eab8",
@@ -146,28 +165,5 @@
     "g_matStack"
   ],
   "original_file": "IStudio.cpp",
-  "original_file_index": 5235,
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80350198"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 4,
-      "size": 4,
-      "address": "0x8035019c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 8,
-      "address": "0x803501a0"
-    }
-  ]
+  "original_file_index": 5235
 }

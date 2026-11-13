@@ -2815,3 +2815,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge6] merged sbasync.c (2 fragments, 2436 B): load/read views joined by offset with unions for the header-copy/download counters and the partial word; the whole file -inline noauto (the read helpers stay out of line; the first three functions match either way).
 - 2026-11-13 [loop merge6] merged ssysinit.c (2 fragments, 3032 B): the options functions first (reverse source order kept), SNDSYSI_init passing sndgs to them through casts.
 - 2026-11-13 [loop merge6] merged sst.c (2 fragments, 4172 B): the stream record's player, serial and external members as anonymous unions of the two halves' views (volatility and signedness differ); the link node's request word.
+- 2026-11-13 [loop merge6] merged IStudio.cpp (2 fragments, 2296 B): the destructor and constructor appended; the constructor clears the six words under the main view's names.

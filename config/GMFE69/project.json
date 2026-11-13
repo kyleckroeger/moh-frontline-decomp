@@ -958,7 +958,6 @@
     "light_destroy.json",
     "particlesystem_registerfn.json",
     "decal_initclass.json",
-    "IStudio_ctor.json",
     "AnimObjFactory_animobjdef.json",
     "player_updateai.json",
     "player_weapon_object_update.json",

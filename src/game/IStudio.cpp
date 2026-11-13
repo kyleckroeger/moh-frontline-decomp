@@ -14,7 +14,8 @@
 // start of the object and the memory parameters after it (passed to
 // UISGetMemSize; meanings unknown) are inferred, and the UIS functions'
 // parameter types beyond the ids and the event arguments' meanings are left
-// generic. The rest of the file is not part of this unit.
+// generic. Last, the empty destructor and the constructor, which clears the
+// six words.
 struct UISInfo_t;
 struct UISTransform_t;
 struct UISParam_t;
@@ -63,6 +64,8 @@ extern CMatrixStack* g_matStack;
 
 class IStudio {
 public:
+    IStudio();
+    ~IStudio();
     void iSirenUpdate(unsigned long);
     void iSirenDrawProcessFnc(unsigned long);
     void iSirenEventProcessFnc();
@@ -230,4 +233,16 @@ void IStudio::ISirenStartup(unsigned long p1, unsigned long p2, unsigned long p3
     UISRegisterPluginFnc(m_info, 4, DummyPluginProcessFnc);
     UISRegisterPluginFnc(m_info, 5, DummyPluginProcessFnc);
     UISRegisterPluginFnc(m_info, 6, DummyPluginProcessFnc);
+}
+
+IStudio::~IStudio() {
+}
+
+IStudio::IStudio() {
+    m_info = 0;
+    m_memParam04 = 0;
+    m_memParam08 = 0;
+    m_memParam0c = 0;
+    m_memParam10 = 0;
+    m_field14 = 0;
 }
