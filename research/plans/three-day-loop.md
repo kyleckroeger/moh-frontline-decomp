@@ -19,6 +19,16 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
+- 2026-11-13 ~19:00: verified 1,282,440 bytes (90.66%). Landed since 17:25: list<BuddyInfo> range ctor
+  360 (44540024), buddy.cpp tail unit incl. __sinit_buddy_cpp 224 (5ed2ccfa); link 54/102/45 (3576e509).
+  Rules found: BuddyState partial scalarisation (dead whole-struct read), `i * K` induction variables,
+  commutative operand order (lighter operand first). Agent running: opswap (operand-order sweep).
+  **Coordinator rulings for the user (reversible):** (a) the dead whole-struct read is accepted, spelled
+  `inline void Check(BuddyState) {}` / `Check(state);` (a compiled-out debug check); (b) two near-identical
+  helpers differing only in store order (SNDI_precalcaztospkrvol) declined, one helper must serve both
+  branches (now at 4 lines); (c) CPartBin::Link `position = CVector3(lightPos);` (unnamed temporary,
+  scores 0) declined as the same steering copy chain as the declined named form (draft at 4).
+  Blocked: BIFunc_CreateBuddyDataStructures (0 by score) needs AddBuddy (6) in the same unit.
 - 2026-11-13 ~17:25: late1/late2 matching agents on scratch/loop3/day2/late{1,2}.tsv (the 100
   unlanded drafts). Landed so far: CFontDriver::EndDraw 108 (8240e679), TRKSuppAccessFile 708
   (c37a3c4e). Verified about 1,281,856 bytes (90.62%).
