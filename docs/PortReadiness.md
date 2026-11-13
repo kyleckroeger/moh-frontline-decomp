@@ -263,6 +263,21 @@ functions does), rcmp_main (an unexplained 4-byte `.sbss` gap between `g_fw` and
 statics), anim_obj, alarm, pumhandler, world_object, AnimObjFactory, ConfigGC,
 rcmp_mpc_codec, projectilebullet, pathxSND, saems, camera, animskinned and hearingvolume.
 
+Merges continued, 2026-11-13 (agent merge7, `scratch/loop3/merge7/notes.md`): rcmp_main (the
+`.sbss` word after `g_fw` is the global `CurentOPPlayer`, now defined there instead of in
+research/data), projectilebullet (with `__vt__26CProjectileBulletRenderBin`; RTTI on,
+deferred inlining, written last to first; `g_WorldToCamera`, the axes and `g_bCached` are file
+statics again), ConfigGC, rcmp_mpc_codec (RTTI on, deferred, last to first; `tools/port_unit.py`
+now closes up dropped exception records in data sections) and animskinned (with
+`__vt__12CAnimSkinned` and its RTTI records). Re-run (1,073 units, 98 drafts, 78 data files,
+all compiled): **59 undefined, 104 fragment-local, 49 duplicate**, 0 small-data; two vtables
+fewer undefined and projectilebullet's four fragment-local statics resolved. Still not merged:
+light and bsutil (rulings: stay split), camera (the frustum's `CMatrix` local has no
+constructor call, the shared `CMatrix` adds one), hearingvolume (CBullet's weak inlines are
+emitted here; needs the full CBullet/ISceneNode chain), saems (conflicting C views of the same
+struct names), pathxSND (`-str` flags differ), world_volume (weak copy order), Gecko_ExceptionPPC
+(two compilers), anim_obj, alarm, pumhandler, world_object and AnimObjFactory (not attempted).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
