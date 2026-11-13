@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "deferred,auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -31,14 +31,18 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include/dolphin-sdk",
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
   "strip_unused": true,
   "source_root": "scratch/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007bf38",
-      "size": 452,
+      "address": "0x8007b914",
+      "size": 2024,
       "type": 1
     },
     {
@@ -49,19 +53,31 @@
     },
     {
       "name": "extab",
-      "address": "0x8000bfb8",
-      "size": 32,
+      "address": "0x8000bfa0",
+      "size": 56,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 40
+      "linked_size": 64
     },
     {
       "name": "extabindex",
-      "address": "0x80012f20",
-      "size": 48,
+      "address": "0x80012efc",
+      "size": 84,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 60
+      "linked_size": 96
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170ce8",
+      "size": 54,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80184740",
+      "size": 72,
+      "type": 1
     },
     {
       "name": ".bss",
@@ -70,10 +86,22 @@
       "type": 8
     },
     {
+      "name": ".sdata",
+      "address": "0x8034dc88",
+      "size": 32,
+      "type": 1
+    },
+    {
       "name": ".sbss",
       "address": "0x8034e9f0",
       "size": 12,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034ff88",
+      "size": 44,
+      "type": 1
     }
   ],
   "functions": [
@@ -84,10 +112,46 @@
       "binding": 0
     },
     {
+      "name": "__dt__9CFaderBinFv",
+      "address": "0x8007b914",
+      "size": 92,
+      "binding": 2
+    },
+    {
+      "name": "IsUsed__9CFaderBinFv",
+      "address": "0x8007b970",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "Link__9CFaderBinFP7CDmaTagR10CDmaPacket",
+      "address": "0x8007b988",
+      "size": 888,
+      "binding": 1
+    },
+    {
       "name": "MathFunClamp<i>__Fiii",
       "address": "0x8007c050",
       "size": 32,
       "binding": 2
+    },
+    {
+      "name": "Update__13CFaderControlFf",
+      "address": "0x8007bd00",
+      "size": 448,
+      "binding": 1
+    },
+    {
+      "name": "IsFading__13CFaderControlCFv",
+      "address": "0x8007bec0",
+      "size": 28,
+      "binding": 1
+    },
+    {
+      "name": "__ct__13CFaderControlF6CColor6CColorf",
+      "address": "0x8007bedc",
+      "size": 92,
+      "binding": 1
     },
     {
       "name": "SetControl__6CFaderFP13CFaderControl",
@@ -115,13 +179,31 @@
     }
   ],
   "externals": {
+    "C_MTXOrtho": "0x80116dbc",
+    "GXBegin": "0x8012c3c8",
+    "GXClearVtxDesc": "0x8012b554",
+    "GXGetProjectionv": "0x80130134",
+    "GXLoadPosMtxImm": "0x80130238",
+    "GXSetBlendMode": "0x8012fa78",
+    "GXSetCullMode": "0x8012c63c",
+    "GXSetNumChans": "0x8012d7dc",
+    "GXSetNumTevStages": "0x8012f794",
+    "GXSetNumTexGens": "0x8012bf4c",
+    "GXSetProjection": "0x8012ff84",
+    "GXSetProjectionv": "0x80130058",
+    "GXSetTevOp": "0x8012ee78",
+    "GXSetTevOrder": "0x8012f5b8",
+    "GXSetVtxAttrFmt": "0x8012b5a0",
+    "GXSetVtxDesc": "0x8012b08c",
+    "GXSetZMode": "0x8012fbfc",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "PSMTXIdentity": "0x80116bb0",
     "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__10CRenderBinFR10CDmaPacketPv": "0x80076e18",
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CRenderBinFv": "0x80074290",
-    "__dt__9CFaderBinFv": "0x8007b914",
     "__register_global_object": "0x801381bc",
-    "__vt__10CRenderBin": "0x80183c5c",
-    "__vt__9CFaderBin": "0x80184760"
+    "__vt__10CRenderBin": "0x80183c5c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -133,16 +215,5 @@
   "original_file_index": 3903,
   "weak_duplicates": [
     "__dt__10CRenderBinFv"
-  ],
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x8034ffb0"
-    }
   ]
 }
