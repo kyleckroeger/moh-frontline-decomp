@@ -176,6 +176,17 @@ as `fast.py` does since 4c75217f (`brchk.py` already did). Re-run (1,240 units, 
 small-data. The 18 drafts compile again and define their 17 functions; they also bring back
 5 fragment-local and 2 duplicate symbols that the failed compiles had hidden.
 
+More whole-file merges, 2026-11-13 (agent merge2, `scratch/loop3/merge2/notes.md`): fader,
+sprite, animated and animated_volume (vtable owners: `__vt__9CFaderBin`,
+`__vt__13CFaderControl`, `__vt__7CSprite`, `__vt__19CSpriteNoTextureBin`, `__vt__9CAnimated`,
+`__vt__15CAnimatedVolume` now defined from source), then smixfx, sdspmix, stretch, animseq,
+animmot and SearchNode (file statics). Re-run (1,217 units, 98 drafts, 84 data files, all
+compiled): **70 undefined, 137 fragment-local, 53 duplicate**, 0 small-data: 5 vtables fewer
+undefined and 12 fragment-local symbols gone. The remaining vtable owners (Tank_object,
+weapon, attachobject, thrown_obj, sphere, fiber, hierobject, light, thrownbullet, animplayer)
+have fragments on private CVector3/CMatrix views; each needs them moved onto the shared
+headers before it can be one unit.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
