@@ -38,8 +38,14 @@
     {
       "name": ".text",
       "address": "0x8015ea30",
-      "size": 1072,
+      "size": 1776,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034f490",
+      "size": 2,
+      "type": 8
     }
   ],
   "functions": [
@@ -48,18 +54,31 @@
       "address": "0x8015ea30",
       "size": 1072,
       "binding": 1
+    },
+    {
+      "name": "SNDBANKI_playpatch__FPvP11TAGGEDPATCHiiP11SNDPLAYOPTS",
+      "address": "0x8015ee60",
+      "size": 704,
+      "binding": 1
     }
   ],
   "externals": {
+    "SNDBANKI_userdatacallback__FP15SNDIPATCHHEADERi": "0x801593c0",
     "SNDI_calcfxlevel__Fii": "0x8015ddc0",
     "SNDI_pantoazimuth__Fi": "0x8015f848",
+    "SNDI_parsetimbre__FPPvP15SNDIPATCHHEADER": "0x8015e3a4",
     "SNDI_validrendermode__FPiP15SNDIPATCHHEADER": "0x80153798",
     "SNDPLATFORM_getvoicerange__FiPiPi": "0x8016b0f0",
     "SNDPLATFORM_playtimbre__FP15SNDIPATCHHEADERPviiiii": "0x8016b16c",
     "SNDVOICEI_alloc__FiiPiii": "0x8015d530",
     "SNDVOICEI_free__Fi": "0x8015dbd4",
+    "SNDVOICEI_get__Fi": "0x8015dd60",
+    "SNDover": "0x8015d214",
+    "SNDstop": "0x8015d148",
     "_restgpr_15": "0x80138a2c",
+    "_restgpr_16": "0x80138a30",
     "_savegpr_15": "0x801389e0",
+    "_savegpr_16": "0x801389e4",
     "iSNDcalcpitch__Fi": "0x8015e03c",
     "iSNDcalcvol__Fi": "0x8015de40",
     "iSNDrandom__Fv": "0x8015f934",

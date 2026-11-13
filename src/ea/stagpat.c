@@ -1,22 +1,36 @@
-/* A fragment of EA's stagpat.c (0x8015ea30): SNDBANKI_playtimbre starts one
-   timbre of a patch on the first render mode that has a free voice: the
-   voice record is filled from the timbre header (pan with optional random
-   spread, pitch from the root key, detune and random pitch, volume with
-   random spread scaled by the play volume, fine tune, envelope and its first
-   step, random start offsets, the play options' fields and the timbre's
-   channel voices), the pitch, effect level and volume are calculated and the
-   platform plays it; on failure its voices are freed and the next render
-   mode is tried (success ends the search). The function and SNDIPATCHHEADER/SNDPLAYOPTS are named by the
-   mangled symbol; the views (fields named by offset where their meaning is
-   not established) are inferred. Locals are declared in the order that gives
-   the original's registers. SNDBANKI_playpatch after it is not part of the
-   unit. */
+/* EA's stagpat.c: SNDBANKI_playtimbre starts one timbre of a patch on the
+   first render mode that has a free voice: the voice record is filled from the
+   timbre header (pan with optional random spread, pitch from the root key,
+   detune and random pitch, volume with random spread scaled by the play
+   volume, fine tune, envelope and its first step, random start offsets, the
+   play options' fields and the timbre's channel voices), the pitch, effect
+   level and volume are calculated and the platform plays it; on failure its
+   voices are freed and the next render mode is tried (success ends the
+   search). SNDBANKI_playpatch plays a patch: it takes a new patch key that no
+   active voice uses, parses the patch's timbres and starts every timbre whose
+   volume and key ranges hold the play options (one random detune for the
+   whole patch), drops the voices that are already over, tags the remaining
+   voices with the patch key and marks the last one; when a timbre fails or
+   nothing is left the started voices are stopped. The functions and
+   SNDIPATCHHEADER/SNDPLAYOPTS/TAGGEDPATCH are named by the mangled symbols;
+   the views (fields named by offset where their meaning is not established)
+   are inferred. Locals are declared in the order that gives the original's
+   registers; in SNDBANKI_playpatch one function-level 'i' serves the key
+   search, the voice tagging and the stop loops (the tagging loop's 'i = 0'
+   re-assigns it, so the compiler shares that zero with the stored 0, as in
+   the original). */
+struct TAGGEDPATCH;
+
 struct SNDIPATCHHEADER {
-    unsigned char unknown0000[3];
+    short detuneRange;
+    unsigned char unknown0002[1];
     signed char voiceCount;
     short pitch;
     short pitchRandom;
-    unsigned char unknown0008[4];
+    signed char lowVolume;
+    signed char highVolume;
+    signed char lowKey;
+    signed char highKey;
     signed char priority;
     signed char rootKey;
     unsigned char field0e;
@@ -64,7 +78,9 @@ struct SNDVOICEVIEW {
     unsigned char field1e;
     unsigned char field1f;
     short mode;
-    unsigned char unknown0022[10];
+    unsigned char patchKey;
+    unsigned char lastOfPatch;
+    unsigned char unknown0024[8];
     int field2c;
     unsigned char unknown0030[4];
     int field34;
@@ -87,7 +103,7 @@ struct SNDVOICEVIEW {
     unsigned char field5a;
     unsigned char field5b;
     unsigned char field5c;
-    unsigned char unknown005d[1];
+    signed char active;
     unsigned short field5e;
     int* envelope;
     int field64;
@@ -105,7 +121,8 @@ struct SNDVOICEVIEW {
 struct SNDPLAYOPTS {
     signed char field00;
     signed char field01;
-    unsigned char unknown0002[2];
+    signed char key;
+    signed char volume;
     unsigned char field04;
     signed char field05;
     unsigned char unknown0006[2];
@@ -120,11 +137,13 @@ struct SNDPLAYOPTS {
 };
 
 struct SNDGSVIEW {
-    unsigned char unknown000[468];
+    unsigned char unknown000[368];
+    short voiceCount;
+    unsigned char unknown172[98];
     SNDVOICEVIEW* voices;
 };
 
-extern "C" char sndgs[];
+extern "C" SNDGSVIEW sndgs;
 
 int SNDI_validrendermode(int*, SNDIPATCHHEADER*);
 void SNDPLATFORM_getvoicerange(int, int*, int*);
@@ -166,7 +185,7 @@ int SNDBANKI_playtimbre(int handle, int bank, void* data, SNDPLAYOPTS* options, 
         SNDPLATFORM_getvoicerange(mode, &low, &high);
         voice = SNDVOICEI_alloc(header->voiceCount, header->priority, &result, low, high);
         if (voice >= 0) {
-            v = &((SNDGSVIEW*)sndgs)->voices[voice];
+            v = &sndgs.voices[voice];
             pan = header->pan;
             if (header->panRandom) {
                 pan += randrange(header->panRandom);
@@ -242,11 +261,119 @@ int SNDBANKI_playtimbre(int handle, int bank, void* data, SNDPLAYOPTS* options, 
             if (SNDPLATFORM_playtimbre(header, data, voice, options->field0e, options->field12, options->field14,
                                        options->field16) < 0) {
                 for (i = 0; i < header->voiceCount; i++)
-                    SNDVOICEI_free(((SNDGSVIEW*)sndgs)->voices[voice].links[i]);
+                    SNDVOICEI_free(sndgs.voices[voice].links[i]);
                 result = -9;
             } else
                 break;
         }
+    }
+    return result;
+}
+
+int SNDI_parsetimbre(void**, SNDIPATCHHEADER*);
+void SNDBANKI_userdatacallback(SNDIPATCHHEADER*, int);
+extern "C" int SNDover(int);
+extern "C" void SNDstop(int);
+int SNDVOICEI_get(int);
+
+int SNDBANKI_playpatch(void* data, TAGGEDPATCH* patch, int handle, int bank, SNDPLAYOPTS* options) {
+    int* out;
+    unsigned char patchKey;
+    int* h;
+    void* p = patch;
+    SNDVOICEVIEW* voice = 0;
+    int count = 0;
+    int randomized = 0;
+    int detune = 0;
+    int volume;
+    int key;
+    int result = -9;
+    int more;
+    SNDGSVIEW* gs;
+    int handles[12];
+    int i;
+    SNDIPATCHHEADER header;
+
+    if (!patch)
+        return -8;
+    if (!data)
+        data = patch;
+    key = options->key;
+    volume = options->volume;
+    p = (char*)patch + 4;
+    static unsigned char freekey = 0;
+    gs = &sndgs;
+    SNDVOICEVIEW* voices = gs->voices;
+    int n = gs->voiceCount;
+retry:
+    if (++freekey == 0)
+        ++freekey;
+    patchKey = freekey;
+    {
+        SNDVOICEVIEW* v = voices;
+        for (i = 0; i < n; i++) {
+            if (v->active && v->patchKey == patchKey)
+                goto retry;
+            v++;
+        }
+    }
+    h = handles;
+    out = h;
+    do {
+        more = SNDI_parsetimbre(&p, &header);
+        if (!randomized) {
+            if (header.detuneRange)
+                detune = randrange(header.detuneRange);
+            randomized = 1;
+        }
+        if (volume >= header.lowVolume && volume <= header.highVolume && key >= header.lowKey && key <= header.highKey) {
+            result = SNDBANKI_playtimbre(handle, bank, data, options, &header, key, volume, detune);
+            if (result < 0)
+                goto stop;
+            *out++ = result;
+            count++;
+            SNDBANKI_userdatacallback(&header, 1);
+        }
+    } while (more);
+    {
+        int* src = h;
+        int* dst = h;
+        int started = count;
+        count = 0;
+        for (int j = 0; j < started; j++) {
+            if (!SNDover(*src)) {
+                count++;
+                *dst++ = *src;
+            }
+            src++;
+        }
+    }
+    if (count == 0)
+        goto stop;
+    if (count == 1) {
+        int index = SNDVOICEI_get(handles[0]);
+        if (index >= 0) {
+            SNDVOICEVIEW* single = &gs->voices[index];
+            single->patchKey = 0;
+            single->lastOfPatch = 0;
+        }
+    } else {
+        for (i = 0; i < count; i++) {
+            int index = SNDVOICEI_get(*h);
+            if (index >= 0) {
+                voice = &gs->voices[index];
+                voice->patchKey = patchKey;
+                voice->lastOfPatch = 0;
+            }
+            h++;
+        }
+        voice->lastOfPatch = 1;
+    }
+    return result;
+stop:
+    for (i = 0; i < count; i++) {
+        SNDstop(*h);
+        h++;
     }
     return result;
 }
