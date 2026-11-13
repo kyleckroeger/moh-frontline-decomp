@@ -20,6 +20,12 @@ multiplayer not at all. Every landing keeps the complete image identical.
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
 - Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
+- **Paused again 2026-11-12 ~22:40.** After the 21:57 update: __sinit_pumhandler_cpp 276
+  (fac4d7fa). Verified 1,280,616 bytes (90.53%), +61,344 this run. The buddy.cpp temporary
+  knot (__sinit_buddy_cpp, list<BuddyInfo> range ctor) was re-studied by sinit2 and is still
+  open (scratch/loop3/sinit2/notes.md: the original splits the BuddyInfo temp, keeping only its
+  state part in memory with typed stores). No agent has a fresh lead; restart with the /loop
+  command when one appears.
 - **21:57 update:** since the resume, also landed UserInterface::Init 1,160 (349761a7),
   ConstrainVelocity 1,268 (b9f2cf08), PopUpMessageHandler ctor 988 (78daa000). Verified
   1,280,340 bytes (90.51%), +61,068 this run. One agent (sinit1, __sinit_pumhandler_cpp); other

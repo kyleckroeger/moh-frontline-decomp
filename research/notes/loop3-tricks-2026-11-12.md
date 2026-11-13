@@ -847,3 +847,43 @@ Lever found (CheckForObstructions): 'int sign = 1; if (IsAbove(*this, node)) sig
 That is a temporary's uninitialised float members kept in a register. Flatten the temporary's
 sub-object members (plain colour bytes instead of a CColor member) rather than hunting for a
 0.0f. __sinit_pumhandler_cpp (fac4d7fa).
+
+## extab records as type evidence (eh1, 2026-11-12)
+- research/tools/extab_records.py (`orig ADDR`, `cmp ADDR TMPL SRC FUNC`) decodes the original's and our
+  extab record: DLOCAL/DMEMBER/DBASE/DMEMBERARR name the destructors, DELPTR names the operator delete.
+  A local the original destroys (DLOCAL) needs a destructor in the draft even if it is empty and inline:
+  CW then emits the weak out-of-line copy for the table (Play: DISP_OLD_FRAMES, real name from the dtor
+  symbol). DELPTR with __dl__FPv means the new'd class has NO class operator delete (ShellInit's CSprite).
+- Header-only records (no ranges) mean no cleanup at all: nothing to learn for CreateRootHierObject,
+  CreateDestructable, CreateDumpObject, AnimStStartState, CPathNodeList ctor.
+- (loop undo1) Value-wrapper replacement for selects: a 'bge; b; fmr a,b' min/max that keeps the result in the term's
+  own register needs copy-defined terms; FIELDS of a plain local CVector3 do that ('CVector3 s; s.x = start.x - radius;
+  ... min.x = s.x < e.x ? s.x : e.x'). CVolCapsule::GetExtents SubV/AddV 0 / ctor form 32 / named floats 66 (bac20c93).
+  Inline ctor arguments are evaluated right to left (z before y), which swaps the y/z colours.
+- (loop undo1) A pointer select between two stack locals ('float* end = a < b ? &a : &b', loop reads *end) is an inlined
+  reference-returning min: 'float end = dwi::min(a, b)' (body 'a < b ? a : b') fixed GetClosestParameter 32 -> 0.
+- (loop minmax1) Census: of the 112 open drafts, only CCDBVolBox::TestCollision(CTriangle) has the stack-slot
+  reference min/max select (already written as ref Min/Max, select exact, colours upstream), and only UpdateBoundingBox
+  has 'bge; b; fmr' selects. scratch/loop3/minmax1/scan.py re-runs the scan (hits.tsv).
+- (loop real2) Real CVector3 members in drafts: box-plane went 52 -> 0 once the invented MulV/operators were replaced with
+  a.Scale(axis, half), corner copy + corner.Sub(corner, v)/Add(v), AND the normal's Negate moved before the corner subtractions
+  (statement order mattered more than the helper: Scale-only 120, Negate after 149). Per-component hill-climb orders from vec7 were
+  approximating member-call ordering. Elsewhere the members were neutral (renames at equal score); value forms like n.Sub then
+  n.Scale(n, inv) in place of float triples lose (kept in memory).
+- (loop real3) DECLARATION order of plain float locals is a lever for FPR colouring even when statement order is fixed:
+  ConstrainVelocity 14 -> 6 only by reordering the 'float x;' declarations of the second-solve block (det, e, bd, n2&, py, px, n1&,
+  dc, d2, inv, pz). Tool: real3/ohc.py KEY base.cpp spec.py seed N, spec = "BLOCKFILE='block.txt'; exec(open('gspec.py').read())"
+  (splits 'T x = e;' into decl + assignment, deps from def/use of block locals; ~0.1-1 s per compile; reblock.py restarts from a best).
+  CCDBTriangle-capsule 7 -> 5: rv.Scale(dir, fR) hoisted before the edge products (member-call order) + decl order.
+  Inert under the same climb: OnCollision (3), box-sphere top block (13), box-capsule n block (102), death_cb loop inits.
+  Box-sphere: 'CVector3 local(m_axes[0].Dot(diff), m_axes[1].Dot(diff), m_axes[2].Dot(diff))' (3-float ctor, args right to left)
+  gives the original's compute-z-first/store-x-first order, but scores 19 (vs 13): y and abs.x colours swap.
+- (fpr2) Two FPRs swapped while the SCHEDULE already matches (orig 'fmuls f6,A; fmuls f8,B', ours 'fmuls f6,B; fmuls f8,A'): CW colours in value-creation order and schedules separately, so swap which of the two statements comes FIRST in the source (move the one the orig gives the lower reg earlier); the scheduler keeps the emitted order (ConstrainVelocity 2 -> 0).
+- (pum3) A named byte local stored to a member AND reused later ('extra = entry[0]; rec.m_extra = extra; ... + extra') came out in the wrong volatile reg against a hoisted global base (r7/r6 swapped), inert to ~1,500 order/type variants. The chained assignment 'extra = rec.m_extra = entry[0];' makes the stored value the temp and extra a copy of it: one load, original colouring (PopUpMessageHandler ctor 16 -> 0; the out-of-line Load stays exact with it).
+- (sinit2) CW 1.3.2 can scalarise a temporary PARTLY: members it can split (init-list scalars) leave no stack stores and
+  reach copies as constants, while a region it cannot split stays at its offset in the temp's slot. Seen so far only when
+  that region is a never-written array read by an implicit copy (pumhandler's text) or is WRITTEN by a block copy
+  (value-init 'state(BuddyState())' of a POD member, or 'state(g_x)': three lwz/stw words). Any address of the temp or a
+  sub-object (self = this, &member, subscripts, member ctor this in an __sinit) makes the whole temp memory; plain typed
+  accesses scalarise everything. buddy.cpp's BuddyInfo() temp (sinit, list range ctor, Create) is such a partial temp
+  with TYPED region stores; no natural source found yet (scratch/loop3/sinit2/notes.md).
