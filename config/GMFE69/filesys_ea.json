@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse",
     "-use_lmw_stmw",
@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x801482ec",
-      "size": 4552,
+      "size": 7136,
       "type": 1
     },
     {
       "name": ".data",
       "address": "0x80190f70",
-      "size": 232,
+      "size": 280,
       "type": 1
     },
     {
       "name": ".bss",
       "address": "0x8033ed60",
       "size": 64,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034f380",
+      "size": 3,
       "type": 8
     }
   ],
@@ -67,6 +73,42 @@
       "name": "DefaultFILE_mfree__FPv",
       "address": "0x8014831c",
       "size": 48,
+      "binding": 0
+    },
+    {
+      "name": "freehandle__FP10HANDLE_def",
+      "address": "0x80149e68",
+      "size": 80,
+      "binding": 0
+    },
+    {
+      "name": "freeop__FP17FILEOPERATION_def",
+      "address": "0x80149d68",
+      "size": 80,
+      "binding": 0
+    },
+    {
+      "name": "reserveop__Fv",
+      "address": "0x80149c68",
+      "size": 256,
+      "binding": 0
+    },
+    {
+      "name": "reservehandle__Fv",
+      "address": "0x80149db8",
+      "size": 176,
+      "binding": 0
+    },
+    {
+      "name": "iFILE_perror__FP17FILEOPERATION_def",
+      "address": "0x80149c64",
+      "size": 4,
+      "binding": 0
+    },
+    {
+      "name": "iFILE_ExecCommand__FP17FILEOPERATION_def",
+      "address": "0x8014975c",
+      "size": 1088,
       "binding": 0
     },
     {
@@ -176,9 +218,40 @@
       "address": "0x80149208",
       "size": 684,
       "binding": 1
+    },
+    {
+      "name": "iFILE_delbigclosecallback__FiiPv",
+      "address": "0x801494b4",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "FILESYS_delbig",
+      "address": "0x801494e8",
+      "size": 528,
+      "binding": 1
+    },
+    {
+      "name": "FILESYS_atomic",
+      "address": "0x801496f8",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "iFILE_CommandCompleteCallback__Fi",
+      "address": "0x80149b9c",
+      "size": 200,
+      "binding": 1
+    },
+    {
+      "name": "FILESYS_setmemcallbacks",
+      "address": "0x80149eb8",
+      "size": 20,
+      "binding": 1
     }
   ],
   "externals": {
+    "BIG_locateentryz": "0x8014a510",
     "BIG_sizeofheader": "0x8014a364",
     "BIG_typeofheader": "0x8014a318",
     "MEM_copy": "0x80150880",
@@ -198,30 +271,26 @@
     "_savegpr_24": "0x80138a04",
     "_savegpr_25": "0x80138a08",
     "_savegpr_27": "0x80138a10",
-    "freehandle__FP10HANDLE_def": "0x80149e68",
-    "freeop__FP17FILEOPERATION_def": "0x80149d68",
+    "closefile__FP10HANDLE_def": "0x80147bbc",
+    "deletefile__FPCc": "0x801482e4",
     "gFileSysOpts": "0x80190f38",
-    "iFILE_ExecCommand__FP17FILEOPERATION_def": "0x8014975c",
-    "iFILE_perror__FP17FILEOPERATION_def": "0x80149c64",
+    "getfilesize__FP10HANDLE_def": "0x80148248",
     "initfiledev__Fv": "0x801478a0",
     "killfiledev__Fv": "0x8014790c",
-    "reservehandle__Fv": "0x80149db8",
-    "reserveop__Fv": "0x80149c68",
+    "openfile__FPCcUiP10HANDLE_def": "0x801479b8",
+    "readfile__FP10HANDLE_defPvii": "0x8014817c",
     "stopreadfile__FP10HANDLE_def": "0x801482e0",
+    "strchr": "0x8013fe64",
+    "strcmp": "0x8013fed4",
+    "strcpy": "0x80140040",
     "strncmp": "0x8013fe94",
-    "strncpy": "0x8013fffc"
+    "strncpy": "0x8013fffc",
+    "writefile__FP10HANDLE_defPvii": "0x801481cc"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "freehandle__FP10HANDLE_def",
-    "freeop__FP17FILEOPERATION_def",
-    "iFILE_ExecCommand__FP17FILEOPERATION_def",
-    "iFILE_perror__FP17FILEOPERATION_def",
-    "reservehandle__Fv",
-    "reserveop__Fv"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "filesys.cpp",
