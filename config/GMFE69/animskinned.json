@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80066e98",
-      "size": 260,
+      "address": "0x80066a04",
+      "size": 1432,
       "type": 1
     },
     {
@@ -51,31 +51,49 @@
     },
     {
       "name": "extab",
-      "address": "0x8000b510",
-      "size": 16,
+      "address": "0x8000b4e0",
+      "size": 64,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24,
+      "linked_size": 72,
       "stripped_objects": [
-        "@38"
+        "@142"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x80012698",
-      "size": 24,
+      "address": "0x80012650",
+      "size": 96,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36,
+      "linked_size": 108,
       "stripped_objects": [
-        "@39"
+        "@143"
       ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170760",
+      "size": 26,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183910",
+      "size": 56,
+      "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801d3e10",
       "size": 36,
       "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034db50",
+      "size": 16,
+      "type": 1
     }
   ],
   "functions": [
@@ -86,6 +104,72 @@
       "binding": 0
     },
     {
+      "name": "AsAnimSkinned__12CAnimSkinnedFv",
+      "address": "0x80066a04",
+      "size": 4,
+      "binding": 2
+    },
+    {
+      "name": "BindSkeleton__12CAnimSkinnedFP10CharSkel_t",
+      "address": "0x80066adc",
+      "size": 184,
+      "binding": 1
+    },
+    {
+      "name": "SetRotation__12CAnimSkinnedFl",
+      "address": "0x80066b94",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "ExtractTranslation__12CAnimSkinnedFP8CVector3",
+      "address": "0x80066b9c",
+      "size": 44,
+      "binding": 1
+    },
+    {
+      "name": "ExtractRotation__12CAnimSkinnedFPl",
+      "address": "0x80066bc8",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "Draw__12CAnimSkinnedFR12CDrawContext",
+      "address": "0x80066dac",
+      "size": 140,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAnimation__12CAnimSkinnedFf",
+      "address": "0x80066bec",
+      "size": 260,
+      "binding": 1
+    },
+    {
+      "name": "__dt__12CAnimSkinnedFv",
+      "address": "0x80066e3c",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "UpdateSkeletonMatrices__12CAnimSkinnedFP7CMatrixP8CVector3P8CVector3",
+      "address": "0x80066a08",
+      "size": 212,
+      "binding": 1
+    },
+    {
+      "name": "Init__12CAnimSkinnedFP11CAnimObjectUsP11CharFrame_t",
+      "address": "0x80066cf0",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__12CAnimSkinnedFv",
+      "address": "0x80066e38",
+      "size": 4,
+      "binding": 1
+    },
+    {
       "name": "__ct__12CAnimSkinnedFv",
       "address": "0x80066e98",
       "size": 208,
@@ -93,15 +177,36 @@
     }
   ],
   "externals": {
+    "AnimInitHeader": "0x800691d4",
+    "AnimMotCalcAnimPos": "0x800658c4",
+    "AnimMotCalcAnimRot": "0x80065bd4",
+    "AnimMotCalcFloatingBone": "0x800656b8",
+    "AnimStGetCurrentState": "0x800670ac",
+    "AsAnimMorph__9CAnimatedFv": "0x800609fc",
+    "BlendSkelFrames": "0x8006a39c",
+    "DMClusterBindSkeleton__FP17DMClusterObject_TP10CharSkel_t": "0x800f5290",
+    "DMClusterInitObject__FP17DMClusterObject_TPA3_A4_fPA3_A4_fUl": "0x800f5298",
+    "DMClusterSkelTraverse__FP11CharFrame_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3": "0x800f52a8",
+    "DMGeomSetNodeState__FP17DMGeometryState_Tll": "0x800f6db8",
+    "DMRenderBindClusterObj__FP16DMRenderObject_TP17DMClusterObject_T": "0x800f4c84",
+    "DMRenderInitObject__FP16DMRenderObject_TP8TUInt128P8TUInt128Ul": "0x800f4dcc",
+    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c",
+    "Draw__9CAnimatedFR12CDrawContext": "0x80060e0c",
+    "GetEntry__16CAnimMatrixCacheFPvRb": "0x80060a04",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__9CAnimatedFP11CAnimObjectUs": "0x80061530",
+    "Pop__12CMatrixStackFv": "0x80090dc0",
+    "PushUnit__12CMatrixStackFv": "0x80090dd0",
+    "UpdateAnimation__9CAnimatedFf": "0x80061314",
+    "Update__16CAnimMatrixCacheFv": "0x80060b38",
     "__construct_array": "0x8013834c",
     "__ct__13AnimChannel_tFv": "0x80065680",
     "__ct__16CAnimMatrixCacheFiii": "0x80060b80",
     "__ct__8CVector4Fv": "0x8006567c",
     "__dl__FPv": "0x8001ca2c",
     "__dt__9CAnimatedFv": "0x800609a0",
-    "__vt__12CAnimSkinned": "0x8018391c",
     "__vt__9CAnimated": "0x801838a8",
+    "g_matStack": "0x8034eab8",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
@@ -110,11 +215,29 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
+    "g_matStack",
     "s_ClassInit__7CMatrix"
   ],
   "original_file": "animskinned.cpp",
   "original_file_index": 3069,
   "weak_duplicates": [
     "__dt__9CAnimatedFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fcec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fce8"
+    }
   ]
 }
