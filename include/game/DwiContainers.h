@@ -98,20 +98,11 @@ public:
         tail->m_next = head;
         head->m_prev = tail;
     }
+    // Through clear(): an expanded inline numbers its locals in reverse declaration order, so
+    // the weak out-of-line ~list and its copies inlined into reserve colour node/next alike
+    // only when both expand clear() (research/notes/loop3-tricks-2026-11-12.md).
     ~list() {
-        list_node<T>* node = m_head.m_next;
-        list_node<T>* next;
-        while (node != &m_head) {
-            next = node->m_next;
-            node->~list_node<T>();
-            node->m_prev = 0;
-            node->m_next = m_free;
-            m_free = node;
-            node = next;
-        }
-        m_head.m_next = &m_head;
-        m_head.m_prev = &m_head;
-        m_count = 0;
+        clear();
         if (m_owned)
             MEM_free(m_pool);
         m_pool = 0;
