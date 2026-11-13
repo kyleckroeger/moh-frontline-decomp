@@ -188,6 +188,14 @@ def match(obj, original, file_index, duplicates=(), pooled=(), file_duplicates=(
     # must not pin anything: the duplicate is not placed.
     dropped_spans = [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
                      if (s["name"] in duplicates or s["name"] in dropped) and s["section"] and s["section"] < 0xFF00]
+    # Nor do the records of code the unit drops (a weak duplicate's exception-index
+    # entry and table): their relocations point where the original linker kept
+    # another file's records.
+    kept_ranges = [(f["section"], f["address"], f["address"] + f["size"])
+                   for kept, _ in layout.values() for f, _ in kept]
+    foreign = foreign_records(obj, symbols, kept_ranges)
+    dropped_spans += [(s["section"], s["address"], s["address"] + s["size"]) for s in symbols
+                      if s["type"] == 1 and s["size"] and (s["section"], s["address"]) in foreign]
 
     def in_dropped(section, where):
         return any(section == d and a <= where < b for d, a, b in dropped_spans)
