@@ -37,12 +37,30 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80152d98",
-      "size": 844,
+      "address": "0x8015250c",
+      "size": 3032,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034f418",
+      "size": 13,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "SNDSYS_getopts",
+      "address": "0x8015250c",
+      "size": 956,
+      "binding": 1
+    },
+    {
+      "name": "SNDSYS_setopts",
+      "address": "0x801528c8",
+      "size": 1232,
+      "binding": 1
+    },
     {
       "name": "SNDSYSI_init",
       "address": "0x80152d98",
@@ -72,13 +90,16 @@
     "SNDMEMI_init__FPvi": "0x80158cdc",
     "SNDMEMI_restore__Fv": "0x80158d44",
     "SNDPLATFORM_init__Fv": "0x8016a578",
+    "SNDPLATFORM_outputcaps__Fv": "0x80169c18",
+    "SNDPLATFORM_outputset__Fv": "0x80169d08",
     "SNDPLATFORM_restore__Fv": "0x8016ac84",
     "SNDSYS_entercritical": "0x80153554",
-    "SNDSYS_getopts": "0x8015250c",
     "SNDSYS_leavecritical": "0x80153588",
-    "SNDSYS_setopts": "0x801528c8",
     "SNDfxinitbus": "0x8015ca58",
     "SNDstopall": "0x8015d1a4",
+    "__copy": "0x801381d4",
+    "_restgpr_14": "0x80138a28",
+    "_savegpr_14": "0x801389dc",
     "memset": "0x80009410",
     "sndgs": "0x80340860",
     "sndlibauthor": "0x801933a0"
