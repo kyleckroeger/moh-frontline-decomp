@@ -53,24 +53,11 @@ struct UserMessage {
 };
 class CUserMessageTable {
 public:
-    CUserMessageTable() : m_table(0), m_lengths(0), m_strings(0), m_count(0) {}
-    ~CUserMessageTable();
-    void Unload() {
-        if (m_table) {
-            delete[] m_table;
-            m_table = 0;
-        }
-        if (m_strings) {
-            TLT_CloseFile(m_strings);
-            m_strings = 0;
-        }
-        if (m_lengths) {
-            TLT_CloseFile(m_lengths);
-            m_lengths = 0;
-        }
-        m_count = 0;
-    }
+    void Unload();
+    void CreateUMStructFromFile();
     void Load(char*, char*);
+    ~CUserMessageTable();
+    CUserMessageTable() : m_table(0), m_lengths(0), m_strings(0), m_count(0) {}
     UserMessage* m_table;
     char* m_strings;
     unsigned char* m_lengths;
@@ -91,37 +78,60 @@ inline void ChangeEndian(unsigned short& value) {
     ChangeEndian(*reinterpret_cast<short*>(&value));
 }
 
-inline void CUserMessageTable::Load(char* textFile, char* indexFile) {
-    char* text;
-    unsigned char* index;
-    int pos;
-    if (m_strings || m_lengths || m_table)
-        Unload();
-    m_strings = (char*)TLT_LoadFileNormal(textFile, 0, 0);
-    m_lengths = (unsigned char*)TLT_LoadFileNormal(indexFile, 0, 0);
-    text = m_strings;
-    if (!text || !(index = m_lengths)) {
-        DebugMsg("Can't find User message files: %s and %s!!!\n", textFile, indexFile);
-        return;
+inline void CUserMessageTable::Unload() {
+    if (m_table) {
+        delete[] m_table;
+        m_table = 0;
     }
-    pos = 2;
+    if (m_strings) {
+        TLT_CloseFile(m_strings);
+        m_strings = 0;
+    }
+    if (m_lengths) {
+        TLT_CloseFile(m_lengths);
+        m_lengths = 0;
+    }
+    m_count = 0;
+}
+
+inline void CUserMessageTable::CreateUMStructFromFile() {
+    unsigned char* entry;
+    char* end;
+    unsigned short i;
+    unsigned char extra;
+    unsigned char length;
+    unsigned char* index = m_lengths;
+    int pos = 2;
+    char* text = m_strings;
     unsigned short count = *(unsigned short*)index;
     ChangeEndian(count);
     m_count = count;
     if (m_table)
         delete[] m_table;
     m_table = new UserMessage[m_count];
-    for (unsigned short i = 0; i < m_count; i++, pos += 2) {
-        unsigned char* entry = index + pos;
-        unsigned char extra = entry[0];
+    for (i = 0; i < m_count; i++, pos += 2) {
+        entry = index + pos;
+        extra = entry[0];
         m_table[i].m_length = extra;
-        unsigned char length = entry[1];
+        length = entry[1];
         m_table[i].m_text = text;
-        char* end = text + length;
+        end = text + length;
         text = end + 1 + extra;
         m_table[i].m_padding = length;
         *end = 0;
     }
+}
+
+inline void CUserMessageTable::Load(char* textFile, char* indexFile) {
+    if (m_strings || m_lengths || m_table)
+        Unload();
+    m_strings = (char*)TLT_LoadFileNormal(textFile, 0, 0);
+    m_lengths = (unsigned char*)TLT_LoadFileNormal(indexFile, 0, 0);
+    if (!m_strings || !m_lengths) {
+        DebugMsg("Can't find User message files: %s and %s!!!\n", textFile, indexFile);
+        return;
+    }
+    CreateUMStructFromFile();
 }
 
 class PopUpMessage {

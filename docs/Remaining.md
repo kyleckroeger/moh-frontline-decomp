@@ -177,6 +177,9 @@ the maintainer has decided which forms are acceptable.
     overloads, and the reference-returning `dwi::min`/`dwi::max`.
   - An identity statement standing in for a compiled-out statement in an otherwise empty
     `case`, with a comment saying so.
+  - A second-level assigning inline (CAnimMorph::Draw's `Assign`) when the original's last
+    stack slot holds its dead `operator=` temporary; and per-line spelling choices found by
+    search (mixed `[i]` and `.x`).
   - A view-based pointer-cast field spelling (LevelField) in place of byte offsets.
   - The shared CVector3 header's base-class copy constructor (`CVector3 : CVector3Base`).
 
