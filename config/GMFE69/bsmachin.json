@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -40,19 +40,25 @@
     {
       "name": ".text",
       "address": "0x80036a78",
-      "size": 6520,
+      "size": 12556,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a25c",
-      "size": 160,
+      "size": 288,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011138",
-      "size": 240,
+      "size": 432,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80182b38",
+      "size": 1924,
       "type": 1
     },
     {
@@ -76,7 +82,7 @@
     {
       "name": ".sdata2",
       "address": "0x8034f730",
-      "size": 12,
+      "size": 16,
       "type": 1
     }
   ],
@@ -115,6 +121,12 @@
       "name": "BSOpCodeFunc_FNCALL__Fv",
       "address": "0x80036e04",
       "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "LoadPropertyData__FP18xyzProperty_Structi",
+      "address": "0x80038408",
+      "size": 188,
       "binding": 1
     },
     {
@@ -308,6 +320,102 @@
       "address": "0x80038174",
       "size": 636,
       "binding": 1
+    },
+    {
+      "name": "BSMachineGetMemoryRequirements__Fv",
+      "address": "0x800383f0",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP15MOH_core_Structi",
+      "address": "0x80039a60",
+      "size": 292,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP19MOH_mechanic_Structi",
+      "address": "0x80039924",
+      "size": 316,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP16MOH_enemy_Structi",
+      "address": "0x800395b0",
+      "size": 884,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP18MOH_powerup_Structi",
+      "address": "0x80039484",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP19MOH_wayPoint_Structi",
+      "address": "0x80039300",
+      "size": 388,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP20MOH_pathPoint_Structi",
+      "address": "0x800391dc",
+      "size": 292,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP17MOH_envMod_Structi",
+      "address": "0x800390b0",
+      "size": 300,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP25MOH_mechanicEnvMod_Structi",
+      "address": "0x80038f6c",
+      "size": 324,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP19MOH_particle_Structi",
+      "address": "0x80038ce4",
+      "size": 648,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP30MOH_projectileGenerator_Structi",
+      "address": "0x80038b60",
+      "size": 388,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP36MOH_projectileGeneratorTarget_Structi",
+      "address": "0x800389f4",
+      "size": 364,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP23MOH_cameraShaker_Structi",
+      "address": "0x80038898",
+      "size": 348,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP31MOH_playerPathController_Structi",
+      "address": "0x80038744",
+      "size": 340,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP24MOH_animatedLight_Structi",
+      "address": "0x80038610",
+      "size": 308,
+      "binding": 1
+    },
+    {
+      "name": "_LoadPropertyData__FP20MOH_fogParams_Structi",
+      "address": "0x800384c4",
+      "size": 332,
+      "binding": 1
     }
   ],
   "externals": {
@@ -315,7 +423,6 @@
     "BSMessageRemoveHandler__FP28BSMessageRegistration_struct": "0x80039eb0",
     "BSRegisterMessage__FP33BSCode_MessageHandlerEntry_structP8BSObjectUsP22BSMachineThread_structPP28BSMessageRegistration_struct": "0x8003a1bc",
     "BSUtilGetMemory__Fii": "0x8003b83c",
-    "LoadPropertyData__FP18xyzProperty_Structi": "0x80038408",
     "g_iBSMessageRegistrationListSize": "0x8034e82c",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778",

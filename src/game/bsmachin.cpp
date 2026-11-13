@@ -1,6 +1,13 @@
-// Behaviour-script virtual machine. Structure and descriptive names follow the
-// Rising Sun reconstruction (EA's later revision); only accessed fields and
-// strides are established.
+// bsmachin.cpp: the behaviour-script virtual machine (the opcode handlers,
+// thread creation, execution and destruction, the machine's set-up and
+// shutdown), its memory requirement and the property-data readers
+// (LoadPropertyData and the per-structure _LoadPropertyData overloads), which
+// return a field of a level object's property structure by index. The
+// functions and structures are named by the mangled symbols; the structure
+// members are inferred from the accessed offsets, and the constants are
+// entries of the file's .sdata2 pool. Structure and descriptive names follow
+// the Rising Sun reconstruction (EA's later revision); only accessed fields
+// and strides are established.
 
 
 struct xyzProperty_Struct {
@@ -1250,3 +1257,896 @@ int BSInitMachine() {
     g_piFrame = g_piStackTop + 1;
     return 0;
 }
+
+int BSMachineGetMemoryRequirements() {
+    return g_iDefaultStackSize * sizeof(int) + g_iBSMessageRegistrationListSize * sizeof(BSMessageListView);
+}
+
+int LoadPropertyData(xyzProperty_Struct* properties, int field) {
+    switch (properties->field0c) {
+    case 1:
+        return _LoadPropertyData(reinterpret_cast<MOH_core_Struct*>(properties), field);
+    case 2:
+        return _LoadPropertyData(reinterpret_cast<MOH_mechanic_Struct*>(properties), field);
+    case 3:
+        return _LoadPropertyData(reinterpret_cast<MOH_enemy_Struct*>(properties), field);
+    case 4:
+        return _LoadPropertyData(reinterpret_cast<MOH_powerup_Struct*>(properties), field);
+    case 5:
+        return _LoadPropertyData(reinterpret_cast<MOH_wayPoint_Struct*>(properties), field);
+    case 6:
+        return _LoadPropertyData(reinterpret_cast<MOH_pathPoint_Struct*>(properties), field);
+    case 7:
+        return _LoadPropertyData(reinterpret_cast<MOH_envMod_Struct*>(properties), field);
+    case 8:
+        return _LoadPropertyData(reinterpret_cast<MOH_mechanicEnvMod_Struct*>(properties), field);
+    case 9:
+        return _LoadPropertyData(reinterpret_cast<MOH_particle_Struct*>(properties), field);
+    case 10:
+        return _LoadPropertyData(reinterpret_cast<MOH_projectileGenerator_Struct*>(properties), field);
+    case 11:
+        return _LoadPropertyData(reinterpret_cast<MOH_projectileGeneratorTarget_Struct*>(properties), field);
+    case 12:
+        return _LoadPropertyData(reinterpret_cast<MOH_cameraShaker_Struct*>(properties), field);
+    case 13:
+        return _LoadPropertyData(reinterpret_cast<MOH_playerPathController_Struct*>(properties), field);
+    case 14:
+        return _LoadPropertyData(reinterpret_cast<MOH_animatedLight_Struct*>(properties), field);
+    case 15:
+        return _LoadPropertyData(reinterpret_cast<MOH_fogParams_Struct*>(properties), field);
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_fogParams_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field78;
+    case 23:
+        return object->field7c;
+    case 24:
+        return object->field70;
+    case 25:
+        return object->field72;
+    case 26:
+        return object->field74;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_animatedLight_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 24:
+        return object->field70;
+    case 25:
+        return object->field72;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_playerPathController_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field7c;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field72;
+    case 26:
+        return object->field74;
+    case 27:
+        return object->field78;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_cameraShaker_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field84;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field74;
+    case 26:
+        return object->field78;
+    case 27:
+        return object->field7c;
+    case 28:
+        return object->field80;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_projectileGeneratorTarget_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field88;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field72;
+    case 26:
+        return object->field74;
+    case 27:
+        return object->field78;
+    case 28:
+        return object->field7c;
+    case 29:
+        return object->field80;
+    case 30:
+        return object->field84;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_projectileGenerator_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field90;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field72;
+    case 26:
+        return object->field74;
+    case 27:
+        return object->field78;
+    case 28:
+        return object->field7c;
+    case 29:
+        return object->field80;
+    case 30:
+        return object->field94;
+    case 31:
+        return object->field84;
+    case 32:
+        return object->field88;
+    case 33:
+        return object->field8c;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_particle_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 23:
+        return object->field82;
+    case 24:
+        return object->field84;
+    case 25:
+        return object->field88;
+    case 26:
+        return object->field8c;
+    case 27:
+        return object->field90;
+    case 28:
+        return object->field94;
+    case 29:
+        return object->field98;
+    case 30:
+        return object->field9c;
+    case 31:
+        return object->fielda0;
+    case 32:
+        return object->fielda4;
+    case 33:
+        return object->fielda8;
+    case 34:
+        return object->fieldac;
+    case 35:
+        return object->fieldb0;
+    case 36:
+        return object->fieldb4;
+    case 37:
+        return object->fieldb8;
+    case 38:
+        return object->fieldbc;
+    case 39:
+        return object->fieldc0;
+    case 40:
+        return object->fieldc4;
+    case 41:
+        return object->fieldc8;
+    case 42:
+        return object->field71;
+    case 43:
+        return object->field72;
+    case 44:
+        return object->field73;
+    case 45:
+        return object->field74;
+    case 46:
+        return object->field75;
+    case 47:
+        return object->field76;
+    case 48:
+        return object->field77;
+    case 49:
+        return object->field78;
+    case 50:
+        return object->field79;
+    case 51:
+        return object->fieldcc;
+    case 52:
+        return object->fieldd0;
+    case 53:
+        return object->fieldd4;
+    case 54:
+        return object->fieldd8;
+    case 55:
+        return object->fielddc;
+    case 56:
+        return object->fielde0;
+    case 57:
+        return object->fielde4;
+    case 58:
+        return object->fielde8;
+    case 59:
+        return object->field7a;
+    case 60:
+        return object->field7b;
+    case 61:
+        return object->field7c;
+    case 62:
+        return object->field7d;
+    case 63:
+        return object->field7e;
+    case 64:
+        return object->field7f;
+    case 65:
+        return object->field80;
+    case 66:
+        return object->field70 & 1;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_mechanicEnvMod_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field74;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field78;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_envMod_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_pathPoint_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_wayPoint_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70 & 1;
+    case 23:
+        return (object->field70 >> 1) & 1;
+    case 24:
+        return (object->field70 >> 2) & 1;
+    case 25:
+        return (object->field70 >> 3) & 1;
+    case 26:
+        return (object->field70 >> 4) & 1;
+    case 27:
+        return (object->field70 >> 5) & 1;
+    case 28:
+        return (object->field70 >> 6) & 1;
+    case 29:
+        return (object->field70 >> 7) & 1;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_powerup_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_enemy_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field90;
+    case 24:
+        return object->field71;
+    case 25:
+        return object->field94;
+    case 26:
+        return object->field72;
+    case 27:
+        return object->field98;
+    case 28:
+        return object->field9c;
+    case 29:
+        return object->fielda0;
+    case 30:
+        return object->field73;
+    case 31:
+        return object->field74;
+    case 32:
+        return object->field75;
+    case 33:
+        return object->fielda4;
+    case 34:
+        return object->fielda8;
+    case 35: {
+        float value = object->field7e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 36: {
+        float value = object->field80 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 37: {
+        float value = object->field82 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 38:
+        return object->field76;
+    case 39:
+        return object->field77;
+    case 40:
+        return object->field78;
+    case 41:
+        return object->field79;
+    case 42:
+        return object->field84;
+    case 43:
+        return object->field7a;
+    case 44:
+        return object->fieldac;
+    case 45: {
+        float value = object->field86 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 46: {
+        float value = object->field88 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 47: {
+        float value = object->field8a / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 48: {
+        float value = object->field8c / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 49: {
+        float value = object->field8e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 50:
+        return object->field7b;
+    case 51:
+        return object->field7c;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_mechanic_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    case 22:
+        return object->field70;
+    case 23:
+        return object->field74;
+    case 24:
+        return object->field71;
+    }
+    return 0;
+}
+
+int _LoadPropertyData(MOH_core_Struct* object, int field) {
+    switch (field) {
+    case 0:
+        return object->field36;
+    case 2:
+        return object->field38;
+    case 4:
+        return object->field35;
+    case 5:
+        return object->field48;
+    case 7:
+        return object->field50;
+    case 8:
+        return object->field2c;
+    case 9: {
+        float value = object->field2e / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 10: {
+        float value = object->field30 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 11: {
+        float value = object->field32 / 16.0f;
+        return *reinterpret_cast<int*>(&value);
+    }
+    case 18:
+        return object->field34 & 1;
+    case 19:
+        return object->field3a;
+    case 20:
+        return (object->field34 >> 1) & 1;
+    case 21:
+        return object->field3c;
+    }
+    return 0;
+}
+
+
+
