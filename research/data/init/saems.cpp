@@ -1,6 +1,6 @@
 // saems.c: its initialised data (.sdata): the AEMS system's entry hooks, each set to this
 // file's SNDAEMSI_ function. The file is inferred: no file map range covers them, but they
-// point at saems.c's functions (src/ea/saems_system.c) and EA's libraries define each hook
+// point at saems.c's functions (src/ea/saems.c) and EA's libraries define each hook
 // beside its function (src/ea/saemsmbf.c's SNDAEMS_asyncloadmodulebank). The hooks'
 // types are the functions' own. Checked by research/tools/check_data.py.
 // settings: config/GMFE69/saems.json

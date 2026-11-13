@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8015577c",
-      "size": 6412,
+      "address": "0x8015385c",
+      "size": 14380,
       "type": 1
     }
   ],
@@ -95,6 +95,18 @@
       "name": "AEMSI_updatewarp__FP15AEMSCOMPDYNAMICP6MODULE",
       "address": "0x80155cdc",
       "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updateoscillator__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80154e90",
+      "size": 624,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updatestatic__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80154e8c",
+      "size": 4,
       "binding": 1
     },
     {
@@ -164,15 +176,141 @@
       "binding": 1
     },
     {
+      "name": "AEMSI_updaterandom__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80155550",
+      "size": 556,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updatecounter__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x801554a4",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updateenvelope__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x801552c0",
+      "size": 484,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updaterangetrig__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80155228",
+      "size": 152,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_updateplayer__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80155100",
+      "size": 296,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updatetrigger__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80154e58",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_updateinparam__FP15AEMSCOMPDYNAMICP6MODULE",
+      "address": "0x80154e54",
+      "size": 4,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_restore__Fv",
+      "address": "0x8015385c",
+      "size": 40,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_addsystem__FPv",
+      "address": "0x80153884",
+      "size": 472,
+      "binding": 1
+    },
+    {
+      "name": "AEMSI_timerupdate__Fv",
+      "address": "0x80154c44",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_removesystem__Fv",
+      "address": "0x80153a5c",
+      "size": 244,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_resolvemodulebank__FP10MODULEBANKPci",
+      "address": "0x80153b50",
+      "size": 1316,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_removemodulebank__Fi",
+      "address": "0x80154074",
+      "size": 480,
+      "binding": 1
+    },
+    {
       "name": "SNDAEMSI_destroyinstance__FP6MODULEi",
       "address": "0x80156508",
       "size": 432,
       "binding": 1
     },
     {
+      "name": "SNDAEMSI_beginevent__FPv",
+      "address": "0x80154254",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_stufftrigger__Fiii",
+      "address": "0x80154920",
+      "size": 804,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_stuffparam__Fiiii",
+      "address": "0x801546bc",
+      "size": 612,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_setglobal__Fii",
+      "address": "0x801544bc",
+      "size": 512,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_updatemodules__Fi",
+      "address": "0x80154c68",
+      "size": 144,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_updateevent__FiPv",
+      "address": "0x80154370",
+      "size": 180,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_endevent__FiPv",
+      "address": "0x80154424",
+      "size": 152,
+      "binding": 1
+    },
+    {
       "name": "SNDAEMSI_createinstance__FP10MODULEBANKP6MODULEi",
       "address": "0x8015612c",
       "size": 988,
+      "binding": 1
+    },
+    {
+      "name": "SNDAEMSI_updatemodule__Fiii",
+      "address": "0x80154cf8",
+      "size": 348,
       "binding": 1
     },
     {
@@ -191,20 +329,41 @@
   "externals": {
     "SNDAEMSI_streamupdatestatus__FP21AEMSCOMPDYNAMICPLAYER": "0x80157b78",
     "SNDAEMS_beginevent": "0x8034e66c",
+    "SNDAEMS_linkbank__Fv": "0x80157778",
+    "SNDAEMS_removemodulebank": "0x8034e668",
+    "SNDAEMS_removesystem": "0x8034e664",
     "SNDMEMI_allocz__Fi": "0x80158d64",
     "SNDMEMI_free__FPv": "0x80158ff0",
     "SNDSTRM_purge": "0x8015c028",
+    "SNDSYS_add100hzclient": "0x801535bc",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_remove100hzclient": "0x801535f4",
+    "SNDbankremove": "0x80159600",
     "SNDstop": "0x8015d148",
     "__div2i": "0x80138b60",
+    "_restgpr_21": "0x80138a44",
     "_restgpr_22": "0x80138a48",
+    "_restgpr_23": "0x80138a4c",
     "_restgpr_24": "0x80138a50",
     "_restgpr_25": "0x80138a54",
+    "_restgpr_26": "0x80138a58",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_21": "0x801389f8",
     "_savegpr_22": "0x801389fc",
+    "_savegpr_23": "0x80138a00",
     "_savegpr_24": "0x80138a04",
     "_savegpr_25": "0x80138a08",
+    "_savegpr_26": "0x80138a0c",
+    "_savegpr_27": "0x80138a10",
     "aemscompinfo": "0x801933e0",
+    "iSNDrandom__Fv": "0x8015f934",
+    "iSNDsin__Fi": "0x8015f85c",
     "memset": "0x80009410",
-    "sndaems": "0x80340410"
+    "sndaems": "0x80340410",
+    "sndgs": "0x80340860",
+    "strcpy": "0x80140040",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -212,7 +371,9 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "SNDAEMS_beginevent"
+    "SNDAEMS_beginevent",
+    "SNDAEMS_removemodulebank",
+    "SNDAEMS_removesystem"
   ],
   "original_file": "saems.c",
   "original_file_index": 12620

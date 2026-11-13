@@ -593,7 +593,7 @@ void AEMSI_updatetable2(AEMSCOMPDYNAMIC*, MODULE*);
 void SNDAEMSI_updateramp(AEMSCOMPDYNAMIC*, MODULE*);
 void SNDAEMSI_updatemerge(AEMSCOMPDYNAMIC*, MODULE*);
 
-struct AEMSCOMPINFOVIEW { // inferred: src/ea/saems_system.c and saems_counter.c views
+struct AEMSCOMPINFOVIEW { // inferred: src/ea/saems.c view
     void (*update)(AEMSCOMPDYNAMIC*, MODULE*);
     unsigned char definitionSize;
     unsigned char componentSize;
