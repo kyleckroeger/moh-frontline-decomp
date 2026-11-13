@@ -5,7 +5,6 @@ struct layer_data { unsigned char data[0xa48]; }; // view: size from the origina
 struct PATHSTATEVIEW { unsigned char data[0x1a8]; }; // view: size from the original
 struct PADStatus { unsigned char data[0xc]; }; // view: size from the original
 struct MEMCLASS;
-struct SNDDRVVIEW { unsigned char data[0xab20]; }; // view: size from the original
 struct SNDARAMVIEW { unsigned char data[0x10]; }; // view: size from the original
 struct BSClass_struct;
 struct CAIObject;
@@ -47,7 +46,6 @@ MEMCLASS* memclass[64];
 void* sndss[32];
 char sndgs[568];
 signed char sndaztospkr[256][4];
-SNDDRVVIEW snddrv;
 SNDARAMVIEW sndaram;
 char* g_pLevelBigFile;
 char* g_pShellBriefingLogBigFile;

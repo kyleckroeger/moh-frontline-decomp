@@ -18,12 +18,12 @@
     "off",
     "-O4,p",
     "-inline",
-    "auto",
+    "on",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse",
     "-use_lmw_stmw",
@@ -37,12 +37,84 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8016cb2c",
-      "size": 148,
+      "address": "0x80168ed8",
+      "size": 15592,
+      "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x80341a20",
+      "size": 43808,
+      "type": 8
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034f4f0",
+      "size": 13,
+      "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351c78",
+      "size": 48,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDDRV_freenextframe__Fv",
+      "address": "0x80168ed8",
+      "size": 160,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_mixvoicefree__Fi",
+      "address": "0x80168f78",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_freeaxvoice__Fii",
+      "address": "0x80169250",
+      "size": 308,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_callbackdropvoice__FPv",
+      "address": "0x80168fa8",
+      "size": 220,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_allocateaxvoice__Fi",
+      "address": "0x80169084",
+      "size": 460,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_dmcallback__FUl",
+      "address": "0x80169384",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_audiocallback__FPvPv",
+      "address": "0x801693e8",
+      "size": 516,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_initmixer__Fv",
+      "address": "0x801695ec",
+      "size": 240,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_fillbufwithpackets__FiP13SNDDRVPKTCHANP7CHANPUB",
+      "address": "0x801696dc",
+      "size": 1172,
+      "binding": 1
+    },
     {
       "name": "SNDI_mutexlock__Fv",
       "address": "0x8016cb60",
@@ -53,6 +125,186 @@
       "name": "SNDI_mutexunlock__Fv",
       "address": "0x8016cb90",
       "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_thread__FPv",
+      "address": "0x80169b70",
+      "size": 168,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_outputcaps__Fv",
+      "address": "0x80169c18",
+      "size": 240,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_outputset__Fv",
+      "address": "0x80169d08",
+      "size": 2160,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_memalloc__Fii",
+      "address": "0x8016c600",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_init__Fv",
+      "address": "0x8016a578",
+      "size": 1804,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_restore__Fv",
+      "address": "0x8016ac84",
+      "size": 284,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_setpitch__Fi",
+      "address": "0x8016c0a0",
+      "size": 328,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_set3dpos__Fi",
+      "address": "0x8016bdfc",
+      "size": 676,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_setvol__Fi",
+      "address": "0x8016bbbc",
+      "size": 504,
+      "binding": 1
+    },
+    {
+      "name": "iSNDserve__Fv",
+      "address": "0x8016ada0",
+      "size": 848,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_getvoicerange__FiPiPi",
+      "address": "0x8016b0f0",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_asyncresolvetimbre__FP15SNDIPATCHHEADERPcPi",
+      "address": "0x8016b138",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_timemult__Fii",
+      "address": "0x8016c1e8",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_lowpass__Fii",
+      "address": "0x8016c270",
+      "size": 244,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_highpass__Fii",
+      "address": "0x8016c364",
+      "size": 132,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_playtimbre__FP15SNDIPATCHHEADERPviiiii",
+      "address": "0x8016b16c",
+      "size": 1172,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_getmastervoice__Fi",
+      "address": "0x8016b600",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "SNDDRV_getsamplechan__Fi",
+      "address": "0x8016b630",
+      "size": 128,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_packetoverhead__Fv",
+      "address": "0x8016b6b0",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_packetplaycreate__FiPv",
+      "address": "0x8016b6b8",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_packetplay__FiiiiiiP15SNDSAMPLEFORMATPPv",
+      "address": "0x8016b788",
+      "size": 968,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_memfree__FiUi",
+      "address": "0x8016c648",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_packetplaydestroy__Fi",
+      "address": "0x8016bb50",
+      "size": 100,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_outputlatency__Fv",
+      "address": "0x8016bbb4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_setdrylevel__Fi",
+      "address": "0x8016bdb4",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_getcurframe__Fi",
+      "address": "0x8016c3e8",
+      "size": 168,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_stop__Fi",
+      "address": "0x8016c490",
+      "size": 360,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_filteradd__FiP12SNDFILTERDEF",
+      "address": "0x8016c5f8",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_download__FiPvPvi",
+      "address": "0x8016c698",
+      "size": 464,
+      "binding": 1
+    },
+    {
+      "name": "SNDPLATFORM_downloadcomplete__Fi",
+      "address": "0x8016c868",
+      "size": 708,
       "binding": 1
     },
     {
@@ -69,17 +321,114 @@
     }
   ],
   "externals": {
+    "AIInit": "0x8011e1ec",
+    "ARGetBaseAddress": "0x8011e890",
+    "ARInit": "0x8011e7d4",
+    "ARQInit": "0x8011f3f4",
+    "ARQPostRequest": "0x8011f45c",
+    "ARQRemoveRequest": "0x8011f5b8",
+    "AXAcquireVoice": "0x8011fa90",
+    "AXFreeVoice": "0x8011fa10",
+    "AXInit": "0x8011f6c8",
+    "AXQuit": "0x8011f6fc",
+    "AXRegisterAuxACallback": "0x8011ff20",
+    "AXSetMode": "0x801203a0",
+    "AXSetVoiceAddr": "0x80121bcc",
+    "AXSetVoiceAdpcm": "0x80121cdc",
+    "AXSetVoiceAdpcmLoop": "0x80121e18",
+    "AXSetVoiceSrcRatio": "0x80121d80",
+    "AXSetVoiceSrcType": "0x80121aac",
+    "AXSetVoiceState": "0x80121b70",
+    "DCFlushRange": "0x80111880",
+    "MIX_getframe": "0x801611dc",
+    "MIX_getwetbuffer": "0x801611d0",
+    "MIX_play": "0x80160800",
+    "MIX_playinit": "0x801605bc",
+    "MIX_sethighpass": "0x80161344",
+    "MIX_setlowpass": "0x80161420",
+    "MIX_settimemult": "0x80161304",
+    "MIXaudioslicefn": "0x8034f4a0",
+    "MIXinitfn": "0x8034f498",
+    "MIXplayfn": "0x8034f4a8",
+    "MIXplayinitfn": "0x8034f4a4",
+    "MIXrestorefn": "0x8034f49c",
+    "MIXsetpitchfn": "0x8034f4b0",
+    "MIXstopfn": "0x8034f4ac",
+    "OSCancelThread": "0x8011629c",
+    "OSCreateThread": "0x80116098",
+    "OSDisableInterrupts": "0x801135cc",
+    "OSEnableInterrupts": "0x801135e0",
     "OSInitMutex": "0x80114330",
+    "OSInitThreadQueue": "0x80115adc",
     "OSLockMutex": "0x80114368",
+    "OSRestoreInterrupts": "0x801135f4",
+    "OSResumeThread": "0x80116458",
+    "OSSleepThread": "0x80116850",
     "OSUnlockMutex": "0x80114444",
-    "snddrv": "0x80341a20"
+    "OSWakeupThread": "0x8011693c",
+    "SNDARAM_alloc__Fi": "0x8016ccc0",
+    "SNDARAM_free__FUi": "0x8016cf74",
+    "SNDARAM_init__Fi": "0x8016cbc0",
+    "SNDARAM_restore__Fv": "0x8016cc70",
+    "SNDARAM_setpool__FUii": "0x8016cc14",
+    "SNDDRV_DSPMixerInitChannel__FP6_AXVPBUliUsUs": "0x8016d1d8",
+    "SNDDRV_DSPMixerInit__Fi": "0x8016d0d0",
+    "SNDDRV_DSPMixerReleaseChannel__FP6_AXVPB": "0x8016d2e8",
+    "SNDDRV_DSPMixerSetPan__FP6_AXVPBPUs": "0x8016d00c",
+    "SNDDRV_DSPMixerSetVol__FP6_AXVPBi": "0x8016d304",
+    "SNDDRV_DSPMixerUpdate__Fv": "0x8016d330",
+    "SNDI_aztospkrvol__FiPs": "0x8015f7fc",
+    "SNDI_memcpy": "0x8016d730",
+    "SNDMEMI_allocz__Fi": "0x80158d64",
+    "SNDMEMI_free__FPv": "0x80158ff0",
+    "SNDMIX_setdrygain": "0x80160928",
+    "SNDPKTPLAYI_flushcallbackdata__Fv": "0x8015aff4",
+    "SNDPKTPLAYI_freeframes__Fiii": "0x8015af8c",
+    "SNDPKTPLAYI_get__FiiPiPi": "0x8015ad74",
+    "SNDPLATFORM_setfxlevel__Fii": "0x8016dda0",
+    "SNDSYSI_100hzserver__Fv": "0x801532b4",
+    "SNDSYS_add100hzclient": "0x801535bc",
+    "SNDSYS_entercritical": "0x80153554",
+    "SNDSYS_leavecritical": "0x80153588",
+    "SNDSYS_linkmaincpumixer": "0x8015fcd8",
+    "SNDSYS_remove100hzclient": "0x801535f4",
+    "SNDVOICEI_free__Fi": "0x8015dbd4",
+    "__copy": "0x801381d4",
+    "_restgpr_14": "0x80138a28",
+    "_restgpr_16": "0x80138a30",
+    "_restgpr_17": "0x80138a34",
+    "_restgpr_18": "0x80138a38",
+    "_restgpr_19": "0x80138a3c",
+    "_restgpr_23": "0x80138a4c",
+    "_restgpr_25": "0x80138a54",
+    "_restgpr_26": "0x80138a58",
+    "_restgpr_27": "0x80138a5c",
+    "_savegpr_14": "0x801389dc",
+    "_savegpr_16": "0x801389e4",
+    "_savegpr_17": "0x801389e8",
+    "_savegpr_18": "0x801389ec",
+    "_savegpr_19": "0x801389f0",
+    "_savegpr_23": "0x80138a00",
+    "_savegpr_25": "0x80138a08",
+    "_savegpr_26": "0x80138a0c",
+    "_savegpr_27": "0x80138a10",
+    "memset": "0x80009410",
+    "sndgs": "0x80340860"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "MIXaudioslicefn",
+    "MIXinitfn",
+    "MIXplayfn",
+    "MIXplayinitfn",
+    "MIXrestorefn",
+    "MIXsetpitchfn",
+    "MIXstopfn"
+  ],
   "original_file": "snddrv.c",
   "original_file_index": 13274
 }
