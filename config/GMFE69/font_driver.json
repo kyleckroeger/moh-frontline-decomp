@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": false,
   "source_root": "src/game",
@@ -40,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x8007c0fc",
-      "size": 152,
+      "size": 260,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000bfd8",
-      "size": 24,
+      "size": 32,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012f50",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -68,24 +69,36 @@
       "address": "0x8007c100",
       "size": 148,
       "binding": 1
+    },
+    {
+      "name": "EndDraw__11CFontDriverFP4FONT",
+      "address": "0x8007c194",
+      "size": 108,
+      "binding": 1
     }
   ],
   "externals": {
+    "Render__11CRenderListFR10CRenderBinPv": "0x800f1168",
     "Set__8CTextureFP5Shapeb": "0x80082ab0",
     "__dl__FPv": "0x8001ca2c",
     "__nw__FUl": "0x8001cb60",
     "g_pCurrentFont": "0x8034ea0c",
-    "memset": "0x80009410"
+    "g_pRenderList": "0x8034ea00",
+    "memset": "0x80009410",
+    "stringPacket": "0x801de580"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "g_pCurrentFont"
+    "g_pCurrentFont",
+    "g_pRenderList",
+    "stringPacket"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_pCurrentFont"
+    "g_pCurrentFont",
+    "g_pRenderList"
   ],
   "original_file": "font.cpp",
   "original_file_index": 3954

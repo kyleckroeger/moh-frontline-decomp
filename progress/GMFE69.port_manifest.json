@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1020,
- "function_bytes_by_status": {"consistent": 123124, "differs": 5764, "exact": 4472, "verified": 1272196},
+ "function_bytes_by_status": {"consistent": 123016, "differs": 5764, "exact": 4472, "verified": 1272304},
  "data_bytes_owned": 815597,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1507,7 +1507,7 @@
  [2147991664, 140, "__sinit_fader_cpp", "verified", "src/game/fader.cpp"],
  [2147991804, 4, "DestroyFont__11CFontDriverFP4FONT", "verified", "src/game/font_driver.cpp"],
  [2147991808, 148, "CreateFont__11CFontDriverFP4FONT", "verified", "src/game/font_driver.cpp"],
- [2147991956, 108, "EndDraw__11CFontDriverFP4FONT", "consistent", "research/drafts/EndDraw.8007c194.cpp"],
+ [2147991956, 108, "EndDraw__11CFontDriverFP4FONT", "verified", "src/game/font_driver.cpp"],
  [2147992064, 16, "StartDraw__11CFontDriverFP4FONT", "verified", "src/game/font_draw.cpp"],
  [2147992080, 212, "Draw__11CFontDriverFP4FONTPC8FONTCHARff", "verified", "src/game/font_draw.cpp"],
  [2147992292, 60, "__dt__11CFontDriverFv", "verified", "src/game/font_draw.cpp"],

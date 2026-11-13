@@ -966,3 +966,10 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
 - world_volume: a weak in-class copy comes out right after a dead-stripped function. Its order needs
   a function in the source between ~CWorldVolume and the constructor that needs ~list out of line.
   Large extab label gaps between neighbouring functions are the sign.
+
+## late2 (2026-11-13; scratch/loop3/late2b)
+- A colour (four bytes) stored as ONE word to the stack and read back by bytes in a non-member order (EndDraw: g, b, a, r):
+  return it from an inline that copies the word into an INTEGER local and returns that local viewed as the struct
+  ('unsigned int w = *(unsigned int*)&color; return *(CColor*)&w;'), with the shared CColor.h's implicit copy. Copying the
+  word into a CColor local ('CColor c; *(unsigned int*)&c = ...'), 'return color', 'CColor c = color' and byte-order copy
+  ctors give other load orders (ed/v1-v7).
