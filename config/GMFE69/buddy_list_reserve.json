@@ -34,57 +34,59 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": true,
+  "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x8005872c",
-      "size": 436,
+      "size": 964,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ad1c",
-      "size": 8,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 16
+      "size": 24,
+      "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011e4c",
-      "size": 12,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 24
+      "size": 36,
+      "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc",
+      "address": "0x80058988",
+      "size": 360,
+      "binding": 0
+    },
     {
       "name": "reserve__Q23dwi16list<9BuddyInfo>FiPc",
       "address": "0x8005872c",
       "size": 436,
       "binding": 2
+    },
+    {
+      "name": "__dt__Q23dwi16list<9BuddyInfo>Fv",
+      "address": "0x800588e0",
+      "size": 168,
+      "binding": 2
     }
   ],
   "externals": {
+    "DWI_allocalign__FPCciii": "0x8001c8ec",
     "MEM_free": "0x8014f83c",
-    "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc": "0x80058988",
-    "__dl__FPv": "0x8001ca2c",
-    "__dt__Q23dwi16list<9BuddyInfo>Fv": "0x800588e0"
+    "__dl__FPv": "0x8001ca2c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "buddy.cpp",
-  "original_file_index": 2366,
-  "weak_duplicates": [
-    "__dt__Q23dwi16list<9BuddyInfo>Fv"
-  ]
+  "original_file_index": 2366
 }

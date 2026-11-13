@@ -1,3 +1,4 @@
+// buddy (2026-11-13): BuddyInfo in the shared nested form; still 7.
 // best WIP (harvest1, 2026-11-12): 7 real lines (was 27; index said 27), from
 // scratch/loop3/scripting/chk/GI_BEST7.cpp: list iterators and single-use inline helpers
 // (DumpBuddyVector, SetBuddyProgress, a vec_iter overload of GiveBuddyOrders). Left: DumpReadyBuddies'
@@ -128,24 +129,40 @@ public:
     virtual class CBuddySoldier* GetSoldier();
 };
 
-/* inferred: an attached buddy (soldier, checkpoint progress, path base, moving flag, in use) */
+/* inferred: the state part of an attached buddy (path base, moving flag, in use). Its assignment
+   copies the fields in layout order, as the original's element assignments do. */
+struct BuddyState {
+    int path;
+    int moving;
+    bool active;
+    BuddyState& operator=(const BuddyState& o) {
+        path = o.path;
+        moving = o.moving;
+        active = o.active;
+        return *this;
+    }
+};
+
+/* inferred: an attached buddy (soldier, checkpoint progress, state). The constructor's dead copy of
+   the still unset state is inferred: with it CW 1.3.2 keeps only the state part of a BuddyInfo
+   temporary or local in its stack slot and splits soldier/progress into registers, as the
+   original's list range constructor, push_back(BuddyInfo()) and BIFunc_AddBuddy show. */
 struct BuddyInfo {
     BuddyInfo() : soldier(0), progress(0) {
-        moving = 0;
-        active = false;
-        path = 0;
+        BuddyState unused = state;
+        state.moving = 0;
+        state.active = false;
+        state.path = 0;
     }
     BuddyInfo(const BuddyInfo& other) : soldier(other.soldier), progress(other.progress) {
-        moving = other.moving;
-        active = other.active;
-        path = other.path;
+        state.moving = other.state.moving;
+        state.active = other.state.active;
+        state.path = other.state.path;
     }
 
     CBuddySoldier* soldier;
     int progress;
-    int path;
-    int moving;
-    bool active;
+    BuddyState state;
 };
 
 #include "game/DwiContainers.h"
@@ -174,10 +191,10 @@ void AddBuddy(BuddyInfo, bool);
 inline void GiveBuddyOrders(BuddyInfo* const buddy) {
     DebugMsg("BUDDY_DEBUG: Attempting GiveBuddyOrders\n");
     if (buddy->progress < g_player_checkpoint) {
-        if (!buddy->moving) {
+        if (!buddy->state.moving) {
             int path = buddy->progress + 1;
-            BSObjectTriggerEvent(buddy->soldier->GetScriptObject(), 211, (void*)(buddy->path + path), g_pBSObject, false);
-            buddy->moving = 1;
+            BSObjectTriggerEvent(buddy->soldier->GetScriptObject(), 211, (void*)(buddy->state.path + path), g_pBSObject, false);
+            buddy->state.moving = 1;
             BSObject* object = buddy->soldier->GetScriptObject();
             float z;
             float y;
@@ -198,13 +215,13 @@ inline void GiveBuddyOrders(BuddyInfo* const buddy) {
             object->m_class->GetState();
             DebugMsg("BUDDY_DEBUG: GiveBuddyOrders advancing buddy %x[%3d @(%4d,%4d,%4d)] (current=%d player=%d) using path %d\n",
                      buddy->soldier, index, (int)x, (int)y, (int)z, buddy->progress, g_player_checkpoint,
-                     buddy->path + path);
+                     buddy->state.path + path);
         } else {
             DebugMsg("BUDDY_DEBUG: Already moving GiveBuddyOrders\n");
         }
     } else {
         DebugMsg("BUDDY_DEBUG: Stopping buddy\n");
-        buddy->moving = 0;
+        buddy->state.moving = 0;
     }
 }
 
@@ -214,7 +231,7 @@ inline void GiveBuddyOrders(dwi::vec_iter<BuddyInfo>& it) {
 
 inline void SetBuddyProgress(dwi::vec_iter<BuddyInfo>& it, int checkpoint) {
     it->progress = checkpoint;
-    it->moving = 0;
+    it->state.moving = 0;
     GiveBuddyOrders(it);
 }
 
@@ -222,7 +239,7 @@ inline void DumpBuddyVector(dwi::vector<BuddyInfo>& buddies) {
     DebugMsg("BUDDY_DEBUG: Dumping attached list...\n");
     CBuddySoldier* soldier;
     for (int i = 0; i < buddies.m_size; i++) {
-        if (buddies[i].active == true) {
+        if (buddies[i].state.active == true) {
             soldier = buddies[i].soldier;
             BSObject* object = soldier->GetScriptObject();
             float z;
@@ -303,7 +320,7 @@ void BIFunc_UpdateBuddyCheckpoints(int** stack, void*) {
     DebugMsg("BUDDY_DEBUG: UpdateBuddyCheckpoints Checkpoint=%d\n", g_player_checkpoint);
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
-        if (it->active)
+        if (it->state.active)
             GiveBuddyOrders(it);
     }
     DumpAttachedBuddies();
@@ -323,7 +340,7 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
     DebugMsg("BUDDY_DEBUG: Attempting UpdateBuddyProgress\n");
     dwi::vec_iter<BuddyInfo> it;
     for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
-        if (it->soldier == soldier && it->active) {
+        if (it->soldier == soldier && it->state.active) {
             x = 0.0f;
             y = x;
             z = x;
@@ -346,7 +363,7 @@ void BIFunc_UpdateBuddyProgress(int** stack, void*) {
             } else {
                 DebugMsg("BUDDY_DEBUG: Haven't reached yet\n");
                 SetBuddyProgress(it, checkpoint);
-                result = it->moving;
+                result = it->state.moving;
             }
             found = true;
             break;
@@ -389,7 +406,7 @@ void BIFunc_BuddyDied(int** stack, void*) {
         dwi::vec_iter<BuddyInfo> it;
         for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
             if (it->soldier == soldier) {
-                it->active = false;
+                it->state.active = false;
                 it->soldier = 0;
                 float z;
                 float y;
@@ -471,8 +488,8 @@ void BIFunc_AddBuddy(int** stack, void* caller) {
     short first = g_pBuiltInFunctions[g_iCurrentBIFIndex].firstArgument;
     BuddyInfo info;
     info.soldier = ((BSOwnerView*)caller)->GetSoldier();
-    info.moving = 0;
-    info.active = true;
+    info.state.moving = 0;
+    info.state.active = true;
     info.progress = *(*stack - (first - 1));
     {
         BSObject* object = g_pBSObject;
@@ -504,7 +521,7 @@ void BIFunc_AddBuddy(int** stack, void* caller) {
 
 void AddBuddy(BuddyInfo info, bool giveOrders) {
     for (int i = 0; i < g_attached_buddies.m_size; i++) {
-        if (!g_attached_buddies[i].active) {
+        if (!g_attached_buddies[i].state.active) {
             BSObject* object = info.soldier->GetScriptObject();
             float z;
             float y;
@@ -526,8 +543,8 @@ void AddBuddy(BuddyInfo info, bool giveOrders) {
             DebugMsg("BUDDY_DEBUG: UsingBuddy=%x[%3d @(%4d,%4d,%4d) %4d] In Slot %d\n", info.soldier, index, (int)x, (int)y,
                      (int)z, state->state, i);
             g_attached_buddies[i] = info;
-            g_attached_buddies[i].active = true;
-            g_attached_buddies[i].path = g_buddy_path_base[i].base;
+            g_attached_buddies[i].state.active = true;
+            g_attached_buddies[i].state.path = g_buddy_path_base[i].base;
             if (giveOrders)
                 GiveBuddyOrders(&g_attached_buddies[i]);
             BSObjectTriggerEvent(info.soldier->GetScriptObject(), 214, 0, g_pBSObject, false);

@@ -42,7 +42,7 @@ real_lines	size	address	function	compile_settings_from	draft
 56	1640	8003fc2c	CreateDumpObject__FRC8CVector3RC11CQuaternionii	config/GMFE69/objcreate_dump.json	research/drafts/CreateDumpObject.8003fc2c.cpp
 16	3828	800acfb8	UpdateAnimation__14CSoldierObjectFf	config/GMFE69/Soldier_object_lit.json	research/drafts/UpdateAnimation.800acfb8.cpp
 59	2264	8005e9ec	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_finish.json	research/drafts/aim_cb.8005e9ec.cpp
-66	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
+6	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
 45	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
 73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 79	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
@@ -62,7 +62,7 @@ real_lines	size	address	function	compile_settings_from	draft
 195	2296	8010ee50	PATHI_eventstart__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_eventstart.8010ee50.cpp
 94	784	8005c6b8	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	config/GMFE69/AIFilter_visit.json	research/drafts/GetClosestWaypointByType.8005c6b8.cpp
 82	980	800f3578	PROFILE_UPDATE__Fv	config/GMFE69/debug_prof_profilebin_ctor.json	research/drafts/PROFILE_UPDATE.800f3578.cpp
-207	892	80057b30	BIFunc_AddBuddy__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_AddBuddy.80057b30.cpp
+39	892	80057b30	BIFunc_AddBuddy__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_AddBuddy.80057b30.cpp
 252	1260	800f712c	DMMorphBlendDisplayLists__FP16DMRenderObject_T	config/GMFE69/dmmorph_buffers.json	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp
 320	2092	800c5cb4	FindIntersection__FRC6CLine3RC11CVolCapsulePf	config/GMFE69/capsule_plane.json	research/drafts/FindIntersection.800c5cb4.cpp
 463	3856	8006e0b0	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	config/GMFE69/cdbgeom_triangle_ctor.json	research/drafts/TestCollision.8006e0b0.cpp
@@ -83,7 +83,6 @@ real_lines	size	address	function	compile_settings_from	draft
 20	408	80160114	SNDMIXI_volramp__FP11SNDMIXVOICE	config/GMFE69/smixer.json	research/drafts/SNDMIXI_volramp.80160114.c
 73	752	801609d0	MIX_audioslice	config/GMFE69/smixer.json	research/drafts/MIX_audioslice.801609d0.c
 5	780	801671b8	SFILTER_rsf__FPviPvPvi	config/GMFE69/sfrsf.json	research/drafts/SFILTER_rsf.801671b8.c
-3	360	80058988	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc	config/GMFE69/buddy_list.json	research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp
 102	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp

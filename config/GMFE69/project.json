@@ -656,7 +656,6 @@
     "scene_fastvec_commands.json",
     "scene_fastvec_pairs.json",
     "scene_fastvec_shadow.json",
-    "buddy_list.json",
     "world_volume_list.json",
     "scene_list_extent.json",
     "buddy_vec_path_end.json",

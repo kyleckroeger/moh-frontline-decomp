@@ -40,3 +40,9 @@ Decompiles: re-run Ghidra decompile on 0x800567e8, 0x80056bd4, 0x80057164, 0x800
 - GetInitialBuddyOrders (scratch/loop3/scripting/chk/g28/const.cpp): 7 lines left, DumpReadyBuddies' node/soldier registers
   swapped (orig node r30 = the dead function-level soldier's register, soldier r26). DumpReady decl orders (multi-function
   climb), const locals, raw node pointer, generic list parameter: no gain.
+
+## 2026-11-13 (loop buddy) BuddyInfo knot solved
+- BuddyInfo = { CBuddySoldier* soldier; int progress; BuddyState state; } (BuddyState POD: path, moving, active, typed
+  operator= in layout order); ctor ': soldier(0), progress(0) { BuddyState unused = state; state.moving = 0;
+  state.active = false; state.path = 0; }' (the dead copy is inferred: it keeps only the state region in memory).
+  See research/notes/loop3-tricks-2026-11-12.md. Range ctor + ~list now in buddy_list_reserve (reserve's unit).

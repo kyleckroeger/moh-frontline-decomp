@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1020,
- "function_bytes_by_status": {"consistent": 122308, "differs": 5764, "exact": 4472, "verified": 1273012},
+ "verified_units": 1019,
+ "function_bytes_by_status": {"consistent": 121948, "differs": 5764, "exact": 4472, "verified": 1273372},
  "data_bytes_owned": 815597,
  "data_bytes_total": 1976252,
  "functions": [
@@ -969,8 +969,8 @@
  [2147845488, 376, "reserve__Q23dwi23vector<13BuddyPathInfo>FiPc", "verified", "src/game/buddy_vec_path_reserve.cpp"],
  [2147845864, 68, "copy<Q23dwi25vec_iter<13BuddyPathInfo>,Q23dwi25vec_iter<13BuddyPathInfo>>__3dwiFQ23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>Q23dwi25vec_iter<13BuddyPathInfo>", "verified", "src/game/buddy_copy_path.cpp"],
  [2147845932, 436, "reserve__Q23dwi16list<9BuddyInfo>FiPc", "verified", "src/game/buddy_list_reserve.cpp"],
- [2147846368, 168, "__dt__Q23dwi16list<9BuddyInfo>Fv", "verified", "src/game/buddy_list.cpp"],
- [2147846536, 360, "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc", "consistent", "research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp"],
+ [2147846368, 168, "__dt__Q23dwi16list<9BuddyInfo>Fv", "verified", "src/game/buddy_list_reserve.cpp"],
+ [2147846536, 360, "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc", "verified", "src/game/buddy_list_reserve.cpp"],
  [2147846896, 376, "reserve__Q23dwi18vector<9BuddyInfo>FiPc", "verified", "src/game/buddy_vec_info_reserve.cpp"],
  [2147847272, 100, "copy<Q23dwi20vec_iter<9BuddyInfo>,Q23dwi20vec_iter<9BuddyInfo>>__3dwiFQ23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>Q23dwi20vec_iter<9BuddyInfo>", "verified", "src/game/buddy_copy_info.cpp"],
  [2147847372, 376, "DestroyBuddyDataStructures__Fv", "verified", "src/game/buddy_destroy.cpp"],

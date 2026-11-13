@@ -1,5 +1,6 @@
-// late2 (2026-11-13): the original keeps info.soldier/progress in r27/r28 and only path/moving/active in memory
-// (36..44); ours keeps all five in memory (28..44). Same BuddyInfo partial-scalar knot as CreateBuddyDataStructures.
+// buddy (2026-11-13): 207 -> 39 with BuddyInfo's nested BuddyState and the constructor's dead state copy (info's
+// path/moving/active at 36..44, soldier/progress in registers, as the original). Left: soldier/progress take
+// r26/r27 instead of r27/r28 (and the dump loops' callee registers rotate with them), the dump block's x/z FPRs.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
@@ -126,26 +127,36 @@ public:
     virtual class CBuddySoldier* GetSoldier();
 };
 
-/* inferred: an attached buddy (soldier, checkpoint progress, path base, moving flag, in use) */
+/* inferred: the state part of an attached buddy (path base, moving flag, in use). Its assignment
+   copies the fields in layout order, as the original's element assignments do. */
 struct BuddyState {
-    BuddyState() {
-        BuddyState* self = this;
-        self->moving = 0;
-        self->active = false;
-        self->path = 0;
-    }
-    BuddyState(const BuddyState& o) {
-        moving = o.moving;
-        active = o.active;
-        path = o.path;
-    }
     int path;
     int moving;
     bool active;
+    BuddyState& operator=(const BuddyState& o) {
+        path = o.path;
+        moving = o.moving;
+        active = o.active;
+        return *this;
+    }
 };
 
+/* inferred: an attached buddy (soldier, checkpoint progress, state). The constructor's dead copy of
+   the still unset state is inferred: with it CW 1.3.2 keeps only the state part of a BuddyInfo
+   temporary or local in its stack slot and splits soldier/progress into registers, as the
+   original's list range constructor, push_back(BuddyInfo()) and BIFunc_AddBuddy show. */
 struct BuddyInfo {
-    BuddyInfo() : soldier(0), progress(0) {}
+    BuddyInfo() : soldier(0), progress(0) {
+        BuddyState unused = state;
+        state.moving = 0;
+        state.active = false;
+        state.path = 0;
+    }
+    BuddyInfo(const BuddyInfo& other) : soldier(other.soldier), progress(other.progress) {
+        state.moving = other.state.moving;
+        state.active = other.state.active;
+        state.path = other.state.path;
+    }
 
     CBuddySoldier* soldier;
     int progress;

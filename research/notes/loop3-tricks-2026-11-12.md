@@ -1000,3 +1000,16 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   _find_aim_blend_values: only the 4th TriangleBlend expansion differs. CVolBox::TestCollision(CVolSphere):
   'CVector3 local(Dot0, Dot1, Dot2)' gives the original's x, y, z store order but shifts the FPRs (38/28).
   '-inline' variants (auto/deferred/on/noauto/all/level=1) changed nothing on any of the 45 rows.
+
+## BuddyInfo partial scalarisation solved (buddy, 2026-11-13; scratch/loop3/buddy/p, v, w, u)
+- CW 1.3.2 splits a struct temporary/local member by member: a sub-struct region that is ACCESSED AS A WHOLE
+  (block read/copy) is left in the variable's stack slot, the other members go to registers. A dead whole-struct
+  read BEFORE the typed writes is enough and leaves no code: 'BuddyInfo() : soldier(0), progress(0)
+  { BuddyState unused = state; state.moving = 0; state.active = false; state.path = 0; }' gives the original's
+  stores (moving, active, path at slot+8..+16, soldier/progress never stored). Equivalent triggers: 'state(state)'
+  in the init list, an empty by-value inline 'Check(state)', a discarded 'GetState()' returning the struct. The same
+  read AFTER the writes, a self-assignment, '(BuddyState)state' or '(void)state' make it whole-memory or fully scalar.
+- With the sub-struct, keep element assignment typed in layout order with a user 'BuddyState& operator='
+  (the implicit one block-copies three words; AddBuddy 6 -> 19 without it).
+- list range ctor 3 -> 0 (landed), CreateBuddyDataStructures 66 -> 6, BIFunc_AddBuddy 207 -> 39; buddy_head
+  re-verified with the same definition (one body for every buddy.cpp user).

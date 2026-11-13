@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1281856,
+    "matching_code_bytes": 1282216,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.61793956051724,
+    "percent": 90.64338895439751,
     "categories": {
-      "reconstructed_game": 1045096,
+      "reconstructed_game": 1045456,
       "restored_library": 236760
     },
-    "matching_functions": 4911
+    "matching_functions": 4912
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -621,9 +621,8 @@
     "src/game/buddy_copy_info.cpp": "d5aee7d8e079a6ef77e02f15aea5f1e909093b97a6b2f00515c41d42f66a3410",
     "src/game/buddy_copy_path.cpp": "2dea087372eb8c23cc422f0a47cfe8fb50437816ec6ad3e8752bd928693ac87a",
     "src/game/buddy_destroy.cpp": "5c461b0024d0f5bcd6f860d22fa0503cac0bce899fa5575fd9c52e04434b1d7f",
-    "src/game/buddy_head.cpp": "276474f0b430dc4416dce15d557ad6ec752be1dbc0fac39ea376792af61170fa",
-    "src/game/buddy_list.cpp": "fa3ea552b450b337884c57c7ebfde922ed3516660b34f90b1d394dc342c74bad",
-    "src/game/buddy_list_reserve.cpp": "17ba4c505282b76818f86d8a399107bbd9ce5e4bc6d153441740ffd3d1bf8eb0",
+    "src/game/buddy_head.cpp": "93e4107bfd5369d5c158aacf63e2746bc3b293d6cfcfff7493409388a42ba24f",
+    "src/game/buddy_list_reserve.cpp": "a17fc8d8c1b580ce98b94380981945a82329b68a7398b0845448a183df628c55",
     "src/game/buddy_vec_info_dtor.cpp": "ed7b481e423627dba844cb54a9109588317df4dfd9bd9ec9f8a45670981f7180",
     "src/game/buddy_vec_info_reserve.cpp": "b5b6c737042de1267f1ab31beca3d972cd3fe29608252135f58ad1e42729ec9c",
     "src/game/buddy_vec_path_begin.cpp": "f0a70a80e1f7a87c8b804ba93205a620dc9c2bd023b8c7b9d54d7148be8ee834",
@@ -1856,8 +1855,7 @@
     "config/GMFE69/buddy_copy_path.json": "30991acd72bf78396584b3d425f597cd91f0a12c567d9e45354889c891c2416a",
     "config/GMFE69/buddy_destroy.json": "a8ceee29b4db9c3b4508aeb6ebbb99ebd384197cb771b7cc71ccb5cbb7b3bb65",
     "config/GMFE69/buddy_head.json": "2e5a0e852dadb0f0da76dced1106a6354f986c3ae3f798363f4d78e8f56facc6",
-    "config/GMFE69/buddy_list.json": "ecc6fb1220836e07ff46f4a434a7c81fece596470939c5d5bd55845b5828a649",
-    "config/GMFE69/buddy_list_reserve.json": "b69182e782f8e77b126d927b263ceaa9edb8c6fe276f887403b6267163625de3",
+    "config/GMFE69/buddy_list_reserve.json": "cc4e9cf46d0c83a428b113cbd107bfced1d7cfe1b95f697e9af7e6657467fd4c",
     "config/GMFE69/buddy_vec_info_dtor.json": "c9456974ffd664579afab73919189dbb4dc6ae91c605e0b5ab77426da1b3fb8d",
     "config/GMFE69/buddy_vec_info_reserve.json": "34a46a10eff1cc223254a6f202639b9aa5245a0ac11d2175f6130779554bf4dd",
     "config/GMFE69/buddy_vec_path_begin.json": "7fef54c9fda8714c21f1c16269dacb6cd2b7d4ea3b0c646c6bb8aea2ca779511",
@@ -2196,7 +2194,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "91dc3d4dbb3380460b779bafbb823584aa27707a22f1a0c86dde80057286856c",
-    "config/GMFE69/project.json": "9c6c2285e0a93344dc1356c816a1f5e37b6a2e47a0de2f58275af08cad91f5eb",
+    "config/GMFE69/project.json": "b4e4afe62ab42b2a8804247c5bde7c402146692b67719b2effe4e03d21c43738",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -30000,45 +29998,6 @@
       "linked_sha256": "eae7ab33e11e5be52a30b6ca8fd2bb2c4325b659b2335ba876c764f376e2590a"
     },
     {
-      "id": "buddy_list",
-      "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 168,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "off",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "e5e5ee1801dc591f0cbd6282fefbcaa3929aecd8ee92826a52ad1fa2fdc85600",
-      "linked_sha256": "deee1718876adf166f906744e2af0670db4dd2ae614f78e9be8ea3e9cb1c98be"
-    },
-    {
       "id": "world_volume_list",
       "category": "reconstructed_game",
       "functions": 1,
@@ -36119,8 +36078,8 @@
     {
       "id": "buddy_list_reserve",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 436,
+      "functions": 3,
+      "code_bytes": 964,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -36150,10 +36109,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": true,
+      "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "db8959cba790604f0195ddbc3425ebf5f603d8699cd4138631432e664a46ec09",
-      "linked_sha256": "e0b4218d1237ad5cf04fc06b3a44a86bb42f29437d15d742a03b3131d5741d69"
+      "object_sha256": "2f904762494f197c3cdc2ce7e01dca12770fdd6a5024fd72a600e3e33a447d4a",
+      "linked_sha256": "95567f0c39e7ab3930e19a9e88bfe250b5aa3d8e756c4e5a59736510ef25dc4b"
     },
     {
       "id": "collision",
@@ -44750,13 +44709,6 @@
             "kind": "function",
             "name": "BIFunc_CreateBuddyDataStructures__FPPiPv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x80058988",
-            "size": 360,
-            "kind": "function",
-            "name": "__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x80058e44",
