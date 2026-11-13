@@ -20,6 +20,17 @@ multiplayer not at all. Every landing keeps the complete image identical.
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
 - Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
+- **Resumed 2026-11-12 ~21:30** after the decisions (docs/Remaining.md, 2026-11-12 additions).
+  The unlock agents landed Play 1,868, BSInitBIFuncs 1,228 (strings-only block headers),
+  PATH_event 1,884, Update_Picture_Buffers 904 (getpic.cpp complete), PopUpMessageHandler::Loop
+  2,308, CCDBTriangle::TestCollision(CVolCapsule) 6,920; collisionvolume_ctor onto the shared
+  headers. Next leads for agents: UserInterface::Init (1,160; coordinator ruling: one real
+  inline declaring `char path[20] = ""`, used by the block holder and Init, may carry the
+  template; scratch/loop3/unlockB2/notes.md), ConstrainVelocity (2 lines with Mul),
+  UpdateBoundingBox (56, block-2 FPR knot), the PopUpMessageHandler ctor (76, this/pool-base
+  swap), CMatrix::Rotate (23 with the landed BuildRot), and any draft the new accepted forms
+  help. Agents must read docs/Remaining.md "Source forms" first: forms accepted on 11-12 may now
+  land.
 - **Run paused by the coordinator, 2026-11-12 ~10:50.** Matching ran dry: every remaining
   draft waits on a question below or has been worked repeatedly with no new lead, and the
   secondary header work (CVector3/CMatrix/ISceneNode, 8c84b851..9da917fa) has taken every unit
