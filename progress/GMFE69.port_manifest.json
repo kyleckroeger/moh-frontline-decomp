@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1115,
+ "verified_units": 1114,
  "function_bytes_by_status": {"consistent": 123124, "differs": 5764, "exact": 4472, "verified": 1272196},
  "data_bytes_owned": 811901,
  "data_bytes_total": 1976252,
@@ -4999,7 +4999,7 @@
  [2148977684, 92, "SNDARAM_setpool__FUii", "verified", "src/ea/saramman.c"],
  [2148977776, 80, "SNDARAM_restore__Fv", "verified", "src/ea/saramman.c"],
  [2148977856, 692, "SNDARAM_alloc__Fi", "verified", "src/ea/saramman.c"],
- [2148978548, 152, "SNDARAM_free__FUi", "verified", "src/ea/saramman_free.c"],
+ [2148978548, 152, "SNDARAM_free__FUi", "verified", "src/ea/saramman.c"],
  [2148978700, 88, "SNDDRV_DSPMixerSetPan__FP6_AXVPBPUs", "verified", "src/ea/sdspmix.c"],
  [2148978788, 108, "SNDDRV_DSPMixerSetAuxBus__FP6_AXVPBUsi", "verified", "src/ea/sdspmix.c"],
  [2148978896, 264, "SNDDRV_DSPMixerInit__Fi", "verified", "src/ea/sdspmix.c"],

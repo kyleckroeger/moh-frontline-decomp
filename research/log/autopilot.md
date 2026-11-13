@@ -2808,3 +2808,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge5] source_link --jobs 4 after merge5's merges (hierobject, weapon, thrown_obj, thrownbullet, animplayer): 61 undefined (was 66; five vtables now defined), 108 fragment-local (SECB_NullifyPointer now a file static of its unit), 50 duplicate, 0 small-data; recorded in docs/PortReadiness.md step 2. light parked: all 45 functions match, CAnimLightManager's weak vtable lands last in .data.
 - 2026-11-13 [loop merge6] merged threads.cpp (2 fragments, 360 B): THREAD_iscurrent appended to THREAD_init, the alarm handler and THREAD_yield.
 - 2026-11-13 [loop merge6] merged ipad.cpp (2 fragments, 540 B): one PADStatus view; vgPadStatus volatile throughout (iPAD_update casts it for MEM_copy).
+- 2026-11-13 [loop merge6] merged saramman.c (2 fragments, 1100 B): SNDARAM_free on the allocator's SNDARAMBLOCKVIEW record.

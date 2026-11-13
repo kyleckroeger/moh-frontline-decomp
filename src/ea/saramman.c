@@ -1,10 +1,10 @@
-// Fragment of the ARAM sample-memory manager: set-up, pool bounds (in 32-byte
-// units) and teardown, then the allocator: SNDARAM_alloc takes the first
-// free range (before, between or after the sorted allocated ranges, clipped
-// to the pool) that fits, inserting its record, and returns its byte
-// address (0 when full). SNDARAM_free after it is not part of this unit.
-// sndaram's members, the range record and the clipping helper are inferred
-// and are not original.
+// The ARAM sample-memory manager: set-up, pool bounds (in 32-byte units) and
+// teardown, then the allocator: SNDARAM_alloc takes the first free range
+// (before, between or after the sorted allocated ranges, clipped to the pool)
+// that fits, inserting its record, and returns its byte address (0 when
+// full); SNDARAM_free removes the record of a block (its address in 32-byte
+// units) and moves the later records down. sndaram's members, the range record
+// and the clipping helper are inferred and are not original.
 /* inferred: an allocated range (start and length, in 32-byte units) */
 struct SNDARAMBLOCKVIEW {
     unsigned int start;
@@ -116,4 +116,19 @@ found:
     }
     sndaram.count++;
     return start << 5;
+}
+
+void SNDARAM_free(unsigned int address) {
+    SNDARAMBLOCKVIEW* record = sndaram.table;
+    unsigned int block = address >> 5;
+    int i;
+
+    for (i = 0; i < sndaram.count; record++, i++) {
+        if (record->start == block) {
+            sndaram.count--;
+            for (; i < sndaram.count; i++)
+                sndaram.table[i] = sndaram.table[i + 1];
+            return;
+        }
+    }
 }
