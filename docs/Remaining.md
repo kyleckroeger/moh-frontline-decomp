@@ -27,11 +27,11 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,282,216 / 1,414,572 code bytes (90.64%)**. Left: about 132.2 KB in 97 functions across 54 source files.
+Verified: **1,282,440 / 1,414,572 code bytes (90.66%)**. Left: about 132.0 KB in 96 functions across 54 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
-| 1 | Scripting and level objects | 36.1 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `explosion.cpp` |
+| 1 | Scripting and level objects | 35.9 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `explosion.cpp` |
 | 1 | AI | 17.5 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Animation | 15.3 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `dmcluster.cpp`, `dmesh.cpp` |
 | 1 | Collision | 13.2 KB | `box.cpp`, `cdbgeom.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
@@ -42,9 +42,9 @@ Verified: **1,282,216 / 1,414,572 code bytes (90.64%)**. Left: about 132.2 KB in
 | 2 | Video | 1.6 KB | `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 82.1 KB and would take the project to 96.4% at most.
+Priority 1 is 81.9 KB and would take the project to 96.4% at most.
 
-Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 91 consistent (121.9 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 90 consistent (121.7 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->
@@ -184,6 +184,10 @@ the maintainer has decided which forms are acceptable.
     search (mixed `[i]` and `.x`).
   - A view-based pointer-cast field spelling (LevelField) in place of byte offsets.
   - The shared CVector3 header's base-class copy constructor (`CVector3 : CVector3Base`).
+  - Added 2026-11-13 (coordinator ruling): buddy.cpp's empty by-value inline `Check(BuddyState)`
+    called first in `BuddyInfo`'s constructor. It reads like a compiled-out debug check; its dead
+    whole-struct read makes CW keep only the state part of a `BuddyInfo` temporary in memory, as the
+    original does. It replaces the earlier `BuddyState unused = state;` spelling in every buddy unit.
 
 **Declined:**
 - Devices that add storage, slots or code only to steer registers: one-element

@@ -661,8 +661,6 @@
     "buddy_vec_path_end.json",
     "buddy_veciter_path_dtor.json",
     "buddy_vec_path_begin.json",
-    "buddy_vec_path_dtor.json",
-    "buddy_vec_info_dtor.json",
     "scene_vec_dtor.json",
     "scene_reset.json",
     "scene_dtor.json",
@@ -1006,7 +1004,6 @@
     "compartment_initclass.json",
     "bsbifunc_promptbuffer.json",
     "bsbifunc_hinttext.json",
-    "buddy_destroy.json",
     "staticmesh_draw.json",
     "compartment_draw.json",
     "bsbifunc_prompttext.json",
@@ -1019,7 +1016,8 @@
     "font_centeredf.json",
     "proxtrig_messages.json",
     "cdbobject_init.json",
-    "UserInterface_init.json"
+    "UserInterface_init.json",
+    "buddy.json"
   ],
   "progress": {
     "code_bytes": 1414572,

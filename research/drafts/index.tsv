@@ -86,7 +86,6 @@ real_lines	size	address	function	compile_settings_from	draft
 102	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
-	224	80058e44	__sinit_buddy_cpp	config/GMFE69/buddy_copy_info.json	research/drafts/__sinit_buddy_cpp.80058e44.cpp
 4	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
 211	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
 	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof.json	research/drafts/debug_prof_misc.cpp

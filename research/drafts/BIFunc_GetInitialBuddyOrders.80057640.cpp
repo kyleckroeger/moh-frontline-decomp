@@ -143,13 +143,16 @@ struct BuddyState {
     }
 };
 
+/* inferred: an empty check of a buddy state, taken by value (a compiled-out debug check) */
+inline void Check(BuddyState) {}
+
 /* inferred: an attached buddy (soldier, checkpoint progress, state). The constructor's dead copy of
    the still unset state is inferred: with it CW 1.3.2 keeps only the state part of a BuddyInfo
    temporary or local in its stack slot and splits soldier/progress into registers, as the
    original's list range constructor, push_back(BuddyInfo()) and BIFunc_AddBuddy show. */
 struct BuddyInfo {
     BuddyInfo() : soldier(0), progress(0) {
-        BuddyState unused = state;
+        Check(state);
         state.moving = 0;
         state.active = false;
         state.path = 0;

@@ -10,8 +10,8 @@
 // begin/end and vec_iter<BuddyInfo> destructor CW emits after their first user.
 // The file's .rodata block starts with the dwi header's prime table, so it is
 // defined here and the block is pooled (the functions address their strings
-// from the block base). The globals are defined by the rest of the file
-// (their __sinit is not part of this unit). Views of the script objects, the
+// from the block base). The globals are defined by buddy.cpp's unit, which
+// holds the file's static initialiser. Views of the script objects, the
 // soldier, the containers and the buddy records are inferred.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
@@ -153,13 +153,17 @@ struct BuddyState {
     }
 };
 
-/* inferred: an attached buddy (soldier, checkpoint progress, state). The constructor's dead copy of
-   the still unset state is inferred: with it CW 1.3.2 keeps only the state part of a BuddyInfo
-   temporary or local in its stack slot and splits soldier/progress into registers, as the
-   original's list range constructor, push_back(BuddyInfo()) and BIFunc_AddBuddy show. */
+/* inferred: an empty check of a buddy state, taken by value (it reads like a compiled-out debug
+   check). Called first in BuddyInfo's constructor: the whole-state read makes CW 1.3.2 keep only
+   the state part of a BuddyInfo temporary or local in its stack slot and split soldier/progress
+   into registers, as the original's list range constructor, push_back(BuddyInfo()) and
+   BIFunc_AddBuddy show. */
+inline void Check(BuddyState) {}
+
+/* inferred: an attached buddy (soldier, checkpoint progress, state) */
 struct BuddyInfo {
     BuddyInfo() : soldier(0), progress(0) {
-        BuddyState unused = state;
+        Check(state);
         state.moving = 0;
         state.active = false;
         state.path = 0;
