@@ -2772,3 +2772,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge2] merged smixfx.c (smixfx + smixfx_modlap, 1,296 B): FXfilterindex static again; sndfx declared float[] once (fxinit's int store through a char cast). MIX_getwetbuffer, the file's last function, stays in the smixfram unit.
 - 2026-11-13 [loop merge2] merged sdspmix.c (sdspmix + sdspmix_vol, 1,828 B): __MIXChannel static again; the two _AXVPB/MIXCHANNEL views joined on sdspmix_vol's (mix.c) names, the offset-named fields of InitChannel mapped by offset.
 - 2026-11-13 [loop merge2] merged animseq.cpp (animseq + animseq_start, 2,416 B): _AnimSeqParseToEnd and _ParseForFrame static again; AnimSeqAnimInfo_t on animseq_start's view (offset-named after +16).
+- 2026-11-13 [loop merge2] merged animmot.cpp (animmot_rot + animmot, 2,524 B): _AnimMot_FrameList static again, on animmot_rot's frame-list view with the empty weight-frame constructor.

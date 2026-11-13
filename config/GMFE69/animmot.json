@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80066050",
-      "size": 68,
+      "address": "0x800656b8",
+      "size": 2524,
       "type": 1
     },
     {
@@ -49,14 +49,14 @@
     },
     {
       "name": "extab",
-      "address": "0x8000b4a0",
-      "size": 8,
+      "address": "0x8000b480",
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
-      "address": "0x800125f0",
-      "size": 12,
+      "address": "0x800125c0",
+      "size": 60,
       "type": 1
     },
     {
@@ -64,6 +64,12 @@
       "address": "0x801d3688",
       "size": 1928,
       "type": 8
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fcb8",
+      "size": 8,
+      "type": 1
     }
   ],
   "functions": [
@@ -74,6 +80,30 @@
       "binding": 0
     },
     {
+      "name": "AnimMotCalcFloatingBone",
+      "address": "0x800656b8",
+      "size": 524,
+      "binding": 1
+    },
+    {
+      "name": "AnimMotCalcAnimPos",
+      "address": "0x800658c4",
+      "size": 784,
+      "binding": 1
+    },
+    {
+      "name": "AnimMotCalcAnimRot",
+      "address": "0x80065bd4",
+      "size": 476,
+      "binding": 1
+    },
+    {
+      "name": "AnimMotCreateWeightList",
+      "address": "0x80065db0",
+      "size": 672,
+      "binding": 1
+    },
+    {
       "name": "__ct__20AnimMotWeightFrame_tFv",
       "address": "0x80066090",
       "size": 4,
@@ -81,6 +111,11 @@
     }
   ],
   "externals": {
+    "AnimFileGetFrame": "0x80063238",
+    "AnimStGetStateWeight": "0x800671c0",
+    "Orient3Lerp": "0x800b848c",
+    "OrientLerpAngle": "0x800b8418",
+    "Rotate__8CVector2FRC8CVector2l": "0x8009226c",
     "__construct_array": "0x8013834c"
   },
   "undefined_in_discarded_code": [],
