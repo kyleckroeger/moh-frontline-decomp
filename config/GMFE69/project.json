@@ -591,7 +591,6 @@
     "box_setters.json",
     "staticobjfactory_lookup.json",
     "saems_system.json",
-    "saemsstr_pool.json",
     "smemman.json",
     "stream_cb.json",
     "path_restore.json",

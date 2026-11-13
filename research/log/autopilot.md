@@ -2811,3 +2811,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-13 [loop merge6] merged saramman.c (2 fragments, 1100 B): SNDARAM_free on the allocator's SNDARAMBLOCKVIEW record.
 - 2026-11-13 [loop merge6] merged stagpat.c (2 fragments, 1776 B): the timbre header, voice, play-options and sndgs views joined by offset (detune range, volume/key ranges, patch key, last-of-patch and active bytes, voice count); sndgs as one SNDGSVIEW object.
 - 2026-11-13 [loop merge6] merged eaxadecf.cpp (2 fragments, 1312 B): GetState/SetState added to CEAXABLKDecf (m_state at +0x98 in both views).
+- 2026-11-13 [loop merge6] merged saemsstr.c (2 fragments, 3724 B): SNDAEMSI_linkstream appended; the sndaems view joins the stream pool (+0x10) and the update hook (+0x24).
