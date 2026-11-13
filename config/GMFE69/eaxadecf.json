@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x801689b8",
-      "size": 1256,
+      "size": 1312,
       "type": 1
     },
     {
@@ -77,6 +77,18 @@
       "name": "Decode__Q23SND12CEAXABLKDecfFPPfi",
       "address": "0x80168a60",
       "size": 1088,
+      "binding": 1
+    },
+    {
+      "name": "GetState__Q23SND12CEAXABLKDecfFv",
+      "address": "0x80168ea0",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "SetState__Q23SND12CEAXABLKDecfFPQ23SND8XAFSTATE",
+      "address": "0x80168ec4",
+      "size": 20,
       "binding": 1
     }
   ],

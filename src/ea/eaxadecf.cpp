@@ -1,7 +1,9 @@
 // SND::CEAXABLKDecf, the EA-XA block decoder to float samples: allocation
-// through the CODA hooks, construction and feeding a block of input.
-// CEAXABLKDecf and XAFSTATE are named by the mangled symbols; the members are
-// inferred from offsets and are not original.
+// through the CODA hooks, construction, feeding a block of input and decoding,
+// and the decoder state accessors (GetState returns the two previous samples
+// by value, SetState restores them). CEAXABLKDecf and XAFSTATE are named by
+// the mangled symbols; the members are inferred from offsets and are not
+// original.
 namespace SND {
 extern void* (*CODANew)(unsigned long);
 extern void (*CODADelete)(void*);
@@ -21,6 +23,8 @@ public:
     void operator delete(void*);
     int Feed(void*, int, int);
     int Decode(float**, int);
+    XAFSTATE GetState();
+    void SetState(XAFSTATE*);
 
     int field0;
     int field4;
@@ -115,5 +119,17 @@ int CEAXABLKDecf::Decode(float** out, int count) {
     if (m_frames <= 0)
         field4 = 0;
     return done;
+}
+
+XAFSTATE CEAXABLKDecf::GetState() {
+    XAFSTATE state;
+
+    state.previous0 = m_state.previous0;
+    state.previous1 = m_state.previous1;
+    return state;
+}
+
+void CEAXABLKDecf::SetState(XAFSTATE* state) {
+    m_state = *state;
 }
 }
