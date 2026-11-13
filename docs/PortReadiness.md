@@ -209,6 +209,21 @@ function's out-of-line copy and its inlined copies need different local orders),
 owners (fragments on private CVector3 views that the shared header's copy changes), and alarm,
 pumhandler, world_object, anim_obj (local dwi templates or private scene-node views).
 
+Vtable owners merged, 2026-11-13 (agent merge4, `scratch/loop3/merge4/notes.md`; the
+coordinator's ruling: a merged unit may keep a file-private CVector3/CMatrix view, marked
+inferred, where the shared header's copies don't keep the match). Tank_object, attachobject,
+sphere and fiber are one unit each and define `__vt__11CTankObject`, `__vt__17CAttachableObject`,
+`__vt__10CVolSphere` and `__vt__9CVolFiber` with their files' RTTI records. Tank_object and
+attachobject declare CStaticObject : IMovingSceneNode (and CAttachableObject, CHierObject) from
+the original's vtables on the shared headers. sphere and fiber keep a file-private CVector3
+that copies through an aligned base as the shared header does, but with the implicit
+assignment. `tools/port_unit.py`: the exception records of dropped weak duplicates no longer
+pin a section's address. Re-run (1,143 units, 98 drafts, 79 data files, all compiled):
+**66 undefined, 109 fragment-local, 50 duplicate**, 0 small-data, with 4 vtables fewer
+undefined. Not merged: weapon and thrown_obj (fragments on private vector views and
+placeholder scene-node views that conflict with CStaticObject's members), hierobject, light,
+thrownbullet and animplayer (not attempted).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
