@@ -1,6 +1,18 @@
 // Math helpers: percentages and random numbers on top of the library's
 // random() (31 random bits), fixed-point 64-bit percent tests and a
-// close-to-zero test. Parameter meanings are inferred from the code.
+// close-to-zero test; then MathFunGetTiltAngleDiffNoRoll and
+// MathFunGetPanAngleDiffNoRoll (the target direction relative to the facing,
+// the facing turned out of the pair first; the vector difference is taken in
+// place), MathFunNormalizeAngleNegativePiToPi (removes whole turns, then
+// brings the angle into -pi..pi), MathFunRotateAboutZ and MathFunRotateAboutY
+// (rotate a coordinate pair in place by an angle, through the library's double
+// sin and cos) and MathFunAtan2F (the quadrant-corrected angle of a y/x pair
+// from atan; note the right half-plane uses -y). The constants are entries of
+// the file's .sdata2 pool. The functions are named by their symbols; the
+// parameter meanings and the CVector3 view are inferred. The angle helpers are
+// inlined by the two angle differences, which the image places first, so the
+// unit is compiled with deferred inlining and the functions are written in
+// reverse image order.
 extern "C" {
 long random(void);
 void srand(unsigned int);
@@ -8,12 +20,97 @@ void srand(unsigned int);
 
 bool g_bMathFunRandomSeeded;
 
-unsigned char MathFunTestPercent(long long percent, long long chance) {
-    return percent < chance;
+extern "C" {
+double sin(double);
+double cos(double);
+double atan(double);
 }
 
-long long MathFunGetRandomPercent() {
-    return ((long long)(unsigned long)(random() & 0x7FFFFFFF) * 100) >> 31;
+#include "game/CVector3.h"
+
+float MathFunNormalizeAngleNegativePiToPi(float);
+void MathFunRotateAboutZ(float*, float*, float);
+float MathFunAtan2F(float, float);
+
+float MathFunAtan2F(float y, float x) {
+    if (x > 0.0f)
+        return atan(-y / x);
+    if (x < 0.0f) {
+        if (y < 0.0f)
+            return 3.1415927f - (float)atan(y / x);
+        return -3.1415927f - (float)atan(y / x);
+    }
+    if (y <= 0.0f)
+        return 1.5707964f;
+    return -1.5707964f;
+}
+
+void MathFunRotateAboutY(float* z, float* x, float angle) {
+    float s = sin(angle);
+    float c = cos(angle);
+    float ox = *x;
+    float oz = *z;
+    *x = ox * c - oz * s;
+    *z = ox * s + oz * c;
+}
+
+void MathFunRotateAboutZ(float* x, float* y, float angle) {
+    float s = sin(angle);
+    float c = cos(angle);
+    float ox = *x;
+    float oy = *y;
+    *x = ox * c - oy * s;
+    *y = ox * s + oy * c;
+}
+
+float MathFunNormalizeAngleNegativePiToPi(float angle) {
+    angle -= 3.1415927f * (float)((int)(angle / 6.2831855f) * 2);
+    if (angle > 3.1415927f)
+        angle -= 6.2831855f;
+    else if (angle < -3.1415927f)
+        angle += 6.2831855f;
+    return angle;
+}
+
+float MathFunGetPanAngleDiffNoRoll(CVector3* from, CVector3* to, CVector3* direction) {
+    *to -= *from;
+    float facing = MathFunAtan2F(-direction->y, direction->x);
+    float target = MathFunAtan2F(to->x, to->y);
+    return MathFunNormalizeAngleNegativePiToPi(target - facing);
+}
+
+float MathFunGetTiltAngleDiffNoRoll(CVector3* from, CVector3* to, CVector3* forward, CVector3* up) {
+    float pan = MathFunAtan2F(-forward->y, forward->x);
+    MathFunRotateAboutZ(&up->x, &up->y, -pan);
+    *to -= *from;
+    pan = MathFunAtan2F(to->x, to->y);
+    MathFunRotateAboutZ(&to->x, &to->y, -pan);
+    float facing = MathFunAtan2F(-up->z, up->y);
+    float target = MathFunAtan2F(-to->z, to->y);
+    return MathFunNormalizeAngleNegativePiToPi(target - facing);
+}
+
+bool MathFunCloseToZero(float value, float epsilon) {
+    if (value > epsilon)
+        return false;
+    return !(value < -epsilon);
+}
+
+void MathFunSRandom(unsigned int seed) {
+    srand(seed);
+    g_bMathFunRandomSeeded = true;
+}
+
+unsigned long MathFunRandomUI32Raw() {
+    return random() & 0x7FFFFFFF;
+}
+
+long long MathFunRandomI64(long long min, long long max) {
+    return min + (((max - min + 1) * (long long)(unsigned long)(random() & 0x7FFFFFFF)) >> 31);
+}
+
+float MathFunRandomReal(float min, float max) {
+    return min + (max - min) * (4.656613e-10f * (unsigned long)(random() & 0x7FFFFFFF));
 }
 
 float MathFunRandomRealSigned(float min, float max) {
@@ -23,29 +120,10 @@ float MathFunRandomRealSigned(float min, float max) {
     return value;
 }
 
-float MathFunRandomReal(float min, float max) {
-    return min + (max - min) * (4.656613e-10f * (unsigned long)(random() & 0x7FFFFFFF));
+long long MathFunGetRandomPercent() {
+    return ((long long)(unsigned long)(random() & 0x7FFFFFFF) * 100) >> 31;
 }
 
-long long MathFunRandomI64(long long min, long long max) {
-    return min + (((max - min + 1) * (long long)(unsigned long)(random() & 0x7FFFFFFF)) >> 31);
+unsigned char MathFunTestPercent(long long percent, long long chance) {
+    return percent < chance;
 }
-
-unsigned long MathFunRandomUI32Raw() {
-    return random() & 0x7FFFFFFF;
-}
-
-void MathFunSRandom(unsigned int seed) {
-    srand(seed);
-    g_bMathFunRandomSeeded = true;
-}
-
-bool MathFunCloseToZero(float value, float epsilon) {
-    if (value > epsilon)
-        return false;
-    return !(value < -epsilon);
-}
-
-// MathFunGetTiltAngleDiffNoRoll, MathFunGetPanAngleDiffNoRoll, the angle
-// normalisation, the two rotations and MathFunAtan2F follow in the original
-// file and are not reconstructed.

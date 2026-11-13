@@ -817,7 +817,6 @@
     "AIObject_ctor.json",
     "swvideodisplaylist_dtor.json",
     "path_createtrack.json",
-    "MathFun_rotate.json",
     "line.json",
     "box_pointdist.json",
     "box_linedist.json",
