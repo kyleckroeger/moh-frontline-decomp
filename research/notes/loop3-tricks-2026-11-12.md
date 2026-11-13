@@ -981,3 +981,12 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   declared after 'error' (Pikmin's reference order) it is exact. Earlier passes had permuted declarations
   but compiled the .c draft as C++ (brchk/score default), where an unrelated u8 shift difference hid it:
   score .c drafts with SUFFIX=c.
+- Local struct scalarisation is all-or-nothing in every toy tried (scratch/loop3/late2b/toy/t*.cpp, buddy flags): a
+  BuddyInfo local stays wholly in memory when its ctor writes through 'self' or '&member', when a sub-struct's ctor does,
+  or when it has no user copy constructor (the implicit copy is a block copy); with a user copy constructor and plain
+  ctors it is wholly scalar (array members do not block it). The buddy originals keep ONLY the state part
+  (path/moving/active) in memory with soldier/progress scalar; the one toy that gives that shape uses a separate
+  BuddyState local and a temporary BuddyInfo(soldier, progress, state) (toy/tM.cpp). Open.
+- CW removes a dead '-OSGetTick()' start chain completely in every form tried (sa/toy1-2), yet SweepAllExtents' original
+  keeps three dead 'neg' results in callee registers: some construct keeps the start values live until after register
+  allocation. Open.

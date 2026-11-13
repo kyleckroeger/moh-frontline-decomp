@@ -1,3 +1,7 @@
+// late2 (2026-11-13): 3 lines = the T() temp's slot. The original's temp is a whole BuddyInfo at 8(r1) whose
+// path/moving/active (+8..+20) are stored in ctor-body order and whose soldier/progress are never stored; this
+// draft's separate BuddyState temp lands at 8 instead of 16. CW 1.3.2 keeps a local struct wholly in memory or wholly
+// scalar in every toy tried (scratch/loop3/late2b/notes.md, toy/); same knot as CreateBuddyDataStructures and BIFunc_AddBuddy.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 inline void* operator new(unsigned long, void* p) { return p; }

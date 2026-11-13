@@ -1,3 +1,6 @@
+// late2 (2026-11-13): the original keeps the DEAD 'neg' of the first three OSGetTick starts in r29-r31 (the stops and
+// the second half's resumes leave nothing). Scalar/array/static/timer-class/register/empty-inline/if(0) forms all let
+// CW drop every neg (scratch/loop3/late2b/sa).
 extern "C" unsigned long OSGetTick();
 
 class ISceneNode {

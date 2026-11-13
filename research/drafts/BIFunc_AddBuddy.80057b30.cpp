@@ -1,3 +1,5 @@
+// late2 (2026-11-13): the original keeps info.soldier/progress in r27/r28 and only path/moving/active in memory
+// (36..44); ours keeps all five in memory (28..44). Same BuddyInfo partial-scalar knot as CreateBuddyDataStructures.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 

@@ -1,3 +1,5 @@
+// late2 (2026-11-13): Both(): the original computes the high shift amount first but builds the low term first;
+// body operand orders, unsigned char parameters, argument spellings and caller locals are inert (late2b/up).
 // A fragment of input.cpp; the file name is this project's. CInputManager, the functions at the start of the file: per-player key
 // value tables, rumble feedback and keymaps. CInputManager, CDeviceManager and
 // KEYMAP are named by the mangled symbols; the base-class relationship, the

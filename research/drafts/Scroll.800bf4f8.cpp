@@ -1,3 +1,5 @@
+// late2 (2026-11-13): the out-of-line Reset matches; only the inlined copy in Scroll schedules differently. Setter
+// spellings in Reset (256 combinations), the call's form and inverted if/return are inert (late2b/sc).
 // PopUpMessage: from MoveTop to the end of the file (moving the message's top
 // line up, the getters, SetString and the setters, Reset with its default
 // placement, timing and colour, the destructor and the constructor).

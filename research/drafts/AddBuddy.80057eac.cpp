@@ -1,3 +1,6 @@
+// late2 (2026-11-13): moving the 'UsingBuddy' dump into a single-use inline (scratch/loop3/late2b/ab/h1.cpp) gives
+// the inlined GiveBuddyOrders' x/y/z FPRs the original's f29/f30/f31 but moves its buddy/path/index GPRs one
+// register lower (17); 36 declaration/initialisation orders of x/y/z here are inert (6).
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 inline void* operator new(unsigned long, void* p) { return p; }

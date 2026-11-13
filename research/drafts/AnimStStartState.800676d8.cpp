@@ -1,3 +1,5 @@
+// late2 (2026-11-13): 'slots[k].state == id' gives the original's cmplw operand order, but the field/candidate
+// registers stay r0/r3 swapped (18); helper parameter orders give 10 or 18 only (late2b/as).
 // A fragment of animst.cpp (0x80067b5c): AnimStTransPreCheck finds the
 // current state (as AnimStGetCurrentState, inlined), and unless there is
 // none or it is the target state, looks up the animation lists of both

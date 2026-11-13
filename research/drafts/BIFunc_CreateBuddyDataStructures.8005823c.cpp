@@ -1,3 +1,6 @@
+// late2 (2026-11-13): the whole diff is push_back(BuddyInfo())'s temp: the original stores only path/moving/active
+// (48..56) and reloads them after the call, while soldier/progress are constant zeros never stored. Same knot as the
+// list range ctor 0x80058988 (scratch/loop3/late2b/notes.md); b0's BuddyState sub-struct form gives 75 here.
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
