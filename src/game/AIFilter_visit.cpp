@@ -132,13 +132,8 @@ public:
     ISceneNode* m_skip;
 };
 
-class CScene {
-public:
-    bool VisitAllStaticObjects(dwi::IVisitor<ISceneNode>&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-};
 
 extern CScene g_scene;
 

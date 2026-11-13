@@ -53,12 +53,8 @@ static inline CAISplinePath* FindSplinePath(unsigned long id, const bool& revers
     return g_aigAIFilterGlobalObject.GetSplinePath(id, reverse);
 }
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown00[16];
-};
 
 extern CScene g_scene;
 

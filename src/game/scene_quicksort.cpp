@@ -7,18 +7,8 @@
 // function) is only declared. The rest of the file is not part of this unit.
 class ISceneNode;
 
-class CScene {
-public:
-    union UNodePair {
-        struct {
-            ISceneNode* first;
-            ISceneNode* second;
-            signed char order;
-        } nodes;
-        unsigned long long key;
-        unsigned char data[16];
-    };
-};
+#include "game/CScene.h"
+
 
 namespace dwi {
 template <class I, class C, class T>

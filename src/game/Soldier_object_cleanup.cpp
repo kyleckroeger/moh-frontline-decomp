@@ -68,13 +68,8 @@ extern "C" int stricmp(const char*, const char*);
 void FreeAnimatedVolume(void*);
 void FreeBoxVolume(void*);
 
-class CScene {
-public:
-    bool IsNodeInScene(const ISceneNode*) const;
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

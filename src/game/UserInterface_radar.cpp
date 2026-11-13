@@ -76,12 +76,8 @@ public:
     int m_team;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 struct ShellPlayerOptions {
     unsigned char unknown00[3];

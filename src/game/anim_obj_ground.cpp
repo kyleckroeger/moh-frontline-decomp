@@ -115,11 +115,8 @@ public:
     virtual IVolume* GetWorldBoundingVolume(int) const;
 };
 
-class CScene {
-public:
-    unsigned char unknown00[24];
-    ISceneNode* m_worldObject;
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 
@@ -174,7 +171,7 @@ float CAnimObject::DetectGround() {
     int hit = 1;
     m_stopped = false;
     if (m_detectGround && (!m_jumping || m_velocity.z < 0.0f)) {
-        IVolume* world = g_scene.m_worldObject->GetWorldBoundingVolume(0);
+        IVolume* world = g_scene.m_world->GetWorldBoundingVolume(0);
         CVector3 bottom = m_tm.GetPos();
         bottom.z -= 0.05f;
         CLine3 line(CVector3(bottom.x, bottom.y, 1.0f + bottom.z), bottom);

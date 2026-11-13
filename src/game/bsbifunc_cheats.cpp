@@ -48,12 +48,8 @@ public:
     unsigned char unknown398b : 6;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CheatsView g_cheats;
 extern CScene g_scene;

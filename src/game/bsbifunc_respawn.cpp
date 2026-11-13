@@ -28,12 +28,8 @@ public:
     bool IsPlayerCrouching() const;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 // BSGO_Basic, the object at BSObject+12: 12 bytes of members, then its
 // virtual table pointer; the virtual functions it needs, in the order of

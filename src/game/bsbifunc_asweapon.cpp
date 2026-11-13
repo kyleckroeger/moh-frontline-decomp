@@ -211,12 +211,8 @@ struct ScriptObjectView {
     BSGO_Basic* user;
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

@@ -90,12 +90,8 @@ public:
     unsigned char flag397_low : 6;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 void MathFunRotateAboutY(float*, float*, float);
 

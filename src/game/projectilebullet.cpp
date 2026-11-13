@@ -166,16 +166,8 @@ public:
 
 class ISceneNode;
 
-class CScene {
-public:
-    void Remove(ISceneNode&);
-    void Add(ISceneNode&);
-    CPlayerObject* GetPlayer(int) const;
-    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
-    void IncludeCollision(const ISceneNode&, const ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

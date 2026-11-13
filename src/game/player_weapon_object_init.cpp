@@ -242,13 +242,8 @@ public:
     unsigned char unknown00[28];
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 class CRenderBin {
     unsigned char unknown00[28];

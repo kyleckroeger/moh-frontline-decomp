@@ -204,11 +204,8 @@ public:
     CPlayerWeaponObject* GetCurrentWeapon() const;
     void CycleWeapon(int, int);
 };
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
-    unsigned char unknown000[328];
-};
+#include "game/CScene.h"
+
 extern CScene g_scene;
 
 void BIFunc_AddPlayerAmmo(int** sp, void*) {

@@ -235,12 +235,8 @@ public:
 class CPlayerObject : public ISceneNode {
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
-    CPlayerObject* FindClosestPlayer(CVector3);
-    unsigned char unknown000[328];
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 

@@ -119,13 +119,8 @@ public:
     float m_velocity[3];
 };
 
-class CScene {
-public:
-    unsigned char unknown0000[16];
+#include "game/CScene.h"
 
-    CPlayerObject* GetPlayer(int) const;
-    CPlayerObject* FindClosestPlayer(CVector3);
-};
 
 class CShellMenu {
 public:

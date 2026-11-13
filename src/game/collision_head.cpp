@@ -157,11 +157,8 @@ public:
     virtual CPlayerObject* GetPlayerObject();
 };
 
-class CScene {
-public:
-    unsigned char unknown00[64];
-    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 extern const float TIME_STEP_EPSILON;

@@ -259,12 +259,8 @@ public:
     CWeaponFlagsView* GetCurrentWeapon() const;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    char data[328];
-};
 
 extern CScene g_scene;
 

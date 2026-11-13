@@ -108,12 +108,8 @@ public:
 class CBullet;
 // Only the size (328 bytes, from the g_scene symbol) and this method are
 // established.
-class CScene {
-public:
-    void Add(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

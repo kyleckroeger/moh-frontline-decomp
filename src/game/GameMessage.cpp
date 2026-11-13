@@ -213,12 +213,8 @@ public:
     int m_value1896;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown00[16];
-};
 
 struct SecretStatus {
     int unlocked;

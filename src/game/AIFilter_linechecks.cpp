@@ -222,13 +222,8 @@ public:
     ISceneNode* m_skip;
 };
 
-class CScene {
-public:
-    bool VisitAllStaticObjects(dwi::IVisitor<ISceneNode>&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-};
 
 extern CScene g_scene;
 
@@ -265,7 +260,7 @@ public:
 
 bool CAIFilterGlobal::CheckCollisionLineToEnvironment(const CAIFilterRealPosition& start,
                                                       const CAIFilterRealPosition& end, CAIFilterObject* filter) {
-    ISceneNode* worldObject = g_scene.m_worldObject;
+    ISceneNode* worldObject = g_scene.m_world;
     int result = 1;
     CLine3 line(start, end);
     CCollision collision;
@@ -286,7 +281,7 @@ bool CAIFilterGlobal::CheckCollisionLineToEnvironment(const CAIFilterRealPositio
 
 bool CAIFilterGlobal::CheckVisionLineToEnvironment(const CAIFilterRealPosition& start,
                                                    const CAIFilterRealPosition& end, CAIFilterObject* filter) {
-    ISceneNode* worldObject = g_scene.m_worldObject;
+    ISceneNode* worldObject = g_scene.m_world;
     int result = 1;
     CLine3 line(start, end);
     CCollision collision;

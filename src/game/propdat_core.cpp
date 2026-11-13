@@ -112,13 +112,8 @@ public:
 };
 
 // Only the size (328 bytes, from the g_scene symbol) and this method are established.
-class CScene {
-public:
-    IMovingSceneNode* GetPlayer(int) const;
+#include "game/CScene.h"
 
-private:
-    unsigned char unknown00[328];
-};
 
 extern CScene g_scene;
 extern int g_NumPlayers;

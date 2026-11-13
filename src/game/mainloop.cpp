@@ -464,18 +464,8 @@ public:
     ISceneNode* m_node08;
 };
 
-class CScene {
-public:
-    void AddPlayer(CPlayerObject*);
-    void SetCamera(CCamera*);
-    void Add(ISceneNode&);
-    void SetWorld(CWorldObject*);
-    void Shutdown();
-    void Reset();
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 extern CScene g_scene;
 
 struct KEYMAP {

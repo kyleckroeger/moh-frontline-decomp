@@ -336,16 +336,8 @@ public:
 };
 
 class CPlayerObject;
-class CScene {
-public:
-    CScene();
-    ~CScene();
-    CPlayerObject* GetPlayer(int) const;
-    void Update(float);
-    void SetCamera(CCamera*);
-    void Draw(CViewport&, CScreen&, CRenderList&, CFog&);
-    unsigned char unknown000[328];
-};
+#include "game/CScene.h"
+
 
 class CFog {
 public:

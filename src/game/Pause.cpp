@@ -156,12 +156,8 @@ public:
     int m_controller;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 struct CheatsView {
     bool immortality;

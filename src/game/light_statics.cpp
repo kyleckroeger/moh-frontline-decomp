@@ -24,13 +24,8 @@ public:
     void MarkForDestruction(int);
 };
 
-class CScene {
-public:
-    bool IsNodeInScene(const ISceneNode*) const;
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char data[16];
-};
 
 void* DWI_alloc(const char*, int, int);
 

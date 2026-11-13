@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
@@ -57,7 +58,7 @@
       "linked_offset": 0,
       "linked_size": 200,
       "stripped_objects": [
-        "@438"
+        "@439"
       ]
     },
     {
@@ -68,7 +69,7 @@
       "linked_offset": 0,
       "linked_size": 276,
       "stripped_objects": [
-        "@439"
+        "@440"
       ]
     },
     {

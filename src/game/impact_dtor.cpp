@@ -229,14 +229,8 @@ public:
 extern CShellMenu g_Shell;
 extern bool g_bInMultiplayerMode;
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-    unsigned char unknown01c[300];
-};
 
 #include "game/CInputManager.h"
 
@@ -536,7 +530,7 @@ bool CImpact::Visit(ISceneNode& node) {
         CLine3 line(origin, target);
         CVolFiber fiber(line);
         {
-            IVolume* world = (IVolume*)g_scene.m_worldObject->GetWorldBoundingVolume((ISceneNode::EVolumeType)0);
+            IVolume* world = (IVolume*)g_scene.m_world->GetWorldBoundingVolume((ISceneNode::EVolumeType)0);
             CCollision collision;
             if (world->TestCollision(fiber, collision, true) == 2 && collision.m_contacts->m_surface->m_surface >= 0 &&
                 !CSurfaceType::IsShootThru(collision.m_contacts->m_surface->m_surface))

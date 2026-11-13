@@ -35,12 +35,8 @@ public:
     int m_team;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char data[16];
-};
 
 extern CScene g_scene;
 extern int g_bMPEndLevel;

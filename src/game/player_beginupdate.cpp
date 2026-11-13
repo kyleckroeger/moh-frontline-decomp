@@ -348,11 +348,8 @@ struct CheatsView {
 
 extern CheatsView g_cheats;
 
-class CScene {
-public:
-    unsigned char unknown00[24];
-    ISceneNode* m_world;
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 

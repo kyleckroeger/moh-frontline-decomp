@@ -115,12 +115,8 @@ public:
 
 extern SoundSchedule g_SoundSchedule;
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CShellMenu g_Shell;
 extern CScene g_scene;

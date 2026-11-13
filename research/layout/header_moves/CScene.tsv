@@ -1,0 +1,95 @@
+unit	source	status	detail
+AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	kept	
+AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	kept	stripped extab labels renamed (relabel.py)
+AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	kept	
+AIPlayerObject	scratch/try/AIPlayerObject/src/AIPlayerObject.cpp	kept	
+GameMessage	scratch/try/GameMessage/src/GameMessage.cpp	kept	
+Moh2	scratch/try/Moh2/src/Moh2.cpp	kept	
+Pause	scratch/try/Pause/src/Pause.cpp	kept	
+ShellMenu_levels	scratch/try/ShellMenu_levels/src/ShellMenu_levels.cpp	kept	
+ShellMenu_stats	scratch/try/ShellMenu_stats/src/ShellMenu_stats.cpp	kept	
+Soldier_object_cleanup	scratch/try/Soldier_object_cleanup/src/Soldier_object_cleanup.cpp	kept	
+UserInterface_draw	scratch/try/UserInterface_draw/src/UserInterface_draw.cpp	kept	
+UserInterface_drawcompass	scratch/try/UserInterface_drawcompass/src/UserInterface_drawcompass.cpp	kept	
+UserInterface_radar	scratch/try/UserInterface_radar/src/UserInterface_radar.cpp	kept	
+UserInterface_score	scratch/try/UserInterface_score/src/UserInterface_score.cpp	kept	
+UserInterface_update	scratch/try/UserInterface_update/src/UserInterface_update.cpp	kept	
+UserInterface_weaponname	scratch/try/UserInterface_weaponname/src/UserInterface_weaponname.cpp	kept	
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	kept	
+anim_obj_ground	scratch/try/anim_obj_ground/src/anim_obj_ground.cpp	kept	
+animplayer_draw	scratch/try/animplayer_draw/src/animplayer_draw.cpp	kept	
+attachobject_ctor	src/game/attachobject_ctor.cpp	control_fail	Linked source sections differ from manifest
+bsbifunc_ammo	scratch/try/bsbifunc_ammo/src/bsbifunc_ammo.cpp	kept	
+bsbifunc_asweapon	scratch/try/bsbifunc_asweapon/src/bsbifunc_asweapon.cpp	kept	
+bsbifunc_attach	scratch/try/bsbifunc_attach/src/bsbifunc_attach.cpp	kept	
+bsbifunc_cheats	scratch/try/bsbifunc_cheats/src/bsbifunc_cheats.cpp	kept	
+bsbifunc_death	scratch/try/bsbifunc_death/src/bsbifunc_death.cpp	kept	
+bsbifunc_explosion	scratch/try/bsbifunc_explosion/src/bsbifunc_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_explosion.cpp # -------------------------------------- #     194: g_scene.VisitAllNodesInVolume(*this, m_sphere, (ISceneNode::EVolumeType)0, true);
+bsbifunc_grenade	scratch/try/bsbifunc_grenade/src/bsbifunc_grenade.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_grenade.cpp # ------------------------------------ #     369: ISceneNode* player = g_scene.GetPlayer(0);
+bsbifunc_makenoise	scratch/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	kept	
+bsbifunc_makenoise_bi	scratch/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	kept	
+bsbifunc_mgflag	scratch/try/bsbifunc_mgflag/src/bsbifunc_mgflag.cpp	kept	
+bsbifunc_playerammo	scratch/try/bsbifunc_playerammo/src/bsbifunc_playerammo.cpp	kept	
+bsbifunc_playercoll	scratch/try/bsbifunc_playercoll/src/bsbifunc_playercoll.cpp	kept	
+bsbifunc_respawn	scratch/try/bsbifunc_respawn/src/bsbifunc_respawn.cpp	kept	
+bsbifunc_setobjinfo	scratch/try/bsbifunc_setobjinfo/src/bsbifunc_setobjinfo.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_setobjinfo.cpp # --------------------------------------- #     303: BSObjectView* script = g_scene.GetPlayer(0)->GetScriptObject();
+bsbifunc_shake	scratch/try/bsbifunc_shake/src/bsbifunc_shake.cpp	kept	
+bsbifunc_soundbank	scratch/try/bsbifunc_soundbank/src/bsbifunc_soundbank.cpp	kept	
+bsbifunc_vibration	scratch/try/bsbifunc_vibration/src/bsbifunc_vibration.cpp	kept	
+collision_head	scratch/try/collision_head/src/collision_head.cpp	kept	
+collisionvolume	scratch/try/collisionvolume/src/collisionvolume.cpp	kept	
+decal_reset	scratch/try/decal_reset/src/decal_reset.cpp	kept	
+explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\explosion_dtor.cpp # ---------------------------------- #     355: scene.VisitAllNodesInVolume(*this, m_sphere, (ISceneNode::EVolumeType)0, true);
+hearingvolume	scratch/try/hearingvolume/src/hearingvolume.cpp	kept	
+hearingvolume_init	scratch/try/hearingvolume_init/src/hearingvolume_init.cpp	kept	
+hierobject_constrain	scratch/try/hierobject_constrain/src/hierobject_constrain.cpp	kept	
+hierobject_update	scratch/try/hierobject_update/src/hierobject_update.cpp	kept	
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	kept	stripped extab labels renamed (relabel.py)
+light_animmanager	scratch/try/light_animmanager/src/light_animmanager.cpp	kept	
+light_statics	scratch/try/light_statics/src/light_statics.cpp	kept	
+mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	kept	
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_collvol.cpp # ------------------------------------- #     626: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_destroy	scratch/try/objcreate_destroy/src/objcreate_destroy.cpp	kept	
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_german.cpp # ------------------------------------ #     811: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_nonvis.cpp # ------------------------------------ #     106: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_thrown	scratch/try/objcreate_thrown/src/objcreate_thrown.cpp	kept	
+particlesystem_beginupdate	scratch/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	kept	
+particlesystem_reset	scratch/try/particlesystem_reset/src/particlesystem_reset.cpp	kept	
+player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	kept	
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	kept	
+player_commit	scratch/try/player_commit/src/player_commit.cpp	kept	
+player_weapon_draw	scratch/try/player_weapon_draw/src/player_weapon_draw.cpp	kept	
+player_weapon_object_head	scratch/try/player_weapon_object_head/src/player_weapon_object_head.cpp	kept	
+player_weapon_object_init	scratch/try/player_weapon_object_init/src/player_weapon_object_init.cpp	kept	
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	kept	stripped extab labels renamed (relabel.py)
+propdat_bsp	scratch/try/propdat_bsp/src/propdat_bsp.cpp	kept	
+propdat_core	scratch/try/propdat_core/src/propdat_core.cpp	kept	
+propdat_load	scratch/try/propdat_load/src/propdat_load.cpp	kept	
+propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\propdat_restart.cpp # ----------------------------------- #     644: g_scene.GetPlayer(p)->GetPosition(position);
+proxtrig_messages	scratch/try/proxtrig_messages/src/proxtrig_messages.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_messages.cpp # ------------------------------------- #     171: g_scene.Acquire(set);
+pumhandler_loop	scratch/try/pumhandler_loop/src/pumhandler_loop.cpp	kept	
+scene	scratch/try/scene/src/scene.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene.cpp # ------------------------- #      31: SModCommand command(&CScene::AddPlayer_now, (ISceneNode*)player);
+scene_closestplayer	scratch/try/scene_closestplayer/src/scene_closestplayer.cpp	kept	
+scene_cmppairs	scratch/try/scene_cmppairs/src/scene_cmppairs.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_cmppairs.cpp # ---------------------------------- #     201: for (e = exclusions.begin(); e != exclusions.end(); e++) {
+scene_dtor	scratch/try/scene_dtor/src/scene_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_dtor.cpp # ------------------------------ #     164: : m_node0(0), m_value24(0), m_value28(0), m_value32(0), m_value36(0), m_value40(0), m_value44(0), m_value48(0),
+scene_fast	scratch/try/scene_fast/src/scene_fast.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_fast.cpp # ------------------------------ #     143: m_collisions.clear();
+scene_fastvec_commands	scratch/try/scene_fastvec_commands/src/scene_fastvec_commands.cpp	kept	
+scene_fastvec_pairs	scratch/try/scene_fastvec_pairs/src/scene_fastvec_pairs.cpp	kept	
+scene_now	scratch/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_now.cpp # ----------------------------- #     142: if (node == m_players[i])
+scene_query	scratch/try/scene_query/src/scene_query.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_query.cpp # ------------------------------- #     177: m_collisions.clear();
+scene_quicksort	scratch/try/scene_quicksort/src/scene_quicksort.cpp	kept	
+scene_reset	scratch/try/scene_reset/src/scene_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_reset.cpp # ------------------------------- #     123: m_world[i] = 0;
+scene_rmextents	scratch/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      95: node.m_extentNodes[0] = m_extents128.push_back(extent);
+scene_shutdown	scratch/try/scene_shutdown/src/scene_shutdown.cpp	kept	
+scene_sort	scratch/try/scene_sort/src/scene_sort.cpp	kept	
+scene_update	scratch/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_update.cpp # -------------------------------- #     260: SExclusionEntry* it = m_exclusions.begin();
+scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #     253: SExclusionEntry* entry = FindExclusion(first, second);
+sound	scratch/try/sound/src/sound.cpp	kept	stripped extab labels renamed (relabel.py)
+soundschedule_sound	scratch/try/soundschedule_sound/src/soundschedule_sound.cpp	kept	
+static_obj_pathbegin	scratch/try/static_obj_pathbegin/src/static_obj_pathbegin.cpp	kept	
+static_obj_scale	scratch/try/static_obj_scale/src/static_obj_scale.cpp	kept	
+static_obj_type	scratch/try/static_obj_type/src/static_obj_type.cpp	kept	
+thrown_obj_cleanup	scratch/try/thrown_obj_cleanup/src/thrown_obj_cleanup.cpp	kept	
+thrownbullet_explosion	scratch/try/thrownbullet_explosion/src/thrownbullet_explosion.cpp	kept	
+thrownbullet_tail	scratch/try/thrownbullet_tail/src/thrownbullet_tail.cpp	kept	
+weapon_bullet	scratch/try/weapon_bullet/src/weapon_bullet.cpp	kept	

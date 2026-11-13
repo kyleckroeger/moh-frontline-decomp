@@ -20,10 +20,8 @@ inline void* operator new(unsigned long, void* p) { return p; }
 class ISceneNode;
 class CLight;
 
-class CScene {
-public:
-    void Add(ISceneNode&);
-};
+#include "game/CScene.h"
+
 
 struct MOH_animatedLight_Struct {
     unsigned char unknown00[72];

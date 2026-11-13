@@ -219,13 +219,8 @@ public:
     ISceneNode* m_skip;
 };
 
-class CScene {
-public:
-    void VisitAllStaticObjects(dwi::IVisitor<ISceneNode>&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-};
 
 extern CScene g_scene;
 
@@ -263,7 +258,7 @@ float CAIFilterGlobal::GetCollisionDistLineToEnvironment(const CAIFilterRealPosi
                                                          float distance) {
     CLine3 line(start, end);
     CCollision collision;
-    ISceneNode* worldObject = g_scene.m_worldObject;
+    ISceneNode* worldObject = g_scene.m_world;
     int result = 1;
     CVolFiber fiber(line);
     IVolume* world = (IVolume*)worldObject->GetWorldBoundingVolume((ISceneNode::EVolumeType)0);

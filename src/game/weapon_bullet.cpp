@@ -298,13 +298,8 @@ public:
     void SetDetonationTime(float);
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-};
 
 extern CScene g_scene;
 
@@ -639,7 +634,7 @@ void CWeapon::Update(float elapsed, bool paused) {
     }
     if (falling) {
         CCollision collision;
-        IVolume* world = g_scene.m_worldObject->GetWorldBoundingVolume(0);
+        IVolume* world = g_scene.m_world->GetWorldBoundingVolume(0);
         CVector3 bottom = m_tm.GetPos();
         bottom.d.v[2] -= 0.05f;
         CLine3 line(CVector3(bottom.d.v[0], bottom.d.v[1], 1.0f + bottom.d.v[2]), bottom);

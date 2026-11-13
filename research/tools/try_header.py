@@ -40,13 +40,15 @@ PROVIDES = {
     "CCamera": {"types": ["IMovingSceneNode", "CPlane", "IDestructible", "ISubject", "IObserver",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId"]},
     "CInputManager": {"types": ["CDeviceManager", "CGCDevice", "CGCActuatorView"]},
+    "CPlayerObject": {"types": ["IMovingSceneNode", "CCamera", "CPlane", "IDestructible", "ISubject", "IObserver",
+                                "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId", "EWeaponTypes"]},
     "CScreen": {"types": ["CColor", "CRect", "GXRenderModeObj", "_GXRenderModeObj", "CScreenFieldMode",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"],
                 "enums": ["EScreenWidth", "EFrameFormat", "EDepthFormat"]},
 }
 
 
-EARLY_INCLUDE = {"CScreen": True}
+EARLY_INCLUDE = {"CScreen": True, "CPlayerObject": True}
 
 
 # Spellings of the class's fields that only some views have, rewritten to the header's.
@@ -211,14 +213,27 @@ def _lint_view(path, cls):
     return {}
 
 
-_PLACEHOLDER = re.compile(r"^(unknown|pad|field|unk|_)[0-9a-fA-F_]*$")
+def _lint_bits(path, cls):
+    """The view's one-bit bitfields: {(offset, bit): name}."""
+    _lint_view(path, cls)
+    for v in _VIEWS.get(path, []):
+        if v["name"] == cls and v["members"]:
+            return {(m[1], m[2]): m[0] for m in v["members"] if m[2] is not None and m[3] == 1}
+    return {}
+
+
+_PLACEHOLDER = re.compile(r"^(unknown|pad|field|unk|data|_)[0-9a-fA-F_]*$")
 
 
 def _offset_names(out, view, cls, path):
     """Fields the view names differently from the header at the same offset: accesses through
     . and -> renamed, and bare names inside the class's out-of-line member bodies."""
-    want = OFFSET_NAMES.get(cls, {})
+    want = dict(OFFSET_NAMES.get(cls, {}))
     have = _lint_view(path, cls)
+    for (off, bit), name in _lint_bits(path, cls).items():
+        if (off, bit) in OFFSET_BITS.get(cls, {}):
+            have[(off, bit)] = name
+            want[(off, bit)] = OFFSET_BITS[cls][(off, bit)]
     for off, name in have.items():
         new = want.get(off)
         if not new or new == name or _PLACEHOLDER.match(name) or name.startswith("__vptr"):
@@ -231,8 +246,23 @@ def _offset_names(out, view, cls, path):
     return out
 
 
+# One-bit flags by (offset, bit from the most significant), for _offset_names.
+OFFSET_BITS = {"CPlayerObject": {(o, i): n for o, ns in (
+    (0x394, ["m_landed", "m_onFloor", "m_onGround", "m_collided", "m_aiming", "m_flag394_04", "m_flag394_02", "m_climbing"]),
+    (0x395, ["m_crouched", "m_crouchStarted", "m_cameraShaking", "m_peeking", "m_onPath", "m_forceApplied", "m_flag395_02", "m_flag395_01"]),
+    (0x396, ["m_usingMountedWeapon", "m_noShells", "m_peekStarted", "m_mgIsHier", "m_mountingMG", "m_mgHasWeapon", "m_noExplosionPush", "m_flag396_01"]),
+    (0x397, ["m_weaponHidden", "m_dead", "m_fallingDamage", "m_flag397_10", "m_canCrouch", "m_motionShaking", "m_flag397_02", "m_wielding"]),
+    (0x398, ["m_triggerChecks", "m_superAim", "m_flag398_20", "m_flag398_10", "m_flag398_08", "m_flag398_04", "m_flag398_02", "m_flag398_01"]),
+) for i, n in enumerate(ns)}}
+
+
 # The header's field names by offset, for _offset_names.
 OFFSET_NAMES = {
+    "CPlayerObject": {0x24: "m_doodad", 0x78: "m_value078", 0x7c: "m_value07c", 0x80: "m_tm", 0xc0: "m_cameraTM", 0x100: "m_localVolume3", 0x104: "m_worldVolume3", 0x110: "m_boxA", 0x160: "m_boxB", 0x1b0: "m_localCapsule", 0x200: "m_worldCapsule", 0x250: "m_script", 0x258: "m_velocity", 0x268: "m_localVelocity", 0x278: "m_force", 0x288: "m_position", 0x298: "m_crouchHeight", 0x29c: "m_yaw", 0x2a0: "m_pitch", 0x2a4: "m_heightSpeed", 0x2a8: "m_collisions", 0x2c0: "m_hearing", 0x390: "m_value390", 0x39c: "m_footstepTimer", 0x3a0: "m_cameraShakeStrength", 0x3a4: "m_cameraShakeRate", 0x3a8: "m_cameraShakeTime", 0x3ac: "m_motionShakeStrength", 0x3b0: "m_motionShakeTime", 0x3b4: "m_motionShakeElapsed", 0x3b8: "m_deathTime", 0x3c0: "m_cameraForward", 0x3e0: "m_lastGroundPosition", 0x3f0: "m_peekRight", 0x400: "m_path", 0x404: "m_nextPath", 0x408: "m_pathTime", 0x40c: "m_pathRate", 0x410: "m_fallStartZ", 0x414: "m_mgYawLimit", 0x418: "m_mgPitchLimit", 0x41c: "m_mgYaw", 0x420: "m_mgPitch", 0x42c: "m_fov", 0x430: "m_zoomFov", 0x434: "m_targetFov", 0x438: "m_fovSpeed", 0x43c: "m_muzzleFlash", 0x440: "m_recoilYaw", 0x444: "m_recoilPitch", 0x448: "m_field448", 0x44c: "m_peek", 0x450: "m_duck", 0x454: "m_fireDelay", 0x458: "m_grenadeHoldTime", 0x45c: "m_currentWeapon", 0x460: "m_weapons", 0x514: "m_soldierWeapons", 0x5c8: "m_mgObject", 0x5cc: "m_weaponNode", 0x5d0: "m_lastMG", 0x5d4: "m_mgWeaponA", 0x5d8: "m_mgWeaponB", 0x5dc: "m_lastWeapon", 0x5e0: "m_mountedWeapon", 0x5f0: "m_flashMatrix", 0x630: "m_mountMatrix", 0x670: "m_mgSaved", 0x6b0: "m_mgCollisionId", 0x6b4: "m_turnScale", 0x6b8: "m_savedClipSize", 0x6cc: "m_collisionId", 0x6d0: "m_flashScale", 0x6e0: "m_mgDirection", 0x6f0: "m_mgIndex", 0x6f4: "m_crossHair", 0x6f8: "m_throwHelmet", 0x700: "m_handMatrix", 0x740: "m_scriptPosition", 0x750: "m_soundHandle", 0x752: "m_landTimer", 0x754: "m_fireValue", 0x758: "m_delta", 0x75c: "m_fallScale", 0x760: "m_value760", 0x764: "m_controller", 0x768: "m_viewport", 0x76c: "m_playerIndex", 0x770: "m_scriptObject", 0x7b0: "m_speedState", 0x7b4: "m_recoil", 0x7b8: "m_lastPitch", 0x7bc: "m_recoilStep", 0x7c0: "m_value7c0", 0x7c4: "m_value7c4", 0x7c8: "m_soldier", 0x7d0: "m_camera", 0xa70: "m_ui", 0x1234: "m_unknown1234", 0x1270: "m_showUI", 0x1288: "m_viewport1288", 0x128c: "m_timeRemaining", 0x1290: "m_timeFlash", 0x1298: "m_value1298", 0x129a: "m_name", 0x12b0: "m_team", 0x12b4: "m_jumping", 0x12b8: "m_jumpTimer", 0x12bc: "m_startYaw", 0x12c0: "m_startPitch"},
+    "CScene": {0x0: "m_head", 0x4: "m_tail", 0x8: "m_players", 0x18: "m_world", 0x1c: "m_camera",
+               0x20: "m_staticHead", 0x24: "m_staticTail", 0x28: "m_animHead", 0x2c: "m_animTail",
+               0x30: "m_lightHead", 0x34: "m_lightTail", 0x38: "m_nodeCount", 0x3c: "m_staticCount",
+               0x40: "m_animCount", 0x44: "m_lightCount", 0x48: "m_updating", 0x4c: "m_playerCount"},
     "CInputManager": {0x2430: "m_keymap", 0x2434: "m_playerKeymaps", 0x2444: "field2444",
                       0x2445: "m_feedback", 0x2446: "m_feedbackOff", 0x244a: "m_inverted",
                       0x244b: "m_zooming"},
@@ -258,7 +288,21 @@ def _cinputmanager_view(out, view, path=None):
 
 VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view, "CCamera": _ccamera_view,
                  "CInputManager": _cinputmanager_view}
-VIEW_PATH = {"CCamera", "CInputManager"}
+VIEW_REWRITES["CScene"] = lambda out, view, path=None: _offset_names(out, view, "CScene", path) if path else out
+def _cplayerobject_view(out, view, path=None):
+    if path:
+        out = _offset_names(out, view, "CPlayerObject", path)
+    if not re.search(r"^\s*(class|struct)\s+CPlayerObject\s*:", view, re.M):
+        out = _virtual_names(out, view, "CPlayerObject")
+    else:
+        for old, new in (("GetInventory", "GetScriptObject"), ("SetScriptObject", "SetScript")):
+            if re.search(r"\bvirtual\b[^;]*\b" + old + r"\s*\(", view):
+                out = re.sub(r"(?<=\.|>)" + old + r"(?=\s*\()", new, out)
+    return out
+
+
+VIEW_REWRITES["CPlayerObject"] = _cplayerobject_view
+VIEW_PATH = {"CCamera", "CInputManager", "CScene", "CPlayerObject"}
 
 
 def moved(text, cls, path=None):

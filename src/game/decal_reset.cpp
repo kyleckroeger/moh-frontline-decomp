@@ -195,12 +195,8 @@ public:
 
 
 /* Only Add and the object's size are part of this view. */
-class CScene {
-public:
-    void Add(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown00[0x148];
-};
 
 extern CScene g_scene;
 

@@ -175,12 +175,8 @@ public:
     virtual void Penetrate(const CCollision&);
 };
 
-class CScene {
-public:
-    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

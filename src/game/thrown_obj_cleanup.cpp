@@ -58,12 +58,8 @@ public:
     static int GetSoundIndex(int);
 };
 
-class CScene {
-public:
-    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
+#include "game/CScene.h"
 
-    unsigned char unknown00[328];
-};
 
 extern CScene g_scene;
 struct LevelFileContentsStruct_;

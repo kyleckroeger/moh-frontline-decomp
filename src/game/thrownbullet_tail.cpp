@@ -135,13 +135,8 @@ public:
 void SECB_NullifyPointer(IObserver&, ISubject**, ESubjectEvent);
 void SECB_NullifyPointerOnMarked(IObserver&, ISubject**, ESubjectEvent);
 
-class CScene {
-public:
-    void Add(ISceneNode&);
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

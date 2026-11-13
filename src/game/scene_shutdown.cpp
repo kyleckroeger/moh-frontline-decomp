@@ -5,15 +5,10 @@
 // file are not part of this unit.
 class ISceneNode;
 
-class CScene {
-public:
-    void Remove(ISceneNode&);
-    void Shutdown();
+#include "game/CScene.h"
 
-    ISceneNode* m_firstNode;
-};
 
 void CScene::Shutdown() {
-    while (m_firstNode)
-        Remove(*m_firstNode);
+    while (m_head)
+        Remove(*m_head);
 }

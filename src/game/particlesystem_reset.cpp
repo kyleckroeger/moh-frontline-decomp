@@ -49,10 +49,8 @@ public:
     void* m_sceneNext;
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
-};
+#include "game/CScene.h"
+
 
 class CRenderList {
 public:

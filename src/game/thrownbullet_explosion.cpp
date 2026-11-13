@@ -287,13 +287,8 @@ class ISceneNode;
 class CPlayerObject;
 enum EScriptBulletType {};
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
-    CPlayerObject* FindClosestPlayer(CVector3);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 extern bool g_bInMultiplayerMode;

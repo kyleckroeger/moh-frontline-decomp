@@ -288,6 +288,12 @@ manager is a member at +0, not the base two views made it (the weak destructor d
 member). 20 of 23 units with their own view moved; 3 call the device manager as a base (same
 code, different source) and stay on their views.
 
+CScene, 2026-11-13: `include/game/CScene.h`: every member function the original has, the fields
+the views agree on, and the dwi containers as byte ranges until they get a header (their types
+are in the mangled names). It includes no other header, so units still on their own ISceneNode
+or CVector3 view can use it. 74 of 94 units moved (4 after renaming stripped labels); the 10
+scene units that use the containers by member wait for a dwi header.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

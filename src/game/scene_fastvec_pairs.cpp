@@ -5,10 +5,8 @@
 // are left incomplete. The destructor is a weak template copy emitted in
 // this file, defined __declspec(weak) out of the class and instantiated
 // explicitly. The rest of the file is not part of this unit.
-class CScene {
-public:
-    struct UNodePair;
-};
+#include "game/CScene.h"
+
 
 extern "C" void MEM_free(void*);
 

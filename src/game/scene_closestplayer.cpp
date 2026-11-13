@@ -29,14 +29,8 @@ public:
     virtual void GetPosition(CVector3&) const;
 };
 
-class CScene {
-public:
-    CPlayerObject* FindClosestPlayer(CVector3);
+#include "game/CScene.h"
 
-    unsigned char unknown00[8];
-    CPlayerObject* m_players[17];
-    int m_playerCount;
-};
 
 CPlayerObject* CScene::FindClosestPlayer(CVector3 point) {
     float best = 3.4028235e+38f;

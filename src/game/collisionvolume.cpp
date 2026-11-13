@@ -30,12 +30,8 @@ public:
 
 class ISceneNode;
 
-class CScene {
-public:
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    char data[328];
-};
 
 extern CScene g_scene;
 

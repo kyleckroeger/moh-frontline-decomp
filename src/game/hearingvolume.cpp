@@ -186,13 +186,8 @@ struct CheatsView {
 
 extern CheatsView g_cheats;
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
-    void ExcludeCollision(const ISceneNode&, const ISceneNode&, int);
+#include "game/CScene.h"
 
-    char data[328];
-};
 
 extern CScene g_scene;
 

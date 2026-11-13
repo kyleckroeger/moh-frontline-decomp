@@ -61,11 +61,8 @@ public:
     unsigned long m_controller;
 };
 
-class CScene {
-public:
-    unsigned char unknown00[64];
-    CPlayerObject* GetPlayer(int) const;
-};
+#include "game/CScene.h"
+
 
 class Pause {
 public:
