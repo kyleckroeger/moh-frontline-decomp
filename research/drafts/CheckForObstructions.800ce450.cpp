@@ -1,67 +1,11 @@
 // real2 (2026-11-12): 25 real lines, unchanged: front.Sub and the line's m_dir.Sub (the original's CVector3 Sub member).
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float x, float y, float z) { d.v[0] = x; d.v[1] = y; d.v[2] = z; }
-    CVector3(const CVector3& o) { d.pair[0] = o.d.pair[0]; d.pair[1] = o.d.pair[1]; }
-    void Cross(const CVector3& a, const CVector3& b) {
-        d.v[0] = a.d.v[1] * b.d.v[2] - a.d.v[2] * b.d.v[1];
-        d.v[1] = a.d.v[2] * b.d.v[0] - a.d.v[0] * b.d.v[2];
-        d.v[2] = a.d.v[0] * b.d.v[1] - a.d.v[1] * b.d.v[0];
-    }
-    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    float Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            d.v[0] *= 1.0f / length;
-            d.v[1] *= 1.0f / length;
-            d.v[2] *= 1.0f / length;
-        }
-        return length;
-    }
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void SetPos(CVector3);
-    void SetRight(CVector3);
-    void SetFront(CVector3);
-    void SetUp(CVector3);
-    void TransformPoint(CVector3&, CVector3) const;
-    const CVector3& GetRow(int i) const { return *(const CVector3*)m[i]; }
-    CVector3 GetPos() const { return GetRow(3); }
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
+
 
 class CLine3 {
 public:
@@ -133,47 +77,8 @@ public:
 class CPlayerObject;
 class CSoldierObject;
 
-class ISceneNode {
-public:
-    virtual void unknown008();
-    virtual void unknown012();
-    virtual void unknown016();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown032();
-    virtual void unknown036();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void unknown048();
-    virtual void unknown052();
-    virtual IVolume* GetWorldBoundingVolume(int) const;
-    virtual void unknown060();
-    virtual void GetPosition(CVector3&) const;
-    virtual void unknown068();
-    virtual void unknown072();
-    virtual void unknown076();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown092();
-    virtual void unknown096();
-    virtual void unknown100();
-    virtual void unknown104();
-    virtual void unknown108();
-    virtual void unknown112();
-    virtual void unknown116();
-    virtual void unknown120();
-    virtual void unknown124();
-    virtual void unknown128();
-    virtual void unknown132();
-    virtual void unknown136();
-    virtual void unknown140();
-    virtual void unknown144();
-    virtual CSoldierObject* AsSoldierObject();
-    virtual void unknown152();
-    virtual CPlayerObject* AsPlayerObject();
-};
+#include "game/ISceneNode.h"
+
 
 class CPlayerObject {
 public:
@@ -189,11 +94,8 @@ public:
     void GetLookMatrix(CMatrix&);
 };
 
-class CScene {
-public:
-    unsigned char unknown000[24];
-    ISceneNode* m_worldObject;
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 
@@ -233,16 +135,16 @@ inline int TestLine(const CMatrix& frame, const CVector3& start, const CVector3&
     frame.TransformPoint(target, start);
     CVector3 source;
     frame.TransformPoint(source, end);
-    target.d.v[0] += position.d.v[0];
-    target.d.v[1] += position.d.v[1];
-    target.d.v[2] += position.d.v[2];
-    source.d.v[0] += center.d.v[0];
-    source.d.v[1] += center.d.v[1];
-    source.d.v[2] += center.d.v[2];
+    target.x += position.x;
+    target.y += position.y;
+    target.z += position.z;
+    source.x += center.x;
+    source.y += center.y;
+    source.z += center.z;
     CLine3 line(source, target);
     CCollision collision;
     collision.m_flag10 = 0;
-    return g_scene.m_worldObject->GetWorldBoundingVolume(0)->TestCollision(line, collision, false);
+    return g_scene.m_world->GetWorldBoundingVolume((ISceneNode::EVolumeType)0)->TestCollision(line, collision, false);
 }
 
 /* inferred: is the explosion more than 2 units above the node (only for
@@ -256,7 +158,7 @@ inline bool IsAbove(const CExplosion& explosion, ISceneNode& node) {
         CVector3 nodePosition;
         node.GetPosition(nodePosition);
         CVector3 center = explosion.m_sphere.GetCenter();
-        if (center.d.v[2] - nodePosition.d.v[2] > 2.0f)
+        if (center.z - nodePosition.z > 2.0f)
             return true;
         above = false;
         break;
@@ -273,7 +175,7 @@ bool CExplosion::CheckForObstructions(ISceneNode& node) {
     CVector3 position;
     node.GetPosition(position);
     front.Sub(position, center);
-    front.d.v[2] = 0.0f;
+    front.z = 0.0f;
     float distance = front.Normalize();
     if (distance < 0.001f)
         return false;
@@ -292,13 +194,13 @@ bool CExplosion::CheckForObstructions(ISceneNode& node) {
     if (node.AsPlayerObject()) {
         if (node.AsPlayerObject()->IsPlayerCrouching())
             scale = 0.33f;
-        position.d.v[2] = position.d.v[2] - node.AsPlayerObject()->GetEyeHeight();
+        position.z = position.z - node.AsPlayerObject()->GetEyeHeight();
     } else if (node.AsSoldierObject()) {
         CMatrix look;
         node.AsSoldierObject()->GetLookMatrix(look);
         CVector3 eye;
         eye = look.GetPos();
-        float height = eye.d.v[2] - position.d.v[2];
+        float height = eye.z - position.z;
         if (height < 0.0f)
             height = 0.0f;
         scale = height / 1.6f;
@@ -310,28 +212,28 @@ bool CExplosion::CheckForObstructions(ISceneNode& node) {
         sign = -1;
     float offset = 0.25f;
     float height = 1.6f * scale;
-    end.d.v[0] = 0.0f;
-    end.d.v[1] = 0.0f;
-    end.d.v[2] = sign * height;
-    start.d.v[0] = offset;
-    start.d.v[1] = 0.0f;
-    start.d.v[2] = height;
+    end.x = 0.0f;
+    end.y = 0.0f;
+    end.z = sign * height;
+    start.x = offset;
+    start.y = 0.0f;
+    start.z = height;
     if (TestLine(frame, start, end, position, m_sphere) != 1) {
         float height2 = 0.5f * height;
-        end.d.v[0] = 0.0f;
-        end.d.v[1] = 0.0f;
-        end.d.v[2] = sign * height2;
-        start.d.v[0] = -offset;
-        start.d.v[1] = 0.0f;
-        start.d.v[2] = height2;
+        end.x = 0.0f;
+        end.y = 0.0f;
+        end.z = sign * height2;
+        start.x = -offset;
+        start.y = 0.0f;
+        start.z = height2;
         if (TestLine(frame, start, end, position, m_sphere) != 1) {
             float height3 = 0.01f * height;
-            end.d.v[0] = 0.0f;
-            end.d.v[1] = 0.0f;
-            start.d.v[0] = 0.0f;
-            end.d.v[2] = sign * (0.01f * height);
-            start.d.v[1] = 0.0f;
-            start.d.v[2] = height3;
+            end.x = 0.0f;
+            end.y = 0.0f;
+            start.x = 0.0f;
+            end.z = sign * (0.01f * height);
+            start.y = 0.0f;
+            start.z = height3;
             if (TestLine(frame, start, end, position, m_sphere) != 1)
                 return true;
         }

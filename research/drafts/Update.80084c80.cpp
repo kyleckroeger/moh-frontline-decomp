@@ -59,41 +59,13 @@ template <class T> T MathFunClamp(T, T, T);
 
 extern "C" void PADControlMotor(int, unsigned long);
 
-class CDeviceManager {
-public:
-    int SetActuatorState(int, long, long, float, float);
-    bool IsReady(int);
-    void Shutdown();
-    void Update();
-    InputPadView* GetDeviceState(unsigned long);
-    void UpdateActuators(float);
 
-    InputDeviceView m_devices[4];
-};
 
-class CInputManager : public CDeviceManager {
-public:
-    void Update(float);
-    void Reset();
-    int VerifyAnalog();
-    bool IsReady();
-    void SetFeedback(unsigned long, long, long, float, float);
-    void ResetActuatorState(long);
-    bool GetValueAnyPlayer(unsigned long);
-    int GetValue(unsigned long, unsigned long);
-    void SetKeymap(unsigned long, KEYMAP*);
-    void Shutdown();
+#include "game/CInputManager.h"
 
-    InputKeyTableView* GetKeyTable(int player) { return &m_devices[player].table; }
 
-    KEYMAP* m_keymap;
-    KEYMAP* m_playerKeymaps[4];
-    unsigned char field2444;
-    bool m_feedback;
-    bool m_feedbackOff[4];
-    unsigned char field2449;
-    bool m_limited[4];
-};
+/* inferred: the device's key table (CGCDevice's event table, +0x30) */
+static inline InputKeyTableView* GetKeyTable(CDeviceManager* m, int player) { return (InputKeyTableView*)m->m_devices[player].m_events; }
 
 /* inferred: inputs 3 and 2 only drive keys 142 and 143 for limited players */
 static inline bool Blocked(int input, unsigned long index) {
@@ -107,10 +79,10 @@ void CInputManager::Update(float dt) {
     unsigned int analog;
     unsigned short flags;
     field2444 = 0;
-    CDeviceManager::Update();
+    m_deviceMgr.Update();
     for (int player = 0; player < 4; player++) {
-        InputKeyTableView* table = GetKeyTable(player);
-        InputPadView* pad = GetDeviceState(player);
+        InputKeyTableView* table = GetKeyTable(&m_deviceMgr, player);
+        InputPadView* pad = (InputPadView*)m_deviceMgr.GetDeviceState(player);
         unsigned long j;
         if (table && !pad) {
             for (j = 0; j < 189; j++) {
@@ -150,7 +122,7 @@ void CInputManager::Update(float dt) {
             } else if (flags & 0x10) {
                 raw = Both(pad->buttons, input >> 8, input & 0xff);
             } else {
-                if (m_limited[player] && (((int)input == 3 && index != 142) || ((int)input == 2 && index != 143))) {
+                if (m_zooming[player] && (((int)input == 3 && index != 142) || ((int)input == 2 && index != 143))) {
                     key->value = 0;
                     continue;
                 }
@@ -201,11 +173,11 @@ void CInputManager::Update(float dt) {
             key->value = value;
         }
     }
-    UpdateActuators(dt);
+    m_deviceMgr.UpdateActuators(dt);
 }
 
 void CInputManager::Shutdown() {
-    CDeviceManager::Shutdown();
+    m_deviceMgr.Shutdown();
 }
 
 void CInputManager::SetKeymap(unsigned long player, KEYMAP* keymap) {
@@ -216,7 +188,7 @@ void CInputManager::SetKeymap(unsigned long player, KEYMAP* keymap) {
 }
 
 int CInputManager::GetValue(unsigned long player, unsigned long key) {
-    InputKeyTableView* table = GetKeyTable(player);
+    InputKeyTableView* table = GetKeyTable(&m_deviceMgr, player);
     return table ? table->keys[key].value : 0;
 }
 
@@ -230,7 +202,7 @@ bool CInputManager::GetValueAnyPlayer(unsigned long key) {
 
 void CInputManager::ResetActuatorState(long state) {
     for (int i = 0; i < 4; i++) {
-        SetActuatorState(i, state, 0, 0.0f, 1.0f);
+        m_deviceMgr.SetActuatorState(i, state, 0, 0.0f, 1.0f);
         if (state == 0)
             PADControlMotor(i, 2);
     }
@@ -246,23 +218,23 @@ void CInputManager::SetFeedback(unsigned long player, long a, long b, float c, f
         enabled = m_feedback;
     }
     if (enabled && !m_feedbackOff[player])
-        SetActuatorState(player, a, b, c, d);
+        m_deviceMgr.SetActuatorState(player, a, b, c, d);
 }
 
 bool CInputManager::IsReady() {
     for (int i = 0; i < 4; i++) {
-        if (CDeviceManager::IsReady(i))
+        if (m_deviceMgr.IsReady(i))
             return true;
     }
     return false;
 }
 
-int CInputManager::VerifyAnalog() {
+bool CInputManager::VerifyAnalog() {
     return 1;
 }
 
 void CInputManager::Reset() {
-    InputDeviceView* device = m_devices;
+    InputDeviceView* device = (InputDeviceView*)m_deviceMgr.m_devices;
     InputKeyTableView* table;
     int i;
 

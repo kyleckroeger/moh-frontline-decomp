@@ -1,24 +1,12 @@
 #include <math.h>
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    float Dot(const CVector3& o) const { return d.v[0] * o.d.v[0] + d.v[1] * o.d.v[1] + d.v[2] * o.d.v[2]; }
-    CVector3() {}
-    CVector3(const CVector3& other) { d = other.d; }
 
-    CVector3Pair d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
-class CMatrix {
-public:
-    void TransformVector(CVector3&, CVector3) const;
-    void TransformPoint(CVector3&, CVector3) const;
-};
+
+#include "game/CMatrix.h"
+
 
 /* inferred: a frustum plane (normal, distance at +16) */
 class CPlane {

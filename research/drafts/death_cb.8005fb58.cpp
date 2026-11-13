@@ -1,3 +1,4 @@
+class CAIDoodad;
 // real2 (2026-11-12): 5 real lines, unchanged: delta.Sub, move.Sub, m_unknown23d8.Scale (the original's CVector3 members) replace the invented operator-= and per-component code.
 // A fragment of anim_callback.cpp (0x8005ff80): CAnimCallbacks::turn_cb
 // (on event 0 picks the turn animation through _TurnFindTurnAnimInfo - its
@@ -33,83 +34,17 @@
 // callback result types are not known.
 // Inferred views: a state's animation list (a count, then 12-byte entries of
 // animation, flags and weight record).
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3& operator=(const CVector3& other) {
-        *(CVector3Pair*)this = *(const CVector3Pair*)&other;
-        return *this;
-    }
-    void Scale(const CVector3& o, float k) { x = k * o.x; y = k * o.y; z = k * o.z; }
-    void Sub(const CVector3& a, const CVector3& b) { x = a.x - b.x; y = a.y - b.y; z = a.z - b.z; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 // Inferred: the object the skinned animation drives (members by offset).
 class CSoldierObject;
 
 /* Inferred: scene-node view with the table slots used here (ISceneNode). */
-class ISceneNode {
-public:
-    virtual void MarkForDestruction(int);
-    virtual ~ISceneNode();
-    virtual void unknown010();
-    virtual void unknown014();
-    virtual void unknown018();
-    virtual void unknown01c();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown02c();
-    virtual void unknown030();
-    virtual void unknown034();
-    virtual void unknown038();
-    virtual void unknown03c();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void unknown048();
-    virtual void unknown04c();
-    virtual void unknown050();
-    virtual void unknown054();
-    virtual void unknown058();
-    virtual void unknown05c();
-    virtual void unknown060();
-    virtual void unknown064();
-    virtual void unknown068();
-    virtual void unknown06c();
-    virtual void unknown070();
-    virtual void unknown074();
-    virtual void unknown078();
-    virtual void unknown07c();
-    virtual void unknown080();
-    virtual void unknown084();
-    virtual void unknown088();
-    virtual void unknown08c();
-    virtual void unknown090();
-    virtual CSoldierObject* AsSoldierObject();
-    virtual void unknown098();
-    virtual void unknown09c();
-    virtual void unknown0a0();
-    virtual void unknown0a4();
-    virtual void unknown0a8();
-    virtual void unknown0ac();
-    virtual void unknown0b0();
-    virtual void unknown0b4();
-    virtual void unknown0b8();
-    virtual void unknown0bc();
-    virtual void unknown0c0();
-    virtual void unknown0c4();
-    virtual void unknown0c8();
-    virtual struct AIDoodadView* GetAIDoodad();
-};
+#include "game/ISceneNode.h"
+
 
 class CSoldierObject : public ISceneNode {
 };
@@ -138,7 +73,8 @@ struct CAIFilterObject {
     CAIObject* m_object;
 };
 
-struct AIDoodadView {
+class CAIDoodad {
+public:
     void* unknown00;
     CAIFilterObject* filter;
 };

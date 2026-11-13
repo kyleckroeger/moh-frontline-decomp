@@ -63,8 +63,11 @@ def compile_object(template, source_text, workdir):
     compiler, wrapper = setup_compiler(template['compiler_version'], 'GC')
     src = Path(workdir) / ('probe.' + os.environ.get('SUFFIX', 'cpp'))
     src.write_text(source_text)
+    # include/ last: drafts use the shared game/ headers even when their unit's config
+    # doesn't list it yet (it holds only subdirectories, so nothing else resolves there)
+    dirs = template.get('include_dirs', []) + ([] if 'include' in template.get('include_dirs', []) else ['include'])
     cmd = [str(wrapper), str(compiler / 'mwcceppc.exe'), '-c', *template['compiler_flags'], '-I-',
-           *[f'-I{ROOT / p}' for p in template.get('include_dirs', [])], str(src), '-o', 'probe.o']
+           *[f'-I{ROOT / p}' for p in dirs], str(src), '-o', 'probe.o']
     r = subprocess.run(cmd, cwd=workdir, capture_output=True, text=True)
     obj = Path(workdir) / 'probe.o'
     if r.returncode or not obj.exists():

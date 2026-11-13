@@ -151,23 +151,12 @@ VIDEO_DRIVER* MOHFL_VD_create(DECODER*, FRAME*);
 
 }
 
-struct _GXRenderModeObj {
-    unsigned char unknown00[4];
-    unsigned short fbWidth;
-    unsigned short efbHeight;
-};
+#include "game/CScreen.h"
 
-class CScreen {
-public:
-    int GetHeight();
-    int GetWidth();
 
-    unsigned char unknown000[176];
-    _GXRenderModeObj* m_renderMode;
-    unsigned char unknown0b4[92];
-};
 
-extern CScreen g_screen;
+
+extern CScreenFieldMode g_screen;
 
 tBigYUVSwizzler* NEW_tBigYUVSwizzlerTexture(GXTexObj*, GXTexObj*, GXTexObj*);
 
@@ -236,5 +225,5 @@ GCHW_VD::GCHW_VD(RCMP::DECODER* decoder, RCMP::FRAME* frame, _GXRenderModeObj* m
 
 
 RCMP::VIDEO_DRIVER* RCMP::MOHFL_VD_create(DECODER* decoder, FRAME* frame) {
-    return new GCHW_VD(decoder, frame, g_screen.m_renderMode);
+    return new GCHW_VD(decoder, frame, g_screen.m_mode);
 }

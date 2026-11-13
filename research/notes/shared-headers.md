@@ -401,3 +401,34 @@ scene_dtor (its constructor names 20 fields the header doesn't have), scene_rmex
 returning T*, m_extentNodes); the 5 GetPlayer-as-ISceneNode units, bsbifunc_explosion/explosion_dtor
 (VisitAllNodesInVolume with their own ISceneNode view) and proxtrig_messages (Acquire), as before.
 The ISceneNode guard stays: 48 of the 74 CScene.h files (and those two) do not include ISceneNode.h, most because they have their own view of it.
+
+## Drafts (2026-11-13, agent hdrdraft)
+
+Every unlanded, non-multiplayer draft in research/drafts with its own view of a shared class was
+moved with try_header.py's `moved()` (and try_dwi's for dwi), one class at a time in include order
+(CVector3, CMatrix, CPlane, ISceneNode, IMovingSceneNode, CCamera, CPlayerObject, dwi, CScene,
+CColor, CRect, CScreen, CInputManager), keeping a class when the draft compiled and its score did
+not rise. Driver and per-draft table: scratch/loop3/hdrdraft/drive.py, results.tsv.
+research/tools/fast.py now appends `include` to a draft's include dirs (most drafts' units don't
+list it), so score_draft/check_draft compile the moved drafts.
+
+Result over 61 drafts: **36 moved, all at the same score** (check_draft consistent, brchk branch
+targets unchanged); no draft improved. Hand fixes needed by some (all view spellings, no logic):
+the AIDoodadView view renamed CAIDoodad (the header's GetAIDoodad type), CInputManager::Update
+calls the device manager as the member `m_deviceMgr` (GetKeyTable a static inline over it),
+ISceneNode slots 27/29 called by their real names AsStaticObject/AsHierObject (proxtrig's
+"GetTriggerUserA/B"), `GetWorldBoundingVolume((ISceneNode::EVolumeType)0)`, g_screen.m_mode,
+pointer casts on GetPlayer/GetScriptObject results that the drafts read through their own views.
+
+Worse with a header (kept on their views): CVector3 in the two CVolBox::TestCollision drafts
+(13 -> 295, 102 -> 203: FPR colouring of the fabs blocks), FindIntersection (320 -> 510),
+BIFunc_GetObjInfo (16 -> 789; its own operator= copies x/y/z), aim_cb (59 -> 525),
+_matrix_rot_yzx (109 -> 255), DMClusterSkelTraverseHeirarchy (31 -> 131); CColor in EndDraw
+(11 -> 12), BIFunc_PlayerScreenFlash (39 -> 42) and particlesystem_render (835 -> 987); dwi in
+AddBuddy (6 -> 22). These drafts were tuned against their own views' bodies (implicit copy
+constructors, member-wise copies), so the header's base-class copy constructor and pair-copy
+operator= move the registers; they need re-tuning on the header, not a reverted header.
+Not moved (code changes): GetFront(CAIFilterRealVector3&) in the two CCoverPoint drafts,
+CVector3 operator[] (GetExtents, UpdateBoundingBox), own CDBVector/CDBPlane constructors
+(TestCDBBranchNodeCollision), SaveAmmo, hash_map iterator/find_next/Resize, list(int), SExtent
+operator<, CScene container members (SweepAllExtents, CScene::Draw's CPlane/CCamera/CScreen).

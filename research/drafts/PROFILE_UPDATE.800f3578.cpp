@@ -41,11 +41,8 @@ __declspec(weak) SProfileBin::SProfileBin() : m_id(-1) {
     m_values[4] = 0;
 }
 
-class CInputManager {
-public:
-    int GetValue(unsigned long, unsigned long);
-    unsigned char unknown[0x2450]; // g_inputMgr's size: addressed absolutely, not through r13
-};
+#include "game/CInputManager.h"
+
 
 extern CInputManager g_inputMgr;
 extern SProfileBin g_ProfileBins[31];

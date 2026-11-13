@@ -17,11 +17,8 @@
 // views, the leaf bounds and the inline tests are inferred; the order of the
 // coordinate locals gives the original's loads. The rest of the file is in
 // other units.
-struct CVector3 {
-    float x;
-    float y;
-    float z;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 struct PropPlane4 {
     float x, y, z, d;
@@ -144,39 +141,8 @@ struct _PropBSPNode {
 
 extern _PropBSPNode* g_pPBSPHead;
 
-class ISceneNode {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual void vf24();
-    virtual void vf28();
-    virtual void vf2c();
-    virtual void vf30();
-    virtual void vf34();
-    virtual void vf38();
-    virtual void vf3c();
-    virtual void GetPosition(CVector3&) const;
-    virtual void vf44();
-    virtual void vf48();
-    virtual void vf4c();
-    virtual void vf50();
-    virtual void vf54();
-    virtual void vf58();
-    virtual void vf5c();
-    virtual void vf60();
-    virtual void vf64();
-    virtual void vf68();
-    virtual void vf6c();
-    virtual void vf70();
-    virtual struct CTriggerUser* GetTriggerUserA();
-    virtual void vf78();
-    virtual struct CTriggerUser* GetTriggerUserB();
-};
+#include "game/ISceneNode.h"
+
 
 struct BSObjectView {
     unsigned char unknown00[16];
@@ -310,12 +276,8 @@ struct CPlayerView {
     BSGO_Basic m_object;
 };
 
-class CScene {
-public:
-    unsigned char unknown00[0x4c];
-    int m_playerCount;
-    CPlayerView* GetPlayer(int) const;
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 extern int g_PopUpMsgTimer;
@@ -330,7 +292,7 @@ void UpdateProximityTriggerStatus() {
     if (g_PopUpMsgTimer > 0)
         g_PopUpMsgTimer--;
     for (i = 0; i < g_scene.m_playerCount; i++) {
-        CPlayerView* player = g_scene.GetPlayer(i);
+        CPlayerView* player = (CPlayerView*)g_scene.GetPlayer(i);
         if (player && player->active) {
             BSGO_Basic* object = &player->m_object;
             UpdateStatus(copy = object, false, false);
@@ -339,12 +301,12 @@ void UpdateProximityTriggerStatus() {
     for (user = g_pGermanList; user; user = user->m_next)
         UpdateStatus(user, true, false);
     for (user = g_pBoxList; user; user = user->m_next) {
-        CTriggerUser* t = user->GetSceneNode()->GetTriggerUserA();
+        CTriggerUser* t = (CTriggerUser*)user->GetSceneNode()->AsStaticObject();
         if (t && UsesTriggers(t))
             UpdateStatus(user, true, false);
     }
     for (user = g_pTankList; user; user = user->m_next) {
-        CTriggerUser* t = user->GetSceneNode()->GetTriggerUserB();
+        CTriggerUser* t = (CTriggerUser*)user->GetSceneNode()->AsHierObject();
         if (t && UsesTriggers(t))
             UpdateStatus(user, true, false);
     }

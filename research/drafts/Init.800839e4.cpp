@@ -9,96 +9,11 @@ class CStaticObject;
 class CMatrix;
 class CVector3;
 struct AIDoodadView;
-enum EClsnId {};
-
-class IDestructible {
-public:
-    IDestructible() {}
-    virtual void MarkForDestruction(int);
-    virtual ~IDestructible();
-    virtual void Destroy();
-};
-
-class ISubject : public IDestructible {
-public:
-    ISubject() {}
-    virtual void MarkForDestruction(int);
-    virtual ~ISubject();
-};
-
-class IObserver : public ISubject {
-public:
-    IObserver() {}
-    virtual ~IObserver();
-};
 
 /* ISceneNode's virtuals in table order (slots 20 to 216). They are the weak
    inline defaults of Moh2.cpp in the original; their bodies are not repeated
    here, so they are declared without one. */
-class ISceneNode : public IObserver {
-public:
-    enum EVolumeType {};
-    ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
-    virtual ~ISceneNode() {}
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual EClsnId GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
-    virtual void TriggerScriptEvent(int, void*, bool);
-    virtual void HandleBulletCollision(CBullet*, const CCollision&);
-    virtual void* AsMovingNode();
-    virtual const void* AsMovingNode() const;
-    virtual CStaticObject* AsStaticObject();
-    virtual const void* AsStaticObject() const;
-    virtual void* AsHierObject();
-    virtual const void* AsHierObject() const;
-    virtual void* AsWorldObject();
-    virtual const void* AsWorldObject() const;
-    virtual void* AsAnimObject();
-    virtual const void* AsAnimObject() const;
-    virtual void* AsSoldierObject();
-    virtual const void* AsSoldierObject() const;
-    virtual CPlayerObject* AsPlayerObject();
-    virtual const void* AsPlayerObject() const;
-    virtual void* AsPlayerWeaponObject();
-    virtual const void* AsPlayerWeaponObject() const;
-    virtual void* AsAnimatedPlayerObject();
-    virtual const void* AsAnimatedPlayerObject() const;
-    virtual CLight* AsLight();
-    virtual const CLight* AsLight() const;
-    virtual CBullet* AsBullet();
-    virtual const CBullet* AsBullet() const;
-    virtual void* AsCollisionVolume();
-    virtual const void* AsCollisionVolume() const;
-    virtual AIDoodadView* GetAIDoodad();
-    virtual const void* GetAIDoodad() const;
-    virtual void SetAttachedLight(CLight*, CVector3);
-    virtual CLight* GetAttachedLight() const;
-    int data04;
-    int data08;
-    int data0c;
-    int data10;
-    int data14;
-    int data18;
-    int data1c;
-    int data20;
-};
+#include "game/ISceneNode.h"
 
 class CRenderBin;
 
@@ -156,7 +71,6 @@ public:
     virtual void Link(CDmaTag*, CDmaPacket&);
 };
 
-
 class CRenderList {
 public:
     void Register(CRenderBin&);
@@ -199,12 +113,8 @@ public:
     unsigned char unknown00[64];
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown00[0x148];
-};
 
 extern CScene g_scene;
 
@@ -222,20 +132,7 @@ struct ColorView {
     }
 };
 
-class CMatrix {
-public:
-    CMatrix(bool identity) {
-        if (!s_ClassInit)
-            InitClass();
-        if (identity)
-            Ident();
-    }
-    static void InitClass();
-    void Ident();
-    static bool s_ClassInit;
-
-    float m[4][4];
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
 
 struct SDecalVertex {
     float x, y, z;
@@ -298,13 +195,7 @@ public:
 
 extern CBulletDecalManager g_BulletDecalManager;
 
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 static BulletDecal g_DecalList[512];
 static CMatrix g_Ident(true);

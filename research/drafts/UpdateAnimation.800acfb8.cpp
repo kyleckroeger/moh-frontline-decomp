@@ -187,14 +187,8 @@ public:
     CCameraView m_camera;
 };
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
-    bool IsNodeInScene(const ISceneNode*) const;
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

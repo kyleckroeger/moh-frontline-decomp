@@ -19,39 +19,15 @@ void MathSinCos(long, float*, float*);
 void PSMultMatrix(float*, const float*, const float*);
 extern "C" void* memcpy(void*, const void*, unsigned long);
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CMatrix;
 extern CMatrix _Mat_Unit;
 extern const CMatrix _Mat_Data;
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void BuildRot(CVector3, float);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void Rotate(CVector3, float);
-    void RotateZ(long);
-    void RotateY(long);
-    void RotateX(long);
-    void RotateZ(float);
-    void RotateY(float);
-    void RotateX(float);
+#include "game/CMatrix.h"
 
-    static bool s_ClassInit;
-
-    float m[4][4];
-} __attribute__((aligned(16)));
 
 inline void CMatrix::InitClass() {
     memcpy(&_Mat_Unit, &_Mat_Data, sizeof(CMatrix));
@@ -59,7 +35,7 @@ inline void CMatrix::InitClass() {
 }
 
 inline void CMatrix::Multiply(const CMatrix& a, const CMatrix& b) {
-    PSMultMatrix(&m[0][0], &a.m[0][0], &b.m[0][0]);
+    PSMultMatrix(&right.x, &a.right.x, &b.right.x);
 }
 
 inline float MulV(float a, float b) { return a * b; }
@@ -93,22 +69,22 @@ inline void CMatrix::BuildRot(CVector3 axis, float angle) {
     sz *= axis.z;
 
 
-    m[0][0] = txx + c;
-    m[0][1] = txy + sz;
-    m[0][2] = txz - sy;
-    m[0][3] = 0.0f;
-    m[1][0] = txy - sz;
-    m[1][1] = tyy + c;
-    m[1][2] = tyz + sx;
-    m[1][3] = 0.0f;
-    m[2][0] = txz + sy;
-    m[2][1] = tyz - sx;
-    m[2][2] = tzz + c;
-    m[2][3] = 0.0f;
-    m[3][0] = 0.0f;
-    m[3][1] = 0.0f;
-    m[3][2] = 0.0f;
-    m[3][3] = 1.0f;
+    right.x = txx + c;
+    right.y = txy + sz;
+    right.z = txz - sy;
+    right.w = 0.0f;
+    front.x = txy - sz;
+    front.y = tyy + c;
+    front.z = tyz + sx;
+    front.w = 0.0f;
+    up.x = txz + sy;
+    up.y = tyz - sx;
+    up.z = tzz + c;
+    up.w = 0.0f;
+    pos.x = 0.0f;
+    pos.y = 0.0f;
+    pos.z = 0.0f;
+    pos.w = 1.0f;
 }
 
 void CMatrix::Rotate(CVector3 axis, float angle) {
@@ -121,66 +97,66 @@ void CMatrix::RotateX(float angle) {
     float s;
     float c;
     MathSinCos((long)(2670176.8f * -angle), &s, &c);
-    float a0 = m[1][0];
-    float b0 = m[2][0];
-    m[1][0] = c * a0 + s * b0;
-    float a1 = m[1][1];
-    float b1 = m[2][1];
-    m[1][1] = c * a1 + s * b1;
-    float a2 = m[1][2];
-    float b2 = m[2][2];
-    m[1][2] = c * a2 + s * b2;
-    float a3 = m[1][3];
-    float b3 = m[2][3];
-    m[1][3] = c * a3 + s * b3;
-    m[2][0] = -s * a0 + c * b0;
-    m[2][1] = -s * a1 + c * b1;
-    m[2][2] = -s * a2 + c * b2;
-    m[2][3] = -s * a3 + c * b3;
+    float a0 = front.x;
+    float b0 = up.x;
+    front.x = c * a0 + s * b0;
+    float a1 = front.y;
+    float b1 = up.y;
+    front.y = c * a1 + s * b1;
+    float a2 = front.z;
+    float b2 = up.z;
+    front.z = c * a2 + s * b2;
+    float a3 = front.w;
+    float b3 = up.w;
+    front.w = c * a3 + s * b3;
+    up.x = -s * a0 + c * b0;
+    up.y = -s * a1 + c * b1;
+    up.z = -s * a2 + c * b2;
+    up.w = -s * a3 + c * b3;
 }
 
 void CMatrix::RotateY(float angle) {
     float s;
     float c;
     MathSinCos((long)(2670176.8f * -angle), &s, &c);
-    float a0 = m[0][0];
-    float b0 = m[2][0];
-    m[0][0] = c * a0 + -s * b0;
-    float a1 = m[0][1];
-    float b1 = m[2][1];
-    m[0][1] = c * a1 + -s * b1;
-    float a2 = m[0][2];
-    float b2 = m[2][2];
-    m[0][2] = c * a2 + -s * b2;
-    float a3 = m[0][3];
-    float b3 = m[2][3];
-    m[0][3] = c * a3 + -s * b3;
-    m[2][0] = s * a0 + c * b0;
-    m[2][1] = s * a1 + c * b1;
-    m[2][2] = s * a2 + c * b2;
-    m[2][3] = s * a3 + c * b3;
+    float a0 = right.x;
+    float b0 = up.x;
+    right.x = c * a0 + -s * b0;
+    float a1 = right.y;
+    float b1 = up.y;
+    right.y = c * a1 + -s * b1;
+    float a2 = right.z;
+    float b2 = up.z;
+    right.z = c * a2 + -s * b2;
+    float a3 = right.w;
+    float b3 = up.w;
+    right.w = c * a3 + -s * b3;
+    up.x = s * a0 + c * b0;
+    up.y = s * a1 + c * b1;
+    up.z = s * a2 + c * b2;
+    up.w = s * a3 + c * b3;
 }
 
 void CMatrix::RotateZ(float angle) {
     float s;
     float c;
     MathSinCos((long)(2670176.8f * -angle), &s, &c);
-    float a0 = m[0][0];
-    float b0 = m[1][0];
-    m[0][0] = c * a0 + s * b0;
-    float a1 = m[0][1];
-    float b1 = m[1][1];
-    m[0][1] = c * a1 + s * b1;
-    float a2 = m[0][2];
-    float b2 = m[1][2];
-    m[0][2] = c * a2 + s * b2;
-    float a3 = m[0][3];
-    float b3 = m[1][3];
-    m[0][3] = c * a3 + s * b3;
-    m[1][0] = -s * a0 + c * b0;
-    m[1][1] = -s * a1 + c * b1;
-    m[1][2] = -s * a2 + c * b2;
-    m[1][3] = -s * a3 + c * b3;
+    float a0 = right.x;
+    float b0 = front.x;
+    right.x = c * a0 + s * b0;
+    float a1 = right.y;
+    float b1 = front.y;
+    right.y = c * a1 + s * b1;
+    float a2 = right.z;
+    float b2 = front.z;
+    right.z = c * a2 + s * b2;
+    float a3 = right.w;
+    float b3 = front.w;
+    right.w = c * a3 + s * b3;
+    front.x = -s * a0 + c * b0;
+    front.y = -s * a1 + c * b1;
+    front.z = -s * a2 + c * b2;
+    front.w = -s * a3 + c * b3;
 }
 
 void CMatrix::RotateX(long angle) {

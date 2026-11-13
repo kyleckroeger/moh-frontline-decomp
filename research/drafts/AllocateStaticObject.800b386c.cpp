@@ -179,87 +179,17 @@ class CLight;
 class BSObject;
 class BPDLightVolume;
 struct AIDoodadView;
-enum EClsnId {};
 enum EBSEventEnum {};
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CThrownObject;
 class CStaticObject;
 
 /* inferred virtual-table views (slot order from the original tables) */
-class ISceneNode {
-public:
-    enum EVolumeType {};
-    virtual void MarkForDestruction(int);
-    virtual ~ISceneNode();
-    virtual void Destroy();
-    virtual void BeginUpdate(float);
-    virtual void UpdateAI(float);
-    virtual void CommitAI();
-    virtual void ConstrainVelocity();
-    virtual void AttemptUpdate(float);
-    virtual void OnCollision(const CCollision&);
-    virtual void CommitUpdate();
-    virtual void Draw(CDrawContext&);
-    virtual int GetLocalBoundingVolume(EVolumeType) const;
-    virtual int GetWorldBoundingVolume(EVolumeType) const;
-    virtual void GetTMLocalToWorld(CMatrix&) const;
-    virtual void GetPosition(CVector3&) const;
-    virtual void GetRightward(CVector3&) const;
-    virtual void GetForward(CVector3&) const;
-    virtual void GetUpward(CVector3&) const;
-    virtual int IsVisible(CDrawContext&) const;
-    virtual int IsDrawEnabled() const;
-    virtual EClsnId GetCollisionId() const;
-    virtual void SetCollisionId(EClsnId);
-    virtual int GetScriptObject() const;
-    virtual void TriggerScriptEvent(int, void*, bool);
-    virtual void HandleBulletCollision(CBullet*, const CCollision&);
-    virtual void* AsMovingNode();
-    virtual const void* AsMovingNode() const;
-    virtual CStaticObject* AsStaticObject();
-    virtual const void* AsStaticObject() const;
-    virtual void* AsHierObject();
-    virtual const void* AsHierObject() const;
-    virtual void* AsWorldObject();
-    virtual const void* AsWorldObject() const;
-    virtual void* AsAnimObject();
-    virtual const void* AsAnimObject() const;
-    virtual void* AsSoldierObject();
-    virtual const void* AsSoldierObject() const;
-    virtual CPlayerObject* AsPlayerObject();
-    virtual const void* AsPlayerObject() const;
-    virtual void* AsPlayerWeaponObject();
-    virtual const void* AsPlayerWeaponObject() const;
-    virtual void* AsAnimatedPlayerObject();
-    virtual const void* AsAnimatedPlayerObject() const;
-    virtual CLight* AsLight();
-    virtual const CLight* AsLight() const;
-    virtual CBullet* AsBullet();
-    virtual const CBullet* AsBullet() const;
-    virtual void* AsCollisionVolume();
-    virtual const void* AsCollisionVolume() const;
-    virtual AIDoodadView* GetAIDoodad();
-    virtual const void* GetAIDoodad() const;
-    virtual void SetAttachedLight(CLight*, CVector3);
-    virtual CLight* GetAttachedLight() const;
-};
+#include "game/ISceneNode.h"
 
-class IMovingSceneNode : public ISceneNode {
-public:
-    virtual ~IMovingSceneNode();
-    virtual void Reset();
-    virtual void Halt();
-    virtual void ApplyForceTo(CVector3, float);
-    virtual void SetTMLocalToWorld(const CMatrix&);
-};
+#include "game/IMovingSceneNode.h"
 
 class CStaticObject : public IMovingSceneNode {
 public:
@@ -364,7 +294,6 @@ public:
     static CStaticMesh* GetStaticMesh(int, int);
 };
 
-
 static int g_iStaticAIObjectPoolSize;
 static int g_iStaticObjectPoolSize;
 static int g_iAttachObjectPoolSize;
@@ -390,15 +319,9 @@ static void** g_ppAllocatorFreeLists[3];
 
 int CompareStaticObjectDefinitions(const void*, const void*);
 
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
-void DebugMsg(const char*, ...);
+#include "game/DwiHashMap.h"
 
+void DebugMsg(const char*, ...);
 
 enum TLTResourceID {};
 LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
@@ -763,7 +686,6 @@ void CStaticObjectFactory::DeallocateStaticObject(CStaticObject* object) {
     }
     }
 }
-
 
 static inline StaticObjectSlotView* PopFreeSlot() {
     StaticObjectSlotView** list;

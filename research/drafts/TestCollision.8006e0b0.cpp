@@ -1,32 +1,9 @@
 #include <math.h>
 
-union CVector3Data {
-    double pair[2];
-    struct { float x, y, z, w; } c;
-};
 
-class CVector3 {
-public:
-    void Sub(const CVector3& a, const CVector3& b) { d.c.x = a.d.c.x - b.d.c.x; d.c.y = a.d.c.y - b.d.c.y; d.c.z = a.d.c.z - b.d.c.z; }
-    CVector3() {}
-    float Dot(const CVector3& o) const { return d.c.x * o.d.c.x + d.c.y * o.d.c.y + d.c.z * o.d.c.z; }
-    float LengthSq() const { return d.c.x * d.c.x + d.c.y * d.c.y + d.c.z * d.c.z; }
-    void Cross(const CVector3& a, const CVector3& b) {
-        d.c.x = a.d.c.y * b.d.c.z - a.d.c.z * b.d.c.y;
-        d.c.y = a.d.c.z * b.d.c.x - a.d.c.x * b.d.c.z;
-        d.c.z = a.d.c.x * b.d.c.y - a.d.c.y * b.d.c.x;
-    }
-    void Unitize() {
-        float length = sqrtf(LengthSq());
-        if (length != 0.0f) {
-            d.c.x *= 1.0f / length;
-            d.c.y *= 1.0f / length;
-            d.c.z *= 1.0f / length;
-        }
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 class CCollision;
 extern const float CONTACT_EPSILON;
@@ -146,24 +123,24 @@ int CCDBVolBox::TestCollision(const CTriangle& tri, CCollision&, bool) const {
     CVector3 c;
     float best = 3.4028235e38f;
     EBoxTriSeperatingAxis bestAxis;
-    dx = tri.m_vertices[0].d.c.x - m_center.d.c.x;
-    float dy = tri.m_vertices[0].d.c.y - m_center.d.c.y;
-    float dz = tri.m_vertices[0].d.c.z - m_center.d.c.z;
-    float fx = tri.m_vertices[1].d.c.x - tri.m_vertices[0].d.c.x;
-    fy = tri.m_vertices[1].d.c.y - tri.m_vertices[0].d.c.y;
-    fz = tri.m_vertices[1].d.c.z - tri.m_vertices[0].d.c.z;
-    gx = tri.m_vertices[2].d.c.x - tri.m_vertices[0].d.c.x;
-    float gy = tri.m_vertices[2].d.c.y - tri.m_vertices[0].d.c.y;
-    gz = tri.m_vertices[2].d.c.z - tri.m_vertices[0].d.c.z;
-    diff.d.c.x = dx;
-    diff.d.c.y = dy;
-    diff.d.c.z = dz;
-    e0.d.c.x = fx;
-    e0.d.c.y = fy;
-    e0.d.c.z = fz;
-    e1.d.c.x = gx;
-    e1.d.c.y = gy;
-    e1.d.c.z = gz;
+    dx = tri.m_vertices[0].x - m_center.x;
+    float dy = tri.m_vertices[0].y - m_center.y;
+    float dz = tri.m_vertices[0].z - m_center.z;
+    float fx = tri.m_vertices[1].x - tri.m_vertices[0].x;
+    fy = tri.m_vertices[1].y - tri.m_vertices[0].y;
+    fz = tri.m_vertices[1].z - tri.m_vertices[0].z;
+    gx = tri.m_vertices[2].x - tri.m_vertices[0].x;
+    float gy = tri.m_vertices[2].y - tri.m_vertices[0].y;
+    gz = tri.m_vertices[2].z - tri.m_vertices[0].z;
+    diff.x = dx;
+    diff.y = dy;
+    diff.z = dz;
+    e0.x = fx;
+    e0.y = fy;
+    e0.z = fz;
+    e1.x = gx;
+    e1.y = gy;
+    e1.z = gz;
     float a0d = diff.Dot(m_axes[0]);
     float a0e0 = e0.Dot(m_axes[0]);
     float a0e1 = e1.Dot(m_axes[0]);

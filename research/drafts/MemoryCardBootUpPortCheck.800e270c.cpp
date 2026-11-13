@@ -1,11 +1,7 @@
 void* TLT_LoadFileNormal(const char*, int*, int);
 enum ERenderPriority {};
-struct CColor {
-    unsigned char r, g, b, a;
-    CColor(unsigned char r_, unsigned char g_, unsigned char b_, unsigned char a_) {
-        r = r_; g = g_; b = b_; a = a_;
-    }
-};
+#include "game/CColor.h"
+
 class CFont {
 public:
     CFont(const char*, ERenderPriority);
@@ -20,13 +16,8 @@ public:
     float m_scaleX;
     float m_scaleY;
 };
-class CInputManager {
-public:
-    void Update(float);
-    bool GetValueAnyPlayer(unsigned long);
+#include "game/CInputManager.h"
 
-    unsigned char unknown[0x2500];
-};
 struct UserMessageView {
     const char* text;
     unsigned char unknown04[4];
@@ -84,19 +75,8 @@ public:
     unsigned char unknown1910[180];
     CUserMessageTable m_messages;
 };
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual void vf24();
-    virtual int GetHeight();
-};
+#include "game/CScreen.h"
+
 
 inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
     float line = 50.0f * g_screen.m_scaleY;
@@ -158,7 +138,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
         if (!ok || !f4) {
             float y = top;
             done = false;
-            CScreen::GetCurrent()->GetHeight();
+            CScreen::GetCurrent()->GetWidth();
             MohDVDErrorTask(0, 0);
             mode = 0;
             if (!f5) {

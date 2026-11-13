@@ -20,39 +20,13 @@ class CTexture;
 class CWeapon;
 struct BPDLightVolume;
 
-union CVector3Pair {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3(const CVector3& other) { *(CVector3Pair*)this = *(const CVector3Pair*)&other; }
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    CMatrix(const CMatrix& other) { *this = other; }
-    CMatrix& operator=(const CMatrix&);
-    void Multiply(const CMatrix&, const CMatrix&);
-    void PreTranslate(CVector3);
-    void RotateX(long);
-    void RotateY(long);
-    void RotateZ(long);
-    static void InitClass();
-    static bool s_ClassInit;
 
-    float m[4][4];
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
+
 
 /* inferred layout */
 class CDrawContext {
@@ -176,13 +150,8 @@ struct MaterialView {
 
 class ISceneNode;
 
-class CScene {
-public:
-    bool IsNodeInScene(const ISceneNode*) const;
-    void Remove(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 

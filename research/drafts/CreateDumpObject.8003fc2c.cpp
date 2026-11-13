@@ -1,5 +1,4 @@
 enum EDumpType {};
-enum EClsnId {};
 
 inline void* operator new(unsigned long, void* place) {
     return place;
@@ -7,38 +6,11 @@ inline void* operator new(unsigned long, void* place) {
 
 void DebugMsg(const char*, ...);
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(float ax, float ay, float az) : x(ax), y(ay), z(az) {}
-    CVector3& operator+=(const CVector3& o) {
-        x += o.x;
-        y += o.y;
-        z += o.z;
-        return *this;
-    }
+#include "game/CVector3.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    static bool s_ClassInit;
-    void SetPos(CVector3);
+#include "game/CMatrix.h"
 
-    CVector3 right;
-    CVector3 front;
-    CVector3 up;
-    CVector3 pos;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -66,10 +38,8 @@ public:
     void SetRadius(float);
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 /* inferred: a mesh's bounding box centre */
 struct MeshBoxView {
@@ -173,13 +143,8 @@ public:
     unsigned char m_flags1e1b : 6;
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
-    class CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 extern bool g_bInMultiplayerMode;
@@ -281,34 +246,8 @@ struct BSObjectView {
     class BSGO_Basic* m_user;
 };
 
-class CPlayerObject {
-public:
-    virtual void vf008();
-    virtual void vf00c();
-    virtual void vf010();
-    virtual void vf014();
-    virtual void vf018();
-    virtual void vf01c();
-    virtual void vf020();
-    virtual void vf024();
-    virtual void vf028();
-    virtual void vf02c();
-    virtual void vf030();
-    virtual void vf034();
-    virtual void vf038();
-    virtual void vf03c();
-    virtual void vf040();
-    virtual void vf044();
-    virtual void vf048();
-    virtual void vf04c();
-    virtual void vf050();
-    virtual void vf054();
-    virtual void vf058();
-    virtual void vf05c();
-    virtual BSObjectView* GetScriptObject() const;
+#include "game/CPlayerObject.h"
 
-    CPlayerWeaponObject* GetWeaponByCRC(int) const;
-};
 
 void ForceUpdateProximityTriggerStatus(BSGO_Basic*, bool);
 
@@ -451,7 +390,7 @@ CStaticObject* CreateDumpObject(const CVector3& position, const CQuaternion& rot
     case 0x10efeba2:
     case (int)0xf7baddb9:
     case 0x72441aa1: {
-        BSObjectView* script = g_scene.GetPlayer(0)->GetScriptObject();
+        BSObjectView* script = (BSObjectView*)g_scene.GetPlayer(0)->GetScriptObject();
         PickupPropertiesView* properties = script->m_owner->m_properties;
         if (script->m_user->GetScriptData()->m_health == (int)properties->m_maxHealth)
             object->SetCollisionId((EClsnId)-1);

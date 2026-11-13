@@ -11,7 +11,7 @@ real_lines	size	address	function	compile_settings_from	draft
 3	1060	8001cee4	TLT_LoadLevelContentsFile__Fii	config/GMFE69/toilet_files.json	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp
 3	480	80052f6c	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	config/GMFE69/CoverPoint_unoccupied.json	research/drafts/FlagAsOccupied.80052f6c.cpp
 5	800	800f2090	DrawNode__11CStaticMeshFR7MSHNodeUl	config/GMFE69/staticmesh_mshnode_copy.json	research/drafts/DrawNode.800f2090.cpp
-3	740	800523cc	GetPeekLocation__11CCoverPointFv	config/GMFE69/AITankObject_ctor.json	research/drafts/GetPeekLocation.800523cc.cpp
+3	740	800523cc	GetPeekLocation__11CCoverPointFv	config/GMFE69/AITankObject.json	research/drafts/GetPeekLocation.800523cc.cpp
 6	500	800bf4f8	Scroll__12PopUpMessageFv	config/GMFE69/popup_displaytime.json	research/drafts/Scroll.800bf4f8.cpp
 6	400	8001e0f8	DisplayHint__Fv	config/GMFE69/toilet_hashmap.json	research/drafts/DisplayHint.8001e0f8.cpp
 7	156	800334e0	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	config/GMFE69/bsbifunc_cover.json	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp

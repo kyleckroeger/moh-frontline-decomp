@@ -26,50 +26,11 @@
 struct BSObject;
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-class CVector3 {
-public:
-    union {
-        double pair[2];
-        struct {
-            float x;
-            float y;
-            float z;
-            float w;
-        } c;
-    };
-    void Sub(const CVector3& a, const CVector3& b) { c.x = a.c.x - b.c.x; c.y = a.c.y - b.c.y; c.z = a.c.z - b.c.z; }
-    float Dot(const CVector3& v) const { return c.x * v.c.x + c.y * v.c.y + c.z * v.c.z; }
-    void Normalize() {
-        float length = sqrtf(c.x * c.x + c.y * c.y + c.z * c.z);
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            c.x *= scale;
-            c.y *= scale;
-            c.z *= scale;
-        }
-    }
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    void PreTranslate(CVector3);
-    void SetPos(CVector3);
-    void FastInverse(const CMatrix&);
-    void TransformPoint(CVector3&, CVector3) const;
-    void BuildScale(float);
-    void Multiply(const CMatrix&, const CMatrix&);
-    static void InitClass();
-    static bool s_ClassInit;
 
-    CVector3 right;
-    CVector3 forward;
-    CVector3 up;
-    CVector3 position;
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
+
 
 class CQuaternion {
 public:
@@ -383,7 +344,7 @@ public:
             BSObjectTriggerEvent(other->GetScriptObject(), 192, &event, 0, true);
     }
 
-    CVector3 PositionRow() const { return m_tm.position; }
+    CVector3 PositionRow() const { return m_tm.pos; }
 
     unsigned char unknown004[44];
     MeshView* m_mesh;
@@ -480,12 +441,12 @@ void CStaticObject::OnCollision(const CCollision& collision) {
             away.Sub(point, position);
             away.Normalize();
             CVector3 motion;
-            motion.c.x = point.c.x;
-            motion.c.y = point.c.y;
-            motion.c.z = point.c.z;
-            motion.c.x -= local.c.x;
-            motion.c.y -= local.c.y;
-            motion.c.z -= local.c.z;
+            motion.x = point.x;
+            motion.y = point.y;
+            motion.z = point.z;
+            motion.x -= local.x;
+            motion.y -= local.y;
+            motion.z -= local.z;
             motion.Normalize();
             if (away.Dot(motion) > 0.0f)
                 stop = false;

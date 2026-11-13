@@ -3,48 +3,7 @@
 // written bucket walk. Left: register colouring of the inlined find (p/data/last); writing find out in
 // the caller gives the right registers but the found branch becomes 'beq found' instead of 'bne +8; b
 // found' (scratch/loop3/struct4, struct5 notes).
-namespace dwi {
-template <class K, class V>
-class hash_map {
-public:
-    struct value_type {
-        K first;
-        V second;
-    };
-
-    typedef value_type* iterator;
-
-    iterator end() { return m_data + m_size; }
-
-    iterator find(K key) {
-        if (m_count == 0)
-            return end();
-        value_type* p = m_data + (unsigned long)key % m_size;
-        while ((int)p->first != -1) {
-            if (p->first == key)
-                return p;
-            if (++p == m_data + m_size)
-                p = m_data;
-        }
-        return end();
-    }
-
-    void insert(K key, V value) {
-        value_type* p = m_data + (unsigned long)key % m_size;
-        while ((int)p->first != -1) {
-            if (++p == m_data + m_size)
-                p = m_data;
-        }
-        p->first = key;
-        p->second = value;
-        m_count++;
-    }
-
-    value_type* m_data;
-    int m_size;
-    int m_count;
-};
-}
+#include "game/DwiHashMap.h"
 
 extern "C" {
 int sprintf(char*, const char*, ...);

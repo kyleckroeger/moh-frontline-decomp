@@ -1,14 +1,4 @@
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
+#include "game/CMatrix.h"
 
 class CDrawContext;
 class CCollision;
@@ -113,23 +103,7 @@ public:
     const CMatrix& GetTM192() const { return m_tm192; }
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    void push_back(const T& x) { m_data[m_size++] = x; }
-    void clear() { m_size = 0; }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CDrawContext {
 public:

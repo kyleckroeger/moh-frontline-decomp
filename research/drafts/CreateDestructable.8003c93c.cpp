@@ -19,50 +19,12 @@
 // evaluated before the stores) and the half through a local. The constants
 // are entries of the file's .sdata2 pool and the message a .rodata one. The
 // rest of the file is not part of this unit.
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-union CVector3Data {
-    double pair[2];
-    float v[4];
-};
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& other) { d = other.d; }
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.v[0] *= scale;
-            d.v[1] *= scale;
-            d.v[2] *= scale;
-        }
-    }
 
-    CVector3Data d;
-} __attribute__((aligned(8)));
+
+#include "game/CVector3.h"
+
 
 /* inferred: three floats */
 struct Float3 {
@@ -71,18 +33,8 @@ struct Float3 {
     float z;
 };
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void SetPos(CVector3);
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -135,87 +87,8 @@ struct BSGO_PlayerView {
     int field3c;
 };
 
-class CPlayerObject {
-public:
-    virtual void Function08();
-    virtual void Function0c();
-    virtual void Function10();
-    virtual void Function14();
-    virtual void Function18();
-    virtual void Function1c();
-    virtual void Function20();
-    virtual void Function24();
-    virtual void Function28();
-    virtual void Function2c();
-    virtual void Function30();
-    virtual void Function34();
-    virtual void Function38();
-    virtual void Function3c();
-    virtual void Function40();
-    virtual void Function44();
-    virtual void Function48();
-    virtual void Function4c();
-    virtual void Function50();
-    virtual void Function54();
-    virtual void Function58();
-    virtual void Function5c();
-    virtual void Function60();
-    virtual void Function64();
-    virtual void Function68();
-    virtual void Function6c();
-    virtual void Function70();
-    virtual void Function74();
-    virtual void Function78();
-    virtual void Function7c();
-    virtual void Function80();
-    virtual void Function84();
-    virtual void Function88();
-    virtual void Function8c();
-    virtual void Function90();
-    virtual void Function94();
-    virtual void Function98();
-    virtual void Function9c();
-    virtual void Functiona0();
-    virtual void Functiona4();
-    virtual void Functiona8();
-    virtual void Functionac();
-    virtual void Functionb0();
-    virtual void Functionb4();
-    virtual void Functionb8();
-    virtual void Functionbc();
-    virtual void Functionc0();
-    virtual void Functionc4();
-    virtual void Functionc8();
-    virtual void Functioncc();
-    virtual void Functiond0();
-    virtual void Functiond4();
-    virtual void Functiond8();
-    virtual void Functiondc();
-    virtual void Functione0();
-    virtual void Functione4();
-    virtual void SetTMLocalToWorld(const CMatrix&);
-    virtual void Functionec();
-    virtual void Functionf0();
-    virtual void Functionf4();
-    virtual void Functionf8();
-    virtual void Functionfc();
-    virtual void Function100();
-    virtual void Function104();
-    virtual void Function108();
-    virtual void Function10c();
-    virtual void Function110();
-    virtual void Function114();
-    virtual void Function118();
-    virtual void Function11c();
-    virtual void Function120();
-    virtual void SetScriptObject(BSObject*);
-    void InitAI();
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown004[1888];
-    int playerIndex;
-    unsigned char unknown768[8];
-    BSGO_PlayerView script;
-};
 
 class CShellMenu {
 public:
@@ -272,10 +145,8 @@ public:
     unsigned char unknown04[76];
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
+
 
 /* inferred: a mesh's bounding box: basis rows and centre */
 struct MeshBoxView {
@@ -383,12 +254,8 @@ public:
     static CStaticObject* AllocateStaticObject(int, int);
 };
 
-class CScene {
-public:
-    void Add(ISceneNode&);
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern CScene g_scene;
 
@@ -435,7 +302,7 @@ BSGO_PlayerView* CreatePlayer(TriggerObject_struct* trigger, int index) {
     player = g_pPlayers[index];
 
     core->created = true;
-    script = &player->script;
+    script = (BSGO_PlayerView*)player->m_scriptObject;
     {
         CMatrix matrix;
 
@@ -474,13 +341,13 @@ BSGO_PlayerView* CreatePlayer(TriggerObject_struct* trigger, int index) {
             break;
         }
     } else if (g_bInMultiplayerMode) {
-        health = g_Shell.mpHealth[player->playerIndex];
+        health = g_Shell.mpHealth[player->m_controller];
     } else {
         health = core->health;
     }
     script->health = health;
     CreateBSObject(core->scriptName, &script->object, (BSGO_Basic*)script, trigger, &script->data);
-    player->SetScriptObject(script->object);
+    player->SetScript(script->object);
     if (g_bInMultiplayerMode)
         BSObjectTriggerEvent(script->object, 44, 0, 0, true);
     else
@@ -541,9 +408,9 @@ BSGO_Destructable* CreateDestructable(TriggerObject_struct* trigger, int param) 
         object->SetScriptObject(script->m_object);
         BSObjectTriggerEvent(script->m_object, 44, (void*)c_param, 0, false);
     } else {
-        x = position.d.v[0];
-        y = position.d.v[1];
-        z = position.d.v[2];
+        x = position.x;
+        y = position.y;
+        z = position.z;
         DebugMsg("SOON TO BE ERROR! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);
         DebugMsg("(repeated for importance)! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);
         DebugMsg("(repeated for importance)! Mechanic at x: %d  y: %d  z: %d  has no child script.  Thats bad\n", x, y, z);

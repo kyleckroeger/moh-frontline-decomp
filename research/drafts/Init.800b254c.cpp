@@ -185,13 +185,7 @@ struct AIDoodadView;
 enum EClsnId {};
 enum EBSEventEnum {};
 
-class CVector3 {
-public:
-    float x;
-    float y;
-    float z;
-    float w;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
 
 class CThrownObject;
 class CStaticObject;
@@ -367,7 +361,6 @@ public:
     static CStaticMesh* GetStaticMesh(int, int);
 };
 
-
 static int g_iStaticAIObjectPoolSize;
 static int g_iStaticObjectPoolSize;
 static int g_iAttachObjectPoolSize;
@@ -393,15 +386,9 @@ static void** g_ppAllocatorFreeLists[3];
 
 int CompareStaticObjectDefinitions(const void*, const void*);
 
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
-void DebugMsg(const char*, ...);
+#include "game/DwiHashMap.h"
 
+void DebugMsg(const char*, ...);
 
 enum TLTResourceID {};
 LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
@@ -763,7 +750,6 @@ void CStaticObjectFactory::DeallocateStaticObject(CStaticObject* object) {
     }
     }
 }
-
 
 static inline StaticObjectSlotView* PopFreeSlot() {
     StaticObjectSlotView** list;

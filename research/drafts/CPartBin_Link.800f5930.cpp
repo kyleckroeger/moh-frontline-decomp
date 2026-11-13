@@ -46,18 +46,8 @@ struct CPartView {
 };
 #pragma pack()
 
-class CVector3 {
-public:
-    CVector3() {}
-    CVector3(const CVector3& o) {
-        d.pair[0] = o.d.pair[0];
-        d.pair[1] = o.d.pair[1];
-    }
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
+#include "game/CVector3.h"
+
 
 /* Inferred: the lighting block at +64 of a mesh. */
 struct DMeshLightingView {
@@ -198,7 +188,7 @@ extern int _remap_next;
 
 /* inferred */
 static inline void InitLightPos(GXLightObj* light, CVector3 position) {
-    GXInitLightPos(light, position.d.v[0], position.d.v[1], position.d.v[2]);
+    GXInitLightPos(light, position.x, position.y, position.z);
 }
 
 void CPartBin::Link(CDmaTag* tag, CDmaPacket& packet) {
@@ -276,7 +266,7 @@ void CPartBin::Link(CDmaTag* tag, CDmaPacket& packet) {
                 CVector3 tmp = lightPos;
                 position = tmp;
                 GXInitLightColor(&lights[i], color);
-                GXInitLightPos(&lights[i], position.d.v[0], position.d.v[1], position.d.v[2]);
+                GXInitLightPos(&lights[i], position.x, position.y, position.z);
                 GXLightID id = (GXLightID)(1 << i);
                 GXLoadLightObjImm(&lights[i], id);
                 mask |= id;

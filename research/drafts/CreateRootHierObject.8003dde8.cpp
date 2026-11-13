@@ -33,47 +33,9 @@ inline void* operator new(unsigned long, void* place) {
     return place;
 }
 
-extern inline float sqrtf(float x)
-{
-    const double _half = .5;
-    const double _three = 3.0;
-    volatile float y;
-    if (x > 0.0f)
-    {
-        double guess = __frsqrte((double)x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        guess = _half*guess*(_three - guess*guess*x);
-        y = (float)(x*guess);
-        return y;
-    }
-    return x;
-}
 
-class CVector3 {
-public:
-    CVector3(float x, float y, float z) {
-        d.v[0] = x;
-        d.v[1] = y;
-        d.v[2] = z;
-    }
-    CVector3(const CVector3& other) : d(other.d) {}
-    float Length() const { return sqrtf(d.v[0] * d.v[0] + d.v[1] * d.v[1] + d.v[2] * d.v[2]); }
-    void Normalize() {
-        float length = Length();
-        if (length != 0.0f) {
-            float scale = 1.0f / length;
-            d.v[0] *= scale;
-            d.v[1] *= scale;
-            d.v[2] *= scale;
-        }
-    }
+#include "game/CVector3.h"
 
-    union {
-        double pair[2];
-        float v[4];
-    } d;
-} __attribute__((aligned(8)));
 
 class BSUtilObjectInstanceMemoryAllocator {
 public:
@@ -85,19 +47,8 @@ public:
 extern BSUtilObjectInstanceMemoryAllocator g_pVolumeAllocator;
 extern BSUtilObjectInstanceMemoryAllocator g_pObjectAllocators[2];
 
-class CMatrix {
-public:
-    CMatrix() {
-        if (!s_ClassInit)
-            InitClass();
-    }
-    static void InitClass();
-    void SetPos(CVector3);
-    void Ident();
+#include "game/CMatrix.h"
 
-    float m[4][4];
-    static bool s_ClassInit;
-} __attribute__((aligned(16)));
 
 class CQuaternion {
 public:
@@ -291,17 +242,11 @@ struct StaticMeshView {
     MeshDataView* m_data;
 };
 
-class ISceneNode {
-public:
-    enum EVolumeType {};
-};
+#include "game/ISceneNode.h"
 
-class CScene {
-public:
-    void Add(ISceneNode&);
 
-    unsigned char unknown000[328];
-};
+#include "game/CScene.h"
+
 
 extern CScene g_scene;
 
@@ -473,16 +418,16 @@ void CreateSubHierObject(CHierObject* parent, int sub, int index, DWI_ATTACHMENT
     CVector3 center(source->m_center);
     if (tank) {
         if (g_Shell.Get_currentMission() == 4 && g_Shell.Get_currentStage() == 2 && !g_bInMultiplayerMode) {
-            center.d.v[0] += 0.0f * a.Length();
-            center.d.v[1] += 0.0f * c.Length();
-            center.d.v[2] += 0.0f * b.Length();
+            center.x += 0.0f * a.Length();
+            center.y += 0.0f * c.Length();
+            center.z += 0.0f * b.Length();
             box->SetWidth(2.4f * a.Length());
             box->SetHeight(2.4f * c.Length());
             box->SetDepth(2.4f * b.Length());
         } else {
-            center.d.v[0] += 0.0f * a.Length();
-            center.d.v[1] += 0.1f * c.Length();
-            center.d.v[2] += -0.1f * b.Length();
+            center.x += 0.0f * a.Length();
+            center.y += 0.1f * c.Length();
+            center.z += -0.1f * b.Length();
             box->SetWidth(1.8f * a.Length());
             box->SetHeight(1.9f * c.Length());
             box->SetDepth(1.6f * b.Length());
@@ -551,16 +496,16 @@ BSGO_Basic* CreateRootHierObject(TriggerObject_struct* trigger, int flag) {
     CVector3 center(source->m_center);
     if (tank) {
         if (g_Shell.Get_currentMission() == 4 && g_Shell.Get_currentStage() == 2 && !g_bInMultiplayerMode) {
-            center.d.v[0] += 0.0f * a.Length();
-            center.d.v[1] += 0.0f * c.Length();
-            center.d.v[2] += 0.0f * b.Length();
+            center.x += 0.0f * a.Length();
+            center.y += 0.0f * c.Length();
+            center.z += 0.0f * b.Length();
             box->SetWidth(2.4f * a.Length());
             box->SetHeight(2.4f * c.Length());
             box->SetDepth(2.4f * b.Length());
         } else {
-            center.d.v[0] += 0.0f * a.Length();
-            center.d.v[1] += 0.1f * c.Length();
-            center.d.v[2] += -0.1f * b.Length();
+            center.x += 0.0f * a.Length();
+            center.y += 0.1f * c.Length();
+            center.z += -0.1f * b.Length();
             box->SetWidth(1.8f * a.Length());
             box->SetHeight(1.9f * c.Length());
             box->SetDepth(1.6f * b.Length());

@@ -3,22 +3,8 @@ extern "C" {
 #include <string.h>
 }
 
-struct CColor {
-    CColor() {}
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    CColor& operator=(const CColor& c) {
-        r = c.r;
-        g = c.g;
-        b = c.b;
-        a = c.a;
-        return *this;
-    }
+#include "game/CColor.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 extern "C" void FONT_getrecta(int, const char*, float*, float*, float*, float*);
 
@@ -47,25 +33,8 @@ public:
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
-    virtual void vf2c();
-    virtual float vf30();
+#include "game/CScreen.h"
 
-    unsigned char unknown04[36];
-    float m_scaleX;
-    float m_scaleY;
-};
 
 struct ViewportView {
     float scaleX;
@@ -82,29 +51,16 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    CWeapon* GetCurrentWeapon() const;
-    int GetCurrentWeaponReserveAmoCount() const;
-    int GetCurrentWeaponClipAmoCount() const;
-    CSprite* GetCurrentBulletSprite() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[918];
-    unsigned char m_hidden : 1;
-    unsigned char flag396_low : 7;
-};
 
-class CScene {
-public:
-    CPlayerObject* GetPlayer(int) const;
+#include "game/CScene.h"
 
-    unsigned char unknown000[328];
-};
 
 extern bool g_bInMultiplayerMode;
 extern int g_NumPlayers;
 extern CScene g_scene;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern ViewportView g_viewport;
 extern _spritepolyvert TempVerts[4];
 extern _spritepolyvert AmmoSpriteVerts[4];
@@ -126,15 +82,15 @@ public:
 void UserInterface::DrawBulletStats() {
     int type;
     CPlayerObject* player = g_scene.GetPlayer(m_player);
-    if (!player->GetCurrentWeapon() || player->m_hidden)
+    if (!player->GetCurrentWeapon() || player->m_usingMountedWeapon)
         return;
     type = player->GetCurrentWeapon()->m_type;
     bool showCount = true;
     if (type == 37)
         showCount = false;
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     float viewWidth = g_viewport.width;
     float viewHeight = g_viewport.height;
     float scale = 1.0f;
@@ -156,28 +112,28 @@ void UserInterface::DrawBulletStats() {
             float x1;
             float y1;
             FONT_getrecta(bulletText->m_font, text, &x0, &y0, &x1, &y1);
-            x1 *= screen->vf30();
-            int x = 506.0f * g_screen.m_scaleX - x1;
+            x1 *= screen->GetWidthScale();
+            int x = 506.0f * g_screen.m_widthScale - x1;
             if (g_bInMultiplayerMode) {
                 int ax = x * viewWidth;
                 int bx = width * g_viewport.scaleX;
-                int ay = viewHeight * (400.0f * g_screen.m_scaleY);
+                int ay = viewHeight * (400.0f * g_screen.m_heightScale);
                 int by = height * g_viewport.scaleY;
                 bulletText->DrawText(ax + bx, ay - 10 + by, text);
             } else
-                bulletText->DrawText(x, (int)(400.0f * g_screen.m_scaleY), text);
+                bulletText->DrawText(x, (int)(400.0f * g_screen.m_heightScale), text);
         }
         if (type == 33 || type == 34)
             sprintf(text, "%d", reserve + clip);
         else
             sprintf(text, "%d", reserve);
-        int x = 554.0f * g_screen.m_scaleX;
+        int x = 554.0f * g_screen.m_widthScale;
         if (g_bInMultiplayerMode) {
             int px = x * viewWidth + width * g_viewport.scaleX;
-            int py = (int)(viewHeight * (400.0f * g_screen.m_scaleY)) + (int)(height * g_viewport.scaleY) - 10;
+            int py = (int)(viewHeight * (400.0f * g_screen.m_heightScale)) + (int)(height * g_viewport.scaleY) - 10;
             bulletText->DrawText(px, py, text);
         } else
-            bulletText->DrawText(x, (int)(400.0f * g_screen.m_scaleY), text);
+            bulletText->DrawText(x, (int)(400.0f * g_screen.m_heightScale), text);
         bulletText->SetScale(scaleX, scaleY);
     }
     ammoSprite = player->GetCurrentBulletSprite();
@@ -187,8 +143,8 @@ void UserInterface::DrawBulletStats() {
     _spritepolyvert* vert = TempVerts;
     for (int i = 0; i < 4; i++, vert++) {
         vert->color.a = m_alpha * (TempVerts->color.a * m_ammoFade);
-        vert->x *= g_screen.m_scaleX;
-        vert->y *= g_screen.m_scaleY;
+        vert->x *= g_screen.m_widthScale;
+        vert->y *= g_screen.m_heightScale;
     }
     if (g_bInMultiplayerMode) {
         int w = scale * (TempVerts[1].x - TempVerts[0].x);
