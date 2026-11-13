@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "auto,deferred",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,15 +32,52 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800609e8",
-      "size": 28,
+      "address": "0x800609a0",
+      "size": 3104,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b300",
+      "size": 112,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80012380",
+      "size": 168,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170458",
+      "size": 165,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801838a8",
+      "size": 44,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034db38",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x8034fc28",
+      "size": 48,
       "type": 1
     }
   ],
@@ -50,6 +87,12 @@
       "address": "0x800609fc",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "BindSkeleton__9CAnimatedFP10CharSkel_t",
+      "address": "0x80060c50",
+      "size": 64,
+      "binding": 1
     },
     {
       "name": "SetRotation__9CAnimatedFl",
@@ -68,15 +111,165 @@
       "address": "0x800609e8",
       "size": 8,
       "binding": 2
+    },
+    {
+      "name": "Draw__9CAnimatedFR12CDrawContext",
+      "address": "0x80060e0c",
+      "size": 1288,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAnimation__9CAnimatedFf",
+      "address": "0x80061314",
+      "size": 112,
+      "binding": 1
+    },
+    {
+      "name": "__dt__9CAnimatedFv",
+      "address": "0x800609a0",
+      "size": 72,
+      "binding": 2
+    },
+    {
+      "name": "GetEntry__16CAnimMatrixCacheFPvRb",
+      "address": "0x80060a04",
+      "size": 308,
+      "binding": 1
+    },
+    {
+      "name": "Update__16CAnimMatrixCacheFv",
+      "address": "0x80060b38",
+      "size": 72,
+      "binding": 1
+    },
+    {
+      "name": "__ct__16CAnimMatrixCacheFiii",
+      "address": "0x80060b80",
+      "size": 208,
+      "binding": 1
+    },
+    {
+      "name": "SetAnimSpeed__9CAnimatedFUcf",
+      "address": "0x80060c90",
+      "size": 52,
+      "binding": 1
+    },
+    {
+      "name": "AdjustRootTrans__9CAnimatedF8CVector3",
+      "address": "0x80060cc4",
+      "size": 56,
+      "binding": 1
+    },
+    {
+      "name": "SetGeomNodeState__9CAnimatedFll",
+      "address": "0x80060cfc",
+      "size": 36,
+      "binding": 1
+    },
+    {
+      "name": "BindSleeveTexture__9CAnimatedFP8CTexture",
+      "address": "0x80060d20",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "BindTexture__9CAnimatedFP8CTexturec",
+      "address": "0x80060d6c",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "BindMesh__9CAnimatedFP6CDMesh",
+      "address": "0x80060dcc",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "FinishAnimationState__9CAnimatedFUs",
+      "address": "0x80061384",
+      "size": 88,
+      "binding": 1
+    },
+    {
+      "name": "SetAnimationState__9CAnimatedFUsfRUslPv",
+      "address": "0x800613dc",
+      "size": 236,
+      "binding": 1
+    },
+    {
+      "name": "ValidState__9CAnimatedFUs",
+      "address": "0x800614c8",
+      "size": 104,
+      "binding": 1
+    },
+    {
+      "name": "Init__9CAnimatedFP11CAnimObjectUs",
+      "address": "0x80061530",
+      "size": 112,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__9CAnimatedFv",
+      "address": "0x800615a0",
+      "size": 32,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AnimChanInitChannels": "0x80061bf8",
+    "AnimChanProcess": "0x80061acc",
+    "AnimChanSetSpeed": "0x800615c0",
+    "AnimMotCreateWeightList": "0x80065db0",
+    "AnimStGetStateUserMemory": "0x80067100",
+    "AnimStInitStructure": "0x80067c48",
+    "AnimStProcess": "0x800672c4",
+    "AnimStStartState": "0x800676d8",
+    "AnimStTransPreCheck": "0x80067b5c",
+    "AsAnimSkinned__9CAnimatedFv": "0x80060780",
+    "DMClusterBindSkeleton__FP17DMClusterObject_TP10CharSkel_t": "0x800f5290",
+    "DMClusterSynthesizeMatrices__FUlP17DMClusterObject_TP6CDMeshP13CharOrient3_t": "0x800f561c",
+    "DMGeomSetNodeState__FP17DMGeometryState_Tll": "0x800f6db8",
+    "DMLightingScaleAlpha__FP16DMRenderObject_Tf": "0x800f4a98",
+    "DMLightingUpdate__FP16DMRenderObject_TP12DMLighting_T": "0x800f4aa8",
+    "DMRenderBindModel__FP16DMRenderObject_TP6CDMesh": "0x800f4d98",
+    "DMRenderResetState__FP16DMRenderObject_T": "0x800f4d50",
+    "DMRenderSet2dReject__FP16DMRenderObject_TUl": "0x800f4d3c",
+    "DMRenderSetClusterMatrices__FP16DMRenderObject_TPA3_A4_f": "0x800f4c74",
+    "DMRenderSetLocalToCamera__FP16DMRenderObject_TP7CMatrixP7CMatrix": "0x800f4cf4",
+    "DMRenderSetScale__FP16DMRenderObject_Tfff": "0x800f4ce4",
+    "DMRenderSetViewProj__FP16DMRenderObject_TP7CMatrix": "0x800f4d18",
+    "DMRenderUpdateParts__FP16DMRenderObject_T": "0x800f4c8c",
+    "DWI_alloc__FPCcii": "0x8001c974",
+    "DebugMsg__FPCce": "0x80018c88",
+    "Draw__6CDMeshFR12CDrawContextP16DMRenderObject_T": "0x800f6180",
+    "FinishAnimationState__11CAnimObjectFlb": "0x80095508",
+    "GetDefaultLightVolume__6CLightFv": "0x800785a4",
+    "GetStateCallbackID__13CAnimDatabaseFUlUs": "0x80061f04",
+    "InitClass__12CAnimSkinnedFv": "0x80066e38",
+    "InitClass__7CMatrixFv": "0x80090b78",
+    "Load__12CMatrixStackFPC7CMatrix": "0x80090d60",
+    "Multiply__7CMatrixFRC7CMatrixRC7CMatrix": "0x8008fc50",
+    "Pop__12CMatrixStackFv": "0x80090dc0",
+    "Push__12CMatrixStackFv": "0x80090e38",
+    "__as__7CMatrixFRC7CMatrix": "0x80090b34",
+    "__dl__FPv": "0x8001ca2c",
+    "g_AnimDB": "0x801d4a84",
+    "g_matStack": "0x8034eab8",
+    "memset": "0x80009410",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_matStack",
+    "s_ClassInit__7CMatrix"
+  ],
   "original_file": "animated.cpp",
-  "original_file_index": 2818
+  "original_file_index": 2818,
+  "weak_duplicates": [
+    "AsAnimSkinned__9CAnimatedFv"
+  ]
 }
