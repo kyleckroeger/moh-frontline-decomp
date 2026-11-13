@@ -19,6 +19,9 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
+- 2026-11-13 ~17:25: late1/late2 matching agents on scratch/loop3/day2/late{1,2}.tsv (the 100
+  unlanded drafts). Landed so far: CFontDriver::EndDraw 108 (8240e679), TRKSuppAccessFile 708
+  (c37a3c4e). Verified about 1,281,856 bytes (90.62%).
 - Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
 - **For the user, next time (decided by the coordinator, reversible):** CAnimMorph::Draw (16d5b52a)
   landed with Assign's body as `CVector3 t = s; d = t;` (the dead copy is Assign's own local,
