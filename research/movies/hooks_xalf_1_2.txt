@@ -1,0 +1,2 @@
+# Hooks for route_1_2.txt (dol4): the looping EA-XA unpacker on a synthetic sample at update 3400.
+XALF 3400

@@ -1,0 +1,4 @@
+# Hooks for route_5_1.txt (dol4, research/tools/probe_hooks.py): the built-in PlayerScreenFlash with
+# the arguments of 5_1's blueprint triggers (update 3400) and 6_2's bunker explosion (4500).
+FLASH 3400 0 0 0 255 0 0 0 0 13.0
+FLASH 4500 128 128 128 255 128 128 128 0 15.0

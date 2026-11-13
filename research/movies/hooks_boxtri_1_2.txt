@@ -1,0 +1,2 @@
+# Hooks for route_1_2.txt (dol4): CCDBVolBox::TestCollision(CTriangle) on 5000 random pairs at update 3400.
+BOXTRI 3400 5000

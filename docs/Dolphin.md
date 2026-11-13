@@ -532,10 +532,69 @@ card folder before each run, because a save left by one run changes the next.
   - not reached yet: `CCoverPoint::CheckLineCollision` (only from
     `GetClosestUsableCoverPoint` when an AI stores its closest cover point against a target
     and a point in range provides cover), `BIFunc_PlayerScreenFlash` (5_1's blueprint
-    pick-ups, 6_2's bunker explosion), `CShellMenu::ResetShell` (shell message 340, sent once
-    from `master_main.scr`), `CCDBVolBox::TestCollision(CTriangle)` (virtual only),
+    pick-ups, 6_2's bunker explosion), `CShellMenu::ResetShell` (shell message 340; its senders are
+    in `MissionLog.SCR`, not `master_main.scr`, see below), `CCDBVolBox::TestCollision(CTriangle)` (virtual only),
     `SNDtimeremaining` (sound events with a time output, `PATHX_statusall`) and
-    `SFILTER_unpackxalf` (looped XA ADPCM voices, format 14 with a loop start).
+    `SFILTER_unpackxalf` (looped XA ADPCM voices, format 10 with a loop start). All six are run by probes now (dol4, next item).
+- **Probe routes (dol4).** The six non-multiplayer drafts that no route had run are now run
+  by probes, kept identically in the control, on the existing routes. Each test matches its
+  control to the end of the shorter run (`diff --no-hash --ignore-frames 1530`), and the
+  probes' own log lines (the values the drafts returned) match too. No draft bug was found;
+  94 of the 100 drafts are proven. `research/tools/probe_hooks.py PROBE.cpp HOOKS.txt` adds
+  per-update hooks to a probe written by `input_script.py` (the hook files are
+  `research/movies/hooks_*.txt`); the hooks live in `iPAD_update`, so the control keeps
+  them. The tested images were built while the tool grew, so the earlier ones lack the
+  later hooks; the current tool adds them disabled.
+  - `CShellMenu::ResetShell` (`route_reset_shell`): `m1_opening.txt` with
+    `research/probes/shell_reset_probe.cpp` (keep `ResLoadScreen__FUsUs` and
+    `UISRegisterMessageFnc`). The probe logs every shell screen load (`SCREEN 0 id`) and
+    every shell message (`UISMSG n`), and sends message 340 once, when the Mission Log
+    screen first asks for its records (message 140). The game's own sender is the Mission
+    Log menu's third item (docs/ShellScripts.md). The routes' presses never reached it
+    (`research/probes/uis_event_probe.cpp` logs the studio events: START 0, D-pad up 2, down
+    3, left 4, right 5, B 6, A 7, Y 8, X 9, Z 11, main stick up and down 17); the folder's
+    item events (2, 3) did nothing on the first screen, so the probe stands in. The new game
+    then plays as usual into Mission 1 (12,900 updates compared).
+  - `BIFunc_PlayerScreenFlash` (`route_flash_5_1`): `route_5_1.txt` with
+    `hooks_flash_5_1.txt`: at updates 3400 and 4500 the hook calls the built-in with the
+    arguments of 5_1's blueprint triggers (black, 13) and of 6_2's bunker explosion (grey,
+    15), with `g_iCurrentBIFIndex` set to its entry as the script machine does. Moving the
+    player to a blueprint doesn't work: 5_1 loads its compartments as the player advances,
+    and a player written to the trigger's position (80.3, 50.7, 4.9) stands in the void,
+    with no floor. (In `M_S_p.bpd` a placed object's position follows its name: three
+    little-endian floats and 1.0 at +0x30 after the name's 4-byte-aligned end.) The
+    blueprint trigger needs the player inside it (event 44), then message 86 while facing it
+    (`GetObjInfo` 35, the XY dot product of the player's forward and the direction to the
+    trigger, above 0.82).
+  - `SNDtimeremaining` (`route_sndtr_1_2`): `route_1_2.txt` with `hooks_sndtr_1_2.txt`:
+    every 30 updates from 3000 to 7000 the hook asks it about every active voice (`sndgs` +
+    0x1d4: 128-byte voice records, the handle at +0, active at +0x5d; the count is the short
+    at `sndgs` + 0x170) and logs the answers: 687 calls, -7 (no key playing) and times up
+    to 382 hundredths. In the game only `PATHX_statusall` (a dialogue path played from a
+    bank, flag +0xe) and `SNDAEMSI_updateplayerbank` (an AEMS bank player whose module has a
+    time output) call it.
+  - `SFILTER_unpackxalf` (`route_xalf_1_2`): `hooks_xalf_1_2.txt`: at update 3400 the
+    hook runs `SFILTER_unpackxalfinit` and then the unpacker on a fixed synthetic EA-XA
+    sample (40 blocks of 15 bytes, loop from sample 300 to 1119) for 24 calls of 256
+    samples, logging each call's count, position and an output hash; the loop wraps six
+    times. The mixer uses this filter only for an in-memory voice of format 10 (EA-XA) with
+    a loop start (`MIX_playinit`: format 10 selects entries 6..8 of `sndmix`'s unpacker
+    table at +0x18, the in-memory looped one at +0x34).
+  - `CCoverPoint::CheckLineCollision` (`route_storecp_1_2`): no level script calls the
+    built-in `AIStoreBestCoverPoint` (`bs_find.py --calls`), the only caller of
+    `CAIObject::StoreClosestCoverPoint` and so of `GetClosestUsableCoverPoint` with a walk
+    mode. `research/probes/storecp_probe.cpp` replaces `BIFunc_AIChooseCoverPoint` (keep
+    it in the control) with its source plus a `StoreClosestCoverPoint` call for the same
+    AI first, logged as `STORECP index` (1,314 calls in 1_2, none found a usable point).
+  - `CCDBVolBox::TestCollision(const CTriangle&)` (`route_boxtri_1_2`): unreachable in
+    the game. The triangle slot of the volume vtables (+0x40) is called only by
+    `CCSGVolume::TestCollision(const CTriangle&)`, which is itself reached only through
+    that slot; the collision database tests its triangles through `CCDBTriangle`'s own
+    functions (`TestCollisionWithTriGroups`), and `g_theCollisionTable`
+    (research/data/collision_table.cpp) pairs scene-node collision types, not volume
+    shapes, so no pair dispatches to it. `hooks_boxtri_1_2.txt` calls it on 5,000 random
+    boxes (some axis-aligned) and triangles (some degenerate) at update 3400: 3,637
+    separated, 60 touching, 1,303 overlapping, the same sequence as the original.
 
 ### Capturing a draft's graphics commands
 

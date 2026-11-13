@@ -1,0 +1,2 @@
+# Hooks for route_1_2.txt (dol4): SNDtimeremaining on every active voice every 30 updates from 3000 to 7000.
+SNDTR 3000 7000 30

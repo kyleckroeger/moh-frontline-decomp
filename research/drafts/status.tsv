@@ -3,7 +3,7 @@ code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	resear
 code_exact	1.000	1.000	0	1220	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	True	0	0	research/drafts/InitMultiplayer.800a6408.cpp	
 code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp	route_menu@4e822918
 consistent	1.000	1.000	1	2696	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	True	0	0	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	m1_opening@147ec715
-consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp	
+consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp	route_xalf_1_2@6a3d204d
 consistent	0.997	1.000	2	2728	AllocateStaticObject__20CStaticObjectFactoryFii	True	0	0	research/drafts/AllocateStaticObject.800b386c.cpp	m1_opening@ca676d40
 consistent	1.000	0.966	2	812	SNDPKTPLAY_start	True	0	0	research/drafts/SNDPKTPLAY_start.8015a81c.cpp	route_menu@d0354f50
 consistent	1.000	1.000	2	96	AddAmo__19CPlayerWeaponObjectFi	True	0	0	research/drafts/AddAmo.800a7fac.cpp	route_carry_1_3@87824b73
@@ -17,14 +17,14 @@ consistent	0.980	0.947	6	400	DisplayHint__Fv	True	0	0	research/drafts/DisplayHin
 consistent	0.974	1.000	7	156	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	True	0	0	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	route_quit_1_2@2d327216
 consistent	1.000	1.000	8	416	DrawTextCentered__5CFontFfPCc	True	0	0	research/drafts/DrawTextCentered.8007cdb0.cpp	route_menu@2777c065
 consistent	1.000	1.000	9	2128	UpdateProximityTriggerStatus__Fv	True	0	0	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	m1_opening@4b8a57a4
-consistent	1.000	1.000	10	1184	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	True	0	0	research/drafts/CheckLineCollision.80052abc.cpp	
+consistent	1.000	1.000	10	1184	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	True	0	0	research/drafts/CheckLineCollision.80052abc.cpp	route_storecp_1_2@f28b2beb
 consistent	1.000	1.000	10	1156	AnimStStartState	True	0	0	research/drafts/AnimStStartState.800676d8.cpp	m1_opening@738898c8
 consistent	1.000	1.000	6	804	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	True	0	0	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	m1_opening@347bdb0f
 consistent	1.000	1.000	11	392	SetFinishedLevelData__13CPlayerObjectFv	True	0	0	research/drafts/SetFinishedLevelData.8009d470.cpp	route_quit_1_2@779fc63b
 consistent	1.000	1.000	16	6224	BIFunc_GetObjInfo__FPPiPv	True	0	0	research/drafts/BIFunc_GetObjInfo.8002c258.cpp	m1_opening@361fe3e9
 consistent	0.994	1.000	17	724	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	True	0	0	research/drafts/MOHFL_VD_create.80102a20.cpp	route_menu@637d76bd
 consistent	1.000	1.000	18	1272	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	True	0	0	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp	m1_opening@6d166d20
-consistent	0.926	1.000	18	860	ResetShell__10CShellMenuFv	True	0	0	research/drafts/ResetShell.800e7a7c.cpp	
+consistent	0.926	1.000	18	860	ResetShell__10CShellMenuFv	True	0	0	research/drafts/ResetShell.800e7a7c.cpp	route_reset_shell@7c494e11
 consistent	1.000	1.000	11	108	EndDraw__11CFontDriverFP4FONT	True	0	0	research/drafts/EndDraw.8007c194.cpp	route_menu@7a2df232
 consistent	1.000	1.000	20	1632	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	True	0	0	research/drafts/ChooseCoverPointByType.8005ca88.cpp	route_1_2@e384536b
 consistent	1.000	1.000	6	912	AddBuddy__F9BuddyInfob	True	0	0	research/drafts/AddBuddy.80057eac.cpp	route_2_1@4b0ccf12
@@ -37,7 +37,7 @@ consistent	0.992	1.000	5	1064	death_cb__14CAnimCallbacksFP23AnimFileStateAnimLis
 consistent	0.951	1.000	27	164	Multiply__11CQuaternionF11CQuaternion	True	0	0	research/drafts/Multiply.8009174c.cpp	m1_opening@507e59f1
 consistent	0.970	1.000	28	400	decodexac__3SNDFPQ23SND10MXAPACKETF	True	0	0	research/drafts/decodexac.80168828.cpp	route_menu@496e91a9
 consistent	1.000	1.000	11	2028	CreateDestructable__FP20TriggerObject_structi	True	0	0	research/drafts/CreateDestructable.8003c93c.cpp	m1_opening@87d4e884
-consistent	0.959	1.000	39	388	BIFunc_PlayerScreenFlash__FPPiPv	True	0	0	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	
+consistent	0.959	1.000	39	388	BIFunc_PlayerScreenFlash__FPPiPv	True	0	0	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	route_flash_5_1@2b2392ad
 consistent	1.000	1.000	2	3416	CreateRootHierObject__FP20TriggerObject_structi	True	0	0	research/drafts/CreateRootHierObject.8003dde8.cpp	route_4_2@5552f86c
 consistent	0.993	1.000	3	568	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	True	0	0	research/drafts/PublishEvent.800d7718.cpp	m1_opening@afc177a0
 consistent	0.998	1.000	56	1640	CreateDumpObject__FRC8CVector3RC11CQuaternionii	True	0	0	research/drafts/CreateDumpObject.8003fc2c.cpp	route_5_4@28f0d04d
@@ -66,7 +66,7 @@ consistent	0.984	1.000	82	980	PROFILE_UPDATE__Fv	True	0	0	research/drafts/PROFIL
 consistent	0.936	1.000	207	892	BIFunc_AddBuddy__FPPiPv	True	0	0	research/drafts/BIFunc_AddBuddy.80057b30.cpp	route_2_1@4495b478
 consistent	0.895	1.000	252	1260	DMMorphBlendDisplayLists__FP16DMRenderObject_T	True	0	0	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	m1_opening@fc3d851d
 consistent	0.996	1.000	320	2092	FindIntersection__FRC6CLine3RC11CVolCapsulePf	True	0	0	research/drafts/FindIntersection.800c5cb4.cpp	m1_opening@f7bf4e4f
-consistent	1.000	1.000	463	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	
+consistent	1.000	1.000	463	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	route_boxtri_1_2@9dd17b77
 consistent	0.998	1.000	414	3768	BSFileReadClass__FPCcbbPP14BSClass_struct	True	0	0	research/drafts/BSFileReadClass.80035aa8.cpp	m1_opening@c506c5c1
 consistent	0.929	0.994	1023	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	route_menu@9d28f039
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp	m1_opening@4f327e94
@@ -77,7 +77,7 @@ consistent	1.000	1.000	3	1332	OnCollision__13CStaticObjectFRC10CCollision	True	0
 consistent	0.996	1.000	138	3376	Init__20CStaticObjectFactoryFv	True	0	0	research/drafts/Init.800b254c.cpp	m1_opening@1ab0128d
 consistent	0.914	1.000	37	280	GetExtents__7CVolBoxCFR8CVector3R8CVector3	True	0	0	research/drafts/GetExtents.800c13b4.cpp	m1_opening@6e4e7440
 consistent	0.987	1.000	39	632	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	True	0	0	research/drafts/Draw.800da67c.cpp	m1_opening@f8838ce6
-consistent	1.000	1.000	3	244	SNDtimeremaining	True	0	0	research/drafts/SNDtimeremaining.8015d238.c	
+consistent	1.000	1.000	3	244	SNDtimeremaining	True	0	0	research/drafts/SNDtimeremaining.8015d238.c	route_sndtr_1_2@43d3aedd
 consistent	0.986	1.000	53	1700	SNDVOICEI_alloc__FiiPiii	True	0	0	research/drafts/SNDVOICEI_alloc.8015d530.c	route_menu@9d86b883
 consistent	0.960	0.875	79	708	SNDI_precalcaztospkrvol__Fv	True	0	0	research/drafts/SNDI_precalcaztospkrvol.8015f538.c	route_menu@3bfca079
 consistent	0.988	1.000	80	340	iSNDrandom__Fv	True	0	0	research/drafts/iSNDrandom.8015f934.c	m1_opening@e7a4f577
