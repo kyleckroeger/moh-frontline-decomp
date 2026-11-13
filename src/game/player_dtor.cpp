@@ -26,11 +26,7 @@ extern "C" void MEM_free(void*);
 #include "game/ISceneNode.h"
 
 
-class IMovingSceneNode : public ISceneNode {
-public:
-    IMovingSceneNode() {}
-    virtual ~IMovingSceneNode() {}
-};
+
 
 namespace dwi {
 template <class T>
@@ -93,12 +89,8 @@ public:
     unsigned char unknown004[188];
 } __attribute__((aligned(8)));
 
-class CCamera {
-public:
-    virtual ~CCamera();
+#include "game/CCamera.h"
 
-    unsigned char unknown004[668];
-} __attribute__((aligned(8)));
 
 class UserInterface {
 public:

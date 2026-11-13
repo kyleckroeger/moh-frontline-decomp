@@ -37,6 +37,8 @@ PROVIDES = {
     "ISceneNode": {"types": ["IDestructible", "ISubject", "IObserver", "CVector3XYZW", "CVector3Data", "CVector3Pair"],
                    "enums": ["EClsnId"]},
     # CScreen.h has CScreenFieldMode, the render mode record and includes CColor.h/CRect.h
+    "CCamera": {"types": ["IMovingSceneNode", "CPlane", "IDestructible", "ISubject", "IObserver",
+                          "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId"]},
     "CScreen": {"types": ["CColor", "CRect", "GXRenderModeObj", "_GXRenderModeObj", "CScreenFieldMode",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"],
                 "enums": ["EScreenWidth", "EFrameFormat", "EDepthFormat"]},
@@ -193,10 +195,63 @@ def _cscreen_view(out, view):
     return out
 
 
-VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view}
+_VIEWS = None
 
 
-def moved(text, cls):
+def _lint_view(path, cls):
+    """The file's view of cls as the layout lint read it (build/layout/views.json): {offset: name}."""
+    global _VIEWS
+    if _VIEWS is None:
+        p = ROOT / "build/layout/views.json"
+        _VIEWS = json.loads(p.read_text())["views"] if p.exists() else {}
+    for v in _VIEWS.get(path, []):
+        if v["name"] == cls and v["members"]:
+            return {m[1]: m[0] for m in v["members"] if m[2] is None}
+    return {}
+
+
+_PLACEHOLDER = re.compile(r"^(unknown|pad|field|unk|_)[0-9a-fA-F_]*$")
+
+
+def _offset_names(out, view, cls, path):
+    """Fields the view names differently from the header at the same offset: accesses through
+    . and -> renamed, and bare names inside the class's out-of-line member bodies."""
+    want = OFFSET_NAMES.get(cls, {})
+    have = _lint_view(path, cls)
+    for off, name in have.items():
+        new = want.get(off)
+        if not new or new == name or _PLACEHOLDER.match(name) or name.startswith("__vptr"):
+            continue
+        out = _rename_access(out, name, new)
+        spans = [(m.end(), block_end(out, m.end() - 1)) for m in
+                 re.finditer(r"\b" + cls + r"::~?\w+\s*\([^;{]*\)\s*(?:const\s*)?(?::[^{;]*)?\{", out)]
+        for a, b in reversed(spans):
+            out = out[:a] + re.sub(r"(?<![\w.>])" + name + r"\b", new, out[a:b]) + out[b:]
+    return out
+
+
+# The header's field names by offset, for _offset_names.
+OFFSET_NAMES = {
+    "CCamera": {0x24: "m_near", 0x28: "m_far", 0x2c: "m_width", 0x30: "m_height", 0x40: "m_tm",
+                0x80: "m_worldToCamera", 0xc0: "m_projection", 0x100: "m_worldToScreen",
+                0x140: "m_perspective", 0x141: "m_flag141", 0x142: "m_projectionValid",
+                0x143: "m_flag143", 0x150: "m_planes", 0x290: "m_script", 0x294: "data294"},
+}
+
+
+def _ccamera_view(out, view, path=None):
+    if path:
+        out = _offset_names(out, view, "CCamera", path)
+    if not re.search(r"^\s*(class|struct)\s+CCamera\s*:", view, re.M):
+        out = _virtual_names(out, view, "CCamera")
+    return out
+
+
+VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view, "CCamera": _ccamera_view}
+VIEW_PATH = {"CCamera"}
+
+
+def moved(text, cls, path=None):
     span = type_span(text, cls)
     if not span:
         return None
@@ -233,7 +288,10 @@ def moved(text, cls):
     for pattern, repl in REWRITES.get(cls, []):
         out = re.sub(pattern, repl, out)
     if cls in VIEW_REWRITES:
-        out = VIEW_REWRITES[cls](out, text[span[0]:span[1]])
+        if cls in VIEW_PATH:
+            out = VIEW_REWRITES[cls](out, text[span[0]:span[1]], path)
+        else:
+            out = VIEW_REWRITES[cls](out, text[span[0]:span[1]])
     # Out-of-line definitions of the class's methods the header now defines inline
     # (units emit the original's weak copies this way): the header's body replaces them.
     header = (HEADER_DIR / f"game/{cls}.h").read_text()
@@ -314,7 +372,7 @@ def attempt(job):
     if status != "kept":
         return uid, unit["source"], "control_fail", detail
     text = (ROOT / unit["source"]).read_text(errors="replace")
-    new = moved(text, cls)
+    new = moved(text, cls, unit["source"])
     copy = base / "src" / Path(unit["source"]).name
     copy.parent.mkdir(parents=True, exist_ok=True)
     copy.write_text(new)

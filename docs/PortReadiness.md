@@ -278,6 +278,11 @@ in Screen.cpp. Of 38 units with their own view, 29 kept their match and were mov
 weak GetWidthScale copy listed); 5 still have their own CVector3 view, 4 need code changes
 (`research/notes/shared-headers.md`).
 
+CCamera, 2026-11-13: `include/game/CCamera.h` with its base `IMovingSceneNode.h` (all inline:
+weak in the original) and `CPlane.h`. Of 14 units with their own view only 2 moved: 9 still
+have their own CVector3 or ISceneNode view, camera_dtor keeps its view to keep the table off,
+2 need code changes.
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

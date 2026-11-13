@@ -1,0 +1,15 @@
+unit	source	status	detail
+Moh2	scratch/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Moh2.cpp # ------------------------ #     182: class ISceneNode : public IObserver {
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\ISceneNode.h #    From: ..\src\anim_obj.cpp # ----------------------------
+box_visibility	scratch/try/box_visibility/src/box_visibility.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_visibility.cpp # ---------------------------------- #      58: const FrustumPlane* plane = context.m_camera->m_planes;
+bsbifunc_ai	scratch/try/bsbifunc_ai/src/bsbifunc_ai.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_ai.cpp # ------------------------------- #      46: virtual EClsnId GetCollisionId() const;
+camera_dtor	scratch/try/camera_dtor/src/camera_dtor.cpp	no_compile	table kept off on purpose (declares Draw first; defines ~CCamera). ### mwcceppc.exe Compiler: #    File: ..\src\camera_dtor.cpp # ------------------------------- #      39: CPlane m_planes[10];
+camera_frustum	scratch/try/camera_frustum/src/camera_frustum.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\camera_frustum.cpp # ----------------------------------
+camera_rows	scratch/try/camera_rows/src/camera_rows.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\camera_rows.cpp # ------------------------------- #     175: v = UpRow();
+mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\mainloop.cpp # ---------------------------- #     356: class ISceneNode {};
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      55: CVector3(const CVector3Data& o) : d(o) {}
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #      56: CVector3(const CVector3Data& o) : d(o) {}
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #      37: class ISceneNode : public IObserver {
+player_dtor	scratch/try/player_dtor/src/player_dtor.cpp	kept	18 weak IMovingSceneNode copies listed in weak_duplicates (redraft.py)
+player_weapon_draw	scratch/try/player_weapon_draw/src/player_weapon_draw.cpp	kept	
+player_weapon_object_init	scratch/try/player_weapon_object_init/src/player_weapon_object_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon_object_init.cpp # --------------------------------------------- #      57: *(CVector3Pair*)this = *(const CVector3Pair*)&other;

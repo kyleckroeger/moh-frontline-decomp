@@ -159,10 +159,8 @@ extern const float DEFAULT_FOV;
 extern CMatrix g_Cam2clip;
 extern float g_fNearMultiplier;
 
-class CCamera {
-public:
-    static const float ASPECT_4x3;
-};
+#include "game/CCamera.h"
+
 
 class CPlayerWeaponObject {
 public:

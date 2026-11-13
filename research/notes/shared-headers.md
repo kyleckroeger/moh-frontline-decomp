@@ -183,3 +183,35 @@ font_centeredf), all moved. Not moved:
 - sprite_draw: its CColor is a plain struct without constructors; with CColor.h's
   constructors `CSprite::Link` compiles differently.
 Table: `research/layout/header_moves/CScreen.tsv`.
+
+## CCamera (2026-11-13, agent hdr5)
+
+`include/game/CCamera.h`, with `IMovingSceneNode.h` (its base) and `CPlane.h` (it holds ten).
+Evidence:
+
+- `__vt__7CCamera`: IMovingSceneNode's 71 slots and no new ones. `__vt__16IMovingSceneNode`:
+  ISceneNode's 53 (AsMovingNode overridden) plus 18 new ones; every IMovingSceneNode virtual and
+  its destructor are weak in the original (Moh2.cpp's copies), so they are inline with Moh2.cpp's
+  bodies. IMovingSceneNode has no data (0x24 bytes).
+- CCamera's overrides, UpdateWorldToCamera, SetPerspective, IsPointVisible and ASPECT_4x3 are
+  out of line (camera_dtor, camera_rows, camera_frustum). The constructor is inline (no symbol).
+  The header declares the destructor first, so the table is emitted with it.
+- CPlane: CPlane(CVector3, float), Transform and GetIntersection out of line; the default
+  constructor and destructor weak (inline, empty); 0x20 bytes, 16-aligned.
+- Fields: +0x140 m_perspective (SetPerspective sets it), +0x141 cleared by every move and set by
+  UpdateWorldToCamera, +0x142 m_projectionValid (cleared by SetPerspective), +0x150 the planes,
+  +0x290 the script object (camera_dtor destroys it). Moh2.cpp named +0x141 m_perspective; the
+  moved files are rewritten by offset (try_header.py `_offset_names`, from the layout lint's
+  build/layout/views.json).
+
+Result: 14 units with their own view. **2 kept and moved**: player_weapon_draw (as is) and
+player_dtor (its 18 weak IMovingSceneNode copies listed in weak_duplicates). Not moved:
+
+- camera_dtor: **table kept off on purpose** (defines ~CCamera but declares Draw first so the
+  table, outside its fragment, isn't emitted; with the header it would be). Kept on its view.
+- 5 still have their own CVector3 view (camera_frustum, player_beginupdate, player_commit,
+  player_weapon_object_init; Moh2) and 4 their own ISceneNode view (anim_obj, bsbifunc_ai,
+  mainloop_game, player_ctor), which the header's includes redefine.
+- camera_rows: invented inline row getters (UpRow ...) and the ISceneNode words +0xc..+0x18
+  used as `CameraFollowerView*`; box_visibility: its planes as `FrustumPlane`: code changes.
+Table: `research/layout/header_moves/CCamera.tsv`.

@@ -992,7 +992,7 @@
     "src/game/player_ctor.cpp": "adb5b353e370aa95bf1d32fb3f01958b2da5060490c5811134fce1a46584fc34",
     "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
     "src/game/player_draw.cpp": "2b07ffe3dafd44c99a429374334a6d030250378c507010f611df95b4a6db1a8c",
-    "src/game/player_dtor.cpp": "0e805e3295442b1d862c3abcfb2f3f342fabbf439285904436688165fd77c48e",
+    "src/game/player_dtor.cpp": "77255f918650fffbe111e1f546a5a567eab2b906e68517ede4b1a90db6d27788",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
     "src/game/player_fov.cpp": "5eb851f7186bb6e36da45c3c0cc1d29ce9331294498917b2406c64effca8f6a3",
     "src/game/player_health.cpp": "e94f903097f1cdd867cd719f4b73df7c8b881d9bcf69bf32d0eaa4e2aa4de77f",
@@ -1012,7 +1012,7 @@
     "src/game/player_vec_sub.cpp": "e6f431ec9a993a3349adc755d2f7e79c87a951a084d0d90c2b10ba4058ebe6b0",
     "src/game/player_weapon.cpp": "d656e89113c05d302dc2c3b3ea1c362ceab5c209c5af2346a9f23265f51b45f0",
     "src/game/player_weapon_donereload.cpp": "276b86e2f1ccf65f0dbd5efb3effdc6f6c18c35406378a8900eda198910a6ad8",
-    "src/game/player_weapon_draw.cpp": "41db53e25dea9b06014281bcb27c47379ce6bb275f9e3249c43d88e6e5472110",
+    "src/game/player_weapon_draw.cpp": "1c3b3a29948ed99753282c0ef362e072ab6207a5c825321a5220cbe43e74dfdf",
     "src/game/player_weapon_drawenabled.cpp": "38a90c25715e1cb193ea2adfb7cbb12b6914fbb8ec8a7c770c70457725d465e4",
     "src/game/player_weapon_object.cpp": "c5c93cb166b4041f25f6610abed163debe934a6cfd137c1716ab80add93f8442",
     "src/game/player_weapon_object_head.cpp": "0f19122a9a21184a333fe39d7093559f095c3a34670862375505e1613f34e00c",
@@ -1545,11 +1545,14 @@
     "include/dolsdk2001/libc/string.h": "96be3fae011f3a3a8c785c1b4e156d0edec8c93510350c32a17cd83a0005e7ed",
     "include/dolsdk2001/libc/wchar.h": "eb9359b3f8c80e980c291b31b08b913739a9fda753a2a5007f8bf2bf3c646439",
     "include/dolsdk2001/macros.h": "501c9c8160161354e35f291cb101a508877ab32d5e28450839be2b3d3da86a39",
+    "include/game/CCamera.h": "c10e0d15e8cab433f0e35ca3feea1d498ef4b3f68379479c17579216fc314d0c",
     "include/game/CColor.h": "60dd559509558a598f205da2cdcd55880f7c900fed869a63736a732f2810748d",
     "include/game/CMatrix.h": "2a80633f9aefbbbaf5811470968dedf0fb0befe143fe54d100bb0b2fef2b3951",
+    "include/game/CPlane.h": "bfa5787eb37ff996e9cf2b9ca6c97606d8adda80311bc863c4f75e3d5de45aa6",
     "include/game/CRect.h": "bd79c7f913dd835c13df9ee6e911b38fa548ee4878e1840489a4bdf47c68a64d",
     "include/game/CScreen.h": "081a035fc730c4da9a451e5c01c6ff38a9f5fbd8431951b5037d3986c474654a",
     "include/game/CVector3.h": "b8abb8cd983822edce705ab2f5ea099da8537ea8ea8e9dc5ab907a12d90099eb",
+    "include/game/IMovingSceneNode.h": "24397129e5a00578381b70aca371a95dd81cc21d0aba06746fc106ac0c41d604",
     "include/game/ISceneNode.h": "f5a084aa772b1a89854d11aada0ce828bd5955b52f11886085ae7b5c0f4fca04",
     "include/game/msl_sqrtf.h": "f91d44ff20bd7fad0236d97ebde51f625247d746d9c04afa093c6b531d55b457",
     "include/prime/libc/ansi_files.h": "22d530eb96d140cfe20ec168096d3dbfaa57a34c5e4601ffd6f0962eb90996e1",
@@ -2535,7 +2538,7 @@
     "config/GMFE69/player_ctor.json": "460be5776b7a975b8ba07e6fd3410a02b5bb2bd48ba479e92851ff37735ca5da",
     "config/GMFE69/player_death.json": "345a6f76314776f3fb60493e93691b775e5919394fe5ada799cef0def9610cd7",
     "config/GMFE69/player_draw.json": "c9f30ac05a5fddd3f3886a8c45c9732cc2e6196ba8bc9dd314b0556de87bdf06",
-    "config/GMFE69/player_dtor.json": "2addf648ae929e538fe24d565505aec938d14b6b26e8b9df37fc121f3b9dc584",
+    "config/GMFE69/player_dtor.json": "7bbaf2e8441cb236c70a9afbb65878e59fb51a505c67e1790e41de51e1d691ba",
     "config/GMFE69/player_fastvec.json": "153f1254b111c01809192da6859030d347549296ae4eeccb87c58108764a04fa",
     "config/GMFE69/player_fov.json": "9bc221128255f6256db8f6709ae39b849ca2d2b3b5a3de5601299ed560c949d1",
     "config/GMFE69/player_health.json": "d7d2fb5c1199ad365401780dcd68069909170d82c2b59e95aee3231b22c54993",
@@ -36796,8 +36799,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "4b6057a2f925dc9faf872dc8e2fe608c74a2ab3540924a8411471c1efc2c63d6",
-      "linked_sha256": "193049730a08deb75b636f515c5c5d9e77aeff952b5656285aab3d230a150379"
+      "object_sha256": "2fdc5ef9b76410e140ccff7a8d33ee632910a1849386809b52edf955646fdeb1",
+      "linked_sha256": "ebdff9abd03b12209bef45d0a9091143cb6288a88b374e4fbc3b65d6bd22799e"
     },
     {
       "id": "weapon_ctor",
@@ -52062,8 +52065,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "351cddd7ffc18b2fb52999fe29d70b2896a67f65f540876f69949a54e0ba3330",
-      "linked_sha256": "c7ecc81942a082b61d41ddf8730ef02f96060fe22edb7962098c7b83b5a1adc5"
+      "object_sha256": "2279f745adcc4e5ad3bcae7e3be8b5a82230e8ce0340eab1b55a437c673d6a82",
+      "linked_sha256": "300594491b517807d18a2ad7775231ad269ce1a48a24584c5d7e31f11b1ec91e"
     },
     {
       "id": "scene_update",
