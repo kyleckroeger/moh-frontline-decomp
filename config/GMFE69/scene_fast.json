@@ -96,7 +96,9 @@
   "original_file_index": 8404,
   "weak_duplicates": [
     "AsBullet__10ISceneNodeFv",
-    "__dt__Q23dwi22vec_iter<10CCollision>Fv"
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv",
+    "begin__Q23dwi20vector<10CCollision>Fv",
+    "end__Q23dwi20vector<10CCollision>Fv"
   ],
   "pooled_sections": [
     ".sdata2"

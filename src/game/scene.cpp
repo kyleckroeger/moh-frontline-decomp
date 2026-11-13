@@ -11,17 +11,7 @@ class CCamera;
 class CWorldObject;
 class CPlayerObject;
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    void push_back(T value) { m_data[m_size++] = value; }
-
-    T* m_data;
-    int m_capacity;
-    int m_size;
-};
-}
+#include "game/DwiContainers.h"
 
 class CScene {
 public:

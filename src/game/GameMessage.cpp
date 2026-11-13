@@ -13,13 +13,7 @@ unsigned long strlen(const char*);
 }
 
 // The header's prime table (unused here; this file's .rodata starts with it).
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 struct UISParam_t {
     long value;
@@ -208,9 +202,7 @@ public:
 
 #include "game/CPlayerObject.h"
 
-
 #include "game/CScene.h"
-
 
 struct SecretStatus {
     int unlocked;

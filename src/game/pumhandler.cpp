@@ -25,30 +25,7 @@ struct QueuedSubtitle {
     char m_text[48];
 };
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node(list_node* prev, list_node* next, const T& data) : m_prev(prev), m_next(next), m_data(data) {}
-
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list {
-public:
-    list() : m_count(0), m_capacity(0), m_pool(0), m_free(0), m_head(&m_head, &m_head, T()), m_owned(true) {}
-    ~list();
-
-    int m_count;
-    int m_capacity;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-}
+#include "game/DwiContainers.h"
 
 struct SUserMessage {
     char* m_text;

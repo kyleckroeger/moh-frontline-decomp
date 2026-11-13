@@ -58,25 +58,7 @@ public:
 
 class CCDBObject : public IVolume {};
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list {
-public:
-    int m_count;
-    int m_unknown4;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-}
+#include "game/DwiContainers.h"
 
 class CWorldVolume : public IVolume {
 public:

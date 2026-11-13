@@ -83,58 +83,7 @@ public:
     unsigned char unknown12[6];
 };
 
-namespace dwi {
-template <class K, class V>
-class hash_map {
-public:
-    struct value_type {
-        K first;
-        V second;
-    };
-
-    class iterator {
-    public:
-        iterator(value_type* p) : m_p(p) {}
-        iterator(const iterator& o) : m_p(o.m_p) {}
-        bool operator==(const iterator& other) const { return m_p == other.m_p; }
-        bool operator!=(const iterator& other) const { return m_p != other.m_p; }
-        value_type* operator->() const { return m_p; }
-        value_type* m_p;
-    };
-
-    iterator end() { return iterator(m_data + m_size); }
-
-    iterator find(K key) {
-        if (m_count == 0)
-            return end();
-        value_type* p = m_data + (unsigned long)key % m_size;
-        while ((int)p->first != -1) {
-            if (p->first == key)
-                return iterator(p);
-            if (++p == m_data + m_size)
-                p = m_data;
-        }
-        return end();
-    }
-
-    void insert(K key, V value) {
-        value_type* p = m_data + (unsigned long)key % m_size;
-        while ((int)p->first != -1) {
-            if (++p == m_data + m_size)
-                p = m_data;
-        }
-        p->first = key;
-        p->second = value;
-        m_count++;
-    }
-
-    void erase(iterator it);
-
-    value_type* m_data;
-    int m_size;
-    int m_count;
-};
-}
+#include "game/DwiHashMap.h"
 
 class CPathNodeList {
 public:

@@ -87,26 +87,11 @@ public:
 extern "C" void MEM_free(void*);
 extern "C" unsigned int OSGetTick();
 
+#include "game/DwiContainers.h"
 namespace dwi {
 // Inferred: the vector over caller storage (inline constructor; the
 // destructor frees the storage only when the vector owns it).
-template <class T>
-class fast_vec {
-public:
-    fast_vec(T* storage, int capacity)
-        : m_data(storage), m_unknown4(0), m_size(0), m_capacity(capacity), m_owned(false), m_growth(12) {}
-    ~fast_vec() {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-    }
 
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
 }
 
 // Inferred: a tri group's mark at +16, negated after each test.
@@ -166,7 +151,6 @@ public:
     CVector3 m_min;
     CVector3 m_max;
 };
-
 
 int CCDBObject::TestCollision(const CLine3& other, CCollision& collision, bool flag) const {
     g_ProfileBins[24].m_time -= OSGetTick();

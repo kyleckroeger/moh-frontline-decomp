@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
@@ -141,5 +142,9 @@
       "size": 8,
       "address": "0x80350e88"
     }
+  ],
+  "weak_duplicates": [
+    "begin__Q23dwi20vector<10CCollision>Fv",
+    "end__Q23dwi20vector<10CCollision>Fv"
   ]
 }

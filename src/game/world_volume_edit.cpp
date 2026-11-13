@@ -50,44 +50,7 @@ public:
 
 class CCDBObject : public IVolume {};
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node(list_node* prev, list_node* next, const T& data) : m_prev(prev), m_next(next), m_data(data) {}
-
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list_iter {
-public:
-    list_node<T>* m_node;
-};
-
-template <class T>
-class list {
-public:
-    void erase(list_node<T>* node) {
-        list_node<T>* prev = node->m_prev;
-        list_node<T>* next = node->m_next;
-        prev->m_next = next;
-        next->m_prev = prev;
-        node->m_prev = 0;
-        node->m_next = m_free;
-        m_free = node;
-        m_count--;
-    }
-
-    int m_count;
-    int m_capacity;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-}
+#include "game/DwiContainers.h"
 
 class CWorldVolume : public IVolume {
 public:

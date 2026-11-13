@@ -35,56 +35,7 @@ extern char* szTLT_LevelBigFileName;
 extern char* szTLT_CompartmentBigFileName;
 
 // Header-defined hash-table primes; every unit that includes the header carries a copy.
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
-
-namespace dwi {
-template <class K, class V>
-class hash_map {
-public:
-    struct value_type {
-        K first;
-        V second;
-    };
-
-    hash_map() : m_data(0), m_size(0), m_count(0) {}
-    ~hash_map();
-
-    static int NextPrime(int n) {
-        const unsigned long* p = dwi_prime_list;
-        const unsigned long* end = dwi_prime_list + 27;
-        for (; p != end; p++) {
-            if ((int)*p >= n)
-                return *p;
-        }
-        return *(end - 1);
-    }
-
-    void clear() {
-        for (value_type* it = m_data; it != m_data + m_size; ++it)
-            it->first = (K)-1;
-        m_data[-1].first = (K)-2;
-        m_data[m_size].first = (K)-2;
-        m_count = 0;
-    }
-
-    void Resize(int count) {
-        int size = NextPrime(count + 1);
-        m_size = size;
-        m_data = (value_type*)DWI_allocalign(0, (size + 2) * sizeof(value_type), 16, 1024) + 1;
-        clear();
-    }
-
-    value_type* m_data;
-    int m_size;
-    int m_count;
-};
-}
+#include "game/DwiHashMap.h"
 
 static dwi::hash_map<char*, char*> g_Repository;
 

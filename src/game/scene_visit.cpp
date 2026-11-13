@@ -92,7 +92,6 @@ public:
     virtual void GetExtents(CVector3&, CVector3&) const;
 };
 
-
 class ISceneNode {
 public:
     enum EVolumeType {};
@@ -150,7 +149,6 @@ public:
     ISceneNode* m_link8;
 };
 
-
 namespace dwi {
 template <class T>
 class IVisitor {
@@ -195,28 +193,7 @@ public:
     unsigned char m_flags394b : 4;
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    void erase(T* it) {
-        T* last = end();
-        for (T* next = it + 1; next != last; next++, it++)
-            *it = *next;
-        m_size--;
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-
-}
+#include "game/DwiContainers.h"
 
 class CScene {
 public:

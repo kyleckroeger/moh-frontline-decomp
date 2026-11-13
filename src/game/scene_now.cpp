@@ -91,27 +91,7 @@ struct SExclusionEntry {
     float m_value;
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    void erase(T* it) {
-        T* last = m_data + m_size;
-        for (T* src = it + 1; src != last;)
-            *it++ = *src++;
-        m_size--;
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CAnimObject {
 public:

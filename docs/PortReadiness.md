@@ -301,6 +301,12 @@ CVector3/CMatrix/ISceneNode view, player_dtor keeps the table off, the rest need
 With this the boot-path classes of this step (ISceneNode, CScene, CPlayerObject, CCamera,
 CScreen, CInputManager) all have a shared header.
 
+dwi containers, 2026-11-13: `include/game/DwiContainers.h` (list, vector, fast_vec and their
+iterators, min/max) and `include/game/DwiHashMap.h` (hash_map with the prime table every including
+file emits). 54 of 114 units moved (13 with relabelled stripped labels or listed weak copies);
+the fragments that place the weak template copies by explicit class instantiation stay on their
+views (instantiating the whole header changes them).
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

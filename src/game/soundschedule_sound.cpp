@@ -121,7 +121,6 @@ public:
 
 #include "game/CScene.h"
 
-
 class CShellMenu {
 public:
     unsigned char unknown0000[16];
@@ -159,13 +158,7 @@ public:
     SoundScheduleRegistrationRecord* next;
 };
 
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 // File-local in the original; declared extern so this fragment can refer to it.
 extern SoundScheduleRegistrationRecord* g_FreeRecordList;

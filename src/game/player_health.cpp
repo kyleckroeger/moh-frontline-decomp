@@ -234,20 +234,7 @@ struct SContact {
     void* m_object;
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    void push_back(T x) { m_data[m_size++] = x; }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CPlayerObject {
 public:

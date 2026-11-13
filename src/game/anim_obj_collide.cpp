@@ -191,20 +191,7 @@ public:
     ContactView* m_contacts;
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    void push_back(T value) { m_data[m_size++] = value; }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CAnimObject : public ISceneNode {
 public:

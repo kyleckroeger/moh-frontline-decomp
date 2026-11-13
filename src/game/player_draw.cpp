@@ -10,13 +10,7 @@
 // right, top, bottom; midX and span (= right - left) are named function-level
 // locals (the span's /4 reuses it in the insets); the declaration order sets
 // the callee-saved registers.
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 struct _spritepolyvert {
     float u;
@@ -28,7 +22,6 @@ struct _spritepolyvert {
 };
 
 #include "game/CScreen.h"
-
 
 class CSprite {
 public:
@@ -42,8 +35,6 @@ public:
     unsigned char unknown000[276];
     int m_player;
 };
-
-
 
 extern CScreen* g_pScreen;
 

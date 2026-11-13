@@ -71,31 +71,7 @@ public:
     virtual ~IMovingSceneNode() {}
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    void reserve(T* storage, int capacity) {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-        m_data = storage;
-        m_capacity = capacity;
-        m_owned = false;
-    }
-    fast_vec() : m_data(0), m_unknown4(0), m_size(0), m_capacity(0), m_owned(true), m_growth(-1) {}
-    ~fast_vec() {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CVector3 {
 public:

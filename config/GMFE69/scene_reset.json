@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
@@ -84,6 +85,8 @@
   "original_file": "scene.cpp",
   "original_file_index": 8404,
   "weak_duplicates": [
-    "__dt__Q23dwi22vec_iter<10CCollision>Fv"
+    "__dt__Q23dwi22vec_iter<10CCollision>Fv",
+    "begin__Q23dwi20vector<10CCollision>Fv",
+    "end__Q23dwi20vector<10CCollision>Fv"
   ]
 }

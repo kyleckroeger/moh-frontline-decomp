@@ -169,81 +169,7 @@ struct SExclusionEntry {
     float m_value;
 };
 
-namespace dwi {
-template <class T>
-class vec_iter {
-public:
-    vec_iter() : m_p(0) {}
-    vec_iter(T* p) : m_p(p) {}
-    ~vec_iter() { m_p = 0; }
-    bool operator!=(const vec_iter& other) const { return m_p != other.m_p; }
-    vec_iter& operator++() {
-        m_p++;
-        return *this;
-    }
-    T* operator->() const { return m_p; }
-    T& operator*() const { return *m_p; }
-
-    T* m_p;
-};
-
-template <class T>
-class vec_const_iter {
-public:
-    vec_const_iter(const T* p) : m_p(p) {}
-    vec_const_iter(const vec_iter<T>& it) : m_p(it.m_p) {}
-    ~vec_const_iter() { m_p = 0; }
-    bool operator!=(const vec_iter<T>& other) const { return m_p != other.m_p; }
-    vec_const_iter& operator++() {
-        m_p++;
-        return *this;
-    }
-    const T* operator->() const { return m_p; }
-    const T& operator*() const { return *m_p; }
-
-    const T* m_p;
-};
-
-template <class T>
-class vector {
-public:
-    vec_iter<T> begin();
-    vec_iter<T> end();
-    int size() const { return m_size; }
-
-    int m_size;
-    int m_capacity;
-    T* m_data;
-    bool m_owned;
-};
-
-template <class T>
-class fast_vec {
-public:
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    void erase(T* it) {
-        T* last = m_data + m_size;
-        for (T* src = it + 1; src != last;)
-            *it++ = *src++;
-        m_size--;
-    }
-    void clear() { m_size = 0; }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
-
-
-template <class T>
-inline const T& Min(const T& a, const T& b) {
-    return a < b ? a : b;
-}
+#include "game/DwiContainers.h"
 
 static const float MAX_TIME_STEP = 1.0f;
 
@@ -339,7 +265,7 @@ void CScene::Update(float dt) {
     g_ProfileBins[8].m_values[1] -= OSGetTick();
     g_ProfileBins[9].m_values[1] -= OSGetTick();
     g_updateTime -= OSGetTick();
-    float step = Min(dt, MAX_TIME_STEP);
+    float step = dwi::min(dt, MAX_TIME_STEP);
     int count = (int)(dt / (1.0f / 64.0f)) + 1;
     float cur = 0.0f;
     float end = step;

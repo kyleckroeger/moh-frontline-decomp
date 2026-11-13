@@ -127,25 +127,7 @@ struct AlarmInfo {
     BSObject* m_script;
 };
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list {
-public:
-    int m_count;
-    int m_capacity;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-}
+#include "game/DwiContainers.h"
 
 extern dwi::list<AlarmInfo> g_alarms;
 extern BSBuiltinView* g_pBuiltInFunctions;

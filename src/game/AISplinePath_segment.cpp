@@ -77,12 +77,7 @@ inline void SecondDerivative(const CVector3* c, float t, CVector3& out) {
 
 // Inferred: the dwi library's reference-returning min (the scan loop's bound
 // selects between the two candidates' stack slots).
-namespace dwi {
-template <class T>
-inline const T& min(const T& a, const T& b) {
-    return a < b ? a : b;
-}
-}
+#include "game/DwiContainers.h"
 
 float CAISplinePathSegment::GetClosestParameter(float start, const CAIFilterRealVector3& target) {
     CVector3 p;

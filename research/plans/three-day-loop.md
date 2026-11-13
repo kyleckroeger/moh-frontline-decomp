@@ -34,6 +34,10 @@ multiplayer not at all. Every landing keeps the complete image identical.
   as a transitional guard until the remaining CScene units take ISceneNode.h; and
   bsbifunc_playerammo's stale TriggerScriptEvent weak copy was dropped from weak_duplicates
   (CPlayerObject now overrides it).
+  AddBuddy (6 lines) is exact only with x,y,z declared in a different order inside the shared
+  GiveBuddyOrders inline, which breaks landed UpdateBuddyCheckpoints/Progress; all three are in
+  buddy.cpp, so they must share one body (kept declined). CPartBin::Link's draft relies on a
+  steering copy chain (`CVector3 tmp = lightPos; position = tmp;`): unlandable as written.
 - **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
   is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
   take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by

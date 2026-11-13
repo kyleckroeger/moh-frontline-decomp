@@ -28,7 +28,6 @@ extern "C" long OSGetTick();
 
 class ISceneNode;
 
-
 class CBullet {
 public:
     unsigned char unknown000[148];
@@ -58,59 +57,10 @@ public:
     static void DisablePassThru(bool);
 };
 
-namespace dwi {
-template <class T>
-class vec_iter {
-public:
-    vec_iter() : m_p(0) {}
-    vec_iter(T* p) : m_p(p) {}
-    ~vec_iter() { m_p = 0; }
-    bool operator!=(const vec_iter& other) const { return m_p != other.m_p; }
-    vec_iter& operator++() {
-        m_p++;
-        return *this;
-    }
-
-    T* m_p;
-};
-
-template <class T>
-class vector {
-public:
-    vec_iter<T> begin();
-    vec_iter<T> end();
-    vec_iter<T> erase(vec_iter<T>);
-    void clear() {
-        for (vec_iter<T> it = begin(); it != end(); ++it)
-            it.m_p->~T();
-        m_size = 0;
-    }
-    void push_back(const T& value) {
-        new (end().m_p) T(value);
-        m_size++;
-    }
-
-    int m_size;
-    int m_capacity;
-    T* m_data;
-    bool m_owned;
-};
-
-template <class T>
-class fast_vec {
-public:
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CCollision;
 #include "game/ISceneNode.h"
-
 
 /* the predicate of the find_if instance (named by its symbol) */
 struct ClsnInvolvesThisBullet {
@@ -123,11 +73,6 @@ struct ClsnInvolvesThisBullet {
 namespace dwi {
 template <class I, class P> I find_if(I, I, P);
 }
-
-inline void* operator new(unsigned long, void* p) {
-    return p;
-}
-
 
 class CScene {
 public:

@@ -323,3 +323,55 @@ player_switchweapon. Not moved:
   doesn't have (pumhandler_loop m_hideMessages), m_soldier's members (bsbifunc_mpplayer), and
   GetCurrentWeapon's result as a CWeaponFlagsView* (player_weapon_object_head).
 Table: `research/layout/header_moves/CPlayerObject.tsv`.
+
+## dwi containers (2026-11-13, agent hdr6)
+
+`include/game/DwiContainers.h` (list_node, list_iter, list, vec_iter, vec_const_iter, vector,
+fast_vec, min/max) and `include/game/DwiHashMap.h` (hash_map and the prime table). There was no
+container header in this repo before (Rising Sun has one for list_iter; its member names differ).
+Evidence:
+
+- Names from the original's weak copies and local template symbols: list/vector `reserve(int,
+  char*)`, the list range constructor `list(int, list_iter, list_iter, char*)` (local 't', like
+  dwi::copy), fast_vec `reserve(T*, int)` (0x800770a4, the views' SetStorage/UseBuffer),
+  `fast_vec(int)`, `push_back(T)` by value, vector `erase(vec_iter)`, `vec_iter::operator+(int)
+  const`, hash_map `erase(hash_map::iterator)`.
+- dwi_prime_list is a local 27-word table with 25 copies in the original, many in files that never
+  use a hash map, so it is a `static const` in the hash map's header, not in DwiContainers.h (every
+  file including that would emit it). The 18 files that only carried the table now include
+  DwiHashMap.h for it.
+- Member names: the matched views agree almost everywhere (m_count/m_capacity/m_pool/m_free/m_head/
+  m_owned for list; m_data/m_unknown4/m_size/m_capacity/m_owned/m_growth for fast_vec). Where views
+  had different bodies for one member the header takes the most common (fast_vec::erase, list
+  push_back, list clear); list::erase returns the next node (pumhandler_subtitles uses it; the other
+  callers ignore it, same code). min/max take and return references (AISplinePath_segment's dwi::min);
+  the invented Min/Max of cdbgeom_triangle_line, cdbgeom_volbox_ctor and scene_update are now
+  dwi::min/dwi::max (same inline body).
+- vector::reserve/erase are declared only: their bodies call dwi::copy, a local template the
+  original emits in its own fragment (scene_copy, buddy_copy_*), so the placing units keep them.
+
+Tool: research/tools/try_dwi.py (removes the covered templates, their out-of-class members the
+header defines, the unit's placement new, min/max and the prime table from `namespace dwi` blocks,
+includes the header where the first block was; verifies like try_header.py). Table:
+`research/layout/header_moves/DwiContainers.tsv`.
+
+Result: 114 units with a dwi view, the prime table or Min/Max. **54 moved**: 41 as is, 3 after
+renaming stripped labels (cdbobject_csg/leaf/trigroups, relabel.py), 10 with weak copies listed or
+labels from port_unit's draft (redraft.py: scene_cmppairs, scene_dtor, scene_fast, scene_query,
+scene_reset, scene_update, pumhandler, pumhandler_subtitles, toilet,
+PathNodeList_disable). The scene units among them are on the header's containers but still on
+their own CScene view. Not moved:
+
+- The weak-copy placing fragments (about 40: *_list, *_list_reserve, *_list_ctor, *_vec_*,
+  *_fastvec*, compartment_weak, scene_veciter_*, publisher_erase, PathNodeList_erase/hashmap,
+  toilet_hashmap, world_object_node_dtor): they emit their copies with `template class X<T>;`,
+  which instantiates every member of the header (find needs ==, the list constructor needs T(),
+  hash_map::erase a default V), or their declared-only members are inlined from the header
+  (.text, weak duplicates no longer emitted). Moving them means changing how they instantiate.
+- Code-level: alarm_register (AlarmInfo has no default constructor; the inline reserve needs one),
+  scene_rmextents (push_back returning T*), world_volume_remove (a two-argument push_back),
+  player_ctor (invented Allocate), buddy_destroy and alarm (a new __sinit), pumhandler_umt_dtor
+  (emits the local range constructor), AIFilter (fast_vec(T*, int) with growth 0),
+  world_volume_ctor (.text), world_object_dtor (the inline list reserve copies add .bss beyond its
+  range), PathNodeList_closest and publisher_setsubject (their file's prime
+  table is in another fragment; the header adds it).

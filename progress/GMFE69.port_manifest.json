@@ -3,7 +3,7 @@
  "target": "GMFE69",
  "verified_units": 1257,
  "function_bytes_by_status": {"consistent": 123124, "differs": 5764, "exact": 4472, "verified": 1272196},
- "data_bytes_owned": 724668,
+ "data_bytes_owned": 724776,
  "data_bytes_total": 1976252,
  "functions": [
  [2147512576, 64, "__check_pad3", "verified", "src/dolsdk2001/os/__start.c"],
@@ -5179,7 +5179,7 @@
  [2148989924, 133, "@838", ".rodata", "src/game/AITankObject.cpp"],
  [2148990064, 64, "@755", ".rodata", "original"],
  [2148990128, 55, "@1249", ".rodata", "original"],
- [2148990184, 108, "dwi_prime_list__3dwi", ".rodata", "original"],
+ [2148990184, 108, "dwi_prime_list__3dwi", ".rodata", "src/game/PathNodeList_disable.cpp"],
  [2148990292, 36, "@739", ".rodata", "original"],
  [2148990328, 36, "@754", ".rodata", "original"],
  [2148990364, 17, "@2011", ".rodata", "original"],

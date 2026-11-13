@@ -1,0 +1,130 @@
+unit	source	status	detail
+AIFilter	scratch/try/AIFilter/src/AIFilter.cpp	lost	fast_vec Linked source sections differ from manifest
+AIFilter_collisiondist	src/game/AIFilter_collisiondist.cpp	skip	no covered view
+AIFilter_global	scratch/try/AIFilter_global/src/AIFilter_global.cpp	kept	fast_vec 
+AIFilter_linechecks	src/game/AIFilter_linechecks.cpp	skip	no covered view
+AIFilter_mechchecker_dtor	src/game/AIFilter_mechchecker_dtor.cpp	skip	no covered view
+AIFilter_visit	src/game/AIFilter_visit.cpp	skip	no covered view
+AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	kept	primes 
+AISplinePath	scratch/try/AISplinePath/src/AISplinePath.cpp	kept	primes 
+AISplinePath_segment	scratch/try/AISplinePath_segment/src/AISplinePath_segment.cpp	kept	minmax 
+AnimObjFactory_weapon	scratch/try/AnimObjFactory_weapon/src/AnimObjFactory_weapon.cpp	kept	primes 
+GameMessage	scratch/try/GameMessage/src/GameMessage.cpp	kept	primes 
+Moh2	scratch/try/Moh2/src/Moh2.cpp	kept	primes 
+PathNodeList	scratch/try/PathNodeList/src/PathNodeList.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList.cpp # --------------------------------
+PathNodeList_closest	scratch/try/PathNodeList_closest/src/PathNodeList_closest.cpp	lost	hash_map Unexpected allocated compiler output
+PathNodeList_disable	scratch/try/PathNodeList_disable/src/PathNodeList_disable.cpp	kept	hash_map Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+PathNodeList_erase	scratch/try/PathNodeList_erase/src/PathNodeList_erase.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList_erase.cpp # --------------------------------------
+PathNodeList_hashmap	scratch/try/PathNodeList_hashmap/src/PathNodeList_hashmap.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList_hashmap.cpp # ----------------------------------------
+Pause	scratch/try/Pause/src/Pause.cpp	kept	primes 
+Soldier_object_attach	scratch/try/Soldier_object_attach/src/Soldier_object_attach.cpp	kept	primes 
+alarm	scratch/try/alarm/src/alarm.cpp	lost	list,list_node Unexpected compiler function set
+alarm_builtins	scratch/try/alarm_builtins/src/alarm_builtins.cpp	kept	list,list_node 
+alarm_list	scratch/try/alarm_list/src/alarm_list.cpp	lost	list,list_node '.text'
+alarm_list_ctor	scratch/try/alarm_list_ctor/src/alarm_list_ctor.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi16list<9AlarmInfo>Fv
+alarm_list_reserve	scratch/try/alarm_list_reserve/src/alarm_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi16list<9AlarmInfo>Fv
+alarm_register	scratch/try/alarm_register/src/alarm_register.cpp	no_compile	list,list_node ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\alarm_register.cpp # ----------------------------------
+anim_obj_collide	scratch/try/anim_obj_collide/src/anim_obj_collide.cpp	kept	fast_vec 
+anim_obj_ctor	scratch/try/anim_obj_ctor/src/anim_obj_ctor.cpp	kept	fast_vec 
+anim_obj_dtor	scratch/try/anim_obj_dtor/src/anim_obj_dtor.cpp	kept	fast_vec 
+bsbifunc_explosion	src/game/bsbifunc_explosion.cpp	skip	no covered view
+bsutil_update	scratch/try/bsutil_update/src/bsutil_update.cpp	kept	primes 
+buddy_copy_info	scratch/try/buddy_copy_info/src/buddy_copy_info.cpp	kept	vec_iter 
+buddy_copy_path	scratch/try/buddy_copy_path/src/buddy_copy_path.cpp	kept	vec_iter 
+buddy_destroy	scratch/try/buddy_destroy/src/buddy_destroy.cpp	lost	list,list_iter,list_node,vec_iter,vector Unexpected compiler function set
+buddy_head	scratch/try/buddy_head/src/buddy_head.cpp	kept	list,list_iter,list_node,primes,vec_iter,vector 
+buddy_list	scratch/try/buddy_list/src/buddy_list.cpp	lost	list,list_node '.text'
+buddy_list_reserve	scratch/try/buddy_list_reserve/src/buddy_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi16list<9BuddyInfo>Fv
+buddy_vec_info_dtor	scratch/try/buddy_vec_info_dtor/src/buddy_vec_info_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20vec_iter<9BuddyInfo>Fv
+buddy_vec_info_reserve	scratch/try/buddy_vec_info_reserve/src/buddy_vec_info_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+buddy_vec_path_begin	scratch/try/buddy_vec_path_begin/src/buddy_vec_path_begin.cpp	lost	vec_iter,vector '.text'
+buddy_vec_path_dtor	scratch/try/buddy_vec_path_dtor/src/buddy_vec_path_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv
+buddy_vec_path_end	scratch/try/buddy_vec_path_end/src/buddy_vec_path_end.cpp	lost	vec_iter,vector '.text'
+buddy_vec_path_reserve	scratch/try/buddy_vec_path_reserve/src/buddy_vec_path_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+buddy_veciter_path_dtor	scratch/try/buddy_veciter_path_dtor/src/buddy_veciter_path_dtor.cpp	lost	vec_iter,vector '.text'
+cdbgeom_triangle_line	scratch/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	kept	Minmax 
+cdbgeom_volbox_ctor	scratch/try/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	kept	Minmax 
+cdbobject_csg	scratch/try/cdbobject_csg/src/cdbobject_csg.cpp	kept	fast_vec Stripped object is not one compiler object: @52 | moved after renaming stripped labels (relabel)
+cdbobject_fastvec_branch	scratch/try/cdbobject_fastvec_branch/src/cdbobject_fastvec_branch.cpp	lost	fast_vec '.text'
+cdbobject_fastvec_frame	scratch/try/cdbobject_fastvec_frame/src/cdbobject_fastvec_frame.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\cdbobject_fastvec_frame.cpp # -------------------------------------------
+cdbobject_fastvec_push	scratch/try/cdbobject_fastvec_push/src/cdbobject_fastvec_push.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\cdbobject_fastvec_push.cpp # ------------------------------------------
+cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	kept	fast_vec 
+cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	kept	fast_vec Stripped object is not one compiler object: @75 | moved after renaming stripped labels (relabel)
+cdbobject_line	scratch/try/cdbobject_line/src/cdbobject_line.cpp	kept	fast_vec 
+cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	kept	fast_vec Stripped object is not one compiler object: @64 | moved after renaming stripped labels (relabel)
+collision	src/game/collision.cpp	skip	no covered view
+collision_factory_dtor	src/game/collision_factory_dtor.cpp	skip	no covered view
+collision_head	src/game/collision_head.cpp	skip	no covered view
+compartment_draw	src/game/compartment_draw.cpp	skip	no covered view
+compartment_fastvec	scratch/try/compartment_fastvec/src/compartment_fastvec.cpp	lost	fast_vec '.text'
+compartment_fastvec_tri	scratch/try/compartment_fastvec_tri/src/compartment_fastvec_tri.cpp	lost	fast_vec Linked source sections differ from manifest
+compartment_weak	scratch/try/compartment_weak/src/compartment_weak.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #    File: ..\src\compartment_weak.cpp # ------------------------------------ #      41: template <class T> __declspec(weak) fast_vec<T>::fast_vec(int growth) {
+explosion_dtor	src/game/explosion_dtor.cpp	skip	no covered view
+impact_dtor	src/game/impact_dtor.cpp	skip	no covered view
+location_collision	scratch/try/location_collision/src/location_collision.cpp	kept	primes 
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	kept	primes 
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	kept	primes 
+objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	kept	primes 
+player_constrain	scratch/try/player_constrain/src/player_constrain.cpp	kept	fast_vec 
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #     257: m_collisions.Allocate(128);
+player_draw	scratch/try/player_draw/src/player_draw.cpp	kept	primes 
+player_dtor	scratch/try/player_dtor/src/player_dtor.cpp	kept	fast_vec 
+player_fastvec	scratch/try/player_fastvec/src/player_fastvec.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\player_fastvec.cpp # ----------------------------------
+player_health	scratch/try/player_health/src/player_health.cpp	kept	fast_vec 
+propdat_bsp	scratch/try/propdat_bsp/src/propdat_bsp.cpp	kept	primes 
+propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	kept	primes 
+publisher_erase	scratch/try/publisher_erase/src/publisher_erase.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\publisher_erase.cpp # -----------------------------------
+publisher_reset	scratch/try/publisher_reset/src/publisher_reset.cpp	no_compile	hash_map,primes ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\publisher_reset.cpp # -----------------------------------
+publisher_setsubject	scratch/try/publisher_setsubject/src/publisher_setsubject.cpp	lost	hash_map Unexpected allocated compiler output
+pumhandler	scratch/try/pumhandler/src/pumhandler.cpp	kept	list,list_node Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+pumhandler_list	scratch/try/pumhandler_list/src/pumhandler_list.cpp	lost	list,list_node '.text'
+pumhandler_list_ctor	scratch/try/pumhandler_list_ctor/src/pumhandler_list_ctor.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi22list<14QueuedSubtitle>Fv
+pumhandler_list_reserve	scratch/try/pumhandler_list_reserve/src/pumhandler_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi22list<14QueuedSubtitle>Fv
+pumhandler_subtitles	scratch/try/pumhandler_subtitles/src/pumhandler_subtitles.cpp	kept	list,list_iter,list_node Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+pumhandler_umt_dtor	scratch/try/pumhandler_umt_dtor/src/pumhandler_umt_dtor.cpp	lost	list,list_iter,list_node Unexpected compiler function set
+scene	scratch/try/scene/src/scene.cpp	kept	fast_vec 
+scene_cmppairs	scratch/try/scene_cmppairs/src/scene_cmppairs.cpp	kept	fast_vec,list,list_iter,list_node Trimmed data cuts through a compiler object | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_copy	scratch/try/scene_copy/src/scene_copy.cpp	kept	vec_iter,vector 
+scene_dtor	scratch/try/scene_dtor/src/scene_dtor.cpp	kept	fast_vec,list,list_node,primes,vec_iter,vector Stripped object is not one compiler object: @144 | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_fast	scratch/try/scene_fast/src/scene_fast.cpp	kept	fast_vec,vec_iter,vector Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_fastvec_commands	scratch/try/scene_fastvec_commands/src/scene_fastvec_commands.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\scene_fastvec_commands.cpp # ------------------------------------------
+scene_fastvec_node	scratch/try/scene_fastvec_node/src/scene_fastvec_node.cpp	lost	fast_vec '.text'
+scene_fastvec_pairs	scratch/try/scene_fastvec_pairs/src/scene_fastvec_pairs.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\scene_fastvec_pairs.cpp # ---------------------------------------
+scene_fastvec_shadow	scratch/try/scene_fastvec_shadow/src/scene_fastvec_shadow.cpp	lost	fast_vec '.text'
+scene_findif	scratch/try/scene_findif/src/scene_findif.cpp	kept	vec_iter,vector 
+scene_list_extent	scratch/try/scene_list_extent/src/scene_list_extent.cpp	lost	list,list_node '.text'
+scene_list_reserve	scratch/try/scene_list_reserve/src/scene_list_reserve.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi28list<Q210ISceneNode7SExtent>Fv
+scene_now	scratch/try/scene_now/src/scene_now.cpp	kept	fast_vec 
+scene_query	scratch/try/scene_query/src/scene_query.cpp	kept	fast_vec,vec_iter,vector Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_quicksort	src/game/scene_quicksort.cpp	skip	no covered view
+scene_reset	scratch/try/scene_reset/src/scene_reset.cpp	kept	fast_vec,list,list_node,vec_iter,vector Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_rmextents	scratch/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	list,list_node ### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      68: node.m_extentNodes[0] = m_extents128.push_back(extent);
+scene_sort	src/game/scene_sort.cpp	skip	no covered view
+scene_update	scratch/try/scene_update/src/scene_update.cpp	kept	Minmax,fast_vec,vec_const_iter,vec_iter,vector Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+scene_vec_begin	scratch/try/scene_vec_begin/src/scene_vec_begin.cpp	lost	vec_iter,vector '.text'
+scene_vec_dtor	scratch/try/scene_vec_dtor/src/scene_vec_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi22vec_iter<10CCollision>Fv
+scene_vec_end	scratch/try/scene_vec_end/src/scene_vec_end.cpp	lost	vec_iter,vector '.text'
+scene_vec_erase	scratch/try/scene_vec_erase/src/scene_vec_erase.cpp	lost	vec_iter,vector Unexpected compiler function set
+scene_vec_reserve	scratch/try/scene_vec_reserve/src/scene_vec_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+scene_vecconst_dtor	scratch/try/scene_vecconst_dtor/src/scene_vecconst_dtor.cpp	lost	vec_const_iter,vector '.text'
+scene_veciter_dtor	scratch/try/scene_veciter_dtor/src/scene_veciter_dtor.cpp	lost	vec_iter,vector '.text'
+scene_veciter_plus	scratch/try/scene_veciter_plus/src/scene_veciter_plus.cpp	lost	vec_iter,vector '.text'
+scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	kept	fast_vec 
+sound	scratch/try/sound/src/sound.cpp	kept	primes 
+soundschedule_sound	scratch/try/soundschedule_sound/src/soundschedule_sound.cpp	kept	primes 
+toilet	scratch/try/toilet/src/toilet.cpp	kept	hash_map,primes Unexpected compiler function set | moved with weak copies listed / labels from port_unit draft (redraft)
+toilet_hashmap	scratch/try/toilet_hashmap/src/toilet_hashmap.cpp	lost	hash_map 'extab'
+volume_query_test	src/game/volume_query_test.cpp	skip	no covered view
+world_object	src/game/world_object.cpp	skip	no covered view
+world_object_dtor	scratch/try/world_object_dtor/src/world_object_dtor.cpp	lost	list,list_node Unexpected compiler function set | redraft: the reserve copies grow .bss into world_object_request_reserve
+world_object_list	scratch/try/world_object_list/src/world_object_list.cpp	lost	list,list_node '.text'
+world_object_list_reserve	scratch/try/world_object_list_reserve/src/world_object_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20list<12CCompartment>Fv
+world_object_node_dtor	scratch/try/world_object_node_dtor/src/world_object_node_dtor.cpp	no_compile	list_node ### mwcceppc.exe Compiler: #    File: ..\src\world_object_node_dtor.cpp # ------------------------------------------ #      18: template <class T> __declspec(weak) list_node<T>::~list_node() {
+world_object_request_reserve	scratch/try/world_object_request_reserve/src/world_object_request_reserve.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi31list<Q212CWorldObject8SRequest>Fv
+world_volume_ctor	scratch/try/world_volume_ctor/src/world_volume_ctor.cpp	lost	list,list_node Unexpected compiler function set
+world_volume_dtor	scratch/try/world_volume_dtor/src/world_volume_dtor.cpp	kept	list,list_node 
+world_volume_edit	scratch/try/world_volume_edit/src/world_volume_edit.cpp	kept	list,list_iter,list_node 
+world_volume_list	scratch/try/world_volume_list/src/world_volume_list.cpp	lost	list,list_node '.text'
+world_volume_list_reserve	scratch/try/world_volume_list_reserve/src/world_volume_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20list<PC10CCDBObject>Fv
+world_volume_remove	scratch/try/world_volume_remove/src/world_volume_remove.cpp	no_compile	list,list_iter,list_node ### mwcceppc.exe Compiler: #    File: ..\src\world_volume_remove.cpp # --------------------------------------- #     110: m_subVolumes.push_back(&object, head);
+world_volume_subvol	scratch/try/world_volume_subvol/src/world_volume_subvol.cpp	kept	list,list_node 

@@ -23,13 +23,9 @@
 extern bool g_bInMultiplayerMode;
 extern const float CONTACT_EPSILON;
 
-
-
 #include "game/CVector3.h"
 
-
 #include "game/CMatrix.h"
-
 
 class ContactObjectView {
 public:
@@ -42,18 +38,7 @@ public:
     virtual void vf20();
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CPlayerObject {
 public:

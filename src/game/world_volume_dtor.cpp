@@ -17,44 +17,7 @@ class CCollision;
 
 extern "C" void MEM_free(void*);
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list {
-public:
-    ~list() {
-        list_node<T>* node = m_head.m_next;
-        list_node<T>* next;
-
-        while (node != &m_head) {
-            next = node->m_next;
-            node->m_prev = 0;
-            node->m_next = m_free;
-            m_free = node;
-            node = next;
-        }
-        m_head.m_next = &m_head;
-        m_head.m_prev = &m_head;
-        m_count = 0;
-        if (m_owned)
-            MEM_free(m_pool);
-        m_pool = 0;
-    }
-
-    int m_count;
-    int m_unknown4;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-}
+#include "game/DwiContainers.h"
 
 class IVolume {
 public:

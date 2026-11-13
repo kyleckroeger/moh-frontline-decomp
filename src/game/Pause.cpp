@@ -27,13 +27,7 @@ extern "C" int strncmp(const char*, const char*, unsigned long);
 extern "C" void* memcpy(void*, const void*, unsigned long);
 
 // The header's prime table (unused here; this file's .rodata starts with it).
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 enum PauseState {};
 enum ERenderPriority {};
@@ -67,7 +61,6 @@ struct PauseResourceView {
 PauseResourceView* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
 
 #include "game/CScreen.h"
-
 
 /* inferred view: 28 bytes of members, then the table with the virtual
    destructor in its first slot */
@@ -110,8 +103,6 @@ public:
 
     unsigned char unknown20[68];
 };
-
-
 
 class IStudio {
 public:
@@ -157,7 +148,6 @@ public:
 };
 
 #include "game/CScene.h"
-
 
 struct CheatsView {
     bool immortality;

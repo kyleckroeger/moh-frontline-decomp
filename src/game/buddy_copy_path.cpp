@@ -9,20 +9,8 @@ struct BuddyPathInfo {
     int word00;
 };
 
+#include "game/DwiContainers.h"
 namespace dwi {
-template <class T>
-class vec_iter {
-public:
-    vec_iter(T* p) : m_p(p) {}
-    bool operator!=(const vec_iter& other) const { return m_p != other.m_p; }
-    vec_iter& operator++() {
-        m_p++;
-        return *this;
-    }
-    T& operator*() const { return *m_p; }
-
-    T* m_p;
-};
 
 template <class I, class O>
 static O copy(I first, I last, O result) {

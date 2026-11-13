@@ -18,19 +18,12 @@
 // are declared extern: their data is not reconstructed.
 
 // Header-defined hash-table primes; every unit that includes the header carries a copy.
-namespace dwi {
-static const unsigned long dwi_prime_list[27] = {
-    53,        97,        193,       389,       769,       1543,      3079,      6151,      12289,
-    24593,     49157,     98317,     196613,    393241,    786433,    1572869,   3145739,   6291469,
-    12582917,  25165843,  50331653,  100663319, 201326611, 402653189, 805306457, 1610612741, 3221225473u,
-};
-}
+#include "game/DwiHashMap.h"
 
 extern "C" int rand();
 void DebugMsg(const char*, ...);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 void TLT_CloseFile(void*);
-
 
 inline void ChangeEndian(short& value) {
     unsigned char bytes[2];
@@ -105,14 +98,12 @@ public:
 
 #include "game/CMatrix.h"
 
-
 class CCollision;
 class CDrawContext;
 class CBullet;
 class CLight;
 
 #include "game/ISceneNode.h"
-
 
 class IMovingSceneNode : public ISceneNode {
 public:
@@ -124,7 +115,6 @@ public:
 
 // Only the size (328 bytes, from the g_scene symbol) and this method are established.
 #include "game/CScene.h"
-
 
 extern CScene g_scene;
 extern int g_NumPlayers;
@@ -488,7 +478,6 @@ extern MGTriggerObjectView g_pMGTriggerObject[32];
 extern int g_playerStartIndices[15];
 extern bool g_takenPlayerStarts[15];
 
-
 inline void EndianSwap(_PropBSPLeaf& value) {
     ChangeEndian(value.field00);
     ChangeEndian(value.field04);
@@ -610,7 +599,6 @@ void EndianSwap(MOH_mechanic_Struct& value);
 void EndianSwap(MOH_core_Struct& value);
 
 void EndianSwap(xyzProperty_Struct& value);
-
 
 int SearchForClosestMachineGun(ISceneNode* node, float maxDistance);
 

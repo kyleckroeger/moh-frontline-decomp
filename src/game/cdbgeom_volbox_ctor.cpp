@@ -16,6 +16,7 @@
 // defined in another file; the parameter meanings, the side classification
 // and min/max helpers and the axis enumeration's members are inferred.
 #include <math.h>
+#include "game/DwiContainers.h"
 
 struct VECTOR3VIEW {
     float x;
@@ -101,10 +102,6 @@ static inline int Classify(float d, float eps) {
     return 2;
 }
 
-/* Inferred: the smaller and larger of two values, by reference. */
-template <class T> inline const T& Min(const T& a, const T& b) { return a < b ? a : b; }
-template <class T> inline const T& Max(const T& a, const T& b) { return a < b ? b : a; }
-
 static bool separate(float r, float p0, float p1, EBoxTriSeperatingAxis axis, float& best, EBoxTriSeperatingAxis& bestAxis) {
     float d;
     if (p0 >= 0.0f) {
@@ -128,13 +125,13 @@ static bool separate(float r, float p0, float p1, EBoxTriSeperatingAxis axis, fl
 static bool separate(float r, float p0, float p1, float p2, EBoxTriSeperatingAxis axis, float& best, EBoxTriSeperatingAxis& bestAxis) {
     float d;
     if (p0 >= 0.0f) {
-        float m = Min(p1, p2);
+        float m = dwi::min(p1, p2);
         if (m > 0.0f)
             d = p0 - r;
         else
             d = p0 + m - r;
     } else {
-        float m = Max(p1, p2);
+        float m = dwi::max(p1, p2);
         if (m < 0.0f)
             d = -p0 - r;
         else

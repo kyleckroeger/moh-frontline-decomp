@@ -87,88 +87,7 @@ public:
     ISceneNode* m_link8;
 };
 
-namespace dwi {
-template <class T>
-struct list_node {
-    list_node* m_prev;
-    list_node* m_next;
-    T m_data;
-};
-
-template <class T>
-class list_iter {
-public:
-    list_iter() {}
-    list_iter(list_node<T>* n) : m_node(n) {}
-    list_iter(const list_iter& other) : m_node(other.m_node) {}
-    T& operator*() const { return m_node->m_data; }
-    list_iter& operator++() {
-        m_node = m_node->m_next;
-        return *this;
-    }
-    bool operator!=(list_iter other) const { return m_node != other.m_node; }
-
-    list_node<T>* m_node;
-};
-
-template <class T>
-class list {
-public:
-    typedef list_iter<T> iterator;
-
-    iterator begin() { return iterator(m_head.m_next); }
-    iterator end() { return iterator(&m_head); }
-
-    int m_count;
-    int m_unknown4;
-    list_node<T>* m_pool;
-    list_node<T>* m_free;
-    list_node<T> m_head;
-    bool m_owned;
-};
-
-template <class T>
-class fast_vec {
-public:
-    fast_vec() : m_data(0), m_unknown4(0), m_size(0), m_capacity(0), m_owned(true), m_growth(-1) {}
-    ~fast_vec() {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-    }
-    void reserve(T* buffer, int capacity) {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-        m_data = buffer;
-        m_capacity = capacity;
-        m_owned = false;
-    }
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    void push_back(const T& value) { m_data[m_size++] = value; }
-    T* find(const T& value) {
-        T* it = m_data;
-        T* last = m_data + m_size;
-        for (; it != last; it++) {
-            if (*it == value)
-                break;
-        }
-        return it;
-    }
-    void erase(T* it) {
-        T* last = m_data + m_size;
-        for (T* src = it + 1; src != last;)
-            *it++ = *src++;
-        m_size--;
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CScene {
 public:
@@ -189,8 +108,6 @@ public:
         bool Matches(ISceneNode* a, ISceneNode* b) const { return first == a && second == b; }
     };
 };
-
-
 
 static inline signed char GetCollisionOrder(int a, int b) {
     int index;

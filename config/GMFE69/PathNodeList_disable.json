@@ -49,7 +49,7 @@
       "size": 88,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 96
+      "linked_size": 104
     },
     {
       "name": "extabindex",
@@ -57,7 +57,13 @@
       "size": 12,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24
+      "linked_size": 36
+    },
+    {
+      "name": ".rodata",
+      "address": "0x8016fce8",
+      "size": 108,
+      "type": 1
     }
   ],
   "functions": [
@@ -91,7 +97,8 @@
   "original_file": "PathNodeList.cpp",
   "original_file_index": 2283,
   "weak_duplicates": [
-    "__dt__7IVolumeFv"
+    "__dt__7IVolumeFv",
+    "erase__Q23dwi40hash_map<Ui,Q213CPathNodeList9PathNodes>FQ33dwi40hash_map<Ui,Q213CPathNodeList9PathNodes>8iterator"
   ],
   "pooled_sections": [
     ".sdata2"

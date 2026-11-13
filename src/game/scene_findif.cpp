@@ -24,33 +24,8 @@ struct ClsnInvolvesThisBullet {
     ISceneNode* m_bullet;
 };
 
+#include "game/DwiContainers.h"
 namespace dwi {
-template <class T>
-class vec_iter {
-public:
-    vec_iter(T* p) : m_p(p) {}
-    ~vec_iter() { m_p = 0; }
-    bool operator!=(const vec_iter& other) const { return m_p != other.m_p; }
-    vec_iter& operator++() {
-        m_p++;
-        return *this;
-    }
-    T& operator*() const { return *m_p; }
-
-    T* m_p;
-};
-
-template <class T>
-class vector {
-public:
-    vec_iter<T> end();
-    vec_iter<T> begin();
-
-    int m_size;
-    int m_capacity;
-    T* m_data;
-};
-
 
 template <class I, class P>
 static I find_if(I first, I last, P pred) {

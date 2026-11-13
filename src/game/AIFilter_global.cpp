@@ -59,35 +59,7 @@ struct NoiseInfo {
     float time;
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    T* begin() { return m_data; }
-    T* end() { return m_data + m_size; }
-    int size() const { return m_size; }
-    void erase(T* item) {
-        T* next = item + 1;
-        T* last = end();
-        while (next != last) {
-            *item = *next;
-            item++;
-            next++;
-        }
-        m_size--;
-    }
-    void push_back(T item) {
-        m_data[m_size++] = item;
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CAIFilterGlobal {
 public:

@@ -16,14 +16,7 @@
 // linked to the original copies.
 extern "C" void MEM_free(void*);
 
-
-
-
-
-
-
 #include "game/ISceneNode.h"
-
 
 class IMovingSceneNode : public ISceneNode {
 public:
@@ -31,23 +24,7 @@ public:
     virtual ~IMovingSceneNode() {}
 };
 
-namespace dwi {
-template <class T>
-class fast_vec {
-public:
-    ~fast_vec() {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-    }
-
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
-}
+#include "game/DwiContainers.h"
 
 class CLightVolumeManager {
 public:

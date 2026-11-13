@@ -141,32 +141,11 @@ public:
 class CVolCapsule : public IVolume {};
 class CAnimatedVolume : public CVolSphere {};
 
+#include "game/DwiContainers.h"
 namespace dwi {
 // Inferred: the vector over caller storage (inline constructor; the
 // destructor frees the storage only when the vector owns it).
-template <class T>
-class fast_vec {
-public:
-    fast_vec(T* storage, int capacity, int growth)
-        : m_data(storage), m_unknown4(0), m_size(0), m_capacity(capacity), m_owned(false), m_growth(growth) {}
-    ~fast_vec() {
-        if (m_owned && m_data)
-            MEM_free(m_data);
-    }
-    int size() const { return m_size; }
-    T& back() { return m_data[m_size - 1]; }
-    void pop_back() { m_size--; }
-    void push_back(const T& x) { m_data[m_size++] = x; }
-    T* begin() const { return m_data; }
-    T* end() const { return m_data + m_size; }
 
-    T* m_data;
-    int m_unknown4;
-    int m_size;
-    int m_capacity;
-    bool m_owned;
-    int m_growth;
-};
 }
 
 // Inferred: a triangle's pass-through flag (bit 1 of +14, a signed field).
