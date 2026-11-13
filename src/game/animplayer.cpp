@@ -1,41 +1,122 @@
-// CAnimatedPlayer's update, bounding volumes, flocking parameters and
-// animation:
-// AttemptUpdate is CAnimObject::AttemptUpdate (bone interpolation, yaw and
-// position, world volume and scene extents widened by CONTACT_EPSILON) plus
-// the current weapon's muzzle flash and a flag cleared for weapon types 33
-// and 34 above 60 (both cleared while the player flag at bit 0x40 of +919 is
-// set); BeginUpdate updates the light volumes, keeps the last position and
-// yaw, takes the bone rotation and position from the second matrix, runs the
-// animation and clears the velocity and a flag (CAnimObject::BeginUpdate
-// without the falling physics); UpdateLocalBoundingVolume sets the type-3
-// local box's corners (as CSoldierObject's does); the world and local volumes
-// are chosen by volume type (types 0 to 2 share one volume, type 3 has its
-// own, others have none), and the flocking parameters are a float and a long
-// stored together. UpdateAnimation runs CAnimObject's, copies a player value,
-// applies a pending morph state, updates the morph, drives two face blend
-// targets (the second replaces the first once it reaches zero; both weights
-// move by their speeds within 0 and their maxima), a timed blend on target 13
-// (ramp, hold and fade lengths restarted with a random delay) and the jaw and
-// mouth targets. Its leading CMatrix class-initialisation check is written as
-// an unused CMatrix local (inferred; the original may come from an inline).
-// The classes, CONTACT_EPSILON and the called functions are
-// named by the symbols; the members are inferred from offsets (shared with
-// the CAnimObject view in anim_obj_update.cpp and the CWeapon view in
-// weapon_head.cpp), the vector, matrix, volume and weapon views are
-// inferred, and the virtual functions other than those used are placeholders
-// in __vt__15CAnimatedPlayer's order (its virtual table is emitted with the
-// rest of the file).
-class IVolume;
-class CMatrix;
+// animplayer.cpp: CAnimatedPlayer, the whole file, with its vtable and the RTTI records of its
+// chain (IDestructible .. CAnimatedPlayer): the weak copies of its empty UpdateAI and its
+// AsAnimatedPlayerObject casts; CommitUpdate, AttemptUpdate, BeginUpdate, the bounding
+// volumes, the flocking parameters and UpdateAnimation; Draw and HandleBulletCollision; InitAI
+// and Init; the destructor and the constructor.
+//
+// The names come from the mangled symbols; the class chain and the vtable from
+// __RTTI__15CAnimatedPlayer and __vt__15CAnimatedPlayer (ISceneNode's and IMovingSceneNode's
+// slots from the shared headers, CAnimObject's from +0x124 and CSoldierObject's InitAI at
+// +0x148, as __vt__11CAnimObject and __vt__14CSoldierObject).
+//
+// Inferred, not in any mangled name: the data members (named by offset or role; the split
+// between CAnimObject and CSoldierObject at +0x3fc0 is a choice, CAnimatedPlayer's own members
+// start at +0x44b0 since its constructor sets only that word), the result types, the reset
+// helpers, and the views of the weapon, the volumes, the animation and morph classes, the jaw
+// controller, the particle system, the bullet and the draw context; the extent nodes are
+// ISceneNode's data words at +0x0c..+0x18. CVector3 is the shared header with the assignment
+// through the double-pair union (both doublewords loaded before either is stored). The unit is
+// compiled -inline auto,deferred, which emits the functions in reverse source order, so they
+// are written last to first.
+/* inferred: this file's CVector3 is the shared game/CVector3.h with the assignment through the
+   double-pair union */
+#define GAME_CVECTOR3_H
+#include "game/msl_sqrtf.h"
+
+struct CVector3XYZW {
+    float x, y, z, w;
+};
+
+union CVector3Data {
+    double pair[2];
+    float v[4];
+    CVector3XYZW c;
+};
+
+struct CVector3Pair {
+    double a;
+    double b;
+};
+
+struct CVector3Base {
+    float x, y, z, w;
+} __attribute__((aligned(8)));
+
+class CVector3 : public CVector3Base {
+public:
+    CVector3() {}
+    CVector3(float ax, float ay, float az) { x = ax; y = ay; z = az; }
+    CVector3(const CVector3& other) : CVector3Base(other) {}
+    CVector3& operator=(const CVector3& other) {
+        *(CVector3Data*)this = *(const CVector3Data*)&other;
+        return *this;
+    }
+
+    void Set(float ax, float ay, float az) { x = ax; y = ay; z = az; }
+    float LengthSq() const { return x * x + y * y + z * z; }
+    float LengthSquared() const { return x * x + y * y + z * z; }
+    float Length() const { return sqrtf(x * x + y * y + z * z); }
+    float Normalize() {
+        float length = Length();
+        if (length != 0.0f) {
+            float scale = 1.0f / length;
+            x *= scale;
+            y *= scale;
+            z *= scale;
+        }
+        return length;
+    }
+    float Dot(const CVector3& o) const { return x * o.x + y * o.y + z * o.z; }
+    void Cross(const CVector3& a, const CVector3& b) {
+        x = a.y * b.z - a.z * b.y;
+        y = a.z * b.x - a.x * b.z;
+        z = a.x * b.y - a.y * b.x;
+    }
+    void DotDotDot(const CVector3& a, const CVector3& b, const CVector3& c, const CVector3& v) {
+        x = a.x * v.x + a.y * v.y + a.z * v.z;
+        y = b.x * v.x + b.y * v.y + b.z * v.z;
+        z = c.x * v.x + c.y * v.y + c.z * v.z;
+    }
+    void Abs(const CVector3& o) { x = __fabs(o.x); y = __fabs(o.y); z = __fabs(o.z); }
+    CVector3& operator+=(const CVector3& o) { x += o.x; y += o.y; z += o.z; return *this; }
+    CVector3& operator-=(const CVector3& o) { x -= o.x; y -= o.y; z -= o.z; return *this; }
+    CVector3& operator*=(float f) { x *= f; y *= f; z *= f; return *this; }
+    void Scale(const CVector3& o, float k) { x = k * o.x; y = k * o.y; z = k * o.z; }
+    void Sub(const CVector3& a, const CVector3& b) { x = a.x - b.x; y = a.y - b.y; z = a.z - b.z; }
+    void Add(const CVector3& o) { x += o.x; y += o.y; z += o.z; }
+    void Unitize() {
+        float length = sqrtf(LengthSq());
+        if (length != 0.0f) {
+            x *= 1.0f / length;
+            y *= 1.0f / length;
+            z *= 1.0f / length;
+        }
+    }
+    void Constrain(const CVector3&, float);
+} __attribute__((aligned(8)));
 
 
+#include "game/CPlayerObject.h"
+#include "game/CScene.h"
 
-#include "game/CVector3.h"
+class CThrownBullet;
+class CProjectileBullet;
+class CStaticObject;
+struct CharFrame_t;
+enum EMoodType {};
+enum EScriptBulletType {};
 
+extern CScene g_scene;
+extern bool g_bInMultiplayerMode;
+extern const float CONTACT_EPSILON;
+extern "C" void* memset(void*, int, unsigned long);
+extern "C" int rand();
+float MathFunRandomReal(float, float);
+void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
+void* AllocateBoxVolume();
+void* AllocateAnimatedVolume();
 
-#include "game/CMatrix.h"
-
-
+/* inferred views */
 class CQuaternion {
 public:
     void SetFromMatrix(const CMatrix&);
@@ -48,6 +129,7 @@ public:
     float z;
 };
 
+/* the volumes' virtual slots used here (TransformedCopy +0x10, GetExtents +0x48) */
 class IVolume {
 public:
     virtual ~IVolume();
@@ -71,6 +153,20 @@ public:
 
 class CVolSphere {
 public:
+    void SetRadius(float);
+    void SetCenter(CVector3);
+
+    unsigned char unknown000[1968];
+    void* m_owner;
+};
+
+class CVolBox {
+public:
+    void SetCorners(CVector3, CVector3);
+    void SetBasis(CVector3, CVector3, CVector3);
+    void SetWidth(float);
+    void SetHeight(float);
+    void SetDepth(float);
     void SetCenter(CVector3);
 };
 
@@ -91,17 +187,22 @@ public:
     unsigned char unknown04[44];
 };
 
-/* inferred: a node of the scene's extent lists, its value at +8 */
+class CAnimMorph : public CAnimated {
+public:
+    void SetBlendTargetWeight(unsigned long, float);
+    void Init(CAnimObject*, unsigned short, CharFrame_t*);
+};
+
+class CJawController {
+public:
+    void Update(int);
+};
+
+/* a node of the scene's extent lists, its value at +8 */
 struct ExtentNodeView {
     unsigned char unknown00[8];
     float m_value;
 };
-
-struct BSObject;
-
-void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
-
-extern const float CONTACT_EPSILON;
 
 class CWeapon {
 public:
@@ -120,26 +221,6 @@ public:
     unsigned char unknown2c0b : 2;
 };
 
-#include "game/CPlayerObject.h"
-
-
-class CAnimMorph : public CAnimated {
-public:
-    void SetBlendTargetWeight(unsigned long, float);
-};
-
-class CAnimObject {
-public:
-    void UpdateAnimation(float);
-};
-
-class CJawController {
-public:
-    void Update(int);
-};
-
-float MathFunRandomReal(float, float);
-
 class CLightVolumeManager {
 public:
     void Update(float);
@@ -147,104 +228,141 @@ public:
     unsigned char unknown00[4];
 };
 
-class CVolBox {
+/* the draw context's value at +0x114 */
+class CDrawContext {
 public:
-    void SetCorners(CVector3, CVector3);
+    unsigned char unknown000[0x114];
+    int m_value114;
 };
 
-#include "game/ISceneNode.h"
+/* a collision contact: normal and position */
+struct ContactView {
+    CVector3 m_normal;
+    CVector3 m_position;
+};
 
-
-class CAnimatedPlayer {
+class CCollision {
 public:
-    virtual void vf008();
-    virtual void vf00c();
-    virtual void vf010();
+    unsigned char unknown00[24];
+    ContactView* m_contacts;
+};
+
+/* the particle system: 28 bytes of members before its table pointer; SetLocalToWorld at +0x8c */
+class CParticleSystem {
+    unsigned char unknown00[28];
+
+public:
+    static CParticleSystem* Create(unsigned long);
+    virtual void unknown008();
+    virtual void unknown00c();
+    virtual void unknown010();
+    virtual void unknown014();
+    virtual void unknown018();
+    virtual void unknown01c();
+    virtual void unknown020();
+    virtual void unknown024();
+    virtual void unknown028();
+    virtual void unknown02c();
+    virtual void unknown030();
+    virtual void unknown034();
+    virtual void unknown038();
+    virtual void unknown03c();
+    virtual void unknown040();
+    virtual void unknown044();
+    virtual void unknown048();
+    virtual void unknown04c();
+    virtual void unknown050();
+    virtual void unknown054();
+    virtual void unknown058();
+    virtual void unknown05c();
+    virtual void unknown060();
+    virtual void unknown064();
+    virtual void unknown068();
+    virtual void unknown06c();
+    virtual void unknown070();
+    virtual void unknown074();
+    virtual void unknown078();
+    virtual void unknown07c();
+    virtual void unknown080();
+    virtual void unknown084();
+    virtual void unknown088();
+    virtual void SetLocalToWorld(const CMatrix&);
+};
+
+/* the bullet's slots used here (from +0x124 as __vt__7CBullet) */
+class CBullet : public IMovingSceneNode {
+public:
+    virtual void unknown124();
+    virtual void unknown128();
+    virtual void unknown12c();
+    virtual float GetDamage() const;
+    virtual EScriptBulletType GetScriptBulletType() const;
+    virtual ISceneNode* GetFiredBy() const;
+    virtual CThrownBullet* AsThrown();
+    virtual CProjectileBullet* AsProjectile();
+    virtual void GetVelocity(CVector3&);
+    virtual void unknown148();
+    virtual void Penetrate(const CCollision&);
+};
+
+class CAnimObject : public IMovingSceneNode {
+public:
+    CAnimObject();
+    virtual void MarkForDestruction(int);
+    virtual ~CAnimObject();
+    virtual void Destroy();
     virtual void BeginUpdate(float);
-    virtual void vf018();
-    virtual void vf01c();
-    virtual void vf020();
+    virtual void ConstrainVelocity();
     virtual void AttemptUpdate(float);
-    virtual void vf028();
-    virtual void vf02c();
-    virtual void vf030();
-    virtual void vf034();
-    virtual void vf038();
-    virtual void vf03c();
+    virtual void OnCollision(const CCollision&);
+    virtual void CommitUpdate();
+    virtual void Draw(CDrawContext&);
+    virtual void GetTMLocalToWorld(CMatrix&) const;
     virtual void GetPosition(CVector3&) const;
-    virtual void vf044();
-    virtual void vf048();
-    virtual void vf04c();
-    virtual void vf050();
-    virtual void vf054();
-    virtual void vf058();
-    virtual void vf05c();
-    virtual void vf060();
-    virtual void vf064();
-    virtual void vf068();
-    virtual void vf06c();
-    virtual void vf070();
-    virtual void vf074();
-    virtual void vf078();
-    virtual void vf07c();
-    virtual void vf080();
-    virtual void vf084();
-    virtual void vf088();
-    virtual void vf08c();
-    virtual void vf090();
-    virtual void vf094();
-    virtual void vf098();
-    virtual void vf09c();
-    virtual void vf0a0();
-    virtual void vf0a4();
-    virtual void vf0a8();
-    virtual void vf0ac();
-    virtual void vf0b0();
-    virtual void vf0b4();
-    virtual void vf0b8();
-    virtual void vf0bc();
-    virtual void vf0c0();
-    virtual void vf0c4();
-    virtual void vf0c8();
-    virtual void vf0cc();
-    virtual void vf0d0();
-    virtual void vf0d4();
-    virtual void vf0d8();
-    virtual void vf0dc();
-    virtual void vf0e0();
-    virtual void vf0e4();
-    virtual void vf0e8();
-    virtual void vf0ec();
-    virtual void vf0f0();
-    virtual void vf0f4();
-    virtual void vf0f8();
-    virtual void vf0fc();
-    virtual void vf100();
-    virtual void vf104();
-    virtual void vf108();
-    virtual void vf10c();
-    virtual void vf110();
-    virtual void vf114();
-    virtual void vf118();
-    virtual void vf11c();
-    virtual void vf120();
-    virtual void vf124();
+    virtual void GetRightward(CVector3&) const;
+    virtual void GetForward(CVector3&) const;
+    virtual void GetUpward(CVector3&) const;
+    virtual bool IsVisible(CDrawContext&) const;
+    virtual bool IsDrawEnabled() const;
+    virtual EClsnId GetCollisionId() const;
+    virtual void SetCollisionId(EClsnId);
+    virtual BSObject* GetScriptObject() const;
+    virtual void TriggerScriptEvent(int, void*, bool);
+    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+    virtual CAnimObject* AsAnimObject();
+    virtual const CAnimObject* AsAnimObject() const;
+    virtual void Reset();
+    virtual void Halt();
+    virtual void ApplyForceTo(CVector3, float);
+    virtual void SetTMLocalToWorld(const CMatrix&);
+    virtual void PreTransform(const CMatrix&);
+    virtual void Transform(const CMatrix&);
+    virtual void Move(CVector3);
+    virtual void Rotate(CVector3, float);
+    virtual void Pitch(float);
+    virtual void Roll(float);
+    virtual void Yaw(float);
+    virtual void SetPosition(CVector3);
+    virtual void SetBasis(CVector3, CVector3, CVector3);
+    virtual void Orthonormalize();
+    virtual CVector3 GetWorldLinearVelocity() const;
+    virtual void EnterLightVolume(BPDLightVolume*);
+    virtual void ExitLightVolume(BPDLightVolume*);
+    virtual BPDLightVolume* GetLightVolume();
+    virtual void Init();
     virtual void UpdateAnimation(float);
+    virtual void SetScript(BSObject*);
+    virtual void UpdateLocalBoundingVolume(ISceneNode::EVolumeType, const CVector3&, const CVector3&);
+    virtual void AttachObject(CStaticObject*, char*, int);
+    virtual void DetachObject(char*);
+    virtual void GetAttachPointMatrix(char*, CMatrix*);
+    virtual void AttachFloatingBone();
+    virtual void DetachFloatingBone();
 
-    void UpdateLocalBoundingVolume(ISceneNode::EVolumeType, const CVector3&, const CVector3&);
-    const IVolume* GetWorldBoundingVolume(ISceneNode::EVolumeType) const;
-    const IVolume* GetLocalBoundingVolume(ISceneNode::EVolumeType) const;
-    void GetFlocoParams(float&, long&);
-    void SetFlocoParams(float, long);
-
-    unsigned char unknown0004[8];
-    ExtentNodeView* m_extentMinX;
-    ExtentNodeView* m_extentMaxX;
-    ExtentNodeView* m_extentMinY;
-    ExtentNodeView* m_extentMaxY;
-    unsigned char unknown001c[20];
+    unsigned char unknown024[12];
     CAnimSkinned m_skinned;
-    unsigned char unknown0060[3808];
+    unsigned char unknown060[0xca0];
+    unsigned char m_frameData[0x240];
     CMatrix m_matrices[80];
     CMatrix m_tm;
     IVolume* m_localVolume3;
@@ -283,12 +401,62 @@ public:
     CLightVolumeManager m_lightVolumes;
     unsigned char unknown24bc[3100];
     float m_value30d8;
-    unsigned char unknown30dc[148];
+    unsigned char unknown30dc[100];
+    float m_value3140;
+    float m_value3144;
+    float m_value3148;
+    int m_value314c;
+    float m_value3150;
+    int m_value3154;
+    unsigned char unknown3158[4];
+    int m_value315c;
+    bool m_flag3160;
+    bool m_flag3161;
+    unsigned char unknown3162[14];
     CAnimMorph m_morph;
-    unsigned char unknown3174[3740];
+    unsigned char unknown3174[3660];
+};
+
+class CSoldierObject : public CAnimObject {
+public:
+    CSoldierObject();
+    virtual ~CSoldierObject();
+    virtual void Destroy();
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float);
+    virtual void AttemptUpdate(float);
+    virtual void OnCollision(const CCollision&);
+    virtual void CommitUpdate();
+    virtual void Draw(CDrawContext&);
+    virtual IVolume* GetLocalBoundingVolume(EVolumeType) const;
+    virtual IVolume* GetWorldBoundingVolume(EVolumeType) const;
+    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+    virtual CSoldierObject* AsSoldierObject();
+    virtual const CSoldierObject* AsSoldierObject() const;
+    virtual CAIDoodad* GetAIDoodad();
+    virtual const CAIDoodad* GetAIDoodad() const;
+    virtual void SetAttachedLight(CLight*, CVector3);
+    virtual void Init();
+    virtual void UpdateAnimation(float);
+    virtual void UpdateLocalBoundingVolume(ISceneNode::EVolumeType, const CVector3&, const CVector3&);
+    virtual void AttachObject(CStaticObject*, char*, int);
+    virtual void DetachObject(char*);
+    virtual void GetAttachPointMatrix(char*, CMatrix*);
+    virtual void AttachFloatingBone();
+    virtual void DetachFloatingBone();
+    virtual void InitAI();
+
+    void SetMood(EMoodType);
+
+    bool m_flag3fc0;
+    unsigned char unknown3fc1[3];
+    int m_value3fc4;
+    unsigned char unknown3fc8[72];
     CWeapon* m_weapons[25];
     int m_currentWeapon;
-    unsigned char unknown4078[600];
+    unsigned char unknown4078[520];
+    bool m_flag4280;
+    unsigned char unknown4281[79];
     long m_morphTarget;
     long m_blendTargets[2];
     float m_blendWeights[2];
@@ -300,162 +468,219 @@ public:
     float m_holdLength;
     float m_fadeLength;
     float m_rampLength;
-    unsigned char unknown42cc[4];
+    unsigned char unknown430c[4];
     float m_rampEnd;
     float m_holdEnd;
     float m_fadeEnd;
     bool m_statePending;
     unsigned char unknown431d;
     unsigned short m_state;
-    unsigned char unknown4320[288];
+    unsigned char unknown4320[128];
+    int m_value43a0;
+    int m_value43a4;
+    int m_value43a8;
+    float m_value43ac;
+    bool m_flag43b0;
+    unsigned char unknown43b1[11];
+    float m_value43bc;
+    unsigned char unknown43c0;
+    bool m_flag43c1;
+    unsigned char unknown43c2[2];
+    int m_value43c4;
+    int m_value43c8;
+    unsigned char unknown43cc[104];
+    CSoldierObject* m_self;
+    float m_value4438;
+    unsigned char unknown443c[4];
     CJawController m_jaw;
     unsigned char unknown4441[35];
     long m_extraTarget;
     long m_mouthTarget;
     unsigned char unknown446c[4];
     float m_mouthWeight;
-    unsigned char unknown4474[60];
+    unsigned char unknown4474[12];
+    int m_value4480;
+    bool m_flag4484;
+    unsigned char unknown4485[3];
+    int m_value4488;
+    int m_value448c;
+    float m_value4490;
+    int m_value4494;
+    bool m_flag4498;
+    unsigned char unknown4499[7];
+    float m_vectorX;
+    float m_vectorY;
+    float m_vectorZ;
+    unsigned char unknown44ac[4];
+};
+
+class CAnimatedPlayer : public CSoldierObject {
+public:
+    CAnimatedPlayer();
+    virtual ~CAnimatedPlayer();
+    virtual void BeginUpdate(float);
+    virtual void UpdateAI(float) {}
+    virtual void AttemptUpdate(float);
+    virtual void CommitUpdate();
+    virtual void Draw(CDrawContext&);
+    virtual IVolume* GetLocalBoundingVolume(EVolumeType) const;
+    virtual IVolume* GetWorldBoundingVolume(EVolumeType) const;
+    virtual void HandleBulletCollision(CBullet*, const CCollision&);
+    virtual CAnimatedPlayerObject* AsAnimatedPlayerObject() { return (CAnimatedPlayerObject*)this; }
+    virtual const CAnimatedPlayerObject* AsAnimatedPlayerObject() const { return (const CAnimatedPlayerObject*)this; }
+    virtual void Init();
+    virtual void UpdateAnimation(float);
+    virtual void UpdateLocalBoundingVolume(ISceneNode::EVolumeType, const CVector3&, const CVector3&);
+    virtual void InitAI();
+
+    void GetFlocoParams(float&, long&);
+    void SetFlocoParams(float, long);
+    void ResetState4498() {
+        m_flag4498 = false;
+        m_vectorX = m_vectorY = m_vectorZ = 0.0f;
+    }
+    void ResetState() {
+        m_flag3fc0 = false;
+        m_flag4280 = false;
+        m_value43a0 = -1;
+        m_value43a4 = 1;
+        m_value43a8 = 40;
+        m_value43ac = 0.75f;
+        m_flag43b0 = false;
+        m_value43bc = 0.0f;
+        m_self = this;
+        m_value4438 = 1.0f;
+        m_flag43c1 = false;
+        m_value43c4 = 0;
+        m_value43c8 = 0;
+        m_value315c = 1;
+        m_value3150 = 0.0f;
+        m_value3140 = 0.0f;
+        m_value3144 = 0.0f;
+        m_value3148 = 0.0f;
+        m_value314c = 0;
+        m_value3154 = 0;
+        m_flag3160 = false;
+        m_flag3161 = false;
+        m_flag4484 = false;
+        m_value4488 = 0;
+        m_value448c = 0;
+        m_value4490 = 0.0f;
+        m_value4494 = 0;
+        ResetState4498();
+    }
+
     CPlayerObject* m_player;
     float m_flocoParam;
     long m_flocoCount;
 };
-
-void CAnimatedPlayer::AttemptUpdate(float dt) {
-    CVector3 move;
-    move.x = dt * m_velocity.x;
-    move.y = dt * m_velocity.y;
-    move.z = dt * m_velocity.z;
-    float turn = m_turn * dt;
-    CMatrix bone(m_matrices[1]);
-    CQuaternion rotation;
-    rotation.SetFromMatrix(bone);
-    CVector3 position = bone.pos;
-    float pz = m_bonePosition.z;
-    float py = m_bonePosition.y;
-    float px = m_bonePosition.x;
-    m_nextBonePosition.x = px + dt * (position.x - px);
-    m_nextBonePosition.y = py + dt * (position.y - py);
-    m_nextBonePosition.z = pz + dt * (position.z - pz);
-    m_nextBoneRotation.Slerp(rotation, m_boneRotation, dt);
-    m_nextBoneRotation.GetMatrix(bone);
-    bone.SetPos(m_nextBonePosition);
-    if (m_tm.pos.z < -250.0f)
-        BSObjectTriggerEvent(m_script, 45, 0, 0, false);
-    if (!m_frozen) {
-        m_yaw = (m_lastYaw + ((long)(2670176.8f * turn) & 0xffffff)) & 0xffffff;
-        m_tm.BuildRotZ(6.2831855f * (float)m_yaw / 16777216.0f);
-        m_tm.SetPos(m_lastPosition);
-        m_tm.Translate(move);
-        m_skinned.SetRotation(m_yaw);
-    } else if (m_useFixedTM) {
-        m_tm = m_fixedTM;
-    }
-    if (m_localVolume) {
-        bone.Multiply(bone, m_tm);
-        m_sphere->SetCenter(CVector3(0.0f, 0.0f, 0.0f));
-        m_worldVolume->TransformedCopy(*m_localVolume, bone);
-        CVector3 min;
-        CVector3 max;
-        m_worldVolume->GetExtents(min, max);
-        m_extentMinX->m_value = min.x - CONTACT_EPSILON;
-        m_extentMinY->m_value = min.y - CONTACT_EPSILON;
-        m_extentMaxX->m_value = CONTACT_EPSILON + max.x;
-        m_extentMaxY->m_value = CONTACT_EPSILON + max.y;
-    } else {
-        CVector3 p;
-        GetPosition(p);
-        m_extentMinX->m_value = p.x - CONTACT_EPSILON;
-        m_extentMinY->m_value = p.y - CONTACT_EPSILON;
-        m_extentMaxX->m_value = CONTACT_EPSILON + p.x;
-        m_extentMaxY->m_value = CONTACT_EPSILON + p.y;
-    }
-    m_onGround = false;
-    m_value2440 = 0;
-    m_flag2450 = false;
-    CWeapon* weapon = m_player->GetCurrentWeapon();
-    if (m_player->m_dead) {
-        m_weapons[m_currentWeapon]->muzzleFlash = 0;
-        m_weapons[m_currentWeapon]->m_flag1e0 = 0;
-    } else {
-        m_weapons[m_currentWeapon]->muzzleFlash = weapon->GetMuzzleFlashStatus();
-        if (weapon->m_value288 > 60.0f &&
-            (m_weapons[m_currentWeapon]->m_type == 33 || m_weapons[m_currentWeapon]->m_type == 34))
-            m_weapons[m_currentWeapon]->m_flag1e0 = 0;
-        else
-            m_weapons[m_currentWeapon]->m_flag1e0 = 1;
-    }
+CAnimatedPlayer::CAnimatedPlayer() {
+    m_player = 0;
 }
 
-void CAnimatedPlayer::BeginUpdate(float dt) {
-    m_lightVolumes.Update(dt);
-    m_lastPosition = m_tm.GetPos();
-    m_lastYaw = m_yaw;
-    CMatrix bone(m_matrices[1]);
-    m_boneRotation.SetFromMatrix(bone);
-    m_bonePosition = bone.GetPos();
-    UpdateAnimation(dt);
-    m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
-    m_flag2450 = false;
+CAnimatedPlayer::~CAnimatedPlayer() {
 }
 
-void CAnimatedPlayer::UpdateLocalBoundingVolume(ISceneNode::EVolumeType type, const CVector3& min, const CVector3& max) {
-    switch (type) {
-    case 3:
-        {
-            CVolBox* box = (CVolBox*)m_localVolume3;
-            box->SetCorners(min, max);
+void CAnimatedPlayer::Init() {
+    CAnimObject::Init();
+    memset(&m_weapons[9], 0, 32);
+    memset(&m_weapons[17], 0, 32);
+    memset(m_weapons, 0, 36);
+    m_value3fc4 = 0;
+    m_morph.Init((CAnimObject*)this, 0, (CharFrame_t*)m_frameData);
+    m_morphTarget = -1;
+    m_blendTargets[1] = -1;
+    m_blendTargets[0] = -1;
+    m_blendWeights[1] = 0.0f;
+    m_blendWeights[0] = 0.0f;
+    m_blendMax[1] = 0.0f;
+    m_blendMax[0] = 0.0f;
+    m_blendSpeeds[1] = 0.0f;
+    m_blendSpeeds[0] = 0.0f;
+    int roll = rand() % 100;
+    if (roll < 25)
+        m_value4480 = 13;
+    else if (roll < 50)
+        m_value4480 = 6;
+    else if (roll < 75)
+        m_value4480 = 7;
+    else
+        m_value4480 = 5;
+    if (g_bInMultiplayerMode)
+        ((CSoldierObject*)this)->SetMood((EMoodType)2);
+    else
+        ((CSoldierObject*)this)->SetMood((EMoodType)0);
+    m_statePending = false;
+    CVolSphere* sphere = (CVolSphere*)AllocateAnimatedVolume();
+    sphere->SetRadius(1.2f);
+    sphere->SetCenter(CVector3(0.0f, 0.0f, 0.0f));
+    sphere->m_owner = this;
+    m_sphere = sphere;
+    m_localVolume = (IVolume*)sphere;
+    m_worldVolume = (IVolume*)AllocateAnimatedVolume();
+    CVolBox* box = (CVolBox*)AllocateBoxVolume();
+    box->SetBasis(CVector3(1.0f, 0.0f, 0.0f), CVector3(0.0f, 1.0f, 0.0f), CVector3(0.0f, 0.0f, 1.0f));
+    box->SetWidth(0.75f);
+    box->SetHeight(1.6f);
+    box->SetDepth(0.6f);
+    box->SetCenter(CVector3(0.0f, 0.0f, 0.8f));
+    m_localVolume3 = (IVolume*)box;
+    m_worldVolume3 = (IVolume*)AllocateBoxVolume();
+    SetCollisionId((EClsnId)28);
+    m_currentWeapon = 0;
+    ResetState4498();
+    ResetState();
+    ResetState();
+    m_flocoParam = 0.0f;
+    m_flocoCount = 0;
+}
+
+void CAnimatedPlayer::InitAI() {
+}
+
+void CAnimatedPlayer::HandleBulletCollision(CBullet* bullet, const CCollision& collision) {
+    if (m_player == (CPlayerObject*)bullet->GetFiredBy()) {
+        g_scene.ExcludeCollision(*(ISceneNode*)this, *(ISceneNode*)bullet, 5);
+        bullet->Penetrate(collision);
+        return;
+    }
+    if (bullet->AsProjectile()) {
+        ContactView* contact = collision.m_contacts;
+        CParticleSystem* blood = CParticleSystem::Create(0x6da45fe8);
+        if (blood) {
+            CMatrix matrix;
+            matrix.Ident();
+            CVector3 right;
+            CVector3 front;
+            if ((float)__fabs(contact->m_normal.Dot(CVector3(1.0f, 0.0f, 0.0f))) <= 0.9999f) {
+                front.Cross(contact->m_normal, CVector3(1.0f, 0.0f, 0.0f));
+                front.Normalize();
+                right.Cross(front, contact->m_normal);
+                right.Normalize();
+            } else {
+                right.Cross(contact->m_normal, CVector3(0.0f, 0.0f, 1.0f));
+                right.Normalize();
+                front.Cross(contact->m_normal, right);
+                front.Normalize();
+            }
+            matrix.SetRight(right);
+            matrix.SetFront(front);
+            matrix.SetUp(contact->m_normal);
+            matrix.SetPos(contact->m_position);
+            blood->SetLocalToWorld(matrix);
         }
-        break;
-    case 0:
-        break;
-    case 1:
-        break;
-    case 4:
-        break;
     }
+    m_player->HandleBulletCollision(bullet, collision);
 }
 
-const IVolume* CAnimatedPlayer::GetWorldBoundingVolume(ISceneNode::EVolumeType type) const {
-    switch (type) {
-    case 3:
-        return m_worldVolume3;
-    case 0:
-    case 1:
-    case 2:
-        return m_worldVolume;
-    case 4:
-        return 0;
-    }
-    return 0;
-}
-
-const IVolume* CAnimatedPlayer::GetLocalBoundingVolume(ISceneNode::EVolumeType type) const {
-    switch (type) {
-    case 3:
-        return m_localVolume3;
-    case 0:
-    case 1:
-    case 2:
-        return m_localVolume;
-    case 4:
-        return 0;
-    }
-    return 0;
-}
-
-void CAnimatedPlayer::GetFlocoParams(float& param, long& count) {
-    param = m_flocoParam;
-    count = m_flocoCount;
-}
-
-void CAnimatedPlayer::SetFlocoParams(float param, long count) {
-    m_flocoParam = param;
-    m_flocoCount = count;
+void CAnimatedPlayer::Draw(CDrawContext& context) {
+    if (context.m_value114 != m_player->m_viewport)
+        CSoldierObject::Draw(context);
 }
 
 void CAnimatedPlayer::UpdateAnimation(float dt) {
     CMatrix unused;
-    ((CAnimObject*)this)->UpdateAnimation(dt);
+    CAnimObject::UpdateAnimation(dt);
     m_value30d8 = m_player->m_pitch;
     if (m_statePending) {
         m_statePending = false;
@@ -509,4 +734,147 @@ void CAnimatedPlayer::UpdateAnimation(float dt) {
         m_morph.SetBlendTargetWeight(m_extraTarget, 0.0f);
     m_jaw.Update((int)dt);
     m_morph.SetBlendTargetWeight(m_mouthTarget, m_mouthWeight);
+}
+
+void CAnimatedPlayer::SetFlocoParams(float param, long count) {
+    m_flocoParam = param;
+    m_flocoCount = count;
+}
+
+void CAnimatedPlayer::GetFlocoParams(float& param, long& count) {
+    param = m_flocoParam;
+    count = m_flocoCount;
+}
+
+IVolume* CAnimatedPlayer::GetLocalBoundingVolume(ISceneNode::EVolumeType type) const {
+    switch (type) {
+    case 3:
+        return m_localVolume3;
+    case 0:
+    case 1:
+    case 2:
+        return m_localVolume;
+    case 4:
+        return 0;
+    }
+    return 0;
+}
+
+IVolume* CAnimatedPlayer::GetWorldBoundingVolume(ISceneNode::EVolumeType type) const {
+    switch (type) {
+    case 3:
+        return m_worldVolume3;
+    case 0:
+    case 1:
+    case 2:
+        return m_worldVolume;
+    case 4:
+        return 0;
+    }
+    return 0;
+}
+
+void CAnimatedPlayer::UpdateLocalBoundingVolume(ISceneNode::EVolumeType type, const CVector3& min, const CVector3& max) {
+    switch (type) {
+    case 3:
+        {
+            CVolBox* box = (CVolBox*)m_localVolume3;
+            box->SetCorners(min, max);
+        }
+        break;
+    case 0:
+        break;
+    case 1:
+        break;
+    case 4:
+        break;
+    }
+}
+
+void CAnimatedPlayer::BeginUpdate(float dt) {
+    m_lightVolumes.Update(dt);
+    m_lastPosition = m_tm.GetPos();
+    m_lastYaw = m_yaw;
+    CMatrix bone(m_matrices[1]);
+    m_boneRotation.SetFromMatrix(bone);
+    m_bonePosition = bone.GetPos();
+    UpdateAnimation(dt);
+    m_velocity.x = m_velocity.y = m_velocity.z = 0.0f;
+    m_flag2450 = false;
+}
+
+void CAnimatedPlayer::AttemptUpdate(float dt) {
+    CVector3 move;
+    move.x = dt * m_velocity.x;
+    move.y = dt * m_velocity.y;
+    move.z = dt * m_velocity.z;
+    float turn = m_turn * dt;
+    CMatrix bone(m_matrices[1]);
+    CQuaternion rotation;
+    rotation.SetFromMatrix(bone);
+    CVector3 position = bone.pos;
+    float pz = m_bonePosition.z;
+    float py = m_bonePosition.y;
+    float px = m_bonePosition.x;
+    m_nextBonePosition.x = px + dt * (position.x - px);
+    m_nextBonePosition.y = py + dt * (position.y - py);
+    m_nextBonePosition.z = pz + dt * (position.z - pz);
+    m_nextBoneRotation.Slerp(rotation, m_boneRotation, dt);
+    m_nextBoneRotation.GetMatrix(bone);
+    bone.SetPos(m_nextBonePosition);
+    if (m_tm.pos.z < -250.0f)
+        BSObjectTriggerEvent(m_script, 45, 0, 0, false);
+    if (!m_frozen) {
+        m_yaw = (m_lastYaw + ((long)(2670176.8f * turn) & 0xffffff)) & 0xffffff;
+        m_tm.BuildRotZ(6.2831855f * (float)m_yaw / 16777216.0f);
+        m_tm.SetPos(m_lastPosition);
+        m_tm.Translate(move);
+        m_skinned.SetRotation(m_yaw);
+    } else if (m_useFixedTM) {
+        m_tm = m_fixedTM;
+    }
+    if (m_localVolume) {
+        bone.Multiply(bone, m_tm);
+        m_sphere->SetCenter(CVector3(0.0f, 0.0f, 0.0f));
+        m_worldVolume->TransformedCopy(*m_localVolume, bone);
+        CVector3 min;
+        CVector3 max;
+        m_worldVolume->GetExtents(min, max);
+        ((ExtentNodeView*)data0c)->m_value = min.x - CONTACT_EPSILON;
+        ((ExtentNodeView*)data14)->m_value = min.y - CONTACT_EPSILON;
+        ((ExtentNodeView*)data10)->m_value = CONTACT_EPSILON + max.x;
+        ((ExtentNodeView*)data18)->m_value = CONTACT_EPSILON + max.y;
+    } else {
+        CVector3 p;
+        GetPosition(p);
+        ((ExtentNodeView*)data0c)->m_value = p.x - CONTACT_EPSILON;
+        ((ExtentNodeView*)data14)->m_value = p.y - CONTACT_EPSILON;
+        ((ExtentNodeView*)data10)->m_value = CONTACT_EPSILON + p.x;
+        ((ExtentNodeView*)data18)->m_value = CONTACT_EPSILON + p.y;
+    }
+    m_onGround = false;
+    m_value2440 = 0;
+    m_flag2450 = false;
+    CWeapon* weapon = m_player->GetCurrentWeapon();
+    if (m_player->m_dead) {
+        m_weapons[m_currentWeapon]->muzzleFlash = 0;
+        m_weapons[m_currentWeapon]->m_flag1e0 = 0;
+    } else {
+        m_weapons[m_currentWeapon]->muzzleFlash = weapon->GetMuzzleFlashStatus();
+        if (weapon->m_value288 > 60.0f &&
+            (m_weapons[m_currentWeapon]->m_type == 33 || m_weapons[m_currentWeapon]->m_type == 34))
+            m_weapons[m_currentWeapon]->m_flag1e0 = 0;
+        else
+            m_weapons[m_currentWeapon]->m_flag1e0 = 1;
+    }
+}
+
+/* ---- definitions ---- */
+void CAnimatedPlayer::CommitUpdate() {
+    ConstrainVelocity();
+    CVector3 pos = m_tm.pos;
+    m_lastPosition = pos;
+    m_lastYaw = m_yaw;
+    m_bonePosition = m_nextBonePosition;
+    m_boneRotation = m_nextBoneRotation;
 }
