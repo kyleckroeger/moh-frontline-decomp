@@ -38,7 +38,7 @@
     {
       "name": ".text",
       "address": "0x80151f70",
-      "size": 252,
+      "size": 360,
       "type": 1
     },
     {
@@ -65,6 +65,12 @@
       "name": "THREAD_yield",
       "address": "0x80151fbc",
       "size": 176,
+      "binding": 1
+    },
+    {
+      "name": "THREAD_iscurrent",
+      "address": "0x8015206c",
+      "size": 108,
       "binding": 1
     }
   ],

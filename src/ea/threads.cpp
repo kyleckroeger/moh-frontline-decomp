@@ -1,8 +1,10 @@
 // REAL thread helpers: record the main thread, the alarm handler that wakes a
-// sleeping thread, and THREAD_yield (yield when the delay is zero ticks, else
-// sleep on a signal until an alarm fires). The alarm and its signal are kept
-// together so the handler can find the signal; that record, the OS
-// structures and the tick conversion inline are inferred.
+// sleeping thread, THREAD_yield (yield when the delay is zero ticks, else sleep
+// on a signal until an alarm fires) and THREAD_iscurrent (compare the current
+// thread with the given one: null means the main thread, -1 the current one).
+// The alarm and its signal are kept together so the handler can find the
+// signal; that record, the OS structures and the tick conversion inline are
+// inferred.
 struct OSAlarm {
     int data[10];
 };
@@ -67,4 +69,10 @@ extern "C" void THREAD_yield(int ms) {
     OSSetAlarm(&sleep.alarm, ticks, AlarmHandler);
     SIGNAL_wait(&sleep.signal);
     OSCancelAlarm(&sleep.alarm);
+}
+
+extern "C" bool THREAD_iscurrent(OSThread* thread) {
+    OSThread* current = OSGetCurrentThread();
+
+    return current == (thread == 0 ? g_thMain : thread == (OSThread*)-1 ? OSGetCurrentThread() : thread);
 }

@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 1117,
+ "verified_units": 1116,
  "function_bytes_by_status": {"consistent": 123124, "differs": 5764, "exact": 4472, "verified": 1272196},
  "data_bytes_owned": 811901,
  "data_bytes_total": 1976252,
@@ -4605,7 +4605,7 @@
  [2148867952, 40, "THREAD_init", "verified", "src/ea/threads.cpp"],
  [2148867992, 36, "AlarmHandler__FP7OSAlarmP9OSContext", "verified", "src/ea/threads.cpp"],
  [2148868028, 176, "THREAD_yield", "verified", "src/ea/threads.cpp"],
- [2148868204, 108, "THREAD_iscurrent", "verified", "src/ea/threads_current.cpp"],
+ [2148868204, 108, "THREAD_iscurrent", "verified", "src/ea/threads.cpp"],
  [2148868312, 40, "MUTEX_create", "verified", "src/ea/mutex2.cpp"],
  [2148868352, 44, "MUTEX_destroy", "verified", "src/ea/mutex2.cpp"],
  [2148868396, 36, "MUTEX_lock", "verified", "src/ea/mutex2.cpp"],
