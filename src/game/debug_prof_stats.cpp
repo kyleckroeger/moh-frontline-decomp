@@ -16,18 +16,8 @@ class CColor;
 class CRect;
 
 /* CScreen's first virtuals in table order (as in Screen_fieldmode.cpp). */
-class CScreen {
-public:
-    virtual ~CScreen();
-    virtual void SetCurrent();
-    virtual void Flip();
-    virtual void Wait();
-    virtual void SetClear(bool);
-    virtual void SetClearColor(const CColor&);
-    virtual void SetClearRect(const CRect&);
-    virtual int GetHeight();
-    virtual int GetWidth();
-};
+#include "game/CScreen.h"
+
 
 /* 32-byte bins (CRenderBinData and the table pointer); non-virtual views */
 class CRenderBin {

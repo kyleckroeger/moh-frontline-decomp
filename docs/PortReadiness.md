@@ -270,6 +270,14 @@ configs now list them as `weak_duplicates`: 53 of the 63 kept their match, 52 we
 (`research/notes/shared-headers.md`). After the CVector3 base form and the CMatrix re-run, 8 more
 moved (4 with their weak copies listed); 38 still have their own CVector3 or CMatrix view.
 
+CScreen, 2026-11-13: `include/game/CScreen.h` (with CScreenFieldMode) and the value types it
+holds, `CColor.h` and `CRect.h`. The virtuals are in the original's table order with its names
+(GetHeight, GetWidthScale; two pure slots named by CScreenFieldMode's table: Rebuild, SetDraw).
+GetHeightScale and GetWidthScale are inline (weak in the original), everything else out of line
+in Screen.cpp. Of 38 units with their own view, 29 kept their match and were moved (3 with the
+weak GetWidthScale copy listed); 5 still have their own CVector3 view, 4 need code changes
+(`research/notes/shared-headers.md`).
+
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 
 ## Step 4. Exact matching, re-ranked for the port

@@ -4,12 +4,8 @@
 
 void* TLT_LoadFileNormal(const char*, int*, int);
 enum ERenderPriority {};
-struct CColor {
-    unsigned char r, g, b, a;
-    CColor(unsigned char r_, unsigned char g_, unsigned char b_, unsigned char a_) {
-        r = r_; g = g_; b = b_; a = a_;
-    }
-};
+#include "game/CScreen.h"
+
 class CFont {
 public:
     CFont(const char*, ERenderPriority);
@@ -20,12 +16,7 @@ public:
     void DrawTextCenteredF(float, const char*, ...);
     unsigned char unknown00[40];
 };
-class CScreen {
-public:
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-};
+
 class CInputManager {
 public:
     void Update(float);
@@ -52,7 +43,7 @@ void WaitRenderList();
 void WaitScreen();
 void SendRenderList();
 void MohDVDErrorTask(int, int);
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern CInputManager g_inputMgr;
 extern "C" {
 int sprintf(char*, const char*, ...);

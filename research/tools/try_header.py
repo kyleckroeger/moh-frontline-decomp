@@ -36,7 +36,14 @@ PROVIDES = {
     # ISceneNode.h has the class's bases and includes CMatrix.h
     "ISceneNode": {"types": ["IDestructible", "ISubject", "IObserver", "CVector3XYZW", "CVector3Data", "CVector3Pair"],
                    "enums": ["EClsnId"]},
+    # CScreen.h has CScreenFieldMode, the render mode record and includes CColor.h/CRect.h
+    "CScreen": {"types": ["CColor", "CRect", "GXRenderModeObj", "_GXRenderModeObj", "CScreenFieldMode",
+                          "CVector3XYZW", "CVector3Data", "CVector3Pair"],
+                "enums": ["EScreenWidth", "EFrameFormat", "EDepthFormat"]},
 }
+
+
+EARLY_INCLUDE = {"CScreen": True}
 
 
 # Spellings of the class's fields that only some views have, rewritten to the header's.
@@ -138,23 +145,87 @@ def _cmatrix_view(out, view):
     return out
 
 
-VIEW_REWRITES = {"CMatrix": _cmatrix_view}
+# The original's slot names, by class (research/layout/vtables.tsv, primary part).
+def _slots(cls):
+    names = []
+    for line in (ROOT / "research/layout/vtables.tsv").read_text().splitlines()[1:]:
+        c = line.split("\t")
+        if c[1] == cls and c[5] == "0" and c[6] == "slot":
+            m = re.match(r"(\w+)__", c[8]) if c[8] != "0" else None
+            names.append(m[1] if m else None)
+    return names
+
+
+def _fields(view):
+    return set(n for t, n in re.findall(r"^\s*((?:unsigned\s+)?[\w:]+\s*\**)\s*(\w+)(?:\[[^;]*)?;", view, re.M))
+
+
+def _rename_access(out, old, new):
+    return re.sub(r"(?<=\.|>)" + old + r"\b", new, out)
+
+
+def _virtual_names(out, view, cls, nbase=0):
+    """A view's virtuals renamed to the original's names by slot (views without bases, or with
+    nbase inherited slots): calls through . and -> are renamed."""
+    slots = _slots(cls)
+    decl = re.findall(r"^\s*virtual\s+[^;{(]*?(~?\w+)\s*\(", view, re.M)
+    for i, name in enumerate(decl):
+        k = nbase + i
+        if name.startswith("~") or k >= len(slots) or not slots[k] or slots[k] == name:
+            continue
+        if name in [n for n in decl if n == slots[k]]:
+            continue
+        out = re.sub(r"(?<=\.|>)" + name + r"(?=\s*\()", slots[k], out)
+    return out
+
+
+def _cscreen_view(out, view):
+    fields = _fields(view)
+    names = {"m_scaleX": "m_widthScale", "m_scaleY": "m_heightScale", "m_scale": "m_heightScale",
+             "m_frontBuffer": "m_copyBuffer"}
+    for old, new in names.items():
+        if old in fields:
+            out = _rename_access(out, old, new)
+    out = re.sub(r"^unsigned long CScreen::GetVSyncs\(\)", "int CScreen::GetVSyncs()", out, flags=re.M)
+    out = re.sub(r"^extern\s+CScreen\s+g_screen\s*;", "extern CScreenFieldMode g_screen;", out, flags=re.M)
+    if not re.search(r"^\s*(class|struct)\s+CScreen\s*:", view, re.M):
+        out = _virtual_names(out, view, "CScreen")
+    return out
+
+
+VIEW_REWRITES = {"CMatrix": _cmatrix_view, "CScreen": _cscreen_view}
 
 
 def moved(text, cls):
     span = type_span(text, cls)
     if not span:
         return None
-    out = text[:span[0]] + f'#include "game/{cls}.h"\n' + text[span[1]:]
+    MARK = "\x00INCLUDE\x00"
+    out = text[:span[0]] + MARK + text[span[1]:]
     extra = PROVIDES.get(cls, {})
+    first = span[0]
     for name in extra.get("types", []):
         while True:
             s = type_span(out, name)
             if not s:
                 break
+            first = min(first, s[0])
             out = out[:s[0]] + out[s[1]:]
     for name in extra.get("enums", []):
+        m = re.search(r"^enum\s+" + re.escape(name) + r"\s*\{[^}]*\}\s*;[ \t]*\n?", out, flags=re.M)
+        if m:
+            first = min(first, m.start())
         out = re.sub(r"^enum\s+" + re.escape(name) + r"\s*\{[^}]*\}\s*;[ \t]*\n?", "", out, flags=re.M)
+    inc = f'#include "game/{cls}.h"\n'
+    if EARLY_INCLUDE.get(cls) and out.index(MARK) > first:
+        # the header goes where the first type it provides was (the file uses it before the view)
+        out = out.replace(MARK, "")
+        first = min(first, len(out))
+        # first is a position in the text before later removals; back up to a line start
+        first = out.rfind("\n", 0, first) + 1 if first else 0
+        out = out[:first] + inc + out[first:]
+    else:
+        out = out.replace(MARK, inc)
     for name in extra.get("functions", []):
         s = function_span(out, name)
         if s:

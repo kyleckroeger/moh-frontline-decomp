@@ -1,0 +1,39 @@
+unit	source	status	detail
+ConfigGC_init	scratch/try/ConfigGC_init/src/ConfigGC_init.cpp	kept	
+Moh2	scratch/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Moh2.cpp # ------------------------ #      80: class CVector3 {
+Pause	scratch/try/Pause/src/Pause.cpp	kept	
+Screen	scratch/try/Screen/src/Screen.cpp	kept	
+ShellMenu_autoload	scratch/try/ShellMenu_autoload/src/ShellMenu_autoload.cpp	kept	
+ShellMenu_bootcheck	scratch/try/ShellMenu_bootcheck/src/ShellMenu_bootcheck.cpp	kept	
+ShellMenu_corrupt	scratch/try/ShellMenu_corrupt/src/ShellMenu_corrupt.cpp	kept	
+ShellMenu_update	scratch/try/ShellMenu_update/src/ShellMenu_update.cpp	kept	
+TibPolygon_process	scratch/try/TibPolygon_process/src/TibPolygon_process.cpp	kept	
+TibText	scratch/try/TibText/src/TibText.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\TibText.cpp # --------------------------- #      94: class CVector3 {
+UserInterface_draw	scratch/try/UserInterface_draw/src/UserInterface_draw.cpp	kept	
+UserInterface_drawcompass	scratch/try/UserInterface_drawcompass/src/UserInterface_drawcompass.cpp	kept	
+UserInterface_hitstatus	scratch/try/UserInterface_hitstatus/src/UserInterface_hitstatus.cpp	kept	
+UserInterface_init	scratch/try/UserInterface_init/src/UserInterface_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\UserInterface_init.cpp # -------------------------------------- #     107: bulletText->SetDepth(CScreen::GetDepthBufferMax());
+UserInterface_radar	scratch/try/UserInterface_radar/src/UserInterface_radar.cpp	kept	
+UserInterface_score	scratch/try/UserInterface_score/src/UserInterface_score.cpp	kept	weak copy GetWidthScale__7CScreenFv listed in weak_duplicates (redraft.py)
+UserInterface_timestamp	scratch/try/UserInterface_timestamp/src/UserInterface_timestamp.cpp	kept	
+UserInterface_weaponname	scratch/try/UserInterface_weaponname/src/UserInterface_weaponname.cpp	kept	weak copy GetWidthScale__7CScreenFv listed in weak_duplicates (redraft.py)
+UserInterface_xfilestime	scratch/try/UserInterface_xfilestime/src/UserInterface_xfilestime.cpp	kept	
+camera_frustum	scratch/try/camera_frustum/src/camera_frustum.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\..\..\include\game\CVector3.h #    From: ..\src\camera_frustum.cpp # ----------------------------------
+debug_prof_register	scratch/try/debug_prof_register/src/debug_prof_register.cpp	kept	
+debug_prof_stats	scratch/try/debug_prof_stats/src/debug_prof_stats.cpp	kept	
+font_centeredf	scratch/try/font_centeredf/src/font_centeredf.cpp	kept	weak copy GetWidthScale__7CScreenFv listed in weak_duplicates (redraft.py)
+font_dtor	scratch/try/font_dtor/src/font_dtor.cpp	kept	
+mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	kept	
+particlesystem_beginupdate	scratch/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	kept	
+particlesystem_reset	scratch/try/particlesystem_reset/src/particlesystem_reset.cpp	kept	
+player_draw	scratch/try/player_draw/src/player_draw.cpp	kept	
+player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_respawn.cpp # ---------------------------------- #      34: class CVector3 {
+player_weapon_draw	scratch/try/player_weapon_draw/src/player_weapon_draw.cpp	kept	
+pumhandler_add	scratch/try/pumhandler_add/src/pumhandler_add.cpp	kept	
+pumhandler_ctor	scratch/try/pumhandler_ctor/src/pumhandler_ctor.cpp	kept	
+pumhandler_loop	scratch/try/pumhandler_loop/src/pumhandler_loop.cpp	kept	
+rcmp_main_delete	scratch/try/rcmp_main_delete/src/rcmp_main_delete.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\rcmp_main_delete.cpp # ------------------------------------ #     190: MEM_fill(frontBuffer, 0, mode->m_height * mode->m_width * 2);
+skybox	scratch/try/skybox/src/skybox.cpp	kept	
+sound	scratch/try/sound/src/sound.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\sound.cpp # ------------------------- #     141: class CVector3 {
+sprite_draw	scratch/try/sprite_draw/src/sprite_draw.cpp	lost	Linked source sections differ from manifest
+viewport	scratch/try/viewport/src/viewport.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\viewport.cpp # ---------------------------- #      66: if (screen.m_mode->field18)

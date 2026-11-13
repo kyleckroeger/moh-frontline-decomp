@@ -30,14 +30,8 @@ public:
     void* operator new(unsigned long size) { return DWI_alloc(0, size, 0x400); }
     unsigned char unknown[100];
 };
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CScreen.h"
+
 class CFont {
 public:
     CFont(const char*, ERenderPriority);
@@ -46,11 +40,7 @@ public:
     void SetDepth(unsigned long);
     unsigned char unknown[0x28];
 };
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    unsigned long GetDepthBufferMax();
-};
+
 enum TLTResourceID {};
 struct LevelFileContentsStruct_ {
     unsigned char unknown00[8];

@@ -13,22 +13,8 @@
 // pop-up handler and player views are inferred from offsets. The constants
 // are entries of the file's .sdata2 pool. The rest of the file is in other
 // units.
-struct CColor {
-    CColor() {}
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    CColor& operator=(const CColor& c) {
-        r = c.r;
-        g = c.g;
-        b = c.b;
-        a = c.a;
-        return *this;
-    }
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 extern "C" void FONT_getrecta(int, const char*, float*, float*, float*, float*);
 
@@ -44,26 +30,7 @@ public:
     int m_font;
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    int GetWidth();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
-    virtual void vf2c();
-    virtual float vf30();
 
-    unsigned char unknown04[36];
-    float m_scaleX;
-    float m_scaleY;
-};
 
 struct ViewportView {
     float scaleX;
@@ -106,7 +73,7 @@ public:
 
 extern bool g_bInMultiplayerMode;
 extern CScene g_scene;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern ViewportView g_viewport;
 extern PopUpMessageHandlerView* g_pPopUpMessageHandler[];
 
@@ -117,8 +84,8 @@ void UserInterface::DrawWeaponName(const char* name) {
         saved = font->GetColor();
         font->SetColor(CColor(128, 128, 128, (unsigned char)(96.0f * m_nameFade * m_alpha)));
         CScreen* screen = CScreen::GetCurrent();
-        int width = screen->vf28();
-        int height = screen->vf24();
+        int width = screen->GetWidth();
+        int height = screen->GetHeight();
         float viewWidth = g_viewport.width;
         float viewHeight = g_viewport.height;
         float scaleX;
@@ -133,14 +100,14 @@ void UserInterface::DrawWeaponName(const char* name) {
         float w;
         float h;
         FONT_getrecta(font->m_font, name, &x, &y, &w, &h);
-        w *= screen->vf30();
+        w *= screen->GetWidthScale();
         if (!g_bInMultiplayerMode) {
-            float sx = g_screen.m_scaleX;
+            float sx = g_screen.m_widthScale;
             x = g_screen.GetWidth() - w - 56.0f * sx;
-            font->DrawText(x, 356.0f * g_screen.m_scaleY, name);
+            font->DrawText(x, 356.0f * g_screen.m_heightScale, name);
         } else {
-            x = width * g_viewport.offsetX - w - viewWidth * (56.0f * g_screen.m_scaleX);
-            y = viewHeight * (356.0f * g_screen.m_scaleY) + height * g_viewport.scaleY - 15.0f;
+            x = width * g_viewport.offsetX - w - viewWidth * (56.0f * g_screen.m_widthScale);
+            y = viewHeight * (356.0f * g_screen.m_heightScale) + height * g_viewport.scaleY - 15.0f;
             font->DrawText(x, y, name);
         }
         font->SetScale(scaleX, scaleY);

@@ -60,17 +60,13 @@ public:
     int GetValue(unsigned long, unsigned long);
 };
 
-class CScreen {
-public:
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-};
+#include "game/CScreen.h"
+
 
 extern CScene g_scene;
 extern Pause g_Pause;
 extern CInputManager g_inputMgr;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern bool g_bInMultiplayerMode;
 extern int g_bMPEndLevel;
 extern int g_PauseScreenLockedController;
@@ -139,8 +135,8 @@ void UserInterface::Draw(float time) {
         } else {
             memcpy(TempVerts, LetterBoxVerts, sizeof(LetterBoxVerts));
             for (int i = 0; i < 24; i++) {
-                TempVerts[i].x *= g_screen.m_scaleX;
-                TempVerts[i].y *= g_screen.m_scaleY;
+                TempVerts[i].x *= g_screen.m_widthScale;
+                TempVerts[i].y *= g_screen.m_heightScale;
             }
             blackSprite->DrawPoly(TempVerts, 4, (CSprite::EPolyPrimType)5);
             blackSprite->DrawPoly(TempVerts + 4, 4, (CSprite::EPolyPrimType)5);

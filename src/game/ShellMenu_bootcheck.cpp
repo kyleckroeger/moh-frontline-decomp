@@ -2,12 +2,8 @@
 
 void* TLT_LoadFileNormal(const char*, int*, int);
 enum ERenderPriority {};
-struct CColor {
-    unsigned char r, g, b, a;
-    CColor(unsigned char r_, unsigned char g_, unsigned char b_, unsigned char a_) {
-        r = r_; g = g_; b = b_; a = a_;
-    }
-};
+#include "game/CScreen.h"
+
 class CFont {
 public:
     CFont(const char*, ERenderPriority);
@@ -16,12 +12,7 @@ public:
     void SetColor(CColor);
     unsigned char unknown00[36];
 };
-class CScreen {
-public:
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-};
+
 class CInputManager {
 public:
     void Update(float);
@@ -48,7 +39,7 @@ void WaitRenderList();
 void WaitScreen();
 void SendRenderList();
 void MohDVDErrorTask(int, int);
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern CInputManager g_inputMgr;
 class CMemoryCard {
 public:
@@ -73,7 +64,7 @@ void CShellMenu::MemoryCardBootUpCheck() {
     const char* data = (const char*)TLT_LoadFileNormal("data\\objFont.gfn", 0, 0);
     CFont font(data, (ERenderPriority)111);
     font.SetColor(CColor(95, 95, 95, 128));
-    float scale = g_screen.m_scaleY;
+    float scale = g_screen.m_heightScale;
     g_inputMgr.Update(1.0f);
     const char* text = m_messages.GetText(769);
     float y = 50.0f * scale;

@@ -16,22 +16,8 @@
 // the colour view (as in UserInterface_weaponname.cpp), the viewport, stats,
 // shell and player views and the star loop are inferred from offsets. The
 // rest of the file is in other units.
-struct CColor {
-    CColor() {}
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    CColor& operator=(const CColor& c) {
-        r = c.r;
-        g = c.g;
-        b = c.b;
-        a = c.a;
-        return *this;
-    }
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 extern "C" void* memcpy(void*, const void*, unsigned long);
 extern "C" int sprintf(char*, const char*, ...);
@@ -64,25 +50,7 @@ public:
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
-    virtual void vf2c();
-    virtual float vf30();
 
-    unsigned char unknown04[36];
-    float m_scaleX;
-    float m_scaleY;
-};
 
 struct ViewportView {
     float left;
@@ -207,8 +175,8 @@ void UserInterface::DrawViewportEdge() {
     for (int i = 0; i < 4; i++)
         TempVerts[i].color = color;
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     bool top = IsTop(player->m_index);
     bool bottom = IsBottom(player->m_index);
     bool left = IsLeft(player->m_index);
@@ -266,8 +234,8 @@ void UserInterface::DrawViewportEdge() {
 void UserInterface::DrawScore() {
     static char buffer[80] = ""; // in .data in the original (explicitly initialised)
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     float viewWidth = g_viewport.width;
     int right = (int)(width * viewWidth);
     int top = (int)(height * g_viewport.top);
@@ -287,7 +255,7 @@ void UserInterface::DrawScore() {
     float w;
     float h;
     FONT_getrecta(smallMPFont->m_font, buffer, &x, &y, &w, &h);
-    w *= screen->vf30();
+    w *= screen->GetWidthScale();
     float margin = 54.0f * viewWidth;
     int textX = (int)((float)(left + right) - margin - (float)(int)w);
     int textY = top + 16;

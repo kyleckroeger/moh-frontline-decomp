@@ -22,12 +22,8 @@ public:
     unsigned char unknown00[36];
 };
 
-class CScreen {
-public:
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-};
+#include "game/CScreen.h"
+
 
 class CInputManager {
 public:
@@ -67,7 +63,7 @@ void WaitRenderList();
 void WaitScreen();
 void SendRenderList();
 
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern CInputManager g_inputMgr;
 
 class CShellMenu {
@@ -92,7 +88,7 @@ public:
 
 void CShellMenu::CorruptFileDialog(char* message, char, char*, int slot, bool game, int file, const char* line1,
                                    const char* line2) {
-    float scale = g_screen.m_scaleY;
+    float scale = g_screen.m_heightScale;
     const char* data = (const char*)TLT_LoadFileNormal("data\\objFont.gfn", 0, 0);
     CFont font(data, (ERenderPriority)111);
     float top = 50.0f * scale;

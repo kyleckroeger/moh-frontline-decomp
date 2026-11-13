@@ -66,15 +66,8 @@ struct PauseResourceView {
 
 PauseResourceView* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
 
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 /* inferred view: 28 bytes of members, then the table with the virtual
    destructor in its first slot */
@@ -118,11 +111,7 @@ public:
     unsigned char unknown20[68];
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    unsigned long GetDepthBufferMax();
-};
+
 
 class IStudio {
 public:

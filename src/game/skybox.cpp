@@ -82,14 +82,8 @@ public:
     unsigned char unknown00[64];
 };
 
-class CScreen {
-public:
-    virtual ~CScreen();
-    virtual void SetCurrent();
-    virtual void Flip();
-    virtual void Wait();
-    virtual void SetClear(bool);
-};
+#include "game/CScreen.h"
+
 
 /* inferred: the camera interface (its forward vector at slot 0x48) */
 class CameraView {

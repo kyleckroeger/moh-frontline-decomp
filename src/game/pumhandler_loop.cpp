@@ -3,14 +3,8 @@
 // by the mangled symbols; the views and local names are inferred.
 extern "C" void FONT_getrecta(void*, const char*, float*, float*, float*, float*);
 
-struct CColor {
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 struct _spritepolyvert {
     float u;
@@ -41,27 +35,9 @@ public:
     void* m_font;
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    int GetWidth();
-    int GetHeight();
-    virtual void unknown08();
-    virtual void unknown0c();
-    virtual void unknown10();
-    virtual void unknown14();
-    virtual void unknown18();
-    virtual void unknown1c();
-    virtual void unknown20();
-    virtual int GetY();
-    virtual int GetX();
 
-    unsigned char unknown04[40];
-    float m_scale;
-    unsigned char unknown30[224];
-};
 
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 
 /* inferred: the viewport's scale and offsets */
 struct ViewportView {
@@ -168,11 +144,11 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
     int section;
     left = 0.0f;
     right = (float)g_screen.GetWidth();
-    top = 322.0f * g_screen.m_scale;
-    bottom = 448.0f * g_screen.m_scale;
+    top = 322.0f * g_screen.m_heightScale;
+    bottom = 448.0f * g_screen.m_heightScale;
     screen = CScreen::GetCurrent();
-    screenX = screen->GetX();
-    screenY = screen->GetY();
+    screenX = screen->GetWidth();
+    screenY = screen->GetHeight();
     scaleX = g_viewport.m_scaleX;
     elapsed = (1.0f / 59.94f) * m_speed;
     scaleY = g_viewport.m_scaleY;
@@ -205,8 +181,8 @@ void PopUpMessageHandler::PopUpMessageHandler_Loop() {
             _spritepolyvert verts[4] = {
                 { 0.0f, 0.0f, left, 0.0f, 0.0f, 0x80808040 },
                 { 1.0f, 0.0f, right, 0.0f, 0.0f, 0x80808040 },
-                { 1.0f, 1.0f, right, 110.0f * g_screen.m_scale, 0.0f, 0x80808040 },
-                { 0.0f, 1.0f, left, 110.0f * g_screen.m_scale, 0.0f, 0x80808040 },
+                { 1.0f, 1.0f, right, 110.0f * g_screen.m_heightScale, 0.0f, 0x80808040 },
+                { 0.0f, 1.0f, left, 110.0f * g_screen.m_heightScale, 0.0f, 0x80808040 },
             };
             sy0 = g_viewport.m_y;
             verts[0].y += sy0 * (float)g_screen.GetHeight();

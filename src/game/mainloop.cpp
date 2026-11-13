@@ -48,14 +48,8 @@
 
 #include "game/CVector3.h"
 
-struct CColor {
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 class CLight {
 public:
@@ -68,15 +62,9 @@ void SetFog(CColor&, float, float);
 void SetLandmarkStampString(char*);
 void SetTimeStampString(char*);
 
-class CScreen {
-public:
-    void SetClearColor(const CColor&);
-    int GetVSyncs();
 
-    unsigned char unknown000[268];
-};
 
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 
 enum ESoundMode {};
 

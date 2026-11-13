@@ -57,19 +57,8 @@ public:
 
 extern CDualConfig g_ControllerConfig;
 
-class CScreen {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int GetHeight();
-    virtual int GetWidth();
-    static CScreen* GetCurrent();
-};
+#include "game/CScreen.h"
+
 
 struct _spritepolyvert {
     float u;

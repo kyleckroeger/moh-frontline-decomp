@@ -16,12 +16,8 @@ extern "C" {
 #include <string.h>
 }
 
-struct CColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CScreen.h"
+
 
 struct _spritepolyvert {
     float u;
@@ -38,23 +34,7 @@ public:
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
 
-    unsigned char unknown04[36];
-    float m_scaleX;
-    float m_scaleY;
-};
 
 struct ViewportView {
     float scaleX;
@@ -122,7 +102,7 @@ void MathFunRotateAboutY(float*, float*, float);
 extern bool g_bInMultiplayerMode;
 extern int g_NumPlayers;
 extern CScene g_scene;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern ViewportView g_viewport;
 extern _spritepolyvert TempVerts[24];
 extern _spritepolyvert CompassVerts[24];
@@ -155,8 +135,8 @@ void UserInterface::DrawCompass() {
     if (m_healthFade * m_alpha <= 0.0f)
         return;
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     float viewWidth = g_viewport.width;
     float viewHeight = g_viewport.height;
     float scale = 1.0f;
@@ -170,8 +150,8 @@ void UserInterface::DrawCompass() {
             MathFunRotateAboutY(&TempVerts[i].x, &TempVerts[i].y, m_compassAngle);
             TempVerts[i].x += 92.0f;
             TempVerts[i].y += 384.0f;
-            TempVerts[i].x *= g_screen.m_scaleX;
-            TempVerts[i].y *= g_screen.m_scaleY;
+            TempVerts[i].x *= g_screen.m_widthScale;
+            TempVerts[i].y *= g_screen.m_heightScale;
             TempVerts[i].color.a = 128.0f * m_healthFade * m_alpha;
         }
         compassSprite->DrawPoly(TempVerts, 24, (CSprite::EPolyPrimType)3);
@@ -206,8 +186,8 @@ void UserInterface::DrawCompass() {
     if (!g_bInMultiplayerMode) {
         memcpy(TempVerts, CompassVerts, sizeof(TempVerts));
         for (int i = 0; i < 24; i++) {
-            TempVerts[i].x *= g_screen.m_scaleX;
-            TempVerts[i].y *= g_screen.m_scaleY;
+            TempVerts[i].x *= g_screen.m_widthScale;
+            TempVerts[i].y *= g_screen.m_heightScale;
             TempVerts[i].color.a = 128.0f * m_healthFade * m_alpha;
         }
         compassEdgeSprite->DrawPoly(TempVerts, 24, (CSprite::EPolyPrimType)3);
@@ -239,8 +219,8 @@ void UserInterface::DrawCompass() {
     }
     for (int i = 0; i < 24; i++) {
         if (!g_bInMultiplayerMode) {
-            TempVerts[i].x *= g_screen.m_scaleX;
-            TempVerts[i].y *= g_screen.m_scaleY;
+            TempVerts[i].x *= g_screen.m_widthScale;
+            TempVerts[i].y *= g_screen.m_heightScale;
         } else {
             TempVerts[i].x = 92.0f * viewWidth + (scale * (TempVerts[i].x - 92.0f) + width * g_viewport.scaleX);
             TempVerts[i].y = 384.0f * viewHeight + (scale * (TempVerts[i].y - 384.0f) + height * g_viewport.scaleY) - 16.0f;

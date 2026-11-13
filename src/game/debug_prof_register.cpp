@@ -45,18 +45,8 @@ void DebugProfTimerDumpRecurse(int, int);
 class CColor;
 class CRect;
 
-class CScreen {
-public:
-    virtual ~CScreen();
-    virtual void SetCurrent();
-    virtual void Flip();
-    virtual void Wait();
-    virtual void SetClear(bool);
-    virtual void SetClearColor(const CColor&);
-    virtual void SetClearRect(const CRect&);
-    virtual int GetHeight();
-    virtual int GetWidth();
-};
+#include "game/CScreen.h"
+
 
 class CDmaTag;
 class CDmaPacket;

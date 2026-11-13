@@ -88,18 +88,8 @@ struct FONT {
 };
 
 /* Inferred: the screen's size queries (virtual slots +36 and +40). */
-class CScreen {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int GetHeight();
-    virtual int GetWidth();
-};
+#include "game/CScreen.h"
+
 
 extern CScreen* g_pScreen;
 extern float g_ScreenXOffset;

@@ -18,12 +18,8 @@ extern "C" {
 
 #include "game/CVector3.h"
 
-struct CColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CScreen.h"
+
 
 struct _spritepolyvert {
     unsigned char unknown00[8];
@@ -39,19 +35,7 @@ public:
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
-};
+
 
 struct ViewportView {
     float scaleX;
@@ -141,8 +125,8 @@ void UserInterface::DrawRadar() {
     if (g_bInMultiplayerMode && !g_Shell.options[player->m_controller].radar)
         return;
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     float viewWidth = g_viewport.width;
     float viewHeight = g_viewport.height;
     CVector3 offset;

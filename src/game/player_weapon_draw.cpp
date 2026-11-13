@@ -110,16 +110,8 @@ public:
     unsigned char m_flags2c0 : 7;
 };
 
-class CScreen {
-public:
-    int GetWidth();
-    int GetHeight();
+#include "game/CScreen.h"
 
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-    unsigned char unknown30[16];
-};
 
 struct ViewportView {
     float scaleX;
@@ -159,7 +151,7 @@ extern bool g_bInMultiplayerMode;
 extern int g_NumPlayers;
 extern ConfigView g_config;
 extern CheatsView g_cheats;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern ViewportView g_viewport;
 extern CScene g_scene;
 extern const float DEFAULT_FOV;
@@ -258,9 +250,9 @@ void CPlayerWeaponObject::Draw(CDrawContext& context) {
         _spritepolyvert* v = verts;
         for (int i = 0; i < 4; i++) {
             MathFunRotateAboutY(&v->x, &v->y, m_flashAngle);
-            v->x *= g_screen.m_scaleX;
+            v->x *= g_screen.m_widthScale;
             v->x += x;
-            v->y *= g_screen.m_scaleY;
+            v->y *= g_screen.m_heightScale;
             v->y += top;
             v++;
         }

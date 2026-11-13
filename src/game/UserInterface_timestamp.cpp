@@ -16,21 +16,11 @@ extern "C" {
 void* memset(void*, int, unsigned long);
 }
 
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CScreen.h"
+
 
 enum ERenderPriority {};
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    unsigned long GetDepthBufferMax();
-};
+
 /* inferred: the level resource's file names (the font file at +20) */
 struct LevelFileNamesView {
     unsigned char unknown00[20];

@@ -27,14 +27,8 @@ struct _spritepolyvert {
     unsigned long color;
 };
 
-struct CColor {
-    CColor(unsigned char r, unsigned char g, unsigned char b, unsigned char a) : m_r(r), m_g(g), m_b(b), m_a(a) {}
+#include "game/CScreen.h"
 
-    unsigned char m_r;
-    unsigned char m_g;
-    unsigned char m_b;
-    unsigned char m_a;
-};
 
 class CSprite {
 public:
@@ -49,18 +43,7 @@ public:
     int m_player;
 };
 
-class CScreen {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int GetHeight();
-    virtual int GetWidth();
-};
+
 
 extern CScreen* g_pScreen;
 

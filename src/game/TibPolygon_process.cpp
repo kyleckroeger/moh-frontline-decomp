@@ -41,15 +41,10 @@ public:
 
 extern CMatrixStack* g_matStack;
 
-class CScreen {
-public:
-    unsigned char unknown000[40];
-    float m_scaleX;
-    float m_scaleY;
-    unsigned char unknown030[224];
-};
+#include "game/CScreen.h"
 
-extern CScreen g_screen;
+
+extern CScreenFieldMode g_screen;
 
 class CShellMenu {
 public:
@@ -152,8 +147,8 @@ void TibPolyDraw(TibPolyData_t* poly) {
         point.y = poly->vertices[i].y1;
         point.z = poly->vertices[i].z;
         g_matStack->Current().TransformPoint(screen, point);
-        out->x = screen.x * g_screen.m_scaleX;
-        out->y = screen.y * g_screen.m_scaleY;
+        out->x = screen.x * g_screen.m_widthScale;
+        out->y = screen.y * g_screen.m_heightScale;
         out->z = screen.z;
         if ((poly->flags & 1) || !(poly->flags & 2)) {
             out->color[0] = (int)(0.5f * (mul[0] * ((float)poly->vertices[i].r + add[0])));

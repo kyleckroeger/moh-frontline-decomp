@@ -21,30 +21,10 @@ typedef unsigned short u16;
 typedef unsigned long u32;
 typedef unsigned char u8;
 
-struct GXRenderModeObj {
-    u32 viTVmode;
-    u16 fbWidth;
-    u16 efbHeight;
-    u16 xfbHeight;
-    u16 viXOrigin;
-    u16 viYOrigin;
-    u16 viWidth;
-    u16 viHeight;
-    u32 xFBmode;
-    u8 field_rendering;
-    u8 aa;
-    u8 sample_pattern[12][2];
-    u8 vfilter[7];
-};
+#include "game/CScreen.h"
 
-struct CRect {
-    CRect() {}
-    CRect(int l, int t, int r, int b) : left(l), top(t), right(r), bottom(b) {}
-    int left;
-    int top;
-    int right;
-    int bottom;
-};
+
+
 
 struct GXColor {
     unsigned char r;
@@ -53,14 +33,7 @@ struct GXColor {
     unsigned char a;
 };
 
-struct CColor {
-    CColor() {}
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+
 
 extern "C" {
 extern GXRenderModeObj GXNtsc480IntDf;
@@ -109,9 +82,6 @@ public:
     static void Update(float);
 };
 
-enum EScreenWidth {};
-enum EFrameFormat {};
-enum EDepthFormat {};
 
 #include "game/CVector3.h"
 
@@ -159,89 +129,9 @@ static volatile bool g_bSwap;
 static bool g_bReady;
 static bool g_bCapture;
 
-class CScreen {
-public:
-    CScreen(EScreenWidth width, int height, EFrameFormat frame, EDepthFormat depth)
-        : m_clear(true), m_clearRect(0, 0, 0, 0), m_clearColor(0, 0, 0, 128), data1c(0), m_width(width), m_height(height),
-          m_frameFormat(frame), m_depthFormat(depth), data54(0), data58(0), m_tmValid(false), m_buffer(0), m_retraces(0),
-          m_late(false) {}
-    virtual ~CScreen();
-    virtual CScreen* SetCurrent();
-    virtual bool Flip();
-    virtual unsigned long Wait();
-    virtual void SetClear(bool);
-    virtual void SetClearColor(const CColor&);
-    virtual void SetClearRect(const CRect&);
-    virtual int GetHeight();
-    virtual int GetWidth();
-    virtual float GetHeightScale() { return m_heightScale; }
-    virtual float GetWidthScale() { return m_widthScale; }
-    virtual EFrameFormat* GetFrameFormat();
-    virtual EDepthFormat* GetDepthFormat();
-    virtual bool GetClear();
-    virtual CColor* GetClearColor();
-    virtual CRect* GetClearRect();
-    virtual CMatrix* GetTMViewToScreen();
-    virtual void Rebuild() = 0;
-    virtual void PutDisp();
-    virtual void Clear();
-    virtual void SetDraw() = 0;
-    virtual void _Capture();
-    static void Capture();
-    static CScreen* GetCurrent();
-    static void Init();
-    static void VBlankHandler(unsigned long);
-    unsigned long GetDepthBufferMax();
-    unsigned long GetVSyncs();
 
-    /* inferred: the four words at +8 set together (arguments evaluated right
-       to left, as the loads show) */
-    void SetRect(int x, int y, int width, int height) {
-        m_clearRect.left = x;
-        m_clearRect.top = y;
-        m_clearRect.right = width;
-        m_clearRect.bottom = height;
-    }
 
-    unsigned char data04;
-    bool m_clear;
-    CRect m_clearRect;
-    CColor m_clearColor;
-    int data1c;
-    EScreenWidth m_width;
-    int m_height;
-    float m_widthScale;
-    float m_heightScale;
-    EFrameFormat m_frameFormat;
-    EDepthFormat m_depthFormat;
-    unsigned char unknown38[28];
-    int data54;
-    int data58;
-    unsigned char unknown5c[4];
-    CMatrix m_tmViewToScreen;
-    bool m_tmValid;
-    int m_buffer;
-    int m_retraces;
-    bool m_late;
-    GXRenderModeObj* m_mode;
-    GXRenderModeObj m_modeCopy;
-    void* m_frameBuffer0;
-    void* m_frameBuffer1;
-    void* m_copyBuffer;
-    void* m_fifoBuffer;
-    void* m_fifo;
-};
 
-class CScreenFieldMode : public CScreen {
-public:
-    virtual ~CScreenFieldMode();
-    virtual CScreen* SetCurrent();
-    virtual void Rebuild();
-    virtual void PutDisp();
-    virtual void SetDraw();
-    virtual void _Capture();
-    CScreenFieldMode(EScreenWidth, EFrameFormat, EDepthFormat);
-};
 
 
 /* Stubs of classes the original linker removed (see the top of the file). */
@@ -369,7 +259,7 @@ unsigned long CScreen::Wait() {
     return frames;
 }
 
-unsigned long CScreen::GetVSyncs() {
+int CScreen::GetVSyncs() {
     return g_FrameNum;
 }
 

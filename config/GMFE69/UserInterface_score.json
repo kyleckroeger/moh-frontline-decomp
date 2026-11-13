@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -85,6 +86,7 @@
     "GetMPPlayerStats__10CShellMenuFi": "0x800e6688",
     "GetPlayer__6CSceneCFi": "0x800d8274",
     "GetScale__5CFontFRfRf": "0x8007cb30",
+    "GetWidthScale__7CScreenFv": "0x8001b134",
     "LetterBoxVerts": "0x80188d10",
     "SetColor__5CFontF6CColor": "0x8007cba0",
     "SetScale__5CFontFff": "0x8007cb1c",
@@ -210,5 +212,8 @@
       "size": 4,
       "address": "0x80350b04"
     }
+  ],
+  "weak_duplicates": [
+    "GetWidthScale__7CScreenFv"
   ]
 }

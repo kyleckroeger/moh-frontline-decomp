@@ -28,23 +28,8 @@ public:
     void DrawPoly(_spritepolyvert*, int, EPolyPrimType);
 };
 
-class CScreen {
-public:
-    static CScreen* GetCurrent();
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int vf24();
-    virtual int vf28();
+#include "game/CScreen.h"
 
-    unsigned char unknown04[36];
-    float m_scaleX;
-    float m_scaleY;
-};
 
 struct ViewportView {
     float scaleX;
@@ -69,15 +54,15 @@ public:
 
 extern bool g_bInMultiplayerMode;
 extern int g_NumPlayers;
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern ViewportView g_viewport;
 extern _spritepolyvert HitSpriteVerts[4][3];
 extern _spritepolyvert TempVerts[3];
 
 void UserInterface::DrawHitStatus() {
     CScreen* screen = CScreen::GetCurrent();
-    int width = screen->vf28();
-    int height = screen->vf24();
+    int width = screen->GetWidth();
+    int height = screen->GetHeight();
     float viewWidth = g_viewport.width;
     float viewHeight = g_viewport.height;
     float scale = 1.0f;
@@ -90,8 +75,8 @@ void UserInterface::DrawHitStatus() {
             for (int j = 0; j < 3; j++) {
                 TempVerts[j].alpha = alpha;
                 if (!g_bInMultiplayerMode) {
-                    TempVerts[j].x *= g_screen.m_scaleX;
-                    TempVerts[j].y *= g_screen.m_scaleY;
+                    TempVerts[j].x *= g_screen.m_widthScale;
+                    TempVerts[j].y *= g_screen.m_heightScale;
                 } else {
                     TempVerts[j].x = 92.0f * viewWidth + (scale * (TempVerts[j].x - 92.0f) + width * g_viewport.scaleX);
                     TempVerts[j].y = 384.0f * viewHeight + (scale * (TempVerts[j].y - 384.0f) + height * g_viewport.scaleY) - 16.0f;

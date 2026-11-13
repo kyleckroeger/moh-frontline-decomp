@@ -27,15 +27,8 @@ unsigned long strlen(const char*);
 void* memcpy(void*, const void*, unsigned long);
 }
 
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CScreen.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 class CFont {
 public:
@@ -44,12 +37,7 @@ public:
 };
 
 /* inferred: the screen's scale at +44 */
-class CScreen {
-public:
-    unsigned char unknown000[44];
-    float m_scale;
-    unsigned char unknown030[224];
-};
+
 
 /* inferred: the shell's effects volume setting (+40, 1..7) */
 class CShellMenu {
@@ -59,7 +47,7 @@ public:
     unsigned char unknown0029[6611];
 };
 
-extern CScreen g_screen;
+extern CScreenFieldMode g_screen;
 extern CShellMenu g_Shell;
 float MathFunRandomReal(float, float);
 void SoundGetVolumes(float&, float&);
@@ -149,7 +137,7 @@ void UpdateXFilesText(float dt) {
 void DisplayLandmarkStamp(float dt) {
     static float frame = 0.0f;
     static float xxxLandmarkX = 40.0f;
-    static float xxxLandmarkY = 296.0f * g_screen.m_scale;
+    static float xxxLandmarkY = 296.0f * g_screen.m_heightScale;
     if (!landmark[0]) {
         bDisplayTimeStamp = true;
         bDoneParsingLandmark = true;
@@ -190,7 +178,7 @@ void DisplayLandmarkStamp(float dt) {
 void DisplayTimeStamp(float dt) {
     static float frame = 0.0f;
     static float xxxTimeStampX = 40.0f;
-    static float xxxTimeStampY = 316.0f * g_screen.m_scale;
+    static float xxxTimeStampY = 316.0f * g_screen.m_heightScale;
     if (!timestamp[0]) {
         bDoneParsingTimeStamp = true;
     } else {

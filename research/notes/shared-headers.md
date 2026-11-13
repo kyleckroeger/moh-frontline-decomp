@@ -146,3 +146,40 @@ has no CMatrix view. On ISceneNode.h: staticobjfactory_lookup moves after renami
 static_obj_dtor (it constructs an ISceneNode, as compartment_ctor) with its weak copies listed and its
 labels from port_unit's draft (redraft.py), including the new ~IDestructible extab pair; skybox
 loses (.rodata pool item size differs).
+
+## CScreen (2026-11-13, agent hdr5)
+
+`include/game/CScreen.h` (with CScreenFieldMode), plus `include/game/CColor.h` and
+`include/game/CRect.h`, which it needs by value. Evidence:
+
+- `__vt__7CScreen`: 22 slots in the header's order; slots 17 and 20 are 0 (pure), and
+  `__vt__16CScreenFieldMode` names them Rebuild and SetDraw. Real names from the symbols:
+  GetHeight (+0x24) and GetWidthScale (+0x30), which some views called GetY and GetScale.
+- Every CScreen function is out of line in Screen.cpp except GetHeightScale/GetWidthScale,
+  which are weak (inline in the header). No CScreen constructor symbol: it is inline.
+- `g_screen` (0x110 bytes, Moh2.cpp) is a CScreenFieldMode: moved views' `extern CScreen
+  g_screen;` become `extern CScreenFieldMode g_screen;` (CScreen is abstract). Calls on the
+  object stay direct, as in the original.
+- GetVSyncs returns `int` (mainloop.cpp converts it to float signed; Screen.cpp had
+  `unsigned long`, which the moved definition now spells `int`, same code).
+- Inferred, marked: return types, field names (Screen.cpp's), SetRect, CColor's and CRect's
+  constructors (Screen.cpp's), the render mode record (the SDK's, used when the file doesn't
+  include the SDK).
+
+Tool changes (try_header.py): PROVIDES may now carry types the file uses before the class
+view; with `EARLY_INCLUDE` the include goes where the first of them was. View rewrites:
+fields m_scaleX/m_scaleY/m_scale/m_frontBuffer to the header's names, virtual calls renamed
+by slot from `research/layout/vtables.tsv` (`_virtual_names`).
+
+Result: 38 units with their own view. **29 kept** (26 as is, 3 with the weak
+`GetWidthScale` copy listed in weak_duplicates: UserInterface_score, UserInterface_weaponname,
+font_centeredf), all moved. Not moved:
+
+- 5 still have their own CVector3 view (Moh2, TibText, camera_frustum, player_respawn, sound).
+- UserInterface_init calls `CScreen::GetDepthBufferMax()` as a static (a member in Screen.cpp):
+  code change.
+- rcmp_main_delete (its own `_GXRenderModeObj` with other field names) and viewport (its
+  `m_mode` is a CScreenMode view): their code names fields the header spells differently.
+- sprite_draw: its CColor is a plain struct without constructors; with CColor.h's
+  constructors `CSprite::Link` compiles differently.
+Table: `research/layout/header_moves/CScreen.tsv`.

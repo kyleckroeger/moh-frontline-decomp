@@ -36,14 +36,10 @@ public:
     unsigned char unknown00[76];
 };
 
-class CScreen {
-public:
-    unsigned char unknown00[40];
-    float m_scaleX;
-    float m_scaleY;
-};
+#include "game/CScreen.h"
 
-extern CScreen g_screen;
+
+extern CScreenFieldMode g_screen;
 extern int POPUPS_IN_SECTION;
 
 class PopUpMessageHandler {
@@ -139,34 +135,34 @@ void PopUpMessageHandler::AddPopUpMessage(char* text, unsigned char placement, u
         message->Set_rgba(r, g, b, a);
         switch (placement) {
         case 0:
-            message->Set_screenLocs(320, 144.0f * g_screen.m_scaleY);
-            message->Set_top(144.0f * g_screen.m_scaleY);
-            message->Set_bottom(120.0f * g_screen.m_scaleY);
+            message->Set_screenLocs(320, 144.0f * g_screen.m_heightScale);
+            message->Set_top(144.0f * g_screen.m_heightScale);
+            message->Set_bottom(120.0f * g_screen.m_heightScale);
             message->Set_placement(0);
             break;
         case 1:
-            message->Set_screenLocs(140.0f * g_screen.m_scaleX, 402.0f * g_screen.m_scaleY);
-            message->Set_top(402.0f * g_screen.m_scaleY);
-            message->Set_bottom(426.0f * g_screen.m_scaleY);
+            message->Set_screenLocs(140.0f * g_screen.m_widthScale, 402.0f * g_screen.m_heightScale);
+            message->Set_top(402.0f * g_screen.m_heightScale);
+            message->Set_bottom(426.0f * g_screen.m_heightScale);
             message->Set_placement(1);
             break;
         case 2:
-            message->Set_screenLocs(128, 296.0f * g_screen.m_scaleY);
-            message->Set_top(296.0f * g_screen.m_scaleY);
-            message->Set_bottom(320.0f * g_screen.m_scaleY);
+            message->Set_screenLocs(128, 296.0f * g_screen.m_heightScale);
+            message->Set_top(296.0f * g_screen.m_heightScale);
+            message->Set_bottom(320.0f * g_screen.m_heightScale);
             message->Set_placement(2);
             break;
         case 3:
             message->Set_screenLocs(x, y);
             break;
         case 4:
-            message->Set_screenLocs(320, 12.0f * g_screen.m_scaleY);
-            message->Set_top(12.0f * g_screen.m_scaleY);
-            message->Set_bottom(88.0f * g_screen.m_scaleY);
+            message->Set_screenLocs(320, 12.0f * g_screen.m_heightScale);
+            message->Set_top(12.0f * g_screen.m_heightScale);
+            message->Set_bottom(88.0f * g_screen.m_heightScale);
             message->Set_placement(4);
             break;
         default:
-            message->Set_screenLocs(320, 12.0f * g_screen.m_scaleY);
+            message->Set_screenLocs(320, 12.0f * g_screen.m_heightScale);
             break;
         }
         switch (property) {

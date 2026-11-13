@@ -448,7 +448,7 @@
     "src/game/AnimObjFactory_weapon.cpp": "9ec9a6161aaf4b4bcfb71a2148ed75509800652635de14f5e3c3d62790988db7",
     "src/game/ConfigGC.cpp": "046f94990755952d7365859a057d8e875e0e78e8e4b4a7c82186f1ec54912a3f",
     "src/game/ConfigGC_dualconfig.cpp": "523a4fd2e3bb0cde80e856cd958341bb35a80a3bad49e0e70e7fd1c1726667bc",
-    "src/game/ConfigGC_init.cpp": "24eb95602d6b2ed814e752b8a8e103891c709c44f6b82d94d358f86095ad9853",
+    "src/game/ConfigGC_init.cpp": "57df042389256bb56357600c78732044be138b93d9d338e564ec2f66e34d6df3",
     "src/game/CoverPoint.cpp": "6543df862a43d1cff97aa960f9575641c6df1378c548eb06b7ffd5f33a201706",
     "src/game/CoverPoint_invalidate.cpp": "78de684af564cee31642930c3846b75a7cadeb47d38e81859bc6827f481b592a",
     "src/game/CoverPoint_modified.cpp": "cbaeb7a5fcfbf46ce9b2a4e9d19a6051d72bb829cdac468c9b83598eb292f0ab",
@@ -470,24 +470,24 @@
     "src/game/PathNodeList_disable.cpp": "78d37fab5d15b12ec89ee8ca392f4307c7ad7ad9da2fe8cca663fee8237af2b2",
     "src/game/PathNodeList_erase.cpp": "c503ad8ba351769727ae5193bd70c7f5b22fcd3ead27e84c3daba472d09ffaac",
     "src/game/PathNodeList_hashmap.cpp": "522d28711d39f28e6493d57afc12e848b3a0dba2f4b8c6b8dc44b1c061813aeb",
-    "src/game/Pause.cpp": "7897fa9f7062711f1021a58a737f37aabfff5645372fb92614b8dd99458fbcce",
-    "src/game/Screen.cpp": "6edd00ba6677d04cc93a4713fddf9809afdb8f6630679c6e9b428dc3ddfe914e",
+    "src/game/Pause.cpp": "2ac9a6f6222695c1d7b94cec55b61ad90445a54964339e19d195d36334a68f09",
+    "src/game/Screen.cpp": "06f81b9a51d7bb16b5a1f83f280fd2d3428e00e19ca38b13f26988e00bc8f42d",
     "src/game/SearchNode.cpp": "e8db06597a8f2032822e557cd948934a13b14f14d2c1757084d8b134dfc1a4ef",
     "src/game/SearchNodeList.cpp": "738d75054ffdc5c611f06f3c0f8d330d60226794efc3684079e2280494a4d65c",
     "src/game/SearchNode_head.cpp": "7434006ac9a182e7764f5d9029d9dfe6d939d455cc7c7603f4685aedb6b8f5d7",
     "src/game/ShellMenu.cpp": "e03b478aa25e400ae26b61840f1147b0b0293e518a216ca8e670c39aab756f38",
     "src/game/ShellMenu_audio.cpp": "e6c28700ad3c8dfa57727eeba4291575c2dd67050e85f0d3814bed9881463edb",
     "src/game/ShellMenu_audioset.cpp": "eaed4c52183e4d52249d7f60476c64a6c2bf21a5882d2c66793c2e3957bae9ae",
-    "src/game/ShellMenu_autoload.cpp": "8907df203b99a00a9cbeaf7e9efcb7ea950071d9cd6a5b11195ba0996a4d4e20",
+    "src/game/ShellMenu_autoload.cpp": "f4bf3c3c4fc5b01e3b83dbb3e6b2e51748c96d39cbdf5a57ab1dd88dff65f981",
     "src/game/ShellMenu_block.h": "aa931d76b6b5b02c8449ca930f112f268019d4ae425893faa515f675853d0cec",
-    "src/game/ShellMenu_bootcheck.cpp": "e1f3393a907995fae5d92776b83d799b9bd47ac658347d709e9372d9e41a3960",
+    "src/game/ShellMenu_bootcheck.cpp": "3ae96d4bc508846f1173bd74f37ca6f2c8252d733f62fb13972d398728d4883b",
     "src/game/ShellMenu_briefing.cpp": "c8ee0851ca651fc9ea30840753f395a65459ca42ae2d0721d0345679ba691a93",
     "src/game/ShellMenu_buttons.cpp": "ce08d46ac72d029e87f9437a1a959869af093341fb55af461ed0e457db0005aa",
     "src/game/ShellMenu_card.cpp": "8b1e97e98921cc9c17679c1317a69483cded761ac6a955e2a3158eee5ac1b2aa",
     "src/game/ShellMenu_cardquery.cpp": "24afdd003227b2c62651d37f0bffeff56395ce8576140e4045d3f31031982f65",
     "src/game/ShellMenu_cardsize.cpp": "9832c3eb257b487686198cfc911aab5a7247774f8719aa6951ac14b995e7d1a3",
     "src/game/ShellMenu_cheatall.cpp": "ef43d852b0d0e7c0c8f2fe653e36e065ffe8516650fe007fa908535bd5c42431",
-    "src/game/ShellMenu_corrupt.cpp": "aadda0ac2f297fb34a3209f298c49cdc401cf4711df98ec386bcd7ac33b73488",
+    "src/game/ShellMenu_corrupt.cpp": "afcaca5261f7464c5da4d1f33dc4778eab62d82a4ef31d5b44278aa9d376be61",
     "src/game/ShellMenu_credits.cpp": "c1238b8a92b9ee86ce644d5574f05a7efdf557247e60de49a3a5343a4ae22de2",
     "src/game/ShellMenu_ctor.cpp": "a293f1b64fcaaf753b2a0559d7974cc1f4ab3b982677e5825d2b1f7260faf908",
     "src/game/ShellMenu_dtor.cpp": "b7b79f580b8c0de75140427ee0a71590e260016e60441dc5e588511777d84be2",
@@ -512,7 +512,7 @@
     "src/game/ShellMenu_stats.cpp": "bcf16cc5f7e1cce41e0ef73c4a85cee7f842a5687f1622b64e2ea202845e45a2",
     "src/game/ShellMenu_unlock.cpp": "a9aa4de786f6d7e8370b23fbdf457f1c80e61f1846fc34624ef47b527505b21f",
     "src/game/ShellMenu_unlockedstatus.cpp": "ddb51ee8a83d0f8e0157c03fc2d271f49a43c90e7404ed0c704aed4f0989a34d",
-    "src/game/ShellMenu_update.cpp": "056175d9c526fc3b09ffc91ddb768e308eafb27dc8795067788a109d00d0b5fc",
+    "src/game/ShellMenu_update.cpp": "c671cbad10d8ba2139a1ceed9150e7d6b33dd8340586b6577168981506bafab8",
     "src/game/Soldier_object.cpp": "3f1017249e8ecd67e9264f5d14823e2edac2aee95f5afe787d547f3e8ad7c41b",
     "src/game/Soldier_object_attach.cpp": "2fcc9b4d951748d72c13153b899571c4bcdabae3afa90bd2e0f9b1242cceeff3",
     "src/game/Soldier_object_bone.cpp": "9c7fbdac85cc64aa9832ad8578776fe0376a77f651004f9595ef3e95ad21e566",
@@ -524,7 +524,7 @@
     "src/game/Tank_object_draw.cpp": "431313dc0fffb5bda54e8ba05370b45d242200d8c7cfdc6b4d3260ede8ac3504",
     "src/game/Tank_object_update.cpp": "5b68539e218386ead26c19036821428f52b6bf0869390f7875df91f93af99243",
     "src/game/Tank_object_weapons.cpp": "1415a1a1b44ea5b2a66b695f2b3f3a2ddd8cc1da66abe1be699d1045ef740fb4",
-    "src/game/TibPolygon_process.cpp": "156a03d5743b5be3314d8e310ab9ff48deb4a15dd17ff06a6f8d78c9ba790a6f",
+    "src/game/TibPolygon_process.cpp": "7d65835faada8b1a9b2636de91148a6ae759b849fedd91e74d42f6ae053b4bb6",
     "src/game/TibText.cpp": "add98adc4d7d0cb0bd0d15f50a5a5589b10e1e2843e2a9c5200cc69c0a73a0fc",
     "src/game/UISActionProcess.c": "44daeb6ea9023d81a1fd3876b6d1f87956ebc0d18d32845908ca7ab8dbc1b8a2",
     "src/game/UISEvent.c": "a9b324a04b57cdf40fbb819827d2073be6fa1b9fa1be2f1c0757e46dd3747a82",
@@ -554,17 +554,17 @@
     "src/game/UserInterface.cpp": "5e2d62e5410ad16508efa4e2243c541de362afbf7c74aa7ee3b63f4be695fe8e",
     "src/game/UserInterface_block.h": "cfbcaf708db1fa9c84cb3998f81769b32aa7bc218affbffdb533f98ec1fbfcb6",
     "src/game/UserInterface_compass.cpp": "b18f30bd74445c9fb1ce22fc9a75331f4aa7930a8dd73e70bfe2683a8af93333",
-    "src/game/UserInterface_draw.cpp": "3643aef1933616f8be417f0ef65c3d8ab83510ccc77c1a6415520c820e035fda",
-    "src/game/UserInterface_drawcompass.cpp": "e4b5f6f4712c44a741c3fb58d9ab79744b892d009b68431ad2ee9c234c5bc97b",
+    "src/game/UserInterface_draw.cpp": "7bebf4116d41d8fb8841c6cd2c66a446b5f054cbb38e20aa2a38f0d90c3e462d",
+    "src/game/UserInterface_drawcompass.cpp": "e9cf0e5c028b90027c50c4fe2a31ace5cf3ea0caab97aea2c045006a6a3baff0",
     "src/game/UserInterface_hitdirection.cpp": "be5cf2f90c91bb77926b82e4ceffc7cd5cce2f4841a51b363d23ea662797f334",
-    "src/game/UserInterface_hitstatus.cpp": "75f6b1bb06ebec72ea1742bcce25cfc03f953aa25fca0f2227cfe621d9914fb4",
+    "src/game/UserInterface_hitstatus.cpp": "176952e15fecbdd59406155fe49ad16f68e54eb4745bad37ef58e7ff875bb1b0",
     "src/game/UserInterface_init.cpp": "81a34a8132d1654dc6e23377eb48fc8bd982acdb2b641cf5e55baaf37bf558db",
-    "src/game/UserInterface_radar.cpp": "ec204379b2c1c628e65ac20da20eaa427449bbdc81a05a90f188cefa47418e99",
-    "src/game/UserInterface_score.cpp": "e30334ab9d561fc13665b365be15ffd24bad6bfb2d5a9b2502f80f5f9d10b7fc",
-    "src/game/UserInterface_timestamp.cpp": "dfb15188cfe75e998d45503d7f38678f456506e80ae0ac5bc2d16d30f9e2bc2e",
+    "src/game/UserInterface_radar.cpp": "881dcde7f22256c825ee32c8a653673245fa2df714a0d686e6a359f84584a427",
+    "src/game/UserInterface_score.cpp": "96327ebee2cd6389f74a227c50f2a0e619c62205d93a80bc9d2fd6ebebb69a2c",
+    "src/game/UserInterface_timestamp.cpp": "266469bbf58495f6ad5eafd015848321147c28f88c7c718a336ab32534ab4385",
     "src/game/UserInterface_update.cpp": "b95457f5d1a096090bcdc2a35bfe1565df598eec494373de15ea2d5492f8def4",
-    "src/game/UserInterface_weaponname.cpp": "108f0e3ba6894147d493d5bdab412525199771675a66ed1d49846aa7df0a9c36",
-    "src/game/UserInterface_xfilestime.cpp": "c35ac6a61d69b47633c0407fb52c57e9b53a9054676949ade31ebe6803d0e255",
+    "src/game/UserInterface_weaponname.cpp": "69e3e29b4bc0983f3623e2d847744e810305bd54297e7d33d7c6a391524bf820",
+    "src/game/UserInterface_xfilestime.cpp": "0b684e983e90c5680b6fc6f067a3eb21a4b24031325f5e646cf29b818cc5dd1c",
     "src/game/alarm.cpp": "f9abe7f8bffec4b060a9d15ca8352c618fc54613728b1e9b0065707e5f574c33",
     "src/game/alarm_builtins.cpp": "f4520eab278d57c3c4432c7e9ee461a1107607238b5e95466a00d54f73a7b697",
     "src/game/alarm_list.cpp": "b5313d7b9c04afdb831347013d8105b6269879eec1840643341937665400bd01",
@@ -840,8 +840,8 @@
     "src/game/debug_prof_cdbgstatsrenderbin_dtor.cpp": "0609e8ee16b0884ca0c8944030f4db7bf87693e65bad6bfc67002b895b88a11d",
     "src/game/debug_prof_cprofhistrenderbin_dtor.cpp": "d4ce99045397aae6ce2a629ff3d63b6ca5c0d0d5f8bd3ebff390f5a7f14793e5",
     "src/game/debug_prof_profilebin_ctor.cpp": "7b2140c03134bf6ffa9e220a077888fb3578113c95335ff5d9a91da49d8c5204",
-    "src/game/debug_prof_register.cpp": "e655902202d1ae9eaa0fccfee1836c729faaea83ea7f814976450039b52aa9b5",
-    "src/game/debug_prof_stats.cpp": "329b4e66b68a2dacbf7e235cdef1c2aab91ede3d3ae90fbc85d0433ee1244262",
+    "src/game/debug_prof_register.cpp": "f10517287e8c20bcd543c108a9998d70e02216cafd67402edb109fc5cb979604",
+    "src/game/debug_prof_stats.cpp": "af0395d9ac02c77a80ca740d062a37027d00dfb15bdbda949037001f199528fe",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
     "src/game/decal.cpp": "cc27d07cd78afd24b70d159ad75aa7d12f4daf175665b1eac0ef7b68d312d1ef",
     "src/game/decal_dtor.cpp": "612f9bb1293cebeabc6c596c8fa245727867b0e79fba157ab4d406951cb84c93",
@@ -881,10 +881,10 @@
     "src/game/fiber_visibility.cpp": "fe3137b7bfbdc6c744b78db6ebb7cbabd48b4888ade40afde4bcffd621dd3238",
     "src/game/filesys.cpp": "edc914b77e55cfec7501ffc2150c34cefc432d28c3e9aa1eceea55a4cbe755ad",
     "src/game/font.cpp": "65255c01226641dd00889793fe46dd4a6a31eee9be31b7b6aeaf2ce6c561398a",
-    "src/game/font_centeredf.cpp": "8a04064c39b8d375784e4bda0c5cf97bc2b51b63e64777f4fe1eb0972f661079",
+    "src/game/font_centeredf.cpp": "82e71e1ce5c84e1845b7625376108188b106752f64eb82e2b028a99c240179d2",
     "src/game/font_draw.cpp": "5382fff844b701321c4540955f1a674985d2c3c9b5ec25e2b34c6bc8e1945eb7",
     "src/game/font_driver.cpp": "bf6a37772fdeda1200bca043c621d97e1062969444c5ac825ebc2eeaaf217bb5",
-    "src/game/font_dtor.cpp": "281b2f2308b17efc94ab050458e3fc94f3565f6726af6c92f31ad0ea4234ab69",
+    "src/game/font_dtor.cpp": "df6fdf56f3e132abae63d3f97d8bc7451cb7a0f3a2bc1596d497a6bb0d8fef4f",
     "src/game/font_render.cpp": "82d5a453d9301b7fd3b7854619ec92a3e03e18ff1a70528cfcb5782858feea08",
     "src/game/framework.cpp": "8cebad26aba8fe4a9a9ece0492c0bf7bb34882a1eec7dd48a1b3b93d0830914f",
     "src/game/gcSystem.cpp": "e97d4933fe4ba1c46e72d853db6ff53b0c8136020bef2237c66ad38a0d1e1068",
@@ -931,7 +931,7 @@
     "src/game/line.cpp": "68ab3165c7ee278d2b66cc6dfb6102c4b0288a7bce9c494dc5028e3cf3b37824",
     "src/game/loadelf.cpp": "9decbe9395499ba51bd97defcfb741e00b906e9de4229451b9876c4eef8f1c2f",
     "src/game/location_collision.cpp": "f1a62ea2763f552fee804adca73ebbde64080dfca79eb763f963947d9dc48d7e",
-    "src/game/mainloop.cpp": "365ffd3fdf7c5a4f77aaf53fa18fcd6ce8ef074adfbf0f76c74c94a83edce044",
+    "src/game/mainloop.cpp": "0f97333e41f13ffbe27b94d90e21e86c482f33db79bd92eabde3c39283a67e6b",
     "src/game/matrix.cpp": "fe98a358831e8381c6cbbc7f9fe676fa721b338056d82a37ac639c78c9b3a284",
     "src/game/matrix_endian.cpp": "ad1afae81341a9281c7597079a9c3c42d90e125562c1157aedba8bb8103a3482",
     "src/game/matrix_multiply.cpp": "49f33363fb311402ccab6665abe9d97b71eabb37dfd34ef5ee2a0b07a1e6affd",
@@ -961,7 +961,7 @@
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
     "src/game/particlesystem.cpp": "1dcd4b8cd7e17099d99c22f7dd63d3ed7e1eddbfea079b9a6134f4e3cb36b900",
     "src/game/particlesystem_active.cpp": "c6900100e25bc2343e8bc91544bd038ce33e62b4f8ee35b613f0ec891cd22913",
-    "src/game/particlesystem_beginupdate.cpp": "a6532acd0524ead88d7ba7af1d6fcda76df7213bd60976c2155ea00ba8e00248",
+    "src/game/particlesystem_beginupdate.cpp": "2f6896d53392ff54fb4a51b8971ebaa076258257c6082cf5c402ab8cfbda31e2",
     "src/game/particlesystem_cinstancedparticlesystem_dtor.cpp": "9d40870b2dc1fe0176a5b01f1d0f67303358bdf16eb989ea9bccd63d8b4c0834",
     "src/game/particlesystem_color.cpp": "7a15fec28bd5b4e09a2a04546307ee5affdc1167d9bdbd8c481015bfa382044d",
     "src/game/particlesystem_cparticlesystem_dtor.cpp": "4f83c65fee1c6f1394c63b527124e37016012f18aea04a1e332c8b9f9e8f62e1",
@@ -975,7 +975,7 @@
     "src/game/particlesystem_property.cpp": "2709d21829562f73d5954863a85ba57c2a0a7e0ec3c763061a1b802008f495bf",
     "src/game/particlesystem_register.cpp": "7a9bdb9294f119307b470a3f450a519d6660435ca9cb6bd95c806ea7086df563",
     "src/game/particlesystem_registerfn.cpp": "ff6c74db155496d4ee0cabcc0f50dfc44fa22f93b18d8a849e6392242adf50af",
-    "src/game/particlesystem_reset.cpp": "9275ffe5646a3ad0f42787dc17555bbf578f8fe16e645f2967521c54ba995e1f",
+    "src/game/particlesystem_reset.cpp": "108f11d3134c6c4be51ae2d6078549f7ab5faeecaf198a1a8eb8b7575beb64d0",
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
     "src/game/particlesystem_texture.cpp": "7bad990fa32156064c574d6c094d0b5c24b6c36095c2a4601ef31357e4d6c5c4",
     "src/game/particlesystem_texturebin_dtor.cpp": "2d93edcd84e7b4ea3ebf6d6dd535072ca217836a9b31c37a5fdc139b8262cd67",
@@ -991,7 +991,7 @@
     "src/game/player_crouch.cpp": "85adcba4ff071e579c6b86b61851405e28c72e661f9bc2f659ecb12827c77fc2",
     "src/game/player_ctor.cpp": "adb5b353e370aa95bf1d32fb3f01958b2da5060490c5811134fce1a46584fc34",
     "src/game/player_death.cpp": "d9d87b21ac572598615964c6c917a0cacf4c95287379b37e9f8478b90c7b774f",
-    "src/game/player_draw.cpp": "643e05245be92bae37e0e306cc6910d4796ad94993aea0b3e3f769f614a87f45",
+    "src/game/player_draw.cpp": "2b07ffe3dafd44c99a429374334a6d030250378c507010f611df95b4a6db1a8c",
     "src/game/player_dtor.cpp": "0e805e3295442b1d862c3abcfb2f3f342fabbf439285904436688165fd77c48e",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
     "src/game/player_fov.cpp": "5eb851f7186bb6e36da45c3c0cc1d29ce9331294498917b2406c64effca8f6a3",
@@ -1012,7 +1012,7 @@
     "src/game/player_vec_sub.cpp": "e6f431ec9a993a3349adc755d2f7e79c87a951a084d0d90c2b10ba4058ebe6b0",
     "src/game/player_weapon.cpp": "d656e89113c05d302dc2c3b3ea1c362ceab5c209c5af2346a9f23265f51b45f0",
     "src/game/player_weapon_donereload.cpp": "276b86e2f1ccf65f0dbd5efb3effdc6f6c18c35406378a8900eda198910a6ad8",
-    "src/game/player_weapon_draw.cpp": "8716083a5e6b8ffbf4e52ffd48f316b5982551c673034bda9c6912b94843acf8",
+    "src/game/player_weapon_draw.cpp": "41db53e25dea9b06014281bcb27c47379ce6bb275f9e3249c43d88e6e5472110",
     "src/game/player_weapon_drawenabled.cpp": "38a90c25715e1cb193ea2adfb7cbb12b6914fbb8ec8a7c770c70457725d465e4",
     "src/game/player_weapon_object.cpp": "c5c93cb166b4041f25f6610abed163debe934a6cfd137c1716ab80add93f8442",
     "src/game/player_weapon_object_head.cpp": "0f19122a9a21184a333fe39d7093559f095c3a34670862375505e1613f34e00c",
@@ -1040,14 +1040,14 @@
     "src/game/publisher_secb.cpp": "efddc822d5b7581b10a64f8b81886146c8b1c9c262bafd78be05714bf488952f",
     "src/game/publisher_setsubject.cpp": "b71af911609193ab664db4b18c3bd54c35b39b2682e97ffe74a9e3707e807afe",
     "src/game/pumhandler.cpp": "525478a92890bbbb3fb8cebc7d9c151ffebf018a126645f37b59289ce0214dee",
-    "src/game/pumhandler_add.cpp": "dd2febc0f9ff98f3f2d0f6f17f4f8fe5c8018543018452072a7cd750eb2e9d4e",
+    "src/game/pumhandler_add.cpp": "a3127fa130622eae57f3bb048416c1cffbb39f7a96ca7af95e54eca31894a598",
     "src/game/pumhandler_block.h": "f0b0344cd5ce6a5ac802b9fcc8759e9cff50a1af136f6ccc0fbbda412454fb47",
-    "src/game/pumhandler_ctor.cpp": "ab5d5f62d5e36a87bb48099587be23bead575565e770258364b5a0f184b52f6b",
+    "src/game/pumhandler_ctor.cpp": "1217d23a4dd4a3913af8e8d4aa5f0fc54e4b82ce9a4cb87538b9a833cc4bfb45",
     "src/game/pumhandler_dtor.cpp": "f0a2cc2d3273db70a909976fbf87574e1848b63866640d8e240d3630305f4eab",
     "src/game/pumhandler_list.cpp": "b0fa900782f8c07bf41b3074b5ab997fa84f4ee73646fa2164c09acba884ab4b",
     "src/game/pumhandler_list_ctor.cpp": "2473a2861abe4ceaafe89851cda62ace1190d541eeaf1bbdd0852ed1d0abb6ae",
     "src/game/pumhandler_list_reserve.cpp": "090920b31a7b9651f5382bc973d6d9e7e613bec688bd20ac1376bc382f6514d2",
-    "src/game/pumhandler_loop.cpp": "730197a013d613d259fd8c9e9cea4f8e2b19f511348b2ba9d97ff22ee044dac7",
+    "src/game/pumhandler_loop.cpp": "2af8edac98029da43f806809fb41df715ec08f69091e7fcaccace678b8db62cd",
     "src/game/pumhandler_prompt.cpp": "ac71c30d19abbe271524f96c45279d59de2fc3e7595554e81ed15bbef9be1047",
     "src/game/pumhandler_subtitles.cpp": "1f1dfee08ca0bc404e4cc771363f3e510d494032679a72db04d9fa6ebbf545d0",
     "src/game/pumhandler_umt_dtor.cpp": "65fe75ceb5a717c9695ed22ee5af250e646142adfc4c241ff4b2569c5787e64e",
@@ -1101,7 +1101,7 @@
     "src/game/shadow.cpp": "a065583d8c1eca57a086b3ca047e1ffe81221bad1ef499e5fceae924c6666f1f",
     "src/game/skelblend.cpp": "c69cc53151e578203defa9d91faf9be2629cc7daac096e98eb8705f96dafb15d",
     "src/game/skeleton.cpp": "889f952bdeb2b5c6e1787e01d515e338160f5a7c5db43aa20a76e3db73812572",
-    "src/game/skybox.cpp": "7a53516d19d24ee2b538137030e242a1aeb2ae8f344dc8bbd6f93138628049c8",
+    "src/game/skybox.cpp": "a48cb6ea528a2b605ad69cd93d702a198cc687dcd6ac5e2474944d5731a1abb2",
     "src/game/sound.cpp": "70dcdd80bf1dd58afd5a384334f7cc43d1665cde528ae5fd770643d269600c55",
     "src/game/soundschedule.cpp": "c694f97d087bfc7f21c516d5e3ccca496446691cf3b37b2f183e5926872a483d",
     "src/game/soundschedule_sound.cpp": "c7cf749da8b9723eee6f8581d787465a55c7470057a7da9fcf926591173f598e",
@@ -1545,7 +1545,10 @@
     "include/dolsdk2001/libc/string.h": "96be3fae011f3a3a8c785c1b4e156d0edec8c93510350c32a17cd83a0005e7ed",
     "include/dolsdk2001/libc/wchar.h": "eb9359b3f8c80e980c291b31b08b913739a9fda753a2a5007f8bf2bf3c646439",
     "include/dolsdk2001/macros.h": "501c9c8160161354e35f291cb101a508877ab32d5e28450839be2b3d3da86a39",
+    "include/game/CColor.h": "60dd559509558a598f205da2cdcd55880f7c900fed869a63736a732f2810748d",
     "include/game/CMatrix.h": "2a80633f9aefbbbaf5811470968dedf0fb0befe143fe54d100bb0b2fef2b3951",
+    "include/game/CRect.h": "bd79c7f913dd835c13df9ee6e911b38fa548ee4878e1840489a4bdf47c68a64d",
+    "include/game/CScreen.h": "081a035fc730c4da9a451e5c01c6ff38a9f5fbd8431951b5037d3986c474654a",
     "include/game/CVector3.h": "b8abb8cd983822edce705ab2f5ea099da8537ea8ea8e9dc5ab907a12d90099eb",
     "include/game/ISceneNode.h": "f5a084aa772b1a89854d11aada0ce828bd5955b52f11886085ae7b5c0f4fca04",
     "include/game/msl_sqrtf.h": "f91d44ff20bd7fad0236d97ebde51f625247d746d9c04afa093c6b531d55b457",
@@ -1794,7 +1797,7 @@
     "config/GMFE69/CPlusLibPPC.json": "7130e3e0ed13640ac092a923a5e6e634569f91e7222d5e00b557489223254e1d",
     "config/GMFE69/ConfigGC.json": "a2147d4f7c89ff0acf26b39d535dad3c534413416b09ea33f857c5d50d3d2d4e",
     "config/GMFE69/ConfigGC_dualconfig.json": "1ec1960ecb24f749b0732b4342b42f9c3682faa43b284cd4a184309935974956",
-    "config/GMFE69/ConfigGC_init.json": "1fadf6b4ef092e458e5243e306fdba0430c39f8b8346cd8ac2ddf9bb83d9b658",
+    "config/GMFE69/ConfigGC_init.json": "acca545d53cb09eaab95347b991c2feeab161ee5bc6081acce28dae630ca7032",
     "config/GMFE69/CoverPoint.json": "75a0001bdd6794082a1d93f6687efa6ca1d6711c4197cd9cc34cd972c214f1ed",
     "config/GMFE69/CoverPoint_invalidate.json": "c1e05e31d2e0861b82b005e650dd7d908b830097927c8fb6ac09f740e6441a77",
     "config/GMFE69/CoverPoint_modified.json": "ca7fff3d68b6c32e6cc8be298203a9e44ccbc72092c77ea2faea0fe37ba55bb2",
@@ -1867,7 +1870,7 @@
     "config/GMFE69/PathNodeList_disable.json": "e3036291a8991c3233b001ce31f3e5959018958f6b0ca5f4b2adb965fccff7cd",
     "config/GMFE69/PathNodeList_erase.json": "21acb94010706683cfc6afa5c5fd2647b78aa611ed868be53524fb9c03f6de56",
     "config/GMFE69/PathNodeList_hashmap.json": "f17589d19801d73c4a867563bb3fb3d236004a3f211c4c0edfc86fdc5c131207",
-    "config/GMFE69/Pause.json": "edb1a8405ac393f4ceb90f23ad32e154ab30b1eb7de8ec96819ea085dcedc5a1",
+    "config/GMFE69/Pause.json": "20601ccfe678148fa336b8a40a94c591e6ed8a5818170e3cb65c62be10aa88ca",
     "config/GMFE69/SIBios.json": "ef42fc4b95402bef0544ec5fe1a10c75781171f56afba7954318d42020fd6c1a",
     "config/GMFE69/SISamplingRate.json": "e4def7467ec8d82fdb9730412721675a9ea0e7ce572d5b8b63e89c3bdfe1eb84",
     "config/GMFE69/SNDI_cos.json": "d5c3aefe8e26c1df224218b53070a0f6cfec997ed7abca69e4c32fdf3cdcbe3a",
@@ -1882,15 +1885,15 @@
     "config/GMFE69/ShellMenu.json": "8dd6d4ec65f514a1f54b37bc84805970f0bea890598fe1b03be548df82af6f74",
     "config/GMFE69/ShellMenu_audio.json": "1a043c64b33ba21651b30a0ec86b3b0ce178ba7dd7382efa78f2c9bdfbfab85c",
     "config/GMFE69/ShellMenu_audioset.json": "27607fed353c1360321b5725b5513d31bcfca481fc718dfb4841a217b873360c",
-    "config/GMFE69/ShellMenu_autoload.json": "0f20f3edc2b2e20f0c91039f3bd454c8e4694eefcca36c648efd065f0b118cfe",
-    "config/GMFE69/ShellMenu_bootcheck.json": "51973c9e73602aed9a3b726153ee987d1a59fc0d9a2412378db602295b5b98a3",
+    "config/GMFE69/ShellMenu_autoload.json": "1737772ecbd98b4e873797822d4d776e4053b9f36707cb5562e0842644b03b4a",
+    "config/GMFE69/ShellMenu_bootcheck.json": "b057a114f8b5f941f10f8a164ee5ade315b917aafedb7f9085f7bfb70c58cac1",
     "config/GMFE69/ShellMenu_briefing.json": "57806c16722c3ba8e8aa4ab782a75ae257581af0a056947d9578fdc185e9dedc",
     "config/GMFE69/ShellMenu_buttons.json": "5ee1b9f016e36d01fbde2d9a4fd30b395e06309cbb39786c3e8b32d7cb247f65",
     "config/GMFE69/ShellMenu_card.json": "39d9fc867595c068623b7bc1b2946a0ae62c8aebe5f9625dbf54143c10424f44",
     "config/GMFE69/ShellMenu_cardquery.json": "aeaad9cb743d1dcee1b7a5e3f809f3b17a65cc71600a8faa405e54f637ef547e",
     "config/GMFE69/ShellMenu_cardsize.json": "34491cc4fef2503918da944e59bab05513c54085f2bb02020d0bf82cd00dc46f",
     "config/GMFE69/ShellMenu_cheatall.json": "63ca1c2b0d0700c54d0696c31f82a41abe4e31bc76761905826b1b768d2333a2",
-    "config/GMFE69/ShellMenu_corrupt.json": "9bbd080d4140caa1294dc613ee0852d4295ab0a19077863912eb1be24c4c230e",
+    "config/GMFE69/ShellMenu_corrupt.json": "c80b64a63acdc787d8244501a33275b604f4435a25000a718a3531ca500239e7",
     "config/GMFE69/ShellMenu_credits.json": "dc511945612ff7cf00860b397771e2d1d54405abe8c2d955cb9424f2d2a28882",
     "config/GMFE69/ShellMenu_ctor.json": "e98ce112d75402949b0979b7dda2ae1265e02f6f8affac245111e0b2249e13c5",
     "config/GMFE69/ShellMenu_dtor.json": "0a63e8a0bdd75c2c7e60283100e6c092625721f838226010e42fd7c21301ca65",
@@ -1915,7 +1918,7 @@
     "config/GMFE69/ShellMenu_stats.json": "7b5a42b2eac606cdd7e392272bdd1a58b79a96dee59c6e275f9c65e0e0412994",
     "config/GMFE69/ShellMenu_unlock.json": "ef523fd8e25c9220cce3e44ead128bb4800165526d04f2af5153493acb097261",
     "config/GMFE69/ShellMenu_unlockedstatus.json": "5653ecf1d2ef5ecc0b705f83e4b5987b06501dffc7a372a5c96766f55185090c",
-    "config/GMFE69/ShellMenu_update.json": "6faa8f486b8e05c93250d20d1dd4d7f81bd1fcddee76548f2957fc00d548e665",
+    "config/GMFE69/ShellMenu_update.json": "30416ead9200e93e2ecb2973c33f33fcf01f94804cd14bdad028c335d0ef5f18",
     "config/GMFE69/Soldier_object.json": "7a30bc59f2da99e09dc88cccbb7a487368d9a3383563fab93cdadbe149091aa5",
     "config/GMFE69/Soldier_object_attach.json": "2e04f75725ea3aff4077c15d79c8744fa099e6a9a8ee72312da93ce4d9558a4e",
     "config/GMFE69/Soldier_object_bone.json": "38ce62183c7deb6c624b01eb076df8fa6fa2870f8efe2f294f30c6fb0945ce6d",
@@ -1956,17 +1959,17 @@
     "config/GMFE69/UIStudio_visibility.json": "d53690c96ae28a9ee09772669bc2153d28fb590112e2e13b902e35d4e2a2f373",
     "config/GMFE69/UserInterface.json": "43a8bb46c3399b0bebba952c98941e60091427e1f2ccaf6a7a962ad8be682caa",
     "config/GMFE69/UserInterface_compass.json": "8012daeda47953715078cad352525026f11b2fd4664b2eeacbf6d904f0e4bc45",
-    "config/GMFE69/UserInterface_draw.json": "0b4995effab6def04886f7efba241f377a1778a0caf64a885deccdc35274c0b0",
-    "config/GMFE69/UserInterface_drawcompass.json": "789f7ef5fca48304ac2b45e1110e0044f8da2d1ad25e9ca88d4a8c42368f9c8b",
+    "config/GMFE69/UserInterface_draw.json": "861ed2b0b1e47942157769389e0e60214a947e289e96c0506d2a6e07e8398f51",
+    "config/GMFE69/UserInterface_drawcompass.json": "6f2b443ebfcaa76628e781d524f9513593606a661f8e98ec2b944f5b9f6bb245",
     "config/GMFE69/UserInterface_hitdirection.json": "13d32667063590cf0321f1f6259a2990e667cf05f1719702e9bd4b4629e34d1d",
-    "config/GMFE69/UserInterface_hitstatus.json": "1d0b8b284fe70fe3256751d7800ab5b145b1f79bfe7f2e99c50601af9a6bbd1d",
+    "config/GMFE69/UserInterface_hitstatus.json": "58bb6407a4a81b377e6821ff8872116697432e023d05482f224436c171d97844",
     "config/GMFE69/UserInterface_init.json": "d41da047819eae73182d4468becb7f6d611b7962831555b00a62de47625edef2",
     "config/GMFE69/UserInterface_radar.json": "4e46a195a50c598117fc98addf8b31916ccf15158c6df9f5528ed8f822e57faa",
-    "config/GMFE69/UserInterface_score.json": "18c2a259ce6bb5acd6ca1fe3dade7b0d20140540b43fffa582c62539f0c6480a",
-    "config/GMFE69/UserInterface_timestamp.json": "cfbae3a7ae9e55f4ad502c878bee3be4ae293ecf13b80673dd185c4c42140799",
+    "config/GMFE69/UserInterface_score.json": "6fad5a2fbef8dc6f7a2c5b7ffe68311b90c3384cecefca89583a61cd2581b412",
+    "config/GMFE69/UserInterface_timestamp.json": "0bba66ce4a658c646c306f2d70d90e01f75e535cc4fcfefedf66f76cd5d5e151",
     "config/GMFE69/UserInterface_update.json": "37d7d6827fcc091d75cf88d1345427241ccae4ac2d363d59a933b0269c5f308d",
-    "config/GMFE69/UserInterface_weaponname.json": "93fb40b2fbafe553f507c76dd5291883c2f29e8367c66f5066b0dd0999d6d4e6",
-    "config/GMFE69/UserInterface_xfilestime.json": "563f4114aae83f9dc0b1fba6443500d879055bfc214df282dccfdc166938060b",
+    "config/GMFE69/UserInterface_weaponname.json": "f8188b389c744124feb83a870252776e37605fe66e073362d53e6b703bae5930",
+    "config/GMFE69/UserInterface_xfilestime.json": "997bd66a288a20db0f99f7c395dac7e0c9d84a7c9fd5fc56c81a00e0fd9e80e2",
     "config/GMFE69/__exception.json": "c87ca5413306952b1ad7590a076c6f5512f821603877dc7146bf7cb8488a03a1",
     "config/GMFE69/__init_cpp_exceptions.json": "473fc79adada2d4f4716f9dfb8db2454052cf439f5333b1078f4ff68cc1e87da",
     "config/GMFE69/__mem.json": "7b371c8954f9a6801abb4e67faa0ee57a68e5dc8ed0859a4f409105a4f523615",
@@ -2265,8 +2268,8 @@
     "config/GMFE69/debug_prof_cdbgstatsrenderbin_dtor.json": "9813d8fdd5faf8eb748bbd832b0f22a372815337c6332050bca65ec6eb3e6244",
     "config/GMFE69/debug_prof_cprofhistrenderbin_dtor.json": "00e1830a10869cbd4761d60d782d37ea16fb7c729d7bcd4022e612351a1f37f7",
     "config/GMFE69/debug_prof_profilebin_ctor.json": "2c58b2f55b872d81b5a2b7b1997417b5270e4ece7991a1349e35017bfd0ddf7f",
-    "config/GMFE69/debug_prof_register.json": "5baa66d7fb3f8511a94f724885de9a5ec71de3505db30e3813ec6728c1da5f69",
-    "config/GMFE69/debug_prof_stats.json": "8dcd3d54a8afdfb1de007b790e6297ba0114db0f72803a6a900504683f086f17",
+    "config/GMFE69/debug_prof_register.json": "c99b9e7647f95384ddd85a4bfa61c871943181eee9e5154a4cdab8c179ca9b88",
+    "config/GMFE69/debug_prof_stats.json": "d4619c561ed3037fa28a301f62ed8cb9c9d9011f175dd45b5f5d641fd8db9b28",
     "config/GMFE69/debug_prof_timers.json": "55be7658fe193c6c91eef7449b78be88ec1a421e62537cafe7f4df8d85f2aac1",
     "config/GMFE69/debugger.json": "b4812b86753209416cae697106b949c189ef985bbe634aca332ff006abd18fdb",
     "config/GMFE69/decal.json": "288ed3352163b37fd27f6fb032618dc8d70350e6b657d2e23886ef6e46fc9207",
@@ -2336,10 +2339,10 @@
     "config/GMFE69/filesys_ea_del.json": "42ec0436e074b8549cd6d4042c9475e5de4119516b2b2b3e8b06d0f517ce663b",
     "config/GMFE69/flush_cache.json": "aa1c08f24f7fa7ce6bf2cfa32e6ae398b7b93fea2374de2a6120d5e28e6b9578",
     "config/GMFE69/font.json": "56ec5e4085fe4be430a0e0bc9f2870a0bae1430b36449d0f699317f3ab478655",
-    "config/GMFE69/font_centeredf.json": "8bbfc66dea81d21c6e4e6275db81a298494116ac5dc2cbe35e0bad01f3aedcc0",
+    "config/GMFE69/font_centeredf.json": "421c1f07d062e1ea1035ee9a839a5e13a59a5753c06a13e4dc572bfb1755149b",
     "config/GMFE69/font_draw.json": "e1d6e44b196fe1d4eeaf0a5b2a1c061d4372684fe40ea58c8d46c45b783467b2",
     "config/GMFE69/font_driver.json": "6b6cf9d6937c5cd191b23edd80f9b11e5300b4d0dd4fd7ab2b2dde997d2cb36a",
-    "config/GMFE69/font_dtor.json": "f1e6fc09ed6f7382f41553679d5b7fdc87bb855b2ff4be00ecbaae021af006f9",
+    "config/GMFE69/font_dtor.json": "3a446ebdc94e76ea39b671c8458b23d8de9df4b3e4e5e423f5e89cb8206d7866",
     "config/GMFE69/font_render.json": "b18a752f499727f00f2b65c0d6daf67054ef7b29bd6c41de08928440ebf0c8d7",
     "config/GMFE69/fontchar.json": "52d15cdb73d5c697247c5e96fc9c264304ab2e315365308ab6d0f47d0d6364d8",
     "config/GMFE69/fontcreate.json": "8eae282aa690a9f53df0acd27ccc63183d4e34168a62224a70720500e604ea54",
@@ -2484,7 +2487,7 @@
     "config/GMFE69/pad.json": "7224d4f0d776e7eb7e4a31710a8da2314d18ca859f84d972016cd4aae36ba462",
     "config/GMFE69/particlesystem.json": "24068e7fe2c1a843548a8170cc5ca29a7c4b6b8501f636371e278e843c7ad9c2",
     "config/GMFE69/particlesystem_active.json": "78dc93952b4c4a957af60cd7754810e7cb5e5fd7a2b262842b46983a8df0754f",
-    "config/GMFE69/particlesystem_beginupdate.json": "daf24fb6d7215109a11579e6c1d7ff3e5149d7d6159972445ac6948c344f3b7c",
+    "config/GMFE69/particlesystem_beginupdate.json": "b82cbf9c24880024fd153575054ab751efa56de9bed93e4c4b75bd94e268d6b2",
     "config/GMFE69/particlesystem_cinstancedparticlesystem_dtor.json": "0640e6630dd5461b08fed79d8cc861d7707a2f46802b70a88c779919b3b0c9b5",
     "config/GMFE69/particlesystem_color.json": "a36255556632f42fc3bd0e22c2ccfc1ba011ca413fb93e9b26180a04e88722f3",
     "config/GMFE69/particlesystem_cparticlesystem_dtor.json": "454d3c94827122cc0b1ec35282bae437643b65eb4c3890bd11f74dfc291dba4c",
@@ -2498,7 +2501,7 @@
     "config/GMFE69/particlesystem_property.json": "f480c26d2e5535433e7a1e8af521073341101133f75504526b37741786c737f0",
     "config/GMFE69/particlesystem_register.json": "24b56e380fb42673a8bc47e87581e3d104af44517f3210c7d50a11d5c62ece01",
     "config/GMFE69/particlesystem_registerfn.json": "ec3c1a26d4ced644abe7c38251de9b895fc2247212309754fff57892874d1a2a",
-    "config/GMFE69/particlesystem_reset.json": "4b9df77fbfeae8742b7fcd72e85dfd610a04917ff88d4c99f19ad42bd98e10dd",
+    "config/GMFE69/particlesystem_reset.json": "80fc25c065894b93f22f4e069c23f753ab34dd728b7e0de308e9f748d7339508",
     "config/GMFE69/particlesystem_rotation.json": "f93990bd126de25a1b458dd4e7554b136b5c9214c1915c7370abb2df09b17bf7",
     "config/GMFE69/particlesystem_texture.json": "b25922fccbd61152871c9aea7e27ecc58c5549aaf3a70d1b08b1021efdd8b8e4",
     "config/GMFE69/particlesystem_texturebin_dtor.json": "dbfb9dae907a58514bd9d26ca874193f87350b9fd1437f92189dcbdf26d4ed0a",
@@ -2531,7 +2534,7 @@
     "config/GMFE69/player_crouch.json": "2673384af34290f5a8cb054f662694c425fa10c01d8df47bd77ba9251ff71fd1",
     "config/GMFE69/player_ctor.json": "460be5776b7a975b8ba07e6fd3410a02b5bb2bd48ba479e92851ff37735ca5da",
     "config/GMFE69/player_death.json": "345a6f76314776f3fb60493e93691b775e5919394fe5ada799cef0def9610cd7",
-    "config/GMFE69/player_draw.json": "0efe7656d98a6ecf10f34000ac69dac3ec549bbadb998fa10e740b8c86bf57a1",
+    "config/GMFE69/player_draw.json": "c9f30ac05a5fddd3f3886a8c45c9732cc2e6196ba8bc9dd314b0556de87bdf06",
     "config/GMFE69/player_dtor.json": "2addf648ae929e538fe24d565505aec938d14b6b26e8b9df37fc121f3b9dc584",
     "config/GMFE69/player_fastvec.json": "153f1254b111c01809192da6859030d347549296ae4eeccb87c58108764a04fa",
     "config/GMFE69/player_fov.json": "9bc221128255f6256db8f6709ae39b849ca2d2b3b5a3de5601299ed560c949d1",
@@ -2586,13 +2589,13 @@
     "config/GMFE69/publisher_secb.json": "003daadd96d8e88271f5a6f15c6d2e1534d14023b184728c4f0b1fb0067e0d73",
     "config/GMFE69/publisher_setsubject.json": "e07676cb0fbd649f1ce3eb79678bdb80211821ed91a4290bb96a0ad77d482940",
     "config/GMFE69/pumhandler.json": "4a1b9c1c0ad38d848976223b974a49c13ff2b783970c8734f0b38fc77ab873e0",
-    "config/GMFE69/pumhandler_add.json": "fe8854e79c304d80cacf9ad63f19fc53c3a178c035fd2d995e3fedb8d74f921c",
-    "config/GMFE69/pumhandler_ctor.json": "4b8064fb00e0213cca7da4b4e6a3c57d9ecbd5e4780842bff61cf19d854f3abf",
+    "config/GMFE69/pumhandler_add.json": "11e6826dc9d13a738b0866efd97e79a5b16067fd16d1e358b7b55c317bd540e5",
+    "config/GMFE69/pumhandler_ctor.json": "2a7fb1efbed4e6396d8d70e924a987a8beb6bf80b420c556fbc44695d698c867",
     "config/GMFE69/pumhandler_dtor.json": "eb1fa3c0678cfc63cc3e93936b88f995bacc9a497f81ba0d1141697823d52233",
     "config/GMFE69/pumhandler_list.json": "b9a06539cda8cf0120d3482181e6cc47b7c4069503ef878a514bade78d7bc123",
     "config/GMFE69/pumhandler_list_ctor.json": "afd763151cd34d04af50ee01cd475a2ac936c950291a77939b2ab0013d27fa87",
     "config/GMFE69/pumhandler_list_reserve.json": "7b7007005aaca5564ef699402d4191978de8b746a96b91c2f383a1bf52fc5b4b",
-    "config/GMFE69/pumhandler_loop.json": "083f00c3dd4aeed02cd5b773798e976e040dc04a4dddee44464b97f94b382678",
+    "config/GMFE69/pumhandler_loop.json": "a277ca8ffd6c8f641df76d5210bbae55d136aa2a55157da4d6de4a0d4666ca16",
     "config/GMFE69/pumhandler_prompt.json": "a2b27b1646eb28ce41b3f90f69bd46c89fc65430467b1ecafaf5da4643f5a4d2",
     "config/GMFE69/pumhandler_subtitles.json": "d7c42ca41fbb2b990bd77b9269b556cfb44625f182320e9982899e4d8079e322",
     "config/GMFE69/pumhandler_umt_dtor.json": "819d1b3919e5621005c600a9a0fb38e9035c014a74b47b2827c24aa90707236a",
@@ -19572,8 +19575,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f9bcb7dbff81bb7f40321e9ddf9dee01cc17c12d51a98712c545434f7ea36a09",
-      "linked_sha256": "7199972f10a178bcf25e0297cf5b32d818660dbed77503815d1ec258119dfae3"
+      "object_sha256": "c0adc85971150c0d64da7c48c52dc64158d041de5c4e092e22d94d7fb6468a98",
+      "linked_sha256": "8989c3842f6f557709d4502c24d1a8000cac33975140c79ffbac11ee35916fd9"
     },
     {
       "id": "objcreate",
@@ -36598,8 +36601,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "f985ec5bcb4e894c3d51dac8e91cd86d12f4a3d0a8c429f23b420f1fba8fa5c9",
-      "linked_sha256": "b5cd52ef8cb6ede3a420a831645d7cd8e0e79e0c1aeb3159758f76f8ffbb0724"
+      "object_sha256": "316a5105867ff5dfda226e45264cfc59a5d1447023a7cfb4b0533922e93598cb",
+      "linked_sha256": "d8051c2e2cd47f1a1f3166575f4df3702e7e4e66e007f193fe3013f0ae4b1d3a"
     },
     {
       "id": "sprite_csprite_dtor",
@@ -36988,8 +36991,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "85220f26d78e0b2f98b6981a5dd51735d1d21492fce8dabf3e2d074ed8ebaa0e",
-      "linked_sha256": "3a4ac9401884d22a0adead4265787b5bfed4b93ba0e6357c44bd7a429746bde1"
+      "object_sha256": "97069f4367d159b63437d08e3032b1739f0e399a06fc12b6a7164fa0ab1fa6be",
+      "linked_sha256": "8bd4ed6ced779fd48a6248ceb42bdc85328f4921627ef96c1101f6ce5e8d8c0a"
     },
     {
       "id": "rcmp_playmovie",
@@ -39998,8 +40001,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6dca2ef21438d6ceaa48307da08c1799ca2b8640c07fa31e63fa51f556a88d62",
-      "linked_sha256": "c34eae956d14a8b3607e8876bc1b0bdf30f3cf4ae6fd22b0ef04a22397ae784c"
+      "object_sha256": "352c165253b61dd6773bca50379f9d131579e32af99b93804b9d638074167628",
+      "linked_sha256": "50d09bba64c74468d104d1e0af406c2abdd38684857f4f3aa1a5c8f09c4c25cd"
     },
     {
       "id": "AIObject_ctor",
@@ -44333,8 +44336,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "ac3d3458d405b47d1f216c52b9c07aacb2ed3054898a28adeab16c3702ed2c7e",
-      "linked_sha256": "7ff97f73634deee76c8abebbf7cce014996ab3e5d4e8f36c3f02109c31ca9ed5"
+      "object_sha256": "4a8bafea24a5eb755948d2b561ec8200b0eaddde4e3297ca25107298657b8f36",
+      "linked_sha256": "b55e00320aedaf83451a528b142c30f434664ac9c369f802b8d05fd06c6a2d26"
     },
     {
       "id": "AISplinePath_astar",
@@ -45996,8 +45999,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5ebc2d861738b363ca6fb4230cac7f4a71371f0d0772e58e769b9d730ec6d35b",
-      "linked_sha256": "04e02f0febf82d5cda089d2d0ab314cddfb05c2e9cd1cdf87006323d85c9a461"
+      "object_sha256": "10d46f61323844367628c682d051d8702c01dc82e07fc8b0905ed977cf689da7",
+      "linked_sha256": "bb0064091d473b214031683a38044133528aa9bbc21fa5ac12930545f21452d3"
     },
     {
       "id": "dvdStatus_gxinit",
@@ -47373,8 +47376,8 @@
       "discarded_functions": [
         "FadeValue__Fv"
       ],
-      "object_sha256": "f24339015e90976f16258c03cbf12e2ee1d6d5d81a801ea8a3844f2d0d0195c4",
-      "linked_sha256": "5d5dfe3c3d13e87161e7674a5d96139cc9dae507b57c738f71c552116fdf620f"
+      "object_sha256": "fcb2b90a0b78d5e199794f0d05943445a494cccd1c050182b813be642af4a4bc",
+      "linked_sha256": "fbd86dfc98dc3d891f0e8da5c214861cccb22de9e1f7deccead221dd5a9c7651"
     },
     {
       "id": "popup_displaytime",
@@ -48837,10 +48840,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a946c2915323e93078c437f2d5eb127e8bff9852d70ce1a8e04809757b7cbe3f",
-      "linked_sha256": "b95221b96ab49bc4a5a92ed81e8482bfc6abbd36f8fc22fd6a93ebd5a74e92e2"
+      "object_sha256": "a09760c6d3ee53fdb0171987e7ec3dbd84b97b0080923276258884cb1546af75",
+      "linked_sha256": "eeae4974002d7efce12f3cdf340fb89b1583b67a1d8f616ae0b4ce67c60de898"
     },
     {
       "id": "spat2hdr",
@@ -49155,8 +49158,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d109c5d06973859078654e098c5b636ea61a84e9a5eabfc983408716543c4658",
-      "linked_sha256": "6dac19c87c5b823cfcfa411249c6319701234ffc25a5ce94718e18110afac0f3"
+      "object_sha256": "8126b922a7be8e40576badcf651a514709f0cb27e2ed778526d7e8a4aed05095",
+      "linked_sha256": "baa6c2838dc1d6ad4f99bfee5fcb55c3bbeb59ffa888baa26c5832d6ac247a49"
     },
     {
       "id": "ShellMenu_specialmedals",
@@ -49272,8 +49275,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6827c096671eb23b5b4079e4c403d83ca7ac09452593b0c030bea323bd0eead9",
-      "linked_sha256": "d953c148941f07e228a7018245a997ff436ea0853a3ac5900d5e9326ae19beb7"
+      "object_sha256": "d3769955b143a830b1d3fada043168f008612d9c8c209ce025f8faf69498e3ba",
+      "linked_sha256": "b334f6283c3310e06d7ee0a5f51ae79d750e61740b6c1290d3bf97764717351b"
     },
     {
       "id": "ShellMenu_levelstats",
@@ -50413,8 +50416,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "985ec51a9689d78f7964e23432ad82995dd93545fe1934206a287ffdcfe40dbc",
-      "linked_sha256": "8daa40c80504fe9aea0af770a0f466b4de338a974617b40160316b16bba3828c"
+      "object_sha256": "220b0a31e5e12044634b320a8ea69f2891f46be279802a359beb15d027f80746",
+      "linked_sha256": "254b66d61c52425e998378984a57996d3434742ab01af3fdb2553d14c772d691"
     },
     {
       "id": "static_obj_setlight",
@@ -50530,8 +50533,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "cf505a9d91f36ab39b290d77cb8cffca60dfeff048a1442cc3976284ad037522",
-      "linked_sha256": "6ec6a3e6245949e7945eef3e9b3a5d42e815f3389fc8825cdedb77cb29e3aa2e"
+      "object_sha256": "e8657231593ccc040fa693c62fff401fd470829abffce7c951b11a12609f3491",
+      "linked_sha256": "c413ce4a3d8fa49381ae0a12327791a7e794debcf71dc185856635901a9714f0"
     },
     {
       "id": "UserInterface_radar",
@@ -50569,8 +50572,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "44b023471d9d85003655881d1c1b233ef9b86ef17709bc1c8972885e24d7e3d2",
-      "linked_sha256": "b740b5176247c6b6b90a126ee44a64671b2f407cfbf680504c64d0aaee79b6e1"
+      "object_sha256": "0f3b5fd88a72d3a6f30bfcbead5591f0c764ca7d30b88208c76651b7db66b4e1",
+      "linked_sha256": "396c4785a712134356e2513ec048ad9b850ea72ada883a22a7da1b2ed3677104"
     },
     {
       "id": "player_constrain",
@@ -50725,8 +50728,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "b0da9a23d6a2c97a5ad37094a42be470a5fd1f9704326e34145d08bc7f957e01",
-      "linked_sha256": "be2e5e6fcdc63a0bf96837fb4251b53e3120fb077c09971c190329a724be464e"
+      "object_sha256": "93738f0cd6d1f25fd87e815e4e8375b51ab2f429ca140e9073e58d5c93a34706",
+      "linked_sha256": "1effd9c72143dfe26faaac9daa757576cb61c8a3b7e119e5498e0a269a3ff368"
     },
     {
       "id": "AIObject_mmgpoint",
@@ -51507,10 +51510,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "d2cad39f3ea43e14c9e1f5b1c719b0c53d2f95bbe5e14662ae9bcb35989147cc",
-      "linked_sha256": "a7d4b6966d59e602957c71069cffcc10870b6b23d1e8d6ec025d2214e222e329"
+      "object_sha256": "1d7403fb370d748d3c4588053fba076d09c41835065a0ffd7d16fd4af2cb2126",
+      "linked_sha256": "76b1e58b2f0e0661412432f1038adb5de2ba9cf18206edb57e5e97875474010d"
     },
     {
       "id": "pumhandler_add",
@@ -51548,8 +51551,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2f1034e7e94fc0661f04c72ecd64c9d44df6fb257eb7b24dab5be98884147d8a",
-      "linked_sha256": "daa6bb300e2bd3bc5851776532fa29b7e76c9134571e0f6b9fa68468c148d686"
+      "object_sha256": "cac8e8435f197b02f2dd644aeceab9137359d00d341a96096c3fe336bfd24ece",
+      "linked_sha256": "a876647fe1382ccb8e0fb1adc28eff371d7788f3b3abb35678abd310266f9b64"
     },
     {
       "id": "path_crossfade",
@@ -52449,8 +52452,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d4ea61e1d51a54a0b6cb7b309f9e87aebea8912fe1517cc77f7a6da5bf9a9280",
-      "linked_sha256": "40776ed443a58b0bce43a233a648a0248f8b3afe9b76f8efdd4ce63efa06ba16"
+      "object_sha256": "249761c1ab4469285b4dcda35b35f1f3089aa4df391a6f748c219c2a068f1051",
+      "linked_sha256": "821cda22a2f11910453feaddae6fe1a28b7493544a6b952596112bcda8276cce"
     },
     {
       "id": "publisher_setsubject",
@@ -52527,8 +52530,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "006cac02466550f0017062a2d97a66d32c9d5fa4f55e372aca7f376a510f9bda",
-      "linked_sha256": "a98f895ae08b396b65d42896636515c3dd7ae04302712c56481cd61595343452"
+      "object_sha256": "ef4612addd4ccda4a7f8f8c151d08c3883e7ed652c9d4eec4c65c2590b541ea3",
+      "linked_sha256": "7f0f44daeec04ed22abdafcd8500dffce7587853fb505c9d716dcc554b59af3f"
     },
     {
       "id": "world_volume_ctor",
@@ -53164,8 +53167,8 @@
       "discarded_functions": [
         "ShellMenuBlockStrings__Fv"
       ],
-      "object_sha256": "7111ab552185097bc3ab50dae42d80fb99f4b0c463dfb9df0a67444132b32f42",
-      "linked_sha256": "27d9c3b4dfa253af5c4b95c941f9a5b18034e6bf9adbe0eb5aa2a3f8021af443"
+      "object_sha256": "86c91fe0fc46012938ebc3d65d2c118e4269c2de0d07f8581d1acd2df063aea3",
+      "linked_sha256": "04877dac3c7adcca4ae7912d97c4e90ad631cb11efbae88575484eba150fb84d"
     },
     {
       "id": "ShellMenu_autoload",
@@ -53205,8 +53208,8 @@
       "discarded_functions": [
         "ShellMenuBlockStrings__Fv"
       ],
-      "object_sha256": "cafa48f79ae1989ef0a7a95ba3880114d2d6ffe8da25eca1d233a9ddd399ab32",
-      "linked_sha256": "18863c6a0e5ea7b36015cc05ca3dcf347137891daa8f9040bc3bc41e7c6f28a3"
+      "object_sha256": "4c4197a3eb8661dcfc9a2b889a83f5aa4195bbef88e296ada6c33d8d09f95990",
+      "linked_sha256": "002b0ab64b923d7c2a98b01602a68d2ba6f313b35f3885505c0bbf848144d17c"
     },
     {
       "id": "ShellMenu_savegame",
@@ -53408,8 +53411,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0d6368f07e0396ed290b7ca1554f6cad36358e97f67cf6e24dc560eb4d2f57b0",
-      "linked_sha256": "3931320c7c13aabdd76ce9ff6c2963adfef30bc662882505cebfa257f75f7f7c"
+      "object_sha256": "737bc4ac684f1fd1b41300ddfd729ac3eb7fa3cec11d00cfa9a287f8e83b455e",
+      "linked_sha256": "09e33a28b394721b4d352a2bfca018b774a5ea173eb1acefd5bcac7b172ccdea"
     },
     {
       "id": "bsbifunc_schedules",
@@ -54071,10 +54074,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "e1944e661dafda4803dfbbefb90d7ba77e2b2a50d8cde9ce991e7b719cdc0291",
-      "linked_sha256": "ec305d5e8e4c222a4fef70d9f7ffed5139cb93531e2b74d9ff2635a6ba6410a0"
+      "object_sha256": "2e5513bdfcf1771683419e9300542c90c4d24ba9458de8f55b619b28ef7ac907",
+      "linked_sha256": "3f61d158315ac83365d5ad9ad0d8fab1e8d362cc21caa7c7f74bd2e8d954acf8"
     },
     {
       "id": "proxtrig_messages",
@@ -54229,8 +54232,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "e678b0417737bdf1b3c06c2a4a30a35df5988d14c306907601591c46515a62a3",
-      "linked_sha256": "3b36eb908aa8cd3cc59d3177d75cd9ba76810645afd62e88e42ef41b4cc65dc6"
+      "object_sha256": "758144ca4bf9da8ad263a5730ad8cf44d880ec8f84ca517af738d98171560df8",
+      "linked_sha256": "b9ca728e5b3212867482e664b3c8a72aa1654d00d4af4059add1c2a0a3fac2ba"
     },
     {
       "id": "UserInterface_init",
@@ -54311,8 +54314,8 @@
       "discarded_functions": [
         "PumhandlerBlockStrings__Fv"
       ],
-      "object_sha256": "55d71cd08a2c0d98507a47ee7906748232791b2bf34fb29105c1348a05b419d8",
-      "linked_sha256": "8f2932604f51faeda1fcd188d038888cc65a9eb439671da845ff615d232ba0bf"
+      "object_sha256": "9901d06b11083da7a29c372245cefd8f01f1c2b1ef92a80b0f93aa983ee7e3e7",
+      "linked_sha256": "77cb7e0bd273b99b8052bb033617147ef864ba244bfc038d6bf4230572bedad4"
     },
     {
       "id": "pumhandler",

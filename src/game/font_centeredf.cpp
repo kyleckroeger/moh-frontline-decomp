@@ -31,21 +31,8 @@ struct FONT {
     CFont* m_owner;
 };
 
-class CScreen {
-public:
-    virtual void vf08();
-    virtual void vf0c();
-    virtual void vf10();
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual int GetHeight();
-    virtual int GetWidth();
-    virtual void vf2c();
-    virtual float GetScale();
-    static CScreen* GetCurrent();
-};
+#include "game/CScreen.h"
+
 
 struct ViewportView {
     float m_x;
@@ -91,7 +78,7 @@ void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     float viewWidth = g_viewport.m_width;
     float width = Mul((float)screen->GetWidth(), viewWidth);
     viewX = g_viewport.m_x;
-    float scale = screen->GetScale();
+    float scale = screen->GetWidthScale();
     float center = (float)screen->GetWidth();
     center *= viewX;
     center = (width / 2.0f + center) / scale;
@@ -100,6 +87,6 @@ void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     float top;
     float left;
     FONT_getrecta(m_font, (const unsigned char*)text, &left, &top, &right, &bottom);
-    left = (center - right / 2.0f) * screen->GetScale();
+    left = (center - right / 2.0f) * screen->GetWidthScale();
     DrawText(left, y, text);
 }

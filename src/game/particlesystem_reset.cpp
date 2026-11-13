@@ -38,18 +38,8 @@ void* DWI_alloc(const char*, int, int);
 struct CColor;
 struct CRect;
 
-class CScreen {
-public:
-    virtual ~CScreen();
-    virtual void SetCurrent();
-    virtual void Flip();
-    virtual unsigned long Wait();
-    virtual void SetClear(bool);
-    virtual void SetClearColor(const CColor&);
-    virtual void SetClearRect(const CRect&);
-    virtual int GetHeight();
-    virtual int GetWidth();
-};
+#include "game/CScreen.h"
+
 
 class ISceneNode {
 public:
