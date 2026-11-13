@@ -278,6 +278,22 @@ emitted here; needs the full CBullet/ISceneNode chain), saems (conflicting C vie
 struct names), pathxSND (`-str` flags differ), world_volume (weak copy order), Gecko_ExceptionPPC
 (two compilers), anim_obj, alarm, pumhandler, world_object and AnimObjFactory (not attempted).
 
+Merges continued, 2026-11-13 (agent merge8, `scratch/loop3/merge8/notes.md`): first a
+regression fix in `tools/port_unit.py` (merge7's close-up over dropped records also subtracted
+the leading ones, which the section address already counts; a sweep of the 302 strip_unused
+units now changes only rcmp_mpc_codec, to its committed addresses). Then hearingvolume (with
+`__vt__14CHearingVolume`; CHearingVolume on the shared ISceneNode, CBullet : IMovingSceneNode
+declared as bullet.cpp's, its weak Penetrate/SetExclusionPair emitted here) and camera (with
+`__vt__7CCamera` and `CCamera::ASPECT_4x3`; a file-private CMatrix whose default constructor
+does nothing and the planes as a CFrustum member; `research/data/init/camera.cpp` is now
+`mainloop.cpp`, since `g_idSet` belongs to mainloop.cpp's record). Both compile with RTTI on and
+deferred inlining, written last to first (camera without auto-inlining). Re-run (1,067 units, 98
+drafts, 78 data files, all compiled): **57 undefined, 104 fragment-local, 49 duplicate**, 0
+small-data; two vtables fewer undefined. Still not merged: alarm, pumhandler and world_object
+(the dwi::list destructor's out-of-line copy and the copy inlined into reserve need different
+local orders, as world_volume's; alarm's other 10 functions match in one file), anim_obj and
+AnimObjFactory (not attempted), and the files listed above.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 

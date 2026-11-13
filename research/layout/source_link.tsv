@@ -30,7 +30,6 @@ undefined	__vt__13CMshSimpleBin	unit:staticmesh unit:staticmesh_cmshsimplebin_dt
 undefined	__vt__13CPlayerObject	unit:player_ctor unit:player_dtor
 undefined	__vt__13CStaticObject	unit:static_obj_dtor
 undefined	__vt__14CFinishPartBin	unit:dmesh unit:dmesh_cremapbin_ctor
-undefined	__vt__14CHearingVolume	unit:hearingvolume_ctor
 undefined	__vt__15CAIFilterObject	unit:AIFilter_caifilterobject_dtor unit:AIFilter_player unit:AIFilter_player_ctor unit:AIFilter_soldier_ctor unit:AIFilter_soldier_dtor unit:AIFilter_tank_ctor unit:AIFilter_tank_dtor
 undefined	__vt__15CParticleSystem	unit:particlesystem_cinstancedparticlesystem_dtor unit:particlesystem_cparticlesystem_dtor unit:particlesystem_cpropertyparticlesystem_dtor
 undefined	__vt__15CStaticAnimMesh	draft:AllocateStaticObject.800b386c draft:Init.800b254c unit:staticmesh_cstaticanimmesh_dtor
@@ -50,7 +49,6 @@ undefined	__vt__25CParticleSystemTextureBin	unit:particlesystem_register unit:pa
 undefined	__vt__5CFont	unit:font_dtor
 undefined	__vt__5CPart	unit:dmesh
 undefined	__vt__6CLight	unit:light_dtor unit:light_instanced_dtor unit:light_propertyanim_dtor
-undefined	__vt__7CCamera	unit:Moh2 unit:camera_dtor unit:player_ctor
 undefined	__vt__7CVolBox	draft:CreateDestructable.8003c93c draft:CreateRootHierObject.8003dde8 unit:animated_volume unit:box_create unit:box_dtor unit:cdbgeom_volbox_ctor unit:compartment_intersect unit:compartment_nodeshadows unit:compartment_volbox unit:fiber unit:objcreate_collvol unit:objcreate_german unit:objcreate_swa
 undefined	__vt__8CPartBin	unit:dmesh
 undefined	__vt__9CRemapBin	unit:dmesh unit:dmesh_cremapbin_ctor
