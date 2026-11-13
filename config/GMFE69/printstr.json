@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80151620",
-      "size": 688,
+      "address": "0x80151234",
+      "size": 1692,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "PRINT_movechannel__F12PRINTCHANNELi",
+      "address": "0x80151234",
+      "size": 332,
+      "binding": 0
+    },
     {
       "name": "PRINT_vstring__F12PRINTCHANNELPCcPQ23std13__tag_va_List",
       "address": "0x80151620",
@@ -62,6 +68,12 @@
       "binding": 1
     },
     {
+      "name": "PRINT_init",
+      "address": "0x80151380",
+      "size": 672,
+      "binding": 1
+    },
+    {
       "name": "PRINT_string",
       "address": "0x801516e0",
       "size": 140,
@@ -75,8 +87,6 @@
     }
   ],
   "externals": {
-    "PRINT_init": "0x80151380",
-    "PRINT_movechannel__F12PRINTCHANNELi": "0x80151234",
     "PRINTchannellist": "0x80193050",
     "PRINTdevicelist": "0x80192fd4",
     "PRINTinitialized": "0x8034f3d8",
@@ -86,7 +96,6 @@
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "PRINT_movechannel__F12PRINTCHANNELi",
     "PRINTchannellist"
   ],
   "discarded_local_functions": [],

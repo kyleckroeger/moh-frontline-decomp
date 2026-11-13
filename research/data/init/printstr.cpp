@@ -1,7 +1,7 @@
 // printstr.cpp: its initialised data (.data): PRINTchannellist, the print channels by
 // number, 16 named and the rest of the 64 empty. Each has a name, an enabled bit
 // (set for "all" and "alert") and a second bit set for every named channel; the layout
-// is inferred from src/ea/printstr.cpp's and printstr_movechannel.cpp's views. A file static
+// is inferred from src/ea/printstr.cpp's view. A file static
 // in the original, defined global here because the file's fragments reach it with extern.
 // Checked by research/tools/check_data.py.
 // settings: config/GMFE69/printstr.json
