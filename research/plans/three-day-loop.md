@@ -20,6 +20,15 @@ multiplayer not at all. Every landing keeps the complete image identical.
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
 - Verified: 89.20% (1,261,812 bytes) at 9da917fa, +42,540 this run. Landing commits: 71.
+- **Plan for 2026-11-13 onward (user, 11-13):** today (11-13) is matching again: exact matching
+  is never wasted (it is the end goal and replaces drafts that may be wrong). Four agents each
+  take a quarter of research/drafts/index.tsv (scratch/loop3/day2/group1-4.tsv, balanced by
+  size) and re-attack every row with the full rule set found on 11-12 (research/notes/
+  loop3-tricks-2026-11-12.md) and the forms accepted on 11-12 (docs/Remaining.md). After
+  today, the port plan (docs/PortReadiness.md): vtables from the original, boot-path class
+  headers (CScene, CPlayerObject, CCamera, CScreen, CInputManager), a pure-source link worked
+  to zero undefined, then step 1 in Dolphin (input movies, frame hashes, routes from 1_1).
+  The Dolphin limit is lifted (user, 11-13).
 - **Paused again 2026-11-12 ~22:40.** After the 21:57 update: __sinit_pumhandler_cpp 276
   (fac4d7fa). Verified 1,280,616 bytes (90.53%), +61,344 this run. The buddy.cpp temporary
   knot (__sinit_buddy_cpp, list<BuddyInfo> range ctor) was re-studied by sinit2 and is still
