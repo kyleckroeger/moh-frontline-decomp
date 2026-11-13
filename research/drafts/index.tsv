@@ -95,7 +95,6 @@ real_lines	size	address	function	compile_settings_from	draft
 	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof.json	research/drafts/debug_prof_misc.cpp
 	72	801055b0	__dt__Q24RCMP11RCMP_SYSTEMFv	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
 	76	801055f8	__sinit_rcmpbase_cpp	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
-	988	800ba3d0	__ct__19PopUpMessageHandlerFPcPc	config/GMFE69/pumhandler.json	research/drafts/pumhandler_ctor.cpp
 	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
 	708	80135324	TRKSuppAccessFile	config/GMFE69/msgbuf.json	research/drafts/TRKSuppAccessFile.80135324.cpp
 	4532	8007d704	RenderSystem__15CParticleSystemFR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/particlesystem_render.cpp

@@ -1255,7 +1255,8 @@
     "thrown_obj_init.json",
     "cdbobject_init.json",
     "pumhandler_loop.json",
-    "UserInterface_init.json"
+    "UserInterface_init.json",
+    "pumhandler_ctor.json"
   ],
   "progress": {
     "code_bytes": 1414572,

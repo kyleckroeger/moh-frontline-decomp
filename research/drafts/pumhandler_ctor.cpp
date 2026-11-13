@@ -111,8 +111,7 @@ inline void CUserMessageTable::CreateUMStructFromFile() {
     m_table = new UserMessage[m_count];
     for (i = 0; i < m_count; i++, pos += 2) {
         entry = index + pos;
-        extra = entry[0];
-        m_table[i].m_length = extra;
+        extra = m_table[i].m_length = entry[0];
         length = entry[1];
         m_table[i].m_text = text;
         end = text + length;
