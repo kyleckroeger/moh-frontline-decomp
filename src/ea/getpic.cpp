@@ -28,21 +28,25 @@
  *
  */
 
-// A fragment of getpic.cpp (0x80100db8): the reference decoder's slice,
+// getpic.cpp from Decode_Picture (0x80100950) to the end of its code: the
+// reference decoder's Decode_Picture (with picture_data and the
+// frame-reordering step inlined), Update_Picture_Buffers, slice,
 // decode_macroblock and Add_Block, with start_of_slice, skipped_macroblock,
 // motion_compensation and macroblock_modes inlined. Changes from the
-// reference, as the game's code shows: 4:2:0 only (six blocks, chroma
-// coordinates halved by the caller), no SNR, spatial or data-partitioning
-// layers apart from decode_macroblock's base quantizer update, no Clear_Block
-// (Add_Block indexes each row, steps a whole line and clears the block as it
-// adds it), GC_IDCT after each coded block, slice taking only MBAmax, and no
-// printing. The inlined helpers are declared inline here so that, as in the
-// original link, no out-of-line copies remain. The layer-data view is
-// inferred; the constants are the reference's (mpeg2dec.h). Decode_Picture
-// and Update_Picture_Buffers before slice, which work on the game's
-// MPC_CODEC_INTERNAL, are not reconstructed.
+// reference, as the game's code shows: Update_Picture_Buffers is rewritten
+// around the game's codec frame objects (each frame's image holds the three
+// planes back to back); 4:2:0 only (six blocks, chroma coordinates halved by
+// the caller), no SNR, spatial or data-partitioning layers apart from
+// decode_macroblock's base quantizer update, no Clear_Block (Add_Block indexes
+// each row, steps a whole line and clears the block as it adds it), GC_IDCT
+// after each coded block, slice taking only MBAmax, and no printing. The
+// inlined helpers are declared inline here so that, as in the original link,
+// no out-of-line copies remain. With deferred inlining the functions are
+// emitted in reverse source order. The layer-data, codec, frame and image
+// views are inferred; the constants are the reference's (mpeg2dec.h).
 #define I_TYPE 1
 #define P_TYPE 2
+#define B_TYPE 3
 #define D_TYPE 4
 #define BOTTOM_FIELD  2
 #define FRAME_PICTURE 3
@@ -129,6 +133,62 @@ void Decode_MPEG1_Non_Intra_Block(int comp);
 void Decode_MPEG2_Intra_Block(int comp, int dc_dct_pred[]);
 void Decode_MPEG2_Non_Intra_Block(int comp);
 extern "C" void GC_IDCT(short *block);
+
+// Inferred views of the game's movie classes, limited to what this file uses.
+// A frame's image keeps its pixels after a 16-byte header or, when a flag bit
+// in its byte at +12 is set, at a stored offset.
+struct MPDImageView {
+  unsigned char unknown00[4];
+  short width;
+  short height;
+  unsigned char unknown08[4];
+  unsigned char unknown0cBits : 3;
+  unsigned char hasDataOffset : 1;
+  unsigned char unknown0cLow : 4;
+  unsigned char unknown0d[3];
+  int dataOffset;
+
+  unsigned char *Data()
+  {
+    return hasDataOffset ? (unsigned char *)this + dataOffset : (unsigned char *)this + 16;
+  }
+};
+
+namespace RCMP {
+struct FRAME {
+  void *unknown00;
+  MPDImageView *image;
+};
+
+class CODEC {
+public:
+  virtual ~CODEC();
+};
+}
+
+class MPC_CODEC_INTERNAL : public RCMP::CODEC {
+public:
+  virtual ~MPC_CODEC_INTERNAL();
+  virtual void Init();
+  virtual void GetFrame();
+  virtual void GetCurrentFrameNumber();
+  virtual void GetFrameRate();
+  virtual void ReleaseFrame(RCMP::FRAME *frame);
+
+  RCMP::FRAME *CreateB();
+  RCMP::FRAME *CreateIorP();
+
+  RCMP::FRAME *forward;
+  RCMP::FRAME *backward;
+  RCMP::FRAME *current;
+  RCMP::FRAME *output;
+};
+
+extern unsigned char *MPDbackward_reference_frame[3];
+extern unsigned char *MPDforward_reference_frame[3];
+extern int MPDmb_height;
+extern int MPDsecond_field;
+extern int MPDprogressive_frame;
 
 static void Add_Block(int comp, int bx, int by, int dct_type, int addflag)
 {
@@ -670,4 +730,156 @@ resync: /* if Fault_Flag: resynchronize to next next_start_code */
     if (MBA>=MBAmax)
       return(-1); /* all macroblocks decoded */
   }
+}
+
+/* a frame's third plane: after the full-size first plane and the quarter-size
+   second plane (4:2:0). Inferred: the name and the (height, width, data)
+   parameter order are this project's; that order reproduces the original's
+   registers for the three third-plane pointers (single-use inline helper,
+   accepted 2026-11-12). */
+static inline unsigned char *third_plane(int height, int width, unsigned char *data)
+{
+  return data + width*height + (width/2)*(height/2);
+}
+
+/* IMPLEMENTATION: update picture buffer pointers */
+static void Update_Picture_Buffers(MPC_CODEC_INTERNAL *codec)
+{
+  RCMP::FRAME *frame;
+
+  /* B pictures do not need to be save for future reference */
+  if (MPDpicture_coding_type==B_TYPE)
+  {
+    frame = codec->CreateB();
+    codec->current = frame;
+    codec->output = frame;
+  }
+  else if (MPDpicture_coding_type==P_TYPE || MPDpicture_coding_type==I_TYPE)
+  {
+    /* only update at the beginning of the coded frame */
+    if (!MPDsecond_field)
+    {
+      if (codec->forward)
+        codec->ReleaseFrame(codec->forward);
+      frame = codec->backward;
+      codec->forward = frame;
+      codec->output = frame;
+      frame = codec->CreateIorP();
+      codec->backward = frame;
+      codec->current = frame;
+    }
+  }
+
+  frame = codec->backward;
+  if (frame)
+  {
+    MPDbackward_reference_frame[0] = frame->image->Data();
+    MPDbackward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
+    MPDbackward_reference_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
+  }
+  else
+  {
+    MPDbackward_reference_frame[0] = 0;
+    MPDbackward_reference_frame[1] = 0;
+    MPDbackward_reference_frame[2] = 0;
+  }
+  frame = codec->forward;
+  if (frame)
+  {
+    MPDforward_reference_frame[0] = frame->image->Data();
+    MPDforward_reference_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
+    MPDforward_reference_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
+  }
+  else
+  {
+    MPDforward_reference_frame[0] = 0;
+    MPDforward_reference_frame[1] = 0;
+    MPDforward_reference_frame[2] = 0;
+  }
+  frame = codec->current;
+  if (frame)
+  {
+    MPDcurrent_frame[0] = frame->image->Data();
+    MPDcurrent_frame[1] = frame->image->Data() + frame->image->width*frame->image->height;
+    MPDcurrent_frame[2] = third_plane(frame->image->height, frame->image->width, frame->image->Data());
+  }
+  else
+  {
+    MPDcurrent_frame[0] = 0;
+    MPDcurrent_frame[1] = 0;
+    MPDcurrent_frame[2] = 0;
+  }
+
+  /* IMPLEMENTATION:
+     one-time folding of a line offset into the pointer which stores the
+     memory address of the current frame saves offsets and conditional
+     branches throughout the remainder of the picture processing loop */
+  if (MPDpicture_structure==BOTTOM_FIELD)
+  {
+    MPDcurrent_frame[0]+= MPDcoded_picture_width;
+    MPDcurrent_frame[1]+= MPDchroma_width;
+    MPDcurrent_frame[2]+= MPDchroma_width;
+  }
+}
+
+/* decode all macroblocks of the current picture */
+/* stages described in ISO/IEC 13818-2 section 7 */
+static inline void picture_data()
+{
+  int MBAmax;
+  int ret;
+
+  /* number of macroblocks per picture */
+  MBAmax = MPDmb_width*MPDmb_height;
+
+  if (MPDpicture_structure!=FRAME_PICTURE)
+    MBAmax>>=1; /* field picture has half as mnay macroblocks as frame */
+
+  for(;;)
+  {
+    if((ret=slice(MBAmax))<0)
+      return;
+  }
+}
+
+/* track the progressive_frame of the reference frames */
+static inline void frame_reorder(int Sequence_Framenum)
+{
+  /* tracking variables to insure proper output in spatial scalability */
+  static int Oldref_progressive_frame, Newref_progressive_frame;
+
+  if (Sequence_Framenum!=0)
+  {
+    if (MPDpicture_structure==FRAME_PICTURE || MPDsecond_field)
+    {
+      if (MPDpicture_coding_type!=B_TYPE)
+      {
+        Newref_progressive_frame = MPDprogressive_frame;
+        Oldref_progressive_frame = Newref_progressive_frame;
+      }
+    }
+  }
+  else
+    Oldref_progressive_frame = MPDprogressive_frame;
+}
+
+void Decode_Picture(MPC_CODEC_INTERNAL *codec, int sequence_framenum)
+{
+  if (MPDpicture_structure==FRAME_PICTURE && MPDsecond_field)
+  {
+    /* recover from illegal number of field pictures */
+    MPDsecond_field = 0;
+  }
+
+  /* IMPLEMENTATION: update picture buffer pointers */
+  Update_Picture_Buffers(codec);
+
+  /* decode picture data ISO/IEC 13818-2 section 6.2.3.7 */
+  picture_data();
+
+  /* ISO/IEC 13818-2 section 6.1.1.11: Frame reordering */
+  frame_reorder(sequence_framenum);
+
+  if (MPDpicture_structure!=FRAME_PICTURE)
+    MPDsecond_field = !MPDsecond_field;
 }

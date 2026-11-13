@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80100db8",
-      "size": 3172,
+      "address": "0x80100950",
+      "size": 4300,
       "type": 1
     },
     {
@@ -52,9 +52,21 @@
       "address": "0x8018b9d0",
       "size": 21,
       "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034edb8",
+      "size": 8,
+      "type": 8
     }
   ],
   "functions": [
+    {
+      "name": "Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL",
+      "address": "0x80100a30",
+      "size": 904,
+      "binding": 0
+    },
     {
       "name": "slice__Fi",
       "address": "0x80100db8",
@@ -72,9 +84,17 @@
       "address": "0x801016e4",
       "size": 824,
       "binding": 0
+    },
+    {
+      "name": "Decode_Picture__FP18MPC_CODEC_INTERNALi",
+      "address": "0x80100950",
+      "size": 224,
+      "binding": 1
     }
   ],
   "externals": {
+    "CreateB__18MPC_CODEC_INTERNALFv": "0x80104420",
+    "CreateIorP__18MPC_CODEC_INTERNALFv": "0x8010448c",
     "Decode_MPEG1_Intra_Block__FiPi": "0x800fefc8",
     "Decode_MPEG1_Non_Intra_Block__Fi": "0x800fe6f0",
     "Decode_MPEG2_Intra_Block__FiPi": "0x800fdf8c",
@@ -87,6 +107,7 @@
     "Get_macroblock_address_increment__Fv": "0x80101ba4",
     "Get_macroblock_type__Fv": "0x80101f20",
     "MPDbackward_f_code": "0x8034ee88",
+    "MPDbackward_reference_frame": "0x80314e08",
     "MPDbase": "0x80314e58",
     "MPDchroma_width": "0x8034edf4",
     "MPDclip": "0x8034ede8",
@@ -96,14 +117,18 @@
     "MPDf_code": "0x80314e2c",
     "MPDfault_flag": "0x8034ede0",
     "MPDforward_f_code": "0x8034ee80",
+    "MPDforward_reference_frame": "0x80314e14",
     "MPDframe_pred_frame_dct": "0x8034ee98",
     "MPDfull_pel_backward_vector": "0x8034ee84",
     "MPDfull_pel_forward_vector": "0x8034ee7c",
     "MPDld": "0x8034ef30",
+    "MPDmb_height": "0x8034ee14",
     "MPDmb_width": "0x8034ee10",
     "MPDnon_linear_quantizer_scale": "0x8018c3e8",
     "MPDpicture_coding_type": "0x8034ee74",
     "MPDpicture_structure": "0x8034ee90",
+    "MPDprogressive_frame": "0x8034eeac",
+    "MPDsecond_field": "0x8034edfc",
     "MPDspatial_temporal_weight_code_table_index": "0x8034eef0",
     "Show_Bits__Fi": "0x800fd7a8",
     "form_predictions__FiiiiPA2_A2_iPA2_iPii": "0x801067d4",
@@ -134,9 +159,12 @@
     "MPDfull_pel_backward_vector",
     "MPDfull_pel_forward_vector",
     "MPDld",
+    "MPDmb_height",
     "MPDmb_width",
     "MPDpicture_coding_type",
     "MPDpicture_structure",
+    "MPDprogressive_frame",
+    "MPDsecond_field",
     "MPDspatial_temporal_weight_code_table_index"
   ],
   "original_file": "getpic.cpp",
