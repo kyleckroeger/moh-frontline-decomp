@@ -1,5 +1,6 @@
-// real3 (2026-11-12): 14 -> 6 real lines by the declaration order of the second-solve locals (det, e, bd, n2, py, px, n1, dc, d2, inv, pz;
-// found by a statement/declaration-order hill climb). Mul is still load-bearing (6 left in the solved block; plain products 19, Scale/Add/*= members 40).
+// unlockC (2026-11-12): 6 -> 2 real lines. real3's solved-block climb (Mul value products, accepted 2026-11-12) at 3, then
+// 'uy = ty + sy' (operands swapped) 2. Left: sy/ty computed in the other order with f6/f8 swapped (orig sy f6 first). Climbs
+// of the solved block (500 its), all 720 orders of the top float/bv declarations, per-product Mul/MulV/plain forms: flat at 2.
 extern "C" {
 #include <math.h>
 }
@@ -301,19 +302,31 @@ void CAnimObject::ConstrainVelocity() {
                 solved = true;
             }
             if (solved) {
-                float sx = Mul(b, bv.x);
-                float tx = Mul(px, a);
-                float ux = sx + tx;
-                float dx = Mul(ux, 1.05f);
-                float sy = Mul(b, bv.y);
-                float ty = Mul(py, a);
-                float uy = sy + ty;
-                float dy = Mul(uy, 1.05f);
-                float sz = Mul(b, bv.z);
-                float tz = Mul(pz, a);
-                float uz = sz + tz;
-                float dz = Mul(uz, 1.05f);
+                float ty;
+                float sx;
+                float sy;
+                sx = Mul(b, bv.x);
+                float dx;
+                float dz;
+                ty = Mul(py, a);
+                float ux;
+                float tz;
+                float tx;
+                tx = Mul(px, a);
+                ux = sx + tx;
+                dx = Mul(ux, 1.05f);
+                float uz;
+                sy = Mul(b, bv.y);
+                float sz;
+                float uy;
                 m_velocity.x = velocity.x - dx;
+                uy = ty + sy;
+                float dy;
+                dy = Mul(uy, 1.05f);
+                sz = Mul(b, bv.z);
+                tz = Mul(pz, a);
+                uz = sz + tz;
+                dz = Mul(uz, 1.05f);
                 m_velocity.y = velocity.y - dy;
                 m_velocity.z = velocity.z - dz;
             }

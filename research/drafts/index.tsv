@@ -29,7 +29,7 @@ real_lines	size	address	function	compile_settings_from	draft
 20	1632	8005ca88	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	config/GMFE69/AIFilter_runaway.json	research/drafts/ChooseCoverPointByType.8005ca88.cpp
 22	912	80057eac	AddBuddy__F9BuddyInfob	config/GMFE69/buddy_vec_path_end.json	research/drafts/AddBuddy.80057eac.cpp
 23	1044	800672c4	AnimStProcess	config/GMFE69/animst.json	research/drafts/AnimStProcess.800672c4.cpp
-6	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
+2	1268	80093e64	ConstrainVelocity__11CAnimObjectFv	config/GMFE69/anim_obj_collide.json	research/drafts/ConstrainVelocity.80093e64.cpp
 25	2436	800ce450	CheckForObstructions__10CExplosionFR10ISceneNode	config/GMFE69/bulletfactory_projectile_pool.json	research/drafts/CheckForObstructions.800ce450.cpp
 25	2212	800bd864	DrawFragCount__13UserInterfaceFb	config/GMFE69/UserInterface_weaponname.json	research/drafts/DrawFragCount.800bd864.cpp
 25	712	801503b4	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	config/GMFE69/aramalloc_alloc.json	research/drafts/ARAM_alloc_node.801503b4.cpp
@@ -51,7 +51,7 @@ real_lines	size	address	function	compile_settings_from	draft
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
-101	2948	8007fbe8	UpdateBoundingBox__15CParticleSystemFv	config/GMFE69/particlesystem_visible.json	research/drafts/UpdateBoundingBox.8007fbe8.cpp
+56	2948	8007fbe8	UpdateBoundingBox__15CParticleSystemFv	config/GMFE69/particlesystem_visible.json	research/drafts/UpdateBoundingBox.8007fbe8.cpp
 13	572	8001cca8	TLT_LoadFromRepository__FPCcPiPb	config/GMFE69/system.json	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
 83	456	80021220	BIFunc_MechFollowPath__FPPiPv	config/GMFE69/bsbifunc_vibration.json	research/drafts/BIFunc_MechFollowPath.80021220.cpp
 109	1016	800f4e98	_matrix_rot_yzx__FR7CMatrixlll	config/GMFE69/dmrender.json	research/drafts/_matrix_rot_yzx.800f4e98.cpp

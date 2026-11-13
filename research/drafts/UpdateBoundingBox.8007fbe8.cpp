@@ -1,5 +1,7 @@
-// real2 (2026-11-12): 101 real lines, unchanged: start.Scale, aa.Scale, m_center.Sub/Add (the original's CVector3 members). The Mul inline stays load-bearing (acc.Scale + start.Add: 103); vel as a vector 735.
-
+// UpdateBoundingBox (CParticleSystem): 56 real lines, structural 0 (vec5's UBB_BEST56, promoted from research/drafts/pending
+// by unlockC 2026-11-12 now that the member operator[] pin used once and Mul/Mul2 value products are accepted).
+// Left: block-2 FPR colouring (t / t2 overflow into f31; vec5 notes). Tried: a Kin inline taking the tick members
+// or their difference instead of t (64 = KIN64, inert).
 class CPSManager {
 public:
     float GetCurrentTicks() const { return m_currentTicks; }
@@ -19,13 +21,12 @@ public:
         d.v[2] = z;
     }
 
+    float& operator[](int i) { return ((float*)this)[i]; }
     void Scale(const CVector3& v, float k) {
         d.v[0] = k * v.d.v[0];
         d.v[1] = k * v.d.v[1];
         d.v[2] = k * v.d.v[2];
     }
-    void Add(const CVector3& v) { d.v[0] += v.d.v[0]; d.v[1] += v.d.v[1]; d.v[2] += v.d.v[2]; }
-    void Sub(const CVector3& a, const CVector3& b) { d.v[0] = a.d.v[0] - b.d.v[0]; d.v[1] = a.d.v[1] - b.d.v[1]; d.v[2] = a.d.v[2] - b.d.v[2]; }
     CVector3& operator+=(const CVector3& v) {
         d.v[0] += v.d.v[0];
         d.v[1] += v.d.v[1];
@@ -135,7 +136,7 @@ static inline float Max(float a, float b) {
 }
 
 /* inferred: widens [lo, hi] by the turning point of p(t) = v t + a t^2 inside (0, limit) */
-static inline void Turn(float v, float a, const float& limit, float& lo, float& hi) {
+static inline void Turn(float a, float v, const float& limit, float& lo, float& hi) {
     float t = -0.5f * v / a;
     if (t > 0.0f && t < limit) {
         float p = v * t + t * (a * t);
@@ -146,6 +147,8 @@ static inline void Turn(float v, float a, const float& limit, float& lo, float& 
     }
 }
 
+static inline float Mul2(float a, float b) { float r = a; r *= b; return r; }
+static inline float SubV(float a, float b) { return a - b; }
 static inline float Mul(float a, float* v, int i) {
     return a * v[i];
 }
@@ -177,26 +180,24 @@ void CParticleSystem::UpdateBoundingBox() {
         m_max.d.v[2] = m_max.d.v[2] > p1.d.v[2] ? m_max.d.v[2] : p1.d.v[2];
         CVector3 lo(0.0f, 0.0f, 0.0f);
         CVector3 hi(0.0f, 0.0f, 0.0f);
-        CVector3* plo = &lo;
-        CVector3* phi = &hi;
         if ((float)__fabs(a.d.v[0]) > 1e-05f) {
-            Turn(v0.d.v[0], a.d.v[0], life, plo->d.v[0], phi->d.v[0]);
-            Turn(v1.d.v[0], a.d.v[0], life, plo->d.v[0], phi->d.v[0]);
+            Turn(a.d.v[0], v0.d.v[0], life, lo[0], hi[0]);
+            Turn(a.d.v[0], v1.d.v[0], life, lo[0], hi[0]);
         }
         if ((float)__fabs(a.d.v[1]) > 1e-05f) {
-            Turn(v0.d.v[1], a.d.v[1], life, plo->d.v[1], phi->d.v[1]);
-            Turn(v1.d.v[1], a.d.v[1], life, plo->d.v[1], phi->d.v[1]);
+            Turn(a.d.v[1], v0.d.v[1], life, lo[1], hi[1]);
+            Turn(a.d.v[1], v1.d.v[1], life, lo[1], hi[1]);
         }
         if ((float)__fabs(a.d.v[2]) > 1e-05f) {
-            Turn(v0.d.v[2], a.d.v[2], life, plo->d.v[2], phi->d.v[2]);
-            Turn(v1.d.v[2], a.d.v[2], life, plo->d.v[2], phi->d.v[2]);
+            Turn(a.d.v[2], v0.d.v[2], life, lo[2], hi[2]);
+            Turn(a.d.v[2], v1.d.v[2], life, lo[2], hi[2]);
         }
-        m_min.d.v[0] = Min(m_min.d.v[0], lo.d.v[0]);
-        m_min.d.v[1] = Min(m_min.d.v[1], lo.d.v[1]);
-        m_min.d.v[2] = Min(m_min.d.v[2], lo.d.v[2]);
-        m_max.d.v[0] = Max(m_max.d.v[0], hi.d.v[0]);
-        m_max.d.v[1] = Max(m_max.d.v[1], hi.d.v[1]);
-        m_max.d.v[2] = Max(m_max.d.v[2], hi.d.v[2]);
+        m_min.d.v[0] = m_min.d.v[0] < lo.d.v[0] ? m_min.d.v[0] : lo.d.v[0];
+        m_min.d.v[1] = m_min.d.v[1] < lo.d.v[1] ? m_min.d.v[1] : lo.d.v[1];
+        m_min.d.v[2] = m_min.d.v[2] < lo.d.v[2] ? m_min.d.v[2] : lo.d.v[2];
+        m_max.d.v[0] = m_max.d.v[0] > hi.d.v[0] ? m_max.d.v[0] : hi.d.v[0];
+        m_max.d.v[1] = m_max.d.v[1] > hi.d.v[1] ? m_max.d.v[1] : hi.d.v[1];
+        m_max.d.v[2] = m_max.d.v[2] > hi.d.v[2] ? m_max.d.v[2] : hi.d.v[2];
         CVector3 q0;
         CVector3 q1;
         GetParticlePosition(q0, q1);
@@ -225,89 +226,96 @@ void CParticleSystem::UpdateBoundingBox() {
         m_max.d.v[2] += radius;
         m_localMin = m_min;
         m_localMax = m_max;
-        m_center.Sub(m_max, m_min);
+        m_center.d.v[0] = m_max.d.v[0] - m_min.d.v[0];
+        m_center.d.v[1] = m_max.d.v[1] - m_min.d.v[1];
+        m_center.d.v[2] = m_max.d.v[2] - m_min.d.v[2];
         m_center.d.v[0] *= 0.5f;
         m_center.d.v[1] *= 0.5f;
         m_center.d.v[2] *= 0.5f;
-        m_center.Add(m_min);
+        m_center.d.v[0] += m_min.d.v[0];
+        m_center.d.v[1] += m_min.d.v[1];
+        m_center.d.v[2] += m_min.d.v[2];
         ValidateBoundingBox(true);
     }
     if (IsMoving()) {
+        float t;
+        float saz;
+        float age;
+        float sy;
+        float ez;
+        float t2;
+        float svz;
+        float ay;
+        float sz;
+        float sx;
+        float vx;
+        float k;
+        float a2;
+        float az;
+        float ey;
         CVector3 sv;
+        float ax;
+        float ex;
+        float vy;
+        float vz;
         GetSystemInitialVelocity(sv);
         CVector3 sa;
         GetSystemAcceleration(sa);
-        float ez;
-        float vz;
-        float t;
-        float k;
-        float t2;
-        float a2;
-        float sx;
-        float sy;
-        float sz;
-        float vy;
-        float age;
-        float vx;
-        float ex;
-        float ey;
-        float ax;
-        float ay;
-        float az;
+        svz = sv.d.v[2];
+        saz = sa.d.v[2];
         t = (m_updateTicks - m_startTicks) / 60.0f;
         age = (g_ParticleSystemManager.GetCurrentTicks() - m_updateTicks) / 60.0f;
-        k = 2.0f * t;
         t2 = t * t;
         a2 = age * age;
+        k = 2.0f * t;
         CVector3 start;
-        start.Scale(sv, t);
         sx = Mul(t2, sa.d.v, 0);
-        sy = Mul(t2, sa.d.v, 1);
+        start.d.v[0] = t * sv.d.v[0];
+        start.d.v[2] = svz * t;
+        vx = sa.d.v[0] * k;
         sz = Mul(t2, sa.d.v, 2);
+        start.d.v[1] = Mul2(t, sv.d.v[1]);
+        sy = Mul(t2, sa.d.v, 1);
         start.d.v[0] += sx;
-        start.d.v[1] += sy;
-        start.d.v[2] += sz;
-        vx = k * sa.d.v[0];
+        start.d.v[2] = start.d.v[2] + sz;
+        ax = sa.d.v[0] * a2;
         vy = k * sa.d.v[1];
-        vz = k * sa.d.v[2];
-        vx += sv.d.v[0];
+        vz = saz * k;
         vy += sv.d.v[1];
-        vz += sv.d.v[2];
-        ex = age * vx;
-        ey = age * vy;
+        vz += svz;
+        vx += sv.d.v[0];
+        ex = vx * age;
         ez = age * vz;
+        ey = vy * age;
+        start.d.v[1] = start.d.v[1] + sy;
         ex += start.d.v[0];
-        ey += start.d.v[1];
+        ey = ey + start.d.v[1];
         ez += start.d.v[2];
-        CVector3 aa;
-        aa.Scale(sa, a2);
-        ex += aa.d.v[0];
-        ey += aa.d.v[1];
-        ez += aa.d.v[2];
+        ay = sa.d.v[1] * a2;
+        az = Mul2(a2, saz);
+        ex = ax + ex;
         CVector3 lo = start;
+        ez += az;
+        ey = ay + ey;
         CVector3 hi = start;
-        CVector3* plo = &lo;
-        CVector3* phi = &hi;
-        lo.d.v[0] = Min(lo.d.v[0], ex);
-        lo.d.v[1] = Min(lo.d.v[1], ey);
+        lo.d.v[0] = lo.d.v[0] < ex ? lo.d.v[0] : ex;
+        lo.d.v[1] = lo.d.v[1] < ey ? lo.d.v[1] : ey;
         lo.d.v[2] = Min(lo.d.v[2], ez);
         hi.d.v[0] = Max(hi.d.v[0], ex);
-        hi.d.v[1] = Max(hi.d.v[1], ey);
-        hi.d.v[2] = Max(hi.d.v[2], ez);
+        hi.d.v[1] = hi.d.v[1] > ey ? hi.d.v[1] : ey;
+        hi.d.v[2] = hi.d.v[2] > ez ? hi.d.v[2] : ez;
         CVector3 tlo = lo;
         CVector3 thi = hi;
-        CVector3* ptlo = &tlo;
-        CVector3* pthi = &thi;
         if ((float)__fabs(sa.d.v[0]) > 1e-05f)
-            Turn(vx, sa.d.v[0], age, tlo.d.v[0], thi.d.v[0]);
+            Turn(sa.d.v[0], vx, age, tlo.d.v[0], thi.d.v[0]);
         if ((float)__fabs(sa.d.v[1]) > 1e-05f)
-            Turn(vy, sa.d.v[1], age, tlo.d.v[1], thi.d.v[1]);
+            Turn(sa.d.v[1], vy, age, tlo.d.v[1], thi.d.v[1]);
         if ((float)__fabs(sa.d.v[2]) > 1e-05f)
-            Turn(vz, sa.d.v[2], age, tlo.d.v[2], thi.d.v[2]);
+            Turn(sa.d.v[2], vz, age, tlo.d.v[2], thi.d.v[2]);
         lo.d.v[0] = lo.d.v[0] < tlo.d.v[0] ? lo.d.v[0] : tlo.d.v[0];
         lo.d.v[1] = lo.d.v[1] < tlo.d.v[1] ? lo.d.v[1] : tlo.d.v[1];
         lo.d.v[2] = lo.d.v[2] < tlo.d.v[2] ? lo.d.v[2] : tlo.d.v[2];
-        hi.d.v[0] = hi.d.v[0] > thi.d.v[0] ? hi.d.v[0] : thi.d.v[0];
+        hi.d.v[0] = Max(hi.d.v[0], thi.d.v[0]);
         hi.d.v[1] = hi.d.v[1] > thi.d.v[1] ? hi.d.v[1] : thi.d.v[1];
         hi.d.v[2] = hi.d.v[2] > thi.d.v[2] ? hi.d.v[2] : thi.d.v[2];
         m_min.d.v[0] = lo.d.v[0] + m_localMin.d.v[0];
