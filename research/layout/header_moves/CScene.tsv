@@ -48,10 +48,10 @@ impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	kept	stripped extab labe
 light_animmanager	scratch/try/light_animmanager/src/light_animmanager.cpp	kept	
 light_statics	scratch/try/light_statics/src/light_statics.cpp	kept	
 mainloop_game	scratch/try/mainloop_game/src/mainloop.cpp	kept	
-objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_collvol.cpp # ------------------------------------- #     626: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_collvol.cpp # ------------------------------------- #     615: g_scene.GetPlayer(0)->GetPosition(playerPos);
 objcreate_destroy	scratch/try/objcreate_destroy/src/objcreate_destroy.cpp	kept	
-objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_german.cpp # ------------------------------------ #     811: g_scene.GetPlayer(0)->GetPosition(playerPos);
-objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_nonvis.cpp # ------------------------------------ #     106: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_german.cpp # ------------------------------------ #     804: g_scene.GetPlayer(0)->GetPosition(playerPos);
+objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	kept	
 objcreate_thrown	scratch/try/objcreate_thrown/src/objcreate_thrown.cpp	kept	
 particlesystem_beginupdate	scratch/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	kept	
 particlesystem_reset	scratch/try/particlesystem_reset/src/particlesystem_reset.cpp	kept	
@@ -65,25 +65,25 @@ projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	kept	stri
 propdat_bsp	scratch/try/propdat_bsp/src/propdat_bsp.cpp	kept	
 propdat_core	scratch/try/propdat_core/src/propdat_core.cpp	kept	
 propdat_load	scratch/try/propdat_load/src/propdat_load.cpp	kept	
-propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\propdat_restart.cpp # ----------------------------------- #     644: g_scene.GetPlayer(p)->GetPosition(position);
-proxtrig_messages	scratch/try/proxtrig_messages/src/proxtrig_messages.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_messages.cpp # ------------------------------------- #     171: g_scene.Acquire(set);
+propdat_restart	scratch/try/propdat_restart/src/propdat_restart.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\propdat_restart.cpp # ----------------------------------- #     634: g_scene.GetPlayer(p)->GetPosition(position);
+proxtrig_messages	scratch/try/proxtrig_messages/src/proxtrig_messages.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_messages.cpp # ------------------------------------- #     148: g_scene.Acquire(set);
 pumhandler_loop	scratch/try/pumhandler_loop/src/pumhandler_loop.cpp	kept	
-scene	scratch/try/scene/src/scene.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene.cpp # ------------------------- #      31: SModCommand command(&CScene::AddPlayer_now, (ISceneNode*)player);
+scene	scratch/try/scene/src/scene.cpp	kept	
 scene_closestplayer	scratch/try/scene_closestplayer/src/scene_closestplayer.cpp	kept	
-scene_cmppairs	scratch/try/scene_cmppairs/src/scene_cmppairs.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_cmppairs.cpp # ---------------------------------- #     201: for (e = exclusions.begin(); e != exclusions.end(); e++) {
-scene_dtor	scratch/try/scene_dtor/src/scene_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_dtor.cpp # ------------------------------ #     164: : m_node0(0), m_value24(0), m_value28(0), m_value32(0), m_value36(0), m_value40(0), m_value44(0), m_value48(0),
-scene_fast	scratch/try/scene_fast/src/scene_fast.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_fast.cpp # ------------------------------ #     143: m_collisions.clear();
+scene_cmppairs	scratch/try/scene_cmppairs/src/scene_cmppairs.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_cmppairs.cpp # ---------------------------------- #     119: if (e->Matches(lo, hi))
+scene_dtor	scratch/try/scene_dtor/src/scene_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_dtor.cpp # ------------------------------ #      53: : m_node0(0), m_value24(0), m_value28(0), m_value32(0), m_value36(0), m_value40(0), m_value44(0), m_value48(0),
+scene_fast	scratch/try/scene_fast/src/scene_fast.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_fast.cpp # ------------------------------ #      97: if (InvolvesBullet(*a)) {
 scene_fastvec_commands	scratch/try/scene_fastvec_commands/src/scene_fastvec_commands.cpp	kept	
 scene_fastvec_pairs	scratch/try/scene_fastvec_pairs/src/scene_fastvec_pairs.cpp	kept	
-scene_now	scratch/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_now.cpp # ----------------------------- #     142: if (node == m_players[i])
-scene_query	scratch/try/scene_query/src/scene_query.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_query.cpp # ------------------------------- #     177: m_collisions.clear();
+scene_now	scratch/try/scene_now/src/scene_now.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_now.cpp # ----------------------------- #     122: if (node == m_players[i])
+scene_query	scratch/try/scene_query/src/scene_query.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_query.cpp # ------------------------------- #     135: if (!InvolvesBullet(*a)) {
 scene_quicksort	scratch/try/scene_quicksort/src/scene_quicksort.cpp	kept	
-scene_reset	scratch/try/scene_reset/src/scene_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_reset.cpp # ------------------------------- #     123: m_world[i] = 0;
-scene_rmextents	scratch/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      95: node.m_extentNodes[0] = m_extents128.push_back(extent);
+scene_reset	scratch/try/scene_reset/src/scene_reset.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_reset.cpp # ------------------------------- #      46: m_world[i] = 0;
+scene_rmextents	scratch/try/scene_rmextents/src/scene_rmextents.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      95: node.m_extentNodes[0] = m_extentsX.push_back(extent);
 scene_shutdown	scratch/try/scene_shutdown/src/scene_shutdown.cpp	kept	
 scene_sort	scratch/try/scene_sort/src/scene_sort.cpp	kept	
-scene_update	scratch/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_update.cpp # -------------------------------- #     260: SExclusionEntry* it = m_exclusions.begin();
-scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #     253: SExclusionEntry* entry = FindExclusion(first, second);
+scene_update	scratch/try/scene_update/src/scene_update.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_update.cpp # -------------------------------- #     227: ProcessCommands();
+scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\scene_visit.cpp # ------------------------------- #     230: SExclusionEntry* entry = FindExclusion(first, second);
 sound	scratch/try/sound/src/sound.cpp	kept	stripped extab labels renamed (relabel.py)
 soundschedule_sound	scratch/try/soundschedule_sound/src/soundschedule_sound.cpp	kept	
 static_obj_pathbegin	scratch/try/static_obj_pathbegin/src/static_obj_pathbegin.cpp	kept	

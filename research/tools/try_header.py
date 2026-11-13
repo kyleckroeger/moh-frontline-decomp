@@ -262,7 +262,9 @@ OFFSET_NAMES = {
     "CScene": {0x0: "m_head", 0x4: "m_tail", 0x8: "m_players", 0x18: "m_world", 0x1c: "m_camera",
                0x20: "m_staticHead", 0x24: "m_staticTail", 0x28: "m_animHead", 0x2c: "m_animTail",
                0x30: "m_lightHead", 0x34: "m_lightTail", 0x38: "m_nodeCount", 0x3c: "m_staticCount",
-               0x40: "m_animCount", 0x44: "m_lightCount", 0x48: "m_updating", 0x4c: "m_playerCount"},
+               0x40: "m_animCount", 0x44: "m_lightCount", 0x48: "m_updating", 0x4c: "m_playerCount",
+               0x50: "m_lights", 0x68: "m_shadows", 0x80: "m_extentsX", 0xac: "m_extentsY", 0xd8: "m_pairsX",
+               0xf0: "m_pairsY", 0x108: "m_collisions", 0x118: "m_exclusions", 0x130: "m_commands"},
     "CInputManager": {0x2430: "m_keymap", 0x2434: "m_playerKeymaps", 0x2444: "field2444",
                       0x2445: "m_feedback", 0x2446: "m_feedbackOff", 0x244a: "m_inverted",
                       0x244b: "m_zooming"},
@@ -430,7 +432,7 @@ def attempt(job):
     copy = base / "src" / Path(unit["source"]).name
     copy.parent.mkdir(parents=True, exist_ok=True)
     copy.write_text(new)
-    unit = dict(unit, source=str(copy.relative_to(ROOT)), include_dirs=unit["include_dirs"] + ([str(HEADER_DIR.relative_to(ROOT))] if HEADER_DIR != ROOT / "include" else []) + ["include"])
+    unit = dict(unit, source=str(copy.relative_to(ROOT)), include_dirs=([str(HEADER_DIR.relative_to(ROOT))] if HEADER_DIR != ROOT / "include" else []) + unit["include_dirs"] + ["include"])
     try:
         status, detail = verify(unit, base / "moved")
     except Exception:

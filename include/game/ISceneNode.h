@@ -66,6 +66,15 @@ public:
 class ISceneNode : public IObserver {
 public:
     enum EVolumeType {};
+    // One end of a node's extent on a sweep axis (CScene's dwi::list<ISceneNode::SExtent>,
+    // 16 bytes; SweepExtents reads the node and whether this is the start).
+    struct SExtent {
+        SExtent() {}
+
+        ISceneNode* node;
+        bool start;
+        unsigned char unknown5[11];
+    };
 
     ISceneNode() : data04(0), data08(0), data0c(0), data10(0), data14(0), data18(0), data1c(0), data20(0) {}
     virtual ~ISceneNode() {}

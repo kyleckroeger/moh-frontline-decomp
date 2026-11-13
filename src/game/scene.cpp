@@ -13,31 +13,8 @@ class CPlayerObject;
 
 #include "game/DwiContainers.h"
 
-class CScene {
-public:
-    struct SModCommand {
-        SModCommand(void (CScene::*f)(ISceneNode*), ISceneNode* n) : function(f), node(n) {}
+#include "game/CScene.h"
 
-        void (CScene::*function)(ISceneNode*);
-        ISceneNode* node;
-    };
-
-    void Remove(ISceneNode&);
-    void Add(ISceneNode&);
-    void SetCamera(CCamera*);
-    void SetWorld(CWorldObject*);
-    void AddPlayer(CPlayerObject*);
-    void RemoveNode_now(ISceneNode*);
-    void AddNode_now(ISceneNode*);
-    void SetCamera_now(ISceneNode*);
-    void SetWorld_now(ISceneNode*);
-    void AddPlayer_now(ISceneNode*);
-
-    unsigned char unknown000[72];
-    bool m_updating;
-    unsigned char unknown049[231];
-    dwi::fast_vec<SModCommand> m_commands;
-};
 
 void CScene::AddPlayer(CPlayerObject* player) {
     if (m_updating) {

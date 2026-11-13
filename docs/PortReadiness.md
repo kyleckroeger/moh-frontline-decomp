@@ -306,6 +306,9 @@ iterators, min/max) and `include/game/DwiHashMap.h` (hash_map with the prime tab
 file emits). 54 of 114 units moved (13 with relabelled stripped labels or listed weak copies);
 the fragments that place the weak template copies by explicit class instantiation stay on their
 views (instantiating the whole header changes them).
+CScene's containers are now typed (with DwiContainers.h included first; ISceneNode.h gained
+SExtent for the extent lists): scene and objcreate_nonvis moved; the other scene units use
+invented helpers in their CScene views (Matches, FindExclusion, ProcessCommands, InvolvesBullet).
 
 Exit: every class the pure-source link compiles has one header, and the lint is clean.
 

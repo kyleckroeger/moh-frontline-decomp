@@ -941,7 +941,7 @@
     "src/game/objcreate_destroy.cpp": "a921c8be4b7a3dc2d83bd3dc6c817fe7cc23b117023947ec0d5eeafdb864ae1d",
     "src/game/objcreate_dump.cpp": "9a6588cb74dd51d35a27085a63a9ed801b66b541dbe06dc3d1d0c9d5e616d903",
     "src/game/objcreate_german.cpp": "4be93ef011bff7c0592950c61c2ddf185cb63c90ad0f93744cb4eaf7e98a713a",
-    "src/game/objcreate_nonvis.cpp": "37c98ba0a6c64c5616a5bb6e507f30f43a9b116f7b4622364a8958acf241c29d",
+    "src/game/objcreate_nonvis.cpp": "f43e4c9b9d17a6cbac4a8a8787922231965d617fbe0ae38a654c1c32589e3ee4",
     "src/game/objcreate_playerscript.cpp": "d3681c9f3eeba80156a23c349866d5c41172f659a275c80c02ca7cff786e77fa",
     "src/game/objcreate_setscript_anim.cpp": "04734a75a8bbe97bbd34a5e57f58741d02ddce5aa611f27be32bb11b92062d97",
     "src/game/objcreate_setscript_static.cpp": "71730808faa7ee0f1af80c554b0dad8b983185857460ac66966694459a463df8",
@@ -1059,7 +1059,7 @@
     "src/game/renderlist.cpp": "46fc5a68a0d24b75cfdfb2c8adf0e968ba515623ac3d82d87edbab4f64a2f02b",
     "src/game/renderlist_draw.cpp": "d7d67242f7c3a9e2e9123ec033a23679f5df988e95d6d27abe54590716f1ef37",
     "src/game/renderlist_finish.cpp": "13e3ea09d3ec4ef33fd768fdc5ea345b0cb099068948968afd6b8613c4802054",
-    "src/game/scene.cpp": "613eecf590c533a9c214d7293e98f9bc55455738353a491729b2b262be171439",
+    "src/game/scene.cpp": "fe48d06de7f7256822765c3d93a7806971beff172102b77e92cfab96295ac0c1",
     "src/game/scene_closestplayer.cpp": "f940281f17979f0261bfa1ce5256b69e34d60375f6c9cd4d7af3d21eb85e9688",
     "src/game/scene_cmppairs.cpp": "890c6395e089c320ecc5e811ffa6ed4a329b5bbabe58fe2582d0de41611927e1",
     "src/game/scene_copy.cpp": "4dab252a944af634a2752e0df4aa980286d48c21c1d477eb2d757bee92dc79c2",
@@ -1544,13 +1544,13 @@
     "include/game/CPlane.h": "bfa5787eb37ff996e9cf2b9ca6c97606d8adda80311bc863c4f75e3d5de45aa6",
     "include/game/CPlayerObject.h": "62f600588018b17b4dd87cf22908905fe2c6755df96cf00eb64c3cde74c24402",
     "include/game/CRect.h": "bd79c7f913dd835c13df9ee6e911b38fa548ee4878e1840489a4bdf47c68a64d",
-    "include/game/CScene.h": "5ff4fc2983b0518d48c650f322422158725aee8865df9f36bcafe15c081000ce",
+    "include/game/CScene.h": "7cbf50f03acb5e0341eacd56fa49c425404d9b89345a4aaf022cd2297ab3b378",
     "include/game/CScreen.h": "081a035fc730c4da9a451e5c01c6ff38a9f5fbd8431951b5037d3986c474654a",
     "include/game/CVector3.h": "b8abb8cd983822edce705ab2f5ea099da8537ea8ea8e9dc5ab907a12d90099eb",
     "include/game/DwiContainers.h": "98915826466da473d41d52430c43b56bfec4d25eaa6842db237db9ba1de64061",
     "include/game/DwiHashMap.h": "360f72604080a4f1e2067658a7bae62626395deccfdc5cd6f0863ec892407cb2",
     "include/game/IMovingSceneNode.h": "24397129e5a00578381b70aca371a95dd81cc21d0aba06746fc106ac0c41d604",
-    "include/game/ISceneNode.h": "f5a084aa772b1a89854d11aada0ce828bd5955b52f11886085ae7b5c0f4fca04",
+    "include/game/ISceneNode.h": "99f2489b753b107c1c575061bd0d71a84274230f9d0472da524f32296e5bdbdb",
     "include/game/msl_sqrtf.h": "f91d44ff20bd7fad0236d97ebde51f625247d746d9c04afa093c6b531d55b457",
     "include/prime/libc/ansi_files.h": "22d530eb96d140cfe20ec168096d3dbfaa57a34c5e4601ffd6f0962eb90996e1",
     "include/prime/libc/ansi_fp.h": "414c704260308790cfc1d86d412c92b994ea8a2039267133f95f010e89c92951",
@@ -22457,8 +22457,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "0d1e5a28b6c57a86e3e0e6c2a68d4d6a3c646127622ba716dd6a6ca669ff98d7",
-      "linked_sha256": "985878f521345b3751a7c2218edb587083b430a132bcf67e4ffb50a7695b36fd"
+      "object_sha256": "040d83ff3ebe06765c3e2d16ac0e0c296c24926c1e44038951ca2404c6af3167",
+      "linked_sha256": "d0034164182a62dbf37df14e996729f72bcc51275283820b93daa360fd4d72a2"
     },
     {
       "id": "hlafile",
@@ -53482,8 +53482,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "84c6f07b8355f1f52116e3a93fcc1a7ec46928d341201904ef8203a5ba3d1e1f",
-      "linked_sha256": "7cca32afb0fe36b6513bffc9fb76253d1d3c7e3f5a09b1753ae96f10f898dc28"
+      "object_sha256": "ba6551d35d422e40462dd9652a26b2a14ce61010b3ff17ad867b36c23987349c",
+      "linked_sha256": "a13e7171a75df0ee0921397cd8aa2cd8b2fc9134f74d7dd840b4aaf9b7eea3e8"
     },
     {
       "id": "bsbifunc_promptinteger",

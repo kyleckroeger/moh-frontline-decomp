@@ -61,11 +61,8 @@ public:
     CPlayerObject* m_player;
 };
 
-class CScene {
-public:
-    ISceneNode* GetPlayer(int) const;
-    unsigned char unknown[0x4850];
-};
+#include "game/CScene.h"
+
 extern CScene g_scene;
 bool BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
