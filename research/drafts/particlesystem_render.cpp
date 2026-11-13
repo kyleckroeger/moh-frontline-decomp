@@ -1,4 +1,4 @@
-// Research draft for CParticleSystem::RenderSystem (0x8007d704), real 835 lines off
+// Research draft for CParticleSystem::RenderSystem (0x8007d704), real 854 lines off
 // (the previous draft was 1064; branch targets: 1 difference against the previous 6).
 // It is the whole particlesystem.cpp fragment around it (the function can land only
 // with the whole file: rodata/bss block base). Vector locals are kept in memory by the
@@ -6,6 +6,10 @@
 // and `.x` spellings in the inner loop were found by search (accepted forms, 2026-11-12).
 // check_draft reports the same extra 0.0f/1.0f constants and 8-byte access at +0x8 as
 // the previous draft. Source: scratch/loop3/vec3/RS_BEST514.cpp.
+// Fixed 2026-11-13 (dol2, Dolphin): `spawnRange.y` instead of `spawnRange[1]` in the
+// spawn loop (854 lines instead of 835). With `[1]` the compiler kept spawnRange.y in f19
+// across CMatrix::Multiply, whose hand-written PSMultMatrix overwrites f14-f19 without
+// saving them, so every particle's height came out wrong (research/tools/fprclob.py).
 // A fragment of particlesystem.cpp (0x8007d438): CParticleSystemManager::Link
 // (the GX state shared by the particle systems: position, colour and
 // texture coordinates in direct format, one textured stage modulating the
@@ -424,7 +428,7 @@ bool CParticleSystem::RenderSystem(CDmaPacket&) {
         float youth = 1.0f - age;
         for (int i = 0; i < count; i++) {
             spawn.x = spawnLow.x + spawnRange.x * RandomFloat();
-            spawn.y = spawnLow.y + spawnRange[1] * RandomFloat();
+            spawn.y = spawnLow.y + spawnRange.y * RandomFloat();
             spawn.z = spawnLow.z + spawnRange.z * RandomFloat();
             vel[0] = velLow.x + velRange[0] * RandomFloat();
             vel[1] = velLow[1] + velRange[1] * RandomFloat();

@@ -444,7 +444,34 @@ card folder before each run, because a save left by one run changes the next.
   32-byte frame. That is why `prove` uses `--no-hash`: the player-object hash also covers
   such fields. One shell frame (1530) differs only when drafts from both halves are active
   (bisect: interaction).
-- **Open: `RenderSystem`.** Its particles differ from the level start. A symbolic
-  comparison of its FIFO writes against the original's finds no difference, and moving or
-  delaying the original reproduces nothing. The next step is to capture each call's FIFO
-  output with `GXRedirectWriteGatherPipe`.
+- **`RenderSystem`: a register clobber, fixed (dol2).** Captured per call (below), the
+  draft's commands matched the original's byte for byte except each particle's height.
+  The compiler had kept `spawnRange.y` in f19 across `CMatrix::Multiply`, and
+  `Multiply` calls the hand-written paired-single `PSMultMatrix`, which uses f0-f19 and
+  saves none of them. f14-f31 are callee-saved, so the compiler's choice was legal; the
+  original callers just never keep anything in f14-f19 across that call. Spelling
+  `spawnRange.y` instead of `spawnRange[1]` moves the value back to memory, and the
+  first 6,000 calls on the Mission 1 route then match the original byte for byte.
+  `research/tools/fprclob.py` checks every draft for this: 118 original functions reach
+  `PSMultMatrix` without saving f14-f19 themselves, and no other draft keeps a value in
+  those registers across a call to one of them.
+- **Frames depend on CPU timing.** With the fixed `RenderSystem`, 25 in-level frame hashes
+  out of 150 still differ, and the same happens with no draft at all: the original
+  with a busy-wait after each particle system changes 101 frames, starting before the
+  first extra frame slip, while the traces stay identical. The GPU reads some memory while the
+  CPU is still changing it, so where a draft runs at a different speed in the drawing
+  path, its frames can differ while its logic is right. For such a draft, compare its
+  command output instead (below). Overwriting the stack after each call also changes
+  the original's frames, which is the same timing effect.
+
+### Capturing a draft's graphics commands
+
+`research/probes/gx_capture_probe.cpp` wraps the one call site of a drawing function, here
+`CPropertyParticleSystem::Link`'s virtual `RenderSystem` call. For the call it redirects the
+write-gather pipe into a buffer (`GXRedirectWriteGatherPipe`), logs the length and an
+FNV-1a hash (`GXC call this bytes hash`), and replays the buffer with `GXCallDisplayList`
+so the frame still draws. `DUMP_FROM` dumps chosen calls as hex (`GXD`), and the first
+differing command can then be decoded by hand. Keep the wrapper in the control
+(`control --keep ... Link__23CPropertyParticleSystemFP7CDmaTagR10CDmaPacket`) and compare the
+`GXC` lines of the two runs. One gotcha: a draft instrumented with `OSReport` calls can
+lose the bug, since its registers are allocated differently. That happened here.

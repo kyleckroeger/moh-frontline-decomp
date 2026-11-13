@@ -92,8 +92,10 @@ emulated time and hashes the frame buffer; `link_drafts.py --coverage` and `dolp
 prove` fill the new `proven` column of `research/drafts/status.tsv`. Both modes are
 deterministic. On the Mission 1 route, 49 drafts are proven. `SweepAllExtents` was fixed:
 it needed the original's 32-byte frame, because some original code reads stale stack memory.
-`CParticleSystem::RenderSystem` still changes particle frames, and its cause is not found
-yet.
+`CParticleSystem::RenderSystem` changed particle frames because the draft kept a value in
+f19 across `CMatrix::Multiply`, whose hand-written `PSMultMatrix` overwrites f14-f19
+without saving them. Fixed, and proven by comparing its graphics commands per call
+(`research/probes/gx_capture_probe.cpp`); frame hashes also depend on CPU timing.
 
 Exit: every non-multiplayer draft is proven, or bisected and fixed. Multiplayer drafts
 are recorded as unproven.
