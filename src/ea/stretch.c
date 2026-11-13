@@ -1,21 +1,29 @@
-// A fragment of stretch.c (0x80166ca0..0x801671b0): stretchframesneeded,
-// which counts the input frames the time-stretch filter needs for a number of
-// output frames (simulating determineaction over the available frames); stretch, which produces
-// the time-stretch filter's output from its pending frames and then from the
-// input through determineaction/applyaction, carrying a frame over when the
-// last action stretched; SFILTER_timestretchsetratio (the ratio in 1/4096
-// steps, clamped to 0.5..2); SFILTER_timestretch, the filter's process
-// function (a plain 200-frame pass from the input filter while nothing is
-// available, otherwise the frames needed are pulled through the input filter
-// unless the voice's packet player is short of them, then stretched, and the
-// rest of the output is cleared); and SFILTER_timestretchinit (the header's
-// frame size and available count, the voice's packet handle or -1). The
-// filter-chain fields (process, input, the byte passed on) follow the other
-// SFILTER states (stretchframesneeded's final clamp is written
-// 'carried >= needed ? 0 : needed - carried', the form that gives the
-// original's compare idiom). Compiled as C++ like the rest of the
-// sound library. The names come from the symbols; the state layout is inferred
-// and its fields are named by offset.
+// stretch.c (0x801665d4): the time-stretch filter. The file-local helpers:
+// crossfade blends two frame buffers into an output with a weight stepping by
+// 1/n (down from 1 for a positive shift, up from 0 for a negative one, after
+// skipping |shift| frames); determineaction picks, from the stored error and
+// the ratio, whether to drop or repeat a frame-sized overlap (the offset comes
+// from the next byte of the action stream) or to pass the frame through;
+// applyaction performs it on the frame (or the carried frame), filling the
+// output buffer and updating the frame counts. Then stretchframesneeded,
+// which counts the input frames the filter needs for a number of output
+// frames (simulating determineaction over the available frames); stretch,
+// which produces the output from its pending frames and then from the input
+// through determineaction/applyaction, carrying a frame over when the last
+// action stretched; SFILTER_timestretchsetratio (the ratio in 1/4096 steps,
+// clamped to 0.5..2); SFILTER_timestretch, the filter's process function (a
+// plain 200-frame pass from the input filter while nothing is available,
+// otherwise the frames needed are pulled through the input filter unless the
+// voice's packet player is short of them, then stretched, and the rest of the
+// output is cleared); and SFILTER_timestretchinit (the header's frame size
+// and available count, the voice's packet handle or -1). The filter-chain
+// fields (process, input, the byte passed on) follow the other SFILTER states
+// (stretchframesneeded's final clamp is written 'carried >= needed ? 0 :
+// needed - carried', the form that gives the original's compare idiom). The
+// original calls the helpers out of line: '#pragma auto_inline off' keeps
+// them so. Compiled as C++ like the rest of the sound library. The names come
+// from the symbols; the state layout is inferred and its fields are named by
+// offset.
 struct TIMESTRETCHSTATE {
     int (*process)(void*, int, void*, void*, int);
     int field04;
@@ -36,9 +44,99 @@ struct TIMESTRETCHSTATE {
     float m_output[1];
 };
 
-int determineaction(int, float, unsigned char**, float*);
-void applyaction(TIMESTRETCHSTATE*, float**, int);
+
 extern "C" void SNDI_memcpy(void*, const void*, int);
+
+#pragma auto_inline off
+static void crossfade(float* a, float* b, float* out, int n, int shift) {
+    float weight;
+    float step;
+    int i;
+
+    if (shift > 0) {
+        weight = 1.0f;
+        step = -1.0f / n;
+    } else {
+        shift = -shift;
+        step = 1.0f / n;
+        weight = 0.0f;
+    }
+    for (i = shift; i < n; i++) {
+        out[i - shift] = weight * a[i] + (1.0f - weight) * a[i - shift];
+        weight += step;
+    }
+    for (i = 0; i < shift; i++) {
+        out[n - shift + i] = weight * b[i] + (1.0f - weight) * a[n - shift + i];
+        weight += step;
+    }
+}
+
+static int determineaction(int framesize, float ratio, unsigned char** pointer, float* value) {
+    int offset = **pointer + framesize / 2;
+
+    if (ratio < 1.0f) {
+        float b = ((float)framesize + *value) - ratio * (float)framesize;
+        float a = (*value + (float)(framesize * 2 - offset)) - (float)(2.0f * ratio) * (float)framesize;
+
+        if ((b < 0.0f ? -b : b) < (a < 0.0f ? -a : a)) {
+            (*pointer)++;
+            *value = b;
+            return 0;
+        } else {
+            *pointer += 2;
+            *value = a;
+            return -offset;
+        }
+    } else {
+        float b = ((float)framesize + *value) - ratio * (float)framesize;
+        float a = (*value + (float)(framesize + offset)) - ratio * (float)framesize;
+
+        if ((b < 0.0f ? -b : b) < (a < 0.0f ? -a : a)) {
+            (*pointer)++;
+            *value = b;
+            return 0;
+        } else {
+            (*pointer)++;
+            *value = a;
+            return offset;
+        }
+    }
+}
+
+static void applyaction(TIMESTRETCHSTATE* state, float** in, int action) {
+    float* first;
+    float* second;
+
+    if (state->m_carried > 0) {
+        second = *in;
+        first = state->m_carry;
+    } else {
+        first = *in;
+        second = first + state->m_framesize;
+    }
+    if (action == 0) {
+        SNDI_memcpy(state->m_output, first, state->m_framesize * sizeof(float));
+        state->m_available -= state->m_framesize;
+        state->m_pending = state->m_framesize;
+        *in = second;
+    } else if (action > 0) {
+        SNDI_memcpy(state->m_output, first, action * sizeof(float));
+        crossfade(first, second, &state->m_output[action], state->m_framesize, action);
+        state->m_available -= state->m_framesize;
+        state->m_pending = state->m_framesize + action;
+        *in = second;
+    } else {
+        crossfade(first, second, state->m_output, state->m_framesize, action);
+        SNDI_memcpy(&state->m_output[state->m_framesize], second - action, (state->m_framesize + action) * sizeof(float));
+        state->m_available -= state->m_framesize * 2;
+        state->m_pending = action + state->m_framesize * 2;
+        *in = second + state->m_framesize;
+    }
+    state->m_carried = 0;
+    state->m_position = 0;
+}
+#pragma auto_inline reset
+
 extern "C" void* memset(void*, int, unsigned long);
 extern "C" int SNDPKTPLAY_framesoutstanding(int);
 int SNDDRV_getmastervoice(int);

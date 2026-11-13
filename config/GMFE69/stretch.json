@@ -37,12 +37,36 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80166ca0",
-      "size": 1296,
+      "address": "0x801665d4",
+      "size": 3036,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351c00",
+      "size": 56,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "crossfade__FPfPfPfii",
+      "address": "0x801665d4",
+      "size": 904,
+      "binding": 0
+    },
+    {
+      "name": "determineaction__FifPPUcPf",
+      "address": "0x8016695c",
+      "size": 468,
+      "binding": 0
+    },
+    {
+      "name": "applyaction__FP16TIMESTRETCHSTATEPPfi",
+      "address": "0x80166b30",
+      "size": 368,
+      "binding": 0
+    },
     {
       "name": "stretchframesneeded__FPvi",
       "address": "0x80166ca0",
@@ -84,72 +108,14 @@
     "_restgpr_27": "0x80138a5c",
     "_savegpr_26": "0x80138a0c",
     "_savegpr_27": "0x80138a10",
-    "applyaction__FP16TIMESTRETCHSTATEPPfi": "0x80166b30",
-    "determineaction__FifPPUcPf": "0x8016695c",
     "memset": "0x80009410"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [
-    "applyaction__FP16TIMESTRETCHSTATEPPfi",
-    "determineaction__FifPPUcPf"
-  ],
+  "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "stretch.c",
-  "original_file_index": 13202,
-  "pooled_sections": [
-    ".sdata2"
-  ],
-  "pool_references": [
-    {
-      "section": ".sdata2",
-      "offset": 0,
-      "size": 4,
-      "address": "0x80351c1c"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 8,
-      "size": 8,
-      "address": "0x80351c20"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 16,
-      "size": 4,
-      "address": "0x80351c28"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 24,
-      "size": 8,
-      "address": "0x80351c30"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 32,
-      "size": 4,
-      "address": "0x80351c18"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 40,
-      "size": 8,
-      "address": "0x80351c10"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 48,
-      "size": 4,
-      "address": "0x80351c00"
-    },
-    {
-      "section": ".sdata2",
-      "offset": 52,
-      "size": 4,
-      "address": "0x80351c08"
-    }
-  ]
+  "original_file_index": 13202
 }
