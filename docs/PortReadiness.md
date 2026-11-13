@@ -337,6 +337,15 @@ merge removes no cross-unit symbol). Of `scratch/loop3/merge1/complete_files.tsv
 rows still split are light (ruling: it stays split), world_volume (above) and
 Gecko_ExceptionPPC (two compilers).
 
+Agent buddy2's part (`scratch/loop3/buddy2/notes.md`, 5ed2ccfa): buddy.cpp's tail
+(DestroyBuddyDataStructures, `__sinit_buddy_cpp`, the weak `dwi::vector` destructors) is one
+unit, `src/game/buddy.cpp`, which now defines the file's `.bss` block (real containers, no size
+views) and `.sbss`; buddy_destroy, buddy_vec_path_dtor and buddy_vec_info_dtor are gone. The rest
+of buddy.cpp stays split until GetInitialBuddyOrders, BIFunc_AddBuddy and AddBuddy match. Re-run
+(`source_link.py --jobs 4`, 1,017 units, 94 drafts, 72 data files, all compiled): **54
+undefined, 102 fragment-local, 45 duplicate**, 0 small-data (the merge moves the three buddy
+containers and two vector destructors into the unit that defines them).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
