@@ -400,6 +400,21 @@ minutes of play from update 3300 (`level_play.txt`): walk, turn, fire, jump, str
 weapons and fire or throw each, look up and down, press B, Y, L, Z and A, then advance
 while firing. The player has control from about update 2,800.
 
+More routes (dol3): `route_4_2.txt` and `route_5_4.txt` as above;
+`route_quit_1_2.txt`, which after the play presses D-pad right (a hint, `DisplayHint`) and
+aborts the mission from the pause menu: START, right to QUIT, A, and since "Abort
+Mission?" starts on NO, left and A (the selected item is drawn grey, the others white).
+The abort ends the level through `SetFinishedLevelData` and the shell saves, then the game
+restarts the ELF, so the probe's update count starts again from 0 and the route replays,
+now with the first pass's memory-card save. `route_carry_1_3.txt` uses
+`research/probes/levels/level_1_3_carry.cpp`, which also records level 1_2 as won (full
+health, 20 rounds in every ammunition slot), so 1_3 starts with the carried ammunition
+(`CPlayerObject::Init` -> `CPlayerWeaponObject::AddAmo`; the HUD shows 7/14 for the Colt
+instead of 1/0). To find which levels can reach a script built-in, extract the level
+archives with `research/tools/gcdisc.py` (from the work directory's `patched.iso`, into
+`scratch/`) and run `research/tools/bs_find.py DIR --calls NAME` (classes whose code calls
+it) or `--uses CLASS` (`M_S_p.bpd` and `levelfile.lfc` name the placed objects).
+
 ## Comparison
 
 Every probe build also links `research/probes/clock_probe.cpp`, which removes CPU timing
@@ -434,7 +449,8 @@ but runs the original code.
   its first call.
 - `dolphin_boot.py prove --route NAME TEST.log CONTROL.log` marks as proven every draft that
   ran inside the identical part of the trace. The mark goes in the `proven` column of
-  `research/drafts/status.tsv` as `route@` plus the start of the draft file's SHA-1.
+  `research/drafts/status.tsv` as `route@` plus the start of the draft file's SHA-1. A
+  draft that already has a mark keeps it (the route that first proved it).
   `check_draft.py --all` keeps a mark only while the draft file is unchanged.
 
 `prepare` also turns the speed limit off (`EmulationSpeed = 0`). Emulated time doesn't
@@ -496,6 +512,30 @@ card folder before each run, because a save left by one run changes the next.
   path, its frames can differ while its logic is right. For such a draft, compare its
   command output instead (below). Overwriting the stack after each call also changes
   the original's frames, which is the same timing effect.
+- **More routes (dol3).** Nine of the 21 drafts that had never run are proven, with no
+  draft bug found: `route_quit_1_2` (`DisplayHint`, `SetFinishedLevelData`, and the
+  cover-point walk `BIFunc_AIStartCoverPointWalkToStored`, `CCoverPoint::FlagAsOccupied` and
+  `GetPeekLocation`, which a guard does in 1_2's second pass), `route_4_2`
+  (`BIFunc_MechFollowPath`, `CreateRootHierObject`: 4_2 places a `starthierobjoninitialize`
+  object), `route_5_4` (`CreateDumpObject`) and `route_carry_1_3` (`AddAmo`). 88 of the 100
+  drafts are proven. In 5_4 one in-level frame (5850) differs and nothing else: bisect
+  finds no single draft (interaction), the timing effect above, so 5_4 is proven with
+  `--ignore-frames 1530,5850`. A 13-level sweep (every non-multiplayer level with
+  `level_play.txt`) and ten more minutes of moving and firing in 5_4, 1_4 and 2_2 reached
+  none of the other twelve:
+  - multiplayer, left for last: `InitMultiplayer`, `DrawFragCount`,
+    `BIFunc_MPAddPlayerHealth`;
+  - unreachable in the game: `YUV_WriteRow` (only `GCSW_VD`, the software movie driver,
+    calls it, and `OPTION_PARSING_PLAYER`'s flag that selects it is only ever cleared),
+    `RCMP_SYSTEM`'s destructor (registered for destruction at exit, which never happens)
+    and `TRKSuppAccessFile` (the MetroTRK debugger's file request);
+  - not reached yet: `CCoverPoint::CheckLineCollision` (only from
+    `GetClosestUsableCoverPoint` when an AI stores its closest cover point against a target
+    and a point in range provides cover), `BIFunc_PlayerScreenFlash` (5_1's blueprint
+    pick-ups, 6_2's bunker explosion), `CShellMenu::ResetShell` (shell message 340, sent once
+    from `master_main.scr`), `CCDBVolBox::TestCollision(CTriangle)` (virtual only),
+    `SNDtimeremaining` (sound events with a time output, `PATHX_statusall`) and
+    `SFILTER_unpackxalf` (looped XA ADPCM voices, format 14 with a loop start).
 
 ### Capturing a draft's graphics commands
 

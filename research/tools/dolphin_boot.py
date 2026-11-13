@@ -356,6 +356,15 @@ def cmd_prove(args):
     if not names:
         sys.exit("no COVER lines: link the test image with link_drafts.py --coverage")
     print(f"{same} trace lines identical; {len(names)} drafts ran")
+    # Keep the route that first proved a draft: mark only drafts without a mark
+    # (check_draft.py --all clears a mark when its draft changes).
+    with open(os.path.join(ROOT, "research", "drafts", "status.tsv")) as f:
+        rows = [line.rstrip("\n").split("\t") for line in f]
+    marked = {r[rows[0].index("function")] for r in rows[1:] if r[rows[0].index("proven")]}
+    names = [n for n in names if n not in marked]
+    if not names:
+        print("no drafts without a mark")
+        return
     subprocess.run([sys.executable, os.path.join(ROOT, "research", "tools", "check_draft.py"),
                     "--prove", args.route] + names, cwd=ROOT, check=True)
 
