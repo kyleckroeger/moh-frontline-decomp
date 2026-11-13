@@ -246,6 +246,23 @@ functions match; the weak `__vt__17CAnimLightManager` and its RTTI record come o
 other vtables instead of right after `__vt__19CInstancedAnimLight`, and its two weak functions
 in the other order), anim_obj, alarm, pumhandler and world_object (not attempted).
 
+Files without vtables merged, 2026-11-13 (agent merge6, `scratch/loop3/merge6/notes.md`): 20
+more original files are one unit each: threads, ipad, saramman, stagpat, eaxadecf, saemsstr,
+sbasync, ssysinit, sst, IStudio, IStudioFuncs, bigyuvswizzler, jaw_controller, MathFun,
+animchan, renderlist, bsmessage, bsevents, bulletfactory and weaponfactory. Where fragments
+read a member with different types, volatility or signedness, the merged view has anonymous
+unions of both names; files whose fragments mixed inlining modes use deferred inlining with
+the functions written last to first when a later function is inlined into an earlier one
+(MathFun, bsevents, weaponfactory: one definition of `BSEventDecrimentReferenceCount` and of
+`GetWeaponPropertiesByCRC` replaces their inline/file-duplicate copies). Re-run (1,085 units,
+98 drafts, 78 data files, all compiled): **61 undefined, 108 fragment-local, 49 duplicate**, 0
+small-data; one duplicate fewer, no vtable change. Not merged: light (still the weak
+`__vt__17CAnimLightManager` order; the table lands in place only when some function makes a
+virtual call through, or constructs, a `CAnimLightManager`, which none of the original's 45
+functions does), rcmp_main (an unexplained 4-byte `.sbss` gap between `g_fw` and Play's
+statics), anim_obj, alarm, pumhandler, world_object, AnimObjFactory, ConfigGC,
+rcmp_mpc_codec, projectilebullet, pathxSND, saems, camera, animskinned and hearingvolume.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
