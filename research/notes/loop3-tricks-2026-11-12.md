@@ -842,3 +842,8 @@ Lever found (CheckForObstructions): 'int sign = 1; if (IsAbove(*this, node)) sig
   gives the original's compute-z-first/store-x-first order, but scores 19 (vs 13): y and abs.x colours swap.
 - (fpr2) Two FPRs swapped while the SCHEDULE already matches (orig 'fmuls f6,A; fmuls f8,B', ours 'fmuls f6,B; fmuls f8,A'): CW colours in value-creation order and schedules separately, so swap which of the two statements comes FIRST in the source (move the one the orig gives the lower reg earlier); the scheduler keeps the emitted order (ConstrainVelocity 2 -> 0).
 - (pum3) A named local both stored to a member and reused later ('extra = entry[0]; rec.m_extra = extra; ... + extra') colouring against a hoisted global base in swapped volatile regs: write the chained assignment 'extra = rec.m_extra = entry[0];' (the stored value is the temp, extra its copy; one load). PopUpMessageHandler ctor 16 -> 0 where ~1,500 order/type variants were inert.
+
+## sinit1 (2026-11-12): an __sinit that stores a callee FPR it never loads
+That is a temporary's uninitialised float members kept in a register. Flatten the temporary's
+sub-object members (plain colour bytes instead of a CColor member) rather than hunting for a
+0.0f. __sinit_pumhandler_cpp (fac4d7fa).
