@@ -1,6 +1,6 @@
 {
-  "id": "bsmessage_group",
-  "source": "src/game/bsmessage_group.cpp",
+  "id": "bsmessage",
+  "source": "src/game/bsmessage.cpp",
   "category": "reconstructed_game",
   "compiler_family": "GC",
   "compiler_version": "1.3.2",
@@ -40,19 +40,19 @@
     {
       "name": ".text",
       "address": "0x80039b84",
-      "size": 812,
+      "size": 2280,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a37c",
-      "size": 8,
+      "size": 24,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800112e8",
-      "size": 12,
+      "size": 36,
       "type": 1
     }
   ],
@@ -68,15 +68,58 @@
       "address": "0x80039ca0",
       "size": 528,
       "binding": 1
+    },
+    {
+      "name": "BSMessageRemoveHandler__FP28BSMessageRegistration_struct",
+      "address": "0x80039eb0",
+      "size": 96,
+      "binding": 1
+    },
+    {
+      "name": "BSSendMessage__FUsP8BSObjectP20TriggerObject_structP8BSObjectPv",
+      "address": "0x80039f10",
+      "size": 684,
+      "binding": 1
+    },
+    {
+      "name": "BSRegisterMessage__FP33BSCode_MessageHandlerEntry_structP8BSObjectUsP22BSMachineThread_structPP28BSMessageRegistration_struct",
+      "address": "0x8003a1bc",
+      "size": 292,
+      "binding": 1
+    },
+    {
+      "name": "BSEndMessage__Fv",
+      "address": "0x8003a2e0",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "BSInitMessage__Fv",
+      "address": "0x8003a2f4",
+      "size": 360,
+      "binding": 1
+    },
+    {
+      "name": "BSMessageGetMemoryRequirements__Fv",
+      "address": "0x8003a45c",
+      "size": 16,
+      "binding": 1
     }
   ],
   "externals": {
     "BSEventCurrentlyProcessingMessages__Fb": "0x80034d2c",
     "BSEventProcessImmediateEvents__Fv": "0x8003521c",
     "BSExecuteThread__FP8BSObjectP22BSMachineThread_struct": "0x80037e70",
+    "BSUtilGetMemory__Fii": "0x8003b83c",
     "g_MessageQueue": "0x80198098",
     "g_MessageQueueHead": "0x8034e824",
     "g_MessageQueueTail": "0x8034e828",
+    "g_MessageRegistrationArray": "0x8034e818",
+    "g_MessageRegistrationFreeList": "0x8034e81c",
+    "g_MessageRegistrationFreeListHead": "0x8034e820",
+    "g_iBSMessageRegistrationListSize": "0x8034e82c",
+    "g_pBSMessageMemory": "0x8034e830",
+    "g_pBSMessageMemoryOffset": "0x8034e834",
     "g_piStackTop": "0x8034e7d8"
   },
   "undefined_in_discarded_code": [],
@@ -85,12 +128,23 @@
   "local_externals": [
     "g_MessageQueue",
     "g_MessageQueueHead",
-    "g_MessageQueueTail"
+    "g_MessageQueueTail",
+    "g_MessageRegistrationArray",
+    "g_MessageRegistrationFreeList",
+    "g_MessageRegistrationFreeListHead",
+    "g_pBSMessageMemory",
+    "g_pBSMessageMemoryOffset"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
     "g_MessageQueueHead",
     "g_MessageQueueTail",
+    "g_MessageRegistrationArray",
+    "g_MessageRegistrationFreeList",
+    "g_MessageRegistrationFreeListHead",
+    "g_iBSMessageRegistrationListSize",
+    "g_pBSMessageMemory",
+    "g_pBSMessageMemoryOffset",
     "g_piStackTop"
   ],
   "original_file": "bsmessage.cpp",
