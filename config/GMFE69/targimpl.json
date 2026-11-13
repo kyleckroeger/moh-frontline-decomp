@@ -17,7 +17,7 @@
     "-Cpp_exceptions",
     "off",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-pragma",
@@ -66,14 +66,14 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8013654c",
-      "size": 2832,
+      "address": "0x801357cc",
+      "size": 6288,
       "type": 1
     },
     {
       "name": ".rodata",
       "address": "0x8017b198",
-      "size": 96,
+      "size": 136,
       "type": 1
     },
     {
@@ -85,15 +85,147 @@
     {
       "name": ".bss",
       "address": "0x80331a60",
-      "size": 2,
+      "size": 1404,
       "type": 8
     }
   ],
   "functions": [
     {
+      "name": "TRK_ppc_memcpy",
+      "address": "0x801357dc",
+      "size": 60,
+      "binding": 0
+    },
+    {
+      "name": "__TRK_get_MSR",
+      "address": "0x801357cc",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "__TRK_set_MSR",
+      "address": "0x801357d4",
+      "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "TRKInterruptHandler",
+      "address": "0x80135818",
+      "size": 404,
+      "binding": 1
+    },
+    {
+      "name": "TRKExceptionHandler",
+      "address": "0x801359ac",
+      "size": 156,
+      "binding": 1
+    },
+    {
+      "name": "TRKPostInterruptEvent",
+      "address": "0x8013642c",
+      "size": 192,
+      "binding": 1
+    },
+    {
+      "name": "TRKSwapAndGo",
+      "address": "0x80135a48",
+      "size": 196,
+      "binding": 1
+    },
+    {
+      "name": "TRKInterruptHandlerEnableInterrupts",
+      "address": "0x80135b0c",
+      "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetSetInputPendingPtr",
+      "address": "0x80135b60",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "TRKPPCAccessFPRegister",
+      "address": "0x80135b70",
+      "size": 540,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetStop",
+      "address": "0x80135d8c",
+      "size": 24,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetSetStopped",
+      "address": "0x80135da4",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetStopped",
+      "address": "0x80135db4",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetFlushCache",
+      "address": "0x80135dc4",
+      "size": 60,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetSupportRequest",
+      "address": "0x80135e00",
+      "size": 520,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetGetPC",
+      "address": "0x80136008",
+      "size": 16,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetStepOutOfRange",
+      "address": "0x80136018",
+      "size": 124,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetSingleStep",
+      "address": "0x80136094",
+      "size": 108,
+      "binding": 1
+    },
+    {
       "name": "TRKTargetAccessMemory",
       "address": "0x80136dec",
       "size": 332,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetAddExceptionInfo",
+      "address": "0x80136100",
+      "size": 172,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetAddStopInfo",
+      "address": "0x801361ac",
+      "size": 292,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetInterrupt",
+      "address": "0x801362d0",
+      "size": 348,
+      "binding": 1
+    },
+    {
+      "name": "TRKTargetCPUType",
+      "address": "0x801364ec",
+      "size": 96,
       "binding": 1
     },
     {
@@ -140,34 +272,50 @@
     }
   ],
   "externals": {
+    "HandleCloseFileSupportRequest": "0x80134eb8",
+    "HandleOpenFileSupportRequest": "0x80134fd8",
+    "HandlePositionFileSupportRequest": "0x80134d28",
+    "TRKAppendBuffer1_ui16": "0x80131c14",
+    "TRKAppendBuffer1_ui32": "0x80131bb0",
     "TRKAppendBuffer1_ui64": "0x80131b28",
     "TRKAppendBuffer_ui32": "0x80131a18",
-    "TRKPPCAccessFPRegister": "0x80135b70",
+    "TRKConstructEvent": "0x80131048",
+    "TRKDoNotifyStopped": "0x80135600",
+    "TRKPostEvent": "0x80131060",
     "TRKReadBuffer1_ui64": "0x80131730",
     "TRKReadBuffer_ui32": "0x801315a8",
+    "TRKRestoreExtended1Block": "0x80137378",
+    "TRKSaveExtended1Block": "0x801371c0",
+    "TRKSuppAccessFile": "0x80135324",
+    "TRKTargetCPUMinorType": "0x80137530",
     "TRKTargetTranslate": "0x80137160",
+    "TRKUARTInterruptHandler": "0x80137604",
     "TRK_flush_cache": "0x801356d8",
-    "TRK_ppc_memcpy": "0x801357dc",
-    "TRKvalue128_temp": "0x80331fcc",
-    "__TRK_get_MSR": "0x801357cc",
-    "__TRK_set_MSR": "0x801357d4",
-    "gTRKCPUState": "0x80331b08"
+    "gTRKBigEndian": "0x80330080"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [
     "TRKPPCAccessSpecialReg",
     "TRKPPCAccessPairedSingleRegister",
-    "TRKPPCAccessSPR"
+    "TRKPPCAccessSPR",
+    "TRKTargetCheckStep",
+    "TRKTargetDoStep",
+    "TRKTargetStepDone",
+    "TRKTargetEnableTrace",
+    "TRKTargetReadInstruction"
   ],
   "upstream": {
     "repository": "https://github.com/zeldaret/tww",
     "commit": "a1854d47ce5aa9d0f21c7fb5a71aaade63659693",
     "path": "src/TRK_MINNOW_DOLPHIN/ppc/Generic/targimpl.c"
   },
-  "local_externals": [
-    "TRK_ppc_memcpy"
+  "local_externals": [],
+  "discarded_local_functions": [
+    "TRKTargetCheckStep",
+    "TRKTargetDoStep",
+    "TRKTargetStepDone",
+    "TRKTargetEnableTrace"
   ],
-  "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "targimpl.c",
   "original_file_index": 11493
