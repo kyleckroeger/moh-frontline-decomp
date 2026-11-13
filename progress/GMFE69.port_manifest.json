@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1020,
- "function_bytes_by_status": {"consistent": 123016, "differs": 5764, "exact": 4472, "verified": 1272304},
+ "function_bytes_by_status": {"consistent": 122308, "differs": 5764, "exact": 4472, "verified": 1273012},
  "data_bytes_owned": 815597,
  "data_bytes_total": 1976252,
  "functions": [
@@ -4113,7 +4113,7 @@
  [2148748984, 288, "HandleCloseFileSupportRequest", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c"],
  [2148749272, 424, "HandleOpenFileSupportRequest", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c"],
  [2148749696, 420, "TRKRequestSend", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c"],
- [2148750116, 708, "TRKSuppAccessFile", "consistent", "research/drafts/TRKSuppAccessFile.80135324.c"],
+ [2148750116, 708, "TRKSuppAccessFile", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c"],
  [2148750824, 8, "TRKReleaseMutex", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/mutex_TRK.c"],
  [2148750832, 8, "TRKAcquireMutex", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/mutex_TRK.c"],
  [2148750840, 8, "TRKInitializeMutex", "verified", "src/tww/TRK_MINNOW_DOLPHIN/Portable/mutex_TRK.c"],

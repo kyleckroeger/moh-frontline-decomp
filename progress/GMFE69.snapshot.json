@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1281148,
+    "matching_code_bytes": 1281856,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.56788908588605,
+    "percent": 90.61793956051724,
     "categories": {
       "reconstructed_game": 1045096,
-      "restored_library": 236052
+      "restored_library": 236760
     },
-    "matching_functions": 4910
+    "matching_functions": 4911
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -1098,7 +1098,7 @@
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/nubevent.c": "a41d7572df570cfc078384c59729d88bb42bf60da82cec67411bb367319b671b",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/nubinit.c": "15388195f704abe90d1fed3dd7dcc1ddfb7b56977a07f9e5292aff8d383e0484",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/serpoll.c": "ca8a164f7002570a7b4883e25b9230ed859fd6c8f65d6a31a959c820ff77e8b2",
-    "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c": "dd06df08831ebfb73004e07d3018fd123ac4f10f0e4f727ba5a6f8151fe7f6fd",
+    "src/tww/TRK_MINNOW_DOLPHIN/Portable/support.c": "fd35ae879079a138b84b227264be834faeac915070aaa6f456b80a763948e0b9",
     "src/tww/TRK_MINNOW_DOLPHIN/Portable/usr_put.c": "5eab8f8b2a06943f52ef98cdaa9d0c9df64e14aa52e36461ecc399cb2648cf3f",
     "src/tww/TRK_MINNOW_DOLPHIN/ppc/Export/targsupp.c": "791938c6e6a500b45da693c7b47dbbb373626d63663bf35ec6ad26733eb5b778",
     "src/tww/TRK_MINNOW_DOLPHIN/ppc/Generic/__exception.c": "fb1ba1756c817ba03d474385ef66be4d5b29fc0055bd9db93ee23711df3db1a4",
@@ -2448,7 +2448,7 @@
     "config/GMFE69/supmutf.json": "b05c845ee875b7b6b597c7b19d885208eefd20ae035e279e3756bc93901a4bc2",
     "config/GMFE69/supmutpf.json": "0d451c9335c55a574975b1f2a84c867d8fb8cfacd17012cdcde963ded62952fe",
     "config/GMFE69/suppf.json": "21c4b8c1c272385cc4bfb7064f50cb3a07523349e74c3ca2ea38e1460277c66f",
-    "config/GMFE69/support.json": "ab678e1f218c1f088288543d73bdc61b6b3126ae3ff480714f8d3f13a83e360c",
+    "config/GMFE69/support.json": "014f1c3aec580aa2d91599177719b484ad1f2ff4652f37496e1f5aaac5f2dc10",
     "config/GMFE69/supxaf.json": "5770d2495b551947242beeb93225377e10f9b1e7e237c927b151eef2fff65776",
     "config/GMFE69/supxalf.json": "5649c5ead2c3498e6abe7d13c59af2f8cf2bdde86e3c3a499a6b2ab53142f7b8",
     "config/GMFE69/supxapf.json": "ed96fba3d4f7bec21bd81ddad8e03c9d1fb2f14d221c809e0cb4d9d18f0fc533",
@@ -21552,8 +21552,8 @@
     {
       "id": "support",
       "category": "restored_library",
-      "functions": 4,
-      "code_bytes": 1532,
+      "functions": 5,
+      "code_bytes": 2240,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -21605,8 +21605,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "fdf26243d9231be6721011e65052d30044e03970b9a19fbb549dec224134d85f",
-      "linked_sha256": "105eb09f12b1fbb33622b2c0d94d3695b24d83361c3cb1f30a125ef0197e40ad"
+      "object_sha256": "f9719e21cd518a2c5173777524fa1b939973e9ccf2505870cc123753c38aff62",
+      "linked_sha256": "e00e66c2f32f6c1bfd030e1ae83bfe7d4fea261f6891fc2593c5a0812dd5dfba"
     },
     {
       "id": "targimpl",
@@ -45429,18 +45429,6 @@
             "kind": "function",
             "name": "PATHI_eventstart__Fi",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unknown file/.text @ 80135324",
-        "ranges": [
-          {
-            "address": "0x80135324",
-            "size": 708,
-            "kind": "function",
-            "name": "TRKSuppAccessFile",
-            "evidence": "unknown-file"
           }
         ]
       },

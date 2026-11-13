@@ -67,7 +67,7 @@
     {
       "name": ".text",
       "address": "0x80134d28",
-      "size": 1532,
+      "size": 2240,
       "type": 1
     }
   ],
@@ -95,6 +95,12 @@
       "address": "0x80134fd8",
       "size": 424,
       "binding": 1
+    },
+    {
+      "name": "TRKSuppAccessFile",
+      "address": "0x80135324",
+      "size": 708,
+      "binding": 1
     }
   ],
   "externals": {
@@ -105,8 +111,10 @@
     "TRKGetFreeBuffer": "0x80131e98",
     "TRKMessageSend": "0x801313cc",
     "TRKProcessInput": "0x80132000",
+    "TRKReadBuffer1_ui16": "0x801318e0",
     "TRKReadBuffer1_ui32": "0x80131818",
     "TRKReadBuffer1_ui8": "0x80131998",
+    "TRKReadBuffer_ui8": "0x80131698",
     "TRKReleaseBuffer": "0x80131e08",
     "TRKSetBufferPosition": "0x80131d98",
     "TRKTestForPacket": "0x801320e8",

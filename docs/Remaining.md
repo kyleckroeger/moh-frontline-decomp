@@ -27,7 +27,7 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,281,148 / 1,414,572 code bytes (90.57%)**. Left: about 133.3 KB in 99 functions across 54 source files.
+Verified: **1,281,856 / 1,414,572 code bytes (90.62%)**. Left: about 132.5 KB in 98 functions across 54 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
@@ -38,13 +38,13 @@ Verified: **1,281,148 / 1,414,572 code bytes (90.57%)**. Left: about 133.3 KB in
 | 2 | Rendering | 14.4 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
 | 2 | Audio | 10.5 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `stream.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
-| 2 | System | 6.4 KB | `debug_prof.cpp`, `toilet.cpp`, `input.cpp`, `aramalloc.cpp` |
+| 2 | System | 5.7 KB | `debug_prof.cpp`, `toilet.cpp`, `input.cpp`, `aramalloc.cpp` |
 | 2 | Video | 1.6 KB | `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
 Priority 1 is 82.5 KB and would take the project to 96.4% at most.
 
-Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 93 consistent (123.0 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 92 consistent (122.3 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->

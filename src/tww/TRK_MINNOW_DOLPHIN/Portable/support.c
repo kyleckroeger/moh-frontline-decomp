@@ -6,10 +6,8 @@
    Frontline's older protocol, written from the target: the command and
    arguments are appended one by one (no CommandReply header), the I/O result
    is a byte, and the reply is read from position 2. Functions are emitted in
-   reverse source order (-inline deferred). TRKSuppAccessFile, the last
-   function in the target, is not part of the unit (its read flag and byte
-   count are allocated to each other's registers; draft in
-   scratch/lib/support_wip.c). */
+   reverse source order (-inline deferred), so TRKSuppAccessFile, the last
+   function in the target, comes first. */
 #include "TRK_MINNOW_DOLPHIN/MetroTRK/Portable/support.h"
 #include "TRK_MINNOW_DOLPHIN/utils/common/MWTrace.h"
 #include "TRK_MINNOW_DOLPHIN/MetroTRK/Portable/msgbuf.h"
@@ -26,6 +24,101 @@ inline DSError TRKAppendBuffer1_ui8(TRKBuffer* buffer, const u8 data) {
     return DS_NoError;
 }
 
+
+/* Pikmin's support.c body and local order; 'done' declared after 'error'
+   gives the original's registers (declared first, it trades r29/r30 with the
+   read flag). */
+DSError TRKSuppAccessFile(u32 file_handle, u8* data, size_t* count, u8* io_result, BOOL need_reply, BOOL read)
+{
+	TRKBuffer* replyBuffer;
+	int replyBufferId;
+	u32 length;
+	int bufferId;
+	TRKBuffer* buffer;
+	DSError error;
+	u32 done;
+	u16 replyLength;
+	u8 replyIOResult;
+	BOOL exit;
+
+	if (data == NULL || *count == 0) {
+		return DS_ParameterError;
+	}
+
+	exit       = FALSE;
+	*io_result = DS_IONoError;
+	done       = 0;
+	error      = DS_NoError;
+	while (!exit && done < *count && error == DS_NoError && *io_result == DS_IONoError) {
+		if (*count - done > 0x800) {
+			length = 0x800;
+		} else {
+			length = *count - done;
+		}
+
+		error = TRKGetFreeBuffer(&bufferId, &buffer);
+
+		if (error == DS_NoError)
+			error = TRKAppendBuffer1_ui8(buffer, read ? DSMSG_ReadFile : DSMSG_WriteFile);
+
+		if (error == DS_NoError)
+			error = TRKAppendBuffer1_ui32(buffer, file_handle);
+
+		if (error == DS_NoError)
+			error = TRKAppendBuffer1_ui16(buffer, length);
+
+		if (!read && error == DS_NoError)
+			error = TRKAppendBuffer_ui8(buffer, data + done, length);
+
+		if (error == DS_NoError) {
+			if (need_reply) {
+				replyLength   = 0;
+				replyIOResult = 0;
+
+				error = TRKRequestSend(buffer, &replyBufferId, read ? 5 : 5, 3, !(read && file_handle == 0));
+				if (error == DS_NoError) {
+					replyBuffer = (TRKBuffer*)TRKGetBuffer(replyBufferId);
+					TRKSetBufferPosition(replyBuffer, 2);
+				}
+
+				if (error == DS_NoError)
+					error = TRKReadBuffer1_ui8(replyBuffer, &replyIOResult);
+
+				if (error == DS_NoError)
+					error = TRKReadBuffer1_ui16(replyBuffer, &replyLength);
+
+				if (read && error == DS_NoError) {
+					if (replyBuffer->length != replyLength + 5) {
+						replyLength = replyBuffer->length - 5;
+						if (replyIOResult == 0)
+							replyIOResult = 1;
+					}
+
+					if (replyLength <= length)
+						error = TRKReadBuffer_ui8(replyBuffer, data + done, replyLength);
+				}
+
+				if (replyLength != length) {
+					if ((!read || replyLength >= length) && replyIOResult == 0)
+						replyIOResult = 1;
+					length = replyLength;
+					exit   = TRUE;
+				}
+
+				*io_result = (DSIOResult)replyIOResult;
+				TRKReleaseBuffer(replyBufferId);
+			} else {
+				error = TRKMessageSend(buffer);
+			}
+		}
+
+		TRKReleaseBuffer(bufferId);
+		done += length;
+	}
+
+	*count = done;
+	return error;
+}
 
 DSError TRKRequestSend(TRKBuffer* msgBuf, int* bufferId, u32 p1, u32 p2, int p3)
 {

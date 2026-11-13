@@ -973,3 +973,11 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   ('unsigned int w = *(unsigned int*)&color; return *(CColor*)&w;'), with the shared CColor.h's implicit copy. Copying the
   word into a CColor local ('CColor c; *(unsigned int*)&c = ...'), 'return color', 'CColor c = color' and byte-order copy
   ctors give other load orders (ed/v1-v7).
+
+## One-declaration move sweep (late1, 2026-11-13; scratch/loop3/day2/l1/dsweep.py)
+- A cheap first pass for a callee-register swap between a parameter and a local: move ONE leading local
+  declaration to every other slot (n^2 compiles, about 0.2 s each) before trying statement forms.
+  TRKSuppAccessFile (C, -inline deferred): 'u32 done;' declared first lost r30 to the 'read' parameter;
+  declared after 'error' (Pikmin's reference order) it is exact. Earlier passes had permuted declarations
+  but compiled the .c draft as C++ (brchk/score default), where an unrelated u8 shift difference hid it:
+  score .c drafts with SUFFIX=c.
