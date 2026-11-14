@@ -65,7 +65,7 @@ consistent	0.984	1.000	82	980	PROFILE_UPDATE__Fv	True	0	0	research/drafts/PROFIL
 consistent	1.000	1.000	22	892	BIFunc_AddBuddy__FPPiPv	True	0	0	research/drafts/BIFunc_AddBuddy.80057b30.cpp	route_2_1@3e65ed63
 consistent	0.895	1.000	252	1260	DMMorphBlendDisplayLists__FP16DMRenderObject_T	True	0	0	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	m1_opening@fc3d851d
 consistent	0.983	1.000	266	2092	FindIntersection__FRC6CLine3RC11CVolCapsulePf	True	0	0	research/drafts/FindIntersection.800c5cb4.cpp	m1_opening@5a23a05b
-consistent	1.000	1.000	463	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	route_boxtri_1_2@9dd17b77
+consistent	1.000	1.000	449	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	
 consistent	0.998	1.000	414	3768	BSFileReadClass__FPCcbbPP14BSClass_struct	True	0	0	research/drafts/BSFileReadClass.80035aa8.cpp	m1_opening@c506c5c1
 consistent	0.951	0.994	958	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	route_menu@c5a8088c
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp	m1_opening@4f327e94

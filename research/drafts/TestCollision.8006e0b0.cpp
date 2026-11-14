@@ -110,10 +110,8 @@ int CCDBVolBox::TestCollision(const CTriangle& tri, CCollision&, bool) const {
     float c21;
     float a1e1;
     float gz;
-    float fy;
     float a1n;
     float c10;
-    float fz;
     float a1e2;
     float a2e1;
     CVector3 diff;
@@ -122,6 +120,8 @@ int CCDBVolBox::TestCollision(const CTriangle& tri, CCollision&, bool) const {
     CVector3 normal;
     CVector3 c;
     float best = 3.4028235e38f;
+    float fy;
+    float fz;
     EBoxTriSeperatingAxis bestAxis;
     dx = tri.m_vertices[0].x - m_center.x;
     float dy = tri.m_vertices[0].y - m_center.y;
@@ -141,9 +141,9 @@ int CCDBVolBox::TestCollision(const CTriangle& tri, CCollision&, bool) const {
     e1.x = gx;
     e1.y = gy;
     e1.z = gz;
-    float a0d = diff.Dot(m_axes[0]);
-    float a0e0 = e0.Dot(m_axes[0]);
     float a0e1 = e1.Dot(m_axes[0]);
+    float a0e0 = e0.Dot(m_axes[0]);
+    float a0d = diff.Dot(m_axes[0]);
     if (Separate(m_half[0], a0d, a0e0, a0e1, (EBoxTriSeperatingAxis)1, best, bestAxis))
         return 1;
     float a1d = diff.Dot(m_axes[1]);

@@ -1119,3 +1119,8 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
 - Shared-inline check (unitcmp.py JSON SRC...): AddBuddy reaches 0 (and BIFunc_AddBuddy 22 -> 16) with
   GiveBuddyOrders' 'float x = 0.0f; float y; float z;' order, but landed buddy_head.cpp's UpdateBuddyCheckpoints
   and UpdateBuddyProgress go to 14 each with it: the buddy2 trade-off again, in a second spelling. Not applied.
+- Real-scored declaration sweep (REAL=1 autods.py, score.real as the objective instead of difflib): CCDBVolBox::
+  TestCollision(CTriangle) 463 -> 449 (fy/fz after 'best'; axis-0 projections in order a0e1, a0e0, a0d), applied.
+  Kept in scratch (small gains on proven drafts): aim_cb 57 -> 55 ('float c = cos(a)' third), PROFILE_UPDATE
+  82 -> 81, _unpack_skel_frame 157 -> 154 (late1 found the same). difflib-scored and real-scored sweeps find
+  different moves: run both.
