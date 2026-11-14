@@ -7,7 +7,8 @@ struct PATHBRANCHVIEW {
     unsigned short node;
 };
 
-struct PATHNODEVIEW {
+/* named by PATHI_choosebeat's symbol (PATHI_choosebeat__FP12PATHFINDNODE...); layout inferred */
+struct PATHFINDNODE {
     short type;
     unsigned char owner : 5;
     unsigned char unknown02_5 : 3;
@@ -66,7 +67,7 @@ struct PATHTRACK {
     union { void* next; };
     short loopNode;
     short event;
-    PATHNODEVIEW* current;
+    PATHFINDNODE* current;
     PATHPLAYVIEW play;
     char name[128];
     int unknownc4;
@@ -122,14 +123,14 @@ extern "C" int PATHX_readyfornewrequest(int);
 extern "C" void PATHX_stop(int);
 int PATHI_enternode(int, int, int);
 int PATHI_queuenode(PATHTRACK*, unsigned int);
-int PATHI_choosebeat(PATHNODEVIEW*, PATHNODEVIEW*, int*, int*);
+int PATHI_choosebeat(PATHFINDNODE*, PATHFINDNODE*, int*, int*);
 
-static inline PATHNODEVIEW* getnode(int node) {
-    return (PATHNODEVIEW*)&((int*)pfstate->data)[pfstate->nodeindex[node]];
+static inline PATHFINDNODE* getnode(int node) {
+    return (PATHFINDNODE*)&((int*)pfstate->data)[pfstate->nodeindex[node]];
 }
 
 static inline int choosebranch(int node, int value) {
-    PATHNODEVIEW* rec;
+    PATHFINDNODE* rec;
     PATHBRANCHVIEW* branches;
     int next;
     PATHTRACK* track;
@@ -213,7 +214,7 @@ int PATHI_eventstart(int index) {
 
     if (event < 0) {
         short first = -(event + 1);
-        PATHNODEVIEW* rec = getnode(first);
+        PATHFINDNODE* rec = getnode(first);
 
         track->play.trans.node = PATHI_enternode(track->play.trans.node, first, track->layer);
         result = PATHI_queuenode(track, pfstate->events[0].type);
@@ -268,7 +269,7 @@ int PATHI_eventstart(int index) {
             if (node >= 0)
                 node = PATHI_enternode(track->play.trans.node, node, track->layer);
             if (node >= 0) {
-                PATHNODEVIEW* rec = getnode(node);
+                PATHFINDNODE* rec = getnode(node);
 
                 if (track->current->sync && !restore) {
                     restore = 1;

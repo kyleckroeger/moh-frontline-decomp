@@ -249,6 +249,7 @@
     "Link__22CParticleSystemManagerFP7CDmaTagR10CDmaPacket": "0x8007d438",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "OnCollision__10ISceneNodeFRC10CCollision": "0x8001aec0",
+    "Render__10CRenderBinFR10CDmaPacketPv": "0x80076e18",
     "SetAttachedLight__10ISceneNodeFP6CLight8CVector3": "0x8001b048",
     "SetCollisionId__10ISceneNodeF7EClsnId": "0x8001af74",
     "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
@@ -269,9 +270,7 @@
     "__vt__9IObserver": "0x8018a1c0",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
-  "undefined_in_discarded_code": [
-    "Render__15CUcodeRenderBinFR10CDmaPacketPv"
-  ],
+  "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [],

@@ -22,7 +22,9 @@ relocation, so it can't give the whole count while any are left (tried 2026-11-1
 stopped after the units starting with "A"). Symbols the link script defines (_stack_addr,
 _ctors, ...) aren't counted. "fragment_local" is a symbol one object refers to that another defines file-locally: the
 original file is split into fragments (units, drafts) and its statics are reached across
-them with extern; merging a file's fragments resolves it. "small_data" is a symbol one object reaches through r13/r2 (SDA21) that its defining
+them with extern; merging a file's fragments resolves it. "stripped" is a symbol only a unit's
+discarded functions refer to (its config's discarded_functions: the original's linker dead-stripped
+them, so the reference never reaches the link); listed, not counted as undefined. "small_data" is a symbol one object reaches through r13/r2 (SDA21) that its defining
 object put in a large-data section: the two disagree on its size or type.
 
     source_link.py [--jobs N]     resolve; write research/layout/source_link.tsv and print the counts
@@ -102,14 +104,46 @@ SMALL = {".sdata", ".sbss", ".sdata2", ".sbss2"}
 SDA21 = 109
 # Defined by the link script, not by source.
 LINKER = {"_stack_addr", "_stack_end", "_db_stack_addr", "_db_stack_end", "_ctors", "_dtors",
-          "_bss_init_info", "_rom_copy_info", "_SDA_BASE_", "_SDA2_BASE_", "__ArenaLo", "__ArenaHi"}
+          "_bss_init_info", "_rom_copy_info", "_eti_init_info", "_SDA_BASE_", "_SDA2_BASE_",
+          "__ArenaLo", "__ArenaHi"}  # _eti_init_info: MWLD's exception-table index, the tail of extabindex
+
+
+def discarded(path):
+    """A unit's functions that the original's linker dead-stripped (its config's
+    discarded_functions and discarded_local_functions); empty for drafts and data."""
+    if "/units/" not in str(path):
+        return set()
+    config = ROOT / "config/GMFE69" / (Path(path).parent.name + ".json")
+    if not config.exists():
+        return set()
+    t = json.load(open(config))
+    return set(t.get("discarded_functions", [])) | set(t.get("discarded_local_functions", []))
+
+
+def live_references(elf, syms, dead):
+    """Names referenced by some relocation outside the dead functions."""
+    spans = collections.defaultdict(list)
+    for s in syms:
+        if s["name"] in dead and s["type"] == 2 and 0 < s["section"] < 0xFF00:
+            spans[s["section"]].append((s["address"], s["address"] + s["size"]))
+    live = set()
+    for sec in elf.sections:
+        if sec["type"] != 4:
+            continue
+        data = elf.contents(sec)
+        for off in range(0, len(data), 12):
+            where, info = struct.unpack_from(">II", data, off)
+            if not any(lo <= where < hi for lo, hi in spans.get(sec["info"], ())):
+                live.add(syms[info >> 8]["name"])
+    return live
 
 
 def table(path):
     """(defined {name: (binding, section)}, referenced names, names reached with SDA21,
-    names defined file-locally)."""
+    names defined file-locally, names referenced only from dead-stripped functions)."""
     elf = Elf32(Path(path).read_bytes())
     syms = list(elf.symbols())
+    dead = discarded(path)
     defined, referenced, small, local = {}, set(), set(), set()
     for s in syms:
         if s["name"] and s["binding"] == 0 and 0 < s["section"] < 0xFF00 and s["type"] in (1, 2):
@@ -131,7 +165,11 @@ def table(path):
                     sym = syms[info >> 8]
                     if sym["name"] and sym["binding"] in (1, 2):
                         small.add(sym["name"])
-    return defined, referenced, small, local
+    stripped = set()
+    if dead:
+        stripped = referenced - live_references(elf, syms, dead)
+        referenced -= stripped
+    return defined, referenced, small, local, stripped
 
 
 def resolve(units, drafts, data):
@@ -144,7 +182,7 @@ def resolve(units, drafts, data):
     unit_defs = set().union(*(tables[o][0] for o in units))
     strong, any_def, where = collections.defaultdict(list), {}, {}
     locals_ = set().union(*(t[3] for t in tables.values()))
-    for o, (defined, _, _, _) in tables.items():
+    for o, (defined, _, _, _, _) in tables.items():
         for name, (binding, section) in defined.items():
             weak = binding == 2 or (o in drafts and name in unit_defs)
             any_def.setdefault(name, section)
@@ -152,7 +190,13 @@ def resolve(units, drafts, data):
                 strong[name].append(o)
                 where[name] = section
     found = collections.defaultdict(lambda: collections.defaultdict(set))
-    for o, (_, referenced, small, _) in tables.items():
+    for o, (_, referenced, small, _, stripped) in tables.items():
+        for name in stripped:
+            if name not in any_def and name not in LINKER:
+                # Reached only from functions the original's linker dead-stripped (the unit's
+                # discarded functions, e.g. block headers, unused SDK variants): MWLD drops
+                # them and the reference with them. Listed, not counted as undefined.
+                found["stripped"][name].add(o)
         for name in referenced:
             if name not in any_def and name not in LINKER:
                 # Static in another fragment of the same original file: resolves once the
@@ -195,14 +239,14 @@ def main():
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT, "w") as f:
         f.write("kind\tsymbol\tobjects\n")
-        for kind in ("undefined", "fragment_local", "duplicate", "small_data"):
+        for kind in ("undefined", "fragment_local", "duplicate", "small_data", "stripped"):
             for sym in sorted(found[kind]):
                 objs = sorted({label(o) for o in found[kind][sym]})
                 f.write(f"{kind}\t{sym}\t{' '.join(objs)[:300]}\n")
         for source, err in sorted(failed.items()):
             f.write(f"no_compile\t{source}\t{' '.join(err.split())[:200]}\n")
     print(f"objects: {len(units)} units, {len(drafts)} drafts, {len(data)} data files; {len(failed)} failed to compile")
-    for kind in ("undefined", "fragment_local", "duplicate", "small_data"):
+    for kind in ("undefined", "fragment_local", "duplicate", "small_data", "stripped"):
         print(f"{kind:15} {len(found[kind]):6} symbols")
     print(f"wrote {OUT.relative_to(ROOT)}")
 

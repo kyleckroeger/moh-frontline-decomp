@@ -346,6 +346,26 @@ of buddy.cpp stays split until GetInitialBuddyOrders, BIFunc_AddBuddy and AddBud
 undefined, 102 fragment-local, 45 duplicate**, 0 small-data (the merge moves the three buddy
 containers and two vector destructors into the unit that defines them).
 
+Agent undef's part (2026-11-13, `scratch/loop3/undef/notes.md`): of the 16 undefined names that
+were not vtables, 11 are only reached from functions the original's linker dead-stripped, so
+none of them is in the original: the four VEC calls of `mtx.c`'s unused `C_MTXReflect`,
+`C_MTXRotAxisRad` and `C_MTXLookAt` (`C_VECDotProduct`, `C_VECNormalize`, `PSVECCrossProduct`,
+`PSVECNormalize`; the game links no `vec.c`), `__CARDIsWritable` (`CARDFastDeleteAsync`), `__double_max` and `nextafter`
+(ansi_fp's `__dec2num`), and the four block-header device calls (`ShellMenuBlockItem`,
+`RcmpMainBlockItem`, `UserInterfaceBlockItem`, `BsbifuncBlockItem`). `source_link.py` now models
+MWLD's dead-stripping: a reference made only from a unit's `discarded_functions` is listed as
+`stripped`, not counted as undefined (the SDK's `__copy_rom_section`/`__init_*` references from
+discarded code move there too). `_eti_init_info` is MWLD's exception-table index at the end of
+`extabindex` (32 bytes, linker-generated like `_rom_copy_info`), so it joins the link-script
+names. `PATHI_eventstart`'s draft names the node view `PATHFINDNODE` (from `PATHI_choosebeat`'s
+symbol; code unchanged, 160 lines). particlesystem's `CUcodeRenderBin` view had a `Render` the
+original lacks (the manager's table lists `CRenderBin::Render`); it now declares the real weak
+`Link` instead to keep the weak table out, unit still exact. Re-run (`source_link.py --jobs 4`,
+1,017 units, 94 drafts, 72 data files, all compiled): **40 undefined, 102 fragment-local, 45
+duplicate**, 0 small-data, 15 stripped. The 40 are 38 vtables and `axDspSlave`/`axDspSlaveLength`
+(the DSP microcode, 6,624 bytes of `.data` and a 2-byte `.sdata` length; platform-owned by
+sub-step 2, so not transcribed).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 

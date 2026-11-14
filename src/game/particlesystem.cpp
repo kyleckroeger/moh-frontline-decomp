@@ -220,9 +220,12 @@ public:
     virtual bool IsUsed();
 };
 
+// No Render of its own: the manager's table (0x801848d4) lists CRenderBin::Render.
+// Link is declared (its weak default is in compartment_bins.cpp) so that this class's
+// weak table is not emitted here.
 class CUcodeRenderBin : public CRenderBin {
 public:
-    virtual int Render(CDmaPacket&, void*);
+    virtual void Link(CDmaTag*, CDmaPacket&);
     virtual ~CUcodeRenderBin() {}
 };
 

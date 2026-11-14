@@ -1,16 +1,4 @@
 kind	symbol	objects
-undefined	BsbifuncBlockItem__FPCv	unit:bsbifunc_schedules
-undefined	C_VECDotProduct	unit:mtx
-undefined	C_VECNormalize	unit:mtx
-undefined	PATHI_choosebeat__FP12PATHNODEVIEWP12PATHNODEVIEWPiPi	draft:PATHI_eventstart.8010ee50
-undefined	PSVECCrossProduct	unit:mtx
-undefined	PSVECNormalize	unit:mtx
-undefined	RcmpMainBlockItem__FPCv	unit:rcmp_main
-undefined	Render__15CUcodeRenderBinFR10CDmaPacketPv	unit:particlesystem
-undefined	ShellMenuBlockItem__FPCv	unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku
-undefined	UserInterfaceBlockItem__FPCv	unit:UserInterface_init
-undefined	__CARDIsWritable	unit:CARDDelete
-undefined	__double_max	unit:ansi_fp
 undefined	__vt__10BSGO_Dummy	draft:CreateDumpObject.8003fc2c unit:thrown_obj unit:thrownbullet unit:weapon
 undefined	__vt__10CAnimMorph	unit:animmorph unit:animmorph_dtor
 undefined	__vt__10CCDBObject	unit:cdbobject_ctor unit:cdbobject_dtor
@@ -49,10 +37,8 @@ undefined	__vt__6CLight	unit:light_dtor unit:light_instanced_dtor unit:light_pro
 undefined	__vt__7CVolBox	draft:CreateDestructable.8003c93c draft:CreateRootHierObject.8003dde8 unit:animated_volume unit:box_create unit:box_dtor unit:cdbgeom_volbox_ctor unit:compartment_intersect unit:compartment_nodeshadows unit:compartment_volbox unit:fiber unit:objcreate_collvol unit:objcreate_german unit:objcreate_swa
 undefined	__vt__8CPartBin	unit:dmesh
 undefined	__vt__9CRemapBin	unit:dmesh unit:dmesh_cremapbin_ctor
-undefined	_eti_init_info	unit:__init_cpp_exceptions
 undefined	axDspSlave	unit:AXOut
 undefined	axDspSlaveLength	unit:AXOut
-undefined	nextafter	unit:ansi_fp
 fragment_local	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	unit:aramalloc_alloc
 fragment_local	AdjustAim__FR8CVector3f	unit:bsbifunc_mpprompt
 fragment_local	CAMERA_STAND_OFFSET	unit:player_mmg
@@ -67,10 +53,10 @@ fragment_local	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	unit:animmorph_
 fragment_local	SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry>	draft:SweepAllExtents.800d8bac
 fragment_local	YUV_WriteRow__FPUcPUcPUcPci	unit:swvideodisplaylist
 fragment_local	_Mat_Unit	draft:Rotate.800904e8
-fragment_local	__copy_rom_section	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSAudioSystem unit:OSCache unit:OSContext unit:OSError unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSSync unit:OSThread unit:OSTime un
-fragment_local	__init_bss_section	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSAudioSystem unit:OSCache unit:OSContext unit:OSError unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSSync unit:OSThread unit:OSTime un
-fragment_local	__init_data	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSAudioSystem unit:OSCache unit:OSContext unit:OSError unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSSync unit:OSThread unit:OSTime un
-fragment_local	__init_registers	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSAudioSystem unit:OSCache unit:OSContext unit:OSError unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSSync unit:OSThread unit:OSTime un
+fragment_local	__copy_rom_section	unit:OSAudioSystem unit:OSError unit:OSSync unit:SISamplingRate unit:__start
+fragment_local	__init_bss_section	unit:OSAudioSystem unit:OSError unit:OSSync unit:SISamplingRate unit:__start
+fragment_local	__init_data	unit:OSAudioSystem unit:OSError unit:OSSync unit:SISamplingRate unit:__start
+fragment_local	__init_registers	unit:OSAudioSystem unit:OSError unit:OSSync unit:SISamplingRate unit:__start
 fragment_local	_dmeshStack	draft:DMClusterSkelTraverseHeirarchy.800f53c0 unit:dmcluster_init
 fragment_local	_scratchMats	draft:DMClusterSkelTraverseHeirarchy.800f53c0
 fragment_local	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	unit:skelblend
@@ -200,3 +186,18 @@ duplicate	rcmp_sys__4RCMP	draft:__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.801
 duplicate	teamColors	unit:UserInterface unit:UserInterface_timestamp
 duplicate	timestamp	data:bss_UserInterface.cpp unit:UserInterface_timestamp
 duplicate	timestampDisplayText	data:bss_UserInterface.cpp unit:UserInterface_timestamp
+stripped	BsbifuncBlockItem__FPCv	unit:bsbifunc_schedules
+stripped	C_VECDotProduct	unit:mtx
+stripped	C_VECNormalize	unit:mtx
+stripped	PSVECCrossProduct	unit:mtx
+stripped	PSVECNormalize	unit:mtx
+stripped	RcmpMainBlockItem__FPCv	unit:rcmp_main
+stripped	ShellMenuBlockItem__FPCv	unit:ShellMenu_autoload unit:ShellMenu_bootcheck unit:ShellMenu_briefing unit:ShellMenu_credits unit:ShellMenu_gallerymovie unit:ShellMenu_savegame unit:ShellMenu_sku
+stripped	UserInterfaceBlockItem__FPCv	unit:UserInterface_init
+stripped	__CARDIsWritable	unit:CARDDelete
+stripped	__copy_rom_section	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSCache unit:OSContext unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSThread unit:OSTime unit:SIBios unit:dvd unit:dvderror unit:dvdlow
+stripped	__double_max	unit:ansi_fp
+stripped	__init_bss_section	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSCache unit:OSContext unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSThread unit:OSTime unit:SIBios unit:dvd unit:dvderror unit:dvdlow
+stripped	__init_data	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSCache unit:OSContext unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSThread unit:OSTime unit:SIBios unit:dvd unit:dvderror unit:dvdlow
+stripped	__init_registers	unit:CARDCheck unit:CARDFormat unit:CARDMount unit:CARDNet unit:EXIUart unit:OS unit:OSAlarm unit:OSCache unit:OSContext unit:OSFont unit:OSInterrupt unit:OSLink unit:OSMemory unit:OSMutex unit:OSReset unit:OSResetSW unit:OSRtc unit:OSThread unit:OSTime unit:SIBios unit:dvd unit:dvderror unit:dvdlow
+stripped	nextafter	unit:ansi_fp
