@@ -143,7 +143,8 @@ static inline int choosebranch(int node, int value) {
     if (track->loopNode == node) {
         int count = track->counter;
 
-        value = count & 0x7F;
+        value = count;
+        value &= 0x7F;
         if (rec->count > 0 && !track->counter--)
             track->loopNode = -1;
     }

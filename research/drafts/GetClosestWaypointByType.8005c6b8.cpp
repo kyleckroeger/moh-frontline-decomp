@@ -92,7 +92,8 @@ TriggerObject_struct* CAIFilterGlobal::GetClosestWaypointByType(const _PropBSPLe
         point.z = waypoint->core->position.z;
         if (MathFunCloseToZero(point[2] - position.z, 2.0f)) {
             float dy = point.y - position.y;
-            float dx = point.x - position.x;
+            float dx = point.x;
+            dx -= position.x;
             float squared = dx * dx + dy * dy;
             if (squared < nearest) {
                 nearest = squared;

@@ -328,7 +328,7 @@ int CAnimCallbacks::aim_cb(AnimFileStateAnimList_t* list, unsigned short state, 
             s = sin(a);
             PitchRotate(forward, up, c, s, tan(a));
         }
-        float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + Z(forward) * Z(diff);
+        float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + (Z(diff)) * (Z(forward));
         float vertical = X(up) * X(diff) + Y(up) * Y(diff) + Z(up) * Z(diff);
         float horizontal = X(right) * X(diff) + Y(right) * Y(diff) + Z(right) * Z(diff);
         float d = distance;
@@ -367,7 +367,7 @@ int CAnimCallbacks::aim_cb(AnimFileStateAnimList_t* list, unsigned short state, 
                     float s = sin(a);
                     PitchRotate(forward, up, c, s, tan(a));
                 }
-                float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + Z(forward) * Z(diff);
+                float distance = X(forward) * X(diff) + Y(forward) * Y(diff) + (Z(diff)) * (Z(forward));
                 float vertical = X(up) * X(diff) + Y(up) * Y(diff) + Z(up) * Z(diff);
                 float horizontal = X(right) * X(diff) + Y(right) * Y(diff) + Z(right) * Z(diff);
                 float d = distance;

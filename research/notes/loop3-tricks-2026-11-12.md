@@ -1074,3 +1074,30 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   helper's swapped parameters did (14 -> 4, same as the declined two-helper form).
 - ds2.py (rules2): the one-line move sweep generalised to any line range (inner-block declaration
   blocks, statement runs). UpdateBoundingBox's 20 inner float declarations: inert (base and operand-fixed).
+
+## opswap (2026-11-13; scratch/loop3/opswap: opsweep.py, iter.sh, climb.py, validate.py)
+- Automated operand-swap sweep (every binary * + & | ^ in function bodies, singles, greedy combination,
+  and all pairs on the 30 rows at 11 or fewer real lines) over the 79 unlanded non-MP rows: almost inert.
+  Pairs found nothing. Singles: aim_cb 59 -> 57 ('Z(diff) * Z(forward)' as the dot product's third term,
+  both copies); the rest are 1-2 lines or sit in shared inline members (CVector3::Cross z term in
+  CSoldierObject::UpdateAnimation 16 -> 14, the local CVector3 Dot/LengthSq copies in FindIntersection and
+  TestCollision(CVolCapsule)). Those member edits would be the declined "different bodies for the same
+  inline" and are not applied. The drafts already follow the lighter-first rule nearly everywhere.
+- NEW, larger lever: splitting into the destination. Rewriting 'v = L op R;' as 'v = L; v op= R;' (or, for
+  commutative op, 'v = R; v op= L;') makes CW compute the value in v's own register (in-place 'fsubs v,v,x'
+  and the like), which changes colouring and scheduling around it. One automated pass plus re-iteration:
+  FindIntersection 320 -> 266 ('fC = ...; fC -= fRadiusSqr;', 'fDiscr = fB * fB; fDiscr -= fA * fC;',
+  'fInvLength = 1.0f; fInvLength /= sqrtf(...)'), MemoryCardBootUpPortCheck 1028 -> 958 ('float line =
+  g_screen.m_scaleY; line *= 50.0f;', "char letter = 'A'; letter += (slot != 0);", failY, next),
+  DrawBulletStats 140 -> 119, GetClosestWaypointByType 94 -> 88 ('dx = point.x; dx -= position.x;'),
+  PATHI_eventstart 195 -> 191 ('value = count; value &= 0x7F;'), PROFILE_UPDATE 82 -> 81 ('move =
+  (float)GetValue(..); move *= 0.0078125f;' gives the orig 'fmuls f3,f3,f2' exactly). All check_draft
+  consistent and with the same int/float conversion counts (validate.py). Only applied where v's type
+  equals the expression's type (otherwise the split changes semantics: 'int v = f1 + f2').
+- Mirrored comparisons ('a < b' -> 'b > a', --cmp) move scheduling but give the wrong cmpw/fcmpo operand
+  order on the line itself (PROFILE_UPDATE 82 -> 75 with two cmpw lines now wrong): a steering device,
+  not the original source, not applied.
+- CCoverPoint::CheckLineCollision 10 -> 6 with 'mask = CoverPointTypes(1) | 2; mask |= 4;' in the draft's
+  hand-inlined GetTypes copy; landed GetTypes (CoverPoint_modified.cpp) spells '| 2 | 4', so if the
+  original used the GetTypes inline this is a different inline body: question, not applied
+  (scratch/loop3/opswap/v/clc1.cpp; left: r19 vs r27 for the types value).

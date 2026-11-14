@@ -115,7 +115,8 @@ void UserInterface::DrawBulletStats() {
             x1 *= screen->GetWidthScale();
             int x = 506.0f * g_screen.m_widthScale - x1;
             if (g_bInMultiplayerMode) {
-                int ax = x * viewWidth;
+                int ax = x;
+                ax *= viewWidth;
                 int bx = width * g_viewport.scaleX;
                 int ay = viewHeight * (400.0f * g_screen.m_heightScale);
                 int by = height * g_viewport.scaleY;
@@ -150,7 +151,8 @@ void UserInterface::DrawBulletStats() {
         int w = scale * (TempVerts[1].x - TempVerts[0].x);
         int h = scale * (TempVerts[3].y - TempVerts[0].y);
         float centerX = viewWidth * (0.5f * (TempVerts[0].x + TempVerts[1].x)) + width * g_viewport.scaleX;
-        float centerY = viewHeight * (0.5f * (TempVerts[0].y + TempVerts[3].y)) + height * g_viewport.scaleY;
+        float centerY = height * g_viewport.scaleY;
+        centerY += viewHeight * (0.5f * ((TempVerts[3].y) + (TempVerts[0].y)));
         float left = centerX - 0.5f * w;
         float top = centerY - 0.5f * h - 5.0f;
         TempVerts[0].x = TempVerts[3].x = left;

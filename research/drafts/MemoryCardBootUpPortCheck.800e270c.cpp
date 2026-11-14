@@ -79,13 +79,15 @@ public:
 
 
 inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
-    float line = 50.0f * g_screen.m_scaleY;
+    float line = g_screen.m_scaleY;
+    line *= 50.0f;
     char working[128];
     int i = 0;
     do {
         i++;
         // g2 (11-13): the caller's letter expression; the original computes it once for both (1183 -> 1023).
-        char letter = 'A' + (slot != 0);
+        char letter = 'A';
+        letter += (slot != 0);
         sprintf(working, m_messages.GetText(842), (int)letter);
         font.DrawTextCentered(line, working);
         font.DrawTextCentered(line + 22.0f, m_messages.GetText(843));
@@ -348,10 +350,12 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 if (!FormatCard(slot)) {
                     char failed[80];
                     sprintf(text, m_messages.GetText(836), (int)letter);
-                    float failY = 50.0f * g_screen.m_scaleY;
+                    float failY = g_screen.m_scaleY;
+                    failY *= 50.0f;
                     do {
                         font.DrawTextCentered(failY, m_messages.GetText(835));
-                        float next = failY + 22.0f;
+                        float next = failY;
+                        next += 22.0f;
                         sprintf(failed, m_messages.GetText(836), (int)letter);
                         font.DrawTextCentered(next, failed);
                         next += 44.0f;
