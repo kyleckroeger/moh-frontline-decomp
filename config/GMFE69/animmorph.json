@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,15 +32,16 @@
     "on"
   ],
   "include_dirs": [
+    "include/dolphin-sdk/libc",
     "include"
   ],
   "strip_unused": true,
-  "source_root": "scratch/game",
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x800655c4",
-      "size": 244,
+      "address": "0x80065198",
+      "size": 1312,
       "type": 1
     },
     {
@@ -51,31 +52,49 @@
     },
     {
       "name": "extab",
-      "address": "0x8000b470",
-      "size": 16,
+      "address": "0x8000b448",
+      "size": 56,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 24,
+      "linked_size": 64,
       "stripped_objects": [
-        "@38"
+        "@133"
       ]
     },
     {
       "name": "extabindex",
-      "address": "0x800125a8",
-      "size": 24,
+      "address": "0x8001256c",
+      "size": 84,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 36,
+      "linked_size": 96,
       "stripped_objects": [
-        "@39"
+        "@134"
       ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170748",
+      "size": 22,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801838d8",
+      "size": 56,
+      "type": 1
     },
     {
       "name": ".bss",
       "address": "0x801d3660",
       "size": 36,
       "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034db40",
+      "size": 16,
+      "type": 1
     }
   ],
   "functions": [
@@ -84,6 +103,36 @@
       "address": "0x80065684",
       "size": 52,
       "binding": 0
+    },
+    {
+      "name": "Draw__10CAnimMorphFR12CDrawContext",
+      "address": "0x800653c0",
+      "size": 424,
+      "binding": 1
+    },
+    {
+      "name": "UpdateAnimation__10CAnimMorphFf",
+      "address": "0x80065198",
+      "size": 264,
+      "binding": 1
+    },
+    {
+      "name": "__dt__10CAnimMorphFv",
+      "address": "0x80065568",
+      "size": 92,
+      "binding": 1
+    },
+    {
+      "name": "SetBlendTargetWeight__10CAnimMorphFUlf",
+      "address": "0x800652a0",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "Init__10CAnimMorphFP11CAnimObjectUsP11CharFrame_t",
+      "address": "0x800652e0",
+      "size": 224,
+      "binding": 1
     },
     {
       "name": "__ct__8CVector4Fv",
@@ -105,19 +154,44 @@
     }
   ],
   "externals": {
+    "AnimInitHeader": "0x800691d4",
+    "AsAnimMorph__10CAnimMorphFv": "0x80064c9c",
+    "AsAnimSkinned__9CAnimatedFv": "0x80060780",
+    "BindSkeleton__9CAnimatedFP10CharSkel_t": "0x80060c50",
+    "DMClusterInitObject__FP17DMClusterObject_TPA3_A4_fPA3_A4_fUl": "0x800f5298",
+    "DMGeomSetNodeState__FP17DMGeometryState_Tll": "0x800f6db8",
+    "DMMorphBlendDisplayLists__FP16DMRenderObject_T": "0x800f712c",
+    "DMMorphInitObject__FP15DMMorphObject_TUl": "0x800f7620",
+    "DMMorphSetMaxActiveTargets__FP15DMMorphObject_TUl": "0x800f7618",
+    "DMRenderBindClusterObj__FP16DMRenderObject_TP17DMClusterObject_T": "0x800f4c84",
+    "DMRenderBindMorphObj__FP16DMRenderObject_TP15DMMorphObject_T": "0x800f4c7c",
+    "DMRenderInitObject__FP16DMRenderObject_TP8TUInt128P8TUInt128Ul": "0x800f4dcc",
+    "DMRenderSetFlags__FP16DMRenderObject_TUl": "0x800f4e3c",
+    "Draw__9CAnimatedFR12CDrawContext": "0x80060e0c",
+    "ExtractRotation__9CAnimatedFPl": "0x800609e8",
+    "ExtractTranslation__9CAnimatedFP8CVector3": "0x800609f0",
+    "GetEntry__16CAnimMatrixCacheFPvRb": "0x80060a04",
     "InitClass__7CMatrixFv": "0x80090b78",
+    "Init__9CAnimatedFP11CAnimObjectUs": "0x80061530",
+    "LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t": "0x80064ca0",
+    "SetRotation__9CAnimatedFl": "0x800609f8",
+    "TransformPoint__7CMatrixCFR8CVector38CVector3": "0x8008fab0",
+    "Transform__7CMatrixCFR8CVector48CVector3": "0x8008fadc",
+    "UpdateAnimation__9CAnimatedFf": "0x80061314",
+    "Update__16CAnimMatrixCacheFv": "0x80060b38",
     "__construct_array": "0x8013834c",
     "__ct__16CAnimMatrixCacheFiii": "0x80060b80",
     "__dl__FPv": "0x8001ca2c",
     "__dt__9CAnimatedFv": "0x800609a0",
-    "__vt__10CAnimMorph": "0x801838e4",
     "__vt__9CAnimated": "0x801838a8",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t"
+  ],
   "discarded_local_functions": [],
   "sda_externals": [
     "s_ClassInit__7CMatrix"
@@ -125,6 +199,33 @@
   "original_file": "animmorph.cpp",
   "original_file_index": 2977,
   "weak_duplicates": [
+    "AsAnimSkinned__9CAnimatedFv",
     "__dt__9CAnimatedFv"
+  ],
+  "file_duplicates": [
+    "AsAnimMorph__10CAnimMorphFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034fc98"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034fcb0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034fcb4"
+    }
   ]
 }

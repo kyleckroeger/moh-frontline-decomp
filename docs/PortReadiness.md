@@ -372,7 +372,12 @@ and the destructor declared first, so it emits and owns the file's `.data` (`__v
 RTTI base lists), `.rodata` (the RTTI names) and `.sdata` (the three RTTI records); the `"CFont"` name
 and the constants link at their `.sdata2` pool addresses. Re-run (`source_link.py --jobs 4`, 1,016
 units, 94 drafts, 72 data files, all compiled): **39 undefined, 102 fragment-local, 45 duplicate**,
-0 small-data, 15 stripped. Survey of the other 37 vtables: `research/notes/undefined-survey-2026-11-13.md`.
+0 small-data, 15 stripped. Then animmorph.cpp the same way: `animmorph_weight`, `animmorph_dtor` and
+`animmorph` are one unit (0x80065198..0x800656b8, 1,312 bytes, 9 functions, everything after the open
+`LLCharObjCompositeMorph`) owning `__vt__10CAnimMorph`, its RTTI base list, names and records. Re-run
+(1,014 units, 94 drafts, 72 data files, all compiled): **38 undefined, 102 fragment-local, 45
+duplicate**, 0 small-data, 15 stripped (36 vtables, `axDspSlave`, `axDspSlaveLength`). Survey of the
+other vtables: `research/notes/undefined-survey-2026-11-13.md`.
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
