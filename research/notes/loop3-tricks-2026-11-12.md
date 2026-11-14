@@ -1101,3 +1101,21 @@ local list; target out-of-line node r6/next r5, inlined node r5/next r4):
   hand-inlined GetTypes copy; landed GetTypes (CoverPoint_modified.cpp) spells '| 2 | 4', so if the
   original used the GetTypes inline this is a different inline body: question, not applied
   (scratch/loop3/opswap/v/clc1.cpp; left: r19 vs r27 for the types value).
+
+## split2 (2026-11-13; scratch/loop3/split2: split2.py, autods.py, unitcmp.py)
+- Extended split sweep (opswap's 'v = L op R' -> 'v = L; v op= R' plus: member/array/deref targets 'a.x = ...',
+  every split point of a same-precedence chain, 'return chain' through a typed local split at each point,
+  'return E' through a named local, and collapsing 'T v = E; return v;' into the return) over 83 unlanded non-MP
+  rows: almost inert. Round-1 singles: 1,003 variants, 9 better; only member splits are new gains, and only on
+  _matrix_rot_yzx (109 -> 105, six scattered component splits inside hand-inlined scale blocks: not a form the
+  original's inline could give, kept in scratch). Return-through-local, collapse and chain-position splits never
+  changed a score: CW gives a return temporary and an expression the same colouring here.
+- Automated declaration sweep (autods.py: every run of >= 2 declaration lines outside class bodies, ds2 moves,
+  greedy) found the real lever of this round, all in file-local inlines whose locals were declared in a different
+  order from the landed copies: PATHI_eventstart 191 -> 160 (findleader 'int j;' first, as landed path_service.c),
+  PATHI_seeknextnode 73 -> 63 (choosebranch 'next' after 'track'; landed path_fadevolume.c PATHI_enternode stays 0
+  with either order), _AnimTranDoTransition 185 -> 177 (FindTransition found, key, i). Rule: when a draft repeats
+  a static inline that a landed unit also has, check the landed copy's declaration order first; then sweep it.
+- Shared-inline check (unitcmp.py JSON SRC...): AddBuddy reaches 0 (and BIFunc_AddBuddy 22 -> 16) with
+  GiveBuddyOrders' 'float x = 0.0f; float y; float z;' order, but landed buddy_head.cpp's UpdateBuddyCheckpoints
+  and UpdateBuddyProgress go to 14 each with it: the buddy2 trade-off again, in a second spelling. Not applied.

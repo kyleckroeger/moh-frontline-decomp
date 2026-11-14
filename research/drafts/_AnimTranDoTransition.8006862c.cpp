@@ -59,8 +59,8 @@ extern AnimTranTransListArray_t AnimTran_TransListArray;
 
 static inline void* FindTransition(AnimTranTransListArray_t* array, unsigned short from, unsigned short file,
                                    unsigned short to, unsigned short state, unsigned short frame) {
-    int i;
     void* found;
+    int i;
     unsigned short key;
     found = 0;
     if (from != 0xffff) {

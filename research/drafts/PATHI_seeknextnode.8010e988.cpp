@@ -102,9 +102,9 @@ static inline PATHNODEVIEW* getnode(int node) {
 
 static inline int choosebranch(int node, int value) {
     PATHNODEVIEW* rec = getnode(node);
-    int next = -1;
     PATHBRANCHVIEW* branches = rec->branch;
     PATHTRACK* track = pfstate->tracks[rec->owner];
+    int next = -1;
     unsigned int i;
 
     if (track->loopNode == node) {

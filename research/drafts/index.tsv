@@ -44,7 +44,7 @@ real_lines	size	address	function	compile_settings_from	draft
 57	2264	8005e9ec	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	config/GMFE69/anim_callback_finish.json	research/drafts/aim_cb.8005e9ec.cpp
 0	716	8005823c	BIFunc_CreateBuddyDataStructures__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
 45	620	801083dc	YUV_WriteRow__FPUcPUcPUcPci	config/GMFE69/swvideodisplaylist.json	research/drafts/YUV_WriteRow.801083dc.cpp
-73	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
+63	908	8010e988	PATHI_seeknextnode__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_seeknextnode.8010e988.cpp
 79	340	8014f114	random	config/GMFE69/ipad.json	research/drafts/random.8014f114.cpp
 5	576	8005e494	_find_aim_blend_values__FffPf	config/GMFE69/anim_callback.json	research/drafts/_find_aim_blend_values.8005e494.cpp
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
@@ -57,9 +57,9 @@ real_lines	size	address	function	compile_settings_from	draft
 119	1848	800bce58	DrawBulletStats__13UserInterfaceFv	config/GMFE69/UserInterface_compass.json	research/drafts/DrawBulletStats.800bce58.cpp
 31	604	800f53c0	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	config/GMFE69/dmcluster_init.json	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp
 157	1820	80069c80	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	config/GMFE69/skeleton.json	research/drafts/_unpack_skel_frame.80069c80.cpp
-185	1740	8006862c	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	config/GMFE69/animtran_quickscan.json	research/drafts/_AnimTranDoTransition.8006862c.cpp
+177	1740	8006862c	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	config/GMFE69/animtran_quickscan.json	research/drafts/_AnimTranDoTransition.8006862c.cpp
 192	800	800d8bac	SweepAllExtents__6CSceneFv	config/GMFE69/scene_findif.json	research/drafts/SweepAllExtents.800d8bac.cpp
-191	2296	8010ee50	PATHI_eventstart__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_eventstart.8010ee50.cpp
+160	2296	8010ee50	PATHI_eventstart__Fi	config/GMFE69/path_restore.json	research/drafts/PATHI_eventstart.8010ee50.cpp
 88	784	8005c6b8	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	config/GMFE69/AIFilter_visit.json	research/drafts/GetClosestWaypointByType.8005c6b8.cpp
 82	980	800f3578	PROFILE_UPDATE__Fv	config/GMFE69/debug_prof_profilebin_ctor.json	research/drafts/PROFILE_UPDATE.800f3578.cpp
 22	892	80057b30	BIFunc_AddBuddy__FPPiPv	config/GMFE69/buddy_vec_path_end.json	research/drafts/BIFunc_AddBuddy.80057b30.cpp

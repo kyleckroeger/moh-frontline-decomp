@@ -166,8 +166,8 @@ static inline bool isplaying(PATHTRACK* track) {
 }
 
 static inline void findleader(void) {
-    int j;
     PATHTRACK* track;
+    int j;
     pfstate->latency = 0;
     pfstate->leader = -1;
     pfstate->beat = 0;
