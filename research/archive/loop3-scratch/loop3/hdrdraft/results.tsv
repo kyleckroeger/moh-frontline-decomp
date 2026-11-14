@@ -1,0 +1,62 @@
+draft	old_score	new_score	headers_used	kept	note
+research/drafts/AddAmo.800a7fac.cpp	2	2	CPlayerObject	yes	
+research/drafts/AddBuddy.80057eac.cpp	6	6	-	no	dwi worse 6->22
+research/drafts/AllocateStaticObject.800b386c.cpp	2	2	CVector3,ISceneNode,IMovingSceneNode,dwi	yes	
+research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	7	7	ISceneNode	yes	
+research/drafts/BIFunc_AddBuddy.80057b30.cpp	207	207	dwi	yes	
+research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	66	66	dwi	yes	
+research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	7	7	dwi	yes	
+research/drafts/BIFunc_GetObjInfo.8002c258.cpp	16	16	-	no	CVector3 worse 16->789 (own operator= is member-wise x/y/z, header copies doubles); ISceneNode/CScene need code changes
+research/drafts/BIFunc_MechFollowPath.80021220.cpp	83	83	ISceneNode	yes	
+research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	39	39	-	no	CColor worse 39->42
+research/drafts/CPartBin_Link.800f5930.cpp	33	33	CVector3	yes	
+research/drafts/CheckForObstructions.800ce450.cpp	25	25	CVector3,CMatrix,ISceneNode,CScene	yes	CPlayerObject:no_compile
+research/drafts/CheckLineCollision.80052abc.cpp	10	10	-	no	CMatrix: code change (GetFront(CAIFilterRealVector3&))
+research/drafts/CreateDestructable.8003c93c.cpp	11	11	CVector3,CMatrix,ISceneNode,CPlayerObject,CScene	yes	
+research/drafts/CreateDumpObject.8003fc2c.cpp	56	56	CVector3,CMatrix,ISceneNode,CPlayerObject,CScene	yes	
+research/drafts/CreateRootHierObject.8003dde8.cpp	2	2	CVector3,CMatrix,ISceneNode,CScene	yes	
+research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp	31	31	-	no	CVector3 worse 31->131 with d.v[i] -> (&v.x)[i]
+research/drafts/DoTargetCheck.8001e59c.cpp	96	96	CVector3,ISceneNode	yes	
+research/drafts/Draw.800ac9e4.cpp	8	8	CVector3,CMatrix,CScene	yes	
+research/drafts/Draw.800da67c.cpp	39	39	CMatrix,dwi	yes	CPlane:no_compile; ISceneNode:no_compile; CCamera:no_compile; CScene:no_compile; CScreen:no_compile
+research/drafts/DrawBulletStats.800bce58.cpp	140	140	CPlayerObject,CScene,CColor,CScreen	yes	
+research/drafts/DrawNode.80075024.cpp	58	58	CVector3	yes	
+research/drafts/DrawNode.800f2090.cpp	5	5	CVector3,CMatrix	yes	CPlane:no_compile
+research/drafts/DrawTextCentered.8007cdb0.cpp	8	8	CScreen	yes	
+research/drafts/EndDraw.8007c194.cpp	11	11	-	no	CColor worse 11->12
+research/drafts/FindIntersection.800c5cb4.cpp	320	320	-	no	CVector3 worse 320->510 (own copy ctor via d.pair, mixed v[]/c spellings); CPlane needs it
+research/drafts/GenerateTestSplinePath.80050af4.cpp	211	211	-	no	CVector3: own CVector3Base (redefined)
+research/drafts/GetExtents.800c13b4.cpp	37	37	-	no	CVector3: uses operator[] (header has none)
+research/drafts/GetPeekLocation.800523cc.cpp	3	3	-	no	CMatrix: code change (GetFront(CAIFilterRealVector3&) vs header CVector3 GetFront())
+research/drafts/Init.800839e4.cpp	14	14	CMatrix,ISceneNode,dwi,CScene	yes	
+research/drafts/Init.800b254c.cpp	138	138	CVector3,dwi	yes	IMovingSceneNode:no_compile
+research/drafts/MOHFL_VD_create.80102a20.cpp	17	17	CScreen	yes	
+research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	1023	1023	CColor,CScreen,CInputManager	yes	
+research/drafts/Multiply.8009174c.cpp	27	27	CVector3	yes	
+research/drafts/OnCollision.800afc08.cpp	3	3	CVector3,CMatrix	yes	
+research/drafts/PROFILE_UPDATE.800f3578.cpp	82	82	CInputManager	yes	
+research/drafts/PublishEvent.800d7718.cpp	3	3	-	no	dwi: hash_map iterator default ctor, find_next (code change)
+research/drafts/Rotate.800904e8.cpp	21	21	CVector3,CMatrix	yes	
+research/drafts/SetFinishedLevelData.8009d470.cpp	11	11	-	no	CPlayerObject: own inline member SaveAmmo (code change)
+research/drafts/ShellInit.800e752c.cpp	135	135	-	no	moves neutral (135) but check_draft differs before and after (not from the move); not kept
+research/drafts/SweepAllExtents.800d8bac.cpp	193	193	-	no	ISceneNode SExtent operator<, CScene containers, dwi sort (code changes)
+research/drafts/TLT_LoadFromRepository.8001cca8.cpp	13	13	dwi	yes	
+research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp	3	3	dwi	yes	
+research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	1	1	-	no	CVector3: own CVector3(const CDBVector&) ctor and CPlane(const CDBPlane&) (code change); dwi push
+research/drafts/TestCollision.8006e0b0.cpp	463	463	CVector3	yes	
+research/drafts/TestCollision.800c290c.cpp	102	102	-	no	CVector3 worse 102->203: FPR colouring tuned to own union view
+research/drafts/TestCollision.800c3210.cpp	13	13	-	no	CVector3 worse 13->295: FPR colouring (fabs/abs block) tuned to own d.c union view
+research/drafts/Update.80084c80.cpp	3	3	CInputManager	yes	hand: m_deviceMgr member calls, GetKeyTable static inline
+research/drafts/UpdateAnimation.800acfb8.cpp	16	16	CScene	yes	CVector3:no_compile; CMatrix:no_compile; CPlayerObject:no_compile
+research/drafts/UpdateBoundingBox.8007fbe8.cpp	56	56	-	no	CVector3: uses operator[] (header has none)
+research/drafts/UpdateProximityTriggerStatus.80046378.cpp	9	9	CVector3,ISceneNode,CScene	yes	
+research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp	3	3	-	no	dwi: list(int) ctor
+research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp	99	99	-	no	dwi: hash_map Resize
+research/drafts/__sinit_buddy_cpp.80058e44.cpp	None	None	-	no	dwi no_compile; score n/a
+research/drafts/_matrix_rot_yzx.800f4e98.cpp	109	109	-	no	CVector3 worse 109->255 (likely: own copy ctor d(o.d) and by-value operator= differ from the header's)
+research/drafts/_unpack_skel_frame.80069c80.cpp	157	157	CMatrix	yes	
+research/drafts/aim_cb.8005e9ec.cpp	59	59	-	no	CVector3 worse 59->525 (likely: own view has an implicit copy ctor; the header's base-class copy ctor changes the copies); CMatrix/ISceneNode need the CVector3 move
+research/drafts/compartment_init.cpp	None	None	-	no	CMatrix/ISceneNode no_compile (own CVector3)
+research/drafts/death_cb.8005fb58.cpp	5	5	CVector3,ISceneNode	yes	
+research/drafts/particlesystem_render.cpp	835	835	-	no	CColor worse 835->987; CVector3/CMatrix no_compile
+research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	6	6	CScene	yes	

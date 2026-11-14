@@ -1,0 +1,17 @@
+TLT_LoadFromRepository__FPCcPiPb	53	53	13	consistent	scratch/loop3/struct5/tlt/TLT_BEST.cpp	research/drafts/TLT_LoadFromRepository.8001cca8.cpp
+BIFunc_GetInitialBuddyOrders__FPPiPv	27	27	7	consistent	scratch/loop3/scripting/chk/GI_BEST7.cpp	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
+BIFunc_MechFollowPath__FPPiPv	105	105	83	consistent	scratch/loop3/scripting/mfp3/BEST83.cpp	research/drafts/BIFunc_MechFollowPath.80021220.cpp
+BIFunc_PlayerScreenFlash__FPPiPv	42	42	39	consistent	scratch/loop3/scripting/psf10/BEST39.cpp	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
+BSFileReadClass__FPCcbbPP14BSClass_struct	708	708	414	consistent	scratch/loop3/scripting/s11/bsf/BEST414.cpp	research/drafts/BSFileReadClass.80035aa8.cpp
+CalculateLevelStats__10CShellMenuFv	9	9	1	consistent	scratch/loop3/harvest1/cls_merge.cpp	research/drafts/CalculateLevelStats.800e6374.cpp
+CreateDestructable__FP20TriggerObject_structi	33	33	11	consistent	scratch/loop3/scripting/cd/a1.cpp	research/drafts/CreateDestructable.8003c93c.cpp
+CreateRootHierObject__FP20TriggerObject_structi	44	44	2	consistent	scratch/loop3/mid2/CRH_BEST2.cpp	research/drafts/CreateRootHierObject.8003dde8.cpp
+FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	4	4	3	consistent	scratch/loop3/airender/fao/BEST3.cpp	research/drafts/FlagAsOccupied.80052f6c.cpp
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	45	37	consistent	scratch/loop3/geometry/bge/best_split_4_d0m.cpp	research/drafts/GetExtents.800c13b4.cpp
+PATH_event	6	6	0	code_exact	scratch/loop3/rs2/pev/q_int_bl.cpp	research/drafts/PATH_event.8010b93c.cpp
+PROFILE_UPDATE__Fv	196	113	88	consistent	scratch/loop3/struct1/v/pcube.cpp	research/drafts/PROFILE_UPDATE.800f3578.cpp
+SNDMIXI_volramp__FP11SNDMIXVOICE	28	28	20	consistent	scratch/game/smixer_volramp_wip.c	research/drafts/SNDMIXI_volramp.80160114.c
+SNDVOICEI_free__Fi	47	47	44	consistent	scratch/loop3/harvest1/svf_merge.c	research/drafts/SNDVOICEI_free.8015dbd4.c
+decodexac__3SNDFPQ23SND10MXAPACKETF	32	32	28	consistent	scratch/loop3/harvest1/dx_merge.cpp	research/drafts/decodexac.80168828.cpp
+Update__13SoundScheduleFi	441	441	50	consistent	scratch/game/soundschedule_full.cpp	research/drafts/Update.80046bc8.cpp
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	53	52	consistent	scratch/loop3/vec7/tcp/hc2_best_1.cpp	research/drafts/TestCollision.800c15ec.cpp

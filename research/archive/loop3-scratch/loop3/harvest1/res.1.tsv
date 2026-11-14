@@ -1,0 +1,325 @@
+AddAmo__19CPlayerWeaponObjectFi	2	research/drafts/AddAmo.800a7fac.cpp	2	consistent	0	0 len24/24 
+AnimStProcess	23	research/drafts/AnimStProcess.800672c4.cpp	23	consistent	0	0 len261/261 
+BIFunc_AddBuddy__FPPiPv	207	research/drafts/BIFunc_AddBuddy.80057b30.cpp	207	consistent	5	5 len228/223 47:beq +228|beq +204 93:bl|b +576 98:b +596|bne +568 119:beq +492|beq +484
+BIFunc_GetObjInfo__FPPiPv	16	research/drafts/BIFunc_GetObjInfo.8002c258.cpp	16	consistent	0	0 len1556/1556 
+BSFileReadClass__FPCcbbPP14BSClass_struct	708	research/drafts/BSFileReadClass.80035aa8.cpp	708	consistent	11	11 len943/942 166:b +2184|b +2180 261:b +1616|b +1612 266:beq +1608|beq +1604 268:beq +1608|beq +1604
+CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	10	research/drafts/CheckLineCollision.80052abc.cpp	10	consistent	0	0 len296/296 
+CreateDumpObject__FRC8CVector3RC11CQuaternionii	56	research/drafts/CreateDumpObject.8003fc2c.cpp	56	consistent	0	0 len410/410 
+DMMorphBlendDisplayLists__FP16DMRenderObject_T	252	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	252	consistent	3	3 len313/315 63:beq +1240|beq +1248 174:ble +1080|b +1080 298:bne +524|beq +1232
+DrawBulletStats__13UserInterfaceFv	140	research/drafts/DrawBulletStats.800bce58.cpp	140	consistent	0	0 len462/462 
+Draw__14CSoldierObjectFR12CDrawContext	8	research/drafts/Draw.800ac9e4.cpp	8	consistent	0	0 len370/370 
+FindIntersection__FRC6CLine3RC11CVolCapsulePf	323	research/drafts/FindIntersection.800c5cb4.cpp	323	consistent	9	9 len525/523 270:b +2036|b +2028 272:b +2036|b +2028 286:b +2036|b +2028 346:bne +1448|b +2028
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	research/drafts/GetExtents.800c13b4.cpp	45	consistent	0	0 len70/70 
+Init__20CStaticObjectFactoryFv	138	research/drafts/Init.800b254c.cpp	138	consistent	0	0 len844/844 
+MIX_audioslice	73	research/drafts/MIX_audioslice.801609d0.c	73	consistent	0	0 len189/188 
+Multiply__11CQuaternionF11CQuaternion	28	research/drafts/Multiply.8009174c.cpp	28	consistent	0	0 len41/41 
+PATHI_seeknextnode__Fi	73	research/drafts/PATHI_seeknextnode.8010e988.cpp	73	consistent	0	0 len227/227 
+PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	27	research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp	27	consistent	0	0 len577/577 
+Rotate__7CMatrixF8CVector3f	14	research/drafts/Rotate.800904e8.cpp	14	consistent	0	0 len94/94 
+SNDI_precalcaztospkrvol__Fv	79	research/drafts/SNDI_precalcaztospkrvol.8015f538.c	79	consistent	0	0 len177/177 
+SNDVOICEI_alloc__FiiPiii	53	research/drafts/SNDVOICEI_alloc.8015d530.c	53	consistent	0	0 len425/425 
+STREAM_kill	0	research/drafts/STREAM_kill.8014d6dc.cpp	0	code_exact	0	0 len166/166 
+ShellInit__10CShellMenuFUl	135	research/drafts/ShellInit.800e752c.cpp	135	differs	0	0 len309/308 
+TLT_LoadLevelContentsFile__Fii	3	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp	3	consistent	0	0 len265/265 
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	research/drafts/TestCollision.8006a71c.cpp	10	consistent	0	0 len1730/1730 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	research/drafts/TestCollision.800c15ec.cpp	53	consistent	0	0 len573/573 
+UpdateProximityTriggerStatus__Fv	9	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	9	consistent	0	0 len532/532 
+Update__13CInputManagerFf	3	research/drafts/Update.80084c80.cpp	3	consistent	0	0 len305/305 
+_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	185	research/drafts/_AnimTranDoTransition.8006862c.cpp	185	consistent	0	0 len435/435 
+_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	157	research/drafts/_unpack_skel_frame.80069c80.cpp	157	consistent	0	0 len455/455 
+decodexac__3SNDFPQ23SND10MXAPACKETF	32	research/drafts/decodexac.80168828.cpp	32	consistent	0	0 len100/100 
+UpdateTargetPosition__9CAIObjectFv	0	scratch/par/bigfiles/ut/UT_BEST15t.cpp	15	differs	0	0 len629/629 
+SFILTER_unpackxalf__FPviPvPvi	1	scratch/lib/supxalf_wip.cpp	21	consistent	0	0 len127/127 
+AllocateStaticObject__20CStaticObjectFactoryFii	2	scratch/sofw/a.cpp	703	consistent	32	32 len762/682 22:beq +1168|beq +1032 24:bne +644|bne +580 29:beq +644|beq +580 65:beq +456|beq +424
+AddAmo__19CPlayerWeaponObjectFi	2	scratch/game/player_weapon_addamo_wip.cpp	2	consistent	0	0 len24/24 
+AddAmo__19CPlayerWeaponObjectFi	2	scratch/lib/player_weapon_object_ammo_wip.cpp	2	consistent	0	0 len24/24 
+Update__13CInputManagerFf	3	scratch/game/iu_a.cpp	245	consistent	11	11 len298/305 51:bge +1136|bge +1164 57:b +1136|b +1164 80:bge +340|bdnz +280 87:beq +496|bge +368
+Update__13CInputManagerFf	3	scratch/par/bigfiles/ut/UT_BEST15t.cpp	None	no_compile	-	-
+Update__13CInputManagerFf	3	scratch/tmp/fader_ma.cpp	None	no_compile	-	-
+FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	4	scratch/loop3/airender/fao/BEST3.cpp	3	consistent	0	0 len120/120 
+GetPeekLocation__11CCoverPointFv	3	scratch/loop3/airender/gpl/x1.cpp	3	consistent	0	0 len185/185 
+Scroll__12PopUpMessageFv	6	scratch/lib/popup_wip.cpp	6	consistent	0	0 len125/125 
+DisplayHint__Fv	6	scratch/hint_best.cpp	6	consistent	0	0 len100/100 
+BIFunc_AIStartCoverPointWalkToStored__FPPiPv	7	scratch/coverstart_walkstored7.cpp	7	consistent	0	0 len39/39 
+BIFunc_AIStartCoverPointWalkToStored__FPPiPv	7	scratch/loop3/late2/c/base.cpp	26	consistent	0	0 len38/39 
+DrawTextCentered__5CFontFfPCc	8	scratch/loop3/airender/rs/dtc/g2.cpp	3	consistent	0	0 len104/104 
+UpdateProximityTriggerStatus__Fv	9	scratch/loop3/scripting/upts/w_ccpy.cpp	13	consistent	0	0 len532/532 
+CalculateLevelStats__10CShellMenuFv	9	scratch/game/ShellMenu_levelstats_wip.cpp	19	consistent	0	0 len108/108 
+CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	10	scratch/loop3/fresh1/clc/a.cpp	10	consistent	0	0 len296/296 
+SetFinishedLevelData__13CPlayerObjectFv	11	scratch/sol/sfl_top2.cpp	11	consistent	0	0 len98/98 
+MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	17	scratch/game/hwvideodisplaylist_vdcreate_wip.cpp	65	consistent	1	1 len182/181 17:beq +704|beq +700
+ResetShell__10CShellMenuFv	18	scratch/game/shell_reset_wip.cpp	18	consistent	0	0 len215/215 
+EndDraw__11CFontDriverFP4FONT	11	scratch/loop3/fresh3/ed/BEST16.cpp	11	consistent	0	0 len27/27 
+Orthonormalize__7CMatrixFv	7	scratch/loop3/vec4/orth/BEST7.cpp	7	consistent	0	0 len172/172 
+AddBuddy__F9BuddyInfob	22	scratch/buddy/buddy.cpp	30	consistent	0	0 len228/228 
+AddBuddy__F9BuddyInfob	22	scratch/buddy/buddy_t4.cpp	30	consistent	0	0 len228/228 
+AddBuddy__F9BuddyInfob	22	scratch/loop3/scripting/chk/GI_BEST7.cpp	22	consistent	0	0 len228/228 
+AddBuddy__F9BuddyInfob	22	scratch/solo/bud/n1.cpp	35	consistent	0	0 len228/228 
+ConstrainVelocity__11CAnimObjectFv	14	scratch/loop3/fresh2/cv/dbest.cpp	14	consistent	0	0 len317/317 
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/avl/pc.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/cdb/boxplane.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/cdb/tri_anim32.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/fic/k3.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/fln/w_refparam_outer.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/fresh2/cex/BEST4.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/geometry/bcp/best_1.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/geometry/bsp/best3.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/geometry/tcap/best.cpp	25	consistent	0	0 len1730/1730 
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec4/tcp/BEST154.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec4/tcp/hc3_best_1.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec6/tcp/BEST85.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec6/tcp/hc_best_3.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec6/tcp/hc_best_6.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec7/tcp/BEST85.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec7/tcp/hc_best_1.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec7/tcp/hc_best_4.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/loop3/vec7/tcp/hc_best_7.cpp	None	no_compile	-	-
+TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib	10	scratch/pool/csg_full.cpp	None	no_compile	-	-
+CheckForObstructions__10CExplosionFR10ISceneNode	25	scratch/explosion/cfo_wip.cpp	477	differs	6	6 len598/609 87:b +2340|b +2384 172:b +816|b +824 179:beq +816|beq +824 208:bge +840|bge +932
+CheckForObstructions__10CExplosionFR10ISceneNode	25	scratch/solo/s3/cfo/a.cpp	25	consistent	2	2 len609/609 208:bge +940|bge +932 211:b +940|b +932
+PATH_event	6	scratch/lib/path_all.c	49	consistent	0	0 len471/471 
+PATH_event	6	scratch/loop3/rs1/pev/p_best.cpp	9	consistent	0	0 len471/471 
+PATH_event	6	scratch/loop3/rs2/pev/PATH_event_unit_autoinline.c	0	code_exact	0	0 len471/471 
+PATH_event	6	scratch/loop3/rs2/pev/m_state2_BEST6.cpp	366	consistent	18	18 len461/471 24:b +1824|b +1864 36:beq +1792|beq +1832 39:beq +1792|beq +1832 41:beq +1792|beq +1832
+PATH_event	6	scratch/loop3/rs2/pev/m_uns_BEST6.cpp	6	consistent	0	0 len471/471 
+BIFunc_GetInitialBuddyOrders__FPPiPv	27	scratch/buddy/buddy.cpp	36	consistent	0	0 len316/316 
+BIFunc_GetInitialBuddyOrders__FPPiPv	27	scratch/buddy/buddy_t4.cpp	36	consistent	0	0 len316/316 
+BIFunc_GetInitialBuddyOrders__FPPiPv	27	scratch/loop3/scripting/chk/GI_BEST7.cpp	7	consistent	0	0 len316/316 
+BIFunc_GetInitialBuddyOrders__FPPiPv	27	scratch/solo/bud/n1.cpp	27	consistent	0	0 len316/316 
+death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	5	scratch/loop3/fresh1/dcb/d.cpp	5	consistent	0	0 len266/266 
+Multiply__11CQuaternionF11CQuaternion	28	scratch/game/quat_multiply_wip.cpp	41	consistent	0	0 len35/41 
+Multiply__11CQuaternionF11CQuaternion	28	scratch/loop3/sweep2/rot/k_20.cpp	None	no_compile	-	-
+CreateDestructable__FP20TriggerObject_structi	33	scratch/loop3/late1/cd_i6.cpp	415	consistent	1	1 len508/507 408:bl|b +1964
+CreateDestructable__FP20TriggerObject_structi	33	scratch/loop3/systems5/cd_a1.cpp	11	consistent	0	0 len507/507 
+CreateDestructable__FP20TriggerObject_structi	33	scratch/loop3/systems5/perm_unit.cpp	11	consistent	0	0 len507/507 
+BIFunc_PlayerScreenFlash__FPPiPv	42	scratch/pool/screenflash_wip.cpp	84	consistent	0	0 len77/97 
+PopUpMessageHandler_Loop__19PopUpMessageHandlerFv	27	scratch/pum/loop_perm.cpp	287	differs	13	13 len576/577 307:b +2184|b +2188 311:bne +2176|bne +2180 316:beq +2108|beq +2112 319:beq +1296|beq +1300
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/crh0.cpp	44	consistent	0	0 len854/854 
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/g1/best4_1.cpp	37	consistent	0	0 len854/854 
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/g1/best_crh_wabv.cpp	44	consistent	0	0 len854/854 
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/g1/best_cv_D2.cpp	44	consistent	0	0 len854/854 
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/g1/best_n.cpp	44	consistent	0	0 len854/854 
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/mid2/m_O.cpp	746	consistent	2	2 len855/854 302:bl|b +2356 486:bl|b +2356
+CreateRootHierObject__FP20TriggerObject_structi	44	scratch/loop3/pnew1/v/O1.cpp	746	consistent	2	2 len855/854 302:bl|b +2356 486:bl|b +2356
+PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	3	scratch/par/bigfiles/pub/p1.cpp	6	consistent	0	0 len142/142 
+UpdateAnimation__14CSoldierObjectFf	16	scratch/game/llc_morph_wip.cpp	None	no_compile	-	-
+UpdateAnimation__14CSoldierObjectFf	16	scratch/loop3/big2/base.cpp	16	consistent	0	0 len957/957 
+aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	61	scratch/loop3/geometry/aim/best2.cpp	61	consistent	0	0 len566/566 
+BIFunc_CreateBuddyDataStructures__FPPiPv	66	scratch/buddy/buddy_t4.cpp	126	consistent	3	3 len186/179 81:bne +292|bne +296 118:b +672|b +644 125:beq +512|bl
+BIFunc_CreateBuddyDataStructures__FPPiPv	66	scratch/loop3/scripting/chk/GI_BEST7.cpp	80	consistent	2	2 len172/179 118:b +616|b +644 147:beq +600|bl
+BIFunc_CreateBuddyDataStructures__FPPiPv	66	scratch/solo/bud/n1.cpp	66	consistent	2	2 len182/179 118:b +656|b +644 150:bl|beq +612
+random	82	scratch/game/random_wip.cpp	82	consistent	0	0 len68/85 
+_find_aim_blend_values__FffPf	5	scratch/loop3/geometry/fab/BEST5.cpp	5	consistent	0	0 len144/144 
+_find_aim_blend_values__FffPf	5	scratch/loop3/geometry/fab/best4.cpp	5	consistent	0	0 len144/144 
+_find_aim_blend_values__FffPf	5	scratch/tmp/find_aim_blend_wip.cpp	95	consistent	0	0 len146/144 
+DoTargetCheck__FP8BSObjectiiiPiPi	96	scratch/loop3/scripting/s12/dtc/DISC0_ctorcast.cpp	0	code_exact	0	0 len135/135 
+UpdateBoundingBox__15CParticleSystemFv	101	scratch/loop3/vec1/ubb_a.cpp	101	consistent	0	0 len737/737 
+UpdateBoundingBox__15CParticleSystemFv	101	scratch/loop3/vec3/u15.cpp	88	consistent	0	0 len737/737 
+UpdateBoundingBox__15CParticleSystemFv	101	scratch/loop3/vec5/UBB_BEST56.cpp	56	consistent	0	0 len737/737 
+UpdateBoundingBox__15CParticleSystemFv	101	scratch/loop3/vec5/advbest.cpp	100	consistent	0	0 len737/737 
+TLT_LoadFromRepository__FPCcPiPb	53	scratch/loop3/struct3/tlt/f1.cpp	101	consistent	4	4 len134/143 46:bne +264|bne +268 51:beq +212|bne +212 80:b +392|b +408 96:bne +348|bne +392
+TLT_LoadFromRepository__FPCcPiPb	53	scratch/loop3/struct5/tlt/TLT_h1_regs.cpp	53	consistent	4	4 len142/143 70:beq +548|beq +552 80:b +404|b +408 90:b +388|b +392 92:beq +404|bne +376
+BIFunc_MechFollowPath__FPPiPv	105	scratch/game/bsbifunc_mechfollowpath_wip.cpp	103	consistent	0	0 len111/114 
+BIFunc_MechFollowPath__FPPiPv	105	scratch/loop3/scripting/mfp3/g4_best_4.cpp	83	consistent	0	0 len113/114 
+BIFunc_MechFollowPath__FPPiPv	105	scratch/loop3/scripting/mfp3/g_best_2.cpp	103	consistent	0	0 len111/114 
+ShellInit__10CShellMenuFUl	135	scratch/solo/sm/si_best.cpp	135	differs	6	6 len309/308 11:beq +84|beq +92 14:beq +100|beq +84 15:bge +92|bge +100 16:b +100|b +84
+DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	31	scratch/game/dmcluster_hier_wip.cpp	43	consistent	0	0 len151/151 
+_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	185	scratch/game/animtran_dotransition_wip.cpp	305	consistent	5	5 len435/435 206:bne +992|bne +988 283:beq +1304|bge +1152 286:beq +1168|bge +1196 287:bge +1200|b +1664
+GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	94	scratch/loop3/struct4/gcw/GCW_BEST.cpp	179	consistent	9	9 len194/196 17:ble +120|bge +120 26:b +324|b +328 31:bne +232|bne +236 53:b +324|bne +220
+GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	94	scratch/loop3/struct6/gcw/GCW_BEST2.cpp	176	consistent	8	8 len194/196 26:b +324|b +328 31:bne +232|bne +236 53:b +324|bne +220 77:b +324|bne +316
+GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	94	scratch/pool/gcw_best.cpp	189	consistent	11	11 len199/196 26:bne +112|b +328 34:bne +148|beq +328 56:b +336|bdnz +188 58:bdnz +196|b +328
+PROFILE_UPDATE__Fv	196	scratch/prof/profile_update_best.cpp	209	consistent	3	3 len239/245 164:beq +712|bl 175:b +712|beq +712 202:bl|bne +960
+BIFunc_AddBuddy__FPPiPv	207	scratch/buddy/buddy_t4.cpp	202	consistent	2	2 len226/223 114:beq +496|beq +472 171:beq +724|beq +700
+BIFunc_AddBuddy__FPPiPv	207	scratch/loop3/scripting/chk/GI_BEST7.cpp	216	consistent	2	2 len214/223 44:beq +184|beq +216 146:b +768|blt +376
+BIFunc_AddBuddy__FPPiPv	207	scratch/solo/bud/n1.cpp	207	consistent	5	5 len228/223 47:beq +228|beq +204 93:bl|b +576 98:b +596|bne +568 119:beq +492|beq +484
+Update__13SoundScheduleFi	441	scratch/avl/pc.cpp	None	no_compile	-	-
+Update__13SoundScheduleFi	441	scratch/game/lightvolman_wip.cpp	None	no_compile	-	-
+Update__13SoundScheduleFi	441	scratch/par/soldier/ut15a.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/avl/o5.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/capsule_ext2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/cdb/csg_checkcontacts22.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/fiber/plane_best.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/fln/s2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/lib/cdbgeom_volbox2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/fresh2/tcap/k_tv_scale.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/geometry/bsp/best2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/geometry/cex/rbest_5.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec2/tcp/BEST154.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec4/tcp/hc2_best.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec6/tcp/BEST56.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec6/tcp/hc_best_2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec6/tcp/hc_best_5.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec7/tcp/BEST56.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec7/tcp/hc2_best_2.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec7/tcp/hc_best_3.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/loop3/vec7/tcp/hc_best_6.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/pool/cdbvolbox_plane_wip.cpp	None	no_compile	-	-
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	scratch/vbs/v3.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/capsule_a8.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/cdb/capsule_dist_14.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/cvb/rE.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/fln/f4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/game/cdbgeom_volbox_plane_wip.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/fresh2/cex/il_best.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/geometry/bsp/best.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/geometry/cex/best_b1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/sweep2/cex/BEST4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec4/tcp/BEST85.cpp	85	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec4/tcp/hc4_best_7.cpp	85	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec6/tcp/hc_best_1.cpp	64	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec6/tcp/hc_best_4.cpp	53	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec6/tcp/hc_best_7.cpp	53	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec7/tcp/hc2_best_1.cpp	52	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec7/tcp/hc_best_2.cpp	53	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/loop3/vec7/tcp/hc_best_5.cpp	55	consistent	0	0 len573/573 
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/pool/capsule_sphere_wip.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb	56	scratch/vbl/r2.cpp	None	no_compile	-	-
+BSFileReadClass__FPCcbbPP14BSClass_struct	708	scratch/loop3/scripting/s11/bsf/BEST414.cpp	414	consistent	0	0 len942/942 
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/cdb/renderlist_kick2.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/expleffect/m4.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/game/amd3.cpp	26	consistent	1	1 len106/106 9:beq +388|beq +400
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/game/soldier_draw_wip2.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/game/yuv_row_wip.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/loop3/airender/ed/BEST11.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/loop3/fresh3/ed/BEST16.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/perm/src_dmesh_init.cpp	None	no_compile	-	-
+Draw__10CAnimMorphFR12CDrawContext	9	scratch/uiw/sdraw_if.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/bsi_best24.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/cdb/sam_init20.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/game/bsutil_initscripting_wip.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/game/llc_morph_wip.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/game/psu2.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/game/soundschedule_init_wip.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/lib/bsutil_wip.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST12.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST15.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST4.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST7.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/ci/BEST_ci.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/airender/cic/t1.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/big1/g1.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/fresh1/ua/v7.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/loop3/systems4/ti1base.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/par/bigfiles/pub/p1.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/par/parks/psu_selfstore.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/pool/publisher_setsubject_wip.cpp	None	no_compile	-	-
+Init__10CCDBObjectFP3CDB	41	scratch/tmp/fader_ma.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/bsi_best24.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/cdb/sam_init20.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/game/bsutil_initscripting_wip.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/game/llc_morph_wip.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/game/psu2.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/game/soundschedule_init_wip.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/lib/bsutil_wip.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST12.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST15.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST4.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST7.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/ci/BEST_ci.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/airender/cic/t1.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/big1/g1.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/fresh1/ua/v7.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/loop3/systems4/ti1base.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/par/bigfiles/pub/p1.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/par/parks/psu_selfstore.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/pool/publisher_setsubject_wip.cpp	None	no_compile	-	-
+Init__NotTheVirtualOne__19CBulletDecalManagerFv	31	scratch/tmp/fader_ma.cpp	None	no_compile	-	-
+Rotate__7CMatrixF8CVector3f	14	scratch/game/quat_multiply_wip.cpp	None	no_compile	-	-
+Rotate__7CMatrixF8CVector3f	14	scratch/loop3/geometry/bsp/best2.cpp	None	no_compile	-	-
+Rotate__7CMatrixF8CVector3f	14	scratch/loop3/sweep2/rot/k_20.cpp	13	consistent	0	0 len94/94 
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/cdb/sam_init20.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/expleffect/m5_v1.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/game/animplayer_hbc.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/game/staticanim_init_wip.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/lib/font_wip.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/loop3/airender/smd/staticmesh_draw.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/loop3/scripting/soc/n2.cpp	None	no_compile	-	-
+Draw__14CSoldierObjectFR12CDrawContext	8	scratch/soc/n3.cpp	None	no_compile	-	-
+OnCollision__13CStaticObjectFRC10CCollision	3	scratch/game/acv2.cpp	None	no_compile	-	-
+OnCollision__13CStaticObjectFRC10CCollision	3	scratch/game/pb_penetrate_wip2.cpp	None	no_compile	-	-
+OnCollision__13CStaticObjectFRC10CCollision	3	scratch/loop3/sweep2/cvel/BEST16.cpp	None	no_compile	-	-
+OnCollision__13CStaticObjectFRC10CCollision	3	scratch/soc/n7.cpp	3	consistent	0	0 len333/333 
+OnCollision__13CStaticObjectFRC10CCollision	3	scratch/uiw/player_oncollision.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/bsi_best24.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/cdb/sam_init20.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/game/bsutil_initscripting_wip.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/game/llc_morph_wip.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/game/psu2.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/game/soundschedule_init_wip.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/lib/bsutil_wip.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST12.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST15.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST4.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST7.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/ci/BEST_ci.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/airender/cic/t1.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/big1/g1.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/fresh1/ua/v7.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/loop3/systems4/ti1base.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/par/bigfiles/pub/p1.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/par/parks/psu_selfstore.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/pool/publisher_setsubject_wip.cpp	None	no_compile	-	-
+Init__20CStaticObjectFactoryFv	138	scratch/tmp/fader_ma.cpp	None	no_compile	-	-
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/fib/b.cpp	None	no_compile	-	-
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/lib/box_extents.cpp	63	consistent	0	0 len70/70 
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/loop3/geometry/bge/BEST45.cpp	45	consistent	0	0 len70/70 
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/loop3/geometry/bge/best_split_2.cpp	46	consistent	0	0 len70/70 
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/loop3/geometry/bge/hc_best_11.cpp	45	consistent	0	0 len70/70 
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/loop3/geometry/cex/best_b1.cpp	None	no_compile	-	-
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	45	scratch/pool/csg_full.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/cdb/renderlist_kick2.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/expleffect/m4.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/game/amd3.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/game/soldier_draw_wip2.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/game/yuv_row_wip.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/loop3/airender/ed/BEST11.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/loop3/fresh3/ed/BEST16.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/perm/src_dmesh_init.cpp	None	no_compile	-	-
+Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	49	scratch/uiw/sdraw_if.cpp	None	no_compile	-	-
+SNDtimeremaining	3	scratch/tmp/stimerem_wip.c	3	consistent	0	0 len61/61 
+SNDVOICEI_free__Fi	47	scratch/lib/salloc_free_wip.c	44	consistent	0	0 len99/99 
+SNDI_precalcaztospkrvol__Fv	79	scratch/par/parks/sat3.c	160	consistent	1	1 len178/177 167:bdnz +524|bdnz +528
+iSNDrandom__Fv	80	scratch/par/parks/s16/rn/p1.c	80	consistent	0	0 len83/85 
+SFILTER_rsf__FPviPvPvi	5	scratch/lib/sfrsf_rsf_wip.c	5	consistent	0	0 len195/195 
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/capsule_a8.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/cdb/capsule_dist_14.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/cvb/rE.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/fln/f4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/game/cdbgeom_volbox_plane_wip.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/fresh2/cex/il_best.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/geometry/bsp/best.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/geometry/cex/best_b1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/sweep2/cex/BEST4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec4/tcp/BEST85.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec4/tcp/hc4_best_7.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec6/tcp/hc_best_1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec6/tcp/hc_best_4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec6/tcp/hc_best_7.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec7/tcp/hc2_best_1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec7/tcp/hc_best_2.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/loop3/vec7/tcp/hc_best_5.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/pool/capsule_sphere_wip.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	102	scratch/vbl/r2.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/avl/pc.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/cdb/boxplane.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/cdb/tri_anim32.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/fic/k3.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/fln/w_refparam_outer.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/fresh2/cex/BEST4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/geometry/bcp/best_1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/geometry/bsp/best3.cpp	13	consistent	0	0 len368/368 
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/geometry/tcap/best.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec4/tcp/BEST154.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec4/tcp/hc3_best_1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec6/tcp/BEST85.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec6/tcp/hc_best_3.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec6/tcp/hc_best_6.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec7/tcp/BEST85.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec7/tcp/hc_best_1.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec7/tcp/hc_best_4.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/loop3/vec7/tcp/hc_best_7.cpp	None	no_compile	-	-
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	scratch/pool/csg_full.cpp	None	no_compile	-	-
+TRKSuppAccessFile		scratch/lib/support_wip.c	None	no_compile	-	-

@@ -1,0 +1,25 @@
+S=['CMatrix* world = context.m_localToWorld;',
+'CVector3 position;',
+'position.x = world->pos.x;',
+'position.y = world->pos.y;',
+'position.z = world->pos.z;',
+'CVector3 view;',
+'context.m_worldToView->TransformPoint(view, position);',
+'CVector3 left;',
+'Assign(left, view);',
+'left.x -= 1.0f;',
+'CVector3 right = view;',
+'right.x += 1.0f;',
+'CVector4 a;',
+'context.m_viewToScreen->Transform(a, left);',
+'CVector4 b;',
+'context.m_viewToScreen->Transform(b, right);',
+'a.x /= a.w;',
+'a.y /= a.w;',
+'b.x /= b.w;',
+'b.y /= b.w;',
+'float dy = b.y - a.y;',
+'float dx = b.x - a.x;']
+IND='        '
+BLOCK=''.join(IND+s+'\n' for s in S)
+DEP={2:[0,1],3:[0,1],4:[0,1],6:[2,3,4,5],8:[6,7],9:[8],10:[6],11:[10],13:[9,11,12,6],15:[11,14,13],16:[13],17:[13],18:[15],19:[15],20:[17,19],21:[16,18]}

@@ -1,0 +1,11 @@
+V={}
+p1=open('psf_p1.cpp').read(); p3=open('psf_p3.cpp').read(); p0=open('psf0.cpp').read(); p2=open('psf_p2.cpp').read()
+OP=('CColor& operator=(const CColor& c)','CColor& operator=(CColor c)')
+SR=('void Set(CColor to, CColor from, float duration)','void Set(const CColor& to, const CColor& from, float duration)')
+V['p8']=p1.replace(*OP)
+V['p9']=p0.replace(*OP)
+V['p10']=p0.replace(*OP).replace(*SR)
+V['p11']=p3.replace(*OP).replace(*SR)
+V['p12']=p2.replace(*OP).replace(*SR)
+V['p13']=p2.replace(*OP)
+for k,v in V.items(): open('psf_'+k+'.cpp','w').write(v)

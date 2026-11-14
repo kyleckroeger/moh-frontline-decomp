@@ -1,0 +1,6 @@
+V={}
+V['else_local']=[('                float* skipped;\n                saved.previous','                float* skipped;\n                XAFSTATE restore;\n                restore.previous'),('                saved.current = state->loopState.current;\n                state->decoder->SetState(&saved);','                restore.current = state->loopState.current;\n                state->decoder->SetState(&restore);')]
+V['if_local']=[('                saved = state->decoder->GetState();\n                state->loopState.previous = saved.previous;\n                state->loopState.current = saved.current;','                XAFSTATE got = state->decoder->GetState();\n                state->loopState.previous = got.previous;\n                state->loopState.current = got.current;')]
+V['direct']=[('                saved = state->decoder->GetState();\n                state->loopState.previous = saved.previous;\n                state->loopState.current = saved.current;','                state->loopState = state->decoder->GetState();')]
+V['decl_first']=[('    float discard[28];\n    XAFSTATE saved;\n','    XAFSTATE saved;\n    float discard[28];\n')]
+V['skipped_top']=[('    float discard[28];\n','    float discard[28];\n    float* skipped;\n'),('                float* skipped;\n','')]

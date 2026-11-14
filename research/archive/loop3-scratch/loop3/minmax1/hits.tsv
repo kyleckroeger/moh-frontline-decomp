@@ -1,0 +1,32 @@
+function	real_lines	size	kind	addr	compare	branch	arms	use	draft_ternaries	draft_ptr_ternaries	draft_minmax_calls	draft_dwi	draft	settings
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd24	fcmpo cr0,f9,f7	bge	 | fmr f9,f7		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd3c	fcmpo cr0,f4,f8	bge	 | fmr f4,f8		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd54	fcmpo cr0,f4,f3	bge	 | fmr f4,f3		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd6c	fcmpo cr0,f3,f2	ble	 | fmr f3,f2		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd84	fcmpo cr0,f2,f1	ble	 | fmr f2,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8007fd9c	fcmpo cr0,f1,f0	ble	 | fmr f1,f0		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080010	fcmpo cr0,f0,f1	bge	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8008002c	fcmpo cr0,f0,f1	bge	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080048	fcmpo cr0,f0,f1	bge	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080064	fcmpo cr0,f0,f1	ble	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080080	fcmpo cr0,f0,f1	ble	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8008009c	fcmpo cr0,f0,f1	ble	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	800803d0	fcmpo cr0,f7,f10	bge	 | fmr f7,f10		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	800803e8	fcmpo cr0,f5,f11	bge	 | fmr f5,f11		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080400	fcmpo cr0,f6,f12	bge	 | fmr f6,f12		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080418	fcmpo cr0,f7,f10	ble	 | fmr f7,f10		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080430	fcmpo cr0,f5,f11	ble	 | fmr f5,f11		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080448	fcmpo cr0,f6,f12	ble	 | fmr f6,f12		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	800805bc	fcmpo cr0,f2,f0	bge	 | fmr f2,f0		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	800805d8	fcmpo cr0,f0,f1	bge	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	800805f4	fcmpo cr0,f1,f2	bge	 | fmr f1,f2		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080610	fcmpo cr0,f2,f0	ble	 | fmr f2,f0		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	8008062c	fcmpo cr0,f0,f1	ble	 | fmr f0,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+UpdateBoundingBox__15CParticleSystemFv	101	2948	fsel	80080648	fcmpo cr0,f7,f1	ble	 | fmr f7,f1		14	0	14	False	research/drafts/UpdateBoundingBox.8007fbe8.cpp	config/GMFE69/particlesystem_visible.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e1ec	fcmpo cr0,f3,f2	bge	r4,r1,32|r4,r1,28	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e224	fcmpo cr0,f3,f2	bge	r4,r1,28|r4,r1,32	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e31c	fcmpo cr0,f5,f4	bge	r4,r1,24|r4,r1,20	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e354	fcmpo cr0,f5,f4	bge	r4,r1,20|r4,r1,24	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e448	fcmpo cr0,f7,f6	bge	r4,r1,16|r4,r1,12	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	463	3856	refsel	8006e480	fcmpo cr0,f7,f6	bge	r4,r1,12|r4,r1,16	lfs f1,0(r4)	2	0	4	False	research/drafts/TestCollision.8006e0b0.cpp	config/GMFE69/cdbgeom_triangle_ctor.json
+TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	13	1472	fsel	800c34d0	fcmpo cr0,f2,f1	ble	fmadds f1,f2,f2,f1 li r4,1 | fmr f28,f2		0	0	0	False	research/drafts/TestCollision.800c3210.cpp	config/GMFE69/box_dispatch.json

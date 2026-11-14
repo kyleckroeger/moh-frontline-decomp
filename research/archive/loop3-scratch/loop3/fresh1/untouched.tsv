@@ -1,0 +1,119 @@
+real_lines	size	claims	notes	autopilot_run	logs_all	area	function	note	draft
+0	2944	0	0	1	8	AI	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	draft differs (unfinished); skipped by user 11-02	research/drafts/GenerateTestSplinePath.80050af4.cpp
+0	664	0	0	0	12	Audio	STREAM_kill	matches only with a declined alias	research/drafts/STREAM_kill.8014d6dc.cpp
+1	508	0	0	0	11	Audio	SFILTER_unpackxalf__FPviPvPvi		research/drafts/SFILTER_unpackxalf.80164370.cpp
+5	780	0	0	0	17	Audio	SFILTER_rsf__FPviPvPvi		research/drafts/SFILTER_rsf.801671b8.c
+10	1184	0	0	0	7	AI	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition		research/drafts/CheckLineCollision.80052abc.cpp
+10	1156	0	0	0	13	Animation	AnimStStartState		research/drafts/AnimStStartState.800676d8.cpp
+20	1632	0	0	0	11	AI	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject		research/drafts/ChooseCoverPointByType.8005ca88.cpp
+0	72	0	0	0	0	Video	__dt__Q24RCMP11RCMP_SYSTEMFv		research/drafts/rcmpbase_system.cpp
+11	804	0	0	0	25	Rendering	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair		research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp
+18	1272	0	0	0	6	Animation	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t		research/drafts/LLCharObjCompositeMorph.80064ca0.cpp
+59	3828	0	0	0	15	AI	UpdateAnimation__14CSoldierObjectFf		research/drafts/UpdateAnimation.800acfb8.cpp
+3	244	0	0	0	19	Audio	SNDtimeremaining		research/drafts/SNDtimeremaining.8015d238.c
+3	236	0	0	0	5	Shell and HUD	MoveStatsIntoProperAreaForIstudio__10CShellMenuFv		research/drafts/MoveStatsIntoProperAreaForIstudio.800de334.cpp
+33	1492	0	0	0	10	Animation	Link__8CPartBinFP7CDmaTagR10CDmaPacket		research/drafts/CPartBin_Link.800f5930.cpp
+23	1044	0	0	0	11	Animation	AnimStProcess		research/drafts/AnimStProcess.800672c4.cpp
+22	912	0	0	0	0	Scripting and level objects	AddBuddy__F9BuddyInfob		research/drafts/AddBuddy.80057eac.cpp
+28	1064	0	0	0	1	Animation	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf		research/drafts/death_cb.8005fb58.cpp
+58	1704	0	0	0	4	Rendering	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>		research/drafts/DrawNode.80075024.cpp
+25	712	0	0	0	7	System	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION		research/drafts/ARAM_alloc_node.801503b4.cpp
+99	1916	0	0	0	0	AI	__ct__13CPathNodeListFPvP18BPDPathFindingNodei		research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
+26	424	0	0	0	6	Animation	Draw__10CAnimMorphFR12CDrawContext		research/drafts/Draw.800653c0.cpp
+28	408	0	0	0	9	Audio	SNDMIXI_volramp__FP11SNDMIXVOICE		research/drafts/SNDMIXI_volramp.80160114.c
+32	400	0	0	0	2	Audio	decodexac__3SNDFPQ23SND10MXAPACKETF		research/drafts/decodexac.80168828.cpp
+157	1820	0	0	0	7	Animation	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t		research/drafts/_unpack_skel_frame.80069c80.cpp
+94	1056	0	0	0	6	AI	GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3		research/drafts/GetClosestParameter.800516b4.cpp
+66	716	0	0	0	0	Scripting and level objects	BIFunc_CreateBuddyDataStructures__FPPiPv		research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp
+185	1740	0	0	0	13	Animation	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv		research/drafts/_AnimTranDoTransition.8006862c.cpp
+135	1232	0	0	0	0	Shell and HUD	ShellInit__10CShellMenuFUl		research/drafts/ShellInit.800e752c.cpp
+47	396	0	0	0	15	Audio	SNDVOICEI_free__Fi		research/drafts/SNDVOICEI_free.8015dbd4.c
+22	172	0	0	0	9	Audio	SFILTER_unpackxaf__FPviPvPvi		research/drafts/SFILTER_unpackxaf.801641f0.cpp
+323	2092	0	0	0	7	Collision	FindIntersection__FRC6CLine3RC11CVolCapsulePf		research/drafts/FindIntersection.800c5cb4.cpp
+143	604	0	0	0	3	Animation	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3		research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp
+0	2516	0	1	0	13	AI	UpdateTargetPosition__9CAIObjectFv	matches only with a declined form (duplicate inline)	research/drafts/UpdateTargetPosition.8004e024.cpp
+0	836	0	1	0	0	System	__ct__17CProfileInitClassFv		research/drafts/debug_prof_misc.cpp
+3	360	1	0	0	0	Scripting and level objects	__ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc		research/drafts/__ct_Q23dwi21list_iter_9BuddyInfo___Q23dwi16list_9BuddyInfo_.80058988.cpp
+0	76	0	1	0	1	Video	__sinit_rcmpbase_cpp		research/drafts/rcmpbase_system.cpp
+18	860	0	1	0	27	Shell and HUD	ResetShell__10CShellMenuFv		research/drafts/ResetShell.800e7a7c.cpp
+9	432	0	1	0	31	Shell and HUD	CalculateLevelStats__10CShellMenuFv		research/drafts/CalculateLevelStats.800e6374.cpp
+31	608	1	0	0	1	Rendering	Init__NotTheVirtualOne__19CBulletDecalManagerFv		research/drafts/Init.800839e4.cpp
+41	784	0	1	0	6	Collision	Init__10CCDBObjectFP3CDB		research/drafts/Init.8007133c.cpp
+73	752	0	1	0	8	Audio	MIX_audioslice		research/drafts/MIX_audioslice.801609d0.c
+79	708	0	1	1	6	Audio	SNDI_precalcaztospkrvol__Fv		research/drafts/SNDI_precalcaztospkrvol.8015f538.c
+1183	5024	0	1	1	7	Shell and HUD	MemoryCardBootUpPortCheck__10CShellMenuFi		research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
+1	2696	0	2	0	19	Collision	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>		research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
+0	988	2	0	0	0	Shell and HUD	__ct__19PopUpMessageHandlerFPcPc		research/drafts/pumhandler_ctor.cpp
+0	708	0	2	0	12	System	TRKSuppAccessFile		research/drafts/TRKSuppAccessFile.80135324.cpp
+0	276	0	2	0	1	Shell and HUD	__sinit_pumhandler_cpp		research/drafts/pumhandler_ctor.cpp
+0	224	0	2	1	7	Scripting and level objects	__sinit_buddy_cpp		research/drafts/__sinit_buddy_cpp.80058e44.cpp
+6	500	2	0	0	1	Shell and HUD	Scroll__12PopUpMessageFv		research/drafts/Scroll.800bf4f8.cpp
+195	2296	2	0	0	5	Audio	PATHI_eventstart__Fi		research/drafts/PATHI_eventstart.8010ee50.cpp
+92	900	2	0	0	0	Rendering	__ct__6CSceneFv		research/drafts/__ct__6CSceneFv.800dc8c4.cpp
+207	892	0	2	0	9	Scripting and level objects	BIFunc_AddBuddy__FPPiPv		research/drafts/BIFunc_AddBuddy.80057b30.cpp
+0	1868	2	1	1	4	Video	Play__21OPTION_PARSING_PLAYERFb		research/drafts/rcmp_play.cpp
+3	1060	0	3	0	8	System	TLT_LoadLevelContentsFile__Fii		research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp
+43	2308	2	1	0	8	Shell and HUD	PopUpMessageHandler_Loop__19PopUpMessageHandlerFv		research/drafts/PopUpMessageHandler_Loop.800b9a00.cpp
+73	908	2	1	0	7	Audio	PATHI_seeknextnode__Fi		research/drafts/PATHI_seeknextnode.8010e988.cpp
+19	108	3	0	0	3	Rendering	EndDraw__11CFontDriverFP4FONT		research/drafts/EndDraw.8007c194.cpp
+196	980	2	1	1	10	System	PROFILE_UPDATE__Fv		research/drafts/PROFILE_UPDATE.800f3578.cpp
+441	1864	2	1	0	5	Audio	Update__13SoundScheduleFi		research/drafts/Update.80046bc8.cpp
+80	340	1	2	0	16	Audio	iSNDrandom__Fv		research/drafts/iSNDrandom.8015f934.c
+0	1160	2	2	1	2	Shell and HUD	Init__13UserInterfaceFv		research/drafts/UserInterface_init.cpp
+61	2264	4	0	0	0	Animation	aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf		research/drafts/aim_cb.8005e9ec.cpp
+27	904	2	2	0	10	Video	Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL		research/drafts/Update_Picture_Buffers.80100a30.cpp
+2	80	4	0	0	0	Video	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA		research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
+140	1848	2	2	0	2	Shell and HUD	DrawBulletStats__13UserInterfaceFv		research/drafts/DrawBulletStats.800bce58.cpp
+68	620	2	2	0	8	Video	YUV_WriteRow__FPUcPUcPUcPci		research/drafts/YUV_WriteRow.801083dc.cpp
+252	1260	2	2	0	3	Animation	DMMorphBlendDisplayLists__FP16DMRenderObject_T		research/drafts/DMMorphBlendDisplayLists.800f712c.cpp
+195	784	2	2	0	7	AI	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf		research/drafts/GetClosestWaypointByType.8005c6b8.cpp
+0	1128	1	4	1	3	Rendering	__sinit_compartment_cpp		research/drafts/compartment_init.cpp
+2	2728	3	2	0	7	Scripting and level objects	AllocateStaticObject__20CStaticObjectFactoryFii		research/drafts/AllocateStaticObject.800b386c.cpp
+16	6224	4	1	0	11	Scripting and level objects	BIFunc_GetObjInfo__FPPiPv		research/drafts/BIFunc_GetObjInfo.8002c258.cpp
+7	688	3	2	1	9	Collision	Orthonormalize__7CMatrixFv		research/drafts/Orthonormalize.8008f1e8.cpp
+2	96	4	1	0	8	Scripting and level objects	AddAmo__19CPlayerWeaponObjectFi		research/drafts/AddAmo.800a7fac.cpp
+42	388	5	0	0	1	Scripting and level objects	BIFunc_PlayerScreenFlash__FPPiPv		research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp
+0	1228	2	4	0	7	Scripting and level objects	BSInitBIFuncs__Fv		research/drafts/bsbifunc_setup.cpp
+2	812	3	3	0	22	Audio	SNDPKTPLAY_start		research/drafts/SNDPKTPLAY_start.8015a81c.cpp
+17	724	4	2	0	11	Video	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME		research/drafts/MOHFL_VD_create.80102a20.cpp
+11	392	4	2	0	21	Scripting and level objects	SetFinishedLevelData__13CPlayerObjectFv		research/drafts/SetFinishedLevelData.8009d470.cpp
+53	1700	4	2	0	7	Audio	SNDVOICEI_alloc__FiiPiii		research/drafts/SNDVOICEI_alloc.8015d530.c
+101	2948	2	4	0	8	Rendering	UpdateBoundingBox__15CParticleSystemFv		research/drafts/UpdateBoundingBox.8007fbe8.cpp
+56	1640	2	4	0	14	Scripting and level objects	CreateDumpObject__FRC8CVector3RC11CQuaternionii		research/drafts/CreateDumpObject.8003fc2c.cpp
+14	376	3	3	2	7	Collision	Rotate__7CMatrixF8CVector3f		research/drafts/Rotate.800904e8.cpp
+138	3376	4	2	0	1	Scripting and level objects	Init__20CStaticObjectFactoryFv		research/drafts/Init.800b254c.cpp
+109	1016	2	4	0	5	Animation	_matrix_rot_yzx__FR7CMatrixlll		research/drafts/_matrix_rot_yzx.800f4e98.cpp
+28	164	3	3	2	8	Collision	Multiply__11CQuaternionF11CQuaternion		research/drafts/Multiply.8009174c.cpp
+3	1220	4	3	0	9	System	Update__13CInputManagerFf		research/drafts/Update.80084c80.cpp
+49	632	3	4	1	7	Rendering	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog		research/drafts/Draw.800da67c.cpp
+104	572	3	4	0	21	System	TLT_LoadFromRepository__FPCcPiPb		research/drafts/TLT_LoadFromRepository.8001cca8.cpp
+192	800	4	3	1	9	Rendering	SweepAllExtents__6CSceneFv		research/drafts/SweepAllExtents.800d8bac.cpp
+5	800	5	3	0	4	Rendering	DrawNode__11CStaticMeshFR7MSHNodeUl		research/drafts/DrawNode.800f2090.cpp
+5	576	4	5	3	7	Animation	_find_aim_blend_values__FffPf		research/drafts/_find_aim_blend_values.8005e494.cpp
+25	2436	6	3	0	18	Scripting and level objects	CheckForObstructions__10CExplosionFR10ISceneNode		research/drafts/CheckForObstructions.800ce450.cpp
+44	3416	4	5	0	5	Scripting and level objects	CreateRootHierObject__FP20TriggerObject_structi		research/drafts/CreateRootHierObject.8003dde8.cpp
+7	156	6	3	0	5	Scripting and level objects	BIFunc_AIStartCoverPointWalkToStored__FPPiPv		research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp
+8	1480	5	5	0	2	AI	Draw__14CSoldierObjectFR12CDrawContext		research/drafts/Draw.800ac9e4.cpp
+6	740	5	5	0	8	AI	GetPeekLocation__11CCoverPointFv		research/drafts/GetPeekLocation.800523cc.cpp
+4	480	5	5	0	12	AI	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE		research/drafts/FlagAsOccupied.80052f6c.cpp
+708	3768	6	5	0	6	Scripting and level objects	BSFileReadClass__FPCcbbPP14BSClass_struct		research/drafts/BSFileReadClass.80035aa8.cpp
+105	456	8	3	0	1	Scripting and level objects	BIFunc_MechFollowPath__FPPiPv		research/drafts/BIFunc_MechFollowPath.80021220.cpp
+27	1264	9	4	0	0	Scripting and level objects	BIFunc_GetInitialBuddyOrders__FPPiPv		research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
+6	1884	4	10	1	9	Audio	PATH_event		research/drafts/PATH_event.8010b93c.cpp
+46	568	8	6	0	17	Scripting and level objects	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent		research/drafts/PublishEvent.800d7718.cpp
+9	2128	9	6	0	12	Scripting and level objects	UpdateProximityTriggerStatus__Fv		research/drafts/UpdateProximityTriggerStatus.80046378.cpp
+6	400	8	7	1	21	Scripting and level objects	DisplayHint__Fv		research/drafts/DisplayHint.8001e0f8.cpp
+96	540	8	7	0	7	Scripting and level objects	DoTargetCheck__FP8BSObjectiiiPiPi		research/drafts/DoTargetCheck.8001e59c.cpp
+0	4532	4	12	1	10	Rendering	RenderSystem__15CParticleSystemFR10CDmaPacket		research/drafts/particlesystem_render.cpp
+21	1332	10	6	1	67	Scripting and level objects	OnCollision__13CStaticObjectFRC10CCollision		research/drafts/OnCollision.800afc08.cpp
+8	416	9	7	1	27	Rendering	DrawTextCentered__5CFontFfPCc		research/drafts/DrawTextCentered.8007cdb0.cpp
+16	1268	9	9	1	23	AI	ConstrainVelocity__11CAnimObjectFv		research/drafts/ConstrainVelocity.80093e64.cpp
+82	340	4	17	1	76	System	random		research/drafts/random.8014f114.cpp
+4	304	8	15	4	31	Collision	GetExtents__11CVolCapsuleCFR8CVector3R8CVector3		research/drafts/GetExtents.800c555c.cpp
+45	280	8	15	4	31	Collision	GetExtents__7CVolBoxCFR8CVector3R8CVector3		research/drafts/GetExtents.800c13b4.cpp
+33	2028	14	11	0	8	Scripting and level objects	CreateDestructable__FP20TriggerObject_structi		research/drafts/CreateDestructable.8003c93c.cpp
+25	6920	13	16	3	85	Collision	TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib		research/drafts/TestCollision.8006a71c.cpp
+13	1472	13	16	3	85	Collision	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb		research/drafts/TestCollision.800c3210.cpp
+108	2308	13	16	3	85	Collision	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb		research/drafts/TestCollision.800c290c.cpp
+149	2292	13	16	3	85	Collision	TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb		research/drafts/TestCollision.800c15ec.cpp
+463	3856	13	16	3	85	Collision	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb		research/drafts/TestCollision.8006e0b0.cpp

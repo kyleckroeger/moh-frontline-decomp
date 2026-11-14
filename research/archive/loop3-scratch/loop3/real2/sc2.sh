@@ -1,0 +1,3 @@
+cd /home/kyle/workspace/moh-frontline/scratch/loop3/real2
+echo "V={'fin':[]}" > d.py
+for pair in "TestCollision__7CVolBoxCFRC10CVolSphere fin_TestCollision.800c3210.cpp" "TestCollision__7CVolBoxCFRC11CVolCapsule fin_TestCollision.800c290c.cpp" "UpdateBoundingBox fin_UpdateBoundingBox.8007fbe8.cpp" "TestCDBBranchNodeCollision<6CLine3> fin_TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp" "OnCollision__13CStaticObject fin_OnCollision.800afc08.cpp" "death_cb__14CAnimCallbacks fin_death_cb.8005fb58.cpp" "CheckForObstructions fin_CheckForObstructions.800ce450.cpp"; do set -- $pair; echo -n "$2 "; (ulimit -v 3000000; timeout 900 python3 ../names1/vr.py "$1" $2 d.py); done

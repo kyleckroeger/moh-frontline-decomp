@@ -1,0 +1,130 @@
+unit	source	status	detail
+AIFilter	scratch/loop3/hdr6/work/AIFilter/src/AIFilter.cpp	lost	fast_vec Linked source sections differ from manifest
+AIFilter_collisiondist	src/game/AIFilter_collisiondist.cpp	skip	no covered view
+AIFilter_global	scratch/loop3/hdr6/work/AIFilter_global/src/AIFilter_global.cpp	kept	fast_vec 
+AIFilter_linechecks	src/game/AIFilter_linechecks.cpp	skip	no covered view
+AIFilter_mechchecker_dtor	src/game/AIFilter_mechchecker_dtor.cpp	skip	no covered view
+AIFilter_visit	src/game/AIFilter_visit.cpp	skip	no covered view
+AIObject_visionseek	scratch/loop3/hdr6/work/AIObject_visionseek/src/AIObject_visionseek.cpp	kept	primes 
+AISplinePath	scratch/loop3/hdr6/work/AISplinePath/src/AISplinePath.cpp	kept	primes 
+AISplinePath_segment	scratch/loop3/hdr6/work/AISplinePath_segment/src/AISplinePath_segment.cpp	kept	minmax 
+AnimObjFactory_weapon	scratch/loop3/hdr6/work/AnimObjFactory_weapon/src/AnimObjFactory_weapon.cpp	kept	primes 
+GameMessage	scratch/loop3/hdr6/work/GameMessage/src/GameMessage.cpp	kept	primes 
+Moh2	scratch/loop3/hdr6/work/Moh2/src/Moh2.cpp	kept	primes 
+PathNodeList	scratch/loop3/hdr6/work/PathNodeList/src/PathNodeList.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList.cpp # --------------------------------
+PathNodeList_closest	scratch/loop3/hdr6/work/PathNodeList_closest/src/PathNodeList_closest.cpp	lost	hash_map Unexpected allocated compiler output
+PathNodeList_disable	scratch/loop3/hdr6/work/PathNodeList_disable/src/PathNodeList_disable.cpp	lost	hash_map Unexpected compiler function set
+PathNodeList_erase	scratch/loop3/hdr6/work/PathNodeList_erase/src/PathNodeList_erase.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList_erase.cpp # --------------------------------------
+PathNodeList_hashmap	scratch/loop3/hdr6/work/PathNodeList_hashmap/src/PathNodeList_hashmap.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\PathNodeList_hashmap.cpp # ----------------------------------------
+Pause	scratch/loop3/hdr6/work/Pause/src/Pause.cpp	kept	primes 
+Soldier_object_attach	scratch/loop3/hdr6/work/Soldier_object_attach/src/Soldier_object_attach.cpp	kept	primes 
+alarm	scratch/loop3/hdr6/work/alarm/src/alarm.cpp	lost	list,list_node Unexpected compiler function set
+alarm_builtins	scratch/loop3/hdr6/work/alarm_builtins/src/alarm_builtins.cpp	kept	list,list_node 
+alarm_list	scratch/loop3/hdr6/work/alarm_list/src/alarm_list.cpp	lost	list,list_node '.text'
+alarm_list_ctor	scratch/loop3/hdr6/work/alarm_list_ctor/src/alarm_list_ctor.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi16list<9AlarmInfo>Fv
+alarm_list_reserve	scratch/loop3/hdr6/work/alarm_list_reserve/src/alarm_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi16list<9AlarmInfo>Fv
+alarm_register	scratch/loop3/hdr6/work/alarm_register/src/alarm_register.cpp	no_compile	list,list_node ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\alarm_register.cpp # ----------------------------------
+anim_obj_collide	scratch/loop3/hdr6/work/anim_obj_collide/src/anim_obj_collide.cpp	kept	fast_vec 
+anim_obj_ctor	scratch/loop3/hdr6/work/anim_obj_ctor/src/anim_obj_ctor.cpp	kept	fast_vec 
+anim_obj_dtor	scratch/loop3/hdr6/work/anim_obj_dtor/src/anim_obj_dtor.cpp	kept	fast_vec 
+bsbifunc_explosion	src/game/bsbifunc_explosion.cpp	skip	no covered view
+bsutil_update	scratch/loop3/hdr6/work/bsutil_update/src/bsutil_update.cpp	kept	primes 
+buddy_copy_info	scratch/loop3/hdr6/work/buddy_copy_info/src/buddy_copy_info.cpp	kept	vec_iter 
+buddy_copy_path	scratch/loop3/hdr6/work/buddy_copy_path/src/buddy_copy_path.cpp	kept	vec_iter 
+buddy_destroy	scratch/loop3/hdr6/work/buddy_destroy/src/buddy_destroy.cpp	lost	list,list_iter,list_node,vec_iter,vector Unexpected compiler function set
+buddy_head	scratch/loop3/hdr6/work/buddy_head/src/buddy_head.cpp	kept	list,list_iter,list_node,primes,vec_iter,vector 
+buddy_list	scratch/loop3/hdr6/work/buddy_list/src/buddy_list.cpp	lost	list,list_node '.text'
+buddy_list_reserve	scratch/loop3/hdr6/work/buddy_list_reserve/src/buddy_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi16list<9BuddyInfo>Fv
+buddy_vec_info_dtor	scratch/loop3/hdr6/work/buddy_vec_info_dtor/src/buddy_vec_info_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20vec_iter<9BuddyInfo>Fv
+buddy_vec_info_reserve	scratch/loop3/hdr6/work/buddy_vec_info_reserve/src/buddy_vec_info_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+buddy_vec_path_begin	scratch/loop3/hdr6/work/buddy_vec_path_begin/src/buddy_vec_path_begin.cpp	lost	vec_iter,vector '.text'
+buddy_vec_path_dtor	scratch/loop3/hdr6/work/buddy_vec_path_dtor/src/buddy_vec_path_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv
+buddy_vec_path_end	scratch/loop3/hdr6/work/buddy_vec_path_end/src/buddy_vec_path_end.cpp	lost	vec_iter,vector '.text'
+buddy_vec_path_reserve	scratch/loop3/hdr6/work/buddy_vec_path_reserve/src/buddy_vec_path_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+buddy_veciter_path_dtor	scratch/loop3/hdr6/work/buddy_veciter_path_dtor/src/buddy_veciter_path_dtor.cpp	lost	vec_iter,vector '.text'
+cdbgeom_triangle_line	scratch/loop3/hdr6/work/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	kept	Minmax 
+cdbgeom_volbox_ctor	scratch/loop3/hdr6/work/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	kept	Minmax 
+cdbobject_csg	scratch/loop3/hdr6/work/cdbobject_csg/src/cdbobject_csg.cpp	lost	fast_vec Stripped object is not one compiler object: @52
+cdbobject_fastvec_branch	scratch/loop3/hdr6/work/cdbobject_fastvec_branch/src/cdbobject_fastvec_branch.cpp	lost	fast_vec '.text'
+cdbobject_fastvec_frame	scratch/loop3/hdr6/work/cdbobject_fastvec_frame/src/cdbobject_fastvec_frame.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\cdbobject_fastvec_frame.cpp # -------------------------------------------
+cdbobject_fastvec_push	scratch/loop3/hdr6/work/cdbobject_fastvec_push/src/cdbobject_fastvec_push.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\cdbobject_fastvec_push.cpp # ------------------------------------------
+cdbobject_intersect	scratch/loop3/hdr6/work/cdbobject_intersect/src/cdbobject_intersect.cpp	kept	fast_vec 
+cdbobject_leaf	scratch/loop3/hdr6/work/cdbobject_leaf/src/cdbobject_leaf.cpp	lost	fast_vec Stripped object is not one compiler object: @75
+cdbobject_line	scratch/loop3/hdr6/work/cdbobject_line/src/cdbobject_line.cpp	kept	fast_vec 
+cdbobject_trigroups	scratch/loop3/hdr6/work/cdbobject_trigroups/src/cdbobject_trigroups.cpp	lost	fast_vec Stripped object is not one compiler object: @64
+collision	src/game/collision.cpp	skip	no covered view
+collision_factory_dtor	src/game/collision_factory_dtor.cpp	skip	no covered view
+collision_head	src/game/collision_head.cpp	skip	no covered view
+compartment_draw	src/game/compartment_draw.cpp	skip	no covered view
+compartment_fastvec	scratch/loop3/hdr6/work/compartment_fastvec/src/compartment_fastvec.cpp	lost	fast_vec '.text'
+compartment_fastvec_tri	scratch/loop3/hdr6/work/compartment_fastvec_tri/src/compartment_fastvec_tri.cpp	lost	fast_vec Linked source sections differ from manifest
+compartment_weak	scratch/loop3/hdr6/work/compartment_weak/src/compartment_weak.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #    File: ..\src\compartment_weak.cpp # ------------------------------------ #      41: template <class T> __declspec(weak) fast_vec<T>::fast_vec(int growth) {
+explosion_dtor	src/game/explosion_dtor.cpp	skip	no covered view
+impact_dtor	src/game/impact_dtor.cpp	skip	no covered view
+location_collision	scratch/loop3/hdr6/work/location_collision/src/location_collision.cpp	kept	primes 
+objcreate_collvol	scratch/loop3/hdr6/work/objcreate_collvol/src/objcreate_collvol.cpp	kept	primes 
+objcreate_german	scratch/loop3/hdr6/work/objcreate_german/src/objcreate_german.cpp	kept	primes 
+objcreate_nonvis	scratch/loop3/hdr6/work/objcreate_nonvis/src/objcreate_nonvis.cpp	kept	primes 
+player_constrain	scratch/loop3/hdr6/work/player_constrain/src/player_constrain.cpp	kept	fast_vec 
+player_ctor	scratch/loop3/hdr6/work/player_ctor/src/player_ctor.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #     257: m_collisions.Allocate(128);
+player_draw	scratch/loop3/hdr6/work/player_draw/src/player_draw.cpp	kept	primes 
+player_dtor	scratch/loop3/hdr6/work/player_dtor/src/player_dtor.cpp	kept	fast_vec 
+player_fastvec	scratch/loop3/hdr6/work/player_fastvec/src/player_fastvec.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\player_fastvec.cpp # ----------------------------------
+player_health	scratch/loop3/hdr6/work/player_health/src/player_health.cpp	kept	fast_vec 
+propdat_bsp	scratch/loop3/hdr6/work/propdat_bsp/src/propdat_bsp.cpp	kept	primes 
+propdat_restart	scratch/loop3/hdr6/work/propdat_restart/src/propdat_restart.cpp	kept	primes 
+publisher_erase	scratch/loop3/hdr6/work/publisher_erase/src/publisher_erase.cpp	no_compile	hash_map ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\publisher_erase.cpp # -----------------------------------
+publisher_reset	scratch/loop3/hdr6/work/publisher_reset/src/publisher_reset.cpp	no_compile	hash_map,primes ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiHashMap.h #    From: ..\src\publisher_reset.cpp # -----------------------------------
+publisher_setsubject	scratch/loop3/hdr6/work/publisher_setsubject/src/publisher_setsubject.cpp	lost	hash_map Unexpected allocated compiler output
+pumhandler	scratch/loop3/hdr6/work/pumhandler/src/pumhandler.cpp	lost	list,list_node Unexpected compiler function set
+pumhandler_list	scratch/loop3/hdr6/work/pumhandler_list/src/pumhandler_list.cpp	lost	list,list_node '.text'
+pumhandler_list_ctor	scratch/loop3/hdr6/work/pumhandler_list_ctor/src/pumhandler_list_ctor.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi22list<14QueuedSubtitle>Fv
+pumhandler_list_reserve	scratch/loop3/hdr6/work/pumhandler_list_reserve/src/pumhandler_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi22list<14QueuedSubtitle>Fv
+pumhandler_subtitles	scratch/loop3/hdr6/work/pumhandler_subtitles/src/pumhandler_subtitles.cpp	lost	list,list_iter,list_node Unexpected compiler function set
+pumhandler_umt_dtor	scratch/loop3/hdr6/work/pumhandler_umt_dtor/src/pumhandler_umt_dtor.cpp	lost	list,list_iter,list_node Unexpected compiler function set
+scene	scratch/loop3/hdr6/work/scene/src/scene.cpp	kept	fast_vec 
+scene_cmppairs	scratch/loop3/hdr6/work/scene_cmppairs/src/scene_cmppairs.cpp	lost	fast_vec,list,list_iter,list_node Trimmed data cuts through a compiler object
+scene_copy	scratch/loop3/hdr6/work/scene_copy/src/scene_copy.cpp	kept	vec_iter,vector 
+scene_dtor	scratch/loop3/hdr6/work/scene_dtor/src/scene_dtor.cpp	lost	fast_vec,list,list_node,primes,vec_iter,vector Stripped object is not one compiler object: @144
+scene_fast	scratch/loop3/hdr6/work/scene_fast/src/scene_fast.cpp	lost	fast_vec,vec_iter,vector Unexpected compiler function set
+scene_fastvec_commands	scratch/loop3/hdr6/work/scene_fastvec_commands/src/scene_fastvec_commands.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\scene_fastvec_commands.cpp # ------------------------------------------
+scene_fastvec_node	scratch/loop3/hdr6/work/scene_fastvec_node/src/scene_fastvec_node.cpp	lost	fast_vec '.text'
+scene_fastvec_pairs	scratch/loop3/hdr6/work/scene_fastvec_pairs/src/scene_fastvec_pairs.cpp	no_compile	fast_vec ### mwcceppc.exe Compiler: #      In: ..\..\..\include\game\DwiContainers.h #    From: ..\src\scene_fastvec_pairs.cpp # ---------------------------------------
+scene_fastvec_shadow	scratch/loop3/hdr6/work/scene_fastvec_shadow/src/scene_fastvec_shadow.cpp	lost	fast_vec '.text'
+scene_findif	scratch/loop3/hdr6/work/scene_findif/src/scene_findif.cpp	kept	vec_iter,vector 
+scene_list_extent	scratch/loop3/hdr6/work/scene_list_extent/src/scene_list_extent.cpp	lost	list,list_node '.text'
+scene_list_reserve	scratch/loop3/hdr6/work/scene_list_reserve/src/scene_list_reserve.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi28list<Q210ISceneNode7SExtent>Fv
+scene_now	scratch/loop3/hdr6/work/scene_now/src/scene_now.cpp	kept	fast_vec 
+scene_query	scratch/loop3/hdr6/work/scene_query/src/scene_query.cpp	lost	fast_vec,vec_iter,vector Unexpected compiler function set
+scene_quicksort	src/game/scene_quicksort.cpp	skip	no covered view
+scene_reset	scratch/loop3/hdr6/work/scene_reset/src/scene_reset.cpp	lost	fast_vec,list,list_node,vec_iter,vector Unexpected compiler function set
+scene_rmextents	scratch/loop3/hdr6/work/scene_rmextents/src/scene_rmextents.cpp	no_compile	list,list_node ### mwcceppc.exe Compiler: #    File: ..\src\scene_rmextents.cpp # ----------------------------------- #      68: node.m_extentNodes[0] = m_extents128.push_back(extent);
+scene_sort	src/game/scene_sort.cpp	skip	no covered view
+scene_update	scratch/loop3/hdr6/work/scene_update/src/scene_update.cpp	lost	Minmax,fast_vec,vec_const_iter,vec_iter,vector Unexpected compiler function set
+scene_vec_begin	scratch/loop3/hdr6/work/scene_vec_begin/src/scene_vec_begin.cpp	lost	vec_iter,vector '.text'
+scene_vec_dtor	scratch/loop3/hdr6/work/scene_vec_dtor/src/scene_vec_dtor.cpp	lost	vec_iter,vector Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi22vec_iter<10CCollision>Fv
+scene_vec_end	scratch/loop3/hdr6/work/scene_vec_end/src/scene_vec_end.cpp	lost	vec_iter,vector '.text'
+scene_vec_erase	scratch/loop3/hdr6/work/scene_vec_erase/src/scene_vec_erase.cpp	lost	vec_iter,vector Unexpected compiler function set
+scene_vec_reserve	scratch/loop3/hdr6/work/scene_vec_reserve/src/scene_vec_reserve.cpp	lost	vec_iter,vector Unexpected compiler function set
+scene_vecconst_dtor	scratch/loop3/hdr6/work/scene_vecconst_dtor/src/scene_vecconst_dtor.cpp	lost	vec_const_iter,vector '.text'
+scene_veciter_dtor	scratch/loop3/hdr6/work/scene_veciter_dtor/src/scene_veciter_dtor.cpp	lost	vec_iter,vector '.text'
+scene_veciter_plus	scratch/loop3/hdr6/work/scene_veciter_plus/src/scene_veciter_plus.cpp	lost	vec_iter,vector '.text'
+scene_visit	scratch/loop3/hdr6/work/scene_visit/src/scene_visit.cpp	kept	fast_vec 
+sound	scratch/loop3/hdr6/work/sound/src/sound.cpp	kept	primes 
+soundschedule_sound	scratch/loop3/hdr6/work/soundschedule_sound/src/soundschedule_sound.cpp	kept	primes 
+toilet	scratch/loop3/hdr6/work/toilet/src/toilet.cpp	lost	hash_map,primes Unexpected compiler function set
+toilet_hashmap	scratch/loop3/hdr6/work/toilet_hashmap/src/toilet_hashmap.cpp	lost	hash_map 'extab'
+volume_query_test	src/game/volume_query_test.cpp	skip	no covered view
+world_object	src/game/world_object.cpp	skip	no covered view
+world_object_dtor	scratch/loop3/hdr6/work/world_object_dtor/src/world_object_dtor.cpp	lost	list,list_node Unexpected compiler function set
+world_object_list	scratch/loop3/hdr6/work/world_object_list/src/world_object_list.cpp	lost	list,list_node '.text'
+world_object_list_reserve	scratch/loop3/hdr6/work/world_object_list_reserve/src/world_object_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20list<12CCompartment>Fv
+world_object_node_dtor	scratch/loop3/hdr6/work/world_object_node_dtor/src/world_object_node_dtor.cpp	no_compile	list_node ### mwcceppc.exe Compiler: #    File: ..\src\world_object_node_dtor.cpp # ------------------------------------------ #      18: template <class T> __declspec(weak) list_node<T>::~list_node() {
+world_object_request_reserve	scratch/loop3/hdr6/work/world_object_request_reserve/src/world_object_request_reserve.cpp	lost	list,list_iter,list_node File duplicate is not one compiled function or data object: __dt__Q23dwi31list<Q212CWorldObject8SRequest>Fv
+world_volume_ctor	scratch/loop3/hdr6/work/world_volume_ctor/src/world_volume_ctor.cpp	lost	list,list_node Unexpected compiler function set
+world_volume_dtor	scratch/loop3/hdr6/work/world_volume_dtor/src/world_volume_dtor.cpp	kept	list,list_node 
+world_volume_edit	scratch/loop3/hdr6/work/world_volume_edit/src/world_volume_edit.cpp	kept	list,list_iter,list_node 
+world_volume_list	scratch/loop3/hdr6/work/world_volume_list/src/world_volume_list.cpp	lost	list,list_node '.text'
+world_volume_list_reserve	scratch/loop3/hdr6/work/world_volume_list_reserve/src/world_volume_list_reserve.cpp	lost	list,list_iter,list_node Weak duplicate is not one compiled weak function or data object: __dt__Q23dwi20list<PC10CCDBObject>Fv
+world_volume_remove	scratch/loop3/hdr6/work/world_volume_remove/src/world_volume_remove.cpp	no_compile	list,list_iter,list_node ### mwcceppc.exe Compiler: #    File: ..\src\world_volume_remove.cpp # --------------------------------------- #     110: m_subVolumes.push_back(&object, head);
+world_volume_subvol	scratch/loop3/hdr6/work/world_volume_subvol/src/world_volume_subvol.cpp	kept	list,list_node 

@@ -1,0 +1,321 @@
+vector	own	lost	Linked source sections differ from manifest
+viewport	own	lost	Compiled source bytes differ: viewport .text
+dmrender	own	lost	Compiled source bytes differ: dmrender .text
+world_object_draw	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\world_object_draw.cpp # ------------------------------------- #     175: m_
+hearingvolume	own	lost	Linked source sections differ from manifest
+Moh2	own	lost	Compiler data layout differs from manifest
+particlesystem_property	own	lost	Compiled source bytes differ: particlesystem_property .text
+thrown_obj	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrown_obj.cpp # ------------------------------ #     310: float speed = sq
+thrownbullet	own	lost	Compiled source bytes differ: thrownbullet .text
+projectilebullet	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\projectilebullet.cpp # ------------------------------------ #     615: velo
+world_volume	own	lost	Compiled source bytes differ: world_volume .text
+Screen	own	lost	Compiled source bytes differ: Screen .text
+player	own	lost	Linked source sections differ from manifest
+AIObject	own	lost	Compiled source bytes differ: AIObject .text
+hierobject	own	lost	Stripped object is not one compiler object: @85
+quaternion	own	lost	Compiled source bytes differ: quaternion .text
+AnimObjFactory	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AnimObjFactory.cpp # ---------------------------------- #     155: m_rows[0
+sphere	own	lost	Compiled source bytes differ: sphere .text
+dmcluster	own	lost	Compiled source bytes differ: dmcluster .text
+animplayer	own	lost	Compiled source bytes differ: animplayer .text
+hearingvolume_rows	own	lost	Compiled source bytes differ: hearingvolume_rows .text
+player_transform	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_transform.cpp # ------------------------------------ #     124: m_ve
+static_obj_setpos	own	lost	Compiled source bytes differ: static_obj_setpos .text
+player_weapon	own	lost	Compiled source bytes differ: player_weapon .text
+weapon_head	own	lost	Compiled source bytes differ: weapon_head .text
+weapon_bullet	own	lost	Linked source sections differ from manifest
+particlesystem_emit	own	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\h0\game\CVector3.h #    From: ..\src\particlesystem_emit.cpp # ----------
+capsule_dispatch	own	lost	Linked source sections differ from manifest
+capsule_dispatch2	own	lost	Compiled source bytes differ: capsule_dispatch2 .text
+box_ivolume	own	lost	Unexpected compiler function set
+bsbifunc_mpweapons	own	lost	Compiled source bytes differ: bsbifunc_mpweapons .text
+bsbifunc_particle	own	lost	Compiled source bytes differ: bsbifunc_particle .text
+bsbifunc_attach	own	lost	Compiled source bytes differ: bsbifunc_attach .text
+bsbifunc_mpprompt	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpprompt.cpp # ------------------------------------- #     398: st
+bsbifunc_dump	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_dump.cpp # --------------------------------- #     319: start = CV
+bsbifunc_distance	own	lost	Compiled source bytes differ: bsbifunc_distance .text
+hierobject_tree	own	lost	Stripped object is not one compiler object: @197
+AISplinePath_segment	own	lost	Unexpected compiler function set
+Tank_object_weapons	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Tank_object_weapons.cpp # --------------------------------------- #     150
+Tank_object_draw	own	lost	Compiled source bytes differ: Tank_object_draw .text
+box_setters	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_setters.cpp # ------------------------------- #      53: m_center.v.x =
+staticobjfactory_lookup	own	lost	Stripped object is not one compiler object: @106
+static_obj_commit	own	lost	Compiled source bytes differ: static_obj_commit .text
+Soldier_object_bounds	own	lost	Compiled source bytes differ: Soldier_object_bounds .text
+capsule_create	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_create.cpp # ---------------------------------- #      41: m_dir.v[
+fiber_create	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_create.cpp # -------------------------------- #      39: m_dir.v[0] =
+box_create	own	lost	Unexpected compiler function set
+matrix_ps	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\matrix_ps.cpp # ----------------------------- #     178: PSTransformToLocal
+player_vec_add	own	lost	'.text'
+player_vec_sub	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_vec_sub.cpp # ---------------------------------- #      69: __declsp
+particlesystem_active	own	lost	Unexpected compiler function set
+animplayer_weak	own	lost	Compiled source bytes differ: animplayer_weak .text
+cdbobject_line	own	lost	Compiled source bytes differ: cdbobject_line .text
+fiber_dtor	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\fiber_dtor.cpp # ------------------------------ #      31: m_dir.v[0] = m_e
+staticmesh_cmshmatbin_dtor	own	lost	Linked source sections differ from manifest
+compartment_volbox	own	lost	Unexpected compiler function set
+particlesystem_cpropertyparticlesystem_dtor	own	lost	Linked source sections differ from manifest
+static_obj_dtor	own	lost	Stripped object is not one compiler object: @44
+anim_obj_ctor	own	lost	Compiled source bytes differ: anim_obj_ctor .text
+light_dtor	own	lost	Compiled source bytes differ: light_dtor .text
+impact_dtor	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\impact_dtor.cpp # ------------------------------- #     438: origin.Add(0.0
+light_propertyanim_dtor	own	lost	Linked source sections differ from manifest
+AIFilter_collisiondist	own	lost	Linked source sections differ from manifest
+AIFilter_linechecks	own	lost	Stripped object is not one compiler object: @53
+cdbobject_trigroups	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_trigroups.cpp # --------------------------------------- #     203
+cdbobject_leaf	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_leaf.cpp # ---------------------------------- #     234: inline C
+cdbobject_intersect	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_intersect.cpp # --------------------------------------- #     188
+cdbobject_fastvec_push	own	lost	Compiled source bytes differ: cdbobject_fastvec_push .text
+decal_reset	own	lost	Linked source sections differ from manifest
+projectilebullet_link	own	lost	Linked source sections differ from manifest
+csg_volume_line	own	lost	Compiled source bytes differ: csg_volume_line .text
+cdbgeom_vector	own	lost	Pooled compiler section is missing: .sdata2
+cdbgeom_triangle_ctor	own	lost	Unexpected compiler function set
+staticmesh_render	own	lost	Linked source sections differ from manifest
+fiber_visibility	own	lost	Unexpected compiler function set
+cdbgeom_volbox_ctor	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox_ctor.cpp # --------------------------------------- #      67
+compartment_intersect	own	lost	Compiled source bytes differ: compartment_intersect .text
+particlesystem_visible	own	lost	Compiled source bytes differ: particlesystem_visible .text
+sound	own	lost	Stripped object is not one compiler object: @673
+plane_ctor	own	lost	Linked source sections differ from manifest
+line	own	lost	Compiled source bytes differ: line .text
+box_pointdist	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_pointdist.cpp # --------------------------------- #      77: if (kClose
+box_linedist	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_linedist.cpp # -------------------------------- #     118: CVector3 kPm
+attachobject_ctor	own	lost	Stripped object is not one compiler object: @111
+AIFilter_tank_update	own	lost	Compiled source bytes differ: AIFilter_tank_update .text
+soundschedule_sound	own	lost	Linked source sections differ from manifest
+AIFilter_animobj_velocity	own	lost	Compiled source bytes differ: AIFilter_animobj_velocity .text
+staticmesh_mshnode_copy	own	lost	Unexpected compiler function set
+AnimObjFactory_head	own	lost	Compiled source bytes differ: AnimObjFactory_head .text
+collision	own	lost	Compiled source bytes differ: collision .text
+player_crouch	own	lost	Compiled source bytes differ: player_crouch .text
+player_begincrouch	own	lost	Compiled source bytes differ: player_begincrouch .text
+thrownbullet_misc	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\thrownbullet_misc.cpp # ------------------------------------- #     536: fl
+thrownbullet_tail	own	lost	Linked source sections differ from manifest
+Soldier_object_attach	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\Soldier_object_attach.cpp # ----------------------------------------- #    
+static_obj_pathbegin	own	lost	Compiled source bytes differ: static_obj_pathbegin .text
+hierobject_motion	own	lost	Compiled source bytes differ: hierobject_motion .text
+hierobject_script	own	lost	Compiled source bytes differ: hierobject_script .text
+hierobject_update	own	lost	Compiled source bytes differ: hierobject_update .text
+static_obj_attempt	own	lost	Compiled source bytes differ: static_obj_attempt .text
+anim_obj_draw	own	lost	Compiled source bytes differ: anim_obj_draw .text
+anim_obj_update	own	lost	Linked source sections differ from manifest
+anim_obj_collide	own	lost	Compiled source bytes differ: anim_obj_collide .text
+hierobject_playback	own	lost	Linked source sections differ from manifest
+anim_obj_bullet	own	lost	Compiled source bytes differ: anim_obj_bullet .text
+hierobject_constrain	own	lost	Linked source sections differ from manifest
+world_object_explosion	own	lost	Linked source sections differ from manifest
+IStudioFuncs_resload	own	lost	Linked source sections differ from manifest
+objcreate_swap	own	lost	Linked source sections differ from manifest
+AIObject_visionseek	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     116
+animskinned_skeleton	own	lost	Compiled source bytes differ: animskinned_skeleton .text
+shadow	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\shadow.cpp # -------------------------- #     232: float distance = std::sq
+player_weapon_object_init	own	lost	Compiled source bytes differ: player_weapon_object_init .text
+CoverPoint_invalidate	own	lost	Linked source sections differ from manifest
+animmot_rot	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\animmot_rot.cpp # ------------------------------- #     165: pos.Lerp(other
+static_obj_scale	own	lost	Compiled source bytes differ: static_obj_scale .text
+dmcluster_init	own	lost	Compiled source bytes differ: dmcluster_init .text
+player_updateai	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_updateai.cpp # ----------------------------------- #     263: m_tm.S
+box_testtriangle	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_testtriangle.cpp # ------------------------------------ #      92: cont
+sphere_testtriangle	own	lost	Linked source sections differ from manifest
+camera_frustum	own	lost	Linked source sections differ from manifest
+animplayer_draw	own	lost	Linked source sections differ from manifest
+skybox	own	lost	Stripped object is not one compiler object: @372
+sphere_extents	own	lost	Compiled source bytes differ: sphere_extents .text
+bsbifunc_setobjinfo	own	lost	Compiled source bytes differ: bsbifunc_setobjinfo .text
+bsbifunc_getpropbyid	own	lost	Linked source sections differ from manifest
+bsbifunc_makenoise	own	lost	Linked source sections differ from manifest
+player_health	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     343: c.m_normal
+player_respawn	own	lost	Linked source sections differ from manifest
+objcreate_createplayer	own	lost	Linked source sections differ from manifest
+TibText	own	lost	Compiled source bytes differ: TibText .text
+thrownbullet_explosion	own	lost	Linked source functions differ from original
+static_obj_setlight	own	lost	Compiled source bytes differ: static_obj_setlight .text
+animated_volume_line	own	lost	Compiled source bytes differ: animated_volume_line .text
+player_constrain	own	lost	Linked source sections differ from manifest
+fiber_point	own	lost	Linked source sections differ from manifest
+player_mmg	own	lost	Linked source sections differ from manifest
+fiber_line	own	lost	Linked source sections differ from manifest
+cdbgeom_volbox_line	own	lost	Compiled source bytes differ: cdbgeom_volbox_line .text
+box_line	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_line.cpp # ---------------------------- #      90: nearNormal.Negate(ax
+fiber_extents	own	lost	Linked source sections differ from manifest
+cdbgeom_triangle_line	own	lost	Pool item differs from the original: cdbgeom_triangle_line .sdata2+0x4
+anim_obj_ground	own	lost	Linked source sections differ from manifest
+proxtrig_point	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\proxtrig_point.cpp # ---------------------------------- #      82: Set3(d0,
+bsbifunc_makenoise_bi	own	lost	Linked source sections differ from manifest
+compartment_nodeshadows	own	lost	Compiled source bytes differ: compartment_nodeshadows .text
+player_weapon_draw	own	lost	Compiled source bytes differ: player_weapon_draw .text
+staticobjfactory_patchmvd	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\staticobjfactory_patchmvd.cpp # -------------------------------------------
+player_commit	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_commit.cpp # --------------------------------- #     467: m_tm.SetPo
+player_beginupdate	own	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_beginupdate.cpp # -------------------------------------- #      89: 
+staticmesh_draw	own	lost	Linked source sections differ from manifest
+thrown_obj_init	own	lost	Linked source sections differ from manifest
+propdat	hdr	kept	
+draw_context	hdr	kept	
+skeleton	hdr	kept	
+animintf	hdr	kept	
+matstack	hdr	kept	
+anim_obj	hdr	kept	
+AISoldierDoodad	hdr	kept	
+Soldier_object	hdr	kept	
+AIFilter_queries	hdr	kept	
+player_weapon_object_head	hdr	kept	
+volume_query_test	hdr	kept	
+cdbobject	hdr	kept	
+matrix_translate	hdr	kept	
+animated_volume	hdr	kept	
+cdbgeom	hdr	kept	
+bulletfactory	hdr	kept	
+csg_volume	hdr	kept	
+propdat_bsp	hdr	kept	
+propdat_core	hdr	kept	
+Soldier_object_bone	hdr	kept	
+collisionvolume_rows	hdr	kept	
+light_rows	hdr	kept	
+camera_rows	hdr	kept	
+player_rows	hdr	kept	
+static_obj_rows	hdr	kept	
+bullet_rows	hdr	kept	
+player_move	hdr	kept	
+anim_obj_tm	hdr	kept	
+player_tm	hdr	kept	
+animated_bind	hdr	kept	
+objcreate_volumes	hdr	kept	
+particlesystem_color	hdr	kept	
+anim_obj_volumes	hdr	kept	
+sphere_dispatch	hdr	kept	
+box_dispatch2	hdr	kept	
+fiber_ivolume	hdr	kept	
+cdbgeom_volbox	hdr	kept	
+bsbifunc_reload	hdr	kept	
+bsbifunc_cook	hdr	kept	
+bsbifunc_holdtime	hdr	kept	
+bsbifunc_ai	hdr	kept	
+bsbifunc_random	hdr	kept	
+bsbifunc_melee	hdr	kept	
+bsbifunc_events	hdr	kept	
+bsbifunc_stop	hdr	kept	
+bsbifunc_movewalk	hdr	kept	
+bsbifunc_objective	hdr	kept	
+bsbifunc_mgflag	hdr	kept	
+bsbifunc_ground	hdr	kept	
+bsbifunc_respawn	hdr	kept	
+bsbifunc_mpplayer	hdr	kept	
+bsbifunc_hier	hdr	kept	
+bsbifunc_soundbank	hdr	kept	
+bsbifunc_shake	hdr	kept	
+bsbifunc_grenade	hdr	kept	
+bsbifunc_vibration	hdr	kept	
+bsbifunc_ammo	hdr	kept	
+bsbifunc_explosion	hdr	kept	
+bsbifunc_translate	hdr	kept	
+bsbifunc_cheats	hdr	kept	
+bsbifunc_jaw	hdr	kept	
+bsbifunc_mood	hdr	kept	
+bsbifunc_corpse	hdr	kept	
+bsbifunc_debug	hdr	kept	
+bsbifunc_hierfire	hdr	kept	
+bsbifunc_hiermap	hdr	kept	
+bsbifunc_pathfinder	hdr	kept	
+bsbifunc_endsound	hdr	kept	
+bsbifunc_soundoffset	hdr	kept	
+bsbifunc_soundinfo	hdr	kept	
+bsbifunc_fog	hdr	kept	
+bsbifunc_corpsesearch	hdr	kept	
+bsbifunc_rotate	hdr	kept	
+matrix_endian	hdr	kept	
+hierobject_draw	hdr	kept	
+thrown_obj_cleanup	hdr	kept	
+static_obj_bounds	hdr	kept	
+player_bounds	hdr	kept	
+light_visible	hdr	kept	
+matrix_multiply	hdr	kept	
+compartment_weak	hdr	kept	
+static_obj_type	hdr	kept	
+bulletfactory_thrown_ctor	hdr	kept	
+bulletfactory_thrown_pool	hdr	kept	
+bulletfactory_projectile_ctor	hdr	kept	
+bulletfactory_projectile_pool	hdr	kept	
+cdbobject_fastvec_frame	hdr	kept	
+propdat_restart	hdr	kept	
+matrix	hdr	kept	
+hearingvolume_init	hdr	kept	
+collisionvolume_ctor	hdr	kept	
+hearingvolume_ctor	hdr	kept	
+AIFilter_tank_dtor	hdr	kept	
+bullet_ctor	hdr	kept	
+Soldier_object_ctor	hdr	kept	
+compartment_ctor	hdr	kept	
+anim_obj_dtor	hdr	kept	
+world_object_dtor	hdr	kept	
+explosion_dtor	hdr	kept	
+light_instanced_dtor	hdr	kept	
+light_animmanager_dtor	hdr	kept	
+camera_dtor	hdr	kept	
+particlesystem_manager_dtor	hdr	kept	
+player_dtor	hdr	kept	
+player_ctor	hdr	kept	
+AIFilter_visit	hdr	kept	
+world_volume_edit	hdr	kept	
+decal_link	hdr	kept	
+dmesh_partbin_render	hdr	kept	
+cdbgeom_sphere	hdr	kept	
+compartment_render	hdr	kept	
+staticmesh	hdr	kept	
+particlesystem	hdr	kept	
+dmesh	hdr	kept	
+light	hdr	kept	
+capsule_plane	hdr	kept	
+decal	hdr	kept	
+animskinned	hdr	kept	
+animmorph	hdr	kept	
+ObstacleAvoidance	hdr	kept	
+player_weapon_object	hdr	kept	
+mainloop_game	hdr	kept	
+MathFun_rotate	hdr	kept	
+anim_callback_init	hdr	kept	
+anim_callback_finish	hdr	kept	
+attachobject_update	hdr	kept	
+AIFilter_soldier_update	hdr	kept	
+AIFilter_player_update	hdr	kept	
+AIFilter_player	hdr	kept	
+AIFilter_player_ctor	hdr	kept	
+scene_visit	hdr	kept	
+AIFilter_soldier_movetarget	hdr	kept	
+alarm_register	hdr	kept	
+matrix_scale	hdr	kept	
+matrix_rotate	hdr	kept	
+Soldier_object_cleanup	hdr	kept	
+static_obj_anim	hdr	kept	
+AIFilter_runaway	hdr	kept	
+AISplinePath_finalpoint	hdr	kept	
+AISplinePath_prepare	hdr	kept	
+UserInterface_compass	hdr	kept	
+proxtrig_leafs	hdr	kept	
+AIObject_reachable	hdr	kept	
+player_fov	hdr	kept	
+fiber_testtriangle	hdr	kept	
+animplayer_initai	hdr	kept	
+scene_closestplayer	hdr	kept	
+TibPolygon_process	hdr	kept	
+PathNodeList_disable	hdr	kept	
+player_bullet	hdr	kept	
+scene_fast	hdr	kept	
+world_volume_remove	hdr	kept	
+UserInterface_radar	hdr	kept	
+AIObject_mmgpoint	hdr	kept	
+box_visibility	hdr	kept	
+capsule_capsule	hdr	kept	
+particlesystem_create	hdr	kept	
+propdat_load	hdr	kept	
+animated_draw	hdr	kept	
+bsbifunc_waypointinfo	hdr	kept	
+compartment_draw	hdr	kept	
+bsbifunc_playerammo	hdr	kept	
+objcreate_nonvis	hdr	kept	
+compartment_init	hdr	kept	
+objcreate_collvol	hdr	kept	
+objcreate_german	hdr	kept	
+proxtrig_messages	hdr	kept	
+cdbobject_init	hdr	kept	
+done 72s

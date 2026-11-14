@@ -1,0 +1,23 @@
+function	start	best	landable	what was run	result
+_find_aim_blend_values	5	5	no (needs case-3 colour)	TriangleBlend body order climb (6 orders), Cross2 body/k forms, named-difference locals + decl/stmt climb (112+)	chained 'blend[0]=...=0.0f' replaced by plain stores blend[4]..[0] at the same 5 (declined form removed; committed)
+DrawNode (CStaticMesh)	5	5	no	IsOutside f2/f1/f0/r/d decl+stmt climb x3 seeds (150 orders), Dot operand-side variants 7-12	inert; 1 of the 5 is the g_config field reloc
+SNDtimeremaining	3	3	no	decl/assign climb of result/voice/key	inert (13 orders all >= 3)
+CInputManager::Update	3	3	no	Both() arg/body/type variants (14)	inert (invented Both still present)
+EndDraw	11	11	no	operator= 24 store orders, temp-local load/store climb (600), body stmt climb	inert; draft's operator= order differs from landed CColor views
+Scroll (PopUpMessage)	6	6	no	else-block member-store climb (5 seeds); 5 found but only by reordering Reset's body	else block = inlined Reset() call at 6 (duplicate body removed; committed); the 6 are scheduling of the inlined Reset
+PublishEvent	3	3	no	loop-2 item/observer/callback/slot decl+stmt climb (3 seeds)	inert: any named callback 46
+GetPeekLocation	3	3	no	mask operand orders (12), statement placement (3)	inert; 1 line is a lwzu reloc artifact
+ConstrainVelocity	6	6 (19 without Mul)	no (Mul, chained zeroing)	plain-product solved block climb 3x800, second-solve decl climb 2x600 on the plain form	Mul still load-bearing (plain 19, no order below)
+CCDBTriangle-capsule	5	5	no	sv/tv/rv block climb seeds 7-9 x700, function-top float decl order	inert at 5
+CAnimMorph::Draw	9	9	no	decl-only climb (stack slots) 3 seeds	inert
+list<BuddyInfo> ctor	3	3	no	(stack slot offsets of the T() temp; not order-shaped)	not run
+CSoldierObject::Draw	8	8	no	fade-block stmt climb 2 seeds	inert; 2 of 8 are r2 reloc lines
+quick_sort_<UNodePair>	6	6	no	unguarded_linear_insert loop forms (4), fin/fin2 calls	inert
+DisplayHint	6	6	no	whole-body decl climb, hint/texts/next stmt order	inert
+CheckLineCollision	10	10	no	decl climb of the type block (3 seeds)	inert (flat)
+BIFunc_AIStartCoverPointWalkToStored	7	7	no	decl/statement forms (6)	invented StartWalk helper removed at the same 7 (committed)
+SFILTER_rsf	5	5	no	history/mask stmt climb, mask/shift forms	inert
+UpdateProximityTriggerStatus	9	9	no ('copy = object' form)	all 120 top decl orders with one pointer per loop; plain object arg	decl order inert; plain arg 24
+SFILTER_unpackxalf	1	1	no	separate XAFSTATE temps, decl order	not order-shaped (stack slot); temps 51
+AddAmo	2	2	no	(single statement; 37 forms tried before)	not run
+SNDPKTPLAY_start / RCMP::DECODER ctor / TestCDBBranchNode<CLine3> / AllocateStaticObject / TLT_LoadFromRepository / GetInitialBuddyOrders / AnimStStartState / SetFinishedLevelData / OnCollision / death_cb / box-sphere	-	-	no	triaged: offset folding, scheduling, reloc-only (AllocateStaticObject, TestCDBBranchNode code exact), inline template bodies, or already climbed by real3 / exhaustive decl orders by knots	not re-run

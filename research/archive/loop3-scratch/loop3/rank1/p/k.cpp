@@ -1,0 +1,11 @@
+extern void g(int); extern int h();
+struct S { int n, m; };
+void K4(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int s = a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K5(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int s = a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K6(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int s = a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K7(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int s = a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K8(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int a7 = v[7]; int s = a7 ^ a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K9(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int a7 = v[7]; int a8 = v[8]; int s = a8 ^ a7 ^ a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K10(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int a7 = v[7]; int a8 = v[8]; int a9 = v[9]; int s = a9 ^ a8 ^ a7 ^ a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K11(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int a7 = v[7]; int a8 = v[8]; int a9 = v[9]; int a10 = v[10]; int s = a10 ^ a9 ^ a8 ^ a7 ^ a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }
+void K12(S* p, volatile int* v) { int j; int a0 = v[0]; int a1 = v[1]; int a2 = v[2]; int a3 = v[3]; int a4 = v[4]; int a5 = v[5]; int a6 = v[6]; int a7 = v[7]; int a8 = v[8]; int a9 = v[9]; int a10 = v[10]; int a11 = v[11]; int s = a11 ^ a10 ^ a9 ^ a8 ^ a7 ^ a6 ^ a5 ^ a4 ^ a3 ^ a2 ^ a1 ^ a0; g(s); j = h(); g(p->n); g(j); g(p->m); }

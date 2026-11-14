@@ -1,0 +1,96 @@
+AddAmmoOrWeapon__13CPlayerObjectFiiPv	CPlayerObject::AddAmmoOrWeapon(int, int, void*)
+AddHealth__13CPlayerObjectFiiPv	CPlayerObject::AddHealth(int, int, void*)
+ApplyForceTo__13CPlayerObjectF8CVector3f	CPlayerObject::ApplyForceTo(CVector3, float)
+AsPlayerObject__13CPlayerObjectCFv	CPlayerObject::AsPlayerObject() const
+AsPlayerObject__13CPlayerObjectFv	CPlayerObject::AsPlayerObject()
+AttemptUpdate__13CPlayerObjectFf	CPlayerObject::AttemptUpdate(float)
+BeginCrouch__13CPlayerObjectFv	CPlayerObject::BeginCrouch()
+BeginStand__13CPlayerObjectFv	CPlayerObject::BeginStand()
+BeginUpdate__13CPlayerObjectFf	CPlayerObject::BeginUpdate(float)
+CanPlayerSwitchWeapon__13CPlayerObjectFv	CPlayerObject::CanPlayerSwitchWeapon()
+CleanUp__13CPlayerObjectFv	CPlayerObject::CleanUp()
+CommitUpdate__13CPlayerObjectFv	CPlayerObject::CommitUpdate()
+ConstrainVelocity__13CPlayerObjectFv	CPlayerObject::ConstrainVelocity()
+CycleWeapon__13CPlayerObjectFii	CPlayerObject::CycleWeapon(int, int)
+Destroy__13CPlayerObjectFv	CPlayerObject::Destroy()
+DoMotionShake__13CPlayerObjectFff	CPlayerObject::DoMotionShake(float, float)
+Draw__13CPlayerObjectFR12CDrawContext	CPlayerObject::Draw(CDrawContext&)
+DropMPDumpObject__13CPlayerObjectFv	CPlayerObject::DropMPDumpObject()
+DuckDown__13CPlayerObjectFf	CPlayerObject::DuckDown(float)
+EnterLightVolume__13CPlayerObjectFP14BPDLightVolume	CPlayerObject::EnterLightVolume(BPDLightVolume*)
+ExitLightVolume__13CPlayerObjectFP14BPDLightVolume	CPlayerObject::ExitLightVolume(BPDLightVolume*)
+FireMyWeapon__13CPlayerObjectFf	CPlayerObject::FireMyWeapon(float)
+GetAIDoodad__13CPlayerObjectCFv	CPlayerObject::GetAIDoodad() const
+GetAIDoodad__13CPlayerObjectFv	CPlayerObject::GetAIDoodad()
+GetCollisionId__13CPlayerObjectCFv	CPlayerObject::GetCollisionId() const
+GetCurrentBulletSprite__13CPlayerObjectCFv	CPlayerObject::GetCurrentBulletSprite() const
+GetCurrentPlayerWeapon__13CPlayerObjectCFv	CPlayerObject::GetCurrentPlayerWeapon() const
+GetCurrentWeaponClipAmoCount__13CPlayerObjectCFv	CPlayerObject::GetCurrentWeaponClipAmoCount() const
+GetCurrentWeaponReserveAmoCount__13CPlayerObjectCFv	CPlayerObject::GetCurrentWeaponReserveAmoCount() const
+GetCurrentWeapon__13CPlayerObjectCFv	CPlayerObject::GetCurrentWeapon() const
+GetForward__13CPlayerObjectCFR8CVector3	CPlayerObject::GetForward(CVector3&) const
+GetLocalBoundingVolume__13CPlayerObjectCFQ210ISceneNode11EVolumeType	CPlayerObject::GetLocalBoundingVolume(ISceneNode::EVolumeType) const
+GetPlayerName__13CPlayerObjectFv	CPlayerObject::GetPlayerName()
+GetPosition__13CPlayerObjectCFR8CVector3	CPlayerObject::GetPosition(CVector3&) const
+GetRightward__13CPlayerObjectCFR8CVector3	CPlayerObject::GetRightward(CVector3&) const
+GetScriptObject__13CPlayerObjectCFv	CPlayerObject::GetScriptObject() const
+GetTMLocalToWorld__13CPlayerObjectCFR7CMatrix	CPlayerObject::GetTMLocalToWorld(CMatrix&) const
+GetUpward__13CPlayerObjectCFR8CVector3	CPlayerObject::GetUpward(CVector3&) const
+GetWeaponByCRC__13CPlayerObjectCFi	CPlayerObject::GetWeaponByCRC(int) const
+GetWeaponInfoByCRC__13CPlayerObjectFiPiPi	CPlayerObject::GetWeaponInfoByCRC(int, int*, int*)
+GetWeapon__13CPlayerObjectCFi	CPlayerObject::GetWeapon(int) const
+GetWorldBoundingVolume__13CPlayerObjectCFQ210ISceneNode11EVolumeType	CPlayerObject::GetWorldBoundingVolume(ISceneNode::EVolumeType) const
+GetWorldLinearVelocity__13CPlayerObjectCFv	CPlayerObject::GetWorldLinearVelocity() const
+Halt__13CPlayerObjectFv	CPlayerObject::Halt()
+HandleBulletCollision__13CPlayerObjectFP7CBulletRC10CCollision	CPlayerObject::HandleBulletCollision(CBullet*, const CCollision&)
+InitAI__13CPlayerObjectFv	CPlayerObject::InitAI()
+InitClass__13CPlayerObjectFP7CScreenP7CCamera	CPlayerObject::InitClass(CScreen*, CCamera*)
+InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	CPlayerObject::InitMultiplayer(MPPlayerData*, bool)
+Init__13CPlayerObjectFv	CPlayerObject::Init()
+IsDrawEnabled__13CPlayerObjectCFv	CPlayerObject::IsDrawEnabled() const
+IsPlayerCrouching__13CPlayerObjectCFv	CPlayerObject::IsPlayerCrouching() const
+IsPlayerJumping__13CPlayerObjectCFv	CPlayerObject::IsPlayerJumping() const
+IsVisible__13CPlayerObjectCFR12CDrawContext	CPlayerObject::IsVisible(CDrawContext&) const
+MoveOnPath__13CPlayerObjectFP13CAISplinePathP13CAISplinePathf	CPlayerObject::MoveOnPath(CAISplinePath*, CAISplinePath*, float)
+Move__13CPlayerObjectF8CVector3	CPlayerObject::Move(CVector3)
+OnCollision__13CPlayerObjectFRC10CCollision	CPlayerObject::OnCollision(const CCollision&)
+Orthonormalize__13CPlayerObjectFv	CPlayerObject::Orthonormalize()
+PeekLeftRight__13CPlayerObjectFv	CPlayerObject::PeekLeftRight()
+PeekUp__13CPlayerObjectFf	CPlayerObject::PeekUp(float)
+Pitch__13CPlayerObjectFf	CPlayerObject::Pitch(float)
+PlaySounds__13CPlayerObjectFbbff	CPlayerObject::PlaySounds(bool, bool, float, float)
+PreTransform__13CPlayerObjectFRC7CMatrix	CPlayerObject::PreTransform(const CMatrix&)
+ReInit__13CPlayerObjectFv	CPlayerObject::ReInit()
+Reset__13CPlayerObjectFv	CPlayerObject::Reset()
+Respawn__13CPlayerObjectFv	CPlayerObject::Respawn()
+Roll__13CPlayerObjectFf	CPlayerObject::Roll(float)
+Rotate__13CPlayerObjectF8CVector3f	CPlayerObject::Rotate(CVector3, float)
+SetBasis__13CPlayerObjectF8CVector38CVector38CVector3	CPlayerObject::SetBasis(CVector3, CVector3, CVector3)
+SetClimbingState__13CPlayerObjectFb	CPlayerObject::SetClimbingState(bool)
+SetCollisionId__13CPlayerObjectF7EClsnId	CPlayerObject::SetCollisionId(EClsnId)
+SetFallingDamageState__13CPlayerObjectFb	CPlayerObject::SetFallingDamageState(bool)
+SetFinishedLevelData__13CPlayerObjectFv	CPlayerObject::SetFinishedLevelData()
+SetHideWeapon__13CPlayerObjectFb	CPlayerObject::SetHideWeapon(bool)
+SetMPShotLocation__13CPlayerObjectFP32BS_STRUCT_HitByBulletInfo_struct	CPlayerObject::SetMPShotLocation(BS_STRUCT_HitByBulletInfo_struct*)
+SetPlayersMountedMGPositions__13CPlayerObjectFP7CMatrix	CPlayerObject::SetPlayersMountedMGPositions(CMatrix*)
+SetPosition__13CPlayerObjectF8CVector3	CPlayerObject::SetPosition(CVector3)
+SetScript__13CPlayerObjectFP8BSObject	CPlayerObject::SetScript(BSObject*)
+SetTMLocalToWorld__13CPlayerObjectFRC7CMatrix	CPlayerObject::SetTMLocalToWorld(const CMatrix&)
+SetUsingMountedMachineGun__13CPlayerObjectFbP13CStaticObject	CPlayerObject::SetUsingMountedMachineGun(bool, CStaticObject*)
+SetWeaponEnable__13CPlayerObjectF12EWeaponTypesb	CPlayerObject::SetWeaponEnable(EWeaponTypes, bool)
+ShakeCamera__13CPlayerObjectFRfRff	CPlayerObject::ShakeCamera(float&, float&, float)
+StartCameraShake__13CPlayerObjectFff	CPlayerObject::StartCameraShake(float, float)
+StartDeathSequence__13CPlayerObjectFv	CPlayerObject::StartDeathSequence()
+StartGrenadeCook__13CPlayerObjectFv	CPlayerObject::StartGrenadeCook()
+StartPlayerCrouched__13CPlayerObjectFv	CPlayerObject::StartPlayerCrouched()
+StopCameraShake__13CPlayerObjectFf	CPlayerObject::StopCameraShake(float)
+StopPath__13CPlayerObjectFv	CPlayerObject::StopPath()
+Transform__13CPlayerObjectFRC7CMatrix	CPlayerObject::Transform(const CMatrix&)
+TransitionFOV__13CPlayerObjectFff	CPlayerObject::TransitionFOV(float, float)
+TriggerScriptEvent__13CPlayerObjectFiPvb	CPlayerObject::TriggerScriptEvent(int, void*, bool)
+UpdateAI__13CPlayerObjectFf	CPlayerObject::UpdateAI(float)
+UpdateDeathSequence__13CPlayerObjectFf	CPlayerObject::UpdateDeathSequence(float)
+UpdateMovePath__13CPlayerObjectFf	CPlayerObject::UpdateMovePath(float)
+Yaw__13CPlayerObjectFf	CPlayerObject::Yaw(float)
+__ct__13CPlayerObjectFv	CPlayerObject::CPlayerObject()
+__dt__13CPlayerObjectFv	CPlayerObject::~CPlayerObject()

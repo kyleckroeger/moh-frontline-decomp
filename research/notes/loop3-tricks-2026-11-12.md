@@ -1,4 +1,6 @@
 # Cross-lane tricks found by the parallel agents (append; newest last). Try these on FP/colouring near-misses.
+
+> Paths `scratch/loop3/...` below are archived at `research/archive/loop3-scratch/loop3/...` (notes, scripts, cited probes). Day summary: `research/notes/loop-2026-11-13.md`.
 - (lines) inline fabs: '#undef fabs' + 'inline double fabs(double x){ return __fabs(x); }' fixed the line-test colouring (FindIntersection excepted: keep the macro there).
 - (lines) Named 'struct { float x, y, z, w; } c;' inside the CVector3 union; access components through it, not v[].
 - (lines) Per-axis products in REVERSE order = a 3-float ctor 'CVector3 l(a.Dot(v), b.Dot(v), c.Dot(v))' (args evaluate right to left).

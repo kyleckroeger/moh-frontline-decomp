@@ -1,0 +1,9 @@
+AISplinePath_segment	draft_fail	Function differs from the original: __ct__20CAISplinePathSegmentFv	__ct__8CVector3Fv	
+box_create	draft_fail	Function differs from the original: Create__7CVolBoxCFv	__ct__8CVector3Fv	
+box_ivolume	draft_fail	Function differs from the original: TestCollision__7CVolBoxCFRC7CVolBoxR10CCollisionb	Normalize__8CVector3Fv	
+cdbgeom_triangle_ctor	draft_fail	Function differs from the original: __ct__12CCDBTriangleFRC6CDBTri	__ct__8CVector3Fv	
+compartment_volbox	draft_fail	Inconsistent address for .text: 0x80074bd0 vs 0x80074be4		
+fiber_visibility	draft_fail	Function differs from the original: TestVisibility__9CVolFiberCFR12CDrawContext	__ct__8CVector3Fv	
+particlesystem_active	extra_nonweak	__sinit_particlesystem_active_cpp		
+player_vec_sub	draft_fail	Function differs from the original: StartPlayerCrouched__13CPlayerObjectFv		
+staticmesh_mshnode_copy	draft_fail	Function differs from the original: __ct__7MSHNodeFRC7MSHNode	__ct__8CVector3Fv	

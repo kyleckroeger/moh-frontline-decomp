@@ -1,0 +1,13 @@
+#!/bin/sh
+cd /home/kyle/workspace/moh-frontline
+L=scratch/loop3/merge2/landone.sh
+sh $L smixfx scratch/loop3/merge2/tpl_smixfx.json smixfx.c 13011 "smixfx_modlap" "- 2026-11-13 [loop merge2] merged smixfx.c (smixfx + smixfx_modlap, 1,296 B): FXfilterindex static again; sndfx declared float[] once (fxinit's int store through a char cast). MIX_getwetbuffer, the file's last function, stays in the smixfram unit." "Merge smixfx.c: 2 fragments into one unit" "SNDMIXI_fxinit, SNDMIXI_modlapifxadd and SNDMIXI_fxadd in one unit; FXfilterindex is file-static again. Complete image identical."
+sleep 60
+sh $L sdspmix scratch/loop3/merge2/tpl_sdspmix.json sdspmix.c 13297 "sdspmix_vol" "- 2026-11-13 [loop merge2] merged sdspmix.c (sdspmix + sdspmix_vol, 1,828 B): __MIXChannel static again; the two _AXVPB/MIXCHANNEL views joined on sdspmix_vol's (mix.c) names, the offset-named fields of InitChannel mapped by offset." "Merge sdspmix.c: 2 fragments into one unit" "The DSP mixer's seven functions in one unit; __MIXChannel is file-static again and the voice and channel views are one. Complete image identical."
+sleep 60
+sh $L stretch scratch/loop3/merge2/tpl_stretch.json stretch.c 13202 "stretch_head" "- 2026-11-13 [loop merge2] merged stretch.c (stretch_head + stretch, 3,036 B): crossfade/determineaction/applyaction static again; '#pragma auto_inline off' around them replaces stretch_head's -inline on." "Merge stretch.c: 2 fragments into one unit" "The time-stretch filter's helpers and functions in one unit; the helpers are file-static again, kept out of line with auto_inline off. Complete image identical."
+sleep 60
+sh $L animseq scratch/loop3/merge2/tpl_animseq.json animseq.cpp 3040 "animseq_start" "- 2026-11-13 [loop merge2] merged animseq.cpp (animseq + animseq_start, 2,416 B): _AnimSeqParseToEnd and _ParseForFrame static again; AnimSeqAnimInfo_t on animseq_start's view (offset-named after +16)." "Merge animseq.cpp: 2 fragments into one unit" "The animation-sequence functions in one unit; the two parsers are file-static again. Complete image identical."
+sleep 60
+sh $L animmot scratch/loop3/merge2/tpl_animmot.json animmot.cpp 3018 "animmot_rot" "- 2026-11-13 [loop merge2] merged animmot.cpp (animmot_rot + animmot, 2,524 B): _AnimMot_FrameList static again, on animmot_rot's frame-list view with the empty weight-frame constructor." "Merge animmot.cpp: 2 fragments into one unit" "The motion blending functions, the frame list's static initialisation and the weak weight-frame constructor in one unit; _AnimMot_FrameList is file-static again. Complete image identical."
+echo BATCH DONE

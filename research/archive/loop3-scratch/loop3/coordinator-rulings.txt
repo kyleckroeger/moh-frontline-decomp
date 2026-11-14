@@ -1,0 +1,6 @@
+2026-11-13 SNDI_precalcaztospkrvol: two near-identical inline helpers differing only in store order are declined (same family as "different inline bodies per fragment"); land only if one helper serves both branches. Record in State / docs/Remaining.md at next quiet State update.
+2026-11-13 BuddyState dead whole-struct read: accepted, spelled as an empty by-value inline Check(state) (reads as a compiled-out debug check); buddy2 records it in docs/Remaining.md.
+2026-11-13 CPartBin::Link `position = CVector3(lightPos);` (unnamed temporary, scores 0): declined, same steering copy chain as the declined named form. Queue for the user as reversible.
+2026-11-13 CCoverPoint::CheckLineCollision hand-inlined GetTypes spelled differently from the landed GetTypes (10->6): declined (two bodies for one inline).
+2026-11-13 Single key-function fragment may own its file's .data/vtable (RTTI on) without merging neighbours when byte-exact: accepted as stepping stone.
+2026-11-13 axDspSlave microcode (6,624 B): QUEUED for user — transcribe into research/data/ or leave platform-owned (2 undefined permanently).

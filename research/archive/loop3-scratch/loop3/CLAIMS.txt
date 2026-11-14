@@ -1,0 +1,868 @@
+systems Draw__22CParticleSystemManagerFR12CDrawContext
+systems thunks_particle_decal (all 8 thunks: @32@ CParticleSystemManager, @36@ CBulletDecalManager)
+airender-released FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE
+airender-released Draw__14CSoldierObjectFR12CDrawContext
+airender-released GetPeekLocation__11CCoverPointFv
+airender-released DrawTextCentered__5CFontFfPCc
+airender-released DrawNode__11CStaticMeshFR7MSHNodeUl
+airender-released EndDraw__11CFontDriverFP4FONT
+systems ResetTimeStampStuff__Fv
+airender-released ConstrainVelocity__11CAnimObjectFv
+airender-released Init__NotTheVirtualOne__19CBulletDecalManagerFv
+airender-released HandleExplosion__12CCompartmentFRC10CExplosion
+systems InitTimeStampStuff__Fv
+airender-released Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog
+airender-released InitClass__11CStaticMeshFP11CRenderListP7CScreen
+airender-released InitClass__12CCompartmentFP11CRenderListP7CScreen
+systems debug_prof VerifyNew+DumpAll merge (debug_prof_register+debug_prof_dump)
+airender-landed HandleExplosion__12CCompartmentFRC10CExplosion
+airender-landed Draw__11CStaticMeshFR12CDrawContexti
+airender-landed Draw__12CCompartmentFR12CDrawContext
+systems released: debug_prof merge LANDED 9de067ca; nothing held
+systems3 NonVisDestructFarthestSoldiers__Fi
+scripting BSInitBIFuncs__Fv
+scripting DisplayHint__Fv
+scripting CreateDestructable__FP20TriggerObject_structi
+systems3 BIFunc_DisplayPromptInteger__FPPiPv
+scripting BIFunc_DisplayPromptText__FPPiPv LANDED 9256cc51
+scripting BIFunc_AddPlayerAmmo__FPPiPv LANDED 9256cc51
+airender-released __sinit_compartment_cpp
+airender-released Init__12CCompartmentFv
+scripting released DisplayHint__Fv (parked, 6)
+scripting released CreateDestructable__FP20TriggerObject_structi (parked, 11)
+scripting released BSInitBIFuncs__Fv (parked: policy question, code exact)
+scripting SetFinishedLevelData__13CPlayerObjectFv
+scripting released SetFinishedLevelData__13CPlayerObjectFv (8 more forms, stays 11)
+scripting CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei
+scripting released CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei (4 forms, stays 17)
+scripting TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum
+scripting released TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum (not attempted)
+scripting BIFunc_GetObjInfo__FPPiPv
+scripting released BIFunc_GetObjInfo__FPPiPv (not attempted: hc8_best needs its harness prefix)
+scripting BIFunc_UpdateBuddyCheckpoints__FPPiPv (merge into buddy_head, .rodata pooled)
+airender Init__12CCompartmentFv
+scripting released BIFunc_UpdateBuddyCheckpoints__FPPiPv LANDED e47e2460
+scripting BIFunc_UpdateBuddyProgress__FPPiPv
+scripting merge buddy_vec_info + buddy_veciter_info_dtor into buddy_head (for UpdateBuddyProgress)
+scripting released BIFunc_UpdateBuddyProgress__FPPiPv LANDED eff49cf3 (buddy_vec_info, buddy_veciter_info_dtor folded)
+scripting BIFunc_BuddyDied__FPPiPv
+scripting BIFunc_GetInitialBuddyOrders__FPPiPv
+airender-released Init__12CCompartmentFv
+mid1 RotateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum
+systems3 released: NonVis LANDED 9ea3edcd, PromptInteger LANDED c6d755db; nothing held
+systems4 CreateGerman__FP20TriggerObject_structib
+mid1 TranslateFromScript__13CStaticObjectFR8CVector3R8CVector312EBSEventEnum
+scripting released BIFunc_BuddyDied__FPPiPv LANDED d1ba9bc7
+scripting __ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc
+systems4 CreateCollisionVolume__FP20TriggerObject_structi
+mid1 released RotateFromScript+TranslateFromScript LANDED 70aad029
+mid1 CheckForObstructions__10CExplosionFR10ISceneNode
+scripting released __ct<...list<BuddyInfo>...> (parked: BuddyInfo() temp slot knot, 3)
+scripting released BIFunc_GetInitialBuddyOrders__FPPiPv (parked 7)
+airender Init__12CCompartmentFv (permuter harness, agent 4)
+scripting UpdateProximityTriggerStatus__Fv
+scripting released UpdateProximityTriggerStatus__Fv (natural-form 24 -> 13: const copy in the inline; German loop reg left)
+scripting DisplayHint__Fv
+mid1 released CheckForObstructions__10CExplosionFR10ISceneNode (parked, 9/25)
+mid1 BIFunc_PlayerScreenFlash__FPPiPv
+scripting released DisplayHint__Fv (helper/const forms, stays 6)
+scripting AddAmo__19CPlayerWeaponObjectFi
+scripting released AddAmo__19CPlayerWeaponObjectFi (24 accessor/const forms, stays 2)
+scripting OnCollision__13CStaticObjectFRC10CCollision
+mid1 released BIFunc_PlayerScreenFlash__FPPiPv (parked, 40)
+mid1 BIFunc_GetObjInfo__FPPiPv
+scripting released OnCollision__13CStaticObjectFRC10CCollision (motion/away helper forms, n7 stays 3)
+mid1 released BIFunc_GetObjInfo__FPPiPv (RS GetObjInfo split: CW 1.3.2 won't inline it without pragmas; parked)
+mid1 released all; session end (landed 70aad029)
+scripting BIFunc_GetInitialBuddyOrders__FPPiPv
+rs1 TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb
+rs1 SNDPKTPLAY_start
+scripting DisplayHint__Fv (RS trick)
+airender released Init__12CCompartmentFv LANDED 6e3c8d59
+scripting OnCollision__13CStaticObjectFRC10CCollision (RS trick)
+airender FlagAsOccupied GetPeekLocation DrawTextCentered DrawTextCenteredF EndDraw Draw(soldier) Draw(scene) ConstrainVelocity DrawNode(staticmesh) SweepExtents (RS helper check)
+rs1 released TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb (RS boxcapsule_testaxis param order: 206->290 fast, no)
+rs1 Scroll__12PopUpMessageFv
+rs1 released Scroll__12PopUpMessageFv (RS = same helper split, Reset already inlined in draft; no lead)
+rs1 PATH_event
+rs1 PATHI_seeknextnode__Fi
+scripting released UpdateProximityTriggerStatus__Fv, DisplayHint__Fv, OnCollision (RS trick: no helper boundary to borrow)
+scripting SetFinishedLevelData__13CPlayerObjectFv (RS trick)
+systems4 released CreateCollisionVolume__FP20TriggerObject_structi (parked 78, GPR permutation), CreateGerman__FP20TriggerObject_structib (code exact, waits for CCV)
+systems4 Init__13CThrownObjectFv
+scripting released SetFinishedLevelData__13CPlayerObjectFv (RS has no ammo helper; 360 direct decl orders worse)
+scripting CreateWeaponByCRC__14CWeaponFactoryFiP10ISceneNodei (RS trick)
+systems4 released Init__13CThrownObjectFv (RS GetBasis/GetCenter + Length nesting forms: 32 -> no gain)
+systems4 CreateDestructable__FP20TriggerObject_structi (retry with CCV forms)
+systems4 released CreateDestructable__FP20TriggerObject_structi (22 in fast.py, CCV forms no gain); nothing held
+systems5 CreateCollisionVolume__FP20TriggerObject_structi CreateDestructable__FP20TriggerObject_structi CreateGerman__FP20TriggerObject_structib
+rs1 PATH_event: RS PATHI_getmastertrack inline helper -> real 26 -> 6 (scratch/loop3/rs1/pev/BEST6.cpp); continuing
+scripting CreateWeaponByCRC: matched 0 (RS helper boundary), landing
+rs1 released PATHI_seeknextnode__Fi (RS PATHI_nextnode = different lib version; draft's choosebranch already the boundary)
+rs1 PATHI_eventstart__Fi
+rs1 released PATHI_eventstart__Fi (draft already has findleader = RS getmastertrack; diff is saved-copy colouring)
+rs1 SNDVOICEI_alloc__FiiPiii
+rs1 released SNDVOICEI_alloc__FiiPiii (RS isreserved(voice,count) form: identical code; pure colouring)
+airender released FlagAsOccupied GetPeekLocation DrawTextCentered DrawTextCenteredF EndDraw Draw(soldier) Draw(scene) ConstrainVelocity DrawNode(staticmesh) SweepExtents (RS check: nothing new, no landings)
+rs1 PopUpMessageHandler_Loop__19PopUpMessageHandlerFv
+rs1 released PopUpMessageHandler_Loop__19PopUpMessageHandlerFv (RS Loop redesigned: float arg, viewports; GetOldest semantics differ; no lead)
+rs1 Load__17CUserMessageTableFPcPc
+mid2 CreateRootHierObject__FP20TriggerObject_structi
+scripting Init__13CThrownObjectFv (RS trick)
+scripting released Init__13CThrownObjectFv (RS GetBasis/GetCenter inline boundary: 16 / worse)
+scripting CreateDestructable__FP20TriggerObject_structi (RS trick)
+scripting released CreateWeaponByCRC LANDED 47e3ee8e
+scripting released CreateDestructable (RS AddObjectToList/AllocateBoxVolume/GetBasis/GetCenter boundaries: all 11)
+scripting AllocateStaticObject__20CStaticObjectFactoryFii (RS trick)
+scripting released AllocateStaticObject (code exact; blocked by .rodata block owner Init, not RS)
+scripting BIFunc_AIStartCoverPointWalkToStored__FPPiPv (RS trick)
+scripting released BIFunc_AIStartCoverPointWalkToStored (19 arg/return forms: 7)
+scripting TriggerEnterAndLeaveMessages__FP10BSGO_Basicb (RS trick: Enter/Leave split)
+scripting released TriggerEnterAndLeaveMessages (RS Enter/Leave/SpecialCase/UniqueProperty boundaries: all worse, extra inline levels stop inlining)
+rs1 Load__17CUserMessageTableFPcPc: matched 0 (RS CreateUMStructFromFile inline); landing
+scripting Init__20CStaticObjectFactoryFv (structure work; unlocks AllocateStaticObject)
+rs1 released Load__17CUserMessageTableFPcPc LANDED 95aae29e
+rs2 PATH_event
+rs2 Update__13CInputManagerFf
+rs2 released Update__13CInputManagerFf (RS input rewritten: event tables, mask buttons; no helper to borrow)
+rs2 __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA
+rs2 released __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA (RS shows only the default CODEC_IDATA ctor the draft has; 40 ctor/default-ctor forms stay 2)
+rs2 MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME
+rs2 released MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (RS GCHW_VD ctor = draft's inline ctor; decl/mode/new-local forms: 17 best)
+scripting released Init__20CStaticObjectFactoryFv (colouring knot as soldier s22: inert to decls/helpers/types/scopes; permuter 2.9k no gain; parked)
+scripting DoTargetCheck__FP8BSObjectiiiPiPi (RS IsNonAITarget helper)
+scripting released DoTargetCheck__FP8BSObjectiiiPiPi (RS IsNonAITarget is AI-targeting code absent from Frontline's version; no lead)
+scripting BIFunc_MechFollowPath__FPPiPv (structure)
+rs2 released PATH_event (matched 0 in isolation, q_int_bl.cpp; landing needs '#pragma auto_inline off' around PATH_pause = policy question, see rs2/notes.md)
+systems5 released: CreateCollisionVolume LANDED 5c8d9fb5, CreateGerman LANDED 5e72bb35, CreateDestructable parked (3 with cast copy / 1 double-beq); nothing held
+mid2 PublishEvent__10CPublisherFR8ISubject13ESubjectEvent
+data1 research/data/init (initialised data for source_link undefined symbols)
+late1 CreateDestructable__FP20TriggerObject_structi (register-rotation recipe)
+scripting TriggerEnterAndLeaveMessages__FP10BSGO_Basicb (structure)
+mid2 released CreateRootHierObject__FP20TriggerObject_structi (parked real 2: scratch/loop3/mid2/CRH_BEST2.cpp, all regs right, ctor stores via box), PublishEvent (stays 2)
+late1 released CreateDestructable (recipe forms 94-109; const late box ranks lowest; still 1 = double beq)
+late1 BIFunc_GetInitialBuddyOrders__FPPiPv (register-rotation recipe; scripting's session-5 claim was released per its notes)
+pnew1 CreateRootHierObject__FP20TriggerObject_structi CreateDestructable__FP20TriggerObject_structi (placement-new knot)
+data1 released: game init data LANDED d5d1282e
+late1 released BIFunc_GetInitialBuddyOrders__FPPiPv (recipe on GI top: 24 worse; DumpReady decl/raw/param forms inert or worse; stays 7)
+late1 checked AddAmo/CThrownObject::Init/CStaticObject::OnCollision: volatile GPR/FPR diffs, not callee-saved rotations; not worked
+late1 SweepExtents (register-rotation recipe)
+late1 Draw__14CSoldierObjectFR12CDrawContext (register-rotation recipe)
+late1 released Draw__14CSoldierObjectFR12CDrawContext (const this/context copies, weapon temp/pointer, i/while forms: 12+ diff lines, inert)
+late1 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (register-rotation recipe)
+late1 released TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (volatile FPR swap, not a callee-saved rotation; not worked)
+late1 Init__20CStaticObjectFactoryFv (const late-declared new[] results)
+late1 released Init__20CStaticObjectFactoryFv (const late new[] locals, count/template ptr declared first + late assign: all 138, inert)
+late1 BIFunc_AIStartCoverPointWalkToStored__FPPiPv (param const-copy recipe)
+scripting released BIFunc_MechFollowPath__FPPiPv (structure: 105 -> 83, mfp3/BEST83.cpp; parked)
+scripting released TriggerEnterAndLeaveMessages__FP10BSGO_Basicb (structure: 308 -> 116, tel/BEST116.cpp; parked)
+data1 released: shell tables LANDED d0f84b89; nothing held
+scripting TriggerEnterAndLeaveMessages__FP10BSGO_Basicb (structure, session 8)
+scripting BIFunc_MechFollowPath__FPPiPv (permuter, session 8)
+sweep1 __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA (bool/late-assign/inline sweep)
+late1 SNDVOICEI_alloc__FiiPiii (param const-copy recipe)
+late1 released SNDVOICEI_alloc__FiiPiii (mixed volatile+callee colouring, not a clean rotation)
+late1 UpdateProximityTriggerStatus__Fv (recipe)
+sweep1 released __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA (8 new forms + 1.3/O4,s: inert, 2)
+late1 released UpdateProximityTriggerStatus__Fv (separate german var x decl orders 31; while/do/next/cast/plain-inline forms 24; inert)
+sweep1 Update__13CInputManagerFf (bool/a*=b/inline sweep)
+sweep1 released Update__13CInputManagerFf (72 shift-pair forms: bool copies, x<<=, const/late, mask/amount args, inline levels; IR canonical, 3)
+sweep1 PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (comma/split-path sweep)
+sweep1 released PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (62 forms: const param copies, (bool), comma for, shared it/callback, access paths: 3 or 46)
+sweep1 FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE (bool/late/a*=b sweep)
+pnew1 released CreateRootHierObject__FP20TriggerObject_structi CreateDestructable__FP20TriggerObject_structi (no form found; CRH 1 = R1 extra beq, 3 = O1/M1; see pnew1/notes.md); nothing held
+sweep1 released FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE (4 -> 3 with 't = m_bits; t &= x; m_bits = t' operators: scratch/loop3/sweep1/FAO_BEST3.cpp; or-dest reg left)
+sweep1 GetPeekLocation__11CCoverPointFv (operator compound forms)
+struct1 Play__21OPTION_PARSING_PLAYERFb (structure)
+sweep1 released GetPeekLocation__11CCoverPointFv (27 compound operator + 14 mask-ctor forms: stays 3, D-load sched)
+sweep1 DrawTextCenteredF__5CFontFfPCce (a=x;a*=b sweep)
+struct1 Init__13UserInterfaceFv (structure)
+sweep1 SNDPKTPLAY_start (late-assign/inline/comma sweep)
+sweep1 released DrawTextCenteredF__5CFontFfPCce (LANDED 2e4ac3cd)
+sweep1 released SNDPKTPLAY_start (30 index/byte-offset/IV forms: stays 2, IV init folds the +4)
+sweep1 MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (late-assign/const-copy recipe)
+struct1 Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog (structure)
+late1 released SweepExtents (39 -> 7 real: scratch/loop3/late1/sx_inl_hl.cpp; node vs CSE m_data temp left), BIFunc_AIStartCoverPointWalkToStored (7 -> 3 diff lines c_i3.cpp); session end, nothing held
+sweep1 released MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (100 forms: const/self/late copies inert at 17; ::new placement gives orig obj r31/decoder r29 but stores via r3 = 154)
+sweep1 EndDraw__11CFontDriverFP4FONT (inline/compound sweep)
+late2 SweepExtents__FRQ23dwi28list<Q210ISceneNode7SExtent>RQ23dwi29fast_vec<Q26CScene9UNodePair>RQ23dwi36fast_vec<Q26CScene15SExclusionEntry> (finish decl sweep, m_data liveness)
+late2 BIFunc_AIStartCoverPointWalkToStored__FPPiPv (bool copy + const)
+struct1 GetExtents__7CVolBoxCFR8CVector3R8CVector3 (structure)
+struct1 released GetExtents__7CVolBoxCFR8CVector3R8CVector3 (pure FP schedule, structural knot = geometry bge2 findings; not worked)
+struct1 PROFILE_UPDATE__Fv (structure)
+sweep1 released EndDraw__11CFontDriverFP4FONT (100 colour-copy forms: copy ctor '{ *this = c; }' gives the orig's ascending regs but loses the word temp; stays 11)
+sweep1 DrawTextCentered__5CFontFfPCc (Mul compound-inline trick from DTCF)
+struct1 released PROFILE_UPDATE__Fv (structure 6 -> 4: unfused 'move = move * (move * move); g += move;' 193 -> 190, scratch/loop3/struct1/v/pcube.cpp; rest = callee/volatile register allocation, permuter territory)
+struct1 Update__13SoundScheduleFi (structure)
+scripting released TriggerEnterAndLeaveMessages__FP10BSGO_Basicb (LANDED 72ffb0fc), BIFunc_MechFollowPath__FPPiPv (permuter junk only; stays 83, mfp3/BEST83.cpp)
+scripting BIFunc_MechFollowPath__FPPiPv (session 9: keep accel live)
+sweep1 released DrawTextCentered__5CFontFfPCc (code-exact scratch/loop3/sweep1/DTC_BEST0.cpp but needs the scaleY-first GetScale DrawText view; DTCF/landed DrawText need scaleX-first: policy question, not landed)
+sweep2 _find_aim_blend_values__FffPf (Mul compound sweep)
+struct1 released Update__13SoundScheduleFi (looked only: stack-slot layout knot, see notes)
+struct1 DrawBulletStats__13UserInterfaceFv (structure)
+scripting released BIFunc_MechFollowPath__FPPiPv (session 9: raw/+1/const/late/inline Square/PerFrame/aggregate/float-local/count forms all inert at 83)
+scripting UpdateProximityTriggerStatus__Fv (session 9: s8 tricks)
+scripting released UpdateProximityTriggerStatus__Fv (s8 tricks: no bit-test/aggregate site; German-loop forms stay 9)
+scripting DisplayHint__Fv (session 9: s8 tricks)
+scripting released DisplayHint__Fv (s9: stmt orders, no-hint/array/ref/const-event forms: stays 6)
+scripting AddAmo__19CPlayerWeaponObjectFi (session 9: s8 tricks)
+struct1 released DrawBulletStats__13UserInterfaceFv (MP conversion-temp slot knot; 258 stays)
+struct1 released Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog (frame 432 = command-copy slot; no form found)
+struct1 released Play__21OPTION_PARSING_PLAYERFb Init__13UserInterfaceFv (code-exact drafts 39b69cd3; landing blocked by orphan ...rodata.0 heads = gap-function question); nothing held
+sweep2 _find_aim_blend_values__FffPf released (Neg/Mul/Sub compound forms: NegS(y) in wc fixes case 3 but breaks CSE in cases 1/4; stays 5)
+sweep2 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (Mul compound sweep)
+struct2 RenderSystem__15CParticleSystemFR10CDmaPacket (structure)
+scripting released AddAmo__19CPlayerWeaponObjectFi (s9: compare/order/sibling BeginUpdate forms: stays 2)
+scripting OnCollision__13CStaticObjectFRC10CCollision (session 9: s8 tricks)
+sweep2 released TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (compound Dot / Abs inline forms x local/abs orders: stays 20 rd lines)
+sweep2 GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 (Mul compound sweep)
+late2 released SweepExtents (LANDED b9dfe832)
+scripting released OnCollision__13CStaticObjectFRC10CCollision (s9: const point aggregate + 444 motion form/order/decl variants: stays 3)
+scripting PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (session 9: s8 tricks)
+scripting released PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (s9: const/by-value SItem copies in either loop: 3 or 46)
+scripting CreateDestructable__FP20TriggerObject_structi (session 9: s8 tricks)
+scripting released CreateDestructable__FP20TriggerObject_structi (s9: reference/&* placement-new forms: struct 0 but box r30 = 47; no s8-trick site)
+scripting BIFunc_GetInitialBuddyOrders__FPPiPv (session 9: s8 tricks)
+scripting released BIFunc_GetInitialBuddyOrders__FPPiPv (s9: BuddyInfo const copy/ref, const end iterator, GI debug/search/dump inline helpers: 7 or worse); session 9 end, nothing held
+late2 released BIFunc_AIStartCoverPointWalkToStored__FPPiPv (~1700 forms, stays 3: copy<->rank dichotomy; late2/notes.md); nothing held
+scripting BIFunc_MechFollowPath__FPPiPv (session 10: block-1 shape)
+late3 BIFunc_GetInitialBuddyOrders__FPPiPv (iterator object form)
+sweep2 Multiply__11CQuaternionF11CQuaternion (Mul compound sweep)
+late3 UpdateProximityTriggerStatus__Fv (iterator/loop-var forms)
+late3 PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (iterator object form)
+late3 Draw__14CSoldierObjectFR12CDrawContext (iterator object form)
+scripting BSFileReadClass__FPCcbbPP14BSClass_struct (session 10: structure)
+late3 SweepAllExtents__6CSceneFv (iterator form in list sort)
+sweep2 Rotate__7CMatrixF8CVector3f (Mul compound sweep)
+scripting released BSFileReadClass__FPCcbbPP14BSClass_struct (s10: args-loop count/arg forms + final-loop statement orders: struct 7, real 704-708; orig r23 = count not in r0)
+scripting Visit__7CImpactFR10ISceneNode (session 10: structure)
+sweep2 DrawNode__11CStaticMeshFR7MSHNodeUl (Mul compound sweep)
+late3 released UpdateProximityTriggerStatus__Fv (iterator-struct German loop forms inert: stays 9)
+late3 released Draw__14CSoldierObjectFR12CDrawContext (pointer/struct-iterator/reference weapon forms: 8-11)
+late3 released PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (already hash_map iterator; iterator shape + callback/item forms: 3 or 46)
+late3 released SweepAllExtents__6CSceneFv (not a loop knot: orig keeps dead -OSGetTick() values in r29-r31; ours removes them; 193)
+sweep2 OnCollision__13CStaticObjectFRC10CCollision (Mul compound sweep)
+sweep2 Init__13CThrownObjectFv (Mul compound sweep)
+struct2 released RenderSystem__15CParticleSystemFR10CDmaPacket (slots exact, 1069 -> 943 structural; original keeps 18 vectors in memory = needs pin aliases (declined); scratch/loop3/struct2/notes.md)
+struct2 DMMorphBlendDisplayLists__FP16DMRenderObject_T (structure)
+struct2 released DMMorphBlendDisplayLists__FP16DMRenderObject_T (int/long/uint/!= loop forms all keep CTR; not pursued)
+sweep2 released GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 (9 -> 4: SubV/AddV value inlines + ternaries, scratch/loop3/sweep2/cex/BEST4.cpp)
+sweep2 released Multiply__11CQuaternionF11CQuaternion (Mul/MulV forms x 3000 random orders: 28 -> 27 only)
+sweep2 released DrawNode__11CStaticMeshFR7MSHNodeUl (Dot/fabs compound forms: inert at 4)
+sweep2 released Init__13CThrownObjectFv (Length() body forms incl. Mul/Sq compound: inert at 16)
+sweep2 ConstrainVelocity__11CAnimObjectFv (Mul compound sweep)
+struct2 random (structure)
+sweep2 aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (Mul compound sweep)
+sweep2 released aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (looked only: f29/f30 callee swap + product colouring, rd 67; not worked)
+struct2 released random (same unsolved stage-1 'addi r7,r4,0' as iSNDrandom, see lane-parks; not pursued)
+sweep2 released OnCollision__13CStaticObjectFRC10CCollision (SubC/SubV/Cp value inlines x compound x 6 orders x split: stays 6 rd = 3 real)
+struct2 __ct__19PopUpMessageHandlerFPcPc (structure)
+sweep2 released Rotate__7CMatrixF8CVector3f (Mul/MulV/operand-swap x order hill climbs ~5k: 14 -> 13 real only; 1.0f const colour f8 vs f6 is the knot)
+struct2 released __ct__19PopUpMessageHandlerFPcPc (structural 19 -> 1 via CColor(63,63,63,128) temps + CSprite class operator new: scratch/loop3/struct2/PUM_BEST.cpp; left r30/r31 + r26/r27 swaps; .rodata head = dwi primes + 188 B unreferenced templates (orphans) before its strings at +300 -> gap question)
+struct2 YUV_WriteRow__FPUcPUcPUcPci (structure)
+struct2 PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject (structure)
+struct2 released YUV_WriteRow__FPUcPUcPUcPci (scheduling; permuter junk only) PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject (sound.cpp not pathxSND: 98/14 with sound flags, PSS_BEST 68/12; see struct2/notes.md); nothing held
+scripting released Visit__7CImpactFR10ISceneNode LANDED 176f30c6 (impact.cpp whole file: POD CVector3 without ctors)
+scripting CreateDumpObject__FRC8CVector3RC11CQuaternionii (session 10: POD CVector3 trick)
+scripting released CreateDumpObject__FRC8CVector3RC11CQuaternionii (s10: no vector lever; volume/insert inline helpers worse 72-94; GPR colouring stays 56)
+scripting BIFunc_PlayerScreenFlash__FPPiPv (session 10: structure)
+struct3 PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject (fast 0 in isolation; landing into sound.cpp)
+scripting released BIFunc_PlayerScreenFlash__FPPiPv (s10: Set sig/body grid, named locals, ctor/ref forms; CColor without default ctor 42 -> 39 real (struct 31), psf10/BEST39.cpp)
+scripting CheckForObstructions__10CExplosionFR10ISceneNode (session 10: POD CVector3 trick)
+scripting released CheckForObstructions__10CExplosionFR10ISceneNode (s10: GPR rotation sign/this/node, no vector lever; sign decl/ternary forms 25-36)
+scripting released BIFunc_MechFollowPath__FPPiPv (s10: 1008 block-1 forms (7 arg spellings x 24 read orders x speed float x block-2 form), C-style top decls + hill climb, 6 speed/reverse CF forms: best 81 struct 68 ((*stack)[-(count-n)]), struct-41 shape stays 83); session 10 end, nothing held
+sweep2 released ConstrainVelocity__11CAnimObjectFv (24 -> 16 committed 03dcbf28; Mul(u, 1.05f) + order climb); session end, nothing held
+sweep2 Init__13CThrownObjectFv GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb DrawNode__11CStaticMeshFR7MSHNodeUl ConstrainVelocity__11CAnimObjectFv (POD CVector3 view lever)
+sweep2 aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf _matrix_rot_yzx__FR7CMatrixlll (POD CVector3 lever)
+vec2 _find_aim_blend_values__FffPf Multiply__11CQuaternionF11CQuaternion Rotate__7CMatrixF8CVector3f GetExtents__7CVolBoxCFR8CVector3R8CVector3 TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb (POD CVector3 view lever; sweep2 holds the other five)
+sweep2 released Init__13CThrownObjectFv GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb DrawNode__11CStaticMeshFR7MSHNodeUl ConstrainVelocity__11CAnimObjectFv aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf _matrix_rot_yzx__FR7CMatrixlll (POD CVector3 lever: inert or worse on all; nothing held)
+vec1 Init__13CThrownObjectFv (POD CVector3 + plain Length: 0; landing as fragment)
+vec2 released _find_aim_blend_values Multiply(CQuaternion) Rotate(CMatrix) GetExtents(CVolBox) TestCollision(CVolCapsule) (no POD-lever symptom: leaves / stack-kept vectors; TCcap ctor-less view 145 -> 199)
+vec2 ConstrainVelocity__11CAnimObjectFv (-j2 permuter from sweep2 BEST16)
+vec2 Orthonormalize__7CMatrixFv (POD view: orig squares stack-copied rows)
+struct3 released PlayScriptedSound__FP10ISceneNode8CVector3RCQ211CSoundTable11SSoundParmsiP8BSObject (LANDED 85412b69)
+struct3 DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition (structure)
+struct3 released DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition (struct 26 -> 21: n3/p2 forms; loop SR pointer vs offset IV + dup bge left; scratch/loop3/struct3/dno/DNO_BEST.cpp)
+struct3 Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL (structure)
+struct3 released Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL (structurally exact already: 6 = relocations; register-only, permuter history; not worked)
+struct3 GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (structure)
+vec1 released Init__13CThrownObjectFv LANDED 9b775aa0 (thrown_obj_init fragment, ctor-less CVector3 + plain Length)
+late3 released BIFunc_GetInitialBuddyOrders__FPPiPv (already list_iter; iterator shapes/post-inc/for-init/while + 72k permuter: stays 7); nothing held
+struct3 released GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (no gain: copy-ctor/by-value-inline/iterator-object forms all worse; orig float-wise copy kept in memory + unfolded index 0)
+struct3 __ct__6CSceneFv (structure)
+scripting SweepAllExtents__6CSceneFv (session 11: keep dead -OSGetTick values)
+struct3 released __ct__6CSceneFv (struct 15 = 0/1/2 constants callee vs sentinel addresses callee colouring; list_node(prev,next,data) + m_owned body forms inert)
+struct3 TLT_LoadFromRepository__FPCcPiPb (structure)
+struct3 released TLT_LoadFromRepository__FPCcPiPb (find early-return 115 -> 111 fast; orig reloads m_size/m_data per path + rematerialises &g_Repository for end(); iterator class goes to memory; not landed)
+scripting released SweepAllExtents__6CSceneFv (s11: 27 more timer forms - start/elapsed subtraction, late-folded profile ifs/loops, variable-index arrays, pointer walk: all DCE all or keep adds/stores; 193)
+scripting DoTargetCheck__FP8BSObjectiiiPiPi (session 11: structure)
+vec1 released RenderSystem__15CParticleSystemFR10CDmaPacket (alias-free operator[] pin: struct 943 -> 644, vec1/rs_ord_best.cpp) UpdateBoundingBox__15CParticleSystemFv (alias-free 101, ubb_a.cpp) OnCollision__13CStaticObjectFRC10CCollision (POD forms inert 3) BIFunc_PlayerScreenFlash__FPPiPv (39, no FPR signal); nothing held
+vec3 UpdateBoundingBox__15CParticleSystemFv RenderSystem__15CParticleSystemFR10CDmaPacket (alias-free operator[] pin, from vec1)
+vec2 TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (ctor-free view + natural bodies)
+scripting released DoTargetCheck__FP8BSObjectiiiPiPi (s11: 96 -> 61 real, struct 23 -> 3: user pair copy ctor + 'const CVector3& rb = Copy(otherPosition)' by-value inline keeps orig dead A/B copies; left math reads rb not other + rlwinm/mr; s11/dtc/BEST61.cpp)
+scripting BSFileReadClass__FPCcbbPP14BSClass_struct (session 11: count r11)
+struct4 DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition (structure: IsClear bge, search loop)
+scripting released BSFileReadClass__FPCcbbPP14BSClass_struct (s11: args loop 'while (count-- > 0)' drops the mr copy: 708 -> 414 real, struct 6; count r0 vs r11 in final loop inert over 96 header orders/types + 17 decl positions; s11/bsf/BEST414.cpp)
+scripting CheckForObstructions__10CExplosionFR10ISceneNode (session 11: symptom check)
+vec2 released ConstrainVelocity__11CAnimObjectFv (permuter 140 -> 130 only, rd 17 unchanged)
+scripting released CheckForObstructions__10CExplosionFR10ISceneNode (s11: no POD symptom - pure GPR rotation sign/this/global base; not worked)
+scripting DoTargetCheck__FP8BSObjectiiiPiPi (session 11: rlwinm/read follow-up on BEST61)
+vec2 released Orthonormalize__7CMatrixFv (21 -> 7 draft) TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (547 -> 149 draft), drafts 0ae3ff10; nothing held
+vec4 Orthonormalize__7CMatrixFv TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (from vec2 drafts: orth BEST7, tcp BEST154)
+scripting released DoTargetCheck__FP8BSObjectiiiPiPi (s11 follow-up: GetPos/OutOfRange/discarded-temp forms; stays 61, s11/dtc/BEST61.cpp); session 11 end, nothing held
+scripting DoTargetCheck__FP8BSObjectiiiPiPi (session 12: natural form for the dead copies)
+struct4 released DetermineNewObjectivePosition__18CObstacleAvoidanceFR21CAIFilterRealPosition LANDED fc2de588 (per-pass index locals + low/next hoisted + IsClear duplicate test)
+struct4 TLT_LoadFromRepository__FPCcPiPb (structure: per-path reloads, &g_Repository rematerialised)
+scripting released DoTargetCheck__FP8BSObjectiiiPiPi (s12: bool return+result fixes rlwinm/mr -> identity-Copy form 2 real, s12/dtc/copy_bool.cpp; 0 only with a cast-this ctor that breaks AIFilter_queries; no natural pin)
+scripting BSFileReadClass__FPCcbbPP14BSClass_struct (session 12: count r11)
+scripting released BSFileReadClass__FPCcbbPP14BSClass_struct (s12: hoisted count r0 vs r11, 17 loop forms inert; stays 414); session 12 end, nothing held
+struct4 released TLT_LoadFromRepository__FPCcPiPb (structure solved: inline TLT_LoadFileFromLevelBigFile + named iterator; fast 22 = find colouring r7/r8/r9 rotation; struct4/tlt/TLT_BEST.cpp)
+fresh1 SFILTER_unpackxalf__FPviPvPvi (untouched-row sweep)
+struct4 __ct__6CSceneFv (colouring: 0/1/2 constants vs sentinels)
+fresh1 released SFILTER_unpackxalf__FPviPvPvi (known 8-byte unused slot knot; split restore/saved locals 11, worse)
+fresh1 MoveStatsIntoProperAreaForIstudio__10CShellMenuFv
+struct4 released __ct__6CSceneFv (fast_vec/list/list_node ctor forms, default-arg node, body-assigned members: inert or worse; 162)
+struct4 GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (operator[] pin for the in-memory copy)
+vec3 released UpdateBoundingBox__15CParticleSystemFv (101 -> 58 real, struct 0: Turn(a,v) param order + ternary merges + decl order; vec3/UBB_BEST58.cpp) RenderSystem__15CParticleSystemFR10CDmaPacket (644 -> 514 structural, vec3/RS_BEST514.cpp; not landable); nothing held
+vec5 UpdateBoundingBox__15CParticleSystemFv RenderSystem__15CParticleSystemFR10CDmaPacket (from vec3 UBB_BEST58 / RS_BEST514)
+struct4 released GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (copy solved: member-wise y,x,z + operator[] pin, struct 17 -> 9; left unfolded index 0; struct4/gcw/GCW_BEST.cpp); nothing held
+fresh1 SNDtimeremaining
+struct5 TLT_LoadFromRepository__FPCcPiPb (find colouring: iterator/late-assign/decl order)
+vec4 released Orthonormalize__7CMatrixFv (stays 7, inert grids) TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (149 -> 85 draft, 2829d872); nothing held
+vec6 TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (from vec4 BEST85: Negate via GetDistance loads, late contact.m_vector0, view variants)
+fresh1 released MoveStatsIntoProperAreaForIstudio__10CShellMenuFv LANDED e959464b (draft loop was wrong: player index advances only on copy)
+fresh1 released SNDtimeremaining (voice/sndgs-base r31<->r29 swap; 11 more forms: named gs ptr at 3 positions, voices ptr, struct view, short voice, bool patchkey, early return: all 8+)
+fresh1 CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition
+fresh1 released CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition (operator| 'm_bits | bits' fixes the 2nd or operand order, scratch/loop3/fresh1/clc/a.cpp; left mask/flags r4/r5 + types r19 vs r27; 30 operator-body combos, GetTypes inline, merged vars: inert)
+fresh1 quick_sort_<UNodePair> (CScene)
+fresh1 released quick_sort_<UNodePair> (standard unguarded_linear_insert in the tail loop instead of the uli3(next) helper: 11 -> 6 sbs lines, scratch/loop3/fresh1/qs/a.cpp; left: tail-loop next r27 vs orig r29; shared-index/early-return/mid-reuse/5 insert bodies inert)
+fresh1 Draw__10CAnimMorphFR12CDrawContext (branch offset differs at same length)
+fresh1 released Draw__10CAnimMorphFR12CDrawContext (LOGIC FIX: CAnimated::Draw is called only when m_mesh, orig beq +400 to the epilogue; drafts called it always. With fix bigfiles amd_c1 = 3 store lines, scratch/loop3/fresh1/am/c2.cpp; but its Assign() wrapper is identity-like; plain 'left = view' = 9 (return temp slot 56 vs orig 24: orig's temp comes from an inline))
+fresh1 CheckForObstructions__10CExplosionFR10ISceneNode (branch offset check)
+struct5 GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (index -1 + NextWaypoint start)
+fresh1 released CheckForObstructions__10CExplosionFR10ISceneNode (IsAbove inline: 'above = false; break;' + 'return above' after the switch gives the original's block order, all branch offsets exact, scratch/loop3/fresh1/cfo/i.cpp; left: sign r31/this r30 ranking (prior knot); with soldier cfo18 sign-before form regs right but li r31,1 hoisted)
+fresh1 SFILTER_rsf__FPviPvPvi
+fresh1 released SFILTER_rsf__FPviPvPvi (only the '&= 0xffffLL' mask hoist: orig materialises 0xffff into r0 right after the interpolate call; not worked further)
+fresh1 ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject
+struct5 released TLT_LoadFromRepository__FPCcPiPb (still 22: caller-written find gives exact regs, knot = inline return temp coalescing; struct5/notes.md) GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (index -1 + NextWaypoint first: struct 9 -> 2, struct5/gcw/GCW_BEST2.cpp; registers left); nothing held
+fresh1 released ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject (threat-vector f0/f3 colour: SubV 312, plain/compound/DirectionView/neg forms 20-313; the draft's '+ -' spelling is the best; not further)
+fresh1 LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t
+fresh1 released LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t (not worked: outer-index knot, 4 sessions)
+fresh1 SFILTER_unpackxaf__FPviPvPvi
+struct6 TLT_LoadFromRepository__FPCcPiPb (found-branch shape on struct5 h1 caller-written form)
+struct6 GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (late-assign param copies)
+fresh1 released SFILTER_unpackxaf__FPviPvPvi (21 -> 7 natural: decoded, 'out += decoded; int result = decoded; state->frame += decoded;', remaining local, scratch/loop3/fresh1/xaf/BEST7.cpp; left: orig updates frame BEFORE out; every frame-first order sinks the result copy (37) except the declined '+= (result = decoded)' (4))
+fresh1 ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION
+fresh1 released ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION (callee rank pool>size>manager>&sentinel; 9 decl/aligned-local/while forms inert at 25)
+fresh1 death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf
+fresh1 AnimStProcess
+fresh1 released AnimStProcess (only owner r31/slot r30 swap left, everything else relocs; index form, decl orders, for-init, const owner copy (314): inert/worse)
+fresh1 released death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (draft without the c_header/c_event/c_data const copies: real 28 -> 5, scratch/loop3/fresh1/dcb/d.cpp; left 2 IV-init schedule pairs in the posture/location filter loops; decl hill climb, 16 type combos, for-init, hoisted index: inert)
+fresh1 UpdateAnimation__14CSoldierObjectFf
+fresh1 released UpdateAnimation__14CSoldierObjectFf (angle blend: 'short sx = dx * t; ... angles[0] = sx + x' fixes the add operand order, fast 110 -> 108, scratch/loop3/fresh1/ua/v7.cpp; int->float conversion block GPR colouring left, plus 4 other knots; not landable soon)
+fresh1 Link__8CPartBinFP7CDmaTagR10CDmaPacket
+fresh1 released Link__8CPartBinFP7CDmaTagR10CDmaPacket (not worked: frame 512 vs 544 knot from solo s2)
+fresh1 SNDMIXI_volramp__FP11SNDMIXVOICE
+fresh1 released SNDMIXI_volramp__FP11SNDMIXVOICE (m=&sndmix kept in r27 in orig, ours rematerialised; named/cast/char[] sndmix forms 39-82; not further)
+fresh1 ShellInit__10CShellMenuFUl
+fresh1 released ShellInit__10CShellMenuFUl (ShellMenu.cpp block pilot gated; check_draft 'differs' is the 0x80808080 table data)
+fresh1 decodexac__3SNDFPQ23SND10MXAPACKETF
+fresh1 released decodexac__3SNDFPQ23SND10MXAPACKETF (volatile GPR colouring throughout; not worked)
+fresh1 DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3
+fresh1 PopUpMessageHandler_Loop__19PopUpMessageHandlerFv (self copy test)
+vec5 released UpdateBoundingBox__15CParticleSystemFv (58 -> 56 real, struct 0: svz/saz locals, vec5/UBB_BEST56.cpp; Kin inline-param family gives orig callee set, 64, vec5/UBB_KIN64.cpp) RenderSystem__15CParticleSystemFR10CDmaPacket (not worked: whole-file landing only; frame probes inert); nothing held
+fresh1 released PopUpMessageHandler_Loop__19PopUpMessageHandlerFv (removing 'self' copy: 43 -> 43, inert)
+fresh1 released DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3 (draft 143 -> 31 landing now; left callee ranks)
+fresh2 GetExtents__11CVolCapsuleCFR8CVector3R8CVector3
+big1 UpdateAnimation__14CSoldierObjectFf
+fresh2 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb
+fresh2 released TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (local x/y/z store order x fabs order 36 combos inert at 20 rd; landing needs box_ivolume's out-of-line static Sign inlined here: whole-file question)
+fresh2 GetExtents__7CVolBoxCFR8CVector3R8CVector3
+vec6 released TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (85 -> 56 draft, 99c836c2: Negate after corner.x + c.z product late; sep/corner.x f6/f29 swap left; vec6/tcp/BEST56.cpp); nothing held
+vec7 TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb
+fresh2 released GetExtents__7CVolBoxCFR8CVector3R8CVector3 (two-phase products/fabs and orig product/conversion orders: 50-88 vs draft 45; not further)
+fresh2 DrawNode__11CStaticMeshFR7MSHNodeUl
+fresh2 released GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 (LANDED 00b269c6)
+fresh2 released DrawNode__11CStaticMeshFR7MSHNodeUl (72 dot/sum/distance orders + 4 forms inert at 11 rd / 4 real)
+fresh2 GetPeekLocation__11CCoverPointFv
+fresh2 released GetPeekLocation__11CCoverPointFv (member 'operator|(const CoverPointTypes&) const' fixes the mask registers: rd 15 -> 11, data order kept; left the '4' temp load scheduled after or(1|2); 36 op x mask-expression forms; scratch/loop3/fresh2/gpl/m.cpp)
+fresh2 Rotate__7CMatrixF8CVector3f
+struct6 released TLT_LoadFromRepository__FPCcPiPb (fast 3 h1 caller form now the draft, d5baeeb8; found-branch shape: user-var copies never coalesce (19), inline return temp coalesces but colours first (22); struct6/notes.md) GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf (structural 2 -> 0 via found-local re-zero, draft d5baeeb8; registers left: params r28-31 vs orig index top, spill-cost order); nothing held
+near1 death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf
+fresh2 released Rotate__7CMatrixF8CVector3f (NOTE: draft's inline BuildRot body differs from the LANDED out-of-line BuildRot in matrix_translate.cpp; with the landed body Rotate is 31 rd (draft 21), shared CVector3 header 66; landing it with a different inline body would be the q8 per-fragment-view shape; Rotate belongs at the END of matrix_rotate (deferred unit), not matrix_translate)
+vec7 released TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (stays 56; ~40 separation forms, corner helpers, STEP1 field orders, decl perms, hc2 + permuter: key f29/f6 swap never moves; vec7/notes.md); nothing held
+near1 released death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (for-init/while/continue/per-loop j/idx locals/INFO forms/counter reuse/pointer src: inert at 4 fast or worse)
+near1 quick_sort_<UNodePair> (CScene)
+fresh2 Draw__14CSoldierObjectFR12CDrawContext
+fresh3 Init__10CCDBObjectFP3CDB
+fresh2 released Draw__14CSoldierObjectFR12CDrawContext (RemoveWeapons IV r28 vs orig r24: landed for-init body, call/flag order, nested if, unsigned i, weapon local: inert at 22 rd)
+near1 released quick_sort_<UNodePair> (tail next r27 vs r29: hand-written tail insert with next declared at 5 positions, per-loop i, separate j, mid moves, fin helpers: inert or worse)
+near1 SFILTER_unpackxaf__FPviPvPvi
+fresh2 SNDPKTPLAY_start
+fresh3 released Init__10CCDBObjectFP3CDB (FPR rotation in extents block only, 4 inline Ext/H helper forms inert or worse; scratch/loop3/fresh3/cdi)
+fresh3 TRKSuppAccessFile
+fresh2 released SNDPKTPLAY_start (orig IV init 'addi r7,r29,0' = slot*128 + 2*i grouped before the table base; loudestvoice(voice) 8, slot-index inline 24, byte-offset 20, pointer local 6 = draft)
+fresh3 released TRKSuppAccessFile (not worked: exhaustively parked read/done allocator swap)
+fresh3 EndDraw__11CFontDriverFP4FONT
+near1 Draw__10CAnimMorphFR12CDrawContext
+near1 released SFILTER_unpackxaf__FPviPvPvi (LANDED 5d836f39: 'int total = 0; total += decoded;')
+near1 released Draw__10CAnimMorphFR12CDrawContext (whole span block in a ScreenSpanSq inline: all its locals move low, 38; the dead operator= temp must be the only late slot -> needs a 2nd-level inline around operator=, i.e. the declined identity wrapper; no natural form found)
+near1 CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition
+fresh2 TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib (contact block; draft 25 -> 10 landing as draft update)
+fresh2 OnCollision__13CStaticObjectFRC10CCollision
+near1 released CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition (fresh2's operator|(const CoverPointTypes&) 5 bodies, mask placement 4, types decl 5 positions: all inert at 22 sbs; types r19 in orig shares the m_flags load's register)
+fresh3 released EndDraw__11CFontDriverFP4FONT (inline GetColor word-cast temp + byte op= a,g,b,r: real 19/-2 -> 11/0, length exact, fresh3/ed/BEST16.cpp; left byte reg order r7/r8/r9 asc + data r6; 576 op= temp orders, 576 ctor orders, stmt orders inert)
+fresh3 MIX_audioslice
+fresh2 released OnCollision__13CStaticObjectFRC10CCollision (draft 21 -> 3; left point.x reload register) TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib (draft 25 -> 10; left fR f7 vs tv f8-f10 colour order, inert to statement order)
+fresh2 ConstrainVelocity__11CAnimObjectFv
+fresh2 DisplayHint__Fv
+fresh3 released MIX_audioslice (fast 59 -> 57 with a 2nd sndmix pointer for the loop bounds: not proposed; left: m not coalesced into the final loop IV (orig walks m's reg r25, copies out), and the effect-send 'sndfx.active = 0' zero held in callee r19 before the branch; fresh3/mix)
+fresh3 TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>
+fresh3 released TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup> (not worked: only __construct_array arg regs, exhaustively probed s17)
+fresh3 PROFILE_UPDATE__Fv
+fresh3 released PROFILE_UPDATE__Fv (brchk diff is only the fmadds length shift; struct1 pcube.cpp has the unfused form; registers)
+fresh3 SetFinishedLevelData__13CPlayerObjectFv
+near1 DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3
+fresh2 released DisplayHint__Fv (480 decl orders x 4 hint/texts/nextIndex assignment forms: none below 6)
+near1 released DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3 (params always rank below every declared local in ours; a/b/c in-loop decls, scratch/depth init-decls, 15 param-copy subsets: 42-143 sbs, none better than draft)
+big1 released UpdateAnimation__14CSoldierObjectFf (drafts 59 -> 16, 421241fe: conv block exact via angle-blend grid, d<0 k via Dot twice; left d<0 front.x/dir.x FPR swap (5) and up.Cross rx colour (11); scratch/loop3/big1/notes.md)
+near1 PopUpMessageHandler_Loop__19PopUpMessageHandlerFv
+big2 UpdateAnimation__14CSoldierObjectFf
+fresh2 Multiply__11CQuaternionF11CQuaternion
+fresh2 released Multiply__11CQuaternionF11CQuaternion (decoded: w at +0; not worked further, sweep2's 3000-order search)
+fresh3 released SetFinishedLevelData__13CPlayerObjectFv (loop written in the caller with i declared after stage: this/i ranks right but CW then walks 'this' in place, dropping the orig's 'mr r26,r28' IV copy (real 11 -> 50/-1); 720 decl orders, accessor, pointer local: inert; fresh3/sfl)
+fresh2 TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb (n defs in x,y,z order: 108 -> 102; draft update only)
+fresh3 DMMorphBlendDisplayLists__FP16DMRenderObject_T
+fresh3 released DMMorphBlendDisplayLists__FP16DMRenderObject_T (brchk diffs are only the 2-instruction length shift; registers throughout; not worked)
+fresh3 Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL
+fresh3 released Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL (draft cleanup: chained 'output = current = Create*()' and the plane-2 'd' block replaced by plain forms, identical code; Data()/w r7/r6 swap: 12 expression, Size()/ChromaSize(), Data() body, set_frame_planes forms inert; fresh3/upb)
+fresh2 released ConstrainVelocity__11CAnimObjectFv (draft 16 -> 14) TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb (draft 108 -> 102)
+fresh2 PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (late3 pe0 = 3 never committed; draft 46)
+big2 released UpdateAnimation__14CSoldierObjectFf (no change, stays 16; ~70 cross/d<0 forms + 3 grids inert, scratch/loop3/big2/notes.md)
+fresh3 done: nothing held
+knots1 Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL
+knots1 EndDraw__11CFontDriverFP4FONT
+fresh2 released PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (draft 46 -> 3)
+harvest1 (harvesting scratch bests into research/drafts; will claim per function before editing a draft)
+near1 released PopUpMessageHandler_Loop__19PopUpMessageHandlerFv (draft 43 -> 27 landed; left FPR colouring top/bottom vs sy loads)
+lint1 __ct__19PopUpMessageHandlerFPcPc (layout: CColor view) _AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv (rename AnimTransition_t)
+knots1 released EndDraw__11CFontDriverFP4FONT (data r9 vs orig r6 survives op=/SetColor value+ref/field-wise/by-value op= x24 orders, CFont GetColor/GetScale(float&,float&) inlines, data local; scratch/loop3/knots1/ed)
+knots1 SetFinishedLevelData__13CPlayerObjectFv
+knots1 released SetFinishedLevelData__13CPlayerObjectFv (inline sigs: member/free param orders, loop shapes do-while/info local/int types/self copies, health call moved into inline: all inert at 22 fast; i ranks below this whenever the loop is in an inline; scratch/loop3/knots1/sfl)
+knots1 Init__10CCDBObjectFP3CDB
+knots1 MIX_audioslice
+lint1 released __ct__19PopUpMessageHandlerFPcPc _AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv (2a6a6ac9: ctor real 167 -> 45 via PUM_BEST CColor bytes; AnimTransition_t -> AnimTranData_t rename, 185 unchanged)
+mid3 PopUpMessageHandler_Loop__19PopUpMessageHandlerFv
+mid3 DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3
+harvest1 released all (harvest done: 17 drafts updated in 64c0d5b0, f476a06f; report scratch/loop3/harvest1/report.md)
+land2 CalculateLevelStats__10CShellMenuFv
+land2 released CalculateLevelStats__10CShellMenuFv (1 real line confirmed real, not reloc: 'li r29,0' vs 'li r3,0; mr r29,r3' shared zero; MostHit inline forms give li/mr but location r30 vs r29 (9); default-param, decl-position, weapon inline, named format: inert/worse)
+land2 TLT_LoadFromRepository__FPCcPiPb
+knots1 released Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL (code exact with invented third_plane(height,width,data) inline; not landed per 11-12 audit rule; draft 27 -> 6 at 3aef307e = merged getpic.cpp)
+knots1 released Init__10CCDBObjectFP3CDB (41 -> 22 at 3aef307e: size/position.x read direct; volatile rotation left)
+knots1 released MIX_audioslice (35-site m->/sndmix. hill climb, inline-param/local zero, compare flips: inert at 59)
+knots1 done: nothing held
+land2 released TLT_LoadFromRepository__FPCcPiPb (13 = r7/r8/r9 rotation of inlined find; p-decl-first, &m_data[i], m_count!=0 block, unnamed it: 13/13/31/71; parked)
+mid3 SNDVOICEI_free__Fi (code exact; landing into salloc)
+knots2 Init__10CCDBObjectFP3CDB
+land2 released BIFunc_GetInitialBuddyOrders__FPPiPv (not worked: needs DumpBuddyVector, 7 -> 39 without; vec_iter overload 7 -> 19 without; audit rates DumpBuddyVector likely declined)
+land2 Update__13SoundScheduleFi
+mid3 decodexac__3SNDFPQ23SND10MXAPACKETF
+mid3 released decodexac__3SNDFPQ23SND10MXAPACKETF (table r9 vs orig r6 + in++ scheduling: 240 block statement orders, pointer/index/2D-ish filter forms, in-copy, table offset local: inert at 28)
+mid3 AnimStProcess
+knots2 SNDMIXI_volramp__FP11SNDMIXVOICE
+mid3 released AnimStProcess (owner r31/slot r30 swap: &slots[0], for-init, int-in-for, i++/slot++ order, while, cast, in-body slot decl, loop-in-inline (29): inert)
+mid3 SNDMIXI_volramp__FP11SNDMIXVOICE
+mid3 released SNDMIXI_volramp__FP11SNDMIXVOICE (orig holds &sndmix in THREE callee regs: r30 for alignedWork loads, r27 (made after the early return) for value0f/scalemix/alignedMix base, r31 for the loop bound; named SNDMIXVIEW* m after the early return: 68-72; not further)
+clean1 done: audit free fixes landed 45c5c504, nothing held
+natural1 Init__12CCompartmentFv (compartment_init: natural forms for audit-flagged WriteSwapVCD/palette/bin=b)
+natural1 BIFunc_BuddyDied (buddy_head: DumpBuddyVector)
+natural1 debug_prof_register (void)0
+natural1 GetExtents__11CVolCapsule (SubV/AddV)
+natural1 DrawTextCenteredF__5CFont (Mul)
+knots2 released SNDMIXI_volramp__FP11SNDMIXVOICE (m=&sndmix after voice->last for loop alignedMix/scalemix: fast 40 -> 11 but the user pointer's temp+mr shifts length, real 20 -> 68; RS has no volramp; draft kept)
+knots2 decodexac__3SNDFPQ23SND10MXAPACKETF
+mid3 ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION
+mid3 released SNDVOICEI_free__Fi (landed 7dcdeb04) PopUpMessageHandler_Loop__19PopUpMessageHandlerFv (draft 27 -> 0 code exact; case 8 identity on hold) DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3 (separate stores 31 -> 33 every form; chain kept)
+mid3 released ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION (sentinel at function level passed by ref: 36, same pairs)
+mid3 ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject
+mid3 released ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject (threat f0/f3: plain 'enemy.y - origin.y' y,x,z = 20 same as the '+ -' form; ref decl order, ty/oy copies, d decl orders inert/worse)
+mid3 LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t
+knots2 released decodexac__3SNDFPQ23SND10MXAPACKETF (split in++ fixes the lbz/addi/stw order but table base r6 vs r5 colour chain: 34 real; float[2][4]/[16][16] views, spellings, ++ positions/forms, decl orders/scopes: inert; draft 28 kept)
+knots2 PROFILE_UPDATE__Fv
+mid3 released LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t (16 decode-line forms: target++ form required (+1 folds otherwise); value-first/types/++target/+=1/ops order: 18-326)
+mid3 done: nothing held
+land2 released Update__13SoundScheduleFi (LANDED a842943c, 1864 B: slot groups = inline expansion order)
+mid4 ResetShell__10CShellMenuFv
+slots1 Draw__10CAnimMorphFR12CDrawContext
+mid4 released ResetShell__10CShellMenuFv (zero r4/type r3 swap: 6 param types, const ref, this->, type local, flags bool/0u/int bitfield, idx/gt unsigned, SetGameType before/between flags, switch(type) split: inert or worse; landed ctor has the same r4/r3 as ours)
+mid4 ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject
+slots1 BIFunc_PlayerScreenFlash__FPPiPv
+slots1 released Draw__10CAnimMorphFR12CDrawContext (scopes/op= bodies/ctor forms inert 9; only Assign-like level-2 op= gives 3)
+mid4 released ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject (plain subtraction = 20, draft update pending; GetDistanceSquaredXYZReal inline for distance fixes B loads but swaps f30/f31 (33); heading DirectionView+Normalize CSE form 47; 720 decl orders inert; 36 explicit distance orders)
+mid4 TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib
+slots1 released BIFunc_PlayerScreenFlash__FPPiPv (slot reading: A block before B = Set(from,to) order, but args evaluate right-to-left so B built first; 34 best op= by value)
+slots1 DoTargetCheck__FP8BSObjectiiiPiPi
+knots2 released Init__10CCDBObjectFP3CDB LANDED f748ce87 (cdbobject_init); SetFinishedLevelData draft member-inline 516b5f21
+slots1 released DoTargetCheck__FP8BSObjectiiiPiPi (slot layout = one by-value-param inline returning CVector3(x,y,z) at function level, as copy_bool; discarded/unread result drops the stores, orig reads the source; no natural form)
+slots1 Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog
+mid4 released TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib (MulV removed: plain 28; named float locals for sv/tv products: 7 (scratch/loop3/mid4/tc/final.cpp, draft update pending); left fS f3 vs f5)
+mid4 FindIntersection__FRC6CLine3RC11CVolCapsulePf
+slots1 released Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog (frame 432->416: CDrawContext is 288 bytes as in Moh2.cpp, real 49->48, slots1/sc1.cpp; camera+192 hoist unsolved)
+slots1 UpdateBoundingBox__15CParticleSystemFv
+mid4 released FindIntersection__FRC6CLine3RC11CVolCapsulePf (structural: first-block sqrt result not coalesced with fDiscr (extra fmr); fRoot=sqrtf / fInv-first / discr-only inert or worse; normalizing the mixed d.v[i]/d.c.x spellings 323 -> 338, so spellings steer; colouring from the fabs ax/ay on; prior permuter 40 min)
+mid4 __ct__13CPathNodeListFPvP18BPDPathFindingNodei
+natural1 released all (1976c05b CCompartment::Init palette GetPalette + bin = new (bin); cf37912d debug_prof (void)0 -> named printed values; parked WriteSwapVCD, DumpBuddyVector, SubV/AddV, Mul: no natural form found, see loop-audit follow-up)
+mid4 released __ct__13CPathNodeListFPvP18BPDPathFindingNodei (structure exact; callee rank: orig pool base r31 > this r30 > map r29.., ours this r31 and base r28; initlist, self const copy, count vs m_count, node ptr in loop 1, total position: inert/worse)
+mid4 AnimStStartState
+mid4 BIFunc_GetObjInfo__FPPiPv
+knots2 released PROFILE_UPDATE__Fv (draft 88 -> 82 d63e6754); done: nothing held
+mid4 released BIFunc_GetObjInfo__FPPiPv (chained iresult=(int)(filter=0) -> plain filter=0; iresult=0; same 16 (draft update pending); ArgObject is a steering helper: plain ARG(2) = 194; filter decl position 11 places inert)
+knots3 GetExtents__7CVolBoxCFR8CVector3R8CVector3
+mid4 quick_sort_<UNodePair> (CScene)
+zero1 CalculateLevelStats__10CShellMenuFv
+zero1 Link__8CPartBinFP7CDmaTagR10CDmaPacket
+mid4 released quick_sort_<UNodePair> (tail next r29 vs r27: per-loop i in insertion_sort 22, no prev 173, tail over mid 6, fin helper 44)
+mid4 GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3
+slots1 done: nothing held (173164ce CScene::Draw draft 49 -> 48)
+scene1 Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog
+scene1 __ct__6CSceneFv
+mid4 released GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3 (draft 94 -> 32: plain x,y,z order everywhere (inlines, num/den, distances) + own u for the scan loop; left: scan-loop FPR colours; min-template bound forms 37-38, decl orders inert; draft update pending)
+zero1 released CalculateLevelStats__10CShellMenuFv (LANDED 26fe226b, 432 B: reuse most/weapon = shared zero; MostHit helper dropped from GetCumulativeStats)
+zero1 released Link__8CPartBinFP7CDmaTagR10CDmaPacket (not a shared zero: scan false positive, loop IV passed as arg)
+zero2 OnCollision__13CPlayerObjectFRC10CCollision (player_health: PickUp natural zero)
+zero2 PATHI_crossfadetracks
+zero2 SNDBANKI_playpatch
+zero2 TriggerActivateMessages (proxtrig_point: SendMessages)
+zero2 alarm_list_ctor + pumhandler_list_ctor (init_free)
+zero2 OnCollision__14CSoldierObjectFRC10CCollision (Soldier_object_attach: FindClasses)
+mid4 done: drafts committed 01ad83c1, nothing held
+undo1 GetExtents__11CVolCapsuleCFR8CVector3R8CVector3 (SubV/AddV natural form)
+undo1 DrawTextCenteredF (CFont, Mul natural form)
+knots3 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb Orthonormalize__7CMatrixFv ConstrainVelocity__11CAnimObjectFv _find_aim_blend_values__FffPf Rotate__7CMatrixF8CVector3f TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb (worked in scratch/loop3/knots3)
+knots3 released all (GetExtents 37, Orthonormalize 17 plain/7 Mul, ConstrainVelocity 24 plain/14 Mul, aim blend 5, Rotate 24 with landed BuildRot, CCDBTriangle-capsule 7, box-sphere 13, box-capsule 102, box-plane 52 MulV: recipes inert, see knots3/notes.md); done: nothing held
+zero2 released all six (SNDBANKI_playpatch natural form landed; PickUp, fadein, SendMessages, init_free, FindClasses kept: no earlier live variable to reuse)
+zero3 ResetShell__10CShellMenuFv quick_sort_<UNodePair> __ct__13CPathNodeListFPvP18BPDPathFindingNodei (shared-zero rule)
+zero3 CheckForObstructions__10CExplosionFR10ISceneNode (sign ternary / constant var forms)
+zero3 released ResetShell__10CShellMenuFv quick_sort_<UNodePair> __ct__13CPathNodeListFPvP18BPDPathFindingNodei CheckForObstructions__10CExplosionFR10ISceneNode (shared-zero/loop-index forms inert; see zero3/notes.md); nothing held
+scene1 released Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog (48 -> 39 logic fix c.m_node + ProcessCommands inline; camera+192 hoist open, see scene1/notes.md)
+scene1 released __ct__6CSceneFv LANDED ea52bfd7 (scene_dtor += ctor)
+undo1 released DrawTextCenteredF (Mul still load-bearing: plain/compound/reassign/global-direct forms x all decl orders of 5 locals: best 2 real lines, product operand order vw-first whenever its dest shares viewWidth's register)
+undo1 TestCollision CCDBTriangle(CVolCapsule) 0x8006a71c
+real1 Orthonormalize__7CMatrixFv TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib ConstrainVelocity__11CAnimObjectFv (real names Sub/Add/Dot renames in landed units)
+eh1 __ct__19PopUpMessageHandlerFPcPc (extab: this r30 vs orig r31)
+eh1 Play__21OPTION_PARSING_PLAYERFb ShellInit__10CShellMenuFUl __sinit_compartment_cpp MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (extab evidence)
+undo1 released TestCollision CCDBTriangle(CVolCapsule) (7 stays: statement topo-orders x300 >=14, pre-declared product locals (subsets x 5 places) >=10 (fixes py/pz, swaps fS/px), operator forms, Scale, fields 42-56)
+undo1 GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3
+real1 released Orthonormalize__7CMatrixFv LANDED 3a9096c2 (matrix_ps += 688)
+undo1 released GetClosestParameter__20CAISplinePathSegmentFfRC20CAIFilterRealVector3 (landing: float end = dwi::min(a, b))
+undo1 FindIntersection__FRC6CLine3RC11CVolCapsulePf
+real2 TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb UpdateBoundingBox__15CParticleSystemFv GetExtents__7CVolBoxCFR8CVector3R8CVector3 (real CVector3 member pass)
+real2 TestCDBBranchNodeCollision<6CLine3> OnCollision__13CStaticObjectFRC10CCollision death_cb__14CAnimCallbacks (real CVector3 member pass)
+undo1 released FindIntersection__FRC6CLine3RC11CVolCapsulePf (draft 323/2 -> 320/0); done: nothing else held
+real2 CheckForObstructions__10CExplosionFR10ISceneNode (front.Sub only)
+minmax1 (scan: ref min/max + bge;b;fmr selects over all unlanded drafts; claims per hit to follow)
+minmax1 released scan (no unclaimed min/max hit: CCDBVolBox-CTriangle already ref Min/Max, 463 colours; UBB is real2's); nothing held
+eh1 released __ct__19PopUpMessageHandlerFPcPc Play__21OPTION_PARSING_PLAYERFb ShellInit__10CShellMenuFUl __sinit_compartment_cpp MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (e58724bc drafts: Play extab exact via DISP_OLD_FRAMES dtor, ShellInit CSprite ::delete, pum ctor 45 -> 35; sinit/VD: types right, regs only)
+real2 released TestCollision__7CVolBoxCFRC6CPlaneR10CCollisionb LANDED 4e2dff8f (box_testtriangle += 2292)
+real1 released all (3a9096c2 Orthonormalize landed into matrix_ps; 7a325e0f real names Sub/Dot in 13 units + drafts CCDBTriangle-capsule 7, ConstrainVelocity 14); nothing held
+real2 released all (TestCollision CPlane LANDED 4e2dff8f; drafts 154c6e17; GetExtents CVolBox, box-sphere, box-capsule, UpdateBoundingBox, TestCDBBranchNodeCollision, OnCollision CStaticObject, death_cb, CheckForObstructions released); done: nothing held
+real3 TestCDBBranchNodeCollision<6CLine3> OnCollision__13CStaticObjectFRC10CCollision death_cb__14CAnimCallbacks TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb GetExtents__7CVolBoxCFR8CVector3R8CVector3 TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb ConstrainVelocity__11CAnimObjectFv TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib (member-call order pass)
+names2 real-name pass (helper renames only, objects identical) in units: bsbifunc_dump bsbifunc_mpprompt soundschedule_sound hierobject_constrain hierobject_update scene_visit anim_obj_ctor scene_cmppairs scene_now particlesystem_visible
+names2 released all (f6ae520c real names in 10 units: Cross, IsFollowingPath, fast_vec::reserve, IsNodeInScene, Scale); nothing held
+real3 released all (drafts 92d8f5f7: ConstrainVelocity 14 -> 6, CCDBTriangle-capsule 7 -> 5; OnCollision 3, death_cb 5, box-sphere 13, GetExtents 37, box-capsule 102, TestCDBBranchNodeCollision 1 inert to member/decl order, see real3/notes.md); nothing held
+climb1 _find_aim_blend_values__FffPf DrawNode__11CStaticMeshFR7MSHNodeUl (ohc order climb)
+climb1 AddAmo__19CPlayerWeaponObjectFi SNDtimeremaining Update__13CInputManagerFf (ohc order climb)
+climb1 BIFunc_GetInitialBuddyOrders__FPPiPv Draw__14CSoldierObjectFR12CDrawContext quick_sort_<UNodePair> (ohc decl/stmt climb)
+climb1 EndDraw__11CFontDriverFP4FONT TLT_LoadFromRepository__FPCcPiPb (ohc)
+climb1 Scroll__12PopUpMessageFv PublishEvent__10CPublisherFR8ISubject13ESubjectEvent GetPeekLocation__11CCoverPointFv (ohc)
+climb1 ConstrainVelocity__11CAnimObjectFv TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib (ohc more seeds/blocks)
+climb1 Draw__10CAnimMorphFR12CDrawContext __ct<list_iter<BuddyInfo>> (stack-slot decl climb)
+climb1 DisplayHint__Fv (decl climb)
+climb1 CheckLineCollision__11CCoverPointCF... AnimStStartState SetFinishedLevelData__13CPlayerObjectFv BIFunc_AIStartCoverPointWalkToStored__FPPiPv (decl climb)
+climb1 SFILTER_rsf__FPviPvPvi (ohc)
+climb1 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb AnimStStartState (ohc)
+climb1 UpdateProximityTriggerStatus__Fv (decl climb)
+climb1 released all (bf893650: _find_aim_blend_values, AIStartCoverPointWalkToStored, Scroll natural forms at equal score; order climb inert elsewhere, see climb1/results.tsv); nothing held
+hdr2 ISceneNode weak-copy moves (63 units), label renumbering (animmorph animskinned dmesh compartment_ctor decal_dtor) - configs/views only
+hdr2 released all (b9bf12de, ac0e8fe7, 4e927077)
+cv1 released all (d8cf803c CVector3 header variant, 42 units moved)
+hdr3 CMatrix/ISceneNode/CVector3 header re-moves after CVector3 base form - configs/views only
+hdr3 released all (8c84b851 bb9ad8be 0253a542 7f0aa96a 9da917fa)
+unlockB Play__21OPTION_PARSING_PLAYERFb Init__13UserInterfaceFv BSInitBIFuncs__Fv __ct__19PopUpMessageHandlerFPcPc __sinit_pumhandler_cpp (strings-only block headers)
+unlockC TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib ConstrainVelocity__11CAnimObjectFv UpdateBoundingBox__15CParticleSystemFv Rotate__7CMatrixFRC8CVector3f (Mul/MulV/operator[] forms now accepted)
+unlockA PATH_event (+ path_stop.c merged EA unit: all its functions) Update_Picture_Buffers__FP18MPC_CODEC_INTERNAL (getpic.cpp whole file) PopUpMessageHandler_Loop__19PopUpMessageHandlerFv collisionvolume_ctor (unit + tests/test_data_strip.py) GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3
+unlockB2 took over unlockB's claims: Play__21OPTION_PARSING_PLAYERFb Init__13UserInterfaceFv BSInitBIFuncs__Fv __ct__19PopUpMessageHandlerFPcPc __sinit_pumhandler_cpp
+unlockC released TestCollision__12CCDBTriangleCFRC11CVolCapsuleR10CCollisionPC6CDBTrib LANDED 62be44ba (cdbgeom += 6920)
+unlockB2 released all (f3585369 Play +1868, 8afc1462 BSInitBIFuncs +1228 LANDED; UserInterface::Init parked on the +108 template question; pumhandler ctor 76 lines, not exact, + __sinit_pumhandler_cpp parked); nothing held
+unlockA released all (92bcfdf0 PATH_event, 05d4c045 getpic+UPB, da23dd36 pumhandler_loop, d5e27447 collisionvolume_ctor; GCW and DMCluster unchanged, register-only); nothing held
+unlockC released all (62be44ba CCDBTriangle-capsule LANDED; a437cf73 drafts ConstrainVelocity 2, UpdateBoundingBox 56; Rotate 23 with landed BuildRot, not committed); nothing held
+pum2 __ct__19PopUpMessageHandlerFPcPc __sinit_pumhandler_cpp
+fpr2 ConstrainVelocity__11CAnimObjectFv Rotate__7CMatrixFRC8CVector3f UpdateBoundingBox__15CParticleSystemFv (FPR order: value inlines)
+forms1 (scan: re-check unlanded non-MP drafts against 11-12 accepted forms; per-function claims follow)
+ui1 Init__13UserInterfaceFv (one path inline, coordinator ruling)
+forms1 Init__20CStaticObjectFactoryFv
+forms1 BIFunc_GetInitialBuddyOrders__FPPiPv
+forms1 _find_aim_blend_values__FffPf Multiply__11CQuaternionF11CQuaternion
+forms1 __sinit_compartment_cpp
+fpr2 released ConstrainVelocity__11CAnimObjectFv LANDED b9f2cf08 (anim_obj_collide += 1268)
+forms1 released all (6e3f0c7a drafts: CStaticObjectFactory::Init LevelField spelling 138, CQuaternion::Multiply 28 -> 27; nothing reaches 0, see forms1/list.tsv); nothing held
+forms2 Draw__10CAnimMorphFR12CDrawContext RenderSystem__15CParticleSystemFR10CDmaPacket (Assign inline ruling; RS_BEST514 draft)
+fpr2 released all (b9f2cf08 ConstrainVelocity LANDED +1268; Rotate 21 with landed BuildRot in fpr2/rv/best1.txt, not committed; UBB 56 unchanged); nothing held
+forms2 Rotate__7CMatrixFRC8CVector3f (draft replacement from fpr2/rv, coordinator request)
+pum2 released all (cebc3881 draft: PopUpMessageHandler ctor 76 -> 16, not exact; __sinit_pumhandler_cpp not tried); nothing held
+pum3 __ct__19PopUpMessageHandlerFPcPc (base/extra volatile swap; value-order rule)
+ui1 released Init__13UserInterfaceFv (landed 349761a7)
+forms2 released all (df251f97 drafts: CAnimMorph::Draw 3 Assign, RenderSystem 835, Rotate 21; nothing lands at 0); nothing held
+pum3 released all (78daa000 pumhandler_ctor NEW +988 LANDED; __sinit_pumhandler_cpp not claimed); nothing held
+sinit1 __sinit_pumhandler_cpp
+sinit1 released all (fac4d7fa __sinit_pumhandler_cpp NEW pumhandler +276 LANDED; old pumhandler unit renamed pumhandler_dtor); nothing held
+sinit2 __sinit_buddy_cpp __ct__Q24_STL13list<10BuddyInfo,Q24_STL15allocator<10BuddyInfo>>FQ24_STL25_List_iterator<...>_Q24_STL25_List_iterator<...>(range ctor)
+sinit2 released all (no landing: __sinit_buddy_cpp 2 lines in a minimal probe, list<BuddyInfo> range ctor still 3; partial-scalarisation findings in sinit2/notes.md); nothing held
+g1 BIFunc_AIStartCoverPointWalkToStored__FPPiPv
+g1 _find_aim_blend_values__FffPf
+g3 __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA
+g3 released __ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA (stays 2/4; chains impossible across member types)
+g1 released _find_aim_blend_values__FffPf (case-3 TriangleBlendB copies: stmt order, Cross2 arg perms, difference locals 156: stays 5)
+g1 quick_sort_<PQ26CScene9UNodePair,...> (dwi::quick_sort UNodePair)
+g1 released quick_sort_<UNodePair> (history exhausts tail-next forms; not reworked)
+g1 _unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t
+g3 __ct__17CProfileInitClassFv
+g1 released _unpack_skel_frame (inspected only: swap-block schedule knot, slots already right; no new-rule fit)
+g1 DrawNode__11CStaticMeshFR7MSHNodeUl
+g3 released __ct__17CProfileInitClassFv (202; blocked anyway by the stripped-strings gap at +708..+1199; three-group schedule not reproduced by inline helpers)
+g4 SFILTER_unpackxalf__FPviPvPvi SNDtimeremaining death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf TestCDBBranchNodeCollision<6CLine3> (inspection)
+g3 GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b
+g1 released DrawNode__11CStaticMeshFR7MSHNodeUl (DotDotDot/Abs real members 29-36; 48 order x Dot-side forms: stays 5)
+g1 EndDraw__11CFontDriverFP4FONT
+g1 released EndDraw__11CFontDriverFP4FONT (24 operator= orders inert, stays 11)
+g1 BIFunc_GetObjInfo__FPPiPv
+g1 released BIFunc_GetObjInfo__FPPiPv (inspected: filter r27/ARG(2) offset r26 swap only; not reworked)
+g1 ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION
+g1 released ARAM_alloc_node (pool-loop-in-inline 164, decl orders 29: stays 25)
+g1 _matrix_rot_yzx__FR7CMatrixlll
+g1 released _matrix_rot_yzx (real Scale members 253: one more callee FPR; stays 109)
+g1 CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition
+g1 released CheckLineCollision (mask/flags order + GetTypes value inline: 22/67 sbs, stays 10)
+g1 TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb
+g1 released all (no landing, no draft change; scratch/loop3/g1/notes.md); nothing held
+g1b Draw__10CAnimMorphFR12CDrawContext
+g4 released all (no landing, no draft change; findings in scratch/loop3/g4/notes.md); nothing held
+g1b released Draw__10CAnimMorphFR12CDrawContext (LANDED 16d5b52a, 424)
+g1b Rotate__7CMatrixF8CVector3f
+g3 ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject
+g1b released Rotate__7CMatrixF8CVector3f (landed-body 24: Rotate-side variants + shared CVector3 header inert)
+g1b DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3
+g3 released ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject (header Sub/LengthSq/Normalize form 57, worse; draft 20 unchanged)
+g3 TRKSuppAccessFile
+g2 AddBuddy__F9BuddyInfob random Init__NotTheVirtualOne__19CBulletDecalManagerFv (group2 rows; claims per row follow)
+g1b released DMClusterSkelTraverseHeirarchy (block scope/inline a,b,c params/register: params stay lowest)
+g1b PROFILE_UPDATE__Fv
+g1b released PROFILE_UPDATE__Fv (reference locals 130 sbs vs 124: no)
+g1b BIFunc_MechFollowPath__FPPiPv
+g1b released BIFunc_MechFollowPath__FPPiPv (inspected; scripting's 1000+ forms cover the arg-read schedule)
+g1b TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb
+g3 released TRKSuppAccessFile (draft replacement pending commit: whole-file form, C 14 / C++ 97, consistent)
+g1b released TestCollision(CVolCapsule) (orig compares result r30 == 2 after the m_result join, ours code r3: Raise inline/no code local/split ifs no)
+g1b PATHI_eventstart__Fi
+g1b released PATHI_eventstart__Fi (inspected: scalar-replaced saved-field temp ranks, no rule fits)
+g1b BIFunc_GetObjInfo__FPPiPv
+g1b released BIFunc_GetObjInfo__FPPiPv (ArgObject param orders x6, body spellings x9, ArgNode for cases 29/30, ArgInt/ArgFloat siblings, target stmt position x10: all 16 or worse; case-3 'else filter = 0' is load-bearing)
+g1b Init__20CStaticObjectFactoryFv
+g1b released Init__20CStaticObjectFactoryFv (count decl at top inert; rotation); released all, nothing held (LANDED 16d5b52a CAnimMorph::Draw)
+vt1 released all (91da456a vtables.tsv + vtable_order.py + notes/vtable-order.md, no src change); nothing held
+g3 released GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b (8ab1da79 drafts: GTSP consistent, TRK, YUV 45)
+hdr5 shared headers CScreen CCamera CInputManager CScene CPlayerObject (header moves; configs/views only)
+g2 aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf
+g2 MemoryCardBootUpPortCheck__10CShellMenuFi (draft)
+g3 GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b (draft 731 -> 211)
+hdr5 released all (db01ee97 4c5b6224 710cb78c 3eec12a4 874c45dc)
+hdr6 shared header DwiContainers (dwi list/vector/fast_vec/hash_map views; configs/views only)
+g3 released GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b (4ca0418b draft 211)
+g3 RenderSystem__15CParticleSystemFR10CDmaPacket
+g3 released RenderSystem__15CParticleSystemFR10CDmaPacket (not worked: check_draft 'differs' is the pinned-vector address form (lfd 8(rX) via member addresses vs orig's folded 72/88/104), not logic)
+g3 released all (8ab1da79 + 4ca0418b drafts: GTSP 817 differs -> 211 consistent, TRK support.c form, YUV 45; no landing); nothing held
+g2 released all (drafts 9903673d AddBuddy 6, Init 28, random 79; 4788d1e9 aim_cb 59, Init 14; cde97e72 MemoryCardBootUpPortCheck 1028; no landings); nothing held
+merge1 whole-file merges AIPlayerDoodad.cpp AIPlayerObject.cpp AISoldierObject.cpp AITankDoodad.cpp AITankObject.cpp AISoldierDoodad.cpp (fragments into one unit with vtables)
+merge1 csg_volume.cpp collisionvolume.cpp bullet.cpp memalloc.cpp printstr.cpp locatbig.cpp (whole-file merges)
+hdr6 released all (156ad714 7c29fadf)
+hdrdraft TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup> (draft onto shared headers)
+hdrdraft AllocateStaticObject__20CStaticObjectFactoryFii (draft onto shared headers)
+hdrdraft AddAmo__19CPlayerWeaponObjectFi (draft onto shared headers)
+hdrdraft Update__13CInputManagerFf (draft onto shared headers)
+hdrdraft TLT_LoadLevelContentsFile__Fii (draft onto shared headers)
+hdrdraft DrawNode__11CStaticMeshFR7MSHNodeUl (draft onto shared headers)
+hdrdraft GetPeekLocation__11CCoverPointFv (draft onto shared headers)
+hdrdraft BIFunc_AIStartCoverPointWalkToStored__FPPiPv (draft onto shared headers)
+hdrdraft DrawTextCentered__5CFontFfPCc (draft onto shared headers)
+hdrdraft UpdateProximityTriggerStatus__Fv (draft onto shared headers)
+hdrdraft CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition (draft onto shared headers)
+hdrdraft quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair (draft onto shared headers)
+hdrdraft SetFinishedLevelData__13CPlayerObjectFv (draft onto shared headers)
+hdrdraft BIFunc_GetObjInfo__FPPiPv (draft onto shared headers)
+hdrdraft MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME (draft onto shared headers)
+hdrdraft EndDraw__11CFontDriverFP4FONT (draft onto shared headers)
+hdrdraft AddBuddy__F9BuddyInfob (draft onto shared headers)
+hdrdraft CheckForObstructions__10CExplosionFR10ISceneNode (draft onto shared headers)
+hdrdraft BIFunc_GetInitialBuddyOrders__FPPiPv (draft onto shared headers)
+hdrdraft death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (draft onto shared headers)
+hdrdraft Multiply__11CQuaternionF11CQuaternion (draft onto shared headers)
+hdrdraft CreateDestructable__FP20TriggerObject_structi (draft onto shared headers)
+hdrdraft BIFunc_PlayerScreenFlash__FPPiPv (draft onto shared headers)
+hdrdraft CreateRootHierObject__FP20TriggerObject_structi (draft onto shared headers)
+hdrdraft PublishEvent__10CPublisherFR8ISubject13ESubjectEvent (draft onto shared headers)
+hdrdraft CreateDumpObject__FRC8CVector3RC11CQuaternionii (draft onto shared headers)
+hdrdraft UpdateAnimation__14CSoldierObjectFf (draft onto shared headers)
+hdrdraft aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf (draft onto shared headers)
+hdrdraft BIFunc_CreateBuddyDataStructures__FPPiPv (draft onto shared headers)
+hdrdraft DoTargetCheck__FP8BSObjectiiiPiPi (draft onto shared headers)
+hdrdraft __ct__13CPathNodeListFPvP18BPDPathFindingNodei (draft onto shared headers)
+hdrdraft UpdateBoundingBox__15CParticleSystemFv (draft onto shared headers)
+hdrdraft TLT_LoadFromRepository__FPCcPiPb (draft onto shared headers)
+hdrdraft BIFunc_MechFollowPath__FPPiPv (draft onto shared headers)
+hdrdraft _matrix_rot_yzx__FR7CMatrixlll (draft onto shared headers)
+hdrdraft ShellInit__10CShellMenuFUl (draft onto shared headers)
+hdrdraft DrawBulletStats__13UserInterfaceFv (draft onto shared headers)
+hdrdraft DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3 (draft onto shared headers)
+hdrdraft _unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t (draft onto shared headers)
+hdrdraft SweepAllExtents__6CSceneFv (draft onto shared headers)
+hdrdraft PROFILE_UPDATE__Fv (draft onto shared headers)
+hdrdraft BIFunc_AddBuddy__FPPiPv (draft onto shared headers)
+hdrdraft FindIntersection__FRC6CLine3RC11CVolCapsulePf (draft onto shared headers)
+hdrdraft TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb (draft onto shared headers)
+hdrdraft MemoryCardBootUpPortCheck__10CShellMenuFi (draft onto shared headers)
+hdrdraft DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight> (draft onto shared headers)
+hdrdraft Init__NotTheVirtualOne__19CBulletDecalManagerFv (draft onto shared headers)
+hdrdraft Rotate__7CMatrixF8CVector3f (draft onto shared headers)
+hdrdraft Draw__14CSoldierObjectFR12CDrawContext (draft onto shared headers)
+hdrdraft OnCollision__13CStaticObjectFRC10CCollision (draft onto shared headers)
+hdrdraft Init__20CStaticObjectFactoryFv (draft onto shared headers)
+hdrdraft GetExtents__7CVolBoxCFR8CVector3R8CVector3 (draft onto shared headers)
+hdrdraft Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog (draft onto shared headers)
+hdrdraft __ct<Q23dwi21list_iter<9BuddyInfo>>__Q23dwi16list<9BuddyInfo>FiQ23dwi21list_iter<9BuddyInfo>Q23dwi21list_iter<9BuddyInfo>Pc (draft onto shared headers)
+hdrdraft TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb (draft onto shared headers)
+hdrdraft TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb (draft onto shared headers)
+hdrdraft __sinit_buddy_cpp (draft onto shared headers)
+hdrdraft Link__8CPartBinFP7CDmaTagR10CDmaPacket (draft onto shared headers)
+hdrdraft GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b (draft onto shared headers)
+hdrdraft __sinit_compartment_cpp (draft onto shared headers)
+hdrdraft RenderSystem__15CParticleSystemFR10CDmaPacket (draft onto shared headers)
+hdrdraft released all (4c75217f: 36 drafts onto shared headers, scores unchanged; no landings)
+merge1 released all (12 whole-file merges landed; notes scratch/loop3/merge1/notes.md); nothing held
+merge2 source_link include fix (tools: source_link, source_symbols, layout_lint, check_data)
+merge2 fader.cpp (whole-file merge: fader fader_control fader_dtor fader_link)
+merge2 animated.cpp (whole-file merge)
+merge2 sprite.cpp (whole-file merge)
+merge2 animated_volume.cpp (whole-file merge)
+merge2 smixfx.c (whole-file merge)
+merge2 sdspmix.c (whole-file merge)
+merge2 stretch.c (whole-file merge)
+merge2 animseq.cpp (whole-file merge)
+merge2 SearchNode.cpp (whole-file merge)
+merge2 animmot.cpp (whole-file merge)
+merge2 released all (10 whole-file merges + include fix; notes scratch/loop3/merge2/notes.md); nothing held
+merge3 filesys.cpp (whole-file merge)
+merge3 filedev.cpp (whole-file merge)
+merge3 dvdStatus.cpp (whole-file merge)
+merge3 Gecko_ExceptionPPC.cp (whole-file merge)
+merge3 targimpl.c (whole-file merge)
+merge3 bsmachin.cpp (whole-file merge)
+merge3 UISUtils.c (whole-file merge)
+merge3 UIStudio.c (whole-file merge)
+merge3 smixfx.c MIX_getwetbuffer move (smixfram)
+merge3 snddrv.c (whole-file merge)
+merge3 targimpl.c (whole-file merge)
+merge3 sphere.cpp (header moves + whole-file merge)
+merge3 bsutil.cpp (whole-file merge)
+merge3 propdat.cpp (whole-file merge incl. propdat_offsetptr)
+merge3 soundschedule.cpp (whole-file merge)
+merge3 collision.cpp (whole-file merge)
+merge3 released all (11 whole-file merges + smixfx move + source_link; notes scratch/loop3/merge3/notes.md); bsutil, world_volume, Gecko_ExceptionPPC parked
+merge4 Tank_object.cpp (whole-file merge)
+merge4 attachobject.cpp (whole-file merge)
+merge4 sphere.cpp (whole-file merge)
+merge4 fiber.cpp (whole-file merge)
+merge4 released all (Tank_object, attachobject, sphere, fiber merged + source_link; notes scratch/loop3/merge4/notes.md); nothing held
+merge5 hierobject.cpp (whole-file merge)
+merge5 light.cpp (whole-file merge)
+merge5 animplayer.cpp (whole-file merge)
+merge5 weapon.cpp (whole-file merge)
+merge5 thrown_obj.cpp (whole-file merge)
+merge5 thrownbullet.cpp (whole-file merge)
+merge5 released all (hierobject, weapon, thrown_obj, thrownbullet, animplayer merged + source_link f7e66e79; light parked (data order); notes scratch/loop3/merge5/notes.md)
+merge6 light.cpp (whole-file merge)
+merge6 threads.cpp (whole-file merge)
+merge6 ipad.cpp (whole-file merge)
+merge6 saramman.c (whole-file merge)
+merge6 stagpat.c (whole-file merge)
+merge6 eaxadecf.cpp (whole-file merge)
+merge6 saemsstr.c (whole-file merge)
+merge6 sbasync.c (whole-file merge)
+merge6 ssysinit.c (whole-file merge)
+merge6 IStudio.cpp (whole-file merge)
+merge6 IStudioFuncs.cpp (whole-file merge)
+merge6 bigyuvswizzler.cpp (whole-file merge)
+merge6 jaw_controller.cpp (whole-file merge)
+merge6 MathFun.cpp (whole-file merge)
+merge6 animchan.cpp (whole-file merge)
+merge6 renderlist.cpp (whole-file merge)
+merge6 bsmessage.cpp (whole-file merge)
+merge6 rcmp_main.cpp (whole-file merge)
+merge6 bsevents.cpp (whole-file merge)
+merge6 bulletfactory.cpp (whole-file merge)
+merge6 weaponfactory.cpp (whole-file merge)
+merge6 released all (20 whole-file merges + source_link 993673f1; light, rcmp_main parked; notes scratch/loop3/merge6/notes.md)
+merge7 rcmp_main.cpp (whole-file merge)
+merge7 projectilebullet.cpp (whole-file merge)
+merge7 rcmp_mpc_codec.cpp (whole-file merge)
+merge7 ConfigGC.cpp (whole-file merge)
+merge7 animskinned.cpp (whole-file merge)
+merge7 rcmp_mpc_codec.cpp (whole-file merge, retry)
+merge7 released all (rcmp_main, projectilebullet, ConfigGC, rcmp_mpc_codec, animskinned merged + source_link; notes scratch/loop3/merge7/notes.md)
+merge8 anim_obj.cpp (whole-file merge)
+merge8 alarm.cpp (whole-file merge)
+merge8 pumhandler.cpp (whole-file merge)
+merge8 world_object.cpp (whole-file merge)
+merge8 AnimObjFactory.cpp (whole-file merge)
+merge8 hearingvolume.cpp (whole-file merge)
+merge8 camera.cpp (whole-file merge)
+merge8 released all (port_unit fix 4f1fc15d, hearingvolume b5ba70e7, camera 1adffd9d, source_link a5ad9727; alarm/pumhandler/world_object stay split, anim_obj/AnimObjFactory not attempted; notes scratch/loop3/merge8/notes.md)
+dtor1 dwi::list dtor local-order study (alarm, pumhandler, world_object, world_volume, bsutil)
+dtor1 alarm.cpp (whole-file merge, landed c96ab0db)
+dtor1 bsutil.cpp (whole-file merge)
+dtor1 released all (alarm c96ab0db, bsutil 0e5984f0; world_volume/pumhandler/world_object open; notes scratch/loop3/dtor1/notes.md)
+merge9 DwiContainers.h ~list clear() + manifest relabel
+merge9 pumhandler.cpp (whole-file merge)
+merge9 world_volume.cpp (whole-file merge)
+merge9 world_object.cpp (whole-file merge)
+merge10 anim_obj.cpp (whole-file merge)
+merge10 AnimObjFactory.cpp (whole-file merge)
+merge10 saems.c (whole-file merge)
+merge10 pathxSND.c (whole-file merge)
+merge9 released all (DwiContainers c7f196ff, pumhandler 9962fe5e, source_link; world_volume/world_object open; notes scratch/loop3/merge9/notes.md)
+merge11 world_object.cpp (whole-file merge)
+merge11 world_volume.cpp (whole-file merge)
+merge11 released all (world_object 4a6b4854, source_link 396817a4; world_volume parked: needs gap function; notes scratch/loop3/merge11/notes.md)
+merge10 released all (anim_obj ecdb630e, AnimObjFactory 6ce9ef7b, saems 223b162e, pathxSND f36e2c1f, source_link 0ba7cb33; notes scratch/loop3/merge10/notes.md)
+late2 EndDraw__11CFontDriverFP4FONT (font_driver += EndDraw, StartDraw, Draw)
+late2 released EndDraw (landed 8240e679)
+late1 TRKSuppAccessFile (day2 late1.tsv rows)
+late2 released all (EndDraw 8240e679; notes commit)
+buddy __ct<list_iter<BuddyInfo>> list range ctor 0x80058988, BIFunc_CreateBuddyDataStructures, BIFunc_AddBuddy, AddBuddy (buddy.cpp BuddyInfo knot)
+csweep Link__8CPartBinFP7CDmaTagR10CDmaPacket
+rules2 UpdateBoundingBox__15CParticleSystemFv, TestCollision(CVolCapsule), aim_cb, _AnimTranDoTransition, _matrix_rot_yzx, DMClusterSkelTraverseHeirarchy, SNDI_precalcaztospkrvol; IV/index sweep over unlanded loop drafts
+buddy released all (range ctor 44540024; notes)
+buddy2 BIFunc_CreateBuddyDataStructures, __sinit_buddy_cpp, BIFunc_AddBuddy, AddBuddy, BIFunc_GetInitialBuddyOrders (buddy.cpp; maybe whole-file merge)
+csweep released Link__8CPartBinFP7CDmaTagR10CDmaPacket (draft 33 -> 4, slot-order question)
+rules2 released all (notes 9549dd9c; no landing; notes scratch/loop3/rules2/notes.md)
+opswap commutative operand-order sweep over unlanded non-MP drafts (not buddy.cpp rows)
+buddy2 released all (buddy.cpp tail 5ed2ccfa incl. __sinit_buddy_cpp, source_link 3576e509; Create/AddBuddy/BIFunc_AddBuddy/GetInitial open, notes scratch/loop3/buddy2/notes.md)
+opswap released all (notes c99a8c85; no landing; drafts FindIntersection/MemoryCard/DrawBulletStats/GetClosestWaypoint/PATHI_eventstart/aim_cb improved; notes scratch/loop3/opswap/notes.md)
+split2 split sweep (member/array/return/chain) over unlanded non-MP drafts; reprove rows only via note here
+split2 released (notes d6c3334d; drafts PATHI_eventstart/PATHI_seeknextnode/_AnimTranDoTransition changed -> proof marks stale, need re-prove)
+split2 released all (notes d6c3334d + TestCollision(CTriangle) draft; stale proof marks: PATHI_eventstart, PATHI_seeknextnode, _AnimTranDoTransition, CCDBVolBox::TestCollision(CTriangle))
+reprove2 released (a88850f6: PATHI_eventstart, PATHI_seeknextnode, _AnimTranDoTransition, CCDBVolBox::TestCollision(CTriangle) re-proven, 91/96)
+undef source_link undefined symbols: PATHI_eventstart draft (PATHFINDNODE rename only), particlesystem unit (CUcodeRenderBin view), source_link.py dead-strip modelling; vtable file survey (no light/world_volume)
+undef released all (9d46be0d, 36657ee7, 29f602fe, 3723dc5b; PATHI_eventstart proof mark needs reprove on route_1_2)
+merge12 TestCDBBranchNodeCollision<6CLine3> + cdbobject.cpp whole-file merge
+merge12 released TestCDBBranchNodeCollision<6CLine3> + cdbobject.cpp merge (no landing; WIP scratch/loop3/merge12)

@@ -31,6 +31,8 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
 | `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |
+| `notes/loop-2026-11-13.md` | Last loop day: results, rules found, decisions, where the unverified bytes are, next steps |
+| `archive/loop3-scratch/` | Agent notes, scripts and probes of the 2026-11-11..13 loop, copied out of the ignored `scratch/` |
 | `tools/` | Working scripts, tested from the repository root |
 | `tools/reference/` | Older scripts, kept for their method; logs and notes refer to them. They read local data that isn't in the repo, so they won't run as they are. |
 

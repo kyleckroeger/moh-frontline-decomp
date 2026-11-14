@@ -1,0 +1,24 @@
+function	draft_score	blocker_form	form_now	best_file	best_score	result
+Init__20CStaticObjectFactoryFv	138	staticobjfactory offset spelling '(char*)def + (i*24 + 0x38)' (declined)	LevelField pointer cast (accepted)	scratch/loop3/forms1/init/w1.cpp	138	draft respelled (same 138); registers (DELPTRCOND cond/obj ranks) remain the knot
+Multiply__11CQuaternionF11CQuaternion	28	Mul value product (was discovery-only)	small value-returning inline (accepted)	scratch/loop3/forms1/qm/m1.cpp	27	draft 28 -> 27 (compound-copy Mul on the three x*rtd terms)
+_find_aim_blend_values__FffPf	5	chained zero + NegS value inline	both accepted	research/drafts/_find_aim_blend_values.8005e494.cpp	5	draft already plain stores; NegS/plain grid on wb/wc negations 47-113 (forms1/fab); case-3 f7/f8 colouring is the knot, not a form
+DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP10CharSkel_tP7CMatrixP8CVector3P8CVector3	31	constant chain 3.4e38f	accepted	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp	31	draft already uses the chain; param/local ranking knot (mid3, near1, unlockA)
+BIFunc_GetInitialBuddyOrders__FPPiPv	7	vec_iter forwarding overload; DumpBuddyVector	overload accepted; DumpBuddyVector already landed in buddy_head	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	7	no form left blocking; DumpReadyBuddies node/soldier register swap (scripting, late1, late3)
+CreateDumpObject__FRC8CVector3RC11CQuaternionii	56	RetV identity wrapper	still declined	-	-	skipped per brief
+CreateDestructable__FP20TriggerObject_structi	11	placement-new double beq / cast copy / vtable stores	q7 declined	-	-	skipped
+CreateRootHierObject__FP20TriggerObject_structi	2	placement-new knot	q7 declined	-	-	skipped
+Draw__10CAnimMorphFR12CDrawContext	9	2nd-level Assign wrapper (dead operator= temp)	identity wrapper still declined	-	-	question: is it a stack-slot inline (accepted) or an identity Copy (declined)?
+DrawTextCentered__5CFontFfPCc	8	per-fragment inline views	q8 declined	-	-	skipped
+FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	3	by-value operator| inline view	q8 declined	-	-	skipped
+BIFunc_GetObjInfo__FPPiPv	16	(int)(filter = 0)	still declined (16 without it too)	-	-	not a form block
+DoTargetCheck__FP8BSObjectiiiPiPi	96	identity Copy()	declined	-	-	skipped
+BIFunc_PlayerScreenFlash__FPPiPv	39	by-value operator=	declined	-	-	skipped
+TLT_LoadLevelContentsFile__Fii	3	dead branch holding a string	q3 declined	-	-	skipped
+UpdateTargetPosition__9CAIObjectFv	0	duplicate inline	declined	-	-	skipped
+InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	0	reconstructed removed function	declined (and multiplayer)	-	-	skipped
+STREAM_kill	0	alias	declined	-	-	skipped
+RenderSystem__15CParticleSystemFR10CDmaPacket	1064	alias pins	operator[] pin accepted only used once	scratch/loop3/vec3/RS_BEST514.cpp	835	not committed: RS_BEST514 toggles [i]/.x spellings throughout (random walk), not the once-used pin
+__sinit_compartment_cpp	-	.data/.bss pool base registers	.bss size views accepted but have no __sinit	-	-	needs the whole compartment.cpp file; not a form unlock
+OnCollision__13CStaticObjectFRC10CCollision	3	SubC/SubV value inlines	accepted	-	3	inert (real3/sweep2); not a form block
+GetExtents__7CVolBoxCFR8CVector3R8CVector3	37	Mul/MulV products	accepted	-	37	inert (sweep2: schedule knot)
+UserInterface/ConstrainVelocity/Rotate/UpdateBoundingBox/PopUp ctor	-	-	-	-	-	other agents (ui1, fpr2, pum2)

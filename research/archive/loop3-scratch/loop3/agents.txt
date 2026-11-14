@@ -1,0 +1,33 @@
+g1b ac95a2b1b2725d081 done: CAnimMorph::Draw 424 (16d5b52a)
+EMPTY (merge11 aff767a0b88d64d42 done: world_object 4a6b4854; world_volume parked on gap-function question; link 54/103/47)
+merge10 ab91e51039a4a272d anim_obj, AnimObjFactory, saems, pathxSND (dol4 a2b093ddc6ad8c15f done: 94/100 proven, 3be477fd)
+hdrdraft a0dc517f08c8851d1 drafts onto shared headers
+late1 a4d76f30f76f7d61f matching scratch/loop3/day2/late1.tsv (50 drafts) started 2026-11-13
+late2 ad3b7265fcab0fe4e matching scratch/loop3/day2/late2.tsv (50 drafts) started 2026-11-13
+(late2 ad3b7265fcab0fe4e done: EndDraw 8240e679, notes e4eadf8a)
+late2c a8e69039f7c939dea matching scratch/loop3/day2/late2c.tsv (17 unreached rows)
+buddy a07e53ee65f4d8882 buddy.cpp partial-scalarisation knot (list ctor, CreateBuddyDataStructures, BIFunc_AddBuddy)
+(late1 a4d76f30f76f7d61f done: TRKSuppAccessFile c37a3c4e, notes f8df4e08)
+csweep ad351f8d891aeb7b8 rescore C drafts with SUFFIX=c; CPartBin::Link bool-formation lead
+(late2c a8e69039f7c939dea done: no landings; SNDI_precalcaztospkrvol 79->4, notes a9860b9f)
+rules2 a3da920f9954f60af 6 untouched rows + new loop rules across drafts + SNDI one-helper test
+(buddy a07e53ee65f4d8882 done: list ctor 44540024 +360, notes 517142c9; CreateBuddyDataStructures 0 by score, AddBuddy 22)
+buddy2 a923b176ca43fe489 land CreateBuddyDataStructures (+__sinit_buddy_cpp) via buddy.cpp unit/merge; BIFunc_AddBuddy 22
+(csweep ad351f8d891aeb7b8 done: no landings; C rescore no change (EA units are -lang c++); CPartBin::Link 33->4, notes 92c6a5e7)
+(rules2 a3da920f9954f60af done: no landings; SNDI one-helper form at 4; operand-order rule; notes 9549dd9c)
+opswap abe208e43f8c9f215 automated commutative operand-order sweep over unlanded drafts (3 h)
+(buddy2 a923b176ca43fe489 done: buddy.cpp tail 5ed2ccfa incl. __sinit_buddy_cpp 224; link 54/102/45 3576e509; Create blocked on AddBuddy 6)
+(opswap abe208e43f8c9f215 done: no landings; 6 drafts improved (proofs stale); split-into-destination rule; notes c99a8c85)
+reprove a761de657c9212849 Dolphin re-prove drafts whose proven marks went stale on 11-13
+split2 (see notification id) statement-split extensions (member/array/return/chains) over unlanded drafts
+(reprove a761de657c9212849 done: 22 stale drafts re-proven a9411b64; 91/96 proven)
+(split2 af39edf0d422f3475 done: no landings; 4 drafts improved via decl sweep, proofs stale (87/96); d6c3334d, 5bb2d2b8)
+buddy3 x,y,z GiveBuddyOrders body: re-match buddy_head pair, land AddBuddy + CreateBuddyDataStructures
+TODO: re-prove PATHI_eventstart, PATHI_seeknextnode, _AnimTranDoTransition, CCDBVolBox::TestCollision(CTriangle) in Dolphin
+(buddy3 af2176b88cca0ef66 done: no landing; GiveBuddyOrders mirror conflict (x,y,z vs z,y,x) proven; buddy.cpp AddBuddy/Create PARKED; notes 81906125)
+reprove2 a5f1e20a76fee49e0 Dolphin re-prove split2's 4 drafts
+(reprove2 a5f1e20a76fee49e0 done: 4 drafts re-proven a88850f6; 91/96)
+undef abee9c60c69540daf pure-source link undefined symbols: library symbols, block headers, vtable/file-merge survey
+(undef abee9c60c69540daf done: undefined 54->38 (dead-strip modelling 9d46be0d, font/animmorph tail merges); survey 3723dc5b)
+merge12 vtable-owning merges: cdbobject, debug_prof, static_obj, staticmesh, AIFilter, player_weapon_object, capsule/box/cdbgeom
+TODO: re-prove PATHI_eventstart (renamed PATHFINDNODE, hash changed)

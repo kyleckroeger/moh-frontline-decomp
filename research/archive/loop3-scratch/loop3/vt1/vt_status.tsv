@@ -1,0 +1,113 @@
+__vt__10BSGO_Basic	weak	defined	unit:objcreate_volumes
+__vt__10BSGO_Dummy	weak	undefined	
+__vt__10CAnimMorph	global	undefined	
+__vt__10CCDBObject	global	undefined	
+__vt__10CCDBVolBox	global	undefined	
+__vt__10CCPTMatBin	global	undefined	
+__vt__10CCSGVolume	global	undefined	
+__vt__10CExplosion	global	defined	unit:explosion_dtor
+__vt__10CMSHMatBin	global	undefined	
+__vt__10CRenderBin	weak	defined	unit:compartment_bindtors unit:compartment_ccptmatbin_dtor unit:compartment_renderbin_dtor unit:debug_prof_cdbgstatsrend
+__vt__10CVolSphere	global	undefined	
+__vt__10ISceneNode	weak	defined	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:collisionvolume_ctor unit:compart
+__vt__11BSGO_Player	global	defined	unit:objcreate_collvol unit:objcreate_german unit:objcreate_nonvis unit:objcreate_volumes
+__vt__11CAnimObject	global	undefined	
+__vt__11CHierObject	global	undefined	
+__vt__11CPTMaterial	weak	defined	unit:compartment_ccptmatbin_dtor unit:compartment_cptmaterial_dtor
+__vt__11CStaticMesh	global	defined	unit:staticmesh_ctor
+__vt__11CTankObject	global	undefined	
+__vt__11CVolCapsule	global	undefined	
+__vt__11MSHMaterial	weak	defined	unit:staticmesh_cmshmatbin_dtor unit:staticmesh_mshmaterial_dtor
+__vt__12BSGO_Soldier	global	defined	unit:objcreate_destroy
+__vt__12CAnimSkinned	global	undefined	
+__vt__12CCompartment	global	undefined	
+__vt__12CDMRenderBin	global	undefined	
+__vt__12CScreenFlash	weak	defined	unit:bsbifunc
+__vt__12CWorldObject	global	undefined	
+__vt__12CWorldVolume	global	undefined	
+__vt__13CAITankDoodad	global	undefined	
+__vt__13CAITankObject	global	undefined	
+__vt__13CCptShadowBin	global	undefined	
+__vt__13CCptSimpleBin	global	undefined	
+__vt__13CFaderControl	global	defined	unit:fader_control
+__vt__13CMshSimpleBin	global	undefined	
+__vt__13CPlayerObject	global	undefined	
+__vt__13CStaticObject	global	undefined	
+__vt__13CThrownBullet	global	undefined	
+__vt__13CThrownObject	global	undefined	
+__vt__13IDestructible	global	defined	unit:destructor_queue
+__vt__14CFinishPartBin	weak	undefined	
+__vt__14CHearingVolume	global	undefined	
+__vt__14CSoldierObject	global	defined	unit:Soldier_object_attach
+__vt__15CAIFilterObject	global	undefined	
+__vt__15CAIPlayerDoodad	global	undefined	
+__vt__15CAIPlayerObject	global	undefined	
+__vt__15CAnimatedPlayer	global	undefined	
+__vt__15CAnimatedVolume	global	undefined	
+__vt__15CParticleSystem	global	undefined	
+__vt__15CStaticAnimMesh	global	undefined	
+__vt__15CUcodeRenderBin	weak	defined	unit:compartment_bindtors unit:dmesh_cdmrenderbin_dtor unit:particlesystem_manager_dtor unit:staticmesh_cmshsimplebin_dt
+__vt__16CAISoldierDoodad	global	undefined	
+__vt__16CAISoldierObject	global	undefined	
+__vt__16CCharacterShadow	global	defined	unit:shadow
+__vt__16CCollisionVolume	global	undefined	
+__vt__16CScreenFieldMode	global	defined	unit:Screen
+__vt__16CSkyBoxRenderBin	weak	defined	unit:skybox
+__vt__16IMovingSceneNode	weak	defined	unit:Moh2 unit:anim_obj_ctor unit:anim_obj_dtor unit:bullet_ctor unit:camera_dtor unit:light_dtor unit:light_instanced_d
+__vt__17BSGO_Destructable	global	defined	unit:objcreate_destroy
+__vt__17CAnimLightManager	weak	undefined	
+__vt__17CAttachableObject	global	undefined	
+__vt__17CProjectileBullet	global	defined	unit:projectilebullet
+__vt__18CDbgStatsRenderBin	global	undefined	
+__vt__18CProfHistRenderBin	global	defined	unit:debug_prof_register
+__vt__18CPropertyAnimLight	global	undefined	
+__vt__18MPC_CODEC_INTERNAL	global	defined	unit:rcmp_mpc_codec
+__vt__19CAIFilterTankObject	global	undefined	
+__vt__19CBulletDecalManager	global	defined	draft:Init.800839e4 unit:decal
+__vt__19CInstancedAnimLight	global	undefined	
+__vt__19CPlayerWeaponObject	global	undefined	
+__vt__19CSpriteNoTextureBin	global	undefined	
+__vt__20CCptShadowCleanUpBin	global	undefined	
+__vt__21CAIFilterPlayerObject	global	undefined	
+__vt__22CAIFilterSoldierObject	global	undefined	
+__vt__22CBulletDecalTextureBin	global	defined	draft:Init.800839e4
+__vt__22CParticleSystemManager	global	defined	unit:particlesystem
+__vt__23CPropertyParticleSystem	global	undefined	
+__vt__24CInstancedParticleSystem	global	undefined	
+__vt__24MechanicCollisionChecker	global	undefined	
+__vt__25CParticleSystemTextureBin	global	undefined	
+__vt__26CProjectileBulletRenderBin	global	undefined	
+__vt__5CFont	global	undefined	
+__vt__5CPart	global	undefined	
+__vt__6CLight	global	undefined	
+__vt__7CBullet	global	undefined	
+__vt__7CCamera	global	undefined	
+__vt__7CFadeIn	weak	defined	unit:Moh2
+__vt__7CImpact	global	defined	unit:impact_dtor
+__vt__7CScreen	global	defined	unit:Screen
+__vt__7CSkyBox	global	defined	unit:skybox
+__vt__7CSprite	global	undefined	
+__vt__7CVolBox	global	undefined	
+__vt__7CWeapon	global	undefined	
+__vt__7GCHW_VD	global	defined	unit:hwvideodisplaylist
+__vt__7GCSW_VD	global	defined	unit:swvideodisplaylist_dtor
+__vt__7IVolume	weak	defined	unit:Soldier_object_ctor unit:animated_volume_ctor unit:box_dtor unit:capsule_dtor unit:cdbobject_ctor unit:cdbobject_dt
+__vt__8CBlurBin	global	defined	unit:motionblur
+__vt__8CFadeOut	weak	defined	unit:Moh2 unit:player_death
+__vt__8CPartBin	global	undefined	
+__vt__8ISubject	global	defined	unit:publisher
+__vt__9BSGO_Tank	global	defined	unit:objcreate_destroy
+__vt__9CAIDoodad	global	defined	unit:AIDoodad
+__vt__9CAIObject	global	defined	unit:AIObject_ctor unit:AIObject_visionseek
+__vt__9CAnimated	global	undefined	
+__vt__9CFaderBin	global	undefined	
+__vt__9CRemapBin	global	undefined	
+__vt__9CVolFiber	global	undefined	
+__vt__9IObserver	global	defined	unit:publisher
+__vt__Q23dwi22IVisitor<10ISceneNode>	weak	defined	unit:AIFilter_collisiondist unit:AIFilter_linechecks unit:AIFilter_mechchecker_dtor unit:bsbifunc_explosion unit:explosi
+__vt__Q23std13bad_exception	weak	defined	unit:Gecko_ExceptionPPC_unexpected
+__vt__Q23std9exception	weak	defined	unit:Gecko_ExceptionPPC_unexpected unit:NewMore
+__vt__Q24RCMP11RCMP_SYSTEM	weak	defined	draft:__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560 draft:rcmpbase_system
+__vt__Q24RCMP12VIDEO_DRIVER	weak	defined	draft:MOHFL_VD_create.80102a20 unit:hwvideodisplaylist
+__vt__Q24RCMP5CODEC	weak	defined	unit:rcmp_mpc_codec unit:rcmp_mpc_create
+__vt__Q24RCMP7DECODER	global	defined	draft:__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560 unit:rcmpbase

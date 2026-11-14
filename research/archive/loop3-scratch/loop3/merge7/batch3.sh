@@ -1,0 +1,8 @@
+#!/bin/sh
+cd /home/kyle/workspace/moh-frontline
+T=scratch/loop3/merge7
+until [ "$(sh research/tools/landlock.sh status)" = "free" ]; do sleep 10; done
+sleep 60
+export EDITCMD="sed -i -e 's#ConfigGC_dualconfig\.json#ConfigGC.json#g' -e 's#ConfigGC_dualconfig\.cpp#ConfigGC.cpp#g' research/tools/source_symbols.py research/tools/source_link.py research/data/config_keymap.cpp research/tools/check_data.py"
+sh $T/land3.sh ConfigGC src/game/ConfigGC.cpp $T/tpl_cfg.json ConfigGC.cpp 9826 "ConfigGC_dualconfig ConfigGC_init ConfigGC" "- 2026-11-13 [loop merge7] merged ConfigGC.cpp (3 fragments, 14656 B): Init and the destructor/static initialisation appended to the configuration screen; one CDualConfig (held sprite/fonts in anonymous unions with the destructor's CRenderBin views); --pool .sdata2 --pool .rodata; the data checkers' default settings now config/GMFE69/ConfigGC.json." "Merge ConfigGC.cpp: 3 fragments into one unit" "ConfigGC.cpp's whole file in one unit (ConfigGC_dualconfig ConfigGC_init ConfigGC). Init and the destructor/static initialisation appended to the configuration screen; one CDualConfig (the screen's members; the held sprite and fonts in anonymous unions with the destructor's CRenderBin views, the constructor's words under the screen's names), CColor from game/CScreen.h, one CSprite and CFont; --pool .sdata2 --pool .rodata (the original .rodata keeps a removed function's debug string between the screen's and Init's). check_data.py, source_link.py, source_symbols.py and research/data/config_keymap.cpp take their default compiler settings from config/GMFE69/ConfigGC.json now. Complete image identical." "--pool .sdata2 --pool .rodata"
+echo BATCH3 DONE

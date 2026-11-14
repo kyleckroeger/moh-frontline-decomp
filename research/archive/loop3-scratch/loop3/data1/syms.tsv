@@ -1,0 +1,130 @@
+ASPECT_4x3__7CCamera	.sdata2	0x8034fec8	0x4	camera.cpp	type1 bind1
+CONTACT_EPSILON	.sdata2	0x80350ba8	0x4	?	type1 bind1
+CONTACT_EPSILON_SQRD	.sdata2	0x80350bac	0x4	?	type1 bind1
+C_VECDotProduct	NOT-IN-ORIGINAL
+C_VECNormalize	NOT-IN-ORIGINAL
+DEFAULT_FOV	.sdata2	0x80350538	0x4	?	type1 bind1
+FONTcurrentdriver	.sdata	0x8034e5b8	0x4	?	type1 bind1
+FONTcurrentdriverext	.data	0x801910a8	0x1c	hlafile.cpp	type1 bind1
+FONTstandfile	.data	0x801910e0	0x1cf0	?	type1 bind1
+GetCdbFilename__12CWorldObject	.sdata	0x8034e0bc	0x4	world_object.cpp	type1 bind1
+GetCptFilename__12CWorldObject	.sdata	0x8034e0b8	0x4	world_object.cpp	type1 bind1
+MMG_TURNSPEED	.sdata	0x8034df0c	0x4	player.cpp	type1 bind0
+MPDdefault_intra_quantizer_matrix	.data	0x8018c3a8	0x40	hwvideodisplaylist.cpp	type1 bind1
+MPDnon_linear_quantizer_scale	.data	0x8018c3e8	0x20	hwvideodisplaylist.cpp	type1 bind1
+MPDscan	.data	0x8018c328	0x80	hwvideodisplaylist.cpp	type1 bind1
+MP_PROJBULLET_DRAW_DELAY	.sdata	0x8034e1d0	0x4	?	type1 bind1
+MP_PUM_TEXT_SCALE_X_2P	.sdata	0x8034e0ec	0x4	pumhandler.cpp	type1 bind0
+MP_PUM_TEXT_SCALE_X_4P	.sdata	0x8034e0f4	0x4	pumhandler.cpp	type1 bind0
+MP_PUM_TEXT_SCALE_Y_2P	.sdata	0x8034e0f0	0x4	pumhandler.cpp	type1 bind0
+MP_PUM_TEXT_SCALE_Y_4P	.sdata	0x8034e0f8	0x4	pumhandler.cpp	type1 bind0
+MP_THROWNBULLET_DRAW_DELAY	.sdata	0x8034e228	0x4	?	type1 bind1
+Multiply__7CMatrixFR7CMatrixRC7CMatrixRC7CMatrix	NOT-IN-ORIGINAL
+PATHI_choosebeat__FP12PATHNODEVIEWP12PATHNODEVIEWPiPi	NOT-IN-ORIGINAL
+POPUPS_IN_SECTION	.sdata	0x8034e0e8	0x4	pumhandler.cpp	type1 bind0
+PRINTchannellist	.data	0x80193050	0x200	printstr.cpp	type1 bind0
+PSVECCrossProduct	NOT-IN-ORIGINAL
+PSVECNormalize	NOT-IN-ORIGINAL
+PauseLibraryInfo	.data	0x80186070	0x30	ispauselibrary.cpp	type1 bind1
+PauseScreenInfo	.sdata	0x8034ddf0	0x8	?	type1 bind1
+REALabortmessage	.sdata	0x8034e658	0x4	?	type1 bind1
+RESPAWN_FIRE_DELAY	.sdata	0x8034df08	0x4	player.cpp	type1 bind0
+SNDAEMS_addmodulebank	.sdata	0x8034e680	0x4	?	type1 bind1
+SNDAEMS_addsystem	.sdata	0x8034e660	0x4	?	type1 bind1
+SNDAEMS_beginevent	.sdata	0x8034e66c	0x4	?	type1 bind1
+SNDAEMS_endevent	.sdata	0x8034e674	0x4	?	type1 bind1
+SNDAEMS_removemodulebank	.sdata	0x8034e668	0x4	?	type1 bind1
+SNDAEMS_removesystem	.sdata	0x8034e664	0x4	?	type1 bind1
+SNDAEMS_setglobal	.sdata	0x8034e678	0x4	?	type1 bind1
+SNDAEMS_updateevent	.sdata	0x8034e670	0x4	?	type1 bind1
+SPR_BEGIN	.sdata	0x8034e2c0	0x4	?	type1 bind1
+SPR_END	.sdata	0x8034e2c4	0x4	?	type1 bind1
+ShellLibraryInfo	.data	0x80187020	0xb4	?	type1 bind1
+ShellMenuBlockItem__FPCv	NOT-IN-ORIGINAL
+ShellScreenInfo	.sdata	0x8034de00	0x8	?	type1 bind1
+SoundBankHeapSize	.sdata	0x8034e2e0	0x4	?	type1 bind1
+TIME_STEP_EPSILON	.sdata2	0x80350e58	0x4	?	type1 bind1
+_AnimObj_StateDef	.sdata	0x8034db30	0x8	anim_callback.cpp	type1 bind0
+_Mat_Data	.data	0x801871d8	0x40	matrix.cpp	type1 bind0
+__CARDIsWritable	NOT-IN-ORIGINAL
+__dl__7CSpriteFPv	NOT-IN-ORIGINAL
+__double_max	NOT-IN-ORIGINAL
+__dt__12CRenderBin32Fv	NOT-IN-ORIGINAL
+__dt__12CRenderBin36Fv	NOT-IN-ORIGINAL
+__dt__12ISceneNode32Fv	NOT-IN-ORIGINAL
+__dt__12ISceneNode36Fv	NOT-IN-ORIGINAL
+__float_huge	.sdata	0x8034e58c	0x4	?	type1 bind1
+__float_nan	.sdata	0x8034e588	0x4	?	type1 bind1
+_eti_init_info	extabindex	0x80016e44	0x20	?	type1 bind1
+_finish_draw	.sdata	0x8034e390	0x1	dmesh.cpp	type1 bind0
+_finish_draw_weapon	.sdata	0x8034e391	0x1	dmesh.cpp	type1 bind0
+_floco_anim_ranges	.rodata	0x801703b0	0xa	anim_callback.cpp	type1 bind0
+aemscompinfo	.data	0x801933e0	0x108	?	type1 bind1
+alpha	.sdata	0x8034e100	0x4	?	type1 bind1
+axDspSlave	.data	0x8018e2a0	0x19e0	?	type1 bind1
+axDspSlaveLength	.sdata	0x8034e4e8	0x2	?	type1 bind1
+bankservice	.sdata	0x8034e471	0x1	?	type1 bind1
+emptyString	.sdata	0x8034e2d8	0x4	ShellMenu.cpp	type1 bind1
+filtermodsizetable	.data	0x80193e28	0x28	srandom.c	type1 bind1
+filtersizetable	.data	0x801942d0	0x28	sdecmut.c	type1 bind1
+fxdefault	.data	0x80194818	0x18	coda.cpp	type1 bind1
+gAEMSAmbientTrackEvent	.data	0x8018a750	0x14	sound.cpp	type1 bind0
+gFileSysOpts	.data	0x80190f38	0xc	SISamplingRate.c	type1 bind1
+gMusicHandle	.sdata	0x8034e2fc	0x4	sound.cpp	type1 bind1
+gMusicProjectID	.sdata	0x8034e300	0x4	?	type1 bind1
+g_BlendLightVolume	.data	0x80184550	0x30	lightvolman.cpp	type1 bind0
+g_BlendLights	.data	0x80184490	0xc0	lightvolman.cpp	type1 bind0
+g_ClearValue	.sdata	0x8034e31c	0x4	renderlist.cpp	type1 bind0
+g_ConfigFilename	.sdata	0x8034e2d4	0x4	ShellMenu.cpp	type1 bind0
+g_CurrentLevel	.sdata	0x8034da04	0x4	bsbifunc.cpp	type1 bind1
+g_CurrentMission	.sdata	0x8034da00	0x4	bsbifunc.cpp	type1 bind1
+g_CurrentSoundBank	.sdata	0x8034da08	0x4	bsbifunc.cpp	type1 bind1
+g_DefaultLightVolume	.data	0x80183ef8	0x30	compartment.cpp	type1 bind1
+g_DefaultLights	.data	0x80183e38	0xc0	compartment.cpp	type1 bind1
+g_FadeDistance	.sdata	0x8034dd40	0x4	shadow.cpp	type1 bind0
+g_FinalSinglePlayerController	.sdata	0x8034e2cc	0x4	?	type1 bind1
+g_GCFogType	.data	0x80183a60	0x10	compartment.cpp	type1 bind0
+g_GCFogType	.data	0x8018b400	0x10	staticmesh.cpp	type1 bind0
+g_GCFogType	.data	0x8018b580	0x10	dmesh.cpp	type1 bind0
+g_MPAnimMeshZOffset	.sdata	0x8034df10	0x4	player.cpp	type1 bind0
+g_NumPlayers	.sdata	0x8034e2d0	0x4	?	type1 bind1
+g_PauseScreenLockedController	.sdata	0x8034e2c8	0x4	?	type1 bind1
+g_ProjectionDistance	.sdata	0x8034dd48	0x4	shadow.cpp	type1 bind0
+g_ProjectionHeight	.sdata	0x8034dd4c	0x4	shadow.cpp	type1 bind0
+g_ShadowAlpha	.sdata	0x8034dd44	0x4	shadow.cpp	type1 bind0
+g_ShadowScale	.sdata	0x8034dd50	0x4	shadow.cpp	type1 bind0
+g_ambientSourceOnPlayer	.sdata	0x8034e2ec	0x1	sound.cpp	type1 bind0
+g_bAllowRotation	.sdata	0x8034dcd8	0x1	particlesystem.cpp	type1 bind0
+g_bClearRenderList	.sdata	0x8034e319	0x1	?	type1 bind1
+g_bConstraint	.sdata	0x8034dfc8	0x1	Soldier_object.cpp	type1 bind0
+g_bDebugStatsDisabled	.sdata	0x8034e368	0x1	?	type1 bind1
+g_bDisablePassThru	.sdata	0x8034db80	0x1	cdbobject.cpp	type1 bind0
+g_bEmptyList	.sdata	0x8034e318	0x1	?	type1 bind1
+g_bProfileUpdateHistory	.sdata	0x8034e369	0x1	?	type1 bind1
+g_fNearMultiplier	.sdata	0x8034df48	0x4	player_weapon_object.cpp	type1 bind0
+g_hAEMSAmbientTrack	.sdata	0x8034e2f0	0x4	sound.cpp	type1 bind0
+g_idSet	.data	0x80184730	0x10	camera.cpp	type1 bind1
+g_levelWeaponSetID	.sdata	0x8034da0c	0x4	bsbifunc.cpp	type1 bind1
+g_musicVolume	.sdata	0x8034e2e8	0x4	sound.cpp	type1 bind0
+g_promptCursor	.sdata	0x8034d9f4	0x4	bsbifunc.cpp	type1 bind0
+g_promptLineWidth	.sdata	0x8034d9f8	0x4	bsbifunc.cpp	type1 bind0
+g_promptMaxSize	.sdata	0x8034d9fc	0x4	bsbifunc.cpp	type1 bind0
+g_promptstart	.sdata	0x8034d9f0	0x4	bsbifunc.cpp	type1 bind0
+g_sfxVolume	.sdata	0x8034e2e4	0x4	sound.cpp	type1 bind0
+g_soundStreamRequest	.sdata	0x8034dc80	0x4	?	type1 bind1
+g_zDeltaMax	.sdata	0x8034dd54	0x4	shadow.cpp	type1 bind0
+mapchannel	.data	0x801942f8	0xd8	sdecmut.c	type1 bind1
+nextafter	NOT-IN-ORIGINAL
+s_minus_buttons	.sdata	0x8034ddd0	0x2	devicemgr.cpp	type1 bind0
+s_plus_buttons	.sdata	0x8034ddd4	0x2	devicemgr.cpp	type1 bind0
+sndbas	.data	0x801934e8	0xc	?	type1 bind1
+sndcents	.data	0x801934f8	0x100	?	type1 bind1
+snddefaultenvelope	.sdata	0x8034e690	0x8	?	type1 bind1
+sndlibauthor	.data	0x801933a0	0x3a	?	type1 bind1
+szShellBigFileName	.sdata	0x8034de08	0x4	IStudioFuncs.cpp	type1 bind0
+tablecopyto	.data	0x80193918	0x510	srandom.c	type1 bind1
+tmrsub	.data	0x80193370	0x20	exit.cpp	type1 bind1
+vbltmrsub	.data	0x80193350	0x20	exit.cpp	type1 bind1
+volscale	.sdata	0x8034e470	0x1	?	type1 bind1
+xafilterf__3SND	.data	0x801943f8	0x20	coda.cpp	type1 bind1
+xatablef__3SND	.data	0x80194418	0x400	coda.cpp	type1 bind1

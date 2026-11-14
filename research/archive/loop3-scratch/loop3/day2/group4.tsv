@@ -1,0 +1,27 @@
+size	real_lines	function	draft
+3936		BIFunc_UpdateFragCount__FPPiPv	research/drafts/bsbifunc_multiplayer.cpp
+3856	463	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	research/drafts/TestCollision.8006e0b0.cpp
+2728	2	AllocateStaticObject__20CStaticObjectFactoryFii	research/drafts/AllocateStaticObject.800b386c.cpp
+2696	1	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
+2128	9	UpdateProximityTriggerStatus__Fv	research/drafts/UpdateProximityTriggerStatus.80046378.cpp
+2092	320	FindIntersection__FRC6CLine3RC11CVolCapsulePf	research/drafts/FindIntersection.800c5cb4.cpp
+1700	53	SNDVOICEI_alloc__FiiPiii	research/drafts/SNDVOICEI_alloc.8015d530.c
+1640	56	CreateDumpObject__FRC8CVector3RC11CQuaternionii	research/drafts/CreateDumpObject.8003fc2c.cpp
+1264	7	BIFunc_GetInitialBuddyOrders__FPPiPv	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp
+1260	252	DMMorphBlendDisplayLists__FP16DMRenderObject_T	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp
+1064	5	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	research/drafts/death_cb.8005fb58.cpp
+1060	3	TLT_LoadLevelContentsFile__Fii	research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp
+892	207	BIFunc_AddBuddy__FPPiPv	research/drafts/BIFunc_AddBuddy.80057b30.cpp
+860	18	ResetShell__10CShellMenuFv	research/drafts/ResetShell.800e7a7c.cpp
+780	5	SFILTER_rsf__FPviPvPvi	research/drafts/SFILTER_rsf.801671b8.c
+752	73	MIX_audioslice	research/drafts/MIX_audioslice.801609d0.c
+664	0	STREAM_kill	research/drafts/STREAM_kill.8014d6dc.cpp
+632	39	Draw__6CSceneFR9CViewportR7CScreenR11CRenderListR4CFog	research/drafts/Draw.800da67c.cpp
+540	96	DoTargetCheck__FP8BSObjectiiiPiPi	research/drafts/DoTargetCheck.8001e59c.cpp
+508	1	SFILTER_unpackxalf__FPviPvPvi	research/drafts/SFILTER_unpackxalf.80164370.cpp
+400	6	DisplayHint__Fv	research/drafts/DisplayHint.8001e0f8.cpp
+400	28	decodexac__3SNDFPQ23SND10MXAPACKETF	research/drafts/decodexac.80168828.cpp
+280	37	GetExtents__7CVolBoxCFR8CVector3R8CVector3	research/drafts/GetExtents.800c13b4.cpp
+244	3	SNDtimeremaining	research/drafts/SNDtimeremaining.8015d238.c
+76		__sinit_rcmpbase_cpp	research/drafts/rcmpbase_system.cpp
+72		__dt__Q24RCMP11RCMP_SYSTEMFv	research/drafts/rcmpbase_system.cpp
