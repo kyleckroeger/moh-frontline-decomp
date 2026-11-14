@@ -46,3 +46,20 @@ Decompiles: re-run Ghidra decompile on 0x800567e8, 0x80056bd4, 0x80057164, 0x800
   operator= in layout order); ctor ': soldier(0), progress(0) { BuddyState unused = state; state.moving = 0;
   state.active = false; state.path = 0; }' (the dead copy is inferred: it keeps only the state region in memory).
   See research/notes/loop3-tricks-2026-11-12.md. Range ctor + ~list now in buddy_list_reserve (reserve's unit).
+
+## 2026-11-13 (loop buddy3) x,y,z GiveBuddyOrders body vs the landed users: no all-zero form, nothing landed
+Tools and the full write-up: scratch/loop3/buddy3 (ms.py scores a file and per-function aliases NAME_ZZtag in one
+compile; big.py builds one file per shared config with ~430 context aliases). Scores are line diffs (about 2x cmpall).
+- Model (empirical): each x/y/z block's FPRs and its GPRs (path/index, soldier/index) follow its declaration order,
+  mirrored by the block's colouring order in the function. Inline depth sets that order (deeper = coloured later,
+  the function's own code last). Every context lever found (wrapper depth, iterator overload, DumpAttached depth)
+  flips FPR and GPR order TOGETHER; the original needs them flipped separately between UpdateBuddyCheckpoints and AddBuddy.
+- GiveBuddyOrders body (12 x/y/z forms; 720 hoisted orders of path/object/x/y/z/index): only xyz gives AddBuddy 0,
+  only zyx gives UBC/UBP 0, an exact mirror; GPR order only moves with 'index first'.
+- Shared-config grids (680 configs x per-function aliases): landed world (GBO zyx, DBV zyx, DumpReady xyz) =
+  UBC 0, UBP 0, Died 0, GI 14, AddBuddy 14. Best xyz world (GBO xyz, DBV xyz, DumpReady zyx): UBP 0, Died 0 (both
+  with one more DumpReady level), AddBuddy 0, BA 32, GI 28, UBC 26 (GBO deeper than DBV: FPRs right, GBO path/index
+  and DBV soldier/index GPRs swapped; GPR decl sweeps then break Died). Hoisted float decls = nested (inert).
+- AddBuddy, landed world: UsingBuddy block in an inline helper + GBO one level deeper + argument
+  'g_attached_buddies.m_data + i' leaves ONLY the GBO 'buddy' pointer register (ours r25, orig r29; 26 lines).
+  Slot locals, hoisting, vector/int/ref wrappers: no gain. Next lever to try there: what colours that pointer first.
