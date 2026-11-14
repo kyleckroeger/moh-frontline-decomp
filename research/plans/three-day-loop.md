@@ -84,7 +84,8 @@ multiplayer not at all. Every landing keeps the complete image identical.
   which is a gap function with logic, still on hold). rcmp_main's unexplained 4-byte .sbss gap
   may be filled with an inferred size-view static (an object the original has, from code the
   linker removed), the accepted .bss-view form.
-- **OPEN QUESTION for the user (not decided by the coordinator):** gap functions with logic.
+- **ANSWERED by the user 2026-11-13 evening: YES** (gap functions accepted; also axDspSlave transcribed
+  as data; multiplayer stays last). Former question: gap functions with logic.
   Two whole-file merges are fully matched except for where one weak copy is emitted, and only a
   compiled-then-stripped function between two real ones fixes it: light.cpp (a discarded helper
   that deletes a CAnimLightManager) and world_volume.cpp (a Probe() with a local dwi::list

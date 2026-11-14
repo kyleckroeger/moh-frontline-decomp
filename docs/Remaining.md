@@ -205,6 +205,11 @@ the maintainer has decided which forms are acceptable.
 - An identity `Copy()` to keep dead stack copies (DoTargetCheck), and a by-value `operator=`
   only to move slots (PlayerScreenFlash).
 
-**On hold:** gap functions with logic, where a unit compiles an unmatched function of its
-file and strips it, leaving its bytes uncovered, to hold the file's data layout. (Strings-only
-block headers are accepted above.)
+**Accepted by the maintainer (2026-11-13), was on hold:** gap functions with logic, where a unit
+compiles a function of its file that the original linker stripped, to reproduce the file's data
+layout or weak-copy placement (light.cpp's discarded CAnimLightManager helper, world_volume.cpp's
+Probe()). Write the function as plausible source with the logic its references require; its bytes
+are stripped, as in the original. (Strings-only block headers are accepted above.)
+
+**Accepted by the maintainer (2026-11-13):** `axDspSlave`/`axDspSlaveLength` (SDK DSP microcode,
+6,624 B .data + 2 B .sdata) are transcribed into `research/data/` as data, not left platform-owned.
