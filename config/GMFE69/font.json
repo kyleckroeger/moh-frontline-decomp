@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -31,14 +31,17 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
-  "strip_unused": false,
-  "source_root": "scratch/game",
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": true,
+  "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
-      "address": "0x8007d1d4",
-      "size": 152,
+      "address": "0x8007cf50",
+      "size": 796,
       "type": 1
     },
     {
@@ -49,14 +52,36 @@
     },
     {
       "name": "extab",
-      "address": "0x8000c06c",
-      "size": 8,
-      "type": 1
+      "address": "0x8000c038",
+      "size": 60,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 68,
+      "stripped_objects": [
+        "@56"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x80012ff8",
-      "size": 12,
+      "address": "0x80012fc8",
+      "size": 60,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 72,
+      "stripped_objects": [
+        "@57"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170d20",
+      "size": 27,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80184788",
+      "size": 60,
       "type": 1
     },
     {
@@ -64,6 +89,12 @@
       "address": "0x801de580",
       "size": 4144,
       "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dca8",
+      "size": 24,
+      "type": 1
     }
   ],
   "functions": [
@@ -72,6 +103,30 @@
       "address": "0x8007d1d4",
       "size": 152,
       "binding": 0
+    },
+    {
+      "name": "__dt__5CFontFv",
+      "address": "0x8007d0c0",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "DrawText__5CFontFffPCc",
+      "address": "0x8007cf50",
+      "size": 180,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__5CFontFP11CRenderListP7CScreen",
+      "address": "0x8007d004",
+      "size": 188,
+      "binding": 1
+    },
+    {
+      "name": "__ct__5CFontFPCc15ERenderPriority",
+      "address": "0x8007d148",
+      "size": 140,
+      "binding": 1
     }
   ],
   "externals": {
@@ -79,16 +134,79 @@
     "DestroyFont__11CFontDriverFP4FONT": "0x8007c0fc",
     "Draw__11CFontDriverFP4FONTPC8FONTCHARff": "0x8007c210",
     "EndDraw__11CFontDriverFP4FONT": "0x8007c194",
+    "FONT_create": "0x8014e3b8",
+    "FONT_destroy": "0x8014e3fc",
+    "FONT_drawtexta": "0x8014e518",
+    "FONT_init": "0x8014e374",
+    "FONT_installdriver": "0x8014e430",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Link__5CFontFP7CDmaTagR10CDmaPacket": "0x8007c320",
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
+    "Render__5CFontFR10CDmaPacketPv": "0x8007ca34",
     "StartDraw__11CFontDriverFP4FONT": "0x8007c200",
+    "UnRegister__11CRenderListFR10CRenderBin": "0x800f1230",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CRenderBinFv": "0x80074290",
     "__dt__11CFontDriverFv": "0x8007c2e4",
-    "__register_global_object": "0x801381bc"
+    "__register_global_object": "0x801381bc",
+    "__vt__10CRenderBin": "0x80183c5c",
+    "g_FontDriver": "0x801df59c",
+    "g_ScreenXOffset": "0x8034ea10",
+    "g_ScreenYOffset": "0x8034ea14",
+    "g_bReady": "0x8034ea08",
+    "g_pCurrentFont": "0x8034ea0c",
+    "g_pRenderList": "0x8034ea00",
+    "g_pScreen": "0x8034ea04",
+    "strlen": "0x801400f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
-  "local_externals": [],
+  "local_externals": [
+    "g_FontDriver",
+    "g_ScreenXOffset",
+    "g_ScreenYOffset",
+    "g_bReady",
+    "g_pCurrentFont",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
   "discarded_local_functions": [],
-  "sda_externals": [],
+  "sda_externals": [
+    "g_ScreenXOffset",
+    "g_ScreenYOffset",
+    "g_bReady",
+    "g_pCurrentFont",
+    "g_pRenderList",
+    "g_pScreen"
+  ],
   "original_file": "font.cpp",
-  "original_file_index": 3954
+  "original_file_index": 3954,
+  "weak_duplicates": [
+    "__dt__10CRenderBinFv"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034ffec"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x8034ffc0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 6,
+      "address": "0x8034ffb8"
+    }
+  ]
 }

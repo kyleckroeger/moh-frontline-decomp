@@ -366,6 +366,14 @@ duplicate**, 0 small-data, 15 stripped. The 40 are 38 vtables and `axDspSlave`/`
 (the DSP microcode, 6,624 bytes of `.data` and a 2-byte `.sdata` length; platform-owned by
 sub-step 2, so not transcribed).
 
+Agent undef's partial merge (font.cpp): `font_dtor` and `font` are one unit (`src/game/font.cpp`,
+0x8007cf50..0x8007d26c, 796 bytes, everything after the open `DrawTextCentered`), built with RTTI on
+and the destructor declared first, so it emits and owns the file's `.data` (`__vt__5CFont` and the
+RTTI base lists), `.rodata` (the RTTI names) and `.sdata` (the three RTTI records); the `"CFont"` name
+and the constants link at their `.sdata2` pool addresses. Re-run (`source_link.py --jobs 4`, 1,016
+units, 94 drafts, 72 data files, all compiled): **39 undefined, 102 fragment-local, 45 duplicate**,
+0 small-data, 15 stripped. Survey of the other 37 vtables: `research/notes/undefined-survey-2026-11-13.md`.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 

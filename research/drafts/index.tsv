@@ -15,7 +15,7 @@ real_lines	size	address	function	compile_settings_from	draft
 6	500	800bf4f8	Scroll__12PopUpMessageFv	config/GMFE69/popup_displaytime.json	research/drafts/Scroll.800bf4f8.cpp
 6	400	8001e0f8	DisplayHint__Fv	config/GMFE69/toilet_hashmap.json	research/drafts/DisplayHint.8001e0f8.cpp
 7	156	800334e0	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	config/GMFE69/bsbifunc_cover.json	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp
-8	416	8007cdb0	DrawTextCentered__5CFontFfPCc	config/GMFE69/font_dtor.json	research/drafts/DrawTextCentered.8007cdb0.cpp
+8	416	8007cdb0	DrawTextCentered__5CFontFfPCc	config/GMFE69/font.json	research/drafts/DrawTextCentered.8007cdb0.cpp
 9	2128	80046378	UpdateProximityTriggerStatus__Fv	config/GMFE69/proxtrig_leafs.json	research/drafts/UpdateProximityTriggerStatus.80046378.cpp
 10	1184	80052abc	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	config/GMFE69/CoverPoint_invalidate.json	research/drafts/CheckLineCollision.80052abc.cpp
 10	1156	800676d8	AnimStStartState	config/GMFE69/animst_transprecheck.json	research/drafts/AnimStStartState.800676d8.cpp
