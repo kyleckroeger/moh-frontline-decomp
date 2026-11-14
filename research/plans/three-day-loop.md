@@ -19,6 +19,23 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
+- **2026-11-13 ~22:00: WRAPPED UP by the user ("wrap things up"). No agents running; loop stopped.**
+  Verified 1,282,440 / 1,414,572 bytes (90.66%). Pure-source link: 38 undefined (36 vtables +
+  axDspSlave/axDspSlaveLength), 102 fragment-local, 45 duplicate, 15 stripped (source_link.py now
+  models MWLD dead-stripping, 9d46be0d); font.cpp and animmorph.cpp tails merged (36657ee7, 29f602fe).
+  Dolphin: 91/96 drafts proven (a9411b64, a88850f6); PATHI_eventstart needs a re-prove (renamed
+  PATHFINDNODE in 9d46be0d, code unchanged).
+  **Questions for the user:** (1) gap functions with logic in light.cpp / world_volume.cpp (OPEN
+  QUESTION below); (2) axDspSlave DSP microcode (6,624 B): transcribe into research/data/ or leave
+  platform-owned (2 undefined permanently)?
+  **More coordinator rulings (reversible):** a single key-function fragment may turn on RTTI and own its
+  file's .data/vtable without merging neighbours when byte-exact (stepping stone); CheckLineCollision's
+  second spelling of the inlined GetTypes declined. Full list: scratch/loop3/coordinator-rulings.txt.
+  **Next when resumed:** land the cdbobject_dtor stepping stone (ready, compile-tested:
+  scratch/loop3/merge12/, expect 38 -> 37; TestCDBBranchNodeCollision<CLine3> stuck at 1 line, so no
+  whole-file merge); then debug_prof, static_obj, staticmesh, AIFilter, player_weapon_object,
+  capsule/box/cdbgeom per research/notes/undefined-survey-2026-11-13.md. buddy.cpp AddBuddy and
+  CreateBuddyDataStructures parked (GiveBuddyOrders mirror conflict, research/notes/buddy.md).
 - 2026-11-13 ~19:00: verified 1,282,440 bytes (90.66%). Landed since 17:25: list<BuddyInfo> range ctor
   360 (44540024), buddy.cpp tail unit incl. __sinit_buddy_cpp 224 (5ed2ccfa); link 54/102/45 (3576e509).
   Rules found: BuddyState partial scalarisation (dead whole-struct read), `i * K` induction variables,
