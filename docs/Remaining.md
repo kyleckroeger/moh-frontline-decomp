@@ -44,7 +44,7 @@ Verified: **1,282,440 / 1,414,572 code bytes (90.66%)**. Left: about 132.0 KB in
 
 Priority 1 is 81.9 KB and would take the project to 96.4% at most.
 
-Partial-source sweep: 4 code-exact, not yet linked (4.5 KB), 90 consistent (121.7 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 5 code-exact, not yet linked (5.2 KB), 89 consistent (121.0 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->

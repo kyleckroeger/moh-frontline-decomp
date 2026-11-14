@@ -595,6 +595,17 @@ card folder before each run, because a save left by one run changes the next.
     shapes, so no pair dispatches to it. `hooks_boxtri_1_2.txt` calls it on 5,000 random
     boxes (some axis-aligned) and triangles (some degenerate) at update 3400: 3,637
     separated, 60 touching, 1,303 overlapping, the same sequence as the original.
+- **Re-proving changed drafts (reprove).** A changed draft loses its mark, and `prove`
+  skips any draft that still has one, so run `check_draft.py --all` (drops the stale
+  marks) before marking. Link the same way as the first proof (every draft but
+  `RenderSystem`, `--coverage`, the route's probes), run test and control, and mark only
+  the drafts whose marks went stale, with `check_draft.py --prove ROUTE NAMES`, under the
+  route that first proved each: the level routes also run most of the Mission 1 drafts,
+  so `prove` on them would rename those marks. On 11-13 the 22 drafts changed by the loop
+  were re-proven this way: `m1_opening` (13, `--skip 1560`, 1,436 lines including every
+  in-level frame), `route_menu` (4, 3,365 lines), `route_1_2` (1, 4,137 lines) and
+  `route_2_1` (4, 3,043 lines), all `--no-hash --ignore-frames 1530`, each identical to
+  its control to the end of the shorter run. 91 of the 96 drafts are proven.
 
 ### Capturing a draft's graphics commands
 

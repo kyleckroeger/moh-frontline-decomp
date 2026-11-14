@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 1017,
- "function_bytes_by_status": {"consistent": 121724, "differs": 5764, "exact": 4472, "verified": 1273596},
+ "function_bytes_by_status": {"consistent": 121008, "differs": 5764, "exact": 5188, "verified": 1273596},
  "data_bytes_owned": 815718,
  "data_bytes_total": 1976252,
  "functions": [
@@ -962,7 +962,7 @@
  [2147841600, 1264, "BIFunc_GetInitialBuddyOrders__FPPiPv", "consistent", "research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp"],
  [2147842864, 892, "BIFunc_AddBuddy__FPPiPv", "consistent", "research/drafts/BIFunc_AddBuddy.80057b30.cpp"],
  [2147843756, 912, "AddBuddy__F9BuddyInfob", "consistent", "research/drafts/AddBuddy.80057eac.cpp"],
- [2147844668, 716, "BIFunc_CreateBuddyDataStructures__FPPiPv", "consistent", "research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp"],
+ [2147844668, 716, "BIFunc_CreateBuddyDataStructures__FPPiPv", "exact", "research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp"],
  [2147845384, 24, "end__Q23dwi23vector<13BuddyPathInfo>Fv", "verified", "src/game/buddy_vec_path_end.cpp"],
  [2147845408, 68, "__dt__Q23dwi25vec_iter<13BuddyPathInfo>Fv", "verified", "src/game/buddy_veciter_path_dtor.cpp"],
  [2147845476, 12, "begin__Q23dwi23vector<13BuddyPathInfo>Fv", "verified", "src/game/buddy_vec_path_begin.cpp"],
