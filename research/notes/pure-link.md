@@ -143,3 +143,13 @@ heap corruption earlier in the run. Candidates: an object allocated with one cla
 with another (a view smaller than the real class), or a latent overflow that the original layout
 hides. Next: a probe on MEM_allocalign/MEM_free that checks the heap chain (the REAL memory manager's
 block headers) after every call and reports the first bad link with its caller.
+
+**05:15.** Heap ruled out too. `research/probes/heap_check_probe.cpp` is memalloc.cpp with a walk of
+every memory class's block chain at each allocation. The chains stay intact through all ~3,100
+allocations up to the failure. The last allocation before it is the "Subtitle queue" (call 3096,
+update ~2760), and it succeeds. No allocation happens between it and the flood, so the runaway reader
+isn't the allocator. With the probe's timing the trace matches the control even at 2730 (the
+pre-spawn state). What's left: the pop-up/subtitle draw path in its first frames (pumhandler.cpp's
+UpdateSubtitles and PopUpMessageHandler_Loop, popup.cpp's draft Scroll, the font draw). Next:
+entry_trace extended to the font/SDK text functions, or a probe around PopUpMessageHandler_Loop
+reporting the message's string pointers. `research/probes/strlen_check_probe.cpp` is the strlen probe.

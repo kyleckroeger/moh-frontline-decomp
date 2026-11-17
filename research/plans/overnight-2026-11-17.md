@@ -63,6 +63,8 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   chunk > DisplaySubtitle > PopUpMessage). See pure-link.md.
 - ~05:05 Narrowed further: the read is most likely MEM_allocalign walking a corrupt heap chain (probes on
   strlen and DWI_allocalign). Lead for a heap-check probe recorded in pure-link.md.
+- ~05:15 Heap check probe: heap intact; not the allocator. Narrowed to the pop-up/subtitle draw path
+  (pure-link.md). W1 parked here with probes saved in research/probes/.
 
 ## Questions for the morning
 

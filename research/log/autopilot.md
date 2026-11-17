@@ -2911,3 +2911,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] IVolume.h: 4 more units (18); move_header.py accepts any of the original's weak copies as weak duplicates.
 - 2026-11-17 [W2.3] BSGO_Basic.h: 7 more units (17) with the widened weak-copy rule; CRenderBin's lost units still change section sizes.
 - 2026-11-17 [W1] entry_trace.py probes with EFB-range reads (writes to 0xCC01xxxx hit real registers). The route 1_2 runaway read starts right after the level's first subtitle (PlayScriptedSound > GetSoundEvent > EndianSwap(SOUND_MULTISUBTITLEDATA) > Get_LanguageSubtitleIndex > DisplaySubtitle > AddPopUpMessage > PopUpMessage).
+- 2026-11-17 [W1] heap_check_probe (memalloc.cpp + chain walk): heap intact up to the failure; last allocation (Subtitle queue) fine. Failure is in the pop-up/subtitle draw path. Probes saved: research/probes/heap_check_probe.cpp, strlen_check_probe.cpp.
