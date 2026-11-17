@@ -49,7 +49,7 @@ fragments with no open function inside. "Run" below means that run of fragments.
 | objcreate.cpp | `BSGO_Dummy` (weak, no key) | CreateDestructable (11), CreateRootHierObject (2), CreateDumpObject (56) | the weak table comes from the code that constructs a BSGO_Dummy (CreateDumpObject's area) | interleaved with units' data | blocked |
 | player.cpp | `CPlayerObject` | SetFinishedLevelData (11), InitMultiplayer (multiplayer, declined form) | run of 21 fragments between the two | interleaved with player_crouch's and player_bullet's data | blocked (multiplayer last) |
 | light.cpp | 4 | none | — | — | on hold |
-| world_volume.cpp | `CWorldVolume` | none | — | — | on hold |
+| world_volume.cpp | `CWorldVolume` | none | — | — | merged 2026-11-16 with a gap function |
 
 The same recipe works for both merges: RTTI on, the key function declared first, one member view per
 class, `--pool .sdata2`, and weak or file duplicates for inline copies (see the commits).
@@ -67,3 +67,4 @@ class, `--pool .sdata2`, and weak or file duplicates for inline copies (see the 
 
 Both questions answered (yes to each). cdbobject_dtor owns `__vt__10CCDBObject` (d62c62f9);
 axDspSlave/axDspSlaveLength transcribed. source_link: 35 undefined, all vtables.
+world_volume.cpp merged whole with the gap function RemoveAllSubVolumes (linker-stripped): 34 undefined.
