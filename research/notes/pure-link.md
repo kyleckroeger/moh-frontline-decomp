@@ -153,3 +153,6 @@ pre-spawn state). What's left: the pop-up/subtitle draw path in its first frames
 UpdateSubtitles and PopUpMessageHandler_Loop, popup.cpp's draft Scroll, the font draw). Next:
 entry_trace extended to the font/SDK text functions, or a probe around PopUpMessageHandler_Loop
 reporting the message's string pointers. `research/probes/strlen_check_probe.cpp` is the strlen probe.
+- Tried and dropped: tracing SDK and library functions too. With the OS/EXI/SI/cache functions the image
+  doesn't boot; without them it crashes in MSL's printf path (some library functions don't survive a
+  moved first instruction). entry_trace.py stays game-only.
