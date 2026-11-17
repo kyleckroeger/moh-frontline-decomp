@@ -565,3 +565,7 @@ that is a placeholder (dataXX) yields to the most common real name among the vie
   literals ("Stripped object is not one compiler object", 3), file duplicates (2). The header's
   inline virtuals make each unit emit CRenderBin's weak table and copies, which those units'
   manifests don't have. That is a manifest/stripping problem for move_header, not a naming one.
+- CMatrix (report only, not applied): 8 of 46 views would change (forward/position, m_front/m_pos
+  spellings). Most views lay float arrays over the rows, which a rename can't fix. So for both
+  classes measured, names are a small part of what blocks header moves; weak-copy manifests and
+  array views are the larger part.
