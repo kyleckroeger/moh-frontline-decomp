@@ -253,3 +253,27 @@ through: with the morph count patched the pure image already does.
 (2) checked: __start's first .bss range (0x801d8ce0..0x80458d80) covers g_frame_cache, so the
 0x486e486e in it was written after boot. Find that writer with a gdbpeek.ps1 write watchpoint on a
 frame-cache slot (e.g. the first read's, g_frame_cache + 0x220 in pure_l12fr.elf).
+
+**Found and fixed (2026-11-17, afternoon): an alignment bug, not a stray writer.** A probe dumping
+the whole slot next to a direct ARStartDMA read of the same ARAM range
+(research/probes/frame_async_probe.cpp) shows the slot holding the right frame data **shifted by 16
+bytes** (slot[i] = aram[i + 16]); 0x486e486e is ordinary frame data at the wrong offset. The DMA
+ignores the low 5 bits of the main-memory address, and the pure image's `g_frame_cache` sat at
+16 mod 32 (0x80446570; the original's is 0x801c6e20). It is defined in
+research/data/bss/unassigned.cpp with no alignment, so the pure link placed it on 8/16 bytes.
+research/probes/ardma_seq_probe.cpp ruled out the ARQ/AR callback-order theory first: one DMA per
+read, finished (`busy 0`) before DMAFromARAMCallback, nothing else in between; even the uncached
+mirror read 0x486e486e.
+- Fix: `__attribute__((aligned(32)))` on the research/data objects the original has 32-aligned:
+  g_frame_cache, axDspSlave (DSP microcode, also a DMA source), FONTstandfile, masterEventTable,
+  movementText, sndss, vgPadStatus. check_data.py: still 527 exact.
+- Result: route 1_2 on the pure image (route, clock and level probes, no patch) runs the whole 400 s
+  (4,492 trace lines, update 134,730), no exception, no EFB reads. Its trace, hash left out, is
+  identical to the control (cm63.log) for all 3,632 of the control's lines.
+- `research/tools/pure_align_check.py ELF` lists objects that lost 32-byte alignment. Left after the
+  fix, all defined by verified units and none a known DMA buffer: pfstates, DCTtab0a,
+  g_theCollisionTable, two vtables, aemscompinfo, ShellLibraryInfo, GXNtsc480IntDf, sndlibauthor.
+- Lesson for the port: any buffer that hardware DMA touches needs explicit 32-byte alignment in
+  source; the original got some of it from link order alone.
+- The 25-minute watchpoint run missed: a probe edit moved the slot. Re-derive watch addresses from
+  the exact ELF being run.

@@ -30,9 +30,9 @@ public:
     static int m_ModeCounter1;
 };
 
-unsigned char g_frame_cache[0xc800];
+unsigned char g_frame_cache[0xc800] __attribute__((aligned(32))); // ARAM DMA target: must be 32-byte aligned
 unsigned char g_scratch_pad[0x4000]; // no source names its type yet
-char movementText[14][24];
+char movementText[14][24] __attribute__((aligned(32)));
 char MovementText[15][24];
 unsigned char * MPDcurrent_frame[3];
 int MPDf_code[2][2];
@@ -40,10 +40,10 @@ int MPDframe_center_horizontal_offset[3];
 int MPDframe_center_vertical_offset[3];
 struct layer_data MPDbase;
 PATHSTATEVIEW pfstates[4];
-PADStatus vgPadStatus[4];
+PADStatus vgPadStatus[4] __attribute__((aligned(32)));
 PADStatus gPadStatus[4];
 MEMCLASS* memclass[64];
-void* sndss[32];
+void* sndss[32] __attribute__((aligned(32)));
 char sndgs[568];
 signed char sndaztospkr[256][4];
 SNDARAMVIEW sndaram;

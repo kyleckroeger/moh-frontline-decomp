@@ -13,7 +13,7 @@ struct InputEvent {
     int value;
 };
 
-InputEvent masterEventTable[189] = {
+InputEvent masterEventTable[189] __attribute__((aligned(32))) = {
     /*   0 */ {0x120000}, {0x120000}, {0x020000}, {0x020000}, {0x020000}, {0x020000},
     /*   6 */ {0x020000}, {0x052000}, {0x052000}, {0x0d2000}, {0x0d2000}, {0x020000},
     /*  12 */ {0x020000}, {0x020000}, {0x000000}, {0x020000}, {0x000000}, {0x052000},
