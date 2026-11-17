@@ -70,3 +70,46 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 ## Questions for the morning
 
 (none yet)
+
+## Morning summary (written ~06:00; the permuter run on death_cb continues until ~08:30)
+
+**W2.1 SDK struct views: done.** All 17 game/EA files that declared their own OS, DVD, PAD, CARD, GX,
+ARQ or AX structs now take them from the SDK headers, with bytes unchanged. The game's SDK headers are
+include/dolsdk2001. Its OSThread gained the `error` field (784 bytes like the original's threads),
+its headers gained C++ guards and a GAME_SDK_NO_LIBC opt-out, and `GameAddr`
+(include/game/GameAddr.h) types the pointer-to-integer DMA arguments for the port.
+research/notes/sdk-views.md.
+
+**W2.2 64-bit hazard inventory: done, in the port repo** (moh-frontline-pc 501317b,
+tools/hazards64.py, pc/hazards64.tsv: 589 candidate rows, with tests).
+
+**W2.3 shared headers:** new IVolume.h (18 units), CQuaternion.h (35), CRenderBin.h (21),
+CAIFilterRealPosition.h (20), BSGO_Basic.h (17), CVolSphere.h (6), plus CColor +14, ISceneNode +2,
+CPlayerObject +1 and CPlane +1: about 135 units moved, each verified. research/tools/move_header.py
+does the move with weak-duplicate entries. What blocks the rest is in research/notes/shared-headers.md
+(mostly member-name spellings, and result types such as EClsnState).
+
+**W1 pure-source image:** research/tools/pure_link.py links every unit, data file (with the vtable
+stopgap) and draft at a fresh layout with no original bytes. **It boots like the original** (no
+exception, the intro movies), and on route 1_2 its trace matches the original's into level 1_2.
+Then a runaway read starts in the level's first subtitle pop-up (pumhandler/popup draw path). Heap,
+allocator, strlen, statics, data and layout are all ruled out with probes. Details and next steps:
+research/notes/pure-link.md. Tools: entry_trace.py, boot_probe.py, dolphin_direct.py,
+pure_data_check.py, research/probes/heap_check_probe.cpp. Data fixes it needed: the HUD vertex
+arrays (research/data/init/UserInterface.cpp), the compartment draft's statics, the 25-vtable
+stopgap (research/data_stopgap/), the merged file statics.
+
+**Drafts:** the ShellInit draft had a wrong vertex colour (0xffffffff, original 0x80808080); fixed
+and proven again. Compartment draft statics fixed and proven again.
+
+**W3.1 near-misses:** CPartBin::Link and DrawNode gave nothing new. Harnesses for the automated
+permuter were set up; only death_cb's runs (scratch/perm/dcb2, result after ~08:30).
+
+## Questions for the morning
+
+1. The pure image's level-1_2 failure needs an interactive Dolphin debugger session (break on the
+   first EFB read at 0x88800000, read LR and the stack). Can you run one, or should the next session
+   build a scripted breakpoint (Dolphin's GDB stub)?
+2. Header moves are now mostly blocked by member-name spellings (the same field named differently per
+   file). A rename tool would move many more units, but it rewrites a lot of matched source. OK to
+   go ahead in a later session?

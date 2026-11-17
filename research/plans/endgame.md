@@ -65,10 +65,13 @@ the port shows is a port bug, never a decomp bug. That is the hand-off point.
    only by `source_link.py` and never by verified units. Each line is deleted once its file
    merges. This reverses the 11-12 coordinator ruling, which chose merges only. Merges still
    happen where they come for free (see W3).
-2. Fix the 45 duplicates and the fragment-local reach-ins that a real link rejects. Most are
+2. **DONE 2026-11-17 (research/tools/pure_link.py):** a real link of the pure-source image (statics
+   merged per file, duplicates weakened, .bss in each file's layout, start-up tables built).
+   Fix the 45 duplicates and the fragment-local reach-ins that a real link rejects. Most are
    weak copies and file statics; source_link.tsv lists them.
 3. Boot the pure-source image and replay route_menu, m1_opening and route_1_2 against the
-   original.
+   original. **2026-11-17:** it boots like the original and its route 1_2 trace matches into level
+   1_2, then fails at the first subtitle pop-up (research/notes/pure-link.md).
 4. Widen coverage. Replay every existing level route (2_1, 3_1, 4_1, 4_2, 5_1, 5_4, 6_1,
    carry_1_3; research/movies/) on the all-drafts image. Then add a short route for each level
    that has none, so every draft the campaign reaches is proven somewhere. Fix or bisect what
