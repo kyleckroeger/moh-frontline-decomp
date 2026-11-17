@@ -450,3 +450,17 @@ try_header.py IVolume (research/layout/header_moves/IVolume.tsv): 78 units with 
 Next for this class: settle the result type across the derived volume views (CVolBox, CVolSphere,
 CVolCapsule, CCDBObject, CCDBVolBox, CWorldVolume, CAnimatedVolume, CVolFiber), then move the lost
 units with weak-duplicate entries.
+
+Later on 11-17: the header no longer includes game/CVector3.h. The includer provides CVector3, the
+shared one or its own view, which halves the compile failures (40 to 15). Re-measured: 4 kept,
+55 lost, 15 no_compile. `scratch/s1116/move_header.py` (archived to research/tools/move_header.py)
+applies try_header's moved source and, when the only change is new weak IVolume copies, lists them
+as weak duplicates with their original addresses. Moved and verified: box_linedist, box_pointdist,
+cdbgeom_triangle_line, cdbobject_intersect, compartment_volbox, plus the first 4, so 10 units are
+on the header. Still on their own views:
+- 18 units: "Weak duplicate lacks one retained original copy" (Create, TransformedCopy, the CVector3
+  TestCollision): project_build's rule for a weak duplicate. It needs a look at why those originals
+  count as not retained.
+- 15 units: other new weak functions besides IVolume's (derived classes' inline members that now
+  get emitted).
+- box_ivolume, objcreate_german: data layout.

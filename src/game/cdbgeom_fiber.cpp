@@ -27,6 +27,7 @@ public:
     unsigned char unknown10 : 7;
 };
 
+#include "game/CVector3.h"
 #include "game/IVolume.h"
 
 

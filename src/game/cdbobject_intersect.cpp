@@ -73,24 +73,8 @@ extern "C" unsigned int OSGetTick();
 extern "C" void MEM_free(void*);
 
 /* IVolume's virtual functions in the order of __vt__7IVolume. */
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-    virtual int TestCollision(const IVolume&, CCollision&, bool) const;
-    virtual int TestCollision(const CVolBox&, CCollision&, bool) const;
-    virtual int TestCollision(const CVolSphere&, CCollision&, bool) const;
-    virtual int TestCollision(const CVolCapsule&, CCollision&, bool) const;
-    virtual int TestCollision(const CCDBObject&, CCollision&, bool) const;
-    virtual int TestCollision(const CVolFiber&, CCollision&, bool) const;
-    virtual int TestCollision(const CAnimatedVolume&, CCollision&, bool) const;
-    virtual int TestCollision(const CWorldVolume&, CCollision&, bool) const;
-    virtual int TestCollision(CVector3, CCollision&, bool) const;
-    virtual int TestCollision(const CLine3&, CCollision&, bool) const;
-    virtual int TestCollision(const CPlane&, CCollision&, bool) const;
-    virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
-};
+#include "game/IVolume.h"
+
 
 /* Only the 16-aligned layout of the box's matrix is part of this view. */
 class CMatrixView {

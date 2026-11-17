@@ -158,10 +158,8 @@ struct VECTOR3VIEW {
     double pair[2];
 };
 
-class IVolume {
-public:
-    virtual ~IVolume();
-};
+#include "game/IVolume.h"
+
 
 class CVolBox : public IVolume {
 public:

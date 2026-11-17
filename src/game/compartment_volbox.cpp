@@ -25,11 +25,8 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
-class IVolume {
-public:
-    IVolume() {}
-    virtual ~IVolume() {}
-};
+#include "game/IVolume.h"
+
 
 class CVolBox : public IVolume {
 public:

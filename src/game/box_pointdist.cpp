@@ -53,10 +53,8 @@ public:
     CVector3 pos;
 } __attribute__((aligned(16)));
 
-class IVolume {
-public:
-    virtual ~IVolume();
-};
+#include "game/IVolume.h"
+
 
 class CVolBox : public IVolume {
 public:

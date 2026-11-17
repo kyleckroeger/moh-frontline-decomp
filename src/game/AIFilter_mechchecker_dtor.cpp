@@ -20,6 +20,7 @@ public:
 };
 }
 
+#include "game/CVector3.h"
 #include "game/IVolume.h"
 
 

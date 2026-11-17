@@ -13,7 +13,8 @@
 #ifndef GAME_IVOLUME_H
 #define GAME_IVOLUME_H
 
-#include "game/CVector3.h"
+// CVector3 must be complete before this header: the shared game/CVector3.h, or a file's own view
+// (many fragments still keep one; see research/notes/shared-headers.md).
 
 class CCollision;
 class CMatrix;

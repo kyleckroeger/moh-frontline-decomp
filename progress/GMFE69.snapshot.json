@@ -352,7 +352,7 @@
     "src/game/AIFilter_collisiondist.cpp": "9f0df5db12c0d862a57d05008c67a880516da9a663445aa65aa2d3195a95be57",
     "src/game/AIFilter_global.cpp": "36e963a6e4c7b9b3f2aeaeb6a85c5ac5c551715432472f4c8ed342528dccc6a7",
     "src/game/AIFilter_linechecks.cpp": "37fcd81342338d7b0b02e580178199cda18a11248da10ab2624efa1abb435faa",
-    "src/game/AIFilter_mechchecker_dtor.cpp": "7186f52dd5d4d38e30fdffc437900b2aaa7bac59adaebf60be7fe7fd757b3879",
+    "src/game/AIFilter_mechchecker_dtor.cpp": "0427139eb1d5d5324f9c7e57441fbee22248cbb63e169fe26941562ab5fd1ea5",
     "src/game/AIFilter_player.cpp": "dc30272c2e63d23fa1fe8a1ae00ce35b9625c684d1091f5300c1e8e3cd2effb3",
     "src/game/AIFilter_player_ctor.cpp": "1df6be20b5da0fed633c83c942ab83d89d2888edad1c290c43dccc0df0b73e60",
     "src/game/AIFilter_player_update.cpp": "3f0386f3d8149b9f17b88b41d3aa3010a42159a59a9c56ea406c1ac05114caa0",
@@ -521,8 +521,8 @@
     "src/game/box_dtor.cpp": "169e95abf24477cb9285ff0d5ebdf5aeb6628f86f9c4b8b256a58258b6801f64",
     "src/game/box_ivolume.cpp": "cd2b3495081ad7e913e5f7ec13ff27862782f509f50064bdb8818885c41d75c5",
     "src/game/box_line.cpp": "dc717c9bf025091d3a0e0f1823862bd7cda8b810f2d2064e5f2ace1765b749bc",
-    "src/game/box_linedist.cpp": "bb82786ed81ec3ca3dab7c5098c948b3b035b00fb7f4c24ece1c0bbcfd34c3ae",
-    "src/game/box_pointdist.cpp": "c285aa0ab0dd21eea8580d4e13663ba13e59661e6116a61e0825814f6ff516cd",
+    "src/game/box_linedist.cpp": "8eee937cfae0db952d731bb9a8bf5b4a095970841f7c830d69d596ca4f5e8320",
+    "src/game/box_pointdist.cpp": "6da4f71df2b27782d21297966fd5b0d9f295ec92f299832bf05829a9521dd99a",
     "src/game/box_setters.cpp": "8dc7b9d0e9310692670003153178577012ec4f73d4c998f2ce8f15c14919495a",
     "src/game/box_testtriangle.cpp": "fb162e55fea2b2b48dad3ae30e0bf621cc62ef01e21e543c103e6a38eb327f01",
     "src/game/box_visibility.cpp": "a8d41137f1849ca8b90803825d87e498c8dfba07c0caa04f0d15c6c508e979f3",
@@ -638,10 +638,10 @@
     "src/game/capsule_dtor.cpp": "80a5ac2eb4d0f76042bf47f6d3470b29e0f50bc3659f3c78cbd5facbbe18a8bb",
     "src/game/capsule_plane.cpp": "b8ebfdce53d53a384458ad6e988e52d08a312f4c9d08695cae33972be4ad6790",
     "src/game/cdbgeom.cpp": "425eb2c8349cfd7689037aaf961eac048c7d0a2b13768dc3e2262375fea37b59",
-    "src/game/cdbgeom_fiber.cpp": "4d0324a8973a4e4890ecc308a02bc98172c25fccbbedecdaa101eb2e444f6669",
+    "src/game/cdbgeom_fiber.cpp": "6f2ac2d1895ddc41c7470464917a75859ba1e809e47c32a46325296fe87fb7e3",
     "src/game/cdbgeom_sphere.cpp": "499b7a5ae72a249376d49c248cab0f9c4936d4a0b8bddf43249452283baa6e87",
     "src/game/cdbgeom_triangle_ctor.cpp": "18e8165e2a434a6e6d7f2f4a16fbbaa8425bbd0164ca944aad5e8252ecb75483",
-    "src/game/cdbgeom_triangle_line.cpp": "eafb58e76d773e8eed1a220ed7df45a29d9cb8e41da971ac4816a74098ba9a8c",
+    "src/game/cdbgeom_triangle_line.cpp": "3bbcfc5d88241719e063a533710963350a0737f495120b180acdf86afbbdb77b",
     "src/game/cdbgeom_vector.cpp": "80a34ea5e2fc77523baa3d669d0487a32233f5c4cdeec33104ce7105fa4fffc7",
     "src/game/cdbgeom_volbox.cpp": "f502c98b4638b85a20e4784118583d93de466f5ef21cf3e04e2c27ca4d4d786c",
     "src/game/cdbgeom_volbox_ctor.cpp": "bb73da24549f2c6a65d5fcc54c839169eb8354654d36c711c8186a7f022d9a36",
@@ -654,7 +654,7 @@
     "src/game/cdbobject_fastvec_frame.cpp": "01742b6cd682bd076bf11c8e1b8ff5edd57c7418f9624bb3f2a13b64cce83e4d",
     "src/game/cdbobject_fastvec_push.cpp": "6abcdba878a5a14d4779d4ebc0465753ea88c4fae7ff78a928c57c895e66ffc0",
     "src/game/cdbobject_init.cpp": "95fd82b9cb6d6c705bd40cc4b9116ef9ce3ecafaee97b3a7ec74ed4a2b2eada5",
-    "src/game/cdbobject_intersect.cpp": "14594ade8f7951308121be376251b71f01a999cc0a825bb652f62748f98d974b",
+    "src/game/cdbobject_intersect.cpp": "fc0af84e3ec64b08ccbeebdf2719a60acabaff409668af9d35b1ac19ca5c0416",
     "src/game/cdbobject_leaf.cpp": "011be5b6ad2f91024ce52d48359eef9ca00f5a2da27da1531383bcca556e2486",
     "src/game/cdbobject_line.cpp": "29936b3f8333efcdb6f41def89c62fc51c722e27eefec6234288ce0d9fbda7fe",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
@@ -683,7 +683,7 @@
     "src/game/compartment_sharedsize.cpp": "a72fb068099a37a5a4e167ec28cfe8571b69c85c1a0c9e43956adfd0bd910c81",
     "src/game/compartment_sprstack_dtor.cpp": "38dbdf030fe98cbc8f736c7b2ade35531398c2bc406d484b306ff5e80c0a2df1",
     "src/game/compartment_texswap.cpp": "238928e3bc37a5e8590b962f98fb345180f41a771a06ec676ed20c918824d68f",
-    "src/game/compartment_volbox.cpp": "266c0e0e4e041d6bd99280a223926cec254e55bd5978c8fbfa1b7559ba807112",
+    "src/game/compartment_volbox.cpp": "28cce7cce1e3a0f108c69150946b598be24902c11682b0713ee7ff5c4b1bb06a",
     "src/game/compartment_weak.cpp": "2b9cf8ba66e932cb4ca782b0b1e7496e1b0a2b3bcdacb2189723905282c52217",
     "src/game/configfile.cpp": "e71239c66131f5a2ec56f4c0ddff2b928ec91d259e735cc3fa9c709315910496",
     "src/game/csg_volume.cpp": "5f9ad682d61ea87d761f2c54ce041d01c410a2895cbd6514336a9a3451f46dc7",
@@ -1302,7 +1302,7 @@
     "include/game/GameAddr.h": "ae80091641e996fa11f333d54e3aa6107f993e2eb6900dcd7d8d10bacd2b274b",
     "include/game/IMovingSceneNode.h": "24397129e5a00578381b70aca371a95dd81cc21d0aba06746fc106ac0c41d604",
     "include/game/ISceneNode.h": "99f2489b753b107c1c575061bd0d71a84274230f9d0472da524f32296e5bdbdb",
-    "include/game/IVolume.h": "71150344b996d382fbd44ad291c4d67a04dc516e696b1c9bd6734dcd1ca38496",
+    "include/game/IVolume.h": "fea3de8b67d68adf4db802fa0465ca697a170d22b87a09418e0578df61b5a191",
     "include/game/msl_sqrtf.h": "f91d44ff20bd7fad0236d97ebde51f625247d746d9c04afa093c6b531d55b457",
     "include/prime/libc/ansi_files.h": "22d530eb96d140cfe20ec168096d3dbfaa57a34c5e4601ffd6f0962eb90996e1",
     "include/prime/libc/ansi_fp.h": "414c704260308790cfc1d86d412c92b994ea8a2039267133f95f010e89c92951",
@@ -1735,8 +1735,8 @@
     "config/GMFE69/box_dtor.json": "f606affda1437c0f07134abde740caf6dbadf3275c986f7c01d13e81f91c8dc3",
     "config/GMFE69/box_ivolume.json": "6b4fda804f966562b493432a14616bc50e974c74fd83bc11334b5968a5444c5b",
     "config/GMFE69/box_line.json": "7d7f402886b131f335f8660d936e5ae390183b5f867c9271efed3910d2f649ea",
-    "config/GMFE69/box_linedist.json": "581504593e1ce50affc575939f7d2a4e6fb9d0028ecf8be6b540a7167d646920",
-    "config/GMFE69/box_pointdist.json": "aef4e1db6a9c6559c87ea0c7b46f1df62b440e19812d4bd683b9a448eef1a78d",
+    "config/GMFE69/box_linedist.json": "a060e4e52946988f4a3295c903b04a9e3507c1ada446efbea32d251f154abd8a",
+    "config/GMFE69/box_pointdist.json": "71475c26e0b92b9304cda2ac39701da3ec1f30ff5c83941b68d667088be51310",
     "config/GMFE69/box_setters.json": "193dcf17a7e86d335b23786d1242ba384b45f0a3b2e14853c139f538252c08d2",
     "config/GMFE69/box_testtriangle.json": "3a5cf7ab6356713b91a2331b5c370e4c4b829232332599760e0468c9cceee3be",
     "config/GMFE69/box_visibility.json": "02b41474296f3f604bb90ec15796bc7033e191b3cbc519d0f5977754bd2d3777",
@@ -1899,7 +1899,7 @@
     "config/GMFE69/compartment_sharedsize.json": "cb8ee355056fb36e4117722eb30791527357156a0a0494cd51abff5b03bd5760",
     "config/GMFE69/compartment_sprstack_dtor.json": "406ac48de63df884bf45ab25d201802dbf6732ee50974c9786312d6a181d4df7",
     "config/GMFE69/compartment_texswap.json": "701496f708ab07fd3e77087c8bdaeb0c7db453e36078ed56db4b6688280ded3e",
-    "config/GMFE69/compartment_volbox.json": "4dae183039931cbd289e6b589834bc99dddfa0ce7b587ace0bc273b3584319c1",
+    "config/GMFE69/compartment_volbox.json": "e7e032e9706958f6b197fca82366747d60b44659bb046d5e5e4278150c5be3c2",
     "config/GMFE69/compartment_weak.json": "6283c1da7183adf5f06d403e3bcd47f1992da4471a059239237980ff764f7561",
     "config/GMFE69/configfile.json": "cb2600b530bf3aff651906d2012424eca5e570c9d7e110de78e18692bba70af3",
     "config/GMFE69/cpudetect.json": "f617351e9aa4e5ec3cd84ed1322674cc8c654e2e1e9b138b5402edf93e1acd56",
@@ -31074,8 +31074,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "0b6729b0ed525bf5f2051c993fc32374ef1dab285c835f3eac07989fdd4f8440",
-      "linked_sha256": "5a0ca5ca276c19348a5f27125b3f527324e5284d0e4b9464110718343fd787f2"
+      "object_sha256": "d535ebbcc1a706eac989c210085e7c777554ae36fceb49a57691a4945dea8dfc",
+      "linked_sha256": "7180926c50284e28bd67a5217117e4b2c50750a30e670be28f84f0f80985d146"
     },
     {
       "id": "AIFilter_caifilterobject_dtor",
@@ -32205,8 +32205,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "4d4c7eec79ec7d8cb84e2c2f63c4a1a20eb4fddba218232325a6379c5e5b618d",
-      "linked_sha256": "869f77191efc3862393d8312303e0fcbb15ce875cc9aeb88e063e570a39f7cc0"
+      "object_sha256": "15ee92f82f77c57273bb92d3cbf1da3c4ee3d1cac9a63c7883da84897c88618e",
+      "linked_sha256": "6459ad4b32e7e2103783b90da7ebf19cd6d19797f653166728cd8d4b67e213a0"
     },
     {
       "id": "cdbobject_fastvec_push",
@@ -34205,8 +34205,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "69edd2eb1046249deac7e1b018dc982a15b7111bb577f440c6aa3f51975df034",
-      "linked_sha256": "abeba796270551da79cea33ec2370cbffc8c1f40d29ce8e68a2cf3cb0d747242"
+      "object_sha256": "8c1b42a81e06baa5e41041a39c33a5ee294630a3ca04ea6605f1dde10ab2804a",
+      "linked_sha256": "5e3f0f8fd395d543efba5bb4ea27456af904a7d617d2293932be8d77285ec9a1"
     },
     {
       "id": "box_linedist",
@@ -34244,8 +34244,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ae2ee22f4c8458796e61bb02a39c2878f170c2f0c968938d3653bd3054e62400",
-      "linked_sha256": "e2aeab2a87bca16ee910defceb9a2afa6a72897b9e5957c56951a0b36f53c80f"
+      "object_sha256": "d96bec9ea2995e4043b2d31c561d5855338212d8f1155ff0e6a9037dc89fe55e",
+      "linked_sha256": "1fdb7bcb83526a68637d169df0ad24507d5a01ef49673deac5887afd9194d554"
     },
     {
       "id": "saemsamb",
@@ -41066,8 +41066,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "21f59fe59c7ab4c7f16d1e85fc5a25dec1339d1b80ac11b240db24f514159028",
-      "linked_sha256": "4693f151615dba18d4f6df8872cd37579da4a1ca42af79849bd3d9a6c631b74b"
+      "object_sha256": "8b56b9a8ed783d87e1dbb762996b4fab76f4772ed08255c5e1c665b629943ce6",
+      "linked_sha256": "e23b53bd92c1dde15f69f09c509c07b30537ac84f123f92670a00159291224b7"
     },
     {
       "id": "capsule_capsule",
