@@ -126,4 +126,5 @@ Both questions answered "yes", in this order, starting next session (paused for 
 2. **Rename tool for header moves.** One class at a time, landed and verified before the next.
    Use the shared header's member name, or the most common one if there is no header yet. Rename
    data members only, never anything that appears in a symbol.
-3. **Then switch to the PC port** (moh-frontline-pc).
+3. **Then switch to the PC port** (moh-frontline-pc). Port work runs in its own session opened in
+   the port repo, not from this one; a decomp session stops at the hand-off and says so.
