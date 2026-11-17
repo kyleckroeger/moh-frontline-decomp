@@ -10,6 +10,9 @@ The matching source is meant to be the base of a native PC port without
 multiplayer. Work is ordered by what that port needs, not by what is cheapest
 to match.
 
+From 2026-11-16 the plan for the rest of the project, and for the hand-off to the PC port, is
+[research/plans/endgame.md](../research/plans/endgame.md).
+
 1. **Collision, scripting, AI and animation.** The game cannot run correctly
    without them.
 2. **Everything else** that is not multiplayer: rendering, shell and HUD, audio,
