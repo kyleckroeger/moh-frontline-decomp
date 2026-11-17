@@ -3,9 +3,10 @@
 
 For an image linked with `pure_link.py --probe-space N`. Each traced function's first
 instruction becomes a branch to a stub in the reserved space. The first time the stub runs,
-it stores to an unused hardware address, 0xCC010000 + 4*k for the function's index k. Dolphin
-logs that write ("Trying to write 32 bits to an invalid MMIO (addr=0c01....)") at any point
-of the run, even before OSInit. The stub then executes the moved instruction and branches back.
+it reads the embedded frame buffer at 0xC8A00000 + 4*k (the Z+Color range, which Dolphin logs) for the function's index k. Dolphin logs
+that read ("... EFB read @ 0x084.....") at any point of the run, even before OSInit. Reading
+changes nothing. An earlier version wrote to 0xCC01xxxx, which Dolphin decodes onto real hardware
+registers, and that changed the run. The stub then executes the moved instruction and branches back.
 The stub uses r11, r12 and cr0, which are free at a function's entry, plus one flag byte
 per function.
 
@@ -82,7 +83,7 @@ def build(src, dst):
             continue
         stub = space + len(names) * STUB
         flag = flags + len(names)
-        mmio = 0xCC010000 + 4 * len(names)
+        probe = 0xC8A00000 + 4 * len(names)
         code = [
             0x3D800000 | ha(flag),                  # lis r12, flag@ha
             0x896C0000 | lo(flag),                  # lbz r11, flag@l(r12)
@@ -90,8 +91,8 @@ def build(src, dst):
             0x40820014,                             # bne +20 (to the moved instruction)
             0x39600001,                             # li r11, 1
             0x996C0000 | lo(flag),                  # stb r11, flag@l(r12)
-            0x3D800000 | ha(mmio),                  # lis r12, mmio@ha
-            0x918C0000 | lo(mmio),                  # stw r12, mmio@l(r12)
+            0x3D800000 | ha(probe),                 # lis r12, probe@ha
+            0x818C0000 | lo(probe),                 # lwz r12, probe@l(r12)
             first,                                  # the moved instruction
         ]
         code.append(branch(stub + 4 * len(code), entry + 4))
@@ -107,9 +108,9 @@ def build(src, dst):
 def decode(mapfile, log):
     names = dict(l.rstrip("\n").split("\t", 1) for l in open(mapfile))
     for line in open(log, errors="replace"):
-        m = re.search(r"invalid MMIO \(addr=0c01([0-9a-f]{4})", line)
+        m = re.search(r"EFB read @ 0x(08[a-b][0-9a-f]{5})", line)
         if m:
-            k = int(m.group(1), 16) // 4
+            k = (int(m.group(1), 16) - 0x08A00000) // 4
             print(names.get(str(k), f"?{k}"))
 
 

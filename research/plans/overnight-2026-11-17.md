@@ -58,6 +58,9 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   layout-dependent. Next: W2.3 shared headers (try_header.py), which serves the port more than more near-misses.
 - ~04:10 IVolume.h written; 4 units moved onto it (verified); 34 lost and 40 no_compile, analysed
   in shared-headers.md. pure_link drops the drafts' duplicate .ctors (route 1_2 still fails).
+- ~04:30 More header moves (IVolume 18, BSGO_Basic 17, CPlayerObject +1). entry_trace fixed (read
+  probes): the route 1_2 failure starts right after the level's first subtitle (sound.cpp's 'LUMS'
+  chunk > DisplaySubtitle > PopUpMessage). See pure-link.md.
 
 ## Questions for the morning
 

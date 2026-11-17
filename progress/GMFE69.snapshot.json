@@ -594,7 +594,7 @@
     "src/game/bsbifunc_promptbuffer.cpp": "7540258ee887721957c57fd16ff0149361b1f7af99a77dc354f7b29f66c9b189",
     "src/game/bsbifunc_promptinteger.cpp": "ecc26a79933719376d0639aed0fe0eaad01285e69433c170896243ae24aa7a7c",
     "src/game/bsbifunc_prompttext.cpp": "fec9603a6fc064f3326f0e97f2975d5f65a26e6322e0de0f25ba7c8a557f2037",
-    "src/game/bsbifunc_random.cpp": "232a053942d1a3b19b7de6bd1d54fe06628b6b2b509ad3d97acd5b4ca8f4918c",
+    "src/game/bsbifunc_random.cpp": "8a9b8c6dc659b72ef14833e710258135c7091dac48c5d3cf49aab9829c91e023",
     "src/game/bsbifunc_reload.cpp": "7e406f45d085251db42edaf7e4db0f7caf1d671c97cbfb6e600885a3a346dba1",
     "src/game/bsbifunc_respawn.cpp": "e93147d74d6f9ddd511101c27aee7b630a923c98a4ea27afd06123be1d4b8114",
     "src/game/bsbifunc_rotate.cpp": "f8ca86524944ad48418fe5009b924b2bfd70b96e8596566bbab6f59bee6f97a0",
@@ -23869,8 +23869,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "9d79677fb68c04c14a001b8e0a8fa11e0c0c6cbdd2c954a33287761bad280250",
-      "linked_sha256": "f64f00885dc1cc03264ef3e7d2dc936684257eab59913f9008ac9f18aa6a8ec0"
+      "object_sha256": "d64e23c800bb42f92122df9a7f44ed895aa22465eb020149b41b6a8a04a6c2fa",
+      "linked_sha256": "d0458825e1d249bd2392367fe47656a265bcb9ae815414ce8b8f830b18e92563"
     },
     {
       "id": "bsbifunc_melee",

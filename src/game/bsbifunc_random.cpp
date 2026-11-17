@@ -58,15 +58,8 @@ public:
     int m_type;
 };
 
-class CPlayerObject {
-public:
-    void CycleWeapon(int, int);
-    bool CanPlayerSwitchWeapon();
-    CWeapon* GetCurrentWeapon() const;
+#include "game/CPlayerObject.h"
 
-    unsigned char unknown000[1892];
-    int m_playerIndex;
-};
 
 class CSoldierObject {
 public:
@@ -180,7 +173,7 @@ void BIFunc_PlayerCanCookGrenades(int** stack, void* object) {
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
     bool canCook;
     if (g_bInMultiplayerMode) {
-        int player = ((ISceneNode*)object)->AsPlayerObject()->m_playerIndex;
+        int player = ((ISceneNode*)object)->AsPlayerObject()->m_controller;
         canCook = g_Shell.players[player].canCookGrenades != 0;
     }
     else

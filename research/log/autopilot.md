@@ -2910,3 +2910,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] include/game/CVolSphere.h; 4 units moved; 24 wait for their IVolume views.
 - 2026-11-17 [W2.3] IVolume.h: 4 more units (18); move_header.py accepts any of the original's weak copies as weak duplicates.
 - 2026-11-17 [W2.3] BSGO_Basic.h: 7 more units (17) with the widened weak-copy rule; CRenderBin's lost units still change section sizes.
+- 2026-11-17 [W1] entry_trace.py probes with EFB-range reads (writes to 0xCC01xxxx hit real registers). The route 1_2 runaway read starts right after the level's first subtitle (PlayScriptedSound > GetSoundEvent > EndianSwap(SOUND_MULTISUBTITLEDATA) > Get_LanguageSubtitleIndex > DisplaySubtitle > AddPopUpMessage > PopUpMessage).

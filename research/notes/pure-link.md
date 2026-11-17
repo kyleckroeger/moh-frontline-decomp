@@ -112,3 +112,18 @@ pure_link now keeps .ctors only in the drafts of a `__sinit` function (53 entrie
 original), and the failure stays. (2) Private copies of other files' globals: only 2, both SDK.
 (3) Merged statics are all .bss (57), .sbss (24) or .sdata (7), and every object holding a merged
 .bss static is placed in its file's layout. The failure is deterministic and still unexplained.
+
+**04:55: the failure located.** entry_trace.py now probes with a *read* in Dolphin's logged EFB range
+(0xC8A00000 + 4k). The first version wrote to 0xCC01xxxx, which Dolphin decodes onto real hardware
+registers, and that changed the run. With the clock probe, the traced image reproduces the failure exactly
+(same last trace line). The functions entered for the first time just before the first runaway read
+(at 0x88800000) are the level's first scripted voice line and its subtitle:
+PlayScriptedSound > CSoundTable::GetSoundEvent > EndianSwap(SOUND_MULTISUBTITLEDATA) >
+CShellMenu::Get_LanguageSubtitleIndex > DisplaySubtitle > PopUpMessageHandler::AddPopUpMessage >
+PopUpMessage's setters, Scroll (a draft, proven on m1_opening), UpdateDisplayTime, Get_screenLocX,
+Get_a. Then the reads start. All of them are verified units except Scroll. In sound.cpp the subtitle
+text is `strings + header->offsets[language]` inside sound data loaded at run time ('LUMS' chunks). A
+wrong language index or a wrong chunk pointer would give exactly a long sequential read (strlen or
+the text draw). The statics on this path (g_popUpMessage, g_pPopUpMessageHandler, g_HintTextArray)
+have the original's sizes and relative layout. Next: probe deeper (entry_trace on SDK/EA code too:
+font drawing, strlen) or read g_Shell's language field and the 'LUMS' chunk in Dolphin's memory view.
