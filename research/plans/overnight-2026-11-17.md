@@ -39,6 +39,9 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   Next: MemoryCardGC, staticmesh_init, animemot, Moh2, then the address typedef.
 - ~01:15 Items 1-2 DONE: all 17 files on the SDK headers; GameAddr typedef for the ARQ address
   casts. Next: item 3, the pure-source link tool.
+- ~01:20 Item 3: research/tools/pure_link.py links the pure-source image with no errors
+  (build/pure/Moh2RelGC_pure.elf). It doesn't boot: Dolphin calls __start and nothing more is
+  logged. Working on the boot.
 
 ## Questions for the morning
 

@@ -413,6 +413,18 @@ fragment-local, 45 duplicate**, 0 small-data, 15 stripped. Next: a real link of 
 (fresh layout, GNU ld), which must resolve the fragment-local and duplicate symbols and provide the
 tables MWLD makes (`_rom_copy_info`, `_bss_init_info`, `_eti_init_info`).
 
+2026-11-17: `research/tools/pure_link.py` performs that link and it succeeds: 999 units, 73 data
+files (with the stopgap) and 92 drafts, no original bytes, GNU ld at a fresh layout from 0x80007100
+with one load segment per section as in the original. It weakens 452 duplicate or draft-copied
+globals and makes 200 statics global, each under a file-unique name (`name.FILE`) so that the copies
+one original file's fragments hold merge into one object, and statics of the same name in other files
+stay apart. 11 names only dead-stripped code reaches get a trap stub. The linker script builds
+`_rom_copy_info`, `_bss_init_info`, `_eti_init_info`, `_ctors`/`_dtors`, the SDA bases, the stack and
+the arena (`.text` is 0x18df0c bytes, against 0x1570c0 in the original, because of drafts, weak copies
+and dead-stripped code). **It doesn't boot yet.** Dolphin calls `__start` and nothing more is logged:
+no OSInit banner, no exception. The probes tried so far can't see code that runs before OSInit
+installs its handlers.
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
