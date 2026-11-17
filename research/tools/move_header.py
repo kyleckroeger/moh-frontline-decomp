@@ -8,7 +8,9 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'tools'))
 from formats import Elf32
 cls = sys.argv[1]; mangled = f"{len(cls)}{cls}"
-orig = {s['name']: s['address'] for s in Elf32((ROOT / 'orig/GMFE69/Moh2RelGC.elf').read_bytes()).symbols() if s['name']}
+_syms = [s for s in Elf32((ROOT / 'orig/GMFE69/Moh2RelGC.elf').read_bytes()).symbols() if s['name']]
+orig = {s['name']: s['address'] for s in _syms}
+orig_weak = {s['name'] for s in _syms if s['binding'] == 2}
 def one(u):
     r = subprocess.run(['python3', 'research/tools/one_unit.py', u], cwd=ROOT, capture_output=True, text=True, timeout=900)
     return (r.stdout + r.stderr).strip().splitlines()[-1] if (r.stdout + r.stderr).strip() else ''
@@ -26,7 +28,7 @@ for u in sys.argv[2:]:
         known = {f['name'] for f in cfg['functions']}
         extra = sorted({s['name'] for s in obj.symbols() if s['binding'] == 2 and 0 < s['section'] < 0xFF00
                         and s['type'] in (1, 2) and s['name'] not in known})
-        if extra and all(mangled in n for n in extra) and all(n in orig for n in extra):
+        if extra and all(n in orig_weak for n in extra):  # every extra copy is one of the original's weak copies
             cfg['weak_duplicates'] = sorted(set(cfg.get('weak_duplicates', [])) | set(extra))
             cfg['externals'] = {**cfg.get('externals', {}), **{n: hex(orig[n]) for n in extra}}
             cfgp.write_text(json.dumps(cfg, indent=2) + '\n')

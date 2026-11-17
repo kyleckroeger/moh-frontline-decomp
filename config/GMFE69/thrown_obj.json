@@ -320,7 +320,9 @@
     "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__10BSGO_Dummy": "0x80183330",
     "g_scene": "0x8019484c",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "GetExtents__7IVolumeCFR8CVector3R8CVector3": "0x8001c134",
+    "TransformedCopy__7IVolumeFRC7IVolumeRC7CMatrix": "0x8001c0c8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -365,6 +367,7 @@
     "GetAIDoodad__10ISceneNodeCFv",
     "GetAIDoodad__10ISceneNodeFv",
     "GetAttachedLight__13CStaticObjectCFv",
+    "GetExtents__7IVolumeCFR8CVector3R8CVector3",
     "GetScriptObject__10ISceneNodeCFv",
     "GetScriptObject__13CStaticObjectCFv",
     "GetWorldLinearVelocity__16IMovingSceneNodeCFv",
@@ -380,6 +383,7 @@
     "SetCollisionId__13CStaticObjectF7EClsnId",
     "SetScript__13CStaticObjectFP8BSObject",
     "Transform__16IMovingSceneNodeFRC7CMatrix",
+    "TransformedCopy__7IVolumeFRC7IVolumeRC7CMatrix",
     "TriggerScriptEvent__13CStaticObjectFiPvb",
     "UpdateAI__10ISceneNodeFf",
     "Yaw__16IMovingSceneNodeFf"

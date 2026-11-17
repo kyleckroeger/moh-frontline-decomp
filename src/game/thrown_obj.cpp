@@ -239,26 +239,8 @@ struct BSObject {
 
 
 /* inferred: the volumes' virtual slots used here (TransformedCopy +0x10, GetExtents +0x48) */
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-    virtual void unknown014();
-    virtual void unknown018();
-    virtual void unknown01c();
-    virtual void unknown020();
-    virtual void unknown024();
-    virtual void unknown028();
-    virtual void unknown02c();
-    virtual void unknown030();
-    virtual void unknown034();
-    virtual void unknown038();
-    virtual void unknown03c();
-    virtual void unknown040();
-    virtual void unknown044();
-    virtual void GetExtents(CVector3&, CVector3&) const;
-};
+#include "game/IVolume.h"
+
 
 class CVolBox {
 public:

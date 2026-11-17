@@ -2908,3 +2908,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] CPlane +1, ISceneNode +2 units on the shared headers; CMatrix's 46 remaining views all need spelling rewrites.
 - 2026-11-17 [W2.3] include/game/BSGO_Basic.h; 10 units moved (verified). Result types of 3 virtuals still unknown (block 32 views).
 - 2026-11-17 [W2.3] include/game/CVolSphere.h; 4 units moved; 24 wait for their IVolume views.
+- 2026-11-17 [W2.3] IVolume.h: 4 more units (18); move_header.py accepts any of the original's weak copies as weak duplicates.

@@ -516,3 +516,8 @@ GetEmbeddedHitReactionInfo have to be recovered (from their users) before the re
 the 17 table slots in __vt__10CVolSphere's order, the radius at +0xc and the centre at +0x10.
 try_header: 4 kept, **4 moved**. 24 no_compile, all of them because the unit also keeps its own
 IVolume view (a second definition), so those wait for their IVolume moves.
+- IVolume, later: move_header.py accepts any extra weak copy that is one of the original's weak
+  copies (derived views' implicit destructors and the like). 4 more moved (Soldier_object_ctor,
+  animplayer, player_ctor, thrown_obj), so 18 units are on IVolume.h. The other lost units also change
+  their extab/.text size (new weak copies with exception records), which weak-duplicate entries alone
+  don't cover.

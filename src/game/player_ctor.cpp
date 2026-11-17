@@ -131,11 +131,8 @@ public:
     CVector3 position;
 };
 
-class IVolume {
-public:
-    IVolume() {}
-    virtual ~IVolume() {}
-};
+#include "game/IVolume.h"
+
 
 class CVolBox : public IVolume {
 public:

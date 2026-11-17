@@ -305,7 +305,9 @@
     "g_scene": "0x8019484c",
     "memset": "0x80009410",
     "rand": "0x8013fc54",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "GetExtents__7IVolumeCFR8CVector3R8CVector3": "0x8001c134",
+    "TransformedCopy__7IVolumeFRC7IVolumeRC7CMatrix": "0x8001c0c8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -339,6 +341,8 @@
     "AsWorldObject__10ISceneNodeCFv",
     "AsWorldObject__10ISceneNodeFv",
     "CommitAI__10ISceneNodeFv",
-    "GetAttachedLight__10ISceneNodeCFv"
+    "GetAttachedLight__10ISceneNodeCFv",
+    "GetExtents__7IVolumeCFR8CVector3R8CVector3",
+    "TransformedCopy__7IVolumeFRC7IVolumeRC7CMatrix"
   ]
 }

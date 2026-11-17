@@ -121,26 +121,8 @@ void* AllocateAnimatedVolume();
 
 
 /* the volumes' virtual slots used here (TransformedCopy +0x10, GetExtents +0x48) */
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-    virtual void vf14();
-    virtual void vf18();
-    virtual void vf1c();
-    virtual void vf20();
-    virtual void vf24();
-    virtual void vf28();
-    virtual void vf2c();
-    virtual void vf30();
-    virtual void vf34();
-    virtual void vf38();
-    virtual void vf3c();
-    virtual void vf40();
-    virtual void vf44();
-    virtual void GetExtents(CVector3&, CVector3&) const;
-};
+#include "game/IVolume.h"
+
 
 class CVolSphere {
 public:

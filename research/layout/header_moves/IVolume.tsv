@@ -3,7 +3,6 @@ AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collision
 AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	lost	Stripped object is not one compiler object: @54
 AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	lost	Unexpected compiler function set
 PathNodeList_disable	scratch/try/PathNodeList_disable/src/PathNodeList_disable.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\PathNodeList_disable.cpp # ---------------------------------------- #      38: } __attribute__((aligned(16)));
-Soldier_object_bounds	scratch/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	lost	Unexpected compiler function set
 Soldier_object_ctor	scratch/try/Soldier_object_ctor/src/Soldier_object_ctor.cpp	lost	Unexpected compiler function set
 Tank_object	scratch/try/Tank_object/src/Tank_object.cpp	lost	Unexpected compiler function set
 anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	lost	Stripped object is not one compiler object: @1376
@@ -15,8 +14,6 @@ box_dispatch2	scratch/try/box_dispatch2/src/box_dispatch2.cpp	lost	Unexpected co
 box_dtor	scratch/try/box_dtor/src/box_dtor.cpp	lost	Pool item differs from the original: box_dtor .sdata2+0x0
 box_ivolume	scratch/try/box_ivolume/src/box_ivolume.cpp	lost	Unexpected compiler function set
 box_line	scratch/try/box_line/src/box_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_line.cpp # ---------------------------- #     152: };
-box_linedist	scratch/try/box_linedist/src/box_linedist.cpp	kept	
-box_pointdist	scratch/try/box_pointdist/src/box_pointdist.cpp	kept	
 box_setters	scratch/try/box_setters/src/box_setters.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\box_setters.cpp # -------------------------------
 box_testtriangle	scratch/try/box_testtriangle/src/box_testtriangle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_testtriangle.cpp # ------------------------------------ #      93: };
 box_visibility	scratch/try/box_visibility/src/box_visibility.cpp	lost	Unexpected compiler function set
@@ -27,14 +24,12 @@ capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	lost	Unex
 capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	lost	Unexpected compiler function set
 capsule_dtor	scratch/try/capsule_dtor/src/capsule_dtor.cpp	lost	Unexpected compiler function set
 capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	lost	Unexpected compiler function set
-cdbgeom_triangle_line	scratch/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	kept	
 cdbgeom_volbox	scratch/try/cdbgeom_volbox/src/cdbgeom_volbox.cpp	lost	Unexpected compiler function set
 cdbgeom_volbox_ctor	scratch/try/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	lost	Unexpected compiler function set
 cdbgeom_volbox_line	scratch/try/cdbgeom_volbox_line/src/cdbgeom_volbox_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox_line.cpp # --------------------------------------- #     105: };
 cdbobject_csg	scratch/try/cdbobject_csg/src/cdbobject_csg.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_csg.cpp # ---------------------------------
 cdbobject_ctor	scratch/try/cdbobject_ctor/src/cdbobject_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_ctor.cpp # ----------------------------------
 cdbobject_dtor	scratch/try/cdbobject_dtor/src/cdbobject_dtor.cpp	lost	Unexpected compiler function set
-cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	kept	
 cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbobject_leaf.cpp # ---------------------------------- #     118: };
 cdbobject_line	scratch/try/cdbobject_line/src/cdbobject_line.cpp	lost	Compiled source bytes differ: cdbobject_line .text
 cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	lost	Stripped object is not one compiler object: @67
@@ -42,7 +37,6 @@ collision	scratch/try/collision/src/collision.cpp	lost	Unexpected compiler funct
 compartment_ctor	scratch/try/compartment_ctor/src/compartment_ctor.cpp	lost	Stripped object is not one compiler object: @83
 compartment_intersect	scratch/try/compartment_intersect/src/compartment_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_intersect.cpp # ----------------------------------------- #      52: };
 compartment_nodeshadows	scratch/try/compartment_nodeshadows/src/compartment_nodeshadows.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_nodeshadows.cpp # ------------------------------------------- #      56: };
-compartment_volbox	scratch/try/compartment_volbox/src/compartment_volbox.cpp	lost	Unexpected compiler function set
 csg_volume	scratch/try/csg_volume/src/csg_volume.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\csg_volume.cpp # ------------------------------ #     118: };
 explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	lost	Unexpected compiler function set
 fiber	scratch/try/fiber/src/fiber.cpp	lost	Stripped object is not one compiler object: @293
@@ -60,13 +54,10 @@ player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	los
 player_commit	scratch/try/player_commit/src/player_commit.cpp	lost	Unexpected compiler function set
 player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	lost	Unexpected compiler function set
 player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	lost	Compiled source bytes differ: player_respawn .text
-player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	lost	Unexpected compiler function set
-player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	lost	Unexpected compiler function set
 projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	lost	Pool item differs from the original: projectilebullet .sdata2+0x58
 scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	lost	Unexpected compiler function set
 shadow	scratch/try/shadow/src/shadow.cpp	lost	Unexpected compiler function set
 sphere	scratch/try/sphere/src/sphere.cpp	lost	Stripped object is not one compiler object: @610
-static_obj_bounds	scratch/try/static_obj_bounds/src/static_obj_bounds.cpp	lost	Unexpected compiler function set
 thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	lost	Unexpected compiler function set
 thrownbullet	scratch/try/thrownbullet/src/thrownbullet.cpp	lost	Unexpected compiler function set
 volume_query_test	scratch/try/volume_query_test/src/volume_query_test.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\volume_query_test.cpp # ------------------------------------- #      45: __declspec(weak) IVolume::~IVolume() {

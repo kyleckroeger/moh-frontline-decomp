@@ -19,11 +19,8 @@
 #include "game/CMatrix.h"
 
 
-class IVolume {
-public:
-    IVolume() {}
-    virtual ~IVolume() {}
-};
+#include "game/IVolume.h"
+
 
 class CVolSphere : public IVolume {
 public:
