@@ -21,17 +21,23 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | Path | Contents |
 | --- | --- |
 | `log/autopilot.md` | The main work log and decisions, oldest first. Append new entries at the end. |
-| `log/lane-*.md` | Logs of the parallel agents, by lane of work |
+| `log/lane-*.md` | Logs of the parallel agents, by lane of work (finished; the runs ended 2026-11-13) |
 | `log/parallel-backlog.md` | The parallel agents' work queues, as they stood |
 | `notes/matching-tricks.md` | Source forms that fixed specific compiler output. Try these on a near-miss. |
 | `notes/game-code.md`, `notes/register-tools.md` | Compiler behaviour and register-allocation findings |
-| `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised |
+| `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised (finished, kept as a record) |
+| `notes/pure-link.md` | The pure-source image (endgame W1): how `pure_link.py` links it, each problem found, where it stops |
+| `notes/sdk-views.md`, `notes/shared-headers.md` | Game files' own SDK struct views, and the shared-header moves (endgame W2) |
+| `notes/session-2026-11-16.md` | The 2026-11-16 session: link from 38 to 25 undefined names |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
-| `plans/` | Plans for unattended runs: `three-day-loop.md` (coordinator rules and state), `loop-agents.md` (lane agents' brief and shared-checkout protocol), ranked queue `loop_queue.tsv` |
+| `plans/` | Live: `endgame.md` (the overall plan, 2026-11-16), `overnight-2026-11-17.md` (last run and the next session's decisions), `matching.md` with `matching_queue.tsv` and `matching_kinds.tsv` (the last 94 functions by kind of mismatch). Finished, kept as a record: `three-day-loop.md`, `loop-agents.md`, `loop_queue.tsv` |
 | `drafts/` | The best draft of each open function, listed in `drafts/index.tsv` |
-| `data/` | Original data tables written as source, each checked byte for byte by `tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
+| `data/` | Original data tables written as source, each checked byte for byte by `research/tools/check_data.py` (PortReadiness step 2); `data/bss/` holds the zero-initialised globals |
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |
 | `notes/loop-2026-11-13.md` | Last loop day: results, rules found, decisions, where the unverified bytes are, next steps |
+| `data_stopgap/` | Stopgap vtables for the pure-source link (`vtables.txt` lists them; `gen_vtable_stopgap.py` writes `vtables.cpp`) until their files merge |
+| `probes/` | Test-image probes: `input_probe.cpp`, the W1 probes (`morph63_probe.cpp`, `aram_upload_probe.cpp`, ...), and input scripts in `probes/scripts/` |
+| `movies/` | Input routes in probe form (`route_*.txt`), hook files (`hooks_*.txt`) and a DTM movie |
 | `archive/loop3-scratch/` | Agent notes, scripts and probes of the 2026-11-11..13 loop, copied out of the ignored `scratch/` |
 | `tools/` | Working scripts, tested from the repository root |
 | `tools/reference/` | Older scripts, kept for their method; logs and notes refer to them. They read local data that isn't in the repo, so they won't run as they are. |
@@ -91,6 +97,25 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `try_header.py CLASS [--only UNIT...]` | Move every unit with its own view of CLASS onto `include/game/CLASS.h` in a copy (field spellings rewritten), verify it like `one_unit.py`, and write `layout/header_moves/CLASS.tsv` (kept, lost, no_compile). Nothing in `src/` or `config/` changes. `TRY_HEADER_DIR`/`TRY_HEADER_WORK`/`TRY_HEADER_OUT` try an uncommitted header from a scratch directory. |
 | `landlock.sh acquire\|release NAME`, `status` | Landing lock for parallel agents (scratch/loop3/LANDLOCK): only the holder builds, lands, edits research/ or pushes |
 | `check_data.py [FILE]` | Compile the tables in `data/` and compare each with the original symbol: section, size, bytes and relocation targets. Tested (`tests/test_data_tables.py`). |
+| `mismatch_kinds.py [OUT]` | Sort the unmatched drafts by kind of mismatch (register, order, near, structural, ...) by comparing instructions with registers blanked; feeds `plans/matching.md` |
+| `pure_link.py [--probe FILE...] [--output ELF] [--probe-space N]` | Link the pure-source image with GNU ld: every unit, draft and data file, no original bytes, at a fresh layout (endgame W1; `notes/pure-link.md`) |
+| `pure_data_check.py [ELF]` | Compare the pure image's initialised data with the original's, object by object, relocated words masked |
+| `gen_vtable_stopgap.py` | Write `data_stopgap/vtables.cpp`: the vtables (and RTTI) still undefined in the pure-source link, slot by slot from the original's relocations |
+| `entry_trace.py ELF OUT [--units-from PATTERN]` | Log the first entry of every game function in a `--probe-space` image, through EFB reads Dolphin logs |
+| `boot_probe.py ELF OUT SYMBOL...` | Replace each symbol's first instruction with a logged BAT write, to see whether a direct boot reached it |
+| `dolphin_direct.py ELF SECS WORKDIR` | Boot an ELF directly with `Dolphin.exe -e` and keep its log; used with `boot_probe.py` and `entry_trace.py` |
+| `dolphin/gdbpeek.ps1` | Attach to Dolphin's GDB stub from the Windows side: run until a log line matches, then dump registers and the back chain; optional write watchpoint (`docs/Dolphin.md`) |
+| `probe_hooks.py PROBE.cpp HOOKS.txt` | Add per-update test hooks (set position, call a built-in, log sound timing, ...) to an `input_script.py` probe |
+| `move_header.py CLASS UNIT...` | Apply `try_header.py`'s moved source to each unit, listing weak duplicates; keep the unit if `one_unit.py` verifies it, else revert |
+| `try_dwi.py [--jobs 4] [--only UNIT...] [--out TSV]` | Move units with their own dwi container views onto `game/DwiContainers.h` and `game/DwiHashMap.h` in a copy, and verify as `try_header.py` does |
+| `dedupe_protos.py FILE HEADER...` | Delete a file's own prototypes of functions the given SDK headers declare (`notes/sdk-views.md`); check each with `one_unit.py` |
+| `gen_axdsp.py <out.cpp>` | Write `data/init/axDspSlave.cpp` (the AX DSP microcode) from the original ELF |
+| `uis_disasm.py FILE.scr --events\|--dis\|--find` | Disassemble shell screen scripts (UI Studio `.scr`; `docs/ShellScripts.md`). Output is game data: don't commit it. |
+| `bs_find.py LEVELDIR --calls NAME...\|--uses CLASS...` | Which level scripts call given built-ins, and where classes are placed. Output is game data. |
+| `gcdisc.py DISC.iso -\|OUTDIR [GLOB]` | List or extract files of a GameCube disc through its FST (keep output outside the repo or under `scratch/`) |
+| `fast.py`, `score.py`, `dw.py`, `extab_records.py` | Helpers: fast per-function diff count; the real-line scorer; DWARF dump of a unit's variables and registers; CodeWarrior extab record decoder |
+| `addrval.py`, `brchk.py`, `fprclob.py` | Draft checks: address taken where the original reads a value (or the reverse); branch offsets that differ; f14-f19 kept across `CMatrix::Multiply` |
+| `block_refs.py`, `blockgen.py` | Functions that reach a file's anonymous `...rodata.0`/`...data.0` block; items of ShellMenu's `.rodata` block |
 
 Run untested scripts under `ulimit -v` and `timeout`: one bad script once took the
 whole machine down (`notes/oom-guard.md`).

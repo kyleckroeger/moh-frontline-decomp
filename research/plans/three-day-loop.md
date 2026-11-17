@@ -1,5 +1,7 @@
 # Three-day matching loop (2026-11-12 to 2026-11-14)
 
+**Finished 2026-11-13 (90.66%); kept as a record. Live plans: endgame.md, matching.md.**
+
 The maintainer is away for three 12-hour work days. Claude runs unattended on `/loop` to
 match as much of the remaining code as possible, byte for byte, with four parallel lane
 agents. Usage is not a concern; WSL memory is. This file is the coordinator's instructions;

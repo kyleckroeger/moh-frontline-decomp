@@ -1,5 +1,7 @@
 # Lane agents for the three-day loop: brief and protocol
 
+**Finished 2026-11-13 (90.66%); kept as a record. Live plans: endgame.md, matching.md.**
+
 Four agents share the main checkout `/home/kyle/workspace/moh-frontline`, one per lane. The
 coordinator (the `/loop` session, see `three-day-loop.md`) launches them with:
 

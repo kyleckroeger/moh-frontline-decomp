@@ -351,6 +351,17 @@ the Dolphin emulator from WSL and checks that drafted code plays like the origin
 (docs/PortReadiness.md, step 1). Run one Dolphin at a time, and check `free -m` first. A run
 of 300 seconds reaches about update 13,000, well onto the beach in Mission 1.
 
+Dolphin's GDB stub (in use since 2026-11-17) gives breakpoints, stacks and write
+watchpoints. Set `[General] GDBPort` (e.g. 2345) in Dolphin.ini, start the run, then attach
+with `research/tools/dolphin/gdbpeek.ps1 -Port 2345 -Log LOG -Pattern REGEX -Out OUT
+[-Watch HEXADDR] [-MaxHits N] [-Timeout SECS]`: it lets the game run until a line of the
+Dolphin log matches, stops the CPU and writes the registers and the stack's back chain to
+OUT; with `-Watch` it also logs each write to that word (pc, lr, value, chain). The Windows
+firewall blocks WSL from the stub's port, so the client runs on the Windows side, from
+PowerShell or through `powershell.exe -File` from WSL. The game runs about 10x slower under
+the stub. Restore the GDBPort setting afterwards: `dolphin_boot.py` runs fail to start while
+the stub waits for a client. Its first use is in research/notes/pure-link.md.
+
 ## Input
 
 `research/tools/input_script.py` reads one small script format and writes it out in one of

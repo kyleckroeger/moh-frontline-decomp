@@ -14,7 +14,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
 | **Exact** | 1,285,620 | **90.88%** | Built from source and byte-identical to the original in the complete-image comparison: 4,915 functions in 999 units. |
-| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), so linked doesn't mean correct. |
+| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build; that build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`). Linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
 
@@ -30,7 +30,7 @@ About 128.8 KB isn't exact yet, in 94 functions across 52 source files; [Remaini
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
 - What remains is mostly register-allocation and stack-layout near misses, very large functions, and code whose types are still uncertain. Every remaining function has a draft in [`research/drafts/`](research/README.md), and those drafts are what the linked build is made from.
-- Neither build has been runtime-tested.
+- The linked build boots and plays scripted input routes in Dolphin ([Dolphin.md](docs/Dolphin.md)); 89 of the 94 open functions' drafts are proven in play (`proven` column of [`research/drafts/status.tsv`](research/drafts/status.tsv), 2026-11-17).
 
 Most recent work is AI-assisted (Claude Code agents working against the same verification gate as any contributor); see [CONTRIBUTING.md](CONTRIBUTING.md) for the rules every accepted unit follows.
 
@@ -88,6 +88,8 @@ Run the scripts from any directory; all outputs remain inside this checkout. `ba
 [`research/`](research/README.md) holds everything learned so far that isn't accepted source: the full work logs, matching tricks, the best draft of each open function and the scripts behind them. Search it before starting on a function; most have earlier attempts.
 
 ## Next work
+
+The live plan is [`research/plans/endgame.md`](research/plans/endgame.md) (2026-11-16), with [`research/plans/matching.md`](research/plans/matching.md) for the last 94 functions. The PC port is a separate repository, `moh-frontline-pc`.
 
 The matching source is meant to be the base of a native PC port without multiplayer, kept separate from the matching build, so the remaining work is ordered by what that port needs ([details](docs/Remaining.md)):
 

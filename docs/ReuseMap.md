@@ -42,8 +42,8 @@ in the unit manifest.
 
 ## Backlog 1 — remaining libraries
 
-The Dolphin SDK, MSL, MW runtime and MetroTRK are accepted, apart from
-`TRKSuppAccessFile`. EA audio is in Backlog 3.
+The Dolphin SDK, MSL, MW runtime and MetroTRK are complete since `TRKSuppAccessFile`
+landed 2026-11-13 (`c37a3c4e`). EA audio is in Backlog 3.
 
 ## Backlog 2 — high fan-in helpers
 
@@ -64,21 +64,8 @@ source exists for most of them, and several need a whole-file unit because their
 functions share one `...rodata.0` or `...bss.0` block. Every function has a draft to
 start from (`research/drafts/`).
 
-| Bytes | File | Family |
-| ---: | --- | --- |
-| 19,496 | `bsbifunc.cpp` | Behaviour script built-ins |
-| 11,740 | `cdbgeom.cpp` | Collision/geometry |
-| 10,948 | `objcreate.cpp` | Object creation |
-| 8,312 | `buddy.cpp` | AI squad |
-| 8,148 | `particlesystem.cpp` | Particles |
-| 7,784 | `ShellMenu.cpp` | UI |
-| 7,300 | `compartment.cpp` | Rendering |
-| 6,352 | `box.cpp` | Math/bounds |
-| 6,104 | `staticobjfactory.cpp` | World objects |
-| 5,684 | `UserInterface.cpp` | UI |
-| 5,608 | `proxtrig.cpp` | Triggers |
-| 5,308 | `Soldier_object.cpp` | Actor |
-| 5,088 | `path.c` | EA audio (music paths) |
+The current list of unfinished files and their sizes, by port priority, is generated in
+[Remaining.md](Remaining.md#what-is-left); it is not repeated here so it cannot go stale.
 
 Seven unfinished functions (about 3 KB) have no recovered source file and need
 `tools/file_map.py` evidence before a source boundary is assigned.

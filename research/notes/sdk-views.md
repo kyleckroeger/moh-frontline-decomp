@@ -4,7 +4,8 @@ The PC port links game code against Aurora and its own SDK layer (`moh-frontline
 There, SDK structs have 64-bit layouts and sometimes extra fields: Aurora's DVDFileInfo carries
 `auroraHandle`, GXTexObj is larger, and so on. A game file that declares its own copy at
 GameCube size (often a sized byte array) breaks that link or corrupts memory. Each of these files
-must take the struct from the SDK header instead (`include/dolphin-sdk/dolphin/...`, which the
+must take the struct from the SDK header instead (`include/dolsdk2001/dolphin/...`, the release the
+verified SDK units are built from (see 2026-11-17 below), which the
 port swaps for Aurora's), with the GameCube bytes kept.
 
 ## Own declarations (17 files)

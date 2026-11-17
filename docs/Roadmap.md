@@ -15,9 +15,9 @@ in `AGENTS.md` win.
   (**90.88%**), 4,915 functions in 999 units: **1,048,860** bytes of
   `reconstructed_game` (822 units, `docs/Game.md`) and **236,760** bytes of
   `restored_library` (177 units: Dolphin SDK, MSL, MW runtime, EA audio
-  libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
+  libraries; `docs/Dolphin.md`). Priorities and what is left
   are in `docs/Remaining.md`.
-- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build reaches the main menu in Dolphin; gameplay is untested.
+- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` and `GC/1.2.5` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`
@@ -39,8 +39,12 @@ whole-file merges where a file's shared data block (`...rodata.0`,
 `...bss.0`) can only be placed by one unit for the whole file.
 
 Since 2026-11-08 the first goal is logically correct source for every function, with
-exact matching second. Every function now has a draft, and the next step is running
-the linked build ([details](Remaining.md#partial-source-sweep)).
+exact matching second. Every function now has a draft ([details](Remaining.md#partial-source-sweep)).
+The live plan (2026-11-17) is [`research/plans/endgame.md`](../research/plans/endgame.md):
+the next session spends at most one session on W1, then builds the field-rename tool for
+header moves, and then the PC port becomes the main project in its own repository,
+`moh-frontline-pc`. Spare decomp sessions work
+[`research/plans/matching.md`](../research/plans/matching.md).
 
 ## Part 1 — Tooling landscape
 
@@ -57,6 +61,7 @@ the linked build ([details](Remaining.md#partial-source-sweep)).
 | Project Python tools | complete-image verification, file map, dependency scan, unit porting |
 | [Ghidra](https://github.com/NationalSecurityAgency/ghidra) via a pyghidra MCP server | decompilation and xrefs for agents; output is a hypothesis, kept out of `src/` |
 | [decomp-permuter](https://github.com/simonlindholm/decomp-permuter) | randomized search on near misses, with a harness under ignored `scratch/` that rebuilds the real function in its unit |
+| [Dolphin](https://github.com/dolphin-emu/dolphin) GDB stub | breakpoints, stacks and write watchpoints in runtime tests, through `research/tools/dolphin/gdbpeek.ps1` ([Dolphin.md](Dolphin.md)); runtime claims stay separate from matching claims |
 
 ### Worth adding — free and local (candidates to evaluate)
 
@@ -68,7 +73,6 @@ the linked build ([details](Remaining.md#partial-source-sweep)).
 | [decomp.me](https://decomp.me) | Collaborative scratch matching (GC/Wii platform) | Phase D. Its compiler versions differ from the pinned profile, so results are leads only |
 | [rizin](https://github.com/rizinorg/rizin) + [Cutter](https://github.com/rizinorg/cutter) | Free RE framework with PowerPC support | Quick inspection; alternate to Ghidra |
 | [Ninja](https://ninja-build.org) + [ccache](https://ccache.dev)/[sccache](https://github.com/mozilla/sccache) | Parallel build and object caching | Phase D, only if `reconstruct.py` becomes the bottleneck |
-| [Dolphin](https://github.com/dolphin-emu/dolphin) GDB stub + `gdb-multiarch` | Runtime testing | Phase E. Runtime claims stay separate from matching claims |
 | [decomp-academy.dev](https://decomp-academy.dev) | Onboarding practice with a live Metrowerks compiler | Contributor training only, no project credit |
 
 ### Commercial / optional
@@ -92,8 +96,8 @@ the linked build ([details](Remaining.md#partial-source-sweep)).
 
 ### Phase A — Consolidate the library phase (done)
 
-The Dolphin SDK, MSL, runtime and MetroTRK are accepted, apart from
-`TRKSuppAccessFile` in MetroTRK's `support.c`. `docs/ReuseMap.md` keeps the
+The Dolphin SDK, MSL, runtime and MetroTRK are complete; the last function,
+`TRKSuppAccessFile` in MetroTRK's `support.c`, landed 2026-11-13 (`c37a3c4e`). `docs/ReuseMap.md` keeps the
 references and leads. Broadening the mutation tests continues under Phase E.
 
 ### Phase B — First game-code reconstruction (done: `bstimer.cpp` first, now most game bytes)
@@ -104,7 +108,8 @@ references and leads. Broadening the mutation tests continues under Phase E.
    not invent types, names or source boundaries.
 3. Gate every unit with `tools/reconstruct.py` and refresh the snapshot.
 
-Exit: first `reconstructed_game` bytes accepted (reached; 978,636 bytes now).
+Exit: first `reconstructed_game` bytes accepted (reached; current figures are in the status
+block above and `docs/Remaining.md`).
 
 ### Phase C — Ghidra for unreferenced game code (in use)
 
@@ -135,14 +140,16 @@ Exit: faster iteration on functions that are close but not yet byte-exact.
 1. Broaden mutation tests.
 2. Test the linked build in Dolphin; report runtime separately from matching.
    `research/tools/dolphin_boot.py` boots and bisects; input movies and frame
-   comparison are next ([PortReadiness.md](PortReadiness.md), step 1).
+   comparison are in use since 2026-11-13 ([Dolphin.md](Dolphin.md)).
 
 Exit: runtime status is measured, not assumed.
 
 ### Phase F — Native PC port (later; separate from the matching build)
 
-1. Keep the matching build as the reference; port changes live behind
-   `#ifdef`s or in separate files and never affect the verified image.
+1. Keep the matching build as the reference. The port is its own repository,
+   `moh-frontline-pc`; this repository supplies the source, the data and the port
+   manifest, and port changes never affect the verified image (see "Which repository
+   holds what" in [`research/plans/endgame.md`](../research/plans/endgame.md)).
 2. Replace the GameCube SDK layer (GX, DVD, PAD, OS, audio) with a PC platform
    layer; Aurora (GX/PAD/VI over SDL and WebGPU) is the first candidate.
 3. Fill unmatched functions with behaviour-equivalent code, then fix 32-bit,
@@ -180,10 +187,11 @@ multiplayer last. Within a priority group:
   and the best drafts go in `research/`, so contributors have them.
 - **Report separately.** Original-image baseline, individual function matches,
   complete source-build result, and runtime tests are distinct claims.
-- **Model roles.** A frontier model does the reconstruction directly. Several agents can work at once in separate lanes of the code on
-  one checkout; landings are serialised by a lock so each one is gated and
-  committed alone. The main risk is invented types, names and boundaries, which no byte
-  comparison detects, so inferred views and helpers are marked in comments.
+- **Model roles.** One frontier-model session at a time does the reconstruction
+  directly, landing each unit through `research/tools/land.sh`. The parallel-agent runs
+  (2026-10 to 2026-11-13) are finished. The main risk is invented types, names and
+  boundaries, which no byte comparison detects, so inferred views and helpers are marked
+  in comments.
 - **No model verifies.** `tools/reconstruct.py` (complete-image match), the
   tests and `progress_report.py --capture` decide whether a unit lands. Each
   landing is one commit on `main` made only after all three pass; new

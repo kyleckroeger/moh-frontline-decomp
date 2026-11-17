@@ -1,5 +1,7 @@
 # Parallel agent protocol (2026-10-23)
 
+Retired workflow; scripts cited here may no longer exist.
+
 Several agents share the main checkout <repo> at the same time. Follow these rules exactly.
 
 ## Workspace

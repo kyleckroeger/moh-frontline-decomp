@@ -1,7 +1,7 @@
 # gdbpeek.ps1: attach to Dolphin's GDB stub on localhost, let the game run until a line matching
 # -Pattern appears in -Log, then stop the CPU and print the registers and the stack's back chain.
-# Runs on the Windows side because the firewall blocks WSL from the stub's port. Used by
-# research/tools/gdb_peek.py.
+# Runs on the Windows side because the firewall blocks WSL from the stub's port: run it from
+# PowerShell, e.g. via powershell.exe -File from WSL (research/notes/pure-link.md).
 param([int]$Port = 2345, [string]$Log, [string]$Pattern, [int]$Timeout = 600, [string]$Out, [string]$Watch = "", [int]$MaxHits = 40)
 $ErrorActionPreference = "Stop"
 trap { Add-Content -Path $Out -Value ("ERROR: " + $_ + " at " + $_.InvocationInfo.PositionMessage); break }

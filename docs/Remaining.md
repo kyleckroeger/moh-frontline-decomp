@@ -49,7 +49,7 @@ Priority 1 is 79.4 KB and would take the project to 96.5% at most.
 
 Partial-source sweep: 3 code-exact, not yet linked (2.0 KB), 89 consistent (121.0 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
@@ -84,7 +84,7 @@ differences measured rather than left in `scratch/`.
 
 Unlike Rising Sun, partial source lives in `research/drafts/` for now, not `src/`,
 because a change under `src/` needs a full rebuild. Partial source earns no credit in
-the verified figure, and 86.19% won't move because of it.
+the verified figure, and the verified figure won't move because of it.
 
 `research/tools/check_draft.py` compares each draft with the original by content:
 calls, floating constants, strings and tables, globals, field offsets. It
@@ -120,7 +120,8 @@ it after changing drafts, then `tools/sync_docs.py`. A complete relink isn't nee
 The result is `build/linked/Moh2RelGC_linked.elf`, which the boot loader loads as
 `Moh2RelGC.elf` from a disc image. **Runtime result (Dolphin 2609, 2026-11-09): with
 all 170 drafts it boots, plays the three opening movies and reaches the main menu.**
-Gameplay is untested. Two findings got it there: the pooling problem above, and
+Since then the linked builds have played scripted input routes, and 89 of the 94 drafts in
+`research/drafts/status.tsv` are proven in play (2026-11-17; `docs/Dolphin.md`). Two findings got it there: the pooling problem above, and
 `__sinit_compartment_cpp`'s draft constructing its render bins with the virtual table
 pointer at `+0` instead of `+0x1c`. A bisect over the patched functions found that one,
 so the same method applies to later crashes.
@@ -135,8 +136,11 @@ Known risks:
 
 ## Known blockers in priority 1
 
-- **`buddy.cpp`:** `DestroyBuddyDataStructures` needs the file's `.bss`, and so
-  `__sinit_buddy_cpp`, which is stuck on the shape of a `BuddyInfo` temporary.
+- **`buddy.cpp`:** `DestroyBuddyDataStructures` and `__sinit_buddy_cpp` have landed
+  (`config/GMFE69/buddy.json`). Left (2026-11-17): `AddBuddy`, `BIFunc_AddBuddy` and
+  `BIFunc_GetInitialBuddyOrders` (the `BuddyInfo` partial-scalar knot), and
+  `BIFunc_CreateBuddyDataStructures`, which lands with an earlier `.bss` user such as
+  `AddBuddy` (`research/plans/matching.md`, `research/notes/buddy.md`).
 - **`bsbifunc.cpp` built-ins:** many reach the file's shared `.bss` block, so they
   cannot land alone.
 - **Register near-misses:** many have had repeated attempts. Check the history of
@@ -204,7 +208,7 @@ with a scoring-harness padding array. It waits for a player.cpp merge (multiplay
 - Devices that add storage, slots or code only to steer registers: one-element
   local arrays, padding arrays, chained `x(copy = y)` assignments, `(int)(filter=0)` and
   the `staticobjfactory` offset spelling.
-- (Moved to accepted 2026-11-16, below: the `STREAM_kill` alias, `UpdateTargetPosition`'s
+- (Moved to accepted 2026-11-16, above: the `STREAM_kill` alias, `UpdateTargetPosition`'s
   duplicate inline and `InitMultiplayer`'s form.)
 - Invented dead functions with made-up logic to hold orphan strings.
 - Identity wrappers such as `RetV`: useful for discovery, never landed.

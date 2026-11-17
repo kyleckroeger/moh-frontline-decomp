@@ -80,13 +80,22 @@ def linked_figures():
     return json.loads(path.read_text()) if path.exists() else None
 
 
+def proven_phrase():
+    """How much of the linked build is proven in play, from the proven column of research/drafts/status.tsv."""
+    path = ROOT / "research/drafts/status.tsv"
+    rows = list(csv.DictReader(path.read_text().splitlines(), delimiter="\t"))
+    proven = sum(1 for row in rows if (row.get("proven") or "").strip())
+    return (f"that build plays scripted input routes in Dolphin, with {proven} of the {len(rows)} drafts "
+            "proven in play (`docs/Dolphin.md`)")
+
+
 def linked_line():
     d = linked_figures()
     if not d:
         return ""
     return (f"Linked: **{d['linked_bytes']:,} of {d['total_bytes']:,} code bytes ({d['linked_percent']:.2f}%)** are exact or "
             f"partial source that links into a non-matching build ({d['linked_functions']} partial functions). "
-            "Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.")
+            f"Linked doesn't mean correct, but {proven_phrase()}.")
 
 
 def measures_table(p, unit_count):
@@ -98,8 +107,8 @@ def measures_table(p, unit_count):
     if d:
         rows.append(f"| **Linked** | {d['linked_bytes']:,} | **{d['linked_percent']:.2f}%** | The exact code plus "
                     f"{d['linked_draft_bytes']:,} bytes ({100 * d['linked_draft_bytes'] / total:.2f}%) of partial source in "
-                    f"{d['linked_functions']} functions. It links into a non-matching build that reaches the main menu in Dolphin (gameplay untested), "
-                    "so linked doesn't mean correct. |")
+                    f"{d['linked_functions']} functions. It links into a non-matching build; {proven_phrase()}. "
+                    "Linked doesn't mean correct. |")
     return "\n".join(["| Measure | Code bytes | Share | What it means |", "| --- | ---: | ---: | --- |", *rows])
 
 
@@ -124,12 +133,12 @@ def roadmap_block(snapshot):
     p, c = snapshot["progress"], categories(snapshot)
     game, lib = c["reconstructed_game"], c["restored_library"]
     d = linked_figures()
-    linked = f"\n- Linked, which adds partial source to a non-matching build: **{d['linked_bytes']:,}** bytes (**{d['linked_percent']:.2f}%**). That build reaches the main menu in Dolphin; gameplay is untested." if d else ""
+    linked = f"\n- Linked, which adds partial source to a non-matching build: **{d['linked_bytes']:,}** bytes (**{d['linked_percent']:.2f}%**). {proven_phrase()[0].upper() + proven_phrase()[1:]}." if d else ""
     return f"""- Verified snapshot: **{p['matching_code_bytes']:,} / {p['total_executable_code_bytes']:,}** executable bytes
   (**{p['percent']:.2f}%**), {p['matching_functions']:,} functions in {len(snapshot['units']):,} units: **{game['bytes']:,}** bytes of
   `reconstructed_game` ({game['units']:,} units, `docs/Game.md`) and **{lib['bytes']:,}** bytes of
   `restored_library` ({lib['units']:,} units: Dolphin SDK, MSL, MW runtime, EA audio
-  libraries; `docs/Dolphin.md`). Runtime is untested. Priorities and what is left
+  libraries; `docs/Dolphin.md`). Priorities and what is left
   are in `docs/Remaining.md`.{linked}"""
 
 

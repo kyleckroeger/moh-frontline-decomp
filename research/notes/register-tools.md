@@ -1,5 +1,7 @@
 # register-tools
 
+Retired workflow; scripts cited here may no longer exist.
+
 Agent working notes, kept as written; dated claims may be out of date.
 
 

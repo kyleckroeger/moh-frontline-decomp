@@ -13,13 +13,16 @@ collision, scripting, AI and animation first, multiplayer last.
 
 ## What "86% matched" doesn't tell the port
 
+The figures in this section are a 2026-11-09 snapshot. On 2026-11-17 the verified figure
+is 1,285,620 / 1,414,572 code bytes (90.88%), with 94 functions (about 129 KB) left.
+
 A PC build compiles source only. It can't use the original image's bytes, and it can't
 trust code that has never run. Four things decide whether it can be built, and the match
 figure measures none of them directly.
 
 | Measure | Now (2026-11-09) | Needed for the port |
 | --- | --- | --- |
-| Code with source | 100%: 86.19% exact, the rest drafts | Have it |
+| Code with source | 100%: 86.19% exact, the rest drafts (90.88% exact on 2026-11-17) | Have it |
 | Code shown to behave like the original | Boot to the main menu with all drafts; gameplay never run | Every draft proven in play |
 | Data defined in source | `.data` 47,356 B unowned, `.rodata` 37,221 B, `.bss` 1,157,481 B in 113 symbols, 84 vtables (`research/tools/unowned_data.py`) | Every symbol defined in source |
 | One declaration per class | 794 files declare their own views; `CVector3` in 256, `ISceneNode` 170, `CMatrix` 142, `CPlayerObject` 96 | One shared header per class the port compiles |
@@ -166,7 +169,7 @@ are the SDK aliases (`PSVECNormalize` ...), MSL's `nextafter`/`__double_max`, `a
 Whole-file merges, 2026-11-13 (agent merge1; the maintainer's rule: a file's vtables are
 defined by merging its fragments into one unit once the file is complete, not from
 `research/data/`). 80 original files had all their functions verified but were still split
-into fragment units (`scratch/loop3/merge1/complete_files.tsv`: 30 own a global vtable, 21
+into fragment units (`research/archive/loop3-scratch/loop3/merge1/complete_files.tsv`: 30 own a global vtable, 21
 more have fragment-local statics). Twelve were merged into one unit each, named after the
 file and owning its `.text`, `.rodata`, `.data` and `.sdata`. Nine own a vtable, now defined
 from source with its base lists and the file's local RTTI records: AIPlayerDoodad, AIPlayerObject,
@@ -190,7 +193,7 @@ as `fast.py` does since 4c75217f (`brchk.py` already did). Re-run (1,240 units, 
 small-data. The 18 drafts compile again and define their 17 functions; they also bring back
 5 fragment-local and 2 duplicate symbols that the failed compiles had hidden.
 
-More whole-file merges, 2026-11-13 (agent merge2, `scratch/loop3/merge2/notes.md`): fader,
+More whole-file merges, 2026-11-13 (agent merge2, `research/archive/loop3-scratch/loop3/merge2/notes.md`): fader,
 sprite, animated and animated_volume (vtable owners: `__vt__9CFaderBin`,
 `__vt__13CFaderControl`, `__vt__7CSprite`, `__vt__19CSpriteNoTextureBin`, `__vt__9CAnimated`,
 `__vt__15CAnimatedVolume` now defined from source), then smixfx, sdspmix, stretch, animseq,
@@ -201,7 +204,7 @@ weapon, attachobject, thrown_obj, sphere, fiber, hierobject, light, thrownbullet
 have fragments on private CVector3/CMatrix views; each needs them moved onto the shared
 headers before it can be one unit.
 
-More whole-file merges, 2026-11-13 (agent merge3, `scratch/loop3/merge3/notes.md`): filesys,
+More whole-file merges, 2026-11-13 (agent merge3, `research/archive/loop3-scratch/loop3/merge3/notes.md`): filesys,
 bsmachin, filedev, dvdStatus_base, UIStudio, UISUtils, snddrv, targimpl, propdat (with the
 former propdat_offsetptr unit), soundschedule and collision, plus smixfx.c's last function
 (MIX_getwetbuffer) moved from smixfram into smixfx. Re-run (1,162 units, 98 drafts, 79 data
@@ -214,7 +217,7 @@ function's out-of-line copy and its inlined copies need different local orders),
 owners (fragments on private CVector3 views that the shared header's copy changes), and alarm,
 pumhandler, world_object, anim_obj (local dwi templates or private scene-node views).
 
-Vtable owners merged, 2026-11-13 (agent merge4, `scratch/loop3/merge4/notes.md`; the
+Vtable owners merged, 2026-11-13 (agent merge4, `research/archive/loop3-scratch/loop3/merge4/notes.md`; the
 coordinator's ruling: a merged unit may keep a file-private CVector3/CMatrix view, marked
 inferred, where the shared header's copies don't keep the match). Tank_object, attachobject,
 sphere and fiber are one unit each and define `__vt__11CTankObject`, `__vt__17CAttachableObject`,
@@ -229,7 +232,7 @@ undefined. Not merged: weapon and thrown_obj (fragments on private vector views 
 placeholder scene-node views that conflict with CStaticObject's members), hierobject, light,
 thrownbullet and animplayer (not attempted).
 
-More vtable owners merged, 2026-11-13 (agent merge5, `scratch/loop3/merge5/notes.md`):
+More vtable owners merged, 2026-11-13 (agent merge5, `research/archive/loop3-scratch/loop3/merge5/notes.md`):
 hierobject, weapon, thrown_obj, thrownbullet and animplayer are one unit each and define
 `__vt__11CHierObject`, `__vt__7CWeapon`, `__vt__13CThrownObject`, `__vt__13CThrownBullet` and
 `__vt__15CAnimatedPlayer` with their files' RTTI records (thrownbullet also
@@ -247,7 +250,7 @@ functions match; the weak `__vt__17CAnimLightManager` and its RTTI record come o
 other vtables instead of right after `__vt__19CInstancedAnimLight`, and its two weak functions
 in the other order), anim_obj, alarm, pumhandler and world_object (not attempted).
 
-Files without vtables merged, 2026-11-13 (agent merge6, `scratch/loop3/merge6/notes.md`): 20
+Files without vtables merged, 2026-11-13 (agent merge6, `research/archive/loop3-scratch/loop3/merge6/notes.md`): 20
 more original files are one unit each: threads, ipad, saramman, stagpat, eaxadecf, saemsstr,
 sbasync, ssysinit, sst, IStudio, IStudioFuncs, bigyuvswizzler, jaw_controller, MathFun,
 animchan, renderlist, bsmessage, bsevents, bulletfactory and weaponfactory. Where fragments
@@ -264,7 +267,7 @@ functions does), rcmp_main (an unexplained 4-byte `.sbss` gap between `g_fw` and
 statics), anim_obj, alarm, pumhandler, world_object, AnimObjFactory, ConfigGC,
 rcmp_mpc_codec, projectilebullet, pathxSND, saems, camera, animskinned and hearingvolume.
 
-Merges continued, 2026-11-13 (agent merge7, `scratch/loop3/merge7/notes.md`): rcmp_main (the
+Merges continued, 2026-11-13 (agent merge7, `research/archive/loop3-scratch/loop3/merge7/notes.md`): rcmp_main (the
 `.sbss` word after `g_fw` is the global `CurentOPPlayer`, now defined there instead of in
 research/data), projectilebullet (with `__vt__26CProjectileBulletRenderBin`; RTTI on,
 deferred inlining, written last to first; `g_WorldToCamera`, the axes and `g_bCached` are file
@@ -279,7 +282,7 @@ emitted here; needs the full CBullet/ISceneNode chain), saems (conflicting C vie
 struct names), pathxSND (`-str` flags differ), world_volume (weak copy order), Gecko_ExceptionPPC
 (two compilers), anim_obj, alarm, pumhandler, world_object and AnimObjFactory (not attempted).
 
-Merges continued, 2026-11-13 (agent merge8, `scratch/loop3/merge8/notes.md`): first a
+Merges continued, 2026-11-13 (agent merge8, `research/archive/loop3-scratch/loop3/merge8/notes.md`): first a
 regression fix in `tools/port_unit.py` (merge7's close-up over dropped records also subtracted
 the leading ones, which the section address already counts; a sweep of the 302 strip_unused
 units now changes only rcmp_mpc_codec, to its committed addresses). Then hearingvolume (with
@@ -295,8 +298,8 @@ small-data; two vtables fewer undefined. Still not merged: alarm, pumhandler and
 local orders, as world_volume's; alarm's other 10 functions match in one file), anim_obj and
 AnimObjFactory (not attempted), and the files listed above.
 
-Merges continued, 2026-11-13 (agents dtor1 and merge9, `scratch/loop3/dtor1/notes.md`,
-`scratch/loop3/merge9/notes.md`): the dwi::list destructor case is solved by routing `~list`
+Merges continued, 2026-11-13 (agents dtor1 and merge9, `research/archive/loop3-scratch/loop3/dtor1/notes.md`,
+`research/archive/loop3-scratch/loop3/merge9/notes.md`): the dwi::list destructor case is solved by routing `~list`
 through the inline `clear()` (an expanded inline numbers its locals in reverse declaration
 order, so the out-of-line copy and the copy inlined into reserve colour alike only when both
 expand clear()); `include/game/DwiContainers.h` now does the same (all 115 units on the Dwi and
@@ -312,7 +315,7 @@ now matches with the range constructor in two inline helpers; the whole file, de
 RTTI like hearingvolume, is not written), anim_obj and AnimObjFactory (not attempted), and the
 files listed above.
 
-Merges continued, 2026-11-13 (agents merge10 and merge11, `scratch/loop3/merge11/notes.md`):
+Merges continued, 2026-11-13 (agents merge10 and merge11, `research/archive/loop3-scratch/loop3/merge11/notes.md`):
 anim_obj, AnimObjFactory, saems and world_object are one unit each. world_object (8 fragments,
 27 functions) defines `__vt__12CWorldObject`, its RTTI records and statics: deferred inlining
 with RTTI, written last to first, CWorldObject on the shared ISceneNode with real dwi::list and
@@ -324,7 +327,7 @@ its weak `~list` is placed after `~CWorldVolume` only when a function between `~
 and the constructor needs it out of line. The original's extab label gaps point to functions
 that the linker removed, so this needs a gap function, which is on hold.
 
-Agent merge10's part (`scratch/loop3/merge10/notes.md`): anim_obj (11 fragments, 72 functions;
+Agent merge10's part (`research/archive/loop3-scratch/loop3/merge10/notes.md`): anim_obj (11 fragments, 72 functions;
 `__vt__11CAnimObject`, 82 slots exact, with animplayer's virtual order; deferred inlining
 with RTTI, written last to first), AnimObjFactory (5 fragments; one CAnimObjDef, the
 level-contents pointer views as an anonymous union), saems (3 fragments; shared
@@ -334,11 +337,11 @@ it ends with `li r3,0`) and pathxSND (6 fragments; one file setting covers both 
 since the original has an exception record for each function). Re-run after pathxSND
 (`source_link.py --jobs 4`, 1,020 units, 98 drafts, 72 data files, all compiled): **54
 undefined, 103 fragment-local, 47 duplicate**, 0 small-data, the same counts (pathxSND's
-merge removes no cross-unit symbol). Of `scratch/loop3/merge1/complete_files.tsv`, the only
+merge removes no cross-unit symbol). Of `research/archive/loop3-scratch/loop3/merge1/complete_files.tsv`, the only
 rows still split are light (ruling: it stays split), world_volume (above) and
 Gecko_ExceptionPPC (two compilers).
 
-Agent buddy2's part (`scratch/loop3/buddy2/notes.md`, 5ed2ccfa): buddy.cpp's tail
+Agent buddy2's part (`research/archive/loop3-scratch/loop3/buddy2/notes.md`, 5ed2ccfa): buddy.cpp's tail
 (DestroyBuddyDataStructures, `__sinit_buddy_cpp`, the weak `dwi::vector` destructors) is one
 unit, `src/game/buddy.cpp`, which now defines the file's `.bss` block (real containers, no size
 views) and `.sbss`; buddy_destroy, buddy_vec_path_dtor and buddy_vec_info_dtor are gone. The rest
@@ -347,7 +350,7 @@ of buddy.cpp stays split until GetInitialBuddyOrders, BIFunc_AddBuddy and AddBud
 undefined, 102 fragment-local, 45 duplicate**, 0 small-data (the merge moves the three buddy
 containers and two vector destructors into the unit that defines them).
 
-Agent undef's part (2026-11-13, `scratch/loop3/undef/notes.md`): of the 16 undefined names that
+Agent undef's part (2026-11-13, `research/archive/loop3-scratch/loop3/undef/notes.md`): of the 16 undefined names that
 were not vtables, 11 are only reached from functions the original's linker dead-stripped, so
 none of them is in the original: the four VEC calls of `mtx.c`'s unused `C_MTXReflect`,
 `C_MTXRotAxisRad` and `C_MTXLookAt` (`C_VECDotProduct`, `C_VECNormalize`, `PSVECCrossProduct`,
@@ -425,6 +428,11 @@ and dead-stripped code). Later the same night it **boots through OSInit, `MEM_in
 static constructors into the shell's first frame**, where a draft's static initializer with the
 wrong `.bss` layout leaves a render bin unconstructed. How the link works, each problem found and
 where it stops: research/notes/pure-link.md.
+
+Status at the end of 2026-11-17: the pure-source image boots and plays route 1_2 into the level
+until a face-morph failure, where reads of animation frames from ARAM return 0x486e486e. With a
+probe that patches the morph count, the full 400 s route plays. Finding the writer of 0x486e486e
+is W1 in research/plans/endgame.md (research/notes/pure-link.md).
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
@@ -594,7 +602,8 @@ Exit: every class the pure-source link compiles has one header, and the lint is 
 Matching remains the only proof of exact code, and it continues within the source-form
 rules in [Remaining.md](Remaining.md). The order changes:
 
-1. Land the 15 `code_exact` drafts (6.4 KB) that only need the complete build.
+1. Land the `code_exact` drafts that only need the complete build (15, 6.4 KB on 2026-11-09;
+   3, 2.0 KB on 2026-11-17, per [Remaining.md](Remaining.md#partial-source-sweep)).
 2. Then drafts on the port's first path: input, level loading, the scene tick, and the
    script VM.
 3. Then the rest of the priority-1 areas, then priority 2, then multiplayer.
@@ -616,6 +625,8 @@ The port's source-list generator needs one generated file, not a crawl of the re
   (`research/tools/bs_disasm.py`), `.lfc`, `.mvd`, `.skl`, `.dmf`, `.emt`.
 
 ## Order of work
+
+Historical (2026-11-09); the current order is in research/plans/endgame.md.
 
 1. Input movies and frame comparison (step 1.1-1.2). This finds bad drafts, and nothing
    else does.
