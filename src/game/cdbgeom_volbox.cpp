@@ -8,10 +8,16 @@
 // constructor (its arguments are evaluated right to left, z first). The file
 // name is this project's; the original record is cdbgeom.cpp. The classes come
 // from the mangled symbols; CCDBVolBox derives from CVolBox (its capsule test
-// calls CVolBox's), IVolume's virtual functions are declared in the order of
-// __vt__7IVolume and CCDBVolBox redeclares them with its destructor first
-// (defined elsewhere, so its virtual table is not emitted here), and
-// CAnimatedVolume derives from CVolSphere. The vector view (x, y, z over two
+// calls CVolBox's), IVolume's and CVolBox's virtual functions are declared in
+// the order of __vt__7IVolume and __vt__7CVolBox, and CAnimatedVolume derives
+// from CVolSphere. CCDBVolBox overrides them all but Create, TransformedCopy,
+// TestVisibility and GetExtents (CVolBox's in its table). Its sphere test is
+// the class's key function (the destructor and the earlier overrides are inline,
+// weak in the original), so this unit compiles with RTTI on and owns
+// cdbgeom.cpp's CCDBVolBox virtual table and RTTI records (the start of the
+// file's .data), without merging its neighbours (a stepping stone, accepted
+// 2026-11-13: docs/Remaining.md). The view declares the sphere test first and
+// the inline overrides out of line, which keeps the slots (all are overrides). The vector view (x, y, z over two
 // doubles), the plane view and the result codes are inferred; fabs is the
 // inline double function of the MSL math header. Constants are the file's
 // .sdata2 pool entries.
@@ -20,6 +26,7 @@
 inline double fabs(double x) { return __fabs(x); }
 
 class CMatrix;
+class CDrawContext;
 
 
 
@@ -71,6 +78,8 @@ public:
     virtual int TestCollision(const CLine3&, CCollision&, bool) const;
     virtual int TestCollision(const CPlane&, CCollision&, bool) const;
     virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
+    virtual bool TestVisibility(CDrawContext&) const;
+    virtual void GetExtents(CVector3&, CVector3&) const;
 };
 
 class CCSGVolume : public IVolume {};
@@ -103,14 +112,6 @@ public:
 class CVolBox : public IVolume {
 public:
     virtual ~CVolBox();
-    int TestCollision(const CVolCapsule&, CCollision&, bool) const;
-};
-
-extern const float CONTACT_EPSILON;
-
-class CCDBVolBox : public CVolBox {
-public:
-    virtual ~CCDBVolBox();
     virtual IVolume* Create() const;
     virtual void TransformedCopy(const IVolume&, const CMatrix&);
     virtual int TestCollision(const IVolume&, CCollision&, bool) const;
@@ -125,7 +126,29 @@ public:
     virtual int TestCollision(const CLine3&, CCollision&, bool) const;
     virtual int TestCollision(const CPlane&, CCollision&, bool) const;
     virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
-    int TestCollision(const CCSGVolume&, CCollision&, bool) const;
+    virtual bool TestVisibility(CDrawContext&) const;
+    virtual void GetExtents(CVector3&, CVector3&) const;
+    virtual int TestCollision(const CCSGVolume&, CCollision&, bool) const;
+};
+
+extern const float CONTACT_EPSILON;
+
+class CCDBVolBox : public CVolBox {
+public:
+    virtual int TestCollision(const CVolSphere&, CCollision&, bool) const;
+    virtual ~CCDBVolBox();
+    virtual int TestCollision(const IVolume&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolBox&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolCapsule&, CCollision&, bool) const;
+    virtual int TestCollision(const CCDBObject&, CCollision&, bool) const;
+    virtual int TestCollision(const CVolFiber&, CCollision&, bool) const;
+    virtual int TestCollision(const CAnimatedVolume&, CCollision&, bool) const;
+    virtual int TestCollision(const CWorldVolume&, CCollision&, bool) const;
+    virtual int TestCollision(CVector3, CCollision&, bool) const;
+    virtual int TestCollision(const CLine3&, CCollision&, bool) const;
+    virtual int TestCollision(const CPlane&, CCollision&, bool) const;
+    virtual int TestCollision(const CTriangle&, CCollision&, bool) const;
+    virtual int TestCollision(const CCSGVolume&, CCollision&, bool) const;
 
     float m_half[3];
     CVector3 m_axes[3];

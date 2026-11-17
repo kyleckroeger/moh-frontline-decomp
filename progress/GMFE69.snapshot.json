@@ -641,7 +641,7 @@
     "src/game/cdbgeom_triangle_ctor.cpp": "18e8165e2a434a6e6d7f2f4a16fbbaa8425bbd0164ca944aad5e8252ecb75483",
     "src/game/cdbgeom_triangle_line.cpp": "eafb58e76d773e8eed1a220ed7df45a29d9cb8e41da971ac4816a74098ba9a8c",
     "src/game/cdbgeom_vector.cpp": "80a34ea5e2fc77523baa3d669d0487a32233f5c4cdeec33104ce7105fa4fffc7",
-    "src/game/cdbgeom_volbox.cpp": "b0ec0933d0629379581b55119f99164ef5ca203de414d0ec6ac6488276467f43",
+    "src/game/cdbgeom_volbox.cpp": "f502c98b4638b85a20e4784118583d93de466f5ef21cf3e04e2c27ca4d4d786c",
     "src/game/cdbgeom_volbox_ctor.cpp": "bb73da24549f2c6a65d5fcc54c839169eb8354654d36c711c8186a7f022d9a36",
     "src/game/cdbgeom_volbox_line.cpp": "07a9889a1947e2ea01619f9754e4a1d326a97109678680b150289b919e466175",
     "src/game/cdbobject.cpp": "01c338a312c3eed1fb7e9ffc972844bd9f39cc80f4d224f7e1a2fc51c82e9484",
@@ -1853,7 +1853,7 @@
     "config/GMFE69/cdbgeom_triangle_ctor.json": "3e0bc085bb313200e034eadfa0736bc4c08b6dfb90676400b1887f08fe437ffe",
     "config/GMFE69/cdbgeom_triangle_line.json": "f7f91985547f54fe99606189f39b23487ac0b7bcd78b402b12fb525b9ee24c74",
     "config/GMFE69/cdbgeom_vector.json": "23c5687927f764e2ea34b776fb625cd54764537a49aedec85532c9967f3654ba",
-    "config/GMFE69/cdbgeom_volbox.json": "0d9d39bbcf2bd8ebb68423f73b49392d237ef9f053f66dfd7ec935edf89d1ea4",
+    "config/GMFE69/cdbgeom_volbox.json": "93a84cb67e8a781081bc0e782fed328fbc107d5f42a3247ec6628b2c293a583a",
     "config/GMFE69/cdbgeom_volbox_ctor.json": "023317e1aa7e40d346772c711b6bba5a233f3efcbe22ff495afb5604d05aab3e",
     "config/GMFE69/cdbgeom_volbox_line.json": "c7057ff654194fafce676bd711df662fe586760e859dbaf1ea3704819d726377",
     "config/GMFE69/cdbobject.json": "6076c6fe0a852733e52d33ca19aaa371827869a65ce4b2edb08006ada44bace8",
@@ -23536,7 +23536,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -23546,8 +23546,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "03983feac08bed21a69b59fd0bcd2aba2f3a75fba41beda4d0a01359a8f884e4",
-      "linked_sha256": "8789dd55acf4cb66540cae84294ae6f999277b87ea773ec2246f06db6fb6ec79"
+      "object_sha256": "6dc129f32f6d703586da312b930ffc1448e27f225207b918cf024a236ee8b226",
+      "linked_sha256": "1361cee1659697a5555f1367523c292349992e1c3a2eb0cb23d546acf77d122a"
     },
     {
       "id": "ShellMenu_mp",

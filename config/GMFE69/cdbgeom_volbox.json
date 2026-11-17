@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -54,6 +54,24 @@
       "name": "extabindex",
       "address": "0x80012890",
       "size": 48,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170780",
+      "size": 11,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183958",
+      "size": 112,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034db68",
+      "size": 24,
       "type": 1
     }
   ],
@@ -91,9 +109,22 @@
   ],
   "externals": {
     "CONTACT_EPSILON": "0x80350ba8",
+    "Create__7CVolBoxCFv": "0x800c53a8",
     "GetCenter__10CVolSphereCFv": "0x800cba30",
+    "GetExtents__7CVolBoxCFR8CVector3R8CVector3": "0x800c13b4",
     "GetRadius__10CVolSphereCFv": "0x800cba28",
-    "TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb": "0x800c290c"
+    "TestCollision__10CCDBVolBoxCF8CVector3R10CCollisionb": "0x8006a688",
+    "TestCollision__10CCDBVolBoxCFRC10CCDBObjectR10CCollisionb": "0x8006a6bc",
+    "TestCollision__10CCDBVolBoxCFRC12CWorldVolumeR10CCollisionb": "0x8006a680",
+    "TestCollision__10CCDBVolBoxCFRC6CLine3R10CCollisionb": "0x8006efc0",
+    "TestCollision__10CCDBVolBoxCFRC7CVolBoxR10CCollisionb": "0x8006a6dc",
+    "TestCollision__10CCDBVolBoxCFRC7IVolumeR10CCollisionb": "0x8006a6fc",
+    "TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb": "0x8006e0b0",
+    "TestCollision__10CCDBVolBoxCFRC9CVolFiberR10CCollisionb": "0x8006f3d4",
+    "TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb": "0x800c290c",
+    "TestVisibility__7CVolBoxCFR12CDrawContext": "0x800c14cc",
+    "TransformedCopy__7CVolBoxFRC7IVolumeRC7CMatrix": "0x800c52d0",
+    "__dt__10CCDBVolBoxFv": "0x8006a620"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -126,6 +157,18 @@
       "offset": 16,
       "size": 8,
       "address": "0x8034fd78"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034fd50"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034fd58"
     }
   ]
 }
