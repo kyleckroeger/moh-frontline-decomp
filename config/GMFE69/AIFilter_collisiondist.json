@@ -82,7 +82,8 @@
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv": "0x8001c030",
     "__vt__24MechanicCollisionChecker": "0x80183830",
     "__vt__Q23dwi22IVisitor<10ISceneNode>": "0x80181e74",
-    "g_scene": "0x8019484c"
+    "g_scene": "0x8019484c",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -96,6 +97,7 @@
     ".data"
   ],
   "weak_duplicates": [
+    "GetSceneNode__10BSGO_BasicFv",
     "__dt__24MechanicCollisionCheckerFv",
     "__dt__6CLine3Fv",
     "__dt__Q23dwi22IVisitor<10ISceneNode>Fv",

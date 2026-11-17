@@ -1,37 +1,27 @@
 unit	source	status	detail
 AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	lost	Unexpected compiler function set
 AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	lost	Stripped object is not one compiler object: @62
-AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	kept	
 AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_visionseek.cpp # --------------------------------------- #     589: self->m_filter->m_user->GetProximityData()->leaf, position, from, (ECoverPointSelectionType)type, distance,
 bsbifunc_aistatus	scratch/try/bsbifunc_aistatus/src/bsbifunc_aistatus.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_aistatus.cpp # ------------------------------------- #     185: ((ISceneNode*)object)->GetScriptObject()->user->GetScriptData()->m_unknown0b8 = angle;
 bsbifunc_anim	scratch/try/bsbifunc_anim/src/bsbifunc_anim.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_anim.cpp # --------------------------------- #      96: ((CAnimObject*)user)->GetScriptObject()->user->GetScriptData()->m_value00 <= 0)
-bsbifunc_astar	scratch/try/bsbifunc_astar/src/bsbifunc_astar.cpp	lost	Unexpected compiler function set
-bsbifunc_attach	scratch/try/bsbifunc_attach/src/bsbifunc_attach.cpp	lost	Unexpected compiler function set
-bsbifunc_choosetarget	scratch/try/bsbifunc_choosetarget/src/bsbifunc_choosetarget.cpp	lost	Unexpected compiler function set
-bsbifunc_corpsesearch	scratch/try/bsbifunc_corpsesearch/src/bsbifunc_corpsesearch.cpp	kept	
 bsbifunc_death	scratch/try/bsbifunc_death/src/bsbifunc_death.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_death.cpp # ---------------------------------- #     202: View* disguise = g_scene.GetPlayer(0)->GetScriptObject()->user->GetScriptData();
-bsbifunc_dump	scratch/try/bsbifunc_dump/src/bsbifunc_dump.cpp	lost	Unexpected compiler function set
 bsbifunc_floatingbone	scratch/try/bsbifunc_floatingbone/src/bsbifunc_floatingbone.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_floatingbone.cpp # ----------------------------------------- #     203: for (user = g_pBoxList; user; user = user->next) {
 bsbifunc_fog	scratch/try/bsbifunc_fog/src/bsbifunc_fog.cpp	lost	Unexpected compiler function set
 bsbifunc_getpropbyid	scratch/try/bsbifunc_getpropbyid/src/bsbifunc_getpropbyid.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_getpropbyid.cpp # ---------------------------------------- #     168: for (; user; user = user->next) {
 bsbifunc_grenade	scratch/try/bsbifunc_grenade/src/bsbifunc_grenade.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_grenade.cpp # ------------------------------------ #     236: CWeapon* weapon = g_pBSObject->user->GetSceneNode()->GetSlotWeapon(i);
 bsbifunc_hiermap	scratch/try/bsbifunc_hiermap/src/bsbifunc_hiermap.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_hiermap.cpp # ------------------------------------ #     221: SharedDataView* data = g_pBSObject->user->GetScriptData();
-bsbifunc_level	scratch/try/bsbifunc_level/src/bsbifunc_level.cpp	lost	Unexpected compiler function set
 bsbifunc_makenoise	scratch/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_makenoise.cpp # -------------------------------------- #     178: DataView* data = g_scene.GetPlayer(0)->GetScriptObject()->user->GetScriptData();
 bsbifunc_makenoise_bi	scratch/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_makenoise_bi.cpp # ----------------------------------------- #     211: DataView* data = g_scene.GetPlayer(0)->GetScriptObject()->user->GetScriptData();
 bsbifunc_mountedmg	scratch/try/bsbifunc_mountedmg/src/bsbifunc_mountedmg.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mountedmg.cpp # -------------------------------------- #     118: for (user = g_pBoxList; user; user = user->next) {
 bsbifunc_movewalk	scratch/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_movewalk.cpp # ------------------------------------- #     189: nceView* data = ((ISceneNode*)object)->GetScriptObject()->user->GetScriptData();
 bsbifunc_mpplayer	scratch/try/bsbifunc_mpplayer/src/bsbifunc_mpplayer.cpp	lost	Unexpected compiler function set
-bsbifunc_mpprompt	scratch/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	lost	Unexpected compiler function set
 bsbifunc_mpweapons	scratch/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_mpweapons.cpp # -------------------------------------- #     292: for (user = g_pBoxList; user; user = user->next) {
-bsbifunc_objective	scratch/try/bsbifunc_objective/src/bsbifunc_objective.cpp	kept	
 bsbifunc_obstacle	scratch/try/bsbifunc_obstacle/src/bsbifunc_obstacle.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_obstacle.cpp # ------------------------------------- #     186: for (user = g_pBoxList; user; user = user->next) {
 bsbifunc_random	scratch/try/bsbifunc_random/src/bsbifunc_random.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_random.cpp # ----------------------------------- #     130: **stack = g_pBSObject->user->GetScriptData();
 bsbifunc_respawn	scratch/try/bsbifunc_respawn/src/bsbifunc_respawn.cpp	lost	Unexpected compiler function set
 bsbifunc_setobjinfo	scratch/try/bsbifunc_setobjinfo/src/bsbifunc_setobjinfo.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_setobjinfo.cpp # --------------------------------------- #     305: ScriptDataView* data = script->user->GetScriptData();
 bsbifunc_shake	scratch/try/bsbifunc_shake/src/bsbifunc_shake.cpp	lost	Unexpected compiler function set
 bsbifunc_soundbank	scratch/try/bsbifunc_soundbank/src/bsbifunc_soundbank.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_soundbank.cpp # -------------------------------------- #     174: ProximityDataView* proximity = g_pBSObject->user->GetProximityData();
-bsbifunc_targetsearch	scratch/try/bsbifunc_targetsearch/src/bsbifunc_targetsearch.cpp	lost	Unexpected compiler function set
 bsbifunc_translate	scratch/try/bsbifunc_translate/src/bsbifunc_translate.cpp	lost	Unexpected compiler function set
 bsbifunc_vibration	scratch/try/bsbifunc_vibration/src/bsbifunc_vibration.cpp	lost	Unexpected compiler function set
 bsbifunc_waypointinfo	scratch/try/bsbifunc_waypointinfo/src/bsbifunc_waypointinfo.cpp	lost	Unexpected compiler function set
@@ -42,7 +32,7 @@ objcreate_nonvis	scratch/try/objcreate_nonvis/src/objcreate_nonvis.cpp	no_compil
 objcreate_thrown	scratch/try/objcreate_thrown/src/objcreate_thrown.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_thrown.cpp # ------------------------------------ #     211: CreateBSObject(info->scriptName, &go->m_script, go, trigger, &go->m_scriptData);
 objcreate_volumes	scratch/try/objcreate_volumes/src/objcreate_volumes.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\objcreate_volumes.cpp # ------------------------------------- #     115: if (object->m_object)
 player_bullet	scratch/try/player_bullet/src/player_bullet.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_bullet.cpp # --------------------------------- #     296: if (event->m_damage != 0 && *m_script->m_user->GetScriptData() > 0) {
-player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #     209: ResetFields();
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_ctor.cpp # ------------------------------- #     206: ResetFields();
 player_health	scratch/try/player_health/src/player_health.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_health.cpp # --------------------------------- #     386: ScriptDataView* data = script->m_user->GetScriptData();
 player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_respawn.cpp # ---------------------------------- #     491: unsigned int* data = script->user->GetScriptData();
 player_weapon	scratch/try/player_weapon/src/player_weapon.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\player_weapon.cpp # --------------------------------- #     913: PlayerScriptDataView* data = m_script->user->GetScriptData();

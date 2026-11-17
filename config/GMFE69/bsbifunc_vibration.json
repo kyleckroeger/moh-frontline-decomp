@@ -107,7 +107,8 @@
     "g_inputMgr": "0x801ec80c",
     "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778",
-    "g_scene": "0x8019484c"
+    "g_scene": "0x8019484c",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -141,6 +142,7 @@
   ],
   "weak_duplicates": [
     "AsPlayerObject__10ISceneNodeFv",
-    "AsStaticObject__10ISceneNodeFv"
+    "AsStaticObject__10ISceneNodeFv",
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

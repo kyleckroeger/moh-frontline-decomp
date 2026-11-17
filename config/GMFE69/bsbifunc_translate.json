@@ -103,7 +103,8 @@
     "StopMotionPlayback__13CStaticObjectFv": "0x800af7c0",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
-    "g_pBuiltInFunctions": "0x8034e778"
+    "g_pBuiltInFunctions": "0x8034e778",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -148,6 +149,7 @@
   ],
   "weak_duplicates": [
     "AsHierObject__10ISceneNodeFv",
-    "AsStaticObject__10ISceneNodeFv"
+    "AsStaticObject__10ISceneNodeFv",
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

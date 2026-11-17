@@ -521,3 +521,4 @@ IVolume view (a second definition), so those wait for their IVolume moves.
   animplayer, player_ctor, thrown_obj), so 18 units are on IVolume.h. The other lost units also change
   their extab/.text size (new weak copies with exception records), which weak-duplicate entries alone
   don't cover.
+- BSGO_Basic, later: 7 more moved with the widened weak-copy rule, 17 units in all.

@@ -87,7 +87,8 @@
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778",
-    "g_scene": "0x8019484c"
+    "g_scene": "0x8019484c",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -103,6 +104,7 @@
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
   "weak_duplicates": [
-    "AsPlayerObject__10ISceneNodeFv"
+    "AsPlayerObject__10ISceneNodeFv",
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

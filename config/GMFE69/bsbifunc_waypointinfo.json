@@ -87,7 +87,8 @@
     "g_pBuiltInFunctions": "0x8034e778",
     "g_pTriggerObjects": "0x801a1300",
     "printf": "0x8013dc88",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -172,6 +173,7 @@
     "GetAIDoodad__10ISceneNodeFv",
     "GetForward__10ISceneNodeCFR8CVector3",
     "GetPosition__10ISceneNodeCFR8CVector3",
-    "GetRightward__10ISceneNodeCFR8CVector3"
+    "GetRightward__10ISceneNodeCFR8CVector3",
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

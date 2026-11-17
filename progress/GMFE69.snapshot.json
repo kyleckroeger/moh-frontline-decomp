@@ -349,7 +349,7 @@
     "src/game/AIFilter_animobj_velocity.cpp": "b4d4f3c954f5de002d76af9bef16d8bf4c194ceb7abbf88a4877ba4643f53be7",
     "src/game/AIFilter_astar.cpp": "e782e203b9cd13555675b326708aa972f29239f182af8c6982f44139eeaecb46",
     "src/game/AIFilter_caifilterobject_dtor.cpp": "74a1bad2f4372942648724f0ee107aa50b21424f3b9372e4a8c193961c3efaf6",
-    "src/game/AIFilter_collisiondist.cpp": "9f0df5db12c0d862a57d05008c67a880516da9a663445aa65aa2d3195a95be57",
+    "src/game/AIFilter_collisiondist.cpp": "38a752252192911eedc61a30a51b4b8c6cb0ae7438fc8007b0d7208fd6a3cce0",
     "src/game/AIFilter_global.cpp": "36e963a6e4c7b9b3f2aeaeb6a85c5ac5c551715432472f4c8ed342528dccc6a7",
     "src/game/AIFilter_linechecks.cpp": "37fcd81342338d7b0b02e580178199cda18a11248da10ab2624efa1abb435faa",
     "src/game/AIFilter_mechchecker_dtor.cpp": "0427139eb1d5d5324f9c7e57441fbee22248cbb63e169fe26941562ab5fd1ea5",
@@ -579,7 +579,7 @@
     "src/game/bsbifunc_mood.cpp": "c66630ca952ee6b5bd1dad364c9ff679bac2927f74e15b54310e62f06cc40e4e",
     "src/game/bsbifunc_mountedmg.cpp": "b1cb58cc907e651f34d4919e2f95ccdc07a39b3b1ccdf5fa2dbc5bc4d92b8942",
     "src/game/bsbifunc_movewalk.cpp": "7d88733a59a45863a375d0202f2171c3025fb255a5ee5a74ba0d3446b77a6930",
-    "src/game/bsbifunc_mpplayer.cpp": "5a75fe11c9c7d04e800ac143f7207b585fdcdb632795efe6062a2168f8ada80c",
+    "src/game/bsbifunc_mpplayer.cpp": "e54f2a4038f695b00980b8412b2509b55482cdf02d3be2c71839ea063a1ec5f3",
     "src/game/bsbifunc_mpprompt.cpp": "262c9b48efd2a7583bb3f92719227ba5c6d49ca45a5ba57b1343de0bb6a4933f",
     "src/game/bsbifunc_mpweapons.cpp": "21b7e48a0f2fa1c9ad4f37a79f5de58a0a3b29c8fbdf72128d990aab7888b068",
     "src/game/bsbifunc_objective.cpp": "4bb32bdeed8dcf2982e53d6fe0a70897a930bbff31453cada1316755f148a91a",
@@ -596,20 +596,20 @@
     "src/game/bsbifunc_prompttext.cpp": "fec9603a6fc064f3326f0e97f2975d5f65a26e6322e0de0f25ba7c8a557f2037",
     "src/game/bsbifunc_random.cpp": "232a053942d1a3b19b7de6bd1d54fe06628b6b2b509ad3d97acd5b4ca8f4918c",
     "src/game/bsbifunc_reload.cpp": "7e406f45d085251db42edaf7e4db0f7caf1d671c97cbfb6e600885a3a346dba1",
-    "src/game/bsbifunc_respawn.cpp": "d315c14983d2621d13bf2a85a6a695a907462caaa3a7ca4d927dbdf1f42bcae4",
+    "src/game/bsbifunc_respawn.cpp": "e93147d74d6f9ddd511101c27aee7b630a923c98a4ea27afd06123be1d4b8114",
     "src/game/bsbifunc_rotate.cpp": "f8ca86524944ad48418fe5009b924b2bfd70b96e8596566bbab6f59bee6f97a0",
     "src/game/bsbifunc_schedules.cpp": "79b54b6d034ca5f9326104c4aa0224621b5cc978a2c519777dcd1b22cdcd8625",
     "src/game/bsbifunc_sedevent.cpp": "f08bfccf34c6a94bae55bc5894bc1f785da3c53140caa234595dc6cbeb700f1e",
     "src/game/bsbifunc_setobjinfo.cpp": "cbe4a9f16a716fa235457a819c1391021ff54b66fef235a79cdb32b1965382d3",
-    "src/game/bsbifunc_shake.cpp": "0b618fecb37c1f217cde99e5577269056e1e8e12805129b1d525a66effbc7a60",
+    "src/game/bsbifunc_shake.cpp": "a15d4537fc5c6fa6ad6e3c40583214cd97f08f67d27c7d4fc8eb32733a43f8f1",
     "src/game/bsbifunc_soundbank.cpp": "ea815fb367466a8693f6ad5f1f82978e7b4508b764fd49829d3336cdabb6188c",
     "src/game/bsbifunc_soundinfo.cpp": "37517e597679184c9859d407a3796f44560fd4d8500a2b31d0759bd3d5b47b9f",
     "src/game/bsbifunc_soundoffset.cpp": "f54cfed05e3a942800267994b7122418e5cee30b80a43dbdab16f100ba4922ee",
     "src/game/bsbifunc_stop.cpp": "1a4cff4f1c07b1f379f8f062d90f7bc74763d1b2c53d5b268cc7384f2caa2daf",
     "src/game/bsbifunc_targetsearch.cpp": "5a6fbc7b397f0e8cded309357da2c980a103960c6cfdbd76c62ea40a86855243",
-    "src/game/bsbifunc_translate.cpp": "0ffba1148eb0873fa8ef53e3a90273c68a26a40bc1225a8fed898b2227a3f750",
-    "src/game/bsbifunc_vibration.cpp": "6d33b0d79bf12331e50ad0d3cc57542a85349ce64b27d727dd3f364714d96a29",
-    "src/game/bsbifunc_waypointinfo.cpp": "c2d629492a327bef7d9f0a7a8b1a2003a86646c53563a53a2d8341e3ef8ec5ef",
+    "src/game/bsbifunc_translate.cpp": "549fae1c589e29e918020a81ffec22e678e4dc0e76ca5b93dd428fd2584b51e2",
+    "src/game/bsbifunc_vibration.cpp": "f50558c1b71e823895bac8ad9d8d903f193ce8e48285559d2f2df105337d371f",
+    "src/game/bsbifunc_waypointinfo.cpp": "955b907bb1309bd2ddf5d96e61e04dca8faa2038f22ac34fa5e66cfb36238344",
     "src/game/bsevents.cpp": "baa622d91153cf43ffcc7b8c05cadb2aa480460ae5b1dced5b0595a6835f58ba",
     "src/game/bsfile.cpp": "af375447dad6c73a39950974ef6a4ac7c892bbbb7541fba3b32587c6d1c69cab",
     "src/game/bsmachin.cpp": "4a4592f7f8716314451a11642d8dffcc1af6509c603369ad878288a054ddaf03",
@@ -1468,7 +1468,7 @@
     "config/GMFE69/AIFilter_animobj_velocity.json": "d4ef2493cd13b6b8f37d84c859f064d029997b94d6ad54156ac3793a74257d7d",
     "config/GMFE69/AIFilter_astar.json": "5e14fdf1ab32d1f866d5d3b97cc4f2ef396ccb30521bf53d444544990efbd383",
     "config/GMFE69/AIFilter_caifilterobject_dtor.json": "ab035fef8e3042512f0744c46aca04bd808bacafc34e982b02a297bf111f6717",
-    "config/GMFE69/AIFilter_collisiondist.json": "28eb8fb4a4b69274ae2c30937918efdb609468e883292d8ee9170a8078a5e2af",
+    "config/GMFE69/AIFilter_collisiondist.json": "9c00745bb125526b01c6e80a12c41847c34f3e76ca1dbbdef85b49711dbce2e5",
     "config/GMFE69/AIFilter_global.json": "632fe9a839d894778a1e1e651a2a4874f8f50e25f33909f15ef275233d2a7c09",
     "config/GMFE69/AIFilter_linechecks.json": "83d49a84e2f0d9844134ca27f92d6eacea6b02197f536fc0a904f69313d5a09e",
     "config/GMFE69/AIFilter_mechchecker_dtor.json": "ee19d18945473b16e49fe7147cb1836ff26ca5c9811997ee43eed64326da40de",
@@ -1797,7 +1797,7 @@
     "config/GMFE69/bsbifunc_mood.json": "a578d5c1b57209fa55219098b7bd3af7f0191c06192e18569a497b4bc9627c15",
     "config/GMFE69/bsbifunc_mountedmg.json": "1e7378152809d72e45cbd87c15a2c8de1b3c7b32775662fd5122c03818eb6a67",
     "config/GMFE69/bsbifunc_movewalk.json": "cbfc4bb3544e9e3aeb51ff5253737e114ea86ca5fecd62e4e860bdd40b7c0a68",
-    "config/GMFE69/bsbifunc_mpplayer.json": "cb9a5b835889e052dd3267921526b78d9d06b6d1989d706aa3427d2dacbf6eab",
+    "config/GMFE69/bsbifunc_mpplayer.json": "edda91e24de46545594cf1730f6bfb4a5f1d2b490f39f0f8f719f632f98a6904",
     "config/GMFE69/bsbifunc_mpprompt.json": "4973aaed3c918b86b9b11957545e70dab0af8a092e6fce1972edf5eb7fd188f2",
     "config/GMFE69/bsbifunc_mpweapons.json": "a67d5a27c32388702ac313b7f427c4820b32dadc4a631ff30a389ff94fb0bf72",
     "config/GMFE69/bsbifunc_objective.json": "4abeeb58c700d33f378c9377ebbc23a362742584e2827e9c6d219f19dc553ab7",
@@ -1814,20 +1814,20 @@
     "config/GMFE69/bsbifunc_prompttext.json": "3b6f90cde43de0371419015003b16199017dc42ee96786a86bcdf937cca6e95d",
     "config/GMFE69/bsbifunc_random.json": "cba7f8a2af62fae47eae5fc3919c3195fb7e9eaaf3cfffa101b22c3273cee03e",
     "config/GMFE69/bsbifunc_reload.json": "7fd74674a6fc8239e8a6f2414091e0059acd51d06cf161436e97a8dbec2659ff",
-    "config/GMFE69/bsbifunc_respawn.json": "612b02005911282e03038cc4d8a0be961dd45508981c0c6b7437d58d0ea8923f",
+    "config/GMFE69/bsbifunc_respawn.json": "5e2fbc1de5d9cb42826fdf29fdea07def5559bc340ca9d0b3acd978f96cd134b",
     "config/GMFE69/bsbifunc_rotate.json": "fbf815921e6320da590d2f4e00ed4be31c48c274d2317220a604cbad653d943a",
     "config/GMFE69/bsbifunc_schedules.json": "667eae7857c71f01a1620ac05d13ee4aa8af6c0d79ae6325af38aafb95a34266",
     "config/GMFE69/bsbifunc_sedevent.json": "ea87a62d2569f83e194d37f0c40954e373194eb10ff053d299e720a3e6f12b9f",
     "config/GMFE69/bsbifunc_setobjinfo.json": "35d0dc1a43b7fde5b5189f92970305964b93fe3c3b674125bb7e2619aae9d38a",
-    "config/GMFE69/bsbifunc_shake.json": "c65f425710fb6712a3510fe06465fcbaee430ee30e3cf0e1d36e792343453556",
+    "config/GMFE69/bsbifunc_shake.json": "9bf1577d07ffc519f1b041125f2c68a3d49bc261177ca22da51f22ecd0359430",
     "config/GMFE69/bsbifunc_soundbank.json": "3e6af679ffc1ff9b8edf3a80b261b8b17ecdb96deedad540f9cf49e941af3a66",
     "config/GMFE69/bsbifunc_soundinfo.json": "aac58aec00c99e36a1ef500bb7f871955dd2cf3a3bb8f3ca7868448f17f67c01",
     "config/GMFE69/bsbifunc_soundoffset.json": "08aafdb00fa7ab6368bc780c3811ca56faedea82c71a06ceaae208300457cae6",
     "config/GMFE69/bsbifunc_stop.json": "efc7447074f1524eb6e7c1d7d2104f75be1ec77e1228759466f22c2ec38c2e02",
     "config/GMFE69/bsbifunc_targetsearch.json": "47fe11796e197136dcbde3fa32b66963aa52529154d7c77d43aa4b4d2c31480c",
-    "config/GMFE69/bsbifunc_translate.json": "95d8ae499a78f8bab7727547e341b51e4fa237be1fc295c367b997cc3ce8ac96",
-    "config/GMFE69/bsbifunc_vibration.json": "4e8775a39ba3340b33164baa915f43d5e525dc85748f17e534cbaffeaf0ce218",
-    "config/GMFE69/bsbifunc_waypointinfo.json": "170f44317f2635728cb9e8ccc034b2e9a3df536a067875164ba2af6171d644c1",
+    "config/GMFE69/bsbifunc_translate.json": "a4942a61b55def8f0deb2c11e390d2c11c33d123d65cf22490670df5751c0079",
+    "config/GMFE69/bsbifunc_vibration.json": "fa957aa9348beac176a26c7ba17e8d0f4a654cf65afa8ef04d3adc0b45cae9e5",
+    "config/GMFE69/bsbifunc_waypointinfo.json": "1ed391331d75e0b628d17b02d4037026e055219135062040aa3b4339562d47f4",
     "config/GMFE69/bsearch.json": "dd287b9523a5f289e22dc32f273d0f9756b610c9280ec41b84aac1d7ea50912b",
     "config/GMFE69/bsevents.json": "611c72eddf9d8fe5a9ae83ebe2829ad4348c86b06eb1b2b02e641e8f004f9b84",
     "config/GMFE69/bsfile.json": "f961138f149b308ce0811724b7e70892a6161a21bf25023f415870d3dd03c2f7",
@@ -24493,8 +24493,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "4a538c7e90329c1353b65e1052ea2305a303e0099d81309e87f7518373a2c570",
-      "linked_sha256": "ad24e27c37cdb931e09fefcf43f55abe7c5669ad821e8f402b365ede4e6ae774"
+      "object_sha256": "b908792f13f12c8ade94cb900ceda8a4f3e89e3da7e47cc8899e700b675196f3",
+      "linked_sha256": "553564c026c68ba4cdbc3e9196572afd4b389d7a6b5f7e3fd56eb1e8fa7b1821"
     },
     {
       "id": "bsbifunc_mpplayer",
@@ -24532,8 +24532,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "3977830dfe89caab71bbb9e162d942d7d464d352ede76938dce294c6a57c3f92",
-      "linked_sha256": "fafb1956d98216e1cef4cf406d3c3d9b264662dbfb8a94ce0def6453328115e8"
+      "object_sha256": "4a2435a28d294825f54ee1fee0251c86a5afea42dff7e5e2a5f2b5805bf9870d",
+      "linked_sha256": "2ddc19a92a7db14e0016081fc0f2f8cee0adedf2d06191d9c08f0387f7d363eb"
     },
     {
       "id": "bsbifunc_choosetarget",
@@ -24805,8 +24805,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "1ffa9efdadb60d3d5df3dff6ca5267c574acdfbc3396687c40342da48aeaba55",
-      "linked_sha256": "847a9681c83fd3b43bd8a0d5cff43d344eb417855518293e3848baa6a402fdb0"
+      "object_sha256": "553e9dc5309025bf0548972938e14fb59626eda9a3dc925d7a342ef131e35b9d",
+      "linked_sha256": "6e32f0856f9d0027c8571898b392ed8763e50d0c0af1294a22bbb56a93e0bc23"
     },
     {
       "id": "bsbifunc_particle",
@@ -24961,8 +24961,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "bf9fc3ee13af86633ea111c6630fe002357e0d2607906bdea325197601127b7b",
-      "linked_sha256": "37e3eda608f6d10988e7b390b02961642ce174bd4f13c5d9bcb71398ee7bae2c"
+      "object_sha256": "22630718944e36b064d37305bb21127942f715afc072edd620b0b9b6114643d3",
+      "linked_sha256": "0089bb7a6d3f81e0eebed2e129e772e707b72caf3552e81ec75f9a8dff52f874"
     },
     {
       "id": "bsbifunc_ammo",
@@ -25078,8 +25078,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "ae3b4773867511c2e4c90e80d7b6e08b43db118e85565f0ca2313e830be02051",
-      "linked_sha256": "96ce909b051f56960547ae587c9cfe2d2a4519dcc286d4bfdeee26613a074040"
+      "object_sha256": "79fd4fcbef903491a41c6389204bea892e87531222f0476569fc5a8eba63d8f9",
+      "linked_sha256": "69d5749ac361a0d0ed137a6ad12a4f3bf8556c093ddcd35eb4774a60711742a1"
     },
     {
       "id": "bsbifunc_mountedmg",
@@ -31937,8 +31937,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "8e34305e2dc244f70cbf7cdcb58dddc8ccd771d131e55921c81a851502836daa",
-      "linked_sha256": "639b1a7dc71baf6336d9f24b3ef57e12a3c62bc47cddbc6306f0f0ce909552d3"
+      "object_sha256": "2276bcf6bb6d78aa10d359f2108a4010cbdf8ee2d2549ae47429193de9e721b6",
+      "linked_sha256": "5be3079556e3adeff0d89787f9f90497a208e55516d4d349a4e11992f3623b03"
     },
     {
       "id": "AIFilter_linechecks",
@@ -42052,8 +42052,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "9de712b4aa172a6dd376af55147ed347c110d4f8be544310da2175d9f14bc1cc",
-      "linked_sha256": "227ac06510f3acbdb8833a9315ce6d12f3fc9cb7c7e53dbe7812f0e29c465089"
+      "object_sha256": "e17791409b7f4bb1ee099e519cf6153064539d0119987adeedcb0171ce511dd4",
+      "linked_sha256": "58c91102fc902015d6bc09ca725ebf2f5cdd7d8914cfd2754f25f4bae0dbc087"
     },
     {
       "id": "scrsfl",

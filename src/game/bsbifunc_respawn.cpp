@@ -30,14 +30,8 @@ struct AIDoodadView;
 // BSGO_Basic, the object at BSObject+12: 12 bytes of members, then its
 // virtual table pointer; the virtual functions it needs, in the order of
 // __vt__10BSGO_Basic.
-class BSGO_Basic {
-    unsigned char unknown00[12];
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual void* GetScriptData();
-    virtual ISceneNode* GetSceneNode();
-};
 
 struct BSObjectView {
     unsigned char unknown00[12];
