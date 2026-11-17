@@ -81,11 +81,13 @@ draft is proven.
 
 The strategy report's upstream-first rule stays: headers move here, gated by the bytes.
 
-1. **SDK struct views first** (the port's first link blockers). Game and EA files take their
+1. **SDK struct views first** (the port's first link blockers; DONE 2026-11-17 for the 17 surveyed files,
+   research/notes/sdk-views.md). Game and EA files take their
    OS, DVD, GX, ARQ and AX structs from `include/dolphin-sdk` instead of sized byte arrays.
    Pointers passed as `unsigned long` become a pointer type or a project `uintptr_t` typedef
    that is 32-bit on GameCube, so the bytes are unchanged.
-2. **A 64-bit hazard inventory**, as a tool, not by eye. It is a port tool, so it lives in
+2. **A 64-bit hazard inventory** (DONE 2026-11-17: moh-frontline-pc tools/hazards64.py, pc/hazards64.tsv,
+   589 rows at the pinned decomp), as a tool, not by eye. It is a port tool, so it lives in
    `moh-frontline-pc` and reads this source. It lists casts between pointers and 32-bit
    integers, structs that mirror disk formats (they must keep GameCube layout: `BE<T>` and
    offset pointers on the port side), and `sizeof`-dependent arithmetic. The fixes it leads

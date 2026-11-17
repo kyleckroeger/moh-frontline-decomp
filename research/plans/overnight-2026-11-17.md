@@ -65,6 +65,7 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   strlen and DWI_allocalign). Lead for a heap-check probe recorded in pure-link.md.
 - ~05:15 Heap check probe: heap intact; not the allocator. Narrowed to the pop-up/subtitle draw path
   (pure-link.md). W1 parked here with probes saved in research/probes/.
+- ~05:25 W2.2 done in the port repo (moh-frontline-pc 501317b: tools/hazards64.py, pc/hazards64.tsv, tests).
 
 ## Questions for the morning
 
