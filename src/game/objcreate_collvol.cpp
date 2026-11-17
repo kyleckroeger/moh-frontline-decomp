@@ -29,15 +29,8 @@ class CCollision;
 
 #include "game/CMatrix.h"
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 /* ISceneNode's table in slot order up to the script object (+0x60), as AIFilter_visit.cpp. */
 #include "game/ISceneNode.h"

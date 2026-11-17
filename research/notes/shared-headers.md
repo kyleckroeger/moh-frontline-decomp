@@ -467,3 +467,12 @@ on the header. Still on their own views:
 - With `strip_unused` on (project_build requires it for weak duplicates; move_header.py now tries
   it), 4 more moved: Soldier_object_bounds, player_updateai, player_vec_sub, static_obj_bounds, so
   14 units are on IVolume.h.
+
+## CQuaternion (2026-11-17, overnight)
+
+`include/game/CQuaternion.h`: w, x, y, z (16 bytes), the default and four-float constructors
+(arguments x, y, z, w), and the out-of-line members of quaternion.cpp (Set, Normalize, Multiply,
+Slerp, two Rotate, SetFromMatrix, GetMatrix, EndianSwap). The original has no weak copies.
+try_header: 35 kept, 3 lost. **35 units moved** (research/tools/move_header.py, all verified).
+Lost: anim_obj (a stripped literal's number moves), bsbifunc_dump and bsbifunc_movewalk (code bytes
+differ: their views copy the quaternion as doubles).

@@ -57,16 +57,8 @@ struct BPDLightVolume;
 
 enum EBSEventEnum {};
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 // A motion key (inferred): position, then rotation.
 struct StaticMotionKey {

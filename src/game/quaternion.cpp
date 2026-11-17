@@ -29,17 +29,8 @@ inline void EndianSwap(float& value, bool) {
 #include "game/CVector3.h"
 
 
-class CQuaternion {
-public:
-    void EndianSwap();
-    void Rotate(CVector3&);
-    void Rotate(CVector3&, CVector3);
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 void CQuaternion::Rotate(CVector3& out, CVector3 v) {
     float xx = 2.0f * x * x;

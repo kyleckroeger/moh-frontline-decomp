@@ -33,15 +33,8 @@ enum EClsnId {};
 
 #include "game/CMatrix.h"
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 class IDestructible {
 public:

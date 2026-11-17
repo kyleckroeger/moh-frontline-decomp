@@ -234,23 +234,8 @@ struct BSObject {
     int id;
 };
 
-class CQuaternion {
-public:
-    CQuaternion() {}
-    CQuaternion(float ax, float ay, float az, float aw) : w(aw), x(ax), y(ay), z(az) {}
-    void Slerp(CQuaternion, CQuaternion, float);
-    void Normalize();
-    void Set(float, float, float, float);
-    void Rotate(CVector3&, CVector3);
-    void SetFromMatrix(const CMatrix&);
-    void Multiply(CQuaternion);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 
 /* inferred: the volumes' virtual slots used here (TransformedCopy +0x10, GetExtents +0x48) */

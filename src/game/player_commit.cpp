@@ -127,11 +127,8 @@ public:
     CVector3 m_pos;
 } __attribute__((aligned(16)));
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
-    float x, y, z, w;
-};
+#include "game/CQuaternion.h"
+
 
 class CCollision {
 public:

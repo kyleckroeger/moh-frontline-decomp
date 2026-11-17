@@ -45,15 +45,8 @@ public:
     static bool s_ClassInit;
 } __attribute__((aligned(16)));
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 /* inferred: the cover point data's flag byte at +112 */
 struct CoverPointDataView {

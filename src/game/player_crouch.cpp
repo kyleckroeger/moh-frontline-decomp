@@ -83,15 +83,8 @@ inline CVector3 operator*(float f, const CVector3& v) {
 extern CInputManager g_inputMgr;
 inline double fabs(double x) { return __fabs(x); }
 
-class CQuaternion {
-public:
-    CQuaternion(float ax, float ay, float az, float aw) : w(aw), x(ax), y(ay), z(az) {}
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 void CreateDumpObject(const CVector3&, const CQuaternion&, int, int);
 

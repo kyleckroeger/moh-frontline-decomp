@@ -20,15 +20,8 @@ extern "C" int rand(void);
 #include "game/CMatrix.h"
 
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 struct MOH_particle_Struct {
     unsigned char unknown00[16];

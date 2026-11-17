@@ -32,15 +32,8 @@ inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x,
 #include "game/CMatrix.h"
 
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 struct TriggerObject_struct;
 

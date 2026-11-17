@@ -118,16 +118,8 @@ public:
     CVector3 pos;
 } __attribute__((aligned(16)));
 
-class CQuaternion {
-public:
-    void Set(float, float, float, float);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 extern CVector3 g_CameraOffset;
 extern CVector3 CAMERA_STAND_OFFSET;

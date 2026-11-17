@@ -46,15 +46,8 @@ inline void SqrtInPlace(float& x)
 #include "game/CMatrix.h"
 
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 class CAIFilterRealPosition {
 public:

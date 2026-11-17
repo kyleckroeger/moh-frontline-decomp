@@ -26,15 +26,8 @@
 #include "game/CMatrix.h"
 
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 class BPDLightVolume;
 

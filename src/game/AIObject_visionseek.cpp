@@ -245,15 +245,8 @@ public:
     static bool s_ClassInit;
 } __attribute__((aligned(16)));
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 class CVector3 {
 public:

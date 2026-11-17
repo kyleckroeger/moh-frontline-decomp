@@ -37,19 +37,8 @@ public:
 extern "C" double acos(double);
 extern "C" double sin(double);
 
-class CQuaternion {
-public:
-    void Slerp(CQuaternion, CQuaternion, float);
-    void SetFromMatrix(const CMatrix&);
-    void GetMatrix(CMatrix&) const;
-    void Normalize();
-    void Set(float, float, float, float);
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 void CQuaternion::Set(float nx, float ny, float nz, float nw) {
     x = nx;

@@ -1,0 +1,39 @@
+unit	source	status	detail
+AIObject_mmgpoint	scratch/try/AIObject_mmgpoint/src/AIObject_mmgpoint.cpp	kept	
+AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	kept	
+CoverPoint_invalidate	scratch/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	kept	
+CoverPoint_modified	scratch/try/CoverPoint_modified/src/CoverPoint_modified.cpp	kept	
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	lost	Stripped object is not one compiler object: @1087
+animplayer	scratch/try/animplayer/src/animplayer.cpp	kept	
+bsbifunc_attach	scratch/try/bsbifunc_attach/src/bsbifunc_attach.cpp	kept	
+bsbifunc_distance	scratch/try/bsbifunc_distance/src/bsbifunc_distance.cpp	kept	
+bsbifunc_dump	scratch/try/bsbifunc_dump/src/bsbifunc_dump.cpp	lost	Compiled source bytes differ: bsbifunc_dump .text
+bsbifunc_movewalk	scratch/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	lost	Compiled source bytes differ: bsbifunc_movewalk .text
+bsbifunc_mpprompt	scratch/try/bsbifunc_mpprompt/src/bsbifunc_mpprompt.cpp	kept	
+bsbifunc_mpweapons	scratch/try/bsbifunc_mpweapons/src/bsbifunc_mpweapons.cpp	kept	
+bsbifunc_particle	scratch/try/bsbifunc_particle/src/bsbifunc_particle.cpp	kept	
+bsbifunc_waypointinfo	scratch/try/bsbifunc_waypointinfo/src/bsbifunc_waypointinfo.cpp	kept	
+hierobject	scratch/try/hierobject/src/hierobject.cpp	kept	
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	kept	
+objcreate_createplayer	scratch/try/objcreate_createplayer/src/objcreate_createplayer.cpp	kept	
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	kept	
+particlesystem_cpropertyparticlesystem_dtor	scratch/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	kept	
+particlesystem_create	scratch/try/particlesystem_create/src/particlesystem_create.cpp	kept	
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	kept	
+player_commit	scratch/try/player_commit/src/player_commit.cpp	kept	
+player_crouch	scratch/try/player_crouch/src/player_crouch.cpp	kept	
+player_mmg	scratch/try/player_mmg/src/player_mmg.cpp	kept	
+player_weapon_object_head	scratch/try/player_weapon_object_head/src/player_weapon_object_head.cpp	kept	
+propdat	scratch/try/propdat/src/propdat.cpp	kept	
+proxtrig_point	scratch/try/proxtrig_point/src/proxtrig_point.cpp	kept	
+quaternion	scratch/try/quaternion/src/quaternion.cpp	kept	
+quaternion_matrix	scratch/try/quaternion_matrix/src/quaternion_matrix.cpp	kept	
+static_obj_anim	scratch/try/static_obj_anim/src/static_obj_anim.cpp	kept	
+static_obj_attempt	scratch/try/static_obj_attempt/src/static_obj_attempt.cpp	kept	
+static_obj_commit	scratch/try/static_obj_commit/src/static_obj_commit.cpp	kept	
+static_obj_scale	scratch/try/static_obj_scale/src/static_obj_scale.cpp	kept	
+static_obj_setpos	scratch/try/static_obj_setpos/src/static_obj_setpos.cpp	kept	
+static_obj_type	scratch/try/static_obj_type/src/static_obj_type.cpp	kept	
+staticobjfactory_patchmvd	scratch/try/staticobjfactory_patchmvd/src/staticobjfactory_patchmvd.cpp	kept	
+thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	kept	
+weapon	scratch/try/weapon/src/weapon.cpp	kept	

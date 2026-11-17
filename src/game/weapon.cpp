@@ -105,13 +105,8 @@ void ForceUpdateProximityTriggerStatus(BSGO_Basic*, bool);
 extern void* g_pStaticObjectMuzzleFlashNPC;
 
 /* inferred views */
-class CQuaternion {
-public:
-    float w;
-    float x;
-    float y;
-    float z;
-};
+#include "game/CQuaternion.h"
+
 
 class CLine3 {
 public:

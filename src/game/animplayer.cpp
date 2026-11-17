@@ -117,17 +117,8 @@ void* AllocateBoxVolume();
 void* AllocateAnimatedVolume();
 
 /* inferred views */
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
-    void Slerp(CQuaternion, CQuaternion, float);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 /* the volumes' virtual slots used here (TransformedCopy +0x10, GetExtents +0x48) */
 class IVolume {

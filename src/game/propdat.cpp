@@ -104,11 +104,8 @@ class CMatrix;
 
 #include "game/CVector3.h"
 
-class CQuaternion {
-public:
-    void GetMatrix(CMatrix&) const;
-    float x, y, z, w;
-};
+#include "game/CQuaternion.h"
+
 
 #include "game/CMatrix.h"
 

@@ -138,15 +138,8 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
-class CQuaternion {
-public:
-    CQuaternion(float ax, float ay, float az, float aw) : x(ax), y(ay), z(az), w(aw) {}
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 enum EClsnId {};
 class CCollision;

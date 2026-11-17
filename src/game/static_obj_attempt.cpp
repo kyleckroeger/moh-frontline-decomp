@@ -41,23 +41,8 @@ unsigned long GetFrameCount();
 #include "game/CMatrix.h"
 
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
-    CQuaternion() {}
-    CQuaternion(float ax, float ay, float az, float aw) : w(aw), x(ax), y(ay), z(az) {}
-    void Slerp(CQuaternion, CQuaternion, float);
-    void Multiply(CQuaternion);
-    void Normalize();
-    void Rotate(CVector3&, CVector3);
-    void Set(float, float, float, float);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 class BPDLightVolume;
 

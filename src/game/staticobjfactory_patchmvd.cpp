@@ -55,15 +55,8 @@ struct CVector3 {
     CVector3Data d;
 } __attribute__((aligned(8)));
 
-class CQuaternion {
-public:
-    void EndianSwap();
-    CQuaternion() {}
-    CQuaternion(const CQuaternion& q) : x(q.x), y(q.y), z(q.z), w(q.w) {}
-    CQuaternion& operator=(const CQuaternion& q) { x = q.x; y = q.y; z = q.z; w = q.w; return *this; }
+#include "game/CQuaternion.h"
 
-    float x, y, z, w;
-};
 
 /* inferred views */
 struct MotionFrameView {

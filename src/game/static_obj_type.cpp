@@ -125,23 +125,8 @@ struct BSObject {
     int m_index;
 };
 
-class CQuaternion {
-public:
-    CQuaternion() {}
-    CQuaternion(float ax, float ay, float az, float aw) : w(aw), x(ax), y(ay), z(az) {}
-    void Slerp(CQuaternion, CQuaternion, float);
-    void Normalize();
-    void Set(float, float, float, float);
-    void Rotate(CVector3&, CVector3);
-    void SetFromMatrix(const CMatrix&);
-    void Multiply(CQuaternion);
-    void GetMatrix(CMatrix&) const;
+#include "game/CQuaternion.h"
 
-    float w;
-    float x;
-    float y;
-    float z;
-};
 
 inline CVector3 operator*(float f, const CVector3& v) { return CVector3(f * v.x, f * v.y, f * v.z); }
 

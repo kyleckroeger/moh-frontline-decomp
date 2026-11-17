@@ -85,15 +85,8 @@ public:
     float m[4][4];
 } __attribute__((aligned(16)));
 
-class CQuaternion {
-public:
-    void SetFromMatrix(const CMatrix&);
+#include "game/CQuaternion.h"
 
-    float x;
-    float y;
-    float z;
-    float w;
-};
 
 class CStaticObject {
 public:
