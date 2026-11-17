@@ -20,6 +20,8 @@ original files work as one file would:
     anchors         MWCC reaches a file's statics through a section anchor (`...bss.0` +
                     offset); those relocations are pointed at the static's own symbol first,
                     so that merging the static moves them too.
+    weak copies     a unit's weak functions placed at their original address (the verified
+                    copies) are made strong, so another fragment's copy can't win.
     SDA21           MWCC records R_PPC_EMB_SDA21 at the instruction's low halfword; GNU ld
                     wants the instruction, so every such relocation moves back 2 bytes.
     stripped        names only dead-stripped code reaches: a local definition is made
@@ -288,13 +290,28 @@ def original_files(units, drafts, data):
     for o in units:
         c = json.load(open(ROOT / "config/GMFE69" / (Path(o).parent.name + ".json")))
         origin[o] = c.get("original_file") or Path(c["source"]).name
-    settings = {}
+    settings, address = {}, {}
     for row in csv.DictReader(open(ROOT / "research/drafts/index.tsv"), delimiter="\t"):
         settings[Path(row["draft"]).stem] = row["compile_settings_from"]
+        if row["address"]:
+            address.setdefault(Path(row["draft"]).stem, int(row["address"], 16))
+    # A draft's file when its settings' config doesn't name one: the unit just below its address.
+    starts = []
+    for o in units:
+        c = json.load(open(ROOT / "config/GMFE69" / (Path(o).parent.name + ".json")))
+        for sec in c["sections"]:
+            if sec["name"] == ".text" and c.get("original_file"):
+                starts.append((int(sec["address"], 16), c["original_file"]))
+    starts.sort()
     for o in drafts:
-        cfg = settings.get(Path(o).stem.replace(".weak", ""))
+        stem = Path(o).stem.replace(".weak", "")
+        cfg = settings.get(stem)
         if cfg:
             origin[o] = json.load(open(ROOT / cfg)).get("original_file")
+        if not origin.get(o) and stem in address:
+            below = [f for a, f in starts if a <= address[stem]]
+            if below:
+                origin[o] = below[-1]
     for o in data:
         stem = Path(o).name.replace(".cpp.o", "").replace(".o", "")
         origin[o] = stem.split("_", 1)[1] + ".cpp" if stem.startswith(("bss_", "init_")) else stem + ".cpp"
@@ -399,7 +416,38 @@ def bss_placement(paths, origin):
     return placed
 
 
-def prepare(objs, weaken, globalize, rename):
+def verified_weak_copies(units):
+    """unit object -> the weak functions it places at their original address (its config's
+    functions with weak binding that aren't listed as weak or file duplicates): the copies the
+    verified build checked. In the pure link these become strong, so a fragment's copy compiled
+    from another view (GetWorldLinearVelocity: 20 bytes in some, 44 in others) can't win."""
+    out = {}
+    for o in units:
+        c = json.load(open(ROOT / "config/GMFE69" / (Path(o).parent.name + ".json")))
+        dup = set(c.get("weak_duplicates", [])) | set(c.get("file_duplicates", []))
+        names = {f["name"] for f in c.get("functions", []) if f.get("binding") == 2 and f["name"] not in dup}
+        if names:
+            out[o] = names
+    return out
+
+
+def strengthen(path, names):
+    """Turn these weak definitions into global ones (the symbol table's binding nibble)."""
+    data = bytearray(Path(path).read_bytes())
+    elf = Elf32(bytes(data))
+    for sec in elf.sections:
+        if sec["type"] != 2:
+            continue
+        strings = elf.contents(elf.sections[sec["link"]])
+        for off in range(sec["offset"], sec["offset"] + sec["size"], 16):
+            name_off, info = struct.unpack_from(">I", data, off)[0], data[off + 12]
+            end = strings.index(b"\0", name_off)
+            if info >> 4 == 2 and strings[name_off:end].decode("latin-1") in names and struct.unpack_from(">H", data, off + 14)[0]:
+                data[off + 12] = (1 << 4) | (info & 15)
+    Path(path).write_bytes(data)
+
+
+def prepare(objs, weaken, globalize, rename, strong=None):
     """Copy each object with its symbol changes; return the paths to link."""
     work = OUT / "objs"
     shutil.rmtree(work, ignore_errors=True)
@@ -430,6 +478,8 @@ def prepare(objs, weaken, globalize, rename):
         else:
             shutil.copy(src, dst)
         fix_sda21(dst)
+        if strong and strong.get(o):
+            strengthen(dst, strong[o] - weaken.get(o, set()))
         out.append(str(dst))
     return out
 
@@ -593,7 +643,7 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override, pro
                     weaken.setdefault(o, set()).add(n)
             if not good:
                 generate.append(n)                   # no copy matches: the original's, generated
-    objs = prepare(units + data + drafts + list(probes), weaken, globalize, rename)
+    objs = prepare(units + data + drafts + list(probes), weaken, globalize, rename, verified_weak_copies(units))
     origin = original_files(units, drafts, data)
     renamed = {o: p for o, p in zip(units + data + drafts, objs)}
     placed = bss_placement(units + data + drafts, origin)

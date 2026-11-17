@@ -49,6 +49,10 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - ~02:25 compartment draft statics fixed (re-proven on route_menu): the pure-source image boots like the
   original (no exception, 3 movies). pure_link --probe added. Route 1_2 reaches the level, then a runaway
   read during level load. Next: bisect that.
+- ~03:20 The image is in step with the original's trace into level 1_2 (update 2790 matches the control).
+  Fixed: HUD vertex arrays (transcribed), verified weak copies made strong, pure_data_check.py.
+  Still: a runaway read in Dolphin's EFB range soon after the player appears (the game, not the probe).
+  Parked for an interactive debugger session; moving on to item 4 (W3.1 matching).
 
 ## Questions for the morning
 

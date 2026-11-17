@@ -69,3 +69,25 @@ image plays this route to the end, so the cause is in the pure link: a static st
 fragments, a `.data` copy that differs, a draft's data view, or layout. Next: bisect it. Swap units'
 and drafts' copies of the file statics they touch while loading a level, or link with
 `--probe` plus a reach probe at the loader functions.
+
+**03:20: route 1_2, continued.**
+- The image is **in step with the original into level 1_2**. At update 2790 its trace matches the
+  control's exactly (position -5.112 21.053 0.520, yaw 3.1210, flags d08002b8, weapon 6). Only the
+  player-object hash differs, and it depends on the layout. It reaches the level three trace steps
+  later than the control because loading takes more emulated time.
+- `research/tools/pure_data_check.py` compares every named initialised data object of the original
+  with the pure image's, pointer words masked. It found seven HUD vertex arrays (CompassVerts and
+  others) that only a multiplayer draft defined, zero-filled. They are now transcribed, exact
+  (`research/data/init/UserInterface.cpp`). Left: the RTTI offset words of the two two-part manager
+  tables.
+- Weak functions: 6 of 604 have copies that differ between fragments (GetWorldLinearVelocity is 20
+  bytes in some and 44 in others). pure_link now makes each unit's verified copy, the one placed at
+  the original address, strong.
+- **Still failing.** A little after the player appears (after update 2790 with the clock probe,
+  3210 without it), something reads sequentially from 0x88800000 up, Dolphin's EFB range ("Unimplemented
+  Z+Color EFB read", millions of lines). Without the clock probe it fails the same way, so the game
+  does it, not the probe. The original never reads there. The pure image contains GXPeekARGB/GXPeekZ
+  (GXMisc's functions the original linker stripped), but no game source calls them. Next: find the
+  reader with boot_probe-style probes on the level-start path (CPlayerObject::Init, the HUD's
+  first draw, the level's texture and display-list set-up), or with Dolphin's debugger
+  interactively.
