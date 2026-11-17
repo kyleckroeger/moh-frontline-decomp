@@ -66,13 +66,8 @@ public:
     CVector3 pos;
 } __attribute__((aligned(16)));
 
-class CColor {
-public:
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CColor.h"
+
 
 struct ParticleVectorView {
     float x;

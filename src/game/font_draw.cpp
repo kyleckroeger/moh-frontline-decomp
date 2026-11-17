@@ -12,12 +12,8 @@
 extern "C" void* memset(void*, int, unsigned long);
 
 struct Shape;
-struct CColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CColor.h"
+
 
 class CTexture {
 public:

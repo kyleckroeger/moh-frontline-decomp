@@ -21,14 +21,8 @@
 // meaning are inferred. The rest of the file is in other units.
 #include "game/CVector3.h"
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceSquaredXYReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIFilterRealVector3;
 

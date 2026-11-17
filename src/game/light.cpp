@@ -145,12 +145,8 @@ struct LightDirectionView {
     } d;
 } __attribute__((aligned(8)));
 
-struct CColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CColor.h"
+
 
 /* inferred: a property-data light record and the light volume that holds a set of them */
 struct BPDLight {

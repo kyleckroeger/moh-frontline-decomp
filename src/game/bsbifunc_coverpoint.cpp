@@ -97,14 +97,8 @@ class BSObject;
 
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceXYReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 // Inferred: a direction vector usable as a position (16 bytes in the object).
 class CAIFilterRealVector3 : public CAIFilterRealPosition {

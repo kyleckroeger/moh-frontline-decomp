@@ -27,14 +27,8 @@
 // file is in other units.
 enum ERenderPriority {};
 
-struct CColor {
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CColor.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 class CFont {
 public:

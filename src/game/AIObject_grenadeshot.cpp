@@ -14,14 +14,8 @@ extern "C" {
 
 float MathFunRandomRealSigned(float, float);
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceXYReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIFilterRealVector3 : public CAIFilterRealPosition {
 public:

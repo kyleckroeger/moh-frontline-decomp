@@ -90,14 +90,8 @@ public:
 };
 
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceXYReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIObject {
 public:

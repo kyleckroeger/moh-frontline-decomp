@@ -31,12 +31,8 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
-class CAIFilterRealPosition {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CAIFilterRealPosition.h"
+
 
 /* inferred: the script data's two values at +16 and +20 */
 struct ScriptDataView {

@@ -53,12 +53,8 @@ inline void CAISplinePathSegment::ExpandDerivative(float t, CVector3& out) {
     out += m_coefficients[2];
 }
 
-class CAIFilterRealPosition {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CAIFilterRealPosition.h"
+
 
 class CAIFilterRealVector3 {
 public:

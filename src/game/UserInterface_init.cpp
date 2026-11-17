@@ -20,14 +20,8 @@ public:
     static void* operator new(unsigned long size) { return DWI_alloc(0, size, 0x400); }
     unsigned char unknown[100];
 };
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CColor.h"
+
 class CFont {
 public:
     CFont(const char*, ERenderPriority);

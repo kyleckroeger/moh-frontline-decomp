@@ -1,0 +1,17 @@
+unit	source	status	detail
+Moh2	scratch/try/Moh2/src/Moh2.cpp	kept	
+TibText	scratch/try/TibText/src/TibText.cpp	kept	
+UserInterface	scratch/try/UserInterface/src/UserInterface.cpp	kept	
+UserInterface_init	scratch/try/UserInterface_init/src/UserInterface_init.cpp	kept	
+bsbifunc	scratch/try/bsbifunc/src/bsbifunc.cpp	kept	
+bsbifunc_fog	scratch/try/bsbifunc_fog/src/bsbifunc_fog.cpp	kept	
+fader	scratch/try/fader/src/fader.cpp	kept	
+font_draw	scratch/try/font_draw/src/font_draw.cpp	kept	
+font_render	scratch/try/font_render/src/font_render.cpp	lost	Compiled source bytes differ: font_render .text
+light	scratch/try/light/src/light.cpp	kept	
+particlesystem	scratch/try/particlesystem/src/particlesystem.cpp	kept	
+particlesystem_color	scratch/try/particlesystem_color/src/particlesystem_color.cpp	kept	
+particlesystem_emit	scratch/try/particlesystem_emit/src/particlesystem_emit.cpp	kept	
+player_death	scratch/try/player_death/src/player_death.cpp	kept	
+sound	scratch/try/sound/src/sound.cpp	kept	
+sprite	scratch/try/sprite/src/sprite.cpp	lost	Stripped object is not one compiler object: @498

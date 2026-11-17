@@ -487,3 +487,11 @@ ConfigGC changes its data layout, and compartment_bins/_bindtors still fail the 
 check), 32 no_compile (other member spellings: m_prev/m_head/m_tail, unknown00[28]).
 **18 units moved** (verified). Next: rename the other spellings in the no_compile units
 (mechanical), then the weak-copy units.
+
+## CColor and CAIFilterRealPosition (2026-11-17, overnight)
+
+- CColor (include/game/CColor.h, existing): try_header 14 kept, 2 lost. **14 more units moved.**
+- `include/game/CAIFilterRealPosition.h`: x, y, z, the inline empty default constructor (the
+  original's weak copy) and the four out-of-line distance members. try_header: 20 kept, 16
+  no_compile (views with their own inline helpers: constructors from three floats, operator=, or
+  deriving from CVector3), 7 lost. **20 units moved.**

@@ -19,12 +19,8 @@
 // duplicate, like the table). ISceneNode's virtual functions are named by its table.
 struct ShapeFile;
 
-struct CColor {
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
+#include "game/CColor.h"
+
 
 #include "game/CVector3.h"
 

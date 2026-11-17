@@ -110,12 +110,8 @@ public:
     float PerformCollisionTest(ECollisionTestDirection, float);
 };
 
-class CAIFilterRealPosition {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CAIFilterRealPosition.h"
+
 
 class CAIFilterObject {
 public:

@@ -24,7 +24,8 @@ struct AIDoodadView;
 #include "game/CVector3.h"
 
 /* inferred: a 16-byte, 8-aligned position (copied as two doubles) */
-class CAIFilterRealPosition : public CVector3 {};
+#include "game/CAIFilterRealPosition.h"
+
 
 class CLine3 {
 public:

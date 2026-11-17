@@ -11,14 +11,8 @@
 struct BSObject;
 void BSObjectTriggerEvent(BSObject*, unsigned short, void*, BSObject*, bool);
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceSquaredXYZReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIFilterObject {
 public:

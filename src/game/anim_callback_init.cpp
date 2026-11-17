@@ -97,11 +97,8 @@ public:
 class CSoldierObject : public ISceneNode {
 };
 
-struct CAIFilterRealPosition {
-    float x;
-    float y;
-    float z;
-};
+#include "game/CAIFilterRealPosition.h"
+
 
 class CAIObject {
 public:

@@ -77,15 +77,8 @@ public:
     virtual CLight* GetAttachedLight() const;
 };
 
-class CAIFilterRealPosition {
-public:
-    CAIFilterRealPosition(float x_, float y_, float z_) : x(x_), y(y_), z(z_) {}
-    float GetDistanceSquaredXYZReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIObject {
 public:

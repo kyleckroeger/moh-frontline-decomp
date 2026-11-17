@@ -12,14 +12,8 @@ enum EMovePointType {};
 struct aistatus_match;
 struct BS_STRUCT_Vector_struct;
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceSquaredXYZReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 class CAIFilterRealVector3;
 

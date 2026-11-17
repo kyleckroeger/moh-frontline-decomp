@@ -48,15 +48,8 @@ public:
 
 extern BSSchedule g_CorpseSearchSchedule;
 
-class CColor {
-public:
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CColor.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 enum TLTResourceID {};
 struct LevelFileContentsStruct_;

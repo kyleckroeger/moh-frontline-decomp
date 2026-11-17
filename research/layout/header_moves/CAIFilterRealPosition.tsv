@@ -1,0 +1,44 @@
+unit	source	status	detail
+AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIFilter_collisiondist.cpp # ------------------------------------------ #     260: CLine3 line(start, end);
+AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIFilter_linechecks.cpp # --------------------------------------- #     266: CLine3 line(start, end);
+AIFilter_player	scratch/try/AIFilter_player/src/AIFilter_player.cpp	kept	
+AIFilter_player_ctor	scratch/try/AIFilter_player_ctor/src/AIFilter_player_ctor.cpp	kept	
+AIFilter_player_update	scratch/try/AIFilter_player_update/src/AIFilter_player_update.cpp	kept	
+AIFilter_queries	scratch/try/AIFilter_queries/src/AIFilter_queries.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIFilter_queries.cpp # ------------------------------------ #     140: position = CAIFilterRealPosition(m_aiObject->m_targetGuess);
+AIFilter_runaway	scratch/try/AIFilter_runaway/src/AIFilter_runaway.cpp	lost	Compiled source bytes differ: AIFilter_runaway .text
+AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	kept	
+AIObject	scratch/try/AIObject/src/AIObject.cpp	lost	Compiled source bytes differ: AIObject .text
+AIObject_globallist	scratch/try/AIObject_globallist/src/AIObject_globallist.cpp	kept	
+AIObject_grenadeshot	scratch/try/AIObject_grenadeshot/src/AIObject_grenadeshot.cpp	kept	
+AIObject_mmgpoint	scratch/try/AIObject_mmgpoint/src/AIObject_mmgpoint.cpp	kept	
+AIObject_reachable	scratch/try/AIObject_reachable/src/AIObject_reachable.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_reachable.cpp # -------------------------------------- #      36: CAIFilterRealPosition from(m_position);
+AIObject_setlocation	scratch/try/AIObject_setlocation/src/AIObject_setlocation.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_setlocation.cpp # ---------------------------------------- #     194: start.Assign((CAIFilterRealPosition&)end);
+AIObject_spline	scratch/try/AIObject_spline/src/AIObject_spline.cpp	kept	
+AIObject_threat	scratch/try/AIObject_threat/src/AIObject_threat.cpp	lost	Compiled source bytes differ: AIObject_threat .text
+AIObject_updatetarget	scratch/try/AIObject_updatetarget/src/AIObject_updatetarget.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AIObject_updatetarget.cpp # ----------------------------------------- #     224: position.Assign(target->m_position);
+AIObject_visionseek	scratch/try/AIObject_visionseek/src/AIObject_visionseek.cpp	lost	Stripped object is not one compiler object: @1459
+AISoldierDoodad	scratch/try/AISoldierDoodad/src/AISoldierDoodad.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AISoldierDoodad.cpp # ----------------------------------- #     152: if (m_soldier->FireMMG(target, gun))
+AISoldierObject	scratch/try/AISoldierObject/src/AISoldierObject.cpp	lost	Compiled source bytes differ: AISoldierObject .text
+AISplinePath_astar	scratch/try/AISplinePath_astar/src/AISplinePath_astar.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\AISplinePath_astar.cpp # -------------------------------------- #      44: if (object->m_ai->SetupAStarPathWalkForPatrol(m_target))
+AISplinePath_finalpoint	scratch/try/AISplinePath_finalpoint/src/AISplinePath_finalpoint.cpp	kept	
+AISplinePath_prepare	scratch/try/AISplinePath_prepare/src/AISplinePath_prepare.cpp	kept	
+AITankObject	scratch/try/AITankObject/src/AITankObject.cpp	lost	Compiled source bytes differ: AITankObject .text
+CoverPoint_invalidate	scratch/try/CoverPoint_invalidate/src/CoverPoint_invalidate.cpp	kept	
+CoverPoint_modified	scratch/try/CoverPoint_modified/src/CoverPoint_modified.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\CoverPoint_modified.cpp # --------------------------------------- #     122: position.Set(m_object->x, m_object->y, m_object->z);
+ObstacleAvoidance	scratch/try/ObstacleAvoidance/src/ObstacleAvoidance.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\ObstacleAvoidance.cpp # ------------------------------------- #     341: start += (offset = forward) *= -0.5f;
+PathNodeList_closest	scratch/try/PathNodeList_closest/src/PathNodeList_closest.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\PathNodeList_closest.cpp # ---------------------------------------- #     160: float best = p->GetDistance(away);
+PathNodeList_disable	scratch/try/PathNodeList_disable/src/PathNodeList_disable.cpp	lost	Compiled source bytes differ: PathNodeList_disable .text
+SearchNode	scratch/try/SearchNode/src/SearchNode.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\SearchNode.cpp # ------------------------------ #      96: CAIFilterRealPosition mine(a.x, a.y, a.z);
+alarm	scratch/try/alarm/src/alarm.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\alarm.cpp # ------------------------- #     268: a->GetPosition(pa);
+anim_callback_init	scratch/try/anim_callback_init/src/anim_callback_init.cpp	kept	
+bsbifunc_aistatus	scratch/try/bsbifunc_aistatus/src/bsbifunc_aistatus.cpp	kept	
+bsbifunc_astar	scratch/try/bsbifunc_astar/src/bsbifunc_astar.cpp	kept	
+bsbifunc_corpse	scratch/try/bsbifunc_corpse/src/bsbifunc_corpse.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_corpse.cpp # ----------------------------------- #     286: ion*)((char*)other + 24))->z, ((CAIFilterRealPosition*)((char*)other + 24))->y);
+bsbifunc_cover	scratch/try/bsbifunc_cover/src/bsbifunc_cover.cpp	kept	
+bsbifunc_coverpoint	scratch/try/bsbifunc_coverpoint/src/bsbifunc_coverpoint.cpp	kept	
+bsbifunc_coverstart	scratch/try/bsbifunc_coverstart/src/bsbifunc_coverstart.cpp	kept	
+bsbifunc_makenoise	scratch/try/bsbifunc_makenoise/src/bsbifunc_makenoise.cpp	kept	
+bsbifunc_makenoise_bi	scratch/try/bsbifunc_makenoise_bi/src/bsbifunc_makenoise_bi.cpp	kept	
+bsbifunc_movewalk	scratch/try/bsbifunc_movewalk/src/bsbifunc_movewalk.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\bsbifunc_movewalk.cpp # ------------------------------------- #     190: CAIFilterRealPosition point(data->x, data->y, data->z);
+bsbifunc_obstacle	scratch/try/bsbifunc_obstacle/src/bsbifunc_obstacle.cpp	kept	
+static_obj_pathbegin	scratch/try/static_obj_pathbegin/src/static_obj_pathbegin.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\static_obj_pathbegin.cpp # ---------------------------------------- #     264: CAIFilterRealPosition here(m_pathStart);

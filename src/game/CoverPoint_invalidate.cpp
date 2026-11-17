@@ -63,15 +63,8 @@ struct CoverPointDataView {
     unsigned char m_flag01 : 1;
 };
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceSquaredXYReal(const CAIFilterRealPosition&) const;
-    float GetDistanceSquaredXYZReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 // Inferred: a direction between two filter positions, normalised in place.
 class CAIFilterRealVector3 {

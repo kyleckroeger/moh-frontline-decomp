@@ -13,14 +13,8 @@
 // CScreenFlash has no virtual function of its own, so its table is weak (a
 // weak duplicate) and its type information is local to the file; the unit is
 // built with RTTI on so those records are emitted here.
-struct CColor {
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
+#include "game/CColor.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 class CFaderControl {
 public:

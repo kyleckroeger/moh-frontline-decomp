@@ -2904,3 +2904,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] IVolume.h: 4 more units moved with strip_unused on (14 total).
 - 2026-11-17 [W2.3] include/game/CQuaternion.h; 35 of 38 views moved (verified); lost: anim_obj, bsbifunc_dump, bsbifunc_movewalk.
 - 2026-11-17 [W2.3] include/game/CRenderBin.h; 18 units moved (verified); 32 no_compile (member spellings), 20 lost.
+- 2026-11-17 [W2.3] CColor: 14 more units on include/game/CColor.h; include/game/CAIFilterRealPosition.h: 20 units moved (verified).

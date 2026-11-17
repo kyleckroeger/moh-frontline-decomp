@@ -23,22 +23,8 @@
 class CDmaTag;
 class CDmaPacket;
 
-struct CColor {
-    CColor() {}
-    CColor(unsigned char ar, unsigned char ag, unsigned char ab, unsigned char aa) : r(ar), g(ag), b(ab), a(aa) {}
-    CColor& operator=(const CColor& c) {
-        r = c.r;
-        g = c.g;
-        b = c.b;
-        a = c.a;
-        return *this;
-    }
+#include "game/CColor.h"
 
-    unsigned char r;
-    unsigned char g;
-    unsigned char b;
-    unsigned char a;
-};
 
 class CRenderBinData {
 public:

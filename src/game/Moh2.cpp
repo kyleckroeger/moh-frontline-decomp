@@ -52,11 +52,8 @@ struct SProfileBin {
 };
 extern SProfileBin g_ProfileBins[31];
 
-struct CColor {
-    CColor() {}
-    CColor(unsigned char r_, unsigned char g_, unsigned char b_, unsigned char a_) { r = r_; g = g_; b = b_; a = a_; }
-    unsigned char r, g, b, a;
-};
+#include "game/CColor.h"
+
 
 class CRenderList {
 public:

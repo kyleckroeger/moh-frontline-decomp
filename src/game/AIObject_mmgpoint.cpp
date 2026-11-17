@@ -49,14 +49,8 @@ inline void SqrtInPlace(float& x)
 #include "game/CQuaternion.h"
 
 
-class CAIFilterRealPosition {
-public:
-    float GetDistanceXYZReal(const CAIFilterRealPosition&) const;
+#include "game/CAIFilterRealPosition.h"
 
-    float x;
-    float y;
-    float z;
-};
 
 struct TriggerCoreView {
     unsigned char unknown00[12];

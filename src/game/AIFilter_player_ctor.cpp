@@ -13,12 +13,8 @@ extern "C" {
 
 enum aifilter_target_mode {};
 struct aistatus_match;
-class CAIFilterRealPosition {
-public:
-    float x;
-    float y;
-    float z;
-};
+#include "game/CAIFilterRealPosition.h"
+
 class CAIFilterRealVector3;
 
 
