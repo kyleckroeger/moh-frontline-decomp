@@ -116,3 +116,14 @@ rewrite breaks recursive calls).
    to go ahead in a later session?
 2. W1 is close: one more watchpoint session should find what writes 0x486e486e into the animation
    frame cache. Continue W1 next session, or switch to the port as planned?
+
+## Decisions (user, 2026-11-17 morning) — the plan for the next session
+
+Both questions answered "yes", in this order, starting next session (paused for today):
+1. **W1, capped at one session.** Run the write watchpoint on a g_frame_cache slot (pure_l12fr.elf),
+   then check the ARQ/AR callback order. If the writer of 0x486e486e isn't found in that session,
+   write down where it stands in research/notes/pure-link.md and move on.
+2. **Rename tool for header moves.** One class at a time, landed and verified before the next.
+   Use the shared header's member name, or the most common one if there is no header yet. Rename
+   data members only, never anything that appears in a symbol.
+3. **Then switch to the PC port** (moh-frontline-pc).
