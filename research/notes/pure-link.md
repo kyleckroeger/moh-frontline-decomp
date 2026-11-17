@@ -127,3 +127,9 @@ wrong language index or a wrong chunk pointer would give exactly a long sequenti
 the text draw). The statics on this path (g_popUpMessage, g_pPopUpMessageHandler, g_HintTextArray)
 have the original's sizes and relative layout. Next: probe deeper (entry_trace on SDK/EA code too:
 font drawing, strlen) or read g_Shell's language field and the 'LUMS' chunk in Dolphin's memory view.
+
+**05:00.** A probe that replaces strlen (reporting any pointer past main memory, with its caller)
+saw nothing before the flood, so DisplaySubtitle's text pointer is valid (it calls strlen first).
+The reader is further on: pumhandler.cpp's subtitle queue (g_subtitle_queue.reserve(20) on first
+use, then the line splitting) or the text draw. Next: a probe replacing DWI_allocalign or reporting
+g_subtitle_queue after reserve, or Dolphin's memory view at that point.
