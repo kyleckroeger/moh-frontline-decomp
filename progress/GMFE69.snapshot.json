@@ -906,7 +906,7 @@
     "src/game/static_obj_scale.cpp": "5fa6156d4e2f341a5a0d033d70f5184fe474cdec4788aff3fa3c3d014d5ce99e",
     "src/game/static_obj_setlight.cpp": "05a2254611965ce57260a0807b2d34506a04e3ec0c03723ce65ea11d9800f253",
     "src/game/static_obj_setpos.cpp": "69cdfc4c8de5a0ea500c11997f419afc8402acd720f86eed210e942a4d3db064",
-    "src/game/static_obj_type.cpp": "16d31aeb77f99b2b563cabee371f915fac923415549b02009ce178ec2158efe4",
+    "src/game/static_obj_type.cpp": "32f3ee5f865961c0100e04b27aaf6a33790311101ea4ac993bb2dc908d7a5fa0",
     "src/game/staticmesh.cpp": "65a6937d938853f8425319ea696ea8897bbd5358dccd74630dfc5c336bacb542",
     "src/game/staticmesh_animdraw.cpp": "53a8f685e3ab342109cd2c7bac17bf4ecf60bb16c302600455979ab14f4bc147",
     "src/game/staticmesh_cmshmatbin_dtor.cpp": "c7385ac8690f4a861f4dbae732afbcc8622615ef78f18e432ef0ef534d7c005e",
@@ -2373,7 +2373,7 @@
     "config/GMFE69/static_obj_scale.json": "7259fd96ffd9bed7d76bbe5dbc1fe240539bb4ed4c83f0b5d11c180d29c48af4",
     "config/GMFE69/static_obj_setlight.json": "7534bdba6f32a2e7052ae02daf96a649ab73c306b44fb8d455135897601cf168",
     "config/GMFE69/static_obj_setpos.json": "b26ef7d2ae082779e19ef1acefbcb891313d92c5cdabd2d3d8431e7afd42152a",
-    "config/GMFE69/static_obj_type.json": "cffe5b15a8c330ce52c5dc34fe6a14e850f15d7f159e37e96094bb74ce81b832",
+    "config/GMFE69/static_obj_type.json": "7a6c66d6649af264be494439e866f20d8e3d47e8faceb28f264ae6472237d262",
     "config/GMFE69/staticmesh.json": "c74d1b26b5bfc813ba41bd72e0ea965d04694de793844ef6a8ba82ffbec30b2c",
     "config/GMFE69/staticmesh_animdraw.json": "2b639301336525264f6098e6c4ae01f7c538c7201c792794c19e765d5b68cdaa",
     "config/GMFE69/staticmesh_cmshmatbin_dtor.json": "7a62f7f9692ba1eeeec5a050f20cea6503436d0817785b6667ccb58c84f94b02",
@@ -29123,7 +29123,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -29131,10 +29131,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "b4ae4af9d851d41e388390cfdaa46ab430bb80f5d93f24bf0f36caaef5967bd0",
-      "linked_sha256": "8ebbee3cd7b15f960de6be63fc1c7425c876a78163ef8281849fbea5541562e3"
+      "object_sha256": "ffbc7a8fd0e81e7b22215d0779eb7524afd34bfc92e7ceb27448b522f19d3c29",
+      "linked_sha256": "022ad962657362feedfe144467a5a4d4c310329d42f5358d5f8cec80f262939a"
     },
     {
       "id": "static_obj_firedby",
