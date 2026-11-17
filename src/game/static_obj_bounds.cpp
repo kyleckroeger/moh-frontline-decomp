@@ -10,12 +10,8 @@
 #include "game/CMatrix.h"
 
 
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-};
+#include "game/IVolume.h"
+
 
 #include "game/ISceneNode.h"
 

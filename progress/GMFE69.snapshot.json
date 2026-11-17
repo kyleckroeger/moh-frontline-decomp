@@ -461,7 +461,7 @@
     "src/game/Soldier_object.cpp": "3f1017249e8ecd67e9264f5d14823e2edac2aee95f5afe787d547f3e8ad7c41b",
     "src/game/Soldier_object_attach.cpp": "dfcd893d76c75ce0d0c822a40effc735c31da0300d93465a7cfe9c001079c56e",
     "src/game/Soldier_object_bone.cpp": "9c7fbdac85cc64aa9832ad8578776fe0376a77f651004f9595ef3e95ad21e566",
-    "src/game/Soldier_object_bounds.cpp": "e8b762bd7087f0bc0f2089d6b91b85ff2e1f1e068b1e51f0c9b0dcfb213f55d7",
+    "src/game/Soldier_object_bounds.cpp": "de317d8ddac759011fc6d15819b43cf902b41d66badbb1e6fa0c79cd9fe12e9b",
     "src/game/Soldier_object_cleanup.cpp": "3a89efcaf0c2104ee4aaf79925d7d958e17daf7562c5b5281c880b88fe4439e8",
     "src/game/Soldier_object_ctor.cpp": "c02032b20d75e7dadae71dc29e5dd4eff07bf931e5f05d7dbc2d50b720a723de",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
@@ -823,9 +823,9 @@
     "src/game/player_switchweapon.cpp": "f01dbc59d384cd8315f83c0476b88791b532778b56e2de33501db4dede446cd5",
     "src/game/player_tm.cpp": "3cc054c675d256c0ca0eeb72719ba161cc599f27e6fb62211ef559c02f58534b",
     "src/game/player_transform.cpp": "80c1eced80af8cee2b6d8d30b363618e944a798303ed942d49d9fa6b1bbe1c54",
-    "src/game/player_updateai.cpp": "6082a35cdf026233ba53fdfacd7426f83d7a8ceb31e96edd6a376ac957a33ee6",
+    "src/game/player_updateai.cpp": "6ce4a9e94fe53a42f7fe71e06b3dd5ffe2ef17f2b986b4f11714ec80b41d1016",
     "src/game/player_vec_add.cpp": "ce56941a1cb5ff6262f839238d95d29f1854cf7513c379df83318227c1fa9003",
-    "src/game/player_vec_sub.cpp": "e6f431ec9a993a3349adc755d2f7e79c87a951a084d0d90c2b10ba4058ebe6b0",
+    "src/game/player_vec_sub.cpp": "77d270814ba0e647ac4c4635f78eb59e7ff5f1a12441f9915359693ae6aaabbb",
     "src/game/player_weapon.cpp": "d656e89113c05d302dc2c3b3ea1c362ceab5c209c5af2346a9f23265f51b45f0",
     "src/game/player_weapon_donereload.cpp": "f30952f9d9aecf674df1369d004b65b20182af0726899d1865e2e4fac731c7fa",
     "src/game/player_weapon_draw.cpp": "e8b1ed5c9ff462f8e6f10f4bff225d9f05ccc9357352b3334e490a9d3ab62f91",
@@ -898,7 +898,7 @@
     "src/game/sprite.cpp": "225c215d704ea506614a962a0c182a14a31b0ecfc132daaf725ee55b5fbdbcae",
     "src/game/static_obj_anim.cpp": "0cff608fdca1e08636de0aeeb4a70fdf58a83a597a27ef0208a587b66e0e9cdf",
     "src/game/static_obj_attempt.cpp": "af67ea8a7f7b101a18575c5f640bea71f9a1d13607d310f6884103c5d8ffb1d2",
-    "src/game/static_obj_bounds.cpp": "95f46ee3f954cb34559dde7b632acbee9ba83303048b65c584a359bf2e07da11",
+    "src/game/static_obj_bounds.cpp": "1b30a56f5ef07b5dc3336dbd2a25c934c01343e1b92bc516e670deea55668178",
     "src/game/static_obj_collisionid.cpp": "02c11739dec30c25c3c675a8bfd79795ef668a1544b75220af004bf1bbc9a8f1",
     "src/game/static_obj_commit.cpp": "103ecdc512d7ac7ac7772a3089f58f98a6eb1e323378a4b811a67594d86e6f8c",
     "src/game/static_obj_dtor.cpp": "acdac16e8e2c243a4d0d28aba27b965c6d76de90e30029007308184f0e17bb66",
@@ -1658,7 +1658,7 @@
     "config/GMFE69/Soldier_object.json": "7a30bc59f2da99e09dc88cccbb7a487368d9a3383563fab93cdadbe149091aa5",
     "config/GMFE69/Soldier_object_attach.json": "4533f19a8dbadecffe8a39a2ef083ee2aa64d09d88281131e726f452c81dd49b",
     "config/GMFE69/Soldier_object_bone.json": "38ce62183c7deb6c624b01eb076df8fa6fa2870f8efe2f294f30c6fb0945ce6d",
-    "config/GMFE69/Soldier_object_bounds.json": "6ead974ffb35a32a1b224efa8fed5bbb4d57a839ce7cae7b85c809a2b3cf68e7",
+    "config/GMFE69/Soldier_object_bounds.json": "1413ce18a2848e1bb48bdb19546ce3c55316e972afdbc5a6177ec57f567e4701",
     "config/GMFE69/Soldier_object_cleanup.json": "2274e2e5d22ff4ed34870dcaa16ecbf8dcb609b960c283e8bb9a8822d6236f0b",
     "config/GMFE69/Soldier_object_ctor.json": "d6e0e4af8e37fc29359157d118acc7ce68bda7ad0a20d124ab1f663f41447fd9",
     "config/GMFE69/Soldier_object_lit.json": "717fb1ac9f3fc850cf5f8092fd6229e49652ec6b82f8a150cfae6786055df9bb",
@@ -2145,9 +2145,9 @@
     "config/GMFE69/player_switchweapon.json": "02d0e86ee2214e88c3d0db2ebc3ace9c3e7ce0baba4b00d46d8035a6c64af87a",
     "config/GMFE69/player_tm.json": "dcd1fc852094f32a3ab3fcbf117c8864052227a88847156494a351d1a087bfc5",
     "config/GMFE69/player_transform.json": "072c8e978e757f9baebcede6e006e1a116b4c646cb621686e5439401f90cf7ad",
-    "config/GMFE69/player_updateai.json": "26a585caee0a682c6540eb94145606f3c86b9306a60b0ae8a6dcb92330497da3",
+    "config/GMFE69/player_updateai.json": "8bef2ebc6bf4b5c6810a44df22201fd146cb59691c0ecc9569f2c62835ed1414",
     "config/GMFE69/player_vec_add.json": "edf9bb0b85c2da782b3b3380df4474d7c5b49cf886378abd7ab4a2a21689dd8c",
-    "config/GMFE69/player_vec_sub.json": "61fb030d9535da39749bd2a57616f4fbf54b83c01ebd44ca3da6155b2d329ea0",
+    "config/GMFE69/player_vec_sub.json": "5c8f293bc23feb35e7bf2d3ec15e78a1405fb9f0397e539eccf2ca419a86908c",
     "config/GMFE69/player_weapon.json": "890b879127c4beb8674138d59e4fc0242a2002214c622fe946134862b63e2d80",
     "config/GMFE69/player_weapon_donereload.json": "754265741edf5c17f059fb72450ae72833510bafb0e8338e0c30610ffaa486eb",
     "config/GMFE69/player_weapon_draw.json": "79a87c4fee6d509ac2d1a6149478f60a5b695e95fa0f5d04841ffd6cca10ffa0",
@@ -2368,7 +2368,7 @@
     "config/GMFE69/stagpat.json": "b1d5b2ffda39b8b4225df1b1f3b46f87e46030383e09353016ee16a27647374c",
     "config/GMFE69/static_obj_anim.json": "fe44c31cbdfea3e363af5e51d87143de3315b3bad035a3930b5072d889fc2470",
     "config/GMFE69/static_obj_attempt.json": "bba8f8d10f14da09627abe93ea86fb60cacf13de017af165ffd887442009cecd",
-    "config/GMFE69/static_obj_bounds.json": "0e67d1a04445e710862a60b33ac2bbf71f681f4b82fe9b7c73b27f7cac923522",
+    "config/GMFE69/static_obj_bounds.json": "529e58dd077163c3a6833951df3e6b2e7f6b5741748f6e6ca211538c62fbf185",
     "config/GMFE69/static_obj_collisionid.json": "2e09b85ddda256c2d2c9ec91ccd8bd78419d2fb6a16bc9a74607a4a9a86e4101",
     "config/GMFE69/static_obj_commit.json": "b4e5d617c45dd5dea7c23dad8499520227451b32eb900e1d2199517caa430515",
     "config/GMFE69/static_obj_dtor.json": "24160d73cdbe037ff6245b700f9e5bf1c13046b940ab849125aa14695803da1d",
@@ -28396,10 +28396,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "68d92112660ca66baaa71888e65839ce8a008101eeeab62e51d67ce55f6cc738",
-      "linked_sha256": "8a2d4a8c0095d8315c3649e500e6d71baaeee0cd9c7d45d13af011facfeddcd8"
+      "object_sha256": "a1e14c4652bd5d162797e6203cc45ca230867bf6d78303e9e3e9db15b916c742",
+      "linked_sha256": "4728202e27530f73de3f0e6ec6829f44b4e4d7472dd86ff3fe3d4d237f82948b"
     },
     {
       "id": "Soldier_object_bounds",
@@ -28435,10 +28435,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "ad542cf8e8462f90d7a6c0bf3f0c4c94ad60595aab6dc56f1d0fe2aaacf2b17c",
-      "linked_sha256": "e2488770a8abea411bc1595b2ee44b5df62d458aab7a68e0a8df905219dfff4b"
+      "object_sha256": "faf1adb1c8e01a53782d15e909700fe8a5155b3be873e8db58c449a19fd7945d",
+      "linked_sha256": "fd2223089e6c29db03c13d7d8e4bed664e3051452dfaaf12f5d44660e6a9a2bc"
     },
     {
       "id": "player_bounds",
@@ -28708,10 +28708,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "00c2cd3977170a70878b01da545a653dcee7b545112f0cba879e514f6380624a",
-      "linked_sha256": "5c31da086a0d79a002aec47a09351d95c0703887931447a9a620078cc8ffb34e"
+      "object_sha256": "ef1ae872baae3593d68917af8e0db643693a670f3eeae15058cad60c125668a6",
+      "linked_sha256": "0fb5f0058d4b847ebfb6ff72a2e2a04b188c323ed053eab36e3f48cdc4d39bad"
     },
     {
       "id": "cdbobject_offsetptr",
@@ -38383,10 +38383,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
+      "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "a331299a13905357077ad86fc686e8da49bc786f02d78a0e0094ea59e6b5bb7e",
-      "linked_sha256": "1fac7ba202925350340762d3a7e0cb2dfc760e21c3fadc6353fad9c2bc11c500"
+      "object_sha256": "0fed77850d90689380eb60f5ae5856c6128ce5661056b0b4cd83aa1fd996d770",
+      "linked_sha256": "4b541b7bf3e5a370f95ad28370fc34794c53139fd7aba3cc8c0592ecd18bdbee"
     },
     {
       "id": "player_weapon_object_update",

@@ -31,6 +31,11 @@ for u in sys.argv[2:]:
             cfg['externals'] = {**cfg.get('externals', {}), **{n: hex(orig[n]) for n in extra}}
             cfgp.write_text(json.dumps(cfg, indent=2) + '\n')
             res = one(u)
+    if 'lacks one retained original copy' in res and not cfg.get('strip_unused'):
+        # weak duplicates need a stripping unit (project_build); try it
+        cfg['strip_unused'] = True
+        cfgp.write_text(json.dumps(cfg, indent=2) + '\n')
+        res = one(u)
     if 'VERIFIED' in res:
         print('MOVED', u)
         subprocess.run(['git', 'add', str(src), str(cfgp)], cwd=ROOT)

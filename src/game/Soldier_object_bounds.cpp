@@ -55,12 +55,8 @@ public:
     float w;
 } __attribute__((aligned(8)));
 
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-};
+#include "game/IVolume.h"
+
 
 class CVolBox : public IVolume {
 public:

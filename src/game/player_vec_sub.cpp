@@ -197,12 +197,8 @@ public:
     CVector3 m_position;
 };
 
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-};
+#include "game/IVolume.h"
+
 
 class CVolCapsule : public IVolume {
 public:

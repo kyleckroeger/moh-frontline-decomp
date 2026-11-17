@@ -464,3 +464,6 @@ on the header. Still on their own views:
 - 15 units: other new weak functions besides IVolume's (derived classes' inline members that now
   get emitted).
 - box_ivolume, objcreate_german: data layout.
+- With `strip_unused` on (project_build requires it for weak duplicates; move_header.py now tries
+  it), 4 more moved: Soldier_object_bounds, player_updateai, player_vec_sub, static_obj_bounds, so
+  14 units are on IVolume.h.
