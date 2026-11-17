@@ -171,13 +171,8 @@ public:
     unsigned char unknown004[196];
 } __attribute__((aligned(8)));
 
-class CPlane {
-public:
-    CPlane() {}
-    ~CPlane() {}
+#include "game/CPlane.h"
 
-    unsigned char unknown00[32];
-};
 
 class CCamera : public IMovingSceneNode {
 public:

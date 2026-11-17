@@ -8,12 +8,8 @@
 // template copy emitted in this file, defined __declspec(weak) out of the
 // class and instantiated explicitly. The rest of the file is not part of
 // this unit.
-class ISceneNode {
-public:
-    struct SExtent {
-        unsigned char data[16];
-    };
-};
+#include "game/ISceneNode.h"
+
 
 extern "C" void MEM_free(void*);
 

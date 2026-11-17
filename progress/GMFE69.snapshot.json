@@ -805,7 +805,7 @@
     "src/game/player_commit.cpp": "9bf9dd4fe9ce1728d91ac8025d6b48c5c52fffec24768428a1a08670fef4c956",
     "src/game/player_constrain.cpp": "83e1da725746cdc8d812ea3824dccbc7a4e6a91a27082bd2745ae352b2cbaf5b",
     "src/game/player_crouch.cpp": "355419cc6c5cdf0249a89e7236c2000d73b82f2c0f1383ebb5b37331f6add798",
-    "src/game/player_ctor.cpp": "adb5b353e370aa95bf1d32fb3f01958b2da5060490c5811134fce1a46584fc34",
+    "src/game/player_ctor.cpp": "708ee9d6ac26a0daede424a8dc8a3dc898961c190685076e38729109294f43dc",
     "src/game/player_death.cpp": "8985853d1f3e97e14dcc4910b1922bc71a4d57310ae4f72fbd38579f073869d9",
     "src/game/player_draw.cpp": "a3675734db2d7007a5cf11f651cb8dde6ab67647e00ad97bcce79a850a8d3007",
     "src/game/player_dtor.cpp": "da010b3db6d3c04e61cb9fbca5c7ecc4e154975a4e57a41cc89e3f3c90922dab",
@@ -868,12 +868,12 @@
     "src/game/scene_fastvec_pairs.cpp": "bd933b5f38a8ac0ebaed148533550f9fb05519faa0c95e761346ae067a77640f",
     "src/game/scene_fastvec_shadow.cpp": "58bb891914e16e9135266ea318038edbcbb830a1c64f5aebcf37a92f9df2c8b0",
     "src/game/scene_findif.cpp": "b30018777de3775af269f08d9bb89b187213348e19e8ea5344da39f7ce4683c0",
-    "src/game/scene_list_extent.cpp": "5592b75c5ec220e1094c28c9626e169f7c156f9e18489189f624135840b6b614",
+    "src/game/scene_list_extent.cpp": "b328dd044cbcb334ec7fdedca1908acee8153b297853e2c3ffdeeba2ef8806f0",
     "src/game/scene_list_reserve.cpp": "aefc418f34ba47d2b1289bb9ed1d39ab14518cec1966afd7265acb5e265fa4bd",
     "src/game/scene_now.cpp": "6cbab99269a0dbc55f7d4e1c98eda3bf6dd6eecd4760911a42274ac88bad8692",
     "src/game/scene_query.cpp": "0d9ae1d1fb1084e952913a456b3d8bc122c9617b0cbb2101242ce4fa74d7eb0a",
     "src/game/scene_quicksort.cpp": "b530b33bc854b23c54d62ed90d69a2b11923d639f0549641870e549a260af769",
-    "src/game/scene_reset.cpp": "48fc7db3edfd04ab262ae0883ac6410b21c2b036a97022e217231f3783c09c0e",
+    "src/game/scene_reset.cpp": "18b8b888d8bf9a2cdcecd497139e2227c0fef8368439b92c4c31b2464d4be2a4",
     "src/game/scene_rmextents.cpp": "ace57df4a982b4b552a33188a3fb6d8b27e1f1bceedf7f4def22a738209ed988",
     "src/game/scene_shutdown.cpp": "85f0992380b3d5370565ae2c23f495f4a2c7f821cc5a00294db86a8a6a91546c",
     "src/game/scene_sort.cpp": "7327d6c8cfe6af785eb6b11fb586e7a07f7ff8ed082f7b6292cb2628c469c130",
@@ -2237,7 +2237,7 @@
     "config/GMFE69/scene_fastvec_pairs.json": "9527b6b899701dbb51958edf8d55c656c14d9617ab7092f440410936458f63b6",
     "config/GMFE69/scene_fastvec_shadow.json": "61fabf6b77ad1b03ea04704f4c0ea5a52fb2098cb94f52d14351207edcee4694",
     "config/GMFE69/scene_findif.json": "e67e752b010199a1b1494de96019a4f7355ab82ff7f0c5243b107403e5012a25",
-    "config/GMFE69/scene_list_extent.json": "e647bbe1c43e5b76df432484b3cf01b794093cc6d38c845cb595b318d934b3e9",
+    "config/GMFE69/scene_list_extent.json": "a53ce6ff0c6508e54485c27366ff87f95c1390397c90c755d55c48090f9a2ed0",
     "config/GMFE69/scene_list_reserve.json": "e61cf1d0ec89e85bf1009e1cd7421e145e37e74336d2b301f5d92b04cd47ce97",
     "config/GMFE69/scene_now.json": "d227b5c62e7a4d644e7a49805bbdc013f6bbc1e2c17541af47e02a81c395e5ab",
     "config/GMFE69/scene_query.json": "19ec4a382e93e86d4ec5595bae3a65faf85a4c3aa6726ac004602f16dac14a34",
@@ -29924,8 +29924,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a8faa19851fef910660fd1c271ddfecf51432cc5990e789e0253951e8503852e",
-      "linked_sha256": "6885a0eec9747b1c0710fbbeb52aa989f99d5de20db6aa559c3060d12df79e41"
+      "object_sha256": "32f55cf969e99aa5c8da20550560bcdd1d50b8becbd2ef11514188b958ffb5d0",
+      "linked_sha256": "34de023045d3406fa0199729b3e3451b282d3809047c6d2aa63a4462875b90df"
     },
     {
       "id": "buddy_vec_path_end",
@@ -30119,8 +30119,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "fa53b88dca2a66c8a1119f6a988ec947a74258142ef49ea2982048e834c4a4b2",
-      "linked_sha256": "79868844d283dfbb493e3a42a8296812e4fe4f16f32271ce8d0415f4e73bf593"
+      "object_sha256": "8c3ff233fa7ad90c9ace43a0da7c2c6bc83d7eef9c700427a689d1d80c522941",
+      "linked_sha256": "e61b96bbec6c43b5331e677fd715ad584c3cf1f314455b439be04b4f8ab2ae6e"
     },
     {
       "id": "scene_dtor",
@@ -31818,8 +31818,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "3f8f92ad98d74379888fd77644a7aacaf5c73ad0b7f5c6634b0d80f3b6d8ac0d",
-      "linked_sha256": "13ff6c6d0400c3df6c474bce32bbd91c68cad844325671d712a92a5661f6c5b6"
+      "object_sha256": "db4985384899b5493b4eece5c7f0863cac09403c857b1384e31779f53009546d",
+      "linked_sha256": "612ccbbfd37ab2fa43eb9655f73857630e04ce9509f7d824158f05cd0751aad2"
     },
     {
       "id": "dmesh_cremapbin_ctor",

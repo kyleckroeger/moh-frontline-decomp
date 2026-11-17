@@ -1,0 +1,12 @@
+unit	source	status	detail
+Moh2	scratch/try/Moh2/src/Moh2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\Moh2.cpp # ------------------------
+box_testtriangle	scratch/try/box_testtriangle/src/box_testtriangle.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_testtriangle.cpp # ------------------------------------
+capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_plane.cpp # --------------------------------- #     223: float startDist = plane.Dist(start);
+cdbgeom_volbox	scratch/try/cdbgeom_volbox/src/cdbgeom_volbox.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox.cpp # ---------------------------------- #     160: float separation = plane.GetDistance(m_center) - (width * m_half[0] + depth * m_half[1] + height * m_half[2]);
+cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_intersect.cpp # ---------------------------------------
+cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_leaf.cpp # ----------------------------------
+cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_trigroups.cpp # ---------------------------------------
+fiber	scratch/try/fiber/src/fiber.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\fiber.cpp # -------------------------
+plane_ctor	scratch/try/plane_ctor/src/plane_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\plane_ctor.cpp # ------------------------------
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	kept	
+sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere.cpp # --------------------------

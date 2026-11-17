@@ -495,3 +495,8 @@ check), 32 no_compile (other member spellings: m_prev/m_head/m_tail, unknown00[2
   original's weak copy) and the four out-of-line distance members. try_header: 20 kept, 16
   no_compile (views with their own inline helpers: constructors from three floats, operator=, or
   deriving from CVector3), 7 lost. **20 units moved.**
+- Re-measured on 11-17: CPlane 1 of 11 kept (moved), CMatrix 0 of 46 (all no_compile: their own
+  spellings), ISceneNode 2 of 81 kept (moved) and 17 lost (8 of those fail with weak-duplicate
+  entries too). Units still with their own views: CVector3 84, CMatrix 46, ISceneNode 79,
+  CPlayerObject 60, CScene 17, CCamera 10, CScreen 8. The no_compile ones need spelling rewrites,
+  file by file.

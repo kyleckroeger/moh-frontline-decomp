@@ -18,12 +18,8 @@ public:
     unsigned char data[32];
 };
 
-class ISceneNode {
-public:
-    struct SExtent {
-        unsigned char data[16];
-    };
-};
+#include "game/ISceneNode.h"
+
 
 class CPlayerObject;
 
