@@ -59,7 +59,7 @@ consistent	0.993	1.000	31	604	DMClusterSkelTraverseHeirarchy__FP13CharOrient3_tP
 consistent	0.960	1.000	157	1820	_unpack_skel_frame__FP11CharFrame_tP20AnimMotWeightFrame_t	True	0	0	research/drafts/_unpack_skel_frame.80069c80.cpp	m1_opening@64d3f11e
 consistent	1.000	1.000	177	1740	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	True	0	0	research/drafts/_AnimTranDoTransition.8006862c.cpp	m1_opening@c464d6e3
 consistent	0.967	1.000	185	800	SweepAllExtents__6CSceneFv	True	0	0	research/drafts/SweepAllExtents.800d8bac.cpp	m1_opening@e741746e
-consistent	1.000	1.000	160	2296	PATHI_eventstart__Fi	True	0	0	research/drafts/PATHI_eventstart.8010ee50.cpp	route_1_2@c2ced260
+consistent	1.000	1.000	160	2296	PATHI_eventstart__Fi	True	0	0	research/drafts/PATHI_eventstart.8010ee50.cpp	route_1_2@81d9b369
 consistent	1.000	1.000	88	784	GetClosestWaypointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPosition19DWI_OBJECT_CRC_ENUMbf	True	0	0	research/drafts/GetClosestWaypointByType.8005c6b8.cpp	m1_opening@d1f848f4
 consistent	0.984	1.000	82	980	PROFILE_UPDATE__Fv	True	0	0	research/drafts/PROFILE_UPDATE.800f3578.cpp	m1_opening@8b8690db
 consistent	1.000	1.000	22	892	BIFunc_AddBuddy__FPPiPv	True	0	0	research/drafts/BIFunc_AddBuddy.80057b30.cpp	route_2_1@3e65ed63

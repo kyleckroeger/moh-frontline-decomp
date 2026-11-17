@@ -611,6 +611,9 @@ card folder before each run, because a save left by one run changes the next.
   lines from 1560), `route_1_2` (4,231) and `route_boxtri_1_2` (`route_1_2.txt` with
   `probe_hooks.py` and `hooks_boxtri_1_2.txt`, 4,271 lines, the 51 BOXTRI lines identical
   too: 3,637/60/1,303, hash 883d3a59). 91 of the 96 drafts are proven again.
+  On 11-16 `PATHI_eventstart` (its node view renamed `PATHFINDNODE` after that proof, code
+  unchanged) was proven again on `route_1_2` (4,351 lines identical, 67 drafts entered); every
+  one of the 91 marks matches its draft file.
 
 ### Capturing a draft's graphics commands
 
