@@ -211,5 +211,10 @@ layout or weak-copy placement (light.cpp's discarded CAnimLightManager helper, w
 Probe()). Write the function as plausible source with the logic its references require; its bytes
 are stripped, as in the original. (Strings-only block headers are accepted above.)
 
+**Accepted (coordinator ruling 2026-11-13, landed 2026-11-16):** a single fragment that holds its
+class's key function may turn on RTTI and own its file's virtual table and RTTI records (.data,
+.sdata, .rodata, .sdata2) without merging its neighbours, when byte-exact. It is a stepping stone
+toward the whole-file merge (first: cdbobject_dtor.cpp owns `__vt__10CCDBObject`).
+
 **Accepted by the maintainer (2026-11-13):** `axDspSlave`/`axDspSlaveLength` (SDK DSP microcode,
 6,624 B .data + 2 B .sdata) are transcribed into `research/data/` as data, not left platform-owned.

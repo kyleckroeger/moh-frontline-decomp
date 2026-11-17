@@ -647,7 +647,7 @@
     "src/game/cdbobject.cpp": "01c338a312c3eed1fb7e9ffc972844bd9f39cc80f4d224f7e1a2fc51c82e9484",
     "src/game/cdbobject_csg.cpp": "c3747eefc432b489af940ec31e2a62a9f42beedce2cda04f3e1521133d557004",
     "src/game/cdbobject_ctor.cpp": "4ef3d8ae7c6a59de2b8a6a2e8ecaf0bfa5d2495899a28cb4a7381db951fa91f0",
-    "src/game/cdbobject_dtor.cpp": "994dea16ba11a5b0019cf28c70e42a6fbb20e920a2b20acaeecb7aac5cccfeea",
+    "src/game/cdbobject_dtor.cpp": "770b846a5d985dbceff84ffdfcde15642a1db9b0d34118279fa56c4904816c51",
     "src/game/cdbobject_fastvec_branch.cpp": "b59233f54b8e8b3c49ce04a5859460a66d783d1d3f7320571a3b31837043be98",
     "src/game/cdbobject_fastvec_frame.cpp": "01742b6cd682bd076bf11c8e1b8ff5edd57c7418f9624bb3f2a13b64cce83e4d",
     "src/game/cdbobject_fastvec_push.cpp": "6abcdba878a5a14d4779d4ebc0465753ea88c4fae7ff78a928c57c895e66ffc0",
@@ -1876,7 +1876,7 @@
     "config/GMFE69/cdbobject.json": "6076c6fe0a852733e52d33ca19aaa371827869a65ce4b2edb08006ada44bace8",
     "config/GMFE69/cdbobject_csg.json": "c6566126cd9926d8ca174bb249ffd46695a03095189e8c8716c31578e6616a8f",
     "config/GMFE69/cdbobject_ctor.json": "17c5de33bddcfe6b76fe4b222f9f7e606514c39ed21666bf7556f888b84b5f95",
-    "config/GMFE69/cdbobject_dtor.json": "dd4a1b1929eddcd398618422e1ba8f18cf84cc1f587f7356add847a0ecdb35f2",
+    "config/GMFE69/cdbobject_dtor.json": "f915071c37933ec285e46305cf3ae7a0646103877411db028a0e9be2fde6f0ea",
     "config/GMFE69/cdbobject_fastvec_branch.json": "0bccba109667cd4ab51465f8f4add80f256f6e5b151d133741a27f1035be6c0d",
     "config/GMFE69/cdbobject_fastvec_frame.json": "3e3c68dd5ca6d9adbb6445a5a5f8a5a66b365a9a2779bb7e14fd34da28a151d2",
     "config/GMFE69/cdbobject_fastvec_push.json": "12c5e895a7e0faa4caca9a275cdf882801a443f0641923de87797c12dfcbaac8",
@@ -30932,7 +30932,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -30940,10 +30940,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": true,
+      "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "d6d424f670e4e067ce765dfb33483fc18cb8702a4a47a363ba75337d2e5f3e1d",
-      "linked_sha256": "f91f432f33c8d1df6db06a83a3a0ecafd5c0570c0149678438552aff336eee5b"
+      "object_sha256": "8444a93532c6bdd973cf30c02b7db9bcf596169fe5b27165289232fd20885939",
+      "linked_sha256": "0c4bc7c9e317c7e330ef20556520f5f516eb64f0adc47c395bc786c6b126232d"
     },
     {
       "id": "compartment_ccptmatbin_dtor",

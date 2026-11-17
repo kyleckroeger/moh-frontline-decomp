@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": true,
+  "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
@@ -47,17 +48,32 @@
       "name": "extab",
       "address": "0x8000b904",
       "size": 8,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 16
+      "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80012980",
       "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170790",
+      "size": 11,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80183a00",
+      "size": 92,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034db84",
+      "size": 16,
       "type": 1,
-      "linked_offset": 0,
-      "linked_size": 24
+      "input_alignment": 4
     }
   ],
   "functions": [
@@ -69,9 +85,24 @@
     }
   ],
   "externals": {
+    "Create__7IVolumeCFv": "0x8001c0c0",
+    "GetExtents__10CCDBObjectCFR8CVector3R8CVector3": "0x800701b0",
+    "TestCollision__10CCDBObjectCF8CVector3R10CCollisionb": "0x8006fa3c",
+    "TestCollision__10CCDBObjectCFRC10CCDBObjectR10CCollisionb": "0x8006fa4c",
+    "TestCollision__10CCDBObjectCFRC10CCSGVolumeR10CCollisionb": "0x80070d88",
+    "TestCollision__10CCDBObjectCFRC10CVolSphereR10CCollisionb": "0x80071034",
+    "TestCollision__10CCDBObjectCFRC11CVolCapsuleR10CCollisionb": "0x80070efc",
+    "TestCollision__10CCDBObjectCFRC12CWorldVolumeR10CCollisionb": "0x8006fa44",
+    "TestCollision__10CCDBObjectCFRC15CAnimatedVolumeR10CCollisionb": "0x80070dfc",
+    "TestCollision__10CCDBObjectCFRC6CLine3R10CCollisionb": "0x8006ff68",
+    "TestCollision__10CCDBObjectCFRC6CPlaneR10CCollisionb": "0x8006fa34",
+    "TestCollision__10CCDBObjectCFRC7CVolBoxR10CCollisionb": "0x8007116c",
+    "TestCollision__10CCDBObjectCFRC7IVolumeR10CCollisionb": "0x8007126c",
+    "TestCollision__10CCDBObjectCFRC9CTriangleR10CCollisionb": "0x8006fa2c",
+    "TestCollision__10CCDBObjectCFRC9CVolFiberR10CCollisionb": "0x800700e8",
+    "TestVisibility__7IVolumeCFR12CDrawContext": "0x8001c12c",
+    "TransformedCopy__7IVolumeFRC7IVolumeRC7CMatrix": "0x8001c0c8",
     "__dl__FPv": "0x8001ca2c",
-    "__dt__7IVolumeFv": "0x8001c078",
-    "__vt__10CCDBObject": "0x80183a0c",
     "__vt__7IVolume": "0x80181e28"
   },
   "undefined_in_discarded_code": [],
@@ -82,11 +113,15 @@
   "sda_externals": [],
   "original_file": "cdbobject.cpp",
   "original_file_index": 3304,
-  "stripped_sections": [
-    ".data"
+  "pooled_sections": [
+    ".sdata2"
   ],
-  "weak_duplicates": [
-    "__dt__7IVolumeFv",
-    "__vt__7IVolume"
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x8034fd90"
+    }
   ]
 }
