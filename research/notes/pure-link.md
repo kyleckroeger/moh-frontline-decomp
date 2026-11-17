@@ -91,3 +91,17 @@ and drafts' copies of the file statics they touch while loading a level, or link
   reader with boot_probe-style probes on the level-start path (CPlayerObject::Init, the HUD's
   first draw, the level's texture and display-list set-up), or with Dolphin's debugger
   interactively.
+
+**03:30: tools for the next session.**
+- `research/tools/entry_trace.py`: logs the first entry of every game function, for an image
+  linked with `pure_link.py --probe-space N`. Each traced function branches to a stub that writes
+  once to 0xCC010000 + 4k, which Dolphin logs. `--decode MAP LOG` prints the order. It works
+  (3,811 functions traced), but the stubs change timing: without the clock probe, the traced
+  image stalled in Gameloop_Init (last entries SIGNAL_create, SIGNAL_wait, AlarmHandler) instead of
+  reaching the level, so traces aren't comparable with untraced runs.
+- `research/tools/dolphin_direct.py ELF SECS`: boots with `Dolphin.exe -e`.
+- The route 1_2 failure isn't layout-dependent: with 512 KB reserved after .text (every data
+  address shifted) it fails at the same update, with the same log size (the 2.5 GB cap). It is
+  deterministic.
+- Next: an interactive Dolphin debugger session (break on the first EFB read and read LR and the
+  stack), or entry_trace with the clock probe, accepting slips.

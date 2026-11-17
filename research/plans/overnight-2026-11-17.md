@@ -53,6 +53,9 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   Fixed: HUD vertex arrays (transcribed), verified weak copies made strong, pure_data_check.py.
   Still: a runaway read in Dolphin's EFB range soon after the player appears (the game, not the probe).
   Parked for an interactive debugger session; moving on to item 4 (W3.1 matching).
+- ~03:30 W3.1: CPartBin::Link (5 natural helper/initialisation variants, all worse) and DrawNode (an FPR swap)
+  give nothing new tonight. Built entry_trace.py and dolphin_direct.py for W1. The failure isn't
+  layout-dependent. Next: W2.3 shared headers (try_header.py), which serves the port more than more near-misses.
 
 ## Questions for the morning
 

@@ -100,7 +100,7 @@ SECTIONS
     LONG(0) LONG(0) LONG(0) LONG(0)
   } :p_extabindex
   . = ALIGN(32);
-  .text : { *(.text) } :p_text
+  .text : { *(.text) _probe_space = .; . = . + @PROBE_SPACE@; } :p_text
   . = ALIGN(32);
   .ctors : { _ctors = .; *(.ctors) LONG(0) } :p_ctors
   . = ALIGN(32);
@@ -573,6 +573,8 @@ def main():
                     help="test harnesses (research/probes/*.cpp, input_script.py output): each is compiled with its "
                          "'// settings:' line and replaces the functions its '// replaces:' lines name")
     ap.add_argument("--output", default=str(OUT / "Moh2RelGC_pure.elf"))
+    ap.add_argument("--probe-space", type=lambda v: int(v, 0), default=0,
+                    help="bytes reserved after .text (symbol _probe_space) for research/tools/entry_trace.py")
     a = ap.parse_args()
     units = sorted(str(p) for p in (ROOT / "build/reconstruction/units").glob("*/compiled.o")
                    if json_exists(p))
@@ -605,7 +607,8 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     override = sorted(set((OUT / "vt_override.txt").read_text().split())) if (OUT / "vt_override.txt").exists() else []
     for _ in range(3):
-        r, objs, errors = link(units, data, drafts, weaken, globalize, rename, stripped, override, probes, a.output)
+        r, objs, errors = link(units, data, drafts, weaken, globalize, rename, stripped, override, probes, a.output,
+                               a.probe_space)
         bad = vtable_mismatches(a.output) if r.returncode == 0 else []
         if not bad:
             break
@@ -625,7 +628,7 @@ def main():
     return r.returncode
 
 
-def link(units, data, drafts, weaken, globalize, rename, stripped, override, probes=(), output=None):
+def link(units, data, drafts, weaken, globalize, rename, stripped, override, probes=(), output=None, probe_space=0):
     weaken = {o: set(v) for o, v in weaken.items()}
     generate = []
     if override:
@@ -647,7 +650,7 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override, pro
     origin = original_files(units, drafts, data)
     renamed = {o: p for o, p in zip(units + data + drafts, objs)}
     placed = bss_placement(units + data + drafts, origin)
-    script = SCRIPT
+    script = SCRIPT.replace("@PROBE_SPACE@", hex(probe_space))
     for name, (_, start, phdr) in BSS_ORIGINAL.items():
         lines = [f'  {name}.{i} ({start} + {off:#x}) (NOLOAD) : {{ "{renamed[o]}"({name}) }} :{phdr}'
                  for i, (o, off) in enumerate(sorted(placed.get(name, []), key=lambda x: x[1]))]
