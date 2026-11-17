@@ -34,18 +34,8 @@ class IVolume;
 
 // Inferred: the line's start and end (as in fiber_ivolume.cpp) with the
 // projection of a point.
-class CLine3 {
-public:
-    bool IsDegenerate() const;
-    void GetProjection(CVector3, CVector3&, float&) const;
-    CVector3 GetStart() const { return m_start; }
-    CVector3 GetEnd() const { return m_end; }
-    CVector3 GetDirection() const { return m_dir; }
+#include "game/CLine3.h"
 
-    CVector3 m_start;
-    CVector3 m_end;
-    CVector3 m_dir;
-};
 
 // Inferred contact record view: two vectors, the separation, an index and
 // an object.

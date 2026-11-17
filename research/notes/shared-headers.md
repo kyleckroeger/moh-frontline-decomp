@@ -525,3 +525,12 @@ IVolume view (a second definition), so those wait for their IVolume moves.
 - CRenderBin, later: units with their own `struct CRenderBinData` conflicted with the header's. Dropping
   it from the moved source moved 3 more (21 in all). The other no_compile units name the data
   differently or declare it inside CRenderBin.
+
+## CLine3 (2026-11-17, overnight)
+
+`include/game/CLine3.h`: start, end, direction (CVector3s), the cached length and squared length with
+their valid flags, 0x40 bytes aligned 16. The constructor, SetSE, SetSD and the destructor are inline
+(the original's weak copies), the three cdbgeom.cpp members are out of line, and the getters are
+inline-only. try_header: 7 kept, **7 moved** (AIFilter_visit, anim_obj, capsule_plane,
+cdbgeom_volbox_line, cdbobject_fastvec_frame, impact_dtor, weapon). 27 no_compile: their own CVector3
+views (d.v[i]) or other member spellings (m_value30, m_flag38).

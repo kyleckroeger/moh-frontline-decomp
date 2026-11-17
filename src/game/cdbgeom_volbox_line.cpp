@@ -30,16 +30,8 @@ class CAnimatedVolume;
 #include "game/CVector3.h"
 
 
-class CLine3 {
-public:
-    CVector3 GetStart() const { return m_start; }
-    CVector3 GetEnd() const { return m_end; }
-    CVector3 GetDirection() const { return m_dir; }
+#include "game/CLine3.h"
 
-    CVector3 m_start;
-    CVector3 m_end;
-    CVector3 m_dir;
-};
 
 class IVolume;
 

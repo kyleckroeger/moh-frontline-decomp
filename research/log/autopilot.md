@@ -2915,3 +2915,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [drafts] ShellInit draft: loading-screen vertex colour 0x80808080 (was 0xffffffff), table byte-identical to the original's; re-proven on route_menu (8,829 lines). check_draft's differs is now only the reference point into the table.
 - 2026-11-17 [W2.3] CRenderBin.h: 3 more units (21) once their own CRenderBinData views are dropped.
 - 2026-11-17 [W2.3] CVolSphere.h: 2 more units (6) now that they are on IVolume.h.
+- 2026-11-17 [W2.3] include/game/CLine3.h; 7 units moved (verified).

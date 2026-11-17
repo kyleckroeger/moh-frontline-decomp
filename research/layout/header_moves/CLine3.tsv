@@ -1,0 +1,35 @@
+unit	source	status	detail
+AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\AIFilter_collisiondist.cpp # ------------------------------------------
+AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\AIFilter_linechecks.cpp # ---------------------------------------
+AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	kept	
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	kept	
+box_line	scratch/try/box_line/src/box_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\box_line.cpp # ----------------------------
+box_linedist	scratch/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\box_linedist.cpp # --------------------------------
+capsule_capsule	scratch/try/capsule_capsule/src/capsule_capsule.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_capsule.cpp # ----------------------------------- #      94: float length = m_axis.GetLength();
+capsule_create	scratch/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\capsule_create.cpp # ----------------------------------
+capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\capsule_dispatch.cpp # ------------------------------------
+capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\capsule_dispatch2.cpp # -------------------------------------
+capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	kept	
+cdbgeom	scratch/try/cdbgeom/src/cdbgeom.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbgeom.cpp # ---------------------------
+cdbgeom_triangle_line	scratch/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbgeom_triangle_line.cpp # -----------------------------------------
+cdbgeom_vector	scratch/try/cdbgeom_vector/src/cdbgeom_vector.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbgeom_vector.cpp # ----------------------------------
+cdbgeom_volbox_line	scratch/try/cdbgeom_volbox_line/src/cdbgeom_volbox_line.cpp	kept	
+cdbobject_fastvec_frame	scratch/try/cdbobject_fastvec_frame/src/cdbobject_fastvec_frame.cpp	kept	
+cdbobject_fastvec_push	scratch/try/cdbobject_fastvec_push/src/cdbobject_fastvec_push.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbobject_fastvec_push.cpp # ------------------------------------------
+cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbobject_leaf.cpp # ----------------------------------
+cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbobject_trigroups.cpp # ---------------------------------------
+debug_picker	scratch/try/debug_picker/src/debug_picker.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\debug_picker.cpp # --------------------------------
+fiber	scratch/try/fiber/src/fiber.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\fiber.cpp # -------------------------
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	kept	
+line	scratch/try/line/src/line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\line.cpp # ------------------------
+plane_ctor	scratch/try/plane_ctor/src/plane_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\plane_ctor.cpp # ------------------------------
+player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_begincrouch.cpp # --------------------------------------
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_beginupdate.cpp # --------------------------------------
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_commit.cpp # ---------------------------------
+player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_respawn.cpp # ----------------------------------
+player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_updateai.cpp # -----------------------------------
+player_vec_add	scratch/try/player_vec_add/src/player_vec_add.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_vec_add.cpp # ----------------------------------
+player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_vec_sub.cpp # ----------------------------------
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
+sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\sphere.cpp # --------------------------
+weapon	scratch/try/weapon/src/weapon.cpp	kept	

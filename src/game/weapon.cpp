@@ -108,28 +108,8 @@ extern void* g_pStaticObjectMuzzleFlashNPC;
 #include "game/CQuaternion.h"
 
 
-class CLine3 {
-public:
-    CLine3(CVector3 start, CVector3 end) { SetSE(start, end); }
-    ~CLine3() {}
-    void SetSE(CVector3 start, CVector3 end) {
-        m_start = start;
-        m_end = end;
-        m_dir.x = m_end.x - m_start.x;
-        m_dir.y = m_end.y - m_start.y;
-        m_dir.z = m_end.z - m_start.z;
-        m_flag38 = 0;
-        m_flag39 = 0;
-    }
+#include "game/CLine3.h"
 
-    CVector3 m_start;
-    CVector3 m_end;
-    CVector3 m_dir;
-    float m_value30;
-    float m_value34;
-    unsigned char m_flag38;
-    unsigned char m_flag39;
-} __attribute__((aligned(16)));
 
 class CVolFiber;
 class CVolBox;
