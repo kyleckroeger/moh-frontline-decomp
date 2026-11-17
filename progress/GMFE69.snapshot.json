@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1282440,
+    "matching_code_bytes": 1285620,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.6592241328119,
+    "percent": 90.88402711208761,
     "categories": {
-      "reconstructed_game": 1045680,
+      "reconstructed_game": 1048860,
       "restored_library": 236760
     },
-    "matching_functions": 4913
+    "matching_functions": 4915
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -324,6 +324,7 @@
     "src/ea/stream.cpp": "7998a165a467c9b0d0d6ddbd139d8e7c881c05fe7d8ec3a74d8ee53aac581451",
     "src/ea/stream_cb.cpp": "dcdaf090c28f0bed61a7b362caf0b8d37bb481b8fb72bb47591521ff497aac7b",
     "src/ea/stream_greedy.cpp": "3357523a97088d2259a33a67b7a43549a03167dd7038677aa0f03d15fa5f40e7",
+    "src/ea/stream_kill.cpp": "458b3261d3ec835c0532ed0f72bfc526128d923ea9e35d53066205b735ad835f",
     "src/ea/stream_prio.cpp": "78e45fbfeaf50cbbd39f4f2543003d4b23b0bf084724f61f1a8124ec88df293b",
     "src/ea/stretch.c": "0d21827c89c321f406a54868b68281756d77151d611c5883ada5a8118cfbef74",
     "src/ea/stricmp.cpp": "e832fd431186e5b001a7f5bb917c73b66c1af7b488ab570203cabf1c91f38112",
@@ -376,6 +377,7 @@
     "src/game/AIObject_setlocation.cpp": "323e6db0c8d1ef0589ff4dee7fe7c751d2aaa2cf9f330e9d8697bf868575c8e9",
     "src/game/AIObject_spline.cpp": "b7ff50d39d4e57bf95369e0977512fcc94813a211656fc9275fa3ef64ebc1d1f",
     "src/game/AIObject_threat.cpp": "b73f90c4fb60e8a575792316f9297fe3c8b7f27985428ef554f445498b6d2574",
+    "src/game/AIObject_updatetarget.cpp": "ce25cf1c8a44d57b5010b42a71136580cd977b2b4d931f9034294605a912ef61",
     "src/game/AIObject_visionseek.cpp": "7afb3e844c15f20d5494308e2d27d687f5dd46bf86eb774374631d38041ee70b",
     "src/game/AIObject_weak.cpp": "6049718da7e2df852a423c6b60b084046ea74ba02de9549a9dc48b505f7521f4",
     "src/game/AIPlayerDoodad.cpp": "67ff0536cdbd1679a0bd3cdd418a7b4924eeda011e91e02235a0989ba139ed35",
@@ -1487,6 +1489,7 @@
     "config/GMFE69/AIObject_setlocation.json": "d0645b9342e7eedc46228451cfa526f6f1503a65c60d16f2f3a3a33b096f3981",
     "config/GMFE69/AIObject_spline.json": "1607b3deacc4120d1f5bb330c17b5c127697003815192f38f7b18af31a0137e0",
     "config/GMFE69/AIObject_threat.json": "6d3e3022737debc074fe50ada989c0ff7692d42cc48b516dae1f45bd7d44533a",
+    "config/GMFE69/AIObject_updatetarget.json": "07f8ce7eea2bac920000f41333b16f40869e3e7d0e08cd94d2e3844bca7b5f11",
     "config/GMFE69/AIObject_visionseek.json": "a4f8653175273a8c11d0e33b74dd437f5965dcd2c5520db5441fb3e9593682dc",
     "config/GMFE69/AIObject_weak.json": "8898ccabdbe0517afbc0030fe1540c4beff8980b6ed3f0206ee73b35052b3d61",
     "config/GMFE69/AIPlayerDoodad.json": "008ee7decc53131a48d8b373591819ed27b139d96c241aff195dab0a4d75b691",
@@ -2157,7 +2160,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "91dc3d4dbb3380460b779bafbb823584aa27707a22f1a0c86dde80057286856c",
-    "config/GMFE69/project.json": "9b49b6462c0f9e1ca229f067e01490e1140309e7055b6aaa8b06907dfb6e94f0",
+    "config/GMFE69/project.json": "bb931923322e6f827b700fa19ef4f03aeec36bf41800a528e2bff6d8d9690226",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -2399,6 +2402,7 @@
     "config/GMFE69/stream.json": "3848320ba09a7b6e14c52669852220ef39a2ecfd2cfa7b6cb07219805514b508",
     "config/GMFE69/stream_cb.json": "0095c8754134b82f45a03cdf7e3b7be8c9b04a0af95788ffe07345f9a47d6169",
     "config/GMFE69/stream_greedy.json": "bd706c0b87692c1c48a77e8c2218b034d44ef346e141dba6add56e68722a2e4d",
+    "config/GMFE69/stream_kill.json": "9a87f1adaea7280a2d520de614c2e193b8e06043c86e51435665e27ff78ca8d4",
     "config/GMFE69/stream_prio.json": "2438a8b53ff21b845f1923f79496b9ea6ab4de20721780c3e9efea36e5b4df28",
     "config/GMFE69/stretch.json": "7d2bcc7b2f8dd144d32ab4f655977e9f3d5056149270c720c5a4deff0ad0d353",
     "config/GMFE69/stricmp.json": "e8b2120ac2d74611d1d27e06d1e2faae2918e3cd69dcf867a91e0e24c4d3948e",
@@ -43552,6 +43556,84 @@
       "discarded_functions": [],
       "object_sha256": "a1b0aedc67f499e2a9dc59e11a4c03dce62f99c4e5514a8bbb730e4a9575052d",
       "linked_sha256": "eb38e7827295e20cfe7d9a29077dbaf85d6dd42f24f180c57143b308844dc0d3"
+    },
+    {
+      "id": "AIObject_updatetarget",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 2516,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "f2176d2455458150182825530fdaf9f7845edf48e8ab71bb3a0b9810b40f3882",
+      "linked_sha256": "91f509cab173752bea9452e3be5584ea73f76f3c0b1564af613f9ced123d4ca4"
+    },
+    {
+      "id": "stream_kill",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 664,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "off",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse",
+        "-use_lmw_stmw",
+        "off",
+        "-lang",
+        "c++"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "ac110dfd3eb6a8ffdbb28482900397b085ae9464070b15822886ba623f620cd9",
+      "linked_sha256": "91bd74e30bb8788dffb3d6e1e3cfadca0c6417c78f23d3e4c74166a2af50a883"
     }
   ],
   "code_map": {
@@ -43705,20 +43787,6 @@
             "size": 2128,
             "kind": "function",
             "name": "UpdateProximityTriggerStatus__Fv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/AIObject.cpp [symbol evidence]",
-        "file_record": 25,
-        "file_name": "AIObject.cpp",
-        "ranges": [
-          {
-            "address": "0x8004e024",
-            "size": 2516,
-            "kind": "function",
-            "name": "UpdateTargetPosition__9CAIObjectFv",
             "evidence": "exception-index"
           }
         ]
@@ -44476,20 +44544,6 @@
             "kind": "function",
             "name": "PATHI_eventstart__Fi",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/stream.cpp [symbol evidence]",
-        "file_record": 368,
-        "file_name": "stream.cpp",
-        "ranges": [
-          {
-            "address": "0x8014d6dc",
-            "size": 664,
-            "kind": "function",
-            "name": "STREAM_kill",
-            "evidence": "between-same-file"
           }
         ]
       },

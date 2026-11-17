@@ -586,7 +586,8 @@ The port's source-list generator needs one generated file, not a crawl of the re
   1,210,428 B of function symbols verified, 6,440 exact, 178,544 consistent, 10,144
   differs, none without source; data owned 723,834 of 1,976,252 B. Verified code outside
   sized function symbols (about 8.8 KB) isn't listed. A `proven` status comes with step 1.
-- When the port repo has a build, a long-lived `port` branch here, merged from `main`.
+- No `port` branch here (maintainer, 2026-11-16): work done only for the PC port, such as
+  TARGET_PC hooks, lives in `moh-frontline-pc`. See research/plans/endgame.md.
 - Format knowledge goes in `docs/` as it's recovered from loaders: scripts
   (`research/tools/bs_disasm.py`), `.lfc`, `.mvd`, `.skl`, `.dmf`, `.emt`.
 

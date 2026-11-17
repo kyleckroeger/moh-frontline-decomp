@@ -1,7 +1,5 @@
 status	similarity	offsets	lines	size	function	calls_same	missing	extra	draft	proven
-code_exact	1.000	1.000	0	2516	UpdateTargetPosition__9CAIObjectFv	True	0	0	research/drafts/UpdateTargetPosition.8004e024.cpp	route_1_2@d25a78f8
 code_exact	1.000	1.000	0	1220	InitMultiplayer__13CPlayerObjectFP12MPPlayerDatab	True	0	0	research/drafts/InitMultiplayer.800a6408.cpp	
-code_exact	1.000	1.000	0	664	STREAM_kill	True	0	0	research/drafts/STREAM_kill.8014d6dc.cpp	route_menu@4e822918
 consistent	1.000	1.000	1	2696	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	True	0	0	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	m1_opening@147ec715
 consistent	1.000	1.000	1	508	SFILTER_unpackxalf__FPviPvPvi	True	0	0	research/drafts/SFILTER_unpackxalf.80164370.cpp	route_xalf_1_2@6a3d204d
 consistent	0.997	1.000	2	2728	AllocateStaticObject__20CStaticObjectFactoryFii	True	0	0	research/drafts/AllocateStaticObject.800b386c.cpp	m1_opening@ca676d40

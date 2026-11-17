@@ -39,9 +39,9 @@ The last loop day (11-13) added 1.4 KB, so the near-miss rate has dropped a lot.
    GXTexObj, EA's `_AXVPB` view), pointers passed as `unsigned long` (ARQ/DMA records; they
    truncate on Windows), and DVDFileInfo's extra Aurora field. **This is the biggest
    workstream, and most of it is port work done upstream.**
-4. **A `port` branch for the PC hooks.** Examples: `CScreen::Wait`'s spin on `g_bSwap` needs
-   `pcOSWaitForInterrupt()` under `#ifdef TARGET_PC`, and dvdStatus_check's IPL-font screen
-   must be skipped.
+4. **PC hooks.** Examples: `CScreen::Wait`'s spin on `g_bSwap` needs
+   `pcOSWaitForInterrupt()`, and dvdStatus_check's IPL-font screen must be skipped. These
+   live in the port repo.
 5. **Format and engine knowledge.** The script VM (bs_disasm.py) and the loaders' formats
    (`.lfc`, `.mvd`, `.skl`, `.dmf`, `.emt`, `.sin`, ...) go in docs/ as they are recovered.
 
@@ -84,10 +84,11 @@ The strategy report's upstream-first rule stays: headers move here, gated by the
    OS, DVD, GX, ARQ and AX structs from `include/dolphin-sdk` instead of sized byte arrays.
    Pointers passed as `unsigned long` become a pointer type or a project `uintptr_t` typedef
    that is 32-bit on GameCube, so the bytes are unchanged.
-2. **A 64-bit hazard inventory**, as a tool, not by eye. It lists casts between pointers and
-   32-bit integers, structs that mirror disk formats (they must keep GameCube layout: `BE<T>`
-   and offset pointers on the port side), and `sizeof`-dependent arithmetic. It writes
-   `research/layout/hazards.tsv` for the port to consume.
+2. **A 64-bit hazard inventory**, as a tool, not by eye. It is a port tool, so it lives in
+   `moh-frontline-pc` and reads this source. It lists casts between pointers and 32-bit
+   integers, structs that mirror disk formats (they must keep GameCube layout: `BE<T>` and
+   offset pointers on the port side), and `sizeof`-dependent arithmetic. The fixes it leads
+   to land here when they keep the bytes.
 3. **Classes in port order.** Start with the boot and first-level path, ranked by how many
    files declare views (`layout_lint.py`, `research/layout/classes.tsv`). Use the
    `try_header.py` loop that CVector3/CMatrix/ISceneNode used. A file whose match breaks keeps
@@ -126,8 +127,8 @@ register-allocation misses may never match.
 
 - Keep `progress/GMFE69.port_manifest.json` current. It is the only file the port reads, and
   `land.sh` already regenerates it. Add a `proven` status to it per function.
-- Create the long-lived `port` branch once the port has a game build. TARGET_PC hooks go
-  there, never on `main`. Seed it with CScreen::Wait and the dvdStatus_check skip.
+- No `port` branch here. TARGET_PC hooks live in the port repo (see "Which repository holds
+  what").
 - Bug loop. When the port finds a divergence, replay the same input on the GameCube
   pure-source image. Same divergence: the bug is in the decomp; bisect the drafts here and fix
   the draft. No divergence: the bug is in the port.
@@ -144,14 +145,31 @@ register-allocation misses may never match.
    keeps syncing it with `tools/sync_decomp.py`. Matching continues opportunistically, for
    example when a compiler rule found in one function closes others.
 
-## Decisions for the maintainer
+## Which repository holds what (maintainer, 2026-11-16)
 
-- **D1:** Emit the 25 remaining vtables from a generated stopgap data file so that the
-   pure-source image can boot now? (Recommended: yes. It is deleted per file as merges land.)
-- **D2:** Accept the three declined forms (4.4 KB)? (Either is fine; it is a purity call.)
-- **D3:** Use the time box and stop rule for W3.1 as written?
-- **D4:** Hand off when W1 exits and W2.1 is done, or earlier, letting the port start its
-   headless build (its Phase 2) on draft source while W1 finishes?
-- **Open from 11-11, in the port repo:** what to use as the reference for AX DSP behaviour
-   (public docs plus the SDK's CPU side, reversing the microcode, or Dolphin's HLE as a
-   reference). axDspSlave is now in source as data, but its behaviour is still undocumented.
+Work done only for the PC port goes in `moh-frontline-pc`, not here. This repository keeps what
+serves the decomp itself: matching, proofs, the pure-source GameCube image, shared headers that
+keep the bytes, data in source, format knowledge and the port manifest. So:
+- **TARGET_PC hooks** (CScreen::Wait, the dvdStatus_check skip) live in the port repo as
+  overrides or patches applied to the pinned decomp. There is no `port` branch here.
+- **The 64-bit hazard inventory** (W2.2) is a port tool. It reads the decomp's source and
+  writes into the port repo.
+- **W2.1 SDK struct views and the uintptr-style typedefs stay here.** They are source fixes
+  that keep the GameCube bytes, and they help both repositories.
+- **W4's bug loop:** the port finds a divergence; if the same replay diverges on the GameCube
+  image, the draft is fixed here, otherwise the fix goes in the port.
+
+## Decisions for the maintainer (answered 2026-11-16: "go with your recommendations on all of them")
+
+- **D1: yes.** The 25 remaining vtables are emitted from a generated stopgap data file, used only
+  by the pure-source link and deleted per file as merges land.
+- **D2: accepted.** UpdateTargetPosition (2,516 B) and STREAM_kill (664 B) landed 2026-11-16 as
+  their own fragments. InitMultiplayer can't land as a fragment (see docs/Remaining.md).
+- **D3: yes.** W3.1 is a single pass over the drafts within 10 lines, stopping when a week lands
+  under 3 KB.
+- **D4: start the port now.** The port begins its headless build (its Phase 2) on draft source
+  in parallel with W1. W2.1 (SDK struct views) is the decomp's first priority, because the port
+  needs it to link.
+- **AX reference (port repo, open since 11-11): option (a).** Use public format docs plus the
+  SDK's CPU-side AX code. Most of Frontline's sound goes through EA's CPU mixer, so an inexact
+  AX mainly affects the ADPCM banks.

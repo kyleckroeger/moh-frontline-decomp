@@ -30,24 +30,24 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,282,440 / 1,414,572 code bytes (90.66%)**. Left: about 132.0 KB in 96 functions across 54 source files.
+Verified: **1,285,620 / 1,414,572 code bytes (90.88%)**. Left: about 128.8 KB in 94 functions across 52 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
 | 1 | Scripting and level objects | 35.9 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `explosion.cpp` |
-| 1 | AI | 17.5 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIObject.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Animation | 15.3 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `dmcluster.cpp`, `dmesh.cpp` |
+| 1 | AI | 15.0 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Collision | 13.2 KB | `box.cpp`, `cdbgeom.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
 | 2 | Rendering | 14.4 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
-| 2 | Audio | 10.5 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `stream.cpp` |
+| 2 | Audio | 9.9 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `coda.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
 | 2 | System | 5.7 KB | `debug_prof.cpp`, `toilet.cpp`, `input.cpp`, `aramalloc.cpp` |
 | 2 | Video | 1.6 KB | `hwvideodisplaylist.cpp`, `swvideodisplaylist.cpp`, `rcmpbase.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 81.9 KB and would take the project to 96.4% at most.
+Priority 1 is 79.4 KB and would take the project to 96.5% at most.
 
-Partial-source sweep: 5 code-exact, not yet linked (5.2 KB), 89 consistent (121.0 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 3 code-exact, not yet linked (2.0 KB), 89 consistent (121.0 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct: that build reaches the main menu in Dolphin, but gameplay is untested.
 <!-- /sync_docs:status -->
@@ -137,7 +137,6 @@ Known risks:
 
 - **`buddy.cpp`:** `DestroyBuddyDataStructures` needs the file's `.bss`, and so
   `__sinit_buddy_cpp`, which is stuck on the shape of a `BuddyInfo` temporary.
-- **`UpdateTargetPosition`:** matches only with a form that was declined (below).
 - **`bsbifunc.cpp` built-ins:** many reach the file's shared `.bss` block, so they
   cannot land alone.
 - **Register near-misses:** many have had repeated attempts. Check the history of
@@ -192,13 +191,21 @@ the maintainer has decided which forms are acceptable.
     whole-struct read makes CW keep only the state part of a `BuddyInfo` temporary in memory, as the
     original does. It replaces the earlier `BuddyState unused = state;` spelling in every buddy unit.
 
+**Accepted by the maintainer (2026-11-16, endgame plan D2), were declined:** `STREAM_kill`'s
+`void**` header alias in the handle check (src/ea/stream_kill.cpp) and `UpdateTargetPosition`'s
+inline filter step, a second body for the filter beside CalculateTargetPosition's setup
+(src/game/AIObject_updatetarget.cpp). Both landed as their own fragments, because the same
+spellings in the neighbouring fragment break functions that are already exact there.
+`InitMultiplayer`'s form is accepted too, but it can't land as a fragment. Its code reaches
+its strings at +0x274 from player.cpp's shared `.rodata` base, and its draft got there only
+with a scoring-harness padding array. It waits for a player.cpp merge (multiplayer, last).
+
 **Declined:**
 - Devices that add storage, slots or code only to steer registers: one-element
-  local arrays, padding arrays, chained `x(copy = y)` assignments, aliases
-  such as the `STREAM_kill` one, `(int)(filter=0)` and the
-  `staticobjfactory` offset spelling.
-- A reconstructed removed function for `InitMultiplayer`, and a duplicate inline
-  for `UpdateTargetPosition`.
+  local arrays, padding arrays, chained `x(copy = y)` assignments, `(int)(filter=0)` and
+  the `staticobjfactory` offset spelling.
+- (Moved to accepted 2026-11-16, below: the `STREAM_kill` alias, `UpdateTargetPosition`'s
+  duplicate inline and `InitMultiplayer`'s form.)
 - Invented dead functions with made-up logic to hold orphan strings.
 - Identity wrappers such as `RetV`: useful for discovery, never landed.
 - Using the block header outside the files listed above.

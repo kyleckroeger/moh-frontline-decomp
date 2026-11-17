@@ -997,7 +997,9 @@
     "proxtrig_messages.json",
     "cdbobject_init.json",
     "UserInterface_init.json",
-    "buddy.json"
+    "buddy.json",
+    "AIObject_updatetarget.json",
+    "stream_kill.json"
   ],
   "progress": {
     "code_bytes": 1414572,

@@ -1,0 +1,165 @@
+{
+  "id": "AIObject_updatetarget",
+  "source": "src/game/AIObject_updatetarget.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8004e024",
+      "size": 2516,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000a8e0",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80011a5c",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x801834f4",
+      "size": 40,
+      "type": 1,
+      "input_alignment": 4
+    }
+  ],
+  "functions": [
+    {
+      "name": "UpdateTargetPosition__9CAIObjectFv",
+      "address": "0x8004e024",
+      "size": 2516,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "GetDistanceXYZReal__21CAIFilterRealPositionCFRC21CAIFilterRealPosition": "0x8005a7b0",
+    "MathFunGetRandomPercent__Fv": "0x80092c74",
+    "MathFunTestPercent__Fxx": "0x80092c54",
+    "g_aigAIFilterGlobalObject": "0x801c6cd4"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "AIObject.cpp",
+  "original_file_index": 1752,
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x8034f954"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x8034f958"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 4,
+      "address": "0x8034f860"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 12,
+      "size": 4,
+      "address": "0x8034f8b0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f8bc"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 8,
+      "address": "0x8034f868"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 32,
+      "size": 8,
+      "address": "0x8034f870"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 40,
+      "size": 4,
+      "address": "0x8034f878"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 44,
+      "size": 4,
+      "address": "0x8034f938"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 48,
+      "size": 4,
+      "address": "0x8034f930"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 52,
+      "size": 4,
+      "address": "0x8034f950"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 56,
+      "size": 4,
+      "address": "0x8034f8f0"
+    }
+  ]
+}

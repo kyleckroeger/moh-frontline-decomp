@@ -1,14 +1,12 @@
-// A fragment of AIObject.cpp (0x8004d75c): CAIObject::SetLocation from a
-// position and from three coordinates (the position at +24; the copy loads z,
-// y, x as the class's inline assignment does, inferred), then
-// PerformCollisionTest, which casts a line from the object's position (raised
-// 1.2) towards a point in the tested direction (along the facing axes, a
-// diagonal scaled by 0.707) and returns the first collision distance found:
-// at chest height, then 0.8 lower, then straight down from the far point
-// (the copy of that point loads y first, an inferred helper); -1 when every
-// line is clear, 0 when nothing is below the far point. The classes and
-// functions are named by the symbols; the members and vector views are
-// inferred. The rest of the file is in other units.
+// A fragment of AIObject.cpp (0x8004e024): CAIObject::UpdateTargetPosition, which
+// advances the three tracking filters on the threat (velocity, random offset, position)
+// with the elapsed AI time and moves the aim point: the filtered position raised by
+// aim mode, plus the offset scaled by the distance. It follows AIObject_setlocation.cpp
+// (whose CalculateTargetPosition restarts the same filters). The classes and functions
+// are named by the symbols; the members, the filter view and its inline Update (the
+// filter step, inlined here; CalculateTargetPosition's unit defines only the setup) are
+// inferred. The inline filter step is the duplicate-inline form accepted by the maintainer
+// on 2026-11-16 (docs/Remaining.md). The rest of the file is in other units.
 class CAIFilterRealPosition {
 public:
     CAIFilterRealPosition& operator=(const CAIFilterRealPosition& o) {
@@ -241,185 +239,7 @@ public:
     int m_aimChoice;
 };
 
-void CAIObject::SetLocation(CAIFilterRealPosition& position) {
-    m_position = position;
-}
-
-void CAIObject::SetLocation(float x, float y, float z) {
-    m_position.x = x;
-    m_position.y = y;
-    m_position.z = z;
-}
-
-float CAIObject::PerformCollisionTest(ECollisionTestDirection direction, float distance) {
-    CAIFilterRealVector3 end;
-    switch (direction) {
-    case 0:
-        end = m_axis80;
-        end *= distance;
-        break;
-    case 1:
-        end.x = m_axis80.x + m_axis70.x;
-        end.y = m_axis80.y + m_axis70.y;
-        end.z = m_axis80.z + m_axis70.z;
-        end *= 0.707f * distance;
-        break;
-    case 2:
-        end = m_axis70;
-        end *= distance;
-        break;
-    case 3:
-        end.x = m_axis70.x - m_axis80.x;
-        end.y = m_axis70.y - m_axis80.y;
-        end.z = m_axis70.z - m_axis80.z;
-        end *= 0.707f * distance;
-        break;
-    case 4:
-        end = m_axis80;
-        end *= -distance;
-        break;
-    case 5:
-        end.x = m_axis80.x + m_axis70.x;
-        end.y = m_axis80.y + m_axis70.y;
-        end.z = m_axis80.z + m_axis70.z;
-        end *= 0.707f * -distance;
-        break;
-    case 6:
-        end = m_axis70;
-        end *= -distance;
-        break;
-    case 7:
-        end.x = m_axis70.x - m_axis80.x;
-        end.y = m_axis70.y - m_axis80.y;
-        end.z = m_axis70.z - m_axis80.z;
-        end *= 0.707f * -distance;
-        break;
-    }
-    end.x += m_position.x;
-    end.y += m_position.y;
-    end.z += m_position.z;
-    CAIFilterRealPosition start;
-    start.x = m_position.x;
-    start.y = m_position.y;
-    start.z = m_position.z;
-    end.z += 1.2f;
-    start.z += 1.2f;
-    distance = CAIFilterGlobal::GetCollisionDistLineToEnvironment(start, (CAIFilterRealPosition&)end, m_filterObject, distance);
-    if (distance != -1.0f)
-        return distance;
-    end.z += -0.80000007f;
-    start.z += -0.80000007f;
-    distance = CAIFilterGlobal::GetCollisionDistLineToEnvironment(start, (CAIFilterRealPosition&)end, m_filterObject, distance);
-    if (distance != -1.0f)
-        return distance;
-    start.Assign((CAIFilterRealPosition&)end);
-    distance = -0.8f;
-    end.z += distance;
-    if (CAIFilterGlobal::GetCollisionDistLineToEnvironment(start, (CAIFilterRealPosition&)end, m_filterObject, distance) == -1.0f)
-        return 0.0f;
-    return -1.0f;
-}
-
 #define X_POSF ((CAIFilterRealPosition&)m_positionFilter.m_value)
-
-void CAIObject::CalculateTargetPosition() {
-    CAIFilterRealVector3 zero;
-    CAIFilterRealVector3 v;
-    m_aimChoice = 0;
-    zero.x = zero.y = zero.z = 0.0f;
-    CAIObject* target = m_threat;
-    float omega = 6.2831855f / m_trackPeriod;
-    float omega2 = omega * omega;
-    float decay = 2.3025851f / (3.0f * m_trackSpread * m_trackPeriod);
-    float a = decay * decay + omega2;
-    float b = 2.0f * decay;
-    m_velocityFilter.Setup(a, b, target->m_velocity, zero);
-    v.x = MathFunRandomRealSigned(m_trackSpread, 2.0f * m_trackSpread);
-    v.y = MathFunRandomRealSigned(m_trackSpread, 2.0f * m_trackSpread);
-    v.z = MathFunRandomRealSigned(m_trackSpread, 2.0f * m_trackSpread);
-    v *= 0.05f;
-    m_offsetFilter.Setup(a, b, v, zero);
-    decay = 2.3025851f / m_trackPeriod;
-    m_positionFilter.Setup(decay * decay + omega2, 2.0f * decay, *(CAIFilterRealVector3*)&target->m_position, zero);
-    float distance = m_position.GetDistanceXYZReal(X_POSF);
-    m_aimPoint = X_POSF;
-    switch (m_aimMode) {
-    case 0:
-    case 1:
-    case 2:
-    case 9:
-    default:
-        m_aimPoint.z += 1.0f;
-        if (m_threat && m_threat->vf14())
-            m_aimPoint.z += -0.8f;
-        break;
-    case 3:
-        if (m_aimChoice == 0) {
-            if (MathFunTestPercent(MathFunGetRandomPercent(), 10))
-                m_aimChoice = 1;
-            else
-                m_aimChoice = 2;
-        }
-        if (m_aimChoice != 2)
-            m_aimPoint.z += 1.2f;
-        else
-            m_aimPoint.z += 1.0f;
-        if (m_threat && m_threat->vf14())
-            m_aimPoint.z += -0.8f;
-        break;
-    case 4:
-        m_aimPoint.z += 1.0f;
-        if (m_threat && m_threat->vf14())
-            m_aimPoint.z += -0.8f;
-        break;
-    case 5:
-        if (m_aimChoice == 0) {
-            long long percent = MathFunGetRandomPercent();
-            if (MathFunTestPercent(percent, 10))
-                m_aimChoice = 6;
-            else if (MathFunTestPercent(percent, 80))
-                m_aimChoice = 6;
-            else
-                m_aimChoice = 8;
-        }
-        switch (m_aimChoice) {
-        case 6:
-        default:
-            m_aimPoint.z += 0.5f;
-            if (m_threat && m_threat->vf14())
-                m_aimPoint.z += -0.8f;
-            break;
-        case 7:
-            m_aimPoint.z += -0.5f;
-            break;
-        case 8:
-            m_aimPoint.z += 0.5f;
-            m_aimPoint.x += 1.25f;
-            m_aimPoint.y += 1.25f;
-            break;
-        }
-        break;
-    case 6:
-        break;
-    case 7:
-        m_aimPoint.z += 1.2f;
-        if (m_threat && m_threat->vf14())
-            m_aimPoint.z += 1.2f;
-        break;
-    case 8:
-        m_aimPoint.z += 1.0f;
-        if (m_threat && m_threat->vf14())
-            m_aimPoint.z += -0.8f;
-        break;
-    }
-    v.x = distance * m_offsetFilter.m_value.x;
-    v.y = distance * m_offsetFilter.m_value.y;
-    v.z = distance * m_offsetFilter.m_value.z;
-    m_aimPoint.x += v.x;
-    m_aimPoint.y += v.y;
-    m_aimPoint.z += v.z;
-    m_targetTime = g_aigAIFilterGlobalObject.m_time;
-}
 
 void CAIObject::UpdateTargetPosition() {
     float length, d, dx, dy, dz, k, dt, oz, ox, oy, distance;

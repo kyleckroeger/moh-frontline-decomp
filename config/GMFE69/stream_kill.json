@@ -1,0 +1,70 @@
+{
+  "id": "stream_kill",
+  "source": "src/ea/stream_kill.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "off",
+    "-O4,p",
+    "-inline",
+    "auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse",
+    "-use_lmw_stmw",
+    "off",
+    "-lang",
+    "c++"
+  ],
+  "include_dirs": [],
+  "strip_unused": false,
+  "source_root": "src/ea",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8014d6dc",
+      "size": 664,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "STREAM_kill",
+      "address": "0x8014d6dc",
+      "size": 664,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "FILESYS_priorityop": "0x801486a0",
+    "MUTEX_lock": "0x8015212c",
+    "MUTEX_unlock": "0x80152150",
+    "STREAM_cancelrequest": "0x8014d320",
+    "freerequest__FP15STREAMHEADERtagP16REQUESTSTRUCTtag": "0x8014bb68"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "freerequest__FP15STREAMHEADERtagP16REQUESTSTRUCTtag"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [],
+  "original_file": "stream.cpp",
+  "original_file_index": 12162
+}
