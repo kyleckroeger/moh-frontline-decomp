@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -47,13 +48,21 @@
       "name": "extab",
       "address": "0x8000c0bc",
       "size": 8,
-      "type": 1
+      "type": 1,
+      "linked_size": 16,
+      "stripped_objects": [
+        "@26"
+      ]
     },
     {
       "name": "extabindex",
       "address": "0x80013070",
       "size": 12,
-      "type": 1
+      "type": 1,
+      "linked_size": 24,
+      "stripped_objects": [
+        "@27"
+      ]
     }
   ],
   "functions": [
@@ -70,7 +79,9 @@
       "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "Init__10CRenderBinFv": "0x80073b2c"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
@@ -78,5 +89,8 @@
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "particlesystem.cpp",
-  "original_file_index": 4057
+  "original_file_index": 4057,
+  "weak_duplicates": [
+    "Init__10CRenderBinFv"
+  ]
 }

@@ -48,27 +48,10 @@ struct CDmaTag {
 
 /* CRenderBin's non-polymorphic base (see dmesh_cremapbin_ctor.cpp): the
    tag chain's last and first tags at +12 and +16. */
-struct CRenderBinData {
-    union {
-        CRenderBinData* data00;
-        class CRenderBin* m_prev;
-    };
-    class CRenderBin* m_next;
-    class CRenderBin* m_children;
-    CDmaTag* m_lastTag;
-    CDmaTag* m_firstTag;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+
+#include "game/CRenderBin.h"
+
 
 class CRenderList {
 public:

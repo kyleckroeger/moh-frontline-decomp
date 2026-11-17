@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": true,
   "source_root": "src/game",
@@ -47,13 +48,23 @@
       "name": "extab",
       "address": "0x8000f6a8",
       "size": 8,
-      "type": 1
+      "type": 1,
+      "linked_size": 24,
+      "stripped_objects": [
+        "@20",
+        "@26"
+      ]
     },
     {
       "name": "extabindex",
       "address": "0x800162f8",
       "size": 12,
-      "type": 1
+      "type": 1,
+      "linked_size": 36,
+      "stripped_objects": [
+        "@21",
+        "@27"
+      ]
     }
   ],
   "functions": [
@@ -71,7 +82,8 @@
     "Render__10CRenderBinFR10CDmaPacketPv": "0x80076e18",
     "__dl__FPv": "0x8001ca2c",
     "__vt__10CRenderBin": "0x80183c5c",
-    "__vt__11MSHMaterial": "0x8018b464"
+    "__vt__11MSHMaterial": "0x8018b464",
+    "__dt__10CRenderBinFv": "0x80074290"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -85,6 +97,12 @@
     ".data"
   ],
   "weak_duplicates": [
+    "Init__10CRenderBinFv",
+    "IsUsed__10CRenderBinFv",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket",
+    "Render__10CRenderBinFR10CDmaPacketPv",
+    "__dt__10CRenderBinFv",
+    "__vt__10CRenderBin",
     "__vt__11MSHMaterial"
   ]
 }

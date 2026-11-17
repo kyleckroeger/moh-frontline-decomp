@@ -57,7 +57,11 @@
       "size": 56,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 64
+      "linked_size": 72,
+      "stripped_objects": [
+        "@246",
+        "@357"
+      ]
     },
     {
       "name": "extabindex",
@@ -65,7 +69,11 @@
       "size": 84,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 96
+      "linked_size": 108,
+      "stripped_objects": [
+        "@247",
+        "@358"
+      ]
     },
     {
       "name": ".rodata",
@@ -77,7 +85,11 @@
       "name": ".data",
       "address": "0x80184740",
       "size": 72,
-      "type": 1
+      "type": 1,
+      "linked_size": 100,
+      "stripped_objects": [
+        "__vt__10CRenderBin"
+      ]
     },
     {
       "name": ".bss",
@@ -203,7 +215,9 @@
     "__dl__FPv": "0x8001ca2c",
     "__dt__10CRenderBinFv": "0x80074290",
     "__register_global_object": "0x801381bc",
-    "__vt__10CRenderBin": "0x80183c5c"
+    "__vt__10CRenderBin": "0x80183c5c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket": "0x80076e20"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -214,6 +228,11 @@
   "original_file": "fader.cpp",
   "original_file_index": 3903,
   "weak_duplicates": [
-    "__dt__10CRenderBinFv"
+    "Init__10CRenderBinFv",
+    "IsUsed__10CRenderBinFv",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket",
+    "Render__10CRenderBinFR10CDmaPacketPv",
+    "__dt__10CRenderBinFv",
+    "__vt__10CRenderBin"
   ]
 }

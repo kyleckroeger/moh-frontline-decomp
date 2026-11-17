@@ -24,7 +24,9 @@ DIR/bisect.json. One run takes about a minute.
 
 Comparing play: link the drafts with research/probes/input_probe.cpp (the
 input script and a state trace) and research/probes/clock_probe.cpp (a fixed
-frame time, a fixed random seed and a frame-buffer hash, "FRAME n hash h").
+frame time, a fixed random seed and a frame-buffer hash, "FRAME n hash h") and
+research/probes/arena_probe.cpp (the main heap kept below 32 MB, where the GPU
+reads palettes from the address they are at; docs/Dolphin.md).
 With the clock probe, the game's state no longer depends on CPU timing, so the
 control (`control`: the same ELF with every patched function restored) and the
 drafted image must log identical TRACE and FRAME lines, and `bisect
@@ -93,7 +95,7 @@ EmulationSpeed = 0.00000000
 # Frame buffer copies go to main memory, where clock_probe.cpp hashes them.
 GFX_SETTINGS = {"Hacks": {"XFBToTextureEnable": "False"}}
 # Functions the test probes replace: never restored by bisect or control.
-PROBES = ["iPAD_update__Fv", "Wait__7CScreenFv", "MathFunSRandom__FUi"]
+PROBES = ["iPAD_update__Fv", "Wait__7CScreenFv", "MathFunSRandom__FUi", "mallocinit"]
 
 
 def winpath(path):

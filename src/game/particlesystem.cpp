@@ -194,27 +194,10 @@ public:
     int data20;
 };
 
-class CRenderBinData {
-public:
-    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
-    CRenderBinData* m_prev;
-    CRenderBinData* m_next;
-    CRenderBinData* m_children;
-    int m_lastTag;
-    int m_firstTag;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin() {}
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+#include "game/CRenderBin.h"
+
 
 // No Render of its own: the manager's table (0x801848d4) lists CRenderBin::Render.
 // Link is declared (its weak default is in compartment_bins.cpp) so that this class's

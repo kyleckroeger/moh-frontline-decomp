@@ -9,12 +9,8 @@
 // global virtual table is not emitted here; the bases' tables are weak in the
 // original (no key function), so the compiler's copies of them and of the
 // inline base destructors are weak duplicates, linked to the original copies.
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin() {}
-};
 
 class CParticleSystem : public CRenderBin {
 public:

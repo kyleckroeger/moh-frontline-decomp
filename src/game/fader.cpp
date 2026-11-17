@@ -26,27 +26,10 @@ class CDmaPacket;
 #include "game/CColor.h"
 
 
-class CRenderBinData {
-public:
-    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
-    int m_prev;
-    int m_next;
-    int m_children;
-    int m_lastTag;
-    int m_firstTag;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin() {}
-    virtual void Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+#include "game/CRenderBin.h"
+
 
 class CRenderList {
 public:

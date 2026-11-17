@@ -16,14 +16,8 @@
 class CDmaTag;
 class CDmaPacket;
 
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the vtable pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual int Render(CDmaPacket&, void*) { return 0; }
-    virtual void Link(CDmaTag*, CDmaPacket&) {}
-    virtual ~CRenderBin() {}
-};
 
 class CUcodeRenderBin : public CRenderBin {
 public:

@@ -36,7 +36,7 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `layout/` | `layout_lint.py`'s output: `conflicts.tsv` (views that disagree), `classes.tsv` (per class: views, sizes, members all views agree on); the raw layouts go to `build/layout/views.json` |
 | `notes/loop-2026-11-13.md` | Last loop day: results, rules found, decisions, where the unverified bytes are, next steps |
 | `data_stopgap/` | Stopgap vtables for the pure-source link (`vtables.txt` lists them; `gen_vtable_stopgap.py` writes `vtables.cpp`) until their files merge |
-| `probes/` | Test-image probes: `input_probe.cpp`, the W1 probes (`morph63_probe.cpp`, `aram_upload_probe.cpp`, ...), and input scripts in `probes/scripts/` |
+| `probes/` | Test-image probes: `input_probe.cpp`, `clock_probe.cpp` and `arena_probe.cpp` (link both into every frame comparison; `docs/Dolphin.md`), the W1 probes (`morph63_probe.cpp`, `aram_upload_probe.cpp`, ...), and input scripts in `probes/scripts/` |
 | `movies/` | Input routes in probe form (`route_*.txt`), hook files (`hooks_*.txt`) and a DTM movie |
 | `archive/loop3-scratch/` | Agent notes, scripts and probes of the 2026-11-11..13 loop, copied out of the ignored `scratch/` |
 | `tools/` | Working scripts, tested from the repository root |
@@ -108,7 +108,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `dolphin_direct.py ELF SECS WORKDIR` | Boot an ELF directly with `Dolphin.exe -e` and keep its log; used with `boot_probe.py` and `entry_trace.py` |
 | `dolphin/gdbpeek.ps1` | Attach to Dolphin's GDB stub from the Windows side: run until a log line matches, then dump registers and the back chain; optional write watchpoint (`docs/Dolphin.md`) |
 | `probe_hooks.py PROBE.cpp HOOKS.txt` | Add per-update test hooks (set position, call a built-in, log sound timing, ...) to an `input_script.py` probe |
-| `move_header.py CLASS UNIT...` | Apply `try_header.py`'s moved source to each unit, listing weak duplicates; keep the unit if `one_unit.py` verifies it, else revert |
+| `move_header.py CLASS UNIT...` | Apply `try_header.py`'s moved source to each unit, listing weak duplicates and parking the data they bring (weak table, exception records) as stripped objects; keep the unit if `one_unit.py` verifies it, else revert |
 | `try_dwi.py [--jobs 4] [--only UNIT...] [--out TSV]` | Move units with their own dwi container views onto `game/DwiContainers.h` and `game/DwiHashMap.h` in a copy, and verify as `try_header.py` does |
 | `dedupe_protos.py FILE HEADER...` | Delete a file's own prototypes of functions the given SDK headers declare (`notes/sdk-views.md`); check each with `one_unit.py` |
 | `gen_axdsp.py <out.cpp>` | Write `data/init/axDspSlave.cpp` (the AX DSP microcode) from the original ELF |

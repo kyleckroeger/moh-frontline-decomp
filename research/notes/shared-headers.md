@@ -569,3 +569,22 @@ that is a placeholder (dataXX) yields to the most common real name among the vie
   spellings). Most views lay float arrays over the rows, which a rename can't fix. So for both
   classes measured, names are a small part of what blocks header moves; weak-copy manifests and
   array views are the larger part.
+
+## CRenderBin: weak copies moved with their data (2026-11-17, evening)
+
+- The header lacked CRenderBinData's inline constructor (`m_prev(0) ... m_priority(3)`, data18
+  untouched), which 17 views had and every bin constructor inlines; try_header drops the view's
+  struct, so a moved unit's `__sinit` lost those stores (fader: 112 bytes against 140). Added; the
+  24 units on the header still verify.
+- move_header.py now also parks the data that weak duplicates bring: the weak table
+  (`__vt__10CRenderBin`, compiled between the unit's own tables) and the exception records of
+  the weak copies (extab/extabindex `@N`, found through extabindex's relocations) are listed as
+  `stripped_objects`, and each grown section takes its compiled size as `linked_size`
+  (strip_unused on). That was the "Compiler data layout differs" blocker.
+- Result: **17 more units moved** (fader, ConfigGC, renderlist, particlesystem, compartment_bindtors,
+  particlesystem_manager_init/_dtor, and the bin destructors), **41 units on CRenderBin.h**, all
+  verified. 25 keep their views: function set 7 (among them compartment_renderbin and
+  compartment_bins, which place the original's weak copies themselves, so for them the copies are
+  not duplicates), allocated compiler output 6, stripped object not one compiler object 5 (pooled
+  literals), code bytes 3 (particlesystem_active/_create, decal extab), file duplicates 2,
+  pool size 1 (skybox), data layout 1 (motionblur).

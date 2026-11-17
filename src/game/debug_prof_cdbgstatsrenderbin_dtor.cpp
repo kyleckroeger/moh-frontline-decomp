@@ -12,12 +12,8 @@
 class CDmaTag;
 class CDmaPacket;
 
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin() {}
-};
 
 class CDbgStatsRenderBin : public CRenderBin {
 public:

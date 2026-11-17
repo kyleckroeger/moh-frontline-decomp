@@ -50,7 +50,12 @@
       "size": 16,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 32
+      "linked_size": 40,
+      "stripped_objects": [
+        "@147",
+        "@153",
+        "@161"
+      ]
     },
     {
       "name": "extabindex",
@@ -58,7 +63,12 @@
       "size": 24,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 48
+      "linked_size": 60,
+      "stripped_objects": [
+        "@148",
+        "@154",
+        "@162"
+      ]
     }
   ],
   "functions": [
@@ -91,7 +101,11 @@
     "g_pContext": "0x8034ed10",
     "g_pLightVolume": "0x8034ed08",
     "g_pModelToWorld": "0x8034ed1c",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket": "0x80076e20",
+    "Render__10CRenderBinFR10CDmaPacketPv": "0x80076e18"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -117,6 +131,10 @@
     ".data"
   ],
   "weak_duplicates": [
+    "Init__10CRenderBinFv",
+    "IsUsed__10CRenderBinFv",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket",
+    "Render__10CRenderBinFR10CDmaPacketPv",
     "__dt__10CRenderBinFv",
     "__dt__11MSHMaterialFv",
     "__vt__10CRenderBin",

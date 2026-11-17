@@ -15,12 +15,8 @@
 // the class's own virtual functions so that its global table is not emitted.
 class CDmaPacket;
 
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin() {}
-};
 
 class CParticleSystem : public CRenderBin {
 public:

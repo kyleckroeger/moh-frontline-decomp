@@ -217,12 +217,8 @@ void UpdateLightingParams(CDmaPacket& packet) {
     }
 }
 
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin() {}
-};
 
 class MSHMaterial : public CRenderBin {
 public:

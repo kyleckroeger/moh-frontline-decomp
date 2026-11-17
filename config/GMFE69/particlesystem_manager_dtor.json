@@ -50,7 +50,14 @@
       "size": 8,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 32
+      "linked_size": 48,
+      "stripped_objects": [
+        "@42",
+        "@48",
+        "@56",
+        "@60",
+        "@73"
+      ]
     },
     {
       "name": "extabindex",
@@ -58,7 +65,14 @@
       "size": 12,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 48
+      "linked_size": 72,
+      "stripped_objects": [
+        "@43",
+        "@49",
+        "@57",
+        "@61",
+        "@74"
+      ]
     }
   ],
   "functions": [
@@ -134,7 +148,8 @@
     "__vt__10CRenderBin": "0x80183c5c",
     "__vt__10ISceneNode": "0x80181c78",
     "__vt__15CUcodeRenderBin": "0x80183c40",
-    "__vt__22CParticleSystemManager": "0x801848d4"
+    "__vt__22CParticleSystemManager": "0x801848d4",
+    "__dt__10CRenderBinFv": "0x80074290"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -193,7 +208,9 @@
     "GetUpward__10ISceneNodeCFR8CVector3",
     "GetWorldBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
     "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision",
+    "Init__10CRenderBinFv",
     "IsDrawEnabled__10ISceneNodeCFv",
+    "IsUsed__10CRenderBinFv",
     "IsVisible__10ISceneNodeCFR12CDrawContext",
     "Link__10CRenderBinFP7CDmaTagR10CDmaPacket",
     "OnCollision__10ISceneNodeFRC10CCollision",
@@ -202,8 +219,10 @@
     "SetCollisionId__10ISceneNodeF7EClsnId",
     "TriggerScriptEvent__10ISceneNodeFiPvb",
     "UpdateAI__10ISceneNodeFf",
+    "__dt__10CRenderBinFv",
     "__dt__10ISceneNodeFv",
     "__dt__15CUcodeRenderBinFv",
+    "__vt__10CRenderBin",
     "__vt__10ISceneNode",
     "__vt__15CUcodeRenderBin"
   ]

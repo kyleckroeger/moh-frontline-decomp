@@ -56,7 +56,13 @@
       "size": 8,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 32
+      "linked_size": 40,
+      "stripped_objects": [
+        "@130",
+        "@136",
+        "@142",
+        "@146"
+      ]
     },
     {
       "name": "extabindex",
@@ -64,7 +70,13 @@
       "size": 12,
       "type": 1,
       "linked_offset": 0,
-      "linked_size": 48
+      "linked_size": 60,
+      "stripped_objects": [
+        "@131",
+        "@137",
+        "@143",
+        "@147"
+      ]
     },
     {
       "name": ".bss",
@@ -268,7 +280,10 @@
     "__vt__22CParticleSystemManager": "0x801848d4",
     "__vt__8ISubject": "0x8018a1d4",
     "__vt__9IObserver": "0x8018a1c0",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "Init__10CRenderBinFv": "0x80073b2c",
+    "IsUsed__10CRenderBinFv": "0x80073b84",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket": "0x80076e20"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -284,9 +299,14 @@
     ".data"
   ],
   "weak_duplicates": [
+    "Init__10CRenderBinFv",
+    "IsUsed__10CRenderBinFv",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket",
+    "Render__10CRenderBinFR10CDmaPacketPv",
     "__dt__10CRenderBinFv",
     "__dt__10ISceneNodeFv",
-    "__dt__15CUcodeRenderBinFv"
+    "__dt__15CUcodeRenderBinFv",
+    "__vt__10CRenderBin"
   ],
   "file_duplicates": [
     "IsUsed__22CParticleSystemManagerFv",

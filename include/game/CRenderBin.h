@@ -20,7 +20,10 @@ class CDmaPacket;
 class CDmaTag;
 class CRenderBin;
 
+/* The inline constructor every bin's constructor inlines (data18 left alone), as 17 views had it. */
 struct CRenderBinData {
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
+
     CRenderBin* m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;

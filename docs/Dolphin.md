@@ -445,6 +445,16 @@ from the game's state:
   external frame buffer. `prepare` turns off "Store XFB Copies to Texture Only"
   (`GFX.ini [Hacks] XFBToTextureEnable = False`) so that the frame is in main memory.
 
+Images compared frame by frame also link `research/probes/arena_probe.cpp`, which ends the
+game's main heap at 0x82000000. The work directory runs with 64 MB of MEM1 (the drafts'
+code segment takes heap; with 24 MB Mission 1 runs out), and the main heap then reaches
+0x827fce00, with the shell fonts near its top. A TLUT load ignores the upper address bits on
+a GameCube, and Dolphin masks the same way (`addr & 0x01FFFFFF`), so a palette above 32 MB is
+read 32 MB lower, from ordinary heap that differs between images. Without the cap, the
+original and the pure-source image draw the menu's button help text differently and every
+menu frame hash differs (2026-11-17). A 32 MB console doesn't work instead: `mallocinit`
+keeps 24 MB of any arena over 24 MB out of the heap, and the game hangs at boot.
+
 Every 30 updates the input probe logs a `TRACE` line: pad state, player position, yaw,
 pitch, state flags, weapon, the HUD's clip and reserve counts, and a hash of the player
 object's first 0x800 bytes.

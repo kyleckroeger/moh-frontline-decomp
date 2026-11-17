@@ -9,25 +9,10 @@
 class CDmaPacket;
 class CDmaTag;
 
-class CRenderBinData {
-public:
-    CRenderBinData* m_prev;
-    CRenderBinData* m_next;
-    CRenderBinData* m_children;
-    int m_lastTag;
-    int m_firstTag;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin();
-    virtual void Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+
+#include "game/CRenderBin.h"
+
 
 /* inferred: only the render-bin part of the manager is used here */
 class CParticleSystemManager : public CRenderBin {

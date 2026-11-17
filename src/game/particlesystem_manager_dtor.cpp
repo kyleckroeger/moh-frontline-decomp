@@ -28,16 +28,8 @@ class CDmaPacket;
    primary slots). All are weak (inline) in the original; Init's and IsUsed's
    bodies are not part of this view, so they are declared without one, which
    also keeps CRenderBin's table out of this unit. */
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin() {}
-    virtual int Render(CDmaPacket&, void*) { return 0; }
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&) {}
-    virtual bool IsUsed();
-};
 
 class CUcodeRenderBin : public CRenderBin {
 public:

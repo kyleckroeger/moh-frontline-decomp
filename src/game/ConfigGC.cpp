@@ -257,12 +257,8 @@ extern CScreenView g_screen;
 /* Inferred view: 28 bytes of members, then the virtual table pointer with the
    virtual destructor in the first slot (the slot CRenderBin's sprites and
    fonts use); the destructor deletes the held objects through it. */
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-    virtual ~CRenderBin();
-};
 
 class CDualConfig {
 public:

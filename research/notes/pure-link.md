@@ -302,3 +302,25 @@ of each name instead of the best, only `Type` (4 of 16 bytes) and `g_HeightScale
 the known RTTI words. Next: find what draws the help text (shell menu, the szLib*/images tables,
 the font draw) and compare its colour/alpha inputs between images, e.g. with a gx_capture-style
 probe on that draw call, or a frame-1890 GX capture of both images.
+
+**Menu frame divergence found (2026-11-17, evening): a test-rig artefact, not a pure-image bug.**
+- Probes on TibTextDraw and CFont::Link (scratch only) showed both images give the help text the
+  same string, font, colour, glyph records, texture/TLUT objects and bytes, and the same GX shadow
+  state (gxData); forcing every unshadowed GX state still left them different, and solid quads in
+  place of the texture drew identically. So the GPU sampled different palettes from the same
+  descriptors.
+- Cause: the shell font (PopupDisplay.gfn, a C4 texture with an IA8 TLUT) sits at 0x826517e0,
+  because Dolphin runs with 64 MB of MEM1 and the main heap reaches 0x827fce00. A TLUT load's
+  source address is masked to 25 bits (Dolphin LOADTLUT1: `addr & 0x01FFFFFF`, as on hardware), so
+  the palette was read from 0x80655a00: heap, laid out differently in each image. Dolphin's EFB
+  copy and texture caches were ruled out (EFBToTextureEnable off, safe texture cache: no change).
+- Fix: research/probes/arena_probe.cpp (replaces mallocinit) ends the main heap at 0x82000000;
+  dolphin_boot.py keeps it in control images (PROBES). A 32 MB console doesn't work: mallocinit
+  keeps 24 MB of an arena over 24 MB out of the heap, and the game hangs at boot.
+- route_menu with the cap: pure and control identical for every line of the control's run
+  (6,466 trace lines, every FRAME hash, the intro-movie frames 1470/1500 included).
+- m1_opening with the cap: TRACE identical for 1,321 lines (player hash left out: it holds heap
+  pointers); intro and menu frames now match. **Still open:** in-level frames from 5640 differ.
+  Lead: the same wrap for data outside the main heap (the 24 MB above it that mallocinit holds
+  back, or the OS heap), or another address-sensitive GPU input; next step is the probe approach
+  above on a level draw.
