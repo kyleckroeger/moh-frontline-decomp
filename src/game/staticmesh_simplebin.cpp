@@ -11,31 +11,10 @@ class CDmaTag;
 class CDmaPacket;
 class CRenderBin;
 
-/* CRenderBin's non-polymorphic base (see dmesh_cremapbin_ctor.cpp). */
-struct CRenderBinData {
-    int data00;
-    CRenderBin* m_next;
-    CRenderBin* m_children;
-    int data0c;
-    int data10;
-    int m_priority;
-    int data18;
-};
 
 /* CRenderBin's virtuals in table order (Init is slot 16). */
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin() {}
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init() {
-        data0c = 0;
-        data10 = 0;
-        for (CRenderBin* child = m_children; child; child = child->m_next)
-            child->Init();
-    }
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed() { return data10 != 0; }
-};
+#include "game/CRenderBin.h"
+
 
 class CMshSimpleBin : public CRenderBin {
 public:

@@ -777,7 +777,7 @@
     "src/game/orient.cpp": "031b0d870db82013b99a554649dfe99038d03705b3309d14909ed0094ee43304",
     "src/game/particlesystem.cpp": "a0edbd1b13db0509fa610721e1dde74fd4ee5b796855598ce2073313a1516738",
     "src/game/particlesystem_active.cpp": "c6900100e25bc2343e8bc91544bd038ce33e62b4f8ee35b613f0ec891cd22913",
-    "src/game/particlesystem_beginupdate.cpp": "0cc16255f1901b272b7d5a650f703661087adf17abd5ec95faebb6624d6e2340",
+    "src/game/particlesystem_beginupdate.cpp": "767db85578c375e8f588a455e21b90ee62db484adbff660a26ca15dc286e191a",
     "src/game/particlesystem_cinstancedparticlesystem_dtor.cpp": "9d40870b2dc1fe0176a5b01f1d0f67303358bdf16eb989ea9bccd63d8b4c0834",
     "src/game/particlesystem_color.cpp": "4e2fb88cbae3e3c31ac0a528c597b893462f9359fc41799112651d929786156b",
     "src/game/particlesystem_cparticlesystem_dtor.cpp": "4f83c65fee1c6f1394c63b527124e37016012f18aea04a1e332c8b9f9e8f62e1",
@@ -791,7 +791,7 @@
     "src/game/particlesystem_property.cpp": "2709d21829562f73d5954863a85ba57c2a0a7e0ec3c763061a1b802008f495bf",
     "src/game/particlesystem_register.cpp": "7a9bdb9294f119307b470a3f450a519d6660435ca9cb6bd95c806ea7086df563",
     "src/game/particlesystem_registerfn.cpp": "ff6c74db155496d4ee0cabcc0f50dfc44fa22f93b18d8a849e6392242adf50af",
-    "src/game/particlesystem_reset.cpp": "1e96cf64f675c18d19b4984423ea9169589d3d15dd95d04ecb87f773436496f5",
+    "src/game/particlesystem_reset.cpp": "58b270c25e2cf088eb2eae3d0bc99c6690891d2d196501f20ff8af62a0e1176a",
     "src/game/particlesystem_rotation.cpp": "41bd5b6cf4c66b720f11cd0a65f702fbfaaff0fccd0cdc966cbfa82beee31855",
     "src/game/particlesystem_texture.cpp": "7bad990fa32156064c574d6c094d0b5c24b6c36095c2a4601ef31357e4d6c5c4",
     "src/game/particlesystem_texturebin_dtor.cpp": "2d93edcd84e7b4ea3ebf6d6dd535072ca217836a9b31c37a5fdc139b8262cd67",
@@ -923,7 +923,7 @@
     "src/game/staticmesh_mshmaterial_dtor.cpp": "954a7a5fa8c0bb7d070ac1d15646a07b506991ca2a8c66e40301e8742089324c",
     "src/game/staticmesh_mshnode_copy.cpp": "f78396a1c13e87d8c4ebec6647315bb6dc59f0bb9c7da292b4ed6be3aa46f046",
     "src/game/staticmesh_render.cpp": "bdd2c2cf5834866e034345d12c84f7b511f34a59a702092dbba1d015b99f83a0",
-    "src/game/staticmesh_simplebin.cpp": "4d84ad0402d5112ba7c963dbd34fbec6bc14627b22537f3cfda9e1897a33b73e",
+    "src/game/staticmesh_simplebin.cpp": "64eef49a6cf097400f67a7c0cb6970560904b3a39a5c4205c919bc385e3b9cf6",
     "src/game/staticobjfactory_compare.cpp": "713d08159595fa45ee2498632dc7666ad6ee3deca9c5d03887be732880e0a9c2",
     "src/game/staticobjfactory_helmet.cpp": "9b5a4f644352cb9549448714ea358a2644373c8bd515fddc78342451d20e9e8d",
     "src/game/staticobjfactory_lookup.cpp": "19eb9d9ed032b6cc222426f494c36a3905175be43960e079bad86030b04feee9",
@@ -2398,7 +2398,7 @@
     "config/GMFE69/staticmesh_mshmaterial_dtor.json": "e8ed6079397248e73d513bd5621430fe85d14ba7a099c05aa353b721683e6784",
     "config/GMFE69/staticmesh_mshnode_copy.json": "47a01754624f180434dd9cdee6b121abe06d56e057d61ea0c67d53e5d08e79c7",
     "config/GMFE69/staticmesh_render.json": "69f38cc8cbc76446029c3afe4bd70033b4bb8937996c2e593ab3de52b398591b",
-    "config/GMFE69/staticmesh_simplebin.json": "5fb23a801437c0a09b0f12aec1762ea737197d71a1aa7a2c8e748b89b51f8abe",
+    "config/GMFE69/staticmesh_simplebin.json": "12a0fc65707f3c0964a03dc7b5d02dc51bf9070abe3b84ca59eb97f9d796dd82",
     "config/GMFE69/staticobjfactory_compare.json": "de1e67e6914665d44c53427f73165463477956801f570f811aa1fe0e5cbd9ca8",
     "config/GMFE69/staticobjfactory_helmet.json": "2f6c5bd1badbac055cee6052433a73eb31ff69f724bb8439e2595d8129547181",
     "config/GMFE69/staticobjfactory_lookup.json": "2c76c1d9181f0a2cf4d9ec71061b1ef82417b793908a375073312dd328cba2f4",
@@ -34011,8 +34011,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "495e5a1b04c3da3861464e6e1c416d8229c9ac467448bc331fbc26d4afd1ebe0",
-      "linked_sha256": "abadcd255efa559c0e36a6157a49daccb7b2dfd53d1d12fb003dafc236de6bdf"
+      "object_sha256": "1dc65afc63dc6ddf2da96546578bda5a173c9c4866e229a34508f26edd11f870",
+      "linked_sha256": "94d50f3eb8cfde7d681f7f0cac4852b6f2330206a13746be34259d17f83543ca"
     },
     {
       "id": "AIObject_ctor",
@@ -40798,8 +40798,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a8a4b7244c00ee75bb7024f7ca6328fef2960945c903cbde49272f7da554d5e6",
-      "linked_sha256": "9e87d31680ae38a5118344e04b954d582d9a60cbb86418b71c1dcd0e53676203"
+      "object_sha256": "d81220dd741e5672f47ddbc8a4daa1d82b4a1293da87887e62b7a5d06490fbb3",
+      "linked_sha256": "40cd456214cd4c3e90bd78c03f485931825fe356a129aa5d4c16824839b4827a"
     },
     {
       "id": "AIObject_mmgpoint",

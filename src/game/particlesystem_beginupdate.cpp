@@ -12,24 +12,9 @@ class CDmaPacket;
 
 class CRenderBin;
 
-struct CRenderBinData {
-    CRenderBin* m_prev;
-    CRenderBin* m_next;
-    CRenderBin* m_children;
-    int data0c;
-    int data10;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+#include "game/CRenderBin.h"
+
 
 class CParticleSystem : public CRenderBin {
 public:

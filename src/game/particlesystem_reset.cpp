@@ -18,20 +18,9 @@ class CDmaPacket;
 
 class CRenderBin;
 
-struct CRenderBinData {
-    CRenderBin* m_prev;
-    CRenderBin* m_next;
-    CRenderBin* m_children;
-    int data0c;
-    int data10;
-    int m_priority;
-    int data18;
-};
 
-class CRenderBin : public CRenderBinData {
-public:
-    virtual int Render(CDmaPacket&, void*);
-};
+#include "game/CRenderBin.h"
+
 
 void* DWI_alloc(const char*, int, int);
 

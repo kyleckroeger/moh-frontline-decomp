@@ -522,3 +522,6 @@ IVolume view (a second definition), so those wait for their IVolume moves.
   their extab/.text size (new weak copies with exception records), which weak-duplicate entries alone
   don't cover.
 - BSGO_Basic, later: 7 more moved with the widened weak-copy rule, 17 units in all.
+- CRenderBin, later: units with their own `struct CRenderBinData` conflicted with the header's. Dropping
+  it from the moved source moved 3 more (21 in all). The other no_compile units name the data
+  differently or declare it inside CRenderBin.
