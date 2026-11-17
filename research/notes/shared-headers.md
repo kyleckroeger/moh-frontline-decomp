@@ -509,3 +509,10 @@ try_header: 3 kept, 18 lost (17 by new weak copies), 32 no_compile. **10 units m
 with weak-duplicate entries). The no_compile views use typed results
 (`GetProximityData()->leaf`), so the real result types of GetScriptData, GetProximityData and
 GetEmbeddedHitReactionInfo have to be recovered (from their users) before the rest can move.
+
+## CVolSphere (2026-11-17, overnight)
+
+`include/game/CVolSphere.h` (on IVolume.h): every member out of line as in the original (sphere.cpp),
+the 17 table slots in __vt__10CVolSphere's order, the radius at +0xc and the centre at +0x10.
+try_header: 4 kept, **4 moved**. 24 no_compile, all of them because the unit also keeps its own
+IVolume view (a second definition), so those wait for their IVolume moves.

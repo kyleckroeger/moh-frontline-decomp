@@ -232,14 +232,8 @@ public:
     unsigned char unknown0000[3568];
 };
 
-class CVolSphere {
-public:
-    ~CVolSphere();
-    void SetRadius(float);
-    void SetCenter(CVector3);
+#include "game/CVolSphere.h"
 
-    unsigned char unknown00[32];
-};
 
 class CCharacterShadow {
 public:

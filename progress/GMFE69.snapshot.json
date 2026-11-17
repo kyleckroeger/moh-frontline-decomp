@@ -462,7 +462,7 @@
     "src/game/Soldier_object_attach.cpp": "88894fb72d4026198120316f1ff888eee74faf4ae06c5bb35979bb9ef05fd641",
     "src/game/Soldier_object_bone.cpp": "9c7fbdac85cc64aa9832ad8578776fe0376a77f651004f9595ef3e95ad21e566",
     "src/game/Soldier_object_bounds.cpp": "de317d8ddac759011fc6d15819b43cf902b41d66badbb1e6fa0c79cd9fe12e9b",
-    "src/game/Soldier_object_cleanup.cpp": "3a89efcaf0c2104ee4aaf79925d7d958e17daf7562c5b5281c880b88fe4439e8",
+    "src/game/Soldier_object_cleanup.cpp": "2933ca5c78ff7069d772e0c1b1c06622ac18369138feb7d81d6e5b57a41e5aef",
     "src/game/Soldier_object_ctor.cpp": "c02032b20d75e7dadae71dc29e5dd4eff07bf931e5f05d7dbc2d50b720a723de",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
     "src/game/Tank_object.cpp": "b789caee688fe1837e2b464210963bbde149d87b5b2ccf4480984e9fd10b3ace",
@@ -638,8 +638,8 @@
     "src/game/capsule_dtor.cpp": "80a5ac2eb4d0f76042bf47f6d3470b29e0f50bc3659f3c78cbd5facbbe18a8bb",
     "src/game/capsule_plane.cpp": "b8ebfdce53d53a384458ad6e988e52d08a312f4c9d08695cae33972be4ad6790",
     "src/game/cdbgeom.cpp": "425eb2c8349cfd7689037aaf961eac048c7d0a2b13768dc3e2262375fea37b59",
-    "src/game/cdbgeom_fiber.cpp": "6f2ac2d1895ddc41c7470464917a75859ba1e809e47c32a46325296fe87fb7e3",
-    "src/game/cdbgeom_sphere.cpp": "499b7a5ae72a249376d49c248cab0f9c4936d4a0b8bddf43249452283baa6e87",
+    "src/game/cdbgeom_fiber.cpp": "510ef02e8a34277e1f77ad5d1798c2fe55aa72d9d93ba18b7047ee352d1510d3",
+    "src/game/cdbgeom_sphere.cpp": "f1969aaacd439289183accacb07441ceccf8e585708fdb75be52963c9df5af3b",
     "src/game/cdbgeom_triangle_ctor.cpp": "18e8165e2a434a6e6d7f2f4a16fbbaa8425bbd0164ca944aad5e8252ecb75483",
     "src/game/cdbgeom_triangle_line.cpp": "3bbcfc5d88241719e063a533710963350a0737f495120b180acdf86afbbdb77b",
     "src/game/cdbgeom_vector.cpp": "80a34ea5e2fc77523baa3d669d0487a32233f5c4cdeec33104ce7105fa4fffc7",
@@ -654,7 +654,7 @@
     "src/game/cdbobject_fastvec_frame.cpp": "01742b6cd682bd076bf11c8e1b8ff5edd57c7418f9624bb3f2a13b64cce83e4d",
     "src/game/cdbobject_fastvec_push.cpp": "6abcdba878a5a14d4779d4ebc0465753ea88c4fae7ff78a928c57c895e66ffc0",
     "src/game/cdbobject_init.cpp": "95fd82b9cb6d6c705bd40cc4b9116ef9ce3ecafaee97b3a7ec74ed4a2b2eada5",
-    "src/game/cdbobject_intersect.cpp": "fc0af84e3ec64b08ccbeebdf2719a60acabaff409668af9d35b1ac19ca5c0416",
+    "src/game/cdbobject_intersect.cpp": "631a41af9fc61d20a3a3db72b911ed335e519040da158e6c32b4551d34a4f085",
     "src/game/cdbobject_leaf.cpp": "011be5b6ad2f91024ce52d48359eef9ca00f5a2da27da1531383bcca556e2486",
     "src/game/cdbobject_line.cpp": "29936b3f8333efcdb6f41def89c62fc51c722e27eefec6234288ce0d9fbda7fe",
     "src/game/cdbobject_offsetptr.cpp": "f82eb14ae3f2e366291ce6f2ee0dda723985a0a5b2b1e11b300bf9d73e05d7cd",
@@ -1301,6 +1301,7 @@
     "include/game/CScene.h": "7cbf50f03acb5e0341eacd56fa49c425404d9b89345a4aaf022cd2297ab3b378",
     "include/game/CScreen.h": "081a035fc730c4da9a451e5c01c6ff38a9f5fbd8431951b5037d3986c474654a",
     "include/game/CVector3.h": "b8abb8cd983822edce705ab2f5ea099da8537ea8ea8e9dc5ab907a12d90099eb",
+    "include/game/CVolSphere.h": "6c1a82a1b215dadabbac65ad9f979540082603b55ba00f85bc36d6129fdd1350",
     "include/game/DwiContainers.h": "066615d38f3b5a70761f5d261237d733b49b435761cb7885b34078cf1e1b2116",
     "include/game/DwiHashMap.h": "360f72604080a4f1e2067658a7bae62626395deccfdc5cd6f0863ec892407cb2",
     "include/game/GameAddr.h": "ae80091641e996fa11f333d54e3aa6107f993e2eb6900dcd7d8d10bacd2b274b",
@@ -32521,8 +32522,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "1befca7d709a9d37626b52645ee25844bb0559f3e47a0eb3f9e3b7f6f654ef2f",
-      "linked_sha256": "aae56ec8d8a7d064a7425daeac42688f0129fe7df34a3cd9f497af5732b890b0"
+      "object_sha256": "780c2188e66161de5ec581e3c807e6059f2798a615570820f10c08eff3c867d2",
+      "linked_sha256": "1f52944c485591d3329dd58d7c125f29c80b7537d237b3fff542f57e8afc1e59"
     },
     {
       "id": "cdbgeom_triangle_ctor",
@@ -36198,8 +36199,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5b6eb7425b50fdadda4d73eec2a71fe280fc9533b8fac1782183f14e7e46ad26",
-      "linked_sha256": "ac7dd810a38067383cd4c92939ca528eee802adfa15fbf42dcad314d7c754a5d"
+      "object_sha256": "8d0080dc07ddda775b4602ef4168837286d64c72c7912a816720d6f04d04f099",
+      "linked_sha256": "118d33ecccb93dcbaaffa2e408961dd456e68bb88b1869a02a2a22b6a5c93d15"
     },
     {
       "id": "Soldier_object_attach",

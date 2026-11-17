@@ -101,11 +101,8 @@ public:
     virtual ~CCDBVolBox() {}
     virtual int TestCollision(const CVolSphere&, CCollision&, bool) const;
 };
-class CVolSphere : public IVolume {
-public:
-    float GetRadius() const;
-    CVector3 GetCenter() const;
-};
+#include "game/CVolSphere.h"
+
 class CVolCapsule : public IVolume {};
 class CAnimatedVolume : public CVolSphere {};
 

@@ -45,11 +45,8 @@ public:
     int m_result;
 };
 
-class CVolSphere {
-public:
-    float GetRadius() const;
-    CVector3 GetCenter() const;
-};
+#include "game/CVolSphere.h"
+
 
 extern const float CONTACT_EPSILON;
 
