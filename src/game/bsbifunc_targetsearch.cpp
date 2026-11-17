@@ -122,14 +122,8 @@ struct AIDoodadView {
     CAIFilterObject* filter;
 };
 
-class BSGO_Basic {
-    unsigned char unknown00[12];
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual int GetScriptData();
-    virtual ISceneNode* GetSceneNode();
-};
 
 struct TriggerCoreView {
     unsigned char unknown00[121];

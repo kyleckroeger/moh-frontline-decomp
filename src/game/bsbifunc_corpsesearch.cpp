@@ -113,14 +113,8 @@ struct AIDoodadView {
     CAIFilterView* filter;
 };
 
-class BSGO_Basic {
-    unsigned char unknown00[12];
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual int GetScriptData();
-    virtual ISceneNode* GetSceneNode();
-};
 
 struct TriggerCoreView {
     unsigned char unknown00[121];
@@ -155,9 +149,7 @@ int DoBuddyPlayerCheck(BSObject* object, int mode, int distance, int target, int
     return filter->object->IsObjectInLineOfSight((CAIFilterRealPosition&)position, distance, false) != 0;
 }
 
-__declspec(weak) ISceneNode* BSGO_Basic::GetSceneNode() {
-    return 0;
-}
+
 
 int DoCorpseSearch(BSObject* object, int, int, int, int* found, int* extra) {
     BSObject* script = GetScript(object->user->GetSceneNode()->GetAIDoodad()->filter->object->CheckFieldOfViewCorpse());

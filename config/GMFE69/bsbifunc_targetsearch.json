@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -85,7 +86,8 @@
     "MathFunRandomI64__Fxx": "0x80092dd4",
     "ShouldILeaveMMG__15CAIFilterObjectFP8BSObject": "0x8005a4d0",
     "Unregister__10BSScheduleFP8BSObject": "0x8003aa58",
-    "g_DistanceToTargetSchedule": "0x8019747c"
+    "g_DistanceToTargetSchedule": "0x8019747c",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -125,5 +127,8 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

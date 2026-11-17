@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -87,7 +88,8 @@
     "SetTarget__9CAIObjectFP9CAIObject": "0x8004d41c",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_pBuiltInFunctions": "0x8034e778",
-    "printf": "0x8013dc88"
+    "printf": "0x8013dc88",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -141,5 +143,8 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

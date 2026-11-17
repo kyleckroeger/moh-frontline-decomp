@@ -500,3 +500,12 @@ check), 32 no_compile (other member spellings: m_prev/m_head/m_tail, unknown00[2
   entries too). Units still with their own views: CVector3 84, CMatrix 46, ISceneNode 79,
   CPlayerObject 60, CScene 17, CCamera 10, CScreen 8. The no_compile ones need spelling rewrites,
   file by file.
+
+## BSGO_Basic (2026-11-17, overnight)
+
+`include/game/BSGO_Basic.h`: 12 bytes of data, then the table pointer (+0xc), with the five virtuals of
+__vt__10BSGO_Basic inline, as the original's weak copies (Destroy empty, the rest return 0).
+try_header: 3 kept, 18 lost (17 by new weak copies), 32 no_compile. **10 units moved** (verified,
+with weak-duplicate entries). The no_compile views use typed results
+(`GetProximityData()->leaf`), so the real result types of GetScriptData, GetProximityData and
+GetEmbeddedHitReactionInfo have to be recovered (from their users) before the rest can move.

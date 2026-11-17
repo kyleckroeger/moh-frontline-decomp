@@ -2906,3 +2906,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] include/game/CRenderBin.h; 18 units moved (verified); 32 no_compile (member spellings), 20 lost.
 - 2026-11-17 [W2.3] CColor: 14 more units on include/game/CColor.h; include/game/CAIFilterRealPosition.h: 20 units moved (verified).
 - 2026-11-17 [W2.3] CPlane +1, ISceneNode +2 units on the shared headers; CMatrix's 46 remaining views all need spelling rewrites.
+- 2026-11-17 [W2.3] include/game/BSGO_Basic.h; 10 units moved (verified). Result types of 3 virtuals still unknown (block 32 views).

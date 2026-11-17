@@ -232,14 +232,8 @@ struct TriggerObject_struct {
     TriggerCoreView* core;
 };
 
-class BSGO_Basic {
-    unsigned char unknown00[12];
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual void* GetScriptData();
-    virtual ISceneNode* GetSceneNode();
-};
 
 struct BSObjectView {
     unsigned char unknown00[8];

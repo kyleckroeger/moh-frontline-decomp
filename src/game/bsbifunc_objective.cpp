@@ -28,16 +28,8 @@ union BSValueView {
     float f;
 };
 
-class BSGO_Basic {
-    unsigned char unknown00[12];
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual void* GetScriptData();
-    virtual void* GetSceneNode();
-    virtual void* GetProximityData();
-    virtual void* GetEmbeddedHitReactionInfo();
-};
 
 struct BSObjectView {
     unsigned char unknown00[12];
@@ -77,9 +69,7 @@ void BIFunc_GetEmbeddedHitReactionInfo(int** stack, void*) {
     **stack = *(int*)&info;
 }
 
-__declspec(weak) void* BSGO_Basic::GetEmbeddedHitReactionInfo() {
-    return 0;
-}
+
 
 void BIFunc_GetEventSystemMemBlock(int** stack, void*) {
     BSValueView value;

@@ -35,7 +35,7 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -89,7 +89,8 @@
     "g_pBuiltInFunctions": "0x8034e778",
     "g_pBulletFactory": "0x8034e9e0",
     "g_pWeaponFactory": "0x8034e9e4",
-    "s_ClassInit__7CMatrix": "0x8034eab0"
+    "s_ClassInit__7CMatrix": "0x8034eab0",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -135,5 +136,8 @@
       "size": 8,
       "address": "0x8034f618"
     }
+  ],
+  "weak_duplicates": [
+    "GetSceneNode__10BSGO_BasicFv"
   ]
 }

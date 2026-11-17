@@ -138,16 +138,8 @@ public:
 
 extern CScene g_scene;
 
-class BSGO_Basic {
-    int m_field0;
-    int m_field4;
-    int m_field8;
+#include "game/BSGO_Basic.h"
 
-public:
-    virtual void Destroy();
-    virtual void* GetScriptData();
-    virtual ISceneNode* GetSceneNode();
-};
 
 /* inferred: the filter's object (+12) and its script object (+12) */
 struct AIFilterOwnerView {
