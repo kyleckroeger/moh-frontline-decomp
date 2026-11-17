@@ -20,9 +20,8 @@ class CRect;
 
 
 /* 32-byte bins (CRenderBinData and the table pointer); non-virtual views */
-class CRenderBin {
-    unsigned char data[32];
-};
+#include "game/CRenderBin.h"
+
 
 class CDbgStatsRenderBin : public CRenderBin {};
 class CProfHistRenderBin : public CRenderBin {};

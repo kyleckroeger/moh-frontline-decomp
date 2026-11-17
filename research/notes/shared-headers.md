@@ -476,3 +476,14 @@ Slerp, two Rotate, SetFromMatrix, GetMatrix, EndianSwap). The original has no we
 try_header: 35 kept, 3 lost. **35 units moved** (research/tools/move_header.py, all verified).
 Lost: anim_obj (a stripped literal's number moves), bsbifunc_dump and bsbifunc_movewalk (code bytes
 differ: their views copy the quaternion as doubles).
+
+## CRenderBin (2026-11-17, overnight)
+
+`include/game/CRenderBin.h`: CRenderBinData (7 words, named as compartment_renderbin.cpp names them)
+and CRenderBin with its 5 virtuals inline, as the original's weak copies (Init clears +0x0c/+0x10 and
+re-inits the children; IsUsed tests +0x10; Render returns 0; Link and the destructor are empty).
+try_header: 18 kept, 20 lost (19 by new weak copies, which weak-duplicate entries alone don't fix:
+ConfigGC changes its data layout, and compartment_bins/_bindtors still fail the function-set
+check), 32 no_compile (other member spellings: m_prev/m_head/m_tail, unknown00[28]).
+**18 units moved** (verified). Next: rename the other spellings in the no_compile units
+(mechanical), then the weak-copy units.

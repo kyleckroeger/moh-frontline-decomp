@@ -276,12 +276,8 @@ LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileCon
 const char* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
 /* inferred: 28 bytes of members, then the virtual table pointer (destructor in the first slot) */
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-    virtual ~CRenderBin();
-};
 
 struct _spritepolyvert {
     float u;

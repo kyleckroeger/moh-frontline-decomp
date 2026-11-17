@@ -43,12 +43,8 @@ struct ViewportView {
 
 extern ViewportView g_viewport;
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-};
 
 class CFont : public CRenderBin {
 public:

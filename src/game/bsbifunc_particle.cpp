@@ -195,16 +195,8 @@ class CColor;
 class ShapeFile;
 class CDrawContext;
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual void Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual int IsUsed();
-};
 
 class CParticleSystem : public CRenderBin {
 public:

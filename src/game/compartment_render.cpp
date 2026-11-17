@@ -142,15 +142,8 @@ struct CPTDrawNode {
     CPTDisplayList* m_list;
 };
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-};
 
 class CCPTMatBin : public CRenderBin {
 public:

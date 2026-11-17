@@ -66,16 +66,8 @@ public:
 
 static bool IsBoxVisible(const CVolBox&, CDrawContext&);
 
-class CRenderBin {
-    unsigned char unknown00[28]; /* members before the table pointer */
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
 
 class CParticleSystem : public CRenderBin {
 public:

@@ -105,15 +105,8 @@ struct MSHLightingView {
     CVector3 GetLightPos(int i) const { return *(const CVector3*)m_pos[i]; }
 };
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-};
 
 class CMSHMatBin : public CRenderBin {
 public:

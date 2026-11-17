@@ -64,12 +64,8 @@ PauseResourceView* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsSt
 
 /* inferred view: 28 bytes of members, then the table with the virtual
    destructor in its first slot */
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-    virtual ~CRenderBin();
-};
 
 class CFont : public CRenderBin {
 public:

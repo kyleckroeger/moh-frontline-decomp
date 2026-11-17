@@ -34,11 +34,8 @@ enum TLTResourceID {};
 LevelFileContentsStruct_* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
 const char* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
-    virtual ~CRenderBin();
-};
+#include "game/CRenderBin.h"
+
 
 class CFont : public CRenderBin {
 public:

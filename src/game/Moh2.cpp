@@ -496,11 +496,8 @@ class CProjectileBullet { public: static void InitClass(CRenderList*, CScreen*);
 class CPlayerWeaponObject { public: static void InitClass(); };
 class CParticleSystem { public: static void InitClass(CRenderList*, CScreen*, CScene*); };
 class CLight { public: static void InitClass(CScene*); };
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
-    virtual ~CRenderBin();
-};
+#include "game/CRenderBin.h"
+
 class CFont : public CRenderBin {
 public:
     static void InitClass(CRenderList*, CScreen*);

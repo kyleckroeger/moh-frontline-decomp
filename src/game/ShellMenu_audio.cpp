@@ -14,11 +14,8 @@ extern "C" void* memcpy(void*, const void*, unsigned long);
 
 // CRenderBin view as in UserInterface.cpp: 28 bytes of members, then the
 // virtual table pointer with the virtual destructor first.
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
-    virtual ~CRenderBin();
-};
+#include "game/CRenderBin.h"
+
 
 class CSprite : public CRenderBin {
 public:

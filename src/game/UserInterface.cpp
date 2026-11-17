@@ -8,12 +8,8 @@
 // cleared, 4.5 timers; members inferred from offsets, constants from the
 // file's .sdata2 pool), and the static initialiser builds the four team
 // colours.
-class CRenderBin {
-public:
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-    virtual ~CRenderBin();
-};
 
 class CSprite : public CRenderBin {
 public:

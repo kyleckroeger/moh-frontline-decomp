@@ -266,16 +266,8 @@ struct TriggerObject_struct;
 CThrownObject* CreateSpecialThrownObject(TriggerObject_struct*, int, int);
 float MathFunRandomReal(float, float);
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual void Render();
-    virtual void Init();
-    virtual void Link();
-    virtual int IsUsed();
-};
 
 class CParticleSystem : public CRenderBin {
 public:

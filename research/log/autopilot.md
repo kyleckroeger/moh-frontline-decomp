@@ -2903,3 +2903,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] IVolume.h no longer includes CVector3.h (no_compile 40 -> 15); research/tools/move_header.py moves units onto a header, adding weak duplicates for its inline copies: 10 units on IVolume.h (verified). Blockers listed in research/notes/shared-headers.md.
 - 2026-11-17 [W2.3] IVolume.h: 4 more units moved with strip_unused on (14 total).
 - 2026-11-17 [W2.3] include/game/CQuaternion.h; 35 of 38 views moved (verified); lost: anim_obj, bsbifunc_dump, bsbifunc_movewalk.
+- 2026-11-17 [W2.3] include/game/CRenderBin.h; 18 units moved (verified); 32 no_compile (member spellings), 20 lost.

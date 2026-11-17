@@ -116,13 +116,8 @@ struct SFontChar {
     float m_y;
 };
 
-class CRenderBin {
-    unsigned char unknown00[28];
+#include "game/CRenderBin.h"
 
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-};
 
 class CFont : public CRenderBin {
 public:
