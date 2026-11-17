@@ -516,7 +516,7 @@
     "src/game/box_create.cpp": "92615ee6c4898dfb6ddb9be6e179c77869e57c0339483a538b2b5a72890c81f4",
     "src/game/box_dispatch.cpp": "88b78a2489699abfeb7d2ab98bdd34f4494c87c1b5c362c518a6782ff954a113",
     "src/game/box_dispatch2.cpp": "ea7ee22310f09382f99356fd4b007f1e609f1b0110510885eb2d42c1036e4a7a",
-    "src/game/box_dtor.cpp": "0592ef20f8049936589f7f89becbb8648ead4a55413559089337bc9d7b2aed7e",
+    "src/game/box_dtor.cpp": "169e95abf24477cb9285ff0d5ebdf5aeb6628f86f9c4b8b256a58258b6801f64",
     "src/game/box_ivolume.cpp": "cd2b3495081ad7e913e5f7ec13ff27862782f509f50064bdb8818885c41d75c5",
     "src/game/box_line.cpp": "dc717c9bf025091d3a0e0f1823862bd7cda8b810f2d2064e5f2ace1765b749bc",
     "src/game/box_linedist.cpp": "bb82786ed81ec3ca3dab7c5098c948b3b035b00fb7f4c24ece1c0bbcfd34c3ae",
@@ -1727,7 +1727,7 @@
     "config/GMFE69/box_create.json": "42b2f1cf3f7487d98e67e88223d3494948b3b3d3c5cdcf4092a023d8c8345fc1",
     "config/GMFE69/box_dispatch.json": "bab2a62639f51aace1ec7550302fd789046f2334df2989182b61fc964067623a",
     "config/GMFE69/box_dispatch2.json": "dd0811e433b9da5b2aaaaf172472fa50c094d0a720f17eb10d6606721b00bbea",
-    "config/GMFE69/box_dtor.json": "20aeae0622270ef06f83c485f6342e7f2718b28b2ceb6d8fbe72dc6054f88bb6",
+    "config/GMFE69/box_dtor.json": "f606affda1437c0f07134abde740caf6dbadf3275c986f7c01d13e81f91c8dc3",
     "config/GMFE69/box_ivolume.json": "6b4fda804f966562b493432a14616bc50e974c74fd83bc11334b5968a5444c5b",
     "config/GMFE69/box_line.json": "7d7f402886b131f335f8660d936e5ae390183b5f867c9271efed3910d2f649ea",
     "config/GMFE69/box_linedist.json": "581504593e1ce50affc575939f7d2a4e6fb9d0028ecf8be6b540a7167d646920",
@@ -30668,7 +30668,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -30676,10 +30676,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": true,
+      "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "5a6e744958525f2452949dd3904cb8184a7ebcd41b96dd7f3209a373d45a48d2",
-      "linked_sha256": "454e25744a33c81a38796d27ae259445c3b42338ac3ef980fa7cfd12260ed587"
+      "object_sha256": "deb8d0101c9408f4e7da702c2fe52a251e4ee0118dc75f6635029bb9d3dbcaeb",
+      "linked_sha256": "64bdecba5b7094ef6f41bac6560f6447e05b1d27a28b00812022b6a85e3b4be6"
     },
     {
       "id": "capsule_dtor",
