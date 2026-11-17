@@ -235,3 +235,21 @@ writing ARAM), or whether the reads complete (callback) without moving data (ARQ
 request's type or addresses). Next checks: read back ARAM 0x800000 again just before the first frame
 read; probe ARInit's callers (animdb.cpp, snddrv.c) for a second ARInit; find what fills memory with
 0x486e486e.
+
+**08:45: ARAM is intact; the ARQ read is what fails.** frame_read_probe.cpp now also reads ARAM
+directly (ARStartDMA type 1 + ARGetDMAStatus poll + DCInvalidateRange) at the first frame reads:
+0x800000, 0x804000 and 0xaf4e20 all return real animation data (0xaf4e20: 18000300 9eff0300 ...).
+ardma_probe.cpp shows the game's own read reaching ARStartDMA with the right arguments (main memory =
+the g_frame_cache slot, ARAM 0xaf4e20, 192 bytes, from ARQ). Yet DMAFrame returns with the slot
+holding 0x486e486e, and invalidating the cache doesn't change it. So DMAFrame's wait
+(`while (g_bDMAToMRAM)`, cleared by DMAFromARAMCallback through ARQ) ends before the transfer lands,
+or the transfer's completion is routed elsewhere. The slot then holds memory never written (the pure
+image's g_frame_cache is not zeroed? 0x486e486e looks like a fill pattern).
+Next, in order: (1) log, in DMAFrame, the slot's first word again a few hundred ticks after the wait
+ends (does the data land late?); (2) check that g_frame_cache's .bss is inside a range __start
+clears; (3) compare the AR DMA callback registration order (ARQInit's ARRegisterDMACallback vs the
+sound driver's ARInit(0, 0) in snddrv.c) in both images. Fixing this should let route 1_2 play
+through: with the morph count patched the pure image already does.
+(2) checked: __start's first .bss range (0x801d8ce0..0x80458d80) covers g_frame_cache, so the
+0x486e486e in it was written after boot. Find that writer with a gdbpeek.ps1 write watchpoint on a
+frame-cache slot (e.g. the first read's, g_frame_cache + 0x220 in pure_l12fr.elf).

@@ -18,6 +18,17 @@ void DMAFromARAMCallback(unsigned long);
 static int s_reports;
 static unsigned char s_copy[0x800] __attribute__((aligned(32)));
 extern "C" unsigned char* AnimFileGetFrame(FrameFile_t* file, int frame) {
+    static int s_first;
+    if (s_first < 3) {
+        static unsigned long back[8] __attribute__((aligned(32)));
+        s_first++;
+        DCInvalidateRange(back, 32);
+        ARStartDMA(1, (unsigned long)back, s_first == 1 ? 0x800000 : s_first == 2 ? 0x804000 : 0xaf4e20, 32);
+        while (ARGetDMAStatus()) {
+        }
+        DCInvalidateRange(back, 32);
+        OSReport("FRBACK direct %08x %08x %08x %08x\n", back[0], back[1], back[2], back[3]);
+    }
     unsigned long src = file->frames[frame];
     int length = file->frames[frame + 1] - src;
     unsigned long aligned = src & ~31;

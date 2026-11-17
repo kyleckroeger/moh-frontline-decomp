@@ -71,45 +71,48 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 
 (none yet)
 
-## Morning summary (written ~06:00; the permuter run on death_cb continues until ~08:30)
+## Morning summary (final, 08:50)
+
+**W1 pure-source image: the level-1_2 failure is found and nearly explained.**
+- Dolphin 2609's GDB stub works. research/tools/dolphin/gdbpeek.ps1 (Windows side; the firewall blocks
+  WSL) attaches, runs to a log line, and dumps registers and stack, or logs every hit of a write
+  watchpoint. This answers last night's question 1 without you.
+- The runaway read is not the subtitle code. It's DMMorphBlendDisplayLists (the speaking soldier's
+  face morph). The morph object's count is overwritten every update by LLCharObjCompositeMorph
+  decoding garbage frame data (target index 63 writes weights[64] = count).
+- **With the count restored by a probe, the pure image plays route 1_2 for the whole 400 s run**
+  (trace update 106290) with no other failure.
+- The garbage comes from the animation frame reads from ARAM. The upload to ARAM is identical to
+  the original's and lands (direct readbacks deep in it return real data). The game's ARQ reads reach
+  ARStartDMA with the right arguments, but the cache slot ends up holding 0x486e486e, written after
+  boot by something not yet identified. Next steps are in research/notes/pure-link.md: a watchpoint on
+  a frame-cache slot, then the ARQ/AR callback order.
+- Probes: research/probes/{morph63,aram_upload,aram_alloc,sndaram,ardma,frame_read}_probe.cpp.
 
 **W2.1 SDK struct views: done.** All 17 game/EA files that declared their own OS, DVD, PAD, CARD, GX,
-ARQ or AX structs now take them from the SDK headers, with bytes unchanged. The game's SDK headers are
-include/dolsdk2001. Its OSThread gained the `error` field (784 bytes like the original's threads),
-its headers gained C++ guards and a GAME_SDK_NO_LIBC opt-out, and `GameAddr`
-(include/game/GameAddr.h) types the pointer-to-integer DMA arguments for the port.
+ARQ or AX structs now take them from the SDK headers (include/dolsdk2001), with bytes unchanged.
 research/notes/sdk-views.md.
 
 **W2.2 64-bit hazard inventory: done, in the port repo** (moh-frontline-pc 501317b,
 tools/hazards64.py, pc/hazards64.tsv: 589 candidate rows, with tests).
 
 **W2.3 shared headers:** new IVolume.h (18 units), CQuaternion.h (35), CRenderBin.h (21),
-CAIFilterRealPosition.h (20), BSGO_Basic.h (17), CVolSphere.h (6), plus CColor +14, ISceneNode +2,
-CPlayerObject +1 and CPlane +1: about 135 units moved, each verified. research/tools/move_header.py
-does the move with weak-duplicate entries. What blocks the rest is in research/notes/shared-headers.md
-(mostly member-name spellings, and result types such as EClsnState).
+CAIFilterRealPosition.h (20), BSGO_Basic.h (17), CLine3.h (7), CVolSphere.h (6), CVolCapsule.h (2),
+CVolFiber.h (2), plus CColor +14, ISceneNode +2, CPlayerObject +1 and CPlane +1: about 150 units
+moved, each verified. The rest are mostly blocked by member-name spellings and result types (int vs
+bool); research/notes/shared-headers.md.
 
-**W1 pure-source image:** research/tools/pure_link.py links every unit, data file (with the vtable
-stopgap) and draft at a fresh layout with no original bytes. **It boots like the original** (no
-exception, the intro movies), and on route 1_2 its trace matches the original's into level 1_2.
-Then a runaway read starts in the level's first subtitle pop-up (pumhandler/popup draw path). Heap,
-allocator, strlen, statics, data and layout are all ruled out with probes. Details and next steps:
-research/notes/pure-link.md. Tools: entry_trace.py, boot_probe.py, dolphin_direct.py,
-pure_data_check.py, research/probes/heap_check_probe.cpp. Data fixes it needed: the HUD vertex
-arrays (research/data/init/UserInterface.cpp), the compartment draft's statics, the 25-vtable
-stopgap (research/data_stopgap/), the merged file statics.
+**Drafts:** ShellInit's vertex colour fixed (0x80808080) and proven again; the compartment draft's
+statics fixed and proven again.
 
-**Drafts:** the ShellInit draft had a wrong vertex colour (0xffffffff, original 0x80808080); fixed
-and proven again. Compartment draft statics fixed and proven again.
-
-**W3.1 near-misses:** CPartBin::Link and DrawNode gave nothing new. Harnesses for the automated
-permuter were set up; only death_cb's runs (scratch/perm/dcb2, result after ~08:30).
+**W3.1 near-misses:** nothing new. The death_cb permuter ran 135k iterations without beating its base
+score (120). The DrawNode and CPartBin::Link harnesses don't compile (autoperm's reference-to-pointer
+rewrite breaks recursive calls).
 
 ## Questions for the morning
 
-1. The pure image's level-1_2 failure needs an interactive Dolphin debugger session (break on the
-   first EFB read at 0x88800000, read LR and the stack). Can you run one, or should the next session
-   build a scripted breakpoint (Dolphin's GDB stub)?
-2. Header moves are now mostly blocked by member-name spellings (the same field named differently per
-   file). A rename tool would move many more units, but it rewrites a lot of matched source. OK to
-   go ahead in a later session?
+1. Header moves are now mostly blocked by member-name spellings (the same field named differently
+   per file). A rename tool would move many more units, but it rewrites a lot of matched source. OK
+   to go ahead in a later session?
+2. W1 is close: one more watchpoint session should find what writes 0x486e486e into the animation
+   frame cache. Continue W1 next session, or switch to the port as planned?

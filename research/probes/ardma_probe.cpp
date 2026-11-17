@@ -23,6 +23,11 @@ extern "C" void ARStartDMA(u32 type, u32 mainmem_addr, u32 aram_addr, u32 length
         s_reports++;
         OSReport("ARDMA write mram %08x aram %08x len %d lr %08x\n", mainmem_addr, aram_addr, length, lr);
     }
+    static int s_reads;
+    if (type == 1 && mainmem_addr >= 0x80446090 && mainmem_addr < 0x80446090 + 0xc800 && s_reads < 10) {
+        s_reads++;
+        OSReport("ARDMA read mram %08x aram %08x len %d lr %08x\n", mainmem_addr, aram_addr, length, lr);
+    }
     BOOL old = OSDisableInterrupts();
     __DSPRegs[16] = (__DSPRegs[16] & 0xFFFFFC00 | (mainmem_addr >> 0x10));
     __DSPRegs[17] = (__DSPRegs[17] & 0xFFFF001F | ((u16)mainmem_addr));
