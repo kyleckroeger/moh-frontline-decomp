@@ -24,12 +24,8 @@ public:
 #include "game/IVolume.h"
 
 
-class CVolFiber : public IVolume {
-public:
-    virtual ~CVolFiber();
+#include "game/CVolFiber.h"
 
-    unsigned char unknown04[76];
-} __attribute__((aligned(8)));
 
 class MechanicCollisionChecker : public dwi::IVisitor<ISceneNode> {
 public:

@@ -1,0 +1,21 @@
+unit	source	status	detail
+AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\AIFilter_collisiondist.cpp # ------------------------------------------
+AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\AIFilter_linechecks.cpp # ---------------------------------------
+AIFilter_mechchecker_dtor	scratch/try/AIFilter_mechchecker_dtor/src/AIFilter_mechchecker_dtor.cpp	kept	
+AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\AIFilter_visit.cpp # ----------------------------------
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\anim_obj.cpp # ----------------------------
+animated_volume	scratch/try/animated_volume/src/animated_volume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\animated_volume.cpp # -----------------------------------
+box_dispatch2	scratch/try/box_dispatch2/src/box_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\box_dispatch2.cpp # ---------------------------------
+capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch.cpp # ------------------------------------
+capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch2.cpp # -------------------------------------
+capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_plane.cpp # ---------------------------------
+cdbgeom_fiber	scratch/try/cdbgeom_fiber/src/cdbgeom_fiber.cpp	kept	
+cdbobject_line	scratch/try/cdbobject_line/src/cdbobject_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_line.cpp # ----------------------------------
+fiber	scratch/try/fiber/src/fiber.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\fiber.cpp # -------------------------
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\impact_dtor.cpp # -------------------------------
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\player_beginupdate.cpp # --------------------------------------
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\player_commit.cpp # ---------------------------------
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
+sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\sphere.cpp # --------------------------
+thrownbullet	scratch/try/thrownbullet/src/thrownbullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\thrownbullet.cpp # --------------------------------
+weapon	scratch/try/weapon/src/weapon.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\weapon.cpp # --------------------------

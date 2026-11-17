@@ -534,3 +534,10 @@ their valid flags, 0x40 bytes aligned 16. The constructor, SetSE, SetSD and the 
 inline-only. try_header: 7 kept, **7 moved** (AIFilter_visit, anim_obj, capsule_plane,
 cdbgeom_volbox_line, cdbobject_fastvec_frame, impact_dtor, weapon). 27 no_compile: their own CVector3
 views (d.v[i]) or other member spellings (m_value30, m_flag38).
+
+## CVolCapsule and CVolFiber (2026-11-17, overnight)
+
+`include/game/CVolCapsule.h` and `include/game/CVolFiber.h`: IVolume subclasses with every member out
+of line (capsule.cpp, fiber.cpp), the destructor plus the 17 slots in __vt__ order (IVolume's 16, then
+TestCollision(const CCSGVolume&)). Members: capsule radius at +0xc and axis CLine3 at +0x10; fiber
+CLine3 at +0x10. 2 units moved each; 18 no_compile each (own IVolume/CVector3 views, other spellings).

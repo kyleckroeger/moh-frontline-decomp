@@ -1,0 +1,22 @@
+unit	source	status	detail
+capsule_capsule	scratch/try/capsule_capsule/src/capsule_capsule.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_capsule.cpp # -----------------------------------
+capsule_create	scratch/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_create.cpp # ----------------------------------
+capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch.cpp # ------------------------------------
+capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch2.cpp # -------------------------------------
+capsule_dtor	scratch/try/capsule_dtor/src/capsule_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dtor.cpp # --------------------------------
+capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_plane.cpp # ---------------------------------
+cdbgeom	scratch/try/cdbgeom/src/cdbgeom.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbgeom.cpp # ---------------------------
+cdbgeom_fiber	scratch/try/cdbgeom_fiber/src/cdbgeom_fiber.cpp	kept	
+cdbgeom_volbox	scratch/try/cdbgeom_volbox/src/cdbgeom_volbox.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbgeom_volbox.cpp # ----------------------------------
+cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\cdbobject_intersect.cpp # ---------------------------------------
+cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_leaf.cpp # ----------------------------------
+cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_trigroups.cpp # ---------------------------------------
+fiber	scratch/try/fiber/src/fiber.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\fiber.cpp # -------------------------
+player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\player_begincrouch.cpp # --------------------------------------
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\player_beginupdate.cpp # --------------------------------------
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\player_commit.cpp # ---------------------------------
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	lost	Unexpected compiler function set
+player_dtor	scratch/try/player_dtor/src/player_dtor.cpp	kept	
+player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_updateai.cpp # -----------------------------------
+player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CLine3.h #    From: ..\src\player_vec_sub.cpp # ----------------------------------
+sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\sphere.cpp # --------------------------

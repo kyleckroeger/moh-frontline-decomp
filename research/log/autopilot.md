@@ -2916,3 +2916,4 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] CRenderBin.h: 3 more units (21) once their own CRenderBinData views are dropped.
 - 2026-11-17 [W2.3] CVolSphere.h: 2 more units (6) now that they are on IVolume.h.
 - 2026-11-17 [W2.3] include/game/CLine3.h; 7 units moved (verified).
+- 2026-11-17 [W2.3] include/game/CVolCapsule.h and CVolFiber.h; 2 units moved each (verified).

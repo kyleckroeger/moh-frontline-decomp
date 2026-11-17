@@ -352,7 +352,7 @@
     "src/game/AIFilter_collisiondist.cpp": "38a752252192911eedc61a30a51b4b8c6cb0ae7438fc8007b0d7208fd6a3cce0",
     "src/game/AIFilter_global.cpp": "36e963a6e4c7b9b3f2aeaeb6a85c5ac5c551715432472f4c8ed342528dccc6a7",
     "src/game/AIFilter_linechecks.cpp": "37fcd81342338d7b0b02e580178199cda18a11248da10ab2624efa1abb435faa",
-    "src/game/AIFilter_mechchecker_dtor.cpp": "0427139eb1d5d5324f9c7e57441fbee22248cbb63e169fe26941562ab5fd1ea5",
+    "src/game/AIFilter_mechchecker_dtor.cpp": "a5635a60603400b388c0a0f3e50f9cb0c90f171ea45d85cc588359cab1202bfc",
     "src/game/AIFilter_player.cpp": "2677f7fcd0a590da370b8bfcca549095eca38e0f0e20d809a4a51c6a562274a8",
     "src/game/AIFilter_player_ctor.cpp": "32c8ce1393a6de4cc1cb7fe3a76f7482738fce5c742214ac317928b2594aaeb3",
     "src/game/AIFilter_player_update.cpp": "e252a58004e4bbacdb0cf31a1df3f765facb7ddecbf19a60a7cd41df4894b306",
@@ -638,7 +638,7 @@
     "src/game/capsule_dtor.cpp": "80a5ac2eb4d0f76042bf47f6d3470b29e0f50bc3659f3c78cbd5facbbe18a8bb",
     "src/game/capsule_plane.cpp": "f753accbc023413497ac4f465c324c8a138d8ea089a7e16d6cd9bd9fe8504a3a",
     "src/game/cdbgeom.cpp": "425eb2c8349cfd7689037aaf961eac048c7d0a2b13768dc3e2262375fea37b59",
-    "src/game/cdbgeom_fiber.cpp": "510ef02e8a34277e1f77ad5d1798c2fe55aa72d9d93ba18b7047ee352d1510d3",
+    "src/game/cdbgeom_fiber.cpp": "9292337356917370061d36f256ad6d6b49a29f0f6e46f9ec0526a61e5c0f1aa7",
     "src/game/cdbgeom_sphere.cpp": "f1969aaacd439289183accacb07441ceccf8e585708fdb75be52963c9df5af3b",
     "src/game/cdbgeom_triangle_ctor.cpp": "18e8165e2a434a6e6d7f2f4a16fbbaa8425bbd0164ca944aad5e8252ecb75483",
     "src/game/cdbgeom_triangle_line.cpp": "3bbcfc5d88241719e063a533710963350a0737f495120b180acdf86afbbdb77b",
@@ -808,7 +808,7 @@
     "src/game/player_ctor.cpp": "c9e93af403149ab3bcbb7449d9556c76ec663e4bc3497ac45fbc345633f9b8fe",
     "src/game/player_death.cpp": "8985853d1f3e97e14dcc4910b1922bc71a4d57310ae4f72fbd38579f073869d9",
     "src/game/player_draw.cpp": "a3675734db2d7007a5cf11f651cb8dde6ab67647e00ad97bcce79a850a8d3007",
-    "src/game/player_dtor.cpp": "da010b3db6d3c04e61cb9fbca5c7ecc4e154975a4e57a41cc89e3f3c90922dab",
+    "src/game/player_dtor.cpp": "1d6482403436cf9081157a7546a039fba60ea355d6e5f1eb1c03f27f594d48d4",
     "src/game/player_fastvec.cpp": "18c9ffcb4c51349a36ccaa69ce142c8c7a11b8bf8cc10fd208ed34c595ecfc7b",
     "src/game/player_fov.cpp": "6a554d08dc2153a9b1310bc84de86455407b63787775f937a73cb38b8b23ffcf",
     "src/game/player_health.cpp": "6f2518b56a2992ae847fc7bd2115a3405fb3b66c04b38dd4550ccccacc822500",
@@ -1302,6 +1302,8 @@
     "include/game/CScene.h": "7cbf50f03acb5e0341eacd56fa49c425404d9b89345a4aaf022cd2297ab3b378",
     "include/game/CScreen.h": "081a035fc730c4da9a451e5c01c6ff38a9f5fbd8431951b5037d3986c474654a",
     "include/game/CVector3.h": "b8abb8cd983822edce705ab2f5ea099da8537ea8ea8e9dc5ab907a12d90099eb",
+    "include/game/CVolCapsule.h": "9d3b00f29a27fa49244333b0beff18ce7b0d028f0a2518f40658a2cda8dd846c",
+    "include/game/CVolFiber.h": "c84d76517529cb04b5fb251e4a92bf6fb602e0ede0ac49d7d02747a2594eff97",
     "include/game/CVolSphere.h": "6c1a82a1b215dadabbac65ad9f979540082603b55ba00f85bc36d6129fdd1350",
     "include/game/DwiContainers.h": "066615d38f3b5a70761f5d261237d733b49b435761cb7885b34078cf1e1b2116",
     "include/game/DwiHashMap.h": "360f72604080a4f1e2067658a7bae62626395deccfdc5cd6f0863ec892407cb2",
@@ -26678,8 +26680,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "a604c49d74db44a331d55514c254533da7f8bf8ea26691836bd8dfa896bd5823",
-      "linked_sha256": "21df6c70bed3d4659bfb9d959c64d398545c4db67e517823ff7e1d0e1220b7ed"
+      "object_sha256": "a210a6eabf7cd2053fdfa235e0f5866b85e8e16f45d0d57bd521faeccdc145bc",
+      "linked_sha256": "95617f62d144a93284df268e1ef3724a78fa093ec1dccfddf52d28516e2a9f9e"
     },
     {
       "id": "AISplinePath_segment",
@@ -31704,8 +31706,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "500af1792d4bcbabc3630e7ab8d4e7849c4c7afdf5768566174d5e703a653f72",
-      "linked_sha256": "798534b67aa71f1925edb286e18e675db05b6879247b8e94570e86f6322192f6"
+      "object_sha256": "0c149d130ddcc4011c455602f95b72d1fe9eecec084278529b77b6712d1255a3",
+      "linked_sha256": "c90169f1af39f518d540bb678d68535c7bb82e4680291075bcf25dfa1f6a0545"
     },
     {
       "id": "particlesystem_manager_dtor",
@@ -31782,8 +31784,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "c45bf943cf2b16b7622d1d9d0555aa55ea7e4e865dc68600a5bd5fff07a49457",
-      "linked_sha256": "3271158c7e357b46a415477ff3d5dd516d34b7fece0c09006732e143a72d9888"
+      "object_sha256": "ef341eab56ac48a44f126dcf190e99ce3d1d523bf13ea2f80448af6e5ce7f517",
+      "linked_sha256": "293930b29c8e55e6ad5f36fc1e437d76e82ff1f987f9e68180eda6d233bbdeac"
     },
     {
       "id": "player_ctor",

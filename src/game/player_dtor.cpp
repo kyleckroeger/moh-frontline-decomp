@@ -50,12 +50,8 @@ public:
     unsigned char unknown04[76];
 } __attribute__((aligned(8)));
 
-class CVolCapsule {
-public:
-    virtual ~CVolCapsule();
+#include "game/CVolCapsule.h"
 
-    unsigned char unknown04[76];
-} __attribute__((aligned(8)));
 
 class CHearingVolume {
 public:

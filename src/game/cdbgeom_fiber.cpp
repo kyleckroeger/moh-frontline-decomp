@@ -36,14 +36,11 @@ class CCSGVolume : public IVolume {};
 #include "game/CVolSphere.h"
 
 
-class CVolCapsule : public IVolume {
-public:
-};
+#include "game/CVolCapsule.h"
 
-class CVolFiber {
-public:
-    const CLine3& GetLine() const;
-};
+
+#include "game/CVolFiber.h"
+
 
 class CVolBox : public IVolume {
 public:
