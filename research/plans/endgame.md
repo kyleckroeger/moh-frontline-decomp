@@ -58,7 +58,8 @@ This is a GameCube image built only from this repo's source, with no original by
 in Dolphin and replays every route identically to the original. Once it does, any divergence
 the port shows is a port bug, never a decomp bug. That is the hand-off point.
 
-1. The 25 undefined vtables. **Decision needed (D1).** Recommended: emit them as a marked
+1. **DONE 2026-11-16:** source_link has 0 undefined (research/data_stopgap/vtables.cpp,
+   gen_vtable_stopgap.py). The 25 undefined vtables were **decision D1**. Recommended: emit them as a marked
    stopgap. A generated `research/data/vtables.cpp` would take every slot from
    `research/layout/vtables.tsv` (the relocations give each target exactly). It would be used
    only by `source_link.py` and never by verified units. Each line is deleted once its file

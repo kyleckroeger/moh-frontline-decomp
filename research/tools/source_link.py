@@ -10,6 +10,9 @@ Inputs, all compiled from source:
     units   build/reconstruction/units/*/compiled.o (run tools/reconstruct.py first)
     drafts  research/drafts/index.tsv, each compiled with its listed settings
     data    research/data/**/*.cpp, with the settings each names (check_data.py's rule)
+    stopgap research/data_stopgap/*.cpp: the generated vtables of files whose key-function
+            units can't own their table yet (gen_vtable_stopgap.py; endgame plan D1). When a
+            unit comes to own one, it is reported as a duplicate: drop it from vtables.txt.
 
 A draft may be an open version of a function some unit's fragment also contains, so in
 draft objects every symbol a unit defines is made weak (source_symbols.py counts these
@@ -87,7 +90,8 @@ def compile_all(jobs):
         if source not in seen:  # one draft file may hold several open functions
             seen.add(source)
             todo.append((source, settings, str(WORK / "drafts" / (Path(source).stem + ".o"))))
-    for f in sorted(glob.glob(str(ROOT / "research/data/**/*.cpp"), recursive=True)):
+    stopgap = sorted(glob.glob(str(ROOT / "research/data_stopgap/*.cpp")))
+    for f in sorted(glob.glob(str(ROOT / "research/data/**/*.cpp"), recursive=True)) + stopgap:
         rel = str(Path(f).relative_to(ROOT))
         m = re.search(r"//\s*settings:\s*(\S+)", Path(f).read_text())
         todo.append((rel, m.group(1) if m else DEFAULT_SETTINGS,
@@ -234,7 +238,7 @@ def main():
         raise SystemExit("no unit objects: run tools/reconstruct.py first")
     built, failed = compile_all(a.jobs)
     drafts = [o for s, _, o in built if s.startswith("research/drafts/")]
-    data = [o for s, _, o in built if s.startswith("research/data/")]
+    data = [o for s, _, o in built if s.startswith(("research/data/", "research/data_stopgap/"))]
     found = resolve(units, drafts, data)
     OUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUT, "w") as f:

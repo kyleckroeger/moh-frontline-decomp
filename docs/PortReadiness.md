@@ -402,6 +402,17 @@ and RTTI records): `capsule_dtor`, `cdbgeom_volbox` (key `TestCollision(const CV
 (base RTTI records as file duplicates). Re-run: **25 undefined, all vtables, 101 fragment-local, 45
 duplicate**, 0 small-data, 15 stripped (997 units, 94 drafts, 72 data files).
 
+2026-11-16 (endgame plan D1): the last 25 vtables come from a generated stopgap,
+`research/data_stopgap/vtables.cpp`. `research/tools/gen_vtable_stopgap.py` writes it from the
+original's relocations: each table, the RTTI records, base lists and names it reaches (file-local),
+and a self-check that compiles it and compares every word and target with the original. Only
+`source_link.py` reads it, and it earns no progress. A table leaves the list
+(`research/data_stopgap/vtables.txt`) when a unit comes to own it, which source_link reports as a
+duplicate. Re-run (999 units, 92 drafts, 73 data files + the stopgap): **0 undefined, 101
+fragment-local, 45 duplicate**, 0 small-data, 15 stripped. Next: a real link of these objects
+(fresh layout, GNU ld), which must resolve the fragment-local and duplicate symbols and provide the
+tables MWLD makes (`_rom_copy_info`, `_bss_init_info`, `_eti_init_info`).
+
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
 
