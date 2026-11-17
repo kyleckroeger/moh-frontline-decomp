@@ -633,7 +633,7 @@
     "src/game/capsule_create.cpp": "e5bdd4e3000036dbae68266376af90a76a315822e580f2da15283faec1d3127b",
     "src/game/capsule_dispatch.cpp": "6797cda02018a30483dbb8d1dd412f91c6c0110513b9a9b8b4c39d710ed6056a",
     "src/game/capsule_dispatch2.cpp": "11e72f277d2f9f76a1177319d991eff35084442fd4fd00356fba38ecc6ff3fe6",
-    "src/game/capsule_dtor.cpp": "333de2394a1a5f4a94e0c2449a2b496c5c6dbb635476bc68c75def6ae5ea903c",
+    "src/game/capsule_dtor.cpp": "80a5ac2eb4d0f76042bf47f6d3470b29e0f50bc3659f3c78cbd5facbbe18a8bb",
     "src/game/capsule_plane.cpp": "b8ebfdce53d53a384458ad6e988e52d08a312f4c9d08695cae33972be4ad6790",
     "src/game/cdbgeom.cpp": "425eb2c8349cfd7689037aaf961eac048c7d0a2b13768dc3e2262375fea37b59",
     "src/game/cdbgeom_fiber.cpp": "aec87b1ec98038c4914d03643a6192d0c80174b0724059f2ffba6e35f6c9b0e1",
@@ -1845,7 +1845,7 @@
     "config/GMFE69/capsule_create.json": "7ea379e9f4627abeeeaad959530bebd332ea158e9e77b0b66fe4115669d57173",
     "config/GMFE69/capsule_dispatch.json": "8d4ce50085d048b2ca15db431aa32afcb32d3faf6e2d9555a17e8dd9ed937f06",
     "config/GMFE69/capsule_dispatch2.json": "72621c946bdd4e654f8af699c5ac013a53cf88b06aa3493775bddc68a81c9721",
-    "config/GMFE69/capsule_dtor.json": "177319596dc914de76158b4bbcc4dc54c296e8d842f7a9c8c044e4d50ca55b8c",
+    "config/GMFE69/capsule_dtor.json": "74f15750d2c49651b6f42d8f82070b5461f6df3ca0633a4b9df30d45c5170ddf",
     "config/GMFE69/capsule_plane.json": "22b90bd5b04579e4362d26f09bb5160f6adf02a94dc92dc1ceec0c44fd11ed2a",
     "config/GMFE69/cdbgeom.json": "811bd80f6e8f5b69da5b564ec248e7847322fb641d9a707d3e11eb81b7d9605f",
     "config/GMFE69/cdbgeom_fiber.json": "97f71f075556256285b961bb4fe5f0bb63eb52faf1b931c41b859105611774f9",
@@ -30707,7 +30707,7 @@
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -30715,10 +30715,10 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": true,
+      "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "4dfb73888ad53eb07d72d0be697b6b15cd3ca733ea4374db1677099c147d5214",
-      "linked_sha256": "a5010e813e74ac6114b366a691153374f82fa123c010d33d3762dcfec75ef988"
+      "object_sha256": "de0d0eb04e95563dc6489b1c51422a2eaebaf25e31817e8cc5aa261c8e3d5bfa",
+      "linked_sha256": "ea4d2e7554342a3950544bffeafdfa08da64b062f8f13b80f02746eff8f5c8d1"
     },
     {
       "id": "cdbobject_dtor",

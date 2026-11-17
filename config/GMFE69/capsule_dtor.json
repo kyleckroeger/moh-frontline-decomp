@@ -23,7 +23,7 @@
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -32,9 +32,10 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": true,
+  "strip_unused": false,
   "source_root": "src/game",
   "sections": [
     {
@@ -47,17 +48,31 @@
       "name": "extab",
       "address": "0x8000de94",
       "size": 8,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 16
+      "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80014d50",
       "size": 12,
-      "type": 1,
-      "linked_offset": 0,
-      "linked_size": 24
+      "type": 1
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80177bc8",
+      "size": 12,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80189588",
+      "size": 92,
+      "type": 1
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034e130",
+      "size": 16,
+      "type": 1
     }
   ],
   "functions": [
@@ -69,9 +84,24 @@
     }
   ],
   "externals": {
+    "Create__11CVolCapsuleCFv": "0x800c7428",
+    "GetExtents__11CVolCapsuleCFR8CVector3R8CVector3": "0x800c555c",
+    "TestCollision__11CVolCapsuleCF8CVector3R10CCollisionb": "0x800c64e0",
+    "TestCollision__11CVolCapsuleCFRC10CCDBObjectR10CCollisionb": "0x800c693c",
+    "TestCollision__11CVolCapsuleCFRC10CCSGVolumeR10CCollisionb": "0x800c6824",
+    "TestCollision__11CVolCapsuleCFRC10CVolSphereR10CCollisionb": "0x800c6ed8",
+    "TestCollision__11CVolCapsuleCFRC11CVolCapsuleR10CCollisionb": "0x800c69b0",
+    "TestCollision__11CVolCapsuleCFRC12CWorldVolumeR10CCollisionb": "0x800c67b0",
+    "TestCollision__11CVolCapsuleCFRC15CAnimatedVolumeR10CCollisionb": "0x800c6898",
+    "TestCollision__11CVolCapsuleCFRC6CLine3R10CCollisionb": "0x800c5810",
+    "TestCollision__11CVolCapsuleCFRC6CPlaneR10CCollisionb": "0x800c569c",
+    "TestCollision__11CVolCapsuleCFRC7CVolBoxR10CCollisionb": "0x800c71ec",
+    "TestCollision__11CVolCapsuleCFRC7IVolumeR10CCollisionb": "0x800c7260",
+    "TestCollision__11CVolCapsuleCFRC9CTriangleR10CCollisionb": "0x800c5694",
+    "TestCollision__11CVolCapsuleCFRC9CVolFiberR10CCollisionb": "0x800c68c4",
+    "TestVisibility__11CVolCapsuleCFR12CDrawContext": "0x800c568c",
+    "TransformedCopy__11CVolCapsuleFRC7IVolumeRC7CMatrix": "0x800c72d4",
     "__dl__FPv": "0x8001ca2c",
-    "__dt__7IVolumeFv": "0x8001c078",
-    "__vt__11CVolCapsule": "0x80189594",
     "__vt__7IVolume": "0x80181e28"
   },
   "undefined_in_discarded_code": [],
@@ -82,11 +112,15 @@
   "sda_externals": [],
   "original_file": "capsule.cpp",
   "original_file_index": 7537,
-  "stripped_sections": [
-    ".data"
+  "pooled_sections": [
+    ".sdata2"
   ],
-  "weak_duplicates": [
-    "__dt__7IVolumeFv",
-    "__vt__7IVolume"
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 8,
+      "address": "0x80350b70"
+    }
   ]
 }
