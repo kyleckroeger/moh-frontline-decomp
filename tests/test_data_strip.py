@@ -67,6 +67,14 @@ class DataStripping(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'Cannot strip an object present in the target'):
             validate_units(self.original, [unit])
 
+    def test_a_weak_duplicate_may_be_stripped_from_inside_a_section(self):
+        unit = self.mutated('.sbss', ['__PADSpec'])
+        unit['weak_duplicates'] = ['__PADSpec']
+        try:
+            validate_units(self.original, [unit])
+        except ValueError as error:
+            self.assertNotIn('Cannot strip an object present in the target', str(error))
+
     def test_weak_binding_is_checked_before_linking(self):
         compiled = (self.build / 'units/ctype/compiled.o').read_bytes()
         unit = json.loads((CONFIG / 'ctype.json').read_text())

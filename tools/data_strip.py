@@ -14,7 +14,8 @@ as a class's virtual table, that it compiles but whose copy in the original
 came from another file, as MW's linker kept the first weak definition and
 dropped later ones. A listed virtual table may be compiled global (the unit
 defines a weak destructor out of line, which makes it the key function) as
-long as the original copy is weak. A unit may also list `file_duplicates`:
+long as the original copy is weak. A weak duplicate compiled between the unit's own
+data objects (a base class's weak table) may also be listed in `stripped_objects`. A unit may also list `file_duplicates`:
 functions or data objects of any binding it compiles (a static helper it inlines, or a global
 function of the same file that a recursive inline reaches) whose original copy
 another unit of the same original source file places. The compiled copy is
@@ -289,7 +290,9 @@ def section_chunks(obj, section, names, offsets=()):
     bounds = list(zip(starts, starts[1:] + [section["size"]]))
     stripped = [False] * len(bounds)
     for name in names:
-        found = [o for o in objects if o[2] == name]
+        # A weak duplicate's compiled copy was renamed when its references were
+        # redirected to the original copy.
+        found = [o for o in objects if o[2] in (name, name + DUPLICATE_SUFFIX)]
         if len(found) != 1:
             raise ValueError(f"Stripped object is not one compiler object: {name}")
         address, size, _ = found[0]

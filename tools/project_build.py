@@ -308,10 +308,15 @@ def validate_units(original, units):
         if stripped_objects and (not unit["strip_unused"] or not unit.get("original_file")):
             raise ValueError("Stripped data objects need a stripping, file-scoped unit")
         present = {c_identifier(n) for n in linkable}
+        # A weak duplicate (a base class's weak virtual table compiled between
+        # the file's own objects) is in the target by definition: its
+        # references go to the original copy, and the compiled copy is dropped.
+        weak_duplicates = set(unit.get("weak_duplicates", []))
         for name in stripped_objects:
             # Compiler-numbered literals (`@123`) are not source names; their
             # numbers can coincide with unrelated labels in the target.
-            if (name in present and not name.startswith("@")) or len(stripped_objects) != len(set(stripped_objects)):
+            if ((name in present and not name.startswith("@") and name not in weak_duplicates)
+                    or len(stripped_objects) != len(set(stripped_objects))):
                 raise ValueError(f"Cannot strip an object present in the target: {name}")
         # MW emits unreferenced declarations as undefined symbols. A target
         # symbol may share the name only as another source file's private one,

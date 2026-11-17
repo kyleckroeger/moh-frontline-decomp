@@ -389,6 +389,13 @@ Re-run (1,014 units, 94 drafts, 73 data files, all compiled): **35 undefined, 10
 Then world_volume.cpp merged whole (eight fragments, 0x800cbb80..0x800ccb7c, 27 functions,
 `__vt__12CWorldVolume`) with the first gap function, `RemoveAllSubVolumes`, stripped at link
 (`linker_stripped`): **34 undefined** (1,007 units, 94 drafts, 73 data files).
+Then light.cpp merged whole (eleven fragments, 0x80077720, 45 functions, owning `__vt__6CLight`,
+`__vt__18CPropertyAnimLight`, `__vt__19CInstancedAnimLight` and the weak `__vt__17CAnimLightManager`,
+plus the default light set and its volume, which moved out of `research/data/init/compartment.cpp`)
+with the gap function `DestroyAnimLightManager` (deletes a manager; stripped). The weak ISceneNode and
+IMovingSceneNode tables it compiles mid-`.data` are weak duplicates listed in `stripped_objects`
+(tools/project_build.py and data_strip.py now allow that): **30 undefined, 101 fragment-local**
+(997 units, 94 drafts, 72 data files).
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
