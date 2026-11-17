@@ -61,6 +61,8 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - ~04:30 More header moves (IVolume 18, BSGO_Basic 17, CPlayerObject +1). entry_trace fixed (read
   probes): the route 1_2 failure starts right after the level's first subtitle (sound.cpp's 'LUMS'
   chunk > DisplaySubtitle > PopUpMessage). See pure-link.md.
+- ~05:05 Narrowed further: the read is most likely MEM_allocalign walking a corrupt heap chain (probes on
+  strlen and DWI_allocalign). Lead for a heap-check probe recorded in pure-link.md.
 
 ## Questions for the morning
 

@@ -133,3 +133,13 @@ saw nothing before the flood, so DisplaySubtitle's text pointer is valid (it cal
 The reader is further on: pumhandler.cpp's subtitle queue (g_subtitle_queue.reserve(20) on first
 use, then the line splitting) or the text draw. Next: a probe replacing DWI_allocalign or reporting
 g_subtitle_queue after reserve, or Dolphin's memory view at that point.
+
+**05:05: the best lead so far.** A probe replacing DWI_allocalign (memory.cpp's body, reporting the
+subtitle queue's block and any block outside main memory after MEM_allocalign returns) printed
+nothing before the flood, although DisplaySubtitle had been entered and its first call reserves the
+queue through DWI_allocalign ("Subtitle Queue"). So the runaway read most likely happens inside
+MEM_allocalign: the REAL memory manager walking a heap chain that leads past main memory, that is,
+heap corruption earlier in the run. Candidates: an object allocated with one class size and written
+with another (a view smaller than the real class), or a latent overflow that the original layout
+hides. Next: a probe on MEM_allocalign/MEM_free that checks the heap chain (the REAL memory manager's
+block headers) after every call and reports the first bad link with its caller.
