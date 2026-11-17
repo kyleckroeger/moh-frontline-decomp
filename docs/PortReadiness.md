@@ -421,9 +421,10 @@ one original file's fragments hold merge into one object, and statics of the sam
 stay apart. 11 names only dead-stripped code reaches get a trap stub. The linker script builds
 `_rom_copy_info`, `_bss_init_info`, `_eti_init_info`, `_ctors`/`_dtors`, the SDA bases, the stack and
 the arena (`.text` is 0x18df0c bytes, against 0x1570c0 in the original, because of drafts, weak copies
-and dead-stripped code). **It doesn't boot yet.** Dolphin calls `__start` and nothing more is logged:
-no OSInit banner, no exception. The probes tried so far can't see code that runs before OSInit
-installs its handlers.
+and dead-stripped code). Later the same night it **boots through OSInit, `MEM_init`, `InitCORE` and the
+static constructors into the shell's first frame**, where a draft's static initializer with the
+wrong `.bss` layout leaves a render bin unconstructed. How the link works, each problem found and
+where it stops: research/notes/pure-link.md.
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.

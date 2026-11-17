@@ -17,6 +17,11 @@ original files work as one file would:
                     one copy stays, the others are made weak.
     drafts          a draft file holds a whole fragment; only the functions it is the draft
                     of (research/drafts/index.tsv) stay strong, the rest are weak.
+    anchors         MWCC reaches a file's statics through a section anchor (`...bss.0` +
+                    offset); those relocations are pointed at the static's own symbol first,
+                    so that merging the static moves them too.
+    SDA21           MWCC records R_PPC_EMB_SDA21 at the instruction's low halfword; GNU ld
+                    wants the instruction, so every such relocation moves back 2 bytes.
     stripped        names only dead-stripped code reaches: a local definition is made
                     global, else a trap stub stands in.
 
@@ -29,7 +34,7 @@ _SDA_BASE_/_SDA2_BASE_ (+0x8000), the 64 KB stack, the debugger stack and the ar
                                 build/pure/Moh2RelGC_pure.elf and build/pure/link.log
 Run tools/reconstruct.py first. Prints the link result and the decisions it made.
 """
-import argparse, collections, csv, json, re, shutil, subprocess, sys
+import argparse, collections, csv, json, re, shutil, struct, subprocess, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -78,8 +83,8 @@ SECTIONS
     LONG(ADDR(.sdata2)) LONG(ADDR(.sdata2)) LONG(SIZEOF(.sdata2))
     LONG(0) LONG(0) LONG(0)
     _bss_init_info = .;
-    LONG(ADDR(.bss)) LONG(SIZEOF(.bss))
-    LONG(ADDR(.sbss)) LONG(SIZEOF(.sbss))
+    LONG(_bss_start) LONG(_bss_end - _bss_start)
+    LONG(_sbss_start) LONG(_sbss_end - _sbss_start)
     LONG(ADDR(.sbss2)) LONG(SIZEOF(.sbss2))
     LONG(0) LONG(0)
   } :p_init
@@ -96,18 +101,29 @@ SECTIONS
   .text : { *(.text) } :p_text
   . = ALIGN(32);
   .ctors : { _ctors = .; *(.ctors) LONG(0) } :p_ctors
+  . = ALIGN(32);
   .dtors : { _dtors = .; *(.dtors) LONG(0) } :p_dtors
   . = ALIGN(32);
   .rodata : { *(.rodata) *(.rodata.*) } :p_rodata
   . = ALIGN(32);
   .data : { *(.data) *(.data.*) } :p_data
   . = ALIGN(32);
+  _bss_start = .;
+@BSS_MAPPED@
+  . = _bss_start + 0x1b9110;
   .bss : { *(.bss) *(COMMON) } :p_bss
+  _bss_end = .;
   . = ALIGN(32);
   .sdata : { *(.sdata) } :p_sdata
+  . = ALIGN(32);
+  _sbss_start = .;
+@SBSS_MAPPED@
+  . = _sbss_start + 0xe64;
   .sbss : { *(.sbss) *(.scommon) } :p_sbss
+  _sbss_end = .;
   . = ALIGN(32);
   .sdata2 : { *(.sdata2) } :p_sdata2
+  . = ALIGN(32);
   .sbss2 : { *(.sbss2) } :p_sbss2
   _SDA_BASE_ = ADDR(.sdata) + 0x8000;
   _SDA2_BASE_ = ADDR(.sdata2) + 0x8000;
@@ -165,49 +181,89 @@ def plan(units, drafts, data):
             for o in objs[1:]:
                 weaken[o].add(name)
             notes.append(f"duplicate {name}: kept {sl.label(objs[0])}, weakened {len(objs) - 1}")
-    # Fragment-local reach-ins: a static of one original file, reached from another fragment
-    # of that file. Every copy the file's fragments define gets one file-unique global name
-    # (name.FILE), weak except one (a data file's, else a unit's), so they merge into one
-    # object as in the original file; the reaching fragments refer to that name.
+    # One original file's writable statics. Its fragments (units, drafts, data files) each
+    # compile their own copy of a file static they use; in the original there is one. Every
+    # writable data object (.data/.sdata/.bss/.sbss) that several objects of one file define
+    # becomes one: renamed name.FILE (or kept as name when some copy is global), global, and
+    # weak in all but one copy (one with the original's size, then a data file's, a unit's,
+    # a draft's). Statics reached from another fragment with extern are
+    # renamed in the reaching objects too. Statics of the same name in other files stay apart.
     origin = original_files(units, drafts, data)
     rename = collections.defaultdict(dict)
+    WRITABLE = {".data", ".sdata", ".bss", ".sbss"}
+    defs = collections.defaultdict(list)      # (file, base name) -> [(object, real name, binding)]
+    for o in units + data + drafts:
+        elf = Elf32(Path(o).read_bytes())
+        for sym in elf.symbols():
+            if sym["type"] != 1 or not (0 < sym["section"] < 0xFF00) or not sym["name"] or sym["name"].startswith(("@", "...")):
+                continue
+            if elf.sections[sym["section"]]["name"] not in WRITABLE or sym["binding"] not in (0, 1, 2):
+                continue
+            if "$" in sym["name"]:
+                continue  # a function's own static: each function has its own
+            base = sym["name"]
+            defs[(origin.get(o), base)].append((o, sym["name"], sym["binding"]))
+    orig_sizes = collections.defaultdict(set)
+    for sym in Elf32((ROOT / "orig/GMFE69/Moh2RelGC.elf").read_bytes()).symbols():
+        if sym["type"] == 1 and sym["name"]:
+            orig_sizes[sym["name"]].add(sym["size"])
+    sizes = {}
+    for (f, base), copies in defs.items():
+        for o, real, _ in copies:
+            sym = next((x for x in symbols(o) if x["name"] == real and x["type"] == 1 and 0 < x["section"] < 0xFF00), None)
+            sizes[(o, real)] = sym["size"] if sym else -1
+    # The copy that stays: one with the original's size (a draft's view may be larger or smaller),
+    # then a data file's, then a unit's (verified code), then a draft's.
+    unify_rank = lambda d: (sizes.get((d[0], d[1])) not in orig_sizes.get(re.sub(r"\$\d+$", "", d[1]), {sizes.get((d[0], d[1]))}),
+                            0 if d[0] in data else 1 if d[0] in units else 2, d[0])
+    merged = {}
+    for (f, base), copies in defs.items():
+        if f is None or len({c[0] for c in copies}) < 2 or not any(c[2] == 0 for c in copies):
+            continue  # one copy, or all global (the duplicate rule above handles those)
+        global_copy = any(c[2] in (1, 2) for c in copies)
+        unique = base if global_copy else f"{base}.{f}"
+        copies.sort(key=unify_rank)
+        for i, (o, real, binding) in enumerate(copies):
+            if real != unique:
+                rename[o][real] = unique
+            globalize[o].add(unique)
+            weaken[o].discard(unique)
+            if i:
+                weaken[o].add(unique)
+        merged[(f, base)] = unique
+        notes.append(f"file static {base} ({f}): {len(copies)} copies merged, kept {sl.label(copies[0][0])}")
     for name, users in found["fragment_local"].items():
-        by_file = collections.defaultdict(set)
         for u in users:
-            by_file[origin.get(u)].add(u)
-        for f, us in by_file.items():
-            definers = []
-            for o in units + data + drafts:
-                if origin.get(o) != f:
-                    continue
-                for sym in symbols(o):
-                    if sym["binding"] == 0 and 0 < sym["section"] < 0xFF00 and sym["type"] in (1, 2) \
-                            and re.sub(r"\$\d+$", "", sym["name"]) == name:
-                        definers.append((o, sym["name"]))
-            if not definers:
-                # A draft's compile settings may come from a neighbouring file's config: when
-                # all definers belong to one file, that file's copy is meant.
+            f = origin.get(u)
+            unique = merged.get((f, name))
+            if unique is None:
+                cands = [(ff, uq) for (ff, bn), uq in merged.items() if bn == name]
+                if len(cands) == 1:
+                    unique = cands[0][1]
+            if unique is None:
+                # a static function or a single copy: make that copy global under name.FILE
                 every = [(o, sym["name"]) for o in units + data + drafts for sym in symbols(o)
                          if sym["binding"] == 0 and 0 < sym["section"] < 0xFF00 and sym["type"] in (1, 2)
-                         and re.sub(r"\$\d+$", "", sym["name"]) == name]
-                files = {origin.get(o) for o, _ in every}
-                if len(files) != 1:
-                    notes.append(f"fragment_local {name} ({f}): no definer in that file")
-                    continue
-                f = files.pop()
-                definers = every
-                notes.append(f"fragment_local {name}: reached from another file's object, defined in {f}")
-            definers.sort(key=lambda d: rank(d[0]))
-            unique = f"{name}.{f}"
-            for i, (o, real) in enumerate(definers):
-                rename[o][real] = unique
-                globalize[o].add(unique)
-                if i:
-                    weaken[o].add(unique)
-            for u in us:
+                         and re.sub(r"\$\d+$", "", sym["name"]) == name
+                         and origin.get(o) in (f, None)]
+                if not every:
+                    every = [(o, sym["name"]) for o in units + data + drafts for sym in symbols(o)
+                             if sym["binding"] == 0 and 0 < sym["section"] < 0xFF00 and sym["type"] in (1, 2)
+                             and re.sub(r"\$\d+$", "", sym["name"]) == name]
+                    if len({origin.get(o) for o, _ in every}) != 1:
+                        notes.append(f"fragment_local {name} ({f}): no definer")
+                        continue
+                ff = origin.get(every[0][0])
+                unique = f"{name}.{ff}"
+                every.sort(key=lambda d: rank(d[0]))
+                for i, (o, real) in enumerate(every):
+                    rename[o][real] = unique
+                    globalize[o].add(unique)
+                    if i:
+                        weaken[o].add(unique)
+                merged[(ff, name)] = unique
+            if unique != name:
                 rename[u][name] = unique
-            if len({d[0] for d in definers}) > 1:
-                notes.append(f"fragment_local {name} ({f}): {len(definers)} copies merged, kept {sl.label(definers[0][0])}")
     # Names only dead-stripped code reaches: where an object defines one locally (__start.c's
     # static __init_registers, reached by name from its inline asm), that copy is made global;
     # the rest get a trap stub (build/pure/stripped.s), never reached at run time.
@@ -243,6 +299,104 @@ def original_files(units, drafts, data):
     return origin
 
 
+def fix_sda21(path):
+    """MWCC records R_PPC_EMB_SDA21 at the instruction's low halfword (+2); GNU ld applies it
+    to the whole instruction at r_offset. Move every SDA21 relocation back to the instruction
+    start, or each small-data access writes two bytes into the next instruction."""
+    data = bytearray(Path(path).read_bytes())
+    elf = Elf32(bytes(data))
+    for sec in elf.sections:
+        if sec["type"] != 4:
+            continue
+        for off in range(sec["offset"], sec["offset"] + sec["size"], 12):
+            where, info = struct.unpack_from(">II", data, off)
+            if info & 255 == 109 and where % 4 == 2:
+                struct.pack_into(">I", data, off, where - 2)
+    Path(path).write_bytes(data)
+
+
+def anchor_to_objects(path, wanted):
+    """MWCC reaches a file's statics through a section anchor (`...bss.0` + offset). Point each
+    such relocation that lands inside one of the `wanted` objects at that object's own symbol
+    instead (addend made relative to it), so renaming or merging the object moves the reference."""
+    data = bytearray(Path(path).read_bytes())
+    elf = Elf32(bytes(data))
+    syms = list(elf.symbols())
+    symtab = next(s for s in elf.sections if s["type"] == 2)
+    index = {}
+    for i, sym in enumerate(syms):
+        if sym["name"] in wanted and sym["type"] == 1 and 0 < sym["section"] < 0xFF00:
+            index.setdefault(sym["section"], []).append((sym["address"], sym["address"] + max(sym["size"], 1), i))
+    moved = 0
+    for sec in elf.sections:
+        if sec["type"] != 4:
+            continue
+        for off in range(sec["offset"], sec["offset"] + sec["size"], 12):
+            where, info, addend = struct.unpack_from(">IIi", data, off)
+            target = syms[info >> 8]
+            if not target["name"].startswith("...") or target["section"] not in index:
+                continue
+            at = target["address"] + addend
+            for lo, hi, i in index[target["section"]]:
+                if lo <= at < hi:
+                    struct.pack_into(">Ii", data, off + 4, (i << 8) | (info & 255), at - lo)
+                    moved += 1
+                    break
+    Path(path).write_bytes(data)
+    return moved
+
+
+# .sbss stays merged symbol by symbol: GNU ld wants SDA21 targets in an output section named
+# exactly .sbss, and small statics are reached by their own symbols, not through an anchor.
+BSS_ORIGINAL = {".bss": (0x80194840, "_bss_start", "p_bss")}
+
+
+def original_statics():
+    """(file, name) -> address of every writable data object in the original (locals by the
+    STT_FILE symbol before them), and name -> address of the globals."""
+    by_file, globals_ = {}, {}
+    current = None
+    for sym in Elf32((ROOT / "orig/GMFE69/Moh2RelGC.elf").read_bytes()).symbols():
+        if sym["type"] == 4:
+            current = sym["name"]
+        elif sym["type"] == 1 and sym["name"] and 0 < sym["section"] < 0xFF00:
+            if sym["binding"] == 0:
+                by_file[(current, sym["name"])] = sym["address"]
+            else:
+                globals_[sym["name"]] = sym["address"]
+    return by_file, globals_
+
+
+def bss_placement(paths, origin):
+    """Place each object's .bss/.sbss so its named statics keep the original file's layout
+    (shifted into this image's .bss/.sbss region by a constant). A file's fragments then overlay
+    and share their statics, as the original file's code does: MWCC reaches statics from one
+    section anchor plus offsets, so separate copies can't be merged symbol by symbol."""
+    by_file, globals_ = original_statics()
+    placed = collections.defaultdict(list)   # section -> [(object path, offset in region)]
+    for path in paths:
+        elf = Elf32(Path(path).read_bytes())
+        f = origin.get(path)
+        for sec in elf.sections:
+            if sec["name"] not in BSS_ORIGINAL or not sec["size"]:
+                continue
+            base, _, _ = BSS_ORIGINAL[sec["name"]]
+            deltas = set()
+            for sym in elf.symbols():
+                if sym["section"] != sec["index"] or sym["type"] != 1 or not sym["name"] or sym["name"].startswith(("@", "...")) or "$" in sym["name"]:
+                    continue
+                addr = by_file.get((f, sym["name"])) if sym["binding"] == 0 else globals_.get(sym["name"])
+                if addr is None:
+                    addr = globals_.get(sym["name"]) or by_file.get((f, sym["name"]))
+                if addr is not None:
+                    deltas.add(addr - sym["address"])
+            if len(deltas) == 1:
+                start = deltas.pop()
+                if start >= base and start + sec["size"] <= base + {".bss": 0x1b9110, ".sbss": 0xe64}[sec["name"]]:
+                    placed[sec["name"]].append((path, start - base))
+    return placed
+
+
 def prepare(objs, weaken, globalize, rename):
     """Copy each object with its symbol changes; return the paths to link."""
     work = OUT / "objs"
@@ -253,9 +407,14 @@ def prepare(objs, weaken, globalize, rename):
         dst = work / f"{i:04d}_{Path(o).parent.name if '/units/' in o else Path(o).stem}.o"
         args = []
         src = o
+        if rename.get(o) or globalize.get(o):
+            anchored = str(dst) + ".a"
+            shutil.copy(o, anchored)
+            anchor_to_objects(anchored, set(rename.get(o, {})) | set(globalize.get(o, ())))
+            src = anchored
         if rename.get(o):
             first = str(dst) + ".r"
-            subprocess.run([str(OBJCOPY), *[f"--redefine-sym={a}={b}" for a, b in sorted(rename[o].items())], o, first],
+            subprocess.run([str(OBJCOPY), *[f"--redefine-sym={a}={b}" for a, b in sorted(rename[o].items())], src, first],
                            check=True)
             src = first
         for name in sorted(globalize.get(o, ())):
@@ -268,8 +427,91 @@ def prepare(objs, weaken, globalize, rename):
             subprocess.run([str(OBJCOPY), *weak, src, str(dst)], check=True)
         else:
             shutil.copy(src, dst)
+        fix_sda21(dst)
         out.append(str(dst))
     return out
+
+
+def vtable_mismatches(elf_path):
+    """Names of the linked __vt__ tables whose words differ from the original's
+    (research/layout/vtables.tsv): a fragment's reduced class view can emit a weak copy with
+    other slots, and the linker keeps whichever weak copy it meets first."""
+    elf = Elf32(Path(elf_path).read_bytes())
+    syms = list(elf.symbols())
+    names = collections.defaultdict(set)
+    for s in syms:
+        if s["type"] in (1, 2) and s["name"]:
+            names[s["address"]].add(s["name"])
+    want = collections.defaultdict(dict)
+    for r in csv.DictReader(open(ROOT / "research/layout/vtables.tsv"), delimiter="\t"):
+        if r["role"] == "slot":  # the RTTI and offset words don't steer virtual calls
+            want[r["vtable"]][int(r["word"], 16)] = r["value"]
+    bad = []
+    for s in syms:
+        if s["type"] != 1 or s["name"] not in want:
+            continue
+        sec = next((x for x in elf.sections if x["type"] == 1 and x["address"] <= s["address"] < x["address"] + x["size"]), None)
+        if not sec:
+            continue
+        raw = elf.contents(sec)[s["address"] - sec["address"]:][:s["size"]]
+        for word, value in want[s["name"]].items():
+            if word + 4 > len(raw):
+                bad.append(s["name"]); break
+            x = struct.unpack_from(">I", raw, word)[0]
+            if value.startswith("__RTTI__"):
+                continue
+            if re.fullmatch(r"-?\d+", value):
+                if (x - (1 << 32) if x >= 1 << 31 else x) != int(value):
+                    bad.append(s["name"]); break
+            elif value not in names.get(x, ()):
+                bad.append(s["name"]); break
+    return sorted(set(bad))
+
+
+def object_table_matches(path, name, want):
+    """Does this object's compiled copy of a vtable match the original's words?"""
+    elf = Elf32(Path(path).read_bytes())
+    syms = list(elf.symbols())
+    sym = next((x for x in syms if x["name"] == name and 0 < x["section"] < 0xFF00 and x["type"] == 1), None)
+    if not sym:
+        return False
+    raw = elf.contents(elf.sections[sym["section"]])[sym["address"]:sym["address"] + sym["size"]]
+    relocs = {}
+    for sec in elf.sections:
+        if sec["type"] == 4 and sec["info"] == sym["section"]:
+            data = elf.contents(sec)
+            for off in range(0, len(data), 12):
+                where, info, addend = struct.unpack_from(">IIi", data, off)
+                if sym["address"] <= where < sym["address"] + sym["size"]:
+                    relocs[where - sym["address"]] = (syms[info >> 8], addend)
+    for word, value in want.items():
+        if word + 4 > len(raw):
+            return False
+        if word in relocs:
+            target, addend = relocs[word]
+            if value.startswith("__RTTI__"):
+                continue
+            if target["name"] != value or addend:
+                return False
+        else:
+            x = struct.unpack_from(">I", raw, word)[0]
+            if not re.fullmatch(r"-?\d+", value) or (x - (1 << 32) if x >= 1 << 31 else x) != int(value):
+                return False
+    return True
+
+
+def override_object(names):
+    """Compile the original's copies of these tables (gen_vtable_stopgap.py's generator)."""
+    import gen_vtable_stopgap as gv
+    from check_data import Image, ORIGINAL, compile_file
+    src = OUT / "vt_override.cpp"
+    src.write_text(gv.generate(Image(ORIGINAL), names))
+    obj, log = compile_file(src, gv.SETTINGS)
+    if not obj:
+        raise SystemExit("vt_override.cpp does not compile:\n" + log)
+    shutil.copy(obj, OUT / "vt_override.o")
+    fix_sda21(OUT / "vt_override.o")
+    return str(OUT / "vt_override.o")
 
 
 def main():
@@ -285,28 +527,70 @@ def main():
     data = [o for s, _, o in built if s.startswith(("research/data/", "research/data_stopgap/"))]
     weaken, globalize, rename, stripped, notes = plan(units, drafts, data)
     OUT.mkdir(parents=True, exist_ok=True)
-    objs = prepare(units + data + drafts, weaken, globalize, rename)
-    (OUT / "link.ld").write_text(SCRIPT)
-    (OUT / "objects.rsp").write_text("\n".join(objs) + "\n")
-    stub = OUT / "stripped.s"
-    stub.write_text(".text\n" + "".join(f'.globl "{n}"\n"{n}":\n  trap\n' for n in stripped))
-    subprocess.run([str(ROOT / "build/tools/powerpc-eabi-as"), "-mgekko", "-o", str(OUT / "stripped.o"), str(stub)],
-                   check=True)
-    cmd = [str(LD), "-T", str(OUT / "link.ld"), "-o", str(OUT / "Moh2RelGC_pure.elf"),
-           "--no-warn-mismatch", "-z", "max-page-size=0x20", f"@{OUT / 'objects.rsp'}", str(OUT / "stripped.o")]
-    r = subprocess.run(cmd, capture_output=True, text=True)
-    (OUT / "link.log").write_text(r.stdout + r.stderr)
+    override = sorted(set((OUT / "vt_override.txt").read_text().split())) if (OUT / "vt_override.txt").exists() else []
+    for _ in range(3):
+        r, objs, errors = link(units, data, drafts, weaken, globalize, rename, stripped, override)
+        bad = vtable_mismatches(OUT / "Moh2RelGC_pure.elf") if r.returncode == 0 else []
+        if not bad:
+            break
+        override = sorted(set(override) | set(bad))
+        (OUT / "vt_override.txt").write_text("\n".join(override) + "\n")
+        print(f"vtables differing from the original, regenerated: {', '.join(bad)}")
+    notes += [f"vtable {n}: the original's copy (vt_override.o) replaces the compiled ones" for n in override]
     (OUT / "decisions.txt").write_text("\n".join(notes) + "\n")
-    errors = [l for l in (r.stdout + r.stderr).splitlines() if "undefined reference" in l or "error" in l.lower()]
     kinds = collections.Counter(re.sub(r".*?: ", "", l).split("`")[0].strip() for l in errors)
     print(f"objects: {len(units)} units, {len(data)} data, {len(drafts)} drafts; "
           f"weakened {sum(map(len, weaken.values()))}, globalized {sum(map(len, globalize.values()))}, "
-          f"stripped defined 0: {len(stripped)}")
+          f"trap stubs: {len(stripped)}, vtables from the original: {len(override)}")
     print(f"link exit {r.returncode}, {len(errors)} error lines")
     for k, n in kinds.most_common(8):
         print(f"  {n:5} {k}")
     print(f"notes: {len(notes)} (build/pure/decisions.txt); log build/pure/link.log")
     return r.returncode
+
+
+def link(units, data, drafts, weaken, globalize, rename, stripped, override):
+    weaken = {o: set(v) for o, v in weaken.items()}
+    generate = []
+    if override:
+        want = collections.defaultdict(dict)
+        for r in csv.DictReader(open(ROOT / "research/layout/vtables.tsv"), delimiter="\t"):
+            want[r["vtable"]][int(r["word"], 16)] = r["value"]
+        for n in override:
+            holders = [o for o in units + data + drafts
+                       if any(x["name"] == n and 0 < x["section"] < 0xFF00 for x in symbols(o))]
+            good = [o for o in holders if object_table_matches(o, n, want[n])]
+            for o in holders:
+                if good and o == good[0]:
+                    weaken.get(o, set()).discard(n)   # the matching compiled copy wins
+                else:
+                    weaken.setdefault(o, set()).add(n)
+            if not good:
+                generate.append(n)                   # no copy matches: the original's, generated
+    objs = prepare(units + data + drafts, weaken, globalize, rename)
+    origin = original_files(units, drafts, data)
+    renamed = {o: p for o, p in zip(units + data + drafts, objs)}
+    placed = bss_placement(units + data + drafts, origin)
+    script = SCRIPT
+    for name, (_, start, phdr) in BSS_ORIGINAL.items():
+        lines = [f'  {name}.{i} ({start} + {off:#x}) (NOLOAD) : {{ "{renamed[o]}"({name}) }} :{phdr}'
+                 for i, (o, off) in enumerate(sorted(placed.get(name, []), key=lambda x: x[1]))]
+        script = script.replace("@BSS_MAPPED@", "\n".join(lines))
+    script = script.replace("@SBSS_MAPPED@", "")
+    (OUT / "link.ld").write_text(script)
+    (OUT / "bss_placed.txt").write_text("".join(f"{n} {off:#x} {Path(o).name}\n" for n, v in placed.items() for o, off in v))
+    (OUT / "objects.rsp").write_text("\n".join(objs) + "\n")
+    stub = OUT / "stripped.s"
+    stub.write_text(".text\n" + "".join(f'.globl "{n}"\n"{n}":\n  trap\n' for n in stripped))
+    subprocess.run([str(ROOT / "build/tools/powerpc-eabi-as"), "-mgekko", "-o", str(OUT / "stripped.o"), str(stub)],
+                   check=True)
+    extra = [override_object(generate)] if generate else []
+    cmd = [str(LD), "-T", str(OUT / "link.ld"), "-o", str(OUT / "Moh2RelGC_pure.elf"),
+           "--no-warn-mismatch", "--no-check-sections", "-z", "max-page-size=0x20", f"@{OUT / 'objects.rsp'}", str(OUT / "stripped.o"), *extra]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    (OUT / "link.log").write_text(r.stdout + r.stderr)
+    errors = [l for l in (r.stdout + r.stderr).splitlines() if "undefined reference" in l or "error" in l.lower()]
+    return r, objs, errors
 
 
 def json_exists(obj):

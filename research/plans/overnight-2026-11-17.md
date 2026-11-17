@@ -42,6 +42,10 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - ~01:20 Item 3: research/tools/pure_link.py links the pure-source image with no errors
   (build/pure/Moh2RelGC_pure.elf). It doesn't boot: Dolphin calls __start and nothing more is
   logged. Working on the boot.
+- ~02:30 The image boots through OSInit, MEM_init, InitCORE and the static constructors into
+  CShellMenu::ShellInit, then crashes: compartment's draft static initializer has the wrong
+  .bss layout (research/notes/pure-link.md). Fixed along the way: SDA21 relocation offsets (MWCC
+  +2), segments, file-static merging, section anchors, per-file .bss layout, vtable checks.
 
 ## Questions for the morning
 
