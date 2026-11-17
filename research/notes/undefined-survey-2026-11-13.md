@@ -69,3 +69,8 @@ Both questions answered (yes to each). cdbobject_dtor owns `__vt__10CCDBObject` 
 axDspSlave/axDspSlaveLength transcribed. source_link: 35 undefined, all vtables.
 world_volume.cpp merged whole with the gap function RemoveAllSubVolumes (linker-stripped): 34 undefined.
 light.cpp merged whole with the gap function DestroyAnimLightManager (linker-stripped): 30 undefined.
+Later 2026-11-16: stepping stones capsule_dtor, cdbgeom_volbox, box_dtor, static_obj_type,
+debug_prof_bins: 25 undefined. staticmesh cannot use stones: its .data block interleaves
+__vt__15CStaticAnimMesh, the RTTI lists, the weak __vt__11MSHMaterial, __vt__10CMSHMatBin and
+__vt__13CMshSimpleBin (0x8018b410..0x8018b4f0), and its .sdata the matching records, so only the
+head-run merge places them.

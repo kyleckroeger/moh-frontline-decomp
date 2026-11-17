@@ -19,6 +19,19 @@ multiplayer not at all. Every landing keeps the complete image identical.
 
 ## State (the coordinator updates this every wake-up, under the landing lock)
 
+- **2026-11-16 (session after the loop, user: "go ahead and do all of that"):** link 38 -> 25
+  undefined, all vtables. Landed: cdbobject_dtor, capsule_dtor, cdbgeom_volbox, box_dtor,
+  static_obj_type and debug_prof_bins stepping stones; axDspSlave transcribed; world_volume.cpp
+  and light.cpp merged whole with stripped gap functions (RemoveAllSubVolumes,
+  DestroyAnimLightManager); PATHI_eventstart re-proven (91/96 marks current). Tools: weak
+  duplicates may be stripped_objects; port_unit drops a duplicate RTTI record's base list.
+  Verified bytes unchanged (90.66%: merges and stones move ownership, not code).
+  **Left (large):** player_weapon_object (key ~CPlayerWeaponObject in player_weapon_object.cpp's
+  unit; needs anim_obj's CAnimObject declaration; lists + table at 0x80187e88..0x80188030 sit before
+  init's jump table, so a stone may work), staticmesh (three tables interleaved with the weak
+  MSHMaterial table and shared base lists in one block: needs the 7-fragment head merge, not
+  stones), AIFilter (16-fragment merge). Blocked as before: compartment, dmesh, particlesystem,
+  objcreate, player.
 - **2026-11-13 ~22:00: WRAPPED UP by the user ("wrap things up"). No agents running; loop stopped.**
   Verified 1,282,440 / 1,414,572 bytes (90.66%). Pure-source link: 38 undefined (36 vtables +
   axDspSlave/axDspSlaveLength), 102 fragment-local, 45 duplicate, 15 stripped (source_link.py now

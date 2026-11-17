@@ -396,6 +396,11 @@ with the gap function `DestroyAnimLightManager` (deletes a manager; stripped). T
 IMovingSceneNode tables it compiles mid-`.data` are weak duplicates listed in `stripped_objects`
 (tools/project_build.py and data_strip.py now allow that): **30 undefined, 101 fragment-local**
 (997 units, 94 drafts, 72 data files).
+Then single-fragment stepping stones (the key function's fragment, RTTI on, owning its file's table
+and RTTI records): `capsule_dtor`, `cdbgeom_volbox` (key `TestCollision(const CVolSphere&)`),
+`box_dtor`, `static_obj_type` (hierobject.cpp's CStaticObject declaration) and `debug_prof_bins`
+(base RTTI records as file duplicates). Re-run: **25 undefined, all vtables, 101 fragment-local, 45
+duplicate**, 0 small-data, 15 stripped (997 units, 94 drafts, 72 data files).
 
 Exit: the pure-source link has no undefined symbols, then boots, then passes the step 1
 routes.
