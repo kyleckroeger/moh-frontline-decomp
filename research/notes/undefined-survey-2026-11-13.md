@@ -14,7 +14,7 @@ Start: 54 undefined (`research/layout/source_link.tsv`, `source_link.py --jobs 4
 | `_eti_init_info` | `extabindex` 0x80016e44, 32 B | MWLD writes it (exception-table index), like `_rom_copy_info` | link-script name |
 | `PATHI_choosebeat__FP12PATHNODEVIEW...` | `PATHI_choosebeat__FP12PATHFINDNODE...` (0x8010e254, unit path_choosebeat) | the `PATHI_eventstart` draft named its node view `PATHNODEVIEW` | view renamed `PATHFINDNODE`; code unchanged (160 lines). Its file hash changed, so the route_1_2 proof mark goes stale: re-prove |
 | `Render__15CUcodeRenderBin` | not in the original | particlesystem's view gave `CUcodeRenderBin` a `Render`; the manager's table (0x801848d4) lists `CRenderBin::Render` | view now declares the real weak `Link` instead; unit VERIFIED |
-| `axDspSlave` (.data 0x8018e2a0, 6,624 B), `axDspSlaveLength` (.sdata 0x8034e4e8, 2 B) | SDK DSP microcode for AXOut | data not in source: PortReadiness step 2.2 lists it as platform-owned (the port replaces it), not transcribed | **open: question** |
+| `axDspSlave` (.data 0x8018e2a0, 6,624 B), `axDspSlaveLength` (.sdata 0x8034e4e8, 2 B) | SDK DSP microcode for AXOut | data not in source: PortReadiness step 2.2 lists it as platform-owned (the port replaces it), not transcribed | transcribed 2026-11-16 (`research/data/init/axDspSlave.cpp`) |
 
 `stripped`: `source_link.py` now models MWLD's dead-stripping. A reference made only from a
 unit's `discarded_functions` (found from the relocations) is listed under the new kind
@@ -62,3 +62,8 @@ class, `--pool .sdata2`, and weak or file duplicates for inline copies (see the 
 2. Minimal ownership: may a single key-function fragment (for example capsule_dtor or
    cdbobject_dtor) turn on RTTI and own its file's `.data` without merging its neighbours? It
    is byte-exact and resolves the table, but it is not a merge.
+
+## Update 2026-11-16
+
+Both questions answered (yes to each). cdbobject_dtor owns `__vt__10CCDBObject` (d62c62f9);
+axDspSlave/axDspSlaveLength transcribed. source_link: 35 undefined, all vtables.
