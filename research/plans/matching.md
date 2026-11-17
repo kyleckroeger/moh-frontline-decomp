@@ -5,6 +5,15 @@ the main project. It replaces the stop rule of endgame.md's W3 (one time-boxed p
 maintainer gives the decomp a session, the session works this queue. Port requests still come
 first (endgame.md W4: a draft the port implicates jumps the queue).
 
+## When and how far (maintainer, 2026-11-17)
+
+This plan is for the spare decomp sessions once the PC port is the main project (after W1 and the
+rename tool). The milestone is the register, order and near groups: about 79 KB, up to about 96.5%.
+When that milestone is reached, or the queue stops yielding, stop and reassess with the maintainer
+before going on to the structural group and the decisions. Expect steady small gains rather than a
+quick jump: nearly every row has earlier attempts, so the lever is new compiler rules applied
+across a whole group.
+
 ## Where it stands
 
 Verified: 1,285,620 / 1,414,572 code bytes (90.88%). Left: 94 functions, about 129 KB, all with a
