@@ -13,45 +13,12 @@
 // record and AX voice members follow the SDK's mix.c names where the code
 // matches them and are otherwise inferred. This file is compiled with GC/1.3
 // (1.3.2 builds the mode flag with oris instead of lis/or).
-extern "C" {
-int OSDisableInterrupts(void);
-int OSRestoreInterrupts(int);
-}
-
-struct AXPBMIXVIEW {
-    unsigned short vL;
-    unsigned short vDeltaL;
-    unsigned short vR;
-    unsigned short vDeltaR;
-    unsigned short vAuxAL;
-    unsigned short vDeltaAuxAL;
-    unsigned short vAuxAR;
-    unsigned short vDeltaAuxAR;
-    unsigned short vAuxBL;
-    unsigned short vDeltaAuxBL;
-    unsigned short vAuxBR;
-    unsigned short vDeltaAuxBR;
-    unsigned short vAuxBS;
-    unsigned short vDeltaAuxBS;
-    unsigned short vS;
-    unsigned short vDeltaS;
-    unsigned short vAuxAS;
-    unsigned short vDeltaAuxAS;
-};
-
-struct _AXVPB {
-    char field000[24];
-    unsigned long index;
-    unsigned long sync;
-    char field020[292];
-    unsigned short mixerCtrl;
-    unsigned short field146;
-    char field148[2];
-    AXPBMIXVIEW mix;
-    char field16E[46];
-    unsigned short currentVolume;
-    unsigned short currentDelta;
-};
+/* The AX voice and its parameter block are the SDK's (2001 headers): the mixer writes the
+   voice's mixer control, mix and volume envelope in its parameter block and flags them in sync. */
+#define GAME_SDK_NO_LIBC
+#include <dolphin/os.h>
+#include <dolphin/dsp.h>
+#include <dolphin/ax.h>
 
 typedef struct MIXCHANNEL {
     _AXVPB* voice;
@@ -153,18 +120,18 @@ void SNDDRV_DSPMixerInitChannel(_AXVPB* voice, unsigned long mode, int input, un
     else
         channel->v = input;
     enabled = OSDisableInterrupts();
-    voice->currentVolume = channel->v;
-    voice->currentDelta = 0;
-    voice->mix.vL = channel->vL;
-    voice->mix.vDeltaL = 0;
-    voice->mix.vR = channel->vR;
-    voice->mix.vDeltaR = 0;
-    voice->mix.vAuxAL = channel->vS;
-    voice->mix.vDeltaAuxAL = 0;
+    voice->pb.ve.currentVolume = channel->v;
+    voice->pb.ve.currentDelta = 0;
+    voice->pb.mix.vL = channel->vL;
+    voice->pb.mix.vDeltaL = 0;
+    voice->pb.mix.vR = channel->vR;
+    voice->pb.mix.vDeltaR = 0;
+    voice->pb.mix.vAuxAL = channel->vS;
+    voice->pb.mix.vDeltaAuxAL = 0;
     mix = 0;
-    if (voice->mix.vS || voice->mix.vAuxAS || voice->mix.vAuxBS)
+    if (voice->pb.mix.vS || voice->pb.mix.vAuxAS || voice->pb.mix.vAuxBS)
         mix |= 4;
-    voice->mixerCtrl = mix;
+    voice->pb.mixerCtrl = mix;
     voice->sync |= 0x212;
     OSRestoreInterrupts(enabled);
 }
@@ -227,12 +194,12 @@ void SNDDRV_DSPMixerUpdate() {
                 setNewMixLevel = 1;
             }
             if (setNewInputLevel != 0 && axvpb) {
-                axvpb->currentVolume = c->v;
-                axvpb->currentDelta = (c->v1 - c->v) / 320;
+                axvpb->pb.ve.currentVolume = c->v;
+                axvpb->pb.ve.currentDelta = (c->v1 - c->v) / 320;
                 axvpb->sync |= 0x200;
             }
             if (setNewMixLevel != 0 && axvpb) {
-                p = (unsigned short*)&axvpb->mix;
+                p = (unsigned short*)&axvpb->pb.mix;
                 *(p) = c->vL; p += 1;
                 *(p) = ((c->vL1 - c->vL) / 320); p += 1;
                 *(p) = c->vR; p += 1;
@@ -252,17 +219,17 @@ void SNDDRV_DSPMixerUpdate() {
                 *(p) = c->vAS; p += 1;
                 *(p) = ((c->vAS1 - c->vAS) / 320); p += 1;
                 mixerCtrl = 0;
-                if ((axvpb->mix.vAuxAL != 0) || (axvpb->mix.vAuxAR != 0) || (axvpb->mix.vAuxAS != 0))
+                if ((axvpb->pb.mix.vAuxAL != 0) || (axvpb->pb.mix.vAuxAR != 0) || (axvpb->pb.mix.vAuxAS != 0))
                     mixerCtrl |= 1;
-                if ((axvpb->mix.vAuxBL != 0) || (axvpb->mix.vAuxBR != 0) || (axvpb->mix.vAuxBS != 0))
+                if ((axvpb->pb.mix.vAuxBL != 0) || (axvpb->pb.mix.vAuxBR != 0) || (axvpb->pb.mix.vAuxBS != 0))
                     mixerCtrl |= 2;
-                if ((axvpb->mix.vS != 0) || (axvpb->mix.vAuxAS != 0) || (axvpb->mix.vAuxBS != 0))
+                if ((axvpb->pb.mix.vS != 0) || (axvpb->pb.mix.vAuxAS != 0) || (axvpb->pb.mix.vAuxBS != 0))
                     mixerCtrl |= 4;
-                if ((axvpb->mix.vDeltaL != 0) || (axvpb->mix.vDeltaR != 0) || (axvpb->mix.vDeltaS != 0) ||
-                    (axvpb->mix.vDeltaAuxAL != 0) || (axvpb->mix.vDeltaAuxAR != 0) || (axvpb->mix.vDeltaAuxAS != 0) ||
-                    (axvpb->mix.vDeltaAuxBL != 0) || (axvpb->mix.vDeltaAuxBR != 0) || (axvpb->mix.vDeltaAuxBS != 0))
+                if ((axvpb->pb.mix.vDeltaL != 0) || (axvpb->pb.mix.vDeltaR != 0) || (axvpb->pb.mix.vDeltaS != 0) ||
+                    (axvpb->pb.mix.vDeltaAuxAL != 0) || (axvpb->pb.mix.vDeltaAuxAR != 0) || (axvpb->pb.mix.vDeltaAuxAS != 0) ||
+                    (axvpb->pb.mix.vDeltaAuxBL != 0) || (axvpb->pb.mix.vDeltaAuxBR != 0) || (axvpb->pb.mix.vDeltaAuxBS != 0))
                     mixerCtrl |= 8;
-                axvpb->mixerCtrl = mixerCtrl;
+                axvpb->pb.mixerCtrl = mixerCtrl;
                 axvpb->sync |= 0x12;
             }
         }

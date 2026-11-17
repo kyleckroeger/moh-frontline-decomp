@@ -73,3 +73,10 @@ is recorded here.
 - Moved and verified: filesys_ea (OSMutex), filedev (OSThread, OSMessageQueue, DVDFileInfo; the
   call casts its path to `char*` as the SDK prototype takes), pad and ipad (PADStatus), game
   filesys (DVDFileInfo).
+- Sound: snddrv.c (OSMutex, OSThread, OSThreadQueue, ARQRequest, _AXVPB; 109 lines of private
+  views and prototypes removed) and sdspmix.c (_AXVPB with its parameter block: the mixer writes
+  `pb.mixerCtrl`, `pb.mix` and `pb.ve` and flags them in `sync`), verified. The driver's voice
+  index is `(int)userContext`, its state `pb.state`, its play position
+  `pb.addr.currentAddressHi/Lo`. ax.h now includes dsp.h (it names DSPTaskInfo).
+  scratch/s1116/dedupe_protos.py deletes a file's own prototypes of functions the headers declare.
+  Left in snddrv: the `(unsigned long)` address casts to ARQPostRequest (address typedef, next).

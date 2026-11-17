@@ -1,6 +1,9 @@
 #ifndef _DOLPHIN_AX_H_
 #define _DOLPHIN_AX_H_
 
+#include <dolphin/types.h>
+#include <dolphin/dsp.h> /* DSPTaskInfo */
+
 #ifdef __cplusplus
 extern "C" {
 #endif

@@ -7,42 +7,14 @@
 // The file is compiled without automatic inlining (-inline on): with
 // -inline auto one unit inlines SNDPLATFORM_setvol, the pitch and position
 // setters and the stop path into their callers, which the original calls.
-struct OSMutex {
-    unsigned char unknown00[24];
-};
-
-struct OSThread {
-    unsigned char unknown000[784];
-};
-
-struct OSThreadQueue {
-    void* head;
-    void* tail;
-};
-
-struct ARQRequest {
-    ARQRequest* next;
-    unsigned long owner;
-    unsigned long type;
-    unsigned long priority;
-    unsigned long source;
-    unsigned long dest;
-    unsigned long length;
-    void (*callback)(unsigned long);
-};
-
-/* inferred: the AX voice fields the driver reads: the user index (the
-   driver voice), the state and the current address */
-struct _AXVPB {
-    unsigned char unknown000[20];
-    int voice;
-    unsigned char unknown018[302];
-    unsigned short state;
-    unsigned char unknown148[106];
-    unsigned short currentHi;
-    unsigned short currentLo;
-};
-typedef struct _AXVPB AXVPB;
+/* The OS, ARQ, DSP, AI and AX structures and prototypes are the SDK's (2001 headers). The
+   driver reads a voice's user context (the driver voice), its state and its current address. */
+#define GAME_SDK_NO_LIBC
+#include <dolphin/os.h>
+#include <dolphin/ar.h>
+#include <dolphin/dsp.h>
+#include <dolphin/ax.h>
+#include <dolphin/ai.h>
 
 extern "C" {
 extern char sndgs[];
@@ -313,7 +285,6 @@ void SNDI_mutexunlock();
 // mixer's voice-free hook. sndgs and snddrv are named by their symbols; the
 // views of them are inferred from offsets.
 extern "C" {
-void AXFreeVoice(_AXVPB*);
 extern char sndgs[];
 }
 void SNDVOICEI_free(int);
@@ -347,7 +318,7 @@ extern "C" char sndgs[];
 
 void SNDDRV_callbackdropvoice(void* data) {
     _AXVPB* dropped = (_AXVPB*)data;
-    int index = dropped->voice;
+    int index = (int)dropped->userContext;
     SNDVOICEVIEW* voices = *(SNDVOICEVIEW**)(sndgs + 468);
     int master = voices[index].master;
     SNDVOICEVIEW* sound;
@@ -358,7 +329,7 @@ void SNDDRV_callbackdropvoice(void* data) {
     sound = &voices[master];
     for (i = 0; i < sound->count; i++) {
         if (snddrv.voices[sound->channels[i]].axvoice) {
-            if (sound->channels[i] == dropped->voice)
+            if (sound->channels[i] == (int)dropped->userContext)
                 SNDDRV_freeaxvoice(sound->channels[i], 1);
             else
                 SNDDRV_freeaxvoice(sound->channels[i], 2);
@@ -373,12 +344,8 @@ void SNDDRV_callbackdropvoice(void* data) {
 // AX, and mixer creation. sndgs and snddrv are named by their symbols; the
 // views of them are inferred from offsets.
 extern "C" {
-void AXFreeVoice(_AXVPB*);
 _AXVPB* AXAcquireVoice(unsigned long, void (*)(void*), unsigned long);
 extern char sndgs[];
-int OSEnableInterrupts(void);
-int OSRestoreInterrupts(int);
-void OSWakeupThread(OSThreadQueue*);
 float* MIX_getwetbuffer(void);
 void SNDI_memcpy(void*, const void*, int);
 void SNDSYS_linkmaincpumixer(void);
@@ -549,13 +516,8 @@ struct _AXVPB;
 
 extern "C" {
 extern char sndgs[];
-int OSDisableInterrupts(void);
-int OSRestoreInterrupts(int);
-void DCFlushRange(void*, unsigned long);
 void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, void (*)(unsigned long));
 void SNDI_memcpy(void*, const void*, int);
-void OSSleepThread(OSThreadQueue*);
-unsigned long ARGetBaseAddress(void);
 extern void* MIXaudioslicefn;
 }
 void* SNDPKTPLAYI_get(int, int, int*, int*);
@@ -976,27 +938,13 @@ int SNDPLATFORM_outputset(void) {
 // symbols; their views are inferred.
 extern "C" {
 extern char sndgs[];
-int OSDisableInterrupts(void);
-int OSRestoreInterrupts(int);
-void ARInit(unsigned long*, unsigned long);
-void ARQInit(void);
-unsigned long ARGetBaseAddress(void);
-void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long,
-                    void (*)(unsigned long));
-void AIInit(unsigned char*);
 void AXInit(void);
-void AXSetMode(unsigned long);
 int OSCreateThread(OSThread*, void* (*)(void*), void*, void*, unsigned long, long, unsigned short);
-void OSInitThreadQueue(OSThreadQueue*);
-int OSResumeThread(OSThread*);
 void SNDSYS_add100hzclient(void (*)(void));
 extern void (*MIXrestorefn)(void);
-void AXRegisterAuxACallback(void*, void*);
 void SNDSYS_entercritical(void);
 void SNDSYS_leavecritical(void);
-void OSCancelThread(OSThread*);
 void SNDSYS_remove100hzclient(void (*)(void));
-void AXQuit(void);
 }
 void SNDMEMI_free(void*);
 void SNDARAM_restore(void);
@@ -1070,7 +1018,7 @@ int SNDPLATFORM_init(void) {
     OSCreateThread(&snddrv.thread, (void* (*)(void*))SNDDRV_thread, 0, snddrv.stack + sizeof(snddrv.stack), sizeof(snddrv.stack), 1, 1);
     OSInitThreadQueue(&snddrv.threadqueue);
     OSResumeThread(&snddrv.thread);
-    AXRegisterAuxACallback((void*)SNDDRV_audiocallback, 0);
+    AXRegisterAuxACallback(SNDDRV_audiocallback, 0);
     *(unsigned char*)(sndgs + 360) = 1;
     SNDSYS_add100hzclient(SNDDRV_freenextframe);
     SNDSYS_add100hzclient(SNDDRV_DSPMixerUpdate);
@@ -1131,37 +1079,10 @@ void* memset(void*, int, unsigned long);
 void SNDI_memcpy(void*, const void*, int);
 }
 
-struct AXPBADDR {
-    unsigned short loopFlag;
-    unsigned short format;
-    unsigned short loopAddressHi;
-    unsigned short loopAddressLo;
-    unsigned short endAddressHi;
-    unsigned short endAddressLo;
-    unsigned short currentAddressHi;
-    unsigned short currentAddressLo;
-};
 
-struct AXPBADPCM {
-    unsigned short a[8][2];
-    unsigned short gain;
-    unsigned short pred_scale;
-    unsigned short yn1;
-    unsigned short yn2;
-};
 
-struct AXPBADPCMLOOP {
-    unsigned short loop_pred_scale;
-    unsigned short loop_yn1;
-    unsigned short loop_yn2;
-};
 
 extern "C" {
-void AXSetVoiceSrcType(AXVPB*, unsigned long);
-void AXSetVoiceAdpcm(AXVPB*, AXPBADPCM*);
-void AXSetVoiceAdpcmLoop(AXVPB*, AXPBADPCMLOOP*);
-void AXSetVoiceAddr(AXVPB*, AXPBADDR*);
-void AXSetVoiceState(AXVPB*, unsigned short);
 }
 
 /* inferred: the patch header's sample fields */
@@ -1233,7 +1154,7 @@ void iSNDserve() {
                 }
             }
         }
-        half = (int)((channel->axvoice->currentHi << 16) + channel->axvoice->currentLo) > (int)packet->middle;
+        half = (int)((channel->axvoice->pb.addr.currentAddressHi << 16) + channel->axvoice->pb.addr.currentAddressLo) > (int)packet->middle;
         if (half != packet->half) {
             if (packet->frames[packet->half]) {
                 for (j = 0; j < voice->channelCount; j++)
@@ -1248,7 +1169,7 @@ void iSNDserve() {
     for (i = 0; i < SNDGS.firstVoice; i++) {
         channel = &snddrv.voices[i];
         voice = &SNDGS.voices[i];
-        if (channel->axvoice && channel->vallocated && !channel->axvoice->state && channel->offset >= 0 &&
+        if (channel->axvoice && channel->vallocated && !channel->axvoice->pb.state && channel->offset >= 0 &&
             channel->vallocated == 1) {
             for (j = 0; j < SNDGS.voices[i].channelCount; j++) {
                 if (snddrv.voices[voice->channels[j]].vallocated) {
@@ -1481,12 +1402,6 @@ extern void (*MIXplayfn)(int);
 
 extern "C" {
 void* memset(void*, int, unsigned long);
-void DCFlushRange(void*, unsigned long);
-int OSDisableInterrupts(void);
-int OSRestoreInterrupts(int);
-void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long,
-                    unsigned long, void (*)(unsigned long));
-void AXSetVoiceSrcType(_AXVPB*, unsigned long);
 }
 void SNDPLATFORM_setfxlevel(int, int);
 
@@ -1743,7 +1658,6 @@ extern "C" {
 extern char sndgs[];
 extern void (*MIXstopfn)(int);
 int MIX_getframe(int);
-void AXSetVoiceState(_AXVPB*, unsigned short);
 }
 void SNDVOICEI_free(int);
 extern "C" void MIX_sethighpass(int, int);
@@ -1767,7 +1681,7 @@ int SNDPLATFORM_getcurframe(int voice) {
 
         if (!driver->axvoice)
             return -8;
-        position = (driver->axvoice->currentHi << 16) + driver->axvoice->currentLo;
+        position = (driver->axvoice->pb.addr.currentAddressHi << 16) + driver->axvoice->pb.addr.currentAddressLo;
         if (sound->type == 18)
             return ((position - driver->start) * 7) >> 3;
         return position - driver->start;
@@ -1820,12 +1734,6 @@ int SNDPLATFORM_stop(int voice) {
 // callback frees the slot.
 extern "C" {
 extern char sndgs[];
-void OSInitMutex(OSMutex*);
-void OSLockMutex(OSMutex*);
-void OSUnlockMutex(OSMutex*);
-int OSDisableInterrupts(void);
-int OSRestoreInterrupts(int);
-void ARQRemoveRequest(ARQRequest*);
 }
 void* SNDARAM_alloc(int);
 void SNDARAM_free(unsigned int);
@@ -1922,9 +1830,6 @@ int SNDPLATFORM_downloadcomplete(int id) {
 // inferred (only the mutex's offset is known; the rest of the 0xab20-byte
 // structure is opaque).
 extern "C" {
-void OSInitMutex(OSMutex*);
-void OSLockMutex(OSMutex*);
-void OSUnlockMutex(OSMutex*);
 }
 
 void SNDI_mutexalloc() {

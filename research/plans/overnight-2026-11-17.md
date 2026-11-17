@@ -35,6 +35,8 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - ~01:15 filesys_ea, filedev, pad, ipad, game filesys moved (GAME_SDK_NO_LIBC opt-out in types.h;
   extern "C" guards added to nine 2001 headers). Next: snddrv.c/sdspmix.c (ARQ, _AXVPB, address
   typedef), MemoryCardGC, staticmesh_init, animemot, Moh2's PADStatus.
+- ~01:30 snddrv.c and sdspmix.c moved onto os/ar/dsp/ax/ai.h (AXVPB fields by their SDK names).
+  Next: MemoryCardGC, staticmesh_init, animemot, Moh2, then the address typedef.
 
 ## Questions for the morning
 
