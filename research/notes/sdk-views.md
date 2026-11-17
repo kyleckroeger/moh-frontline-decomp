@@ -78,5 +78,14 @@ is recorded here.
   `pb.mixerCtrl`, `pb.mix` and `pb.ve` and flags them in `sync`), verified. The driver's voice
   index is `(int)userContext`, its state `pb.state`, its play position
   `pb.addr.currentAddressHi/Lo`. ax.h now includes dsp.h (it names DSPTaskInfo).
-  scratch/s1116/dedupe_protos.py deletes a file's own prototypes of functions the headers declare.
-  Left in snddrv: the `(unsigned long)` address casts to ARQPostRequest (address typedef, next).
+  research/tools/dedupe_protos.py deletes a file's own prototypes of functions the headers declare.
+- MemoryCardGC (CARDFileInfo, CARDStat; the 2001 card headers have the same layouts), staticmesh_init
+  (GXTexObj, GXTlutObj; the GX init calls cast their ints to the SDK's enum types), animemot (ARQ, VI)
+  and Moh2 (PADStatus), all verified. **All 17 files in the survey now take their SDK structs from
+  the headers.**
+- `include/game/GameAddr.h`: `GameAddr`, an address passed as an integer, is `unsigned long` on the
+  GameCube (same bytes) and `GAME_ADDR_TYPE` where defined (the port defines it as uintptr_t). The
+  five pointer casts to ARQPostRequest in animemot and snddrv use it.
+- Left for the port: Aurora's ARQPostRequest prototype must take the same type. The other
+  `(unsigned long)` pointer casts (UIStudio.c, compartment_init, ...) are offset-pointer fix-ups of
+  loaded data, the port's OffsetPtr work, not SDK calls.

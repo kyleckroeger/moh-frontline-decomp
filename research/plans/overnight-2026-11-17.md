@@ -37,6 +37,8 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   typedef), MemoryCardGC, staticmesh_init, animemot, Moh2's PADStatus.
 - ~01:30 snddrv.c and sdspmix.c moved onto os/ar/dsp/ax/ai.h (AXVPB fields by their SDK names).
   Next: MemoryCardGC, staticmesh_init, animemot, Moh2, then the address typedef.
+- ~01:15 Items 1-2 DONE: all 17 files on the SDK headers; GameAddr typedef for the ARQ address
+  casts. Next: item 3, the pure-source link tool.
 
 ## Questions for the morning
 

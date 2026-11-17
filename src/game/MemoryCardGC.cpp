@@ -23,35 +23,11 @@ int sprintf(char*, const char*, ...);
 int atoi(const char*);
 }
 
-/* inferred views of the SDK's CARDFileInfo and CARDStat */
-struct CARDFileInfo {
-    long chan;
-    long fileNo;
-    long offset;
-    long length;
-    unsigned short iBlock;
-    unsigned short unknown12;
-};
+/* CARDFileInfo and CARDStat are the SDK's (2001 headers). */
+#define GAME_SDK_NO_LIBC
+#include <dolphin/card.h>
 
-struct CARDStat {
-    char fileName[32];
-    unsigned long length;
-    unsigned long time;
-    unsigned char gameName[4];
-    unsigned char company[2];
-    unsigned char bannerFormat;
-    unsigned char unknown2f;
-    unsigned long iconAddr;
-    unsigned short iconFormat;
-    unsigned short iconSpeed;
-    unsigned long commentAddr;
-    unsigned char unknown3c[48];
-};
-
-#define CARD_STAT_ICON_MASK 3
-#define CARD_STAT_BANNER_MASK 3
 #define CARD_STAT_ANIM_MASK 4
-#define CARD_STAT_SPEED_MASK 3
 #define CARDSetBannerFormat(stat, f) ((stat)->bannerFormat = (unsigned char)(((stat)->bannerFormat & ~CARD_STAT_BANNER_MASK) | (f)))
 #define CARDSetIconAnim(stat, f) ((stat)->bannerFormat = (unsigned char)(((stat)->bannerFormat & ~CARD_STAT_ANIM_MASK) | (f)))
 #define CARDSetIconAddr(stat, addr) ((stat)->iconAddr = (unsigned long)(addr))
@@ -60,26 +36,7 @@ struct CARDStat {
 #define CARDSetCommentAddr(stat, addr) ((stat)->commentAddr = (unsigned long)(addr))
 
 extern "C" {
-void CARDInit();
-long CARDProbe(long);
-long CARDProbeEx(long, long*, long*);
-long CARDMountAsync(long, void*, void*, void*);
-long CARDUnmount(long);
-long CARDCheckAsync(long, void*);
 long CARDFormatAsync(long, void*);
-long CARDGetResultCode(long);
-long CARDFreeBlocks(long, long*, long*);
-long CARDGetSectorSize(long, unsigned long*);
-long CARDOpen(long, char*, CARDFileInfo*);
-long CARDFastOpen(long, long, CARDFileInfo*);
-long CARDClose(CARDFileInfo*);
-long CARDCreateAsync(long, char*, unsigned long, CARDFileInfo*, void (*)(long, long));
-long CARDDelete(long, char*);
-long CARDReadAsync(CARDFileInfo*, void*, long, long, void (*)(long, long));
-long CARDWriteAsync(CARDFileInfo*, void*, long, long, void (*)(long, long));
-long CARDWrite(CARDFileInfo*, void*, long, long);
-long CARDGetStatus(long, long, CARDStat*);
-long CARDSetStatus(long, long, CARDStat*);
 long CARDSetAttributes(long, long, unsigned char);
 }
 

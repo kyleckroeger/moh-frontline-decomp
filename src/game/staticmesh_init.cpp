@@ -6,15 +6,11 @@
 // functions are named by the symbols; the record layouts and the member and
 // inline names are inferred. The original's register use needs the writer split
 // into inline steps and the declaration order below.
-extern "C" {
-void OSReport(const char*, ...);
-void DCFlushRange(void*, unsigned long);
-struct GXTexObj { unsigned char data[32]; };
-struct GXTlutObj { unsigned char data[12]; };
-void GXInitTexObj(GXTexObj*, void*, unsigned short, unsigned short, int, int, int, unsigned char);
-void GXInitTexObjCI(GXTexObj*, void*, unsigned short, unsigned short, int, int, int, unsigned char, unsigned long);
-void GXInitTlutObj(GXTlutObj*, void*, int, unsigned short);
-}
+/* OSReport, DCFlushRange and the GX texture objects and their set-up are the SDK's (2001
+   headers). */
+#define GAME_SDK_NO_LIBC
+#include <dolphin/os.h>
+#include <dolphin/gx.h>
 
 struct Shape {
     unsigned int format : 8;
@@ -98,8 +94,8 @@ inline CMSHMatBin::CMSHMatBin(int base) {
                 int format = 9;
                 if (shape->format == 24)
                     format = 8;
-                GXInitTexObjCI(&m_texObj, shape->data, shape->width, shape->height, format, IsWrapped(m_flags), (bool)((m_flags >> 3) & 1), 0, 0);
-                GXInitTlutObj(&m_tlutObj, palette + 16, 2, *(short*)(palette + 4));
+                GXInitTexObjCI(&m_texObj, shape->data, shape->width, shape->height, (GXCITexFmt)format, (GXTexWrapMode)IsWrapped(m_flags), (GXTexWrapMode)(bool)((m_flags >> 3) & 1), 0, 0);
+                GXInitTlutObj(&m_tlutObj, palette + 16, (GXTlutFmt)2, *(short*)(palette + 4));
                 break;
             }
             case 22:
@@ -108,7 +104,7 @@ inline CMSHMatBin::CMSHMatBin(int base) {
                 if (shape->format == 30)
                     format = 14;
                 unsigned int flags = m_flags;
-GXInitTexObj(&m_texObj, shape->data, shape->width, shape->height, format, IsWrapped(flags), (bool)((flags >> 3) & 1), 0);
+GXInitTexObj(&m_texObj, shape->data, shape->width, shape->height, (GXTexFmt)format, (GXTexWrapMode)IsWrapped(flags), (GXTexWrapMode)(bool)((flags >> 3) & 1), 0);
                 break;
             }
             default:

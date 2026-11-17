@@ -1200,15 +1200,12 @@ static void EndErrorText() {
 #pragma dont_inline reset
 
 extern "C" int OSGetResetButtonState();
-extern "C" void PADRecalibrate(unsigned long);
 extern "C" void OSResetSystem(int, unsigned long, int);
 extern "C" int DVDGetDriveStatus();
 extern "C" unsigned long TIMER_gettick();
 extern "C" int TIMER_getfrequency();
-struct PADStatus {
-    unsigned short button;
-    unsigned char unknown02[10];
-};
+#define GAME_SDK_NO_LIBC
+#include <dolphin/pad.h> /* PADStatus */
 extern PADStatus gPadStatus[4];
 
 char InternalFont[25264] = {

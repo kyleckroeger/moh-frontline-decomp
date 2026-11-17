@@ -10,6 +10,7 @@
 /* The OS, ARQ, DSP, AI and AX structures and prototypes are the SDK's (2001 headers). The
    driver reads a voice's user context (the driver voice), its state and its current address. */
 #define GAME_SDK_NO_LIBC
+#include "game/GameAddr.h"
 #include <dolphin/os.h>
 #include <dolphin/ar.h>
 #include <dolphin/dsp.h>
@@ -551,7 +552,7 @@ static inline void postdma(int j, unsigned long owner, char* source, char* dest,
     snddrv.dma[j].dest = dest;
     snddrv.dma[j].length = length;
     snddrv.dma[j].field34 = *(int*)(sndgs + 372);
-    ARQPostRequest(&snddrv.dma[j].request, owner, 0, 1, (unsigned long)source, (unsigned long)dest, length, SNDDRV_dmcallback);
+    ARQPostRequest(&snddrv.dma[j].request, owner, 0, 1, (GameAddr)source, (GameAddr)dest, length, SNDDRV_dmcallback);
 }
 
 /* inferred inline helper */
@@ -964,7 +965,7 @@ static inline void postrestoredma(void* source, void* dest, int length) {
     snddrv.dma[i].dest = dest;
     snddrv.dma[i].length = length;
     snddrv.dma[i].extra = *(int*)(sndgs + 372);
-    ARQPostRequest(&snddrv.dma[i].request, id, 0, 1, (unsigned long)source, (unsigned long)dest, length,
+    ARQPostRequest(&snddrv.dma[i].request, id, 0, 1, (GameAddr)source, (GameAddr)dest, length,
                    SNDDRV_dmcallback);
     OSRestoreInterrupts(level);
     snddrv.nextdma++;
@@ -1411,7 +1412,7 @@ static inline void postplaydma(int j, unsigned long owner, void* source, unsigne
     snddrv.dma[j].destination = dest;
     snddrv.dma[j].length = length;
     snddrv.dma[j].time = SNDGS.ticks;
-    ARQPostRequest(&snddrv.dma[j].request, owner, 0, 1, (unsigned long)source, dest, length, SNDDRV_dmcallback);
+    ARQPostRequest(&snddrv.dma[j].request, owner, 0, 1, (GameAddr)source, dest, length, SNDDRV_dmcallback);
 }
 
 static inline void dmatoaram(void* source, unsigned int dest, unsigned int length) {

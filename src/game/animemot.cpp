@@ -16,15 +16,14 @@
 // through one or two typed wrappers per field, which is what sets the order of
 // their stack temporaries; the header swap EndianSwap(AnimFileFormat_t&) is an
 // inline too large to inline, so it is emitted (weak) at the end of the file.
-typedef struct ARQRequest ARQRequest;
-typedef void (*ARQCallback)(unsigned long);
+/* ARQRequest, ARQPostRequest and the OS/VI calls are the SDK's (2001 headers). */
+#define GAME_SDK_NO_LIBC
+#include "game/GameAddr.h"
+#include <dolphin/os.h>
+#include <dolphin/ar.h>
+#include <dolphin/vi.h>
 
 extern "C" {
-unsigned long OSGetTick(void);
-void DCFlushRange(void*, unsigned long);
-void VIWaitForRetrace(void);
-void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long,
-                    unsigned long, ARQCallback);
 unsigned long ARAM_alloc(void*, const char*, unsigned long, int);
 int printf(const char*, ...);
 int AnimStGetCallbackIndexFromID(int);
@@ -341,7 +340,7 @@ static inline unsigned char* DMAFrame(unsigned long src, int length) {
     OSGetTick();
     DCFlushRange(cache, size);
     g_bDMAToMRAM = true;
-    ARQPostRequest(&g_fromARAM_request, 0, 1, 1, aligned, (unsigned long)cache, size, DMAFromARAMCallback);
+    ARQPostRequest(&g_fromARAM_request, 0, 1, 1, aligned, (GameAddr)cache, size, DMAFromARAMCallback);
     while (g_bDMAToMRAM) {
     }
     cache += skip;
@@ -378,7 +377,7 @@ void UploadFramesToARAM(AnimFileFormat_t* file, unsigned char* start, unsigned c
     begin = OSGetTick();
     DCFlushRange(aligned, length);
     g_bDMAToARAM = true;
-    ARQPostRequest(&g_toARAM_request, 0, 0, 1, (unsigned long)aligned, aram, length, DMAToARAMCallback);
+    ARQPostRequest(&g_toARAM_request, 0, 0, 1, (GameAddr)aligned, aram, length, DMAToARAMCallback);
     while (g_bDMAToARAM)
         VIWaitForRetrace();
     DebugMsg("Transfered %d bytes of animation frame data to ARAM in %f seconds\n", length,
