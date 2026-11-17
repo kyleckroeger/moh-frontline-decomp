@@ -31,7 +31,10 @@
     "-fp_contract",
     "on"
   ],
-  "include_dirs": [],
+  "include_dirs": [
+    "include/dolsdk2001",
+    "include/dolsdk2001/libc"
+  ],
   "strip_unused": false,
   "source_root": "src/ea",
   "sections": [

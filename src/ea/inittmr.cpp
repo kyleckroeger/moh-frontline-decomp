@@ -1,17 +1,9 @@
 // REAL timer set-up: a periodic OS alarm posts a message to the timer thread,
 // which runs the registered timer handlers.
-struct OSAlarm {
-    unsigned char unknown00[40];
-};
-struct OSContext;
-typedef long long OSTime;
+#include <dolphin/os.h>
 enum TIMERMSG {};
 
 extern "C" {
-void OSInitAlarm(void);
-OSTime OSGetTime(void);
-void OSSetPeriodicAlarm(OSAlarm*, OSTime, OSTime, void (*)(OSAlarm*, OSContext*));
-void OSCancelAlarm(OSAlarm*);
 void REAL_addexit(void (*)(void));
 extern int TIMERhz;
 extern volatile int ticks;

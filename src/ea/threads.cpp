@@ -5,16 +5,7 @@
 // The alarm and its signal are kept together so the handler can find the
 // signal; that record, the OS structures and the tick conversion inline are
 // inferred.
-struct OSAlarm {
-    int data[10];
-};
-
-struct OSContext;
-struct OSThread;
-
-struct OSMessageQueue {
-    int data[8];
-};
+#include <dolphin/os.h>
 
 struct SIGNAL {
     int field0;
@@ -28,14 +19,9 @@ struct THREADALARM {
 };
 
 extern "C" {
-OSThread* OSGetCurrentThread(void);
 void SIGNAL_set(SIGNAL*);
 void SIGNAL_create(SIGNAL*);
 void SIGNAL_wait(SIGNAL*);
-void OSYieldThread(void);
-void OSCreateAlarm(OSAlarm*);
-void OSSetAlarm(OSAlarm*, long long, void (*)(OSAlarm*, OSContext*));
-void OSCancelAlarm(OSAlarm*);
 }
 void InitAlarm();
 

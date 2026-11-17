@@ -1,8 +1,6 @@
 // REAL mutexes on OS mutexes; destroying one poisons its first word. The
-// record's layout is inferred from offsets.
-struct OSMutex {
-    int data[6];
-};
+// record's layout is inferred from offsets. OSMutex is the SDK's (dolphin/os.h).
+#include <dolphin/os.h>
 
 struct MUTEX {
     int field0;
@@ -10,9 +8,6 @@ struct MUTEX {
 };
 
 extern "C" {
-void OSInitMutex(OSMutex*);
-void OSLockMutex(OSMutex*);
-void OSUnlockMutex(OSMutex*);
 void MEM_fill(void*, int, int);
 
 int MUTEX_create(MUTEX* mutex) {

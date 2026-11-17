@@ -1,8 +1,6 @@
 // REAL signals on an OS message queue with a single slot. The record's layout
 // is inferred from offsets.
-struct OSMessageQueue {
-    int data[8];
-};
+#include <dolphin/os.h>
 
 struct SIGNAL {
     int field0;
@@ -11,9 +9,6 @@ struct SIGNAL {
 };
 
 extern "C" {
-void OSInitMessageQueue(OSMessageQueue*, void**, int);
-int OSSendMessage(OSMessageQueue*, void*, int);
-int OSReceiveMessage(OSMessageQueue*, void*, int);
 
 int SIGNAL_create(SIGNAL* signal) {
     OSInitMessageQueue(&signal->queue, signal->message, 1);

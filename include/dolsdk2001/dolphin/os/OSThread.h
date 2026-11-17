@@ -52,6 +52,7 @@ typedef struct OSThread
     /*0x2FC*/ struct OSThreadLink linkActive;             
     /*0x304*/ u8 *stackBase; 
     /*0x308*/ u32 *stackEnd;  
+    /*0x30C*/ s32 error;  /* the game's SDK release: IdleThread, DefaultThread and TimerThread are 784 bytes */
 } OSThread;
 
 enum OS_THREAD_STATE
@@ -77,6 +78,13 @@ s32 OSSuspendThread(OSThread *thread);
 s32 OSResumeThread(OSThread* thread);
 OSThread* OSGetCurrentThread(void);
 s32 OSEnableScheduler(void);
+/* as src/dolsdk2001/os/OSThread.c declares them */
+void OSYieldThread(void);
+int OSCreateThread(struct OSThread *thread, void *(*func)(void *), void *param, void *stack, unsigned long stackSize, long priority, unsigned short attr);
+void OSExitThread(void *val);
+void OSCancelThread(struct OSThread *thread);
+int OSJoinThread(struct OSThread *thread, void *val);
+void OSDetachThread(struct OSThread *thread);
 s32 OSDisableScheduler(void);
 
 #define IsSuspended(suspend) (suspend > 0)

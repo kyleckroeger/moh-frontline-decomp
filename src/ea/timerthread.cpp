@@ -1,12 +1,6 @@
 // The REAL timer thread: a message loop that runs the timer handlers until it
-// is told to stop. OS structures are declared by size only.
-struct OSMessageQueue {
-    unsigned char unknown00[32];
-};
-
-struct OSThread {
-    unsigned char unknown00[784];
-};
+// is told to stop. The OS structures are the SDK's (dolphin/os.h).
+#include <dolphin/os.h>
 
 typedef void* OSMessage;
 
@@ -15,11 +9,6 @@ typedef void* OSMessage;
 enum TIMERMSG {};
 
 extern "C" {
-int OSCreateThread(OSThread*, void* (*)(void*), void*, void*, unsigned long, long, unsigned short);
-void OSInitMessageQueue(OSMessageQueue*, OSMessage*, long);
-long OSResumeThread(OSThread*);
-int OSSendMessage(OSMessageQueue*, OSMessage, long);
-int OSReceiveMessage(OSMessageQueue*, OSMessage*, long);
 }
 
 void ttDoTimerMsg();

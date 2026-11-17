@@ -155,7 +155,7 @@
     "src/ea/hlsfile.cpp": "c8095cd394607595fc29daf20812c5430140171a6214048367943aa62f453105",
     "src/ea/idct.cpp": "3b7bdbfcdd18cec05464d9548ab67cc8f59366ff8eb00a9fc24d3bff2e4705c3",
     "src/ea/initosalloc.cpp": "4947ccd21ff1ff25a35565783cff19911daddc3bebc8bd4b31e22056e208885a",
-    "src/ea/inittmr.cpp": "2b8bc47a5536adecefaedb4c74d54e5a0509db63fdfef428e0975b1dcabababa",
+    "src/ea/inittmr.cpp": "76a94af8f17838c0bca9b8afd52cc356c9be05a977086e5a0b2de8667219843a",
     "src/ea/initvblt.cpp": "a3a42c3bc4407ed5a92562dcfa09205e537dab818b4a2eb4be90b5277c056da6",
     "src/ea/ipad.cpp": "72f21101b39beea3c347eef99a9776527f1c1125afea2209acbac8d462232959",
     "src/ea/locatbig.cpp": "0b987ea0e326347a29edc19c2278b7c4e93bac9ce55ddc3962d70f3b92421d9a",
@@ -174,7 +174,7 @@
     "src/ea/memstd.cpp": "bdd831ad24f47d71d66682d7b32eb55077754f05d022543a80cbca4e4d4e884d",
     "src/ea/memunused.cpp": "8891e09cb882120333548c62aa2245dc6205bfa7122c8a65fa14a06e6b129fee",
     "src/ea/motion.cpp": "0792a7c20488bae449d8503e50a6250222b6ff169da603db431ae5c70c66fd90",
-    "src/ea/mutex2.cpp": "84bb5fd9e59595a55eadbe25b9bac7a9262faf5c40f7bb0cc9d23e6b0e8fbf9b",
+    "src/ea/mutex2.cpp": "7cfc545d02ef6173c81d1f4956fc9cea7ede98886861499c0d1fdb886052acc1",
     "src/ea/pad.cpp": "5f1c88e95616a21d9851f07b5f33cca5179f38b95ccc83e0b3335de21e816dc3",
     "src/ea/path.c": "384941ad44700eb82d908c51db0ad8b90c05a4bcd8916a06cbc498128f595306",
     "src/ea/path_choosebeat.cpp": "187f506764ef8ad27de0af25f72f97b0e2ef11846b08da1f58679aeae9129df0",
@@ -249,7 +249,7 @@
     "src/ea/sgetpvol.c": "01014858d4c5a5b4d701b63b2de5fe2371ec80bc3743918050253bb49a21382e",
     "src/ea/sgettag.c": "87aac6e484c3dad29d22f0042085ddcd0cdc61b350f4cc33646fb8e706143860",
     "src/ea/shipass.c": "b3560e370e4db81bb573212199f7550e798834618963ffa68c308eab0f9b9e88",
-    "src/ea/signals.cpp": "bbbc0bffb36932f5eb6cf92dc7b48e2c4b20623375a214da115ef76eacd1fcee",
+    "src/ea/signals.cpp": "a6dce261f22b05a5b3fa3868d30c0400af1783aa3a2da797badac36144ffa6ca",
     "src/ea/sinit16.c": "8c2fbac00ea3352891c4ff3634b9ad9e1cd99da8a1341c63f80b57587ee91ea6",
     "src/ea/sinitut.c": "f0c0dfcb5f4485ce2cade109eea1f912602bb6fc6cc8c8872feb1ee87a080895",
     "src/ea/sinitxa.c": "fcffafa5258c6cef1b0fc935b34c896adcd4ad7f56a4f338f399a3e20dcf5726",
@@ -341,9 +341,9 @@
     "src/ea/sx87d16.c": "c1dd596abc75c11f30754a6dba703855646d4b8f22e144410e386724486258d4",
     "src/ea/syncfile.cpp": "1124a93e16dfa598b23ce2eb2fce4d0e31b5609a4ad58910f0fc836dbe9891f3",
     "src/ea/systask.cpp": "064e88a22a3eb4ce2abeccd180f0df17d49e86028b44b3fc0a54e8cf7365d4bb",
-    "src/ea/threads.cpp": "12997dffaae3402e0b43f2f57b2718d63fb2a8251c7e8c0eb68bd57815e0d820",
+    "src/ea/threads.cpp": "21e7bd0648f3a53458f884b69c27f7acdf9b611317b84aefb3ffaabf5df6525e",
     "src/ea/timer.cpp": "5fbb8bd406632aa10e62ca1c8523eee1e88d3fcd17e3edcdf1b3d7cfd0f19708",
-    "src/ea/timerthread.cpp": "e2ee2dfbb74893029f0693bb5b76212bdd70223c892d9fd963984794c6193628",
+    "src/ea/timerthread.cpp": "aae88e6b90de99893b4f492bf3d5ef0d6d671d872800d149208698c010ad2d94",
     "src/game/AIDoodad.cpp": "7e5e7020b4ceb4513ae83e72ea089f575c39464a571ed6057278305423157742",
     "src/game/AIFilter.cpp": "70562eda267cbadd18a9b58d1672cf32e3e0db0e944b5816cc57dbe84f8cf611",
     "src/game/AIFilter_animobj_velocity.cpp": "b4d4f3c954f5de002d76af9bef16d8bf4c194ceb7abbf88a4877ba4643f53be7",
@@ -1260,7 +1260,7 @@
     "include/dolsdk2001/dolphin/os/OSRtc.h": "8cf6460a5004df727f3dc61e44847c10f3a0f799197199a18499b300da04f948",
     "include/dolsdk2001/dolphin/os/OSSerial.h": "cb13fde0dedf25c7679bd96faef8508e0e7b002cc491227b32f1c4bd7f51c37b",
     "include/dolsdk2001/dolphin/os/OSStopwatch.h": "08362febb55f48055f44fbdc9119514d2030e5d2f6dd7b7e437b2e1694304caa",
-    "include/dolsdk2001/dolphin/os/OSThread.h": "5d2690d8e8cacd9496d187912c925328b81d45fd1ae4ae55827a81b2a5f71751",
+    "include/dolsdk2001/dolphin/os/OSThread.h": "e6ca06d8b44d7e29dda230d551c39701cac53263da905e2f1ff8e8e6e53fecf2",
     "include/dolsdk2001/dolphin/os/OSTime.h": "8f779f82a0e86791b69b3c2307383db2643e0223f54ba4e19b34ad9266681dee",
     "include/dolsdk2001/dolphin/os.h": "0ddddfd6ed21e0eb840a45daeed710967cdc0993f156c40049b4990f945c4ad8",
     "include/dolsdk2001/dolphin/pad.h": "e824b1104f4951823f9048448fdbe7f134e005abbc20fa18f37edf713fcec67a",
@@ -1995,7 +1995,7 @@
     "config/GMFE69/idct.json": "aea739593ce84e955cc0ef3ee0b2dcfb57dfa9056dae44eb62e76631ae113984",
     "config/GMFE69/impact_dtor.json": "2ccb4ad00c444e93fa4a841f25357a41f7f4bf144f2d343e007c60f272e258a0",
     "config/GMFE69/initosalloc.json": "5324f4e73a3982e763bab556d4b226d91ef242cc4b14e07a057a1fe18a367ae0",
-    "config/GMFE69/inittmr.json": "7755f1641b77990ae66e1ef55ad3b56891762a7784c3a1f993f458cc6bc71f24",
+    "config/GMFE69/inittmr.json": "6844f58e3eb2f8fba1ecb468adf4d4991125647757757c57f2a222ca14f867fc",
     "config/GMFE69/initvblt.json": "554084076489dbae1fed3c4188edc39c814244a8b70ee237e98293269aee6202",
     "config/GMFE69/input.json": "94da449773e3e2b49308dc3062575d9d0b1b8e953c5ef61e3acc32ac7594825b",
     "config/GMFE69/input_init.json": "0ca05c602b95a0dcdf5fee762d358483c2f9afab8abcb0facbd6b1d933f49934",
@@ -2059,7 +2059,7 @@
     "config/GMFE69/mtx.json": "61ba8caa4839c1bb759b694d83cff465e9a2e293d606c43603098ae206217583",
     "config/GMFE69/mtx44.json": "6ec8c80e78a896f985eb769ac01b97ff684e2d83116660d2c740123270c0ddf5",
     "config/GMFE69/mtxvec.json": "bb6a4f09ca854ab9a727be34f0a20df7f53e0e081e1b83581418b88de9987009",
-    "config/GMFE69/mutex2.json": "cbb635bfa50922046e04291f526561283b36bbe5f4dcedaf00edd07b0693b16e",
+    "config/GMFE69/mutex2.json": "779aa7b9e6ababc0ab0d2946c0f0f8ca8cf115b598fe1af85e327bf2b114246b",
     "config/GMFE69/mutex_TRK.json": "c1339b6a00e96b3e2606f9882d05781f6e62b5c42a06ac18f6b3c3d3ff807a35",
     "config/GMFE69/notify.json": "c38d6c9a4082d80e5a32878f9cd688b3a1f471536d75f5c5735906a7d0084251",
     "config/GMFE69/nubevent.json": "d6afc4bc3a93eb5ab6fc791d166d4243a4fee57863e76656a656235d2e20e0f2",
@@ -2286,7 +2286,7 @@
     "config/GMFE69/shadow.json": "7a58bf93b27b904661f288a2251928b1318f04abff6c7313b6be431092c45a48",
     "config/GMFE69/shipass.json": "d500ffaf2e8649ec757e2be06b06d19cdf2a62a3cd479f1d5bc7362b8a5c0ea8",
     "config/GMFE69/signal.json": "11e4665069a531c20eb3bf1455bab453a4193e7fcc258de91c6db16275813b7f",
-    "config/GMFE69/signals.json": "1cb5c0350da656f9742c45ef5b90b13140a20386acae7e3b8932ad4e9fc2c20d",
+    "config/GMFE69/signals.json": "6d07f3a4043bdb961ecd1d35596d7b0830ac59d00b57bc7cc0dc660e628bbf97",
     "config/GMFE69/sinit16.json": "1fe69c7afc1922b89561c7e175f2611fc832431c8e7e07ebbae6e0e54c202a2e",
     "config/GMFE69/sinitut.json": "689b9132782994796219ad392cc3a0133827537356591f4c93adb2e384e70366",
     "config/GMFE69/sinitxa.json": "411b577b864a696f54ca6f728819538a238b294030608ccd59f1af782b46221e",
@@ -2433,11 +2433,11 @@
     "config/GMFE69/targsupp.json": "73bc4814aabf2a4df4c03709ef86391b70812463874428f27e20062cfb634d1b",
     "config/GMFE69/texpack.json": "e72b98cff12a06a8815f3de46a2dddeaaff0a28ea13a88b19df4444349d53607",
     "config/GMFE69/texture_load.json": "4dff02940e0fa6f17a5e2f17bcf98eab9846c56f050c870a7d5ffb72838ca9fb",
-    "config/GMFE69/threads.json": "782e84143f151e770dc3a6a375ab9b917ad2e451c6b4798c193ff06e86aea159",
+    "config/GMFE69/threads.json": "77d01c8c084fe533a9e7ab3ffba91db61a30c71e9f2b0eee4b0046b849e2455a",
     "config/GMFE69/thrown_obj.json": "b9bdeee8142d8b4be9bfb683229694b0db5d29f3865868abfa6bc03a08914e31",
     "config/GMFE69/thrownbullet.json": "6643e1f628d09487605557f078c2856a2cd2f15b6cdfd28ed2405463d93bd9d8",
     "config/GMFE69/timer.json": "ae3403f8235fadb3bdcbcd4f4648ddf27c185cdab7db3542519793fce7267534",
-    "config/GMFE69/timerthread.json": "993154fd5f472860102c81015ebb43aaf30afcf22cd46655a20003306ccdd50c",
+    "config/GMFE69/timerthread.json": "673b7ac558d33ef9aa603d2482a20dafcb87d6835ce444fc638abddfb88b2cf4",
     "config/GMFE69/toilet.json": "7195b6f700aab6e181f44fd266c5441c8bbea7ddca1118c917a9dd366ecbacf6",
     "config/GMFE69/toilet_files.json": "125e8b0156891f53bbd9b3af2e529a97a9e3755ba204de170c30bdbe32a09cee",
     "config/GMFE69/toilet_hashmap.json": "8172d069ca8e65f58722379996f7b851aac2409a27ca9de5d7b770cbb1f7e49e",
@@ -3508,8 +3508,8 @@
         "IsMember",
         "OSCheckActiveThreads"
       ],
-      "object_sha256": "bc386e977d31775742d555be3cf21c23bea284e95f010a22a78f1165b7cc0b14",
-      "linked_sha256": "30bb15c475a4150af605570c15ea6bd0dac3b59ae4139474ba2f1c2539436159"
+      "object_sha256": "2d1ced370f4eb12a5442a3516189242607409603405d2f09f9ee24aa2b0c51e7",
+      "linked_sha256": "bea5ff8e48faa002eeef563387e4b058f714b0797f2ecb5d52e6764d8de49604"
     },
     {
       "id": "OSAlloc",
@@ -4175,8 +4175,8 @@
         "GXCompressZ16",
         "GXDecompressZ16"
       ],
-      "object_sha256": "119df402b0fe619939da0716be9bd0fc4d72340661470f564dbfa40002404a49",
-      "linked_sha256": "6774d37504077e340302e5aea42cbdb266850f915ee609247601c0590ce2f086"
+      "object_sha256": "4dc58e5edbc75fe9e9d32ac0a6c74e96f0812b97cba1eb84aff039982eeb6e8f",
+      "linked_sha256": "8fa9d0568b5b84ae41adccd67fb45555b7cb54a26555f38072470014c9aeb355"
     },
     {
       "id": "AXAux",
@@ -4273,8 +4273,8 @@
         "GXGetOverflowCount",
         "GXResetOverflowCount"
       ],
-      "object_sha256": "c072ea230d509e0cb97787298190422e9caa13ac9ea307a94a523ba4518b633d",
-      "linked_sha256": "c9bc3965cbf8ac49442237e92a64b900f45d818396ee624e8b0c16d7cec3853d"
+      "object_sha256": "a2c2aef4f38a117b77240b245938573e8db578075605ca3c13aa58a52a35a120",
+      "linked_sha256": "09d79dfe09624c552011ca0779b96db72dcff333cf1e2a3b19baca8d26cb7b05"
     },
     {
       "id": "OSAlarm",
@@ -4353,8 +4353,8 @@
         "exnor",
         "GetInitVal"
       ],
-      "object_sha256": "004c6cabc1354e5503bb9c1a97929e7f9bf5d985988e41e9d1e56a231a14c08d",
-      "linked_sha256": "67e1558423665981c41167d86c6ad34a91856dfe4f60afd7ab6d8bd7b3cf7f12"
+      "object_sha256": "1e7ca7b22608a60ed33d5ecc32993e98f3a9fca9ab1f98a55ead462635a7ec87",
+      "linked_sha256": "ae0fef0b6b4fb3578b10b532715a59dae36c10314ad9fa99f08ce35ef5d91313"
     },
     {
       "id": "GXPixel",
@@ -4448,8 +4448,8 @@
         "cbForPrepareStreamSync",
         "DVDGetTransferredSize"
       ],
-      "object_sha256": "c5c9853b06682eabed872681cc683d91b7a156a41ff2b1adbd1add93e3708d6d",
-      "linked_sha256": "59ddb09de29d7d9810165f0fcb75378f4198d575d2f4f574466e89408498e58a"
+      "object_sha256": "0cd3dbc20dd2d953766d58108f39d118649ff933e91fd8e0acf953d3ea81cf2b",
+      "linked_sha256": "c376a964715ff26d0a9cbc0b10810af7592c1b3da9fb001660ebfc0a9dc19ec3"
     },
     {
       "id": "mtx44",
@@ -11347,8 +11347,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "f7f3b7c2842b16edcf35ca1ad4c148d6844152d2bb1b506c9aa0697a6d76e4aa",
-      "linked_sha256": "5e08b11618a5cca9ffd487bf011b71739a6c454b4f55b3e40f9edeea58dbd7a9"
+      "object_sha256": "3548fd48382b85116541e160a4184d9fab2598010c933da7d66b32ce1b9016f8",
+      "linked_sha256": "6cffcd1cd30b5ef857fd708d735d8085d684a55de0ead46114a20cf5ecd08ca5"
     },
     {
       "id": "inittmr",
@@ -11386,8 +11386,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "bfd1a57c6b6dbf078e031eec5b242faf7c729bde0189d83c4a6abeeb9c8b0ae0",
-      "linked_sha256": "712b630b6965645b637edeb8e2d76a07837671c5be744862a465d537520bbb76"
+      "object_sha256": "f160751c4978c3690c44dccfdd590ad8ab4cb2299b3212db2070b9ef6a55a300",
+      "linked_sha256": "8deba138fcdf2b3c6c572a9b717ff361215b5b0236850771a7ccded13b714d99"
     },
     {
       "id": "exit",
