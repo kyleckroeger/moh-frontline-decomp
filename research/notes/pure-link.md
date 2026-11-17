@@ -156,3 +156,9 @@ reporting the message's string pointers. `research/probes/strlen_check_probe.cpp
 - Tried and dropped: tracing SDK and library functions too. With the OS/EXI/SI/cache functions the image
   doesn't boot; without them it crashes in MSL's printf path (some library functions don't survive a
   moved first instruction). entry_trace.py stays game-only.
+
+**Draft fix (05:40).** ShellInit (flagged `differs`): the loading screen's four vertices have the colour
+0x80808080 in the original (128 is full intensity in GX vertex colours), not 0xffffffff. The draft's
+vertex table is now byte-identical to the original's (.rodata 0x801784a8) and the draft was proven
+again on route_menu (8,829 lines). check_draft still says `differs` because the two versions point
+into the table at different words, which is codegen; the data is the same.

@@ -176,10 +176,10 @@ void CShellMenu::ShellInit(unsigned long time) {
     file = StartScreen(name);
     sprite = new CSprite(file, (CSprite::ESpriteLoadType)1, (ERenderPriority)52);
     _spritepolyvert verts[4] = {
-        {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0xffffffff},
-        {1.0f, 0.0f, 640.0f, 0.0f, 0.0f, 0xffffffff},
-        {1.0f, 1.0f, 640.0f, 448.0f, 0.0f, 0xffffffff},
-        {0.0f, 1.0f, 0.0f, 448.0f, 0.0f, 0xffffffff},
+        {0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0x80808080},
+        {1.0f, 0.0f, 640.0f, 0.0f, 0.0f, 0x80808080},
+        {1.0f, 1.0f, 640.0f, 448.0f, 0.0f, 0x80808080},
+        {0.0f, 1.0f, 0.0f, 448.0f, 0.0f, 0x80808080},
     };
     for (i = 0; i < 2; i++) {
         sprite->DrawPoly(verts, 4, (CSprite::EPolyPrimType)5);
