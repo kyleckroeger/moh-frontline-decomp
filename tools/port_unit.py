@@ -13,7 +13,7 @@ import struct
 from pathlib import Path
 
 from audit import load_target
-from data_strip import linker_stripped, pool_item, section_chunks, strip_objects
+from data_strip import linker_stripped, pool_item, rtti_base_lists, section_chunks, strip_objects
 from formats import Elf32
 from sdk_build import compile_sdk
 from setup import CONFIG, ROOT
@@ -487,6 +487,8 @@ def draft(args):
                                    "sections": data_sections}, check_kept=False))
         _, objects = linker_stripped(obj, unit)
         stubs = {s["name"] for s in objects}
+    # A duplicate RTTI record's base list goes with it (nothing else refers to it).
+    stubs |= rtti_base_lists(obj, set(args.weak_duplicate) | set(args.file_duplicate))
     try:
         addresses, externals, layout, discarded, pool = match(obj, original, file_index, set(args.weak_duplicate),
                                                              set(args.pool), set(args.file_duplicate), stubs)
@@ -497,7 +499,7 @@ def draft(args):
     sections, stripped = [], []
     dropped = discarded or args.weak_duplicate or args.file_duplicate
     duplicates = set(args.weak_duplicate) | set(args.file_duplicate)
-    if stubs and not {f["name"] for f in discarded} >= set(unit["linker_stripped"].get("functions", [])):
+    if stubs and not {f["name"] for f in discarded} >= set(unit.get("linker_stripped", {}).get("functions", [])):
         raise ValueError("A linker-stripped function is in the original")
     for section in obj.sections:
         if not section["flags"] & 2 or not section["size"] or section["name"] in args.pool:

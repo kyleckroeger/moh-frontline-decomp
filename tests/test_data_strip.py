@@ -8,7 +8,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'tools'))
 from audit import load_target
-from data_strip import strip_objects
+from data_strip import rtti_base_lists, strip_objects
 from formats import Elf32
 from project_build import check_pool, validate_object, validate_units
 from setup import CONFIG
@@ -74,6 +74,16 @@ class DataStripping(unittest.TestCase):
             validate_units(self.original, [unit])
         except ValueError as error:
             self.assertNotIn('Cannot strip an object present in the target', str(error))
+
+    def test_a_duplicate_rtti_record_takes_its_base_list(self):
+        path = self.build / 'units/debug_prof_register/compiled.o'
+        if not path.exists():
+            self.skipTest('debug_prof_register not built')
+        obj = Elf32(path.read_bytes())
+        lists = rtti_base_lists(obj, {'__RTTI__10CRenderBin'})
+        self.assertEqual(len(lists), 1)
+        self.assertTrue(next(iter(lists)).startswith('@'))
+        self.assertEqual(rtti_base_lists(obj, {'__RTTI__14CRenderBinData'}), set())
 
     def test_weak_binding_is_checked_before_linking(self):
         compiled = (self.build / 'units/ctype/compiled.o').read_bytes()

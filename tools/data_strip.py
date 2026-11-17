@@ -265,6 +265,31 @@ def linker_stripped(obj, unit):
     return functions, list(removed.values())
 
 
+def rtti_base_lists(obj, names):
+    """The compiler-numbered base lists (`@N`) that the named RTTI records point at.
+
+    A duplicate RTTI record (another unit places the original) takes its base list
+    with it: nothing else refers to the list."""
+    symbols = list(obj.symbols())
+    objects = [s for s in symbols if s["type"] == STT_OBJECT and s["size"] and 0 < s["section"] < 0xFF00]
+    records = [s for s in objects if s["name"] in names and s["name"].startswith("__RTTI__")]
+    found = set()
+    for rela in obj.sections:
+        if rela["type"] != 4:
+            continue
+        for entry in range(0, rela["size"], 12):
+            where, info, addend = struct.unpack_from(">IIi", obj.contents(rela), entry)
+            target = symbols[info >> 8]
+            for record in records:
+                if record["section"] == rela["info"] and where == record["address"] + 4:
+                    offset = target["address"] + addend
+                    for o in objects:
+                        if (o["section"] == target["section"] and o["address"] == offset
+                                and o["name"].startswith("@")):
+                            found.add(o["name"])
+    return found
+
+
 def natural_alignment(size):
     """Largest power of two up to 8 dividing an object's size."""
     alignment = 1
