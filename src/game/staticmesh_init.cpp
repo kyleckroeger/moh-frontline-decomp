@@ -43,12 +43,12 @@ static inline unsigned char* GetPalette(Shape* shape) {
 }
 
 struct CRenderBinData {
-    CRenderBinData() : data00(0), m_next(0), m_children(0), data0c(0), data10(0), m_priority(3) {}
-    CMSHMatBin* data00;
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
+    CMSHMatBin* m_prev;
     CMSHMatBin* m_next;
     CMSHMatBin* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };
@@ -245,7 +245,7 @@ void CStaticMesh::Init() {
         bin = new (mat) CMSHMatBin(base);
         if (prev)
             prev->m_next = bin;
-        bin->data00 = prev;
+        bin->m_prev = prev;
         prev = bin;
     }
     mat2 = m_mesh->alphaMaterials;
@@ -254,7 +254,7 @@ void CStaticMesh::Init() {
         new (mat2) CMSHMatBin(base);
         if (prev2)
             prev2->m_next = mat2;
-        mat2->data00 = prev2;
+        mat2->m_prev = prev2;
         prev2 = mat2;
     }
     chunk = m_mesh->chunks;

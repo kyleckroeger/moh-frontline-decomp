@@ -47,31 +47,14 @@ class CRenderBin;
    members are inferred (CRenderBin::Init walks children from +8 through the
    siblings at +4, IsUsed tests +16, +20 is the render priority, 3 by
    default). */
-struct CRenderBinData {
-    CRenderBinData() : data00(0), m_next(0), m_children(0), data0c(0), data10(0), m_priority(3) {}
 
-    int data00;
-    CRenderBin* m_next;
-    CRenderBin* m_children;
-    int data0c;
-    int data10;
-    int m_priority;
-    int data18;
-};
 
 /* CRenderBin's virtuals in table order; all are weak (inline) in the
    original. Init's and IsUsed's bodies are not part of this view, so they
    are declared without one, which also keeps CRenderBin's table out of this
    unit. */
-class CRenderBin : public CRenderBinData {
-public:
-    CRenderBin() {}
-    virtual ~CRenderBin() {}
-    virtual int Render(CDmaPacket&, void*) { return 0; }
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&) {}
-    virtual bool IsUsed();
-};
+#include "game/CRenderBin.h"
+
 
 class CUcodeRenderBin : public CRenderBin {
 public:

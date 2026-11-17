@@ -155,15 +155,15 @@ extern ConfigView g_config;
 
 class CRenderBinData {
 public:
-    CRenderBinData() : m_prev(0), m_next(0), m_bins(0), m_count0c(0), m_count10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
     CRenderBin* m_prev;
     CRenderBin* m_next;
-    CRenderBin* m_bins;
-    int m_count0c;
-    int m_count10;
+    CRenderBin* m_children;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
-    int m_field18;
+    int data18;
 };
 
 class CRenderBin : public CRenderBinData {
@@ -430,8 +430,8 @@ void CSprite::Unload() {
 }
 
 __declspec(weak) void CSprite::Init() {
-    m_count0c = 0;
-    m_count10 = 0;
-    for (CRenderBin* bin = m_bins; bin; bin = bin->m_next)
+    m_lastTag = 0;
+    m_firstTag = 0;
+    for (CRenderBin* bin = m_children; bin; bin = bin->m_next)
         bin->Init();
 }

@@ -40,6 +40,8 @@ PROVIDES = {
     "CCamera": {"types": ["IMovingSceneNode", "CPlane", "IDestructible", "ISubject", "IObserver",
                           "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId"]},
     "CInputManager": {"types": ["CDeviceManager", "CGCDevice", "CGCActuatorView"]},
+    # CRenderBin.h has its non-polymorphic base
+    "CRenderBin": {"types": ["CRenderBinData"]},
     "CPlayerObject": {"types": ["IMovingSceneNode", "CCamera", "CPlane", "IDestructible", "ISubject", "IObserver",
                                 "CVector3XYZW", "CVector3Data", "CVector3Pair"], "enums": ["EClsnId", "EWeaponTypes"]},
     "CScreen": {"types": ["CColor", "CRect", "GXRenderModeObj", "_GXRenderModeObj", "CScreenFieldMode",

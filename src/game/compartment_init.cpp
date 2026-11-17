@@ -44,14 +44,14 @@ class CDmaTag;
 // CRenderBin's non-polymorphic base, so the virtual table pointer is at +0x1c (see
 // renderlist_finish.cpp, which reads it there).
 struct CRenderBinData {
-    CRenderBinData() : m_prev(0), m_next(0), m_head(0), m_tail(0), m_field10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_head(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
     class CRenderBin* m_prev;
     class CRenderBin* m_next;
     class CRenderBin* m_head;
-    class CRenderBin* m_tail;
-    int m_field10;
+    class CRenderBin* m_lastTag;
+    int m_firstTag;
     int m_priority;
-    int m_field18;
+    int data18;
 };
 
 class CRenderBin : public CRenderBinData {

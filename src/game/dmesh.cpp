@@ -40,15 +40,15 @@ class CDmaPacket;
 
 class CRenderBinData {
 public:
-    CRenderBinData() : m_field0(0), m_field4(0), m_field8(0), m_fieldC(0), m_field10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
-    int m_field0;
-    int m_field4;
-    int m_field8;
-    int m_fieldC;
-    int m_field10;
+    int m_prev;
+    int m_next;
+    int m_children;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
-    int m_field18;
+    int data18;
 };
 
 class CRenderBin : public CRenderBinData {
@@ -246,23 +246,23 @@ void CDMesh::Draw(CDrawContext& context, DMRenderObject_T* object) {
     for (unsigned long i = 0; i < object->partCount; i++) {
         CPartBin* part = &m_parts[entry->part];
         if (part->m_flags & 0x200) {
-            CRemapBin* remap = (CRemapBin*)part->m_field8;
+            CRemapBin* remap = (CRemapBin*)part->m_children;
             while (remap) {
                 if (remap->m_remapData == part->m_texture)
                     break;
-                remap = (CRemapBin*)remap->m_field4;
+                remap = (CRemapBin*)remap->m_next;
             }
             if (!remap) {
                 remap = &_remap_pool[_remap_next++];
-                remap->m_fieldC = 0;
-                remap->m_field10 = 0;
+                remap->m_lastTag = 0;
+                remap->m_firstTag = 0;
                 remap->m_bin = part;
                 remap->m_remapData = part->m_texture;
-                remap->m_field0 = 0;
-                remap->m_field4 = part->m_field8;
-                if ((CRemapBin*)part->m_field8)
-                    ((CRemapBin*)part->m_field8)->m_field0 = (int)remap;
-                part->m_field8 = (int)remap;
+                remap->m_prev = 0;
+                remap->m_next = part->m_children;
+                if ((CRemapBin*)part->m_children)
+                    ((CRemapBin*)part->m_children)->m_prev = (int)remap;
+                part->m_children = (int)remap;
             }
             _renderList->Render(*remap, object);
         } else {
@@ -378,8 +378,8 @@ void CDMesh::Init(bool weapon) {
             }
             if (!(m_flags & 8)) {
                 if (previous)
-                    previous->m_field4 = (int)part;
-                part->m_field0 = (int)previous;
+                    previous->m_next = (int)part;
+                part->m_prev = (int)previous;
                 previous = part;
             }
             if (m_flags & 0x10)
@@ -388,20 +388,20 @@ void CDMesh::Init(bool weapon) {
         if (m_partCount) {
             CPartBin* old;
             if (weapon) {
-                old = (CPartBin*)_DMRenderBinWeapon.m_field8;
-                _DMRenderBinWeapon.m_field8 = (int)m_parts;
+                old = (CPartBin*)_DMRenderBinWeapon.m_children;
+                _DMRenderBinWeapon.m_children = (int)m_parts;
             } else {
-                old = (CPartBin*)_DMRenderBin.m_field8;
-                _DMRenderBin.m_field8 = (int)m_parts;
+                old = (CPartBin*)_DMRenderBin.m_children;
+                _DMRenderBin.m_children = (int)m_parts;
             }
             if (m_flags & 8) {
-                m_parts[0].m_field4 = (int)old;
+                m_parts[0].m_next = (int)old;
                 if (old)
-                    old->m_field0 = (int)m_parts;
+                    old->m_prev = (int)m_parts;
             } else {
-                m_parts[m_partCount - 1].m_field4 = (int)old;
+                m_parts[m_partCount - 1].m_next = (int)old;
                 if (old)
-                    old->m_field0 = (int)&m_parts[m_partCount - 1];
+                    old->m_prev = (int)&m_parts[m_partCount - 1];
             }
         }
         m_flags |= 1;
@@ -415,8 +415,8 @@ void CDMesh::InitClass(CRenderList* list) {
     _renderList = list;
     _renderList->Register(_DMRenderBin);
     _renderList->Register(_DMRenderBinWeapon);
-    _DMRenderBin.m_field8 = (int)&_finish_bin;
-    _DMRenderBinWeapon.m_field8 = (int)&_finish_bin_weapon;
+    _DMRenderBin.m_children = (int)&_finish_bin;
+    _DMRenderBinWeapon.m_children = (int)&_finish_bin_weapon;
     _remap_next = 0;
 }
 

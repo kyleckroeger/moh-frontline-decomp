@@ -101,6 +101,7 @@ Run these from the repository root, after `tools/setup.py` and `tools/audit.py`.
 | `pure_link.py [--probe FILE...] [--output ELF] [--probe-space N]` | Link the pure-source image with GNU ld: every unit, draft and data file, no original bytes, at a fresh layout (endgame W1; `notes/pure-link.md`) |
 | `pure_data_check.py [ELF]` | Compare the pure image's initialised data with the original's, object by object, relocated words masked |
 | `pure_align_check.py [ELF]` | List data objects the original has 32-byte aligned that the pure image doesn't (DMA lands 16 bytes early; the route 1_2 bug) |
+| `rename_members.py CLASS [--apply] [--only UNIT...]` | One spelling per data member of CLASS: map each unit view's members to the header's by offset (DWARF), rename token by token, verify each unit with one_unit.py, revert failures (W2.3; `notes/shared-headers.md`) |
 | `gen_vtable_stopgap.py` | Write `data_stopgap/vtables.cpp`: the vtables (and RTTI) still undefined in the pure-source link, slot by slot from the original's relocations |
 | `entry_trace.py ELF OUT [--units-from PATTERN]` | Log the first entry of every game function in a `--probe-space` image, through EFB reads Dolphin logs |
 | `boot_probe.py ELF OUT SYMBOL...` | Replace each symbol's first instruction with a logged BAT write, to see whether a direct boot reached it |

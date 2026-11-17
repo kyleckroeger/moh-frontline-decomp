@@ -18,13 +18,13 @@ void DebugMsg(const char*, ...);
 class CRenderBin;
 
 struct CRenderBinData {
-    CRenderBinData() : m_prev(0), m_next(0), m_children(0), data0c(0), data10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
     CRenderBin* m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };

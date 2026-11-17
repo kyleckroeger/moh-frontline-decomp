@@ -16,8 +16,8 @@ struct CRenderBinData {
     CRenderBin* m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };

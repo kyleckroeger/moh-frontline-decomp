@@ -13,11 +13,11 @@ class CRenderBin;
 
 /* CRenderBin's non-polymorphic base (see dmesh_cremapbin_ctor.cpp). */
 struct CRenderBinData {
-    int data00;
+    int m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };
@@ -39,14 +39,14 @@ public:
 };
 
 __declspec(weak) void CRenderBin::Init() {
-    data0c = 0;
-    data10 = 0;
+    m_lastTag = 0;
+    m_firstTag = 0;
     for (CRenderBin* child = m_children; child; child = child->m_next)
         child->Init();
 }
 
 __declspec(weak) bool CRenderBin::IsUsed() {
-    return data10 != 0;
+    return m_firstTag != 0;
 }
 
 CTextureSwapCache::~CTextureSwapCache() {

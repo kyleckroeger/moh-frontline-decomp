@@ -45,25 +45,11 @@ struct ShapeFile {
 class CRenderBin;
 
 /* CRenderBin's non-polymorphic base (see dmesh_cremapbin_ctor.cpp). */
-struct CRenderBinData {
-    CRenderBin* data00;
-    CRenderBin* m_next;
-    CRenderBin* m_children;
-    int data0c;
-    int data10;
-    int m_priority;
-    int data18;
-};
+
 
 /* CRenderBin's virtuals in table order. */
-class CRenderBin : public CRenderBinData {
-public:
-    virtual ~CRenderBin();
-    virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
-    virtual void Link(CDmaTag*, CDmaPacket&);
-    virtual bool IsUsed();
-};
+#include "game/CRenderBin.h"
+
 
 class CUcodeRenderBin : public CRenderBin {
 public:
@@ -173,7 +159,7 @@ void CParticleSystemManager::Link(CDmaTag*, CDmaPacket& packet) {
 
 void CPropertyParticleSystem::Link(CDmaTag*, CDmaPacket& packet) {
     bool load = true;
-    if (data00 && m_shape == ((CPropertyParticleSystem*)data00)->m_shape)
+    if (m_prev && m_shape == ((CPropertyParticleSystem*)m_prev)->m_shape)
         load = false;
     if (load)
         m_shape->m_texture.Load(packet, 0);

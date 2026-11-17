@@ -541,3 +541,27 @@ views (d.v[i]) or other member spellings (m_value30, m_flag38).
 of line (capsule.cpp, fiber.cpp), the destructor plus the 17 slots in __vt__ order (IVolume's 16, then
 TestCollision(const CCSGVolume&)). Members: capsule radius at +0xc and axis CLine3 at +0x10; fiber
 CLine3 at +0x10. 2 units moved each; 18 no_compile each (own IVolume/CVector3 views, other spellings).
+
+## Member renames: CRenderBin (2026-11-17, afternoon; research/tools/rename_members.py)
+
+Decision 2026-11-17: one spelling per data member, one class at a time, data members only.
+`rename_members.py CLASS` reads every unit view's layout from DWARF (bases flattened), maps each
+member to the header's by offset and size, and renames token by token (comments and strings left
+alone), then verifies each changed unit with one_unit.py and reverts any that fail. A header name
+that is a placeholder (dataXX) yields to the most common real name among the views.
+- Header first: CRenderBin.h's placeholders took renderlist.cpp's names and types (the owner of the
+  tag chain): `CRenderBin* m_prev` (+0x00), `CDmaTag* m_lastTag` (+0x0c), `CDmaTag* m_firstTag`
+  (+0x10). IsUsed compiles the same for a pointer (neg/or/srwi). All 21 units on the header still
+  verify. At +0x0c the views were split one each between m_tail, m_lastTag and m_count0c; the
+  renderlist pair was chosen by hand.
+- Renames: 23 units, 132 lines, all verified. Skipped: a name another class in the same file also
+  has as a member (a token rename would rename it too; ISceneNode's data0c/data10 in decal_dtor,
+  skybox, decal_reset, compartment_shadowbins), and compartment_init's m_head (shared likewise).
+- try_header.py now lists CRenderBinData in PROVIDES for CRenderBin (the overnight run dropped it by
+  hand). Re-measured: 2 kept, 43 lost, 4 no_compile; move_header.py moved **3 more**
+  (decal_link, decal_reset, particlesystem_link): **24 units on CRenderBin.h**.
+- What blocks the other 42 is no longer spelling: "Compiler data layout differs from manifest"
+  (about 20), "Unexpected compiler function set" or "allocated compiler output" (about 15), pooled
+  literals ("Stripped object is not one compiler object", 3), file duplicates (2). The header's
+  inline virtuals make each unit emit CRenderBin's weak table and copies, which those units'
+  manifests don't have. That is a manifest/stripping problem for move_header, not a naming one.

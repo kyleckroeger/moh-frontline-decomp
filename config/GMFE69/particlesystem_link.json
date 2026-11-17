@@ -33,9 +33,10 @@
   ],
   "include_dirs": [
     "include/dolphin-sdk",
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
@@ -102,7 +103,8 @@
     "Load__8CTextureFR10CDmaPacketP11CRenderList": "0x80082a60",
     "g_ParticleCounter": "0x8034ea44",
     "g_ParticleCounterMax": "0x8034ea48",
-    "g_RenderTypeCache": "0x8034ea40"
+    "g_RenderTypeCache": "0x8034ea40",
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket": "0x80076e20"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -129,5 +131,8 @@
       "size": 27,
       "address": "0x80170de0"
     }
+  ],
+  "weak_duplicates": [
+    "Link__10CRenderBinFP7CDmaTagR10CDmaPacket"
   ]
 }

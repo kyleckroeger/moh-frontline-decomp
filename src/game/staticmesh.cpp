@@ -22,15 +22,15 @@ class CDmaPacket;
 
 class CRenderBinData {
 public:
-    CRenderBinData() : m_field0(0), m_field4(0), m_field8(0), m_fieldC(0), m_field10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
-    int m_field0;
-    int m_field4;
-    int m_field8;
-    int m_fieldC;
-    int m_field10;
+    int m_prev;
+    int m_next;
+    int m_children;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
-    int m_field18;
+    int data18;
 };
 
 class CRenderBin : public CRenderBinData {

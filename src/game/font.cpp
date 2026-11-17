@@ -36,13 +36,13 @@ class CRenderBin;
    siblings at +4, IsUsed tests +16, +20 is the render priority, 3 by
    default). */
 struct CRenderBinData {
-    CRenderBinData() : data00(0), m_next(0), m_children(0), data0c(0), data10(0), m_priority(3) {}
+    CRenderBinData() : m_prev(0), m_next(0), m_children(0), m_lastTag(0), m_firstTag(0), m_priority(3) {}
 
-    int data00;
+    int m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };

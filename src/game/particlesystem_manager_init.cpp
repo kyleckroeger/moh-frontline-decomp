@@ -14,8 +14,8 @@ public:
     CRenderBinData* m_prev;
     CRenderBinData* m_next;
     CRenderBinData* m_children;
-    int data0c;
-    int data10;
+    int m_lastTag;
+    int m_firstTag;
     int m_priority;
     int data18;
 };
@@ -42,8 +42,8 @@ bool CParticleSystemManager::IsUsed() {
 }
 
 void CParticleSystemManager::Init() {
-    data0c = 0;
-    data10 = 0;
+    m_lastTag = 0;
+    m_firstTag = 0;
     for (CRenderBinData* bin = m_children; bin; bin = bin->m_next)
         ((CRenderBin*)bin)->Init();
     m_children = 0;

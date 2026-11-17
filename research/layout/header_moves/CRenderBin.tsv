@@ -5,49 +5,46 @@ compartment_bins	scratch/try/compartment_bins/src/compartment_bins.cpp	lost	Unex
 compartment_ccptmatbin_dtor	scratch/try/compartment_ccptmatbin_dtor/src/compartment_ccptmatbin_dtor.cpp	lost	Unexpected compiler function set
 compartment_cptmaterial_dtor	scratch/try/compartment_cptmaterial_dtor/src/compartment_cptmaterial_dtor.cpp	lost	Unexpected compiler function set
 compartment_draw	scratch/try/compartment_draw/src/compartment_draw.cpp	lost	Unexpected compiler function set
-compartment_init	scratch/try/compartment_init/src/compartment_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\compartment_init.cpp # ------------------------------------
+compartment_init	scratch/try/compartment_init/src/compartment_init.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_init.cpp # ------------------------------------ #     252: CUcodeRenderBin(int priority) : CRenderBin(priority) {}
 compartment_initclass	scratch/try/compartment_initclass/src/compartment_initclass.cpp	lost	Unexpected compiler function set
-compartment_renderbin	scratch/try/compartment_renderbin/src/compartment_renderbin.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\compartment_renderbin.cpp # -----------------------------------------
+compartment_renderbin	scratch/try/compartment_renderbin/src/compartment_renderbin.cpp	lost	Unexpected compiler function set
 compartment_renderbin_dtor	scratch/try/compartment_renderbin_dtor/src/compartment_renderbin_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_renderbin_dtor.cpp # ---------------------------------------------- #      16: __declspec(weak) CRenderBin::~CRenderBin() {
-compartment_shadowbins	scratch/try/compartment_shadowbins/src/compartment_shadowbins.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\compartment_shadowbins.cpp # ------------------------------------------
-debug_prof	scratch/try/debug_prof/src/debug_prof.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\debug_prof.cpp # ------------------------------
-debug_prof_bins	scratch/try/debug_prof_bins/src/debug_prof_bins.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\debug_prof_bins.cpp # -----------------------------------
+compartment_shadowbins	scratch/try/compartment_shadowbins/src/compartment_shadowbins.cpp	lost	Unexpected compiler function set
+debug_prof	scratch/try/debug_prof/src/debug_prof.cpp	lost	Unexpected compiler function set
+debug_prof_bins	scratch/try/debug_prof_bins/src/debug_prof_bins.cpp	lost	Unexpected compiler function set
 debug_prof_cdbgstatsrenderbin_dtor	scratch/try/debug_prof_cdbgstatsrenderbin_dtor/src/debug_prof_cdbgstatsrenderbin_dtor.cpp	lost	Unexpected compiler function set
 debug_prof_cprofhistrenderbin_dtor	scratch/try/debug_prof_cprofhistrenderbin_dtor/src/debug_prof_cprofhistrenderbin_dtor.cpp	lost	Unexpected compiler function set
-debug_prof_register	scratch/try/debug_prof_register/src/debug_prof_register.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\debug_prof_register.cpp # ---------------------------------------
+debug_prof_register	scratch/try/debug_prof_register/src/debug_prof_register.cpp	lost	Unexpected compiler function set
 decal	scratch/try/decal/src/decal.cpp	lost	Unexpected compiler function set
-decal_dtor	scratch/try/decal_dtor/src/decal_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\decal_dtor.cpp # ------------------------------
-decal_link	scratch/try/decal_link/src/decal_link.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\decal_link.cpp # ------------------------------
-decal_reset	scratch/try/decal_reset/src/decal_reset.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\decal_reset.cpp # -------------------------------
-dmesh	scratch/try/dmesh/src/dmesh.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\dmesh.cpp # -------------------------
-dmesh_bins	scratch/try/dmesh_bins/src/dmesh_bins.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\dmesh_bins.cpp # ------------------------------
+decal_dtor	scratch/try/decal_dtor/src/decal_dtor.cpp	lost	Stripped object is not one compiler object: @43
+decal_link	scratch/try/decal_link/src/decal_link.cpp	kept	
+decal_reset	scratch/try/decal_reset/src/decal_reset.cpp	kept	
+dmesh	scratch/try/dmesh/src/dmesh.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\dmesh.cpp # ------------------------- #     247: ((CRemapBin*)part->m_children)->m_prev = (int)remap;
+dmesh_bins	scratch/try/dmesh_bins/src/dmesh_bins.cpp	lost	Unexpected compiler function set
 dmesh_cdmrenderbin_dtor	scratch/try/dmesh_cdmrenderbin_dtor/src/dmesh_cdmrenderbin_dtor.cpp	lost	Unexpected compiler function set
-dmesh_cremapbin_ctor	scratch/try/dmesh_cremapbin_ctor/src/dmesh_cremapbin_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\dmesh_cremapbin_ctor.cpp # ----------------------------------------
-fader	scratch/try/fader/src/fader.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\fader.cpp # -------------------------
-font	scratch/try/font/src/font.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\font.cpp # ------------------------
-motionblur	scratch/try/motionblur/src/motionblur.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\motionblur.cpp # ------------------------------
-particlesystem	scratch/try/particlesystem/src/particlesystem.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem.cpp # ----------------------------------
-particlesystem_active	scratch/try/particlesystem_active/src/particlesystem_active.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\particlesystem_active.cpp # ----------------------------------------- #     187: bin->m_prev = 0;
-particlesystem_beginupdate	scratch/try/particlesystem_beginupdate/src/particlesystem_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_beginupdate.cpp # ----------------------------------------------
+dmesh_cremapbin_ctor	scratch/try/dmesh_cremapbin_ctor/src/dmesh_cremapbin_ctor.cpp	lost	Unexpected compiler function set
+fader	scratch/try/fader/src/fader.cpp	lost	Unexpected compiler function set
+font	scratch/try/font/src/font.cpp	lost	Unexpected compiler function set
+motionblur	scratch/try/motionblur/src/motionblur.cpp	lost	Unexpected compiler function set
+particlesystem	scratch/try/particlesystem/src/particlesystem.cpp	lost	Unexpected compiler function set
+particlesystem_active	scratch/try/particlesystem_active/src/particlesystem_active.cpp	lost	Compiled source bytes differ: particlesystem_active .text
 particlesystem_cinstancedparticlesystem_dtor	scratch/try/particlesystem_cinstancedparticlesystem_dtor/src/particlesystem_cinstancedparticlesystem_dtor.cpp	lost	Unexpected compiler function set
 particlesystem_cparticlesystem_dtor	scratch/try/particlesystem_cparticlesystem_dtor/src/particlesystem_cparticlesystem_dtor.cpp	lost	Unexpected compiler function set
-particlesystem_cpropertyparticlesystem_dtor	scratch/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_cpropertyparticlesystem_dtor.cpp # ---------------------------------------------------------------
+particlesystem_cpropertyparticlesystem_dtor	scratch/try/particlesystem_cpropertyparticlesystem_dtor/src/particlesystem_cpropertyparticlesystem_dtor.cpp	lost	Unexpected compiler function set
 particlesystem_create	scratch/try/particlesystem_create/src/particlesystem_create.cpp	lost	Compiled source bytes differ: particlesystem_create .text
-particlesystem_link	scratch/try/particlesystem_link/src/particlesystem_link.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_link.cpp # ---------------------------------------
+particlesystem_link	scratch/try/particlesystem_link/src/particlesystem_link.cpp	lost	Unexpected compiler function set
 particlesystem_manager_dtor	scratch/try/particlesystem_manager_dtor/src/particlesystem_manager_dtor.cpp	lost	Unexpected compiler function set
-particlesystem_manager_init	scratch/try/particlesystem_manager_init/src/particlesystem_manager_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_manager_init.cpp # -----------------------------------------------
-particlesystem_register	scratch/try/particlesystem_register/src/particlesystem_register.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_register.cpp # -------------------------------------------
-particlesystem_reset	scratch/try/particlesystem_reset/src/particlesystem_reset.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_reset.cpp # ----------------------------------------
-particlesystem_texturebin_dtor	scratch/try/particlesystem_texturebin_dtor/src/particlesystem_texturebin_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\particlesystem_texturebin_dtor.cpp # --------------------------------------------------
-projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
-renderlist	scratch/try/renderlist/src/renderlist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\renderlist.cpp # ------------------------------
-skybox	scratch/try/skybox/src/skybox.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\skybox.cpp # --------------------------
-sprite	scratch/try/sprite/src/sprite.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\sprite.cpp # --------------------------
-staticmesh	scratch/try/staticmesh/src/staticmesh.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\staticmesh.cpp # ------------------------------
+particlesystem_manager_init	scratch/try/particlesystem_manager_init/src/particlesystem_manager_init.cpp	lost	Unexpected compiler function set
+particlesystem_register	scratch/try/particlesystem_register/src/particlesystem_register.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\particlesystem_register.cpp # ------------------------------------------- #      71: g_ParticleSystemManager.m_bins->InsertAfter(bin);
+particlesystem_texturebin_dtor	scratch/try/particlesystem_texturebin_dtor/src/particlesystem_texturebin_dtor.cpp	lost	Unexpected compiler function set
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	lost	Stripped object is not one compiler object: @808
+renderlist	scratch/try/renderlist/src/renderlist.cpp	lost	Unexpected compiler function set
+skybox	scratch/try/skybox/src/skybox.cpp	lost	Pool item size differs: .rodata+0xe8
+sprite	scratch/try/sprite/src/sprite.cpp	lost	Stripped object is not one compiler object: @498
+staticmesh	scratch/try/staticmesh/src/staticmesh.cpp	lost	Unexpected compiler function set
 staticmesh_cmshmatbin_dtor	scratch/try/staticmesh_cmshmatbin_dtor/src/staticmesh_cmshmatbin_dtor.cpp	lost	Unexpected compiler function set
 staticmesh_cmshsimplebin_dtor	scratch/try/staticmesh_cmshsimplebin_dtor/src/staticmesh_cmshsimplebin_dtor.cpp	lost	Unexpected compiler function set
 staticmesh_draw	scratch/try/staticmesh_draw/src/staticmesh_draw.cpp	lost	Unexpected compiler function set
-staticmesh_init	scratch/try/staticmesh_init/src/staticmesh_init.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\staticmesh_init.cpp # -----------------------------------
+staticmesh_init	scratch/try/staticmesh_init/src/staticmesh_init.cpp	lost	Unexpected compiler function set
 staticmesh_initclass	scratch/try/staticmesh_initclass/src/staticmesh_initclass.cpp	lost	Unexpected compiler function set
 staticmesh_mshmaterial_dtor	scratch/try/staticmesh_mshmaterial_dtor/src/staticmesh_mshmaterial_dtor.cpp	lost	Unexpected compiler function set
-staticmesh_simplebin	scratch/try/staticmesh_simplebin/src/staticmesh_simplebin.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CRenderBin.h #    From: ..\src\staticmesh_simplebin.cpp # ----------------------------------------

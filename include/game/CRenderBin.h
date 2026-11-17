@@ -8,9 +8,11 @@
 // by compartment_renderbin.cpp (Init, IsUsed), compartment_bins.cpp (Render returns 0, Link does
 // nothing) and compartment_renderbin_dtor.cpp (the destructor), whose bodies these follow.
 //
-// Inferred, not in any mangled name: the data members, named as compartment_renderbin.cpp names them
-// (Init clears +0x0c and +0x10 and walks the children list at +0x08 through each child's +0x04;
-// IsUsed tests +0x10); the priority at +0x14 from the constructors that set it.
+// Inferred, not in any mangled name: the data members. The list links and the tag chain are named as
+// renderlist.cpp names them (Register/UnRegister link bins through +0x00 and +0x04; a bin's DMA tag
+// chain runs from the first tag at +0x10 to the last at +0x0c), the children list at +0x08 as
+// compartment_renderbin.cpp's Init walks it (through each child's +0x04); IsUsed tests +0x10; the
+// priority at +0x14 from the constructors that set it. One spelling per member: rename_members.py.
 #ifndef GAME_CRENDERBIN_H
 #define GAME_CRENDERBIN_H
 
@@ -19,11 +21,11 @@ class CDmaTag;
 class CRenderBin;
 
 struct CRenderBinData {
-    int data00;
+    CRenderBin* m_prev;
     CRenderBin* m_next;
     CRenderBin* m_children;
-    int data0c;
-    int data10;
+    CDmaTag* m_lastTag;
+    CDmaTag* m_firstTag;
     int m_priority;
     int data18;
 };
@@ -33,13 +35,13 @@ public:
     virtual ~CRenderBin() {}
     virtual int Render(CDmaPacket&, void*) { return 0; }
     virtual void Init() {
-        data0c = 0;
-        data10 = 0;
+        m_lastTag = 0;
+        m_firstTag = 0;
         for (CRenderBin* child = m_children; child; child = child->m_next)
             child->Init();
     }
     virtual void Link(CDmaTag*, CDmaPacket&) {}
-    virtual bool IsUsed() { return data10 != 0; }
+    virtual bool IsUsed() { return m_firstTag != 0; }
 };
 
 #endif
