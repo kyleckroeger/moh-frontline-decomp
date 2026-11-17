@@ -4,4 +4,12 @@
 #include <dolphin/vi/vifuncs.h>
 #include <dolphin/vi/vitypes.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

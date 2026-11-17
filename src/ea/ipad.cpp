@@ -9,27 +9,14 @@
 // in pad.cpp); the functions and globals are named by the symbols. vgPadStatus
 // is written by the sampling callback, so it is volatile (the original keeps
 // its stores in order).
-struct PADStatus {
-    unsigned short button;
-    signed char stickX;
-    signed char stickY;
-    signed char substickX;
-    signed char substickY;
-    unsigned char triggerLeft;
-    unsigned char triggerRight;
-    unsigned char analogA;
-    unsigned char analogB;
-    signed char err;
-};
+#define GAME_SDK_NO_LIBC
+#include <dolphin/pad.h>
 
 typedef void (*PADSamplingCallback)(void);
 
 extern "C" {
 PADSamplingCallback PADSetSamplingCallback(PADSamplingCallback);
-void PADRead(PADStatus*);
-void PADClamp(PADStatus*);
 void* MEM_copy(void*, const void*, int);
-int PADReset(unsigned long);
 unsigned long SIProbe(int);
 int OSDisableInterrupts(void);
 int OSRestoreInterrupts(int);

@@ -34,41 +34,19 @@ struct _FILE;
 typedef _FILE FILE;
 }
 using std::FILE;
-struct OSThread {
-    unsigned char unknown000[784];
-};
-struct OSMessageQueue {
-    unsigned char unknown00[32];
-};
+#define GAME_SDK_NO_LIBC
+#include <dolphin/os.h>
+#include <dolphin/dvd.h>
 typedef void* OSMessage;
 
-struct DVDFileInfo {
-    unsigned char commandBlock[48];
-    unsigned long startAddr;
-    unsigned long length;
-    void* callback;
-};
-
 extern "C" {
-int OSCreateThread(OSThread*, void* (*)(void*), void*, void*, unsigned long, long, unsigned short);
-void OSInitMessageQueue(OSMessageQueue*, OSMessage*, long);
-long OSResumeThread(OSThread*);
-long OSSuspendThread(OSThread*);
-int OSSendMessage(OSMessageQueue*, OSMessage, int);
 FILE* fopen(const char*, const char*);
 int fclose(FILE*);
 int fseek(FILE*, long, int);
 long ftell(FILE*);
 unsigned long fwrite(const void*, unsigned long, unsigned long, FILE*);
 void REAL_abortmessage(const char*, ...);
-long DVDConvertPathToEntrynum(const char*);
-int DVDFastOpen(long, DVDFileInfo*);
-int DVDClose(DVDFileInfo*);
-int DVDReadAsyncPrio(DVDFileInfo*, void*, long, long, void (*)(long, DVDFileInfo*), long);
-long DVDGetDriveStatus();
-void DCInvalidateRange(void*, unsigned long);
 void MEM_copy(void*, const void*, int);
-int OSReceiveMessage(OSMessageQueue*, OSMessage*, int);
 unsigned long fread(void*, unsigned long, unsigned long, FILE*);
 void THREAD_yield(int);
 extern unsigned char __lower_map[];
@@ -212,7 +190,7 @@ int openfile(const char* name, unsigned int mode, HANDLE_def* handle) {
                 path[k] = name[k];
         }
         path[k] = name[k];
-        entry = DVDConvertPathToEntrynum(path);
+        entry = DVDConvertPathToEntrynum((char*)path);
         if (entry == -1) {
             result = 0;
         } else {

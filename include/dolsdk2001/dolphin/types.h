@@ -37,11 +37,16 @@ typedef int BOOL;
 #define NULL ((void*)0)
 #endif
 
+/* The SDK units here rely on these; the real SDK's types.h has none of them. Game and EA
+   files that declare their own C library functions define GAME_SDK_NO_LIBC before including
+   SDK headers (research/notes/sdk-views.md). */
+#ifndef GAME_SDK_NO_LIBC
 #include "libc/stdio.h"
 #include "libc/stdarg.h"
 #include "libc/string.h"
 #include "libc/ctype.h"
 
 #include "cmath.h"
+#endif
 
 #endif

@@ -60,14 +60,10 @@
 // under the mutex and spin when none is free; iFILE_perror does nothing.
 // FILESYS_close and FILESYS_callbackop are inlined into FILESYS_delbig.
 // FileMutex, gFileDevice and the record helpers are file-static.
-struct OSMutex {
-    unsigned char unknown00[24];
-};
+#define GAME_SDK_NO_LIBC
+#include <dolphin/os.h>
 
 extern "C" {
-void OSInitMutex(OSMutex*);
-void OSLockMutex(OSMutex*);
-void OSUnlockMutex(OSMutex*);
 bool THREAD_iscurrent(int);
 void SYNCTASK_run(int);
 void THREAD_yield(int);

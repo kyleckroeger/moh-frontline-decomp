@@ -6,15 +6,8 @@
 // EOpenMode come from the mangled symbols and the statics from their symbols;
 // the open-file slot layout (an in-use flag and the DVD file information, 64
 // bytes) is inferred.
-struct DVDFileInfo {
-    unsigned char unknown00[60];
-};
-
-extern "C" {
-void DVDInit();
-int DVDOpen(const char*, DVDFileInfo*);
-int DVDClose(DVDFileInfo*);
-}
+#define GAME_SDK_NO_LIBC
+#include <dolphin/dvd.h>
 
 enum ESeekOrigin {};
 enum EOpenMode {};
@@ -62,7 +55,7 @@ int File_Open(const char* name, EOpenMode) {
         }
     }
     open = &g_openFiles[slot];
-    if (!DVDOpen(name, &open->info))
+    if (!DVDOpen((char*)name, &open->info))
         return -1;
     open->used = true;
     g_iNumOpenFiles++;

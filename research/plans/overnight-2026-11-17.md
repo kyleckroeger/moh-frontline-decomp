@@ -31,8 +31,10 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - 00:40 Loop started. Verified 1,285,620 B (90.88%), source_link 0 undefined (stopgap).
 - ~01:30 Item 1 done (research/notes/sdk-views.md: 17 files, 6 address casts). Item 2 started:
   mutex2, inittmr, signals, threads, timerthread on dolsdk2001's os.h. The 2001 OSThread header
-  was fixed to the game's 784 bytes (+error) and given its missing prototypes. Next: filesys (ea),
-  filedev, then DVDFileInfo/PADStatus.
+  was fixed to the game's 784 bytes (+error) and given its missing prototypes.
+- ~01:15 filesys_ea, filedev, pad, ipad, game filesys moved (GAME_SDK_NO_LIBC opt-out in types.h;
+  extern "C" guards added to nine 2001 headers). Next: snddrv.c/sdspmix.c (ARQ, _AXVPB, address
+  typedef), MemoryCardGC, staticmesh_init, animemot, Moh2's PADStatus.
 
 ## Questions for the morning
 

@@ -65,3 +65,11 @@ is recorded here.
   thread prototypes it was missing (OSYieldThread, OSCreateThread, ...). All OS units still verify.
 - Moved onto `<dolphin/os.h>` (dolsdk2001), each verified: mutex2, inittmr, signals, threads,
   timerthread.
+- The 2001 SDK headers needed two fixes for C++ users. (1) `dolphin/types.h` pulled in libc
+  (stdio, string, ctype, cmath), which the real SDK's doesn't. Those includes now sit behind
+  `#ifndef GAME_SDK_NO_LIBC`: game/EA files that declare their own C library define it before
+  including SDK headers, and the SDK units are unchanged. (2) dvd.h, pad.h, ar.h, ax.h, vi.h, si.h,
+  dsp.h, dtk.h and exi.h had no `extern "C"` for C++, so the names were mangled.
+- Moved and verified: filesys_ea (OSMutex), filedev (OSThread, OSMessageQueue, DVDFileInfo; the
+  call casts its path to `char*` as the SDK prototype takes), pad and ipad (PADStatus), game
+  filesys (DVDFileInfo).

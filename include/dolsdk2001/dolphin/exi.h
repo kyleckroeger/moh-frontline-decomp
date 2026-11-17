@@ -3,6 +3,10 @@
 
 #include <dolphin/os/OSContext.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef void (*EXICallback)(s32 chan, OSContext *context);
 
 EXICallback EXISetExiCallback(s32 channel, EXICallback callback);
@@ -23,5 +27,9 @@ BOOL EXIDetach(s32 channel);
 u32 EXIGetState(s32 channel);
 s32 EXIGetID(s32 channel, u32 device, u32* id);
 void EXIProbeReset(void);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

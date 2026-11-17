@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolsdk2001",
+    "include/dolsdk2001/libc"
   ],
   "strip_unused": false,
   "source_root": "src/game",
