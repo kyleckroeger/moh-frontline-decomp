@@ -89,7 +89,7 @@ consistent	0.986	1.000	211	2944	GenerateTestSplinePath__13CAISplinePathFRC20CAIS
 consistent	0.789	1.000	202	836	__ct__17CProfileInitClassFv	True	0	0	research/drafts/debug_prof_misc.cpp	route_menu@e4e29f09
 code_exact	1.000	1.000	0	72	__dt__Q24RCMP11RCMP_SYSTEMFv	True	0	0	research/drafts/rcmpbase_system.cpp	
 consistent	1.000	1.000	None	76	__sinit_rcmpbase_cpp	True	0	0	research/drafts/rcmpbase_system.cpp	route_menu@d9c279c3
-consistent	0.859	0.942	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp	route_menu@4b6c5e99
+consistent	0.859	0.942	None	1128	__sinit_compartment_cpp	True	0	0	research/drafts/compartment_init.cpp	route_menu@38caa3f4
 differs	0.752	0.967	854	4532	RenderSystem__15CParticleSystemFR10CDmaPacket	True	0	7	research/drafts/particlesystem_render.cpp	m1_opening_gx@1c514b2e
 consistent	0.894	0.923	256	1032	BIFunc_MPAddPlayerHealth__FPPiPv	True	0	0	research/drafts/bsbifunc_multiplayer.cpp	
 consistent	0.685	0.966	1016	3936	BIFunc_UpdateFragCount__FPPiPv	False	0	0	research/drafts/bsbifunc_multiplayer.cpp	m1_opening@267e0cd7

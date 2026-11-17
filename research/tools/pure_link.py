@@ -154,7 +154,7 @@ def symbols(path):
     return list(Elf32(Path(path).read_bytes()).symbols())
 
 
-def plan(units, drafts, data):
+def plan(units, drafts, data, probes=(), probe_origin=None):
     found = sl.resolve(units, drafts, data)
     tables = {o: sl.table(o) for o in units + drafts + data}
     unit_defs = set().union(*(tables[o][0] for o in units))
@@ -189,10 +189,11 @@ def plan(units, drafts, data):
     # a draft's). Statics reached from another fragment with extern are
     # renamed in the reaching objects too. Statics of the same name in other files stay apart.
     origin = original_files(units, drafts, data)
+    origin.update(probe_origin or {})
     rename = collections.defaultdict(dict)
     WRITABLE = {".data", ".sdata", ".bss", ".sbss"}
     defs = collections.defaultdict(list)      # (file, base name) -> [(object, real name, binding)]
-    for o in units + data + drafts:
+    for o in units + data + drafts + list(probes):
         elf = Elf32(Path(o).read_bytes())
         for sym in elf.symbols():
             if sym["type"] != 1 or not (0 < sym["section"] < 0xFF00) or not sym["name"] or sym["name"].startswith(("@", "...")):
@@ -214,7 +215,8 @@ def plan(units, drafts, data):
             sizes[(o, real)] = sym["size"] if sym else -1
     # The copy that stays: one with the original's size (a draft's view may be larger or smaller),
     # then a data file's, then a unit's (verified code), then a draft's.
-    unify_rank = lambda d: (sizes.get((d[0], d[1])) not in orig_sizes.get(re.sub(r"\$\d+$", "", d[1]), {sizes.get((d[0], d[1]))}),
+    unify_rank = lambda d: (d[0] in probes,
+                            sizes.get((d[0], d[1])) not in orig_sizes.get(re.sub(r"\$\d+$", "", d[1]), {sizes.get((d[0], d[1]))}),
                             0 if d[0] in data else 1 if d[0] in units else 2, d[0])
     merged = {}
     for (f, base), copies in defs.items():
@@ -517,6 +519,10 @@ def override_object(names):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--jobs", type=int, default=4)
+    ap.add_argument("--probe", nargs="*", default=[],
+                    help="test harnesses (research/probes/*.cpp, input_script.py output): each is compiled with its "
+                         "'// settings:' line and replaces the functions its '// replaces:' lines name")
+    ap.add_argument("--output", default=str(OUT / "Moh2RelGC_pure.elf"))
     a = ap.parse_args()
     units = sorted(str(p) for p in (ROOT / "build/reconstruction/units").glob("*/compiled.o")
                    if json_exists(p))
@@ -525,12 +531,32 @@ def main():
         print("failed to compile:", ", ".join(sorted(failed)))
     drafts = [o for s, _, o in built if s.startswith("research/drafts/")]
     data = [o for s, _, o in built if s.startswith(("research/data/", "research/data_stopgap/"))]
-    weaken, globalize, rename, stripped, notes = plan(units, drafts, data)
+    probes, replaced, probe_origin = [], set(), {}
+    for path in a.probe:
+        from check_data import compile_file
+        text = Path(path).read_text()
+        m = re.search(r"//\s*settings:\s*(\S+)", text)
+        obj, log = compile_file(Path(path), m.group(1) if m else sl.DEFAULT_SETTINGS)
+        if not obj:
+            raise SystemExit(f"probe {path} does not compile:\n{log}")
+        dst = OUT / (Path(path).stem + ".probe.o")
+        OUT.mkdir(parents=True, exist_ok=True)
+        shutil.copy(obj, dst)
+        fix_sda21(dst)
+        probes.append(str(dst))
+        replaced |= set(re.findall(r"//\s*replaces:\s*(\S+)", text))
+        cfg = json.load(open(ROOT / (m.group(1) if m else sl.DEFAULT_SETTINGS)))
+        probe_origin[str(dst)] = cfg.get("original_file")
+    weaken, globalize, rename, stripped, notes = plan(units, drafts, data, probes, probe_origin)
+    for o in units + data + drafts:
+        names = {x["name"] for x in symbols(o) if x["section"] and 0 < x["section"] < 0xFF00 and x["binding"] in (1, 2)}
+        for n in replaced & names:
+            weaken[o].add(n)
     OUT.mkdir(parents=True, exist_ok=True)
     override = sorted(set((OUT / "vt_override.txt").read_text().split())) if (OUT / "vt_override.txt").exists() else []
     for _ in range(3):
-        r, objs, errors = link(units, data, drafts, weaken, globalize, rename, stripped, override)
-        bad = vtable_mismatches(OUT / "Moh2RelGC_pure.elf") if r.returncode == 0 else []
+        r, objs, errors = link(units, data, drafts, weaken, globalize, rename, stripped, override, probes, a.output)
+        bad = vtable_mismatches(a.output) if r.returncode == 0 else []
         if not bad:
             break
         override = sorted(set(override) | set(bad))
@@ -549,7 +575,7 @@ def main():
     return r.returncode
 
 
-def link(units, data, drafts, weaken, globalize, rename, stripped, override):
+def link(units, data, drafts, weaken, globalize, rename, stripped, override, probes=(), output=None):
     weaken = {o: set(v) for o, v in weaken.items()}
     generate = []
     if override:
@@ -567,7 +593,7 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override):
                     weaken.setdefault(o, set()).add(n)
             if not good:
                 generate.append(n)                   # no copy matches: the original's, generated
-    objs = prepare(units + data + drafts, weaken, globalize, rename)
+    objs = prepare(units + data + drafts + list(probes), weaken, globalize, rename)
     origin = original_files(units, drafts, data)
     renamed = {o: p for o, p in zip(units + data + drafts, objs)}
     placed = bss_placement(units + data + drafts, origin)
@@ -585,7 +611,7 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override):
     subprocess.run([str(ROOT / "build/tools/powerpc-eabi-as"), "-mgekko", "-o", str(OUT / "stripped.o"), str(stub)],
                    check=True)
     extra = [override_object(generate)] if generate else []
-    cmd = [str(LD), "-T", str(OUT / "link.ld"), "-o", str(OUT / "Moh2RelGC_pure.elf"),
+    cmd = [str(LD), "-T", str(OUT / "link.ld"), "-o", str(output or OUT / "Moh2RelGC_pure.elf"),
            "--no-warn-mismatch", "--no-check-sections", "-z", "max-page-size=0x20", f"@{OUT / 'objects.rsp'}", str(OUT / "stripped.o"), *extra]
     r = subprocess.run(cmd, capture_output=True, text=True)
     (OUT / "link.log").write_text(r.stdout + r.stderr)

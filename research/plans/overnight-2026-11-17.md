@@ -46,6 +46,9 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
   CShellMenu::ShellInit, then crashes: compartment's draft static initializer has the wrong
   .bss layout (research/notes/pure-link.md). Fixed along the way: SDA21 relocation offsets (MWCC
   +2), segments, file-static merging, section anchors, per-file .bss layout, vtable checks.
+- ~02:25 compartment draft statics fixed (re-proven on route_menu): the pure-source image boots like the
+  original (no exception, 3 movies). pure_link --probe added. Route 1_2 reaches the level, then a runaway
+  read during level load. Next: bisect that.
 
 ## Questions for the morning
 

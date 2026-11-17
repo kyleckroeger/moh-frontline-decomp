@@ -31,7 +31,7 @@ GNU ld at a fresh layout and no original bytes, into `build/pure/Moh2RelGC_pure.
    definition made global (`__start.c`'s `__init_registers`, reached from inline asm), or else a
    trap stub.
 
-**Where it stops (2026-11-17 02:30):** the image boots through `__start`, OSInit (banner, arena),
+**Where it stopped at 02:00:** the image boots through `__start`, OSInit (banner, arena),
 `MEM_init`, `InitCORE` and the static constructors, then crashes in `CShellMenu::ShellInit` >
 `WaitRenderList` > `CRenderList::Finish` > `FinishBin`: `g_CptSimpleBin` was never constructed. Its
 constructor is in `__sinit_compartment_cpp`, which exists only in the draft
@@ -48,3 +48,24 @@ Debugging aids:
 - `research/tools/boot_probe.py` checks whether execution reaches a symbol before OSInit (BAT-write
   probe).
 - The crash log's register dump and stack (`dolphin_boot.py run`), symbolised with `nm -n`.
+
+**02:20: it boots like the original.** The compartment draft's statics now follow the original's
+order and sizes: render-bin views of 36 and 32 bytes instead of 48 and 44, a 104-byte 8-byte-aligned
+CCompartment view, and the two matrices it lacked. Its `.bss` then overlays the units' block.
+The draft is still `consistent` and was proven again on route_menu (8,887 trace lines identical,
+`__sinit_compartment_cpp` entered). The pure-source image now boots with no exception and plays the
+three intro movies, with the same 72 log lines as the original ELF.
+
+**Probes.** `pure_link.py --probe P.cpp ... --output X.elf` links test harnesses as link_drafts.py
+does: each probe replaces the functions its `// replaces:` lines name (the game's copies are
+weakened), and its own statics merge with its file's (the clock probe's `g_bSwap` is Screen.cpp's).
+
+**Route 1_2 (02:25).** With the route_1_2, clock and level probes, the image plays the menu into level
+1_2 (94 trace lines, the player at -5.1 21.1 0.5 at update 2790). Then, while the level loads (after
+FRAME 2850), a runaway read walks through Dolphin's EFB range ("Unimplemented Z+Color EFB read"
+millions of times; the log grew to 2.5 GB and was deleted). FRAME 1470 already differs from the
+control (an intro movie frame; 1530 is the known timing-dependent one). The all-drafts link_drafts
+image plays this route to the end, so the cause is in the pure link: a static still split between
+fragments, a `.data` copy that differs, a draft's data view, or layout. Next: bisect it. Swap units'
+and drafts' copies of the file statics they touch while loading a level, or link with
+`--probe` plus a reach probe at the loader functions.

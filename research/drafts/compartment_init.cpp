@@ -249,7 +249,8 @@ public:
     int m_field5c;
     bool m_field60;
     bool m_field61;
-};
+    unsigned char unknown62[6]; /* 104 bytes, 8-byte aligned, as the original's g_GlobalCpt */
+} __attribute__((aligned(8)));
 
 class CUcodeRenderBin : public CRenderBin {
 public:
@@ -264,7 +265,7 @@ public:
     virtual void Link(CDmaTag*, CDmaPacket&);
     virtual bool IsUsed();
     bool m_field20;
-    unsigned char unknown21[15];
+    unsigned char unknown21[3]; /* 36 bytes, as the original's g_CptSimpleBin */
 };
 class CCptShadowCleanUpBin : public CRenderBin {
 public:
@@ -272,7 +273,7 @@ public:
     virtual ~CCptShadowCleanUpBin();
     virtual void Link(CDmaTag*, CDmaPacket&);
     virtual bool IsUsed();
-    unsigned char unknown[0xc];
+    /* 32 bytes, as the original's g_CptShadowCleanUpBin */
 };
 class CCptShadowBin : public CUcodeRenderBin {
 public:
@@ -280,8 +281,7 @@ public:
     virtual ~CCptShadowBin();
     virtual int Render(CDmaPacket&, void*);
     virtual void Link(CDmaTag*, CDmaPacket&);
-    int m_field20;
-    unsigned char unknown24[12];
+    int m_field20; /* 36 bytes, as the original's g_CptShadowBin */
 };
 struct TextureSwapEntry {
     unsigned short m_frames : 3;
@@ -316,14 +316,19 @@ public:
     static bool s_ClassInit;
 } __attribute__((aligned(16)));
 
+/* The file's .bss in the original's order (compartment_draw.cpp has the same block): the
+   destructor-chain records come out before each object with a destructor. */
+CMatrix g_ModelToScreenMatrix;
 CMatrix g_ModelToClipMatrix;
 CMatrix g_ClipToScreenMatrix;
-CMatrix g_ModelToScreenMatrix;
+static float g_WorldToCameraGCMatrix[3][4];
+static float g_CamPos[4];
 CCompartment g_GlobalCpt;
 CCptSimpleBin g_CptSimpleBin(2);
 CCptSimpleBin g_CptSimpleAlphaBin(4);
-CCptShadowCleanUpBin g_CptShadowCleanUpBin;
+extern CCptShadowCleanUpBin g_CptShadowCleanUpBin;
 CCptShadowBin g_CptShadowBin(&g_CptShadowCleanUpBin);
+CCptShadowCleanUpBin g_CptShadowCleanUpBin;
 CTextureSwapCache g_TextureSwapCache;
 
 struct TextureCacheView {
