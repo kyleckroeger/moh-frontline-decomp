@@ -105,3 +105,10 @@ and drafts' copies of the file statics they touch while loading a level, or link
   deterministic.
 - Next: an interactive Dolphin debugger session (break on the first EFB read and read LR and the
   stack), or entry_trace with the clock probe, accepting slips.
+
+**04:10.** Also ruled out tonight: (1) the drafts' extra static initialisers. Each draft holds a
+whole fragment, so 8 of the 10 drafts with .ctors re-ran their file's initialiser after the unit's.
+pure_link now keeps .ctors only in the drafts of a `__sinit` function (53 entries, as in the
+original), and the failure stays. (2) Private copies of other files' globals: only 2, both SDK.
+(3) Merged statics are all .bss (57), .sbss (24) or .sdata (7), and every object holding a merged
+.bss static is placed in its file's layout. The failure is deterministic and still unexplained.

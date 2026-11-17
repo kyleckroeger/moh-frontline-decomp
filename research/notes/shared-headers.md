@@ -432,3 +432,21 @@ Not moved (code changes): GetFront(CAIFilterRealVector3&) in the two CCoverPoint
 CVector3 operator[] (GetExtents, UpdateBoundingBox), own CDBVector/CDBPlane constructors
 (TestCDBBranchNodeCollision), SaveAmmo, hash_map iterator/find_next/Resize, list(int), SExtent
 operator<, CScene container members (SweepAllExtents, CScene::Draw's CPlane/CCamera/CScreen).
+
+## IVolume (2026-11-17, overnight)
+
+`include/game/IVolume.h`: the destructor and 16 virtuals in __vt__7IVolume's order, all inline as in the
+original (weak copies 0x8001c078..0x8001c138, placed by volume_query_test.cpp, whose bodies the header
+follows): the tests report no collision, Create returns 0, TransformedCopy and GetExtents do nothing.
+Result types are inferred (bool, IVolume*).
+
+try_header.py IVolume (research/layout/header_moves/IVolume.tsv): 78 units with their own view.
+- 4 kept, moved: AIFilter_mechchecker_dtor, cdbgeom_fiber, cdbobject_init, static_obj_type.
+- 34 lost: the header's inline virtuals make a unit that emits a derived table compile weak copies
+  of all 17. Those units need them listed as weak duplicates, or keep a view with out-of-line
+  declarations, the pattern most fragments use to keep a table out.
+- 40 don't compile: derived views declare `int TestCollision(...)` overrides, which conflict with the
+  header's bool. Their result type has to be settled first (EClsnState in Rising Sun, an enum).
+Next for this class: settle the result type across the derived volume views (CVolBox, CVolSphere,
+CVolCapsule, CCDBObject, CCDBVolBox, CWorldVolume, CAnimatedVolume, CVolFiber), then move the lost
+units with weak-duplicate entries.

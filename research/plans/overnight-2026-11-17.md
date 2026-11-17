@@ -56,6 +56,8 @@ next one. Use ninja -j4 / --jobs 4 and ulimit -v. Don't run more than one Dolphi
 - ~03:30 W3.1: CPartBin::Link (5 natural helper/initialisation variants, all worse) and DrawNode (an FPR swap)
   give nothing new tonight. Built entry_trace.py and dolphin_direct.py for W1. The failure isn't
   layout-dependent. Next: W2.3 shared headers (try_header.py), which serves the port more than more near-misses.
+- ~04:10 IVolume.h written; 4 units moved onto it (verified); 34 lost and 40 no_compile, analysed
+  in shared-headers.md. pure_link drops the drafts' duplicate .ctors (route 1_2 still fails).
 
 ## Questions for the morning
 

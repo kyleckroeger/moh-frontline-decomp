@@ -27,24 +27,8 @@ public:
     unsigned char unknown10 : 7;
 };
 
-class IVolume {
-public:
-    virtual ~IVolume();
-    virtual IVolume* Create() const;
-    virtual void TransformedCopy(const IVolume&, const CMatrix&);
-    virtual bool TestCollision(const IVolume&, CCollision&, bool) const;
-    virtual bool TestCollision(const CVolBox&, CCollision&, bool) const;
-    virtual bool TestCollision(const CVolSphere&, CCollision&, bool) const;
-    virtual bool TestCollision(const CVolCapsule&, CCollision&, bool) const;
-    virtual bool TestCollision(const CCDBObject&, CCollision&, bool) const;
-    virtual bool TestCollision(const CVolFiber&, CCollision&, bool) const;
-    virtual bool TestCollision(const CAnimatedVolume&, CCollision&, bool) const;
-    virtual bool TestCollision(const CWorldVolume&, CCollision&, bool) const;
-    virtual bool TestCollision(CVector3, CCollision&, bool) const;
-    virtual bool TestCollision(const CLine3&, CCollision&, bool) const;
-    virtual bool TestCollision(const CPlane&, CCollision&, bool) const;
-    virtual bool TestCollision(const CTriangle&, CCollision&, bool) const;
-};
+#include "game/IVolume.h"
+
 
 class CCSGVolume : public IVolume {};
 

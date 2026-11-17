@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""dolphin_direct.py ELF SECS: boot an ELF directly with Dolphin.exe -e (Dolphin then knows its
+"""dolphin_direct.py ELF SECS WORKDIR: boot an ELF directly with Dolphin.exe -e (Dolphin then knows its
 symbols and its MI log names invalid MMIO writes); leaves user/Logs/dolphin.log in the work dir.
 Used with boot_probe.py and entry_trace.py (research/notes/pure-link.md)."""
 # direct.py ELF SECS: boot ELF directly in Dolphin (Dolphin then knows its symbols); leave user/Logs/dolphin.log
 import sys, json, subprocess, os, shutil
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
 import dolphin_boot as d
-W='/mnt/c/Users/kylec/AppData/Local/Temp/mohf-dolphin'
+W = sys.argv[3]  # dolphin_boot.py's --work directory
 shutil.copy(sys.argv[1], os.path.join(W,'direct.elf'))
 cfg=json.load(open(os.path.join(W,'dolphin_boot.json')))
 log=os.path.join(W,'user','Logs','dolphin.log')

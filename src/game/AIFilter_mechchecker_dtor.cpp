@@ -20,10 +20,8 @@ public:
 };
 }
 
-class IVolume {
-public:
-    virtual ~IVolume();
-};
+#include "game/IVolume.h"
+
 
 class CVolFiber : public IVolume {
 public:

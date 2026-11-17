@@ -63,10 +63,8 @@ template <class T> void offsetPtr(T*& pointer, int base);
 
 #include "game/CVector3.h"
 
-class IVolume {
-public:
-    virtual ~IVolume();
-};
+#include "game/IVolume.h"
+
 
 class CCDBObject : public IVolume {
 public:

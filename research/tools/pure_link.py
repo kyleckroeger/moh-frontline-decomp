@@ -20,6 +20,8 @@ original files work as one file would:
     anchors         MWCC reaches a file's statics through a section anchor (`...bss.0` +
                     offset); those relocations are pointed at the static's own symbol first,
                     so that merging the static moves them too.
+    ctors           a draft compiles its fragment's whole file, static initialiser included: only
+                    the drafts of a __sinit function keep their .ctors entry.
     weak copies     a unit's weak functions placed at their original address (the verified
                     copies) are made strong, so another fragment's copy can't win.
     SDA21           MWCC records R_PPC_EMB_SDA21 at the instruction's low halfword; GNU ld
@@ -447,6 +449,15 @@ def strengthen(path, names):
     Path(path).write_bytes(data)
 
 
+DROP_CTORS = set()
+
+
+def drafts_without_sinit(drafts):
+    """Drafts that aren't the draft of a file's static initialiser (research/drafts/index.tsv)."""
+    own = own_functions()
+    return {o for o in drafts if not any(f.startswith("__sinit_") for f in own.get(Path(o).stem.replace(".weak", ""), ()))}
+
+
 def prepare(objs, weaken, globalize, rename, strong=None):
     """Copy each object with its symbol changes; return the paths to link."""
     work = OUT / "objs"
@@ -472,6 +483,11 @@ def prepare(objs, weaken, globalize, rename, strong=None):
         if args:
             subprocess.run([str(OBJCOPY), *args, src, str(dst) + ".g"], check=True)
             src = str(dst) + ".g"
+        if o in DROP_CTORS:
+            # A draft holds a whole fragment, so it compiles its file's static initialiser again;
+            # the units already run it. Only a draft of the initialiser itself keeps .ctors.
+            subprocess.run([str(OBJCOPY), "-R", ".ctors", "-R", ".rela.ctors", src, str(dst) + ".c"], check=True)
+            src = str(dst) + ".c"
         weak = [f"--weaken-symbol={name}" for name in sorted(weaken.get(o, ()))]
         if weak:  # a separate pass: objcopy weakens before it globalizes
             subprocess.run([str(OBJCOPY), *weak, src, str(dst)], check=True)
@@ -646,6 +662,8 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override, pro
                     weaken.setdefault(o, set()).add(n)
             if not good:
                 generate.append(n)                   # no copy matches: the original's, generated
+    DROP_CTORS.clear()
+    DROP_CTORS.update(drafts_without_sinit(drafts))
     objs = prepare(units + data + drafts + list(probes), weaken, globalize, rename, verified_weak_copies(units))
     origin = original_files(units, drafts, data)
     renamed = {o: p for o, p in zip(units + data + drafts, objs)}
@@ -657,7 +675,7 @@ def link(units, data, drafts, weaken, globalize, rename, stripped, override, pro
         script = script.replace("@BSS_MAPPED@", "\n".join(lines))
     script = script.replace("@SBSS_MAPPED@", "")
     (OUT / "link.ld").write_text(script)
-    (OUT / "bss_placed.txt").write_text("".join(f"{n} {off:#x} {Path(o).name}\n" for n, v in placed.items() for o, off in v))
+    (OUT / "bss_placed.txt").write_text("".join(f"{n} {off:#x} {renamed[o]}\n" for n, v in placed.items() for o, off in v))
     (OUT / "objects.rsp").write_text("\n".join(objs) + "\n")
     stub = OUT / "stripped.s"
     stub.write_text(".text\n" + "".join(f'.globl "{n}"\n"{n}":\n  trap\n' for n in stripped))

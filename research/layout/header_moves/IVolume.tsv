@@ -1,0 +1,79 @@
+unit	source	status	detail
+AIFilter_collisiondist	scratch/try/AIFilter_collisiondist/src/AIFilter_collisiondist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\AIFilter_collisiondist.cpp # ------------------------------------------
+AIFilter_linechecks	scratch/try/AIFilter_linechecks/src/AIFilter_linechecks.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\AIFilter_linechecks.cpp # ---------------------------------------
+AIFilter_mechchecker_dtor	scratch/try/AIFilter_mechchecker_dtor/src/AIFilter_mechchecker_dtor.cpp	kept	
+AIFilter_visit	scratch/try/AIFilter_visit/src/AIFilter_visit.cpp	lost	Unexpected compiler function set
+PathNodeList_disable	scratch/try/PathNodeList_disable/src/PathNodeList_disable.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\PathNodeList_disable.cpp # ---------------------------------------- #      38: } __attribute__((aligned(16)));
+Soldier_object_bounds	scratch/try/Soldier_object_bounds/src/Soldier_object_bounds.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\Soldier_object_bounds.cpp # -----------------------------------------
+Soldier_object_ctor	scratch/try/Soldier_object_ctor/src/Soldier_object_ctor.cpp	lost	Unexpected compiler function set
+Tank_object	scratch/try/Tank_object/src/Tank_object.cpp	lost	Unexpected compiler function set
+anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	lost	Stripped object is not one compiler object: @1376
+animated_volume	scratch/try/animated_volume/src/animated_volume.cpp	lost	Stripped object is not one compiler object: @155
+animplayer	scratch/try/animplayer/src/animplayer.cpp	lost	Unexpected compiler function set
+box_create	scratch/try/box_create/src/box_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_create.cpp # ------------------------------
+box_dispatch	scratch/try/box_dispatch/src/box_dispatch.cpp	lost	Unexpected compiler function set
+box_dispatch2	scratch/try/box_dispatch2/src/box_dispatch2.cpp	lost	Unexpected compiler function set
+box_dtor	scratch/try/box_dtor/src/box_dtor.cpp	lost	Pool item differs from the original: box_dtor .sdata2+0x0
+box_ivolume	scratch/try/box_ivolume/src/box_ivolume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_ivolume.cpp # -------------------------------
+box_line	scratch/try/box_line/src/box_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_line.cpp # ----------------------------
+box_linedist	scratch/try/box_linedist/src/box_linedist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_linedist.cpp # --------------------------------
+box_pointdist	scratch/try/box_pointdist/src/box_pointdist.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_pointdist.cpp # ---------------------------------
+box_setters	scratch/try/box_setters/src/box_setters.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\box_setters.cpp # ------------------------------- #      20: class CVector3 {
+box_testtriangle	scratch/try/box_testtriangle/src/box_testtriangle.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\box_testtriangle.cpp # ------------------------------------
+box_visibility	scratch/try/box_visibility/src/box_visibility.cpp	lost	Unexpected compiler function set
+bsbifunc_explosion	scratch/try/bsbifunc_explosion/src/bsbifunc_explosion.cpp	lost	Unexpected compiler function set
+capsule_capsule	scratch/try/capsule_capsule/src/capsule_capsule.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\capsule_capsule.cpp # ----------------------------------- #     103: };
+capsule_create	scratch/try/capsule_create/src/capsule_create.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\capsule_create.cpp # ----------------------------------
+capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\capsule_dispatch.cpp # ------------------------------------
+capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\capsule_dispatch2.cpp # -------------------------------------
+capsule_dtor	scratch/try/capsule_dtor/src/capsule_dtor.cpp	lost	Unexpected compiler function set
+capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	lost	Unexpected compiler function set
+cdbgeom_fiber	scratch/try/cdbgeom_fiber/src/cdbgeom_fiber.cpp	kept	
+cdbgeom_triangle_line	scratch/try/cdbgeom_triangle_line/src/cdbgeom_triangle_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbgeom_triangle_line.cpp # -----------------------------------------
+cdbgeom_volbox	scratch/try/cdbgeom_volbox/src/cdbgeom_volbox.cpp	lost	Unexpected compiler function set
+cdbgeom_volbox_ctor	scratch/try/cdbgeom_volbox_ctor/src/cdbgeom_volbox_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbgeom_volbox_ctor.cpp # ---------------------------------------
+cdbgeom_volbox_line	scratch/try/cdbgeom_volbox_line/src/cdbgeom_volbox_line.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\cdbgeom_volbox_line.cpp # --------------------------------------- #     105: };
+cdbobject_csg	scratch/try/cdbobject_csg/src/cdbobject_csg.cpp	lost	Stripped object is not one compiler object: @55
+cdbobject_ctor	scratch/try/cdbobject_ctor/src/cdbobject_ctor.cpp	lost	Unexpected compiler function set
+cdbobject_dtor	scratch/try/cdbobject_dtor/src/cdbobject_dtor.cpp	lost	Unexpected compiler function set
+cdbobject_init	scratch/try/cdbobject_init/src/cdbobject_init.cpp	kept	
+cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_intersect.cpp # ---------------------------------------
+cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_leaf.cpp # ----------------------------------
+cdbobject_line	scratch/try/cdbobject_line/src/cdbobject_line.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_line.cpp # ----------------------------------
+cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\cdbobject_trigroups.cpp # ---------------------------------------
+collision	scratch/try/collision/src/collision.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\collision.cpp # -----------------------------
+compartment_ctor	scratch/try/compartment_ctor/src/compartment_ctor.cpp	lost	Stripped object is not one compiler object: @83
+compartment_intersect	scratch/try/compartment_intersect/src/compartment_intersect.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_intersect.cpp # ----------------------------------------- #      52: };
+compartment_nodeshadows	scratch/try/compartment_nodeshadows/src/compartment_nodeshadows.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\compartment_nodeshadows.cpp # ------------------------------------------- #      56: };
+compartment_volbox	scratch/try/compartment_volbox/src/compartment_volbox.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\compartment_volbox.cpp # --------------------------------------
+csg_volume	scratch/try/csg_volume/src/csg_volume.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\csg_volume.cpp # ------------------------------ #     118: };
+explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	lost	Unexpected compiler function set
+fiber	scratch/try/fiber/src/fiber.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\fiber.cpp # -------------------------
+hearingvolume	scratch/try/hearingvolume/src/hearingvolume.cpp	lost	Stripped object is not one compiler object: @340
+hierobject	scratch/try/hierobject/src/hierobject.cpp	lost	Stripped object is not one compiler object: @516
+impact_dtor	scratch/try/impact_dtor/src/impact_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\impact_dtor.cpp # -------------------------------
+light	scratch/try/light/src/light.cpp	lost	Stripped object is not one compiler object: @500
+objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	lost	Unexpected compiler function set
+objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	lost	Unexpected compiler function set
+objcreate_swap	scratch/try/objcreate_swap/src/objcreate_swap.cpp	lost	Unexpected compiler function set
+objcreate_volumes	scratch/try/objcreate_volumes/src/objcreate_volumes.cpp	lost	Unexpected compiler function set
+particlesystem_visible	scratch/try/particlesystem_visible/src/particlesystem_visible.cpp	lost	Unexpected compiler function set
+player_begincrouch	scratch/try/player_begincrouch/src/player_begincrouch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\player_begincrouch.cpp # --------------------------------------
+player_beginupdate	scratch/try/player_beginupdate/src/player_beginupdate.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\player_beginupdate.cpp # --------------------------------------
+player_commit	scratch/try/player_commit/src/player_commit.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\msl_sqrtf.h #    From: ..\src\player_commit.cpp # ---------------------------------
+player_ctor	scratch/try/player_ctor/src/player_ctor.cpp	lost	Unexpected compiler function set
+player_respawn	scratch/try/player_respawn/src/player_respawn.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\player_respawn.cpp # ----------------------------------
+player_updateai	scratch/try/player_updateai/src/player_updateai.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\player_updateai.cpp # -----------------------------------
+player_vec_sub	scratch/try/player_vec_sub/src/player_vec_sub.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\player_vec_sub.cpp # ----------------------------------
+projectilebullet	scratch/try/projectilebullet/src/projectilebullet.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\projectilebullet.cpp # ------------------------------------
+scene_visit	scratch/try/scene_visit/src/scene_visit.cpp	lost	Unexpected compiler function set
+shadow	scratch/try/shadow/src/shadow.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\shadow.cpp # --------------------------
+sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\sphere.cpp # --------------------------
+static_obj_bounds	scratch/try/static_obj_bounds/src/static_obj_bounds.cpp	lost	Unexpected compiler function set
+static_obj_type	scratch/try/static_obj_type/src/static_obj_type.cpp	kept	
+thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	lost	Unexpected compiler function set
+thrownbullet	scratch/try/thrownbullet/src/thrownbullet.cpp	lost	Unexpected compiler function set
+volume_query_test	scratch/try/volume_query_test/src/volume_query_test.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\volume_query_test.cpp # ------------------------------------- #      45: __declspec(weak) IVolume::~IVolume() {
+weapon	scratch/try/weapon/src/weapon.cpp	lost	Stripped object is not one compiler object: @283
+world_object	scratch/try/world_object/src/world_object.cpp	lost	Stripped object is not one compiler object: @1086
+world_volume	scratch/try/world_volume/src/world_volume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\CVector3.h #    From: ..\src\world_volume.cpp # --------------------------------
