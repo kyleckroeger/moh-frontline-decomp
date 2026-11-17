@@ -458,6 +458,54 @@ def drafts_without_sinit(drafts):
     return {o for o in drafts if not any(f.startswith("__sinit_") for f in own.get(Path(o).stem.replace(".weak", ""), ()))}
 
 
+_ORIGINAL_DATA = None
+
+
+def original_data_addresses():
+    """(name, size) -> address for data objects that occur once in the original."""
+    global _ORIGINAL_DATA
+    if _ORIGINAL_DATA is None:
+        seen = collections.Counter()
+        addr = {}
+        for sym in Elf32((ROOT / "orig/GMFE69/Moh2RelGC.elf").read_bytes()).symbols():
+            if sym["type"] == 1 and sym["name"] and sym["size"]:
+                key = (sym["name"], sym["size"])
+                seen[key] += 1
+                addr[key] = sym["address"]
+        _ORIGINAL_DATA = {k: a for k, a in addr.items() if seen[k] == 1}
+    return _ORIGINAL_DATA
+
+
+DATA_SECTIONS = (".data", ".rodata", ".bss", ".sdata", ".sdata2", ".sbss", ".sbss2")
+
+
+def align_like_original(path):
+    """Give a data section 32-byte alignment when an object in it (32 bytes or more) was 32-byte
+    aligned in the original and sits at a multiple of 32 in the section. DMA (ARAM, GX textures
+    and vertex arrays, the DSP) ignores the low 5 bits of an address, and the original linker
+    32-aligned some buffers by link order alone (g_frame_cache: route 1_2's animation reads
+    landed 16 bytes early)."""
+    data = bytearray(Path(path).read_bytes())
+    elf = Elf32(bytes(data))
+    orig = original_data_addresses()
+    want = set()
+    for sym in elf.symbols():
+        if sym["type"] != 1 or not sym["name"] or sym["size"] < 32 or sym["address"] % 32:
+            continue
+        a = orig.get((sym["name"], sym["size"]))
+        if a is not None and a % 32 == 0:
+            want.add(sym["section"])
+    shoff = struct.unpack_from(">I", data, 32)[0]
+    changed = 0
+    for sec in elf.sections:
+        if sec["index"] in want and sec["name"].startswith(DATA_SECTIONS) and sec["alignment"] < 32:
+            struct.pack_into(">I", data, shoff + sec["index"] * 40 + 32, 32)
+            changed += 1
+    if changed:
+        Path(path).write_bytes(data)
+    return changed
+
+
 def prepare(objs, weaken, globalize, rename, strong=None):
     """Copy each object with its symbol changes; return the paths to link."""
     work = OUT / "objs"
@@ -494,6 +542,7 @@ def prepare(objs, weaken, globalize, rename, strong=None):
         else:
             shutil.copy(src, dst)
         fix_sda21(dst)
+        align_like_original(dst)
         if strong and strong.get(o):
             strengthen(dst, strong[o] - weaken.get(o, set()))
         out.append(str(dst))

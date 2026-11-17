@@ -277,3 +277,28 @@ mirror read 0x486e486e.
   source; the original got some of it from link order alone.
 - The 25-minute watchpoint run missed: a probe edit moved the slot. Re-derive watch addresses from
   the exact ELF being run.
+
+**W1.3 on the pure image (2026-11-17, late afternoon).** Each route linked with its input probe and
+the clock probe (route 1_2 also with level_1_2.cpp), traces compared with the hash left out:
+- route_1_2: identical to the control (cm63.log) for all 3,632 control lines; runs 400 s.
+- route_menu: identical to the control (rp_menud_ctl.log) for all 4,414 control lines.
+- m1_opening: identical to the control (rp_m1b_ctl.log) for all 748 control lines; the pure run
+  reaches update 22,560 on the beach.
+
+**pure_link now aligns data sections like the original.** `align_like_original` raises a data
+section's alignment to 32 when an object of 32+ bytes in it was 32-aligned in the original and
+sits at a 32-multiple offset in the section. This also aligns ICON_TEXTURE_DATA/ICON_CLUT_DATA,
+g_skyBoxVertIndices/g_skyBoxUV and other GX inputs. 42 objects are still off 32 in the pure image,
+all at non-32 offsets in their own sections (string literals, small tables: 32-aligned by chance
+in the original). Route 1_2 re-run with it: still identical (4,440 trace lines, no EFB reads).
+
+**Open: frame hashes differ while the logic matches.** On route_menu every FRAME hash from 1890 on
+(the main menu) differs from the control; on m1_opening, 1470/1500, the menu frames, and most
+in-level frames from 5640. The original-layout draft image differs only at the known 1530. The
+visible difference on the menu: the pure image draws the bottom-left button help text ("BROWSE",
+"SELECT", grey and fuzzy) next to the button icons, and the control shows only the icons. The
+section-alignment pass doesn't change it. pure_data_check.py finds nothing new; with the worst copy
+of each name instead of the best, only `Type` (4 of 16 bytes) and `g_HeightScale` (2 of 4) besides
+the known RTTI words. Next: find what draws the help text (shell menu, the szLib*/images tables,
+the font draw) and compare its colour/alpha inputs between images, e.g. with a gx_capture-style
+probe on that draw call, or a frame-1890 GX capture of both images.

@@ -73,7 +73,9 @@ the port shows is a port bug, never a decomp bug. That is the hand-off point.
    original. **2026-11-17:** it boots like the original and its route 1_2 trace matches into level
    1_2, then fails at the first subtitle pop-up (research/notes/pure-link.md). **Fixed the same
    afternoon:** g_frame_cache lacked 32-byte alignment (ARAM DMA landed 16 bytes early); route 1_2
-   now runs 400 s on the pure image, trace identical to the control's.
+   now runs 400 s on the pure image, trace identical to the control's. route_menu and m1_opening
+   traces are identical too. Open: frame hashes (drawing) still differ from the menu on: the menu's
+   button help text is drawn in the pure image only (pure-link.md).
 4. Widen coverage. Replay every existing level route (2_1, 3_1, 4_1, 4_2, 5_1, 5_4, 6_1,
    carry_1_3; research/movies/) on the all-drafts image. Then add a short route for each level
    that has none, so every draft the campaign reaches is proven somewhere. Fix or bisect what
