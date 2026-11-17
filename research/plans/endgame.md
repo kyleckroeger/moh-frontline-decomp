@@ -105,6 +105,10 @@ empty or every entry is owned by the port.
 
 ### W3. Matching, time-boxed and targeted
 
+**2026-11-17:** for sessions the maintainer gives the decomp while the port is the main project, the
+plan for matching everything left is [matching.md](matching.md) (a resumable queue sorted by kind of
+mismatch). It replaces the stop rule below; the rest of this section is the 11-16 reasoning.
+
 1. **One pass over the 37 drafts within 10 lines** (42 KB, up to about 93.6%). Use the full
    rule set from loop3-tricks and the matching-rule files. Order: drafts on the port's first
    path, then drafts whose match unblocks a merge.
