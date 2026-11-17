@@ -208,3 +208,30 @@ target 63, then follow that pointer back to its writer with another watchpoint.
 Tool notes: Dolphin answers every packet with a bare `+`, so the client waits for `$` before reading
 a stop reply. A watchpoint run hits boot clears first, so read past them. Restore Dolphin.ini
 (GDBPort) after a session: dolphin_boot runs fail to start while the stub waits for a client.
+
+**Root of the morph overwrite, narrowed (07:20-08:30).** Probes in research/probes/ (each compared on
+the pure image and on the original-layout link_drafts image, route 1_2):
+
+- morph63_probe.cpp (CAnimMorph::UpdateAnimation copy): the pure image's frame morph data claims
+  thousands of entries (garbage); the control's has 0-3. **With the morph count put back to 64, the
+  pure image runs on past update 2790 to the end of a 400 s run (trace update 106290), no EFB reads.**
+  So this is the only failure on route 1_2 so far. The frame list, cache offsets (g_frame_cache +
+  39948, ...) and fill level are identical in both images; the bytes differ.
+- aram_upload_probe.cpp (UploadFramesToARAM copy): the one animation upload is identical (ARAM
+  0x800000, 4,162,784 bytes, source 0x8236ca70, the same checksum for each 256 KB chunk), and a
+  readback of ARAM 0x800000 right after it returns the source's words. The upload works.
+- sndaram_probe.cpp: the sound ARAM pool is 0x4100..0x800000 in both, below the animation pool.
+- ardma_probe.cpp (ARStartDMA copy): no other main-memory-to-ARAM transfer into 0x800000..0x1000000
+  in the pure image.
+- frame_read_probe.cpp (AnimFileGetFrame copy): the reads use the same ARAM addresses, sizes and
+  frame numbers in both images, but **every read in the pure image returns 0x486e486e repeated**
+  (the control's: 0x36000000, 0x38000000, ...). Invalidating the cache afterwards changes nothing.
+  g_frame_cache, g_bDMAToMRAM and g_fromARAM_request overlap nothing.
+
+So the ARAM-to-main-memory reads return a fill pattern in the pure image although the upload
+landed. Open: whether the ARAM contents are overwritten after the upload some other way (ARInit's
+__ARChecksize/__ARClearArea run again, which bypasses ARStartDMA; the DSP or the sound streamer
+writing ARAM), or whether the reads complete (callback) without moving data (ARQ state, the read
+request's type or addresses). Next checks: read back ARAM 0x800000 again just before the first frame
+read; probe ARInit's callers (animdb.cpp, snddrv.c) for a second ARInit; find what fills memory with
+0x486e486e.
