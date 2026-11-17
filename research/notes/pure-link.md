@@ -162,3 +162,49 @@ reporting the message's string pointers. `research/probes/strlen_check_probe.cpp
 vertex table is now byte-identical to the original's (.rodata 0x801784a8) and the draft was proven
 again on route_menu (8,829 lines). check_draft still says `differs` because the two versions point
 into the table at different words, which is codegen; the data is the same.
+
+**Located with Dolphin's GDB stub (06:30, 2026-11-17).** Dolphin 2609 has a GDB stub (`[General]
+GDBPort` in Dolphin.ini). The Windows firewall blocks WSL from it, so the client is a PowerShell script
+on the Windows side: research/tools/dolphin/gdbpeek.ps1 attaches, runs until a log line matches, stops
+the CPU and dumps registers and the back chain (optionally logging every hit of a write watchpoint).
+The game runs about 10x slower under the stub (route 1_2 to the failure takes ~25 minutes).
+
+The runaway read is **not** in the pop-up code. At the first EFB read (TRACE 2790, same point as
+always) the stack is:
+
+    DMMorphBlendDisplayLists+0xc4   (draft, consistent with the original)
+    CAnimMorph::Draw+0x184
+    CSoldierObject::Draw+0x2f0
+    CScene::Draw+0x1e4
+    GameLoop+0x770 / main / __start
+
+It is the speaking soldier's face morph (hence the timing with the first subtitle). The weights loop
+runs `for (i = 0; i < morph->count - 1; i++)` (unsigned, as in the original) and morph->count, at
+DMMorphObject_T+0x100, holds 0xBDC80001: a float (about -0.098), not a count. So a weight was written
+one past `weights[64]`. LLCharObjCompositeMorph's decoder writes `weights[(entry & 63) + 1]`, which
+reaches +0x100 when a target index is 63, in the original too. So either the frame data reaching it
+differs in the pure image, or another writer is at fault. Next: a write watchpoint on that word
+(0x81358a40 in pure_l12ct.elf's run) to catch the writer.
+
+**Watchpoint result (07:10).** gdbpeek.ps1 with `-Watch 81358a40` (DMMorphObject count of the
+speaking soldier's CAnimMorph, base 0x81357c70, m_morph at +0xcd0) logs every write:
+
+1. boot clears (apploader, __start's .bss clear, a heap memset): 0;
+2. CAnimSkinned::BindSkeleton / DMMorphInitObject: 0x40 (64), correct;
+3. then, every update from CAnimMorph::UpdateAnimation: **LLCharObjCompositeMorph** (the draft,
+   `consistent` with the original) storing decoded weights there: 0x3FBFC000, 0x3FB40000,
+   0xBE800000, ... and finally 0xBDC80000 (= 2*(206/1024)-0.5), which DMMorphBlendDisplayLists then
+   reads as the count. (One hit reported AnimFileGetStateAnimList as the PC; the value is the
+   decoder's, so that PC is stale, a JIT memcheck artefact.)
+
+The decoder writes `weights[(entry & 63) + 1]`, so these are entries whose target index is 63. The
+original's code is the same, so in the original no entry has target 63: the frame data reaching the
+decoder differs in the pure image. Suspects, upstream: the AnimMotFrameList_t frames' `morph` pointers
+(+0x4c of each 0x50-byte frame, filled from animmot.cpp's motion decoding) or the motion file data they
+point into (loader fixups, drafts). Next: a probe replacing LLCharObjCompositeMorph that OSReports
+the frame list (count, each frame's weight and morph pointer, and data[0..4]) when an entry has
+target 63, then follow that pointer back to its writer with another watchpoint.
+
+Tool notes: Dolphin answers every packet with a bare `+`, so the client waits for `$` before reading
+a stop reply. A watchpoint run hits boot clears first, so read past them. Restore Dolphin.ini
+(GDBPort) after a session: dolphin_boot runs fail to start while the stub waits for a client.

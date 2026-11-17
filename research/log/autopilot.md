@@ -2917,3 +2917,5 @@ Caveats told to the user: 100% may be unreachable (declined forms, unreproducibl
 - 2026-11-17 [W2.3] CVolSphere.h: 2 more units (6) now that they are on IVolume.h.
 - 2026-11-17 [W2.3] include/game/CLine3.h; 7 units moved (verified).
 - 2026-11-17 [W2.3] include/game/CVolCapsule.h and CVolFiber.h; 2 units moved each (verified).
+- 2026-11-17 [W1] Dolphin GDB stub works (gdbpeek.ps1, Windows side). The pure image's failure is in DMMorphBlendDisplayLists (soldier face morph): DMMorphObject count at +0x100 overwritten by a float. Watchpoint run in progress.
+- 2026-11-17 [W1] Watchpoint on the morph count: overwritten each update by LLCharObjCompositeMorph decoding target index 63 (weights[64]). The original has the same code, so the frame data upstream differs. research/notes/pure-link.md.
