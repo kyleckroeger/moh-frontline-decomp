@@ -444,13 +444,8 @@ public:
     CLightVolumeManager m_lightVolumes;
 };
 
-class CVolSphere {
-public:
-    float GetRadius() const;
-    void SetRadius(float);
-    void SetCenter(CVector3);
-    CVolSphere& operator=(const CVolSphere&);
-};
+#include "game/CVolSphere.h"
+
 
 void* AllocateSphereVolume();
 void FreeSphereVolume(void*);

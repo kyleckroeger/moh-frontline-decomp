@@ -1,20 +1,16 @@
 unit	source	status	detail
 PathNodeList_disable	scratch/try/PathNodeList_disable/src/PathNodeList_disable.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\PathNodeList_disable.cpp # ----------------------------------------
-Soldier_object_cleanup	scratch/try/Soldier_object_cleanup/src/Soldier_object_cleanup.cpp	kept	
-Soldier_object_ctor	scratch/try/Soldier_object_ctor/src/Soldier_object_ctor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\Soldier_object_ctor.cpp # ---------------------------------------
+Soldier_object_ctor	scratch/try/Soldier_object_ctor/src/Soldier_object_ctor.cpp	kept	
 Tank_object	scratch/try/Tank_object/src/Tank_object.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\Tank_object.cpp # -------------------------------
 anim_obj	scratch/try/anim_obj/src/anim_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\anim_obj.cpp # ----------------------------
 animated_volume	scratch/try/animated_volume/src/animated_volume.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\animated_volume.cpp # -----------------------------------
-animplayer	scratch/try/animplayer/src/animplayer.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\animplayer.cpp # ------------------------------
+animplayer	scratch/try/animplayer/src/animplayer.cpp	no_compile	### mwcceppc.exe Compiler: #    File: ..\src\animplayer.cpp # ------------------------------ #     584: sphere->m_owner = this;
 box_dispatch2	scratch/try/box_dispatch2/src/box_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\box_dispatch2.cpp # ---------------------------------
 bsbifunc_explosion	scratch/try/bsbifunc_explosion/src/bsbifunc_explosion.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\bsbifunc_explosion.cpp # --------------------------------------
 capsule_dispatch	scratch/try/capsule_dispatch/src/capsule_dispatch.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch.cpp # ------------------------------------
 capsule_dispatch2	scratch/try/capsule_dispatch2/src/capsule_dispatch2.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_dispatch2.cpp # -------------------------------------
 capsule_plane	scratch/try/capsule_plane/src/capsule_plane.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\capsule_plane.cpp # ---------------------------------
-cdbgeom_fiber	scratch/try/cdbgeom_fiber/src/cdbgeom_fiber.cpp	kept	
-cdbgeom_sphere	scratch/try/cdbgeom_sphere/src/cdbgeom_sphere.cpp	kept	
 cdbgeom_volbox	scratch/try/cdbgeom_volbox/src/cdbgeom_volbox.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbgeom_volbox.cpp # ----------------------------------
-cdbobject_intersect	scratch/try/cdbobject_intersect/src/cdbobject_intersect.cpp	kept	
 cdbobject_leaf	scratch/try/cdbobject_leaf/src/cdbobject_leaf.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_leaf.cpp # ----------------------------------
 cdbobject_trigroups	scratch/try/cdbobject_trigroups/src/cdbobject_trigroups.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\cdbobject_trigroups.cpp # ---------------------------------------
 explosion_dtor	scratch/try/explosion_dtor/src/explosion_dtor.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\explosion_dtor.cpp # ----------------------------------
@@ -26,4 +22,4 @@ objcreate_collvol	scratch/try/objcreate_collvol/src/objcreate_collvol.cpp	no_com
 objcreate_german	scratch/try/objcreate_german/src/objcreate_german.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\objcreate_german.cpp # ------------------------------------
 objcreate_volumes	scratch/try/objcreate_volumes/src/objcreate_volumes.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\objcreate_volumes.cpp # -------------------------------------
 sphere	scratch/try/sphere/src/sphere.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\sphere.cpp # --------------------------
-thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	no_compile	### mwcceppc.exe Compiler: #      In: ..\..\..\..\include\game\IVolume.h #    From: ..\src\thrown_obj.cpp # ------------------------------
+thrown_obj	scratch/try/thrown_obj/src/thrown_obj.cpp	kept	

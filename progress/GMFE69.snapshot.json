@@ -463,7 +463,7 @@
     "src/game/Soldier_object_bone.cpp": "9c7fbdac85cc64aa9832ad8578776fe0376a77f651004f9595ef3e95ad21e566",
     "src/game/Soldier_object_bounds.cpp": "de317d8ddac759011fc6d15819b43cf902b41d66badbb1e6fa0c79cd9fe12e9b",
     "src/game/Soldier_object_cleanup.cpp": "2933ca5c78ff7069d772e0c1b1c06622ac18369138feb7d81d6e5b57a41e5aef",
-    "src/game/Soldier_object_ctor.cpp": "323f57e68670b920a07d1819da551dc4383f524aa71aa742e7ded70a5e131d90",
+    "src/game/Soldier_object_ctor.cpp": "8dbf8909c4d219dd6892d1fa10db85bd2730be52c57dc03bcdc8e2f5beeb9d64",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
     "src/game/Tank_object.cpp": "b789caee688fe1837e2b464210963bbde149d87b5b2ccf4480984e9fd10b3ace",
     "src/game/TibPolygon_process.cpp": "7d65835faada8b1a9b2636de91148a6ae759b849fedd91e74d42f6ae053b4bb6",
@@ -935,7 +935,7 @@
     "src/game/system.cpp": "a6b1bce950e974ebaf7e6c7afc31ecab8f41566550163428c632534bc8f78b83",
     "src/game/texpack.cpp": "170a3a9592cbea2d199a09aba976cc93963f0104100915e1f5d9d23eaf30f61a",
     "src/game/texture_load.cpp": "5bd7afafdc4cd8b745f19394cdb9d5fbba410aa4ca0a0207974a45294a610b4c",
-    "src/game/thrown_obj.cpp": "3c0efce07e2c02da47c976443251e5fa4588c73957b82acdfda9a613b5b4bd42",
+    "src/game/thrown_obj.cpp": "6bfa702138c8b7b9349f1889212e3452b315c0543bf816415a44427aad9f0fb1",
     "src/game/thrownbullet.cpp": "fadf855400249c4ae3afeb3b0d84c25eb5fc444b04aea48e6c74ec7595cf47aa",
     "src/game/toilet.cpp": "6aae5ddeaa67375ecf6d7761a8ffb4c4a00d5829ecbf56db1ca846c1e7244d07",
     "src/game/toilet_files.cpp": "0ea51949a26fcf921e1ada6ed9e67a5f10886fe844ef97c9bd29950a7268318f",
@@ -31508,8 +31508,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "58f1f5a4c99828f5ce45d5984d368343f875704378a8ad7b1ccedea1d189100c",
-      "linked_sha256": "048535ab8e4407853531ca84b910672bded2553a784eaf0bce454f2e6d4fed2c"
+      "object_sha256": "8a727ee968f00aa94bfe5dc69ce6c70a188b5bae67b28daa3b2c02bef9ab08d2",
+      "linked_sha256": "48203cc02a65c5ceb3ffcf7cebede9614218267d99a5a80e6868ec0055e2b780"
     },
     {
       "id": "compartment_ctor",

@@ -22,14 +22,8 @@
 #include "game/IVolume.h"
 
 
-class CVolSphere : public IVolume {
-public:
-    CVolSphere() {}
-    virtual IVolume* Create() const;
-    virtual ~CVolSphere();
+#include "game/CVolSphere.h"
 
-    unsigned char unknown04[28];
-};
 
 class CAnimObject {
 public:
