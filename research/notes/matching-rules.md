@@ -150,3 +150,13 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   declares mesh into a single-use inline member (DrawAttached) makes mesh an inline '@' local created at
   expansion, numbered above the loop optimizer's later temps: it is pushed after the IV, popped and
   coloured before it, and the IV takes the lowest obtained register no neighbour holds (r24).
+- **Push an inline's locals later by nesting them one level deeper** (tr1, quick_sort_ 6 -> 0). The tracer
+  showed CW creates the '@' locals of the inlines a function calls directly before the locals of the
+  inlines THOSE call (depth 1 in source order, then depth 2): the two insertion_sorts' backward-loop
+  locals (i, prev) were created before the final loop's unguarded_linear_insert (last, next), so they
+  had higher indices, coloured first and took r28/r27, and the final loop's next took the lowest
+  obtained register r27 instead of the original's r29 (free once first is dead). Moving the backward
+  pass into its own inline (backward_pass, called from insertion_sort) makes its locals depth 2, created
+  after the final ULI: next now colours right after first and reuses r29. Writing the swap out inside
+  backward_pass (instead of iter_swap at depth 3) keeps the swap temporaries' stack-slot order. Try it
+  wherever an inline local that the original colours early is out-ranked by sibling inlines' locals.

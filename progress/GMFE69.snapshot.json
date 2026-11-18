@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1302024,
+    "matching_code_bytes": 1302828,
     "total_executable_code_bytes": 1414572,
-    "percent": 92.04367115989854,
+    "percent": 92.10050813956448,
     "categories": {
-      "reconstructed_game": 1065264,
+      "reconstructed_game": 1066068,
       "restored_library": 236760
     },
-    "matching_functions": 4935
+    "matching_functions": 4936
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -861,7 +861,7 @@
     "src/game/scene_list_reserve.cpp": "aefc418f34ba47d2b1289bb9ed1d39ab14518cec1966afd7265acb5e265fa4bd",
     "src/game/scene_now.cpp": "6cbab99269a0dbc55f7d4e1c98eda3bf6dd6eecd4760911a42274ac88bad8692",
     "src/game/scene_query.cpp": "0d9ae1d1fb1084e952913a456b3d8bc122c9617b0cbb2101242ce4fa74d7eb0a",
-    "src/game/scene_quicksort.cpp": "b530b33bc854b23c54d62ed90d69a2b11923d639f0549641870e549a260af769",
+    "src/game/scene_quicksort.cpp": "e5a84a1d4b3a70c96c4851db62cda8a886d37b52bc35f72a32ac9777022fe2e3",
     "src/game/scene_reset.cpp": "18b8b888d8bf9a2cdcecd497139e2227c0fef8368439b92c4c31b2464d4be2a4",
     "src/game/scene_rmextents.cpp": "ace57df4a982b4b552a33188a3fb6d8b27e1f1bceedf7f4def22a738209ed988",
     "src/game/scene_shutdown.cpp": "85f0992380b3d5370565ae2c23f495f4a2c7f821cc5a00294db86a8a6a91546c",
@@ -2228,7 +2228,7 @@
     "config/GMFE69/scene_list_reserve.json": "e61cf1d0ec89e85bf1009e1cd7421e145e37e74336d2b301f5d92b04cd47ce97",
     "config/GMFE69/scene_now.json": "d227b5c62e7a4d644e7a49805bbdc013f6bbc1e2c17541af47e02a81c395e5ab",
     "config/GMFE69/scene_query.json": "19ec4a382e93e86d4ec5595bae3a65faf85a4c3aa6726ac004602f16dac14a34",
-    "config/GMFE69/scene_quicksort.json": "8f23f40e0b4a17df490d22a43bffa696ff7b3fa03a50630c672d8db696b76097",
+    "config/GMFE69/scene_quicksort.json": "cc8b3c2f9d20e7e90c5ac08e3f581de83a16c49620292d226d1f9c467bd47ec9",
     "config/GMFE69/scene_reset.json": "ff1bfd57f2a69cb9e0177ae3abc19063d9209c2e617ffe9efa0b110d210bf1bb",
     "config/GMFE69/scene_rmextents.json": "dd5314d6702a1948e497ec55b28396b27f32b1eba3653bed82fe30f9b27fc343",
     "config/GMFE69/scene_shutdown.json": "9d8cee810fe32f4bac622fe3a5fba6177151bab31c789a617d7b5aa2c1bd8f7e",
@@ -34986,8 +34986,8 @@
     {
       "id": "scene_quicksort",
       "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 36,
+      "functions": 2,
+      "code_bytes": 840,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -35019,8 +35019,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "146a4c8e967a16c6af41d46d84d401167920a9ecbede71d4accd4f2765e6d2e5",
-      "linked_sha256": "3ab212c8d8ea42ee5831e77c4adfd1370c1598474049815daa21030b2d13babd"
+      "object_sha256": "69730de05552731b4a7ff2282bef7efed0d69e0f6bf0bd8f127a37b3c7cd4d39",
+      "linked_sha256": "af0fd4adc53962399f4c7ee9fc18880ba6ca8f4aad77f738a066180029dedc95"
     },
     {
       "id": "scene_vec_reserve",
@@ -43815,13 +43815,6 @@
             "kind": "function",
             "name": "SweepAllExtents__6CSceneFv",
             "evidence": "exception-index"
-          },
-          {
-            "address": "0x800d8ef0",
-            "size": 804,
-            "kind": "function",
-            "name": "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair",
-            "evidence": "local-file-symbol"
           },
           {
             "address": "0x800da67c",

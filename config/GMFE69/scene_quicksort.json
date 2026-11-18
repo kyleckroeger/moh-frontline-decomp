@@ -41,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x800d8ecc",
-      "size": 36,
+      "size": 840,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ea0c",
-      "size": 8,
+      "size": 16,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x800156ec",
-      "size": 12,
+      "size": 24,
       "type": 1
     }
   ],
@@ -63,16 +63,22 @@
       "address": "0x800d8ecc",
       "size": 36,
       "binding": 0
+    },
+    {
+      "name": "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair",
+      "address": "0x800d8ef0",
+      "size": 804,
+      "binding": 0
     }
   ],
   "externals": {
-    "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair": "0x800d8ef0"
+    "sort_<PQ26CScene9UNodePair,Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bPQ26CScene9UNodePair": "0x800d9214"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair"
+    "sort_<PQ26CScene9UNodePair,Q26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bPQ26CScene9UNodePair"
   ],
   "discarded_local_functions": [],
   "sda_externals": [],
