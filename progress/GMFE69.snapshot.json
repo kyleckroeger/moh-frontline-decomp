@@ -892,7 +892,7 @@
     "src/game/skybox.cpp": "e5f19a4bcc3ccc42dc6fdb6707de8ba5cc8d2d56a57edc5b8450de36737384a0",
     "src/game/sound.cpp": "c312bb0ba19bd051ae3d96019712f2b05e6e67e3736802db04981e2f380e07bd",
     "src/game/soundschedule.cpp": "b474995b073cebe7154f0892910cf99b72d0f99799cade2c12095711ca06700d",
-    "src/game/soundtable.cpp": "999b27bcde4106fdba28d8fd6a8b9b6b2b609e615746b1d1ae2216d3fa33a481",
+    "src/game/soundtable.cpp": "9bc7e81f31356bda65f2c086d3ed688bb0a212eb4dba844167619f2fa3e12881",
     "src/game/sphere.cpp": "1169ef184298925cbf563d6afa4ed852ba2419257000cee3fbcfd817c1834eec",
     "src/game/sprite.cpp": "0ffd64124e56633fd2d1d616e4795fcd9890770371d304438d271b8d623b9dee",
     "src/game/static_obj_anim.cpp": "3f170e27d7b71416addebac1dedb54dd5df97fb3782e1e5693fb85ec6a87508b",
@@ -1308,6 +1308,7 @@
     "include/game/DwiContainers.h": "62b8443dd6df66df2bac24c3cfc0d8622cc7cda6d6fe5b741a84dd00dcc08fd2",
     "include/game/DwiHashMap.h": "360f72604080a4f1e2067658a7bae62626395deccfdc5cd6f0863ec892407cb2",
     "include/game/GameAddr.h": "ae80091641e996fa11f333d54e3aa6107f993e2eb6900dcd7d8d10bacd2b274b",
+    "include/game/GamePtr32.h": "13df4144c956ce6cf04d613cfa9f23cda96a389a31e64dbdc7f6e1c8c643f6ab",
     "include/game/GameVarargs.h": "87b0be0bb46e523319836faa625e8921a5ebeaf4815deac7eb52436abbbb52f5",
     "include/game/IMovingSceneNode.h": "24397129e5a00578381b70aca371a95dd81cc21d0aba06746fc106ac0c41d604",
     "include/game/ISceneNode.h": "99f2489b753b107c1c575061bd0d71a84274230f9d0472da524f32296e5bdbdb",
@@ -2330,7 +2331,7 @@
     "config/GMFE69/snddrv.json": "1923a2e8c4a0230c30b29c5e45cb8e4a7e4bb4ad7520b1aef4172d0d0015455d",
     "config/GMFE69/sound.json": "233337ef72340afdd0a400d937c3b1f8d726b734b825275bbfeb65b9aaa2096b",
     "config/GMFE69/soundschedule.json": "0c1439f8a49167e921a96668f71380f2a3449ccc01c143a105d6ce5751f0a2ab",
-    "config/GMFE69/soundtable.json": "f4697fcad0ee8bd466b2f8c9a8d08ae80a80bac0c08853d62f4b4f17f49173e8",
+    "config/GMFE69/soundtable.json": "d9c439b682246c8972d4c1ebb4e7dd62809872263f5928fa22704ae4c5e2a737",
     "config/GMFE69/sover.json": "e93f0bef0e81124940f9ca940effc94a8b0c69c04f988f2ffaa1b34c25494e48",
     "config/GMFE69/spantoaz.json": "0e3c799ee99a0820131c59ca50dbae62300eb93899d8495888384884db8c42db",
     "config/GMFE69/spat2hdr.json": "cd2c8561fdfa279086a1bdf52422c5c31e1068fa43e5e96ec692a0866101b944",
@@ -18024,8 +18025,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "2022c045fa6b9dff1bebdc25a2c60ec5f03e0e9462f0e48af70d65aa83d933ce",
-      "linked_sha256": "15302a09b906ff33f27b8db7674dc10c28647d36980023e19bbe99ef4ed86e46"
+      "object_sha256": "886443e39d0973b0567c7d431039eeded4fb6552b17b20c1900d9fc6f1ede75c",
+      "linked_sha256": "a4907b6542841cfb21f653553923990323da075968270d051bbb64b5b9372739"
     },
     {
       "id": "animst",

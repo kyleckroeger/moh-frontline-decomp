@@ -8,35 +8,42 @@
 // (inferred). CSoundTable and its nested types are named by the mangled
 // symbols; members, record layouts, the key comparison and the parameter
 // copy are inferred and are not original.
+#include "game/GamePtr32.h"
+
 void TLT_CloseFile(void*);
 
 enum TLTResourceID {};
 struct LevelFileContentsStruct_;
 
-// Inferred view of the level resource entry.
+// Inferred view of the level resource entry (the level contents file's entry:
+// type, count, then the relocated pointer to its data).
+struct LevelResourceNamesView {
+    unsigned char unknown00[92];
+    GAME_PTR32(const char) m_eventFile;
+    unsigned char unknown60[4];
+    GAME_PTR32(const char) m_animFile;
+};
 struct LevelResourceView {
     unsigned char unknown00[8];
-    struct {
-        unsigned char unknown00[92];
-        const char* m_eventFile;
-        unsigned char unknown60[4];
-        const char* m_animFile;
-    }* m_names;
+    GAME_PTR32(LevelResourceNamesView) m_names;
 };
 
 LevelResourceView* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
 void* TLT_LoadFileFromLevelBigFile(const char*, int*);
 
 inline void ChangeEndian(short& value) {
+#ifndef GAME_LITTLE_ENDIAN
     unsigned char bytes[2];
     *reinterpret_cast<short*>(bytes) = value;
     unsigned char c = bytes[0];
     bytes[0] = bytes[1];
     bytes[1] = c;
     value = *reinterpret_cast<short*>(bytes);
+#endif
 }
 
 inline void ChangeEndian(int& value) {
+#ifndef GAME_LITTLE_ENDIAN
     unsigned char bytes[4];
     *reinterpret_cast<int*>(bytes) = value;
     unsigned char c = bytes[0];
@@ -46,6 +53,7 @@ inline void ChangeEndian(int& value) {
     bytes[1] = bytes[2];
     bytes[2] = c;
     value = *reinterpret_cast<int*>(bytes);
+#endif
 }
 
 template <class T> inline void ChangeEndian(T& value) {
@@ -109,13 +117,13 @@ public:
     struct FileView {
         unsigned char unknown00[4];
         int m_counts[5];
-        SKey* m_keys;
-        SSoundParms* m_parms;
+        GAME_PTR32(SKey) m_keys;
+        GAME_PTR32(SSoundParms) m_parms;
     };
     struct DataView {
         unsigned char unknown00[8];
         int m_counts[3];
-        SAnimEntry* m_entries;
+        GAME_PTR32(SAnimEntry) m_entries;
     };
 
     CSoundTable() : m_file(0) {}
@@ -210,7 +218,7 @@ void CSoundTable::Init(int, int) {
     m_data = (DataView*)TLT_LoadFileFromLevelBigFile(resource->m_names->m_animFile, 0);
     EndianSwap();
     if (m_file) {
-        int base = (int)m_file;
+        int base = GAME_ADDR32(m_file);
         offsetPtr(m_file->m_keys, base);
         offsetPtr(m_file->m_parms, base);
         int i;
@@ -222,7 +230,7 @@ void CSoundTable::Init(int, int) {
         }
     }
     if (m_data) {
-        offsetPtr(m_data->m_entries, (int)m_data);
+        offsetPtr(m_data->m_entries, GAME_ADDR32(m_data));
         for (int i = 0; i < m_data->m_counts[2]; i++) {
             m_data->m_entries[i].EndianSwap();
         }

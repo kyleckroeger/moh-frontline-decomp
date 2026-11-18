@@ -28,6 +28,7 @@ grep -n "GetPeekLocation" research/log/* research/notes/*
 | `notes/autopilot-loop.md`, `notes/parallel-*.md`, `notes/parallel-agents.md` | How the agent runs were organised (finished, kept as a record) |
 | `notes/pure-link.md` | The pure-source image (endgame W1): how `pure_link.py` links it, each problem found, where it stops |
 | `notes/sdk-views.md`, `notes/shared-headers.md` | Game files' own SDK struct views, and the shared-header moves (endgame W2) |
+| `notes/ptr32.md` | 32-bit pointer fields and byte order in loaded data, for the PC port (`include/game/GamePtr32.h`) |
 | `notes/session-2026-11-16.md` | The 2026-11-16 session: link from 38 to 25 undefined names |
 | `notes/buddy.md`, `notes/oom-guard.md`, `notes/runtime-libraries.md`, others | Topic notes |
 | `plans/` | Live: `endgame.md` (the overall plan, 2026-11-16), `overnight-2026-11-17.md` (last run and the next session's decisions), `matching.md` with `matching_queue.tsv` and `matching_kinds.tsv` (the last 94 functions by kind of mismatch). Finished, kept as a record: `three-day-loop.md`, `loop-agents.md`, `loop_queue.tsv` |

@@ -32,6 +32,7 @@
     "on"
   ],
   "include_dirs": [
+    "include",
     "include/dolphin-sdk/libc"
   ],
   "strip_unused": false,
