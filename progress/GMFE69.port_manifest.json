@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 115052, "differs": 5764, "exact": 1936, "verified": 1282804},
+ "function_bytes_by_status": {"consistent": 114476, "differs": 5764, "exact": 1936, "verified": 1283380},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1095,7 +1095,7 @@
  [2147867976, 168, "__sinit_AIFilter_cpp", "verified", "src/game/AIFilter.cpp"],
  [2147868144, 104, "__dt__Q23dwi20fast_vec<9NoiseInfo>Fv", "verified", "src/game/AIFilter.cpp"],
  [2147868248, 1596, "EndianSwapAnimPlugIn__FR20AnimFilePluginData_ti", "verified", "src/game/anim_callback.cpp"],
- [2147869844, 576, "_find_aim_blend_values__FffPf", "consistent", "research/drafts/_find_aim_blend_values.8005e494.cpp"],
+ [2147869844, 576, "_find_aim_blend_values__FffPf", "verified", "src/game/anim_callback.cpp"],
  [2147870420, 744, "_TurnFindTurnAnimInfo__14CAnimCallbacksFP23AnimFileStateAnimList_tP11CAnimObjectUsPlPfPfPfPff", "verified", "src/game/anim_callback_finish.cpp"],
  [2147871164, 48, "animfinish_cb__14CAnimCallbacksFUsPv", "verified", "src/game/anim_callback_finish.cpp"],
  [2147871212, 2264, "aim_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf", "consistent", "research/drafts/aim_cb.8005e9ec.cpp"],

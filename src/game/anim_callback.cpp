@@ -5,8 +5,11 @@
 // view are inferred from offsets. The conversion helpers are the inlined ones
 // described in propdat.cpp (inferred): the aim fields go straight through the
 // int conversion and the others through the template, which places their
-// temporaries in separate stack groups. The callbacks themselves and the rest
-// of the file are not part of this unit.
+// temporaries in separate stack groups. Then _find_aim_blend_values: the
+// five aim blend weights of an (x, y) aim offset - the centre alone at the
+// origin, two neighbouring edge weights (split by the ratio) outside the unit
+// square, else barycentric weights in the quarter triangle (x, y) falls in.
+// The callbacks themselves and the rest of the file are not part of this unit.
 inline void ChangeEndian(short& value) {
     unsigned char bytes[2];
     *reinterpret_cast<short*>(bytes) = value;
@@ -136,6 +139,73 @@ void EndianSwapAnimPlugIn(AnimFilePluginData_t& data, int state) {
             ChangeEndian(floco.entries[i].a);
             ChangeEndian(floco.entries[i].b);
             ChangeEndian(floco.entries[i].c);
+        }
+    }
+}
+
+// Inferred inlines: the 2D cross product, and the barycentric weights of
+// (x, y) in the triangle of the origin and the corners (bx, by) and (cx, cy)
+// (the doubled area is -2). Written with the differences as call arguments.
+inline float Cross2(float ax, float ay, float bx, float by) { return ax * by - bx * ay; }
+static inline void TriangleBlend(float x, float y, float bx, float by, float cx, float cy,
+                                 float& wa, float& wb, float& wc) {
+    float k = -0.5f;
+    wa = k * Cross2(bx - x, by - y, cx - x, cy - y);
+    wb = k * Cross2(cx - x, cy - y, -x, -y);
+    wc = k * Cross2(-x, -y, bx - x, by - y);
+}
+/* inferred: a second copy of TriangleBlend for the (-1, 1), (1, 1) triangle, whose
+   original computes -y before bx - x (two inline copies that compile differently) */
+inline float Neg(float v) { return -v; }
+static inline void TriangleBlendB(float x, float y, float bx, float by, float cx, float cy,
+                                  float& wa, float& wb, float& wc) {
+    float k = -0.5f;
+    wa = k * Cross2(bx - x, by - y, cx - x, cy - y);
+    wb = k * Cross2(cx - x, cy - y, Neg(x), Neg(y));
+    wc = k * Cross2(Neg(x), Neg(y), bx - x, by - y);
+}
+
+void _find_aim_blend_values(float x, float y, float* blend) {
+    blend[4] = 0.0f;
+    blend[3] = 0.0f;
+    blend[2] = 0.0f;
+    blend[1] = 0.0f;
+    blend[0] = 0.0f;
+    if (x == 0.0f && y == 0.0f) {
+        blend[4] = 1.0f;
+        return;
+    }
+    if (x > y) {
+        if (x > -y) {
+            if (x > 1.0f) {
+                blend[1] = 0.5f * (1.0f + y / x);
+                blend[2] = 1.0f - blend[1];
+                return;
+            }
+            TriangleBlend(x, y, 1.0f, 1.0f, 1.0f, -1.0f, blend[4], blend[1], blend[2]);
+        } else {
+            if (y < -1.0f) {
+                blend[2] = 0.5f * (1.0f + x / -y);
+                blend[3] = 1.0f - blend[2];
+                return;
+            }
+            TriangleBlend(x, y, 1.0f, -1.0f, -1.0f, -1.0f, blend[4], blend[2], blend[3]);
+        }
+    } else {
+        if (-x < y) {
+            if (y > 1.0f) {
+                blend[1] = 0.5f * (1.0f + x / y);
+                blend[0] = 1.0f - blend[1];
+                return;
+            }
+            TriangleBlendB(x, y, -1.0f, 1.0f, 1.0f, 1.0f, blend[4], blend[0], blend[1]);
+        } else {
+            if (x < -1.0f) {
+                blend[0] = 0.5f * (1.0f + -y / x);
+                blend[3] = 1.0f - blend[0];
+                return;
+            }
+            TriangleBlend(x, y, -1.0f, -1.0f, -1.0f, 1.0f, blend[4], blend[3], blend[0]);
         }
     }
 }

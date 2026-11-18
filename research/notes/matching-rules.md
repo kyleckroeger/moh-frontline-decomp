@@ -80,3 +80,6 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   for every spelling, operand orders and helper forms) match as a fully unrolled pointer loop
   `for (int j = 0; j < 4; j++, slot++) if (slot->state == (u16)id) { ...; break; }` (state r3,
   id r0); the indexed loop `slots[j]` is not unrolled (231 lines off).
+  Also closed _find_aim_blend_values (regA3): one of four TriangleBlend expansions had two volatile
+  FPRs swapped (orig -y below bx - x); a second copy for that call writing the negations as
+  `Neg(x)`, `Neg(y)` (value-returning inline) matches, while Neg in the shared copy breaks the others.
