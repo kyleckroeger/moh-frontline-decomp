@@ -346,7 +346,6 @@ void SNDDRV_callbackdropvoice(void* data) {
 // AX, and mixer creation. sndgs and snddrv are named by their symbols; the
 // views of them are inferred from offsets.
 extern "C" {
-_AXVPB* AXAcquireVoice(unsigned long, void (*)(void*), unsigned long);
 extern char sndgs[];
 float* MIX_getwetbuffer(void);
 void SNDI_memcpy(void*, const void*, int);
@@ -518,7 +517,6 @@ struct _AXVPB;
 
 extern "C" {
 extern char sndgs[];
-void ARQPostRequest(ARQRequest*, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, unsigned long, void (*)(unsigned long));
 void SNDI_memcpy(void*, const void*, int);
 extern void* MIXaudioslicefn;
 }
@@ -941,7 +939,6 @@ int SNDPLATFORM_outputset(void) {
 extern "C" {
 extern char sndgs[];
 void AXInit(void);
-int OSCreateThread(OSThread*, void* (*)(void*), void*, void*, unsigned long, long, unsigned short);
 void SNDSYS_add100hzclient(void (*)(void));
 extern void (*MIXrestorefn)(void);
 void SNDSYS_entercritical(void);

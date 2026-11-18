@@ -16,6 +16,9 @@
 // emitted here.
 #include <dolphin/gx.h>
 #include <dolphin/mtx.h>
+#ifdef GAME_HOST_LIBC
+#include <cstring>  // memcpy: on the GameCube the 2001 SDK's types.h includes string.h
+#endif
 
 
 

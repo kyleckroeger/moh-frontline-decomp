@@ -15,18 +15,7 @@
 // defined with the file's data (research/data/init/printstr.cpp, unit
 // printn3). PRINT_movechannel and PRINT_init are called, not inlined, in the
 // original: '#pragma auto_inline off' around their definitions reproduces that.
-namespace std {
-struct __tag_va_List {
-    char gpr;
-    char fpr;
-    char reserved[2];
-    char* input_arg_area;
-    char* reg_save_area;
-};
-typedef __tag_va_List va_list[1];
-}
-
-extern "C" int vsprintf(char*, const char*, std::va_list);
+#include "game/GameVarargs.h"
 
 enum PRINTCHANNEL {};
 
@@ -114,15 +103,17 @@ static void PRINT_vstring(PRINTCHANNEL channel, const char* format, std::va_list
 extern "C" void PRINT_string(PRINTCHANNEL channel, const char* format, ...) {
     std::va_list args;
 
-    __builtin_va_info(&args);
+    GAME_VA_START(args, format);
     PRINT_vstring(channel, format, args);
+    GAME_VA_END(args);
 }
 
 void PRINT_string(const char* format, ...) {
     std::va_list args;
 
-    __builtin_va_info(&args);
+    GAME_VA_START(args, format);
     PRINT_vstring((PRINTCHANNEL)2, format, args);
+    GAME_VA_END(args);
 }
 
 extern "C" void PRINT_setdevicestate(int device, int state) {

@@ -23,7 +23,11 @@
 extern "C" void MEM_free(void*);
 void* DWI_allocalign(const char*, int, int, int);
 
+#ifdef GAME_HOST_LIBC
+#include <new>  // placement new, from the host's C++ library on PC
+#else
 inline void* operator new(unsigned long, void* p) { return p; }
+#endif
 
 namespace dwi {
 

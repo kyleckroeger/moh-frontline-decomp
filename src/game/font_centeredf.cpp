@@ -4,18 +4,7 @@
 // screen's virtual slots and the viewport field names are inferred, not original.
 // Mul is a stand-in for the original's product helper: its compound form gives
 // the original's operand order (conversion first) for the width product.
-namespace std {
-struct __tag_va_List {
-    char gpr;
-    char fpr;
-    char reserved[2];
-    char* input_arg_area;
-    char* reg_save_area;
-};
-typedef __tag_va_List va_list[1];
-}
-
-extern "C" int vsprintf(char*, const char*, std::va_list);
+#include "game/GameVarargs.h"
 extern "C" unsigned long strlen(const char*);
 struct FONT;
 extern "C" int FONT_drawtexta(FONT*, float, float, const unsigned char*);
@@ -67,8 +56,9 @@ void CFont::DrawTextCenteredF(float y, const char* format, ...) {
     std::va_list args;
     char text[1024];
 
-    __builtin_va_info(&args);
+    GAME_VA_START(args, format);
     vsprintf(text, format, args);
+    GAME_VA_END(args);
     CScreen* screen = CScreen::GetCurrent();
     float viewX;
     float viewWidth = g_viewport.m_width;

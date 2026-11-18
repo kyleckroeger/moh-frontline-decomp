@@ -12,6 +12,11 @@
 // the return types are inferred (members at their offsets, names not
 // original), the CARDSet* macros are the SDK's. The card functions take the
 // SDK's s32 (long), which is why the slot is copied for those calls.
+#ifdef GAME_HOST_LIBC
+#include <cstdio>  // the host's C library on PC (research/notes/sdk-views.md)
+#include <cstdlib>
+#include <cstring>
+#else
 extern "C" {
 void* memcpy(void*, const void*, unsigned long);
 void* memset(void*, int, unsigned long);
@@ -22,6 +27,7 @@ int strncmp(const char*, const char*, unsigned long);
 int sprintf(char*, const char*, ...);
 int atoi(const char*);
 }
+#endif
 
 /* CARDFileInfo and CARDStat are the SDK's (2001 headers). */
 #define GAME_SDK_NO_LIBC

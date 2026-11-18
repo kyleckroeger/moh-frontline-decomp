@@ -110,3 +110,23 @@ is recorded here.
   from ShellMenu_ctor.json (a game .cpp unit: exceptions and RTTI on, no `-lang`). They now take
   them from their neighbours' units, sover.json and srandom.json (EA settings, `-lang c++`).
   score_draft.py gives the same scores (3 and 80); the pure-source image was not re-run.
+
+## The C library on PC (2026-11-17, port session)
+
+On PC the C and C++ library is the host's. Game and EA files that declare their own copies of MSL
+declarations clash with it. The port defines `GAME_HOST_LIBC`; where it is defined those files
+include the standard headers instead. On the GameCube the macro is undefined, so the preprocessed
+source is unchanged (all units verified). The port's tools/compile_check.py found seven sites:
+- `include/game/GameVarargs.h` (new): MSL's `std::__tag_va_List` and `vsprintf`, with
+  `GAME_VA_START`/`GAME_VA_END` (`__builtin_va_info(&ap)` and nothing on the GameCube, `va_start`
+  and `va_end` on the host). abortmsg, printstr and font_centeredf use it instead of their own
+  copies; abortmsg and printstr gained `include` in their include directories.
+- `include/game/DwiContainers.h`: placement `operator new` comes from `<new>` on the host.
+- filedev (`FILE`, fopen...), MemoryCardGC (string and stdio prototypes): the standard headers
+  on the host.
+- font_render: `<cstring>` for memcpy on the host (on the GameCube the 2001 SDK's types.h brings
+  string.h in).
+- snddrv: three private prototypes left over from its merged fragments (AXAcquireVoice,
+  ARQPostRequest, OSCreateThread, spelled with long) removed with dedupe_protos.py; the SDK headers
+  declare them. Verified. With the port's ax.h (the 2001 header on Aurora's types), snddrv and
+  sdspmix now compile on PC apart from snddrv's pointer-to-int casts.

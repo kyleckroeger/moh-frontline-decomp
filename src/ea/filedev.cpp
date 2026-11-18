@@ -29,10 +29,14 @@
 // destination fields are integers: the original compares them signed). The
 // request words written by the requesting thread are volatile, and the read
 // thread reads the handle's type through a volatile pointer.
+#ifdef GAME_HOST_LIBC
+#include <cstdio>  // the host's FILE functions on PC (research/notes/sdk-views.md)
+#else
 namespace std {
 struct _FILE;
 typedef _FILE FILE;
 }
+#endif
 using std::FILE;
 #define GAME_SDK_NO_LIBC
 #include <dolphin/os.h>
@@ -40,14 +44,18 @@ using std::FILE;
 typedef void* OSMessage;
 
 extern "C" {
+#ifndef GAME_HOST_LIBC
 FILE* fopen(const char*, const char*);
 int fclose(FILE*);
 int fseek(FILE*, long, int);
 long ftell(FILE*);
 unsigned long fwrite(const void*, unsigned long, unsigned long, FILE*);
+#endif
 void REAL_abortmessage(const char*, ...);
 void MEM_copy(void*, const void*, int);
+#ifndef GAME_HOST_LIBC
 unsigned long fread(void*, unsigned long, unsigned long, FILE*);
+#endif
 void THREAD_yield(int);
 extern unsigned char __lower_map[];
 }
