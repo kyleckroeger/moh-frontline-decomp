@@ -55,7 +55,7 @@ public:
     virtual void Draw(FRAME*) = 0;
     virtual void ReDraw() = 0;
     virtual void CompleteDraw();
-    static void* operator new(unsigned long size) { return rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_userValue); }
+    static void* operator new(unsigned long size) { void* p = rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_userValue); return p; }
     static void operator delete(void* p) { rcmp_sys.m_free(p); }
 
     DECODER* m_decoder;

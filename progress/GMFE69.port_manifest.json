@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 120852, "differs": 5764, "exact": 1936, "verified": 1277004},
+ "function_bytes_by_status": {"consistent": 120128, "differs": 5764, "exact": 1936, "verified": 1277728},
  "data_bytes_owned": 819149,
  "data_bytes_total": 1976252,
  "functions": [
@@ -3319,7 +3319,7 @@
  [2148542828, 52, "SetScale__7GCHW_VDFff", "verified", "src/game/hwvideodisplaylist.cpp"],
  [2148542880, 56, "SetPosition__7GCHW_VDFfff", "verified", "src/game/hwvideodisplaylist.cpp"],
  [2148542936, 72, "__dt__Q24RCMP12VIDEO_DRIVERFv", "verified", "src/game/hwvideodisplaylist.cpp"],
- [2148543008, 724, "MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME", "consistent", "research/drafts/MOHFL_VD_create.80102a20.cpp"],
+ [2148543008, 724, "MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME", "verified", "src/game/hwvideodisplaylist.cpp"],
  [2148543732, 48, "__dl__7GCHW_VDFPv", "verified", "src/game/hwvideodisplaylist_delete.cpp"],
  [2148543780, 4, "CompleteDraw__Q24RCMP12VIDEO_DRIVERFv", "verified", "src/game/hwvideodisplaylist_delete.cpp"],
  [2148543784, 232, "Initialize_Fast_IDCT__Fv", "verified", "src/ea/idct.cpp"],

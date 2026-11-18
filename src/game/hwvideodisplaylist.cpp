@@ -9,7 +9,16 @@
 // VIDEO_DRIVER base's inline destructor and the RCMP system's free for the
 // class delete), then setting the scale or the position, which recomputes
 // the drawn extent as size * scale + position on each axis (the position
-// setter also stores the depth). The destructor is GCHW_VD's key function,
+// setter also stores the depth), then the GCHW_VD constructor (its out-of-line
+// copy is stripped by the original linker; it is inlined into MOHFL_VD_create,
+// and defining it here puts VIDEO_DRIVER's weak destructor before
+// MOHFL_VD_create, as in the original) and MOHFL_VD_create (a new GCHW_VD over
+// the screen's render mode, allocated through VIDEO_DRIVER's class operator
+// new: the RCMP system's allocation hook with an empty name; the result is
+// returned through a named local, which gives the original's registers). The
+// constructor reads the frame size (height declared first for the registers),
+// sets up the Y, V and U C8 texture objects at half size for the chroma planes,
+// creates the YUV swizzler and centres the display on the frame buffer. The destructor is GCHW_VD's key function,
 // so this unit is compiled with RTTI on and holds the class's hierarchy
 // record, virtual table and type information (the class names are entries
 // of the file's .rodata and .sdata2 pools). VIDEO_DRIVER has no key function
@@ -126,26 +135,40 @@ class RCMP_SYSTEM {
 public:
     virtual ~RCMP_SYSTEM();
 
-    void* (*m_alloc)(unsigned long);
+    void* (*m_alloc)(const char*, unsigned long, int, int, int);
     void (*m_free)(void*);
+    int m_allocFlags;
 };
 
 extern RCMP_SYSTEM rcmp_sys;
 
 class VIDEO_DRIVER {
 public:
+    VIDEO_DRIVER(DECODER* decoder) : m_decoder(decoder) {}
     virtual ~VIDEO_DRIVER() {}
     virtual void SetPosition(float, float, float) = 0;
     virtual void SetScale(float, float) = 0;
     virtual void Draw(FRAME*) = 0;
     virtual void ReDraw() = 0;
     virtual void CompleteDraw() {}
+    void* operator new(unsigned long size) { void* p = rcmp_sys.m_alloc("", size, 0, 0, rcmp_sys.m_allocFlags); return p; }
+
+    DECODER* m_decoder;
 };
+
+VIDEO_DRIVER* MOHFL_VD_create(DECODER*, FRAME*);
 
 }
 
+#include "game/CScreen.h"
+
+extern CScreenFieldMode g_screen;
+
+tBigYUVSwizzler* NEW_tBigYUVSwizzlerTexture(GXTexObj*, GXTexObj*, GXTexObj*);
+
 class GCHW_VD : public RCMP::VIDEO_DRIVER {
 public:
+    GCHW_VD(RCMP::DECODER* decoder, RCMP::FRAME* frame, _GXRenderModeObj* mode);
     virtual ~GCHW_VD();
     void operator delete(void* p) { RCMP::rcmp_sys.m_free(p); }
     virtual void SetPosition(float, float, float);
@@ -156,7 +179,6 @@ public:
 
     void iDraw();
 
-    RCMP::DECODER* m_decoder;
     tBigYUVSwizzler* m_swizzler;
     GXTexObj m_textureY;
     GXTexObj m_textureU;
@@ -173,6 +195,7 @@ public:
     float m_scaleY;
     unsigned int m_screenHeight;
     unsigned int m_screenWidth;
+    _GXRenderModeObj* m_renderMode;
 };
 
 void GCHW_VD::iDraw() {
@@ -296,4 +319,36 @@ void GCHW_VD::SetPosition(float x, float y, float z) {
     m_right = m_width * m_scaleX + m_x;
     m_bottom = m_height * m_scaleY + m_y;
     m_z = z;
+}
+
+GCHW_VD::GCHW_VD(RCMP::DECODER* decoder, RCMP::FRAME* frame, _GXRenderModeObj* mode) : RCMP::VIDEO_DRIVER(decoder) {
+    short height = frame->m_data->height;
+    short width = frame->m_data->width;
+
+    m_width = width;
+    m_height = height;
+    m_screenHeight = g_screen.GetHeight();
+    m_screenWidth = g_screen.GetWidth();
+    m_renderMode = mode;
+    GXInitTexObjCI(&m_textureY, 0, width, height, 9, 0, 0, 0, 2);
+    GXInitTexObjLOD(&m_textureY, 0, 0, 0.0f, 0.0f, 0.0f, 0, 0, 0);
+    GXInitTexObjCI(&m_textureV, 0, width / 2, height / 2, 9, 0, 0, 0, 1);
+    GXInitTexObjLOD(&m_textureV, 0, 0, 0.0f, 0.0f, 0.0f, 0, 0, 0);
+    GXInitTexObjCI(&m_textureU, 0, width / 2, height / 2, 9, 0, 0, 0, 0);
+    GXInitTexObjLOD(&m_textureU, 0, 0, 0.0f, 0.0f, 0.0f, 0, 0, 0);
+    m_swizzler = NEW_tBigYUVSwizzlerTexture(&m_textureY, &m_textureV, &m_textureU);
+    m_frame = 0;
+    int fw = m_renderMode->fbWidth;
+    int eh = m_renderMode->efbHeight;
+    m_x = (fw - width) / 2;
+    m_y = (eh - height) / 2;
+    m_right = m_x + width;
+    m_bottom = m_y + height;
+    m_z = 0.0f;
+    m_scaleX = 1.0f;
+    m_scaleY = 1.0f;
+}
+
+RCMP::VIDEO_DRIVER* RCMP::MOHFL_VD_create(DECODER* decoder, FRAME* frame) {
+    return new GCHW_VD(decoder, frame, g_screen.m_mode);
 }
