@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 988,
- "function_bytes_by_status": {"consistent": 106872, "differs": 5764, "exact": 1220, "verified": 1291700},
+ "verified_units": 989,
+ "function_bytes_by_status": {"consistent": 105392, "differs": 5764, "exact": 1220, "verified": 1293180},
  "data_bytes_owned": 821488,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2231,7 +2231,7 @@
  [2148189356, 412, "UpdateAI__14CSoldierObjectFf", "verified", "src/game/Soldier_object_bounds.cpp"],
  [2148189768, 232, "BeginUpdate__14CSoldierObjectFf", "verified", "src/game/Soldier_object_bounds.cpp"],
  [2148190000, 692, "DrawMuzzleFlash__14CSoldierObjectFR12CDrawContextP7CWeaponb", "verified", "src/game/Soldier_object_bounds.cpp"],
- [2148190692, 1480, "Draw__14CSoldierObjectFR12CDrawContext", "consistent", "research/drafts/Draw.800ac9e4.cpp"],
+ [2148190692, 1480, "Draw__14CSoldierObjectFR12CDrawContext", "verified", "src/game/Soldier_object_draw.cpp"],
  [2148192172, 12, "IsLightingEnabled__11CStaticMeshFv", "verified", "src/game/Soldier_object_lit.cpp"],
  [2148192184, 3828, "UpdateAnimation__14CSoldierObjectFf", "consistent", "research/drafts/UpdateAnimation.800acfb8.cpp"],
  [2148196012, 20, "SetFaceAnimationState__14CSoldierObjectFUsl", "verified", "src/game/Soldier_object_cleanup.cpp"],

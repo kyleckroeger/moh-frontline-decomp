@@ -144,3 +144,9 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   they are declared first) it gets the lowest index, is pushed first and coloured last. User locals
   index in reverse declaration order, so "declare it after X" = "colour it after X". Declaring s
   before d/e coloured it before them and it took a free volatile (7).
+- **Move a user local above an IV by making it an inline local** (tr3, CSoldierObject::Draw 8 -> 0).
+  The original's RemoveWeapons weapon pointer (a loop-optimizer '@' temp) shares mesh's r24, so it is
+  coloured after mesh; ours ranked mesh (a plain user local, low index) below it. Moving the block that
+  declares mesh into a single-use inline member (DrawAttached) makes mesh an inline '@' local created at
+  expansion, numbered above the loop optimizer's later temps: it is pushed after the IV, popped and
+  coloured before it, and the IV takes the lowest obtained register no neighbour holds (r24).

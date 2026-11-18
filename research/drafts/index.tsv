@@ -54,7 +54,6 @@ real_lines	size	address	function	compile_settings_from	draft
 958	5024	800e270c	MemoryCardBootUpPortCheck__10CShellMenuFi	config/GMFE69/ShellMenu_load.json	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
 58	1704	80075024	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	config/GMFE69/compartment.json	research/drafts/DrawNode.80075024.cpp
 21	376	800904e8	Rotate__7CMatrixF8CVector3f	config/GMFE69/matrix_translate.json	research/drafts/Rotate.800904e8.cpp
-8	1480	800ac9e4	Draw__14CSoldierObjectFR12CDrawContext	config/GMFE69/Soldier_object.json	research/drafts/Draw.800ac9e4.cpp
 3	1332	800afc08	OnCollision__13CStaticObjectFRC10CCollision	config/GMFE69/static_obj_rows.json	research/drafts/OnCollision.800afc08.cpp
 138	3376	800b254c	Init__20CStaticObjectFactoryFv	config/GMFE69/staticobjfactory_helmet.json	research/drafts/Init.800b254c.cpp
 37	280	800c13b4	GetExtents__7CVolBoxCFR8CVector3R8CVector3	config/GMFE69/box_dispatch.json	research/drafts/GetExtents.800c13b4.cpp

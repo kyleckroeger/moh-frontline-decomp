@@ -988,7 +988,8 @@
     "buddy.json",
     "AIObject_updatetarget.json",
     "stream_kill.json",
-    "toilet_repository.json"
+    "toilet_repository.json",
+    "Soldier_object_draw.json"
   ],
   "progress": {
     "code_bytes": 1414572,

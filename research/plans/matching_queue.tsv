@@ -51,7 +51,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 50	near	near	1492	4	4	open	Link__8CPartBinFP7CDmaTagR10CDmaPacket	research/drafts/CPartBin_Link.800f5930.cpp	
 51	near	near	400	6	3	open	DisplayHint__Fv	research/drafts/DisplayHint.8001e0f8.cpp	
 52	near	near	156	7	2	open	BIFunc_AIStartCoverPointWalkToStored__FPPiPv	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp	
-53	near	near	1480	8	2	open	Draw__14CSoldierObjectFR12CDrawContext	research/drafts/Draw.800ac9e4.cpp	
+53	near	near	1480	8	2	landed	Draw__14CSoldierObjectFR12CDrawContext	research/drafts/Draw.800ac9e4.cpp	tr3: case-1 attachment body as inline member DrawAttached (mesh becomes an inline local numbered above the RemoveWeapons pointer IV, coloured first; IV shares r24); new unit Soldier_object_draw
 54	near	near	572	13	2	landed	TLT_LoadFromRepository__FPCcPiPb	research/drafts/TLT_LoadFromRepository.8001cca8.cpp	new unit toilet_repository (rule: the repository test in a small entry inline InRepository(data) with the iterator inside: find p/end/data colour as the orig)
 55	near	near	608	14	6	landed	Init__NotTheVirtualOne__19CBulletDecalManagerFv	research/drafts/Init.800839e4.cpp	decal.cpp tail merged into one unit decal (decal_initclass+decal_dtor+decal, deferred+RTTI; rule: member copy inside the first test 'if ((m_resource = resource)->...)' keeps resource a variable; '(unsigned int)(i * 6) + 5' orders the IVs)
 56	near	near	724	17	1	landed	MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME	research/drafts/MOHFL_VD_create.80102a20.cpp	appended to hwvideodisplaylist (rule: operator new through a named local 'void* p = alloc(); return p;' puts the new result in r31; ctor out of line, linker-stripped, places VIDEO_DRIVER's weak dtor)

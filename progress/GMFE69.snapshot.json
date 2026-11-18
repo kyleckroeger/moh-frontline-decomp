@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1300544,
+    "matching_code_bytes": 1302024,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.93904587394633,
+    "percent": 92.04367115989854,
     "categories": {
-      "reconstructed_game": 1063784,
+      "reconstructed_game": 1065264,
       "restored_library": 236760
     },
-    "matching_functions": 4934
+    "matching_functions": 4935
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -464,6 +464,7 @@
     "src/game/Soldier_object_bounds.cpp": "de317d8ddac759011fc6d15819b43cf902b41d66badbb1e6fa0c79cd9fe12e9b",
     "src/game/Soldier_object_cleanup.cpp": "2933ca5c78ff7069d772e0c1b1c06622ac18369138feb7d81d6e5b57a41e5aef",
     "src/game/Soldier_object_ctor.cpp": "8dbf8909c4d219dd6892d1fa10db85bd2730be52c57dc03bcdc8e2f5beeb9d64",
+    "src/game/Soldier_object_draw.cpp": "bd69f07a5f6ff7d10c2a982007d224c09ec917ce4de4b9045e8e3ff154316dcb",
     "src/game/Soldier_object_lit.cpp": "b63d2bad3f99e97e066f78aaf298c3ee2d980e0fda7c7d1b333952eab494ba03",
     "src/game/Tank_object.cpp": "b789caee688fe1837e2b464210963bbde149d87b5b2ccf4480984e9fd10b3ace",
     "src/game/TibPolygon_process.cpp": "7d65835faada8b1a9b2636de91148a6ae759b849fedd91e74d42f6ae053b4bb6",
@@ -1661,6 +1662,7 @@
     "config/GMFE69/Soldier_object_bounds.json": "1413ce18a2848e1bb48bdb19546ce3c55316e972afdbc5a6177ec57f567e4701",
     "config/GMFE69/Soldier_object_cleanup.json": "2274e2e5d22ff4ed34870dcaa16ecbf8dcb609b960c283e8bb9a8822d6236f0b",
     "config/GMFE69/Soldier_object_ctor.json": "3762f16d06795a0c3fbf6bac141b8b6489fa4e9e352f49baabacd09617a6a9fe",
+    "config/GMFE69/Soldier_object_draw.json": "5dd32b2c4653c5bc1284436199abf99383f6ae634ff5adf0bd807c37d6036ba1",
     "config/GMFE69/Soldier_object_lit.json": "717fb1ac9f3fc850cf5f8092fd6229e49652ec6b82f8a150cfae6786055df9bb",
     "config/GMFE69/Tank_object.json": "40d956f1545d29ae6c67fb066f2b2f934e30ef949b372ef1d846bceda6945bc1",
     "config/GMFE69/TibPolygon_process.json": "ae73810325ae2a5e0c0fe9bc67321bb331a517600059ebb69645baf277800f72",
@@ -2151,7 +2153,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "6c8e435abd4a0a942e15683b23398deea22caffd8f51111fcc53e69df75d09d7",
-    "config/GMFE69/project.json": "51488fed4d33b246ae92f2b3abe52708fbb25d8457fe9b74f59015e6f223d5bc",
+    "config/GMFE69/project.json": "b2ac3b17f88da1a9b4b7ef4d44ad5843dbbb9771fadf2fddd3a5cee95e3a70ac",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -43200,6 +43202,45 @@
       "discarded_functions": [],
       "object_sha256": "429ce6a0f474de70be03a3003683261813aa8adbf4d5cdbb88b5749cf0d23b7b",
       "linked_sha256": "9b52ed3a4f7e3113bb05eb9a5143c3217f12f6597e258c2f379bbdb5a580d67e"
+    },
+    {
+      "id": "Soldier_object_draw",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 1480,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "e0d3ba54ceac1dd29bae8bb421e1c2cf267c89c2990bbdd92138bf9cc8b11db7",
+      "linked_sha256": "1ea55934810747f83d50e3cb8f4c61f8f763b6e7e900ad191306f951a1ced628"
     }
   ],
   "code_map": {
@@ -43614,13 +43655,6 @@
         "file_record": 117,
         "file_name": "Soldier_object.cpp",
         "ranges": [
-          {
-            "address": "0x800ac9e4",
-            "size": 1480,
-            "kind": "function",
-            "name": "Draw__14CSoldierObjectFR12CDrawContext",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800acfb8",
             "size": 3828,

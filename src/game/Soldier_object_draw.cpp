@@ -15,7 +15,11 @@
 // symbols; the members, the draw-context layout (its implicit copy uses
 // CMatrix's copy constructor), the material views and the virtual slots'
 // names are inferred. The strings and constants are .sdata2 pool
-// references. The rest of the file is in other units.
+// references. The rest of the file is in other units. Matching note: the
+// static-object attachment case is the inline member DrawAttached, so its
+// mesh is an inline local, numbered above the weapon pointer of the
+// inlined RemoveWeapons loop and coloured before it; the pointer then
+// shares mesh's r24 as in the original.
 class CTexture;
 class CWeapon;
 struct BPDLightVolume;
@@ -289,6 +293,7 @@ public:
     void Draw(CDrawContext&);
     void DrawMuzzleFlash(CDrawContext&, CWeapon*, bool);
     /* RemoveWeapons' body (inlined here) */
+    void DrawAttached(CDrawContext& local, CMatrix& matrix, SkeletonView* skeleton, unsigned int i);
     void RemoveWeapons() {
         DetachObject("lt_hand");
         DetachObject("rt_hand");
@@ -364,6 +369,22 @@ public:
 inline void SetMeshLight(BPDLightVolume* v) { CStaticMesh::SetLightVolume(v); }
 inline void DrawAnimObject(CSoldierObject* o, CDrawContext& c) { o->CAnimObject::Draw(c); }
 
+inline void CSoldierObject::DrawAttached(CDrawContext& local, CMatrix& matrix, SkeletonView* skeleton, unsigned int i) {
+    matrix.Multiply(m_bones[skeleton->m_nodes[i].m_bone], m_matrix);
+    matrix.Multiply(m_handMatrices[i], matrix);
+    CStaticObject* object = (CStaticObject*)m_attachments[i];
+    object->SetTMLocalToWorld(matrix);
+    CStaticMesh* mesh = ((CStaticObject*)m_attachments[i])->m_mesh;
+    if (mesh->IsLightingEnabled())
+        SetMeshLight(local.m_lightVolume);
+    local.m_object = &matrix;
+    if (((CStaticObject*)m_attachments[i])->IsVisible())
+        mesh->Draw(local, 0);
+    CWeaponView* weapon = (CWeaponView*)m_weapons[m_currentWeapon];
+    if (weapon && mesh == weapon->m_mesh)
+        DrawMuzzleFlash(local, (CWeapon*)weapon, false);
+}
+
 void CSoldierObject::Draw(CDrawContext& context) {
     CDrawContext local = context;
     if (g_config.m_flag3 || g_config.m_flag4)
@@ -399,22 +420,9 @@ void CSoldierObject::Draw(CDrawContext& context) {
     for (unsigned int i = 0; i < skeleton->m_count; i++) {
         if (m_attachTypes[i])
         switch (m_attachTypes[i]) {
-        case 1: {
-            matrix.Multiply(m_bones[skeleton->m_nodes[i].m_bone], m_matrix);
-            matrix.Multiply(m_handMatrices[i], matrix);
-            CStaticObject* object = (CStaticObject*)m_attachments[i];
-            object->SetTMLocalToWorld(matrix);
-            CStaticMesh* mesh = ((CStaticObject*)m_attachments[i])->m_mesh;
-            if (mesh->IsLightingEnabled())
-                SetMeshLight(local.m_lightVolume);
-            local.m_object = &matrix;
-            if (((CStaticObject*)m_attachments[i])->IsVisible())
-                mesh->Draw(local, 0);
-            CWeaponView* weapon = (CWeaponView*)m_weapons[m_currentWeapon];
-            if (weapon && mesh == weapon->m_mesh)
-                DrawMuzzleFlash(local, (CWeapon*)weapon, false);
+        case 1:
+            DrawAttached(local, matrix, skeleton, i);
             break;
-        }
         case 2:
             matrix.Multiply(m_bones[skeleton->m_nodes[i].m_bone], m_matrix);
             matrix.Multiply(m_handMatrices[i], matrix);
