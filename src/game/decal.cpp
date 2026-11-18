@@ -1,18 +1,162 @@
-// The end of decal.cpp (0x80083ec0): the static initialisation of the file's
-// decal list (512 bullet decals built through their constructor by
-// __construct_array) and of its identity matrix (the inline constructor
-// initialises the matrix class once, then the identity is set), followed by
-// the weak BulletDecal constructor emitted after it, which sets the colour of
-// each of the decal's four vertices to (0, 0, 0, 128), and the weak
-// this-adjusting thunks of CBulletDecalManager's table for its render-bin base
-// at +36 (IsUsed, Link, destructor). The rest of the file is in other units.
-// BulletDecal, g_DecalList and g_Ident are named by the symbols; the object
-// sizes come from the symbols, the vertex layout, its colour view and the
-// identity-matrix constructor are inferred. The manager's virtual functions
-// are named by its table; their declaration order (IsUsed first, as the key
-// function that emits the table here) is inferred, and IsUsed itself is placed
-// by decal_link.cpp (a file duplicate, like the table).
-/* Inferred: a plain colour (the vertex is constructor-less). */
+// decal.cpp from CBulletDecalManager::Init__NotTheVirtualOne (0x800839e4) to the
+// end of the file, with the file's data: the header's hash-table primes, the
+// class names, the base lists, the two tables and the type records, the decal
+// list, the identity matrix and the file-local render list, screen and draw
+// context. (decal_link.cpp and decal_reset.cpp hold the functions before
+// Init__NotTheVirtualOne; none of them reaches the file's data.)
+// Init__NotTheVirtualOne gives the 512 decals their texture coordinates and a
+// white colour, keeps the level's decal resource (type 20) and warns when it
+// lists more or fewer than the 13 bins, loads each bin's shape file (the first
+// entry's when the resource is short), sets its texture, links the bin under
+// the manager's render bin and converts the bin's angle from degrees, then
+// adds the manager to the scene with render priority 6 and registers the
+// global manager's render bin. InitClass keeps the render list and screen;
+// the destructors and constructors of the manager and texture bin follow, then
+// the static initialisation (the decal list built through the BulletDecal
+// constructor, whose weak copy follows, and the identity matrix) and the
+// this-adjusting thunks of the manager's table for its render-bin base at +36.
+//
+// The file is compiled with -inline deferred and RTTI on, so the definitions
+// are written in reverse image order: that order gives the original data
+// order (the manager's base lists and table before the texture bin's). The
+// render bin is a private base of the manager: its base-list record marks the
+// render-bin bases with the non-public flag (0x80000000) and a count, which
+// only a non-public base produces. The manager is a scene node with the
+// render bin as its second base (CUcodeRenderBin at +36, its table pointer at
+// +64) and holds 13 texture bins of 108 bytes at +68.
+// Init__NotTheVirtualOne keeps the resource pointer in a register because the
+// copy into m_resource is made inside the first test ('if ((m_resource =
+// resource)->...)'): a separate 'm_resource = resource;' statement lets the
+// compiler fold the variable into the call's result, which then ranks below
+// the loop counter. The bin's angle index is written '(unsigned int)(i * 6) +
+// 5' and the name index '(unsigned int)(i * 6 + 1)', which gives the
+// original's two offset induction variables in its order.
+// The classes, functions and globals are named by the symbols (CRenderBinData
+// by CRenderBin's RTTI record); the members, the resource layout and the
+// AddChild helper are inferred views. Weak virtuals whose bodies are not part
+// of this view (the scene-node defaults of Moh2.cpp, CRenderBin's Init and
+// IsUsed) are declared without one; the compiler's copies of the bases' weak
+// inline destructors are weak duplicates.
+class CDmaTag;
+class CDmaPacket;
+class CBullet;
+class CCollision;
+class CDrawContext;
+class CLight;
+class CPlayerObject;
+class CStaticObject;
+class CMatrix;
+class CVector3;
+struct AIDoodadView;
+
+/* ISceneNode's virtuals in table order (slots 20 to 216). They are the weak
+   inline defaults of Moh2.cpp in the original; their bodies are not repeated
+   here, so they are declared without one. */
+#include "game/ISceneNode.h"
+
+class CRenderBin;
+
+/* CRenderBin's non-polymorphic base, named by CRenderBin's RTTI record; the
+   members are inferred (CRenderBin::Init walks children from +8 through the
+   siblings at +4, IsUsed tests +16, +20 is the render priority, 3 by
+   default). */
+struct CRenderBinData {
+    CRenderBinData() : data00(0), m_next(0), m_children(0), data0c(0), data10(0), m_priority(3) {}
+
+    int data00;
+    CRenderBin* m_next;
+    CRenderBin* m_children;
+    int data0c;
+    int data10;
+    int m_priority;
+    int data18;
+
+    /* Inferred (the name is this project's): a child is linked in after the
+       first one. */
+    void AddChild(CRenderBin* child);
+};
+
+/* CRenderBin's virtuals in table order; all are weak (inline) in the
+   original. Init's and IsUsed's bodies are not part of this view, so they
+   are declared without one, which also keeps CRenderBin's table out of this
+   unit. */
+class CRenderBin : public CRenderBinData {
+public:
+    CRenderBin() {}
+    virtual ~CRenderBin() {}
+    virtual int Render(CDmaPacket&, void*);
+    virtual void Init();
+    virtual void Link(CDmaTag*, CDmaPacket&) {}
+    virtual bool IsUsed();
+};
+
+inline void CRenderBinData::AddChild(CRenderBin* child) {
+    CRenderBin* first = m_children;
+    if (first) {
+        child->m_next = first->m_next;
+        if (first->m_next)
+            first->m_next->data00 = (int)child;
+        child->data00 = (int)first;
+        first->m_next = child;
+    } else {
+        m_children = child;
+    }
+}
+
+class CUcodeRenderBin : public CRenderBin {
+public:
+    CUcodeRenderBin() {}
+    virtual ~CUcodeRenderBin() {}
+    virtual void Link(CDmaTag*, CDmaPacket&);
+};
+
+class CRenderList {
+public:
+    void Register(CRenderBin&);
+};
+
+class CScreen;
+struct ShapeFile;
+struct LevelFileContentsStruct_;
+enum TLTResourceID {};
+
+void DebugMsg(const char*, ...);
+void* TLT_LoadFileFromLevelBigFile(const char*, int*);
+
+struct DecalParam {
+    int key;
+    union {
+        float value;
+        const char* name;
+    };
+};
+
+struct DecalResourceData {
+    int data00;
+    int m_count;
+    DecalParam m_params[6]; /* six pairs per decal type */
+};
+
+struct TLTResourceView {
+    int data00;
+    int data04;
+    DecalResourceData* data;
+};
+
+TLTResourceView* TLT_FindNextResourceByType(TLTResourceID, LevelFileContentsStruct_*);
+
+class CTexture {
+public:
+    void Set(ShapeFile*, bool);
+
+    unsigned char unknown00[64];
+};
+
+#include "game/CScene.h"
+
+
+extern CScene g_scene;
+
 struct ColorView {
     unsigned char r;
     unsigned char g;
@@ -29,78 +173,142 @@ struct ColorView {
 
 #include "game/CMatrix.h"
 
-
-/* Inferred: a decal vertex (position, colour, texture coordinates). */
-struct DecalVertexView {
-    float position[3];
+struct SDecalVertex {
+    float x, y, z;
     ColorView color;
-    float uv[2];
+    float u, v;
 };
 
 class BulletDecal {
 public:
     BulletDecal() {
-        m_verts[0].color.Set(0, 0, 0, 128);
-        m_verts[1].color.Set(0, 0, 0, 128);
-        m_verts[2].color.Set(0, 0, 0, 128);
-        m_verts[3].color.Set(0, 0, 0, 128);
+        m_vertices[0].color.Set(0, 0, 0, 128);
+        m_vertices[1].color.Set(0, 0, 0, 128);
+        m_vertices[2].color.Set(0, 0, 0, 128);
+        m_vertices[3].color.Set(0, 0, 0, 128);
     }
 
-    DecalVertexView m_verts[4];
-    unsigned char unknown60[8];
+    SDecalVertex m_vertices[4];
+    BulletDecal* m_next;
+    int m_bin;
 };
 
-static BulletDecal g_DecalList[512];
-static CMatrix g_Ident(true);
-
-class CDmaTag;
-class CDmaPacket;
-class CDrawContext;
-class CCollision;
-class CBullet;
-class CLight;
-class CVector3;
-struct BSObject;
-
-
-
-
-
-
-
-#include "game/ISceneNode.h"
-
-
-class CRenderBin {
+class CBulletDecalTextureBin : public CUcodeRenderBin {
 public:
-    virtual ~CRenderBin();
+    virtual ~CBulletDecalTextureBin();
     virtual int Render(CDmaPacket&, void*);
-    virtual void Init();
     virtual void Link(CDmaTag*, CDmaPacket&);
     virtual bool IsUsed();
+    CBulletDecalTextureBin();
+    void Init(ShapeFile* shape) {
+        m_decals = 0;
+        m_count = 0;
+        m_shape = shape;
+        m_texture.Set(m_shape, false);
+    }
 
-    int data04[7];
+    int m_count;
+    BulletDecal* m_decals;
+    CTexture m_texture;
+    ShapeFile* m_shape;
 };
 
-class CUcodeRenderBin : public CRenderBin {
+class CBulletDecalManager : public ISceneNode, private CUcodeRenderBin {
 public:
-    virtual ~CUcodeRenderBin();
-};
-
-/* Inferred: only the bases and the member IsUsed reads. */
-class CBulletDecalManager : public ISceneNode, public CUcodeRenderBin {
-public:
-    virtual bool IsUsed();
     virtual ~CBulletDecalManager();
     virtual void Draw(CDrawContext&);
     virtual bool IsVisible(CDrawContext&) const;
     virtual bool IsDrawEnabled() const;
+    virtual bool IsUsed();
     virtual void Link(CDmaTag*, CDmaPacket&);
+    CBulletDecalManager();
 
-    unsigned char unknown44[1408];
+    void Init__NotTheVirtualOne();
+    static void InitClass(CRenderList*, CScreen*);
+
+    CBulletDecalTextureBin m_bins[13];
+    BulletDecal* m_decals;
     int m_active;
+    TLTResourceView* m_resource;
 };
 
-bool CBulletDecalManager::IsUsed() {
-    return m_active > 0;
+extern CBulletDecalManager g_BulletDecalManager;
+
+#include "game/DwiHashMap.h"
+
+static BulletDecal g_DecalList[512];
+static CMatrix g_Ident(true);
+static CRenderList* g_pRenderList;
+static CScreen* g_pScreen;
+static CDrawContext* g_pContext;
+
+CBulletDecalTextureBin::CBulletDecalTextureBin() {
+    m_decals = 0;
+}
+
+CBulletDecalTextureBin::~CBulletDecalTextureBin() {
+}
+
+CBulletDecalManager::CBulletDecalManager() {
+}
+
+CBulletDecalManager::~CBulletDecalManager() {
+}
+
+void CBulletDecalManager::InitClass(CRenderList* list, CScreen* screen) {
+    g_pRenderList = list;
+    g_pScreen = screen;
+}
+
+static inline void InitDecalList() {
+    int i;
+    for (i = 0; i < 512; i++) {
+        BulletDecal& d = g_DecalList[i];
+        d.m_vertices[0].u = 0.0f;
+        d.m_vertices[0].v = 0.0f;
+        d.m_vertices[0].color.Set(255, 255, 255, 255);
+        d.m_vertices[1].u = 1.0f;
+        d.m_vertices[1].v = 0.0f;
+        d.m_vertices[1].color.Set(255, 255, 255, 255);
+        d.m_vertices[2].u = 1.0f;
+        d.m_vertices[2].v = 1.0f;
+        d.m_vertices[2].color.Set(255, 255, 255, 255);
+        d.m_vertices[3].u = 0.0f;
+        d.m_vertices[3].v = 1.0f;
+        d.m_vertices[3].color.Set(255, 255, 255, 255);
+    }
+}
+
+void CBulletDecalManager::Init__NotTheVirtualOne() {
+    TLTResourceView* resource;
+    int i;
+
+    m_decals = g_DecalList;
+    InitDecalList();
+    resource = TLT_FindNextResourceByType((TLTResourceID)20, 0);
+    if ((m_resource = resource)->data->m_count > 13) {
+        DebugMsg("WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  \n");
+        DebugMsg("WARNING:  The engine is only aware of %d number of decals while\n", 13);
+        DebugMsg("decal.crp is specifying %d.  That's wasting memory\n", resource->data->m_count);
+    } else if (resource->data->m_count < 13) {
+        DebugMsg("WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  WARNING:  \n");
+        DebugMsg("WARNING:  The engine is aware of %d number of decals while\n", 13);
+        DebugMsg("decal.crp is specifying %d.\n", resource->data->m_count);
+        DebugMsg("Either specify more in decal.crp or reduce the engine number\n");
+    }
+    for (i = 0; i < 13; i++) {
+        int size;
+        const char* name;
+        if (i < resource->data->m_count)
+            name = ((DecalParam*)resource->data)[(unsigned int)(i * 6 + 1)].name;
+        else
+            name = resource->data->m_params[0].name;
+        m_bins[i].Init((ShapeFile*)TLT_LoadFileFromLevelBigFile(name, &size));
+        AddChild(&m_bins[i]);
+        resource->data->m_params[(unsigned int)(i * 6) + 5].value *= 3.14159265f / 180.0;
+    }
+    m_active = 0;
+    g_scene.Add(*this);
+    m_priority = 6;
+    g_pRenderList->Register(g_BulletDecalManager);
 }

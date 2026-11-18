@@ -105,3 +105,13 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   NAMED LOCAL ('T* t = call(); return t;', not 'return call();') turns the caller's variable into one, and
   a class operator new written the same way does it for a 'new T' result. Temporaries rank above all user
   locals, first-created highest.
+- **A copy made inside an expression keeps a variable that a copy statement loses** (on3,
+  CBulletDecalManager::Init__NotTheVirtualOne). `resource = call(); m_resource = resource;` lets
+  CW fold `resource` into the call's result temporary (the DWARF lists the variable in r0): the
+  value is then numbered as a temporary and ranks below the loop counter. Writing the member copy
+  inside the first use, `if ((m_resource = resource)->data->m_count > 13)`, gives the same
+  instructions but keeps `resource` a user variable, which stays blocked in the first simplify
+  sweep and takes r31 as in the original. Check DWARF (research/tools/varmap.py) for a variable in
+  r0 whenever a call result is copied into a local and a member. Same row: an `(unsigned int)`
+  cast on part of an array index, `(unsigned int)(i * 6) + 5`, gave that offset its own induction
+  variable created first (the preheader's first `li`); other cast placements kept or broke it.

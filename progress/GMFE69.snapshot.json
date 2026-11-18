@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1296308,
+    "matching_code_bytes": 1296916,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.63959133928849,
+    "percent": 91.68257253784184,
     "categories": {
-      "reconstructed_game": 1059548,
+      "reconstructed_game": 1060156,
       "restored_library": 236760
     },
-    "matching_functions": 4928
+    "matching_functions": 4929
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -696,11 +696,9 @@
     "src/game/debug_prof_register.cpp": "f10517287e8c20bcd543c108a9998d70e02216cafd67402edb109fc5cb979604",
     "src/game/debug_prof_stats.cpp": "aaf2bed1c87c5413e67a2c5c6d8b8168ee928b1a2cd11f69816a1eecd9e87ba0",
     "src/game/debug_prof_timers.cpp": "a36d77060298ff1dc7be3f288aa7b0714204a28af156806a870f0c70f2c3e51e",
-    "src/game/decal.cpp": "cc27d07cd78afd24b70d159ad75aa7d12f4daf175665b1eac0ef7b68d312d1ef",
-    "src/game/decal_dtor.cpp": "d315acd85da935fbfdd25b8eec442031ed9fd745aad6c3fb08934fb119c0c279",
-    "src/game/decal_initclass.cpp": "ba806baa5ce9b824ef5a71586a88189547756f7f4606febb6e19e8bac69929b8",
-    "src/game/decal_link.cpp": "7facde40a5a04a914cb4f817a9f4aeb2e9f479ad59e48b1625cb051cb3fe44fc",
-    "src/game/decal_reset.cpp": "a7da1c9eb402c6ceec257aa84378fb23b66ab6faa969f4ba1956ef6acf9243aa",
+    "src/game/decal.cpp": "2a8b3b3a27fc6d7cf54c964df600f67ca5050d4245ed2b8159d832d9168733a5",
+    "src/game/decal_link.cpp": "52b522b46de6e3bba08668dbc83b28df3b391af37ac3fcad9e410df3d2bb0218",
+    "src/game/decal_reset.cpp": "f89e7679751d15fc96c26ec00aa1e4f32e70c48707cf0ddc3d1192fc24216aca",
     "src/game/destructor_queue.cpp": "e03cf0b6880befec4f40a6abaa44cef7bdbfff9ef781396eec3ab266e7f89d14",
     "src/game/devicemgr.cpp": "7b3153cdd86bbdb41db94ee960dc7e388af5996235f5a3982151b7abd341e82d",
     "src/game/dmcluster.cpp": "13992df577f960a585c38db6290a2d3d07fe3229fb7a17a4ece88aa953437fe0",
@@ -1927,9 +1925,7 @@
     "config/GMFE69/debug_prof_stats.json": "d4619c561ed3037fa28a301f62ed8cb9c9d9011f175dd45b5f5d641fd8db9b28",
     "config/GMFE69/debug_prof_timers.json": "55be7658fe193c6c91eef7449b78be88ec1a421e62537cafe7f4df8d85f2aac1",
     "config/GMFE69/debugger.json": "b4812b86753209416cae697106b949c189ef985bbe634aca332ff006abd18fdb",
-    "config/GMFE69/decal.json": "288ed3352163b37fd27f6fb032618dc8d70350e6b657d2e23886ef6e46fc9207",
-    "config/GMFE69/decal_dtor.json": "a454c6b4f69ad8d7b90dd660a437dd63dba158c6bb2328ad6cf5dbd6d6b165cc",
-    "config/GMFE69/decal_initclass.json": "23494926356c2f036a09c4dcbb5113091a7d86daedd49d772f11b546616aae79",
+    "config/GMFE69/decal.json": "80e8786748978dcfc99adb60c1c4a7a1fc9186c95a02c39a867bf687d8bd8422",
     "config/GMFE69/decal_link.json": "6c44f9f728fb27e8eb84c4f62bc5d009c54dda14fc141dc97168cdff36637a64",
     "config/GMFE69/decal_reset.json": "f2f88e6081dfce32ba0728d43a2b3b1cc6aebd8f46075c88c248edc5a7876f14",
     "config/GMFE69/destructor_queue.json": "02f090659148b783df7f56cf7d5136ed13c216785eaded9f2b6f0e563e6f1be7",
@@ -2173,7 +2169,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "6c8e435abd4a0a942e15683b23398deea22caffd8f51111fcc53e69df75d09d7",
-    "config/GMFE69/project.json": "cb6dadc7d60d99fccc86743ac9f6e98cea5bc8481caedb16f183f039d873af1f",
+    "config/GMFE69/project.json": "b92cc122a3cd34b4d9521f0770b35199f0680abe793b6c8778c8079e76fd9926",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -30781,45 +30777,6 @@
       "linked_sha256": "cda511eb3c77cdbb779c39c3b8512602aab4406a5ff15118326bc099b40bff7e"
     },
     {
-      "id": "decal_dtor",
-      "category": "reconstructed_game",
-      "functions": 4,
-      "code_bytes": 624,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "off",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": true,
-      "discarded_functions": [],
-      "object_sha256": "f7f803ae9d3cac651a76232dfdd7fcf4da72947d9013a19318fda40672786646",
-      "linked_sha256": "d02bfb311b60ea27b3432f454475bfedfb2d547ed3c42d38edc3893c365f0e0e"
-    },
-    {
       "id": "staticmesh_cmshmatbin_dtor",
       "category": "reconstructed_game",
       "functions": 2,
@@ -33396,8 +33353,8 @@
     {
       "id": "decal",
       "category": "reconstructed_game",
-      "functions": 5,
-      "code_bytes": 188,
+      "functions": 11,
+      "code_bytes": 1432,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -33414,12 +33371,12 @@
         "on",
         "-O4,p",
         "-inline",
-        "auto",
+        "deferred,auto",
         "-pragma",
         "cats off",
         "-nosyspath",
         "-RTTI",
-        "off",
+        "on",
         "-str",
         "reuse,readonly",
         "-use_lmw_stmw",
@@ -33429,8 +33386,8 @@
       ],
       "strip_unused": true,
       "discarded_functions": [],
-      "object_sha256": "1b83837322c08be36dbab3505292a91d0c92fe8067a8f11cafb66956e511b540",
-      "linked_sha256": "5c73e795d3ff5474cb4f231ca6265ab8870692190a20bf512a4a680beb7de4c1"
+      "object_sha256": "64bbe661ade74e7a2925c90a5df16a60d8132c3143f2cb3048fa47819b5a57cc",
+      "linked_sha256": "f37523bd90e1f75b1c338f750b204627136b9b128cf03e8c02f5bcf60b244e63"
     },
     {
       "id": "animmorph",
@@ -38285,45 +38242,6 @@
       "discarded_functions": [],
       "object_sha256": "f3741695d838f44850f70276f729196dfe6068ef8236d24b7375d9284b3f3be1",
       "linked_sha256": "b8650defa609a2e166333bb01e0d9ddca8ce8550e1ce63cc504bae5abc77bf55"
-    },
-    {
-      "id": "decal_initclass",
-      "category": "reconstructed_game",
-      "functions": 1,
-      "code_bytes": 12,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "off",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "f51c4a748a43e51792b99a1b1a16bf228010ec0a296bf953211c160b4e4f35ad",
-      "linked_sha256": "a16c8e21770205ecfbd90b11146bc792777246ca8f1abedb137ccf7481cd816d"
     },
     {
       "id": "player_updateai",
@@ -44042,20 +43960,6 @@
             "size": 2948,
             "kind": "function",
             "name": "UpdateBoundingBox__15CParticleSystemFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/decal.cpp [symbol evidence]",
-        "file_record": 79,
-        "file_name": "decal.cpp",
-        "ranges": [
-          {
-            "address": "0x800839e4",
-            "size": 608,
-            "kind": "function",
-            "name": "Init__NotTheVirtualOne__19CBulletDecalManagerFv",
             "evidence": "exception-index"
           }
         ]

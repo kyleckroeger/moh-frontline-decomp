@@ -13,8 +13,8 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 <!-- sync_docs:status -->
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
-| **Exact** | 1,296,308 | **91.64%** | Built from source and byte-identical to the original in the complete-image comparison: 4,928 functions in 999 units. |
-| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build; that build plays scripted input routes in Dolphin, with 87 of the 92 drafts proven in play (`docs/Dolphin.md`). Linked doesn't mean correct. |
+| **Exact** | 1,296,916 | **91.68%** | Built from source and byte-identical to the original in the complete-image comparison: 4,929 functions in 997 units. |
+| **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build; that build plays scripted input routes in Dolphin, with 86 of the 91 drafts proven in play (`docs/Dolphin.md`). Linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
 
@@ -22,10 +22,10 @@ Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 1,059,548 | 3,936 | 822 | `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 1,060,156 | 3,937 | 820 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 236,760 | 992 | 177 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 118.1 KB isn't exact yet, in 81 functions across 47 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
+About 117.5 KB isn't exact yet, in 80 functions across 46 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.

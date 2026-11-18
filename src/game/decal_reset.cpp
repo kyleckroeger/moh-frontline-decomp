@@ -8,8 +8,8 @@
 // active and every texture bin emptied). The file name is this project's;
 // the original record is decal.cpp. The classes, functions and g_scene are
 // named by the mangled symbols (CRenderBinData by CRenderBin's RTTI record);
-// the members are inferred views (as in decal_dtor.cpp and decal_link.cpp).
-// Each class declares its destructor (defined in decal_dtor.cpp) first so
+// the members are inferred views (as in decal.cpp and decal_link.cpp).
+// Each class declares its destructor (defined in decal.cpp) first so
 // its table is not emitted here. The inline fabs is MSL's; SetXYZ and the
 // CVector3 Cross helper are inferred inlines.
 class CDmaTag;

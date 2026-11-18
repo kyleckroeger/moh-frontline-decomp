@@ -18,12 +18,12 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
     "-RTTI",
-    "off",
+    "on",
     "-str",
     "reuse,readonly",
     "-use_lmw_stmw",
@@ -39,8 +39,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x80083ec0",
-      "size": 188,
+      "address": "0x800839e4",
+      "size": 1432,
       "type": 1
     },
     {
@@ -51,24 +51,65 @@
     },
     {
       "name": "extab",
-      "address": "0x8000c2f0",
-      "size": 8,
+      "address": "0x8000c2b0",
+      "size": 72,
       "type": 1,
       "linked_offset": 8,
-      "linked_size": 16
+      "linked_size": 112,
+      "stripped_objects": [
+        "@213",
+        "@217",
+        "@221",
+        "@225"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x800132d4",
-      "size": 12,
+      "address": "0x800132a4",
+      "size": 60,
       "type": 1,
       "linked_offset": 12,
-      "linked_size": 24
+      "linked_size": 120,
+      "stripped_objects": [
+        "@214",
+        "@218",
+        "@222",
+        "@226"
+      ]
+    },
+    {
+      "name": ".rodata",
+      "address": "0x80170fb8",
+      "size": 587,
+      "type": 1
+    },
+    {
+      "name": ".data",
+      "address": "0x80184dc0",
+      "size": 488,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 708,
+      "stripped_objects": [
+        "__vt__10ISceneNode"
+      ]
     },
     {
       "name": ".bss",
       "address": "0x801df7c0",
       "size": 53312,
+      "type": 8
+    },
+    {
+      "name": ".sdata",
+      "address": "0x8034dd88",
+      "size": 72,
+      "type": 1
+    },
+    {
+      "name": ".sbss",
+      "address": "0x8034ea70",
+      "size": 12,
       "type": 8
     }
   ],
@@ -98,6 +139,42 @@
       "binding": 2
     },
     {
+      "name": "__dt__19CBulletDecalManagerFv",
+      "address": "0x80083c50",
+      "size": 192,
+      "binding": 1
+    },
+    {
+      "name": "Init__NotTheVirtualOne__19CBulletDecalManagerFv",
+      "address": "0x800839e4",
+      "size": 608,
+      "binding": 1
+    },
+    {
+      "name": "InitClass__19CBulletDecalManagerFP11CRenderListP7CScreen",
+      "address": "0x80083c44",
+      "size": 12,
+      "binding": 1
+    },
+    {
+      "name": "__dt__22CBulletDecalTextureBinFv",
+      "address": "0x80083e08",
+      "size": 108,
+      "binding": 1
+    },
+    {
+      "name": "__ct__22CBulletDecalTextureBinFv",
+      "address": "0x80083e74",
+      "size": 76,
+      "binding": 1
+    },
+    {
+      "name": "__ct__19CBulletDecalManagerFv",
+      "address": "0x80083d10",
+      "size": 248,
+      "binding": 1
+    },
+    {
       "name": "__ct__11BulletDecalFv",
       "address": "0x80083f18",
       "size": 76,
@@ -105,6 +182,7 @@
     }
   ],
   "externals": {
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
     "AsAnimObject__10ISceneNodeCFv": "0x8001afb8",
     "AsAnimObject__10ISceneNodeFv": "0x8001afc0",
     "AsAnimatedPlayerObject__10ISceneNodeCFv": "0x8001aff8",
@@ -134,7 +212,9 @@
     "CommitAI__10ISceneNodeFv": "0x8001aeb4",
     "CommitUpdate__10ISceneNodeFv": "0x8001aec4",
     "ConstrainVelocity__10ISceneNodeFv": "0x8001aeb8",
+    "DebugMsg__FPCce": "0x80018c88",
     "Destroy__13IDestructibleFv": "0x8001b054",
+    "Draw__10ISceneNodeFR12CDrawContext": "0x8001aec8",
     "Draw__19CBulletDecalManagerFR12CDrawContext": "0x8008339c",
     "GetAIDoodad__10ISceneNodeCFv": "0x8001b038",
     "GetAIDoodad__10ISceneNodeFv": "0x8001b040",
@@ -152,20 +232,42 @@
     "Ident__7CMatrixFv": "0x8008f1b0",
     "InitClass__7CMatrixFv": "0x80090b78",
     "Init__10CRenderBinFv": "0x80073b2c",
+    "IsDrawEnabled__10ISceneNodeCFv": "0x8001af64",
     "IsDrawEnabled__19CBulletDecalManagerCFv": "0x80083414",
     "IsUsed__19CBulletDecalManagerFv": "0x80083400",
+    "IsUsed__22CBulletDecalTextureBinFv": "0x800831c4",
+    "IsVisible__10ISceneNodeCFR12CDrawContext": "0x8001af5c",
     "IsVisible__19CBulletDecalManagerCFR12CDrawContext": "0x8008341c",
     "Link__19CBulletDecalManagerFP7CDmaTagR10CDmaPacket": "0x8008304c",
+    "Link__22CBulletDecalTextureBinFP7CDmaTagR10CDmaPacket": "0x800831d8",
     "MarkForDestruction__8ISubjectFi": "0x800d8148",
     "OnCollision__10ISceneNodeFRC10CCollision": "0x8001aec0",
+    "Register__11CRenderListFR10CRenderBin": "0x800f127c",
     "Render__10CRenderBinFR10CDmaPacketPv": "0x80076e18",
+    "Render__22CBulletDecalTextureBinFR10CDmaPacketPv": "0x80083394",
     "SetAttachedLight__10ISceneNodeFP6CLight8CVector3": "0x8001b048",
     "SetCollisionId__10ISceneNodeF7EClsnId": "0x8001af74",
+    "Set__8CTextureFP9ShapeFileb": "0x80082d6c",
+    "TLT_FindNextResourceByType__F13TLTResourceIDP24LevelFileContentsStruct_": "0x8001d910",
+    "TLT_LoadFileFromLevelBigFile__FPCcPi": "0x8001dcb4",
     "TriggerScriptEvent__10ISceneNodeFiPvb": "0x8001af80",
     "UpdateAI__10ISceneNodeFf": "0x8001aeb0",
     "__construct_array": "0x8013834c",
-    "__dt__19CBulletDecalManagerFv": "0x80083c50",
-    "__vt__19CBulletDecalManager": "0x80184e70",
+    "__destroy_arr": "0x801382d4",
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__10CRenderBinFv": "0x80074290",
+    "__dt__10ISceneNodeFv": "0x8001ada0",
+    "__dt__13IDestructibleFv": "0x8001ae00",
+    "__dt__15CUcodeRenderBinFv": "0x80074304",
+    "__dt__9IObserverFv": "0x800d80e0",
+    "__vt__10CRenderBin": "0x80183c5c",
+    "__vt__10ISceneNode": "0x80181c78",
+    "__vt__13IDestructible": "0x8018a228",
+    "__vt__15CUcodeRenderBin": "0x80183c40",
+    "__vt__8ISubject": "0x8018a1d4",
+    "__vt__9IObserver": "0x8018a1c0",
+    "g_BulletDecalManager": "0x801dde80",
+    "g_scene": "0x8019484c",
     "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
@@ -178,14 +280,6 @@
   ],
   "original_file": "decal.cpp",
   "original_file_index": 4342,
-  "stripped_sections": [
-    ".data",
-    ".sdata2"
-  ],
-  "file_duplicates": [
-    "IsUsed__19CBulletDecalManagerFv",
-    "__vt__19CBulletDecalManager"
-  ],
   "weak_duplicates": [
     "AsAnimObject__10ISceneNodeCFv",
     "AsAnimObject__10ISceneNodeFv",
@@ -217,6 +311,7 @@
     "CommitUpdate__10ISceneNodeFv",
     "ConstrainVelocity__10ISceneNodeFv",
     "Destroy__13IDestructibleFv",
+    "Draw__10ISceneNodeFR12CDrawContext",
     "GetAIDoodad__10ISceneNodeCFv",
     "GetAIDoodad__10ISceneNodeFv",
     "GetAttachedLight__10ISceneNodeCFv",
@@ -230,10 +325,40 @@
     "GetUpward__10ISceneNodeCFR8CVector3",
     "GetWorldBoundingVolume__10ISceneNodeCFQ210ISceneNode11EVolumeType",
     "HandleBulletCollision__10ISceneNodeFP7CBulletRC10CCollision",
+    "IsDrawEnabled__10ISceneNodeCFv",
+    "IsVisible__10ISceneNodeCFR12CDrawContext",
     "OnCollision__10ISceneNodeFRC10CCollision",
     "SetAttachedLight__10ISceneNodeFP6CLight8CVector3",
     "SetCollisionId__10ISceneNodeF7EClsnId",
     "TriggerScriptEvent__10ISceneNodeFiPvb",
-    "UpdateAI__10ISceneNodeFf"
+    "UpdateAI__10ISceneNodeFf",
+    "__dt__10CRenderBinFv",
+    "__dt__10ISceneNodeFv",
+    "__dt__13IDestructibleFv",
+    "__dt__15CUcodeRenderBinFv",
+    "__vt__10ISceneNode"
+  ],
+  "pooled_sections": [
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 4,
+      "address": "0x803500d0"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 4,
+      "address": "0x803500d4"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 8,
+      "size": 8,
+      "address": "0x803500e0"
+    }
   ]
 }

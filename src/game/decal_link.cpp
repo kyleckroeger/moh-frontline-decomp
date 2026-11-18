@@ -10,8 +10,8 @@
 // active), IsDrawEnabled and IsVisible (always). The file name is this
 // project's; the original record is decal.cpp. The classes, functions and
 // globals are named by the mangled symbols (CRenderBinData by CRenderBin's
-// RTTI record); the members are inferred, as in decal_dtor.cpp. Each class
-// declares its destructor (defined in decal_dtor.cpp) first so its table is
+// RTTI record); the members are inferred, as in decal.cpp. Each class
+// declares its destructor (defined in decal.cpp) first so its table is
 // not emitted here; the render list and context are file-local in the
 // original and declared extern to link to them.
 #include <dolphin/gx.h>

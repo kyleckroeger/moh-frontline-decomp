@@ -65,7 +65,6 @@ consistent	1.000	1.000	449	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCol
 consistent	0.998	1.000	414	3768	BSFileReadClass__FPCcbbPP14BSClass_struct	True	0	0	research/drafts/BSFileReadClass.80035aa8.cpp	m1_opening@c506c5c1
 consistent	0.951	0.994	958	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	route_menu@c5a8088c
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp	m1_opening@4f327e94
-consistent	0.987	0.982	14	608	Init__NotTheVirtualOne__19CBulletDecalManagerFv	True	0	0	research/drafts/Init.800839e4.cpp	m1_opening@63ba12ee
 consistent	1.000	1.000	21	376	Rotate__7CMatrixF8CVector3f	True	0	0	research/drafts/Rotate.800904e8.cpp	m1_opening@3de6527e
 consistent	0.995	1.000	8	1480	Draw__14CSoldierObjectFR12CDrawContext	True	0	0	research/drafts/Draw.800ac9e4.cpp	m1_opening@26269e33
 consistent	1.000	1.000	3	1332	OnCollision__13CStaticObjectFRC10CCollision	True	0	0	research/drafts/OnCollision.800afc08.cpp	m1_opening@560a2dce

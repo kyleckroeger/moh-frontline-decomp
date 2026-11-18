@@ -30,7 +30,7 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,296,308 / 1,414,572 code bytes (91.64%)**. Left: about 118.1 KB in 81 functions across 47 source files.
+Verified: **1,296,916 / 1,414,572 code bytes (91.68%)**. Left: about 117.5 KB in 80 functions across 46 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
@@ -38,7 +38,7 @@ Verified: **1,296,308 / 1,414,572 code bytes (91.64%)**. Left: about 118.1 KB in
 | 1 | AI | 15.0 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Collision | 13.2 KB | `box.cpp`, `cdbgeom.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
 | 1 | Animation | 12.5 KB | `anim_callback.cpp`, `skelblend.cpp`, `animtran.cpp`, `dmcluster.cpp`, `dmesh.cpp`, `animmorph.cpp` |
-| 2 | Rendering | 14.4 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
+| 2 | Rendering | 13.8 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `font.cpp` |
 | 2 | Audio | 9.9 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `coda.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
 | 2 | System | 3.9 KB | `debug_prof.cpp`, `toilet.cpp`, `aramalloc.cpp` |
@@ -47,9 +47,9 @@ Verified: **1,296,308 / 1,414,572 code bytes (91.64%)**. Left: about 118.1 KB in
 
 Priority 1 is 71.5 KB and would take the project to 96.7% at most.
 
-Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 77 consistent (110.4 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 76 consistent (109.8 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 87 of the 92 drafts proven in play (`docs/Dolphin.md`).
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 86 of the 91 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly
