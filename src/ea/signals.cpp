@@ -22,7 +22,7 @@ void SIGNAL_set(SIGNAL* signal) {
 }
 
 void SIGNAL_wait(SIGNAL* signal) {
-    int message;
+    void* message;
 
     OSReceiveMessage(&signal->queue, &message, 1);
 }

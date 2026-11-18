@@ -214,7 +214,7 @@ int closefile(HANDLE_def* handle) {
     return result == 0;
 }
 
-static void AyncDVDCallback(long, DVDFileInfo*);
+static void AyncDVDCallback(s32, DVDFileInfo*);
 
 static void AyncDVDRead(DVDFileInfo* info) {
     long length;
@@ -305,7 +305,7 @@ static int StartNonAlignedAyncRead(DVDFileInfo* info, void* buffer, long offset,
     return gCurRead.size;
 }
 
-static void AyncDVDCallback(long, DVDFileInfo*) {
+static void AyncDVDCallback(s32, DVDFileInfo*) {
     OSSendMessage(&ReadFileThreadMsgQ, (OSMessage)1, 1);
 }
 

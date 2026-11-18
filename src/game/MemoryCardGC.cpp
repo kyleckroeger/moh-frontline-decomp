@@ -36,8 +36,8 @@ int atoi(const char*);
 #define CARDSetCommentAddr(stat, addr) ((stat)->commentAddr = (unsigned long)(addr))
 
 extern "C" {
-long CARDFormatAsync(long, void*);
-long CARDSetAttributes(long, long, unsigned char);
+s32 CARDFormatAsync(s32 chan, CARDCallback callback);
+s32 CARDSetAttributes(s32 chan, s32 fileNo, u8 attr);
 }
 
 void DebugMsg(const char*, ...);
@@ -180,7 +180,7 @@ public:
     unsigned char unknown00000[4];
     int m_slot;
     CARDFileInfo m_fileInfo;
-    unsigned long m_sectorSize;
+    u32 m_sectorSize;
     unsigned short m_saveGameIndex;
     unsigned short m_lastSaveGame;
     bool m_isSave[127];
@@ -259,7 +259,7 @@ bool CMemoryCard::IsEncodingCorrect(int slot) {
         CARDUnmount(slot);
         m_mounted[slot] = false;
     }
-    long result = CARDMountAsync(slot, m_workArea, 0, 0);
+    s32 result = CARDMountAsync(slot, m_workArea, 0, 0);
     if (result < 0) {
         DebugMsg("Mount failed. Error code %d returned\n", result);
         return true;
@@ -272,7 +272,7 @@ bool CMemoryCard::IsEncodingCorrect(int slot) {
 }
 
 bool CMemoryCard::IsAnyDeviceInPort(int slot) {
-    long result;
+    s32 result;
     while ((result = CARDProbe(slot)) == -1)
         ;
     if (result == 0) {
@@ -285,9 +285,9 @@ bool CMemoryCard::IsAnyDeviceInPort(int slot) {
 }
 
 bool CMemoryCard::Is8KCard(int slot) {
-    long memSize;
-    long sectorSize;
-    long result;
+    s32 memSize;
+    s32 sectorSize;
+    s32 result;
     while ((result = CARDProbeEx(slot, &memSize, &sectorSize)) == -1)
         ;
     if (result < 0) {
@@ -302,7 +302,7 @@ bool CMemoryCard::Is8KCard(int slot) {
 }
 
 int CMemoryCard::MountPortIfRequired(int slot) {
-    long result;
+    s32 result;
     if (!QuerySlot(slot))
         return 0;
     if (m_mounted[slot])
@@ -351,8 +351,8 @@ int CMemoryCard::MountPortIfRequired(int slot) {
 }
 
 int CMemoryCard::GetMaxBlocksOnCard(int slot) {
-    long memSize = 0;
-    long sectorSize = 8192;
+    s32 memSize = 0;
+    s32 sectorSize = 8192;
     while (CARDProbeEx(slot, &memSize, &sectorSize) == -1)
         ;
     return (memSize << 17) / sectorSize - 5;
@@ -376,10 +376,10 @@ int CMemoryCard::IsFormated() {
 }
 
 unsigned long CMemoryCard::GetAvailableMemory() {
-    unsigned long bytesNotUsed;
-    long filesNotUsed;
-    unsigned long sectorSize;
-    long result;
+    u32 bytesNotUsed;
+    s32 filesNotUsed;
+    u32 sectorSize;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1)
         return 0;
     result = CARDGetSectorSize(m_slot, &sectorSize);
@@ -391,7 +391,7 @@ unsigned long CMemoryCard::GetAvailableMemory() {
     }
     DebugMsg("Sector size %u bytes.\n", sectorSize);
     m_sectorSize = sectorSize;
-    result = CARDFreeBlocks(m_slot, (long*)&bytesNotUsed, &filesNotUsed);
+    result = CARDFreeBlocks(m_slot, (s32*)&bytesNotUsed, &filesNotUsed);
     if (result < 0) {
         DebugMsg("Free Blocks failed. (%d)\n", result);
         CARDUnmount(m_slot);
@@ -403,9 +403,9 @@ unsigned long CMemoryCard::GetAvailableMemory() {
 }
 
 long CMemoryCard::GetFilesFree(int slot) {
-    long bytesNotUsed;
-    long filesNotUsed;
-    long result;
+    s32 bytesNotUsed;
+    s32 filesNotUsed;
+    s32 result;
     if (MountPortIfRequired(slot) != 1)
         return 0;
     result = CARDFreeBlocks(slot, &bytesNotUsed, &filesNotUsed);
@@ -419,8 +419,8 @@ long CMemoryCard::GetFilesFree(int slot) {
 }
 
 long CMemoryCard::GetCheckCardStatus() {
-    long result;
-    long slot;
+    s32 result;
+    s32 slot;
     CARDCheckAsync(m_slot, 0);
     slot = m_slot;
     while ((result = CARDGetResultCode(slot)) == -1)
@@ -466,12 +466,12 @@ int CMemoryCard::GetNumSaveGames() {
 bool CMemoryCard::CreateNewSaveGame(unsigned int* index, char* name) {
     static unsigned char CARDData[8192] __attribute__((aligned(32)));
     static char HeaderC8[50][32] = {"Medal Of Honor Frontline\n", "Save: \n"};
-    unsigned long sectorSize;
+    u32 sectorSize;
     CARDFileInfo info;
     char fileName[36];
     CARDStat stat;
-    long result;
-    unsigned long slot;
+    s32 result;
+    u32 slot;
     int i;
     if (MountPortIfRequired(m_slot) != 1)
         return false;
@@ -557,8 +557,8 @@ bool CMemoryCard::CreateNewSaveGame(unsigned int* index, char* name) {
 }
 
 bool CMemoryCard::Format() {
-    long result;
-    long slot;
+    s32 result;
+    s32 slot;
 
     CARDMountAsync(m_slot, m_workArea, 0, 0);
     slot = m_slot;
@@ -594,7 +594,7 @@ int CMemoryCard::GetNextSaveGame(unsigned int* index, unsigned int* size, char* 
     char comment[32];
     CARDStat stat;
     unsigned char buffer[8192] __attribute__((aligned(32)));
-    long result;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1)
         return 0;
     while (!m_isSave[m_saveGameIndex]) {
@@ -675,7 +675,7 @@ bool CMemoryCard::DeleteSaveGame(unsigned int index) {
     if (MountPortIfRequired(m_slot) != 1)
         return false;
     sprintf(fileName, "MOHFLx%03d", index);
-    long result = CARDDelete(m_slot, fileName);
+    s32 result = CARDDelete(m_slot, fileName);
     CARDUnmount(m_slot);
     m_mounted[m_slot] = false;
     if (result != 0) {
@@ -690,7 +690,7 @@ bool CMemoryCard::DeletePrefFile(int slot) {
     if (MountPortIfRequired(slot) != 1)
         return false;
     sprintf(fileName, "%sprefs", "MOHFL");
-    long result = CARDDelete(m_slot, fileName);
+    s32 result = CARDDelete(m_slot, fileName);
     CARDUnmount(slot);
     m_mounted[slot] = false;
     if (result != 0) {
@@ -704,7 +704,7 @@ bool CMemoryCard::Open(unsigned int index, bool) {
     char fileName[36];
     CARDStat stat;
     unsigned char buffer[8192] __attribute__((aligned(32)));
-    long result;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1)
         return false;
     sprintf(fileName, "MOHFLx%03d", index);
@@ -728,7 +728,7 @@ bool CMemoryCard::Open(unsigned int index, bool) {
 }
 
 bool CMemoryCard::Close() {
-    long result;
+    s32 result;
 
     if (!m_mounted[m_slot])
         return true;
@@ -747,7 +747,7 @@ bool CMemoryCard::Read(unsigned char* data, unsigned int size) {
     unsigned char buffer[8192] __attribute__((aligned(32)));
     if (MountPortIfRequired(m_slot) != 1)
         return false;
-    long result = CARDGetSectorSize(m_slot, &m_sectorSize);
+    s32 result = CARDGetSectorSize(m_slot, &m_sectorSize);
     if (result < 0) {
         DebugMsg("CARDGetSectorSize() failed. (%d)\n", result);
         return false;
@@ -769,11 +769,11 @@ bool CMemoryCard::Read(unsigned char* data, unsigned int size) {
 }
 
 bool CMemoryCard::Write(unsigned char* data, unsigned int size) {
-    unsigned long sectorSize;
+    u32 sectorSize;
     unsigned char buffer[8192] __attribute__((aligned(32)));
     if (MountPortIfRequired(m_slot) != 1)
         return false;
-    long result = CARDGetSectorSize(m_slot, &sectorSize);
+    s32 result = CARDGetSectorSize(m_slot, &sectorSize);
     if (result < 0) {
         DebugMsg("CARDGetSectorSize() failed. (%d)\n", result);
         return false;
@@ -796,11 +796,11 @@ bool CMemoryCard::Write(unsigned char* data, unsigned int size) {
 
 bool CMemoryCard::CreatePrefs() {
     static char HeaderC8[50][32] = {"Medal Of Honor Frontline\n", "Preference File\n"};
-    unsigned long sectorSize;
+    u32 sectorSize;
     char fileName[36];
     CARDStat stat;
     unsigned char buffer[8192] __attribute__((aligned(32)));
-    long result;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1)
         return false;
     sprintf(fileName, "%sprefs", "MOHFL");
@@ -853,10 +853,10 @@ bool CMemoryCard::CreatePrefs() {
 }
 
 bool CMemoryCard::SavePrefs(unsigned char* data, unsigned int size) {
-    unsigned long sectorSize;
+    u32 sectorSize;
     char fileName[36];
     unsigned char buffer[8192] __attribute__((aligned(32)));
-    long result;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1)
         return false;
     sprintf(fileName, "%sprefs", "MOHFL");
@@ -888,10 +888,10 @@ bool CMemoryCard::SavePrefs(unsigned char* data, unsigned int size) {
 }
 
 bool CMemoryCard::LoadPrefs(unsigned char* data, unsigned int size) {
-    unsigned long sectorSize;
+    u32 sectorSize;
     char fileName[36];
     unsigned char buffer[8192] __attribute__((aligned(32)));
-    long result;
+    s32 result;
     if (MountPortIfRequired(m_slot) != 1) {
         DebugMsg("Memory card isn't ready\n");
         return false;

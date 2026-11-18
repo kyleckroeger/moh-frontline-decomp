@@ -13,6 +13,7 @@
 #include "game/GameAddr.h"
 #include <dolphin/os.h>
 #include <dolphin/ar.h>
+#include <dolphin/arq.h>
 #include <dolphin/dsp.h>
 #include <dolphin/ax.h>
 #include <dolphin/ai.h>

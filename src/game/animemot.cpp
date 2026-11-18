@@ -21,6 +21,7 @@
 #include "game/GameAddr.h"
 #include <dolphin/os.h>
 #include <dolphin/ar.h>
+#include <dolphin/arq.h>
 #include <dolphin/vi.h>
 
 extern "C" {

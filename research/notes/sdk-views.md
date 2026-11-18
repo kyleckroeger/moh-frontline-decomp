@@ -90,3 +90,17 @@ is recorded here.
 - Left for the port: Aurora's ARQPostRequest prototype must take the same type. The other
   `(unsigned long)` pointer casts (UIStudio.c, compartment_init, ...) are offset-pointer fix-ups of
   loaded data, the port's OffsetPtr work, not SDK calls.
+- 2026-11-17 (port session): the port compiled the 16 surveyed files against Aurora's SDK headers
+  (clang, 64-bit, `TARGET_PC`). Aurora defines `s32`/`u32` as `int`/`unsigned int` on PC, so
+  game code that spells SDK types as `long`/`unsigned long` no longer matches the SDK's
+  prototypes. On the GameCube they are the same types, so respelling them keeps the bytes (all
+  verified with one_unit.py):
+  - filedev: `AyncDVDCallback(s32, DVDFileInfo*)`, as `DVDCallback` declares it.
+  - signals: SIGNAL_wait receives into a `void*` (the 2001 SDK has no `OSMessage` typedef).
+  - MemoryCardGC: CARD results and out-parameters are `s32`/`u32`; its own prototypes of
+    CARDFormatAsync and CARDSetAttributes (not in the 2001 card.h) take the SDK's signatures.
+  - animemot, snddrv: `ARQRequest` is in `ar.h` in the 2001 SDK but in `arq.h` in later SDKs and
+    Aurora. `include/dolsdk2001/dolphin/arq.h` forwards to `ar.h`, and both files include it.
+  Left for the port, not fixable here: Aurora's `CARDInit` takes the game and maker codes on PC;
+  Aurora has no `ax.h` (snddrv, sdspmix); filedev and MemoryCardGC declare their own C library
+  (`FILE`, stdio prototypes), which clashes with the host's.
