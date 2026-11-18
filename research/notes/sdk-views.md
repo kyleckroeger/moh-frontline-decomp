@@ -104,3 +104,9 @@ is recorded here.
   Left for the port, not fixable here: Aurora's `CARDInit` takes the game and maker codes on PC;
   Aurora has no `ax.h` (snddrv, sdspmix); filedev and MemoryCardGC declare their own C library
   (`FILE`, stdio prototypes), which clashes with the host's.
+- 2026-11-17 (port session): the port's gen_sources.py now checks that every game file is built
+  with signed char and, for .c files, `-lang c++` (MWCC's plain char is signed, and all 149 game
+  and EA .c units are C++). Two EA drafts, SNDtimeremaining and iSNDrandom, took their settings
+  from ShellMenu_ctor.json (a game .cpp unit: exceptions and RTTI on, no `-lang`). They now take
+  them from their neighbours' units, sover.json and srandom.json (EA settings, `-lang c++`).
+  score_draft.py gives the same scores (3 and 80); the pure-source image was not re-run.
