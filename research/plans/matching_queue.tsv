@@ -14,7 +14,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 13	register	register	912	6	0	open	AddBuddy__F9BuddyInfob	research/drafts/AddBuddy.80057eac.cpp	
 14	register	register	1264	0	0	landed	BIFunc_GetInitialBuddyOrders__FPPiPv	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	appended to buddy_head; ready-list dump body in an inline DumpReadyEntry(BuddyInfo&, int) (index declared before soldier) + GI copy of GiveBuddyOrders declaring x,y,z
 15	register	register	2128	9	0	open	UpdateProximityTriggerStatus__Fv	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	
-16	register	register	1156	10	0	open	AnimStStartState	research/drafts/AnimStStartState.800676d8.cpp	
+16	register	register	1156	0	0	landed	AnimStStartState	research/drafts/AnimStStartState.800676d8.cpp	prepended to animst_transprecheck (unit on animst.cpp's slot view); _AnimStGetUnusedStateID's four compares as a pointer loop over the slots (loop form of an unrolled chain)
 17	register	register	392	0	0	landed	SetFinishedLevelData__13CPlayerObjectFv	research/drafts/SetFinishedLevelData.8009d470.cpp	appended to player_begincrouch; weapon loop written in the caller, body in a free inline SaveWeaponEntry(CWeapon*, int i, int mission, int stage) (this no longer lifted above i)
 18	register	register	2028	11	0	open	CreateDestructable__FP20TriggerObject_structi	research/drafts/CreateDestructable.8003c93c.cpp	
 19	register	register	3828	16	0	open	UpdateAnimation__14CSoldierObjectFf	research/drafts/UpdateAnimation.800acfb8.cpp	

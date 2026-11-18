@@ -1,4 +1,13 @@
-// A fragment of animst.cpp (0x80067b5c): AnimStTransPreCheck finds the
+// A fragment of animst.cpp (0x800676d8): AnimStStartState starts a state in
+// an owner's four slots: the playing slot (status 3) is set to finishing; if
+// it has a delay, a free slot before it gets a fresh unused state id
+// (_AnimStGetUnusedStateID, counting down from 0xFFFE past the ids in use),
+// a falling weight and the channels of state 0xFFFF; unused slots get delay
+// 1. A blank slot (state 0xFFFF) is taken, slots already playing the new
+// state are renamed to a fresh id with their channels, and the new state's
+// slot is cleared, set playing with a rising weight, its selection callback
+// run and the transition from the old current state started.
+// AnimStTransPreCheck finds the
 // current state (as AnimStGetCurrentState, inlined), and unless there is
 // none or it is the target state, looks up the animation lists of both
 // states in g_AnimDB and quick-scans the transition between them. The
@@ -15,21 +24,29 @@
 // _AnimStGetFreeSlotIndex: compacts the four slots, returns the first free
 // one; when all are used it ends the first slot with a delay (callback with
 // event 3, channels stopped) and retries, else ends slot 0 and returns 3.
-// The slot record now starts at +4 of the owner (its first word is not
-// used here), which lets the compaction copy whole slots; the compaction,
-// callback and kill helpers are inferred inlines. The rest of the file is in
+// The slot view is animst.cpp's (the record's first word is not used here,
+// so the compaction copies from the state field); the compaction,
+// callback, kill and unused-id helpers are inferred inlines (the unused-id
+// search is a pointer loop over the slots: the unrolled compare chain gives
+// other registers). The rest of the file is in
 // other units.
+struct AnimWgtInfo_t {
+    float weight;
+    unsigned char field04[20];
+};
+
 struct AnimStateSlotView {
+    unsigned char field00[4];
     unsigned short state;
     unsigned short status;
     unsigned short flags;
-    unsigned char field06[2];
+    unsigned char field0A[2];
     float delay;
-    unsigned char field0C[92];
+    unsigned char userMemory[64];
+    AnimWgtInfo_t weight;
 };
 
 struct AnimStateOwnerView {
-    unsigned char field00[4];
     AnimStateSlotView slots[4];
 };
 
@@ -68,6 +85,116 @@ extern "C" inline unsigned short AnimStGetCurrentState(AnimStateOwnerView* owner
     return current;
 }
 
+struct AnimChannel_t {
+    unsigned char field00[14];
+    unsigned short state;
+    unsigned char field10[120];
+};
+struct AnimStInfo_t : AnimStateOwnerView {
+};
+
+struct AnimStCallbackEntryView {
+    unsigned long id;
+    void* callback;
+};
+
+struct AnimStCallbackTableView {
+    unsigned long count;
+    AnimStCallbackEntryView* entries;
+};
+
+typedef int (*AnimStateSelFunc)(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
+typedef void* AnimStFinishCallback;
+typedef AnimStCallbackTableView* AnimStCallbackTable;
+
+extern AnimStFinishCallback _AnimSt_FinishCb;     // file-local in the original
+extern AnimStCallbackTable _AnimSt_CallbackTable; // file-local in the original
+
+static unsigned short _AnimStGetFreeSlotIndex(AnimStInfo_t*, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned short);
+int _AnimTranDoTransition(AnimStInfo_t*, AnimObjHdr_t*, AnimChannel_t*, unsigned short, unsigned short, unsigned long, void*);
+extern "C" void AnimWgtSetLinear(AnimWgtInfo_t*, float, float, unsigned int);
+extern "C" void AnimWgtSet(AnimWgtInfo_t*, float, float, int, void*);
+extern "C" unsigned short AnimChanGetStateChannelByIndex(AnimObjHdr_t*, AnimChannel_t*, unsigned short, int);
+extern "C" unsigned short AnimChanGetNumActiveByState(AnimObjHdr_t*, AnimChannel_t*, unsigned short);
+extern "C" void* memset(void*, int, unsigned long);
+extern "C" void* memcpy(void*, const void*, unsigned long);
+extern "C" void AnimChanStopByStateIndex(AnimObjHdr_t*, AnimChannel_t*, unsigned short);
+
+/* inferred: a state id no slot uses, counting down from 0xFFFE */
+inline unsigned short _AnimStGetUnusedStateID(AnimStateOwnerView* owner) {
+    unsigned int id = 0xFFFE;
+    bool unique;
+    do {
+        unique = true;
+        AnimStateSlotView* slot = owner->slots;
+        for (int j = 0; j < 4; j++, slot++) {
+            if (slot->state == (unsigned short)id) { unique = false; id--; break; }
+        }
+    } while (!unique);
+    return id;
+}
+/* inferred: runs a state's selection callback (skipped for flagged states) */
+inline void _AnimStCallStateCallback(unsigned short state, AnimObjHdr_t* object, AnimChannel_t* channel, void* user, unsigned long event, void* extra, float frames) {
+    unsigned short id = object->id;
+    if (!(state & 0x8000)) {
+        g_AnimDB.GetStateAnimList(id, state, &_AnimSt_pStatAnimList);
+        int index = g_AnimDB.GetStateCallbackID(state, id);
+        ((AnimStateSelFunc)_AnimSt_CallbackTable->entries[index].callback)(&_AnimSt_pStatAnimList, state, object, channel, user, event, extra, frames);
+    }
+}
+
+extern "C" int AnimStStartState(AnimStInfo_t* owner, AnimObjHdr_t* object, AnimChannel_t* channel, unsigned short state, void* user, unsigned long extra, float blend) {
+    unsigned short current = AnimStGetCurrentState(owner);
+    for (int i = 0; i < 4; i++) {
+        if (owner->slots[i].status == 3) {
+            AnimStateSlotView* slot = &owner->slots[i];
+            slot->status = 2;
+            if (slot->delay != 0.0f && i > 0) {
+                int p = i - 1;
+                if (owner->slots[p].state == 0xFFFF) {
+                    owner->slots[p].state = _AnimStGetUnusedStateID(owner);
+                    AnimWgtSetLinear(&owner->slots[p].weight, -1.0f, 0.0f, 10);
+                    while (AnimChanGetNumActiveByState(object, channel, 0xFFFF)) {
+                        unsigned short index = AnimChanGetStateChannelByIndex(object, channel, 0xFFFF, 0);
+                        channel[index].state = owner->slots[p].state;
+                    }
+                }
+            }
+            break;
+        }
+    }
+    for (int k = 0; k < 4; k++) {
+        if (owner->slots[k].state == 0xFFFF)
+            owner->slots[k].delay = 1.0f;
+    }
+    unsigned short blank = _AnimStGetFreeSlotIndex(owner, object, channel, user, 0xFFFF);
+    for (int j = 0; j < 4; j++) {
+        AnimStateSlotView* slot = &owner->slots[j];
+        if (slot->status != 0 && slot->state == state) {
+            slot->state = _AnimStGetUnusedStateID(owner);
+            slot->flags &= ~1;
+            while (AnimChanGetNumActiveByState(object, channel, state)) {
+                unsigned short index = AnimChanGetStateChannelByIndex(object, channel, state, 0);
+                channel[index].state = slot->state;
+            }
+        }
+    }
+    memset(&owner->slots[blank].state, 0, sizeof(AnimStateSlotView));
+    owner->slots[blank].state = 0xFFFF;
+    owner->slots[blank].status = 1;
+    owner->slots[blank].delay = 0.0f;
+    AnimWgtSet(&owner->slots[blank].weight, 0.0f, 0.0f, 0, 0);
+    unsigned short index = _AnimStGetFreeSlotIndex(owner, object, channel, user, state);
+    memset(&owner->slots[index].state, 0, sizeof(AnimStateSlotView));
+    owner->slots[index].state = state;
+    owner->slots[index].status = 3;
+    owner->slots[index].delay = 0.0f;
+    AnimWgtSetLinear(&owner->slots[index].weight, 0.0f, blend, 10);
+    _AnimStCallStateCallback(state, object, channel, user, 0, (void*)extra, 1.0f);
+    _AnimTranDoTransition(owner, object, channel, state, current, 2, user);
+    return 0;
+}
+
 extern "C" int AnimStTransPreCheck(AnimStateOwnerView* owner, AnimObjHdr_t* object, unsigned short target) {
     unsigned short current = AnimStGetCurrentState(owner);
     if (current == 0xFFFF || current == target)
@@ -89,27 +216,6 @@ extern "C" void AnimStInitStructure(AnimStateOwnerView* owner) {
     owner->slots[3].status = 0;
 }
 
-struct AnimChannel_t;
-struct AnimStInfo_t : AnimStateOwnerView {
-};
-
-struct AnimStCallbackEntryView {
-    unsigned long id;
-    void* callback;
-};
-
-struct AnimStCallbackTableView {
-    unsigned long count;
-    AnimStCallbackEntryView* entries;
-};
-
-typedef int (*AnimStateSelFunc)(AnimFileStateAnimList_t*, unsigned short, AnimObjHdr_t*, AnimChannel_t*, void*, unsigned long, void*, float);
-typedef void* AnimStFinishCallback;
-typedef AnimStCallbackTableView* AnimStCallbackTable;
-
-extern AnimStFinishCallback _AnimSt_FinishCb;     // file-local in the original
-extern AnimStCallbackTable _AnimSt_CallbackTable; // file-local in the original
-
 extern "C" void AnimStRegisterFinishCallback(AnimStFinishCallback callback) {
     _AnimSt_FinishCb = callback;
 }
@@ -128,8 +234,6 @@ extern "C" int AnimStInit() {
     return 0;
 }
 
-extern "C" void* memcpy(void*, const void*, unsigned long);
-extern "C" void AnimChanStopByStateIndex(AnimObjHdr_t*, AnimChannel_t*, unsigned short);
 
 /* inferred: moves the used slots down over the free ones */
 inline void _AnimStCompactSlots(AnimStInfo_t* owner) {
@@ -144,7 +248,7 @@ inline void _AnimStCompactSlots(AnimStInfo_t* owner) {
             if (!owner->slots[i].status) {
                 if (i != last) {
                     for (int k = i; k < last; k++) {
-                        memcpy(&owner->slots[k], &owner->slots[k + 1], sizeof(AnimStateSlotView));
+                        memcpy(&owner->slots[k].state, &owner->slots[k + 1].state, sizeof(AnimStateSlotView));
                         owner->slots[k + 1].status = 0;
                         owner->slots[k + 1].delay = 0.0f;
                     }
@@ -154,16 +258,6 @@ inline void _AnimStCompactSlots(AnimStInfo_t* owner) {
                 i++;
             }
         }
-    }
-}
-
-/* inferred: runs a state's selection callback (skipped for flagged states) */
-inline void _AnimStCallStateCallback(unsigned short state, AnimObjHdr_t* object, AnimChannel_t* channel, void* user, unsigned long event, void* extra, float frames) {
-    unsigned short id = object->id;
-    if (!(state & 0x8000)) {
-        g_AnimDB.GetStateAnimList(id, state, &_AnimSt_pStatAnimList);
-        int index = g_AnimDB.GetStateCallbackID(state, id);
-        ((AnimStateSelFunc)_AnimSt_CallbackTable->entries[index].callback)(&_AnimSt_pStatAnimList, state, object, channel, user, event, extra, frames);
     }
 }
 

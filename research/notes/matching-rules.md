@@ -75,3 +75,8 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   number computed first (r6) and the low one tested first. Local copies, parameter types, parameter
   orders and body orders (70+ forms) were inert. Try it when the original computes an operand
   earlier than its first use.
+- **The loop form of an unrolled chain also fixes volatile registers** (regA3, AnimStStartState).
+  _AnimStGetUnusedStateID's four `if ((u16)id == slots[k].state)` compares (state in r0, id in r3
+  for every spelling, operand orders and helper forms) match as a fully unrolled pointer loop
+  `for (int j = 0; j < 4; j++, slot++) if (slot->state == (u16)id) { ...; break; }` (state r3,
+  id r0); the indexed loop `slots[j]` is not unrolled (231 lines off).

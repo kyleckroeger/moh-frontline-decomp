@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 116208, "differs": 5764, "exact": 1936, "verified": 1281648},
+ "function_bytes_by_status": {"consistent": 115052, "differs": 5764, "exact": 1936, "verified": 1282804},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1218,7 +1218,7 @@
  [2147905984, 188, "AnimStGetStateWeight", "verified", "src/game/animst.cpp"],
  [2147906172, 72, "AnimStGetCallbackIndexFromID", "verified", "src/game/animst.cpp"],
  [2147906244, 1044, "AnimStProcess", "verified", "src/game/animst.cpp"],
- [2147907288, 1156, "AnimStStartState", "consistent", "research/drafts/AnimStStartState.800676d8.cpp"],
+ [2147907288, 1156, "AnimStStartState", "verified", "src/game/animst_transprecheck.cpp"],
  [2147908444, 236, "AnimStTransPreCheck", "verified", "src/game/animst_transprecheck.cpp"],
  [2147908680, 40, "AnimStInitStructure", "verified", "src/game/animst_transprecheck.cpp"],
  [2147908720, 8, "AnimStRegisterFinishCallback", "verified", "src/game/animst_transprecheck.cpp"],
