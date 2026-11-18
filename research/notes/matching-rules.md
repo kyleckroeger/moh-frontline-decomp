@@ -83,3 +83,8 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   Also closed _find_aim_blend_values (regA3): one of four TriangleBlend expansions had two volatile
   FPRs swapped (orig -y below bx - x); a second copy for that call writing the negations as
   `Neg(x)`, `Neg(y)` (value-returning inline) matches, while Neg in the shared copy breaks the others.
+  Also closed AddAmo (regA4): to make the original evaluate a call's arguments in a different order
+  (here the int argument loaded before the bool's compare), route the call through an inline wrapper
+  whose parameters are in the opposite order and pass value-returning inlines (an accessor
+  `GetType()` instead of the plain field `m_type`): the last argument is computed first. Plain
+  field arguments are forwarded to their uses and did nothing (21 forms before).

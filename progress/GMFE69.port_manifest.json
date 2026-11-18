@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 114476, "differs": 5764, "exact": 1936, "verified": 1283380},
+ "function_bytes_by_status": {"consistent": 114380, "differs": 5764, "exact": 1936, "verified": 1283476},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2163,7 +2163,7 @@
  [2148170404, 56, "SetWeaponName__19CPlayerWeaponObjectFPCc", "verified", "src/game/player_weapon_object_head.cpp"],
  [2148170460, 1188, "CreateEjectedShell__19CPlayerWeaponObjectFi", "verified", "src/game/player_weapon_object_head.cpp"],
  [2148171648, 44, "IsDrawEnabled__19CPlayerWeaponObjectCFv", "verified", "src/game/player_weapon_drawenabled.cpp"],
- [2148171692, 96, "AddAmo__19CPlayerWeaponObjectFi", "consistent", "research/drafts/AddAmo.800a7fac.cpp"],
+ [2148171692, 96, "AddAmo__19CPlayerWeaponObjectFi", "verified", "src/game/player_weapon_drawenabled.cpp"],
  [2148171788, 36, "DoneReloading__19CPlayerWeaponObjectFv", "verified", "src/game/player_weapon_donereload.cpp"],
  [2148171824, 68, "Shoot__19CPlayerWeaponObjectF16EWeaponShootTypei", "verified", "src/game/player_weapon_donereload.cpp"],
  [2148171892, 64, "IsSelectable__19CPlayerWeaponObjectCFv", "verified", "src/game/player_weapon_selectable.cpp"],

@@ -5,7 +5,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 4	not_code	no_compile	1128			open	__sinit_compartment_cpp	research/drafts/compartment_init.cpp	static initialiser; compiles only inside compartment.cpp (merge item)
 5	register	register	508	1	0	open	SFILTER_unpackxalf__FPviPvPvi	research/drafts/SFILTER_unpackxalf.80164370.cpp	
 6	register	register	2696	1	0	open	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	
-7	register	register	96	2	0	open	AddAmo__19CPlayerWeaponObjectFi	research/drafts/AddAmo.800a7fac.cpp	
+7	register	register	96	2	0	landed	AddAmo__19CPlayerWeaponObjectFi	research/drafts/AddAmo.800a7fac.cpp	regA4: EnablePickupCollisions(CanAddAmo(), GetType()) wrapper, value-returning args computed last first
 8	register	register	3416	2	0	open	CreateRootHierObject__FP20TriggerObject_structi	research/drafts/CreateRootHierObject.8003dde8.cpp	
 9	register	register	244	3	0	open	SNDtimeremaining	research/drafts/SNDtimeremaining.8015d238.c	
 10	register	register	1220	0	0	landed	Update__13CInputManagerFf	research/drafts/Update.80084c80.cpp	input_manager replaced by the whole-unit draft (shared CInputManager.h); button pair as Both(b, Lo(input), Hi(input)) with value-returning Hi/Lo inlines (CW evaluates the inline-call arguments right to left into temps: hi first, lo tested first)

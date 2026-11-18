@@ -41,7 +41,19 @@
     {
       "name": ".text",
       "address": "0x800a7f80",
-      "size": 44,
+      "size": 140,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000d10c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800141d4",
+      "size": 12,
       "type": 1
     }
   ],
@@ -51,9 +63,18 @@
       "address": "0x800a7f80",
       "size": 44,
       "binding": 1
+    },
+    {
+      "name": "AddAmo__19CPlayerWeaponObjectFi",
+      "address": "0x800a7fac",
+      "size": 96,
+      "binding": 1
     }
   ],
-  "externals": {},
+  "externals": {
+    "AddAmo__7CWeaponFs": "0x800d61ec",
+    "EnableDumpCollisionsByType__F9EDumpTypeib": "0x8003f8b8"
+  },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
