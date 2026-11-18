@@ -37,12 +37,18 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x8015f7fc",
-      "size": 76,
+      "address": "0x8015f538",
+      "size": 784,
       "type": 1
     }
   ],
   "functions": [
+    {
+      "name": "SNDI_precalcaztospkrvol__Fv",
+      "address": "0x8015f538",
+      "size": 708,
+      "binding": 1
+    },
     {
       "name": "SNDI_aztospkrvol__FiPs",
       "address": "0x8015f7fc",

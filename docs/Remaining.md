@@ -30,7 +30,7 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,299,836 / 1,414,572 code bytes (91.89%)**. Left: about 114.6 KB in 76 functions across 44 source files.
+Verified: **1,300,544 / 1,414,572 code bytes (91.94%)**. Left: about 113.9 KB in 75 functions across 44 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
@@ -40,14 +40,14 @@ Verified: **1,299,836 / 1,414,572 code bytes (91.89%)**. Left: about 114.6 KB in
 | 1 | Animation | 12.5 KB | `anim_callback.cpp`, `skelblend.cpp`, `animtran.cpp`, `dmcluster.cpp`, `dmesh.cpp`, `animmorph.cpp` |
 | 2 | Rendering | 13.8 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `font.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
-| 2 | Audio | 9.5 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c` |
+| 2 | Audio | 8.7 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c` |
 | 2 | System | 3.9 KB | `debug_prof.cpp`, `toilet.cpp`, `aramalloc.cpp` |
 | 2 | Video | 0.6 KB | `swvideodisplaylist.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
 Priority 1 is 68.9 KB and would take the project to 96.8% at most.
 
-Partial-source sweep: 1 code-exact, not yet linked (1.2 KB), 73 consistent (107.6 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 1 code-exact, not yet linked (1.2 KB), 72 consistent (106.9 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 83 of the 88 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->

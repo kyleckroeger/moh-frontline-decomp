@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 988,
- "function_bytes_by_status": {"consistent": 107580, "differs": 5764, "exact": 1220, "verified": 1290992},
+ "function_bytes_by_status": {"consistent": 106872, "differs": 5764, "exact": 1220, "verified": 1291700},
  "data_bytes_owned": 821488,
  "data_bytes_total": 1976252,
  "functions": [
@@ -4813,7 +4813,7 @@
  [2148919856, 1072, "SNDBANKI_playtimbre__FiiPvP11SNDPLAYOPTSP15SNDIPATCHHEADERiii", "verified", "src/ea/stagpat.c"],
  [2148920928, 704, "SNDBANKI_playpatch__FPvP11TAGGEDPATCHiiP11SNDPLAYOPTS", "verified", "src/ea/stagpat.c"],
  [2148921632, 1048, "SNDI_patchtohdr__FPvP11TAGGEDPATCHP15SNDSAMPLEFORMATP13SNDSAMPLEATTRP13SNDSAMPLEDESC", "verified", "src/ea/spat2hdr.c"],
- [2148922680, 708, "SNDI_precalcaztospkrvol__Fv", "consistent", "research/drafts/SNDI_precalcaztospkrvol.8015f538.c"],
+ [2148922680, 708, "SNDI_precalcaztospkrvol__Fv", "verified", "src/ea/satospkr.c"],
  [2148923388, 76, "SNDI_aztospkrvol__FiPs", "verified", "src/ea/satospkr.c"],
  [2148923464, 20, "SNDI_pantoazimuth__Fi", "verified", "src/ea/spantoaz.c"],
  [2148923484, 124, "iSNDsin__Fi", "verified", "src/ea/ssine.c"],

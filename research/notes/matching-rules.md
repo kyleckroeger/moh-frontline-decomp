@@ -136,3 +136,11 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   int3-patched mwcceppc: per function, every vreg's index, '@' name, degree and the colouring stack;
   cl.py prints BA's callee-saved webs in colour order). The colour rule then explains each register:
   a node takes the lowest obtained callee register no coloured neighbour holds, else the next new one.
+- **Colour a CSE temp LATER by making it a user local declared last** (tr3, SNDI_precalcaztospkrvol
+  4 -> 0). The tracer showed the original's sum register (r30, while ours r31) means the sum was coloured
+  after the third branch's b had obtained r30 (lowest free obtained callee wins). A CSE sum is an '@'
+  temp (high index, pushed late in sweep 1, popped first); written as a user local `int s = e + d;`
+  declared AFTER the locals that must colour before it (d, e, and a, b moved to function scope so
+  they are declared first) it gets the lowest index, is pushed first and coloured last. User locals
+  index in reverse declaration order, so "declare it after X" = "colour it after X". Declaring s
+  before d/e coloured it before them and it took a free volatile (7).

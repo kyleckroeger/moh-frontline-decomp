@@ -13,7 +13,7 @@ The project reports two figures. **Exact** is the verified progress figure: nono
 <!-- sync_docs:status -->
 | Measure | Code bytes | Share | What it means |
 | --- | ---: | ---: | --- |
-| **Exact** | 1,299,836 | **91.89%** | Built from source and byte-identical to the original in the complete-image comparison: 4,933 functions in 988 units. |
+| **Exact** | 1,300,544 | **91.94%** | Built from source and byte-identical to the original in the complete-image comparison: 4,934 functions in 988 units. |
 | **Linked** | 1,414,400 | **99.99%** | The exact code plus 195,128 bytes (13.79%) of partial source in 170 functions. It links into a non-matching build; that build plays scripted input routes in Dolphin, with 83 of the 88 drafts proven in play (`docs/Dolphin.md`). Linked doesn't mean correct. |
 
 Both are shares of the 1,414,572 code bytes in `.init` and `.text`. Only exact bytes count as verified progress.
@@ -22,10 +22,10 @@ Exact bytes by category:
 
 | Category | Code bytes | Functions | Units | Compilers |
 | --- | ---: | ---: | ---: | --- |
-| `reconstructed_game` (game code and EA engine) | 1,063,076 | 3,941 | 811 | `GC/1.3`, `GC/1.3.2` |
+| `reconstructed_game` (game code and EA engine) | 1,063,784 | 3,942 | 811 | `GC/1.3`, `GC/1.3.2` |
 | `restored_library` (Dolphin SDK, MSL, MW runtime, EA audio libraries) | 236,760 | 992 | 177 | `GC/1.2.5`, `GC/1.2.5n`, `GC/1.3`, `GC/1.3.2` |
 
-About 114.6 KB isn't exact yet, in 76 functions across 44 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
+About 113.9 KB isn't exact yet, in 75 functions across 44 source files; [Remaining.md](docs/Remaining.md) breaks it down by area. Another 172 bytes are outside any function symbol, which is why linked stops short of 100%.
 <!-- /sync_docs:status -->
 
 - Most game code is accepted as **fragment units**: contiguous runs of functions from one original source file, verified in place while the rest of that file remains original binary context. Fragments grow and merge as neighbouring functions are matched.
