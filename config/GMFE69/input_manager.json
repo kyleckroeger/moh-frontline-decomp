@@ -32,7 +32,8 @@
     "on"
   ],
   "include_dirs": [
-    "include/dolphin-sdk/libc"
+    "include/dolphin-sdk/libc",
+    "include"
   ],
   "strip_unused": false,
   "source_root": "src/game",
@@ -40,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x80084958",
-      "size": 808,
+      "size": 2028,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000c338",
-      "size": 32,
+      "size": 40,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80013340",
-      "size": 48,
+      "size": 60,
       "type": 1
     },
     {
@@ -116,15 +117,26 @@
       "address": "0x80084c60",
       "size": 32,
       "binding": 1
+    },
+    {
+      "name": "Update__13CInputManagerFf",
+      "address": "0x80084c80",
+      "size": 1220,
+      "binding": 1
     }
   ],
   "externals": {
+    "GetDeviceState__14CDeviceManagerFUl": "0x80084158",
     "IsReady__14CDeviceManagerFi": "0x800841b4",
+    "MathFunClamp<l>__Flll": "0x80085210",
     "PADControlMotor": "0x8011d80c",
     "SetActuatorState__14CDeviceManagerFillff": "0x80083fd8",
     "Shutdown__14CDeviceManagerFv": "0x80084210",
+    "UpdateActuators__14CDeviceManagerFf": "0x80083f7c",
+    "Update__14CDeviceManagerFv": "0x800841c0",
     "g_Shell": "0x80195090",
-    "g_bInMultiplayerMode": "0x8034eca5"
+    "g_bInMultiplayerMode": "0x8034eca5",
+    "g_unplugged": "0x8034ec9c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -132,7 +144,8 @@
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_bInMultiplayerMode"
+    "g_bInMultiplayerMode",
+    "g_unplugged"
   ],
   "original_file": "input.cpp",
   "original_file_index": 4468

@@ -1,14 +1,34 @@
 // A fragment of input.cpp; the file name is this project's. CInputManager, the functions at the start of the file: per-player key
-// value tables, rumble feedback and keymaps. CInputManager, CDeviceManager and
-// KEYMAP are named by the mangled symbols; the base-class relationship, the
-// 2316-byte device record and the key and shell views are inferred from
-// offsets and are not original names. The unit is compiled with
-// -inline deferred,auto: GetValueAnyPlayer inlines GetValue, which follows it
-// in the image, so the functions are listed in reverse image order.
-struct KEYMAP;
+// value tables, rumble feedback and keymaps. Update refreshes every player's key table from
+// the pad state through the keymap (analog bytes with dead zone and range, single buttons,
+// button pairs, edge and cubic response flags). CInputManager, CDeviceManager and KEYMAP are
+// named by the mangled symbols (shared view game/CInputManager.h); the device record, the key
+// and pad views and the Hi/Lo/Both helpers are inferred, not original names (Hi and Lo are
+// value-returning inlines: the original computes the high button number first and tests the
+// low one first). The unit is compiled with -inline deferred,auto: GetValueAnyPlayer inlines
+// GetValue, which follows it in the image, so the functions are listed in reverse image order.
+/* inferred: a keymap entry maps a pad input (button bit, analog byte or
+   button pair) to a key; 0xffff ends the list or leaves the key unmapped */
+struct KEYMAPENTRYVIEW {
+    unsigned short key;
+    unsigned short input;
+};
+
+struct KEYMAP {
+    int unknown0;
+    KEYMAPENTRYVIEW entries[1];
+};
+
+/* inferred: the pad state's button word and analog bytes */
+struct InputPadView {
+    unsigned short buttons;
+    unsigned char analog[10];
+};
 
 struct InputKeyView {
-    int field00;
+    unsigned short flags;
+    unsigned char deadZone;
+    unsigned char field03;
     int field04;
     int value;
 };
@@ -35,41 +55,134 @@ struct ShellView {
 
 extern ShellView g_Shell;
 extern bool g_bInMultiplayerMode;
+extern bool g_unplugged;
+
+template <class T> T MathFunClamp(T, T, T);
 
 extern "C" void PADControlMotor(int, unsigned long);
 
-class CDeviceManager {
-public:
-    int SetActuatorState(int, long, long, float, float);
-    bool IsReady(int);
-    void Shutdown();
 
-    InputDeviceView m_devices[4];
-};
 
-class CInputManager : public CDeviceManager {
-public:
-    void Reset();
-    int VerifyAnalog();
-    bool IsReady();
-    void SetFeedback(unsigned long, long, long, float, float);
-    void ResetActuatorState(long);
-    bool GetValueAnyPlayer(unsigned long);
-    int GetValue(unsigned long, unsigned long);
-    void SetKeymap(unsigned long, KEYMAP*);
-    void Shutdown();
+#include "game/CInputManager.h"
 
-    InputKeyTableView* GetKeyTable(unsigned long player) { return &m_devices[player].table; }
 
-    KEYMAP* m_keymap;
-    KEYMAP* m_playerKeymaps[4];
-    unsigned char field2444;
-    bool m_feedback;
-    bool m_feedbackOff[4];
-};
+/* inferred: the device's key table (CGCDevice's event table, +0x30) */
+static inline InputKeyTableView* GetKeyTable(CDeviceManager* m, int player) { return (InputKeyTableView*)m->m_devices[player].m_events; }
+
+/* inferred: inputs 3 and 2 only drive keys 142 and 143 for limited players */
+static inline bool Blocked(int input, unsigned long index) {
+    return (input == 3 && index != 142) || (input == 2 && index != 143);
+}
+
+/* inferred: a button pair's high and low button numbers */
+static inline unsigned int Hi(unsigned int v) { return v >> 8; }
+static inline unsigned int Lo(unsigned int v) { return v & 0xff; }
+static inline int Both(unsigned short b, unsigned int x, unsigned int y) { return ((b & (1 << x)) != 0) & ((b & (1 << y)) != 0); }
+
+void CInputManager::Update(float dt) {
+
+    unsigned int analog;
+    unsigned short flags;
+    field2444 = 0;
+    m_deviceMgr.Update();
+    for (int player = 0; player < 4; player++) {
+        InputKeyTableView* table = GetKeyTable(&m_deviceMgr, player);
+        InputPadView* pad = (InputPadView*)m_deviceMgr.GetDeviceState(player);
+        unsigned long j;
+        if (table && !pad) {
+            for (j = 0; j < 189; j++) {
+                table->keys[j].field04 = 0;
+                table->keys[j].value = 0;
+            }
+            continue;
+        }
+        for (j = 0; j < 189; j++)
+            table->keys[j].value = 0;
+        if (g_unplugged) {
+            for (j = 0; j < 189; j++) {
+                table->keys[j].field04 = 0;
+                table->keys[j].value = 0;
+            }
+            continue;
+        }
+        if (g_bInMultiplayerMode)
+            m_keymap = m_playerKeymaps[player];
+        if (!m_keymap)
+            continue;
+        for (int i = 0;; i++) {
+            unsigned long index = m_keymap->entries[i].key;
+            if (index == 0xffff)
+                break;
+            unsigned short input = m_keymap->entries[i].input;
+            if (input == 0xffff) {
+                table->keys[index].value = 0;
+                continue;
+            }
+            flags = table->keys[index].flags;
+            InputKeyView* key = &table->keys[index];
+            analog = flags & 1;
+            unsigned char raw;
+            if (analog) {
+                raw = pad->analog[input];
+            } else if (flags & 0x10) {
+                raw = Both(pad->buttons, Lo(input), Hi(input));
+            } else {
+                if (m_zooming[player] && (((int)input == 3 && index != 142) || ((int)input == 2 && index != 143))) {
+                    key->value = 0;
+                    continue;
+                }
+                raw = (pad->buttons & (1 << input)) != 0;
+            }
+            int value = raw;
+            unsigned int sign = flags & 4;
+            if (sign)
+                value -= 128;
+            if (analog) {
+                int deadZone = key->deadZone;
+                int range = sign ? 128 : 255;
+                if (input >= 8)
+                    value <<= 1;
+                if (value > 0) {
+                    value = range * (value - deadZone) / (range - deadZone);
+                    if (value < 0)
+                        value = 0;
+                } else {
+                    value = range * (value + deadZone) / (range - deadZone);
+                    if (value > 0)
+                        value = 0;
+                }
+                if (sign)
+                    value = MathFunClamp<long>(value, -128, 127);
+                else
+                    value = MathFunClamp<long>(value, 0, 255);
+            }
+            if (flags & 8) {
+                int direction = 1;
+                if (value < 0) {
+                    direction = -1;
+                    value *= -1;
+                }
+                if (analog)
+                    value = value * (value * (direction * value)) / 16129;
+                else
+                    value = value * (value * (direction * value)) / 65025;
+            }
+            if (flags & 2) {
+                int previous = key->field04;
+                key->field04 = value;
+                bool edge = value != 0 && value != previous;
+                value = edge != 0;
+            }
+            if (value != 0)
+                field2444 = 1;
+            key->value = value;
+        }
+    }
+    m_deviceMgr.UpdateActuators(dt);
+}
 
 void CInputManager::Shutdown() {
-    CDeviceManager::Shutdown();
+    m_deviceMgr.Shutdown();
 }
 
 void CInputManager::SetKeymap(unsigned long player, KEYMAP* keymap) {
@@ -80,7 +193,7 @@ void CInputManager::SetKeymap(unsigned long player, KEYMAP* keymap) {
 }
 
 int CInputManager::GetValue(unsigned long player, unsigned long key) {
-    InputKeyTableView* table = GetKeyTable(player);
+    InputKeyTableView* table = GetKeyTable(&m_deviceMgr, player);
     return table ? table->keys[key].value : 0;
 }
 
@@ -94,7 +207,7 @@ bool CInputManager::GetValueAnyPlayer(unsigned long key) {
 
 void CInputManager::ResetActuatorState(long state) {
     for (int i = 0; i < 4; i++) {
-        SetActuatorState(i, state, 0, 0.0f, 1.0f);
+        m_deviceMgr.SetActuatorState(i, state, 0, 0.0f, 1.0f);
         if (state == 0)
             PADControlMotor(i, 2);
     }
@@ -110,23 +223,23 @@ void CInputManager::SetFeedback(unsigned long player, long a, long b, float c, f
         enabled = m_feedback;
     }
     if (enabled && !m_feedbackOff[player])
-        SetActuatorState(player, a, b, c, d);
+        m_deviceMgr.SetActuatorState(player, a, b, c, d);
 }
 
 bool CInputManager::IsReady() {
     for (int i = 0; i < 4; i++) {
-        if (CDeviceManager::IsReady(i))
+        if (m_deviceMgr.IsReady(i))
             return true;
     }
     return false;
 }
 
-int CInputManager::VerifyAnalog() {
+bool CInputManager::VerifyAnalog() {
     return 1;
 }
 
 void CInputManager::Reset() {
-    InputDeviceView* device = m_devices;
+    InputDeviceView* device = (InputDeviceView*)m_deviceMgr.m_devices;
     InputKeyTableView* table;
     int i;
 

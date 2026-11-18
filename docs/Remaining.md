@@ -30,7 +30,7 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,289,272 / 1,414,572 code bytes (91.14%)**. Left: about 125.1 KB in 87 functions across 50 source files.
+Verified: **1,290,492 / 1,414,572 code bytes (91.23%)**. Left: about 123.9 KB in 86 functions across 49 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
@@ -41,13 +41,13 @@ Verified: **1,289,272 / 1,414,572 code bytes (91.14%)**. Left: about 125.1 KB in
 | 2 | Rendering | 14.4 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
 | 2 | Audio | 9.9 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `coda.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
-| 2 | System | 5.7 KB | `debug_prof.cpp`, `toilet.cpp`, `input.cpp`, `aramalloc.cpp` |
+| 2 | System | 4.5 KB | `debug_prof.cpp`, `toilet.cpp`, `aramalloc.cpp` |
 | 2 | Video | 0.6 KB | `swvideodisplaylist.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 76.7 KB and would take the project to 96.6% at most.
+Priority 1 is 76.7 KB and would take the project to 96.7% at most.
 
-Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 83 consistent (117.4 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 82 consistent (116.2 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->

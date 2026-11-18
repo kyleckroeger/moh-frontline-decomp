@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 117428, "differs": 5764, "exact": 1936, "verified": 1280428},
+ "function_bytes_by_status": {"consistent": 116208, "differs": 5764, "exact": 1936, "verified": 1281648},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -1683,7 +1683,7 @@
  [2148027412, 40, "GetValue__13CInputManagerFUlUl", "verified", "src/game/input_manager.cpp"],
  [2148027452, 36, "SetKeymap__13CInputManagerFUlP6KEYMAP", "verified", "src/game/input_manager.cpp"],
  [2148027488, 32, "Shutdown__13CInputManagerFv", "verified", "src/game/input_manager.cpp"],
- [2148027520, 1220, "Update__13CInputManagerFf", "consistent", "research/drafts/Update.80084c80.cpp"],
+ [2148027520, 1220, "Update__13CInputManagerFf", "verified", "src/game/input_manager.cpp"],
  [2148028740, 204, "Init__13CInputManagerFv", "verified", "src/game/input_init.cpp"],
  [2148028944, 32, "MathFunClamp<l>__Flll", "verified", "src/game/input.cpp"],
  [2148028976, 68, "__sinit_input_cpp", "verified", "src/game/input.cpp"],

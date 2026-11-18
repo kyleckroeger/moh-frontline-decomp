@@ -1,14 +1,13 @@
 // CInputManager: the game's input (key maps, per-player feedback switches) over the device
 // manager, shared by every file that uses it (PortReadiness step 3.3).
 //
-// Evidence: out of line in the original: Init (input_init), Update (draft
-// research/drafts/Update.80084c80.cpp), Reset, VerifyAnalog, IsReady, SetFeedback,
+// Evidence: out of line in the original: Init (input_init), Update, Reset, VerifyAnalog, IsReady, SetFeedback,
 // ResetActuatorState, GetValueAnyPlayer, GetValue, SetKeymap, Shutdown (input_manager). The
 // destructor is weak (the implicit one; input.cpp, which defines g_inputMgr: 0x2450 bytes, emits
 // it). No virtuals.
 // The device manager is a member at +0, not a base: the weak destructor destroys it with -1
-// (a base would get 0), as input.cpp's matched view has it. input_init.cpp and input_manager.cpp
-// view it as a base, which gives the same code for their calls. CInputManager's own fields
+// (a base would get 0), as input.cpp's matched view has it. input_init.cpp
+// views it as a base, which gives the same code for their calls. CInputManager's own fields
 // start at +0x2430.
 // Inferred: the member's name (m_deviceMgr), return types (the matched definitions';
 // VerifyAnalog's bool is Moh2.cpp's, the one caller), field names and types (input_init.cpp, input_manager.cpp; m_zooming, one byte per

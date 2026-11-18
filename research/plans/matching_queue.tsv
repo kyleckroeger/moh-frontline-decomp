@@ -8,7 +8,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 7	register	register	96	2	0	open	AddAmo__19CPlayerWeaponObjectFi	research/drafts/AddAmo.800a7fac.cpp	
 8	register	register	3416	2	0	open	CreateRootHierObject__FP20TriggerObject_structi	research/drafts/CreateRootHierObject.8003dde8.cpp	
 9	register	register	244	3	0	open	SNDtimeremaining	research/drafts/SNDtimeremaining.8015d238.c	
-10	register	register	1220	3	0	open	Update__13CInputManagerFf	research/drafts/Update.80084c80.cpp	
+10	register	register	1220	0	0	landed	Update__13CInputManagerFf	research/drafts/Update.80084c80.cpp	input_manager replaced by the whole-unit draft (shared CInputManager.h); button pair as Both(b, Lo(input), Hi(input)) with value-returning Hi/Lo inlines (CW evaluates the inline-call arguments right to left into temps: hi first, lo tested first)
 11	register	register	576	5	0	open	_find_aim_blend_values__FffPf	research/drafts/_find_aim_blend_values.8005e494.cpp	
 12	register	register	804	6	0	open	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	
 13	register	register	912	6	0	open	AddBuddy__F9BuddyInfob	research/drafts/AddBuddy.80057eac.cpp	

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1289272,
+    "matching_code_bytes": 1290492,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.14219707445079,
+    "percent": 91.2284422426006,
     "categories": {
-      "reconstructed_game": 1052512,
+      "reconstructed_game": 1053732,
       "restored_library": 236760
     },
-    "matching_functions": 4922
+    "matching_functions": 4923
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -735,7 +735,7 @@
     "src/game/impact_dtor.cpp": "89a9268bd7cbadeb0b4b09cfb4efeb2bcc47bc172e9f537a41b76f59494d5314",
     "src/game/input.cpp": "225e547d233d94cef27d4d7516d8705aff0c240539ac70cf59d6dbada950856e",
     "src/game/input_init.cpp": "9809b5630120e60a2373f904e281c779f7ebdfba628f70cea90efc6ce1dc240e",
-    "src/game/input_manager.cpp": "f423b50026076f75ce12146742b8d32ea50651646c0bfadd5a233d3743c608f9",
+    "src/game/input_manager.cpp": "ab496958a4830524ad5102068d15ff3db1b8b2af931d07f0b308b06f3f6c7306",
     "src/game/isShellGroup.cpp": "a276f86c558cbb5460692a1b2ae338e44366b0b6f9b45abc5406e266afaf1835",
     "src/game/isShellLibrary.cpp": "ae9a7d394bea82036581aa3df912b060eb78489f9beca039208986f25250b068",
     "src/game/isexportdefs.cpp": "cfddaccff8e4f85109db6b8879e41d64279a7954d8ae854d4bc0f7b9263974bf",
@@ -1291,7 +1291,7 @@
     "include/game/CCamera.h": "c10e0d15e8cab433f0e35ca3feea1d498ef4b3f68379479c17579216fc314d0c",
     "include/game/CColor.h": "60dd559509558a598f205da2cdcd55880f7c900fed869a63736a732f2810748d",
     "include/game/CDeviceManager.h": "507adcbeca4dd4c62dc495daa8d85358d8d72f2b00dee9e3dbed2b9dbfeeecbf",
-    "include/game/CInputManager.h": "3865b06c48dd49a491454c3009ca63379f4b68d12e7a50a457836bbd5b621902",
+    "include/game/CInputManager.h": "51534a343593571687eb025d3b09aa2bc7dc2a3af41be3d9a55fc1b550a49c52",
     "include/game/CLine3.h": "c268f86ded8dd68fe0ff9f20eaac203668bebdce6d0ec91f631357a296d2fbed",
     "include/game/CMatrix.h": "2a80633f9aefbbbaf5811470968dedf0fb0befe143fe54d100bb0b2fef2b3951",
     "include/game/CPlane.h": "bfa5787eb37ff996e9cf2b9ca6c97606d8adda80311bc863c4f75e3d5de45aa6",
@@ -2011,7 +2011,7 @@
     "config/GMFE69/initvblt.json": "554084076489dbae1fed3c4188edc39c814244a8b70ee237e98293269aee6202",
     "config/GMFE69/input.json": "94da449773e3e2b49308dc3062575d9d0b1b8e953c5ef61e3acc32ac7594825b",
     "config/GMFE69/input_init.json": "0ca05c602b95a0dcdf5fee762d358483c2f9afab8abcb0facbd6b1d933f49934",
-    "config/GMFE69/input_manager.json": "509be3d25173b961f588aa17cefa28584de0ca46a3cc7cbd2a57da308653053f",
+    "config/GMFE69/input_manager.json": "c325edf8a1e42540225fffb9affb97afd9ec1d2112700d92e9e3b8406fb6015c",
     "config/GMFE69/ipad.json": "2b64e5f09b467e8338d7502a0cc7a469143023ad18a36adfd4cb68114778d2f9",
     "config/GMFE69/isShellGroup.json": "fb2aea8e1fb5357a5c99b30450f95fb25d60066fb795346e9238568ba1eab8ac",
     "config/GMFE69/isShellLibrary.json": "4b838340878f1a37c48a9cb7f4530ff56b7d4e6144ae8049588d0d6545da6de6",
@@ -18070,8 +18070,8 @@
     {
       "id": "input_manager",
       "category": "reconstructed_game",
-      "functions": 9,
-      "code_bytes": 808,
+      "functions": 10,
+      "code_bytes": 2028,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -18103,8 +18103,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "ea5e3e6bcba6c11da8272df6a061677f52ef06bb90c12f4d2178f19d2a2f9657",
-      "linked_sha256": "b91143516250ece329b09badb2689fd1c345ab6fd4a0123cc7954ccf9877343b"
+      "object_sha256": "6b8d1c3dc0b25b49d5184607c445cc1850c521b0034289b7739918c9395dd35c",
+      "linked_sha256": "acab7e7d79826d650eb26c7f0ac51516d7024655f352ba93628dca01b36c90a4"
     },
     {
       "id": "bsevents",
@@ -44050,20 +44050,6 @@
             "size": 608,
             "kind": "function",
             "name": "Init__NotTheVirtualOne__19CBulletDecalManagerFv",
-            "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/input.cpp [symbol evidence]",
-        "file_record": 81,
-        "file_name": "input.cpp",
-        "ranges": [
-          {
-            "address": "0x80084c80",
-            "size": 1220,
-            "kind": "function",
-            "name": "Update__13CInputManagerFf",
             "evidence": "exception-index"
           }
         ]

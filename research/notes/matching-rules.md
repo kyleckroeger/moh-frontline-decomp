@@ -67,3 +67,11 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   params rank first-param-highest (in3(k(1),k(2),k(3)): x r31 > y r30 > z r29). Probes and the
   replay tool (scratch/loop4/regrules/sim.py, calib.py: 1139 of 1396 landed functions with DWARF
   reproduced at K=28) are in scratch/loop4/regrules.
+- **Value-returning inline arguments are evaluated into temporaries right to left** (regA3,
+  CInputManager::Update). A plain expression argument of an inline is forwarded to its use, so
+  the inline's body order decides the instruction and register order. Wrapping the arguments in
+  small value-returning inlines (`Both(b, Lo(input), Hi(input))`, `Hi(v) { return v >> 8; }`) makes
+  CW compute them as temporaries at the call, last argument first: the original's high button
+  number computed first (r6) and the low one tested first. Local copies, parameter types, parameter
+  orders and body orders (70+ forms) were inert. Try it when the original computes an operand
+  earlier than its first use.
