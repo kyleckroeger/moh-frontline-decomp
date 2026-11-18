@@ -137,3 +137,13 @@ about together, once, near the end; not one at a time.
   20 near, 23 structural, 4 multiplayer; 6 rows need a decision). Next session in this repo:
   W1 and the rename tool first (overnight-2026-11-17.md Decisions), then this queue from row 34
   (the rcmpbase tail).
+- 2026-11-18: parallel matching run (research/plans/matching-agents.md, 2026-11-17 20:45 to
+  2026-11-18 14:20, a usage-limit stall 01:50-13:42): 90.88% -> 92.10%, 21 functions landed
+  (rcmpbase.cpp and buddy.cpp whole-file merges, decal.cpp merge, CreateRootHierObject, the
+  animst pair, CInputManager::Update, quick_sort_, CSoldierObject::Draw, ...). The lever was
+  reading MWCC's register allocator itself (research/tools/alloc/, rules in matching-rules.md).
+  Every other register/order/near row is now `parked`: nmap.py shows 18 of 54 open rows STUCK
+  (the original's colours are impossible on our graph: pre-allocation order or structure
+  differs), 28 not a colouring difference, and the few feasible ones blocked by known
+  constraints. Next: reassess with the maintainer (structural group, the pre-allocation
+  scheduler probe for rows 36/37/43, the queued policy questions).

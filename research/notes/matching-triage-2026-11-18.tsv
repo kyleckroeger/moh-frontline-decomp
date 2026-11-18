@@ -1,0 +1,55 @@
+row	function	real	blind	kind	verdict	why	draft
+5	SFILTER_unpackxalf__FPviPvPvi	1	0	register	n.a.	stack slot offset of discard[] (frame), not colouring	research/drafts/SFILTER_unpackxalf.80164370.cpp
+6	TestCDBBranchNodeCollision<6CLine3>__10C	1	0	register	n.a.	no register node differs in mapped nodes (38 unmapped); diff not colouring	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp
+9	SNDtimeremaining	3	0	register	feasible*	voice r29->r31 only; tr1: needs the hoisted &sndgs temp (base) ranked below voice/result or base out of sweep 1 (lifted) - temp vs user rank, no accepted form found by 5 agents	research/drafts/SNDtimeremaining.8015d238.c
+15	UpdateProximityTriggerStatus__Fv	9	0	register	inconclusive	0 mapped mismatches; 18 GPR nodes unmapped (diffs live there)	research/drafts/UpdateProximityTriggerStatus.80046378.cpp
+18	CreateDestructable__FP20TriggerObject_st	2	0	register	inconclusive	0 mapped mismatches, 29 unmapped; known placement-new knot (vtable via box vs r3) = code form	scratch/loop4/regA4/cd/best_cd2.cpp
+20	BIFunc_GetObjInfo__FPPiPv	16	0	register	STUCK	R: STUCK mism 1 unmapped 100 [48@417:r26->r27] stuck 1 conflict 0 orig-impossible-edges 0 | F: - mism 0 unmapped 15	research/drafts/BIFunc_GetObjInfo.8002c258.cpp
+26	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPC	25	0	register	feasible*	4 GPR nodes (manager/pool/two stack-address temps); regrules: needs manager index above both &sentinel temps (param above temps); tr1 claimed	research/drafts/ARAM_alloc_node.801503b4.cpp
+28	PATHI_seeknextnode__Fi	52	11	near	STUCK	R: STUCK mism 1 unmapped 84 [101:r8->r17] stuck 1 conflict 0 orig-impossible-edges 0 | F: tool-fail(no class record)	scratch/loop4/regB/out/p0a.cpp
+29	GetClosestWaypointByType__15CAIFilterGlo	16	2	near	feasible*	params all/type/leaf rotated (r27/r30/r29); needs param index order != declaration order (fixed by the mangled signature); F f0/f1 ambiguous	scratch/loop4/regrules2/gcb.cpp
+30	PATHI_eventstart__Fi	160	0	register	feasible?	diff-mark rerun: 2 mapped GPR mismatches (queued r22->r24, index r21->r22) but 155 nodes unmapped (big graph): inconclusive	research/drafts/PATHI_eventstart.8010ee50.cpp
+31	_AnimTranDoTransition__FP12AnimStInfo_tP	177	0	register	STUCK	R: STUCK mism 27 unmapped 56 [58@213:r31->r28, 35to:r29->r31, 34channels:r28->r30, 33object:r27->r29, 37trigger:r24->r23, 38info:r23->r22 ...] stuck 12 conflict 2 orig-impossible-edges 2 | F: STUCK mism 2 unmapped 4 [44:f2->f3, 43:f3->f0] stuck 1 conflict 0 orig-impossible-edges 0	research/drafts/_AnimTranDoTransition.8006862c.cpp
+32	TestCollision__10CCDBVolBoxCFRC9CTriangl	445	0	register	STUCK	diff-mark rerun: FPR 271 mismatches, 80 stuck; degrees up to 304 (simplify sweeps dominate)	scratch/loop4/sweep/hc/r32_best.cpp
+36	SFILTER_rsf__FPviPvPvi	5	4	order	n.a.	pre-RA scheduler order (coordinator/tr3), no colour mismatch	research/drafts/SFILTER_rsf.801671b8.c
+37	death_cb__14CAnimCallbacksFP23AnimFileSt	5	5	order	n.a.	pre-RA scheduler order (coordinator/tr3), no colour mismatch	research/drafts/death_cb.8005fb58.cpp
+38	Scroll__12PopUpMessageFv	6	6	order	n.a.	order (blind 6); no colour mismatch	research/drafts/Scroll.800bf4f8.cpp
+39	TestCollision__7CVolBoxCFRC10CVolSphereR	13	2	order	feasible	FPR 102:f5->f7, @179/@197 f7->f5 (3 nodes); tr3 claimed (box-sphere TestCollision)	research/drafts/TestCollision.800c3210.cpp
+40	SNDMIXI_volramp__FP11SNDMIXVOICE	20	2	order	n.a.	nmap: i/voice r27->r26, but on2/order: orig keeps TWO &sndmix copies after the decode (web difference, structural)	research/drafts/SNDMIXI_volramp.80160114.c
+43	GetExtents__7CVolBoxCFR8CVector3R8CVecto	37	11	order	n.a.	pre-RA scheduler order (coordinator/tr3), no colour mismatch	research/drafts/GetExtents.800c13b4.cpp
+44	YUV_WriteRow__FPUcPUcPUcPci	45	24	order	n.a.	order blind 24: non-register diffs dominate	research/drafts/YUV_WriteRow.801083dc.cpp
+45	TestCollision__7CVolBoxCFRC11CVolCapsule	102	19	order	n.a.	order blind 19: non-register diffs dominate	research/drafts/TestCollision.800c290c.cpp
+46	_matrix_rot_yzx__FR7CMatrixlll	109	77	order	n.a.	order blind 77: non-register diffs dominate	research/drafts/_matrix_rot_yzx.800f4e98.cpp
+48	SNDPKTPLAY_start	2	1	near	n.a.	blind 1 near; no mapped GPR mismatch	research/drafts/SNDPKTPLAY_start.8015a81c.cpp
+49	OnCollision__13CStaticObjectFRC10CCollis	3	1	near	n.a.	FPR node 42@159 maps to two orig registers (f7/f8) = different webs; 1 of 3 lines is a reloc artefact	research/drafts/OnCollision.800afc08.cpp
+50	Link__8CPartBinFP7CDmaTagR10CDmaPacket	4	4	near	STUCK	R: STUCK mism 1 unmapped 7 [53@282:r7->r0] stuck 1 conflict 1 orig-impossible-edges 2 | F: - mism 0 unmapped 0	research/drafts/CPartBin_Link.800f5930.cpp
+51	DisplayHint__Fv	6	3	near	n.a.	blind 3 near; no mapped GPR mismatch	research/drafts/DisplayHint.8001e0f8.cpp
+52	BIFunc_AIStartCoverPointWalkToStored__FP	7	2	near	feasible*	stack/flag r31/r30 swapped; tr3: stack param stuck in sweep 1 (degree 29 vs 28): one neighbour absent in orig	research/drafts/BIFunc_AIStartCoverPointWalkToStored.800334e0.cpp
+57	CheckForObstructions__10CExplosionFR10IS	25	5	near	STUCK	R: STUCK mism 6 unmapped 4 [32this:r31->r30, 96:r31->r30, 86:r30->r29, 76:r30->r29, 71:r5->r3/r4, 64:r28->r31] stuck 1 conflict 0 orig-impossible-edges 0 | F: - mism 0 unmapped 0	research/drafts/CheckForObstructions.800ce450.cpp
+58	Draw__6CSceneFR9CViewportR7CScreenR11CRe	39	6	near	STUCK	R: STUCK mism 7 unmapped 1 [44:r0->r30, 39camera:r30->r28, 38screenTM:r29->r7, 37node:r29->r28, 35fog:r28->r27, 34screen:r27->r26 ...] stuck 2 conflict 1 orig-impossible-edges 0 | F: - mism 0 unmapped 0	research/drafts/Draw.800da67c.cpp
+59	aim_cb__14CAnimCallbacksFP23AnimFileStat	57	8	near	STUCK	R: - mism 0 unmapped 2 | F: STUCK mism 20 unmapped 0 [38c:f30->f29, 218:f2->f6, 201:f4->f5, 200:f5->f4, 139:f2->f6, 122:f4->f5 ...] stuck 8 conflict 2 orig-impossible-edges 2	research/drafts/aim_cb.8005e9ec.cpp
+61	MIX_audioslice	73	57	near	n.a.	near blind 57: non-register diffs dominate	research/drafts/MIX_audioslice.801609d0.c
+62	random	79	73	near	n.a.	near blind 73: non-register diffs dominate	research/drafts/random.8014f114.cpp
+63	iSNDrandom__Fv	80	76	near	n.a.	near blind 76: non-register diffs dominate	research/drafts/iSNDrandom.8015f934.c
+64	ShellInit__10CShellMenuFUl	135	89	near	n.a.	near blind 89: non-register diffs dominate	research/drafts/ShellInit.800e752c.cpp
+65	_unpack_skel_frame__FP11CharFrame_tP20An	157	85	near	n.a.	near blind 85: non-register diffs dominate	research/drafts/_unpack_skel_frame.80069c80.cpp
+68	AllocateStaticObject__20CStaticObjectFac	2	2	structural	STUCK	R: STUCK mism 6 unmapped 58 [93@867:r29->r27, 96@857:r27->r27/r6, 95@860:r28->r27/r28, 91@869:r27->r27/r6, 90@872:r28->r28/r7, 48@983:r4->r29/r3] stuck 1 conflict 1 orig-impossible-edges 1 | F: tool-fail(no class record)	research/drafts/AllocateStaticObject.800b386c.cpp
+69	PublishEvent__10CPublisherFR8ISubject13E	3	3	structural	n.a.	structural	research/drafts/PublishEvent.800d7718.cpp
+70	GetPeekLocation__11CCoverPointFv	3	3	structural	n.a.	structural	research/drafts/GetPeekLocation.800523cc.cpp
+71	DrawNode__11CStaticMeshFR7MSHNodeUl	5	1	structural	STUCK	R: - mism 0 unmapped 4 | F: STUCK mism 1 unmapped 26 [45:f6->f5] stuck 1 conflict 0 orig-impossible-edges 0	research/drafts/DrawNode.800f2090.cpp
+72	CheckLineCollision__11CCoverPointCFRC21C	10	1	structural	n.a.	structural	research/drafts/CheckLineCollision.80052abc.cpp
+73	ResetShell__10CShellMenuFv	18	7	structural	STUCK	R: STUCK mism 10 unmapped 4 [105:r7->r4/r7, 103:r0->r4, 102:r3->r9, 100:r3->r29, 98:r0->r4, 96:r3->r4 ...] stuck 7 conflict 0 orig-impossible-edges 0 | F: - mism 0 unmapped 0	research/drafts/ResetShell.800e7a7c.cpp
+74	DMClusterSkelTraverseHeirarchy__FP13Char	31	6	structural	STUCK	R: feasible mism 8 unmapped 8 [42b:r29->r22, 41c:r28->r21, 40depth:r27->r24, 39a:r26->r23, 36maximum:r24->r29, 35minimum:r23->r28 ...] | F: STUCK mism 1 unmapped 0 [36:f1->f0] stuck 1 conflict 1 orig-impossible-edges 1	research/drafts/DMClusterSkelTraverseHeirarchy.800f53c0.cpp
+75	SNDVOICEI_alloc__FiiPiii	53	6	structural	STUCK	R: STUCK mism 13 unmapped 180 [55@169:r30->r28, 46list:r28->r0, 94@98:r0->r0/r29, 91@107:r9->r29, 90@108:r10->r24, 89@109:r11->r22 ...] stuck 9 conflict 2 orig-impossible-edges 5 | F: tool-fail(no class record)	research/drafts/SNDVOICEI_alloc.8015d530.c
+76	CreateDumpObject__FRC8CVector3RC11CQuate	56	2	structural	STUCK	R: STUCK mism 11 unmapped 73 [62@156:r31->r28, 45object:r30->r31, 43kind:r31->r27, 42extra:r29->r26, 37node:r28->r28/r4, 35value:r27->r30 ...] stuck 3 conflict 0 orig-impossible-edges 0 | F: STUCK mism 2 unmapped 10 [41:f0->f4, 40:f1->f0] stuck 1 conflict 0 orig-impossible-edges 1	research/drafts/CreateDumpObject.8003fc2c.cpp
+77	PROFILE_UPDATE__Fv	82	4	structural	STUCK	R: STUCK mism 2 unmapped 95 [180:r8->r30, 139:r8->r6] stuck 2 conflict 0 orig-impossible-edges 0 | F: STUCK mism 1 unmapped 6 [39:f1->f0] stuck 1 conflict 1 orig-impossible-edges 2	research/drafts/PROFILE_UPDATE.800f3578.cpp
+78	BIFunc_MechFollowPath__FPPiPv	83	57	structural	n.a.	structural blind 57: non-register diffs dominate	research/drafts/BIFunc_MechFollowPath.80021220.cpp
+79	__ct__13CPathNodeListFPvP18BPDPathFindin	99	10	structural	STUCK	R: STUCK mism 19 unmapped 95 [32this:r31->r30, 117@307:r4->r4/r5, 95@329:r5->r10/r5, 47total:r5->r5/r6, 46i:r6->r11/r6, 42i:r6->r5/r7 ...] stuck 9 conflict 0 orig-impossible-edges 0 | F: - mism 0 unmapped 0	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
+80	DrawBulletStats__13UserInterfaceFv	119	69	structural	n.a.	structural blind 69: non-register diffs dominate	research/drafts/DrawBulletStats.800bce58.cpp
+81	Init__20CStaticObjectFactoryFv	138	3	structural	STUCK	R: STUCK mism 25 unmapped 155 [59count:r31->r26, 43@115:r30->r25, 45@58:r31->r26, 41@117:r29->r24, 39@119:r28->r23, 525:r31->r30 ...] stuck 6 conflict 0 orig-impossible-edges 0 | F: tool-fail(no class record)	research/drafts/Init.800b254c.cpp
+82	SweepAllExtents__6CSceneFv	185	178	structural	n.a.	structural blind 178: non-register diffs dominate	research/drafts/SweepAllExtents.800d8bac.cpp
+83	__ct__17CProfileInitClassFv	202	173	structural	n.a.	structural blind 173: non-register diffs dominate	research/drafts/debug_prof_misc.cpp
+84	DMMorphBlendDisplayLists__FP16DMRenderOb	252	170	structural	n.a.	structural blind 170: non-register diffs dominate	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp
+85	BSFileReadClass__FPCcbbPP14BSClass_struc	414	6	structural	STUCK	R: STUCK mism 179 unmapped 3 [243@372:r28->r26/r28, 239@376:r3->r3/r6, 201@414:r4->r4/r5, 165@450:r4->r5, 157@458:r3->r4, 151@464:r5->r4/r6 ...] stuck 123 conflict 0 orig-impossible-edges 0 | F: tool-fail(no class record)	research/drafts/BSFileReadClass.80035aa8.cpp
+86	RenderSystem__15CParticleSystemFR10CDmaP	854	735	structural	n.a.	structural blind 735: non-register diffs dominate	research/drafts/particlesystem_render.cpp
+87	MemoryCardBootUpPortCheck__10CShellMenuF	958	855	structural	n.a.	structural blind 855: non-register diffs dominate	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp
