@@ -42,3 +42,24 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   with parameters (the entry and slot) and declare the locals inside it; GI's ready-list dump went
   from the soldier ranked above the node (any of 900+ declaration orders, a 23k-iteration permuter)
   to the original order. Re-sweep the float declaration orders of the other inline blocks after it.
+- **Same final code, different pre-RA graph: try the loop form of an unrolled search** (regrules,
+  AnimStProcess). An if/else chain that CW could also have produced by fully unrolling a small
+  constant-count loop ('int last = 3; if (!s[3]) { last = 2; if (!s[2]) ... }') compiles to the same
+  instructions as 'for (last = 3; last >= 0; last--) if (s[last]) break;', but the allocator sees a
+  different graph (more values alive with the loop's induction variable before unrolling), which
+  changes which values are still blocked in the first simplify sweep. Here it moved owner above the
+  strength-reduced slot pointer (r31/r30, 23 -> 0). Try it whenever a long-lived value ranks one
+  place too low and the code contains a hand-unrolled compare chain.
+- **The allocator, read from the compiler binary** (mwcceppc.exe 1.3.2, x86; Coloring.c strings
+  locate it): colorinstructions 0x5077b0 builds the graph (0x579cf0), simplifies (0x507b50) and
+  colours (0x507a30). Simplify sweeps the virtual registers in INDEX order and removes every node
+  with degree < K at once (neighbours decremented immediately), repeating sweeps; when a sweep
+  removes nothing it pushes the node with the smallest cost/degree and sweeps again. Colouring pops
+  the last pushed first and takes the lowest-numbered register among the volatiles and the
+  nonvolatiles already obtained that no coloured neighbour holds; otherwise it obtains the next
+  nonvolatile (r31 down). Measured index order (highest index is coloured first when nothing is
+  blocked): optimizer temps (IV pointers/offsets, hoisted constants and addresses) > inline-expanded
+  variables > outer locals (first declared highest) > outer params (LAST param highest); inline
+  params rank first-param-highest (in3(k(1),k(2),k(3)): x r31 > y r30 > z r29). Probes and the
+  replay tool (scratch/loop4/regrules/sim.py, calib.py: 1139 of 1396 landed functions with DWARF
+  reproduced at K=28) are in scratch/loop4/regrules.

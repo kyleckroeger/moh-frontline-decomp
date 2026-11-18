@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1287836,
+    "matching_code_bytes": 1288880,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.04068226997282,
+    "percent": 91.1144855122256,
     "categories": {
-      "reconstructed_game": 1051076,
+      "reconstructed_game": 1052120,
       "restored_library": 236760
     },
-    "matching_functions": 4920
+    "matching_functions": 4921
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -506,8 +506,8 @@
     "src/game/animplayer.cpp": "e5f4866884cbb46c5ef23c522f7e074de8bb02e01aa0f8d3610e94db02e4b5db",
     "src/game/animseq.cpp": "fa70c2ef58ef6209c147e8551391aaffe3be0c643e8d89550cb8cb4744b68e33",
     "src/game/animskinned.cpp": "ebbbd9069e18ed40de7b41654a2654d445bd6db94f9f8ab9fe66a163bf59693d",
-    "src/game/animst.cpp": "c21b2120a38a43ccf28537b31f9f22c5b5d21d59cf2d48951276464a65bf4bf9",
-    "src/game/animst_transprecheck.cpp": "b98c2b40ef86a04d5c1cd6e919acb7fa467f2724ea3230ad6d0fa101d8a901ee",
+    "src/game/animst.cpp": "3ad787562918a3794b1daa9c37e2c0cfdb5d04bc7c0a6705660f09d38f5764ca",
+    "src/game/animst_transprecheck.cpp": "debe8c9d6a4147579606608310333079b5490baa06ce950124c15b79477f8162",
     "src/game/animtran_quickscan.cpp": "07c70f73b77082e9b7e586827308eaf360d7622df93b83e6d942e66b153287cd",
     "src/game/animwgt.cpp": "001c05d29d185c0a4f21712270ddb62c29fc3808bede837c4acdb3ad1c63af1c",
     "src/game/attachobject.cpp": "dfaa5fd900e4e0658395ea791d886d015591a6cc890dc1a9be5c4df0b8fbbb3c",
@@ -1722,7 +1722,7 @@
     "config/GMFE69/animplayer.json": "6a2b70c2ec7724a414ef16edde91dbb0408f837e3749701abc28eebd1822853a",
     "config/GMFE69/animseq.json": "5c04dcac00e81486d28ddacb77b0503fe4061b8c2012b728b402a1e2f0763ba5",
     "config/GMFE69/animskinned.json": "ca9f5c07e3cb29a88dfbbe40a50d6b25679866c541a1f314e04127c2c3d80b05",
-    "config/GMFE69/animst.json": "ed01cfba2082686177f18f2e8f306e58d6b6b797cd3f572474fabc933f234556",
+    "config/GMFE69/animst.json": "6e172a124b7eb68d8fc51d6fca9cd42add0d7af657020f658c6a04cdfabb8f55",
     "config/GMFE69/animst_transprecheck.json": "663cca4f1aea7b85642319e945d4d44cca0f20b20e4839e38c7276006183de5f",
     "config/GMFE69/animtran_quickscan.json": "aa621b494239802d03444a79bc767afd3fe02ba97856ceb76a1b98272d371ef8",
     "config/GMFE69/animwgt.json": "6752f49abd311539d80c2042212297e15578259526dd08924450d1f72306cb0f",
@@ -18031,8 +18031,8 @@
     {
       "id": "animst",
       "category": "reconstructed_game",
-      "functions": 6,
-      "code_bytes": 808,
+      "functions": 7,
+      "code_bytes": 1852,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -18064,8 +18064,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "63499412c646c66020616a292c4531b4a8a57dd82228446ef2126847ee00aae7",
-      "linked_sha256": "9005124ff593f43050382e5af3e5c1351b32bdff7f3f87d5239cabb0a9565cac"
+      "object_sha256": "07b6ae1bf6dcfb6f69c599b02ef1f261d7e355567b067f963cab53659fc44167",
+      "linked_sha256": "e8fc6ae6e758ad353e25d1ce625a8aa6d3792d34173d690b411571f4aae01c98"
     },
     {
       "id": "input_manager",
@@ -36867,8 +36867,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "c4d8bf7040bdabae911b8169e436ac1892fe4b56e9b5542f977dd3b56eb64171",
-      "linked_sha256": "bbf6d6a191563ea80d216cea4b94dc25070ad656ccee28f93bc516179ac758e7"
+      "object_sha256": "47efda15e7602a24c638c9167a03e63efeddc5de18e52bb6fe33357e1292e15e",
+      "linked_sha256": "d7712106f374097f5a7eefc7e7c45212efea3fefd34b4aa26c50d8f05fc2ad3e"
     },
     {
       "id": "AISplinePath_prepare",
@@ -43919,13 +43919,6 @@
         "file_record": 54,
         "file_name": "animst.cpp",
         "ranges": [
-          {
-            "address": "0x800672c4",
-            "size": 1044,
-            "kind": "function",
-            "name": "AnimStProcess",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x800676d8",
             "size": 1156,

@@ -40,13 +40,25 @@
     {
       "name": ".text",
       "address": "0x80066f9c",
-      "size": 808,
+      "size": 1852,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000b520",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x800126b0",
+      "size": 12,
       "type": 1
     },
     {
       "name": ".sdata2",
       "address": "0x8034fcf0",
-      "size": 4,
+      "size": 8,
       "type": 1
     }
   ],
@@ -86,20 +98,38 @@
       "address": "0x8006727c",
       "size": 72,
       "binding": 1
+    },
+    {
+      "name": "AnimStProcess",
+      "address": "0x800672c4",
+      "size": 1044,
+      "binding": 1
     }
   ],
   "externals": {
-    "_AnimSt_CallbackTable": "0x8034e96c"
+    "AnimChanGetNumActiveByState": "0x800616c0",
+    "AnimChanStopByStateIndex": "0x800618a8",
+    "AnimWgtProcess": "0x80068eec",
+    "GetStateAnimList__13CAnimDatabaseFUlUlP23AnimFileStateAnimList_t": "0x80061d98",
+    "GetStateCallbackID__13CAnimDatabaseFUlUs": "0x80061f04",
+    "_AnimSt_CallbackTable": "0x8034e96c",
+    "_AnimSt_FinishCb": "0x8034e968",
+    "_AnimSt_pStatAnimList": "0x801d3e38",
+    "g_AnimDB": "0x801d4a84",
+    "memcpy": "0x800094f8"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
-    "_AnimSt_CallbackTable"
+    "_AnimSt_CallbackTable",
+    "_AnimSt_FinishCb",
+    "_AnimSt_pStatAnimList"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "_AnimSt_CallbackTable"
+    "_AnimSt_CallbackTable",
+    "_AnimSt_FinishCb"
   ],
   "original_file": "animst.cpp",
   "original_file_index": 3104

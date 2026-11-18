@@ -133,18 +133,11 @@ extern "C" void AnimChanStopByStateIndex(AnimObjHdr_t*, AnimChannel_t*, unsigned
 
 /* inferred: moves the used slots down over the free ones */
 inline void _AnimStCompactSlots(AnimStInfo_t* owner) {
-    int last = 3;
-    if (!owner->slots[3].status) {
-        last = 2;
-        if (!owner->slots[2].status) {
-            last = 1;
-            if (!owner->slots[1].status) {
-                last = 0;
-                if (!owner->slots[0].status)
-                    last = -1;
-            }
-        }
-    }
+    // Same body as animst.cpp's copy (the last-used-slot search is a loop).
+    int last;
+    for (last = 3; last >= 0; last--)
+        if (owner->slots[last].status)
+            break;
     if (last > 0) {
         int i = 0;
         while (i < last) {
