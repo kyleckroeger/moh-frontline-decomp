@@ -35,7 +35,6 @@ consistent	0.951	1.000	27	164	Multiply__11CQuaternionF11CQuaternion	True	0	0	res
 consistent	0.970	1.000	28	400	decodexac__3SNDFPQ23SND10MXAPACKETF	True	0	0	research/drafts/decodexac.80168828.cpp	route_menu@66e1dc23
 consistent	1.000	1.000	11	2028	CreateDestructable__FP20TriggerObject_structi	True	0	0	research/drafts/CreateDestructable.8003c93c.cpp	m1_opening@87d4e884
 consistent	0.959	1.000	39	388	BIFunc_PlayerScreenFlash__FPPiPv	True	0	0	research/drafts/BIFunc_PlayerScreenFlash.80030658.cpp	route_flash_5_1@2b2392ad
-consistent	1.000	1.000	2	3416	CreateRootHierObject__FP20TriggerObject_structi	True	0	0	research/drafts/CreateRootHierObject.8003dde8.cpp	route_4_2@5552f86c
 consistent	0.993	1.000	3	568	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	True	0	0	research/drafts/PublishEvent.800d7718.cpp	m1_opening@afc177a0
 consistent	0.998	1.000	56	1640	CreateDumpObject__FRC8CVector3RC11CQuaternionii	True	0	0	research/drafts/CreateDumpObject.8003fc2c.cpp	route_5_4@28f0d04d
 consistent	1.000	1.000	16	3828	UpdateAnimation__14CSoldierObjectFf	True	0	0	research/drafts/UpdateAnimation.800acfb8.cpp	m1_opening@80800e16

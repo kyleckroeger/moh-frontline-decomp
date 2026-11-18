@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 999,
- "function_bytes_by_status": {"consistent": 113808, "differs": 5764, "exact": 1936, "verified": 1284048},
+ "function_bytes_by_status": {"consistent": 110392, "differs": 5764, "exact": 1936, "verified": 1287464},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -674,7 +674,7 @@
  [2147733808, 48, "DestroySubHierObject__FP11CHierObjecti", "verified", "src/game/objcreate_swap.cpp"],
  [2147733856, 164, "SwapHierObject__FP11CHierObjectii", "verified", "src/game/objcreate_swap.cpp"],
  [2147734020, 3044, "CreateSubHierObject__FP11CHierObjectii23DWI_ATTACHMENT_CRC_ENUM", "verified", "src/game/objcreate_swap.cpp"],
- [2147737064, 3416, "CreateRootHierObject__FP20TriggerObject_structi", "consistent", "research/drafts/CreateRootHierObject.8003dde8.cpp"],
+ [2147737064, 3416, "CreateRootHierObject__FP20TriggerObject_structi", "verified", "src/game/objcreate_swap.cpp"],
  [2147740480, 116, "DeleteSpecialThrownObject__FP13CThrownObject", "verified", "src/game/objcreate_thrown.cpp"],
  [2147740596, 348, "CreateSpecialThrownObject__FP20TriggerObject_structii", "verified", "src/game/objcreate_thrown.cpp"],
  [2147740944, 1236, "CreateCollisionVolume__FP20TriggerObject_structi", "verified", "src/game/objcreate_collvol.cpp"],

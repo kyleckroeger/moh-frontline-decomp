@@ -35,26 +35,30 @@
     "include/dolphin-sdk/libc",
     "include"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
   "sections": [
     {
       "name": ".text",
       "address": "0x8003d130",
-      "size": 3256,
+      "size": 6672,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000a49c",
-      "size": 24,
-      "type": 1
+      "size": 32,
+      "type": 1,
+      "linked_offset": 8,
+      "linked_size": 40
     },
     {
       "name": "extabindex",
       "address": "0x80011498",
-      "size": 36,
-      "type": 1
+      "size": 48,
+      "type": 1,
+      "linked_offset": 12,
+      "linked_size": 60
     }
   ],
   "functions": [
@@ -75,44 +79,72 @@
       "address": "0x8003d204",
       "size": 3044,
       "binding": 1
+    },
+    {
+      "name": "CreateRootHierObject__FP20TriggerObject_structi",
+      "address": "0x8003dde8",
+      "size": 3416,
+      "binding": 1
     }
   ],
   "externals": {
+    "AddWeapon__11CTankObjectFii": "0x800b44bc",
+    "Add__6CSceneFR10ISceneNode": "0x800dc21c",
+    "AllocateBoxVolume__Fv": "0x8003c254",
     "AllocateStaticObject__20CStaticObjectFactoryFii": "0x800b386c",
+    "BSObjectTriggerEvent__FP8BSObjectUsPvP8BSObjectb": "0x8003a46c",
+    "CreateBSObject__FPCcPP8BSObjectP10BSGO_BasicP20TriggerObject_structPPv": "0x8003a630",
+    "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb": "0x8004618c",
     "GetFreeElement__35BSUtilObjectInstanceMemoryAllocatorFb": "0x8003bd90",
+    "GetMatrix__11CQuaternionCFR7CMatrix": "0x80091c9c",
     "GetMotionData__20CStaticObjectFactoryFii": "0x800b34e0",
     "GetStaticMesh__20CStaticObjectFactoryFii": "0x800b35b8",
     "GetSubObject__11CHierObjectFi": "0x8009bd38",
     "Get_currentMission__10CShellMenuFv": "0x800e6ebc",
     "Get_currentStage__10CShellMenuFv": "0x800e6eb4",
+    "Ident__7CMatrixFv": "0x8008f1b0",
+    "InitClass__7CMatrixFv": "0x80090b78",
     "Init__11CHierObjectFP11CHierObjectiiiR8CVector3": "0x8009bd6c",
     "SetBasis__7CVolBoxF8CVector38CVector38CVector3": "0x800c5288",
     "SetCenter__7CVolBoxF8CVector3": "0x800c52bc",
     "SetDepth__7CVolBoxFf": "0x800c5258",
     "SetHeight__7CVolBoxFf": "0x800c5268",
     "SetLocalBoundingVolume__13CStaticObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800b1d38",
+    "SetPos__7CMatrixF8CVector3": "0x80090728",
     "SetWidth__7CVolBoxFf": "0x800c5278",
     "SetWorldBoundingVolume__13CStaticObjectFQ210ISceneNode11EVolumeTypeP7IVolume": "0x800b1c58",
     "SwapOut__11CHierObjectFP11CStaticMeshP10MotionData": "0x80099060",
     "__as__7CVolBoxFRC7CVolBox": "0x800c53f4",
+    "__vt__10BSGO_Basic": "0x8018334c",
     "__vt__7CVolBox": "0x801894f4",
     "__vt__7IVolume": "0x80181e28",
+    "__vt__9BSGO_Tank": "0x8018339c",
     "g_Shell": "0x80195090",
     "g_bInMultiplayerMode": "0x8034eca5",
-    "g_pVolumeAllocator": "0x801a1170"
+    "g_pObjectAllocators": "0x801a112c",
+    "g_pTankList": "0x8034e898",
+    "g_pVolumeAllocator": "0x801a1170",
+    "g_scene": "0x8019484c",
+    "s_ClassInit__7CMatrix": "0x8034eab0"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
   "upstream": {},
   "local_externals": [
+    "g_pObjectAllocators",
     "g_pVolumeAllocator"
   ],
   "discarded_local_functions": [],
   "sda_externals": [
-    "g_bInMultiplayerMode"
+    "g_bInMultiplayerMode",
+    "g_pTankList",
+    "s_ClassInit__7CMatrix"
   ],
   "original_file": "objcreate.cpp",
   "original_file_index": 1440,
+  "file_duplicates": [
+    "AllocateBoxVolume__Fv"
+  ],
   "pooled_sections": [
     ".sdata2"
   ],

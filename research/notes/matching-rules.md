@@ -96,3 +96,12 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   also fixes the colours but makes the found iterator operator!='s argument, which swaps the two
   subf operands: the original compares 'it != end'. Same lever family as the loop-body entry
   inlines (BIFunc_GetInitialBuddyOrders, SetFinishedLevelData).
+
+- (pnew, CreateRootHierObject 2 -> 0) Placement new where the original compares on the copy ('mr. rB,r3')
+  but stores the vtables through r3: that is the DIRECT form 'box = new (alloc()) T' (the box web IS the
+  new-expression's temporary; copy forms build through box, 'void* m' forms give 'cmplwi r3; mr', 'if (box)'
+  forms keep a redundant beq). When the temporary ranks too high, don't fight it: make the variables that
+  must rank ABOVE it compiler temporaries created earlier. A single-use inline that returns through a
+  NAMED LOCAL ('T* t = call(); return t;', not 'return call();') turns the caller's variable into one, and
+  a class operator new written the same way does it for a 'new T' result. Temporaries rank above all user
+  locals, first-created highest.
