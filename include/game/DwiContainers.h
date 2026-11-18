@@ -74,26 +74,22 @@ public:
     typedef list_iter<T> iterator;
 
     list() : m_count(0), m_capacity(0), m_pool(0), m_free(0), m_head(&m_head, &m_head, T()), m_owned(true) {}
+    // The range constructor's body is two members, the free-list setup and the range link (whose
+    // last iterator comes by reference): buddy.cpp's weak list<BuddyInfo> instance.
     template <class I>
     list(int capacity, I first, I last, char* name)
         : m_count(0), m_capacity(capacity),
-          m_pool((list_node<T>*)DWI_allocalign(name, capacity * sizeof(list_node<T>), 16, 1024)), m_free(0),
-          m_head(&m_head, &m_head, T()) {
-        m_owned = true;
-        list_node<T>* head;
-        list_node<T>* next = 0;
-        list_node<T>* node;
-        for (node = m_pool + (m_capacity - 1); node != m_pool; node--) {
-            node->m_next = next;
-            next = node;
-        }
-        node->m_next = next;
-        m_free = node;
+          m_pool((list_node<T>*)DWI_allocalign(name, m_capacity * sizeof(list_node<T>), 16, 1024)), m_free(0),
+          m_head(&m_head, &m_head, T()), m_owned(true) {
+        init_free();
+        link_range(end(), first, last);
+    }
+    void link_range(list_iter<T> end, list_iter<T> first, const list_iter<T>& last) {
+        list_node<T>* head = end.m_node;
+        list_node<T>* stop = last.m_node;
         list_node<T>* tail = m_head.m_prev;
-        head = end().m_node;
-        for (; first != last; ++first) {
-            const T& value = *first;
-            list_node<T>* added = new (alloc_node()) list_node<T>(0, 0, value);
+        for (list_iter<T> it = first; it.m_node != stop; ++it) {
+            list_node<T>* added = new (alloc_node()) list_node<T>(0, 0, *it);
             tail->m_next = added;
             added->m_prev = tail;
             tail = added;
@@ -101,6 +97,17 @@ public:
         }
         tail->m_next = head;
         head->m_prev = tail;
+    }
+    void init_free() {
+        list_node<T>* next = 0;
+        list_node<T>* node = m_pool + (m_capacity - 1);
+        while (node != m_pool) {
+            node->m_next = next;
+            next = node;
+            node--;
+        }
+        node->m_next = next;
+        m_free = node;
     }
     // Through clear(): an expanded inline numbers its locals in reverse declaration order, so
     // the weak out-of-line ~list and its copies inlined into reserve colour node/next alike
@@ -135,7 +142,7 @@ public:
         m_count++;
     }
     void push_front(const T& value) {
-        list_node<T>* pos = m_head.m_next;
+        list_node<T>* pos = begin().m_node;
         list_node<T>* prev = pos->m_prev;
         list_node<T>* node = alloc_node();
         new (node) list_node<T>(0, 0, value);

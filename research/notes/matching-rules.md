@@ -125,3 +125,14 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   volatile registers to the original's. Also: `*p->in++` used inside an expression increments
   before the load; the original's `lbz` then `addi rX,rX,1` (same register) is the increment as
   its own statement after the reads.
+- **Struct-promoted fields rank below every inline local** (ba, BIFunc_AddBuddy 3 -> 0). MWCC numbers
+  register candidates (0x435c60): params, user locals, then '@' compiler locals in list order; the
+  fields of a struct local that CW splits into registers (a `BuddyInfo info` filled field by field)
+  are '@' locals created AFTER inlining, so they come after every inline-expanded local and are
+  coloured after them. To put a value below the caller's promoted fields, read it through a struct
+  copy that is promoted the same way (`BuddyInfo b = buddies[i]; soldier = b.soldier;` or a
+  function-scope `BuddyInfo b; ... b = *node;` declared before the iterator); to put a value above
+  all of them, give it an inline's named local. Compiler truth: scratch/loop4/ba/tr.py (ptrace on an
+  int3-patched mwcceppc: per function, every vreg's index, '@' name, degree and the colouring stack;
+  cl.py prints BA's callee-saved webs in colour order). The colour rule then explains each register:
+  a node takes the lowest obtained callee register no coloured neighbour holds, else the next new one.

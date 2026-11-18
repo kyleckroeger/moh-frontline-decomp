@@ -71,3 +71,12 @@ compile; big.py builds one file per shared config with ~430 context aliases). Sc
 - BIFunc_AddBuddy (13): the same entry form fixes its node/soldier (r29/r26) but shifts i/index and the attached
   dump; the top-level info.soldier/progress r26/r27 (orig r27/r28) shift comes from the attached-list dump alone
   (without DumpAttached they are right).
+
+## 2026-11-18 (match ba) buddy.cpp complete: one unit `buddy`
+- BIFunc_AddBuddy 3 -> 0 and the whole-file merge: buddy_head + the template/sinit units are now src/game/buddy.cpp
+  (unit `buddy`, 0x80056728..0x800590ec). The containers and g_bInitialized/g_player_checkpoint are defined between
+  BIFunc_AddBuddy and AddBuddy; vector::reserve and copy are defined inline before CreateBuddyDataStructures.
+- BA's colouring, read with the tracer (scratch/loop4/ba/tr.py, cl.py): orig colour order base, stack, attached
+  vec/index/i, info.soldier, info.progress, attached soldier (new r26), ready dump... Getting info's fields between
+  the attached dump's i and soldier needed the dump soldiers to be promoted struct fields (BuddyInfo copies) and
+  progress as a plain expression (an ArgOf inline's named local outranks everything).

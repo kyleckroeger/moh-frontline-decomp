@@ -1,7 +1,7 @@
 n	group	kind	size	real	blind	status	function	draft	note
 1	not_code	register	72	0	0	landed	__dt__Q24RCMP11RCMP_SYSTEMFv	research/drafts/rcmpbase_system.cpp	merged into rcmpbase.cpp with the whole file (DestroySystem gap function places the weak dtor before __sinit)
 2	not_code	no_compile	76			landed	__sinit_rcmpbase_cpp	research/drafts/rcmpbase_system.cpp	merged into rcmpbase.cpp (whole file, deferred inlining, rcmp_sys defined first)
-3	not_code	register	716	0	0	open	BIFunc_CreateBuddyDataStructures__FPPiPv	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	0 by score; as a fragment the pooled .rodata base loads before .bss: land inside a unit with an earlier .bss user (AddBuddy) (log 2026-11-13)
+3	not_code	register	716	0	0	landed	BIFunc_CreateBuddyDataStructures__FPPiPv	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	landed with the buddy.cpp whole-file merge (unit buddy)
 4	not_code	no_compile	1128			open	__sinit_compartment_cpp	research/drafts/compartment_init.cpp	static initialiser; compiles only inside compartment.cpp (merge item)
 5	register	register	508	1	0	open	SFILTER_unpackxalf__FPviPvPvi	research/drafts/SFILTER_unpackxalf.80164370.cpp	
 6	register	register	2696	1	0	open	TestCDBBranchNodeCollision<6CLine3>__10CCDBObjectCFRC13CDBBranchNodeRC6CLine3R10CCollisionbRQ23dwi24fast_vec<P11CDBTriGroup>	research/drafts/TestCDBBranchNodeCollision_6CLine3_.800701d4.cpp	
@@ -11,7 +11,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 10	register	register	1220	0	0	landed	Update__13CInputManagerFf	research/drafts/Update.80084c80.cpp	input_manager replaced by the whole-unit draft (shared CInputManager.h); button pair as Both(b, Lo(input), Hi(input)) with value-returning Hi/Lo inlines (CW evaluates the inline-call arguments right to left into temps: hi first, lo tested first)
 11	register	register	576	0	0	landed	_find_aim_blend_values__FffPf	research/drafts/_find_aim_blend_values.8005e494.cpp	appended to anim_callback; the (-1,1),(1,1) triangle uses a second TriangleBlend copy whose -x, -y are value-returning Neg() calls (computed first, as temporaries)
 12	register	register	804	6	0	open	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	
-13	register	register	912	6	0	open	AddBuddy__F9BuddyInfob	research/drafts/AddBuddy.80057eac.cpp	
+13	register	register	912	6	0	landed	AddBuddy__F9BuddyInfob	research/drafts/AddBuddy.80057eac.cpp	landed with the buddy.cpp whole-file merge (unit buddy); GiveBuddyOrders copy declaring x,y,z
 14	register	register	1264	0	0	landed	BIFunc_GetInitialBuddyOrders__FPPiPv	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	appended to buddy_head; ready-list dump body in an inline DumpReadyEntry(BuddyInfo&, int) (index declared before soldier) + GI copy of GiveBuddyOrders declaring x,y,z
 15	register	register	2128	9	0	open	UpdateProximityTriggerStatus__Fv	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	
 16	register	register	1156	0	0	landed	AnimStStartState	research/drafts/AnimStStartState.800676d8.cpp	prepended to animst_transprecheck (unit on animst.cpp's slot view); _AnimStGetUnusedStateID's four compares as a pointer loop over the slots (loop form of an unrolled chain)
@@ -22,7 +22,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 21	register	register	1272	18	0	open	LLCharObjCompositeMorph__FPfP18AnimMotFrameList_t	research/drafts/LLCharObjCompositeMorph.80064ca0.cpp	
 22	register	register	1632	20	0	open	ChooseCoverPointByType__15CAIFilterGlobalCFPC12_PropBSPLeafRC21CAIFilterRealPositionPC21CAIFilterRealPosition24ECoverPointSelectionTypeffP9CAIObject	research/drafts/ChooseCoverPointByType.8005ca88.cpp	
 23	register	register	376	21	0	open	Rotate__7CMatrixF8CVector3f	research/drafts/Rotate.800904e8.cpp	
-24	register	register	892	22	0	open	BIFunc_AddBuddy__FPPiPv	research/drafts/BIFunc_AddBuddy.80057b30.cpp	
+24	register	register	892	22	0	landed	BIFunc_AddBuddy__FPPiPv	research/drafts/BIFunc_AddBuddy.80057b30.cpp	landed with the buddy.cpp whole-file merge (unit buddy): list dumps read the soldier through a BuddyInfo copy (promoted fields numbered after inline locals); progress read as the raw stack expression
 25	register	register	1044	23	0	landed	AnimStProcess	research/drafts/AnimStProcess.800672c4.cpp	appended to animst (rule: _AnimStCompactSlots' last-used-slot search written as a loop 'for (last = 3; last >= 0; last--) if (owner->slots[last].status) break;' (CW unrolls it to the same compare chain) gives a different pre-RA graph: owner r31 above the slot IV as in the original; animst_transprecheck's copy takes the same body, unchanged)
 26	register	register	712	25	0	open	ARAM_alloc_node__FP17ARAM_POOL_MANAGERPCcUi14ARAM_DIRECTION	research/drafts/ARAM_alloc_node.801503b4.cpp	
 27	register	register	2948	56	0	open	UpdateBoundingBox__15CParticleSystemFv	research/drafts/UpdateBoundingBox.8007fbe8.cpp	
