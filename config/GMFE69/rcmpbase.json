@@ -18,7 +18,7 @@
     "on",
     "-O4,p",
     "-inline",
-    "auto",
+    "deferred,auto",
     "-pragma",
     "cats off",
     "-nosyspath",
@@ -34,51 +34,138 @@
   "include_dirs": [
     "include/dolphin-sdk/libc"
   ],
-  "strip_unused": false,
+  "strip_unused": true,
   "source_root": "src/game",
+  "linker_stripped": {
+    "functions": [
+      "DestroySystem__4RCMPFPQ24RCMP11RCMP_SYSTEM"
+    ]
+  },
   "sections": [
     {
       "name": ".text",
-      "address": "0x8010543c",
-      "size": 292,
+      "address": "0x80105258",
+      "size": 1004,
+      "type": 1
+    },
+    {
+      "name": ".ctors",
+      "address": "0x8016e00c",
+      "size": 4,
       "type": 1
     },
     {
       "name": "extab",
-      "address": "0x8000fd24",
-      "size": 24,
-      "type": 1
+      "address": "0x8000fcf4",
+      "size": 88,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 104,
+      "stripped_objects": [
+        "@127"
+      ]
     },
     {
       "name": "extabindex",
-      "address": "0x80016ab4",
-      "size": 36,
-      "type": 1
+      "address": "0x80016a6c",
+      "size": 132,
+      "type": 1,
+      "linked_offset": 0,
+      "linked_size": 156,
+      "stripped_objects": [
+        "@128"
+      ]
     },
     {
       "name": ".rodata",
       "address": "0x8017ac58",
-      "size": 14,
+      "size": 34,
       "type": 1
     },
     {
       "name": ".data",
       "address": "0x8018c458",
-      "size": 12,
+      "size": 24,
       "type": 1
+    },
+    {
+      "name": ".bss",
+      "address": "0x803158a0",
+      "size": 28,
+      "type": 8
     },
     {
       "name": ".sdata",
       "address": "0x8034e408",
-      "size": 8,
+      "size": 16,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351340",
+      "size": 4,
       "type": 1
     }
   ],
   "functions": [
     {
+      "name": "__sinit_rcmpbase_cpp",
+      "address": "0x801055f8",
+      "size": 76,
+      "binding": 0
+    },
+    {
       "name": "__dt__Q24RCMP7DECODERFv",
       "address": "0x801054cc",
       "size": 148,
+      "binding": 1
+    },
+    {
+      "name": "__ct__Q24RCMP11CODEC_IDATAFPQ24RCMP8STREAMERPFPQ24RCMP7DECODERPQ24RCMP8STREAMERPPQ24RCMP5CHUNK_vPFPQ24RCMP7DECODERPQ24RCMP8STREAMERPQ24RCMP5CHUNK_vUi",
+      "address": "0x80105258",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "__ct__Q24RCMP5CHUNKFv",
+      "address": "0x8010526c",
+      "size": 20,
+      "binding": 1
+    },
+    {
+      "name": "ReleaseChunk__Q24RCMP7DECODERFPQ24RCMP5CHUNK",
+      "address": "0x80105280",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "GetChunk__Q24RCMP7DECODERFv",
+      "address": "0x801052b0",
+      "size": 84,
+      "binding": 1
+    },
+    {
+      "name": "ReleaseFrame__Q24RCMP7DECODERFPQ24RCMP5FRAME",
+      "address": "0x80105304",
+      "size": 48,
+      "binding": 1
+    },
+    {
+      "name": "GetFrame__Q24RCMP7DECODERFUi",
+      "address": "0x80105334",
+      "size": 136,
+      "binding": 1
+    },
+    {
+      "name": "GetFrameRate__Q24RCMP7DECODERFv",
+      "address": "0x801053bc",
+      "size": 64,
+      "binding": 1
+    },
+    {
+      "name": "GetCurrentFrameNumber__Q24RCMP7DECODERFv",
+      "address": "0x801053fc",
+      "size": 64,
       "binding": 1
     },
     {
@@ -92,17 +179,36 @@
       "address": "0x80105490",
       "size": 60,
       "binding": 1
+    },
+    {
+      "name": "__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA",
+      "address": "0x80105560",
+      "size": 80,
+      "binding": 1
+    },
+    {
+      "name": "__dt__Q24RCMP11RCMP_SYSTEMFv",
+      "address": "0x801055b0",
+      "size": 72,
+      "binding": 2
     }
   ],
   "externals": {
-    "rcmp_sys__4RCMP": "0x803158ac"
+    "__dl__FPv": "0x8001ca2c",
+    "__dt__Q24RCMP11CODEC_IDATAFv": "0x800fbba0",
+    "__register_global_object": "0x801381bc"
   },
   "undefined_in_discarded_code": [],
-  "discarded_functions": [],
+  "discarded_functions": [
+    "DestroySystem__4RCMPFPQ24RCMP11RCMP_SYSTEM"
+  ],
   "upstream": {},
   "local_externals": [],
   "discarded_local_functions": [],
   "sda_externals": [],
   "original_file": "rcmpbase.cpp",
-  "original_file_index": 10293
+  "original_file_index": 10293,
+  "weak_duplicates": [
+    "__dt__Q24RCMP11CODEC_IDATAFv"
+  ]
 }

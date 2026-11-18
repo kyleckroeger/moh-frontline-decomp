@@ -83,12 +83,9 @@ real_lines	size	address	function	compile_settings_from	draft
 5	780	801671b8	SFILTER_rsf__FPviPvPvi	config/GMFE69/sfrsf.json	research/drafts/SFILTER_rsf.801671b8.c
 102	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
-2	80	80105560	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	config/GMFE69/rcmpbase.json	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp
 4	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp
 211	2944	80050af4	GenerateTestSplinePath__13CAISplinePathFRC20CAISplinePathManagerUlPC19_aifilter_simple_v3b	config/GMFE69/AISplinePath_ctor.json	research/drafts/GenerateTestSplinePath.80050af4.cpp
 	836	800f4754	__ct__17CProfileInitClassFv	config/GMFE69/debug_prof.json	research/drafts/debug_prof_misc.cpp
-	72	801055b0	__dt__Q24RCMP11RCMP_SYSTEMFv	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
-	76	801055f8	__sinit_rcmpbase_cpp	config/GMFE69/rcmpbase.json	research/drafts/rcmpbase_system.cpp
 	1128	80077178	__sinit_compartment_cpp	config/GMFE69/compartment_render.json	research/drafts/compartment_init.cpp
 	4532	8007d704	RenderSystem__15CParticleSystemFR10CDmaPacket	config/GMFE69/particlesystem_link.json	research/drafts/particlesystem_render.cpp
 	1032	8001ebf8	BIFunc_MPAddPlayerHealth__FPPiPv	config/GMFE69/bsbifunc_ai.json	research/drafts/bsbifunc_multiplayer.cpp

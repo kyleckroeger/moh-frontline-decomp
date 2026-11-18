@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1285620,
+    "matching_code_bytes": 1285848,
     "total_executable_code_bytes": 1414572,
-    "percent": 90.88402711208761,
+    "percent": 90.90014506154512,
     "categories": {
-      "reconstructed_game": 1048860,
+      "reconstructed_game": 1049088,
       "restored_library": 236760
     },
-    "matching_functions": 4915
+    "matching_functions": 4918
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -853,8 +853,7 @@
     "src/game/rcmp_main.cpp": "df3ca3ef32a5f1da1affae445e7952d78093a0b78ff1d83dedeb693633943f14",
     "src/game/rcmp_main_block.h": "86b0d7bad76a670b3e5800c5b2d9d2f351eca22e90a5347476fb4698cbb7c7d7",
     "src/game/rcmp_mpc_codec.cpp": "160c26e45efb34b6be5403035bb4eed37cdf9eba18d16f382a8b3a119b97af1c",
-    "src/game/rcmpbase.cpp": "ff8d5797157a414f7fcd5f34456614259a93f8fe1feb92ea2fdaeb740ee14eb3",
-    "src/game/rcmpbase_head.cpp": "44e2a39c331ccd17e6c72f6afa4f2b52a0274e15e923f971e54360d3dd83382f",
+    "src/game/rcmpbase.cpp": "d75a630700ed5e2b3258ee3ab65fa2195d4644072141c9ca7a8856bb57db44bf",
     "src/game/real_bridge.cpp": "3528e557dcb6116823246402f1003e63fd82246a624dcbc2f18e5ee8b9bf8e41",
     "src/game/renderlist.cpp": "42e68be8c6528cca93c323799f05abb06e59a9309e44b706d6c846255bbcabc8",
     "src/game/scene.cpp": "fe48d06de7f7256822765c3d93a7806971beff172102b77e92cfab96295ac0c1",
@@ -2170,7 +2169,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "91dc3d4dbb3380460b779bafbb823584aa27707a22f1a0c86dde80057286856c",
-    "config/GMFE69/project.json": "bb931923322e6f827b700fa19ef4f03aeec36bf41800a528e2bff6d8d9690226",
+    "config/GMFE69/project.json": "27b07acc42e21692f546d80e25ad2d6da6e91731ff168568161e950a1c48a062",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -2191,8 +2190,7 @@
     "config/GMFE69/rcmp_main.json": "3ef4b38acb9614e70dd404f787600185f3f5b4c9e20d612ad439962eb118425f",
     "config/GMFE69/rcmp_mpc_codec.json": "dea4d8a0e5d34cf54d2d284aef09950699c2a36fbba4e4c38639db0d02db95d9",
     "config/GMFE69/rcmp_mpc_codec_chunk_types.json": "42f8600fb47568b4635edb3182a0d6d788bb94c0419a514e14604d564197d33d",
-    "config/GMFE69/rcmpbase.json": "76b2fde8c7d557b1a3f2efbb80e56fc580819831e852f1291c81fbfaadf10fe3",
-    "config/GMFE69/rcmpbase_head.json": "d540a32fd2ee0c6aa11949b937349b14632e82700f345a96d1285949d00add37",
+    "config/GMFE69/rcmpbase.json": "e8a88e96de89aca155c68c2371a846b60bf6b8a89bede90c3f1ff89d6b2f4b0c",
     "config/GMFE69/real_bridge.json": "fb24361e052cc387b259a75299cf4cd5cac5657115be7c0281dad09bdf4242ab",
     "config/GMFE69/recon.json": "fc63225cfb53faf8c0510ad33bd16023bad761bd959b1cc807d5ad9f243704ca",
     "config/GMFE69/renderlist.json": "169350825542ffce49a73d7427aefe2b09ac8e8bba5441940c1cc77b19a5bb46",
@@ -17632,8 +17630,8 @@
     {
       "id": "rcmpbase",
       "category": "reconstructed_game",
-      "functions": 3,
-      "code_bytes": 292,
+      "functions": 14,
+      "code_bytes": 1004,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17650,7 +17648,7 @@
         "on",
         "-O4,p",
         "-inline",
-        "auto",
+        "deferred,auto",
         "-pragma",
         "cats off",
         "-nosyspath",
@@ -17663,10 +17661,12 @@
         "-fp_contract",
         "on"
       ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "be4cbbc41319a6ea5b064fc93e2acecfda7e39c3beb51d7ba396f0f0c030e41e",
-      "linked_sha256": "3f5ec3281ddf1b63c30d809cbe0bdb57b4bd843b38e4528d35dfa0b46d2f4b04"
+      "strip_unused": true,
+      "discarded_functions": [
+        "DestroySystem__4RCMPFPQ24RCMP11RCMP_SYSTEM"
+      ],
+      "object_sha256": "2009175848f8b14c62fbfef6c9ae23a8a1c7303d080c308eecdff190a0ccd3c6",
+      "linked_sha256": "0445b49e8b4a0ca415e5c1b4cb50bdb074c39d28dd3a112ffeb116a070e11d15"
     },
     {
       "id": "matstack",
@@ -22624,45 +22624,6 @@
       "discarded_functions": [],
       "object_sha256": "dd9a1fce4818118532cca7075dccfe981f4f51ba03dc789458dfdf214a24d43e",
       "linked_sha256": "398f877fc08e53e809f398bc0fcd8cb0d9575a22d9113eefd8516b336c5c6739"
-    },
-    {
-      "id": "rcmpbase_head",
-      "category": "reconstructed_game",
-      "functions": 8,
-      "code_bytes": 484,
-      "compiler_family": "GC",
-      "compiler_version": "1.3.2",
-      "compiler_flags": [
-        "-nodefaults",
-        "-proc",
-        "gekko",
-        "-align",
-        "powerpc",
-        "-enum",
-        "int",
-        "-fp",
-        "hardware",
-        "-Cpp_exceptions",
-        "on",
-        "-O4,p",
-        "-inline",
-        "auto",
-        "-pragma",
-        "cats off",
-        "-nosyspath",
-        "-RTTI",
-        "on",
-        "-str",
-        "reuse,readonly",
-        "-use_lmw_stmw",
-        "on",
-        "-fp_contract",
-        "on"
-      ],
-      "strip_unused": false,
-      "discarded_functions": [],
-      "object_sha256": "748f558001728abd4c65b04f8ccabf85111631d1375d2e836e6f86d8e98b62a9",
-      "linked_sha256": "92b8f54e1bcbeee6b2e2ad9d79d0971e6be26e360e1f075209253783820af67f"
     },
     {
       "id": "Soldier_object_bone",
@@ -44491,34 +44452,6 @@
             "kind": "function",
             "name": "MOHFL_VD_create__4RCMPFPQ24RCMP7DECODERPQ24RCMP5FRAME",
             "evidence": "exception-index"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/rcmpbase.cpp [symbol evidence]",
-        "file_record": 180,
-        "file_name": "rcmpbase.cpp",
-        "ranges": [
-          {
-            "address": "0x80105560",
-            "size": 80,
-            "kind": "function",
-            "name": "__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA",
-            "evidence": "between-same-file"
-          },
-          {
-            "address": "0x801055b0",
-            "size": 72,
-            "kind": "function",
-            "name": "__dt__Q24RCMP11RCMP_SYSTEMFv",
-            "evidence": "exception-index"
-          },
-          {
-            "address": "0x801055f8",
-            "size": 76,
-            "kind": "function",
-            "name": "__sinit_rcmpbase_cpp",
-            "evidence": "local-file-symbol"
           }
         ]
       },

@@ -1,13 +1,39 @@
-// RCMP (the movie player) base: the decoder's codec selection and release
-// and its destructor (which frees through the global RCMP_SYSTEM's hook). RCMP, DECODER, CODEC, CHUNK,
-// CODEC_IDATA, RCMP_SYSTEM, STREAMER and FRAME are named by the mangled
-// symbols and RTTI; members and the codec's virtual function names are
-// inferred from the calls and are not original.
+// RCMP (the movie player) base, the whole of rcmpbase.cpp: the global RCMP_SYSTEM
+// (allocation hooks; its static initialisation registers the weak destructor),
+// the CODEC_IDATA and CHUNK constructors, and the decoder that feeds stream chunks
+// to the chosen codec (a pending chunk first, otherwise the get callback),
+// forwards frame requests to it (GetFrame first fetches a pending chunk while no
+// codec is chosen; without a codec the queries return null, 0.0f and 0), chooses
+// and frees the codec, and its constructor and destructor. RCMP, DECODER, CODEC,
+// CHUNK, CODEC_IDATA, RCMP_SYSTEM, STREAMER and FRAME are named by the mangled
+// symbols and RTTI; members and the codec's virtual function names are inferred
+// from the calls and are not original.
+//
+// Compiled with deferred inlining, so the functions are written last to first.
+// CODEC_IDATA's empty destructor (a weak copy, as in avplayer, whose copy the
+// linker keeps) changes the DECODER constructor's register choice: the vtable
+// address shares r5 with the zero. DestroySystem is a gap function (accepted by
+// the maintainer 2026-11-13, docs/Remaining.md): the original emits the weak
+// RCMP_SYSTEM destructor before __sinit, where a function of the file that
+// deletes an RCMP_SYSTEM puts it; its name and body are this project's, and the
+// linker strips it, as the original's was.
 namespace RCMP {
 
 class DECODER;
 class STREAMER;
 class FRAME;
+
+class RCMP_SYSTEM {
+public:
+    RCMP_SYSTEM() : m_alloc(0), m_free(0) {}
+    virtual ~RCMP_SYSTEM() {}
+
+    void* (*m_alloc)(unsigned long);
+    void (*m_free)(void*);
+    int m_field0C;
+};
+
+RCMP_SYSTEM rcmp_sys;
 
 class CHUNK {
 public:
@@ -30,6 +56,8 @@ public:
         m_releaseChunk = 0;
     }
     CODEC_IDATA(STREAMER*, GETCHUNKFUNC, RELEASECHUNKFUNC, unsigned int);
+    ~CODEC_IDATA() {}
+    void operator delete(void* p) { rcmp_sys.m_free(p); }
 
     STREAMER* m_streamer;
     GETCHUNKFUNC m_getChunk;
@@ -46,18 +74,6 @@ public:
     virtual float GetFrameRate();
     virtual void ReleaseFrame(FRAME*);
 };
-
-class RCMP_SYSTEM {
-public:
-    RCMP_SYSTEM() : m_alloc(0), m_free(0) {}
-    virtual ~RCMP_SYSTEM() {}
-
-    void* (*m_alloc)(unsigned long);
-    void (*m_free)(void*);
-    int m_field0C;
-};
-
-extern RCMP_SYSTEM rcmp_sys;
 
 class DECODER {
 public:
@@ -78,16 +94,19 @@ public:
     CODEC* m_codec;
 };
 
-// The CODEC_IDATA and CHUNK constructors and the DECODER chunk/frame
-// accessors come before these in the original file, and the DECODER
-// constructor, RCMP_SYSTEM's destructor and rcmp_sys's static initialisation
-// after them; they are not part of this unit (drafts in scratch).
+// Gap function, stripped at link (see the file comment).
+void DestroySystem(RCMP_SYSTEM* system) {
+    delete system;
+}
 
-void DECODER::FreeChosenCodec() {
-    if (m_codec) {
-        delete m_codec;
-        m_codec = 0;
-    }
+DECODER::DECODER(const CODEC_IDATA* idata) {
+    m_idata = *idata;
+    m_codec = 0;
+    m_pending = 0;
+}
+
+DECODER::~DECODER() {
+    FreeChosenCodec();
 }
 
 void DECODER::ChooseCodec(CODEC* codec, CHUNK* chunk) {
@@ -96,8 +115,59 @@ void DECODER::ChooseCodec(CODEC* codec, CHUNK* chunk) {
     m_codec->Init(this);
 }
 
-DECODER::~DECODER() {
-    FreeChosenCodec();
+void DECODER::FreeChosenCodec() {
+    if (m_codec) {
+        delete m_codec;
+        m_codec = 0;
+    }
+}
+
+unsigned int DECODER::GetCurrentFrameNumber() {
+    return !m_codec ? 0 : m_codec->GetCurrentFrameNumber();
+}
+
+float DECODER::GetFrameRate() {
+    return !m_codec ? 0.0f : m_codec->GetFrameRate();
+}
+
+FRAME* DECODER::GetFrame(unsigned int frame) {
+    if (!m_codec && !m_pending)
+        m_idata.m_getChunk(this, m_idata.m_streamer, &m_pending);
+    return !m_codec ? 0 : m_codec->GetFrame(frame);
+}
+
+void DECODER::ReleaseFrame(FRAME* frame) {
+    m_codec->ReleaseFrame(frame);
+}
+
+CHUNK* DECODER::GetChunk() {
+    CHUNK* chunk;
+
+    if (m_pending) {
+        chunk = m_pending;
+        m_pending = 0;
+        return chunk;
+    }
+    m_idata.m_getChunk(this, m_idata.m_streamer, &chunk);
+    return chunk;
+}
+
+void DECODER::ReleaseChunk(CHUNK* chunk) {
+    m_idata.m_releaseChunk(this, m_idata.m_streamer, chunk);
+}
+
+CHUNK::CHUNK() {
+    m_next = 0;
+    m_size = 0;
+    m_data = 0;
+}
+
+CODEC_IDATA::CODEC_IDATA(STREAMER* streamer, GETCHUNKFUNC getChunk, RELEASECHUNKFUNC releaseChunk,
+                         unsigned int value) {
+    m_value = value;
+    m_streamer = streamer;
+    m_getChunk = getChunk;
+    m_releaseChunk = releaseChunk;
 }
 
 }

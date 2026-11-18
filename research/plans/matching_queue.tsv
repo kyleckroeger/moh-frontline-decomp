@@ -1,6 +1,6 @@
 n	group	kind	size	real	blind	status	function	draft	note
-1	not_code	register	72	0	0	open	__dt__Q24RCMP11RCMP_SYSTEMFv	research/drafts/rcmpbase_system.cpp	matches; waits for the RCMP::DECODER ctor and joins rcmpbase.cpp with __sinit_rcmpbase_cpp (log, PARKED rcmpbase tail)
-2	not_code	no_compile	76			open	__sinit_rcmpbase_cpp	research/drafts/rcmpbase_system.cpp	part of the rcmpbase.cpp tail (see RCMP_SYSTEM dtor); the draft only compiles inside its file
+1	not_code	register	72	0	0	landed	__dt__Q24RCMP11RCMP_SYSTEMFv	research/drafts/rcmpbase_system.cpp	merged into rcmpbase.cpp with the whole file (DestroySystem gap function places the weak dtor before __sinit)
+2	not_code	no_compile	76			landed	__sinit_rcmpbase_cpp	research/drafts/rcmpbase_system.cpp	merged into rcmpbase.cpp (whole file, deferred inlining, rcmp_sys defined first)
 3	not_code	register	716	0	0	open	BIFunc_CreateBuddyDataStructures__FPPiPv	research/drafts/BIFunc_CreateBuddyDataStructures.8005823c.cpp	0 by score; as a fragment the pooled .rodata base loads before .bss: land inside a unit with an earlier .bss user (AddBuddy) (log 2026-11-13)
 4	not_code	no_compile	1128			open	__sinit_compartment_cpp	research/drafts/compartment_init.cpp	static initialiser; compiles only inside compartment.cpp (merge item)
 5	register	register	508	1	0	open	SFILTER_unpackxalf__FPviPvPvi	research/drafts/SFILTER_unpackxalf.80164370.cpp	
@@ -32,7 +32,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 31	register	register	1740	177	0	open	_AnimTranDoTransition__FP12AnimStInfo_tP12AnimObjHdr_tP13AnimChannel_tUsUsUlPv	research/drafts/_AnimTranDoTransition.8006862c.cpp	
 32	register	register	3856	449	0	open	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	research/drafts/TestCollision.8006e0b0.cpp	
 33	register	register	480	3	0	decision	FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE	research/drafts/FlagAsOccupied.80052f6c.cpp	matches only with a different inline body per fragment (declined)
-34	order	order	80	2	2	open	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp	
+34	order	order	80	2	2	landed	__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA	research/drafts/__ct__Q24RCMP7DECODERFPCQ24RCMP11CODEC_IDATA.80105560.cpp	CODEC_IDATA's empty destructor (~CODEC_IDATA() {}, attested by avplayer's weak copy) gives the vtable r5; whole-file merge of rcmpbase.cpp
 35	order	order	708	4	2	open	SNDI_precalcaztospkrvol__Fv	research/drafts/SNDI_precalcaztospkrvol.8015f538.c	
 36	order	order	780	5	4	open	SFILTER_rsf__FPviPvPvi	research/drafts/SFILTER_rsf.801671b8.c	
 37	order	order	1064	5	5	open	death_cb__14CAnimCallbacksFP23AnimFileStateAnimList_tUsP12AnimObjHdr_tP13AnimChannel_tPvUlPvf	research/drafts/death_cb.8005fb58.cpp	
