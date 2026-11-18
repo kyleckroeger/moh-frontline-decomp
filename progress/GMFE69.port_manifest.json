@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 998,
- "function_bytes_by_status": {"consistent": 117820, "differs": 5764, "exact": 1936, "verified": 1280036},
+ "function_bytes_by_status": {"consistent": 117428, "differs": 5764, "exact": 1936, "verified": 1280428},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -2060,7 +2060,7 @@
  [2148126340, 628, "PeekLeftRight__13CPlayerObjectFv", "verified", "src/game/player_crouch.cpp"],
  [2148126968, 76, "BeginCrouch__13CPlayerObjectFv", "verified", "src/game/player_begincrouch.cpp"],
  [2148127044, 812, "BeginStand__13CPlayerObjectFv", "verified", "src/game/player_begincrouch.cpp"],
- [2148127856, 392, "SetFinishedLevelData__13CPlayerObjectFv", "consistent", "research/drafts/SetFinishedLevelData.8009d470.cpp"],
+ [2148127856, 392, "SetFinishedLevelData__13CPlayerObjectFv", "verified", "src/game/player_begincrouch.cpp"],
  [2148128248, 52, "TransitionFOV__13CPlayerObjectFff", "verified", "src/game/player_fov.cpp"],
  [2148128300, 484, "UpdateDeathSequence__13CPlayerObjectFf", "verified", "src/game/player_fov.cpp"],
  [2148128784, 452, "StartDeathSequence__13CPlayerObjectFv", "verified", "src/game/player_death.cpp"],

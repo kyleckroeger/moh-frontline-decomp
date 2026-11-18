@@ -42,6 +42,10 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   with parameters (the entry and slot) and declare the locals inside it; GI's ready-list dump went
   from the soldier ranked above the node (any of 900+ declaration orders, a 23k-iteration permuter)
   to the original order. Re-sweep the float declaration orders of the other inline blocks after it.
+  Same lever closed CPlayerObject::SetFinishedLevelData (regA3): `this` ranked above the loop
+  index (lifted into a later sweep); writing the loop in the caller with its body in a free inline
+  `SaveWeaponEntry(CWeapon* weapon, int i, int mission, int stage)` gave the original i r29 > this r28
+  (the same body inside a member loop inline stayed 11 lines off).
 - **Same final code, different pre-RA graph: try the loop form of an unrolled search** (regrules,
   AnimStProcess). An if/else chain that CW could also have produced by fully unrolling a small
   constant-count loop ('int last = 3; if (!s[3]) { last = 2; if (!s[2]) ... }') compiles to the same

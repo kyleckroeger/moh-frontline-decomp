@@ -4,8 +4,15 @@
 // multiplayer. CPlayerObject::BeginStand restores the standing capsule axis
 // from a function-static CLine3 when the space above is clear. The class is
 // named by the mangled symbol; its members and flag names are inferred from
-// offsets in a non-virtual view. The rest of the file is not part of this
-// unit; its earlier .bss is stood in for by the manifest's leading_filler.
+// offsets in a non-virtual view. CPlayerObject::SetFinishedLevelData, once
+// the shell's level-finished flag (+15) is set, records the level as won with
+// the player's health (the stats counter's value) and, per weapon slot with
+// dump info, its ammo (+644 plus +646) - only slot 8 (also saved as slot 7) in
+// mission 2 stage 2 outside multiplayer; multiplayer takes the mission and
+// stage from the shell (+5148, +5152). SaveWeaponEntry is an inferred
+// single-use inline for the loop body (its parameters give the original's
+// register order). The rest of the file is not part of this unit; its earlier
+// .bss is stood in for by the manifest's leading_filler.
 extern bool g_bInMultiplayerMode;
 
 union CVector3Data {
@@ -134,17 +141,65 @@ public:
     static void DisablePassThru(bool);
 };
 
+enum EWeaponTypes {};
+
+class CShellMenu {
+public:
+    unsigned int Get_currentMission();
+    unsigned int Get_currentStage();
+    void SetPlayersFinishedLevelSuccessfully(int, int);
+    void SetPlayersFinishedLevelHealth(int, int, float);
+    void SetPlayersFinishedLevelAmmo(int, int, EWeaponTypes, unsigned int);
+
+    unsigned char unknown0000[15];
+    bool m_levelFinished;
+    unsigned char unknown0010[5132];
+    int m_mpMission;
+    int m_mpStage;
+    unsigned char unknown1424[1464];
+};
+
+extern CShellMenu g_Shell;
+
+class ShotCountView {
+    unsigned char unknown00[12];
+
+public:
+    virtual void unknown008();
+    virtual int* unknown00c();
+};
+
+class ShotStatsView {
+public:
+    unsigned char unknown00[12];
+    ShotCountView* counter;
+};
+
+struct WeaponDumpInfoView {
+    unsigned char unknown000[644];
+    short flagBase;
+    short flagOffset;
+};
+
+class CWeapon {
+public:
+    unsigned char unknown0000[12516];
+    WeaponDumpInfoView* m_dumpInfo;
+};
+
 class CPlayerObject {
 public:
     void BeginCrouch();
     void BeginStand();
+    void SetFinishedLevelData();
 
     unsigned char unknown000[128];
     CMatrix m_matrix;
     unsigned char unknown0c0[240];
     CVolCapsule m_localCapsule;
     CVolCapsule m_worldCapsule;
-    unsigned char unknown250[84];
+    ShotStatsView* m_stats;
+    unsigned char unknown254[80];
     float m_heightSpeed;
     unsigned char unknown2a8[237];
     bool m_crouching : 1;
@@ -154,6 +209,8 @@ public:
     unsigned char m_flags397a : 4;
     bool m_flag397b : 1;
     unsigned char m_flags397b : 3;
+    unsigned char unknown398[200];
+    CWeapon* m_weapons[45];
 };
 
 void CPlayerObject::BeginCrouch() {
@@ -185,4 +242,35 @@ void CPlayerObject::BeginStand() {
         m_crouchStarted = true;
         m_heightSpeed = speed;
     }
+}
+
+inline void SaveWeaponEntry(CWeapon* weapon, int i, int mission, int stage) {
+    short offset; short base;
+    if (weapon && weapon->m_dumpInfo) {
+        base = weapon->m_dumpInfo->flagBase;
+        offset = weapon->m_dumpInfo->flagOffset;
+        if (g_Shell.Get_currentMission() != 2 || g_Shell.Get_currentStage() != 2 || g_bInMultiplayerMode || i == 8) {
+            g_Shell.SetPlayersFinishedLevelAmmo(mission, stage, (EWeaponTypes)i, base + offset);
+            if (i == 8)
+                g_Shell.SetPlayersFinishedLevelAmmo(mission, stage, (EWeaponTypes)7, base + offset);
+        }
+    }
+}
+
+void CPlayerObject::SetFinishedLevelData() {
+    if (!g_Shell.m_levelFinished)
+        return;
+    int mission;
+    int stage;
+    if (g_bInMultiplayerMode) {
+        mission = g_Shell.m_mpMission;
+        stage = g_Shell.m_mpStage;
+    } else {
+        mission = g_Shell.Get_currentMission();
+        stage = g_Shell.Get_currentStage();
+    }
+    g_Shell.SetPlayersFinishedLevelSuccessfully(mission, stage);
+    g_Shell.SetPlayersFinishedLevelHealth(mission, stage, *m_stats->counter->unknown00c());
+    for (int i = 0; i < 45; i++)
+        SaveWeaponEntry(m_weapons[i], i, mission, stage);
 }
