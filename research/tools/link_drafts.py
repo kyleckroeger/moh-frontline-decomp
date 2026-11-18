@@ -29,6 +29,7 @@ from formats import Elf32
 import sync_docs
 
 ADDR32, ADDR16_LO, ADDR16_HI, ADDR16_HA, REL24, REL14, REL32, SDA21 = 1, 4, 5, 6, 10, 11, 26, 109
+UADDR32 = 24  # unaligned ADDR32: debug info of probes with asm functions or file statics
 SKIP_SECTIONS = {"extab", "extabindex", ".comment", ".ctors", ".dtors"}
 ARENA_LO_HI, ARENA_LO_LO = 0x801104bc, 0x801104c0  # lis/addi of __ArenaLo in OSInit.
 ARENA_STACK_HI, ARENA_STACK_LO = 0x801104f4, 0x801104f8  # lis/addi of _stack_addr in OSInit.
@@ -172,7 +173,7 @@ def apply_relocs(unit, wanted, orig):
         value = target + addend
         pos = unit.place[sec] - unit.base + where
         here = unit.base + pos
-        if kind == ADDR32:
+        if kind in (ADDR32, UADDR32):
             struct.pack_into(">I", unit.blob, pos, value & 0xffffffff)
         elif kind == ADDR16_LO:
             struct.pack_into(">H", unit.blob, pos, value & 0xffff)

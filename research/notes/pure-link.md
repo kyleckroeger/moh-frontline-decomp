@@ -324,3 +324,24 @@ probe on that draw call, or a frame-1890 GX capture of both images.
   Lead: the same wrap for data outside the main heap (the 24 MB above it that mallocinit holds
   back, or the OS heap), or another address-sensitive GPU input; next step is the probe approach
   above on a level draw.
+
+**In-level frames, chased and stopped (2026-11-17, night; user: stop there).** With the arena cap,
+m1_opening's TRACE matches and only in-level frames from 5640 differ. Findings:
+- Per-tile frame hashes: one or two 32x32 tiles per frame; at 5640, 3 pixels (x 180, y 222-224) differ by
+  1-4 luma levels, on distant geometry at the horizon of Omaha beach. A sub-pixel edge, not a missing draw.
+- Ruled out, each by a run of both images: the drafts (the original-layout drafts image matches the
+  control), heap addresses (main heap pinned at 0x80480000 in both), stale heap contents (heap zeroed
+  in mallocinit), particles (RenderSystem stubbed), DMA alignment (pure_align_check: nothing GPU-read),
+  stray writes into code (4 KB page hashes of .text unchanged in both), GQR0-7 (identical:
+  only GQR7 = 0x04070007), low-memory words (0x80000048 cleared, the 0x54-0x5c slots written),
+  CPU/GPU timing (control at 150% CPU clock: menu and loading frames shift, in-level frames don't).
+- The one strong clue: replacing GXLoadPosMtxImm by a probe (plain float stores, or the original's
+  paired-single stores) makes every in-level frame match: in both images, or in the pure image
+  only. The function's bytes are the original's apart from the branch offset to its helper
+  WriteMTXPS4x3 (same bytes too). Unexplained. Also seen: the control loads the view matrix into slot
+  0 once more per frame than the pure image (call ~299 of ~300), without a pixel difference.
+- Next, if picked up: log every position matrix in both images with the paired-single probe
+  (scratch recipe: a GXTransform.json probe replacing GXLoadPosMtxImm, frame marker at 0x80000054 from
+  the clock probe), find the draw behind the extra slot-0 load, and compare its vertex source.
+- link_drafts.py now applies R_PPC_UADDR32 (24), which probes with asm functions or file statics
+  carry in their debug info; it used to stop the control link.
