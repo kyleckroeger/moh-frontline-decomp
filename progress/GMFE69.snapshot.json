@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1292320,
+    "matching_code_bytes": 1292892,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.35766860930373,
+    "percent": 91.39810486846905,
     "categories": {
-      "reconstructed_game": 1055560,
+      "reconstructed_game": 1056132,
       "restored_library": 236760
     },
-    "matching_functions": 4926
+    "matching_functions": 4927
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -939,6 +939,7 @@
     "src/game/toilet.cpp": "6aae5ddeaa67375ecf6d7761a8ffb4c4a00d5829ecbf56db1ca846c1e7244d07",
     "src/game/toilet_files.cpp": "0ea51949a26fcf921e1ada6ed9e67a5f10886fe844ef97c9bd29950a7268318f",
     "src/game/toilet_hashmap.cpp": "72018d6bdef6dc6c9c8678545711107cd8c2ed9a1357d5a4237e62b90f42a4a0",
+    "src/game/toilet_repository.cpp": "c3661a6c0220eca6a4aa4b78960575ad144e826ea960ed624e404bc261e28cf5",
     "src/game/toilet_shutdown.cpp": "62e806b99d2d39e96ad4b3017125d3f86caaccebd15627fa663d56e15bac0856",
     "src/game/trig.cpp": "d1a822fa510ed8a71d640bd7ae13dd8648de829126e077e09d336089f0c3bf0b",
     "src/game/vector.cpp": "418a16a82127cea03fd102a27d28bf20ccd7f83caafb1ff1425f09bd38ed113d",
@@ -2172,7 +2173,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "6c8e435abd4a0a942e15683b23398deea22caffd8f51111fcc53e69df75d09d7",
-    "config/GMFE69/project.json": "27b07acc42e21692f546d80e25ad2d6da6e91731ff168568161e950a1c48a062",
+    "config/GMFE69/project.json": "cb6dadc7d60d99fccc86743ac9f6e98cea5bc8481caedb16f183f039d873af1f",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -2452,6 +2453,7 @@
     "config/GMFE69/toilet.json": "7195b6f700aab6e181f44fd266c5441c8bbea7ddca1118c917a9dd366ecbacf6",
     "config/GMFE69/toilet_files.json": "125e8b0156891f53bbd9b3af2e529a97a9e3755ba204de170c30bdbe32a09cee",
     "config/GMFE69/toilet_hashmap.json": "8172d069ca8e65f58722379996f7b851aac2409a27ca9de5d7b770cbb1f7e49e",
+    "config/GMFE69/toilet_repository.json": "e7c0ae2744455a0e394abbcdb5ccef683fc5279417c2a195d4615b640e557355",
     "config/GMFE69/toilet_shutdown.json": "b82e1b6fe46d233372efea33fd9c3c8cbafb5f3f0576dd0f9a2e02e348931978",
     "config/GMFE69/trig.json": "df9e8c7a54f81b723e11f0f91cac6120eee3791d17299f80ef6201f94d028c5f",
     "config/GMFE69/uart_console_io.json": "c12ad27f08ae82aef8dffc7980694bcb0a18c94f53658fab67915a668275a538",
@@ -43610,6 +43612,45 @@
       "discarded_functions": [],
       "object_sha256": "ac110dfd3eb6a8ffdbb28482900397b085ae9464070b15822886ba623f620cd9",
       "linked_sha256": "91bd74e30bb8788dffb3d6e1e3cfadca0c6417c78f23d3e4c74166a2af50a883"
+    },
+    {
+      "id": "toilet_repository",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 572,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "deferred,auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "429ce6a0f474de70be03a3003683261813aa8adbf4d5cdbb88b5749cf0d23b7b",
+      "linked_sha256": "9b52ed3a4f7e3113bb05eb9a5143c3217f12f6597e258c2f379bbdb5a580d67e"
     }
   ],
   "code_map": {
@@ -43632,13 +43673,6 @@
         "file_record": 11,
         "file_name": "toilet.cpp",
         "ranges": [
-          {
-            "address": "0x8001cca8",
-            "size": 572,
-            "kind": "function",
-            "name": "TLT_LoadFromRepository__FPCcPiPb",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x8001cee4",
             "size": 1060,

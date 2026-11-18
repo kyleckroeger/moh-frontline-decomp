@@ -88,3 +88,11 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   whose parameters are in the opposite order and pass value-returning inlines (an accessor
   `GetType()` instead of the plain field `m_type`): the last argument is computed first. Plain
   field arguments are forwarded to their uses and did nothing (21 forms before).
+- **A statement moved into a small entry inline recolours a shared inline it calls** (on2,
+  TLT_LoadFromRepository 13 -> 0). The shared DwiHashMap find (fixed body) coloured p/end/data
+  r7/r9/r8 in every caller spelling with a named iterator; 'static inline bool InRepository(char*
+  data) { iterator it = g_Repository.find(data); return it != g_Repository.end(); }' gives the
+  original's r9/r8/r7. Passing find's result as a value-returning ARGUMENT ('end() != find(data)')
+  also fixes the colours but makes the found iterator operator!='s argument, which swaps the two
+  subf operands: the original compares 'it != end'. Same lever family as the loop-body entry
+  inlines (BIFunc_GetInitialBuddyOrders, SetFinishedLevelData).

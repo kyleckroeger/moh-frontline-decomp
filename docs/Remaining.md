@@ -30,7 +30,7 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,292,320 / 1,414,572 code bytes (91.36%)**. Left: about 122.1 KB in 83 functions across 47 source files.
+Verified: **1,292,892 / 1,414,572 code bytes (91.40%)**. Left: about 121.5 KB in 82 functions across 47 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
@@ -41,15 +41,15 @@ Verified: **1,292,320 / 1,414,572 code bytes (91.36%)**. Left: about 122.1 KB in
 | 2 | Rendering | 14.4 KB | `particlesystem.cpp`, `compartment.cpp`, `scene.cpp`, `staticmesh.cpp`, `decal.cpp`, `font.cpp` |
 | 2 | Audio | 9.9 KB | `path.c`, `salloc.c`, `smixer.c`, `spktplay.c`, `sfrsf.c`, `coda.cpp` |
 | 2 | Shell and HUD | 9.5 KB | `ShellMenu.cpp`, `UserInterface.cpp`, `popup.cpp` |
-| 2 | System | 4.5 KB | `debug_prof.cpp`, `toilet.cpp`, `aramalloc.cpp` |
+| 2 | System | 3.9 KB | `debug_prof.cpp`, `toilet.cpp`, `aramalloc.cpp` |
 | 2 | Video | 0.6 KB | `swvideodisplaylist.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
 Priority 1 is 74.9 KB and would take the project to 96.7% at most.
 
-Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 79 consistent (114.4 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 78 consistent (113.8 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`).
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 88 of the 93 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly

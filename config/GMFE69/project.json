@@ -998,7 +998,8 @@
     "UserInterface_init.json",
     "buddy.json",
     "AIObject_updatetarget.json",
-    "stream_kill.json"
+    "stream_kill.json",
+    "toilet_repository.json"
   ],
   "progress": {
     "code_bytes": 1414572,

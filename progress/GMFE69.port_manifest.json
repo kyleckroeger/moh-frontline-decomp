@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 998,
- "function_bytes_by_status": {"consistent": 114380, "differs": 5764, "exact": 1936, "verified": 1283476},
+ "verified_units": 999,
+ "function_bytes_by_status": {"consistent": 113808, "differs": 5764, "exact": 1936, "verified": 1284048},
  "data_bytes_owned": 819153,
  "data_bytes_total": 1976252,
  "functions": [
@@ -192,7 +192,7 @@
  [2147601368, 8, "SysSetLastErrorFunc", "verified", "src/game/system.cpp"],
  [2147601376, 100, "SysShutdown", "verified", "src/game/system.cpp"],
  [2147601476, 100, "SysInit", "verified", "src/game/system.cpp"],
- [2147601576, 572, "TLT_LoadFromRepository__FPCcPiPb", "consistent", "research/drafts/TLT_LoadFromRepository.8001cca8.cpp"],
+ [2147601576, 572, "TLT_LoadFromRepository__FPCcPiPb", "verified", "src/game/toilet_repository.cpp"],
  [2147602148, 1060, "TLT_LoadLevelContentsFile__Fii", "consistent", "research/drafts/TLT_LoadLevelContentsFile.8001cee4.cpp"],
  [2147603208, 140, "TLT_LoadFileNormal__FPCcPii", "verified", "src/game/toilet_files.cpp"],
  [2147603348, 272, "TLT_InitResourceType__FPFP24LevelFileContentsStruct__v13TLTResourceID", "verified", "src/game/toilet_files.cpp"],

@@ -1,0 +1,115 @@
+{
+  "id": "toilet_repository",
+  "source": "src/game/toilet_repository.cpp",
+  "category": "reconstructed_game",
+  "compiler_family": "GC",
+  "compiler_version": "1.3.2",
+  "compiler_flags": [
+    "-nodefaults",
+    "-proc",
+    "gekko",
+    "-align",
+    "powerpc",
+    "-enum",
+    "int",
+    "-fp",
+    "hardware",
+    "-Cpp_exceptions",
+    "on",
+    "-O4,p",
+    "-inline",
+    "deferred,auto",
+    "-pragma",
+    "cats off",
+    "-nosyspath",
+    "-RTTI",
+    "off",
+    "-str",
+    "reuse,readonly",
+    "-use_lmw_stmw",
+    "on",
+    "-fp_contract",
+    "on"
+  ],
+  "include_dirs": [
+    "include/dolphin-sdk/libc",
+    "include"
+  ],
+  "strip_unused": false,
+  "source_root": "src/game",
+  "sections": [
+    {
+      "name": ".text",
+      "address": "0x8001cca8",
+      "size": 572,
+      "type": 1
+    },
+    {
+      "name": "extab",
+      "address": "0x8000985c",
+      "size": 8,
+      "type": 1
+    },
+    {
+      "name": "extabindex",
+      "address": "0x80010280",
+      "size": 12,
+      "type": 1
+    }
+  ],
+  "functions": [
+    {
+      "name": "TLT_LoadFromRepository__FPCcPiPb",
+      "address": "0x8001cca8",
+      "size": 572,
+      "binding": 1
+    }
+  ],
+  "externals": {
+    "BIG_locate": "0x8014a9a8",
+    "BIG_locateentryz": "0x8014a510",
+    "DebugMsg__FPCce": "0x80018c88",
+    "FILE_loadz": "0x8014dfc0",
+    "FILE_sizez": "0x8014dea8",
+    "g_Repository": "0x80197464",
+    "g_pLevelBigFile": "0x8034e750",
+    "sprintf": "0x8013dab4",
+    "strchr": "0x8013fe64"
+  },
+  "undefined_in_discarded_code": [],
+  "discarded_functions": [],
+  "upstream": {},
+  "local_externals": [
+    "g_Repository"
+  ],
+  "discarded_local_functions": [],
+  "sda_externals": [
+    "g_pLevelBigFile"
+  ],
+  "original_file": "toilet.cpp",
+  "original_file_index": 367,
+  "pooled_sections": [
+    ".rodata",
+    ".sdata2"
+  ],
+  "pool_references": [
+    {
+      "section": ".rodata",
+      "offset": 108,
+      "size": 108,
+      "address": "0x8016e638"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 0,
+      "size": 1,
+      "address": "0x8034f610"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 4,
+      "size": 3,
+      "address": "0x8034f614"
+    }
+  ]
+}
