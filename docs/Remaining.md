@@ -30,11 +30,11 @@ declaration per class. It sets the overall order; these priorities apply within 
 ## What is left
 
 <!-- sync_docs:status -->
-Verified: **1,286,572 / 1,414,572 code bytes (90.95%)**. Left: about 127.8 KB in 90 functions across 50 source files.
+Verified: **1,287,836 / 1,414,572 code bytes (91.04%)**. Left: about 126.6 KB in 89 functions across 50 source files.
 
 | Priority | Area | Left | Main files |
 | ---: | --- | ---: | --- |
-| 1 | Scripting and level objects | 35.9 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `buddy.cpp`, `bsfile.cpp`, `explosion.cpp` |
+| 1 | Scripting and level objects | 34.6 KB | `bsbifunc.cpp`, `objcreate.cpp`, `staticobjfactory.cpp`, `bsfile.cpp`, `buddy.cpp`, `explosion.cpp` |
 | 1 | Animation | 15.3 KB | `anim_callback.cpp`, `animst.cpp`, `skelblend.cpp`, `animtran.cpp`, `dmcluster.cpp`, `dmesh.cpp` |
 | 1 | AI | 15.0 KB | `Soldier_object.cpp`, `AISplinePath.cpp`, `AIFilter.cpp`, `CoverPoint.cpp`, `PathNodeList.cpp` |
 | 1 | Collision | 13.2 KB | `box.cpp`, `cdbgeom.cpp`, `cdbobject.cpp`, `capsule.cpp`, `matrix.cpp`, `quaternion.cpp` |
@@ -45,9 +45,9 @@ Verified: **1,286,572 / 1,414,572 code bytes (90.95%)**. Left: about 127.8 KB in
 | 2 | Video | 0.6 KB | `swvideodisplaylist.cpp` |
 | 3 | Multiplayer (by name) | 8.4 KB | `BIFunc_UpdateFragCount`, `DrawFragCount`, `InitMultiplayer`, `BIFunc_MPAddPlayerHealth` |
 
-Priority 1 is 79.4 KB and would take the project to 96.6% at most.
+Priority 1 is 78.1 KB and would take the project to 96.6% at most.
 
-Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 86 consistent (120.1 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
+Partial-source sweep: 2 code-exact, not yet linked (1.9 KB), 85 consistent (118.9 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
 Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 89 of the 94 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
@@ -137,8 +137,8 @@ Known risks:
 ## Known blockers in priority 1
 
 - **`buddy.cpp`:** `DestroyBuddyDataStructures` and `__sinit_buddy_cpp` have landed
-  (`config/GMFE69/buddy.json`). Left (2026-11-17): `AddBuddy`, `BIFunc_AddBuddy` and
-  `BIFunc_GetInitialBuddyOrders` (the `BuddyInfo` partial-scalar knot), and
+  (`config/GMFE69/buddy.json`), and `BIFunc_GetInitialBuddyOrders` is in buddy_head (2026-11-17).
+  Left: `AddBuddy` and `BIFunc_AddBuddy` (the `BuddyInfo` partial-scalar knot), and
   `BIFunc_CreateBuddyDataStructures`, which lands with an earlier `.bss` user such as
   `AddBuddy` (`research/plans/matching.md`, `research/notes/buddy.md`).
 - **`bsbifunc.cpp` built-ins:** many reach the file's shared `.bss` block, so they

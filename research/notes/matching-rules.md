@@ -29,3 +29,16 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   weak copy (VIDEO_DRIVER's destructor) sits between the previous function and the caller, define
   the constructor out of line just before the caller: it emits there, pulls the weak copy after
   it, and `strip_unused` drops it (accepted gap function; hwvideodisplaylist.cpp).
+- **Register priority comes from Chaitin sweep levels, not only declaration order** (regA,
+  BIFunc_GetInitialBuddyOrders). CW's allocator (described in the mwcc-debugger README,
+  github.com/cadmic/mwcc-debugger): phase 1 sweeps the variables repeatedly and removes any with
+  at most 28 remaining neighbours (r0/r3-r12 count as neighbours for values live across calls;
+  coalesced copies stay in the graph as neighbours); a variable removed in a later sweep gets a
+  higher priority than every variable of an earlier sweep. Phase 2 assigns by priority: the lowest
+  numbered callee register already in use that no assigned neighbour holds, else a new one below
+  (calibrated: `int a = g(); int b = g(); h(); k(a, b); int c = g(); ...` gives a r31, b r30, c r30).
+  Declaration order therefore ranks locals only inside one sweep; a busy caller can push some of an
+  inline's locals into a later sweep and invert their rank. Lever: put the loop body in an inline
+  with parameters (the entry and slot) and declare the locals inside it; GI's ready-list dump went
+  from the soldier ranked above the node (any of 900+ declaration orders, a 23k-iteration permuter)
+  to the original order. Re-sweep the float declaration orders of the other inline blocks after it.

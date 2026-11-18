@@ -12,7 +12,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 11	register	register	576	5	0	open	_find_aim_blend_values__FffPf	research/drafts/_find_aim_blend_values.8005e494.cpp	
 12	register	register	804	6	0	open	quick_sort_<PQ26CScene9UNodePair,PFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_b,Q26CScene9UNodePair>__3dwiFPQ26CScene9UNodePairPQ26CScene9UNodePairPFRCQ26CScene9UNodePairRCQ26CScene9UNodePair_bRQ26CScene9UNodePair	research/drafts/quick_sort__PQ26CScene9UNodePair_PFRCQ26CScene9UNodePairRCQ2.800d8ef0.cpp	
 13	register	register	912	6	0	open	AddBuddy__F9BuddyInfob	research/drafts/AddBuddy.80057eac.cpp	
-14	register	register	1264	7	0	open	BIFunc_GetInitialBuddyOrders__FPPiPv	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	
+14	register	register	1264	0	0	landed	BIFunc_GetInitialBuddyOrders__FPPiPv	research/drafts/BIFunc_GetInitialBuddyOrders.80057640.cpp	appended to buddy_head; ready-list dump body in an inline DumpReadyEntry(BuddyInfo&, int) (index declared before soldier) + GI copy of GiveBuddyOrders declaring x,y,z
 15	register	register	2128	9	0	open	UpdateProximityTriggerStatus__Fv	research/drafts/UpdateProximityTriggerStatus.80046378.cpp	
 16	register	register	1156	10	0	open	AnimStStartState	research/drafts/AnimStStartState.800676d8.cpp	
 17	register	register	392	11	0	open	SetFinishedLevelData__13CPlayerObjectFv	research/drafts/SetFinishedLevelData.8009d470.cpp	

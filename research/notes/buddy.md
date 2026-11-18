@@ -63,3 +63,11 @@ compile; big.py builds one file per shared config with ~430 context aliases). Sc
 - AddBuddy, landed world: UsingBuddy block in an inline helper + GBO one level deeper + argument
   'g_attached_buddies.m_data + i' leaves ONLY the GBO 'buddy' pointer register (ours r25, orig r29; 26 lines).
   Slot locals, hoisting, vector/int/ref wrappers: no gain. Next lever to try there: what colours that pointer first.
+
+## 2026-11-17 (match regA) GetInitialBuddyOrders landed in buddy_head
+- DumpReady node/soldier knot: GI-only DumpReadyGI whose loop body is DumpReadyEntry(BuddyInfo& info, int i)
+  (decls z,y,x, index, object, soldier = info.soldier, state) + GiveBuddyOrdersGI declaring x,y,z. Probes and the
+  register-priority model: scratch/loop4/regA/notes.md, research/notes/matching-rules.md.
+- BIFunc_AddBuddy (13): the same entry form fixes its node/soldier (r29/r26) but shifts i/index and the attached
+  dump; the top-level info.soldier/progress r26/r27 (orig r27/r28) shift comes from the attached-list dump alone
+  (without DumpAttached they are right).

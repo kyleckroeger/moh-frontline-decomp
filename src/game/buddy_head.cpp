@@ -461,3 +461,123 @@ void BIFunc_BuddyDied(int** stack, void*) {
     }
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }
+
+/* inferred inline, a third copy of GiveBuddyOrders (accepted form: inline copies of a block when the
+   original's copies compile differently): in BIFunc_GetInitialBuddyOrders the position floats are
+   declared x, y, z (the loop copies above declare z, y, x). */
+inline void GiveBuddyOrdersGI(BuddyInfo* const buddy) {
+    DebugMsg("BUDDY_DEBUG: Attempting GiveBuddyOrders\n");
+    if (buddy->progress < g_player_checkpoint) {
+        if (!buddy->state.moving) {
+            int path = buddy->progress + 1;
+            BSObjectTriggerEvent(buddy->soldier->GetScriptObject(), 211, (void*)(buddy->state.path + path), g_pBSObject, false);
+            buddy->state.moving = 1;
+            BSObject* object = buddy->soldier->GetScriptObject();
+            float x = 0.0f;
+            float y;
+            float z;
+            y = x;
+            z = x;
+            int index = 0;
+            if (object->m_node) {
+                BSPlacementView* placement = object->m_node->placement;
+                if (placement) {
+                    x = placement->x;
+                    y = placement->y;
+                    z = placement->z;
+                }
+                if (placement)
+                    index = placement->pathIndex;
+            }
+            object->m_class->GetState();
+            DebugMsg("BUDDY_DEBUG: GiveBuddyOrders advancing buddy %x[%3d @(%4d,%4d,%4d)] (current=%d player=%d) using path %d\n",
+                     buddy->soldier, index, (int)x, (int)y, (int)z, buddy->progress, g_player_checkpoint,
+                     buddy->state.path + path);
+        } else {
+            DebugMsg("BUDDY_DEBUG: Already moving GiveBuddyOrders\n");
+        }
+    } else {
+        DebugMsg("BUDDY_DEBUG: Stopping buddy\n");
+        buddy->state.moving = 0;
+    }
+}
+inline void GiveBuddyOrdersGI(dwi::vec_iter<BuddyInfo>& it) {
+    GiveBuddyOrdersGI(it.operator->());
+}
+/* inferred inline: one ready-list line. BIFunc_GetInitialBuddyOrders' ready-list dump has the loop body in
+   an inline taking the entry and slot (index declared before soldier); with the body written in the
+   loop (DumpReadyBuddies above) CW ranks the soldier above the node, the original the node above the
+   soldier. Same instructions either way; only the register allocator's priority order changes. */
+inline void DumpReadyEntry(BuddyInfo& info, int i) {
+    float z;
+    float y;
+    float x;
+    int index;
+    BSObject* object;
+    CBuddySoldier* soldier = info.soldier;
+    BSStateView* state;
+    object = soldier->GetScriptObject();
+    x = 0.0f;
+    y = x;
+    z = x;
+    index = 0;
+    if (object->m_node) {
+        BSPlacementView* placement = object->m_node->placement;
+        if (placement) {
+            x = placement->x;
+            y = placement->y;
+            z = placement->z;
+        }
+        if (placement)
+            index = placement->pathIndex;
+    }
+    state = object->m_class->GetState();
+    DebugMsg("BUDDY_DEBUG:   Ready=%x[%3d @(%4d,%4d,%4d) %4d] In Slot %d\n", soldier, index, (int)x, (int)y, (int)z,
+             state->state, i);
+}
+/* inferred inline: the ready-list dump of BIFunc_GetInitialBuddyOrders (see DumpReadyEntry) */
+inline void DumpReadyGI() {
+    dwi::list_iter<BuddyInfo> node(0);
+    int i;
+    DebugMsg("BUDDY_DEBUG: Dumping ready list...\n");
+    i = 0;
+    for (node = g_ready_buddies.begin(); node != g_ready_buddies.end(); ++node) {
+        DumpReadyEntry(*node, i);
+        i++;
+    }
+}
+
+void BIFunc_GetInitialBuddyOrders(int** stack, void* caller) {
+    CBuddySoldier* soldier = ((BSOwnerView*)caller)->GetSoldier();
+    dwi::vec_iter<BuddyInfo> it;
+    for (it = g_attached_buddies.begin(); it != g_attached_buddies.end(); ++it) {
+        if (it->soldier == soldier) {
+            BSObject* object = soldier->GetScriptObject();
+            float z;
+            float y;
+            float x = 0.0f;
+            y = x;
+            z = x;
+            int index = 0;
+            if (object->m_node) {
+                BSPlacementView* placement = object->m_node->placement;
+                if (placement) {
+                    x = placement->x;
+                    y = placement->y;
+                    z = placement->z;
+                }
+                if (placement)
+                    index = placement->pathIndex;
+            }
+            BSStateView* state = object->m_class->GetState();
+            DebugMsg("BUDDY_DEBUG: GetInitialBuddyOrders=%x[%3d @(%4d,%4d,%4d) %4d]\n", soldier, index, (int)x, (int)y,
+                     (int)z, state->state);
+            GiveBuddyOrdersGI(it);
+            break;
+        }
+    }
+    DumpAttachedBuddies();
+    DumpReadyGI();
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
+

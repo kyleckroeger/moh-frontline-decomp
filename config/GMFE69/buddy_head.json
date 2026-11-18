@@ -41,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x80056728",
-      "size": 3864,
+      "size": 5128,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x8000ac2c",
-      "size": 88,
+      "size": 112,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x80011dc8",
-      "size": 60,
+      "size": 72,
       "type": 1
     }
   ],
@@ -98,6 +98,12 @@
       "name": "BIFunc_BuddyDied__FPPiPv",
       "address": "0x80057164",
       "size": 1244,
+      "binding": 1
+    },
+    {
+      "name": "BIFunc_GetInitialBuddyOrders__FPPiPv",
+      "address": "0x80057640",
+      "size": 1264,
       "binding": 1
     }
   ],
