@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 997,
- "function_bytes_by_status": {"consistent": 109784, "differs": 5764, "exact": 1936, "verified": 1288072},
+ "function_bytes_by_status": {"consistent": 109384, "differs": 5764, "exact": 1936, "verified": 1288472},
  "data_bytes_owned": 820292,
  "data_bytes_total": 1976252,
  "functions": [
@@ -4944,7 +4944,7 @@
  [2148959936, 344, "MIXI_reverbblock", "verified", "src/ea/sfxrev.c"],
  [2148960280, 8, "CODASetNew__3SNDFPFUl_Pv", "verified", "src/ea/coda.cpp"],
  [2148960288, 8, "CODASetDelete__3SNDFPFPv_v", "verified", "src/ea/coda.cpp"],
- [2148960296, 400, "decodexac__3SNDFPQ23SND10MXAPACKETF", "consistent", "research/drafts/decodexac.80168828.cpp"],
+ [2148960296, 400, "decodexac__3SNDFPQ23SND10MXAPACKETF", "verified", "src/ea/eaxadecf.cpp"],
  [2148960696, 40, "__nw__Q23SND12CEAXABLKDecfFUl", "verified", "src/ea/eaxadecf.cpp"],
  [2148960736, 40, "__dl__Q23SND12CEAXABLKDecfFPv", "verified", "src/ea/eaxadecf.cpp"],
  [2148960776, 32, "__ct__Q23SND12CEAXABLKDecfFv", "verified", "src/ea/eaxadecf.cpp"],

@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1296916,
+    "matching_code_bytes": 1297316,
     "total_executable_code_bytes": 1414572,
-    "percent": 91.68257253784184,
+    "percent": 91.71084964215325,
     "categories": {
-      "reconstructed_game": 1060156,
+      "reconstructed_game": 1060556,
       "restored_library": 236760
     },
-    "matching_functions": 4929
+    "matching_functions": 4930
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -134,7 +134,7 @@
     "src/ea/coda.cpp": "74b5cc425b4854acc7492acc32278c5de4dd9d9f0508a4905040ab1d94425884",
     "src/ea/cpudetect.cpp": "82ad74ceba8d5dcd8eda8284a31e54ca3a660ce35f0909967bfb80204e8081e7",
     "src/ea/debugger.cpp": "b0711b163c768b8390ea6365a85df7956af716b54562db26832d845fcf84421b",
-    "src/ea/eaxadecf.cpp": "de46e2d632bb73980146d5366bed6cbaa4192a2f8e3d3da9248360fe83448b1f",
+    "src/ea/eaxadecf.cpp": "bcc8bd5cc95168fac2375e49aa9f08842cab2b1d721236bd23ef4dd6f0494c23",
     "src/ea/exit.cpp": "74497f5488a200cd082a1769249e659f5cd17b94ee5c7e6b2b4f3b240c9f1923",
     "src/ea/filedev.cpp": "f8d3b5306c4c15974cf4613a6b64eda4cca872755fbbea877e59db98d793677f",
     "src/ea/filesys.cpp": "4125b9bfc3574db17c051ff47fc243851934afffa75d1f1e2d2fb227c54d4ac1",
@@ -1961,7 +1961,7 @@
     "config/GMFE69/e_fmod.json": "7056afd90d65651c8d1c0c35cf144127d16df527dcd0fa643641609aaa37097a",
     "config/GMFE69/e_pow.json": "e6c83f5e3be5e99bc505061239912ce9f8fa394c9f37a38034ece7786dea460d",
     "config/GMFE69/e_rem_pio2.json": "9a217bc41cbc7dbd160fd9b8170c55fb494d44d9f79f1a2cc3cecf82078e7391",
-    "config/GMFE69/eaxadecf.json": "0fe1d90f552c22c66a3bffec13e53e1f805cf4a3130fcd8144a830609ca20701",
+    "config/GMFE69/eaxadecf.json": "92bb89be08b4b7f762de7be43158b8a69a6356f186cfb65b9cbbf4ee2f1ad1cb",
     "config/GMFE69/exit.json": "3b07cadf08ece16c20653f652a53f18b61ca67f91a03125fec625b819e229da3",
     "config/GMFE69/explosion_dtor.json": "98b23b9bf5b26fd9bd989942580571c26d2fdf351acc77074495ecf6061ec251",
     "config/GMFE69/extab_patches.json": "8e2351e52c15126473cd6f99a53f05f1b270eb160c579b5fc0ffff2532c3f639",
@@ -17020,8 +17020,8 @@
     {
       "id": "eaxadecf",
       "category": "reconstructed_game",
-      "functions": 7,
-      "code_bytes": 1312,
+      "functions": 8,
+      "code_bytes": 1712,
       "compiler_family": "GC",
       "compiler_version": "1.3.2",
       "compiler_flags": [
@@ -17053,8 +17053,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "3d77852452fd7315b4ae2711d3426cc8eab3115af626dd2a21182a231607073c",
-      "linked_sha256": "e8dbbae5bb6bfb0f5d444b1571c714c7312a1f5cdb88500361abfeb5b0a5cf3c"
+      "object_sha256": "2be38ba3dd106a7d330b93b49de7d83e7b7d91d7cd27e527cab4821c0b117765",
+      "linked_sha256": "201ac66bdf7c97d4ac6e868a331932119e6cb14bd8ec9922218b9b0071924af7"
     },
     {
       "id": "configfile",
@@ -44476,20 +44476,6 @@
             "kind": "function",
             "name": "SFILTER_rsf__FPviPvPvi",
             "evidence": "between-same-file"
-          }
-        ]
-      },
-      {
-        "name": "Unmatched files/coda.cpp [inferred file group]",
-        "file_record": 550,
-        "file_name": "coda.cpp",
-        "ranges": [
-          {
-            "address": "0x80168828",
-            "size": 400,
-            "kind": "function",
-            "name": "decodexac__3SNDFPQ23SND10MXAPACKETF",
-            "evidence": "same-class (inferred)"
           }
         ]
       },

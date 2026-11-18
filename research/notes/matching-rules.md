@@ -115,3 +115,13 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   r0 whenever a call result is copied into a local and a member. Same row: an `(unsigned int)`
   cast on part of an array index, `(unsigned int)(i * 6) + 5`, gave that offset its own induction
   variable created first (the preheader's first `li`); other cast placements kept or broke it.
+- **Fold an index into its address, name a reloaded pointer** (on4, SND::decodexac 28 -> 0). Two
+  opposite uses of the folded-local lever in one loop. A `float* table = &tab[k * 16]` local ranked
+  as a user variable and took the wrong register; an `int ix = k * 16` index used as
+  `(&tab[ix])[b >> 4]` is folded by CW into the address temporary (varmap shows `ix` in r0), which
+  takes the original's register. The other way round, the per-statement reload of `packet->out`
+  coloured before the loop's byte load as a temporary; `float* out = packet->out; out[0] = ..;
+  out = packet->out; out[1] = ..;` (same loads) makes it a user variable and swaps the two
+  volatile registers to the original's. Also: `*p->in++` used inside an expression increments
+  before the load; the original's `lbz` then `addi rX,rX,1` (same register) is the increment as
+  its own statement after the reads.

@@ -40,7 +40,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 39	order	order	1472	13	2	open	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	research/drafts/TestCollision.800c3210.cpp	
 40	order	order	408	20	2	open	SNDMIXI_volramp__FP11SNDMIXVOICE	research/drafts/SNDMIXI_volramp.80160114.c	
 41	order	order	164	27	2	open	Multiply__11CQuaternionF11CQuaternion	research/drafts/Multiply.8009174c.cpp	
-42	order	order	400	28	7	open	decodexac__3SNDFPQ23SND10MXAPACKETF	research/drafts/decodexac.80168828.cpp	
+42	order	order	400	28	7	landed	decodexac__3SNDFPQ23SND10MXAPACKETF	research/drafts/decodexac.80168828.cpp	on4: merged into eaxadecf; table index as a folded int 'ix' ((&xatablef[ix])[b>>4]), split 'packet->in++' after the reads, per-statement 'float* out = packet->out' copies; dont_inline on Decode
 43	order	order	280	37	11	open	GetExtents__7CVolBoxCFR8CVector3R8CVector3	research/drafts/GetExtents.800c13b4.cpp	
 44	order	order	620	45	24	open	YUV_WriteRow__FPUcPUcPUcPci	research/drafts/YUV_WriteRow.801083dc.cpp	
 45	order	order	2308	102	19	open	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	research/drafts/TestCollision.800c290c.cpp	

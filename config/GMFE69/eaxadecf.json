@@ -37,8 +37,8 @@
   "sections": [
     {
       "name": ".text",
-      "address": "0x801689b8",
-      "size": 1312,
+      "address": "0x80168828",
+      "size": 1712,
       "type": 1
     },
     {
@@ -49,6 +49,12 @@
     }
   ],
   "functions": [
+    {
+      "name": "decodexac__3SNDFPQ23SND10MXAPACKETF",
+      "address": "0x80168828",
+      "size": 400,
+      "binding": 1
+    },
     {
       "name": "__nw__Q23SND12CEAXABLKDecfFUl",
       "address": "0x801689b8",
@@ -95,7 +101,8 @@
   "externals": {
     "CODADelete__3SND": "0x8034f4ec",
     "CODANew__3SND": "0x8034f4e8",
-    "decodexac__3SNDFPQ23SND10MXAPACKETF": "0x80168828"
+    "xafilterf__3SND": "0x801943f8",
+    "xatablef__3SND": "0x80194418"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],

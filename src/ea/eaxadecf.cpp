@@ -1,15 +1,60 @@
-// SND::CEAXABLKDecf, the EA-XA block decoder to float samples: allocation
+// decodexac and SND::CEAXABLKDecf, the EA-XA block decoder to float samples.
+// decodexac decodes a request's 15-byte blocks (a filter/shift byte and 14
+// bytes of two 4-bit codes) into float samples through the filter
+// coefficients (xafilterf) and the per-shift sample table (xatablef), keeping
+// the last two samples in the request. CEAXABLKDecf: allocation
 // through the CODA hooks, construction, feeding a block of input and decoding,
 // and the decoder state accessors (GetState returns the two previous samples
-// by value, SetState restores them). CEAXABLKDecf and XAFSTATE are named by
-// the mangled symbols; the members are inferred from offsets and are not
-// original.
+// by value, SetState restores them). CEAXABLKDecf, XAFSTATE, MXAPACKETF and
+// decodexac are named by the mangled symbols; the members are inferred from
+// offsets and are not original.
 namespace SND {
 extern void* (*CODANew)(unsigned long);
 extern void (*CODADelete)(void*);
 
-struct MXAPACKETF;
-void decodexac(MXAPACKETF*);
+/* inferred: a decode request */
+struct MXAPACKETF {
+    int count;
+    float previous;
+    float previous2;
+    unsigned char* in;
+    float* out;
+};
+
+extern float xafilterf[];
+extern float xatablef[];
+
+void decodexac(MXAPACKETF* packet) {
+    unsigned char* start = packet->in;
+    packet->out[-2] = packet->previous2;
+    packet->out[-1] = packet->previous;
+    while (packet->count > 0) {
+        float* filter;
+        int ix;
+        float c0;
+        float c1;
+        int i;
+
+        filter = &xafilterf[*packet->in >> 4];
+        packet->count -= 28;
+        c0 = filter[0];
+        ix = (*packet->in & 0xF) * 16;
+        c1 = filter[4];
+        packet->in++;
+        for (i = 0; i < 14; i++) {
+            unsigned char b = packet->in[i];
+            float* out = packet->out;
+            out[0] = out[-2] * c1 + (out[-1] * c0 + (&xatablef[ix])[b >> 4]);
+            out = packet->out;
+            out[1] = out[-1] * c1 + (out[0] * c0 + (&xatablef[ix])[b & 0xF]);
+            packet->out += 2;
+        }
+        packet->in += 14;
+    }
+    packet->previous2 = packet->out[-2];
+    packet->previous = packet->out[-1];
+    packet->in = start;
+}
 
 struct XAFSTATE {
     float previous0;
@@ -39,8 +84,7 @@ public:
     float* m_out;
 };
 
-// decodexac comes first in the original file and is not reconstructed; GetState
-// and SetState follow Decode in their own unit.
+// GetState and SetState follow Decode in their own unit.
 
 void* CEAXABLKDecf::operator new(unsigned long size) {
     return CODANew(size);
@@ -69,6 +113,8 @@ int CEAXABLKDecf::Feed(void* data, int bytes, int frames) {
     return 0;
 }
 
+// The original calls decodexac here; the pragma keeps it out of line.
+#pragma dont_inline on
 int CEAXABLKDecf::Decode(float** out, int count) {
     int const wanted = count;
     int done = 0;
@@ -120,6 +166,8 @@ int CEAXABLKDecf::Decode(float** out, int count) {
         field4 = 0;
     return done;
 }
+
+#pragma dont_inline reset
 
 XAFSTATE CEAXABLKDecf::GetState() {
     XAFSTATE state;
