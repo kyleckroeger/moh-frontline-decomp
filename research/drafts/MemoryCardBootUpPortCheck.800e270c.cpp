@@ -1,3 +1,9 @@
+// Research draft for CShellMenu::MemoryCardBootUpPortCheck (0x800e270c), part of ShellMenu.cpp.
+// Includes the file's constant-block header so the strings sit at the original block offsets
+// (Formatting @792 before erase @832). CFont is 40 bytes (CRenderBin + m_data + m_texture).
+// ShowFormatting and ShowFormatFailed are single-use inline helpers: inline-expanded locals are laid
+// out below the user locals, the later inline lowest, which gives the original's stack slots.
+#include "../src/game/ShellMenu_block.h"
 void* TLT_LoadFileNormal(const char*, int*, int);
 enum ERenderPriority {};
 #include "game/CColor.h"
@@ -8,7 +14,7 @@ public:
     ~CFont();
     void DrawTextCentered(float, const char*);
     void SetColor(CColor);
-    unsigned char unknown00[36];
+    unsigned char unknown00[40];
 };
 class CScreenScale {
 public:
@@ -60,6 +66,7 @@ class CShellMenu {
 public:
     bool MemoryCardBootUpPortCheck(int);
     inline void ShowFormatting(CFont&, int);
+    inline void ShowFormatFailed(CFont&, char);
     bool IsSlotOpen(int slot) {
         if (slot != m_card->GetPort() && !m_card->OpenSlot(slot))
             return false;
@@ -101,6 +108,27 @@ inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
     } while (i != 60);
 }
 
+inline void CShellMenu::ShowFormatFailed(CFont& font, char letter) {
+    char failed[80];
+    float failY = g_screen.m_scaleY;
+    failY *= 50.0f;
+    do {
+        font.DrawTextCentered(failY, m_messages.GetText(835));
+        float next = failY;
+        next += 22.0f;
+        sprintf(failed, m_messages.GetText(836), (int)letter);
+        font.DrawTextCentered(next, failed);
+        next += 44.0f;
+        font.DrawTextCentered(next, m_messages.GetText(832));
+        next += 22.0f;
+        font.DrawTextCentered(next, m_messages.GetText(833));
+        WaitRenderList();
+        WaitScreen();
+        SendRenderList();
+        g_inputMgr.Update(1.0f);
+    } while (!g_inputMgr.GetValueAnyPlayer(128));
+}
+
 bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     int step;
     bool done;
@@ -108,6 +136,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     int mode;
     int line;
     const char* erase;
+    const char* fmt;
     bool result;
     int a0;
     int blocks;
@@ -128,11 +157,11 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     do {
         float top = 50.0f * scale;
         char text[260];
-        char blockText[256];
         char fileText[256];
+        char blockText[256];
+        char format3[80];
         char format1[80];
         char format2[80];
-        char format3[80];
         bool ok = MemoryCardSlotOkForStartup(m_card, slot, m_card->GetSaveGameOverheadSize(false), m_card->GetSaveGameOverheadSize(false), &a0, &f1, &blocks, &f2, &f3, &f4, &formatted, &status, &f5, &f6);
         if (formatted)
             break;
@@ -180,9 +209,10 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                     sprintf(text, m_messages.GetText(809), (int)letter);
                     font.DrawTextCentered(y, text);
                     y += 22.0f;
+                    fmt = "Formatting the Memory Card in Slot %c";
                     erase = "will erase all previously saved data.";
                     y += 22.0f;
-                    sprintf(format3, "Formatting the Memory Card in Slot %c", (int)letter);
+                    sprintf(format3, fmt, (int)letter);
                     font.DrawTextCentered(y, format3);
                     y += 22.0f;
                     font.DrawTextCentered(y, erase);
@@ -221,9 +251,10 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 sprintf(text, m_messages.GetText(826), (int)letter);
                 font.DrawTextCentered(y, text);
                 y += 22.0f;
+                fmt = "Formatting the Memory Card in Slot %c";
                 erase = "will erase all previously saved data.";
                 y += 22.0f;
-                sprintf(format1, "Formatting the Memory Card in Slot %c", (int)letter);
+                sprintf(format1, fmt, (int)letter);
                 font.DrawTextCentered(y, format1);
                 y += 22.0f;
                 font.DrawTextCentered(y, erase);
@@ -244,11 +275,12 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 sprintf(text, m_messages.GetText(796), (int)letter);
                 font.DrawTextCentered(y, text);
                 y += 22.0f;
+                fmt = "Formatting the Memory Card in Slot %c";
                 erase = "will erase all previously saved data.";
                 y += 22.0f;
                 // The original passes the slot check's result here, not the slot letter
                 // (extsb of the kept MemoryCardSlotOkForStartup result): an original bug.
-                sprintf(format2, "Formatting the Memory Card in Slot %c", (char)ok);
+                sprintf(format2, fmt, (char)ok);
                 font.DrawTextCentered(y, format2);
                 y += 22.0f;
                 font.DrawTextCentered(y, erase);
@@ -349,25 +381,8 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
             } else if (mode == 2 && g_inputMgr.GetValueAnyPlayer(127)) {
                 ShowFormatting(font, slot);
                 if (!FormatCard(slot)) {
-                    char failed[80];
                     sprintf(text, m_messages.GetText(836), (int)letter);
-                    float failY = g_screen.m_scaleY;
-                    failY *= 50.0f;
-                    do {
-                        font.DrawTextCentered(failY, m_messages.GetText(835));
-                        float next = failY;
-                        next += 22.0f;
-                        sprintf(failed, m_messages.GetText(836), (int)letter);
-                        font.DrawTextCentered(next, failed);
-                        next += 44.0f;
-                        font.DrawTextCentered(next, m_messages.GetText(832));
-                        next += 22.0f;
-                        font.DrawTextCentered(next, m_messages.GetText(833));
-                        WaitRenderList();
-                        WaitScreen();
-                        SendRenderList();
-                        g_inputMgr.Update(1.0f);
-                    } while (!g_inputMgr.GetValueAnyPlayer(128));
+                    ShowFormatFailed(font, letter);
                     done = true;
                 }
             }

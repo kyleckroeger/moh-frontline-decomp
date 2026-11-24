@@ -60,7 +60,7 @@ consistent	0.905	1.000	222	1260	DMMorphBlendDisplayLists__FP16DMRenderObject_T	T
 consistent	0.983	1.000	266	2092	FindIntersection__FRC6CLine3RC11CVolCapsulePf	True	0	0	research/drafts/FindIntersection.800c5cb4.cpp	m1_opening@5a23a05b
 consistent	1.000	1.000	449	3856	TestCollision__10CCDBVolBoxCFRC9CTriangleR10CCollisionb	True	0	0	research/drafts/TestCollision.8006e0b0.cpp	route_boxtri_1_2@10a7aace
 consistent	0.998	1.000	414	3768	BSFileReadClass__FPCcbbPP14BSClass_struct	True	0	0	research/drafts/BSFileReadClass.80035aa8.cpp	m1_opening@c506c5c1
-consistent	0.998	1.000	269	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	
+consistent	0.999	1.000	197	5024	MemoryCardBootUpPortCheck__10CShellMenuFi	True	0	0	research/drafts/MemoryCardBootUpPortCheck.800e270c.cpp	
 consistent	0.995	1.000	58	1704	DrawNode__12CCompartmentFR7CPTNodeUlRQ23dwi18fast_vec<P6CLight>	True	0	0	research/drafts/DrawNode.80075024.cpp	m1_opening@4f327e94
 consistent	1.000	1.000	21	376	Rotate__7CMatrixF8CVector3f	True	0	0	research/drafts/Rotate.800904e8.cpp	m1_opening@3de6527e
 consistent	0.995	1.000	8	1480	Draw__14CSoldierObjectFR12CDrawContext	True	0	0	research/drafts/Draw.800ac9e4.cpp	m1_opening@26269e33

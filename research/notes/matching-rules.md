@@ -200,3 +200,16 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   dependent conversions stay; `float y = line; ...; y += 22.0f;` inside the loop likewise stays
   where `float y = line + 22.0f;` was hoisted. Symptom: one fctiwz/fadds at our function head
   against several in the original's loop body.
+- **Stack layout of user and inline locals** (big3, MemoryCardBootUpPortCheck 269 -> 197, 2026-11-24).
+  Aggregate locals (arrays, class objects) are laid out from the bottom of the local area up in
+  REVERSE declaration order (the last declared lowest); locals of inline-expanded functions come
+  below every user local, and of two inlines the later-expanded one is lower. So an array the
+  original keeps lowest but that sits in the middle of the function can be the local of a
+  single-use inline helper. A uniform 4-byte shift of every buffer is a wrong class size (CFont is
+  40 bytes: CRenderBin 32 + m_data + m_texture).
+- **A pointer local gives an argument a height-2 ADDI** (same function). `fmt = "..."; sprintf(buf,
+  fmt, c);` compiles to the same instructions as the literal argument, but pre-RA the string address is
+  `ADDI vX` + `MR r4,vX` (coalesced away later), height 2 instead of 1, so the scheduler issues it
+  first. Use it when the original computes one string/address argument ahead of the other argument
+  set-up. Drafts of a file with a block header can `#include "../src/game/<File>_block.h"` (include
+  dirs are relative to include/) to get the file's pool order.
