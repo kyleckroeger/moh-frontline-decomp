@@ -1,3 +1,5 @@
+// mid2 2026-11-24: 234 (draft 414). = BEST324 + loop 2 reads state->m_opcodes[j] in the -1/-2 test and binds
+// 'BSOpcode* opcode' inside the if (fit.py: opcode needed a frontend-temp index). See mid/notes.md row 85.
 // best WIP (harvest1, 2026-11-12): 414 real lines (was 708; index said 708), from
 // scratch/loop3/scripting/s11/bsf/BEST414.cpp: 'while (count-- > 0)' for the state copy loop (branch
 // offsets now all match). Left: final loop colouring, the hoisted count load (orig lwz r11,100(r1);
@@ -38,6 +40,16 @@ template <class T> inline void ChangeEndian(T& value) {
 
 template <class T> inline void ChangeEndian(T*& value) {
     ChangeEndian(*reinterpret_cast<long*>(&value));
+}
+
+inline void SwapInPlace(int& value) {
+    unsigned char* bytes = reinterpret_cast<unsigned char*>(&value);
+    unsigned char c = bytes[0];
+    bytes[0] = bytes[3];
+    bytes[3] = c;
+    c = bytes[1];
+    bytes[1] = bytes[2];
+    bytes[2] = c;
 }
 
 struct BSArg {
@@ -97,6 +109,10 @@ static inline BSClass_struct* BSFileFindClass(const char* name) {
             return entry;
     }
     return 0;
+}
+inline void InheritLists(BSClass_struct** result, BSState* base, int s, unsigned int index) {
+    for (unsigned int j = 0; j < index; j++)
+        (*result)->m_states[s].m_lists[j] = base[s].m_lists[j];
 }
 int BSUtilComputeClassMemoryRequirements(BSClass_struct*);
 
@@ -158,8 +174,8 @@ int BSFileReadClass(const char* name, bool, bool, BSClass_struct** result) {
             }
         }
         for (j = 0; j < state->m_numOpcodes; j++) {
-            BSOpcode* opcode = state->m_opcodes[j];
-            if (opcode != (BSOpcode*)-1 && opcode != (BSOpcode*)-2) {
+            if (state->m_opcodes[j] != (BSOpcode*)-1 && state->m_opcodes[j] != (BSOpcode*)-2) {
+                BSOpcode* opcode = state->m_opcodes[j];
                 ChangeEndian(opcode->m_id);
                 ChangeEndian(*reinterpret_cast<short*>(&opcode->m_flags));
                 ChangeEndian(opcode->m_args);
@@ -234,11 +250,12 @@ int BSFileReadClass(const char* name, bool, bool, BSClass_struct** result) {
         }
     }
     (*result)->classFile = data;
+    unsigned long lists;
     int count = *(int*)(data + 100);
     offset = 0x68;
-    ChangeEndian(count);
+    SwapInPlace(count);
     for (int s = 0; s < (int)count; s++) {
-        unsigned long lists = *(unsigned long*)(data + offset);
+        lists = *(unsigned long*)(data + offset);
         offset += 4;
         BSState* state = &(*result)->m_states[s];
         unsigned int index = state->m_numLists;
@@ -256,9 +273,7 @@ int BSFileReadClass(const char* name, bool, bool, BSClass_struct** result) {
         if (index) {
             if (!parent)
                 return 5;
-            BSState* base = parent->m_states;
-            for (j = 0; j < index; j++)
-                (*result)->m_states[s].m_lists[j] = base[s].m_lists[j];
+            InheritLists(result, parent->m_states, s, index);
         }
     }
     (*result)->m_memory = BSUtilComputeClassMemoryRequirements(*result);

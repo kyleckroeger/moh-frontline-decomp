@@ -4,7 +4,7 @@ env: REC=n overall record index (default: auto), UNIT/ADR/SIZE when the function
 Prints a solver result: whether some pop order gives the original colours on our graph, and our-graph edges whose
 two ends share an original colour (edges the original graph cannot have)."""
 import sys,os,json,subprocess,re,collections,csv,difflib
-ROOT='/home/kyle/workspace/moh-frontline'; HERE=ROOT+'/scratch/loop4/tr2'; TMP=ROOT+'/scratch/loop4/tr4/tmp'
+ROOT='/home/kyle/workspace/moh-frontline'; HERE=ROOT+'/scratch/loop4/tr2'; TMP=os.environ.get('NTMP',ROOT+'/scratch/loop4/tr4/tmp')
 sys.path.insert(0,ROOT+'/research/tools'); import fast
 src,func=sys.argv[1],sys.argv[2]; CL=sys.argv[3] if len(sys.argv)>3 else 'F'
 pre='f' if CL=='F' else 'r'; CLS=3 if CL=='F' else 4
@@ -24,7 +24,16 @@ def dis(args):
     for l in out.splitlines():
         m=re.match(r'^\s*([0-9a-f]+):\t[0-9a-f ]+\t(\S+)\s*(.*)$',l)
         if m: ins.append((int(m.group(1),16),m.group(2),re.sub(r'-?\d+\(r(2|13)\)','0(0)',m.group(3).split('<')[0].strip())))
-    return ins
+    lisr=set(); out=[]
+    for a,op,args in ins:   # fitB: normalise lis/addi/d(rLIS) halves of absolute addresses (ours carry relocations = 0)
+        t=args.split(',')
+        if op=='lis': args=t[0]+',0'; lisr.add(t[0]); out.append((a,op,args)); continue
+        if op=='addi' and len(t)==3 and t[1] in lisr: args=t[0]+','+t[1]+',0'
+        mm=re.match(r'(.*,)?-?\d+\((r\d+)\)$',args)
+        if mm and mm.group(2) in lisr: args=(mm.group(1) or '')+'0('+mm.group(2)+')'
+        if t and t[0] in lisr and op not in('lis',) and not op.startswith(('st','cmp','b')): lisr.discard(t[0])
+        out.append((a,op,args))
+    return out
 d0,o0=trace('','u')
 ours=dis(['--disassemble='+func,o0])
 orig=dis([f'--start-address={adr:#x}',f'--stop-address={adr+size:#x}',fast.ELF]) if adr else ours

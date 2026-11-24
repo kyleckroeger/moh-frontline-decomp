@@ -72,3 +72,6 @@ open rows on 2026-11-18 is research/notes/matching-triage-2026-11-18.tsv.
 - `fitF.py`, `fitF_greedy.py` (fitA, 2026-11-24): fit.py for FPRs (FPR record, K=32, volatiles
   f0-f13); the greedy one applies the best single change repeatedly to find multi-node fits.
   They may carry private scratch paths; check before use.
+- nmap.py (fitB, 2026-11-24) also normalises lis / addi rX,rLIS / d(rLIS) halves of absolute
+  addresses, so section bases and globals map (CPathNodeList: 226 nodes vs 134). NTMP sets its
+  temp dir; give each parallel user its own.
