@@ -160,3 +160,17 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   after the final ULI: next now colours right after first and reuses r29. Writing the swap out inside
   backward_pass (instead of iter_swap at depth 3) keeps the swap temporaries' stack-slot order. Try it
   wherever an inline local that the original colours early is out-ranked by sibling inlines' locals.
+- **A block keeps its pre-allocation schedule unless the allocator edits it** (sched, structural
+  run 2026-11-24, CCoverPoint::GetPeekLocation 3 -> 0). MWCC schedules each block twice: before
+  allocation (virtual registers) and after, but the second pass skips blocks the first one did
+  unless a pcode was inserted or deleted there in between; deleting a coalesced copy counts. After
+  allocation the real registers add anti/output dependences and the block can come out in another
+  order (here `or r5,r5,r4` moved above `lwz r3` because it frees the `and r4` that reuses r4). So
+  when the original equals our pre-allocation order (research/tools/alloc/sched.py prints both
+  passes and the deleted copies), remove the copy from that block: here
+  `CoverPointTypes types = GetTypes();` copied the inline's result into the caller's variable;
+  an out parameter assigned at field level, `out.m_bits = types.m_bits & mask.m_bits;
+  types.m_bits = out.m_bits;` with `CoverPointTypes types; GetTypes(types);`, defines the
+  variable directly (`out = types & mask` through operator= still copies). CoverPoint_modified's
+  GetAvailablePeekPosition was respelled the same way (still exact) so every fragment shares one
+  GetTypes body.

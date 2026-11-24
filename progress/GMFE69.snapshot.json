@@ -6,14 +6,14 @@
   "dol_sha1": "0e96c0bea0d7717297f376b7b11229ca99b4b9c6",
   "runtime_tested": false,
   "progress": {
-    "matching_code_bytes": 1302828,
+    "matching_code_bytes": 1303568,
     "total_executable_code_bytes": 1414572,
-    "percent": 92.10050813956448,
+    "percent": 92.15282078254059,
     "categories": {
-      "reconstructed_game": 1066068,
+      "reconstructed_game": 1066808,
       "restored_library": 236760
     },
-    "matching_functions": 4936
+    "matching_functions": 4937
   },
   "input_sha256": {
     "src/dolphin/LICENSE.PrimeDecomp": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499",
@@ -400,7 +400,8 @@
     "src/game/ConfigGC.cpp": "fe0509fd3a7a55cd48ebeea7681fffb58ab07b21f698e8e9118b8cdaaf0916e3",
     "src/game/CoverPoint.cpp": "6543df862a43d1cff97aa960f9575641c6df1378c548eb06b7ffd5f33a201706",
     "src/game/CoverPoint_invalidate.cpp": "e6fa56a2a2257e6c9c7edc915d1d559abcf9a202c74f69453a87a8cc3dce896d",
-    "src/game/CoverPoint_modified.cpp": "970e939428ed3412da13a221ceb7bd49816333c06dcf2815708279151a340759",
+    "src/game/CoverPoint_modified.cpp": "3d457caa02ee419c8b17c80eefd2a2dafb95750d13ad8cd1efd864f3a5978d6a",
+    "src/game/CoverPoint_peek.cpp": "d057ad43671e22c6c7a86fb5c3b67c3721b5e026c7852c0f15ae759501079be3",
     "src/game/CoverPoint_unoccupied.cpp": "2213c4580725c4972add13a5fc247f7af9c6960a035abec9e83ba6a5c3dab0d7",
     "src/game/GameMessage.cpp": "abab0191bd25dc3dd5e5e88fc3ffbecfe7606e8419046a7eb1e9bd1b0f5ed50a",
     "src/game/IStudio.cpp": "d8248255ac4e268861960bef0deee7bc26de24e69971017c42dbe62587786ef8",
@@ -1542,6 +1543,7 @@
     "config/GMFE69/CoverPoint.json": "75a0001bdd6794082a1d93f6687efa6ca1d6711c4197cd9cc34cd972c214f1ed",
     "config/GMFE69/CoverPoint_invalidate.json": "c824998bf10ae6a9c1b6b5ed94fe904051e1ddfef2e98bc573124ddd35cac8e9",
     "config/GMFE69/CoverPoint_modified.json": "c3631d72f5d4d0b3c00f543f023cff2459cd3665172a3690db078589b026d76a",
+    "config/GMFE69/CoverPoint_peek.json": "a6b073f38b3dcd5f0354cdc2b66ef2a854d9b947d5cb5b6f0d1dd67c085b8665",
     "config/GMFE69/CoverPoint_unoccupied.json": "b18cdb5645480bb015333ea44cf01f1bc71e01ada0248fba6e9456c166736890",
     "config/GMFE69/DebuggerDriver.json": "7a5c123e9e9bc8021ee1522ee00a951b061611e8ffecada9c1595d55525ee62c",
     "config/GMFE69/EXIBios.json": "c9390151ed61c1e36be176f48feef883f85c6733e4cb6389153a8ad9b732e034",
@@ -2153,7 +2155,7 @@
     "config/GMFE69/printf.json": "99130232b41dba4e0aa3f60aeb58e6020463cc30757edc204a72c608f46a890d",
     "config/GMFE69/printn3.json": "1b059db9124e39533bcc03c1a998aba35679bdfacb741be624a406fc37db7524",
     "config/GMFE69/printstr.json": "6c8e435abd4a0a942e15683b23398deea22caffd8f51111fcc53e69df75d09d7",
-    "config/GMFE69/project.json": "b2ac3b17f88da1a9b4b7ef4d44ad5843dbbb9771fadf2fddd3a5cee95e3a70ac",
+    "config/GMFE69/project.json": "03cae2f1d87e11dc5a36bf51a06f23c7f21199547498cc94145bd25e5e55a617",
     "config/GMFE69/projectilebullet.json": "25e5e2ee4ef62017e0f7fb5a51e09ec10c0ea9e5688326434b4e016c4b2a2b09",
     "config/GMFE69/propdat.json": "0273b02d660a4a7864417ce18bf2258c6b9fb702dd64c5d61d0484f5e94ec462",
     "config/GMFE69/proxtrig_leafs.json": "763286d4162fb0d337b5d9cb7d358824f3b2d3a29bc16ad23b2e85c11b8f53b2",
@@ -40790,8 +40792,8 @@
       ],
       "strip_unused": false,
       "discarded_functions": [],
-      "object_sha256": "6c70e8be99870e43e936ab8e4d9ee7062767c7e5c6d9fe3fe6eb3a480fa05c79",
-      "linked_sha256": "5403bc42a593217d876a9274ae0e2a8f04b41c9039ae4cb031c7667d9649aea5"
+      "object_sha256": "476fed13c73510e5fe6407d27549b81f816a9ae4e6aafdc47fe6090d497483c8",
+      "linked_sha256": "ea00cf2169737ef1c54ac5c52405c9d60d161ec758c01c8478d41117203622fe"
     },
     {
       "id": "UserInterface_score",
@@ -43241,6 +43243,45 @@
       "discarded_functions": [],
       "object_sha256": "e0d3ba54ceac1dd29bae8bb421e1c2cf267c89c2990bbdd92138bf9cc8b11db7",
       "linked_sha256": "1ea55934810747f83d50e3cb8f4c61f8f763b6e7e900ad191306f951a1ced628"
+    },
+    {
+      "id": "CoverPoint_peek",
+      "category": "reconstructed_game",
+      "functions": 1,
+      "code_bytes": 740,
+      "compiler_family": "GC",
+      "compiler_version": "1.3.2",
+      "compiler_flags": [
+        "-nodefaults",
+        "-proc",
+        "gekko",
+        "-align",
+        "powerpc",
+        "-enum",
+        "int",
+        "-fp",
+        "hardware",
+        "-Cpp_exceptions",
+        "on",
+        "-O4,p",
+        "-inline",
+        "auto",
+        "-pragma",
+        "cats off",
+        "-nosyspath",
+        "-RTTI",
+        "off",
+        "-str",
+        "reuse,readonly",
+        "-use_lmw_stmw",
+        "on",
+        "-fp_contract",
+        "on"
+      ],
+      "strip_unused": false,
+      "discarded_functions": [],
+      "object_sha256": "1e445341efd4df18251ac4b1978cdf270d3f419ef100298d25f6ec51a3c1c474",
+      "linked_sha256": "1b851f855dbfe17ac36b8d800bd7469afa9676c4199346a5dee0988def713d61"
     }
   ],
   "code_map": {
@@ -43403,13 +43444,6 @@
         "file_record": 31,
         "file_name": "CoverPoint.cpp",
         "ranges": [
-          {
-            "address": "0x800523cc",
-            "size": 740,
-            "kind": "function",
-            "name": "GetPeekLocation__11CCoverPointFv",
-            "evidence": "exception-index"
-          },
           {
             "address": "0x80052abc",
             "size": 1184,

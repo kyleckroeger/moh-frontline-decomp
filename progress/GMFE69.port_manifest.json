@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 989,
- "function_bytes_by_status": {"consistent": 104588, "differs": 5764, "exact": 1220, "verified": 1293984},
+ "verified_units": 990,
+ "function_bytes_by_status": {"consistent": 103848, "differs": 5764, "exact": 1220, "verified": 1294724},
  "data_bytes_owned": 821488,
  "data_bytes_total": 1976252,
  "functions": [
@@ -901,7 +901,7 @@
  [2147820308, 68, "__dt__13CAITankObjectFv", "verified", "src/game/AITankObject.cpp"],
  [2147820376, 112, "__ct__13CAITankObjectFPv", "verified", "src/game/AITankObject.cpp"],
  [2147820488, 4, "__ct__21CAIFilterRealPositionFv", "verified", "src/game/AITankObject.cpp"],
- [2147820492, 740, "GetPeekLocation__11CCoverPointFv", "consistent", "research/drafts/GetPeekLocation.800523cc.cpp"],
+ [2147820492, 740, "GetPeekLocation__11CCoverPointFv", "verified", "src/game/CoverPoint_peek.cpp"],
  [2147821232, 216, "Invalidate__11CCoverPointFv", "verified", "src/game/CoverPoint_invalidate.cpp"],
  [2147821448, 820, "ProvidesCover__11CCoverPointCFRC21CAIFilterRealPositionPC21CAIFilterRealPositionPC9CAIObject", "verified", "src/game/CoverPoint_invalidate.cpp"],
  [2147822268, 1184, "CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition", "consistent", "research/drafts/CheckLineCollision.80052abc.cpp"],

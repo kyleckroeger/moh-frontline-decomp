@@ -68,7 +68,7 @@ n	group	kind	size	real	blind	status	function	draft	note
 67	near	near	416	8	1	decision	DrawTextCentered__5CFontFfPCc	research/drafts/DrawTextCentered.8007cdb0.cpp	matches only with a different inline body per fragment (declined)
 68	structural	structural	2728	2	2	open	AllocateStaticObject__20CStaticObjectFactoryFii	research/drafts/AllocateStaticObject.800b386c.cpp	
 69	structural	structural	568	3	3	open	PublishEvent__10CPublisherFR8ISubject13ESubjectEvent	research/drafts/PublishEvent.800d7718.cpp	
-70	structural	structural	740	3	3	open	GetPeekLocation__11CCoverPointFv	research/drafts/GetPeekLocation.800523cc.cpp	
+70	structural	structural	740	0	0	landed	GetPeekLocation__11CCoverPointFv		[match sched] 2026-11-24 CoverPoint_peek: GetTypes out-parameter at field level, so no caller copy is coalesced and the mask block keeps its pre-allocation schedule (sched.py probe)
 71	structural	structural	800	5	1	open	DrawNode__11CStaticMeshFR7MSHNodeUl	research/drafts/DrawNode.800f2090.cpp	
 72	structural	structural	1184	10	1	open	CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition	research/drafts/CheckLineCollision.80052abc.cpp	
 73	structural	structural	860	18	7	open	ResetShell__10CShellMenuFv	research/drafts/ResetShell.800e7a7c.cpp	

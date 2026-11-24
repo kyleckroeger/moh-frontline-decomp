@@ -29,3 +29,24 @@ point at scratch/ for the patched compilers, so recreate those first.
 
 The rules these established are in research/notes/matching-rules.md; the per-row triage of the 54
 open rows on 2026-11-18 is research/notes/matching-triage-2026-11-18.tsv.
+
+## Scheduler probe (structural run 2026-11-24)
+
+- `sched.py <src> <unit> [out] [-f substr]`: compiles under ptrace with an int3-patched copy of the
+  real compiler (made on first use in `$SCHED_CC`, default `scratch/sched_cc`; seven breakpoints,
+  no other change). For each block of both scheduler passes (`scheduleinstructions` 0x506e10, pass
+  0 before allocation, 1 after) it prints every node in input order (latency, slack, height,
+  unscheduled predecessors, successor edges with latency), then every pick with its cycle. It also
+  prints each pcode the allocator inserts or deletes between the passes, with the caller (0x57a596 =
+  copy coalescing).
+- Scheduler.c, read from the binary: 0x506f20 builds the dependency graph from the last
+  instruction up (0x507230; edges carry the producer's latency, so height = longest latency path
+  to the block end) and list-schedules top-down, issue width and unit checks from the machine
+  table. The selector 0x5070f0 takes the first ready node in input order; a later ready node
+  replaces it if it is urgent (cycle >= slack) and the current one is not, else if it makes more
+  successors ready (predecessor count 1), else if its height is greater, else (when 0x5e86a0 is
+  set) by an opcode-class byte. Post-allocation, register reuse adds anti and output edges, so the
+  "makes more ready" test often decides there.
+- A block scheduled before allocation gets flag 8 and is skipped after allocation unless a pcode
+  insertion or deletion clears it (0x4dc1b0 / 0x4dc1f0 / 0x4dc230), e.g. a coalesced copy or spill
+  code. The rule this gives is in research/notes/matching-rules.md (GetPeekLocation).

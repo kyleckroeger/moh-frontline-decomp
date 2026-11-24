@@ -1,4 +1,10 @@
-
+// A fragment of CoverPoint.cpp (0x800523cc): CCoverPoint::GetPeekLocation takes the front row of
+// the cover object's orientation, turns it a quarter turn about z for the left (0x51) or right
+// (0xa2) peek types or replaces it with straight up for type 4, scales it by 0.8, and adds it to
+// the modified position for the point's types, one unit higher.
+// GetTypes writes the caller's variable through an out parameter at field level: returning the
+// types by value copies them into the caller's variable, the allocator deletes that copy, and the
+// post-allocation scheduler then reorders the mask block (research/notes/matching-rules.md).
 void DebugMsg(const char*, ...);
 
 inline void ChangeEndian(int& value) {
@@ -108,7 +114,7 @@ public:
         matrix.GetFront(v);
     }
 
-    CoverPointTypes GetTypes() const {
+    void GetTypes(CoverPointTypes& out) const {
         CoverPointTypes types;
         types.m_bits = m_object->m_flags;
         ChangeEndian(*(int*)&types.m_bits);
@@ -122,8 +128,8 @@ public:
         types.m_bits = bits;
         types &= 0xff;
         CoverPointTypes mask = CoverPointTypes(1) | 2 | 4;
-        types &= mask;
-        return types;
+        out.m_bits = types.m_bits & mask.m_bits;
+        types.m_bits = out.m_bits;
     }
 
     unsigned int m_occupied;
@@ -133,7 +139,8 @@ public:
 CAIFilterRealVector3 CCoverPoint::GetPeekLocation() {
     CAIFilterRealVector3 front;
     m_object->GetFront(front);
-    CoverPointTypes types = GetTypes();
+    CoverPointTypes types;
+    GetTypes(types);
     if ((types & 0x51).m_bits) {
         float t = front.x;
         front.x = -front.y;

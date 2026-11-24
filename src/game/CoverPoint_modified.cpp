@@ -102,7 +102,7 @@ public:
     void GetModifiedPosition(CAIFilterRealVector3&, COVERPOINT_TYPE) const;
     COVERPOINT_TYPE GetAvailablePeekPosition() const;
 
-    CoverPointTypes GetTypes() const {
+    void GetTypes(CoverPointTypes& out) const {
         CoverPointTypes types;
         types.m_bits = m_object->m_flags;
         ChangeEndian(*(int*)&types.m_bits);
@@ -116,8 +116,8 @@ public:
         types.m_bits = bits;
         types &= 0xff;
         CoverPointTypes mask = CoverPointTypes(1) | 2 | 4;
-        types &= mask;
-        return types;
+        out.m_bits = types.m_bits & mask.m_bits;
+        types.m_bits = out.m_bits;
     }
 
     unsigned int m_occupied;
@@ -161,7 +161,8 @@ void CCoverPoint::GetModifiedPosition(CAIFilterRealVector3& position, COVERPOINT
 }
 
 COVERPOINT_TYPE CCoverPoint::GetAvailablePeekPosition() const {
-    CoverPointTypes types = GetTypes();
+    CoverPointTypes types;
+    GetTypes(types);
     int avail = ~(m_occupied & 0xff);
     avail &= types.m_bits;
     if (avail <= 1)

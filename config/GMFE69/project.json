@@ -989,7 +989,8 @@
     "AIObject_updatetarget.json",
     "stream_kill.json",
     "toilet_repository.json",
-    "Soldier_object_draw.json"
+    "Soldier_object_draw.json",
+    "CoverPoint_peek.json"
   ],
   "progress": {
     "code_bytes": 1414572,
