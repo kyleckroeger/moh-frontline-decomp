@@ -230,5 +230,23 @@ class's key function may turn on RTTI and own its file's virtual table and RTTI 
 .sdata, .rodata, .sdata2) without merging its neighbours, when byte-exact. It is a stepping stone
 toward the whole-file merge (first: cdbobject_dtor.cpp owns `__vt__10CCDBObject`).
 
+**Rulings of the 2026-11-17/18 matching run, accepted by the maintainer (2026-11-24):**
+- Accepted: a single-use typed-read inline over an argument slot (`ReadObject(int* p) { return
+  *(BSObjectView**)p; }`, BIFunc_GetObjInfo), as a single-use inline helper; it lands only as
+  part of a byte-exact form.
+- Accepted: a class `operator new` returning through a named local for one class while other
+  classes keep the direct return (BSGO_Tank vs BSGO_Soldier/Destructable): different classes, so
+  not two bodies of one inline. Single-use helpers returning through a named local
+  (`AllocHier`, `TankOf`, CreateRootHierObject).
+- Accepted: buddy.cpp's ready-list dump copy differing from GetInitialBuddyOrders' (two inline
+  copies when the original's copies compile differently).
+- Accepted: respelling an inline body inside a landed unit, when that unit stays byte-exact and
+  every user of the inline takes the new body.
+- Declined: an identity-conversion inline used only to keep a parameter copy alive (`KeepU`,
+  identity wrapper family), and a macro accessor where a sibling fragment of the same file has
+  the body as an inline (different bodies per fragment).
+- Tooling: cadmic/mwcc-debugger is not installed; the ptrace tracers in research/tools/alloc/
+  cover the need.
+
 **Accepted by the maintainer (2026-11-13):** `axDspSlave`/`axDspSlaveLength` (SDK DSP microcode,
 6,624 B .data + 2 B .sdata) are transcribed into `research/data/` as data, not left platform-owned.
