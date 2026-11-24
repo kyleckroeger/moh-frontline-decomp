@@ -88,16 +88,16 @@ struct CharOrient3_t {
     short c;
 };
 
-static inline void TransformByTop(CVector3& p) { _dmeshStack->Top().TransformPoint(p, p); }
+static inline void TransformByTop(CVector3& p) { _dmeshStack->m_matrices[_dmeshStack->m_top].TransformPoint(p, p); }
 
 void DMClusterSkelTraverseHeirarchy(CharOrient3_t* orient, CharSkel_t* skeleton, CMatrix* matrices, CVector3* minimum, CVector3* maximum) {
-    unsigned int count;
-    CharBone_t* bone;
-    short b;
-    short c;
+    CMatrix* scratch;
     int depth;
     short a;
-    CMatrix* scratch;
+    short b;
+    short c;
+    unsigned int count;
+    CharBone_t* bone;
     CVector3 pos;
     CVector3 low;
     CVector3 high;
@@ -108,7 +108,10 @@ void DMClusterSkelTraverseHeirarchy(CharOrient3_t* orient, CharSkel_t* skeleton,
     _dmeshStack->Store(scratch);
     scratch++;
     depth = -1;
-    low.d.v[0] = low.d.v[1] = low.d.v[2] = low.d.v[3] = 3.4028235e38f;
+    low.d.v[3] = 3.4028235e38f;
+    low.d.v[2] = 3.4028235e38f;
+    low.d.v[1] = 3.4028235e38f;
+    low.d.v[0] = 3.4028235e38f;
     high.d.v[0] = high.d.v[1] = high.d.v[2] = high.d.v[3] = -3.4028235e38f;
     while (count--) {
         a = orient->a;

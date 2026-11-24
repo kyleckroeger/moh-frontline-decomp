@@ -154,8 +154,10 @@ bulletText->DrawText(x, ay - 10, text);
         vert->y *= sy;
     }
     if (g_bInMultiplayerMode) {
+        float sum = TempVerts[0].y;
+        sum += TempVerts[3].y;
         float centerY = height * g_viewport.scaleY;
-        centerY += viewHeight * (0.5f * (TempVerts[0].y + TempVerts[3].y));
+        centerY += viewHeight * (0.5f * sum);
         int w = scale * (TempVerts[1].x - TempVerts[0].x);
         int h = scale * (TempVerts[3].y - TempVerts[0].y);
         float centerX = viewWidth * (0.5f * (TempVerts[0].x + TempVerts[1].x)) + width * g_viewport.scaleX;

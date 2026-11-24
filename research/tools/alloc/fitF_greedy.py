@@ -1,0 +1,53 @@
+"""fit.py json nmap.txt [cands]: exact simplify+colour (K=29) on our graph; score = #nodes whose colour equals the
+original's (nmap single-register mappings). Then tries, for each node, (a) moving its index to every gap and
+(b) inflating its degree +1..+8, and prints the best single changes."""
+import json,sys,re
+r=json.load(open(sys.argv[1]))[0]; K=32
+nb0={e[0]:e[3] for e in r['stack']}; real={e[0]:e[4] for e in r['stack']}
+orig={}
+for l in open(sys.argv[2]):
+    m=re.match(r'[! ]\s+(\d+)\s.*?ours f(\d+)\s+orig f(\d+)\s',l)
+    if m: orig[int(m.group(1))]=int(m.group(3))
+def run(remap={},add={}):
+    f=lambda v: remap.get(v,v)
+    nb={f(v):[f(u) for u in l] for v,l in nb0.items()}
+    und={v:set(nb[v]) for v in nb}
+    for v in nb:
+        for u in nb[v]:
+            if u in und: und[u].add(v)
+    deg={v:len(nb[v])+add.get(v,0) for v in nb}; rem=set(nb); push=[]
+    order=sorted(nb)
+    while rem:
+        got=False
+        for v in order:
+            if v in rem and deg[v]<K:
+                rem.discard(v); push.append(v); got=True
+                for u in nb[v]:
+                    if u in deg: deg[u]-=1
+        if not got:
+            v=min(rem,key=lambda v:1/deg[v]); rem.discard(v); push.append(v)
+            for u in nb[v]:
+                if u in deg: deg[u]-=1
+    vol=list(range(0,14)); obt=[]; col={}
+    for v in push[::-1]:
+        if real[remap_inv.get(v,v)]==0 and not nb[v]: col[v]=0; continue
+        held={col[u] for u in und[v] if u in col}|{u for u in und[v] if u<32 and u>=0}
+        c=next((x for x in sorted(vol+obt) if x not in held),None)
+        if c is None: c=31-len(obt); obt.append(c)
+        col[v]=c
+    return sum(1 for v in orig if col.get(f(v))==orig[v])
+remap_inv={}
+base=run(); print('nodes mapped',len(orig),'base matches',base, 'real-check', sum(1 for v in orig if real[v]==orig[v]))
+
+cur={}
+idxs=sorted(nb0)
+for step in range(5):
+    best=(0,None)
+    for v in [v for v in orig]:
+        for t in [32.5]+[x+0.5 for x in idxs if x!=v]:
+            m=dict(cur); m[v]=t
+            remap_inv={b:a for a,b in m.items()}
+            sc=run(m)
+            if sc-base>best[0]: best=(sc-base,v,t)
+    if best[1] is None: break
+    cur[best[1]]=best[2]; print('step',step,best,flush=True)

@@ -69,3 +69,6 @@ open rows on 2026-11-18 is research/notes/matching-triage-2026-11-18.tsv.
 - A block scheduled before allocation gets flag 8 and is skipped after allocation unless a pcode
   insertion or deletion clears it (0x4dc1b0 / 0x4dc1f0 / 0x4dc230), e.g. a coalesced copy or spill
   code. The rule this gives is in research/notes/matching-rules.md (GetPeekLocation).
+- `fitF.py`, `fitF_greedy.py` (fitA, 2026-11-24): fit.py for FPRs (FPR record, K=32, volatiles
+  f0-f13); the greedy one applies the best single change repeatedly to find multi-node fits.
+  They may carry private scratch paths; check before use.
