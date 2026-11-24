@@ -76,9 +76,9 @@ class DataStripping(unittest.TestCase):
             self.assertNotIn('Cannot strip an object present in the target', str(error))
 
     def test_a_duplicate_rtti_record_takes_its_base_list(self):
-        path = self.build / 'units/debug_prof_register/compiled.o'
+        path = self.build / 'units/debug_prof/compiled.o'
         if not path.exists():
-            self.skipTest('debug_prof_register not built')
+            self.skipTest('debug_prof not built')
         obj = Elf32(path.read_bytes())
         lists = rtti_base_lists(obj, {'__RTTI__10CRenderBin'})
         self.assertEqual(len(lists), 1)

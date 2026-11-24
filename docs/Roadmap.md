@@ -11,13 +11,13 @@ in `AGENTS.md` win.
 ## Where the project is
 
 <!-- sync_docs:status -->
-- Verified snapshot: **1,304,348 / 1,414,572** executable bytes
-  (**92.21%**), 4,938 functions in 990 units: **1,067,588** bytes of
-  `reconstructed_game` (813 units, `docs/Game.md`) and **236,760** bytes of
+- Verified snapshot: **1,305,184 / 1,414,572** executable bytes
+  (**92.27%**), 4,939 functions in 985 units: **1,068,424** bytes of
+  `reconstructed_game` (808 units, `docs/Game.md`) and **236,760** bytes of
   `restored_library` (177 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Priorities and what is left
   are in `docs/Remaining.md`.
-- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build plays scripted input routes in Dolphin, with 83 of the 88 drafts proven in play (`docs/Dolphin.md`).
+- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build plays scripted input routes in Dolphin, with 81 of the 87 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` and `GC/1.2.5` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`

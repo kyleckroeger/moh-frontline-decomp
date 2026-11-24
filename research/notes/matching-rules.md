@@ -183,3 +183,11 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   0xffffLL` makes the high word a `srawi` of the position (still dead), so the li no longer frees
   anything and the addi issues in cycle 1 as in the original. research/tools/alloc/ssim.py replays
   the choice; read the picks in a sched.py dump before trying spellings.
+- **A constant initialisation chain stores the last target first** (big, structural run
+  2026-11-24, CProfileInitClass's constructor 202 -> 0). `a = b = c = 0;` (accepted: constant
+  initialisation chain) stores c, b, a and, in a store-heavy initialiser, also changes how the
+  constants are materialised: CProfileInitClass's 31 inline `Set` calls got the original's
+  stores 16, 12, 8 and its li/addi grouping (stmw r23, 48-byte frame) only with
+  `m_field08 = m_field0c = m_field10 = 0;`; three separate `= 0` statements in that order stored
+  the same but spread the constants over more callee registers (stmw r17, 80-byte frame). Try it
+  when a run of zero stores is right but the function saves too many registers.

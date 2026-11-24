@@ -78,10 +78,10 @@ n	group	kind	size	real	blind	status	function	draft	note
 77	structural	structural	980	82	4	open	PROFILE_UPDATE__Fv	research/drafts/PROFILE_UPDATE.800f3578.cpp	
 78	structural	structural	456	83	57	open	BIFunc_MechFollowPath__FPPiPv	research/drafts/BIFunc_MechFollowPath.80021220.cpp	
 79	structural	structural	1916	99	10	open	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp	
-80	structural	structural	1848	119	69	open	DrawBulletStats__13UserInterfaceFv	research/drafts/DrawBulletStats.800bce58.cpp	
+80	structural	structural	1848	51	0	open	DrawBulletStats__13UserInterfaceFv	research/drafts/DrawBulletStats.800bce58.cpp	big 11-24: blind-exact (structure, every stack slot); left = register colouring in the MP sprite block (nmap R/F STUCK). Keys: int<->float conversion temps numbered in expression-tree order, single-use locals propagated (compound assignment 'x += a' stops it: scratch/loop5/TRICKS.md); sprite block centerY first; 'float right = left; right += w;'. Alt real-49 form scratch/loop5/big/dbs/BEST49_real.cpp (3 slot pairs wrong)
 81	structural	structural	3376	138	3	open	Init__20CStaticObjectFactoryFv	research/drafts/Init.800b254c.cpp	
 82	structural	structural	800	185	178	open	SweepAllExtents__6CSceneFv	research/drafts/SweepAllExtents.800d8bac.cpp	
-83	structural	structural	836	202	173	open	__ct__17CProfileInitClassFv	research/drafts/debug_prof_misc.cpp	
+83	structural	structural	836	202	173	landed	__ct__17CProfileInitClassFv	research/drafts/debug_prof_misc.cpp	debug_prof.cpp tail merged into one unit debug_prof (debug_prof_register+timers+stats+bins+cdbgstatsrenderbin_dtor+debug_prof, deferred+RTTI, reverse order; rule: constant init chain 'm_field08 = m_field0c = m_field10 = 0' stores the last first and groups the constants; gap function DebugProfCounterEventName (--linker-stripped, sparse switch on the PCCR event fields, no jump table) places the PS2 perf-counter names at .rodata +708 so the ctor's names sit at +1344)
 84	structural	structural	1260	252	170	open	DMMorphBlendDisplayLists__FP16DMRenderObject_T	research/drafts/DMMorphBlendDisplayLists.800f712c.cpp	
 85	structural	structural	3768	414	6	open	BSFileReadClass__FPCcbbPP14BSClass_struct	research/drafts/BSFileReadClass.80035aa8.cpp	
 86	structural	structural	4532	854	735	open	RenderSystem__15CParticleSystemFR10CDmaPacket	research/drafts/particlesystem_render.cpp	

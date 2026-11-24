@@ -118,9 +118,11 @@ void UserInterface::DrawBulletStats() {
                 int ax = x;
                 ax *= viewWidth;
                 int bx = width * g_viewport.scaleX;
-                int ay = viewHeight * (400.0f * g_screen.m_heightScale);
-                int by = height * g_viewport.scaleY;
-                bulletText->DrawText(ax + bx, ay - 10 + by, text);
+ax += bx;
+int ay = viewHeight * (400.0f * g_screen.m_heightScale);
+int by = height * g_viewport.scaleY;
+ay += by;
+bulletText->DrawText(ax, ay - 10, text);
             } else
                 bulletText->DrawText(x, (int)(400.0f * g_screen.m_heightScale), text);
         }
@@ -130,9 +132,11 @@ void UserInterface::DrawBulletStats() {
             sprintf(text, "%d", reserve);
         int x = 554.0f * g_screen.m_widthScale;
         if (g_bInMultiplayerMode) {
-            int px = x * viewWidth + width * g_viewport.scaleX;
-            int py = (int)(viewHeight * (400.0f * g_screen.m_heightScale)) + (int)(height * g_viewport.scaleY) - 10;
-            bulletText->DrawText(px, py, text);
+x = x * viewWidth + width * g_viewport.scaleX;
+int ay = viewHeight * (400.0f * g_screen.m_heightScale);
+int by = height * g_viewport.scaleY;
+ay += by;
+bulletText->DrawText(x, ay - 10, text);
         } else
             bulletText->DrawText(x, (int)(400.0f * g_screen.m_heightScale), text);
         bulletText->SetScale(scaleX, scaleY);
@@ -142,22 +146,26 @@ void UserInterface::DrawBulletStats() {
         return;
     memcpy(TempVerts, AmmoSpriteVerts, sizeof(TempVerts));
     _spritepolyvert* vert = TempVerts;
+    float sx = g_screen.m_widthScale;
+    float sy = g_screen.m_heightScale;
     for (int i = 0; i < 4; i++, vert++) {
         vert->color.a = m_alpha * (TempVerts->color.a * m_ammoFade);
-        vert->x *= g_screen.m_widthScale;
-        vert->y *= g_screen.m_heightScale;
+        vert->x *= sx;
+        vert->y *= sy;
     }
     if (g_bInMultiplayerMode) {
+        float centerY = height * g_viewport.scaleY;
+        centerY += viewHeight * (0.5f * (TempVerts[0].y + TempVerts[3].y));
         int w = scale * (TempVerts[1].x - TempVerts[0].x);
         int h = scale * (TempVerts[3].y - TempVerts[0].y);
         float centerX = viewWidth * (0.5f * (TempVerts[0].x + TempVerts[1].x)) + width * g_viewport.scaleX;
-        float centerY = height * g_viewport.scaleY;
-        centerY += viewHeight * (0.5f * ((TempVerts[3].y) + (TempVerts[0].y)));
         float left = centerX - 0.5f * w;
+        float right = left;
+        right += w;
         float top = centerY - 0.5f * h - 5.0f;
         TempVerts[0].x = TempVerts[3].x = left;
         TempVerts[0].y = TempVerts[1].y = top;
-        TempVerts[1].x = TempVerts[2].x = left + w;
+        TempVerts[1].x = TempVerts[2].x = right;
         TempVerts[2].y = TempVerts[3].y = top + h - 5.0f;
     }
     ammoSprite->DrawPoly(TempVerts, 4, (CSprite::EPolyPrimType)5);
