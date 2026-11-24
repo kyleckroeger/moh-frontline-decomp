@@ -24,7 +24,15 @@ point at scratch/ for the patched compilers, so recreate those first.
   registers, then says STUCK (the original's colours are impossible on our graph: a structural or
   pre-allocation order difference) or feasible (only index order differs; `WHY=1` lists what must
   be coloured first). Simulators ORDER, PERM, ISIM.
-- `sim.py`: replays simplify on a tracer graph (K varies 23-28 per function; approximate).
+- `sim.py`: replays simplify on a tracer graph (K varies 23-28 per function; approximate; superseded).
+- `sim2.py` (2026-11-24, read from simplify at 0x507b50): EXACT simplify replay. Degree starts at the
+  adjacency-list length, a removed node lowers only its own list's degrees, K = 29 for GPRs, and
+  copies deleted by coalescing leave +1 'stale' degree on every web live across them (named locals,
+  reference locals and single-use returning inlines add none). Reproduces the real push order on
+  all 18 records tried.
+- `fit.py <tracer json> <nmap output>`: runs sim2, scores colours against nmap's map of the
+  original, and tries every node at every index / extra degree: names the variable whose numbering
+  is wrong and what it must be (param, late user local, temp). About 2 min per run.
 - `hdrtest.py`: checks whether a shared-header edit renumbers compiler-local names in other units.
 
 The rules these established are in research/notes/matching-rules.md; the per-row triage of the 54
