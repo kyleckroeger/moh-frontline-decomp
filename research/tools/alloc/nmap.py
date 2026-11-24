@@ -23,7 +23,7 @@ def dis(args):
     out=subprocess.run([fast.OBJDUMP,'-d']+args,capture_output=True,text=True).stdout; ins=[]
     for l in out.splitlines():
         m=re.match(r'^\s*([0-9a-f]+):\t[0-9a-f ]+\t(\S+)\s*(.*)$',l)
-        if m: ins.append((int(m.group(1),16),m.group(2),re.sub(r'-?\d+\(r2\)','0(0)',m.group(3).split('<')[0].strip())))
+        if m: ins.append((int(m.group(1),16),m.group(2),re.sub(r'-?\d+\(r(2|13)\)','0(0)',m.group(3).split('<')[0].strip())))
     return ins
 d0,o0=trace('','u')
 ours=dis(['--disassemble='+func,o0])
