@@ -127,8 +127,7 @@ public:
         }
         types.m_bits = bits;
         types &= 0xff;
-        CoverPointTypes mask = CoverPointTypes(1) | 2 | 4;
-        out.m_bits = types.m_bits & mask.m_bits;
+        out.m_bits = types.m_bits & (CoverPointTypes(1) | 2 | 4).m_bits;
         types.m_bits = out.m_bits;
     }
 

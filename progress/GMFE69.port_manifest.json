@@ -1,8 +1,8 @@
 {
  "schema_version": 1,
  "target": "GMFE69",
- "verified_units": 985,
- "function_bytes_by_status": {"consistent": 102232, "differs": 5764, "exact": 1220, "verified": 1296340},
+ "verified_units": 986,
+ "function_bytes_by_status": {"consistent": 101048, "differs": 5764, "exact": 1220, "verified": 1297524},
  "data_bytes_owned": 822810,
  "data_bytes_total": 1976252,
  "functions": [
@@ -904,7 +904,7 @@
  [2147820492, 740, "GetPeekLocation__11CCoverPointFv", "verified", "src/game/CoverPoint_peek.cpp"],
  [2147821232, 216, "Invalidate__11CCoverPointFv", "verified", "src/game/CoverPoint_invalidate.cpp"],
  [2147821448, 820, "ProvidesCover__11CCoverPointCFRC21CAIFilterRealPositionPC21CAIFilterRealPositionPC9CAIObject", "verified", "src/game/CoverPoint_invalidate.cpp"],
- [2147822268, 1184, "CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition", "consistent", "research/drafts/CheckLineCollision.80052abc.cpp"],
+ [2147822268, 1184, "CheckLineCollision__11CCoverPointCFRC21CAIFilterRealPositionRC21CAIFilterRealPositionP21CAIFilterRealPosition", "verified", "src/game/CoverPoint_collision.cpp"],
  [2147823452, 16, "FlagAsUnoccupied__11CCoverPointF15COVERPOINT_TYPE", "verified", "src/game/CoverPoint_unoccupied.cpp"],
  [2147823468, 480, "FlagAsOccupied__11CCoverPointF15COVERPOINT_TYPE", "consistent", "research/drafts/FlagAsOccupied.80052f6c.cpp"],
  [2147823948, 604, "GetModifiedPosition__11CCoverPointCFR20CAIFilterRealVector315COVERPOINT_TYPE", "verified", "src/game/CoverPoint_modified.cpp"],

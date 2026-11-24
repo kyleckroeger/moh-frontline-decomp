@@ -213,3 +213,12 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   first. Use it when the original computes one string/address argument ahead of the other argument
   set-up. Drafts of a file with a block header can `#include "../src/game/<File>_block.h"` (include
   dirs are relative to include/) to get the file's pool order.
+- **Vreg numbers follow codegen requests, so a named temporary local moves a value's number** (fitA2,
+  structural run 2026-11-24, CheckLineCollision 6 -> 0). GetTypes' `CoverPointTypes mask =
+  CoverPointTypes(1) | 2 | 4; out.m_bits = types.m_bits & mask.m_bits;` numbered the masked types
+  (`types &= 0xff`) before the mask's `| 4` result; writing the mask as a temporary in the and,
+  `out.m_bits = types.m_bits & (CoverPointTypes(1) | 2 | 4).m_bits;`, numbers it after, so simplify
+  pops it first and the two volatile registers swap (r4/r5) as in the original. The same body left
+  GetPeekLocation's and GetAvailablePeekPosition's code unchanged (only compiler-local @N names in
+  .sdata renumbered): when an inline body is shared, test each respelling on every user (fit.py names
+  the node; scratch/loop5/fitA2/body.py scores all users at once).
