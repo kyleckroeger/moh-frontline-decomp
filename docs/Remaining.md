@@ -49,7 +49,7 @@ Priority 1 is 66.7 KB and would take the project to 97.0% at most.
 
 Partial-source sweep: 1 code-exact, not yet linked (1.2 KB), 67 consistent (102.2 KB), 2 flagged as differing (5.8 KB); 0 functions (0.0 KB) have no draft yet. These are checker results, not proof of behaviour, and earn no progress credit.
 
-Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 81 of the 87 drafts proven in play (`docs/Dolphin.md`).
+Linked: **1,414,400 of 1,414,572 code bytes (99.99%)** are exact or partial source that links into a non-matching build (170 partial functions). Linked doesn't mean correct, but that build plays scripted input routes in Dolphin, with 79 of the 87 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 
 All of it is game and engine C/C++, and most of those files are already partly

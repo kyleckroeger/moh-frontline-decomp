@@ -17,7 +17,7 @@ in `AGENTS.md` win.
   `restored_library` (177 units: Dolphin SDK, MSL, MW runtime, EA audio
   libraries; `docs/Dolphin.md`). Priorities and what is left
   are in `docs/Remaining.md`.
-- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build plays scripted input routes in Dolphin, with 81 of the 87 drafts proven in play (`docs/Dolphin.md`).
+- Linked, which adds partial source to a non-matching build: **1,414,400** bytes (**99.99%**). That build plays scripted input routes in Dolphin, with 79 of the 87 drafts proven in play (`docs/Dolphin.md`).
 <!-- /sync_docs:status -->
 - Toolchain in use: decomp-toolkit 1.8.4, gc-wii-binutils 2.42-2, wibo 1.0.3,
   CodeWarrior `GC/1.2.5n` and `GC/1.2.5` (SDK), `GC/1.3` (some libraries) and `GC/1.3.2`

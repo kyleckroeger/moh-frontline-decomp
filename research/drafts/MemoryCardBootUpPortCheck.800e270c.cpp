@@ -83,15 +83,16 @@ inline void CShellMenu::ShowFormatting(CFont& font, int slot) {
     line *= 50.0f;
     char working[128];
     int i = 0;
+    char letter = slot == 0 ? 'A' : 'B';
     do {
         i++;
-        // g2 (11-13): the caller's letter expression; the original computes it once for both (1183 -> 1023).
-        char letter = 'A';
-        letter += (slot != 0);
         sprintf(working, m_messages.GetText(842), (int)letter);
-        font.DrawTextCentered(line, working);
-        font.DrawTextCentered(line + 22.0f, m_messages.GetText(843));
-        font.DrawTextCentered(line + 22.0f + 22.0f, m_messages.GetText(844));
+        float y = line;
+        font.DrawTextCentered(y, working);
+        y += 22.0f;
+        font.DrawTextCentered(y, m_messages.GetText(843));
+        y += 22.0f;
+        font.DrawTextCentered(y, m_messages.GetText(844));
         MohDVDErrorTask(0, 0);
         WaitRenderList();
         WaitScreen();
@@ -114,7 +115,7 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     bool f1, f2, f3, f4;
     bool formatted;
     bool f5, f6;
-    char letter = 'A' + (slot != 0);
+    char letter = slot != 0 ? 'B' : 'A';
     formatted = false;
     float scale = g_screen.m_scaleY;
     result = true;
@@ -124,17 +125,15 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
     g_inputMgr.Update(1.0f);
     float spacing = 22.0f;
     step = (int)spacing;
-    float top = 50.0f * scale;
     do {
+        float top = 50.0f * scale;
         char text[260];
         char blockText[256];
         char fileText[256];
         char format1[80];
         char format2[80];
         char format3[80];
-        int overhead = m_card->GetSaveGameOverheadSize(false);
-        int overhead2 = m_card->GetSaveGameOverheadSize(false);
-        bool ok = MemoryCardSlotOkForStartup(m_card, slot, overhead2, overhead, &a0, &f1, &blocks, &f2, &f3, &f4, &formatted, &status, &f5, &f6);
+        bool ok = MemoryCardSlotOkForStartup(m_card, slot, m_card->GetSaveGameOverheadSize(false), m_card->GetSaveGameOverheadSize(false), &a0, &f1, &blocks, &f2, &f3, &f4, &formatted, &status, &f5, &f6);
         if (formatted)
             break;
         if (!ok || !f4) {
@@ -247,7 +246,9 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 y += 22.0f;
                 erase = "will erase all previously saved data.";
                 y += 22.0f;
-                sprintf(format2, "Formatting the Memory Card in Slot %c", (int)letter);
+                // The original passes the slot check's result here, not the slot letter
+                // (extsb of the kept MemoryCardSlotOkForStartup result): an original bug.
+                sprintf(format2, "Formatting the Memory Card in Slot %c", (char)ok);
                 font.DrawTextCentered(y, format2);
                 y += 22.0f;
                 font.DrawTextCentered(y, erase);
@@ -262,8 +263,8 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                     if (f6) {
                         line = (int)top;
                         font.DrawTextCentered((float)line, "Insufficient free files to save a new file on the");
-                        sprintf(fileText, "Memory Card in Slot %c. ", (int)letter);
                         line += step;
+                        sprintf(fileText, "Memory Card in Slot %c. ", (int)letter);
                         font.DrawTextCentered((float)line, fileText);
                         line += step;
                         font.DrawTextCentered((float)line, "This game requires at least 2 files and 4 blocks to");
@@ -287,8 +288,8 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                 } else if (f6) {
                     line = (int)top;
                     font.DrawTextCentered((float)line, "Insufficient free blocks to save a new file on the");
-                    sprintf(blockText, "Memory Card in Slot %c. ", (int)letter);
                     line += step;
+                    sprintf(blockText, "Memory Card in Slot %c. ", (int)letter);
                     font.DrawTextCentered((float)line, blockText);
                     line += step;
                     font.DrawTextCentered((float)line, "This game requires at least 2 files and 4 blocks to");
@@ -360,7 +361,8 @@ bool CShellMenu::MemoryCardBootUpPortCheck(int slot) {
                         font.DrawTextCentered(next, failed);
                         next += 44.0f;
                         font.DrawTextCentered(next, m_messages.GetText(832));
-                        font.DrawTextCentered(next + 22.0f, m_messages.GetText(833));
+                        next += 22.0f;
+                        font.DrawTextCentered(next, m_messages.GetText(833));
                         WaitRenderList();
                         WaitScreen();
                         SendRenderList();

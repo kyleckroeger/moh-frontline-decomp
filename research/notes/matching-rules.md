@@ -191,3 +191,12 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   `m_field08 = m_field0c = m_field10 = 0;`; three separate `= 0` statements in that order stored
   the same but spread the constants over more callee registers (stmw r17, 80-byte frame). Try it
   when a run of zero stores is right but the function saves too many registers.
+- **Loop-invariant code motion skips expressions of variables assigned inside the loop** (big,
+  structural run 2026-11-24, MemoryCardBootUpPortCheck 958 -> 269, draft). MWCC hoists an invariant
+  expression such as `(int)top` or `line + 22.0f` to the loop preheader (and then shares it between
+  branches) when its operands are set before the loop. The original converted `top` again in each
+  branch and added 22 inside the loop: with `float top = 50.0f * scale;` written inside the do-loop
+  the multiply is still hoisted (computed once before the loop, as in the original) but the
+  dependent conversions stay; `float y = line; ...; y += 22.0f;` inside the loop likewise stays
+  where `float y = line + 22.0f;` was hoisted. Symptom: one fctiwz/fadds at our function head
+  against several in the original's loop body.

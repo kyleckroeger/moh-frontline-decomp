@@ -154,6 +154,28 @@ struct DMBlendWeight {
 
 extern CBlendBufferCache _blendCache;
 
+static inline void AddWeight(DMBlendWeight* weights, DMBlendWeight*& next, unsigned long& count, unsigned long i, float weight) {
+    if (count < 4) {
+        next->index = i;
+        count++;
+        next->weight = weight;
+        next++;
+    } else {
+        unsigned long smallest = count - 1;
+        float smallestWeight = fabs(next[-1].weight);
+        for (unsigned long j = 0; j < count; j++) {
+            if (fabs(weights[j].weight) < smallestWeight) {
+                smallest = j;
+                smallestWeight = fabs(weights[j].weight);
+            }
+        }
+        if (fabs(weight) > smallestWeight) {
+            weights[smallest].index = i;
+            weights[smallest].weight = weight;
+        }
+    }
+}
+
 void DMMorphBlendDisplayLists(DMRenderObject_T* object) {
     DMBlendWeight weights[32];
     unsigned long count = 0;
@@ -163,27 +185,8 @@ void DMMorphBlendDisplayLists(DMRenderObject_T* object) {
         DMBlendWeight* next = weights;
         for (unsigned long i = 0; i < morph->count - 1; i++) {
             float weight = morph->weights[i];
-            if (weight >= 0.05f) {
-                if (count < 4) {
-                    next->index = i;
-                    count++;
-                    next->weight = weight;
-                    next++;
-                } else {
-                    unsigned long smallest = count - 1;
-                    float smallestWeight = fabs(next[-1].weight);
-                    for (unsigned long j = 0; j < count; j++) {
-                        if (fabs(weights[j].weight) < smallestWeight) {
-                            smallest = j;
-                            smallestWeight = fabs(weights[j].weight);
-                        }
-                    }
-                    if (fabs(weight) > smallestWeight) {
-                        weights[smallest].index = i;
-                        weights[smallest].weight = weight;
-                    }
-                }
-            }
+            if (weight >= 0.05f)
+                AddWeight(weights, next, count, i, weight);
         }
     }
     weights[count].index = 0;
@@ -216,7 +219,7 @@ void DMMorphBlendDisplayLists(DMRenderObject_T* object) {
             vertex.nrm.z = n->z;
             vertex.tex = src->tex;
             DMBlendWeight* w = weights;
-            for (unsigned long j = 0; j < count; j++, w++) {
+            for (unsigned short j = 0; j < count; j++, w++) {
                 DMMorphTargetIndex* index = &((DMMorphTargetIndex*)data->targets[w->index].list->data)[vertexIndex];
                 DMVec3s* tp = &mesh->positions[index->pos];
                 DMVec3s* tn = &mesh->normals[index->nrm];
