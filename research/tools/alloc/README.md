@@ -47,6 +47,17 @@ open rows on 2026-11-18 is research/notes/matching-triage-2026-11-18.tsv.
   successors ready (predecessor count 1), else if its height is greater, else (when 0x5e86a0 is
   set) by an opcode-class byte. Post-allocation, register reuse adds anti and output edges, so the
   "makes more ready" test often decides there.
+- Operands print as `=` for a definition, objects by name; `!` after an opcode marks pcode flag 4.
+  `SCHED_MACHINE=1` prints the machine table and the 0x5e86a0 flag. The last line (`optab`) lists
+  each opcode's machine-table bytes (unit class, latency, stage cycles) and its class byte.
+- `ssim.py <dump> [line]`: replays the scheduler on a sched.py dump with the gekko (750) machine
+  model (table 0x5d3a18: width 2; can_issue 0x578ec0, issue 0x578e30, advance 0x578aa0: a six-entry
+  completion queue retiring two a cycle, two integer units with a same-cycle dependence check, a
+  two-stage load/store and a three-stage FP pipeline) and checks every block against the real
+  picks (313 of 313 blocks in five functions). The class-byte tie-break applies only before
+  allocation (0x5e86a0 is set while virtual registers exist). `schedule(nodes, optab, prera=)` is
+  usable on a generated graph to search source orders without compiling (see the GetExtents
+  generator in scratch/loop5/sched/geo.py).
 - A block scheduled before allocation gets flag 8 and is skipped after allocation unless a pcode
   insertion or deletion clears it (0x4dc1b0 / 0x4dc1f0 / 0x4dc230), e.g. a coalesced copy or spill
   code. The rule this gives is in research/notes/matching-rules.md (GetPeekLocation).

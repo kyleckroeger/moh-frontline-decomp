@@ -174,3 +174,12 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   variable directly (`out = types & mask` through operator= still copies). CoverPoint_modified's
   GetAvailablePeekPosition was respelled the same way (still exact) so every fragment shares one
   GetTypes body.
+- **A dead instruction can steal an issue slot from the one the original issued** (sched,
+  SFILTER_rsf 5 -> 0). Before allocation a ready instruction that makes a successor ready (its
+  only remaining predecessor) beats one that does not. `state->position &= 0xffffLL` on an unsigned
+  position builds a dead high-word pair `li rH,0; and rX,rH,rH`; the li made the and ready, so it
+  took cycle 1's second slot and the mask's `addi` slipped behind the fraction's `srwi`, which
+  changed the allocation (fraction r0 instead of r4). `state->position = (int)state->position &
+  0xffffLL` makes the high word a `srawi` of the position (still dead), so the li no longer frees
+  anything and the addi issues in cycle 1 as in the original. research/tools/alloc/ssim.py replays
+  the choice; read the picks in a sched.py dump before trying spellings.

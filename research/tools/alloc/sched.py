@@ -58,6 +58,7 @@ def wr(a, b):
     ob = bytearray(struct.pack('<q', old)); ob[a - a8:a - a8 + len(b)] = b
     libc.ptrace(5, pid, ctypes.c_void_p(a8), ctypes.c_void_p(struct.unpack('<Q', bytes(ob))[0]))
 opn = {}
+optab = {}
 def opname(op):
     if op not in opn: opn[op] = cstr(u32(0x5bee80 + op * 0x12 - 8))
     return opn[op]
@@ -65,10 +66,15 @@ objn = {}
 def objname(o):
     if not o: return '0'
     if o not in objn:
-        try:
-            nm = u32(o + 0x4) if False else 0
-        except Exception: nm = 0
-        objn[o] = 'o%d' % len(objn)
+        name = None
+        for off in range(0, 0x30, 2):
+            try:
+                p = u32(o + off)
+                if 0x10000 < p < 0xfffff000:
+                    t = rd(p + 10, 32).split(b'\0')[0]
+                    if len(t) >= 2 and all(32 < c < 127 for c in t): name = t.decode(); break
+            except Exception: pass
+        objn[o] = name or 'o%d' % len(objn)
     return objn[o]
 RC = {0: 'spr', 1: 'cr', 2: 'v', 3: 'f', 4: 'r'}
 def insn(pc):
@@ -76,14 +82,17 @@ def insn(pc):
     for k in range(n):
         kind = rd(a, 1)[0]; cls = rd(a + 1, 1)[0]; fl = u16(a + 2)
         if kind == 0:
-            ops.append('%s%d%s' % (RC.get(cls, 'c%d_' % cls), s16(a + 4), '' if not (fl & 2) else ''))
+            ops.append('%s%s%d' % ('=' if fl & 2 else '', RC.get(cls, 'c%d_' % cls), s16(a + 4)))
         elif kind == 1: ops.append('spr%d' % s16(a + 4))
-        elif kind == 2: ops.append(str(s32(a + 4)))
-        elif kind == 3: ops.append('m[%s]' % rd(a+4,8).hex())
-        elif kind == 4: ops.append('L%x' % u32(a + 4))
+        elif kind == 2: ops.append(str(s32(a + 2)))
+        elif kind == 3: ops.append('%s%+d' % (objname(u32(a + 6)), s32(a + 2)))
+        elif kind == 4: ops.append('L%x' % u32(a + 2))
         else: ops.append('k%d' % kind)
         a += 12
-    return '%s %s' % (opname(op), ','.join(ops))
+    if len(ops) > 8: ops = ops[:3] + ['...(%d uses)' % (len(ops) - 3)]
+    if op not in optab: optab[op] = rd(0x5d3a40 + op * 6, 6).hex() + rd(0x5bee81 + op * 0x12, 1).hex()
+    pf = u32(pc + 0x14)
+    return '%s%s %s' % (opname(op), '!' if pf & 4 else '', ','.join(ops))
 regs = R(); out = []
 def emit(s): out.append(s)
 libc.ptrace(7, pid, None, None)
@@ -105,6 +114,8 @@ while True:
                 npass = rd(esp + 4, 1)[0]; emit('=== PASS %s' % ('pre-RA' if npass == 0 else 'post-RA'))
             elif ip == 0x506f20:
                 blk += 1; emit('--- block %d (%x)' % (blk, u32(esp + 4)))
+                if blk == 1 and os.environ.get('SCHED_MACHINE'):
+                    emit('flag5e86a0 %d' % u32(0x5e86a0)); m = u32(0x5df8f8); emit('machine %x: %s' % (m, ' '.join('%x' % u32(m + 4 * k) for k in range(10))))
             elif ip == 0x506ff9:
                 head = regs.rbp & 0xffffffff; nodes = []; n = head
                 while n: nodes.append(n); n = u32(n)
@@ -125,6 +136,7 @@ while True:
         else: fwd = 0
     else: fwd = sig
     libc.ptrace(7, pid, None, ctypes.c_void_p(fwd))
+out.append('optab ' + ' '.join('%s:%d:%s' % (opname(k), k, v) for k, v in sorted(optab.items())))
 txt = '\n'.join(out) + '\n'
 if filt:
     keep = []; cur = []

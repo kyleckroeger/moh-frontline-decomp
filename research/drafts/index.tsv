@@ -61,7 +61,6 @@ real_lines	size	address	function	compile_settings_from	draft
 80	340	8015f934	iSNDrandom__Fv	config/GMFE69/srandom.json	research/drafts/iSNDrandom.8015f934.c
 20	408	80160114	SNDMIXI_volramp__FP11SNDMIXVOICE	config/GMFE69/smixer.json	research/drafts/SNDMIXI_volramp.80160114.c
 73	752	801609d0	MIX_audioslice	config/GMFE69/smixer.json	research/drafts/MIX_audioslice.801609d0.c
-5	780	801671b8	SFILTER_rsf__FPviPvPvi	config/GMFE69/sfrsf.json	research/drafts/SFILTER_rsf.801671b8.c
 102	2308	800c290c	TestCollision__7CVolBoxCFRC11CVolCapsuleR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c290c.cpp
 13	1472	800c3210	TestCollision__7CVolBoxCFRC10CVolSphereR10CCollisionb	config/GMFE69/box_dispatch.json	research/drafts/TestCollision.800c3210.cpp
 4	1492	800f5930	Link__8CPartBinFP7CDmaTagR10CDmaPacket	config/GMFE69/dmesh_bins.json	research/drafts/CPartBin_Link.800f5930.cpp

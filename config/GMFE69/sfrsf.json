@@ -38,7 +38,13 @@
     {
       "name": ".text",
       "address": "0x801671b0",
-      "size": 8,
+      "size": 788,
+      "type": 1
+    },
+    {
+      "name": ".sdata2",
+      "address": "0x80351c38",
+      "size": 4,
       "type": 1
     }
   ],
@@ -47,6 +53,12 @@
       "name": "SFILTER_rsfsetpitch__FP8RSFSTATEi",
       "address": "0x801671b0",
       "size": 8,
+      "binding": 1
+    },
+    {
+      "name": "SFILTER_rsf__FPviPvPvi",
+      "address": "0x801671b8",
+      "size": 780,
       "binding": 1
     }
   ],
