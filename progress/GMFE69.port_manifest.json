@@ -2,7 +2,7 @@
  "schema_version": 1,
  "target": "GMFE69",
  "verified_units": 986,
- "function_bytes_by_status": {"consistent": 101048, "differs": 5764, "exact": 1220, "verified": 1297524},
+ "function_bytes_by_status": {"consistent": 100592, "differs": 5764, "exact": 1220, "verified": 1297980},
  "data_bytes_owned": 822810,
  "data_bytes_total": 1976252,
  "functions": [
@@ -267,7 +267,7 @@
  [2147618840, 204, "BIFunc_MechSetFlag__FPPiPv", "verified", "src/game/bsbifunc_vibration.cpp"],
  [2147619044, 92, "BIFunc_MovingMechForceUpdateTrigger__FPPiPv", "verified", "src/game/bsbifunc_vibration.cpp"],
  [2147619136, 224, "BIFunc_MechSetPathFlag__FPPiPv", "verified", "src/game/bsbifunc_vibration.cpp"],
- [2147619360, 456, "BIFunc_MechFollowPath__FPPiPv", "consistent", "research/drafts/BIFunc_MechFollowPath.80021220.cpp"],
+ [2147619360, 456, "BIFunc_MechFollowPath__FPPiPv", "verified", "src/game/bsbifunc_vibration.cpp"],
  [2147619816, 772, "BIFunc_ApplyForceToObject__FPPiPv", "verified", "src/game/bsbifunc_mgflag.cpp"],
  [2147620588, 156, "BIFunc_PlayerForceToWeapon__FPPiPv", "verified", "src/game/bsbifunc_mgflag.cpp"],
  [2147620744, 148, "BIFunc_SetMGWaypointFlag__FPPiPv", "verified", "src/game/bsbifunc_mgflag.cpp"],

@@ -222,3 +222,24 @@ Compiler behaviours that closed a queue row; each was tried on the other rows of
   GetPeekLocation's and GetAvailablePeekPosition's code unchanged (only compiler-local @N names in
   .sdata renumbered): when an inline body is shared, test each respelling on every user (fit.py names
   the node; scratch/loop5/fitA2/body.py scores all users at once).
+- **Copy coalescing joins a named local only with a physical register** (sched2, structural run
+  2026-11-24, BIFunc_MechFollowPath 83 -> 0; InterferenceGraph.c 0x57a1f0). A copy `MR vA,vB` is
+  deleted only when the two webs don't interfere AND (one side is already a physical register, or BOTH
+  vregs are numbered after the snapshot 0x4cf3b0 takes once params, register vars and NAMED locals are
+  numbered, i.e. both are compiler temps: '@'/'$' names such as inline return temps, or optimizer
+  temps). Copies are visited block by block in order, so `named = temp` in an early block survives even
+  if `named` is merged with an argument register in a later block. Symptom: the original computes a
+  value straight into its argument register (`srwi r6,...`) where ours computes into a temp and copies
+  (`mr r6,r5`). Fix: make it not a named local (a single-use typed-read inline like
+  `inline bool BoolArg(int* arg) { return *arg; }`); keep it named where the original keeps the copy.
+- **A float local reassigned in place is not propagated into the call** (same function): `float yaw =
+  *(float*)p; yaw = k2 * (k1 * yaw);` computes the rate at the declaration and adds an FMR into the
+  argument register (deleted later), raising the chain's pre-RA height by the copy; the same expression
+  written in the call (or as a fresh `float y = ...` local) is propagated to the call's argument order.
+  The original's register reuse showed that only "yaw/pitch chain +copy" orders were colourable
+  (research/tools/alloc/post.py).
+- **Pcode dead-code removal after allocation is block-local** (0x579e50): it walks each block backward
+  from the block's live-out set computed BEFORE the pass, so deleting a dead ADD does not make the NEG
+  that feeds it dead when the NEG sits in an earlier block (every call ends a block). This is how
+  SweepAllExtents keeps `neg r31,r3` of a start tick whose `add` vanished; what keeps the add alive
+  through the IR optimizer is still unknown (row 82).

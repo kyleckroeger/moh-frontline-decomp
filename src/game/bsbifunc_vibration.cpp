@@ -4,7 +4,10 @@
 // object's player's controller in multiplayer (otherwise the first player's),
 // set or clear a bit of a mechanism's flags, force an update of the script
 // object's proximity trigger status, and set a mechanism's path flag (mode 1)
-// or its path speed (otherwise, 0.01 per unit). Each reads its arguments below the script
+// or its path speed (otherwise, 0.01 per unit), and set a mechanism moving along a path
+// (MechFollowPath: path, two flags, a speed above 1000 meaning reversed, an acceleration
+// ((arg + 1) squared, in thousandths), two angular rates in degrees, an object and a value,
+// passed to CStaticObject::SetMovementPath in per-frame units). Each reads its arguments below the script
 // stack top and pops the built-in's arguments. The file name is this project's;
 // the original record is bsbifunc.cpp and the built-ins around these are not
 // reconstructed. The functions, classes and globals are named by the mangled
@@ -27,6 +30,8 @@ struct AIDoodadView;
 
 
 
+struct BSObject;
+
 class CStaticObject {
 public:
     unsigned char unknown000[232];
@@ -36,6 +41,8 @@ public:
     unsigned char unknown1e1 : 7;
     unsigned char unknown1e2[2];
     unsigned int m_mechFlags;
+
+    void SetMovementPath(int, bool, bool, float, float, float, float, BSObject*, float, bool);
 };
 
 #include "game/CPlayerObject.h"
@@ -136,5 +143,35 @@ void BIFunc_MechSetPathFlag(int** stack, void* object) {
         mech->m_pathSpeed = 0.01f * value;
     else
         mech->m_pathFlag = value != 0;
+    *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
+}
+
+/* The flag2 argument is read through a typed helper (it is not a named local in the original:
+   its bool is computed straight into the argument register). */
+inline bool BoolArg(int* arg) { return *arg; }
+void BIFunc_MechFollowPath(int** stack, void* object) {
+    CStaticObject* mech = ((ISceneNode*)object)->AsStaticObject();
+    int speed;
+    int count = g_pBuiltInFunctions[g_iCurrentBIFIndex].parameterCount;
+    int path = *(*stack - (count - 1));
+    bool flag1 = (bool)*(*stack - (count - 2));
+    bool flag2 = BoolArg(*stack - (count - 3));
+    speed = *(*stack - (count - 4));
+    bool reverse;
+    if (speed > 1000) {
+        reverse = true;
+        speed -= 1000;
+    } else {
+        reverse = false;
+    }
+    int accel = *(*stack - (count - 5));
+    float yaw = *(float*)(*stack - (count - 6));
+    yaw = 0.017453292f * (0.016683351f * yaw);
+    float pitch = *(float*)(*stack - (count - 7));
+    pitch = 0.017453292f * (0.016683351f * pitch);
+    BSObject* target = (BSObject*)*(*stack - (count - 8));
+    int value = *(*stack - (count - 9));
+    mech->SetMovementPath(path, flag1, flag2, 0.016683351f * speed, 0.001f * ((accel + 1) * (accel + 1)),
+                          yaw, pitch, target, value, reverse);
     *stack -= g_pBuiltInFunctions[g_iCurrentBIFIndex].argumentCount;
 }

@@ -33,7 +33,6 @@ real_lines	size	address	function	compile_settings_from	draft
 96	540	8001e59c	DoTargetCheck__FP8BSObjectiiiPiPi	config/GMFE69/bsbifunc_corpsesearch.json	research/drafts/DoTargetCheck.8001e59c.cpp
 99	1916	800557a0	__ct__13CPathNodeListFPvP18BPDPathFindingNodei	config/GMFE69/PathNodeList_closest.json	research/drafts/__ct__13CPathNodeListFPvP18BPDPathFindingNodei.800557a0.cpp
 56	2948	8007fbe8	UpdateBoundingBox__15CParticleSystemFv	config/GMFE69/particlesystem_visible.json	research/drafts/UpdateBoundingBox.8007fbe8.cpp
-83	456	80021220	BIFunc_MechFollowPath__FPPiPv	config/GMFE69/bsbifunc_vibration.json	research/drafts/BIFunc_MechFollowPath.80021220.cpp
 109	1016	800f4e98	_matrix_rot_yzx__FR7CMatrixlll	config/GMFE69/dmrender.json	research/drafts/_matrix_rot_yzx.800f4e98.cpp
 135	1232	800e752c	ShellInit__10CShellMenuFUl	config/GMFE69/ShellMenu_playtime.json	research/drafts/ShellInit.800e752c.cpp
 37	1848	800bce58	DrawBulletStats__13UserInterfaceFv	config/GMFE69/UserInterface_compass.json	research/drafts/DrawBulletStats.800bce58.cpp

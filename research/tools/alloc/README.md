@@ -75,3 +75,14 @@ open rows on 2026-11-18 is research/notes/matching-triage-2026-11-18.tsv.
 - nmap.py (fitB, 2026-11-24) also normalises lis / addi rX,rLIS / d(rLIS) halves of absolute
   addresses, so section bases and globals map (CPathNodeList: 226 nodes vs 134). NTMP sets its
   temp dir; give each parallel user its own.
+- `geo.py` (GetExtents, 2026-11-24): generates a block's pre-allocation dependency graph for a source
+  statement order (RAW = producer latency, WAR/WAW 0, store/load pairs = producer latency) and runs
+  `ssim.schedule` on it, so statement orders can be searched without compiling (validate the generator
+  edge-for-edge against one sched.py dump first).
+- `post.py <dump> <line>` / `post.graph(ins)` (sched2, 2026-11-24): builds the dependency graph of an
+  instruction list with REAL registers the way the post-allocation pass does (RAW from every earlier def,
+  WAR/WAW 0, stack-slot store/load overlap by object and byte range, `r0` base of an `@` symbol is not a
+  use); validated edge-for-edge on a dump. Use it with the original's registers to test whether a
+  pre-allocation order is consistent with the original's colouring: two values sharing an original
+  register must have disjoint live ranges in the pre-allocation order (MechFollowPath: this showed that
+  no argument order could work and that yaw/pitch needed an extra copy node, i.e. non-propagated locals).

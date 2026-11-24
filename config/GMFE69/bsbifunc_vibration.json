@@ -41,19 +41,19 @@
     {
       "name": ".text",
       "address": "0x80020d88",
-      "size": 1176,
+      "size": 1632,
       "type": 1
     },
     {
       "name": "extab",
       "address": "0x80009a44",
-      "size": 48,
+      "size": 56,
       "type": 1
     },
     {
       "name": "extabindex",
       "address": "0x8001055c",
-      "size": 72,
+      "size": 84,
       "type": 1
     }
   ],
@@ -93,6 +93,12 @@
       "address": "0x80021140",
       "size": 224,
       "binding": 1
+    },
+    {
+      "name": "BIFunc_MechFollowPath__FPPiPv",
+      "address": "0x80021220",
+      "size": 456,
+      "binding": 1
     }
   ],
   "externals": {
@@ -101,14 +107,15 @@
     "FadeOut__14CSoldierObjectFf": "0x800a9bd8",
     "ForceUpdateProximityTriggerStatus__FP10BSGO_Basicb": "0x8004618c",
     "GetPlayer__6CSceneCFi": "0x800d8274",
+    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8",
     "SetFeedback__13CInputManagerFUlllff": "0x80084a6c",
+    "SetMovementPath__13CStaticObjectFibbffffP8BSObjectfb": "0x800af260",
     "g_bInMultiplayerMode": "0x8034eca5",
     "g_iCurrentBIFIndex": "0x8034e77c",
     "g_inputMgr": "0x801ec80c",
     "g_pBSObject": "0x8034e7e0",
     "g_pBuiltInFunctions": "0x8034e778",
-    "g_scene": "0x8019484c",
-    "GetSceneNode__10BSGO_BasicFv": "0x8001e4f8"
+    "g_scene": "0x8019484c"
   },
   "undefined_in_discarded_code": [],
   "discarded_functions": [],
@@ -123,6 +130,11 @@
   ],
   "original_file": "bsbifunc.cpp",
   "original_file_index": 443,
+  "weak_duplicates": [
+    "AsPlayerObject__10ISceneNodeFv",
+    "AsStaticObject__10ISceneNodeFv",
+    "GetSceneNode__10BSGO_BasicFv"
+  ],
   "pooled_sections": [
     ".sdata2"
   ],
@@ -138,11 +150,24 @@
       "offset": 8,
       "size": 8,
       "address": "0x8034f618"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 16,
+      "size": 4,
+      "address": "0x8034f670"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 20,
+      "size": 4,
+      "address": "0x8034f674"
+    },
+    {
+      "section": ".sdata2",
+      "offset": 24,
+      "size": 4,
+      "address": "0x8034f648"
     }
-  ],
-  "weak_duplicates": [
-    "AsPlayerObject__10ISceneNodeFv",
-    "AsStaticObject__10ISceneNodeFv",
-    "GetSceneNode__10BSGO_BasicFv"
   ]
 }
