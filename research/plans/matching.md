@@ -156,3 +156,7 @@ about together, once, near the end; not one at a time.
   structural row parked with the simulators' target in scratch/loop5/<lane>/notes.md. Leads: the
   copy-coalescing rule (temps-only merge, 0x57a1f0) swept over the parked register rows; the IR
   dead-code pass for SweepAllExtents; RenderSystem split into inlines.
+- Next session (user, 2026-11-24): sweep the copy-coalescing rule (matching-rules.md, MechFollowPath
+  a3d33104: the coalescer at 0x57a1f0 merges two vregs only if both are compiler temps or one is a
+  physical register) over every parked register/order/near/structural row, with multiple agents
+  (split the parked rows into lanes, protocol as structural-agents.md).
