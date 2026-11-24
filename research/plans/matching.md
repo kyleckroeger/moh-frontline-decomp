@@ -147,3 +147,12 @@ about together, once, near the end; not one at a time.
   differs), 28 not a colouring difference, and the few feasible ones blocked by known
   constraints. Next: reassess with the maintainer (structural group, the pre-allocation
   scheduler probe for rows 36/37/43, the queued policy questions).
+- 2026-11-24: structural run (research/plans/structural-agents.md, 4 lanes, 11 agents): 92.10% ->
+  92.38% (1,306,824), 5 landed: GetPeekLocation 740, SFILTER_rsf 780, CProfileInitClass ctor 836
+  (debug_prof.cpp tail merge + gap function), CheckLineCollision 1,184, BIFunc_MechFollowPath 456.
+  New exact tools in research/tools/alloc/: sched.py/ssim.py/post.py (both scheduler passes),
+  sim2.py/fit.py/fitF*.py (simplify + index fitter). Drafts improved: BSFileReadClass 209,
+  MemoryCardBootUpPortCheck 197, DrawBulletStats 37, DMClusterSkel 6, DMMorph 222. Every other
+  structural row parked with the simulators' target in scratch/loop5/<lane>/notes.md. Leads: the
+  copy-coalescing rule (temps-only merge, 0x57a1f0) swept over the parked register rows; the IR
+  dead-code pass for SweepAllExtents; RenderSystem split into inlines.
